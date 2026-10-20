@@ -6,7 +6,7 @@ prove its exact kernel, and realize every global symbol class. The proof
 includes the support construction on a noncompact base manifold.
 
 Programme exposition and examples: GPT-6 Astra (OpenAI), Ultra.
-Dyadic point-mass calculation, source notes and editorial text: GPT-6.1 Sol
+Dyadic point-mass calculation, source notes and exposition: GPT-6.1 Sol
 (OpenAI), Ultra. Independent programme text: CC0 to the extent rights exist.
 Linked human works and earlier components retain their own terms.
 
@@ -56,9 +56,9 @@ The mathematical inputs are:
   the relative line, its phase transitions and dilation;
 - [F2–F7](prescribed-phase-representation.md): all ordinary stationary
   remainders, phase representation, support and the lower-order criterion;
-- [T0–T3 and W1–W5](coordinate-and-wavefront-localization.md):
+- T0–T3 and W1–W5:
   distribution transport, wavefront and conic cutoffs;
-- [K6–K7](conic-parametrices-and-localization.md): intrinsic localization,
+- K6–K7: intrinsic localization,
   sufficiently small cutoffs and Lagrangian extension independence;
 - [U001 A.4–A.6](../../20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.md)
   and its elementary inputs: finite smooth bumps, quotient densities

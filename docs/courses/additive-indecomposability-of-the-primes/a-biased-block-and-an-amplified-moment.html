@@ -1,0 +1,509 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A biased block and an amplified moment</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Additive indecomposability of the primes)</a><a href="square-root-bounds-and-collision-stability.html">Previous lesson</a><a href="hypercontractive-moments-and-a-small-kernel-witness.html">Next lesson</a><a href="src/a-biased-block-and-an-amplified-moment.md">Editable source</a></nav><main><article><h1 id="a-biased-block-and-an-amplified-moment">A biased block and an amplified moment</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson and the next three prove that the residue supports <span class="math" data-tex="\(S_p\)">\(S_p\)</span> of Lesson 1 are not biased by quadratic characters, even when the character is translated by a different residue at every prime (Theorem 1.1). The proof is by contradiction. A bias at many primes produces, through an amplified moment and Poisson summation, a quadratic exponential sum that must be large for many products of primes. Lessons 4 and 5 turn this into a single rational number <span class="math" data-tex="\(h/m\)">\(h/m\)</span> that serves as the translating centre at many primes simultaneously. Lesson 6 then uses the quadratic large sieve to show that the two summands concentrate on few <em>quadratic kernels</em>, and the collision estimate of Lesson 2 rules this out.</p>
+<p>This lesson sets up the contradiction hypothesis, chooses the scales, proves a combinatorial identity that removes repeated primes from a moment, and computes the Poisson dual of the moment.</p>
+<p><strong>Prerequisites.</strong> <a href="square-root-bounds-and-collision-stability.html"><em>Square-root bounds and collision stability</em></a>, Sections 4 and 5; <a href="../NT-DIRL/NT-DIRL-03.html"><em>Gauss sums</em></a>, Theorems 1.1 and 2.1; <a href="../NT-ZETA/NT-ZETA-04.html"><em>Poisson summation, theta, and the functional equation</em></a>, Theorem 1.2; <a href="../NT-ZETA/NT-ZETA-02.html"><em>Counting primes by elementary means: Chebyshev and Mertens</em></a>, Theorem 3.1.</p>
+<h2 id="1-the-statement">1. The statement</h2>
+<p>For an odd prime <span class="math" data-tex="\(p\)">\(p\)</span> let <span class="math" data-tex="\(\chi_p\)">\(\chi_p\)</span> be the quadratic character of <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>, extended by <span class="math" data-tex="\(\chi_p(0)=0\)">\(\chi_p(0)=0\)</span>. Keep the standing assumption of Lesson 1 and the supports <span class="math" data-tex="\(S_p\)">\(S_p\)</span>.</p>
+<p><strong>Theorem 1.1</strong> (quadratic decorrelation [OpenAI-013, Proposition 3.1]). As <span class="math" data-tex="\(T\to\infty\)">\(T\to\infty\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{T\le\log p\le2T}\frac{\log p}p\\
+&amp;\qquad \,
+\max_{t\in\mathbb F_p}\Bigl|\mathbb E_{x\in S_p}\chi_p(x-t)\Bigr|\\
+&amp;\quad =o(T).\quad(1.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{T\le\log p\le2T}\frac{\log p}p\\
+&amp;\qquad \,
+\max_{t\in\mathbb F_p}\Bigl|\mathbb E_{x\in S_p}\chi_p(x-t)\Bigr|\\
+&amp;\quad =o(T).\quad(1.1)
+\end{aligned}
+\]</span></p>
+<p>The translating residue <span class="math" data-tex="\(t\)">\(t\)</span> is chosen separately at every prime. Nothing is assumed to relate the choices at different primes; relating them is the main difficulty.</p>
+<p><strong>Corollary 1.2</strong> ([OpenAI-013, Corollary 3.2]). For fixed <span class="math" data-tex="\(0&lt;\alpha&lt;\beta\)">\(0&lt;\alpha&lt;\beta\)</span>, as <span class="math" data-tex="\(L_*\to\infty\)">\(L_*\to\infty\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\alpha L_*\le\log\log p\le\beta L_*}\frac1p\\
+&amp;\qquad \,
+\max_{t\in\mathbb F_p}\Bigl|\mathbb E_{x\in S_p}\chi_p(x-t)\Bigr|\\
+&amp;\quad =o(L_*).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\alpha L_*\le\log\log p\le\beta L_*}\frac1p\\
+&amp;\qquad \,
+\max_{t\in\mathbb F_p}\Bigl|\mathbb E_{x\in S_p}\chi_p(x-t)\Bigr|\\
+&amp;\quad =o(L_*).
+\end{aligned}
+\]</span></p>
+<p><em>Proof, assuming Theorem 1.1.</em> Cover the range of <span class="math" data-tex="\(\log p\)">\(\log p\)</span>, which is <span class="math" data-tex="\([e^{\alpha L_*},e^{\beta L_*}]\)">\([e^{\alpha L_*},e^{\beta L_*}]\)</span>, by <span class="math" data-tex="\(O(L_*)\)">\(O(L_*)\)</span> intervals <span class="math" data-tex="\([T,2T]\)">\([T,2T]\)</span> with <span class="math" data-tex="\(T\ge\frac12e^{\alpha L_*}\)">\(T\ge\frac12e^{\alpha L_*}\)</span>; positivity allows enlarging the two end intervals. On <span class="math" data-tex="\([T,2T]\)">\([T,2T]\)</span>, <span class="math" data-tex="\(1/p\le(\log p)/(Tp)\)">\(1/p\le(\log p)/(Tp)\)</span>, so by (1.1) the contribution of each interval is at most <span class="math" data-tex="\(\epsilon(T)\)">\(\epsilon(T)\)</span>, where <span class="math" data-tex="\(\epsilon(T)\to0\)">\(\epsilon(T)\to0\)</span>. Since every <span class="math" data-tex="\(T\)">\(T\)</span> used tends to infinity with <span class="math" data-tex="\(L_*\)">\(L_*\)</span>, the sum of the <span class="math" data-tex="\(O(L_*)\)">\(O(L_*)\)</span> contributions is <span class="math" data-tex="\(o(L_*)\)">\(o(L_*)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The rest of this lesson and Lessons 4–6 prove Theorem 1.1.</p>
+<h2 id="2-a-biased-block-of-primes">2. A biased block of primes</h2>
+<p>Suppose that (1.1) fails. By Mertens' estimate, <span class="math" data-tex="\(\sum_{T\le\log p\le2T}(\log p)/p=T+O(1)\)">\(\sum_{T\le\log p\le2T}(\log p)/p=T+O(1)\)</span>. Each maximal bias is at most <span class="math" data-tex="\(1\)">\(1\)</span>, so there are a constant <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> and an unbounded sequence of <span class="math" data-tex="\(T\)">\(T\)</span> along which the primes with maximal bias at least <span class="math" data-tex="\(\delta\)">\(\delta\)</span> have <span class="math" data-tex="\((\log p)/p\)">\((\log p)/p\)</span>-weight at least <span class="math" data-tex="\(c_\delta T\)">\(c_\delta T\)</span>, with <span class="math" data-tex="\(c_\delta&gt;0\)">\(c_\delta&gt;0\)</span>. All limits below are taken along this sequence, and all constants may depend on <span class="math" data-tex="\(\delta\)">\(\delta\)</span>.</p>
+<p><strong>The scales.</strong> Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\rho=\frac35,\\
+\mu_0=10^{-6},\\
+\gamma=10^{-7},\\
+X=\exp\bigl(T^{1+\rho}\bigr),
+\end{gathered}
+\]">\[
+\begin{gathered}
+\rho=\frac35,\\
+\mu_0=10^{-6},\\
+\gamma=10^{-7},\\
+X=\exp\bigl(T^{1+\rho}\bigr),
+\end{gathered}
+\]</span>
+and, as in Lesson 2, <span class="math" data-tex="\(A_X=A\cap[X^{9/10},X]\)">\(A_X=A\cap[X^{9/10},X]\)</span> and <span class="math" data-tex="\(D_X=D\cap[-X,-X^{9/10}]\)">\(D_X=D\cap[-X,-X^{9/10}]\)</span>. By Lemma 5.1 of Lesson 2, both have <span class="math" data-tex="\(\gg\sqrt X/(\log X)^3\)">\(\gg\sqrt X/(\log X)^3\)</span> elements, and their uniform measures satisfy collision stability with <span class="math" data-tex="\(b=4\)">\(b=4\)</span>, for primes up to <span class="math" data-tex="\(\sqrt X/(\log X)^5\)">\(\sqrt X/(\log X)^5\)</span>. Every prime used in this lesson and the next three satisfies <span class="math" data-tex="\(\log p\le2T\)">\(\log p\le2T\)</span>, far below this cutoff, because <span class="math" data-tex="\(\log\sqrt X=\frac12T^{1.6}\)">\(\log\sqrt X=\frac12T^{1.6}\)</span>.</p>
+<p><strong>Pruning.</strong> The density term of Lemma 4.1 of Lesson 2 shows that the primes with <span class="math" data-tex="\(\sigma_p\notin[\frac13,\frac23]\)">\(\sigma_p\notin[\frac13,\frac23]\)</span> have <span class="math" data-tex="\((\log p)/p\)">\((\log p)/p\)</span>-weight <span class="math" data-tex="\(O(\log\log X)=O(\log T)\)">\(O(\log\log X)=O(\log T)\)</span>. For each prime <span class="math" data-tex="\(p\)">\(p\)</span> with maximal bias at least <span class="math" data-tex="\(\delta\)">\(\delta\)</span>, choose a maximizing translate <span class="math" data-tex="\(t_p\)">\(t_p\)</span> and a sign <span class="math" data-tex="\(\epsilon_p\in\{1,-1\}\)">\(\epsilon_p\in\{1,-1\}\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\epsilon_p\,\mathbb E_{x\in S_p}\chi_p(x-t_p)\\
+&amp;\quad =\max_t\Bigl|\mathbb E_{x\in S_p}\chi_p(x-t)\Bigr|\ge\delta;
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\epsilon_p\,\mathbb E_{x\in S_p}\chi_p(x-t_p)\\
+&amp;\quad =\max_t\Bigl|\mathbb E_{x\in S_p}\chi_p(x-t)\Bigr|\ge\delta;
+\end{aligned}
+\]</span>
+the mean is real because <span class="math" data-tex="\(\chi_p\)">\(\chi_p\)</span> is real. Apply (5.2) of Lesson 2 to the functions <span class="math" data-tex="\(\phi_p(x)=\chi_p(x-t_p)\)">\(\phi_p(x)=\chi_p(x-t_p)\)</span>, for <span class="math" data-tex="\(A_X\)">\(A_X\)</span> and for <span class="math" data-tex="\(D_X\)">\(D_X\)</span>. The primes at which either empirical mean differs from the corresponding uniform mean by more than <span class="math" data-tex="\(\delta/8\)">\(\delta/8\)</span> have weight <span class="math" data-tex="\(O_\delta(\log T)\)">\(O_\delta(\log T)\)</span>. Delete them and the unbalanced primes; weight <span class="math" data-tex="\(\gg T\)">\(\gg T\)</span> remains.</p>
+<p><strong>The opposite side.</strong> The complete sum <span class="math" data-tex="\(\sum_{x\in\mathbb F_p}\chi_p(x-t)\)">\(\sum_{x\in\mathbb F_p}\chi_p(x-t)\)</span> vanishes, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E_{x\in S_p^c}\chi_p(x-t)\\
+&amp;\quad =-\frac{\sigma_p}{1-\sigma_p}\,\mathbb E_{x\in S_p}\chi_p(x-t),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E_{x\in S_p^c}\chi_p(x-t)\\
+&amp;\quad =-\frac{\sigma_p}{1-\sigma_p}\,\mathbb E_{x\in S_p}\chi_p(x-t),
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(\sigma_p/(1-\sigma_p)\ge\frac12\)">\(\sigma_p/(1-\sigma_p)\ge\frac12\)</span> on balanced primes. At every remaining prime, therefore,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\epsilon_p\,\mathbb E_{x\in A_X}\chi_p(x-t_p)\ge\delta-\frac\delta8,\\
+\epsilon_p\,\mathbb E_{x\in D_X}\chi_p(x-t_p)\le-\frac\delta2+\frac\delta8.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\epsilon_p\,\mathbb E_{x\in A_X}\chi_p(x-t_p)\ge\delta-\frac\delta8,\\
+\epsilon_p\,\mathbb E_{x\in D_X}\chi_p(x-t_p)\le-\frac\delta2+\frac\delta8.
+\end{gathered}
+\]</span></p>
+<p><strong>A dyadic block.</strong> The band <span class="math" data-tex="\(T\le\log p\le2T\)">\(T\le\log p\le2T\)</span> is covered by <span class="math" data-tex="\(O(T)\)">\(O(T)\)</span> intervals <span class="math" data-tex="\([Z,2Z]\)">\([Z,2Z]\)</span>, and the remaining primes have weight <span class="math" data-tex="\(\gg T\)">\(\gg T\)</span>, so some interval carries weight bounded below by a positive constant. Each prime in it has weight <span class="math" data-tex="\((\log p)/p=O(\log Z/Z)\)">\((\log p)/p=O(\log Z/Z)\)</span>. We obtain:</p>
+<p><strong>Lemma 2.1.</strong> There are <span class="math" data-tex="\(Z\)">\(Z\)</span> with <span class="math" data-tex="\(\log Z\asymp T\)">\(\log Z\asymp T\)</span> and a set <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> of primes in <span class="math" data-tex="\([Z,2Z]\)">\([Z,2Z]\)</span>, with <span class="math" data-tex="\(J=|\mathcal P|\gg_\delta Z/\log Z\)">\(J=|\mathcal P|\gg_\delta Z/\log Z\)</span>, such that <span class="math" data-tex="\(\frac13\le\sigma_p\le\frac23\)">\(\frac13\le\sigma_p\le\frac23\)</span> for <span class="math" data-tex="\(p\in\mathcal P\)">\(p\in\mathcal P\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb E_{x\in A_X}\epsilon_p\chi_p(x-t_p)\ge c_\delta,\\
+\mathbb E_{x\in D_X}\epsilon_p\chi_p(x-t_p)\le-c_\delta\\
+(p\in\mathcal P),\quad(2.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathbb E_{x\in A_X}\epsilon_p\chi_p(x-t_p)\ge c_\delta,\\
+\mathbb E_{x\in D_X}\epsilon_p\chi_p(x-t_p)\le-c_\delta\\
+(p\in\mathcal P),\quad(2.1)
+\end{gathered}
+\]</span>
+with <span class="math" data-tex="\(c_\delta=3\delta/8\)">\(c_\delta=3\delta/8\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Amplifier primes.</strong> Apply the density term of Lemma 4.1 of Lesson 2 to the band <span class="math" data-tex="\(T^\gamma\le\log p\le2T^\gamma\)">\(T^\gamma\le\log p\le2T^\gamma\)</span>. Its total weight is <span class="math" data-tex="\(T^\gamma+O(1)\)">\(T^\gamma+O(1)\)</span>, and the unbalanced primes in it have weight <span class="math" data-tex="\(O(\log T)=o(T^\gamma)\)">\(O(\log T)=o(T^\gamma)\)</span>. The same dyadic argument gives a block <span class="math" data-tex="\([z,2z]\)">\([z,2z]\)</span> with <span class="math" data-tex="\(\log z\asymp T^\gamma\)">\(\log z\asymp T^\gamma\)</span> containing <span class="math" data-tex="\(\gg z/\log z\)">\(\gg z/\log z\)</span> primes <span class="math" data-tex="\(\ell\)">\(\ell\)</span> with <span class="math" data-tex="\(\frac13\le\sigma_\ell\le\frac23\)">\(\frac13\le\sigma_\ell\le\frac23\)</span>. Put
+<span class="math math-display" data-tex="\[
+K=\Bigl\lfloor0.02\,\frac{\log Z}{\log(2z)}\Bigr\rfloor,
+\]">\[
+K=\Bigl\lfloor0.02\,\frac{\log Z}{\log(2z)}\Bigr\rfloor,
+\]</span>
+and let <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> be the product of <span class="math" data-tex="\(K\)">\(K\)</span> distinct such primes; there are enough of them, because <span class="math" data-tex="\(z/\log z\ge\exp(cT^\gamma)/T\)">\(z/\log z\ge\exp(cT^\gamma)/T\)</span> exceeds every fixed power of <span class="math" data-tex="\(T\)">\(T\)</span>. Let <span class="math" data-tex="\(k\)">\(k\)</span> be the least even integer with <span class="math" data-tex="\(k\ge\log X/\log Z+10\)">\(k\ge\log X/\log Z+10\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K\asymp T^{1-\gamma},\\
+\mathcal L\le Z^{0.02},\\
+k\asymp T^\rho,\\
+K=o(\log Z),\\
+\frac Kk\gg T^{1-\gamma-\rho}.\quad(2.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+K\asymp T^{1-\gamma},\\
+\mathcal L\le Z^{0.02},\\
+k\asymp T^\rho,\\
+K=o(\log Z),\\
+\frac Kk\gg T^{1-\gamma-\rho}.\quad(2.2)
+\end{gathered}
+\]</span>
+Indeed <span class="math" data-tex="\(\log\mathcal L\le K\log(2z)\le0.02\log Z\)">\(\log\mathcal L\le K\log(2z)\le0.02\log Z\)</span>, and <span class="math" data-tex="\(\log X/\log Z=T^{1.6}/\log Z\asymp T^{0.6}\)">\(\log X/\log Z=T^{1.6}/\log Z\asymp T^{0.6}\)</span>. Since <span class="math" data-tex="\(2z&lt;Z\)">\(2z&lt;Z\)</span>, no prime factor of <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> lies in <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>.</p>
+<h2 id="3-an-amplified-moment">3. An amplified moment</h2>
+<p>For a prime <span class="math" data-tex="\(\ell\mid\mathcal L\)">\(\ell\mid\mathcal L\)</span> let <span class="math" data-tex="\(f_\ell=\mathbf 1_{S_\ell}-\sigma_\ell\)">\(f_\ell=\mathbf 1_{S_\ell}-\sigma_\ell\)</span>, viewed as a function on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> of period <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\lambda=\frac1{16},\\
+W(n)=\prod_{\ell\mid\mathcal L}\bigl(1+\lambda f_\ell(n)\bigr),\\
+H(n)=\frac1J\sum_{p\in\mathcal P}\epsilon_p\chi_p(n-t_p).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\lambda=\frac1{16},\\
+W(n)=\prod_{\ell\mid\mathcal L}\bigl(1+\lambda f_\ell(n)\bigr),\\
+H(n)=\frac1J\sum_{p\in\mathcal P}\epsilon_p\chi_p(n-t_p).
+\end{gathered}
+\]</span>
+The weight <span class="math" data-tex="\(W\)">\(W\)</span> is positive, has period <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span>, and has mean <span class="math" data-tex="\(1\)">\(1\)</span> over a period: by the Chinese remainder theorem the residues of <span class="math" data-tex="\(n\)">\(n\)</span> modulo the different <span class="math" data-tex="\(\ell\)">\(\ell\)</span> are independent and uniform, and each <span class="math" data-tex="\(f_\ell\)">\(f_\ell\)</span> has mean <span class="math" data-tex="\(0\)">\(0\)</span>. If <span class="math" data-tex="\(n\in A_X\)">\(n\in A_X\)</span>, then <span class="math" data-tex="\(n&gt;\ell+N_*\)">\(n&gt;\ell+N_*\)</span>, so <span class="math" data-tex="\(n\bmod\ell\in S_\ell\)">\(n\bmod\ell\in S_\ell\)</span> and <span class="math" data-tex="\(f_\ell(n)=1-\sigma_\ell\ge\frac13\)">\(f_\ell(n)=1-\sigma_\ell\ge\frac13\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+W(n)\ge(1+\lambda/3)^K\\
+(n\in A_X).\quad(3.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+W(n)\ge(1+\lambda/3)^K\\
+(n\in A_X).\quad(3.1)
+\end{gathered}
+\]</span>
+The amplifier <span class="math" data-tex="\(W\)">\(W\)</span> rewards integers that behave like elements of <span class="math" data-tex="\(A\)">\(A\)</span> at the small primes <span class="math" data-tex="\(\ell\)">\(\ell\)</span>.</p>
+<p><strong>A smooth weight.</strong> Fix a real even smooth function <span class="math" data-tex="\(\varphi_0\ge0\)">\(\varphi_0\ge0\)</span> supported in <span class="math" data-tex="\([-\frac18,\frac18]\)">\([-\frac18,\frac18]\)</span>, not identically zero, and let <span class="math" data-tex="\(g_0(x)=\int\varphi_0(y)e(xy)\,dy\)">\(g_0(x)=\int\varphi_0(y)e(xy)\,dy\)</span>. Then <span class="math" data-tex="\(g_0\)">\(g_0\)</span> is real and even, and for <span class="math" data-tex="\(|x|\le1\)">\(|x|\le1\)</span>, <span class="math" data-tex="\(g_0(x)\ge\cos(\pi/4)\int\varphi_0&gt;0\)">\(g_0(x)\ge\cos(\pi/4)\int\varphi_0&gt;0\)</span>. Put <span class="math" data-tex="\(\psi=g_0^2\)">\(\psi=g_0^2\)</span>. With the convention <span class="math" data-tex="\(\widehat\psi(y)=\int\psi(x)e(-xy)\,dx\)">\(\widehat\psi(y)=\int\psi(x)e(-xy)\,dx\)</span>, the transform <span class="math" data-tex="\(\widehat\psi=\varphi_0*\varphi_0\)">\(\widehat\psi=\varphi_0*\varphi_0\)</span> is smooth, even, real and supported in <span class="math" data-tex="\([-\frac14,\frac14]\)">\([-\frac14,\frac14]\)</span>, and <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is a nonnegative even Schwartz function bounded below by a positive constant on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>.</p>
+<p>Define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+I=\sum_{n\in\mathbb Z}\psi(n/X)\,W(n)\,H(n)^k,\\
+I_0=\sum_{n\in\mathbb Z}\psi(n/X)\,W(n).
+\end{gathered}
+\]">\[
+\begin{gathered}
+I=\sum_{n\in\mathbb Z}\psi(n/X)\,W(n)\,H(n)^k,\\
+I_0=\sum_{n\in\mathbb Z}\psi(n/X)\,W(n).
+\end{gathered}
+\]</span></p>
+<p><strong>Lemma 3.1.</strong> For large <span class="math" data-tex="\(T\)">\(T\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+I\ge\sqrt X\,e^{0.016K},\\
+I_0=X\,\widehat\psi(0)\ll X.\quad(3.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+I\ge\sqrt X\,e^{0.016K},\\
+I_0=X\,\widehat\psi(0)\ll X.\quad(3.2)
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> All terms of <span class="math" data-tex="\(I\)">\(I\)</span> are nonnegative, since <span class="math" data-tex="\(k\)">\(k\)</span> is even. Restrict to <span class="math" data-tex="\(n\in A_X\)">\(n\in A_X\)</span>, where <span class="math" data-tex="\(n/X\in[0,1]\)">\(n/X\in[0,1]\)</span> and <span class="math" data-tex="\(\psi(n/X)\gg1\)">\(\psi(n/X)\gg1\)</span>. By (3.1) and Jensen's inequality for the convex function <span class="math" data-tex="\(x\mapsto x^k\)">\(x\mapsto x^k\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I&amp;\gg(1+\lambda/3)^K\sum_{n\in A_X}H(n)^k\\
+&amp;\ge(1+\lambda/3)^K\\
+&amp;\quad \,|A_X|\Bigl(\mathbb E_{n\in A_X}H(n)\Bigr)^k\\
+&amp;\ge(1+\lambda/3)^K\,\frac{\sqrt X}{(\log X)^3}\,c_\delta^k,
+\end{aligned}
+\]">\[
+\begin{aligned}
+I&amp;\gg(1+\lambda/3)^K\sum_{n\in A_X}H(n)^k\\
+&amp;\ge(1+\lambda/3)^K\\
+&amp;\quad \,|A_X|\Bigl(\mathbb E_{n\in A_X}H(n)\Bigr)^k\\
+&amp;\ge(1+\lambda/3)^K\,\frac{\sqrt X}{(\log X)^3}\,c_\delta^k,
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(\mathbb E_{n\in A_X}H(n)\ge c_\delta\)">\(\mathbb E_{n\in A_X}H(n)\ge c_\delta\)</span> by (2.1). Here <span class="math" data-tex="\(\log(1+\lambda/3)=\log(49/48)&gt;0.0206\)">\(\log(1+\lambda/3)=\log(49/48)&gt;0.0206\)</span>, while <span class="math" data-tex="\(k+\log\log X\ll T^{0.6}=o(K)\)">\(k+\log\log X\ll T^{0.6}=o(K)\)</span> by (2.2). So <span class="math" data-tex="\(\log I\)">\(\log I\)</span><span class="math" data-tex="\(\ge\frac12\log X+0.0206K-o(K)\)">\(\ge\frac12\log X+0.0206K-o(K)\)</span><span class="math" data-tex="\(\ge\frac12\log X+0.016K\)">\(\ge\frac12\log X+0.016K\)</span> for large <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>For <span class="math" data-tex="\(I_0\)">\(I_0\)</span>, expand <span class="math" data-tex="\(W(n)=\sum_{h\bmod\mathcal L}\widehat W(h)\,e_{\mathcal L}(hn)\)">\(W(n)=\sum_{h\bmod\mathcal L}\widehat W(h)\,e_{\mathcal L}(hn)\)</span>, where <span class="math" data-tex="\(\widehat W(0)=1\)">\(\widehat W(0)=1\)</span> is the mean. Poisson summation (<a href="../NT-ZETA/NT-ZETA-04.html"><em>Poisson summation, theta, and the functional equation</em></a>, Theorem 1.2, applied to <span class="math" data-tex="\(x\mapsto\psi(x/X)e(hx/\mathcal L)\)">\(x\mapsto\psi(x/X)e(hx/\mathcal L)\)</span>) gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_n\psi(n/X)\,e_{\mathcal L}(hn)\\
+&amp;\quad =X\sum_{j\in\mathbb Z}\widehat\psi\bigl(X(j-h/\mathcal L)\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_n\psi(n/X)\,e_{\mathcal L}(hn)\\
+&amp;\quad =X\sum_{j\in\mathbb Z}\widehat\psi\bigl(X(j-h/\mathcal L)\bigr).
+\end{aligned}
+\]</span>
+If <span class="math" data-tex="\(h\not\equiv0\pmod{\mathcal L}\)">\(h\not\equiv0\pmod{\mathcal L}\)</span>, every argument has absolute value at least <span class="math" data-tex="\(X/\mathcal L&gt;\frac14\)">\(X/\mathcal L&gt;\frac14\)</span>, so the sum vanishes; for <span class="math" data-tex="\(h=0\)">\(h=0\)</span> only <span class="math" data-tex="\(j=0\)">\(j=0\)</span> survives. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-removing-repeated-primes">4. Removing repeated primes</h2>
+<p>Expanding <span class="math" data-tex="\(H(n)^k\)">\(H(n)^k\)</span> produces products over <span class="math" data-tex="\(k\)">\(k\)</span>-tuples of primes from <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>. The Poisson computation of Section 5 works for tuples of distinct primes. The following identity controls the rest.</p>
+<p><strong>Lemma 4.1</strong> ([OpenAI-013, (3.6)]). Let <span class="math" data-tex="\(y_1,\dots,y_J\in\{0,1,-1\}\)">\(y_1,\dots,y_J\in\{0,1,-1\}\)</span>, put <span class="math" data-tex="\(H=J^{-1}\sum_iy_i\)">\(H=J^{-1}\sum_iy_i\)</span>, and let <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> be even. Then, for an absolute constant <span class="math" data-tex="\(C\)">\(C\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl|H^k-\frac1{J^k}\sum_{\substack{i_1,\dots,i_k\in[J]\\\text{distinct}}}y_{i_1}\cdots y_{i_k}\Bigr|\\
+&amp;\quad \le\sum_{1\le j\le k/2}\Bigl(\frac{k^C}J\Bigr)^j|H|^{k-2j}.\quad(4.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl|H^k-\frac1{J^k}\sum_{\substack{i_1,\dots,i_k\in[J]\\\text{distinct}}}y_{i_1}\cdots y_{i_k}\Bigr|\\
+&amp;\quad \le\sum_{1\le j\le k/2}\Bigl(\frac{k^C}J\Bigr)^j|H|^{k-2j}.\quad(4.1)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(p_m=\sum_iy_i^m\)">\(p_m=\sum_iy_i^m\)</span> for the power sums. The sum over distinct indices satisfies
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\text{distinct}}y_{i_1}\cdots y_{i_k}\\
+&amp;\quad =\sum_{\sigma\in S_k}\operatorname{sgn}(\sigma)\prod_{c}p_{|c|},\quad(4.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\text{distinct}}y_{i_1}\cdots y_{i_k}\\
+&amp;\quad =\sum_{\sigma\in S_k}\operatorname{sgn}(\sigma)\prod_{c}p_{|c|},\quad(4.2)
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(c\)">\(c\)</span> runs over the cycles of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and <span class="math" data-tex="\(|c|\)">\(|c|\)</span> is the length. To see this, sum the right side over the permutations with a given set partition <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of <span class="math" data-tex="\([k]\)">\([k]\)</span> into cycle supports. A block of size <span class="math" data-tex="\(m\)">\(m\)</span> is the support of <span class="math" data-tex="\((m-1)!\)">\((m-1)!\)</span> cycles, each of sign <span class="math" data-tex="\((-1)^{m-1}\)">\((-1)^{m-1}\)</span>, so the right side equals <span class="math" data-tex="\(\sum_\pi\prod_{B\in\pi}(-1)^{|B|-1}(|B|-1)!\;p_{|B|}\)">\(\sum_\pi\prod_{B\in\pi}(-1)^{|B|-1}(|B|-1)!\;p_{|B|}\)</span>, and <span class="math" data-tex="\(\prod_{B\in\pi}p_{|B|}\)">\(\prod_{B\in\pi}p_{|B|}\)</span> is the sum of <span class="math" data-tex="\(y_{i_1}\cdots y_{i_k}\)">\(y_{i_1}\cdots y_{i_k}\)</span> over the index tuples that are constant on each block of <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. The coefficient of a tuple whose equality pattern is the partition <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is therefore <span class="math" data-tex="\(\sum_{\pi\le\tau}\prod_{B\in\pi}(-1)^{|B|-1}(|B|-1)!\)">\(\sum_{\pi\le\tau}\prod_{B\in\pi}(-1)^{|B|-1}(|B|-1)!\)</span>, the sum over the partitions <span class="math" data-tex="\(\pi\)">\(\pi\)</span> finer than <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. This factorizes over the blocks of <span class="math" data-tex="\(\tau\)">\(\tau\)</span>: for a block of size <span class="math" data-tex="\(n\)">\(n\)</span> it is <span class="math" data-tex="\(\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)\)">\(\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)\)</span>, which is <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(n=1\)">\(n=1\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> for <span class="math" data-tex="\(n\ge2\)">\(n\ge2\)</span>. So exactly the tuples of distinct indices survive, each with coefficient <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>Because <span class="math" data-tex="\(y_i\in\{0,\pm1\}\)">\(y_i\in\{0,\pm1\}\)</span>, <span class="math" data-tex="\(p_m=JH\)">\(p_m=JH\)</span> for odd <span class="math" data-tex="\(m\)">\(m\)</span>, and <span class="math" data-tex="\(0\le p_m\le J\)">\(0\le p_m\le J\)</span> for even <span class="math" data-tex="\(m\)">\(m\)</span>. The identity permutation contributes <span class="math" data-tex="\((JH)^k\)">\((JH)^k\)</span>. Let <span class="math" data-tex="\(\sigma\ne\mathrm{id}\)">\(\sigma\ne\mathrm{id}\)</span> have <span class="math" data-tex="\(k-2j\)">\(k-2j\)</span> cycles of odd length; the number of odd cycles has the parity of <span class="math" data-tex="\(k\)">\(k\)</span>, and <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span> because only the identity has <span class="math" data-tex="\(k\)">\(k\)</span> odd cycles. Then
+<span class="math math-display" data-tex="\[
+2j=\sum_{c\text{ odd}}(|c|-1)+\sum_{c\text{ even}}|c|,
+\]">\[
+2j=\sum_{c\text{ odd}}(|c|-1)+\sum_{c\text{ even}}|c|,
+\]</span>
+so the number of even cycles is at most <span class="math" data-tex="\(j\)">\(j\)</span>, and the term of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is at most <span class="math" data-tex="\((J|H|)^{k-2j}J^{j}\)">\((J|H|)^{k-2j}J^{j}\)</span> in absolute value. An odd cycle of length <span class="math" data-tex="\(m\ge3\)">\(m\ge3\)</span> moves <span class="math" data-tex="\(m\le\frac32(m-1)\)">\(m\le\frac32(m-1)\)</span> points, and an even cycle moves <span class="math" data-tex="\(|c|\)">\(|c|\)</span> points, so <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> moves at most <span class="math" data-tex="\(3j\)">\(3j\)</span> points. A permutation moving exactly <span class="math" data-tex="\(t\)">\(t\)</span> given points can be chosen in at most <span class="math" data-tex="\(t!\)">\(t!\)</span> ways, so there are at most <span class="math" data-tex="\(\sum_{t\le3j}\binom kt t!\le(3j+1)k^{3j}\le k^{5j}\)">\(\sum_{t\le3j}\binom kt t!\le(3j+1)k^{3j}\le k^{5j}\)</span> permutations moving at most <span class="math" data-tex="\(3j\)">\(3j\)</span> points; the last step uses <span class="math" data-tex="\(3j+1\le4^j\le k^{2j}\)">\(3j+1\le4^j\le k^{2j}\)</span>. Summing over <span class="math" data-tex="\(j\)">\(j\)</span> and dividing by <span class="math" data-tex="\(J^k\)">\(J^k\)</span> gives (4.1) with <span class="math" data-tex="\(C=5\)">\(C=5\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Application to the moment.</strong> Apply (4.1) at each <span class="math" data-tex="\(n\)">\(n\)</span> with <span class="math" data-tex="\(y_p=\epsilon_p\chi_p(n-t_p)\)">\(y_p=\epsilon_p\chi_p(n-t_p)\)</span>, multiply by <span class="math" data-tex="\(\psi(n/X)W(n)\ge0\)">\(\psi(n/X)W(n)\ge0\)</span>, and sum. By Hölder's inequality for the measure <span class="math" data-tex="\(\psi(n/X)W(n)\)">\(\psi(n/X)W(n)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_n\psi(n/X)W(n)|H(n)|^{k-2j}\\
+&amp;\quad \le I^{1-2j/k}I_0^{2j/k}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_n\psi(n/X)W(n)|H(n)|^{k-2j}\\
+&amp;\quad \le I^{1-2j/k}I_0^{2j/k}.
+\end{aligned}
+\]</span>
+So the sum over distinct tuples differs from <span class="math" data-tex="\(I\)">\(I\)</span> by at most <span class="math" data-tex="\(I\sum_{j\ge1}\bigl(k^CJ^{-1}(I_0/I)^{2/k}\bigr)^j\)">\(I\sum_{j\ge1}\bigl(k^CJ^{-1}(I_0/I)^{2/k}\bigr)^j\)</span>. By (3.2), <span class="math" data-tex="\((I_0/I)^{2/k}\ll X^{1/k}e^{-0.032K/k}\)">\((I_0/I)^{2/k}\ll X^{1/k}e^{-0.032K/k}\)</span><span class="math" data-tex="\(\le Ze^{-0.032K/k}\)">\(\le Ze^{-0.032K/k}\)</span>, because <span class="math" data-tex="\(k\ge\log X/\log Z\)">\(k\ge\log X/\log Z\)</span>. Since <span class="math" data-tex="\(J\gg Z/\log Z\)">\(J\gg Z/\log Z\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{k^C}J\Bigl(\frac{I_0}I\Bigr)^{2/k}\\
+&amp;\quad \ll k^C\log Z\;e^{-0.032K/k}\longrightarrow0,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac{k^C}J\Bigl(\frac{I_0}I\Bigr)^{2/k}\\
+&amp;\quad \ll k^C\log Z\;e^{-0.032K/k}\longrightarrow0,
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(K/k\gg T^{0.4-\gamma}\)">\(K/k\gg T^{0.4-\gamma}\)</span> while <span class="math" data-tex="\(\log(k^C\log Z)=O(\log T)\)">\(\log(k^C\log Z)=O(\log T)\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac1{J^k}\sum_n\psi(n/X)W(n)\\
+&amp;\qquad \sum_{\text{distinct}}\prod_{i=1}^k\epsilon_{p_i}\chi_{p_i}(n-t_{p_i})\\
+&amp;\quad =(1+o(1))\,I.\quad(4.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac1{J^k}\sum_n\psi(n/X)W(n)\\
+&amp;\qquad \sum_{\text{distinct}}\prod_{i=1}^k\epsilon_{p_i}\chi_{p_i}(n-t_{p_i})\\
+&amp;\quad =(1+o(1))\,I.\quad(4.3)
+\end{aligned}
+\]</span></p>
+<h2 id="5-poisson-summation-with-arbitrary-translations">5. Poisson summation with arbitrary translations</h2>
+<p>Choose an ordered <span class="math" data-tex="\(k\)">\(k\)</span>-tuple of distinct primes of <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> uniformly at random. Every function used below depends on the tuple only through the product <span class="math" data-tex="\(M\)">\(M\)</span> of its entries, and <span class="math" data-tex="\(\mathbb E_M\)">\(\mathbb E_M\)</span> denotes the expectation over the random tuple. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\chi_M=\prod_{p\mid M}\chi_p,\\
+\epsilon_M=\prod_{p\mid M}\epsilon_p,\\
+0\le t_M&lt;M,\\
+t_M\equiv t_p\pmod p\ (p\mid M).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\chi_M=\prod_{p\mid M}\chi_p,\\
+\epsilon_M=\prod_{p\mid M}\epsilon_p,\\
+0\le t_M&lt;M,\\
+t_M\equiv t_p\pmod p\ (p\mid M).
+\end{gathered}
+\]</span>
+The character <span class="math" data-tex="\(\chi_M\)">\(\chi_M\)</span> is the Jacobi symbol <span class="math" data-tex="\((\cdot/M)\)">\((\cdot/M)\)</span>; it is real and primitive modulo the squarefree odd number <span class="math" data-tex="\(M\)">\(M\)</span>, as a product of primitive characters to coprime moduli. Define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R=\frac MX,\\
+\theta=\frac{t_M}M,\\
+h_0\equiv-t_M\overline M\pmod{\mathcal L},\\
+0\le h_0&lt;\mathcal L,
+\end{gathered}
+\]">\[
+\begin{gathered}
+R=\frac MX,\\
+\theta=\frac{t_M}M,\\
+h_0\equiv-t_M\overline M\pmod{\mathcal L},\\
+0\le h_0&lt;\mathcal L,
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(\overline M\)">\(\overline M\)</span> is an inverse of <span class="math" data-tex="\(M\)">\(M\)</span> modulo <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span>. Bars denote inverses modulo the modulus in the expression. Since <span class="math" data-tex="\(Z^k\le M\le(2Z)^k\)">\(Z^k\le M\le(2Z)^k\)</span> and <span class="math" data-tex="\(Z^{k-12}&lt;X\le Z^{k-10}\)">\(Z^{k-12}&lt;X\le Z^{k-10}\)</span> by the choice of <span class="math" data-tex="\(k\)">\(k\)</span>,
+<span class="math math-display" data-tex="\[
+Z^{10}\le R\le Z^{12+o(1)}.
+\tag{5.1}
+\]">\[
+Z^{10}\le R\le Z^{12+o(1)}.
+\tag{5.1}
+\]</span>
+The left side of (4.3) equals <span class="math" data-tex="\((J)_k J^{-k}\,\mathbb E_M\,\epsilon_M\sum_n\psi(n/X)\)">\((J)_k J^{-k}\,\mathbb E_M\,\epsilon_M\sum_n\psi(n/X)\)</span><span class="math" data-tex="\(W(n)\chi_M(n-t_M)\)">\(W(n)\chi_M(n-t_M)\)</span>, where <span class="math" data-tex="\((J)_k=J(J-1)\cdots(J-k+1)\)">\((J)_k=J(J-1)\cdots(J-k+1)\)</span>.</p>
+<p><strong>Local transforms of the amplifier.</strong> For <span class="math" data-tex="\(d\mid\mathcal L\)">\(d\mid\mathcal L\)</span> put <span class="math" data-tex="\(f_d=\prod_{\ell\mid d}f_\ell\)">\(f_d=\prod_{\ell\mid d}f_\ell\)</span> (a function modulo <span class="math" data-tex="\(d\)">\(d\)</span> by the Chinese remainder theorem), <span class="math" data-tex="\(f_1=1\)">\(f_1=1\)</span>, and
+<span class="math math-display" data-tex="\[
+g_d(b)=\sqrt d\;\mathbb E_{x\bmod d}\,f_d(x)\,e_d(-bx).
+\]">\[
+g_d(b)=\sqrt d\;\mathbb E_{x\bmod d}\,f_d(x)\,e_d(-bx).
+\]</span></p>
+<p><strong>Lemma 5.1.</strong> For <span class="math" data-tex="\(d\mid\mathcal L\)">\(d\mid\mathcal L\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb E_{b\bmod d}|g_d(b)|^2\le1,\\
+|g_d(b)|\le\sqrt d,\\
+g_d(b)=\prod_{\ell\mid d}g_\ell\bigl(b\,\overline{d/\ell}\bigr),
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathbb E_{b\bmod d}|g_d(b)|^2\le1,\\
+|g_d(b)|\le\sqrt d,\\
+g_d(b)=\prod_{\ell\mid d}g_\ell\bigl(b\,\overline{d/\ell}\bigr),
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(\overline{d/\ell}\)">\(\overline{d/\ell}\)</span> is an inverse of <span class="math" data-tex="\(d/\ell\)">\(d/\ell\)</span> modulo <span class="math" data-tex="\(\ell\)">\(\ell\)</span>. If <span class="math" data-tex="\(d&gt;1\)">\(d&gt;1\)</span>, <span class="math" data-tex="\(g_d\)">\(g_d\)</span> vanishes at every <span class="math" data-tex="\(b\)">\(b\)</span> with <span class="math" data-tex="\((b,d)&gt;1\)">\((b,d)&gt;1\)</span>.</p>
+<p><em>Proof.</em> By Parseval, <span class="math" data-tex="\(\mathbb E_b|g_d(b)|^2=\sum_b|\widehat{f_d}(b)|^2\)">\(\mathbb E_b|g_d(b)|^2=\sum_b|\widehat{f_d}(b)|^2\)</span><span class="math" data-tex="\(=\mathbb E_x|f_d(x)|^2=\prod_\ell\sigma_\ell(1-\sigma_\ell)\le1\)">\(=\mathbb E_x|f_d(x)|^2=\prod_\ell\sigma_\ell(1-\sigma_\ell)\le1\)</span>. The bound <span class="math" data-tex="\(|g_d|\le\sqrt d\)">\(|g_d|\le\sqrt d\)</span> holds since <span class="math" data-tex="\(|f_d|\le1\)">\(|f_d|\le1\)</span>. For coprime <span class="math" data-tex="\(\ell\)">\(\ell\)</span> and <span class="math" data-tex="\(d/\ell\)">\(d/\ell\)</span> one has <span class="math" data-tex="\(1/d\equiv\overline{d/\ell}/\ell+\overline\ell/(d/\ell)\pmod1\)">\(1/d\equiv\overline{d/\ell}/\ell+\overline\ell/(d/\ell)\pmod1\)</span>, and iterating over the prime factors of <span class="math" data-tex="\(d\)">\(d\)</span> gives <span class="math" data-tex="\(bx/d\equiv\sum_{\ell\mid d}b\,\overline{d/\ell}\,x/\ell\pmod1\)">\(bx/d\equiv\sum_{\ell\mid d}b\,\overline{d/\ell}\,x/\ell\pmod1\)</span>; the expectation over <span class="math" data-tex="\(x\bmod d\)">\(x\bmod d\)</span> then factors by the Chinese remainder theorem. If <span class="math" data-tex="\(\ell\mid(b,d)\)">\(\ell\mid(b,d)\)</span>, the factor at <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is <span class="math" data-tex="\(g_\ell(0)=\sqrt\ell\,\mathbb E f_\ell=0\)">\(g_\ell(0)=\sqrt\ell\,\mathbb E f_\ell=0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>The Poisson dual.</strong> Expand <span class="math" data-tex="\(W=\sum_{d\mid\mathcal L}\lambda^{\omega(d)}f_d\)">\(W=\sum_{d\mid\mathcal L}\lambda^{\omega(d)}f_d\)</span>, where <span class="math" data-tex="\(\omega(d)\)">\(\omega(d)\)</span> is the number of prime factors. For fixed <span class="math" data-tex="\(d\)">\(d\)</span>, the function <span class="math" data-tex="\(F(n)=f_d(n)\chi_M(n-t_M)\)">\(F(n)=f_d(n)\chi_M(n-t_M)\)</span> has period <span class="math" data-tex="\(Md\)">\(Md\)</span>, and <span class="math" data-tex="\((M,d)=1\)">\((M,d)=1\)</span>. Poisson summation, as in the proof of Lemma 3.1, gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+&amp;\sum_n\psi(n/X)F(n)\\
+&amp;\quad =X\sum_{u\in\mathbb Z}\widehat F(u)\,\widehat\psi\Bigl(\frac{u}{Rd}\Bigr),
+\end{aligned}\\
+\widehat F(u)=\mathbb E_{n\bmod Md}F(n)\,e_{Md}(-un),
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+&amp;\sum_n\psi(n/X)F(n)\\
+&amp;\quad =X\sum_{u\in\mathbb Z}\widehat F(u)\,\widehat\psi\Bigl(\frac{u}{Rd}\Bigr),
+\end{aligned}\\
+\widehat F(u)=\mathbb E_{n\bmod Md}F(n)\,e_{Md}(-un),
+\end{gathered}
+\]</span>
+using that <span class="math" data-tex="\(\widehat\psi\)">\(\widehat\psi\)</span> is even and <span class="math" data-tex="\(X/(Md)=1/(Rd)\)">\(X/(Md)=1/(Rd)\)</span>. By the Chinese remainder theorem, with <span class="math" data-tex="\(un/(Md)\)">\(un/(Md)\)</span><span class="math" data-tex="\(\equiv u\overline Mn/d+u\overline dn/M\pmod1\)">\(\equiv u\overline Mn/d+u\overline dn/M\pmod1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\widehat F(u)&amp;=\frac{g_d(u\overline M)}{\sqrt d}\\
+&amp;\quad \cdot\mathbb E_{y\bmod M}\chi_M(y-t_M)\\
+&amp;\quad \,e_M(-u\overline dy).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\widehat F(u)&amp;=\frac{g_d(u\overline M)}{\sqrt d}\\
+&amp;\quad \cdot\mathbb E_{y\bmod M}\chi_M(y-t_M)\\
+&amp;\quad \,e_M(-u\overline dy).
+\end{aligned}
+\]</span>
+Substitute <span class="math" data-tex="\(y=z+t_M\)">\(y=z+t_M\)</span>. For the primitive character <span class="math" data-tex="\(\chi_M\)">\(\chi_M\)</span>, <span class="math" data-tex="\(\sum_z\chi_M(z)e_M(az)=\chi_M(a)\tau(\chi_M)\)">\(\sum_z\chi_M(z)e_M(az)=\chi_M(a)\tau(\chi_M)\)</span> for every integer <span class="math" data-tex="\(a\)">\(a\)</span>, where <span class="math" data-tex="\(\tau(\chi_M)\)">\(\tau(\chi_M)\)</span> is its Gauss sum, of modulus <span class="math" data-tex="\(\sqrt M\)">\(\sqrt M\)</span> (<a href="../NT-DIRL/NT-DIRL-03.html"><em>Gauss sums</em></a>, Theorems 1.1 and 2.1; <span class="math" data-tex="\(\chi_M\)">\(\chi_M\)</span> is real). Since <span class="math" data-tex="\(\chi_M(\overline d)=\chi_M(d)\)">\(\chi_M(\overline d)=\chi_M(d)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\widehat F(u)&amp;=\frac{\tau(\chi_M)}{M\sqrt d}\,\chi_M(-1)\chi_M(d)\\
+&amp;\quad \,\chi_M(u)\,g_d(u\overline M)\\
+&amp;\quad \,e_M(-u\overline dt_M).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\widehat F(u)&amp;=\frac{\tau(\chi_M)}{M\sqrt d}\,\chi_M(-1)\chi_M(d)\\
+&amp;\quad \,\chi_M(u)\,g_d(u\overline M)\\
+&amp;\quad \,e_M(-u\overline dt_M).
+\end{aligned}
+\]</span></p>
+<p><strong>The phase.</strong> The integer <span class="math" data-tex="\(t_M+Mh_0\)">\(t_M+Mh_0\)</span> is divisible by <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span>, hence by <span class="math" data-tex="\(d\)">\(d\)</span>. Write <span class="math" data-tex="\(d\overline d+Mm&#x27;=1\)">\(d\overline d+Mm&#x27;=1\)</span> with an integer <span class="math" data-tex="\(m&#x27;\equiv\overline M\pmod d\)">\(m&#x27;\equiv\overline M\pmod d\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{\overline d\,t_M}M&amp;=\frac{t_M}{dM}-\frac{m&#x27;t_M}d\\
+&amp;\equiv\frac{\theta}d+\frac{h_0}d\pmod{\tfrac1d\mathbb Z},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{\overline d\,t_M}M&amp;=\frac{t_M}{dM}-\frac{m&#x27;t_M}d\\
+&amp;\equiv\frac{\theta}d+\frac{h_0}d\pmod{\tfrac1d\mathbb Z},
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(m&#x27;t_M\equiv\overline Mt_M\equiv-h_0\pmod d\)">\(m&#x27;t_M\equiv\overline Mt_M\equiv-h_0\pmod d\)</span>; multiplying by the integer <span class="math" data-tex="\(u\)">\(u\)</span>, <span class="math" data-tex="\(e_M(u\overline dt_M)=e\bigl((\theta+h_0)u/d\bigr)\)">\(e_M(u\overline dt_M)=e\bigl((\theta+h_0)u/d\bigr)\)</span>.</p>
+<p>Collect the terms, replace <span class="math" data-tex="\(u\)">\(u\)</span> by <span class="math" data-tex="\(-u\)">\(-u\)</span> (using <span class="math" data-tex="\(\chi_M(-u)=\chi_M(-1)\chi_M(u)\)">\(\chi_M(-u)=\chi_M(-1)\chi_M(u)\)</span> and that <span class="math" data-tex="\(\widehat\psi\)">\(\widehat\psi\)</span> is even), divide by <span class="math" data-tex="\(\sqrt X\)">\(\sqrt X\)</span>, and use <span class="math" data-tex="\(\sqrt X\,|\tau(\chi_M)|/(M\sqrt d)=1/\sqrt{Rd}\)">\(\sqrt X\,|\tau(\chi_M)|/(M\sqrt d)=1/\sqrt{Rd}\)</span>. The result is that <span class="math" data-tex="\(\epsilon_M X^{-1/2}\sum_n\psi(n/X)W(n)\chi_M(n-t_M)\)">\(\epsilon_M X^{-1/2}\sum_n\psi(n/X)W(n)\chi_M(n-t_M)\)</span> equals a complex number of modulus <span class="math" data-tex="\(1\)">\(1\)</span>, depending only on the tuple, times
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{d\mid\mathcal L}\frac{\lambda^{\omega(d)}\chi_M(d)}{\sqrt{Rd}}
+\sum_{u\in\mathbb Z}\chi_M(u)\\
+&amp;\quad \,g_d(-u\overline M)\,e\Bigl(\frac{(h_0+\theta)u}d\Bigr)\\
+&amp;\quad \,\widehat\psi\Bigl(\frac u{Rd}\Bigr).\quad(5.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{d\mid\mathcal L}\frac{\lambda^{\omega(d)}\chi_M(d)}{\sqrt{Rd}}
+\sum_{u\in\mathbb Z}\chi_M(u)\\
+&amp;\quad \,g_d(-u\overline M)\,e\Bigl(\frac{(h_0+\theta)u}d\Bigr)\\
+&amp;\quad \,\widehat\psi\Bigl(\frac u{Rd}\Bigr).\quad(5.2)
+\end{aligned}
+\]</span>
+The term <span class="math" data-tex="\(u=0\)">\(u=0\)</span> vanishes since <span class="math" data-tex="\(\chi_M(0)=0\)">\(\chi_M(0)=0\)</span>.</p>
+<p><strong>Positive frequencies.</strong> Let <span class="math" data-tex="\(\mathcal F_M\)">\(\mathcal F_M\)</span> be the part of (5.2) with <span class="math" data-tex="\(u&gt;0\)">\(u&gt;0\)</span>. Since <span class="math" data-tex="\(f_d\)">\(f_d\)</span> is real, <span class="math" data-tex="\(\overline{g_d(b)}=g_d(-b)\)">\(\overline{g_d(b)}=g_d(-b)\)</span>; since <span class="math" data-tex="\(\widehat\psi\)">\(\widehat\psi\)</span> is real and even, the part with <span class="math" data-tex="\(u&lt;0\)">\(u&lt;0\)</span> equals <span class="math" data-tex="\(\chi_M(-1)\overline{\mathcal F_M}\)">\(\chi_M(-1)\overline{\mathcal F_M}\)</span>. So (5.2) has modulus at most <span class="math" data-tex="\(2|\mathcal F_M|\)">\(2|\mathcal F_M|\)</span>. The normalization <span class="math" data-tex="\((J)_k/J^k\)">\((J)_k/J^k\)</span> is at most <span class="math" data-tex="\(1\)">\(1\)</span>, and (4.3) and Lemma 3.1 give <span class="math" data-tex="\((1+o(1))I/\sqrt X\ge e^{0.016K}/2\)">\((1+o(1))I/\sqrt X\ge e^{0.016K}/2\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\mathbb E_M|\mathcal F_M|\ge e^{0.015K}.
+\tag{5.3}
+\]">\[
+\mathbb E_M|\mathcal F_M|\ge e^{0.015K}.
+\tag{5.3}
+\]</span></p>
+<h2 id="6-squarefree-kernels-of-the-frequencies">6. Squarefree kernels of the frequencies</h2>
+<p>Every integer <span class="math" data-tex="\(u\ge1\)">\(u\ge1\)</span> has a unique factorization
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u=svw^2,\\
+s\ \text{squarefree},\ (s,\mathcal L)=1,\\
+v\mid\mathcal L,\\
+w\ge1:
+\end{gathered}
+\]">\[
+\begin{gathered}
+u=svw^2,\\
+s\ \text{squarefree},\ (s,\mathcal L)=1,\\
+v\mid\mathcal L,\\
+w\ge1:
+\end{gathered}
+\]</span>
+<span class="math" data-tex="\(s\)">\(s\)</span> is the product of the primes not dividing <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> that occur in <span class="math" data-tex="\(u\)">\(u\)</span> to an odd power, <span class="math" data-tex="\(v\)">\(v\)</span> the product of those dividing <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> that occur to an odd power, and <span class="math" data-tex="\(w^2=u/(sv)\)">\(w^2=u/(sv)\)</span>. Then <span class="math" data-tex="\(\chi_M(u)=\chi_M(s)\chi_M(v)\mathbf 1_{(w,M)=1}\)">\(\chi_M(u)=\chi_M(s)\chi_M(v)\mathbf 1_{(w,M)=1}\)</span>, and since <span class="math" data-tex="\(M\)">\(M\)</span> is squarefree, <span class="math" data-tex="\(\mathbf 1_{(w,M)=1}=\sum_{P\mid(w,M)}(-1)^{\omega(P)}\)">\(\mathbf 1_{(w,M)=1}=\sum_{P\mid(w,M)}(-1)^{\omega(P)}\)</span>.</p>
+<p>For positive integers <span class="math" data-tex="\(P\)">\(P\)</span>, divisors <span class="math" data-tex="\(d,v\)">\(d,v\)</span> of <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span>, and squarefree <span class="math" data-tex="\(s\)">\(s\)</span> coprime to <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span>, define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+N_{dsv}&amp;=\sqrt{\frac{Rd}{sv}},\\
+G_d^{(P)}(s,v)&amp;=\frac1{N_{dsv}}\sum_{\substack{w\ge1\\P\mid w}}g_d(-svw^2\overline M)\,\\
+&amp;\qquad e\Bigl(\frac{(h_0+\theta)svw^2}d\Bigr)\,\\
+&amp;\qquad\widehat\psi\Bigl(\frac{svw^2}{Rd}\Bigr),\\
+C_s^{(P)}&amp;=\sum_{v\mid\mathcal L}\frac{\chi_M(v)}{\sqrt v}\sum_{d\mid\mathcal L}\lambda^{\omega(d)}\chi_M(d)\,\\
+&amp;\qquad G_d^{(P)}(s,v).\quad(6.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+N_{dsv}&amp;=\sqrt{\frac{Rd}{sv}},\\
+G_d^{(P)}(s,v)&amp;=\frac1{N_{dsv}}\sum_{\substack{w\ge1\\P\mid w}}g_d(-svw^2\overline M)\,\\
+&amp;\qquad e\Bigl(\frac{(h_0+\theta)svw^2}d\Bigr)\,\\
+&amp;\qquad\widehat\psi\Bigl(\frac{svw^2}{Rd}\Bigr),\\
+C_s^{(P)}&amp;=\sum_{v\mid\mathcal L}\frac{\chi_M(v)}{\sqrt v}\sum_{d\mid\mathcal L}\lambda^{\omega(d)}\chi_M(d)\,\\
+&amp;\qquad G_d^{(P)}(s,v).\quad(6.1)
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(1/\sqrt{Rd}=1/(N_{dsv}\sqrt{sv})\)">\(1/\sqrt{Rd}=1/(N_{dsv}\sqrt{sv})\)</span>, regrouping (5.2) gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal F_M&amp;=\sum_{P\mid M}(-1)^{\omega(P)}\\
+&amp;\quad \sum_{\substack{s\ \text{squarefree}\\ (s,\mathcal L)=1}}\frac{\chi_M(s)}{\sqrt s}\,C_s^{(P)}.\quad(6.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal F_M&amp;=\sum_{P\mid M}(-1)^{\omega(P)}\\
+&amp;\quad \sum_{\substack{s\ \text{squarefree}\\ (s,\mathcal L)=1}}\frac{\chi_M(s)}{\sqrt s}\,C_s^{(P)}.\quad(6.2)
+\end{aligned}
+\]</span></p>
+<p><strong>Ranges.</strong> <span class="math" data-tex="\(\widehat\psi\)">\(\widehat\psi\)</span> vanishes outside <span class="math" data-tex="\([-\frac14,\frac14]\)">\([-\frac14,\frac14]\)</span>, so every nonzero term has <span class="math" data-tex="\(svw^2\le Rd/4\le R\mathcal L\)">\(svw^2\le Rd/4\le R\mathcal L\)</span>. By (5.1) and (2.2), <span class="math" data-tex="\(R\mathcal L&lt;Z^{14}\)">\(R\mathcal L&lt;Z^{14}\)</span> for large <span class="math" data-tex="\(T\)">\(T\)</span>. Hence only <span class="math" data-tex="\(s&lt;Z^{14}\)">\(s&lt;Z^{14}\)</span> and <span class="math" data-tex="\(w&lt;Z^7\)">\(w&lt;Z^7\)</span> occur, and only <span class="math" data-tex="\(P\le Z^7\)">\(P\le Z^7\)</span>. A divisor of <span class="math" data-tex="\(M\)">\(M\)</span> of size at most <span class="math" data-tex="\(Z^7\)">\(Z^7\)</span> has at most <span class="math" data-tex="\(7\)">\(7\)</span> prime factors, since each prime factor is at least <span class="math" data-tex="\(Z\)">\(Z\)</span>; so (6.2) has <span class="math" data-tex="\(O(k^7)\)">\(O(k^7)\)</span> values of <span class="math" data-tex="\(P\)">\(P\)</span>, and the inner sums are finite.</p>
+<p><strong>The plan.</strong> For many tuples, (5.3) forces a large value of one of the sums <span class="math" data-tex="\(G_d^{(1)}(s,v)\)">\(G_d^{(1)}(s,v)\)</span> with <span class="math" data-tex="\(s\)">\(s\)</span> small. On an arithmetic progression <span class="math" data-tex="\(w=x+dj\)">\(w=x+dj\)</span>, the phase of <span class="math" data-tex="\(G_d^{(1)}(s,v)\)">\(G_d^{(1)}(s,v)\)</span> is a quadratic polynomial in <span class="math" data-tex="\(j\)">\(j\)</span> with leading coefficient <span class="math" data-tex="\(svd\theta\)">\(svd\theta\)</span>. A large quadratic exponential sum forces this coefficient to be close to a rational number with small denominator, which relates <span class="math" data-tex="\(\theta=t_M/M\)">\(\theta=t_M/M\)</span>, and hence the translates <span class="math" data-tex="\(t_p\)">\(t_p\)</span>, across the primes of <span class="math" data-tex="\(M\)">\(M\)</span>. Since the arrays <span class="math" data-tex="\(C_s^{(P)}\)">\(C_s^{(P)}\)</span> depend on the random tuple, the moment estimate of Lesson 4 is proved uniformly over a fixed family of arrays that contains their discretizations.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> Verify (4.2) directly for <span class="math" data-tex="\(k=2\)">\(k=2\)</span> and <span class="math" data-tex="\(k=3\)">\(k=3\)</span>: <span class="math" data-tex="\(\sum_{i\ne j}y_iy_j=p_1^2-p_2\)">\(\sum_{i\ne j}y_iy_j=p_1^2-p_2\)</span> and <span class="math" data-tex="\(\sum_{\text{distinct}}y_iy_jy_l=p_1^3-3p_1p_2+2p_3\)">\(\sum_{\text{distinct}}y_iy_jy_l=p_1^3-3p_1p_2+2p_3\)</span>.</p>
+<p><strong>7.2.</strong> Let <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(d\)">\(d\)</span> be coprime positive integers, <span class="math" data-tex="\(\overline M\)">\(\overline M\)</span> an inverse of <span class="math" data-tex="\(M\)">\(M\)</span> modulo <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(\overline d\)">\(\overline d\)</span> an inverse of <span class="math" data-tex="\(d\)">\(d\)</span> modulo <span class="math" data-tex="\(M\)">\(M\)</span>. Show that <span class="math" data-tex="\(\frac1{Md}\equiv\frac{\overline M}d+\frac{\overline d}M\pmod1\)">\(\frac1{Md}\equiv\frac{\overline M}d+\frac{\overline d}M\pmod1\)</span>.</p>
+<p><strong>7.3.</strong> Show that for odd squarefree <span class="math" data-tex="\(M\)">\(M\)</span>, the character <span class="math" data-tex="\(\chi_M=\prod_{p\mid M}\chi_p\)">\(\chi_M=\prod_{p\mid M}\chi_p\)</span> is primitive modulo <span class="math" data-tex="\(M\)">\(M\)</span>, and that <span class="math" data-tex="\(\chi_M(-1)=(-1)^{(M-1)/2}\)">\(\chi_M(-1)=(-1)^{(M-1)/2}\)</span>.</p>
+<p><strong>7.4.</strong> In the construction of <span class="math" data-tex="\(\psi\)">\(\psi\)</span>, show that <span class="math" data-tex="\(\widehat\psi=\varphi_0*\varphi_0\)">\(\widehat\psi=\varphi_0*\varphi_0\)</span>, and that <span class="math" data-tex="\(\psi\)">\(\psi\)</span> decays faster than any power of <span class="math" data-tex="\(|x|\)">\(|x|\)</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> For <span class="math" data-tex="\(k=2\)">\(k=2\)</span> the permutations are the identity, with term <span class="math" data-tex="\(p_1^2\)">\(p_1^2\)</span>, and the transposition, with sign <span class="math" data-tex="\(-1\)">\(-1\)</span> and one cycle of length <span class="math" data-tex="\(2\)">\(2\)</span>, giving <span class="math" data-tex="\(-p_2\)">\(-p_2\)</span>. The left side is <span class="math" data-tex="\(\bigl(\sum y_i\bigr)^2-\sum y_i^2\)">\(\bigl(\sum y_i\bigr)^2-\sum y_i^2\)</span>. For <span class="math" data-tex="\(k=3\)">\(k=3\)</span>: the identity gives <span class="math" data-tex="\(p_1^3\)">\(p_1^3\)</span>; the three transpositions give <span class="math" data-tex="\(-p_1p_2\)">\(-p_1p_2\)</span> each; the two <span class="math" data-tex="\(3\)">\(3\)</span>-cycles are even and give <span class="math" data-tex="\(p_3\)">\(p_3\)</span> each. Directly, <span class="math" data-tex="\(p_1^3=\sum_{\text{distinct}}+3\sum_{i\ne j}y_i^2y_j+p_3\)">\(p_1^3=\sum_{\text{distinct}}+3\sum_{i\ne j}y_i^2y_j+p_3\)</span>, and <span class="math" data-tex="\(\sum_{i\ne j}y_i^2y_j=p_2p_1-p_3\)">\(\sum_{i\ne j}y_i^2y_j=p_2p_1-p_3\)</span>, so <span class="math" data-tex="\(\sum_{\text{distinct}}=p_1^3-3p_1p_2+2p_3\)">\(\sum_{\text{distinct}}=p_1^3-3p_1p_2+2p_3\)</span>.</p>
+<p><strong>7.2.</strong> The number <span class="math" data-tex="\(1-d\overline d\)">\(1-d\overline d\)</span> is divisible by <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(1-M\overline M\)">\(1-M\overline M\)</span> by <span class="math" data-tex="\(d\)">\(d\)</span>, so <span class="math" data-tex="\(N=1-d\overline d-M\overline M\)">\(N=1-d\overline d-M\overline M\)</span> is divisible by both, hence by <span class="math" data-tex="\(Md\)">\(Md\)</span>. Then <span class="math" data-tex="\(\frac{\overline M}d+\frac{\overline d}M=\frac{M\overline M+d\overline d}{Md}=\frac{1-N}{Md}\)">\(\frac{\overline M}d+\frac{\overline d}M=\frac{M\overline M+d\overline d}{Md}=\frac{1-N}{Md}\)</span><span class="math" data-tex="\(\equiv\frac1{Md}\pmod1\)">\(\equiv\frac1{Md}\pmod1\)</span>.</p>
+<p><strong>7.3.</strong> Each <span class="math" data-tex="\(\chi_p\)">\(\chi_p\)</span> is a nonprincipal character modulo the prime <span class="math" data-tex="\(p\)">\(p\)</span>, hence primitive. If <span class="math" data-tex="\(\chi_M\)">\(\chi_M\)</span> were induced from a proper divisor <span class="math" data-tex="\(M&#x27;\)">\(M&#x27;\)</span> of <span class="math" data-tex="\(M\)">\(M\)</span>, choose <span class="math" data-tex="\(p\mid M\)">\(p\mid M\)</span> with <span class="math" data-tex="\(p\nmid M&#x27;\)">\(p\nmid M&#x27;\)</span> and <span class="math" data-tex="\(a\equiv1\pmod{M/p}\)">\(a\equiv1\pmod{M/p}\)</span> with <span class="math" data-tex="\(\chi_p(a)=-1\)">\(\chi_p(a)=-1\)</span>; then <span class="math" data-tex="\(a\equiv1\pmod{M&#x27;}\)">\(a\equiv1\pmod{M&#x27;}\)</span> but <span class="math" data-tex="\(\chi_M(a)=-1\)">\(\chi_M(a)=-1\)</span>. For the value at <span class="math" data-tex="\(-1\)">\(-1\)</span>: <span class="math" data-tex="\(\chi_p(-1)=(-1)^{(p-1)/2}\)">\(\chi_p(-1)=(-1)^{(p-1)/2}\)</span>, and <span class="math" data-tex="\(\sum_{p\mid M}\frac{p-1}2\equiv\frac{M-1}2\pmod2\)">\(\sum_{p\mid M}\frac{p-1}2\equiv\frac{M-1}2\pmod2\)</span> because <span class="math" data-tex="\(\frac{ab-1}2-\frac{a-1}2-\frac{b-1}2=\frac{(a-1)(b-1)}2\)">\(\frac{ab-1}2-\frac{a-1}2-\frac{b-1}2=\frac{(a-1)(b-1)}2\)</span> is even for odd <span class="math" data-tex="\(a,b\)">\(a,b\)</span>.</p>
+<p><strong>7.4.</strong> The transform of <span class="math" data-tex="\(g_0\)">\(g_0\)</span> is <span class="math" data-tex="\(\varphi_0\)">\(\varphi_0\)</span> by Fourier inversion, and the transform of a product is the convolution of the transforms. Since <span class="math" data-tex="\(\widehat\psi\)">\(\widehat\psi\)</span> is smooth with compact support, repeated integration by parts in <span class="math" data-tex="\(\psi(x)=\int\widehat\psi(y)e(xy)\,dy\)">\(\psi(x)=\int\widehat\psi(y)e(xy)\,dy\)</span> gives <span class="math" data-tex="\(|\psi(x)|\ll_j(1+|x|)^{-j}\)">\(|\psi(x)|\ll_j(1+|x|)^{-j}\)</span> for every <span class="math" data-tex="\(j\)">\(j\)</span>, and the same for all derivatives.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-013] OpenAI, <em>The additive indecomposability of the primes</em>, OpenAI Math Release preprint, 24 September 2026, Section 3: Proposition 3.1, the biased block, the amplified moment, (3.6)–(3.12), and Corollary 3.2. https://github.com/openai/math/tree/main/preprints/the-additive-indecomposability-of-the-primes-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

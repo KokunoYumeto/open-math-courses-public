@@ -249,7 +249,7 @@ Let \(F_V=\operatorname{WF}_b^{V,\infty}(u)\) on the original source-regular reg
  \pi\bigl(\exp(tH_p)\widetilde q\bigr)\in F_V
                           \quad(|t|<\varepsilon).         \tag{RC29}
 \]
-Choose \(\varepsilon\) once so that the whole short arc stays inside the actual source-regular region. A regular punctured point on either side would, by interior propagation along the intervening branch and the corresponding germ theorem, make \(q\) regular, a contradiction. The middle point is the hypothesis. Exact nonzero Hamilton parameter changes from normalization are retained. This proves the strict diffractive singular-segment input for both original weak domains. It does not yet establish the full generalized singular trajectories, the sharp Airy energy estimates or completion of AN-04.
+Choose \(\varepsilon\) once so that the whole short arc stays inside the actual source-regular region. A regular punctured point on either side would, by interior propagation along the intervening branch and the corresponding germ theorem, make \(q\) regular, a contradiction. The middle point is the hypothesis. Exact nonzero Hamilton parameter changes from normalization are retained. This proves the strict diffractive singular-segment input for both original weak domains. The conclusion is the strict diffractive singular segment; generalized singular trajectories and sharp Airy energy estimates require additional arguments.
 
 ## 10. Three solved exercises
 

@@ -75,9 +75,12 @@ Suppose every fibre of \(f:X\to Y\) has dimension at most \(d\). For a construct
 \tag{2.1}
 \]
 
-Indeed, partition \(T\) into locally closed pieces and take an irreducible component \(W\) of their inverse images. If \(Z\) is its image closure, the dimension formula for finite-type integral varieties gives
+Indeed, partition \(T\) into locally closed pieces and take an irreducible component \(W\) of their inverse images, with its reduced structure. Let \(Z\) be its image closure inside the chosen target piece. The induced \(W\to Z\) is dominant. On nonempty affine charts it is given by an inclusion \(A\hookrightarrow B\) of finite-type domains. Its generic fibre is covered by the domains \(B\otimes_A k(Z)\), with fraction field \(k(W)\). Noether normalization and Theorem 4.2 identify their dimension with \(\operatorname{trdeg}_{k(Z)}k(W)\).
+
+Choose a transcendence basis of \(k(Z)\) over the ground field and a transcendence basis of \(k(W)\) over \(k(Z)\). Their union is algebraically independent: a polynomial relation in the second set would contradict independence over \(k(Z)\), after collecting the first variables into its coefficients. The resulting field extension is algebraic, by transitivity of algebraicity and finite generation. The same dimension theorem therefore gives
 \(\dim W=\dim Z+\operatorname{trdeg}_{k(Z)}k(W)\).
-The second summand is the dimension of the generic fibre of \(W\to Z\), at most \(d\). Taking maxima proves (2.1). This argument requires the algebraic dimension formula stated above.
+The second summand is the dimension of the generic fibre of \(W\to Z\), at most \(d\). This follows from the fibre hypothesis also when formulated for geometric fibres: field extension preserves dimension, since a finite normalization map to affine space remains finite and surjective after a field extension. Each generic fibre of \(W\) is a closed subscheme of the corresponding fibre of the inverse image of the target piece. Finally \(\dim Z\le\dim T\), and the dimension of a finite union of constructible pieces is the maximum of their dimensions. Taking maxima proves (2.1).
+
 
 **Proposition 2.1.** Under this fibre hypothesis the following four bounds hold:
 
@@ -118,9 +121,9 @@ Return to the open immersion \(v\) of Section 1. On its smooth source \(\Lambda[
 
 The sphere has one cell in dimensions zero and three, with zero cellular differential, so these are precisely its two groups after the shift. Its degree-one group violates the upper perverse stalk test at a point. Thus \(d=0\) in (2.2) cannot be used to add an upper bound on \(Rf_*\). The map \(v\) is not affine. To verify this algebraically, cover the punctured plane by \(D(x)\) and \(D(y)\). A regular function belongs to
 \(\mathbb C[x,y]_x\cap\mathbb C[x,y]_y\)
-inside \(\mathbb C(x,y)\). Coprimality of \(x\) and \(y\) forces all denominators to cancel, so the intersection is \(\mathbb C[x,y]\). If the punctured plane were affine, its canonical map to the spectrum of its global functions would be an isomorphism; that map is the inclusion missing the origin, a contradiction.
+inside \(\mathbb C(x,y)\). Embed both rings in the Laurent polynomial ring. The first permits negative exponents only on \(x\), and the second only on \(y\). Uniqueness of a finite Laurent expansion forces both exponents to be nonnegative in their intersection. That uniqueness follows by multiplying by a large monomial and using uniqueness of polynomial coefficients. Thus the intersection is \(\mathbb C[x,y]\). If the punctured plane were affine, its canonical map to the spectrum of its global functions would be an isomorphism; that map is the inclusion missing the origin, a contradiction.
 
-The projective-line calculation is different. The classical sphere model for \(\mathbb P^1\) has one cell in dimensions zero and two. The earlier étale curve calculation gives the corresponding geometric groups with the orientation twist. Hence
+The projective-line calculation is different. The classical sphere model for \(\mathbb P^1\) has one cell in dimensions zero and two. The divisor and Kummer calculation in [D.2](#d-2-finite-étale-coefficients), followed by the complete and rational comparison in [D.3](#d-3-complete-and-rational-coefficients), gives the corresponding geometric groups with the orientation twist. Hence
 
 \[
 {}^pH^b(Ra_*\Lambda[1])=
@@ -419,7 +422,36 @@ Dualizing in this classical field setting gives
 
 The first sequence cannot split: a direct summand \(i_*\Lambda\) would give a nonzero costalk in degree zero to an object with zero costalk. The second cannot split because such a summand would give a nonzero stalk to \(j_!A\). The image of \(j_!A\to Rj_*A\) is \(\Lambda_{\mathbb C}[1]\), so this is the intermediate extension. The boundary contribution has moved from a quotient to a subobject.
 
-Affineness can also be measured by a finite cover. Suppose the inverse image of every affine open of \(Y\) admits a cover by \(c+1\) affine opens. Their intersections are affine because \(X\) is separated. The augmented alternating Čech complex is exact stalkwise: choose an open containing the point and insert its index to contract the augmented complex. After deriving sections, this gives a finite tower for \(Rf_*K\), whose degree-\(q\) layers are images from intersections shifted by \([-q]\), for \(0\le q\le c\). The maps from those intersections to the affine target are affine. For upper \(K\), Theorem 4.1 puts their unshifted images in \({}^pD^{\le0}\); the shifts put every layer in \({}^pD^{\le c}\). Extension closure and then duality give
+### Finite affine covers and their degree bound
+
+Suppose the inverse image of every affine open \(V\subset Y\) has a cover by \(c+1\) affine opens \(U_0,\ldots,U_c\). Work over one such \(V\). For a nonempty index set \(J\subset\{0,\ldots,c\}\), write \(U_J=\bigcap_{j\in J}U_j\), \(u_J:U_J\hookrightarrow X_V\), and \(g_J=f u_J:U_J\to V\). Empty intersections contribute zero. Every \(U_J\) is affine: for two affine opens, their intersection is the inverse image of the closed diagonal of the separated scheme \(X_V\) in their affine product. It is therefore closed in that product; induction handles any finite intersection. A morphism from an affine scheme to the affine scheme \(V\) is affine, so Theorem 4.1 applies to every \(g_J\).
+
+Here is the derived cover construction. For an ordinary coefficient sheaf \(H\) on \(X_V\), form the augmented complex with degree-\(p\) term
+\[
+ C^p(H)=\bigoplus_{0\le i_0<\cdots<i_p\le c}
+       (u_{\{i_0,\ldots,i_p\}})_*\,u_{\{i_0,\ldots,i_p\}}^*H,
+ \qquad 0\le p\le c.
+ \tag{5.C1}
+\]
+The differential is the alternating sum of restrictions, and \(H\to C^0(H)\) restricts a section to each open. The two ways to omit two indices have opposite signs, so the differential squares to zero. At a point choose \(U_a\) containing it and restrict to neighbourhoods inside \(U_a\). Extend an indexed section by alternation, setting it to zero when an index repeats. Inserting \(a\) at the beginning defines a degree-minus-one map \(h\); the terms omitting an index other than \(a\) cancel in \(\delta h+h\delta\), and the term omitting \(a\) is the original section. The same identity includes the augmentation. Thus the augmented complex is exact on stalks. This argument also holds on the étale site, since a geometric point has a cofinal system of pointed neighbourhoods contained in \(U_a\).
+
+For classical or finite étale coefficients, resolve the bounded complex \(K\) by a bounded-below complex \(I^\bullet\) of injective sheaves, using the resolutions of the first lesson. Apply (5.C1) to every \(I^q\). An open restriction preserves injectives because its exact left adjoint is extension by zero. Open direct image preserves injectives because its left adjoint is exact restriction. Consequently every \(C^p(I^q)\), and every term of the total complex, is injective; all sums here are finite. Use total differential \(\delta+(-1)^p d_I\). Its square is zero, since coefficient differential and restriction commute.
+
+The augmentation \(I^\bullet\to\operatorname{Tot}C^\bullet(I^\bullet)\) is a quasi-isomorphism. Indeed its augmented horizontal rows are exact by the stalk contraction above. The horizontal degree has a fixed finite range and the vertical degree is bounded below, so each total degree involves finitely many terms; the row filtration of its cone has zero cohomology. Both sides are bounded-below injective complexes. Their acyclic cone is contractible: starting at its lowest degree, split the injection of the first term into the next, then repeat on the remaining direct summand. Applying \(f_*\) therefore preserves this quasi-isomorphism.
+
+The columns after applying \(f_*\) represent the actual ordinary images \(Rg_{J,*}(K|_{U_J})\). Filter the total complex by columns \(p\ge t\); this is a subcomplex because the horizontal differential increases \(p\). Its successive quotients are
+\[
+ \operatorname{gr}^{p} Rf_*K
+ \simeq
+ \bigoplus_{|J|=p+1} Rg_{J,*}(K|_{U_J})[-p],
+ \qquad 0\le p\le c.
+ \tag{5.C2}
+\]
+This notation describes the associated graded objects of a finite filtration in the derived category, not a decomposition of \(Rf_*K\). In particular its width is \(c\), even though the injective resolution may be infinite.
+
+For complete integral coefficients use the same augmentation and restriction maps at each derived finite coefficient level. The actual complete images are the derived limits of these finite-level images, by BV.1. A derived inverse limit preserves fibre triangles and finite sums, and hence the finite filtration just constructed. Thus (5.C2) holds in that complete category as well. For rational coefficients choose the constructible integral model of BX.6. Exact rationalization and the image comparison (BX.22) in BX.7 transport this same finite diagram to the rational images. Scalar extension gives the stated \(\overline{\mathbf Q}_\ell\) version. This passage uses the specified field-level coefficient operations; no exchange with an infinite cover totalization is needed.
+
+If \(K\in{}^pD^{\le0}\), open restriction preserves that bound. Theorem 4.1 puts each unshifted summand of (5.C2) in \({}^pD^{\le0}\), and its shift \([-p]\) puts it in \({}^pD^{\le p}\subset{}^pD^{\le c}\). Induction through the finite filtration proves the upper bound on \(V\). The support test is local on the target, so the bounds on these affine opens give the global result. Field duality gives the lower shriek bound:
 
 \[
 Rf_*({}^pD^{\le0})\subset{}^pD^{\le c},\qquad
@@ -427,7 +459,18 @@ Rf_!({}^pD^{\ge0})\subset{}^pD^{\ge-c}.
 \tag{5.3}
 \]
 
-These are cover bounds, with the same Artin qualifications. They explain how an arbitrary open immersion can have an upper amplitude larger than its zero fibre dimension.
+The cover bound is attained in every width. Put \(N=c+1\), take classical field coefficients, and let
+\[
+ v:\mathbf C^N\setminus\{0\}\hookrightarrow\mathbf C^N,
+ \qquad P=\Lambda[N].
+ \tag{5.C3}
+\]
+The principal opens \(D(x_1),\ldots,D(x_N)\) cover the source. Their maps to the target are principal open immersions and thus affine, also after restriction to any affine target open. The upper bound (5.3) therefore gives \(Rv_*P\in{}^pD^{\le c}\). At the origin its stalk is the colimit of the cohomology of punctured balls. The radial projections in [D.1](#d-1-classical-coefficients-and-the-punctured-ball-restriction-maps) identify the transition maps with the identity on sphere cohomology. The top class of \(S^{2N-1}\), shifted by \(N\), gives
+\[
+ \mathcal H^{c}(i^*Rv_*P)=\Lambda,\qquad i:\{0\}\hookrightarrow\mathbf C^N.
+ \tag{5.C4}
+\]
+The upper point test for \({}^pD^{\le c-1}\) would require this group to vanish. Hence the width-\(c\) bound cannot be decreased. Since \(P\) is Verdier self-dual by complex orientation, duality also makes \(Rv_!P\) lie in \({}^pD^{\ge-c}\) but not in \({}^pD^{\ge-c+1}\). All fibres of \(v\) have dimension zero. These examples distinguish the affine-cover bound from a bound using only fibre dimension.
 
 ## 6. Remove a hyperplane and compute the error
 
@@ -487,7 +530,7 @@ In the ordinary hypercohomology spectral sequence, every term of total degree \(
 
 For a perverse \(P\), its field dual is again perverse. The identity
 \(H_c^n(U,P)^\vee=H^{-n}(U,D_UP)\)
-then gives compact-support vanishing for \(n<0\). On \(\mathbb A^r\), however, the perverse sheaf \(\Lambda[r]\) has an ordinary global group \(\Lambda\) in degree \(-r\) and a compact-support group \(\Lambda(-r)\) in degree \(r\). Classically these follow by contraction and the one-point compactification \(S^{2r}\); the geometric étale versions use affine-space cohomology and smooth duality. They exhibit the two permitted sides of the bounds. Neither functor is asserted to concentrate in degree zero. The classical ordinary Artin premise is (A.16); the étale and adic premises have the precise coefficient scopes stated in Section 4.
+then gives compact-support vanishing for \(n<0\). On \(\mathbb A^r\), however, the perverse sheaf \(\Lambda[r]\) has an ordinary global group \(\Lambda\) in degree \(-r\) and a compact-support group \(\Lambda(-r)\) in degree \(r\). Classically these follow by contraction and the one-point compactification \(S^{2r}\). [Appendix D](#appendix-d-the-cohomology-of-the-test-spaces) gives these actual cohomology comparisons and their geometric étale and rational-adic versions: Kummer computes the line, smooth base change gives affine space, and the coefficient limit and duality give the complete and compact-support groups. They exhibit the two permitted sides of the bounds. Neither functor is asserted to concentrate in degree zero. The classical ordinary Artin premise is (A.16); the étale and adic premises have the precise coefficient scopes stated in Section 4.
 
 ## Appendix A. Stratified Morse bounds and the classical affine theorem
 
@@ -511,7 +554,37 @@ At \(x\in S\), with \(d=\dim S\), choose a complex normal slice, a sufficiently 
  \tag{A.2}
 \]
 
-The arrow is restriction from \(B\), using the actual central restriction isomorphism \(R\Gamma(B;F)\simeq F_x\). HB5 and HB10–HB14 prove that assertion and identify the same fibre with the real normal-band object. HNC compares the prescribed slice, distance ball and value by proper pair maps and their coefficient endpoint arrows. Transport may have monodromy; no path-independent identification is required for a degree bound.
+The arrow is restriction from \(B\), using its actual central restriction isomorphism \(R\Gamma(B;F)\simeq F_x\). We describe the comparison with the real normal band before taking either fibre. Work first in reference holomorphic slice coordinates, with \(\rho=|z|^2\), and write \(u=\operatorname{Re}g\), \(v=\operatorname{Im}g\). Choose a sufficiently small radius \(r\), set \(M=2r^2\) and \(\eta=br^2\) for a fixed \(b>0\), and impose the joint radial/value bounds of HB2. Put
+
+\[
+\begin{aligned}
+ K&=\{\rho\le r^2\},&
+ K_{\mathbb R}&=K\cap\{|u|\le M\},\\
+ C&=K_{\mathbb R}\cap\{|v|\le\eta\},&
+ B_{\mathbb R}&=K_{\mathbb R}\cap\{u=-M\},\\
+ L_-&=K\cap\{g=-M\}.&&
+\end{aligned}
+\tag{A.2a}
+\]
+
+All these sets lie in the normal slice. In particular \(L_-\subset C\cap B_{\mathbb R}\). The comparison is the following diagram of actual restrictions, with \(F\) restricted to every displayed set:
+
+\[
+\begin{array}{ccccc}
+ R\Gamma(K_{\mathbb R};F)&\xrightarrow{\sim}&R\Gamma(C;F)&\xleftarrow{\sim}&R\Gamma(K;F)\\
+ \downarrow&&\downarrow&&\downarrow\\
+ R\Gamma(B_{\mathbb R};F)&\xrightarrow{\sim}&R\Gamma(L_-;F)&\xleftarrow{\mathrm{id}}&R\Gamma(L_-;F).
+\end{array}
+\tag{A.2b}
+\]
+
+Here is why all horizontal arrows are isomorphisms. HB5 proves that central restriction from each of \(K_{\mathbb R},C,K\) to \(F_x\) is an isomorphism. Their inclusions preserve that restriction, giving the top row. For the bottom left arrow, HB8 first gives the relative restriction isomorphism
+\(R\Gamma(K_{\mathbb R},B_{\mathbb R};F)\to R\Gamma(C,C\cap B_{\mathbb R};F)\).
+Its proof is finite closed-cover excision of the two imaginary sectors: the sector and interface restrictions have zero relative cohomology because their real-height maps are proper stratified products. Combining this relative isomorphism with the top restriction isomorphism in the two fibre triangles proves that
+\(R\Gamma(B_{\mathbb R};F)\to R\Gamma(C\cap B_{\mathbb R};F)\)
+is an isomorphism. HB9 then restricts this compact bottom face along its imaginary-height product to \(L_-\). The proper products and their coefficient arrows are NMG4–NMG5; they preserve the actual restriction maps. Thus the bottom left arrow in (A.2b) is their composite restriction, and both squares commute by functoriality.
+
+Taking the fibres of the three vertical arrows now identifies the real normal-band complex with \(R\Gamma(K,L_-;F)\). The top right restriction to \(F_x\) identifies its defining arrow with \(F_x\to R\Gamma(L_-;F)\). HNC9–HNC11 transport the whole ball/fibre restriction diagram to the prescribed sufficiently small distance ball, transverse slice and nonzero value \(w\). At the fixed vertex the coefficient comparison is the constant-interval endpoint map, so it also preserves the central restriction to \(F_x\). This gives precisely (A.2), with the same real normal-band complex. The comparison uses HB5, HB8–HB11 and HNC's choice transport. Transport may have monodromy; a degree bound only requires the isomorphism along the chosen path.
 
 For these algebraic strata, the geometric exceptional-set hypothesis of CLF1 has an elementary algebraic verification. Work in an affine ambient space \(M\) of dimension \(n\), and split the finitely many strata into their irreducible components. For a smooth stratum \(R\), its conormal bundle is algebraic of dimension \(n\): in a smooth chart its equations say that the covector annihilates the tangent rows, and it has rank \(n-\dim R\) over \(R\). Its closure \(C_R\subset T^*M\) is irreducible of the same dimension. The part over \(\overline R\setminus R\) is a proper closed subset, so has dimension at most \(n-1\). The finite union of these parts has a finite decomposition into smooth algebraic pieces of real dimension at most \(2n-2\), by K.1 and K.6. This is the exceptional set needed in CLF3's joint choice of slice value and Morse perturbation. In particular, no microsupport-detection or involutivity theorem is needed here.
 
@@ -981,9 +1054,104 @@ For a basic distinction between (C.3) and a fibre formula, take \(j:\mathbf G_m\
 
 The finite-coefficient support estimate and the finite ordinary tower prove the torsion upper bound in (4.2). The integral perverse model of Appendix B, the actual image/reduction comparison and the finite-module calculation (4.6) give its rational-adic version. Appendix A supplies the classical algebraic version. Duality gives the corresponding lower shriek bound in the field-valued perverse categories used here. These arguments concern affine morphisms over the course ground fields; they assert no arbitrary-trait comparison or unrestricted analytic Stein theorem.
 
+## Appendix D. The cohomology of the test spaces
+
+The calculations in Sections 1–2 and Exercises 1–5 use constant coefficients on balls, punctured balls, affine spaces and the projective line. We give their comparisons and coefficient passages here. In the étale calculation the ground field is algebraically closed; over a finite field these are the geometric groups with their descent actions.
+
+### D.1. Classical coefficients and the punctured-ball restriction maps
+
+Let \(\Lambda\) be any field. The sheaf–singular comparison and prism construction in Constructible complexes, C.2 identify constant-sheaf cohomology on the balls, spheres and manifolds used here with singular cohomology and carry homotopies to the actual induced maps. The contraction \(x\mapsto tx\) therefore gives
+\[
+ R\Gamma(\mathbb C^r,\Lambda)\simeq\Lambda.
+ \tag{D.1}
+\]
+For \(r>0\), C.4 computes sphere cohomology by the two-hemisphere Mayer–Vietoris sequence. Its reduced connecting map lowers both the sphere dimension and cohomology degree by one; starting with two points gives a single reduced group \(\Lambda\) in the sphere dimension. C.5 then computes compact support by the cofinal closed balls and their punctured complements:
+\[
+ R\Gamma_c(\mathbb C^r,\Lambda)\simeq\Lambda[-2r].
+ \tag{D.2}
+\]
+The case \(r=0\) is the point calculation.
+
+A punctured real \(m\)-ball retracts radially onto \(S^{m-1}\). For two concentric balls, their inclusions commute with radial projection to the unit sphere. Consequently the restriction maps identify the constant degree-zero classes and the same top reduced class. The filtered neighbourhood limit in the ordinary-image stalk formula has exactly these groups; it introduces neither a new group nor a quotient of the top class. For the punctured complex line the degrees are \(0,1\); for the punctured complex plane they are \(0,3\). Shifting by one and two gives, respectively, the stalk degrees \(-1,0\) in Section 5 and \(-2,1\) in (2.4). These are computations of the ordinary-image stalks through punctured neighbourhoods.
+
+The two charts of \(\mathbb P^1(\mathbb C)\), with transition \(z\mapsto z^{-1}\), exhibit it as the one-point compactification of \(\mathbb C\): a neighbourhood of the extra point is the complement of a closed disc in the first chart, together with that point. Stereographic projection identifies this compactification with \(S^2\). Thus its constant-sheaf groups are \(\Lambda\) in degrees \(0,2\), and zero otherwise. This supplies the classical groups in (2.5). The localization triangle and the local orientation calculation of C.4 give the costalks in the table of Section 5; no affine-vanishing theorem is used in these test calculations.
+
+### D.2. Finite étale coefficients
+
+Let \(k_0\) be algebraically closed and \(n\) invertible in \(k_0\). The exact divisor description in The multiplicative group on a curve, Proposition 5.1 gives
+\[
+ \operatorname{Pic}(\mathbb A^1_{k_0})=0,\qquad
+ \operatorname{Pic}(\mathbb P^1_{k_0})=\mathbb Z[\mathcal O(\infty)].
+ \tag{D.3}
+\]
+Indeed every divisor on the affine line is a finite sum of points \(a\in k_0\), and the rational function \(\prod_a(t-a)^{m_a}\) has precisely its prescribed orders there. On the projective line the divisor of \(t-a\) is \([a]-[\infty]\), so every divisor is equivalent to an integer multiple of \([\infty]\). Factoring a rational function as a quotient of polynomials shows that its finite orders sum to the negative of its order at infinity. Its total degree is zero. Thus no nonzero multiple of \([\infty]\) is principal, proving both assertions in (D.3). This calculation uses no Picard-variety representation theorem.
+
+The units on both curves are \(k_0^\times\): an invertible polynomial has degree zero, and regularity at infinity forces a polynomial on the projective line to have degree zero. The \(n\)-th power map on these units is surjective. The earlier lesson's formula (6.1) and its Kummer proof therefore give
+\[
+ \begin{aligned}
+ H^q(\mathbb A^1,\mu_n)&=
+ \begin{cases}\mu_n(k_0)&q=0,\\0&q>0,\end{cases}\\
+ H^q(\mathbb P^1,\mu_n)&=
+ \begin{cases}\mu_n(k_0)&q=0,\\
+ \mathbb Z/n&q=2,\\0&\text{otherwise}.
+ \end{cases}
+ \end{aligned}
+ \tag{D.4}
+\]
+That formula uses the proved higher-cohomology vanishing for the sheaf of units in Theorem 4.2 of the same lesson. Its field-cohomology and divisor prerequisites are Constructible complexes, R and Z–AB. The degree-two map in (D.4) is the Kummer Chern class followed by degree modulo \(n\); in particular the point class has degree one.
+
+For a finite coefficient field \(\kappa\) of characteristic \(\ell\ne\operatorname{char}k_0\), take \(n=\ell\) and extend scalars from \(\mathbb F_\ell\) to \(\kappa\). This is a finite direct sum on underlying sheaves, hence commutes with the cohomology calculation. The canonical form of the upper group is
+\[
+ H^2(\mathbb P^1,\kappa)=\kappa(-1).
+ \tag{D.5}
+\]
+Choosing a primitive root identifies \(\mu_\ell\) with \(\mathbb F_\ell\), but changing that root changes the identification; the twist in (D.5) retains this dependence. Kummer Chern classes and degree are natural under field automorphisms, so (D.5) also specifies the geometric descent action.
+
+For \(p:\mathbb A^{r-1}\times\mathbb A^1\to\mathbb A^{r-1}\), apply the ordinary smooth-base-change comparison AS.7 to \(\mathbb A^1\to\operatorname{Spec}k_0\) and the smooth change of base \(\mathbb A^{r-1}\to\operatorname{Spec}k_0\). Formula (D.4) identifies \(Rp_*\kappa\) with \(\kappa\). Its degree-zero map sends \(1\) to \(1\), so this is the adjunction unit. Composition of ordinary direct images and induction on \(r\), starting with the point, give
+\[
+ R\Gamma(\mathbb A^r,\kappa)=\kappa.
+ \tag{D.6}
+\]
+This is a smooth-base-change computation of the actual ordinary image, not an inference from compact-support dimensions. Smooth orientation and structural duality, proved in BJ and BV, now give
+\[
+ R\Gamma_c(\mathbb A^r,\kappa)=\kappa(-r)[-2r].
+ \tag{D.7}
+\]
+Indeed the dual of the left side is \(R\Gamma(\mathbb A^r,\kappa(r)[2r])=\kappa(r)[2r]\), and finite-dimensional field duality recovers (D.7).
+
+### D.3. Complete and rational coefficients
+
+Let \(\mathcal O\) be the valuation ring of a finite extension \(E/\mathbb Q_\ell\), with uniformizer \(\pi\). Every finite module \(\mathcal O/\pi^a\) has a finite filtration whose successive quotients are its finite residue field. The corresponding constant-sheaf sequences are exact on stalks. By (D.6) and the long exact cohomology sequence,
+\[
+ H^q(\mathbb A^r,\mathcal O/\pi^a)=0\quad(q>0),
+ \qquad H^0(\mathbb A^r,\mathcal O/\pi^a)=\mathcal O/\pi^a.
+ \tag{D.8}
+\]
+The degree-zero identification is by constant sections on the connected affine space, so its transition maps are the quotient maps.
+
+The complete constant object is the derived inverse limit of this strict quotient system, by BP.2. Ordinary direct image, as a right adjoint, preserves that limit, and BK.5 identifies its finite-level images. The product-cone formula computes the resulting limit. Its possible degree-one group is the cokernel of \(1-\mathrm{shift}\) on the product of the groups in (D.8); it is zero because the quotient transition maps are surjective. Hence
+\[
+ R\Gamma(\mathbb A^r,\mathcal O)=\mathcal O.
+ \tag{D.9}
+\]
+
+For \(i:\{\infty\}\hookrightarrow\mathbb P^1\) and \(j:\mathbb A^1\hookrightarrow\mathbb P^1\), the smooth-piece exceptional comparison (B.2) gives \(i^!\mathcal O=\mathcal O(-1)[-2]\). Apply global sections to the other localization triangle \(i_*i^!\mathcal O\to\mathcal O\to Rj_*\mathcal O\). Using (D.9), its cohomology sequence gives
+\[
+ H^q(\mathbb P^1,\mathcal O)=
+ \begin{cases}
+ \mathcal O&q=0,\\
+ \mathcal O(-1)&q=2,\\
+ 0&\text{otherwise}.
+ \end{cases}
+ \tag{D.10}
+\]
+The degree-two arrow is the supported point class with the orientation of (B.2). Composing its closed counit with the proper trace gives the trace of the point, by transitivity of these adjunctions. It therefore has trace one. The curve trace in Section 2 of Poincaré duality for curves is degree on Kummer classes, and BV carries that trace through coefficient reduction. This identifies its finite reductions with the degree normalization in (D.4). The twist agrees across finite, complete and rational coefficients.
+
+Finally the actual ordinary-image comparison BX.22 carries (D.9)–(D.10) to \(E\). Structural duality carries (D.9) to \(R\Gamma_c(\mathbb A^r,E)=E(-r)[-2r]\). Exact extension of the finite coefficient field gives the same formulas for \(\overline{\mathbb Q}_\ell\) in the course category. Shifting these formulas yields (2.5) and the two groups in Exercise 5. Over a finite ground field all these assertions concern geometric cohomology and its descent action, as stipulated in the introduction.
+
 ## Geometric hypotheses and references
 
-Theorem C.1 proves the finite-coefficient support estimate using strict-local support models, the absolute affine theorem and continuity, with the curve and dimension prerequisites identified there. Integral truncation is constructed in (4.4); the bounded normalized operations, nonproper finiteness, finite-coefficient fibres and rationalization comparisons over fields are those of BV–BX and BP–BQ, as specified in Section 4. Appendix B constructs the compatible integral dimension cuts and proves the smooth-stratum exceptional comparison and refinement independence over the course ground fields. Its proof uses the actual complete-coefficient evaluation, duality and localization maps of BO, BQ and BV–BX. The field-level finiteness theorem does not apply to an arbitrary trait or its strict-local generic limits. Appendix A proves the classical algebraic affine theorem over any field by normal Morse bounds, an exhaustion limit and transverse ordinary-image comparison. The unrestricted analytic Stein deduction retains its separate ordinary/microlocal and restriction hypotheses. The relative orientation and smooth duality used in Section 3 are proved in Lemma 3.0 with its stated arithmetic comparisons; local sections and the coefficient-unit passage are proved in the full-faithfulness argument. Constructibility, finite-type dimension, oriented ball and sphere comparisons, and geometric étale curve and affine-space cohomology are further inputs, with the earlier proof locations specified in Sections 2–4 and Appendices A–C. Their general foundations are not all proved in this lesson.
+Theorem C.1 proves the finite-coefficient support estimate using strict-local support models, the absolute affine theorem and continuity, with the curve and dimension prerequisites identified there. Integral truncation is constructed in (4.4); the bounded normalized operations, nonproper finiteness, finite-coefficient fibres and rationalization comparisons over fields are those of BV–BX and BP–BQ, as specified in Section 4. Appendix B constructs the compatible integral dimension cuts and proves the smooth-stratum exceptional comparison and refinement independence over the course ground fields. Its proof uses the actual complete-coefficient evaluation, duality and localization maps of BO, BQ and BV–BX. The field-level finiteness theorem does not apply to an arbitrary trait or its strict-local generic limits. Appendix A proves the classical algebraic affine theorem over any field by normal Morse bounds, an exhaustion limit and transverse ordinary-image comparison. The unrestricted analytic Stein deduction retains its separate ordinary/microlocal and restriction hypotheses. The relative orientation and smooth duality used in Section 3 are proved in Lemma 3.0 with its stated arithmetic comparisons; local sections and the coefficient-unit passage are proved in the full-faithfulness argument. Section 2 derives the fibre-dimension bound from the exact normalization theorem. Appendix D supplies the classical, finite étale, complete and rational cohomology calculations used in the examples and exercises, including the restriction maps and Tate twists. It uses the earlier sheaf–singular, divisor, Kummer, smooth-base-change and coefficient-operation proofs at the indicated locators. The more general operation and geometric foundations retain their stated hypotheses.
 
 The sources used for the affine and smooth comparison are the freely accessible versions below. The Bhatt–Blickle–Lyubeznik–Singh–Zhang reference concerns a different characteristic-\(p\) coefficient theory; its subsection 5.1 is a further reading direction and supplies no proof input to the prime-to-characteristic arguments here.
 
@@ -993,5 +1161,6 @@ The sources used for the affine and smooth comparison are the freely accessible 
 - M. Artin, A. Grothendieck and J.-L. Verdier, [*Théorie des topos et cohomologie étale des schémas*](https://www.normalesup.org/~forgogozo/SGA4/tomes/SGA4.pdf), free Laszlo–Orgogozo transcription of SGA 4; Exposé XIV supplies the torsion affine theorem discussed in the earlier companion.
 - The Stacks Project Authors, [Cohomological dimension, §59.95](https://stacks.math.columbia.edu/tag/0F0P), especially Lemma 59.95.5, Proposition 59.95.6 and Lemma 59.95.8 for strict-local models, affine vanishing and relative support.
 - The Stacks Project Authors, [Étale local sections of smooth morphisms, Lemma 37.38.6](https://stacks.math.columbia.edu/tag/055U).
+- The Stacks Project Authors, [The alternating Čech complex, §20.23](https://stacks.math.columbia.edu/tag/01FG), and [Čech cohomology of complexes for a finite cover, §20.40](https://stacks.math.columbia.edu/tag/08BZ).
 - A. Mathew, [*Verdier duality*](https://math.uchicago.edu/~amathew/verd.pdf), free author notes of 29 July 2011; Theorem 4.1 and Corollary 5.5 for the exceptional adjunction and the orientation calculation.
 - B. Bhatt, M. Blickle, G. Lyubeznik, A. K. Singh and W. Zhang, [*Applications of perverse sheaves in commutative algebra*](https://arxiv.org/abs/2308.03155), free arXiv version; subsection 5.1 for the separate characteristic-\(p\) setting.

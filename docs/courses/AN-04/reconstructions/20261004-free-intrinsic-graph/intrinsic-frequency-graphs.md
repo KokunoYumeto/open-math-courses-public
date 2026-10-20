@@ -8,9 +8,9 @@ the amplitude. Dyadic \(L^2\) estimates then recover the exact symbol order.
 The graph argument below is written in full.
 The selected operator, \(L^2\) and dyadic analytic proofs are supplied
 in the linked companions, including the proper local representation
-needed to apply the endpoint estimate. This draft does not
-certify the whole intrinsic lesson, its general phase theorem, its global
-bundle theorem, or publication eligibility.
+needed to apply the endpoint estimate. The hypotheses below concern this graph criterion and the supplied local operator representation. General phase representations and global bundles require their own hypotheses and proofs.
+
+
 
 ## 1. Conventions and exact earlier proofs
 
@@ -28,13 +28,13 @@ The earlier programme proofs used here are exact, bounded selections:
 
 | ID | Used result | Earlier programme proof |
 |---|---|---|
-| P1 | Dyadic Besov definition, multiplication and coordinate bounds, ordinary symbol endpoint bound, local frequency Sobolev estimate | Exact modified AN03-U008 Section 1 selection [B0–B6](prerequisites/dyadic-endpoint.md); its local operator representation is proved in P2 |
-| P2 | Quantization on distributions; adjoints and composition with every remainder; properly supported localization and smoothing errors | Exact modified AN03 ordinary selection [O0–O6](prerequisites/ordinary-operator-calculus.md), with its linked metric localization, quadratic multiplier and finite-dimensional proofs |
-| P3 | Completed Lebesgue measure, \(L^2\) completeness and smooth density; both inverse Fourier maps, distributional compatibility, Parseval and measurable multipliers | Exact modified AN03-P004 selection [M0–M8](prerequisites/measure-and-l2.md), and AN03-P001 selection [L0–L3](prerequisites/fourier-l2.md), with the earlier U001 Schwartz proofs linked there |
+| P1 | Dyadic Besov definition, multiplication and coordinate bounds, ordinary symbol endpoint bound, local frequency Sobolev estimate | Exact modified AN03-U008 Section 1 selection B0–B6; its local operator representation is proved in P2 |
+| P2 | Quantization on distributions; adjoints and composition with every remainder; properly supported localization and smoothing errors | Exact modified AN03 ordinary selection O0–O6, with its linked metric localization, quadratic multiplier and finite-dimensional proofs |
+| P3 | Completed Lebesgue measure, \(L^2\) completeness and smooth density; both inverse Fourier maps, distributional compatibility, Parseval and measurable multipliers | Exact modified AN03-P004 selection M0–M8, and AN03-P001 selection L0–L3, with the earlier U001 Schwartz proofs linked there |
 | P4 | Uniform stationary phase with ordinary symbol amplitudes, including differentiated remainders | [AN04-U001](../20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.md), Sections 4–6; its analytic and finite-dimensional proofs are included in that reconstruction |
 | P5 | Conic frequency-graph coordinates from a base diffeomorphism; nondegenerate critical-map geometry | [C0–C5](prerequisites/conic-frequency-coordinates.md), with exact earlier U001 linear algebra and calculus |
-| P6 | Ordinary coordinate transport; intrinsic chart and frame invariance; Fourier wavefront covariance, compact conic cutoffs and wavefront containment | [T0–T3 and W1–W5](prerequisites/coordinate-and-wavefront-localization.md), with the exact P1–P3 inputs above |
-| P7 | Conic two-sided parametrices with every remainder; finite conic Besov reconstruction; the full intrinsic localization theorem and cutoff independence | [K0–K7](prerequisites/conic-parametrices-and-localization.md), with the exact P1–P3 and P6 inputs above |
+| P6 | Ordinary coordinate transport; intrinsic chart and frame invariance; Fourier wavefront covariance, compact conic cutoffs and wavefront containment | T0–T3 and W1–W5, with the exact P1–P3 inputs above |
+| P7 | Conic two-sided parametrices with every remainder; finite conic Besov reconstruction; the full intrinsic localization theorem and cutoff independence | K0–K7, with the exact P1–P3 and P6 inputs above |
 | P8 | Representation using a prescribed nondegenerate or clean phase; exact excess correction; all symbol remainders and lower-order criteria | [F0–F7](prerequisites/prescribed-phase-representation.md), using the proved graph criterion, P5–P7 and exact U001 stationary-phase proofs |
 
 These are programme proof dependencies, not replacements by human-source
@@ -44,8 +44,8 @@ here; the transmission and complex-analysis parts of that lesson are not.
 The selected companion fills the endpoint summations and extension steps,
 without asserting Schwartz density in the endpoint norm. Its supplied
 local representation hypothesis keeps the operator-calculus dependency
-visible. Earlier whole-lesson approvals are not adopted as current source
-decisions.
+visible. 
+
 
 Write \(B^s=B^s_{2,\infty}\). If \(A_j\) is the low-frequency ball for
 \(j=0\) and a dyadic annulus for \(j\ge1\), then
@@ -412,11 +412,11 @@ G12 is a theorem for a specified frequency graph. The complete
 [geometric coordinate proof, C0–C5](prerequisites/conic-frequency-coordinates.md)
 now supplies such a graph near any nonzero point of a conic Lagrangian,
 using a base diffeomorphism. The complete
-[coordinate and directional-localization proofs, T0–W5](prerequisites/coordinate-and-wavefront-localization.md)
+coordinate and directional-localization proofs, T0–W5
 transport both the intrinsic word condition and its wavefront set, and
 construct proper compact microlocal cutoffs. They also prove that the
 word condition forces wavefront into the Lagrangian. The complete
-[conic inverse and localization proof, K0–K7](prerequisites/conic-parametrices-and-localization.md)
+conic inverse and localization proof, K0–K7
 now supplies the converse for arbitrary elliptic tests, finite conic
 reconstruction, and independence of sufficiently small cutoffs and
 Lagrangian extensions. Its matrix proof retains the original factor
@@ -427,9 +427,9 @@ uses this graph criterion to prove both directions for a given ordinary
 nondegenerate or clean phase. It supplies the excess correction, the
 amplitude construction to every order, and the lower-order criteria.
 Thus the intrinsic definition is retained throughout.
-The full original lesson's example and exercise coverage, the global
-principal-symbol and Maslov interpretation, and the remaining course
-retain their separate outstanding obligations.
+The global principal-symbol and Maslov interpretation uses the density and phase-transition arguments.
+
+
 
 ## 6. Three exercises with complete solutions
 

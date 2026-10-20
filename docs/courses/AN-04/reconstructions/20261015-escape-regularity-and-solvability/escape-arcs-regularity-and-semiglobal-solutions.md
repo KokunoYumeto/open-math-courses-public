@@ -178,7 +178,7 @@ The finite-flow-family construction SLS:G0 uses only the principal symbol and it
                          Q=\chi P\chi,\qquad w=\chi^2.
 \]
 
-Its kernel is supported in \(\operatorname{supp}\chi\times\operatorname{supp}\chi\), so both kernel projections are proper. The [compact-amplitude and off-diagonal kernel proof](../20261004-free-intrinsic-graph/prerequisites/ordinary-operator-calculus.md), P2:OP4, shows that \(Q\) is classical of order \(m\), with principal symbol \(wp\). Near the diagonal its amplitude is \(\chi(x)\chi(y)p(x,\xi)\), whose leading reduced symbol is \(\chi(x)^2p\); the off-diagonal part is smooth. Finite charts suffice on the compact product.
+Its kernel is supported in \(\operatorname{supp}\chi\times\operatorname{supp}\chi\), so both kernel projections are proper. The compact-amplitude and off-diagonal kernel proof, P2:OP4, shows that \(Q\) is classical of order \(m\), with principal symbol \(wp\). Near the diagonal its amplitude is \(\chi(x)\chi(y)p(x,\xi)\), whose leading reduced symbol is \(\chi(x)^2p\); the off-diagonal part is smooth. Finite charts suffice on the compact product.
 
 We verify (P) for \(wp\). For any smooth nonzero complex multiplier \(a\), set \(r=\operatorname{Re}(ap)\). On \(w>0\) and \(wr=0\),
 

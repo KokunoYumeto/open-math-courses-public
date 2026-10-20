@@ -1,0 +1,344 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Quadratic kernels and the collision contradiction</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Additive indecomposability of the primes)</a><a href="a-common-centre-for-the-quadratic-biases.html">Previous lesson</a><a href="scales-cells-and-a-positive-statistic-for-higher-characters.html">Next lesson</a><a href="src/quadratic-kernels-and-the-collision-contradiction.md">Editable source</a></nav><main><article><h1 id="quadratic-kernels-and-the-collision-contradiction">Quadratic kernels and the collision contradiction</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Lesson 5 produced a large set <span class="math" data-tex="\(\mathcal P_0\)">\(\mathcal P_0\)</span> of primes and a rational number <span class="math" data-tex="\(h/m\)">\(h/m\)</span> with <span class="math" data-tex="\(t_p\equiv h\overline m\pmod p\)">\(t_p\equiv h\overline m\pmod p\)</span> for <span class="math" data-tex="\(p\in\mathcal P_0\)">\(p\in\mathcal P_0\)</span>. The bias hypothesis becomes a statement about the single integer sequence <span class="math" data-tex="\(mx-h\)">\(mx-h\)</span>: on average over <span class="math" data-tex="\(p\in\mathcal P_0\)">\(p\in\mathcal P_0\)</span>, the quadratic character <span class="math" data-tex="\(\chi_p(mx-h)\)">\(\chi_p(mx-h)\)</span> leans one way on the tail <span class="math" data-tex="\(A_X\)">\(A_X\)</span> and the other way on <span class="math" data-tex="\(D_X\)">\(D_X\)</span>. This lesson finishes the proof of the quadratic decorrelation theorem (Theorem 1.1 of Lesson 3). Write <span class="math" data-tex="\(mx-h=u_xt_x^2\)">\(mx-h=u_xt_x^2\)</span> with <span class="math" data-tex="\(u_x\)">\(u_x\)</span> squarefree. Heath-Brown's quadratic large sieve shows that a positive proportion of each tail has very few <em>kernels</em> <span class="math" data-tex="\(u_x\)">\(u_x\)</span> (Section 2). Exclusion makes the prime factors of kernels on the two sides disjoint (Section 3). Choosing one kernel on each side, the corresponding square roots <span class="math" data-tex="\(t_x\)">\(t_x\)</span> avoid each other modulo every prime <span class="math" data-tex="\(p\)">\(p\)</span> at which <span class="math" data-tex="\(vw\)">\(vw\)</span> is a square. The zero-free region of Dirichlet <span class="math" data-tex="\(L\)">\(L\)</span>-functions, with Page's and Siegel's theorems, gives enough such primes (Section 4), and the collision estimate then fails (Section 5).</p>
+<p><strong>Prerequisites.</strong> <a href="a-common-centre-for-the-quadratic-biases.html"><em>A common centre for the quadratic biases</em></a>, Proposition 4.2; <a href="../NT-DIRL/NT-DIRL-07.html"><em>Zero-free regions and the exceptional zero</em></a>, Lemma 1.1; <a href="../NT-DIRL/NT-DIRL-10.html"><em>Siegel's theorem</em></a>, Theorem 5.2; <a href="../NT-DIRL/NT-DIRL-17.html"><em>The least prime in a progression: Linnik's theorem</em></a>, Section 1; <a href="../NT-DIRL/NT-DIRL-01.html"><em>Dirichlet characters</em></a>, Theorem 4.1; <a href="../NT-ANT/cyclotomic-fields.html"><em>Cyclotomic fields</em></a>, Theorem 12.5.</p>
+<p>The notation of Lessons 3–5 is in force. In particular <span class="math" data-tex="\(c_\delta&gt;0\)">\(c_\delta&gt;0\)</span>, <span class="math" data-tex="\(k\asymp T^{3/5}\)">\(k\asymp T^{3/5}\)</span>, <span class="math" data-tex="\(Z^{k-12}&lt;X\le Z^{k-10}\)">\(Z^{k-12}&lt;X\le Z^{k-10}\)</span>, and <span class="math" data-tex="\(\mathcal P_0,h,m,J_0\)">\(\mathcal P_0,h,m,J_0\)</span> are as in Proposition 4.2 of Lesson 5.</p>
+<h2 id="1-the-quadratic-large-sieve">1. The quadratic large sieve</h2>
+<p>For odd positive <span class="math" data-tex="\(m\)">\(m\)</span> and integers <span class="math" data-tex="\(n\)">\(n\)</span> the Jacobi symbol <span class="math" data-tex="\((n/m)\)">\((n/m)\)</span> is defined as in Lesson 4. A sum marked <span class="math" data-tex="\(\sum^\flat\)">\(\sum^\flat\)</span> runs over positive odd squarefree integers.</p>
+<p><strong>Theorem 1.1</strong> (Heath-Brown's quadratic large sieve; named result N1 [HB, Theorem 1]). For positive integers <span class="math" data-tex="\(M,N\)">\(M,N\)</span>, complex numbers <span class="math" data-tex="\(a_n\)">\(a_n\)</span> and every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sideset{}{^\flat}\sum_{m\le M}\Bigl|\sideset{}{^\flat}\sum_{n\le N}a_n\Bigl(\frac nm\Bigr)\Bigr|^2\\
+&amp;\quad \ll_\varepsilon(MN)^\varepsilon(M+N)\sideset{}{^\flat}\sum_{n\le N}|a_n|^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sideset{}{^\flat}\sum_{m\le M}\Bigl|\sideset{}{^\flat}\sum_{n\le N}a_n\Bigl(\frac nm\Bigr)\Bigr|^2\\
+&amp;\quad \ll_\varepsilon(MN)^\varepsilon(M+N)\sideset{}{^\flat}\sum_{n\le N}|a_n|^2 .
+\end{aligned}
+\]</span></p>
+<p>The programme does not prove this theorem; it is used here as a named result. Its point is the factor <span class="math" data-tex="\(M+N\)">\(M+N\)</span>: bounding each inner sum by Cauchy–Schwarz would give <span class="math" data-tex="\(MN\)">\(MN\)</span>, and the orthogonality of the characters <span class="math" data-tex="\(m\mapsto(n/m)\)">\(m\mapsto(n/m)\)</span> for different squarefree <span class="math" data-tex="\(n\)">\(n\)</span> gives only <span class="math" data-tex="\(M+N^2\)">\(M+N^2\)</span> with elementary means.</p>
+<p><strong>Lemma 1.2</strong> (Jacobi reciprocity). For odd positive coprime <span class="math" data-tex="\(v,s\)">\(v,s\)</span>,
+<span class="math math-display" data-tex="\[
+\Bigl(\frac vs\Bigr)\Bigl(\frac sv\Bigr)=(-1)^{\frac{v-1}2\cdot\frac{s-1}2}.
+\]">\[
+\Bigl(\frac vs\Bigr)\Bigl(\frac sv\Bigr)=(-1)^{\frac{v-1}2\cdot\frac{s-1}2}.
+\]</span></p>
+<p><em>Proof.</em> For distinct odd primes this is quadratic reciprocity (<a href="../NT-ANT/cyclotomic-fields.html"><em>Cyclotomic fields</em></a>, Theorem 12.5). Both sides are multiplicative in <span class="math" data-tex="\(v\)">\(v\)</span> and in <span class="math" data-tex="\(s\)">\(s\)</span>: for the right side, <span class="math" data-tex="\(\frac{ab-1}2\equiv\frac{a-1}2+\frac{b-1}2\pmod2\)">\(\frac{ab-1}2\equiv\frac{a-1}2+\frac{b-1}2\pmod2\)</span> for odd <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, because the difference is <span class="math" data-tex="\(\frac{(a-1)(b-1)}2\)">\(\frac{(a-1)(b-1)}2\)</span>, an even number. Factor <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(s\)">\(s\)</span> into primes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 1.3</strong> (signed kernels [OpenAI-013, Section 3]). Let <span class="math" data-tex="\(b_s\)">\(b_s\)</span> be complex numbers supported on positive odd squarefree <span class="math" data-tex="\(s\le S\)">\(s\le S\)</span>. For <span class="math" data-tex="\(U\ge1\)">\(U\ge1\)</span> and every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\substack{0&lt;|u|\le U\\ u\ \text{squarefree}}}\Bigl|\sum_sb_s\Bigl(\frac us\Bigr)\Bigr|^2\\
+&amp;\quad \ll_\varepsilon(US)^\varepsilon(U+S)\sum_s|b_s|^2 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\substack{0&lt;|u|\le U\\ u\ \text{squarefree}}}\Bigl|\sum_sb_s\Bigl(\frac us\Bigr)\Bigr|^2\\
+&amp;\quad \ll_\varepsilon(US)^\varepsilon(U+S)\sum_s|b_s|^2 ,
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(u\)">\(u\)</span> runs over signed squarefree integers and <span class="math" data-tex="\((u/s)\)">\((u/s)\)</span> is the Jacobi symbol.</p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(u=\pm2^ev\)">\(u=\pm2^ev\)</span> with <span class="math" data-tex="\(e\in\{0,1\}\)">\(e\in\{0,1\}\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span> positive, odd and squarefree, and split the sum into the eight classes given by the sign, <span class="math" data-tex="\(e\)">\(e\)</span>, and <span class="math" data-tex="\(v\bmod4\)">\(v\bmod4\)</span>. In a class, <span class="math" data-tex="\((u/s)=(\pm1/s)(2/s)^e(v/s)\)">\((u/s)=(\pm1/s)(2/s)^e(v/s)\)</span>. If <span class="math" data-tex="\((v,s)&gt;1\)">\((v,s)&gt;1\)</span>, both <span class="math" data-tex="\((v/s)\)">\((v/s)\)</span> and <span class="math" data-tex="\((s/v)\)">\((s/v)\)</span> vanish; otherwise Lemma 1.2 gives <span class="math" data-tex="\((v/s)=(s/v)\epsilon_s\)">\((v/s)=(s/v)\epsilon_s\)</span>, where <span class="math" data-tex="\(\epsilon_s=1\)">\(\epsilon_s=1\)</span> if <span class="math" data-tex="\(v\equiv1\pmod4\)">\(v\equiv1\pmod4\)</span> and <span class="math" data-tex="\(\epsilon_s=(-1)^{(s-1)/2}\)">\(\epsilon_s=(-1)^{(s-1)/2}\)</span> if <span class="math" data-tex="\(v\equiv3\pmod4\)">\(v\equiv3\pmod4\)</span>. In a fixed class, <span class="math" data-tex="\(b&#x27;_s=b_s(\pm1/s)(2/s)^e\epsilon_s\)">\(b&#x27;_s=b_s(\pm1/s)(2/s)^e\epsilon_s\)</span> does not depend on <span class="math" data-tex="\(v\)">\(v\)</span>, and <span class="math" data-tex="\(|b&#x27;_s|=|b_s|\)">\(|b&#x27;_s|=|b_s|\)</span> or <span class="math" data-tex="\(0\)">\(0\)</span>. So the class contributes at most <span class="math" data-tex="\(\sum^\flat_{v\le U}|\sum_sb&#x27;_s(s/v)|^2\)">\(\sum^\flat_{v\le U}|\sum_sb&#x27;_s(s/v)|^2\)</span>, and Theorem 1.1 with <span class="math" data-tex="\(M=\lfloor U\rfloor\)">\(M=\lfloor U\rfloor\)</span>, <span class="math" data-tex="\(N=\lfloor S\rfloor\)">\(N=\lfloor S\rfloor\)</span> bounds this by <span class="math" data-tex="\(O_\varepsilon((US)^\varepsilon(U+S)\sum|b_s|^2)\)">\(O_\varepsilon((US)^\varepsilon(U+S)\sum|b_s|^2)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-few-kernels-carry-the-bias">2. Few kernels carry the bias</h2>
+<p>For <span class="math" data-tex="\(p\in\mathcal P_0\)">\(p\in\mathcal P_0\)</span> put <span class="math" data-tex="\(\epsilon&#x27;_p=\epsilon_p\chi_p(m)\)">\(\epsilon&#x27;_p=\epsilon_p\chi_p(m)\)</span>. Since <span class="math" data-tex="\(t_p\equiv h\overline m\pmod p\)">\(t_p\equiv h\overline m\pmod p\)</span> and <span class="math" data-tex="\(\chi_p(\overline m)=\chi_p(m)\)">\(\chi_p(\overline m)=\chi_p(m)\)</span>,
+<span class="math math-display" data-tex="\[
+\epsilon_p\chi_p(x-t_p)=\epsilon&#x27;_p\,\chi_p(mx-h).
+\]">\[
+\epsilon_p\chi_p(x-t_p)=\epsilon&#x27;_p\,\chi_p(mx-h).
+\]</span>
+Define
+<span class="math math-display" data-tex="\[
+F(x)=\frac1{J_0}\sum_{p\in\mathcal P_0}\epsilon&#x27;_p\,\chi_p(mx-h).
+\]">\[
+F(x)=\frac1{J_0}\sum_{p\in\mathcal P_0}\epsilon&#x27;_p\,\chi_p(mx-h).
+\]</span>
+By (2.1) of Lesson 3, <span class="math" data-tex="\(F\)">\(F\)</span> has mean at least <span class="math" data-tex="\(c_\delta\)">\(c_\delta\)</span> on <span class="math" data-tex="\(A_X\)">\(A_X\)</span> and at most <span class="math" data-tex="\(-c_\delta\)">\(-c_\delta\)</span> on <span class="math" data-tex="\(D_X\)">\(D_X\)</span>. Since <span class="math" data-tex="\(|F|\le1\)">\(|F|\le1\)</span>, at least a proportion <span class="math" data-tex="\(c_\delta/2\)">\(c_\delta/2\)</span> of the elements of <span class="math" data-tex="\(A_X\)">\(A_X\)</span> satisfy <span class="math" data-tex="\(F(x)\ge c_\delta/2\)">\(F(x)\ge c_\delta/2\)</span>, and likewise for <span class="math" data-tex="\(D_X\)">\(D_X\)</span> with <span class="math" data-tex="\(F(x)\le-c_\delta/2\)">\(F(x)\le-c_\delta/2\)</span>. Call these the <em>biased elements</em> of the two tails. For a biased <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(mx-h\ne0\)">\(mx-h\ne0\)</span>, and we write
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+mx-h=u_xt_x^2,\\
+u_x\ \text{signed squarefree},\\
+t_x\ge1.\quad(2.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+mx-h=u_xt_x^2,\\
+u_x\ \text{signed squarefree},\\
+t_x\ge1.\quad(2.1)
+\end{gathered}
+\]</span>
+The integer <span class="math" data-tex="\(u_x\)">\(u_x\)</span> is the <em>kernel</em> of <span class="math" data-tex="\(x\)">\(x\)</span>. Since <span class="math" data-tex="\(|h|\le XZ^{0.15}\)">\(|h|\le XZ^{0.15}\)</span> and <span class="math" data-tex="\(m\le Z^{0.13}\)">\(m\le Z^{0.13}\)</span>, <span class="math" data-tex="\(|u_x|t_x^2\le mX+|h|=X^{1+o(1)}\)">\(|u_x|t_x^2\le mX+|h|=X^{1+o(1)}\)</span>.</p>
+<p><strong>Lemma 2.1.</strong> For every fixed <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, the biased elements of either tail have at most <span class="math" data-tex="\(X^{2\varepsilon+o(1)}\)">\(X^{2\varepsilon+o(1)}\)</span> distinct kernels.</p>
+<p><em>Proof.</em> <em>Kernels instead of the full values.</em> A prime of <span class="math" data-tex="\(\mathcal P_0\)">\(\mathcal P_0\)</span> dividing <span class="math" data-tex="\(t_x\)">\(t_x\)</span> satisfies <span class="math" data-tex="\(p\ge Z\)">\(p\ge Z\)</span>, and the product of such primes is at most <span class="math" data-tex="\(t_x\le X^{1/2+o(1)}\)">\(t_x\le X^{1/2+o(1)}\)</span>, so there are at most <span class="math" data-tex="\(k\)">\(k\)</span> of them. For the other primes, <span class="math" data-tex="\(\chi_p(mx-h)=\chi_p(u_x)\chi_p(t_x)^2=\chi_p(u_x)\)">\(\chi_p(mx-h)=\chi_p(u_x)\chi_p(t_x)^2=\chi_p(u_x)\)</span>. Hence <span class="math" data-tex="\(F_1(x)=J_0^{-1}\sum_{p\in\mathcal P_0}\epsilon&#x27;_p\chi_p(u_x)\)">\(F_1(x)=J_0^{-1}\sum_{p\in\mathcal P_0}\epsilon&#x27;_p\chi_p(u_x)\)</span> differs from <span class="math" data-tex="\(F(x)\)">\(F(x)\)</span> by at most <span class="math" data-tex="\(2k/J_0=o(1)\)">\(2k/J_0=o(1)\)</span>, and <span class="math" data-tex="\(|F_1(x)|\ge c_\delta/3\)">\(|F_1(x)|\ge c_\delta/3\)</span> at every biased <span class="math" data-tex="\(x\)">\(x\)</span>, for large <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p><em>A single array.</em> Apply Lemma 4.1 of Lesson 3 to the <span class="math" data-tex="\(J_0\)">\(J_0\)</span> numbers <span class="math" data-tex="\(y_p=\epsilon&#x27;_p\chi_p(u_x)\)">\(y_p=\epsilon&#x27;_p\chi_p(u_x)\)</span>, whose mean is <span class="math" data-tex="\(F_1(x)\)">\(F_1(x)\)</span>. Its error terms satisfy <span class="math" data-tex="\(\bigl(k^5/J_0\bigr)^j|F_1(x)|^{k-2j}\)">\(\bigl(k^5/J_0\bigr)^j|F_1(x)|^{k-2j}\)</span><span class="math" data-tex="\(\le|F_1(x)|^k\bigl(9k^5/(c_\delta^2J_0)\bigr)^j\)">\(\le|F_1(x)|^k\bigl(9k^5/(c_\delta^2J_0)\bigr)^j\)</span>, and <span class="math" data-tex="\(k^5/J_0=o(1)\)">\(k^5/J_0=o(1)\)</span> because <span class="math" data-tex="\(J_0\ge JZ^{-O(1/k)}\)">\(J_0\ge JZ^{-O(1/k)}\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl|\frac1{J_0^k}\sum_{\text{distinct}}\prod_{i=1}^k\epsilon&#x27;_{p_i}\chi_{p_i}(u_x)\Bigr|\\
+&amp;\quad \ge\tfrac12|F_1(x)|^k\ge c^k,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl|\frac1{J_0^k}\sum_{\text{distinct}}\prod_{i=1}^k\epsilon&#x27;_{p_i}\chi_{p_i}(u_x)\Bigr|\\
+&amp;\quad \ge\tfrac12|F_1(x)|^k\ge c^k,
+\end{aligned}
+\]</span>
+with a constant <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> depending only on <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. Group the ordered tuples by their product <span class="math" data-tex="\(s\)">\(s\)</span>, a product of <span class="math" data-tex="\(k\)">\(k\)</span> distinct primes of <span class="math" data-tex="\(\mathcal P_0\)">\(\mathcal P_0\)</span>, and note <span class="math" data-tex="\(\prod_{p\mid s}\chi_p(u)=(u/s)\)">\(\prod_{p\mid s}\chi_p(u)=(u/s)\)</span>. The left side is <span class="math" data-tex="\(|\sum_sb_s(u_x/s)|\)">\(|\sum_sb_s(u_x/s)|\)</span> with the single array
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+b_s=k!\,J_0^{-k}\prod_{p\mid s}\epsilon&#x27;_p,\\
+\sum_s|b_s|^2=\binom{J_0}k\frac{(k!)^2}{J_0^{2k}}\le\frac{k!}{J_0^k},
+\end{gathered}
+\]">\[
+\begin{gathered}
+b_s=k!\,J_0^{-k}\prod_{p\mid s}\epsilon&#x27;_p,\\
+\sum_s|b_s|^2=\binom{J_0}k\frac{(k!)^2}{J_0^{2k}}\le\frac{k!}{J_0^k},
+\end{gathered}
+\]</span>
+the same for every biased <span class="math" data-tex="\(x\)">\(x\)</span> on either side.</p>
+<p><em>Counting kernels.</em> The array is supported on odd squarefree <span class="math" data-tex="\(s\le S=(2Z)^k\)">\(s\le S=(2Z)^k\)</span>. Then <span class="math" data-tex="\(S=X^{1+o(1)}\)">\(S=X^{1+o(1)}\)</span>, because <span class="math" data-tex="\(Z^k\le XZ^{12}\)">\(Z^k\le XZ^{12}\)</span> and <span class="math" data-tex="\(2^k=Z^{o(1)}\)">\(2^k=Z^{o(1)}\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S\,\frac{k!}{J_0^k}&amp;\le\Bigl(\frac{2Zk}{J}\Bigr)^kZ^{O(1)}\\
+&amp;\le\exp\bigl(O(k\log T+\log Z)\bigr)\\
+&amp;=X^{o(1)},
+\end{aligned}
+\]">\[
+\begin{aligned}
+S\,\frac{k!}{J_0^k}&amp;\le\Bigl(\frac{2Zk}{J}\Bigr)^kZ^{O(1)}\\
+&amp;\le\exp\bigl(O(k\log T+\log Z)\bigr)\\
+&amp;=X^{o(1)},
+\end{aligned}
+\]</span>
+since <span class="math" data-tex="\(J\gg Z/\log Z\)">\(J\gg Z/\log Z\)</span>. Apply Corollary 1.3 with <span class="math" data-tex="\(U=mX+|h|=X^{1+o(1)}\)">\(U=mX+|h|=X^{1+o(1)}\)</span>. Each distinct kernel of a biased element contributes at least <span class="math" data-tex="\(c^{2k}=X^{-o(1)}\)">\(c^{2k}=X^{-o(1)}\)</span> to the left side, which is at most <span class="math" data-tex="\(X^{2\varepsilon+o(1)}\)">\(X^{2\varepsilon+o(1)}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.2</strong> (kernel populations). For a signed squarefree <span class="math" data-tex="\(u\ne0\)">\(u\ne0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\#\{x\ \text{biased on a fixed side}:u_x\\
+&amp;\quad =u\}\ll\sqrt{X/|u|}+X^{o(1)}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\#\{x\ \text{biased on a fixed side}:u_x\\
+&amp;\quad =u\}\ll\sqrt{X/|u|}+X^{o(1)}.
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> Since <span class="math" data-tex="\((h,m)=1\)">\((h,m)=1\)</span>, a prime dividing <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(ut_x\)">\(ut_x\)</span> would divide <span class="math" data-tex="\(mx-h\)">\(mx-h\)</span> and hence <span class="math" data-tex="\(h\)">\(h\)</span>; so <span class="math" data-tex="\((ut_x,m)=1\)">\((ut_x,m)=1\)</span>, and <span class="math" data-tex="\(t_x\)">\(t_x\)</span> is a root of <span class="math" data-tex="\(ut^2\equiv-h\pmod m\)">\(ut^2\equiv-h\pmod m\)</span> with <span class="math" data-tex="\(u\)">\(u\)</span> a unit. A unit has at most two square roots modulo an odd prime power and at most four modulo a power of <span class="math" data-tex="\(2\)">\(2\)</span>, so there are at most <span class="math" data-tex="\(2^{\omega(m)+1}\)">\(2^{\omega(m)+1}\)</span> residues for <span class="math" data-tex="\(t_x\)">\(t_x\)</span>. On one side <span class="math" data-tex="\(x\)">\(x\)</span> lies in an interval of length at most <span class="math" data-tex="\(X\)">\(X\)</span>, so <span class="math" data-tex="\(t_x^2\)">\(t_x^2\)</span> lies in an interval of length at most <span class="math" data-tex="\(mX/|u|\)">\(mX/|u|\)</span>, and <span class="math" data-tex="\(t_x\)">\(t_x\)</span> in an interval of length at most <span class="math" data-tex="\(\sqrt{mX/|u|}\)">\(\sqrt{mX/|u|}\)</span>, because <span class="math" data-tex="\(|\sqrt a-\sqrt b|\le\sqrt{|a-b|}\)">\(|\sqrt a-\sqrt b|\le\sqrt{|a-b|}\)</span> for <span class="math" data-tex="\(a,b\ge0\)">\(a,b\ge0\)</span>. The map <span class="math" data-tex="\(x\mapsto t_x\)">\(x\mapsto t_x\)</span> is injective for fixed <span class="math" data-tex="\(u\)">\(u\)</span>. So the count is at most <span class="math" data-tex="\(2^{\omega(m)+1}\bigl(\sqrt{mX/|u|}/m+1\bigr)\)">\(2^{\omega(m)+1}\bigl(\sqrt{mX/|u|}/m+1\bigr)\)</span>. Finally <span class="math" data-tex="\(2^{\omega(m)}\ll\sqrt m\)">\(2^{\omega(m)}\ll\sqrt m\)</span>, because in <span class="math" data-tex="\(\prod_{p\mid m}2/\sqrt p\)">\(\prod_{p\mid m}2/\sqrt p\)</span> only the factors at <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(3\)">\(3\)</span> exceed <span class="math" data-tex="\(1\)">\(1\)</span>, and <span class="math" data-tex="\(2^{\omega(m)}=X^{o(1)}\)">\(2^{\omega(m)}=X^{o(1)}\)</span> since <span class="math" data-tex="\(m=X^{o(1)}\)">\(m=X^{o(1)}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-small-kernels-with-disjoint-prime-supports">3. Small kernels with disjoint prime supports</h2>
+<p><strong>The constants.</strong> By <a href="../NT-DIRL/NT-DIRL-17.html"><em>The least prime in a progression: Linnik's theorem</em></a>, (1.1), there is an absolute <span class="math" data-tex="\(a_0&gt;0\)">\(a_0&gt;0\)</span> such that, for <span class="math" data-tex="\(Q\ge2\)">\(Q\ge2\)</span>, the box <span class="math" data-tex="\(\Re s&gt;1-a_0/\log(2Q)\)">\(\Re s&gt;1-a_0/\log(2Q)\)</span>, <span class="math" data-tex="\(|\Im s|\le Q\)">\(|\Im s|\le Q\)</span> contains at most one zero of all the Dirichlet <span class="math" data-tex="\(L\)">\(L\)</span>-functions of primitive characters of conductor at most <span class="math" data-tex="\(Q\)">\(Q\)</span>; if it exists, it is a simple real zero of a real nonprincipal character. Put <span class="math" data-tex="\(c_z=\min(a_0/2,1/4)\)">\(c_z=\min(a_0/2,1/4)\)</span> and <span class="math" data-tex="\(C_z=1+c_z^{-1}\ge5\)">\(C_z=1+c_z^{-1}\ge5\)</span>. Then for <span class="math" data-tex="\(Q\ge2\)">\(Q\ge2\)</span>, among primitive nonprincipal characters of conductor at most <span class="math" data-tex="\(Q\)">\(Q\)</span>, every zero <span class="math" data-tex="\(\rho\)">\(\rho\)</span> with <span class="math" data-tex="\(|\Im\rho|\le1\)">\(|\Im\rho|\le1\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\Re\rho\le1-\frac{c_z}{\log Q},
+\tag{3.1}
+\]">\[
+\Re\rho\le1-\frac{c_z}{\log Q},
+\tag{3.1}
+\]</span>
+with at most one exception, a simple real zero of a real character. Fix, in this order,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0&lt;\eta\le\min\Bigl(\frac1{1000},\frac1{200C_z}\Bigr),\\
+0&lt;\varepsilon&lt;\frac\eta{100}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+0&lt;\eta\le\min\Bigl(\frac1{1000},\frac1{200C_z}\Bigr),\\
+0&lt;\varepsilon&lt;\frac\eta{100}.
+\end{gathered}
+\]</span></p>
+<p><strong>Small kernels.</strong> By Lemmas 2.1 and 2.2, the biased elements whose kernels satisfy <span class="math" data-tex="\(|u_x|&gt;X^\eta\)">\(|u_x|&gt;X^\eta\)</span> number at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;X^{2\varepsilon+o(1)}\bigl(X^{1/2-\eta/2}+X^{o(1)}\bigr)\\
+&amp;\quad =o\bigl(\sqrt X/(\log X)^3\bigr)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;X^{2\varepsilon+o(1)}\bigl(X^{1/2-\eta/2}+X^{o(1)}\bigr)\\
+&amp;\quad =o\bigl(\sqrt X/(\log X)^3\bigr)
+\end{aligned}
+\]</span>
+on each side, since <span class="math" data-tex="\(2\varepsilon&lt;\eta/2\)">\(2\varepsilon&lt;\eta/2\)</span>. Discarding them leaves sets <span class="math" data-tex="\(\mathcal U\subseteq A_X\)">\(\mathcal U\subseteq A_X\)</span> and <span class="math" data-tex="\(\mathcal V\subseteq D_X\)">\(\mathcal V\subseteq D_X\)</span> of biased elements, each of size <span class="math" data-tex="\(\gg_\delta\sqrt X/(\log X)^3\)">\(\gg_\delta\sqrt X/(\log X)^3\)</span>, all of whose kernels satisfy <span class="math" data-tex="\(0&lt;|u_x|\le X^\eta\)">\(0&lt;|u_x|\le X^\eta\)</span>.</p>
+<p><strong>Lemma 3.1</strong> (disjoint supports). No prime divides both a kernel <span class="math" data-tex="\(u_x\)">\(u_x\)</span> with <span class="math" data-tex="\(x\in\mathcal U\)">\(x\in\mathcal U\)</span> and a kernel <span class="math" data-tex="\(u_y\)">\(u_y\)</span> with <span class="math" data-tex="\(y\in\mathcal V\)">\(y\in\mathcal V\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(\ell\)">\(\ell\)</span> be such a prime. Then <span class="math" data-tex="\(\ell\)">\(\ell\)</span> divides <span class="math" data-tex="\(mx-h\)">\(mx-h\)</span> and <span class="math" data-tex="\(my-h\)">\(my-h\)</span>, hence <span class="math" data-tex="\(m(x-y)\)">\(m(x-y)\)</span>; since <span class="math" data-tex="\((u_x,m)=1\)">\((u_x,m)=1\)</span>, <span class="math" data-tex="\(\ell\nmid m\)">\(\ell\nmid m\)</span>, so <span class="math" data-tex="\(\ell\mid x-y\)">\(\ell\mid x-y\)</span>. Here <span class="math" data-tex="\(x-y=x+b\)">\(x-y=x+b\)</span> with <span class="math" data-tex="\(b=-y\in B\)">\(b=-y\in B\)</span>, so <span class="math" data-tex="\(x-y\in A+B\)">\(x-y\in A+B\)</span> and <span class="math" data-tex="\(x-y\ge2X^{9/10}&gt;N\)">\(x-y\ge2X^{9/10}&gt;N\)</span>; by exclusion <span class="math" data-tex="\(x-y\)">\(x-y\)</span> is a prime. But <span class="math" data-tex="\(\ell\le|u_x|\le X^\eta&lt;x-y\)">\(\ell\le|u_x|\le X^\eta&lt;x-y\)</span>, so the prime <span class="math" data-tex="\(x-y\)">\(x-y\)</span> has a smaller prime divisor, which is impossible. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So for kernels <span class="math" data-tex="\(v\)">\(v\)</span> of <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> and <span class="math" data-tex="\(w\)">\(w\)</span> of <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span>, the product <span class="math" data-tex="\(vw\)">\(vw\)</span> is signed squarefree, and its prime factors determine <span class="math" data-tex="\(|v|\)">\(|v|\)</span> and <span class="math" data-tex="\(|w|\)">\(|w|\)</span>: <span class="math" data-tex="\(|v|\)">\(|v|\)</span> is the product of those prime factors of <span class="math" data-tex="\(vw\)">\(vw\)</span> that divide some kernel of <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>. Only the signs of <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(w\)">\(w\)</span> remain undetermined, four possibilities in all.</p>
+<p><strong>Removing a possible exceptional character.</strong> Put <span class="math" data-tex="\(Q_0=4X^{2\eta}\)">\(Q_0=4X^{2\eta}\)</span>. For a pair <span class="math" data-tex="\(x\in\mathcal U\)">\(x\in\mathcal U\)</span>, <span class="math" data-tex="\(y\in\mathcal V\)">\(y\in\mathcal V\)</span> with kernels <span class="math" data-tex="\(v,w\)">\(v,w\)</span> and <span class="math" data-tex="\(vw\ne1\)">\(vw\ne1\)</span>, let <span class="math" data-tex="\(\chi_{vw}\)">\(\chi_{vw}\)</span> be the Kronecker symbol of the discriminant of <span class="math" data-tex="\(\mathbb Q(\sqrt{vw})\)">\(\mathbb Q(\sqrt{vw})\)</span>; by <a href="../NT-DIRL/NT-DIRL-01.html"><em>Dirichlet characters</em></a>, Theorem 4.1, it is a real primitive character, of conductor at most <span class="math" data-tex="\(4|vw|\le Q_0\)">\(4|vw|\le Q_0\)</span>. For odd primes <span class="math" data-tex="\(p\nmid vw\)">\(p\nmid vw\)</span>, <span class="math" data-tex="\(\chi_{vw}(p)=(vw/p)\)">\(\chi_{vw}(p)=(vw/p)\)</span>. Apply (3.1) with <span class="math" data-tex="\(Q=Q_0\)">\(Q=Q_0\)</span>. If the exceptional zero exists and belongs to a character of conductor <span class="math" data-tex="\(q&gt;(\log X)^{100}\)">\(q&gt;(\log X)^{100}\)</span>, discard every pair <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> whose character <span class="math" data-tex="\(\chi_{vw}\)">\(\chi_{vw}\)</span> is that character. That character determines <span class="math" data-tex="\(vw\)">\(vw\)</span>, hence <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(w\)">\(w\)</span> up to four sign choices, with <span class="math" data-tex="\(|vw|\ge q/4\)">\(|vw|\ge q/4\)</span>. By Lemma 2.2 the discarded pairs number
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\ll\Bigl(\sqrt{\tfrac X{|v|}}+X^{o(1)}\Bigr)\Bigl(\sqrt{\tfrac X{|w|}}\\
+&amp;\qquad +X^{o(1)}\Bigr)\\
+&amp;\quad \ll\frac X{\sqrt{|vw|}}+X^{1/2+o(1)}\\
+&amp;\quad \ll\frac X{(\log X)^{50}},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\ll\Bigl(\sqrt{\tfrac X{|v|}}+X^{o(1)}\Bigr)\Bigl(\sqrt{\tfrac X{|w|}}\\
+&amp;\qquad +X^{o(1)}\Bigr)\\
+&amp;\quad \ll\frac X{\sqrt{|vw|}}+X^{1/2+o(1)}\\
+&amp;\quad \ll\frac X{(\log X)^{50}},
+\end{aligned}
+\]</span>
+which is negligible against <span class="math" data-tex="\(|\mathcal U||\mathcal V|\gg_\delta X/(\log X)^6\)">\(|\mathcal U||\mathcal V|\gg_\delta X/(\log X)^6\)</span>.</p>
+<p><strong>Two populous kernels.</strong> There are at most <span class="math" data-tex="\(4X^{2\eta}\)">\(4X^{2\eta}\)</span> ordered pairs of signed kernels of absolute value at most <span class="math" data-tex="\(X^\eta\)">\(X^\eta\)</span>. Among the remaining pairs <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span>, pigeonholing gives kernels <span class="math" data-tex="\(v,w\)">\(v,w\)</span> such that the populations <span class="math" data-tex="\(\mathcal U_v=\{x\in\mathcal U:u_x=v\}\)">\(\mathcal U_v=\{x\in\mathcal U:u_x=v\}\)</span> and <span class="math" data-tex="\(\mathcal V_w=\{y\in\mathcal V:u_y=w\}\)">\(\mathcal V_w=\{y\in\mathcal V:u_y=w\}\)</span> satisfy
+<span class="math math-display" data-tex="\[
+|\mathcal U_v|\,|\mathcal V_w|\gg_\delta\frac{X^{1-2\eta}}{(\log X)^6}.
+\]">\[
+|\mathcal U_v|\,|\mathcal V_w|\gg_\delta\frac{X^{1-2\eta}}{(\log X)^6}.
+\]</span>
+By Lemma 2.2 each population is <span class="math" data-tex="\(O(\sqrt X)\)">\(O(\sqrt X)\)</span>, so each is at least <span class="math" data-tex="\(X^{1/2-3\eta}\)">\(X^{1/2-3\eta}\)</span> for large <span class="math" data-tex="\(T\)">\(T\)</span>. Let <span class="math" data-tex="\(\mathcal R_1=\{t_x:x\in\mathcal U_v\}\)">\(\mathcal R_1=\{t_x:x\in\mathcal U_v\}\)</span> and <span class="math" data-tex="\(\mathcal R_2=\{t_y:y\in\mathcal V_w\}\)">\(\mathcal R_2=\{t_y:y\in\mathcal V_w\}\)</span>. The maps <span class="math" data-tex="\(x\mapsto t_x\)">\(x\mapsto t_x\)</span> are injective, so <span class="math" data-tex="\(|\mathcal R_1|=|\mathcal U_v|\)">\(|\mathcal R_1|=|\mathcal U_v|\)</span> and <span class="math" data-tex="\(|\mathcal R_2|=|\mathcal V_w|\)">\(|\mathcal R_2|=|\mathcal V_w|\)</span>, and both sets of positive integers have diameter at most <span class="math" data-tex="\(X^{1/2+o(1)}\)">\(X^{1/2+o(1)}\)</span>.</p>
+<h2 id="4-many-split-primes">4. Many split primes</h2>
+<p>Put <span class="math" data-tex="\(Q_2=X^{1/2-5\eta}\)">\(Q_2=X^{1/2-5\eta}\)</span>.</p>
+<p><strong>Proposition 4.1</strong> ([OpenAI-013, (3.32)]). For large <span class="math" data-tex="\(T\)">\(T\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\substack{p\le Q_2,\ p\nmid2mvw\\ (vw/p)=1}}\frac{\log p}p\\
+&amp;\quad \ge0.03\log X.\quad(4.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\substack{p\le Q_2,\ p\nmid2mvw\\ (vw/p)=1}}\frac{\log p}p\\
+&amp;\quad \ge0.03\log X.\quad(4.1)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> <em>The case <span class="math" data-tex="\(vw=1\)">\(vw=1\)</span>.</em> Mertens' estimate gives <span class="math" data-tex="\(\sum_{p\le Q_2}(\log p)/p\)">\(\sum_{p\le Q_2}(\log p)/p\)</span><span class="math" data-tex="\(=(\frac12-5\eta)\log X+O(1)\)">\(=(\frac12-5\eta)\log X+O(1)\)</span>. The primes dividing <span class="math" data-tex="\(2m\)">\(2m\)</span> have total weight <span class="math" data-tex="\(O(\log\log X)\)">\(O(\log\log X)\)</span>, since <span class="math" data-tex="\(m=X^{o(1)}\)">\(m=X^{o(1)}\)</span>: those up to <span class="math" data-tex="\(\log X\)">\(\log X\)</span> have weight <span class="math" data-tex="\(O(\log\log X)\)">\(O(\log\log X)\)</span> by Mertens' estimate, and those above <span class="math" data-tex="\(\log X\)">\(\log X\)</span> have weight at most <span class="math" data-tex="\(\log(2m)/\log X=o(1)\)">\(\log(2m)/\log X=o(1)\)</span>. The claim follows.</p>
+<p><em>The case <span class="math" data-tex="\(vw\ne1\)">\(vw\ne1\)</span>.</em> Let <span class="math" data-tex="\(\chi=\chi_{vw}\)">\(\chi=\chi_{vw}\)</span>, of conductor <span class="math" data-tex="\(q\le Q_0\)">\(q\le Q_0\)</span>, and put
+<span class="math math-display" data-tex="\[
+s=1+\frac{10}{\log X},\qquad s_0=1+\frac1{\log Q_0}.
+\]">\[
+s=1+\frac{10}{\log X},\qquad s_0=1+\frac1{\log Q_0}.
+\]</span>
+Since <span class="math" data-tex="\(\log Q_0=2\eta\log X+\log4\le\frac1{10}\log X\)">\(\log Q_0=2\eta\log X+\log4\le\frac1{10}\log X\)</span> for large <span class="math" data-tex="\(X\)">\(X\)</span>, we have <span class="math" data-tex="\(1&lt;s\le s_0\le2\)">\(1&lt;s\le s_0\le2\)</span>.</p>
+<p><em>The Hadamard formula.</em> By <a href="../NT-DIRL/NT-DIRL-07.html"><em>Zero-free regions and the exceptional zero</em></a>, (1.3), for real <span class="math" data-tex="\(1&lt;u\le2\)">\(1&lt;u\le2\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_\rho\frac{u-\beta}{(u-\beta)^2+\gamma^2}=\frac{L&#x27;}L(u,\chi)\\
+&amp;\qquad +\frac12\log q+O(1),\quad(4.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_\rho\frac{u-\beta}{(u-\beta)^2+\gamma^2}=\frac{L&#x27;}L(u,\chi)\\
+&amp;\qquad +\frac12\log q+O(1),\quad(4.2)
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(\rho=\beta+i\gamma\)">\(\rho=\beta+i\gamma\)</span> runs over the nontrivial zeros with multiplicity; the Gamma term is bounded on this interval. Every term on the left is positive.</p>
+<p><em>At <span class="math" data-tex="\(s_0\)">\(s_0\)</span>.</em> The Dirichlet series of <span class="math" data-tex="\(L&#x27;/L\)">\(L&#x27;/L\)</span> gives <span class="math" data-tex="\(|L&#x27;/L(s_0,\chi)|\le-\zeta&#x27;/\zeta(s_0)\)">\(|L&#x27;/L(s_0,\chi)|\le-\zeta&#x27;/\zeta(s_0)\)</span><span class="math" data-tex="\(=\log Q_0+O(1)\)">\(=\log Q_0+O(1)\)</span>, so the zero sum at <span class="math" data-tex="\(s_0\)">\(s_0\)</span> is at most <span class="math" data-tex="\(2\log Q_0\)">\(2\log Q_0\)</span> for large <span class="math" data-tex="\(X\)">\(X\)</span>.</p>
+<p><em>From <span class="math" data-tex="\(s_0\)">\(s_0\)</span> to <span class="math" data-tex="\(s\)">\(s\)</span>.</em> Let <span class="math" data-tex="\(\rho=\beta+i\gamma\)">\(\rho=\beta+i\gamma\)</span> be a zero other than the possible exceptional zero, and put <span class="math" data-tex="\(a=s-\beta\)">\(a=s-\beta\)</span>, <span class="math" data-tex="\(b=s_0-\beta\)">\(b=s_0-\beta\)</span>, so <span class="math" data-tex="\(0&lt;a\le b&lt;2\)">\(0&lt;a\le b&lt;2\)</span>. The ratio of its terms at <span class="math" data-tex="\(s\)">\(s\)</span> and at <span class="math" data-tex="\(s_0\)">\(s_0\)</span> is
+<span class="math math-display" data-tex="\[
+\frac{a}{b}\cdot\frac{b^2+\gamma^2}{a^2+\gamma^2}.
+\]">\[
+\frac{a}{b}\cdot\frac{b^2+\gamma^2}{a^2+\gamma^2}.
+\]</span>
+If <span class="math" data-tex="\(|\gamma|\le1\)">\(|\gamma|\le1\)</span>, then <span class="math" data-tex="\(a\ge c_z/\log Q_0\)">\(a\ge c_z/\log Q_0\)</span> by (3.1) and <span class="math" data-tex="\(b-a\le1/\log Q_0\)">\(b-a\le1/\log Q_0\)</span>, so the ratio is at most <span class="math" data-tex="\(b/a\le1+c_z^{-1}=C_z\)">\(b/a\le1+c_z^{-1}=C_z\)</span>. If <span class="math" data-tex="\(|\gamma|&gt;1\)">\(|\gamma|&gt;1\)</span>, the ratio is at most <span class="math" data-tex="\((4+\gamma^2)/\gamma^2\le5\le C_z\)">\((4+\gamma^2)/\gamma^2\le5\le C_z\)</span>. Summing, the nonexceptional zeros contribute at most <span class="math" data-tex="\(2C_z\log Q_0\)">\(2C_z\log Q_0\)</span> to (4.2) at <span class="math" data-tex="\(u=s\)">\(u=s\)</span>.</p>
+<p><em>The possible exceptional zero.</em> If <span class="math" data-tex="\(\chi\)">\(\chi\)</span> has the exceptional zero <span class="math" data-tex="\(\beta_1\)">\(\beta_1\)</span>, its conductor is at most <span class="math" data-tex="\((\log X)^{100}\)">\((\log X)^{100}\)</span>, since the other case was discarded. By Siegel's theorem in the form <a href="../NT-DIRL/NT-DIRL-10.html"><em>Siegel's theorem</em></a>, Theorem 5.2, with exponent <span class="math" data-tex="\(1/200\)">\(1/200\)</span>, <span class="math" data-tex="\(1-\beta_1\ge c_0q^{-1/200}\)">\(1-\beta_1\ge c_0q^{-1/200}\)</span>, so its term at <span class="math" data-tex="\(s\)">\(s\)</span> is at most <span class="math" data-tex="\(1/(1-\beta_1)\ll q^{1/200}\)">\(1/(1-\beta_1)\ll q^{1/200}\)</span><span class="math" data-tex="\(\le(\log X)^{1/2}=o(\log X)\)">\(\le(\log X)^{1/2}=o(\log X)\)</span>. The constant <span class="math" data-tex="\(c_0\)">\(c_0\)</span> is ineffective, which is harmless: only the existence of a bound is used.</p>
+<p><em>The signed prime sum.</em> Removing the prime powers <span class="math" data-tex="\(p^j\)">\(p^j\)</span>, <span class="math" data-tex="\(j\ge2\)">\(j\ge2\)</span>, which contribute <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span>, (4.2) gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_p\frac{\chi(p)\log p}{p^s}\\
+&amp;\quad =-\frac{L&#x27;}L(s,\chi)+O(1)\\
+&amp;\quad \ge-2C_z\log Q_0-o(\log X).\quad(4.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_p\frac{\chi(p)\log p}{p^s}\\
+&amp;\quad =-\frac{L&#x27;}L(s,\chi)+O(1)\\
+&amp;\quad \ge-2C_z\log Q_0-o(\log X).\quad(4.3)
+\end{aligned}
+\]</span></p>
+<p><em>The unsigned prime sums.</em> By Mertens' estimate and partial summation,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+\sum_p\frac{\log p}{p^s}&amp;=\frac1{s-1}+O(1)\\
+&amp;=\frac{\log X}{10}+O(1),
+\end{aligned}\\
+\begin{aligned}
+\sum_{p&gt;Q_2}\frac{\log p}{p^s}&amp;=\frac{Q_2^{-(s-1)}}{s-1}+O(1)\\
+&amp;=\frac{e^{-5+50\eta}}{10}\log X+O(1).
+\end{aligned}
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+\sum_p\frac{\log p}{p^s}&amp;=\frac1{s-1}+O(1)\\
+&amp;=\frac{\log X}{10}+O(1),
+\end{aligned}\\
+\begin{aligned}
+\sum_{p&gt;Q_2}\frac{\log p}{p^s}&amp;=\frac{Q_2^{-(s-1)}}{s-1}+O(1)\\
+&amp;=\frac{e^{-5+50\eta}}{10}\log X+O(1).
+\end{aligned}
+\end{gathered}
+\]</span></p>
+<p><em>Combination.</em> As in the first case, the primes dividing <span class="math" data-tex="\(2mvw\)">\(2mvw\)</span> have weight <span class="math" data-tex="\(O(\log\log X)\)">\(O(\log\log X)\)</span>. For <span class="math" data-tex="\(p\nmid2mvw\)">\(p\nmid2mvw\)</span>, <span class="math" data-tex="\(\chi(p)=(vw/p)\in\{\pm1\}\)">\(\chi(p)=(vw/p)\in\{\pm1\}\)</span> and <span class="math" data-tex="\(\mathbf 1_{(vw/p)=1}=(1+\chi(p))/2\)">\(\mathbf 1_{(vw/p)=1}=(1+\chi(p))/2\)</span>. Therefore the left side of (4.1), with <span class="math" data-tex="\(p^s\)">\(p^s\)</span> in place of <span class="math" data-tex="\(p\)">\(p\)</span>, is at least
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac12\sum_{p\le Q_2}\frac{(1+\chi(p))\log p}{p^s}\\
+&amp;\qquad -O(\log\log X)
+\ge\Bigl(0.05-2C_z\eta\\
+&amp;\qquad -0.1e^{-5+50\eta}-o(1)\Bigr)\log X,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac12\sum_{p\le Q_2}\frac{(1+\chi(p))\log p}{p^s}\\
+&amp;\qquad -O(\log\log X)
+\ge\Bigl(0.05-2C_z\eta\\
+&amp;\qquad -0.1e^{-5+50\eta}-o(1)\Bigr)\log X,
+\end{aligned}
+\]</span>
+using <span class="math" data-tex="\(\log Q_0=2\eta\log X+O(1)\)">\(\log Q_0=2\eta\log X+O(1)\)</span> and bounding the tail <span class="math" data-tex="\(\sum_{p&gt;Q_2}\chi(p)\log p/p^s\)">\(\sum_{p&gt;Q_2}\chi(p)\log p/p^s\)</span> by the unsigned tail. By the choice of <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, <span class="math" data-tex="\(2C_z\eta\le0.01\)">\(2C_z\eta\le0.01\)</span> and <span class="math" data-tex="\(0.1e^{-5+50\eta}&lt;0.001\)">\(0.1e^{-5+50\eta}&lt;0.001\)</span>, so the coefficient exceeds <span class="math" data-tex="\(0.03\)">\(0.03\)</span> for large <span class="math" data-tex="\(X\)">\(X\)</span>. Replacing <span class="math" data-tex="\(p^s\)">\(p^s\)</span> by <span class="math" data-tex="\(p\)">\(p\)</span> only increases the sum. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-collision-contradiction">5. The collision contradiction</h2>
+<p>For <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span> and a prime <span class="math" data-tex="\(p\)">\(p\)</span>, let <span class="math" data-tex="\(\beta_i(p)\)">\(\beta_i(p)\)</span> be the probability that two independent uniform elements of <span class="math" data-tex="\(\mathcal R_i\)">\(\mathcal R_i\)</span> are congruent modulo <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p><strong>Upper bound.</strong> For unequal elements of <span class="math" data-tex="\(\mathcal R_i\)">\(\mathcal R_i\)</span>, the primes dividing their difference have product at most the diameter <span class="math" data-tex="\(X^{1/2+o(1)}\)">\(X^{1/2+o(1)}\)</span>. Equal elements have probability <span class="math" data-tex="\(1/|\mathcal R_i|\le X^{-1/2+3\eta}\)">\(1/|\mathcal R_i|\le X^{-1/2+3\eta}\)</span>, and then the primes up to <span class="math" data-tex="\(Q_2\)">\(Q_2\)</span> contribute <span class="math" data-tex="\(O(Q_2)=O(X^{1/2-5\eta})\)">\(O(Q_2)=O(X^{1/2-5\eta})\)</span>. As in (2.1) of Lesson 2,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{p\le Q_2}\log p\,\bigl(\beta_1(p)+\beta_2(p)\bigr)\\
+&amp;\quad \le(1+o(1))\log X.\quad(5.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{p\le Q_2}\log p\,\bigl(\beta_1(p)+\beta_2(p)\bigr)\\
+&amp;\quad \le(1+o(1))\log X.\quad(5.1)
+\end{aligned}
+\]</span></p>
+<p><strong>Lower bound.</strong> Always <span class="math" data-tex="\(\beta_i(p)\ge1/p\)">\(\beta_i(p)\ge1/p\)</span>, by Cauchy–Schwarz over the residue classes. Let <span class="math" data-tex="\(p\)">\(p\)</span> be a prime counted in (4.1). Then <span class="math" data-tex="\(p\nmid vw\)">\(p\nmid vw\)</span> and <span class="math" data-tex="\((vw/p)=1\)">\((vw/p)=1\)</span>, so <span class="math" data-tex="\(w\overline v\)">\(w\overline v\)</span> is a nonzero square modulo <span class="math" data-tex="\(p\)">\(p\)</span>; choose <span class="math" data-tex="\(c_p\)">\(c_p\)</span> with <span class="math" data-tex="\(c_p^2\equiv w\overline v\pmod p\)">\(c_p^2\equiv w\overline v\pmod p\)</span>. <em>The residues of <span class="math" data-tex="\(\mathcal R_1\)">\(\mathcal R_1\)</span> and of <span class="math" data-tex="\(c_p\mathcal R_2\)">\(c_p\mathcal R_2\)</span> modulo <span class="math" data-tex="\(p\)">\(p\)</span> are disjoint.</em> Indeed, <span class="math" data-tex="\(t_x\equiv c_pt_y\pmod p\)">\(t_x\equiv c_pt_y\pmod p\)</span> would give <span class="math" data-tex="\(vt_x^2\equiv wt_y^2\)">\(vt_x^2\equiv wt_y^2\)</span>, that is <span class="math" data-tex="\(mx-h\equiv my-h\pmod p\)">\(mx-h\equiv my-h\pmod p\)</span>, so <span class="math" data-tex="\(p\mid m(x-y)\)">\(p\mid m(x-y)\)</span>. Since <span class="math" data-tex="\(p\nmid m\)">\(p\nmid m\)</span>, <span class="math" data-tex="\(p\mid x-y\)">\(p\mid x-y\)</span>; but <span class="math" data-tex="\(x-y\)">\(x-y\)</span> is a prime larger than <span class="math" data-tex="\(X^{9/10}&gt;Q_2\ge p\)">\(X^{9/10}&gt;Q_2\ge p\)</span>, as in Lemma 3.1. Let the two residue sets have <span class="math" data-tex="\(a_p\)">\(a_p\)</span> and <span class="math" data-tex="\(b_p\)">\(b_p\)</span> elements, so <span class="math" data-tex="\(a_p+b_p\le p\)">\(a_p+b_p\le p\)</span>. Multiplication by the unit <span class="math" data-tex="\(c_p\)">\(c_p\)</span> does not change the collision probability of <span class="math" data-tex="\(\mathcal R_2\)">\(\mathcal R_2\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\beta_1(p)+\beta_2(p)\ge\frac1{a_p}+\frac1{b_p}\\
+&amp;\quad \ge\frac4{a_p+b_p}\ge\frac4p.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\beta_1(p)+\beta_2(p)\ge\frac1{a_p}+\frac1{b_p}\\
+&amp;\quad \ge\frac4{a_p+b_p}\ge\frac4p.
+\end{aligned}
+\]</span>
+Hence, by Mertens' estimate and (4.1),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{p\le Q_2}\log p\,\bigl(\beta_1(p)+\beta_2(p)\bigr)\\
+&amp;\quad\ge2\sum_{p\le Q_2}\frac{\log p}p+2\sum_{p\ \text{in (4.1)}}\frac{\log p}p\\
+&amp;\quad\ge(1-10\eta+0.06-o(1))\log X.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{p\le Q_2}\log p\,\bigl(\beta_1(p)+\beta_2(p)\bigr)\\
+&amp;\quad\ge2\sum_{p\le Q_2}\frac{\log p}p+2\sum_{p\ \text{in (4.1)}}\frac{\log p}p\\
+&amp;\quad\ge(1-10\eta+0.06-o(1))\log X.
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(10\eta\le0.01\)">\(10\eta\le0.01\)</span>, this contradicts (5.1) for large <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p>The contradiction shows that the bias hypothesis of Section 2 of Lesson 3 fails, which proves Theorem 1.1 of Lesson 3, and with it Corollary 1.2 of Lesson 3. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-what-the-proof-used">6. What the proof used</h2>
+<p>The collision estimate enters twice: in Lesson 2, to make the empirical means over the tails close to the uniform means over <span class="math" data-tex="\(S_p\)">\(S_p\)</span>, and in Section 5, through the congruent-pair count for the sets of square roots. Exclusion enters three times: in the definition of <span class="math" data-tex="\(S_p\)">\(S_p\)</span>, in Lemma 3.1, and in Section 5, always in the form <em>a difference <span class="math" data-tex="\(x-y\)">\(x-y\)</span> of a large element of <span class="math" data-tex="\(A\)">\(A\)</span> and an element of <span class="math" data-tex="\(D\)">\(D\)</span> is a prime, so it has no small prime factor</em>. Coverage enters Lessons 3–6 only through the lower bounds for <span class="math" data-tex="\(|A_X|\)">\(|A_X|\)</span> and <span class="math" data-tex="\(|D_X|\)">\(|D_X|\)</span> from Lesson 2. Lessons 10 and 11 use it in an essential way: there every large prime, not just a dense set of them, must be a difference <span class="math" data-tex="\(a-d\)">\(a-d\)</span>.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> Show that for odd positive <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, <span class="math" data-tex="\(\frac{ab-1}2-\frac{a-1}2-\frac{b-1}2=\frac{(a-1)(b-1)}2\)">\(\frac{ab-1}2-\frac{a-1}2-\frac{b-1}2=\frac{(a-1)(b-1)}2\)</span>, and that this number is even.</p>
+<p><strong>7.2.</strong> Let <span class="math" data-tex="\(u\ne0\)">\(u\ne0\)</span> be a signed squarefree integer and <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> with <span class="math" data-tex="\((u,m)=1\)">\((u,m)=1\)</span>. Show that <span class="math" data-tex="\(ut^2\equiv c\pmod m\)">\(ut^2\equiv c\pmod m\)</span> has at most <span class="math" data-tex="\(2^{\omega(m)+1}\)">\(2^{\omega(m)+1}\)</span> solutions <span class="math" data-tex="\(t\bmod m\)">\(t\bmod m\)</span> when <span class="math" data-tex="\(c\)">\(c\)</span> is a unit, and give an example with exactly <span class="math" data-tex="\(2^{\omega(m)+1}\)">\(2^{\omega(m)+1}\)</span> solutions.</p>
+<p><strong>7.3.</strong> In Proposition 4.1, check the two numerical inequalities <span class="math" data-tex="\(2C_z\eta\le0.01\)">\(2C_z\eta\le0.01\)</span> and <span class="math" data-tex="\(0.1e^{-5+50\eta}&lt;0.001\)">\(0.1e^{-5+50\eta}&lt;0.001\)</span> for <span class="math" data-tex="\(\eta\le\min(1/1000,1/(200C_z))\)">\(\eta\le\min(1/1000,1/(200C_z))\)</span>.</p>
+<p><strong>7.4.</strong> Show that for <span class="math" data-tex="\(0&lt;a\le b\)">\(0&lt;a\le b\)</span> and real <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, <span class="math" data-tex="\(\frac{a}{b}\cdot\frac{b^2+\gamma^2}{a^2+\gamma^2}\le\frac ba\)">\(\frac{a}{b}\cdot\frac{b^2+\gamma^2}{a^2+\gamma^2}\le\frac ba\)</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> Expand: <span class="math" data-tex="\(ab-1-(a-1)-(b-1)\)">\(ab-1-(a-1)-(b-1)\)</span><span class="math" data-tex="\(=ab-a-b+1=(a-1)(b-1)\)">\(=ab-a-b+1=(a-1)(b-1)\)</span>. For odd <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, both <span class="math" data-tex="\(a-1\)">\(a-1\)</span> and <span class="math" data-tex="\(b-1\)">\(b-1\)</span> are even, so <span class="math" data-tex="\((a-1)(b-1)\)">\((a-1)(b-1)\)</span> is divisible by <span class="math" data-tex="\(4\)">\(4\)</span> and its half is even.</p>
+<p><strong>7.2.</strong> Since <span class="math" data-tex="\(u\)">\(u\)</span> is a unit, the congruence is <span class="math" data-tex="\(t^2\equiv c\overline u\)">\(t^2\equiv c\overline u\)</span>, with a unit right side. By the Chinese remainder theorem the count is the product over prime powers <span class="math" data-tex="\(p^e\parallel m\)">\(p^e\parallel m\)</span>. For odd <span class="math" data-tex="\(p\)">\(p\)</span> the units modulo <span class="math" data-tex="\(p^e\)">\(p^e\)</span> form a cyclic group, in which a square has exactly two square roots. Modulo <span class="math" data-tex="\(2^e\)">\(2^e\)</span> a unit has at most four square roots (the group is <span class="math" data-tex="\(\{\pm1\}\times\)">\(\{\pm1\}\times\)</span> cyclic for <span class="math" data-tex="\(e\ge3\)">\(e\ge3\)</span>, and has order at most <span class="math" data-tex="\(2\)">\(2\)</span> for <span class="math" data-tex="\(e\le2\)">\(e\le2\)</span>). So the number is at most <span class="math" data-tex="\(2^{\omega(m)}\cdot2\)">\(2^{\omega(m)}\cdot2\)</span>. Example: <span class="math" data-tex="\(m=8\)">\(m=8\)</span>, <span class="math" data-tex="\(c=u=1\)">\(c=u=1\)</span>: <span class="math" data-tex="\(t\in\{1,3,5,7\}\)">\(t\in\{1,3,5,7\}\)</span>, four solutions, and <span class="math" data-tex="\(2^{\omega(8)+1}=4\)">\(2^{\omega(8)+1}=4\)</span>.</p>
+<p><strong>7.3.</strong> <span class="math" data-tex="\(2C_z\eta\le2C_z/(200C_z)=0.01\)">\(2C_z\eta\le2C_z/(200C_z)=0.01\)</span>. And <span class="math" data-tex="\(50\eta\le0.05\)">\(50\eta\le0.05\)</span>, so <span class="math" data-tex="\(0.1e^{-5+50\eta}\le0.1e^{-4.95}\)">\(0.1e^{-5+50\eta}\le0.1e^{-4.95}\)</span><span class="math" data-tex="\(&lt;0.1\cdot0.0071&lt;0.001\)">\(&lt;0.1\cdot0.0071&lt;0.001\)</span>.</p>
+<p><strong>7.4.</strong> Since <span class="math" data-tex="\(b\ge a&gt;0\)">\(b\ge a&gt;0\)</span>, <span class="math" data-tex="\((b^2+\gamma^2)/(a^2+\gamma^2)\le b^2/a^2\)">\((b^2+\gamma^2)/(a^2+\gamma^2)\le b^2/a^2\)</span>: cross-multiplying, <span class="math" data-tex="\(a^2b^2+a^2\gamma^2\le a^2b^2+b^2\gamma^2\)">\(a^2b^2+a^2\gamma^2\le a^2b^2+b^2\gamma^2\)</span>. Multiply by <span class="math" data-tex="\(a/b\)">\(a/b\)</span>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-013] OpenAI, <em>The additive indecomposability of the primes</em>, OpenAI Math Release preprint, 24 September 2026, Section 3: the quadratic large sieve and the number of kernels, populations in a kernel and disjoint prime supports, exceptional characters and split primes, (3.31)–(3.32), and the final collision contradiction. https://github.com/openai/math/tree/main/preprints/the-additive-indecomposability-of-the-primes-September-24-2026</li>
+<li>[HB] D. R. Heath-Brown, <em>A mean value estimate for real character sums</em>, Acta Arith. 72 (1995), no. 3, 235–275, Theorem 1. http://matwbn.icm.edu.pl/ksiazki/aa/aa72/aa7234.pdf</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

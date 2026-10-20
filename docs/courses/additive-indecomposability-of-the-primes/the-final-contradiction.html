@@ -1,0 +1,421 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The final contradiction</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Additive indecomposability of the primes)</a><a href="the-signed-and-norm-comparisons.html">Previous lesson</a><a href="src/the-final-contradiction.md">Editable source</a></nav><main><article><h1 id="the-final-contradiction">The final contradiction</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves Theorem 5.1 of Lesson 1, and with it Ostmann's conjecture (Theorem 1.1 of Lesson 1). Two bounds for the final amplitude <span class="math" data-tex="\(\eta_k\)">\(\eta_k\)</span> of Lesson 14 are played against each other. From below, the transfers propagate the lower bound <span class="math" data-tex="\(|\eta_0|\ge e^{-B_*m}\)">\(|\eta_0|\ge e^{-B_*m}\)</span> once their diagonals are controlled (Proposition 2.2). From above, the amplitude does not change when the bulk values are permuted among the bulk positions, so it can be averaged over all <span class="math" data-tex="\((rm)!\)">\((rm)!\)</span> arrangements. By the comparison estimates of Lesson 14, two random arrangements almost always correlate very little: most pairs have few overlap components (Lemma 1.1). The averaged amplitude is therefore small, provided the common regular factor has a controlled norm (Proposition 3.1). For a large fixed depth <span class="math" data-tex="\(k\)">\(k\)</span> and then large <span class="math" data-tex="\(L\)">\(L\)</span>, the upper bound falls below the lower bound.</p>
+<p><strong>Prerequisites.</strong> <a href="a-positive-statistic-and-its-binary-tree-transfers.html"><em>A positive statistic and its binary-tree transfers</em></a>; <a href="the-signed-and-norm-comparisons.html"><em>The signed and norm comparisons</em></a>; <a href="supports-a-progression-estimate-and-the-giants.html"><em>Supports, a progression estimate and the giants</em></a>, Lemma 2.1.</p>
+<p>All parameters, priors and zero conventions are those of Lesson 14. The constants written <span class="math" data-tex="\(C\)">\(C\)</span> in costs <span class="math" data-tex="\(Crm\)">\(Crm\)</span> do not depend on <span class="math" data-tex="\(k\)">\(k\)</span> or on the gap constants. Limits are taken with all constants and <span class="math" data-tex="\(k\)">\(k\)</span> fixed, and then <span class="math" data-tex="\(L\to\infty\)">\(L\to\infty\)</span>.</p>
+<h2 id="1-counting-bad-arrangements">1. Counting bad arrangements</h2>
+<p>At level <span class="math" data-tex="\(l\)">\(l\)</span> put <span class="math" data-tex="\(r=2^l\)">\(r=2^l\)</span>. Call a pair of arrangements of the <span class="math" data-tex="\(rm\)">\(rm\)</span> bulk variables <em>bad</em> if it is not covered by the signed comparison (6.2) of Lesson 14: for <span class="math" data-tex="\(l=0,1\)">\(l=0,1\)</span> every pair is bad, and for <span class="math" data-tex="\(l\ge2\)">\(l\ge2\)</span> a bad pair has more than <span class="math" data-tex="\(3r/4\)">\(3r/4\)</span> components in its overlap graph. Arrangements distinguish all bulk positions and all sampled bulk variables, so they are indexed by permutations even before any distinctness condition.</p>
+<p><strong>Lemma 1.1</strong> ([OpenAI-013, (9.1) and (9.2)]). For each fixed first arrangement, the number of bad second arrangements is at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;N_{\rm bad}(r,m)\\
+&amp;\quad \le(m!)^r\exp\Bigl(\bigl(\tfrac14\log r+C\bigr)rm\\
+&amp;\qquad +O_k(1)\Bigr),\quad(1.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;N_{\rm bad}(r,m)\\
+&amp;\quad \le(m!)^r\exp\Bigl(\bigl(\tfrac14\log r+C\bigr)rm\\
+&amp;\qquad +O_k(1)\Bigr),\quad(1.1)
+\end{aligned}
+\]</span>
+and consequently
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{N_{\rm bad}(r,m)}{(rm)!}\le\exp\Bigl(\bigl(-\tfrac34\log r\\
+&amp;\qquad +C\bigr)rm+O_k(1)\Bigr).\quad(1.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac{N_{\rm bad}(r,m)}{(rm)!}\le\exp\Bigl(\bigl(-\tfrac34\log r\\
+&amp;\qquad +C\bigr)rm+O_k(1)\Bigr).\quad(1.2)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(l\ge2\)">\(l\ge2\)</span>. In a component of the overlap graph, let <span class="math" data-tex="\(a_i\)">\(a_i\)</span> be its number of leaves on either side; the two numbers agree, because every vertex has degree <span class="math" data-tex="\(m\)">\(m\)</span> and the component's edges can be counted from either side. With <span class="math" data-tex="\(t&gt;3r/4\)">\(t&gt;3r/4\)</span> components,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{i=1}^ta_i=r,\\
+\sum_{i=1}^t(a_i-1)=r-t&lt;\frac r4 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{i=1}^ta_i=r,\\
+\sum_{i=1}^t(a_i-1)=r-t&lt;\frac r4 .
+\end{gathered}
+\]</span>
+There are only <span class="math" data-tex="\(e^{O_k(1)}\)">\(e^{O_k(1)}\)</span> ways to choose and pair the partitions of the two leaf sets into components. Once they are fixed, the <span class="math" data-tex="\(a_im\)">\(a_im\)</span> variables incident to the <span class="math" data-tex="\(i\)">\(i\)</span>-th component can be assigned to its <span class="math" data-tex="\(a_im\)">\(a_im\)</span> slots on the second side in at most <span class="math" data-tex="\((a_im)!\)">\((a_im)!\)</span> ways. For <span class="math" data-tex="\(1\le a\le r\)">\(1\le a\le r\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+a\log a&amp;=(a-1)\log a+\log a\\
+&amp;\le(a-1)(\log r+1),
+\end{aligned}\\
+(am)!\le(m!)^aa^{am},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+a\log a&amp;=(a-1)\log a+\log a\\
+&amp;\le(a-1)(\log r+1),
+\end{aligned}\\
+(am)!\le(m!)^aa^{am},
+\end{gathered}
+\]</span>
+the second because a multinomial coefficient <span class="math" data-tex="\((am)!/(m!)^a\)">\((am)!/(m!)^a\)</span> is at most the sum <span class="math" data-tex="\(a^{am}\)">\(a^{am}\)</span> of all multinomial coefficients with <span class="math" data-tex="\(a\)">\(a\)</span> parts. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\prod_i(a_im)!&amp;\le(m!)^r\exp\Bigl(m\sum_ia_i\log a_i\Bigr)\\
+&amp;\le(m!)^r\\
+&amp;\quad \exp\Bigl(\tfrac14(\log r+1)rm\Bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\prod_i(a_im)!&amp;\le(m!)^r\exp\Bigl(m\sum_ia_i\log a_i\Bigr)\\
+&amp;\le(m!)^r\\
+&amp;\quad \exp\Bigl(\tfrac14(\log r+1)rm\Bigr),
+\end{aligned}
+\]</span>
+which gives (1.1). For <span class="math" data-tex="\(r=1,2\)">\(r=1,2\)</span>, the bound <span class="math" data-tex="\((rm)!\le(m!)^rr^{rm}\)">\((rm)!\le(m!)^rr^{rm}\)</span> gives (1.1) after enlarging <span class="math" data-tex="\(C\)">\(C\)</span>. For (1.2), use <span class="math" data-tex="\(m!\le m^m\)">\(m!\le m^m\)</span> and <span class="math" data-tex="\((rm)!\ge(rm/e)^{rm}\)">\((rm)!\ge(rm/e)^{rm}\)</span>, so <span class="math" data-tex="\((m!)^r/(rm)!\le(e/r)^{rm}\)">\((m!)^r/(rm)!\le(e/r)^{rm}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In a diagonal, the matchings of the nonbulk slots have only <span class="math" data-tex="\(e^{O_k(1)}\)">\(e^{O_k(1)}\)</span> possibilities, since their number is fixed once <span class="math" data-tex="\(k\)">\(k\)</span> is.</p>
+<h2 id="2-the-diagonals-and-the-order-of-the-constants">2. The diagonals and the order of the constants</h2>
+<p>Let <span class="math" data-tex="\(\mathcal D_j\)">\(\mathcal D_j\)</span> be the nonnegative diagonal of step <span class="math" data-tex="\(j\)">\(j\)</span>, before the factor <span class="math" data-tex="\(e^{c_g}\)">\(e^{c_g}\)</span> of Proposition 5.1 of Lesson 14. At this step the compared amplitudes have level <span class="math" data-tex="\(j-1\)">\(j-1\)</span> and <span class="math" data-tex="\(r_j=2^{j-1}\)">\(r_j=2^{j-1}\)</span> leaves.</p>
+<p><strong>Lemma 2.1</strong> (the diagonal [OpenAI-013, (9.4)]). For <span class="math" data-tex="\(1\le j\le k\)">\(1\le j\le k\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal D_j&amp;\le\exp\Bigl(-\Delta_j+r_j\bigl\{\Delta_0+\bigl(\log z\\
+&amp;\quad +\tfrac14\log r_j+C\bigr)m\bigr\}\\
+&amp;\quad +o_k(m)\Bigr)\\
+&amp;\quad +\exp(-\omega_k(m)).\quad(2.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal D_j&amp;\le\exp\Bigl(-\Delta_j+r_j\bigl\{\Delta_0+\bigl(\log z\\
+&amp;\quad +\tfrac14\log r_j+C\bigr)m\bigr\}\\
+&amp;\quad +o_k(m)\Bigr)\\
+&amp;\quad +\exp(-\omega_k(m)).\quad(2.1)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> <em>Bad matchings.</em> For a bad matching, use <span class="math" data-tex="\(|A^{(1)}\overline{A^{(2)}}|\le\frac12(|A^{(1)}|^2+|A^{(2)}|^2)\)">\(|A^{(1)}\overline{A^{(2)}}|\le\frac12(|A^{(1)}|^2+|A^{(2)}|^2)\)</span> on their common support. In each of the two squares, extract the point probability of the <em>other</em> ordered tuple. On the common support it is at most <span class="math" data-tex="\(C_He^{-T_H+O_k(1)}\)">\(C_He^{-T_H+O_k(1)}\)</span>, with <span class="math" data-tex="\(C_H\le L^{-r_jm}e^{Cr_jm+O_k(1)}\)">\(C_H\le L^{-r_jm}e^{Cr_jm+O_k(1)}\)</span> by (5.4) of Lesson 14. The retained tuple is then summed with its own priors; this order works for both squares, also when a matching exchanges positions with different cell priors. The external integer measure and the weight <span class="math" data-tex="\(u\)">\(u\)</span> contribute <span class="math" data-tex="\(e^{G+r_jw_j}\)">\(e^{G+r_jw_j}\)</span>, and with <span class="math" data-tex="\(e^{-T_H}\)">\(e^{-T_H}\)</span> this gives <span class="math" data-tex="\(e^{-\Delta_j}\)">\(e^{-\Delta_j}\)</span>, by (4.1) of Lesson 14. The other archimedean factors are <span class="math" data-tex="\(e^{O_k(1)}\)">\(e^{O_k(1)}\)</span>. The one-assignment estimate (6.1) of Lesson 14, followed by (1.1), bounds the bad part by
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;e^{-\Delta_j}L^{-r_jm}(m!)^{r_j}\exp\Bigl(r_j\Delta_0\\
+&amp;\quad +\bigl(\tfrac14\log r_j+C\bigr)r_jm+o_k(m)\Bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;e^{-\Delta_j}L^{-r_jm}(m!)^{r_j}\exp\Bigl(r_j\Delta_0\\
+&amp;\quad +\bigl(\tfrac14\log r_j+C\bigr)r_jm+o_k(m)\Bigr),
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(L^{-r_jm}(m!)^{r_j}\le(m/L)^{r_jm}\le e^{r_jm\log z}\)">\(L^{-r_jm}(m!)^{r_j}\le(m/L)^{r_jm}\le e^{r_jm\log z}\)</span>, since <span class="math" data-tex="\(m\le zL\)">\(m\le zL\)</span>.</p>
+<p><em>Good matchings.</em> Every other matching satisfies (6.2) of Lesson 14, with its archimedean factor. After extracting the probabilities, the number and size of these terms cost at most <span class="math" data-tex="\(\exp(O_k(m))\)">\(\exp(O_k(m))\)</span>, for instance <span class="math" data-tex="\((r_jm)!L^{-r_jm}\)">\((r_jm)!L^{-r_jm}\)</span><span class="math" data-tex="\(\le\exp(r_jm\log(r_jm/L))\)">\(\le\exp(r_jm\log(r_jm/L))\)</span><span class="math" data-tex="\(=\exp(O_k(m))\)">\(=\exp(O_k(m))\)</span>. Their total is <span class="math" data-tex="\(\exp(-\omega_k(m))\)">\(\exp(-\omega_k(m))\)</span>, where <span class="math" data-tex="\(\omega_k(m)/m\to\infty\)">\(\omega_k(m)/m\to\infty\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>The order of the constants.</strong> The constant <span class="math" data-tex="\(B_s\)">\(B_s\)</span> has been chosen large enough for Proposition 3.1 of Lesson 14, whose <span class="math" data-tex="\(B_*\)">\(B_*\)</span> does not depend on the later gap constants or on <span class="math" data-tex="\(k\)">\(k\)</span>. Write <span class="math" data-tex="\(Z_G\)">\(Z_G\)</span> and <span class="math" data-tex="\(c_g=\log Z_G^{-1}\le0.91L\)">\(c_g=\log Z_G^{-1}\le0.91L\)</span> as in (1.5) of Lesson 14. Fix
+<span class="math math-display" data-tex="\[
+B=B_*+3 .
+\tag{2.2}
+\]">\[
+B=B_*+3 .
+\tag{2.2}
+\]</span>
+Choose <span class="math" data-tex="\(B_z\ge9\)">\(B_z\ge9\)</span>, and then <span class="math" data-tex="\(B_D\)">\(B_D\)</span> with
+<span class="math math-display" data-tex="\[
+B_D\ge B_s+2B+C+6,
+\tag{2.3}
+\]">\[
+B_D\ge B_s+2B+C+6,
+\tag{2.3}
+\]</span>
+where <span class="math" data-tex="\(C\)">\(C\)</span> dominates the uniform constant in (2.1). These constants are fixed before <span class="math" data-tex="\(k\)">\(k\)</span>. Substituting (1.1) of Lesson 14, the exponent of the first term of (2.1), divided by <span class="math" data-tex="\(r_jm\)">\(r_jm\)</span>, is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;B_s-B_D+(9-B_z)\log z\\
+&amp;\quad -\tfrac3{20}\log r_j+C+o_k(1),\quad(2.4)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;B_s-B_D+(9-B_z)\log z\\
+&amp;\quad -\tfrac3{20}\log r_j+C+o_k(1),\quad(2.4)
+\end{aligned}
+\]</span>
+using <span class="math" data-tex="\(\Delta_j/(r_jm)=B_D+B_z\log z+0.4\log r_j\)">\(\Delta_j/(r_jm)=B_D+B_z\log z+0.4\log r_j\)</span>, <span class="math" data-tex="\(\Delta_0/m=B_s+8\log z\)">\(\Delta_0/m=B_s+8\log z\)</span>, and <span class="math" data-tex="\(\frac14-0.4=-\frac3{20}\)">\(\frac14-0.4=-\frac3{20}\)</span>. By (2.3), (2.4) is at most <span class="math" data-tex="\(-2B-6+o_k(1)\)">\(-2B-6+o_k(1)\)</span>. So for every sufficiently large fixed <span class="math" data-tex="\(k\)">\(k\)</span> and then large <span class="math" data-tex="\(L\)">\(L\)</span>, uniformly for <span class="math" data-tex="\(1\le j\le k\)">\(1\le j\le k\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal D_j\\
+&amp;\quad \le\exp\bigl(-(2B+3)r_jm\bigr).\quad(2.5)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathcal D_j\\
+&amp;\quad \le\exp\bigl(-(2B+3)r_jm\bigr).\quad(2.5)
+\end{aligned}
+\]</span>
+The depth <span class="math" data-tex="\(k\)">\(k\)</span> is chosen in Section 4; it is required already to be so large that, with <span class="math" data-tex="\(m=k^4L+O(1)\)">\(m=k^4L+O(1)\)</span>,
+<span class="math math-display" data-tex="\[
+\frac{c_g+\log2}m\le\frac2{k^4}&lt;1
+\tag{2.6}
+\]">\[
+\frac{c_g+\log2}m\le\frac2{k^4}&lt;1
+\tag{2.6}
+\]</span>
+for all large <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p><strong>Proposition 2.2</strong> (the lower bound [OpenAI-013, (9.11)]). For large <span class="math" data-tex="\(L\)">\(L\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+-\log|\eta_j|&amp;\le2^jB_*m\\
+&amp;\quad +(2^j-1)(c_g+\log2)\\
+&amp;&lt;B2^jm
+\end{aligned}\\
+(0\le j\le k).\quad(2.7)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+-\log|\eta_j|&amp;\le2^jB_*m\\
+&amp;\quad +(2^j-1)(c_g+\log2)\\
+&amp;&lt;B2^jm
+\end{aligned}\\
+(0\le j\le k).\quad(2.7)
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> By Proposition 5.1 of Lesson 14, <span class="math" data-tex="\(e^{-c_g}|\eta_{j-1}|^2\le\mathcal D_j+\eta_j\le\mathcal D_j+|\eta_j|\)">\(e^{-c_g}|\eta_{j-1}|^2\le\mathcal D_j+\eta_j\le\mathcal D_j+|\eta_j|\)</span>. If <span class="math" data-tex="\(|\eta_{j-1}|\ge e^{-Br_jm}\)">\(|\eta_{j-1}|\ge e^{-Br_jm}\)</span>, then (2.5) and (2.6) give <span class="math" data-tex="\(\mathcal D_j\le\frac12e^{-c_g}|\eta_{j-1}|^2\)">\(\mathcal D_j\le\frac12e^{-c_g}|\eta_{j-1}|^2\)</span>, because <span class="math" data-tex="\(e^{-3r_jm}\le\frac12e^{-c_g}\)">\(e^{-3r_jm}\le\frac12e^{-c_g}\)</span>. Hence
+<span class="math math-display" data-tex="\[
+|\eta_j|\ge\tfrac12e^{-c_g}|\eta_{j-1}|^2 .
+\tag{2.8}
+\]">\[
+|\eta_j|\ge\tfrac12e^{-c_g}|\eta_{j-1}|^2 .
+\tag{2.8}
+\]</span>
+Induct on <span class="math" data-tex="\(j\)">\(j\)</span>. For <span class="math" data-tex="\(j=0\)">\(j=0\)</span>, (2.7) is Proposition 3.1 of Lesson 14. If (2.7) holds at <span class="math" data-tex="\(j-1\)">\(j-1\)</span>, its right inequality gives the hypothesis <span class="math" data-tex="\(|\eta_{j-1}|\ge e^{-Br_jm}\)">\(|\eta_{j-1}|\ge e^{-Br_jm}\)</span>, so (2.8) holds, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+-\log|\eta_j|&amp;\le(c_g+\log2)\\
+&amp;\quad +2\bigl(2^{j-1}B_*m\\
+&amp;\quad +(2^{j-1}-1)(c_g+\log2)\bigr)\\
+&amp;=2^jB_*m\\
+&amp;\quad +(2^j-1)(c_g+\log2).
+\end{aligned}
+\]">\[
+\begin{aligned}
+-\log|\eta_j|&amp;\le(c_g+\log2)\\
+&amp;\quad +2\bigl(2^{j-1}B_*m\\
+&amp;\quad +(2^{j-1}-1)(c_g+\log2)\bigr)\\
+&amp;=2^jB_*m\\
+&amp;\quad +(2^j-1)(c_g+\log2).
+\end{aligned}
+\]</span>
+By (2.6), this is less than <span class="math" data-tex="\(2^jm(B_*+2/k^4)&lt;B2^jm\)">\(2^jm(B_*+2/k^4)&lt;B2^jm\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The reserve is inherited from the initial estimate rather than spent afresh at each step: the loss <span class="math" data-tex="\(c_g+\log2\)">\(c_g+\log2\)</span> per step doubles along with everything else, and stays below one unit of <span class="math" data-tex="\(B\)">\(B\)</span> in total.</p>
+<h2 id="3-the-norm-of-the-common-regular-transform">3. The norm of the common regular transform</h2>
+<p>At the final level <span class="math" data-tex="\(r=2^k\)">\(r=2^k\)</span>. Recall from (4.2) of Lesson 14 that <span class="math" data-tex="\(\eta_k=\mathbb E\sum_sG_R(s/d)A_k(s)\)">\(\eta_k=\mathbb E\sum_sG_R(s/d)A_k(s)\)</span>, where <span class="math" data-tex="\(G_R\)">\(G_R\)</span> is the product of the regular transforms of the final list.</p>
+<p><strong>Proposition 3.1</strong> ([OpenAI-013, (9.12)]). With an absolute implied constant, for large <span class="math" data-tex="\(L\)">\(L\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E_{\mathbf d,\mathcal I_k}\sum_{0&lt;|s|\le V_k}|G_R(s/d)|^2\\
+&amp;\quad \ll V_k .\quad(3.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E_{\mathbf d,\mathcal I_k}\sum_{0&lt;|s|\le V_k}|G_R(s/d)|^2\\
+&amp;\quad \ll V_k .\quad(3.1)
+\end{aligned}
+\]</span>
+Only the distinctness and coprimality conventions of <span class="math" data-tex="\(G_R\)">\(G_R\)</span> are used; the bins and the history conditions belong to the coefficients.</p>
+<p><em>Proof.</em> Fix <span class="math" data-tex="\(s\)">\(s\)</span>, the spectator list <span class="math" data-tex="\(\mathbf d\)">\(\mathbf d\)</span>, the actual regular small primes, and one of the two giant primes, <span class="math" data-tex="\(q\)">\(q\)</span>; configurations with a repeated regular small prime, or one dividing <span class="math" data-tex="\(d\)">\(d\)</span>, give zero. Let <span class="math" data-tex="\(C\)">\(C\)</span> be the squarefree product of the remaining regular small primes and <span class="math" data-tex="\(p\)">\(p\)</span> the other giant. Both giant transforms have modulus at most <span class="math" data-tex="\(1\)">\(1\)</span>; dropping them, the remaining factor is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F(p\bmod C),\\
+F(a)=\prod_{\ell\mid C}\bigl|g_\ell(a_\ell a^{-1}\bmod\ell)\bigr|^2,\\
+a_\ell=\frac s{dq(C/\ell)}\bmod\ell .\quad(3.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+F(p\bmod C),\\
+F(a)=\prod_{\ell\mid C}\bigl|g_\ell(a_\ell a^{-1}\bmod\ell)\bigr|^2,\\
+a_\ell=\frac s{dq(C/\ell)}\bmod\ell .\quad(3.2)
+\end{gathered}
+\]</span>
+All <span class="math" data-tex="\(a_\ell\)">\(a_\ell\)</span> are units: the retained primes are distinct and coprime to <span class="math" data-tex="\(d\)">\(d\)</span>, and <span class="math" data-tex="\(0&lt;|s|\le V_k\)">\(0&lt;|s|\le V_k\)</span> is smaller than every prime. The condition <span class="math" data-tex="\(p\ne q\)">\(p\ne q\)</span> can be dropped, since the expression stays nonnegative and defined. Every prime <span class="math" data-tex="\(p\)">\(p\)</span> of the giant cell is a unit modulo <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p><em>Exact averages.</em> As <span class="math" data-tex="\(a\)">\(a\)</span> runs over <span class="math" data-tex="\(U_C=(\mathbb Z/C)^\times\)">\(U_C=(\mathbb Z/C)^\times\)</span>, the arguments <span class="math" data-tex="\(a_\ell a^{-1}\bmod\ell\)">\(a_\ell a^{-1}\bmod\ell\)</span> are, by the Chinese remainder theorem, independent and uniform on the nonzero residues. Since <span class="math" data-tex="\(g_\ell(0)=0\)">\(g_\ell(0)=0\)</span> and <span class="math" data-tex="\(\ell^{-1}\sum_x|g_\ell(x)|^2=1\)">\(\ell^{-1}\sum_x|g_\ell(x)|^2=1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{a\in U_C}F(a)=C,\\
+\begin{aligned}
+&amp;\frac1{\varphi(C)}\sum_{a\in U_C}F(a)=\prod_{\ell\mid C}\frac\ell{\ell-1}\\
+&amp;\quad =1+o_k(1),
+\end{aligned}\quad(3.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{a\in U_C}F(a)=C,\\
+\begin{aligned}
+&amp;\frac1{\varphi(C)}\sum_{a\in U_C}F(a)=\prod_{\ell\mid C}\frac\ell{\ell-1}\\
+&amp;\quad =1+o_k(1),
+\end{aligned}\quad(3.3)
+\end{gathered}
+\]</span>
+because there are <span class="math" data-tex="\(O_k(m)\)">\(O_k(m)\)</span> factors, each prime being at least <span class="math" data-tex="\(\exp(e^{0.004L})\)">\(\exp(e^{0.004L})\)</span>. No pointwise bound on the <span class="math" data-tex="\(g_\ell\)">\(g_\ell\)</span> is used.</p>
+<p><em>The prime average.</em> The size bounds give <span class="math" data-tex="\(\log C=O_k(h+me^{0.006L})\le e^{0.012L}\)">\(\log C=O_k(h+me^{0.006L})\le e^{0.012L}\)</span>, so Lemma 2.1 of Lesson 15 with the giant row applies to the modulus <span class="math" data-tex="\(C\)">\(C\)</span>. With <span class="math" data-tex="\(\varepsilon_L=\exp(-c\exp(0.018L))\)">\(\varepsilon_L=\exp(-c\exp(0.018L))\)</span>, splitting the support of <span class="math" data-tex="\(\varphi(t-G)\)">\(\varphi(t-G)\)</span> into intervals of length at most <span class="math" data-tex="\(1\)">\(1\)</span> and summing by parts gives, uniformly for <span class="math" data-tex="\(a\in U_C\)">\(a\in U_C\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\substack{p\ \text{prime}\\p\equiv a\ (C)}}\frac{\varphi(\log p-G)}p\\
+&amp;\quad =\frac1{\varphi(C)}\int\frac{\varphi(t-G)}t\bigl(1\\
+&amp;\qquad -\chi_*(a)e^{(\beta_*-1)t}\bigr)dt\\
+&amp;\qquad +O(\varepsilon_L),\quad(3.4)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\substack{p\ \text{prime}\\p\equiv a\ (C)}}\frac{\varphi(\log p-G)}p\\
+&amp;\quad =\frac1{\varphi(C)}\int\frac{\varphi(t-G)}t\bigl(1\\
+&amp;\qquad -\chi_*(a)e^{(\beta_*-1)t}\bigr)dt\\
+&amp;\qquad +O(\varepsilon_L),\quad(3.4)
+\end{aligned}
+\]</span>
+the exceptional term being absent if there is no exceptional character or its conductor does not divide <span class="math" data-tex="\(C\)">\(C\)</span>. In any case <span class="math" data-tex="\(0\le1-\chi_*(a)e^{(\beta_*-1)t}\le2\)">\(0\le1-\chi_*(a)e^{(\beta_*-1)t}\le2\)</span>; this pointwise bound suffices even if the exceptional character correlates with <span class="math" data-tex="\(F\)">\(F\)</span>. Multiply (3.4) by <span class="math" data-tex="\(F(a)\ge0\)">\(F(a)\ge0\)</span>, sum over <span class="math" data-tex="\(a\in U_C\)">\(a\in U_C\)</span>, and divide by <span class="math" data-tex="\(Z_G\)">\(Z_G\)</span>. The exact sum (3.3) both bounds the main term and sums the errors:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E_pF(p\bmod C)\le2\frac C{\varphi(C)}\\
+&amp;\qquad \cdot\frac{\int\varphi(t-G)\,dt/t}{Z_G}\\
+&amp;\qquad +O\bigl(Z_G^{-1}C\varepsilon_L\bigr)\\
+&amp;\quad =2+o_k(1),\quad(3.5)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E_pF(p\bmod C)\le2\frac C{\varphi(C)}\\
+&amp;\qquad \cdot\frac{\int\varphi(t-G)\,dt/t}{Z_G}\\
+&amp;\qquad +O\bigl(Z_G^{-1}C\varepsilon_L\bigr)\\
+&amp;\quad =2+o_k(1),\quad(3.5)
+\end{aligned}
+\]</span>
+since the integral divided by <span class="math" data-tex="\(Z_G\)">\(Z_G\)</span> is <span class="math" data-tex="\(1+o(1)\)">\(1+o(1)\)</span>, <span class="math" data-tex="\(Z_G^{-1}=e^{O(L)}\)">\(Z_G^{-1}=e^{O(L)}\)</span>, <span class="math" data-tex="\(\log C\le e^{0.012L}\)">\(\log C\le e^{0.012L}\)</span>, and <span class="math" data-tex="\(\varepsilon_L=\exp(-ce^{0.018L})\)">\(\varepsilon_L=\exp(-ce^{0.018L})\)</span>. All estimates are uniform in <span class="math" data-tex="\(s\)">\(s\)</span>, <span class="math" data-tex="\(\mathbf d\)">\(\mathbf d\)</span>, <span class="math" data-tex="\(q\)">\(q\)</span> and the retained small primes. Averaging these and summing over at most <span class="math" data-tex="\(2V_k\)">\(2V_k\)</span> frequencies proves (3.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-symmetrization-and-the-contradiction">4. Symmetrization and the contradiction</h2>
+<p>Let <span class="math" data-tex="\(\mathfrak S_{rm}\)">\(\mathfrak S_{rm}\)</span> permute the values in the <span class="math" data-tex="\(rm\)">\(rm\)</span> bulk positions of the final list, keeping every other position fixed. The bulk priors are identical, including their deletions, so their joint law is invariant under this action. The common factor <span class="math" data-tex="\(G_R(s/d)\)">\(G_R(s/d)\)</span> is invariant too: the product <span class="math" data-tex="\(R\)">\(R\)</span>, its set of prime factors, the transform attached to each bulk prime value, and every argument <span class="math" data-tex="\(s/(d(R/\ell))\)">\(s/(d(R/\ell))\)</span> are unchanged, and so are its distinctness and coprimality conventions. Put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A_{\rm sym}(s)&amp;=\frac1{(rm)!}\sum_{\pi\in\mathfrak S_{rm}}A_k^\pi(s),\quad(4.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+A_{\rm sym}(s)&amp;=\frac1{(rm)!}\sum_{\pi\in\mathfrak S_{rm}}A_k^\pi(s),\quad(4.1)
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(A_k^\pi\)">\(A_k^\pi\)</span> has its bulk values placed according to <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Changing variables separately for each permutation in (4.2) of Lesson 14,
+<span class="math math-display" data-tex="\[
+\eta_k=\mathbb E\sum_{0&lt;|s|\le V_k}G_R(s/d)\,A_{\rm sym}(s).
+\]">\[
+\eta_k=\mathbb E\sum_{0&lt;|s|\le V_k}G_R(s/d)\,A_{\rm sym}(s).
+\]</span>
+The bins and the history conditions stay inside each <span class="math" data-tex="\(A_k^\pi\)">\(A_k^\pi\)</span>; they need not be invariant. By Cauchy–Schwarz and Proposition 3.1,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|\eta_k|^2&amp;\le\Bigl(\mathbb E\sum_s|G_R(s/d)|^2\Bigr)\\
+&amp;\quad \Bigl(\mathbb E\sum_s|A_{\rm sym}(s)|^2\Bigr)\\
+&amp;\ll V_k\,\mathbb E\sum_s|A_{\rm sym}(s)|^2 .\quad(4.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+|\eta_k|^2&amp;\le\Bigl(\mathbb E\sum_s|G_R(s/d)|^2\Bigr)\\
+&amp;\quad \Bigl(\mathbb E\sum_s|A_{\rm sym}(s)|^2\Bigr)\\
+&amp;\ll V_k\,\mathbb E\sum_s|A_{\rm sym}(s)|^2 .\quad(4.2)
+\end{aligned}
+\]</span></p>
+<p><strong>The averaged coefficient.</strong> Expand <span class="math" data-tex="\(\mathbb E\sum_s|A_{\rm sym}(s)|^2\)">\(\mathbb E\sum_s|A_{\rm sym}(s)|^2\)</span> into ordered pairs of permutations. A bad pair contributes at most <span class="math" data-tex="\(\exp(r(\Delta_0+Cm)+o_k(m))\)">\(\exp(r(\Delta_0+Cm)+o_k(m))\)</span> in absolute value, by Cauchy–Schwarz and two applications of (6.1) of Lesson 14, and the bad pairs form at most the fraction (1.2) of all pairs. Every other pair satisfies (6.2) of Lesson 14 uniformly, so their average is at most <span class="math" data-tex="\(\exp(-\omega_k(m))\)">\(\exp(-\omega_k(m))\)</span>. With <span class="math" data-tex="\(V_k=e^{E_k}\)">\(V_k=e^{E_k}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|\eta_k|^2&amp;\ll e^{E_k}\Bigl[\exp\Bigl(r\bigl\{\Delta_0\\
+&amp;\quad +\bigl(-\tfrac34\log r+C\bigr)m\bigr\}\\
+&amp;\quad +o_k(m)\Bigr)\\
+&amp;\quad +\exp(-\omega_k(m))\Bigr].\quad(4.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+|\eta_k|^2&amp;\ll e^{E_k}\Bigl[\exp\Bigl(r\bigl\{\Delta_0\\
+&amp;\quad +\bigl(-\tfrac34\log r+C\bigr)m\bigr\}\\
+&amp;\quad +o_k(m)\Bigr)\\
+&amp;\quad +\exp(-\omega_k(m))\Bigr].\quad(4.3)
+\end{aligned}
+\]</span></p>
+<p><strong>The frequency budget.</strong> With <span class="math" data-tex="\(r_j=2^{j-1}\)">\(r_j=2^{j-1}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{j=1}^kr_j=r-1,\\
+\begin{aligned}
+&amp;\sum_{j=1}^kr_j\log r_j\\
+&amp;\quad =r\log r-2r\log2+2\log2,
+\end{aligned}
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{j=1}^kr_j=r-1,\\
+\begin{aligned}
+&amp;\sum_{j=1}^kr_j\log r_j\\
+&amp;\quad =r\log r-2r\log2+2\log2,
+\end{aligned}
+\end{gathered}
+\]</span>
+the second from <span class="math" data-tex="\(\sum_{i=0}^{k-1}i2^i=(k-2)2^k+2\)">\(\sum_{i=0}^{k-1}i2^i=(k-2)2^k+2\)</span>. By (1.1) of Lesson 14 they give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{E_k}{rm}&amp;\le\frac25\log r+B_D+B_s\\
+&amp;\quad +(B_z+8)\log z\\
+&amp;\quad +o_k(1).\quad(4.4)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{E_k}{rm}&amp;\le\frac25\log r+B_D+B_s\\
+&amp;\quad +(B_z+8)\log z\\
+&amp;\quad +o_k(1).\quad(4.4)
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(\Delta_0/m=B_s+8\log z\)">\(\Delta_0/m=B_s+8\log z\)</span>, the logarithm of the first term on the right of (4.3), divided by <span class="math" data-tex="\(rm\)">\(rm\)</span>, is at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;-\frac7{20}\log r+B_D+2B_s\\
+&amp;\quad +(B_z+16)\log z+C\\
+&amp;\quad +o_k(1).\quad(4.5)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;-\frac7{20}\log r+B_D+2B_s\\
+&amp;\quad +(B_z+16)\log z+C\\
+&amp;\quad +o_k(1).\quad(4.5)
+\end{aligned}
+\]</span></p>
+<p><strong>Choosing the depth.</strong> All constants in (4.5) other than <span class="math" data-tex="\(k\)">\(k\)</span> are fixed. Choose <span class="math" data-tex="\(k\)">\(k\)</span> so large, also satisfying (2.6), that (4.5) without its <span class="math" data-tex="\(o_k(1)\)">\(o_k(1)\)</span> is less than <span class="math" data-tex="\(-2B-4\)">\(-2B-4\)</span>. This is possible because <span class="math" data-tex="\(\log r=k\log2\)">\(\log r=k\log2\)</span> grows linearly in <span class="math" data-tex="\(k\)">\(k\)</span>, while <span class="math" data-tex="\(\log z=4\log k\)">\(\log z=4\log k\)</span>. Then take <span class="math" data-tex="\(L\)">\(L\)</span> large. The first term of (4.3) is at most <span class="math" data-tex="\(\exp(-(2B+3)rm)\)">\(\exp(-(2B+3)rm)\)</span>, after absorbing the absolute implied constant. The second is <span class="math" data-tex="\(\exp(O_k(m)-\omega_k(m))\)">\(\exp(O_k(m)-\omega_k(m))\)</span>, since <span class="math" data-tex="\(E_k=O_k(m)\)">\(E_k=O_k(m)\)</span>, which is also smaller than <span class="math" data-tex="\(\exp(-(2B+3)rm)\)">\(\exp(-(2B+3)rm)\)</span> for large <span class="math" data-tex="\(L\)">\(L\)</span>. So
+<span class="math math-display" data-tex="\[
+|\eta_k|^2\le\exp\bigl(-(2B+1)rm\bigr)
+\]">\[
+|\eta_k|^2\le\exp\bigl(-(2B+1)rm\bigr)
+\]</span>
+for large <span class="math" data-tex="\(L\)">\(L\)</span>. But (2.7) with <span class="math" data-tex="\(j=k\)">\(j=k\)</span> gives <span class="math" data-tex="\(|\eta_k|^2\ge\exp(-2Brm)\)">\(|\eta_k|^2\ge\exp(-2Brm)\)</span>. This contradiction shows that the standing assumption of Lesson 1 is impossible: no two infinite subsets of <span class="math" data-tex="\(\mathbb N_0\)">\(\mathbb N_0\)</span> have a sumset whose symmetric difference with the primes is finite. This proves Theorem 5.1 of Lesson 1, and with Lemma 4.1 of Lesson 1, Ostmann's conjecture. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-proof-as-a-whole">5. The proof as a whole</h2>
+<p><strong>The order of choices.</strong> The proof of Theorem 5.1 of Lesson 1 fixes, in this order:</p>
+<ol>
+<li>the sets <span class="math" data-tex="\(A,B\)">\(A,B\)</span>, the threshold <span class="math" data-tex="\(N\)">\(N\)</span>, and <span class="math" data-tex="\(N_*\)">\(N_*\)</span> (Lesson 1);</li>
+<li>for the final argument: <span class="math" data-tex="\(B_s\)">\(B_s\)</span> (Proposition 3.1 of Lesson 14), hence <span class="math" data-tex="\(B_*\)">\(B_*\)</span> and <span class="math" data-tex="\(B=B_*+3\)">\(B=B_*+3\)</span>; then <span class="math" data-tex="\(B_z\ge9\)">\(B_z\ge9\)</span> and <span class="math" data-tex="\(B_D\)">\(B_D\)</span> by (2.3);</li>
+<li>the depth <span class="math" data-tex="\(k\)">\(k\)</span>, large enough for (2.5), (2.6) and (4.5);</li>
+<li>finally <span class="math" data-tex="\(L\to\infty\)">\(L\to\infty\)</span>, which determines <span class="math" data-tex="\(h\)">\(h\)</span>, <span class="math" data-tex="\(m\)">\(m\)</span>, <span class="math" data-tex="\(G_0\)">\(G_0\)</span>, <span class="math" data-tex="\(G\)">\(G\)</span>, <span class="math" data-tex="\(X\)">\(X\)</span> and all priors.</li>
+</ol>
+<p>The earlier propositions (Theorem 1.1 of Lesson 3, Theorem 1.1 of Lesson 7, Theorem 6.1 of Lesson 9, Theorem 1.1 of Lesson 10, Lemma 1.2 of Lesson 12) are proved separately by their own contradictions, each with its own parameters.</p>
+<p><strong>Where each hypothesis enters.</strong></p>
+<ul>
+<li><em>Exclusion</em> (every large element of <span class="math" data-tex="\(A+B\)">\(A+B\)</span> is prime) makes the residues of the large elements of <span class="math" data-tex="\(A\)">\(A\)</span> and of <span class="math" data-tex="\(-B\)">\(-B\)</span> disjoint modulo every prime, which defines the supports <span class="math" data-tex="\(S_p\)">\(S_p\)</span> (Lesson 1). It is used again in Lessons 2 and 6, in the form that a difference of a large element of <span class="math" data-tex="\(A\)">\(A\)</span> and an element of <span class="math" data-tex="\(-B\)">\(-B\)</span> has no small prime factor.</li>
+<li><em>Coverage</em> (every large prime lies in <span class="math" data-tex="\(A+B\)">\(A+B\)</span>) gives the lower bounds for <span class="math" data-tex="\(A(x)\)">\(A(x)\)</span> and <span class="math" data-tex="\(B(x)\)">\(B(x)\)</span> (Lesson 2) and, decisively, the supply of nonsparse transforms (Lessons 10–11), where every large prime must be a difference <span class="math" data-tex="\(a-d\)">\(a-d\)</span>.</li>
+<li>The supports are <em>flat</em>: they correlate with no translated multiplicative character (Lessons 3–9). This is a consequence of exclusion through collision stability, the quadratic large sieve and the transfer argument.</li>
+</ul>
+<p><strong>What the proof does not give.</strong> The argument establishes no structure theorem for sets with large sieve restrictions, such as the inverse sieve conjecture of Green and Harper, and it gives no explicit bound: the constants come from compactness arguments and from Siegel's theorem, which is ineffective. It shows only that the assumed decomposition leads to two incompatible estimates for one amplitude.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Verify <span class="math" data-tex="\(\sum_{i=0}^{k-1}i2^i=(k-2)2^k+2\)">\(\sum_{i=0}^{k-1}i2^i=(k-2)2^k+2\)</span>, and deduce the formula for <span class="math" data-tex="\(\sum_jr_j\log r_j\)">\(\sum_jr_j\log r_j\)</span>.</p>
+<p><strong>6.2.</strong> In Lemma 1.1, check that <span class="math" data-tex="\((am)!\le(m!)^aa^{am}\)">\((am)!\le(m!)^aa^{am}\)</span> for <span class="math" data-tex="\(a=2\)">\(a=2\)</span>, <span class="math" data-tex="\(m=2\)">\(m=2\)</span>, and find the case of equality for <span class="math" data-tex="\(a=1\)">\(a=1\)</span>.</p>
+<p><strong>6.3.</strong> Verify the computation (2.4): <span class="math" data-tex="\(\frac14\log r_j-0.4\log r_j=-\frac3{20}\log r_j\)">\(\frac14\log r_j-0.4\log r_j=-\frac3{20}\log r_j\)</span>, and the combination of the <span class="math" data-tex="\(\log z\)">\(\log z\)</span> terms.</p>
+<p><strong>6.4.</strong> Explain why the depth <span class="math" data-tex="\(k\)">\(k\)</span> must be fixed before <span class="math" data-tex="\(L\to\infty\)">\(L\to\infty\)</span>, and could not be allowed to grow with <span class="math" data-tex="\(L\)">\(L\)</span> in this argument.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> By induction: for <span class="math" data-tex="\(k=1\)">\(k=1\)</span> both sides are <span class="math" data-tex="\(0\)">\(0\)</span>. If true for <span class="math" data-tex="\(k\)">\(k\)</span>, then <span class="math" data-tex="\(\sum_{i=0}^{k}i2^i=(k-2)2^k+2+k2^k\)">\(\sum_{i=0}^{k}i2^i=(k-2)2^k+2+k2^k\)</span><span class="math" data-tex="\(=(2k-2)2^k+2\)">\(=(2k-2)2^k+2\)</span><span class="math" data-tex="\(=(k-1)2^{k+1}+2\)">\(=(k-1)2^{k+1}+2\)</span>. With <span class="math" data-tex="\(r_j=2^{j-1}\)">\(r_j=2^{j-1}\)</span> and <span class="math" data-tex="\(r=2^k\)">\(r=2^k\)</span>, <span class="math" data-tex="\(\sum_{j=1}^kr_j\log r_j\)">\(\sum_{j=1}^kr_j\log r_j\)</span><span class="math" data-tex="\(=\log2\sum_{i=0}^{k-1}i2^i\)">\(=\log2\sum_{i=0}^{k-1}i2^i\)</span><span class="math" data-tex="\(=\log2\,((k-2)2^k+2)\)">\(=\log2\,((k-2)2^k+2)\)</span><span class="math" data-tex="\(=r\log r-2r\log2+2\log2\)">\(=r\log r-2r\log2+2\log2\)</span>.</p>
+<p><strong>6.2.</strong> For <span class="math" data-tex="\(a=m=2\)">\(a=m=2\)</span>: <span class="math" data-tex="\((4)!=24\le(2!)^2\cdot2^4=64\)">\((4)!=24\le(2!)^2\cdot2^4=64\)</span>. For <span class="math" data-tex="\(a=1\)">\(a=1\)</span>: <span class="math" data-tex="\((m)!\le m!\cdot1\)">\((m)!\le m!\cdot1\)</span>, always an equality.</p>
+<p><strong>6.3.</strong> <span class="math" data-tex="\(-\Delta_j/(r_jm)\)">\(-\Delta_j/(r_jm)\)</span><span class="math" data-tex="\(=-(B_D+B_z\log z+0.4\log r_j)\)">\(=-(B_D+B_z\log z+0.4\log r_j)\)</span>, and <span class="math" data-tex="\(\{\Delta_0\)">\(\{\Delta_0\)</span><span class="math" data-tex="\(+(\log z+\frac14\log r_j+C)m\}/m\)">\(+(\log z+\frac14\log r_j+C)m\}/m\)</span><span class="math" data-tex="\(=B_s+8\log z+\log z+\frac14\log r_j+C\)">\(=B_s+8\log z+\log z+\frac14\log r_j+C\)</span>. The sum has <span class="math" data-tex="\(\log z\)">\(\log z\)</span> coefficient <span class="math" data-tex="\(9-B_z\)">\(9-B_z\)</span> and <span class="math" data-tex="\(\log r_j\)">\(\log r_j\)</span> coefficient <span class="math" data-tex="\(\frac14-\frac25=-\frac3{20}\)">\(\frac14-\frac25=-\frac3{20}\)</span>.</p>
+<p><strong>6.4.</strong> Many estimates have errors <span class="math" data-tex="\(o_k(m)\)">\(o_k(m)\)</span> or bounds <span class="math" data-tex="\(e^{O_k(1)}\)">\(e^{O_k(1)}\)</span> whose dependence on <span class="math" data-tex="\(k\)">\(k\)</span> is not controlled: the number of histories and equality patterns, the derivative bounds <span class="math" data-tex="\(\exp(O_k(m))\)">\(\exp(O_k(m))\)</span>, and the tree comparison constant <span class="math" data-tex="\(C_l\)">\(C_l\)</span>. They are negligible only because <span class="math" data-tex="\(k\)">\(k\)</span> is fixed while <span class="math" data-tex="\(L\to\infty\)">\(L\to\infty\)</span>. The choice of <span class="math" data-tex="\(k\)">\(k\)</span> itself is made from constants independent of <span class="math" data-tex="\(k\)">\(k\)</span>, as in (2.3) and (4.5).</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-013] OpenAI, <em>The additive indecomposability of the primes</em>, OpenAI Math Release preprint, 24 September 2026, Section 9: counting bad arrangements (9.1)–(9.2), diagonal bounds and the order of parameter choices (9.3)–(9.11), the norm of the common regular transform (9.12)–(9.16), and symmetrization and contradiction (9.17)–(9.21). https://github.com/openai/math/tree/main/preprints/the-additive-indecomposability-of-the-primes-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

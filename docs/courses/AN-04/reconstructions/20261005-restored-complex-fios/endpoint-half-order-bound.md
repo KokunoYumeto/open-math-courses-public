@@ -2,7 +2,7 @@
 
 This proof supplies the particular endpoint needed by the complex FIO lesson: a left symbol of type \((1/2,1/2)\), with compact support in its base variable, defines a bounded operator on \(L^2\). Its constants use only finitely many symbol derivatives and a fixed compact base support. It also applies to a fixed finite matrix of such symbols.
 
-The earlier [complete AN-03 packet estimate E23–E27](../20261005-restored-airy-models/bounded-derivative-operators.md) supplies the bounded-derivative operator theorem and Schur's estimate. Its programme credit and CC0 dedication remain at that link. [Fourier L1–L3](../20261004-free-intrinsic-graph/prerequisites/fourier-l2.md) supplies Fourier inversion and Plancherel; [measure M0–M8](../20261004-free-intrinsic-graph/prerequisites/measure-and-l2.md) supplies integration, completeness and density. The cutoff construction is the earlier programme proof, bound in the accompanying proof map.
+The earlier complete AN-03 packet estimate E23–E27 supplies the bounded-derivative operator theorem and Schur's estimate. Its programme credit and component licence are given at that link. Fourier L1–L3 supplies Fourier inversion and Plancherel; measure M0–M8 supplies integration, completeness and density. The cutoff construction is the earlier programme proof, bound in the accompanying proof map.
 
 The general admissible-metric theorem in AN-03, *When a moving symbol scale controls an operator*, B26, gives a broader route, with B8a handling quantization changes. The present argument connects the particular endpoint directly to the complete packet proof already included in this course. It does not invoke the general moving-metric calculus or its quantization conversion.
 

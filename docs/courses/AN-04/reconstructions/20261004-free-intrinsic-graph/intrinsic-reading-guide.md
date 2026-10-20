@@ -8,9 +8,9 @@ This guide connects the local results listed below.
    endpoint Besov norm and finite-rank systems.
 2. [Conic frequency coordinates](prerequisites/conic-frequency-coordinates.md)
    supplies the base-coordinate construction of a graph.
-   [Coordinate and directional localization](prerequisites/coordinate-and-wavefront-localization.md)
+   Coordinate and directional localization
    proves transport, wavefront covariance and proper conic cutoffs.
-3. [Parametrices and intrinsic localization](prerequisites/conic-parametrices-and-localization.md)
+3. Parametrices and intrinsic localization
    supplies the full elliptic-test converse and independence of
    sufficiently small cutoffs and Lagrangian extensions.
 4. [Prescribed nondegenerate and clean phases](prerequisites/prescribed-phase-representation.md)

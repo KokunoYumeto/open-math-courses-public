@@ -534,7 +534,7 @@ The derivative \(dr/ds=s\) is positive on the positive sheet and negative on the
 
 ## 10. Scope and next geometry
 
-The ordinary folded Darboux theorem, its homogeneous version, both single-involution versions, the ordinary symplectic fold theorem and its full target converse are proved. Homogeneous invariant descent, the homogeneous target extension, and the nonradial forward construction are also proved, together with a closed symplectic quotient extension. The next step is to preserve the folded form while normalizing two involutions simultaneously, then construct both symplectic targets of a canonical relation. Neither that two-involution symplectic theorem nor the Airy integral or continuity theorem is asserted here.
+The ordinary folded Darboux theorem, its homogeneous version, both single-involution versions, the ordinary symplectic fold theorem and its full target converse are proved. Homogeneous invariant descent, the homogeneous target extension, and the nonradial forward construction are also proved, together with a closed symplectic quotient extension. Simultaneous normalization of two involutions while preserving the folded form, and the construction of both symplectic targets of a canonical relation, require additional geometric arguments. Neither that two-involution symplectic theorem nor the Airy integral or continuity theorem is asserted here.
 
 ## References and component notices
 

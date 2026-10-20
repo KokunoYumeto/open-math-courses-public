@@ -9967,6 +9967,584 @@ all-array coherence, nearby-cycle descent and coefficient completion
 remain additional proof obligations.
 
 
+### Compare whole inverses on the dual mixed diagram
+
+**Proposition B.1bg (a homogeneous inverse comparison).** On the actual dual mixed diagram of B.1bf, two whole-diagram resolution roofs admit a comparison of their inverse maps with a degree-minus-two component on the mixed generator. This component has the full endpoint boundary. The construction gives compatible endpoint choices; a comparison with independently prescribed endpoint homotopies retains the explicit obstruction described below.
+
+The preceding constructions are [whole natural resolutions](#natural-diagram-resolutions-and-relative-coherent-lifts), [the mixed bar roof](#place-the-mixed-cube-on-one-whole-inverse-model), [its signed dual](#dualize-the-mixed-model-with-all-graph-witnesses), and [the full record comparison](#compare-homogeneous-records-with-their-full-boundary).
+
+The coefficient and geometric hypotheses are those of B.1af. Let
+\(\mathcal I=\mathcal D^{\mathrm{op}}\) for the six-vertex free category of B.MP1, and let
+\[
+N_i=DR_i,\qquad N(t^{\mathrm{op}})=D(R(t)).
+\tag{B.WI1}
+\]
+Here \(R\) is the actual whole bar resolution in B.MP6–7. The dg-opposite signs are B.RD1. Thus \(N\) is a strict diagram of right kernels, with the original endpoint variables retained. Its distinguished arrow \(c^\vee:0\to3\) has degree \(-1\) and differential
+\[
+dc^\vee=T^\vee-B^\vee,
+\quad
+T^\vee=e_{23}^{\mathrm{op}}e_{12}^{\mathrm{op}}e_{01}^{\mathrm{op}},
+\quad
+B^\vee=e_{53}^{\mathrm{op}}e_{45}^{\mathrm{op}}e_{04}^{\mathrm{op}}.
+\tag{B.WI2}
+\]
+The edges have degree zero, so reversing their words introduces no additional sign. This diagram retains its maps \(Dp\), \(D\beta\) and its comparison witness \(Db\) from B.RD6–8. In particular the length-one coefficient \(-K\) of B.MP5 remains in \(\Psi\) and in that comparison. No inverse of the raw map \(Dq\) is used.
+
+#### 1. Two roofs and a comparison in the full natural Hom complex
+
+Apply B.ND5 over \(\mathcal I\) and both endpoint categories. For each \(\sigma=d,o\), choose whole h-projective resolutions
+\[
+a_\sigma:A_\sigma\longrightarrow N,
+\qquad
+b_\sigma:B_\sigma\longrightarrow N.
+\tag{B.WI3}
+\]
+Both arrows are closed quasi-isomorphisms of the entire diagrams. The letters \(d,o\) distinguish these two resolution choices. Identifying them with specified factorized geometric routes requires the additional comparison stated in paragraph 4 below. Existence here needs no h-projectivity of the dual diagram \(N\): it is the target of the resolutions. The free opposite index has the path filtration used in B.ND2, and B.ND6 makes their values h-projective as well.
+
+B.ND7 gives closed natural maps \(\beta_\sigma:A_\sigma\to B_\sigma\) and natural degree-minus-one maps \(t_\sigma:A_\sigma\to N\) such that
+\[
+b_\sigma\beta_\sigma-a_\sigma=dt_\sigma.
+\tag{B.WI4}
+\]
+It also gives closed natural maps \(X:A_d\to A_o\), \(Y:B_d\to B_o\) with witnesses
+\[
+a_oX-a_d=du,
+\qquad b_oY-b_d=dv.
+\tag{B.WI5}
+\]
+These choices take place before evaluation at a vertex. Their comparison square is
+\[
+\begin{array}{ccc}
+A_d&\xrightarrow{\ X\ }&A_o\\
+{\scriptstyle\beta_d}\downarrow&&\downarrow{\scriptstyle\beta_o}\\
+B_d&\xrightarrow{\ Y\ }&B_o.
+\end{array}
+\qquad
+\Delta=\beta_oX-Y\beta_d.
+\tag{B.WI6}
+\]
+Set
+\[
+K=u+t_oX-t_d-v\beta_d.
+\tag{B.WI7}
+\]
+All four terms map \(A_d\) to \(N\) in degree \(-1\). Substitution of B.WI4–5 gives
+\[
+\begin{aligned}
+dK
+&=a_oX-a_d+(b_o\beta_o-a_o)X\\
+&\quad-(b_d\beta_d-a_d)-(b_oY-b_d)\beta_d\\
+&=b_o\Delta.
+\end{aligned}
+\tag{B.WI8}
+\]
+Since \(A_d\) is whole h-projective, postcomposition by \(b_o\) is a quasi-isomorphism on its natural Hom complex. In particular \(\Delta\) is a boundary. Choose \(H_0\) with \(dH_0=\Delta\). The closed map \(b_oH_0-K\) has a degree-minus-one cohomology class lifted by a closed map \(Z:A_d\to B_o[-1]\). Subtracting \(Z\) gives maps \(H,V\) satisfying
+\[
+dH=\Delta,
+\qquad b_oH-K=dV,
+\qquad |H|=-1,\quad |V|=-2.
+\tag{B.WI9}
+\]
+Thus the comparison retains all four witnesses in B.WI7. The second equation is part of the construction, not a consequence of the first alone.
+
+Each \(\beta_\sigma\) is a quasi-isomorphism between whole h-projectives. To obtain its inverse, lift \(1_{B_\sigma}\) through \(\operatorname{Hom}(B_\sigma,\beta_\sigma)\), giving a closed \(\vartheta_\sigma\) and a homotopy for \(\beta_\sigma\vartheta_\sigma-1\). Postcomposing \(\vartheta_\sigma\beta_\sigma-1\) by \(\beta_\sigma\) then gives a boundary. Injectivity on cohomology of \(\operatorname{Hom}(A_\sigma,\beta_\sigma)\) supplies the other homotopy. Retain both whole witnesses:
+\[
+d\ell_\sigma=\vartheta_\sigma\beta_\sigma-1,
+\qquad dr_\sigma=\beta_\sigma\vartheta_\sigma-1.
+\tag{B.WI10}
+\]
+No compatibility is inferred from separately chosen vertex inverses.
+
+#### 2. The inverse homotopy and its value on a nonclosed record
+
+Define a degree-minus-one natural map \(J:B_d\to A_o\) by
+\[
+J=-\vartheta_oH\vartheta_d
+  +\ell_oX\vartheta_d
+  -\vartheta_oYr_d.
+\tag{B.WI11}
+\]
+The Leibniz rule gives
+\[
+\begin{aligned}
+dJ
+&=-\vartheta_o(\beta_oX-Y\beta_d)\vartheta_d\\
+&\quad+(\vartheta_o\beta_o-1)X\vartheta_d
+       -\vartheta_oY(\beta_d\vartheta_d-1)\\
+&=\vartheta_oY-X\vartheta_d.
+\end{aligned}
+\tag{B.WI12}
+\]
+Every term is a map of the whole diagrams of the indicated degree. In particular, B.ND4 applies to \(J\) on arrows of nonzero degree.
+
+For a homogeneous arrow \(f:i\to j\) in \(\mathcal I\), of degree \(n\), set
+\[
+\begin{aligned}
+\Theta_\sigma(f)
+   &=\vartheta_{\sigma,j}B_\sigma(f)
+     =A_\sigma(f)\vartheta_{\sigma,i},\\
+\mathcal J(f)&=J_j B_d(f)
+             =(-1)^n A_o(f)J_i.
+\end{aligned}
+\tag{B.WI13}
+\]
+The degrees are \(n\) and \(n-1\), respectively. The two equalities are the graded naturality identities, rather than choices of additional arrow homotopies. Differentiation, including the sign from \(|J|=-1\), yields
+\[
+\begin{aligned}
+d\mathcal J(f)+\mathcal J(df)
+ &= (dJ_j)B_d(f)\\
+ &=\Theta_o(f)Y_i-X_j\Theta_d(f).
+\end{aligned}
+\tag{B.WI14}
+\]
+For the last equality use the closed naturality of \(Y\), and then that of \(\vartheta_d\). This proves the identity on every homogeneous arrow and every finite linear combination of paths. The term \(\mathcal J(df)\) is essential when the record is not closed. Formula B.WI13 is a degree-minus-one map on the arrow complexes; no assertion that it is a derivation on path products is needed for B.WI14.
+
+For the actual mixed generator in B.WI2, put
+\[
+\mathcal J_H=J_3B_d(c^\vee),\qquad
+\mathcal J_T=J_3B_d(T^\vee),\qquad
+\mathcal J_B=J_3B_d(B^\vee).
+\tag{B.WI15}
+\]
+The first has degree \(-2\); the other two have degree \(-1\). The explicit higher boundary is
+\[
+d\mathcal J_H
+=\Theta_o(c^\vee)Y_0-X_3\Theta_d(c^\vee)
+ -\mathcal J_T+\mathcal J_B.
+\tag{B.WI16}
+\]
+Thus a higher comparison exists on these particular coherent whole roofs of the geometric mixed diagram. Its existence does not require vanishing of an arbitrary negative Hom group. It follows from the actual component B.WI15 of the whole map B.WI11.
+
+#### 3. Prescribed endpoint choices and their exact obstruction
+
+Suppose \(\mathcal J'_T,\mathcal J'_B\) are other endpoint homotopies on these same objects, with the same endpoint differentials as B.WI15. Set
+\[
+C_T=\mathcal J'_T-\mathcal J_T,
+\qquad C_B=\mathcal J'_B-\mathcal J_B.
+\tag{B.WI17}
+\]
+Both are closed. Keeping \(\Theta_o(c^\vee),\Theta_d(c^\vee),X,Y\) fixed, the obstruction with the primed endpoints is
+\[
+\mathcal O'
+=d\mathcal J_H-C_T+C_B.
+\tag{B.WI18}
+\]
+Consequently it has a primitive if and only if
+\([C_T-C_B]=0\) in the degree-minus-one whole endpoint-bimodule Hom group from \(B_d(0)\) to \(A_o(3)\). If \(dZ=C_T-C_B\), the primitive is exactly \(\mathcal J_H-Z\). Conversely any primitive \(J'_H\) gives \(d(\mathcal J_H-J'_H)=C_T-C_B\). This proves both directions and retains the original endpoint homotopies as distinct data. The nonzero class in the B.IW counterexample therefore remains an obstruction for its prescribed endpoints.
+
+#### 4. Factorized geometric routes
+
+The result supplies a homogeneous inverse comparison on the fixed dual mixed diagram, with explicit formulas for its endpoint displacements. It is the required form of input for B.RCmp1 when whole comparison maps identify \(Y_i\) with the appropriate \(L s\), \(X_j\) with \(vL_0\), and the two \(\Theta\)-families with the geometric cells on the same model. Those identifications must retain the KC signed evaluation roofs, the HN nested coefficient \(K_2\), and the original unit and triangle witnesses. B.WI3 alone does not establish them. In particular the letters \(d,o\) in B.WI3 are not an identification of the direct and ordered factorized functors.
+
+After those maps and their full comparisons are supplied, B.RCmp2–11 transport B.WI14 through the resolved mate and target calculations, including its nonclosed-record differential. An independently prescribed endpoint route additionally requires the comparison of B.WI17–18 on those actual transported objects. Changes of parameter index require the re-resolution in B.CE11. The simultaneous factorized transport, degree-minus-five triangle comparison, changing-array coherence, geometric nearby-cycle descent and normalized coefficient completion remain separate obligations. \(\square\)
+
+### Transport the mixed diagram through its factorized right kernels
+
+**Proposition B.1bh (the factorized mixed-kernel diagram).** The actual six-vertex diagram B.MX3 has right-kernel models given by the six ordered factorizations below. Its elementary edges can be taken factor by factor. They admit a comparison with the fixed dual mixed diagram, including the specified original edge homotopies and the higher mixed cell. The resulting higher right-kernel map compares the two actual factorized paths, and has a second witness in the dual mixed target.
+
+Use the Noetherian separated finite-type geometry, ordinary unbounded torsion coefficients and locally semifree endpoint categories of [B.1af](#the-proper-open-kernel-and-the-common-mixed-cube). All resolutions in this proof concern both endpoint variables. The comparison uses [the signed right-kernel evaluations](#join-the-geometric-kernels-in-right-module-variance), [the KC roofs](#construct-the-whole-bimodule-compact-support-base-change-cell), and [the whole mixed bar model and its dual](#dualize-the-mixed-model-with-all-graph-witnesses). The arbitrary commutative coefficient ring in the module calculations does not enlarge the geometric proper-base-change hypothesis.
+
+#### 1. The six factorizations and their actual evaluation maps
+
+Write \(a_T:T'\to T\), for \(T=U,Y,C,D\), for the vertical maps in the pullback of B.GC1. Let \(P_{a_T}\) denote its inverse-image right kernel. For an open or proper map \(t\), write \(H_t\) for the original compact-support right kernel, with its identity open or proper factor included. Thus \(H_h,H_p\) represent proper images and \(H_i,H_k\) represent extension by zero. This notation never identifies an unresolved proper image with its derived functor.
+
+Choose whole h-projective factor models for these kernels, retaining their augmentation and comparison roofs to the original \(P\)'s and \(H\)'s. In the table the same symbols denote those chosen models; a repeated geometric factor uses the same model. Tensor order is right-module order, so the leftmost operation is applied first:
+\[
+\begin{array}{c|c|c}
+v&F_v&K_v\\ \hline
+0&A_D i_!h_*&H_h\otimes H_i\otimes P_{a_D}\\
+1&A_D p_*k_!&H_k\otimes H_p\otimes P_{a_D}\\
+2&p'_*A_C k_!&H_k\otimes P_{a_C}\otimes H_{p'}\\
+3&p'_*k'_!A_U&P_{a_U}\otimes H_{k'}\otimes H_{p'}\\
+4&i'_!A_Y h_*&H_h\otimes P_{a_Y}\otimes H_{i'}\\
+5&i'_!h'_*A_U&P_{a_U}\otimes H_{h'}\otimes H_{i'}.
+\end{array}
+\tag{B.FK1}
+\]
+All tensors are balanced over the displayed intermediate scheme's endpoint category. Canonical associators identify different parentheses; the factor order is fixed. These are whole h-projective kernels from \(\mathcal E_U\) to \(\mathcal E_{D'}\). Indeed the exterior-cell proof in B.KC2 applies to each factor and to each finite tensor. On an h-projective source module, the retained factor augmentations identify the corresponding tensor functors with the original sequence of geometric functors. This uses K-flatness of the resolved source at each step and the preservation of h-projectives by the kernels, as in B.RK10.
+
+For an elementary left kernel \(L_F\), the factor comparison is a closed quasi-isomorphism from its chosen right model to \(DL_F\). For inverse image it is the right-model augmentation followed by
+\(DC_a\to DL_a\). The map \(L_a(-,I)\to C_a(-,I)\) is a homotopy equivalence of h-projective columns; its dual is therefore a homotopy equivalence. For open and proper maps use B.KC12–14 and double Yoneda, retaining the identity-factor evaluations. These are specified full Hom and bar maps connecting the original \(H_F\) to \(DL_F\).
+
+To obtain a single receiving map from such a finite zigzag, resolve every intermediate whole bimodule. Lift each leg through its receiving quasi-isomorphism by B.ND7, keeping the lift homotopy. The lifted leg is a quasi-isomorphism between whole h-projectives, and hence has an inverse with both homotopies by the argument in B.WI10. Compose the oriented legs, retaining the unused reverse legs and their cancellation witnesses. Finally compose with the augmentation to \(DL_F\). This constructs a closed map rather than choosing a pointwise identification of represented objects. Dualization in this construction is applied only to the actual column homotopy equivalences or to the whole homotopy equivalences just described.
+
+Compose these factor maps with B.RK3–4's ordered evaluation. For each row of B.FK1 this gives
+\[
+E_v:K_v\longrightarrow DW_v,
+\tag{B.FK2}
+\]
+where \(W_v\) is exactly the left word of B.MX4. In particular a binary evaluation sends
+\[
+\nu(u\otimes v)(x\otimes y)
+=
+(-1)^{|u|(|v|+|x|)}v\bigl(xu(y)\bigr).
+\tag{B.FK3}
+\]
+For three factors the exponent and order are B.RK4. These formulas fix the maps and their naturality for homogeneous arguments.
+
+Each \(E_v\) is a quasi-isomorphism. Fix the input endpoint. The first left column is homotopy corepresentable; substituting its actual homotopy equivalence to a corepresentable reduces evaluation to co-Yoneda. Continue with the next factor. Tensor and Hom preserve these homotopies, so the argument works through the three factors and proves the claim in every degree. The maps themselves are whole bimodule maps, hence the columnwise quasi-isomorphism is a quasi-isomorphism of whole bimodules. This proof does not tensor arbitrary unresolved quasi-isomorphisms or dualize a general quasi-isomorphism without its homotopy-equivalence justification.
+
+#### 2. Factorized edges, with the original left-edge choices retained
+
+The six right edges follow the geometric orientation
+\(0\to1\to2\to3\) and \(0\to4\to5\to3\). Their affected blocks are
+\[
+\begin{array}{c|c}
+\text{edge}&\text{block comparison, with other factors retained}\\ \hline
+01&H_h\otimes H_i\longrightarrow H_k\otimes H_p\\
+12&H_p\otimes P_{a_D}\longrightarrow P_{a_C}\otimes H_{p'}\\
+23&H_k\otimes P_{a_C}\longrightarrow P_{a_U}\otimes H_{k'}\\
+04&H_i\otimes P_{a_D}\longrightarrow P_{a_Y}\otimes H_{i'}\\
+45&H_h\otimes P_{a_Y}\longrightarrow P_{a_U}\otimes H_{h'}\\
+53&H_{h'}\otimes H_{i'}\longrightarrow H_{k'}\otimes H_{p'}.
+\end{array}
+\tag{B.FK4}
+\]
+The first and last are the proper–open exchange, the second and fifth proper base change, and the third and fourth open base change. Use the actual left block maps and witnesses of B.MX2, B.KC5 and B.KC7. They have the sheaf-level identifications proved there. Lift their signed duals through the receiving right-block comparison by B.ND7. This gives a closed right-block map and its degree-minus-one evaluation witness. It is a quasi-isomorphism: the two receiving evaluations are quasi-isomorphisms and the dualized block map is a homotopy equivalence. If such a block map and its full witness have already been chosen with these comparison roofs, they are admissible inputs to this construction.
+
+Whisker the block maps by the remaining factors in B.FK1. Denote the resulting map by \(B_e:K_i\to K_j\). On left kernels let \(\lambda_e^{\mathrm f}:W_j\to W_i\) be the corresponding factorized edge. Naturality of the signed evaluations, together with the block witness, gives a whole map \(A_e^{\mathrm f}:K_i\to DW_j[-1]\) satisfying
+\[
+E_jB_e-(D\lambda_e^{\mathrm f})E_i=dA_e^{\mathrm f}.
+\tag{B.FK5}
+\]
+This is naturality of the explicit B.FK3 map. For a homotopy in a right tensor factor the action on a homogeneous tensor is
+\((1\otimes h)(x\otimes y)=(-1)^{|x|}x\otimes h(y)\). Tensoring the block equation with this convention and applying the degree-zero evaluation therefore proves B.FK5, including its sign. The associator compatibility B.RK4 gives the same result for either parenthesization.
+
+Keep the originally specified \(\lambda_e,\omega_e\) of B.MX5. The factorized edge has its own \(\omega_e^{\mathrm f}\), formed by whiskering the original block witness and composing with the remaining factors and the sheaf map \(\tau_i\) of B.MX3. The equality of the raw geometric composites gives
+\[
+a_i\lambda_e^{\mathrm f}-a_j=d\omega_e^{\mathrm f},
+\qquad a_i\lambda_e-a_j=d\omega_e.
+\tag{B.FK6}
+\]
+If the two lifts differ, B.ND7 applied to \(\operatorname{Hom}(W_j,a_i)\) supplies the full comparison
+\[
+\begin{aligned}
+dh_e&=\lambda_e^{\mathrm f}-\lambda_e,\\
+a_i h_e-(\omega_e^{\mathrm f}-\omega_e)&=dq_e,
+\qquad |h_e|=-1,\quad |q_e|=-2.
+\end{aligned}
+\tag{B.FK7}
+\]
+For existence, the first difference becomes a boundary under this Hom quasi-isomorphism. Lift its primitive, then correct it by a closed degree-minus-one map so that the second difference is a boundary, exactly as in B.WI8–9. This keeps both original witnesses. If the two choices coincide, take \(h_e=q_e=0\).
+
+Set
+\[
+A_e=A_e^{\mathrm f}+(Dh_e)E_i.
+\tag{B.FK8}
+\]
+Since \(d(Dh_e)=D(dh_e)\), equations B.FK5 and B.FK7 give
+\[
+E_jB_e-(D\lambda_e)E_i=dA_e.
+\tag{B.FK9}
+\]
+The higher map \(q_e\) is retained in the full comparison of the two left resolution-graph edges. In the ordinary arrow-graph convention that comparison is \((h_e,0,q_e)\). Its signed dual is
+\((0,Dh_e,-Dq_e)\), by B.RD2. Thus B.FK8 is its map component after evaluation; it does not discard the third coordinate \(-Dq_e\). The factorized right edge has now been attached to the fixed original left edge, rather than silently replacing that edge or its mixed cell.
+
+#### 3. Transfer the actual mixed generator
+
+Let \(p:R\to\mathcal W\) be B.MP7 and put \(N=DR\), as in B.WI1. Define
+\[
+\widetilde E_i=(Dp_i)E_i,
+\qquad
+\widetilde A_e=(Dp_j)A_e.
+\tag{B.FK10}
+\]
+Each \(Dp_i\) is a homotopy equivalence by B.RD6. The maps \(\widetilde E_i:K_i\to N_i\) are therefore whole quasi-isomorphisms. Strict naturality of \(p\), with the signed dual convention, gives
+\[
+\widetilde E_jB_e-N(e)\widetilde E_i=d\widetilde A_e.
+\tag{B.FK11}
+\]
+The common target is the actual diagram \(N\), with
+\(n=N(c^\vee)\), and not an unspecified equivalent diagram.
+
+Write
+\[
+T_K=B_{23}B_{12}B_{01},
+\qquad B_K=B_{53}B_{45}B_{04},
+\qquad \Delta_K=T_K-B_K.
+\tag{B.FK12}
+\]
+The two path witnesses in the target are
+\[
+\begin{aligned}
+\Omega_T={}&\widetilde A_{23}B_{12}B_{01}
+       +N(e_{23})\widetilde A_{12}B_{01}
+       +N(e_{23})N(e_{12})\widetilde A_{01},\\
+\Omega_B={}&\widetilde A_{53}B_{45}B_{04}
+       +N(e_{53})\widetilde A_{45}B_{04}
+       +N(e_{53})N(e_{45})\widetilde A_{04}.
+\end{aligned}
+\tag{B.FK13}
+\]
+Here edge symbols in \(N\) have the right orientation of \(\mathcal I\); equivalently they are the opposite edges of B.MP1. Telescoping B.FK11 gives
+\[
+d(\Omega_T-\Omega_B)
+ =\widetilde E_3\Delta_K
+  -\bigl(N(T^\vee)-N(B^\vee)\bigr)\widetilde E_0.
+\tag{B.FK14}
+\]
+The degree-minus-one map
+\[
+\Xi=n\widetilde E_0+\Omega_T-\Omega_B
+\tag{B.FK15}
+\]
+therefore satisfies \(d\Xi=\widetilde E_3\Delta_K\). The cancellation uses
+\(dn=N(T^\vee)-N(B^\vee)\), including both paths. Since \(K_0\) is whole h-projective, B.ND7 supplies maps
+\[
+\begin{aligned}
+dH_K&=\Delta_K,\\
+\widetilde E_3H_K-\Xi&=dQ_K,\\
+|H_K|&=-1,\qquad |Q_K|=-2.
+\end{aligned}
+\tag{B.FK16}
+\]
+Use the same two-stage primitive-and-closed-correction argument as B.WI9. This proves both equations with the specified \(\Xi\). Choosing an arbitrary primitive of \(\Delta_K\) would not suffice.
+
+To see the full diagram, a homogeneous arrow between
+\((K_i,N_i,\widetilde E_i)\) and \((K_j,N_j,\widetilde E_j)\) is a triple \((b,f,h)\), with
+\[
+\begin{aligned}
+D(b,f,h)&=(db,df,\widetilde E_j b-f\widetilde E_i-dh),\\
+(b',f',h')(b,f,h)&=(b'b,f'f,h'b+(-1)^{|f'|}f'h).
+\end{aligned}
+\tag{B.FK17}
+\]
+These are the ordinary signed graph formulas, with the source component listed first. Assign an edge the triple
+\((B_e,N(e),\widetilde A_e)\), and assign the free mixed generator the triple
+\((H_K,n,Q_K)\). Equations B.FK12–16 say exactly that its differential is the top graph path minus the bottom graph path. Freeness then gives a strict dg diagram on all of \(\mathcal I\). The third component carries the full target witness; projection to the source diagram alone would lose it.
+
+#### 4. Whole resolutions and the homogeneous inverse comparison
+
+The source diagram just constructed has the actual factored kernels \(K_i\) as vertices and the factored elementary maps \(B_e\) as edges. Its values are h-projective, but whole-index h-projectivity is a separate assertion. Apply the signed parameter-bar construction B.KC9–10 to its graph comparison with \(N\). The object maps are \(\widetilde E_i\), the edge homotopies are \(\widetilde A_e\), and the value on \(c^\vee\) is \(Q_K\). B.FK17 is precisely the differential and composition condition for this construction. It produces a strict whole-diagram quasi-isomorphism
+\[
+\Psi_K:B(\mathcal I(-,-),\mathcal I,K)\longrightarrow N.
+\tag{B.FK18}
+\]
+At the distinguished length-one tensor its value is
+\[
+\Psi_{K,3}(1_3\otimes c^\vee\otimes x)=-Q_Kx.
+\tag{B.FK19}
+\]
+The sign and degree follow from B.KC10: the identity has degree zero, and a length-one tensor with \(|c^\vee|=-1\) has total degree \(|x|-2\). The quasi-isomorphism follows from the representable-bar contraction and the quasi-isomorphisms \(\widetilde E_i\); no inverse of the unresolved raw target is used.
+
+Resolve this whole bar diagram by B.ND5 before choosing whole inverses. It has its ordinary augmentation to the factored diagram \(K\), and its map B.FK18 to the specific \(N\). Thus it supplies a whole resolution roof of \(N\) connected by actual maps to all six factored right-kernel words. The original KC factor roofs, their inverse-cancellation homotopies, the comparison pairs B.FK7 and their signed duals, and B.RD8's raw-target witness remain in the diagram. A given nested UQ face retains its original \(K_2\) coefficient under these strict bar maps as in B.MX12; this statement does not add an unspecified higher face.
+
+Two such constructions over this same mixed index give admissible roofs for B.WI3–16. Its inverse comparison can consequently be made on whole resolutions of the factored six-vertex diagrams. B.WI17–18 still governs comparison with prescribed endpoint homotopies. For evaluation on an h-projective source module, a degree-\(r\) kernel map acts by
+\(x\otimes z\mapsto(-1)^{r|x|}x\otimes f(z)\); the tensor differential proves that this preserves B.FK16 and every graph boundary. The result therefore concerns actual functors on resolved inputs and their homogeneous maps.
+
+The fixed proper–open/base-change mixed diagram and its six geometric right-word factorizations are linked by these explicit evaluation roofs and full comparison witnesses. The direct-versus-ordered maps \(s:S_d\to S_o\) and \(v:V_d\to V_o\) for two successive changes of base additionally involve their compositor diagram B.OD11–19. Identifying that combined parameter diagram with these fixed mixed diagrams, and comparing its chosen inverse homotopies, are separate requirements; two copies of B.FK18 alone do not identify those differently indexed functors. The common-index transport needed for B.RCmp1, its higher triangle comparisons, changing-array coherence, nearby-cycle descent and normalized coefficient completion retain those obligations. \(\square\)
+
+### Join the direct and ordered mixed diagrams over their geometric target
+
+**Proposition B.1bi (the compositor prism).** For two successive cartesian base changes of the proper–open square, the direct and ordered six-vertex left-kernel diagrams admit a common free parameter diagram. Its vertex comparisons are the actual inverse-image compositors. It retains both original mixed cells and all six edge witnesses. The comparison between the mixed cells has degree minus two and a degree-minus-three witness in the common geometric mapping complex. Whole resolution and signed duality give the corresponding right-kernel parameter diagram, with the direct-to-ordered orientation of the inverse-image maps.
+
+Use the Noetherian separated finite-type geometry and ordinary unbounded torsion coefficients of [B.MX](#the-proper-open-kernel-and-the-common-mixed-cube), including the proper-base-change annihilator hypothesis. The module arguments use the original commutative coefficient ring. Write the three cartesian rows as
+\[
+\begin{array}{ccc}
+U_r&\xrightarrow{h_r}&Y_r\\
+{\scriptstyle k_r}\downarrow&&\downarrow{\scriptstyle i_r}\\
+C_r&\xrightarrow{p_r}&D_r
+\qquad r=0,1,2,
+\end{array}
+\]
+where \(h_r,p_r\) are proper and \(i_r,k_r\) are open. The vertical maps are
+\(a_{T,1}:T_1\to T_0\), \(a_{T,2}:T_2\to T_1\), and
+\(a_{T,21}=a_{T,1}a_{T,2}\), for \(T=U,Y,C,D\). Let
+\(A_{T,r}=a_{T,r}^*\). The inverse-image compositor identifies
+\(A_{T,21}\) with \(A_{T,2}A_{T,1}\); keep that actual natural isomorphism whenever the two expressions meet.
+
+#### 1. The twelve words and their common augmentation
+
+In the following table \(\mathbb L_F\) denotes the left kernel of an elementary operation. Put
+\[
+\begin{gathered}
+Z_T^d=\mathbb L_{A_{T,21}},\qquad
+Z_T^o=\mathbb L_{A_{T,2}}\mathbb L_{A_{T,1}},\\
+c_T:Z_T^o\longrightarrow Z_T^d.
+\end{gathered}\tag{B.PR1}
+\]
+The map \(c_T\) is B.OD3's whole lift of the inverse-image compositor, with its augmentation homotopy. Products are in left-kernel order. For \(\sigma=d,o\), set
+\[
+\begin{array}{c|l|l}
+v&W_v^\sigma&C_v:W_v^o\longrightarrow W_v^d\\ \hline
+0&Z_D^\sigma\mathbb L_{i_0!}\mathbb L_{h_{0,*}}
+ &c_D\mathbb L_{i_0!}\mathbb L_{h_{0,*}}\\
+1&Z_D^\sigma\mathbb L_{p_{0,*}}\mathbb L_{k_0!}
+ &c_D\mathbb L_{p_{0,*}}\mathbb L_{k_0!}\\
+2&\mathbb L_{p_{2,*}}Z_C^\sigma\mathbb L_{k_0!}
+ &\mathbb L_{p_{2,*}}c_C\mathbb L_{k_0!}\\
+3&\mathbb L_{p_{2,*}}\mathbb L_{k_2!}Z_U^\sigma
+ &\mathbb L_{p_{2,*}}\mathbb L_{k_2!}c_U\\
+4&\mathbb L_{i_2!}Z_Y^\sigma\mathbb L_{h_{0,*}}
+ &\mathbb L_{i_2!}c_Y\mathbb L_{h_{0,*}}\\
+5&\mathbb L_{i_2!}\mathbb L_{h_{2,*}}Z_U^\sigma
+ &\mathbb L_{i_2!}\mathbb L_{h_{2,*}}c_U.
+\end{array}\tag{B.PR2}
+\]
+Retain all tensor associators and use the same \(c_T\) at every occurrence. All twelve words are whole h-projective in both endpoint variables, by the exterior-cell argument B.KC2.
+
+There is one geometric receiving complex:
+\[
+M(J,I)=\operatorname{Hom}^{\bullet}
+ \bigl(A_{D,2}A_{D,1}i_{0,!}h_{0,*}e_{U_0}I,
+       e_{D_2}J\bigr).
+\tag{B.PR3}
+\]
+Define \(a_v^\sigma:W_v^\sigma\to M\) by the ordered augmentation formula B.MX4. For \(d\), use the displayed inverse-image isomorphism to identify its source with B.PR3. For \(o\), use successive proper and open base-change maps. These are maps of actual complexes: the proper comparison for the composite is the ordered comparison B.OD5, and the open comparison is B.OD7. These identities, together with naturality of the proper–open exchange, give the same six maps \(\tau_v\) into the corresponding geometric words. No equality of independently chosen kernel lifts is needed for that assertion.
+
+Each \(a_v^\sigma\) is a whole quasi-isomorphism. For the direct words this is the six-case argument B.MX4. For the ordered words, replace the single exact inverse-image step in each of those cases by its two exact steps. In a kernel calculation reduce each such column through its homotopy equivalence to a corepresentable, in the order in which the two operations occur. Co-Yoneda then gives \(A_{T,2}A_{T,1}\). In the cases containing a subsequent proper image, choose the intermediate K-injective replacement before that image, just as in B.MX4; the equalities B.OD5 and B.OD7 identify the remaining map with the direct one. Thus the same six derived comparisons prove the assertion. This uses no preservation of an arbitrary quasi-isomorphism by a raw proper image.
+
+Whisker the original homotopy of \(c_T\) through this augmentation. Naturality of the raw comparison maps gives
+\[
+a_v^d C_v-a_v^o=d\eta_v,\qquad |\eta_v|=-1.
+\tag{B.PR4}
+\]
+Here \(\eta_v\) is that whiskered homotopy, including the Koszul sign when it occurs in a right tensor factor. The equality is obtained by applying the same balanced composition map used to define \(a_v^\sigma\) to B.OD3. It retains the specified compositor and its witness.
+
+#### 2. Six rectangles with both comparison coordinates
+
+For an edge \(e=e_{ij}:j\to i\) in the reversed mixed index, keep
+\[
+a_i^\sigma\lambda_e^\sigma-a_j^\sigma=d\omega_e^\sigma.
+\]
+On the ordered side the proper and open edges are the two successive block maps; the proper–open edges are those at rows zero and two, with the inverse-image factors retained. B.OD6 supplies the witnesses for a successive block. B.MX5 supplies the common-target witnesses after whiskering. Keep the existing mixed pairs \((H_\sigma,K_\sigma)\) as well:
+\[
+dH_\sigma=T_\sigma-B_\sigma,\qquad
+a_0^\sigma H_\sigma-(\Omega_T^\sigma-\Omega_B^\sigma)
+ =dK_\sigma.
+\tag{B.PR5}
+\]
+All symbols in this equation are defined by B.MX7–8 using the corresponding six edges.
+
+Form the graph category B.MX9 over the single complex \(M\). Its closed edge and vertex-comparison arrows are
+\[
+E_\sigma(e)=(1,\lambda_e^\sigma,\omega_e^\sigma),\qquad
+\gamma_v=(1,C_v,\eta_v),
+\]
+and its mixed arrow is \(E_\sigma(c)=(0,H_\sigma,K_\sigma)\).
+The difference
+\(E_d(e)\gamma_j-\gamma_iE_o(e)\) has base component zero. Its other components are
+\[
+\begin{aligned}
+\Delta_e&=\lambda_e^d C_j-C_i\lambda_e^o,\\
+R_e&=\omega_e^d C_j+\eta_j
+       -\eta_i\lambda_e^o-\omega_e^o.
+\end{aligned}\tag{B.PR6}
+\]
+Differentiation gives \(d\Delta_e=0\) and \(dR_e=a_i^d\Delta_e\).
+The Hom kernel of the graph projection is the shifted cone of
+\(\operatorname{Hom}(W_j^o,a_i^d)\), hence acyclic by whole h-projectivity. It therefore supplies
+\[
+dh_e=\Delta_e,\qquad
+a_i^dh_e-R_e=dq_e,
+\qquad |h_e|=-1,quad |q_e|=-2.
+\tag{B.PR7}
+\]
+Write \(t_e=(0,h_e,q_e)\). Thus
+\(Dt_e=E_d(e)\gamma_j-\gamma_iE_o(e)\).
+If a proper or open rectangle already has a pair from B.OD8–9 with these exact compositor and augmentation witnesses, retain that pair, with the sign prescribed by B.PR6. The lifting argument concerns only an unfilled rectangle. A pair with different receiving witnesses must first be compared in the full graph; its second component cannot simply be substituted for \(h_e\).
+
+#### 3. The comparison of the two mixed cells
+
+For a path \(p\), extend the rectangle homotopy by
+\[
+t(gf)=t(g)E_o(f)+(-1)^{|g|}E_d(g)t(f).
+\tag{B.PR8}
+\]
+For the upper three-edge path its two non-base coordinates are
+\[
+\begin{aligned}
+u_T={}&h_{01}\lambda_{12}^o\lambda_{23}^o
+ +\lambda_{01}^dh_{12}\lambda_{23}^o
+ +\lambda_{01}^d\lambda_{12}^dh_{23},\\
+v_T={}&q_{01}\lambda_{12}^o\lambda_{23}^o
+ +(\omega_{01}^dh_{12}+q_{12})\lambda_{23}^o\\
+ &+(\omega_{01}^d\lambda_{12}^d+\omega_{12}^d)h_{23}+q_{23}.
+\end{aligned}\tag{B.PR9}
+\]
+The lower pair \((u_B,v_B)\) is obtained by replacing the ordered list \((01,12,23)\) by \((04,45,53)\) throughout this formula. Put \(u=u_T-u_B\), \(v=v_T-v_B\). These formulas follow from the full graph product; in particular the terms \(\omega^d h\) belong to the third coordinate.
+
+The obstruction for the mixed generator is the literal graph element
+\[
+E_d(c)\gamma_3-\gamma_0E_o(c)-t(dc)=(0,R,S),
+\]
+where
+\[
+\begin{aligned}
+R&=H_dC_3-C_0H_o-u,\\
+S&=K_dC_3-\eta_0H_o-K_o-v.
+\end{aligned}\tag{B.PR10}
+\]
+Its base component is zero because each mixed arrow has base zero, every compositor has base one, and each rectangle homotopy has base zero. This verifies the target before using acyclicity. By B.PR7–8,
+\[
+dR=0,\qquad dS=a_0^dR.
+\tag{B.PR11}
+\]
+For example, differentiating \(t(dc)\) gives
+\(E_d(dc)\gamma_3-\gamma_0E_o(dc)\), since \(d^2c=0\). This cancels the derivative of the other two graph terms. The second equality in B.PR11 is the third coordinate of that graph identity.
+
+The same whole Hom cone now supplies
+\[
+dZ=R,\qquad a_0^dZ-S=dW,
+\qquad |Z|=-2,quad |W|=-3.
+\tag{B.PR12}
+\]
+Thus \(t_c=(0,Z,W)\) is the full comparison of the original mixed cells. Neither \(K_d,K_o\) nor the rectangle witnesses were changed to obtain it. The target in B.PR12 includes the original mixed witnesses, the compositor witness and all the terms in B.PR9.
+
+Here is the precise parameter category. Start with disjoint direct and ordered copies of B.MP1's free index, including their generators \(c_d,c_o\). Adjoin closed arrows \(\gamma_v:v_o\to v_d\), then the degree-minus-one arrows \(t_e:j_o\to i_d\) with the B.PR7 boundary. Finally adjoin \(t_c:3_o\to0_d\), of degree minus two, with
+\[
+dt_c=c_d\gamma_3-\gamma_0c_o-t(dc).
+\tag{B.PR13}
+\]
+In this presentation the letters denote formal generators and B.PR8 defines the formal path expression. The preceding cancellation proves that every assigned differential squares to zero. The order just given is a free cellular order: \(dt_e\) uses only edges and compositors, and \(dt_c\) uses only the two mixed generators and the earlier rectangles. Send every vertex to \(M\), every closed edge and compositor to \(1_M\), and every negative-degree generator to zero. This is a strict target diagram. B.PR4–12 give its strict lift to the graph category, relative to both supplied mixed diagrams.
+
+#### 4. The whole roof and the orientation of the right compositors
+
+Let \(\mathcal J\) denote this free prism index and \(\mathcal W\) its diagram of whole left kernels. Apply the signed parameter-bar map B.MP4 on \(\mathcal J\). It is an actual quasi-isomorphism to the constant diagram \(M\). Its length-one values at a terminal identity include
+\[
+\Psi(1\otimes t_e\otimes x)=-q_ex,
+\qquad
+\Psi(1\otimes t_c\otimes x)=-Wx.
+\tag{B.PR14}
+\]
+The second input has total degree \(|x|-3\), because \(|t_c|=-2\) and its bar length is one. Thus B.PR14 keeps the degree-minus-three witness as part of the strict map.
+
+Resolve this entire bar diagram over \(\mathcal J\) times the endpoint product category. The ordinary bar augmentation gives a strict map \(p:R\to\mathcal W\). Each evaluated \(R_v\) is whole h-projective in the endpoint variables by B.ND6: the cellular path basis of \(\mathcal J\) gives the required semifree filtration. Each \(p_v\) is a quasi-isomorphism between whole h-projectives, hence a homotopy equivalence. Consequently
+\(Dp_v:D\mathcal W_v\to DR_v\) is a homotopy equivalence, without dualizing an arbitrary raw quasi-isomorphism. Keep the signed bar map to \(M\), its whole lift and both inverse witnesses exactly as in B.MP6–7. Restriction to a new index is followed by the B.CE11 re-resolution wherever whole projectivity is used.
+
+The strict diagram \(N=DR\) is defined on \(\mathcal J^{\mathrm{op}}\). In right orientation let \(e^\sigma:i_\sigma\to j_\sigma\) be the reversed mixed edges, \(s_v:v_d\to v_o\) the compositor, and \(c^\sigma:0_\sigma\to3_\sigma\) the mixed generator. For the rectangles and prism use the negatives of the opposite \(t_e,t_c\). Their exact differential is
+\[
+\begin{aligned}
+dt_e^r&=e^o s_i-s_j e^d,\\
+dt_c^r&=c^o s_0-s_3c^d-t^r(T^r-B^r),\\
+t^r(gf)&=t^r(g)f^d+(-1)^{|g|}g^o t^r(f).
+\end{aligned}\tag{B.PR15}
+\]
+Here \(T^r=e_{23}e_{12}e_{01}\) and \(B^r=e_{53}e_{45}e_{04}\). Reversing B.PR8 on these degree-zero paths gives \(t^r(p^{\mathrm{op}})=-t(p)^{\mathrm{op}}\); B.PR13 then gives the second equation. This checks the signs rather than identifying the two orientations informally.
+
+The six maps have the intended geometric factorization. Write
+\[
+r_T:P_{a_{T,21}}\longrightarrow
+           P_{a_{T,1}}\otimes P_{a_{T,2}}
+\tag{B.PR16}
+\]
+for the actual direct-to-ordered right compositor, constructed through B.OD11's evaluation roof and its whole inverse with both homotopies. In the six right words B.FK1 the corresponding maps \(X_v:K_v^d\to K_v^o\) insert, respectively,
+\(r_D,r_D,r_C,r_U,r_Y,r_U\), retaining the other factors. For the standard compactification \(f_r=p_rk_r\),
+\[
+X_1=H_{k_0}\otimes H_{p_0}\otimes r_D=vL_0,
+\qquad
+X_3=r_U\otimes H_{k_2}\otimes H_{p_2}=L_2s,
+\tag{B.PR17}
+\]
+where \(s=T_{r_U}\), \(v=T_{r_D}\); the equations mean the specified tensor functors with their canonical associators. The signed evaluations B.FK2–3 and the compositor roof give full witnesses
+\[
+E_v^oX_v-(DC_v)E_v^d=dA_v^{\mathrm{cmp}}.
+\tag{B.PR18}
+\]
+Indeed the right compositor was obtained by lifting \(Dc_T\) through its receiving factor comparison. Whisker that lift equation with the unchanged factors and apply the closed evaluation B.RK3–4. The graded tensor rule gives B.PR18; it is the compositor version of B.FK5. Composing with \(Dp\) places these comparisons in the actual whole prism model, with their third coordinates retained.
+
+B.PR13–18 specify the joint geometric parameter diagram and its factorized compositor maps. To use an independently prescribed right-word mixed cell or inverse homotopy, its full comparison with this whole prism is still required. B.WI17–18 measures the displacement of prescribed endpoint homotopies; B.PR12 does not assert that an arbitrary such displacement is exact. The RCmp target and mate construction must use the transported full records on this common index. Its higher triangle, all changing-array comparisons, nearby-cycle descent and normalized coefficient completion retain their respective hypotheses and proof obligations. \(\square\)
+
 ### Construct the inertia quotient and its exact invariants
 
 Here is the group input for every strictly henselian trait used above. Fix a uniformizer \(u\) and a compatible system of its roots. For an integer \(n\) prime to \(p\), the field \(K\) contains \(\mu_n\): the distinct residue roots lift by Hensel's lemma. The extension \(K(u^{1/n})/K\) is cyclic of degree \(n\). Its powers \(1,u^{1/n},\ldots,u^{(n-1)/n}\) are linearly independent because their valuations occupy distinct classes modulo \(\mathbf Z\); the defining polynomial gives the opposite degree inequality. Its value group is \(n^{-1}\mathbf Z\), and its residue field is unchanged. For the latter assertion, the terms in a basis expansion have distinct fractional valuations, so the least term determines the residue after division by an element of the same valuation.

@@ -24,7 +24,7 @@ Use the actual earlier programme proofs:
   construct local conic frequency coordinates and their homogeneous potential;
 - [F2–F7](../../20261004-free-intrinsic-graph/prerequisites/prescribed-phase-representation.md)
   prove phase representation, differentiated remainders and their exact orders;
-- [K6–K7](../../20261004-free-intrinsic-graph/prerequisites/conic-parametrices-and-localization.md)
+- K6–K7
   prove intrinsic localization and sufficiently small cutoff independence;
 - [M0a–M7](../../20261004-free-intrinsic-graph/prerequisites/relative-maslov-line.md)
   construct the relative Maslov line and its geometric evaluation;

@@ -1,0 +1,387 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Square-root bounds and collision stability</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Additive indecomposability of the primes)</a><a href="the-inverse-goldbach-problem.html">Previous lesson</a><a href="a-biased-block-and-an-amplified-moment.html">Next lesson</a><a href="src/square-root-bounds-and-collision-stability.md">Editable source</a></nav><main><article><h1 id="square-root-bounds-and-collision-stability">Square-root bounds and collision stability</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Under the standing assumption of Lesson 1, every large prime is a sum <span class="math" data-tex="\(a+b\)">\(a+b\)</span> with <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>, so <span class="math" data-tex="\(A(Y)B(Y)\gg Y/\log Y\)">\(A(Y)B(Y)\gg Y/\log Y\)</span>. This lesson proves the matching upper bounds: both counting functions lie within powers of <span class="math" data-tex="\(\log Y\)">\(\log Y\)</span> of <span class="math" data-tex="\(\sqrt Y\)">\(\sqrt Y\)</span> (Theorem 3.1, due to Elsholtz). Two sieves are played against each other. The large sieve says that a set avoiding many residue classes is small; the <em>larger sieve</em>, which counts congruent pairs, says that a set occupying few residue classes is small. Exclusion makes the large elements of <span class="math" data-tex="\(A\)">\(A\)</span> avoid the classes occupied by <span class="math" data-tex="\(-B\)">\(-B\)</span>, so the two sieves bound each other.</p>
+<p>The same congruent-pair count gives the main tool of the course, <em>collision stability</em> (Lemma 4.1). On a weighted average over primes, the reductions modulo <span class="math" data-tex="\(p\)">\(p\)</span> of the large elements of <span class="math" data-tex="\(A\)">\(A\)</span> are nearly uniform on the support <span class="math" data-tex="\(S_p\)">\(S_p\)</span> of Lesson 1, those of <span class="math" data-tex="\(D=-B\)">\(D=-B\)</span> are nearly uniform on <span class="math" data-tex="\(S_p^c\)">\(S_p^c\)</span>, and <span class="math" data-tex="\(|S_p|\)">\(|S_p|\)</span> is close to <span class="math" data-tex="\(p/2\)">\(p/2\)</span>.</p>
+<p><strong>Prerequisites.</strong> <a href="the-inverse-goldbach-problem.html"><em>The inverse Goldbach problem</em></a>, Sections 2, 5 and 6; <a href="../NT-ZETA/NT-ZETA-02.html"><em>Counting primes by elementary means: Chebyshev and Mertens</em></a>, Theorems 2.1 and 3.1; <a href="../NT-ZETA/NT-ZETA-09.html"><em>The prime number theorem</em></a>, Theorem 3.1.</p>
+<h2 id="1-conventions-on-finite-fields">1. Conventions on finite fields</h2>
+<p>Write <span class="math" data-tex="\(e(x)=e^{2\pi ix}\)">\(e(x)=e^{2\pi ix}\)</span> and <span class="math" data-tex="\(e_m(x)=e(x/m)\)">\(e_m(x)=e(x/m)\)</span>. An expectation over a finite set is its uniform average unless another probability measure is named. For a function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span> the Fourier transform is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widehat f(a)=\frac1p\sum_{x\in\mathbb F_p}f(x)\,e_p(-ax),\\
+f(x)=\sum_{a\in\mathbb F_p}\widehat f(a)\,e_p(ax),
+\end{gathered}
+\]">\[
+\begin{gathered}
+\widehat f(a)=\frac1p\sum_{x\in\mathbb F_p}f(x)\,e_p(-ax),\\
+f(x)=\sum_{a\in\mathbb F_p}\widehat f(a)\,e_p(ax),
+\end{gathered}
+\]</span>
+and Parseval's identity reads <span class="math" data-tex="\(\mathbb E_x|f(x)|^2=\sum_a|\widehat f(a)|^2\)">\(\mathbb E_x|f(x)|^2=\sum_a|\widehat f(a)|^2\)</span>. Norms of functions on <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span> use the probability measure unless stated otherwise. For the mass function <span class="math" data-tex="\(\mu\)">\(\mu\)</span> of a probability measure on <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>, however, the <em>counting norm</em>
+<span class="math math-display" data-tex="\[
+\|\mu\|_2^2=\sum_{x\in\mathbb F_p}\mu(x)^2
+\]">\[
+\|\mu\|_2^2=\sum_{x\in\mathbb F_p}\mu(x)^2
+\]</span>
+is used; it is the probability that two independent samples of <span class="math" data-tex="\(\mu\)">\(\mu\)</span> coincide. For a nonempty finite set <span class="math" data-tex="\(E\)">\(E\)</span>, <span class="math" data-tex="\(U_E\)">\(U_E\)</span> denotes the uniform probability measure on <span class="math" data-tex="\(E\)">\(E\)</span>. For a probability measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span>, <span class="math" data-tex="\(\mu_p\)">\(\mu_p\)</span> denotes its image modulo <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p><strong>Lemma 1.1</strong> (energy of a measure avoiding classes). Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be a probability measure on <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span> supported on a set of <span class="math" data-tex="\(p-\nu\)">\(p-\nu\)</span> residues, with <span class="math" data-tex="\(0\le\nu&lt;p\)">\(0\le\nu&lt;p\)</span>. Then
+<span class="math math-display" data-tex="\[
+\sum_{h\in\mathbb F_p^\times}\Bigl|\sum_{x}\mu(x)\,e_p(hx)\Bigr|^2\ge\frac{\nu}{p-\nu}.
+\]">\[
+\sum_{h\in\mathbb F_p^\times}\Bigl|\sum_{x}\mu(x)\,e_p(hx)\Bigr|^2\ge\frac{\nu}{p-\nu}.
+\]</span></p>
+<p><em>Proof.</em> Expanding the square and summing over all <span class="math" data-tex="\(h\in\mathbb F_p\)">\(h\in\mathbb F_p\)</span> gives <span class="math" data-tex="\(p\sum_x\mu(x)^2\)">\(p\sum_x\mu(x)^2\)</span>, by orthogonality. By Cauchy–Schwarz on the support, <span class="math" data-tex="\(1=(\sum_x\mu(x))^2\le(p-\nu)\sum_x\mu(x)^2\)">\(1=(\sum_x\mu(x))^2\le(p-\nu)\sum_x\mu(x)^2\)</span>. So the sum over all <span class="math" data-tex="\(h\)">\(h\)</span> is at least <span class="math" data-tex="\(p/(p-\nu)\)">\(p/(p-\nu)\)</span>; the term <span class="math" data-tex="\(h=0\)">\(h=0\)</span> equals <span class="math" data-tex="\(1\)">\(1\)</span>, and <span class="math" data-tex="\(p/(p-\nu)-1=\nu/(p-\nu)\)">\(p/(p-\nu)-1=\nu/(p-\nu)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-counting-congruent-pairs">2. Counting congruent pairs</h2>
+<p>The following count is the larger sieve of Gallagher in the form used by Green and Harper [GH]. Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be a probability measure on integers in an interval of length at most <span class="math" data-tex="\(X\)">\(X\)</span>, and let <span class="math" data-tex="\(n,n&#x27;\)">\(n,n&#x27;\)</span> be independent samples of <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. For a prime <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(\|\mu_p\|_2^2=\Pr(n\equiv n&#x27;\pmod p)\)">\(\|\mu_p\|_2^2=\Pr(n\equiv n&#x27;\pmod p)\)</span>. For any set <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> of primes at most <span class="math" data-tex="\(Q\)">\(Q\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{p\in\mathcal P}(\log p)\,\|\mu_p\|_2^2\\
+&amp;\quad =\mathbb E\sum_{\substack{p\in\mathcal P\\p\mid n-n&#x27;}}\log p
+\le\log X\\
+&amp;\qquad +\Pr(n=n&#x27;)\\
+&amp;\qquad \sum_{p\le Q}\log p.\quad(2.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{p\in\mathcal P}(\log p)\,\|\mu_p\|_2^2\\
+&amp;\quad =\mathbb E\sum_{\substack{p\in\mathcal P\\p\mid n-n&#x27;}}\log p
+\le\log X\\
+&amp;\qquad +\Pr(n=n&#x27;)\\
+&amp;\qquad \sum_{p\le Q}\log p.\quad(2.1)
+\end{aligned}
+\]</span>
+Indeed, if <span class="math" data-tex="\(n\ne n&#x27;\)">\(n\ne n&#x27;\)</span> the primes dividing <span class="math" data-tex="\(n-n&#x27;\)">\(n-n&#x27;\)</span> have product at most <span class="math" data-tex="\(|n-n&#x27;|\le X\)">\(|n-n&#x27;|\le X\)</span>; if <span class="math" data-tex="\(n=n&#x27;\)">\(n=n&#x27;\)</span>, every prime divides <span class="math" data-tex="\(0\)">\(0\)</span>. Chebyshev's bound <span class="math" data-tex="\(\sum_{p\le Q}\log p\ll Q\)">\(\sum_{p\le Q}\log p\ll Q\)</span> (<a href="../NT-ZETA/NT-ZETA-02.html"><em>Counting primes by elementary means: Chebyshev and Mertens</em></a>, Theorem 2.1) and <span class="math" data-tex="\(\Pr(n=n&#x27;)=\sum_n\mu(n)^2\le\max_n\mu(n)\)">\(\Pr(n=n&#x27;)=\sum_n\mu(n)^2\le\max_n\mu(n)\)</span> give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{p\in\mathcal P}(\log p)\,\|\mu_p\|_2^2\\
+&amp;\quad \le\log X+O\bigl(Q\max_n\mu(n)\bigr).\quad(2.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{p\in\mathcal P}(\log p)\,\|\mu_p\|_2^2\\
+&amp;\quad \le\log X+O\bigl(Q\max_n\mu(n)\bigr).\quad(2.2)
+\end{aligned}
+\]</span>
+If <span class="math" data-tex="\(\mu_p\)">\(\mu_p\)</span> is supported on <span class="math" data-tex="\(\nu\)">\(\nu\)</span> residues, Cauchy–Schwarz gives <span class="math" data-tex="\(\|\mu_p\|_2^2\ge1/\nu\)">\(\|\mu_p\|_2^2\ge1/\nu\)</span>. So a measure occupying few classes modulo many primes has a large left side in (2.2), and (2.2) bounds it.</p>
+<h2 id="3-square-root-bounds">3. Square-root bounds</h2>
+<p><strong>Theorem 3.1</strong> (Elsholtz [Els06, Theorem 1.9]; [OpenAI-013, Lemma 2.4]). Under the standing assumption, for <span class="math" data-tex="\(Y\ge3\)">\(Y\ge3\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{\sqrt Y}{(\log Y)^3}&amp;\ll A(Y),\,B(Y)\\
+&amp;\ll\sqrt Y(\log Y)^2.\quad(3.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{\sqrt Y}{(\log Y)^3}&amp;\ll A(Y),\,B(Y)\\
+&amp;\ll\sqrt Y(\log Y)^2.\quad(3.1)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> <em>Step 1: the product bound and polylogarithmic bounds.</em> Every prime <span class="math" data-tex="\(p\in(N,Y]\)">\(p\in(N,Y]\)</span> is <span class="math" data-tex="\(a+b\)">\(a+b\)</span> with <span class="math" data-tex="\(a\in A\cap[0,Y]\)">\(a\in A\cap[0,Y]\)</span> and <span class="math" data-tex="\(b\in B\cap[0,Y]\)">\(b\in B\cap[0,Y]\)</span>, so Chebyshev's lower bound gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;A(Y)\,B(Y)\ge\pi(Y)-\pi(N)\\
+&amp;\quad \gg\frac{Y}{\log Y}.\quad(3.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;A(Y)\,B(Y)\ge\pi(Y)-\pi(N)\\
+&amp;\quad \gg\frac{Y}{\log Y}.\quad(3.2)
+\end{aligned}
+\]</span>
+By Exercise 8.2 of Lesson 1, for every fixed <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A(Y),B(Y)\ll_j\frac{Y}{(\log Y)^j},\\
+A(Y),B(Y)\gg_j(\log Y)^{j}.\quad(3.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+A(Y),B(Y)\ll_j\frac{Y}{(\log Y)^j},\\
+A(Y),B(Y)\gg_j(\log Y)^{j}.\quad(3.3)
+\end{gathered}
+\]</span></p>
+<p><em>Step 2: a large-sieve lower bound for a collision sum.</em> Let <span class="math" data-tex="\(x\)">\(x\)</span> be large, put <span class="math" data-tex="\(m=A(x)\)">\(m=A(x)\)</span>, and suppose <span class="math" data-tex="\(m\ge3\sqrt x\)">\(m\ge3\sqrt x\)</span>. The set <span class="math" data-tex="\(U=A\cap(\sqrt x+N_*,x]\)">\(U=A\cap(\sqrt x+N_*,x]\)</span> has at least <span class="math" data-tex="\(m-\sqrt x-N_*-1\ge m/2\)">\(m-\sqrt x-N_*-1\ge m/2\)</span> elements. For a prime <span class="math" data-tex="\(p\)">\(p\)</span> let <span class="math" data-tex="\(\nu_p\)">\(\nu_p\)</span> be the number of residue classes modulo <span class="math" data-tex="\(p\)">\(p\)</span> that meet <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p>Let <span class="math" data-tex="\(p\in(\sqrt x/2,\sqrt x]\)">\(p\in(\sqrt x/2,\sqrt x]\)</span>. <em>The set <span class="math" data-tex="\(U\)">\(U\)</span> avoids the <span class="math" data-tex="\(\nu_p\)">\(\nu_p\)</span> classes of <span class="math" data-tex="\(-B\)">\(-B\)</span> modulo <span class="math" data-tex="\(p\)">\(p\)</span>.</em> If <span class="math" data-tex="\(a\equiv-b\pmod p\)">\(a\equiv-b\pmod p\)</span> with <span class="math" data-tex="\(a\in U\)">\(a\in U\)</span> and <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>, then <span class="math" data-tex="\(a+b\in A+B\)">\(a+b\in A+B\)</span> is divisible by <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(a+b\ge a&gt;\sqrt x+N_*&gt;\max(p,N)\)">\(a+b\ge a&gt;\sqrt x+N_*&gt;\max(p,N)\)</span>; by exclusion <span class="math" data-tex="\(a+b\)">\(a+b\)</span> is a prime divisible by <span class="math" data-tex="\(p\)">\(p\)</span> and larger than <span class="math" data-tex="\(p\)">\(p\)</span>, which is impossible. Since <span class="math" data-tex="\(U\)">\(U\)</span> is nonempty, <span class="math" data-tex="\(\nu_p&lt;p\)">\(\nu_p&lt;p\)</span>, and Lemma 1.1 applied to the image of <span class="math" data-tex="\(U_U\)">\(U_U\)</span> modulo <span class="math" data-tex="\(p\)">\(p\)</span> gives
+<span class="math math-display" data-tex="\[
+\sum_{h\in\mathbb F_p^\times}\Bigl|\mathbb E_{a\in U}e_p(ha)\Bigr|^2\ge\frac{\nu_p}{p-\nu_p}\ge\frac{\nu_p}p.
+\]">\[
+\sum_{h\in\mathbb F_p^\times}\Bigl|\mathbb E_{a\in U}e_p(ha)\Bigr|^2\ge\frac{\nu_p}{p-\nu_p}\ge\frac{\nu_p}p.
+\]</span>
+Apply the large sieve (2.1) of Lesson 1 with <span class="math" data-tex="\(Q=\sqrt x\)">\(Q=\sqrt x\)</span> and <span class="math" data-tex="\(a_n=\mathbf 1_U(n)/|U|\)">\(a_n=\mathbf 1_U(n)/|U|\)</span>, supported on at most <span class="math" data-tex="\(x+1\)">\(x+1\)</span> consecutive integers, so that <span class="math" data-tex="\(\sum|a_n|^2=1/|U|\)">\(\sum|a_n|^2=1/|U|\)</span>. Retaining only the prime moduli in <span class="math" data-tex="\((\sqrt x/2,\sqrt x]\)">\((\sqrt x/2,\sqrt x]\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{\sqrt x/2&lt;p\le\sqrt x}\frac{\nu_p}p\le\frac{2x}{|U|}\le\frac{4x}m.
+\]">\[
+\sum_{\sqrt x/2&lt;p\le\sqrt x}\frac{\nu_p}p\le\frac{2x}{|U|}\le\frac{4x}m.
+\]</span>
+Let <span class="math" data-tex="\(\mathcal P_x\)">\(\mathcal P_x\)</span> be the set of primes in <span class="math" data-tex="\((\sqrt x/2,\sqrt x]\)">\((\sqrt x/2,\sqrt x]\)</span>; by the prime number theorem <span class="math" data-tex="\(|\mathcal P_x|\gg\sqrt x/\log x\)">\(|\mathcal P_x|\gg\sqrt x/\log x\)</span>. By Cauchy–Schwarz, <span class="math" data-tex="\(|\mathcal P_x|^2\le\bigl(\sum_{p}\nu_p/p\bigr)\bigl(\sum_pp/\nu_p\bigr)\)">\(|\mathcal P_x|^2\le\bigl(\sum_{p}\nu_p/p\bigr)\bigl(\sum_pp/\nu_p\bigr)\)</span>, with both sums over <span class="math" data-tex="\(\mathcal P_x\)">\(\mathcal P_x\)</span>. Hence <span class="math" data-tex="\(\sum_{p\in\mathcal P_x}p/\nu_p\gg m/(\log x)^2\)">\(\sum_{p\in\mathcal P_x}p/\nu_p\gg m/(\log x)^2\)</span>, and since <span class="math" data-tex="\(p\le\sqrt x\)">\(p\le\sqrt x\)</span> and <span class="math" data-tex="\(\log p\ge\log(\sqrt x/2)\gg\log x\)">\(\log p\ge\log(\sqrt x/2)\gg\log x\)</span> on <span class="math" data-tex="\(\mathcal P_x\)">\(\mathcal P_x\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H&amp;:=\sum_{p\in\mathcal P_x}\frac{\log p}{\nu_p}\\
+&amp;\gg\frac{\log x}{\sqrt x}\sum_{p\in\mathcal P_x}\frac p{\nu_p}\\
+&amp;\gg\frac{m}{\sqrt x\,\log x}.\quad(3.4)
+\end{aligned}
+\]">\[
+\begin{aligned}
+H&amp;:=\sum_{p\in\mathcal P_x}\frac{\log p}{\nu_p}\\
+&amp;\gg\frac{\log x}{\sqrt x}\sum_{p\in\mathcal P_x}\frac p{\nu_p}\\
+&amp;\gg\frac{m}{\sqrt x\,\log x}.\quad(3.4)
+\end{aligned}
+\]</span></p>
+<p><em>Step 3: a larger-sieve upper bound for the same sum.</em> Let <span class="math" data-tex="\(Y\ge2\)">\(Y\ge2\)</span> with <span class="math" data-tex="\(B(Y)\ge1\)">\(B(Y)\ge1\)</span>, and let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be the uniform measure on <span class="math" data-tex="\(B\cap[0,Y]\)">\(B\cap[0,Y]\)</span>. Its image modulo <span class="math" data-tex="\(p\)">\(p\)</span> occupies at most <span class="math" data-tex="\(\nu_p\)">\(\nu_p\)</span> classes, so <span class="math" data-tex="\(\|\mu_p\|_2^2\ge1/\nu_p\)">\(\|\mu_p\|_2^2\ge1/\nu_p\)</span>. By (2.1) with <span class="math" data-tex="\(\mathcal P=\mathcal P_x\)">\(\mathcal P=\mathcal P_x\)</span>, Chebyshev's bound <span class="math" data-tex="\(\sum_{p\le\sqrt x}\log p\ll\sqrt x\)">\(\sum_{p\le\sqrt x}\log p\ll\sqrt x\)</span>, and <span class="math" data-tex="\(\Pr(n=n&#x27;)=1/B(Y)\)">\(\Pr(n=n&#x27;)=1/B(Y)\)</span>,
+<span class="math math-display" data-tex="\[
+H\le\log Y+O\left(\frac{\sqrt x}{B(Y)}\right).
+\tag{3.5}
+\]">\[
+H\le\log Y+O\left(\frac{\sqrt x}{B(Y)}\right).
+\tag{3.5}
+\]</span></p>
+<p><em>Step 4: exponents.</em> Let <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> and suppose that <span class="math" data-tex="\(A(x)&gt;x^{1/2+\varepsilon}\)">\(A(x)&gt;x^{1/2+\varepsilon}\)</span> for arbitrarily large <span class="math" data-tex="\(x\)">\(x\)</span>. For such <span class="math" data-tex="\(x\)">\(x\)</span> the hypothesis <span class="math" data-tex="\(m\ge3\sqrt x\)">\(m\ge3\sqrt x\)</span> of Step 2 holds. Choose <span class="math" data-tex="\(Y\)">\(Y\)</span> with <span class="math" data-tex="\(\log Y=x^{\varepsilon/2}\)">\(\log Y=x^{\varepsilon/2}\)</span>. Then (3.4) gives <span class="math" data-tex="\(H\gg x^{\varepsilon}/\log x\)">\(H\gg x^{\varepsilon}/\log x\)</span>, which exceeds <span class="math" data-tex="\(2\log Y\)">\(2\log Y\)</span> for large <span class="math" data-tex="\(x\)">\(x\)</span>, so (3.5) forces <span class="math" data-tex="\(\sqrt x/B(Y)\gg H\gg x^{\varepsilon}/\log x\)">\(\sqrt x/B(Y)\gg H\gg x^{\varepsilon}/\log x\)</span>, that is,
+<span class="math math-display" data-tex="\[
+B(Y)\ll x^{1/2-\varepsilon}\log x.
+\]">\[
+B(Y)\ll x^{1/2-\varepsilon}\log x.
+\]</span>
+But (3.3) with an integer <span class="math" data-tex="\(j&gt;1/\varepsilon\)">\(j&gt;1/\varepsilon\)</span> gives <span class="math" data-tex="\(B(Y)\gg_j(\log Y)^j=x^{j\varepsilon/2}&gt;x^{1/2}\)">\(B(Y)\gg_j(\log Y)^j=x^{j\varepsilon/2}&gt;x^{1/2}\)</span> for large <span class="math" data-tex="\(x\)">\(x\)</span>. This contradiction shows <span class="math" data-tex="\(A(x)\le x^{1/2+\varepsilon}\)">\(A(x)\le x^{1/2+\varepsilon}\)</span> for all large <span class="math" data-tex="\(x\)">\(x\)</span>. The argument is symmetric in <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span>: exclusion makes the large elements of <span class="math" data-tex="\(B\)">\(B\)</span> avoid the classes of <span class="math" data-tex="\(-A\)">\(-A\)</span>. So <span class="math" data-tex="\(B(x)\le x^{1/2+\varepsilon}\)">\(B(x)\le x^{1/2+\varepsilon}\)</span> as well, and (3.2) gives the lower bounds <span class="math" data-tex="\(A(x),B(x)\ge x^{1/2-\varepsilon}\)">\(A(x),B(x)\ge x^{1/2-\varepsilon}\)</span> for large <span class="math" data-tex="\(x\)">\(x\)</span>. Thus
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A(x)=x^{1/2+o(1)},\\
+B(x)=x^{1/2+o(1)}.\quad(3.6)
+\end{gathered}
+\]">\[
+\begin{gathered}
+A(x)=x^{1/2+o(1)},\\
+B(x)=x^{1/2+o(1)}.\quad(3.6)
+\end{gathered}
+\]</span></p>
+<p><em>Step 5: the logarithmic bounds.</em> Take <span class="math" data-tex="\(Y=x^2\)">\(Y=x^2\)</span> in (3.5). By (3.6), <span class="math" data-tex="\(B(x^2)=x^{1+o(1)}\)">\(B(x^2)=x^{1+o(1)}\)</span>, so <span class="math" data-tex="\(\sqrt x/B(x^2)=o(1)\)">\(\sqrt x/B(x^2)=o(1)\)</span> and <span class="math" data-tex="\(H\le2\log x+o(1)\)">\(H\le2\log x+o(1)\)</span>. If <span class="math" data-tex="\(m=A(x)\ge3\sqrt x\)">\(m=A(x)\ge3\sqrt x\)</span>, (3.4) gives <span class="math" data-tex="\(m/(\sqrt x\log x)\ll\log x\)">\(m/(\sqrt x\log x)\ll\log x\)</span>, that is <span class="math" data-tex="\(A(x)\ll\sqrt x(\log x)^2\)">\(A(x)\ll\sqrt x(\log x)^2\)</span>; if <span class="math" data-tex="\(m&lt;3\sqrt x\)">\(m&lt;3\sqrt x\)</span> this bound is immediate. The same holds for <span class="math" data-tex="\(B\)">\(B\)</span>. Finally (3.2) gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A(x)&amp;\gg\frac{x}{\log x\cdot B(x)}\\
+&amp;\gg\frac{x}{\log x\cdot\sqrt x(\log x)^2}\\
+&amp;=\frac{\sqrt x}{(\log x)^3},
+\end{aligned}
+\]">\[
+\begin{aligned}
+A(x)&amp;\gg\frac{x}{\log x\cdot B(x)}\\
+&amp;\gg\frac{x}{\log x\cdot\sqrt x(\log x)^2}\\
+&amp;=\frac{\sqrt x}{(\log x)^3},
+\end{aligned}
+\]</span>
+and the same for <span class="math" data-tex="\(B\)">\(B\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-collision-stability">4. Collision stability</h2>
+<p>The congruent-pair count also measures how far a summand is from being uniform on its residue support. Recall from Lesson 1 the partition <span class="math" data-tex="\(\mathbb F_p=S_p\sqcup S_p^c\)">\(\mathbb F_p=S_p\sqcup S_p^c\)</span> and <span class="math" data-tex="\(\sigma_p=|S_p|/p\)">\(\sigma_p=|S_p|/p\)</span>.</p>
+<p><strong>Lemma 4.1</strong> (collision stability [OpenAI-013, Lemma 2.5]). Let <span class="math" data-tex="\(b\ge1\)">\(b\ge1\)</span> be fixed and let <span class="math" data-tex="\(X\)">\(X\)</span> be large. Suppose that <span class="math" data-tex="\(\mu\)">\(\mu\)</span> and <span class="math" data-tex="\(\nu\)">\(\nu\)</span> are probability measures on
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A\cap(\sqrt X+N_*,X]\\
+\text{and}\\
+D\cap[-X,-\sqrt X-N_*),
+\end{gathered}
+\]">\[
+\begin{gathered}
+A\cap(\sqrt X+N_*,X]\\
+\text{and}\\
+D\cap[-X,-\sqrt X-N_*),
+\end{gathered}
+\]</span>
+respectively, with every point mass at most <span class="math" data-tex="\((\log X)^b/\sqrt X\)">\((\log X)^b/\sqrt X\)</span>. Put <span class="math" data-tex="\(Q=\sqrt X/(\log X)^{b+1}\)">\(Q=\sqrt X/(\log X)^{b+1}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{p\le Q}\log p\biggl(\|\mu_p-U_{S_p}\|_2^2\\
+&amp;\qquad+\|\nu_p-U_{S_p^c}\|_2^2\\
+&amp;\qquad+\frac{\sigma_p^{-1}+(1-\sigma_p)^{-1}-4}{p}\biggr)\\
+&amp;\quad\ll_b\log\log X,\quad(4.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{p\le Q}\log p\biggl(\|\mu_p-U_{S_p}\|_2^2\\
+&amp;\qquad+\|\nu_p-U_{S_p^c}\|_2^2\\
+&amp;\qquad+\frac{\sigma_p^{-1}+(1-\sigma_p)^{-1}-4}{p}\biggr)\\
+&amp;\quad\ll_b\log\log X,\quad(4.1)
+\end{aligned}
+\]</span>
+and every term on the left is nonnegative.</p>
+<p><em>Proof.</em> <em>Supports.</em> Let <span class="math" data-tex="\(p\le Q\)">\(p\le Q\)</span>. If <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> and <span class="math" data-tex="\(a&gt;\sqrt X+N_*\)">\(a&gt;\sqrt X+N_*\)</span>, then <span class="math" data-tex="\(a&gt;p+N_*\)">\(a&gt;p+N_*\)</span>, so <span class="math" data-tex="\(a\bmod p\)">\(a\bmod p\)</span> lies in the set <span class="math" data-tex="\(\mathcal A_p\subseteq S_p\)">\(\mathcal A_p\subseteq S_p\)</span> of Lemma 6.1 of Lesson 1. So <span class="math" data-tex="\(\mu_p\)">\(\mu_p\)</span> is supported on <span class="math" data-tex="\(S_p\)">\(S_p\)</span>, and likewise <span class="math" data-tex="\(\nu_p\)">\(\nu_p\)</span> is supported on <span class="math" data-tex="\(S_p^c\)">\(S_p^c\)</span>. For a probability measure supported on a set <span class="math" data-tex="\(E\)">\(E\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\mu_p-U_E\|_2^2&amp;=\|\mu_p\|_2^2\\
+&amp;\quad -\frac2{|E|}\sum_{x\in E}\mu_p(x)\\
+&amp;\quad +\frac1{|E|}\\
+&amp;=\|\mu_p\|_2^2-\frac1{|E|}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|\mu_p-U_E\|_2^2&amp;=\|\mu_p\|_2^2\\
+&amp;\quad -\frac2{|E|}\sum_{x\in E}\mu_p(x)\\
+&amp;\quad +\frac1{|E|}\\
+&amp;=\|\mu_p\|_2^2-\frac1{|E|}.
+\end{aligned}
+\]</span>
+With <span class="math" data-tex="\(|S_p|=p\sigma_p\)">\(|S_p|=p\sigma_p\)</span> and <span class="math" data-tex="\(|S_p^c|=p(1-\sigma_p)\)">\(|S_p^c|=p(1-\sigma_p)\)</span>, the bracket in (4.1) therefore equals <span class="math" data-tex="\(\|\mu_p\|_2^2+\|\nu_p\|_2^2-4/p\)">\(\|\mu_p\|_2^2+\|\nu_p\|_2^2-4/p\)</span>.</p>
+<p><em>Collision energies.</em> Both measures live on intervals of length at most <span class="math" data-tex="\(X\)">\(X\)</span>, and <span class="math" data-tex="\(Q\max_n\mu(n)\le1/\log X\)">\(Q\max_n\mu(n)\le1/\log X\)</span>. By (2.2),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{p\le Q}(\log p)\bigl(\|\mu_p\|_2^2+\|\nu_p\|_2^2\bigr)\\
+&amp;\quad \le2\log X+O(1).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{p\le Q}(\log p)\bigl(\|\mu_p\|_2^2+\|\nu_p\|_2^2\bigr)\\
+&amp;\quad \le2\log X+O(1).
+\end{aligned}
+\]</span>
+Mertens' estimate gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+4\sum_{p\le Q}\frac{\log p}p&amp;=4\log Q+O(1)\\
+&amp;=2\log X\\
+&amp;\quad -4(b+1)\log\log X\\
+&amp;\quad +O(1).
+\end{aligned}
+\]">\[
+\begin{aligned}
+4\sum_{p\le Q}\frac{\log p}p&amp;=4\log Q+O(1)\\
+&amp;=2\log X\\
+&amp;\quad -4(b+1)\log\log X\\
+&amp;\quad +O(1).
+\end{aligned}
+\]</span>
+Subtracting proves (4.1).</p>
+<p><em>Nonnegativity.</em> For <span class="math" data-tex="\(0&lt;\sigma&lt;1\)">\(0&lt;\sigma&lt;1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac1\sigma+\frac1{1-\sigma}-4=\frac{(1-2\sigma)^2}{\sigma(1-\sigma)}\\
+&amp;\quad \ge0.\quad(4.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac1\sigma+\frac1{1-\sigma}-4=\frac{(1-2\sigma)^2}{\sigma(1-\sigma)}\\
+&amp;\quad \ge0.\quad(4.2)
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>By (4.2) and <span class="math" data-tex="\(\sigma(1-\sigma)\le\frac14\)">\(\sigma(1-\sigma)\le\frac14\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac1{\sigma_p}+\frac1{1-\sigma_p}-4\\
+&amp;\quad \ge16\Bigl(\sigma_p-\frac12\Bigr)^2,\quad(4.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac1{\sigma_p}+\frac1{1-\sigma_p}-4\\
+&amp;\quad \ge16\Bigl(\sigma_p-\frac12\Bigr)^2,\quad(4.3)
+\end{aligned}
+\]</span>
+and the left side is at least <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span> when <span class="math" data-tex="\(\sigma_p\notin[\tfrac13,\tfrac23]\)">\(\sigma_p\notin[\tfrac13,\tfrac23]\)</span>. So (4.1) bounds the <span class="math" data-tex="\((\log p)/p\)">\((\log p)/p\)</span>-weight of the unbalanced primes.</p>
+<p><strong>Corollary 4.2</strong> (test functions). In the setting of Lemma 4.1, let <span class="math" data-tex="\(f_p\colon\mathbb F_p\to\mathbb C\)">\(f_p\colon\mathbb F_p\to\mathbb C\)</span> be functions with <span class="math" data-tex="\(\mathbb E_{x\in\mathbb F_p}|f_p(x)|^2\le1\)">\(\mathbb E_{x\in\mathbb F_p}|f_p(x)|^2\le1\)</span>, chosen separately at every prime. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{p\le Q}\frac{\log p}p\Bigl|\mathbb E_{\mu}f_p\\
+&amp;\qquad -\mathbb E_{x\in S_p}f_p(x)\Bigr|^2\\
+&amp;\quad \ll_b\log\log X,\quad(4.4)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{p\le Q}\frac{\log p}p\Bigl|\mathbb E_{\mu}f_p\\
+&amp;\qquad -\mathbb E_{x\in S_p}f_p(x)\Bigr|^2\\
+&amp;\quad \ll_b\log\log X,\quad(4.4)
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(\mathbb E_\mu f_p=\sum_n\mu(n)f_p(n\bmod p)\)">\(\mathbb E_\mu f_p=\sum_n\mu(n)f_p(n\bmod p)\)</span>, and the same holds for <span class="math" data-tex="\(\nu\)">\(\nu\)</span> with <span class="math" data-tex="\(S_p^c\)">\(S_p^c\)</span>.</p>
+<p><em>Proof.</em> By Cauchy–Schwarz,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl|\sum_x\bigl(\mu_p(x)-U_{S_p}(x)\bigr)f_p(x)\Bigr|^2\\
+&amp;\quad \le\|\mu_p-U_{S_p}\|_2^2\sum_x|f_p(x)|^2\\
+&amp;\quad \le p\,\|\mu_p-U_{S_p}\|_2^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl|\sum_x\bigl(\mu_p(x)-U_{S_p}(x)\bigr)f_p(x)\Bigr|^2\\
+&amp;\quad \le\|\mu_p-U_{S_p}\|_2^2\sum_x|f_p(x)|^2\\
+&amp;\quad \le p\,\|\mu_p-U_{S_p}\|_2^2 .
+\end{aligned}
+\]</span>
+Multiply by <span class="math" data-tex="\((\log p)/p\)">\((\log p)/p\)</span>, sum, and apply (4.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The corollary needs no pointwise bound on <span class="math" data-tex="\(f_p\)">\(f_p\)</span>: only the probability <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norm enters. This matters later, when the test functions are inverse Fourier transforms that can be as large as <span class="math" data-tex="\(\sqrt p\)">\(\sqrt p\)</span> at single points.</p>
+<h2 id="5-the-tails-used-in-later-lessons">5. The tails used in later lessons</h2>
+<p>For large <span class="math" data-tex="\(X\)">\(X\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_X=A\cap[X^{9/10},X],\\
+D_X=D\cap[-X,-X^{9/10}].\quad(5.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+A_X=A\cap[X^{9/10},X],\\
+D_X=D\cap[-X,-X^{9/10}].\quad(5.1)
+\end{gathered}
+\]</span></p>
+<p><strong>Lemma 5.1.</strong> For large <span class="math" data-tex="\(X\)">\(X\)</span>, <span class="math" data-tex="\(|A_X|,|D_X|\gg\sqrt X/(\log X)^3\)">\(|A_X|,|D_X|\gg\sqrt X/(\log X)^3\)</span>, and the uniform measures on <span class="math" data-tex="\(A_X\)">\(A_X\)</span> and <span class="math" data-tex="\(D_X\)">\(D_X\)</span> satisfy the hypotheses of Lemma 4.1 with <span class="math" data-tex="\(b=4\)">\(b=4\)</span>.</p>
+<p><em>Proof.</em> By Theorem 3.1, <span class="math" data-tex="\(|A_X|\ge A(X)-A(X^{9/10})\)">\(|A_X|\ge A(X)-A(X^{9/10})\)</span><span class="math" data-tex="\(\ge c\sqrt X/(\log X)^3\)">\(\ge c\sqrt X/(\log X)^3\)</span><span class="math" data-tex="\(-CX^{9/20}(\log X)^2\gg\sqrt X/(\log X)^3\)">\(-CX^{9/20}(\log X)^2\gg\sqrt X/(\log X)^3\)</span>. Every point mass is <span class="math" data-tex="\(1/|A_X|\ll(\log X)^3/\sqrt X\)">\(1/|A_X|\ll(\log X)^3/\sqrt X\)</span><span class="math" data-tex="\(\le(\log X)^4/\sqrt X\)">\(\le(\log X)^4/\sqrt X\)</span> for large <span class="math" data-tex="\(X\)">\(X\)</span>, and <span class="math" data-tex="\(X^{9/10}&gt;\sqrt X+N_*\)">\(X^{9/10}&gt;\sqrt X+N_*\)</span>. The same holds for <span class="math" data-tex="\(D_X\)">\(D_X\)</span>, using <span class="math" data-tex="\(B\)">\(B\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>With <span class="math" data-tex="\(b=4\)">\(b=4\)</span>, Lemma 4.1 and Corollary 4.2 apply to all primes <span class="math" data-tex="\(p\le\sqrt X/(\log X)^5\)">\(p\le\sqrt X/(\log X)^5\)</span>. In particular, for any functions <span class="math" data-tex="\(\phi_p\)">\(\phi_p\)</span> with <span class="math" data-tex="\(|\phi_p|\le1\)">\(|\phi_p|\le1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{p\le\sqrt X/(\log X)^5}\frac{\log p}p
+\Bigl|\mathbb E_{x\in A_X}\phi_p(x)\\
+&amp;\qquad -\mathbb E_{x\in S_p}\phi_p(x)\Bigr|^2\ll\log\log X,\quad(5.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{p\le\sqrt X/(\log X)^5}\frac{\log p}p
+\Bigl|\mathbb E_{x\in A_X}\phi_p(x)\\
+&amp;\qquad -\mathbb E_{x\in S_p}\phi_p(x)\Bigr|^2\ll\log\log X,\quad(5.2)
+\end{aligned}
+\]</span>
+and the same with <span class="math" data-tex="\(D_X\)">\(D_X\)</span> and <span class="math" data-tex="\(S_p^c\)">\(S_p^c\)</span>. In words: for any choice of bounded test functions, one at each prime, the empirical mean over the tail <span class="math" data-tex="\(A_X\)">\(A_X\)</span> and the uniform mean over <span class="math" data-tex="\(S_p\)">\(S_p\)</span> agree up to an error whose square has <span class="math" data-tex="\((\log p)/p\)">\((\log p)/p\)</span>-weighted sum <span class="math" data-tex="\(O(\log\log X)\)">\(O(\log\log X)\)</span>. Since <span class="math" data-tex="\(\sum_{p\le y}(\log p)/p\sim\log y\)">\(\sum_{p\le y}(\log p)/p\sim\log y\)</span>, the two means agree for all primes outside a set of <span class="math" data-tex="\((\log p)/p\)">\((\log p)/p\)</span>-weight <span class="math" data-tex="\(O_\delta(\log\log X)\)">\(O_\delta(\log\log X)\)</span>, up to any fixed tolerance <span class="math" data-tex="\(\delta\)">\(\delta\)</span>.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Show that (4.1) and (4.3) give, for <span class="math" data-tex="\(2\le y\le\sqrt X/(\log X)^{b+1}\)">\(2\le y\le\sqrt X/(\log X)^{b+1}\)</span> and fixed <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{\substack{p\le y\\|\sigma_p-1/2|&gt;\delta}}\frac{\log p}p\ll_{b}\delta^{-2}\log\log X.
+\]">\[
+\sum_{\substack{p\le y\\|\sigma_p-1/2|&gt;\delta}}\frac{\log p}p\ll_{b}\delta^{-2}\log\log X.
+\]</span></p>
+<p><strong>6.2</strong> (Gallagher's larger sieve). Let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be a finite set of integers in an interval of length <span class="math" data-tex="\(X\ge2\)">\(X\ge2\)</span>, and let <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> be a finite set of primes such that <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> meets at most <span class="math" data-tex="\(\nu_p\)">\(\nu_p\)</span> classes modulo <span class="math" data-tex="\(p\)">\(p\)</span> for each <span class="math" data-tex="\(p\in\mathcal P\)">\(p\in\mathcal P\)</span>. Show that
+<span class="math math-display" data-tex="\[
+|\mathcal A|\le\frac{\sum_{p\in\mathcal P}\log p-\log X}{\sum_{p\in\mathcal P}(\log p)/\nu_p-\log X}
+\]">\[
+|\mathcal A|\le\frac{\sum_{p\in\mathcal P}\log p-\log X}{\sum_{p\in\mathcal P}(\log p)/\nu_p-\log X}
+\]</span>
+whenever the denominator is positive.</p>
+<p><strong>6.3.</strong> In Lemma 1.1, show that equality holds exactly when <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is uniform on a set of <span class="math" data-tex="\(p-\nu\)">\(p-\nu\)</span> residues.</p>
+<p><strong>6.4.</strong> Let <span class="math" data-tex="\(0&lt;\alpha&lt;\tfrac12\)">\(0&lt;\alpha&lt;\tfrac12\)</span>. Suppose that a set <span class="math" data-tex="\(\mathcal A\subseteq[1,X]\)">\(\mathcal A\subseteq[1,X]\)</span> meets at most <span class="math" data-tex="\(\alpha p+1\)">\(\alpha p+1\)</span> classes modulo every prime <span class="math" data-tex="\(p\le X\)">\(p\le X\)</span>. Use Exercise 6.2 with the primes up to <span class="math" data-tex="\(X^{\alpha+\varepsilon}\)">\(X^{\alpha+\varepsilon}\)</span> to show <span class="math" data-tex="\(|\mathcal A|\ll_{\alpha,\varepsilon}X^{\alpha+\varepsilon}\)">\(|\mathcal A|\ll_{\alpha,\varepsilon}X^{\alpha+\varepsilon}\)</span> for every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> By (4.3), each prime with <span class="math" data-tex="\(|\sigma_p-\tfrac12|&gt;\delta\)">\(|\sigma_p-\tfrac12|&gt;\delta\)</span> has <span class="math" data-tex="\(\sigma_p^{-1}+(1-\sigma_p)^{-1}-4&gt;16\delta^2\)">\(\sigma_p^{-1}+(1-\sigma_p)^{-1}-4&gt;16\delta^2\)</span>. All terms of (4.1) are nonnegative, so the <span class="math" data-tex="\((\log p)/p\)">\((\log p)/p\)</span>-weight of these primes up to <span class="math" data-tex="\(y\le Q\)">\(y\le Q\)</span> is at most <span class="math" data-tex="\((16\delta^2)^{-1}\)">\((16\delta^2)^{-1}\)</span> times the left side of (4.1).</p>
+<p><strong>6.2.</strong> Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be the uniform measure on <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>. The equality in (2.1) and the bound <span class="math" data-tex="\(\|\mu_p\|_2^2\ge1/\nu_p\)">\(\|\mu_p\|_2^2\ge1/\nu_p\)</span> give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{p\in\mathcal P}\frac{\log p}{\nu_p}&amp;\le\Bigl(1-\frac1{|\mathcal A|}\Bigr)\log X\\
+&amp;\quad +\frac1{|\mathcal A|}\sum_{p\in\mathcal P}\log p,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{p\in\mathcal P}\frac{\log p}{\nu_p}&amp;\le\Bigl(1-\frac1{|\mathcal A|}\Bigr)\log X\\
+&amp;\quad +\frac1{|\mathcal A|}\sum_{p\in\mathcal P}\log p,
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(\Pr(n=n&#x27;)=1/|\mathcal A|\)">\(\Pr(n=n&#x27;)=1/|\mathcal A|\)</span> and the bound <span class="math" data-tex="\(\log X\)">\(\log X\)</span> applies only when <span class="math" data-tex="\(n\ne n&#x27;\)">\(n\ne n&#x27;\)</span>. Multiplying by <span class="math" data-tex="\(|\mathcal A|\)">\(|\mathcal A|\)</span> and rearranging gives <span class="math" data-tex="\(|\mathcal A|\bigl(\sum_p(\log p)/\nu_p-\log X\bigr)\)">\(|\mathcal A|\bigl(\sum_p(\log p)/\nu_p-\log X\bigr)\)</span><span class="math" data-tex="\(\le\sum_p\log p-\log X\)">\(\le\sum_p\log p-\log X\)</span>.</p>
+<p><strong>6.3.</strong> Equality in Lemma 1.1 means equality in <span class="math" data-tex="\(1\le(p-\nu)\sum_x\mu(x)^2\)">\(1\le(p-\nu)\sum_x\mu(x)^2\)</span>, which is Cauchy–Schwarz for the vectors <span class="math" data-tex="\((\mu(x))\)">\((\mu(x))\)</span> and <span class="math" data-tex="\((1)\)">\((1)\)</span> on the support; it holds exactly when <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is constant on its support.</p>
+<p><strong>6.4.</strong> Let <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> be the primes up to <span class="math" data-tex="\(Q=X^{\alpha+\varepsilon}\)">\(Q=X^{\alpha+\varepsilon}\)</span>, so <span class="math" data-tex="\(\nu_p\le\alpha p+1\)">\(\nu_p\le\alpha p+1\)</span>. The numerator in Exercise 6.2 is at most <span class="math" data-tex="\(\sum_{p\le Q}\log p\ll Q\)">\(\sum_{p\le Q}\log p\ll Q\)</span>. For the denominator, <span class="math" data-tex="\((\log p)/\nu_p\ge(\log p)/(\alpha p+1)\)">\((\log p)/\nu_p\ge(\log p)/(\alpha p+1)\)</span><span class="math" data-tex="\(\ge(\log p)/(\alpha p)-(\log p)/(\alpha^2p^2)\)">\(\ge(\log p)/(\alpha p)-(\log p)/(\alpha^2p^2)\)</span>, and Mertens' estimate gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{p\le Q}\frac{\log p}{\nu_p}&amp;\ge\frac{\log Q}{\alpha}-O_\alpha(1)\\
+&amp;=\Bigl(1+\frac\varepsilon\alpha\Bigr)\log X-O_\alpha(1).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{p\le Q}\frac{\log p}{\nu_p}&amp;\ge\frac{\log Q}{\alpha}-O_\alpha(1)\\
+&amp;=\Bigl(1+\frac\varepsilon\alpha\Bigr)\log X-O_\alpha(1).
+\end{aligned}
+\]</span>
+So the denominator is at least <span class="math" data-tex="\((\varepsilon/\alpha)\log X-O_\alpha(1)\gg_{\alpha,\varepsilon}\log X\)">\((\varepsilon/\alpha)\log X-O_\alpha(1)\gg_{\alpha,\varepsilon}\log X\)</span> for large <span class="math" data-tex="\(X\)">\(X\)</span>, and <span class="math" data-tex="\(|\mathcal A|\ll Q/\log X\le X^{\alpha+\varepsilon}\)">\(|\mathcal A|\ll Q/\log X\le X^{\alpha+\varepsilon}\)</span>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-013] OpenAI, <em>The additive indecomposability of the primes</em>, OpenAI Math Release preprint, 24 September 2026, Sections 2.4 and 2.5. https://github.com/openai/math/tree/main/preprints/the-additive-indecomposability-of-the-primes-September-24-2026</li>
+<li>[Els06] C. Elsholtz, <em>Additive decomposability of multiplicatively defined sets</em>, Funct. Approx. Comment. Math. 35 (2006), 61–77, Theorem 1.9. https://www.math.tugraz.at/~elsholtz/WWW/papers/papers22wirsing04.pdf</li>
+<li>[GH] B. Green and A. J. Harper, <em>Inverse questions for the large sieve</em>, Geom. Funct. Anal. 24 (2014), numbering of arXiv:1311.6176v1, the larger sieve in Section 2 and its quantitative use. https://arxiv.org/abs/1311.6176v1</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

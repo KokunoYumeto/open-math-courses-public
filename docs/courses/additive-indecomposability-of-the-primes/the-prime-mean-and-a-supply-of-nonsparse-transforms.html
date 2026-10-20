@@ -1,0 +1,288 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The prime mean and a supply of nonsparse transforms</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Additive indecomposability of the primes)</a><a href="a-tensor-budget-and-a-contracting-kernel.html">Previous lesson</a><a href="diagrams-densities-and-cycles-over-a-finite-field.html">Next lesson</a><a href="src/the-prime-mean-and-a-supply-of-nonsparse-transforms.md">Editable source</a></nav><main><article><h1 id="the-prime-mean-and-a-supply-of-nonsparse-transforms">The prime mean and a supply of nonsparse transforms</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Lesson 10 assumed that the primes with sparse transforms carry most of the harmonic mass of the band, built from their sparse spectra a nonnegative weight <span class="math" data-tex="\(W\)">\(W\)</span>, and proved that its average over pairs <span class="math" data-tex="\((a,d)\in A_0\times D_0\)">\((a,d)\in A_0\times D_0\)</span> is small. This lesson computes the average of <span class="math" data-tex="\(W\)">\(W\)</span> over primes, <span class="math" data-tex="\(\sum_p(\log p)\phi(p/X)W(p)\approx UX\int\phi\)">\(\sum_p(\log p)\phi(p/X)W(p)\approx UX\int\phi\)</span> (Proposition 3.2), by expanding <span class="math" data-tex="\(W\)">\(W\)</span> into Dirichlet characters of moderate conductor and using the zeros of their <span class="math" data-tex="\(L\)">\(L\)</span>-functions. Coverage then says that every large prime is a difference <span class="math" data-tex="\(a-d\)">\(a-d\)</span>, which transfers the prime average to the pair average, and the two bounds are incompatible. This proves Theorem 1.1 of Lesson 10.</p>
+<p>The analytic input is a uniform estimate for prime sums twisted by all primitive characters of conductor up to <span class="math" data-tex="\(Q_b=\exp(2Ke^{0.9L})\)">\(Q_b=\exp(2Ke^{0.9L})\)</span>, with the possible exceptional character removed (Lemma 2.1). It follows from a smoothed explicit formula, the classical zero-free region with Page's theorem, and a log-free zero-density estimate for the whole family, all proved in the programme course on Dirichlet <span class="math" data-tex="\(L\)">\(L\)</span>-functions.</p>
+<p><strong>Prerequisites.</strong> <a href="a-tensor-budget-and-a-contracting-kernel.html"><em>A tensor budget and a contracting kernel</em></a>; <a href="../NT-DIRL/NT-DIRL-05.html"><em>The functional equation of Dirichlet L-functions</em></a>, Theorem 2.1; <a href="../NT-DIRL/NT-DIRL-07.html"><em>Zero-free regions and the exceptional zero</em></a>, Lemma 1.2; <a href="../NT-DIRL/NT-DIRL-08.html"><em>Counting zeros and the explicit formula for ψ(x, χ)</em></a>, Theorem 1.1; <a href="../NT-DIRL/NT-DIRL-17.html"><em>The least prime in a progression: Linnik's theorem</em></a>, Section 1; <a href="../NT-ZETA/NT-ZETA-12.html"><em>The prime number theorem with the classical error term</em></a>, Theorem 1.1.</p>
+<p>The notation of Lesson 10 is in force: <span class="math" data-tex="\(\log X=e^L\)">\(\log X=e^L\)</span>, <span class="math" data-tex="\(R=\sqrt X\)">\(R=\sqrt X\)</span>, the set <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> with <span class="math" data-tex="\(H=\sum_{p\in\mathcal S}1/p\ge0.68L\)">\(H=\sum_{p\in\mathcal S}1/p\ge0.68L\)</span>, the kernels <span class="math" data-tex="\(b_p\)">\(b_p\)</span>, <span class="math" data-tex="\(K=\lceil C_KL\rceil\)">\(K=\lceil C_KL\rceil\)</span>, the weight <span class="math" data-tex="\(W\)">\(W\)</span>, and <span class="math" data-tex="\(U=e^{O(\epsilon_0L)}\)">\(U=e^{O(\epsilon_0L)}\)</span>.</p>
+<h2 id="1-a-smoothed-explicit-formula">1. A smoothed explicit formula</h2>
+<p>Fix a nonzero nonnegative smooth function <span class="math" data-tex="\(\phi\)">\(\phi\)</span> supported in a compact subset of <span class="math" data-tex="\((\frac12,1)\)">\((\frac12,1)\)</span>, and put
+<span class="math math-display" data-tex="\[
+\Phi(s)=\int_0^\infty\phi(t)\,t^{s-1}\,dt .
+\]">\[
+\Phi(s)=\int_0^\infty\phi(t)\,t^{s-1}\,dt .
+\]</span>
+It is entire, <span class="math" data-tex="\(\Phi(1)=\int\phi\)">\(\Phi(1)=\int\phi\)</span>, and repeated integration by parts gives <span class="math" data-tex="\(\Phi(s)\ll_{\phi,j}(1+|\Im s|)^{-j}\)">\(\Phi(s)\ll_{\phi,j}(1+|\Im s|)^{-j}\)</span> uniformly for <span class="math" data-tex="\(-\frac12\le\Re s\le2\)">\(-\frac12\le\Re s\le2\)</span>, for every <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>.</p>
+<p><strong>Lemma 1.1</strong> (smoothed explicit formula [OpenAI-013, (5.17)]). Let <span class="math" data-tex="\(\chi\)">\(\chi\)</span> be a primitive nonprincipal character of conductor <span class="math" data-tex="\(q\)">\(q\)</span>, and <span class="math" data-tex="\(X\ge2\)">\(X\ge2\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{n\ge1}\Lambda(n)\chi(n)\phi(n/X)\\
+&amp;\quad =-\sum_\rho X^\rho\Phi(\rho)\\
+&amp;\qquad -\mathbf 1_{\chi(-1)=1}\Phi(0)\\
+&amp;\qquad +O_\phi\bigl(X^{-1/2}\log(2q)\bigr),\quad(1.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{n\ge1}\Lambda(n)\chi(n)\phi(n/X)\\
+&amp;\quad =-\sum_\rho X^\rho\Phi(\rho)\\
+&amp;\qquad -\mathbf 1_{\chi(-1)=1}\Phi(0)\\
+&amp;\qquad +O_\phi\bigl(X^{-1/2}\log(2q)\bigr),\quad(1.1)
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(\rho\)">\(\rho\)</span> runs over the nontrivial zeros with multiplicity; the zero sum converges absolutely. The implied constant depends only on <span class="math" data-tex="\(\phi\)">\(\phi\)</span>; in particular it does not depend on the position of any real zero.</p>
+<p><em>Proof.</em> Mellin inversion gives <span class="math" data-tex="\(\phi(x)=\frac1{2\pi i}\int_{(2)}\Phi(s)x^{-s}ds\)">\(\phi(x)=\frac1{2\pi i}\int_{(2)}\Phi(s)x^{-s}ds\)</span>, so the left side equals <span class="math" data-tex="\(\frac1{2\pi i}\int_{(2)}\bigl(-\frac{L&#x27;}L(s,\chi)\bigr)X^s\Phi(s)\,ds\)">\(\frac1{2\pi i}\int_{(2)}\bigl(-\frac{L&#x27;}L(s,\chi)\bigr)X^s\Phi(s)\,ds\)</span>. Shift the line of integration to <span class="math" data-tex="\(\Re s=-\frac12\)">\(\Re s=-\frac12\)</span>. The poles crossed are the nontrivial zeros, with residue <span class="math" data-tex="\(-mX^\rho\Phi(\rho)\)">\(-mX^\rho\Phi(\rho)\)</span> for a zero of multiplicity <span class="math" data-tex="\(m\)">\(m\)</span>, and, when <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is even, the simple trivial zero at <span class="math" data-tex="\(s=0\)">\(s=0\)</span>, with residue <span class="math" data-tex="\(-\Phi(0)\)">\(-\Phi(0)\)</span>; odd characters have no trivial zero in <span class="math" data-tex="\(-\frac12&lt;\Re s&lt;2\)">\(-\frac12&lt;\Re s&lt;2\)</span>. Take the limit through heights <span class="math" data-tex="\(\pm T_n\to\infty\)">\(\pm T_n\to\infty\)</span> at distance at least <span class="math" data-tex="\(c/\log(qT_n)\)">\(c/\log(qT_n)\)</span> from every zero ordinate, which exist because each unit interval of heights contains <span class="math" data-tex="\(O(\log(q(|t|+2)))\)">\(O(\log(q(|t|+2)))\)</span> ordinates (<a href="../NT-DIRL/NT-DIRL-07.html"><em>Zero-free regions and the exceptional zero</em></a>, (1.6)). On these horizontal segments, the local expansion (1.7) there, together with the functional equation below for <span class="math" data-tex="\(\Re s\le\frac12\)">\(\Re s\le\frac12\)</span>, gives <span class="math" data-tex="\(|L&#x27;/L(s,\chi)|\ll\log^2(qT_n)\)">\(|L&#x27;/L(s,\chi)|\ll\log^2(qT_n)\)</span>, and the rapid decay of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> makes these segments vanish in the limit.</p>
+<p>On <span class="math" data-tex="\(\Re s=-\frac12\)">\(\Re s=-\frac12\)</span>, the functional equation (<a href="../NT-DIRL/NT-DIRL-05.html"><em>The functional equation of Dirichlet L-functions</em></a>, (2.5)) gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{L&#x27;}L(s,\chi)&amp;=-\log\frac q\pi\\
+&amp;\quad -\frac12\frac{\Gamma&#x27;}\Gamma\Bigl(\frac{1-s+a}2\Bigr)\\
+&amp;\quad -\frac12\frac{\Gamma&#x27;}\Gamma\Bigl(\frac{s+a}2\Bigr)\\
+&amp;\quad -\frac{L&#x27;}L(1-s,\overline\chi),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{L&#x27;}L(s,\chi)&amp;=-\log\frac q\pi\\
+&amp;\quad -\frac12\frac{\Gamma&#x27;}\Gamma\Bigl(\frac{1-s+a}2\Bigr)\\
+&amp;\quad -\frac12\frac{\Gamma&#x27;}\Gamma\Bigl(\frac{s+a}2\Bigr)\\
+&amp;\quad -\frac{L&#x27;}L(1-s,\overline\chi),
+\end{aligned}
+\]</span>
+with <span class="math" data-tex="\(a\in\{0,1\}\)">\(a\in\{0,1\}\)</span> the parity of <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. Here <span class="math" data-tex="\(\Re(1-s)=\frac32\)">\(\Re(1-s)=\frac32\)</span>, so the last term is bounded by <span class="math" data-tex="\(-\zeta&#x27;/\zeta(\frac32)\)">\(-\zeta&#x27;/\zeta(\frac32)\)</span>, and both Gamma terms are <span class="math" data-tex="\(O(\log(|\Im s|+2))\)">\(O(\log(|\Im s|+2))\)</span>, since their arguments stay at distance at least <span class="math" data-tex="\(\frac14\)">\(\frac14\)</span> from the poles of <span class="math" data-tex="\(\Gamma&#x27;/\Gamma\)">\(\Gamma&#x27;/\Gamma\)</span>. So <span class="math" data-tex="\(|L&#x27;/L(s,\chi)|\ll\log(q(|\Im s|+2))\)">\(|L&#x27;/L(s,\chi)|\ll\log(q(|\Im s|+2))\)</span> on this line, and with the decay of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> the shifted integral is <span class="math" data-tex="\(O_\phi(X^{-1/2}\log(2q))\)">\(O_\phi(X^{-1/2}\log(2q))\)</span>. Absolute convergence of the zero sum follows from the zero count <span class="math" data-tex="\(N(T,\chi)\ll T\log(qT)\)">\(N(T,\chi)\ll T\log(qT)\)</span> (<a href="../NT-DIRL/NT-DIRL-08.html"><em>Counting zeros and the explicit formula for ψ(x, χ)</em></a>, Theorem 1.1) and the decay of <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-prime-sums-over-a-family-of-characters">2. Prime sums over a family of characters</h2>
+<p>Put
+<span class="math math-display" data-tex="\[
+\log Q_b=2Ke^{0.9L}.
+\tag{2.1}
+\]">\[
+\log Q_b=2Ke^{0.9L}.
+\tag{2.1}
+\]</span>
+Products of at most <span class="math" data-tex="\(2K\)">\(2K\)</span> primes of <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> are at most <span class="math" data-tex="\(Q_b\)">\(Q_b\)</span>, because every prime of <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> has <span class="math" data-tex="\(\log p\le e^{0.9L}\)">\(\log p\le e^{0.9L}\)</span>. Note that <span class="math" data-tex="\(\log Q_b=o(\log X)\)">\(\log Q_b=o(\log X)\)</span>.</p>
+<p><strong>The exceptional character.</strong> Apply Section 1 of <a href="../NT-DIRL/NT-DIRL-17.html"><em>The least prime in a progression: Linnik's theorem</em></a> with the parameter <span class="math" data-tex="\(T_b=Q_b^5\)">\(T_b=Q_b^5\)</span>. Its statement (1.1) gives an absolute <span class="math" data-tex="\(a_0&gt;0\)">\(a_0&gt;0\)</span> such that, among all primitive characters of conductor at most <span class="math" data-tex="\(T_b\)">\(T_b\)</span> (the conductor-one character included), the box <span class="math" data-tex="\(\Re s&gt;1-a_0/\log(2T_b)\)">\(\Re s&gt;1-a_0/\log(2T_b)\)</span>, <span class="math" data-tex="\(|\Im s|\le T_b\)">\(|\Im s|\le T_b\)</span>, contains at most one zero; if it exists, it is a simple real zero of a real nonprincipal character <span class="math" data-tex="\(\chi_1\)">\(\chi_1\)</span>. Call <span class="math" data-tex="\(\chi_1\)">\(\chi_1\)</span> the <em>exceptional character</em>. Its statement (1.4) gives absolute constants <span class="math" data-tex="\(c,C\)">\(c,C\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+N^*(\sigma,T_b)\le CT_b^{c(1-\sigma)}\\
+(\tfrac12\le\sigma\le1),\quad(2.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+N^*(\sigma,T_b)\le CT_b^{c(1-\sigma)}\\
+(\tfrac12\le\sigma\le1),\quad(2.2)
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(N^*(\sigma,T_b)\)">\(N^*(\sigma,T_b)\)</span> counts the zeros, with multiplicity, of all these <span class="math" data-tex="\(L\)">\(L\)</span>-functions with real part at least <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and <span class="math" data-tex="\(|\Im\rho|\le T_b\)">\(|\Im\rho|\le T_b\)</span>, excluding only the exceptional zero itself.</p>
+<p><strong>Lemma 2.1</strong> (the total prime error [OpenAI-013, Lemma 5.3]). Fix <span class="math" data-tex="\(C_K\)">\(C_K\)</span> and <span class="math" data-tex="\(\phi\)">\(\phi\)</span>. Let <span class="math" data-tex="\(\mathcal F\)">\(\mathcal F\)</span> be the set of primitive characters of conductor at most <span class="math" data-tex="\(Q_b\)">\(Q_b\)</span>, including the conductor-one character and excluding the exceptional character. For every fixed <span class="math" data-tex="\(D_1&gt;0\)">\(D_1&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\chi\in\mathcal F}\Bigl|\sum_{n\ge1}\Lambda(n)\chi(n)\phi(n/X)\\
+&amp;\qquad -\mathbf 1_{\chi=1}X\Phi(1)\Bigr|\\
+&amp;\quad \ll_{D_1,\phi,C_K}Xe^{-D_1L}.\quad(2.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\chi\in\mathcal F}\Bigl|\sum_{n\ge1}\Lambda(n)\chi(n)\phi(n/X)\\
+&amp;\qquad -\mathbf 1_{\chi=1}X\Phi(1)\Bigr|\\
+&amp;\quad \ll_{D_1,\phi,C_K}Xe^{-D_1L}.\quad(2.3)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(M=\log X=e^L\)">\(M=\log X=e^L\)</span> and <span class="math" data-tex="\(u_0=a_0/\log(2T_b)\)">\(u_0=a_0/\log(2T_b)\)</span>. Every zero of a nonprincipal <span class="math" data-tex="\(\chi\in\mathcal F\)">\(\chi\in\mathcal F\)</span> with <span class="math" data-tex="\(|\Im\rho|\le T_b\)">\(|\Im\rho|\le T_b\)</span> has <span class="math" data-tex="\(1-\Re\rho\ge u_0\)">\(1-\Re\rho\ge u_0\)</span>. Let <span class="math" data-tex="\(F(y)\)">\(F(y)\)</span> be the number of these zeros with <span class="math" data-tex="\(\Re\rho\ge1-y\)">\(\Re\rho\ge1-y\)</span>, over all nonprincipal <span class="math" data-tex="\(\chi\in\mathcal F\)">\(\chi\in\mathcal F\)</span>. They are among the zeros counted by <span class="math" data-tex="\(N^*\)">\(N^*\)</span>, so (2.2) gives <span class="math" data-tex="\(F(y)\le Ce^{Ay}\)">\(F(y)\le Ce^{Ay}\)</span> with <span class="math" data-tex="\(A=5c\log Q_b\)">\(A=5c\log Q_b\)</span>, and <span class="math" data-tex="\(F(y)=0\)">\(F(y)=0\)</span> for <span class="math" data-tex="\(y&lt;u_0\)">\(y&lt;u_0\)</span>. Since <span class="math" data-tex="\(\log Q_b=o(M)\)">\(\log Q_b=o(M)\)</span>, eventually <span class="math" data-tex="\(M\ge2A\)">\(M\ge2A\)</span>. Summation by parts gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\substack{\chi,\rho\\\Re\rho\ge1/2,\ |\Im\rho|\le T_b}}X^{\Re\rho-1}\\
+&amp;\quad =e^{-M/2}F(\tfrac12)\\
+&amp;\qquad +M\int_{u_0}^{1/2}e^{-My}F(y)\,dy\\
+&amp;\quad \ll e^{-Mu_0/2}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\substack{\chi,\rho\\\Re\rho\ge1/2,\ |\Im\rho|\le T_b}}X^{\Re\rho-1}\\
+&amp;\quad =e^{-M/2}F(\tfrac12)\\
+&amp;\qquad +M\int_{u_0}^{1/2}e^{-My}F(y)\,dy\\
+&amp;\quad \ll e^{-Mu_0/2}.
+\end{aligned}
+\]</span>
+Here <span class="math" data-tex="\(Mu_0\gg e^L/(Ke^{0.9L})=e^{0.1L}/K\)">\(Mu_0\gg e^L/(Ke^{0.9L})=e^{0.1L}/K\)</span>, so this is smaller than <span class="math" data-tex="\(e^{-DL}\)">\(e^{-DL}\)</span> for every fixed <span class="math" data-tex="\(D\)">\(D\)</span> once <span class="math" data-tex="\(L\)">\(L\)</span> is large.</p>
+<p>Sum the absolute values of the terms of (1.1) over the nonprincipal <span class="math" data-tex="\(\chi\in\mathcal F\)">\(\chi\in\mathcal F\)</span>:</p>
+<ul>
+<li>the zeros with <span class="math" data-tex="\(\Re\rho\ge\frac12\)">\(\Re\rho\ge\frac12\)</span> and <span class="math" data-tex="\(|\Im\rho|\le T_b\)">\(|\Im\rho|\le T_b\)</span> contribute <span class="math" data-tex="\(O_\phi(Xe^{-Mu_0/2})\)">\(O_\phi(Xe^{-Mu_0/2})\)</span>;</li>
+<li>there are <span class="math" data-tex="\(O(Q_b^2T_b\log(Q_bT_b))\)">\(O(Q_b^2T_b\log(Q_bT_b))\)</span> zeros with <span class="math" data-tex="\(\Re\rho&lt;\frac12\)">\(\Re\rho&lt;\frac12\)</span> and <span class="math" data-tex="\(|\Im\rho|\le T_b\)">\(|\Im\rho|\le T_b\)</span>, contributing <span class="math" data-tex="\(O_\phi(X^{1/2}Q_b^2T_b\log(Q_bT_b))\)">\(O_\phi(X^{1/2}Q_b^2T_b\log(Q_bT_b))\)</span>;</li>
+<li>by <span class="math" data-tex="\(|\Phi(\rho)|\ll(1+|\Im\rho|)^{-3}\)">\(|\Phi(\rho)|\ll(1+|\Im\rho|)^{-3}\)</span> and the zero count in dyadic ranges of heights, the zeros above <span class="math" data-tex="\(T_b\)">\(T_b\)</span> contribute <span class="math" data-tex="\(O_\phi(XQ_b^2T_b^{-2}\log(Q_bT_b))\)">\(O_\phi(XQ_b^2T_b^{-2}\log(Q_bT_b))\)</span>;</li>
+<li>the terms <span class="math" data-tex="\(\Phi(0)\)">\(\Phi(0)\)</span> and the remainders contribute <span class="math" data-tex="\(O_\phi(Q_b^2(1+X^{-1/2}\log(2Q_b)))\)">\(O_\phi(Q_b^2(1+X^{-1/2}\log(2Q_b)))\)</span>.</li>
+</ul>
+<p>Each is <span class="math" data-tex="\(O(Xe^{-D_1L})\)">\(O(Xe^{-D_1L})\)</span>: the second and fourth because <span class="math" data-tex="\(Q_b^7=X^{o(1)}\)">\(Q_b^7=X^{o(1)}\)</span>, and the third because <span class="math" data-tex="\(Q_b^2T_b^{-2}=Q_b^{-8}\)">\(Q_b^2T_b^{-2}=Q_b^{-8}\)</span> and <span class="math" data-tex="\(\log Q_b\ge e^{0.9L}\)">\(\log Q_b\ge e^{0.9L}\)</span>. For the conductor-one character, the prime number theorem with the classical error term (<a href="../NT-ZETA/NT-ZETA-12.html"><em>The prime number theorem with the classical error term</em></a>, Theorem 1.1) and partial summation give <span class="math" data-tex="\(\sum\Lambda(n)\phi(n/X)\)">\(\sum\Lambda(n)\phi(n/X)\)</span><span class="math" data-tex="\(=X\Phi(1)+O_\phi(Xe^{-c\sqrt{\log X}})\)">\(=X\Phi(1)+O_\phi(Xe^{-c\sqrt{\log X}})\)</span>, and <span class="math" data-tex="\(\sqrt{\log X}=e^{L/2}\)">\(\sqrt{\log X}=e^{L/2}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The density estimate is used here in its log-free form, valid for all heights up to <span class="math" data-tex="\(T_b\)">\(T_b\)</span> and all conductors up to <span class="math" data-tex="\(T_b\)">\(T_b\)</span> simultaneously. Only the factor <span class="math" data-tex="\(e^{Ay}\)">\(e^{Ay}\)</span> with <span class="math" data-tex="\(A=O(\log Q_b)=o(\log X)\)">\(A=O(\log Q_b)=o(\log X)\)</span> matters; any density bound of the shape <span class="math" data-tex="\(N^*(1-y,T)\ll T^{O(y)}(\log T)^{O(1)}\)">\(N^*(1-y,T)\ll T^{O(y)}(\log T)^{O(1)}\)</span> would do.</p>
+<p><strong>Deleting a prime for the exceptional character.</strong> If the exceptional character exists and its conductor is a product of primes of <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, delete one of those primes from <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>; otherwise make no deletion. Keep <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(Q_b\)">\(Q_b\)</span>, and redefine <span class="math" data-tex="\(W\)">\(W\)</span>, <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span>, <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span>, <span class="math" data-tex="\(U\)">\(U\)</span>, <span class="math" data-tex="\(H\)">\(H\)</span> with the new set. By Lesson 10, (4.1) and Proposition 4.2 there still hold. After the deletion, every primitive character whose conductor is a squarefree product of primes of <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> differs from the exceptional character.</p>
+<h2 id="3-the-prime-mean-of-the-weight">3. The prime mean of the weight</h2>
+<p><strong>Local multiplicative coefficients.</strong> For <span class="math" data-tex="\(j=1,2\)">\(j=1,2\)</span> and a character <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of <span class="math" data-tex="\(\mathbb F_p^\times\)">\(\mathbb F_p^\times\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+c_{p,j}(\lambda)&amp;=\frac1{p-1}\sum_{x\ne0}b_p(x)^j\,\overline{\lambda(x)},
+\end{aligned}\\
+\text{so that}\\
+\begin{aligned}
+b_p(x)^j&amp;=\sum_\lambda c_{p,j}(\lambda)\lambda(x)\quad(x\ne0).
+\end{aligned}
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+c_{p,j}(\lambda)&amp;=\frac1{p-1}\sum_{x\ne0}b_p(x)^j\,\overline{\lambda(x)},
+\end{aligned}\\
+\text{so that}\\
+\begin{aligned}
+b_p(x)^j&amp;=\sum_\lambda c_{p,j}(\lambda)\lambda(x)\quad(x\ne0).
+\end{aligned}
+\end{gathered}
+\]</span></p>
+<p><strong>Lemma 3.1.</strong> With absolute constants,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|c_{p,j}(\lambda)|\ll p^{-1/2}\quad(\lambda\ne1),\\
+|c_{p,j}(1)|\ll p^{-1}\\
+(j=1,2).\quad(3.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+|c_{p,j}(\lambda)|\ll p^{-1/2}\quad(\lambda\ne1),\\
+|c_{p,j}(1)|\ll p^{-1}\\
+(j=1,2).\quad(3.1)
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> The principal coefficients are the means of <span class="math" data-tex="\(b_p\)">\(b_p\)</span> and <span class="math" data-tex="\(b_p^2\)">\(b_p^2\)</span> over the units, which are <span class="math" data-tex="\(O(\epsilon_0/p)\)">\(O(\epsilon_0/p)\)</span> by (4.5) of Lesson 10. By Parseval on the group of units, every coefficient is at most the root mean square of <span class="math" data-tex="\(b_p^j\)">\(b_p^j\)</span> over the units; for <span class="math" data-tex="\(j=1\)">\(j=1\)</span> this is <span class="math" data-tex="\(O(p^{-1/2})\)">\(O(p^{-1/2})\)</span> by (4.5), and for <span class="math" data-tex="\(j=2\)">\(j=2\)</span> the mean of <span class="math" data-tex="\(b_p^4\)">\(b_p^4\)</span> is at most <span class="math" data-tex="\(\|b_p\|_\infty^2\)">\(\|b_p\|_\infty^2\)</span> times the mean of <span class="math" data-tex="\(b_p^2\)">\(b_p^2\)</span>, again <span class="math" data-tex="\(O(1/p)\)">\(O(1/p)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>The character expansion of the weight.</strong> Expand (4.7) of Lesson 10 over the two subsets <span class="math" data-tex="\(I,J\)">\(I,J\)</span>, so that <span class="math" data-tex="\(W(n)\)">\(W(n)\)</span> is the sum over <span class="math" data-tex="\(I,J\)">\(I,J\)</span> of <span class="math" data-tex="\(\prod_{p\in I\cap J}b_p(n)^2\prod_{p\in I\triangle J}b_p(n)\)">\(\prod_{p\in I\cap J}b_p(n)^2\prod_{p\in I\triangle J}b_p(n)\)</span>. For <span class="math" data-tex="\(n\)">\(n\)</span> coprime to every prime of <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, expand each local factor multiplicatively and group the resulting terms by the primitive character they induce:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+W(n)=\sum_{\substack{\chi\ \text{primitive}\\\operatorname{cond}(\chi)\le Q_b}}C(\chi)\chi(n)\\
+\Bigl(\bigl(n,\prod_{p\in\mathcal S}p\bigr)=1\Bigr).\quad(3.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+W(n)=\sum_{\substack{\chi\ \text{primitive}\\\operatorname{cond}(\chi)\le Q_b}}C(\chi)\chi(n)\\
+\Bigl(\bigl(n,\prod_{p\in\mathcal S}p\bigr)=1\Bigr).\quad(3.2)
+\end{gathered}
+\]</span>
+Only squarefree conductors supported on <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> occur, and the conductor bound holds because <span class="math" data-tex="\(|I\cup J|\le2K\)">\(|I\cup J|\le2K\)</span>.</p>
+<p>Fix a primitive <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of conductor <span class="math" data-tex="\(d\)">\(d\)</span>. Its local component at each <span class="math" data-tex="\(p\mid d\)">\(p\mid d\)</span> is a prescribed nonprincipal character, and <span class="math" data-tex="\(p\)">\(p\)</span> lies in <span class="math" data-tex="\(I\)">\(I\)</span> only, in <span class="math" data-tex="\(J\)">\(J\)</span> only, or in both; by (3.1) the absolute coefficients at <span class="math" data-tex="\(p\)">\(p\)</span> total at most <span class="math" data-tex="\(C/\sqrt p\)">\(C/\sqrt p\)</span>. At <span class="math" data-tex="\(p\in\mathcal S\)">\(p\in\mathcal S\)</span> with <span class="math" data-tex="\(p\nmid d\)">\(p\nmid d\)</span>, the prime is absent (coefficient <span class="math" data-tex="\(1\)">\(1\)</span>) or uses a principal coefficient, with total at most <span class="math" data-tex="\(1+C/p\)">\(1+C/p\)</span>. Dropping the restriction <span class="math" data-tex="\(|I|,|J|\le K\)">\(|I|,|J|\le K\)</span> only enlarges this nonnegative majorant, so even the sum of the absolute values of all terms grouped into <span class="math" data-tex="\(C(\chi)\)">\(C(\chi)\)</span> is at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\prod_{p\mid d}\frac C{\sqrt p}\prod_{\substack{p\in\mathcal S\\ p\nmid d}}\Bigl(1+\frac Cp\Bigr)\\
+&amp;\quad \le e^{C&#x27;L},\quad(3.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\prod_{p\mid d}\frac C{\sqrt p}\prod_{\substack{p\in\mathcal S\\ p\nmid d}}\Bigl(1+\frac Cp\Bigr)\\
+&amp;\quad \le e^{C&#x27;L},\quad(3.3)
+\end{aligned}
+\]</span>
+since <span class="math" data-tex="\(C/\sqrt p\le1\)">\(C/\sqrt p\le1\)</span> for large <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(\sum_{p\in\mathcal S}1/p=O(L)\)">\(\sum_{p\in\mathcal S}1/p=O(L)\)</span>. The principal coefficient keeps its signs: it is the mean of <span class="math" data-tex="\(W\)">\(W\)</span> over independent uniform unit residues, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C(1)&amp;=\mathcal R_K\mathcal U=U+o(Ue^{-1.6H})\\
+&amp;=(1+o(1))U .
+\end{aligned}
+\]">\[
+\begin{aligned}
+C(1)&amp;=\mathcal R_K\mathcal U=U+o(Ue^{-1.6H})\\
+&amp;=(1+o(1))U .
+\end{aligned}
+\]</span></p>
+<p><strong>Proposition 3.2</strong> (the prime mean [OpenAI-013, (5.21)]). As <span class="math" data-tex="\(L\to\infty\)">\(L\to\infty\)</span> along the sequence,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{p\ \text{prime}}(\log p)\,\phi(p/X)\,W(p)\\
+&amp;\quad =(1+o(1))\,UX\int_0^\infty\phi(t)\,dt .\quad(3.4)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{p\ \text{prime}}(\log p)\,\phi(p/X)\,W(p)\\
+&amp;\quad =(1+o(1))\,UX\int_0^\infty\phi(t)\,dt .\quad(3.4)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> Every prime <span class="math" data-tex="\(p\)">\(p\)</span> with <span class="math" data-tex="\(\phi(p/X)\ne0\)">\(\phi(p/X)\ne0\)</span> exceeds every prime of <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, since <span class="math" data-tex="\(\exp(e^{0.9L})=X^{o(1)}\)">\(\exp(e^{0.9L})=X^{o(1)}\)</span>; so (3.2) holds at these primes. Apply Lemma 2.1 to the grouped sum, with <span class="math" data-tex="\(D_1\)">\(D_1\)</span> larger than the constants in (3.3) and in <span class="math" data-tex="\(U=e^{O(\epsilon_0L)}\)">\(U=e^{O(\epsilon_0L)}\)</span>. The exceptional character does not occur among the <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of (3.2), by the deletion. The total error is <span class="math" data-tex="\(e^{C&#x27;L}\cdot Xe^{-D_1L}=o(UX)\)">\(e^{C&#x27;L}\cdot Xe^{-D_1L}=o(UX)\)</span>, and the principal term is <span class="math" data-tex="\(C(1)X\Phi(1)=(1+o(1))UX\int\phi\)">\(C(1)X\Phi(1)=(1+o(1))UX\int\phi\)</span>.</p>
+<p>It remains to pass from <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> to primes. The prime powers <span class="math" data-tex="\(n\le X\)">\(n\le X\)</span> that are not prime have <span class="math" data-tex="\(\sum\Lambda(n)\ll X^{1/2}(\log X)^2\)">\(\sum\Lambda(n)\ll X^{1/2}(\log X)^2\)</span>. There are at most <span class="math" data-tex="\(Q_b^2\)">\(Q_b^2\)</span> primitive characters of conductor at most <span class="math" data-tex="\(Q_b\)">\(Q_b\)</span>, so these prime powers contribute at most <span class="math" data-tex="\(e^{C&#x27;L}Q_b^2X^{1/2}(\log X)^2=X^{1/2+o(1)}\)">\(e^{C&#x27;L}Q_b^2X^{1/2}(\log X)^2=X^{1/2+o(1)}\)</span> to the grouped character sums, and, by the uniform bound (4.1) below, at most <span class="math" data-tex="\(X^{1/2+o(1)}\)">\(X^{1/2+o(1)}\)</span> to the left side of (3.4). This covers also the prime powers of primes of <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>, where (3.2) need not hold. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-coverage-of-every-large-prime">4. Coverage of every large prime</h2>
+<p>Since <span class="math" data-tex="\(|b_p(n)|\le1\)">\(|b_p(n)|\le1\)</span>, the number of subsets in (4.7) of Lesson 10 bounds <span class="math" data-tex="\(W\)">\(W\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+W(n)&amp;\le(K+1)^2\bigl(1+|\mathcal S|\bigr)^{2K}\\
+&amp;\le\exp\bigl(O(Ke^{0.9L})\bigr)\\
+&amp;=X^{o(1)}\quad(4.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+W(n)&amp;\le(K+1)^2\bigl(1+|\mathcal S|\bigr)^{2K}\\
+&amp;\le\exp\bigl(O(Ke^{0.9L})\bigr)\\
+&amp;=X^{o(1)}\quad(4.1)
+\end{aligned}
+\]</span>
+uniformly in <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p><strong>Proposition 4.1</strong> (the pair average from coverage [OpenAI-013, (5.22)]). For large <span class="math" data-tex="\(L\)">\(L\)</span> along the sequence, with <span class="math" data-tex="\(c_\phi&gt;0\)">\(c_\phi&gt;0\)</span> depending only on <span class="math" data-tex="\(\phi\)">\(\phi\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac1{m_Am_D}\sum_{a\in A_0}\sum_{d\in D_0}W(a-d)\\
+&amp;\quad \ge c_\phi\,U\,\frac X{m_Am_D\log X}.\quad(4.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac1{m_Am_D}\sum_{a\in A_0}\sum_{d\in D_0}W(a-d)\\
+&amp;\quad \ge c_\phi\,U\,\frac X{m_Am_D\log X}.\quad(4.2)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> By coverage, every prime <span class="math" data-tex="\(p\)">\(p\)</span> with <span class="math" data-tex="\(\phi(p/X)\ne0\)">\(\phi(p/X)\ne0\)</span> has, for large <span class="math" data-tex="\(L\)">\(L\)</span>, a representation <span class="math" data-tex="\(p=a-d\)">\(p=a-d\)</span> with <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, <span class="math" data-tex="\(d\in D\)">\(d\in D\)</span>, and <span class="math" data-tex="\(a,-d\le X\)">\(a,-d\le X\)</span> because both are nonnegative and <span class="math" data-tex="\(p&lt;X\)">\(p&lt;X\)</span>. Remove the primes having a representation with <span class="math" data-tex="\(a\le R+N_*\)">\(a\le R+N_*\)</span> or <span class="math" data-tex="\(-d\le R+N_*\)">\(-d\le R+N_*\)</span>. By Theorem 3.1 of Lesson 2 their number is at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;A(R+N_*)B(X)\\
+&amp;\qquad +A(X)B(R+N_*)\\
+&amp;\quad =X^{3/4+o(1)},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;A(R+N_*)B(X)\\
+&amp;\qquad +A(X)B(R+N_*)\\
+&amp;\quad =X^{3/4+o(1)},
+\end{aligned}
+\]</span>
+and by (4.1) their contribution to the left side of (3.4) is <span class="math" data-tex="\(X^{3/4+o(1)}=o(UX)\)">\(X^{3/4+o(1)}=o(UX)\)</span>. Every remaining prime has a representation by a pair in <span class="math" data-tex="\(A_0\times D_0\)">\(A_0\times D_0\)</span>. Choose one pair for each such prime; different primes give different pairs, and the other pairs have nonnegative weight. Using <span class="math" data-tex="\((\log p)\phi(p/X)\le\|\phi\|_\infty\log X\)">\((\log p)\phi(p/X)\le\|\phi\|_\infty\log X\)</span> and (3.4),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{a\in A_0,\,d\in D_0}W(a-d)\\
+&amp;\quad \ge\frac{(1-o(1))\,UX\int\phi}{\|\phi\|_\infty\log X}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{a\in A_0,\,d\in D_0}W(a-d)\\
+&amp;\quad \ge\frac{(1-o(1))\,UX\int\phi}{\|\phi\|_\infty\log X}.
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the only place in the course where coverage is used for all large primes at once, and it cannot be replaced by a density statement: the weight <span class="math" data-tex="\(W\)">\(W\)</span> may concentrate on a sparse set of primes, and every one of them must be represented.</p>
+<h2 id="5-proof-of-the-supply-theorem">5. Proof of the supply theorem</h2>
+<p>Put <span class="math" data-tex="\(z=X/(m_Am_D)=R^2/(m_Am_D)\)">\(z=X/(m_Am_D)=R^2/(m_Am_D)\)</span>. By (3.3) of Lesson 10, <span class="math" data-tex="\(z\ge e^{-o(L)}\)">\(z\ge e^{-o(L)}\)</span>. Comparing (4.2) with Proposition 4.2 of Lesson 10, cancelling the positive factor <span class="math" data-tex="\(U\)">\(U\)</span>, and using <span class="math" data-tex="\(\log X=e^L\)">\(\log X=e^L\)</span>,
+<span class="math math-display" data-tex="\[
+c_\phi\,z\,e^{-L}\le e^{-1.6H+o(L)}\sqrt z .
+\]">\[
+c_\phi\,z\,e^{-L}\le e^{-1.6H+o(L)}\sqrt z .
+\]</span>
+Since <span class="math" data-tex="\(H\ge0.68L\)">\(H\ge0.68L\)</span> and <span class="math" data-tex="\(1.6\cdot0.68=1.088\)">\(1.6\cdot0.68=1.088\)</span>,
+<span class="math math-display" data-tex="\[
+\sqrt z\le\exp\bigl(-0.088L+o(L)\bigr),
+\]">\[
+\sqrt z\le\exp\bigl(-0.088L+o(L)\bigr),
+\]</span>
+which contradicts <span class="math" data-tex="\(z\ge e^{-o(L)}\)">\(z\ge e^{-o(L)}\)</span>. So (1.1) of Lesson 10 cannot fail along an unbounded sequence of <span class="math" data-tex="\(L\)">\(L\)</span>, and Theorem 1.1 of Lesson 10 is proved. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The numbers are tight in a useful way. The contraction <span class="math" data-tex="\(1-1.6/p\)">\(1-1.6/p\)</span> per prime of <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> comes from <span class="math" data-tex="\(2t_0=1.7\)">\(2t_0=1.7\)</span> in Lemma 4.1 of Lesson 10, slightly reduced; the loss <span class="math" data-tex="\(e^{-L}=1/\log X\)">\(e^{-L}=1/\log X\)</span> is the density of primes. A contradiction needs <span class="math" data-tex="\(1.6H&gt;L\)">\(1.6H&gt;L\)</span> up to <span class="math" data-tex="\(o(L)\)">\(o(L)\)</span>, and the hypothesis that (1.1) fails gives <span class="math" data-tex="\(H\ge0.68L\)">\(H\ge0.68L\)</span>, so that <span class="math" data-tex="\(1.6H\ge1.088L\)">\(1.6H\ge1.088L\)</span>.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Let <span class="math" data-tex="\(\phi\)">\(\phi\)</span> be smooth and supported in <span class="math" data-tex="\([\frac12,1]\)">\([\frac12,1]\)</span>. Show that <span class="math" data-tex="\(\Phi(s)=\int_0^\infty\phi(t)t^{s-1}dt\)">\(\Phi(s)=\int_0^\infty\phi(t)t^{s-1}dt\)</span> satisfies <span class="math" data-tex="\(|\Phi(\sigma+it)|\le C_j(\phi)(1+|t|)^{-j}\)">\(|\Phi(\sigma+it)|\le C_j(\phi)(1+|t|)^{-j}\)</span> for <span class="math" data-tex="\(-\frac12\le\sigma\le2\)">\(-\frac12\le\sigma\le2\)</span>.</p>
+<p><strong>6.2.</strong> Show that every primitive character induced by a monomial of the expansion (3.2) has conductor at most <span class="math" data-tex="\(Q_b\)">\(Q_b\)</span>, and that it is real only if each of its local components is quadratic.</p>
+<p><strong>6.3.</strong> In Proposition 4.1, why can the pairs <span class="math" data-tex="\((a,d)\)">\((a,d)\)</span> with <span class="math" data-tex="\(a\le R+N_*\)">\(a\le R+N_*\)</span> not simply be kept, with <span class="math" data-tex="\(A_0\)">\(A_0\)</span> replaced by all of <span class="math" data-tex="\(A\cap[0,X]\)">\(A\cap[0,X]\)</span>?</p>
+<p><strong>6.4.</strong> Show that the sum <span class="math" data-tex="\(\sum_{n\le X,\ n=p^k,\ k\ge2}\Lambda(n)\)">\(\sum_{n\le X,\ n=p^k,\ k\ge2}\Lambda(n)\)</span> is <span class="math" data-tex="\(O(X^{1/2}(\log X)^2)\)">\(O(X^{1/2}(\log X)^2)\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> Integrating by parts <span class="math" data-tex="\(j\)">\(j\)</span> times, <span class="math" data-tex="\(\Phi(s)=\frac{(-1)^j}{s(s+1)\cdots(s+j-1)}\int_0^\infty\phi^{(j)}(t)\)">\(\Phi(s)=\frac{(-1)^j}{s(s+1)\cdots(s+j-1)}\int_0^\infty\phi^{(j)}(t)\)</span><span class="math" data-tex="\(t^{s+j-1}dt\)">\(t^{s+j-1}dt\)</span>, with no boundary terms because <span class="math" data-tex="\(\phi\)">\(\phi\)</span> has compact support in <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>. For <span class="math" data-tex="\(|t|\ge1\)">\(|t|\ge1\)</span> the denominator has modulus at least <span class="math" data-tex="\(|t|^j\)">\(|t|^j\)</span>, and the integral is bounded on the strip; for <span class="math" data-tex="\(|t|\le1\)">\(|t|\le1\)</span> use <span class="math" data-tex="\(j=0\)">\(j=0\)</span>.</p>
+<p><strong>6.2.</strong> The conductor is the product of the primes <span class="math" data-tex="\(p\in I\cup J\)">\(p\in I\cup J\)</span> at which the local component is nonprincipal, so it is at most <span class="math" data-tex="\(\prod_{p\in I\cup J}p\le Q_b\)">\(\prod_{p\in I\cup J}p\le Q_b\)</span>, since <span class="math" data-tex="\(|I\cup J|\le2K\)">\(|I\cup J|\le2K\)</span> and each <span class="math" data-tex="\(p\le\exp(e^{0.9L})\)">\(p\le\exp(e^{0.9L})\)</span>. A character of a product of distinct primes is real exactly when each local component takes real values, that is, is the quadratic or the principal character.</p>
+<p><strong>6.3.</strong> The pair average must be compared with Proposition 4.2 of Lesson 10, whose proof uses the residue supports: the reductions of <span class="math" data-tex="\(A_0\)">\(A_0\)</span> lie in <span class="math" data-tex="\(S_p\)">\(S_p\)</span> for all <span class="math" data-tex="\(p\le R\)">\(p\le R\)</span>, which requires <span class="math" data-tex="\(a&gt;p+N_*\)">\(a&gt;p+N_*\)</span>. Small elements of <span class="math" data-tex="\(A\)">\(A\)</span> need not lie in <span class="math" data-tex="\(S_p\)">\(S_p\)</span>. Their pairs cover only <span class="math" data-tex="\(X^{3/4+o(1)}\)">\(X^{3/4+o(1)}\)</span> primes, which is negligible.</p>
+<p><strong>6.4.</strong> A prime power <span class="math" data-tex="\(p^k\le X\)">\(p^k\le X\)</span> with <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> has <span class="math" data-tex="\(p\le X^{1/2}\)">\(p\le X^{1/2}\)</span> and <span class="math" data-tex="\(k\le\log X/\log2\)">\(k\le\log X/\log2\)</span>. So the sum is at most <span class="math" data-tex="\(\sum_{p\le X^{1/2}}\log p\cdot\frac{\log X}{\log 2}\)">\(\sum_{p\le X^{1/2}}\log p\cdot\frac{\log X}{\log 2}\)</span><span class="math" data-tex="\(\ll X^{1/2}\log X\cdot\log X\)">\(\ll X^{1/2}\log X\cdot\log X\)</span>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-013] OpenAI, <em>The additive indecomposability of the primes</em>, OpenAI Math Release preprint, 24 September 2026, Section 5: the prime mean of the weight, Lemma 5.3, the exceptional deletion, (5.15)–(5.21), and using coverage of every sufficiently large prime. At the density step the paper cites Montgomery's zero-density theorem; Lemma 2.1 uses the log-free density estimate of the Linnik lesson, which suffices. https://github.com/openai/math/tree/main/preprints/the-additive-indecomposability-of-the-primes-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

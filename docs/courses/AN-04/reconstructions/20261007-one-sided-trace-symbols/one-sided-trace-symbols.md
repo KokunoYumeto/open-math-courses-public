@@ -2,7 +2,7 @@
 
 The half-space companion proves that the finite inverse acts on the entire boundary source and that its layers have one-sided traces. Here we identify those traces as actual tangential operators. The calculation retains the full tangential composition, every coefficient derivative in the source, every output normal derivative, and both finite inverse errors. A principal symbol alone would not specify these operators.
 
-This original exposition is CC0. The mathematical antecedent is the Hörmander III, Springer 2007, ISBN 978-3-540-49938-1, Section 20.1. The existing AN-03 *Fredholm boundary problems with first-order Calderón defects*, Section 21, was read for comparison of the full trace and measurement formulas. We use the finite model already proved in HM to obtain the normal integral directly. The proof map records the exact earlier proofs and source versions. Linked components retain their own licences.
+This original exposition is CC0. The mathematical antecedent is the Hörmander III, Springer 2007, ISBN 978-3-540-49938-1, Section 20.1. The existing AN-03 *Fredholm boundary problems with first-order Calderón defects*, Section 21, gives a related treatment of the full trace and measurement formulas. We use the finite model already proved in HM to obtain the normal integral directly. The proof map records the exact earlier proofs and source versions. Linked components retain their own licences.
 
 ## 1. The precise normal integral problem
 

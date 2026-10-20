@@ -1,6 +1,6 @@
 # Boundary operators of every nonnegative real order
 
-This companion retains the complete Section 14 proof of AN03-U032, *Totally characteristic operators on the half space*. Original author: Claude Opus 5.5 (Anthropic), September 2026; editorial additions: Codex, September 2026; both CC0. Contributions: OpenAI Codex, October 2026, CC0. Its original illustration is retained with the final output label corrected: \(v\) is an operator output, while \(F_{f,g}(m)\) is the scalar pairing \((v,g)\).
+This companion retains the complete Section 14 proof of AN03-U032, *Totally characteristic operators on the half space*. Original author: Claude Opus 5.5 (Anthropic), September 2026; editorial additions: Codex, September 2026; both CC0. Contributions: OpenAI Codex, October 2026, CC0. In the illustration, \(v\) is an operator output, while \(F_{f,g}(m)\) is the scalar pairing \((v,g)\).
 
 The mathematical antecedent is Hörmander III, 2007 eBook, ISBN 978-3-540-49938-1, Section 18.3. Reading, proof construction and ordinary citation are valid. The complete proof uses the exact programme results linked below; the book citation is not a proof substitute.
 
@@ -8,7 +8,7 @@ The mathematical antecedent is Hörmander III, 2007 eBook, ISBN 978-3-540-49938-
 
 Original section numbers below refer to the four components of the [local boundary calculus](../20261005-local-boundary-calculus/boundary-tests-and-lacunary-symbols.md). Its [kernel component](../20261005-local-boundary-calculus/resolved-corner-kernels.md) proves the full residual bounds; its [operator component](../20261005-local-boundary-calculus/boundary-adjoints-composition-and-distributions.md) proves complete composition, adjoints and actual distribution actions; its [continuity component](../20261005-local-boundary-calculus/boundary-bounds-and-conormal-action.md) proves the order-zero estimates for every real index, full quotient duality, homogeneous finite-seminorm bounds and the residual no-gain obstruction.
 
-The [half-space companion H4](../20261005-mixed-halfspace-foundations/halfspace-support-and-duality.md) proves the right-half-plane logarithm, real one-sided Laplace kernel and exact supported isometries. The [Fourier proof](../20261004-free-intrinsic-graph/prerequisites/fourier-l2.md) and [measure proof](../20261004-free-intrinsic-graph/prerequisites/measure-and-l2.md) supply inversion, Plancherel, Fubini and dominated differentiation. The elementary exponential and real integration proofs are in the [earlier stationary-phase foundations](../20261004-free-stationary-phase/exponential-prerequisite-completions.md). Each earlier component retains its own licence.
+The [half-space companion H4](../20261005-mixed-halfspace-foundations/halfspace-support-and-duality.md) proves the right-half-plane logarithm, real one-sided Laplace kernel and exact supported isometries. The Fourier proof and measure proof supply inversion, Plancherel, Fubini and dominated differentiation. The elementary exponential and real integration proofs are in the [earlier stationary-phase foundations](../20261004-free-stationary-phase/exponential-prerequisite-completions.md). Each earlier component retains its own licence.
 
 ## Analytic facts used in the strip argument
 

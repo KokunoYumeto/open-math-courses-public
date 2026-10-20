@@ -1,0 +1,509 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A tensor budget and a contracting kernel</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Additive indecomposability of the primes)</a><a href="anchor-codes-and-decorrelation-of-higher-characters.html">Previous lesson</a><a href="the-prime-mean-and-a-supply-of-nonsparse-transforms.html">Next lesson</a><a href="src/a-tensor-budget-and-a-contracting-kernel.md">Editable source</a></nav><main><article><h1 id="a-tensor-budget-and-a-contracting-kernel">A tensor budget and a contracting kernel</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Lessons 3–9 showed that the normalized transforms <span class="math" data-tex="\(g_p\)">\(g_p\)</span> of the supports are <em>flat</em>: they correlate with no product of a multiplicative and an additive character. Flatness alone allows <span class="math" data-tex="\(g_p\)">\(g_p\)</span> to be very sparse, concentrated on a few frequencies. This lesson and the next show that coverage of every large prime excludes this on a large set of primes. For an absolute <span class="math" data-tex="\(\delta_0&gt;0\)">\(\delta_0&gt;0\)</span>, the balanced primes whose transform has <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm <span class="math" data-tex="\(\gamma_p=\frac1p\sum_v|g_p(v)|\ge\delta_0\)">\(\gamma_p=\frac1p\sum_v|g_p(v)|\ge\delta_0\)</span> carry harmonic mass at least <span class="math" data-tex="\(0.15L\)">\(0.15L\)</span> in the band <span class="math" data-tex="\(0.05L\le\log\log p\le0.9L\)">\(0.05L\le\log\log p\le0.9L\)</span> (Theorem 1.1).</p>
+<p>The proof is by contradiction. A sparse spectrum at a prime <span class="math" data-tex="\(p\)">\(p\)</span> defines a small kernel <span class="math" data-tex="\(b_p\)">\(b_p\)</span> on <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>, and the product over many such primes defines a nonnegative weight <span class="math" data-tex="\(W(n)\)">\(W(n)\)</span>. Two estimates of the average of <span class="math" data-tex="\(W(a-d)\)">\(W(a-d)\)</span> over pairs <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, <span class="math" data-tex="\(d\in D\)">\(d\in D\)</span> conflict. In this lesson, an operator-norm bound for a tensor product of <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> block matrices shows that this average is small (Proposition 4.2): each prime contributes a contraction factor <span class="math" data-tex="\(1-1.6/p\)">\(1-1.6/p\)</span>. Lesson 11 evaluates the average of <span class="math" data-tex="\(W\)">\(W\)</span> over primes, where it is about <span class="math" data-tex="\(1\)">\(1\)</span>, and uses coverage to transfer this to the pairs <span class="math" data-tex="\((a,d)\)">\((a,d)\)</span>.</p>
+<p><strong>Prerequisites.</strong> <a href="the-inverse-goldbach-problem.html"><em>The inverse Goldbach problem</em></a>, Section 2; <a href="square-root-bounds-and-collision-stability.html"><em>Square-root bounds and collision stability</em></a>, Theorem 3.1 and Lemma 4.1; <a href="anchor-codes-and-decorrelation-of-higher-characters.html"><em>Anchor codes and decorrelation of higher characters</em></a>, Section 6 (the transforms <span class="math" data-tex="\(F_p,g_p\)">\(F_p,g_p\)</span>).</p>
+<h2 id="1-the-statement">1. The statement</h2>
+<p>Recall from (6.1) of Lesson 9 the functions <span class="math" data-tex="\(F_p\)">\(F_p\)</span> and <span class="math" data-tex="\(g_p\)">\(g_p\)</span>, with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{x\in\mathbb F_p}|F_p(x)|^2=p,\\
+\frac1p\sum_{v\in\mathbb F_p}|g_p(v)|^2=1,\\
+g_p(0)=0,\\
+g_p(-v)=\overline{g_p(v)},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{x\in\mathbb F_p}|F_p(x)|^2=p,\\
+\frac1p\sum_{v\in\mathbb F_p}|g_p(v)|^2=1,\\
+g_p(0)=0,\\
+g_p(-v)=\overline{g_p(v)},
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(F_p(x)=p^{-1/2}\sum_vg_p(v)e_p(vx)\)">\(F_p(x)=p^{-1/2}\sum_vg_p(v)e_p(vx)\)</span>. Write
+<span class="math math-display" data-tex="\[
+\gamma_p=\frac1p\sum_{v\in\mathbb F_p}|g_p(v)|
+\]">\[
+\gamma_p=\frac1p\sum_{v\in\mathbb F_p}|g_p(v)|
+\]</span>
+for the probability <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm of <span class="math" data-tex="\(g_p\)">\(g_p\)</span>. By Cauchy–Schwarz, <span class="math" data-tex="\(\gamma_p\le1\)">\(\gamma_p\le1\)</span>.</p>
+<p><strong>Theorem 1.1</strong> (a supply of nonsparse transforms [OpenAI-013, Proposition 5.1]). There is an absolute constant <span class="math" data-tex="\(\delta_0&gt;0\)">\(\delta_0&gt;0\)</span> such that, for all sufficiently large <span class="math" data-tex="\(L\)">\(L\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\substack{0.05L\le\log\log p\le0.9L\\1/3\le\sigma_p\le2/3\\\gamma_p\ge\delta_0}}\frac1p\ \\
+&amp;\quad \ge\ 0.15L .\quad(1.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\substack{0.05L\le\log\log p\le0.9L\\1/3\le\sigma_p\le2/3\\\gamma_p\ge\delta_0}}\frac1p\ \\
+&amp;\quad \ge\ 0.15L .\quad(1.1)
+\end{aligned}
+\]</span></p>
+<p>This theorem uses only the sieve estimates and coverage; it does not use the flatness of Lesson 9. The proof occupies this lesson and Lesson 11.</p>
+<h2 id="2-parameters">2. Parameters</h2>
+<p>Throughout this lesson and the next,
+<span class="math math-display" data-tex="\[
+\log X=e^L,\qquad R=\sqrt X,
+\]">\[
+\log X=e^L,\qquad R=\sqrt X,
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_0=A\cap(R+N_*,X],\\
+D_0=D\cap[-X,-R-N_*),\\
+m_A=|A_0|,\\
+m_D=|D_0|.
+\end{gathered}
+\]">\[
+\begin{gathered}
+A_0=A\cap(R+N_*,X],\\
+D_0=D\cap[-X,-R-N_*),\\
+m_A=|A_0|,\\
+m_D=|D_0|.
+\end{gathered}
+\]</span>
+For every prime <span class="math" data-tex="\(p\le R\)">\(p\le R\)</span>, the reductions of <span class="math" data-tex="\(A_0\)">\(A_0\)</span> lie in <span class="math" data-tex="\(S_p\)">\(S_p\)</span> and those of <span class="math" data-tex="\(D_0\)">\(D_0\)</span> in <span class="math" data-tex="\(T_p:=S_p^c\)">\(T_p:=S_p^c\)</span>, by Lemma 6.1 of Lesson 1. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\kappa_p=\frac{|T_p|}{|S_p|}=\frac{1-\sigma_p}{\sigma_p},\\
+\text{so that}\\
+\frac1{\sigma_p}+\frac1{1-\sigma_p}-4=\kappa_p+\kappa_p^{-1}-2 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\kappa_p=\frac{|T_p|}{|S_p|}=\frac{1-\sigma_p}{\sigma_p},\\
+\text{so that}\\
+\frac1{\sigma_p}+\frac1{1-\sigma_p}-4=\kappa_p+\kappa_p^{-1}-2 .
+\end{gathered}
+\]</span></p>
+<p><strong>Lemma 2.1.</strong> For large <span class="math" data-tex="\(L\)">\(L\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{p\le R}\bigl(\kappa_p+\kappa_p^{-1}-2\bigr)\frac{\log p}p\ll L,\\
+\sum_{p\le R}\frac{|\log\kappa_p|}p\ll\sqrt L .\quad(2.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{p\le R}\bigl(\kappa_p+\kappa_p^{-1}-2\bigr)\frac{\log p}p\ll L,\\
+\sum_{p\le R}\frac{|\log\kappa_p|}p\ll\sqrt L .\quad(2.1)
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> Apply Lemma 4.1 of Lesson 2 at <span class="math" data-tex="\(Y=X(\log X)^{40}\)">\(Y=X(\log X)^{40}\)</span>, with the uniform measures on <span class="math" data-tex="\(A\cap(\sqrt Y+N_*,Y]\)">\(A\cap(\sqrt Y+N_*,Y]\)</span> and <span class="math" data-tex="\(D\cap[-Y,-\sqrt Y-N_*)\)">\(D\cap[-Y,-\sqrt Y-N_*)\)</span>. By Theorem 3.1 of Lesson 2 their point masses are at most <span class="math" data-tex="\((\log Y)^4/\sqrt Y\)">\((\log Y)^4/\sqrt Y\)</span>, so <span class="math" data-tex="\(b=4\)">\(b=4\)</span>, and the prime cutoff <span class="math" data-tex="\(\sqrt Y/(\log Y)^5\)">\(\sqrt Y/(\log Y)^5\)</span> exceeds <span class="math" data-tex="\(R\)">\(R\)</span>. The first bound follows since <span class="math" data-tex="\(\log\log Y\ll L\)">\(\log\log Y\ll L\)</span>. For the second, <span class="math" data-tex="\((\log t)^2\le t+t^{-1}-2\)">\((\log t)^2\le t+t^{-1}-2\)</span> for <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> (with <span class="math" data-tex="\(t=e^y\)">\(t=e^y\)</span> this is <span class="math" data-tex="\(y^2\le2\cosh y-2\)">\(y^2\le2\cosh y-2\)</span>), and Cauchy–Schwarz gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{p\le R}\frac{|\log\kappa_p|}p&amp;\le\Bigl(\sum_{p\le R}\frac{(\log\kappa_p)^2\log p}p\Bigr)^{1/2}\\
+&amp;\quad \Bigl(\sum_p\frac1{p\log p}\Bigr)^{1/2},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{p\le R}\frac{|\log\kappa_p|}p&amp;\le\Bigl(\sum_{p\le R}\frac{(\log\kappa_p)^2\log p}p\Bigr)^{1/2}\\
+&amp;\quad \Bigl(\sum_p\frac1{p\log p}\Bigr)^{1/2},
+\end{aligned}
+\]</span>
+and the last series converges. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-a-budget-for-centred-tensor-coordinates">3. A budget for centred tensor coordinates</h2>
+<p>Let <span class="math" data-tex="\(\mathbf e_x\)">\(\mathbf e_x\)</span> be the standard basis vector of <span class="math" data-tex="\(x\)">\(x\)</span> in <span class="math" data-tex="\(\mathbb C^{\mathbb F_p}\)">\(\mathbb C^{\mathbb F_p}\)</span>, with the counting inner product. Let <span class="math" data-tex="\(Q_{S_p}\)">\(Q_{S_p}\)</span> be the orthogonal projection onto
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal H_{S_p}&amp;=\Bigl\{f\in\mathbb C^{\mathbb F_p}:\operatorname{supp}f\subseteq S_p,\\
+&amp;\quad \ \sum_xf(x)=0\Bigr\},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal H_{S_p}&amp;=\Bigl\{f\in\mathbb C^{\mathbb F_p}:\operatorname{supp}f\subseteq S_p,\\
+&amp;\quad \ \sum_xf(x)=0\Bigr\},
+\end{aligned}
+\]</span>
+and define <span class="math" data-tex="\(Q_{T_p}\)">\(Q_{T_p}\)</span>, <span class="math" data-tex="\(\mathcal H_{T_p}\)">\(\mathcal H_{T_p}\)</span> likewise. Explicitly <span class="math" data-tex="\(Q_{S_p}f=\mathbf 1_{S_p}\bigl(f-\mathbb E_{S_p}f\bigr)\)">\(Q_{S_p}f=\mathbf 1_{S_p}\bigl(f-\mathbb E_{S_p}f\bigr)\)</span>. For a squarefree <span class="math" data-tex="\(t\)">\(t\)</span> whose prime factors are at most <span class="math" data-tex="\(R\)">\(R\)</span>, define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+&amp;B_A(t)\\
+&amp;\quad=\Bigl\|\frac1{m_A}\sum_{a\in A_0}\bigotimes_{p\mid t}Q_{S_p}\mathbf e_{a\bmod p}\Bigr\|^2,
+\end{aligned}\\
+B_A(1)=1,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+&amp;B_A(t)\\
+&amp;\quad=\Bigl\|\frac1{m_A}\sum_{a\in A_0}\bigotimes_{p\mid t}Q_{S_p}\mathbf e_{a\bmod p}\Bigr\|^2,
+\end{aligned}\\
+B_A(1)=1,
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(B_D(t)\)">\(B_D(t)\)</span> with <span class="math" data-tex="\(D_0\)">\(D_0\)</span> and <span class="math" data-tex="\(T_p\)">\(T_p\)</span>.</p>
+<p><strong>Lemma 3.1</strong> (the primitive energy identity). For squarefree <span class="math" data-tex="\(q\le R\)">\(q\le R\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\substack{h\bmod q\\ (h,q)=1}}\Bigl|\frac1{m_A}\sum_{a\in A_0}e_q(ha)\Bigr|^2\\
+&amp;\quad =\sum_{t\mid q}t\,B_A(t)\prod_{p\mid q/t}\kappa_p,\quad(3.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\substack{h\bmod q\\ (h,q)=1}}\Bigl|\frac1{m_A}\sum_{a\in A_0}e_q(ha)\Bigr|^2\\
+&amp;\quad =\sum_{t\mid q}t\,B_A(t)\prod_{p\mid q/t}\kappa_p,\quad(3.1)
+\end{aligned}
+\]</span>
+and the same holds for <span class="math" data-tex="\(D_0\)">\(D_0\)</span> with <span class="math" data-tex="\(B_D\)">\(B_D\)</span> and <span class="math" data-tex="\(\kappa_p^{-1}\)">\(\kappa_p^{-1}\)</span>. All terms on the right are nonnegative.</p>
+<p><em>Proof.</em> By the Chinese remainder theorem, <span class="math" data-tex="\(\sum_{(h,q)=1}e_q(hn)=\prod_{p\mid q}\bigl(p\mathbf 1_{p\mid n}-1\bigr)\)">\(\sum_{(h,q)=1}e_q(hn)=\prod_{p\mid q}\bigl(p\mathbf 1_{p\mid n}-1\bigr)\)</span>. For <span class="math" data-tex="\(x,y\in S_p\)">\(x,y\in S_p\)</span>, <span class="math" data-tex="\(Q_{S_p}\mathbf e_x=\mathbf e_x-\mathbf 1_{S_p}/|S_p|\)">\(Q_{S_p}\mathbf e_x=\mathbf e_x-\mathbf 1_{S_p}/|S_p|\)</span>, so <span class="math" data-tex="\(\langle Q_{S_p}\mathbf e_x,Q_{S_p}\mathbf e_y\rangle=\mathbf 1_{x=y}-1/|S_p|\)">\(\langle Q_{S_p}\mathbf e_x,Q_{S_p}\mathbf e_y\rangle=\mathbf 1_{x=y}-1/|S_p|\)</span>, and since <span class="math" data-tex="\(p/|S_p|=1+\kappa_p\)">\(p/|S_p|=1+\kappa_p\)</span>,
+<span class="math math-display" data-tex="\[
+p\mathbf 1_{x=y}-1=\kappa_p+p\,\langle Q_{S_p}\mathbf e_x,Q_{S_p}\mathbf e_y\rangle .
+\]">\[
+p\mathbf 1_{x=y}-1=\kappa_p+p\,\langle Q_{S_p}\mathbf e_x,Q_{S_p}\mathbf e_y\rangle .
+\]</span>
+Expand the left side of (3.1) over two independent uniform elements <span class="math" data-tex="\(a,a&#x27;\)">\(a,a&#x27;\)</span> of <span class="math" data-tex="\(A_0\)">\(A_0\)</span>, multiply out the product of these identities over <span class="math" data-tex="\(p\mid q\)">\(p\mid q\)</span>, and collect the terms with a centred factor exactly at the primes of <span class="math" data-tex="\(t\)">\(t\)</span>: their average is <span class="math" data-tex="\(t\,\|\frac1{m_A}\sum_a\bigotimes_{p\mid t}Q_{S_p}\mathbf e_a\|^2\prod_{p\mid q/t}\kappa_p\)">\(t\,\|\frac1{m_A}\sum_a\bigotimes_{p\mid t}Q_{S_p}\mathbf e_a\|^2\prod_{p\mid q/t}\kappa_p\)</span>. For <span class="math" data-tex="\(D_0\)">\(D_0\)</span>, <span class="math" data-tex="\(p/|T_p|=1+\kappa_p^{-1}\)">\(p/|T_p|=1+\kappa_p^{-1}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(\mathcal B_L=\{p : 0.05L\le\log\log p\le0.9L\}\)">\(\mathcal B_L=\{p : 0.05L\le\log\log p\le0.9L\}\)</span>, and for fixed <span class="math" data-tex="\(C_*&gt;0\)">\(C_*&gt;0\)</span> let <span class="math" data-tex="\(\mathcal T_{C_*}\)">\(\mathcal T_{C_*}\)</span> be the set of products of at most <span class="math" data-tex="\(C_*L\)">\(C_*L\)</span> distinct primes of <span class="math" data-tex="\(\mathcal B_L\)">\(\mathcal B_L\)</span>, including <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Proposition 3.2</strong> (the tensor budget [OpenAI-013, (5.4)]). For each fixed <span class="math" data-tex="\(C_*\)">\(C_*\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{t\in\mathcal T_{C_*}}B_A(t)\le e^{o(L)}\frac R{m_A},\\
+\sum_{t\in\mathcal T_{C_*}}B_D(t)\le e^{o(L)}\frac R{m_D}.\quad(3.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{t\in\mathcal T_{C_*}}B_A(t)\le e^{o(L)}\frac R{m_A},\\
+\sum_{t\in\mathcal T_{C_*}}B_D(t)\le e^{o(L)}\frac R{m_D}.\quad(3.2)
+\end{gathered}
+\]</span>
+In particular, from the term <span class="math" data-tex="\(t=1\)">\(t=1\)</span>,
+<span class="math math-display" data-tex="\[
+m_A,\ m_D\le Re^{o(L)}.
+\tag{3.3}
+\]">\[
+m_A,\ m_D\le Re^{o(L)}.
+\tag{3.3}
+\]</span></p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(t\in\mathcal T_{C_*}\)">\(t\in\mathcal T_{C_*}\)</span>, <span class="math" data-tex="\(\log t\le C_*Le^{0.9L}=o(\log X)\)">\(\log t\le C_*Le^{0.9L}=o(\log X)\)</span>, so <span class="math" data-tex="\(t&lt;R\)">\(t&lt;R\)</span> and <span class="math" data-tex="\(U=R/t=X^{1/2-o(1)}\)">\(U=R/t=X^{1/2-o(1)}\)</span>, uniformly. Among the positive integers <span class="math" data-tex="\(u\le U\)">\(u\le U\)</span>: the proportion that are not squarefree is at most <span class="math" data-tex="\(\sum_pp^{-2}&lt;\frac12\)">\(\sum_pp^{-2}&lt;\frac12\)</span>; the proportion not coprime to <span class="math" data-tex="\(t\)">\(t\)</span> is at most <span class="math" data-tex="\(\sum_{p\mid t}1/p\le C_*L\exp(-e^{0.05L})=o(1)\)">\(\sum_{p\mid t}1/p\le C_*L\exp(-e^{0.05L})=o(1)\)</span>; and, by (2.1),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac1{\lfloor U\rfloor}\sum_{u\le U}\sum_{p\mid u}|\log\kappa_p|\\
+&amp;\quad \le\sum_{p\le U}\frac{|\log\kappa_p|}p\ll\sqrt L,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac1{\lfloor U\rfloor}\sum_{u\le U}\sum_{p\mid u}|\log\kappa_p|\\
+&amp;\quad \le\sum_{p\le U}\frac{|\log\kappa_p|}p\ll\sqrt L,
+\end{aligned}
+\]</span>
+so by Markov's inequality only a proportion <span class="math" data-tex="\(O(L^{-1/4})\)">\(O(L^{-1/4})\)</span> has inner sum above <span class="math" data-tex="\(L^{3/4}\)">\(L^{3/4}\)</span>. Hence at least <span class="math" data-tex="\(cU\)">\(cU\)</span> integers <span class="math" data-tex="\(u\le U\)">\(u\le U\)</span>, with an absolute <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, are squarefree, coprime to <span class="math" data-tex="\(t\)">\(t\)</span>, and satisfy
+<span class="math math-display" data-tex="\[
+\prod_{p\mid u}\kappa_p\ge e^{-L^{3/4}},\qquad\prod_{p\mid u}\kappa_p^{-1}\ge e^{-L^{3/4}}.
+\]">\[
+\prod_{p\mid u}\kappa_p\ge e^{-L^{3/4}},\qquad\prod_{p\mid u}\kappa_p^{-1}\ge e^{-L^{3/4}}.
+\]</span>
+The large sieve (2.1) of Lesson 1, with <span class="math" data-tex="\(a_n=\mathbf 1_{A_0}(n)/m_A\)">\(a_n=\mathbf 1_{A_0}(n)/m_A\)</span> on at most <span class="math" data-tex="\(X+1\)">\(X+1\)</span> integers and <span class="math" data-tex="\(Q=R\)">\(Q=R\)</span>, bounds the sum of the left side of (3.1) over squarefree <span class="math" data-tex="\(q\le R\)">\(q\le R\)</span> by <span class="math" data-tex="\(2X/m_A=2R^2/m_A\)">\(2X/m_A=2R^2/m_A\)</span>. Writing <span class="math" data-tex="\(q=tu\)">\(q=tu\)</span> and keeping, on the right of (3.1), only the term with the given <span class="math" data-tex="\(t\in\mathcal T_{C_*}\)">\(t\in\mathcal T_{C_*}\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span> as above,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{2R^2}{m_A}&amp;\ge\sum_{t\in\mathcal T_{C_*}}tB_A(t)\\
+&amp;\quad \sum_{\substack{u\le R/t\\ u\ \text{squarefree},\ (u,t)=1}}\prod_{p\mid u}\kappa_p\\
+&amp;\ge cRe^{-L^{3/4}}\sum_{t\in\mathcal T_{C_*}}B_A(t).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{2R^2}{m_A}&amp;\ge\sum_{t\in\mathcal T_{C_*}}tB_A(t)\\
+&amp;\quad \sum_{\substack{u\le R/t\\ u\ \text{squarefree},\ (u,t)=1}}\prod_{p\mid u}\kappa_p\\
+&amp;\ge cRe^{-L^{3/4}}\sum_{t\in\mathcal T_{C_*}}B_A(t).
+\end{aligned}
+\]</span>
+The pairs <span class="math" data-tex="\((t,u)\)">\((t,u)\)</span> are distinct for distinct terms, and all terms are nonnegative. The bound for <span class="math" data-tex="\(D_0\)">\(D_0\)</span> is the same with <span class="math" data-tex="\(\kappa_p^{-1}\)">\(\kappa_p^{-1}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-a-contracting-local-kernel">4. A contracting local kernel</h2>
+<p>Fix a sufficiently small absolute <span class="math" data-tex="\(\epsilon_0&gt;0\)">\(\epsilon_0&gt;0\)</span>, and let <span class="math" data-tex="\(0&lt;\delta_0\le\epsilon_0^2\)">\(0&lt;\delta_0\le\epsilon_0^2\)</span>. Suppose, for a sequence of arbitrarily large <span class="math" data-tex="\(L\)">\(L\)</span>, that (1.1) fails. Let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+\mathcal S&amp;=\Bigl\{p\in\mathcal B_L:\tfrac13\le\sigma_p\le\tfrac23,\ \gamma_p\\
+&amp;&lt;\delta_0\Bigr\},
+\end{aligned}\\
+H=\sum_{p\in\mathcal S}\frac1p .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+\mathcal S&amp;=\Bigl\{p\in\mathcal B_L:\tfrac13\le\sigma_p\le\tfrac23,\ \gamma_p\\
+&amp;&lt;\delta_0\Bigr\},
+\end{aligned}\\
+H=\sum_{p\in\mathcal S}\frac1p .
+\end{gathered}
+\]</span>
+Mertens' estimate gives <span class="math" data-tex="\(\sum_{p\in\mathcal B_L}1/p=0.85L+o(1)\)">\(\sum_{p\in\mathcal B_L}1/p=0.85L+o(1)\)</span>. Outside the balanced range <span class="math" data-tex="\(\kappa_p+\kappa_p^{-1}-2\ge\frac12\)">\(\kappa_p+\kappa_p^{-1}-2\ge\frac12\)</span>, and <span class="math" data-tex="\(\log p\ge e^{0.05L}\)">\(\log p\ge e^{0.05L}\)</span> on <span class="math" data-tex="\(\mathcal B_L\)">\(\mathcal B_L\)</span>, so by (2.1) the unbalanced primes of <span class="math" data-tex="\(\mathcal B_L\)">\(\mathcal B_L\)</span> have harmonic mass <span class="math" data-tex="\(O(Le^{-0.05L})=o(1)\)">\(O(Le^{-0.05L})=o(1)\)</span>. Since (1.1) fails, <span class="math" data-tex="\(H\ge0.70L-o(L)\)">\(H\ge0.70L-o(L)\)</span>, and in particular
+<span class="math math-display" data-tex="\[
+H\ge0.68L,
+\tag{4.1}
+\]">\[
+H\ge0.68L,
+\tag{4.1}
+\]</span>
+also after the deletion of any one prime from <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>.</p>
+<p><strong>The sparse spectrum.</strong> For <span class="math" data-tex="\(p\in\mathcal S\)">\(p\in\mathcal S\)</span> put <span class="math" data-tex="\(E_p=\{v\in\mathbb F_p:|g_p(v)|&gt;1\}\)">\(E_p=\{v\in\mathbb F_p:|g_p(v)|&gt;1\}\)</span>. It is symmetric and avoids <span class="math" data-tex="\(0\)">\(0\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|E_p|\le\epsilon_0p,\\
+\sum_{v\in E_p}|g_p(v)|^2\ge(1-\epsilon_0^2)p .\quad(4.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+|E_p|\le\epsilon_0p,\\
+\sum_{v\in E_p}|g_p(v)|^2\ge(1-\epsilon_0^2)p .\quad(4.2)
+\end{gathered}
+\]</span>
+Indeed <span class="math" data-tex="\(|E_p|\le\sum_v|g_p(v)|=p\gamma_p&lt;\delta_0p\)">\(|E_p|\le\sum_v|g_p(v)|=p\gamma_p&lt;\delta_0p\)</span>, and off <span class="math" data-tex="\(E_p\)">\(E_p\)</span>, <span class="math" data-tex="\(|g_p(v)|^2\le|g_p(v)|\)">\(|g_p(v)|^2\le|g_p(v)|\)</span>, so <span class="math" data-tex="\(\sum_{v\notin E_p}|g_p|^2&lt;\delta_0p\le\epsilon_0^2p\)">\(\sum_{v\notin E_p}|g_p|^2&lt;\delta_0p\le\epsilon_0^2p\)</span>.</p>
+<p>Put <span class="math" data-tex="\(t_0=0.85\)">\(t_0=0.85\)</span> and
+<span class="math math-display" data-tex="\[
+b_p(x)=\frac{t_0}p\sum_{h\in E_p}e_p(hx),
+\]">\[
+b_p(x)=\frac{t_0}p\sum_{h\in E_p}e_p(hx),
+\]</span>
+a real function because <span class="math" data-tex="\(E_p\)">\(E_p\)</span> is symmetric. Let <span class="math" data-tex="\(\Pi_p\)">\(\Pi_p\)</span> be the orthogonal projection of <span class="math" data-tex="\(\mathbb C^{\mathbb F_p}\)">\(\mathbb C^{\mathbb F_p}\)</span> onto the span of the additive characters <span class="math" data-tex="\(e_p(h\,\cdot)\)">\(e_p(h\,\cdot)\)</span>, <span class="math" data-tex="\(h\in E_p\)">\(h\in E_p\)</span>. The matrix with entries <span class="math" data-tex="\(b_p(x-y)\)">\(b_p(x-y)\)</span> is <span class="math" data-tex="\(t_0\Pi_p\)">\(t_0\Pi_p\)</span>. Since <span class="math" data-tex="\(0\notin E_p\)">\(0\notin E_p\)</span> and <span class="math" data-tex="\(F_p=\sum_v(g_p(v)/\sqrt p)\,e_p(v\,\cdot)\)">\(F_p=\sum_v(g_p(v)/\sqrt p)\,e_p(v\,\cdot)\)</span>, Parseval and (4.2) give
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Pi_p\mathbf 1=0,\\
+\|\Pi_pF_p-F_p\|\le\epsilon_0\sqrt p,\\
+\|\Pi_pF_p\|^2\ge(1-\epsilon_0^2)p .\quad(4.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Pi_p\mathbf 1=0,\\
+\|\Pi_pF_p-F_p\|\le\epsilon_0\sqrt p,\\
+\|\Pi_pF_p\|^2\ge(1-\epsilon_0^2)p .\quad(4.3)
+\end{gathered}
+\]</span>
+Let <span class="math" data-tex="\(B_p^{(2)}\)">\(B_p^{(2)}\)</span> be the matrix with entries <span class="math" data-tex="\(b_p(x-y)^2\)">\(b_p(x-y)^2\)</span>. Its eigenvalue at the additive character <span class="math" data-tex="\(s\)">\(s\)</span> is <span class="math" data-tex="\(\frac{t_0^2}p\#\{(h,h&#x27;)\in E_p^2:h+h&#x27;=s\}\)">\(\frac{t_0^2}p\#\{(h,h&#x27;)\in E_p^2:h+h&#x27;=s\}\)</span><span class="math" data-tex="\(\le t_0^2|E_p|/p\)">\(\le t_0^2|E_p|/p\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|B_p^{(2)}\|\le t_0^2\epsilon_0,\\
+|b_p(x)|\le t_0\epsilon_0 .\quad(4.4)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|B_p^{(2)}\|\le t_0^2\epsilon_0,\\
+|b_p(x)|\le t_0\epsilon_0 .\quad(4.4)
+\end{gathered}
+\]</span>
+With <span class="math" data-tex="\(e_p^*=|E_p|/p\)">\(e_p^*=|E_p|/p\)</span>, direct summation gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac1{p-1}\sum_{x\ne0}b_p(x)=-\frac{t_0e_p^*}{p-1},\\
+\begin{aligned}
+&amp;\frac1{p-1}\sum_{x\ne0}b_p(x)^2\\
+&amp;\quad =\frac{t_0^2\bigl(e_p^*-(e_p^*)^2\bigr)}{p-1},
+\end{aligned}\quad(4.5)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac1{p-1}\sum_{x\ne0}b_p(x)=-\frac{t_0e_p^*}{p-1},\\
+\begin{aligned}
+&amp;\frac1{p-1}\sum_{x\ne0}b_p(x)^2\\
+&amp;\quad =\frac{t_0^2\bigl(e_p^*-(e_p^*)^2\bigr)}{p-1},
+\end{aligned}\quad(4.5)
+\end{gathered}
+\]</span>
+because <span class="math" data-tex="\(\sum_xb_p(x)=0\)">\(\sum_xb_p(x)=0\)</span>, <span class="math" data-tex="\(b_p(0)=t_0e_p^*\)">\(b_p(0)=t_0e_p^*\)</span>, and <span class="math" data-tex="\(\sum_xb_p(x)^2=t_0^2|E_p|/p\)">\(\sum_xb_p(x)^2=t_0^2|E_p|/p\)</span>. Both means are <span class="math" data-tex="\(O(\epsilon_0/p)\)">\(O(\epsilon_0/p)\)</span>.</p>
+<p><strong>Block coordinates.</strong> Put <span class="math" data-tex="\(u_S=\mathbf 1_{S_p}/|S_p|\)">\(u_S=\mathbf 1_{S_p}/|S_p|\)</span> and <span class="math" data-tex="\(u_T=\mathbf 1_{T_p}/|T_p|\)">\(u_T=\mathbf 1_{T_p}/|T_p|\)</span>. For <span class="math" data-tex="\(x\in S_p\)">\(x\in S_p\)</span>, <span class="math" data-tex="\(\mathbf e_x=u_S+Q_{S_p}\mathbf e_x\)">\(\mathbf e_x=u_S+Q_{S_p}\mathbf e_x\)</span>, and for <span class="math" data-tex="\(y\in T_p\)">\(y\in T_p\)</span>, <span class="math" data-tex="\(\mathbf e_y=u_T+Q_{T_p}\mathbf e_y\)">\(\mathbf e_y=u_T+Q_{T_p}\mathbf e_y\)</span>. So for a kernel <span class="math" data-tex="\(h(x-y)\)">\(h(x-y)\)</span>, with matrix also denoted <span class="math" data-tex="\(h\)">\(h\)</span>, the map
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L_p[h]&amp;=
+\begin{pmatrix}
+u_S^*hu_T&amp;u_S^*hQ_{T_p}\\
+Q_{S_p}hu_T&amp;Q_{S_p}hQ_{T_p}
+\end{pmatrix}\\
+&amp;\quad \colon\ \mathbb C\oplus\mathcal H_{T_p}\to\mathbb C\oplus\mathcal H_{S_p}
+\end{aligned}
+\]">\[
+\begin{aligned}
+L_p[h]&amp;=
+\begin{pmatrix}
+u_S^*hu_T&amp;u_S^*hQ_{T_p}\\
+Q_{S_p}hu_T&amp;Q_{S_p}hQ_{T_p}
+\end{pmatrix}\\
+&amp;\quad \colon\ \mathbb C\oplus\mathcal H_{T_p}\to\mathbb C\oplus\mathcal H_{S_p}
+\end{aligned}
+\]</span>
+represents <span class="math" data-tex="\(h\)">\(h\)</span> in the coordinates <span class="math" data-tex="\((1,Q_{S_p}\mathbf e_x)\)">\((1,Q_{S_p}\mathbf e_x)\)</span> and <span class="math" data-tex="\((1,Q_{T_p}\mathbf e_y)\)">\((1,Q_{T_p}\mathbf e_y)\)</span>: <span class="math" data-tex="\(h(x-y)=(1,Q_{S_p}\mathbf e_x)^*L_p[h](1,Q_{T_p}\mathbf e_y)\)">\(h(x-y)=(1,Q_{S_p}\mathbf e_x)^*L_p[h](1,Q_{T_p}\mathbf e_y)\)</span>. For complex <span class="math" data-tex="\(u,v\)">\(u,v\)</span> define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+L_p(u,v)&amp;=L_p\bigl[(1+ub_p)(1+vb_p)\bigr],
+\end{aligned}\\
+\begin{aligned}
+U_p(u,v)&amp;=\frac1{p-1}\sum_{x\ne0}\bigl(1\\
+&amp;\quad +ub_p(x)\bigr)\bigl(1\\
+&amp;\quad +vb_p(x)\bigr).
+\end{aligned}
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+L_p(u,v)&amp;=L_p\bigl[(1+ub_p)(1+vb_p)\bigr],
+\end{aligned}\\
+\begin{aligned}
+U_p(u,v)&amp;=\frac1{p-1}\sum_{x\ne0}\bigl(1\\
+&amp;\quad +ub_p(x)\bigr)\bigl(1\\
+&amp;\quad +vb_p(x)\bigr).
+\end{aligned}
+\end{gathered}
+\]</span></p>
+<p><strong>Lemma 4.1</strong> (local contraction [OpenAI-013, Lemma 5.2]). For <span class="math" data-tex="\(\epsilon_0\)">\(\epsilon_0\)</span> small enough, uniformly for <span class="math" data-tex="\(p\in\mathcal S\)">\(p\in\mathcal S\)</span> and <span class="math" data-tex="\(|u|,|v|\le1.03\)">\(|u|,|v|\le1.03\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|L_p(u,v)\|\le1+\frac Cp,\\
+|U_p(u,v)|\le1+\frac Cp,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|L_p(u,v)\|\le1+\frac Cp,\\
+|U_p(u,v)|\le1+\frac Cp,
+\end{gathered}
+\]</span>
+and for all large <span class="math" data-tex="\(p\in\mathcal S\)">\(p\in\mathcal S\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+\|L_p(1,1)\|&amp;\le U_p(1,1)\Bigl(1-\frac{1.6}p\Bigr),
+\end{aligned}\\
+U_p(1,1)=1+O\Bigl(\frac{\epsilon_0}p\Bigr).\quad(4.6)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+\|L_p(1,1)\|&amp;\le U_p(1,1)\Bigl(1-\frac{1.6}p\Bigr),
+\end{aligned}\\
+U_p(1,1)=1+O\Bigl(\frac{\epsilon_0}p\Bigr).\quad(4.6)
+\end{gathered}
+\]</span>
+All constants are absolute.</p>
+<p><em>Proof.</em> The constant kernel <span class="math" data-tex="\(1\)">\(1\)</span> has <span class="math" data-tex="\(L_p[1]=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\)">\(L_p[1]=\begin{pmatrix}1&amp;0\\0&amp;0\end{pmatrix}\)</span>, because <span class="math" data-tex="\(u_S\)">\(u_S\)</span> and <span class="math" data-tex="\(u_T\)">\(u_T\)</span> are probability vectors and vectors of <span class="math" data-tex="\(\mathcal H_{T_p}\)">\(\mathcal H_{T_p}\)</span> have sum zero. In <span class="math" data-tex="\(\mathbb C^{\mathbb F_p}\)">\(\mathbb C^{\mathbb F_p}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u_S=\frac{\mathbf 1+\sqrt{\kappa_p}F_p}p,\\
+u_T=\frac{\mathbf 1-F_p/\sqrt{\kappa_p}}p,
+\end{gathered}
+\]">\[
+\begin{gathered}
+u_S=\frac{\mathbf 1+\sqrt{\kappa_p}F_p}p,\\
+u_T=\frac{\mathbf 1-F_p/\sqrt{\kappa_p}}p,
+\end{gathered}
+\]</span>
+as one checks on <span class="math" data-tex="\(S_p\)">\(S_p\)</span> and <span class="math" data-tex="\(T_p\)">\(T_p\)</span>. Since <span class="math" data-tex="\(\Pi_p\)">\(\Pi_p\)</span> is self-adjoint and kills constants, <span class="math" data-tex="\(u_S^*\Pi_pu_T=-p^{-2}\|\Pi_pF_p\|^2\)">\(u_S^*\Pi_pu_T=-p^{-2}\|\Pi_pF_p\|^2\)</span>. Since <span class="math" data-tex="\(F_p\)">\(F_p\)</span> is constant on <span class="math" data-tex="\(S_p\)">\(S_p\)</span> and on <span class="math" data-tex="\(T_p\)">\(T_p\)</span>, <span class="math" data-tex="\(Q_{S_p}F_p=Q_{T_p}F_p=0\)">\(Q_{S_p}F_p=Q_{T_p}F_p=0\)</span>, so for example <span class="math" data-tex="\(Q_{S_p}\Pi_pu_T=-p^{-1}\kappa_p^{-1/2}Q_{S_p}(\Pi_pF_p-F_p)\)">\(Q_{S_p}\Pi_pu_T=-p^{-1}\kappa_p^{-1/2}Q_{S_p}(\Pi_pF_p-F_p)\)</span>, which has norm <span class="math" data-tex="\(O(\epsilon_0/\sqrt p)\)">\(O(\epsilon_0/\sqrt p)\)</span> by (4.3); the balance bounds <span class="math" data-tex="\(\kappa_p^{\pm1/2}\)">\(\kappa_p^{\pm1/2}\)</span> absolutely, and the other side block is the same. The supports are disjoint, so <span class="math" data-tex="\(Q_{S_p}Q_{T_p}=0\)">\(Q_{S_p}Q_{T_p}=0\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|Q_{S_p}\Pi_pQ_{T_p}\|&amp;=\|Q_{S_p}(\Pi_p-\tfrac12I)Q_{T_p}\|\\
+&amp;\le\tfrac12 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|Q_{S_p}\Pi_pQ_{T_p}\|&amp;=\|Q_{S_p}(\Pi_p-\tfrac12I)Q_{T_p}\|\\
+&amp;\le\tfrac12 .
+\end{aligned}
+\]</span>
+By (4.4) and <span class="math" data-tex="\(\|u_S\|,\|u_T\|=O(p^{-1/2})\)">\(\|u_S\|,\|u_T\|=O(p^{-1/2})\)</span>, the square kernel contributes <span class="math" data-tex="\(O(\epsilon_0/p)\)">\(O(\epsilon_0/p)\)</span> to the scalar block, <span class="math" data-tex="\(O(\epsilon_0/\sqrt p)\)">\(O(\epsilon_0/\sqrt p)\)</span> to the side blocks, and <span class="math" data-tex="\(O(\epsilon_0)\)">\(O(\epsilon_0)\)</span> to the lower-right block.</p>
+<p>Since <span class="math" data-tex="\((1+ub_p)(1+vb_p)\)">\((1+ub_p)(1+vb_p)\)</span><span class="math" data-tex="\(=1+(u+v)b_p+uvb_p^2\)">\(=1+(u+v)b_p+uvb_p^2\)</span>, the scalar block of <span class="math" data-tex="\(L_p(u,v)\)">\(L_p(u,v)\)</span> is <span class="math" data-tex="\(s_p(u,v)=1+O(1/p)\)">\(s_p(u,v)=1+O(1/p)\)</span>, the side blocks are <span class="math" data-tex="\(O(\epsilon_0/\sqrt p)\)">\(O(\epsilon_0/\sqrt p)\)</span>, and the lower-right block has norm at most <span class="math" data-tex="\(2\cdot1.03\cdot t_0\cdot\frac12+O(\epsilon_0)&lt;0.95\)">\(2\cdot1.03\cdot t_0\cdot\frac12+O(\epsilon_0)&lt;0.95\)</span>. At <span class="math" data-tex="\(u=v=1\)">\(u=v=1\)</span> the scalar block is real and, by (4.3),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+s_p(1,1)&amp;=1-\frac{2t_0}{p^2}\|\Pi_pF_p\|^2+O\Bigl(\frac{\epsilon_0}p\Bigr)\\
+&amp;\le1-\frac{1.7-O(\epsilon_0)}p .
+\end{aligned}
+\]">\[
+\begin{aligned}
+s_p(1,1)&amp;=1-\frac{2t_0}{p^2}\|\Pi_pF_p\|^2+O\Bigl(\frac{\epsilon_0}p\Bigr)\\
+&amp;\le1-\frac{1.7-O(\epsilon_0)}p .
+\end{aligned}
+\]</span>
+The norm of a <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> block operator is at most the norm of the <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> matrix of the block norms, here at most the largest eigenvalue of <span class="math" data-tex="\(\begin{pmatrix}|s_p|&amp;C\epsilon_0/\sqrt p\\ C\epsilon_0/\sqrt p&amp;0.95\end{pmatrix}\)">\(\begin{pmatrix}|s_p|&amp;C\epsilon_0/\sqrt p\\ C\epsilon_0/\sqrt p&amp;0.95\end{pmatrix}\)</span>. Since <span class="math" data-tex="\(|s_p|-0.95\ge0.04\)">\(|s_p|-0.95\ge0.04\)</span> for large <span class="math" data-tex="\(p\)">\(p\)</span>, this eigenvalue is at most <span class="math" data-tex="\(|s_p|+O(\epsilon_0^2/p)\)">\(|s_p|+O(\epsilon_0^2/p)\)</span>. This gives the first bound and <span class="math" data-tex="\(\|L_p(1,1)\|\le1-(1.7-O(\epsilon_0))/p\)">\(\|L_p(1,1)\|\le1-(1.7-O(\epsilon_0))/p\)</span>. By (4.5), <span class="math" data-tex="\(U_p(u,v)=1+O(\epsilon_0/p)\)">\(U_p(u,v)=1+O(\epsilon_0/p)\)</span> on the polydisc. Decreasing <span class="math" data-tex="\(\epsilon_0\)">\(\epsilon_0\)</span>, <span class="math" data-tex="\(1-(1.7-O(\epsilon_0))/p\)">\(1-(1.7-O(\epsilon_0))/p\)</span><span class="math" data-tex="\(\le U_p(1,1)(1-1.6/p)\)">\(\le U_p(1,1)(1-1.6/p)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Tensoring.</strong> Choose a large fixed <span class="math" data-tex="\(C_K\)">\(C_K\)</span> and put <span class="math" data-tex="\(K=\lceil C_KL\rceil\)">\(K=\lceil C_KL\rceil\)</span>. Define the nonnegative weight
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;W(n)\\
+&amp;\quad=\Bigl(\sum_{\substack{I\subseteq\mathcal S\\|I|\le K}}\prod_{p\in I}b_p(n)\Bigr)^2 .\quad(4.7)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;W(n)\\
+&amp;\quad=\Bigl(\sum_{\substack{I\subseteq\mathcal S\\|I|\le K}}\prod_{p\in I}b_p(n)\Bigr)^2 .\quad(4.7)
+\end{aligned}
+\]</span>
+For a polynomial <span class="math" data-tex="\(\mathsf P(u,v)\)">\(\mathsf P(u,v)\)</span>, scalar or operator valued, let <span class="math" data-tex="\(\mathcal R_K\mathsf P\)">\(\mathcal R_K\mathsf P\)</span> be the sum of its Taylor coefficients of degree at most <span class="math" data-tex="\(K\)">\(K\)</span> in each variable, evaluated at <span class="math" data-tex="\(u=v=1\)">\(u=v=1\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal L(u,v)=\bigotimes_{p\in\mathcal S}L_p(u,v),\\
+\mathcal U(u,v)=\prod_{p\in\mathcal S}U_p(u,v),\\
+U=\mathcal U(1,1).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal L(u,v)=\bigotimes_{p\in\mathcal S}L_p(u,v),\\
+\mathcal U(u,v)=\prod_{p\in\mathcal S}U_p(u,v),\\
+U=\mathcal U(1,1).
+\end{gathered}
+\]</span>
+Expanding <span class="math" data-tex="\(\prod_p(1+ub_p(n))(1+vb_p(n))\)">\(\prod_p(1+ub_p(n))(1+vb_p(n))\)</span><span class="math" data-tex="\(=\sum_{I,J}u^{|I|}v^{|J|}\prod_{p\in I}b_p(n)\)">\(=\sum_{I,J}u^{|I|}v^{|J|}\prod_{p\in I}b_p(n)\)</span><span class="math" data-tex="\(\prod_{p\in J}b_p(n)\)">\(\prod_{p\in J}b_p(n)\)</span> shows that <span class="math" data-tex="\(\mathcal R_K\mathcal L\)">\(\mathcal R_K\mathcal L\)</span> represents the kernel <span class="math" data-tex="\(W(x-y)\)">\(W(x-y)\)</span> in the full tensor coordinates, and that <span class="math" data-tex="\(\mathcal R_K\mathcal U\)">\(\mathcal R_K\mathcal U\)</span> is the mean of <span class="math" data-tex="\(W\)">\(W\)</span> over independent uniform unit residues at the primes of <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>.</p>
+<p><strong>Proposition 4.2</strong> (the pair average is small [OpenAI-013, (5.13)]). For large <span class="math" data-tex="\(L\)">\(L\)</span> in the sequence,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac1{m_Am_D}\sum_{a\in A_0}\sum_{d\in D_0}W(a-d)\\
+&amp;\quad \le U\exp\bigl(-1.6H\\
+&amp;\qquad +o(L)\bigr)\Bigl(\frac{R^2}{m_Am_D}\Bigr)^{1/2},\quad(4.8)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac1{m_Am_D}\sum_{a\in A_0}\sum_{d\in D_0}W(a-d)\\
+&amp;\quad \le U\exp\bigl(-1.6H\\
+&amp;\qquad +o(L)\bigr)\Bigl(\frac{R^2}{m_Am_D}\Bigr)^{1/2},\quad(4.8)
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(U=e^{O(\epsilon_0L)}\)">\(U=e^{O(\epsilon_0L)}\)</span>. The same holds after deleting one prime from <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>.</p>
+<p><em>Proof.</em> <em>Truncation.</em> Let <span class="math" data-tex="\(r_0=1.03\)">\(r_0=1.03\)</span>. By Lemma 4.1 and <span class="math" data-tex="\(\sum_{p\in\mathcal S}1/p\le0.85L+o(L)\)">\(\sum_{p\in\mathcal S}1/p\le0.85L+o(L)\)</span>, both <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span> and <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> have norm at most <span class="math" data-tex="\(e^{C_0L}\)">\(e^{C_0L}\)</span> on <span class="math" data-tex="\(|u|,|v|\le r_0\)">\(|u|,|v|\le r_0\)</span>, with an absolute <span class="math" data-tex="\(C_0\)">\(C_0\)</span>. Cauchy's coefficient formula applies to polynomials with values in finite-dimensional operator spaces: the coefficient of <span class="math" data-tex="\(u^iv^j\)">\(u^iv^j\)</span> has norm at most <span class="math" data-tex="\(e^{C_0L}r_0^{-i-j}\)">\(e^{C_0L}r_0^{-i-j}\)</span>. Summing the geometric series over <span class="math" data-tex="\(i&gt;K\)">\(i&gt;K\)</span> or <span class="math" data-tex="\(j&gt;K\)">\(j&gt;K\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|\mathcal R_K\mathcal L-\mathcal L(1,1)\|+|\mathcal R_K\mathcal U-U|\\
+&amp;\quad \ll e^{C_0L}r_0^{-K}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|\mathcal R_K\mathcal L-\mathcal L(1,1)\|+|\mathcal R_K\mathcal U-U|\\
+&amp;\quad \ll e^{C_0L}r_0^{-K}.
+\end{aligned}
+\]</span>
+By Lemma 4.1, <span class="math" data-tex="\(U=e^{O(\epsilon_0L)}\)">\(U=e^{O(\epsilon_0L)}\)</span> and <span class="math" data-tex="\(\|\mathcal L(1,1)\|\le U\prod_{p\in\mathcal S}(1-1.6/p)\)">\(\|\mathcal L(1,1)\|\le U\prod_{p\in\mathcal S}(1-1.6/p)\)</span><span class="math" data-tex="\(\le Ue^{-1.6H}\)">\(\le Ue^{-1.6H}\)</span>. Choose <span class="math" data-tex="\(C_K\)">\(C_K\)</span> so large that <span class="math" data-tex="\(e^{C_0L}r_0^{-K}\le e^{-5L}\)">\(e^{C_0L}r_0^{-K}\le e^{-5L}\)</span>, which is <span class="math" data-tex="\(o(Ue^{-1.6H})\)">\(o(Ue^{-1.6H})\)</span> since <span class="math" data-tex="\(H\le0.85L+o(L)\)">\(H\le0.85L+o(L)\)</span> and <span class="math" data-tex="\(\epsilon_0\)">\(\epsilon_0\)</span> is small.</p>
+<p><em>The coordinates actually used.</em> Let
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+V_A&amp;=\frac1{m_A}\sum_{a\in A_0}\bigotimes_{p\in\mathcal S}\bigl(1,\\
+&amp;\quad Q_{S_p}\mathbf e_{a\bmod p}\bigr),
+\end{aligned}\\
+\begin{aligned}
+V_D&amp;=\frac1{m_D}\sum_{d\in D_0}\bigotimes_{p\in\mathcal S}\bigl(1,\\
+&amp;\quad Q_{T_p}\mathbf e_{d\bmod p}\bigr).
+\end{aligned}
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+V_A&amp;=\frac1{m_A}\sum_{a\in A_0}\bigotimes_{p\in\mathcal S}\bigl(1,\\
+&amp;\quad Q_{S_p}\mathbf e_{a\bmod p}\bigr),
+\end{aligned}\\
+\begin{aligned}
+V_D&amp;=\frac1{m_D}\sum_{d\in D_0}\bigotimes_{p\in\mathcal S}\bigl(1,\\
+&amp;\quad Q_{T_p}\mathbf e_{d\bmod p}\bigr).
+\end{aligned}
+\end{gathered}
+\]</span>
+The tensor space is the orthogonal sum of the <em>subset modes</em> <span class="math" data-tex="\(\bigotimes_{p\in I}\mathcal H_{S_p}\)">\(\bigotimes_{p\in I}\mathcal H_{S_p}\)</span>, and the squared norm of the component of <span class="math" data-tex="\(V_A\)">\(V_A\)</span> in the mode <span class="math" data-tex="\(I\)">\(I\)</span> is <span class="math" data-tex="\(B_A(\prod_{p\in I}p)\)">\(B_A(\prod_{p\in I}p)\)</span>. Every monomial kept in <span class="math" data-tex="\(\mathcal R_K\mathcal L\)">\(\mathcal R_K\mathcal L\)</span> involves at most <span class="math" data-tex="\(2K\)">\(2K\)</span> primes, and at every other prime the local factor is <span class="math" data-tex="\(L_p[1]\)">\(L_p[1]\)</span>, which has only a scalar block. So <span class="math" data-tex="\(\mathcal R_K\mathcal L=P_A(\mathcal R_K\mathcal L)P_D\)">\(\mathcal R_K\mathcal L=P_A(\mathcal R_K\mathcal L)P_D\)</span>, where <span class="math" data-tex="\(P_A,P_D\)">\(P_A,P_D\)</span> keep only the modes with at most <span class="math" data-tex="\(2K\)">\(2K\)</span> centred factors. Proposition 3.2 with any fixed <span class="math" data-tex="\(C_*&gt;2C_K\)">\(C_*&gt;2C_K\)</span> gives <span class="math" data-tex="\(\|P_AV_A\|^2\le e^{o(L)}R/m_A\)">\(\|P_AV_A\|^2\le e^{o(L)}R/m_A\)</span> and <span class="math" data-tex="\(\|P_DV_D\|^2\le e^{o(L)}R/m_D\)">\(\|P_DV_D\|^2\le e^{o(L)}R/m_D\)</span>.</p>
+<p><em>Conclusion.</em> The left side of (4.8) equals <span class="math" data-tex="\(V_A^*(\mathcal R_K\mathcal L)V_D=(P_AV_A)^*(\mathcal R_K\mathcal L)(P_DV_D)\)">\(V_A^*(\mathcal R_K\mathcal L)V_D=(P_AV_A)^*(\mathcal R_K\mathcal L)(P_DV_D)\)</span>, which is at most <span class="math" data-tex="\(\|\mathcal R_K\mathcal L\|\,\|P_AV_A\|\,\|P_DV_D\|\)">\(\|\mathcal R_K\mathcal L\|\,\|P_AV_A\|\,\|P_DV_D\|\)</span>. Every step is uniform under the deletion of one prime from <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The dimension of the tensor space plays no role: only the modes with few centred factors are seen by the truncated kernel, and their total weight is controlled by the large sieve through Proposition 3.2.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Show that <span class="math" data-tex="\((\log t)^2\le t+t^{-1}-2\)">\((\log t)^2\le t+t^{-1}-2\)</span> for all <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>.</p>
+<p><strong>5.2.</strong> Let <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> be an orthogonal projection on a Hilbert space and <span class="math" data-tex="\(Q_1,Q_2\)">\(Q_1,Q_2\)</span> orthogonal projections with <span class="math" data-tex="\(Q_1Q_2=0\)">\(Q_1Q_2=0\)</span>. Show that <span class="math" data-tex="\(\|Q_1\Pi Q_2\|\le\frac12\)">\(\|Q_1\Pi Q_2\|\le\frac12\)</span>, and give an example with equality.</p>
+<p><strong>5.3.</strong> Show that the norm of a block operator <span class="math" data-tex="\(\begin{pmatrix}A&amp;B\\C&amp;D\end{pmatrix}\)">\(\begin{pmatrix}A&amp;B\\C&amp;D\end{pmatrix}\)</span> is at most the norm of the real <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> matrix <span class="math" data-tex="\(\begin{pmatrix}\|A\|&amp;\|B\|\\\|C\|&amp;\|D\|\end{pmatrix}\)">\(\begin{pmatrix}\|A\|&amp;\|B\|\\\|C\|&amp;\|D\|\end{pmatrix}\)</span>.</p>
+<p><strong>5.4.</strong> Verify the formulas for <span class="math" data-tex="\(u_S\)">\(u_S\)</span> and <span class="math" data-tex="\(u_T\)">\(u_T\)</span> in terms of <span class="math" data-tex="\(F_p\)">\(F_p\)</span> and <span class="math" data-tex="\(\kappa_p\)">\(\kappa_p\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> Put <span class="math" data-tex="\(t=e^y\)">\(t=e^y\)</span>. The claim is <span class="math" data-tex="\(y^2\le e^y+e^{-y}-2=2(\cosh y-1)\)">\(y^2\le e^y+e^{-y}-2=2(\cosh y-1)\)</span>, which holds because <span class="math" data-tex="\(\cosh y-1=\sum_{n\ge1}y^{2n}/(2n)!\ge y^2/2\)">\(\cosh y-1=\sum_{n\ge1}y^{2n}/(2n)!\ge y^2/2\)</span>.</p>
+<p><strong>5.2.</strong> Since <span class="math" data-tex="\(Q_1Q_2=0\)">\(Q_1Q_2=0\)</span>, <span class="math" data-tex="\(Q_1\Pi Q_2=Q_1(\Pi-\frac12I)Q_2\)">\(Q_1\Pi Q_2=Q_1(\Pi-\frac12I)Q_2\)</span>, and <span class="math" data-tex="\(\Pi-\frac12I\)">\(\Pi-\frac12I\)</span> is self-adjoint with eigenvalues <span class="math" data-tex="\(\pm\frac12\)">\(\pm\frac12\)</span>, so its norm is <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span>. Equality: in <span class="math" data-tex="\(\mathbb C^2\)">\(\mathbb C^2\)</span>, <span class="math" data-tex="\(Q_1,Q_2\)">\(Q_1,Q_2\)</span> the projections onto the two coordinate axes and <span class="math" data-tex="\(\Pi\)">\(\Pi\)</span> the projection onto the diagonal line; then <span class="math" data-tex="\(Q_1\Pi Q_2\mathbf e_2=\frac12\mathbf e_1\)">\(Q_1\Pi Q_2\mathbf e_2=\frac12\mathbf e_1\)</span>.</p>
+<p><strong>5.3.</strong> For a vector <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span>, <span class="math" data-tex="\(\|(Ax+By,Cx+Dy)\|^2\)">\(\|(Ax+By,Cx+Dy)\|^2\)</span><span class="math" data-tex="\(\le(\|A\|\|x\|+\|B\|\|y\|)^2\)">\(\le(\|A\|\|x\|+\|B\|\|y\|)^2\)</span><span class="math" data-tex="\(+(\|C\|\|x\|+\|D\|\|y\|)^2\)">\(+(\|C\|\|x\|+\|D\|\|y\|)^2\)</span>, which is the squared norm of the real matrix applied to <span class="math" data-tex="\((\|x\|,\|y\|)\)">\((\|x\|,\|y\|)\)</span>, and <span class="math" data-tex="\(\|(\|x\|,\|y\|)\|=\|(x,y)\|\)">\(\|(\|x\|,\|y\|)\|=\|(x,y)\|\)</span>.</p>
+<p><strong>5.4.</strong> <span class="math" data-tex="\(\sqrt{\kappa_p}F_p=\sqrt{\frac{1-\sigma}\sigma}\cdot\frac{\mathbf 1_S-\sigma}{\sqrt{\sigma(1-\sigma)}}=\frac{\mathbf 1_S-\sigma}\sigma\)">\(\sqrt{\kappa_p}F_p=\sqrt{\frac{1-\sigma}\sigma}\cdot\frac{\mathbf 1_S-\sigma}{\sqrt{\sigma(1-\sigma)}}=\frac{\mathbf 1_S-\sigma}\sigma\)</span>, so <span class="math" data-tex="\(\mathbf 1+\sqrt{\kappa_p}F_p=\mathbf 1_S/\sigma\)">\(\mathbf 1+\sqrt{\kappa_p}F_p=\mathbf 1_S/\sigma\)</span> and <span class="math" data-tex="\((\mathbf 1+\sqrt{\kappa_p}F_p)/p=\mathbf 1_S/|S|\)">\((\mathbf 1+\sqrt{\kappa_p}F_p)/p=\mathbf 1_S/|S|\)</span>. Similarly <span class="math" data-tex="\(F_p/\sqrt{\kappa_p}=(\mathbf 1_S-\sigma)/(1-\sigma)\)">\(F_p/\sqrt{\kappa_p}=(\mathbf 1_S-\sigma)/(1-\sigma)\)</span>, so <span class="math" data-tex="\(\mathbf 1-F_p/\sqrt{\kappa_p}=\mathbf 1_T/(1-\sigma)\)">\(\mathbf 1-F_p/\sqrt{\kappa_p}=\mathbf 1_T/(1-\sigma)\)</span>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-013] OpenAI, <em>The additive indecomposability of the primes</em>, OpenAI Math Release preprint, 24 September 2026, Section 5: Proposition 5.1, a budget for centred tensor coordinates (5.2)–(5.4), a contracting local kernel from a sparse transform, Lemma 5.2, and tensoring and truncating the kernel (5.13). https://github.com/openai/math/tree/main/preprints/the-additive-indecomposability-of-the-primes-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

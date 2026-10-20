@@ -1,0 +1,382 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Templates, transfers and frequency histories</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Additive indecomposability of the primes)</a><a href="scales-cells-and-a-positive-statistic-for-higher-characters.html">Previous lesson</a><a href="anchor-codes-and-decorrelation-of-higher-characters.html">Next lesson</a><a href="src/templates-transfers-and-frequency-histories.md">Editable source</a></nav><main><article><h1 id="templates-transfers-and-frequency-histories">Templates, transfers and frequency histories</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Lesson 7 ended with a lower bound <span class="math" data-tex="\(|\eta_0|\ge e^{-B_0m}\)">\(|\eta_0|\ge e^{-B_0m}\)</span> for the distinct-prime part of a positive statistic. This lesson writes <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span> as a sum over a dual frequency of explicit phases, and then defines a sequence of amplitudes <span class="math" data-tex="\(\eta_1,\dots,\eta_k\)">\(\eta_1,\dots,\eta_k\)</span> by <em>transfers</em>. A transfer applies Cauchy–Schwarz over the residues of one group of primes (the <em>pivot</em>), extends that group to arbitrary integers, and expands the square. The result is a new amplitude of the same shape with twice as many copies of the word, plus a diagonal term:
+<span class="math math-display" data-tex="\[
+|\eta_{j-1}|^2\le e^{d_j}\bigl(\eta_j+\mathcal D_j\bigr)
+\]">\[
+|\eta_{j-1}|^2\le e^{d_j}\bigl(\eta_j+\mathcal D_j\bigr)
+\]</span>
+(Proposition 3.2). The phases keep a precise form, recorded by an exponent matrix, through all transfers (Lemma 3.1). Unrolling the recursion expresses each term of <span class="math" data-tex="\(\eta_l\)">\(\eta_l\)</span> through a binary tree of frequencies, a <em>history</em>; for a given top assignment and root frequency there is at most one valid history (Lemma 4.1), and the histories have controlled total square weight (Proposition 5.1). Lesson 9 bounds the diagonals and compares histories, which proves Theorem 1.1 of Lesson 7.</p>
+<p><strong>Prerequisites.</strong> <a href="scales-cells-and-a-positive-statistic-for-higher-characters.html"><em>Scales, cells and a positive statistic for higher characters</em></a>; <a href="../NT-DIRL/NT-DIRL-03.html"><em>Gauss sums</em></a>, Theorem 2.1; <a href="../NT-ZETA/NT-ZETA-04.html"><em>Poisson summation, theta, and the functional equation</em></a>, Theorem 1.2.</p>
+<p>The notation of Lesson 7 is in force: the functions <span class="math" data-tex="\(f_p=z_p\chi^{(p)}(\cdot-t_p)\)">\(f_p=z_p\chi^{(p)}(\cdot-t_p)\)</span>, the word with bin <span class="math" data-tex="\(J\)">\(J\)</span>, the anchors, the pivot groups <span class="math" data-tex="\(K_j\)">\(K_j\)</span> and the filler with targets <span class="math" data-tex="\(T_j,T_F\)">\(T_j,T_F\)</span>, the gaps <span class="math" data-tex="\(\Delta_j\)">\(\Delta_j\)</span>, the bounds <span class="math" data-tex="\(V_j=e^{E_j}\)">\(V_j=e^{E_j}\)</span>, and <span class="math" data-tex="\(n_c\ll ke^{2\epsilon k}\)">\(n_c\ll ke^{2\epsilon k}\)</span>.</p>
+<h2 id="1-the-level-zero-amplitude">1. The level-zero amplitude</h2>
+<p><strong>Slots and roles.</strong> The statistic <span class="math" data-tex="\(I_*\)">\(I_*\)</span> of Lesson 7 expands into terms indexed by an ordered list of <em>slots</em>: a positive and a conjugate copy of every role (the <span class="math" data-tex="\(m\)">\(m\)</span> bulk labels and the top label of the word, the two anchors of each step, the constituents of each pivot group and of the filler). Each slot <span class="math" data-tex="\(i\)">\(i\)</span> carries a prime <span class="math" data-tex="\(p_i\)">\(p_i\)</span>, drawn from its prior, and a character
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\lambda_i=\chi^{(p_i)}\\
+\text{(positive role)},\\
+\lambda_i=\overline{\chi^{(p_i)}}\\
+\text{(conjugate role)},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\lambda_i=\chi^{(p_i)}\\
+\text{(positive role)},\\
+\lambda_i=\overline{\chi^{(p_i)}}\\
+\text{(conjugate role)},
+\end{gathered}
+\]</span>
+so that its local function is <span class="math" data-tex="\(z_i\lambda_i(x-t_{p_i})\)">\(z_i\lambda_i(x-t_{p_i})\)</span> with <span class="math" data-tex="\(|z_i|=1\)">\(|z_i|=1\)</span>. Every <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span> is nonprincipal of order greater than <span class="math" data-tex="\(2\)">\(2\)</span>. The rule fixing <span class="math" data-tex="\(\lambda_i\)">\(\lambda_i\)</span> is attached to the slot and is copied unchanged when the slot is copied.</p>
+<p><strong>The local transform.</strong> For a nonprincipal character <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> modulo a prime <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(t\in\mathbb F_p\)">\(t\in\mathbb F_p\)</span> and <span class="math" data-tex="\(w\in\mathbb F_p\)">\(w\in\mathbb F_p\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E_{x\in\mathbb F_p}\lambda(x-t)\,e_p(wx)\\
+&amp;\quad=\begin{cases}
+\begin{aligned}&amp;\dfrac{1}{\sqrt p}\cdot\dfrac{\tau(\lambda)}{\sqrt p}\,\\&amp;\quad\lambda(w)^{-1}\,e_p(wt),\end{aligned}&amp;w\ne0,\\
+0,&amp;w=0,
+\end{cases}\quad(1.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E_{x\in\mathbb F_p}\lambda(x-t)\,e_p(wx)\\
+&amp;\quad=\begin{cases}
+\begin{aligned}&amp;\dfrac{1}{\sqrt p}\cdot\dfrac{\tau(\lambda)}{\sqrt p}\,\\&amp;\quad\lambda(w)^{-1}\,e_p(wt),\end{aligned}&amp;w\ne0,\\
+0,&amp;w=0,
+\end{cases}\quad(1.1)
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(\tau(\lambda)=\sum_y\lambda(y)e_p(y)\)">\(\tau(\lambda)=\sum_y\lambda(y)e_p(y)\)</span> has modulus <span class="math" data-tex="\(\sqrt p\)">\(\sqrt p\)</span> (<a href="../NT-DIRL/NT-DIRL-03.html"><em>Gauss sums</em></a>, Theorem 2.1). Indeed, substitute <span class="math" data-tex="\(x=y+t\)">\(x=y+t\)</span>, then <span class="math" data-tex="\(y\mapsto y\overline w\)">\(y\mapsto y\overline w\)</span>.</p>
+<p><strong>The Poisson dual.</strong> Fix a tuple of distinct primes, put <span class="math" data-tex="\(M=\prod_ip_i\)">\(M=\prod_ip_i\)</span> and <span class="math" data-tex="\(F(n)=\prod_iz_i\lambda_i(n-t_{p_i})\)">\(F(n)=\prod_iz_i\lambda_i(n-t_{p_i})\)</span>, a function of period <span class="math" data-tex="\(M\)">\(M\)</span>. Poisson summation, followed by the substitution <span class="math" data-tex="\(v\mapsto-v\)">\(v\mapsto-v\)</span> (allowed since <span class="math" data-tex="\(\widehat\psi\)">\(\widehat\psi\)</span> is even), gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+&amp;\sum_n\psi(n/X)F(n)\\
+&amp;\quad =X\sum_{v\in\mathbb Z}\widehat F(-v)\,\widehat\psi\Bigl(\frac{vX}M\Bigr),
+\end{aligned}\\
+\widehat F(-v)=\mathbb E_{n\bmod M}F(n)\,e_M(vn).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+&amp;\sum_n\psi(n/X)F(n)\\
+&amp;\quad =X\sum_{v\in\mathbb Z}\widehat F(-v)\,\widehat\psi\Bigl(\frac{vX}M\Bigr),
+\end{aligned}\\
+\widehat F(-v)=\mathbb E_{n\bmod M}F(n)\,e_M(vn).
+\end{gathered}
+\]</span>
+By the Chinese remainder theorem, <span class="math" data-tex="\(v/M\equiv\sum_iv\,\overline{M/p_i}/p_i\pmod1\)">\(v/M\equiv\sum_iv\,\overline{M/p_i}/p_i\pmod1\)</span>, where <span class="math" data-tex="\(\overline{M/p_i}\)">\(\overline{M/p_i}\)</span> is an inverse modulo <span class="math" data-tex="\(p_i\)">\(p_i\)</span>, and <span class="math" data-tex="\(\widehat F(-v)\)">\(\widehat F(-v)\)</span> is the product of the local transforms (1.1) at <span class="math" data-tex="\(w_i=v\,\overline{M/p_i}\)">\(w_i=v\,\overline{M/p_i}\)</span>. Since <span class="math" data-tex="\(\lambda_i(w_i)^{-1}=\lambda_i(v)^{-1}\lambda_i(M/p_i)\)">\(\lambda_i(w_i)^{-1}=\lambda_i(v)^{-1}\lambda_i(M/p_i)\)</span> and <span class="math" data-tex="\(\lambda_i(M/p_i)=\prod_{h\ne i}\lambda_i(p_h)\)">\(\lambda_i(M/p_i)=\prod_{h\ne i}\lambda_i(p_h)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+\widehat F(-v)&amp;=\frac1{\sqrt M}\,A(v)\prod_i\kappa_i\lambda_i(v)^{-1}\\
+&amp;\quad \prod_i\prod_{h\ne i}\lambda_i(p_h)
+\end{aligned}\\
+\text{if }(v,M)=1,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+\widehat F(-v)&amp;=\frac1{\sqrt M}\,A(v)\prod_i\kappa_i\lambda_i(v)^{-1}\\
+&amp;\quad \prod_i\prod_{h\ne i}\lambda_i(p_h)
+\end{aligned}\\
+\text{if }(v,M)=1,
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise. Here <span class="math" data-tex="\(\kappa_i=z_i\tau(\lambda_i)/\sqrt{p_i}\)">\(\kappa_i=z_i\tau(\lambda_i)/\sqrt{p_i}\)</span> has modulus <span class="math" data-tex="\(1\)">\(1\)</span>, and
+<span class="math math-display" data-tex="\[
+A(v)=\prod_ie_{p_i}\bigl(t_{p_i}\,v\,\overline{M/p_i}\bigr).
+\tag{1.2}
+\]">\[
+A(v)=\prod_ie_{p_i}\bigl(t_{p_i}\,v\,\overline{M/p_i}\bigr).
+\tag{1.2}
+\]</span>
+Dividing by <span class="math" data-tex="\(\sqrt X\)">\(\sqrt X\)</span>, the level-zero amplitude of Proposition 6.1 of Lesson 7 is
+<span class="math math-display" data-tex="\[
+\eta_0=\mathbb E_{\mathcal I_0}\sum_{v}W_0\,\Theta_0,
+\tag{1.3}
+\]">\[
+\eta_0=\mathbb E_{\mathcal I_0}\sum_{v}W_0\,\Theta_0,
+\tag{1.3}
+\]</span>
+where <span class="math" data-tex="\(\mathbb E_{\mathcal I_0}\)">\(\mathbb E_{\mathcal I_0}\)</span> is the expectation over the priors of all slots, and:</p>
+<ul>
+<li>the <em>phase</em> <span class="math" data-tex="\(\Theta_0=A(v)\prod_i\nu_i\prod_i\prod_{h\ne i}\lambda_i(p_h)^{b_{ih}}\)">\(\Theta_0=A(v)\prod_i\nu_i\prod_i\prod_{h\ne i}\lambda_i(p_h)^{b_{ih}}\)</span> with all <span class="math" data-tex="\(b_{ih}=1\)">\(b_{ih}=1\)</span> and <span class="math" data-tex="\(\nu_i=\kappa_i\lambda_i(v)^{-1}\)">\(\nu_i=\kappa_i\lambda_i(v)^{-1}\)</span>;</li>
+<li>the <em>weight</em> <span class="math" data-tex="\(W_0\)">\(W_0\)</span> is the product of the bin indicators of the two words, <span class="math" data-tex="\((X/M)^{1/2}\widehat\psi(vX/M)\)">\((X/M)^{1/2}\widehat\psi(vX/M)\)</span>, the indicators that the slots carry distinct primes and that <span class="math" data-tex="\((v,M)=1\)">\((v,M)=1\)</span>, and the indicator of a fixed covering interval for <span class="math" data-tex="\(\log M=\log X+\Delta_0+O_k(1)\)">\(\log M=\log X+\Delta_0+O_k(1)\)</span>.</li>
+</ul>
+<p>Since <span class="math" data-tex="\(\widehat\psi\)">\(\widehat\psi\)</span> vanishes outside <span class="math" data-tex="\([-\frac14,\frac14]\)">\([-\frac14,\frac14]\)</span>, only <span class="math" data-tex="\(0&lt;|v|\le M/(4X)\le V_0\)">\(0&lt;|v|\le M/(4X)\le V_0\)</span> occur. The term <span class="math" data-tex="\(v=0\)">\(v=0\)</span> vanishes.</p>
+<h2 id="2-templates-atoms-and-the-exponent-matrix">2. Templates, atoms and the exponent matrix</h2>
+<p>The transfers work with lists of slots whose phases have the shape of <span class="math" data-tex="\(\Theta_0\)">\(\Theta_0\)</span>.</p>
+<p><strong>Atoms.</strong> At level zero the active slots are the positive word and the constituents of the positive pivot groups <span class="math" data-tex="\(K_1,\dots,K_k\)">\(K_1,\dots,K_k\)</span>. The positive anchors of step <span class="math" data-tex="\(j\)">\(j\)</span> are <em>reserved</em> for step <span class="math" data-tex="\(j\)">\(j\)</span>. All conjugate slots, the filler and the unused roles are <em>outside</em>. A pivot group is treated as one <em>atom</em>, whose constituents are its ordered slots; every other slot is an atom by itself. The distinctness of the constituents of a pivot atom stays in its tuple prior, without normalization; pairwise coprimality of atoms carries the remaining distinctness conditions. Copied atoms receive new independent priors with the same internal restrictions.</p>
+<p><strong>Phases.</strong> For a list <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> of pairwise coprime atoms, with prime product <span class="math" data-tex="\(M_{\mathcal I}\)">\(M_{\mathcal I}\)</span>, put
+<span class="math math-display" data-tex="\[
+A_{\mathcal I}(v)=\prod_{i\in\mathcal I}e_{p_i}\bigl(t_{p_i}\,v\,\overline{M_{\mathcal I}/p_i}\bigr).
+\]">\[
+A_{\mathcal I}(v)=\prod_{i\in\mathcal I}e_{p_i}\bigl(t_{p_i}\,v\,\overline{M_{\mathcal I}/p_i}\bigr).
+\]</span>
+Every term of every amplitude below has the form <span class="math" data-tex="\(W\Theta\)">\(W\Theta\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Theta&amp;=A_{\mathcal I}(v)\prod_i\nu_i\\
+&amp;\quad \prod_i\prod_{h\ne i}\lambda_i(p_h)^{b_{ih}},\quad(2.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Theta&amp;=A_{\mathcal I}(v)\prod_i\nu_i\\
+&amp;\quad \prod_i\prod_{h\ne i}\lambda_i(p_h)^{b_{ih}},\quad(2.1)
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(v\)">\(v\)</span> is the <em>root frequency</em>, the <em>exponents</em> <span class="math" data-tex="\(b_{ih}\in\{0,\pm1\}\)">\(b_{ih}\in\{0,\pm1\}\)</span> are fixed by the template, and each <span class="math" data-tex="\(\nu_i\)">\(\nu_i\)</span> is, once all frequencies are fixed, a function of modulus at most <span class="math" data-tex="\(1\)">\(1\)</span> of the prime in slot <span class="math" data-tex="\(i\)">\(i\)</span> alone (a <em>unary</em> factor). The entry <span class="math" data-tex="\(b_{ih}\)">\(b_{ih}\)</span> is the <em>row</em> of <span class="math" data-tex="\(i\)">\(i\)</span> at the <em>target</em> <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<p><strong>The invariants.</strong> At level <span class="math" data-tex="\(l\)">\(l\)</span>, the amplitude <span class="math" data-tex="\(\eta_l\)">\(\eta_l\)</span> is an expectation over the priors of a list <span class="math" data-tex="\(\mathcal I_l\)">\(\mathcal I_l\)</span> of a sum over frequency histories (Section 4) of terms <span class="math" data-tex="\(W_l\Theta_l\)">\(W_l\Theta_l\)</span> with root frequency <span class="math" data-tex="\(0&lt;|v|\le V_l\)">\(0&lt;|v|\le V_l\)</span>, such that:</p>
+<ol>
+<li><em>Weight.</em> <span class="math" data-tex="\(W_l\)">\(W_l\)</span> depends on the current active pivot atoms only through their total products; all active word bins hold; the current atoms are pairwise coprime and are units modulo the root frequency.</li>
+<li><em>Regular slots.</em> For a slot <span class="math" data-tex="\(i\)">\(i\)</span> of an active word or an active pivot, called <em>regular</em>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+b_{ih}=\varepsilon_i\quad(h\ne i),\\
+\nu_i=\kappa_i\lambda_i(v)^{-\varepsilon_i},
+\end{gathered}
+\]">\[
+\begin{gathered}
+b_{ih}=\varepsilon_i\quad(h\ne i),\\
+\nu_i=\kappa_i\lambda_i(v)^{-\varepsilon_i},
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(\varepsilon_i\in\{1,-1\}\)">\(\varepsilon_i\in\{1,-1\}\)</span> is the product of the copy signs of the transfers that produced the slot, and <span class="math" data-tex="\(|\kappa_i|=1\)">\(|\kappa_i|=1\)</span> depends only on the role, the path and the prime, not on any frequency.</li>
+<li><em>Common columns.</em> For each slot <span class="math" data-tex="\(h\)">\(h\)</span>, the exponent <span class="math" data-tex="\(b_{hi}\)">\(b_{hi}\)</span> is the same for all constituents <span class="math" data-tex="\(i\)">\(i\)</span> of any active pivot atom. Write <span class="math" data-tex="\(b_{hP}\)">\(b_{hP}\)</span> for this common value.</li>
+</ol>
+<p>At level zero all three hold, with all <span class="math" data-tex="\(\varepsilon_i=1\)">\(\varepsilon_i=1\)</span>.</p>
+<p><strong>The steps.</strong> At step <span class="math" data-tex="\(j\)">\(j\)</span> the current list <span class="math" data-tex="\(\mathcal I_{j-1}\)">\(\mathcal I_{j-1}\)</span> is split as <span class="math" data-tex="\(P\sqcup H\sqcup Y\)">\(P\sqcup H\sqcup Y\)</span>:</p>
+<ul>
+<li><span class="math" data-tex="\(P\)">\(P\)</span> is the unique active atom of type <span class="math" data-tex="\(K_j\)">\(K_j\)</span>;</li>
+<li><span class="math" data-tex="\(H\)">\(H\)</span> consists of all active words, the unique active atom of each later type <span class="math" data-tex="\(K_l\)">\(K_l\)</span>, <span class="math" data-tex="\(l&gt;j\)">\(l&gt;j\)</span>, and the two anchors reserved for step <span class="math" data-tex="\(j\)">\(j\)</span>;</li>
+<li><span class="math" data-tex="\(Y\)">\(Y\)</span> is the rest.</li>
+</ul>
+<p>The letters <span class="math" data-tex="\(P,H,Y\)">\(P,H,Y\)</span> also denote the products of the corresponding primes. The new list is
+<span class="math math-display" data-tex="\[
+\mathcal I_j=H^+\sqcup H^-\sqcup Y,
+\]">\[
+\mathcal I_j=H^+\sqcup H^-\sqcup Y,
+\]</span>
+two copies of <span class="math" data-tex="\(H\)">\(H\)</span> (the copy signs <span class="math" data-tex="\(+\)">\(+\)</span> and <span class="math" data-tex="\(-\)">\(-\)</span>) and the old <span class="math" data-tex="\(Y\)">\(Y\)</span>. Both copies of every word stay active. Of each later pivot atom, only the copy in <span class="math" data-tex="\(H^+\)">\(H^+\)</span> stays active; the copy in <span class="math" data-tex="\(H^-\)">\(H^-\)</span> becomes outside. Both copies of the step-<span class="math" data-tex="\(j\)">\(j\)</span> anchors become outside. So before step <span class="math" data-tex="\(j\)">\(j\)</span> there are <span class="math" data-tex="\(2^{j-1}\)">\(2^{j-1}\)</span> active words, and by the choice of targets in Lesson 7, on the bin supports,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\log P=T_j+O_k(1),\\
+\log H=T_j+\Delta_j+O_k(1).\quad(2.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\log P=T_j+O_k(1),\\
+\log H=T_j+\Delta_j+O_k(1).\quad(2.2)
+\end{gathered}
+\]</span></p>
+<h2 id="3-the-transfer-identity">3. The transfer identity</h2>
+<p>Fix <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span> and put <span class="math" data-tex="\(l=j-1\)">\(l=j-1\)</span>. Insert into <span class="math" data-tex="\(W_l\)">\(W_l\)</span> the range indicators of (2.2), with fixed covering constants, and the requirement that the pivot be a unit modulo every frequency in its history. These change nothing, because all frequencies are below every prime.</p>
+<p><strong>Removing the pivot factors.</strong> For a constituent <span class="math" data-tex="\(p_i\)">\(p_i\)</span> of <span class="math" data-tex="\(P\)">\(P\)</span>, the factors of (2.1) that belong to slot <span class="math" data-tex="\(i\)">\(i\)</span> are its unary factor, its row, and its additive factor. With <span class="math" data-tex="\(M=PHY\)">\(M=PHY\)</span>, the regular-slot invariant gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+&amp;\nu_i\prod_{h\ne i}\lambda_i(p_h)^{\varepsilon_i}\\
+&amp;\quad =\kappa_i\,\lambda_i\Bigl(\frac{(P/p_i)\,Y\,H}{v}\Bigr)^{\varepsilon_i},
+\end{aligned}\\
+\begin{aligned}
+&amp;e_{p_i}\Bigl(t_{p_i}v\,\overline{M/p_i}\Bigr)\\
+&amp;\quad =e_{p_i}\Bigl(t_{p_i}\frac vH\,\overline{(P/p_i)Y}\Bigr).
+\end{aligned}
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+&amp;\nu_i\prod_{h\ne i}\lambda_i(p_h)^{\varepsilon_i}\\
+&amp;\quad =\kappa_i\,\lambda_i\Bigl(\frac{(P/p_i)\,Y\,H}{v}\Bigr)^{\varepsilon_i},
+\end{aligned}\\
+\begin{aligned}
+&amp;e_{p_i}\Bigl(t_{p_i}v\,\overline{M/p_i}\Bigr)\\
+&amp;\quad =e_{p_i}\Bigl(t_{p_i}\frac vH\,\overline{(P/p_i)Y}\Bigr).
+\end{aligned}
+\end{gathered}
+\]</span>
+Both depend only on the residue <span class="math" data-tex="\(u\equiv v\overline H\pmod P\)">\(u\equiv v\overline H\pmod P\)</span>, on <span class="math" data-tex="\(Y\)">\(Y\)</span>, and on the pivot tuple, and have modulus at most <span class="math" data-tex="\(1\)">\(1\)</span>. Group the terms of <span class="math" data-tex="\(\eta_l\)">\(\eta_l\)</span> by <span class="math" data-tex="\(u\bmod P\)">\(u\bmod P\)</span>, remove these factors for all constituents, and call what remains, summed over <span class="math" data-tex="\(v\)">\(v\)</span> in the class of <span class="math" data-tex="\(u\)">\(u\)</span> and averaged over <span class="math" data-tex="\(H\)">\(H\)</span>, the quantity <span class="math" data-tex="\(B_u(P,Y)\)">\(B_u(P,Y)\)</span>. The other factors involving pivot primes are the columns <span class="math" data-tex="\(\lambda_h(p_i)^{b_{hi}}\)">\(\lambda_h(p_i)^{b_{hi}}\)</span>, which by the common-column invariant combine to <span class="math" data-tex="\(\lambda_h(P)^{b_{hP}}\)">\(\lambda_h(P)^{b_{hP}}\)</span>, and the additive factors of the other slots, which involve <span class="math" data-tex="\(P\)">\(P\)</span> only through <span class="math" data-tex="\(M\)">\(M\)</span>. With the weight invariant, <span class="math" data-tex="\(B_u(P,Y)\)">\(B_u(P,Y)\)</span> depends on the pivot tuple only through its total <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p><strong>Cauchy–Schwarz.</strong> Applying Cauchy–Schwarz first to the outer priors and then to the <span class="math" data-tex="\(P\)">\(P\)</span> residues,
+<span class="math math-display" data-tex="\[
+|\eta_l|^2\le\mathbb E_{Y,K_j}\,P\sum_{u\bmod P}|B_u(P,Y)|^2 .
+\]">\[
+|\eta_l|^2\le\mathbb E_{Y,K_j}\,P\sum_{u\bmod P}|B_u(P,Y)|^2 .
+\]</span>
+The total of a pivot tuple with <span class="math" data-tex="\(n_j\)">\(n_j\)</span> constituents has point mass at most <span class="math" data-tex="\(e^{d_j}/P\)">\(e^{d_j}/P\)</span>, where
+<span class="math math-display" data-tex="\[
+d_j=Cn_jL+O_k(1):
+\]">\[
+d_j=Cn_jL+O_k(1):
+\]</span>
+each constituent prime <span class="math" data-tex="\(p\)">\(p\)</span> has prior weight at most <span class="math" data-tex="\(e^{CL}/p\)">\(e^{CL}/p\)</span> by the cell mass bounds, and a total determines its multiset of primes, hence at most <span class="math" data-tex="\(n_j!=O_k(1)\)">\(n_j!=O_k(1)\)</span> ordered tuples. Since the summand is nonnegative, the expectation over <span class="math" data-tex="\(K_j\)">\(K_j\)</span> can be replaced by <span class="math" data-tex="\(e^{d_j}\)">\(e^{d_j}\)</span> times a sum over all positive integers <span class="math" data-tex="\(P\)">\(P\)</span> in the range of (2.2):
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|\eta_l|^2&amp;\le e^{d_j}\,\mathbb E_Y\sum_P\\
+&amp;\qquad\sum_{u\bmod P}|B_u(P,Y)|^2 .\quad(3.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+|\eta_l|^2&amp;\le e^{d_j}\,\mathbb E_Y\sum_P\\
+&amp;\qquad\sum_{u\bmod P}|B_u(P,Y)|^2 .\quad(3.1)
+\end{aligned}
+\]</span>
+On this extended sum the integer <span class="math" data-tex="\(P\)">\(P\)</span> keeps its coprimality with the other atoms and the weight conditions, but no condition from its tuple prior. No character of the integer <span class="math" data-tex="\(P\)">\(P\)</span> is needed: the rows of its constituents were removed before the extension.</p>
+<p><strong>Expanding the square.</strong> Write <span class="math" data-tex="\(|B_u|^2\)">\(|B_u|^2\)</span> with two independent copies <span class="math" data-tex="\(H_L,H_R\)">\(H_L,H_R\)</span> of <span class="math" data-tex="\(H\)">\(H\)</span> and root frequencies <span class="math" data-tex="\(v,w\)">\(v,w\)</span> of the two factors. Summing over <span class="math" data-tex="\(u\bmod P\)">\(u\bmod P\)</span> gives the pairs with <span class="math" data-tex="\(vH_R\equiv wH_L\pmod P\)">\(vH_R\equiv wH_L\pmod P\)</span>. The terms with <span class="math" data-tex="\(vH_R=wH_L\)">\(vH_R=wH_L\)</span> form the <em>diagonal</em> <span class="math" data-tex="\(\mathcal D_j\)">\(\mathcal D_j\)</span>. For the others, put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+P=\frac{vH_R-wH_L}s,\\
+s\ne0,\quad(3.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+P=\frac{vH_R-wH_L}s,\\
+s\ne0,\quad(3.2)
+\end{gathered}
+\]</span>
+with the condition that <span class="math" data-tex="\(P\)">\(P\)</span> is a positive integer in its range. This is a bijection between the off-diagonal terms and the quadruples <span class="math" data-tex="\((v,w,s)\)">\((v,w,s)\)</span> together with the lists. By (2.2) and <span class="math" data-tex="\(|v|,|w|\le V_l\)">\(|v|,|w|\le V_l\)</span>,
+<span class="math math-display" data-tex="\[
+\log|s|\le E_{l}+\Delta_j+O_k(1)&lt;E_j,
+\]">\[
+\log|s|\le E_{l}+\Delta_j+O_k(1)&lt;E_j,
+\]</span>
+since <span class="math" data-tex="\(E_{j-1}+\Delta_j=E_j-2\cdot4^{j-1}\sqrt m\)">\(E_{j-1}+\Delta_j=E_j-2\cdot4^{j-1}\sqrt m\)</span>. A prime dividing both <span class="math" data-tex="\(H_L\)">\(H_L\)</span> and <span class="math" data-tex="\(H_R\)">\(H_R\)</span> would divide <span class="math" data-tex="\(sP\)">\(sP\)</span> and be coprime to <span class="math" data-tex="\(P\)">\(P\)</span>, so it would divide <span class="math" data-tex="\(s\)">\(s\)</span>, which is impossible because every prime exceeds <span class="math" data-tex="\(V_j\)">\(V_j\)</span>. So <span class="math" data-tex="\(H_L\)">\(H_L\)</span> and <span class="math" data-tex="\(H_R\)">\(H_R\)</span> are coprime, the inherited conditions separate each of them from <span class="math" data-tex="\(Y\)">\(Y\)</span>, and all primes of the new list are units modulo <span class="math" data-tex="\(s\)">\(s\)</span>. Let <span class="math" data-tex="\(W_j\)">\(W_j\)</span> be the left weight times the conjugate of the right weight, with these conditions and the substitution (3.2).</p>
+<p><strong>The new phase.</strong> Modulo a prime of the new list, (3.2) gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac vP\equiv\frac s{H_R}\ \ (p_i\mid H_L),\\
+-\frac wP\equiv\frac s{H_L}\ \ (p_i\mid H_R),\\
+\frac v{PH_L}-\frac w{PH_R}=\frac s{H_LH_R}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac vP\equiv\frac s{H_R}\ \ (p_i\mid H_L),\\
+-\frac wP\equiv\frac s{H_L}\ \ (p_i\mid H_R),\\
+\frac v{PH_L}-\frac w{PH_R}=\frac s{H_LH_R}.
+\end{gathered}
+\]</span>
+Using the first identity at the primes of <span class="math" data-tex="\(H_L\)">\(H_L\)</span>, the second at those of <span class="math" data-tex="\(H_R\)">\(H_R\)</span>, and the third at the shared primes of <span class="math" data-tex="\(Y\)">\(Y\)</span>, the additive factors of the left term and of the conjugated right term combine exactly into <span class="math" data-tex="\(A_{\mathcal I_j}(s)\)">\(A_{\mathcal I_j}(s)\)</span>, with <span class="math" data-tex="\(M_{\mathcal I_j}=H_LH_RY\)">\(M_{\mathcal I_j}=H_LH_RY\)</span>.</p>
+<p><strong>Lemma 3.1</strong> (the update rule [OpenAI-013, (4.9)]). Label the slots of <span class="math" data-tex="\(\mathcal I_j\)">\(\mathcal I_j\)</span> as <span class="math" data-tex="\(i^t\)">\(i^t\)</span> (<span class="math" data-tex="\(i\in H\)">\(i\in H\)</span>, <span class="math" data-tex="\(t=\pm\)">\(t=\pm\)</span>, with <span class="math" data-tex="\(H^+=H_L\)">\(H^+=H_L\)</span>, <span class="math" data-tex="\(H^-=H_R\)">\(H^-=H_R\)</span>) and <span class="math" data-tex="\(y\in Y\)">\(y\in Y\)</span>. The new exponents are
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+b^{\rm new}_{i^th^{t&#x27;}}&amp;=
+\begin{cases}
+t\,b_{ih},&amp;t=t&#x27;,\ i\ne h,\\
+t\,b_{iP},&amp;t\ne t&#x27;,
+\end{cases}
+\end{aligned}\\
+b^{\rm new}_{i^ty}=t\,b_{iy},\\
+b^{\rm new}_{yi^t}=t\,b_{yi},\\
+b^{\rm new}_{yy&#x27;}=0\ \ (y\ne y&#x27;),\quad(3.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+b^{\rm new}_{i^th^{t&#x27;}}&amp;=
+\begin{cases}
+t\,b_{ih},&amp;t=t&#x27;,\ i\ne h,\\
+t\,b_{iP},&amp;t\ne t&#x27;,
+\end{cases}
+\end{aligned}\\
+b^{\rm new}_{i^ty}=t\,b_{iy},\\
+b^{\rm new}_{yi^t}=t\,b_{yi},\\
+b^{\rm new}_{yy&#x27;}=0\ \ (y\ne y&#x27;),\quad(3.3)
+\end{gathered}
+\]</span>
+and the three invariants hold at level <span class="math" data-tex="\(j\)">\(j\)</span>, with <span class="math" data-tex="\(\varepsilon_{i^t}=t\varepsilon_i\)">\(\varepsilon_{i^t}=t\varepsilon_i\)</span> and the root frequency <span class="math" data-tex="\(s\)">\(s\)</span>.</p>
+<p><em>Proof.</em> The left term contributes its rows <span class="math" data-tex="\(\lambda_i(p_h)^{b_{ih}}\)">\(\lambda_i(p_h)^{b_{ih}}\)</span> for <span class="math" data-tex="\(i,h\)">\(i,h\)</span> in <span class="math" data-tex="\(P\cup H_L\cup Y\)">\(P\cup H_L\cup Y\)</span>, and the conjugated right term contributes <span class="math" data-tex="\(\lambda_i(p_h)^{-b_{ih}}\)">\(\lambda_i(p_h)^{-b_{ih}}\)</span> for <span class="math" data-tex="\(i,h\)">\(i,h\)</span> in <span class="math" data-tex="\(P\cup H_R\cup Y\)">\(P\cup H_R\cup Y\)</span>. Rows between two slots of the same copy give the first case of (3.3). For <span class="math" data-tex="\(i\in H_L\)">\(i\in H_L\)</span>, the column into the pivot is <span class="math" data-tex="\(\lambda_i(P)^{b_{iP}}\)">\(\lambda_i(P)^{b_{iP}}\)</span>, and at the prime <span class="math" data-tex="\(p_i\)">\(p_i\)</span>, <span class="math" data-tex="\(P\equiv vH_R/s\)">\(P\equiv vH_R/s\)</span>; so
+<span class="math math-display" data-tex="\[
+\lambda_i(P)^{b_{iP}}=\lambda_i(v/s)^{b_{iP}}\prod_{h\in H_R}\lambda_i(p_h)^{b_{iP}},
+\]">\[
+\lambda_i(P)^{b_{iP}}=\lambda_i(v/s)^{b_{iP}}\prod_{h\in H_R}\lambda_i(p_h)^{b_{iP}},
+\]</span>
+which is the cross-copy row <span class="math" data-tex="\(b^{\rm new}_{i^+h^-}=b_{iP}\)">\(b^{\rm new}_{i^+h^-}=b_{iP}\)</span> and a new unary factor <span class="math" data-tex="\(\lambda_i(v/s)^{b_{iP}}\)">\(\lambda_i(v/s)^{b_{iP}}\)</span>. For <span class="math" data-tex="\(i\in H_R\)">\(i\in H_R\)</span>, conjugation and <span class="math" data-tex="\(P\equiv-wH_L/s\)">\(P\equiv-wH_L/s\)</span> give the row <span class="math" data-tex="\(-b_{iP}\)">\(-b_{iP}\)</span> and the unary factor <span class="math" data-tex="\(\lambda_i(-w/s)^{-b_{iP}}\)">\(\lambda_i(-w/s)^{-b_{iP}}\)</span>. Rows between <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span> appear once, from the side containing the <span class="math" data-tex="\(H\)">\(H\)</span>-slot, with that side's sign. Between two shared slots <span class="math" data-tex="\(y,y&#x27;\in Y\)">\(y,y&#x27;\in Y\)</span>, and from <span class="math" data-tex="\(y\)">\(y\)</span> into <span class="math" data-tex="\(P\)">\(P\)</span>, the left and right factors are conjugate and cancel; the unary factors of <span class="math" data-tex="\(y\)">\(y\)</span> combine into a new unary factor.</p>
+<p>For a regular slot, <span class="math" data-tex="\(b_{iP}=\varepsilon_i\)">\(b_{iP}=\varepsilon_i\)</span>. In the left copy the old unary factor <span class="math" data-tex="\(\kappa_i\lambda_i(v)^{-\varepsilon_i}\)">\(\kappa_i\lambda_i(v)^{-\varepsilon_i}\)</span> times <span class="math" data-tex="\(\lambda_i(v/s)^{\varepsilon_i}\)">\(\lambda_i(v/s)^{\varepsilon_i}\)</span> is <span class="math" data-tex="\(\kappa_i\lambda_i(s)^{-\varepsilon_i}\)">\(\kappa_i\lambda_i(s)^{-\varepsilon_i}\)</span>; in the right copy, <span class="math" data-tex="\(\overline{\kappa_i}\lambda_i(w)^{\varepsilon_i}\)">\(\overline{\kappa_i}\lambda_i(w)^{\varepsilon_i}\)</span> times <span class="math" data-tex="\(\lambda_i(-w/s)^{-\varepsilon_i}\)">\(\lambda_i(-w/s)^{-\varepsilon_i}\)</span> is <span class="math" data-tex="\(\overline{\kappa_i}\lambda_i(-1)^{-\varepsilon_i}\lambda_i(s)^{\varepsilon_i}\)">\(\overline{\kappa_i}\lambda_i(-1)^{-\varepsilon_i}\lambda_i(s)^{\varepsilon_i}\)</span>. With <span class="math" data-tex="\(\varepsilon_{i^\pm}=\pm\varepsilon_i\)">\(\varepsilon_{i^\pm}=\pm\varepsilon_i\)</span> and the sign <span class="math" data-tex="\(\lambda_i(-1)^{-\varepsilon_i}\)">\(\lambda_i(-1)^{-\varepsilon_i}\)</span> absorbed into the new <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, both have the form <span class="math" data-tex="\(\kappa\lambda(s)^{-\varepsilon}\)">\(\kappa\lambda(s)^{-\varepsilon}\)</span>, and (3.3) gives <span class="math" data-tex="\(b^{\rm new}_{i^t\cdot}=t\varepsilon_i\)">\(b^{\rm new}_{i^t\cdot}=t\varepsilon_i\)</span> on every target. The later pivot atoms are copied together, so their columns stay common; and the weight sees them only through their totals. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 3.2</strong> (the transfer [OpenAI-013, (4.7)]). Let <span class="math" data-tex="\(\eta_j\)">\(\eta_j\)</span> be the off-diagonal part of the extended sum in (3.1), that is, the expectation over the priors of <span class="math" data-tex="\(\mathcal I_j\)">\(\mathcal I_j\)</span>, with the pivot extended to positive integers by (3.2), of the sum over histories of <span class="math" data-tex="\(W_j\Theta_j\)">\(W_j\Theta_j\)</span>. Then <span class="math" data-tex="\(\eta_j\)">\(\eta_j\)</span> has the form described in Section 2, and
+<span class="math math-display" data-tex="\[
+|\eta_{j-1}|^2\le e^{d_j}\bigl(\eta_j+\mathcal D_j\bigr),
+\]">\[
+|\eta_{j-1}|^2\le e^{d_j}\bigl(\eta_j+\mathcal D_j\bigr),
+\]</span>
+where the diagonal <span class="math" data-tex="\(\mathcal D_j\)">\(\mathcal D_j\)</span> consists of the terms of (3.1) with <span class="math" data-tex="\(vH_R=wH_L\)">\(vH_R=wH_L\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The extended sum in (3.1) is a sum of squared moduli, hence real and nonnegative. Exchanging the two copies maps the diagonal terms to their complex conjugates, so <span class="math" data-tex="\(\mathcal D_j\)">\(\mathcal D_j\)</span> and <span class="math" data-tex="\(\eta_j\)">\(\eta_j\)</span> are real as well. Since every prime of <span class="math" data-tex="\(H_L\)">\(H_L\)</span> and <span class="math" data-tex="\(H_R\)">\(H_R\)</span> exceeds the frequencies, the diagonal equation <span class="math" data-tex="\(vH_R=wH_L\)">\(vH_R=wH_L\)</span> forces <span class="math" data-tex="\(H_L=H_R\)">\(H_L=H_R\)</span> as integers and <span class="math" data-tex="\(v=w\)">\(v=w\)</span>. Lesson 9 bounds <span class="math" data-tex="\(\mathcal D_j\)">\(\mathcal D_j\)</span>.</p>
+<h2 id="4-frequency-histories">4. Frequency histories</h2>
+<p>Unroll a term of <span class="math" data-tex="\(\eta_l\)">\(\eta_l\)</span> from its root. A <em>history</em> of depth <span class="math" data-tex="\(l\)">\(l\)</span> is a full binary tree with <span class="math" data-tex="\(2^l\)">\(2^l\)</span> leaves, with a nonzero integer frequency at each node: at a node of step <span class="math" data-tex="\(j\)">\(j\)</span> it is the root frequency <span class="math" data-tex="\(s\)">\(s\)</span> of that step, of absolute value at most <span class="math" data-tex="\(V_j\)">\(V_j\)</span>, and the two children carry the frequencies <span class="math" data-tex="\(v,w\)">\(v,w\)</span> of the two factors. At a node of step <span class="math" data-tex="\(j\)">\(j\)</span>, the output slots are <span class="math" data-tex="\(Y,H_L,H_R\)">\(Y,H_L,H_R\)</span>; each child keeps <span class="math" data-tex="\(Y\)">\(Y\)</span> and one copy of <span class="math" data-tex="\(H\)">\(H\)</span>, and inserts the pivot integer (3.2). An inserted pivot can itself appear in a later substitution, as an atom of a later <span class="math" data-tex="\(H\)">\(H\)</span>. Every inserted pivot is required to be coprime to every frequency below its node, and all inherited conditions are evaluated recursively. We also use the same histories with one current active pivot replaced by a fixed positive integer, after its outgoing factors have been removed as in Section 3; this is the <em>fixed-external</em> version.</p>
+<p><strong>Lemma 4.1</strong> (uniqueness of histories [OpenAI-013, Section 4]). For a fixed assignment of the top list, including the fixed-external version, and a fixed root frequency, there is at most one valid history.</p>
+<p><em>Proof.</em> At the top node, of step <span class="math" data-tex="\(j\)">\(j\)</span>, suppose <span class="math" data-tex="\((v,w,P)\)">\((v,w,P)\)</span> and <span class="math" data-tex="\((v&#x27;,w&#x27;,P&#x27;)\)">\((v&#x27;,w&#x27;,P&#x27;)\)</span> are both valid, with the same <span class="math" data-tex="\(s,H_L,H_R\)">\(s,H_L,H_R\)</span>. From <span class="math" data-tex="\(sP=vH_R-wH_L\)">\(sP=vH_R-wH_L\)</span> and <span class="math" data-tex="\(sP&#x27;=v&#x27;H_R-w&#x27;H_L\)">\(sP&#x27;=v&#x27;H_R-w&#x27;H_L\)</span>, the congruences <span class="math" data-tex="\(vH_R\equiv wH_L\)">\(vH_R\equiv wH_L\)</span> and <span class="math" data-tex="\(v&#x27;H_R\equiv w&#x27;H_L\pmod s\)">\(v&#x27;H_R\equiv w&#x27;H_L\pmod s\)</span> give <span class="math" data-tex="\((vw&#x27;-v&#x27;w)H_R\equiv0\pmod s\)">\((vw&#x27;-v&#x27;w)H_R\equiv0\pmod s\)</span>, and <span class="math" data-tex="\(H_R\)">\(H_R\)</span> is a unit modulo <span class="math" data-tex="\(s\)">\(s\)</span>, so <span class="math" data-tex="\(s\mid vw&#x27;-v&#x27;w\)">\(s\mid vw&#x27;-v&#x27;w\)</span>. Also
+<span class="math math-display" data-tex="\[
+H_R(vw&#x27;-v&#x27;w)=s(Pw&#x27;-P&#x27;w),
+\]">\[
+H_R(vw&#x27;-v&#x27;w)=s(Pw&#x27;-P&#x27;w),
+\]</span>
+so
+<span class="math math-display" data-tex="\[
+|vw&#x27;-v&#x27;w|\le|s|\,\frac{P|w&#x27;|+P&#x27;|w|}{H_R}&lt;|s|,
+\]">\[
+|vw&#x27;-v&#x27;w|\le|s|\,\frac{P|w&#x27;|+P&#x27;|w|}{H_R}&lt;|s|,
+\]</span>
+because <span class="math" data-tex="\(P|w&#x27;|/H_R\le V_{j-1}e^{-\Delta_j+O_k(1)}\)">\(P|w&#x27;|/H_R\le V_{j-1}e^{-\Delta_j+O_k(1)}\)</span> and <span class="math" data-tex="\(\Delta_j-E_{j-1}=2\cdot4^{j-1}\sqrt m\to\infty\)">\(\Delta_j-E_{j-1}=2\cdot4^{j-1}\sqrt m\to\infty\)</span>. Hence <span class="math" data-tex="\(vw&#x27;=v&#x27;w\)">\(vw&#x27;=v&#x27;w\)</span>: the pairs <span class="math" data-tex="\((v,w)\)">\((v,w)\)</span> and <span class="math" data-tex="\((v&#x27;,w&#x27;)\)">\((v&#x27;,w&#x27;)\)</span> are proportional, and then so are <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(P&#x27;\)">\(P&#x27;\)</span>, with the same positive ratio <span class="math" data-tex="\(a/b\)">\(a/b\)</span> in lowest terms. Then <span class="math" data-tex="\(b\)">\(b\)</span> divides <span class="math" data-tex="\(v,w\)">\(v,w\)</span> and <span class="math" data-tex="\(P\)">\(P\)</span>, and <span class="math" data-tex="\(a\)">\(a\)</span> divides <span class="math" data-tex="\(v&#x27;,w&#x27;\)">\(v&#x27;,w&#x27;\)</span> and <span class="math" data-tex="\(P&#x27;\)">\(P&#x27;\)</span>. The inserted pivot is coprime to the frequencies below its node, so <span class="math" data-tex="\(a=b=1\)">\(a=b=1\)</span>. The children are then determined, and recursion proves the claim. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-square-weights-of-the-histories">5. The square weights of the histories</h2>
+<p><strong>Proposition 5.1</strong> ([OpenAI-013, (4.10)]). With <span class="math" data-tex="\(r=2^l\)">\(r=2^l\)</span>,
+<span class="math math-display" data-tex="\[
+\mathbb E\sum_{\text{histories}}|W_l|^2\le\exp\bigl(Crm+o_k(m)\bigr),
+\]">\[
+\mathbb E\sum_{\text{histories}}|W_l|^2\le\exp\bigl(Crm+o_k(m)\bigr),
+\]</span>
+with <span class="math" data-tex="\(C\)">\(C\)</span> independent of <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(B_D\)">\(B_D\)</span>. The same holds in the fixed-external version, averaged over its other priors.</p>
+<p><em>Proof.</em> <em>A pointwise bound.</em> Each history has <span class="math" data-tex="\(r\)">\(r\)</span> leaves, and each leaf carries a level-zero weight with the factor <span class="math" data-tex="\((X/M)^{1/2}\widehat\psi\)">\((X/M)^{1/2}\widehat\psi\)</span>; by (6.2) of Lesson 7, <span class="math" data-tex="\(X/M=e^{-\Delta_0+O_k(1)}\)">\(X/M=e^{-\Delta_0+O_k(1)}\)</span>. So <span class="math" data-tex="\(|W_l|^2\le\exp(-r\Delta_0+O_k(1))\)">\(|W_l|^2\le\exp(-r\Delta_0+O_k(1))\)</span>. After this bound, the bin, range and internal distinctness indicators can be dropped, because only an upper bound for a nonnegative support probability is needed. We keep the integrality conditions and the conditions that frequencies be units.</p>
+<p><em>Uniform residues.</em> Every leaf has its own active word. Fix all frequencies and all labels except one chosen bulk prime in each leaf's word. Let <span class="math" data-tex="\(R\)">\(R\)</span> be the product of the absolute values of all node and leaf frequencies, and <span class="math" data-tex="\(Q=R^{k+2}=\exp(O_k(m))\)">\(Q=R^{k+2}=\exp(O_k(m))\)</span>. A bulk prior has point weight <span class="math" data-tex="\(O(1/p)\)">\(O(1/p)\)</span>. In a unit class modulo <span class="math" data-tex="\(Q\)">\(Q\)</span>, the sum of <span class="math" data-tex="\(1/n\)">\(1/n\)</span> over a dyadic interval of integers much larger than <span class="math" data-tex="\(Q\)">\(Q\)</span> is <span class="math" data-tex="\(O(1/Q)\)">\(O(1/Q)\)</span>, and there are at most <span class="math" data-tex="\(e^{CL}\)">\(e^{CL}\)</span> dyadic intervals in the bulk range. So the residue of one chosen prime modulo <span class="math" data-tex="\(Q\)">\(Q\)</span> is dominated by <span class="math" data-tex="\(e^{CL}\)">\(e^{CL}\)</span> times the uniform measure on the units modulo <span class="math" data-tex="\(Q\)">\(Q\)</span>, and by independence the joint residues of the <span class="math" data-tex="\(r\)">\(r\)</span> chosen primes are dominated by <span class="math" data-tex="\(e^{CrL}\)">\(e^{CrL}\)</span> times independent uniform units.</p>
+<p><em>Exposure.</em> Under independent uniform units, expose first the product of all chosen variables, then, going down the tree, the product of the chosen variables in the left subtree at each split. Given the parent product, the left product is uniform on the units modulo <span class="math" data-tex="\(Q\)">\(Q\)</span> and determines the right product, because <span class="math" data-tex="\((x,y)\mapsto(x,xy)\)">\((x,y)\mapsto(x,xy)\)</span> is a bijection of pairs of units. At a node write
+<span class="math math-display" data-tex="\[
+H_L=C_LX_L,\qquad H_R=C_RX_R,
+\]">\[
+H_L=C_LX_L,\qquad H_R=C_RX_R,
+\]</span>
+with <span class="math" data-tex="\(X_L,X_R\)">\(X_L,X_R\)</span> the products of the chosen variables in the two subtrees. The constants <span class="math" data-tex="\(C_L,C_R\)">\(C_L,C_R\)</span> may contain inserted ancestor pivots, whose residues are known from the splits already exposed. Every chosen word stays inside a copied part <span class="math" data-tex="\(H\)">\(H\)</span> at every transfer, so a later split refines a product already exposed at each ancestor.</p>
+<p><em>Precision.</em> The recurrence (3.2) uses the two current child totals and known integers. If <span class="math" data-tex="\(s\mid R\)">\(s\mid R\)</span> and a numerator is known modulo <span class="math" data-tex="\(R^a\)">\(R^a\)</span>, its integral quotient by <span class="math" data-tex="\(s\)">\(s\)</span> is known modulo <span class="math" data-tex="\(R^{a-1}\)">\(R^{a-1}\)</span>; products lose no precision. There are at most <span class="math" data-tex="\(k\)">\(k\)</span> divisions on a branch, so every quantity is known modulo <span class="math" data-tex="\(R^2\)">\(R^2\)</span>, enough for all divisibility and unit conditions. A fixed external pivot is known from the start.</p>
+<p><em>Divisor bounds.</em> For every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> there is <span class="math" data-tex="\(C_\varepsilon\)">\(C_\varepsilon\)</span> with <span class="math" data-tex="\(\tau(n)\le C_\varepsilon n^\varepsilon\)">\(\tau(n)\le C_\varepsilon n^\varepsilon\)</span> for all <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, where <span class="math" data-tex="\(\tau(n)\)">\(\tau(n)\)</span> is the number of divisors. Indeed <span class="math" data-tex="\(\tau(n)n^{-\varepsilon}=\prod_{p^e\parallel n}(e+1)p^{-e\varepsilon}\)">\(\tau(n)n^{-\varepsilon}=\prod_{p^e\parallel n}(e+1)p^{-e\varepsilon}\)</span>; a factor with <span class="math" data-tex="\(p\ge2^{1/\varepsilon}\)">\(p\ge2^{1/\varepsilon}\)</span> is at most <span class="math" data-tex="\((e+1)2^{-e}\le1\)">\((e+1)2^{-e}\le1\)</span>, and each of the finitely many primes <span class="math" data-tex="\(p&lt;2^{1/\varepsilon}\)">\(p&lt;2^{1/\varepsilon}\)</span> contributes at most <span class="math" data-tex="\(\max_{e\ge0}(e+1)2^{-e\varepsilon}\)">\(\max_{e\ge0}(e+1)2^{-e\varepsilon}\)</span>. Also <span class="math" data-tex="\(2^{\omega(n)}\le\tau(n)\)">\(2^{\omega(n)}\le\tau(n)\)</span> and <span class="math" data-tex="\(n/\varphi(n)=\prod_{p\mid n}(1-1/p)^{-1}\le2^{\omega(n)}\)">\(n/\varphi(n)=\prod_{p\mid n}(1-1/p)^{-1}\le2^{\omega(n)}\)</span>. So for <span class="math" data-tex="\(n\le\exp(O_k(m))\)">\(n\le\exp(O_k(m))\)</span>, all of <span class="math" data-tex="\(\tau(n)\)">\(\tau(n)\)</span>, <span class="math" data-tex="\(2^{\omega(n)}\)">\(2^{\omega(n)}\)</span> and <span class="math" data-tex="\(n/\varphi(n)\)">\(n/\varphi(n)\)</span> are <span class="math" data-tex="\(\exp(o_k(m))\)">\(\exp(o_k(m))\)</span>.</p>
+<p><em>One node.</em> On valid support <span class="math" data-tex="\(C_L,C_R\)">\(C_L,C_R\)</span> are units modulo <span class="math" data-tex="\(|s|\)">\(|s|\)</span>. Given their residues and <span class="math" data-tex="\(X_LX_R\)">\(X_LX_R\)</span>, integrality of <span class="math" data-tex="\(P\)">\(P\)</span> requires
+<span class="math math-display" data-tex="\[
+vC_RX_R\equiv wC_LX_L\pmod{|s|}.
+\]">\[
+vC_RX_R\equiv wC_LX_L\pmod{|s|}.
+\]</span>
+Congruent integers have the same greatest common divisor with <span class="math" data-tex="\(s\)">\(s\)</span>, so this is impossible unless <span class="math" data-tex="\((v,s)=(w,s)\)">\((v,s)=(w,s)\)</span>; then <span class="math" data-tex="\(g=(v,w,s)\)">\(g=(v,w,s)\)</span> equals both. Dividing by <span class="math" data-tex="\(g\)">\(g\)</span>, the congruence becomes a unit square-root equation for <span class="math" data-tex="\(X_L\)">\(X_L\)</span> modulo <span class="math" data-tex="\(|s|/g\)">\(|s|/g\)</span>, which has at most <span class="math" data-tex="\(2^{\omega(|s|/g)+1}\)">\(2^{\omega(|s|/g)+1}\)</span> unit solutions. Since <span class="math" data-tex="\(X_L\)">\(X_L\)</span> is uniform on units modulo <span class="math" data-tex="\(Q\)">\(Q\)</span> and <span class="math" data-tex="\(|s|/g\mid Q\)">\(|s|/g\mid Q\)</span>, the conditional probability is at most <span class="math" data-tex="\(2^{\omega(n)+1}/\varphi(n)\)">\(2^{\omega(n)+1}/\varphi(n)\)</span> with <span class="math" data-tex="\(n=|s|/g\le\exp(O_k(m))\)">\(n=|s|/g\le\exp(O_k(m))\)</span>. The divisor bounds above give <span class="math" data-tex="\(2^{\omega(n)+1}n/\varphi(n)=\exp(o_k(m))\)">\(2^{\omega(n)+1}n/\varphi(n)=\exp(o_k(m))\)</span>, so the probability is at most
+<span class="math math-display" data-tex="\[
+\exp(o_k(m))\,\frac g{|s|}.
+\]">\[
+\exp(o_k(m))\,\frac g{|s|}.
+\]</span>
+The sequential exposure multiplies these bounds over the nodes.</p>
+<p><em>Summing the frequencies.</em> For fixed child frequencies <span class="math" data-tex="\(v,w\)">\(v,w\)</span>, grouping <span class="math" data-tex="\(s=dh\)">\(s=dh\)</span> by <span class="math" data-tex="\(d=(v,w,s)\)">\(d=(v,w,s)\)</span>, which divides <span class="math" data-tex="\((v,w)\)">\((v,w)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{0&lt;|s|\le V_j}\frac{(v,w,s)}{|s|}\\
+&amp;\quad \le2\sum_{d\mid(v,w)}\sum_{h\le V_j/d}\frac1h\\
+&amp;\quad \le2\tau\bigl((v,w)\bigr)(1+\log V_j)\\
+&amp;\quad =\exp(o_k(m)).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{0&lt;|s|\le V_j}\frac{(v,w,s)}{|s|}\\
+&amp;\quad \le2\sum_{d\mid(v,w)}\sum_{h\le V_j/d}\frac1h\\
+&amp;\quad \le2\tau\bigl((v,w)\bigr)(1+\log V_j)\\
+&amp;\quad =\exp(o_k(m)).
+\end{aligned}
+\]</span>
+Sum the internal frequencies from the root down, each with its children fixed; there are <span class="math" data-tex="\(r-1=O_k(1)\)">\(r-1=O_k(1)\)</span> internal nodes. The <span class="math" data-tex="\(r\)">\(r\)</span> leaf frequencies have at most <span class="math" data-tex="\((2V_0)^r=\exp(r\Delta_0+o_k(m))\)">\((2V_0)^r=\exp(r\Delta_0+o_k(m))\)</span> choices, which cancels the pointwise factor. The remaining cost is <span class="math" data-tex="\(\exp(CrL+o_k(m))\)">\(\exp(CrL+o_k(m))\)</span><span class="math" data-tex="\(\le\exp(Crm+o_k(m))\)">\(\le\exp(Crm+o_k(m))\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Verify (1.1), including the case <span class="math" data-tex="\(w=0\)">\(w=0\)</span>.</p>
+<p><strong>6.2.</strong> Let <span class="math" data-tex="\(x,y\)">\(x,y\)</span> be independent uniform units modulo <span class="math" data-tex="\(Q\)">\(Q\)</span>. Show that, conditionally on <span class="math" data-tex="\(xy\)">\(xy\)</span>, the variable <span class="math" data-tex="\(x\)">\(x\)</span> is uniform on the units, and that this fails if <span class="math" data-tex="\(x,y\)">\(x,y\)</span> are uniform on all residues and <span class="math" data-tex="\(Q\)">\(Q\)</span> is not prime.</p>
+<p><strong>6.3.</strong> Check the three identities preceding Lemma 3.1 from <span class="math" data-tex="\(sP=vH_R-wH_L\)">\(sP=vH_R-wH_L\)</span>.</p>
+<p><strong>6.4.</strong> In Lemma 4.1, give an example of two proportional triples <span class="math" data-tex="\((v,w,P)\)">\((v,w,P)\)</span>, <span class="math" data-tex="\((2v,2w,2P)\)">\((2v,2w,2P)\)</span> that satisfy <span class="math" data-tex="\(sP=vH_R-wH_L\)">\(sP=vH_R-wH_L\)</span> and <span class="math" data-tex="\(s(2P)=2vH_R-2wH_L\)">\(s(2P)=2vH_R-2wH_L\)</span>, and say which condition excludes the second.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> With <span class="math" data-tex="\(x=y+t\)">\(x=y+t\)</span>, the sum is <span class="math" data-tex="\(e_p(wt)\,\mathbb E_y\lambda(y)e_p(wy)\)">\(e_p(wt)\,\mathbb E_y\lambda(y)e_p(wy)\)</span>. If <span class="math" data-tex="\(w=0\)">\(w=0\)</span> this is the mean of a nonprincipal character, <span class="math" data-tex="\(0\)">\(0\)</span>. If <span class="math" data-tex="\(w\ne0\)">\(w\ne0\)</span>, put <span class="math" data-tex="\(y=y&#x27;\overline w\)">\(y=y&#x27;\overline w\)</span>: <span class="math" data-tex="\(\sum_y\lambda(y)e_p(wy)\)">\(\sum_y\lambda(y)e_p(wy)\)</span><span class="math" data-tex="\(=\sum_{y&#x27;}\lambda(y&#x27;\overline w)e_p(y&#x27;)=\lambda(\overline w)\tau(\lambda)\)">\(=\sum_{y&#x27;}\lambda(y&#x27;\overline w)e_p(y&#x27;)=\lambda(\overline w)\tau(\lambda)\)</span><span class="math" data-tex="\(=\lambda(w)^{-1}\tau(\lambda)\)">\(=\lambda(w)^{-1}\tau(\lambda)\)</span>. Dividing by <span class="math" data-tex="\(p\)">\(p\)</span> gives (1.1).</p>
+<p><strong>6.2.</strong> The map <span class="math" data-tex="\((x,y)\mapsto(x,xy)\)">\((x,y)\mapsto(x,xy)\)</span> is a bijection of <span class="math" data-tex="\((\mathbb Z/Q)^\times\times(\mathbb Z/Q)^\times\)">\((\mathbb Z/Q)^\times\times(\mathbb Z/Q)^\times\)</span>, so <span class="math" data-tex="\((x,xy)\)">\((x,xy)\)</span> is uniform on pairs of units and <span class="math" data-tex="\(x\)">\(x\)</span> is independent of <span class="math" data-tex="\(xy\)">\(xy\)</span>. For <span class="math" data-tex="\(Q=4\)">\(Q=4\)</span> and uniform residues, <span class="math" data-tex="\(xy=1\)">\(xy=1\)</span> forces <span class="math" data-tex="\(x\in\{1,3\}\)">\(x\in\{1,3\}\)</span>, whereas <span class="math" data-tex="\(x\)">\(x\)</span> is uniform on four residues, so <span class="math" data-tex="\(x\)">\(x\)</span> is not independent of <span class="math" data-tex="\(xy\)">\(xy\)</span>.</p>
+<p><strong>6.3.</strong> Modulo a prime <span class="math" data-tex="\(p_i\mid H_L\)">\(p_i\mid H_L\)</span>, <span class="math" data-tex="\(sP\equiv vH_R\)">\(sP\equiv vH_R\)</span>, so <span class="math" data-tex="\(v/P\equiv s/H_R\)">\(v/P\equiv s/H_R\)</span>. Modulo <span class="math" data-tex="\(p_i\mid H_R\)">\(p_i\mid H_R\)</span>, <span class="math" data-tex="\(sP\equiv-wH_L\)">\(sP\equiv-wH_L\)</span>, so <span class="math" data-tex="\(-w/P\equiv s/H_L\)">\(-w/P\equiv s/H_L\)</span>. Finally <span class="math" data-tex="\(\frac v{PH_L}-\frac w{PH_R}=\frac{vH_R-wH_L}{PH_LH_R}=\frac{sP}{PH_LH_R}\)">\(\frac v{PH_L}-\frac w{PH_R}=\frac{vH_R-wH_L}{PH_LH_R}=\frac{sP}{PH_LH_R}\)</span>.</p>
+<p><strong>6.4.</strong> If <span class="math" data-tex="\((v,w,P)\)">\((v,w,P)\)</span> is valid, so is <span class="math" data-tex="\((2v,2w,2P)\)">\((2v,2w,2P)\)</span> as far as the equation goes. The second is excluded because <span class="math" data-tex="\(2\)">\(2\)</span> divides both the inserted pivot <span class="math" data-tex="\(2P\)">\(2P\)</span> and the frequencies <span class="math" data-tex="\(2v,2w\)">\(2v,2w\)</span> below it, contradicting the coprimality of inserted pivots and frequencies.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-013] OpenAI, <em>The additive indecomposability of the primes</em>, OpenAI Math Release preprint, 24 September 2026, Section 4: templates and the transfer identity, (4.5)–(4.10). https://github.com/openai/math/tree/main/preprints/the-additive-indecomposability-of-the-primes-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

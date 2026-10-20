@@ -12,7 +12,7 @@ Use \(D=-i\partial\), left quantization and the inner product linear in its firs
 p_{r,L}^{(N)}(a)=\max_{j,k}p_{r,L}(a_{jk}).
 \tag{MG1}
 \]
-The scalar seminorm and norm are those in [the complete scalar companion, G1](../20261005-cauchy-foundations/sharp-lower-bound.md#g1-global-sobolev-bounds-with-the-original-norms). That proof gives completeness, Schwartz density and the scalar global operator bound. Finite sums give completeness and simultaneous density in these vector norms. Applying the scalar bound entry by entry and Cauchy–Schwarz to the finite row sum gives
+The scalar seminorm and norm are those in the complete scalar companion, G1. That proof gives completeness, Schwartz density and the scalar global operator bound. Finite sums give completeness and simultaneous density in these vector norms. Applying the scalar bound entry by entry and Cauchy–Schwarz to the finite row sum gives
 \[
 \|\operatorname{Op}(a)u\|_{s-r,N}
 \le NC_{r,s,n}p_{r,J}^{(N)}(a)\|u\|_{s,N}.
@@ -26,7 +26,7 @@ Indeed each row is bounded by \(C p\sum_k\|u_k\|_s\le C p\sqrt N\|u\|_{s,N}\), a
 \tag{MG3}
 \]
 
-The [ordinary composition and adjoint proof O3](../20261004-free-intrinsic-graph/prerequisites/ordinary-operator-calculus.md) also applies entry by entry: the \((j,k)\) entry of a composition is the finite sum over \(\ell\) of the scalar composition of \(a_{j\ell}\) and \(b_{\ell k}\). Every differentiated term keeps this order. The \((j,k)\) entry of the adjoint is the scalar adjoint of \(a_{kj}\). Each finite remainder has its stated order with a constant multiplied by at most a finite power of \(N\). Thus a Hermitian symbol \(B\in S^r\) satisfies
+The ordinary composition and adjoint proof O3 also applies entry by entry: the \((j,k)\) entry of a composition is the finite sum over \(\ell\) of the scalar composition of \(a_{j\ell}\) and \(b_{\ell k}\). Every differentiated term keeps this order. The \((j,k)\) entry of the adjoint is the scalar adjoint of \(a_{kj}\). Each finite remainder has its stated order with a constant multiplied by at most a finite power of \(N\). Thus a Hermitian symbol \(B\in S^r\) satisfies
 \[
 \operatorname{Op}(B)-\operatorname{Op}(B)^*
 \in\operatorname{Op}(S^{r-1}).
@@ -36,7 +36,7 @@ No diagonalization depending on phase space is required.
 
 ## M2. A positive matrix quadratic form from scalar probes
 
-Use the even normalized bump, scalar \(B=\operatorname{Op}(\varphi)\), scalar Schwartz symbol \(\psi\) of \(B^*B\), and scalar unitary \(U_{y,\eta,q}\) from the [included probe proof, G4](../20261005-cauchy-foundations/sharp-lower-bound.md#g4-a-positive-scalar-probe-and-its-moving-copies). There \(\int\psi=1\), the exact conjugation identity P26 holds, and \(q(\eta)=\langle\eta\rangle^{1/2}\). Apply \(B,U\) separately to each of the \(N\) entries. A constant matrix commutes with both scalar kernels.
+Use the even normalized bump, scalar \(B=\operatorname{Op}(\varphi)\), scalar Schwartz symbol \(\psi\) of \(B^*B\), and scalar unitary \(U_{y,\eta,q}\) from the included probe proof, G4. There \(\int\psi=1\), the exact conjugation identity P26 holds, and \(q(\eta)=\langle\eta\rangle^{1/2}\). Apply \(B,U\) separately to each of the \(N\) entries. A constant matrix commutes with both scalar kernels.
 
 For a Hermitian pointwise nonnegative matrix symbol \(A\in S^r\), define \(A_+=\mathcal I_\psi A\) entry by entry by P29. The scalar convergence estimate P30 proves that each entry is smooth and every differentiated integral is locally absolutely convergent. The quadratic form identity is
 \[
@@ -53,7 +53,7 @@ For compact parameter cutoffs, expand the finite matrix pairing and use the scal
 
 ## M3. The full one-order improvement and lower bound
 
-The exact scalar cancellation proof [G5, P33–P42](../20261005-cauchy-foundations/sharp-lower-bound.md#g5-two-cancellations-and-the-full-error), with \(\rho=1,\delta=0\), applies to each entry. In particular, with every differentiated remainder and finite-seminorm bound,
+The exact scalar cancellation proof G5, P33–P42, with \(\rho=1,\delta=0\), applies to each entry. In particular, with every differentiated remainder and finite-seminorm bound,
 \[
 A-A_+\in S^{r-1}(\mathbb R^{2n};\mathbb C^{N\times N}).
 \tag{MG6}

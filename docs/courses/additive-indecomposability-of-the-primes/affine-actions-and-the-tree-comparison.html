@@ -1,0 +1,409 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Affine actions and the tree comparison</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Additive indecomposability of the primes)</a><a href="diagrams-densities-and-cycles-over-a-finite-field.html">Previous lesson</a><a href="a-positive-statistic-and-its-binary-tree-transfers.html">Next lesson</a><a href="src/affine-actions-and-the-tree-comparison.md">Editable source</a></nav><main><article><h1 id="affine-actions-and-the-tree-comparison">Affine actions and the tree comparison</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Lesson 12 reduced the tree comparison (Lemma 1.2 of Lesson 12) to local estimates for a single bottom quartet: majorants <span class="math" data-tex="\(B_\rho(y)\)">\(B_\rho(y)\)</span> for the squared Mellin coefficients of the quartet value in a moving coordinate, small for every single character <span class="math" data-tex="\(\rho\)">\(\rho\)</span> and summable over all <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. This lesson constructs them and proves the lemma. The key input is a uniform Mellin estimate (Proposition 1.1). A sum over all multiplicative characters of squared Fourier coefficients of the bottom-pair autocorrelations is small, because it is the norm of an average of the unitary operators <span class="math" data-tex="\(F(t)\mapsto F(r-r^2t)\)">\(F(t)\mapsto F(r-r^2t)\)</span>, and these affine maps of <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span> are spread out: each nonidentity affine map arises in at most two ways. The quartet estimates then split into cases according to which leaves move, and the hardest case is handled by a fourth-moment count of collisions among products <span class="math" data-tex="\((a-b_1)(a-b_2)\)">\((a-b_1)(a-b_2)\)</span>.</p>
+<p><strong>Prerequisites.</strong> <a href="diagrams-densities-and-cycles-over-a-finite-field.html"><em>Diagrams, densities and cycles over a finite field</em></a>.</p>
+<p>The notation of Lesson 12 is in force: <span class="math" data-tex="\(q\)">\(q\)</span>, <span class="math" data-tex="\(U=\mathbb F_q^\times\)">\(U=\mathbb F_q^\times\)</span>, <span class="math" data-tex="\(g\)">\(g\)</span>, <span class="math" data-tex="\(\epsilon_q\)">\(\epsilon_q\)</span>, the bottom-pair functions <span class="math" data-tex="\(h(d,t)\)">\(h(d,t)\)</span>, <span class="math" data-tex="\(R_*\)">\(R_*\)</span>, the coefficients <span class="math" data-tex="\(P_\chi(d)\)">\(P_\chi(d)\)</span>, <span class="math" data-tex="\(w_\chi(a)=\widehat{P_\chi}(a)\ge0\)">\(w_\chi(a)=\widehat{P_\chi}(a)\ge0\)</span>, <span class="math" data-tex="\(r_\chi\)">\(r_\chi\)</span>, and the bounds (4.5) of Lesson 12.</p>
+<h2 id="1-a-uniform-mellin-estimate">1. A uniform Mellin estimate</h2>
+<p>For a character <span class="math" data-tex="\(\eta\in\widehat U\)">\(\eta\in\widehat U\)</span> and a function <span class="math" data-tex="\(P\)">\(P\)</span> on <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>, <span class="math" data-tex="\(P\chi\eta\)">\(P\chi\eta\)</span> denotes the function <span class="math" data-tex="\(d\mapsto P(d)\chi(d)\eta(d)\)">\(d\mapsto P(d)\chi(d)\eta(d)\)</span>, with the value <span class="math" data-tex="\(0\)">\(0\)</span> at <span class="math" data-tex="\(d=0\)">\(d=0\)</span> even when <span class="math" data-tex="\(\chi\eta\)">\(\chi\eta\)</span> is principal.</p>
+<p><strong>Proposition 1.1</strong> ([OpenAI-013, (6.14)]). For every <span class="math" data-tex="\(\eta\in\widehat U\)">\(\eta\in\widehat U\)</span> and <span class="math" data-tex="\(a\in\mathbb F_q\)">\(a\in\mathbb F_q\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\chi\in\widehat U}\bigl|\widehat{P_\chi\chi\eta}(a)\bigr|^2\\
+&amp;\quad \le\frac q{q-1}\bigl(\epsilon_q^4+\sqrt3\,q^{-1/2}\bigr).\quad(1.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\chi\in\widehat U}\bigl|\widehat{P_\chi\chi\eta}(a)\bigr|^2\\
+&amp;\quad \le\frac q{q-1}\bigl(\epsilon_q^4+\sqrt3\,q^{-1/2}\bigr).\quad(1.1)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> <em>A Parseval identity.</em> For <span class="math" data-tex="\(d\ne0\)">\(d\ne0\)</span>, <span class="math" data-tex="\(h(d,t)=\sum_\chi P_\chi(d)\chi(t)\)">\(h(d,t)=\sum_\chi P_\chi(d)\chi(t)\)</span>, so <span class="math" data-tex="\(h(d,\lambda d)=\sum_\chi P_\chi(d)\chi(d)\chi(\lambda)\)">\(h(d,\lambda d)=\sum_\chi P_\chi(d)\chi(d)\chi(\lambda)\)</span> for <span class="math" data-tex="\(\lambda\in U\)">\(\lambda\in U\)</span>. Multiplying by <span class="math" data-tex="\(\eta(d)e_q(-ad)\)">\(\eta(d)e_q(-ad)\)</span>, averaging over <span class="math" data-tex="\(d\in\mathbb F_q\)">\(d\in\mathbb F_q\)</span>, and applying Parseval in <span class="math" data-tex="\(\lambda\in U\)">\(\lambda\in U\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_\chi\bigl|\widehat{P_\chi\chi\eta}(a)\bigr|^2\\
+&amp;\quad =\mathbb E_{\lambda\in U}\Bigl|\mathbb E_{d\in\mathbb F_q}h(d,\lambda d)\,\eta(d)\\
+&amp;\qquad \,e_q(-ad)\Bigr|^2,\quad(1.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_\chi\bigl|\widehat{P_\chi\chi\eta}(a)\bigr|^2\\
+&amp;\quad =\mathbb E_{\lambda\in U}\Bigl|\mathbb E_{d\in\mathbb F_q}h(d,\lambda d)\,\eta(d)\\
+&amp;\qquad \,e_q(-ad)\Bigr|^2,\quad(1.2)
+\end{aligned}
+\]</span>
+where arguments with <span class="math" data-tex="\(d=0\)">\(d=0\)</span> or <span class="math" data-tex="\(\lambda d=1\)">\(\lambda d=1\)</span> contribute zero.</p>
+<p><em>A parametrization.</em> In the variables of (4.1) of Lesson 12, <span class="math" data-tex="\(x-z=\sigma d\)">\(x-z=\sigma d\)</span> and <span class="math" data-tex="\(x/z=\lambda d\)">\(x/z=\lambda d\)</span>. Solving for <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(x\)">\(x\)</span> in terms of <span class="math" data-tex="\(z\)">\(z\)</span>,
+<span class="math math-display" data-tex="\[
+d=\frac z{\lambda z-\sigma},\qquad x=\frac{z^2}{z-\sigma/\lambda}.
+\]">\[
+d=\frac z{\lambda z-\sigma},\qquad x=\frac{z^2}{z-\sigma/\lambda}.
+\]</span>
+The map <span class="math" data-tex="\(z\mapsto d\)">\(z\mapsto d\)</span> is a fractional linear bijection of <span class="math" data-tex="\(\mathbb P^1(\mathbb F_q)\)">\(\mathbb P^1(\mathbb F_q)\)</span> sending <span class="math" data-tex="\(0,\sigma/\lambda,\infty\)">\(0,\sigma/\lambda,\infty\)</span> to <span class="math" data-tex="\(0,\infty,1/\lambda\)">\(0,\infty,1/\lambda\)</span>, so <span class="math" data-tex="\(z\in U\setminus\{\sigma/\lambda\}\)">\(z\in U\setminus\{\sigma/\lambda\}\)</span> corresponds exactly to the valid <span class="math" data-tex="\(d\in U\setminus\{1/\lambda\}\)">\(d\in U\setminus\{1/\lambda\}\)</span>. Put <span class="math" data-tex="\(t=\sigma/\lambda\)">\(t=\sigma/\lambda\)</span> and <span class="math" data-tex="\(r&#x27;=1/z\)">\(r&#x27;=1/z\)</span>; then <span class="math" data-tex="\(1/x=r&#x27;-tr&#x27;^2\)">\(1/x=r&#x27;-tr&#x27;^2\)</span>. Define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+G(r)&amp;=(g_*\eta)(1/r)\\
+&amp;\quad \,e_q(-a\sigma/r)\quad(r\in U),
+\end{aligned}\\
+G(0)=0 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+G(r)&amp;=(g_*\eta)(1/r)\\
+&amp;\quad \,e_q(-a\sigma/r)\quad(r\in U),
+\end{aligned}\\
+G(0)=0 .
+\end{gathered}
+\]</span>
+Since <span class="math" data-tex="\(\eta(d)=\overline{\eta(\lambda)}\eta(x/z)\)">\(\eta(d)=\overline{\eta(\lambda)}\eta(x/z)\)</span> and <span class="math" data-tex="\(e_q(-ad)=e_q(-a\sigma x)e_q(a\sigma z)\)">\(e_q(-ad)=e_q(-a\sigma x)e_q(a\sigma z)\)</span>, the inner average in (1.2) is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\overline{\eta(\lambda)}\;TG(t),\\
+\begin{aligned}
+TF(t)&amp;=\frac1q\sum_{r\in U}\overline{G(r)}\,F(r-r^2t).
+\end{aligned}\quad(1.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\overline{\eta(\lambda)}\;TG(t),\\
+\begin{aligned}
+TF(t)&amp;=\frac1q\sum_{r\in U}\overline{G(r)}\,F(r-r^2t).
+\end{aligned}\quad(1.3)
+\end{gathered}
+\]</span>
+The excluded value <span class="math" data-tex="\(z=\sigma/\lambda\)">\(z=\sigma/\lambda\)</span>, that is <span class="math" data-tex="\(r=1/t\)">\(r=1/t\)</span>, gives <span class="math" data-tex="\(F(0)\)">\(F(0)\)</span>, and <span class="math" data-tex="\(G(0)=0\)">\(G(0)=0\)</span>, so the convention matches. Since inversion permutes <span class="math" data-tex="\(U\)">\(U\)</span>, <span class="math" data-tex="\(\mathbb E_{\mathbb F_q}|G|^2\le\mathbb E|g|^2\le1\)">\(\mathbb E_{\mathbb F_q}|G|^2\le\mathbb E|g|^2\le1\)</span>, and by (1.1) of Lesson 12, <span class="math" data-tex="\(|\mathbb EG|=|\mathbb E_xg_*(x)\eta(x)e_q(-a\sigma x)|\le\epsilon_q\)">\(|\mathbb EG|=|\mathbb E_xg_*(x)\eta(x)e_q(-a\sigma x)|\le\epsilon_q\)</span>.</p>
+<p><em>Affine maps.</em> For <span class="math" data-tex="\(r\in U\)">\(r\in U\)</span> let <span class="math" data-tex="\(U_rF(t)=F(r-r^2t)\)">\(U_rF(t)=F(r-r^2t)\)</span>, a unitary operator on <span class="math" data-tex="\(L^2(\mathbb F_q)\)">\(L^2(\mathbb F_q)\)</span> with probability measure. Then <span class="math" data-tex="\(T=\frac1q\sum_r\overline{G(r)}U_r\)">\(T=\frac1q\sum_r\overline{G(r)}U_r\)</span>, and <span class="math" data-tex="\(U_r^{-1}U_s\)">\(U_r^{-1}U_s\)</span> is the operator of composition with
+<span class="math math-display" data-tex="\[
+t\longmapsto\Bigl(\frac sr\Bigr)^2t+s-\frac{s^2}r .
+\]">\[
+t\longmapsto\Bigl(\frac sr\Bigr)^2t+s-\frac{s^2}r .
+\]</span>
+For a prescribed slope, <span class="math" data-tex="\(z=s/r\)">\(z=s/r\)</span> has at most two values. If <span class="math" data-tex="\(z=1\)">\(z=1\)</span> the map is the identity and <span class="math" data-tex="\(r=s\)">\(r=s\)</span>. Otherwise <span class="math" data-tex="\(z\ne0,1\)">\(z\ne0,1\)</span>, and the translation <span class="math" data-tex="\(r(z-z^2)\)">\(r(z-z^2)\)</span> determines <span class="math" data-tex="\(r\)">\(r\)</span>. So every nonidentity affine map <span class="math" data-tex="\(t\mapsto\alpha t+\beta\)">\(t\mapsto\alpha t+\beta\)</span> has at most two representations as <span class="math" data-tex="\(U_r^{-1}U_s\)">\(U_r^{-1}U_s\)</span>. Write <span class="math" data-tex="\(T^*T=\sum_{\alpha,\beta}c(\alpha,\beta)A_{\alpha,\beta}\)">\(T^*T=\sum_{\alpha,\beta}c(\alpha,\beta)A_{\alpha,\beta}\)</span>, where <span class="math" data-tex="\(A_{\alpha,\beta}F(t)=F(\alpha t+\beta)\)">\(A_{\alpha,\beta}F(t)=F(\alpha t+\beta)\)</span>. The identity coefficient is <span class="math" data-tex="\(q^{-2}\sum_r|G(r)|^2\le1/q\)">\(q^{-2}\sum_r|G(r)|^2\le1/q\)</span>, and Cauchy–Schwarz on the at most two representations of each other map gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\alpha,\beta}|c(\alpha,\beta)|^2\\
+&amp;\quad \le\frac1{q^2}+\frac2{q^4}\Bigl(\sum_{r\in U}|G(r)|^2\Bigr)^2\\
+&amp;\quad \le\frac3{q^2}.\quad(1.4)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\alpha,\beta}|c(\alpha,\beta)|^2\\
+&amp;\quad \le\frac1{q^2}+\frac2{q^4}\Bigl(\sum_{r\in U}|G(r)|^2\Bigr)^2\\
+&amp;\quad \le\frac3{q^2}.\quad(1.4)
+\end{aligned}
+\]</span></p>
+<p><em>The operator bound.</em> The characters <span class="math" data-tex="\(e_q(\xi t)\)">\(e_q(\xi t)\)</span>, <span class="math" data-tex="\(\xi\in U\)">\(\xi\in U\)</span>, form an orthonormal basis of the mean-zero subspace, and <span class="math" data-tex="\(A_{\alpha,\beta}\)">\(A_{\alpha,\beta}\)</span> sends <span class="math" data-tex="\(e_q(\xi t)\)">\(e_q(\xi t)\)</span> to <span class="math" data-tex="\(e_q(\xi\beta)\,e_q(\alpha\xi t)\)">\(e_q(\xi\beta)\,e_q(\alpha\xi t)\)</span>. So the squared Hilbert–Schmidt norm of <span class="math" data-tex="\(T^*T\)">\(T^*T\)</span> on this subspace is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\xi\in U}\sum_{\alpha\in U}\Bigl|\sum_\beta c(\alpha,\beta)e_q(\xi\beta)\Bigr|^2\\
+&amp;\quad \le q\sum_{\alpha,\beta}|c(\alpha,\beta)|^2\le\frac3q,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\xi\in U}\sum_{\alpha\in U}\Bigl|\sum_\beta c(\alpha,\beta)e_q(\xi\beta)\Bigr|^2\\
+&amp;\quad \le q\sum_{\alpha,\beta}|c(\alpha,\beta)|^2\le\frac3q,
+\end{aligned}
+\]</span>
+by Parseval in <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. Hence <span class="math" data-tex="\(\|T^*T\|\le\sqrt3\,q^{-1/2}\)">\(\|T^*T\|\le\sqrt3\,q^{-1/2}\)</span> on the mean-zero subspace. Affine maps preserve the constants and the mean-zero subspace, and <span class="math" data-tex="\(T\mathbf 1=\overline{m_G}\)">\(T\mathbf 1=\overline{m_G}\)</span> with <span class="math" data-tex="\(m_G=\mathbb EG\)">\(m_G=\mathbb EG\)</span>. Writing <span class="math" data-tex="\(G=m_G+G_0\)">\(G=m_G+G_0\)</span> with <span class="math" data-tex="\(\mathbb EG_0=0\)">\(\mathbb EG_0=0\)</span>, <span class="math" data-tex="\(TG=|m_G|^2+TG_0\)">\(TG=|m_G|^2+TG_0\)</span> with <span class="math" data-tex="\(TG_0\)">\(TG_0\)</span> of mean zero, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E_{t\in\mathbb F_q}|TG(t)|^2\\
+&amp;\quad =|m_G|^4+\langle T^*TG_0,G_0\rangle\\
+&amp;\quad \le\epsilon_q^4+\sqrt3\,q^{-1/2}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E_{t\in\mathbb F_q}|TG(t)|^2\\
+&amp;\quad =|m_G|^4+\langle T^*TG_0,G_0\rangle\\
+&amp;\quad \le\epsilon_q^4+\sqrt3\,q^{-1/2}.
+\end{aligned}
+\]</span>
+Restricting the average to <span class="math" data-tex="\(t\in U\)">\(t\in U\)</span> costs a factor <span class="math" data-tex="\(q/(q-1)\)">\(q/(q-1)\)</span>, and <span class="math" data-tex="\(\lambda\mapsto\sigma/\lambda\)">\(\lambda\mapsto\sigma/\lambda\)</span> permutes <span class="math" data-tex="\(U\)">\(U\)</span>. With (1.2) and (1.3) this proves (1.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The estimate is a concrete instance of the mixing of convolutions in groups with large minimal representations studied by Gowers [Gow] and by Babai, Nikolov and Pyber [BNP]; here the group is the affine group of <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>, and the bound is computed directly in the additive Fourier basis.</p>
+<h2 id="2-quartet-majorants-both-moving-leaves-in-one-pair">2. Quartet majorants: both moving leaves in one pair</h2>
+<p>Fix a bottom quartet with its product and ancestor data, as in Section 3 of Lesson 12. Let <span class="math" data-tex="\(d,e\)">\(d,e\)</span> be the arguments of its two bottom pairs, so <span class="math" data-tex="\(d-e=y\)">\(d-e=y\)</span> by Lemma 1.1 of Lesson 12. In each pair, orient one leaf as <em>free</em> and the other as <em>held</em>; the pair's value is <span class="math" data-tex="\(h(d,t)\)">\(h(d,t)\)</span> of (4.1) of Lesson 12, with <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> recording the orientation and <span class="math" data-tex="\(g_*\)">\(g_*\)</span> the conjugation of the free leaf, <span class="math" data-tex="\(t\)">\(t\)</span> being the ratio of the free leaf's argument to the held one's.</p>
+<p>Suppose both moving leaves lie in the left pair. At a fixed left-pair product, the ratio of the left pair is a fixed unit times the inverse square of the moving coordinate (Section 2 of Lesson 12). By Lemma 4.2 of Lesson 12, the squared Mellin coefficient at <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is at most
+<span class="math math-display" data-tex="\[
+2\sum_{\chi^2=\rho^{\pm1}}|P_\chi(d)|^2\times|\text{right-pair value}|^2 ;
+\]">\[
+2\sum_{\chi^2=\rho^{\pm1}}|P_\chi(d)|^2\times|\text{right-pair value}|^2 ;
+\]</span>
+the sign in the exponent depends on the coordinate convention, and summing both signs is allowed. Average the two held leaves, which here form the right pair, by first exposing their product and then their split. The first exposure makes <span class="math" data-tex="\(d/e\)">\(d/e\)</span> uniform on a coset of the squares, since <span class="math" data-tex="\(d/e\)">\(d/e\)</span> is a fixed unit times the square of the right-pair product divided by the quartet product; the second makes the right-pair ratio uniform on a coset of the squares. Dominate both by twice the uniform measure on <span class="math" data-tex="\(U\)">\(U\)</span> (Lemma 4.2 of Lesson 12), and note that <span class="math" data-tex="\(d/e\in U\setminus\{1\}\)">\(d/e\in U\setminus\{1\}\)</span> corresponds bijectively to the pairs <span class="math" data-tex="\((d,e)\in U^2\)">\((d,e)\in U^2\)</span> with <span class="math" data-tex="\(d-e=y\)">\(d-e=y\)</span>. A majorant is a constant times
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+B_\rho(y)&amp;=\frac1{q-1}\\
+&amp;\quad \sum_{\substack{d,e\in U\\d-e=y}}\Bigl(\sum_{\chi^2=\rho^{\pm1}}|P_\chi(d)|^2\Bigr)\\
+&amp;\quad R_*(e).\quad(2.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+B_\rho(y)&amp;=\frac1{q-1}\\
+&amp;\quad \sum_{\substack{d,e\in U\\d-e=y}}\Bigl(\sum_{\chi^2=\rho^{\pm1}}|P_\chi(d)|^2\Bigr)\\
+&amp;\quad R_*(e).\quad(2.1)
+\end{aligned}
+\]</span>
+Its mean over <span class="math" data-tex="\(y\in U\)">\(y\in U\)</span> is at most <span class="math" data-tex="\(\mathbb E_{d\in U}\bigl(\sum_{\chi^2=\rho^{\pm1}}|P_\chi(d)|^2\bigr)\cdot\mathbb E_{e\in U}R_*(e)\)">\(\mathbb E_{d\in U}\bigl(\sum_{\chi^2=\rho^{\pm1}}|P_\chi(d)|^2\bigr)\cdot\mathbb E_{e\in U}R_*(e)\)</span>, after dropping the restriction <span class="math" data-tex="\(d\ne e\)">\(d\ne e\)</span>. Since <span class="math" data-tex="\(\mathbb E_{d\in U}|P_\chi(d)|^2\le\frac q{q-1}r_\chi\)">\(\mathbb E_{d\in U}|P_\chi(d)|^2\le\frac q{q-1}r_\chi\)</span>, (4.5) and (4.2) of Lesson 12 give both assertions of (3.3) of Lesson 12: the supremum over <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is <span class="math" data-tex="\(O(\epsilon_q^2)\)">\(O(\epsilon_q^2)\)</span>, and the sum over <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is <span class="math" data-tex="\(O(\sum_\chi r_\chi)=O(1)\)">\(O(\sum_\chi r_\chi)=O(1)\)</span>, each <span class="math" data-tex="\(\chi\)">\(\chi\)</span> occurring for at most two values of <span class="math" data-tex="\(\rho\)">\(\rho\)</span>.</p>
+<p>A quartet off the cycle has the analogous majorant <span class="math" data-tex="\(B_0(y)=\frac1{q-1}\sum_{d-e=y}R_L(d)R_R(e)\)">\(B_0(y)=\frac1{q-1}\sum_{d-e=y}R_L(d)R_R(e)\)</span>, with the functions <span class="math" data-tex="\(R_*\)">\(R_*\)</span> of its two pairs, and so has bounded mean.</p>
+<h2 id="3-quartet-majorants-one-moving-leaf-in-each-pair">3. Quartet majorants: one moving leaf in each pair</h2>
+<p>Label the quartet as follows. Its root has argument <span class="math" data-tex="\(y\)">\(y\)</span> and current entries <span class="math" data-tex="\((A,B)\)">\((A,B)\)</span>; its left child has argument <span class="math" data-tex="\(d\)">\(d\)</span> and current entries <span class="math" data-tex="\((p_*,A)\)">\((p_*,A)\)</span>, and its right child argument <span class="math" data-tex="\(e\)">\(e\)</span> and current entries <span class="math" data-tex="\((p_*,B)\)">\((p_*,B)\)</span>, where <span class="math" data-tex="\(p_*\)">\(p_*\)</span> is the entry reconstructed at the quartet root. The four leaves carry <span class="math" data-tex="\(M_1,M_2\)">\(M_1,M_2\)</span> (left pair) and <span class="math" data-tex="\(M_3,M_4\)">\(M_3,M_4\)</span> (right pair), with the factors <span class="math" data-tex="\(H\)">\(H\)</span> before the bottom reconstructions equal to
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+p_*C_1M_1,\\
+AC_2M_2,\\
+p_*C_3M_3,\\
+BC_4M_4 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+p_*C_1M_1,\\
+AC_2M_2,\\
+p_*C_3M_3,\\
+BC_4M_4 .
+\end{gathered}
+\]</span>
+Here <span class="math" data-tex="\(A,B\)">\(A,B\)</span> are fixed local units, unrelated to the summands of the course. Holding <span class="math" data-tex="\(M_2\)">\(M_2\)</span> or <span class="math" data-tex="\(M_4\)">\(M_4\)</span> uses a residual entry <span class="math" data-tex="\(A\)">\(A\)</span> or <span class="math" data-tex="\(B\)">\(B\)</span>; holding <span class="math" data-tex="\(M_1\)">\(M_1\)</span> or <span class="math" data-tex="\(M_3\)">\(M_3\)</span> uses the reconstructed entry <span class="math" data-tex="\(p_*\)">\(p_*\)</span>.</p>
+<p>Orient the moving leaf of each pair as free. Dividing the formulas (1.2) of Lesson 12 gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{t_L}d=\text{(a fixed unit)}\cdot H_{\mathrm{held},L}^2,\\
+\frac{t_R}e=\text{(a fixed unit)}\cdot H_{\mathrm{held},R}^2,\quad(3.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{t_L}d=\text{(a fixed unit)}\cdot H_{\mathrm{held},L}^2,\\
+\frac{t_R}e=\text{(a fixed unit)}\cdot H_{\mathrm{held},R}^2,\quad(3.1)
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(t_L,t_R\)">\(t_L,t_R\)</span> are the ratios in the two pairs and <span class="math" data-tex="\(H_{\mathrm{held}}\)">\(H_{\mathrm{held}}\)</span> is the factor of the held leaf. For instance, if the free leaf is the first leaf of the left pair, the unit is <span class="math" data-tex="\(D&#x27;s_{\mathrm{free}}/(s_{\mathrm{held}}s_{\mathrm{pair}})\)">\(D&#x27;s_{\mathrm{free}}/(s_{\mathrm{held}}s_{\mathrm{pair}})\)</span>. At the quartet root, (1.2) of Lesson 12 also gives
+<span class="math math-display" data-tex="\[
+p_*^2=\frac{s_+s_-}{s_nD&#x27;u_n^2}\cdot\frac y{de}.
+\tag{3.2}
+\]">\[
+p_*^2=\frac{s_+s_-}{s_nD&#x27;u_n^2}\cdot\frac y{de}.
+\tag{3.2}
+\]</span>
+If the held factor is <span class="math" data-tex="\(AC_2M_2\)">\(AC_2M_2\)</span> or <span class="math" data-tex="\(BC_4M_4\)">\(BC_4M_4\)</span>, (3.1) gives the first form below; if it contains <span class="math" data-tex="\(p_*\)">\(p_*\)</span>, (3.2) gives the second:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+t_L=\lambda_Ld\ \ \text{or}\ \ \lambda_L/e,\\
+t_R=\lambda_Re\ \ \text{or}\ \ \lambda_R/d .\quad(3.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+t_L=\lambda_Ld\ \ \text{or}\ \ \lambda_L/e,\\
+t_R=\lambda_Re\ \ \text{or}\ \ \lambda_R/d .\quad(3.3)
+\end{gathered}
+\]</span>
+Call the first choice on either side <em>friendly</em> and the second <em>bad</em>. The parameters <span class="math" data-tex="\(\lambda_L,\lambda_R\)">\(\lambda_L,\lambda_R\)</span> are fixed unit multiples of the squares of the two held leaf variables; the multiples may depend on the parent data and on <span class="math" data-tex="\(y\)">\(y\)</span>, not on the held variables. Given the quartet product and the moving coordinate, the held variables are independent and uniform, so <span class="math" data-tex="\(\lambda_L,\lambda_R\)">\(\lambda_L,\lambda_R\)</span> are independent and uniform on cosets of the squares.</p>
+<p>For fixed held variables, <span class="math" data-tex="\(d/e\)">\(d/e\)</span> is a fixed unit times the inverse square of the moving coordinate. The quartet value depends only on <span class="math" data-tex="\(d/e\)">\(d/e\)</span>: replacing the moving coordinate by its negative changes <span class="math" data-tex="\(p_*\)">\(p_*\)</span> to <span class="math" data-tex="\(-p_*\)">\(-p_*\)</span>, but (3.3) uses only <span class="math" data-tex="\(p_*^2\)">\(p_*^2\)</span>, and the arguments in each pair are determined by their difference and ratio. Apply Lemma 4.2 of Lesson 12, dominate the laws of <span class="math" data-tex="\(\lambda_L,\lambda_R\)">\(\lambda_L,\lambda_R\)</span> by independent uniform laws on <span class="math" data-tex="\(U\)">\(U\)</span> (cost at most <span class="math" data-tex="\(4\)">\(4\)</span>), and pass from <span class="math" data-tex="\(d/e\)">\(d/e\)</span> to the pairs with <span class="math" data-tex="\(d-e=y\)">\(d-e=y\)</span> (cost <span class="math" data-tex="\(q/(q-1)\)">\(q/(q-1)\)</span>). A majorant is a constant times
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+B_\rho(y)&amp;=\sum_{\nu^2=\rho^{\pm1}}\mathbb E_{\lambda_L,\lambda_R\in U}\Bigl|\frac1q\\
+&amp;\quad \sum_{\substack{d,e\in U\\d-e=y}}h_L(d,t_L)\\
+&amp;\quad \,h_R(e,t_R)\,\nu(d/e)\Bigr|^2 .\quad(3.4)
+\end{aligned}
+\]">\[
+\begin{aligned}
+B_\rho(y)&amp;=\sum_{\nu^2=\rho^{\pm1}}\mathbb E_{\lambda_L,\lambda_R\in U}\Bigl|\frac1q\\
+&amp;\quad \sum_{\substack{d,e\in U\\d-e=y}}h_L(d,t_L)\\
+&amp;\quad \,h_R(e,t_R)\,\nu(d/e)\Bigr|^2 .\quad(3.4)
+\end{aligned}
+\]</span>
+Invalid ratios are encoded by the zero conventions of <span class="math" data-tex="\(h\)">\(h\)</span>; in particular <span class="math" data-tex="\(d/e=1\)">\(d/e=1\)</span> has no solution with <span class="math" data-tex="\(d-e=y\ne0\)">\(d-e=y\ne0\)</span>.</p>
+<p><strong>The sum over <span class="math" data-tex="\(\rho\)">\(\rho\)</span>.</strong> It suffices to sum over all <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. For <span class="math" data-tex="\(y\ne0\)">\(y\ne0\)</span>, <span class="math" data-tex="\(t=d/e\)">\(t=d/e\)</span> is a bijection from <span class="math" data-tex="\(U\setminus\{1\}\)">\(U\setminus\{1\}\)</span> onto the unit solutions of <span class="math" data-tex="\(d-e=y\)">\(d-e=y\)</span>, with <span class="math" data-tex="\(d=yt/(t-1)\)">\(d=yt/(t-1)\)</span> and <span class="math" data-tex="\(e=y/(t-1)\)">\(e=y/(t-1)\)</span>. Mellin Parseval in <span class="math" data-tex="\(t\)">\(t\)</span>, followed by the averages over <span class="math" data-tex="\(\lambda_L,\lambda_R\)">\(\lambda_L,\lambda_R\)</span>, under which <span class="math" data-tex="\(t_L\)">\(t_L\)</span> and <span class="math" data-tex="\(t_R\)">\(t_R\)</span> are uniform on <span class="math" data-tex="\(U\)">\(U\)</span> for fixed <span class="math" data-tex="\(d,e\)">\(d,e\)</span>, bounds the sum by a constant times <span class="math" data-tex="\(\frac1{q-1}\sum_{d-e=y}R_L(d)R_R(e)\)">\(\frac1{q-1}\sum_{d-e=y}R_L(d)R_R(e)\)</span>, whose mean over <span class="math" data-tex="\(y\)">\(y\)</span> is bounded by (4.2) of Lesson 12.</p>
+<p><strong>The supremum over <span class="math" data-tex="\(\rho\)">\(\rho\)</span>.</strong> Fix <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. Extend the nonnegative average over <span class="math" data-tex="\(y\)">\(y\)</span> to all of <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>, at a cost <span class="math" data-tex="\(q/(q-1)\)">\(q/(q-1)\)</span>. Expand both <span class="math" data-tex="\(h\)">\(h\)</span> factors in Mellin characters, <span class="math" data-tex="\(h_L(d,t)=\sum_\chi P^L_\chi(d)\chi(t)\)">\(h_L(d,t)=\sum_\chi P^L_\chi(d)\chi(t)\)</span> and <span class="math" data-tex="\(h_R(e,t)=\sum_\psi P^R_\psi(e)\psi(t)\)">\(h_R(e,t)=\sum_\psi P^R_\psi(e)\psi(t)\)</span>. Orthogonality in the independent parameters <span class="math" data-tex="\(\lambda_L,\lambda_R\)">\(\lambda_L,\lambda_R\)</span> separates the squared coefficients, and the Parseval identity for an additive convolution, <span class="math" data-tex="\(\mathbb E_y|\frac1q\sum_dA(d)B(d-y)|^2\)">\(\mathbb E_y|\frac1q\sum_dA(d)B(d-y)|^2\)</span><span class="math" data-tex="\(=\sum_a|\widehat A(a)|^2|\widehat B(-a)|^2\)">\(=\sum_a|\widehat A(a)|^2|\widehat B(-a)|^2\)</span>, reduces the mean of (3.4) to
+<span class="math math-display" data-tex="\[
+\sum_{a,\chi,\psi}\bigl|\widehat{P_\chi\alpha}(a)\bigr|^2\bigl|\widehat{P_\psi\beta}(-a)\bigr|^2,
+\tag{3.5}
+\]">\[
+\sum_{a,\chi,\psi}\bigl|\widehat{P_\chi\alpha}(a)\bigr|^2\bigl|\widehat{P_\psi\beta}(-a)\bigr|^2,
+\tag{3.5}
+\]</span>
+where each pair uses its own <span class="math" data-tex="\(\sigma,g_*\)">\(\sigma,g_*\)</span> in its <span class="math" data-tex="\(P\)">\(P\)</span>, and the twists, all zero at zero, are:</p>
+<table>
+<thead>
+<tr>
+<th>choices</th>
+<th><span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> (on <span class="math" data-tex="\(d\)">\(d\)</span>)</th>
+<th><span class="math" data-tex="\(\beta\)">\(\beta\)</span> (on <span class="math" data-tex="\(e\)">\(e\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>friendly, friendly</td>
+<td><span class="math" data-tex="\(\nu\chi\)">\(\nu\chi\)</span></td>
+<td><span class="math" data-tex="\(\overline\nu\psi\)">\(\overline\nu\psi\)</span></td>
+</tr>
+<tr>
+<td>friendly, bad</td>
+<td><span class="math" data-tex="\(\nu\chi\overline\psi\)">\(\nu\chi\overline\psi\)</span></td>
+<td><span class="math" data-tex="\(\overline\nu\)">\(\overline\nu\)</span></td>
+</tr>
+<tr>
+<td>bad, friendly</td>
+<td><span class="math" data-tex="\(\nu\)">\(\nu\)</span></td>
+<td><span class="math" data-tex="\(\overline\nu\psi\overline\chi\)">\(\overline\nu\psi\overline\chi\)</span></td>
+</tr>
+<tr>
+<td>bad, bad</td>
+<td><span class="math" data-tex="\(\nu\overline\psi\)">\(\nu\overline\psi\)</span></td>
+<td><span class="math" data-tex="\(\overline\nu\,\overline\chi\)">\(\overline\nu\,\overline\chi\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>For example, the left friendly term contributes <span class="math" data-tex="\(\chi(t_L)=\chi(\lambda_L)\chi(d)\)">\(\chi(t_L)=\chi(\lambda_L)\chi(d)\)</span>, and the left bad term contributes <span class="math" data-tex="\(\chi(\lambda_L/e)=\chi(\lambda_L)\overline\chi(e)\)">\(\chi(\lambda_L/e)=\chi(\lambda_L)\overline\chi(e)\)</span>.</p>
+<p><em>A friendly side.</em> If the left choice is friendly, <span class="math" data-tex="\(\beta\)">\(\beta\)</span> does not depend on <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, and <span class="math" data-tex="\(\alpha=\chi\eta\)">\(\alpha=\chi\eta\)</span> with <span class="math" data-tex="\(\eta=\nu\)">\(\eta=\nu\)</span> or <span class="math" data-tex="\(\eta=\nu\overline\psi\)">\(\eta=\nu\overline\psi\)</span> independent of <span class="math" data-tex="\(\chi\)">\(\chi\)</span>. Proposition 1.1 bounds the sum over <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of the first factor by <span class="math" data-tex="\(O(\epsilon_q^4+q^{-1/2})\)">\(O(\epsilon_q^4+q^{-1/2})\)</span>, uniformly in <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. The remaining sum is bounded, since by Parseval and <span class="math" data-tex="\(|\beta|\le1\)">\(|\beta|\le1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\psi,a}\bigl|\widehat{P_\psi\beta}(a)\bigr|^2\\
+&amp;\quad \le\sum_\psi\mathbb E_{e\in\mathbb F_q}|P_\psi(e)|^2=\sum_\psi r_\psi\le3,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\psi,a}\bigl|\widehat{P_\psi\beta}(a)\bigr|^2\\
+&amp;\quad \le\sum_\psi\mathbb E_{e\in\mathbb F_q}|P_\psi(e)|^2=\sum_\psi r_\psi\le3,
+\end{aligned}
+\]</span>
+even when <span class="math" data-tex="\(\beta\)">\(\beta\)</span> depends on <span class="math" data-tex="\(\psi\)">\(\psi\)</span>. So (3.5) is <span class="math" data-tex="\(O(\epsilon_q^4+q^{-1/2})\)">\(O(\epsilon_q^4+q^{-1/2})\)</span>. A friendly right side is symmetric.</p>
+<h2 id="4-the-case-of-two-bad-choices">4. The case of two bad choices</h2>
+<p>It remains to bound (3.5) when <span class="math" data-tex="\(\alpha=\nu\overline\psi\)">\(\alpha=\nu\overline\psi\)</span> and <span class="math" data-tex="\(\beta=\overline\nu\,\overline\chi\)">\(\beta=\overline\nu\,\overline\chi\)</span>.</p>
+<p><strong>Gauss convolutions.</strong> For a nonprincipal character <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> of <span class="math" data-tex="\(U\)">\(U\)</span>, extended by zero, <span class="math" data-tex="\(\widehat\alpha(0)=0\)">\(\widehat\alpha(0)=0\)</span> and <span class="math" data-tex="\(|\widehat\alpha(b)|=q^{-1/2}\)">\(|\widehat\alpha(b)|=q^{-1/2}\)</span> for <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>. Indeed <span class="math" data-tex="\(\sum_x\alpha(x)e_q(bx)=\overline\alpha(b)\sum_x\alpha(x)e_q(x)\)">\(\sum_x\alpha(x)e_q(bx)=\overline\alpha(b)\sum_x\alpha(x)e_q(x)\)</span> for <span class="math" data-tex="\(b\ne0\)">\(b\ne0\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl|\sum_x\alpha(x)e_q(x)\Bigr|^2\\
+&amp;\quad =\sum_{u\in U}\alpha(u)\sum_{z\in U}e_q((u-1)z)\\
+&amp;\quad =(q-1)-\sum_{u\ne1}\alpha(u)=q .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl|\sum_x\alpha(x)e_q(x)\Bigr|^2\\
+&amp;\quad =\sum_{u\in U}\alpha(u)\sum_{z\in U}e_q((u-1)z)\\
+&amp;\quad =(q-1)-\sum_{u\ne1}\alpha(u)=q .
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(\widehat{P_\chi\alpha}=\widehat{P_\chi}*\widehat\alpha\)">\(\widehat{P_\chi\alpha}=\widehat{P_\chi}*\widehat\alpha\)</span> and <span class="math" data-tex="\(\widehat{P_\chi}=w_\chi\)">\(\widehat{P_\chi}=w_\chi\)</span>, up to unit factors and a reflection of the frequency,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\bigl|\widehat{P_\chi\alpha}(a)\bigr|=q^{-1/2}\Bigl|\\
+&amp;\qquad \sum_bw_\chi(b)\,\overline\alpha(a-b)\Bigr| .\quad(4.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\bigl|\widehat{P_\chi\alpha}(a)\bigr|=q^{-1/2}\Bigl|\\
+&amp;\qquad \sum_bw_\chi(b)\,\overline\alpha(a-b)\Bigr| .\quad(4.1)
+\end{aligned}
+\]</span></p>
+<p><strong>Lemma 4.1</strong> (a fourth moment [OpenAI-013, (6.24)]). Let <span class="math" data-tex="\(w\ge0\)">\(w\ge0\)</span> be weights on <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span> of total mass <span class="math" data-tex="\(J\)">\(J\)</span>, and <span class="math" data-tex="\(r_w=\sum_bw(b)^2\)">\(r_w=\sum_bw(b)^2\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac1{q-1}\\
+&amp;\qquad \sum_{\alpha\in\widehat U}\sum_{a\in\mathbb F_q}\Bigl|\sum_bw(b)\,\alpha(a-b)\Bigr|^4\\
+&amp;\quad \le2qr_w^2+J^4,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac1{q-1}\\
+&amp;\qquad \sum_{\alpha\in\widehat U}\sum_{a\in\mathbb F_q}\Bigl|\sum_bw(b)\,\alpha(a-b)\Bigr|^4\\
+&amp;\quad \le2qr_w^2+J^4,
+\end{aligned}
+\]</span>
+and the principal character alone contributes at least <span class="math" data-tex="\(J^4-3J^4/(q-1)\)">\(J^4-3J^4/(q-1)\)</span>.</p>
+<p><em>Proof.</em> Expand the fourth power and average over <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>: orthogonality leaves the quadruples <span class="math" data-tex="\((b_1,b_2,b_3,b_4)\)">\((b_1,b_2,b_3,b_4)\)</span> and <span class="math" data-tex="\(a\)">\(a\)</span> with
+<span class="math math-display" data-tex="\[
+(a-b_1)(a-b_2)=(a-b_3)(a-b_4)\ne0,
+\]">\[
+(a-b_1)(a-b_2)=(a-b_3)(a-b_4)\ne0,
+\]</span>
+each with weight <span class="math" data-tex="\(w(b_1)w(b_2)w(b_3)w(b_4)\)">\(w(b_1)w(b_2)w(b_3)w(b_4)\)</span>. If <span class="math" data-tex="\(\{b_1,b_2\}=\{b_3,b_4\}\)">\(\{b_1,b_2\}=\{b_3,b_4\}\)</span> as multisets, the weight is at most <span class="math" data-tex="\(2r_w^2\)">\(2r_w^2\)</span> for each <span class="math" data-tex="\(a\)">\(a\)</span>, and there are <span class="math" data-tex="\(q\)">\(q\)</span> values of <span class="math" data-tex="\(a\)">\(a\)</span>. Otherwise the two monic quadratic polynomials in <span class="math" data-tex="\(a\)">\(a\)</span> are different, so their difference is a nonzero polynomial of degree at most <span class="math" data-tex="\(1\)">\(1\)</span>, with at most one root; the total weight of these quadruples is at most <span class="math" data-tex="\(J^4\)">\(J^4\)</span>. For the principal character, <span class="math" data-tex="\(\sum_bw(b)\mathbf 1_U(a-b)=J-w(a)\)">\(\sum_bw(b)\mathbf 1_U(a-b)=J-w(a)\)</span>, and <span class="math" data-tex="\(\frac1{q-1}\sum_a(J-w(a))^4\)">\(\frac1{q-1}\sum_a(J-w(a))^4\)</span><span class="math" data-tex="\(\ge\frac{qJ^4-4J^3\sum_aw(a)}{q-1}=J^4-\frac{3J^4}{q-1}\)">\(\ge\frac{qJ^4-4J^3\sum_aw(a)}{q-1}=J^4-\frac{3J^4}{q-1}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Apply Lemma 4.1 to <span class="math" data-tex="\(w=w_\chi\)">\(w=w_\chi\)</span>, whose mass <span class="math" data-tex="\(P_\chi(0)\)">\(P_\chi(0)\)</span> is bounded, subtract the principal contribution, and use (4.1):
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\alpha\ne1}\sum_a\bigl|\widehat{P_\chi\alpha}(a)\bigr|^4\\
+&amp;\quad \le\frac1{q^2}\Bigl(2q(q-1)r_\chi^2+3J^4\Bigr)\\
+&amp;\quad \le2r_\chi^2+O(q^{-2}).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\alpha\ne1}\sum_a\bigl|\widehat{P_\chi\alpha}(a)\bigr|^4\\
+&amp;\quad \le\frac1{q^2}\Bigl(2q(q-1)r_\chi^2+3J^4\Bigr)\\
+&amp;\quad \le2r_\chi^2+O(q^{-2}).
+\end{aligned}
+\]</span>
+Summing over <span class="math" data-tex="\(\chi\)">\(\chi\)</span> and using (4.5) of Lesson 12,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\chi}\sum_{\alpha\ne1}\sum_a\bigl|\widehat{P_\chi\alpha}(a)\bigr|^4\\
+&amp;\quad \ll\epsilon_q^2+q^{-1}.\quad(4.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\chi}\sum_{\alpha\ne1}\sum_a\bigl|\widehat{P_\chi\alpha}(a)\bigr|^4\\
+&amp;\quad \ll\epsilon_q^2+q^{-1}.\quad(4.2)
+\end{aligned}
+\]</span>
+When both twists are nonprincipal, Cauchy–Schwarz bounds (3.5) by the geometric mean of two sums of this form: for fixed <span class="math" data-tex="\(\nu\)">\(\nu\)</span>, <span class="math" data-tex="\((\chi,\psi)\mapsto(\chi,\nu\overline\psi)\)">\((\chi,\psi)\mapsto(\chi,\nu\overline\psi)\)</span> is a bijection, and likewise for the other factor.</p>
+<p><strong>Principal twists.</strong> Since the principal character <span class="math" data-tex="\(\mathbf 1_U\)">\(\mathbf 1_U\)</span> is zero at zero, <span class="math" data-tex="\(\widehat{P_\chi\mathbf 1_U}(a)=w_\chi(a)-P_\chi(0)/q\)">\(\widehat{P_\chi\mathbf 1_U}(a)=w_\chi(a)-P_\chi(0)/q\)</span>; its maximum over <span class="math" data-tex="\(a\)">\(a\)</span> is <span class="math" data-tex="\(O(\epsilon_q^2+q^{-1})\)">\(O(\epsilon_q^2+q^{-1})\)</span>, and its squared Fourier norm is at most <span class="math" data-tex="\(r_\chi\)">\(r_\chi\)</span>. If <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is principal, then <span class="math" data-tex="\(\psi=\nu\)">\(\psi=\nu\)</span> is fixed. If moreover <span class="math" data-tex="\(\beta\)">\(\beta\)</span> is nonprincipal, (4.1) and the bounded mass of <span class="math" data-tex="\(w_\psi\)">\(w_\psi\)</span> bound the second factor by <span class="math" data-tex="\(O(q^{-1})\)">\(O(q^{-1})\)</span> uniformly, and the sum of the first factor over <span class="math" data-tex="\(\chi,a\)">\(\chi,a\)</span> is <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span>; this part is <span class="math" data-tex="\(O(q^{-1})\)">\(O(q^{-1})\)</span>. The case with the roles exchanged is the same. If both twists are principal, both indices are fixed; the small Fourier maximum on one factor and the bounded squared norm on the other give <span class="math" data-tex="\(O(\epsilon_q^4+q^{-2})\)">\(O(\epsilon_q^4+q^{-2})\)</span>.</p>
+<p>So the two-bad case of (3.5) is <span class="math" data-tex="\(O(\epsilon_q^2+q^{-1})\)">\(O(\epsilon_q^2+q^{-1})\)</span>. With the friendly cases and Section 2, this proves (3.3) of Lesson 12, with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sup_\rho\mathbb E_yB_\rho(y)\ll\epsilon_q^2+q^{-1/2},\\
+\sum_\rho\mathbb E_yB_\rho(y)\ll1,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sup_\rho\mathbb E_yB_\rho(y)\ll\epsilon_q^2+q^{-1/2},\\
+\sum_\rho\mathbb E_yB_\rho(y)\ll1,
+\end{gathered}
+\]</span>
+after adding the finitely many majorants for the orientation and conjugation choices.</p>
+<h2 id="5-completion-of-the-tree-comparison">5. Completion of the tree comparison</h2>
+<p>Return to the projection <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> of Section 3 of Lesson 12, conditioning on the products of all bottom quartets. Orthogonality in the independent moving coordinates expresses <span class="math" data-tex="\(\|\mathcal PW_1\|_2^2\)">\(\|\mathcal PW_1\|_2^2\)</span> as the expectation of a sum, over the tuples <span class="math" data-tex="\((\rho_j)\)">\((\rho_j)\)</span> satisfying (3.2) of Lesson 12, of <span class="math" data-tex="\(\prod_j|a_{j,\rho_j}|^2\)">\(\prod_j|a_{j,\rho_j}|^2\)</span> times the squared values of the quartets off the cycle. Averaging the held variables, this is at most
+<span class="math math-display" data-tex="\[
+\sum_{\prod_j\rho_j^{\delta_j}=1}\ \prod_{j=1}^tB_{\rho_j}(y_j)\prod_{j\notin\text{cycle}}B_0(y_j).
+\]">\[
+\sum_{\prod_j\rho_j^{\delta_j}=1}\ \prod_{j=1}^tB_{\rho_j}(y_j)\prod_{j\notin\text{cycle}}B_0(y_j).
+\]</span>
+On valid ancestor points, the joint law of the quartet arguments <span class="math" data-tex="\(y_j\)">\(y_j\)</span> is at most a constant depending only on <span class="math" data-tex="\(l\)">\(l\)</span> times the independent uniform law on <span class="math" data-tex="\(U\)">\(U\)</span> (Proposition 2.1 of Lesson 12, at level <span class="math" data-tex="\(2\)">\(2\)</span>). Since the last display is nonnegative, this domination applies without any pointwise control of <span class="math" data-tex="\(g\)">\(g\)</span>. Put <span class="math" data-tex="\(b_\rho=\mathbb E_{y\in U}B_\rho(y)\)">\(b_\rho=\mathbb E_{y\in U}B_\rho(y)\)</span> and <span class="math" data-tex="\(b_0=\mathbb E_{y\in U}B_0(y)\)">\(b_0=\mathbb E_{y\in U}B_0(y)\)</span>. In the relation (3.2) of Lesson 12 one character is determined by the others, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|\mathcal PW_1\|_2^2&amp;\le C_l\Bigl(\sup_\rho b_\rho\Bigr)\Bigl(\sum_\rho b_\rho\Bigr)^{t-1}\\
+&amp;\quad b_0^{\,r/4-t}\ll_l\epsilon_q^2+q^{-1/2}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|\mathcal PW_1\|_2^2&amp;\le C_l\Bigl(\sup_\rho b_\rho\Bigr)\Bigl(\sum_\rho b_\rho\Bigr)^{t-1}\\
+&amp;\quad b_0^{\,r/4-t}\ll_l\epsilon_q^2+q^{-1/2}.
+\end{aligned}
+\]</span>
+If the cycle is a pair of parallel edges, <span class="math" data-tex="\(t=1\)">\(t=1\)</span> and the only character is principal; the same inequality holds with <span class="math" data-tex="\(b_{\mathbf 1}\le\sup_\rho b_\rho\)">\(b_{\mathbf 1}\le\sup_\rho b_\rho\)</span>. By Proposition 3.1 of Lesson 12,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\bigl|\mathbb E\,W_1\overline{W_2}\bigr|&amp;\le3^{r/2}\|\mathcal PW_1\|_2\\
+&amp;\ll_l\epsilon_q+q^{-1/4},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\bigl|\mathbb E\,W_1\overline{W_2}\bigr|&amp;\le3^{r/2}\|\mathcal PW_1\|_2\\
+&amp;\ll_l\epsilon_q+q^{-1/4},
+\end{aligned}
+\]</span>
+which proves Lemma 1.2 of Lesson 12. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Application.</strong> The normalized transforms <span class="math" data-tex="\(g_p\)">\(g_p\)</span> of the residue supports satisfy <span class="math" data-tex="\(g_p(0)=0\)">\(g_p(0)=0\)</span> and <span class="math" data-tex="\(\mathbb E|g_p|^2=1\)">\(\mathbb E|g_p|^2=1\)</span>, and by Theorem 6.1 of Lesson 9 their correlation parameters <span class="math" data-tex="\(\epsilon_p\)">\(\epsilon_p\)</span> tend to zero uniformly on a set of primes of nearly full harmonic mass in every band. Lesson 17 applies Lemma 1.2 of Lesson 12 at every <em>spectator</em> prime, once the bulk variables have been replaced by independent uniform units; the zero convention of the diagrams retains the requirement that every reconstructed entry be a unit at that prime.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Show directly that the operators <span class="math" data-tex="\(U_r\)">\(U_r\)</span>, <span class="math" data-tex="\(r\in U\)">\(r\in U\)</span>, are unitary on <span class="math" data-tex="\(L^2(\mathbb F_q)\)">\(L^2(\mathbb F_q)\)</span> and that <span class="math" data-tex="\(U_r^{-1}U_s\)">\(U_r^{-1}U_s\)</span> is composition with <span class="math" data-tex="\(t\mapsto(s/r)^2t+s-s^2/r\)">\(t\mapsto(s/r)^2t+s-s^2/r\)</span>.</p>
+<p><strong>6.2.</strong> For <span class="math" data-tex="\(q=7\)">\(q=7\)</span>, list the representations of the affine map <span class="math" data-tex="\(t\mapsto4t+3\)">\(t\mapsto4t+3\)</span> as <span class="math" data-tex="\(U_r^{-1}U_s\)">\(U_r^{-1}U_s\)</span>.</p>
+<p><strong>6.3.</strong> In Lemma 4.1, check that two monic quadratics <span class="math" data-tex="\((a-b_1)(a-b_2)\)">\((a-b_1)(a-b_2)\)</span> and <span class="math" data-tex="\((a-b_3)(a-b_4)\)">\((a-b_3)(a-b_4)\)</span> coincide as polynomials exactly when <span class="math" data-tex="\(\{b_1,b_2\}=\{b_3,b_4\}\)">\(\{b_1,b_2\}=\{b_3,b_4\}\)</span>.</p>
+<p><strong>6.4.</strong> Verify the convolution Parseval identity <span class="math" data-tex="\(\mathbb E_y\bigl|\frac1q\sum_dA(d)B(d-y)\bigr|^2\)">\(\mathbb E_y\bigl|\frac1q\sum_dA(d)B(d-y)\bigr|^2\)</span><span class="math" data-tex="\(=\sum_a|\widehat A(a)|^2|\widehat B(-a)|^2\)">\(=\sum_a|\widehat A(a)|^2|\widehat B(-a)|^2\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> For <span class="math" data-tex="\(r\in U\)">\(r\in U\)</span>, <span class="math" data-tex="\(t\mapsto r-r^2t\)">\(t\mapsto r-r^2t\)</span> is a bijection of <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>, so composition with it preserves the uniform measure and is unitary. With <span class="math" data-tex="\(\phi_r(t)=r-r^2t\)">\(\phi_r(t)=r-r^2t\)</span>, <span class="math" data-tex="\(U_rF=F\circ\phi_r\)">\(U_rF=F\circ\phi_r\)</span> and <span class="math" data-tex="\(U_r^{-1}F=F\circ\phi_r^{-1}\)">\(U_r^{-1}F=F\circ\phi_r^{-1}\)</span>, <span class="math" data-tex="\(\phi_r^{-1}(t)=(r-t)/r^2\)">\(\phi_r^{-1}(t)=(r-t)/r^2\)</span>. Then <span class="math" data-tex="\(U_r^{-1}U_sF=F\circ\phi_s\circ\phi_r^{-1}\)">\(U_r^{-1}U_sF=F\circ\phi_s\circ\phi_r^{-1}\)</span>, and <span class="math" data-tex="\(\phi_s(\phi_r^{-1}(t))=s-s^2(r-t)/r^2\)">\(\phi_s(\phi_r^{-1}(t))=s-s^2(r-t)/r^2\)</span><span class="math" data-tex="\(=(s/r)^2t+s-s^2/r\)">\(=(s/r)^2t+s-s^2/r\)</span>.</p>
+<p><strong>6.2.</strong> The slope <span class="math" data-tex="\(4=(s/r)^2\)">\(4=(s/r)^2\)</span> gives <span class="math" data-tex="\(z=s/r\in\{2,5\}\)">\(z=s/r\in\{2,5\}\)</span> in <span class="math" data-tex="\(\mathbb F_7\)">\(\mathbb F_7\)</span>. The translation is <span class="math" data-tex="\(r(z-z^2)\)">\(r(z-z^2)\)</span>. For <span class="math" data-tex="\(z=2\)">\(z=2\)</span>: <span class="math" data-tex="\(z-z^2=-2=5\)">\(z-z^2=-2=5\)</span>, so <span class="math" data-tex="\(5r=3\)">\(5r=3\)</span>, <span class="math" data-tex="\(r=3\cdot3=9=2\)">\(r=3\cdot3=9=2\)</span> (since <span class="math" data-tex="\(5^{-1}=3\)">\(5^{-1}=3\)</span>), <span class="math" data-tex="\(s=4\)">\(s=4\)</span>. For <span class="math" data-tex="\(z=5\)">\(z=5\)</span>: <span class="math" data-tex="\(z-z^2=5-25=-20=1\)">\(z-z^2=5-25=-20=1\)</span>, so <span class="math" data-tex="\(r=3\)">\(r=3\)</span>, <span class="math" data-tex="\(s=15=1\)">\(s=15=1\)</span>. Check: <span class="math" data-tex="\(r=2,s=4\)">\(r=2,s=4\)</span>: <span class="math" data-tex="\(t\mapsto4t+4-16/2=4t-4=4t+3\)">\(t\mapsto4t+4-16/2=4t-4=4t+3\)</span>. <span class="math" data-tex="\(r=3,s=1\)">\(r=3,s=1\)</span>: <span class="math" data-tex="\(t\mapsto t/9+1-1/3\)">\(t\mapsto t/9+1-1/3\)</span>; with <span class="math" data-tex="\(9=2\)">\(9=2\)</span>, <span class="math" data-tex="\(1/2=4\)">\(1/2=4\)</span>, <span class="math" data-tex="\(1/3=5\)">\(1/3=5\)</span>: <span class="math" data-tex="\(4t+1-5=4t-4=4t+3\)">\(4t+1-5=4t-4=4t+3\)</span>. Two representations.</p>
+<p><strong>6.3.</strong> The polynomials are <span class="math" data-tex="\(a^2-(b_1+b_2)a+b_1b_2\)">\(a^2-(b_1+b_2)a+b_1b_2\)</span> and <span class="math" data-tex="\(a^2-(b_3+b_4)a+b_3b_4\)">\(a^2-(b_3+b_4)a+b_3b_4\)</span>. They coincide iff the sums and products agree, iff <span class="math" data-tex="\(b_1,b_2\)">\(b_1,b_2\)</span> and <span class="math" data-tex="\(b_3,b_4\)">\(b_3,b_4\)</span> are the roots of the same quadratic, iff the multisets agree.</p>
+<p><strong>6.4.</strong> Expand <span class="math" data-tex="\(A=\sum_a\widehat A(a)e_q(a\cdot)\)">\(A=\sum_a\widehat A(a)e_q(a\cdot)\)</span> and <span class="math" data-tex="\(B=\sum_b\widehat B(b)e_q(b\cdot)\)">\(B=\sum_b\widehat B(b)e_q(b\cdot)\)</span>. Then <span class="math" data-tex="\(\frac1q\sum_dA(d)B(d-y)=\sum_{a,b}\widehat A(a)\)">\(\frac1q\sum_dA(d)B(d-y)=\sum_{a,b}\widehat A(a)\)</span><span class="math" data-tex="\(\widehat B(b)e_q(-by)\,\mathbb E_de_q((a+b)d)\)">\(\widehat B(b)e_q(-by)\,\mathbb E_de_q((a+b)d)\)</span><span class="math" data-tex="\(=\sum_a\widehat A(a)\widehat B(-a)e_q(ay)\)">\(=\sum_a\widehat A(a)\widehat B(-a)e_q(ay)\)</span>, and Parseval in <span class="math" data-tex="\(y\)">\(y\)</span> gives the claim.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-013] OpenAI, <em>The additive indecomposability of the primes</em>, OpenAI Math Release preprint, 24 September 2026, Section 6: a uniform Mellin estimate (6.14), quartet coefficient majorants, the case of two bad choices, and completion of the cycle estimate. https://github.com/openai/math/tree/main/preprints/the-additive-indecomposability-of-the-primes-September-24-2026</li>
+<li>[Gow] W. T. Gowers, <em>Quasirandom groups</em>, Combin. Probab. Comput. 17 (2008), 363–387; numbering of arXiv:0710.3877v1. https://arxiv.org/abs/0710.3877v1</li>
+<li>[BNP] L. Babai, N. Nikolov and L. Pyber, <em>Product growth and mixing in finite groups</em>, Proceedings of the Nineteenth Annual ACM–SIAM Symposium on Discrete Algorithms (2008), 248–257. https://people.cs.uchicago.edu/~laci/papers/bnp-soda08.pdf</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

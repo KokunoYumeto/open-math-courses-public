@@ -3134,7 +3134,7 @@ This proves a formal lower-bound principle with explicit inputs. To conclude tha
 
 The usual generic-point proof uses a component \(D\) in (IS.5) of the target's dimension and its image closure \(C_2\). At a generic point of \(C_2\), a finite nonempty cotangent fibre and exclusion of other components give the source isolation. Formula (IS.3) supplies the target test at the smooth generic point. Formula (IS.11) then supplies the lower bound once the detection and base-change inputs apply. Field-extension compatibility and characteristic-component dimension assertions are additional inputs to that generic-point reduction; they are not proved by the symmetric-form calculation.
 
-For the bounded Hecke correspondence, §§3.26–3.32 already establish the actual source membership and the isolated compatible-Higgs fibre in both directions. They supply the geometric starting data. The full regular-holonomic lower bound still requires the isolated-cycle detection, actual full-category cycle t-exactness/completion and the generic-point field-extension comparison in the applicable characteristic-support theory. The source's stronger support-only assertion for all D-modules remains conjectural. Its ordinary Hecke-lisse equality for all D-modules follows instead through the separate spectral field-extension argument. The spectral projector and nilpotent regularity therefore remain unproved here.
+For the bounded Hecke correspondence, §§3.26–3.32 already establish the actual source membership and the isolated compatible-Higgs fibre in both directions. They supply the geometric starting data. The full regular-holonomic lower bound still requires the isolated-cycle detection, actual full-category cycle t-exactness/completion and the generic-point field-extension comparison in the applicable characteristic-support theory. The source's stronger support-only assertion for all D-modules remains conjectural. Its ordinary Hecke-lisse equality for all D-modules follows instead through the separate spectral field-extension argument. Equations (UID.14) and (RSE.38) give the spectral idempotent and its full Hecke-lisse image. This lower-bound argument does not identify that image with nilpotent singular support or prove original-field ind-regularity.
 
 Free further reading for this mechanism is [Arinkin–Gaitsgory–Kazhdan–Raskin–Rozenblyum–Varshavsky, Appendix H, especially H.1–H.4](https://arxiv.org/abs/2010.01906v2). The isolated controlled-Morse theorem is in [Massey, A Little Microlocal Morse Theory, Theorem 1.1](https://arxiv.org/abs/math/0006185v2). These are reading sources, not proofs of the remaining premises. The programme's isolated holomorphic test, exact geometric imports and Nearby and vanishing cycles, §5 retain the controlled-Morse and general t-exactness prerequisites explicitly.
 
@@ -3329,7 +3329,7 @@ Here is the precise formal implication needed later. Suppose a presentable stabl
 \]
 The first equality is the stated projector adjunction and the second is the stated chart-test adjunction. A mapping complex from \(K\) to a \(K\)-complex is that complex itself. The detector theorem now implies \(UF=0\); conservativity gives \(F=0\). This proves the implication under exactly its displayed hypotheses. It supplies no missing geometric left adjoint, no base-change equivalence for \(\mathcal A\), and no projector construction.
 
-The field-extension orthogonality argument appears in [Arinkin–Gaitsgory–Kazhdan–Raskin–Rozenblyum–Varshavsky, *The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), §20.9. The residue-field and affine point computations above give complete proofs of their chart-level ingredients. For the nilpotent regularity assertion of this lesson, the enhanced spectral action and projector, its regular image, the relevant field-extension equivalence and the actual global point or chart-test adjunction remain not yet proved. The general isolated-cycle comparison of §§3.33–3.35 remains a separate requirement. In particular this point-detector argument adds no stronger support-only conjecture to the ordinary all-D-module Hecke-lisse statement.
+The field-extension orthogonality argument appears in [Arinkin–Gaitsgory–Kazhdan–Raskin–Rozenblyum–Varshavsky, *The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), §20.9. The residue-field and affine point computations above give complete proofs of their chart-level ingredients. The complex restricted spectral action and idempotent image are given in §§3.227–3.228. The nilpotent regularity criterion still requires its geometric support/image and original-field regularity statements, the relevant field-extension equivalence and the actual global point or chart-test adjunction. The general isolated-cycle comparison of §§3.33–3.35 remains a separate requirement. In particular this point-detector argument adds no stronger support-only conjecture to the ordinary all-D-module Hecke-lisse statement.
 
 ![A detecting generic prime becomes a closed rational point after scalar extension; finite normal Koszul complexes detect unbounded D-modules; the global stack adjunction remains explicit.](figures/field-extension-point-detectors.svg)
 
@@ -8245,7 +8245,7 @@ For positive genus the completed and ind targets are already equal by (RSC.14). 
        \quad(H^j(A)=0\text{ for }j<-N).
  \tag{RSP.11}
 \]
-This comparison includes all functor transformations. It is explicitly the bounded-coefficient comparison. Convergence on arbitrary connective DG coefficients is (RSP.5), using the completed target. The non-effective tower in Solution 3.BZ prevents replacing that completed target by its ind-category for arbitrary objects.
+For bounded coefficients the comparison is (RSP.11), including all functor transformations. The bounded derived-affine presentation and universal-coefficient descent in §§3.194–3.201 prove the normalized tensor-functor comparison for all connective DG coefficients. The entire completed category still has additional objects, as in Solutions 3.BZ and 3.DL; the ind-category need not be left-complete.
 
 ### 3.109. Original-field local finiteness in a faithful representation
 
@@ -10739,6 +10739,1496 @@ The functor \(u\) does not preserve products. For countably many scalar complexe
 Every element on the left is a finite sum of polynomials tensored with scalar sequences; its sequence of polynomials has a uniform finite degree bound. The sequence \((t^n)_{n\geq0}\) on the right has no such bound, so the comparison is not surjective on degree-zero cohomology. Products of complexes and modules here are the exact degreewise products, so this is a failure of the actual derived product comparison. A right adjoint preserves products, directly from its mapping-space adjunction and the universal property of a product. Thus \(u\) cannot be a right adjoint and has no left adjoint. The continuous dual constructed in (SDU.11) nevertheless exists. This distinguishes the needed tensor-duality statement from an unproved unit adjunction.
 
 The constructions here concern quasicoherent tensor duality and continuous global sections over the complex numbers. Their use in a geometric Beilinson projector requires the compatible action on the automorphic category and the corresponding support and regularity arguments. For the continuous-global-section formulation see AGKRRV, [*The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), “The functor of !-global sections.”
+
+### 3.186. The continuous transpose of the restricted coefficient functor
+
+Work over \(\mathbf C\), with the actual full Ran category \(\mathcal R\), restricted quotient category \(\mathcal A\), and continuous symmetric monoidal functor \(\mathsf L=\mathsf L_{\mathrm r}:\mathcal R\to\mathcal A\). The source has compact unit and dualizable compact generators by (KG.19)–(KG.23). The target has the canonical tensor self-duality and continuous sections of (SDU.8)–(SDU.13). In particular the actual regular kernel satisfies
+\[
+ K=(\operatorname{Id}_{\mathcal R}\otimes\mathsf L)(R_{\mathcal R}),
+ \qquad
+ (\mathsf L\otimes\operatorname{Id}_{\mathcal A})(K)
+       \simeq K_{\mathrm{coev}}.
+ \tag{UID.1}
+\]
+The second comparison is (SUL.25) and (SDU.12), including the actual map and its algebra structure.
+
+Define a continuous functor by the entire compact DG coend
+\[
+ \mathsf D(a)=
+   \int^{T\in\mathcal R^c}
+       \Gamma_!\bigl(\mathsf L(T^\vee)\otimes_{\mathcal A}a\bigr)
+                     \otimes_{\mathbf C}T.
+ \tag{UID.2}
+\]
+It is contravariant in the coefficient index and covariant in the last factor; its realization is the full enriched two-sided bar. It includes every homogeneous morphism, action face and identity degeneracy. Continuity of \(\Gamma_!\), tensor and bar realization proves continuity in \(a\). No finite-dimensionality of these coefficient complexes is required. For compact \(S\), compactness moves its full Hom through the realization, and the enriched Yoneda contraction gives
+\[
+ \operatorname{RHom}_{\mathcal R}(S,\mathsf D(a))
+   \simeq\Gamma_!\bigl(\mathsf L(S^\vee)\otimes_{\mathcal A}a\bigr).
+ \tag{UID.3}
+\]
+The contraction uses precomposition on the coefficient and postcomposition on the represented factor; their interior composition faces coincide. This specifies its actual mapping-complex comparison, not only dimensions. Equivalently, (KG.23), the symmetry of the regular kernel and compact biduality identify (UID.2) with applying \(\operatorname{Id}\otimes\Gamma_!\) to \(K\otimes(\mathbf1\boxtimes a)\). For the source, (KG.22) identifies the tensor pairing \((r,s)\mapsto\operatorname{RHom}_{\mathcal R}(\mathbf1,r\otimes s)\) with the representable functionals on every compact dual. Its unit is compact, so this pairing is continuous. The full representable bars identify the dual category, and its coevaluation is \(R_{\mathcal R}\): compact external tests give \(\operatorname{RHom}(S\otimes T,\mathbf1)=\operatorname{RHom}(T,S^\vee)\), the diagonal bimodule. Both Yoneda contractions are the same two triangles used in (SDU.13). This supplies the source's canonical tensor self-duality as well.
+
+This is the continuous transpose of \(\mathsf L\) under the canonical tensor self-dualities. No adjunction between \(\mathsf D\) and \(\mathsf L\) is asserted.
+
+### 3.187. The module comparison and the full triangle
+
+For compact \(r,S\) in \(\mathcal R\), the duality adjunction and (UID.3) identify the two mapping complexes obtained from \(r\otimes\mathsf D(a)\) and \(\mathsf D(\mathsf L(r)\otimes a)\). Indeed the first is the test from \(r^\vee\otimes S\); its coefficient is \(\Gamma_!(\mathsf L(S^\vee\otimes r)\otimes a)\), exactly the second. These natural comparisons give
+\[
+ \rho_{r,a}:r\otimes\mathsf D(a)
+    \xrightarrow{\sim}\mathsf D(\mathsf L(r)\otimes a).
+ \tag{UID.4}
+\]
+Compact source tests detect the equivalence. All functors in this formula preserve colimits in \(r\) and \(a\), so the full compact bars extend it to arbitrary objects, including noncompact \(r\). Its module associativity, unit and higher comparisons follow on compact tests from the same ordered dual evaluation maps: moving two duals across a Hom is the evaluation for their reversed tensor dual. The two routes contract the same two evaluation/coevaluation pairs and agree by their triangles. Full bars then extend these equalities and coherent homotopies. Thus \(\mathsf D\) is an actual continuous \(\mathcal R\)-module functor.
+
+Applying \(\mathsf L\) to its kernel expression gives
+\[
+ \mathsf L\mathsf D(a)
+   \simeq(\operatorname{Id}_{\mathcal A}\otimes\Gamma_!)
+       \bigl(K_{\mathrm{coev}}\otimes
+                       (\mathbf1_{\mathcal A}\boxtimes a)\bigr).
+ \tag{UID.5}
+\]
+Here continuity moves \(\mathsf L\) and \(\Gamma_!\) through the full kernel bar, and (UID.1) identifies its kernel. The right side is precisely a coevaluation followed by the evaluation \(\Gamma_!\circ\otimes\), acting on \(a\). The actual triangle proved in (SDU.13), with its full diagonal bimodule, therefore supplies
+\[
+ \theta_a:\mathsf L\mathsf D(a)\xrightarrow{\sim}a.
+ \tag{UID.6}
+\]
+This is natural in the whole category. It is also compatible with (UID.4): for compact acting \(r\), slide the dualizable \(\mathsf L(r)\) across that same evaluation and cancel its two triangles; this is exactly the compact test defining \(\rho\). All acting objects follow by the continuous bar extension. Thus \(\theta\) is a module natural equivalence. This proves an actual section and module identity, without inferring full faithfulness or an adjunction from a section alone.
+
+### 3.188. The universal non-unital idempotent
+
+Put
+\[
+ p=\mathsf D(\mathbf1_{\mathcal A})
+    =(\operatorname{Id}_{\mathcal R}\otimes\Gamma_!)(K),
+ \qquad \mathsf L(p)\xrightarrow[\theta_{\mathbf1}]{\sim}
+                         \mathbf1_{\mathcal A}.
+ \tag{UID.7}
+\]
+The module comparison at \(a=\mathbf1\) gives the entire functor identity
+\[
+ r\otimes p\xrightarrow{\sim}\mathsf D\mathsf L(r).
+ \tag{UID.8}
+\]
+In particular there is an explicit multiplication equivalence and inverse:
+\[
+ \begin{aligned}
+ p\otimes p&\xrightarrow{\rho_{p,\mathbf1}}
+              \mathsf D\mathsf L(p)
+       \xrightarrow{\mathsf D(\theta_{\mathbf1})}p,\\
+ p&\xrightarrow{\mathsf D(\theta_{\mathbf1}^{-1})}
+              \mathsf D\mathsf L(p)
+       \xrightarrow{\rho_{p,\mathbf1}^{-1}}p\otimes p.
+ \end{aligned}
+ \tag{UID.9}
+\]
+This uses (UID.4) on the actual object \(p\); no compactness of \(p\) is assumed.
+
+We identify its multiplication, including its coherences. The algebra of (UID.1) and the non-unital right-lax tensor maps (SDU.9) give a non-unital commutative multiplication on \(p\). Let \(\chi_T\) denote the universal map from a term of (UID.2) at \(a=\mathbf1\). On two such terms this multiplication is
+\[
+ \begin{gathered}
+ \bigl[\Gamma_!\mathsf L(S^\vee)\otimes S\bigr]
+     \otimes
+ \bigl[\Gamma_!\mathsf L(T^\vee)\otimes T\bigr]\\
+ \longrightarrow
+ \Gamma_!\mathsf L((S\otimes T)^\vee)\otimes(S\otimes T)
+       \xrightarrow{\chi_{S\otimes T}}p.
+ \end{gathered}
+ \tag{UID.10}
+\]
+The first map uses the graded interchange, the actual tensor map of \(\Gamma_!\), and strong monoidality of \(\mathsf L\), with the reversed dual factors interchanged by the same symmetry. This is also the map in (UID.9). To check that claim, substitute the full compact coend for each kernel in (UID.5) and the compact test defining \(\rho\). The coevaluation in \(\theta\) inserts the represented identity; its adjacent evaluation contracts the represented dual and its original factor. Their composite is that factor's triangle, hence its identity. The remaining two coefficients are combined by the balancing map (SDU.9); the remaining represented factor is \(S\otimes T\). These are exactly the two arrows of (UID.10). No morphisms are discarded in this contraction: the interior faces are the same composition maps, and the endpoint faces are the same two actions. Thus it is an equality on the whole two-sided coend bar and all its realizations.
+
+Associativity and graded commutativity now follow from the actual regular-algebra multiplication and the coherent tensor maps of (SDU.9); the coend description includes their higher relations. Alternatively, associativity of (UID.9) is naturality of \(\theta\): its two contractions of \(\mathsf L\mathsf D\mathsf L\mathsf D\) agree, since \(\theta\) is a natural equivalence. We have proved the actual idempotence
+\[
+ \mu:p\otimes p\xrightarrow{\sim}p
+       \quad\text{as a non-unital commutative algebra.}
+ \tag{UID.11}
+\]
+The construction supplies no unit morphism \(\mathbf1_{\mathcal R}\to p\). Such a morphism is not inferred from idempotence. The closed-support example below shows that a unit can fail to exist.
+
+### 3.189. Restricted enhanced Hecke eigen-objects
+
+Let \(\mathcal M\) be a compactly generated DG category with an actual continuous unital \(\mathcal R\)-action \(\Phi\). This includes the geometric category \(\mathcal M_L\) and action (RA.17), over every genus and bundle component of the complex curve. Set \(\mathcal N=\mathcal M\otimes\mathcal A\), with its two separate \(\mathcal R\)-actions through \(\Phi\) and \(\mathsf L\). The full regular-module construction (SPC.14)–(SPC.17) applies to these actual actions and gives
+\[
+ \begin{gathered}
+ \mathcal H_{\mathrm r}(\mathcal M)
+  =\operatorname{Fun}^{\mathrm L}_{\mathcal R\otimes\mathcal R}
+                         (\mathcal R,\mathcal N)
+  \simeq\operatorname{Mod}_{K}(\mathcal N),\\
+ F_K:\mathcal N\rightleftarrows\mathcal H_{\mathrm r}(\mathcal M):U_K,
+       \qquad U_KF_K=K\star(-).
+ \end{gathered}
+ \tag{UID.12}
+\]
+Here modules mean the full coherent action of the algebra, not actions on ordinary cohomology. The two-sided action bars in that earlier proof use only continuity of the two actions and the actual regular algebra, all supplied by (RA.17), (RDI.14) and (KG.23). They require no compactness of \(\mathbf1_{\mathcal A}\). Their free/forgetful adjunction is continuous on both sides, and the forgetful functor is conservative by its underlying action-module description.
+
+Writing \(\sigma(m)=m\boxtimes\mathbf1_{\mathcal A}\), the full enhanced induction and its right adjoint are
+\[
+ \begin{gathered}
+ P^{\mathrm{enh}}=F_K\sigma\dashv J=\sigma^RU_K,\\
+ \Phi(T)\star_{\mathrm{first}}U_KF
+        \simeq\mathsf L(T)\star_{\mathrm{coeff}}U_KF,
+       \qquad T\in\mathcal R.
+ \end{gathered}
+ \tag{UID.13}
+\]
+The right adjoint \(\sigma^R\) is the compact-generator coefficient construction of (SPC.21): apply ordinary \(\operatorname{RHom}_{\mathcal A}(\mathbf1,-)\) to each coefficient and its action maps. Its full representable bar proves the mapping-space adjunction for arbitrary sources. This does not assert its continuity. The second line follows from the two module structures of a bimodule functor: evaluating either action at the source unit gives its value at \(T\). Their tensor and higher relations are the same bimodule comparisons. Thus the induced objects have the full restricted Hecke eigen-property. Continuous \(\Gamma_!\) must not be substituted into this ordinary right-adjoint formula.
+
+### 3.190. The actual geometric spectral endofunctor
+
+Integrating the underlying enhanced family by continuous sections defines
+\[
+ \begin{aligned}
+ \Pi_{\mathrm r}(m)
+  &:=(\operatorname{Id}_{\mathcal M}\otimes\Gamma_!)
+                         U_KP^{\mathrm{enh}}(m)\\
+  &\simeq\Phi(p)m\\
+  &\simeq\int^{T\in\mathcal R^c}
+       \Gamma_!\mathsf L(T^\vee)\otimes_{\mathbf C}\Phi(T)m.
+ \end{aligned}
+ \tag{UID.14}
+\]
+For the first comparison use \(U_KF_K=K\star(-)\), insert the actual coefficient unit, and apply \(\Gamma_!\) on the second factor. The separate action and tensor bars let that continuous functor pass through every term, yielding the action of the object (UID.7). The next comparison is the entire coend (UID.2) and continuity of the actual action. Thus (UID.14) identifies the actual functor, its maps and all eigen-family coherences; it is not only a formula on closed spectral points.
+
+Apply the unital action's composition comparison to the multiplication (UID.11). It gives the actual natural equivalence
+\[
+ \Pi_{\mathrm r}\Pi_{\mathrm r}
+       \xrightarrow{\Phi(\mu)}\Pi_{\mathrm r}.
+ \tag{UID.15}
+\]
+Its associativity is the non-unital algebra associativity already proved. On \(\mathcal M_L\) every term \(\Phi^L(T)\) is the geometric transfer-kernel action (RA.13)–(RA.17); the continuous coend therefore realizes this endofunctor on all unbounded twisted D-modules. The operator Morita equivalence of (RA.17) transports it to the corresponding untwisted category with the same comparisons.
+
+Idempotence alone does not identify its image with the nilpotent singular-support subcategory, give a fully faithful spectral-subcategory functor, or prove original-field ind-regularity. Those require the corresponding image and regularity arguments. No unit or counit natural transformation for this endofunctor is inferred from (UID.15).
+
+![The continuous transpose, universal restricted idempotent and its full geometric Hecke realization](figures/universal-restricted-idempotent.svg)
+
+**Figure 3.36.** The full compact transpose and its module comparison are (UID.1)–(UID.4). The actual coevaluation triangle gives (UID.5)–(UID.9), and the entire coefficient multiplication is (UID.10)–(UID.11). Enhanced eigen-families and their continuous integration give the actual geometric idempotent in (UID.12)–(UID.15). The examples distinguish closed support, open localization, unbounded coefficients and ordinary sections.
+
+### 3.191. Closed support and open localization are different idempotents
+
+**Exercise 3.DG.** In the abstract construction take \(\mathcal R=\operatorname{Mod}_B\), \(B=\mathbf C[t]\). Compare the actual formal-disc restriction to \(\mathcal A_t=\mathcal T_t\) with scalar extension to \(\mathcal A_u=\operatorname{Mod}_{B[t^{-1}]}\). Determine their objects \(p\), their action on \(B/(t)\) and \(B[t^{-1}]\), and whether their algebra structures can have a unit.
+
+**Solution 3.DG.** In the first case \(\mathsf L=\Gamma_t\), and \(\Gamma_!\) is the underlying-module functor of (SDU.8). Formula (UID.3) identifies \(\mathsf D\) with the inclusion of torsion modules into \(\operatorname{Mod}_B\): the finite perfect dual Hom of a compact source is exactly that formula. The diagonal hypothesis is also the actual one in these examples. In the closed case the two torsion projectors act on the diagonal \(B\)-module as \(\Gamma_t\Gamma_t=\Gamma_t\), giving its supported diagonal unit; in the open case the two localizations give the localized diagonal unit. The compact external Hom tests of (SDU.13) identify these with their coevaluation kernels. In the second case the same compact test identifies \(\mathsf D\) with restriction of scalars from \(B[t^{-1}]\). Consequently
+\[
+ \begin{gathered}
+ p_t=\operatorname{fib}(B\to B[t^{-1}]),\quad\Pi_t=\Gamma_t,\\
+ p_u=B[t^{-1}],\quad\Pi_u=(-)[t^{-1}].
+ \end{gathered}
+ \tag{UID.16}
+\]
+The closed object has \(H^1(p_t)=t^{-1}\mathbf C[t^{-1}]\) and no other cohomology, while the open object is in degree zero. Therefore
+\[
+ \operatorname{Hom}_{D(B)}(B,p_t)=H^0(p_t)=0,
+       \qquad p_t\ne0.
+ \tag{UID.17}
+\]
+Every putative unit of its algebra would be the zero morphism; its unit composite would then be zero, not the identity of \(p_t\). Thus its non-unital structure cannot be made unital with this multiplication. There is also a direct derived-square calculation. Put \(P=t^{-1}\mathbf C[t^{-1}]\). The sequence \(0\to B\to B[t^{-1}]\to P\to0\) is a flat resolution: localization is the exact filtered multiplication colimit of free modules. Tensoring it with \(P\) gives the two-term complex \([P\to0]\), since \(P[t^{-1}]=0\). Hence \(P\otimes_B P=0\) but \(\operatorname{Tor}_1^B(P,P)=P\). Since \(p_t=P[-1]\), its derived square again has \(P\) in cohomological degree one. This explains the nonzero idempotent square without replacing it by an ordinary cohomology tensor. The open object's multiplication has the ordinary unit \(B\to B[t^{-1}]\). For every unbounded module the original localization-fibre triangle is
+\[
+ \begin{gathered}
+ \Pi_tM\longrightarrow M\longrightarrow\Pi_uM,\\
+ \Pi_t(B/t)=B/t,\quad\Pi_u(B/t)=0,\\
+ \Pi_t(B[t^{-1}])=0,\quad\Pi_u(B[t^{-1}])=B[t^{-1}].
+ \end{gathered}
+ \tag{UID.18}
+\]
+The triangle follows by tensoring the actual defining fibre of \(p_t\). These examples give different images and different unit behavior even though both multiplication maps are equivalences.
+
+### 3.192. A coefficient complex unbounded in both directions
+
+**Exercise 3.DH.** Keep the two idempotents above and take \(M=B[z,z^{-1}]\), with \(|z|=-2\) and zero differential. Compute their entire cohomology and the maps in (UID.18).
+
+**Solution 3.DH.** As a \(B\)-complex this is the direct sum of its free shifted copies \(Bz^r\), for every \(r\in\mathbf Z\). Both functors are continuous, so the localization-fibre calculation on each copy gives
+\[
+ \begin{gathered}
+ H^{1-2r}(\Pi_tM)
+      =t^{-1}\mathbf C[t^{-1}]\,z^r,\\
+ H^{-2r}(\Pi_uM)=\mathbf C[t,t^{-1}]\,z^r,
+       \qquad r\in\mathbf Z,
+ \end{gathered}
+ \tag{UID.19}
+\]
+and zero in the respective other parity. There is exactly one contributing summand in each displayed degree. The complete cohomology sequence of the fibre triangle is, for every integer \(r\),
+\[
+ 0\longrightarrow\mathbf C[t]z^r
+   \longrightarrow\mathbf C[t,t^{-1}]z^r
+   \longrightarrow t^{-1}\mathbf C[t^{-1}]z^r
+   \longrightarrow0.
+ \tag{UID.20}
+\]
+The second arrow is localization; the third takes the negative Laurent part. This proves the boundary map and every degree of both idempotents without truncating \(M\). Neither a bounded-above nor a bounded-below replacement gives this example.
+
+### 3.193. Ordinary sections do not give the same multiplication
+
+**Exercise 3.DI.** For the formal-disc target replace \(\Gamma_!\) by ordinary sections only in the compact coefficient formula for \(p\). Determine the resulting object \(q\). Is its multiplication \(q\otimes_B^Lq\to q\) an equivalence?
+
+**Solution 3.DI.** For a compact perfect \(T\) over \(B\), ordinary sections of \(\mathsf L(T^\vee)=\Gamma_tT^\vee\) are the complete module \(T^\vee\otimes_B\widehat B\), where \(\widehat B=\mathbf C[[t]]\). Finite perfectness commutes with the actual inverse completion limit, as (KTC.17)–(KTC.21) show. Thus the full compact Yoneda coend gives
+\[
+ q=\int^{T\in\operatorname{Perf}(B)}
+             \operatorname{RHom}_B(T,\widehat B)\otimes_{\mathbf C}T
+       \simeq\widehat B.
+ \tag{UID.21}
+\]
+The ordinary section tensor maps give its usual multiplication. We will prove that even its degree-zero comparison
+\[
+ \widehat B\otimes_B\widehat B\longrightarrow\widehat B
+ \tag{UID.22}
+\]
+has a nonzero kernel. This suffices: for ordinary algebras the degree-zero cohomology of the derived tensor is the ordinary tensor, by its nonpositive free resolution, so a derived equivalence would make (UID.22) an isomorphism.
+
+There is a formal power series \(f\in\widehat B\), with constant term one, satisfying \(f^2=1+t\). To construct it, set its constant coefficient to one and compare coefficients: at every positive degree the next coefficient has coefficient two and is determined by the earlier ones. Put
+\[
+ F=\mathbf C(t),\qquad K=\mathbf C((t)),\qquad E=F(f).
+ \tag{UID.23}
+\]
+The element \(f\) is not in \(F\). A rational square has an even order at \(t=-1\), as is seen by writing coprime numerator and denominator polynomials and comparing powers of \(t+1\); the order of \(1+t\) is one. Thus \(E/F\) is quadratic. Since \(f\in K\) and \(2f\) is invertible there, the two factors of its minimal polynomial are coprime over \(K\), and explicit Chinese remainders give
+\[
+ \begin{gathered}
+ E\otimes_FK\simeq
+        K[x]/((x-f)(x+f))\simeq K\times K,\\
+ f\otimes1-1\otimes f\longmapsto(0,-2f)\ne0.
+ \end{gathered}
+ \tag{UID.24}
+\]
+The two evaluation maps have inverse idempotents \((1+x/f)/2\) and \((1-x/f)/2\), which proves this decomposition directly. The inclusion \(E\hookrightarrow K\) remains injective after tensoring over the field \(F\); choose a vector-space basis extending one of the subspace to verify that exactness. Hence the displayed element is also nonzero in \(K\otimes_FK\). The natural map from \(\widehat B\otimes_B\widehat B\) to this tensor sends \(f\otimes1-1\otimes f\) to that nonzero element. It was therefore nonzero already before localization, while multiplication in (UID.22) kills it. This proves the claimed failure. At every finite \(t\)-adic truncation, \(f\) becomes a polynomial from \(B\), so the corresponding tensor difference is zero. Finite-jet comparisons would not detect this nonzero full tensor kernel. Replacing continuous sections by ordinary sections changes the actual object and can destroy its tensor idempotence.
+
+The constructions above give the universal restricted spectral idempotent and its full geometric Hecke realization over the complex numbers. The spectral-subcategory comparison, nilpotent singular-support image, original-field regularity and the other geometric ground fields require their further arguments. The corresponding abstract eigen-object and universal-projector framework is discussed in AGKRRV, [*The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), “Spectral projector and Hecke eigen-objects.”
+
+### 3.194. A local vanishing test for perfect modules
+
+Use cohomological degrees, so a connective algebra has cohomology in degrees at most zero. Let \(A\) be a connective commutative complex DG algebra with \(R=H^0(A)\) Noetherian and each \(H^{-i}(A)\) finite over \(R\). A perfect module has a finite upper cohomological bound and finite cohomology modules in every degree. Indeed it is a retract of a finite cell module; shifts, finite cones and retracts preserve those properties. The kernel and image finiteness used here is Proposition 1.2 of [*Noetherian and Artinian rings*](../../AG-CA/src/noetherian-and-artinian-rings.md). The same argument applies to its perfect dual and their tensor product.
+
+If \(M\) has no cohomology above degree \(n\), and \(k\) is a residue field of \(R\), the actual scalar bar gives
+\[
+ H^n(M\otimes_A^Lk)=H^n(M)\otimes_Rk.
+ \tag{BLI.1}
+\]
+To see the top degree directly, shift to \(n=0\) and use a nonpositive semifree module resolution, constructed by adding generators to hit cycles and kill kernels as in §3.158. After tensoring with \(k\), the degree-zero cokernel is exactly the ordinary tensor of its degree-zero cohomology. All other generators and normalized bar directions have lower degree, so contribute no additional degree-zero term. This proves the displayed comparison without a lower cohomological bound.
+
+Let \(P\) be perfect and let \(x\) be a closed point with residue field \(k\). If \(P\otimes_A^Lk=0\), put \(C=\operatorname{RHom}_A(P,P)=P^\vee\otimes_A^LP\). It is perfect, upper bounded and has finite cohomology modules, and \(C\otimes_A^Lk=0\). Localize at \(x\), and choose an upper bound \(n\geq0\). Equation (BLI.1) and ordinary Nakayama imply \(H^n(C)_x=0\). Repeat down to degree zero. This is a finite descent, regardless of how many negative cohomology groups there are. For the Nakayama step, finite generators of a module \(N=\mathfrak mN\) give a matrix \(U\) with entries in \(\mathfrak m\) and \((1-U)N=0\); its adjugate shows that \(\det(1-U)\), a unit, annihilates every generator. Thus \(N=0\).
+
+In particular the identity of \(P\) is zero after localization. Localization of its degree-zero Hom complex is localization of \(H^0(C)\), by finite perfect duality. Hence some \(f\in R\), nonzero at \(x\), kills that identity. After localizing at \(f\), the identity is nullhomotopic, which contracts the entire module. We have proved
+\[
+ P\otimes_A^Lk(x)=0
+   \quad\Longrightarrow\quad
+ P[f^{-1}]=0\text{ for some }f(x)\ne0.
+ \tag{BLI.2}
+\]
+Only the perfect module's identity has been localized. No intersection of infinitely many cohomological vanishing neighbourhoods is taken.
+
+### 3.195. The first relative difference and the cotangent complex
+
+We need an equivalence criterion for connective algebras. Suppose \(B\to A\) induces an isomorphism on \(H^0\), and write \(C\) for its cofibre as a \(B\)-module. If it is nonzero, choose the first degree \(-n\), \(n\geq1\), in which \(C\) has nonzero cohomology. The relative semifree construction of §3.158 can then start with cells of degree \(-n\): these hit the first missing classes and kill the first kernel classes one degree higher. There are no relative cells in higher degrees. Continuing by kernel-killing and cycle generators gives a relative semifree algebra \(Q\to A\) over \(B\).
+
+Modulo \(B\), the first cohomology of \(Q/B\) consists of the linear first-cell classes over \(H^0(B)\), modulo the relations from the next cells. The same is true of \(\Omega^1_{Q/B}\otimes_QA\). Products of two new generators have degree at most \(-2n\); their differentials cannot affect that first degree when \(n>1\). When \(n=1\), the first generators can be chosen closed because the map on \(H^0\) is an isomorphism, so those product differentials are zero in degree minus one as well. A coefficient boundary imposes the same relation over \(H^0(B)\) in both complexes. The remaining degree-\(-n\) relations are exactly the linear differentials of the degree-\(-n-1\) cells. Since \(H^0(B)=H^0(A)\), this proves the actual first-degree identity
+\[
+ H^{-n}(L_{A/B})=H^{-n}(C)\ne0.
+ \tag{BLI.3}
+\]
+This argument uses the full relative free model; it does not assert a formula in all subsequent degrees. It proves the needed criterion
+\[
+ H^0(B)\xrightarrow{\sim}H^0(A),\quad L_{A/B}=0
+       \quad\Longrightarrow\quad B\xrightarrow{\sim}A.
+ \tag{BLI.4}
+\]
+Indeed otherwise the first nonzero cofibre degree just constructed would contradict the vanishing of the relative cotangent complex. A nonzero bounded-above complex always has such a first degree, even if it is unbounded below.
+
+### 3.196. A finite local Koszul model from the cotangent bound
+
+Suppose now that
+\[
+ \begin{gathered}
+ H^0(A)\text{ is finite type over }\mathbf C,\\
+ H^{-i}(A)\text{ is finite over }H^0(A),\\
+ L_{A/\mathbf C}\text{ is perfect of Tor amplitude }[-1,0].
+ \end{gathered}
+ \tag{BLI.5}
+\]
+Fix a closed point \(x\); its residue field is \(\mathbf C\), by the complete Zariski-lemma and Nullstellensatz proof in [*The Nullstellensatz and Jacobson rings*](../../AG-CA/src/the-nullstellensatz-and-jacobson-rings.md), §1. Choose a finite polynomial algebra \(P=\mathbf C[x_1,\ldots,x_d]\to A\) surjective on \(H^0\). Its ordinary kernel ideal is finite by Theorem 2.1 of the Noetherian lesson cited above. Add finitely many degree-minus-one generators whose differentials generate that ideal, and finitely many closed degree-minus-one generators mapping onto generators of \(H^{-1}(A)\). The resulting map is an isomorphism on \(H^0\) and a surjection on \(H^{-1}\). The remaining relative semifree resolution therefore adds generators only in degrees at most minus two. We obtain
+\[
+ Q=P[\eta_1,\ldots,\eta_m,\text{ lower-degree cells}]\xrightarrow{\sim}A,
+       \qquad |\eta_j|=-1,\quad d\eta_j=f_j\in P.
+ \tag{BLI.6}
+\]
+The \(m\) displayed generators are finite; the lower part need not be finite. Every degree-minus-two generator \(z_\ell\) has differential \(\sum_j a_{\ell j}(x)\eta_j\), because there are no positive generators. Its differential squared is the literal polynomial syzygy
+\[
+                  \sum_j a_{\ell j}(x)f_j=0.
+ \tag{BLI.7}
+\]
+Tensor the free cotangent complex with the residue field at the chosen point. Its degree-minus-one vector space is \(W=\bigoplus_j\mathbf C\eta_j\), and let \(J\subset W\) be the image of its degree-minus-two differential. Only finitely many of the \(z_\ell\) are needed to span that image. Choose a constant change of basis \(W=U\oplus J\). Both summands consist of actual constant linear combinations of the generators. Since \(J\) maps to zero in degree zero, the two-term complex
+\[
+                [\,U\longrightarrow\mathbf C^d\,]
+                    \longrightarrow L_{A/\mathbf C}\otimes_A^Lk(x)
+ \tag{BLI.8}
+\]
+is a quasi-isomorphism. Its degree-zero cokernel and degree-minus-one kernel are the same as those of the full cotangent complex; every lower target cohomology vanishes by (BLI.5).
+
+Choose finitely many degree-minus-two generators whose image vectors are a basis of \(J\). Their coefficient matrix in the \(J\)-columns has invertible determinant at \(x\). Localize \(P\) at that determinant. The syzygies (BLI.7) solve the differentials belonging to the discarded \(J\)-generators as combinations of the differentials belonging to \(U\). Thus those selected differentials still generate the whole ordinary kernel ideal on this neighbourhood. Put \(B=P_{\Delta}[U]\), with the selected differentials; its map to \(A[\Delta^{-1}]\) is an isomorphism on \(H^0\). Its relative cotangent complex is perfect, by the transitivity triangle and the two perfect absolute cotangent complexes. Equation (BLI.8) makes its residue fibre zero. Apply (BLI.2) to that relative cotangent module and shrink once more. The relative cotangent module is now zero, so (BLI.4) proves
+\[
+ A[f^{-1}]\simeq
+   P'[\epsilon_1,\ldots,\epsilon_r],
+       \qquad |\epsilon_i|=-1,\quad d\epsilon_i=g_i\in P',
+ \tag{BLI.9}
+\]
+where \(f(x)\ne0\) and \(P'\) is a localization of the finite polynomial algebra. This is a quasi-isomorphism of actual algebras. Odd generators are exterior in characteristic zero. No regular-sequence condition on the \(g_i\) is asserted or required.
+
+### 3.197. Boundedness of the actual restricted affine stages
+
+The underlying module of (BLI.9) has only the finitely many exterior degrees \(0,-1,\ldots,-r\). It has no cohomology below \(-r\). Apply that construction at all closed points of \(\operatorname{Spec}H^0(A)\). These principal opens cover the whole spectrum: a nonempty closed complement in a finite-type complex algebra has a closed complex point, by the same Nullstellensatz. Quasi-compactness gives a finite subcover. Taking the largest of its finitely many exterior lengths yields
+\[
+        H^j(A)=0\qquad(j<-N_A)
+             \quad\text{for one finite }N_A.
+ \tag{BLI.10}
+\]
+Localization commutes with cohomology, so this conclusion follows from the displayed finite cover. If \(H^0(A)=0\), the unit is a boundary and multiplication by a primitive of it contracts \(A\); the conclusion is immediate in that case. This also handles the empty affine stage.
+
+Every actual restricted power stage \(A_{E,n}=B_{E,n}\) satisfies (BLI.5). Its ordinary and higher finiteness are (RBC.25), and the actual cotangent triangle immediately following that equation proves its perfect Tor amplitude \([-1,0]\) at the universal point. Consequently
+\[
+     H^j(A_{E,n})=0\qquad
+             (j<-N_{E,n}\text{ or }j>0)
+ \tag{BLI.11}
+\]
+for a finite bound depending on that stage. The proof does not demand a bound uniform in all stages. The same applies to each frame-action-nerve affine:
+\[
+ A_{E,n}\otimes_{\mathbf C}\mathcal O(H)^{\otimes s}
+       \text{ has cohomology in }[-N_{E,n},0].
+ \tag{BLI.12}
+\]
+Indeed the extra algebra is ordinary and flat over the coefficient field, so its tensor computes these same cohomology groups tensored with that algebra. All the affine targets needed below are thus cohomologically bounded, even when their chosen semifree chain models have generators in arbitrarily negative degrees.
+
+### 3.198. Bounded affine presentations and coefficient limits
+
+Let \(\mathcal C_b\) be the full category of cohomologically bounded derived affines equipped with maps to the actual framed restricted functor. The full effectivity proof of (RBC.22) works using this subcategory:
+\[
+          \operatorname*{colim}_{T\in\mathcal C_b}T
+                   \xrightarrow{\sim}\mathcal Y^{\mathrm{restr}}.
+ \tag{BLI.13}
+\]
+Here is why the restriction of the index is legitimate. Every restricted affine point, including a point with unbounded connective coefficients, factors through a power stage by (RBC.17) and (RBC.21). That stage is now bounded by (BLI.11). Any finite collection of affine lifts is contained in a common completion after enlarging the coefficient coalgebra. The full finite-limit and cone argument (RBC.19)–(RBC.20) then puts their maps and any finite coherent homotopies into a common power stage. These target cones are bounded by (BLI.11); they do not require the source affines to be bounded. Thus finite diagrams in \(\mathcal C_b\) have those same coherent cones. Over a fixed test point the lift category is nonempty, joins any two components, and contracts every finite sphere of lift choices. Its fibre colimit is contractible. The actual pointwise colimit and finite-limit argument of (RBC.22) consequently gives (BLI.13) on every connective DG test algebra and every higher mapping space.
+
+Write \(\mathscr I=\mathscr I_X\) and \(\mathscr Q=\mathscr Q_X\). Both are compactly generated: the first is the ind-category of the full bounded finite-connection DG category, and the second is either the same category or the full Hopf module category (RSC.14), (RSC.24). The module-category dual and diagonal bar contractions (SUL.22)–(SUL.23) apply to every compactly generated DG category, so both are dualizable. Tensoring by a dualizable category \(\mathscr J\) has both adjoints given by tensoring with \(\mathscr J^\vee\); their triangles are those diagonal bar contractions. It therefore preserves limits, as well as colimits. In particular
+\[
+ \mathscr J\otimes\operatorname{QCoh}(\mathcal Y^{\mathrm{restr}})
+   \simeq\lim_{T\in\mathcal C_b^{\mathrm{op}}}
+                  \mathscr J\otimes\operatorname{QCoh}(T),
+       \qquad\mathscr J=\mathscr I,\mathscr Q.
+ \tag{BLI.14}
+\]
+Quasicoherent sheaves take the actual prestack colimit to this limit by their affine-point definition. Tensoring by \(\operatorname{Mod}_A\) identifies \(\mathscr J\otimes\operatorname{Mod}_A\) with internal \(A\)-modules: on a compact-generator model these are modules over the generator DG category with commuting \(A\)-action, and the free action bars prove the comparison on all objects. This proves the coefficient interpretation used in (BLI.14).
+
+Apply the same argument to the whole \(H\)-frame-action nerve. Products of bounded stages with \(H^s\) are bounded by (BLI.12). On every nerve level the preceding bounded-affine presentation and coefficient comparison are actual ones, and all their faces and degeneracies are the original frame maps. Full torsor descent (RBC.23) and limit preservation therefore give
+\[
+ \mathscr J\otimes\mathcal A
+  \simeq\lim_{[s]\in\Delta}
+      \mathscr J\otimes
+        \operatorname{QCoh}(\mathcal Y^{\mathrm{restr}}\times H^s).
+ \tag{BLI.15}
+\]
+No assertion that ind-completion commutes with a limit is used. The limit-preserving functor is tensor by the already constructed dualizable category \(\mathscr J\); \(\mathscr I\) itself need not be left-complete.
+
+### 3.199. Universal coefficients in the ind-connection category
+
+The normalized finite representation \(V\) has its universal coefficient object in \(\mathcal A\otimes\mathscr Q\), by (RSP.1) and the affine-point coefficient limit just proved. At a bounded stage the same object lies in the fully faithful internal category \(\operatorname{Mod}_{A_{E,n}}(\mathscr I)\), by (RSP.11). The assertion also holds on all frame-nerve bounded stages by (BLI.12). All transition, representation, tensor and symmetry maps lift through the full inclusion. Their entire spaces of lifts over the specified maps are contractible: this is exactly full faithfulness, not a choice of ordinary cohomology identifications. Thus the coherent diagrams descend by (BLI.14)–(BLI.15) to
+\[
+       \mathcal E_V\in\mathcal A\otimes\mathscr I_X,
+       \qquad
+       \mathcal E:\operatorname{Rep}(H)
+                 \longrightarrow\mathcal A\otimes\mathscr I_X.
+ \tag{BLI.16}
+\]
+The functor is continuous and symmetric monoidal: construct its maps first on finite representations, where they are the uniquely lifted maps, and then extend by the full representation generator bars of §3.104. These bars also retain every transformation and higher path.
+
+At every bounded stage, the normalized operator image of \(\mathcal E_V\) is the original universal flat-bundle coefficient, by (RSP.11), (RSC.2) and (RDI.14). The full operator category on the proper curve is also compactly generated and dualizable, so its tensor likewise preserves these coefficient limits. Hence this equality descends to the actual global operator coefficient. We have identified these universal coefficients, without asserting an embedding of every object of the completed category into the operator category.
+
+Pull (BLI.16) back along an arbitrary affine restricted point. It supplies an ind-target lift of the whole normalized tensor functor, including its internal scalar action and every higher map. The inclusion of internal module categories is fully faithful for every \(A\): its action diagrams and their mapping spaces are the same full diagrams in \(\mathscr I\) and \(\mathscr Q\), and tensor by a scalar complex stays in the continuous ind-category. Thus
+\[
+ \begin{gathered}
+ \operatorname{Fun}^{\mathrm L,\otimes,\mathrm{rt}}
+       (\operatorname{Rep}(H),\operatorname{Mod}_A(\mathscr I_X))^\simeq\\
+ \xrightarrow{\sim}
+ \operatorname{Fun}^{\mathrm L,\otimes,\mathrm{rt}}
+       (\operatorname{Rep}(H),\operatorname{Mod}_A(\mathscr Q_X))^\simeq,
+       \qquad A\text{ connective}.
+ \end{gathered}
+ \tag{BLI.17}
+\]
+Right t-exactness is unchanged, since the full inclusion has the same detected cohomology on its objects. The source maps to the right by the original inclusion, and the universal lift proves essential surjectivity. Full action-diagram faithfulness proves the mapping-space assertion. This is a comparison of normalized tensor functors and their finite projective coefficient values. It is not the false whole-category assertion
+\[
+       \operatorname{Mod}_A(\mathscr I_X)
+          =\operatorname{Mod}_A(\mathscr Q_X)
+                     \quad\text{for all objects}.
+ \tag{BLI.18}
+\]
+The projective-line example below keeps that distinction with unbounded scalar parameters.
+
+### 3.200. Recovering the full parameterized Hecke comparison
+
+Let \(\mathcal D_X=\operatorname{Dmod}(X)\), and write \(\iota_X:\mathscr I_X\hookrightarrow\mathcal D_X\) for the full continuous normalized embedding (RSC.3). It sends the normalized connection unit to \(\omega_X\). Use the actual evaluation and coevaluation of (SDG.1)–(SDG.3): evaluation is proper image of \(!\)-tensor, and coevaluation is \(\Delta_*\omega_X\). Their two triangles give, for any DG category \(\mathcal W\), the full coefficient-kernel comparison
+\[
+ \mathcal W\otimes\mathcal D_X
+   \xrightarrow{\sim}
+        \operatorname{Fun}^{\mathrm L}(\mathcal D_X,\mathcal W),
+ \quad
+ Z\longmapsto\bigl[N\longmapsto
+       (\operatorname{Id}_{\mathcal W}\otimes p_{X,*})
+                       (Z\otimes^!N)\bigr].
+ \tag{BLI.19}
+\]
+An inverse tensors the functor with the actual coevaluation and then evaluates its first factor. Expanding the two composites inserts \(\Delta_*\omega_X\), and the actual two kernel triangles of §3.72 contract them to the identity. This proves both essential surjectivity and the full mapping-complex comparison. In particular the test modules are all full D-modules; restricting them to holonomic parameter modules would not give this assertion. The constant kernel \(\Delta_*\mathbf C_X\) would have the erroneous shift of Solution 3.BI and is not used.
+
+Let \(F\in\mathcal H_{\mathrm r}(\mathcal M)\), and put \(n=U_KF\). For the inserted Ran object with representation \(V\) and an arbitrary parameter \(N\in\mathcal D_X\), (UID.13) is the comparison between the proper parameter integrals of \(\mathrm H_V(n)\) and of \(n\otimes_{\mathcal A}(\operatorname{Id}_{\mathcal A}\otimes\iota_X)\mathcal E_V\). Here \(\mathrm H_V\) is the unintegrated geometric Hecke functor of (RA.13), with its same normalization. The coefficient side is exactly the universal one by §3.199 and (SPC.4)–(SPC.9). Those comparisons are natural for the whole DG category of \(N\)'s, by the full Ran module structure. Apply (BLI.19) with \(\mathcal W=\mathcal M\otimes\mathcal A\). It recovers the actual unintegrated comparison
+\[
+       \mathrm H_V(n)
+          \xrightarrow{\sim}
+       n\otimes_{\mathcal A}
+          (\operatorname{Id}_{\mathcal A}\otimes\iota_X)\mathcal E_V.
+ \tag{BLI.20}
+\]
+Its tensor, unit, collision and higher relations are recovered too, since (BLI.19) is fully faithful on transformation spaces. For a finite set \(I\), repeat the argument using the external product kernel and the finite proper Fubini comparison (SPC.8)–(SPC.9). This gives
+\[
+       \mathrm H_{\vec V}(n)
+            \simeq n\otimes_{\mathcal A}\mathcal E^I_{\vec V},
+       \qquad
+       \mathcal E^I_{\vec V}
+           \in\mathcal A\otimes\mathscr I_X^{\otimes I},
+ \tag{BLI.21}
+\]
+with the normalized operator embedding understood. External coefficients followed by multiplication in the common \(\mathcal A\)-factor construct \(\mathcal E^I\). All finite-set transition comparisons are those of the original universal tensor functor. This proves an actual parameterized eigen-family statement, rather than only its integrated or pointwise version.
+
+### 3.201. The idempotent has an actual Hecke-lisse image
+
+Take \(n=U_KP^{\mathrm{enh}}(m)\) in the preceding formula. The right side of (BLI.20) is the image of an object of \(\mathcal M\otimes\mathcal A\otimes\mathscr I_X\). Apply continuous \(\Gamma_!\) in the coefficient factor. It commutes with the independent first-factor Hecke functor by the same tensor and action bars used in (UID.14). Thus
+\[
+ \mathrm H_V(\Pi_{\mathrm r}m)
+    \simeq(\operatorname{Id}_{\mathcal M}\otimes\Gamma_!
+                                    \otimes\operatorname{Id}_{\mathscr I_X})
+             (n\otimes_{\mathcal A}\mathcal E_V)
+           \in\mathcal M\otimes\mathscr I_X.
+ \tag{BLI.22}
+\]
+The membership means the actual image under the normalized operator embedding. That embedding stays fully faithful after tensoring with the compactly generated \(\mathcal M\). Indeed the generator duality of (SUL.22) identifies tensoring with \(\mathcal M\) with the continuous functor category out of \(\mathcal M^\vee\); postcomposition with a fully faithful functor is fully faithful on all transformation complexes. For several coordinates, external compact connection complexes have the full tensor Hom comparison by the finite Spencer–Čech product proof (SPC.8). Their compact operator images and the full multi-object bars give the corresponding fully faithful embedding into \(\operatorname{Dmod}(X^I)\). Applying (BLI.21) therefore yields the entire compatible system
+\[
+       \mathrm H_{\vec V}(\Pi_{\mathrm r}m)
+                  \in\mathcal M\otimes\mathscr I_X^{\otimes I}
+                  \subset\mathcal M\otimes\operatorname{Dmod}(X^I).
+ \tag{BLI.23}
+\]
+This gives Hecke-lisse membership for the actual geometric idempotent over the complex numbers, on all the unbounded inputs and bundle components of (RA.17). The implication from this categorical membership to nilpotent singular support requires the full Hecke-lisse support criterion at this same scope.
+
+A full-image criterion takes the following conditional form. Let \(\mathcal N\subset\mathcal M\) be a full subcategory preserved by the Ran action. Suppose that action on \(\mathcal N\) factors through a continuous unital \(\mathcal A\)-action \(\Psi\), and suppose the actual functor \(\Pi_{\mathrm r}\) lands in \(\mathcal N\). Then
+\[
+       \Pi_{\mathrm r}|_{\mathcal N}
+          =\Psi(\mathsf L(p))
+             \xrightarrow[\theta_{\mathbf1}]{\sim}\Psi(\mathbf1)
+             \simeq\operatorname{Id}_{\mathcal N}.
+ \tag{BLI.24}
+\]
+Both comparisons are the actual module natural maps from (UID.6) and the unit action, so hold on all morphisms and higher comparisons. The landing assumption contains the full essential image in \(\mathcal N\); the displayed identity puts every object of \(\mathcal N\) in that image. Hence the full image subcategory equals \(\mathcal N\). Applying this conclusion to nilpotent singular support requires proofs of those two geometric assumptions; neither is assumed here. In particular no stronger singular-support-only criterion for arbitrary D-modules is being asserted. For the distinction between categorical Hecke-lisse membership and a condition only on relative singular support, see [*The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), §14.1. The nilpotent singular-support and regularity conclusions are outside (BLI.23).
+
+![Finite local cotangent cancellation gives bounded exterior models for the actual restricted affine stages. Coherent bounded-stage descent lifts the universal coefficients into the ind-connection category. Full D-module kernel duality recovers the parameterized Hecke comparison, and continuous coefficient integration puts the actual idempotent image in the Hecke-lisse category. A projective-line completion example distinguishes this conclusion from an equality of the entire coefficient categories.](figures/bounded-charts-lisse-image.svg)
+
+**Figure 3.37.** The local models and stage bounds are (BLI.2)–(BLI.12); full coefficient descent is (BLI.13)–(BLI.17). The actual kernel and Hecke comparisons are (BLI.19)–(BLI.23). The nilpotent-image reduction (BLI.24) has two additional geometric hypotheses. Solutions 3.DJ–3.DL give the local cancellation, an unbounded finite-projective coefficient and an object outside the ind-category.
+
+### 3.202. Even resolution variables and bounded cohomology
+
+**Exercise 3.DJ.** Consider the free graded-commutative algebra
+\[
+ \begin{gathered}
+ A=\mathbf C[x,\eta,\theta,b],\qquad
+ |x|=0,\quad |\eta|=|\theta|=-1,\quad |b|=-2,\\
+ d\eta=d\theta=x^2,\qquad db=\theta-\eta.
+ \end{gathered}
+ \tag{BLI.25}
+\]
+Compute its cohomology and the cotangent fibre at the point \(x=0\). Give an actual contraction for the apparently unbounded resolution direction. Compare with the differential-zero algebra on \(x,\eta\).
+
+**Solution 3.DJ.** Put \(\zeta=\theta-\eta\). Then \(d\zeta=0\), and the algebra is the tensor product of \((\mathbf C[x,\eta],d\eta=x^2)\) and \((\mathbf C[b]\otimes\Lambda(\zeta),db=\zeta)\). In the second factor define a degree-minus-one homotopy by
+\[
+ h(b^n\zeta)=\frac{b^{n+1}}{n+1},\qquad h(b^n)=0
+       \quad(n\geq0),\qquad
+ dh+hd=\operatorname{Id}-\text{constant projection}.
+ \tag{BLI.26}
+\]
+Indeed \(d(b^{n+1})=(n+1)b^n\zeta\), while \(d(b^n\zeta)=0\); these identities prove the homotopy separately on the two displayed bases, including the constant. On the tensor product use \(h(c\otimes u)=(-1)^{|c|}c\otimes h(u)\), which cancels the cross terms with \(dc\). Projection and inclusion are inverse up to this actual homotopy. Multiplication by \(x^2\) in \(\mathbf C[x]\) is injective, by polynomial coefficients. Consequently
+\[
+ A\simeq(\mathbf C[x,\eta],d\eta=x^2),\qquad
+ H^0(A)=\mathbf C[x]/(x^2),\quad H^j(A)=0\ (j\ne0).
+ \tag{BLI.27}
+\]
+In the cotangent fibre the derivative of \(x^2\) is zero at \(x=0\), whereas the derivative of \(db\) identifies the \(b\)-direction with \(\theta-\eta\). Those two directions form a contractible pair. The remaining cotangent fibre has one generator in degree zero and one in degree minus one, with zero differential. This is exactly the cancellation in (BLI.8). Thus a polynomial variable in degree minus two in a resolution does not imply unbounded algebra cohomology. For comparison, if \(d\eta=0\), the finite exterior model has \(H^{-1}=\mathbf C[x]\eta\) and no cohomology below minus one; the exterior bound can be sharp.
+
+### 3.203. A finite-projective coefficient over an unbounded algebra
+
+**Exercise 3.DK.** Work on \(X=\mathbf P^1\), with \(\mathscr Q_X=\operatorname{Mod}_B\), \(B=T_{\mathbf C}(u)\), \(|u|=-1\), and central element \(v=u^2\). Take
+\[
+ \begin{gathered}
+ A=\mathbf C[z]\otimes\Lambda(\alpha,\beta),\qquad
+ |z|=-2,\quad |\alpha|=|\beta|=-1,\quad d=0,\\
+ P=Ae_1\oplus Ae_2,\qquad
+ u(e_1)=\beta e_2,\quad u(e_2)=\alpha e_1.
+ \end{gathered}
+ \tag{BLI.28}
+\]
+The scalar action is graded, so \(u(ae)=(-1)^{|a|}a\,u(e)\). Compute the first powers of \(u\), decide whether \(P\) belongs to \(\operatorname{Mod}_A(\mathscr I_X)\), and explain the role of the unbounded parameter \(z\).
+
+**Solution 3.DK.** Applying the displayed scalar sign gives
+\[
+ u^2(e_1)=\alpha\beta e_1,\qquad
+ u^2(e_2)=-\alpha\beta e_2,\qquad
+                 u^3=0,\quad u^2\ne0.
+ \tag{BLI.29}
+\]
+For example \(u(\beta e_2)=-\beta\alpha e_1=\alpha\beta e_1\). Every further product contains a repeated odd variable and is zero. These are identities of the actual full \(A\)-linear graded action; the differential is zero, so no action homotopies have been discarded. The module is free of rank two over the unbounded connective algebra \(A\). The variable \(z\) supplies cohomology in arbitrarily negative degrees but does not change these uniform action identities.
+
+More generally, on a free rank-\(n\) module with its generators in degree zero, a degree-minus-one action matrix has at most \(n^2\) odd entries. In a graded-commutative algebra of characteristic zero these entries anticommute and have square zero. If \(J\) is the ideal they generate, every product of \(n^2+1\) generators repeats one of them; moving it next to its repetition proves that product zero. Each matrix coefficient of the same power of \(u\) is such a product. Hence
+\[
+                 J^{\,n^2+1}=0,\qquad u^{\,n^2+1}=0.
+ \tag{BLI.30}
+\]
+This argument applies to an actual strict action on a free module; it does not assert the existence of a strict free presentation for every perfect module.
+
+In our example \(v^2=u^4=0\). The localization telescope therefore vanishes: inverting \(v\) makes a nilpotent endomorphism invertible and forces the identity to be zero. The exact torsion-kernel comparison (RSC.23), with its full scalar action bars, identifies
+\[
+ P\in\operatorname{Mod}_A(\mathscr I_X),\qquad
+ P\otimes_B^L B[v^{-1}]=0,
+                 \qquad A\text{ not cohomologically bounded}.
+ \tag{BLI.31}
+\]
+The original \(A\)-action lifts through the full torsion inclusion because all its operation diagrams do. Thus the assertion concerns the full internal coefficient module, and not just a list of its ordinary cohomology groups. It illustrates why an unbounded scalar algebra by itself is not an obstruction to the ind-target lift of finite-projective coefficients.
+
+### 3.204. The whole completed category is still larger
+
+**Exercise 3.DL.** With the same \(B,u,v\), put \(A=\mathbf C[z]\), \(|z|=-2\), \(d=0\). Compare the object and tower
+\[
+ L=B[v^{-1}]\otimes_{\mathbf C}A,\qquad
+ L_n=\tau^{\geq-n}L\quad(n\geq0)
+ \tag{BLI.32}
+\]
+in the internal completed coefficient category. Explain why their behaviour does not contradict (BLI.17).
+
+**Solution 3.DL.** The algebra \(B\) is associative; its odd generator need not square to zero. Its \(v\)-localization has nonzero basis elements \(u^j\) for every integer \(j\). Tensoring with the nonzero complex \(A\) is nonzero, so \(L\ne0\). The action of \(v\) is invertible on \(L\), which therefore lies outside the torsion subcategory \(\operatorname{Mod}_A(\mathscr I_X)\).
+
+Every \(L_n\) is bounded below. Since \(v\) has degree minus two, each of its cohomology classes is killed by a sufficiently high power of \(v\). The filtered localization telescope has zero cohomology and is zero. Thus each \(L_n\) belongs to the ind-category, by the same full scalar torsion-kernel comparison. The usual truncation action is an internal \(A\)-action because \(A\) is connective. Completeness of the full DG module category gives
+\[
+ L_n\in\operatorname{Mod}_A(\mathscr I_X)\quad\text{for every }n,
+ \qquad
+ \lim_n L_n=L\text{ in }\operatorname{Mod}_A(\mathscr Q_X),
+ \qquad L\notin\operatorname{Mod}_A(\mathscr I_X).
+ \tag{BLI.33}
+\]
+One can verify the limit on underlying complexes: in any fixed degree the truncation tower and its maps are eventually identical, and the product-fibre formula for the inverse limit contracts the remaining constant tail. Limits of action diagrams give the same full coefficient action on that limit. This is a non-effective Postnikov tower for the ind-category.
+
+The missing object is not a finite-projective coefficient. Indeed derived scalar extension along the augmentation \(A\to\mathbf C\), \(z\mapsto0\), gives
+\[
+       L\otimes_A^L\mathbf C=B[v^{-1}],
+             \qquad H^j(B[v^{-1}])\ne0\quad(j\in\mathbf Z).
+ \tag{BLI.34}
+\]
+The tensor identity holds because \(L\) is the tensor of the complex \(B[v^{-1}]\) with the free scalar module \(A\). A finite perfect \(A\)-module becomes a retract of a finite complex of finite-dimensional vector spaces after this scalar extension; its cohomology is bounded. A Tor-amplitude-zero finite-projective module becomes a finite vector space in degree zero. The displayed object is neither. Thus the whole-category failure (BLI.33) is compatible with the normalized finite-projective tensor-functor comparison (BLI.17).
+
+### 3.205. Presentable DG categories from small relations
+
+We will use a presentation that does not assume transition functors preserve compact objects. Fix an uncountable regular cardinal \(\kappa\). A \(\kappa\)-compact object is one whose full mapping complex preserves \(\kappa\)-filtered colimits. In a full module category over a small DG category, a module with fewer than \(\kappa\) free cells is \(\kappa\)-compact. Indeed a map or homotopy from each cell is a finite system of linear equations, and fewer than \(\kappa\) such systems can be solved at a common stage of a \(\kappa\)-filtered diagram. Equivalently, fewer than \(\kappa\) products and finite mapping fibres commute with those filtered colimits of complexes. The free module bar gives the same assertion for all higher maps and retracts.
+
+Every module is the \(\kappa\)-filtered union of its subresolutions with fewer than \(\kappa\) cells. The differential of each cell involves finitely many earlier cells; closing fewer than \(\kappa\) choices under those dependencies still uses fewer than \(\kappa\) cells. A \(\kappa\)-compact module is a retract of one such subresolution: factor its identity through that filtered union. Thus the \(\kappa\)-compact objects form a small category up to equivalence, closed under colimits with fewer than \(\kappa\) cells and under retracts. Given a set of continuous functors between compactly generated DG categories, we may choose one sufficiently large uncountable regular \(\kappa\) for which every functor preserves these \(\kappa\)-compact objects. To check this, bound the cell sizes of the images of a set of compact generators. Continuity then gives the bound for their fewer-than-\(\kappa\)-cell constructions and retracts.
+
+Here is the small-relations construction used below. Let \(\mathcal E\) be a small DG category, and let \(\mathcal S\) be a set of maps in \(\operatorname{Mod}_{\mathcal E}\). Enlarge \(\kappa\) so that their cofibres \(K_s\) are \(\kappa\)-compact. Call \(M\) local if \(\operatorname{RHom}(K_s,M)=0\) for every \(s\). Starting with \(M_0=M\), form
+\[
+ \begin{gathered}
+ M_{\alpha+1}=\operatorname{cofib}\left(
+    \bigoplus_{s\in\mathcal S}
+       K_s\otimes_{\mathbf C}\operatorname{RHom}(K_s,M_\alpha)
+          \xrightarrow{\mathrm{ev}} M_\alpha\right),\\
+ M_\lambda=\operatorname*{colim}_{\alpha<\lambda}M_\alpha
+ \quad(\lambda\text{ a limit}).
+ \end{gathered}
+ \tag{HLA.1}
+\]
+All complexes and evaluation maps here are full DG ones. Every class in a mapping complex from \(K_s\) is killed at the next step. The ordinal \(\kappa\) is \(\kappa\)-filtered, so compactness gives \(\operatorname{RHom}(K_s,M_\kappa)=0\). The fibre of \(M\to M_\kappa\) lies in the stable colimit closure of the \(K_s\). If \(T\) is local, applying \(\operatorname{RHom}(-,T)\) to the successor triangles and the limit colimits gives
+\[
+ \operatorname{RHom}(M_\kappa,T)
+       \xrightarrow{\sim}\operatorname{RHom}(M,T).
+ \tag{HLA.2}
+\]
+This is natural in both variables, since the entire construction uses evaluation and colimits. It proves that \(Q(M)=M_\kappa\) is left adjoint to the full inclusion of local objects. Colimits in that category are \(Q\) of the ambient colimits. Its inclusion preserves \(\kappa\)-filtered colimits, because the \(K_s\) detect locality and are \(\kappa\)-compact. If \(P\) is ambient \(\kappa\)-compact, the adjunction makes \(Q(P)\) \(\kappa\)-compact in the local category. Every local object is \(Q\) of its ambient \(\kappa\)-filtered presentation and hence is the same filtered colimit of such \(Q(P)\)'s. There are only a set of those objects up to equivalence. This proves accessibility; together with the reflected colimits it proves presentability.
+
+The actual universal property is
+\[
+ \operatorname{Fun}^{\mathrm L}(\mathcal E[\mathcal S^{-1}]_{\mathrm{pr}},\mathcal B)
+  \simeq
+ \{F\in\operatorname{Fun}^{\mathrm L}
+       (\operatorname{Mod}_{\mathcal E},\mathcal B):F(K_s)=0\text{ for all }s\}.
+ \tag{HLA.3}
+\]
+Here \(\mathcal E[\mathcal S^{-1}]_{\mathrm{pr}}\) denotes that local category, and \(\mathcal B\) is any presentable stable DG category. For the forward implication compose with \(Q\). Conversely, a functor killing every \(K_s\) takes the entire map \(M\to Q(M)\) to an equivalence. Its restriction to the local objects is continuous, since applying it to a reflected ambient colimit has the same result as applying it to the ambient colimit. These two constructions are inverse. Their evaluation maps prove the assertion on full transformation complexes and higher homotopies as well.
+
+In particular one may impose a small set of coherent transition equivalences and specified colimit relations on a small DG category. Use the full strings of the DG Grothendieck construction for transitions, as in (RN.11), and use maps from a formal colimit of representables to its specified representable for colimit relations. Equation (HLA.3) imposes precisely those relations. For a small stable category \(\mathcal K\) already closed under colimits of size less than \(\kappa\) and retracts, this constructs \(\operatorname{Ind}_\kappa(\mathcal K)\). Indeed the representable \(h_k\) is local, since \(\operatorname{RHom}(\operatorname{colim}k_j,k)=\lim_j\operatorname{RHom}(k_j,k)\). The images of representables are \(\kappa\)-compact generators. Every reflected module with fewer than \(\kappa\) cells is represented by the corresponding colimit in \(\mathcal K\), and its retract is represented as well. Thus every local module is a \(\kappa\)-filtered colimit of these representables, with exactly their original full mapping complexes. The same presentation constructs a presentable colimit of a small diagram of compactly generated categories: choose a common \(\kappa\), restrict to their \(\kappa\)-compact objects, and impose all their colimit and transition relations. No compactness of the transition images at the original cardinal is asserted.
+
+### 3.206. The actual continuous ind-connection coreflector
+
+Put \(\mathcal D=\operatorname{Dmod}(X)\), \(\mathscr I=\mathscr I_X\), and let \(i:\mathscr I\hookrightarrow\mathcal D\) be (RSC.3). Choose a small full DG category \(\mathscr L\) of bounded finite-connection complexes and their retracts. Its objects are compact in \(\mathcal D\), by the proper Spencer–Čech proof of (RSC.2), and \(\mathscr I=\operatorname{Ind}(\mathscr L)\). The full module bar therefore gives a right adjoint \(g\) and the evaluation counit
+\[
+ \begin{gathered}
+ g(N)(P)=\operatorname{RHom}_{\mathcal D}(iP,N),\qquad i\dashv g,
+       \qquad gi\simeq\operatorname{Id}_{\mathscr I},\\
+ p(N)=ig(N)
+    =\int^{P\in\mathscr L}
+        \operatorname{RHom}_{\mathcal D}(iP,N)\otimes iP
+           \xrightarrow{\epsilon_N}N.
+ \end{gathered}
+ \tag{HLA.4}
+\]
+The integral is the full DG coend with all its mapping complexes and bar faces. On a representable it contracts by Yoneda; on a general module its augmented free bar proves the adjunction and the formula. Compactness of every \(iP\) shows that \(g\) preserves filtered colimits and direct sums. It is exact, so it preserves all colimits: general colimits of complexes are obtained from sums, cofibres and their simplicial realization. Thus every functor displayed here is continuous.
+
+Let \(q_0\) be the cofibre of this counit. Applying \(g\) to its defining triangle gives zero, since the triangular identity makes \(g(\epsilon_N)\) an equivalence. We obtain actual natural triangles and idempotences
+\[
+ \begin{gathered}
+ p\longrightarrow\operatorname{Id}_{\mathcal D}\longrightarrow q_0,\\
+ p^2\simeq p,\quad q_0^2\simeq q_0,\quad pq_0=q_0p=0,\\
+ \ker(q_0)=i(\mathscr I).
+ \end{gathered}
+ \tag{HLA.5}
+\]
+The last equality follows in both directions from the counit triangle. The image of \(q_0\) is the right orthogonal to all \(iP\), by (HLA.4). This construction is on full unbounded D-modules; it is not a replacement of \(\mathscr I\) by its left completion.
+
+For any presentable \(\mathcal W\), tensor the adjunction and its two triangles by \(\mathcal W\). All its functors are continuous, and the unit remains an equivalence. Consequently
+\[
+ \begin{gathered}
+ \operatorname{Id}_{\mathcal W}\otimes i:
+        \mathcal W\otimes\mathscr I\hookrightarrow\mathcal W\otimes\mathcal D
+ \quad\text{is fully faithful},\\
+ \ker(\operatorname{Id}_{\mathcal W}\otimes q_0)
+       =\mathcal W\otimes\mathscr I.
+ \end{gathered}
+ \tag{HLA.6}
+\]
+The kernel equality is again the actual tensored counit triangle. In particular no compact-generation hypothesis on \(\mathcal W\) is needed in this assertion.
+
+### 3.207. Intersections of the coordinate images
+
+For a finite set \(J\), use the full exterior comparison (RN.9) to identify \(\operatorname{Dmod}(X^J)=\mathcal D^{\otimes J}\). On \(\mathcal W\otimes\mathcal D^{\otimes J}\), let \(p_j\) act as \(p\) in coordinate \(j\) and as the identity in every other factor. Its counit is \(\epsilon_j\). The full tensor interchange gives coherent natural comparisons
+\[
+ \begin{gathered}
+ p_jp_k\simeq p_kp_j\quad(j\ne k),\\
+ \prod_{j\in J}p_j
+   =(\operatorname{Id}_{\mathcal W}\otimes i^{\otimes J})
+      (\operatorname{Id}_{\mathcal W}\otimes g^{\otimes J}).
+ \end{gathered}
+ \tag{HLA.7}
+\]
+The two counits commute under these comparisons: on an exterior object they are evaluation in independent factors, and the full exterior bar extends that equality to every object and mapping complex. The same argument for any ordering or permutation proves all higher comparisons, including those of three or more factors.
+
+The right side of (HLA.7) is a coreflector onto the full image \(\mathcal W\otimes\mathscr I^{\otimes J}\). Thus
+\[
+ \bigcap_{j\in J}
+   \bigl(\mathcal W\otimes\mathcal D^{\otimes(J\setminus\{j\})}
+                               \otimes\mathscr I\bigr)
+       =\mathcal W\otimes\mathscr I^{\otimes J}
+ \tag{HLA.8}
+\]
+as full subcategories of the same operator category, with the coordinate factors placed in their indicated positions. Indeed membership in the \(j\)-th image says precisely that \(\epsilon_j(Z)\) is an equivalence. If all these maps are equivalences, their commuting composite is an equivalence from \((\prod_jp_j)Z\) to \(Z\). This puts \(Z\) in the right side. Conversely \(gi=\operatorname{Id}\) makes every coordinate counit an equivalence on that right side. This proof retains actual maps and all their coherences.
+
+For the empty set the product is the identity and both sides mean \(\mathcal W\). For two coordinates the criterion can also be written
+\[
+ (q_0\otimes\operatorname{Id})Z=0
+      =(\operatorname{Id}\otimes q_0)Z
+       \quad\Longleftrightarrow\quad Z\in\mathscr I\otimes\mathscr I,
+ \tag{HLA.9}
+\]
+with an arbitrary independent \(\mathcal W\)-factor understood. Commutation of the actual coreflectors is what makes this implication valid; arbitrary idempotent functors would not suffice.
+
+### 3.208. Presentability of a full simultaneous kernel
+
+We use the following concrete kernel lemma. Let \(\mathcal M\) and \(\mathcal B_a\) be compactly generated DG categories, let \(a\) range over a set, and let \(F_a:\mathcal M\to\mathcal B_a\) be continuous. Then
+\[
+ \mathcal N=\{m:F_a(m)=0\text{ for every }a\}
+       \subset\mathcal M
+ \tag{HLA.10}
+\]
+is a full presentable stable subcategory, with its colimits computed in \(\mathcal M\). Choose \(\kappa\) larger than the index set and the cell bounds for every image of a compact generator under every \(F_a\), as in §3.205. The product \(\mathcal B=\prod_a\mathcal B_a\) is compactly generated by generators in one coordinate at a time: their sums generate every tuple, with colimits computed coordinatewise. The combined continuous functor \(F:\mathcal M\to\mathcal B\) preserves \(\kappa\)-compact objects by this choice.
+
+Write any \(m\in\ker F\) as the \(\kappa\)-filtered colimit of \(\kappa\)-compact approximations \(c_i\). Given \(c_i\to m\), compactness of \(F(c_i)\) and \(F(m)=0\) give a later stage \(c_j\) at which the image transition \(F(c_i)\to F(c_j)\) is nullhomotopic. Repeat with \(c_j\), and take the colimit of the resulting countable chain. The result \(n\) remains \(\kappa\)-compact, because \(\kappa\) is uncountable. Each transition in the image chain is nullhomotopic, so its filtered cohomology colimit is zero in every degree. Thus
+\[
+                  c_i\longrightarrow n\longrightarrow m,
+         \qquad n\in\mathcal N\cap\mathcal M^\kappa.
+ \tag{HLA.11}
+\]
+The chain and its cone to \(m\) are taken in the original coherent approximation diagram. Nullhomotopies are used to prove its image colimit zero, not to discard the scalar or DG actions of that chain.
+
+This also supplies every required coherent cone. For a diagram of size less than \(\kappa\) in the factorization problem under a fixed \(c_i\to m\), take its colimit in the undercategory of \(c_i\). Concretely, amalgamate the repeated copies of \(c_i\) in the diagram colimit by their common map from \(c_i\); this is a pushout of colimits of size less than \(\kappa\). It stays in \(\mathcal M^\kappa\) and retains the specified cone to \(m\). Apply the same countable-chain construction to that object. Its result is a cone in \(\mathcal N\cap\mathcal M^\kappa\), under the original fixed map. The factorization category is therefore nonempty and \(\kappa\)-filtered. Its space of choices contracts every finite sphere. The full colimit bar consequently shows
+\[
+ m=\operatorname*{colim}_{\substack{n\to m\\n\in\mathcal N\cap\mathcal M^\kappa}}n,
+ \qquad
+ \mathcal N\simeq\operatorname{Ind}_\kappa
+                   (\mathcal N\cap\mathcal M^\kappa).
+ \tag{HLA.12}
+\]
+For clarity, the last small category is closed under colimits of size less than \(\kappa\) and retracts: \(F\) preserves those colimits, while such constructions preserve ambient \(\kappa\)-compactness. Its objects are also \(\kappa\)-compact in \(\mathcal N\), since the inclusion preserves colimits and is full. The small-relations presentation of §3.205 makes the displayed completion presentable. The augmentation just proved identifies it with the actual full kernel, including its mapping complexes. This proves the lemma without asserting that this kernel is compactly generated at the original cardinal.
+
+Tensor by a dualizable category preserves this kernel description. Its dual supplies both adjoints, so it preserves limits. The kernel is the actual pullback of \(F:\mathcal M\to\prod_a\mathcal B_a\) along the zero category; its objects have the contractible choice of an equivalence \(F(m)\simeq0\), hence form the full subcategory in (HLA.10). Tensoring the pullback and product therefore identifies \(\mathcal N\otimes\mathcal J\) with the simultaneous kernel of \(F_a\otimes\operatorname{Id}_{\mathcal J}\). Full faithfulness of the tensored inclusion also follows from \(\mathcal J\otimes-\simeq\operatorname{Fun}^{\mathrm L}(\mathcal J^\vee,-)\): postcomposition with a full inclusion is fully faithful on entire transformation complexes.
+
+### 3.209. The full Hecke-lisse subcategory and every coordinate
+
+Let \(\mathcal M\) be either full automorphic category in (RA.17). Choose a small skeleton of finite algebraic representations of \(H\), and use the actual unintegrated Hecke functors \(\mathrm H_V:\mathcal M\to\mathcal M\otimes\mathcal D\). Define
+\[
+ \begin{gathered}
+ F_V=(\operatorname{Id}_{\mathcal M}\otimes q_0)\mathrm H_V,\\
+ \mathcal M^{\mathrm{Hl}}
+     =\bigcap_V\ker F_V
+     =\{m:\mathrm H_V(m)\in\mathcal M\otimes\mathscr I
+                                      \text{ for every finite }V\}.
+ \end{gathered}
+ \tag{HLA.13}
+\]
+This is a full presentable stable subcategory by §3.208; its inclusion preserves colimits. Finite representation complexes and arbitrary representations give the same condition, because their exact finite cones, retracts and full continuous bars extend the functors and the kernel condition.
+
+Take \(m\in\mathcal M^{\mathrm{Hl}}\), a finite coordinate set \(J\), and labels \(\vec V\). The multi-coordinate Hecke object \(Z=\mathrm H_{\vec V}(m)\) belongs to each individual coordinate image in (HLA.8). For a fixed \(j\), construct it by first applying \(\mathrm H_{V_j}\) to \(m\), and then apply the remaining continuous Hecke functors to the \(\mathcal M\)-factor. They leave its \(\mathscr I\)-coordinate unchanged. The actual exchange and fusion comparisons of (RA.12)–(RA.17) identify this ordering with \(Z\), including along coincident-point diagonals. Thus (HLA.8) gives
+\[
+                  \mathrm H_{\vec V}(m)
+                         \in\mathcal M\otimes\mathscr I^{\otimes J}.
+ \tag{HLA.14}
+\]
+The finite-coordinate inclusions are full. Every exchange, unit, collision and higher relation consequently has its original uniquely lifted map between these objects; the space of lifts over the given ambient map is contractible. This includes all transition diagrams, not just restrictions to the disjoint-point locus.
+
+There is a stronger coefficient assertion. View \(\mathrm H_V(m)\) in \(\mathcal M\otimes\mathscr I\). Applying \(F_W\) in its first factor gives zero: the two-coordinate object lies in \(\mathcal M\otimes\mathscr I_W\otimes\mathscr I_V\) by (HLA.14), and \(q_0\) kills its \(W\)-coordinate. Since \(\mathscr I\) is dualizable, the tensored kernel conclusion of §3.208 implies
+\[
+ \begin{gathered}
+ \mathrm H_V^{\mathrm{Hl}}:
+       \mathcal M^{\mathrm{Hl}}\longrightarrow
+                 \mathcal M^{\mathrm{Hl}}\otimes\mathscr I,\\
+ \mathrm H_{\vec V}^{\mathrm{Hl}}:
+       \mathcal M^{\mathrm{Hl}}\longrightarrow
+                 \mathcal M^{\mathrm{Hl}}\otimes\mathscr I^{\otimes J}.
+ \end{gathered}
+ \tag{HLA.15}
+\]
+For several coordinates apply the same argument with one additional Hecke functor and then the dualizable factor \(\mathscr I^{\otimes J}\). Dualizability follows from its compact-generator model, as in (SUL.22). No compact generation of \(\mathcal M^{\mathrm{Hl}}\) at the original cardinal is needed. Each restricted functor is continuous: its ambient functor is continuous, the kernel inclusion is full, and colimits in that kernel are the ambient ones. Full faithfulness of the inclusions after tensoring by \(\mathscr I^{\otimes J}\) retains every natural transformation and higher comparison.
+
+For a general stage \(\psi:I\to J\) in (RA.5), the collisions multiply the lisse factors belonging to each fibre of \(\psi\), and unused coordinates insert its unit. This is the restriction of \(\Delta_\psi^!\), since \(i\) is unital strong symmetric monoidal. Integrating against any full parameter \(N\in\operatorname{Dmod}(X^J)\) is a continuous functor on those independent lisse factors. Consequently
+\[
+  \Phi_\psi(\vec V,N;-)
+       \bigl(\mathcal M^{\mathrm{Hl}}\bigr)
+          \subset\mathcal M^{\mathrm{Hl}}.
+ \tag{HLA.16}
+\]
+The maps (RA.8)–(RA.10) and all their string coherences lift to this full subcategory. Apply the full Ran colimit (RN.11)–(RN.13) after tensoring its stages with \(\mathcal M^{\mathrm{Hl}}\). This constructs its actual continuous unital \(\mathcal R\)-action, and its inclusion in \(\mathcal M\) is an \(\mathcal R\)-module functor. This proof concerns all Ran parameter D-modules, including nonholonomic and unbounded ones.
+
+### 3.210. The canonical pairing of the ind-connection category
+
+The category \(\mathscr I\) has compact unit and dualizable compact objects. For a finite connection the dual is the ordinary dual connection with its evaluation and coevaluation; the normalized embedding takes these to the same operator maps. Duals extend through finite cones, shifts and retracts. These are all the compact objects of \(\operatorname{Ind}(\mathscr L)\), by its full finite-cell bar. Put
+\[
+ \Gamma_{\mathscr I}(E)=\operatorname{RHom}_{\mathscr I}(\mathbf1,E),
+ \qquad
+ \operatorname{ev}_{\mathscr I}(E,F)
+              =\Gamma_{\mathscr I}(E\otimes F).
+ \tag{HLA.17}
+\]
+Compactness of the unit makes \(\Gamma_{\mathscr I}\) continuous. For each compact \(P\), dual evaluation identifies \(\operatorname{ev}_{\mathscr I}(P^\vee,-)\) with the full representable \(\operatorname{RHom}(P,-)\). The compact-generator dual of (SUL.22) consists of these representables and their full module bars. Thus this exact pairing identifies \(\mathscr I\) with \(\mathscr I^\vee\). Explicitly the coevaluation and its triangles are
+\[
+ \begin{gathered}
+ K_{\mathscr I}=\int^{P\in\mathscr L}P\boxtimes P^\vee,\\
+ \int^{P\in\mathscr L}
+      P\otimes\Gamma_{\mathscr I}(P^\vee\otimes E)
+           \xrightarrow{\sim}E.
+ \end{gathered}
+ \tag{HLA.18}
+\]
+The last map is actual enriched Yoneda evaluation. The full two-sided DG bar, including its precomposition and postcomposition actions, contracts on every representable and then on every module. Exchanging the factors gives the other triangle. Hence these are actual categorical duality maps, not a finite-dimensional pairing on cohomology.
+
+Under this self-duality and (SDG.1), the transpose of \(i\) is exactly the continuous right adjoint \(g\). For compact \(P\), the adjunction and finite connection duality give
+\[
+ \begin{aligned}
+ \Gamma_{\mathscr I}(P\otimes gN)
+  &=\operatorname{RHom}_{\mathscr I}(P^\vee,gN)\\
+  &=\operatorname{RHom}_{\mathcal D}(i(P^\vee),N)
+    =p_{X,*}(iP\otimes^!N).
+ \end{aligned}
+ \tag{HLA.19}
+\]
+Here the last equality uses the full proper-curve adjunction and the normalized unit \(\omega_X\), as in (RA.1)–(RA.4). Both sides preserve colimits in \(P\) and \(N\), so the full compact bars extend this equality to all objects and maps. Its representing comparison is therefore the actual transpose, with its full naturality. In particular the functional of an arbitrary parameter \(N\) on a lisse coefficient depends on \(gN\), not on a truncation or a pointwise value of \(N\).
+
+### 3.211. The transposed coalgebra and the collision maps
+
+Transpose the continuous symmetric tensor product and unit of \(\mathscr I\) using (HLA.18). This gives a counital cocommutative coalgebra in presentable DG categories:
+\[
+ \begin{gathered}
+ \delta_{\mathscr I}:\mathscr I\longrightarrow\mathscr I\otimes\mathscr I,\\
+ e_{\mathscr I}=\Gamma_{\mathscr I}:\mathscr I\to\operatorname{Vect},\\
+ \operatorname{ev}_{\mathscr I^{\otimes2}}(E\boxtimes F,\delta_{\mathscr I}Q)
+       =\operatorname{ev}_{\mathscr I}(E\otimes F,Q).
+ \end{gathered}
+ \tag{HLA.20}
+\]
+This formula specifies the continuous functor uniquely, since the full duality and exterior bar identify all representing objects and maps. Associativity, symmetry and unit diagrams transpose to the coassociativity, cocommutativity and counit diagrams with their entire coherences.
+
+The corresponding coalgebra on \(\mathcal D\) is the actual proper diagonal direct image \(\Delta_*\), with counit \(p_{X,*}\). Indeed transposing \(\Delta^!\) under (SDG.1) is exactly proper projection formula, and the unit transpose is the full proper parameter integral. Because \(i\) is strong symmetric monoidal, its transpose \(g\) is a map of those coalgebras:
+\[
+       (g\otimes g)\Delta_*\simeq\delta_{\mathscr I}g,
+       \qquad \Gamma_{\mathscr I}g\simeq p_{X,*}.
+ \tag{HLA.21}
+\]
+These comparisons follow by transposing the actual multiplication and unit squares of \(i\), so retain all higher relations. For an arbitrary map \(\beta:J_2\to J_1\), let \(\delta_{\mathscr I}^{\beta}\) split each \(J_1\)-factor among its \(\beta\)-preimages, using its counit when the preimage is empty. The full iterated comparison is
+\[
+      g^{\otimes J_2}(\Delta_\beta)_*
+           \simeq\delta_{\mathscr I}^{\beta}g^{\otimes J_1}.
+ \tag{HLA.22}
+\]
+All maps of finite sets, including unused coordinates, are covered by the coalgebra axioms just proved. These are transposed collision maps. They do not assert that the ambient diagonal direct image preserves lisse objects, or that \(i\) itself is a coalgebra map. Solution 3.DN distinguishes those assertions explicitly.
+
+### 3.212. The full lisse-coefficient Ran category and its action
+
+Use the same finite-point indexing category as (RN.8). At \(\psi:I\to J\), replace its parameter category by the transposed lisse coalgebra, and form
+\[
+ \mathcal R_{\mathscr I}
+    =\operatorname*{colim}_{\psi:I\to J}
+        \operatorname{Rep}(H)^{\otimes I}\otimes\mathscr I^{\otimes J}.
+ \tag{HLA.23}
+\]
+For a transition \((\alpha,\beta)\) the coefficient functor is \(\operatorname{mult}^{\alpha}\otimes\delta_{\mathscr I}^{\beta}\). This is an actual presentable colimit: use the small-relations construction of §3.205 at one common sufficiently large \(\kappa\) for its small diagram of stage functors. The full DG Grothendieck strings retain every transition and higher composition; the specified colimit relations retain each entire stage. Formula (HLA.3) then says that a continuous functor out is exactly a coherent compatible family of continuous stage functors, on all transformation complexes. This construction does not require \(\delta_{\mathscr I}\) to preserve compact objects. Disjoint union of finite sets and exterior tensor of stages gives the continuous symmetric tensor on the colimit: tensor preserves colimits in each variable, and all associativity, symmetry and empty-set maps are the same stage maps and coherent strings.
+
+Equation (HLA.22) gives the actual continuous strong symmetric monoidal functor
+\[
+ \begin{gathered}
+ Q_{\mathrm{Ran}}:\mathcal R\longrightarrow\mathcal R_{\mathscr I},\\
+ \operatorname{ins}_{\psi}(\vec V\otimes N)
+       \longmapsto
+ \operatorname{ins}_{\psi}(\vec V\otimes g^{\otimes J}N).
+ \end{gathered}
+ \tag{HLA.24}
+\]
+No localization or fully faithful adjoint for this functor is inferred. Its definition uses all the transition maps of the full source Ran category, including the proper diagonal and projection maps.
+
+Let \(\widehat{\mathrm H}_{\psi}^{\mathrm{Hl}}(\vec V;m)\) denote (HLA.15) with the factors collapsed by the fibres of \(\psi\), inserting units at unused coordinates. It lies in \(\mathcal M^{\mathrm{Hl}}\otimes\mathscr I^{\otimes J}\). The continuous stage operations
+\[
+ \begin{aligned}
+ \Phi^{\mathscr I}_\psi(\vec V,Q;m)
+   &=(\operatorname{Id}_{\mathcal M^{\mathrm{Hl}}}
+                   \otimes\operatorname{ev}_{\mathscr I^{\otimes J}})\\
+   &\qquad\bigl(\widehat{\mathrm H}_{\psi}^{\mathrm{Hl}}(\vec V;m)\otimes Q\bigr),\\
+ \Phi_\psi(\vec V,N;m)
+   &\simeq\Phi^{\mathscr I}_\psi
+                      (\vec V,g^{\otimes J}N;m)
+ \end{aligned}
+ \tag{HLA.25}
+\]
+use the full evaluation pairing, with the indicated lisse and parameter factors paired coordinatewise. The second line is (HLA.19), extended by the entire exterior bar. It is natural on all unbounded parameters.
+
+For a transition \((\alpha,\beta)\), coefficient collisions give the same multiplication of the lisse-valued Hecke factors as in (RA.8). Moving that multiplication through evaluation gives precisely \(\delta_{\mathscr I}^{\beta}\), by (HLA.20). Thus
+\[
+ \Phi^{\mathscr I}_{\psi_2}
+      (\operatorname{mult}^{\alpha}\vec V,
+                     \delta_{\mathscr I}^{\beta}Q;m)
+       \simeq\Phi^{\mathscr I}_{\psi_1}(\vec V,Q;m).
+ \tag{HLA.26}
+\]
+The equality \(\psi_1=\beta\psi_2\alpha\) has the same variance as (RA.7). Tensor transpose respects all the coherence diagrams; the ambient full Hecke diagrams lift uniquely through (HLA.15). This proves every string comparison in (HLA.26). Apply the actual colimit (HLA.23) after tensoring its stages with \(\mathcal M^{\mathrm{Hl}}\). This gives
+\[
+ \begin{gathered}
+ \Phi^{\mathscr I}:\mathcal R_{\mathscr I}\otimes\mathcal M^{\mathrm{Hl}}
+                    \longrightarrow\mathcal M^{\mathrm{Hl}},\\
+ \Phi|_{\mathcal M^{\mathrm{Hl}}}
+       \simeq\Phi^{\mathscr I}(Q_{\mathrm{Ran}}\otimes\operatorname{Id}).
+ \end{gathered}
+ \tag{HLA.27}
+\]
+The operation is a continuous unital action. Disjoint unions use the actual independent-coordinate Hecke compositions and the product evaluation; their empty instance is the unit. All associativity and symmetry comparisons are the lifted full Hecke comparisons. This establishes the whole action factorization through the lisse-coefficient Ran category, rather than separate factorizations of isolated point operations.
+
+### 3.213. The comparison with the restricted spectral category
+
+The actual universal functor \(\mathcal E:\operatorname{Rep}(H)\to\mathcal A\otimes\mathscr I\) in (BLI.16) defines compatible continuous stage functors out of (HLA.23): multiply its coefficient factors along \(\psi\) and evaluate against the full \(Q\in\mathscr I^{\otimes J}\). The same transposition (HLA.20) proves their transition comparisons. Their full colimit gives
+\[
+ \begin{gathered}
+ L_{\mathscr I}:\mathcal R_{\mathscr I}\longrightarrow\mathcal A,\\
+ L_{\mathscr I}(\operatorname{ins}_\psi(\vec V\otimes Q))
+      =\operatorname{ev}_{\mathscr I^{\otimes J}}
+                   (\mathcal E_\psi(\vec V),Q).
+ \end{gathered}
+ \tag{HLA.28}
+\]
+This functor is continuous strong symmetric monoidal. On exterior generators its tensor comparison is the symmetric tensor comparison of the universal functor and independent evaluation. Continuity and the full stage bars extend it to all coefficients; the same transition strings give all its coherences. The actual operator-coefficient identification in §3.199 and (HLA.19) identify its composite:
+\[
+                      L_{\mathscr I}Q_{\mathrm{Ran}}\simeq\mathsf L.
+ \tag{HLA.29}
+\]
+This is an equality of the actual full Ran coefficient functors, not merely of their values at ordinary points.
+
+There is a precise conditional consequence. If \(L_{\mathscr I}\) is an equivalence, transport (HLA.27) to a unital \(\mathcal A\)-action on \(\mathcal M^{\mathrm{Hl}}\). The actual geometric idempotent lands there by (BLI.23). Apply (BLI.24) to this full subcategory and the actual composite (HLA.29); it gives
+\[
+ \begin{gathered}
+ L_{\mathscr I}\text{ an equivalence}\\
+ \Longrightarrow\quad
+ \Pi_{\mathrm r}|_{\mathcal M^{\mathrm{Hl}}}\simeq\operatorname{Id},\\
+ \operatorname{Im}_{\mathrm{full}}(\Pi_{\mathrm r})
+                          =\mathcal M^{\mathrm{Hl}}.
+ \end{gathered}
+ \tag{HLA.30}
+\]
+The equivalence hypothesis is a separate spectral comparison theorem. Equations (HLA.23)–(HLA.29) construct its actual source and comparison map; they do not establish that hypothesis. Identifying the Hecke-lisse category with nilpotent singular support, and proving original-field ind-regularity, also require their geometric support arguments. For the lisse-subcategory and spectral-decomposition framework, see [*The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), the subsection *Complements: de Rham and Betti spectral actions*.
+
+![The full ind-connection embedding has a continuous coreflector. Its independent coordinate projections commute and identify their full intersection. The Hecke-lisse category is a presentable simultaneous kernel and carries coherent lisse-valued Hecke operations. Duality transposes the connection tensor to the correct coefficient coalgebra; its actual Ran colimit acts on that category and maps to the restricted spectral category. The projective-line diagonal shows why transposed maps need not preserve compact objects, and a two-factor category separates idempotence from full faithfulness.](figures/hecke-lisse-action.svg)
+
+**Figure 3.38.** Coreflection and coordinate intersection are (HLA.4)–(HLA.9). The full kernel, all-coordinate operations and Ran stability are (HLA.10)–(HLA.16). The precise coefficient pairing, transposed collision maps and coefficient action are (HLA.17)–(HLA.27). The spectral comparison and conditional image statement are (HLA.28)–(HLA.30). Solutions 3.DM–3.DO distinguish actual membership, compactness of the diagonal and full faithfulness.
+
+### 3.214. Two independent torsion directions with unbounded coefficients
+
+**Exercise 3.DM.** Work over \(R=\mathbf C[s,t]\), with the two independent torsion coreflectors. Put
+\[
+ \begin{gathered}
+ C_s=\operatorname{fib}(\mathbf C[s]\to\mathbf C[s,s^{-1}]),\qquad
+ C_t=\operatorname{fib}(\mathbf C[t]\to\mathbf C[t,t^{-1}]),\\
+ T=\mathbf C[z,z^{-1}],\quad |z|=-2,\qquad
+ K=C_s\otimes_{\mathbf C}C_t\otimes_{\mathbf C}T,\\
+ Z=K\oplus(R[s^{-1}]\oplus R[t^{-1}])\otimes_{\mathbf C}T.
+ \end{gathered}
+ \tag{HLA.31}
+\]
+Compute the joint coreflection of \(Z\), the cohomology of \(K\), and whether \(Z\) itself belongs to either individual torsion image. Retain the actual derived tensor and every integer power of \(z\).
+
+**Solution 3.DM.** Tensoring the two fibre triangles gives the total Čech complex \(R\to R[s^{-1}]\oplus R[t^{-1}]\to R[s^{-1},t^{-1}]\), in degrees zero, one and two. Its first map is the pair of restrictions and its second map is their difference; the composite is zero. The kernel at degree zero is zero. At degree one, two Laurent polynomials with equal image have only nonnegative powers in both variables and hence come from the same element of \(R\). Its last cokernel is the span of the monomials with both exponents strictly negative. Thus
+\[
+ H^{2-2r}(K)
+       =\bigoplus_{a,b\geq1}\mathbf C\,s^{-a}t^{-b}z^r
+            \quad(r\in\mathbf Z),
+ \qquad H^j(K)=0\quad(j\text{ odd}).
+ \tag{HLA.32}
+\]
+Tensor over the coefficient field is exact on complexes, so the Laurent-coefficient direct sum introduces no hidden derived terms. It has nonzero cohomology in arbitrarily positive and negative even degrees.
+
+Write \(\Gamma_s(M)=C_s\otimes_{\mathbf C[s]}^LM\), and similarly for \(t\). They commute by tensor associativity with its actual symmetry maps. On \(K\), their counits are both equivalences, since localization in either variable is zero. On \(R[s^{-1}]\) the \(s\)-coreflection is zero, and on \(R[t^{-1}]\) the \(t\)-coreflection is zero. The other individual coreflections of these two summands are nonzero principal-part complexes. It follows that
+\[
+ \begin{gathered}
+ \Gamma_s\Gamma_t Z\simeq\Gamma_t\Gamma_s Z\simeq K\ne0,\\
+ Z\notin\operatorname{Im}(\Gamma_s),\quad
+                  Z\notin\operatorname{Im}(\Gamma_t).
+ \end{gathered}
+ \tag{HLA.33}
+\]
+For example the localization of \(Z\) at \(s\) retains its nonzero \(R[s^{-1}]\otimes T\) summand, so the \(s\)-counit cannot be an equivalence. The corresponding argument applies at \(t\). Hence a nonzero joint coreflection is not a membership test. The criterion (HLA.8) requires every coordinate counit to be an equivalence, and then gives the full object, not merely a nonzero part.
+
+### 3.215. The transposed diagonal on the projective line
+
+**Exercise 3.DN.** On \(X=\mathbf P^1\), use the actual monoidal model (RSC.17)–(RSC.18):
+\[
+ \begin{gathered}
+ \mathscr I_X=\operatorname{Mod}_E,
+ \qquad E=\mathbf C[\eta]/(\eta^2),\quad |\eta|=2,\\
+ R=E\otimes E=\mathbf C[x,y]/(x^2,y^2),\quad |x|=|y|=2.
+ \end{gathered}
+ \tag{HLA.34}
+\]
+Identify \(\delta_{\mathscr I}(\mathbf1)\), decide whether it is compact, and compare it with \(\Delta_*\omega_X\). Explain what this says about compactness of the right adjoint \(g\).
+
+**Solution 3.DN.** The monoidal product on \(\operatorname{Mod}_E\) is derived tensor over \(E\), and its pairing (HLA.17) is the underlying complex of that tensor. The full module bar therefore identifies its categorical self-duality with the usual module duality: evaluation is balanced tensor over \(E\), and coevaluation is the diagonal \(E\)-bimodule. Multiplication \(\operatorname{Mod}_R\to\operatorname{Mod}_E\) is extension along \(R\to E\), \(x,y\mapsto\eta\). Its transpose is restriction along this map, by the balanced evaluation formula on free generators and then all module bars. Consequently \(\delta_{\mathscr I}(\mathbf1)\) is the actual diagonal module \(E=R/(x-y)\).
+
+It has an explicit full semifree resolution. Let \(P=\bigoplus_{n\geq0}Re_n\), \(|e_n|=n\), map \(e_0\) to \(1\in E\), and set
+\[
+ de_0=0,\qquad
+ de_n=
+ \begin{cases}
+   (x-y)e_{n-1},&n\text{ odd},\\
+   (x+y)e_{n-1},&n\text{ even},\ n>0.
+ \end{cases}
+ \qquad P\xrightarrow{\sim}E.
+ \tag{HLA.35}
+\]
+The differential has degree one, since the coefficients have degree two, and its square is zero because \((x-y)(x+y)=0\) in \(R\). To prove exactness, use the basis \(1,x,y,xy\). The kernel of multiplication by \(x-y\) is spanned by \(x+y,xy\), which is the ideal generated by \(x+y\). The other kernel is the ideal generated by \(x-y\). The augmentation kernel is that same latter ideal. Thus the alternating graded free resolution is exact. Each total cohomological degree has only finitely many terms, so this calculation also proves the asserted quasi-isomorphism of its total complex; no convergence of an infinite product is being used.
+
+After derived scalar extension \(R\to\mathbf C\), \(x,y\mapsto0\), all displayed differentials are zero. Hence
+\[
+        E\otimes_R^L\mathbf C
+              =\bigoplus_{n\geq0}\mathbf C[-n],
+              \qquad H^n(E\otimes_R^L\mathbf C)=\mathbf C
+                           \quad(n\geq0).
+ \tag{HLA.36}
+\]
+A perfect \(R\)-module would become a finite perfect complex over \(\mathbf C\), which has bounded cohomology. Thus this diagonal module is not perfect or compact, whereas the unit \(E\) is compact in \(\operatorname{Mod}_E\). The transposed coproduct does not preserve compact objects in this example.
+
+The ambient diagonal object \(\Delta_*\omega_X\) is nonzero and supported on the diagonal in \(X^2\). It is not in the full image of \(\mathscr I_X^{\otimes2}\): objects in that image are ind-complexes of external finite connections, whose cohomology is locally constant on an analytic product ball, while this object vanishes off the diagonal and has a nonzero diagonal stalk. For the local-constancy assertion, trivialize the finite connections on such a ball and use the full local Spencer comparison; their maps and ind-colimits give complexes of constant vector spaces there. This is also the chartwise ind-regular comparison in §§3.55–3.56. The coalgebra comparison instead says precisely
+\[
+            (g\otimes g)(\Delta_*\omega_X)
+                       \simeq\delta_{\mathscr I}(\mathbf1)=E
+                    \quad\text{in }\operatorname{Mod}_R.
+ \tag{HLA.37}
+\]
+The left-hand input is compact in the full operator category, since the normalized unit is compact and proper diagonal direct image preserves compact objects by (RN.5)–(RN.6). Its displayed image is not compact. In particular \(g\) cannot preserve all compact objects: otherwise \(g\otimes g\) would preserve the exterior compact generators and their finite-cell closure, hence every compact product object. This explains why the full presentation in (HLA.23) uses sufficiently large \(\kappa\)-compact objects, and why the ambient diagonal cannot simply be restricted to the lisse subcategory.
+
+### 3.216. Idempotence alone does not prove full faithfulness
+
+**Exercise 3.DO.** Let \(\mathcal C=\operatorname{Vect}\times\operatorname{Vect}\). Define continuous DG functors
+\[
+ \begin{gathered}
+ L(U,V)=U,\qquad G(U)=(U,U),\\
+                 F=GL,\qquad LG=\operatorname{Id},\quad F^2=F.
+ \end{gathered}
+ \tag{HLA.38}
+\]
+Does it follow that \(G\) is fully faithful, or that \(F\) is the identity on its full essential image? Compute full mapping complexes to decide.
+
+**Solution 3.DO.** A map in \(\mathcal C\) is an independent pair. Thus
+\[
+ \begin{gathered}
+ \operatorname{RHom}_{\mathcal C}(G(U),G(V))
+     =\operatorname{RHom}(U,V)\oplus\operatorname{RHom}(U,V),\\
+ G(f)=(f,f).
+ \end{gathered}
+ \tag{HLA.39}
+\]
+For nonzero \(U=V=\mathbf C\), the degree-zero map \((\operatorname{Id},0)\) is not in the diagonal image. Hence \(G\) is not full. Its full essential image consists of pairs whose two components are isomorphic, but its maps include all independent pairs between such objects. On the particular endomorphism just found,
+\[
+               F(\operatorname{Id},0)
+                    =(\operatorname{Id},\operatorname{Id})
+                       \ne(\operatorname{Id},0).
+ \tag{HLA.40}
+\]
+There cannot even be a natural equivalence between this restriction of \(F\) and the identity: conjugating the nonzero projection \((\operatorname{Id},0)\) by an equivalence of its two components cannot turn it into an identity on both components. This example satisfies all three functor relations in (HLA.38) strictly and disproves the claimed inference from those relations alone. It is a categorical test of insufficient hypotheses, not a model for the geometric Hecke action. In (HLA.30), full membership, actual action factorization and the specified module natural maps are precisely the additional data that yield the identity on the full subcategory.
+
+### 3.217. A local Koszul criterion from a residue cotangent fibre
+
+The local model in §3.196 has a useful residue-fibre formulation. Suppose that \(A\) is a connective complex commutative DG algebra, with
+\[
+ \begin{gathered}
+ R=H^0(A)\text{ finite type},\qquad
+ H^{-j}(A)\text{ finite over }R\quad(j\geq0),\\
+ L_{A/\mathbf C}\text{ perfect},\qquad
+ H^r(L_{A/\mathbf C}\otimes_A^L k(x))=0\quad(r\notin\{-1,0\})
+ \end{gathered}
+ \tag{RSE.1}
+\]
+at a closed point \(x\). Then a principal neighbourhood of \(x\) has an actual finite exterior Koszul model.
+
+Here is the construction, with only the displayed fibre bound as input. Choose a finite polynomial algebra \(P\to A\) surjective on \(H^0\). Add finite degree-minus-one generators whose differentials generate its kernel ideal, together with finite closed degree-minus-one generators hitting \(H^{-1}(A)\). Noetherian finiteness and the full semifree construction are those of §§3.158 and 3.196. Complete the resolution using cells of degrees at most minus two. In the residue cotangent fibre let \(W\) be its finite degree-minus-one generator space, let \(J\) be the image from degree minus two, and choose a constant complement \(U\). Finitely many degree-minus-two differentials span \(J\). They are literal polynomial syzygies \(\sum_j a_{\ell j}f_j=0\), because the only degree-minus-one monomials are the original generators.
+
+Invert the determinant of their \(J\)-coefficient block. Those syzygies express the discarded differentials in terms of the ones belonging to \(U\). The finite Koszul algebra \(B_0=P_\Delta[U]\) has the same \(H^0\) as \(A_\Delta\). Its cotangent map at the point is the two-term complex \([U\to\mathbf C^{\dim P}]\) mapping to the full cotangent fibre. It has the same degree-zero cokernel and degree-minus-one kernel; every other target fibre cohomology vanishes by (RSE.1). The relative cotangent module is perfect and has zero residue fibre. Apply the identity-based local vanishing lemma (BLI.2), and shrink once more. The relative cotangent module is zero. The full first-difference criterion (BLI.4) then gives
+\[
+ A[f^{-1}]\simeq
+       P'[\epsilon_1,\ldots,\epsilon_r],\qquad
+ |\epsilon_i|=-1,\quad d\epsilon_i=g_i\in P',\qquad f(x)\ne0,
+ \tag{RSE.2}
+\]
+where \(P'\) is a localization of the finite polynomial algebra. All maps are actual DG algebra maps. No regular-sequence hypothesis is imposed.
+
+If the fibre hypothesis holds at every closed point, these principal opens cover the entire spectrum. Otherwise their closed complement would have a closed complex point by the proved Nullstellensatz. A finite subcover exists by quasi-compactness. The largest exterior length gives
+\[
+             H^j(A)=0\quad(j<-N_A)
+                       \text{ for one finite }N_A.
+ \tag{RSE.3}
+\]
+If \(H^0(A)=0\), its unit is a boundary and the algebra is contractible, as in §3.197. Thus the empty case is included. The argument uses perfectness globally and the cotangent amplitude only at each chosen residue point; it does not assume a global Tor bound in advance.
+
+### 3.218. Finiteness and perfect cotangent of the full Betti algebra
+
+Let \(\mathcal Y_{\mathrm B}=\operatorname{Spec}B\) be the actual full framed Betti functor (RBC.6)–(RBC.8), constructed from the finite pointed good-cover model \(K\). Compactness of \(B\) as a connective commutative algebra is (RBC.24). In a semifree resolution, its identity factors through a finite cell subalgebra, by that compactness. Thus there are actual maps in the derived algebra category
+\[
+                    B\xrightarrow{s}Q\xrightarrow{r}B,
+                    \qquad rs\simeq\operatorname{Id}_B,
+                    \qquad Q\text{ a finite cell algebra}.
+ \tag{RSE.4}
+\]
+The finite-dependency argument in §3.145 ensures that the chosen cell subalgebra really is finite. The same Noetherian fixed-degree calculation there, followed by the cohomology retraction, gives
+\[
+ H^0(B)\text{ finite type over }\mathbf C,\qquad
+ H^{-j}(B)\text{ finite over }H^0(B)\quad(j\geq0).
+ \tag{RSE.5}
+\]
+Indeed a finite cell algebra has finitely many monomials of each fixed negative total degree over its degree-zero polynomial ring. Its kernels, images and cohomology are finite modules. The boundary ideal acts trivially on cohomology. Apply \(r\) to those finitely many module generators and their coefficients; the results generate over the retracted degree-zero ring. This proves the assertion for the full algebra, not just its restricted power stages.
+
+Cotangent functoriality in (RSE.4) gives
+\[
+ L_{B/\mathbf C}\longrightarrow
+     B\otimes_Q^L L_{Q/\mathbf C}\longrightarrow L_{B/\mathbf C},
+                 \qquad\text{composite }\simeq\operatorname{Id}.
+ \tag{RSE.6}
+\]
+For the first map, base-change the derivative of \(s\) along \(r\); the second is the derivative of \(r\). Their composite is the derivative of \(rs\). The middle module is perfect because a finite cell algebra has a finite free-cell cotangent module. Perfect modules are closed under retracts, so the full cotangent complex of \(B\) is perfect.
+
+### 3.219. Closed complex points and their entire cotangent fibres
+
+Every closed point of \(\operatorname{Spec}H^0(B)\) has residue field \(\mathbf C\). At such a point the associated functor sends a finite representation to a local system with finite-dimensional fibre in degree zero. All its transports have that same finite perfect fibre. The full bounded comparison (RBC.3) identifies these objects and all their maps with bounded finite-connection complexes. Hence its finite representation values, tensor maps and higher comparisons lift through the full embedding (RBC.4). The full representation bar extends that lift to every representation, and the chosen frame is retained. This proves
+\[
+              \mathcal Y^{\mathrm{restr}}(\mathbf C)
+                    \xrightarrow{\sim}\mathcal Y_{\mathrm B}(\mathbf C).
+ \tag{RSE.7}
+\]
+This is a statement about the original coefficient field. It does not say that every affine family has restricted variation. A variable ordinary character on an elliptic curve, as in §3.147 and Solution 3.DP below, distinguishes those assertions.
+
+At each of these points use the full nilpotent lift comparison (RBC.9) on every connective square-zero ideal. It identifies the entire derivative of the full Betti functor with the restricted framed derivative. Equations (DCT.8)–(DCT.12) consequently give
+\[
+ L_{B/\mathbf C}\otimes_B^L\mathbf C
+        \simeq K_F^\vee[-1],\qquad
+       H^j(K_F^\vee[-1])=0\quad(j\notin\{-1,0\}).
+ \tag{RSE.8}
+\]
+The shift is the actual framing shift: \(K_F\) is the fibre of the adjoint connection cohomology map to its value at the framed point. Its adjoint de Rham complex has degrees zero through two, and evaluation of a horizontal section is injective in degree zero. Dualizing its fibre removes the extra upper degree exactly as in §3.131. The comparison on all square-zero ideals proves an equality of full cotangent fibres, rather than just an equality of classical tangent spaces.
+
+### 3.220. A bounded quasi-smooth full Betti ambient
+
+Apply §§3.217–3.219 to \(B\). A finite principal-open cover has the actual local models
+\[
+                    B[f_\alpha^{-1}]
+                        \simeq P_\alpha[\epsilon_1,\ldots,\epsilon_{r_\alpha}],
+            \qquad |\epsilon_i|=-1,\quad d\epsilon_i\in P_\alpha.
+ \tag{RSE.9}
+\]
+For each such algebra its cotangent module is the finite two-term Jacobian complex with free relative generators in degrees minus one and zero. It therefore has Tor amplitude \([-1,0]\). These localizations cover \(\operatorname{Spec}H^0(B)\), so localization of a tensor with any ordinary coefficient module detects vanishing outside those two degrees. Hence
+\[
+                L_{B/\mathbf C}\text{ is perfect of Tor amplitude }[-1,0].
+ \tag{RSE.10}
+\]
+The largest of the finitely many exterior lengths also proves
+\[
+              H^j(B)=0\quad(j<-N_B\text{ or }j>0)
+                     \quad\text{for some finite }N_B.
+ \tag{RSE.11}
+\]
+Thus the actual full framed Betti affine is quasi-smooth, cohomologically bounded and almost of finite type. The argument does not use a classification of surfaces or a punctured-curve bouquet presentation. Products with the ordinary smooth group \(H^s\) remain bounded, since tensoring over the coefficient field with its ordinary coordinate algebra is flat. The full unframed Betti prestack is \(\mathcal Z_{\mathrm B}=[\mathcal Y_{\mathrm B}/H]\): forgetting the frame has the same actual faithfully flat frame torsor and whole action nerve as in (RBC.23), now for the full Betti functor.
+
+### 3.221. Full derived local systems with arbitrary categorical coefficients
+
+Write \(\mathcal L=\operatorname{Fun}(K,\operatorname{Mod}_{\mathbf C})\). Evaluation at the chosen point has a left adjoint \(a_x\), given by left Kan extension. Its fibre at a point \(y\) is the coefficient complex tensored with the chains of paths from \(x\) to \(y\). Since \(K\) is connected, evaluation is conservative, and it preserves all colimits because those are pointwise. The free-action bar of this adjunction has an extra unit degeneracy after evaluation. Its augmentation therefore becomes an equivalence there and hence is an equivalence in \(\mathcal L\). This proves the full module model
+\[
+ \mathcal L\simeq\operatorname{Mod}_{R_K},\qquad
+              R_K=C_*(\Omega(K,x),\mathbf C).
+ \tag{RSE.12}
+\]
+Here cohomological chains have nonpositive degrees; multiplication is actual loop composition with its full bar coherences. The same bar proves the mapping-complex comparison, so the assertion includes all derived actions. The object \(a_x(\mathbf C)\) is compact, since its Hom functor is evaluation, and it generates by that conservativity.
+
+For any presentable \(\mathbf C\)-linear DG category \(\mathcal T\), the same free-action bars give
+\[
+       \mathcal T\otimes\mathcal L
+          \simeq\operatorname{Mod}_{R_K}(\mathcal T)
+          \simeq\operatorname{Fun}(K,\mathcal T).
+ \tag{RSE.13}
+\]
+The first comparison identifies the free \(R_K\)-action in each variable; the relative tensor and free-forgetful bars have identical faces and contracting augmentations. The second uses the point-evaluation adjunction just described, now with values in \(\mathcal T\). It is valid without assuming \(\mathcal T\) dualizable. If \(\mathcal T\) is symmetric monoidal, the pointwise tensor has the loop-diagonal action on both sides, so this comparison retains the symmetric tensor and its unit.
+
+The compact-generator dual construction (SUL.22) applies to \(\mathcal L\). Moreover (RBC.3)–(RBC.4) embeds \(\mathscr I\) fully with compact images: the finite-CW Hom proof in §3.137 supplies the required compactness. Its entire right adjoint is therefore continuous by the coend argument of (HLA.4). We obtain
+\[
+ i_\infty:\mathscr I\hookrightarrow\mathcal L,
+       \qquad i_\infty\dashv g_\infty,\quad g_\infty i_\infty=\operatorname{Id},
+ \qquad \mathcal L\text{ dualizable}.
+ \tag{RSE.14}
+\]
+All tensor extensions of this inclusion remain full, with the actual counit test, as in (HLA.6). No identification of the entire ind-category with its completion is used.
+
+### 3.222. Regular frames and full categorical descent
+
+We need an explicit change-of-frame construction. Let \(\mathcal C\) be a presentable symmetric monoidal DG category equipped with a continuous strong symmetric monoidal functor \(u:\operatorname{Rep}(H)\to\mathcal C\), and put \(S=u(\mathcal O(H))\). The regular algebra has left translation as a representation and the commuting right-translation coaction. Complete reducibility and evaluation at the identity give
+\[
+ \mathcal O(H)\simeq\bigoplus_{V\text{ simple}}V^\vee\otimes V,
+ \qquad \mathbf C\longrightarrow\mathcal O(H)
+                   \xrightarrow{\lambda}\mathbf C,
+                   \quad\lambda(1)=1.
+ \tag{RSE.15}
+\]
+To check the multiplicity, an equivariant map from a simple \(V\) to regular functions is determined by evaluation at the identity; its inverse takes a functional to its matrix coefficient. This proves the displayed decomposition from complete reducibility, including the matrix-coalgebra coactions. Projection to the trivial component is \(\lambda\); it is compatible with the commuting translation. Complete reducibility and its extension from the semisimple Lie algebra and central torus to the connected reductive group are proved in Lesson 2, §4.5, using the Weyl–Casimir and trace-form arguments of [*The Killing form and Cartan's criteria*](../../RT-LIE/src/RT-LIE-03.md), Theorem 3.3, and [*Complete reducibility: Casimir elements and Weyl's theorem*](../../RT-LIE/src/RT-LIE-04.md), §§2–4. Rational representations are filtered unions of their finite-dimensional subrepresentations, so the decomposition extends to them.
+
+Applying \(u\) gives a retraction of \(\mathbf1_{\mathcal C}\to S\). Thus \(S\otimes-\) is conservative: every input and every morphism fibre is a retract of its tensor with \(S\). The regular torsor identity is
+\[
+                     S\otimes S\simeq S\otimes_{\mathbf C}\mathcal O(H),
+ \tag{RSE.16}
+\]
+with the first \(S\)-action and the right \(H\)-coaction. It is the image of the Hopf map corresponding to \((g,h)\mapsto(g,g^{-1}h)\), with its inverse. The antipode identities verify both composites; these are the full Hopf identities of (TBF.2)–(TBF.5).
+
+There is an actual equivalence
+\[
+         \mathcal C\xrightarrow{\sim}
+               (\operatorname{Mod}_S(\mathcal C))^H,
+         \qquad c\longmapsto S\otimes c,
+ \tag{RSE.17}
+\]
+where equivariance is the algebraic right-translation descent data. Here is a direct proof on the full categories. The matrix-coalgebra decomposition in (RSE.15) makes rational \(H\)-objects a sum of their isotypic components, also with coefficients in \(\mathcal C\): apply the coalgebra projections to the coaction and split the resulting orthogonal idempotents. Coassociativity and the counit identify their sum with the original object. Extracting the trivial component is consequently exact and continuous and commutes with tensoring by any independently trivially acted-on object.
+
+For an equivariant \(S\)-module \(M\), take \(M^H\) and the natural map \(S\otimes M^H\to M\). After tensoring with an independent first copy of \(S\), (RSE.16) reduces this map to the ordinary Hopf-module identity over \(\mathcal O(H)\). Explicitly, if \(\rho(m)=\sum m_0\otimes m_1\), the projector onto invariant vectors is \(m\mapsto\sum\operatorname{ant}(m_1)m_0\). Coassociativity and the two antipode identities show that its coaction is trivial and that it fixes every invariant. Multiplication and the inverse map \(m\mapsto\sum m_1\otimes\operatorname{proj}(m_0)\) are inverse. These formulas are compositions of the actual action and coaction morphisms and therefore make sense in the coefficient category; they commute with differentials and all maps. Invariants commute with this independent base change by the preceding trivial-component calculation. Conservativity of \(S\otimes-\) proves the original map an equivalence. Conversely \((S\otimes c)^H=c\) by (RSE.15). These natural inverse functors prove (RSE.17), including full mapping complexes and the entire coaction nerve.
+
+Finally the full free-module bar gives the symmetric monoidal framing identity
+\[
+ \operatorname{Vect}\underset{\operatorname{Rep}(H)}\otimes\mathcal C
+           \simeq\operatorname{Mod}_S(\mathcal C).
+ \tag{RSE.18}
+\]
+For \(\mathcal C=\operatorname{Rep}(H)\), (RSE.17) on the trivial regular torsor is the Hopf-module equivalence \(\operatorname{Mod}_{\mathcal O(H)}(\operatorname{Rep}(H))=\operatorname{Vect}\). Base-change its complete free \(\mathcal O(H)\)-module bar along \(u\). The resulting monad is \(S\otimes-\), and its free-forgetful augmentation identifies its entire category with \(\operatorname{Mod}_S(\mathcal C)\). This proves (RSE.18) on all objects and maps. A continuous strong symmetric monoidal functor from that category to a target \(\mathcal T\) is equivalently such a functor \(F:\mathcal C\to\mathcal T\) together with an algebra map \(F(S)\to\mathbf1_{\mathcal T}\). Relative tensor with that augmentation constructs it, and the same free bar proves uniqueness. The regular torsor identity turns this augmentation into a tensor trivialization \(F u(V)\simeq\underline V\otimes\mathbf1_{\mathcal T}\), and conversely the trivialization gives evaluation at the identity. Thus (RSE.18) has the actual universal property of a chosen frame.
+
+### 3.223. The full framed Betti comparison
+
+Construct \(\mathcal R_{\mathcal L}\) by the same finite-point DG relations as in §§3.205 and 3.212, using the coalgebra dual to the pointwise tensor of \(\mathcal L\). Its coefficient category is \(\mathcal L^\vee\); no self-duality defined by ordinary global sections is assumed. The full tensor universal property (SDG.4), with this duality in each parameter, identifies its continuous strong symmetric monoidal functors to \(\mathcal T\) with such functors \(\operatorname{Rep}(H)\to\mathcal T\otimes\mathcal L\). To verify the identification, transpose a one-point functor along evaluation and coevaluation. Transposing the collision relation gives its tensor comparison; the empty-point relation gives its unit. The finite-point bar supplies their associativity, permutation and higher comparisons. Conversely these comparisons define compatible functors on every finite-point term. Evaluation–coevaluation cancellation proves both composites on that entire bar. This argument uses the large-cardinal relation construction, and imposes no compact-preservation condition on the transposed collision maps.
+
+Evaluation at the chosen point gives \(\operatorname{Rep}(H)\to\mathcal R_{\mathcal L}\). Let \(\mathcal R_{\mathcal L}^{\mathrm{fr}}\) be its framing by (RSE.18). For any target \(\mathcal T\), put \(D=\operatorname{RHom}_{\mathcal T}(\mathbf1,\mathbf1)\), with its commutative algebra structure from tensoring endomorphisms of the unit. For every connective commutative algebra \(A\) there is an equivalence of spaces
+\[
+ \begin{aligned}
+ \operatorname{Fun}^{L,\otimes}(\operatorname{Mod}_A,\mathcal T)
+       &\simeq\operatorname{Map}_{\mathrm{CAlg}}(A,D)\\
+       &\simeq\operatorname{Map}_{\mathrm{CAlg}}(A,\tau^{\leq0}D).
+ \end{aligned}
+ \tag{RSE.19}
+\]
+Indeed such a functor takes the free rank-one module to the unit and gives the displayed endomorphism map. Conversely that map makes the unit an \(A\)-module; the functor is \(M\mapsto M\otimes_A^L\mathbf1\). The entire free-module bar proves that these are inverse, including natural transformations and higher paths. Its relative tensor comparisons give the strong symmetric monoidal structure. For the second equivalence, a nonpositive semifree algebra resolution of \(A\) tests only the nonpositive good truncation of \(D\), including degree-zero cycles. The same assertion for its full simplicial mapping resolution proves the equivalence of spaces, not just their components.
+
+By (RSE.13), a framed coefficient functor here is a tensor functor into \(\operatorname{Fun}(K,\mathcal T)\) whose value at the base point is \(V\mapsto\underline V\otimes\mathbf1\). Since \(K\) is connected, its transports are tensor automorphisms of this fixed functor. Mapping complexes between finite sums of the unit are the corresponding matrices over \(D\). The coefficient reconstruction (TBF.2)–(TBF.5) identifies their tensor automorphism group with \(H(\tau^{\leq0}D)\): the matrix-coordinate equations, inverse matrices and Hopf identities are the same equations in these endomorphisms. Their derived mapping resolutions give all paths and coherences. Thus
+\[
+ \begin{aligned}
+ \operatorname{Fun}^{L,\otimes}(\mathcal R_{\mathcal L}^{\mathrm{fr}},\mathcal T)
+   &\simeq \operatorname{Map}_*(K,BH(\tau^{\leq0}D))\\
+   &=\mathcal Y_{\mathrm B}(\tau^{\leq0}D)\\
+   &=\operatorname{Map}_{\mathrm{CAlg}}(B,\tau^{\leq0}D).
+ \end{aligned}
+ \tag{RSE.20}
+\]
+All representations are included by their finite-representation bars. A frame fixes the tensor functor at the base point together with that identification; it is precisely the based mapping space, rather than an unframed quotient or its set of isomorphism classes.
+
+Compare (RSE.19) for \(A=B\) with (RSE.20). The tautological framed Betti coefficient functor consequently induces an equivalence
+\[
+                   \mathcal R_{\mathcal L}^{\mathrm{fr}}
+                        \xrightarrow{\sim}\operatorname{Mod}_B.
+ \tag{RSE.21}
+\]
+For completeness the representability argument gives an inverse without testing only affine scalar targets: take \(\mathcal T=\mathcal R_{\mathcal L}^{\mathrm{fr}}\) in the equivalence of functor spaces to produce an inverse on one side. Take \(\mathcal T=\operatorname{Mod}_B\) and use full faithfulness of the same equivalence to identify the other composite with the identity. Thus arbitrary categorical targets are essential in this argument.
+
+### 3.224. Unframed Betti descent
+
+Write \(\mathcal A_{\mathrm B}=\operatorname{QCoh}(\mathcal Z_{\mathrm B})\). The actual full frame quotient gives
+\[
+       \mathcal A_{\mathrm B}
+             \simeq (\operatorname{Mod}_B)^H,
+       \qquad\mathcal Z_{\mathrm B}=[\operatorname{Spec}B/H].
+ \tag{RSE.22}
+\]
+The notation on the right includes the algebraic action on \(B\), modules with compatible coaction, and the whole action nerve. It is not invariance under the abstract group of complex points. The universal framed coefficient functor descends along this nerve to \(\operatorname{Rep}(H)\to\mathcal A_{\mathrm B}\otimes\mathcal L\). Tensoring by \(\mathcal L\) commutes with these limits by its dualizability, so this descent retains the coefficient category. The universal property of §3.223 constructs the actual continuous strong symmetric monoidal comparison
+\[
+                    L_{\mathrm B}:\mathcal R_{\mathcal L}
+                             \longrightarrow\mathcal A_{\mathrm B}.
+ \tag{RSE.23}
+\]
+
+Its framing is exactly (RSE.21), equivariantly for the entire algebraic \(H\)-action. To check this assertion, changing the frame multiplies the universal matrix coordinates by the regular Hopf coaction. On both sides the coaction is the matrix-coordinate map in (TBF.2)–(TBF.5). Repeating it \(s\) times gives the same maps over \(\mathcal O(H)^{\otimes s}\); the coproduct, counit and antipode give the same faces, degeneracies and inverse comparisons. The representing property (RBC.6) on every connective algebra identifies these maps on \(B\), and (RSE.19) identifies the induced functors on its modules. This verifies algebraic equivariance at all nerve levels, including derived paths.
+
+Apply (RSE.17) to \(\mathcal R_{\mathcal L}\) and then use this equivariant framed equivalence. Together with (RSE.22) it proves
+\[
+                   L_{\mathrm B}:\mathcal R_{\mathcal L}
+                           \xrightarrow{\sim}\mathcal A_{\mathrm B}.
+ \tag{RSE.24}
+\]
+The equivalence is on full unbounded DG categories, with their symmetric tensor structures. Every descent step was made on the actual frame nerve.
+
+### 3.225. The supported kernel and all its residue generators
+
+Let \(R=H^0(B)\) and let \(S\subset\operatorname{Spec}R\) be the union of the ordinary closed coefficient loci \(Z_E\) of §§3.138–3.146. This union is stable under specialization and under the frame action. The unbounded Koszul comparison (KTC.1)–(KTC.28) and the supported-union comparison (SUL.1)–(SUL.21) give the actual framed restricted category \(\mathcal T_S\subset\operatorname{Mod}_B\). Its continuous smashing coreflector is \(\Gamma_S=C_S\otimes_B-\). Write \(Q_S=\operatorname{cofib}(\Gamma_S\to\operatorname{Id})\). Its image is the kernel of \(\Gamma_S\).
+
+The boundedness (RSE.11) supplies a finite Postnikov filtration of \(B\), as a \(B\)-module, with layers the \(R\)-modules \(H^{-j}(B)[j]\). For an arbitrary unbounded \(B\)-module \(M\), tensor that finite filtration with \(M\). Therefore
+\[
+ M\text{ is a finite extension of }i_*N_j,\qquad
+ N_j=H^{-j}(B)[j]\otimes_B^L M\in\operatorname{Mod}_R,
+       \quad 0\leq j\leq N_B,
+ \tag{RSE.25}
+\]
+where \(i_*\) forgets the \(R\)-module structure along \(B\to R\). These \(N_j\) can be unbounded. No Postnikov convergence claim about \(M\) is used. Localization at each degree-zero generator commutes with \(i_*\); the finite Koszul fibres and their filtered unions consequently give \(Q_S i_*=i_*Q_S^R\).
+
+The finite-type ring \(R\) is Noetherian of finite dimension. The complete residue-generation proof (FE.5) constructs \(R\) from all its residue fields by colimits and cones. Tensor that construction with any unbounded \(R\)-module \(N\). Each \(k(p)\otimes_R^L N\) is a complex of vector spaces over \(k(p)\), hence a sum of shifts of that field after splitting cycles and boundaries. Thus all these residue fields generate the full \(\operatorname{Mod}_R\). Their support tests are exact:
+\[
+ Q_S^R k(p)=
+ \begin{cases}0,&p\in S,\\ k(p),&p\notin S.\end{cases}
+ \tag{RSE.26}
+\]
+If \(p\in Z_E\), every defining generator vanishes on the field, so its Koszul local-cohomology functor is the identity there. If \(p\notin Z_E\), one defining generator is invertible, so that functor is zero. Taking the union proves both cases of (RSE.26). Empty or unit defining ideals give the same conclusions by the conventions of §3.158.
+
+Apply \(Q_S\) to the finite extension (RSE.25), and then apply this residue construction to its \(R\)-module layers. We obtain the equality of full localizing subcategories
+\[
+             \ker(\Gamma_S:\operatorname{Mod}_B\to\mathcal T_S)
+                =\operatorname{Loc}\{i_*k(p):p\notin S\}.
+ \tag{RSE.27}
+\]
+Every generator on the right is killed by \(\Gamma_S\), proving the reverse inclusion as well. The finite filtration of the algebra is what makes the proof apply to all unbounded modules. Solution 3.DQ explains why that hypothesis cannot simply be dropped.
+
+### 3.226. Categorical coefficients force restricted support
+
+Suppose \(\Phi:\operatorname{Mod}_B\to\mathcal T\) is continuous strong symmetric monoidal. Its associated framed coefficient functor, under §3.223, has values in \(\mathcal T\otimes\mathcal L\). Assume that those values lie in the full subcategory \(\mathcal T\otimes\mathscr I\). We prove that \(\Phi\) kills (RSE.27).
+
+Fix \(p\notin S\), put \(\kappa=k(p)\), and suppose the commutative algebra object \(A_p=\Phi(i_*\kappa)\) is nonzero. Its module category \(\mathcal T_p=\operatorname{Mod}_{A_p}(\mathcal T)\) has nonzero unit \(A_p\). The \(\kappa\)-action on that unit gives a strong symmetric monoidal functor \(j:\operatorname{Mod}_\kappa\to\mathcal T_p\). Free base change along \(\Phi\) factors exactly as
+\[
+ \operatorname{Mod}_B\longrightarrow\operatorname{Mod}_\kappa
+                \xrightarrow{j}\mathcal T_p,
+ \qquad M\longmapsto M\otimes_B^L\kappa
+                \longmapsto\Phi(M)\otimes A_p.
+ \tag{RSE.28}
+\]
+The identity follows from the full relative free-module bar, so it includes the algebra structure, tensor comparisons and every module map.
+
+Every nonzero complex of \(\kappa\)-vector spaces contains a shift of \(\kappa\) as a retract: split its cycles, boundaries and a nonzero cohomology line. Consequently \(j\) is conservative. Since \(\mathcal L\) is dualizable, its tensor extension is also conservative:
+\[
+ \begin{array}{ccc}
+ \operatorname{Mod}_\kappa\otimes\mathcal L&\xrightarrow{j\otimes\operatorname{Id}}&\mathcal T_p\otimes\mathcal L\\
+ \big\downarrow\scriptstyle\sim&&\big\downarrow\scriptstyle\sim\\
+ \operatorname{Fun}^L(\mathcal L^\vee,\operatorname{Mod}_\kappa)
+       &\xrightarrow{j\circ-}&
+          \operatorname{Fun}^L(\mathcal L^\vee,\mathcal T_p).
+ \end{array}
+ \tag{RSE.29}
+\]
+Indeed postcomposition with a conservative functor detects equivalences objectwise, also on the full subcategories of continuous functors. Both tensor identifications follow from the evaluation–coevaluation identities for a dualizable presentable category.
+
+Let \(F_p\) be the actual framed Betti coefficient functor of the point \(p\). By (RSE.28), its image under (RSE.29) is the base change of the coefficient functor of \(\Phi\). This image lies in \(\mathcal T_p\otimes\mathscr I\) by the hypothesis. Apply the counit test for \(i_\infty\dashv g_\infty\). All functors in this adjunction are continuous, so that counit commutes with the independent base change \(j\). Conservativity in (RSE.29) shows, for every finite \(V\),
+\[
+   (\operatorname{Id}\otimes i_\infty g_\infty)F_p(V)
+                   \longrightarrow F_p(V)
+                     \text{ is an equivalence}.
+ \tag{RSE.30}
+\]
+The entire coefficient functor therefore lifts through \(\operatorname{Mod}_\kappa\otimes\mathscr I\); fullness retains its tensor maps, frame and all higher paths. Its normalized finite-projective fibres and exact fibre functor were already those of the Betti point. Thus it is an actual restricted point over the ordinary field \(\kappa\), by (RBC.5) and (RSP.11).
+
+The power-stage presentation (RBC.17)–(RBC.22) now forces \(p\in S\). More explicitly a point over an ordinary field in one of its finite power stages has each defining generator with a power equal to zero. In a field that generator is zero, so the point lies in the corresponding \(Z_E\). This contradicts \(p\notin S\). Hence \(\Phi(i_*k(p))=0\) for every such \(p\), and (RSE.27) proves
+\[
+                 \Phi(\ker\Gamma_S)=0.
+ \tag{RSE.31}
+\]
+The argument used membership in the original ind-connection category through its full counit. It did not replace that condition by regularity after an unspecified extension of the geometric ground field.
+
+### 3.227. The actual restricted spectral equivalence
+
+Put \(\mathcal A=\operatorname{QCoh}(\mathcal Z_H^{\mathrm{restr}}(X))\), and write \(L_{\mathrm r}=\mathsf L\) for the restricted Ran coefficient functor of (HLA.29). The quotient version of the supported-union equivalence identifies its restriction functor with
+\[
+ L_{\mathrm{Br}}:\mathcal A_{\mathrm B}\longrightarrow\mathcal A
+          =(\mathcal T_S)^H,\qquad
+        J\dashv L_{\mathrm{Br}},\qquad L_{\mathrm{Br}}J=\operatorname{Id}.
+ \tag{RSE.32}
+\]
+Here \(J\) is the continuous full supported inclusion and the counit \(JL_{\mathrm{Br}}\to\operatorname{Id}\) has cofibres in \(\ker L_{\mathrm{Br}}\). The functor \(L_{\mathrm{Br}}\) is strong symmetric monoidal for the supported unit \(C_S\). Precomposition with it is fully faithful on continuous functor categories. Its essential image consists precisely of functors killing that kernel: if \(F\) kills the kernel, applying \(F\) to the counit identifies \(FJL_{\mathrm{Br}}\) with \(F\), so \(FJ\) is the required inverse construction. The identity \(L_{\mathrm{Br}}J=\operatorname{Id}\) proves uniqueness on all transformations. For strong symmetric monoidal functors the same statement holds: \(J\) preserves tensor products, and its unit map \(C_S\to\mathbf1_{\mathcal A_{\mathrm B}}\) has cofibres in the kernel. Applying \(F\) makes it an equivalence, supplying exactly the unital comparison of \(FJ\). All coherence diagrams are the ones inherited from \(F\) and this counit.
+
+Let \(\Phi:\mathcal A_{\mathrm B}\to\mathcal T\) have coefficient functor in \(\mathcal T\otimes\mathscr I\). We must justify that the framed argument of §3.226 detects its whole unframed kernel. Let \(S_x\) be the regular frame algebra in \(\mathcal A_{\mathrm B}\) at the chosen point. The functor to \(\operatorname{Mod}_{\Phi(S_x)}(\mathcal T)\) is conservative, by the unit retraction (RSE.15). Framing \(\Phi\) gives
+\[
+ \Phi_{\mathrm{fr}}:\operatorname{Mod}_{S_x}(\mathcal A_{\mathrm B})
+          =\operatorname{Mod}_B
+       \longrightarrow\operatorname{Mod}_{\Phi(S_x)}(\mathcal T).
+ \tag{RSE.33}
+\]
+Its coefficients still lie in the tensor with \(\mathscr I\), since the frame extension is continuous. Section 3.226 shows that it kills the framed supported kernel. If \(M\in\ker L_{\mathrm{Br}}\), its frame pullback is in that kernel, because every defining Koszul fibre and filtered union commutes with frame pullback. Its image under (RSE.33) is the conservative frame extension of \(\Phi(M)\). Thus \(\Phi(M)=0\). This proves the unframed kernel assertion and the factorization of \(\Phi\) through (RSE.32).
+
+Conversely every continuous strong symmetric monoidal functor \(\mathcal A\to\mathcal T\) has coefficient values in \(\mathcal T\otimes\mathscr I\), by the actual universal ind-connection coefficients (BLI.16). Write \(\mathfrak F_{\mathscr I}(\mathcal T)=\operatorname{Fun}^{L,\otimes}(\operatorname{Rep}(H),\mathcal T\otimes\mathscr I)\) and define \(\mathfrak F_{\mathcal L}(\mathcal T)\) by replacing \(\mathscr I\) with \(\mathcal L\). The functor spaces fit into a square
+\[
+ \begin{array}{ccc}
+ \operatorname{Fun}^{L,\otimes}(\mathcal A,\mathcal T)
+   &\longrightarrow&
+ \mathfrak F_{\mathscr I}(\mathcal T)\\
+ \big\downarrow&&\big\downarrow\\
+ \operatorname{Fun}^{L,\otimes}(\mathcal A_{\mathrm B},\mathcal T)
+   &\xrightarrow{\sim}&
+ \mathfrak F_{\mathcal L}(\mathcal T).
+ \end{array}
+ \tag{RSE.34}
+\]
+Both vertical maps are fully faithful: the left one by (RSE.32), the right one by the tensored adjunction (RSE.14). Their essential images coincide by the framed kernel argument and the preceding converse. The bottom equivalence is (RSE.24). Hence the top arrow is an equivalence for every presentable symmetric monoidal \(\mathcal T\).
+
+The full lisse-coefficient universal property (HLA.24)–(HLA.28) represents the top right space by \(\mathcal R_{\mathscr I}\). The top arrow is precisely precomposition with the actual map \(L_{\mathscr I}\) of (HLA.28): its universal coefficients are those of the same restricted point functor (RBC.5). Their comparison with the full Betti coefficients is the actual inclusion (RBC.4), and dualizability of \(\mathcal L\) retains the full frame descent. Thus it is that map, with its given tensor comparisons, which is an equivalence:
+\[
+ L_{\mathscr I}:\mathcal R_{\mathscr I}
+            \xrightarrow{\sim}
+           \operatorname{QCoh}(\mathcal Z_H^{\mathrm{restr}}(X)),
+       \qquad L_{\mathscr I}Q_{\mathrm{Ran}}\simeq L_{\mathrm r}.
+ \tag{RSE.35}
+\]
+As in §3.223, take \(\mathcal T=\mathcal R_{\mathscr I}\) to obtain an inverse from the functor-space equivalence, and take \(\mathcal T=\mathcal A\) to identify the other composite with the identity by its full faithfulness. This proves the assertion on the full categories, not just a comparison on affine scalar-valued points. The exact composite with the original Ran functor is (HLA.29). No assertion about a general left-complete tensor category is used.
+
+### 3.228. The full Hecke-lisse image of the geometric idempotent
+
+Let \(\mathcal M\) be the full complex automorphic DG category used in §§3.209–3.213 and let \(\mathcal N=\mathcal M^{\mathrm{Hl}}\) be its full Hecke-lisse subcategory. Write \(\Pi=\Pi_{\mathrm r}\) and \(p_{\mathrm r}=p\) for the geometric functor and universal spectral object of §§3.188–3.189. Transport its continuous unital \(\mathcal R_{\mathscr I}\)-action (HLA.27) along (RSE.35). We obtain a continuous unital action
+\[
+                   \Psi:\mathcal A\otimes\mathcal N\longrightarrow\mathcal N
+ \tag{RSE.36}
+\]
+whose restriction along \(L_{\mathrm r}\) is the actual geometric Ran action by (HLA.29).
+
+The geometric endofunctor \(\Pi\) of (UID.14) sends every object of \(\mathcal M\) to \(\mathcal N\), by (BLI.23). Its restriction to that subcategory is the action of the universal spectral object \(p_{\mathrm r}\). Equations (UID.7) and (RSE.36) therefore give the natural equivalence
+\[
+            \Pi|_{\mathcal N}
+                  \simeq\Psi(L_{\mathrm r}p_{\mathrm r},-)
+                  \simeq\Psi(\mathbf1_{\mathcal A},-)
+                  \simeq\operatorname{Id}_{\mathcal N}.
+ \tag{RSE.37}
+\]
+All coefficient actions and Hecke comparisons here are those of the full unbounded categories, including unused coordinates. Landing in the full subcategory and (RSE.37) prove
+\[
+                \operatorname{EssIm}(\Pi)=\mathcal M^{\mathrm{Hl}}.
+ \tag{RSE.38}
+\]
+This is equality with the full Hecke-lisse category. Identification with the category of nilpotent singular support, original-field ind-regularity and extension to other geometric ground fields require separate geometric support and regularity arguments, including the cycle-detection and field-extension premises in §§3.33–3.38. A natural identity on the image has been constructed; no unit, counit or adjunction for the nonunital algebra \(p_{\mathrm r}\) is inferred from idempotence alone.
+
+![The framed Betti comparison, supported restriction and Hecke-lisse image](figures/restricted-spectral-equivalence.svg)
+
+**Figure 3.39.** The framed comparison and full frame descent are (RSE.19)–(RSE.24). Boundedness of the ambient algebra and residue-field generation give the kernel test (RSE.25)–(RSE.31). Conservative categorical frames identify the exact functor in (RSE.35); its transported action and geometric image are (RSE.36)–(RSE.38). The bottom scope statement records the separate singular-support and regularity criteria.
+
+### 3.229. Closed points and a varying character
+
+**Exercise 3.DP.** In the elliptic rank-one character family of §3.147 fix the second monodromy to be one. Let \(R=\mathbf C[t,t^{-1}]\), let \(S\) be all its closed points, and let \(\kappa=\mathbf C(t)\). Compute the supported unit and the complementary kernel. Explain why every closed complex character is restricted although the universal character over \(R\) is not.
+
+**Solution 3.DP.** A finite closed subset has defining equation \(f=\prod_\lambda(t-\lambda)\), up to powers and an invertible Laurent monomial. Its local-cohomology triangle is the fibre of \(R\to R[f^{-1}]\). The union over such subsets inverts every nonzero Laurent polynomial. Filtered colimits are exact, so
+\[
+            C_S=\operatorname{fib}(R\to\kappa),\qquad
+        H^0(C_S)=0,\quad H^1(C_S)=\kappa/R,
+               \qquad Q_SR=\kappa.
+ \tag{RSE.39}
+\]
+The map is injective because \(R\) is a domain. At a closed point \(t=\lambda\), the one-dimensional coefficient space with monodromy \(\lambda\) is already a finite-dimensional complex representation. Thus it is restricted. The universal monodromy on \(R\), however, multiplies by \(t\), and the orbit of \(1\) contains all Laurent monomials. These are linearly independent over the original coefficient field, so this module is not locally finite. The ordinary original-field criterion (SCI.2)–(SCI.4) therefore excludes it. The generic fibre is excluded for the same reason: for any nonzero \(a\in\kappa\),
+\[
+                    \{t^n a:n\in\mathbf Z\}
+                       \text{ is linearly independent over }\mathbf C.
+ \tag{RSE.40}
+\]
+Multiplication by \(a^{-1}\) reduces a proposed finite relation to a Laurent-polynomial identity, whose coefficients are zero.
+
+The prime ideals of this Laurent PID are its generic point and its closed maximal ideals, by factorization over \(\mathbf C\). Hence (RSE.27), or tensoring the triangle in (RSE.39) with any module, gives
+\[
+                   \ker\Gamma_S=\operatorname{Loc}_R\{\kappa\},
+                         \qquad\Gamma_S\kappa=0.
+ \tag{RSE.41}
+\]
+All closed complex points being restricted therefore does not identify the full family with its restricted subfunctor. It does supply the residue cotangent tests of §3.219. The kernel argument of §3.226 also needs the generic residue field, which the closed-point tests alone would miss.
+
+### 3.230. Bounded algebras and unbounded modules
+
+**Exercise 3.DQ.** Let \(A=\mathbf C[t]\otimes\Lambda(\epsilon)\), where \(|\epsilon|=-1\) and \(d=0\). Give the finite algebra filtration used in §3.225 and explain why it handles an unbounded module. Contrast this with \(A_\infty=\mathbf C[z]\), \(|z|=-2\), whose only classical residue field is \(\mathbf C\).
+
+**Solution 3.DQ.** Write \(R=\mathbf C[t]\) and \(i_*\) for restriction along the augmentation \(A\to R\). The ideal generated by \(\epsilon\) has square zero and is \(i_*R[1]\). The quotient is \(i_*R\). Thus the exact triangle of \(A\)-modules is
+\[
+                   i_*R[1]\longrightarrow A\longrightarrow i_*R.
+ \tag{RSE.42}
+\]
+It is split as a triangle of underlying \(R\)-complexes, but is not split as \(A\)-modules. Multiplication by \(\epsilon\) on the free module \(A\) is nonzero on cohomology; on the putative sum \(i_*R\oplus i_*R[1]\) it is zero. Tensor (RSE.42) over \(A\) with any unbounded \(M\). It expresses \(M\) as an extension of two restricted \(R\)-modules, \(R[1]\otimes_A^L M\) and \(R\otimes_A^L M\). These need not be bounded, and the argument has not truncated them. The all-degree residue construction over \(R\) applies directly to both, giving
+\[
+                  \operatorname{Mod}_A
+                  =\operatorname{Loc}_A\{i_*k(p):p\in\operatorname{Spec}R\}.
+ \tag{RSE.43}
+\]
+
+For \(A_\infty\), the degree-zero ring is \(\mathbf C\), but the algebra has nonzero cohomology in every nonpositive even degree. Its nonzero localization \(A_\infty[z^{-1}]\) has zero derived fibre at \(\mathbf C\), because \(z\) becomes both zero and invertible there. The continuous localization functor kills \(\mathbf C\) and fixes this nonzero localized module. Therefore
+\[
+            \operatorname{Loc}_{A_\infty}\{\mathbf C\}
+                         \ne\operatorname{Mod}_{A_\infty}.
+ \tag{RSE.44}
+\]
+This establishes the need for a genuine hypothesis in the all-unbounded residue-generation argument. In §3.225 that hypothesis is boundedness of the algebra, proved in §3.220, rather than boundedness of the module under study.
+
+### 3.231. Conservative change to a nonzero category over a field
+
+**Exercise 3.DR.** Let \(\kappa\) be a field and \(\mathcal T\) a presentable \(\kappa\)-linear symmetric monoidal stable category with nonzero unit. Prove conservativity of \(j(V)=V\otimes_\kappa\mathbf1\), including tensor extension by any dualizable presentable category. Give an unbounded example and show why the field hypothesis matters.
+
+**Solution 3.DR.** In each degree of a complex choose a complement to boundaries inside cycles, and a complement to cycles in the whole vector space. The differential identifies the latter complement with the next degree's boundaries. The complex is the direct sum of its zero-differential cohomology and these contractible two-term pieces. This decomposition is valid without either degree bound. If cohomology is nonzero, choose a line in one of its degrees. The corresponding shift of \(\kappa\) is a retract of the complex. Applying \(j\) makes the same shift of the nonzero unit a retract. Thus
+\[
+             j(V)=0\ \Longrightarrow\ V=0,
+              \qquad j\text{ detects equivalences by their cofibres}.
+ \tag{RSE.45}
+\]
+For a dualizable presentable category \(\mathcal D\), the tensor–functor identifications of (RSE.29) identify \(j\otimes\operatorname{Id}_{\mathcal D}\) with postcomposition by \(j\). Apply (RSE.45) to each evaluation. It follows that
+\[
+                    j\otimes\operatorname{Id}_{\mathcal D}
+                             \text{ is conservative}.
+ \tag{RSE.46}
+\]
+For example the doubly unbounded complex \(\kappa[z,z^{-1}]\), \(|z|=-2\), is the sum of \(\kappa[2r]\) for \(r\in\mathbf Z\). Its image is the same sum of shifts of the unit and contains the unit as a retract, so it is nonzero.
+
+Over \(R=\mathbf C[t]\), the nonzero category \(\operatorname{Mod}_{R[t^{-1}]}\) gives a counterexample. Its unit functor kills the nonzero module \(R/(t)\): tensor its free resolution \([R\xrightarrow{t}R]\) with \(R[t^{-1}]\), where the differential is invertible. Hence
+\[
+       (R/(t))\otimes_R^L R[t^{-1}]=0,
+               \qquad R/(t)\ne0.
+ \tag{RSE.47}
+\]
+The proof of §3.226 consequently passes to a residue field before using categorical conservativity. Nonvanishing of the target unit alone over a general ring would not justify that step.
 
 ## 4. Betti, constructible, and tempered categories
 

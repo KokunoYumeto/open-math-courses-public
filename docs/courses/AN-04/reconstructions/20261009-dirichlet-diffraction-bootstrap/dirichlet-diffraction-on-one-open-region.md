@@ -275,7 +275,7 @@ Consequently, writing \(F_D=\operatorname{WF}^{H^1_0,\infty}_b(u)\) in the origi
                           \quad (|t|<\epsilon),
  \tag{DB29}
 \]
-after the exact normal-form coordinate and nonzero parameter changes. For each punctured side, a regular point would contradict the corresponding germ theorem; the central point is the hypothesis. Shrink \(\epsilon\) once so the whole arc stays in the source region. This supplies the strict diffractive singular-segment input for the Dirichlet domain. The Neumann/Robin boundary form, full two-domain propagation theorem, sharp Airy mapping and remaining course obligations are not declared complete.
+after the exact normal-form coordinate and nonzero parameter changes. For each punctured side, a regular point would contradict the corresponding germ theorem; the central point is the hypothesis. Shrink \(\epsilon\) once so the whole arc stays in the source region. This supplies the strict diffractive singular-segment input for the Dirichlet domain. The argument concerns the Dirichlet domain. The Neumann/Robin boundary form, two-domain propagation and sharp Airy mapping require their respective arguments.
 
 ## 8. Three solved exercises
 

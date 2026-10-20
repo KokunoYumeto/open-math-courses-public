@@ -1,0 +1,266 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Supports, a progression estimate and the giants</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Additive indecomposability of the primes)</a><a href="a-positive-statistic-and-its-binary-tree-transfers.html">Previous lesson</a><a href="small-primes-coincidences-and-the-bulk.html">Next lesson</a><a href="src/supports-a-progression-estimate-and-the-giants.md">Editable source</a></nav><main><article><h1 id="supports-a-progression-estimate-and-the-giants">Supports, a progression estimate and the giants</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Lessons 15–17 prove the comparison estimates of Proposition 6.1 of Lesson 14. The difficulty is arithmetic. A coefficient <span class="math" data-tex="\(A_l\)">\(A_l\)</span> involves many prime variables: two giants at the top, internal compensation primes sampled at every node, bulk primes, and the shared spectators. They interact through integrality conditions (each restored pivot <span class="math" data-tex="\(p=(vH_--wH_+)/(su)\)">\(p=(vH_--wH_+)/(su)\)</span> must be an integer), coprimality conditions, and the transforms <span class="math" data-tex="\(g_q\)">\(g_q\)</span> at the spectators. The plan is to replace the prime variables, one family at a time, by <em>ideal</em> variables: a real logarithmic coordinate together with an independent uniform unit residue modulo a suitable modulus. Once the bulk primes are ideal, their residues modulo each spectator are independent uniform units, and the finite-field tree comparison applies.</p>
+<p>This lesson describes the support exactly by residue conditions (Section 1), proves a prime-progression estimate in short logarithmic intervals that keeps the possible exceptional zero explicitly (Lemma 2.1), arranges that the exceptional character can only involve a harmless modulus (Section 3), and replaces the two top giants by ideal variables (Proposition 4.1).</p>
+<p><strong>Prerequisites.</strong> <a href="a-positive-statistic-and-its-binary-tree-transfers.html"><em>A positive statistic and its binary-tree transfers</em></a>; <a href="diagrams-densities-and-cycles-over-a-finite-field.html"><em>Diagrams, densities and cycles over a finite field</em></a>, Section 1; <a href="the-prime-mean-and-a-supply-of-nonsparse-transforms.html"><em>The prime mean and a supply of nonsparse transforms</em></a>, Lemma 1.1; <a href="../NT-DIRL/NT-DIRL-17.html"><em>The least prime in a progression: Linnik's theorem</em></a>, Section 1; <a href="../NT-DIRL/NT-DIRL-08.html"><em>Counting zeros and the explicit formula for ψ(x, χ)</em></a>, Theorem 1.1.</p>
+<p>Throughout Lessons 15–17 all constants of the construction and the depth <span class="math" data-tex="\(k\)">\(k\)</span> are fixed, and <span class="math" data-tex="\(L\to\infty\)">\(L\to\infty\)</span>. The notation, priors, templates and support conventions are those of Lesson 14. At comparison level <span class="math" data-tex="\(l\)">\(l\)</span> put <span class="math" data-tex="\(r=2^l\)">\(r=2^l\)</span>. Both environments of Proposition 6.1 of Lesson 14 are treated; in the diagonal environment the positive giant is the external integer variable. All estimates are uniform in the assignments being compared and in the frequency histories.</p>
+<h2 id="1-histories-supports-and-real-weights">1. Histories, supports and real weights</h2>
+<p><strong>The samples.</strong> Expand the two amplitudes of a comparison into their frequency histories; for the norm estimate (6.1) of Lesson 14, use the same assignment in both. At level <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span> a history has <span class="math" data-tex="\(2^{l-t}\)">\(2^{l-t}\)</span> nodes, and each node samples a compensation vector of <span class="math" data-tex="\(4\cdot2^{t-1}\)">\(4\cdot2^{t-1}\)</span> entries. So the two histories contain <span class="math" data-tex="\(O(kr)\)">\(O(kr)\)</span> internal prime samples, each counted once, at the node where it is sampled. Partition these samples according to their <em>equality pattern</em>; there are <span class="math" data-tex="\(O_k(1)\)">\(O_k(1)\)</span> patterns. Entries of one compensation vector are distinct, and the size ranges of different types are disjoint, so equality is possible only between samples of the same type. For each distinct internal sampled prime <span class="math" data-tex="\(b\)">\(b\)</span>, let <span class="math" data-tex="\(n_b\)">\(n_b\)</span> be its multiplicity in the pattern. The product of the node weights <span class="math" data-tex="\(u\)">\(u\)</span> of (4.5) of Lesson 14 is then
+<span class="math math-display" data-tex="\[
+\prod_bb^{n_b}.
+\]">\[
+\prod_bb^{n_b}.
+\]</span></p>
+<p><strong>The top data.</strong> Write <span class="math" data-tex="\(x_+,x_-\)">\(x_+,x_-\)</span> for the two top giants. The negative giant <span class="math" data-tex="\(x_-\)">\(x_-\)</span> is an actual prime in both environments; <span class="math" data-tex="\(x_+\)">\(x_+\)</span> is a prime in the final environment and an external positive integer in the diagonal environment. Let <span class="math" data-tex="\(d\)">\(d\)</span> be the product of the <span class="math" data-tex="\(m\)">\(m\)</span> distinct spectator primes, and <span class="math" data-tex="\(c_{\rm sm}\)">\(c_{\rm sm}\)</span> the product of the distinct actual regular small primes at the top (all nongiant regular primes of the top list). The internal samples are disjoint from these by their types. Define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R_f=\prod_\nu|\nu|,\\
+Q_f=R_f^{k+2},\\
+\log Q_f=O_k(m),\quad(1.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+R_f=\prod_\nu|\nu|,\\
+Q_f=R_f^{k+2},\\
+\log Q_f=O_k(m),\quad(1.1)
+\end{gathered}
+\]</span>
+where the product runs over every frequency of the two histories, with repetition. Every small prime exceeds every frequency, hence is coprime to <span class="math" data-tex="\(Q_f\)">\(Q_f\)</span>.</p>
+<p>At a <em>reversing node</em>, where the recursion (4.4) of Lesson 14 restores a pivot, write the two current giant entries as <span class="math" data-tex="\(X_+,X_-\)">\(X_+,X_-\)</span> and factor the child products as
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H_+=X_+C_+M_+,\\
+H_-=X_-C_-M_-,\quad(1.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+H_+=X_+C_+M_+,\\
+H_-=X_-C_-M_-,\quad(1.2)
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(M_\pm\)">\(M_\pm\)</span> are the products of the bulk slots of the two child subtrees, and <span class="math" data-tex="\(C_\pm\)">\(C_\pm\)</span> contain their other regular small factors, which may include compensation samples restored at earlier reversals on the path. By (4.4) of Lesson 14 and induction down the tree, every current giant is a rational linear form in <span class="math" data-tex="\((x_+,x_-)\)">\((x_+,x_-)\)</span>.</p>
+<p><strong>Lemma 1.1</strong> (an exhaustive residue description). Assume that the top giants are coprime and that both are units modulo <span class="math" data-tex="\(c_{\rm sm}d\)">\(c_{\rm sm}d\)</span>. Then, together with positivity and the real cutoffs, the following tests describe exactly the support of the recursive evaluation over the integers:</p>
+<ol>
+<li>modulo frequency factors: <span class="math" data-tex="\(s\mid N\)">\(s\mid N\)</span> at every node, where <span class="math" data-tex="\(N=vH_--wH_+\)">\(N=vH_--wH_+\)</span>, and all giant–frequency unit conditions; these are determined by the top and small coordinates modulo <span class="math" data-tex="\(Q_f\)">\(Q_f\)</span>;</li>
+<li>for each prime <span class="math" data-tex="\(b\)">\(b\)</span> of the compensation vector <span class="math" data-tex="\(\mathbf u\)">\(\mathbf u\)</span> at a node,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+N\equiv0\pmod b,\\
+N\not\equiv0\pmod{b^2};\quad(1.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+N\equiv0\pmod b,\\
+N\not\equiv0\pmod{b^2};\quad(1.3)
+\end{gathered}
+\]</span></li>
+<li>the top giants are units modulo <span class="math" data-tex="\(c_{\rm sm}d\)">\(c_{\rm sm}d\)</span>, and at each spectator <span class="math" data-tex="\(q\mid d\)">\(q\mid d\)</span> the zero convention of the diagrams of Lesson 12 applies whenever an inserted giant vanishes modulo <span class="math" data-tex="\(q\)">\(q\)</span>.</li>
+</ol>
+<p><em>Proof.</em> Suppose a current state is pairwise coprime, and consider its reversal, with <span class="math" data-tex="\(p=N/(su)\)">\(p=N/(su)\)</span>. Every prime factor of <span class="math" data-tex="\(H_+\)">\(H_+\)</span> is coprime to <span class="math" data-tex="\(H_-\)">\(H_-\)</span> and to <span class="math" data-tex="\(v\)">\(v\)</span>: for an actual small prime by size, and for a giant factor by the giant–frequency unit conditions. So <span class="math" data-tex="\(N\equiv vH_-\)">\(N\equiv vH_-\)</span> is a unit at every prime factor of <span class="math" data-tex="\(H_+\)">\(H_+\)</span>, and likewise at those of <span class="math" data-tex="\(H_-\)">\(H_-\)</span>. If <span class="math" data-tex="\(p\)">\(p\)</span> is an integer, then <span class="math" data-tex="\(N=sup\)">\(N=sup\)</span>, so <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span> are coprime to every inherited slot of <span class="math" data-tex="\(H_+H_-\)">\(H_+H_-\)</span>; in particular a new compensation sample cannot divide an inherited giant. To obtain a pairwise coprime child state it remains only that <span class="math" data-tex="\(p\)">\(p\)</span> be a unit modulo its own <span class="math" data-tex="\(u\)">\(u\)</span> and modulo <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p>The entries of <span class="math" data-tex="\(\mathbf u\)">\(\mathbf u\)</span> are distinct and coprime to <span class="math" data-tex="\(s\)">\(s\)</span>, so (1.3) at each <span class="math" data-tex="\(b\mid u\)">\(b\mid u\)</span> is exactly the requirement that <span class="math" data-tex="\(u\mid N\)">\(u\mid N\)</span> and that <span class="math" data-tex="\(p\)">\(p\)</span> be a unit modulo <span class="math" data-tex="\(b\)">\(b\)</span>. Ancestor denominators involve other compensation types and frequencies, which are units even modulo <span class="math" data-tex="\(b^2\)">\(b^2\)</span>, so (1.3) can be computed from the rational expressions in the top giants. Division by a node frequency loses at most one factor <span class="math" data-tex="\(R_f\)">\(R_f\)</span> of precision, the <span class="math" data-tex="\(u\)">\(u\)</span>'s are units modulo <span class="math" data-tex="\(Q_f\)">\(Q_f\)</span>, and there are at most <span class="math" data-tex="\(k\)">\(k\)</span> successive divisions, so (1.1) leaves enough precision for every test in item 1. Given that the ancestors are already evaluated integrally, items 1 and 2 give divisibility by the coprime factors <span class="math" data-tex="\(s\)">\(s\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span>, and the coprimality argument above passes the support to the children. Induction down the tree proves the assertion. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>The spectator factors.</strong> At a spectator <span class="math" data-tex="\(q\mid d\)">\(q\mid d\)</span> put <span class="math" data-tex="\(D&#x27;=d/q\)">\(D&#x27;=d/q\)</span>. By (1.2), the order of the child giants, and (4.4) of Lesson 14, the spectator factors of a history at <span class="math" data-tex="\(q\)">\(q\)</span> are exactly the value of a diagram of Lesson 12: a leaf with list <span class="math" data-tex="\((p,\mathbf u,H_\pm)\)">\((p,\mathbf u,H_\pm)\)</span> has the spectator argument <span class="math" data-tex="\(s/(D&#x27;puH_\pm)\)">\(s/(D&#x27;puH_\pm)\)</span>, which is the argument <span class="math" data-tex="\(y_{n,\pm}\)">\(y_{n,\pm}\)</span> of (1.2) of Lesson 12; the bulk products are the leaf variables, the other regular small factors are the constants <span class="math" data-tex="\(C\)">\(C\)</span>, and the consistency condition holds. Denote the two tree values by <span class="math" data-tex="\(W_{1,q},W_{2,q}\)">\(W_{1,q},W_{2,q}\)</span>. Their combined spectator factor is
+<span class="math math-display" data-tex="\[
+\prod_{q\mid d}W_{1,q}\,\overline{W_{2,q}} .
+\tag{1.4}
+\]">\[
+\prod_{q\mid d}W_{1,q}\,\overline{W_{2,q}} .
+\tag{1.4}
+\]</span>
+The zero convention of the diagrams incorporates exactly the inserted-giant unit tests at <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p><strong>Real weights.</strong> Let <span class="math" data-tex="\(\Xi\)">\(\Xi\)</span> be the product of all smooth real factors of the two histories, including <span class="math" data-tex="\(K_{\rm ar}\)">\(K_{\rm ar}\)</span> when present but excluding <span class="math" data-tex="\(\prod_bb^{n_b}\)">\(\prod_bb^{n_b}\)</span>. Define it for real positive top and small variables using (4.4) of Lesson 14 over <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>, and set the contribution to zero if an inserted <span class="math" data-tex="\(p\)">\(p\)</span> is not positive. This is a smooth extension, because <span class="math" data-tex="\(\varphi(\log p-G)\)">\(\varphi(\log p-G)\)</span> already vanishes for <span class="math" data-tex="\(p&lt;e^{G-1}\)">\(p&lt;e^{G-1}\)</span>. Role indicators of counterparts involving nonbulk slots are kept as restrictions on those variables; all bulk priors and role ranges coincide, so no indicator cuts a bulk logarithmic coordinate.</p>
+<p>Each history has <span class="math" data-tex="\(r\)">\(r\)</span> leaf factors (4.3) of Lesson 14. On their common support the modulus in each has logarithm <span class="math" data-tex="\(\log X+\Delta_0+O_k(1)\)">\(\log X+\Delta_0+O_k(1)\)</span>, by the giant cutoffs, the small-prime ranges and both sum bins at that leaf. Hence
+<span class="math math-display" data-tex="\[
+|\Xi|\le e^{-r\Delta_0+O_k(1)}.
+\tag{1.5}
+\]">\[
+|\Xi|\le e^{-r\Delta_0+O_k(1)}.
+\tag{1.5}
+\]</span>
+Its first derivatives in the logarithmic coordinates of the top giants and of the bulk slots are at most <span class="math" data-tex="\(\exp(O_k(m))\)">\(\exp(O_k(m))\)</span>. For the possible cancellation in <span class="math" data-tex="\(N=vH_--wH_+\)">\(N=vH_--wH_+\)</span>, use (4.1) of Lesson 14 in each subtree: at a node of level <span class="math" data-tex="\(j\)">\(j\)</span>, each of <span class="math" data-tex="\(|vH_-|\)">\(|vH_-|\)</span> and <span class="math" data-tex="\(|wH_+|\)">\(|wH_+|\)</span>, divided by <span class="math" data-tex="\(|s|up\)">\(|s|up\)</span>, is at most <span class="math" data-tex="\(\exp(\Delta_j+E_{j-1}+O_k(1))\)">\(\exp(\Delta_j+E_{j-1}+O_k(1))\)</span>; the depth is at most <span class="math" data-tex="\(k\)">\(k\)</span>, so repeated logarithmic differentiation along a path costs <span class="math" data-tex="\(\exp(O_k(m))\)">\(\exp(O_k(m))\)</span>. The other cutoffs, the bounded Fourier arguments in the leaf factors, and <span class="math" data-tex="\(K_{\rm ar}\)">\(K_{\rm ar}\)</span> obey the same bound. These bounds extend across the support boundaries, because a nonpositive inserted value lies outside the giant cutoff, where the extension is zero. The actual prior ranges serve as integration domains, so no further discontinuous indicator is needed.</p>
+<h2 id="2-a-progression-estimate-retaining-the-exceptional-term">2. A progression estimate retaining the exceptional term</h2>
+<p>Two rows of parameters are used:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{array}{c|ccc}
+&amp;a_0&amp;a_1&amp;\mu\\\hline
+\text{giant}&amp;0.049&amp;0.95&amp;0.012\\
+\text{bulk}&amp;0.0039&amp;0.007&amp;0.0012
+\end{array}\\
+\begin{array}{c|ccc}
+&amp;\delta&amp;\delta&#x27;&amp;\theta\\\hline
+\text{giant}&amp;0.015&amp;0.018&amp;0.022\\
+\text{bulk}&amp;0.0014&amp;0.0016&amp;0.0018
+\end{array}\quad(2.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{array}{c|ccc}
+&amp;a_0&amp;a_1&amp;\mu\\\hline
+\text{giant}&amp;0.049&amp;0.95&amp;0.012\\
+\text{bulk}&amp;0.0039&amp;0.007&amp;0.0012
+\end{array}\\
+\begin{array}{c|ccc}
+&amp;\delta&amp;\delta&#x27;&amp;\theta\\\hline
+\text{giant}&amp;0.015&amp;0.018&amp;0.022\\
+\text{bulk}&amp;0.0014&amp;0.0016&amp;0.0018
+\end{array}\quad(2.1)
+\end{gathered}
+\]</span></p>
+<p><strong>Lemma 2.1</strong> (prime progressions in short logarithmic intervals [OpenAI-013, Lemma 8.1]). Fix a row of (2.1). There is at most one primitive real character <span class="math" data-tex="\(\chi_*\)">\(\chi_*\)</span>, of conductor at most <span class="math" data-tex="\(\exp(e^{\mu L})\)">\(\exp(e^{\mu L})\)</span>, with an associated real zero <span class="math" data-tex="\(\beta_*&lt;1\)">\(\beta_*&lt;1\)</span>, such that the following holds. If <span class="math" data-tex="\(\log M_*\le e^{\mu L}\)">\(\log M_*\le e^{\mu L}\)</span>, <span class="math" data-tex="\((a,M_*)=1\)">\((a,M_*)=1\)</span>, and <span class="math" data-tex="\(I\)">\(I\)</span> is an interval of length at most <span class="math" data-tex="\(1\)">\(1\)</span> inside <span class="math" data-tex="\([e^{a_0L},e^{a_1L}]\)">\([e^{a_0L},e^{a_1L}]\)</span>, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\substack{p\ \text{prime},\ \log p\in I\\p\equiv a\ (M_*)}}\frac1p
+=\frac1{\varphi(M_*)}\int_I\bigl(1\\
+&amp;\qquad -\chi_*(a)e^{(\beta_*-1)t}\bigr)\frac{dt}t\\
+&amp;\qquad +O\bigl(\exp(-ce^{\delta&#x27;L})\bigr).\quad(2.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\substack{p\ \text{prime},\ \log p\in I\\p\equiv a\ (M_*)}}\frac1p
+=\frac1{\varphi(M_*)}\int_I\bigl(1\\
+&amp;\qquad -\chi_*(a)e^{(\beta_*-1)t}\bigr)\frac{dt}t\\
+&amp;\qquad +O\bigl(\exp(-ce^{\delta&#x27;L})\bigr).\quad(2.2)
+\end{aligned}
+\]</span>
+The exceptional term is omitted if <span class="math" data-tex="\(\chi_*\)">\(\chi_*\)</span> does not exist or its conductor does not divide <span class="math" data-tex="\(M_*\)">\(M_*\)</span>. The implied constant is absolute for the fixed row, and the multiplier in the integral lies in <span class="math" data-tex="\([0,2]\)">\([0,2]\)</span>.</p>
+<p><em>Proof.</em> <em>Zeros.</em> Put <span class="math" data-tex="\(Q=\exp(e^{\mu L})\)">\(Q=\exp(e^{\mu L})\)</span> and <span class="math" data-tex="\(S=\exp(e^{\theta L})\ge Q\)">\(S=\exp(e^{\theta L})\ge Q\)</span>. By <a href="../NT-DIRL/NT-DIRL-17.html"><em>The least prime in a progression: Linnik's theorem</em></a>, (1.1), applied with the parameter <span class="math" data-tex="\(S\)">\(S\)</span>, all zeros of all primitive <span class="math" data-tex="\(L\)">\(L\)</span>-functions of conductor at most <span class="math" data-tex="\(S\)">\(S\)</span> with <span class="math" data-tex="\(|\Im\rho|\le S\)">\(|\Im\rho|\le S\)</span> satisfy <span class="math" data-tex="\(1-\Re\rho\ge a_0/\log(2S)\ge c_0e^{-\theta L}\)">\(1-\Re\rho\ge a_0/\log(2S)\ge c_0e^{-\theta L}\)</span>, except possibly one simple real zero of a real character. Let <span class="math" data-tex="\(\chi_*\)">\(\chi_*\)</span> be that character if it exists and has conductor at most <span class="math" data-tex="\(Q\)">\(Q\)</span>, with <span class="math" data-tex="\(\beta_*\)">\(\beta_*\)</span> its zero. The zero count <span class="math" data-tex="\(N(T,\chi)\ll T\log(q(T+2))\)">\(N(T,\chi)\ll T\log(q(T+2))\)</span> is <a href="../NT-DIRL/NT-DIRL-08.html"><em>Counting zeros and the explicit formula for ψ(x, χ)</em></a>, Theorem 1.1.</p>
+<p><em>Smoothing.</em> Let <span class="math" data-tex="\(t_0\)">\(t_0\)</span> be the left endpoint of <span class="math" data-tex="\(I\)">\(I\)</span>, <span class="math" data-tex="\(y=e^{t_0}\)">\(y=e^{t_0}\)</span>, and <span class="math" data-tex="\(\epsilon=\exp(-e^{\delta&#x27;L})\)">\(\epsilon=\exp(-e^{\delta&#x27;L})\)</span>. Sandwich the indicator of the corresponding interval in the variable <span class="math" data-tex="\(u=n/y\)">\(u=n/y\)</span> between smooth nonnegative functions <span class="math" data-tex="\(f_-\le f_+\)">\(f_-\le f_+\)</span> supported in <span class="math" data-tex="\([\frac12,4]\)">\([\frac12,4]\)</span>, with <span class="math" data-tex="\(\int(f_+-f_-)\,du=O(\epsilon)\)">\(\int(f_+-f_-)\,du=O(\epsilon)\)</span> and <span class="math" data-tex="\(\|f_\pm^{(j)}\|_\infty\ll_j\epsilon^{-j}\)">\(\|f_\pm^{(j)}\|_\infty\ll_j\epsilon^{-j}\)</span>; if the interval is shorter than <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>, take <span class="math" data-tex="\(f_-=0\)">\(f_-=0\)</span>. For either function put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F(u)=\frac{f(u)}{u\log(yu)},\\
+\mathcal MF(s)=\int_0^\infty F(u)u^{s-1}du .
+\end{gathered}
+\]">\[
+\begin{gathered}
+F(u)=\frac{f(u)}{u\log(yu)},\\
+\mathcal MF(s)=\int_0^\infty F(u)u^{s-1}du .
+\end{gathered}
+\]</span>
+For a prime <span class="math" data-tex="\(n=p\)">\(n=p\)</span>, <span class="math" data-tex="\(\Lambda(p)F(p/y)/y=f(p/y)/p\)">\(\Lambda(p)F(p/y)/y=f(p/y)/p\)</span>.</p>
+<p><em>Explicit formula.</em> For a primitive <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, the argument of Lemma 1.1 of Lesson 11 (Mellin inversion and a shift to <span class="math" data-tex="\(\Re s=-\frac12\)">\(\Re s=-\frac12\)</span>) gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac1y\sum_n\Lambda(n)\chi(n)F(n/y)\\
+&amp;\quad =\mathbf 1_{\chi=1}\int_0^\infty F(u)\,du\\
+&amp;\qquad -\sum_\rho y^{\rho-1}\mathcal MF(\rho)\\
+&amp;\qquad +O\bigl(y^{-1+o(1)}\bigr).\quad(2.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac1y\sum_n\Lambda(n)\chi(n)F(n/y)\\
+&amp;\quad =\mathbf 1_{\chi=1}\int_0^\infty F(u)\,du\\
+&amp;\qquad -\sum_\rho y^{\rho-1}\mathcal MF(\rho)\\
+&amp;\qquad +O\bigl(y^{-1+o(1)}\bigr).\quad(2.3)
+\end{aligned}
+\]</span>
+Here the shifted integral is at most a fixed power of <span class="math" data-tex="\(\epsilon^{-1}\)">\(\epsilon^{-1}\)</span> times <span class="math" data-tex="\(y^{-3/2}\log(q+2)\)">\(y^{-3/2}\log(q+2)\)</span>, and a residue at <span class="math" data-tex="\(0\)">\(0\)</span> costs <span class="math" data-tex="\(y^{-1}\)">\(y^{-1}\)</span> times such a factor; since <span class="math" data-tex="\(a_0&gt;\delta&#x27;\)">\(a_0&gt;\delta&#x27;\)</span>, these are <span class="math" data-tex="\(O(y^{-1+o(1)})\)">\(O(y^{-1+o(1)})\)</span>. On <span class="math" data-tex="\(0\le\Re s\le1\)">\(0\le\Re s\le1\)</span>, integration by parts gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\mathcal MF(s)|\ll1,\\
+\begin{aligned}
+|\mathcal MF(s)|&amp;\ll_j\epsilon^{-O(j)}(1+|\Im s|)^{-j}.
+\end{aligned}\quad(2.4)
+\end{gathered}
+\]">\[
+\begin{gathered}
+|\mathcal MF(s)|\ll1,\\
+\begin{aligned}
+|\mathcal MF(s)|&amp;\ll_j\epsilon^{-O(j)}(1+|\Im s|)^{-j}.
+\end{aligned}\quad(2.4)
+\end{gathered}
+\]</span>
+The nonexceptional zeros of height at most <span class="math" data-tex="\(S\)">\(S\)</span> contribute at most
+<span class="math math-display" data-tex="\[
+\exp\bigl(-c_0e^{(a_0-\theta)L}+e^{\theta L}+O(L)\bigr),
+\]">\[
+\exp\bigl(-c_0e^{(a_0-\theta)L}+e^{\theta L}+O(L)\bigr),
+\]</span>
+because <span class="math" data-tex="\(|y^{\rho-1}|\le\exp(-c_0e^{-\theta L}t_0)\)">\(|y^{\rho-1}|\le\exp(-c_0e^{-\theta L}t_0)\)</span> and <span class="math" data-tex="\(t_0\ge e^{a_0L}\)">\(t_0\ge e^{a_0L}\)</span>. For the giant row <span class="math" data-tex="\(a_0-\theta=0.027&gt;\theta=0.022&gt;\delta&#x27;\)">\(a_0-\theta=0.027&gt;\theta=0.022&gt;\delta&#x27;\)</span>, and for the bulk row <span class="math" data-tex="\(a_0-\theta=0.0021&gt;\theta=0.0018&gt;\delta&#x27;\)">\(a_0-\theta=0.0021&gt;\theta=0.0018&gt;\delta&#x27;\)</span>, so this is far smaller than <span class="math" data-tex="\(\exp(-ce^{\delta&#x27;L})\)">\(\exp(-ce^{\delta&#x27;L})\)</span>. The zeros above <span class="math" data-tex="\(S\)">\(S\)</span>, by dyadic summation of the zero count and (2.4) with <span class="math" data-tex="\(j=2\)">\(j=2\)</span>, contribute <span class="math" data-tex="\(\exp(Ce^{\delta&#x27;L}-e^{\theta L}+O(L))\)">\(\exp(Ce^{\delta&#x27;L}-e^{\theta L}+O(L))\)</span>, also sufficient since <span class="math" data-tex="\(\delta&#x27;&lt;\theta\)">\(\delta&#x27;&lt;\theta\)</span>. Prime powers of higher exponent contribute <span class="math" data-tex="\(y^{-1/2+o(1)}\)">\(y^{-1/2+o(1)}\)</span>. Passing from a character modulo <span class="math" data-tex="\(M_*\)">\(M_*\)</span> to its primitive character changes only the prime powers of primes dividing <span class="math" data-tex="\(M_*\)">\(M_*\)</span>, a negligible amount.</p>
+<p><em>Orthogonality.</em> Selecting the class <span class="math" data-tex="\(a\)">\(a\)</span> by the characters modulo <span class="math" data-tex="\(M_*\)">\(M_*\)</span>, the factor <span class="math" data-tex="\(1/\varphi(M_*)\)">\(1/\varphi(M_*)\)</span> compensates the number of characters, so the total error is the largest single-character error. The exceptional primitive character occurs among the characters modulo <span class="math" data-tex="\(M_*\)">\(M_*\)</span> exactly when its conductor divides <span class="math" data-tex="\(M_*\)">\(M_*\)</span>.</p>
+<p><em>Main terms.</em> Under <span class="math" data-tex="\(u=e^{t-t_0}\)">\(u=e^{t-t_0}\)</span>, the principal integral becomes <span class="math" data-tex="\(\int f(e^{t-t_0})\,dt/t\)">\(\int f(e^{t-t_0})\,dt/t\)</span>, and the exceptional zero contributes <span class="math" data-tex="\(-\chi_*(a)\int f(e^{t-t_0})e^{(\beta_*-1)t}\,dt/t\)">\(-\chi_*(a)\int f(e^{t-t_0})e^{(\beta_*-1)t}\,dt/t\)</span>; no factor <span class="math" data-tex="\(\beta_*\)">\(\beta_*\)</span> remains. The density <span class="math" data-tex="\((1-\chi_*(a)e^{(\beta_*-1)t})/(\varphi(M_*)t)\)">\((1-\chi_*(a)e^{(\beta_*-1)t})/(\varphi(M_*)t)\)</span> is nonnegative and at most <span class="math" data-tex="\(2/(\varphi(M_*)t)\)">\(2/(\varphi(M_*)t)\)</span>. So the main integrals of <span class="math" data-tex="\(f_+\)">\(f_+\)</span> and <span class="math" data-tex="\(f_-\)">\(f_-\)</span> differ by <span class="math" data-tex="\(O(\epsilon)\)">\(O(\epsilon)\)</span>, and the pointwise sandwich of the positive prime sum proves (2.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The lemma keeps the exceptional zero in the main term instead of bounding it, because nothing excludes a real zero very close to <span class="math" data-tex="\(1\)">\(1\)</span> for a character of small conductor; the course never needs Siegel's theorem at this point. What matters is that the corrected density is nonnegative and at most twice the principal one, and Section 3 arranges that it depends only on a harmless residue.</p>
+<h2 id="3-deleting-a-prime-for-each-exceptional-character">3. Deleting a prime for each exceptional character</h2>
+<p>For each row of (2.1), let <span class="math" data-tex="\(\chi_*\)">\(\chi_*\)</span> be the possible exceptional character of Lemma 2.1, determined by <span class="math" data-tex="\(L\)">\(L\)</span> alone. If its conductor has a prime factor at least
+<span class="math math-display" data-tex="\[
+T_*=\exp(e^{0.0004L}),
+\tag{3.1}
+\]">\[
+T_*=\exp(e^{0.0004L}),
+\tag{3.1}
+\]</span>
+delete one such prime value from every nongiant prior. This prescribes at most two deletions, the set <span class="math" data-tex="\(\mathcal E_L\)">\(\mathcal E_L\)</span> of Lesson 14.</p>
+<p><strong>Lemma 3.1.</strong> For each of the moduli <span class="math" data-tex="\(M_*\)">\(M_*\)</span> used below, if an exceptional conductor divides <span class="math" data-tex="\(M_*\)">\(M_*\)</span>, then it divides <span class="math" data-tex="\(Q_f\)">\(Q_f\)</span>.</p>
+<p><em>Proof.</em> The moduli below are <span class="math" data-tex="\(c_{\rm sm}dQ_f\prod_bb^2\)">\(c_{\rm sm}dQ_f\prod_bb^2\)</span> and <span class="math" data-tex="\(dQ_f\)">\(dQ_f\)</span>. Every prime factor of <span class="math" data-tex="\(c_{\rm sm}\)">\(c_{\rm sm}\)</span>, <span class="math" data-tex="\(d\)">\(d\)</span> and the <span class="math" data-tex="\(b\)">\(b\)</span> is an actual nongiant prime, with <span class="math" data-tex="\(\log\log p\ge0.0005L\)">\(\log\log p\ge0.0005L\)</span>, hence larger than <span class="math" data-tex="\(T_*\)">\(T_*\)</span>; and every prime factor of <span class="math" data-tex="\(Q_f\)">\(Q_f\)</span> divides a frequency of size <span class="math" data-tex="\(\exp(O_k(m))\)">\(\exp(O_k(m))\)</span>, hence is smaller than <span class="math" data-tex="\(T_*\)">\(T_*\)</span>. If the conductor has a prime factor at least <span class="math" data-tex="\(T_*\)">\(T_*\)</span>, one such prime was deleted from all nongiant priors, so it divides none of the moduli. Otherwise all its prime factors lie in the <span class="math" data-tex="\(Q_f\)">\(Q_f\)</span> part, and since the parts are coprime and <span class="math" data-tex="\(Q_f\)">\(Q_f\)</span> contains high powers of its primes, the whole conductor divides <span class="math" data-tex="\(Q_f\)">\(Q_f\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So every surviving exceptional correction in (2.2) depends only on the real coordinate and on the residue modulo <span class="math" data-tex="\(Q_f\)">\(Q_f\)</span>. It couples no other coordinate of the Chinese remainder decomposition.</p>
+<h2 id="4-idealization-of-the-top-giants">4. Idealization of the top giants</h2>
+<p><strong>The size budget.</strong> Condition on all actual small primes, including the internal samples of both histories. At fixed frequencies, the regular and internal small-prime products have logarithms
+<span class="math math-display" data-tex="\[
+O_k(e^{0.01L})+O_k(me^{0.006L}),
+\tag{4.1}
+\]">\[
+O_k(e^{0.01L})+O_k(me^{0.006L}),
+\tag{4.1}
+\]</span>
+and the spectator products have smaller logarithms. Using the pointwise bounds <span class="math" data-tex="\(|g_\ell|\le\sqrt\ell\)">\(|g_\ell|\le\sqrt\ell\)</span> and <span class="math" data-tex="\(|\widetilde g_\ell|\le1\)">\(|\widetilde g_\ell|\le1\)</span>, the logarithm of the product of all large weights and pointwise transform bounds, the factors <span class="math" data-tex="\(\prod_bb^{n_b}\)">\(\prod_bb^{n_b}\)</span> included, is at most <span class="math" data-tex="\(e^{0.012L}\)">\(e^{0.012L}\)</span> for large <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p><strong>Coprime giants.</strong> The temporary assumption that the two top giants are coprime can be removed, with Lemma 1.1 serving as the extension. In the prime environment the exceptional event is <span class="math" data-tex="\(x_+=x_-\)">\(x_+=x_-\)</span>, of probability at most <span class="math" data-tex="\(e^{-G+O(L)}\)">\(e^{-G+O(L)}\)</span>. In the external-integer environment a fixed prime <span class="math" data-tex="\(x_-\)">\(x_-\)</span> has <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span> multiples in the log cell of <span class="math" data-tex="\(x_+\)">\(x_+\)</span>, of normalized mass <span class="math" data-tex="\(O(e^{-G})\)">\(O(e^{-G})\)</span>. After multiplication by the pointwise bound these are harmless, because <span class="math" data-tex="\(G\ge e^{0.049L}\)">\(G\ge e^{0.049L}\)</span>.</p>
+<p><strong>The modulus.</strong> Put
+<span class="math math-display" data-tex="\[
+M_*=c_{\rm sm}\,d\,Q_f\prod_bb^2 .
+\tag{4.2}
+\]">\[
+M_*=c_{\rm sm}\,d\,Q_f\prod_bb^2 .
+\tag{4.2}
+\]</span>
+Its factors are pairwise coprime, and (4.1) gives <span class="math" data-tex="\(\log M_*\le e^{0.012L}\)">\(\log M_*\le e^{0.012L}\)</span>. The giant log cells lie in <span class="math" data-tex="\([e^{0.049L},e^{0.95L}]\)">\([e^{0.049L},e^{0.95L}]\)</span>. Lemma 2.1 with the giant row, with the original cell cutoff and normalization, replaces each top prime by a real logarithmic coordinate and a uniform unit residue modulo <span class="math" data-tex="\(M_*\)">\(M_*\)</span>, with the principal harmonic density times the correction factor of (2.2). For an external integer, the analogous replacement uses the density
+<span class="math math-display" data-tex="\[
+e^{t-G}\varphi(t-G)\,dt
+\tag{4.3}
+\]">\[
+e^{t-G}\varphi(t-G)\,dt
+\tag{4.3}
+\]</span>
+and uniform residues on all classes modulo <span class="math" data-tex="\(M_*\)">\(M_*\)</span>; counting integers in a progression gives this with error <span class="math" data-tex="\(e^{-G+O(L)}\)">\(e^{-G+O(L)}\)</span> per interval and class. The total ideal mass of each coordinate is bounded, and the normalizing reciprocal of a prime cell costs only <span class="math" data-tex="\(e^{O(L)}\)">\(e^{O(L)}\)</span>.</p>
+<p><strong>Proposition 4.1</strong> (the ideal giants [OpenAI-013, (8.17)]). Replacing the two top giants by these ideal coordinates changes each comparison expression by
+<span class="math math-display" data-tex="\[
+O\bigl(\exp(-e^{0.013L})\bigr),
+\tag{4.4}
+\]">\[
+O\bigl(\exp(-e^{0.013L})\bigr),
+\tag{4.4}
+\]</span>
+uniformly in the conditioned small variables, the frequencies and the assignments.</p>
+<p><em>Proof.</em> Partition both log cells with mesh <span class="math" data-tex="\(\eta_g=\exp(-e^{0.015L})\)">\(\eta_g=\exp(-e^{0.015L})\)</span>, and freeze <span class="math" data-tex="\(\Xi\)">\(\Xi\)</span> on each box. At fixed small variables and frequencies, all other conditions are residue conditions modulo <span class="math" data-tex="\(M_*\)">\(M_*\)</span>. By the derivative bound, freezing costs at most
+<span class="math math-display" data-tex="\[
+\exp\bigl(-e^{0.015L}+O(e^{0.012L})+O_k(m)\bigr),
+\]">\[
+\exp\bigl(-e^{0.015L}+O(e^{0.012L})+O_k(m)\bigr),
+\]</span>
+including the pointwise costs. The number of boxes and of pairs of residue classes has logarithm <span class="math" data-tex="\(O(e^{0.015L}+e^{0.012L})\)">\(O(e^{0.015L}+e^{0.012L})\)</span>. On each box and pair of classes, the two giants are independent, and Lemma 2.1 with the giant row gives the actual mass with absolute error <span class="math" data-tex="\(O(\exp(-ce^{0.018L}))\)">\(O(\exp(-ce^{0.018L}))\)</span>. Even summed over all boxes and classes and multiplied by the pointwise bound, these errors total at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\exp\bigl(-ce^{0.018L}+O(e^{0.015L})\\
+&amp;\quad +O(e^{0.012L})+O_k(m)\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\exp\bigl(-ce^{0.018L}+O(e^{0.015L})\\
+&amp;\quad +O(e^{0.012L})+O_k(m)\bigr).
+\end{aligned}
+\]</span>
+The external-integer errors carry the even stronger factor <span class="math" data-tex="\(e^{-G}\)">\(e^{-G}\)</span>. Both are <span class="math" data-tex="\(O(\exp(-e^{0.013L}))\)">\(O(\exp(-e^{0.013L}))\)</span>. The exceptional correction factors are part of the measures; they are neither frozen nor differentiated. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The joint treatment matters: the approximation is applied to the joint law of the two giants on each box and class, so no conditional equidistribution of one giant given the other is assumed.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Show that in Lemma 1.1 the condition <span class="math" data-tex="\(N\not\equiv0\pmod{b^2}\)">\(N\not\equiv0\pmod{b^2}\)</span> is equivalent to <span class="math" data-tex="\(b\nmid p\)">\(b\nmid p\)</span>, given <span class="math" data-tex="\(s\mid N\)">\(s\mid N\)</span>, <span class="math" data-tex="\(u\mid N\)">\(u\mid N\)</span>, <span class="math" data-tex="\((b,s)=1\)">\((b,s)=1\)</span> and <span class="math" data-tex="\(b^2\nmid u\)">\(b^2\nmid u\)</span>.</p>
+<p><strong>5.2.</strong> Show that the multiplier <span class="math" data-tex="\(1-\chi_*(a)e^{(\beta_*-1)t}\)">\(1-\chi_*(a)e^{(\beta_*-1)t}\)</span> in (2.2) lies in <span class="math" data-tex="\([0,2]\)">\([0,2]\)</span>, and give an example of parameters where it is close to <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<p><strong>5.3.</strong> Check the inequalities <span class="math" data-tex="\(a_0-\theta&gt;\theta&gt;\delta&#x27;\)">\(a_0-\theta&gt;\theta&gt;\delta&#x27;\)</span> for both rows of (2.1), and explain where each is used.</p>
+<p><strong>5.4.</strong> Let <span class="math" data-tex="\(x_-\)">\(x_-\)</span> be a prime with <span class="math" data-tex="\(\log x_-\in[G-1,G+1]\)">\(\log x_-\in[G-1,G+1]\)</span>. Show that the integers <span class="math" data-tex="\(n\)">\(n\)</span> with <span class="math" data-tex="\(\log n\in[G-1,G+1]\)">\(\log n\in[G-1,G+1]\)</span> divisible by <span class="math" data-tex="\(x_-\)">\(x_-\)</span> number at most <span class="math" data-tex="\(e^2+1\)">\(e^2+1\)</span>, and that their total mass under the external measure (5.5) of Lesson 14 is <span class="math" data-tex="\(O(e^{-G})\)">\(O(e^{-G})\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> Since <span class="math" data-tex="\(N=sup\)">\(N=sup\)</span> and <span class="math" data-tex="\(b\nmid s\)">\(b\nmid s\)</span>, <span class="math" data-tex="\(b\mid u\)">\(b\mid u\)</span> exactly once, <span class="math" data-tex="\(v_b(N)=1+v_b(p)\)">\(v_b(N)=1+v_b(p)\)</span>. So <span class="math" data-tex="\(b^2\nmid N\)">\(b^2\nmid N\)</span> iff <span class="math" data-tex="\(v_b(p)=0\)">\(v_b(p)=0\)</span>.</p>
+<p><strong>5.2.</strong> <span class="math" data-tex="\(\chi_*(a)\in\{0,\pm1\}\)">\(\chi_*(a)\in\{0,\pm1\}\)</span> and <span class="math" data-tex="\(0&lt;e^{(\beta_*-1)t}\le1\)">\(0&lt;e^{(\beta_*-1)t}\le1\)</span>, so the multiplier is between <span class="math" data-tex="\(1-1=0\)">\(1-1=0\)</span> and <span class="math" data-tex="\(1+1=2\)">\(1+1=2\)</span>. If <span class="math" data-tex="\(\chi_*(a)=1\)">\(\chi_*(a)=1\)</span> and <span class="math" data-tex="\(\beta_*\)">\(\beta_*\)</span> is extremely close to <span class="math" data-tex="\(1\)">\(1\)</span>, say <span class="math" data-tex="\(1-\beta_*\le e^{-2a_1L}\)">\(1-\beta_*\le e^{-2a_1L}\)</span>, then <span class="math" data-tex="\(e^{(\beta_*-1)t}\ge1-o(1)\)">\(e^{(\beta_*-1)t}\ge1-o(1)\)</span> for <span class="math" data-tex="\(t\le e^{a_1L}\)">\(t\le e^{a_1L}\)</span>, and the multiplier is nearly <span class="math" data-tex="\(0\)">\(0\)</span>: primes in the class <span class="math" data-tex="\(a\)">\(a\)</span> are then much rarer than expected in the whole range.</p>
+<p><strong>5.3.</strong> Giant: <span class="math" data-tex="\(0.049-0.022=0.027&gt;0.022&gt;0.018\)">\(0.049-0.022=0.027&gt;0.022&gt;0.018\)</span>. Bulk: <span class="math" data-tex="\(0.0039-0.0018=0.0021\)">\(0.0039-0.0018=0.0021\)</span><span class="math" data-tex="\(&gt;0.0018&gt;0.0016\)">\(&gt;0.0018&gt;0.0016\)</span>. The first inequality makes the low zeros' contribution <span class="math" data-tex="\(\exp(-c_0e^{(a_0-\theta)L})\)">\(\exp(-c_0e^{(a_0-\theta)L})\)</span> beat the zero count <span class="math" data-tex="\(e^{e^{\theta L}}\)">\(e^{e^{\theta L}}\)</span>; the second makes the high zeros, beyond <span class="math" data-tex="\(S=\exp(e^{\theta L})\)">\(S=\exp(e^{\theta L})\)</span>, beat the smoothing loss <span class="math" data-tex="\(\epsilon^{-O(1)}=\exp(O(e^{\delta&#x27;L}))\)">\(\epsilon^{-O(1)}=\exp(O(e^{\delta&#x27;L}))\)</span>.</p>
+<p><strong>5.4.</strong> The multiples <span class="math" data-tex="\(n=ax_-\)">\(n=ax_-\)</span> with <span class="math" data-tex="\(\log n\in[G-1,G+1]\)">\(\log n\in[G-1,G+1]\)</span> have <span class="math" data-tex="\(a\le e^{G+1}/x_-\le e^2\)">\(a\le e^{G+1}/x_-\le e^2\)</span>, so there are at most <span class="math" data-tex="\(e^2+1\)">\(e^2+1\)</span> of them. Each has mass <span class="math" data-tex="\(e^{-G}\varphi(\log n-G)\le e^{-G}\)">\(e^{-G}\varphi(\log n-G)\le e^{-G}\)</span>, so the total is <span class="math" data-tex="\(O(e^{-G})\)">\(O(e^{-G})\)</span>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-013] OpenAI, <em>The additive indecomposability of the primes</em>, OpenAI Math Release preprint, 24 September 2026, Sections 8.1–8.3: histories, supports and real-variable weights (8.1)–(8.6), Lemma 8.1 with (8.7)–(8.12), the deletion (8.13), and the idealization of the top giants (8.14)–(8.17). https://github.com/openai/math/tree/main/preprints/the-additive-indecomposability-of-the-primes-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

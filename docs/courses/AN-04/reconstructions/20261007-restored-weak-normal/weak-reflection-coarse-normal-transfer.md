@@ -1,6 +1,6 @@
 # A coarse normalized normal bound away from glancing
 
-This is an owner receiving use of the complete U057–U062 providers. It does
+This argument uses the complete U057–U062 prerequisite proofs. It does
 not invoke glancing normal smallness or establish a positive commutator.
 All assumptions about uniform families include their full off-microsupport
 rapid-decay and residual topology.

@@ -304,7 +304,7 @@ This map is injective but not onto \(\mathbb C^2\). Retaining the first coordina
  \qquad \mathcal E=\{R_0<0\}.
  \tag{EW32}
 \]
-All original lower terms are retained by EW25–EW27. This proves the RF15 elliptic interface; the transverse propagation and complete receiving proof of U051 are separate remaining obligations.
+All original lower terms are retained by EW25–EW27. This proves the RF15 elliptic interface; the transverse propagation and full boundary theorem U051 also use the hyperbolic and glancing arguments.
 
 **6. A convex mixture needs the small-neighborhood proof.** Scalar invertible symbols \(1\) and \(-1\) have singular midpoint zero. For matrices the same example times the identity suffices. Therefore ellipticity of two endpoint polynomials alone would not justify EW25. Our proof uses uniform proximity to one frozen polynomial on a compact real-frequency interval and a separate leading-coefficient bound on the tails. For a scalar example \(p^0(\kappa)=\kappa^2+1\), perturb it to \(\kappa^2+1+e\), with \(|e|<1/2\). Every convex mixture has real part at least \(\kappa^2+1/2\) for real \(\kappa\), so it is uniformly elliptic. These are the quantitative mechanisms used in EW26, not a general convexity claim about invertible matrices.
 
@@ -314,4 +314,4 @@ All original lower terms are retained by EW25–EW27. This proves the RF15 ellip
 
 The first panel plots the exact index sequence in Exercise 4. Diagonal arrows keep \(s+t\) fixed until \(s\ge m\); horizontal arrows then increase \(s\) at fixed \(t\). The second panel distinguishes the original possibly redundant boundary map from the selected invertible minor and shows the fixed final collar inside the common input collar. It represents the support nesting, not a change of normal coordinate.
 
-The complete proof covers intrinsic jets, every full commutator, the fixed-collar smoothing argument, all real initial indices, both stages of the bootstrap and the local differential theorem with redundant data. Its local auxiliary operator is explicitly constructed on a compact boundary; no global ellipticity of the original problem has been presumed. The companion establishes the elliptic input for U051. It does not certify the remaining reflection, hyperbolic or glancing arguments merely from that input.
+The complete proof covers intrinsic jets, every full commutator, the fixed-collar smoothing argument, all real initial indices, both stages of the bootstrap and the local differential theorem with redundant data. Its local auxiliary operator is explicitly constructed on a compact boundary; no global ellipticity of the original problem has been presumed. The companion establishes the elliptic input for U051. Reflection and hyperbolic or glancing propagation require their own hypotheses and proofs.

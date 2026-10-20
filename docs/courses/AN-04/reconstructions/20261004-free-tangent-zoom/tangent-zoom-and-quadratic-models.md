@@ -36,7 +36,7 @@ integration, compactness and matrix results used here. The earlier
 [stationary lesson](../20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.md),
 Appendix A.4, supplies smooth cutoffs. The selected
 [uniform-bound proof U1](prerequisites/uniform-distribution-bounds.md) includes
-its full [complete-test-space and Baire prerequisites](prerequisites/complete-test-spaces.md).
+its full complete-test-space and Baire prerequisites.
 These are programme proof texts, with their separate licences.
 
 A smooth symbol \(b\in S^r(\mathbb R^n)\), \(r\in\mathbb R\), satisfies
@@ -64,7 +64,7 @@ on compact test supports, a distribution. Its Fourier transform is
 The normalization corresponding to the programme's graph order is
 \(r=m-n/4\). The earlier
 [prescribed-phase theorem F6](../20261004-free-intrinsic-graph/prerequisites/prescribed-phase-representation.md)
-and [intrinsic localization K7](../20261004-free-intrinsic-graph/prerequisites/conic-parametrices-and-localization.md)
+and intrinsic localization K7
 supply the localized graph representation of an intrinsic \(I^m\)
 distribution modulo an error regular at the selected covector.
 The forward graph criterion puts its reduced Fourier coefficient in

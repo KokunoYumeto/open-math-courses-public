@@ -49,16 +49,16 @@ assuming any mapping theorem about Fourier integral operators.
 
 The exact earlier proofs used below are:
 
-- [P1 B1–B6](../20261004-free-intrinsic-graph/prerequisites/dyadic-endpoint.md):
+- P1 B1–B6:
   Fourier Sobolev norms, density and completeness, Schur's estimate,
   ordinary-symbol \(H^s\) bounds, coordinate changes and dual norms;
-- [P2 O0–O6](../20261004-free-intrinsic-graph/prerequisites/ordinary-operator-calculus.md):
+- P2 O0–O6:
   product-test uniqueness, amplitude reduction, adjoints, proper operators
   and all differentiated composition remainders;
-- [P3 M0–M8](../20261004-free-intrinsic-graph/prerequisites/measure-and-l2.md)
-  and [L0–L3](../20261004-free-intrinsic-graph/prerequisites/fourier-l2.md):
+- P3 M0–M8
+  and L0–L3:
   measure, product integration, norm inequalities, completeness and Parseval;
-- [K1–K4](../20261004-free-intrinsic-graph/prerequisites/conic-parametrices-and-localization.md):
+- K1–K4:
   symbol summation and conic parametrices, for all real orders;
 - [PH F1–F6](../20261004-free-intrinsic-graph/prerequisites/prescribed-phase-representation.md):
   phase geometry, oscillatory meaning, full expansion and representation in

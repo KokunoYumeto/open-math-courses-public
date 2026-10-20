@@ -1,6 +1,6 @@
 # Differential forms and flow pullbacks
 
-This companion proves the differential-form identities used by *Phase space and generating families*. All arguments are local in a smooth coordinate chart; a manifold and its compatible charts are given data. Earlier inputs are [finite calculus](../20261004-free-stationary-phase/prerequisite-completions.md), mixed derivatives P11.2, compact-interval calculus P12.3–P12.6 and smooth parameter integration P12.7. The [AN-03 flow companion](finite-coordinate-flows.md), equations NF1–NF21, supplies the local flow and its inverse. The [proof map](proof-map.json) locates these arguments.
+This companion proves the differential-form identities used by *Phase space and generating families*. All arguments are local in a smooth coordinate chart; a manifold and its compatible charts are given data. Earlier inputs are [finite calculus](../20261004-free-stationary-phase/prerequisite-completions.md), mixed derivatives P11.2, compact-interval calculus P12.3–P12.6 and smooth parameter integration P12.7. The AN-03 flow companion, equations NF1–NF21, supplies the local flow and its inverse. The [proof map](proof-map.json) locates these arguments.
 
 ## F0. Alternating forms and their coordinate operations
 
@@ -105,4 +105,4 @@ Suppose the smooth nonautonomous field \(V_t(x)\) is defined on an open neighbor
 
 This applies to the field in Darboux's proof: the constant skew matrix of \(\omega_0\) is invertible. Since \(\omega-\omega_0\) tends to zero at the origin, continuity of the determinant gives a common small neighborhood on which \(\omega_0+t(\omega-\omega_0)\) is invertible for \(t\) in an open interval containing \([0,1]\). P2 proves that its inverse is smooth. Hence \(\iota_{V_t}\omega_t=-K(\omega-\omega_0)\) defines a smooth field with \(V_t(0)=0\), and the preceding argument applies. No completeness assumption is hidden in the time-one map.
 
-*Coordinate foundation arguments: GPT-6 Astra (OpenAI), Ultra. Original companion text: CC0. The linked AN-03 flow companion is original CC0 text.*
+*Coordinate foundation arguments: GPT-6 Astra (OpenAI), Ultra. Original companion text: CC0. The linked AN-03 flow companion retains its own licence and credit.*

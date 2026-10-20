@@ -1,0 +1,177 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Small primes, coincidences and the bulk</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Additive indecomposability of the primes)</a><a href="supports-a-progression-estimate-and-the-giants.html">Previous lesson</a><a href="the-signed-and-norm-comparisons.html">Next lesson</a><a href="src/small-primes-coincidences-and-the-bulk.md">Editable source</a></nav><main><article><h1 id="small-primes-coincidences-and-the-bulk">Small primes, coincidences and the bulk</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>After Lesson 15 the two top giants are ideal: each is a real logarithmic coordinate together with a uniform residue modulo <span class="math" data-tex="\(M_*=c_{\rm sm}dQ_f\prod_bb^2\)">\(M_*=c_{\rm sm}dQ_f\prod_bb^2\)</span>. By the Chinese remainder theorem, these residues split into independent coordinates modulo each factor. This lesson integrates them out at all the small primes. At the regular small primes <span class="math" data-tex="\(c_{\rm sm}\)">\(c_{\rm sm}\)</span> the integral is an explicit constant (Lemma 1.1). At an internal compensation prime <span class="math" data-tex="\(b\)">\(b\)</span>, every occurrence of <span class="math" data-tex="\(b\)">\(b\)</span> imposes a linear congruence on the two giants, and the integral is a <em>line probability</em> <span class="math" data-tex="\(1/(b-1)\)">\(1/(b-1)\)</span>, <span class="math" data-tex="\(1/b\)">\(1/b\)</span> or <span class="math" data-tex="\(0\)">\(0\)</span> (Lemma 1.2). For the signed comparison, these probabilities must not depend on accidental congruences among the bulk primes; a polynomial identity test shows that they almost never do (Section 2). After that, nothing ties the bulk primes to any modulus except the spectators and <span class="math" data-tex="\(Q_f\)">\(Q_f\)</span>, and the bulk primes themselves can be made ideal (Proposition 3.1).</p>
+<p><strong>Prerequisites.</strong> <a href="supports-a-progression-estimate-and-the-giants.html"><em>Supports, a progression estimate and the giants</em></a>; <a href="anchor-codes-and-decorrelation-of-higher-characters.html"><em>Anchor codes and decorrelation of higher characters</em></a>, Lemma 1.1.</p>
+<p>The notation of Lessons 14 and 15 is in force.</p>
+<h2 id="1-integrating-the-giant-coordinates-at-the-small-primes">1. Integrating the giant coordinates at the small primes</h2>
+<p>In the ideal giant distribution the Chinese remainder theorem separates the coordinates modulo <span class="math" data-tex="\(c_{\rm sm}\)">\(c_{\rm sm}\)</span>, <span class="math" data-tex="\(d\)">\(d\)</span>, <span class="math" data-tex="\(Q_f\)">\(Q_f\)</span> and the <span class="math" data-tex="\(b^2\)">\(b^2\)</span>, and a surviving exceptional correction uses only the <span class="math" data-tex="\(Q_f\)">\(Q_f\)</span> coordinate (Lemma 3.1 of Lesson 15).</p>
+<p><strong>Lemma 1.1</strong> (the regular small primes [OpenAI-013, (8.18)]). Integrating the giant coordinates modulo <span class="math" data-tex="\(c_{\rm sm}\)">\(c_{\rm sm}\)</span> multiplies the expression by
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac{\varphi(c_{\rm sm})}{c_{\rm sm}}\prod_{\ell\mid H_{\rm sm}}\frac\ell{\ell-1}\\
+&amp;\quad =\prod_{\ell\mid u_{\rm out}}\Bigl(1-\frac1\ell\Bigr)\quad(1.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac{\varphi(c_{\rm sm})}{c_{\rm sm}}\prod_{\ell\mid H_{\rm sm}}\frac\ell{\ell-1}\\
+&amp;\quad =\prod_{\ell\mid u_{\rm out}}\Bigl(1-\frac1\ell\Bigr)\quad(1.1)
+\end{aligned}
+\]</span>
+in the diagonal environment, where <span class="math" data-tex="\(u_{\rm out}\)">\(u_{\rm out}\)</span> is the actual outer compensation product of type <span class="math" data-tex="\(j\)">\(j\)</span>, and by <span class="math" data-tex="\(1\)">\(1\)</span> in the final environment. In particular the factor is at most <span class="math" data-tex="\(1\)">\(1\)</span> and does not depend on the bulk values.</p>
+<p><em>Proof.</em> In the diagonal environment <span class="math" data-tex="\(x_-\)">\(x_-\)</span> is already a unit modulo <span class="math" data-tex="\(c_{\rm sm}\)">\(c_{\rm sm}\)</span>, and <span class="math" data-tex="\(x_+\)">\(x_+\)</span> must be restricted from all classes to the units, at the cost <span class="math" data-tex="\(\varphi(c_{\rm sm})/c_{\rm sm}\)">\(\varphi(c_{\rm sm})/c_{\rm sm}\)</span>. At <span class="math" data-tex="\(\ell\mid H_{\rm sm}\)">\(\ell\mid H_{\rm sm}\)</span>, the argument of <span class="math" data-tex="\(g_\ell\)">\(g_\ell\)</span> in the factor <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> of (5.3) of Lesson 14 is a fixed unit divided by <span class="math" data-tex="\(x_+x_-\)">\(x_+x_-\)</span>, which is uniform on the units once both giants are uniform units. Since <span class="math" data-tex="\(g_\ell(0)=0\)">\(g_\ell(0)=0\)</span> and <span class="math" data-tex="\(\mathbb E_a|g_\ell(a)|^2=1\)">\(\mathbb E_a|g_\ell(a)|^2=1\)</span>, the average of <span class="math" data-tex="\(|g_\ell|^2\)">\(|g_\ell|^2\)</span> over the units is <span class="math" data-tex="\(\ell/(\ell-1)\)">\(\ell/(\ell-1)\)</span>. The coordinates at different <span class="math" data-tex="\(\ell\)">\(\ell\)</span> are independent. Since <span class="math" data-tex="\(c_{\rm sm}=H_{\rm sm}u_{\rm out}\)">\(c_{\rm sm}=H_{\rm sm}u_{\rm out}\)</span> at the top of the diagonal environment, the product is (1.1). In the final environment <span class="math" data-tex="\(\mathcal G=1\)">\(\mathcal G=1\)</span> and both giants are primes, already units. By Lemma 1.1 of Lesson 15, no other condition uses the giant coordinates modulo the actual regular small primes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>The internal primes.</strong> Fix a distinct internal sampled prime <span class="math" data-tex="\(b\)">\(b\)</span>. Each occurrence of <span class="math" data-tex="\(b\)">\(b\)</span> requires a numerator <span class="math" data-tex="\(N=vH_--wH_+\)">\(N=vH_--wH_+\)</span>, at the node where <span class="math" data-tex="\(b\)">\(b\)</span> was sampled, to vanish modulo <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p><strong>Lemma 1.2</strong> (linear forms). Each such numerator is a nonzero linear form in <span class="math" data-tex="\((x_+,x_-)\)">\((x_+,x_-)\)</span> modulo <span class="math" data-tex="\(b\)">\(b\)</span>, whose coefficients are rational expressions in the other small primes (regular or internal) and the fixed frequencies; no variable of the compensation type of <span class="math" data-tex="\(b\)">\(b\)</span> occurs in it. The same holds modulo <span class="math" data-tex="\(b^2\)">\(b^2\)</span>, and across the two histories.</p>
+<p><em>Proof.</em> Along the path from the top to the node, each substitution (4.4) of Lesson 14 keeps one current giant and replaces the other by <span class="math" data-tex="\(p=(vX_-C_-M_--wX_+C_+M_+)/(su)\)">\(p=(vX_-C_-M_--wX_+C_+M_+)/(su)\)</span>, a combination of the two with unit coefficients; so each step is an invertible linear map modulo <span class="math" data-tex="\(b\)">\(b\)</span>, and even modulo <span class="math" data-tex="\(b^2\)">\(b^2\)</span>. The compensation vectors restored at the ancestors have types different from that of <span class="math" data-tex="\(b\)">\(b\)</span>, which has not yet been reached on the way down, and the current numerator does not involve the current <span class="math" data-tex="\(\mathbf u\)">\(\mathbf u\)</span>. The numerator itself is the row <span class="math" data-tex="\((-wC_+M_+,\,vC_-M_-)\)">\((-wC_+M_+,\,vC_-M_-)\)</span>, with unit entries, applied to the current pair. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Collect the forms of all occurrences of <span class="math" data-tex="\(b\)">\(b\)</span>. If they have rank <span class="math" data-tex="\(2\)">\(2\)</span> modulo <span class="math" data-tex="\(b\)">\(b\)</span>, they have no common solution with <span class="math" data-tex="\(x_-\)">\(x_-\)</span> a unit. If they have rank <span class="math" data-tex="\(1\)">\(1\)</span>, their common line <span class="math" data-tex="\(\alpha x_++\beta x_-\equiv0\)">\(\alpha x_++\beta x_-\equiv0\)</span> has probability
+<span class="math math-display" data-tex="\[
+\begin{cases}
+(b-1)^{-1},&amp;\begin{aligned}&amp;\text{both giants prime}\\&amp;\text{and }\alpha\beta\not\equiv0,\end{aligned}\\
+b^{-1},&amp;\begin{aligned}&amp;x_+\text{ external}\\&amp;\text{and }\alpha\not\equiv0,\end{aligned}\\
+0,&amp;\text{otherwise}.
+\end{cases}\quad(1.2)
+\]">\[
+\begin{cases}
+(b-1)^{-1},&amp;\begin{aligned}&amp;\text{both giants prime}\\&amp;\text{and }\alpha\beta\not\equiv0,\end{aligned}\\
+b^{-1},&amp;\begin{aligned}&amp;x_+\text{ external}\\&amp;\text{and }\alpha\not\equiv0,\end{aligned}\\
+0,&amp;\text{otherwise}.
+\end{cases}\quad(1.2)
+\]</span>
+In the second case, each of the <span class="math" data-tex="\(b-1\)">\(b-1\)</span> unit values of <span class="math" data-tex="\(x_-\)">\(x_-\)</span> determines one of the <span class="math" data-tex="\(b\)">\(b\)</span> values of <span class="math" data-tex="\(x_+\)">\(x_+\)</span>. By the Chinese remainder theorem these probabilities multiply over the distinct <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p><strong>The second-order exclusions.</strong> Given a solution modulo <span class="math" data-tex="\(b\)">\(b\)</span> on the line, the conditions <span class="math" data-tex="\(N\not\equiv0\pmod{b^2}\)">\(N\not\equiv0\pmod{b^2}\)</span> of (1.3) of Lesson 15 remove at most a proportion <span class="math" data-tex="\(1/b\)">\(1/b\)</span> of the uniform lifts to <span class="math" data-tex="\(b^2\)">\(b^2\)</span> for each occurrence: on the lifts, <span class="math" data-tex="\(N/b\bmod b\)">\(N/b\bmod b\)</span> is a nonconstant affine function, because some coefficient of the form is a unit. A union bound over the occurrences gives a relative loss <span class="math" data-tex="\(O_k(1/b)\)">\(O_k(1/b)\)</span>.</p>
+<p><strong>Lemma 1.3</strong> (representative domination [OpenAI-013, (8.20)]). For a prime <span class="math" data-tex="\(b\)">\(b\)</span> in a compensation log cell, every occurrence prior <span class="math" data-tex="\(\mu_i\)">\(\mu_i\)</span> satisfies <span class="math" data-tex="\(b\mu_i(b)\le e^{CL}\)">\(b\mu_i(b)\le e^{CL}\)</span>, with <span class="math" data-tex="\(C\)">\(C\)</span> independent of <span class="math" data-tex="\(k\)">\(k\)</span> for large <span class="math" data-tex="\(L\)">\(L\)</span>. After integrating the line conditions, the joint measure of the internal samples, weighted by <span class="math" data-tex="\(\prod_bb^{n_b}\)">\(\prod_bb^{n_b}\)</span>, is dominated by independent <em>representative</em> priors, one occurrence prior for each distinct <span class="math" data-tex="\(b\)">\(b\)</span>, times
+<span class="math math-display" data-tex="\[
+\exp(CkrL).
+\tag{1.3}
+\]">\[
+\exp(CkrL).
+\tag{1.3}
+\]</span>
+The distinctness of the representatives can be discarded for this upper bound.</p>
+<p><em>Proof.</em> The cell normalizations are at most <span class="math" data-tex="\(e^{CL}\)">\(e^{CL}\)</span>, since the cell centres are <span class="math" data-tex="\(O_k(e^{0.01L})\)">\(O_k(e^{0.01L})\)</span>. Choosing the first occurrence as representative,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl(\prod_{i=1}^{n_b}\mu_i(b)\Bigr)\frac{b^{n_b}}{b-1}\\
+&amp;\quad =\mu_1(b)\,\frac b{b-1}\prod_{i\ge2}b\mu_i(b)\\
+&amp;\quad \le2\mu_1(b)e^{C(n_b-1)L},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl(\prod_{i=1}^{n_b}\mu_i(b)\Bigr)\frac{b^{n_b}}{b-1}\\
+&amp;\quad =\mu_1(b)\,\frac b{b-1}\prod_{i\ge2}b\mu_i(b)\\
+&amp;\quad \le2\mu_1(b)e^{C(n_b-1)L},
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(\sum_b(n_b-1)=O(kr)\)">\(\sum_b(n_b-1)=O(kr)\)</span>. The external case is the same, since <span class="math" data-tex="\(1/b\le1/(b-1)\)">\(1/b\le1/(b-1)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Dropping the exclusions.</strong> After Lemma 1.1, the remaining large pointwise factor is the spectator product: there are <span class="math" data-tex="\(2r\)">\(2r\)</span> leaf transforms at each spectator, each at most <span class="math" data-tex="\(\sqrt q\)">\(\sqrt q\)</span> in absolute value, so its logarithm is at most
+<span class="math math-display" data-tex="\[
+O_k\bigl(me^{0.001L}\bigr).
+\tag{1.4}
+\]">\[
+O_k\bigl(me^{0.001L}\bigr).
+\tag{1.4}
+\]</span>
+Every internal <span class="math" data-tex="\(b\)">\(b\)</span> has <span class="math" data-tex="\(\log b\asymp_ke^{0.01L}\)">\(\log b\asymp_ke^{0.01L}\)</span>. So the relative losses <span class="math" data-tex="\(O_k(1/b)\)">\(O_k(1/b)\)</span>, multiplied by (1.3), (1.4) and all costs <span class="math" data-tex="\(\exp(O_k(m))\)">\(\exp(O_k(m))\)</span>, are negligible, and all the conditions <span class="math" data-tex="\(N\not\equiv0\pmod{b^2}\)">\(N\not\equiv0\pmod{b^2}\)</span> are dropped from here on.</p>
+<h2 id="2-removing-arithmetic-coincidences">2. Removing arithmetic coincidences</h2>
+<p>For the signed comparison, the line probabilities must not depend on accidental congruences among the bulk primes. Fix the equality pattern of the internal samples, and regard the representatives and the actual small primes as independent formal variables. For each <span class="math" data-tex="\(b\)">\(b\)</span>, the rank and feasibility in (1.2) are decided by finitely many tests: whether a coefficient of a form vanishes, and whether a <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> minor of two forms vanishes. Clear the denominators of these tests, which are units modulo <span class="math" data-tex="\(b\)">\(b\)</span>. The result is a set of integer polynomials in the fixed frequencies and the formal variables, with no spectator variable and no variable of the type of <span class="math" data-tex="\(b\)">\(b\)</span>.</p>
+<p><strong>Degrees and sizes.</strong> Each coefficient arising in a reversal is the product of the small slots of a subtree and a frequency, and a path has at most <span class="math" data-tex="\(k\)">\(k\)</span> substitutions; clearing ancestor denominators and forming a minor keeps the degree <span class="math" data-tex="\(O_k(m)\)">\(O_k(m)\)</span>. The same induction shows that, whenever an evaluation is nonzero,
+<span class="math math-display" data-tex="\[
+\log|P|\le e^{0.012L}
+\tag{2.1}
+\]">\[
+\log|P|\le e^{0.012L}
+\tag{2.1}
+\]</span>
+for large <span class="math" data-tex="\(L\)">\(L\)</span>: the total degree is <span class="math" data-tex="\(O_k(m)\)">\(O_k(m)\)</span>, the small-prime logarithms are <span class="math" data-tex="\(O_k(e^{0.01L})\)">\(O_k(e^{0.01L})\)</span>, and the frequency coefficients have logarithm <span class="math" data-tex="\(O_k(m)\)">\(O_k(m)\)</span>.</p>
+<p><strong>Proposition 2.1</strong> (symbolic line factors [OpenAI-013, (8.24)]). Replace each test by the question whether its polynomial vanishes identically over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Under the domination of Lemma 1.3, this changes the expressions by
+<span class="math math-display" data-tex="\[
+O\bigl(\exp(-e^{0.002L})\bigr).
+\tag{2.2}
+\]">\[
+O\bigl(\exp(-e^{0.002L})\bigr).
+\tag{2.2}
+\]</span></p>
+<p><em>Proof.</em> <em>Accidental zeros.</em> All variables occurring are at least of bulk size, so each has largest atom at most <span class="math" data-tex="\(\exp(-ce^{0.004L})\)">\(\exp(-ce^{0.004L})\)</span>. By Lemma 1.1 of Lesson 9, a polynomial that does not vanish identically has an exact zero with probability at most <span class="math" data-tex="\(O_k(m)\exp(-ce^{0.004L})\)">\(O_k(m)\exp(-ce^{0.004L})\)</span>.</p>
+<p><em>Accidental divisibility by <span class="math" data-tex="\(b\)">\(b\)</span>.</em> If the evaluation is nonzero, (2.1) shows that it has at most <span class="math" data-tex="\(e^{O(L)}\)">\(e^{O(L)}\)</span> prime divisors. The representative <span class="math" data-tex="\(b\)">\(b\)</span> is independent of the evaluation, since its whole type is absent from the polynomial, and its largest atom is at most <span class="math" data-tex="\(\exp(-c_ke^{0.01L}+O(L))\)">\(\exp(-c_ke^{0.01L}+O(L))\)</span>; so <span class="math" data-tex="\(b\)">\(b\)</span> divides the evaluation with negligible probability. A polynomial that vanishes identically vanishes modulo <span class="math" data-tex="\(b\)">\(b\)</span> identically, because the cleared denominators are units.</p>
+<p><em>Totals.</em> For these bounds, discard the other support conditions and use the representative domination. Both the original and the replaced line factors are at most <span class="math" data-tex="\(1/(b-1)\)">\(1/(b-1)\)</span>, so the domination applies to their difference. There are <span class="math" data-tex="\(O_k(1)\)">\(O_k(1)\)</span> tests; multiplying by (1.4) and the costs <span class="math" data-tex="\(\exp(O_k(m))\)">\(\exp(O_k(m))\)</span> gives (2.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Integrating the line conditions.</strong> For the signed estimate (6.2) of Lesson 14, the integral of the giant coordinates modulo each internal <span class="math" data-tex="\(b\)">\(b\)</span> is the symbolic rank and feasibility flag times the corresponding scalar of (1.2). The flags depend only on the formal pattern and the frequencies, not on the sampled bulk values. No other factor uses the giant coordinates at <span class="math" data-tex="\(b\)">\(b\)</span> once the <span class="math" data-tex="\(b^2\)">\(b^2\)</span> exclusions are removed, so this removes every dependence on the bulk residues modulo the internal primes.</p>
+<p>For the norm estimate (6.1) of Lesson 14 there is a simpler nonnegative bound: take absolute values in the expansion, replace every line probability by <span class="math" data-tex="\(1/(b-1)\)">\(1/(b-1)\)</span>, and use Lemma 1.3. The flags are discarded; they do not remain as conditions on the bulk variables.</p>
+<p><strong>Bulk distinctness.</strong> In the simplified expressions, the distinctness of the actual bulk samples can be removed as well. There are <span class="math" data-tex="\(rm=O_k(m)\)">\(rm=O_k(m)\)</span> such samples, and their collision probability under independent priors is at most the number of pairs times the largest point mass. With (1.3) and (1.4), the error is again bounded by (2.2). Spectator distinctness, and the conditions involving only nonbulk variables, are kept.</p>
+<h2 id="3-joint-idealization-of-the-bulk-variables">3. Joint idealization of the bulk variables</h2>
+<p>What depends on the actual bulk values is either smooth in their logarithmic coordinates or a condition modulo <span class="math" data-tex="\(dQ_f\)">\(dQ_f\)</span>; no condition on their residues modulo internal primes or modulo regular small primes remains. Moreover
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\log(dQ_f)&amp;=O_k(me^{0.001L})\\
+&amp;&lt;e^{0.0012L}.\quad(3.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\log(dQ_f)&amp;=O_k(me^{0.001L})\\
+&amp;&lt;e^{0.0012L}.\quad(3.1)
+\end{aligned}
+\]</span></p>
+<p><strong>Proposition 3.1</strong> (ideal bulk [OpenAI-013, (8.27)]). Replace the <span class="math" data-tex="\(rm\)">\(rm\)</span> bulk priors by their real harmonic densities times independent uniform unit residues modulo <span class="math" data-tex="\(dQ_f\)">\(dQ_f\)</span>, keeping the possible exceptional corrections of Lemma 2.1 of Lesson 15 with the bulk row. This changes each comparison expression by
+<span class="math math-display" data-tex="\[
+O\bigl(\exp(-e^{0.00125L})\bigr),
+\tag{3.2}
+\]">\[
+O\bigl(\exp(-e^{0.00125L})\bigr),
+\tag{3.2}
+\]</span>
+uniformly in the frequency histories and the equality patterns.</p>
+<p><em>Proof.</em> The bulk range <span class="math" data-tex="\(e^{0.004L}\le\log p\le e^{0.006L}\)">\(e^{0.004L}\le\log p\le e^{0.006L}\)</span> lies strictly inside the range <span class="math" data-tex="\([e^{0.0039L},e^{0.007L}]\)">\([e^{0.0039L},e^{0.007L}]\)</span> of the bulk row, and its harmonic normalization is of order <span class="math" data-tex="\(L\)">\(L\)</span>. If a deleted prime lies in the bulk range, removing its single atom costs a negligible amount by the largest-atom bound, so the formula for all primes may be used with the given normalization.</p>
+<p>Partition each bulk logarithmic range with mesh <span class="math" data-tex="\(\eta_b=\exp(-e^{0.0014L})\)">\(\eta_b=\exp(-e^{0.0014L})\)</span>. The joint boxes and joint residue classes number at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\exp\Bigl(O_k\bigl(m(e^{0.0014L}+L\\
+&amp;\quad +\log(dQ_f))\bigr)\Bigr).\quad(3.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\exp\Bigl(O_k\bigl(m(e^{0.0014L}+L\\
+&amp;\quad +\log(dQ_f))\bigr)\Bigr).\quad(3.3)
+\end{aligned}
+\]</span>
+Freeze the smooth weight on each box; by (1.3) and (1.4) its remaining total or pointwise cost is <span class="math" data-tex="\(\exp(O_k(me^{0.001L}))\)">\(\exp(O_k(me^{0.001L}))\)</span>, and the derivative bounds of Section 1 of Lesson 15 make the freezing error at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\exp\bigl(-e^{0.0014L}+O_k(me^{0.001L})\\
+&amp;\quad +O_k(m)\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\exp\bigl(-e^{0.0014L}+O_k(me^{0.001L})\\
+&amp;\quad +O_k(m)\bigr).
+\end{aligned}
+\]</span>
+On each box and joint class, the actual and ideal masses of the product of the <span class="math" data-tex="\(rm\)">\(rm\)</span> coordinates differ by at most the sum over the coordinates of the single-coordinate errors of Lemma 2.1 of Lesson 15 (bulk row, <span class="math" data-tex="\(\delta&#x27;=0.0016\)">\(\delta&#x27;=0.0016\)</span>) times bounded masses of the others. Summed over all boxes and classes, the interval errors are at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\exp\Bigl(-ce^{0.0016L}+O_k\\
+&amp;\quad \bigl(m(e^{0.0014L}+L+e^{0.0012L})\bigr)\\
+&amp;\quad +O_k(me^{0.001L})\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\exp\Bigl(-ce^{0.0016L}+O_k\\
+&amp;\quad \bigl(m(e^{0.0014L}+L+e^{0.0012L})\bigr)\\
+&amp;\quad +O_k(me^{0.001L})\Bigr).
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(m=O_k(L)\)">\(m=O_k(L)\)</span>, both are <span class="math" data-tex="\(O(\exp(-e^{0.00125L}))\)">\(O(\exp(-e^{0.00125L}))\)</span>. The bounded masses of the other coordinates add only <span class="math" data-tex="\(\exp(O_k(m))\)">\(\exp(O_k(m))\)</span>. In the main term the real distributions are integrated as measures; the box count multiplies only the approximation errors.</p>
+<p>For fixed <span class="math" data-tex="\(k\)">\(k\)</span> there are <span class="math" data-tex="\(\exp(O_k(m))\)">\(\exp(O_k(m))\)</span> frequency histories, since each frequency is at most <span class="math" data-tex="\(\exp(O_k(m))\)">\(\exp(O_k(m))\)</span> and there are <span class="math" data-tex="\(O_k(1)\)">\(O_k(1)\)</span> nodes, and <span class="math" data-tex="\(O_k(1)\)">\(O_k(1)\)</span> equality patterns. So (4.4) of Lesson 15, (2.2) and (3.2) remain negligible after the sums over histories and patterns. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>After Proposition 3.1, the surviving exceptional multipliers are functions of the real and <span class="math" data-tex="\(Q_f\)">\(Q_f\)</span> coordinates only, at most <span class="math" data-tex="\(2\)">\(2\)</span> per sampled prime; and the bulk residues modulo <span class="math" data-tex="\(d\)">\(d\)</span> are independent uniform units, entering only through the spectator product (1.4) of Lesson 15. Lesson 17 uses exactly this.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1.</strong> In (1.2), verify the second case: if <span class="math" data-tex="\(x_-\)">\(x_-\)</span> is a uniform unit and <span class="math" data-tex="\(x_+\)">\(x_+\)</span> a uniform residue modulo <span class="math" data-tex="\(b\)">\(b\)</span>, independent, and <span class="math" data-tex="\(\alpha\not\equiv0\)">\(\alpha\not\equiv0\)</span>, then <span class="math" data-tex="\(\Pr(\alpha x_++\beta x_-\equiv0)=1/b\)">\(\Pr(\alpha x_++\beta x_-\equiv0)=1/b\)</span>.</p>
+<p><strong>4.2.</strong> Show that for a prime <span class="math" data-tex="\(\ell\)">\(\ell\)</span> and a function <span class="math" data-tex="\(g\)">\(g\)</span> on <span class="math" data-tex="\(\mathbb F_\ell\)">\(\mathbb F_\ell\)</span> with <span class="math" data-tex="\(g(0)=0\)">\(g(0)=0\)</span> and <span class="math" data-tex="\(\mathbb E_{a\in\mathbb F_\ell}|g(a)|^2=1\)">\(\mathbb E_{a\in\mathbb F_\ell}|g(a)|^2=1\)</span>, the average of <span class="math" data-tex="\(|g|^2\)">\(|g|^2\)</span> over the units is <span class="math" data-tex="\(\ell/(\ell-1)\)">\(\ell/(\ell-1)\)</span>.</p>
+<p><strong>4.3.</strong> Give an example of two linear forms in <span class="math" data-tex="\((x_+,x_-)\)">\((x_+,x_-)\)</span> modulo <span class="math" data-tex="\(b\)">\(b\)</span> with unit coefficients whose <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> minor vanishes modulo <span class="math" data-tex="\(b\)">\(b\)</span> but not over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, and explain why Proposition 2.1 makes such accidents negligible.</p>
+<p><strong>4.4.</strong> Let <span class="math" data-tex="\(n\)">\(n\)</span> independent variables take each value with probability at most <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Show that the probability that two of them coincide is at most <span class="math" data-tex="\(\binom n2\alpha\)">\(\binom n2\alpha\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> For each unit <span class="math" data-tex="\(x_-\)">\(x_-\)</span>, the congruence determines <span class="math" data-tex="\(x_+\equiv-\beta x_-/\alpha\)">\(x_+\equiv-\beta x_-/\alpha\)</span>, one residue out of <span class="math" data-tex="\(b\)">\(b\)</span>. Averaging over <span class="math" data-tex="\(x_-\)">\(x_-\)</span> gives <span class="math" data-tex="\(1/b\)">\(1/b\)</span>.</p>
+<p><strong>4.2.</strong> <span class="math" data-tex="\(\sum_{a\in\mathbb F_\ell}|g(a)|^2=\ell\)">\(\sum_{a\in\mathbb F_\ell}|g(a)|^2=\ell\)</span> and <span class="math" data-tex="\(g(0)=0\)">\(g(0)=0\)</span>, so the sum over the <span class="math" data-tex="\(\ell-1\)">\(\ell-1\)</span> units is <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, and the average is <span class="math" data-tex="\(\ell/(\ell-1)\)">\(\ell/(\ell-1)\)</span>.</p>
+<p><strong>4.3.</strong> With variables <span class="math" data-tex="\(c_1,c_2\)">\(c_1,c_2\)</span> standing for small primes, take the forms <span class="math" data-tex="\(c_1x_++x_-\)">\(c_1x_++x_-\)</span> and <span class="math" data-tex="\(c_2x_++x_-\)">\(c_2x_++x_-\)</span>; the minor is <span class="math" data-tex="\(c_1-c_2\)">\(c_1-c_2\)</span>, not zero as a polynomial, but zero modulo <span class="math" data-tex="\(b\)">\(b\)</span> when <span class="math" data-tex="\(c_1\equiv c_2\pmod b\)">\(c_1\equiv c_2\pmod b\)</span>. The polynomial <span class="math" data-tex="\(c_1-c_2\)">\(c_1-c_2\)</span> does not involve the type of <span class="math" data-tex="\(b\)">\(b\)</span>; for a nonzero value <span class="math" data-tex="\(c_1-c_2\)">\(c_1-c_2\)</span> it has few prime divisors, and the independent prime <span class="math" data-tex="\(b\)">\(b\)</span> divides it with probability at most (number of divisors) times its largest atom, which is negligible; the value <span class="math" data-tex="\(0\)">\(0\)</span> itself has probability at most the largest atom of <span class="math" data-tex="\(c_2\)">\(c_2\)</span>.</p>
+<p><strong>4.4.</strong> For each of the <span class="math" data-tex="\(\binom n2\)">\(\binom n2\)</span> pairs, condition on one variable; the other equals it with probability at most <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Apply the union bound.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-013] OpenAI, <em>The additive indecomposability of the primes</em>, OpenAI Math Release preprint, 24 September 2026, Sections 8.4–8.6: integration of the actual and internal small-prime coordinates (8.18)–(8.21), removing arithmetic coincidences in the line conditions (8.22)–(8.24), and joint idealization of the bulk variables (8.25)–(8.27). https://github.com/openai/math/tree/main/preprints/the-additive-indecomposability-of-the-primes-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

@@ -1,0 +1,380 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Hypercontractive moments and a small-kernel witness</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Additive indecomposability of the primes)</a><a href="a-biased-block-and-an-amplified-moment.html">Previous lesson</a><a href="a-common-centre-for-the-quadratic-biases.html">Next lesson</a><a href="src/hypercontractive-moments-and-a-small-kernel-witness.md">Editable source</a></nav><main><article><h1 id="hypercontractive-moments-and-a-small-kernel-witness">Hypercontractive moments and a small-kernel witness</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Lesson 3 reduced a quadratic bias at many primes to the lower bound <span class="math" data-tex="\(\mathbb E_M|\mathcal F_M|\ge e^{0.015K}\)">\(\mathbb E_M|\mathcal F_M|\ge e^{0.015K}\)</span> for the positive-frequency Poisson dual, where <span class="math" data-tex="\(M\)">\(M\)</span> is the product of a random tuple of <span class="math" data-tex="\(k\)">\(k\)</span> distinct primes of the block <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>. By (6.2) of Lesson 3, <span class="math" data-tex="\(\mathcal F_M\)">\(\mathcal F_M\)</span> is a combination of the Jacobi symbols <span class="math" data-tex="\(\chi_M(s)=(s/M)\)">\(\chi_M(s)=(s/M)\)</span> of squarefree <span class="math" data-tex="\(s\)">\(s\)</span>, with coefficients that themselves depend on <span class="math" data-tex="\(M\)">\(M\)</span>. This lesson shows where the mass of <span class="math" data-tex="\(\mathcal F_M\)">\(\mathcal F_M\)</span> must sit. Large squarefree <span class="math" data-tex="\(s\)">\(s\)</span> and the terms with <span class="math" data-tex="\(P\ne1\)">\(P\ne1\)</span> contribute little, because a high moment of a sum of Jacobi symbols is controlled by a weighted <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> norm of the coefficients (Proposition 3.1). The proof of that moment bound uses Bonami's hypercontractive inequality, proved here from the binomial theorem. What remains forces, with probability at least <span class="math" data-tex="\(e^{-O(K)}\)">\(e^{-O(K)}\)</span>, a large value of one of the quadratic exponential sums <span class="math" data-tex="\(G_d(s,v)\)">\(G_d(s,v)\)</span> with small <span class="math" data-tex="\(s\)">\(s\)</span> (Proposition 6.1).</p>
+<p><strong>Prerequisites.</strong> <a href="a-biased-block-and-an-amplified-moment.html"><em>A biased block and an amplified moment</em></a>, Sections 2–6; <a href="../NT-DIRL/NT-DIRL-01.html"><em>Dirichlet characters</em></a>, Theorem 4.1 and the Kronecker symbol; <a href="../NT-ZETA/NT-ZETA-02.html"><em>Counting primes by elementary means: Chebyshev and Mertens</em></a>, Theorem 3.1.</p>
+<p>Throughout, the notation of Lesson 3 is in force: <span class="math" data-tex="\(T\)">\(T\)</span>, <span class="math" data-tex="\(Z\)">\(Z\)</span>, <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>, <span class="math" data-tex="\(J\)">\(J\)</span>, <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span>, <span class="math" data-tex="\(K\)">\(K\)</span>, <span class="math" data-tex="\(k\)">\(k\)</span>, <span class="math" data-tex="\(X\)">\(X\)</span>, the random tuple with product <span class="math" data-tex="\(M\)">\(M\)</span>, and <span class="math" data-tex="\(R,\theta,h_0,g_d,N_{dsv},G_d^{(P)},C_s^{(P)}\)">\(R,\theta,h_0,g_d,N_{dsv},G_d^{(P)},C_s^{(P)}\)</span>.</p>
+<h2 id="1-jacobi-symbols-in-the-denominator">1. Jacobi symbols in the denominator</h2>
+<p>For an odd positive integer <span class="math" data-tex="\(m\)">\(m\)</span> and an integer <span class="math" data-tex="\(n\)">\(n\)</span>, <span class="math" data-tex="\((n/m)\)">\((n/m)\)</span> denotes the Jacobi symbol, the product of the Legendre symbols <span class="math" data-tex="\((n/p)\)">\((n/p)\)</span> over the prime factors of <span class="math" data-tex="\(m\)">\(m\)</span> with multiplicity. It is multiplicative in <span class="math" data-tex="\(n\)">\(n\)</span> and in <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> be an integer that is not a perfect square. The function <span class="math" data-tex="\(\xi_n\)">\(\xi_n\)</span> on positive integers, defined by <span class="math" data-tex="\(\xi_n(m)=(n/m)\)">\(\xi_n(m)=(n/m)\)</span> for odd <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(\xi_n(m)=0\)">\(\xi_n(m)=0\)</span> for even <span class="math" data-tex="\(m\)">\(m\)</span>, is a nonprincipal Dirichlet character to a modulus dividing <span class="math" data-tex="\(8n\)">\(8n\)</span>. In particular <span class="math" data-tex="\(\bigl|\sum_{m\le Y}\xi_n(m)\bigr|\le8n\)">\(\bigl|\sum_{m\le Y}\xi_n(m)\bigr|\le8n\)</span> for every <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(n=n_0n_1^2\)">\(n=n_0n_1^2\)</span> with <span class="math" data-tex="\(n_0&gt;1\)">\(n_0&gt;1\)</span> squarefree. For odd <span class="math" data-tex="\(m\)">\(m\)</span>, <span class="math" data-tex="\((n/m)=(n_0/m)\)">\((n/m)=(n_0/m)\)</span> if <span class="math" data-tex="\((m,n_1)=1\)">\((m,n_1)=1\)</span>, and <span class="math" data-tex="\((n/m)=0\)">\((n/m)=0\)</span> otherwise. Let <span class="math" data-tex="\(d_0\)">\(d_0\)</span> be the discriminant of <span class="math" data-tex="\(\mathbb Q(\sqrt{n_0})\)">\(\mathbb Q(\sqrt{n_0})\)</span>: <span class="math" data-tex="\(d_0=n_0\)">\(d_0=n_0\)</span> if <span class="math" data-tex="\(n_0\equiv1\pmod4\)">\(n_0\equiv1\pmod4\)</span>, and <span class="math" data-tex="\(d_0=4n_0\)">\(d_0=4n_0\)</span> otherwise. For odd <span class="math" data-tex="\(m\)">\(m\)</span> the Kronecker symbol <span class="math" data-tex="\((d_0/m)\)">\((d_0/m)\)</span> is the Jacobi symbol, and <span class="math" data-tex="\((4/m)=1\)">\((4/m)=1\)</span>, so <span class="math" data-tex="\((d_0/m)=(n_0/m)\)">\((d_0/m)=(n_0/m)\)</span>. By <a href="../NT-DIRL/NT-DIRL-01.html"><em>Dirichlet characters</em></a>, Theorem 4.1, <span class="math" data-tex="\(m\mapsto(d_0/m)\)">\(m\mapsto(d_0/m)\)</span> is a real primitive character of conductor <span class="math" data-tex="\(|d_0|\ne1\)">\(|d_0|\ne1\)</span>. So <span class="math" data-tex="\(\xi_n\)">\(\xi_n\)</span> is the character modulo <span class="math" data-tex="\(\operatorname{lcm}(2,|d_0|,n_1)\)">\(\operatorname{lcm}(2,|d_0|,n_1)\)</span>, a divisor of <span class="math" data-tex="\(8n\)">\(8n\)</span>, induced by this nonprincipal primitive character. A nonprincipal character sums to zero over every complete period, so a sum over <span class="math" data-tex="\(m\le Y\)">\(m\le Y\)</span> reduces to a sum over fewer than one period, of absolute value at most <span class="math" data-tex="\(8n\)">\(8n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-bonami-s-inequality">2. Bonami's inequality</h2>
+<p><strong>Lemma 2.1.</strong> For real <span class="math" data-tex="\(x,y\)">\(x,y\)</span> and an integer <span class="math" data-tex="\(l\ge1\)">\(l\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl(\tfrac12|x+y|^{2l}+\tfrac12|x-y|^{2l}\Bigr)^{1/l}\\
+&amp;\quad \le x^2+(2l-1)y^2.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl(\tfrac12|x+y|^{2l}+\tfrac12|x-y|^{2l}\Bigr)^{1/l}\\
+&amp;\quad \le x^2+(2l-1)y^2.
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> The left side, raised to the power <span class="math" data-tex="\(l\)">\(l\)</span>, is <span class="math" data-tex="\(\sum_{i=0}^{l}\binom{2l}{2i}x^{2l-2i}y^{2i}\)">\(\sum_{i=0}^{l}\binom{2l}{2i}x^{2l-2i}y^{2i}\)</span>; the odd powers of <span class="math" data-tex="\(y\)">\(y\)</span> cancel. The right side raised to the power <span class="math" data-tex="\(l\)">\(l\)</span> is <span class="math" data-tex="\(\sum_i\binom li(2l-1)^ix^{2l-2i}y^{2i}\)">\(\sum_i\binom li(2l-1)^ix^{2l-2i}y^{2i}\)</span>. It suffices that <span class="math" data-tex="\(\binom{2l}{2i}\le\binom li(2l-1)^i\)">\(\binom{2l}{2i}\le\binom li(2l-1)^i\)</span>. Grouping the factors of <span class="math" data-tex="\((2l)!/(2l-2i)!\)">\((2l)!/(2l-2i)!\)</span> in pairs,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{\binom{2l}{2i}}{\binom li}&amp;=\frac{2^i\prod_{t=0}^{i-1}(l-t)(2l-2t-1)}{(2i)!}\\
+&amp;\quad \cdot\frac{i!}{\prod_{t=0}^{i-1}(l-t)}\\
+&amp;=\prod_{t=0}^{i-1}\frac{2l-2t-1}{2t+1},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{\binom{2l}{2i}}{\binom li}&amp;=\frac{2^i\prod_{t=0}^{i-1}(l-t)(2l-2t-1)}{(2i)!}\\
+&amp;\quad \cdot\frac{i!}{\prod_{t=0}^{i-1}(l-t)}\\
+&amp;=\prod_{t=0}^{i-1}\frac{2l-2t-1}{2t+1},
+\end{aligned}
+\]</span>
+using <span class="math" data-tex="\((2i)!=2^ii!\prod_{t=0}^{i-1}(2t+1)\)">\((2i)!=2^ii!\prod_{t=0}^{i-1}(2t+1)\)</span>. Each factor is at most <span class="math" data-tex="\(2l-1\)">\(2l-1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.2</strong> (Bonami's inequality for signs [Bon, Chapter III, Theorems 2 and 3]). Let <span class="math" data-tex="\(\varepsilon_1,\dots,\varepsilon_r\)">\(\varepsilon_1,\dots,\varepsilon_r\)</span> be independent uniform random signs, and let <span class="math" data-tex="\(F=\sum_{S\subseteq[r]}a_S\prod_{i\in S}\varepsilon_i\)">\(F=\sum_{S\subseteq[r]}a_S\prod_{i\in S}\varepsilon_i\)</span> with real coefficients <span class="math" data-tex="\(a_S\)">\(a_S\)</span>. Then for every integer <span class="math" data-tex="\(l\ge1\)">\(l\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\bigl(\mathbb E|F|^{2l}\bigr)^{1/l}\le\sum_{S}(2l-1)^{|S|}a_S^2.
+\]">\[
+\bigl(\mathbb E|F|^{2l}\bigr)^{1/l}\le\sum_{S}(2l-1)^{|S|}a_S^2.
+\]</span></p>
+<p><em>Proof.</em> Induct on <span class="math" data-tex="\(r\)">\(r\)</span>; for <span class="math" data-tex="\(r=0\)">\(r=0\)</span> both sides equal <span class="math" data-tex="\(a_\emptyset^2\)">\(a_\emptyset^2\)</span>. Write <span class="math" data-tex="\(F=F_0+\varepsilon_rF_1\)">\(F=F_0+\varepsilon_rF_1\)</span>, where <span class="math" data-tex="\(F_0,F_1\)">\(F_0,F_1\)</span> do not involve <span class="math" data-tex="\(\varepsilon_r\)">\(\varepsilon_r\)</span>. By Lemma 2.1 applied pointwise in the other signs,
+<span class="math math-display" data-tex="\[
+\mathbb E|F|^{2l}\le\mathbb E\bigl(F_0^2+(2l-1)F_1^2\bigr)^l .
+\]">\[
+\mathbb E|F|^{2l}\le\mathbb E\bigl(F_0^2+(2l-1)F_1^2\bigr)^l .
+\]</span>
+Minkowski's inequality in <span class="math" data-tex="\(L^l\)">\(L^l\)</span> gives <span class="math" data-tex="\(\|F_0^2+(2l-1)F_1^2\|_l\)">\(\|F_0^2+(2l-1)F_1^2\|_l\)</span><span class="math" data-tex="\(\le\|F_0\|_{2l}^2+(2l-1)\|F_1\|_{2l}^2\)">\(\le\|F_0\|_{2l}^2+(2l-1)\|F_1\|_{2l}^2\)</span>. Apply the induction hypothesis to <span class="math" data-tex="\(F_0\)">\(F_0\)</span>, whose coefficients are the <span class="math" data-tex="\(a_S\)">\(a_S\)</span> with <span class="math" data-tex="\(r\notin S\)">\(r\notin S\)</span>, and to <span class="math" data-tex="\(F_1\)">\(F_1\)</span>, whose coefficients are the <span class="math" data-tex="\(a_S\)">\(a_S\)</span> with <span class="math" data-tex="\(r\in S\)">\(r\in S\)</span>, indexed by <span class="math" data-tex="\(S\setminus\{r\}\)">\(S\setminus\{r\}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-a-moment-estimate-uniform-over-a-family-of-arrays">3. A moment estimate uniform over a family of arrays</h2>
+<p>Let <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> be the set of squarefree <span class="math" data-tex="\(s&lt;Z^{14}\)">\(s&lt;Z^{14}\)</span> coprime to <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span>. An <em>array</em> is a family <span class="math" data-tex="\(b=(b_s)_{s\in\mathcal S}\)">\(b=(b_s)_{s\in\mathcal S}\)</span> of complex numbers. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+l=\lfloor T^{\mu_0}\rfloor,\\
+u_0=2l,\\
+\|b\|_{\mathrm w}^2=\sum_{s\in\mathcal S}u_0^{\omega(s)}|b_s|^2 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+l=\lfloor T^{\mu_0}\rfloor,\\
+u_0=2l,\\
+\|b\|_{\mathrm w}^2=\sum_{s\in\mathcal S}u_0^{\omega(s)}|b_s|^2 .
+\end{gathered}
+\]</span></p>
+<p><strong>Proposition 3.1</strong> ([OpenAI-013, (3.13)]). Let <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> be fixed and let <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> be a family of arrays with <span class="math" data-tex="\(|\mathcal B|\le Z^c\)">\(|\mathcal B|\le Z^c\)</span> and <span class="math" data-tex="\(\sum_s|b_s|\le Z^c\)">\(\sum_s|b_s|\le Z^c\)</span> for every <span class="math" data-tex="\(b\in\mathcal B\)">\(b\in\mathcal B\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl(\mathbb E_M\max_{b\in\mathcal B}\Bigl|\sum_s\chi_M(s)b_s\Bigr|^{2l}\Bigr)^{1/(2l)}\\
+&amp;\quad\le e^{o(K)}\max_{b\in\mathcal B}\|b\|_{\mathrm w}+O(Z^{-10}),\quad(3.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl(\mathbb E_M\max_{b\in\mathcal B}\Bigl|\sum_s\chi_M(s)b_s\Bigr|^{2l}\Bigr)^{1/(2l)}\\
+&amp;\quad\le e^{o(K)}\max_{b\in\mathcal B}\|b\|_{\mathrm w}+O(Z^{-10}),\quad(3.1)
+\end{aligned}
+\]</span>
+where the <span class="math" data-tex="\(o(K)\)">\(o(K)\)</span> and the implied constant depend only on <span class="math" data-tex="\(c\)">\(c\)</span>.</p>
+<p><em>Proof.</em> <em>From the maximum to one array.</em> Bound the maximum by the sum over <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl(\mathbb E_M\max_b|\cdot|^{2l}\Bigr)^{1/(2l)}\le|\mathcal B|^{1/(2l)}\\
+&amp;\qquad \max_b\Bigl(\mathbb E_M\Bigl|\sum_s\chi_M(s)b_s\Bigr|^{2l}\Bigr)^{1/(2l)},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl(\mathbb E_M\max_b|\cdot|^{2l}\Bigr)^{1/(2l)}\le|\mathcal B|^{1/(2l)}\\
+&amp;\qquad \max_b\Bigl(\mathbb E_M\Bigl|\sum_s\chi_M(s)b_s\Bigr|^{2l}\Bigr)^{1/(2l)},
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(|\mathcal B|^{1/(2l)}\le\exp(c\log Z/(2l))\)">\(|\mathcal B|^{1/(2l)}\le\exp(c\log Z/(2l))\)</span><span class="math" data-tex="\(=\exp(O(T^{1-\mu_0}))=e^{o(K)}\)">\(=\exp(O(T^{1-\mu_0}))=e^{o(K)}\)</span>, because <span class="math" data-tex="\(K\asymp T^{1-\gamma}\)">\(K\asymp T^{1-\gamma}\)</span> and <span class="math" data-tex="\(\mu_0&gt;\gamma\)">\(\mu_0&gt;\gamma\)</span>.</p>
+<p><em>From tuples to all odd moduli.</em> Fix <span class="math" data-tex="\(b\)">\(b\)</span>. A product <span class="math" data-tex="\(M\)">\(M\)</span> of <span class="math" data-tex="\(k\)">\(k\)</span> distinct primes of <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> arises from <span class="math" data-tex="\(k!\)">\(k!\)</span> ordered tuples, so it has probability <span class="math" data-tex="\(k!/(J)_k\le2k!/J^k\)">\(k!/(J)_k\le2k!/J^k\)</span>; here <span class="math" data-tex="\((J)_k\ge J^k/2\)">\((J)_k\ge J^k/2\)</span> because <span class="math" data-tex="\(k^2=o(J)\)">\(k^2=o(J)\)</span>. For <span class="math" data-tex="\(m=M\)">\(m=M\)</span>, <span class="math" data-tex="\(\chi_M(s)=(s/M)\)">\(\chi_M(s)=(s/M)\)</span>. By positivity,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E_M\Bigl|\sum_s\chi_M(s)b_s\Bigr|^{2l}
+\le\frac{2k!}{J^k}\\
+&amp;\qquad \sum_{\substack{m\le(2Z)^k\\ m\ \text{odd}}}\Bigl|\sum_s\Bigl(\frac sm\Bigr)b_s\Bigr|^{2l}.\quad(3.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E_M\Bigl|\sum_s\chi_M(s)b_s\Bigr|^{2l}
+\le\frac{2k!}{J^k}\\
+&amp;\qquad \sum_{\substack{m\le(2Z)^k\\ m\ \text{odd}}}\Bigl|\sum_s\Bigl(\frac sm\Bigr)b_s\Bigr|^{2l}.\quad(3.2)
+\end{aligned}
+\]</span>
+Expand the <span class="math" data-tex="\(2l\)">\(2l\)</span>-th power: it is a sum over <span class="math" data-tex="\(2l\)">\(2l\)</span>-tuples <span class="math" data-tex="\((s_1,\dots,s_{2l})\)">\((s_1,\dots,s_{2l})\)</span> of <span class="math" data-tex="\(b_{s_1}\cdots b_{s_l}\overline{b_{s_{l+1}}\cdots b_{s_{2l}}}\)">\(b_{s_1}\cdots b_{s_l}\overline{b_{s_{l+1}}\cdots b_{s_{2l}}}\)</span> times <span class="math" data-tex="\((n/m)\)">\((n/m)\)</span>, where <span class="math" data-tex="\(n=s_1\cdots s_{2l}\le Z^{28l}\)">\(n=s_1\cdots s_{2l}\le Z^{28l}\)</span>; the symbols are real.</p>
+<p><em>Nonsquare products.</em> If <span class="math" data-tex="\(n\)">\(n\)</span> is not a square, Lemma 1.1 bounds the sum over odd <span class="math" data-tex="\(m\le(2Z)^k\)">\(m\le(2Z)^k\)</span> by <span class="math" data-tex="\(8n\le8Z^{28l}\)">\(8n\le8Z^{28l}\)</span>. These terms contribute at most <span class="math" data-tex="\(8Z^{28l}\bigl(\sum_s|b_s|\bigr)^{2l}\le8Z^{(28+2c)l}\)">\(8Z^{28l}\bigl(\sum_s|b_s|\bigr)^{2l}\le8Z^{(28+2c)l}\)</span>.</p>
+<p><em>Square products.</em> If <span class="math" data-tex="\(n\)">\(n\)</span> is a square, <span class="math" data-tex="\((n/m)\in\{0,1\}\)">\((n/m)\in\{0,1\}\)</span>. Let <span class="math" data-tex="\((\varepsilon_p)\)">\((\varepsilon_p)\)</span> be independent uniform signs indexed by primes, and put
+<span class="math math-display" data-tex="\[
+F(\varepsilon)=\sum_s|b_s|\prod_{p\mid s}\varepsilon_p .
+\]">\[
+F(\varepsilon)=\sum_s|b_s|\prod_{p\mid s}\varepsilon_p .
+\]</span>
+For a <span class="math" data-tex="\(2l\)">\(2l\)</span>-tuple of squarefree indices, <span class="math" data-tex="\(\mathbb E\prod_{i}\prod_{p\mid s_i}\varepsilon_p\)">\(\mathbb E\prod_{i}\prod_{p\mid s_i}\varepsilon_p\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> if every prime occurs an even number of times among the factorizations, that is, if <span class="math" data-tex="\(s_1\cdots s_{2l}\)">\(s_1\cdots s_{2l}\)</span> is a square, and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise. So the square terms contribute at most <span class="math" data-tex="\((2Z)^k\,\mathbb E F^{2l}\)">\((2Z)^k\,\mathbb E F^{2l}\)</span>. By Lemma 2.2, <span class="math" data-tex="\(\mathbb EF^{2l}\le\bigl(\sum_s(2l-1)^{\omega(s)}|b_s|^2\bigr)^l\le\|b\|_{\mathrm w}^{2l}\)">\(\mathbb EF^{2l}\le\bigl(\sum_s(2l-1)^{\omega(s)}|b_s|^2\bigr)^l\le\|b\|_{\mathrm w}^{2l}\)</span>.</p>
+<p><em>Roots.</em> Combining,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl(\mathbb E_M\Bigl|\sum_s\chi_M(s)b_s\Bigr|^{2l}\Bigr)^{1/(2l)}\\
+&amp;\quad \le\Bigl(\frac{2k!(2Z)^k}{J^k}\Bigr)^{1/(2l)}\|b\|_{\mathrm w}\\
+&amp;\qquad +\Bigl(\frac{2k!}{J^k}\Bigr)^{1/(2l)}\\
+&amp;\qquad \bigl(8Z^{(28+2c)l}\bigr)^{1/(2l)}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl(\mathbb E_M\Bigl|\sum_s\chi_M(s)b_s\Bigr|^{2l}\Bigr)^{1/(2l)}\\
+&amp;\quad \le\Bigl(\frac{2k!(2Z)^k}{J^k}\Bigr)^{1/(2l)}\|b\|_{\mathrm w}\\
+&amp;\qquad +\Bigl(\frac{2k!}{J^k}\Bigr)^{1/(2l)}\\
+&amp;\qquad \bigl(8Z^{(28+2c)l}\bigr)^{1/(2l)}.
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(J\gg Z/\log Z\)">\(J\gg Z/\log Z\)</span> and <span class="math" data-tex="\(k!\le k^k\)">\(k!\le k^k\)</span>, the first factor is <span class="math" data-tex="\(\exp\bigl(O(k\log T/l)\bigr)\)">\(\exp\bigl(O(k\log T/l)\bigr)\)</span><span class="math" data-tex="\(=\exp(O(T^{0.6-\mu_0}\log T))=e^{o(K)}\)">\(=\exp(O(T^{0.6-\mu_0}\log T))=e^{o(K)}\)</span>. The logarithm of the second term is <span class="math" data-tex="\(-\frac{k\log Z}{2l}(1+o(1))+O_c(\log Z)\)">\(-\frac{k\log Z}{2l}(1+o(1))+O_c(\log Z)\)</span>, and <span class="math" data-tex="\(k/l\to\infty\)">\(k/l\to\infty\)</span>, so the second term is <span class="math" data-tex="\(O(Z^{-10})\)">\(O(Z^{-10})\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The weight <span class="math" data-tex="\(u_0^{\omega(s)}\)">\(u_0^{\omega(s)}\)</span> is the price of a high moment: indices with many prime factors are penalized. Indices <span class="math" data-tex="\(s\)">\(s\)</span> with <span class="math" data-tex="\(u_0^{\omega(s)}\)">\(u_0^{\omega(s)}\)</span> large are rare, and Section 5 bounds their contribution separately.</p>
+<h2 id="4-discretization-and-the-terms-from-common-factors">4. Discretization and the terms from common factors</h2>
+<p>The arrays <span class="math" data-tex="\(b_s=s^{-1/2}C_s^{(P)}\)">\(b_s=s^{-1/2}C_s^{(P)}\)</span> of (6.2) of Lesson 3 depend on the tuple. To apply Proposition 3.1 we place them, up to small errors, in a family fixed in advance.</p>
+<p><strong>Parameters.</strong> The array <span class="math" data-tex="\(s\mapsto s^{-1/2}C_s^{(P)}\)">\(s\mapsto s^{-1/2}C_s^{(P)}\)</span> is determined by <span class="math" data-tex="\(P\)">\(P\)</span>, <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, <span class="math" data-tex="\(R\)">\(R\)</span>, <span class="math" data-tex="\(h_0\bmod\mathcal L\)">\(h_0\bmod\mathcal L\)</span>, the inverses <span class="math" data-tex="\(\overline M\)">\(\overline M\)</span> modulo divisors of <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span>, and the values <span class="math" data-tex="\(\chi_M(v)\)">\(\chi_M(v)\)</span> for <span class="math" data-tex="\(v\mid\mathcal L\)">\(v\mid\mathcal L\)</span>. The inverses depend only on <span class="math" data-tex="\(M\bmod\mathcal L\)">\(M\bmod\mathcal L\)</span>. For squarefree <span class="math" data-tex="\(v\mid\mathcal L\)">\(v\mid\mathcal L\)</span>, <span class="math" data-tex="\(\chi_M(v)=(v/M)\)">\(\chi_M(v)=(v/M)\)</span> depends only on <span class="math" data-tex="\(M\bmod4v\)">\(M\bmod4v\)</span>, by Lemma 1.1 applied with <span class="math" data-tex="\(n=v\)">\(n=v\)</span> (and trivially for <span class="math" data-tex="\(v=1\)">\(v=1\)</span>). Let <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> be the family of arrays obtained from all unit residues <span class="math" data-tex="\(M\bmod4\mathcal L\)">\(M\bmod4\mathcal L\)</span>, all <span class="math" data-tex="\(h_0\bmod\mathcal L\)">\(h_0\bmod\mathcal L\)</span>, all integers <span class="math" data-tex="\(1\le P\le Z^7\)">\(1\le P\le Z^7\)</span>, and grids of mesh at most <span class="math" data-tex="\(Z^{-100}\)">\(Z^{-100}\)</span> in <span class="math" data-tex="\(\theta\in[0,1]\)">\(\theta\in[0,1]\)</span> and <span class="math" data-tex="\(R\in[Z^{10},2Z^{13}]\)">\(R\in[Z^{10},2Z^{13}]\)</span>. Then <span class="math" data-tex="\(|\mathcal G|\le Z^{c_0}\)">\(|\mathcal G|\le Z^{c_0}\)</span> for an absolute <span class="math" data-tex="\(c_0\)">\(c_0\)</span>.</p>
+<p><strong>Lemma 4.1.</strong> On the parameter range <span class="math" data-tex="\(\theta\in[0,1]\)">\(\theta\in[0,1]\)</span>, <span class="math" data-tex="\(R\in[Z^{10},2Z^{13}]\)">\(R\in[Z^{10},2Z^{13}]\)</span>, uniformly in the other parameters,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|G_d^{(P)}(s,v)|\ll\frac{\sqrt{\mathcal L}}P,\\
+\Bigl|\frac{\partial G_d^{(P)}}{\partial\theta}\Bigr|\ll\frac{R\sqrt{\mathcal L}}P,\\
+\Bigl|\frac{\partial G_d^{(P)}}{\partial R}\Bigr|\ll\frac{\sqrt{\mathcal L}}{RP}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+|G_d^{(P)}(s,v)|\ll\frac{\sqrt{\mathcal L}}P,\\
+\Bigl|\frac{\partial G_d^{(P)}}{\partial\theta}\Bigr|\ll\frac{R\sqrt{\mathcal L}}P,\\
+\Bigl|\frac{\partial G_d^{(P)}}{\partial R}\Bigr|\ll\frac{\sqrt{\mathcal L}}{RP}.
+\end{gathered}
+\]</span>
+Replacing the parameters of an actual tuple by the nearest grid point changes each <span class="math" data-tex="\(G_d^{(P)}(s,v)\)">\(G_d^{(P)}(s,v)\)</span> by <span class="math" data-tex="\(O(Z^{-80})\)">\(O(Z^{-80})\)</span>, and changes <span class="math" data-tex="\(\mathcal F_M\)">\(\mathcal F_M\)</span> in (6.2) of Lesson 3 by <span class="math" data-tex="\(o(1)\)">\(o(1)\)</span> in total. Every array in <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> has <span class="math" data-tex="\(\ell^1\)">\(\ell^1\)</span> norm at most <span class="math" data-tex="\(Z^{15}\)">\(Z^{15}\)</span>.</p>
+<p><em>Proof.</em> A nonzero term of <span class="math" data-tex="\(G_d^{(P)}(s,v)\)">\(G_d^{(P)}(s,v)\)</span> has <span class="math" data-tex="\(svw^2\le Rd/4\)">\(svw^2\le Rd/4\)</span>, that is <span class="math" data-tex="\(w\le N_{dsv}/2\)">\(w\le N_{dsv}/2\)</span>. If some multiple of <span class="math" data-tex="\(P\)">\(P\)</span> lies in this range, then <span class="math" data-tex="\(P\le N_{dsv}/2\)">\(P\le N_{dsv}/2\)</span>, and the number of multiples is at most <span class="math" data-tex="\(N_{dsv}/(2P)\)">\(N_{dsv}/(2P)\)</span>. Each term is at most <span class="math" data-tex="\(\sqrt d\,\|\widehat\psi\|_\infty\le\sqrt{\mathcal L}\,\|\widehat\psi\|_\infty\)">\(\sqrt d\,\|\widehat\psi\|_\infty\le\sqrt{\mathcal L}\,\|\widehat\psi\|_\infty\)</span>, which with the factor <span class="math" data-tex="\(1/N_{dsv}\)">\(1/N_{dsv}\)</span> gives the first bound. Differentiating in <span class="math" data-tex="\(\theta\)">\(\theta\)</span> brings down <span class="math" data-tex="\(2\pi i\,svw^2/d\)">\(2\pi i\,svw^2/d\)</span>, of size at most <span class="math" data-tex="\(\pi R/2\)">\(\pi R/2\)</span>. In <span class="math" data-tex="\(R\)">\(R\)</span>, the factor <span class="math" data-tex="\(N_{dsv}^{-1}\)">\(N_{dsv}^{-1}\)</span> has derivative <span class="math" data-tex="\(-N_{dsv}^{-1}/(2R)\)">\(-N_{dsv}^{-1}/(2R)\)</span>, and <span class="math" data-tex="\(\partial_R\widehat\psi(svw^2/(Rd))=-\frac{svw^2}{R^2d}\widehat\psi&#x27;(\cdot)\)">\(\partial_R\widehat\psi(svw^2/(Rd))=-\frac{svw^2}{R^2d}\widehat\psi&#x27;(\cdot)\)</span> is <span class="math" data-tex="\(O(1/R)\)">\(O(1/R)\)</span> on the support. On the whole range, <span class="math" data-tex="\(svw^2\le Rd/4&lt;Z^{14}\)">\(svw^2\le Rd/4&lt;Z^{14}\)</span>, so the same index ranges as in Lesson 3 occur.</p>
+<p>The grid replacement changes <span class="math" data-tex="\(G_d^{(P)}(s,v)\)">\(G_d^{(P)}(s,v)\)</span> by <span class="math" data-tex="\(O(Z^{13}\sqrt{\mathcal L}\,Z^{-100})=O(Z^{-80})\)">\(O(Z^{13}\sqrt{\mathcal L}\,Z^{-100})=O(Z^{-80})\)</span>, using <span class="math" data-tex="\(\mathcal L\le Z^{0.02}\)">\(\mathcal L\le Z^{0.02}\)</span>. In (6.2) of Lesson 3 there are <span class="math" data-tex="\(O(k^7)\)">\(O(k^7)\)</span> values of <span class="math" data-tex="\(P\)">\(P\)</span>, fewer than <span class="math" data-tex="\(Z^{14}\)">\(Z^{14}\)</span> values of <span class="math" data-tex="\(s\)">\(s\)</span>, and the divisor sums satisfy <span class="math" data-tex="\(\sum_{v,d\mid\mathcal L}v^{-1/2}\lambda^{\omega(d)}\le4^K=Z^{o(1)}\)">\(\sum_{v,d\mid\mathcal L}v^{-1/2}\lambda^{\omega(d)}\le4^K=Z^{o(1)}\)</span>, by (2.2) of Lesson 3. So the total change is <span class="math" data-tex="\(O(k^7Z^{14+o(1)-80})=o(1)\)">\(O(k^7Z^{14+o(1)-80})=o(1)\)</span>. The <span class="math" data-tex="\(\ell^1\)">\(\ell^1\)</span> bound follows from the first estimate and the same divisor bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>We use two elementary bounds repeatedly:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{v\mid\mathcal L}v^{-1/2}=1+o(1),\\
+\begin{aligned}
+\sum_{s\in\mathcal S}\frac{u_0^{\omega(s)}}s&amp;\le\prod_{p&lt;Z^{14}}\Bigl(1+\frac{u_0}p\Bigr)\\
+&amp;\le e^{o(K)}.
+\end{aligned}\quad(4.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{v\mid\mathcal L}v^{-1/2}=1+o(1),\\
+\begin{aligned}
+\sum_{s\in\mathcal S}\frac{u_0^{\omega(s)}}s&amp;\le\prod_{p&lt;Z^{14}}\Bigl(1+\frac{u_0}p\Bigr)\\
+&amp;\le e^{o(K)}.
+\end{aligned}\quad(4.1)
+\end{gathered}
+\]</span>
+The first holds because its logarithm is at most <span class="math" data-tex="\(\sum_{\ell\mid\mathcal L}\ell^{-1/2}\le K/\sqrt z=o(1)\)">\(\sum_{\ell\mid\mathcal L}\ell^{-1/2}\le K/\sqrt z=o(1)\)</span>. For the second, the logarithm is at most <span class="math" data-tex="\(u_0\sum_{p&lt;Z^{14}}1/p=O(T^{\mu_0}\log T)=o(K)\)">\(u_0\sum_{p&lt;Z^{14}}1/p=O(T^{\mu_0}\log T)=o(K)\)</span>, by Mertens' estimate.</p>
+<p><strong>Lemma 4.2</strong> (the terms with <span class="math" data-tex="\(P\ne1\)">\(P\ne1\)</span>). The terms of (6.2) of Lesson 3 with <span class="math" data-tex="\(P\ne1\)">\(P\ne1\)</span> have total expected absolute value <span class="math" data-tex="\(o(1)\)">\(o(1)\)</span>. Consequently, writing <span class="math" data-tex="\(C_s=C_s^{(1)}\)">\(C_s=C_s^{(1)}\)</span> and <span class="math" data-tex="\(G_d=G_d^{(1)}\)">\(G_d=G_d^{(1)}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E_M\Bigl|\sum_{s\in\mathcal S}\frac{\chi_M(s)}{\sqrt s}C_s\Bigr|\\
+&amp;\quad \ge e^{0.015K}-o(1).\quad(4.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E_M\Bigl|\sum_{s\in\mathcal S}\frac{\chi_M(s)}{\sqrt s}C_s\Bigr|\\
+&amp;\quad \ge e^{0.015K}-o(1).\quad(4.2)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> If <span class="math" data-tex="\(P\mid M\)">\(P\mid M\)</span> and <span class="math" data-tex="\(P\ne1\)">\(P\ne1\)</span>, then <span class="math" data-tex="\(P\ge Z\)">\(P\ge Z\)</span>. For a grid array with <span class="math" data-tex="\(P\ge Z\)">\(P\ge Z\)</span>, Lemma 4.1 and (4.1) give <span class="math" data-tex="\(|C_s^{(P)}|\le(1+o(1))(1+\lambda)^K\sqrt{\mathcal L}/P\)">\(|C_s^{(P)}|\le(1+o(1))(1+\lambda)^K\sqrt{\mathcal L}/P\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|s&amp;\mapsto s^{-1/2}C_s^{(P)}\|_{\mathrm w}\\
+&amp;\le e^{o(K)}(1+\lambda)^K\frac{\sqrt{\mathcal L}}Z\\
+&amp;\le Z^{-0.99+o(1)}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|s&amp;\mapsto s^{-1/2}C_s^{(P)}\|_{\mathrm w}\\
+&amp;\le e^{o(K)}(1+\lambda)^K\frac{\sqrt{\mathcal L}}Z\\
+&amp;\le Z^{-0.99+o(1)}.
+\end{aligned}
+\]</span>
+Apply Proposition 3.1 to the subfamily of <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> with <span class="math" data-tex="\(P\ge Z\)">\(P\ge Z\)</span>: the expected maximum of <span class="math" data-tex="\(|\sum_s\chi_M(s)s^{-1/2}C_s^{(P)}|\)">\(|\sum_s\chi_M(s)s^{-1/2}C_s^{(P)}|\)</span> over it is <span class="math" data-tex="\(Z^{-0.99+o(1)}\)">\(Z^{-0.99+o(1)}\)</span>. For an actual tuple, each of the <span class="math" data-tex="\(O(k^7)\)">\(O(k^7)\)</span> terms with <span class="math" data-tex="\(P\mid M\)">\(P\mid M\)</span>, <span class="math" data-tex="\(P\ne1\)">\(P\ne1\)</span>, is at most this maximum plus its grid error, and the grid errors total <span class="math" data-tex="\(o(1)\)">\(o(1)\)</span> by Lemma 4.1. Since <span class="math" data-tex="\(k^7=Z^{o(1)}\)">\(k^7=Z^{o(1)}\)</span>, the total is <span class="math" data-tex="\(o(1)\)">\(o(1)\)</span>. Inequality (4.2) follows from (5.3) of Lesson 3. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-large-kernels-contribute-little">5. Large kernels contribute little</h2>
+<p>For <span class="math" data-tex="\(s&lt;\mathcal L^4\)">\(s&lt;\mathcal L^4\)</span> and <span class="math" data-tex="\(R\ge Z^{10}\)">\(R\ge Z^{10}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{N_{dsv}}d&amp;=\sqrt{\frac{R}{svd}}\ge\sqrt{\frac{Z^{10}}{\mathcal L^6}}\\
+&amp;\ge Z^{4.9}.\quad(5.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{N_{dsv}}d&amp;=\sqrt{\frac{R}{svd}}\ge\sqrt{\frac{Z^{10}}{\mathcal L^6}}\\
+&amp;\ge Z^{4.9}.\quad(5.1)
+\end{aligned}
+\]</span></p>
+<p><strong>Lemma 5.1</strong> (small kernels are bounded). For <span class="math" data-tex="\(s&lt;\mathcal L^4\)">\(s&lt;\mathcal L^4\)</span>, uniformly on the grid range, <span class="math" data-tex="\(|G_d(s,v)|\ll2^{\omega(d)/2}\)">\(|G_d(s,v)|\ll2^{\omega(d)/2}\)</span>.</p>
+<p><em>Proof.</em> If <span class="math" data-tex="\(sv\)">\(sv\)</span> is not a unit modulo <span class="math" data-tex="\(d\)">\(d\)</span>, then <span class="math" data-tex="\(g_d(-svw^2\overline M)=0\)">\(g_d(-svw^2\overline M)=0\)</span> for every <span class="math" data-tex="\(w\)">\(w\)</span>, by Lemma 5.1 of Lesson 3. Otherwise put <span class="math" data-tex="\(c=-sv\overline M\)">\(c=-sv\overline M\)</span>, a unit modulo <span class="math" data-tex="\(d\)">\(d\)</span>. As <span class="math" data-tex="\(w\)">\(w\)</span> runs over the units modulo <span class="math" data-tex="\(d\)">\(d\)</span>, each unit value of <span class="math" data-tex="\(cw^2\)">\(cw^2\)</span> is taken at most <span class="math" data-tex="\(2^{\omega(d)}\)">\(2^{\omega(d)}\)</span> times, since a unit has at most two square roots modulo each prime factor of <span class="math" data-tex="\(d\)">\(d\)</span>; for nonunit <span class="math" data-tex="\(w\)">\(w\)</span> the value <span class="math" data-tex="\(g_d(cw^2)\)">\(g_d(cw^2)\)</span> is <span class="math" data-tex="\(0\)">\(0\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+&amp;\mathbb E_{w\bmod d}|g_d(cw^2)|^2\\
+&amp;\quad \le2^{\omega(d)}\mathbb E_b|g_d(b)|^2\le2^{\omega(d)},
+\end{aligned}\\
+\mathbb E_{w\bmod d}|g_d(cw^2)|\le2^{\omega(d)/2}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+&amp;\mathbb E_{w\bmod d}|g_d(cw^2)|^2\\
+&amp;\quad \le2^{\omega(d)}\mathbb E_b|g_d(b)|^2\le2^{\omega(d)},
+\end{aligned}\\
+\mathbb E_{w\bmod d}|g_d(cw^2)|\le2^{\omega(d)/2}.
+\end{gathered}
+\]</span>
+The variable <span class="math" data-tex="\(w\)">\(w\)</span> of <span class="math" data-tex="\(G_d(s,v)\)">\(G_d(s,v)\)</span> runs over an interval of length at most <span class="math" data-tex="\(N_{dsv}/2\)">\(N_{dsv}/2\)</span>, which by (5.1) meets each residue class modulo <span class="math" data-tex="\(d\)">\(d\)</span> at most <span class="math" data-tex="\(N_{dsv}/d+1\le2N_{dsv}/d\)">\(N_{dsv}/d+1\le2N_{dsv}/d\)</span> times. Hence <span class="math" data-tex="\(|G_d(s,v)|\le N_{dsv}^{-1}\cdot(2N_{dsv}/d)\)">\(|G_d(s,v)|\le N_{dsv}^{-1}\cdot(2N_{dsv}/d)\)</span><span class="math" data-tex="\(\,\|\widehat\psi\|_\infty\sum_{w\bmod d}|g_d(cw^2)|\)">\(\,\|\widehat\psi\|_\infty\sum_{w\bmod d}|g_d(cw^2)|\)</span><span class="math" data-tex="\(\le2\|\widehat\psi\|_\infty2^{\omega(d)/2}\)">\(\le2\|\widehat\psi\|_\infty2^{\omega(d)/2}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 5.2</strong> (correlation of large kernels). Let <span class="math" data-tex="\(v,d,d&#x27;\mid\mathcal L\)">\(v,d,d&#x27;\mid\mathcal L\)</span> and <span class="math" data-tex="\(\mathcal L^4\le S\le Z^{14}\)">\(\mathcal L^4\le S\le Z^{14}\)</span>. For all integers <span class="math" data-tex="\(s\)">\(s\)</span> in <span class="math" data-tex="\([S,2S)\)">\([S,2S)\)</span>, define <span class="math" data-tex="\(G_d(s,v)\)">\(G_d(s,v)\)</span> by the formula (6.1) of Lesson 3. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+&amp;\Bigl|\sum_{S\le s&lt;2S}\frac{G_d(s,v)\overline{G_{d&#x27;}(s,v)}}s\Bigr|\\
+&amp;\quad \ll A_{d,d&#x27;},
+\end{aligned}\\
+A_{d,d&#x27;}=\Bigl(\frac{dd&#x27;}{(d,d&#x27;)^2}\Bigr)^{-1/2}.\quad(5.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+&amp;\Bigl|\sum_{S\le s&lt;2S}\frac{G_d(s,v)\overline{G_{d&#x27;}(s,v)}}s\Bigr|\\
+&amp;\quad \ll A_{d,d&#x27;},
+\end{aligned}\\
+A_{d,d&#x27;}=\Bigl(\frac{dd&#x27;}{(d,d&#x27;)^2}\Bigr)^{-1/2}.\quad(5.2)
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> Expand both sums over <span class="math" data-tex="\(w\)">\(w\)</span> and <span class="math" data-tex="\(w&#x27;\)">\(w&#x27;\)</span>. A nonzero term needs <span class="math" data-tex="\(w\le\sqrt{Rd/(Sv)}\)">\(w\le\sqrt{Rd/(Sv)}\)</span> and <span class="math" data-tex="\(w&#x27;\le\sqrt{Rd&#x27;/(Sv)}\)">\(w&#x27;\le\sqrt{Rd&#x27;/(Sv)}\)</span>, so there are <span class="math" data-tex="\(O(R\sqrt{dd&#x27;}/(Sv))\)">\(O(R\sqrt{dd&#x27;}/(Sv))\)</span> pairs. The normalizations combine to <span class="math" data-tex="\(N_{dsv}^{-1}N_{d&#x27;sv}^{-1}/s=v/(R\sqrt{dd&#x27;})\)">\(N_{dsv}^{-1}N_{d&#x27;sv}^{-1}/s=v/(R\sqrt{dd&#x27;})\)</span>, independent of <span class="math" data-tex="\(s\)">\(s\)</span>. For a fixed pair, the remaining sum over <span class="math" data-tex="\(s\)">\(s\)</span> is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{S\le s&lt;2S}F(s)\,e(\alpha s)\,\omega(s),\\
+F(s)=g_d(cs)\overline{g_{d&#x27;}(c&#x27;s)},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{S\le s&lt;2S}F(s)\,e(\alpha s)\,\omega(s),\\
+F(s)=g_d(cs)\overline{g_{d&#x27;}(c&#x27;s)},
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(c=-vw^2\overline M\bmod d\)">\(c=-vw^2\overline M\bmod d\)</span>, <span class="math" data-tex="\(c&#x27;=-vw&#x27;^2\overline M\bmod d&#x27;\)">\(c&#x27;=-vw&#x27;^2\overline M\bmod d&#x27;\)</span>, <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is real, and <span class="math" data-tex="\(\omega(s)=\widehat\psi(svw^2/(Rd))\overline{\widehat\psi(svw&#x27;^2/(Rd&#x27;))}\)">\(\omega(s)=\widehat\psi(svw^2/(Rd))\overline{\widehat\psi(svw&#x27;^2/(Rd&#x27;))}\)</span> has supremum and total variation <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span> on <span class="math" data-tex="\([S,2S]\)">\([S,2S]\)</span>.</p>
+<p>If <span class="math" data-tex="\(c\)">\(c\)</span> or <span class="math" data-tex="\(c&#x27;\)">\(c&#x27;\)</span> is not a unit, <span class="math" data-tex="\(F=0\)">\(F=0\)</span> by Lemma 5.1 of Lesson 3. Otherwise <span class="math" data-tex="\(F\)">\(F\)</span> has period <span class="math" data-tex="\(q=\operatorname{lcm}(d,d&#x27;)\)">\(q=\operatorname{lcm}(d,d&#x27;)\)</span>, and by Lemma 5.1 of Lesson 3 it is a product over the primes <span class="math" data-tex="\(\ell\mid q\)">\(\ell\mid q\)</span> of functions of <span class="math" data-tex="\(s\bmod\ell\)">\(s\bmod\ell\)</span>. Its Fourier coefficients <span class="math" data-tex="\(\widehat F(\xi)=\mathbb E_{s\bmod q}F(s)e_q(-\xi s)\)">\(\widehat F(\xi)=\mathbb E_{s\bmod q}F(s)e_q(-\xi s)\)</span> are the products of the local coefficients. At a prime <span class="math" data-tex="\(\ell\)">\(\ell\)</span> dividing exactly one of <span class="math" data-tex="\(d,d&#x27;\)">\(d,d&#x27;\)</span>, say <span class="math" data-tex="\(d\)">\(d\)</span>, the local factor is <span class="math" data-tex="\(s\mapsto g_\ell(c_\ell s)=\sqrt\ell\,\widehat{f_\ell}(c_\ell s)\)">\(s\mapsto g_\ell(c_\ell s)=\sqrt\ell\,\widehat{f_\ell}(c_\ell s)\)</span> with a unit <span class="math" data-tex="\(c_\ell\)">\(c_\ell\)</span>, and
+<span class="math math-display" data-tex="\[
+\mathbb E_{s\bmod\ell}\sqrt\ell\,\widehat{f_\ell}(c_\ell s)\,e_\ell(-\xi s)=\frac{f_\ell(-\xi\overline{c_\ell})}{\sqrt\ell},
+\]">\[
+\mathbb E_{s\bmod\ell}\sqrt\ell\,\widehat{f_\ell}(c_\ell s)\,e_\ell(-\xi s)=\frac{f_\ell(-\xi\overline{c_\ell})}{\sqrt\ell},
+\]</span>
+of modulus at most <span class="math" data-tex="\(\ell^{-1/2}\)">\(\ell^{-1/2}\)</span>; the case of <span class="math" data-tex="\(d&#x27;\)">\(d&#x27;\)</span> is the conjugate. At a prime dividing both, the local coefficient is at most <span class="math" data-tex="\(\mathbb E_s|g_\ell(c_\ell s)||g_\ell(c&#x27;_\ell s)|\le1\)">\(\mathbb E_s|g_\ell(c_\ell s)||g_\ell(c&#x27;_\ell s)|\le1\)</span> by Cauchy–Schwarz and Lemma 5.1 of Lesson 3. So <span class="math" data-tex="\(|\widehat F(\xi)|\le A_{d,d&#x27;}\)">\(|\widehat F(\xi)|\le A_{d,d&#x27;}\)</span> for every <span class="math" data-tex="\(\xi\)">\(\xi\)</span>.</p>
+<p>For an interval <span class="math" data-tex="\(I\)">\(I\)</span> of length at most <span class="math" data-tex="\(S\)">\(S\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl|\sum_{s\in I}F(s)e(\alpha s)\Bigr|\\
+&amp;\quad \le A_{d,d&#x27;}\sum_{\xi\bmod q}\min\Bigl(|I|,\\
+&amp;\qquad \frac1{2\|\alpha+\xi/q\|}\Bigr)\\
+&amp;\quad \ll A_{d,d&#x27;}\bigl(S+q\log(2q)\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl|\sum_{s\in I}F(s)e(\alpha s)\Bigr|\\
+&amp;\quad \le A_{d,d&#x27;}\sum_{\xi\bmod q}\min\Bigl(|I|,\\
+&amp;\qquad \frac1{2\|\alpha+\xi/q\|}\Bigr)\\
+&amp;\quad \ll A_{d,d&#x27;}\bigl(S+q\log(2q)\bigr),
+\end{aligned}
+\]</span>
+because the points <span class="math" data-tex="\(\alpha+\xi/q\)">\(\alpha+\xi/q\)</span> are <span class="math" data-tex="\(1/q\)">\(1/q\)</span>-spaced on the circle: the nearest one costs at most <span class="math" data-tex="\(S\)">\(S\)</span>, and the <span class="math" data-tex="\(j\)">\(j\)</span>-th nearest on either side costs at most <span class="math" data-tex="\(q/j\)">\(q/j\)</span>. Partial summation inserts <span class="math" data-tex="\(\omega\)">\(\omega\)</span> at the cost of a constant factor. Since <span class="math" data-tex="\(q\le\mathcal L\le S^{1/4}\)">\(q\le\mathcal L\le S^{1/4}\)</span>, the bound is <span class="math" data-tex="\(O(A_{d,d&#x27;}S)\)">\(O(A_{d,d&#x27;}S)\)</span>. Multiplying by the normalization and the number of pairs gives (5.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 5.3</strong> (rare kernels with many prime factors). Put <span class="math" data-tex="\(\tau=0.005\)">\(\tau=0.005\)</span>. For <span class="math" data-tex="\(\mathcal L^4\le S\le Z^{14}\)">\(\mathcal L^4\le S\le Z^{14}\)</span> and every residue <span class="math" data-tex="\(a\bmod\mathcal L\)">\(a\bmod\mathcal L\)</span>,
+<span class="math math-display" data-tex="\[
+\sum_{\substack{S\le s&lt;2S,\ s\equiv a\ (\mathcal L)\\s\in\mathcal S,\ u_0^{\omega(s)}&gt;e^{\tau K}}}u_0^{\omega(s)}\le\frac S{\mathcal L}e^{-10K}
+\]">\[
+\sum_{\substack{S\le s&lt;2S,\ s\equiv a\ (\mathcal L)\\s\in\mathcal S,\ u_0^{\omega(s)}&gt;e^{\tau K}}}u_0^{\omega(s)}\le\frac S{\mathcal L}e^{-10K}
+\]</span>
+for large <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p><em>Proof.</em> For such an <span class="math" data-tex="\(s\)">\(s\)</span>, let <span class="math" data-tex="\(r\)">\(r\)</span> be the product of its <span class="math" data-tex="\(\lfloor\omega(s)/2\rfloor\)">\(\lfloor\omega(s)/2\rfloor\)</span> smallest prime factors. Then <span class="math" data-tex="\(r^2\le s&lt;2S\)">\(r^2\le s&lt;2S\)</span>, <span class="math" data-tex="\((r,\mathcal L)=1\)">\((r,\mathcal L)=1\)</span>, <span class="math" data-tex="\(\omega(r)\ge\omega_0:=\frac{\tau K}{2\log u_0}-1\)">\(\omega(r)\ge\omega_0:=\frac{\tau K}{2\log u_0}-1\)</span>, and <span class="math" data-tex="\(u_0^{\omega(s)}\le u_0(u_0^2)^{\omega(r)}\)">\(u_0^{\omega(s)}\le u_0(u_0^2)^{\omega(r)}\)</span>. The integers <span class="math" data-tex="\(s\in[S,2S)\)">\(s\in[S,2S)\)</span> with <span class="math" data-tex="\(r\mid s\)">\(r\mid s\)</span> and <span class="math" data-tex="\(s\equiv a\pmod{\mathcal L}\)">\(s\equiv a\pmod{\mathcal L}\)</span> form one class modulo <span class="math" data-tex="\(r\mathcal L\)">\(r\mathcal L\)</span>, so there are at most <span class="math" data-tex="\(S/(r\mathcal L)+1\le2S/(r\mathcal L)\)">\(S/(r\mathcal L)+1\le2S/(r\mathcal L)\)</span> of them, because <span class="math" data-tex="\(S/(r\mathcal L)\ge\sqrt S/(\sqrt2\mathcal L)\ge1\)">\(S/(r\mathcal L)\ge\sqrt S/(\sqrt2\mathcal L)\ge1\)</span>. Summing over all squarefree <span class="math" data-tex="\(r\le\sqrt{2S}\)">\(r\le\sqrt{2S}\)</span> with <span class="math" data-tex="\(\omega(r)\ge\omega_0\)">\(\omega(r)\ge\omega_0\)</span>, and using Rankin's device with the parameter <span class="math" data-tex="\(T^{1/4}\)">\(T^{1/4}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\substack{r\le\sqrt{2S}\\\omega(r)\ge\omega_0}}\frac{(u_0^2)^{\omega(r)}}r\\
+&amp;\quad \le T^{-\omega_0/4}\prod_{p\le\sqrt{2S}}\Bigl(1+\frac{u_0^2T^{1/4}}p\Bigr)\\
+&amp;\quad \le T^{-\omega_0/4}\exp\bigl(O(u_0^2T^{1/4}\log T)\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\substack{r\le\sqrt{2S}\\\omega(r)\ge\omega_0}}\frac{(u_0^2)^{\omega(r)}}r\\
+&amp;\quad \le T^{-\omega_0/4}\prod_{p\le\sqrt{2S}}\Bigl(1+\frac{u_0^2T^{1/4}}p\Bigr)\\
+&amp;\quad \le T^{-\omega_0/4}\exp\bigl(O(u_0^2T^{1/4}\log T)\bigr).
+\end{aligned}
+\]</span>
+Here <span class="math" data-tex="\(\omega_0\log T/4=(\tau/(8\mu_0)+o(1))K\)">\(\omega_0\log T/4=(\tau/(8\mu_0)+o(1))K\)</span><span class="math" data-tex="\(=(625+o(1))K\)">\(=(625+o(1))K\)</span>, because <span class="math" data-tex="\(\log u_0=(\mu_0+o(1))\log T\)">\(\log u_0=(\mu_0+o(1))\log T\)</span>. The positive exponent is <span class="math" data-tex="\(O(T^{1/4+2\mu_0}\log T)=o(K)\)">\(O(T^{1/4+2\mu_0}\log T)=o(K)\)</span>, and <span class="math" data-tex="\(u_0=e^{o(K)}\)">\(u_0=e^{o(K)}\)</span>. So the whole sum is at most <span class="math" data-tex="\(\frac{2S}{\mathcal L}u_0e^{-(625-o(1))K}\le\frac S{\mathcal L}e^{-10K}\)">\(\frac{2S}{\mathcal L}u_0e^{-(625-o(1))K}\le\frac S{\mathcal L}e^{-10K}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 5.4</strong> (the large-kernel norm). Uniformly over all arrays of <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> with <span class="math" data-tex="\(P=1\)">\(P=1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl(\sum_{\substack{s\in\mathcal S\\s\ge\mathcal L^4}}\frac{u_0^{\omega(s)}}s|C_s|^2\Bigr)^{1/2}\\
+&amp;\quad \le e^{(0.006+o(1))K}.\quad(5.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl(\sum_{\substack{s\in\mathcal S\\s\ge\mathcal L^4}}\frac{u_0^{\omega(s)}}s|C_s|^2\Bigr)^{1/2}\\
+&amp;\quad \le e^{(0.006+o(1))K}.\quad(5.3)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> By Minkowski's inequality and (4.1), it suffices to bound, for each <span class="math" data-tex="\(v\mid\mathcal L\)">\(v\mid\mathcal L\)</span> and each dyadic segment <span class="math" data-tex="\([S,2S)\)">\([S,2S)\)</span> with <span class="math" data-tex="\(\mathcal L^4\le S\le Z^{14}\)">\(\mathcal L^4\le S\le Z^{14}\)</span>, the quantity <span class="math" data-tex="\(\Sigma_{v,S}=\sum_{S\le s&lt;2S}\frac{u_0^{\omega(s)}}s\bigl|\sum_d\lambda^{\omega(d)}\)">\(\Sigma_{v,S}=\sum_{S\le s&lt;2S}\frac{u_0^{\omega(s)}}s\bigl|\sum_d\lambda^{\omega(d)}\)</span><span class="math" data-tex="\(\chi_M(d)G_d(s,v)\bigr|^2\)">\(\chi_M(d)G_d(s,v)\bigr|^2\)</span> by <span class="math" data-tex="\(e^{(0.012+o(1))K}\)">\(e^{(0.012+o(1))K}\)</span>: there are <span class="math" data-tex="\(O(\log Z)=e^{o(K)}\)">\(O(\log Z)=e^{o(K)}\)</span> segments, and <span class="math" data-tex="\(\sum_vv^{-1/2}=1+o(1)\)">\(\sum_vv^{-1/2}=1+o(1)\)</span>.</p>
+<p><em>Low weight.</em> On the indices with <span class="math" data-tex="\(u_0^{\omega(s)}\le e^{\tau K}\)">\(u_0^{\omega(s)}\le e^{\tau K}\)</span>, bound the weight by <span class="math" data-tex="\(e^{\tau K}\)">\(e^{\tau K}\)</span>, extend the sum to all integers of <span class="math" data-tex="\([S,2S)\)">\([S,2S)\)</span> by positivity, expand the square over <span class="math" data-tex="\(d,d&#x27;\)">\(d,d&#x27;\)</span>, and apply (5.2):
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;e^{\tau K}\sum_{d,d&#x27;\mid\mathcal L}\lambda^{\omega(d)+\omega(d&#x27;)}A_{d,d&#x27;}\\
+&amp;\quad =e^{\tau K}\prod_{\ell\mid\mathcal L}\Bigl(1+\lambda^2+\frac{2\lambda}{\sqrt\ell}\Bigr)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;e^{\tau K}\sum_{d,d&#x27;\mid\mathcal L}\lambda^{\omega(d)+\omega(d&#x27;)}A_{d,d&#x27;}\\
+&amp;\quad =e^{\tau K}\prod_{\ell\mid\mathcal L}\Bigl(1+\lambda^2+\frac{2\lambda}{\sqrt\ell}\Bigr)
+\end{aligned}
+\]</span>
+up to an absolute factor. Since every <span class="math" data-tex="\(\ell\ge z\)">\(\ell\ge z\)</span>, the logarithm of the product is <span class="math" data-tex="\(K\log(1+\lambda^2)+o(K)\)">\(K\log(1+\lambda^2)+o(K)\)</span>.</p>
+<p><em>High weight.</em> On the indices with <span class="math" data-tex="\(u_0^{\omega(s)}&gt;e^{\tau K}\)">\(u_0^{\omega(s)}&gt;e^{\tau K}\)</span>, expand <span class="math" data-tex="\(|\sum_d\cdot|^2\)">\(|\sum_d\cdot|^2\)</span> and each <span class="math" data-tex="\(G_d\)">\(G_d\)</span> as in the proof of Lemma 5.2, and sum absolutely. For a fixed pair <span class="math" data-tex="\(w,w&#x27;\)">\(w,w&#x27;\)</span>, the periodic factor <span class="math" data-tex="\(F\)">\(F\)</span> satisfies <span class="math" data-tex="\(\mathbb E_{s\bmod\mathcal L}|F(s)|\le1\)">\(\mathbb E_{s\bmod\mathcal L}|F(s)|\le1\)</span> by Cauchy–Schwarz, so Lemma 5.3, applied class by class modulo <span class="math" data-tex="\(\mathcal L\)">\(\mathcal L\)</span>, bounds <span class="math" data-tex="\(\sum_s u_0^{\omega(s)}|F(s)|\)">\(\sum_s u_0^{\omega(s)}|F(s)|\)</span> over the high-weight indices by <span class="math" data-tex="\(Se^{-10K}\)">\(Se^{-10K}\)</span>. With the normalization and the number of pairs this gives <span class="math" data-tex="\(O(e^{-10K})\)">\(O(e^{-10K})\)</span> for each <span class="math" data-tex="\(d,d&#x27;\)">\(d,d&#x27;\)</span>, and the divisor weights total <span class="math" data-tex="\((1+\lambda)^{2K}\)">\((1+\lambda)^{2K}\)</span>. Since <span class="math" data-tex="\(2\log(1+\lambda)&lt;10\)">\(2\log(1+\lambda)&lt;10\)</span>, the high-weight part is exponentially small.</p>
+<p>So <span class="math" data-tex="\(\Sigma_{v,S}\le e^{(\tau+\log(1+\lambda^2)+o(1))K}\)">\(\Sigma_{v,S}\le e^{(\tau+\log(1+\lambda^2)+o(1))K}\)</span>, and <span class="math" data-tex="\(\tau+\log(1+\lambda^2)&lt;0.009&lt;0.012\)">\(\tau+\log(1+\lambda^2)&lt;0.009&lt;0.012\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-the-witness">6. The witness</h2>
+<p>Let <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> be the event, for the random tuple, that there exist <span class="math" data-tex="\(s\in\mathcal S\)">\(s\in\mathcal S\)</span> with <span class="math" data-tex="\(s&lt;\mathcal L^4\)">\(s&lt;\mathcal L^4\)</span> and divisors <span class="math" data-tex="\(v,d\mid\mathcal L\)">\(v,d\mid\mathcal L\)</span> such that
+<span class="math math-display" data-tex="\[
+|G_d(s,v)|\ge2^{\omega(d)/2}e^{-K}.
+\tag{6.1}
+\]">\[
+|G_d(s,v)|\ge2^{\omega(d)/2}e^{-K}.
+\tag{6.1}
+\]</span></p>
+<p><strong>Proposition 6.1</strong> ([OpenAI-013, (3.15) and (3.22)]). For large <span class="math" data-tex="\(T\)">\(T\)</span>, <span class="math" data-tex="\(\Pr(\mathcal E)\ge e^{-O(K)}\)">\(\Pr(\mathcal E)\ge e^{-O(K)}\)</span>.</p>
+<p><em>Proof.</em> Split the sum in (4.2) into the part <span class="math" data-tex="\(\Sigma_{\mathrm{sm}}\)">\(\Sigma_{\mathrm{sm}}\)</span> with <span class="math" data-tex="\(s&lt;\mathcal L^4\)">\(s&lt;\mathcal L^4\)</span> and the part <span class="math" data-tex="\(\Sigma_{\mathrm{lg}}\)">\(\Sigma_{\mathrm{lg}}\)</span> with <span class="math" data-tex="\(s\ge\mathcal L^4\)">\(s\ge\mathcal L^4\)</span>.</p>
+<p><em>The large part.</em> For an actual tuple, <span class="math" data-tex="\(\Sigma_{\mathrm{lg}}\)">\(\Sigma_{\mathrm{lg}}\)</span> differs from the corresponding sum for its nearest grid array by <span class="math" data-tex="\(o(1)\)">\(o(1)\)</span> on average (Lemma 4.1), and by Proposition 3.1 and (5.3) the expected maximum over <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> of the large parts is at most <span class="math" data-tex="\(e^{(0.006+o(1))K}\)">\(e^{(0.006+o(1))K}\)</span>. So <span class="math" data-tex="\(\mathbb E_M|\Sigma_{\mathrm{lg}}|\le e^{(0.006+o(1))K}\)">\(\mathbb E_M|\Sigma_{\mathrm{lg}}|\le e^{(0.006+o(1))K}\)</span>.</p>
+<p><em>The small part off <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>.</em> Let <span class="math" data-tex="\(\mathcal G_0\subseteq\mathcal G\)">\(\mathcal G_0\subseteq\mathcal G\)</span> be the arrays with <span class="math" data-tex="\(P=1\)">\(P=1\)</span> at whose parameters every small-kernel value satisfies <span class="math" data-tex="\(|G_d(s,v)|\le2^{\omega(d)/2}e^{-0.9K}\)">\(|G_d(s,v)|\le2^{\omega(d)/2}e^{-0.9K}\)</span>. If <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> fails for an actual tuple, its nearest grid point lies in <span class="math" data-tex="\(\mathcal G_0\)">\(\mathcal G_0\)</span>, because the grid error <span class="math" data-tex="\(O(Z^{-80})\)">\(O(Z^{-80})\)</span> is far smaller than <span class="math" data-tex="\(e^{-K}\)">\(e^{-K}\)</span> (recall <span class="math" data-tex="\(K=o(\log Z)\)">\(K=o(\log Z)\)</span>). By Minkowski's inequality and (4.1), the small-kernel part of every array of <span class="math" data-tex="\(\mathcal G_0\)">\(\mathcal G_0\)</span> has weighted norm at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;e^{o(K)}\sum_{d\mid\mathcal L}\lambda^{\omega(d)}2^{\omega(d)/2}e^{-0.9K}\\
+&amp;\quad =e^{(-0.9+\log(1+\sqrt2\lambda)+o(1))K},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;e^{o(K)}\sum_{d\mid\mathcal L}\lambda^{\omega(d)}2^{\omega(d)/2}e^{-0.9K}\\
+&amp;\quad =e^{(-0.9+\log(1+\sqrt2\lambda)+o(1))K},
+\end{aligned}
+\]</span>
+which is exponentially small since <span class="math" data-tex="\(\log(1+\sqrt2/16)&lt;0.09\)">\(\log(1+\sqrt2/16)&lt;0.09\)</span>. Proposition 3.1 applied to <span class="math" data-tex="\(\mathcal G_0\)">\(\mathcal G_0\)</span> gives <span class="math" data-tex="\(\mathbb E_M\bigl[\mathbf 1_{\mathcal E^c}|\Sigma_{\mathrm{sm}}|\bigr]=o(1)\)">\(\mathbb E_M\bigl[\mathbf 1_{\mathcal E^c}|\Sigma_{\mathrm{sm}}|\bigr]=o(1)\)</span>. The maximum over the whole fixed family <span class="math" data-tex="\(\mathcal G_0\)">\(\mathcal G_0\)</span> bounds the small part of every tuple outside <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>; no estimate conditional on <span class="math" data-tex="\(\mathcal E^c\)">\(\mathcal E^c\)</span> is used.</p>
+<p><em>The whole small part.</em> By Lemma 5.1 and the same argument, every small-kernel part of an array of <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> has weighted norm at most <span class="math" data-tex="\(e^{o(K)}(1+\sqrt2\lambda)^K\cdot O(1)=e^{O(K)}\)">\(e^{o(K)}(1+\sqrt2\lambda)^K\cdot O(1)=e^{O(K)}\)</span>, so Proposition 3.1 gives <span class="math" data-tex="\(\bigl(\mathbb E_M|\Sigma_{\mathrm{sm}}|^{2l}\bigr)^{1/(2l)}\le e^{O(K)}\)">\(\bigl(\mathbb E_M|\Sigma_{\mathrm{sm}}|^{2l}\bigr)^{1/(2l)}\le e^{O(K)}\)</span>.</p>
+<p><em>Conclusion.</em> By (4.2), <span class="math" data-tex="\(\mathbb E_M|\Sigma_{\mathrm{sm}}|\)">\(\mathbb E_M|\Sigma_{\mathrm{sm}}|\)</span><span class="math" data-tex="\(\ge e^{0.015K}-e^{(0.006+o(1))K}-o(1)\)">\(\ge e^{0.015K}-e^{(0.006+o(1))K}-o(1)\)</span>, so <span class="math" data-tex="\(\mathbb E_M[\mathbf 1_{\mathcal E}|\Sigma_{\mathrm{sm}}|]\ge\frac12e^{0.015K}\)">\(\mathbb E_M[\mathbf 1_{\mathcal E}|\Sigma_{\mathrm{sm}}|]\ge\frac12e^{0.015K}\)</span> for large <span class="math" data-tex="\(T\)">\(T\)</span>. Hölder's inequality gives <span class="math" data-tex="\(\mathbb E_M[\mathbf 1_{\mathcal E}|\Sigma_{\mathrm{sm}}|]\le\Pr(\mathcal E)^{1-1/(2l)}e^{O(K)}\)">\(\mathbb E_M[\mathbf 1_{\mathcal E}|\Sigma_{\mathrm{sm}}|]\le\Pr(\mathcal E)^{1-1/(2l)}e^{O(K)}\)</span>, hence <span class="math" data-tex="\(\Pr(\mathcal E)\ge e^{-O(K)}\)">\(\Pr(\mathcal E)\ge e^{-O(K)}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>On the event <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> a single quadratic exponential sum with a small kernel is large. Lesson 5 extracts from it a rational approximation to <span class="math" data-tex="\(svd\,\theta\)">\(svd\,\theta\)</span>, and from many such approximations a common centre for the translates <span class="math" data-tex="\(t_p\)">\(t_p\)</span>.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> Show that Lemma 2.2 is sharp for <span class="math" data-tex="\(F=\varepsilon_1\)">\(F=\varepsilon_1\)</span> and <span class="math" data-tex="\(l=1\)">\(l=1\)</span>, and that for <span class="math" data-tex="\(F=\varepsilon_1+\varepsilon_2\)">\(F=\varepsilon_1+\varepsilon_2\)</span> and <span class="math" data-tex="\(l=2\)">\(l=2\)</span> the bound reads <span class="math" data-tex="\(\mathbb EF^4=8\le(3+3)^2=36\)">\(\mathbb EF^4=8\le(3+3)^2=36\)</span>.</p>
+<p><strong>7.2.</strong> Show that for squarefree <span class="math" data-tex="\(v\)">\(v\)</span> the value <span class="math" data-tex="\((v/M)\)">\((v/M)\)</span> on odd positive <span class="math" data-tex="\(M\)">\(M\)</span> depends only on <span class="math" data-tex="\(M\bmod4v\)">\(M\bmod4v\)</span>, and give an example with <span class="math" data-tex="\(v=2\)">\(v=2\)</span> where it does not depend only on <span class="math" data-tex="\(M\bmod v\)">\(M\bmod v\)</span>.</p>
+<p><strong>7.3.</strong> Let <span class="math" data-tex="\(d\)">\(d\)</span> be squarefree and odd, and <span class="math" data-tex="\(c\)">\(c\)</span> a unit modulo <span class="math" data-tex="\(d\)">\(d\)</span>. Show that <span class="math" data-tex="\(w\mapsto cw^2\)">\(w\mapsto cw^2\)</span> maps the units modulo <span class="math" data-tex="\(d\)">\(d\)</span> onto a set of <span class="math" data-tex="\(\varphi(d)/2^{\omega(d)}\)">\(\varphi(d)/2^{\omega(d)}\)</span> units, each with exactly <span class="math" data-tex="\(2^{\omega(d)}\)">\(2^{\omega(d)}\)</span> preimages.</p>
+<p><strong>7.4.</strong> Let <span class="math" data-tex="\(f\)">\(f\)</span> be a function of period <span class="math" data-tex="\(q\)">\(q\)</span> with <span class="math" data-tex="\(|\widehat f(\xi)|\le A\)">\(|\widehat f(\xi)|\le A\)</span> for all <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. Show that <span class="math" data-tex="\(|\sum_{s\in I}f(s)e(\alpha s)|\)">\(|\sum_{s\in I}f(s)e(\alpha s)|\)</span><span class="math" data-tex="\(\le A(|I|+2q(1+\log q))\)">\(\le A(|I|+2q(1+\log q))\)</span> for every interval <span class="math" data-tex="\(I\)">\(I\)</span> of integers and real <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> For <span class="math" data-tex="\(F=\varepsilon_1\)">\(F=\varepsilon_1\)</span>, <span class="math" data-tex="\(l=1\)">\(l=1\)</span>: <span class="math" data-tex="\(\mathbb EF^2=1\)">\(\mathbb EF^2=1\)</span> and the right side is <span class="math" data-tex="\((2l-1)a_{\{1\}}^2=1\)">\((2l-1)a_{\{1\}}^2=1\)</span>. For <span class="math" data-tex="\(F=\varepsilon_1+\varepsilon_2\)">\(F=\varepsilon_1+\varepsilon_2\)</span>: <span class="math" data-tex="\(F\in\{2,0,0,-2\}\)">\(F\in\{2,0,0,-2\}\)</span> with equal probabilities, so <span class="math" data-tex="\(\mathbb EF^4=8\)">\(\mathbb EF^4=8\)</span>; the bound is <span class="math" data-tex="\(\bigl(3\cdot1+3\cdot1\bigr)^2=36\)">\(\bigl(3\cdot1+3\cdot1\bigr)^2=36\)</span>, and <span class="math" data-tex="\(\mathbb E F^4\le36\)">\(\mathbb E F^4\le36\)</span> holds.</p>
+<p><strong>7.2.</strong> By Lemma 1.1 with <span class="math" data-tex="\(n=v\)">\(n=v\)</span> (if <span class="math" data-tex="\(v&gt;1\)">\(v&gt;1\)</span>), <span class="math" data-tex="\(M\mapsto(v/M)\)">\(M\mapsto(v/M)\)</span> on odd <span class="math" data-tex="\(M\)">\(M\)</span> is a character modulo a divisor of <span class="math" data-tex="\(\operatorname{lcm}(2,|d_0|)\)">\(\operatorname{lcm}(2,|d_0|)\)</span>, where <span class="math" data-tex="\(d_0\in\{v,4v\}\)">\(d_0\in\{v,4v\}\)</span>; this divides <span class="math" data-tex="\(4v\)">\(4v\)</span>. For <span class="math" data-tex="\(v=2\)">\(v=2\)</span>: <span class="math" data-tex="\((2/M)=1\)">\((2/M)=1\)</span> for <span class="math" data-tex="\(M\equiv\pm1\pmod8\)">\(M\equiv\pm1\pmod8\)</span> and <span class="math" data-tex="\(-1\)">\(-1\)</span> for <span class="math" data-tex="\(M\equiv\pm3\pmod8\)">\(M\equiv\pm3\pmod8\)</span>, so <span class="math" data-tex="\((2/1)=1\ne(2/3)=-1\)">\((2/1)=1\ne(2/3)=-1\)</span>, although <span class="math" data-tex="\(1\equiv3\pmod2\)">\(1\equiv3\pmod2\)</span>.</p>
+<p><strong>7.3.</strong> By the Chinese remainder theorem it suffices to treat a prime <span class="math" data-tex="\(\ell\mid d\)">\(\ell\mid d\)</span>. The squaring map on the cyclic group <span class="math" data-tex="\((\mathbb Z/\ell)^\times\)">\((\mathbb Z/\ell)^\times\)</span> of even order has kernel <span class="math" data-tex="\(\{\pm1\}\)">\(\{\pm1\}\)</span>, so its image has index <span class="math" data-tex="\(2\)">\(2\)</span> and every image point has exactly two preimages. Multiplication by <span class="math" data-tex="\(c\)">\(c\)</span> is a bijection. Over <span class="math" data-tex="\(d\)">\(d\)</span> the kernel has <span class="math" data-tex="\(2^{\omega(d)}\)">\(2^{\omega(d)}\)</span> elements.</p>
+<p><strong>7.4.</strong> Expand <span class="math" data-tex="\(f(s)=\sum_{\xi\bmod q}\widehat f(\xi)e_q(\xi s)\)">\(f(s)=\sum_{\xi\bmod q}\widehat f(\xi)e_q(\xi s)\)</span>. Then <span class="math" data-tex="\(|\sum_{s\in I}f(s)e(\alpha s)|\)">\(|\sum_{s\in I}f(s)e(\alpha s)|\)</span><span class="math" data-tex="\(\le A\sum_\xi|\sum_{s\in I}e((\alpha+\xi/q)s)|\)">\(\le A\sum_\xi|\sum_{s\in I}e((\alpha+\xi/q)s)|\)</span>, and <span class="math" data-tex="\(|\sum_{s\in I}e(\beta s)|\le\min(|I|,1/(2\|\beta\|))\)">\(|\sum_{s\in I}e(\beta s)|\le\min(|I|,1/(2\|\beta\|))\)</span> by the geometric sum. Let <span class="math" data-tex="\(\delta_0\in[-\frac1{2q},\frac1{2q}]\)">\(\delta_0\in[-\frac1{2q},\frac1{2q}]\)</span> be the representative closest to <span class="math" data-tex="\(0\)">\(0\)</span> of the points <span class="math" data-tex="\(\beta_\xi=\alpha+\xi/q\)">\(\beta_\xi=\alpha+\xi/q\)</span> modulo <span class="math" data-tex="\(1\)">\(1\)</span>. The other points are <span class="math" data-tex="\(\delta_0+m/q\)">\(\delta_0+m/q\)</span> with <span class="math" data-tex="\(m\)">\(m\)</span> in a set of <span class="math" data-tex="\(q-1\)">\(q-1\)</span> nonzero integers of absolute value at most <span class="math" data-tex="\(q/2\)">\(q/2\)</span>, and <span class="math" data-tex="\(\|\delta_0+m/q\|=|\delta_0+m/q|\)">\(\|\delta_0+m/q\|=|\delta_0+m/q|\)</span><span class="math" data-tex="\(\ge|m|/q-1/(2q)\ge|m|/(2q)\)">\(\ge|m|/q-1/(2q)\ge|m|/(2q)\)</span>. The nearest point costs at most <span class="math" data-tex="\(|I|\)">\(|I|\)</span>; each <span class="math" data-tex="\(m\ne0\)">\(m\ne0\)</span> costs at most <span class="math" data-tex="\(q/|m|\)">\(q/|m|\)</span>, and each value of <span class="math" data-tex="\(|m|\)">\(|m|\)</span> occurs at most twice. The total is at most <span class="math" data-tex="\(A(|I|+2q\sum_{j\le q/2}1/j)\)">\(A(|I|+2q\sum_{j\le q/2}1/j)\)</span><span class="math" data-tex="\(\le A(|I|+2q(1+\log q))\)">\(\le A(|I|+2q(1+\log q))\)</span>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-013] OpenAI, <em>The additive indecomposability of the primes</em>, OpenAI Math Release preprint, 24 September 2026, Section 3: the moment estimate (3.13), the discretization, (3.14)–(3.21), and the small-kernel witness (3.15) and (3.22). https://github.com/openai/math/tree/main/preprints/the-additive-indecomposability-of-the-primes-September-24-2026</li>
+<li>[Bon] A. Bonami, <em>Étude des coefficients de Fourier des fonctions de <span class="math" data-tex="\(L^p(G)\)">\(L^p(G)\)</span></em>, Ann. Inst. Fourier 20 (1970), no. 2, 335–402, Chapter III, Theorems 2 and 3. https://www.numdam.org/item/10.5802/aif.357.pdf</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

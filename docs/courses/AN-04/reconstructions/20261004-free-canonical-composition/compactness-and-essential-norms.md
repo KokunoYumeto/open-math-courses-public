@@ -61,14 +61,14 @@ Use the exact earlier proofs:
   and its complete principal-symbol formula;
 - [MC G4–G7](maslov-composition-and-gaussian-factors.md) and
   [CC C4–C5](clean-canonical-composition.md): the Maslov and density maps;
-- [P1 B1–B5](../20261004-free-intrinsic-graph/prerequisites/dyadic-endpoint.md),
-  [P2 O0–O6](../20261004-free-intrinsic-graph/prerequisites/ordinary-operator-calculus.md),
-  [P3 M0–M8](../20261004-free-intrinsic-graph/prerequisites/measure-and-l2.md)
-  and [L0–L3](../20261004-free-intrinsic-graph/prerequisites/fourier-l2.md):
+- P1 B1–B5,
+  P2 O0–O6,
+  P3 M0–M8
+  and L0–L3:
   measure, completeness, density, Fourier estimates and ordinary calculus;
 - [PS2 and PS5–PS6](../20261004-free-intrinsic-graph/prerequisites/global-principal-symbol.md):
   geometric symbol estimates, finite phase partitions and the symbol kernel;
-- [K2–K4](../20261004-free-intrinsic-graph/prerequisites/conic-parametrices-and-localization.md):
+- K2–K4:
   symbol inverses, proper parametrices and conic localization.
 
 Finite-dimensional compactness, basis extension, smooth inverses, roots,
@@ -748,18 +748,18 @@ symbol norms is one. The two-branch relation is a local canonical graph,
 so the compactness criterion in T7 applies and correctly says that \(A\)
 is not compact. The single-graph numerical formula (T3) does not apply.
 
-## Free source and the remaining course
+## Source and scope
 
 The freely readable human source is Lars Hörmander's
 [*Fourier integral operators. I*](https://projecteuclid.org/journals/acta-mathematica/volume-127/issue-none/Fourier-integral-operators-I/10.1007/BF02392052.pdf),
 Acta Mathematica 127 (1971), Section 2.2
 and Section 4.3. These give the positivity-factor route,
 compactness direction and graph compactness statement. The converse
-referred elsewhere in that paper is proved here by T3; its referenced
-work is not adopted. T1 supplies the functional analysis, T4 the finite
+referred elsewhere in that paper is proved here by T3; T3 includes the full argument.
+ T1 supplies the functional analysis, T4 the finite
 matrix factor and manifold assembly, and T5–T7 the graph normalization,
-exact essential norm and full local/Sobolev interpretation. Citations
-replace none of these proofs.
+exact essential norm and full local/Sobolev interpretation. 
+
 
 The graph compactness and essential-norm theorems here concern ordinary symbols. The [calculus for symbols with derivative losses](../20261015-rho-fio-continuity/general-symbol-graph-and-corank-continuity.html) treats the corresponding continuity ranges.
 

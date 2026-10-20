@@ -1,0 +1,413 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Scales, cells and a positive statistic for higher characters</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Additive indecomposability of the primes)</a><a href="quadratic-kernels-and-the-collision-contradiction.html">Previous lesson</a><a href="templates-transfers-and-frequency-histories.html">Next lesson</a><a href="src/scales-cells-and-a-positive-statistic-for-higher-characters.md">Editable source</a></nav><main><article><h1 id="scales-cells-and-a-positive-statistic-for-higher-characters">Scales, cells and a positive statistic for higher characters</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Lessons 3–6 showed that translated quadratic characters do not bias the residue supports <span class="math" data-tex="\(S_p\)">\(S_p\)</span>. This lesson and the next two prove the same for multiplicative characters of every order greater than <span class="math" data-tex="\(2\)">\(2\)</span>, with the character also allowed to vary from prime to prime (Theorem 1.1). Lesson 9 combines both results into the <em>mixed flatness</em> of the normalized Fourier transforms of the supports, the form used in the rest of the course.</p>
+<p>The quadratic proof does not extend: there is no large sieve for characters of higher order strong enough to classify kernels. The argument here is a sequence of Cauchy–Schwarz <em>transfers</em> that copy the prime variables in a binary tree, together with <em>anchor</em> primes whose characters distinguish the copies. This lesson prepares the transfers. It chooses the scales, finds a rich block of primes by a density increment, selects good cells of primes for every role, realizes prescribed logarithmic sizes exactly by Kneser's addition theorem, and builds a positive statistic whose Poisson dual is a lower bound <span class="math" data-tex="\(|\eta_0|\ge e^{-B_0m}\)">\(|\eta_0|\ge e^{-B_0m}\)</span> for an amplitude (Proposition 6.1). Kneser's theorem is proved in full in Section 3.</p>
+<p><strong>Prerequisites.</strong> <a href="square-root-bounds-and-collision-stability.html"><em>Square-root bounds and collision stability</em></a>, Sections 4 and 5; <a href="a-biased-block-and-an-amplified-moment.html"><em>A biased block and an amplified moment</em></a>, Section 3 (the weight <span class="math" data-tex="\(\psi\)">\(\psi\)</span>); <a href="../NT-ZETA/NT-ZETA-02.html"><em>Counting primes by elementary means: Chebyshev and Mertens</em></a>, Theorem 3.1; <a href="../NT-ZETA/NT-ZETA-09.html"><em>The prime number theorem</em></a>, Theorem 3.1.</p>
+<h2 id="1-the-statement-and-the-contradiction-hypothesis">1. The statement and the contradiction hypothesis</h2>
+<p>In this lesson and the next two, the <em>harmonic mass</em> of a set <span class="math" data-tex="\(\mathcal Q\)">\(\mathcal Q\)</span> of primes is <span class="math" data-tex="\(\sum_{p\in\mathcal Q}1/p\)">\(\sum_{p\in\mathcal Q}1/p\)</span>. Multiplicative characters are extended by zero at zero, and <span class="math" data-tex="\(\operatorname{ord}(\lambda)\)">\(\operatorname{ord}(\lambda)\)</span> is the order of a character <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of <span class="math" data-tex="\(\mathbb F_p^\times\)">\(\mathbb F_p^\times\)</span>.</p>
+<p><strong>Theorem 1.1</strong> (higher characters [OpenAI-013, Proposition 4.1]). For fixed <span class="math" data-tex="\(0&lt;\alpha&lt;\beta\)">\(0&lt;\alpha&lt;\beta\)</span>, as <span class="math" data-tex="\(L\to\infty\)">\(L\to\infty\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\alpha L\le\log\log p\le\beta L}\frac1p\\
+&amp;\qquad\max_{\substack{t\in\mathbb F_p\\\operatorname{ord}(\lambda)&gt;2}}\Bigl|\mathbb E_{x\in S_p}\lambda(x-t)\Bigr|\\
+&amp;\quad=o(L).\quad(1.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\alpha L\le\log\log p\le\beta L}\frac1p\\
+&amp;\qquad\max_{\substack{t\in\mathbb F_p\\\operatorname{ord}(\lambda)&gt;2}}\Bigl|\mathbb E_{x\in S_p}\lambda(x-t)\Bigr|\\
+&amp;\quad=o(L).\quad(1.1)
+\end{aligned}
+\]</span></p>
+<p>The proof occupies this lesson and Lessons 8–9. Suppose (1.1) fails. Passing to a sequence <span class="math" data-tex="\(L\to\infty\)">\(L\to\infty\)</span>, there are constants <span class="math" data-tex="\(c,\delta&gt;0\)">\(c,\delta&gt;0\)</span>, sets <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span> of primes in the band <span class="math" data-tex="\(\alpha L\le\log\log p\le\beta L\)">\(\alpha L\le\log\log p\le\beta L\)</span> with harmonic mass at least <span class="math" data-tex="\(cL\)">\(cL\)</span>, and functions
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f_p(x)=z_p\,\chi^{(p)}(x-t_p),\\
+|z_p|=1,\\
+\operatorname{ord}(\chi^{(p)})&gt;2,\\
+\operatorname{Re}\mathbb E_{x\in S_p}f_p(x)\ge\delta\\
+(p\in\mathcal E).
+\end{gathered}
+\]">\[
+\begin{gathered}
+f_p(x)=z_p\,\chi^{(p)}(x-t_p),\\
+|z_p|=1,\\
+\operatorname{ord}(\chi^{(p)})&gt;2,\\
+\operatorname{Re}\mathbb E_{x\in S_p}f_p(x)\ge\delta\\
+(p\in\mathcal E).
+\end{gathered}
+\]</span>
+(Rotate the maximizing mean by a unit <span class="math" data-tex="\(z_p\)">\(z_p\)</span> to make it real and positive.) All constants below may depend on <span class="math" data-tex="\(\alpha,\beta,c,\delta\)">\(\alpha,\beta,c,\delta\)</span>. When labels are sampled from a specified set of primes, their prior is the harmonic measure on that set, normalized to a probability. Restrictions on a tuple of labels, such as distinctness or a size window, are imposed by indicators and do not renormalize the prior.</p>
+<p>Throughout, <span class="math" data-tex="\(u=\log\log p\)">\(u=\log\log p\)</span> is the <em>level</em> of a prime <span class="math" data-tex="\(p\)">\(p\)</span>. By Mertens' estimate <span class="math" data-tex="\(\sum_{p\le x}1/p\)">\(\sum_{p\le x}1/p\)</span><span class="math" data-tex="\(=\log\log x+M+O(1/\log x)\)">\(=\log\log x+M+O(1/\log x)\)</span>, the harmonic mass of the primes with level in an interval <span class="math" data-tex="\([u_1,u_2]\)">\([u_1,u_2]\)</span> is <span class="math" data-tex="\(u_2-u_1+o(1)\)">\(u_2-u_1+o(1)\)</span>, uniformly for <span class="math" data-tex="\(u_1\ge\alpha L\)">\(u_1\ge\alpha L\)</span>.</p>
+<h2 id="2-selection-of-scales">2. Selection of scales</h2>
+<p>Set <span class="math" data-tex="\(\epsilon=10^{-4}\)">\(\epsilon=10^{-4}\)</span>. A large constant <span class="math" data-tex="\(B_D\)">\(B_D\)</span> is chosen first, then a large lower bound <span class="math" data-tex="\(K_0\)">\(K_0\)</span> for an integer depth <span class="math" data-tex="\(k\)">\(k\)</span>. The constants multiplying <span class="math" data-tex="\(m\)">\(m\)</span> in the estimates below are independent of <span class="math" data-tex="\(B_D\)">\(B_D\)</span> and <span class="math" data-tex="\(k\)">\(k\)</span>, except for the explicitly displayed multiples of <span class="math" data-tex="\(\log z\)">\(\log z\)</span>. The notation <span class="math" data-tex="\(O_k(1)\)">\(O_k(1)\)</span> and <span class="math" data-tex="\(o_k(m)\)">\(o_k(m)\)</span> allows dependence on these fixed choices; its limit variable is <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p><strong>Three separated intervals.</strong> Partition the band <span class="math" data-tex="\([\alpha L,\beta L]\)">\([\alpha L,\beta L]\)</span> of levels into <span class="math" data-tex="\(q\)">\(q\)</span> equal intervals, <span class="math" data-tex="\(q\)">\(q\)</span> a large fixed integer. The intervals with <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>-mass below <span class="math" data-tex="\(cL/(2q)\)">\(cL/(2q)\)</span> carry less than <span class="math" data-tex="\(cL/2\)">\(cL/2\)</span> in total, and each of the others has mass at most <span class="math" data-tex="\((\beta-\alpha)L/q+o(1)\)">\((\beta-\alpha)L/q+o(1)\)</span>. So at least <span class="math" data-tex="\(cq/(3(\beta-\alpha))\)">\(cq/(3(\beta-\alpha))\)</span> intervals have mass at least <span class="math" data-tex="\(cL/(2q)\)">\(cL/(2q)\)</span>, and for large <span class="math" data-tex="\(q\)">\(q\)</span> there are at least five of them. Choose three of these, with at least one partition interval between successive choices. Their lengths and the gaps between them are fixed positive multiples of <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<ul>
+<li>All <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>-primes of the <em>middle</em> interval are the <em>bulk labels</em>.</li>
+<li>The <em>lower</em> interval has length <span class="math" data-tex="\(\asymp L\)">\(\asymp L\)</span> and mass <span class="math" data-tex="\(\gg L\)">\(\gg L\)</span>, so it contains a unit interval of levels whose <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>-mass is bounded below by a positive constant. Fix one such <em>shell</em> for the <em>small anchors</em>.</li>
+</ul>
+<p><strong>A uniformly rich block.</strong> In the <em>upper</em> interval we need more structure.</p>
+<p><strong>Lemma 2.1</strong> (density increment). There are a constant <span class="math" data-tex="\(c_1&gt;0\)">\(c_1&gt;0\)</span>, independent of <span class="math" data-tex="\(K_0\)">\(K_0\)</span>, and an integer <span class="math" data-tex="\(k\ge K_0\)">\(k\ge K_0\)</span> bounded independently of <span class="math" data-tex="\(L\)">\(L\)</span>, together with a block <span class="math" data-tex="\([U,U+5k]\)">\([U,U+5k]\)</span> of levels inside the upper interval, such that every subinterval of length <span class="math" data-tex="\(\epsilon k\)">\(\epsilon k\)</span> of the block has <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>-mass at least <span class="math" data-tex="\(c_1\epsilon k\)">\(c_1\epsilon k\)</span>.</p>
+<p><em>Proof.</em> Choose an integer <span class="math" data-tex="\(M_d&gt;100/\epsilon\)">\(M_d&gt;100/\epsilon\)</span>. The <em>density</em> of a block is its <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>-mass divided by its length; by Mertens' estimate it is at most <span class="math" data-tex="\(1+o(1)\)">\(1+o(1)\)</span> for blocks of length at least <span class="math" data-tex="\(1\)">\(1\)</span>. The upper interval has density at least some fixed <span class="math" data-tex="\(d_0&gt;0\)">\(d_0&gt;0\)</span>, so, averaging over a partition into blocks of length <span class="math" data-tex="\(5K_0M_d^{h}\)">\(5K_0M_d^{h}\)</span>, one of them has density at least <span class="math" data-tex="\(d=d_0/2\)">\(d=d_0/2\)</span>; here <span class="math" data-tex="\(h\)">\(h\)</span> is a fixed integer chosen below. Put <span class="math" data-tex="\(c_1=d/5\)">\(c_1=d/5\)</span>.</p>
+<p>Let the current block have length <span class="math" data-tex="\(5\kappa\)">\(5\kappa\)</span> and density at least <span class="math" data-tex="\(d\)">\(d\)</span>, and suppose it contains a subinterval <span class="math" data-tex="\(I_f\)">\(I_f\)</span> of length <span class="math" data-tex="\(\epsilon\kappa\)">\(\epsilon\kappa\)</span> with mass less than <span class="math" data-tex="\(c_1\epsilon\kappa\)">\(c_1\epsilon\kappa\)</span>. Split the block into <span class="math" data-tex="\(M_d\)">\(M_d\)</span> children of length <span class="math" data-tex="\(5\kappa/M_d&lt;\epsilon\kappa/20\)">\(5\kappa/M_d&lt;\epsilon\kappa/20\)</span>. The children contained in <span class="math" data-tex="\(I_f\)">\(I_f\)</span> have total length <span class="math" data-tex="\(\ell\ge\epsilon\kappa-10\kappa/M_d\ge\epsilon\kappa/2\)">\(\ell\ge\epsilon\kappa-10\kappa/M_d\ge\epsilon\kappa/2\)</span> and total mass less than <span class="math" data-tex="\(c_1\epsilon\kappa\le2c_1\ell&lt;\frac d2\ell\)">\(c_1\epsilon\kappa\le2c_1\ell&lt;\frac d2\ell\)</span>. So the other children have total length <span class="math" data-tex="\(5\kappa-\ell\)">\(5\kappa-\ell\)</span> and total mass more than <span class="math" data-tex="\(5\kappa d-\frac d2\ell\)">\(5\kappa d-\frac d2\ell\)</span>, and one of them has density at least
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{5\kappa d-\frac d2\ell}{5\kappa-\ell}&amp;=d+\frac{d\ell/2}{5\kappa-\ell}\\
+&amp;\ge d\Bigl(1+\frac\epsilon{20}\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{5\kappa d-\frac d2\ell}{5\kappa-\ell}&amp;=d+\frac{d\ell/2}{5\kappa-\ell}\\
+&amp;\ge d\Bigl(1+\frac\epsilon{20}\Bigr).
+\end{aligned}
+\]</span>
+Make it the current block. The density cannot exceed <span class="math" data-tex="\(1+o(1)\)">\(1+o(1)\)</span>, so this step occurs at most <span class="math" data-tex="\(h_0=\lceil\log(2/d)/\log(1+\epsilon/20)\rceil\)">\(h_0=\lceil\log(2/d)/\log(1+\epsilon/20)\rceil\)</span> times; take <span class="math" data-tex="\(h=h_0\)">\(h=h_0\)</span>. The process therefore stops at a block of length <span class="math" data-tex="\(5k\)">\(5k\)</span> with <span class="math" data-tex="\(k\in\{K_0,K_0M_d,\dots,K_0M_d^{h}\}\)">\(k\in\{K_0,K_0M_d,\dots,K_0M_d^{h}\}\)</span>, all of whose subintervals of length <span class="math" data-tex="\(\epsilon k\)">\(\epsilon k\)</span> have mass at least <span class="math" data-tex="\(c_1\epsilon k\)">\(c_1\epsilon k\)</span>. Neither <span class="math" data-tex="\(h\)">\(h\)</span> nor <span class="math" data-tex="\(c_1\)">\(c_1\)</span> depends on <span class="math" data-tex="\(K_0\)">\(K_0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Since <span class="math" data-tex="\(k\)">\(k\)</span> takes finitely many values, pass to a subsequence of <span class="math" data-tex="\(L\)">\(L\)</span> on which <span class="math" data-tex="\(k\)">\(k\)</span> is fixed.</p>
+<p><strong>Rich shells.</strong> Increase <span class="math" data-tex="\(K_0\)">\(K_0\)</span> so that <span class="math" data-tex="\(2(1+o(1))&lt;\frac12c_1\epsilon k\)">\(2(1+o(1))&lt;\frac12c_1\epsilon k\)</span>. The grid <span class="math" data-tex="\(U+\mathbb Z\)">\(U+\mathbb Z\)</span> cuts the block into unit shells. Every interval of length <span class="math" data-tex="\(\epsilon k\)">\(\epsilon k\)</span> in the block contains at least <span class="math" data-tex="\(\epsilon k-2\)">\(\epsilon k-2\)</span> whole grid shells, of total mass at least <span class="math" data-tex="\(c_1\epsilon k-2(1+o(1))\ge\frac12c_1\epsilon k\)">\(c_1\epsilon k-2(1+o(1))\ge\frac12c_1\epsilon k\)</span>, so one of them has mass at least <span class="math" data-tex="\(c_0=c_1/2\)">\(c_0=c_1/2\)</span>. Call grid shells of mass at least <span class="math" data-tex="\(c_0\)">\(c_0\)</span> <em>rich</em>. Fix one rich shell inside <span class="math" data-tex="\([U,U+2\epsilon k]\)">\([U,U+2\epsilon k]\)</span>: it supplies the <em>top</em> labels and the <em>big anchors</em>. Let <span class="math" data-tex="\(\tau=e^{u_0}\)">\(\tau=e^{u_0}\)</span>, where <span class="math" data-tex="\(u_0\)">\(u_0\)</span> is its lower endpoint, so that its primes satisfy <span class="math" data-tex="\(\tau\le\log p&lt;e\tau\)">\(\tau\le\log p&lt;e\tau\)</span>. Set
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\log X=10^3\cdot4^k\,\tau,\\
+z=\exp(3\epsilon k),\\
+m=\lfloor zL\rfloor .\quad(2.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\log X=10^3\cdot4^k\,\tau,\\
+z=\exp(3\epsilon k),\\
+m=\lfloor zL\rfloor .\quad(2.1)
+\end{gathered}
+\]</span></p>
+<p><strong>Typical endpoints.</strong> The <em>tested sets</em> are: the bulk labels, the small-anchor shell, the top shell, and all rich grid shells of the block whose primes satisfy <span class="math" data-tex="\(\log p&lt;(\log X)/4\)">\(\log p&lt;(\log X)/4\)</span>. Their number is bounded for fixed <span class="math" data-tex="\(k\)">\(k\)</span>, and each has harmonic mass bounded below. Let <span class="math" data-tex="\(\mathcal A_X=A\cap[X^{9/10},X]\)">\(\mathcal A_X=A\cap[X^{9/10},X]\)</span>.</p>
+<p><strong>Lemma 2.2.</strong> All but <span class="math" data-tex="\(o(|\mathcal A_X|)\)">\(o(|\mathcal A_X|)\)</span> elements <span class="math" data-tex="\(a\in\mathcal A_X\)">\(a\in\mathcal A_X\)</span> satisfy <span class="math" data-tex="\(\operatorname{Re}\mathbb E_{p\in\mathcal T}f_p(a)\ge\delta/2\)">\(\operatorname{Re}\mathbb E_{p\in\mathcal T}f_p(a)\ge\delta/2\)</span> for every tested set <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>, the expectation being over the harmonic prior of <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(\mathcal A&#x27;\subseteq\mathcal A_X\)">\(\mathcal A&#x27;\subseteq\mathcal A_X\)</span> have at least <span class="math" data-tex="\(\sqrt X/(\log X)^{10}\)">\(\sqrt X/(\log X)^{10}\)</span> elements. Its uniform measure has point masses at most <span class="math" data-tex="\((\log X)^{10}/\sqrt X\)">\((\log X)^{10}/\sqrt X\)</span>, so Lemma 4.1 and Corollary 4.2 of Lesson 2 apply with <span class="math" data-tex="\(b=10\)">\(b=10\)</span>, and every tested prime lies below their cutoff <span class="math" data-tex="\(\sqrt X/(\log X)^{11}\)">\(\sqrt X/(\log X)^{11}\)</span>. Since <span class="math" data-tex="\(|f_p|\le1\)">\(|f_p|\le1\)</span> and <span class="math" data-tex="\(\log p\ge e^{\alpha L}\)">\(\log p\ge e^{\alpha L}\)</span> for tested primes,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\text{tested }p}\frac1p\Bigl|\mathbb E_{a\in\mathcal A&#x27;}f_p(a)\\
+&amp;\qquad -\mathbb E_{x\in S_p}f_p(x)\Bigr|^2\\
+&amp;\quad \le e^{-\alpha L}\sum_{p}\frac{\log p}p|\cdot|^2\\
+&amp;\quad \ll e^{-\alpha L}\log\log X=o(1),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\text{tested }p}\frac1p\Bigl|\mathbb E_{a\in\mathcal A&#x27;}f_p(a)\\
+&amp;\qquad -\mathbb E_{x\in S_p}f_p(x)\Bigr|^2\\
+&amp;\quad \le e^{-\alpha L}\sum_{p}\frac{\log p}p|\cdot|^2\\
+&amp;\quad \ll e^{-\alpha L}\log\log X=o(1),
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(\log\log X=O(L)\)">\(\log\log X=O(L)\)</span>. If the set <span class="math" data-tex="\(\mathcal A&#x27;\)">\(\mathcal A&#x27;\)</span> of elements failing the conclusion for a given <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> had at least <span class="math" data-tex="\(\sqrt X/(\log X)^{10}\)">\(\sqrt X/(\log X)^{10}\)</span> elements, then <span class="math" data-tex="\(\mathbb E_{p\in\mathcal T}\operatorname{Re}\mathbb E_{a\in\mathcal A&#x27;}f_p(a)&lt;\delta/2\)">\(\mathbb E_{p\in\mathcal T}\operatorname{Re}\mathbb E_{a\in\mathcal A&#x27;}f_p(a)&lt;\delta/2\)</span>, while <span class="math" data-tex="\(\operatorname{Re}\mathbb E_{S_p}f_p\ge\delta\)">\(\operatorname{Re}\mathbb E_{S_p}f_p\ge\delta\)</span> for all <span class="math" data-tex="\(p\in\mathcal T\subseteq\mathcal E\)">\(p\in\mathcal T\subseteq\mathcal E\)</span>. Cauchy–Schwarz over the harmonic prior of <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> would then give <span class="math" data-tex="\((\delta/2)^2\le o(1)/\mathrm{mass}(\mathcal T)\)">\((\delta/2)^2\le o(1)/\mathrm{mass}(\mathcal T)\)</span>, which is false for large <span class="math" data-tex="\(L\)">\(L\)</span>. There are boundedly many tested sets, and <span class="math" data-tex="\(|\mathcal A_X|\gg\sqrt X/(\log X)^3\)">\(|\mathcal A_X|\gg\sqrt X/(\log X)^3\)</span> by Lemma 5.1 of Lesson 2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Call the elements of Lemma 2.2 <em>typical endpoints</em>.</p>
+<p><strong>Good cells.</strong> For a rich shell whose primes satisfy <span class="math" data-tex="\(b\le\log p&lt;eb\)">\(b\le\log p&lt;eb\)</span>, partition its <span class="math" data-tex="\(\mathcal E\)">\(\mathcal E\)</span>-primes into the <em>cells</em>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal E_h=\{p\in\mathcal E:h\le\log p&lt;h+1\},\\
+h\in\mathbb Z\cap[b,eb].
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal E_h=\{p\in\mathcal E:h\le\log p&lt;h+1\},\\
+h\in\mathbb Z\cap[b,eb].
+\end{gathered}
+\]</span>
+Each cell has harmonic mass at most <span class="math" data-tex="\(C/b\)">\(C/b\)</span>, by the prime number theorem.</p>
+<p><strong>Lemma 2.3.</strong> At a typical endpoint <span class="math" data-tex="\(a\)">\(a\)</span>, every tested rich shell with parameter <span class="math" data-tex="\(b\)">\(b\)</span> has at least <span class="math" data-tex="\(c&#x27;b\)">\(c&#x27;b\)</span> <em>good</em> cells, those with
+<span class="math math-display" data-tex="\[
+\sum_{p\in\mathcal E_h}\frac1p\ge\frac{c&#x27;&#x27;}b,
+\qquad
+\operatorname{Re}\mathbb E_{p\in\mathcal E_h}f_p(a)\ge\frac\delta4,
+\]">\[
+\sum_{p\in\mathcal E_h}\frac1p\ge\frac{c&#x27;&#x27;}b,
+\qquad
+\operatorname{Re}\mathbb E_{p\in\mathcal E_h}f_p(a)\ge\frac\delta4,
+\]</span>
+where <span class="math" data-tex="\(c&#x27;,c&#x27;&#x27;&gt;0\)">\(c&#x27;,c&#x27;&#x27;&gt;0\)</span> are uniform over all tested shells.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(m_h\)">\(m_h\)</span> be the mass of <span class="math" data-tex="\(\mathcal E_h\)">\(\mathcal E_h\)</span>, <span class="math" data-tex="\(r_h=\operatorname{Re}\mathbb E_{\mathcal E_h}f_p(a)\in[-1,1]\)">\(r_h=\operatorname{Re}\mathbb E_{\mathcal E_h}f_p(a)\in[-1,1]\)</span>, and <span class="math" data-tex="\(M=\sum_hm_h\ge c_0\)">\(M=\sum_hm_h\ge c_0\)</span>. By Lemma 2.2, <span class="math" data-tex="\(\sum_hm_hr_h\ge\frac\delta2M\)">\(\sum_hm_hr_h\ge\frac\delta2M\)</span>, so <span class="math" data-tex="\(\sum_{r_h\ge\delta/4}m_h\ge\sum_hm_hr_h-\frac\delta4M\ge\frac\delta4M\)">\(\sum_{r_h\ge\delta/4}m_h\ge\sum_hm_hr_h-\frac\delta4M\ge\frac\delta4M\)</span>. The cells with <span class="math" data-tex="\(m_h&lt;c&#x27;&#x27;/b\)">\(m_h&lt;c&#x27;&#x27;/b\)</span> have total mass at most <span class="math" data-tex="\(2c&#x27;&#x27;\)">\(2c&#x27;&#x27;\)</span>, which is at most <span class="math" data-tex="\(\frac\delta8M\)">\(\frac\delta8M\)</span> if <span class="math" data-tex="\(c&#x27;&#x27;=\delta c_0/16\)">\(c&#x27;&#x27;=\delta c_0/16\)</span>. The remaining cells with <span class="math" data-tex="\(r_h\ge\delta/4\)">\(r_h\ge\delta/4\)</span> carry mass at least <span class="math" data-tex="\(\frac\delta8M\)">\(\frac\delta8M\)</span>, and each has mass at most <span class="math" data-tex="\(C/b\)">\(C/b\)</span>; so there are at least <span class="math" data-tex="\(\delta c_0b/(8C)\)">\(\delta c_0b/(8C)\)</span> of them. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Words and a bin.</strong> A <em>word</em> consists of <span class="math" data-tex="\(m\)">\(m\)</span> independent bulk labels and one independent top label. For an integer <span class="math" data-tex="\(J\)">\(J\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+G_J(n)&amp;=\mathbb E_{\text{word}}\Bigl[\mathbf 1\Bigl\{\Bigl\lfloor\sum_{p\in\text{word}}\log p\Bigr\rfloor\\
+&amp;=J\Bigr\}\prod_{p\in\text{word}}f_p(n)\Bigr].
+\end{aligned}
+\]">\[
+\begin{aligned}
+G_J(n)&amp;=\mathbb E_{\text{word}}\Bigl[\mathbf 1\Bigl\{\Bigl\lfloor\sum_{p\in\text{word}}\log p\Bigr\rfloor\\
+&amp;=J\Bigr\}\prod_{p\in\text{word}}f_p(n)\Bigr].
+\end{aligned}
+\]</span>
+Every bulk prime has level at most that of the middle interval, which is separated from the top shell by <span class="math" data-tex="\(\gg L\)">\(\gg L\)</span> levels; so the bulk part of a word has <span class="math" data-tex="\(\sum\log p\le me^{-c_2L}\tau=o(\tau)\)">\(\sum\log p\le me^{-c_2L}\tau=o(\tau)\)</span>, and every nonempty bin satisfies <span class="math" data-tex="\((1-o(1))\tau\le J\le4\tau\)">\((1-o(1))\tau\le J\le4\tau\)</span>. There are at most <span class="math" data-tex="\(e^{CL}\)">\(e^{CL}\)</span> bins. At a typical endpoint, independence gives <span class="math" data-tex="\(|\sum_JG_J(a)|\)">\(|\sum_JG_J(a)|\)</span><span class="math" data-tex="\(=|\mathbb E_{\text{bulk}}f_p(a)|^m\,|\mathbb E_{\text{top}}f_p(a)|\)">\(=|\mathbb E_{\text{bulk}}f_p(a)|^m\,|\mathbb E_{\text{top}}f_p(a)|\)</span><span class="math" data-tex="\(\ge(\delta/2)^{m+1}\)">\(\ge(\delta/2)^{m+1}\)</span>. Pigeonholing first a bin for each typical endpoint and then the endpoints among the bins gives a fixed <span class="math" data-tex="\(J\)">\(J\)</span> such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|G_J(a)|\ge e^{-Cm}\\
+\begin{aligned}
+&amp;\text{for at least }\sqrt Xe^{-Cm}\\
+&amp;\quad \text{ typical endpoints }a.
+\end{aligned}\quad(2.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+|G_J(a)|\ge e^{-Cm}\\
+\begin{aligned}
+&amp;\text{for at least }\sqrt Xe^{-Cm}\\
+&amp;\quad \text{ typical endpoints }a.
+\end{aligned}\quad(2.2)
+\end{gathered}
+\]</span>
+The constant <span class="math" data-tex="\(C\)">\(C\)</span> is independent of large <span class="math" data-tex="\(k\)">\(k\)</span>: the bin count and the logarithmic loss in <span class="math" data-tex="\(|\mathcal A_X|\)">\(|\mathcal A_X|\)</span> have logarithms <span class="math" data-tex="\(O(L)+O_k(1)\)">\(O(L)+O_k(1)\)</span>, and <span class="math" data-tex="\(L\le m\)">\(L\le m\)</span>.</p>
+<h2 id="3-kneser-s-addition-theorem">3. Kneser's addition theorem</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be an abelian group. For <span class="math" data-tex="\(A,B\subseteq G\)">\(A,B\subseteq G\)</span>, <span class="math" data-tex="\(A+B=\{a+b\}\)">\(A+B=\{a+b\}\)</span>, and the <em>stabilizer</em> of a set <span class="math" data-tex="\(C\)">\(C\)</span> is the subgroup <span class="math" data-tex="\(\operatorname{St}(C)=\{g\in G:C+g=C\}\)">\(\operatorname{St}(C)=\{g\in G:C+g=C\}\)</span>. Note <span class="math" data-tex="\(\operatorname{St}(B)\subseteq\operatorname{St}(A+B)\)">\(\operatorname{St}(B)\subseteq\operatorname{St}(A+B)\)</span>.</p>
+<p><strong>Theorem 3.1</strong> (Kneser's addition theorem, with the proof of DeVos [DeV, Theorem 1]). If <span class="math" data-tex="\(A,B\subseteq G\)">\(A,B\subseteq G\)</span> are finite and nonempty and <span class="math" data-tex="\(K=\operatorname{St}(A+B)\)">\(K=\operatorname{St}(A+B)\)</span>, then
+<span class="math math-display" data-tex="\[
+|A+B|\ge|A+K|+|B+K|-|K|.
+\]">\[
+|A+B|\ge|A+K|+|B+K|-|K|.
+\]</span></p>
+<p><em>Proof.</em> Induct on <span class="math" data-tex="\(|A+B|+|A|\)">\(|A+B|+|A|\)</span>.</p>
+<p><em>Reduction to a trivial stabilizer.</em> Suppose <span class="math" data-tex="\(K\ne\{0\}\)">\(K\ne\{0\}\)</span> and let <span class="math" data-tex="\(\phi\colon G\to G/K\)">\(\phi\colon G\to G/K\)</span> be the quotient map. If <span class="math" data-tex="\(\phi(g)\)">\(\phi(g)\)</span> stabilizes <span class="math" data-tex="\(\phi(A)+\phi(B)\)">\(\phi(A)+\phi(B)\)</span>, then <span class="math" data-tex="\(g+A+B\subseteq A+B+K=A+B\)">\(g+A+B\subseteq A+B+K=A+B\)</span>, so <span class="math" data-tex="\(g\in K\)">\(g\in K\)</span>; thus <span class="math" data-tex="\(\phi(A)+\phi(B)\)">\(\phi(A)+\phi(B)\)</span> has trivial stabilizer. Since <span class="math" data-tex="\(|\phi(A+B)|=|A+B|/|K|&lt;|A+B|\)">\(|\phi(A+B)|=|A+B|/|K|&lt;|A+B|\)</span> and <span class="math" data-tex="\(|\phi(A)|\le|A|\)">\(|\phi(A)|\le|A|\)</span>, induction gives <span class="math" data-tex="\(|\phi(A)+\phi(B)|\ge|\phi(A)|+|\phi(B)|-1\)">\(|\phi(A)+\phi(B)|\ge|\phi(A)|+|\phi(B)|-1\)</span>, and multiplying by <span class="math" data-tex="\(|K|\)">\(|K|\)</span> gives the claim, because <span class="math" data-tex="\(A+B\)">\(A+B\)</span>, <span class="math" data-tex="\(A+K\)">\(A+K\)</span>, <span class="math" data-tex="\(B+K\)">\(B+K\)</span> are unions of <span class="math" data-tex="\(K\)">\(K\)</span>-cosets.</p>
+<p>So assume <span class="math" data-tex="\(K=\{0\}\)">\(K=\{0\}\)</span>; we must show <span class="math" data-tex="\(|A+B|\ge|A|+|B|-1\)">\(|A+B|\ge|A|+|B|-1\)</span>. If <span class="math" data-tex="\(|A|=1\)">\(|A|=1\)</span> this is clear. Otherwise choose <span class="math" data-tex="\(a\ne a&#x27;\)">\(a\ne a&#x27;\)</span> in <span class="math" data-tex="\(A\)">\(A\)</span>. Since <span class="math" data-tex="\(a&#x27;-a\notin\operatorname{St}(B)\subseteq K\)">\(a&#x27;-a\notin\operatorname{St}(B)\subseteq K\)</span>, there is <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span> with <span class="math" data-tex="\(b+a&#x27;-a\notin B\)">\(b+a&#x27;-a\notin B\)</span>. Replacing <span class="math" data-tex="\(B\)">\(B\)</span> by its translate <span class="math" data-tex="\(B-b+a\)">\(B-b+a\)</span> changes nothing, and afterwards <span class="math" data-tex="\(a\in A\cap B\)">\(a\in A\cap B\)</span> and <span class="math" data-tex="\(a&#x27;\in A\setminus B\)">\(a&#x27;\in A\setminus B\)</span>. So <span class="math" data-tex="\(\emptyset\ne A\cap B\ne A\)">\(\emptyset\ne A\cap B\ne A\)</span>.</p>
+<p><em>Convergents.</em> Call <span class="math" data-tex="\(C\subseteq A+B\)">\(C\subseteq A+B\)</span>, with <span class="math" data-tex="\(H=\operatorname{St}(C)\)">\(H=\operatorname{St}(C)\)</span>, a <em>convergent</em> if
+<span class="math math-display" data-tex="\[
+|C|+|H|\ge|A\cap B|+|(A\cup B)+H|.
+\]">\[
+|C|+|H|\ge|A\cap B|+|(A\cup B)+H|.
+\]</span>
+The set <span class="math" data-tex="\(C_0=(A\cap B)+(A\cup B)\)">\(C_0=(A\cap B)+(A\cup B)\)</span> lies in <span class="math" data-tex="\(A+B\)">\(A+B\)</span>. Since <span class="math" data-tex="\(|C_0|\le|A+B|\)">\(|C_0|\le|A+B|\)</span> and <span class="math" data-tex="\(|A\cap B|&lt;|A|\)">\(|A\cap B|&lt;|A|\)</span>, the induction hypothesis applies to <span class="math" data-tex="\(A\cap B\)">\(A\cap B\)</span> and <span class="math" data-tex="\(A\cup B\)">\(A\cup B\)</span>, and with <span class="math" data-tex="\(H_0=\operatorname{St}(C_0)\)">\(H_0=\operatorname{St}(C_0)\)</span> it gives <span class="math" data-tex="\(|C_0|\ge|(A\cap B)+H_0|\)">\(|C_0|\ge|(A\cap B)+H_0|\)</span><span class="math" data-tex="\(+|(A\cup B)+H_0|-|H_0|\ge|A\)">\(+|(A\cup B)+H_0|-|H_0|\ge|A\)</span><span class="math" data-tex="\(\cap B|+|(A\cup B)+H_0|-|H_0|\)">\(\cap B|+|(A\cup B)+H_0|-|H_0|\)</span>. So <span class="math" data-tex="\(C_0\)">\(C_0\)</span> is a convergent. Choose a convergent <span class="math" data-tex="\(C\)">\(C\)</span> whose stabilizer <span class="math" data-tex="\(H\)">\(H\)</span> has the least possible order. If <span class="math" data-tex="\(H=\{0\}\)">\(H=\{0\}\)</span>, then <span class="math" data-tex="\(|A+B|\ge|C|\)">\(|A+B|\ge|C|\)</span><span class="math" data-tex="\(\ge|A\cap B|+|A\cup B|-1\)">\(\ge|A\cap B|+|A\cup B|-1\)</span><span class="math" data-tex="\(=|A|+|B|-1\)">\(=|A|+|B|-1\)</span>, as required. Suppose, for a contradiction, that <span class="math" data-tex="\(H\ne\{0\}\)">\(H\ne\{0\}\)</span>.</p>
+<p><em>A coset outside the sumset.</em> A convergent is nonempty, since <span class="math" data-tex="\(|C|\ge|A\cap B|\ge1\)">\(|C|\ge|A\cap B|\ge1\)</span>. If <span class="math" data-tex="\(a+b+H\subseteq A+B\)">\(a+b+H\subseteq A+B\)</span> for all <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>, then <span class="math" data-tex="\(H\subseteq\operatorname{St}(A+B)=\{0\}\)">\(H\subseteq\operatorname{St}(A+B)=\{0\}\)</span>. So choose <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span> with <span class="math" data-tex="\(a+b+H\not\subseteq A+B\)">\(a+b+H\not\subseteq A+B\)</span>. Since <span class="math" data-tex="\(C\subseteq A+B\)">\(C\subseteq A+B\)</span> is a union of <span class="math" data-tex="\(H\)">\(H\)</span>-cosets, <span class="math" data-tex="\(C\)">\(C\)</span> is disjoint from <span class="math" data-tex="\(a+b+H\)">\(a+b+H\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_1=A\cap(a+H),\\
+A_2=A\cap(b+H),\\
+B_1=B\cap(b+H),\\
+B_2=B\cap(a+H),
+\end{gathered}
+\]">\[
+\begin{gathered}
+A_1=A\cap(a+H),\\
+A_2=A\cap(b+H),\\
+B_1=B\cap(b+H),\\
+B_2=B\cap(a+H),
+\end{gathered}
+\]</span>
+so <span class="math" data-tex="\(a\in A_1\)">\(a\in A_1\)</span> and <span class="math" data-tex="\(b\in B_1\)">\(b\in B_1\)</span>. For <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span> with <span class="math" data-tex="\(A_i,B_i\ne\emptyset\)">\(A_i,B_i\ne\emptyset\)</span>, the set <span class="math" data-tex="\(A_i+B_i\)">\(A_i+B_i\)</span> lies in the coset <span class="math" data-tex="\(a+b+H\)">\(a+b+H\)</span>, is a proper subset of it, and is contained in <span class="math" data-tex="\(A+B\)">\(A+B\)</span>. Let <span class="math" data-tex="\(H_i=\operatorname{St}(A_i+B_i)\)">\(H_i=\operatorname{St}(A_i+B_i)\)</span> and <span class="math" data-tex="\(C_i=C\sqcup(A_i+B_i)\)">\(C_i=C\sqcup(A_i+B_i)\)</span>. Then <span class="math" data-tex="\(H_i\)">\(H_i\)</span> is a proper subgroup of <span class="math" data-tex="\(H\)">\(H\)</span>, because a proper nonempty subset of one <span class="math" data-tex="\(H\)">\(H\)</span>-coset is not <span class="math" data-tex="\(H\)">\(H\)</span>-periodic. Also <span class="math" data-tex="\(\operatorname{St}(C_i)=H_i\)">\(\operatorname{St}(C_i)=H_i\)</span>: an element stabilizing <span class="math" data-tex="\(C_i\)">\(C_i\)</span> must map the only partially filled <span class="math" data-tex="\(H\)">\(H\)</span>-coset to itself, so it lies in <span class="math" data-tex="\(H\)">\(H\)</span> and stabilizes <span class="math" data-tex="\(A_i+B_i\)">\(A_i+B_i\)</span>; conversely <span class="math" data-tex="\(H_i\subseteq H\)">\(H_i\subseteq H\)</span> stabilizes <span class="math" data-tex="\(C\)">\(C\)</span>.</p>
+<p><em>Inequality (A).</em> Let <span class="math" data-tex="\(i\)">\(i\)</span> be such that <span class="math" data-tex="\(A_i,B_i\ne\emptyset\)">\(A_i,B_i\ne\emptyset\)</span>. By the minimality of <span class="math" data-tex="\(|H|\)">\(|H|\)</span>, <span class="math" data-tex="\(C_i\)">\(C_i\)</span> is not a convergent. Subtracting this from the convergent inequality for <span class="math" data-tex="\(C\)">\(C\)</span>, and using <span class="math" data-tex="\(|C_i|=|C|+|A_i+B_i|\)">\(|C_i|=|C|+|A_i+B_i|\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;|(A\cup B)+H|-|(A\cup B)+H_i|\\
+&amp;\quad &lt;|H|-|A_i+B_i|-|H_i|\\
+&amp;\quad \le|H|-|A_i+H_i|-|B_i\\
+&amp;\qquad +H_i|,\quad(A)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;|(A\cup B)+H|-|(A\cup B)+H_i|\\
+&amp;\quad &lt;|H|-|A_i+B_i|-|H_i|\\
+&amp;\quad \le|H|-|A_i+H_i|-|B_i\\
+&amp;\qquad +H_i|,\quad(A)
+\end{aligned}
+\]</span>
+where the last step is the induction hypothesis for <span class="math" data-tex="\(A_i,B_i\)">\(A_i,B_i\)</span>, applicable since <span class="math" data-tex="\(A_i+B_i\subsetneq A+B\)">\(A_i+B_i\subsetneq A+B\)</span> (it misses <span class="math" data-tex="\(C\)">\(C\)</span>) and <span class="math" data-tex="\(A_i\subseteq A\)">\(A_i\subseteq A\)</span>.</p>
+<p><em>The case <span class="math" data-tex="\(B_2=\emptyset\)">\(B_2=\emptyset\)</span>.</em> The set <span class="math" data-tex="\(((A\cup B)+H_1)\cap(a+H)\)">\(((A\cup B)+H_1)\cap(a+H)\)</span> equals <span class="math" data-tex="\((A_1\cup B_2)+H_1=A_1+H_1\)">\((A_1\cup B_2)+H_1=A_1+H_1\)</span>, and outside <span class="math" data-tex="\(a+H\)">\(a+H\)</span>, <span class="math" data-tex="\((A\cup B)+H_1\subseteq(A\cup B)+H\)">\((A\cup B)+H_1\subseteq(A\cup B)+H\)</span>. Since <span class="math" data-tex="\(a+H\subseteq(A\cup B)+H\)">\(a+H\subseteq(A\cup B)+H\)</span>, the left side of (A) for <span class="math" data-tex="\(i=1\)">\(i=1\)</span> is at least <span class="math" data-tex="\(|H|-|A_1+H_1|\)">\(|H|-|A_1+H_1|\)</span>, contradicting (A). Symmetrically, using the coset <span class="math" data-tex="\(b+H\)">\(b+H\)</span> and <span class="math" data-tex="\(((A\cup B)+H_1)\cap(b+H)=B_1+H_1\)">\(((A\cup B)+H_1)\cap(b+H)=B_1+H_1\)</span>, the case <span class="math" data-tex="\(A_2=\emptyset\)">\(A_2=\emptyset\)</span> is impossible. So (A) holds for <span class="math" data-tex="\(i=1,2\)">\(i=1,2\)</span>.</p>
+<p><em>The case <span class="math" data-tex="\(a+H=b+H\)">\(a+H=b+H\)</span>.</em> Then <span class="math" data-tex="\(A_1=A_2\)">\(A_1=A_2\)</span>, <span class="math" data-tex="\(B_1=B_2\)">\(B_1=B_2\)</span>, and the left side of (A) is at least <span class="math" data-tex="\(|H|-|(A_1\cup B_1)+H_1|\)">\(|H|-|(A_1\cup B_1)+H_1|\)</span><span class="math" data-tex="\(\ge|H|-|A_1+H_1|-|B_1+H_1|\)">\(\ge|H|-|A_1+H_1|-|B_1+H_1|\)</span>, again contradicting (A). So <span class="math" data-tex="\(a+H\ne b+H\)">\(a+H\ne b+H\)</span>.</p>
+<p><em>Inequality (B).</em> The left side of (A) is nonnegative, and every term on its right side is a multiple of <span class="math" data-tex="\(|H_i|\)">\(|H_i|\)</span>, because <span class="math" data-tex="\(H_i\le H\)">\(H_i\le H\)</span> and the sets are <span class="math" data-tex="\(H_i\)">\(H_i\)</span>-periodic. So the right side of (A) is at least <span class="math" data-tex="\(|H_i|\)">\(|H_i|\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|H|&amp;\ge|A_i+H_i|+|B_i+H_i|\\
+&amp;\quad +|H_i|\\
+&amp;\ge|A_i|+|B_i|+|H_i|.\quad(B)
+\end{aligned}
+\]">\[
+\begin{aligned}
+|H|&amp;\ge|A_i+H_i|+|B_i+H_i|\\
+&amp;\quad +|H_i|\\
+&amp;\ge|A_i|+|B_i|+|H_i|.\quad(B)
+\end{aligned}
+\]</span></p>
+<p><em>Inequality (C).</em> Let <span class="math" data-tex="\(S=(a+H)\setminus(A_1\cup B_2)\)">\(S=(a+H)\setminus(A_1\cup B_2)\)</span> and <span class="math" data-tex="\(T=(b+H)\setminus(A_2\cup B_1)\)">\(T=(b+H)\setminus(A_2\cup B_1)\)</span>; they are disjoint, lie in <span class="math" data-tex="\((A\cup B)+H\)">\((A\cup B)+H\)</span>, and miss <span class="math" data-tex="\(A\cup B\)">\(A\cup B\)</span>. So <span class="math" data-tex="\(|(A\cup B)+H|\ge|A\cup B|+|S|+|T|\)">\(|(A\cup B)+H|\ge|A\cup B|+|S|+|T|\)</span>. The set <span class="math" data-tex="\(A+B\)">\(A+B\)</span> has stabilizer <span class="math" data-tex="\(\{0\}\)">\(\{0\}\)</span>, of order less than <span class="math" data-tex="\(|H|\)">\(|H|\)</span>, so it is not a convergent: <span class="math" data-tex="\(|A+B|+1&lt;|A\cap B|+|A\cup B|\)">\(|A+B|+1&lt;|A\cap B|+|A\cup B|\)</span>. Using the convergent inequality for <span class="math" data-tex="\(C\)">\(C\)</span>, <span class="math" data-tex="\(|C|\le|A+B|-|A_i+B_i|\)">\(|C|\le|A+B|-|A_i+B_i|\)</span>, and the induction hypothesis for <span class="math" data-tex="\(A_i,B_i\)">\(A_i,B_i\)</span>,
+[
+\begin{aligned}
+|H|&amp;\ge|(A\cup B)+H|+|A\cap B|\
+&amp;\quad -|C|
+\ge|S|+|T|+\bigl(|A\
+&amp;\quad \cup B|+|A\cap B|-|A+B|\bigr)\
+&amp;\quad +|A_i+B_i|</p>
+<blockquote>
+<p>|S|+|T|\
+&amp;\quad +|A_i|+|B_i|-|H_i|.\quad(C)
+\end{aligned}
+]</p>
+</blockquote>
+<p><em>Conclusion.</em> Adding (B) and (C) for <span class="math" data-tex="\(i=1\)">\(i=1\)</span> and <span class="math" data-tex="\(i=2\)">\(i=2\)</span> and halving gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+2|H|&amp;&gt;|A_1|+|B_2|+|S|+|A_2|\\
+&amp;\quad +|B_1|+|T|.
+\end{aligned}
+\]">\[
+\begin{aligned}
+2|H|&amp;&gt;|A_1|+|B_2|+|S|+|A_2|\\
+&amp;\quad +|B_1|+|T|.
+\end{aligned}
+\]</span>
+But <span class="math" data-tex="\(a+H=S\cup A_1\cup B_2\)">\(a+H=S\cup A_1\cup B_2\)</span> and <span class="math" data-tex="\(b+H=T\cup A_2\cup B_1\)">\(b+H=T\cup A_2\cup B_1\)</span>, so <span class="math" data-tex="\(2|H|\)">\(2|H|\)</span> is at most the right side. This contradiction proves the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.2.</strong> Let <span class="math" data-tex="\(U\subseteq G\)">\(U\subseteq G\)</span> be finite and nonempty, <span class="math" data-tex="\(r\ge1\)">\(r\ge1\)</span>, and <span class="math" data-tex="\(H=\operatorname{St}(rU)\)">\(H=\operatorname{St}(rU)\)</span>, where <span class="math" data-tex="\(rU=U+\cdots+U\)">\(rU=U+\cdots+U\)</span> (<span class="math" data-tex="\(r\)">\(r\)</span> terms). Then <span class="math" data-tex="\(|rU|\ge r|U+H|-(r-1)|H|\)">\(|rU|\ge r|U+H|-(r-1)|H|\)</span>.</p>
+<p><em>Proof.</em> In <span class="math" data-tex="\(G/H\)">\(G/H\)</span> the image <span class="math" data-tex="\(\overline U\)">\(\overline U\)</span> satisfies <span class="math" data-tex="\(\operatorname{St}(r\overline U)=\{0\}\)">\(\operatorname{St}(r\overline U)=\{0\}\)</span>, as in the first step above. For <span class="math" data-tex="\(j&lt;r\)">\(j&lt;r\)</span>, <span class="math" data-tex="\(\operatorname{St}((j+1)\overline U)\subseteq\operatorname{St}(r\overline U)\)">\(\operatorname{St}((j+1)\overline U)\subseteq\operatorname{St}(r\overline U)\)</span>, so Theorem 3.1 gives <span class="math" data-tex="\(|(j+1)\overline U|\ge|j\overline U|+|\overline U|-1\)">\(|(j+1)\overline U|\ge|j\overline U|+|\overline U|-1\)</span>, and by induction <span class="math" data-tex="\(|r\overline U|\ge r|\overline U|-(r-1)\)">\(|r\overline U|\ge r|\overline U|-(r-1)\)</span>. Multiply by <span class="math" data-tex="\(|H|\)">\(|H|\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.3</strong> (covering by bounded sumsets). Let <span class="math" data-tex="\(G\)">\(G\)</span> be a finite abelian group and <span class="math" data-tex="\(U\subseteq G\)">\(U\subseteq G\)</span> a generating set with <span class="math" data-tex="\(0\in U\)">\(0\in U\)</span> and <span class="math" data-tex="\(|U|\ge\rho|G|\)">\(|U|\ge\rho|G|\)</span>. If <span class="math" data-tex="\(r\ge2/\rho\)">\(r\ge2/\rho\)</span>, then <span class="math" data-tex="\(rU=G\)">\(rU=G\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(H=\operatorname{St}(rU)\)">\(H=\operatorname{St}(rU)\)</span> and suppose <span class="math" data-tex="\(H\ne G\)">\(H\ne G\)</span>. Since <span class="math" data-tex="\(U\)">\(U\)</span> generates <span class="math" data-tex="\(G\)">\(G\)</span> and <span class="math" data-tex="\(0\in U\)">\(0\in U\)</span>, <span class="math" data-tex="\(U\)">\(U\)</span> is not contained in one <span class="math" data-tex="\(H\)">\(H\)</span>-coset, so <span class="math" data-tex="\(|U+H|\ge2|H|\)">\(|U+H|\ge2|H|\)</span>. By Corollary 3.2, <span class="math" data-tex="\(|rU|\)">\(|rU|\)</span><span class="math" data-tex="\(\ge r|U+H|-(r-1)|U+H|/2\)">\(\ge r|U+H|-(r-1)|U+H|/2\)</span><span class="math" data-tex="\(=\frac{r+1}2|U+H|\ge\frac{r+1}2\rho|G|&gt;|G|\)">\(=\frac{r+1}2|U+H|\ge\frac{r+1}2\rho|G|&gt;|G|\)</span>, which is impossible. So <span class="math" data-tex="\(H=G\)">\(H=G\)</span>, and the nonempty <span class="math" data-tex="\(G\)">\(G\)</span>-periodic set <span class="math" data-tex="\(rU\)">\(rU\)</span> is <span class="math" data-tex="\(G\)">\(G\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-realizing-prescribed-sizes">4. Realizing prescribed sizes</h2>
+<p><strong>Lemma 4.1.</strong> Let <span class="math" data-tex="\(c&#x27;&gt;0\)">\(c&#x27;&gt;0\)</span>. There are <span class="math" data-tex="\(r_0\)">\(r_0\)</span> and <span class="math" data-tex="\(C_g\)">\(C_g\)</span>, depending only on <span class="math" data-tex="\(c&#x27;\)">\(c&#x27;\)</span>, with the following property. Let <span class="math" data-tex="\(b\)">\(b\)</span> be large and <span class="math" data-tex="\(I\subseteq\mathbb Z\cap[b,eb]\)">\(I\subseteq\mathbb Z\cap[b,eb]\)</span> with <span class="math" data-tex="\(|I|\ge c&#x27;b\)">\(|I|\ge c&#x27;b\)</span>. Put <span class="math" data-tex="\(h_-=\min I\)">\(h_-=\min I\)</span>, <span class="math" data-tex="\(h_+=\max I\)">\(h_+=\max I\)</span>, <span class="math" data-tex="\(s=h_+-h_-\)">\(s=h_+-h_-\)</span> and <span class="math" data-tex="\(g=\gcd(I-h_-)\)">\(g=\gcd(I-h_-)\)</span>. Then <span class="math" data-tex="\(s\ge c&#x27;b/2\)">\(s\ge c&#x27;b/2\)</span>, <span class="math" data-tex="\(g\le C_g\)">\(g\le C_g\)</span>, and for every integer <span class="math" data-tex="\(n\ge2r_0\)">\(n\ge2r_0\)</span>, every integer <span class="math" data-tex="\(y\equiv nh_-\pmod g\)">\(y\equiv nh_-\pmod g\)</span> with
+<span class="math math-display" data-tex="\[
+nh_-+r_0s\le y\le nh_-+(n-r_0)s
+\]">\[
+nh_-+r_0s\le y\le nh_-+(n-r_0)s
+\]</span>
+is the sum of an ordered list of <span class="math" data-tex="\(n\)">\(n\)</span> elements of <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<p><em>Proof.</em> Since <span class="math" data-tex="\(I-h_-\subseteq g\mathbb Z\cap[0,s]\)">\(I-h_-\subseteq g\mathbb Z\cap[0,s]\)</span>, <span class="math" data-tex="\(c&#x27;b\le|I|\le s/g+1\)">\(c&#x27;b\le|I|\le s/g+1\)</span>, which gives both bounds. Put <span class="math" data-tex="\(N&#x27;=s/g\)">\(N&#x27;=s/g\)</span> and let <span class="math" data-tex="\(\mathcal U\subseteq\mathbb Z/N&#x27;\)">\(\mathcal U\subseteq\mathbb Z/N&#x27;\)</span> be the image of <span class="math" data-tex="\((I-h_-)/g\)">\((I-h_-)/g\)</span>. It contains <span class="math" data-tex="\(0\)">\(0\)</span>; it generates <span class="math" data-tex="\(\mathbb Z/N&#x27;\)">\(\mathbb Z/N&#x27;\)</span>, because the integers <span class="math" data-tex="\((I-h_-)/g\)">\((I-h_-)/g\)</span> have greatest common divisor <span class="math" data-tex="\(1\)">\(1\)</span>; and <span class="math" data-tex="\(|\mathcal U|\ge|I|-1\ge\rho N&#x27;\)">\(|\mathcal U|\ge|I|-1\ge\rho N&#x27;\)</span> with <span class="math" data-tex="\(\rho=c&#x27;/(2e)\)">\(\rho=c&#x27;/(2e)\)</span>. By Corollary 3.3, <span class="math" data-tex="\(r_0\mathcal U=\mathbb Z/N&#x27;\)">\(r_0\mathcal U=\mathbb Z/N&#x27;\)</span> for <span class="math" data-tex="\(r_0=\lceil2/\rho\rceil\)">\(r_0=\lceil2/\rho\rceil\)</span>.</p>
+<p>Let <span class="math" data-tex="\(y\)">\(y\)</span> be as stated and <span class="math" data-tex="\(Y=(y-nh_-)/g\in[r_0N&#x27;,(n-r_0)N&#x27;]\)">\(Y=(y-nh_-)/g\in[r_0N&#x27;,(n-r_0)N&#x27;]\)</span>. Choose <span class="math" data-tex="\(e_1,\dots,e_{r_0}\in(I-h_-)/g\)">\(e_1,\dots,e_{r_0}\in(I-h_-)/g\)</span> with <span class="math" data-tex="\(\sum e_i\equiv Y\pmod{N&#x27;}\)">\(\sum e_i\equiv Y\pmod{N&#x27;}\)</span>. Then <span class="math" data-tex="\(0\le\sum e_i\le r_0N&#x27;\)">\(0\le\sum e_i\le r_0N&#x27;\)</span>, so <span class="math" data-tex="\(Y-\sum e_i=jN&#x27;\)">\(Y-\sum e_i=jN&#x27;\)</span> with <span class="math" data-tex="\(0\le j\le n-r_0\)">\(0\le j\le n-r_0\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+y&amp;=nh_-+g\sum_{i=1}^{r_0}e_i+j\,s\\
+&amp;\quad +(n-r_0-j)\cdot0
+\end{aligned}
+\]">\[
+\begin{aligned}
+y&amp;=nh_-+g\sum_{i=1}^{r_0}e_i+j\,s\\
+&amp;\quad +(n-r_0-j)\cdot0
+\end{aligned}
+\]</span>
+is the sum of the <span class="math" data-tex="\(n\)">\(n\)</span> elements <span class="math" data-tex="\(h_-+ge_i\)">\(h_-+ge_i\)</span> (<span class="math" data-tex="\(i\le r_0\)">\(i\le r_0\)</span>), <span class="math" data-tex="\(j\)">\(j\)</span> copies of <span class="math" data-tex="\(h_+\)">\(h_+\)</span>, and <span class="math" data-tex="\(n-r_0-j\)">\(n-r_0-j\)</span> copies of <span class="math" data-tex="\(h_-\)">\(h_-\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-gaps-targets-and-the-selected-lists">5. Gaps, targets and the selected lists</h2>
+<p><strong>Gaps and frequency bounds.</strong> Define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Delta_0=(B_D+20\log z)\,m,\\
+\begin{aligned}
+\Delta_j&amp;=2^{j-1}\Delta_0\\
+&amp;\quad +4^j\sqrt m\quad(1\le j\le k),
+\end{aligned}
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Delta_0=(B_D+20\log z)\,m,\\
+\begin{aligned}
+\Delta_j&amp;=2^{j-1}\Delta_0\\
+&amp;\quad +4^j\sqrt m\quad(1\le j\le k),
+\end{aligned}
+\end{gathered}
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E_j=2^j\Delta_0+2\cdot4^j\sqrt m,\\
+V_j=e^{E_j}\quad(0\le j\le k).\quad(5.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+E_j=2^j\Delta_0+2\cdot4^j\sqrt m,\\
+V_j=e^{E_j}\quad(0\le j\le k).\quad(5.1)
+\end{gathered}
+\]</span>
+Then <span class="math" data-tex="\(E_{j-1}+\Delta_j=E_j-2\cdot4^{j-1}\sqrt m\)">\(E_{j-1}+\Delta_j=E_j-2\cdot4^{j-1}\sqrt m\)</span>, a margin used in Lesson 8.</p>
+<p><strong>Anchors.</strong> For each typical endpoint in (2.2) choose, for every <span class="math" data-tex="\(j=1,\dots,k\)">\(j=1,\dots,k\)</span>, a good cell of the small-anchor shell and a good cell of the top shell (Lemma 2.3); the primes drawn from them are the <em>small anchor</em> and the <em>big anchor</em> of step <span class="math" data-tex="\(j\)">\(j\)</span>. Let <span class="math" data-tex="\(a_j\)">\(a_j\)</span> be the sum of the two cell indices. Since the small-anchor shell lies far below the top shell, <span class="math" data-tex="\(a_j\le4\tau\)">\(a_j\le4\tau\)</span>.</p>
+<p><strong>Targets.</strong> The transfers of Lesson 8 remove, at step <span class="math" data-tex="\(j\)">\(j\)</span>, a group <span class="math" data-tex="\(K_j\)">\(K_j\)</span> of primes (a <em>pivot group</em>) of logarithmic size <span class="math" data-tex="\(T_j\)">\(T_j\)</span>; a <em>filler</em> group of size <span class="math" data-tex="\(T_F\)">\(T_F\)</span> completes the list. At step <span class="math" data-tex="\(j\)">\(j\)</span> the part to be copied consists of <span class="math" data-tex="\(2^{j-1}\)">\(2^{j-1}\)</span> copies of the word, one group of each later pivot type, and the two anchors of step <span class="math" data-tex="\(j\)">\(j\)</span>, and its logarithmic size must exceed <span class="math" data-tex="\(T_j\)">\(T_j\)</span> by <span class="math" data-tex="\(\Delta_j\)">\(\Delta_j\)</span>. The full list, counted in a positive and a conjugate copy, must have logarithmic size <span class="math" data-tex="\(\log X+\Delta_0\)">\(\log X+\Delta_0\)</span>. This forces the backward definitions
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+T_j&amp;=2^{j-1}J+\sum_{l&gt;j}T_l+a_j\\
+&amp;\quad -\Delta_j,
+\end{aligned}\\
+\begin{aligned}
+T_F&amp;=\frac{\log X+\Delta_0}2-J\\
+&amp;\quad -\sum_{j=1}^k(T_j+a_j).
+\end{aligned}\quad(5.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+T_j&amp;=2^{j-1}J+\sum_{l&gt;j}T_l+a_j\\
+&amp;\quad -\Delta_j,
+\end{aligned}\\
+\begin{aligned}
+T_F&amp;=\frac{\log X+\Delta_0}2-J\\
+&amp;\quad -\sum_{j=1}^k(T_j+a_j).
+\end{aligned}\quad(5.2)
+\end{gathered}
+\]</span></p>
+<p><strong>Lemma 5.1.</strong> For large <span class="math" data-tex="\(L\)">\(L\)</span>, all <span class="math" data-tex="\(T_j\)">\(T_j\)</span> and <span class="math" data-tex="\(T_F\)">\(T_F\)</span> are positive, and <span class="math" data-tex="\(c_*2^k\tau\le T_j,T_F\le600\cdot4^k\tau\)">\(c_*2^k\tau\le T_j,T_F\le600\cdot4^k\tau\)</span> with an absolute <span class="math" data-tex="\(c_*&gt;0\)">\(c_*&gt;0\)</span>.</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(c_j=2^{j-1}J+a_j-\Delta_j\)">\(c_j=2^{j-1}J+a_j-\Delta_j\)</span>. Since <span class="math" data-tex="\(\Delta_j=O_k(m)=O_k(L)\)">\(\Delta_j=O_k(m)=O_k(L)\)</span> and <span class="math" data-tex="\(\tau\ge e^{\alpha L}\)">\(\tau\ge e^{\alpha L}\)</span>, <span class="math" data-tex="\(c_j\ge2^{j-1}(1-o(1))\tau&gt;0\)">\(c_j\ge2^{j-1}(1-o(1))\tau&gt;0\)</span>. The recursion gives <span class="math" data-tex="\(T_j=c_j+\sum_{l&gt;j}T_l\ge c_k\)">\(T_j=c_j+\sum_{l&gt;j}T_l\ge c_k\)</span><span class="math" data-tex="\(\ge2^{k-1}(1-o(1))\tau\)">\(\ge2^{k-1}(1-o(1))\tau\)</span>, and <span class="math" data-tex="\(\sum_jT_j=\sum_j2^{j-1}c_j\)">\(\sum_jT_j=\sum_j2^{j-1}c_j\)</span><span class="math" data-tex="\(\le\frac{4^k-1}3J+2^k\cdot4\tau\le2\cdot4^k\tau\)">\(\le\frac{4^k-1}3J+2^k\cdot4\tau\le2\cdot4^k\tau\)</span>, using <span class="math" data-tex="\(J\le4\tau\)">\(J\le4\tau\)</span>. Then <span class="math" data-tex="\(T_F\ge500\cdot4^k\tau-4\tau-2\cdot4^k\tau-4k\tau&gt;0\)">\(T_F\ge500\cdot4^k\tau-4\tau-2\cdot4^k\tau-4k\tau&gt;0\)</span>, and <span class="math" data-tex="\(T_F\le\frac12(\log X+\Delta_0)\le501\cdot4^k\tau\)">\(T_F\le\frac12(\log X+\Delta_0)\le501\cdot4^k\tau\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lists of cells.</strong> Let <span class="math" data-tex="\(T\)">\(T\)</span> be one of the targets. The interval of levels <span class="math" data-tex="\([\log T-2\epsilon k,\log T-\epsilon k]\)">\([\log T-2\epsilon k,\log T-\epsilon k]\)</span> lies in the block <span class="math" data-tex="\([U,U+5k]\)">\([U,U+5k]\)</span> when <span class="math" data-tex="\(K_0\)">\(K_0\)</span> is large, because <span class="math" data-tex="\(\log T-u_0\in[k\log2\)">\(\log T-u_0\in[k\log2\)</span><span class="math" data-tex="\(+\log c_*,\,k\log4+\log600]\)">\(+\log c_*,\,k\log4+\log600]\)</span> and <span class="math" data-tex="\(u_0\le U+2\epsilon k\)">\(u_0\le U+2\epsilon k\)</span>. So it contains a rich grid shell, whose primes satisfy <span class="math" data-tex="\(\log p\le Te^{-\epsilon k}&lt;(\log X)/4\)">\(\log p\le Te^{-\epsilon k}&lt;(\log X)/4\)</span>; this shell was tested in Lemma 2.2. At each typical endpoint, apply Lemma 4.1 to its good cell indices <span class="math" data-tex="\(I\subseteq[b,eb]\)">\(I\subseteq[b,eb]\)</span>, with <span class="math" data-tex="\(n\)">\(n\)</span> the integer nearest to <span class="math" data-tex="\(T/\frac{h_-+h_+}2\)">\(T/\frac{h_-+h_+}2\)</span>. Since <span class="math" data-tex="\(b\in[Te^{-2\epsilon k},Te^{-\epsilon k}]\)">\(b\in[Te^{-2\epsilon k},Te^{-\epsilon k}]\)</span>, <span class="math" data-tex="\(c&#x27;&#x27;e^{\epsilon k}\le n\le Ce^{2\epsilon k}\)">\(c&#x27;&#x27;e^{\epsilon k}\le n\le Ce^{2\epsilon k}\)</span>. The quantity <span class="math" data-tex="\(T-nh_-\)">\(T-nh_-\)</span> differs from <span class="math" data-tex="\(ns/2\)">\(ns/2\)</span> by at most <span class="math" data-tex="\(eb\le(2e/c&#x27;)s\)">\(eb\le(2e/c&#x27;)s\)</span>, so it lies in <span class="math" data-tex="\([r_0s,(n-r_0)s]\)">\([r_0s,(n-r_0)s]\)</span> once <span class="math" data-tex="\(K_0\)">\(K_0\)</span> is large. Rounding <span class="math" data-tex="\(T\)">\(T\)</span> to the class of <span class="math" data-tex="\(nh_-\)">\(nh_-\)</span> modulo <span class="math" data-tex="\(g\)">\(g\)</span> costs <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span>. So there is an ordered list of <span class="math" data-tex="\(n\)">\(n\)</span> good cell indices with sum <span class="math" data-tex="\(T+O(1)\)">\(T+O(1)\)</span>.</p>
+<p>Choose such lists for every pivot target <span class="math" data-tex="\(T_j\)">\(T_j\)</span> and for <span class="math" data-tex="\(T_F\)">\(T_F\)</span>. The total number <span class="math" data-tex="\(n_c\)">\(n_c\)</span> of cell labels, anchors included, satisfies <span class="math" data-tex="\(n_c\le n_{\max}\ll ke^{2\epsilon k}\)">\(n_c\le n_{\max}\ll ke^{2\epsilon k}\)</span>. Every cell index has at most <span class="math" data-tex="\(e^{CL}\)">\(e^{CL}\)</span> possible values, so fixing all list lengths, all ordered lists and all anchor cells, by pigeonhole over the typical endpoints of (2.2), costs a factor at most <span class="math" data-tex="\(\exp(Cn_{\max}L+O_k(1))\)">\(\exp(Cn_{\max}L+O_k(1))\)</span>. Since <span class="math" data-tex="\(n_{\max}/z\ll ke^{-\epsilon k}\to0\)">\(n_{\max}/z\ll ke^{-\epsilon k}\to0\)</span>, this is <span class="math" data-tex="\(e^{o(m)}\)">\(e^{o(m)}\)</span> uniformly, with a constant independent of <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(B_D\)">\(B_D\)</span>. No further loss comes from the dependence of the targets on the endpoint: every rich shell that can occur was tested at every typical endpoint.</p>
+<h2 id="6-a-positive-statistic-and-the-first-amplitude">6. A positive statistic and the first amplitude</h2>
+<p>Let <span class="math" data-tex="\(\psi\)">\(\psi\)</span> be the weight of Section 3 of Lesson 3: a nonnegative even Schwartz function, bounded below on <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>, whose Fourier transform is smooth and supported in <span class="math" data-tex="\([-\frac14,\frac14]\)">\([-\frac14,\frac14]\)</span>. For a selected cell put <span class="math" data-tex="\(R_h(n)=\mathbb E_{p\in\mathcal E_h}f_p(n)\)">\(R_h(n)=\mathbb E_{p\in\mathcal E_h}f_p(n)\)</span>. The fixed endpoints give the statistic
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I_*&amp;=\sum_{n\in\mathbb Z}\psi(n/X)\,|G_J(n)|^2\\
+&amp;\quad \prod_h|R_h(n)|^2\ge\sqrt X\,e^{-Cm},\quad(6.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+I_*&amp;=\sum_{n\in\mathbb Z}\psi(n/X)\,|G_J(n)|^2\\
+&amp;\quad \prod_h|R_h(n)|^2\ge\sqrt X\,e^{-Cm},\quad(6.1)
+\end{aligned}
+\]</span>
+where the cells occur with their selected multiplicities. Indeed, at each of the <span class="math" data-tex="\(\sqrt Xe^{-Cm-o(m)}\)">\(\sqrt Xe^{-Cm-o(m)}\)</span> retained endpoints, <span class="math" data-tex="\(|G_J(a)|^2\ge e^{-2Cm}\)">\(|G_J(a)|^2\ge e^{-2Cm}\)</span> by (2.2) and <span class="math" data-tex="\(|R_h(a)|^2\ge(\delta/4)^2\)">\(|R_h(a)|^2\ge(\delta/4)^2\)</span> for every selected cell by Lemma 2.3, while <span class="math" data-tex="\((\delta/4)^{2n_c}=e^{-o(m)}\)">\((\delta/4)^{2n_c}=e^{-o(m)}\)</span>.</p>
+<p><strong>The expansion.</strong> Expand <span class="math" data-tex="\(|G_J(n)|^2\)">\(|G_J(n)|^2\)</span> and each <span class="math" data-tex="\(|R_h(n)|^2\)">\(|R_h(n)|^2\)</span> using an independent positive copy and an independent conjugate copy of every role. The formal product <span class="math" data-tex="\(M\)">\(M\)</span> of all prime labels, with multiplicity, satisfies on the bins
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\log M&amp;=2\Bigl(J+\sum_{j=1}^k(T_j+a_j)\\
+&amp;\quad +T_F\Bigr)+O_k(1)\\
+&amp;=\log X+\Delta_0+O_k(1).\quad(6.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\log M&amp;=2\Bigl(J+\sum_{j=1}^k(T_j+a_j)\\
+&amp;\quad +T_F\Bigr)+O_k(1)\\
+&amp;=\log X+\Delta_0+O_k(1).\quad(6.2)
+\end{aligned}
+\]</span></p>
+<p><strong>Repeated primes.</strong> Consider the terms in which some prime occurs more than once. As a function of <span class="math" data-tex="\(n\)">\(n\)</span>, such a term has period <span class="math" data-tex="\(Q\)">\(Q\)</span>, the product of its distinct primes, and <span class="math" data-tex="\(Q\le M/p_{\min}\)">\(Q\le M/p_{\min}\)</span><span class="math" data-tex="\(\le Xe^{\Delta_0+O_k(1)}/\exp(e^{\alpha L})\)">\(\le Xe^{\Delta_0+O_k(1)}/\exp(e^{\alpha L})\)</span><span class="math" data-tex="\(=o(X)\)">\(=o(X)\)</span>. Poisson summation, as in Lemma 3.1 of Lesson 3, shows that <span class="math" data-tex="\(\sum_n\psi(n/X)F(n)=X\widehat\psi(0)\,\mathbb E_{n\bmod Q}F(n)\)">\(\sum_n\psi(n/X)F(n)=X\widehat\psi(0)\,\mathbb E_{n\bmod Q}F(n)\)</span> for such a periodic <span class="math" data-tex="\(F\)">\(F\)</span>. By the Chinese remainder theorem the mean factors over the distinct primes, and it vanishes if some prime occurs exactly once, since <span class="math" data-tex="\(\mathbb E_xf_p(x)=0\)">\(\mathbb E_xf_p(x)=0\)</span> for a nonprincipal character. So only tuples in which every prime occurs at least twice remain, and each contributes at most <span class="math" data-tex="\(O(X)\)">\(O(X)\)</span> before its prior weight. A prescribed ordered tuple has prior weight at most <span class="math" data-tex="\(M^{-1}L^{-2m}\exp(Cm+O_k(1))\)">\(M^{-1}L^{-2m}\exp(Cm+O_k(1))\)</span>: the <span class="math" data-tex="\(2m\)">\(2m\)</span> bulk positions each have normalization <span class="math" data-tex="\(O(1/L)\)">\(O(1/L)\)</span>, the <span class="math" data-tex="\(2n_c\)">\(2n_c\)</span> cell positions cost at most <span class="math" data-tex="\(e^{Cn_cL}=e^{o(m)}\)">\(e^{Cn_cL}=e^{o(m)}\)</span>, and the top positions a bounded factor. Extract <span class="math" data-tex="\(M^{-1/2}\le X^{-1/2}e^{-\Delta_0/2+O_k(1)}\)">\(M^{-1/2}\le X^{-1/2}e^{-\Delta_0/2+O_k(1)}\)</span> using (6.2). There are <span class="math" data-tex="\(b_*=2m+O_k(1)\)">\(b_*=2m+O_k(1)\)</span> positions; if the tuple has <span class="math" data-tex="\(d\le b_*/2\)">\(d\le b_*/2\)</span> distinct primes, the remaining factor <span class="math" data-tex="\(M^{-1/2}\)">\(M^{-1/2}\)</span> is at most the product of <span class="math" data-tex="\(1/p\)">\(1/p\)</span> over the distinct primes, and summing over the assignments of positions to <span class="math" data-tex="\(d\)">\(d\)</span> distinct primes gives at most
+<span class="math math-display" data-tex="\[
+\sum_{d\le b_*/2}\frac{d^{b_*}(CL)^d}{d!}\le b_*^{b_*}e^{CL},
+\]">\[
+\sum_{d\le b_*/2}\frac{d^{b_*}(CL)^d}{d!}\le b_*^{b_*}e^{CL},
+\]</span>
+since the union of all prime ranges has harmonic mass <span class="math" data-tex="\(O(L)\)">\(O(L)\)</span>. With <span class="math" data-tex="\(b_*\log b_*-2m\log L=2m\log z+o_k(m)\)">\(b_*\log b_*-2m\log L=2m\log z+o_k(m)\)</span>, the repeated-prime terms total at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sqrt X\exp\Bigl(-\frac{\Delta_0}2+(2\log z+C)m\\
+&amp;\qquad +o_k(m)\Bigr)\\
+&amp;\quad =\sqrt X\exp\Bigl(-\Bigl(\frac{B_D}2+8\log z\\
+&amp;\qquad -C\Bigr)m+o_k(m)\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sqrt X\exp\Bigl(-\frac{\Delta_0}2+(2\log z+C)m\\
+&amp;\qquad +o_k(m)\Bigr)\\
+&amp;\quad =\sqrt X\exp\Bigl(-\Bigl(\frac{B_D}2+8\log z\\
+&amp;\qquad -C\Bigr)m+o_k(m)\Bigr).
+\end{aligned}
+\]</span>
+For <span class="math" data-tex="\(B_D\)">\(B_D\)</span> large this is negligible against (6.1).</p>
+<p><strong>Proposition 6.1</strong> ([OpenAI-013, (4.4)]). Let <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span> be the sum of the terms of <span class="math" data-tex="\(I_*\)">\(I_*\)</span> with all prime labels distinct, divided by <span class="math" data-tex="\(\sqrt X\)">\(\sqrt X\)</span>. If <span class="math" data-tex="\(B_D\)">\(B_D\)</span> is large enough, then for large <span class="math" data-tex="\(L\)">\(L\)</span>
+<span class="math math-display" data-tex="\[
+|\eta_0|\ge e^{-B_0m},
+\tag{6.3}
+\]">\[
+|\eta_0|\ge e^{-B_0m},
+\tag{6.3}
+\]</span>
+where <span class="math" data-tex="\(B_0\)">\(B_0\)</span> does not depend on <span class="math" data-tex="\(B_D\)">\(B_D\)</span> or <span class="math" data-tex="\(k\)">\(k\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Lesson 8 rewrites <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span> by Poisson summation as a sum over a dual frequency, and transfers the lower bound (6.3) through <span class="math" data-tex="\(k\)">\(k\)</span> steps of Cauchy–Schwarz, each of which doubles the number of copies of the word.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> Show that Kneser's theorem implies the Cauchy–Davenport inequality: for nonempty <span class="math" data-tex="\(A,B\subseteq\mathbb Z/p\)">\(A,B\subseteq\mathbb Z/p\)</span> with <span class="math" data-tex="\(p\)">\(p\)</span> prime, <span class="math" data-tex="\(|A+B|\ge\min(p,|A|+|B|-1)\)">\(|A+B|\ge\min(p,|A|+|B|-1)\)</span>.</p>
+<p><strong>7.2.</strong> In <span class="math" data-tex="\(G=\mathbb Z/10\)">\(G=\mathbb Z/10\)</span>, let <span class="math" data-tex="\(U=\{0,2,4,6,8,5\}\)">\(U=\{0,2,4,6,8,5\}\)</span>. Compute <span class="math" data-tex="\(2U\)">\(2U\)</span> and its stabilizer, and verify Corollary 3.2 for <span class="math" data-tex="\(r=2\)">\(r=2\)</span>.</p>
+<p><strong>7.3.</strong> Show that the hypothesis &quot;<span class="math" data-tex="\(U\)">\(U\)</span> generates <span class="math" data-tex="\(G\)">\(G\)</span>&quot; cannot be dropped from Corollary 3.3, and that the bound <span class="math" data-tex="\(r\ge2/\rho\)">\(r\ge2/\rho\)</span> cannot be replaced by <span class="math" data-tex="\(r\ge c/\rho\)">\(r\ge c/\rho\)</span> with <span class="math" data-tex="\(c&lt;1\)">\(c&lt;1\)</span>.</p>
+<p><strong>7.4.</strong> In Lemma 4.1, let <span class="math" data-tex="\(I=\{b,b+2,b+4,\dots\}\cap[b,eb]\)">\(I=\{b,b+2,b+4,\dots\}\cap[b,eb]\)</span>. Compute <span class="math" data-tex="\(g\)">\(g\)</span>, and describe which integers are sums of <span class="math" data-tex="\(n\)">\(n\)</span> elements of <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> The stabilizer <span class="math" data-tex="\(K\)">\(K\)</span> of <span class="math" data-tex="\(A+B\)">\(A+B\)</span> is a subgroup of <span class="math" data-tex="\(\mathbb Z/p\)">\(\mathbb Z/p\)</span>, so <span class="math" data-tex="\(K=\{0\}\)">\(K=\{0\}\)</span> or <span class="math" data-tex="\(K=\mathbb Z/p\)">\(K=\mathbb Z/p\)</span>. In the second case <span class="math" data-tex="\(A+B=\mathbb Z/p\)">\(A+B=\mathbb Z/p\)</span>. In the first, Kneser gives <span class="math" data-tex="\(|A+B|\ge|A|+|B|-1\)">\(|A+B|\ge|A|+|B|-1\)</span>.</p>
+<p><strong>7.2.</strong> <span class="math" data-tex="\(U+U\)">\(U+U\)</span> contains all even residues (sums of two even elements), and <span class="math" data-tex="\(5+\{0,2,4,6,8\}\)">\(5+\{0,2,4,6,8\}\)</span> gives all odd residues; so <span class="math" data-tex="\(2U=\mathbb Z/10\)">\(2U=\mathbb Z/10\)</span>, with stabilizer <span class="math" data-tex="\(H=\mathbb Z/10\)">\(H=\mathbb Z/10\)</span>. Then <span class="math" data-tex="\(U+H=\mathbb Z/10\)">\(U+H=\mathbb Z/10\)</span> and the bound reads <span class="math" data-tex="\(10\ge2\cdot10-10=10\)">\(10\ge2\cdot10-10=10\)</span>.</p>
+<p><strong>7.3.</strong> If <span class="math" data-tex="\(U\)">\(U\)</span> lies in a proper subgroup <span class="math" data-tex="\(H\)">\(H\)</span>, so does every <span class="math" data-tex="\(rU\)">\(rU\)</span>. For the second point, take <span class="math" data-tex="\(U=\{0,1,\dots,t-1\}\subseteq\mathbb Z/N\)">\(U=\{0,1,\dots,t-1\}\subseteq\mathbb Z/N\)</span> with <span class="math" data-tex="\(t=\lceil\rho N\rceil\)">\(t=\lceil\rho N\rceil\)</span>: then <span class="math" data-tex="\(rU=\{0,\dots,r(t-1)\}\)">\(rU=\{0,\dots,r(t-1)\}\)</span>, which is all of <span class="math" data-tex="\(\mathbb Z/N\)">\(\mathbb Z/N\)</span> only if <span class="math" data-tex="\(r(t-1)\ge N-1\)">\(r(t-1)\ge N-1\)</span>, that is <span class="math" data-tex="\(r\gtrsim1/\rho\)">\(r\gtrsim1/\rho\)</span>. So <span class="math" data-tex="\(r\)">\(r\)</span> must be at least about <span class="math" data-tex="\(1/\rho\)">\(1/\rho\)</span>, and no bound <span class="math" data-tex="\(c/\rho\)">\(c/\rho\)</span> with <span class="math" data-tex="\(c&lt;1\)">\(c&lt;1\)</span> suffices for large <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p><strong>7.4.</strong> All elements of <span class="math" data-tex="\(I\)">\(I\)</span> have the parity of <span class="math" data-tex="\(b\)">\(b\)</span>, and differences <span class="math" data-tex="\(2\)">\(2\)</span> occur, so <span class="math" data-tex="\(g=2\)">\(g=2\)</span>. A sum of <span class="math" data-tex="\(n\)">\(n\)</span> elements of <span class="math" data-tex="\(I\)">\(I\)</span> is congruent to <span class="math" data-tex="\(nb\pmod2\)">\(nb\pmod2\)</span>, lies between <span class="math" data-tex="\(nb\)">\(nb\)</span> and <span class="math" data-tex="\(nh_+\)">\(nh_+\)</span>, and every such integer with the right parity occurs, since increasing one summand by <span class="math" data-tex="\(2\)">\(2\)</span> increases the sum by <span class="math" data-tex="\(2\)">\(2\)</span>. Lemma 4.1 asserts this for the middle range only, with <span class="math" data-tex="\(r_0\)">\(r_0\)</span> depending on the density.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-013] OpenAI, <em>The additive indecomposability of the primes</em>, OpenAI Math Release preprint, 24 September 2026, Section 4: Proposition 4.1, selection of scales and positive statistics, (4.2)–(4.4). https://github.com/openai/math/tree/main/preprints/the-additive-indecomposability-of-the-primes-September-24-2026</li>
+<li>[DeV] M. DeVos, <em>A short proof of Kneser's addition theorem for abelian groups</em>, in <em>Combinatorial and Additive Number Theory</em>, Springer (2014), numbering of arXiv:1303.3539v1: Theorem 1, a short proof of the theorem of M. Kneser (Math. Z. 58, 1953). https://arxiv.org/abs/1303.3539v1</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

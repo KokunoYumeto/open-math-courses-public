@@ -80,7 +80,7 @@ Here is the joint norm calculation in a transverse base-coordinate box \((t,y)\)
              \le C_{I,m}\|c_\epsilon\|_{H^m(Y)}^2 .
  \tag{LR7a}
 \]
-The constant depends on the fixed broken arc, its finite chart cover, \(I\) and \(m\). Smooth changes of base coordinates preserve the integer Sobolev norm by the full chain rule, bounded Jacobians and the proved coordinate Sobolev estimate [P1:B5](../20261004-free-intrinsic-graph/prerequisites/dyadic-endpoint.md). Summing the finite chart cover proves the joint bound used in (LR8). In particular no trace theorem is used to infer this norm, and no half-order loss is charged at successive sections.
+The constant depends on the fixed broken arc, its finite chart cover, \(I\) and \(m\). Smooth changes of base coordinates preserve the integer Sobolev norm by the full chain rule, bounded Jacobians and the proved coordinate Sobolev estimate P1:B5. Summing the finite chart cover proves the joint bound used in (LR8). In particular no trace theorem is used to infer this norm, and no half-order loss is charged at successive sections.
 
 All equation defects on the open ray are uniformly smooth. Indeed each complete factor, graph intertwining or partition defect is smoothing on the retained microlocal input. Applying its full kernel estimates to the bounded \(H^{s-1}\) data controls every output derivative. This is the operator form of the cancellation in BG21, including all normal jets. The same estimates give uniform smoothness after any test whose microsupport misses the retained ray.
 

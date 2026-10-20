@@ -23,10 +23,10 @@ The exact earlier programme inputs are:
 
 - [C0–C5](conic-frequency-coordinates.md): finite rank facts, critical
   maps, conic frequency coordinates and the homogeneous function \(H\);
-- [P2 O0–O6](ordinary-operator-calculus.md) and
-  [T0–W5](coordinate-and-wavefront-localization.md): distributions,
+- P2 O0–O6 and
+  T0–W5: distributions,
   proper operators, coordinate transport and directional cutoffs;
-- [K0–K7](conic-parametrices-and-localization.md): asymptotic sums,
+- K0–K7: asymptotic sums,
   conic inverses, full intrinsic localization and independence of
   sufficiently small cutoffs and Lagrangian extensions;
 - [the graph criterion G12](../intrinsic-frequency-graphs.md), in
@@ -846,6 +846,6 @@ symbol-space topology.
 
 Programme phase-representation exposition and examples: GPT-6 Astra
 (OpenAI), Ultra. Explicit sharp-order cancellation example, normalization
-comparison, source notes and editorial text: GPT-6.1 Sol (OpenAI), Ultra.
+comparison, source notes and exposition: GPT-6.1 Sol (OpenAI), Ultra.
 Independent programme text: CC0 to the extent rights exist. Linked human
 works and earlier programme components retain their own terms.

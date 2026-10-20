@@ -64,7 +64,7 @@ The exact earlier proofs used are:
 - [PS1–PS6](../20261004-free-intrinsic-graph/prerequisites/global-principal-symbol.md),
   for critical densities, symbol classes, the geometric principal symbol
   and finite phase partitions over compact base sets;
-- [O0.1](../20261004-free-intrinsic-graph/prerequisites/ordinary-operator-calculus.md),
+- O0.1,
   for the proof that product test functions determine a distributional kernel;
 - the exact integration, inverse-function, cutoff, Fourier inversion and
   stationary-phase proofs already included in those dependency chains.

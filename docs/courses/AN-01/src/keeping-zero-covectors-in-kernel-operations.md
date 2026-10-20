@@ -2,7 +2,7 @@
 
 *Written by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
-A kernel has two covector components. Either component may vanish although the pair is singular. Those zero components determine whether a kernel can act on a distribution, and even a zero intermediate covector can carry a singularity through a composition. We develop products, integration and kernel action with these cases included, and prove the convergence statement that makes extension from smooth inputs unique.
+A kernel has two covector components. Either component may vanish although the pair is singular. Those zero components determine whether a kernel can act on a distribution, and even a zero intermediate covector can carry a singularity through a composition. We develop products, integration and kernel action with these cases included, and prove the convergence statement that makes extension from smooth inputs unique. Transverse smooth densities have explicit restriction and product formulas, including the intersection angle factor and the support of each restricted weight.
 
 Pairings are complex-linear. Our Fourier transform is \(\widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx\), with inverse factor \((2\pi)^{-n}\). Open sets lie in Euclidean spaces. A closed conic subset of a nonzero cotangent space is closed *relative to that space*.
 
@@ -377,6 +377,141 @@ Both endpoint-axis sets (15) are empty. Thus every compact \(u\) satisfies the n
 
 If a factor space has dimension zero, its open set is empty or a point. Distributions on a point are scalars, their nonzero cotangent spaces are empty, tensoring is scalar multiplication and integration is the identity or multiplication by the scalar. The definitions and proofs above reduce to these statements. The formulas also hold for empty supports and the zero distribution.
 
+## The angle factor at a transverse intersection
+
+The following results concern ordinary smooth wavefront. A smooth density on a submanifold is regarded as a scalar distribution using the ambient Euclidean volume. On a submanifold itself we use its induced volume. This convention fixes the numerical factor in restriction.
+
+The finite Gram construction and its determinant identities are proved in the [algebra foundation](../prerequisites/U011-free-foundations/stable-prerequisite-bridges.md), Section 10.5. The complete real symmetric diagonalization proof is in [Point sources and complex Gaussian kernels](point-sources-and-complex-gaussian-kernels.md), Section 2.
+
+Let \(Y,Z\) be relatively closed smooth embedded submanifolds without boundary in an open \(X\subset\mathbb R^n\), of codimensions \(p,q\). Assume they are transverse:
+\(T_xY+T_xZ=\mathbb R^n\) for every \(x\in W=Y\cap Z\).
+Then \(W\) is a relatively closed embedded submanifold of dimension \(n-p-q\). Indeed, local defining functions for \(Y,Z\) have independent differentials together: a dependence would give a nonzero covector in both normal spaces. Apply the coordinate-completion lemma in [Regular level sets and transverse convolution](regular-level-sets-and-transverse-convolution.md), Lemma 0.2, to their joint map. It gives a local diffeomorphism
+\[
+ x=h(r,s,t),\qquad Y=\{r=0\},\quad Z=\{s=0\},\quad
+ W=\{r=s=0\},
+\]
+where \(r\in\mathbb R^p\), \(s\in\mathbb R^q\), and \(t\in\mathbb R^{n-p-q}\).
+
+**Lemma 8 (the intersection determinant).** At \(x\in W\), choose matrices \(N_Y,N_Z\) whose columns are orthonormal bases of the Euclidean normal spaces to \(Y,Z\). Put \(C=N_Y^TN_Z\). The positive quantity
+\[
+ \sigma(Y,Z;x)
+ =\sqrt{\det
+       \begin{pmatrix}I_p&C\\ C^T&I_q\end{pmatrix}}
+ =\sqrt{\det(I_q-C^TC)}
+ =\sqrt{\det(I_p-CC^T)}
+ \tag{R1}
+\]
+is independent of those bases, symmetric in \(Y,Z\), smooth on \(W\), and at most one. In the simultaneous coordinates above, write \(J_X=|\det Dh|\), and let \(J_Y,J_Z,J_W\) be the Gram volume factors of \(h(0,s,t)\), \(h(r,0,t)\), and \(h(0,0,t)\), respectively. At \(r=s=0\),
+\[
+                  \sigma=\frac{J_XJ_W}{J_YJ_Z}.
+ \tag{R2}
+\]
+Every empty determinant and every zero-dimensional volume factor equals one.
+
+**Proof.** Transversality says that the normal columns of \((N_Y,N_Z)\) are independent. Their Gram matrix in (R1) is therefore positive definite. Block elimination, first with \(I_p\) and then with \(I_q\), proves the two determinant equalities. Orthogonal changes in the separate frames conjugate that matrix by an orthogonal block matrix, leaving its determinant unchanged. Local smooth frames are obtained by Gram–Schmidt from the smooth independent defining differentials. Thus \(\sigma\) is smooth and positive. The positive matrix \(I_q-C^TC\) has eigenvalues in \((0,1]\): its quadratic form is \(|v|^2-|Cv|^2\), bounded above by \(|v|^2\). Real symmetric diagonalization gives \(0<\sigma\le1\).
+
+Here are the full coordinate factors in (R2). Set \(G=Dh^TDh\), and denote a principal submatrix by its coordinate block. Then \(J_X^2=\det G\), \(J_Y^2=\det G_{s,t}\), \(J_Z^2=\det G_{r,t}\), and \(J_W^2=\det G_t\). For any coordinate block \(A\) of a positive definite matrix,
+\[
+          \det (G^{-1})_A=\frac{\det G_{A^c}}{\det G}.
+ \tag{R3}
+\]
+To prove this identity, permute coordinates so that \(G=\begin{pmatrix}B&E\\E^T&D\end{pmatrix}\), with \(B\) indexed by \(A\). Multiplying by the triangular elimination matrices gives
+\(\det G=\det D\,\det(B-ED^{-1}E^T)\).
+Solving the same block equations gives
+\((G^{-1})_A=(B-ED^{-1}E^T)^{-1}\).
+This proves (R3); the empty-block cases follow directly.
+
+The rows of \(Dh^{-1}\) indexed by \(r\) span the normal covectors to \(Y\), and the rows indexed by \(s\) span those to \(Z\). Their joint Gram matrix is \((G^{-1})_{r,s}\). Orthonormalizing each group multiplies its Gram determinant by the reciprocal of the separate determinants. Consequently
+\[
+ \sigma^2
+ =\frac{\det(G^{-1})_{r,s}}
+        {\det(G^{-1})_r\,\det(G^{-1})_s}
+ =\frac{J_W^2/J_X^2}{(J_Y^2/J_X^2)(J_Z^2/J_X^2)}.
+\]
+Taking positive square roots proves (R2). The same argument covers \(p=0\), \(q=0\), and \(p+q=n\). \(\square\)
+
+## Restricting and multiplying smooth densities
+
+For a smooth complex function \(a\) on \(Y\), write \(a\,dS_Y\) for the ambient distribution \(\varphi\mapsto\int_Ya\varphi\,dS_Y\). Its exact wavefront is the normal bundle over \(\operatorname{supp}_Y a\), with zero removed, by [Cones and derivative-growth wavefronts](cones-and-derivative-growth-wavefronts.md), Theorem 9 and Corollary 10.
+
+**Theorem 9 (transverse density formulas).** Let \(a\in C^\infty(Y;\mathbb C)\), \(b\in C^\infty(Z;\mathbb C)\). The restriction of \(b\,dS_Z\) to \(Y\), and the product of the two ambient distributions, are defined by the wavefront constructions. With \(j_Y:Y\hookrightarrow X\),
+\[
+ \begin{aligned}
+ j_Y^*(b\,dS_Z)&=\frac{b|_W}{\sigma(Y,Z;\cdot)}\,dS_W
+                                      &&\text{as a distribution on }Y,\\
+ (a\,dS_Y)(b\,dS_Z)&=\frac{(a|_W)(b|_W)}{\sigma(Y,Z;\cdot)}\,dS_W
+                                      &&\text{as a distribution on }X.
+ \end{aligned}
+ \tag{R4}
+\]
+The right sides use the same induced measure on \(W\). Their supports and ordinary wavefronts are exactly
+\[
+ \begin{aligned}
+ \operatorname{supp}j_Y^*(b\,dS_Z)&=\operatorname{supp}_W(b|_W),\\
+ \operatorname{WF}_Y(j_Y^*(b\,dS_Z))
+   &=\{(x,\eta):x\in\operatorname{supp}_W(b|_W),\
+                 0\ne\eta\in T_x^*Y,\ \eta|_{T_xW}=0\},\\
+ \operatorname{supp}[(a\,dS_Y)(b\,dS_Z)]
+   &=\operatorname{supp}_W((a|_W)(b|_W)),\\
+ \operatorname{WF}_X((a\,dS_Y)(b\,dS_Z))
+   &=\{(x,\xi):x\in\operatorname{supp}_W((a|_W)(b|_W)),\
+                    \xi\ne0,\ \xi|_{T_xW}=0\}.
+ \end{aligned}
+ \tag{R5}
+\]
+In particular every nonzero normal sign occurs over those supports. The restriction of a weight can have smaller support than its ambient support intersected with \(W\).
+
+**Proof: existence and the meaning on \(Y\).** The singular covectors of \(b\,dS_Z\) lie in the normal bundle of \(Z\). Normal covectors of the inclusion \(j_Y\) annihilate \(T_xY\). The two normal spaces intersect only at zero by transversality, so the smooth pullback theorem applies. Likewise opposite nonzero normal covectors for the two densities would belong to both normal spaces. Theorem 4 therefore defines their product.
+
+Concretely, in a chart \(k:U\subset\mathbb R^{n-p}\to Y\), form \((j_Y\circ k)^*(b\,dS_Z)\), a scalar distribution on \(U\). Pair it with the test function times the chart volume \(J_Y\). On overlapping charts, Proposition 4a and the diffeomorphism test formula, including its inverse determinant, give the same pairing. Thus these chart definitions glue to a distribution on \(Y\) relative to its induced volume. This also explains the volume convention before Lemma 8.
+
+**Proof: the local calculation.** In the simultaneous chart, the scalar pullbacks of the two densities are
+\[
+ \begin{aligned}
+ h^*(a\,dS_Y)&=\alpha(s,t)\delta_0(r),
+ &\alpha(s,t)&=\frac{a(h(0,s,t))J_Y(s,t)}{J_X(0,s,t)},\\
+ h^*(b\,dS_Z)&=\beta(r,t)\delta_0(s),
+ &\beta(r,t)&=\frac{b(h(r,0,t))J_Z(r,t)}{J_X(r,0,t)}.
+ \end{aligned}
+ \tag{R6}
+\]
+These follow directly from the scalar pullback pairing
+\(\langle h^*u,\psi\rangle
+=\langle u,(\psi/|\det Dh|)\circ h^{-1}\rangle\)
+and the Gram measure formula. All factors are smooth and positive except for the freely chosen complex weights.
+
+Restriction to \(r=0\) of the second expression is \(\beta(0,t)\delta_0(s)\). One can check this with compact smooth normal mollifiers: \(\beta(r,t)\rho_\varepsilon(s)\) converges conically to the second expression by Lemma 3's Fourier estimate, fixed smooth multiplication and the projection formula. Its restriction converges to \(\beta(0,t)\delta_0(s)\) by the same estimate, or directly by the normalized integral of \(\rho_\varepsilon\). Pullback continuity identifies that limit with the defined restriction. All of these assertions are local; insert compact cutoffs equal to one on the test support before mollifying. Pairing on \(Y\) multiplies the result by \(J_Y(0,t)\). Relative to \(dS_W=J_W(t)\,dt\), the density is therefore
+\[
+                b\,\frac{J_ZJ_Y}{J_XJ_W}=\frac b\sigma .
+\]
+
+Similarly the product of the two expressions in (R6) is
+\(\alpha(0,t)\beta(0,t)\delta_0(r)\delta_0(s)\).
+For completeness, separate normal mollifiers in \(r,s\) converge conically to each factor; their product pairs by two successive normalized averages and converges to evaluation at \(r=s=0\). The product continuity in Theorem 4 gives precisely that product, including for zero-dimensional blocks. Diffeomorphism pullback commutes with the product by Proposition 4a: its invertible transpose cannot kill a nonzero sum, and the original factors have no opposite covectors.
+
+Returning from the scalar pullback to the ambient pairing multiplies by \(J_X(0,0,t)\). Dividing the resulting \(dt\) density by \(J_W\) gives
+\[
+ ab\,\frac{J_YJ_Z}{J_X^2}\frac{J_X}{J_W}
+                          =\frac{ab}{\sigma}.
+\]
+This proves both identities in (R4) locally and hence globally. Relative closedness supplies locally finite measures on compact test supports; no compactness of the entire submanifolds is assumed.
+
+Finally apply the full smooth-density wavefront formula to \(W\) in \(X\). For \(W\) in \(Y\), apply that formula in a chart of \(Y\); its metric volume differs from coordinate volume by a strictly positive smooth factor. Such a factor and its reciprocal preserve support and wavefront, and the diffeomorphism equality transports normal covectors. Since \(\sigma\) is strictly positive, the weights have exactly the supports stated in (R5), even at zeros or flat zeros that remain in those supports. This proves all the equalities. If \(W\) is empty, locality makes both distributions zero. \(\square\)
+
+On a smooth manifold, fix a positive smooth ambient density \(\mu_X\), and a positive smooth density \(\mu_Y\) on \(Y\) when taking restriction. A submanifold density \(\nu_Z\) defines the scalar distribution \(\nu_Z/\mu_X\): on a compactly supported test density \(f\mu_X\), its value is \(\int_Z f\,\nu_Z\). In a coordinate chart write \(\mu_X=m\,dx\), \(\mu_Y=n\,dS_Y\), \(\nu_Y=a\,dS_Y\), and \(\nu_Z=b\,dS_Z\), where \(m,n>0\). The corresponding scalar coefficients in (R4) are \(a/m\) and \(b/m\). Therefore the resulting distribution densities are
+\[
+ \mu_Y j_Y^*(\nu_Z/\mu_X)
+       =\frac{n\,b}{m\,\sigma}\,dS_W,\qquad
+ \mu_X(\nu_Y/\mu_X)(\nu_Z/\mu_X)
+       =\frac{ab}{m\,\sigma}\,dS_W.
+\]
+All coefficients on the right are evaluated on \(W\). These formulas follow from (R4) by multiplying the restricted scalar distribution by \(n\), and the ambient scalar product by \(m\), respectively. On overlaps, the proved pullback composition law, product covariance and scalar coordinate formula identify these distributions; their density expressions hence transform by the absolute Jacobian on \(W\) and glue. This proves the smooth-density assertion on a manifold with the specified background densities. Changing those backgrounds changes the numerical factors as displayed. The angle factor \(\sigma\) refers to the Euclidean measures of the chosen chart; it is not a metric-independent normalization.
+
+![A nonorthogonal line intersection, a curved intersection inside a plane, and the reciprocal angle factor.](../figures/transverse-density-factors.png)
+
+*Left: two lines at angle \(\pi/6\) have \(\sigma=1/2\), so their unit arclength densities multiply to \(2\delta_0\), as in Exercise 11. Middle: the projection to the plane \(z=0\) of Exercise 12's intersection \((s,-s^2,0)\); the displayed covectors are \(\pm0.18(2s,1)\) within that plane. Ambient conormals also have an arbitrary \(dz\) component. Right: the exact coefficient \(1/\sin\theta\) for \(0<\theta\le\pi/2\); the plotted interval starts at \(0.12\) radians. Its divergence as the lines become parallel is proved in Exercise 11. [Reproducible figure source](../figures/transverse-density-factors.py).*
+
+
 ## Exercises with complete solutions
 
 **Exercise 1 — a zero endpoint is indispensable.** Compute the wavefront of \(\delta_0(x)\otimes1_y\) on \(\mathbb R^2\) for every \(L\), and explain why the product of the two nonzero wavefront sets is insufficient in (2).
@@ -438,6 +573,43 @@ For the second equality the input derivative acts as minus the derivative of tha
 **Solution.** The two source distributions have disjoint normal axes, so \(u_1u_2=\delta_{(0,0)}\) by Exercise 2. Each separate pullback is admissible: \(DF^T(\xi,0)=\xi\) and \(DF^T(0,\eta)=\eta\) are nonzero on their respective nonzero wavefronts. Both pullbacks equal \(\delta_0(t)\). Their product fails the no-opposition condition. Likewise the sum \((1,0)+(0,-1)\) is nonzero but \(DF^T(1,-1)=0\), so (C3) fails. The wavefront of \(\delta_{(0,0)}\) contains this normal covector, preventing use of the stated pullback construction on the left. The divergent square in Exercise 3 explains why separately admissible inputs cannot justify the smooth product identity here. \(\square\)
 
 
+**Exercise 11 (foundation: an angle changes the point mass).** In \(\mathbb R^2\), take \(Y=\{y=0\}\) and \(Z=\{(-\sin\theta)x+(\cos\theta)y=0\}\), with \(0<\theta\le\pi/2\). Compute the restriction of unit arclength density on \(Z\) to \(Y\), and the product of the two unit arclength densities. What happens as \(\theta\downarrow0\)?
+
+**Solution.** The unit normals \((0,1)\) and \((-\sin\theta,\cos\theta)\) have pairing \(\cos\theta\), so \(\sigma=\sin\theta\). The intersection has counting measure at the origin. Formula (R4) gives
+\[
+ j_Y^*(dS_Z)=\frac{\delta_0}{\sin\theta}
+ \quad\text{on the line},\qquad
+ (dS_Y)(dS_Z)=\frac{\delta_{(0,0)}}{\sin\theta}
+ \quad\text{on the plane}.
+ \tag{R7}
+\]
+The ambient product also follows by substituting the invertible linear coordinates \((y,-x\sin\theta+y\cos\theta)\), whose determinant has absolute value \(\sin\theta\). At \(\theta=\pi/6\) the coefficient is two. Pairing with any test that equals one at the origin gives \(1/\sin\theta\), which diverges as \(\theta\downarrow0\). Thus these products have no distributional limit at parallel alignment. At \(\theta=0\) the normal exclusion itself fails; the divergence concerns this exact family and does not assert that every separately specified renormalization is impossible. \(\square\)
+
+**Exercise 12 (intermediate: a curved intersection and both kinds of normals).** In \(\mathbb R^3\), let \(Y=\{z=0\}\), \(Z=\{z=x^2+y\}\), and give both surfaces unit induced density. Find the exact product, the restricted density on \(Y\), and their wavefronts.
+
+**Solution.** The normals \((0,0,1)\) and \((-2x,-1,1)\) are independent everywhere. Parametrize \(W\) by \((s,-s^2,0)\), whose arclength factor is \(\sqrt{1+4s^2}\). The normalized second normal gives
+\[
+ \sigma(s)=\sqrt{\frac{1+4s^2}{2+4s^2}},\qquad
+ \langle(dS_Y)(dS_Z),\varphi\rangle
+   =\int_{\mathbb R}\sqrt{2+4s^2}\,\varphi(s,-s^2,0)\,ds.
+ \tag{R8}
+\]
+The restriction on \(Y\) has the same density \(1/\sigma(s)\) relative to the curve's arclength. Its covectors inside \(Y\) are exactly
+\(\lambda(2s,1)\), \(\lambda\ne0\), over \((s,-s^2)\). For the ambient product they are
+\[
+ \{(s,-s^2,0;\lambda(2s,1,0)+\mu(0,0,1)):
+                    s\in\mathbb R,\ (\lambda,\mu)\ne(0,0)\}.
+ \tag{R9}
+\]
+Indeed the tangent \((1,-2s,0)\) annihilates precisely those covectors, and the density in (R8) is strictly positive. Formula (R5) proves equality, including both signs and the purely vertical ambient covectors. The figure's middle arrows use \(\lambda=\pm0.18\) and display only the covectors within \(Y\). \(\square\)
+
+**Exercise 13 (advanced: a restricted weight can lose its entire support).** Keep the surfaces of Exercise 12 and the unit density on \(Y\). Compare the densities \(y\,dS_Z\) and \(z\,dS_Z\). Determine their restrictions and products with \(dS_Y\), and explain the difference at the origin.
+
+**Solution.** On \(W\), the first weight is \(-s^2\). The product pairing in (R8) acquires the factor \(-s^2\), and the restricted density is \(-s^2/\sigma(s)\) relative to arclength. Although this coefficient is zero at \(s=0\), every curve neighborhood contains nonzero coefficient. Its support is the whole curve. Hence its ambient and restricted wavefronts are exactly those in Exercise 12, including over the origin.
+
+The second weight is identically zero on \(W\). Both its restriction and its product with \(dS_Y\) are therefore zero by (R4), with empty supports and wavefronts. Nevertheless \(z|_Z=x^2+y\) has nonzero values arbitrarily close to every point of \(W\), so \(z\,dS_Z\) has the full normal fiber of \(Z\) over each such point. Those fibers are noncharacteristic for restriction to \(Y\). Thus the general pullback bound can be strict even when the original distribution has every conormal direction along the intersection. The exact support in (R5) is the support of the restricted coefficient, not the intersection of the original support with \(Y\). \(\square\)
+
+
 ## Sources
 
-Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition (1990), Springer, 2003, [doi:10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), Sections 8.2 and 8.5, especially Definition 8.2.2, Theorems 8.2.9–8.2.14 and 8.5.4–8.5.5. These provide the convergence and wavefront-operation targets. The organization, proofs, examples, exercises and illustration here are independently expressed. The earlier programme proofs used in those arguments are linked at the beginning of the lesson.
+Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition (1990), Springer, 2003, [doi:10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), Sections 8.2 and 8.5, especially Definition 8.2.2, Examples 8.2.8 and 8.2.11, Theorems 8.2.9–8.2.14 and 8.5.4–8.5.5. These provide the convergence and wavefront-operation targets. The organization, proofs, examples, exercises and illustration here are independently expressed. The earlier programme proofs used in those arguments are linked at the beginning of the lesson.

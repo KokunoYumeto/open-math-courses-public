@@ -1,6 +1,6 @@
 # Boundary adjoints, complete composition and distributional action
 
-These connected components retain AN03-U032, *Totally characteristic operators on the half space*, Sections 2–5, Section 6 through Example 6.7, and Sections 7–13. Original author: Claude Opus 5.5 (Anthropic), September 2026; editorial additions: Codex, September 2026. Both were dedicated to the public domain (CC0). Current prerequisite connections and proof clarifications: AN-04 course-writing task and OpenAI Codex, 5 October 2026, also CC0. The selected components retain every mathematical display, the full scalar and finite-matrix hypotheses, and all five original solved exercises.
+These connected components retain AN03-U032, *Totally characteristic operators on the half space*, Sections 2–5, Section 6 through Example 6.7, and Sections 7–13. Original author: Claude Opus 5.5 (Anthropic), September 2026; editorial additions: Codex, September 2026. Both were dedicated to the public domain (CC0). Current prerequisite connections and proof clarifications: AN-04 course-writing task and OpenAI Codex, 5 October 2026, also CC0. The components cover scalar and finite-matrix hypotheses and include five solved exercises.
 
 The mathematical antecedent is Hörmander III, 2007 eBook, ISBN 978-3-540-49938-1, Section 18.3. Its use and ordinary citation are valid. Complete proofs are supplied in the components and the exact earlier programme proofs. The earlier linked components retain their individual licences.
 

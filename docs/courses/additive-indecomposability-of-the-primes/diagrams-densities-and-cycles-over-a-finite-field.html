@@ -1,0 +1,280 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Diagrams, densities and cycles over a finite field</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Additive indecomposability of the primes)</a><a href="the-prime-mean-and-a-supply-of-nonsparse-transforms.html">Previous lesson</a><a href="affine-actions-and-the-tree-comparison.html">Next lesson</a><a href="src/diagrams-densities-and-cycles-over-a-finite-field.md">Editable source</a></nav><main><article><h1 id="diagrams-densities-and-cycles-over-a-finite-field">Diagrams, densities and cycles over a finite field</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The final argument of the course (Lessons 14–18) repeats the transfer scheme of Lessons 7–9, with one essential difference. The functions to be compared are the exact Fourier transforms <span class="math" data-tex="\(g_p\)">\(g_p\)</span> of the residue supports, which carry no multiplicative-character phase, so anchor primes cannot separate the copies. Instead, a common list of auxiliary <em>spectator</em> primes is attached to every leaf of the binary tree of transfers, and at each spectator prime <span class="math" data-tex="\(q\)">\(q\)</span> the leaves contribute values <span class="math" data-tex="\(g_q(y)\)">\(g_q(y)\)</span> at arguments <span class="math" data-tex="\(y\in\mathbb F_q\)">\(y\in\mathbb F_q\)</span> that are rational functions of the leaf variables. This lesson and the next prove the finite-field estimate needed there (Lemma 1.2). For two such <em>diagrams</em> whose leaf variables are coupled only through products over a few blocks, the correlation <span class="math" data-tex="\(\mathbb E\,W_1\overline{W_2}\)">\(\mathbb E\,W_1\overline{W_2}\)</span> tends to zero as <span class="math" data-tex="\(q\to\infty\)">\(q\to\infty\)</span>. The only hypotheses on <span class="math" data-tex="\(g\)">\(g\)</span> are <span class="math" data-tex="\(g(0)=0\)">\(g(0)=0\)</span>, <span class="math" data-tex="\(\mathbb E|g|^2\le1\)">\(\mathbb E|g|^2\le1\)</span>, and smallness of all mixed character correlations, which is the mixed flatness of Lesson 9. No pointwise bound on <span class="math" data-tex="\(g\)">\(g\)</span> is assumed.</p>
+<p>This lesson defines the diagrams, proves the density bound <span class="math" data-tex="\(\mathbb E|W|^2\le3^r\)">\(\mathbb E|W|^2\le3^r\)</span> (Section 2), reduces the correlation to a projection along a cycle (Section 3), and studies the autocorrelations that govern a single pair of sibling leaves (Section 4). Lesson 13 proves the remaining Fourier estimates.</p>
+<p><strong>Prerequisites.</strong> <a href="anchor-codes-and-decorrelation-of-higher-characters.html"><em>Anchor codes and decorrelation of higher characters</em></a>, Section 6; finite Fourier analysis on <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span> and on <span class="math" data-tex="\(\mathbb F_q^\times\)">\(\mathbb F_q^\times\)</span>.</p>
+<h2 id="1-diagrams-and-the-statement">1. Diagrams and the statement</h2>
+<p>Let <span class="math" data-tex="\(q\)">\(q\)</span> be an odd prime, <span class="math" data-tex="\(U=\mathbb F_q^\times\)">\(U=\mathbb F_q^\times\)</span>, and <span class="math" data-tex="\(e_q(x)=e^{2\pi ix/q}\)">\(e_q(x)=e^{2\pi ix/q}\)</span>. For a function <span class="math" data-tex="\(f\)">\(f\)</span> on <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>, <span class="math" data-tex="\(\widehat f(a)=\frac1q\sum_xf(x)e_q(-ax)\)">\(\widehat f(a)=\frac1q\sum_xf(x)e_q(-ax)\)</span>. For a function on <span class="math" data-tex="\(U\)">\(U\)</span>, its <em>Mellin coefficients</em> are <span class="math" data-tex="\(\frac1{q-1}\sum_{t\in U}f(t)\overline{\chi(t)}\)">\(\frac1{q-1}\sum_{t\in U}f(t)\overline{\chi(t)}\)</span>, <span class="math" data-tex="\(\chi\in\widehat U\)">\(\chi\in\widehat U\)</span>. Characters, the principal one included, are extended by zero at zero. All <span class="math" data-tex="\(L^2\)">\(L^2\)</span> norms use probability measure unless a counting sum is written. Throughout, <span class="math" data-tex="\(g\colon\mathbb F_q\to\mathbb C\)">\(g\colon\mathbb F_q\to\mathbb C\)</span> satisfies <span class="math" data-tex="\(g(0)=0\)">\(g(0)=0\)</span>, <span class="math" data-tex="\(\mathbb E_{x\in\mathbb F_q}|g(x)|^2\le1\)">\(\mathbb E_{x\in\mathbb F_q}|g(x)|^2\le1\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\epsilon_q&amp;=\max_{\chi\in\widehat U,\ a\in\mathbb F_q}\Bigl|\mathbb E_{x\in\mathbb F_q}g(x)\chi(x)\\
+&amp;\quad e_q(ax)\Bigr|.\quad(1.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\epsilon_q&amp;=\max_{\chi\in\widehat U,\ a\in\mathbb F_q}\Bigl|\mathbb E_{x\in\mathbb F_q}g(x)\chi(x)\\
+&amp;\quad e_q(ax)\Bigr|.\quad(1.1)
+\end{aligned}
+\]</span>
+The same parameter serves for <span class="math" data-tex="\(\overline g\)">\(\overline g\)</span>, since conjugation replaces <span class="math" data-tex="\((\chi,a)\)">\((\chi,a)\)</span> by <span class="math" data-tex="\((\overline\chi,-a)\)">\((\overline\chi,-a)\)</span>, and <span class="math" data-tex="\(\epsilon_q\le1\)">\(\epsilon_q\le1\)</span> by Cauchy–Schwarz.</p>
+<p><strong>Diagrams.</strong> A <em>diagram of depth <span class="math" data-tex="\(l\)">\(l\)</span></em> uses a full ordered binary tree with <span class="math" data-tex="\(r=2^l\)">\(r=2^l\)</span> leaves. The <em>leaf variables</em> <span class="math" data-tex="\(M_i\)">\(M_i\)</span> take values in <span class="math" data-tex="\(U\)">\(U\)</span>; for a node <span class="math" data-tex="\(n\)">\(n\)</span>, <span class="math" data-tex="\(M_n\)">\(M_n\)</span> is the product of the leaf variables below <span class="math" data-tex="\(n\)">\(n\)</span>. The diagram has fixed <em>frequencies</em> <span class="math" data-tex="\(s_n\in U\)">\(s_n\in U\)</span> at all nodes, a constant <span class="math" data-tex="\(D&#x27;\in U\)">\(D&#x27;\in U\)</span>, and unit constants <span class="math" data-tex="\(C_{n,+},C_{n,-},u_n\)">\(C_{n,+},C_{n,-},u_n\)</span> at the internal nodes. Each internal node <span class="math" data-tex="\(n\)">\(n\)</span> has an ordered pair of <em>current entries</em> <span class="math" data-tex="\(X_{n,+},X_{n,-}\)">\(X_{n,+},X_{n,-}\)</span>: fixed units at the root, propagated downwards as follows. At an internal node <span class="math" data-tex="\(n\)">\(n\)</span>, with children <span class="math" data-tex="\(n,+\)">\(n,+\)</span> and <span class="math" data-tex="\(n,-\)">\(n,-\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H_{n,\pm}&amp;=X_{n,\pm}\,C_{n,\pm}\,M_{n,\pm},\\
+p_n&amp;=\frac{s_{n,+}H_{n,-}-s_{n,-}H_{n,+}}{s_nu_n},\\
+y_n&amp;=\frac{s_n}{D&#x27;H_{n,+}H_{n,-}},\\
+y_{n,\pm}&amp;=\frac{s_{n,\pm}}{D&#x27;\,p_n\,u_n\,H_{n,\pm}},\quad(1.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+H_{n,\pm}&amp;=X_{n,\pm}\,C_{n,\pm}\,M_{n,\pm},\\
+p_n&amp;=\frac{s_{n,+}H_{n,-}-s_{n,-}H_{n,+}}{s_nu_n},\\
+y_n&amp;=\frac{s_n}{D&#x27;H_{n,+}H_{n,-}},\\
+y_{n,\pm}&amp;=\frac{s_{n,\pm}}{D&#x27;\,p_n\,u_n\,H_{n,\pm}},\quad(1.2)
+\end{aligned}
+\]</span>
+and the current entries of an internal child <span class="math" data-tex="\(n,\pm\)">\(n,\pm\)</span> are <span class="math" data-tex="\((p_n,X_{n,\pm})\)">\((p_n,X_{n,\pm})\)</span>. The constants are required to be <em>consistent</em>: <span class="math" data-tex="\(C_{n,\pm,+}C_{n,\pm,-}=u_nC_{n,\pm}\)">\(C_{n,\pm,+}C_{n,\pm,-}=u_nC_{n,\pm}\)</span>, which is equivalent to <span class="math" data-tex="\(H_{n,\pm,+}H_{n,\pm,-}=p_nu_nH_{n,\pm}\)">\(H_{n,\pm,+}H_{n,\pm,-}=p_nu_nH_{n,\pm}\)</span>. It makes the argument <span class="math" data-tex="\(y_{n,\pm}\)">\(y_{n,\pm}\)</span> computed at <span class="math" data-tex="\(n\)">\(n\)</span> agree with the child's own <span class="math" data-tex="\(y\)">\(y\)</span>. All operations take place in <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>. If some <span class="math" data-tex="\(p_n=0\)">\(p_n=0\)</span>, the diagram value is <span class="math" data-tex="\(0\)">\(0\)</span> and no division by <span class="math" data-tex="\(p_n\)">\(p_n\)</span> is made; such points are <em>invalid</em>.</p>
+<p>On valid points, the <em>value</em> <span class="math" data-tex="\(W\)">\(W\)</span> is the product over the leaves <span class="math" data-tex="\(i\)">\(i\)</span> of <span class="math" data-tex="\(g(y_i)\)">\(g(y_i)\)</span> or <span class="math" data-tex="\(\overline{g(y_i)}\)">\(\overline{g(y_i)}\)</span>, with opposite conjugations on the two leaves of every bottom sibling pair; the choices on different pairs are arbitrary. For depth <span class="math" data-tex="\(0\)">\(0\)</span>, put <span class="math" data-tex="\(y_1=c/M_1\)">\(y_1=c/M_1\)</span> with a fixed <span class="math" data-tex="\(c\in U\)">\(c\in U\)</span>, and <span class="math" data-tex="\(W=g(y_1)\)">\(W=g(y_1)\)</span> or its conjugate.</p>
+<p>These formulas are the reduction modulo a spectator prime of the coefficient recursion of Lesson 14. The point is their shape: an argument at a node is a difference of the arguments at its children, and the ratio of the children's arguments is a fixed unit times the inverse square of a leaf product.</p>
+<p><strong>Lemma 1.1</strong> (difference and ratio). On valid points,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+y_n=y_{n,+}-y_{n,-},\\
+\frac{y_{n,+}}{y_{n,-}}=\frac{s_{n,+}}{s_{n,-}}\cdot\frac{H_{n,-}}{H_{n,+}}.\quad(1.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+y_n=y_{n,+}-y_{n,-},\\
+\frac{y_{n,+}}{y_{n,-}}=\frac{s_{n,+}}{s_{n,-}}\cdot\frac{H_{n,-}}{H_{n,+}}.\quad(1.3)
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> By (1.2),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+y_{n,+}-y_{n,-}&amp;=\frac1{D&#x27;p_nu_n}\\
+&amp;\quad \cdot\frac{s_{n,+}H_{n,-}-s_{n,-}H_{n,+}}{H_{n,+}H_{n,-}}\\
+&amp;=\frac{s_nu_np_n}{D&#x27;p_nu_nH_{n,+}H_{n,-}}\\
+&amp;=y_n .
+\end{aligned}
+\]">\[
+\begin{aligned}
+y_{n,+}-y_{n,-}&amp;=\frac1{D&#x27;p_nu_n}\\
+&amp;\quad \cdot\frac{s_{n,+}H_{n,-}-s_{n,-}H_{n,+}}{H_{n,+}H_{n,-}}\\
+&amp;=\frac{s_nu_np_n}{D&#x27;p_nu_nH_{n,+}H_{n,-}}\\
+&amp;=y_n .
+\end{aligned}
+\]</span>
+The ratio is immediate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.2</strong> (tree comparison [OpenAI-013, Lemma 6.1]). In a single diagram with independent uniform leaf variables,
+<span class="math math-display" data-tex="\[
+\mathbb E|W|^2\le3^r.
+\tag{1.4}
+\]">\[
+\mathbb E|W|^2\le3^r.
+\tag{1.4}
+\]</span>
+Let two diagrams of the same depth <span class="math" data-tex="\(l\)">\(l\)</span> be given, with possibly different unit parameters and conjugation choices. Partition the leaves of each into <span class="math" data-tex="\(b\)">\(b\)</span> nonempty sets, the sets of the two diagrams being paired, and give the two collections of leaf variables the uniform distribution on the subgroup of <span class="math" data-tex="\(U^r\times U^r\)">\(U^r\times U^r\)</span> defined by equality of the products over paired sets. If <span class="math" data-tex="\(l\ge2\)">\(l\ge2\)</span> and <span class="math" data-tex="\(b\le3r/4\)">\(b\le3r/4\)</span>, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\bigl|\mathbb E\,W_1\overline{W_2}\bigr|\\
+&amp;\quad \le C_l\bigl(\epsilon_q+q^{-1/4}\bigr),\quad(1.5)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\bigl|\mathbb E\,W_1\overline{W_2}\bigr|\\
+&amp;\quad \le C_l\bigl(\epsilon_q+q^{-1/4}\bigr),\quad(1.5)
+\end{aligned}
+\]</span>
+with <span class="math" data-tex="\(C_l\)">\(C_l\)</span> depending only on <span class="math" data-tex="\(l\)">\(l\)</span>.</p>
+<h2 id="2-the-density-bound">2. The density bound</h2>
+<p><strong>Exposure.</strong> Under independent uniform leaf variables, expose first the product of all leaf variables, then, going down the tree, the product <span class="math" data-tex="\(M_{n,+}\)">\(M_{n,+}\)</span> at each split. Given the parent product <span class="math" data-tex="\(M_n\)">\(M_n\)</span> and all earlier splits, <span class="math" data-tex="\(M_{n,+}\)">\(M_{n,+}\)</span> is uniform on <span class="math" data-tex="\(U\)">\(U\)</span> and determines <span class="math" data-tex="\(M_{n,-}=M_n/M_{n,+}\)">\(M_{n,-}=M_n/M_{n,+}\)</span>: the leaves below <span class="math" data-tex="\(n,+\)">\(n,+\)</span> and below <span class="math" data-tex="\(n,-\)">\(n,-\)</span> form disjoint sets of independent uniform units. The root argument <span class="math" data-tex="\(s_{\mathrm{root}}/(D&#x27;H_+H_-)\)">\(s_{\mathrm{root}}/(D&#x27;H_+H_-)\)</span> is a fixed unit times the inverse of the total product, hence uniform on <span class="math" data-tex="\(U\)">\(U\)</span>. At a split, the current entries are already known, and by (1.3) and <span class="math" data-tex="\(M_{n,-}=M_n/M_{n,+}\)">\(M_{n,-}=M_n/M_{n,+}\)</span>,
+<span class="math math-display" data-tex="\[
+\frac{y_{n,+}}{y_{n,-}}=\text{(a known unit)}\cdot M_{n,+}^{-2}.
+\]">\[
+\frac{y_{n,+}}{y_{n,-}}=\text{(a known unit)}\cdot M_{n,+}^{-2}.
+\]</span>
+Given <span class="math" data-tex="\(y_n\)">\(y_n\)</span>, the ratio <span class="math" data-tex="\(\rho=y_{n,+}/y_{n,-}\)">\(\rho=y_{n,+}/y_{n,-}\)</span> determines the pair, since <span class="math" data-tex="\(y_{n,-}=y_n/(\rho-1)\)">\(y_{n,-}=y_n/(\rho-1)\)</span> and <span class="math" data-tex="\(y_{n,+}=\rho y_{n,-}\)">\(y_{n,+}=\rho y_{n,-}\)</span>. Squaring is two-to-one on <span class="math" data-tex="\(U\)">\(U\)</span>, so a prescribed valid ordered pair <span class="math" data-tex="\((y_{n,+},y_{n,-})\)">\((y_{n,+},y_{n,-})\)</span> has conditional probability at most <span class="math" data-tex="\(2/(q-1)\)">\(2/(q-1)\)</span>.</p>
+<p><strong>Proposition 2.1</strong> ([OpenAI-013, (6.3)]). On the valid points, the joint law of the leaf arguments <span class="math" data-tex="\((y_i)\)">\((y_i)\)</span> is at most <span class="math" data-tex="\(2^{r-1}\)">\(2^{r-1}\)</span> times the law of <span class="math" data-tex="\(r\)">\(r\)</span> independent uniform elements of <span class="math" data-tex="\(U\)">\(U\)</span>. The same holds for the arguments at the nodes of any fixed level, with <span class="math" data-tex="\(2^{r-1}\)">\(2^{r-1}\)</span> replaced by a constant depending only on <span class="math" data-tex="\(l\)">\(l\)</span>. Consequently (1.4) holds.</p>
+<p><em>Proof.</em> A vector of leaf arguments determines all arguments above it by (1.3). Its probability is at most <span class="math" data-tex="\(\frac1{q-1}\bigl(\frac2{q-1}\bigr)^{r-1}\)">\(\frac1{q-1}\bigl(\frac2{q-1}\bigr)^{r-1}\)</span>: the root argument has probability <span class="math" data-tex="\(\frac1{q-1}\)">\(\frac1{q-1}\)</span>, and each of the <span class="math" data-tex="\(r-1\)">\(r-1\)</span> splits contributes at most <span class="math" data-tex="\(\frac2{q-1}\)">\(\frac2{q-1}\)</span>. Stopping the exposure at any level gives the second assertion. Since <span class="math" data-tex="\(g(0)=0\)">\(g(0)=0\)</span>, <span class="math" data-tex="\(\mathbb E_{y\in U}|g(y)|^2=\frac q{q-1}\mathbb E_{\mathbb F_q}|g|^2\le\frac q{q-1}\)">\(\mathbb E_{y\in U}|g(y)|^2=\frac q{q-1}\mathbb E_{\mathbb F_q}|g|^2\le\frac q{q-1}\)</span>, so
+<span class="math math-display" data-tex="\[
+\mathbb E|W|^2\le2^{r-1}\Bigl(\frac q{q-1}\Bigr)^r\le3^r .
+\]">\[
+\mathbb E|W|^2\le2^{r-1}\Bigl(\frac q{q-1}\Bigr)^r\le3^r .
+\]</span>
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These are bounds for integrals of nonnegative functions. They use the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> bound on <span class="math" data-tex="\(g\)">\(g\)</span> only, not any pointwise bound.</p>
+<h2 id="3-the-cycle-reduction">3. The cycle reduction</h2>
+<p>Assume <span class="math" data-tex="\(l\ge2\)">\(l\ge2\)</span> and <span class="math" data-tex="\(b\le3r/4\)">\(b\le3r/4\)</span>. The coupled law of Lemma 1.2 has an equivalent description: choose independent uniform <em>component totals</em>, one for each paired set; then, independently in each diagram and given the totals, choose its leaf variables uniformly among those with the prescribed product on each set. Every fibre of the product map has the same size, so this is the uniform law on the subgroup. Each diagram, taken alone, has independent uniform leaf variables.</p>
+<p><strong>A cycle.</strong> The tree of depth <span class="math" data-tex="\(l\ge2\)">\(l\ge2\)</span> groups its leaves into <span class="math" data-tex="\(r/4\)">\(r/4\)</span> <em>bottom quartets</em>, the four leaves below a node of level <span class="math" data-tex="\(2\)">\(2\)</span>. In the first diagram form the bipartite multigraph whose vertices are its <span class="math" data-tex="\(b\)">\(b\)</span> component sets and its <span class="math" data-tex="\(r/4\)">\(r/4\)</span> quartets, with one edge for each leaf, joining the leaf's component to its quartet. It has <span class="math" data-tex="\(r\)">\(r\)</span> edges and at most <span class="math" data-tex="\(b+r/4\le r\)">\(b+r/4\le r\)</span> vertices, none isolated. A forest has fewer edges than vertices, so the graph contains a cycle, possibly two parallel edges. Choose a simple cycle. Multiply the leaf variables on it alternately by <span class="math" data-tex="\(z\)">\(z\)</span> and <span class="math" data-tex="\(z^{-1}\)">\(z^{-1}\)</span>, <span class="math" data-tex="\(z\in U\)">\(z\in U\)</span>: every component product and every quartet product is preserved, since each vertex of the cycle meets two of its edges, one of each kind. Let <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> be the average over <span class="math" data-tex="\(z\in U\)">\(z\in U\)</span> of this action. It is an orthogonal projection on <span class="math" data-tex="\(L^2(U^r)\)">\(L^2(U^r)\)</span>.</p>
+<p><strong>Proposition 3.1</strong> (the cycle reduction [OpenAI-013, (6.6)]).
+<span class="math math-display" data-tex="\[
+\bigl|\mathbb E\,W_1\overline{W_2}\bigr|\le3^{r/2}\,\|\mathcal PW_1\|_2,
+\tag{3.1}
+\]">\[
+\bigl|\mathbb E\,W_1\overline{W_2}\bigr|\le3^{r/2}\,\|\mathcal PW_1\|_2,
+\tag{3.1}
+\]</span>
+where the norm is taken for independent uniform leaf variables of the first diagram.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> be the collection of component totals. The action preserves each fibre of <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> and its uniform measure, so <span class="math" data-tex="\(\mathbb E(W_1\mid\mathcal T)=\mathbb E(\mathcal PW_1\mid\mathcal T)\)">\(\mathbb E(W_1\mid\mathcal T)=\mathbb E(\mathcal PW_1\mid\mathcal T)\)</span>. Given <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>, the two diagrams are independent, so <span class="math" data-tex="\(\mathbb E\,W_1\overline{W_2}=\mathbb E\bigl[\mathbb E(W_1\mid\mathcal T)\,\overline{\mathbb E(W_2\mid\mathcal T)}\bigr]\)">\(\mathbb E\,W_1\overline{W_2}=\mathbb E\bigl[\mathbb E(W_1\mid\mathcal T)\,\overline{\mathbb E(W_2\mid\mathcal T)}\bigr]\)</span>. Cauchy–Schwarz, the contraction of conditional expectations on <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, and (1.4) give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\bigl|\mathbb E\,W_1\overline{W_2}\bigr|&amp;\le\|\mathcal PW_1\|_2\,\|W_2\|_2\\
+&amp;\le3^{r/2}\|\mathcal PW_1\|_2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\bigl|\mathbb E\,W_1\overline{W_2}\bigr|&amp;\le\|\mathcal PW_1\|_2\,\|W_2\|_2\\
+&amp;\le3^{r/2}\|\mathcal PW_1\|_2 .
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Mellin expansion along the cycle.</strong> Under independent uniform leaf variables, condition on the products of all bottom quartets. These determine all the ancestor data, including the validity of the ancestors, and if an ancestor is invalid the value is <span class="math" data-tex="\(0\)">\(0\)</span>. Otherwise the interiors of the quartets are independent, each uniform on its product fibre, and <span class="math" data-tex="\(W\)">\(W\)</span> is the product of the <em>quartet values</em>, each a function of its own four leaves. A quartet on the cycle contains two <em>moving</em> leaves. Fix its two <em>held</em> leaves and take one moving leaf as a coordinate on <span class="math" data-tex="\(U\)">\(U\)</span>; the quartet product determines the other. Expand the quartet value in Mellin characters of this coordinate, with coefficients <span class="math" data-tex="\(a_{j,\rho}\)">\(a_{j,\rho}\)</span> for the <span class="math" data-tex="\(j\)">\(j\)</span>-th quartet of the cycle. The action multiplies the coordinate by <span class="math" data-tex="\(z\)">\(z\)</span> or <span class="math" data-tex="\(z^{-1}\)">\(z^{-1}\)</span>, so the projection <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> keeps exactly the products of terms whose characters satisfy
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\prod_{j=1}^t\rho_j^{\delta_j}=1,\\
+\delta_j\in\{1,-1\},\quad(3.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\prod_{j=1}^t\rho_j^{\delta_j}=1,\\
+\delta_j\in\{1,-1\},\quad(3.2)
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(t\)">\(t\)</span> is the number of quartets on the cycle.</p>
+<p><strong>What remains to prove.</strong> Consider one bottom quartet with its product and all ancestor data fixed. On valid ancestor data its current entries and its parent argument <span class="math" data-tex="\(y\)">\(y\)</span> are fixed units. Choose two of its leaves to move by reciprocal multiplication, and hold the other two; write <span class="math" data-tex="\(a_\rho\)">\(a_\rho\)</span> for the Mellin coefficients of the quartet value in the moving coordinate. Lesson 13 constructs nonnegative functions <span class="math" data-tex="\(B_\rho(y)\)">\(B_\rho(y)\)</span>, depending on <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> but not on the ancestor data or the unit parameters, such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb E_{\mathrm{held}}|a_\rho|^2\le B_\rho(y),\\
+\sup_\rho\mathbb E_{y\in U}B_\rho(y)\ll\epsilon_q^2+q^{-1/2},\\
+\sum_\rho\mathbb E_{y\in U}B_\rho(y)\ll1,\quad(3.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathbb E_{\mathrm{held}}|a_\rho|^2\le B_\rho(y),\\
+\sup_\rho\mathbb E_{y\in U}B_\rho(y)\ll\epsilon_q^2+q^{-1/2},\\
+\sum_\rho\mathbb E_{y\in U}B_\rho(y)\ll1,\quad(3.3)
+\end{gathered}
+\]</span>
+where the held average is over the two held leaves, independent and uniform given the quartet product, and a nonnegative <span class="math" data-tex="\(B_0(y)\)">\(B_0(y)\)</span> of bounded mean that dominates the conditional second moment of a quartet off the cycle. Finitely many orientations and conjugation choices occur; adding their majorants keeps (3.3).</p>
+<p>In (3.2) one character is determined by the others. Lesson 13 uses the small supremum in (3.3) for that one, the bounded sum for the others, and <span class="math" data-tex="\(B_0\)">\(B_0\)</span> for the quartets off the cycle.</p>
+<h2 id="4-autocorrelations-of-a-bottom-pair">4. Autocorrelations of a bottom pair</h2>
+<p>Fix <span class="math" data-tex="\(\sigma\in\{1,-1\}\)">\(\sigma\in\{1,-1\}\)</span> and <span class="math" data-tex="\(g_*\in\{g,\overline g\}\)">\(g_*\in\{g,\overline g\}\)</span>. For <span class="math" data-tex="\(d\in U\)">\(d\in U\)</span> and <span class="math" data-tex="\(t\in U\setminus\{1\}\)">\(t\in U\setminus\{1\}\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x=\frac{\sigma dt}{t-1},\\
+z=\frac{\sigma d}{t-1},\\
+h(d,t)=g_*(x)\,\overline{g_*(z)},\quad(4.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+x=\frac{\sigma dt}{t-1},\\
+z=\frac{\sigma d}{t-1},\\
+h(d,t)=g_*(x)\,\overline{g_*(z)},\quad(4.1)
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(h(d,t)=0\)">\(h(d,t)=0\)</span> if <span class="math" data-tex="\(d=0\)">\(d=0\)</span> or <span class="math" data-tex="\(t\in\{0,1\}\)">\(t\in\{0,1\}\)</span>. On valid arguments <span class="math" data-tex="\(x-z=\sigma d\)">\(x-z=\sigma d\)</span> and <span class="math" data-tex="\(t=x/z\)">\(t=x/z\)</span>: this is the value of a bottom sibling pair with parent argument <span class="math" data-tex="\(\sigma d\)">\(\sigma d\)</span> and child ratio <span class="math" data-tex="\(t\)">\(t\)</span>, by (1.3). Put
+<span class="math math-display" data-tex="\[
+R_*(d)=\mathbb E_{t\in U}|h(d,t)|^2\qquad(d\in U).
+\]">\[
+R_*(d)=\mathbb E_{t\in U}|h(d,t)|^2\qquad(d\in U).
+\]</span>
+The map <span class="math" data-tex="\((d,t)\mapsto(x,z)\)">\((d,t)\mapsto(x,z)\)</span> is a bijection from the valid pairs onto the ordered pairs of distinct units, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E_{d\in U}R_*(d)&amp;=\frac1{(q-1)^2}\\
+&amp;\quad \sum_{\substack{x,z\in U\\x\ne z}}|g_*(x)|^2|g_*(z)|^2\\
+&amp;\le\Bigl(\frac q{q-1}\Bigr)^2 .\quad(4.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E_{d\in U}R_*(d)&amp;=\frac1{(q-1)^2}\\
+&amp;\quad \sum_{\substack{x,z\in U\\x\ne z}}|g_*(x)|^2|g_*(z)|^2\\
+&amp;\le\Bigl(\frac q{q-1}\Bigr)^2 .\quad(4.2)
+\end{aligned}
+\]</span></p>
+<p><strong>The Mellin coefficients.</strong> For <span class="math" data-tex="\(d\ne0\)">\(d\ne0\)</span> and <span class="math" data-tex="\(\chi\in\widehat U\)">\(\chi\in\widehat U\)</span>, the Mellin coefficient of <span class="math" data-tex="\(t\mapsto h(d,t)\)">\(t\mapsto h(d,t)\)</span> is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+P_\chi(d)&amp;=\frac q{q-1}\,\mathbb E_{x\in\mathbb F_q}(g_*\overline\chi)(x)\\
+&amp;\quad \,\overline{(g_*\overline\chi)(x-\sigma d)} .\quad(4.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+P_\chi(d)&amp;=\frac q{q-1}\,\mathbb E_{x\in\mathbb F_q}(g_*\overline\chi)(x)\\
+&amp;\quad \,\overline{(g_*\overline\chi)(x-\sigma d)} .\quad(4.3)
+\end{aligned}
+\]</span>
+Indeed, substitute <span class="math" data-tex="\(t=x/(x-\sigma d)\)">\(t=x/(x-\sigma d)\)</span>: as <span class="math" data-tex="\(t\)">\(t\)</span> runs over <span class="math" data-tex="\(U\setminus\{1\}\)">\(U\setminus\{1\}\)</span>, <span class="math" data-tex="\(x\)">\(x\)</span> runs over <span class="math" data-tex="\(\mathbb F_q\setminus\{0,\sigma d\}\)">\(\mathbb F_q\setminus\{0,\sigma d\}\)</span>, and <span class="math" data-tex="\(\overline\chi(t)=\overline\chi(x)\chi(x-\sigma d)\)">\(\overline\chi(t)=\overline\chi(x)\chi(x-\sigma d)\)</span>; the two excluded values of <span class="math" data-tex="\(x\)">\(x\)</span> contribute zero to (4.3). Use (4.3) also to <em>define</em> <span class="math" data-tex="\(P_\chi(0)\)">\(P_\chi(0)\)</span>; this is not the Mellin coefficient of the zero function <span class="math" data-tex="\(h(0,\cdot)\)">\(h(0,\cdot)\)</span>.</p>
+<p>Let <span class="math" data-tex="\(w_\chi(a)=\widehat{P_\chi}(a)\)">\(w_\chi(a)=\widehat{P_\chi}(a)\)</span> be the additive Fourier transform in <span class="math" data-tex="\(d\)">\(d\)</span>, and <span class="math" data-tex="\(r_\chi=\sum_aw_\chi(a)^2\)">\(r_\chi=\sum_aw_\chi(a)^2\)</span>. With <span class="math" data-tex="\(G=g_*\overline\chi\)">\(G=g_*\overline\chi\)</span>, the substitution <span class="math" data-tex="\(y=x-\sigma d\)">\(y=x-\sigma d\)</span> in the autocorrelation gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+w_\chi(a)=\frac q{q-1}\bigl|\widehat G(\sigma a)\bigr|^2\ge0,\\
+\begin{aligned}
+P_\chi(0)&amp;=\sum_aw_\chi(a)\\
+&amp;=\frac q{q-1}\,\mathbb E|g|^2 .
+\end{aligned}\quad(4.4)
+\end{gathered}
+\]">\[
+\begin{gathered}
+w_\chi(a)=\frac q{q-1}\bigl|\widehat G(\sigma a)\bigr|^2\ge0,\\
+\begin{aligned}
+P_\chi(0)&amp;=\sum_aw_\chi(a)\\
+&amp;=\frac q{q-1}\,\mathbb E|g|^2 .
+\end{aligned}\quad(4.4)
+\end{gathered}
+\]</span></p>
+<p><strong>Lemma 4.1</strong> ([OpenAI-013, (6.11) and (6.12)]).
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_aw_\chi(a)\le\frac q{q-1},\\
+\max_{\chi,a}w_\chi(a)\le\frac q{q-1}\epsilon_q^2,\\
+\max_\chi r_\chi\le\Bigl(\frac q{q-1}\Bigr)^2\epsilon_q^2,\\
+\sum_\chi r_\chi\le\frac{2q}{q-1}\le3 .\quad(4.5)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_aw_\chi(a)\le\frac q{q-1},\\
+\max_{\chi,a}w_\chi(a)\le\frac q{q-1}\epsilon_q^2,\\
+\max_\chi r_\chi\le\Bigl(\frac q{q-1}\Bigr)^2\epsilon_q^2,\\
+\sum_\chi r_\chi\le\frac{2q}{q-1}\le3 .\quad(4.5)
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> The first two follow from (4.4) and the definition (1.1), since <span class="math" data-tex="\(\widehat G(\sigma a)=\mathbb E_xg_*(x)\overline\chi(x)e_q(-\sigma ax)\)">\(\widehat G(\sigma a)=\mathbb E_xg_*(x)\overline\chi(x)e_q(-\sigma ax)\)</span>. Then <span class="math" data-tex="\(r_\chi\le\max_aw_\chi(a)\cdot\sum_aw_\chi(a)\)">\(r_\chi\le\max_aw_\chi(a)\cdot\sum_aw_\chi(a)\)</span>. For the last, Parseval in <span class="math" data-tex="\(d\)">\(d\)</span> gives <span class="math" data-tex="\(r_\chi=\frac1q\sum_{d\in\mathbb F_q}|P_\chi(d)|^2\)">\(r_\chi=\frac1q\sum_{d\in\mathbb F_q}|P_\chi(d)|^2\)</span>. For <span class="math" data-tex="\(d\ne0\)">\(d\ne0\)</span>, Mellin Parseval gives <span class="math" data-tex="\(\sum_\chi|P_\chi(d)|^2=R_*(d)\)">\(\sum_\chi|P_\chi(d)|^2=R_*(d)\)</span>. At <span class="math" data-tex="\(d=0\)">\(d=0\)</span> each of the <span class="math" data-tex="\(q-1\)">\(q-1\)</span> characters has <span class="math" data-tex="\(P_\chi(0)=\frac q{q-1}\mathbb E|g|^2\le\frac q{q-1}\)">\(P_\chi(0)=\frac q{q-1}\mathbb E|g|^2\le\frac q{q-1}\)</span>. By (4.2),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_\chi r_\chi&amp;\le\frac1q\Bigl((q-1)\Bigl(\frac q{q-1}\Bigr)^2\\
+&amp;\quad +(q-1)\Bigl(\frac q{q-1}\Bigr)^2\Bigr)\\
+&amp;=\frac{2q}{q-1}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_\chi r_\chi&amp;\le\frac1q\Bigl((q-1)\Bigl(\frac q{q-1}\Bigr)^2\\
+&amp;\quad +(q-1)\Bigl(\frac q{q-1}\Bigr)^2\Bigr)\\
+&amp;=\frac{2q}{q-1}.
+\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 4.2</strong> (pulling back along squares [OpenAI-013, (6.13)]). Let <span class="math" data-tex="\(f(t)=\sum_\chi c_\chi\chi(t)\)">\(f(t)=\sum_\chi c_\chi\chi(t)\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span>, <span class="math" data-tex="\(K\in U\)">\(K\in U\)</span> and <span class="math" data-tex="\(\rho\in\widehat U\)">\(\rho\in\widehat U\)</span>. Then
+<span class="math math-display" data-tex="\[
+\Bigl|\mathbb E_{z\in U}f(Kz^{\pm2})\,\overline{\rho(z)}\Bigr|^2\le2\sum_{\chi^{\pm2}=\rho}|c_\chi|^2 .
+\]">\[
+\Bigl|\mathbb E_{z\in U}f(Kz^{\pm2})\,\overline{\rho(z)}\Bigr|^2\le2\sum_{\chi^{\pm2}=\rho}|c_\chi|^2 .
+\]</span>
+Moreover, for nonnegative integrands, the uniform measure on a coset of the squares in <span class="math" data-tex="\(U\)">\(U\)</span> is at most twice the uniform measure on <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p><em>Proof.</em> By orthogonality the left side is <span class="math" data-tex="\(|\sum_{\chi^{\pm2}=\rho}c_\chi\chi(K)|^2\)">\(|\sum_{\chi^{\pm2}=\rho}c_\chi\chi(K)|^2\)</span>. Since <span class="math" data-tex="\(U\)">\(U\)</span> is cyclic of even order, the squaring map on <span class="math" data-tex="\(\widehat U\)">\(\widehat U\)</span> has a kernel of size <span class="math" data-tex="\(2\)">\(2\)</span>, so the sum has at most two terms; apply Cauchy–Schwarz. A coset of the squares has <span class="math" data-tex="\((q-1)/2\)">\((q-1)/2\)</span> elements. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>These are the local tools. Lesson 13 combines them with an operator bound for the affine group of <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span> to construct the majorants <span class="math" data-tex="\(B_\rho\)">\(B_\rho\)</span> and complete the proof of Lemma 1.2.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Check the consistency condition: show that <span class="math" data-tex="\(C_{n,\pm,+}C_{n,\pm,-}=u_nC_{n,\pm}\)">\(C_{n,\pm,+}C_{n,\pm,-}=u_nC_{n,\pm}\)</span> is equivalent to <span class="math" data-tex="\(H_{n,\pm,+}H_{n,\pm,-}=p_nu_nH_{n,\pm}\)">\(H_{n,\pm,+}H_{n,\pm,-}=p_nu_nH_{n,\pm}\)</span>, and that it makes the two formulas for the argument of an internal child agree.</p>
+<p><strong>5.2.</strong> For a diagram of depth <span class="math" data-tex="\(1\)">\(1\)</span> (two leaves), compute the leaf arguments in terms of the total product <span class="math" data-tex="\(M\)">\(M\)</span> and the split <span class="math" data-tex="\(M_+\)">\(M_+\)</span>, and verify directly that a prescribed pair of leaf arguments has probability at most <span class="math" data-tex="\(2/(q-1)^2\)">\(2/(q-1)^2\)</span>.</p>
+<p><strong>5.3.</strong> Show that in the bipartite multigraph of Section 3 a cycle exists already when <span class="math" data-tex="\(b&lt;3r/4+1\)">\(b&lt;3r/4+1\)</span>, and give an example with <span class="math" data-tex="\(b=3r/4+1\)">\(b=3r/4+1\)</span>, <span class="math" data-tex="\(l=2\)">\(l=2\)</span>, in which the graph is a forest.</p>
+<p><strong>5.4.</strong> Prove (4.4): <span class="math" data-tex="\(\widehat{P_\chi}(a)=\frac q{q-1}|\widehat G(\sigma a)|^2\)">\(\widehat{P_\chi}(a)=\frac q{q-1}|\widehat G(\sigma a)|^2\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> The current entries of the child <span class="math" data-tex="\(n,\pm\)">\(n,\pm\)</span> are <span class="math" data-tex="\((p_n,X_{n,\pm})\)">\((p_n,X_{n,\pm})\)</span>, so <span class="math" data-tex="\(H_{n,\pm,+}H_{n,\pm,-}\)">\(H_{n,\pm,+}H_{n,\pm,-}\)</span><span class="math" data-tex="\(=p_n\,X_{n,\pm}\,C_{n,\pm,+}C_{n,\pm,-}\,M_{n,\pm}\)">\(=p_n\,X_{n,\pm}\,C_{n,\pm,+}C_{n,\pm,-}\,M_{n,\pm}\)</span>, using <span class="math" data-tex="\(M_{n,\pm,+}M_{n,\pm,-}=M_{n,\pm}\)">\(M_{n,\pm,+}M_{n,\pm,-}=M_{n,\pm}\)</span>. This equals <span class="math" data-tex="\(p_nu_nH_{n,\pm}=p_nu_nX_{n,\pm}C_{n,\pm}M_{n,\pm}\)">\(p_nu_nH_{n,\pm}=p_nu_nX_{n,\pm}C_{n,\pm}M_{n,\pm}\)</span> exactly when <span class="math" data-tex="\(C_{n,\pm,+}C_{n,\pm,-}=u_nC_{n,\pm}\)">\(C_{n,\pm,+}C_{n,\pm,-}=u_nC_{n,\pm}\)</span>. The child's own argument is <span class="math" data-tex="\(s_{n,\pm}/(D&#x27;H_{n,\pm,+}H_{n,\pm,-})\)">\(s_{n,\pm}/(D&#x27;H_{n,\pm,+}H_{n,\pm,-})\)</span>, and the parent's formula gives <span class="math" data-tex="\(s_{n,\pm}/(D&#x27;p_nu_nH_{n,\pm})\)">\(s_{n,\pm}/(D&#x27;p_nu_nH_{n,\pm})\)</span>; they agree under this condition.</p>
+<p><strong>5.2.</strong> With root entries <span class="math" data-tex="\(X_\pm\)">\(X_\pm\)</span> and constants <span class="math" data-tex="\(C_\pm\)">\(C_\pm\)</span>, <span class="math" data-tex="\(H_+=X_+C_+M_+\)">\(H_+=X_+C_+M_+\)</span> and <span class="math" data-tex="\(H_-=X_-C_-M/M_+\)">\(H_-=X_-C_-M/M_+\)</span>. The root argument is <span class="math" data-tex="\(s/(D&#x27;X_+X_-C_+C_-M)\)">\(s/(D&#x27;X_+X_-C_+C_-M)\)</span>, and <span class="math" data-tex="\(y_+/y_-=\frac{s_+X_-C_-}{s_-X_+C_+}\,M\,M_+^{-2}\)">\(y_+/y_-=\frac{s_+X_-C_-}{s_-X_+C_+}\,M\,M_+^{-2}\)</span>. The probability that <span class="math" data-tex="\(M\)">\(M\)</span> takes a prescribed value is <span class="math" data-tex="\(1/(q-1)\)">\(1/(q-1)\)</span>, and given <span class="math" data-tex="\(M\)">\(M\)</span>, at most two values of <span class="math" data-tex="\(M_+\)">\(M_+\)</span> give a prescribed ratio. So the probability is at most <span class="math" data-tex="\(2/(q-1)^2\)">\(2/(q-1)^2\)</span>.</p>
+<p><strong>5.3.</strong> The graph has <span class="math" data-tex="\(r\)">\(r\)</span> edges and <span class="math" data-tex="\(b+r/4\)">\(b+r/4\)</span> vertices. If it were a forest, <span class="math" data-tex="\(r\le b+r/4-1\)">\(r\le b+r/4-1\)</span>, that is <span class="math" data-tex="\(b\ge3r/4+1\)">\(b\ge3r/4+1\)</span>. For <span class="math" data-tex="\(l=2\)">\(l=2\)</span>, <span class="math" data-tex="\(r=4\)">\(r=4\)</span>: one quartet and <span class="math" data-tex="\(b=4\)">\(b=4\)</span> singleton components give a star with four edges, a tree.</p>
+<p><strong>5.4.</strong> <span class="math" data-tex="\(\widehat{P_\chi}(a)=\frac q{q-1}\mathbb E_d\mathbb E_xG(x)\overline{G(x-\sigma d)}\)">\(\widehat{P_\chi}(a)=\frac q{q-1}\mathbb E_d\mathbb E_xG(x)\overline{G(x-\sigma d)}\)</span><span class="math" data-tex="\(e_q(-ad)\)">\(e_q(-ad)\)</span>. Put <span class="math" data-tex="\(y=x-\sigma d\)">\(y=x-\sigma d\)</span>, so <span class="math" data-tex="\(d=\sigma(x-y)\)">\(d=\sigma(x-y)\)</span> and, as <span class="math" data-tex="\(d\)">\(d\)</span> runs over <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span> for fixed <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(y\)">\(y\)</span> runs over <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>. Then the double average is <span class="math" data-tex="\(\mathbb E_xG(x)e_q(-\sigma ax)\)">\(\mathbb E_xG(x)e_q(-\sigma ax)\)</span><span class="math" data-tex="\(\cdot\overline{\mathbb E_yG(y)e_q(-\sigma ay)}=|\widehat G(\sigma a)|^2\)">\(\cdot\overline{\mathbb E_yG(y)e_q(-\sigma ay)}=|\widehat G(\sigma a)|^2\)</span>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-013] OpenAI, <em>The additive indecomposability of the primes</em>, OpenAI Math Release preprint, 24 September 2026, Section 6: Lemma 6.1, the diagrams and their elementary density bound, the cycle reduction, and bottom-pair autocorrelations. https://github.com/openai/math/tree/main/preprints/the-additive-indecomposability-of-the-primes-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

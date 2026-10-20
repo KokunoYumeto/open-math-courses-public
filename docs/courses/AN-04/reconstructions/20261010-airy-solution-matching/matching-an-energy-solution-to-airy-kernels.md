@@ -54,7 +54,7 @@ on one fixed smaller parameter region \(W_0\). Here
 \]
 In the weight, \(m(\eta),\ell(\eta)\) are SAL:H0's smooth frequency functions, equal to \(\mu,\lambda\) on the cone; the index in \(\mathcal X_m\) is a separate real number. All trace assertions are microlocal on the fixed boundary portion of \(W_0\).
 
-This proves actual solution matching. It does not yet prove that these localized \(v\) belong to the full stable space \(\mathcal H_w\), or a global representation in every complementary microlocal component. Those further assertions require the missing oscillating weighted norm with its full input localizations. If \(f\) has only the stated tangential regularity, AM4 is not an assertion of unlimited normal smoothness.
+This proves actual solution matching. It does not yet prove that these localized \(v\) belong to the full stable space \(\mathcal H_w\), or a global representation in every complementary microlocal component. Those further assertions require an oscillating weighted norm with its full input localizations. If \(f\) has only the stated tangential regularity, AM4 is not an assertion of unlimited normal smoothness.
 
 ## 2. The incoming kernel has an elliptic Cauchy row
 

@@ -4,7 +4,7 @@ An intrinsic regularity condition can be tested on a conic submanifold before as
 
 The mathematical antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV*, Springer 2009 eBook, ISBN 978-3-642-00136-9, the remark after Lemma 25.1.2 on printed page 5. This is an independent proof of that remark, including the construction of the homogeneous test symbols and its precise pointwise scope.
 
-Exact earlier proofs are [the dyadic endpoint and Sobolev comparison](../20261004-free-intrinsic-graph/prerequisites/dyadic-endpoint.md), [ordinary composition and commutators](../20261004-free-intrinsic-graph/prerequisites/ordinary-operator-calculus.md), [proper conic parametrices](../20261004-free-intrinsic-graph/prerequisites/conic-parametrices-and-localization.md), [symplectic complements, Hamilton fields and conic slices](../20261005-restored-phase-space/phase-space-and-generating-families.md), and [ordinary intrinsic regularity and its phase criterion](../20261005-restored-intrinsic-regularity/intrinsic-lagrangian-regularity.md). Their exact current sources and full dependencies are in the proof map. Required human foundations remain external.
+Exact earlier proofs are the dyadic endpoint and Sobolev comparison, ordinary composition and commutators, proper conic parametrices, [symplectic complements, Hamilton fields and conic slices](../20261005-restored-phase-space/phase-space-and-generating-families.md), and [ordinary intrinsic regularity and its phase criterion](../20261005-restored-intrinsic-regularity/intrinsic-lagrangian-regularity.md). Their exact current sources and full dependencies are in the proof map. Required human foundations remain external.
 
 ## 1. A fixed endpoint for every finite word
 

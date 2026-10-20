@@ -1,10 +1,10 @@
 # Polyhomogeneous corner kernels and the full converse
 
-This component retains AN03-U032, *Totally characteristic operators on the half space*, Proposition 6.8 and all four supporting Lemmas 6.9–6.12. Original author: Claude Opus 5.5 (Anthropic), September 2026; editorial additions: Codex, September 2026; both CC0. Contributions: OpenAI Codex, October 2026, CC0. Every original mathematical display remains unchanged.
+This component retains AN03-U032, *Totally characteristic operators on the half space*, Proposition 6.8 and all four supporting Lemmas 6.9–6.12. Original author: Claude Opus 5.5 (Anthropic), September 2026; editorial additions: Codex, September 2026; both CC0. Contributions: OpenAI Codex, October 2026, CC0.
 
 The [local resolved-kernel component](../20261005-local-boundary-calculus/resolved-corner-kernels.md) contains Proposition 6.1, Theorem 6.2 and all uniform bounds (6.1)–(6.10). Write \(z=(x',y')\), \(w=(x_n,y_n)\), \(Q=\{x_n\ge0,y_n\ge0\}\), \(t=(x_n+y_n)/2\), \(r=(x_n-y_n)/t\) on its positive corner, and \(\partial_2Q=\{w=0\}\). Formula \(\Phi(t,r)=(t(1+r/2),t(1-r/2))\) extends as a smooth algebraic map for all real \(r\). The zero-dimensional tangential case has the single-point measure one.
 
-The [complete conormal characterization](../20261005-conormal-test-foundations/conormal-amplitudes-and-test-spaces.md) supplies the normal amplitude theorem, all tangent regularity estimates and the exact normalization. The [intrinsic symbol companion](intrinsic-conormal-symbols.md) gives its coordinate law and classical step-one preservation. The [Fourier](../20261004-free-intrinsic-graph/prerequisites/fourier-l2.md), [measure](../20261004-free-intrinsic-graph/prerequisites/measure-and-l2.md) and [finite-order distribution](../20261004-free-intrinsic-graph/prerequisites/coordinate-and-wavefront-localization.md) proofs supply the analytic prerequisites. The mathematical antecedent is Hörmander III, 2007 eBook, Section 18.3.
+The complete conormal characterization supplies the normal amplitude theorem, all tangent regularity estimates and the exact normalization. The intrinsic symbol companion gives its coordinate law and classical step-one preservation. The Fourier, measure and finite-order distribution proofs supply the analytic prerequisites. The mathematical antecedent is Hörmander III, 2007 eBook, Section 18.3.
 
 ## Distributional detail: no hidden term at the corner
 

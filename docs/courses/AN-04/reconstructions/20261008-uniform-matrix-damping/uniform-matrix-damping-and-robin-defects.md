@@ -184,7 +184,7 @@ This is WSL:L6 applied to \(u\) itself, not to its normal derivative. If \(\beta
                   +C\|\beta\|_{H^{1/2}}\|u\|_{\mathcal X_0}.
  \tag{MD20}
 \]
-Thus MD17 keeps only the homogeneous order-one Robin form, plus a controlled defect. We do not assert that \(\mathcal B_\kappa\) has a favorable sign or that it is bounded by the lower norm. This remaining term is a concrete analytic obligation in the full strict-propagation proof.
+Thus MD17 keeps only the homogeneous order-one Robin form, plus a controlled defect. We do not assert that \(\mathcal B_\kappa\) has a favorable sign or that it is bounded by the lower norm. The full strict-propagation estimate must retain or bound this boundary term.
 
 **D5. The scalar weight's Robin defect is uniformly lower order.** For fixed real \(s\), put
 \[

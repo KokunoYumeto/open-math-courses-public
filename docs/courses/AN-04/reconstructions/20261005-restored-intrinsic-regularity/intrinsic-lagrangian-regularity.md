@@ -4,8 +4,8 @@ A phase representation tells us how to produce a singular distribution. An intri
 
 The exact earlier programme proofs used below are:
 
-- [L2 completeness and compact smooth density, M6–M8](../20261004-free-intrinsic-graph/prerequisites/measure-and-l2.md), [Fourier extension, L1–L3](../20261004-free-intrinsic-graph/prerequisites/fourier-l2.md), and [dyadic endpoints, B1–B6](../20261004-free-intrinsic-graph/prerequisites/dyadic-endpoint.md).
-- [Ordinary operator calculus, O0–O6](../20261004-free-intrinsic-graph/prerequisites/ordinary-operator-calculus.md), [coordinate and frame transport, T0–T3 and W1–W5](../20261004-free-intrinsic-graph/prerequisites/coordinate-and-wavefront-localization.md), and [matrix parametrices and intrinsic localization, K0–K7](../20261004-free-intrinsic-graph/prerequisites/conic-parametrices-and-localization.md).
+- L2 completeness and compact smooth density, M6–M8, Fourier extension, L1–L3, and dyadic endpoints, B1–B6.
+- Ordinary operator calculus, O0–O6, coordinate and frame transport, T0–T3 and W1–W5, and matrix parametrices and intrinsic localization, K0–K7.
 - The [phase-space lesson](../20261005-restored-phase-space/phase-space-and-generating-families.md) and [oscillatory-distribution lesson](../20261005-restored-oscillatory/oscillatory-distributions-and-order.md), together with [frequency coordinates, C0–C5](../20261004-free-intrinsic-graph/prerequisites/conic-frequency-coordinates.md), and the fully proved [frequency-graph criterion](../20261004-free-intrinsic-graph/intrinsic-frequency-graphs.md).
 - [Prescribed-phase reconstruction, F0–F6](../20261004-free-intrinsic-graph/prerequisites/prescribed-phase-representation.md), [homogeneous symbol transport, H2 and H5–H6](../20261004-free-canonical-composition/homogeneous-symbol-transport.md), and [Sobolev localization and refinement, S0–S5](../20261004-free-intrinsic-graph/prerequisites/sobolev-order-refinement.md).
 

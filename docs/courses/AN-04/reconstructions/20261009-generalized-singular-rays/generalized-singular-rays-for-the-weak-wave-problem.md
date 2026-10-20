@@ -181,7 +181,7 @@ One useful consequence needs no uniqueness. Let \(A\subset O\) be an open region
 \]
 Otherwise T6 would provide a maximal ray through \(q\) contained in \(F\), which cannot meet \(A\). In a finite-contact region it suffices to check the unique ray. At infinite contact, regularity on just one possible continuation does not satisfy this premise.
 
-This completes generalized singular propagation for (SR1)–(SR3). The broader scalar distributional coefficient class, distributions realizing prescribed limiting broken rays, sharp Airy energy mapping, and all remaining HIII21/23/24 and HIV25/26 obligations remain part of the full AN-04 goal. No completion of those tasks is inferred from this theorem.
+This completes generalized singular propagation for (SR1)–(SR3). The theorem concerns the stated weak-wave problem. A broader distributional coefficient class, distributions on prescribed limiting broken rays and sharp Airy energy mapping require their respective hypotheses and arguments.
 
 ## 9. Three solved exercises
 

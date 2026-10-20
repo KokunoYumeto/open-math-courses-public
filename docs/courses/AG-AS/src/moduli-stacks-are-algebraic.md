@@ -392,7 +392,7 @@ A compatible family of isomorphisms gives a unique homomorphism of the algebraiz
 
 ## 10. Precisely imported inputs and scope
 
-The proofs above construct Hom, Isom, both coherent-stack algebraicity results and the Quot, Hilbert and Picard consequences. The following list specifies their cohomological and algebraic inputs. The supporting reference list contains 848 entries with included arguments or exact programme-proof bindings; that accounting is not an assertion that every recursive dependency is proved here. The [global boundary quotient assertion](#native-perfect-lemma-pseudo-coherent) is false, as shown by a locally cyclic sheaf with no global sections on the affine plane. The raw topological-fibre bound holds for every separated Noetherian algebraic space and every integer bound $d\geq1$. The cases $d\geq2$ and $d=1$ follow from the proper-model and norm arguments, respectively. In particular every such space with a raw-size-one affine étale presentation is affine, including targets with arbitrary singular curve components. The same vanishing conclusion holds after any affine base change of an integral separated Noetherian curve with a descended affine étale presentation. A partial-involution presentation satisfying the inverse-extension condition in its image ring has affine target, including non-injective localisations. The reduction uses the schematic closure of the overlap and a finite closed cover. Every raw-size-one atlas whose geometric fibres have at most two points has the closed partial-involution normal form below, with an exact arbitrary-module obstruction. The normalized cohomology complex identifies first cohomology on the original target as the additive quotient of the localized module by chart sections and invariant sections, in every characteristic. Every nonzero obstruction in this quadratic class already occurs in a finite-type quasi-coherent subsheaf, so the universal module test is equivalent to its finite-generation test. For every raw bound, the universal vanishing question is equivalent to its structure-sheaf test over the same entire class of spaces, using split square-zero thickenings that preserve the atlas fibres. On a principal quadratic overlap, tensor powers of one invertible sheaf give an exhaustive test for all quasi-coherent first cohomology; field overlaps are automatically principal and have the exact invariant-field density test. Every field-overlap target has equivalent affineness to a quotient with a completely integrally closed Goldman chart. Its rank-one valuation representation gives an exact density test over a pointwise compact normalized family. In the principal quadratic normal form, a reciprocal cofinal parameter in the Jacobson radical forces affineness in every characteristic. For proper field-overlap charts this parameter condition is also necessary. The whole normalized rank-one valuation family can fail Zariski quasi-compactness even for an eligible completely integrally closed chart with affine target. Any counterexample in the whole quadratic field-overlap class would yield one with a countable completely integrally closed Goldman chart and overlap field finitely generated over its prime field, preserving a nonzero scalar witness and the closed mixed graph. Its whole normalized rank-one family is compact metrizable for pointwise convergence. The graph gives a finite norm-one positivity cover; a single uniformly positive parameter is not constructed in general. In the whole quadratic field-overlap class, the target is affine when the overlap field is algebraic over a global field, and also for fields algebraic over a finite field. This includes arbitrary algebraic extensions and original localization kernels. In characteristic zero any field-overlap counterexample therefore requires positive transcendence degree over the rationals; in characteristic $p$ it requires transcendence degree at least two over $\mathbf F_p$. In a general completely integrally closed field chart, affineness is also equivalent to a specified directional idempotent in the joint-norm completion. Existence of this idempotent from the graph condition is not proved. The joint completion is finite etale of rank two over the completed fixed field. Affineness of a proper completely integrally closed quadratic field chart is equivalent to its chart projection being an open surjection, or to equality of its chart and fixed-field completions. If the completed fixed ring has a topologically nilpotent unit, closed image suffices by an explicit open mapping argument. Nonaffineness is also equivalent to a positive normalized functional annihilating all conjugation-difference value functions. Universal openness, closed image and exclusion of these functionals are not proved. The completed fixed ring has a topologically nilpotent unit exactly when the joint completion is nondiscrete. For countable overlap fields, affineness is equivalent to surjectivity, or closed image, of the chart projection, without a separate Tate-unit hypothesis. The finitely generated field restriction makes this an exhaustive closed-image test for the entire quadratic field-overlap class; universal closed image is not established. A split finite-etale example shows that uniform nonarchimedean Banach norms, a closed isometric base, a topologically nilpotent unit and the exact two-projection norm identity do not force closed image, even with a quadratic field base-change presentation. The example has no dense subfield and does not refute the actual dense-field criterion. The whole proper valuation family of a Goldman chart is patch compact, and the two graph-separated families have no common nontrivial coarsening. In an eligible affine CIC Gauss chart, an explicit sequence has a rank-one pointwise limit and a different rank-two patch limit. This overring need not be completely integrally closed. An irrational-weight member has no least positive value, so the whole family admits no common uniformizer; this does not rule out another polynomial uniformity condition. Polynomial uniformity is not automatic even on the exact countable finitely generated field class: an explicit non-Noetherian CIC valuation chart with $K=\mathbf Q(z)$, $z$ transcendental over $\mathbf Q_5$ and $K$ dense in $\mathbf C_5$, has the closed mixed graph and affine target. Its completions are $A=B=\mathbf C_5$ and $T=\mathbf C_5\times\mathbf C_5$, with a split projection of closed image, whereas every polynomial violates the necessary uniformity bounds by root approximation. This refutes universal polynomial uniformity, not the original vanishing assertion. A further eligible affine chart in $\mathbf Q(u)$ contains infinitely many distinct valuations with algebraically closed completion, so removing finitely many valuations cannot restore that polynomial condition in general. The full bound for arbitrary quasi-compact separated non-Noetherian algebraic spaces remains unproved in this treatment. The [general Kiehl relative image theorem](#native-perfect-lemma-flat-proper-pseudo-coherent-direct-image-general) follows by finite derived descent. The [general DG derived-Hom lift](#native-dga-lemma-existence-of-derived) is proved by localized Yoneda modules. Named projective and curve scheme results retain their programme sources.
+The proofs above construct Hom, Isom, both coherent-stack algebraicity results and the Quot, Hilbert and Picard consequences. The following list specifies their cohomological and algebraic inputs. The supporting reference list contains 848 entries with included arguments or exact programme-proof bindings; that accounting is not an assertion that every recursive dependency is proved here. The [global boundary quotient assertion](#native-perfect-lemma-pseudo-coherent) is false, as shown by a locally cyclic sheaf with no global sections on the affine plane. The raw topological-fibre bound holds for every separated Noetherian algebraic space and every integer bound $d\geq1$. The cases $d\geq2$ and $d=1$ follow from the proper-model and norm arguments, respectively. In particular every such space with a raw-size-one affine étale presentation is affine, including targets with arbitrary singular curve components. The same vanishing conclusion holds after any affine base change of an integral separated Noetherian curve with a descended affine étale presentation. A partial-involution presentation satisfying the inverse-extension condition in its image ring has affine target, including non-injective localisations. The reduction uses the schematic closure of the overlap and a finite closed cover. Every raw-size-one atlas whose geometric fibres have at most two points has the closed partial-involution normal form below, with an exact arbitrary-module obstruction. The normalized cohomology complex identifies first cohomology on the original target as the additive quotient of the localized module by chart sections and invariant sections, in every characteristic. Every nonzero obstruction in this quadratic class already occurs in a finite-type quasi-coherent subsheaf, so the universal module test is equivalent to its finite-generation test. For every raw bound, the universal vanishing question is equivalent to its structure-sheaf test over the same entire class of spaces, using split square-zero thickenings that preserve the atlas fibres. On a principal quadratic overlap, tensor powers of one invertible sheaf give an exhaustive test for all quasi-coherent first cohomology; field overlaps are automatically principal and have the exact invariant-field density test. Every field-overlap target has equivalent affineness to a quotient with a completely integrally closed Goldman chart. Its rank-one valuation representation gives an exact density test over a pointwise compact normalized family. In the principal quadratic normal form, a reciprocal cofinal parameter in the Jacobson radical forces affineness in every characteristic. For proper field-overlap charts this parameter condition is also necessary. The whole normalized rank-one valuation family can fail Zariski quasi-compactness even for an eligible completely integrally closed chart with affine target. Any counterexample in the whole quadratic field-overlap class would yield one with a countable completely integrally closed Goldman chart and overlap field finitely generated over its prime field, preserving a nonzero scalar witness and the closed mixed graph. Its whole normalized rank-one family is compact metrizable for pointwise convergence. The graph gives a finite norm-one positivity cover; a single uniformly positive parameter is not constructed in general. In the whole quadratic field-overlap class, the target is affine when the overlap field is algebraic over a global field, and also for fields algebraic over a finite field. This includes arbitrary algebraic extensions and original localization kernels. In characteristic zero any field-overlap counterexample therefore requires positive transcendence degree over the rationals; in characteristic $p$ it requires transcendence degree at least two over $\mathbf F_p$. In a general completely integrally closed field chart, affineness is also equivalent to a specified directional idempotent in the joint-norm completion. Existence of this idempotent from the graph condition is not proved. The joint completion is finite etale of rank two over the completed fixed field. Affineness of a proper completely integrally closed quadratic field chart is equivalent to its chart projection being an open surjection, or to equality of its chart and fixed-field completions. If the completed fixed ring has a topologically nilpotent unit, closed image suffices by an explicit open mapping argument. Nonaffineness is also equivalent to a positive normalized functional annihilating all conjugation-difference value functions. Universal openness, closed image and exclusion of these functionals are not proved. The completed fixed ring has a topologically nilpotent unit exactly when the joint completion is nondiscrete. For countable overlap fields, affineness is equivalent to surjectivity, or closed image, of the chart projection, without a separate Tate-unit hypothesis. The finitely generated field restriction makes this an exhaustive closed-image test for the entire quadratic field-overlap class; universal closed image is not established. A split finite-etale example shows that uniform nonarchimedean Banach norms, a closed isometric base, a topologically nilpotent unit and the exact two-projection norm identity do not force closed image, even with a quadratic field base-change presentation. The example has no dense subfield and does not refute the actual dense-field criterion. The whole proper valuation family of a Goldman chart is patch compact, and the two graph-separated families have no common nontrivial coarsening. In an eligible affine CIC Gauss chart, an explicit sequence has a rank-one pointwise limit and a different rank-two patch limit. This overring need not be completely integrally closed. An irrational-weight member has no least positive value, so the whole family admits no common uniformizer; this does not rule out another polynomial uniformity condition. Polynomial uniformity is not automatic even on the exact countable finitely generated field class: an explicit non-Noetherian CIC valuation chart with $K=\mathbf Q(z)$, $z$ transcendental over $\mathbf Q_5$ and $K$ dense in $\mathbf C_5$, has the closed mixed graph and affine target. Its completions are $A=B=\mathbf C_5$ and $T=\mathbf C_5\times\mathbf C_5$, with a split projection of closed image, whereas every polynomial violates the necessary uniformity bounds by root approximation. This refutes universal polynomial uniformity, not the original vanishing assertion. A further eligible affine chart in $\mathbf Q(u)$ contains infinitely many distinct valuations with algebraically closed completion, so removing finitely many valuations cannot restore that polynomial condition in general. For the specified Nagata family of irrational Gauss weights and translated weights over an algebraically closed valued field, every nontrivial involution of $k(x)$ fixing $k$ gives either a proper invariant valuation containing both chart rings, which excludes the closed mixed graph, or an explicit uniformly positive reciprocal gauge. Consequently every separated target in this whole family is affine, in every characteristic. The proof treats all fractional-linear involutions and establishes the required centered-valuation membership and uniform approximation bounds. This does not classify arbitrary CIC Goldman charts or involutions moving the coefficient field. The affine raw-size-one atlas $\mathbf Z_{(5)}[i,1/(2-i)]$ over $\mathbf Z_{(5)}$ has no nonzero global linear trace to the base, although finite congruence approximation proves its invariant-field density. For every exact quadratic field-overlap datum, affineness is equivalent to no connected component of the full joint Banach spectrum meeting both compact conjugate norming sets. The spectrum map from the joint completion to the completed fixed ring has fibres of size at most two. Thus a totally disconnected completed-fixed-ring spectrum forces affineness, and a nonaffine datum would require a nonsingleton connected subset of that spectrum. These conclusions do not establish the general nonfield case or the full raw bound. For the quadratic field-overlap datum, the chart spectrum is exactly the entire normalized rank-one family. The map from the joint spectrum to the completed-fixed-ring spectrum is the quotient by the involution. Its compact norming image has two conjugate sections, extending over an open neighborhood as a trivial two-sheeted topological cover. The completed fixed ring reflects units from the chart completion. Any single generalized rational domain containing the entire norming image must be the whole fixed spectrum; obtaining one inside that split neighborhood is equivalent to affineness. A concrete eligible affine Gauss chart has a closed interval in its completed-fixed-ring spectrum, so total disconnectedness is not forced by the graph condition. These conclusions leave the general extension problem and the full raw bound unresolved. For the exact quadratic field-overlap datum, the trace of the projection kernel is the closed conductor from the completed fixed ring to the chart completion, and is isometric to that kernel. Its extension is the closed direct sum of the conjugate kernels. Affineness is equivalent to the conductor being the unit ideal. A proper conductor quotient is complete and has injective dense finite-etale projections with the exact maximum-norm identity. A uniform constant-quadratic Banach example without the dense-field hypotheses has a conductor quotient with nonzero nilpotents, so quotient uniformity is not a formal consequence. The conductor theorem does not prove the unit-ideal condition or the full raw bound. Idempotents lift uniquely from the separated spectral completion of any complete commutative nonarchimedean ring. For every nonaffine exact quadratic field-overlap datum, quotienting by its proper conductor and then taking separated spectral completions yields another eligible completely integrally closed Goldman chart in the same field, with a nonaffine target. The finite-etale algebra, embedded dense fields and entire normalized valuation norm are identified explicitly. Its joint spectrum is exactly the old closed locus annihilating the extended conductor, proper when the old projection kernel is nonzero. The new projection can have a kernel; no iteration, termination or zero-conductor affineness theorem is asserted. The full bound for arbitrary quasi-compact separated non-Noetherian algebraic spaces remains unproved in this treatment. The [general Kiehl relative image theorem](#native-perfect-lemma-flat-proper-pseudo-coherent-direct-image-general) follows by finite derived descent. The [general DG derived-Hom lift](#native-dga-lemma-existence-of-derived) is proved by localized Yoneda modules. Named projective and curve scheme results retain their programme sources.
 
 - **Limits and modules.** On quasi-compact quasi-separated algebraic spaces, finite-presentation data descend along affine limits, quasi-coherent modules are filtered colimits of finitely presented ones, and relative flatness and proper support eventually descend. The particular support statement is [Stacks, Tag 08K2]. These results permit Noetherian models over finitely generated $\mathbf Z$-algebras.
 - **Perfect approximation and proper-support comparison.** For bounded-above coherent $E$ on a Noetherian space and any $m$, a perfect $P\to E$ is an isomorphism above $m$ and a surjection at $m$ [Stacks, Tags 08HI, 08HJ, 08HP]. For a quasi-separated locally finite type map to a Noetherian base, a perfect $P$ and bounded coherent $G$ that is base-flat and properly supported give perfect $Rf_*R\mathcal Hom(P,G)$, with arbitrary derived base change [Stacks, Tags 0DKK, 08JQ]. Section 5.1 gives the low-Ext application [Tag 08JR].
@@ -17177,6 +17177,1312 @@ Theorem 1 and Section 3,
 ![The dense field construction, split projection and exact root-approximation obstruction to polynomial uniformity](../figures/raw-fibre-polynomial-uniformity-obstruction.png)
 
 *The finite Galois tower (UV4) and strict primitive-generator bounds (UV5) produce the transcendental $z$ and actual dense field in (UV6). The positive reciprocal parameter $q=(z-1)/(z+1)$ gives the closed mixed graph and affine target. Formula (UV7) identifies the actual chart and fixed completions with $\mathbf C_5$ and the joint completion with their product. For every polynomial, root approximation contradicts one of the necessary bounds (UV8), in the two displayed absolute-value cases. The further family (UV9)--(UV10) gives an eligible affine chart with infinitely many distinct valuations having algebraically closed completion, so finite deletion cannot restore the polynomial condition on its whole proper family. Neither construction is a counterexample to vanishing. The editable figure is [raw-fibre-polynomial-uniformity-obstruction.svg](../figures/raw-fibre-polynomial-uniformity-obstruction.svg).*
+
+**Involutions on the Nagata valuation family**
+
+Let $k$ be algebraically closed, with a nontrivial real-valued
+nonarchimedean valuation $w:k^\times\to G\subsetneq\mathbf R$.
+Set $w(0)=+\infty$ and choose $\alpha>0$ outside $G$.
+Since $k$ is algebraically closed,
+$G$ is divisible. In particular no nonzero integer multiple of
+$\alpha$ belongs to $G$. Put $L=k(x)$. Consider the valuations
+$$
+ \begin{split}
+ v_\lambda\Bigl(\sum_i a_ix^i\Bigr)
+     &=\min_i\{w(a_i)+i\lambda\},&&\alpha\leq\lambda\leq2\alpha,\\
+ v_e\Bigl(\sum_i a_i(x+e)^i\Bigr)
+     &=\min_i\{w(a_i)+2i\alpha\},&&\alpha<w(e)<2\alpha,
+ \end{split}                                                    \tag{NG1}
+$$
+extended to rational functions by subtraction, and let
+$R$ be the intersection of their valuation rings.
+For every nontrivial $k$-automorphism $\sigma$ of $L$ of order two,
+$$
+       R\sigma(R)=L\quad\Longrightarrow\quad X_R\text{ is affine}.
+                                                               \tag{NG2}
+$$
+Here $R\sigma(R)$ denotes the generated subring, not an additive sum.
+The target $X_R$ is the quadratic partial-involution quotient of
+(QN1)--(QN9). The assertion includes every characteristic.
+
+**The chart and its bounds.**
+For a linear factor $x-r$, the values in (NG1) are respectively
+$\min\{\lambda,w(r)\}$ and $\min\{2\alpha,w(e+r)\}$.
+They have a common lower bound $\min\{\alpha,w(r)\}$ and upper
+bound $2\alpha$. The factor $x$ itself has values in
+$[\alpha,2\alpha]$. Factoring every nonzero rational function
+over $k$ therefore gives finite constants
+$$
+       m_f\leq v(f)\leq M_f\quad(v\text{ in (NG1)}).           \tag{NG3}
+$$
+For any $c\in k$ with $w(c)>0$, these bounds show $R[1/c]=L$.
+The ring $R$ is proper, since $c^{-1}\notin R$, and completely
+integrally closed: an inequality $v(d)+nv(f)\geq0$ for all
+positive integers $n$ implies $v(f)\geq0$ for every valuation.
+Thus it is a proper CIC Goldman chart.
+It is not a valuation ring. Choose $e\in k$ with
+$\alpha<w(e)<2\alpha$, possible because the nonzero divisible
+group $G$ is dense in $\mathbf R$. The values of $e/x$ at
+$v_\alpha$ and $v_{2\alpha}$ have opposite signs, so neither
+$e/x$ nor $x/e$ belongs to $R$.
+
+The Gauss formulas in (NG1) define valuations. For example,
+the initial polynomial of a product is the product of the two
+nonzero initial polynomials in the associated graded polynomial
+ring, which is a domain. This proves multiplicativity of the
+minimum formula, including weights in $G$. The triangle inequality
+is immediate. Translation of the variable gives the second formula.
+
+**Two separation tests.**
+If a proper valuation ring $V$ of $L$ contains both $R$ and
+$\sigma(R)$, then $R\sigma(R)\ne L$. In particular it suffices
+to find a valuation $v$ containing $R$ with $v\sigma=v$.
+
+In the other direction suppose $q\in L^\times$ satisfies
+$$
+       \sigma(q)=q^{-1},\qquad v(q)\geq\epsilon>0
+                         \quad(v\text{ in (NG1)}).            \tag{NG4}
+$$
+Then $q\in R$ and (NG3) gives $R[1/q]=L$. Moreover
+$q^{-1}=\sigma(q)\in\sigma(R)$, so the generated ring is $L$.
+The target is affine by (JR5). One can also see its invariant-field
+density directly. For $n\geq1$ put
+$$
+ e_n=\frac{q^n}{1+q^n},\qquad
+ c_n=b(1-e_n)+\sigma(b)e_n\quad(b\in L).                       \tag{NG5}
+$$
+The denominators are nonzero because $v(q)>0$. The reciprocal
+identity gives $\sigma(e_n)=1-e_n$ and $\sigma(c_n)=c_n$.
+For $b\ne\sigma(b)$, (NG3) gives
+$v(b-c_n)\geq n\epsilon+m_{b-\sigma(b)}$ uniformly; if
+$b=\sigma(b)$ the difference is zero. Since $v(c)=w(c)>0$
+is constant, these inequalities give $b-c_n\in c^NR$ for each
+fixed $N$ and all large $n$. This is the invariant-field density
+criterion (PW6)--(PW7), and proves affineness without division by two.
+
+**Affine-linear involutions.**
+First let $\sigma(x)=b-x$, with $b\in k$. The map is assumed
+nontrivial; in characteristic two this excludes $b=0$.
+If $w(b)\geq\alpha$, the Gauss valuation $v_\alpha$ is invariant.
+Indeed $w(b)>\alpha$ when $b\ne0$, and
+$v_\alpha(b-x)=\alpha$. Every extension of $w$ to $k(x)$ giving
+$x$ value $\alpha$ equals $v_\alpha$: the monomial values in a
+nonzero polynomial are pairwise distinct, because a nonzero
+integer multiple of $\alpha$ cannot lie in $G$.
+This also covers $b=0$, with $w(0)=+\infty$.
+Consequently the graph condition fails in this case.
+
+If $w(b)<\alpha$, every defining valuation has
+$v(b-x)=w(b)$, so
+$$
+                q=\frac{x}{b-x},\qquad
+                v(q)\geq\alpha-w(b)>0.                       \tag{NG6}
+$$
+This is reciprocal under $\sigma$, and (NG4)--(NG5) prove
+affineness.
+
+**A centered Gauss valuation containing the chart.**
+We need the following membership fact for the remaining involutions.
+For $p\in k$ with $w(p)\geq\alpha$, and $\nu\in G$ with
+$\alpha<\nu<2\alpha$, let $v_{p,\nu}$ be the Gauss valuation
+in $y=x-p$ of weight $\nu$, extending $w$. Then
+$$
+                       R\subset V_{p,\nu}.                    \tag{NG7}
+$$
+To prove this for $f\in R\setminus\{0\}$, factor $f$ into
+linear factors and their inverses. Choose $t\in k$ of value
+$\nu$ such that
+$$
+ w(p+t)=\min\{w(p),\nu\},\qquad
+ w(p+t-r)=\min\{\nu,w(p-r)\}
+$$
+for the finitely many roots and poles $r$ of $f$.
+Each condition forbids only one residue when the two relevant
+values coincide. The residue field of an algebraically closed
+valued field is algebraically closed, hence infinite, so the
+finitely many residues can be avoided. This residue-field fact
+follows by lifting any monic residue polynomial: its roots in
+$k$ are integral, and their reductions split the polynomial.
+Put $e=-p-t$. Its value lies strictly between $\alpha$ and
+$2\alpha$, so $v_e$ occurs in (NG1). On every factor of $f$,
+$$
+ v_e(x-r)=\min\{2\alpha,w(p+t-r)\}
+          =\min\{\nu,w(p-r)\}=v_{p,\nu}(x-r).
+$$
+Constants have the same value as well. Hence
+$v_{p,\nu}(f)=v_e(f)\geq0$, proving (NG7).
+This argument chooses $e$ for the finitely many factors of the
+given $f$; it does not assert one $e$ works for all rational functions.
+
+**Fractional-linear involutions with a pole.**
+Write the involution as
+$$
+        \sigma(x)=\frac{A_0x+B_0}{C_0x-A_0},\quad C_0\ne0,
+        \quad A_0^2+B_0C_0\ne0.
+$$
+With $p=A_0/C_0$, $d=(A_0^2+B_0C_0)/C_0^2$ and $y=x-p$,
+it becomes
+$$
+                         \sigma(y)=d/y.                       \tag{NG8}
+$$
+All these constants are fixed by $\sigma$.
+
+Suppose first that $w(p)\geq\alpha$, including $p=0$.
+Every defining valuation gives $y$ a value in
+$[\alpha,2\alpha]$. Put $h=w(d)$. If $h<2\alpha$, take
+$q=y^2/d$; if $h>4\alpha$, take $q=d/y^2$. Both are reciprocal,
+and respectively
+$$
+               v(q)\geq2\alpha-h>0,
+       \qquad v(q)\geq h-4\alpha>0.                          \tag{NG9}
+$$
+Thus these cases are affine.
+In the remaining case $2\alpha<h<4\alpha$, set $\nu=h/2$.
+Divisibility gives $\nu\in G$, and (NG7) supplies a valuation
+containing $R$. It is invariant under (NG8). Explicitly, for
+$P(y)=\sum_{i=0}^na_iy^i$,
+$$
+ v_{p,\nu}(P(d/y))
+   =\min_i\{w(a_i)+ih+(n-i)\nu\}-n\nu
+   =\min_i\{w(a_i)+i\nu\}.
+$$
+Extension to quotients proves invariance. Therefore the graph
+condition fails. Equality at either endpoint cannot occur,
+because $h\in G$ whereas $2\alpha,4\alpha\notin G$.
+
+It remains to treat $s=w(p)<\alpha$. Every defining valuation
+has $v(y)=s$. If $h\ne2s$, choose $q=y^2/d$ or its inverse
+to make its constant value $|2s-h|$ positive. This again proves
+affineness. If $h=2s$, put $b=p-d/p$.
+The identity
+$$
+           \sigma(x)=b-\frac{d}{p^2}\,
+                                \frac{x}{1-x/p}               \tag{NG10}
+$$
+holds, with $w(d/p^2)=0$ and $v(x/p)>0$ for every defining
+valuation. If $w(b)<\alpha$, (NG10) gives $v(\sigma(x))=w(b)$
+for all those valuations. The reciprocal function
+$q=x/\sigma(x)$ then has value at least
+$\alpha-w(b)>0$, proving affineness. If $w(b)\geq\alpha$,
+(NG10) gives $v_\alpha(\sigma(x))=\alpha$; uniqueness of the
+extension assigning $x$ the value $\alpha$, as proved above,
+makes $v_\alpha$ invariant. The graph condition fails.
+
+These are all nontrivial $k$-linear involutions of $k(x)$.
+Indeed an automorphism sends $x$ to a rational function of
+degree one, since $[k(x):k(f)]$ is the degree of $f$.
+For coprime $P,Q$, the polynomial $P(X)-YQ(X)$ is irreducible
+over $k(Y)$: it is primitive and irreducible, being linear in
+$Y$, in $k[X,Y]$. Its degree in $X$ proves the stated formula.
+A nonscalar matrix representing an involution has trace zero
+by Cayley--Hamilton and its scalar square. If its lower-left
+entry is zero the transformation is $b-x$; otherwise it has
+the form (NG8). This proves the exhaustiveness and (NG2).
+
+The family (NG1) is the family of M. Nagata, *On Krull's
+conjecture concerning valuation rings*, Nagoya Mathematical
+Journal 4 (1952), 29--33, Theorem 1,
+[Primary source](https://doi.org/10.1017/S0027763000022959), with the
+essential corrected argument in *Corrections to my paper
+``On Krull's conjecture concerning valuation rings''*,
+Nagoya Mathematical Journal 9 (1955), 209--212,
+[Primary source](https://doi.org/10.1017/S0027763000023436).
+The theorem concerns this specified family and involutions
+fixing $k$. It does not classify arbitrary CIC Goldman charts,
+involutions moving $k$, non-field overlaps or larger raw bounds.
+
+![All fractional-linear involution cases for the Nagata valuation family and their exact gauge or common-valuation witnesses](../figures/raw-fibre-nagata-involutions.png)
+
+*The proper CIC Goldman chart is defined by the exact family (NG1). For every nontrivial involution fixing $k$, the complete fractional-linear classification gives either the uniformly positive reciprocal function in a green case or the proper invariant valuation in an orange case. The centered valuation in the middle case contains the chart by (NG7); the endpoint equalities are excluded by the value group. Positive reciprocal functions give the fixed-field approximants (NG5), and hence an affine target. A proper common valuation excludes the original closed mixed-graph hypothesis. The theorem treats this specified family; the full raw-fibre bound remains open. The editable figure is [raw-fibre-nagata-involutions.svg](../figures/raw-fibre-nagata-involutions.svg).*
+
+**Finite residue-field traces need not extend to the atlas**
+
+Set $D=\mathbf Z_{(5)}$, $L=\mathbf Q(i)$, $E=D[i]$,
+$\lambda=2+i$ and $\mu=2-i$. Let
+$$
+                   A=E[1/\mu],\qquad U=\operatorname{Spec}A,
+                   \qquad X=\operatorname{Spec}D.             \tag{FT1}
+$$
+The map $U\to X$ is an affine, separated, surjective etale
+morphism of finite presentation. Its raw fibres have size one,
+although its geometric generic fibre has two points. Nevertheless
+$$
+                         \operatorname{Hom}_D(A,D)=0.          \tag{FT2}
+$$
+In particular the inclusion $D\to A$ admits no $D$-linear
+retraction. Pointwise finite residue-field traces do not yield
+a nonzero quasi-coherent trace $f_*\mathcal O_U\to\mathcal O_X$.
+
+**The atlas, including both fibres.**
+The algebra $E=D[T]/(T^2+1)$ is finite etale of rank two:
+it is free with basis $1,i$, and its derivative $2i$ is a unit.
+Localization at $\mu$ preserves etaleness and finite presentation.
+The ring $E$ is the localization of the Gaussian integers at the
+integers prime to $5$. Its primes are $0$, $(\lambda)$ and
+$(\mu)$. For example unique factorization in $\mathbf Z[i]$
+follows from its Euclidean norm: nearest Gaussian-integer
+division gives a remainder of norm at most half the divisor's
+norm. Unique factorization and the equality $5=\lambda\mu$
+give exactly these primes after localization.
+Inverting $\mu$ leaves just $0$ and $(\lambda)$. Consequently
+$$
+             A\otimes_D\mathbf Q=L,\qquad A/5A=\mathbf F_5.
+                                                               \tag{FT3}
+$$
+These are the fibres over the only two points of $X$. Thus the
+map on raw topological spaces is bijective and, since it is etale
+and hence open, is a homeomorphism. Surjectivity and flatness also
+make the morphism faithfully flat. It is not finite: a finite
+etale algebra has locally constant rank, whereas the dimensions
+of the two algebras in (FT3) over their residue fields are two
+and one on the connected scheme $X$.
+
+Let $v_\lambda$ be the discrete valuation of $L$ at the Gaussian
+prime $\lambda$, normalized by $v_\lambda(\lambda)=1$.
+Then $v_\lambda(\mu)=0$, $v_\lambda(5)=1$ and its restriction
+to $\mathbf Q$ is the usual $5$-adic valuation. The valuation
+ring is precisely $A$.
+
+**The linear-functional obstruction.**
+Any $D$-linear map $\phi:A\to D$ extends after localization
+to a $\mathbf Q$-linear map $L\to\mathbf Q$. Every such map
+has the form $z\mapsto\operatorname{Tr}_{L/\mathbf Q}(cz)$
+for a unique $c\in L$. Explicitly, if its values on $1,i$ are
+$u,v\in\mathbf Q$, take $c=(u-vi)/2$. This also proves
+nondegeneracy of the trace representation here.
+
+Suppose $c\ne0$, and let $\sigma(i)=-i$. For every $n\geq0$
+one has $\mu^{-n}\in A$ and
+$$
+ \operatorname{Tr}(c\mu^{-n})
+                =c\mu^{-n}+\sigma(c)\lambda^{-n}.             \tag{FT4}
+$$
+The first summand has the fixed finite value $v_\lambda(c)$.
+The second has value $v_\lambda(\sigma(c))-n$. For all
+sufficiently large $n$, the second is strictly smaller than
+the first and is negative. The ultrametric equality for two
+terms of different values therefore gives
+$$
+ v_5\bigl(\operatorname{Tr}(c\mu^{-n})\bigr)
+                 =v_\lambda(\sigma(c))-n<0.                  \tag{FT5}
+$$
+Thus that trace is not in $D$, contrary to $\phi(A)\subset D$.
+This excludes every nonzero $c$ and proves (FT2). No completeness
+or infinite limiting trace is used.
+
+At the generic point the finite extension $L/\mathbf Q$ has
+a nonzero trace; at the closed point the residue extension in
+(FT3) is the identity of $\mathbf F_5$ and has identity trace.
+The generic trace already fails to preserve $A$: for $c=1$
+in (FT4), its value is $-n$ for $n>0$. The stronger (FT2)
+excludes every other global $D$-linear functional as well.
+
+**The precise relation and the successful approximation.**
+The finite etale algebra $E$ has
+$E\otimes_D E\simeq E\times E$, where the factors are the
+identity and conjugate embeddings. After inverting $\mu$ in
+both tensor factors this becomes
+$$
+              A\otimes_D A\simeq A\times L.                  \tag{FT6}
+$$
+On the identity factor the only inverted element is $\mu$;
+on the conjugate factor both $\mu$ and $\lambda$ are inverted,
+which gives $L$. Thus the off-diagonal part of the etale
+relation is the generic open $\operatorname{Spec}L$ in $U$,
+with involution $\sigma$. This is an eligible separated
+quadratic partial-involution datum, with chart $A$ and overlap
+$L$. Its fixed overlap field is $\mathbf Q$.
+
+There is a direct algebraic approximation proving
+$$
+                             L=A+\mathbf Q.                  \tag{FT7}
+$$
+For every $N\geq1$ choose an integer $r_N$ such that
+$r_N\equiv3\pmod5$ and $r_N^2+1\equiv0\pmod{5^N}$.
+These choices exist inductively: given $r_N$, set
+$r_{N+1}=r_N+5^Nt$ and solve the resulting single linear
+congruence modulo $5$, since $2r_N$ is invertible there.
+In $A$ the factor $i+r_N$ is a unit, because its residue is
+$3+3=1$ in $\mathbf F_5$. The identity
+$$
+                (i-r_N)(i+r_N)=-(r_N^2+1)
+$$
+therefore gives $v_\lambda(i-r_N)\geq N$.
+Write any $z\in L$ as $(a+bi)/5^N$ with $a,b\in D$,
+increasing $N$ if necessary. The rational number
+$q=(a+br_N)/5^N$ then satisfies
+$z-q=b(i-r_N)/5^N\in A$, proving (FT7).
+Applying the same argument with arbitrarily high congruence
+precision also makes $\mathbf Q$ dense for the chart topology.
+
+The target $X$ in (FT1) is affine and has zero positive
+quasi-coherent cohomology. Formula (FT7) agrees with the exact
+quadratic obstruction (QE4); the stronger invariant-field
+approximation agrees with (PW6)--(PW7). This example rules out
+a global trace-retraction argument for arbitrary raw-size-one
+etale atlases, even over a Noetherian affine base. It supplies
+no counterexample to the vanishing assertion. Gluing
+quasi-coherent sheaves in an etale Mayer--Vietoris square does
+not assert that such a global trace exists.
+
+**Connected components and the quadratic projection**
+
+Use the exact quadratic field-overlap datum of (FE1)--(FE8).
+Thus $R\subset K=R[1/a]$ is a proper completely integrally closed
+Goldman chart, $\sigma$ is a nontrivial field involution,
+$R\sigma(R)=K$, and $S$ is the whole normalized rank-one family
+with $v(a)=1$. Put $C=K^\sigma$. Let $A$ be the completion of
+$C$ for the chart norm, $B$ the chart completion of $K$, and
+$T=A\otimes_C K$ its joint completion. The joint norm is
+power-multiplicative. For a Banach ring $H$, write $\mathcal M(H)$
+for its space of multiplicative seminorms bounded by the specified
+norm, with the topology of pointwise evaluation.
+
+Each $v\in S$ extends to a point $\beta_v\in\mathcal M(T)$.
+Define the compact subsets
+$$
+ E=\{\beta_v:v\in S\},\qquad
+ E^\sigma=\{\beta_v\circ\sigma:v\in S\}.
+                                                               \tag{SP1}
+$$
+Continuity of these maps follows first on the dense field $K$
+and then on $T$ by uniform approximation: the seminorm error
+is bounded by the joint-norm error. They are injective on $S$,
+and compactness follows from (FG6). The two sets are disjoint.
+Otherwise one valuation ring on $K$ would contain both $R$ and
+$\sigma(R)$, and hence $K$, although its valuation of $a$ is one.
+Moreover
+$$
+ \|t\|=\max_{\beta\in E\cup E^\sigma}\beta(t)\qquad(t\in T).
+                                                               \tag{SP2}
+$$
+No equality between $E\cup E^\sigma$ and the full spectrum is
+assumed here.
+
+**Clopen subsets and idempotents.**
+We need the following Banach-ring form of the idempotent theorem.
+If a complete nonarchimedean ring $H$ has a norm equal to the
+supremum of a family of multiplicative seminorms, every clopen
+subset $V\subset\mathcal M(H)$ is the support of a unique
+idempotent of $H$. Here the support is where that idempotent has
+seminorm one. The assertion also applies when $H$ has no
+topologically nilpotent unit.
+
+For clarity, this last case can be reduced to the Tate case
+without adding a hypothesis on $H$. Fix $0<r<1$. Let $D$ be
+the ring of formal Laurent series $\sum_{n\in\mathbf Z}h_nz^n$
+with $h_n\in H$ and $\|h_n\|r^n\to0$ as $|n|\to\infty$.
+Equip it with the weighted norm
+$$
+ \left\|\sum h_nz^n\right\|_D=\sup_n\|h_n\|r^n .
+                                                               \tag{SP3}
+$$
+This is the completion of $H[z,z^{-1}]$ for the displayed
+Gauss norm. Its multiplication is the continuous extension of
+polynomial multiplication. For each $\beta\in\mathcal M(H)$,
+coefficient evaluation gives a bounded homomorphism
+$$
+ D\longrightarrow\mathcal H(\beta)\{z/r,z^{-1}r\},
+$$
+where $\mathcal H(\beta)$ is the completed residue field.
+The target Gauss norm is multiplicative. For Laurent polynomials
+this follows by choosing, in each factor, the least index
+attaining its maximal weighted coefficient norm: the product
+coefficient at the sum of these indices has exactly one term
+of maximal norm. Completion preserves that identity. The target
+is therefore an integral domain. The same Gauss construction
+provides a continuous section of
+$\mathcal M(D)\to\mathcal M(H)$.
+
+The norm of $D$ is the supremum of these Gauss seminorms,
+because the given norm of $H$ is already a supremum of
+multiplicative seminorms. Thus $D$ is uniform and $z$ is a
+uniform topologically nilpotent unit, with
+$\|z\|_D=r$ and $\|z^{-1}\|_D=r^{-1}$.
+Its unit ball is an open integrally closed ring of integral
+elements: a monic integral equation can be tested under every
+Gauss seminorm, where a root of norm greater than one would
+give a uniquely dominant monic term.
+
+The clopen inverse image of $V$ in $\mathcal M(D)$ consequently
+comes from an idempotent $F\in D$. The precise external
+idempotent theorem used at this step is Kedlaya--Liu,
+*Relative p-adic Hodge theory: Foundations*,
+Proposition 2.6.4, together with the correspondence of clopen
+subsets of the two spectra in Definition 2.4.8. All its Tate
+and integral-element hypotheses hold for this $D$.
+For every $\beta$, the image of $F$ in the integral domain
+$\mathcal H(\beta)\{z/r,z^{-1}r\}$ is the constant zero or one.
+Write $F=\sum h_nz^n$. For $n\ne0$, every multiplicative
+seminorm on $H$ annihilates $h_n$; the supremum norm therefore
+gives $h_n=0$. Hence $F=h_0\in H$. Its support is $V$, as
+seen under the Gauss section. If two idempotents have the same
+support, their images in every completed residue field are the
+same zero or one, and the supremum norm annihilates their
+difference. This proves uniqueness and the stated general form.
+
+**The compact-space separation step.**
+In any compact Hausdorff space, a connected component is the
+intersection of the clopen neighborhoods of any one of its
+points. Here is a proof of the direction needed below. Write
+$Q_x$ for that intersection. If $Q_x$ were disconnected, its
+two nonempty compact pieces would have disjoint open
+neighborhoods $U_1,U_2$ covering $Q_x$. Each point outside
+$U_1\cup U_2$ is excluded by a clopen neighborhood of $x$.
+Compactness supplies finitely many such neighborhoods; their
+intersection $N$ is clopen, contains $Q_x$, and lies in
+$U_1\cup U_2$. Both $N\cap U_i$ are then clopen in the whole
+space. The one containing $x$ excludes the other piece of
+$Q_x$, a contradiction. Thus $Q_x$ is connected and is
+exactly the connected component of $x$.
+
+It follows that two compact disjoint sets $E_0,E_1$ can be
+separated by a clopen set if and only if no connected component
+meets both. Indeed, for each $x\in E_0$ and $y\in E_1$ in
+different components, a clopen neighborhood of $x$ excludes
+$y$. Finitely many intersections exclude all of $E_1$ for
+each fixed $x$; finitely many unions then contain all of $E_0$.
+The converse follows because a connected set cannot cross a
+clopen partition.
+
+Apply this fact to $E,E^\sigma$ in $\mathcal M(T)$ and use
+the idempotent theorem just proved. If a clopen set contains
+$E^\sigma$ and avoids $E$, its idempotent $e$ satisfies
+$|e|_S=0$. At every point of $E$, $\sigma(e)$ has image one,
+and at every point of $E^\sigma$, $\sigma(e)$ has image zero.
+Thus $e+\sigma(e)-1$ vanishes under the whole norming family
+(SP2), so it is zero. Formula (JC1) gives affineness. Conversely
+a directional idempotent in (JC1) has a clopen support
+containing $E^\sigma$ and avoiding $E$. Therefore
+$$
+ \begin{gathered}
+ X_R\text{ affine}\quad\Longleftrightarrow\\
+ \text{no connected component of }\mathcal M(T)\\
+ \text{meets both }E\text{ and }E^\sigma .
+ \end{gathered}
+                                                               \tag{SP4}
+$$
+In particular a bare nontrivial idempotent, or disconnectedness
+without this separation property, is insufficient.
+
+**The completed fixed-ring spectrum.**
+The restriction map
+$$
+ \begin{gathered}
+ p:\mathcal M(T)\longrightarrow\mathcal M(A),\\
+ \#p^{-1}(\alpha)\leq2\quad(\alpha\in\mathcal M(A)).
+ \end{gathered}
+                                                               \tag{SP5}
+$$
+To check this without a closed-image assertion, fix
+$\alpha\in\mathcal M(A)$. The field $C$ embeds in
+$\mathcal H(\alpha)$: every nonzero element of $C$ is a unit
+of $A$ and cannot have seminorm zero. Its image is dense there.
+Indeed $C$ is dense in $A$, hence dense in the image of $A$;
+inversion in the completed valued field also approximates
+fractions of nonzero elements of that image.
+For any $\beta$ over $\alpha$, completion extends this
+inclusion to an isometric embedding
+$\mathcal H(\alpha)\to\mathcal H(\beta)$.
+The resulting homomorphism on $T$ factors through
+$$
+ \mathcal H(\alpha)\otimes_A T
+               =\mathcal H(\alpha)\otimes_C K.
+$$
+This is a finite etale algebra of dimension two over the
+complete valued field $\mathcal H(\alpha)$, hence a product
+of at most two finite separable field extensions. A
+multiplicative seminorm chooses one factor. Its absolute value
+on that factor is unique: the two extending absolute values
+are homogeneous vector norms over a complete valued field,
+so (UV1) makes them equivalent; applying the comparison to
+all positive powers makes them equal. Thus there are at most
+two possible $\beta$. This argument also includes a trivial
+absolute value on the residue field.
+
+Suppose $\mathcal M(A)$ is totally disconnected. Every connected
+subset of $\mathcal M(T)$ has a one-point image under $p$;
+by (SP5) it is contained in a finite fibre, and is therefore
+a singleton. Thus $\mathcal M(T)$ is totally disconnected.
+The compact-space separation step and (SP4) now prove
+$$
+ \begin{gathered}
+ \mathcal M(A)\text{ totally disconnected}\\
+ \Longrightarrow\quad X_R\text{ affine}.
+ \end{gathered}
+                                                               \tag{SP6}
+$$
+For example this applies when $A$ is isometrically a finite
+product of complete multiplicatively valued fields. A
+multiplicative seminorm on such a product chooses one factor
+by its idempotents, and the upper bound on an element and its
+inverse forces its restriction to be that factor's absolute
+value. Its spectrum is finite. In particular a multiplicative
+restricted chart norm on $C$, whose completion is a valued
+field, is a sufficient hypothesis here.
+
+Conversely, if this quadratic field-overlap target is nonaffine,
+(SP4) gives a connected component $Z\subset\mathcal M(T)$
+meeting both $E$ and $E^\sigma$. It contains two distinct
+points by (SP1). Its image under $p$ cannot be a singleton,
+because (SP5) would put this connected set in a finite fibre.
+Consequently
+$$
+ \begin{gathered}
+ X_R\text{ nonaffine}\quad\Longrightarrow\\
+ \exists Z_0\subset\mathcal M(A):\\
+ Z_0\text{ connected},\quad\#Z_0>1.
+ \end{gathered}
+                                                               \tag{SP7}
+$$
+This is a necessary condition on a counterexample in the
+quadratic field-overlap class. Neither the existence of such
+a datum nor its exclusion follows from (SP1)--(SP7).
+Non-field overlaps and the full raw-fibre vanishing assertion
+have additional hypotheses and are not settled by this criterion.
+
+The spectrum conventions, compactness and residue fields used
+above are Kedlaya--Liu, Section 2.3, especially Definition 2.3.2
+and Definition 2.3.8. The cited version is arXiv:1301.0792v5,
+9 May 2015: [Primary source](https://arxiv.org/abs/1301.0792v5).
+
+![Exact raw fibres, absence of a global linear trace and successful invariant-field approximation](../figures/raw-fibre-finite-trace-boundary.png)
+
+*The generic raw fibre has degree two and the closed raw fibre degree one. The atlas is not finite. The valuation calculation (FT4)--(FT5) gives no nonzero base-linear functional, while finite congruence lifting (FT6)--(FT7) proves invariant-field density and the affine target. The editable figure is [raw-fibre-finite-trace-boundary.svg](../figures/raw-fibre-finite-trace-boundary.svg).*
+
+![Clopen separation and the connected-component obstruction in the joint Banach spectrum](../figures/raw-fibre-spectral-components.png)
+
+*The compact conjugate norming sets are disjoint. A clopen separator supplies the directional idempotent (SP4). The finite-fibre projection (SP5) proves affineness when the completed fixed-ring spectrum is totally disconnected (SP6). The lower panel illustrates the necessary conditional configuration (SP7); it does not construct a counterexample or identify the full spectrum with the norming sets. The editable figure is [raw-fibre-spectral-components.svg](../figures/raw-fibre-spectral-components.svg).*
+
+**The norming subset and its split neighborhood**
+
+Retain the exact quadratic field-overlap datum and notation of
+(SP1)--(SP7). Thus $C=K^\sigma$, $A$ is the completion of $C$,
+$B$ the chart completion of $K$, and $T=A\otimes_C K$ the
+joint completion. Put $Y=\mathcal M(T)$ and $Z=\mathcal M(A)$.
+The two compact conjugate norming sets in $Y$ are $E$ and
+$E^\sigma$. Let $p:Y\to Z$ be restriction and put $D=p(E)$.
+
+The spectrum of the chart completion has an exact description:
+$$
+                   \mathcal M(B)=S.                         \tag{SN1}
+$$
+Indeed every nonzero element of $K$ is a unit of $B$, so a
+bounded multiplicative seminorm $\beta$ of $B$ restricts to an
+absolute value on $K$. The chart norm gives
+$|a|_B=1/2$ and $|a^{-1}|_B=2$; the two bounds and
+multiplicativity force $\beta(a)=1/2$. Also
+$\beta(r)\leq1$ for every $r\in R$. Thus
+$w(x)=-\log_2\beta(x)$ is one of the entire normalized
+rank-one family $S$. Conversely every member of $S$ extends
+to $B$. Density of $K$ makes these extensions unique and
+identifies the pointwise topologies, by uniform approximation.
+In particular the map $\mathcal M(B)\to Y$ induced by the
+chart projection has image exactly $E$.
+
+**The quotient and the two sections.**
+The map $p$ is onto and its fibres are exactly the
+$\{1,\sigma\}$-orbits. To see the orbit assertion, the
+residue-field factorization in (SP5) is either one separable
+quadratic field or the product of two copies of
+$\mathcal H(\alpha)$. In the field case uniqueness of the
+extending absolute value makes its point fixed by $\sigma$;
+in the split case $\sigma$ exchanges the two factors.
+Surjectivity is the finite faithfully etale spectrum theorem,
+Kedlaya--Liu, Lemma 2.3.14: $T$ is finite free of rank two
+and (FE1) gives precisely its complete finite-module topology.
+That lemma does not assume a Tate unit. Norm equivalence
+does not change the bounded multiplicative seminorms here:
+apply a constant norm comparison to $x^n$ and take $n$th roots.
+
+Both spectra are compact Hausdorff, so the induced continuous
+bijection from the finite-group quotient is a homeomorphism.
+Consequently
+$$
+              Y/\{1,\sigma\}\simeq Z,
+                   \qquad p\text{ is open and closed}.       \tag{SN2}
+$$
+For openness, the inverse image of the image of any open set
+$O$ is $O\cup\sigma(O)$, which is open; closedness follows
+from compactness.
+No two distinct points of $E$ have the same image under $p$:
+otherwise the orbit description would put a point in
+$E\cap E^\sigma$, contrary to (SP1). Therefore
+$$
+ E\simeq D\simeq E^\sigma,\qquad
+                  p^{-1}(D)=E\amalg E^\sigma .               \tag{SN3}
+$$
+These are homeomorphisms of compact spaces. The set $D$ is a
+closed norming subset of $Z$: the isometric inclusion $A\subset B$
+gives $\|f\|_A=\max_{\alpha\in D}\alpha(f)$ for every $f\in A$.
+
+There is always an open neighborhood $V\subset Z$ of $D$
+over which $p$ is a trivial two-sheeted topological cover.
+Choose disjoint open sets $U_0,U_1\subset Y$ containing
+$E,E^\sigma$, respectively, and put
+$O=U_0\cap\sigma(U_1)$. Then $E\subset O$ and
+$O\cap\sigma(O)=\varnothing$. The compact invariant set
+$F=Y\setminus(O\cup\sigma(O))$ misses $p^{-1}(D)$. Define
+$$
+ V=Z\setminus p(F),\qquad
+ p^{-1}(V)=O_V\amalg\sigma(O_V),\quad
+                         O_V=O\cap p^{-1}(V).               \tag{SN4}
+$$
+The map $p$ is closed, so $V$ is open and contains $D$.
+Every fibre above $V$ is an orbit meeting each displayed
+summand once; it cannot be a fixed orbit because the two
+open sets are disjoint. The restrictions of the open map
+$p$ to the summands are continuous open bijections, hence
+homeomorphisms onto $V$.
+This assertion concerns the spectral spaces; it does not
+assert a splitting of $T$ as an $A$-algebra.
+
+**Inverses and rational neighborhoods.**
+The inclusion $A\subset B$ reflects units:
+$$
+                   A\cap B^\times=A^\times.                 \tag{SN5}
+$$
+For if $f\in A$ is a unit of $B$, choose nonzero $c_j\in C$
+converging to $f$. Inversion is continuous on the open unit
+group of a Banach ring, as follows directly from the
+geometric series for $1+f^{-1}(c_j-f)$ when its error has
+norm less than one. Thus $c_j^{-1}\to f^{-1}$ in $B$.
+All these inverses belong to $C\subset A$, and $A$ is closed
+in $B$, proving (SN5). In particular invertibility in $A$
+is detected by nonvanishing on $D$: nonvanishing there
+means nonvanishing on $\mathcal M(B)$ by (SN1)--(SN3),
+and hence invertibility in $B$, by the Banach spectrum
+unit criterion, Kedlaya--Liu, Corollary 2.3.7.
+
+Here is the resulting restriction on a single generalized
+rational domain. Let $f_1,\ldots,f_m,g\in A$ and
+$r_1,\ldots,r_m>0$, and write
+$$
+ W=\{\alpha\in Z:\ \alpha(g)>0,\quad
+                    \alpha(f_i)\leq r_i\alpha(g)\ (1\leq i\leq m)\}.
+$$
+Whenever $D\subset W$, one has
+$$
+                              W=Z.                          \tag{SN6}
+$$
+Indeed $g$ does not vanish on $D$, so it is a unit of $A$
+by (SN5) and the unit criterion. Each $h_i=f_i/g$ belongs
+to $A$ and has norm
+$\|h_i\|_A=\max_{\alpha\in D}\alpha(h_i)\leq r_i$.
+Every bounded seminorm on $A$ obeys the same inequality,
+and $g$ is nonzero under every such seminorm. This proves
+(SN6), including the standard rational domains whose
+defining elements generate the unit ideal.
+
+The following are equivalent in the exact field-overlap datum:
+$$
+ \begin{gathered}
+ X_R\text{ affine};\qquad D=Z;\\
+ \text{some single generalized rational domain }W
+          \text{ satisfies }D\subset W\subset V,
+ \end{gathered}                                               \tag{SN7}
+$$
+where $V$ is any neighborhood constructed in (SN4).
+If $X_R$ is affine, (FE4) identifies $A$ and $B$, so $D=Z$;
+then $V=Z$ and one may take $W=Z$. If $D=Z$, (SN3) writes
+all of $Y$ as two disjoint compact sets $E,E^\sigma$, which
+are therefore clopen, and (SP4) gives affineness. Finally,
+the existence of $W$ implies $W=Z$ by (SN6), so $V=Z$.
+The two open summands in (SN4) are then clopen in $Y$ and
+separate $E$ from $E^\sigma$; (SP4) again gives affineness.
+
+Thus local rational neighborhoods of the separate points of
+$D$ cannot simply be replaced by one rational neighborhood
+of the entire compact set. A finite union is not a single
+domain of the form in (SN6). For a nonaffine datum, every
+connected component of $Y$ meeting both $E$ and $E^\sigma$
+must also meet $Y\setminus p^{-1}(V)$: otherwise its two
+nonempty intersections with the summands of (SN4) would
+disconnect it. By (SP4), such a component would exist.
+It would therefore meet spectral points outside this
+trivializing neighborhood as well as the norming subset.
+
+**An affine target with an interval in its fixed spectrum.**
+The graph condition does not force $Z$ to be totally
+disconnected. Here is an eligible affine example with a
+closed interval inside $Z$. Take $K=\mathbf Q(u)$,
+$\sigma(u)=u^{-1}$, and
+$$
+ v_\lambda\Bigl(\sum_i b_i u^i\Bigr)
+      =\min_i\{v_2(b_i)+i\lambda\},\quad 1\leq\lambda\leq2,
+ \qquad R=\bigcap_{1\leq\lambda\leq2}V_{v_\lambda}.           \tag{SN8}
+$$
+The initial-form product in a graded polynomial domain proves
+the valuation property. Each fixed rational function has
+bounded continuous piecewise-linear value on the interval.
+Consequently $R[1/2]=K$, $R\ne K$, and the all-powers
+inequality in each real-valued valuation proves that $R$
+is completely integrally closed. Also $u/2\in R$ and
+$1/(2u)\in\sigma(R)$, whose product $1/4$ makes
+$R\sigma(R)=K$. The reciprocal $q=u$ has value at least
+one everywhere, and each fixed rational function is brought
+into $R$ by a sufficiently large power of $u$. For $r\in R$,
+every defining valuation gives $1-ur$ value zero, so its
+inverse belongs to $R$. Thus $u\in\operatorname{Jac}(R)$,
+and the reciprocal criterion (JR5) proves affineness.
+
+The norm from this displayed family is exactly the norm
+from the whole normalized family $S$ with $w(2)=1$.
+For if $m/n\leq\min_\lambda v_\lambda(x)$, with
+$m\in\mathbf Z$ and $n>0$, then $x^n/2^m\in R$.
+Every $w\in S$ therefore satisfies $w(x)\geq m/n$.
+Taking rational lower bounds proves
+$w(x)\geq\min_\lambda v_\lambda(x)$. The reverse norm
+inequality follows because every $v_\lambda$ belongs to $S$.
+Thus the continuous map
+$$
+ [1,2]\longrightarrow\mathcal M(B),\qquad
+                  \lambda\longmapsto 2^{-v_\lambda(\,\cdot\,)}
+                                                               \tag{SN9}
+$$
+is well defined. Continuity on $K$ follows from the explicit
+piecewise-linear formula and extends to $B$ uniformly.
+It is injective because its value on $u$ is $2^{-\lambda}$;
+compactness and the Hausdorff property make it a
+homeomorphism onto its image. Since the target is affine,
+(FE4) identifies $A$ and $B$, so this interval also embeds
+in $Z=\mathcal M(A)$. No assertion that it is the whole
+spectrum is needed. This example has connected spectral
+subsets and zero positive quasi-coherent cohomology.
+
+The extra obstruction in (SP4) is a connected component of
+the joint spectrum meeting both conjugate norming sets.
+The existence or exclusion of such a component under the
+full graph hypothesis remains unresolved here. The results
+above concern quadratic field overlaps; arbitrary non-field
+overlaps, larger geometric degrees and the full raw-fibre
+vanishing assertion are not settled by them.
+
+For the two Banach spectrum results used above, see
+K. S. Kedlaya and R. Liu, *Relative p-adic Hodge theory:
+Foundations*, Corollary 2.3.7 and Lemma 2.3.14, arXiv:1301.0792v5,
+9 May 2015: [Primary source](https://arxiv.org/abs/1301.0792v5).
+
+![Exact norming image, split spectral neighborhood, reflected inverses and an affine interval example](../figures/raw-fibre-spectral-neighborhood.png)
+
+*The exact quotient and compact sections are (SN1)--(SN3). Normal separation gives the split open neighborhood (SN4). Limits of inverses give (SN5), forcing the single-rational-domain conclusion (SN6) and the affineness equivalence (SN7). The bottom panel is the actual affine Gauss chart (SN8)--(SN9), whose completed fixed spectrum contains a closed interval. It is not a counterexample to vanishing. The topological neighborhood statement does not assert a global algebra splitting. The editable figure is [raw-fibre-spectral-neighborhood.svg](../figures/raw-fibre-spectral-neighborhood.svg).*
+
+**The projection kernel and the closed conductor**
+
+Retain the exact quadratic field-overlap datum of (FE1)--(FE8).
+Thus $C=K^\sigma$, $A$ is the completion of $C$, $B$ is the
+chart completion of $K$, and $T=A\otimes_C K$ is the joint
+completion. The closed inclusions of $A$ into $B,T$ are
+isometric. Write $\pi:T\to B$ for the dense projection, and
+use the exact norm identity (FE3). Define
+$$
+ J=\ker\pi,\qquad \operatorname{Tr}(z)=z+\sigma(z),\qquad
+                         I=\operatorname{Tr}(J)\subset A.    \tag{KG1}
+$$
+This is the trace of the finite quadratic algebra $T/A$.
+The two ideals $J$ and $\sigma(J)$ are closed; (FE3) gives
+$J\cap\sigma(J)=0$, and hence $J\sigma(J)=0$.
+
+For $j\in J$, the scalar $\operatorname{Tr}(j)$ has image
+$\pi(\sigma(j))$ in $B$. Consequently
+$$
+ \|j\|_T=\|\operatorname{Tr}(j)\|_A,
+ \qquad\operatorname{Tr}:J\xrightarrow{\ \sim\ }I.             \tag{KG2}
+$$
+The trace is $A$-linear, so $I$ is an ideal of $A$.
+The isometry makes it closed in $A$ and in $B$.
+It is also a ring isomorphism without a unit requirement:
+the mixed products of $J$ and $\sigma(J)$ vanish, giving
+$\operatorname{Tr}(jk)=\operatorname{Tr}(j)\operatorname{Tr}(k)$
+for $j,k\in J$.
+
+**The extended ideal and its trace coordinates.**
+Choose a field basis $1,\theta$ of $K/C$ and put
+$t=\theta+\sigma(\theta)$, $n=\theta\sigma(\theta)$ and
+$\Delta=t^2-4n=(\theta-\sigma(\theta))^2\in C^\times$.
+The trace matrix on this basis is
+$$
+ G=\begin{pmatrix}2&t\\t&t^2-2n\end{pmatrix},
+                              \qquad\det G=\Delta.           \tag{KG3}
+$$
+In particular it is invertible in every characteristic.
+If $z=u+v\theta\in T$, inversion of this matrix gives
+$$
+ \begin{split}
+ u&=\Delta^{-1}\bigl((t^2-2n)\operatorname{Tr}(z)
+                         -t\operatorname{Tr}(\theta z)\bigr),\\
+ v&=\Delta^{-1}\bigl(-t\operatorname{Tr}(z)
+                         +2\operatorname{Tr}(\theta z)\bigr).
+ \end{split}
+                                                               \tag{KG4}
+$$
+No division by two is used. For $z\in J$, both traces
+on the right belong to $I$, since $\theta z\in J$.
+Thus $J\subset IT$; the same holds for $\sigma(J)$.
+Conversely $I\subset J+\sigma(J)$ and the latter is an
+ideal of $T$. Therefore
+$$
+                     IT=J\oplus\sigma(J).                   \tag{KG5}
+$$
+This ideal is closed, even when $\pi$ is not onto.
+Indeed, for $j,k\in J$, (FE3) gives
+$$
+ \|j+\sigma(k)\|_T
+       =\max\{\|\operatorname{Tr}(k)\|_A,
+                              \|\operatorname{Tr}(j)\|_A\}.
+$$
+Hence the displayed direct sum is an isometric image of
+the complete product $I\times I$.
+
+The image $\pi(IT)$ is exactly $I$: the first kernel
+summand maps to zero and the second maps to its trace.
+For $i\in I$ and $x\in K$, this implies $ix\in I$
+inside $B$. Approximating any $b\in B$ by elements of
+$K$ and using closedness shows that $ib\in I$.
+Thus $I$ is a closed ideal of $B$, as well as of $A$.
+More precisely it is the exact conductor:
+$$
+ \begin{split}
+ I&=\{c\in A:cB\subset A\}\\
+  &=\{c\in A:c\theta_B\in A\}.
+ \end{split}                                                   \tag{KG6}
+$$
+The first containment follows from its ideal property in
+$B$. For the converse, if $c\theta_B=d\in A$, the element
+$c\theta_T-d$ belongs to $J\subset IT$. Its coefficient
+of $\theta$ in the free basis is $c$, so $c\in I$.
+
+In particular
+$$
+       X_R\text{ affine}\quad\Longleftrightarrow\quad I=A.
+                                                               \tag{KG7}
+$$
+Indeed (FE4) identifies affineness with $A=B$, and (KG6)
+identifies that equality with $1\in I$. Equivalently, if
+$\operatorname{Tr}(j)=1$ for $j\in J$, then
+$j\sigma(j)=0$ gives $j^2=j$ and $\sigma(j)=1-j$;
+this is the directional idempotent of (JC1).
+
+**The complete conductor quotients.**
+Suppose the target is nonaffine, so $I$ is proper. Put
+$$
+ A'=A/I,\qquad B'=B/I,\qquad
+                    T'=T/IT=A'\otimes_C K.                  \tag{KG8}
+$$
+Equip these with quotient norms. They are nonzero complete
+nonarchimedean Banach rings. For completeness of a quotient
+by a closed ideal, take a Cauchy subsequence whose successive
+quotient differences have geometrically decreasing norms;
+choose lifts of those differences with the same decreasing
+bounds up to a fixed factor. Their partial sums are Cauchy
+in the original complete ring and lift the quotient limit.
+Closedness makes the quotient norm nondegenerate, and
+submultiplicativity follows by taking infima of lift norms.
+The inclusion $A'\subset B'$ remains closed and isometric:
+the same closed ideal $I$ is used in both isometric rings.
+
+The induced map $\pi':T'\to B'$ is injective with dense
+image. If $\pi(z)\in I$, subtract that scalar in $T$;
+the remainder is in $J\subset IT$, hence $z\in IT$.
+Density descends from $\pi$. Its conjugate is injective
+too. The algebra $T'$ is still finite etale of rank two
+over $A'$, and the involution descends isometrically.
+The original fields $C,K$ embed and stay dense in their
+respective quotients: nonzero field elements are units
+and cannot belong to the proper defining ideals.
+
+The two-projection norm identity also descends exactly:
+$$
+ \|z'\|_{T'}=\max\{\|\pi'(z')\|_{B'},
+                              \|\pi'(\sigma(z'))\|_{B'}\}.
+                                                               \tag{KG9}
+$$
+To verify this, adjustment by $j+\sigma(k)\in IT$ changes
+the two chart images independently by
+$\operatorname{Tr}(k)$ and $\operatorname{Tr}(j)$.
+Both range over all of $I$. The infimum of the maximum
+of two independently adjusted nonnegative quantities is
+the maximum of their infima: the lower bound is immediate,
+and each quantity can be chosen within any positive error
+of its infimum to give the reverse bound. This argument
+does not require either infimum to be attained.
+
+There is also an exact complete-module formulation. The
+additive quotient $B/A$ is a Banach $A$-module, and
+$$
+ A/I\longrightarrow B/A,\qquad
+                       c\longmapsto c\theta_B\pmod A         \tag{KG10}
+$$
+is a continuous injective map with dense image. Its kernel
+before quotienting is (KG6); density follows because
+$K=C\oplus C\theta$ is dense in $B$ and $C\subset A$.
+The module $B/A$ is not asserted to be a ring.
+
+Neither (KG8) nor (KG9) proves that these quotient norms
+are power-multiplicative, or that the quotient rings are
+uniform. Nor does injectivity and dense finite-etale image
+prove closed image. These are substantive additional
+conditions if one wants another eligible Goldman datum.
+
+**A conductor quotient with nonzero nilpotents.**
+The loss of uniformity is not excluded by the finite-etale
+and norm identities alone. Here is an explicit example
+without the dense-field hypotheses.
+Let $F=\mathbf F_3((s))$ with $|s|=1/2$, and
+$L=\mathbf F_9((s))=F(i)$, where $i^2=-1$.
+The polynomial $X^2+1$ is irreducible over $F$: a root
+would have absolute value one and reduce to a square root of
+$-1$ in $\mathbf F_3$. Its coefficient involution is
+$\overline i=-i$ and preserves the absolute value.
+For $a,b\in F$, residue-field independence gives
+$|a+ib|=\max\{|a|,|b|\}$.
+
+Put $D_0=F\langle x\rangle$, $B_0=L\langle x\rangle$
+with their Gauss norms and define
+$$
+ A_0=D_0+i x^2D_0\subset B_0,\qquad
+                         T_0=A_0\otimes_F L.                \tag{KG11}
+$$
+The ring $A_0$ consists exactly of the series in $B_0$
+whose constant and linear coefficients are in $F$.
+It is a closed subring: multiplication preserves this
+condition, and convergence in Gauss norm preserves every
+coefficient. Thus $A_0,B_0$ are complete and have
+multiplicative Gauss norms; in particular they are uniform.
+As a $D_0$-algebra, $A_0$ has basis $1,y$, with
+$y=i x^2$ and $y^2=-x^4$.
+The algebra $T_0$ is finite etale of rank two over $A_0$
+because $L/F$ is separable quadratic. After extending
+coefficients to $L$, its elements have the unique form
+$H+yG$ with $H,G\in B_0$. The map
+$$
+ H+yG\longmapsto(H+i x^2G,\ H-i x^2G)
+$$
+identifies it with
+$$
+ T_0=\{(h_1,h_2)\in B_0^2:h_1\equiv h_2\pmod{x^2B_0}\}.
+                                                               \tag{KG12}
+$$
+Injectivity follows by adding and subtracting the two
+coordinates, since $2i$ is a unit and $x$ is regular.
+Conversely the congruence permits
+$H=(h_1+h_2)/2$ and $G=(h_1-h_2)/(2i x^2)$ in $B_0$.
+This closed subring of $B_0^2$ has the complete
+power-multiplicative maximum norm. The involution is
+$(h_1,h_2)\mapsto(\overline{h_2},\overline{h_1})$.
+The inclusion of $A_0$ is $a\mapsto(a,\overline a)$;
+it is isometric and its image is the fixed ring. Projection $\pi_0$ to the first factor
+is an open surjection, with the isometric right inverse
+$h\mapsto(h,h)$, and satisfies the same two-projection
+maximum identity.
+
+Its kernels are
+$J_0=\{(0,x^2h):h\in B_0\}$ and its conjugate, so
+$\operatorname{Tr}(J_0)=I_0=x^2B_0\subset A_0$.
+This is exactly the conductor of $A_0\subset B_0$:
+if $a i\in A_0$, the constant and linear coefficients
+of $a$ must both vanish; the converse follows from
+$x^2B_0\subset A_0$. The quotient rings are
+$$
+ \begin{gathered}
+ A_0/I_0\simeq F[\varepsilon]/(\varepsilon^2),\\
+ B_0/I_0\simeq L[\varepsilon]/(\varepsilon^2),\\
+ T_0/(I_0T_0)\simeq L[\varepsilon]/(\varepsilon^2).
+ \end{gathered}                                               \tag{KG13}
+$$
+The last isomorphism is the common coordinate class in
+(KG12); it is finite etale of rank two over the first
+ring. In the quotient Gauss norm,
+$\|\varepsilon\|=1$ but $\varepsilon^2=0$.
+Thus the quotient is not uniform; its spectral seminorm
+annihilates a nonzero element. More directly, every
+$s^{-m}\varepsilon$ is power-bounded, while their norms
+are unbounded as $m\to\infty$. This happens although
+the original rings in (KG11)--(KG12) are uniform and
+the conductor and both kernel ideals are closed.
+
+This example does not satisfy the dense-field datum:
+for every constant $c\in L$ one has
+$\|x-c\|=\max\{1,|c|\}\geq1$. In particular $F$
+is not dense in $A_0$ and $L$ is not dense in $B_0$
+or $T_0$. It is therefore a counterexample to automatic
+uniformity of these structural quotients, not to the
+original cohomological vanishing assertion.
+
+For the actual Goldman datum, (KG1)--(KG10) identify a
+closed conductor and its complete injective quotient.
+They do not prove that this conductor is the unit ideal,
+that the new projection has closed image, or that a
+uniformization would preserve a specified nonaffine
+witness. Arbitrary non-field overlaps and the full raw
+topological-fibre bound remain outside these conclusions.
+
+![Exact closed conductor, injective complete quotient and a structural example losing uniformity](../figures/raw-fibre-kernel-conductor.png)
+
+*The trace isometry and explicit quadratic trace coordinates give the exact closed conductor and its extended ideal (KG1)--(KG6). The unit-ideal condition is equivalent to affineness (KG7). The conductor quotients are complete and have injective dense projections (KG8)--(KG10). The bottom panel gives the exact constant-quadratic example (KG11)--(KG13): its original Banach rings are uniform but the conductor quotients have nonzero nilpotents. The fields in that example are not dense, so it is not a vanishing counterexample. The editable figure is [raw-fibre-kernel-conductor.svg](../figures/raw-fibre-kernel-conductor.svg).*
+
+**Uniform completion of the conductor quotient**
+
+Let $H$ be a commutative complete nonarchimedean normed ring,
+with $\|1\|=1$. Write
+$$
+ \rho_H(h)=\lim_{m\to\infty}\|h^m\|^{1/m},\qquad
+ H^{\mathrm u}=\widehat{H/\ker\rho_H}^{\,\rho_H}.
+                                                               \tag{UF1}
+$$
+The limit exists by submultiplicativity. The spectral seminorm
+is nonarchimedean, submultiplicative and power-multiplicative.
+For example, if $r>\max\{\rho_H(x),\rho_H(y)\}$, there is a
+constant $M$ with $\|x^m\|,\|y^m\|\leq Mr^m$ for all $m$.
+The binomial expansion bounds $\|(x+y)^m\|$ by $M^2r^m$,
+because integers have norm at most one. Taking roots and then
+letting $r$ decrease proves the triangle inequality. The
+product inequality follows from commutativity, and taking a
+subsequence of powers proves power-multiplicativity. These
+properties extend to the separated completion, whose norm is
+power-multiplicative. The natural map $H\to H^{\mathrm u}$
+is contractive and has dense image.
+
+**Idempotents lift without a Tate-unit assumption.**
+The natural map induces a bijection
+$$
+             \operatorname{Idem}(H)
+                  \xrightarrow{\ \sim\ }
+                         \operatorname{Idem}(H^{\mathrm u}). \tag{UF2}
+$$
+Here is a direct proof, valid in every characteristic. Given
+an idempotent $e\in H^{\mathrm u}$, its norm is zero or one.
+Choose $t\in H$ whose image has distance at most
+$\alpha<1$ from $e$, and put $\delta=t^2-t$. Then
+$\rho_H(\delta)<1$, so $\|\delta^m\|\to0$ in the original
+norm. Define
+$$
+ t_0=t,\qquad t_{n+1}=3t_n^2-2t_n^3,
+ \qquad \delta_n=t_n^2-t_n.
+                                                               \tag{UF3}
+$$
+The exact polynomial identities are
+$$
+ \begin{split}
+ \delta_{n+1}&=\delta_n^2(4\delta_n-3),\\
+ t_{n+1}-t_n&=-(2t_n-1)\delta_n.
+ \end{split}                                                   \tag{UF4}
+$$
+Consequently $\delta_n$ is an integral polynomial in
+$\delta$ with every monomial of degree at least $2^n$.
+Thus
+$$
+ \|\delta_n\|\leq\sup_{m\geq2^n}\|\delta^m\|\longrightarrow0.
+$$
+Every $t_n$ is an integral polynomial in $t$. Reducing its
+powers using $t^2=t+\delta$ expresses it as
+$P_n(\delta)+tQ_n(\delta)$, with integral polynomials
+$P_n,Q_n$. If $M=\sup_{m\geq0}\|\delta^m\|$, then
+$\|t_n\|\leq M\max\{1,\|t\|\}$ for all $n$.
+Formula (UF4) now makes successive differences tend to zero.
+The nonarchimedean triangle inequality makes $(t_n)$ Cauchy.
+Its limit $h\in H$ is an idempotent.
+
+For an idempotent $e$ and an error $d$, the same polynomial
+satisfies
+$$
+ 3(e+d)^2-2(e+d)^3-e=(3-6e)d^2-2d^3.
+$$
+The errors in $H^{\mathrm u}$ therefore have norms at most
+$\alpha^{2^n}$, so $h$ maps to $e$. Finally, every nonzero
+idempotent of $H$ has spectral radius one: its positive
+powers are all itself. If idempotents $h,k$ have the same
+image, the idempotents $h(1-k)$ and $k(1-h)$ have spectral
+radius zero and must vanish. Thus $h=k$. No division by two
+and no topologically nilpotent unit is used.
+
+**The spectral norms of the proper conductor quotient.**
+Use the exact quadratic field-overlap datum of (KG1)--(KG10),
+and suppose $X_R$ is nonaffine. Its conductor $I$ is then
+proper. Set
+$$
+ A'=A/I,\qquad B'=B/I,\qquad T'=T/IT=A'\otimes_C K,
+ \qquad C=K^\sigma.
+$$
+These are complete for their quotient norms, $A'\subset B'$
+is closed and isometric, and $\pi':T'\to B'$ is injective
+and dense. Their unit norms are one. Indeed, in any of the
+original complete rings, an ideal containing an element of
+distance less than one from $1$ contains a unit, by the
+geometric series. A proper ideal therefore has distance
+exactly one from $1$.
+
+Write $A^{\mathrm u},B^{\mathrm u},T^{\mathrm u}$ for the
+separated spectral completions of $A',B',T'$, respectively.
+Taking powers in (KG9) gives exactly
+$$
+ \rho_{T'}(z)=\max\{\rho_{B'}(\pi'z),
+                         \rho_{B'}(\pi'\sigma z)\}.           \tag{UF5}
+$$
+On scalar elements of $A'$, all three spectral seminorms
+agree. Hence $A^{\mathrm u}$ embeds as a closed isometric
+subring of $B^{\mathrm u}$ and of $T^{\mathrm u}$.
+
+There is also an exact coefficient argument for the tensor
+product. Choose $1,\theta$ as a basis of $K/C$ and put
+$\eta=\theta-\sigma(\theta)\ne0$. For $z=u+v\theta\in T'$,
+$$
+ v=\eta^{-1}(z-\sigma z),\qquad u=z-v\theta.
+$$
+Let $b=\rho_{T'}(\theta)$ and $d=\rho_{T'}(\eta^{-1})$.
+The involution is isometric, so
+$$
+ \begin{split}
+ \rho_{A'}(v)&\leq d\rho_{T'}(z),\\
+ \rho_{A'}(u)&\leq\max\{1,bd\}\rho_{T'}(z),\\
+ \rho_{T'}(z)&\leq\max\{1,b\}
+                      \max\{\rho_{A'}(u),\rho_{A'}(v)\}.
+ \end{split}                                                   \tag{UF6}
+$$
+Both constants are finite, and $\eta$ remains a unit.
+These inequalities identify both the nullspaces and the
+coefficient Cauchy sequences. The multiplication table has
+coefficients in $C$. Completion therefore gives an algebra
+isomorphism, not merely an unproved comparison of norms:
+$$
+ T^{\mathrm u}=A^{\mathrm u}\oplus A^{\mathrm u}\theta
+              =A^{\mathrm u}\otimes_C K.                     \tag{UF7}
+$$
+It is finite etale of rank two over $A^{\mathrm u}$, with
+fixed ring $A^{\mathrm u}$. In fact $\sigma(z)=z$ forces
+$v\eta=0$, and $\eta$ is invertible. Formula (UF5) extends
+to $T^{\mathrm u}$ by continuity. The extended projection
+$\pi_{\mathrm u}:T^{\mathrm u}\to B^{\mathrm u}$ has dense
+image; it is not asserted to be injective.
+
+Every nonzero element of $C$ or $K$ still has nonzero
+spectral seminorm: for a unit $x$,
+$1=\rho(1)\leq\rho(x)\rho(x^{-1})$. Thus these fields
+remain embedded. They are dense in their corresponding
+completions, since they were already dense in the quotient
+norms and the spectral seminorms are smaller. In particular
+$K$ is dense in $T^{\mathrm u}$ for the joint norm (UF5).
+
+**The enlarged Goldman chart is eligible.**
+The original normalization gives
+$\|ab\|_B=2^{-1}\|b\|_B$ for every $b\in B$.
+Multiplication by $a$ maps the ideal $I$ bijectively to
+itself, since $a^{\pm1}\in K\subset B$. Taking infima
+over $I$ gives the same equality in $B'$. Taking powers
+gives it for $\rho_{B'}$ as well. Put
+$$
+ N(x)=\rho_{B'}(x)\quad(x\in K),\qquad
+                         R^{\mathrm u}=\{x\in K:N(x)\leq1\}.
+                                                               \tag{UF8}
+$$
+Then $N$ is a nonarchimedean power-multiplicative norm on
+the field $K$, although it need not be multiplicative.
+For every integer $m$,
+$$
+ N(a^m x)=2^{-m}N(x),\quad N(a)=1/2,
+ \quad N(a^{-1})=2.                                           \tag{UF9}
+$$
+Thus $R\subset R^{\mathrm u}\subsetneq K$ and
+$R^{\mathrm u}[1/a]=K$. It is completely integrally closed:
+if $0\ne c\in K$ and $cx^n\in R^{\mathrm u}$ for all
+$n\geq1$, then
+$N(x)^n\leq N(c^{-1})N(cx^n)\leq N(c^{-1})$,
+so $N(x)\leq1$. The closed mixed graph also persists:
+$R^{\mathrm u}\sigma(R^{\mathrm u})=K$, because the left
+side contains $R\sigma(R)=K$.
+
+The norm in (UF8) is exactly the norm of the entire
+normalized rank-one family $S^{\mathrm u}$ of
+$R^{\mathrm u}$, with $w(a)=1$. To prove both directions,
+let $\beta$ be any multiplicative absolute value on $K$
+bounded by one on $R^{\mathrm u}$ and with $\beta(a)=1/2$.
+For $x\ne0$ put
+$m_n=\lceil n\log_2N(x)\rceil\in\mathbf Z$.
+Then $a^{m_n}x^n\in R^{\mathrm u}$, and hence
+$\beta(x)\leq2^{m_n/n}$. Letting $n\to\infty$ proves
+$\beta(x)\leq N(x)$. Such a $\beta$ extends to the
+completion $B^{\mathrm u}$.
+
+Conversely, a bounded multiplicative seminorm on
+$B^{\mathrm u}$ restricts to a nonvanishing absolute
+value on $K$, since its nonzero field elements are units.
+The bounds on both $a$ and $a^{-1}$ in (UF9) force its
+value on $a$ to be $1/2$, and its values on
+$R^{\mathrm u}$ are at most one. Finally the Banach-ring
+spectral-radius theorem identifies the spectral seminorm
+with the supremum of bounded multiplicative seminorms.
+Applied to the power-multiplicative norm of
+$B^{\mathrm u}$ it gives
+$$
+              N(x)=\sup_{w\in S^{\mathrm u}}2^{-w(x)}.
+                                                               \tag{UF10}
+$$
+The precise external result here is Kedlaya--Liu,
+*Relative p-adic Hodge theory: Foundations*,
+Theorem 2.3.10, in arXiv:1301.0792v5. Its hypothesis is
+a commutative nonarchimedean Banach ring; no Tate unit
+or valued-field base is required.
+The version cited is available at
+[Primary source](https://arxiv.org/pdf/1301.0792v5).
+
+The fixed-field and chart completions of this new exact
+Goldman datum are therefore $A^{\mathrm u},B^{\mathrm u}$.
+Its joint completion is $T^{\mathrm u}$, by (UF5)--(UF7).
+All these identifications use the full family in (UF10),
+not a chosen proper subfamily of valuations.
+
+**Nonaffineness survives.**
+The target $X_{R^{\mathrm u}}$ is nonaffine. Suppose
+otherwise. The directional-idempotent criterion (JC1),
+applied to the eligible datum just proved, gives
+$$
+ 0\ne e_{\mathrm u}\in T^{\mathrm u},\qquad
+ e_{\mathrm u}^2=e_{\mathrm u},\qquad
+                         \pi_{\mathrm u}(e_{\mathrm u})=0.
+                                                               \tag{UF11}
+$$
+Apply (UF2) to the complete ring $T'$ to lift it to an
+idempotent $e\in T'$. Its image $\pi'(e)$ is an
+idempotent of $B'$ whose spectral image is zero. A
+nonzero idempotent has spectral radius one, so
+$\pi'(e)=0$ exactly. But $\pi'$ is injective by (KG8).
+Thus $e=0$, contradicting (UF11). This proves preservation
+of nonaffineness. It does not assert that any specified
+individual cohomology class remains nonzero.
+
+There is a precise spectral reduction as well. Bounded
+multiplicative seminorms are unchanged by separated
+spectral completion: any such seminorm $\beta$ satisfies
+$\beta(h)\leq\|h^n\|^{1/n}$ for all $n$, so
+$\beta(h)\leq\rho_H(h)$, and it extends uniquely. Thus
+$$
+ \mathcal M(T^{\mathrm u})\simeq\mathcal M(T')
+       \simeq\{\gamma\in\mathcal M(T):\gamma(IT)=0\}.
+                                                               \tag{UF12}
+$$
+The second correspondence follows by factoring through
+the quotient; the quotient norm bounds the factored
+seminorm. The maps are homeomorphisms, since both spectra
+are compact Hausdorff and the evaluation maps agree.
+If $J\ne0$, then $IT\ne0$ by (KG5). The original norm
+of $T$ is a supremum of multiplicative seminorms, so
+some point detects a nonzero element of $IT$. In that
+case (UF12) is a proper closed spectral subspace.
+
+The conductor quotients themselves need not be uniform,
+as (KG11)--(KG13) show. The operation above takes their
+separated spectral completions and proves the eligibility
+and nonaffineness conclusions using the original
+dense-field hypotheses. It does not prove that the new
+projection has zero kernel, that an iteration terminates,
+or that a zero-conductor datum has affine target.
+Arbitrary nonfield overlaps and the full raw
+topological-fibre cohomology bound remain outside these
+conclusions.
+
+![Idempotent lifting and the eligible conductor reduction preserving nonaffineness](../figures/raw-fibre-conductor-uniformization.png)
+
+*Idempotent lifting (UF2)--(UF4) and the explicit spectral coefficient bounds (UF5)--(UF7) identify the separated spectral completions of the proper conductor quotient. The enlarged chart remains completely integrally closed and Goldman, with exactly the full normalized rank-one norm (UF8)--(UF10). Affineness of its target would give a directional idempotent whose lift contradicts injectivity before spectral completion, proving nonaffineness (UF11). The exact spectral closed locus is (UF12). The new projection may have a kernel, and neither iteration nor the full raw bound follows. The editable figure is [raw-fibre-conductor-uniformization.svg](../figures/raw-fibre-conductor-uniformization.svg).*
 
 #### Lemma. Finite cohomological dimension from an étale atlas
 

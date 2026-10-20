@@ -4,7 +4,7 @@ A frequency-dependent cutoff can stay on the favorable side of an imaginary symb
 
 The result below proves the real-valued cutoff case of Hörmander IV, Proposition 26.6.1′, including its endpoint and weak distributional hypotheses. The adjacent printed statement does not explicitly repeat the real-valued assumption imposed in the preceding proof. We retain that assumption here: the unrestricted complex-symbol case has an additional phase term and is not certified by this argument. The [complex-cutoff companion](../20261011-complex-cutoff-energy/adaptive-square-roots-and-complex-cutoff-energy.html) treats that additional phase term.
 
-The exact earlier proofs are the [ordinary propagation lesson](../20261011-one-direction-propagation/one-direction-propagation-and-characteristic-strata.md), [metric positivity](../20261005-metric-positivity/scalar-fefferman-phong.md), [metric operator bounds](../20261005-metric-positivity/metric-operator-bounds.md), [Weyl products](../20261005-metric-weyl-calculus/metric-weyl-products.md), and [changes of quantization](../20261005-metric-weyl-calculus/reflection-and-quantization.md). Their local identifiers are resolved, with exact current bytes and locators, in the proof map. Human foundation routes remain external.
+The exact earlier proofs are the [ordinary propagation lesson](../20261011-one-direction-propagation/one-direction-propagation-and-characteristic-strata.md), metric positivity, metric operator bounds, Weyl products, and changes of quantization. Their local identifiers are resolved, with exact current bytes and locators, in the proof map. Human foundation routes remain external.
 
 ## 1. The measured-data statement
 

@@ -1,0 +1,273 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The inverse Goldbach problem</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Additive indecomposability of the primes)</a><a href="square-root-bounds-and-collision-stability.html">Next lesson</a><a href="src/the-inverse-goldbach-problem.md">Editable source</a></nav><main><article><h1 id="the-inverse-goldbach-problem">The inverse Goldbach problem</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Goldbach's conjecture asks whether every even number greater than <span class="math" data-tex="\(2\)">\(2\)</span> is a sum of two primes. Ostmann asked an inverse question: can the set of primes itself, up to finitely many exceptions, be written as a sum <span class="math" data-tex="\(A+B\)">\(A+B\)</span> of two sets of nonnegative integers? With <span class="math" data-tex="\(A=\{0\}\)">\(A=\{0\}\)</span> this is trivially possible, so the question is whether both summands can have at least two elements. This course proves that they cannot. The proof, from OpenAI's 2026 paper [OpenAI-013], uses the large sieve, sums of multiplicative characters, Heath-Brown's quadratic large sieve, zero-free regions of Dirichlet <span class="math" data-tex="\(L\)">\(L\)</span>-functions, and an estimate over finite fields for binary trees of rational maps.</p>
+<p>This lesson states the theorem, proves a sieve bound for finitely many shifts, and uses it to show that a decomposition of the primes would need two infinite summands. It ends with the residue supports <span class="math" data-tex="\(S_p\)">\(S_p\)</span>, which organize the rest of the course, and a map of the proof.</p>
+<p><strong>Prerequisites.</strong> <a href="../NT-DIRL/NT-DIRL-12.html"><em>The large sieve inequality</em></a>, Sections 5 and 6; <a href="../NT-ZETA/NT-ZETA-02.html"><em>Counting primes by elementary means: Chebyshev and Mertens</em></a>, Theorems 2.1 and 3.1.</p>
+<h2 id="1-sumsets-and-the-theorem">1. Sumsets and the theorem</h2>
+<p>Throughout the course <span class="math" data-tex="\(\mathbb P\)">\(\mathbb P\)</span> denotes the set of positive primes and <span class="math" data-tex="\(\mathbb N_0=\{0,1,2,\dots\}\)">\(\mathbb N_0=\{0,1,2,\dots\}\)</span>. For <span class="math" data-tex="\(A,B\subseteq\mathbb N_0\)">\(A,B\subseteq\mathbb N_0\)</span> the <em>sumset</em> is
+<span class="math math-display" data-tex="\[
+A+B=\{a+b:a\in A,\ b\in B\}.
+\]">\[
+A+B=\{a+b:a\in A,\ b\in B\}.
+\]</span>
+For <span class="math" data-tex="\(C\subseteq\mathbb N_0\)">\(C\subseteq\mathbb N_0\)</span> and real <span class="math" data-tex="\(Y\)">\(Y\)</span> write <span class="math" data-tex="\(C(Y)=|C\cap[0,Y]|\)">\(C(Y)=|C\cap[0,Y]|\)</span> for the counting function. Two subsets of <span class="math" data-tex="\(\mathbb N_0\)">\(\mathbb N_0\)</span> are <em>asymptotically equal</em> if their symmetric difference is finite, that is, if they agree outside a bounded interval.</p>
+<p><strong>Theorem 1.1</strong> (Ostmann's conjecture [OpenAI-013, Theorem 1.1]). If <span class="math" data-tex="\(A,B\subseteq\mathbb N_0\)">\(A,B\subseteq\mathbb N_0\)</span> satisfy <span class="math" data-tex="\(|A|\ge2\)">\(|A|\ge2\)</span> and <span class="math" data-tex="\(|B|\ge2\)">\(|B|\ge2\)</span>, then <span class="math" data-tex="\((A+B)\mathbin{\triangle}\mathbb P\)">\((A+B)\mathbin{\triangle}\mathbb P\)</span> is infinite.</p>
+<p>Equivalently, no set asymptotically equal to <span class="math" data-tex="\(\mathbb P\)">\(\mathbb P\)</span> is a sumset of two sets with at least two elements each: if <span class="math" data-tex="\(\mathcal Q=A+B\)">\(\mathcal Q=A+B\)</span> and <span class="math" data-tex="\(\mathcal Q\mathbin\triangle\mathbb P\)">\(\mathcal Q\mathbin\triangle\mathbb P\)</span> is finite, then <span class="math" data-tex="\((A+B)\mathbin\triangle\mathbb P\)">\((A+B)\mathbin\triangle\mathbb P\)</span> is finite.</p>
+<p>The condition <span class="math" data-tex="\(|A|,|B|\ge2\)">\(|A|,|B|\ge2\)</span> excludes the decomposition <span class="math" data-tex="\(\mathbb P=\{0\}+\mathbb P\)">\(\mathbb P=\{0\}+\mathbb P\)</span>. Asymptotic equality of <span class="math" data-tex="\(A+B\)">\(A+B\)</span> and <span class="math" data-tex="\(\mathbb P\)">\(\mathbb P\)</span> consists of two requirements, which the proof uses in different places:</p>
+<ul>
+<li><em>coverage</em>: every sufficiently large prime lies in <span class="math" data-tex="\(A+B\)">\(A+B\)</span>;</li>
+<li><em>exclusion</em>: every sufficiently large element of <span class="math" data-tex="\(A+B\)">\(A+B\)</span> is prime.</li>
+</ul>
+<p>Coverage alone is easy to arrange, for instance with <span class="math" data-tex="\(A=\{0,1\}\)">\(A=\{0,1\}\)</span> and <span class="math" data-tex="\(B=\mathbb N_0\)">\(B=\mathbb N_0\)</span>. Theorem 1.1 says that the two requirements are incompatible: if <span class="math" data-tex="\(|A|,|B|\ge2\)">\(|A|,|B|\ge2\)</span> and <span class="math" data-tex="\(A+B\)">\(A+B\)</span> contains every sufficiently large prime, then <span class="math" data-tex="\(A+B\)">\(A+B\)</span> contains infinitely many composite numbers. Neither requirement is replaced by a density condition anywhere in the proof.</p>
+<p>The question appears in Ostmann's 1956 treatise on additive number theory, and Elsholtz and Harper record its asymptotic formulation [EH, Definition 1.1 and Conjecture 1.2]; it is also called the inverse Goldbach problem. Laffer and Mann proved that a decomposition must have two infinite summands [LM, Theorem 12]; Lemma 4.1 below gives a short sieve proof of this. Large-sieve arguments, beginning with Pomerance, Sárközy and Stewart [PSS], restricted a hypothetical decomposition further. Elsholtz combined the large sieve with Gallagher's larger sieve to place both counting functions within powers of <span class="math" data-tex="\(\log x\)">\(\log x\)</span> of <span class="math" data-tex="\(\sqrt x\)">\(\sqrt x\)</span> [Els06, Theorem 1.9]; Lesson 2 proves these bounds. Elsholtz and Harper sharpened them to
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{\sqrt x}{\log x\,\log\log x}&amp;\ll A(x),\,B(x)\\
+&amp;\ll\sqrt x\,\log\log x
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{\sqrt x}{\log x\,\log\log x}&amp;\ll A(x),\,B(x)\\
+&amp;\ll\sqrt x\,\log\log x
+\end{aligned}
+\]</span>
+[EH, Theorem 2.6]. Bounds of this kind are compatible with the lower bound <span class="math" data-tex="\(A(x)B(x)\gg x/\log x\)">\(A(x)B(x)\gg x/\log x\)</span> that coverage forces, so they do not by themselves exclude a decomposition. Green and Harper formulated an inverse conjecture for the large sieve and proved that it would imply Theorem 1.1 [GH, Conjecture 1.5 and Theorem 1.8]. Croot, Mao, Pohoata and Yip proved that each summand of a hypothetical decomposition has at least <span class="math" data-tex="\(\exp(c\sqrt{\log N}/(\log\log N)^{3/2})\)">\(\exp(c\sqrt{\log N}/(\log\log N)^{3/2})\)</span> elements of <span class="math" data-tex="\([1,N]\)">\([1,N]\)</span> in an integral quadratic image <span class="math" data-tex="\(m\pm\mathbb Z^2\)">\(m\pm\mathbb Z^2\)</span> [CMPY, Theorem 1.10 and Corollary 1.11]. The proof in this course establishes no inverse sieve conjecture. It works directly with the residue restrictions of Section 6 and with coverage of every large prime.</p>
+<h2 id="2-the-large-sieve-in-the-form-used">2. The large sieve in the form used</h2>
+<p>Write <span class="math" data-tex="\(e(x)=e^{2\pi ix}\)">\(e(x)=e^{2\pi ix}\)</span>. Two forms of the large sieve are proved in <a href="../NT-DIRL/NT-DIRL-12.html"><em>The large sieve inequality</em></a>. The first, its inequality (5.3), says that for complex numbers <span class="math" data-tex="\(a_n\)">\(a_n\)</span> supported on <span class="math" data-tex="\(M&lt;n\le M+N\)">\(M&lt;n\le M+N\)</span> and real <span class="math" data-tex="\(Q\ge1\)">\(Q\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{q\le Q}\ \sum_{\substack{b\bmod q\\ (b,q)=1}}
+\Bigl|\sum_n a_n\\
+&amp;\qquad \,e(nb/q)\Bigr|^2\\
+&amp;\quad \le\bigl(N-1+Q^2\bigr)\sum_n|a_n|^2.\quad(2.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{q\le Q}\ \sum_{\substack{b\bmod q\\ (b,q)=1}}
+\Bigl|\sum_n a_n\\
+&amp;\qquad \,e(nb/q)\Bigr|^2\\
+&amp;\quad \le\bigl(N-1+Q^2\bigr)\sum_n|a_n|^2.\quad(2.1)
+\end{aligned}
+\]</span>
+The second is Montgomery's arithmetic large sieve, inequality (6.3) there. Let <span class="math" data-tex="\(\mathcal A\subseteq\{M+1,\dots,M+N\}\)">\(\mathcal A\subseteq\{M+1,\dots,M+N\}\)</span> have <span class="math" data-tex="\(Z\)">\(Z\)</span> elements, and suppose that for every prime <span class="math" data-tex="\(p\le Q\)">\(p\le Q\)</span> the members of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> avoid a set of <span class="math" data-tex="\(\omega(p)&lt;p\)">\(\omega(p)&lt;p\)</span> residue classes modulo <span class="math" data-tex="\(p\)">\(p\)</span>. Put <span class="math" data-tex="\(g(p)=\omega(p)/(p-\omega(p))\)">\(g(p)=\omega(p)/(p-\omega(p))\)</span>, extend <span class="math" data-tex="\(g\)">\(g\)</span> multiplicatively to squarefree integers with <span class="math" data-tex="\(g(1)=1\)">\(g(1)=1\)</span>, and let <span class="math" data-tex="\(L(Q)=\sum_{q\le Q}\mu^2(q)g(q)\)">\(L(Q)=\sum_{q\le Q}\mu^2(q)g(q)\)</span>. Then
+<span class="math math-display" data-tex="\[
+Z\le\frac{N-1+Q^2}{L(Q)}.
+\tag{2.2}
+\]">\[
+Z\le\frac{N-1+Q^2}{L(Q)}.
+\tag{2.2}
+\]</span></p>
+<h2 id="3-a-sieve-for-finitely-many-shifts">3. A sieve for finitely many shifts</h2>
+<p><strong>Lemma 3.1</strong> (fixed shifts [OpenAI-013, Lemma 2.1]). Let <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>, let <span class="math" data-tex="\(b_1,\dots,b_j\)">\(b_1,\dots,b_j\)</span> be distinct nonnegative integers, and let <span class="math" data-tex="\(C\subseteq\mathbb N_0\)">\(C\subseteq\mathbb N_0\)</span> be a set such that <span class="math" data-tex="\(c+b_1,\dots,c+b_j\)">\(c+b_1,\dots,c+b_j\)</span> are all prime for every sufficiently large <span class="math" data-tex="\(c\in C\)">\(c\in C\)</span>. Then
+<span class="math math-display" data-tex="\[
+C(Y)\ll\frac{Y}{(\log Y)^j}
+\]">\[
+C(Y)\ll\frac{Y}{(\log Y)^j}
+\]</span>
+for all sufficiently large <span class="math" data-tex="\(Y\)">\(Y\)</span>. The implied constant depends only on <span class="math" data-tex="\(b_1,\dots,b_j\)">\(b_1,\dots,b_j\)</span>; the threshold for <span class="math" data-tex="\(Y\)">\(Y\)</span> may also depend on the point beyond which the primality holds.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(c_0\)">\(c_0\)</span> be such that <span class="math" data-tex="\(c+b_i\)">\(c+b_i\)</span> is prime for all <span class="math" data-tex="\(c\in C\)">\(c\in C\)</span> with <span class="math" data-tex="\(c&gt;c_0\)">\(c&gt;c_0\)</span> and all <span class="math" data-tex="\(i\)">\(i\)</span>. Put <span class="math" data-tex="\(Q=\sqrt Y\)">\(Q=\sqrt Y\)</span> and <span class="math" data-tex="\(\mathcal A=C\cap(Q+c_0,Y]\)">\(\mathcal A=C\cap(Q+c_0,Y]\)</span>. Fix a prime <span class="math" data-tex="\(p_0&gt;j+\max_{i,k}|b_i-b_k|\)">\(p_0&gt;j+\max_{i,k}|b_i-b_k|\)</span>; it depends only on the shifts.</p>
+<p><em>The avoided classes.</em> Let <span class="math" data-tex="\(p\)">\(p\)</span> be a prime with <span class="math" data-tex="\(p_0&lt;p\le Q\)">\(p_0&lt;p\le Q\)</span> and let <span class="math" data-tex="\(c\in\mathcal A\)">\(c\in\mathcal A\)</span>. Each <span class="math" data-tex="\(c+b_i\)">\(c+b_i\)</span> is a prime larger than <span class="math" data-tex="\(c&gt;Q\ge p\)">\(c&gt;Q\ge p\)</span>, so <span class="math" data-tex="\(p\nmid c+b_i\)">\(p\nmid c+b_i\)</span>, that is, <span class="math" data-tex="\(c\not\equiv-b_i\pmod p\)">\(c\not\equiv-b_i\pmod p\)</span>. The classes <span class="math" data-tex="\(-b_1,\dots,-b_j\)">\(-b_1,\dots,-b_j\)</span> modulo <span class="math" data-tex="\(p\)">\(p\)</span> are distinct because <span class="math" data-tex="\(p&gt;|b_i-b_k|\)">\(p&gt;|b_i-b_k|\)</span> for <span class="math" data-tex="\(i\ne k\)">\(i\ne k\)</span>. So <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> avoids <span class="math" data-tex="\(\omega(p)=j\)">\(\omega(p)=j\)</span> classes modulo <span class="math" data-tex="\(p\)">\(p\)</span> when <span class="math" data-tex="\(p_0&lt;p\le Q\)">\(p_0&lt;p\le Q\)</span>; take <span class="math" data-tex="\(\omega(p)=0\)">\(\omega(p)=0\)</span> for <span class="math" data-tex="\(p\le p_0\)">\(p\le p_0\)</span>. Then <span class="math" data-tex="\(g(p)=j/(p-j)\)">\(g(p)=j/(p-j)\)</span> for <span class="math" data-tex="\(p_0&lt;p\le Q\)">\(p_0&lt;p\le Q\)</span> and <span class="math" data-tex="\(g(p)=0\)">\(g(p)=0\)</span> for <span class="math" data-tex="\(p\le p_0\)">\(p\le p_0\)</span>. The set <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> lies in an interval of at most <span class="math" data-tex="\(Y+1\)">\(Y+1\)</span> integers, so (2.2) gives
+<span class="math math-display" data-tex="\[
+|\mathcal A|\le\frac{Y+Q^2}{L(Q)}=\frac{2Y}{L(Q)}.
+\tag{3.1}
+\]">\[
+|\mathcal A|\le\frac{Y+Q^2}{L(Q)}=\frac{2Y}{L(Q)}.
+\tag{3.1}
+\]</span></p>
+<p><em>A lower bound for <span class="math" data-tex="\(L(Q)\)">\(L(Q)\)</span>.</em> Put <span class="math" data-tex="\(y=Q^{1/(10j)}\)">\(y=Q^{1/(10j)}\)</span>, and let <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> be the set of squarefree integers all of whose prime factors lie in <span class="math" data-tex="\((p_0,y]\)">\((p_0,y]\)</span>, including <span class="math" data-tex="\(1\)">\(1\)</span>. For large <span class="math" data-tex="\(Y\)">\(Y\)</span> every prime factor of <span class="math" data-tex="\(u\in\mathcal U\)">\(u\in\mathcal U\)</span> is at most <span class="math" data-tex="\(Q\)">\(Q\)</span>, and <span class="math" data-tex="\(g(u)=\prod_{p\mid u}j/(p-j)\)">\(g(u)=\prod_{p\mid u}j/(p-j)\)</span>. Let
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+G&amp;=\sum_{u\in\mathcal U}g(u)=\prod_{p_0&lt;p\le y}\bigl(1+g(p)\bigr)\\
+&amp;=\prod_{p_0&lt;p\le y}\frac p{p-j}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+G&amp;=\sum_{u\in\mathcal U}g(u)=\prod_{p_0&lt;p\le y}\bigl(1+g(p)\bigr)\\
+&amp;=\prod_{p_0&lt;p\le y}\frac p{p-j}.
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(-\log(1-x)\ge x\)">\(-\log(1-x)\ge x\)</span> for <span class="math" data-tex="\(0\le x&lt;1\)">\(0\le x&lt;1\)</span>, Mertens' estimate <span class="math" data-tex="\(\sum_{p\le y}1/p=\log\log y+O(1)\)">\(\sum_{p\le y}1/p=\log\log y+O(1)\)</span> (<a href="../NT-ZETA/NT-ZETA-02.html"><em>Counting primes by elementary means: Chebyshev and Mertens</em></a>, Theorem 3.1) gives
+<span class="math math-display" data-tex="\[
+\log G\ge j\sum_{p_0&lt;p\le y}\frac1p\ge j\log\log y-c_1,
+\]">\[
+\log G\ge j\sum_{p_0&lt;p\le y}\frac1p\ge j\log\log y-c_1,
+\]</span>
+with <span class="math" data-tex="\(c_1\)">\(c_1\)</span> depending only on <span class="math" data-tex="\(j\)">\(j\)</span> and <span class="math" data-tex="\(p_0\)">\(p_0\)</span>. Thus <span class="math" data-tex="\(G\ge e^{-c_1}(\log y)^j\)">\(G\ge e^{-c_1}(\log y)^j\)</span>.</p>
+<p>Consider the probability measure on <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> that gives <span class="math" data-tex="\(u\)">\(u\)</span> the mass <span class="math" data-tex="\(g(u)/G\)">\(g(u)/G\)</span>. Because <span class="math" data-tex="\(G\)">\(G\)</span> is a product over the primes of <span class="math" data-tex="\((p_0,y]\)">\((p_0,y]\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span> is multiplicative, this is the law of a random product in which each prime <span class="math" data-tex="\(p\in(p_0,y]\)">\(p\in(p_0,y]\)</span> is included independently with probability
+<span class="math math-display" data-tex="\[
+\frac{g(p)}{1+g(p)}=\frac jp.
+\]">\[
+\frac{g(p)}{1+g(p)}=\frac jp.
+\]</span>
+Mertens' estimate <span class="math" data-tex="\(\sum_{p\le y}(\log p)/p=\log y+O(1)\)">\(\sum_{p\le y}(\log p)/p=\log y+O(1)\)</span> from the same theorem gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E\log u&amp;=\sum_{p_0&lt;p\le y}\frac jp\log p\\
+&amp;\le j\log y+O(j)\\
+&amp;=\frac{\log Q}{10}+O(j).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E\log u&amp;=\sum_{p_0&lt;p\le y}\frac jp\log p\\
+&amp;\le j\log y+O(j)\\
+&amp;=\frac{\log Q}{10}+O(j).
+\end{aligned}
+\]</span>
+By Markov's inequality, <span class="math" data-tex="\(\Pr(u&gt;Q)\le\mathbb E\log u/\log Q\)">\(\Pr(u&gt;Q)\le\mathbb E\log u/\log Q\)</span><span class="math" data-tex="\(\le\frac1{10}+O(j/\log Q)\)">\(\le\frac1{10}+O(j/\log Q)\)</span>, which is at most <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span> for large <span class="math" data-tex="\(Y\)">\(Y\)</span>. Every <span class="math" data-tex="\(u\in\mathcal U\)">\(u\in\mathcal U\)</span> with <span class="math" data-tex="\(u\le Q\)">\(u\le Q\)</span> is a squarefree integer at most <span class="math" data-tex="\(Q\)">\(Q\)</span>, and the terms of <span class="math" data-tex="\(L(Q)\)">\(L(Q)\)</span> are nonnegative, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+L(Q)&amp;\ge\sum_{\substack{u\in\mathcal U\\u\le Q}}g(u)\\
+&amp;=G\Pr(u\le Q)
+\ge\frac G2\\
+&amp;\ge\frac{e^{-c_1}}2\left(\frac{\log Y}{20j}\right)^j.
+\end{aligned}
+\]">\[
+\begin{aligned}
+L(Q)&amp;\ge\sum_{\substack{u\in\mathcal U\\u\le Q}}g(u)\\
+&amp;=G\Pr(u\le Q)
+\ge\frac G2\\
+&amp;\ge\frac{e^{-c_1}}2\left(\frac{\log Y}{20j}\right)^j.
+\end{aligned}
+\]</span></p>
+<p><em>Conclusion.</em> By (3.1), <span class="math" data-tex="\(|\mathcal A|\ll Y/(\log Y)^j\)">\(|\mathcal A|\ll Y/(\log Y)^j\)</span> with a constant depending only on the shifts. The points of <span class="math" data-tex="\(C\cap[0,Y]\)">\(C\cap[0,Y]\)</span> outside <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> number at most <span class="math" data-tex="\(Q+c_0+1=O(\sqrt Y)\)">\(Q+c_0+1=O(\sqrt Y)\)</span> for large <span class="math" data-tex="\(Y\)">\(Y\)</span>, which is also <span class="math" data-tex="\(O(Y/(\log Y)^j)\)">\(O(Y/(\log Y)^j)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(j=1\)">\(j=1\)</span> and <span class="math" data-tex="\(b_1=0\)">\(b_1=0\)</span>, with <span class="math" data-tex="\(C=\mathbb P\)">\(C=\mathbb P\)</span>, the lemma is the upper bound <span class="math" data-tex="\(\pi(Y)\ll Y/\log Y\)">\(\pi(Y)\ll Y/\log Y\)</span>. For <span class="math" data-tex="\(j=2\)">\(j=2\)</span> and the shifts <span class="math" data-tex="\(0,2\)">\(0,2\)</span> it is the upper bound <span class="math" data-tex="\(\#\{p\le Y:p+2\in\mathbb P\}\ll Y/(\log Y)^2\)">\(\#\{p\le Y:p+2\in\mathbb P\}\ll Y/(\log Y)^2\)</span> for twin primes.</p>
+<h2 id="4-finite-summands">4. Finite summands</h2>
+<p><strong>Lemma 4.1</strong> (finite summands; Laffer and Mann [LM, Theorem 12], [OpenAI-013, Lemma 2.2]). If <span class="math" data-tex="\(A,B\subseteq\mathbb N_0\)">\(A,B\subseteq\mathbb N_0\)</span> have at least two elements each and <span class="math" data-tex="\(A+B\)">\(A+B\)</span> is asymptotically equal to <span class="math" data-tex="\(\mathbb P\)">\(\mathbb P\)</span>, then <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> are infinite.</p>
+<p><em>Proof.</em> Suppose that <span class="math" data-tex="\(A\)">\(A\)</span> is finite. Coverage forces <span class="math" data-tex="\(A+B\)">\(A+B\)</span> to be infinite, so <span class="math" data-tex="\(B\)">\(B\)</span> is infinite. Choose <span class="math" data-tex="\(a_1\ne a_2\)">\(a_1\ne a_2\)</span> in <span class="math" data-tex="\(A\)">\(A\)</span>, and a threshold <span class="math" data-tex="\(N\)">\(N\)</span> beyond which every element of <span class="math" data-tex="\(A+B\)">\(A+B\)</span> is prime and every prime lies in <span class="math" data-tex="\(A+B\)">\(A+B\)</span>. For <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span> with <span class="math" data-tex="\(b&gt;N\)">\(b&gt;N\)</span>, the numbers <span class="math" data-tex="\(b+a_1\)">\(b+a_1\)</span> and <span class="math" data-tex="\(b+a_2\)">\(b+a_2\)</span> lie in <span class="math" data-tex="\(A+B\)">\(A+B\)</span> and exceed <span class="math" data-tex="\(N\)">\(N\)</span>, so both are prime. Lemma 3.1 with <span class="math" data-tex="\(C=B\)">\(C=B\)</span> and the shifts <span class="math" data-tex="\(a_1,a_2\)">\(a_1,a_2\)</span> gives
+<span class="math math-display" data-tex="\[
+B(Y)\ll\frac{Y}{(\log Y)^2}.
+\]">\[
+B(Y)\ll\frac{Y}{(\log Y)^2}.
+\]</span>
+On the other hand, every prime <span class="math" data-tex="\(p\in(N,Y]\)">\(p\in(N,Y]\)</span> has a representation <span class="math" data-tex="\(p=a+b\)">\(p=a+b\)</span> with <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> and <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span>, and <span class="math" data-tex="\(b\le p\le Y\)">\(b\le p\le Y\)</span> because <span class="math" data-tex="\(a\ge0\)">\(a\ge0\)</span>. So the map <span class="math" data-tex="\((a,b)\mapsto a+b\)">\((a,b)\mapsto a+b\)</span> from <span class="math" data-tex="\(A\times(B\cap[0,Y])\)">\(A\times(B\cap[0,Y])\)</span> covers all primes in <span class="math" data-tex="\((N,Y]\)">\((N,Y]\)</span>, and
+<span class="math math-display" data-tex="\[
+\pi(Y)-\pi(N)\le|A|\,B(Y).
+\]">\[
+\pi(Y)-\pi(N)\le|A|\,B(Y).
+\]</span>
+Chebyshev's lower bound <span class="math" data-tex="\(\pi(Y)\gg Y/\log Y\)">\(\pi(Y)\gg Y/\log Y\)</span> (<a href="../NT-ZETA/NT-ZETA-02.html"><em>Counting primes by elementary means: Chebyshev and Mertens</em></a>, Theorem 2.1) gives <span class="math" data-tex="\(Y/\log Y\ll|A|\,B(Y)\ll Y/(\log Y)^2\)">\(Y/\log Y\ll|A|\,B(Y)\ll Y/(\log Y)^2\)</span>, which fails for large <span class="math" data-tex="\(Y\)">\(Y\)</span>. If <span class="math" data-tex="\(B\)">\(B\)</span> is finite, exchange the roles of <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-two-infinite-summands">5. Two infinite summands</h2>
+<p><strong>Theorem 5.1</strong> (two infinite summands [OpenAI-013, Theorem 2.3]). There are no infinite sets <span class="math" data-tex="\(A,B\subseteq\mathbb N_0\)">\(A,B\subseteq\mathbb N_0\)</span> such that <span class="math" data-tex="\((A+B)\mathbin{\triangle}\mathbb P\)">\((A+B)\mathbin{\triangle}\mathbb P\)</span> is finite.</p>
+<p>Theorem 5.1 and Lemma 4.1 together prove Theorem 1.1: a counterexample to Theorem 1.1 would have two infinite summands by Lemma 4.1, contradicting Theorem 5.1.</p>
+<p>The remaining seventeen lessons prove Theorem 5.1 by contradiction.</p>
+<p><strong>Standing assumption.</strong> Throughout the rest of the course, <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> are infinite subsets of <span class="math" data-tex="\(\mathbb N_0\)">\(\mathbb N_0\)</span> such that <span class="math" data-tex="\((A+B)\mathbin\triangle\mathbb P\)">\((A+B)\mathbin\triangle\mathbb P\)</span> is finite. Fix an integer <span class="math" data-tex="\(N\ge1\)">\(N\ge1\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb P\cap(N,\infty)\subseteq A+B,\\
+(A+B)\cap(N,\infty)\subseteq\mathbb P,\quad(5.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathbb P\cap(N,\infty)\subseteq A+B,\\
+(A+B)\cap(N,\infty)\subseteq\mathbb P,\quad(5.1)
+\end{gathered}
+\]</span>
+fix an integer <span class="math" data-tex="\(N_*&gt;N+10\)">\(N_*&gt;N+10\)</span>, and put
+<span class="math math-display" data-tex="\[
+D=-B=\{-b:b\in B\}.
+\]">\[
+D=-B=\{-b:b\in B\}.
+\]</span>
+Thus <span class="math" data-tex="\(A+B=A-D\)">\(A+B=A-D\)</span><span class="math" data-tex="\(=\{a-d:a\in A,\ d\in D\}\)">\(=\{a-d:a\in A,\ d\in D\}\)</span>. The first inclusion in (5.1) is coverage and the second is exclusion. Constants implied by <span class="math" data-tex="\(O(\cdot)\)">\(O(\cdot)\)</span> and <span class="math" data-tex="\(\ll\)">\(\ll\)</span> may depend on these fixed data. Where the order in which parameters are chosen matters, the additional dependence is stated.</p>
+<h2 id="6-complementary-residue-supports">6. Complementary residue supports</h2>
+<p><strong>Lemma 6.1.</strong> For every prime <span class="math" data-tex="\(p\)">\(p\)</span>, the residue sets
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+\mathcal A_p&amp;=\{a\bmod p:a\in A,\ a&gt;p\\
+&amp;\quad +N_*\},
+\end{aligned}\\
+\begin{aligned}
+\mathcal D_p&amp;=\{d\bmod p:d\in D,\ -d&gt;p\\
+&amp;\quad +N_*\}
+\end{aligned}
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+\mathcal A_p&amp;=\{a\bmod p:a\in A,\ a&gt;p\\
+&amp;\quad +N_*\},
+\end{aligned}\\
+\begin{aligned}
+\mathcal D_p&amp;=\{d\bmod p:d\in D,\ -d&gt;p\\
+&amp;\quad +N_*\}
+\end{aligned}
+\end{gathered}
+\]</span>
+are nonempty and disjoint.</p>
+<p><em>Proof.</em> Both sets are nonempty because <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(D\)">\(D\)</span> are infinite. Suppose <span class="math" data-tex="\(a\equiv d\pmod p\)">\(a\equiv d\pmod p\)</span> with <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, <span class="math" data-tex="\(d\in D\)">\(d\in D\)</span>, <span class="math" data-tex="\(a&gt;p+N_*\)">\(a&gt;p+N_*\)</span> and <span class="math" data-tex="\(-d&gt;p+N_*\)">\(-d&gt;p+N_*\)</span>. Then <span class="math" data-tex="\(n=a-d\)">\(n=a-d\)</span> lies in <span class="math" data-tex="\(A+B\)">\(A+B\)</span>, is divisible by <span class="math" data-tex="\(p\)">\(p\)</span>, and satisfies <span class="math" data-tex="\(n&gt;2p+2N_*&gt;\max(p,N)\)">\(n&gt;2p+2N_*&gt;\max(p,N)\)</span>. By exclusion <span class="math" data-tex="\(n\)">\(n\)</span> is prime, and a prime divisible by <span class="math" data-tex="\(p\)">\(p\)</span> equals <span class="math" data-tex="\(p\)">\(p\)</span>. This contradicts <span class="math" data-tex="\(n&gt;p\)">\(n&gt;p\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Definition 6.2.</strong> For every prime <span class="math" data-tex="\(p\)">\(p\)</span> fix a partition <span class="math" data-tex="\(\mathbb F_p=S_p\sqcup S_p^c\)">\(\mathbb F_p=S_p\sqcup S_p^c\)</span> with <span class="math" data-tex="\(\mathcal A_p\subseteq S_p\)">\(\mathcal A_p\subseteq S_p\)</span> and <span class="math" data-tex="\(\mathcal D_p\subseteq S_p^c\)">\(\mathcal D_p\subseteq S_p^c\)</span>. Residues in neither set may be put in either part. Put
+<span class="math math-display" data-tex="\[
+\sigma_p=\frac{|S_p|}p.
+\]">\[
+\sigma_p=\frac{|S_p|}p.
+\]</span>
+By Lemma 6.1, <span class="math" data-tex="\(0&lt;\sigma_p&lt;1\)">\(0&lt;\sigma_p&lt;1\)</span>.</p>
+<p>These partitions are fixed for the whole course; every later statement holds for any admissible choice. For <span class="math" data-tex="\(p=2\)">\(p=2\)</span> the partition is forced: the large elements of <span class="math" data-tex="\(A\)">\(A\)</span> all have one parity, and the large elements of <span class="math" data-tex="\(B\)">\(B\)</span> have the other, as they must, since <span class="math" data-tex="\(a+b\)">\(a+b\)</span> is an odd prime.</p>
+<p>Two features of the supports drive the proof. First, the summands are close to uniformly distributed on them: by Lesson 2, the reductions modulo <span class="math" data-tex="\(p\)">\(p\)</span> of the large elements of <span class="math" data-tex="\(A\)">\(A\)</span> are nearly uniform on <span class="math" data-tex="\(S_p\)">\(S_p\)</span>, those of <span class="math" data-tex="\(D\)">\(D\)</span> are nearly uniform on <span class="math" data-tex="\(S_p^c\)">\(S_p^c\)</span>, and <span class="math" data-tex="\(\sigma_p\)">\(\sigma_p\)</span> is close to <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span>, all in an averaged sense over primes. Second, the normalized indicator
+<span class="math math-display" data-tex="\[
+F_p(x)=\frac{\mathbf 1_{S_p}(x)-\sigma_p}{\sqrt{\sigma_p(1-\sigma_p)}}
+\]">\[
+F_p(x)=\frac{\mathbf 1_{S_p}(x)-\sigma_p}{\sqrt{\sigma_p(1-\sigma_p)}}
+\]</span>
+has a Fourier transform with competing properties. It correlates with no translated multiplicative character (Lessons 3–9), but its <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm is bounded below for many primes (Lessons 10–11). Lessons 12–18 build from these transforms a positive quantity whose size is forced in two incompatible directions.</p>
+<h2 id="7-a-map-of-the-proof">7. A map of the proof</h2>
+<ul>
+<li><strong>Lesson 2.</strong> Counting functions: <span class="math" data-tex="\(\sqrt Y/(\log Y)^3\)">\(\sqrt Y/(\log Y)^3\)</span><span class="math" data-tex="\(\ll A(Y),B(Y)\)">\(\ll A(Y),B(Y)\)</span><span class="math" data-tex="\(\ll\sqrt Y(\log Y)^2\)">\(\ll\sqrt Y(\log Y)^2\)</span>. Collision stability: a weighted larger sieve showing that the summands are nearly uniform on <span class="math" data-tex="\(S_p\)">\(S_p\)</span> and <span class="math" data-tex="\(S_p^c\)">\(S_p^c\)</span>.</li>
+<li><strong>Lessons 3–6.</strong> Quadratic characters: for the quadratic character <span class="math" data-tex="\(\chi_p\)">\(\chi_p\)</span> of <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>, the maximal translated bias <span class="math" data-tex="\(\max_t|\mathbb E_{x\in S_p}\chi_p(x-t)|\)">\(\max_t|\mathbb E_{x\in S_p}\chi_p(x-t)|\)</span> is small on average over primes. The translations may differ from prime to prime; an amplified moment, Poisson summation and Weyl differencing force a common rational centre, and the quadratic large sieve then leads to a collision contradiction.</li>
+<li><strong>Lessons 7–9.</strong> Characters of order greater than <span class="math" data-tex="\(2\)">\(2\)</span>: the same conclusion, by repeated Cauchy–Schwarz transfers whose diagonal terms are controlled by anchor primes. Together these give the <em>mixed flatness</em> of the normalized transforms.</li>
+<li><strong>Lessons 10–11.</strong> A supply of nonsparse transforms: coverage of every large prime forces many primes for which the normalized transform has <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm bounded below.</li>
+<li><strong>Lessons 12–13.</strong> A comparison estimate for binary trees of rational maps over <span class="math" data-tex="\(\mathbb F_q\)">\(\mathbb F_q\)</span>, which uses only an <span class="math" data-tex="\(L^2\)">\(L^2\)</span> bound and mixed flatness.</li>
+<li><strong>Lessons 14–17.</strong> A positive statistic built from the nonsparse transforms, its binary-tree transfers, and two comparison estimates proved by separating the arithmetic of all the prime variables.</li>
+<li><strong>Lesson 18.</strong> Averaging over permutations of the variables gives an upper bound that contradicts the lower bound carried through the transfers.</li>
+</ul>
+<p>The analytic inputs are proved in the programme courses on the Riemann zeta function and on Dirichlet <span class="math" data-tex="\(L\)">\(L\)</span>-functions. The one input from outside the programme is Heath-Brown's quadratic large sieve, used in Lesson 6 as named result N1.</p>
+<h2 id="8-exercises">8. Exercises</h2>
+<p><strong>8.1.</strong> Under the standing assumption, show that for every prime <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(\min(|\mathcal A_p|,|\mathcal D_p|)\le p/2\)">\(\min(|\mathcal A_p|,|\mathcal D_p|)\le p/2\)</span>. Deduce that the large elements of one of the two sets <span class="math" data-tex="\(A,B\)">\(A,B\)</span> lie in a single residue class modulo <span class="math" data-tex="\(3\)">\(3\)</span>.</p>
+<p><strong>8.2.</strong> Under the standing assumption, show that for every fixed <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A(Y)\ll_j\frac{Y}{(\log Y)^j}\\
+\text{and}\\
+A(Y)\gg_j(\log Y)^j,
+\end{gathered}
+\]">\[
+\begin{gathered}
+A(Y)\ll_j\frac{Y}{(\log Y)^j}\\
+\text{and}\\
+A(Y)\gg_j(\log Y)^j,
+\end{gathered}
+\]</span>
+and the same for <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><strong>8.3.</strong> Let <span class="math" data-tex="\(h\ge1\)">\(h\ge1\)</span>. Show that <span class="math" data-tex="\(\#\{p\le Y:p\in\mathbb P,\ p+2h\in\mathbb P\}\)">\(\#\{p\le Y:p\in\mathbb P,\ p+2h\in\mathbb P\}\)</span><span class="math" data-tex="\(\ll_h Y/(\log Y)^2\)">\(\ll_h Y/(\log Y)^2\)</span>, with an implied constant depending on <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<p><strong>8.4.</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be finite with <span class="math" data-tex="\(|A|\ge2\)">\(|A|\ge2\)</span> and suppose that every sufficiently large element of <span class="math" data-tex="\(A+B\)">\(A+B\)</span> is prime, where <span class="math" data-tex="\(B\subseteq\mathbb N_0\)">\(B\subseteq\mathbb N_0\)</span> is infinite. Show that <span class="math" data-tex="\(\sum_{b\in B,\,b\ge2}1/b\)">\(\sum_{b\in B,\,b\ge2}1/b\)</span> converges.</p>
+<h2 id="9-solutions">9. Solutions</h2>
+<p><strong>8.1.</strong> By Lemma 6.1, <span class="math" data-tex="\(\mathcal A_p\)">\(\mathcal A_p\)</span> and <span class="math" data-tex="\(\mathcal D_p\)">\(\mathcal D_p\)</span> are disjoint subsets of <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>, so <span class="math" data-tex="\(|\mathcal A_p|+|\mathcal D_p|\le p\)">\(|\mathcal A_p|+|\mathcal D_p|\le p\)</span>, and the smaller one has at most <span class="math" data-tex="\(p/2\)">\(p/2\)</span> elements. For <span class="math" data-tex="\(p=3\)">\(p=3\)</span> the smaller set has one element. If it is <span class="math" data-tex="\(\mathcal A_3\)">\(\mathcal A_3\)</span>, all elements <span class="math" data-tex="\(a&gt;3+N_*\)">\(a&gt;3+N_*\)</span> of <span class="math" data-tex="\(A\)">\(A\)</span> lie in one class modulo <span class="math" data-tex="\(3\)">\(3\)</span>. If it is <span class="math" data-tex="\(\mathcal D_3\)">\(\mathcal D_3\)</span>, all elements <span class="math" data-tex="\(d&lt;-(3+N_*)\)">\(d&lt;-(3+N_*)\)</span> of <span class="math" data-tex="\(D\)">\(D\)</span> lie in one class, and so do the corresponding elements <span class="math" data-tex="\(-d\)">\(-d\)</span> of <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><strong>8.2.</strong> Choose distinct <span class="math" data-tex="\(a_1,\dots,a_j\in A\)">\(a_1,\dots,a_j\in A\)</span>, possible since <span class="math" data-tex="\(A\)">\(A\)</span> is infinite. For <span class="math" data-tex="\(b\in B\)">\(b\in B\)</span> with <span class="math" data-tex="\(b&gt;N\)">\(b&gt;N\)</span>, each <span class="math" data-tex="\(b+a_i\)">\(b+a_i\)</span> lies in <span class="math" data-tex="\(A+B\)">\(A+B\)</span> and exceeds <span class="math" data-tex="\(N\)">\(N\)</span>, hence is prime. Lemma 3.1 gives <span class="math" data-tex="\(B(Y)\ll_j Y/(\log Y)^j\)">\(B(Y)\ll_j Y/(\log Y)^j\)</span>, and by symmetry <span class="math" data-tex="\(A(Y)\ll_jY/(\log Y)^j\)">\(A(Y)\ll_jY/(\log Y)^j\)</span>. Every prime in <span class="math" data-tex="\((N,Y]\)">\((N,Y]\)</span> is <span class="math" data-tex="\(a+b\)">\(a+b\)</span> with <span class="math" data-tex="\(a\in A\cap[0,Y]\)">\(a\in A\cap[0,Y]\)</span>, <span class="math" data-tex="\(b\in B\cap[0,Y]\)">\(b\in B\cap[0,Y]\)</span>, so <span class="math" data-tex="\(A(Y)B(Y)\ge\pi(Y)-\pi(N)\gg Y/\log Y\)">\(A(Y)B(Y)\ge\pi(Y)-\pi(N)\gg Y/\log Y\)</span>. Dividing by the upper bound for <span class="math" data-tex="\(B\)">\(B\)</span> with <span class="math" data-tex="\(j+1\)">\(j+1\)</span> in place of <span class="math" data-tex="\(j\)">\(j\)</span> gives <span class="math" data-tex="\(A(Y)\gg_j(\log Y)^{j}\)">\(A(Y)\gg_j(\log Y)^{j}\)</span>.</p>
+<p><strong>8.3.</strong> Apply Lemma 3.1 to <span class="math" data-tex="\(C=\{p\in\mathbb P:p+2h\in\mathbb P\}\)">\(C=\{p\in\mathbb P:p+2h\in\mathbb P\}\)</span> with <span class="math" data-tex="\(j=2\)">\(j=2\)</span> and the shifts <span class="math" data-tex="\(0,2h\)">\(0,2h\)</span>: for every <span class="math" data-tex="\(c\in C\)">\(c\in C\)</span>, both <span class="math" data-tex="\(c+0\)">\(c+0\)</span> and <span class="math" data-tex="\(c+2h\)">\(c+2h\)</span> are prime. The implied constant depends only on the shifts, that is, on <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<p><strong>8.4.</strong> By the proof of Lemma 4.1, <span class="math" data-tex="\(B(Y)\le KY/(\log Y)^2\)">\(B(Y)\le KY/(\log Y)^2\)</span> for <span class="math" data-tex="\(Y\ge Y_0\)">\(Y\ge Y_0\)</span>, with a constant <span class="math" data-tex="\(K\)">\(K\)</span>. Partial summation gives, for <span class="math" data-tex="\(Y\ge Y_0\)">\(Y\ge Y_0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{\substack{b\in B\\2\le b\le Y}}\frac1b&amp;=\frac{B(Y)-B(1)}{Y}\\
+&amp;\quad +\int_2^Y\frac{B(t)-B(1)}{t^2}\,dt\\
+&amp;\le O(1)+K\int_{Y_0}^{Y}\frac{dt}{t(\log t)^2},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{\substack{b\in B\\2\le b\le Y}}\frac1b&amp;=\frac{B(Y)-B(1)}{Y}\\
+&amp;\quad +\int_2^Y\frac{B(t)-B(1)}{t^2}\,dt\\
+&amp;\le O(1)+K\int_{Y_0}^{Y}\frac{dt}{t(\log t)^2},
+\end{aligned}
+\]</span>
+and the last integral is bounded by <span class="math" data-tex="\(1/\log Y_0\)">\(1/\log Y_0\)</span>. So the series converges. (For <span class="math" data-tex="\(Y_0\le t\)">\(Y_0\le t\)</span>, <span class="math" data-tex="\(B(t)\le Kt/(\log t)^2\)">\(B(t)\le Kt/(\log t)^2\)</span>; the integral over <span class="math" data-tex="\([2,Y_0]\)">\([2,Y_0]\)</span> is a constant.)</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-013] OpenAI, <em>The additive indecomposability of the primes</em>, OpenAI Math Release preprint, 24 September 2026, Section 1 and Sections 2.1–2.3. https://github.com/openai/math/tree/main/preprints/the-additive-indecomposability-of-the-primes-September-24-2026</li>
+<li>[EH] C. Elsholtz and A. J. Harper, <em>Additive decompositions of sets with restricted prime factors</em>, Trans. Amer. Math. Soc. (2015), Definition 1.1, Conjecture 1.2 and Theorem 2.6; authors' version. https://www.math.tugraz.at/~elsholtz/WWW/papers/papers49selsholtz-harper.pdf</li>
+<li>[LM] W. B. Laffer and H. B. Mann, <em>Decomposition of sets of group elements</em>, Pacific J. Math. 14 (1964), no. 2, Theorem 12. https://msp.org/pjm/1964/14-2/pjm-v14-n2-p15-p.pdf</li>
+<li>[PSS] C. Pomerance, A. Sárközy and C. L. Stewart, <em>On divisors of sums of integers, III</em>, Pacific J. Math. 133 (1988). https://math.dartmouth.edu/~carlp/PDF/paper68.pdf</li>
+<li>[Els06] C. Elsholtz, <em>Additive decomposability of multiplicatively defined sets</em>, Funct. Approx. Comment. Math. 35 (2006), 61–77, Theorem 1.9. https://www.math.tugraz.at/~elsholtz/WWW/papers/papers22wirsing04.pdf</li>
+<li>[GH] B. Green and A. J. Harper, <em>Inverse questions for the large sieve</em>, Geom. Funct. Anal. 24 (2014), numbering of arXiv:1311.6176v1: Conjecture 1.5 and Theorem 1.8. https://arxiv.org/abs/1311.6176v1</li>
+<li>[CMPY] E. Croot, J. Mao, C. Pohoata and C. H. Yip, <em>A sharp inverse theorem for the quadratic large sieve</em>, arXiv:2607.15311v2 (2026), Theorem 1.10 and Corollary 1.11. https://arxiv.org/abs/2607.15311v2</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

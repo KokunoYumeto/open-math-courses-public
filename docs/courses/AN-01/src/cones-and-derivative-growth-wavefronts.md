@@ -2,7 +2,7 @@
 
 *Written by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
-Fourier decay can distinguish singular directions even when a distribution is singular at the same base point in every neighborhood. Here we measure that decay with a specified derivative-growth scale. The analytic case requires a sequence of compact extensions, because a fixed smooth cutoff need not preserve analytic regularity. We prove that these directional tests recover exactly the corresponding singular support, and that differentiation and multiplication by coefficients of the same regularity cannot create new singular directions.
+Fourier decay can distinguish singular directions even when a distribution is singular at the same base point in every neighborhood. Here we measure that decay with a specified derivative-growth scale. The analytic case requires a sequence of compact extensions, because a fixed smooth cutoff need not preserve analytic regularity. We prove that these directional tests recover exactly the corresponding singular support, and that differentiation and multiplication by coefficients of the same regularity cannot create new singular directions. For ordinary smooth wavefront, we also identify the full frequency projection of a compact distribution and every conormal direction of a smooth density, including at zeros of its weight.
 
 The main prerequisite is [Derivative growth and finite-order localization](derivative-growth-and-finite-order-localization.md): Lemma 1 absorbs fixed index shifts, Theorem 4 constructs cutoffs, Lemma 5 characterizes bounded compact distributions, and Theorem 6 converts a full-frequency estimate to local regularity. The [Fourier foundation](../prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.md), F1–F5, supplies integration by parts, inversion and the exact transpose conventions. [Convolution as addition of supports](convolution-as-addition-of-supports.md#pairings-parameters-and-tensor-products), B0–B2, supplies localization, smooth pairings and tensor products. Compactness, smooth bumps and Lebesgue integration have the supplied proofs linked in the preceding lesson.
 
@@ -353,6 +353,116 @@ Near any direction with \(\xi'\ne0\), choose a cone on which \(|\xi'|\ge c|\xi|\
 
 for every real \(t\). As \(t\to+\infty\) or \(t\to-\infty\), these frequencies enter every cone about the corresponding positive or negative normal direction. Thus no such cutoff has rapid decay on that cone. Those pairs belong to \(\operatorname{WF}(u)\), and hence to \(\operatorname{WF}_L(u)\) by (23). This proves (28). In dimension one the same argument gives \(\operatorname{WF}_L(\delta_0)=\{(0,\xi):\xi\ne0\}\), because every cutoff equal to one near zero leaves \(\widehat{b\delta_0}=1\).
 
+## Compact support and the frequency projection
+
+The next three results concern ordinary smooth wavefront. We use the full cutoff-convolution estimate in [*Smooth pullback and the Fourier normal condition*](../prerequisites/U011-free-foundations/smooth-pullback-and-fourier-normal-condition.md), Section 18.1, and its exact diffeomorphism rule in Section 18.3. Those proofs include their finite-order bounds and Fourier constants. The Gram surface measure and its coordinate law are proved in [*Regular level sets and transverse convolution*](regular-level-sets-and-transverse-convolution.md), Lemma 0.2 and Theorem 1.1.
+
+For a compactly supported distribution \(v\) on \(\mathbb R^n\), let
+\[
+ \Sigma(v)=\{\xi\ne0:\widehat v
+       \text{ is not rapidly decreasing on any open cone about }\xi\}.
+ \tag{G1}
+\]
+Rapid decrease means that every weighted supremum
+\(\sup_\xi(1+|\xi|)^q|\widehat v(\xi)|\) on that cone is finite. It does not mean decrease on just one ray.
+
+**Theorem 8 (frequency projection and uniform localization).** For every compactly supported \(v\),
+\[
+ \Sigma(v)=\{\xi\ne0:\text{there is }x\text{ with }(x,\xi)\in
+                                      \operatorname{WF}(v)\}.
+ \tag{G2}
+\]
+This projection is closed in \(\mathbb R^n\setminus0\). More generally, if \(X\) is open and \(\Gamma\) is relatively closed and conic in \(X\times(\mathbb R^n\setminus0)\), then \(\operatorname{WF}(u)\subset\Gamma\) holds exactly when
+\[
+ \sup_{\xi\in V}(1+|\xi|)^q
+                |\widehat{\chi u}(\xi)|<\infty
+ \quad\text{for every }q\ge0
+ \tag{G3}
+\]
+for every \(\chi\in C_c^\infty(X)\) and closed cone \(V\subset\mathbb R^n\) such that
+\((\operatorname{supp}\chi\times(V\setminus0))\cap\Gamma=\varnothing\).
+
+**Proof of (G2).** If \(\xi_0\notin\Sigma(v)\), the cutoff-convolution estimate makes every compact localization rapidly decreasing on a smaller cone about \(\xi_0\). Thus there is no wavefront pair with that covector.
+
+For the converse, suppose every \((x,\xi_0)\) is regular. Put \(K=\operatorname{supp}v\). At each \(x\in K\), choose a cutoff equal to one near \(x\) and an open regular cone containing \(\xi_0\). Finitely many smaller base neighborhoods cover \(K\). A finite smooth partition gives compact functions \(\chi_j\) supported in these neighborhoods, with \(\sum_j\chi_j=1\) near \(K\). Choose one open cone about \(\xi_0\) whose angular closure lies in all the finitely many regular cones. The convolution estimate makes each \(\widehat{\chi_jv}\) rapidly decreasing there. Since \(v=\sum_j\chi_jv\), their finite sum proves \(\xi_0\notin\Sigma(v)\). If \(K\) is empty, \(v=0\) and the assertion is immediate.
+
+For closedness, all wavefront base points lie in \(K\). Given a convergent sequence of nonzero projected covectors with nonzero limit, choose witnessing base points in \(K\). A subsequence of those points converges, and closedness of wavefront supplies a witness for the limiting covector. Compact support is what makes this projection argument valid.
+
+**Proof of (G3).** Smooth multiplication and locality give
+\(\operatorname{WF}(\chi u)\subset\operatorname{WF}(u)\cap
+(\operatorname{supp}\chi\times(\mathbb R^n\setminus0))\).
+The zero extension of \(\chi u\) to all of \(\mathbb R^n\) has no additional singularities, because its support is a compact subset of \(X\). By (G2), its set \(\Sigma\) misses \(V\setminus0\). Cover the compact set \(V\cap S^{n-1}\) by finitely many open cones of rapid decrease. Taking the maximum of their constants for each \(q\) proves (G3) for \(|\xi|\ge1\). The transform of a compact distribution is a continuous polynomially bounded function, so the bounded-frequency part also has a finite supremum. If \(V\cap S^{n-1}\) is empty, only that bounded part remains.
+
+Conversely, at any pair outside \(\Gamma\), relative closedness supplies a compact cutoff equal to one near the base point and a closed cone whose interior contains the covector, with the product disjoint from \(\Gamma\). Formula (G3) makes that pair regular. This proves the characterization. \(\square\)
+
+## Smooth weights on every linear subspace
+
+**Theorem 9 (the full flat density formula).** Let \(V\subset\mathbb R^n\) be any linear subspace, of dimension \(0\le d\le n\), let \(a\in C^\infty(V;\mathbb C)\), and define
+\[
+ u(\varphi)=\int_V a(x)\varphi(x)\,dS_V(x).
+\]
+Here \(dS_V\) is Euclidean \(d\)-dimensional measure, with counting measure when \(d=0\). Then \(\operatorname{supp}u=\operatorname{supp}_V a\), viewed as a closed subset of \(\mathbb R^n\), and
+\[
+ \operatorname{WF}(u)
+     =\{(x,\xi):x\in\operatorname{supp}_V a,\quad
+                    \xi\in V^\perp\setminus0\}.
+ \tag{G4}
+\]
+No nonvanishing assumption at the selected base point is needed.
+
+**Proof.** Compact test supports give finite volume and a bound for \(|a|\), so \(u\) is a distribution of order zero locally. It vanishes off the support of \(a\). Conversely, every neighborhood of a point in that support contains a point where \(a\ne0\). In a smaller neighborhood choose a nonnegative tangential bump and use the tangential test \(\overline a\) times that bump, extended smoothly in the normal variables. Its pairing is a positive integral of \(|a|^2\), so \(u\) does not vanish on the original neighborhood. This proves the support assertion.
+
+Use orthonormal coordinates \(x=(y,z)\in\mathbb R^d\times\mathbb R^{n-d}\) with \(V=\{z=0\}\). The orthogonal substitution has absolute determinant one. Direct Fourier substitution, or the proved diffeomorphism rule, carries covectors by the same orthogonal map. It therefore suffices to work in these coordinates.
+
+For every compact smooth cutoff \(\chi\), set \(g(y)=\chi(y,0)a(y)\). The exact Fourier formula is
+\[
+ \widehat{\chi u}(\eta,\zeta)=\widehat g(\eta).
+ \tag{G5}
+\]
+The right side is rapidly decreasing in the tangential variable. On a cone about any covector with \(\eta\ne0\), shrink the cone so that
+\(|\eta|\ge c|(\eta,\zeta)|\). Formula (G5) then gives every full-frequency decay power. Away from the base support, \(u\) vanishes. This proves the upper inclusion in (G4).
+
+Fix \(y_0\in\operatorname{supp}a\), any \(\zeta_0\ne0\), and any cutoff \(\chi=1\) near \((y_0,0)\). The function \(g\) is nonzero: that neighborhood contains a point where \(a\ne0\). Fourier inversion gives some fixed \(\eta_*\) with \(\widehat g(\eta_*)\ne0\). At the frequencies \((\eta_*,t\zeta_0)\), \(t\to+\infty\), (G5) is the same nonzero number. These frequencies eventually enter every open cone about \((0,\zeta_0)\). Rapid decrease on such a cone is impossible. This proves the reverse inclusion for every normal covector, including both signs.
+
+When \(d=0\), the formula reads \(u=a(0)\delta_0\). If \(a(0)\ne0\), every cutoff equal to one near zero has the nonzero constant transform \(a(0)\), proving all directions singular. If \(a(0)=0\), the distribution is zero. When \(d=n\), \(u\) is the smooth function \(a\), and \(V^\perp\setminus0\) is empty, as required. \(\square\)
+
+## Curved densities and the actual coordinate factor
+
+**Corollary 10 (a smooth embedded density).** Let \(M\) be a relatively closed smooth embedded submanifold without boundary of an open \(X\subset\mathbb R^n\), and let \(a\) be a complex smooth function on \(M\). The locally finite distribution
+\(u(\varphi)=\int_M a\varphi\,dS_M\) has
+\[
+ \operatorname{WF}(u)=
+ \{(x,\xi):x\in\operatorname{supp}_M a,\quad
+              \xi\ne0,\quad \xi|_{T_xM}=0\}.
+ \tag{G6}
+\]
+
+**Proof.** The Gram measure construction in the cited level-set lesson applies in every submanifold chart. On each compact subset of \(X\), relative closedness and finitely many smaller charts bound its mass and the density. Thus the pairing defines a distribution. The same local positive-test argument as in Theorem 9 proves \(\operatorname{supp}u=\operatorname{supp}_M a\).
+
+Choose a flattening diffeomorphism \(h(y,z)=x\), with \(h(y,0)\in M\), where \(y\in\mathbb R^d\). Its existence is the coordinate-completion lemma, applied to local defining functions for \(M\). Write
+\[
+ J_M(y)=\sqrt{\det(D_yh(y,0)^TD_yh(y,0))},
+ \qquad
+ h^*u=g(y)\delta_0(z),\quad
+ g(y)=\frac{a(h(y,0))J_M(y)}{|\det Dh(y,0)|}.
+ \tag{G7}
+\]
+The empty Gram determinant equals one. To verify (G7), use the scalar pullback test formula:
+\[
+ (h^*u)(\psi)=
+ \int_M a(x)\psi(h^{-1}(x))|\det Dh^{-1}(x)|\,dS_M(x).
+\]
+Substitution \(x=h(y,0)\) gives exactly (G7). All determinant factors are smooth and strictly positive. Consequently \(g\) has precisely the local support of \(a\) in these coordinates, even at a zero or a flat zero of \(a\).
+
+Theorem 9 applies locally, after a compact localization inside the chart. Its normal covectors are exactly those with zero \(y\)-component. The diffeomorphism equality (WF7) in the supplied reading sends an ambient covector \(\xi\) to \(Dh^T\xi\). Its \(y\)-component vanishes exactly when \(\xi\) annihilates all columns of \(D_yh\), which span \(T_xM\). This gives both inclusions in (G6). Locality joins the chart statements. The zero-dimensional and codimension-zero cases are included by the corresponding cases of Theorem 9. \(\square\)
+
+The smoothness of the weight and the submanifold are the hypotheses for this ordinary wavefront formula. Arbitrary smooth weights are not asserted to preserve analytic or derivative-growth wavefront; those multiplication statements use the matching coefficient class in Theorem 7.
+
+![A smooth density with zeros in its support, the exact conormal directions on a parabola, and four singular frequency rays.](../figures/weighted-conormal-directions.png)
+
+*Left: the compact smooth odd weight \(b(s)=s\exp[-1/(1-s^2)]\) for \(|s|<1\), extended by zero, as in Exercise 5. Its support includes \(-1,0,1\), although its values there vanish. Middle: Exercise 7's density on \((s,s^2)\), with representative covectors \(\pm0.18(-2s,1)\), including the endpoints and the zero of the weight. The full fibers contain every nonzero real multiple. Right: Exercise 6's frequency projection consists of all four punctured coordinate rays. The Fourier transform decreases rapidly on each exact coordinate ray, but not in any open cone around it. The plotted samples illustrate the proved statements. [Reproducible figure source](../figures/weighted-conormal-directions.py).*
+
+
 ## Exercises with complete solutions
 
 **Exercise 1 — zeros on one ray.** In dimension \(n\ge2\), compute \(\operatorname{WF}_L(\partial_1\delta_0)\). Its Fourier transform is zero on \(\xi_1=0\); explain why this does not make those directions regular.
@@ -379,7 +489,57 @@ Deduce that a real distribution on the line which is not analytic near \(x_0\) h
 
 **Solution.** Linearity of convolution gives \(\sum_jh_{N,j}=(\sum_jh_j)*r_N\). Its kernel has mass one and total displacement at most \(\delta\); on the chosen smaller neighborhood all sampled values of the sum are one. Thus the result is exactly one. For the failure example, let \(h\) be a nonconstant smooth function on an interval and take \(h_1=h\), \(h_2=1-h\) there. Translate only the first term by a sufficiently small \(t\). On a smaller interval the sum is \(1+h(x-t)-h(x)\), which need not be one: choose \(x,t\) with unequal values of \(h\). If compact support is wanted, multiply both original terms by a cutoff equal to one on a larger interval containing those points. This retains the example on the smaller interval. \(\square\)
 
+**Exercise 5 (intermediate: a zero weight can still carry both signs).** Let
+\[
+ \beta(s)=
+ \begin{cases}e^{-1/(1-s^2)},&|s|<1,\\0,&|s|\ge1,\end{cases}
+ \qquad b(s)=s\beta(s),\qquad u(x,y)=b(x)\delta_0(y).
+ \tag{G8}
+\]
+Determine the support and smooth wavefront of \(u\), including at \(x=-1,0,1\). Show that its Fourier transform vanishes on the entire vertical frequency axis.
+
+**Solution.** The supplied scalar cutoff proof shows that the exponential extended by zero is smooth and flat at its endpoint. Composition with \(1-s^2\) proves that \(\beta\), hence \(b\), is smooth and flat at \(\pm1\). The weight is nonzero on \((-1,0)\cup(0,1)\), so its support is \([-1,1]\). Theorem 9 gives
+\[
+ \operatorname{supp}u=[-1,1]\times\{0\},\qquad
+ \operatorname{WF}(u)=\{(s,0;0,\lambda):|s|\le1,\ \lambda\ne0\}.
+\]
+Formula (G5) gives \(\widehat u(\xi,\eta)=\widehat b(\xi)\). Since \(b\) is odd and compactly supported, its integral is zero, and \(\widehat u(0,\eta)=0\) for all \(\eta\). Every cone around either vertical ray nevertheless contains frequencies with a fixed \(\xi_*\) where \(\widehat b(\xi_*)\ne0\) and with arbitrarily large \(|\eta|\). The two notions of decay therefore differ exactly as claimed. \(\square\)
+
+**Exercise 6 (advanced: every exact axis can look regular).** With \(b\) from (G8), put
+\[
+ v(x,y)=b(x)\delta_0(y)+b(y)\delta_0(x).
+ \tag{G9}
+\]
+Find its exact smooth wavefront, its frequency projection, and its Fourier transform. What happens on each exact coordinate frequency ray?
+
+**Solution.** The first summand has the wavefront in Exercise 5. Exchanging the variables gives
+\(\{(0,s;\lambda,0):|s|\le1,\lambda\ne0\}\) for the second. Their union is an upper bound by the sum rule. At any pair in the first set, the second summand is regular: away from the origin it vanishes locally, and over the origin its only singular covectors are horizontal. If the sum were regular at that pair, subtracting the regular second summand would make the first regular, a contradiction. Exchange the summands for the other inclusion. Thus the exact wavefront is that union, including both fibers over the crossing point.
+
+The distribution is compactly supported. Theorem 8 gives
+\[
+ \Sigma(v)=
+ \{(\lambda,0):\lambda\ne0\}
+ \ \cup\ \{(0,\lambda):\lambda\ne0\},
+ \qquad
+ \widehat v(\xi,\eta)=\widehat b(\xi)+\widehat b(\eta).
+ \tag{G10}
+\]
+On a coordinate axis one summand is \(\widehat b(0)=0\) and the other is Schwartz, so the restriction to that axis decreases rapidly. In a cone about the vertical axis, use \((\xi_*,t)\), where \(\widehat b(\xi_*)\ne0\). As \(t\) tends to either infinity, \(\widehat b(t)\to0\), so the sum tends to the same nonzero value. The horizontal case is identical. Thus none of the four rays has a conic neighborhood of rapid decrease. \(\square\)
+
+**Exercise 7 (intermediate: a curved density with flat endpoints).** Define
+\(w(\varphi)=\int_{\mathbb R}b(s)\varphi(s,s^2)\,ds\).
+Find its density relative to arclength and its complete smooth wavefront. Verify every arrow in the middle panel.
+
+**Solution.** The tangent vector is \((1,2s)\), so arclength is \(\sqrt{1+4s^2}\,ds\). The density relative to arclength is \(b(s)/\sqrt{1+4s^2}\), smooth on the whole parabola and supported where \(|s|\le1\). The parabola is a closed smooth embedded curve without boundary; the endpoints of the density's support are not boundaries of the curve. Corollary 10 gives
+\[
+ \operatorname{WF}(w)=
+ \{(s,s^2;\lambda(-2s,1)):|s|\le1,\ \lambda\ne0\}.
+ \tag{G11}
+\]
+The pairing of \((-2s,1)\) with the tangent \((1,2s)\) is zero. Each displayed arrow uses \(\lambda=0.18\) or \(-0.18\), so it is a nonzero member of the stated fiber, including at \(s=-1,0,1\). The weight vanishes to every order at the two endpoints, yet every neighborhood on the curve contains nonzero density. Those points remain in its support and retain both conormal signs. \(\square\)
+
+
 ## References
 
 - [Derivative growth and finite-order localization](derivative-growth-and-finite-order-localization.md), especially the controlled cutoffs, bounded compact-distribution criterion and local Fourier characterization; [Schwartz functions and Fourier inversion](../prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.md), F1–F5; and [Convolution as addition of supports](convolution-as-addition-of-supports.md#pairings-parameters-and-tensor-products), B0–B2. These readings supply all explicitly used prerequisite proofs.
-- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition (1990), Springer, 2003, [doi:10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), Section 8.4. This is the source for the derivative-growth wavefront definition, cutoff localization, projection and differential-action theorems. The arguments, examples and exercises above are independently expressed.
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition (1990), Springer, 2003, [doi:10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), Proposition 8.1.3, Theorem 8.1.5, Lemma 8.2.1 and Section 8.4. This is the source for the derivative-growth wavefront definition, cutoff localization, projection and differential-action theorems. The arguments, examples and exercises above are independently expressed.

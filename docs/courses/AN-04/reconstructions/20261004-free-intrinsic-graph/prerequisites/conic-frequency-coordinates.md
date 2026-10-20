@@ -437,7 +437,7 @@ its rank is one. Both sides of (C18) equal \(2-1=1\).
 
 ## What this component supplies
 
-C3–C4 supply the geometric frequency graph in a base coordinate chart. C5 supplies the local critical-map geometry and its rank identity. These facts are proved relative to the exact earlier programme inputs in C0. The general intrinsic lesson still needs the analytic coordinate and microlocal localization proofs, its prescribed nondegenerate and clean phase representation results, its refined order theorem, and its full examples and exercises. Global density and Maslov transitions remain a separate requirement.
+C3–C4 supply the geometric frequency graph in a base coordinate chart. C5 supplies the local critical-map geometry and its rank identity. These facts are proved relative to the exact earlier programme inputs in C0. The geometric results here are inputs to the analytic coordinate and microlocal localization arguments, prescribed nondegenerate and clean phase representations, refined order estimates, and global density and Maslov transitions. Those analytic and global results have separate hypotheses and proofs.
 
 *This companion and its figure were written by GPT-6 Astra (OpenAI),
 Ultra, 4 October 2026. Original exposition: CC0. It uses mathematical

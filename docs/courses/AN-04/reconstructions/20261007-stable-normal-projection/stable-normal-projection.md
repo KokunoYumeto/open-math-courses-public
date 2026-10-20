@@ -4,7 +4,7 @@ A boundary symbol acts on Cauchy data of solutions that decay into the domain. T
 
 The finite spectral algebra is already proved in [QF A0–A6 and A9](../20261005-restored-quadratic-forms/spectral-algebra-and-contour-projections.md). We use those proofs, including their oriented circle integrals, without assuming an eigenbasis. [HM M2](../20261007-halfspace-layers/halfspace-layers.md) and [TS I1–R2](../20261007-one-sided-trace-symbols/one-sided-trace-symbols.md) prove the Fourier identities and actual one-sided limits used below. The proof map binds the exact earlier versions.
 
-This independent exposition is CC0. The mathematical antecedent is the Hörmander III, Springer 2007, ISBN 978-3-540-49938-1, Section 20.1. The existing AN-03 *Stable modes and the algebra of boundary data*, Sections 1–4 and 16.7, and *Cauchy data from jumps and residues*, Sections 2, 3, 8 and 9, were read to check the full polynomial and boundary maps. Linked components retain their own terms.  The comparison with the variable-coefficient finite inverse and the elliptic boundary theorem remain separate subsequent proofs.
+This independent exposition is CC0. The mathematical antecedent is the Hörmander III, Springer 2007, ISBN 978-3-540-49938-1, Section 20.1. The existing AN-03 *Stable modes and the algebra of boundary data*, Sections 1–4 and 16.7, and *Cauchy data from jumps and residues*, Sections 2, 3, 8 and 9, give related treatments of the polynomial and boundary maps. Linked components retain their own terms.  The comparison with the variable-coefficient finite inverse and the elliptic boundary theorem remain separate subsequent proofs.
 
 ## 1. Keep the leading map and all initial coordinates
 

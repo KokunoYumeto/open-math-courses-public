@@ -20,11 +20,11 @@ componentwise, with a finite sum of constants.
 
 The complete proofs of Fourier inversion, Parseval, weighted
 \(L^2\) completeness and the integral inequalities are
-[P3, M0–M8](measure-and-l2.md) and [L0–L3](fourier-l2.md).
-We use [P1, B1–B5](dyadic-endpoint.md) for the dyadic square norm,
+P3, M0–M8 and L0–L3.
+We use P1, B1–B5 for the dyadic square norm,
 Schur bounds, ordinary operators and integer coordinate estimates;
-[K0–K7](conic-parametrices-and-localization.md) for conic inverses
-and intrinsic localization; [T0–T3 and W1–W5](coordinate-and-wavefront-localization.md)
+K0–K7 for conic inverses
+and intrinsic localization; T0–T3 and W1–W5
 for coordinates, proper cutoffs and wavefront locality;
 [C0–C4](conic-frequency-coordinates.md) for a frequency-graph chart;
 and both directions of [G12](../intrinsic-frequency-graphs.md#4-the-graph-criterion-in-both-directions)

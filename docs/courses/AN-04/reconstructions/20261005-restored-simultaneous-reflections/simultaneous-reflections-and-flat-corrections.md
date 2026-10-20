@@ -6,7 +6,7 @@ We prove the smooth and homogeneous coordinate theorems here. The proof separate
 
 The primary source is the reprint of Hörmander III, corrected second printing (1994), Appendix C.4, Theorems C.4.6–C.4.8 PDF pages 509–515 in this exact edition. We use the single-involution reflection theorem proved in [Folds, reflections and uniform smooth descent](../20261005-restored-smooth-descent/folds-reflections-and-uniform-descent.md). The remaining ingredients are local differential calculus, smooth flows, the inverse function theorem and the explicit constructions below.
 
-The [proof map](proof-map.json) binds all results and exercises to their exact current programme proofs. In particular, the [flow and coordinate companion F0](../20261005-restored-submanifolds/flows-constant-rank-and-leaves.md) gives the transverse flow chart, using the complete [smooth-flow providers NF1–NF7](../20261005-restored-phase-space/finite-coordinate-flows.md). All series and remainder arguments required below are proved here, with the earlier compact-parameter calculus and smooth cutoffs explicitly bound in the map.
+The [proof map](proof-map.json) binds all results and exercises to their exact current programme proofs. In particular, the [flow and coordinate companion F0](../20261005-restored-submanifolds/flows-constant-rank-and-leaves.md) gives the transverse flow chart, using the complete smooth-flow providers NF1–NF7. All series and remainder arguments required below are proved here, with the earlier compact-parameter calculus and smooth cutoffs explicitly bound in the map.
 
 ## 1. The simultaneous model and its reflection lines
 
@@ -559,7 +559,7 @@ If all coordinates had degree zero, their differentials would annihilate the non
 
 ## 8. What has been proved
 
-The full smooth simultaneous coordinate theorem is now proved through its first coefficients, every higher normal coefficient, smooth realization with parity, flat iteration estimates, and actual final coordinate identities. An invariant transverse slice gives the homogeneous theorem with the exact degrees and radial hypothesis. The arguments do not yet normalize a degenerate closed two-form, produce symplectic charts on both targets of a canonical relation, or establish an Airy operator bound. Those are subsequent targets.
+The full smooth simultaneous coordinate theorem is now proved through its first coefficients, every higher normal coefficient, smooth realization with parity, flat iteration estimates, and actual final coordinate identities. An invariant transverse slice gives the homogeneous theorem with the exact degrees and radial hypothesis. The arguments do not yet normalize a degenerate closed two-form, produce symplectic charts on both targets of a canonical relation, or establish an Airy operator bound. The folded-form, canonical-target and Airy arguments use additional geometric and analytic results.
 
 ## References and component notices
 

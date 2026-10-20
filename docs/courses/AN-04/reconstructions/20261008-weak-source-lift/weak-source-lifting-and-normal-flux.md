@@ -242,7 +242,7 @@ The last expression is exactly twice the product of the two graph norms, so (SL1
 
 *Left: the exact local profiles in (SL22), on the displayed interval only. Middle: the full form subtraction in (SL12); normal and lower terms cancel, while the tangential difference and added mass remain. Right: the two squared trace norms in (SL24), sampled at integer frequencies. The H-minus-one-half value equals the proved trace bound, while the L2 value is unbounded. These are algebraic and analytic examples, not characteristic rays. Complete proofs: L1–L8 and Exercises 1–3.*
 
-## 8. What this resolves and what still needs a proof
+## 8. Scope of the source reduction
 
 The natural-dual source and its boundary part can now be removed by a lift with the same microlocal energy order. The remaining source has the exact L2-index needed in (SL13). The reduced weak Neumann solution has the proved homogeneous normal flux (SL19), in its actual negative-order trace space; the Dirichlet solution retains its original zero trace.
 

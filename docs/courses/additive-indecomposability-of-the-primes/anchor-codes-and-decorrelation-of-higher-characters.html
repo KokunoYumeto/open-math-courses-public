@@ -1,0 +1,288 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Anchor codes and decorrelation of higher characters</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Additive indecomposability of the primes)</a><a href="templates-transfers-and-frequency-histories.html">Previous lesson</a><a href="a-tensor-budget-and-a-contracting-kernel.html">Next lesson</a><a href="src/anchor-codes-and-decorrelation-of-higher-characters.md">Editable source</a></nav><main><article><h1 id="anchor-codes-and-decorrelation-of-higher-characters">Anchor codes and decorrelation of higher characters</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves the two remaining estimates for Theorem 1.1 of Lesson 7 and derives the mixed flatness of the normalized Fourier transforms of the supports <span class="math" data-tex="\(S_p\)">\(S_p\)</span> (Theorem 6.1), the form in which Lessons 3–9 are used later. Two estimates remain. The diagonal terms <span class="math" data-tex="\(\mathcal D_j\)">\(\mathcal D_j\)</span> of the transfers must be small, so that the lower bound <span class="math" data-tex="\(|\eta_0|\ge e^{-B_0m}\)">\(|\eta_0|\ge e^{-B_0m}\)</span> survives <span class="math" data-tex="\(k\)">\(k\)</span> transfers. And at the last level, rearranging the bulk variables among the <span class="math" data-tex="\(2^k\)">\(2^k\)</span> copies of the word must produce nearly orthogonal terms, which forces <span class="math" data-tex="\(\eta_k\)">\(\eta_k\)</span> to be small. Both rest on one mechanism. Every copy of a bulk slot carries a <em>code</em>, read off from its exponents towards the anchors. When two terms place the same bulk prime in slots with different codes, the quotient of their phases contains the square of a character of order greater than <span class="math" data-tex="\(2\)">\(2\)</span>, evaluated in one direction only between a short and a long prime. Such a one-sided interaction averages out (Lemma 1.2).</p>
+<p><strong>Prerequisites.</strong> <a href="templates-transfers-and-frequency-histories.html"><em>Templates, transfers and frequency histories</em></a>; <a href="a-biased-block-and-an-amplified-moment.html"><em>A biased block and an amplified moment</em></a>, Corollary 1.2; <a href="square-root-bounds-and-collision-stability.html"><em>Square-root bounds and collision stability</em></a>, Lemma 4.1.</p>
+<p>The notation of Lessons 7 and 8 is in force.</p>
+<h2 id="1-one-sided-interactions">1. One-sided interactions</h2>
+<p><strong>Lemma 1.1</strong> (zeros of polynomials under independent sampling). Let <span class="math" data-tex="\(N\)">\(N\)</span> be a nonzero polynomial of total degree at most <span class="math" data-tex="\(D\)">\(D\)</span> in independent random variables <span class="math" data-tex="\(x_1,\dots,x_n\)">\(x_1,\dots,x_n\)</span>, each taking any single value with probability at most <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>. Then <span class="math" data-tex="\(\Pr(N(x_1,\dots,x_n)=0)\le D\alpha\)">\(\Pr(N(x_1,\dots,x_n)=0)\le D\alpha\)</span>.</p>
+<p><em>Proof.</em> Induct on <span class="math" data-tex="\(n\)">\(n\)</span>; for <span class="math" data-tex="\(n=0\)">\(n=0\)</span>, <span class="math" data-tex="\(N\)">\(N\)</span> is a nonzero constant. Write <span class="math" data-tex="\(N=\sum_{i\le d}c_i(x_1,\dots,x_{n-1})x_n^i\)">\(N=\sum_{i\le d}c_i(x_1,\dots,x_{n-1})x_n^i\)</span> with <span class="math" data-tex="\(c_d\ne0\)">\(c_d\ne0\)</span>, of total degree at most <span class="math" data-tex="\(D-d\)">\(D-d\)</span>. By induction <span class="math" data-tex="\(\Pr(c_d=0)\le(D-d)\alpha\)">\(\Pr(c_d=0)\le(D-d)\alpha\)</span>. If <span class="math" data-tex="\(c_d\ne0\)">\(c_d\ne0\)</span>, <span class="math" data-tex="\(N\)">\(N\)</span> is a nonzero polynomial of degree <span class="math" data-tex="\(d\)">\(d\)</span> in <span class="math" data-tex="\(x_n\)">\(x_n\)</span>, with at most <span class="math" data-tex="\(d\)">\(d\)</span> roots, and <span class="math" data-tex="\(x_n\)">\(x_n\)</span> is independent of the other variables, so the conditional probability of a root is at most <span class="math" data-tex="\(d\alpha\)">\(d\alpha\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>This is the classical argument of Schwartz and Zippel, here for arbitrary independent laws with a bound on the largest atom.</p>
+<p>We compare two terms in one of the following two settings.</p>
+<ul>
+<li><strong>(a)</strong> Two terms of the final amplitude <span class="math" data-tex="\(\eta_k\)">\(\eta_k\)</span> whose top lists differ by a rearrangement of the bulk variables among the bulk slots, with the same root frequency.</li>
+<li><strong>(b)</strong> Two terms of the diagonal <span class="math" data-tex="\(\mathcal D_j\)">\(\mathcal D_j\)</span>: a fixed positive integer <span class="math" data-tex="\(P\)">\(P\)</span> in place of the pivot, a common root frequency <span class="math" data-tex="\(v=w\)">\(v=w\)</span>, and a fixed matching that identifies the primes of <span class="math" data-tex="\(H_L\)">\(H_L\)</span> with those of <span class="math" data-tex="\(H_R\)">\(H_R\)</span>, while <span class="math" data-tex="\(Y\)">\(Y\)</span> is shared.</li>
+</ul>
+<p>Fix every frequency of both histories and the rearrangement or matching. In setting (b) only the variables of <span class="math" data-tex="\(H_L\)">\(H_L\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span> are sampled; the matched counterpart's prior weight is extracted separately below. In both settings the two terms use the same set of primes and the same root frequency, and the additive phase <span class="math" data-tex="\(A_{\mathcal I}\)">\(A_{\mathcal I}\)</span> of (2.1) of Lesson 8 depends only on these. So the additive phases cancel in the quotient <span class="math" data-tex="\(\Theta^{(1)}\overline{\Theta^{(2)}}\)">\(\Theta^{(1)}\overline{\Theta^{(2)}}\)</span>. On the diagonal, the removed pivot factors are removed on both sides, with the same <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p><strong>Lemma 1.2</strong> (one-sided interactions [OpenAI-013, (4.11)]). Suppose that the quotient phase contains, between a <em>short</em> prime <span class="math" data-tex="\(q\)">\(q\)</span> and a <em>long</em> prime <span class="math" data-tex="\(p\)">\(p\)</span> whose level ranges are separated by <span class="math" data-tex="\(\gg L\)">\(\gg L\)</span>, a factor <span class="math" data-tex="\(\xi_q(p)\)">\(\xi_q(p)\)</span> with <span class="math" data-tex="\(\xi_q\)">\(\xi_q\)</span> a nonprincipal character modulo <span class="math" data-tex="\(q\)">\(q\)</span>, and no factor in the reverse direction between this pair. Then the weighted expectation of the product of the two terms is
+<span class="math math-display" data-tex="\[
+O\bigl(\exp(-c_2e^{\alpha L})\bigr)
+\tag{1.1}
+\]">\[
+O\bigl(\exp(-c_2e^{\alpha L})\bigr)
+\tag{1.1}
+\]</span>
+for some <span class="math" data-tex="\(c_2&gt;0\)">\(c_2&gt;0\)</span>, uniformly in the fixed data. Bounded unary restrictions coming from the counterpart priors are permitted, and so is the factor <span class="math" data-tex="\(e^{T_j+\Delta_j}/H_L\)">\(e^{T_j+\Delta_j}/H_L\)</span> on the range (2.2) of Lesson 8. The bound (1.1) can be summed over all histories and matchings of fixed depth, whose number is at most <span class="math" data-tex="\(\exp(\mathrm{poly}_k(m))\)">\(\exp(\mathrm{poly}_k(m))\)</span>.</p>
+<p><em>Proof.</em> <em>Large coprimality conditions.</em> At the top, the atoms must be pairwise coprime, internally distinct where required, and coprime to the external integer when there is one. At a lower node, the inserted pivot <span class="math" data-tex="\(P=(vH_R-wH_L)/s\)">\(P=(vH_R-wH_L)/s\)</span> is automatically coprime to each atom of <span class="math" data-tex="\(H_L\)">\(H_L\)</span> and <span class="math" data-tex="\(H_R\)">\(H_R\)</span>: a common prime factor with an atom of <span class="math" data-tex="\(H_L\)">\(H_L\)</span> would divide <span class="math" data-tex="\(vH_R\)">\(vH_R\)</span>, but <span class="math" data-tex="\(H_R\)">\(H_R\)</span> is coprime to <span class="math" data-tex="\(H_L\)">\(H_L\)</span>, and the factor does not divide <span class="math" data-tex="\(v\)">\(v\)</span>, by size for actual primes and by the retained frequency conditions for earlier pivots. An inserted pivot always occupies an active pivot position, so it lies in one of <span class="math" data-tex="\(H_L,H_R\)">\(H_L,H_R\)</span> at every later step, never in <span class="math" data-tex="\(Y\)">\(Y\)</span>. So the slots of <span class="math" data-tex="\(Y\)">\(Y\)</span> carry actual primes, and the only large coprimality conditions that are not automatic are between a reconstructed pivot and the actual primes of its <span class="math" data-tex="\(Y\)">\(Y\)</span>, together with the top conditions.</p>
+<p><em>Removing them.</em> Express each reconstructed integer by repeated substitution of (3.2) of Lesson 8. Clearing denominators, which are products of frequencies, its numerator is a polynomial in the independent actual prime variables of <span class="math" data-tex="\(H_L\)">\(H_L\)</span> and <span class="math" data-tex="\(Y\)">\(Y\)</span>; in setting (b) a matched prime is one variable. For fixed <span class="math" data-tex="\(k\)">\(k\)</span>, the degrees are bounded by a polynomial in <span class="math" data-tex="\(m\)">\(m\)</span>, and the absolute values have logarithm at most <span class="math" data-tex="\(\exp(O_k(L))\)">\(\exp(O_k(L))\)</span>, also after setting a variable to zero. For a required coprimality with a prime variable <span class="math" data-tex="\(x\)">\(x\)</span>, set <span class="math" data-tex="\(x=0\)">\(x=0\)</span> in the numerator. If the result vanishes identically, <span class="math" data-tex="\(x\)">\(x\)</span> divides the numerator for every assignment, the denominator is a unit modulo <span class="math" data-tex="\(x\)">\(x\)</span>, and the condition fails identically: the pair of histories contributes nothing. Otherwise, by Lemma 1.1 the evaluation vanishes with probability at most its degree times the largest point mass, which is at most <span class="math" data-tex="\(\exp(-ce^{\alpha L})\)">\(\exp(-ce^{\alpha L})\)</span> for every prime prior here; the priors with internal restrictions are dominated by the unrestricted ones. On a nonzero evaluation there are at most <span class="math" data-tex="\(\exp(O_k(L))\)">\(\exp(O_k(L))\)</span> prime divisors, and <span class="math" data-tex="\(x\)">\(x\)</span> is independent of the evaluation, so <span class="math" data-tex="\(x\)">\(x\)</span> divides it with probability at most <span class="math" data-tex="\(\exp(O_k(L)-ce^{\alpha L})\)">\(\exp(O_k(L)-ce^{\alpha L})\)</span>. The same argument handles collisions at the top and coprimality with the external integer. All these failures are negligible even after multiplication by <span class="math" data-tex="\(\exp(\mathrm{poly}_k(m))\)">\(\exp(\mathrm{poly}_k(m))\)</span>. The removal is made after the additive phases have cancelled, so on the enlarged domain the multiplicative factors may take any bounded value at nonunits.</p>
+<p><em>The remaining conditions.</em> The integrality and small-frequency gcd conditions are congruences modulo an integer <span class="math" data-tex="\(Q_*=\exp(O_k(m))\)">\(Q_*=\exp(O_k(m))\)</span> whose prime factors divide the frequencies, so every actual prime is coprime to <span class="math" data-tex="\(Q_*\)">\(Q_*\)</span>. The other conditions are polynomial inequalities after the substitutions: product ranges, pivot ranges, positivity and the word bins. Fix all variables except <span class="math" data-tex="\(p\)">\(p\)</span>, and fix <span class="math" data-tex="\(q\)">\(q\)</span>. On a dyadic interval for <span class="math" data-tex="\(p\)">\(p\)</span>, cut at the boundary points of these inequalities and at the critical points of the polynomial arguments of the smooth factors; there are at most <span class="math" data-tex="\(\mathrm{poly}_k(m)\)">\(\mathrm{poly}_k(m)\)</span> cuts, and on each piece the arguments are monotone. The level-zero weights <span class="math" data-tex="\((X/M)^{1/2}\widehat\psi(vX/M)\)">\((X/M)^{1/2}\widehat\psi(vX/M)\)</span> on their ranges, their products, and the factor <span class="math" data-tex="\(e^{T_j+\Delta_j}/H_L\)">\(e^{T_j+\Delta_j}/H_L\)</span> then have supremum and total variation at most <span class="math" data-tex="\(\exp(\mathrm{poly}_k(m))\)">\(\exp(\mathrm{poly}_k(m))\)</span> as functions of <span class="math" data-tex="\(p\)">\(p\)</span>, in every residue class modulo <span class="math" data-tex="\(Q_*\)">\(Q_*\)</span>.</p>
+<p><em>The character sum.</em> With the other variables fixed, the expectation has the form
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbb E_p\,\mathbb E_q\,U(p)\,V(q)\,\xi_q(p)\,W(p,q),\\
+|U|,|V|\le1,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathbb E_p\,\mathbb E_q\,U(p)\,V(q)\,\xi_q(p)\,W(p,q),\\
+|U|,|V|\le1,
+\end{gathered}
+\]</span>
+with the congruence conditions included in <span class="math" data-tex="\(W\)">\(W\)</span>. By Cauchy–Schwarz in <span class="math" data-tex="\(p\)">\(p\)</span> the factor <span class="math" data-tex="\(U\)">\(U\)</span> disappears, and the nonnegative square can be extended from the prior of <span class="math" data-tex="\(p\)">\(p\)</span> to all integers <span class="math" data-tex="\(n\)">\(n\)</span> in its range, with weight <span class="math" data-tex="\(e^{CL}/n\)">\(e^{CL}/n\)</span>. Expand the square in <span class="math" data-tex="\(q,q&#x27;\)">\(q,q&#x27;\)</span>. The terms <span class="math" data-tex="\(q=q&#x27;\)">\(q=q&#x27;\)</span> contribute at most the largest point mass of the short prior times <span class="math" data-tex="\(\exp(\mathrm{poly}_k(m))\)">\(\exp(\mathrm{poly}_k(m))\)</span>. For <span class="math" data-tex="\(q\ne q&#x27;\)">\(q\ne q&#x27;\)</span>, <span class="math" data-tex="\(n\mapsto\xi_q(n)\overline{\xi_{q&#x27;}(n)}\)">\(n\mapsto\xi_q(n)\overline{\xi_{q&#x27;}(n)}\)</span> is a nonprincipal character modulo <span class="math" data-tex="\(qq&#x27;\)">\(qq&#x27;\)</span>, so it has mean zero over every complete period, also along a progression of step <span class="math" data-tex="\(Q_*\)">\(Q_*\)</span>, because <span class="math" data-tex="\(Q_*\)">\(Q_*\)</span> is coprime to <span class="math" data-tex="\(qq&#x27;\)">\(qq&#x27;\)</span>. Over a progression in a dyadic interval <span class="math" data-tex="\([b,2b]\)">\([b,2b]\)</span>, partial summation against a weight of supremum and variation <span class="math" data-tex="\(\exp(\mathrm{poly}_k(m))/b\)">\(\exp(\mathrm{poly}_k(m))/b\)</span> bounds the sum by <span class="math" data-tex="\(qq&#x27;\exp(\mathrm{poly}_k(m))/b\)">\(qq&#x27;\exp(\mathrm{poly}_k(m))/b\)</span>, and summing the <span class="math" data-tex="\(Q_*\)">\(Q_*\)</span> classes gives
+<span class="math math-display" data-tex="\[
+\exp(\mathrm{poly}_k(m))\,\frac{Q_*\,qq&#x27;}b .
+\]">\[
+\exp(\mathrm{poly}_k(m))\,\frac{Q_*\,qq&#x27;}b .
+\]</span>
+Since the levels are separated by <span class="math" data-tex="\(\gg L\)">\(\gg L\)</span>, <span class="math" data-tex="\(\log b\ge e^{c&#x27;L}\log q\)">\(\log b\ge e^{c&#x27;L}\log q\)</span>, while <span class="math" data-tex="\(\log Q_*=O_k(L)\)">\(\log Q_*=O_k(L)\)</span> and <span class="math" data-tex="\(\log b\ge e^{\alpha L}\)">\(\log b\ge e^{\alpha L}\)</span>. So this is at most <span class="math" data-tex="\(\exp(-\frac12e^{\alpha L})\)">\(\exp(-\frac12e^{\alpha L})\)</span>, and there are <span class="math" data-tex="\(e^{O(L)}\)">\(e^{O(L)}\)</span> dyadic intervals. Taking square roots proves (1.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-anchor-codes">2. Anchor codes</h2>
+<p>An active bulk slot at level <span class="math" data-tex="\(l\)">\(l\)</span> has a <em>path</em> <span class="math" data-tex="\(t=(t_1,\dots,t_l)\in\{1,-1\}^l\)">\(t=(t_1,\dots,t_l)\in\{1,-1\}^l\)</span>, the copy signs of the transfers that produced it. Write
+<span class="math math-display" data-tex="\[
+e_0=1,\qquad e_j=\prod_{h\le j}t_h,\qquad\varepsilon(t)=e_l,
+\]">\[
+e_0=1,\qquad e_j=\prod_{h\le j}t_h,\qquad\varepsilon(t)=e_l,
+\]</span>
+so <span class="math" data-tex="\(\varepsilon(t)\)">\(\varepsilon(t)\)</span> is the regular sign of Lesson 8. For an anchor clone <span class="math" data-tex="\(y\)">\(y\)</span> created at one of the first <span class="math" data-tex="\(l\)">\(l\)</span> steps, its <em>code coordinate</em> at the slot is
+<span class="math math-display" data-tex="\[
+c_y(t)=\frac{b_{yi}}{\varepsilon(t)},
+\]">\[
+c_y(t)=\frac{b_{yi}}{\varepsilon(t)},
+\]</span>
+where <span class="math" data-tex="\(i\)">\(i\)</span> is a bulk slot with path <span class="math" data-tex="\(t\)">\(t\)</span>. All bulk slots of one active word are treated alike by the update rule, so the coordinate depends only on the path. The <em>code</em> of the path is the vector of all these coordinates.</p>
+<p><strong>Lemma 2.1</strong> (anchor codes [OpenAI-013, (4.12)]). Let <span class="math" data-tex="\(a\)">\(a\)</span> be an anchor reserved for step <span class="math" data-tex="\(j\)">\(j\)</span>. Its two clones <span class="math" data-tex="\(a^+,a^-\)">\(a^+,a^-\)</span> have, at a bulk path <span class="math" data-tex="\(t\)">\(t\)</span> of length at least <span class="math" data-tex="\(j\)">\(j\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\bigl(c_{a^+}(t),c_{a^-}(t)\bigr)\\
+&amp;\quad=\begin{cases}
+(1,\,-1/e_{j-1}),&amp;t_j=1,\\
+(-1/e_{j-1},\,1),&amp;t_j=-1,
+\end{cases}
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\bigl(c_{a^+}(t),c_{a^-}(t)\bigr)\\
+&amp;\quad=\begin{cases}
+(1,\,-1/e_{j-1}),&amp;t_j=1,\\
+(-1/e_{j-1},\,1),&amp;t_j=-1,
+\end{cases}
+\end{aligned}
+\]</span>
+and these coordinates do not change at later steps. The small and the big anchor of step <span class="math" data-tex="\(j\)">\(j\)</span> have the same coordinates. Consequently every code occurs on at most two paths, and the code together with the final sign <span class="math" data-tex="\(\varepsilon(t)\)">\(\varepsilon(t)\)</span> determines the path.</p>
+<p><em>Proof.</em> At level zero all exponents are <span class="math" data-tex="\(1\)">\(1\)</span>. Until step <span class="math" data-tex="\(j\)">\(j\)</span> the anchor is outside, and by (3.3) of Lesson 8 each transfer multiplies its row towards a bulk slot by the copy sign of the target; so before step <span class="math" data-tex="\(j\)">\(j\)</span>, <span class="math" data-tex="\(b_{ai}=e_{j-1}\)">\(b_{ai}=e_{j-1}\)</span> for a bulk slot <span class="math" data-tex="\(i\)">\(i\)</span> of path <span class="math" data-tex="\((t_1,\dots,t_{j-1})\)">\((t_1,\dots,t_{j-1})\)</span>. The active pivot of type <span class="math" data-tex="\(K_j\)">\(K_j\)</span> has always been kept in the copy <span class="math" data-tex="\(H^+\)">\(H^+\)</span>, so the anchor's column into it is <span class="math" data-tex="\(b_{aP}=1\)">\(b_{aP}=1\)</span>. At step <span class="math" data-tex="\(j\)">\(j\)</span> the anchor lies in <span class="math" data-tex="\(H\)">\(H\)</span>, and (3.3) gives, for the new bulk slot <span class="math" data-tex="\(i^{t_j}\)">\(i^{t_j}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+b_{a^+i^+}=e_{j-1},\\
+b_{a^+i^-}=b_{aP}=1,\\
+b_{a^-i^-}=-e_{j-1},\\
+b_{a^-i^+}=-b_{aP}=-1.
+\end{gathered}
+\]">\[
+\begin{gathered}
+b_{a^+i^+}=e_{j-1},\\
+b_{a^+i^-}=b_{aP}=1,\\
+b_{a^-i^-}=-e_{j-1},\\
+b_{a^-i^+}=-b_{aP}=-1.
+\end{gathered}
+\]</span>
+Dividing by <span class="math" data-tex="\(\varepsilon=e_{j-1}t_j\)">\(\varepsilon=e_{j-1}t_j\)</span> gives the stated pairs. Afterwards the clones are outside, and each transfer multiplies both <span class="math" data-tex="\(b_{yi}\)">\(b_{yi}\)</span> and <span class="math" data-tex="\(\varepsilon_i\)">\(\varepsilon_i\)</span> by the same sign, so the coordinates are fixed. The two anchors of step <span class="math" data-tex="\(j\)">\(j\)</span> follow identical rules.</p>
+<p>The pair is <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span> exactly when <span class="math" data-tex="\(e_{j-1}=-1\)">\(e_{j-1}=-1\)</span>, and is <span class="math" data-tex="\((1,-1)\)">\((1,-1)\)</span> or <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span> when <span class="math" data-tex="\(e_{j-1}=1\)">\(e_{j-1}=1\)</span>. So the anchors of step <span class="math" data-tex="\(j\)">\(j\)</span> determine <span class="math" data-tex="\(e_{j-1}\)">\(e_{j-1}\)</span>, and all anchors of steps <span class="math" data-tex="\(1,\dots,l\)">\(1,\dots,l\)</span> determine <span class="math" data-tex="\(e_0,\dots,e_{l-1}\)">\(e_0,\dots,e_{l-1}\)</span>, hence <span class="math" data-tex="\(t_1,\dots,t_{l-1}\)">\(t_1,\dots,t_{l-1}\)</span>. Only <span class="math" data-tex="\(t_l\)">\(t_l\)</span> may remain undetermined, and it is fixed by <span class="math" data-tex="\(\varepsilon(t)=e_l\)">\(\varepsilon(t)=e_l\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-diagonal-bound">3. The diagonal bound</h2>
+<p>Consider the diagonal <span class="math" data-tex="\(\mathcal D_j\)">\(\mathcal D_j\)</span> of step <span class="math" data-tex="\(j\)">\(j\)</span>; put <span class="math" data-tex="\(l=j-1\)">\(l=j-1\)</span> and <span class="math" data-tex="\(r=2^l\)">\(r=2^l\)</span>. As noted after Proposition 3.2 of Lesson 8, its terms have <span class="math" data-tex="\(H_L=H_R\)">\(H_L=H_R\)</span> as integers and <span class="math" data-tex="\(v=w\)">\(v=w\)</span>. Within each branch the primes are distinct, so equality of the products gives a unique matching of the slots of <span class="math" data-tex="\(H_L\)">\(H_L\)</span> with those of <span class="math" data-tex="\(H_R\)">\(H_R\)</span> carrying the same primes; sum over these matchings. Bulk slots can only match bulk slots, because the bulk level range is separated from every other role in <span class="math" data-tex="\(H\)">\(H\)</span>, and matched bulk slots have the same character rule.</p>
+<p><strong>Normalization.</strong> For a fixed assignment of <span class="math" data-tex="\(H_L\)">\(H_L\)</span>, the prior weight of a prescribed matched counterpart is <span class="math" data-tex="\(C_H/H_L\)">\(C_H/H_L\)</span> times its role and distinctness indicators, where
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+C_H&amp;\le L^{-rm}\exp\bigl(Crm+O_k(1)\bigr)\\
+&amp;:\quad(3.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+C_H&amp;\le L^{-rm}\exp\bigl(Crm+O_k(1)\bigr)\\
+&amp;:\quad(3.1)
+\end{aligned}
+\]</span>
+there are <span class="math" data-tex="\(rm\)">\(rm\)</span> bulk priors with normalization <span class="math" data-tex="\(O(1/L)\)">\(O(1/L)\)</span>, <span class="math" data-tex="\(r\)">\(r\)</span> top priors with bounded normalization, and <span class="math" data-tex="\(O(n_c)\)">\(O(n_c)\)</span> cell priors costing at most <span class="math" data-tex="\(e^{Cn_cL}\)">\(e^{Cn_cL}\)</span>. Before summing over the external integer <span class="math" data-tex="\(P\)">\(P\)</span>, extract <span class="math" data-tex="\(C_He^{-T_j-\Delta_j}\)">\(C_He^{-T_j-\Delta_j}\)</span>. The remaining ratio <span class="math" data-tex="\(e^{T_j+\Delta_j}/H_L\)">\(e^{T_j+\Delta_j}/H_L\)</span> is bounded on (2.2) of Lesson 8. There are at most <span class="math" data-tex="\(e^{T_j+O_k(1)}\)">\(e^{T_j+O_k(1)}\)</span> values of <span class="math" data-tex="\(P\)">\(P\)</span>, which cancels the factor <span class="math" data-tex="\(e^{-T_j}\)">\(e^{-T_j}\)</span>. Extracting the normalization first avoids multiplying a small uniform error by the doubly exponential number of <span class="math" data-tex="\(P\)">\(P\)</span>.</p>
+<p><strong>Code-changing matchings.</strong> Suppose a matching sends a bulk slot of <span class="math" data-tex="\(H_L\)">\(H_L\)</span>, of path <span class="math" data-tex="\(t\)">\(t\)</span>, to a bulk slot of <span class="math" data-tex="\(H_R\)">\(H_R\)</span> of path <span class="math" data-tex="\(t&#x27;\)">\(t&#x27;\)</span> with a different code. Choose an anchor <span class="math" data-tex="\(y\)">\(y\)</span> of an earlier step whose coordinates differ: <span class="math" data-tex="\(c&#x27;=-c\)">\(c&#x27;=-c\)</span>, with <span class="math" data-tex="\(c=c_y(t)\)">\(c=c_y(t)\)</span>, <span class="math" data-tex="\(c&#x27;=c_y(t&#x27;)\)">\(c&#x27;=c_y(t&#x27;)\)</span>. The anchor is in the shared list <span class="math" data-tex="\(Y\)">\(Y\)</span>. Let <span class="math" data-tex="\(p\)">\(p\)</span> be the bulk prime and <span class="math" data-tex="\(q\)">\(q\)</span> the anchor prime, and <span class="math" data-tex="\(\varepsilon,\varepsilon&#x27;\)">\(\varepsilon,\varepsilon&#x27;\)</span> the signs of the two paths. In the quotient phase, the exponent of the anchor's character at <span class="math" data-tex="\(p\)">\(p\)</span> is <span class="math" data-tex="\(\varepsilon c-\varepsilon&#x27;c&#x27;\)">\(\varepsilon c-\varepsilon&#x27;c&#x27;\)</span>, and the exponent of the bulk character <span class="math" data-tex="\(\chi^{(p)}\)">\(\chi^{(p)}\)</span> at <span class="math" data-tex="\(q\)">\(q\)</span> is <span class="math" data-tex="\(\varepsilon-\varepsilon&#x27;\)">\(\varepsilon-\varepsilon&#x27;\)</span>.</p>
+<ul>
+<li>If <span class="math" data-tex="\(\varepsilon=\varepsilon&#x27;\)">\(\varepsilon=\varepsilon&#x27;\)</span>, the exponents are <span class="math" data-tex="\((\pm2,0)\)">\((\pm2,0)\)</span>. Take <span class="math" data-tex="\(y\)">\(y\)</span> to be the <em>small</em> anchor of that step; it lies below the bulk range. The interaction is <span class="math" data-tex="\(\lambda_y(p)^{\pm2}\)">\(\lambda_y(p)^{\pm2}\)</span>, one-sided from the short prime <span class="math" data-tex="\(q\)">\(q\)</span> to the long prime <span class="math" data-tex="\(p\)">\(p\)</span>.</li>
+<li>If <span class="math" data-tex="\(\varepsilon\ne\varepsilon&#x27;\)">\(\varepsilon\ne\varepsilon&#x27;\)</span>, the exponents are <span class="math" data-tex="\((0,\pm2)\)">\((0,\pm2)\)</span>. Take the <em>big</em> anchor of the same step; it lies above the bulk range. The interaction is <span class="math" data-tex="\(\chi^{(p)}(q)^{\pm2}\)">\(\chi^{(p)}(q)^{\pm2}\)</span>, one-sided from the short prime <span class="math" data-tex="\(p\)">\(p\)</span> to the long prime <span class="math" data-tex="\(q\)">\(q\)</span>.</li>
+</ul>
+<p>Lemma 2.1 guarantees that the small and big anchors have the same codes, so both choices are available. In either case the character squared is nonprincipal, because every character used has order greater than <span class="math" data-tex="\(2\)">\(2\)</span>. All other factors are unary once the other variables are fixed. By Lemma 1.2, summed over <span class="math" data-tex="\(P\)">\(P\)</span>, matchings and histories with the normalization above, the code-changing matchings contribute a negligible amount.</p>
+<p><strong>Code-preserving matchings.</strong> By Lemma 2.1 a bulk slot has at most <span class="math" data-tex="\(2m\)">\(2m\)</span> possible counterparts of the same code: at most two paths share its code, each with <span class="math" data-tex="\(m\)">\(m\)</span> bulk positions. The other slots are boundedly many for fixed <span class="math" data-tex="\(k\)">\(k\)</span>. So there are at most <span class="math" data-tex="\((2m)^{rm}e^{O_k(1)}\)">\((2m)^{rm}e^{O_k(1)}\)</span> code-preserving matchings. Fix <span class="math" data-tex="\(P\)">\(P\)</span> and such a matching. For each common root frequency, Lemma 4.1 of Lesson 8 leaves at most one valid history on each branch. Bound the phases by <span class="math" data-tex="\(1\)">\(1\)</span> and use <span class="math" data-tex="\(2|W_lW&#x27;_l|\le|W_l|^2+|W&#x27;_l|^2\)">\(2|W_lW&#x27;_l|\le|W_l|^2+|W&#x27;_l|^2\)</span> on the common support. In each of the two terms, bound the prior weight of the other branch by <span class="math" data-tex="\(C_H\exp(-T_j-\Delta_j+O_k(1))\)">\(C_H\exp(-T_j-\Delta_j+O_k(1))\)</span> and keep the square branch's own priors; Proposition 5.1 of Lesson 8, in its fixed-external version, bounds the frequency sum by <span class="math" data-tex="\(\exp(Crm+o_k(m))\)">\(\exp(Crm+o_k(m))\)</span>. Summing over <span class="math" data-tex="\(P\)">\(P\)</span> and the matchings, and using <span class="math" data-tex="\(m/L=z+o(1)\)">\(m/L=z+o(1)\)</span>,</p>
+<p><strong>Proposition 3.1</strong> (the diagonal [OpenAI-013, (4.13)]). For <span class="math" data-tex="\(1\le j\le k\)">\(1\le j\le k\)</span> and <span class="math" data-tex="\(r=2^{j-1}\)">\(r=2^{j-1}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|\mathcal D_j|&amp;\le\exp\bigl(-\Delta_j+rm(\log z+C)\\
+&amp;\quad +o_k(m)\bigr)\\
+&amp;\quad +O\bigl(\exp(-c_2e^{\alpha L}/2)\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+|\mathcal D_j|&amp;\le\exp\bigl(-\Delta_j+rm(\log z+C)\\
+&amp;\quad +o_k(m)\bigr)\\
+&amp;\quad +O\bigl(\exp(-c_2e^{\alpha L}/2)\bigr),
+\end{aligned}
+\]</span>
+with <span class="math" data-tex="\(C\)">\(C\)</span> independent of <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(B_D\)">\(B_D\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-amplitude-induction">4. The amplitude induction</h2>
+<p>The constants are chosen in this order. The constant <span class="math" data-tex="\(B_0\)">\(B_0\)</span> of Proposition 6.1 of Lesson 7 does not depend on <span class="math" data-tex="\(B_D\)">\(B_D\)</span> or <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<ol>
+<li>Choose <span class="math" data-tex="\(B_1&gt;B_0+2\)">\(B_1&gt;B_0+2\)</span>.</li>
+<li>Choose <span class="math" data-tex="\(B_D\)">\(B_D\)</span> so large that the repeated-prime estimate of Lesson 7 holds and the main term of Proposition 3.1 is at most <span class="math" data-tex="\(\frac12e^{-d_j}e^{-2B_1rm}\)">\(\frac12e^{-d_j}e^{-2B_1rm}\)</span> whenever <span class="math" data-tex="\(d_j\le m\)">\(d_j\le m\)</span>. This is possible uniformly in <span class="math" data-tex="\(k\)">\(k\)</span>: the main term has exponent <span class="math" data-tex="\(-\Delta_j+rm(\log z+C)\)">\(-\Delta_j+rm(\log z+C)\)</span><span class="math" data-tex="\(\le-rm(B_D+19\log z-C)\)">\(\le-rm(B_D+19\log z-C)\)</span>.</li>
+<li>Increase <span class="math" data-tex="\(K_0\)">\(K_0\)</span> so that <span class="math" data-tex="\(\sum_{j\le k}d_j\le Cn_cL+O_k(1)&lt;m\)">\(\sum_{j\le k}d_j\le Cn_cL+O_k(1)&lt;m\)</span> for large <span class="math" data-tex="\(L\)">\(L\)</span>; this follows from <span class="math" data-tex="\(n_c/z\ll ke^{-\epsilon k}\)">\(n_c/z\ll ke^{-\epsilon k}\)</span>.</li>
+</ol>
+<p><strong>Proposition 4.1</strong> ([OpenAI-013, (4.14)]). For large <span class="math" data-tex="\(L\)">\(L\)</span>,
+<span class="math math-display" data-tex="\[
+|\eta_l|\ge\exp\bigl(-B_1\,2^lm\bigr)\qquad(0\le l\le k).
+\]">\[
+|\eta_l|\ge\exp\bigl(-B_1\,2^lm\bigr)\qquad(0\le l\le k).
+\]</span></p>
+<p><em>Proof.</em> If <span class="math" data-tex="\(|\eta_{j-1}|\ge e^{-B_1rm}\)">\(|\eta_{j-1}|\ge e^{-B_1rm}\)</span> with <span class="math" data-tex="\(r=2^{j-1}\)">\(r=2^{j-1}\)</span>, Proposition 3.2 of Lesson 8 and Proposition 3.1 give
+<span class="math math-display" data-tex="\[
+\eta_j\ge e^{-d_j}|\eta_{j-1}|^2-|\mathcal D_j|\ge\tfrac12e^{-d_j}|\eta_{j-1}|^2 .
+\]">\[
+\eta_j\ge e^{-d_j}|\eta_{j-1}|^2-|\mathcal D_j|\ge\tfrac12e^{-d_j}|\eta_{j-1}|^2 .
+\]</span>
+Put <span class="math" data-tex="\(\mathfrak a_j=-2^{-j}m^{-1}\log|\eta_j|\)">\(\mathfrak a_j=-2^{-j}m^{-1}\log|\eta_j|\)</span>. Then <span class="math" data-tex="\(\mathfrak a_j\le\mathfrak a_{j-1}+(d_j+\log2)/(2^jm)\)">\(\mathfrak a_j\le\mathfrak a_{j-1}+(d_j+\log2)/(2^jm)\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathfrak a_j&amp;\le B_0+\sum_{h\le j}\frac{d_h+\log2}{2^hm}\\
+&amp;\le B_0+1+o_k(1)&lt;B_1,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathfrak a_j&amp;\le B_0+\sum_{h\le j}\frac{d_h+\log2}{2^hm}\\
+&amp;\le B_0+1+o_k(1)&lt;B_1,
+\end{aligned}
+\]</span>
+which is the induction hypothesis at the next step. Proposition 6.1 of Lesson 7 starts the induction. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-final-permutation-comparison">5. The final permutation comparison</h2>
+<p>At level <span class="math" data-tex="\(k\)">\(k\)</span> put <span class="math" data-tex="\(r=2^k\)">\(r=2^k\)</span>. For each of the <span class="math" data-tex="\(m\)">\(m\)</span> bulk positions of the word, permute its <span class="math" data-tex="\(r\)">\(r\)</span> variables, one in each active word, among the paths with the same final sign. There are <span class="math" data-tex="\(r/2\)">\(r/2\)</span> paths of each sign, so there are
+<span class="math math-display" data-tex="\[
+J_*=\bigl((r/2)!^2\bigr)^m
+\]">\[
+J_*=\bigl((r/2)!^2\bigr)^m
+\]</span>
+such <em>reassignments</em>. The bulk priors are identical and independent, so every reassignment preserves the joint law. The bins and all other conditions are part of the integrand; they never conditioned the priors.</p>
+<p>Let <span class="math" data-tex="\(\mu\)">\(\mu\)</span> be the product of the priors of the final list with counting measure on <span class="math" data-tex="\(0&lt;|s|\le V_k\)">\(0&lt;|s|\le V_k\)</span>; its total mass is at most <span class="math" data-tex="\(2V_k\)">\(2V_k\)</span>. For a reassignment <span class="math" data-tex="\(\pi\)">\(\pi\)</span>, let <span class="math" data-tex="\(\Phi_\pi\)">\(\Phi_\pi\)</span> be the sum over internal histories of the final term with the bulk variables placed by <span class="math" data-tex="\(\pi\)">\(\pi\)</span>. Invariance of the priors gives <span class="math" data-tex="\(\int\Phi_\pi\,d\mu=\eta_k\)">\(\int\Phi_\pi\,d\mu=\eta_k\)</span>. By Lemma 4.1 and Proposition 5.1 of Lesson 8,
+<span class="math math-display" data-tex="\[
+\|\Phi_\pi\|_{L^2(\mu)}^2\le\exp\bigl(Crm+o_k(m)\bigr).
+\]">\[
+\|\Phi_\pi\|_{L^2(\mu)}^2\le\exp\bigl(Crm+o_k(m)\bigr).
+\]</span>
+If <span class="math" data-tex="\(\pi\ne\rho\)">\(\pi\ne\rho\)</span>, some bulk variable occupies different paths of the same final sign under <span class="math" data-tex="\(\pi\)">\(\pi\)</span> and <span class="math" data-tex="\(\rho\)">\(\rho\)</span>; by Lemma 2.1 these paths have different codes, and the first case of Section 3, with a small anchor, gives a one-sided square-character interaction. The additive phases cancel, since both terms use the same primes, root frequency and centres. Lemma 1.2, summed over the frequency data, gives
+<span class="math math-display" data-tex="\[
+|\langle\Phi_\pi,\Phi_\rho\rangle_{L^2(\mu)}|\ll\exp(-c_2e^{\alpha L}).
+\]">\[
+|\langle\Phi_\pi,\Phi_\rho\rangle_{L^2(\mu)}|\ll\exp(-c_2e^{\alpha L}).
+\]</span>
+Let <span class="math" data-tex="\(\overline\Phi=J_*^{-1}\sum_\pi\Phi_\pi\)">\(\overline\Phi=J_*^{-1}\sum_\pi\Phi_\pi\)</span>. Then <span class="math" data-tex="\(\int\overline\Phi\,d\mu=\eta_k\)">\(\int\overline\Phi\,d\mu=\eta_k\)</span>, and Cauchy–Schwarz against the constant function <span class="math" data-tex="\(1\)">\(1\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+|\eta_k|^2&amp;\le2V_k\|\overline\Phi\|^2\\
+&amp;\le2V_k\Bigl(\frac{\exp(Crm+o_k(m))}{J_*}\\
+&amp;\quad +O\bigl(\exp(-c_2e^{\alpha L})\bigr)\Bigr).\quad(5.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+|\eta_k|^2&amp;\le2V_k\|\overline\Phi\|^2\\
+&amp;\le2V_k\Bigl(\frac{\exp(Crm+o_k(m))}{J_*}\\
+&amp;\quad +O\bigl(\exp(-c_2e^{\alpha L})\bigr)\Bigr).\quad(5.1)
+\end{aligned}
+\]</span></p>
+<p><strong>Completion of the proof of Theorem 1.1 of Lesson 7.</strong> By Stirling's formula, <span class="math" data-tex="\(\log J_*=2m\log((r/2)!)\)">\(\log J_*=2m\log((r/2)!)\)</span><span class="math" data-tex="\(\ge rm(k\log2-C)\)">\(\ge rm(k\log2-C)\)</span>. By (5.1) of Lesson 7, <span class="math" data-tex="\(\log V_k=E_k\)">\(\log V_k=E_k\)</span><span class="math" data-tex="\(=rm(B_D+20\log z)+o_k(m)\)">\(=rm(B_D+20\log z)+o_k(m)\)</span>, and <span class="math" data-tex="\(20\log z=60\epsilon k\)">\(20\log z=60\epsilon k\)</span>. Since <span class="math" data-tex="\(\log2-60\epsilon&gt;0\)">\(\log2-60\epsilon&gt;0\)</span>, a large <span class="math" data-tex="\(K_0\)">\(K_0\)</span>, chosen after <span class="math" data-tex="\(B_D\)">\(B_D\)</span> and <span class="math" data-tex="\(B_1\)">\(B_1\)</span>, makes the first term on the right of (5.1) at most <span class="math" data-tex="\(\exp(-(2B_1+1)rm)\)">\(\exp(-(2B_1+1)rm)\)</span>. The second term, with its factor <span class="math" data-tex="\(2V_k=\exp(O_k(m))\)">\(2V_k=\exp(O_k(m))\)</span>, is smaller than <span class="math" data-tex="\(\exp(-Crm)\)">\(\exp(-Crm)\)</span> for every fixed <span class="math" data-tex="\(C\)">\(C\)</span> once <span class="math" data-tex="\(L\)">\(L\)</span> is large. So <span class="math" data-tex="\(|\eta_k|^2&lt;\exp(-2B_1rm)\)">\(|\eta_k|^2&lt;\exp(-2B_1rm)\)</span>, contradicting Proposition 4.1 with <span class="math" data-tex="\(l=k\)">\(l=k\)</span>. This contradiction proves Theorem 1.1 of Lesson 7. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-mixed-flatness">6. Mixed flatness</h2>
+<p>For the balanced-transform form used in the rest of the course, define for every prime <span class="math" data-tex="\(p\)">\(p\)</span>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+F_p(x)=\frac{\mathbf 1_{S_p}(x)-\sigma_p}{\sqrt{\sigma_p(1-\sigma_p)}},\\
+\begin{aligned}
+g_p(v)&amp;=\sqrt p\;\mathbb E_{x\in\mathbb F_p}F_p(x)\\
+&amp;\quad \,e_p(-vx).
+\end{aligned}\quad(6.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+F_p(x)=\frac{\mathbf 1_{S_p}(x)-\sigma_p}{\sqrt{\sigma_p(1-\sigma_p)}},\\
+\begin{aligned}
+g_p(v)&amp;=\sqrt p\;\mathbb E_{x\in\mathbb F_p}F_p(x)\\
+&amp;\quad \,e_p(-vx).
+\end{aligned}\quad(6.1)
+\end{gathered}
+\]</span>
+Then <span class="math" data-tex="\(\mathbb E_xF_p(x)=0\)">\(\mathbb E_xF_p(x)=0\)</span>, <span class="math" data-tex="\(\mathbb E_x|F_p(x)|^2=1\)">\(\mathbb E_x|F_p(x)|^2=1\)</span>, <span class="math" data-tex="\(g_p(0)=0\)">\(g_p(0)=0\)</span>, <span class="math" data-tex="\(\frac1p\sum_v|g_p(v)|^2=1\)">\(\frac1p\sum_v|g_p(v)|^2=1\)</span> by Parseval, and <span class="math" data-tex="\(g_p(-v)=\overline{g_p(v)}\)">\(g_p(-v)=\overline{g_p(v)}\)</span>.</p>
+<p><strong>Theorem 6.1</strong> (mixed flatness [OpenAI-013, Corollary 4.2]). Let <span class="math" data-tex="\(0&lt;\alpha&lt;\beta\)">\(0&lt;\alpha&lt;\beta\)</span> be fixed. Outside a set of primes of harmonic mass <span class="math" data-tex="\(o(L)\)">\(o(L)\)</span> in the band <span class="math" data-tex="\(\alpha L\le\log\log p\le\beta L\)">\(\alpha L\le\log\log p\le\beta L\)</span>, uniformly,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sigma_p=\tfrac12+o(1),\\
+\begin{aligned}
+&amp;\max_{\substack{a\in\mathbb F_p\\\lambda}}\Bigl|\mathbb E_{v\in\mathbb F_p}g_p(v)\,\lambda(v)\\
+&amp;\qquad \,e_p(av)\Bigr|=o(1),
+\end{aligned}\quad(6.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sigma_p=\tfrac12+o(1),\\
+\begin{aligned}
+&amp;\max_{\substack{a\in\mathbb F_p\\\lambda}}\Bigl|\mathbb E_{v\in\mathbb F_p}g_p(v)\,\lambda(v)\\
+&amp;\qquad \,e_p(av)\Bigr|=o(1),
+\end{aligned}\quad(6.2)
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> runs over all multiplicative characters of <span class="math" data-tex="\(\mathbb F_p\)">\(\mathbb F_p\)</span>, including the principal one, extended by zero at zero.</p>
+<p><em>Proof.</em> <em>Balance.</em> Apply Lemma 4.1 of Lesson 2 with <span class="math" data-tex="\(\log X=\exp((\beta+1)L)\)">\(\log X=\exp((\beta+1)L)\)</span>; its prime cutoff contains the whole band. Dividing its imbalance term by <span class="math" data-tex="\(\log p\ge e^{\alpha L}\)">\(\log p\ge e^{\alpha L}\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\alpha L\le\log\log p\le\beta L}\frac1p\Bigl(\frac1{\sigma_p}+\frac1{1-\sigma_p}\\
+&amp;\qquad -4\Bigr)\ll Le^{-\alpha L},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\alpha L\le\log\log p\le\beta L}\frac1p\Bigl(\frac1{\sigma_p}+\frac1{1-\sigma_p}\\
+&amp;\qquad -4\Bigr)\ll Le^{-\alpha L},
+\end{aligned}
+\]</span>
+and the bracket is at least <span class="math" data-tex="\(16(\sigma_p-\frac12)^2\)">\(16(\sigma_p-\frac12)^2\)</span> by (4.3) of Lesson 2.</p>
+<p><em>Nonprincipal characters.</em> For a nonprincipal <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, <span class="math" data-tex="\(\sum_v\lambda(v)e_p(vw)=\overline\lambda(w)\tau(\lambda)\)">\(\sum_v\lambda(v)e_p(vw)=\overline\lambda(w)\tau(\lambda)\)</span> for every <span class="math" data-tex="\(w\)">\(w\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E_vg_p(v)\lambda(v)e_p(av)\\
+&amp;\quad =\frac{\tau(\lambda)}{p^{3/2}}\sum_xF_p(x)\overline\lambda(a-x)\\
+&amp;\quad =\frac{\tau(\lambda)}{\sqrt p}\,\overline\lambda(-1)\,\frac{\sigma_p}{\sqrt{\sigma_p(1-\sigma_p)}}\\
+&amp;\qquad \;\mathbb E_{x\in S_p}\overline\lambda(x-a).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E_vg_p(v)\lambda(v)e_p(av)\\
+&amp;\quad =\frac{\tau(\lambda)}{p^{3/2}}\sum_xF_p(x)\overline\lambda(a-x)\\
+&amp;\quad =\frac{\tau(\lambda)}{\sqrt p}\,\overline\lambda(-1)\,\frac{\sigma_p}{\sqrt{\sigma_p(1-\sigma_p)}}\\
+&amp;\qquad \;\mathbb E_{x\in S_p}\overline\lambda(x-a).
+\end{aligned}
+\]</span>
+The constant part of <span class="math" data-tex="\(F_p\)">\(F_p\)</span> disappears because the complete sum of <span class="math" data-tex="\(\overline\lambda(a-x)\)">\(\overline\lambda(a-x)\)</span> is zero. The first two factors have modulus <span class="math" data-tex="\(1\)">\(1\)</span>, and the third is bounded on balanced primes. For quadratic <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, Corollary 1.2 of Lesson 3 shows that the maximal translated bias tends to zero in harmonic probability on the band; for <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> of order greater than <span class="math" data-tex="\(2\)">\(2\)</span>, so is <span class="math" data-tex="\(\overline\lambda\)">\(\overline\lambda\)</span>, and Theorem 1.1 of Lesson 7 gives the same, with the maximum over the character inside.</p>
+<p><em>The principal character.</em> Since <span class="math" data-tex="\(g_p(0)=0\)">\(g_p(0)=0\)</span>, additive inversion gives <span class="math" data-tex="\(\mathbb E_vg_p(v)e_p(av)=p^{-1/2}F_p(a)\)">\(\mathbb E_vg_p(v)e_p(av)=p^{-1/2}F_p(a)\)</span>, which tends to zero uniformly on balanced primes.</p>
+<p><em>Conclusion.</em> Choose thresholds tending to zero slowly enough in the balance and bias estimates; by Markov's inequality, the primes failing either have harmonic mass <span class="math" data-tex="\(o(L)\)">\(o(L)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Theorem 6.1 says that, for most primes, the normalized transform <span class="math" data-tex="\(g_p\)">\(g_p\)</span> correlates with no product <span class="math" data-tex="\(\lambda(v)e_p(av)\)">\(\lambda(v)e_p(av)\)</span> of a multiplicative and an additive character. Lessons 12–18 use it together with the <span class="math" data-tex="\(L^2\)">\(L^2\)</span> normalization of <span class="math" data-tex="\(g_p\)">\(g_p\)</span>, the lower bound for its <span class="math" data-tex="\(L^1\)">\(L^1\)</span> norm proved in Lessons 10 and 11, and collision stability; no pointwise bound on <span class="math" data-tex="\(g_p\)">\(g_p\)</span> beyond the trivial <span class="math" data-tex="\(|g_p|\le\sqrt p\)">\(|g_p|\le\sqrt p\)</span> is used.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> Show that the bound of Lemma 1.1 is sharp: give a polynomial of degree <span class="math" data-tex="\(D\)">\(D\)</span> in one variable, uniform on a set of <span class="math" data-tex="\(1/\alpha\)">\(1/\alpha\)</span> values, with <span class="math" data-tex="\(\Pr(N=0)=D\alpha\)">\(\Pr(N=0)=D\alpha\)</span>.</p>
+<p><strong>7.2.</strong> For <span class="math" data-tex="\(l=2\)">\(l=2\)</span>, list the four paths, their final signs, and the codes given by the anchors of step <span class="math" data-tex="\(1\)">\(1\)</span> and step <span class="math" data-tex="\(2\)">\(2\)</span>. Check that the two paths with the same code have opposite final signs.</p>
+<p><strong>7.3.</strong> Let <span class="math" data-tex="\(\chi\)">\(\chi\)</span> be a character of <span class="math" data-tex="\(\mathbb F_q^\times\)">\(\mathbb F_q^\times\)</span> of order <span class="math" data-tex="\(3\)">\(3\)</span>. Show that <span class="math" data-tex="\(\chi^2\)">\(\chi^2\)</span> is nonprincipal and that <span class="math" data-tex="\(\chi^{-2}=\chi\)">\(\chi^{-2}=\chi\)</span>. What goes wrong in Section 3 for a quadratic <span class="math" data-tex="\(\chi\)">\(\chi\)</span>?</p>
+<p><strong>7.4.</strong> In the proof of Theorem 6.1, verify that <span class="math" data-tex="\(\mathbb E_vg_p(v)e_p(av)=p^{-1/2}F_p(a)\)">\(\mathbb E_vg_p(v)e_p(av)=p^{-1/2}F_p(a)\)</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> Let <span class="math" data-tex="\(x\)">\(x\)</span> be uniform on <span class="math" data-tex="\(\{1,\dots,1/\alpha\}\)">\(\{1,\dots,1/\alpha\}\)</span> (with <span class="math" data-tex="\(1/\alpha\)">\(1/\alpha\)</span> an integer at least <span class="math" data-tex="\(D\)">\(D\)</span>) and <span class="math" data-tex="\(N(x)=(x-1)(x-2)\cdots(x-D)\)">\(N(x)=(x-1)(x-2)\cdots(x-D)\)</span>. Then <span class="math" data-tex="\(\Pr(N=0)=D\alpha\)">\(\Pr(N=0)=D\alpha\)</span>.</p>
+<p><strong>7.2.</strong> By Lemma 2.1, the anchors of step <span class="math" data-tex="\(1\)">\(1\)</span> have <span class="math" data-tex="\(e_0=1\)">\(e_0=1\)</span> and pair <span class="math" data-tex="\((1,-1)\)">\((1,-1)\)</span> for <span class="math" data-tex="\(t_1=1\)">\(t_1=1\)</span>, <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span> for <span class="math" data-tex="\(t_1=-1\)">\(t_1=-1\)</span>. The anchors of step <span class="math" data-tex="\(2\)">\(2\)</span> have pair <span class="math" data-tex="\((1,-1/e_1)\)">\((1,-1/e_1)\)</span> for <span class="math" data-tex="\(t_2=1\)">\(t_2=1\)</span> and <span class="math" data-tex="\((-1/e_1,1)\)">\((-1/e_1,1)\)</span> for <span class="math" data-tex="\(t_2=-1\)">\(t_2=-1\)</span>. Paths: <span class="math" data-tex="\((1,1)\)">\((1,1)\)</span>: <span class="math" data-tex="\(\varepsilon=1\)">\(\varepsilon=1\)</span>, codes <span class="math" data-tex="\((1,-1;1,-1)\)">\((1,-1;1,-1)\)</span>. <span class="math" data-tex="\((1,-1)\)">\((1,-1)\)</span>: <span class="math" data-tex="\(\varepsilon=-1\)">\(\varepsilon=-1\)</span>, codes <span class="math" data-tex="\((1,-1;-1,1)\)">\((1,-1;-1,1)\)</span>. <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span>: <span class="math" data-tex="\(\varepsilon=-1\)">\(\varepsilon=-1\)</span>, <span class="math" data-tex="\(e_1=-1\)">\(e_1=-1\)</span>, codes <span class="math" data-tex="\((-1,1;1,1)\)">\((-1,1;1,1)\)</span>. <span class="math" data-tex="\((-1,-1)\)">\((-1,-1)\)</span>: <span class="math" data-tex="\(\varepsilon=1\)">\(\varepsilon=1\)</span>, codes <span class="math" data-tex="\((-1,1;1,1)\)">\((-1,1;1,1)\)</span>. The paths <span class="math" data-tex="\((-1,1)\)">\((-1,1)\)</span> and <span class="math" data-tex="\((-1,-1)\)">\((-1,-1)\)</span> share a code and have opposite final signs.</p>
+<p><strong>7.3.</strong> <span class="math" data-tex="\(\chi^2\)">\(\chi^2\)</span> has order <span class="math" data-tex="\(3\)">\(3\)</span>, so it is nonprincipal, and <span class="math" data-tex="\(\chi^{-2}=\chi^{3-2}=\chi\)">\(\chi^{-2}=\chi^{3-2}=\chi\)</span>. For a quadratic <span class="math" data-tex="\(\chi\)">\(\chi\)</span>, <span class="math" data-tex="\(\chi^2\)">\(\chi^2\)</span> is principal, so the one-sided interactions of Section 3 carry no cancellation; the quadratic case needs the separate argument of Lessons 3–6.</p>
+<p><strong>7.4.</strong> <span class="math" data-tex="\(\mathbb E_vg_p(v)e_p(av)\)">\(\mathbb E_vg_p(v)e_p(av)\)</span><span class="math" data-tex="\(=\sqrt p\,\mathbb E_xF_p(x)\,\mathbb E_ve_p(v(a-x))\)">\(=\sqrt p\,\mathbb E_xF_p(x)\,\mathbb E_ve_p(v(a-x))\)</span><span class="math" data-tex="\(=\sqrt p\cdot\frac1pF_p(a)\)">\(=\sqrt p\cdot\frac1pF_p(a)\)</span>, since <span class="math" data-tex="\(\mathbb E_ve_p(v(a-x))\)">\(\mathbb E_ve_p(v(a-x))\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(x=a\)">\(x=a\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-013] OpenAI, <em>The additive indecomposability of the primes</em>, OpenAI Math Release preprint, 24 September 2026, Section 4: cancellation for a one-sided character interaction, anchor codes and the diagonal bound, (4.13), the amplitude induction, the final permutation comparison, and Corollary 4.2. https://github.com/openai/math/tree/main/preprints/the-additive-indecomposability-of-the-primes-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

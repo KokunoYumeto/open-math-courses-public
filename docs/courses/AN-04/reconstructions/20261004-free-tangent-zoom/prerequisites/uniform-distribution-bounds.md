@@ -19,7 +19,7 @@ If the tests \(\phi_j,\phi\) have one common compact support and
 \(\phi_j\to\phi\) uniformly with every derivative, then
 \(u_j(\phi_j)\to u(\phi)\).
 
-**Proof.** Scalar limits preserve linearity. On a fixed \(\mathcal D_K\), [complete-test-spaces.md](complete-test-spaces.md), Sections 14.1–14.2, proves that the increasing derivative seminorms give a complete metric topology. The proof takes uniform limits of every derivative of the zero extensions and uses the fundamental theorem on coordinate segments to identify successive derivatives; no regularity of the boundary of \(K\) is needed.
+**Proof.** Scalar limits preserve linearity. On a fixed \(\mathcal D_K\), complete-test-spaces.md, Sections 14.1–14.2, proves that the increasing derivative seminorms give a complete metric topology. The proof takes uniform limits of every derivative of the zero extensions and uses the fundamental theorem on coordinate segments to identify successive derivatives; no regularity of the boundary of \(K\) is needed.
 
 For \(r=1,2,\ldots\), put
 

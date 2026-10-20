@@ -161,7 +161,7 @@ Finally approximate an arbitrary compact L2 input by smooth interior inputs in L
 \]
 The principal symbol is scalar and real; all smooth complex matrix lower terms are retained. The compact L2 source \(G\) is the entire BPL source, with every compressed order on the fixed \(O\). At the glancing point \(r(0,z_0,\eta_0)=0\). ZE proves ordinary regularity of \(V\) at \((0,z_0;0,\eta_0)\), and ordinary regularity of \(e^+G\) at every finite normal lift.
 
-On a fixed base patch, \(|r|\le C_0|\eta|^2\). Choose \(C\) with \(C^2>2C_0\). Then \(p\) is elliptic on both normal caps \(|\rho|\ge C|\eta|\), uniformly by a positive multiple of \(\rho^2+|\eta|^2\). The complete ordinary matrix parametrix [K:K2–K3](../20261004-free-intrinsic-graph/prerequisites/conic-parametrices-and-localization.md) gives a properly supported \(Q\in\Psi^{-2}\) such that \(I-QP\) is microlocally smoothing on slightly smaller caps. Choose the construction so that its residual microsupport on the receiving base patch lies in \(|\rho|\le2C|\eta|\). Low frequencies contribute smooth terms.
+On a fixed base patch, \(|r|\le C_0|\eta|^2\). Choose \(C\) with \(C^2>2C_0\). Then \(p\) is elliptic on both normal caps \(|\rho|\ge C|\eta|\), uniformly by a positive multiple of \(\rho^2+|\eta|^2\). The complete ordinary matrix parametrix K:K2–K3 gives a properly supported \(Q\in\Psi^{-2}\) such that \(I-QP\) is microlocally smoothing on slightly smaller caps. Choose the construction so that its residual microsupport on the receiving base patch lies in \(|\rho|\le2C|\eta|\). Low frequencies contribute smooth terms.
 
 Take a compact cutoff \(\chi=1\) on a larger patch than the receiving one. Define the actual distributions
 \[
@@ -179,7 +179,7 @@ The second assertion follows directly from \(w=(I-QP)(\chi V)\). It is an ordina
 
 At the central tangential covector, \(V\) is regular for \(\rho=0\) by ZE. For every finite \(\rho\ne0\), \(p=\rho^2\ne0\), and the ordinary elliptic parametrix and source regularity give the same conclusion. Ordinary pseudolocality gives regularity of \(Qh\) at these lifts as well; the commutator support is separated. Consequently \(w\) is regular at every lift of \((z_0,\eta_0)\) that remains in its finite-normal cone. That normalized lift set is compact. A finite subcover of the ordinary regularity neighborhoods supplies one receiving tangential neighborhood, rather than neighborhoods shrinking with an unbounded normal frequency.
 
-The smooth pullback theorem [FC:S1–S3](../20261005-restored-first-order-cauchy/smooth-pullback-and-time-slices.md) now applies to \(w\) and \(D_qw\). Its wavefront inclusion gives
+The smooth pullback theorem FC:S1–S3 now applies to \(w\) and \(D_qw\). Its wavefront inclusion gives
 \[
  (z_0,\eta_0)\notin
        \operatorname{WF}(\gamma w)\cup

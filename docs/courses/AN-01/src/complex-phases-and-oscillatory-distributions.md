@@ -2,7 +2,7 @@
 
 *Exposition and original illustrations by GPT-6 Astra (OpenAI). Public domain (CC0 1.0).*
 
-An integral can define a distribution even when its amplitude grows at infinity. Cancellation must then compensate for two different effects: frequency derivatives improve the amplitude, whereas derivatives in the observed variable may enlarge it. A nonnegative imaginary part supplies additional decay without changing this balance. We construct the distribution, locate its possible singularities, and determine the exact normalization of the wave propagator.
+An integral can define a distribution even when its amplitude grows at infinity. Cancellation must then compensate for two different effects: frequency derivatives improve the amplitude, whereas derivatives in the observed variable may enlarge it. A nonnegative imaginary part supplies additional decay without changing this balance. We construct the distribution, locate its possible singularities and their covector directions, and determine the exact normalization of the wave propagator.
 
 The analytic input is [*Weighted cancellation for complex phases*](weighted-cancellation-for-complex-phases.md), Theorem 1 and Corollary 4, including the proof of its uniform estimate (W20). [*Schwartz functions and Fourier inversion*](../prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.md), F1–F5, proves all Fourier operations used below. [*Convolution as addition of supports*](convolution-as-addition-of-supports.md), B0–B2 and Theorem 1.1, supplies distributional gluing, parameter pairings and proper convolution. The causal fundamental distribution used in the last theorem is constructed in [*Causal point sources and characteristic cones*](causal-point-sources-and-characteristic-cones.md), Lemma 4.0 and formulas (4.0g)–(4.0h). Integration, compact cutoffs and differentiation under dominated integrals are proved in the [integration foundations](../prerequisites/U011-free-foundations/banach-foundation-bridges.md), §§15.0–15.4, and the [scalar foundations](../prerequisites/U011-free-foundations/metric-foundation-bridges.md), §§13.1–13.5 and 13.10.
 
@@ -149,6 +149,133 @@ There is also a parameter version, with its hypotheses stated explicitly. Let \(
  \tag{O16}
 \]
 in the sense of smooth distribution-valued pairings. To prove this, each differentiated annular integrand has an amplitude of order at most \(m+|\nu|\). Choose \(k\) in (O9) for that order. The series of derivatives converges uniformly for \(y\) in a compact set, and the fundamental theorem differentiates it term by term. The estimates are uniform on bounded families of tests. Integrating a compactly supported smooth function of \(y\) against these identities is valid for the same reason: the absolutely convergent annular pairings are uniformly dominated. This supplies the corresponding interchange of parameter integration and oscillatory distribution formation.
+
+## Which covectors survive the oscillatory integral
+
+For a distribution \(v\), the pair \((x_0,\xi_0)\), \(\xi_0\ne0\), is outside \(\operatorname{WF}(v)\) if a compact smooth cutoff equal to one near \(x_0\) makes \(\widehat{\chi v}\) decrease faster than every inverse power on an open cone about \(\xi_0\). We use the complete fixed-cutoff convolution estimate in [*Boundary regularity and conic decomposition*](boundary-regularity-and-conic-decomposition.md), Lemma 2 and formula (16): multiplication by a compact smooth function preserves this decrease on a smaller cone.
+
+This estimate makes the definition independent of the choice of a smaller cutoff, and makes the regular set open and positively conic. It also proves the sum inclusion by choosing one cutoff inside the two original cutoff neighborhoods. Finally,
+\[
+ \pi\operatorname{WF}(v)=\operatorname{sing\,supp}v,
+ \qquad \pi(x,\xi)=x.
+ \tag{D1}
+\]
+Indeed, if every direction over \(x_0\) is regular, compactness of the unit sphere supplies finitely many smaller regular cones covering it. Choose one base cutoff supported where all their original cutoffs equal one. The convolution estimate gives rapid decrease of its Fourier transform in every direction. Its inverse integral and every differentiated inverse integral converge absolutely, so Fourier inversion represents this localized distribution by a smooth function. Conversely, a compact smooth localization has rapidly decreasing transform by integration by parts. This proves (D1), including the existence of a nonzero singular covector at every singular base point.
+
+Under (O1)–(O2), set
+\[
+ \mathcal C_\phi(F)=
+ \{(x,\partial_x\phi(x,\theta)):
+    (x,\theta)\in F,\ \theta\ne0,\
+                    \partial_\theta\phi(x,\theta)=0\}.
+ \tag{D2}
+\]
+
+**Theorem 3a (the full directional bound).** The set in (D2) is a relatively closed conic subset of \(X\times(\mathbb R^n\setminus0)\), and
+\[
+              \operatorname{WF}(I_\phi(a))
+                         \subset\mathcal C_\phi(F).
+ \tag{D3}
+\]
+This holds for every \(m\in\mathbb R\), \(0<\rho\le1\) and \(0\le\delta<1\), with no ordering condition between \(\rho\) and \(\delta\). No nondegeneracy condition on the stationary set is required.
+
+**Reality, nonvanishing and closedness.** Euler's identity for the degree-one phase gives \(\phi=\theta\cdot\phi_\theta\). At a stationary point, therefore, \(\phi=0\). The smooth nonnegative function \(\operatorname{Im}\phi\) has a minimum there in the open set \(\Gamma\). Each of its first real derivatives is zero: the positive and negative difference quotients have opposite signs. Consequently \(\phi_x\) is real. It is nonzero because the full differential in (O2) is nonzero while \(\phi_\theta=0\).
+
+Fix a compact base neighborhood \(K\Subset X\). On the compact set of stationary pairs in \(F\cap(K\times S^{N-1})\), the continuous nonzero norm \(|\phi_x|\) has positive minimum and finite maximum, unless that set is empty. Homogeneity then gives
+\[
+ c_K|\theta|\le|\phi_x(x,\theta)|\le C_K|\theta|
+ \quad\text{at its stationary pairs}.
+ \tag{D4}
+\]
+If \((x_j,\xi_j)\in\mathcal C_\phi(F)\) tends to \((x,\xi)\) with \(x\in X,\xi\ne0\), take such a \(K\) containing the tail of the base sequence. The witnessing \(\theta_j\) are bounded above and bounded away from zero by (D4). A subsequence converges to a nonzero \(\theta\). Closedness of \(F\) and continuity of the phase derivatives give the required witness at \((x,\xi)\). Thus (D2) is already closed in the punctured cotangent bundle. This argument uses both radial bounds; an arbitrary projection of a closed cone need not be closed.
+
+**Uniform separation.** Suppose \((x_0,\xi_0)\notin\mathcal C_\phi(F)\). Closedness allows a compact cutoff \(\psi=1\) near \(x_0\) and a cone \(V\) about \(\xi_0\) such that its angular closure and the base support are separated from (D2). On that support,
+\[
+ |\phi_x(x,\theta)-\xi|
+       +|\theta|\,|\phi_\theta(x,\theta)|
+        \ge c\bigl(|\theta|+|\xi|\bigr)
+ \quad((x,\theta)\in F,\ \theta\ne0,\ \xi\in\overline V).
+ \tag{D5}
+\]
+Here and below \(\overline V\) includes zero when used in a homogeneous compact normalization. To prove (D5), normalize \(|\theta|+|\xi|=1\). The phase terms \(\phi_x\) and \(|\theta|\phi_\theta\) extend continuously by zero at \(\theta=0\), because their normalized angular derivatives are bounded on the compact portion of \(F\). The normalized set, including this zero-frequency boundary, is compact. If \(\theta=0\), then \(|\xi|=1\) and the left side is one. If \(\theta\ne0\) and the left side vanishes, then \(\phi_\theta=0\) and \(\xi=\phi_x\ne0\), contrary to the chosen separation. Its positive minimum proves (D5).
+
+**A bound on each annulus.** For the partition (O6), write \(R=2^j\), \(j\ge1\), \(\theta=R\eta\), \(t=|\xi|\ge2\), and
+\[
+ \Phi_{R,\xi}(x,\eta)
+       =\frac{R\phi(x,\eta)-x\cdot\xi}{R+t}.
+ \tag{D6}
+\]
+On \(1/2\le|\eta|\le2\), (D5) gives a common positive lower bound for \(|d_{x,\eta}\Phi_{R,\xi}|\). All derivatives of these normalized phases are uniformly bounded on the compact neighborhoods in question: their two parameter coefficients \(R/(R+t)\) and \(\xi/(R+t)\) are bounded. Their imaginary parts are nonnegative.
+
+For detail on the neighborhood needed by the estimate, normalize these two coefficients into the compact set \(r+|v|=1\), \(r\ge0\), \(v\in\overline V\). The preceding positive gradient minimum on the normalized amplitude support persists on a common surrounding neighborhood by uniform continuity. A finite partition with support inside \(\Gamma\) then gives fixed compact integration domains and fixed cutoff derivative bounds. Thus Corollary 4 of the weighted-cancellation lesson applies uniformly, with oscillation parameter \(R+t\). Formula (O8), now with the fixed base cutoff \(\psi\), gives
+\[
+ \left|
+ R^N\iint e^{i(R\phi(x,\eta)-x\cdot\xi)}
+       \psi(x)\psi_j(R\eta)a(x,R\eta)\,dx\,d\eta
+ \right|
+       \le C_k R^{N+m+\gamma k}(R+t)^{-k},
+ \quad \gamma=\max(\delta,1-\rho)<1.
+ \tag{D7}
+\]
+The norm of the joint complex gradient is used through the proved weight
+\(|d\Phi|^2+\operatorname{Im}\Phi\). A real-phase integration-by-parts operator is not substituted for that estimate.
+
+**Sum every frequency scale.** Put \(b=N+m+\gamma k\) and \(\kappa=1-\gamma\). For \(R\le t\), the dyadic sum of \(R^b\) is bounded by \(C t^b\) if \(b>0\), by \(C(1+\log t)\) if \(b=0\), and by \(C\) if \(b<0\). These statements follow directly from a finite geometric sum. For \(R>t\), the sum in (D7) is bounded by \(C t^{N+m-\kappa k}\), provided \(\kappa k>N+m\), using the infinite geometric sum. Hence
+\[
+ \sum_{j\ge1}|J_j(\psi e^{-ix\cdot\xi})|
+ \le C_k(1+\log t)\,
+       t^{-\min\{k,\ \kappa k-N-m\}},
+       \qquad \xi\in V,\ t\ge2.
+ \tag{D8}
+\]
+For every requested inverse power \(q\), choose the integer \(k\) so that both quantities inside the minimum exceed \(q+1\). Such a choice exists since \(\kappa>0\). The logarithm is absorbed by the remaining positive power. The low-frequency term is smooth by the proof following Lemma 1; its product with \(\psi\) is compact smooth and therefore has rapidly decreasing transform. The series in Theorem 2, applied to the test \(\psi e^{-ix\cdot\xi}\), identifies the sum with \(\widehat{\psi I_\phi(a)}(\xi)\). Formula (D8) proves rapid decrease on \(V\) to every order, which proves (D3). \(\square\)
+
+## A complex phase with one singular covector direction
+
+**Proposition 3b (a one-sided quadratic damping model).** The function
+\[
+ U(x,y)=\frac1{y^2-ix}\quad((x,y)\ne(0,0))
+ \tag{D9}
+\]
+is locally integrable on \(\mathbb R^2\), and its associated distribution has
+\[
+ \operatorname{WF}(U)
+       =\{(0,0;\lambda,0):\lambda>0\}.
+ \tag{D10}
+\]
+For \(\varepsilon>0\), the smooth functions
+\[
+ U_\varepsilon(x,y)=\frac1{\varepsilon+y^2-ix}
+       =\int_0^\infty e^{i(x+i y^2)\theta}e^{-\varepsilon\theta}\,d\theta
+ \tag{D11}
+\]
+converge to \(U\) in \(L^1_{\rm loc}\) and as distributions.
+
+**Proof.** In a small square, fix \(0<|y|<r<1\) and split the \(x\)-integral at \(|x|=y^2\). On the inner part, \((y^4+x^2)^{-1/2}\le |y|^{-2}\), and the interval has length \(2y^2\). On the outer part it is at most \(1/|x|\). Consequently
+\[
+ \int_{-r}^r\frac{dx}{\sqrt{y^4+x^2}}
+       \le 2+2\log\frac r{y^2}.
+ \tag{D12}
+\]
+The logarithm is integrable in \(y\) at zero, since
+\(\int_0^r-\log y\,dy=r(1-\log r)\). The exceptional line \(y=0\) has two-dimensional measure zero, as follows from product integration. Tonelli therefore proves local integrability. Away from the origin the function is smooth. Also \(|U_\varepsilon|\le|U|\) almost everywhere and \(U_\varepsilon\to U\) off the origin. Dominated convergence proves the asserted local \(L^1\) limit. The integral in (D11) is the elementary exponential primitive with positive real decay coefficient.
+
+To apply Theorem 3a, take \(\Gamma=\{\theta>0\}\), \(F=\{\theta\ge0\}\), the phase \(\phi=(x+i y^2)\theta\), and a smooth amplitude \(a(\theta)\) zero for \(\theta\le1\) and one for \(\theta\ge2\). It has order zero and type \((1,0)\). The amplitude \(a e^{-\varepsilon\theta}\), extended by zero for \(\theta\le1\), is uniformly bounded in that symbol class: each differentiated exponential contributes a factor bounded by \(C_j\theta^{-j}\), because \((\varepsilon\theta)^j e^{-\varepsilon\theta}\) is bounded on the positive half-line. It converges with every derivative on compact sets to \(a\). The convergence assertion in Theorem 2 therefore identifies its distributional limit with \(I_\phi(a)\).
+
+The remaining integral
+\[
+ L(x,y)=\int_0^2(1-a(\theta))e^{i(x+i y^2)\theta}\,d\theta
+ \tag{D13}
+\]
+is smooth with every derivative by compact-frequency domination. Taking the limit in (D11) gives \(U=I_\phi(a)+L\). The stationary condition is
+\(\phi_\theta=x+i y^2=0\), hence \(x=y=0\). There \(\phi_{(x,y)}=(\theta,0)\), with \(\theta>0\). Theorem 3a and the smooth sum rule put the wavefront inside the right side of (D10).
+
+The distribution is not smooth near zero. A continuous representative would agree with (D9) at every point off zero: their difference is continuous there and zero almost everywhere, so it is zero everywhere. Its values at \((0,y)\) would be \(y^{-2}\), contradicting boundedness on a compact neighborhood of zero. By (D1) there is at least one singular covector over zero. The upper bound and positive conicity then give the entire positive ray and prove equality. \(\square\)
+
+![Quadratic damping, the positive singular covector ray, and smooth damped profiles.](../figures/complex-phase-direction.png)
+
+*Left: samples of \(\log_{10}|U(x,y)|\) from (D9), with the origin omitted. The high values near the origin do not assign a singular direction; the middle panel gives the exact covector ray in (D10). The real part has both rays, as proved in Exercise 6. Right: exact smooth traces \(U_\varepsilon(0,y)=1/(\varepsilon+y^2)\) for three positive values of \(\varepsilon\). These finite plots accompany the local integrability and wavefront proofs. [Reproducible figure source](../figures/complex-phase-direction.py).*
+
 
 ## A point mass as an oscillatory integral
 
@@ -330,6 +457,39 @@ These formulas are understood almost everywhere, so boundary values do not matte
 \]
 Thus \(\partial_tE(0)=\delta_0\). Subtracting the two nonnegative cone indicators gives \(F_+-F_-=c^2E\), in agreement with the point-source calculation. \(\square\)
 
+**Exercise 5 (intermediate: summing a negative annular order).** In (D7), take \(N=1,m=-3,\rho=1,\delta=0\). Prove the uniform bound
+\(\sum_{j\ge1}2^{-2j}(2^j+t)^{-k}\le C t^{-k}\) for \(t\ge2,k\ge0\). Explain why this case must be retained when summing annuli.
+
+**Solution.** Here \(\gamma=0,\kappa=1\), so \(b=N+m+\gamma k=-2\) for every \(k\). Each denominator is at least \(t^k\), and
+\(\sum_{j\ge1}2^{-2j}=1/3\). Thus \(C=1/3\) works. In this case increasing \(k\) never makes \(b\) positive; an argument requiring \(b>0\) would omit these valid orders. Formula (D8) retains the correct exponent
+\(\min(k,k+2)=k\). Since \(k\) is arbitrary, it still gives rapid decrease.
+
+**Exercise 6 (advanced: reality restores both directions).** Let \(U\) be (D9). Determine the smooth wavefront sets of \(\overline U\) and \(\operatorname{Re}U\). Contrast them with that of \(U_\varepsilon\), \(\varepsilon>0\).
+
+**Solution.** Choose real spatial cutoffs. Complex conjugation of their Fourier pairings gives
+\[
+ \widehat{\chi\overline v}(\xi)
+       =\overline{\widehat{\chi v}(-\xi)},\qquad
+ \operatorname{WF}(\overline v)
+       =\{(x,-\xi):(x,\xi)\in\operatorname{WF}(v)\}.
+ \tag{D14}
+\]
+For distributions the first formula follows directly from the definition
+\(\langle\overline v,f\rangle=\overline{\langle v,\overline f\rangle}\).
+Applying it twice proves equality of the regularity tests. Real cutoffs suffice by the fixed-cutoff estimate. Thus
+\[
+ \begin{aligned}
+ \operatorname{WF}(\overline U)
+     &=\{(0,0;-\lambda,0):\lambda>0\},\\
+ \operatorname{WF}(\operatorname{Re}U)
+     &=\{(0,0;\lambda,0):\lambda\in\mathbb R\setminus0\}.
+ \end{aligned}
+ \tag{D15}
+\]
+For the second equality, the sum rule first gives inclusion in the two rays. At a positive covector \(\overline U\) is regular. If \(2\operatorname{Re}U=U+\overline U\) were regular there, subtracting the regular \(\overline U\) would make \(U\) regular, contrary to (D10). The negative covectors follow by the same argument with the two terms interchanged. Multiplication by the nonzero scalar two preserves wavefront in both directions. Off the origin,
+\(\operatorname{Re}U=y^2/(y^4+x^2)\), interpreted as the already proved locally integrable function. Each \(U_\varepsilon\) is smooth everywhere, so its wavefront is empty. Distributional convergence alone therefore need not preserve the empty wavefront condition. \(\square\)
+
+
 ## References
 
-Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second edition, Springer, 2003, §7.8 and Theorem 6.2.3. The programme proofs used in the construction are linked at the beginning of this lesson.
+Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second edition, Springer, 2003, §7.8, Theorem 8.1.9 and Theorem 6.2.3. The programme proofs used in the construction are linked at the beginning of this lesson.
