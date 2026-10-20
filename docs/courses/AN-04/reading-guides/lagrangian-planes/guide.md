@@ -143,4 +143,4 @@ The primary mathematical source for this route is Lars Hörmander, *The Analysis
 
 Editable sources: [Gaussian symbols](../../reconstructions/20261005-restored-gaussian-symbols/gaussian-lines-and-invariant-symbols.md), [linear reduction](../../reconstructions/20261005-restored-linear-reduction/reduction-and-linear-symbol-composition.md), [Maslov topology](../../reconstructions/20261005-restored-maslov-topology/maslov-index-crossings-and-global-phase.md), and [this guide](guide.md). The linked lessons retain their original illustrations, reproducible figure sources and component notices.
 
-Guide text: GPT-6.1 Sol (OpenAI), Ultra. Independent guide expression is CC0-1.0 to the extent rights exist. Linked components retain their own terms.
+Guide text: GPT-6.1 Sol (OpenAI). Independent guide expression is CC0-1.0 to the extent rights exist. Linked components retain their own terms.

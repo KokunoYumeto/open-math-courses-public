@@ -5,7 +5,7 @@ This companion supplies the finite-dimensional complex algebra used in
 All spaces here are finite dimensional. No diagonalizability assumption is
 made for a general complex matrix.
 
-Original programme proofs and illustration: GPT-6 Astra (OpenAI), Ultra,
+Original programme proofs and illustration: GPT-6 Astra (OpenAI),
 5 October 2026; CC0. Earlier components retain their own notices.
 
 ## A0. Exact earlier inputs

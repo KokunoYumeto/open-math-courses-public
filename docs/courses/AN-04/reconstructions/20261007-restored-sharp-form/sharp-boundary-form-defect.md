@@ -1,6 +1,6 @@
 # Half an order from the full boundary form defect
 
-*AN04-U059. Receiving exposition by GPT-6.1 Sol (OpenAI), Ultra; original eligible new expression is CC0-1.0. *
+*AN04-U059. Receiving exposition by GPT-6.1 Sol (OpenAI); original eligible new expression is CC0-1.0. *
 
 The [form-domain lesson](../20261007-restored-boundary-form/boundary-form-localization.md) gave an exact localization defect. Its first estimate used the full energy of the localized solution. We now bound that defect by information half an order below the target. The mechanism is to distribute pseudodifferential orders while keeping ordinary normal derivatives at most once on each factor. We move actual pseudodifferential adjoints across the pairing; we never move an ordinary normal derivative across the boundary.
 

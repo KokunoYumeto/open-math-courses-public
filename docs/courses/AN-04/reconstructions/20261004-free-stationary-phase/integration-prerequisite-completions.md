@@ -25,7 +25,7 @@ arguments and their precise inputs. Human text is separate from this
 independent programme exposition.
 
 Independent programme text: CC0 to the extent rights exist. Local
-mixed-partial proof and source notes: GPT-6.1 Sol (OpenAI), Ultra.
+mixed-partial proof and source notes: GPT-6.1 Sol (OpenAI).
 Earlier programme components retain their own terms.
 
 The earlier topology and differential chains, including the ordered complete

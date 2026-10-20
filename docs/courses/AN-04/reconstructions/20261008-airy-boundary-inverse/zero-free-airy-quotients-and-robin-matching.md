@@ -350,10 +350,10 @@ The denominator has a simple zero and the numerator is nonzero, which proves the
 
 *The first panels are numerical samples of the real and imaginary parts of \(\varphi\), and of its inverse magnitude after division by the proved weight. The last panel shows the exact \(\lambda^{-2/3}\) dependence at \(t_0=0\), normalized to remove its constant factor. Plotted samples are illustrations; zero-freeness and every global estimate are proved in B1–B7 and Exercises 1–3.*
 
-## 8. Source credit and the next receiving step
+## 8. Sources and scope of the Airy model
 
 Richard Melrose and Michael Taylor, [*Boundary Problems for Wave Equations With Grazing and Gliding Rays*](https://mtaylor.web.unc.edu/wp-content/uploads/sites/16915/2018/04/glide.pdf), §8.1, Proposition 8.1.12 and (8.1.13)–(8.1.16), identifies inversion of the complex Airy quotient as the diffractive Neumann mechanism. Appendix A.3 records the quotient identities. This freely readable author-hosted treatment supplies that source route. The convergent-integral construction, differentiated remainder proofs and finite-matrix Fourier-model argument here are written independently, using the exact earlier programme proofs in the proof map.
 
 The earlier Airy lesson retains its Hörmander I and IV attribution and editions. 
 
-The real-axis inverse and model matching are now available for a general boundary construction. Completing that construction still requires the actual boundary phase and amplitude equations, variable-base operator composition and parametrices, full coefficient and cutoff remainders, and transfer to the same weak energy domain and natural-dual forcing. No general Robin propagation theorem follows merely from the affine Fourier model. The earlier normal estimate and alternative proofs remain intact. Independent new expression is CC0-1.0; linked components retain their licences.
+The real-axis inverse and matching theorem concern the stated affine Fourier model. A variable-coefficient boundary construction also requires phase and amplitude equations, operator composition, parametrices, coefficient and cutoff remainder estimates, and the weak energy domain with natural-dual forcing. These are separate analytic requirements; the affine model alone does not imply general Robin propagation. For the boundary comparison argument, see [Robin diffraction by Dirichlet comparison](../20261009-robin-diffraction-comparison/robin-diffraction-by-dirichlet-comparison.html). The independent exposition is CC0-1.0; linked components retain their licences.

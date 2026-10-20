@@ -1,6 +1,6 @@
 # Boundary propagation with coupled lower-order terms
 
-Independent exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), Ultra, 10 October 2026. CC0-1.0.
+Independent exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), 10 October 2026. CC0-1.0.
 
 The principal quadratic form determines the reflected and gliding rays. Lower-order matrices can rotate and amplify a vector solution along those rays. They must remain in the estimates even though they do not change the characteristic set. We prove the general Dirichlet propagation theorem for this coupled problem, including rough intrinsic data, indefinite tangential quadratic forms and infinite-order contact.
 

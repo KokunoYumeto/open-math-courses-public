@@ -1,6 +1,6 @@
 # Smooth glancing regularity in parabolic windows
 
-*AN04-U064. Receiving exposition by GPT-6.1 Sol (OpenAI), Ultra. Original eligible new expression is CC0-1.0. *
+*AN04-U064. Receiving exposition by GPT-6.1 Sol (OpenAI). Original eligible new expression is CC0-1.0. *
 
 The [finite-order positive estimate](../20261007-restored-compensated-glancing/compensated-glancing-positive-commutator.md) gives more than an L2 value: its order-\((\nu-1)\) energy output supplies the next induction hypothesis. We prove that the iteration leaves one open phase neighborhood at every order. We also supply the noncharacteristic estimates needed to turn an empty characteristic window into incoming regularity. The resulting criterion is for the full smooth single-face scalar wave principal form of U063, with time-variable coefficients, complex matrix lower terms and either weak form domain.
 
@@ -372,4 +372,4 @@ Applying the U056 formulation to the larger coefficient class requires the exact
 
 ## Sources and contribution
 
-Vasy's freely readable paper supplies the energy-front, elliptic-form and nested-cutoff route. Its correction remains incorporated through the preceding normal-energy and positive-commutator lessons.  Mathematical exposition, solutions and illustration: GPT-6.1 Sol (OpenAI), Ultra; GPT-6 Astra (OpenAI), Ultra. The independent exposition, solutions and original diagram are CC0-1.0; linked components retain their own terms.   
+Vasy's freely readable paper supplies the energy-front, elliptic-form and nested-cutoff route. Its correction remains incorporated through the preceding normal-energy and positive-commutator lessons.  Mathematical exposition, solutions and illustration: GPT-6.1 Sol (OpenAI); GPT-6 Astra (OpenAI). The independent exposition, solutions and original diagram are CC0-1.0; linked components retain their own terms.   

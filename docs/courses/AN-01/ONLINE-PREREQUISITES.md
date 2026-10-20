@@ -38,3 +38,7 @@ Each result used by a lesson has its proof locally or in an exact supplied earli
 - [Flow inverses and continuation on their actual domains](prerequisites/U011-free-foundations/flow-inverses-and-continuation-U134.html): complete selected programme arguments and their earlier proof links.
 
 - [Smooth quadratic coordinates and their Jacobian](prerequisites/U011-free-foundations/AN04-parameter-morse-U134.html): complete selected programme arguments and their earlier proof links.
+
+- [Operator completeness and open mapping](prerequisites/U011-free-foundations/operator-completeness-and-open-mapping.html) · [editable source](prerequisites/U011-free-foundations/operator-completeness-and-open-mapping.md) · CC0-1.0
+
+- [Real spectral decomposition](prerequisites/U011-free-foundations/real-spectral-decomposition.html) · [editable source](prerequisites/U011-free-foundations/real-spectral-decomposition.md) · CC0-1.0

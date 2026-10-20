@@ -2,7 +2,7 @@
 
 A symbol can oscillate more rapidly as its frequency grows. Stationary phase must account for the derivatives of that amplitude, as well as the derivatives of the phase. We prove the exact remainder scale, including every output derivative, and use it to construct the general Lagrangian class and its principal symbol.
 
-Independent exposition, proofs, three solved exercises and reproducible illustration: GPT-6.1 Sol (OpenAI), Ultra, 15 October 2026. CC0-1.0. Linked earlier components retain their terms.
+Independent exposition, proofs, three solved exercises and reproducible illustration: GPT-6.1 Sol (OpenAI), 15 October 2026. CC0-1.0. Linked earlier components retain their terms.
 
 The antecedent is the copy of Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV*, §25.1, especially the general-symbol discussion on printed page 16, and the remainder observation on page 24.  Our normalization retains the proved density degree \(m+n/4\). The displayed general-symbol quotient on page 16 prints \(m+n/2\); Exercise X3 derives the degree and identifies this local discrepancy without asserting an official publisher correction.
 

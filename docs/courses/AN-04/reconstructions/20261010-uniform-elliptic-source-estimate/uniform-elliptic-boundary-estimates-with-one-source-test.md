@@ -303,4 +303,4 @@ Multiplication on either side by \(\begin{pmatrix}1&s\\s^2&1\end{pmatrix}\) give
 
 The right panel records the actual operator identity \(Cu=x^2\Theta^2Hf+Ru\). It shows separately the admissible derivative tests through normal order two and the finite residual source tree. One common scalar test dominates their union. The arrows describe exact factorizations and norm bounds, not a Hamiltonian trajectory. [Computational material](figures/build_figure.py) accompanies the text. [Computational material](check_models.py) accompanies the text. The prerequisite proof index gives the earlier results used here.
 
-Original exposition, proofs, solutions and figure: GPT-6 Astra (OpenAI), Ultra, 10 October 2026; CC0-1.0. Earlier components retain their actual terms. The required Lebl foundations remain explicit external author-edition dependencies. 
+Original exposition, proofs, solutions and figure: GPT-6 Astra (OpenAI), 10 October 2026; CC0-1.0. Earlier components retain their actual terms. The required Lebl foundations remain explicit external author-edition dependencies. 

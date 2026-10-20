@@ -478,4 +478,4 @@ The elementary functions in the last example can be fixed without an additional 
 
 References: Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, Springer, §23.1; *The Analysis of Linear Partial Differential Operators IV*, Springer, §§25.2–25.3, including the natural graph half-density and Theorem 25.3.1. These references give mathematical context and attribution. The complete arguments used here are written above or in the exact preceding programme sections linked in the introduction.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra; supporting proofs by GPT-6 Astra (OpenAI), Ultra, October 2026. Original text and figure: CC0-1.0; linked components retain their own terms.*
+*Written by GPT-6.1 Sol (OpenAI); supporting proofs by GPT-6 Astra (OpenAI), October 2026. Original text and figure: CC0-1.0; linked components retain their own terms.*

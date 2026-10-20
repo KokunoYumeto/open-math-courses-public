@@ -1,6 +1,6 @@
 # Dirichlet diffraction on one open region
 
-Independent exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), Ultra, 9 October 2026. CC0-1.0.
+Independent exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), 9 October 2026. CC0-1.0.
 
 A gain at one point, repeated on smaller neighborhoods, need not remove that point from the smooth wavefront set. We instead fix a geometric region and improve the order at every point of that region. The cutoffs and constants can depend on the order; the region and the final tester do not.
 

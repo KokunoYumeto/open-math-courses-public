@@ -325,3 +325,56 @@ At \(r=0\) all these commutators vanish. For \(r>0\), (NT3) applies whenever \(T
 ![The actual and bounded double commutator norms, the allowed time threshold, and the growth of the solution-estimate constant.](figures/operator-commutators-and-time-window.svg)
 
 [Computational material](figures/build_figure.py) accompanies the text. [Frequency-localized estimates](../20261012-localized-principal-estimates/frequency-localized-estimates-and-sobolev-indices.html) and [adaptive principal estimates](../20261012-adaptive-principal-estimate/adaptive-scales-and-principal-type-estimates.html) apply the operator inequalities. The small-time norm bound and the unrestricted positive energy estimate retain their distinct hypotheses.
+
+## 7. Sign square roots need not be pseudodifferential
+
+**X4. A smooth multiplier with nonsmooth sign roots.** Regard the first summand of X2 as the spatial space \(L^2(X)\), where \(X=(-1,1)\), and put
+
+\[
+ (B_0v)(x)=xv(x),\qquad
+ (S_+v)(x)=\sqrt{x_+}\,v(x),\qquad
+ (S_-v)(x)=\sqrt{(-x)_+}\,v(x),\qquad x_+=\max(x,0). \tag{NT31}
+\]
+
+Then \(B_0\) is a bounded self-adjoint, properly supported pseudodifferential operator of order zero. Its two sign square roots \(S_\pm\) are bounded positive operators, but neither is a pseudodifferential operator of any finite order with a smooth symbol. Thus the functional-calculus construction of F0–F2 cannot in general be replaced by smooth-symbol calculus for the roots.
+
+The statements about boundedness, adjoints and positivity follow directly by integration: multiplication by a bounded real function is self-adjoint, and a nonnegative multiplier has nonnegative quadratic form. In particular \(\|B_0v\|_2\le\|v\|_2\) and \(\|S_\pm v\|_2\le\|v\|_2\). The polynomial calculus of multiplication by \(x\) acts by the same polynomials in \(x\); the uniform construction F1 therefore identifies its continuous calculus with multiplication by the corresponding continuous functions. Formula (NT31) is consequently the actual sign-root calculus of F2. Multiplication by \(x\) has symbol \(a(x,\xi)=x\) and kernel \(x\delta(x-y)\). Its kernel is supported on the diagonal, whose two projections are proper, and every symbol derivative has the local order-zero bounds.
+
+Here is the smooth-test property needed to exclude pseudodifferential roots, with its proof. A finite-order operator with smooth local symbol has, after compact coordinate localization, the form
+
+\[
+ (A\phi)(x)=\frac1{2\pi}\int_{\mathbb R}e^{ix\xi}a(x,\xi)\widehat\phi(\xi)\,d\xi
+             +(R\phi)(x),\qquad \phi\in C_c^\infty(X), \tag{NT32}
+\]
+
+where \(R\) has a smooth kernel. For the usual classes \(S^m_{\rho,\delta}\), with \(0\le\delta<\rho\le1\), the local symbol bounds imply, on every compact coordinate interval and for every nonnegative integer \(k\),
+
+\[
+ \left|\partial_x^k(e^{ix\xi}a(x,\xi))\right|
+       \le C_k(1+|\xi|)^{m+k}. \tag{NT33}
+\]
+
+Indeed the product rule gives terms \((i\xi)^j\partial_x^{k-j}a\), whose exponents satisfy \(j+\delta(k-j)\le k\). Extending \(\phi\) by zero, repeated integration by parts gives
+
+\[
+ (1+\xi^2)^r\widehat\phi(\xi)
+       =\widehat{(1-\partial_x^2)^r\phi}(\xi),\qquad
+ |\widehat\phi(\xi)|\le C_r(1+\xi^2)^{-r}. \tag{NT34}
+\]
+
+There are no boundary terms because \(\phi\) has compact support in the open interval. Choose \(2r>m+k+1\). Equations (NT33)–(NT34) bound the differentiated integral by an integrable function of \(\xi\), uniformly on the compact interval. To justify the derivatives without a formal interchange, first restrict the integral to \(|\xi|\le L\). These finite integrals satisfy the fundamental-theorem identity for each consecutive pair of derivatives. The tails of both derivatives tend uniformly to zero by the stated integrable bound. Passing to the limit in that identity proves that the limiting consecutive functions are derivatives of one another. Repeating this for every \(k\) proves smoothness. The smooth-kernel term is treated by the same identity on the compact support of \(\phi\). Thus every such operator sends \(C_c^\infty(X)\) into \(C^\infty(X)\).
+
+Choose a smooth compactly supported \(\phi\) equal to one near zero, using the complete [cutoff construction U001-A4](../20261004-free-stationary-phase/stationary-phase-and-critical-manifolds.html#proof-U001-A4). For small \(h>0\),
+
+\[
+ \frac{(S_+\phi)(h)-(S_+\phi)(0)}{h}=h^{-1/2},\qquad
+ \frac{(S_-\phi)(-h)-(S_-\phi)(0)}{-h}=-h^{-1/2}. \tag{NT35}
+\]
+
+These quotients have no finite limits. Both outputs are continuous, so equality as distributions with a smooth function would force pointwise equality: a nonzero continuous difference has real part of one fixed nonzero sign after multiplication by a constant phase on a small interval, and its integral against a nonnegative compact test there cannot vanish. Neither output therefore has a smooth representative. This contradicts the smooth-test property (NT32)–(NT34) for either proposed pseudodifferential root, proving the claim.
+
+![The smooth multiplier x and its positive and negative sign square roots](figures/sign-root-multipliers.svg)
+
+The first panel is the multiplier of \(B_0\). The second shows the two multipliers of \(S_+\) and \(S_-\), both zero at the origin and on their opposite half intervals. The curves sample the exact functions in (NT31); failure of differentiability is proved by (NT35). The plotted endpoint values do not impose boundary conditions on \(L^2(X)\).
+
+The mathematical antecedent is Hörmander IV, §26.8, printed 136, on the distinction between abstract sign roots and pseudodifferential operators. Independent argument and original figure: GPT-6.1 Sol (OpenAI), CC0-1.0. [Editable figure source](figures/build_sign_root_figure.py).

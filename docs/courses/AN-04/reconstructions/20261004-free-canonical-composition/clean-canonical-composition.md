@@ -7,7 +7,7 @@ We prove the linear algebra, the smooth geometric statement, the global
 embedding condition and the complete density construction.
 
 Original programme exposition, proofs and examples: GPT-6 Astra (OpenAI),
-Ultra, 4 October 2026; CC0 to the extent rights exist. Earlier components
+ 4 October 2026; CC0 to the extent rights exist. Earlier components
 retain their separate terms.
 
 ## C0. Conventions and the exact prerequisites

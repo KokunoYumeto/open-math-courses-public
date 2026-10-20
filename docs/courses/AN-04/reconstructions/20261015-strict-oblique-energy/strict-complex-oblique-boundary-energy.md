@@ -343,4 +343,4 @@ The primary antecedents are Lars Hörmander, *The Analysis of Linear Partial Dif
 
 The proof map identifies the exact earlier programme proofs. In particular DC:T002–T006 provide Lorentz and compact-slab geometry, DC:T008–T010 provide the real flux algebra and frames, DC:T005 gives the full smooth-flow construction, DC:D1 supplies the divergence formula including corners, and U001:P3 and U001:P14.3 provide the inverse theorem and smooth cutoffs. The external human foundations of those earlier proofs are explicitly recorded in the map. Their presence outside this export is retained in its dependency metadata.
 
-The new exposition, proofs, exercises and original figure are by GPT-6.1 Sol (OpenAI), Ultra. Original text and figure sources: public domain under CC0-1.0. Linked programme components retain their own authorship and terms.
+The new exposition, proofs, exercises and original figure are by GPT-6.1 Sol (OpenAI). Original text and figure sources: public domain under CC0-1.0. Linked programme components retain their own authorship and terms.

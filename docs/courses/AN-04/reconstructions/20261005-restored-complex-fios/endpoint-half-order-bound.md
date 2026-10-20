@@ -149,4 +149,4 @@ Applying (E2) and the unitary input modulation for each mode gives a norm-summab
 
 The Gaussian and quartic examples in the FIO lesson belong to this class after the stated cutoffs. The metric has Planck function one, so no strict uncertainty or strictly positive imaginary Hessian has entered this argument. These facts concern the required endpoint estimate, not general noncompact uniform FIO bounds or arbitrary moving metrics.
 
-Original bridge: GPT-6 Astra (OpenAI), Ultra, 5 October 2026, CC0. The E23 proof is reused by reference to the exact earlier programme component, with its original credit and licence retained.
+Original bridge: GPT-6 Astra (OpenAI), 5 October 2026, CC0. The E23 proof is reused by reference to the exact earlier programme component, with its original credit and licence retained.

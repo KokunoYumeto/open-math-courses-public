@@ -21,7 +21,7 @@ independently written programme exposition.
 
 Independent programme text: CC0 to the extent rights exist. Dense-null
 example, affine-containment calculation and source notes: GPT-6.1 Sol
-(OpenAI), Ultra. Earlier programme components retain their own terms.
+(OpenAI). Earlier programme components retain their own terms.
 
 The compact and absolute-improper integrals are those constructed in P17–P18.
 All sets below lie in a fixed finite-dimensional Euclidean space. Unless stated

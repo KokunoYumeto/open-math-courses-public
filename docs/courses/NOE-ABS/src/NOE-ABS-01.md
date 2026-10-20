@@ -1,6 +1,6 @@
 # Noether's axioms for Dedekind domains
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
 The two factorizations \(6=2\cdot3=(1+\sqrt{-5})(1-\sqrt{-5})\) show that elements can fail to factor uniquely. Ideals recover the missing structure. This lesson explains why a short list of ring properties forces every nonzero ideal to be invertible and then to factor uniquely. The proof takes place in the fraction field throughout; it does not infer factorization from discrete valuations.
 
@@ -219,7 +219,7 @@ The finite-submodule, finite-length, dimension-zero Artinian, lying-over, incomp
 
 - **[Noether]** Emmy Noether, [*Abstrakter Aufbau der Idealtheorie in algebraischen Zahl- und Funktionenkörpern*](https://visuallibrary.net/download/pdf/154089.pdf), Mathematische Annalen **96** (1927), 26–61, especially Sections 1–3 and 5–8; freely accessible journal scan.
 - **[Milne]** J. S. Milne, *Algebraic Number Theory*, Chapters 2–3, [author's course notes](https://www.jmilne.org/math/CourseNotes/ANT.pdf).
-- **[Stacks]** The Stacks Project, Tags [034W](https://stacks.math.columbia.edu/tag/034W), [034X](https://stacks.math.columbia.edu/tag/034X), [00PG](https://stacks.math.columbia.edu/tag/00PG), [09IG](https://stacks.math.columbia.edu/tag/09IG) and [09E1](https://stacks.math.columbia.edu/tag/09E1). AI Integrated Stacks Project is an edition with AI-proposed corrections and AI-written additions, not reviewed by the Stacks Project's maintainers; its [English algebra reader](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html) has the corresponding labels.
+- **[Stacks]** The Stacks Project, Tags [034W](https://stacks.math.columbia.edu/tag/034W), [034X](https://stacks.math.columbia.edu/tag/034X), [00PG](https://stacks.math.columbia.edu/tag/00PG), [09IG](https://stacks.math.columbia.edu/tag/09IG) and [09E1](https://stacks.math.columbia.edu/tag/09E1). The AI Integrated Stacks Project [English algebra reader](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html) contains the corresponding labels and AI-authored supplementary material.
 
 - **[Vakil]** Ravi Vakil, [*The Rising Sea: Foundations of Algebraic Geometry*](https://math.stanford.edu/~vakil/216blog/FOAGjul2724public.pdf), public draft of 27 July 2024, Exercise 8.2.I, Sections 13.2 and 13.5, and 24.8.9.
 - **Additional prerequisite tags:** [00FP](https://stacks.math.columbia.edu/tag/00FP), [00KH](https://stacks.math.columbia.edu/tag/00KH), [00KJ](https://stacks.math.columbia.edu/tag/00KJ), [00GQ](https://stacks.math.columbia.edu/tag/00GQ), [00GT](https://stacks.math.columbia.edu/tag/00GT), [00OJ](https://stacks.math.columbia.edu/tag/00OJ), [00PD](https://stacks.math.columbia.edu/tag/00PD), and [05BT](https://stacks.math.columbia.edu/tag/05BT).

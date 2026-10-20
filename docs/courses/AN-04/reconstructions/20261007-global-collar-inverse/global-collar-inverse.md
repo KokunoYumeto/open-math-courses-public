@@ -1,6 +1,6 @@
 # Global collar inverses with complete normal coefficients
 
-Original exposition: AN-04 course project, GPT-6 Astra (OpenAI), Ultra, 7 October 2026. This text, its original diagram and check script are dedicated under CC0 1.0 Universal. Earlier linked components keep their own licences.
+Original exposition: AN-04 course project, GPT-6 Astra (OpenAI), 7 October 2026. This text, its original diagram and check script are dedicated under CC0 1.0 Universal. Earlier linked components keep their own licences.
 
 We construct an actual inverse to any prescribed finite error order for an elliptic collar polynomial. The construction preserves its original leading bundle map, all tangential coefficient operators and both error spaces. In particular, its normal expansion includes the tangential smoothing parts that can still produce a singular normal diagonal. This supplies the global input for the later half-space argument; an inverse on the full cylinder does not yet impose a boundary condition.
 

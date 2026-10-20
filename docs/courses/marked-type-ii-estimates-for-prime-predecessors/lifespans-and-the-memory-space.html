@@ -1,0 +1,195 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lifespans and the memory space</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Marked Type II estimates for prime predecessors)</a><a href="independent-residue-lines.html">Previous lesson</a><a href="truncation-adjoints-and-absolute-bounds.html">Next lesson</a><a href="src/lifespans-and-the-memory-space.md">Editable source</a></nav><main><article><h1 id="lifespans-and-the-memory-space">Lifespans and the memory space</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>In the model of <a href="independent-residue-lines.html"><em>Independent residue lines</em></a>, every group prime <span class="math" data-tex="\(p\)">\(p\)</span> has its own random kernel line <span class="math" data-tex="\(\ell_p\)">\(\ell_p\)</span>, uniformly distributed in <span class="math" data-tex="\(\mathbb P^1(\mathbb F_p)\)">\(\mathbb P^1(\mathbb F_p)\)</span>, and the moment factors into one expectation per prime. A prime in a list must have <span class="math" data-tex="\(\ell_p\)">\(\ell_p\)</span> equal to the line of the current position; a prime outside the lists is damped whenever <span class="math" data-tex="\(\ell_p\)">\(\ell_p\)</span> happens to equal that line. If a prime is in the lists, leaves them, and returns later, the probability <span class="math" data-tex="\(1/(p+1)\)">\(1/(p+1)\)</span> that <span class="math" data-tex="\(\ell_p\)">\(\ell_p\)</span> takes the required value is paid only once, while a naive step-by-step bound would pay it at every return. This lesson computes each prime's expectation exactly as a sum over <em>lifespans</em>, and then builds a Hilbert space with a <em>memory</em> of pending primes and their lines, on which the moment becomes a product of one operator per step. The memory carries a prime across the gap between two of its uses, so that the operator product reproduces the exact expectation.</p>
+<p><strong>Prerequisites.</strong> <a href="physical-states-and-good-positions.html"><em>Physical states and good positions</em></a>, Sections 2–3; <a href="independent-residue-lines.html"><em>Independent residue lines</em></a>, Sections 2 and 4.</p>
+<p>We work at a fixed archimedean root <span class="math" data-tex="\(\mathbf a\)">\(\mathbf a\)</span> of the model, with a fixed path datum: positions <span class="math" data-tex="\(z_0=e_1,\dots,z_N=e_1\)">\(z_0=e_1,\dots,z_N=e_1\)</span> in root coordinates, the lists at every visit, and the reorderings. Recall <span class="math" data-tex="\(q_j\in\{\frac12,\frac14\}\)">\(q_j\in\{\frac12,\frac14\}\)</span>, <span class="math" data-tex="\(\eta_j=1-q_j\in\{\frac12,\frac34\}\)">\(\eta_j=1-q_j\in\{\frac12,\frac34\}\)</span>, and write <span class="math" data-tex="\(H_j(\ell)=\mathbf 1_{[z_j]_p=\ell}\)">\(H_j(\ell)=\mathbf 1_{[z_j]_p=\ell}\)</span> when the prime <span class="math" data-tex="\(p\)">\(p\)</span> is clear from context. Let <span class="math" data-tex="\(p_{\min}=\exp(L^{a_1})\)">\(p_{\min}=\exp(L^{a_1})\)</span> be the smallest possible group prime.</p>
+<h2 id="1-the-expectation-of-one-prime">1. The expectation of one prime</h2>
+<p>Put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+b&#x27;_p=1-\frac1{p+1}\sum_{j=0}^N\eta_j,\\
+\nu_i(p)=\frac1{V_i(p+1)b&#x27;_p}\quad(p\in\mathcal P_i).\quad(1.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+b&#x27;_p=1-\frac1{p+1}\sum_{j=0}^N\eta_j,\\
+\nu_i(p)=\frac1{V_i(p+1)b&#x27;_p}\quad(p\in\mathcal P_i).\quad(1.1)
+\end{gathered}
+\]</span>
+<p>Since <span class="math" data-tex="\(\sum_j\eta_j\le N+1\le L^{0.51}\)">\(\sum_j\eta_j\le N+1\le L^{0.51}\)</span> and <span class="math" data-tex="\(p\ge p_{\min}\)">\(p\ge p_{\min}\)</span>, <span class="math" data-tex="\(b&#x27;_p=1+O(L^{0.51}/p)\)">\(b&#x27;_p=1+O(L^{0.51}/p)\)</span> is positive and at most <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Lemma 1.1 (a prime never in a list).</strong> If <span class="math" data-tex="\(A_p=\varnothing\)">\(A_p=\varnothing\)</span>, then</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E\,\Phi_p(\ell_p)=b&#x27;_p\\
+&amp;\quad+\frac1{p+1}\sum_{0\le a&lt;c\le N}\eta_a\eta_c\,\mathbf 1_{[z_a]_p=[z_c]_p}\\
+&amp;\quad\times\prod_{a&lt;j&lt;c}q_j^{\,\mathbf 1[[z_j]_p=[z_a]_p]}.\quad(1.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E\,\Phi_p(\ell_p)=b&#x27;_p\\
+&amp;\quad+\frac1{p+1}\sum_{0\le a&lt;c\le N}\eta_a\eta_c\,\mathbf 1_{[z_a]_p=[z_c]_p}\\
+&amp;\quad\times\prod_{a&lt;j&lt;c}q_j^{\,\mathbf 1[[z_j]_p=[z_a]_p]}.\quad(1.2)
+\end{aligned}
+\]</span>
+<p><strong>Proof.</strong> Expand <span class="math" data-tex="\(\Phi_p(\ell)=\prod_{j=0}^N(1-\eta_jH_j(\ell))\)">\(\Phi_p(\ell)=\prod_{j=0}^N(1-\eta_jH_j(\ell))\)</span> as <span class="math" data-tex="\(\sum_{\mathcal J}\prod_{j\in\mathcal J}(-\eta_jH_j(\ell))\)">\(\sum_{\mathcal J}\prod_{j\in\mathcal J}(-\eta_jH_j(\ell))\)</span> over subsets <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> of the visits. Averaging over the <span class="math" data-tex="\(p+1\)">\(p+1\)</span> lines, the empty set gives <span class="math" data-tex="\(1\)">\(1\)</span> and each singleton <span class="math" data-tex="\(\{j\}\)">\(\{j\}\)</span> gives <span class="math" data-tex="\(-\eta_j/(p+1)\)">\(-\eta_j/(p+1)\)</span>; together they give <span class="math" data-tex="\(b&#x27;_p\)">\(b&#x27;_p\)</span>. For <span class="math" data-tex="\(|\mathcal J|\ge2\)">\(|\mathcal J|\ge2\)</span>, let <span class="math" data-tex="\(a&lt;c\)">\(a&lt;c\)</span> be its least and largest elements. The sum over all <span class="math" data-tex="\(\mathcal J\)">\(\mathcal J\)</span> with these extremes is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\eta_a\eta_cH_a(\ell)H_c(\ell)\prod_{a&lt;j&lt;c}\bigl(1-\eta_jH_j(\ell)\bigr),
+\end{gathered}
+\]">\[
+\begin{gathered}
+\eta_a\eta_cH_a(\ell)H_c(\ell)\prod_{a&lt;j&lt;c}\bigl(1-\eta_jH_j(\ell)\bigr),
+\end{gathered}
+\]</span>
+<p>because the inner elements are chosen freely. Averaging over <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, the product <span class="math" data-tex="\(H_aH_c\)">\(H_aH_c\)</span> forces <span class="math" data-tex="\(\ell=[z_a]_p=[z_c]_p\)">\(\ell=[z_a]_p=[z_c]_p\)</span>, which happens for exactly one line, and <span class="math" data-tex="\(1-\eta_jH_j=q_j^{H_j}\)">\(1-\eta_jH_j=q_j^{H_j}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.2 (a prime in some list).</strong> If <span class="math" data-tex="\(A_p\ne\varnothing\)">\(A_p\ne\varnothing\)</span>, let <span class="math" data-tex="\(a=\min A_p\)">\(a=\min A_p\)</span> and <span class="math" data-tex="\(c=\max A_p\)">\(c=\max A_p\)</span>. Then <span class="math" data-tex="\(\mathbb E\,\Phi_p(\ell_p)=0\)">\(\mathbb E\,\Phi_p(\ell_p)=0\)</span> unless all <span class="math" data-tex="\([z_j]_p\)">\([z_j]_p\)</span>, <span class="math" data-tex="\(j\in A_p\)">\(j\in A_p\)</span>, equal one line <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, and in that case</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E\,\Phi_p=\frac1{p+1}\prod_{\substack{a&lt;j&lt;c\\ j\notin A_p}}q_j^{H_j(\lambda)}\\
+&amp;\quad\times\Bigl(1-\sum_{h&lt;a}\eta_hH_h(\lambda)\prod_{h&lt;j&lt;a}q_j^{H_j(\lambda)}\Bigr)\\
+&amp;\quad\times\Bigl(1-\sum_{h&gt;c}\eta_hH_h(\lambda)\\
+&amp;\qquad\qquad\times\prod_{c&lt;j&lt;h}q_j^{H_j(\lambda)}\Bigr).\quad(1.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E\,\Phi_p=\frac1{p+1}\prod_{\substack{a&lt;j&lt;c\\ j\notin A_p}}q_j^{H_j(\lambda)}\\
+&amp;\quad\times\Bigl(1-\sum_{h&lt;a}\eta_hH_h(\lambda)\prod_{h&lt;j&lt;a}q_j^{H_j(\lambda)}\Bigr)\\
+&amp;\quad\times\Bigl(1-\sum_{h&gt;c}\eta_hH_h(\lambda)\\
+&amp;\qquad\qquad\times\prod_{c&lt;j&lt;h}q_j^{H_j(\lambda)}\Bigr).\quad(1.3)
+\end{aligned}
+\]</span>
+<p><strong>Proof.</strong> The factors <span class="math" data-tex="\(\mathbf 1_{[z_j]_p=\ell}\)">\(\mathbf 1_{[z_j]_p=\ell}\)</span>, <span class="math" data-tex="\(j\in A_p\)">\(j\in A_p\)</span>, force <span class="math" data-tex="\(\ell=\lambda\)">\(\ell=\lambda\)</span>, a single line, probability <span class="math" data-tex="\(1/(p+1)\)">\(1/(p+1)\)</span>. The inactive visits between <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(c\)">\(c\)</span> keep their factors <span class="math" data-tex="\(1-\eta_jH_j(\lambda)=q_j^{H_j(\lambda)}\)">\(1-\eta_jH_j(\lambda)=q_j^{H_j(\lambda)}\)</span>. For the visits before <span class="math" data-tex="\(a\)">\(a\)</span>, the telescoping identity</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\prod_{j&lt;a}(1-y_j)=1-\sum_{h&lt;a}y_h\prod_{h&lt;j&lt;a}(1-y_j),
+\end{gathered}
+\]">\[
+\begin{gathered}
+\prod_{j&lt;a}(1-y_j)=1-\sum_{h&lt;a}y_h\prod_{h&lt;j&lt;a}(1-y_j),
+\end{gathered}
+\]</span>
+<p>valid for any numbers <span class="math" data-tex="\(y_j\)">\(y_j\)</span>, applies with <span class="math" data-tex="\(y_j=\eta_jH_j(\lambda)\)">\(y_j=\eta_jH_j(\lambda)\)</span>; the visits after <span class="math" data-tex="\(c\)">\(c\)</span> are treated in the same way, in the reverse order. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lifespans.</strong> Divide each expectation by <span class="math" data-tex="\(b&#x27;_p\)">\(b&#x27;_p\)</span>. Expanding the products (1.2) and (1.3), the factor of a prime becomes a sum over the following configurations, called <strong>lifespans</strong>:</p>
+<ul>
+<li>for a prime never in a list: no lifespan (term <span class="math" data-tex="\(1\)">\(1\)</span>), or an <strong>orphan lifespan</strong> from a visit <span class="math" data-tex="\(a\)">\(a\)</span> to a visit <span class="math" data-tex="\(c&gt;a\)">\(c&gt;a\)</span> with the same line, with the weight <span class="math" data-tex="\(\eta_a\eta_c/((p+1)b&#x27;_p)\)">\(\eta_a\eta_c/((p+1)b&#x27;_p)\)</span> times <span class="math" data-tex="\(q_j\)">\(q_j\)</span> for every visit strictly between <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(c\)">\(c\)</span> whose line is that line;</li>
+<li>for a prime in some list: one lifespan containing all its active visits, which may be extended by a <strong>ghost endpoint</strong> <span class="math" data-tex="\(h&lt;a\)">\(h&lt;a\)</span> and/or <span class="math" data-tex="\(h&#x27;&gt;c\)">\(h&#x27;&gt;c\)</span> with the same line; the weight is <span class="math" data-tex="\(1/((p+1)b&#x27;_p)\)">\(1/((p+1)b&#x27;_p)\)</span>, times <span class="math" data-tex="\(-\eta_h\)">\(-\eta_h\)</span> and <span class="math" data-tex="\(-\eta_{h&#x27;}\)">\(-\eta_{h&#x27;}\)</span> for the ghost endpoints present, times <span class="math" data-tex="\(q_j\)">\(q_j\)</span> for every inactive visit strictly inside the lifespan whose line is the line of the prime.</li>
+</ul>
+<p>Inside a lifespan the prime keeps one line. A visit inside the lifespan at which the prime is not active is a <strong>hit</strong> if <span class="math" data-tex="\([z_j]_p\)">\([z_j]_p\)</span> equals that line and a <strong>miss</strong> otherwise; only hits are damped. The two ghost endpoints of an orphan carry the signs <span class="math" data-tex="\(-\eta_a\)">\(-\eta_a\)</span> and <span class="math" data-tex="\(-\eta_c\)">\(-\eta_c\)</span>, whose product is <span class="math" data-tex="\(\eta_a\eta_c\)">\(\eta_a\eta_c\)</span>.</p>
+<p><strong>The run charge.</strong> In the weight <span class="math" data-tex="\(w\)">\(w\)</span> of a datum, every label receives <span class="math" data-tex="\(V_i^{-1}\)">\(V_i^{-1}\)</span> when it is born: the initial list entries through <span class="math" data-tex="\(\prod_iV_i^{-M}\)">\(\prod_iV_i^{-M}\)</span>, and each new last slot of an edge through <span class="math" data-tex="\(\prod_iV_i^{-1}\)">\(\prod_iV_i^{-1}\)</span>. A prime active at two consecutive visits is carried by a copied slot, because the cross-edge ban forbids the new labels of an edge to repeat a label of its source. An <strong>active run</strong> of <span class="math" data-tex="\(p\)">\(p\)</span> is a maximal interval of consecutive visits in <span class="math" data-tex="\(A_p\)">\(A_p\)</span>. Hence a prime of group <span class="math" data-tex="\(i\)">\(i\)</span> with <span class="math" data-tex="\(\varrho\)">\(\varrho\)</span> active runs is born <span class="math" data-tex="\(\varrho\)">\(\varrho\)</span> times, and its total factor, before ghost signs and damping, is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{V_i^{-\varrho}}{(p+1)b&#x27;_p}=\nu_i(p)\,V_i^{-(\varrho-1)} .\quad(1.4)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{V_i^{-\varrho}}{(p+1)b&#x27;_p}=\nu_i(p)\,V_i^{-(\varrho-1)} .\quad(1.4)
+\end{gathered}
+\]</span>
+<p>The line probability is paid once per lifespan, not once per run. This is the feature the memory must reproduce.</p>
+<h2 id="2-masses">2. Masses</h2>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(s_i=\sum_{p\in\mathcal P_i}\nu_i(p)\)">\(s_i=\sum_{p\in\mathcal P_i}\nu_i(p)\)</span>. Uniformly in the datum, for large <span class="math" data-tex="\(x\)">\(x\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{\nu_i(p)}{\mu_i(p)}=1+O\Bigl(\frac{N+1}p\Bigr),\\
+s_i=1+O\Bigl(\frac{N+1}{p_{\min}}\Bigr),\\
+\max_{i,p}\nu_i(p)\le4e^{-L^{0.1}},\\
+\prod_pb&#x27;_p\le1 .\quad(2.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{\nu_i(p)}{\mu_i(p)}=1+O\Bigl(\frac{N+1}p\Bigr),\\
+s_i=1+O\Bigl(\frac{N+1}{p_{\min}}\Bigr),\\
+\max_{i,p}\nu_i(p)\le4e^{-L^{0.1}},\\
+\prod_pb&#x27;_p\le1 .\quad(2.1)
+\end{gathered}
+\]</span>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(\nu_i(p)/\mu_i(p)=p/((p+1)b&#x27;_p)\)">\(\nu_i(p)/\mu_i(p)=p/((p+1)b&#x27;_p)\)</span> and <span class="math" data-tex="\(b&#x27;_p=1+O((N+1)/p)\)">\(b&#x27;_p=1+O((N+1)/p)\)</span>. Summing <span class="math" data-tex="\(\mu_i(p)(1+O((N+1)/p))\)">\(\mu_i(p)(1+O((N+1)/p))\)</span> over <span class="math" data-tex="\(p\in\mathcal P_i\)">\(p\in\mathcal P_i\)</span> gives <span class="math" data-tex="\(s_i\)">\(s_i\)</span>. The last two claims follow from <span class="math" data-tex="\(\mu_i(p)\le2e^{-L^{0.1}}\)">\(\mu_i(p)\le2e^{-L^{0.1}}\)</span> (Lemma 1.2 of Lesson 2) and <span class="math" data-tex="\(0&lt;b&#x27;_p\le1\)">\(0&lt;b&#x27;_p\le1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-memory-space">3. The memory space</h2>
+<p>Fix <span class="math" data-tex="\(\rho=3/4\)">\(\rho=3/4\)</span>; then <span class="math" data-tex="\(0&lt;\rho&lt;1\)">\(0&lt;\rho&lt;1\)</span> and <span class="math" data-tex="\(\rho^2=9/16&gt;\frac12\ge q_j\)">\(\rho^2=9/16&gt;\frac12\ge q_j\)</span> for every <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<p><strong>Particles.</strong> A <strong>memory particle</strong> of group <span class="math" data-tex="\(i\)">\(i\)</span> is a pair <span class="math" data-tex="\((p,\lambda)\)">\((p,\lambda)\)</span> with <span class="math" data-tex="\(p\in\mathcal P_i\)">\(p\in\mathcal P_i\)</span> and <span class="math" data-tex="\(\lambda\in\mathbb P^1(\mathbb F_p)\)">\(\lambda\in\mathbb P^1(\mathbb F_p)\)</span>, its <strong>anchor</strong>. The particle space <span class="math" data-tex="\(\mathcal X_i\)">\(\mathcal X_i\)</span> carries the measure <span class="math" data-tex="\(\lambda_i(p,\lambda)=\nu_i(p)\)">\(\lambda_i(p,\lambda)=\nu_i(p)\)</span>: counting measure on anchors, not the uniform probability on lines. A particle <strong>hits</strong> a vector <span class="math" data-tex="\(z\)">\(z\)</span> if <span class="math" data-tex="\(\lambda=[z]_p\)">\(\lambda=[z]_p\)</span>.</p>
+<p><strong>States and the Hilbert space.</strong> Let <span class="math" data-tex="\(\mathcal Z\)">\(\mathcal Z\)</span> be the finite set of primitive <span class="math" data-tex="\(z\)">\(z\)</span> satisfying the tube and box conditions at the root <span class="math" data-tex="\(\mathbf a\)">\(\mathbf a\)</span>, with counting measure. An <strong>active list</strong> is an ordered <span class="math" data-tex="\(M\)">\(M\)</span>-tuple of primes of <span class="math" data-tex="\(\mathcal P_i\)">\(\mathcal P_i\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>, with the measure <span class="math" data-tex="\(\bigotimes_i\nu_i^{\otimes M}\)">\(\bigotimes_i\nu_i^{\otimes M}\)</span>; repetitions are allowed in this space, and distinctness is imposed by the operators. The <strong>memory</strong> of group <span class="math" data-tex="\(i\)">\(i\)</span> is a finite sequence of particles, considered up to order: functions on <span class="math" data-tex="\(\mathcal X_i^k\)">\(\mathcal X_i^k\)</span> are symmetric, with the measure <span class="math" data-tex="\(\lambda_i^{\otimes k}/k!\)">\(\lambda_i^{\otimes k}/k!\)</span>. The Hilbert space is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathscr H=\ell^2(\mathcal Z)\otimes L^2\Bigl(\bigotimes_i\nu_i^{\otimes M}\Bigr)\\
+\otimes\bigotimes_{i=1}^K\Bigl(\bigoplus_{k\ge0}L^2_{\rm sym}\bigl(\mathcal X_i^k,\lambda_i^{\otimes k}/k!\bigr)\Bigr).\\
+(3.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathscr H=\ell^2(\mathcal Z)\otimes L^2\Bigl(\bigotimes_i\nu_i^{\otimes M}\Bigr)\\
+\otimes\bigotimes_{i=1}^K\Bigl(\bigoplus_{k\ge0}L^2_{\rm sym}\bigl(\mathcal X_i^k,\lambda_i^{\otimes k}/k!\bigr)\Bigr).\\
+(3.1)
+\end{gathered}
+\]</span>
+<p><strong>Operators by choices.</strong> Each operation below is described by its <em>choices</em>: from an input state, a choice produces an output state and carries a coefficient, and choices of new prime values are integrated against <span class="math" data-tex="\(\nu_i\)">\(\nu_i\)</span>. The operator acts on a test function <span class="math" data-tex="\(\phi\)">\(\phi\)</span> by <span class="math" data-tex="\((O\phi)(s)\)">\((O\phi)(s)\)</span><span class="math" data-tex="\(=\sum_{\text{choices }c}\text{coef}(s,c)\,\phi(\text{out}(s,c))\)">\(=\sum_{\text{choices }c}\text{coef}(s,c)\,\phi(\text{out}(s,c))\)</span>. A product of operations is then a sum over histories of choices, and <span class="math" data-tex="\(\langle\mathbf b,O_1\cdots O_n\mathbf b\rangle\)">\(\langle\mathbf b,O_1\cdots O_n\mathbf b\rangle\)</span> is the sum over histories that start and end in the support of <span class="math" data-tex="\(\mathbf b\)">\(\mathbf b\)</span>, where</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbf b=\mathbf 1\{z=e_1,\ \text{all memories empty}\},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathbf b=\mathbf 1\{z=e_1,\ \text{all memories empty}\},
+\end{gathered}
+\]</span>
+<p>independent of the active lists. By Lemma 2.1, <span class="math" data-tex="\(\|\mathbf b\|^2=\prod_is_i^M\)">\(\|\mathbf b\|^2=\prod_is_i^M\)</span><span class="math" data-tex="\(=\exp(O_K(M(N+1)/p_{\min}))\)">\(=\exp(O_K(M(N+1)/p_{\min}))\)</span><span class="math" data-tex="\(=1+o(1)\)">\(=1+o(1)\)</span>.</p>
+<p><strong>The ghost operation <span class="math" data-tex="\(\mathcal G_j\)">\(\mathcal G_j\)</span></strong> at visit <span class="math" data-tex="\(j\)">\(j\)</span> leaves the position and the active lists unchanged. In every group independently it</p>
+<ol>
+<li>chooses a subset of the particles hitting the current position <span class="math" data-tex="\(z_j\)">\(z_j\)</span> (by their indices) and deletes them, with coefficient <span class="math" data-tex="\(-\eta_j/\rho\)">\(-\eta_j/\rho\)</span> for each;</li>
+<li>multiplies by <span class="math" data-tex="\(q_j/\rho^2\)">\(q_j/\rho^2\)</span> for each hitting particle that is not deleted;</li>
+<li>appends an ordered batch of <span class="math" data-tex="\(l\ge0\)">\(l\ge0\)</span> new particles, integrated with <span class="math" data-tex="\(\nu_i^{\otimes l}/l!\)">\(\nu_i^{\otimes l}/l!\)</span>, each anchored at the line of <span class="math" data-tex="\(z_j\)">\(z_j\)</span> modulo its prime, with coefficient <span class="math" data-tex="\((-\eta_jV_i/\rho)^l\)">\((-\eta_jV_i/\rho)^l\)</span>.</li>
+</ol>
+<p><strong>The edge operation <span class="math" data-tex="\(\mathcal E_j\)">\(\mathcal E_j\)</span></strong> from visit <span class="math" data-tex="\(j\)">\(j\)</span> to visit <span class="math" data-tex="\(j+1\)">\(j+1\)</span> keeps the slot symmetrizations, the geometric multiplier of (2.2) of Lesson 8 (or its reversed conjugate, according to the alternation of <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> and <span class="math" data-tex="\(\mathcal A^*\)">\(\mathcal A^*\)</span>) with the damping factor removed, and replaces the counting of new labels as follows. In every group:</p>
+<ol>
+<li>multiply by <span class="math" data-tex="\(\rho\)">\(\rho\)</span> for every particle in memory that hits the source <span class="math" data-tex="\(z\)">\(z\)</span>; copy the <span class="math" data-tex="\(J\)">\(J\)</span> shared slots; and either <strong>store</strong> the source's last slot, appending the particle <span class="math" data-tex="\((p_{i,M},[z]_{p_{i,M}})\)">\((p_{i,M},[z]_{p_{i,M}})\)</span> to the memory, or drop it;</li>
+<li>choose the target <span class="math" data-tex="\(z&#x27;\)">\(z&#x27;\)</span> (counting measure) and fill the target's last slot either by <strong>promoting</strong> a particle of the memory, other than one stored on this edge, that hits <span class="math" data-tex="\(z&#x27;\)">\(z&#x27;\)</span> (it is removed from the memory, with coefficient <span class="math" data-tex="\(1/V_i\)">\(1/V_i\)</span>), or by a fresh prime drawn with <span class="math" data-tex="\(\nu_i\)">\(\nu_i\)</span>;</li>
+<li>multiply by <span class="math" data-tex="\(\rho\)">\(\rho\)</span> for every particle remaining in memory, including those just stored, that hits <span class="math" data-tex="\(z&#x27;\)">\(z&#x27;\)</span>.</li>
+</ol>
+<p>The edge then imposes the physical restrictions with the actual labels: distinct entries in each full list, the cross-edge ban, the pad dyad, the goodness of source and target, and the box conditions. Since the real root matrix has determinant one, the determinant entering the multiplier is <span class="math" data-tex="\(\det(z,z&#x27;)\)">\(\det(z,z&#x27;)\)</span>.</p>
+<p>The memory has no influence on the multiplier. It only records which primes may be promoted later, and it pays the factors <span class="math" data-tex="\(\rho\)">\(\rho\)</span> that, combined with the ghost operations, reproduce the damping.</p>
+<h2 id="4-the-operator-history">4. The operator history</h2>
+<p>A <strong>birth</strong> is an initial list entry, a fresh last slot at an edge, or a ghost creation. A history has <strong>globally distinct births</strong> if all its births have different prime values.</p>
+<p><strong>Theorem 4.1 (the operator identity).</strong> At a fixed archimedean root, the model moment of the datum sum, divided by <span class="math" data-tex="\(\prod_pb&#x27;_p\)">\(\prod_pb&#x27;_p\)</span>, equals the sum of the histories of</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\langle\mathbf b,\ \mathcal G_0\mathcal E_0\mathcal G_1\mathcal E_1\cdots\mathcal E_{N-1}\mathcal G_N\,\mathbf b\rangle\quad(4.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\langle\mathbf b,\ \mathcal G_0\mathcal E_0\mathcal G_1\mathcal E_1\cdots\mathcal E_{N-1}\mathcal G_N\,\mathbf b\rangle\quad(4.1)
+\end{gathered}
+\]</span>
+<p>that have globally distinct births.</p>
+<p><strong>Proof.</strong> We match histories with globally distinct births to pairs consisting of a datum and a choice of lifespan for every prime, and compare weights.</p>
+<p><em>From histories to lifespans.</em> In a history, the positions and active lists at the visits form a datum. Fix a prime value <span class="math" data-tex="\(p\)">\(p\)</span>. It is born at most once. A prime in a copied slot keeps its line: if <span class="math" data-tex="\(p\mid D\)">\(p\mid D\)</span>, then <span class="math" data-tex="\(p\mid\det(z,z&#x27;)\)">\(p\mid\det(z,z&#x27;)\)</span>, and since both vectors are primitive, <span class="math" data-tex="\([z]_p=[z&#x27;]_p\)">\([z]_p=[z&#x27;]_p\)</span>. When <span class="math" data-tex="\(p\)">\(p\)</span> leaves the lists it is dropped or stored; if it appears in a list again, it cannot be born again, so it is promoted from its stored particle, which requires the anchor to equal the line of the new position. Ghost creations and deletions occur only at visits whose line equals the anchor. So the history of <span class="math" data-tex="\(p\)">\(p\)</span> is exactly one lifespan of Section 1, or nothing, and all active lines of <span class="math" data-tex="\(p\)">\(p\)</span> agree.</p>
+<p><em>From lifespans to histories.</em> Conversely, given a datum and a lifespan for every prime compatible with it, the choices are determined: store the prime when it leaves a run that is not its last, promote it when it enters the next run, create a ghost at a ghost starting point, delete at a ghost end, and draw it freshly (or take it from the initial list) when its lifespan begins with an active visit. The factor <span class="math" data-tex="\(1/l!\)">\(1/l!\)</span> in a ghost batch counts an unordered set of distinct new primes once.</p>
+<p><em>Weights.</em> At a pending visit that is a hit, the incoming edge pays <span class="math" data-tex="\(\rho\)">\(\rho\)</span> (step 3), the ghost operation pays <span class="math" data-tex="\(q_j/\rho^2\)">\(q_j/\rho^2\)</span>, and the outgoing edge pays <span class="math" data-tex="\(\rho\)">\(\rho\)</span> (step 1):</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\rho\cdot\frac{q_j}{\rho^2}\cdot\rho=q_j .\quad(4.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\rho\cdot\frac{q_j}{\rho^2}\cdot\rho=q_j .\quad(4.2)
+\end{gathered}
+\]</span>
+<p>A miss pays nothing. A ghost creation pays <span class="math" data-tex="\(-\eta_jV_i/\rho\)">\(-\eta_jV_i/\rho\)</span>, and the outgoing edge pays <span class="math" data-tex="\(\rho\)">\(\rho\)</span> because the new particle hits its own visit; with the measure <span class="math" data-tex="\(\nu_i(p)\)">\(\nu_i(p)\)</span> of the new prime this gives <span class="math" data-tex="\(-\eta_jV_i\nu_i(p)=-\eta_j/((p+1)b&#x27;_p)\)">\(-\eta_jV_i\nu_i(p)=-\eta_j/((p+1)b&#x27;_p)\)</span>. A ghost deletion pays <span class="math" data-tex="\(-\eta_j/\rho\)">\(-\eta_j/\rho\)</span>, and the incoming edge has paid <span class="math" data-tex="\(\rho\)">\(\rho\)</span>. An active birth has measure <span class="math" data-tex="\(\nu_i(p)\)">\(\nu_i(p)\)</span>, and each promotion pays <span class="math" data-tex="\(1/V_i\)">\(1/V_i\)</span>. Comparing with (1.2)–(1.4): a lifespan with <span class="math" data-tex="\(\varrho\)">\(\varrho\)</span> active runs and no ghosts gets <span class="math" data-tex="\(\nu_i(p)V_i^{-(\varrho-1)}\)">\(\nu_i(p)V_i^{-(\varrho-1)}\)</span>; with a ghost start it gets <span class="math" data-tex="\(-\eta_hV_i\nu_i(p)\cdot V_i^{-\varrho}\)">\(-\eta_hV_i\nu_i(p)\cdot V_i^{-\varrho}\)</span>, because then all <span class="math" data-tex="\(\varrho\)">\(\varrho\)</span> runs begin with a promotion; an orphan gets <span class="math" data-tex="\(\eta_a\eta_c/((p+1)b&#x27;_p)\)">\(\eta_a\eta_c/((p+1)b&#x27;_p)\)</span>. In each case the line probability <span class="math" data-tex="\(1/((p+1)b&#x27;_p)\)">\(1/((p+1)b&#x27;_p)\)</span> appears exactly once, and every damped hit inside the lifespan gives <span class="math" data-tex="\(q_j\)">\(q_j\)</span>. At the visits <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span> there are no unmatched factors: the memory is empty at both ends, so every particle is created after visit <span class="math" data-tex="\(0\)">\(0\)</span> begins and deleted before visit <span class="math" data-tex="\(N\)">\(N\)</span> ends.</p>
+<p>Finally, the labels and their <span class="math" data-tex="\(V_i^{-1}\)">\(V_i^{-1}\)</span> factors, the reorderings, the geometric multipliers and the archimedean restrictions are the same on both sides. Summing over histories and comparing with the product over primes of the lifespan sums, divided by <span class="math" data-tex="\(\prod_pb&#x27;_p\)">\(\prod_pb&#x27;_p\)</span>, proves the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The two sides agree history by history; no claim is made that global distinctness is a property of individual states. It constrains whole histories, and <a href="birth-distinctness-and-the-minor-moment.html"><em>Birth distinctness and the minor moment</em></a> restores it by an exact expansion. Lessons 13–15 bound the operators <span class="math" data-tex="\(\mathcal G_j\)">\(\mathcal G_j\)</span> and <span class="math" data-tex="\(\mathcal E_j\)">\(\mathcal E_j\)</span> on the space (3.1) with no distinctness condition at all.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>12.1.</strong> Verify (1.2) by hand when <span class="math" data-tex="\(N=2\)">\(N=2\)</span> and all three lines <span class="math" data-tex="\([z_j]_p\)">\([z_j]_p\)</span> coincide.</p>
+<p><strong>12.2.</strong> Prove the telescoping identity <span class="math" data-tex="\(\prod_{j&lt;a}(1-y_j)\)">\(\prod_{j&lt;a}(1-y_j)\)</span><span class="math" data-tex="\(=1-\sum_{h&lt;a}y_h\prod_{h&lt;j&lt;a}(1-y_j)\)">\(=1-\sum_{h&lt;a}y_h\prod_{h&lt;j&lt;a}(1-y_j)\)</span>.</p>
+<p><strong>12.3.</strong> A prime of group <span class="math" data-tex="\(i\)">\(i\)</span> is active at the visits <span class="math" data-tex="\(1,2,5\)">\(1,2,5\)</span> of a path with <span class="math" data-tex="\(N=6\)">\(N=6\)</span>, with the line <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> at these visits; among the other visits, <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is the line of the visits <span class="math" data-tex="\(0,3,6\)">\(0,3,6\)</span> only. List its lifespans, with their weights.</p>
+<p><strong>12.4.</strong> Show that <span class="math" data-tex="\(\rho=3/4\)">\(\rho=3/4\)</span> satisfies <span class="math" data-tex="\(\rho^2&gt;q_j\)">\(\rho^2&gt;q_j\)</span> for all <span class="math" data-tex="\(j\)">\(j\)</span>, and that <span class="math" data-tex="\(\rho=0.7\)">\(\rho=0.7\)</span> does not.</p>
+<p><strong>12.5.</strong> Explain why a prime cannot be stored and promoted on the same edge, in terms of the cross-edge ban.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>12.1.</strong> With <span class="math" data-tex="\(H_0=H_1=H_2=1\)">\(H_0=H_1=H_2=1\)</span> at the common line and <span class="math" data-tex="\(\Phi_p(\ell)=\prod_j(1-\eta_jH_j(\ell))\)">\(\Phi_p(\ell)=\prod_j(1-\eta_jH_j(\ell))\)</span>, the expectation is <span class="math" data-tex="\(\frac1{p+1}(1-\eta_0)(1-\eta_1)(1-\eta_2)+\frac p{p+1}\)">\(\frac1{p+1}(1-\eta_0)(1-\eta_1)(1-\eta_2)+\frac p{p+1}\)</span>. The right side of (1.2) is <span class="math" data-tex="\(b&#x27;_p+\frac1{p+1}(\eta_0\eta_1+\eta_1\eta_2+\eta_0\eta_2(1-\eta_1))\)">\(b&#x27;_p+\frac1{p+1}(\eta_0\eta_1+\eta_1\eta_2+\eta_0\eta_2(1-\eta_1))\)</span>. Expanding <span class="math" data-tex="\((1-\eta_0)(1-\eta_1)(1-\eta_2)\)">\((1-\eta_0)(1-\eta_1)(1-\eta_2)\)</span> gives the same.</p>
+<p><strong>12.2.</strong> Induction on <span class="math" data-tex="\(a\)">\(a\)</span>: if it holds for <span class="math" data-tex="\(a\)">\(a\)</span>, multiply by <span class="math" data-tex="\(1-y_a\)">\(1-y_a\)</span>; the new term <span class="math" data-tex="\(-y_a\)">\(-y_a\)</span> appears with empty product, and the others acquire the factor <span class="math" data-tex="\(1-y_a\)">\(1-y_a\)</span>.</p>
+<p><strong>12.3.</strong> Active runs <span class="math" data-tex="\(\{1,2\}\)">\(\{1,2\}\)</span> and <span class="math" data-tex="\(\{5\}\)">\(\{5\}\)</span>, so <span class="math" data-tex="\(\varrho=2\)">\(\varrho=2\)</span> and <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, <span class="math" data-tex="\(c=5\)">\(c=5\)</span>. Visits <span class="math" data-tex="\(3,4\)">\(3,4\)</span> are inactive and inside; <span class="math" data-tex="\(3\)">\(3\)</span> is a hit and pays <span class="math" data-tex="\(q_3\)">\(q_3\)</span>, <span class="math" data-tex="\(4\)">\(4\)</span> is a miss. Possible ghost starts: <span class="math" data-tex="\(h=0\)">\(h=0\)</span> (a hit); possible ghost ends: <span class="math" data-tex="\(h&#x27;=6\)">\(h&#x27;=6\)</span>. The four lifespans have weights <span class="math" data-tex="\(\nu_i(p)V_i^{-1}q_3\)">\(\nu_i(p)V_i^{-1}q_3\)</span> times <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(-\eta_0\)">\(-\eta_0\)</span>, <span class="math" data-tex="\(-\eta_6\)">\(-\eta_6\)</span>, <span class="math" data-tex="\(\eta_0\eta_6\)">\(\eta_0\eta_6\)</span>.</p>
+<p><strong>12.4.</strong> <span class="math" data-tex="\(q_j\le\frac12&lt;\frac9{16}\)">\(q_j\le\frac12&lt;\frac9{16}\)</span>. For <span class="math" data-tex="\(\rho=0.7\)">\(\rho=0.7\)</span>, <span class="math" data-tex="\(\rho^2=0.49&lt;\frac12=q_0\)">\(\rho^2=0.49&lt;\frac12=q_0\)</span>.</p>
+<p><strong>12.5.</strong> A stored prime was the source's last slot; promoting it would make it the target's last slot, a new label equal to a source label, which the ban forbids.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[PD] OpenAI, <em>The Poisson–Dirichlet law for prime predecessors</em>, OpenAI Math Release preprint, 24 September 2026, Sections 4.1 and 4.2. https://github.com/openai/math/tree/main/preprints/The-Poisson-Dirichlet-Law-for-Prime-Predecessors-September-24-2026</li>
+<li>H. A. Helfgott and M. Radziwiłł, <em>Expansion, divisibility and parity</em>, arXiv:2103.06853 (2021), Sections 1.3, 1.5 and 5, treat centred prime-divisibility weights through walks labelled by primes. https://arxiv.org/abs/2103.06853</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

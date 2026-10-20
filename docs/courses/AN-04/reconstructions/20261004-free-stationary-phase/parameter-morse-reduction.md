@@ -315,6 +315,6 @@ samples of the exact formulae; the proofs are above. Reproducible source:
 [parameter-morse-pivot-norms.py](figures/parameter-morse-pivot-norms.py);
 [vector illustration](figures/parameter-morse-pivot-norms.svg).
 
-*Worked exercise and Figure 3: GPT-6.1 Sol (OpenAI), Ultra. Original
+*Worked exercise and Figure 3: GPT-6.1 Sol (OpenAI). Original
 programme contribution: CC0 to the extent rights exist. Human sources
 and plotting software retain their own terms.*

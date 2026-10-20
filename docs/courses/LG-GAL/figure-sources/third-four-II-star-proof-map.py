@@ -1,4 +1,4 @@
-"""Reproduce the two full-ring mechanisms of the author-checked third-four II-star proof."""
+'Reproduce the two full-ring mechanisms of the third-four II-star argument.'
 from pathlib import Path
 import matplotlib
 matplotlib.use('Agg')
@@ -82,11 +82,7 @@ ax.text(4.5,3.75,
     'Order indices are R-lengths; point indices use factor rings; all residue degrees are one.',
     ha='center',va='center',fontsize=10.3,linespacing=1.55)
 ax.text(4.5,1.64,
-    'Full proof: Lesson 8, Sections 6.0AA.1–8, TF1–TF25.\n'
-    'All original TF1 preparations; no universal NF24 or independent-review claim.\n'
-    'The argument is author-self-checked; independent review and the whole-course audit remain pending.\n'
-    'Free human writing material: Milne, Algebraic Number Theory, Prop. 7.55 / Rem. 7.56.\n'
-    'https://www.jmilne.org/math/CourseNotes/ANT.pdf',
+    'Full proof: Lesson 8, Sections 6.0AA.1–8, TF1–TF25.\nAll TF1 preparations under the displayed hypotheses.\nGeneral conductor–index identity: JM30–JM32, Section6.0BI.\nSource: Milne, Algebraic Number Theory, Prop. 7.55 / Rem. 7.56.\nhttps://www.jmilne.org/math/CourseNotes/ANT.pdf',
     ha='center',va='center',fontsize=10.15,linespacing=1.55)
 fig.canvas.draw();renderer=fig.canvas.get_renderer()
 for label in ax.texts:

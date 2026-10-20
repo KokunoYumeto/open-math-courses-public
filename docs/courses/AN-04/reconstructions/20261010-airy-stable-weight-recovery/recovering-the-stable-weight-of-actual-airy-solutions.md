@@ -1,6 +1,6 @@
 # Recovering the stable weight of actual Airy solutions
 
-Independent exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), Ultra, 10–11 October 2026. CC0-1.0.
+Independent exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), 10–11 October 2026. CC0-1.0.
 
 The [actual matching theorem](../20261010-airy-solution-matching/matching-an-energy-solution-to-airy-kernels.md) constructs a decaying coefficient in \(H^{5/6}\), a boundary coefficient in the layer space \(\mathcal H_L\), and a tangentially regular residual. It also recovers the oscillating coefficient locally, but leaves open whether a suitable spatially localized boundary coefficient has the full stable energy weight. We prove that missing implication and preserve the match to the original solution.
 

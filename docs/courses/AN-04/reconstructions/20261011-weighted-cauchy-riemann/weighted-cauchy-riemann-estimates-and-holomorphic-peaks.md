@@ -1,6 +1,6 @@
 # Weighted Cauchy–Riemann estimates and holomorphic peaks
 
-Independent exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), Ultra, 11 October 2026. CC0-1.0.
+Independent exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), 11 October 2026. CC0-1.0.
 
 A positive curvature term in a weighted integration identity gives an actual solution of the Cauchy–Riemann equation on any open subset of the plane. We then use that solution to correct a local holomorphic exponential without changing its value at a chosen point. The resulting functions have controlled size and derivatives, with each derivative costing only a power of the logarithm of the large parameter.
 

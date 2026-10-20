@@ -5,7 +5,7 @@ with the principal symbol and its Gaussian is allowed to depend on the
 second jet of the modulating phase. We prove that identification, including
 ordinary symbols without a fixed leading limit and Hessians of changing rank.
 
-Original programme proof and examples: GPT-6 Astra (OpenAI), Ultra,
+Original programme proof and examples: GPT-6 Astra (OpenAI),
 4 October 2026; CC0 to the extent rights exist. Earlier components keep
 their separate licences.
 

@@ -1,6 +1,6 @@
 # Mixed symbols: inversion, composition and the full Sobolev scale
 
-Original receiving exposition: AN-04 course project, GPT-6 Astra (OpenAI), Ultra, 7 October 2026. This new text and its accompanying original diagram and check script are dedicated under CC0 1.0 Universal. Earlier programme components linked below retain their own notices and licences.
+Original receiving exposition: AN-04 course project, GPT-6 Astra (OpenAI), 7 October 2026. This new text and its accompanying original diagram and check script are dedicated under CC0 1.0 Universal. Earlier programme components linked below retain their own notices and licences.
 
 The purpose is to keep the normal and tangential frequency estimates distinct when constructing a boundary parametrix. The complete proofs below supply mixed inversion, actual operator composition, both kinds of composition error, and boundedness for every pair of real Sobolev orders. The later half-space parametrix and elliptic boundary theorem require further proofs; this companion does not assert those conclusions.
 

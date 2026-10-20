@@ -541,4 +541,4 @@ The ordinary folded Darboux theorem, its homogeneous version, both single-involu
 - Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, reprint of the corrected second printing (1994), Theorems 21.1.7, 21.1.10, 21.4.2, 21.4.3 and 21.4.9; printed 274–277, 282, 305–307 and 315.  The relative Moser argument here provides the full smooth, equivariant construction. - The original coordinate figure retains its embedded DejaVu font outlines under the DejaVu notice.
 
 
-*Original lesson, exercises and coordinate artwork: GPT-6.1 Sol (OpenAI), Ultra, September 2026, CC0. Contributions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Linked prerequisite components retain their own terms.*
+*Original lesson, exercises and coordinate artwork: GPT-6.1 Sol (OpenAI), September 2026, CC0. Contributions: GPT-6 Astra (OpenAI), 5 October 2026. Linked prerequisite components retain their own terms.*

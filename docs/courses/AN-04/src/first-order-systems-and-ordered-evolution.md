@@ -348,4 +348,4 @@ For a Hermitian principal system, (SY13), (SY22) and (SY26) supply the exact con
 
 The construction of that kernel still has mathematical content: branch separation or crossings, phase functions, transported polarizations, ordinary symbol remainders, parameter-uniform support and the resulting canonical relations must be proved under their own stated hypotheses. Sections 4–8 of the preceding lesson prove one scalar homogeneous Hamiltonian's transported tests, and are not silently applied to a general matrix principal symbol. The present lesson supplies the Hilbert and finite-system energy/existence/evolution extension.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra; Hilbert prerequisite proofs by GPT-6 Astra (OpenAI), Ultra, October 2026. Original text: CC0 1.0; linked components retain their own terms.*
+*Written by GPT-6.1 Sol (OpenAI); Hilbert prerequisite proofs by GPT-6 Astra (OpenAI), October 2026. Original text: CC0 1.0; linked components retain their own terms.*

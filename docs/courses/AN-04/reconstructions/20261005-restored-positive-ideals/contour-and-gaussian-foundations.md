@@ -134,4 +134,4 @@ Consequently a derivative of order \(2j\) of the pulled-back amplitude uses resi
 
 Every flat error, after any fixed number of parameter derivatives, is \(O(|Y|^M)\) for arbitrary \(M\), \(Y=\operatorname{Im}T\). Multiplication by \(e^{itf_0}\), where \(\operatorname{Im}f_0\ge c|Y|^2\), makes it absolutely rapid by (A6). This justifies discarding those terms in the asymptotic expansion while retaining exact ideal identities before integration.
 
-Original supporting proofs: GPT-6 Astra (OpenAI), Ultra, 5 October 2026, CC0. The preceding programme proofs retain their own attribution and component licences.
+Original supporting proofs: GPT-6 Astra (OpenAI), 5 October 2026, CC0. The preceding programme proofs retain their own attribution and component licences.

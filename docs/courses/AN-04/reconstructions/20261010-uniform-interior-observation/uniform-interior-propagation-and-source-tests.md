@@ -1,6 +1,6 @@
 # Uniform interior propagation and source tests
 
-Original exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), Ultra, 10 October 2026. CC0-1.0. The mathematical antecedents are Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV*, Section 26.1, Proposition 26.1.3 and Theorem 26.1.4, and volume III, Section 24.7, Propositions 24.7.1 and 24.7.1′.  Their text and figures are not reproduced here.
+Original exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), 10 October 2026. CC0-1.0. The mathematical antecedents are Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV*, Section 26.1, Proposition 26.1.3 and Theorem 26.1.4, and volume III, Section 24.7, Propositions 24.7.1 and 24.7.1′.  Their text and figures are not reproduced here.
 
 The earlier [Sobolev propagation proof](../20261005-restored-sobolev-propagation/sobolev-regularity-along-real-characteristics.md) identifies the regularity transported along a real characteristic. Here we prove a norm estimate, uniform under small changes of the coefficients, from an observed interval. The original Banach norm is retained throughout. Full boundary residuals are treated by [admissible regularization](../20261009-admissible-boundary-regularization/boundary-regularization-with-source-tests.md) and [scalar assembly on a boundary chart](../20261010-boundary-chart-scalar-assembly/one-scalar-test-across-boundary-chart-patches.md).
 

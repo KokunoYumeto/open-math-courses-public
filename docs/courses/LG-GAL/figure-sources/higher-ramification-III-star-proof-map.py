@@ -79,10 +79,7 @@ ax.text(4.5,2.23,
     'Dⱼ are base discriminant exponents; iⱼ are R-lengths; ℓ is a B₄-length.',
     ha='center',va='center',fontsize=10.7,linespacing=1.65)
 ax.text(4.5,1.07,
-    'These two families are the scopes of HR4 and HR9.\n'
-    'Every other residual family, universal NF24 and distinct reviews remain required.\n'
-    'Proof locators: Lesson 8, Sections 6.0T.1–7.\n'
-    'Free human writing material: Milne, Algebraic Number Theory, Prop. 7.55 / Rem. 7.56.',
+    'These two families are the scopes of HR4 and HR9.\nGeneral conductor–index identity: JM30–JM32, Section6.0BI.\nProof locators: Lesson 8, Sections 6.0T.1–7.\nSource: Milne, Algebraic Number Theory, Prop. 7.55 / Rem. 7.56.',
     ha='center',va='center',fontsize=10.7,linespacing=1.65)
 dest=Path(__file__).resolve().parents[1]/'assets/higher-ramification-III-star-proof-map.png'
 fig.savefig(dest,dpi=100,metadata={'Title':'Two proved higher-ramification III-star families'})

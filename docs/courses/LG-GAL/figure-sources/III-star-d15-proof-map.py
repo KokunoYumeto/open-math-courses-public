@@ -82,9 +82,7 @@ ax.text(4.5,2.87,
     'Finite unramified extensions preserve all numbers and permit the displayed product.',
     ha='center',va='center',fontsize=10.6,linespacing=1.6)
 ax.text(4.5,1.65,'This completes the e = 1 III* range together with Section 6.0R',ha='center',fontsize=13,fontweight='bold')
-ax.text(4.5,.96,'Higher-e III* and every other residual family still require their full proofs.\n'
-    'The universal NF24 identity and distinct reviews remain required.\n'
-    'Exact conditions and proof locators: Lesson 8, Sections 6.0S.1–9.',
+ax.text(4.5,.96,'Higher-e III* and other additive families are outside these hypotheses.\nGeneral conductor–index identity: JM30–JM32, Section6.0BI.\nExact conditions and proof locators: Lesson 8, Sections 6.0S.1–9.',
     ha='center',va='center',fontsize=11.3,linespacing=1.7)
 dest=Path(__file__).resolve().parents[1]/'assets/III-star-d15-proof-map.png'
 fig.savefig(dest,dpi=100,metadata={'Title':'Two full-ring alternatives for the discriminant-fifteen III-star proof'})

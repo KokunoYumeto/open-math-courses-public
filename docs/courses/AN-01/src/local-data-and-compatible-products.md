@@ -6,7 +6,7 @@
 
 A distribution has no values at individual points, but it still has restrictions to open sets. Compatible restrictions determine one global distribution. This local principle explains support, extends the possible test functions, and defines some products even when both factors are singular.
 
-We use the proved test topology and bounded-family characterization in [Distributions as kernels of continuous operators](distributions-as-kernels.md), the finite-order extension and complete weak-limit proof in [Order, positivity and distributional limits](order-positivity-and-limits.md), and the compact-distribution pairing in [When a kernel is smooth](when-a-kernel-is-smooth.md). The supplied [jet lesson](jets-supported-distributions-and-local-operators.md) proves smooth mollification and the point-supported structure theorem. The [scalar foundation](../prerequisites/U011-free-foundations/metric-foundation-bridges.md), §§12–13, and [measure foundation](../prerequisites/U011-free-foundations/banach-foundation-bridges.md), §§15.0–15.1, provide cutoffs, calculus and integration. The finite partition and all gluing and product constructions needed here are proved below. Exact source comparisons appear after the solutions.
+We use the proved test topology and bounded-family characterization in [Distributions as kernels of continuous operators](distributions-as-kernels.md), the finite-order extension and complete weak-limit proof in [Order, positivity and distributional limits](order-positivity-and-limits.md), and the compact-distribution pairing in [When a kernel is smooth](when-a-kernel-is-smooth.md). The supplied [jet lesson](jets-supported-distributions-and-local-operators.md) proves smooth mollification and the point-supported structure theorem. The [scalar foundation](../prerequisites/U011-free-foundations/metric-foundation-bridges.md), §§12–13, and [measure foundation](../prerequisites/U011-free-foundations/banach-foundation-bridges.md), §§15.0–15.1, provide cutoffs, calculus and integration. The finite partition and all gluing and product constructions needed here are proved below. References appear after the solutions.
 
 ## Restriction and a local uniqueness principle
 
@@ -19,7 +19,22 @@ Let \(V\subset X\subset\mathbb R^n\) be open. Extending \(\phi\in C_c^\infty(V)\
 
 The local distribution estimate on its support proves that this is a distribution on \(V\). Restrictions compose, and restriction to \(X\) is the identity.
 
-Here is the finite partition fact we will repeatedly use. If compact \(K\subset X\) is covered by open \(V_i\), there are finitely many smooth compactly supported functions \(\chi_l\), each supported in some \(V_{i(l)}\), with \(\sum_l\chi_l=1\) on a neighborhood of \(K\). To construct them, cover \(K\) by finitely many smaller balls whose closures lie in the prescribed open sets, choose nonnegative bumps positive on those balls, and write their sum as \(S\). It is positive on a neighborhood of \(K\). Choose a cutoff \(\zeta=1\) near \(K\), supported in that neighborhood, and set \(\chi_l=\zeta b_l/S\) there and zero elsewhere. This extension is smooth because \(\zeta\)'s support lies inside the positive region. Each support is compact in its prescribed set.
+Here is the finite partition fact we will repeatedly use. If compact \(K\subset X\) is covered by open \(V_i\), there are finitely many nonnegative smooth compactly supported functions \(\chi_l\), each supported in some \(V_{i(l)}\), such that
+\[
+ 0\le\sum_l\chi_l\le1,\qquad
+ \sum_l\chi_l=1\quad\hbox{on a neighborhood of }K.             \tag{P1}
+\]
+The cover may be infinite; only finitely many functions are needed.
+
+First construct a cutoff for any compact \(E\) in an open \(W\). Cover \(E\) by finitely many balls whose larger concentric closed balls lie in \(W\). The flat cutoff proved in the scalar foundation, Section 13.10, gives \(0\le b_i\le1\), equal to one on a neighborhood of each smaller closed ball and supported in its larger ball. Then
+\[
+ b=1-\prod_i(1-b_i)
+\]
+is smooth, lies between zero and one, is one near \(E\), and has compact support in the finite union of larger balls inside \(W\). For empty \(E\), take \(b=0\).
+
+For the partition, choose finitely many smaller balls covering \(K\), with larger closed balls in the prescribed \(V_i\), and bumps \(b_l\) as above. Put \(S=\sum_l b_l\). The set \(W=\{S>0\}\) is an open neighborhood of \(K\). The cutoff construction gives \(0\le\zeta\le1\), equal to one near \(K\), with compact support in \(W\). Set \(\chi_l=\zeta b_l/S\) on \(W\), and zero outside. The extension is smooth because \(\operatorname{supp}\zeta\Subset W\). Its support is compact in \(V_{i(l)}\), and the sum is \(\zeta\), proving (P1).
+
+For a test \(\phi\) supported in \(K\), this gives \(\phi=\sum_l\chi_l\phi\); all pieces are nonnegative if \(\phi\) is. Grouping the finitely many terms with the same cover index gives one test per original open set, with only finitely many nonzero tests. The same grouping preserves (P1). Thus neither a finite cover nor a positivity assumption on an arbitrary test is hidden in the construction.
 
 **Theorem 1.1 (local uniqueness).** If every point of \(X\) has an open neighborhood on which \(u\) restricts to zero, then \(u=0\).
 
@@ -35,6 +50,39 @@ u(\phi)=0\quad\text{if }
 \]
 
 The support is the smallest relatively closed set with this property. Indeed, if a relatively closed \(F\) annihilates every test supported in \(X\setminus F\), \(u\) is zero on that open set and \(\operatorname{supp}u\subset F\).
+
+## One compact profile for every lattice translate
+
+**Proposition 1.2 (a prescribed neighborhood of the fundamental cube).** Let \(Q=[-1/2,1/2]^n\), and let \(X\subset\mathbb R^n\) be any open set containing \(Q\). There is a \(\chi\in C_c^\infty(X)\), \(0\le\chi\le1\), for which
+\[
+ \sum_{k\in\mathbb Z^n}\chi(x-k)=1\qquad(x\in\mathbb R^n).
+                                                               \tag{P2}
+\]
+The sum and all its derivative sums are locally finite. In particular, for every nonzero multi-index \(\alpha\),
+\[
+ \sum_k\partial^\alpha\chi(x-k)=0.                              \tag{P3}
+\]
+
+**Proof.** The compact cutoff construction gives \(0\le\psi\le1\), equal to one near \(Q\), with compact support in \(X\). Set
+\[
+ \begin{gathered}
+ H(x)=\sum_{k\in\mathbb Z^n}\psi(x-k),\\
+ \chi(x)=\frac{\psi(x)}{H(x)}.
+ \end{gathered}                                                \tag{P4}
+\]
+For a compact set \(L\), any contributing \(k\) belongs to the bounded set \(L-\operatorname{supp}\psi\). It contains only finitely many integer points: each coordinate lies in a bounded interval with finitely many integers. The same argument on a compact neighborhood of \(L\) proves local finiteness for derivatives, so \(H\) is smooth. For every \(x\), choose an integer in each coordinate so that \(x-k\in Q\). That summand is one; hence \(H\ge1\).
+
+For \(m\in\mathbb Z^n\), the bijection \(k\mapsto k-m\) in the locally finite sum shows \(H(x+m)=H(x)\). Thus \(\chi\) is smooth, nonnegative, at most one, and supported in the same compact set as \(\psi\). Periodicity gives
+\[
+ \sum_k\chi(x-k)=\frac{\sum_k\psi(x-k)}{H(x)}=1.
+\]
+Local finiteness permits differentiation and proves (P3). This uses the chosen neighborhood \(X\) itself, however narrow; no fixed larger cube is substituted. \(\square\)
+
+The same conclusion holds for a lattice \(A\mathbb Z^n\), where \(A\) is invertible: apply the proposition in \(A^{-1}X\) and use \(\chi_A(x)=\chi(A^{-1}x)\). Then \(\chi_A\in C_c^\infty(X)\) and \(\sum_k\chi_A(x-Ak)=1\), provided \(X\) contains \(AQ\). These are functions under composition, so no determinant factor occurs in the partition identity.
+
+![Integer translates of a compact profile form a partition with an arbitrarily prescribed margin around the fundamental interval.](../figures/local-averaging-and-lattice-partitions.png)
+
+*Left: a one-dimensional instance of (P4), where the initial cutoff \(\psi\) has plateau \([-0.55,0.55]\) and support \([-0.6,0.6]\). The three displayed translates of the normalized weight \(\chi\) sum to one throughout \([-0.5,0.5]\); their weights overlap near its endpoints. The support lies in the prescribed neighborhood \((-0.61,0.61)\). Right: normalized even averaging of a step, discussed in [Convolution as addition of supports, Solution 13](convolution-as-addition-of-supports.md#complete-solutions). Curves are numerical samples of the specified smooth formulas; (P2) and the error bounds are proved analytically. [Reproducible figure](../figures/local-averaging-and-lattice-partitions.py).*
 
 ## Gluing compatible distributions
 
@@ -255,6 +303,10 @@ For three factors, the pairwise disjoint exceptional sets leave at least two \(C
 4. **Both factors singular — advanced.** Let \(u=\delta_0+e^{-x^2}\) and \(v=\delta_2+\rho\), where \(\rho\in C_c^\infty(\mathbb R)\). Compute their compatible product and their scalar pairing. State the singular-support and compactness hypotheses explicitly.
 5. **An obstruction to arbitrary multiplication — advanced.** Let \(\rho\ge0\) be a nonzero smooth compactly supported function on the line with integral \(1\), and let \(\rho_\varepsilon(x)=\varepsilon^{-1}\rho(x/\varepsilon)\). Prove \(\rho_\varepsilon\to\delta_0\) as distributions but \(\rho_\varepsilon^2\) has no distributional limit. Deduce that no jointly sequentially continuous multiplication on all pairs of distributions can agree with ordinary smooth multiplication.
 
+
+6. **Grouping a cover — foundation.** Suppose a compact set \(K\) meets an infinite open cover, and the finite construction above chooses two balls in one member and three in another. Explain how to obtain one function for each original member, still with total at most one and total one near \(K\). Apply this to decompose a nonnegative test supported in \(K\).
+7. **The integral of a lattice weight — intermediate.** Prove that every nonnegative compact profile satisfying (P2) has integral one. For the transformed profile \(\chi_A\), compute its integral and explain why a determinant belongs in this integral but not in the partition identity.
+
 ## Complete solutions
 
 **Solution 1.** On the overlap \((-1,1)\), \(\delta_2\) restricts to zero, so both local distributions are \(H\). The distribution \(H+\delta_2\) on the full line has exactly the stated restrictions. Uniqueness gives this as the gluing. With \(\delta_{1/2}\), a bump supported near \(1/2\) inside the overlap and equal to one there has local pairings differing by one. Thus the two restrictions disagree on the overlap, contradicting (2.1); no global distribution has both restrictions.
@@ -299,9 +351,21 @@ Choose a smooth compactly supported \(\phi\) equal to one near zero. For small \
 
 The integral is strictly positive, so there is no finite scalar limit on this test and hence no distributional limit. A jointly sequentially continuous multiplication defined on all distribution pairs would send \((\rho_\varepsilon,\rho_\varepsilon)\to(\delta_0,\delta_0)\) to a convergent product sequence. Agreement with smooth multiplication would make that sequence \(\rho_\varepsilon^2\), contradicting the calculation. This obstruction concerns the stated global continuity and agreement properties; it does not prevent particular products under additional hypotheses.
 
+
+**Solution 6.** For each cover index \(i\), put \(\eta_i=\sum_{l:i(l)=i}\chi_l\), interpreting an empty sum as zero. Each nonzero sum has finitely many compact supports inside the same open member, so \(\eta_i\) is a compact smooth function there. Only finitely many indices occur, and \(\sum_i\eta_i=\sum_l\chi_l=\zeta\). Hence all \(\eta_i\) are nonnegative, their total is at most one everywhere, and their total is one near \(K\). For \(0\le\phi\in C_c^\infty\) supported in \(K\), the functions \(\eta_i\phi\) are nonnegative tests in the indicated members and sum to \(\phi\). The multiplicities two and three change neither the sum nor its support assertion.
+
+**Solution 7.** Integrate (P2) on the half-open fundamental cube \(Q_0=[-1/2,1/2)^n\). Only finitely many summands meet its closure, so
+\[
+ 1=\sum_k\int_{Q_0}\chi(x-k)\,dx
+   =\sum_k\int_{Q_0-k}\chi(y)\,dy
+   =\int_{\mathbb R^n}\chi(y)\,dy.                              \tag{P5}
+\]
+The half-open cubes partition \(\mathbb R^n\); equivalently their closed versions overlap only on coordinate hyperplanes of Lebesgue measure zero, as in the measure foundation. Substitution \(x=Ay\) yields \(\int\chi_A=|\det A|\). The partition is an equality of function values and needs no density normalization. The integral transforms Lebesgue volume and therefore has the absolute determinant.
+
+
 ## References
 
 - The supplied [test-topology proof](distributions-as-kernels.md), [finite-order extension and weak completeness](order-positivity-and-limits.md), [compact-distribution pairing](when-a-kernel-is-smooth.md) and [jet and mollification proofs](jets-supported-distributions-and-local-operators.md) provide the earlier programme arguments. Foundational components retain their stated licences.
-- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second edition (1990), 2003 reprint, ISBN 978-3-642-61497-2, §2.2, pp. 41–44: Theorems 2.2.1, 2.2.4 and 2.2.5. The exact copy supplies the local-uniqueness, gluing and support-relative extension comparison. This lesson supplies the full constructions, finite-regularity product proof and five solved problems.
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second edition (1990), 2003 reprint, ISBN 978-3-642-61497-2, §1.4, pp. 25–28, for cutoffs and finite and lattice partitions; §2.2, pp. 41–44, for local uniqueness, gluing and support-relative test functions.
 - [Dyatlov 2026] Semyon Dyatlov, *Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs*, MIT, 2 October 2026, §2.3, pp. 31–34 (Theorem 2.13, gluing); §3.2, pp. 40–41 (smooth multiplication and Leibniz rule); §8.3, p. 92 (Definition 8.11, singular support). [Open notes](https://math.mit.edu/~dyatlov/18.155/155-notes.pdf). The compatible products with separated singular supports and the fixed-order version are proved above.
 - [Whitney 1934] Hassler Whitney, *Analytic extensions of differentiable functions defined in closed sets*, Transactions of the American Mathematical Society 36, no. 1 (1934), pp. 63–89; §§1–3, pp. 63–64, for the finite-jet viewpoint. [Full text](https://www.ams.org/journals/tran/1934-036-01/S0002-9947-1934-1501735-3/S0002-9947-1934-1501735-3.pdf). No extension theorem from this external paper is needed for the products constructed here.

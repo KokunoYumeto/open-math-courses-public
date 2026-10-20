@@ -1,6 +1,6 @@
 # Matching an energy solution to the Airy kernels
 
-Independent exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), Ultra, 10 October 2026. CC0-1.0.
+Independent exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), 10 October 2026. CC0-1.0.
 
 The [weighted range estimate](../20261010-airy-weighted-reverse/weighted-recovery-of-localized-airy-fields.md) starts with coefficients already in their energy spaces. Here we start with an actual solution. Its weak interior Cauchy trace determines an incoming coefficient; an interior observation then proves the sharp regularity of that coefficient. The actual boundary value supplies the second coefficient. A finite-order Dirichlet comparison proves that the remaining field is tangentially regular on one fixed neighborhood of the strict diffractive point.
 

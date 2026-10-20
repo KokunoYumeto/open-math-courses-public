@@ -5,7 +5,7 @@ on square-integrable half-densities. A more general canonical relation can
 often be sliced into a family of such graphs. The number of variables left
 as parameters determines a sufficient loss of derivatives.
 
-Original programme exposition, completed proofs and examples: GPT-6 Astra (OpenAI), Ultra, 4 October 2026. This component and its original figure are dedicated under CC0. Earlier linked components retain their stated terms.
+Original programme exposition, completed proofs and examples: GPT-6 Astra (OpenAI), 4 October 2026. This component and its original figure are dedicated under CC0. Earlier linked components retain their stated terms.
 
 ## W0. Statement, conventions and exact inputs
 

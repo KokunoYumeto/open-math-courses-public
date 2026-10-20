@@ -13515,6 +13515,2512 @@ A finite cell retract has bounded Hom into the augmentation, so this augmentatio
 \]
 It is unbounded, so the augmentation is not a finite perfect \(B\)-module. The supported compact objects are finite cell retracts of the perfect Koszul generators (SUL.19), hence are ambient perfect. Thus this pushed augmentation is not compact there either. The theorem that stage pushforward preserves compact objects applies to the actual compact objects of the derived stage; it does not turn every coherent or classical residue object into a compact generator.
 
+### 3.279. A reduced cotangent fibre and the exact local hypothesis
+
+Let \(f:X\to Y\) be a morphism of smooth varieties over an algebraically closed characteristic-zero field, with \(\dim X=n\) and \(\dim Y=m\). Fix \(x\in X\), \(y=f(x)\), and \(\eta\in T_y^*Y\). Put \(\xi=df_x^*\eta\). Let \(C\subset T^*X\) be a smooth Lagrangian subvariety near \((x,\xi)\). Smoothness and the Lagrangian condition are hypotheses on this component. Form the actual scheme fibre product
+\[
+ D_C=(df^*)^{-1}(C)\subset X\times_YT^*Y,
+ \qquad q:D_C\longrightarrow T^*Y,
+ \qquad d=(x,\eta).
+ \tag{RTM.1}
+\]
+Assume that the fibre of \(q\) at \((y,\eta)\) has zero Zariski tangent at \(d\):
+\[
+             \ker\bigl(dq_d:T_dD_C\to T_{(y,\eta)}T^*Y\bigr)=0.
+ \tag{RTM.2}
+\]
+In particular an isolated reduced point of that scheme fibre satisfies the hypothesis. An isolated point of its underlying reduced set does not suffice. Conversely, for a finite-type scheme fibre, zero tangent makes the point isolated and reduced: its maximal ideal satisfies \(\mathfrak m/\mathfrak m^2=0\), so the finite-generator Nakayama argument in §3.26 gives \(\mathfrak m=0\), and the point is an open component after shrinking. All fibre products in (RTM.1) retain their scheme structures.
+
+### 3.280. The projected tangent is isotropic
+
+Choose étale coordinates at the two points, centred at zero. Write
+\[
+ F=df_x:k^n\to k^m,\qquad
+ B=\operatorname{Hess}_x\!\left(\sum_{a=1}^m\eta_a f_a\right),
+ \qquad L=T_{(x,\xi)}C.
+ \tag{RTM.3}
+\]
+The matrix \(B\) is symmetric; here the coordinate coefficients \(\eta_a\) are held fixed when taking the Hessian. Differentiating the actual cotangent pullback, including its change with the source point, gives
+\[
+ E:=T_dD_C
+   =\{(v,\alpha):(v,F^t\alpha+Bv)\in L\}.
+ \tag{RTM.4}
+\]
+This is equality of tangent spaces of the scheme fibre product, obtained by its dual-number test. It does not replace a nonreduced fibre by its reduction. The other tangent map is
+\[
+        dq_d(v,\alpha)=(Fv,\alpha),\qquad W=dq_d(E).
+ \tag{RTM.5}
+\]
+Use the symplectic convention \(\omega=d\theta=d\xi\wedge dx\). For \((v,\alpha),(w,\beta)\in E\), symmetry cancels the two Hessian terms and gives
+\[
+ \begin{aligned}
+ &\omega_X\bigl((v,F^t\alpha+Bv),(w,F^t\beta+Bw)\bigr)\\
+ &\hspace{12mm}=\alpha(Fw)-\beta(Fv)\\
+ &\hspace{12mm}=\omega_Y\bigl((Fv,\alpha),(Fw,\beta)\bigr)=0.
+ \end{aligned}
+ \tag{RTM.6}
+\]
+The last equality is the isotropy of \(L\). Hence \(W\) is isotropic. The nondegenerate symplectic pairing identifies the annihilator of a subspace of dimension \(r\) with a space of dimension \(2m-r\); since an isotropic subspace is contained in its annihilator, \(r\le m\). Thus
+\[
+                         \dim W\le m.
+ \tag{RTM.7}
+\]
+This argument proves the tangent-dimension bound without assuming that \(D_C\) itself is smooth or reduced. The injectivity in (RTM.2) is used in the next step.
+
+### 3.281. A quadratic target test is transverse on the source
+
+The symmetric-graph construction (IS.1)–(IS.2), applied to \(W\subset T_yY\oplus T_y^*Y\), supplies a symmetric form \(Q:T_yY\to T_y^*Y\) such that
+\[
+                             W\cap\operatorname{graph}(Q)=0.
+ \tag{RTM.8}
+\]
+In the chosen target coordinates \(z\), set
+\[
+        g(z)=\sum_a\eta_a z_a+\tfrac12\sum_{a,b}Q_{ab}z_az_b,
+        \qquad h=g\circ f.
+ \tag{RTM.9}
+\]
+Then \(g(y)=h(x)=0\), \(dg_y=\eta\), and \(dh_x=\xi\). The chain rule with its second-derivative term is
+\[
+                         H:=\operatorname{Hess}_x h=B+F^tQF.
+ \tag{RTM.10}
+\]
+Suppose \((v,Hv)\in L\). Taking \(\alpha=QFv\) puts \((v,\alpha)\) in \(E\), and
+\[
+             dq_d(v,\alpha)=(Fv,QFv)
+                         \in W\cap\operatorname{graph}(Q).
+ \tag{RTM.11}
+\]
+It is zero by (RTM.8). Injectivity in (RTM.2) then makes \(v=0\). Since both tangent spaces have dimension \(n\), we have proved the full transversality statement
+\[
+              \operatorname{graph}(dh)\pitchfork C
+                               \quad\text{at }(x,\xi).
+ \tag{RTM.12}
+\]
+The term \(B\) cannot be omitted. Even when \(df_x=0\), it can be the entire nondegenerate source Hessian.
+
+The conclusion is independent of the coordinate calculation. The schemes \(D_C\), its projection \(q\), and its tangent kernel are intrinsic. In any coordinates (RTM.4) differentiates those same maps, and the symplectic identity (RTM.6) differentiates the same canonical one-forms. The chosen quadratic polynomial depends on the coordinates, as permitted by this existence theorem; the resulting intrinsic graph is transverse to the original component.
+
+### 3.282. Finite simultaneous choices and an étale Morse normal form
+
+The good forms \(Q\) form a nonempty Zariski-open subset of the affine space of symmetric forms. Indeed the linear map \((v,\alpha)\mapsto\alpha-QFv\) on \(E\) must be injective. In fixed bases this means that at least one maximal minor is nonzero, a polynomial open condition; (RTM.8) proves nonemptiness. Consequently the same \(Q\) can work for finitely many smooth Lagrangian components satisfying (RTM.2): intersect their finitely many nonempty opens. The parameter space is an affine space over an infinite field, so the product of their nonzero minor polynomials is nonzero and has a nonvanishing value. No assertion about an arbitrary infinite family of components follows.
+
+Suppose now that \(C=T_S^*X\) near the point, for a smooth locally closed subvariety \(S\) of dimension \(d\). In adapted coordinates \((a,b)\), \(S=\{b=0\}\). Its conormal tangent imposes \(\delta b=0\) and \(\delta\xi_a=0\). Thus (RTM.12) says exactly
+\[
+                   d(h|_S)_x=0,\qquad
+                   \det\operatorname{Hess}_x(h|_S)\ne0.
+ \tag{RTM.13}
+\]
+Here is the algebraic local normal form, including its coordinate extension. In the local ring of \(S\), choose parameters \(a\). Criticality puts \(h|_S\) in their squared ideal, so after symmetrizing its coefficients,
+\[
+                      h|_S=a^t A(a)a,\qquad A(a)^t=A(a),
+                      \qquad \det A(0)\ne0.
+ \tag{RTM.14}
+\]
+After a constant change of basis over the algebraically closed field, take \(A(0)=1\). To diagonalize over the local ring, pivot on the first diagonal entry, a unit, and subtract its multiples from the other rows and the same multiples from the columns. This cancels the first off-diagonal row and column and leaves a smaller symmetric matrix with invertible constant term. Induction gives \(A=T^t\operatorname{diag}(u_1,\ldots,u_d)T\), with \(T\) invertible and each \(u_i(0)=1\). Adjoin the chosen roots \(r_i^2=u_i\), \(r_i(0)=1\). The derivative \(2r_i\) is a unit, so these are étale local extensions; the square-zero lifting follows explicitly by replacing a lift \(r\) by \(r+(u-r^2)/(2r)\). The coordinates
+\[
+                   w=\operatorname{diag}(r_i)T a,
+                   \qquad h|_S=\sum_{i=1}^{d}w_i^2
+ \tag{RTM.15}
+\]
+have invertible differential at the point. Here is the relative lifting check. Smoothness of \(S\) first lifts a point across a square-zero extension. An error in the desired \(w\)-values can then be corrected uniquely by its tangent vector, since the displayed Jacobian is invertible. The same argument applied to the difference of two lifts proves uniqueness. Finite presentation makes this a formally étale coordinate map, using the definitions and chart lifting in Smooth morphisms, §1. For complex varieties its local analytic branch is a coordinate chart. The choice of roots and ordered coordinates is retained; it does not canonically orient the resulting vanishing-cycle line.
+
+### 3.283. The bounded coefficient and its exact cycle degree
+
+Now work on complex varieties with complexes of complex vector spaces as coefficients. Use the perverse-normalized cycle convention
+\[
+                 \Phi_hF=\operatorname{Cone}(i^*F\to\psi_hF)[-1].
+ \tag{RTM.16}
+\]
+Consider the actual local sheaf model \(F=j_*M_S[d]\), where \(j:S\hookrightarrow X\) is closed on the chosen neighbourhood and \(M\) is a bounded coefficient complex, constant there. This is an assumption on the local object, not an assertion that every sheaf with a given characteristic component has this form on an ordinary neighbourhood. For a local system, restrict to a coordinate neighbourhood where it is constant, retaining its fibre.
+
+We give the quadratic calculation with its unit. On the universal cover of the punctured parameter, write \(\lambda=r e^{i\theta}\) with a lifted argument. In a small ball of \(\mathbb C^d\), the fibre \(\sum w_i^2=\lambda\) has coordinates \(e^{-i\theta/2}w=u+iv\), satisfying
+\[
+              |u|^2-|v|^2=r,\qquad u\cdot v=0,
+              \qquad r+2|v|^2<\epsilon^2.
+ \tag{RTM.17}
+\]
+Put \(s=u/\sqrt{r+|v|^2}\). Then \(s\in S^{d-1}\), \(v\in s^\perp\), and \(|v|^2<(\epsilon^2-r)/2\). Scaling \(v\) to zero and replacing \(u\) by \(\sqrt{r+t^2|v|^2}s\) gives a deformation retraction, preserving the lifted parameter. Its parameter half-plane is contractible. These retractions commute with shrinking the ball on their zero sections. The ordinary-cover section complexes and their constant-section unit are therefore
+\[
+                 \psi_{\sum w_i^2}(M)_0
+                    \simeq R\Gamma(S^{d-1};M),\qquad
+                    M\longrightarrow R\Gamma(S^{d-1};M).
+ \tag{RTM.18}
+\]
+The constant-coefficient section and homotopy comparisons here are the singular-cochain resolution in Sheaf cohomology and singular cohomology on manifolds, §1. The reduced sphere complex is \(M[1-d]\): for \(S^0\) its unit is the diagonal into \(M\oplus M\); for higher spheres the two contractible hemisphere cover and its equatorial intersection give this formula inductively by the section Mayer–Vietoris triangle. The finite free sphere complex retains the same maps after tensoring with any bounded \(M\). Consequently
+\[
+                \operatorname{Cone}\bigl(M\to R\Gamma(S^{d-1};M)\bigr)
+                             \simeq M[1-d].
+ \tag{RTM.19}
+\]
+For the local closed embedding, sections of the direct image on an open set are the sections on its intersection with \(S\). The same statement holds on the pulled-back covering space and at the zero fibre. Thus the nearby section complexes, their central units, and their cones are precisely those of the restricted function on \(S\). Combining this comparison, its degree, (RTM.16), and the input shift \([d]\) gives
+\[
+                    (\Phi_h j_*M_S[d])_x
+                            \simeq M\otimes\mathfrak o_{h,S}.
+ \tag{RTM.20}
+\]
+The one-dimensional line \(\mathfrak o_{h,S}\) is in degree zero. The chosen ordered Morse coordinates identify it with the reduced sphere orientation coefficient; changing the coordinates carries this line by the induced orientation map. It has not been given an artificial canonical basis. In particular (RTM.20) is nonzero exactly when \(M\ne0\).
+
+Deck translation changes the half-angle by \(\pi\), hence acts on the real sphere by \(s\mapsto-s\). Its degree is \((-1)^d\): extend it to the linear map \(-1\) of the oriented real \(d\)-ball and use the boundary orientation. Thus the coefficient-line monodromy is
+\[
+                          T_{h,S}=(-1)^d\operatorname{Id}.
+ \tag{RTM.21}
+\]
+For \(d=0\), the punctured inverse image of the point model is empty. Its nearby cycle is zero, and the cone followed by \([-1]\) is \(M\), so (RTM.20) holds directly with degree zero and identity monodromy. No negative-dimensional sphere is used. These calculations agree with Quadratic cycles and the holomorphic microsupport test, §§1–2.
+
+### 3.284. The actual open Hecke stratum and the reduced-fibre input
+
+The geometric fibre hypothesis can be checked before imposing a chosen source characteristic component. Work on the smooth open relative-position stratum of a reduced bounded Hecke support, after pulling back a smooth output-bundle-and-curve chart. This is a smooth finite-type scheme, by the finite-jet orbit and frame construction in §3.32; no independent input frame is added to its fibre. Let \(f\) be its output-and-point map and \(p_1\) its smooth input-bundle map.
+
+We first identify the fibre equation on the open stratum; source membership alone would not identify this scheme fibre. Fix the output bundle and its Higgs field \(A_2\), and write the loop lattices as in (HG.1): \(L_2=\mathfrak g[[u]]\) and \(L_1=\operatorname{Ad}_{g^{-1}}L_2\). The vertical tangent for the input-bundle-and-point map is the actual orbit tangent \(L_1/(L_1\cap L_2)\), (AS.3). For its representative \(X\), take \((a_1,a_2,b)=(0,X,0)\) in (HG.4)–(HG.5). The input bundle is fixed, the output deformation has principal part \(X\), and (HG.3) evaluates its covector as \(\operatorname{Res}\langle A_2,X\rangle\). Thus the vanishing equation on every vertical orbit tangent is exactly that this residue be zero.
+
+The field \(A_2\) already annihilates \(L_2\), by its regularity. Annihilation of the displayed orbit quotient is therefore equivalent to annihilation of \(L_1+L_2\). Under the invariant perfect residue pairing the annihilator of \(L_2\) is \(L_2du\): pairing a series with each opposite Laurent monomial tests every negative coefficient. Invariance gives the annihilator of \(L_1\) as \(L_1du\). Consequently the orbit equations say precisely that \(A_2\) is regular also in the input lattice. These are equalities of coefficient equations over every algebra, not only field points. Only finitely many negative root coefficients occur on the bounded orbit, as in the finite-jet proof of (AS.2); the remaining regular coefficients already annihilate all relevant integral tangents.
+
+The output field on the complement and its now regular input-disc expression glue uniquely to an input global Higgs field, by the full gluing comparison (HG.8)–(HG.9). The residual one-dimensional vertical direction for the input-bundle map is movement of the point. Equation (HG.13) says that its remaining vanishing equation is exactly the prescribed moving-point residue. In the chosen output chart, covectors pulled from the output stack annihilate the additional frame directions; these impose no new condition and do not add an input-frame fibre. Hence the fixed-target cotangent fibre is the compatible-Higgs fibre with this residue equation, as a functor on coefficient algebras and therefore as its representing scheme.
+
+At the cocharacter modification in §§3.26–3.29, the compatible-Higgs fibre with the output Higgs field fixed is an isolated reduced point on this bounded support, by (AS.6) and (HG.9). For this output-fixed assertion use the inverse modification and the opposite Schubert bound, as in the last paragraph of §3.26; its disc Higgs field has the same Levi invertibility. The residue equation is a further closed condition satisfied at that point. Its fibre is therefore the same reduced point near the modification. In particular its tangent is zero.
+
+For any further smooth Lagrangian source component \(C\) in this image, imposing membership in \(C\) is another closed condition. Its tangent kernel therefore satisfies
+\[
+      \ker(dq_d|_{T_dD_C})=0,
+      \qquad \eta=(\xi_2,\xi_x),\qquad \xi_x\ne0.
+ \tag{RTM.22}
+\]
+This verifies the hypothesis of (RTM.12) on this chart whenever that smooth Lagrangian component is given. The quadratic test has exactly the prescribed first derivative, including its nonzero curve component; only its Hessian is varied. Its curve partial derivative remains invertible on a neighbourhood of the target point, since its value there is nonzero. The proof concerns the open stratum of the actual reduced bounded kernel support. It does not discard nilpotent parameters from a scheme fibre or assert that the full unbounded Grassmannian is reduced.
+
+If the actual cycle complex has an isolated nonzero point summand, the proper-image comparison with its full stated hypotheses in (IS.9)–(IS.11) carries that summand to the output:
+\[
+                 \Phi_gRf_*F
+                        \simeq i_{y,*}V\oplus R(F),
+                 \qquad V\ne0.
+ \tag{RTM.23}
+\]
+Equations (RTM.12)–(RTM.20) calculate \(V\) for the bounded conormal local model. Identifying a general source object with that model microlocally, and proving that the specified cycle functor retains that microlocal comparison, are additional requirements for applying this calculation to an arbitrary object.
+
+![A zero-tangent cotangent fibre gives an injective tangent projection, an isotropic image and a quadratic Morse test; cubic ramification shows why the scheme fibre matters](figures/reduced-cotangent-morse-test.svg)
+
+*Figure 3.44.* Equations (RTM.4)–(RTM.7) retain the changing cotangent pullback and its symmetric Hessian term. The quadratic graph and injective projection give source transversality in (RTM.8)–(RTM.12). The conormal model has the degree-zero coefficient and monodromy in (RTM.20)–(RTM.21). The quadratic and cubic fibres in Solutions 3.EE–3.EF distinguish a reduced point from a length-two scheme with the same reduced support. Solution 3.EG retains a nonzero source conormal and its negative monodromy. Free further reading on the isolated-test framework is [Arinkin–Gaitsgory–Kazhdan–Raskin–Rozenblyum–Varshavsky, Appendix H](https://arxiv.org/abs/2010.01906v2).
+
+### 3.285. Finite tests and full-category support
+
+The simultaneous-choice statement of §3.282 is finite. An unbounded object's cohomological support can involve arbitrarily many closed components, without a single common neighbourhood isolating all their tests. The point-fibre calculation (RTM.22) does not supply that neighbourhood. Nor does a bounded coefficient calculation prove perverse exactness or the completion description for the actual full-category cycle functor.
+
+The lower-bound deduction still needs precisely the microlocal coefficient comparison, its compatibility with cycles and characteristic support, the t-exact full-category extension in (IS.7)–(IS.8), and the relevant generic-point or geometric-field comparisons. The algebraic regular-holonomic and whole-D-module assertions remain distinct. The conditional enhanced field-test argument (ESG.34)–(ESG.35) likewise retains its point-detection hypothesis. These requirements cannot be replaced by set-theoretic isolation or by the matrix computation alone. Free further reading is [The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support, Appendix H](https://arxiv.org/abs/2010.01906v2), at the regular-holonomic scope stated there.
+
+### 3.286. Exercise and solution: the quadratic ramification fibre
+
+For the cycle calculations in the next three exercises take \(k=\mathbb C\). Their scheme-fibre and tangent computations are valid over every algebraically closed characteristic-zero field.
+
+**Exercise 3.EE.** Let \(f:\mathbb A^1_z\to\mathbb A^1_t\), \(t=z^2\), and take \(C\) to be the source zero section. At \(z=0\), fix a target covector \(\eta\ne0\). Compute the scheme fibre, \(E\), \(W\), the pulled-back Hessian and the normalized cycle of the constant perverse input.
+
+**Solution 3.EE.** The codifferential equation and its fixed-target fibre are
+\[
+                    2z\eta=0,
+                    \qquad k[z]_{(z)}/(2\eta z)=k.
+ \tag{RTM.24}
+\]
+It is a reduced point. Here \(F=0\), \(B=2\eta\), and \(L\) is the horizontal source tangent. Formula (RTM.4) gives
+\[
+                    E=\{(0,\alpha)\},\qquad
+                    W=\{(0,\alpha)\}\subset T_0\mathbb A^1\oplus T_0^*\mathbb A^1.
+ \tag{RTM.25}
+\]
+Every symmetric graph is transverse to this vertical line. For \(g(t)=\eta t+qt^2/2\), the source function is \(\eta z^2+qz^4/2\), whose Hessian is \(2\eta\). Its nondegeneracy comes entirely from \(B\), not from \(F^tQF\). For the input \(k_{\mathbb A^1}[1]\), the normalized cycle is one line in degree zero, with monodromy minus one by (RTM.20)–(RTM.21). Equivalently its nearby unit is the diagonal into the two sheets, and the quotient is their signed difference. The finite map is proper, so the explicit finite-map computation (IS.12) gives the same cycle on the target.
+
+### 3.287. Exercise and solution: cubic isolation is not reduced isolation
+
+**Exercise 3.EF.** Replace the preceding map by \(t=z^3\), keeping the same component and nonzero target covector. Show that the fibre is set-theoretically isolated but the tangent hypothesis fails. Decide whether this refutes vanishing-cycle detection itself.
+
+**Solution 3.EF.** This time
+\[
+             3\eta z^2=0,
+             \qquad k[z]_{(z)}/(3\eta z^2)\simeq k[z]/(z^2).
+ \tag{RTM.26}
+\]
+Its length is two and its tangent is one-dimensional. At zero both \(F\) and \(B\) vanish, so \(E\) consists of all \((v,\alpha)\). The tangent projection has
+\[
+                       \ker dq=\{(v,0)\},\qquad
+                       \operatorname{Hess}_0(g\circ f)=0
+                                      \quad\text{for every quadratic }g.
+ \tag{RTM.27}
+\]
+Thus no such target test has a nondegenerate source Hessian. Replacing the fibre by its reduction would falsely erase exactly this obstruction.
+
+Nevertheless a small nonzero fibre has three points and a small source disc is contractible. For constant perverse input the actual normalized cycle is
+\[
+                       k^3/k(1,1,1),
+                       \qquad \dim=2,
+                       \quad\text{in degree zero}.
+ \tag{RTM.28}
+\]
+Monodromy is the cyclic permutation of the three sheet coordinates on this quotient. This is the full diagonal-unit calculation (IS.12) with \(m=3\). It is nonzero. The example refutes a reduced-fibre-free Morse assertion; it does not refute the more general isolated-cycle theorem.
+
+### 3.288. Exercise and solution: a nonzero source conormal
+
+**Exercise 3.EG.** On \(X=\mathbb A^2_{s,t}\), let \(S=\{s=0\}\), \(C=T_S^*X\), and \(f(s,t)=s+t^2\). Fix \(\eta=1\) at zero on the target line. Compute \(E\), the quadratic test and its cycle on \(j_*k_S[1]\). Explain why the support-restricted map is proper even though \(f\) is not.
+
+**Solution 3.EG.** The source covector is the nonzero normal \(ds\). At that point,
+\[
+ F=(1,0),\quad B=\begin{pmatrix}0&0\\0&2\end{pmatrix},
+ \quad L=\{((0,v_t),(\beta_s,0))\}.
+ \tag{RTM.29}
+\]
+The tangent condition is \(v_s=0\) and \(2v_t=0\); \(\alpha\) is free. Hence \(E=\{(0,\alpha)\}\), the projection is injective and its image is the vertical target line. In fact the fixed-target scheme fibre is cut out by \(s=0\), \(s+t^2=0\) and \(2t=0\), so is the reduced point, on all coefficient tests.
+
+Take \(g(y)=y\). Then \(h=s+t^2\), and its restriction to \(S\) is \(t^2\). The chosen coordinate \(t\) identifies the Morse line and gives
+\[
+                    (\Phi_h j_*k_S[1])_0\simeq k,
+                    \qquad\text{degree }0,\qquad T=-1.
+ \tag{RTM.30}
+\]
+The restriction \(f|_S:t\mapsto t^2\) is finite, with free coordinate algebra of rank two over the target, so is proper. In contrast the full fibre of \(f\) is an affine line, hence the ambient map is not proper. Indeed the affine line is not universally closed: the closed set \(uv=1\) in \(\mathbb A^1_u\times\mathbb A^1_v\) has nonclosed image \(\mathbb A^1_u\setminus\{0\}\) under projection. This violates a defining property of properness after base change. The source object is carried by the closed support \(S\); its direct image is exactly the direct image through this finite restriction. The same two-sheet diagonal quotient therefore computes the target cycle. Both the nonzero input conormal \(ds\) and the output covector \(dy\) have been retained.
+
+### 3.289. Finite projective operator resolutions on an affine chart
+
+Let \(U=\operatorname{Spec}R\) be a smooth pure-dimensional affine complex variety of dimension \(d\), and put \(A=\Gamma(U,\mathcal D_U)\). Use left modules and the order filtration. The principal-parts and symbol proofs in Differential operators and the Weyl algebra, §§3–5, give
+\[
+             F_0A=R,\qquad
+             S=\operatorname{gr}A
+                       =\operatorname{Sym}_R\operatorname{Der}_{\mathbf C}(R).
+ \tag{IAC.1}
+\]
+The ring \(S\) is Noetherian and regular of dimension at most \(2d\): on a finite open cover its derivation module is free, so it is polynomial of rank \(d\) over a regular coordinate ring. The regular-local and polynomial arguments are proved in Regular local rings, Theorem 2.2 and Proposition 3.3. The Ext test for the last syzygy is Projective dimension and the Auslander–Buchsbaum formula, Theorem 1.3.
+
+We retain a global projective last term. For a finite \(S\)-module take \(2d\) finite free surjections and kernels. At every prime the last kernel is projective by those regular-local bounds and the syzygy test. It is finite projective globally: choose a finite principal cover with dual bases, clear denominators in the corresponding factorizations of its identity through finite free modules, and take a linear combination using powers of the covering functions that generate the unit ideal. This factors its identity through one finite free module.
+
+For a finite graded projective symbol module \(P\), put \(S_+=\bigoplus_{n>0}S_n\). A degree-zero part of an ungraded splitting is a graded splitting. Hence \(Q=P/S_+P\) is a finite graded projective \(R\)-module, with only finitely many nonzero degrees. Lift each \(Q_j\) to \(P_j\) by \(R\)-projectivity. The map \(S\otimes_RQ\to P\) is an isomorphism: its cokernel has zero reduction modulo \(S_+\), so its least nonzero degree would contradict that equality; the surjection splits by graded projectivity, and its kernel vanishes by the same argument. This is the full graded argument of Holonomic D-modules and duality, Lemma 3.0, without shrinking the base to make \(Q_j\) free.
+
+Now take a finite \(A\)-module \(M\) with its bounded-below good filtration. Lift symbol generators to get strict finite filtered free surjections, and repeat on their filtered kernels \(2d\) times. Strictness follows by successively lowering order; boundedness below terminates the process. Noetherianity of \(S\) keeps all symbol kernels finite. The terminal symbol is a graded projective \(P\) as above. Lift the maps \(Q_j\to P_j\) to its filtered terminal kernel \(K\) using \(R\)-projectivity. This gives
+\[
+                 \bigoplus_j A\otimes_RQ_j\longrightarrow K,
+                 \qquad\operatorname{gr}\text{ of this map is }S\otimes_RQ\xrightarrow{\sim}P.
+ \tag{IAC.2}
+\]
+Leading-order reduction makes the map surjective; a nonzero kernel element would have a nonzero leading symbol in the zero symbol kernel. Thus it is an isomorphism. Each induced term is finite projective over \(A\), since induction takes an \(R\)-linear split summand of a finite free module to an \(A\)-linear split summand. We obtain a global finite projective resolution
+\[
+                  0\to P_{2d}\to P_{2d-1}\to\cdots\to P_0\to M\to0.
+ \tag{IAC.3}
+\]
+The final term need not be free. Finite truncation triangles then make every bounded coherent \(A\)-complex perfect. The case \(d=0\) uses the projective symbol module itself and needs no nonzero resolution length.
+
+### 3.290. The actual affine ind-regular category and its t-structure
+
+The affine module comparison is at the full operator level. For an \(A\)-module \(N\), sheafify its \(R\)-module. A derivation acts on a localization by the Leibniz formula \(\theta(n/f^r)=\theta(n)/f^r-r\theta(f)n/f^{r+1}\). The principal-parts localization of §3 of the operator lesson identifies this with the actual restricted differential operators. Conversely global sections of a quasicoherent operator module recover its module over \(A\). On free operator modules these are inverse on multiplication, unit and every module-action map. The complete free-module bar therefore gives the inverse comparison on arbitrary unbounded modules and mapping complexes. This is a module-category comparison, including all higher maps.
+
+Let \(\mathscr C_U=D^b_{\mathrm{rh}}(\mathcal D_U)\), with the full mapping complexes of (RH.1), and put
+\[
+           \mathscr R_\infty(U)=\operatorname{Ind}\mathscr C_U
+                         \hookrightarrow\operatorname{Mod}_A.
+ \tag{IAC.4}
+\]
+All objects of \(\mathscr C_U\) are perfect by (IAC.3), hence compact in the full affine category. Thus the displayed functor is fully faithful: for filtered presentations its mapping complex is exactly
+\[
+ R\operatorname{Hom}\bigl(\operatorname*{colim}_ic_i,
+                         \operatorname*{colim}_jc'_j\bigr)
+       =\lim_i\operatorname*{colim}_jR\operatorname{Hom}_A(c_i,c'_j).
+ \tag{IAC.5}
+\]
+Its image is the localizing regular subcategory. This supplies a global affine projective verification of the embedding in (RH.3)–(RH.5).
+
+Bounded regular holonomic complexes are closed under their standard truncations. On the ind-category the truncations are
+\[
+     \tau^{\le b}\operatorname*{colim}_ic_i
+           =\operatorname*{colim}_i\tau^{\le b}c_i,
+     \qquad
+     \tau^{\ge b}\operatorname*{colim}_ic_i
+           =\operatorname*{colim}_i\tau^{\ge b}c_i.
+ \tag{IAC.6}
+\]
+To check the t-structure directly, take the colimit of each bounded truncation triangle. Orthogonality follows from compactness of the bounded terms: maps from a filtered colimit in the lower half to one in the shifted upper half are a limit of colimits of contractible mapping spaces. The triangles and this orthogonality characterize the truncations, so they do not depend on the filtered presentation. The affine embedding is t-exact because standard module truncations commute with exact filtered colimits. The heart consists of ind-objects of regular holonomic modules. No equivalence with the derived category of that heart has been asserted.
+
+Each such heart object is a filtered union of its coherent regular holonomic subobjects. Start with its filtered presentation by regular holonomic modules and replace every map to the colimit by its image. The kernel in a coherent source is coherent by Noetherianity of \(A\), and its quotient is regular by the composition-factor Serre proof in Regular singularities, §5.2. Thus every image is coherent regular holonomic. Filteredness puts any two images inside a third, and their union is the whole colimit. This gives actual heart subobjects, rather than merely a presentation by complexes.
+
+### 3.291. An all-target mapping bound
+
+If a compact \(c\in\mathscr C_U\) has a finite projective complex in degrees \([r,s]\), then for any \(Z\in\operatorname{Mod}_A^{\le b}\), including an unbounded-below object,
+\[
+                   R\operatorname{Hom}_A(c,Z)\in D(\mathbf C)^{\le b-r}.
+ \tag{IAC.7}
+\]
+Represent \(Z\) by its actual upper-truncated complex. The ordinary Hom from this finite projective source computes derived Hom: a finite induction on the projective source terms sends acyclic targets to acyclic Hom complexes. Every term above degree \(b-r\) is zero. This proves the bound against the entire target complex. It is stronger than a calculation only against modules in degree zero.
+
+An exact functor whose values on heart objects have degrees in a fixed interval \([a,b]\) has, on bounded objects, the bound
+\[
+                 T(D^{[p,q]})\subset D^{[p+a,q+b]}.
+ \tag{IAC.8}
+\]
+Finite Postnikov triangles prove it. For a continuous ind-extension the same inequalities hold on arbitrary objects, by the filtered truncation formulas (IAC.6). This extension uses a fixed functor bound; it does not require a single projective-resolution range for all compact generators.
+
+### 3.292. Recovery by the lower-truncation tower
+
+For an object \(E\) define its actual inverse tower by
+\[
+                         E_n=\tau^{\ge -n}E,
+                         \qquad E_{n+1}\longrightarrow E_n.
+ \tag{IAC.9}
+\]
+The fibre of \(E\to E_n\) is \(\tau^{\le -n-1}E\). A compact test \(c\), represented in degrees \([r,s]\), therefore has
+\[
+ \operatorname{fib}\bigl(R\operatorname{Hom}(c,E)\to R\operatorname{Hom}(c,E_n)\bigr)
+                                  \in D(\mathbf C)^{\le -n-1-r}.
+ \tag{IAC.10}
+\]
+For each fixed mapping degree the transition maps eventually become isomorphisms, compatibly with the augmentation from \(E\).
+
+We retain the derived inverse limit. For a countable tower of complexes \(V_n\), it is
+\[
+             \lim_nV_n=\operatorname{fib}\left(
+                  \prod_{n\ge0}V_n\xrightarrow{1-\mathrm{shift}}
+                  \prod_{n\ge0}V_n\right).
+ \tag{IAC.11}
+\]
+Here is a resolution proof. In diagrams on the ordered inverse tower, take the direct sums of the representable diagrams in degrees minus one and zero, mapping each generator to itself minus its successor. Evaluation at an index gives the finite-support telescoping resolution of the constant coefficient: a nonzero finite sequence has a final nonzero entry, so the first map is injective, and summing entries identifies its cokernel with the constant coefficient. The representables are projective evaluation objects. Applying the derived mapping functor to this resolution gives (IAC.11), including its augmentation.
+
+Products of vector spaces are exact, so cohomology commutes with these products. For an eventually constant inverse system the product-difference map is surjective: after an index where the transitions are invertible, solve \(u_n-t_nu_{n+1}=v_n\) forwards, then solve through the finite initial segment backwards. Its kernel is the stable value. The long exact sequence of (IAC.11) therefore computes every cohomology of the limit as that stable value. Applying this to (IAC.10), and using preservation of limits by representable mapping functors, proves
+\[
+                E\xrightarrow{\sim}\lim_n\tau^{\ge -n}E
+                                  \quad\text{in }\mathscr R_\infty(U).
+ \tag{IAC.12}
+\]
+The compact tests detect the cone. Their stabilization indices may depend on the compact test and the mapping degree. Neither a common bound over all tests nor preservation of arbitrary limits by the affine embedding is used.
+
+### 3.293. Continuous extensions and the specified tower
+
+Let \(T_0\) be an exact t-exact functor between the bounded small categories defining two such ind-categories. Its continuous extension is t-exact by (IAC.6). In particular its actual truncation comparison is
+\[
+                         T\tau^{\ge -n}E\simeq\tau^{\ge -n}TE.
+ \tag{IAC.13}
+\]
+If the target satisfies (IAC.12), then \(TE\) is the limit of these terms. More generally, an exact continuous functor of finite t-amplitude also satisfies
+\[
+                            TE\xrightarrow{\sim}\lim_nT(\tau^{\ge -n}E).
+ \tag{IAC.14}
+\]
+Indeed its value on the fibre \(\tau^{\le -n-1}E\) has upper degree tending to minus infinity. For an affine ind-regular target, test this fibre by (IAC.7), and apply the same stabilized product-difference argument. For a vector-space target it is the argument of (IAC.11) directly.
+
+Suppose a bounded functor has a natural splitting \(T_0=P_0\oplus Q_0\). Ind-extension retains its inclusion and projection identities, since finite sums commute with colimits. For t-exact summands, or finite-amplitude summands in the scope just proved, the tower comparison gives
+\[
+               TE\simeq PE\oplus QE
+                    \simeq\left(\lim_nP\tau^{\ge-n}E\right)
+                             \oplus\left(\lim_nQ\tau^{\ge-n}E\right).
+ \tag{IAC.15}
+\]
+This proves the required completion calculation on these actual ind-categories. It does not assert that a continuous t-exact functor preserves every inverse limit.
+
+### 3.294. Both closed-point adjoints within the regular category
+
+Fix a closed complex point \(i:\{x\}\hookrightarrow U\). On the regular ind-category there are continuous adjunctions
+\[
+                 i^*:\mathscr R_\infty(U)\rightleftarrows
+                       \operatorname{Vect}:i_* ,
+                 \qquad i_*\dashv i^!.
+ \tag{IAC.16}
+\]
+Here \(i_*V=\delta_x\otimes V\), with the ordinary closed-point delta in degree zero. It is the intrinsic point object of (SPT.24) in this scheme case. The right adjoint is the actual full-operator point functor restricted to the regular category. The left adjoint is the continuous extension of the bounded regular ordinary inverse image. Its scope is the regular category.
+
+For completeness, the full mapping adjunctions extend as follows. On bounded regular inputs they are the actual closed-support adjunctions under (RH.2), with the units and counits of the four-map comparison there. The image of a finite point complex under \(i_*\) is compact by (IAC.3); the ordinary inverse image of a bounded regular object is a finite point complex. Compactness therefore extends the bounded identities to an arbitrary filtered target. Mapping out of a filtered source is a derived limit, so the same identities extend to every source and all mapping complexes. This proves (IAC.16) on the actual ind-categories.
+
+There is a natural comparison
+\[
+                   \theta_E:i^!E\xrightarrow{\sim}i^*i_*i^!E
+                                      \longrightarrow i^*E,
+ \tag{IAC.17}
+\]
+where the last arrow is \(i^*\) of the right-adjunction counit. It is not asserted to be an equivalence for every \(E\).
+
+The point functors have uniform finite t-amplitude on this chart. Resolve \(\delta_x\) as in (IAC.3). Hom from its resolution gives amplitude \([0,2d]\) for \(i^!\). On a bounded regular module, coherent duality has degrees \([-d,d]\), by Lemma 3.0 of the duality lesson. Bounded ordinary inverse image is \(\mathbb D_{\mathrm{pt}}i^!\mathbb D_U\), with the actual duality comparison. Finite point duality reverses the resulting interval \([-d,3d]\). Hence the safe bounds, also valid on all ind-inputs by (IAC.8), are
+\[
+             i^!:D^{[p,q]}\longrightarrow D^{[p,q+2d]},
+             \qquad i^*:D^{[p,q]}\longrightarrow D^{[p-3d,q+d]}.
+ \tag{IAC.18}
+\]
+The duality formula was used on bounded inputs to obtain the bound. On ind-inputs \(i^*\) is its continuous extension; no dualization of an arbitrary infinite coefficient complex is required.
+
+### 3.295. A heart object with an isolated point part
+
+Call a heart object \(A\) admissible at \(x\) if it is a filtered union of coherent regular holonomic heart subobjects \(A_\lambda\) whose closed carriers have \(x\) as an isolated component, or avoid \(x\) on a neighbourhood. The bounded closed-support decomposition (IS.6), transported by the full bounded comparison (RH.2), is
+\[
+              A_\lambda\simeq i_*V_\lambda\oplus B_\lambda,
+                    \qquad x\notin\operatorname{supp}(B_\lambda).
+ \tag{IAC.19}
+\]
+The point complex \(V_\lambda\) is in degree zero, since it is a summand of a heart object and closed point extension is t-exact. Every derived map between a point object and a bounded object carried by a disjoint closed set is zero in both directions, by closed-support restriction. The decomposition is therefore natural in all bounded morphisms, even when their two disjoint carriers differ. Passing to the filtered system gives the actual point and away parts.
+
+Both point functors commute with this filtered union. On a bounded away term they vanish, and on \(i_*V_\lambda\) their natural comparison is the identity. Thus
+\[
+              i^!A\xrightarrow{\theta_A,\ \sim}i^*A
+                  \simeq\operatorname*{colim}_\lambda V_\lambda
+                            \quad\text{in degree zero}.
+ \tag{IAC.20}
+\]
+No single closed carrier or neighbourhood is required for the whole filtered union.
+
+### 3.296. The actual retract on an unbounded object
+
+Let \(E\in\mathscr R_\infty(U)\) be arbitrary unbounded, with every \(H^mE\) admissible at \(x\). A finite-amplitude exact functor whose values on these heart objects are in degree zero has
+\[
+                       H^m(TE)\simeq T(H^mE)
+                              \qquad(T=i^*,i^!).
+ \tag{IAC.21}
+\]
+Here is the convergence argument without a derived-heart assertion. Bounds (IAC.18) show that a fixed output degree depends on a finite window of input truncations; choose its endpoints farther than those amplitude bounds. The two omitted tails have zero cohomology in that degree and in its adjacent degrees. On the finite window, apply the finite Postnikov filtration. Each heart term has only one output degree by (IAC.20), so its finite filtration spectral sequence has only that row and yields (IAC.21). All comparisons are the functor's truncation maps, and hence are natural.
+
+Applying (IAC.21) to the natural map (IAC.17), every cohomology map is (IAC.20). Consequently
+\[
+                                \theta_E:i^!E\xrightarrow{\sim}i^*E.
+ \tag{IAC.22}
+\]
+Let \(\varepsilon_E:i_*i^!E\to E\) be the right-adjunction counit and \(\eta_E:E\to i_*i^*E\) the left-adjunction unit. Define
+\[
+                 u_E=\varepsilon_E,
+                 \qquad r_E=i_*(\theta_E^{-1})\eta_E,
+                 \qquad r_Eu_E=\operatorname{Id}_{i_*i^!E}.
+ \tag{IAC.23}
+\]
+To check the last identity, naturality of the left unit identifies \(\eta_E\varepsilon_E\) with \(i_*\theta_E\), since that unit is the identity on objects in the fully faithful image of \(i_*\). Thus the composite is exactly the displayed identity. In particular
+\[
+              e_E=u_Er_E,\qquad e_E^2=e_E,
+              \qquad E\simeq i_*i^!E\oplus\operatorname{cofib}(u_E).
+ \tag{IAC.24}
+\]
+This is a natural projector on the full subcategory of such \(E\). It is an identity of actual maps and mapping complexes. If some heart piece has a nonzero point component, (IAC.21) gives
+\[
+                  H^m(i^!E)\ne0,
+                  \qquad i_*i^!E\ne0.
+ \tag{IAC.25}
+\]
+This is the isolated-point retract needed for a proper-image argument, with no cohomological boundedness requirement on \(E\).
+
+### 3.297. The extension of bounded algebraic cycle functors
+
+For a regular function on a separated finite-type complex variety, the bounded constructible normalized nearby and vanishing cycles are t-exact at the algebraic scope of Nearby and vanishing cycles, §5, Theorem 5.1. That proof uses its actual cyclic-cover comparison in Proposition F.1, bounded constructibility in Theorem G.4 and its resolution appendices, and the proved principal affine-open perverse bounds. It does not use the unrestricted holomorphic or arithmetic cases as substitutes.
+
+Conjugate that bounded functor by (RH.2), and extend by ind-colimits. Regard the zero-fibre output as supported in a smooth ambient chart by the closed-support equivalence. The actual regular ind-cycle functor is
+\[
+                  \Phi_g^{\mathrm{reg}}=\operatorname{Ind}(\Phi_{g,0}^{\mathrm{reg}}).
+ \tag{IAC.26}
+\]
+It is t-exact by (IAC.6), retains the bounded unit, cone and monodromy maps, and satisfies
+\[
+                        H^m\Phi_g^{\mathrm{reg}}F
+                                =\Phi_g^{\mathrm{reg}}H^mF.
+ \tag{IAC.27}
+\]
+It is the cycle functor in this chartwise ind-regular theory. This construction does not identify it with a functor on all unbounded classical sheaves.
+
+Suppose that for each coherent heart subobject \(A\subset H^mF\), its actual bounded cycle has the isolated-point carrier property in (IAC.19). Exactness on hearts makes the cycle of the filtered union a filtered union of those bounded cycles. The object \(E=\Phi_g^{\mathrm{reg}}F\) therefore satisfies §3.296, giving
+\[
+       \Phi_g^{\mathrm{reg}}F\simeq
+              i_*i^!\Phi_g^{\mathrm{reg}}F\oplus Q(F).
+ \tag{IAC.28}
+\]
+If one bounded test has nonzero point coefficient, it remains nonzero in this retract. Indeed its injection into the corresponding cycle heart object remains injective after degree-zero \(i^!\): \(H^0i^!\) is Hom from the point module and is left exact on the operator heart. Equations (IAC.21) and (IAC.27) then detect a nonzero cohomology of the point coefficient:
+\[
+          i^!\Phi_{g,0}^{\mathrm{reg}}A\ne0
+                     \quad\Longrightarrow\quad
+          i^!\Phi_g^{\mathrm{reg}}F\ne0.
+ \tag{IAC.29}
+\]
+This supplies the full-unbounded splitting and detection deductions of (IS.7)–(IS.8) at this cycle scope. Proving the stated bounded carrier and nonzero-test premises from characteristic support still requires the microlocal coefficient comparison. Equations (RTM.12)–(RTM.20) supply a nondegenerate test and calculate the bounded conormal model; the general microlocal comparison and its Riemann–Hilbert support identification remain separate.
+
+### 3.298. Smooth normalization and the scope of descent
+
+For a smooth map of relative complex dimension \(r\), the left-module inverse transfer and (RH.6) give the t-exact normalized pullback
+\[
+                          f^![-r]=f^\natural.
+ \tag{IAC.30}
+\]
+Flatness makes the right side exact on modules, and (IAC.6) extends that assertion to ind-regular inputs. Relative dimensions add, so the normalization composes with its actual transfer maps. Local line Morita equivalences for the half twist in §3.57 are exact and retain these conclusions on their charts.
+
+A limit of categories satisfying (IAC.12) inherits that recovery property whenever its evaluation functors preserve the relevant limits and identify its truncations with the component truncations: evaluate the natural recovery map and use joint conservativity. This deduction uses both hypotheses. The full chart diagram (RH.7) also has nonsmooth refinement arrows; a normalized face calculation alone does not establish their pointwise-truncation and limit properties. In particular, bounded regular stack objects cannot all be declared compact, as the \(B\mathbf G_m\) example (SPT.25) shows. The local cycle retract above is constructed on the scheme presentations used in the bounded proper Hecke test and needs no such global compactness assertion.
+
+![Finite projective compact tests recover the truncation tower; the two closed-point adjoints give a natural unbounded isolated-point retract](figures/ind-regular-completion-point-retract.svg)
+
+*Figure 3.45.* The affine filtered syzygy remains projective in (IAC.1)–(IAC.3). Its mapping bound gives the actual inverse-limit recovery (IAC.7)–(IAC.12). The point comparison and adjunction maps give the projector, including its identity composite, in (IAC.17)–(IAC.24). The cycle application (IAC.26)–(IAC.29) retains the bounded carrier and nonzero-test hypotheses. The examples distinguish projectivity from freeness, the truncation tower from arbitrary products, and a filtered isolated-point decomposition from a uniform support neighbourhood. Free further reading on the isolated-cycle construction is [Arinkin–Gaitsgory–Kazhdan–Raskin–Rozenblyum–Varshavsky, Appendix H](https://arxiv.org/abs/2010.01906v2).
+
+### 3.299. Exercise and solution: a projective term that is not globally free
+
+**Exercise 3.EH.** Let \(R=\mathbf C\times\mathbf C\), \(e=(1,0)\), and \(P=Re\). Compute its dual, mapping functor and projective dimension. Explain which part of the affine proof would fail if its final projective term were called globally free.
+
+**Solution 3.EH.** The splitting \(R=Re\oplus R(1-e)\) makes \(P\) finite projective of dimension zero. Restriction and evaluation give
+\[
+               P^\vee=\operatorname{Hom}_R(P,R)=eR,
+               \qquad R\operatorname{Hom}_R(P,Z)=eZ.
+ \tag{IAC.31}
+\]
+This is an identity of full complexes, since the projector \(e\) is exact. The rank on the first component is one and on the second is zero, whereas a free module has equal ranks on both components. Thus \(P\) is not free. It is already an operator example on the two-point smooth affine scheme, whose differential operators are \(R\). It verifies (IAC.7) with \(r=0\) and the zero-dimensional case of (IAC.3). The proof needs the split-projective last term, not an unjustified choice of a global basis.
+
+### 3.300. Exercise and solution: the specified tower is not an arbitrary limit
+
+**Exercise 3.EI.** On complexes of vector spaces let \(T(V)=W\otimes V\), where \(W=\bigoplus_{j\ge0}\mathbf C e_j\). Show that this functor is continuous and t-exact and obeys the truncation-tower comparison, but does not preserve countable products.
+
+**Solution 3.EI.** Tensor over a field is exact and preserves colimits. For the product of copies of \(\mathbf C\) in degree zero, the canonical comparison is
+\[
+         \bigoplus_j\prod_n\mathbf C
+                       \longrightarrow\prod_n\bigoplus_j\mathbf C.
+ \tag{IAC.32}
+\]
+The left side has a single finite set of nonzero \(j\)-coordinates for the entire family. The right side only requires finite \(j\)-support in each row \(n\). The diagonal family with its \(n\)-th row equal to \(e_n\) belongs to the right side and not to the left. Thus the comparison is not surjective.
+
+For \(V=\bigoplus_{a\ge0}\mathbf C[a]\), each degree contains one coefficient copy. Its lower truncations are finite sums, and
+\[
+        \lim_nT(\tau^{\ge-n}V)
+                      =\bigoplus_{a\ge0}W[a]=T(V).
+ \tag{IAC.33}
+\]
+The equality is degreewise, with the actual projection transitions; their fixed-degree systems stabilize. For a general complex, the same stabilized-degree argument is (IAC.13)–(IAC.14). The failure in (IAC.32) is a different inverse limit and supplies no counterexample to that statement.
+
+### 3.301. Exercise and solution: infinitely many away components
+
+**Exercise 3.EJ.** On the affine line let \(i\) be the point zero and \(\delta_a\) the regular closed-point delta. In the actual regular ind-category form
+\[
+                E=\bigoplus_{j\ge0}
+                    \bigl(\delta_0\oplus\delta_{1/(j+1)}\bigr)[j].
+ \tag{IAC.34}
+\]
+Compute the two point adjoints and the projector. Decide whether a single Zariski neighbourhood of zero separates all the away supports.
+
+**Solution 3.EJ.** Each summand is a shifted bounded regular object, so the finite partial sums define this ind-object. Both point functors are continuous. On the point summand they are the coefficient, and on each distinct closed point they vanish in every degree by disjoint-support restriction. Hence
+\[
+                      i^!E\xrightarrow{\theta_E,\ \sim}i^*E
+                               =\bigoplus_{j\ge0}\mathbf C[j].
+ \tag{IAC.35}
+\]
+The comparison is the identity on every coefficient summand. The maps in (IAC.23) are respectively inclusion of, and projection onto, the \(\delta_0\)-summands. Their composite on that point object is the identity; the complementary object is the displayed sum of the away deltas. These are actual morphisms in the ind-category, including every negative cohomological degree.
+
+Every Zariski neighbourhood of zero in the affine line omits only finitely many closed points: its complement is a proper closed subset, cut out by a nonzero one-variable polynomial, which has finitely many roots by successive polynomial division. The distinct points \(1/(j+1)\) are infinite. Thus no such neighbourhood separates all away supports. Each finite coherent heart piece nevertheless has its isolated point decomposition, which is exactly the hypothesis used in §3.296. This computation concerns the actual ind-regular operations specified in (IAC.16) and makes no identification with all unbounded classical sheaves.
+
+### 3.302. A smooth conic Lagrangian germ is a conormal at constant rank
+
+Let \(X\) be a complex manifold of dimension \(n\), let \(F\) be a bounded weakly complex constructible complex of complex vector spaces, and fix a nonzero covector \(p=(x,\xi)\in\operatorname{SS}(F)\). Suppose that on a cotangent neighbourhood of \(p\) its microsupport is contained in a smooth complex-conic Lagrangian \(C\), and that the restriction of the projection to \(C\) has constant rank \(d\). The complex constant-rank theorem gives a local image submanifold \(Y\subset X\) of dimension \(d\). The fibre Euler vector \((0,\xi)\) is tangent to \(C\). With the convention \(\omega=d\xi\wedge dx\), isotropy gives
+\[
+  0=\omega\bigl((0,\xi),(v,\alpha)\bigr)=\xi(v),
+                  \qquad(v,\alpha)\in T_{(x,\xi)}C.
+ \tag{MCM.1}
+\]
+Every vector of \(T_xY\) lifts through this tangent projection. The same calculation at nearby points puts the germ of \(C\) in \(T_Y^*X\). Both are smooth of dimension \(n\); the inclusion has invertible differential and is open near \(p\). Hence
+\[
+                 C=T_Y^*X\quad\text{as germs at }p.
+ \tag{MCM.2}
+\]
+The supported coefficient proof in Local forms and inverse image, formulas LFI9–LFI10, now supplies a bounded coefficient complex \(M\) and an isomorphism
+\[
+                  F\simeq M_Y\quad\text{in }D^b(\mathbf C_X;p).
+ \tag{MCM.3}
+\]
+Here \(M_Y\) is the constant complex on the local submanifold, extended by zero. The assertion concerns the category localized at the covector. It does not assert an isomorphism on an ordinary neighbourhood of its base point.
+
+For an actual weakly complex constructible complex, its microsupport is a closed complex analytic conic Lagrangian, by Complex microlocal stratifications and constructibility, the four-test theorem. On each component one can remove the other components, the singular locus and the rank-drop locus of the projection. The connected regular-locus and maximal-minor proof GC6–GC9 in Weierstrass parametrization and connected regular loci proves that the remaining constant-rank region is dense. Thus the geometric premise above applies at the nonzero generic points of each component.
+
+### 3.303. A test that inverts arbitrary denominators
+
+Choose a holomorphic \(h\) with \(h(x)=0\) and \(dh_x=\xi\). Its zero fibre \(T\) is smooth after shrinking. On all bounded sheaf complexes define the exact functor
+\[
+             \mathcal T_h(A)=(\mu_TA)_p.
+ \tag{MCM.4}
+\]
+The arbitrary bounded support theorem MO15 in Microsupport operations gives \(\mathcal T_h(A)=0\) whenever \(p\notin\operatorname{SS}(A)\). Consequently a map whose cone avoids \(p\) becomes an isomorphism under this test, including when the cone is not complex constructible.
+
+Here is the quotient criterion used for (MCM.3). Let \(\mathcal N_p\) be the full subcategory of bounded complexes whose microsupport avoids \(p\). Triangle estimates and the equality for finite direct sums make it thick. Cones in this subcategory define the denominators. For a map \(u:A\to B\) and a denominator \(s:A\to A'\), the homotopy pushout \(B'=B\sqcup_A A'\) gives a denominator \(B\to B'\) with the same cone. Homotopy pullback gives the reversed construction. These supply the common-square rule for both fraction constructions. For cancellation, if a difference of two maps vanishes after precomposition with a denominator, the exact Hom sequence of its triangle factors the difference through its cone \(N\in\mathcal N_p\). Postcomposing with the map to the cofiber of \(N\to B\) kills the difference, and that map is again a denominator. The reversed argument proves the other cancellation rule. The octahedral triangle for a composite retains its cone in the thick subcategory. Fractions modulo these common refinements therefore have the zero criterion that a further denominator kills the numerator. In particular, if the identity of \(A\) is zero in the quotient, a denominator \(s:A'\to A\) satisfies \(s=0\). Its cone is then \(A\oplus A'[1]\); thickness gives \(A\in\mathcal N_p\). Conversely the denominator \(0\to A\) makes every object of \(\mathcal N_p\) zero. Thus
+\[
+       A=0\text{ in }D^b(\mathbf C_X;p)
+                \quad\Longleftrightarrow\quad
+       p\notin\operatorname{SS}(A).
+ \tag{MCM.5}
+\]
+These are the fraction and null-object constructions of Microlocal categories, MC.1–MC.2. Since \(\mathcal T_h\) sends every denominator to an isomorphism, composing a numerator with the inverse image of its denominator defines its value on a fraction. Common refinements prove independence. The model isomorphism therefore gives
+\[
+                     \mathcal T_h(F)\simeq\mathcal T_h(M_Y).
+ \tag{MCM.6}
+\]
+Only the two endpoints need to be weakly complex constructible in the next comparison. Intermediate objects in the fractions can be arbitrary bounded sheaf complexes.
+
+### 3.304. The coefficient detected by a transverse function
+
+Suppose also that \(\operatorname{graph}(dh)\) is transverse to \(C\) at \(p\). In coordinates adapted to \(Y\), equality (MCM.2) says exactly that \(h|_Y\) has a nondegenerate critical point at \(x\). The actual normal and conormal comparison in Complex nearby cycles as normal and conormal sections, formula (20), gives
+\[
+                 \Phi_h(F)_x\simeq\mathcal T_h(F),
+                 \qquad
+                 \mathcal T_h(M_Y)\simeq\Phi_h(M_Y)_x.
+ \tag{MCM.7}
+\]
+The normalization is \(\Phi_h=\operatorname{Cone}(i^*\to\psi_h)[-1]\), as in (RTM.20). The real covector is \(\operatorname{Re}(dh)\); the complex normal-line pairing has no conjugation. The closed-ray Fourier comparison supplies (MCM.7) without an extra rank-two or orientation shift.
+
+The quadratic calculation applies to this holomorphic Morse function. Explicitly, after subtracting its critical value, write \(h|_Y=z^tA(z)z\), where \(A\) is symmetric holomorphic and \(2A(0)\) is the invertible Hessian. One may take its entries from the Taylor integral of the second derivatives along \(tz\), \(0\le t\le1\). A constant change of basis gives successive unit pivots; finite Gram–Schmidt diagonalizes the form holomorphically. Each nonzero diagonal unit has a holomorphic square root on a smaller neighbourhood, using the convergent binomial series after dividing by its value at zero. The resulting coordinates have invertible differential, so the holomorphic inverse-function theorem gives an actual local change of coordinates to \(\sum_{j=1}^d w_j^2\).
+
+The covered-ball retraction and constant-section unit of (RTM.16)–(RTM.20), equivalently Quadratic cycles and the holomorphic microsupport test, its covered quadratic calculation, now give the isomorphism of coefficient complexes
+\[
+                 \Phi_h(F)_x\simeq M\otimes o_h[-d].
+ \tag{MCM.8}
+\]
+The Morse orientation line \(o_h\) is one-dimensional in degree zero. At \(d=0\), the nearby fibre on \(Y\) is empty, and the same formula reads \(M\). If \(M=0\), (MCM.3) and (MCM.5) would contradict \(p\in\operatorname{SS}(F)\). Tensoring with a line and shifting are invertible, so
+\[
+                 p\in\operatorname{SS}(F)
+                 \quad\Longrightarrow\quad \Phi_h(F)_x\ne0.
+ \tag{MCM.9}
+\]
+This comparison detects the full coefficient complex. A localized coefficient isomorphism at one covector has not been asserted to intertwine the cycle monodromy; Solution 3.EK distinguishes those assertions.
+
+### 3.305. The closed carrier of the bounded cycle near the test point
+
+The closed support bound (24) proved in the normal/conormal lesson is
+\[
+ \operatorname{supp}\Phi_h(F)
+      \subset\{y:h(y)=0,\ (y,dh_y)\in\operatorname{SS}(F)\}.
+ \tag{MCM.10}
+\]
+Shrink so that \(\operatorname{graph}(dh)\) lies in the cotangent neighbourhood used above. Two transverse smooth \(n\)-dimensional germs in a \(2n\)-manifold have an isolated intersection: their defining normal coordinates have invertible combined differential, so the inverse-function theorem makes the intersection the single reduced point. Therefore a neighbourhood \(W\) of \(x\) satisfies
+\[
+          \operatorname{supp}\Phi_h(F)\cap W\subset\{x\}.
+ \tag{MCM.11}
+\]
+Closed support, rather than just a statement about separate stalks, is used here. Localization for its complement identifies the restricted cycle with the closed point extension of its coefficient. Together with (MCM.8)–(MCM.9), this yields
+\[
+       \Phi_h(F)|_{W\cap h^{-1}(0)}
+                \simeq i_*(M\otimes o_h[-d])\ne0.
+ \tag{MCM.12}
+\]
+If the bounded input and cycle are perverse, closed point extension is t-exact. Hence \(M\otimes o_h[-d]\) is in degree zero. In the algebraic finite-coefficient setting the cycle t-exactness is Theorem 5.1 of Nearby and vanishing cycles, at the scope specified in §3.297. Its finite-dimensional point coefficient is then an actual nonzero heart object.
+
+### 3.306. Analytic isolation gives an isolated algebraic carrier
+
+First let \(B\) be a coherent regular holonomic module on a smooth complex algebraic variety \(U\). Its finite composition series is supplied by Holonomic D-modules and duality, Theorem 2.2. By the definition and Serre argument of Regular singularities, §5, its simple factors have presentations \(j_{a,!*}E_a\) on smooth locally closed algebraic strata \(S_a\), with \(E_a\) a nonzero regular connection. Remove any zero-rank open-and-closed components from the chosen stratum. The remaining bundle has positive rank at every point of \(S_a\), and its horizontal coefficient system has that rank by the flat-frame calculation.
+
+The full four-map and t-exact comparison (RH.2) takes this minimal extension to the perverse intermediate extension of that coefficient system. It restricts to the given nonzero system on \(S_a\) and vanishes off \(\overline{S_a}\). Its closed analytic carrier is therefore the analytic closure of \(S_a\). The density statement following Theorem 4.1 of Complex analytic spaces and analytification identifies this with \(\overline{S_a}^{\,\mathrm{an}}\): a dense algebraic open remains analytically dense. That proof uses the radical-ideal comparison and faithful flatness of the analytic local ring, and includes singular closures.
+
+Restriction to an analytic open is perverse t-exact, since the stalk and costalk tests are local. Consequently in a short exact sequence of perverse objects the middle term vanishes on an open exactly when both end terms do. Its closed carrier is the union of their closed carriers. The finite composition series thus gives the actual reduced algebraic closed carrier
+\[
+ Z_B=\bigcup_a\overline{S_a},
+             \qquad
+ \operatorname{supp}\operatorname{DR}(B)=Z_B^{\mathrm{an}}.
+ \tag{MCM.13}
+\]
+This assertion concerns closed carriers, and makes no equality of cotangent supports. For a bounded regular operator complex, take the finite union of the carriers of its cohomology modules. Boundedness and exact open restriction give the same assertion without identifying a category with the derived category of its heart.
+
+Suppose now that the analytic closed carrier is contained in \(\{x\}\) on an analytic neighbourhood of \(x\). If \(x\) is absent from \(Z_B\), its algebraic open complement already avoids the carrier. Otherwise write \(A=\mathcal O_{U,x}\), \(H=\mathcal O_{U^{\mathrm{an}},x}\), and let \(I\subset A\) be the ideal of the reduced carrier. Lemma 3.1 of the analytification lesson identifies the extended radical ideal with the actual analytic vanishing ideal. Its zero germ is the single point. Theorem 4.1 gives faithful flatness and contraction of ideals. Hence
+\[
+               IH=\mathfrak m_AH,
+               \qquad IH\cap A=I,
+               \qquad I=\mathfrak m_A.
+ \tag{MCM.14}
+\]
+Thus the reduced carrier's algebraic local ring is \(\mathbf C\). To see the open component explicitly, take an affine neighbourhood in the reduced carrier with coordinate ring \(D\), and let \(\mathfrak m\) be the maximal ideal of \(x\). It is finitely generated. Each generator vanishes in \(D_{\mathfrak m}=\mathbf C\), so a denominator outside \(\mathfrak m\) kills it. The product \(s\) of those finitely many denominators satisfies
+\[
+                s\notin\mathfrak m,
+                \qquad \mathfrak mD_s=0,
+                \qquad D_s=\mathbf C.
+ \tag{MCM.15}
+\]
+The principal open \(D(s)\) in the carrier is exactly \(\{x\}\). Since \(x\) is also closed, the global reduced carrier decomposes as
+\[
+                 Z_B=\{x\}\amalg Z'_B,
+                   \qquad x\notin Z'_B,
+                   \qquad Z'_B\text{ closed}.
+ \tag{MCM.16}
+\]
+This is precisely the isolated closed-carrier premise in (IAC.19). The argument is on the reduced carrier. It does not remove nilpotents from a cotangent-fibre scheme or prove its tangent zero; Solution 3.EM makes that distinction explicit.
+
+### 3.307. A common microsupport bound for a family
+
+Let \(\{F_\lambda\}\) be any family of bounded weakly complex constructible complexes. Suppose their microsupports are all contained, on one fixed cotangent neighbourhood \(V\), in the same smooth conic Lagrangian \(C\). Assume that the projection of \(C\) has constant rank there and \(\operatorname{graph}(dh)\) meets it transversely at \(p\). The neighbourhood in (MCM.11) depends on \(C,V,h\), rather than on a member of the family. The same support argument gives
+\[
+             \operatorname{supp}\Phi_h(F_\lambda)\cap W
+                         \subset\{x\}\quad\text{for every }\lambda.
+ \tag{MCM.17}
+\]
+Some members may have zero cycles. If \(p\) belongs to the microsupport of one member, its nonzero coefficient is detected by (MCM.9).
+
+For a smooth affine complex algebraic \(U\), a regular function \(h\) and \(E\in\mathscr R_\infty(U)\), take the family \(F_A=\operatorname{DR}(A)\) over every coherent regular heart subobject \(A\subset H^mE\) and every integer \(m\). Assume the common microsupport bound just stated for this family. Its actual bounded algebraic cycles are regular operator heart objects by §3.297. Their closed carriers satisfy (MCM.17), so §3.306 makes each carrier either avoid \(x\) or have \(x\) as an isolated algebraic component. Thus every cycle heart is admissible as in (IAC.19). For one such subobject the nonzero-test implication is
+\[
+  p\in\operatorname{SS}(F_A),\quad
+  \operatorname{graph}(dh)\pitchfork C
+  \quad\Longrightarrow\quad
+  H^0i^!\Phi_{h,0}^{\mathrm{reg}}A\ne0.
+ \tag{MCM.18}
+\]
+The point heart injection and (IAC.21), (IAC.27) then give
+\[
+                    i^!\Phi_h^{\mathrm{reg}}E\ne0.
+ \tag{MCM.19}
+\]
+This gives the actual unbounded point retract and detection under the stated common microsupport bound. The algebraic neighbourhoods supplied by §3.306 may depend on the coherent object. The natural point comparison in §3.295 and the finite-amplitude argument in §3.296 do not require one common algebraic neighbourhood, and no comparison with all unbounded classical sheaves is used.
+
+### 3.308. The quadratic test and the operator support comparison
+
+At a point of the reduced bounded Hecke cotangent fibre, (RTM.1)–(RTM.12) construct \(h=g\circ f\) with its exact first derivative and a transverse Hessian graph. If the source covector lies in the actual microsupport of a bounded coefficient complex and in its generic smooth constant-rank region, (MCM.8)–(MCM.12) supply the nonzero isolated cycle coefficient for that test. In particular the source-to-model comparison takes place in the covector-localized category, and the test is transferred by (MCM.4)–(MCM.7).
+
+The differential-operator characteristic support is a further input. The equality that would identify the two notions is
+\[
+        \operatorname{SS}(\operatorname{DR}A)
+                              =\operatorname{Char}(A).
+ \tag{MCM.20}
+\]
+The bounded Riemann–Hilbert equivalence alone does not prove this equality. No use of (MCM.18) replaces its microsupport premise by membership in \(\operatorname{Char}(A)\). The characteristic-support comparison and the special enhanced geometric-field generation remain separate requirements for the full proper-image and nilpotent-regularity conclusion.
+
+![A transverse conormal slice, the microlocal coefficient test, the algebraic isolated carrier and the actual unbounded point retract](figures/generic-microlocal-coefficient-test.svg)
+
+*Figure 3.46.* In the displayed real slice of \(T^*\mathbf C^2\), \(Y=\{z_1=0\}\), \(h=z_1+t^2\), \(z_1=0\) and \(\xi_1=1\); the remaining coordinates are \((t,\xi_t)\). The conormal has \(\xi_t=0\), and the function graph has \(\xi_t=2t\), giving the single transverse point. Equations (MCM.1)–(MCM.12) transfer this test through the covector-localized coefficient model with its exact degree and orientation line. Equations (MCM.13)–(MCM.19) give the algebraic closed carrier and the actual ind-regular point retract under the common microsupport hypothesis. The three solutions retain the distinctions between coefficient complexes and monodromy, arbitrary real denominator cones and weak complex endpoints, and reduced closed carriers and nonreduced fibre schemes. The characteristic-support equality (MCM.20) remains a separate assertion.
+
+### 3.309. Exercise and solution: a coefficient isomorphism need not preserve monodromy
+
+**Exercise 3.EK.** On a disc let \(j:\Delta^*\hookrightarrow\Delta\), and let \(L\) be the rank-one complex local system with monodromy \(-1\). Put \(F=j_!L[1]\) and \(h(z)=z\). Compute its normalized vanishing coefficient and monodromy. Compare the point coefficient model at a nonzero cotangent vector over zero.
+
+**Solution 3.EK.** The local system is the sign coefficient of the explicit double cover \(w\mapsto w^2\). On the universal cover the nearby coefficient of \(L\) is \(\mathbf C\), with deck action \(-1\). The stalk of \(j_!L\) at zero is zero. Therefore
+\[
+     \Phi_h(F)_0
+          =\operatorname{Cone}(0\to\mathbf C[1])[-1]
+          =\mathbf C,
+                 \qquad T=-\operatorname{Id}.
+ \tag{MCM.21}
+\]
+Off zero the complex is locally constant. Its microsupport there is the zero section. At zero it cannot have only zero covectors, since the zero-section local constancy theorem would contradict its zero stalk and nonzero neighbouring stalks. Complex conicity makes the nonzero fibre over zero a single orbit. Thus every nonzero covector there is in its microsupport, and the conormal component is the vertical fibre, of projection rank zero.
+
+Its coefficient model is \(\delta_0\mathbf C\). For that model, \(h\) is zero on its point support, the nearby coefficient is empty, and
+\[
+             \Phi_h(\delta_0\mathbf C)_0=\mathbf C,
+                       \qquad T=\operatorname{Id}.
+ \tag{MCM.22}
+\]
+The coefficient complexes agree. An equivariant isomorphism would have to intertwine \(-1\) and \(1\), and hence would be zero over \(\mathbf C\). Thus their monodromy objects are not isomorphic. The original sheaves also do not agree on an ordinary neighbourhood: one has nonzero punctured stalks and the point model has none.
+
+### 3.310. Exercise and solution: a denominator cone outside complex constructibility
+
+**Exercise 3.EL.** Write \(z=a+ib\) on \(\mathbf C\), let \(N=\mathbf C_{\{a\ge0\}}\), and set \(p=(0,db)=\operatorname{Re}(-i\,dz)\), \(h=-iz\). Show that \(N\) is invisible to the test (MCM.4), but its actual holomorphic vanishing coefficient is nonzero. Explain the consequence for fractions through arbitrary bounded objects.
+
+**Solution 3.EL.** Write \(q(a,b)=a\). The sheaf is the actual pullback \(N=q^{-1}\mathbf C_{[0,\infty)}\). The submersion formula MO10 in Microsupport operations puts its microsupport in the horizontal bundle: every covector has zero \(db\)-component. Thus \(p\notin\operatorname{SS}(N)\) and
+\[
+                    \mathcal T_h(N)=0.
+ \tag{MCM.23}
+\]
+This sheaf is real constructible and not weakly complex constructible near zero. In complex dimension one, proper analytic strata are discrete. A locally finite such stratification cannot make the stalk jump across a whole real line locally constant on its open stratum.
+
+For the actual nearby coefficient, a punctured disc lifted to its logarithmic cover meets the closed right halfplane in disjoint closed angular strips indexed by \(\mathbf Z\). Each strip is a product of a radial logarithmic half-line with a closed interval. It is convex and contractible. Closed-support restriction identifies the section complex on each strip with \(\mathbf C\) in degree zero, and the whole section complex is their product. Shrinking the disc changes only the radial bound and induces the identity on these coefficients. The stalk \(N_0=\mathbf C\) maps to those sections by the diagonal constant-section unit. Since products of vector spaces are exact, the normalized cone gives
+\[
+       \psi_h(N)_0=\prod_{m\in\mathbf Z}\mathbf C,
+       \qquad
+       \Phi_h(N)_0=
+          \left(\left(\prod_{m\in\mathbf Z}\mathbf C\right)
+                         /\mathbf C_{\mathrm{diag}}\right)[-1]\ne0.
+ \tag{MCM.24}
+\]
+The quotient is nonzero, for instance by a family equal to one on one strip and zero on the others. Its only cohomology lies in degree one. For any bounded \(B\), the inclusion \(B\to B\oplus N\) has cone \(N\) and is a denominator at \(p\). The functor \(\mathcal T_h\) inverts it. Applying the ordinary cycle functor to the two terms instead adds the nonzero coefficient (MCM.24). This proves why the endpoint comparison (MCM.7) is used only for weakly complex constructible endpoints, while the functor through arbitrary fractions is (MCM.4).
+
+
+### 3.311. Exercise and solution: an isolated carrier does not remove a doubled point
+
+**Exercise 3.EM.** At zero in the affine line compare the closed scheme \(Z=\operatorname{Spec}(\mathbf C[t]/(t^2))\) with its reduced carrier. Compute their analytic local rings and tangent spaces. Explain why (MCM.14) applies to the carrier and cannot replace the actual fibre-tangent hypothesis of (RTM.2).
+
+**Solution 3.EM.** Polynomial and convergent division by \(t^2\) leave exactly a constant and a linear coefficient, so
+\[
+ \mathcal O_{Z^{\mathrm{an}},0}
+     =\mathbf C\{t\}/(t^2)
+     =\mathbf C\oplus\mathbf C\epsilon,
+                 \qquad\epsilon^2=0.
+ \tag{MCM.25}
+\]
+The maximal ideal is \(\mathbf C\epsilon\), and its square is zero. Its cotangent space has dimension one, hence so does the tangent space. The reduced carrier instead has
+\[
+ I_{Z_{\mathrm{red}}}=(t),\qquad
+ \mathcal O_{Z_{\mathrm{red}},0}=\mathbf C,\qquad
+ T_0Z_{\mathrm{red}}=0,\qquad T_0Z\simeq\mathbf C.
+ \tag{MCM.26}
+\]
+The analytic zero set is a single point in both cases. The analytic vanishing ideal is the radical \((t)\), while the full analytic scheme ideal remains \((t^2)\). Lemma 3.1 is applied only to the reduced carrier in (MCM.14). Analytification itself retains the full ideal by Theorem 3.2 of the analytification lesson. Thus the closed-carrier decomposition used for the retract gives no permission to discard the nilpotents or the nonzero tangent of an actual cotangent fibre. Reduced-fibre transversality still needs its precise hypothesis.
+
+### 3.312. Holomorphic germs on a compact convex set
+
+Work over \(\mathbf C\). If \(K\subset\mathbf C^n\) is compact and convex, write \(\mathcal O(K)\) for germs of holomorphic functions on neighbourhoods of \(K\). This notation retains normal germs when \(K\) is contained in a proper real or complex affine subspace.
+
+There are cofinally many bounded open real polyhedra containing \(K\), inside any prescribed neighbourhood. To prove this, first choose a small \(\eta>0\) with \(K+B_\eta\) in that neighbourhood, and a bounded box containing its closure. For each point \(y\) of the box outside \(K+B_\eta\), minimize distance to \(K\), obtaining \(q\in K\). Differentiating squared distance along \(q+t(z-q)\), \(z\in K\), gives \(\langle y-q,z-q\rangle\le0\). The unit normal \(\nu=(y-q)/|y-q|\) therefore has support value \(h_K(\nu)=\langle\nu,q\rangle\), while \(\langle\nu,y\rangle-h_K(\nu)\ge\eta\). The open condition \(\langle\nu,z\rangle>h_K(\nu)+\eta/2\) excludes a neighbourhood of \(y\). Finitely many such exclusions cover that compact part of the box. Their complementary strict halfspaces, together with the box inequalities, give the desired polyhedron.
+
+Write its inequalities as \(u_j(z)=\operatorname{Re}\ell_j(z)<c_j\), with \(\ell_j\) complex linear. It has the smooth strictly plurisubharmonic exhaustion
+\[
+       \rho(z)=|z|^2+\sum_j\frac1{c_j-u_j(z)},
+                  \qquad H_\rho\ge H_{|z|^2}.
+ \tag{SCP.1}
+\]
+Each \(u_j\) is pluriharmonic and \((c_j-t)^{-1}\) is convex increasing, so the Hessian assertion follows by the chain rule. Approaching a boundary face makes its summand diverge; boundedness of the polyhedron proves exhaustion. The proof of holomorphic acyclicity on such a Stein domain is Stein domains in complex space, Theorems 2.1–2.2: the finite locally square-integrable Dolbeault resolution and its global positive-degree solution give \(H^q(\mathcal O)=0\), \(q>0\). These are the actual domain sheaves and distributional equations of that proof.
+
+Compact-neighbourhood continuity, including its restriction map, is proved in Noncharacteristic deformation, N3–N4. Applying it to the cofinal polyhedra, and using exactness of filtered vector-space colimits, gives
+\[
+             R\Gamma(K;\mathcal O)=\mathcal O(K)[0].
+ \tag{SCP.2}
+\]
+This includes a compact ball in a complex hyperplane and the empty set. It is a statement about the restricted sheaf, not a closed-fibre formula for an arbitrary direct image.
+
+### 3.313. A uniform bound for the actual analytic support tests
+
+Let \(D=\mathcal D^{\mathrm{an}}_{X,x}\) at a point of a complex \(n\)-manifold. In holomorphic coordinates its coefficient ring \(H=\mathbf C\{z_1,\ldots,z_n\}\) is Noetherian regular of dimension \(n\), by Complex analytic spaces and analytification, Lemma 2.1 and Theorem 4.1. The order symbols give
+\[
+                    \operatorname{gr}D=H[\xi_1,\ldots,\xi_n].
+ \tag{SCP.3}
+\]
+This ring is Noetherian regular of dimension \(2n\). The regular-local projective-dimension and polynomial proofs are Regular local rings, Theorem 2.2 and Proposition 3.3.
+
+The strict filtered syzygy proof of (IAC.1)–(IAC.3) works over this coefficient ring as well. Here are the relevant points. Take \(2n\) strict finite filtered free presentations of a finite \(D\)-module and their kernels. Their symbols remain finite, and the last symbol syzygy is graded projective by the regular-ring bound and the chosen-syzygy Ext criterion. A graded splitting shows that it is induced from its finite graded quotient by the positive symbol ideal. Each graded part of that quotient is projective over the local ring \(H\), hence free. Lift its finite homogeneous basis into the filtered last kernel. The induced free operator map has symbol isomorphism; lowering order proves surjectivity, and a leading symbol rules out a nonzero kernel. Thus every coherent analytic module has, locally, a finite free operator resolution of length at most \(2n\). Its finitely many matrices and exactness extend from the stalk to one smaller neighbourhood, by coherence. Internal Hom from that bounded locally free resolution computes the actual solution complex:
+\[
+          \mathrm{Sol}(N)=R\mathcal Hom_{\mathcal D^{\mathrm{an}}}(N,\mathcal O)
+                       \simeq[\mathcal O^{r_0}\to\cdots\to\mathcal O^{r_{2n}}].
+ \tag{SCP.4}
+\]
+The degrees on the right are \(0,\ldots,2n\). No perverse shift is included in \(\mathrm{Sol}\).
+
+The same finite Dolbeault resolution used above gives \(H^q(V;\mathcal O)=0\) for \(q>n\) on every open \(V\), without a Stein assumption: its terms are smooth-module sheaves acyclic on every open. For an open inclusion \(j\), the exact stalk colimit therefore puts \(Rj_*(\mathcal O|_{\operatorname{dom}j})\) in degrees \([0,n]\). Localization and left exactness of sections with support imply, for every closed local support \(Z\),
+\[
+                  (R\Gamma_Z\mathcal O)_y\in D(\mathbf C)^{[0,n+1]}.
+ \tag{SCP.5}
+\]
+Apply this to the finitely many terms of (SCP.4). The finite filtration of that complex retains all attaching maps, and places every local support test in the fixed interval
+\[
+        (R\Gamma_Z\mathrm{Sol}(N))_y\in D(\mathbf C)^{[0,B]},
+                         \qquad B=3n+1.
+ \tag{SCP.6}
+\]
+The bound is independent of \(N\) and \(Z\). A resolution neighbourhood may depend on \(N\); finitely many such neighbourhoods can be intersected. No infinite truncation or derived-heart realization is used.
+
+### 3.314. One symbol cone and a family of compact caps
+
+Let \(P\) be a scalar holomorphic differential operator, of order \(m\ge1\), and suppose its principal symbol is nonzero at a nonzero real covector. Identify a complex covector with its real part, translate the base point to zero, and choose complex linear coordinates \(z=(z',t)\) so that this covector is \(d\operatorname{Re}t\). Homogeneity and compactness of a small ball in the normalized covector variables give a coordinate neighbourhood \(U\) and \(\epsilon>0\) such that
+\[
+      \sigma_m(P)(z;\zeta',\zeta_t)\ne0
+       \quad\text{if }z\in U,\quad
+       |\zeta'|\le\epsilon|\zeta_t|,\quad(\zeta',\zeta_t)\ne0.
+ \tag{SCP.7}
+\]
+Indeed normalize \(\zeta_t=1\); at \((0;0,1)\) the symbol is nonzero, so it stays nonzero on a closed small covector ball and a smaller base neighbourhood. Multiplying by any nonzero complex \(\zeta_t\) restores the assertion, with all phases retained.
+
+Fix \(0<\delta<\epsilon\) and use the closed pointed real cone
+\[
+ C_\delta=\{(v',v_t):\operatorname{Im}v_t=0,
+                              \ \operatorname{Re}v_t\le-\delta|v'|\}.
+ \tag{SCP.8}
+\]
+It may have empty interior in the ambient real space. Its unit directions satisfy
+\[
+ \langle v,d\operatorname{Re}t\rangle
+      \le-\frac{\delta}{\sqrt{1+\delta^2}}|v|\quad(v\in C_\delta),
+ \qquad H=\{\operatorname{Re}t\ge-h\},\quad L=\{\operatorname{Re}t=-h\}.
+ \tag{SCP.9}
+\]
+Choose \(h>0\) and a base neighbourhood \(V\) of zero so small that \(H\cap(V+C_\delta)\subset U\) and \(\operatorname{Re}a_t>-h\) for \(a\in V\). This is possible since \(|z'-a'|\le(\operatorname{Re}a_t+h)/\delta\), while \(\operatorname{Im}t=\operatorname{Im}a_t\); taking \(h/\delta\) and then the radius of \(V\) small puts all the caps in the fixed coordinate neighbourhood.
+
+For \(a\in V\), put \(K_a=(a+C_\delta)\cap H\) and \(L_a=(a+C_\delta)\cap L\). Translate to \(w'=z'-a'\), \(w_t=t+h-i\operatorname{Im}a_t\), and set \(T=\operatorname{Re}a_t+h>0\). These are the exact compact convex sets
+\[
+ K_a=\{w_t=s\in[0,T],\ |w'|\le(T-s)/\delta\},
+                    \qquad L_a=\{w_t=0,\ |w'|\le T/\delta\}.
+ \tag{SCP.10}
+\]
+The bottom face is a complex tangential ball; its sheaf germs still retain the normal coordinate.
+
+### 3.315. An actual Cauchy neighbourhood of the whole cap
+
+Let a forcing germ \(f\in\mathcal O(K_a)\) be given. Choose \(\eta>0\) with \(K_a+B_\eta\) contained in its domain and in the fixed coefficient neighbourhood. Set \(R_0=T/\delta\), and choose \(R_0<R<R_0+\eta\). The cap lies strictly in the complex diamond
+\[
+ D_R=\{|w_t|/\epsilon+|w'|<R\},\qquad
+ \frac{s}{\epsilon}+|w'|
+     \le\frac T\delta+s\left(\frac1\epsilon-\frac1\delta\right)
+     \le R_0<R\quad(w\in K_a).
+ \tag{SCP.11}
+\]
+Thus
+\[
+                  Z=(K_a+B_\eta)\cap D_R
+ \tag{SCP.12}
+\]
+is open and convex, contains \(K_a\), and contains every \((w',0)\) with \(|w'|<R\). For the last assertion, the distance to the bottom ball of radius \(R_0\) is less than \(R-R_0<\eta\). Its containment in \(D_R\) is immediate. This also covers \(n=1\), when the tangential ball is a point.
+
+The full convex Cauchy proof in Continuing analytic Cauchy solutions through convex domains, Theorem 5 and its nonzero-data conclusion, applies on this actual \(Z\), with the symbol cone (SCP.7). It gives the unique holomorphic solution with the specified normal data:
+\[
+              Pu=f\text{ on }Z,\qquad
+                 \partial_{w_t}^j u(w',0)=g_j(w')\quad(0\le j<m).
+ \tag{SCP.13}
+\]
+The data must be holomorphic on the indicated tangential ball. For zero data no extra choice is needed. For data given only as germs on \(L_a\), choose \(R\) still closer to \(R_0\), so their finitely many coefficient germs are defined on that ball. The proof uses the quantitative polydisc Cauchy estimates, continuation through a real noncharacteristic boundary, and the canonical-path gluing of that lesson. The domain is chosen before solving the equation; a pointwise existence assertion alone would not give (SCP.13) on a neighbourhood of the whole cap.
+
+### 3.316. The actual cap restriction is a quasi-isomorphism
+
+The filtered operator ring is a domain locally, since its symbols form the domain \(H[\xi]\). Right multiplication by the nonzero \(P\) is injective. Hence \(\mathcal D/\mathcal DP\) has its actual two-term free resolution, and its solution complex is \([\mathcal O\xrightarrow P\mathcal O]\) in degrees \([0,1]\). By (SCP.2), its sections over each cap and bottom face are these actual two-term germ complexes.
+
+Zero-data existence in (SCP.13) makes \(P:\mathcal O(K_a)\to\mathcal O(K_a)\) surjective. The Cauchy germ theorem along a hypersurface, Theorem 2 of the same continuation lesson, gives surjectivity on \(\mathcal O(L_a)\): a forcing germ is defined on a product neighbourhood of its compact bottom ball, and the unique zero-data germs glue along that ball to one neighbourhood representative. Thus
+\[
+         \operatorname{coker}(P:\mathcal O(K_a)\to\mathcal O(K_a))=0,
+             \qquad
+         \operatorname{coker}(P:\mathcal O(L_a)\to\mathcal O(L_a))=0.
+ \tag{SCP.14}
+\]
+A homogeneous solution germ at \(L_a\) supplies its first \(m\) normal jets. Formula (SCP.13) with \(f=0\) extends those jets over a neighbourhood of the cap, and local Cauchy uniqueness makes its restriction the original solution germ. Conversely, if a homogeneous solution near \(K_a\) vanishes as a germ at \(L_a\), restrict it to a sufficiently small connected convex thickening of the cap. It vanishes on a nonempty open subset and hence everywhere by the holomorphic identity principle. Therefore the actual restriction map is an isomorphism
+\[
+       \ker(P:\mathcal O(K_a)\to\mathcal O(K_a))
+          \xrightarrow{\sim}
+       \ker(P:\mathcal O(L_a)\to\mathcal O(L_a)).
+ \tag{SCP.15}
+\]
+It follows on both cohomological degrees that the natural derived restriction is
+\[
+ R\Gamma(K_a;\mathrm{Sol}(\mathcal D/\mathcal DP))
+       \xrightarrow{\sim}
+ R\Gamma(L_a;\mathrm{Sol}(\mathcal D/\mathcal DP))
+                           \qquad(a\in V).
+ \tag{SCP.16}
+\]
+The compact-cap criterion T4–T6, including cap-to-cone and cone-to-test, is proved for arbitrary bounded complexes and arbitrary pointed cones in Detecting and removing directional obstructions. Its hypotheses are exactly (SCP.9), the common base neighbourhood and the actual restriction (SCP.16). It therefore gives every real \(C^1\) support test on a cotangent neighbourhood, not just a test on one linear function. We have proved
+\[
+            \operatorname{SS}(\mathrm{Sol}(\mathcal D/\mathcal DP))
+                        \subset\{\sigma_m(P)=0\}.
+ \tag{SCP.17}
+\]
+An order-zero operator nonzero at the base point is an invertible function, so its quotient and its solution complex vanish locally. This covers that boundary case separately.
+
+### 3.317. A finite scalar reduction for every coherent analytic system
+
+Let \(N\) be coherent and \(p\notin\operatorname{Char}(N)\). Choose finite local generators \(u_a\). Each cyclic submodule \(\mathcal D u_a\) is coherent and has characteristic support contained in that of \(N\), by its good induced filtration. The initial ideal of its annihilator is generated by actual leading symbols. Since \(p\) is not in their common zero set, some annihilating \(P_a\) has \(\sigma(P_a)(p)\ne0\).
+
+These operators give a scalar quotient cover. Repeat on its kernel, a total of \(r=3n+2\) times:
+\[
+ 0\to K_{j+1}\to L_j\to K_j\to0,
+ \qquad K_0=N,\qquad
+ L_j=\bigoplus_a\mathcal D/\mathcal DP_{j,a},\qquad 0\le j<r.
+ \tag{SCP.18}
+\]
+Noetherianity makes every kernel coherent. Its induced filtration makes its characteristic support contained in that of \(L_j\), so it still avoids \(p\). There are finitely many modules and scalar operators in this construction. Intersect their resolution and exactness neighbourhoods and the scalar test neighbourhoods supplied by (SCP.17).
+
+For any defining support test \(T\) in this one common neighbourhood, the contravariant solution triangle and scalar vanishing give
+\[
+ T\mathrm{Sol}(N)\simeq T\mathrm{Sol}(K_r)[-r],
+ \qquad
+ [0,B]\cap[r,B+r]=\varnothing,
+                  \quad B=3n+1,\ r=B+1.
+ \tag{SCP.19}
+\]
+Both ends have their respective degree bounds by (SCP.6); hence they are zero. This is a finite argument with one neighbourhood. At a zero covector outside the characteristic support, the chosen nonzero leading symbols must have order zero, so they are unit functions and already force \(N=0\) near its base. Thus, for every coherent analytic operator module,
+\[
+                  \operatorname{SS}(\mathrm{Sol}(N))
+                                    \subset\operatorname{Char}(N).
+ \tag{SCP.20}
+\]
+Holonomicity and regularity were not required for this inclusion.
+
+### 3.318. Analytification retains the good symbol support
+
+Let \(M\) now be coherent algebraic on a smooth complex variety. The operator normal forms identify \(\mathcal D^{\mathrm{an}}\), as a right algebraic operator module, with \(\mathcal O^{\mathrm{an}}\otimes_{\mathcal O}\mathcal D\). Its right action is the original operator multiplication, with the analytic coefficient on the left. Consequently the underlying analytic extension is \(\mathcal O^{\mathrm{an}}\otimes_{\mathcal O}M\), with the actual Leibniz action.
+
+Faithful local flatness in Complex analytic spaces and analytification, Theorem 4.1, preserves every exact filtered step and its quotient. For a good order filtration,
+\[
+       \operatorname{gr}(M^{\mathrm{an}})
+          =\mathcal O^{\mathrm{an}}\otimes_{\mathcal O}\operatorname{gr}M.
+ \tag{SCP.21}
+\]
+The finite symbol module has the analytified support of the algebraic symbol module. Indeed its support is the zero set of the maximal minors defining its zeroth Fitting ideal. Extending the finite presentation extends those minors, and the full analytic ideal construction gives exactly the corresponding analytic zero set. Faithful flatness detects zero. Thus
+\[
+                \operatorname{Char}(M^{\mathrm{an}})
+                         =\operatorname{Char}(M)^{\mathrm{an}}.
+ \tag{SCP.22}
+\]
+These statements concern actual analytic extension, rather than replacement by a formal completion.
+
+### 3.319. The reverse inclusion and the solution-evaluation map
+
+The inclusion (SCP.20) does not by itself give equality. On nonzero cotangent points, write \(E,B,C\) for the actual finite-order, full infinite-order and real kernel rings of Regular singularities, §§5.45–5.69. The injective holonomic comparison GM.1 has target \(C\otimes_E N_E\). To use that nonzero operator module as a sheaf-microlocal test, one still needs an actual balanced solution-evaluation map and its required injectivity, with the exact density convention:
+\[
+          C\otimes_E N_E\longrightarrow
+                    H^0\mu\operatorname{hom}(\mathrm{Sol}(N),\mathcal O).
+ \tag{SCP.23}
+\]
+If finite-to-infinite microlocal extension detects \(N_E\ne0\), GM.1 and an injective (SCP.23) would give
+\[
+ p\in\operatorname{Char}(N)
+       \quad\Longrightarrow\quad
+ H^0\mu\operatorname{hom}(\mathrm{Sol}(N),\mathcal O)_p\ne0
+       \quad\Longrightarrow\quad p\in\operatorname{SS}(\mathrm{Sol}(N)),
+ \tag{SCP.24}
+\]
+where the last implication is the arbitrary bounded microlocal Hom support theorem MO15. Construction and injectivity of (SCP.23) are separate from the operator-module injection GM.1. Neither a derived comparison nor a solution-evaluation isomorphism is inferred from it.
+
+There is an independent zero-section calibration for a coherent regular algebraic \(M\). Every graded piece of a good filtration is finite over the local coefficient ring. If its symbol fibre were zero in every degree, Nakayama would make every localized graded piece zero; boundedness below would then make \(M\) zero locally. A nonzero homogeneous symbol fibre has a support point over the base, and its closed conic support contains the zero covector over that same base. Thus the intersection with the zero section is the module's closed base carrier. The finite regular composition-factor argument (MCM.13) identifies its analytification with the closed carrier of \(\operatorname{DR}M\), and the zero-covector support test records exactly that closed carrier. Hence
+\[
+  \operatorname{Char}(M^{\mathrm{an}})\cap X^{\mathrm{an}}
+       =\operatorname{SS}(\operatorname{DR}M)\cap X^{\mathrm{an}}.
+ \tag{SCP.25}
+\]
+For the full de Rham target (MCM.20), the off-zero solution statement must also be transported through the actual signed solution/de Rham duality and its microsupport convention. The reverse evaluation comparison, that transport and the common support hypothesis in the actual Hecke application remain explicit requirements. A free overview of the scalar-to-system strategy is [Pierre Schapira, A short review on microlocal sheaf theory, §6.2](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/MuShv.pdf); the actual cap, restriction and finite degree argument is given above.
+
+### 3.320. Exercise and solution: a cap strictly inside its Cauchy diamond
+
+**Exercise 3.EN.** In the real \((x,s)\)-slice with all imaginary coordinates zero, take
+\[
+ \begin{gathered}
+ T=1,\quad\delta=\tfrac12,\quad\epsilon=1,
+ \quad R_0=2,\quad R=\tfrac94,\quad\eta=\tfrac12,\\
+ K=\{0\le s\le1,\ |x|\le2(1-s)\}.
+ \end{gathered}
+ \tag{SCP.26}
+\]
+Verify every strict containment used to construct \(Z\), and give a scalar operator whose symbol satisfies the required complex covector cone condition.
+
+**Solution 3.EN.** On the cap, \(s+|x|\le2-s\le2<9/4\). Its bottom radius is two, and \(0<R-R_0=1/4<\eta\). Thus the whole cap is inside the diamond and the bottom open ball of radius \(9/4\) is inside \(K+B_{1/2}\). In complex coordinates the same inequalities use \(|w'|\) and \(|w_t|\), so they prove the actual domain statements, not only their real slice. For
+\[
+            P=\partial_t+\tfrac12\partial_x,
+ \qquad |\zeta_t+\tfrac12\zeta_x|
+       \ge\tfrac12|\zeta_t|>0
+                \quad\text{if }|\zeta_x|\le|\zeta_t|,\ \zeta_t\ne0,
+ \tag{SCP.27}
+\]
+the complete complex cone condition holds, with all phases allowed. The origin of this translated bottom coordinate system is not the cap vertex; the vertex is \((0,1)\).
+
+### 3.321. Exercise and solution: the actual first-order extension map
+
+**Exercise 3.EO.** Put \(P_c=\partial_t+c\partial_x\), \(c=1/2\). On the convex domain \(Z\) above, solve \(P_cu=f\) with \(u(x,0)=g(x)\), and explain why the characteristic integration paths stay in the given domain.
+
+**Solution 3.EO.** The point \((x-ct,0)\) belongs to the initial ball: on the diamond,
+\[
+            |x-ct|\le|x|+|c|\,|t|
+                           \le |x|+|t|/\epsilon<R.
+ \tag{SCP.28}
+\]
+It and \((x,t)\) are in \(Z\), so their straight complex-parametrized segment, with real segment parameter, stays in \(Z\) by convexity. Writing \(y=x-ct\), integration of \(\partial_t u(y+ct,t)=f(y+ct,t)\) gives
+\[
+ u(x,t)=g(x-ct)+\int_0^t f(x-c(t-s),s)\,ds,
+                 \qquad P_cu=f,\quad u(x,0)=g(x).
+ \tag{SCP.29}
+\]
+The integral is along the straight segment \(s=\lambda t\), \(0\le\lambda\le1\). On compact subsets its integrand and derivatives are bounded; the parameter Cauchy formula proves holomorphy and differentiation under this finite integral. The formula is linear in the actual forcing and data and restricts to their given germs on the bottom face. For example,
+\[
+                f=1,\quad g=x^2,
+                       \qquad u(x,t)=(x-ct)^2+t.
+ \tag{SCP.30}
+\]
+Direct differentiation gives \(P_cu=1\). For zero forcing, the same characteristic coordinate makes any difference with zero initial data zero; this verifies the homogeneous restriction inverse in this example.
+
+### 3.322. Exercise and solution: a characteristic bottom direction
+
+**Exercise 3.EP.** On \(\mathbf C_x\times\mathbf C_t\), take \(P=\partial_x\) and the normal covector \(d\operatorname{Re}t\). Show directly why scalar propagation in this direction fails, and exhibit a homogeneous bottom germ which does not extend to the cap vertex.
+
+**Solution 3.EP.** The symbol is \(\zeta_x\), so the selected covector is characteristic. Local solutions are holomorphic functions of \(t\), constant in \(x\); termwise integration in \(x\) makes the cokernel sheaf zero. At \(a=(0,1)\), the function \((t-1)^{-1}\) is a homogeneous solution on the side \(\operatorname{Re}(t-1)<0\), and it does not extend across \(t=1\). In the localization triangle for this side its class is not in the image of the central solution stalk. The exact degree-zero-to-degree-one boundary therefore gives
+\[
+ H^1\bigl(R\Gamma_{\{\operatorname{Re}(t-1)\ge0\}}
+                     \mathrm{Sol}(\mathcal D/\mathcal D\partial_x)\bigr)_a\ne0.
+ \tag{SCP.31}
+\]
+The nonextendability follows already from the nonzero Laurent coefficient of \((t-1)^{-1}\), or by multiplying a purported holomorphic extension by \(t-1\) and evaluating at one. Thus the very support test at the selected covector is nonzero.
+
+For the cap in Solution 3.EN, the same function is a holomorphic homogeneous germ on the whole compact bottom face \(t=0\). If it were the restriction of a homogeneous germ on a neighbourhood of the cap, its restriction to the normal segment would agree with \((t-1)^{-1}\) by the identity principle and would be holomorphic at its endpoint. This is impossible. Hence
+\[
+ \ker\bigl(\partial_x:\mathcal O(K)\to\mathcal O(K)\bigr)
+       \longrightarrow
+ \ker\bigl(\partial_x:\mathcal O(L)\to\mathcal O(L)\bigr)
+                 \quad\text{is not surjective}.
+ \tag{SCP.32}
+\]
+The failed map is the actual bottom restriction. The missing noncharacteristic hypothesis cannot be repaired by forgetting the normal germs on that face.
+
+![A compact convex cap, its full Cauchy neighbourhood and the finite support-test argument](figures/scalar-cap-propagation.svg)
+
+*Figure 3.47.* The real slice has \(T=1\), \(\delta=1/2\), \(\epsilon=1\), \(R=9/4\), and \(\eta=1/2\), as in Solution 3.EN. Its triangle is the closed cap, its bottom segment is the Cauchy face, and the shaded open neighbourhood is the slice of \(Z=(K+B_{1/2})\cap D_{9/4}\). The normal covector points up at the vertex. The full domain is complex; the picture fixes both imaginary coordinates to zero. The displayed restriction and degree arguments are (SCP.16)–(SCP.20), and the characteristic comparison is Solution 3.EP. The drawing uses the exact Euclidean half-unit thickening and rational diamond intercepts.
+
+### 3.323. The full kernel complex and finite operator cells
+
+Work on a complex coordinate neighbourhood \(U\), and put \(D=\mathcal D_U^{\mathrm{an}}\), \(L=\mathcal O_U\), and \(\pi:T^*U\to U\). The full complex
+\[
+ K=\mu\operatorname{hom}(L,L),\qquad
+ F(P)=\mu\operatorname{hom}(R\mathcal Hom_D(P,L),L)
+ \tag{MEC.1}
+\]
+uses the ordinary derived microlocal Hom of Local morphisms in cotangent directions, SH02-MH-HOM. In particular \(K\) is a complex, and is not being replaced by its degree-zero cohomology.
+
+Right multiplication by \(a\) is an endomorphism of the free left module \(D\). Applying \(\mathcal Hom_D(-,L)\) makes it left action by \(a\) on \(L\); applying microlocal Hom in its first variable makes it precomposition by that action on \(K\). Thus \(K\) has a right \(\pi^{-1}D\)-action. Its associativity is already the identity \((k\circ a)\circ b=k\circ(ab)\) before taking any normal limit. The output action is postcomposition and commutes with this input action.
+
+These are actions on the derived complexes. One can retain them by resolving \(L\) in left operator modules, and taking the internal Hom complex before normal specialization and Fourier transformation. An injective operator-module sheaf is injective after forgetting to vector sheaves: induction \(D\otimes_{\mathbf C}-\) is exact on stalks. Resolving the output preserves the commuting input and output actions. In the normal deformation the two base maps extend to the diagonal at parameter zero. Their operator-ring actions therefore pass through the inverse and direct images, support cones and Fourier kernel to the indicated pullback ring. The functorial module resolutions and finite totalizations retain the homotopies as well as the degree-zero maps.
+
+For every bounded finite locally free operator complex \(P\), there is a natural equivalence
+\[
+ K\otimes^L_{\pi^{-1}D}\pi^{-1}P\simeq F(P).
+ \tag{MEC.2}
+\]
+Here is the finite-cell proof. On one free term both sides are the corresponding finite sum of \(K\), and a matrix is sent to its written Hom transpose with the input precomposition action just specified. Before normal specialization the evaluation on homogeneous entries has the sign
+\[
+       \Theta(k\otimes p)(f)
+                 =(-1)^{|p||f|}\,k(f(p)).
+ \tag{MEC.3}
+\]
+The internal Hom differential is \(d(g)=d g-(-1)^{|g|}g d\). Substituting this expression on the two sides of (MEC.3) gives the tensor differential \(d k\otimes p+(-1)^{|k|}k\otimes d p\). Since operator entries have degree zero and \(f\) is operator linear, \(\Theta((k a)\otimes p)=\Theta(k\otimes a p)\). Thus evaluation is balanced and is a cochain map. The normal and Fourier functors preserve this map on each finite sum. Filtering \(P\) by its finitely many free cells, their exact triangles prove (MEC.2) by induction. This also proves naturality for their attaching maps and homotopies. A bounded acyclic projective comparison complex is locally contractible, by splitting successively from its last nonzero term. Consequently different finite resolutions give the same derived comparison. The finite analytic resolution in (SCP.3)–(SCP.4) applies this result to every coherent \(N\).
+
+### 3.324. The input needed from an actual real kernel
+
+Suppose the actual real-kernel construction provides a density-normalized morphism with the prescribed input action,
+\[
+          \kappa:C[0]\longrightarrow K
+          \quad\text{in }D((\pi^{-1}D)^{\mathrm{op}}).
+ \tag{MEC.4}
+\]
+This is an analytic hypothesis. Tensor it with a finite resolution of \(N\), then use (MEC.2). The resulting degree-zero map is
+\[
+ C\otimes_{\pi^{-1}D}\pi^{-1}N
+       \longrightarrow
+ H^0\mu\operatorname{hom}(\operatorname{Sol}N,\mathcal O).
+ \tag{MEC.5}
+\]
+A free resolution of the module \(N\) has degrees at most zero. Hence degree-zero cohomology of \(C\otimes^L N\) is its ordinary right-exact tensor product; no flatness of \(C\) is needed for this identity. For compatible actual ring maps \(D\to E\to C\), tensor associativity identifies its source with \(C\otimes_E(E\otimes_D N)\).
+
+Injectivity of (MEC.5) requires injectivity after this derived tensor operation. An identification of \(H^0K\) alone does not supply it. A quasi-isomorphism (MEC.4) would be a sufficient stronger hypothesis, but is not assumed. In a concrete kernel formula, input differentiation also carries its density transpose; the abstract input action in §3.323 specifies the action which that formula must reproduce.
+
+### 3.325. A degree-zero kernel map over a regular ring
+
+The failure of a degree-zero shortcut occurs even over \(B=\mathbf C[x,y]\). Set \(k=B/(x,y)\), and use the finite free complexes
+\[
+ Q=[B^2\xrightarrow{(x,y)}B],\quad\deg Q=(0,1),\qquad
+ j:B[0]\longrightarrow Q,\quad j(1)=(-y,x).
+ \tag{MEC.6}
+\]
+If \(xa+yb=0\), reduction modulo \(x\) gives \(yb=0\) in \(\mathbf C[y]\), so \(b=xc\) and then \(a=-yc\). Conversely each such vector is in the kernel. Thus
+\[
+              H^0(Q)=B(-y,x),\qquad H^0(j)\text{ is an isomorphism}.
+ \tag{MEC.7}
+\]
+Both complexes in \(j\) are bounded free, so their actual derived tensor with \(k\) is obtained term by term. It gives
+\[
+ H^0(B\otimes^L_B k)=k,\qquad
+ H^0(Q\otimes^L_B k)=k^2,\qquad
+ H^0(j\otimes^L_B k)=0.
+ \tag{MEC.8}
+\]
+The last map is the literal vector \((-y,x)\) modulo \((x,y)\). The module \(k\) has a length-two free Koszul resolution: the middle kernel is precisely the vector just calculated, and the first map is injective because \(B\) is a domain. Thus neither infinite projective dimension nor a nonflat source is responsible. Positive cohomology of the full kernel complex cannot be discarded when forming (MEC.5).
+
+### 3.326. A nonreduced coefficient countercheck
+
+There is also a one-parameter example. Let \(B_0=\mathbf C[e]/(e^2)\), \(k_0=B_0/(e)\), and
+\[
+ Q_0=[B_0\xrightarrow e B_0],\quad\deg Q_0=(0,1),\qquad
+ j_0:k_0[0]\longrightarrow Q_0,\quad j_0(1)=e.
+ \tag{MEC.9}
+\]
+Since \(\ker(e)=eB_0\), the map \(H^0(j_0)\) is an isomorphism. Resolve its source by the complex with a copy of \(B_0\) in every nonpositive degree and differential multiplication by \(e\). It is exact in negative degrees because image and kernel are both \(eB_0\). A lift of \(j_0\) is multiplication by \(e\) in degree zero and zero in negative degrees. It is a chain map because \(e^2=0\). After tensoring with \(k_0\),
+\[
+ H^0(k_0\otimes^L_{B_0}k_0)=k_0,\qquad
+ H^0(Q_0\otimes^L_{B_0}k_0)=k_0,\qquad
+ H^0(j_0\otimes^L_{B_0}k_0)=0.
+ \tag{MEC.10}
+\]
+The finite complex \(Q_0\) is already free, and the displayed lift computes the actual map. Equality of the two degree-zero vector spaces does not identify that map with an isomorphism.
+
+### 3.327. The actual matrix Euler module
+
+Now take coordinates \((x_1,\ldots,x_{n-1},t)\), \(n\ge1\), a constant \(r\)-by-\(r\) complex matrix \(A\), and \(r\ge1\). Let \(N_A\) have generators \(u_j\) and relations
+\[
+ \partial_{x_i}u_j=0,\qquad
+ (t\partial_t)u_j=\sum_k A_{jk}u_k.
+ \tag{MEC.11}
+\]
+This row convention means that a solution column \(f_j\) obeys \(t f'=Af\). No transpose of \(A\) is suppressed in the presentation.
+
+The right-multiplication Koszul complex of the commuting \(\partial_{x_i}\) resolves their quotient. Its symbols are the coordinate sequence \(\xi_1,\ldots,\xi_{n-1}\) in \(\mathcal O[\xi,\tau]\). For one polynomial variable, division into its constant term and the variable times a polynomial contracts its two-term Koszul complex onto the constant coefficient ring. Iterating this contraction in the finitely many independent variables proves exactness of the symbol complex. Lift a symbol boundary and subtract its operator boundary; finite lowering of order proves exactness of the operator complex. The quotient has normal forms \(\mathcal O\langle\partial_t\rangle\). Right multiplication by the normal relation matrix is injective there, since its leading matrix is \(t\tau I_r\), a nonzero divisor. It commutes with the tangential resolution. Its two-term cone therefore gives a finite free resolution of \(N_A\), and the induced good symbols are
+\[
+ \operatorname{gr}N_A
+       =\bigl(\mathcal O[\xi,\tau]/(\xi_1,\ldots,\xi_{n-1},t\tau)\bigr)^r.
+ \tag{MEC.12}
+\]
+The same order argument proves strictness: a highest nonzero input symbol is multiplied by \(t\tau I_r\) and cannot disappear. Thus
+\[
+       \operatorname{Char}(N_A)
+          =T_U^*U\ \cup\ T^*_{\{t=0\}}U.
+ \tag{MEC.13}
+\]
+Applying Hom to this actual resolution gives the tangential holomorphic derivative complex with the normal two-term map \(P_A=t\partial_t-A\).
+
+### 3.328. Central solution germs, including every resonance
+
+Tangential derivatives contract on a product ball by radial integration in \(x\). On a holomorphic \(q\)-form the coefficient formula is \(\int_0^1s^{q-1}\iota_x\omega(sx,t)\,ds\); differentiation gives \(d_xH+Hd_x=1-\operatorname{ev}_{x=0}\). The formula is holomorphic with parameters by the compact-parameter Cauchy formula, and commutes with \(P_A\). In the total complex the two mixed terms cancel with its usual \((-1)^q\) sign. Thus the solution complex is, locally, constant in \(x\) with normal complex \([\mathcal O_t^r\xrightarrow{P_A}\mathcal O_t^r]\) in degrees \([0,1]\).
+
+For \(f(t)=\sum_{m\ge0}f_mt^m\), the normal equation has coefficient equations
+\[
+              (mI-A)u_m=f_m.
+ \tag{MEC.14}
+\]
+Let \(R_A=\operatorname{Spec}(A)\cap\mathbf Z_{\ge0}\), a finite set. If \(m>2\|A\|\), the Neumann series for \((I-A/m)^{-1}\) gives \(\|(mI-A)^{-1}\|\le2/m\). On all remaining nonresonant degrees there are only finitely many inverse matrices. At resonant degrees choose an inverse from the image to a fixed complementary subspace of the kernel. These estimates preserve the convergence radius of every holomorphic power series. They prove the actual stalk calculations
+\[
+ S_A=H^0(\operatorname{Sol}N_A)_0
+       =\bigoplus_{m\in R_A}t^m\ker(mI-A),
+ \tag{MEC.15}
+\]
+\[
+ T_A=H^1(\operatorname{Sol}N_A)_0
+       =\bigoplus_{m\in R_A}\operatorname{coker}(mI-A).
+ \tag{MEC.16}
+\]
+All other stalk degrees vanish. The cokernel identification records the resonant Taylor coefficients modulo their images. Since each \(mI-A\) is square, rank-nullity gives \(\dim S_A=\dim T_A\), with no diagonalizability assumption.
+
+### 3.329. Solutions on a negative halfdisc
+
+Let \(W=\{0<|t|<\rho,\ \operatorname{Re}t<0\}\). It is convex, simply connected and avoids zero; choose a holomorphic logarithm there. The matrix
+\[
+           Y(t)=\exp(A\log t),\qquad
+           Y^{-1}(t)=\exp(-A\log t),\qquad tY'=AY
+ \tag{MEC.17}
+\]
+is holomorphic and invertible. For every holomorphic forcing \(f\) on \(W\),
+\[
+ u(t)=Y(t)\left(c+\int_{t_0}^t Y(s)^{-1}f(s)\,\frac{ds}{s}\right)
+ \tag{MEC.18}
+\]
+solves \(P_Au=f\). One may use the straight segment, which lies in \(W\) by convexity. For any holomorphic integrand \(g\), its integral is \((t-t_0)\int_0^1g(t_0+s(t-t_0))\,ds\). Differentiating gives the integral of \(g+s(t-t_0)g'\), which is the endpoint difference of \(s g(t_0+s(t-t_0))\) and hence is \(g(t)\). Compactness of the segment inside the open domain justifies holomorphic differentiation under this finite integral by the local Cauchy formula. Applying this construction to \(1/t\) also constructs the logarithm used in (MEC.17): choose its value at \(t_0\), and differentiating \(e^{\log t}/t\) shows that this quotient is the constant one. Formula (MEC.18) now follows by differentiation. For zero forcing it says that \(Y^{-1}u\) is constant. Thus the homogeneous solution space is \(\mathbf C^r\), and the map \(P_A\) on this open set is surjective.
+
+These statements compute derived sections as well. A product ball in \(x\) times \(W\) has the strict plurisubharmonic exhaustion obtained by adding \(|x|^2+|t|^2\), the terms \(-\log(\rho_x^2-|x|^2)\), \(-\log(\rho^2-|t|^2)\), and \(-\log(-\operatorname{Re}t)\). Its holomorphic acyclicity is the finite Dolbeault argument used in §3.312. The finite free solution complex therefore computes derived sections, and its tangential radial contraction commutes with the normal map. Under restriction to smaller product balls and halfdiscs, the constant \(c\) in a fixed branch frame identifies the kernels compatibly. Consequently the actual open-direct-image stalk from \(\operatorname{Re}t<0\) is
+\[
+       (Rj_*j^{-1}\operatorname{Sol}N_A)_0=\mathbf C^r[0].
+ \tag{MEC.19}
+\]
+For \(n=1\) the tangential ball and its contraction are omitted.
+
+### 3.330. An exact defining support test for every matrix
+
+Put \(Z=\{\operatorname{Re}t\ge0\}\), and let \(V_A=(R\Gamma_Z\operatorname{Sol}N_A)_0\). Localization gives the actual fibre sequence
+\[
+              V_A\longrightarrow(\operatorname{Sol}N_A)_0
+                         \longrightarrow\mathbf C^r[0].
+ \tag{MEC.20}
+\]
+The map on degree zero is restriction of the actual solution germ. In the frame (MEC.17) it takes \(t^m v\), \(Av=mv\), to \(v\). Distinct eigenspaces are independent, so its image is
+\[
+       E_A^+=\bigoplus_{m\in R_A}\ker(mI-A)\subset\mathbf C^r,
+ \tag{MEC.21}
+\]
+and it is injective. Independence of the distinct eigenspaces follows by applying \(\prod_{j\in R_A\setminus\{m\}}(A-jI)\) to a relation between them: it kills all terms except the \(m\)-eigenvector, multiplied by the nonzero scalar \(\prod_{j\in R_A\setminus\{m\}}(m-j)\). The long exact sequence, with (MEC.15)–(MEC.19), gives
+\[
+ \begin{gathered}
+ H^q(V_A)=0\quad(q\ne1),\\
+ 0\longrightarrow\mathbf C^r/E_A^+
+   \longrightarrow H^1(V_A)\longrightarrow T_A\longrightarrow0.
+ \end{gathered}
+ \tag{MEC.22}
+\]
+It follows that
+\[
+               \dim_{\mathbf C}H^1(V_A)=r.
+ \tag{MEC.23}
+\]
+This is nonzero for every positive rank, even when all central solution stalks vanish or when all local monodromy eigenvalues are one.
+
+For any nonzero complex \(\lambda\), repeat the calculation in \(w=\lambda t\); the operator \(t\partial_t-A=w\partial_w-A\) is unchanged. The defining support test with function \(\operatorname{Re}(\lambda t)\) is therefore nonzero. Translating the tangential centre proves that every nonzero conormal to \(\{t=0\}\) belongs to microsupport. Away from that hypersurface the local solution system has rank \(r\), so the constant-function test puts every zero covector there in microsupport. Closedness includes the zero covectors over the hypersurface too. Combining this with the general forward inclusion (SCP.20) proves
+\[
+          \operatorname{SS}(\operatorname{Sol}N_A)
+            =\operatorname{Char}(N_A)
+            =T_U^*U\cup T^*_{\{t=0\}}U.
+ \tag{MEC.24}
+\]
+If \(r=0\), the module, its solutions and both supports are empty instead. No assertion about arbitrary coherent systems is inferred from the matrix Euler calculation.
+
+### 3.331. A finite criterion for transporting the model
+
+The following criterion states precisely the additional data needed to use a kernel-module normal form. Fix a nonzero normal covector \(p\) to \(\{t=0\}\), and retain \(r\ge1\). Represent the matrices of finite free resolutions \(P_N,P_A\) on one common neighbourhood \(U\). Let \(D_0\subset\Gamma(U,D)\) be the unital algebra generated by their finitely many operator entries, and let \(P_N^0,P_A^0\) be the finite free matrix complexes over \(D_0\). Their extensions to the sheaf \(D\) are the given resolutions; they need not be resolutions as \(D_0\)-modules. Let \(R\) be an actual unital \(D_0\)-algebra. Suppose a complex \(G\), bounded as a complex of vector sheaves, has a genuine derived \(R\)-module structure and a \(D_0\)-linear equivalence
+\[
+                   G\simeq\mathcal O
+                   \quad\text{in the category localized at }p.
+ \tag{MEC.25}
+\]
+Here an algebra acts as its constant sheaf, and linearity means a fraction of \(D_0\)-linear maps with denominator cones of underlying vector sheaves whose microsupport misses \(p\), retaining the full coherent action. This accommodates a ring of actual kernels defined on one fixed coefficient domain. An isomorphism of underlying vector objects without its action is insufficient.
+
+Assume also an actual finite homotopy equivalence of complexes
+\[
+               R\otimes_{D_0} P_N^0\simeq R\otimes_{D_0} P_A^0.
+ \tag{MEC.26}
+\]
+Applying Hom over \(R\) into \(G\) preserves this homotopy equivalence. Finite free base extension gives literal adjunction \(\mathcal Hom_R(R\otimes_{D_0}P^0,G)=\mathcal Hom_{D_0}(P^0,G)\). With output \(\mathcal O\), the latter is exactly the finite matrix solution complex for the given \(D\)-resolution. Lastly (MEC.25) can be applied to this finite complex: a denominator cone gives a complex with a finite filtration by finite sums of that same cone. The subcategory whose microsupport misses \(p\) is thick by §§3.303–3.304, so the resulting cone still misses \(p\). Thus
+\[
+           \operatorname{Sol}N\simeq\operatorname{Sol}N_A
+                    \quad\text{in }D^b(\mathbf C_U;p).
+ \tag{MEC.27}
+\]
+The nonzero defining test in (MEC.23) makes the model nonzero in this category; hence the same is true for \(\operatorname{Sol}N\). This proves the criterion at its stated hypotheses. It uses the complexes in (MEC.26), and does not substitute an isomorphism of ordinary scalar-extended modules for their homotopy equivalence. The actual cutoff action, any required flatness and contact transport must supply these hypotheses when the criterion is applied. The real-kernel evaluation (SCP.23) is a second possible route to the general reverse inclusion, with its own density and injectivity hypotheses. Neither route is completed by the Euler model alone. Signed de Rham transport remains a further comparison.
+
+### 3.332. Exercise and solution: two classes at a resonant Jordan block
+
+**Exercise 3.EQ.** Take \(r=2\) and \(A e_1=0\), \(A e_2=e_1\). Compute the central groups and exhibit two independent degree-one support classes for the negative halfdisc.
+
+**Solution 3.EQ.** The only resonant degree is zero, and
+\[
+       S_A=\mathbf C e_1,\qquad
+       T_A=\mathbf C[e_2],\qquad E_A^+=\mathbf C e_1.
+ \tag{MEC.28}
+\]
+Fix a logarithm on that halfdisc. Direct differentiation gives
+\[
+ \begin{gathered}
+ v=e_2+(\log t)e_1,\qquad P_Av=0,\\
+ w=(\log t)e_2+\tfrac12(\log t)^2e_1,
+                         \qquad P_Aw=e_2.
+ \end{gathered}
+ \tag{MEC.29}
+\]
+Use the localization fibre complex in the order \((a,b)\), with differential \(d(a,b)=(d a,\operatorname{res}a-d b)\); it squares to zero because restriction is a cochain map. Its degree-one entries are central forcing germs and side solution germs. The two cocycles are
+\[
+                         (0,v),\qquad(e_2,w).
+ \tag{MEC.30}
+\]
+The first is not a boundary: a central homogeneous solution restricts only to a multiple of \(e_1\), whereas \(v\) contains the logarithmic branch. The second maps to the nonzero central cokernel class \([e_2]\). They are independent, since any linear relation first maps to that cokernel and then to the nonzero class of \(v\) modulo central homogeneous solutions. Formula (MEC.23) says that the whole space has dimension two, so these classes are a basis. The logarithmic forcing primitive is essential for the second class; a homogeneous solution alone cannot represent its nonzero image in \(T_A\).
+
+### 3.333. Exercise and solution: no central stalk but a full support test
+
+**Exercise 3.ER.** Take \(A=\operatorname{diag}(-1,1/2)\). Compute the solution stalk at zero and the defining support test, and explain the zero covector over zero.
+
+**Solution 3.ER.** Neither eigenvalue is a nonnegative integer. Every matrix \(mI-A\), \(m\ge0\), is invertible, with the large-degree bound already used in (MEC.14). Consequently
+\[
+      (\operatorname{Sol}N_A)_0=0,\qquad
+      (R\Gamma_Z\operatorname{Sol}N_A)_0=\mathbf C^2[-1].
+ \tag{MEC.31}
+\]
+The second equality denotes a complex with its sole cohomology in degree one. A branch frame on the negative halfdisc has columns
+\[
+                         t^{-1}e_1,\qquad t^{1/2}e_2.
+ \tag{MEC.32}
+\]
+Both give nonzero boundary classes, since there is no central homogeneous solution. The first column has a pole although its monodromy is one; the second is ramified. On every punctured neighbourhood the solution system has rank two. Its closed carrier therefore contains zero, so closedness of microsupport includes the zero covector there, despite the zero ordinary solution stalk. Confusing closed carrier with the set of nonzero stalks would lose this point.
+
+### 3.334. Exercise and solution: the actual integer Euler gauge
+
+**Exercise 3.ES.** Compare the solution complexes for \(A\) and \(A-I\) by differentiation. Compute its cone and explain why it is an equivalence at every nonzero normal covector even when the central stalks differ.
+
+**Solution 3.ES.** The identity \(\partial_t(t\partial_t)=(t\partial_t+1)\partial_t\) gives
+\[
+ \begin{gathered}
+ \partial_t P_A=P_{A-I}\partial_t,\\
+ \partial_t:[\mathcal O^r\xrightarrow{P_A}\mathcal O^r]
+       \longrightarrow[\mathcal O^r\xrightarrow{P_{A-I}}\mathcal O^r].
+ \end{gathered}
+ \tag{MEC.33}
+\]
+Differentiation is surjective on holomorphic sheaves, by termwise primitives. Its kernel in each degree is constant in \(t\). The induced normal map on these constants is \(-A\). After the tangential contraction this gives an actual short exact sequence of complexes
+\[
+ 0\longrightarrow[\mathbf C^r\xrightarrow{-A}\mathbf C^r]
+ \longrightarrow\operatorname{Sol}N_A
+ \xrightarrow{\partial_t}\operatorname{Sol}N_{A-I}
+ \longrightarrow0.
+ \tag{MEC.34}
+\]
+One can first form this sequence for the normal two-term complexes and then take their exterior constant tangential factor; the earlier contraction gives the displayed derived identification. The cone of differentiation is \([\mathbf C^r\xrightarrow{-A}\mathbf C^r][1]\), so its microsupport is in the zero section. It follows that differentiation, and hence every positive integer iterate, gives
+\[
+       \operatorname{Sol}N_A\simeq\operatorname{Sol}N_{A-mI}
+            \quad\text{at every nonzero normal covector},\qquad m\ge1.
+ \tag{MEC.35}
+\]
+This is a statement about the actual chain map and its cone. For example, in rank one when \(A=0\), the central normal complex has one copy of \(\mathbf C\) in each of degrees zero and one, whereas for \(A-I=-1\) its central stalk is zero. They are not isomorphic on an ordinary neighbourhood. Choosing \(m\) larger than the real parts of all eigenvalues removes every nonnegative-integer resonance in the shifted model, while (MEC.35) preserves its nonzero microlocal object. The real halfspace test kills the constant cone directly, so it also preserves that exact test. This provides an alternative reduction of (MEC.23) to the nonresonant case, without discarding the central cokernel in the original model.
+
+![The matrix Euler support test, its two Jordan classes and the precise finite gauge criterion](figures/matrix-euler-microlocal-test.svg)
+
+*Figure 3.48.* Equations (MEC.20)–(MEC.23) give the exact degree-one support sequence, including its resonant cokernel. For the Jordan matrix in Solution 3.EQ, the two classes are represented by \((0,v)\) and \((e_2,w)\). On the real path \(t=-e^{-u}\), \(0\le u\le3\), choose \(\log t=-u+i\pi\). The plotted first real coordinates are \(\operatorname{Re}v_1=-u\) and \(\operatorname{Re}w_1=(u^2-\pi^2)/2\). This is a path in the negative halfdisc of radius two, rather than the whole complex solution domain; the formulas retain both imaginary parts. The line and quadratic curve use their exact parametric formulas. Equations (MEC.1)–(MEC.10) explain the full kernel complex, and (MEC.25)–(MEC.27) state the additional data required for a general gauge transport. Solution 3.ES supplies an actual integer gauge with its constant cone.
+
+### 3.335. Finite-order microlocalization at a nonzero covector
+
+Let \(X\) be a complex \(n\)-manifold, \(x\in X\), and \(p\in T_x^*X\setminus\{0\}\). Write \(D=\mathcal D^{\mathrm{an}}_{X,x}\) and \(E=\mathcal E_{X,p}\). Here \(E\) is the actual finite-order analytic microlocal ring: its homogeneous coefficients have a finite upper degree, one common holomorphic coefficient domain, and a factorial bound for their negative degrees. Its products retain all the spatial derivatives in the ordered Leibniz formula. The coefficient class, actual product and coordinate normalization are proved in Regular singularities, §§5.19–5.22.1 and §5.24.1.
+
+We prove that \(E\) is right \(D\)-flat on arbitrary modules and that, for every coherent analytic \(\mathcal D_X\)-module \(N\),
+\[
+ \operatorname{supp}(\mathcal E_X\otimes_{\pi^{-1}\mathcal D_X}\pi^{-1}N)
+       =\operatorname{Char}(N)
+       \qquad\text{on }T^*X\setminus X.
+ \tag{MFL.1}
+\]
+The support on the left is the set of nonzero actual module stalks. This is an equality of underlying conic sets. At a fixed nonzero covector the flat extension need not be faithful on all \(D\)-modules.
+
+Choose coordinates \((z_1,\ldots,z_n)\), with last covariable \(\tau\ne0\), and put \(w_i=\xi_i/\tau\). A linear coordinate change makes the central \(w\)-value zero. The order filtration gives
+\[
+ \operatorname{gr}D=\mathbf C\{z\}[\xi_1,\ldots,\xi_{n-1},\tau],
+ \qquad
+ \operatorname{gr}E=\mathbf C\{z,w\}[\tau,\tau^{-1}].
+ \tag{MFL.2}
+\]
+The second ring is the conic germ with its integer grading. Every holomorphic coefficient in \((z,w)\) is realized by a single degree-zero symbol with zero lower tail. The kernel of taking its principal coefficient is exactly the part of strictly smaller order. No operator completion is used in (MFL.2).
+
+### 3.336. The mixed holomorphic coefficient extension
+
+Put
+\[
+ A=\bigl(\mathbf C\{z\}[w]\bigr)_{(z,w)},\qquad
+ H=\mathbf C\{z,w\},\qquad
+ \widehat A=\mathbf C[[z,w]]=\widehat H.
+ \tag{MFL.3}
+\]
+Both local rings are Noetherian. The convergent-series assertion follows from the Weierstrass proof in Complex analytic spaces and analytification, Lemma 2.1; polynomial extension and localization are proved in Noetherian and Artinian rings, §§1–2. To check the completions in (MFL.3), work modulo each power of the maximal ideal. Taylor truncation gives precisely the finite polynomials in all variables, and a denominator with nonzero constant term has its finite geometric inverse modulo that power. The identifications commute with all quotient maps.
+
+The exact completion theorem in Completion, §§1–3, proves that completion of a Noetherian local ring is faithfully flat. Its hypotheses apply to both rings in (MFL.3). More explicitly, Artin–Rees makes the induced and intrinsic filtrations on every finite submodule cofinal. The surjective quotient transitions then give exact completion, and a finite presentation identifies completion with tensoring by the completed ring. This preserves finite-module injections. An arbitrary tensor and a witness to its vanishing use only finitely many module elements and balancing relations; putting them in finite submodules proves flatness on arbitrary modules. Finally, a nonzero module contains a cyclic submodule \(R/J\), with \(J\) proper; its completed tensor has the nonzero residue field as a quotient. Flatness preserves the cyclic injection, proving faithfulness.
+
+For any injection of \(A\)-modules, tensor with \(H\), then with \(\widehat H\). The composite is tensor with the flat \(\widehat A\). Since \(\widehat H\) is faithfully flat over \(H\), it detects the kernel of the first tensor map. The same composite detects a module whose \(H\)-tensor is zero. Therefore
+\[
+       A\longrightarrow H\text{ is faithfully flat},\qquad
+       \operatorname{gr}D\longrightarrow\operatorname{gr}E
+                      \text{ is flat}.
+ \tag{MFL.4}
+\]
+For the second assertion, first invert \(\tau\), write \(\xi_i=\tau w_i\), localize the degree-zero coefficient ring at the chosen point, and extend scalars by \(A\to H\). Laurent extension in \(\tau\) preserves the exactness just proved. The faithfulness statement concerns this localized coefficient map; the whole map from \(\operatorname{gr}D\) also contains a localization.
+
+### 3.337. Actual lifts of principal relations
+
+Use left free modules written as rows, so their linear maps are right-multiplication matrices. Suppose \(W:E^a\to E^b\) and \(V:E^c\to E^a\) have order at most zero and
+\[
+              VW=0,\qquad \operatorname{im}V_0=\ker W_0
+                           \quad\text{over }H.
+ \tag{MFL.5}
+\]
+We will prove \(\ker W=\operatorname{im}V\). The subscript zero means principal degree zero; a strictly negative entry has zero principal coefficient.
+
+Let \(\mu=\ker W_0\). The complete holomorphic coefficient-division proof Regular singularities, MFA.1–MFA.3 supplies finitely many holomorphic standard divisors \(g_\nu\) of \(\mu\). Their initial Taylor orthants cover the initial diagram, and their coefficient division is bounded on one fixed interval of polyradii. Choose holomorphic rows \(a_\nu\) with \(g_\nu=a_\nu V_0\), possible by (MFL.5). Realize these finitely many coefficients as order-zero actual symbols and set
+\[
+              R_\nu=a_\nu\circ V,\qquad
+              RW=0,\qquad R_0=(g_\nu)_\nu.
+ \tag{MFL.6}
+\]
+All rows have one common coefficient domain. This constructs every needed principal relation lift directly in the image of \(V\).
+
+For the coefficient map \(T_0c=cR_0\), the same division proof gives a support-normalized quotient space \(\mathcal V\), a division map \(\Lambda\), a projection \(q\), and a map \(k\), with
+\[
+ \Lambda T_0|_{\mathcal V}=1,\quad
+ q=1-T_0\Lambda,\quad \Lambda q=0,\quad
+                         k(bW_0)=qb.
+ \tag{MFL.7}
+\]
+These are complex-linear coefficient operators; no \(H\)-linear splitting is asserted. Their bounds hold uniformly on the same radius interval. Define \(Tc=c\circ R\), \(L=T-T_0\), and \(W_-b=b\circ W-bW_0\). Each of \(L\) and \(W_-\) lowers homogeneous order by at least one, including all Leibniz derivative terms.
+
+### 3.338. The finite upper order and the factorial tail
+
+For an actual relation \(b\circ W=0\), define coefficientwise
+\[
+       c=\sum_{j\ge0}(-\Lambda L)^j\Lambda b,
+                    \qquad s=b-Tc.
+ \tag{MFL.8}
+\]
+We must show that this expression belongs to the actual finite-order ring. The all-index word estimate Regular singularities, MFB.1–MFB.4 has exactly these hypotheses: finitely many right matrices of order zero with factorial negative tails, coefficient divisions bounded on one radius interval, and at least one unit of order loss per correction. It includes derivatives between successive coefficient divisions. For input degree \(m\) and total loss \(K\), the sum of the norms of all words is at most
+\[
+       C_0 C_1^K\frac{(|m|+K)!}{|m|!}\,|b_m|_{\mathrm{out}}.
+ \tag{MFL.9}
+\]
+The outer and inner domains are fixed independently of \(K\). In that proof, if \(K=Q+J\), the right-tail factorials cost at most \(Q!\), and the \(J\) derivatives share a fixed total radius margin. The inequality \((|m|+K)^JQ!\le e^K(|m|+K)!/|m|!\) absorbs their cost. There are at most exponentially many words of loss \(K\), so they fit in \(C_1^K\). Bounded division at each intermediate radius requires no commutation with differentiation.
+
+Let \(M\) be an upper order of \(b\). Every correction lowers degree, so \(c\) has no coefficient above \(M\). At each output degree, only finitely many input degrees and total losses occur. For output \(-n\) from input \(-a\), with \(1\le a\le n\), (MFL.9) and \(|b_{-a}|\le B D^a a!\) give
+\[
+       C_0 B n!\,C_1^{n-a}D^a,
+ \qquad
+       \sum_{a=1}^{n} C_1^{n-a}D^a\le(C_1+D)^n.
+ \tag{MFL.10}
+\]
+For each of the finitely many nonnegative input degrees \(0\le m\le M\), the loss is \(n+m\). The binomial bound
+\[
+     \frac{(n+2m)!}{m!}
+        \le n!\,2^{n+2m}\frac{(2m)!}{m!}
+ \tag{MFL.11}
+\]
+puts its contribution under one constant times \(n!(2C_1)^n\). Thus \(c\) has one factorial negative bound on one domain. Every coefficient is holomorphic there, and a further fixed Cauchy margin controls every fixed derivative. Consequently \(c,s\in E\). This also matches the finite-upper-order clause MF.4 of the same proof. Finite upper order alone would not imply the required factorial estimate.
+
+The coefficient identities in (MFL.7) and the geometric identity for (MFL.8) give \(\Lambda s=0\). Associativity and \(RW=0\) give \(s\circ W=0\). Hence \(qs=s\), and
+\[
+                         s=-k(W_-s).
+ \tag{MFL.12}
+\]
+A nonzero finite-order symbol has a largest nonzero homogeneous degree. The right side of (MFL.12) has strictly smaller order than \(s\), a contradiction. Thus \(s=0\), \(b=cR\), and (MFL.6) proves \(\ker W=\operatorname{im}V\). If the principal kernel is zero, the same largest-degree argument gives injectivity immediately. Empty matrix sizes are included.
+
+### 3.339. Exact analytic tensoring and the basis shifts
+
+Take a strict finite filtered free \(D\)-resolution of a finite module \(N\), supplied by (SCP.3)–(SCP.4). Its graded complex is exact in negative degrees. Flatness in (MFL.4) preserves that exactness. To retain the precise shifts, declare a source basis vector \(e_i\) to have filtration degree \(s_i\) and a target basis vector \(f_j\) degree \(t_j\). Then
+\[
+ \begin{gathered}
+ \operatorname{ord}W_{ij}\le s_i-t_j,\qquad h=\tau^{-1},\\
+ e_i'=h^{s_i}e_i,\qquad f_j'=h^{t_j}f_j,\\
+                W'_{ij}=h^{s_i}W_{ij}h^{-t_j}.
+ \end{gathered}
+ \tag{MFL.13}
+\]
+These are invertible actual changes of basis over \(E\), and each normalized entry has order at most zero. The leading complex over \(H\) is the degree-zero dehomogenization of the exact graded complex. Adjacent actual differentials still have product zero. Applying (MFL.5)–(MFL.12) at each negative term therefore gives
+\[
+                   \operatorname{Tor}^D_i(E,N)=0\qquad(i>0).
+ \tag{MFL.14}
+\]
+Only finitely many free terms, coefficients, relations and domains are used.
+
+For completeness this implies right flatness on all modules. An injection of finite modules has finite cokernel, so (MFL.14) and the tensor long exact sequence preserve that injection. Given an arbitrary injection, an element of its tensor kernel has finitely many tensor summands. A witness to its zero image is a finite sum of additivity and balancing relations. Choose finite submodules containing these entries and witnesses. Their injection is covered by the finite case and kills the original element. Tensor is right exact, so it is exact. Sheaf exactness follows stalkwise.
+
+### 3.340. Strictness of the extended presentation
+
+Suppose an input row of order \(a\) has image of order strictly below \(a\) under a normalized differential \(W\). Its leading coefficient lies in \(\ker W_0\), so it is a holomorphic combination of the standard divisors \(g_\nu\). Multiply their actual kernel lifts \(R_\nu\) by coefficients of order \(a\), using \(\tau^a\) to realize the homogeneous degree. Subtracting this row lowers the input order without changing its image. For an image whose order is at most a specified integer \(b\), finitely many such subtractions lower any initial input order to at most \(b\). This proves strictness of the extended differential, with the shifted version obtained by (MFL.13).
+
+Give \(N_E=E\otimes_DN\) the quotient filtration from the extended finite presentation. Strictness identifies its associated graded module:
+\[
+             \operatorname{gr}N_E
+                 \cong\operatorname{gr}E
+                    \otimes_{\operatorname{gr}D}\operatorname{gr}N.
+ \tag{MFL.15}
+\]
+Indeed the degree-\(b\) relations in the quotient are exactly the principal degree-\(b\) images of the preceding free term: strictness gives a preimage in that degree, and the reverse inclusion follows from filteredness. These are algebraic stalk tensors of actual operators.
+
+### 3.341. Zero detection without an assumed separated quotient
+
+Let \(E_0=F_0E\), and use the normalized finite target basis to put \(M_0=F_0N_E\). It is a finite left \(E_0\)-module. Since left multiplication by \(\tau\) sends order at most \(-1\) into order at most zero,
+\[
+                  F_{-1}E=hE_0,\qquad
+                  F_{-1}N_E=hM_0.
+ \tag{MFL.16}
+\]
+If \(\operatorname{gr}N_E=0\), then \(M_0=hM_0\). On a finite column of generators this gives
+\[
+                    m=hA m,\qquad (I-hA)m=0
+                           \quad(A\text{ over }E_0).
+ \tag{MFL.17}
+\]
+The matrix \(hA\) has strictly negative order. Its geometric series is an actual order-zero inverse of \(I-hA\): (MFL.9)–(MFL.11), applied to a finite input of order zero, give its one-domain factorial bounds, while telescoping leaves no coefficient in the remainder once the number of factors exceeds that coefficient's loss. Multiplication on either side gives the identity. Thus \(m=0\), \(M_0=0\), and \(N_E=EM_0=0\). Conversely a zero module has zero associated graded module.
+
+Finally, the Laurent graded module in (MFL.15) is determined by its degree-zero part: multiplication by \(\tau\) identifies adjacent degrees, and the finite shifts have been normalized. Localizing the characteristic module in the chosen cotangent chart, then dehomogenizing, gives a finite \(A\)-module. It is nonzero at the chosen point precisely when that point lies in \(\operatorname{Char}(N)\). The faithfully flat map \(A\to H\) detects exactly this nonvanishing. The preceding paragraph detects zero in the actual module, proving (MFL.1).
+
+![Faithful mixed coefficients, strict analytic tensoring, and the two different supports of a connection and a point module.](figures/actual-analytic-microlocal-flatness.svg)
+
+**Figure 3.49.** The upper square compares the two local coefficient rings through their common commutative completion; each map to that completion is faithfully flat. Actual principal relation lifts and the one-domain factorial estimate give the middle analytic statement. The lower two examples on a complex line distinguish the zero section from the conormal to \(t=0\). The horizontal and vertical axes are \(t\) and \(\tau\); the drawing shows their real coordinate slice, while the equations describe the full complex conic sets. The marked covector is \((0,1)\). No faithful extension from every \(D\)-module at that fixed covector is asserted.
+
+### 3.342. Scope of microlocal scalar extension
+
+For coherent \(N\), the ordinary tensor in (MFL.1) also computes the derived tensor, by right flatness. Its characteristic support is now detected by the actual finite-order ring. The argument applies to singular characteristic sets and does not require holonomicity. In dimension zero there are no nonzero cotangent covectors, and the scalar assertion is the identity over \(\mathbf C\).
+
+The comparison of a general solution complex with an Euler model still requires the actual module action, localized denominator and finite chain homotopies in (MEC.25)–(MEC.27), or a complete alternative comparison. Flatness by itself does not provide these maps. In particular, it does not give the reverse solution-microsupport inclusion for arbitrary coherent systems or a nilpotent regularity theorem.
+
+### 3.343. Exercises on actual flat microlocalization
+
+**Exercise 3.ET.** In the one-dimensional constant-coefficient chart \(\tau\ne0\), put \(h=\tau^{-1}\). Show that \(\sum_{j\ge0}h^j\) is an actual finite-order symbol and is the inverse of \(1-h\). Explain why its conclusion cannot be inferred merely from the formal existence of an inverse, using \(\sum_{j\ge0}(j!)^2h^j\).
+
+**Exercise 3.EU.** On a complex line compare the coherent left modules \(D/D\partial_t\) and \(D/Dt\). Compute their characteristic sets directly from their strict one-step presentations. At \(p=(0,1)\), determine which actual \(E\)-tensors vanish. Explain why faithful flatness of \(A\to H\) in (MFL.4) does not imply faithfulness of \(D\to E_p\).
+
+**Exercise 3.EV.** Over \(E\), let \(W=(t h,1)^{\mathsf T}\) and \(V=(1,-t h)\). Verify (MFL.5), construct the maps in (MFL.7), and solve every relation \(b\circ W=0\) explicitly. Keep the order of every operator product.
+
+### 3.344. Solutions to the microlocalization exercises
+
+**Solution 3.ET.** There are no coefficients above degree zero. The coefficient of degree \(-j\) is the constant one, so it is holomorphic on any common coefficient product and satisfies \(1\le j!\) for \(j\ge1\). All spatial derivatives vanish. Since these are constant coefficients, the ordered product is the ordinary coefficient convolution, and
+\[
+       (1-h)\sum_{j\ge0}h^j=1
+                    =\left(\sum_{j\ge0}h^j\right)(1-h).
+ \tag{MFL.18}
+\]
+Each coefficient identity uses finitely many terms. The second proposed series is formal but violates every factorial bound \((j!)^2\le B C^j j!\). Indeed, for even \(j\), \(j!\ge(j/2)^{j/2}\), so \(j!/C^j\) is unbounded for every fixed \(C\). Its coefficients therefore do not define an actual symbol. Also, substituting a nonzero numerical value for \(h\) into a general factorial negative tail need not give a convergent scalar series; that substitution is not the definition of an analytic microlocal symbol.
+
+**Solution 3.EU.** Right multiplication by \(\partial_t\) or by \(t\) gives an injective map \(D\to D\). The principal products are multiplication by \(\tau\) or \(t\) in the domain \(\mathbf C\{t\}[\tau]\); nonzero leading coefficients cannot cancel. The same calculation proves strictness, with source shift one for \(\partial_t\) and zero for \(t\). Hence
+\[
+ \operatorname{gr}(D/D\partial_t)=\mathbf C\{t\}[\tau]/(\tau),
+ \qquad
+ \operatorname{gr}(D/Dt)=\mathbf C\{t\}[\tau]/(t).
+ \tag{MFL.19}
+\]
+The first is the zero section; the second is the conormal line to \(t=0\). At \(p=(0,1)\), \(\partial_t\) has the actual inverse \(h\), so the first tensor is zero. The second tensor is nonzero by (MFL.1). The first original module is nonzero: acting on the constant function one identifies it with \(\mathbf C\{t\}\) by the ordinary ordered operator normal form. Thus the flat map to this fixed microlocal stalk is not faithful. In (MFL.4), faithful coefficient extension comes after inversion of \(\tau\) and localization at the chosen characteristic point; that prior localization can already kill a nonzero module.
+
+**Solution 3.EV.** Associativity gives \(VW=t h-t h=0\). The principal matrices are \(W_0=(0,1)^{\mathsf T}\) and \(V_0=(1,0)\), so their image and kernel agree. There is one principal divisor \(g=(1,0)\), with actual lift \(R=V\). Set \(T_0c=(c,0)\), \(Tc=(c,-c\circ t h)\), \(\Lambda(b_1,b_2)=b_1\), \(q(b_1,b_2)=(0,b_2)\), and \(k(a)=(0,a)\). These satisfy all four identities in (MFL.7). Since \(\Lambda(T-T_0)=0\), (MFL.8) reduces to \(c=b_1\). The original relation says exactly \(b_2=-b_1\circ t h\), so \(b=cV\). This verifies the relation lemma on an actual matrix with a negative-order entry. No interchange of \(t\) and \(h\) occurs.
+
+### 3.345. A directional topology inside a coefficient domain
+
+Work over \(\mathbf C\). A finite collection of analytic operators is defined on a common neighbourhood, which may be bounded. The cutoff used in (MEC.25) must respect that actual coefficient domain. We construct it using a relative directional topology and the canonical kernel action.
+
+Let \(D\) be a convex ordinary open set in a finite-dimensional real vector space and let \(G\) be a closed convex cone. Give \(D_G\) the subspace topology induced by the global \(G\)-topology, and write \(q:D\to D_G\). A relative directional open \(W\) satisfies \((W+G)\cap D=W\). Its neighbourhood basis is
+\[
+       N_{x,\epsilon}=(B_\epsilon(x)+G)\cap D,
+                    \qquad \epsilon>0.
+ \tag{RKC.1}
+\]
+Balls here are sufficiently small ordinary balls centred in \(D\). If \(x,y\in D\) and \(y-x\in G\), every directional neighbourhood of \(x\) contains \(y\). Thus a directional sheaf \(A\) has a canonical specialization map \(A_x\to A_y\), obtained by taking the germ at \(y\) of a representative near \(x\). Refining the representative proves well-definedness and transitivity. The ordinary inverse-image stalk is \((q^{-1}A)_x=A_x\).
+
+### 3.346. The exact relative section map
+
+For an ordinary open convex \(U\subset D\), put \(\operatorname{Sat}(U)=(U+G)\cap D\). Pullback and restriction give
+\[
+       \Gamma(\operatorname{Sat}(U);A)
+            \xrightarrow{\sim}\Gamma(U;q^{-1}A).
+ \tag{RKC.2}
+\]
+Injectivity follows by specialization: every point of the saturation lies above a point of \(U\).
+
+For surjectivity take \(s\in\Gamma(U;q^{-1}A)\) and fix \(y\in\operatorname{Sat}(U)\). For \(x\in U\cap(y-G)\), specialize \(s_x\) to \(A_y\). This value is locally constant as a function of \(x\) in that set. Indeed, near \(x\), represent \(s\) by a directional section \(a\) on a directional neighbourhood \(W\) of \(x\). Shrink an ordinary ball \(B\subset U\cap W\) on which its pullback is \(s\). Since \(y\in x+G\), it belongs to \(W\). For each \(x'\in B\cap(y-G)\), the specialized germ is the same germ \(a_y\). The set \(U\cap(y-G)\) is nonempty and convex, hence connected, so the value is independent of the source point.
+
+These values are germs of a directional section. With the preceding \(B,a\), the directional open \(\operatorname{Sat}(B)\) contains \(y\) and is contained in \(W\). For each point of \(\operatorname{Sat}(B)\), using a source in \(B\) identifies its assigned germ with the germ of \(a\). Thus these representatives glue on the saturation. Its pullback has the prescribed germs on \(U\), proving (RKC.2). All segments used here stay in \(U\cap(y-G)\subset D\); no coefficient is continued outside \(D\).
+
+### 3.347. Flabby coefficients and the derived unit
+
+Suppose \(A\) is flabby on \(D_G\). Any section of \(q^{-1}A\) on a compact convex \(K\subset D\) extends to \(D\). Compact-neighbourhood continuity first represents it on an ordinary neighbourhood of \(K\). A small Minkowski thickening gives a convex open \(U\) containing \(K\) within that neighbourhood and within \(D\). Formula (RKC.2) represents the section on \(\operatorname{Sat}(U)\), and directional flabbiness extends it to \(D_G\). Pullback supplies the required extension.
+
+Consequently, for every ordinary locally closed convex \(C\subset D\), restriction of \(q^{-1}A\) has the compact-convex extension property and
+\[
+                  H^j(C;q^{-1}A)=0\qquad(j>0).
+ \tag{RKC.3}
+\]
+The precise ordinary extension theorem is Extending sections on convex sets, SH02-OR-CONVEX-COMPACT and SH02-OR-CONVEX-EXHAUSTION. Its proof first projects a compact convex set properly to an interval, using the interval closed-cover argument and the canonical compact-fibre restriction. A compact convex exhaustion with interiors in \(C\) covering \(C\) then permits compatible lifts in an injective resolution. These are the ordinary subspace topology and the full compact-convex extension hypothesis. The compact-fibre proof is Open prerequisite proofs, “Compact proper fibres and the section-restriction map”; its compact lifting input is Duality maps for constructible inverse and direct images, C1–C4. None requires finite rank or constructibility.
+
+Resolve a directional sheaf by directional injectives, which are flabby. Every basic directional open in (RKC.1) is ordinary open convex. Formula (RKC.3) makes each pulled-back injective acyclic for sections there. Its saturation is itself, so (RKC.2) identifies its sections, by the actual unit, with the sections before pullback. Computing the direct image on this basis proves
+\[
+                     A\xrightarrow{\sim}Rq_*q^{-1}A.
+ \tag{RKC.4}
+\]
+Finite truncation triangles give the same result for bounded complexes. Every map is natural for a given constant coefficient-algebra action. For a possibly noncommutative \(\mathbf C\)-algebra, forget the action to apply the ordinary vanishing theorem; injective module sheaves remain vector-injective because induction from vector sheaves is exact on stalks. Thus the same unit holds in that module-derived category. No unbounded assertion is needed below.
+
+### 3.348. The relative counit passes the real support tests
+
+Let \(F\in D^b(\mathbf C_D)\), and suppose \(Rq_*F\) is bounded. Put \(P_GF=q^{-1}Rq_*F\) and let \(B\) be the cone of its counit. The adjunction identities and (RKC.4) give
+\[
+                 P_GF\longrightarrow F\longrightarrow B,
+                       \qquad Rq_*B=0.
+ \tag{RKC.5}
+\]
+For \(G=\{0\}\), the topology map is the identity and \(B=0\). Otherwise, if a covector is strictly negative on every nonzero direction in \(G\), the same remains true in a covector neighbourhood, by compactness of the unit directions. For a real \(C^1\) test function with such differential at \(x\), choose a small convex ball where its derivative along every unit cone direction is at most \(-c<0\). Saturate a smaller negative-sublevel patch by \(G\), intersecting with \(D\), and call the resulting relative directional open \(O\). Near \(x\) it agrees with the negative sublevel: the segment from a source in the patch to a sufficiently nearby target stays in the convex ball, so the function strictly decreases along that segment.
+
+There is a fixed \(K\) such that \(N_{x,\epsilon}\setminus O\subset B_{K\epsilon}(x)\) for small \(\epsilon\). At a source in \(B_\epsilon(x)\), the function differs from its value at \(x\) by at most \(M\epsilon\). Advancing \((M/c+1)\epsilon\) along a unit cone direction enters the negative patch. Every later point still in \(D\) belongs to its saturation. Points reached before that distance are within \((M/c+2)\epsilon\) of \(x\). The relevant short segments lie inside the chosen ball; convexity of \(D\) retains every intermediate point between a source and a target in \(D\).
+
+The differences therefore form a neighbourhood basis at \(x\) in the ordinary closed complement of \(O\). The localization triangles on \(N_{x,\epsilon}\), followed by their exact stalk colimit, identify the support-test stalk with that of \(q^{-1}R\Gamma_{D_G\setminus O}Rq_*B\), which is zero. This is the map calculation of Microsupport tests, SH02-MST-CONE-TO-TEST, with every saturation intersected with \(D\). The shrinking differences lie inside \(D\), so no exterior boundary term is added. Thus
+\[
+ \operatorname{SS}(B)\cap
+       \bigl(D\times\operatorname{Int}G^{\circ a}\bigr)=\varnothing.
+ \tag{RKC.6}
+\]
+Here \(G^{\circ a}\) is the antipodal polar. The conclusion uses the actual real support tests for arbitrary bounded vector-sheaf complexes.
+
+### 3.349. An admitted round diamond and a compact cap
+
+Use complex coordinates \((t,x_1,\ldots,x_d)\), put \(n=d+1\), and centre the covector at \(p=d\operatorname{Re}t\). Choose positive constants \(\epsilon,A_j\) and the full thick cone
+\[
+ \begin{gathered}
+ G=\left\{\begin{gathered}
+       \operatorname{Re}t=-l\le0,\\
+       |\operatorname{Im}t|\le\epsilon l,\\
+       |x_j|\le A_jl
+       \end{gathered}\right\},\\
+                 K_G=(1+\epsilon^2+\sum_jA_j^2)^{1/2}.
+ \end{gathered}
+ \tag{RKC.7}
+\]
+This cone is closed, convex and pointed, has ordinary interior, and satisfies \(|v|\le K_Gl\) and \(p(v)=-l<0\) for \(v\ne0\).
+
+Take the round coefficient domain
+\[
+       D_R=(R e_t+\operatorname{Int}G)
+                   \cap(-R e_t-\operatorname{Int}G),\qquad R>0.
+ \tag{RKC.8}
+\]
+Its explicit inequalities are \(|\operatorname{Re}t|<R\), \(|\operatorname{Im}t|<\epsilon(R-|\operatorname{Re}t|)\), and \(|x_j|<A_j(R-|\operatorname{Re}t|)\). Hence it is bounded, convex and contains zero. If endpoints lie in \(D_R\) and consecutive differences lie in \(G\), every intermediate point stays in \(D_R\): addition preserves the first open cone and subtraction of the remaining difference preserves the second. Compact endpoints retain strictly positive margins in these inequalities. This is the roundness used by the actual canonical kernel product, proved in Regular singularities, DL.4 and ID.2. Choose \(R\) so small that \(\overline{D_R}\) lies in the common coefficient neighbourhood and all endpoint differences fit in the finitely many normal coefficient radii. The bounds \(2R\sqrt{1+\epsilon^2}\) in time and \(2A_jR\) in space verify those margins.
+
+Choose \(a,h,h_*\) with \(0<h<h_*\), \(a>0\), \(a+2h_*<R\), and put
+\[
+ \begin{gathered}
+ \Omega=(a e_t+\operatorname{Int}G)\cap D_R,\\
+ \Omega_0=\Omega\cap\{\operatorname{Re}t<-h\},\qquad
+ S=\Omega\setminus\Omega_0,\\
+ S_*=\Omega\cap\{\operatorname{Re}t\ge-h_*\}.
+ \end{gathered}
+ \tag{RKC.9}
+\]
+Both opens are directional relative to \(D_R\), and zero is in the ordinary interior of \(S\). The closures of both truncated caps lie compactly inside \(D_R\). Indeed, if \(u=\operatorname{Re}t\in[-h_*,a]\), their transverse bounds are \(\epsilon(a-u)\), \(A_j(a-u)\). For \(u\ge0\), they are strictly below the diamond bounds because \(a<R\); for \(u\le0\), the required inequality is \(a-2u<R\), supplied by \(a+2h_*<R\). Also
+\[
+         |z-a e_t|\le K_G(a+h_*)
+                     \quad(z\in\overline{S_*}).
+ \tag{RKC.10}
+\]
+Thus these are actual bounded coefficient domains and compact cap margins, with no continuation of coefficients to an infinite cone.
+
+### 3.350. The single degree-one holomorphic quotient
+
+Now let \(q:\Omega\to\Omega_G\) be the relative topology map. A cofinal basis at \(z\in\Omega\) consists of \(V_{z,b}=(z+b e_t+\operatorname{Int}G)\cap D_R\), for sufficiently small \(b>0\) making it lie in \(\Omega\). Each is a bounded convex Stein domain; so is its nonempty intersection with the strict halfspace defining \(\Omega_0\). Here is an explicit exhaustion. For every translated cone inequality put \(L=\pm\operatorname{Re}t+c>0\), with transverse coordinates \(Y_0=\operatorname{Im}t-c_0\), \(Y_j=x_j-c_j\), and constants \(a_0=\epsilon,a_j=A_j\). Sum the barriers
+\[
+ |z|^2+\sum_{\text{cone faces}}\left(
+       -\log L-\sum_{j=0}^d\log(a_j^2L^2-|Y_j|^2)\right),
+ \tag{RKC.11}
+\]
+adding \(( -h-\operatorname{Re}t)^{-1}\) for the strict halfspace. The real Hessian of each negative Lorentz logarithm is nonnegative on its cone: scale to \(L^2-|Y|^2\) and use the linear hyperbolic rotation of DL.5, whose Hessian at \((L,0)\) is positive. Its Levi form is nonnegative, and \(|z|^2\) makes the sum strictly plurisubharmonic. Every boundary face makes a barrier diverge. Boundedness makes this a genuine exhaustion. Holomorphic acyclicity follows from the full Dolbeault and positive-weight proof in Stein domains in complex space, Theorems 2.1–2.2. Consequently
+\[
+                       Rq_*\mathcal O_\Omega
+                            =q_*\mathcal O_\Omega[0].
+ \tag{RKC.12}
+\]
+For \(z\in S\), the basis intersection with \(\Omega_0\) is nonempty: a negative vertical segment crosses the bottom before leaving the longer cap \(S_*\Subset D_R\). It is open convex and connected, so holomorphic restriction is injective by the identity principle. The localization sequence and the vanishing just proved show
+\[
+ \begin{gathered}
+ R\Gamma_S Rq_*\mathcal O_\Omega\simeq\mathcal F[-1],\\
+ \mathcal F_z=\underset{b}{\operatorname{colim}}
+      \frac{\mathcal O(V_{z,b}\cap\Omega_0)}{\mathcal O(V_{z,b})}
+                       \qquad(z\in S).
+ \end{gathered}
+ \tag{RKC.13}
+\]
+Outside \(S\) the relative object is zero. This proves concentration for the actual sheaf, not just a chosen stalk. All quotients and their transition maps are ordinary holomorphic restrictions.
+
+### 3.351. The whole canonical ring acts on this quotient
+
+Let \(\mathcal R=E(G;D_R)\) be the canonical degree-\(n\) kernel cohomology ring with its input holomorphic top-form line, product and positive diagonal unit from Regular singularities, DL.1–DLG.7. We verify the domain conditions for that construction in the present relative topology.
+
+For compact outputs \(K\Subset\Omega\), relevant inputs in the cap are in
+\[
+                   (K+G)\cap\{\operatorname{Re}t\ge-h\}.
+ \tag{RKC.14}
+\]
+Their cone lengths are bounded by the output time and \(h\), so this set is bounded and closed. It lies inside the global cone \(a e_t+\operatorname{Int}G\), by cone addition from an output there, and inside \(D_R\), by the compact cap margins. Hence it is compact inside the actual input open \(\Omega\). The longer cap supplies a strict margin for collars. Relative directional invariance also gives
+\[
+ \begin{gathered}
+ z\in W,\quad u-z\in G,\quad z,u\in D_R
+                      \quad\Longrightarrow\quad u\in W,\\
+             p_1(A_G\cap p_2^{-1}S)\subset S,
+ \end{gathered}
+ \tag{RKC.15}
+\]
+where \(W\) is any relative directional output open, \(A_G\) is the kernel relation inside \(\Omega^2\), and \(p_1,p_2\) are output and input. For the second inclusion, an output in \(\Omega_0\) could only have inputs in \(\Omega_0\). The same facts hold for \(S_*\). These are precisely the properness and support-to-image conditions.
+
+To make clear which canonical operation is used, take a full smooth kernel representative \(k=(\alpha,\beta)\) of degree \(n\), and an input relative cochain \(e=(c,f)\). On the two-support complement cube their cup has all four entries
+\[
+       \left(\begin{gathered}
+          \alpha\wedge c,\quad\beta\wedge c,\\
+          (-1)^n\alpha\wedge f,\quad(-1)^{n-1}\beta\wedge f
+       \end{gathered}\right).
+ \tag{RKC.16}
+\]
+Apply the finite cube-to-full-cone map \(\Phi_\rho\), with its derivative-of-partition term, then the proper collar \(L_\eta\) equal to one near the intersection, and the normalized input trace \(Q_n\). The complete formulas and homotopies are DLG.1–DLG.5. They give
+\[
+ \begin{gathered}
+        \mathcal A_k=Q_nL_\eta\Phi_\rho F(k,-),\\
+        [\mathcal A_k][\mathcal A_l]=[\mathcal A_{k*l}],\qquad
+        [\mathcal A_1]=1.
+ \end{gathered}
+ \tag{RKC.17}
+\]
+Every map is defined on the same actual ordinary complement opens in \(\Omega^2\). The collar exists by (RKC.14); its derivative is away from the intersection, so the complement coefficients extend by zero exactly where the formula permits. No general complement coefficient is extended across its excluded support. A smaller relative directional output retains the input by (RKC.15). The finite-cover comparison DLG.14 therefore commutes with output restriction; its collar comparison remains proper on the common intersection. Consecutive inputs remain in \(D_R\) by roundness and in \(\Omega\) by relative cone invariance. Thus the full eight-entry triple cube and its normalized successive traces prove (RKC.17) here with the same signs and input density.
+
+This supplies endomorphisms of the single cohomology sheaf \(\mathcal F\). Boundary, partition and collar homotopies give equality of these sheaf maps. Formula (RKC.17) is consequently a strict module identity on \(\mathcal F\): it is a genuine sheaf of left \(\mathcal R\)-modules. The construction applies to the whole canonical ring, including classes that have no supported-current representative.
+
+### 3.352. The finite differential action is the ordinary one
+
+Let \(D_0\) be any unital algebra of finite analytic differential operators with coefficients on \(D_R\). Its diagonal kernel map to \(\mathcal R\) is unital. For \(P=b(z)\partial_z^\nu\), its normalized positive product-Cauchy action is
+\[
+ \frac{b(z)}{(2\pi i)^n}
+    \int_{|u_j-z_j|=r_j}
+       \frac{\nu!\,f(u)\,du_1\cdots du_n}{(u-z)^{\nu+1}}
+                    =b(z)\partial_z^\nu f(z).
+ \tag{RKC.18}
+\]
+Each circle is positively oriented, and their order is the input top-form order. U.2, especially (U.6)–(U.8), proves this normalization from the positive Cauchy point mass and its derivatives. In the full Dolbeault convention the ordered factor \((-1)^{n(n-1)/2}\) and the trace signs are exactly those of DLG.4–DLG.5. Thus the action of \(P\) on each holomorphic side of (RKC.13) is its usual local differential action; it respects restrictions and induces that same action on the quotient sheaf.
+
+It follows that restricting the strict \(\mathcal R\)-module \(\mathcal F\) along \(D_0\to\mathcal R\) gives exactly this strict ordinary \(D_0\)-action. In particular all operator relations agree on the sheaf before choosing derived lifts. Let
+\[
+                         \mathcal G=q^{-1}\mathcal F[-1].
+ \tag{RKC.19}
+\]
+This is a genuine \(\mathcal R\)-module object with underlying vector cohomology in degree one only. The concentration roof is \(D_0\)-linear: resolve \(\mathcal O_\Omega\) by the common exact vector-injective functor of DL.6, natural in all vector-sheaf maps, retain its strict \(D_0\)-action, and take the good truncation and degree-one projection. Its cohomology is the just-identified \(D_0\)-module \(\mathcal F\). This does not prescribe an action of arbitrary microlocal kernels on \(\mathcal O\) itself.
+
+### 3.353. An actual localized denominator to holomorphic functions
+
+Closed support commutes with directional direct image in this relative setting:
+\[
+              Rq_*R\Gamma_S\mathcal O_\Omega
+                    \simeq R\Gamma_S Rq_*\mathcal O_\Omega.
+ \tag{RKC.20}
+\]
+Indeed \(S\) is closed in \(\Omega_G\), and its complement \(\Omega_0\) is open in both topologies. Compare the two localization triangles using open restriction and the literal composite direct-image identity. A vector-injective resolution is preserved by these direct images, which are right adjoints to exact inverse images. This proves (RKC.20) with its original maps. Each arrow is \(D_0\)-linear because support, restriction and the resolutions commute with the specified local differential action.
+
+Combining (RKC.13), (RKC.19) and (RKC.20) gives the \(D_0\)-linear roof
+\[
+                 \mathcal G\simeq
+                  q^{-1}Rq_*R\Gamma_S\mathcal O_\Omega
+                          =P_G R\Gamma_S\mathcal O_\Omega.
+ \tag{RKC.21}
+\]
+The ordinary supported object is bounded: the finite Dolbeault resolution and localization give degrees \([0,n+1]\), as in (SCP.5). Its directional image is the degree-one object (RKC.13). Thus the boundedness premises of (RKC.5) hold in this actual instance. Its counit is a denominator at \(p\) by (RKC.6), and \(R\Gamma_S\mathcal O_\Omega\to\mathcal O_\Omega\) is an ordinary isomorphism near zero, which is in \(\operatorname{Int}S\). On a common small neighbourhood \(U\) this gives
+\[
+                  \mathcal G|_U\simeq\mathcal O_U
+                      \quad\text{in }D^b(D_0\text{-Mod};p).
+ \tag{RKC.22}
+\]
+This notation means that the specified \(D_0\)-linear roof has underlying vector-sheaf cones microsupport-null at \(p\). It does not require an ordinary neighbourhood quasi-isomorphism.
+
+### 3.354. Finite comparison data and their mathematical scope
+
+The construction supplies the genuine bounded cutoff and denominator required in (MEC.25) for the actual canonical ring \(E(G;D_R)\). For any specified finite operator diagram that is realized in this ring on the chosen domain and cone, the same \(\mathcal G\) supplies its coefficient action. Only finitely many domain and normal-radius margins were imposed. The finite realization theorem in Regular singularities, ID.2 and DL.7, retains the actual common ring and witnesses; a new infinite family of germ representatives would need its own common-domain assertion.
+
+In particular, if the finite resolution complexes in (MEC.26) have an actual chain-homotopy equivalence after extension to this \(\mathcal R\), finite free adjunction and (RKC.22) give
+\[
+             \operatorname{Sol}(N)\simeq\operatorname{Sol}(N_A)
+                        \quad\text{in }D^b(\mathbf C_U;p).
+ \tag{RKC.23}
+\]
+The finite Hom construction retains the specified homotopies, and its \(D_0\)-linear denominator cones remain null by their finite cell filtration, exactly as proved in (MEC.25)–(MEC.27). The cutoff now provides that criterion's coefficient object. Applying the criterion to the generic whole-module normal form still requires the actual base-extended resolution homotopies, faithful infinite-order extension and any contact-coordinate comparisons. The reverse solution-microsupport inclusion for arbitrary systems, signed de Rham comparison and nilpotent regularity are not consequences of the cutoff alone.
+
+![An exact cap in a round coefficient diamond and the strict kernel-module denominator.](figures/relative-kernel-cutoff.svg)
+
+**Figure 3.50.** The planar panel is the exact complex \(t\)-plane case \(R=\epsilon=1\), \(a=1/4\), \(h=1/8\), \(h_*=1/4\). The outer diamond is \(D_1\); the inner triangular cap is \(S\), and the longer outlined cap is \(S_*\). Dashed cone faces are excluded; the solid bottom segments are included. All boundary coordinates and the inequality \(a+2h_*<R\) are retained. The maps below refer to the full kernel cup, complement cube, proper collar and normalized trace, then to the \(D_0\)-linear concentration and counit roof. Higher-dimensional transverse inequalities remain those of (RKC.7)–(RKC.10).
+
+### 3.355. Exercises on the actual cutoff
+
+**Exercise 3.EW.** Compute the open antipodal polar of (RKC.7). Verify the exact compact containment of both caps for the parameters in Figure 3.50, giving their three vertices in the complex \(t\)-plane.
+
+**Exercise 3.EX.** In the same one-dimensional setting choose a holomorphic branch of \(\log t\) on the negative halfplane. Show that \([\log t]\) and \([1/t]\) give nonzero quotient germs in \(\mathcal F_0\). Compute their finite differential actions and verify the ordinary commutator on \([1/t]\).
+
+**Exercise 3.EY.** For every cofinal convex basis domain \(V\) used at zero, prove that differentiation induces an isomorphism on \(\mathcal O(V\cap\Omega_0)/\mathcal O(V)\). Identify its inverse by primitive classes. Explain why the corresponding inverse cannot act on the ordinary holomorphic sheaf with its usual differential action.
+
+### 3.356. Solutions to the cutoff exercises
+
+**Solution 3.EW.** Write a real covector as \(\alpha\,d\operatorname{Re}t+\beta\,d\operatorname{Im}t+\sum_j\eta_j\cdot dx_j\), using the real Euclidean pairing in each complex spatial coordinate. For a fixed cone length \(l\), its maximum is \(l(-\alpha+\epsilon|\beta|+\sum_jA_j|\eta_j|)\), since the independent transverse balls attain their respective dual norm bounds. Thus
+\[
+       \operatorname{Int}G^{\circ a}
+           =\{\alpha>\epsilon|\beta|+\sum_jA_j|\eta_j|\}.
+ \tag{RKC.24}
+\]
+In the planar example this is \(\alpha>|\beta|\), containing \(p\). The cap closures have vertices
+\[
+ \begin{gathered}
+ \overline S:\quad(1/4,0),\ (-1/8,3/8),\ (-1/8,-3/8),\\
+ \overline{S_*}:\quad(1/4,0),\ (-1/4,1/2),\ (-1/4,-1/2).
+ \end{gathered}
+ \tag{RKC.25}
+\]
+The outer diamond has vertices \((1,0),(0,1),(-1,0),(0,-1)\). Each cap vertex has \(|\operatorname{Re}t|+|\operatorname{Im}t|\le3/4<1\), so convexity puts the whole compact triangular closure strictly inside \(D_1\). The equal bound \(a+2h_*=3/4\) is precisely the general strict margin.
+
+**Solution 3.EX.** The negative halfplane is convex, so a branch of \(\log t\) exists there by integrating \(1/t\), as in §3.329 and (MEC.17)–(MEC.18). It restricts to each \(V\cap\Omega_0\). If this restriction extended holomorphically to the connected \(V\), its extension \(g\) would satisfy \(tg'=1\) on the nonempty side open. The identity principle would give that equation on all of \(V\), contradicting its value at zero. Likewise an extension of \(1/t\) would satisfy \(tg=1\) at zero. These arguments work at every sufficiently small cofinal basis domain, so the colimit classes are nonzero. Ordinary differential action gives
+\[
+ \partial_t[\log t]=[1/t],\qquad
+ t\partial_t[\log t]=[1]=0,\qquad t[1/t]=0.
+ \tag{RKC.26}
+\]
+The constant function extends to \(V\), hence has zero quotient class. Since \(\partial_t[1/t]=[-1/t^2]\),
+\[
+        (\partial_t t-t\partial_t)[1/t]
+             =0-t[-1/t^2]=[1/t].
+ \tag{RKC.27}
+\]
+Thus the commutator is the literal finite differential relation on the actual nonzero quotient germ.
+
+**Solution 3.EY.** Both \(V\) and its nonempty negative-side intersection are convex one-dimensional domains. Every holomorphic function on either has a holomorphic primitive, obtained by integrating on straight segments and differentiating that integral. For a side function \(f\), the class of any side primitive \(F\) is independent of its additive constant. Replacing \(f\) by the restriction of a function on \(V\) changes that primitive by a function extending to \(V\), again up to a constant. This gives a well-defined inverse on the quotient. If \(f'\) extends to \(V\), subtract a primitive there; the remainder is constant on the connected side, so \(f\) also extends. Hence
+\[
+       \partial_t:\frac{\mathcal O(V\cap\Omega_0)}{\mathcal O(V)}
+           \xrightarrow{\sim}
+                \frac{\mathcal O(V\cap\Omega_0)}{\mathcal O(V)}.
+ \tag{RKC.28}
+\]
+The derivative maps commute with restriction, and their uniquely determined inverse maps therefore commute as well. Passing to the stalk colimit gives the inverse differential action on \(\mathcal F_0\). On the ordinary sheaf, however,
+\[
+              \ker(\partial_t:\mathcal O_U\to\mathcal O_U)
+                            =\mathbf C_U\ne0.
+ \tag{RKC.29}
+\]
+Thus an algebra containing an inverse of \(\partial_t\) cannot act on \(\mathcal O_U\) while restricting to its usual derivative. The bounded cutoff can carry that action. Its equivalence to \(\mathcal O_U\) is the localized denominator (RKC.22), with its stated covector and strict module structure.
+
+### 3.357. Actual full coefficients and a finite solution comparison
+
+Fix a complex manifold \(X\), a nonzero covector \(p\in T_x^*X\), and the actual rings
+\[
+ D=\mathcal D^{\mathrm{an}}_{X,x},\qquad
+ E=\mathcal E_{X,p},\qquad B=\mathcal E^\infty_{X,p}.
+ \tag{HGT.1}
+\]
+The last ring has one common holomorphic coefficient domain, the every-\(\varepsilon\) positive-head bounds and the factorial negative-tail bounds of Regular singularities, §§5.44–5.45. Its products retain the full ordered derivatives. In particular, it is not the unrestricted ring of formal series or arbitrary entire functions of a covariable.
+
+Let \(N,N'\) be coherent analytic \(\mathcal D_X\)-modules near \(x\). We prove that an actual module isomorphism
+\[
+             \alpha:B\otimes_DN_x\xrightarrow{\sim}B\otimes_DN'_x
+ \tag{HGT.2}
+\]
+in these same base coordinates gives an equivalence
+\[
+          \operatorname{Sol}(N)\simeq\operatorname{Sol}(N')
+                          \quad\text{in }D^b(\mathbf C_U;p)
+ \tag{HGT.3}
+\]
+on a common neighbourhood \(U\) of \(x\). The solution complexes use the unshifted convention of (SCP.4). The proof constructs the finite resolution maps and homotopies needed by (MEC.25)–(MEC.27), then applies the actual cutoff (RKC.19)–(RKC.22). Neither module is required to be holonomic for this comparison. A change of base coordinates is treated in §3.364; a general contact change needs its own solution transport.
+
+### 3.358. Faithful extension from finite to full microlocal operators
+
+We use the complete right-flatness and proper-left-ideal proofs of Regular singularities, MF.1–MF.7 and FEP.1–FEP.9. Their exact consequences are right \(E\)-flatness of \(B\) on arbitrary left modules and
+\[
+        I\subsetneq E\quad\Longrightarrow\quad 1\notin BI,
+                  \qquad B/BI\ne0.
+ \tag{HGT.4}
+\]
+Here \(BI\) means finite sums of actual products, with no closure. The analytic quotient in that proof is complex linear, with coefficient projection \(q\), division \(d\), and order-lowering correction \(L\):
+\[
+                    \mathcal P=q(1+Ld)^{-1},\qquad
+                    \mathcal P1=1,\qquad \mathcal P(BI)=0.
+ \tag{HGT.5}
+\]
+Its annihilation of the whole ideal includes the second source correction by actual lifted principal relations. Restricting to one coefficient complement would not suffice. FEA.1–FEA.4 gives uniformly bounded complex-linear coefficient divisions; FEB.1–FEB.5 gives the whole word estimates, with one domain chosen before every homogeneous, spatial and iteration index. These prove the actual inverses and both identities in (HGT.5). This is the earlier proved analytic input; the algebraic consequences below retain its full module quantifiers.
+
+For a left ideal \(I\), balancing gives inverse maps
+\[
+ \begin{gathered}
+ B\otimes_E(E/I)\longleftrightarrow B/BI,\\
+ b\otimes(a+I)\longmapsto ba+BI,\qquad
+ b+BI\longmapsto b\otimes(1+I).
+ \end{gathered}
+ \tag{HGT.6}
+\]
+If \(0\ne m\in M\), its annihilator \(I\) is proper and \(E/I\to M\), \(a+I\mapsto am\), is injective. Flatness preserves that injection. The class of one in (HGT.6) is nonzero by (HGT.4), and maps to \(1\otimes m\). Hence
+\[
+                  M\longrightarrow B\otimes_EM,
+                     \qquad m\longmapsto1\otimes m
+                       \quad\text{is injective for every }M.
+ \tag{HGT.7}
+\]
+This also detects nonzero objects. If a morphism becomes zero after tensoring, applying (HGT.7) to each of its values makes it zero. Exactness and detection applied to the kernel and cokernel reflect isomorphisms. None of this asserts fullness or injectivity on higher extension groups.
+
+### 3.359. Analytic resolutions over the full coefficient ring
+
+The finite-order flatness theorem (MFL.1)–(MFL.19) and ordinary balancing give
+\[
+            B\otimes_DM\simeq B\otimes_E(E\otimes_DM).
+ \tag{HGT.8}
+\]
+The forward inverse pair sends \(b\otimes m\) to \(b\otimes(1\otimes m)\) and \(b\otimes(e\otimes m)\) to \(be\otimes m\). Both component tensor functors are exact, so \(B\) is right \(D\)-flat. Tensoring the exact sequences defining cycles and boundaries also gives
+\[
+             H^i(B\otimes_DC^\bullet)
+                      =B\otimes_DH^i(C^\bullet)
+ \tag{HGT.9}
+\]
+for every cochain complex; this is a degreewise argument, without a totalization or completion.
+
+Choose the actual finite locally free analytic resolutions of (SCP.3)–(SCP.4), then restrict to stalks. Pad with zero terms to write them in the same interval \([-m,0]\):
+\[
+       P^\bullet\longrightarrow N_x,\qquad
+       Q^\bullet\longrightarrow N'_x.
+ \tag{HGT.10}
+\]
+Their \(B\)-extensions are bounded finite free resolutions by (HGT.9). Their matrices remain the images of the original finite analytic operator matrices. The smaller algebra generated by these entries is not assumed to have an exact resolution.
+
+### 3.360. Constructing the two finite comparison maps
+
+For brevity write \(P_B=B\otimes_DP\), \(Q_B=B\otimes_DQ\). Lift \(\alpha\) through the augmentation \(Q_B^0\to B\otimes_DN'_x\), choosing a preimage for each image of a finite basis of \(P_B^0\). This gives \(f^0\). At degree minus one, \(f^0d_P^{-1}\) has zero augmentation because \(f^0\) lifts \(\alpha\). It therefore lies in \(\ker\epsilon_Q=\operatorname{im}d_Q^{-1}\). Lift each finite basis image through that surjection to obtain \(f^{-1}\).
+
+For \(i<-1\), suppose the higher components have been constructed. The chain equation one degree above and \(d_P^2=0\) show that \(f^{i+1}d_P^i\) takes values in \(\ker d_Q^{i+1}=\operatorname{im}d_Q^i\). Again lift the finitely many basis images. Thus
+\[
+               d_Q^if^i=f^{i+1}d_P^i
+                      \qquad(-m\le i<0).
+ \tag{HGT.11}
+\]
+If there is no preceding nonzero term of \(Q_B\), exactness makes the cycle to be lifted zero, so the zero map supplies that component. The finite recursion gives a cochain map \(f:P_B\to Q_B\) lifting \(\alpha\). Applying the same construction to \(\alpha^{-1}\) gives \(g:Q_B\to P_B\). All entries and equations lie in the actual ring \(B\).
+
+### 3.361. Both homotopies, with their matrix sides
+
+Set \(k=gf-1\) on \(P_B\). Its degree-zero augmentation is zero, so choose \(H^0:P_B^0\to P_B^{-1}\) with \(d_P^{-1}H^0=k^0\). Inductively, if the higher homotopy terms have been chosen, put
+\[
+                    r^i=k^i-H^{i+1}d_P^i.
+ \tag{HGT.12}
+\]
+The chain equation for \(k\) and the homotopy equation in degree \(i+1\) give \(d_P^ir^i=0\). Exactness and the finite free source permit a lift \(H^i\) through \(d_P^{i-1}\). At the bottom, that cycle is zero because the first nonzero differential is injective. Therefore
+\[
+                 gf-1=d_PH+Hd_P.
+ \tag{HGT.13}
+\]
+The same recursion on \(Q_B\) supplies \(K\) with
+\[
+                 fg-1=d_QK+Kd_Q.
+ \tag{HGT.14}
+\]
+The proof used finite free lifting through actual surjections. It does not require \(B\) to be Noetherian, \(\alpha\) to preserve filtrations, or arbitrary modules to have split resolutions.
+
+To fix the noncommutative conventions, write left free modules as rows. Denote the matrices of \(d_P^i,d_Q^i,f^i,g^i,H^i\) by \(D_i,E_i,F_i,G_i,H_i\). Then the equations are
+\[
+ \begin{gathered}
+       D_iF_{i+1}=F_iE_i,\qquad E_iG_{i+1}=G_iD_i,\\
+       F_iG_i-I=H_iD_{i-1}+D_iH_{i+1}.
+ \end{gathered}
+ \tag{HGT.15}
+\]
+The corresponding equation for \(G_iF_i-I\) uses \(K_iE_{i-1}+E_iK_{i+1}\). No matrix factors have been interchanged.
+
+### 3.362. One actual canonical ring for the whole finite diagram
+
+Choose linear base coordinates so that the real covector is \(p=d\operatorname{Re}t\). Include all entries of \(P,Q,f,g,H,K\), their finite products, and all the zero witnesses in (HGT.11)–(HGT.15). The complete finite realization proof in Regular singularities, ID.1–ID.2 and DL.7 represents this finite list in one canonical ring
+\[
+                       \mathcal R=E(G;D_R).
+ \tag{HGT.16}
+\]
+Its final support is the full thick cone (RKC.7), with \(p\in\operatorname{Int}G^{\circ a}\), and its coefficient domain is the admitted round diamond (RKC.8). All actual coefficient products, normal radii, support enlargements and finite boundary witnesses are placed at one common later index before restricting to that diamond. The diagonal finite differential classes retain their ordinary action and input holomorphic top-form normalization. Only finitely many such data occur; no universal map from every \(B\)-germ to a preassigned ring is asserted.
+
+Let \(D_0\) be the unital algebra of the finitely many analytic differential entries of \(P,Q\) on this common domain, and let \(P^\bullet_{\mathrm{alg}},Q^\bullet_{\mathrm{alg}}\) denote the finite free \(D_0\)-matrix complexes they define. Their extensions to the analytic operator sheaf recover the resolutions in (HGT.10). Their extensions to \(\mathcal R\) retain the realized maps and both homotopies:
+\[
+          \mathcal R\otimes_{D_0}P^\bullet_{\mathrm{alg}}
+                    \simeq_h\mathcal R\otimes_{D_0}Q^\bullet_{\mathrm{alg}}.
+ \tag{HGT.17}
+\]
+The symbol \(\simeq_h\) means the actual finite chain-homotopy equivalence (HGT.11)–(HGT.14). The \(D_0\)-complexes need not resolve their \(D_0\)-cokernels. Equation (HGT.17) follows from the realized ring identities, without flatness of \(\mathcal R\) over \(D_0\).
+
+### 3.363. Apply the strict cutoff and retain the derived maps
+
+The construction (RKC.19)–(RKC.22) supplies a genuine bounded \(\mathcal R\)-module object \(\mathcal G\) and an actual \(D_0\)-linear localized denominator \(\mathcal G\simeq\mathcal O\) at \(p\). Apply \(\operatorname{Hom}_{\mathcal R}(-,\mathcal G)\) to (HGT.17). For a homogeneous Hom cochain \(\phi\) of degree \(q\), precomposition with a degree-minus-one homotopy has the sign
+\[
+                    S_H(\phi)=(-1)^q\phi H.
+ \tag{HGT.18}
+\]
+Using \(d\phi=d_{\mathcal G}\phi-(-1)^q\phi d_P\), expansion gives \(dS_H+S_Hd=\phi(d_PH+Hd_P)\); the two terms containing \(d_{\mathcal G}\phi\) cancel. The same formula applies to \(K\). Thus both inverse identities and their homotopies survive in the finite Hom complexes.
+
+Finite free adjunction identifies these with the corresponding \(D_0\)-matrix Hom complexes with coefficients in \(\mathcal G\). Its \(D_0\)-linear denominator then replaces \(\mathcal G\) by \(\mathcal O\): the cone of the induced map has a finite filtration whose pieces are finite sums of shifts of the same null cone. The microsupport-null subcategory is thick, by the full fraction and cone proof in (MCM.3)–(MCM.6). Consequently the denominator stays invertible after each finite Hom construction. The resulting complexes are exactly the finite analytic solution complexes of (SCP.4). This proves (HGT.3).
+
+Two lifts of the same augmented module map differ by a chain map with zero augmentation. The recursion (HGT.12)–(HGT.13) constructs a homotopy for their difference. Thus the resulting localized map is independent of the finite resolution lift, after a common finite realization. Composing two augmented maps and comparing their finite lifts uses that same homotopy argument. This retains the actual comparison data rather than choosing unrelated endomorphisms in a vector-derived category.
+
+### 3.364. Ordinary coordinate changes preserve the support tests
+
+Let \(\varphi:U\to U'\) be a biholomorphism and let its differential-operator map be the chain-rule map. Pullback gives a literal coefficient isomorphism \(\varphi^{-1}\mathcal O_{U'}\to\mathcal O_U\); applying it to a finite free analytic resolution identifies the solution matrix complexes. In the induced left-module convention,
+\[
+                 \operatorname{Sol}(\varphi_D^*N')
+                         \simeq\varphi^{-1}\operatorname{Sol}(N').
+ \tag{HGT.19}
+\]
+The identification is obtained on the actual analytic Hom complex, so it respects its cochain differential and attaching maps.
+
+This change preserves the real definition of microsupport. A real test \(f'\) on \(U'\) pulls back to \(f'\circ\varphi\); its closed test side pulls back to the same closed side on \(U\), with differential \((d\varphi)^Tdf'\). The inverse homeomorphism identifies sections with those supports, and its exact pullback carries injective resolutions to injective resolutions because it is an equivalence of sheaf categories. Thus the support-test stalks agree in all degrees. Applying the same argument to \(\varphi^{-1}\) gives
+\[
+ \operatorname{SS}(\varphi^{-1}F')
+       =\{(x,(d\varphi_x)^T\eta):
+                              (\varphi(x),\eta)\in\operatorname{SS}(F')\}.
+ \tag{HGT.20}
+\]
+Therefore a holomorphic time shift \(t'=t-\psi(x)\), \(x'=x\), may be included in (HGT.2) with the actual solution transport just proved. A transformation mixing base and cotangent variables has no such inverse-image argument.
+
+### 3.365. Euler detection in the stated ordinary coordinates
+
+Suppose (HGT.2) has \(N'=N_A\), the actual constant-matrix Euler model of §§3.327–3.330, and \(p\) is a nonzero normal covector to \(t=0\). If \(p\in\operatorname{Char}(N)\), then (MFL.1) gives \(E\otimes_DN_x\ne0\). Formula (HGT.7) implies \(B\otimes_DN_x\ne0\), so the isomorphic model has positive rank. For that rank the complete real support calculation (MEC.20)–(MEC.24) gives
+\[
+ \begin{gathered}
+ p\in\operatorname{Char}(N),\quad
+ B\otimes_DN_x\simeq B\otimes_D(N_A)_x\\
+                \Longrightarrow\quad p\in\operatorname{SS}(\operatorname{Sol}N).
+ \end{gathered}
+ \tag{HGT.21}
+\]
+Indeed (HGT.3) identifies the objects in the category localized at \(p\), and the model is nonzero there. Conversely, (SCP.20) gives the forward support inclusion for all coherent analytic \(N\).
+
+There is an exact source match for the standard-coordinate generic normal form. In Regular singularities, GM.A–GM.B, let \(M=E\otimes_DN_x\) be holonomic and let its actual lattice \(M_0\subset M\), with \(EM_0=M\), be free over the commutative factorial coefficient ring \(R_0\) of DP.2. The lattice is the whole \(R_0^r\), not just its reduction or completion. Its coefficient-column actions are \(t=h^2\partial_h+T\), \(z_i=h\partial_i+Z_i\), where \(h=\tau^{-1}\), \(z_i=\xi_i/\tau\). The matrices \(T,Z_i\in M_r(R_0)\) satisfy \(T(0,x)^k=0\) for some \(k\ge1\), \(h^2\partial_hZ_i-h\partial_iT+[T,Z_i]=hZ_i\), and \(h(\partial_iZ_j-\partial_jZ_i)+[Z_i,Z_j]=0\), precisely FG.1. Under these stated hypotheses the complete gauge FG.A–FG.D gives actual inverse matrices \(V,W\) and one constant \(H\), with
+\[
+ \begin{gathered}
+ VW=WV=I,\qquad \partial_\tau V=TV-\tau^{-1}VH,\\
+                       \partial_iV+\tau Z_iV=0.
+ \end{gathered}
+ \tag{HGT.22}
+\]
+The whole finite presentation GM.8 and the commutators \([t,V]=-\partial_\tau V\), \([D_{x_i},V]=\partial_iV\) give, for \(e_j=\sum_kV_{kj}u_k\),
+\[
+       D_{x_i}e_j=0,\qquad
+       tD_te_j=\sum_k(H-I)_{kj}e_k.
+ \tag{HGT.23}
+\]
+The inverse frame \(W\) satisfies the original relations by differentiating \(WV=I\). Thus these are inverse maps of the entire \(B\)-module, and the matrix in our row-generator Euler convention is exactly
+\[
+                               A=(H-I)^{\mathsf T}.
+ \tag{HGT.24}
+\]
+Equations (HGT.21)–(HGT.24) prove detection at every positive-rank point of this standard-coordinate parameter open. They use the ordinary Euler model in those coordinates, with no fractional power of \(\tau\) adjoined and no numerical evaluation of a divergent Gevrey series.
+
+### 3.366. The contact premise for a general characteristic branch
+
+The generic geometry in Regular singularities, DP.6 first applies a finite quadratic contact shear, then an ordinary holomorphic time shift to put a general smooth homogeneous Lagrangian branch into \(t=\xi'=0\). The time shift has the exact solution transport (HGT.19)–(HGT.20). The contact shear also requires a comparison of solution objects or cutoff kernels, with the correct input density and support maps. Ring isomorphisms and their balanced module maps alone do not provide it.
+
+Consequently (HGT.21) supplies actual detection whenever the stated ordinary-coordinate module comparison is available, and the finite homotopy construction eliminates the resolution-lifting premise of (MEC.26). Extending that detection through a general contact shear remains a separate mathematical step. The full reverse solution-microsupport inclusion, signed de Rham comparison, common Hecke-support premise and nilpotent regularity still require their corresponding arguments.
+
+![Finite actual module isomorphisms, their two resolution homotopies, and the separate base/contact coordinate issue.](figures/faithful-finite-solution-transport.svg)
+
+**Figure 3.51.** Both comparison maps and homotopies are finite matrices in the actual full coefficient ring; one common canonical kernel ring realizes all their equations. The lower panel is the exact normalized contact example of Solution 3.FB, with \(c=1\): the point conormal has \((x,t)=(0,0)\), while its sheared front is \((x',t')=(z,-z^2/2)\). The plotted interval is the real slice \(-1\le z\le1\); its parabola is exact. The contact equation is preserved, but the shear does not arise from a map of the base. All complex coordinates and the precise solution-transport boundary are retained in the text.
+
+### 3.367. Exercises on actual finite comparison data
+
+**Exercise 3.EZ.** Let \(a,b\) be arbitrary elements of a unital, possibly noncommutative ring. Prove that \(U=\left(\begin{smallmatrix}1&a\\b&1+ba\end{smallmatrix}\right)\) is invertible. Contract the two-term row complex with differential \(U\), then construct both homotopies comparing \(P\) with its direct sum with that complex. Retain the order of \(a,b\).
+
+**Exercise 3.FA.** In the one-dimensional ordered symbol ring, use \(b\circ x=xb+\partial_\tau b\). The entire expression \((1-e^{-x\tau})/x\) would be a left inverse of \(x\). Prove that it fails the every-\(\varepsilon\) positive-head bounds on every common base neighbourhood. For its degree-\(L\) truncation compute the residual and its quotient normal form using \(\mathcal P=\operatorname{ev}_{x=0}\sum_{a\ge0}(-\partial_\tau d)^a\), where \(d\) deletes the constant Taylor term and divides by \(x\).
+
+**Exercise 3.FB.** On the normalized cotangent chart of a complex surface with contact form \(dt+z\,dx\), verify that \(x'=x+cz\), \(z'=z\), \(t'=t-cz^2/2\) is a contact transformation. Apply it to \(\{x=t=0\}\). For \(c\ne0\), show that it cannot be induced by any local biholomorphism of the base, and identify the ordinary time shift that makes the transformed branch standard.
+
+### 3.368. Solutions to the finite comparison exercises
+
+**Solution 3.EZ.** Multiply the two triangular matrices in the stated order:
+\[
+ \begin{gathered}
+ U=\begin{pmatrix}1&0\\b&1\end{pmatrix}
+       \begin{pmatrix}1&a\\0&1\end{pmatrix},\\
+ U^{-1}=\begin{pmatrix}1&-a\\0&1\end{pmatrix}
+       \begin{pmatrix}1&0\\-b&1\end{pmatrix}
+       =\begin{pmatrix}1+ab&-a\\-b&1\end{pmatrix}.
+ \end{gathered}
+ \tag{HGT.25}
+\]
+The triangular inverse products are identities by direct multiplication. Thus the two-term complex \(C^{-1}\xrightarrow{U}C^0\) has contraction \(J^0=U^{-1}\): the degree-minus-one equation is \(UJ^0=I\), and the degree-zero equation is \(J^0U=I\), using row maps. Include \(P\) into \(Q=P\oplus C\) and project back. Their composite on \(P\) is the identity. The other composite minus the identity is zero on \(P\) and minus the identity on \(C\), so its homotopy is \(0\oplus(-J)\). These are precisely (HGT.13)–(HGT.15); both compositions and the minus sign are explicit. The two entries \(ab\) and \(ba\) occur in their required different positions.
+
+**Solution 3.FA.** Its homogeneous coefficient of degree \(j\ge1\) is \((-1)^{j+1}x^{j-1}/j!\). On any fixed base disc \(|x|\le r\), \(r>0\), its norm is \(r^{j-1}/j!\). The every-\(\varepsilon\) bound would imply
+\[
+                     r^{-1}(r/\varepsilon)^j\le M_\varepsilon
+                               \qquad(j\ge1),
+ \tag{HGT.26}
+\]
+which is impossible for \(0<\varepsilon<r\). Holomorphy of the entire expression at \(x=0\) therefore does not put it in the actual ring \(B\). Its finite truncation is actual, and cancellation of consecutive terms gives
+\[
+ \begin{gathered}
+ b_L\circ x=1+r_L,\qquad
+ r_L=(-1)^{L+1}x^L\tau^L/L!,\\
+                        \mathcal P r_L=-1.
+ \end{gathered}
+ \tag{HGT.27}
+\]
+For the last equality only the term \(a=L\) contributes: after \(L\) Taylor divisions, applying \((-1)^L\partial_\tau^L\) to \((-1)^{L+1}\tau^L/L!\) gives \(-1\). At \(r=1/2\) and \(\varepsilon=1/4\), the required weighted degree-\(L\) residual norm is exactly \(2^L\), even though its numerical value at \((x,\tau)=(1/2,1)\) has magnitude \(2^{-L}/L!\). The actual quotient remains nonzero. These are the exact common-domain and coefficient bounds in the proper-ideal theorem, not a completed-ideal argument.
+
+**Solution 3.FB.** Direct differentiation gives
+\[
+      dt'+z'\,dx'=dt-cz\,dz+z(dx+c\,dz)=dt+z\,dx.
+ \tag{HGT.28}
+\]
+On \(x=t=0\), the transformed branch has \(x'=cz\), \(t'=-cz^2/2\), \(z'=z\). For \(c\ne0\) it is the front
+\[
+             t'=-(x')^2/(2c),\qquad z'=x'/c.
+ \tag{HGT.29}
+\]
+An ordinary base biholomorphism sends a cotangent fibre over one point to a cotangent fibre over one point. Its base projection on this branch would have rank zero. The displayed transformed projection has rank one, so this contact map cannot be such a lift. Finally set
+\[
+                  t''=t'+(x')^2/(2c),\qquad
+                  x''=x',\qquad z''=z'-x'/c.
+ \tag{HGT.30}
+\]
+Its contact form is again \(dt'+z'\,dx'\), and the branch becomes \(t''=z''=0\). This last step is an ordinary base change. The preceding shear is the part for which a separate solution or cutoff-kernel transport is still required.
+
+### 3.369. Projective incidence and the two coefficient kernels
+
+Let \(V\) be a complex vector space of dimension \(N+1\), with \(N\geq1\). Put \(X=\mathbf P(V)\), \(Y=\mathbf P(V^*)\), and let \(S\subset X\times Y\) be incidence: a line lies in a hyperplane. Its complement has open embedding \(j:\Omega\hookrightarrow X\times Y\). Transposition of the two factors is denoted by \(\mathrm t\). Define
+
+\[
+\begin{gathered}
+ A=j_!\mathbf C_\Omega,\qquad B=Rj_*\mathbf C_\Omega,\\
+ K=A[N],\qquad L=\mathrm tB[N],\\
+ \Phi F=Rq_{X!}(K\otimes q_Y^{-1}F),\\
+ \mathcal TF=Rq_{Y!}(L\otimes q_X^{-1}F).
+\end{gathered}
+\tag{LIT.1}
+\]
+
+In the second formula for a transform the projections belong to \(Y\times X\). Tensor products of complex-vector sheaves are derived tensor products, computed by ordinary stalkwise tensor. Inputs are globally bounded; they need not be constructible or have finite-dimensional stalks. The sheaves \(A\) and \(B\) are different kernels. In particular, the second is a derived open direct image.
+
+The exact earlier proof is GL-DMOD, §5.57, LI.8.1–LI.8.3. Its compact-fibre comparison, punctured-disc boundary map and gluing of the oriented diagonal give
+
+\[
+ K\circ L\simeq\mathbf C_{\Delta_X},\qquad
+ L\circ K\simeq\mathbf C_{\Delta_Y}.
+\tag{LIT.2}
+\]
+
+Here composition integrates the middle projective factor with proper support. The two shifts \([N]\) add to the real affine-fibre shift \([2N]\) in that proof. Thus neither a complex dimension nor a cohomological shift is suppressed in LIT.2.
+
+### 3.370. The fibre calculation and its diagonal map
+
+For \(x,z\in X\), write \(H_x,H_z\subset Y\) for their incidence hyperplanes and normalize a representative covector to have value one on a representative of \(x\). Then \(Y\setminus H_x\simeq\mathbf C^N\). If \(x=z\), the remaining coefficient is constant. If \(x\ne z\), the second removed hyperplane is one nonempty affine hyperplane \(H\). Proper base change in LI.8.1 gives the actual derived stalk
+
+\[
+ (K\circ L)_{(x,z)}\simeq
+ \begin{cases}
+ R\Gamma_c(\mathbf C^N;\mathbf C)[2N],&x=z,\\
+ R\Gamma_c(\mathbf C^N;Rj_{H*}\mathbf C_{\mathbf C^N\setminus H})[2N],&x\ne z.
+ \end{cases}
+\tag{LIT.3}
+\]
+
+The first complex is \(\mathbf C[0]\); integration of the positive complex orientation gives its map to \(\mathbf C\). For completeness, the decisive normal calculation for the second is the triangle
+
+\[
+ \begin{gathered}
+ \mathbf C_{\mathbf C}\longrightarrow Rj_{0*}\mathbf C_{\mathbf C^*}
+ \longrightarrow\mathbf C_{\{0\}}[-1]\xrightarrow{+1},\\
+ R\Gamma_c(\mathbf C;Rj_{0*}\mathbf C_{\mathbf C^*})=0.
+ \end{gathered}
+\tag{LIT.4}
+\]
+
+The compact connecting map is an isomorphism: with \(\eta=d\theta/(2\pi)\) and a radial cutoff \(\rho\) equal to one near zero and zero outside a disc, its representative \(-d\rho\wedge\eta\) has integral one. Compact coordinate contractions in the other \(2N-2\) real directions, explicitly given in LI.36, reduce the second line of LIT.3 to LIT.4. Local projective frames trivialize the diagonal family. Their holomorphic transition maps have positive real Jacobian \(|\det J|^2\), so the integration maps glue to the constant diagonal sheaf. The zero off-diagonal stalks and the single diagonal cohomology sheaf prove the first map in LIT.2. Exchanging \(X\) and \(Y\) proves the second.
+
+### 3.371. Bounded operators and coherent inverse maps
+
+The transforms in LIT.1 preserve boundedness. One explicit sufficient construction is to represent the bounded tensor input by its tensor with the finite smooth real de Rham resolution on the product. The resolution is exact on stalks by the radial homotopy, and its terms are smooth-function modules, hence acyclic on opens by the partition proof in LI.8.1. The middle projection is proper. This finite resolution computes its derived direct image and gives a finite cohomological bound. For \(B\), the punctured-normal-disc resolution has cohomology only in degrees zero and one, so a bounded truncation can be used first. These constructions permit arbitrary coefficient vector spaces.
+
+Proper-support composition, base change and the tensor projection formula identify the two composite operators with convolution by the kernels in LIT.2. They apply to every attaching map of a bounded input. Consequently
+
+\[
+ \Phi\mathcal T\simeq\operatorname{Id}_{D^b(\mathbf C_X)},\qquad
+ \mathcal T\Phi\simeq\operatorname{Id}_{D^b(\mathbf C_Y)}.
+\tag{LIT.5}
+\]
+
+These inverse maps can be made coherent without guessing a relative scalar. Fix one diagonal isomorphism \(\epsilon_X:K\circ L\to\mathbf C_{\Delta_X}\). Left convolution by \(K\) is fully faithful because LIT.2 supplies an inverse functor. There is therefore a unique isomorphism \(\epsilon_Y:L\circ K\to\mathbf C_{\Delta_Y}\) such that
+
+\[
+ K\circ\epsilon_Y=\epsilon_X\circ K.
+\tag{LIT.6}
+\]
+
+Indeed full faithfulness lifts the isomorphism on the right to \(\epsilon_Y\), and reflects its invertibility. With unit \(\epsilon_Y^{-1}\), LIT.6 is one triangle identity; conjugating it by the inverse equivalence gives the other. The associator is the actual proper-support base-change associator. This is the construction of GL-DMOD, §5.67, IN.1.
+
+### 3.372. The full nonzero conormal is a graph
+
+Write \(\dot T^*X=T^*X\setminus0_X\), and similarly for \(Y\). Use the underlying real cotangent bundles, identified with holomorphic cotangent bundles by taking real parts of complex-linear forms. The twisted incidence relation is
+
+\[
+ \begin{gathered}
+ \Lambda=\{(p,q):(x,y;\xi,-\eta)\in\dot T_S^*(X\times Y)\},\\
+ p=(x;\xi),\qquad q=(y;\eta).
+ \end{gathered}
+\tag{LIT.7}
+\]
+
+Both projections of \(\Lambda\) are diffeomorphisms onto the corresponding punctured cotangent bundles. Here is the global linear-algebra check. A nonzero cotangent vector at a line \(\ell\subset V\) is a nonzero map \(V/\ell\to\ell\). Its kernel determines one hyperplane \(H\supset\ell\). It is exactly the first component of one nonzero normal to incidence at \((\ell,H)\). The second normal component is nonzero because varying \(H\) can move it off \(\ell\). The dual argument recovers \(\ell\) from that component. In projective frames these assignments and their inverses are smooth, and the conormal is closed away from its zero section. The projections are thus proper homeomorphisms as well as diffeomorphisms. No unbounded forgotten covector lies above a compact set of endpoints.
+
+In coordinates \(X=(t,x)\), \(Y=(s,y)\), with \(x,y\in\mathbf C^{N-1}\), the incidence equation and its twisted graph are
+
+\[
+\begin{gathered}
+ f=s-t-x^{\mathsf T}y=0,\\
+ \chi(t,x;\tau,\xi)
+   =(t+x^{\mathsf T}\xi/\tau,\ \xi/\tau;\ \tau,-\tau x),\\
+ \chi^{-1}(s,y;\sigma,\eta)
+   =(s+y^{\mathsf T}\eta/\sigma,\ -\eta/\sigma;\ \sigma,\sigma y).
+\end{gathered}
+\tag{LIT.8}
+\]
+
+These displayed charts require \(\tau=\sigma\ne0\). The global graph does not require that particular chart. Setting \(y=\xi/\tau\) gives the exact identity
+
+\[
+ \chi^*(\sigma\,ds+\eta^{\mathsf T}dy)
+ =\tau\,d(t+x^{\mathsf T}y)-\tau x^{\mathsf T}dy
+ =\tau\,dt+\xi^{\mathsf T}dx.
+\tag{LIT.9}
+\]
+
+All complex normal phases occur. The minus sign in the input covector of LIT.7 is essential for LIT.8–LIT.9.
+
+### 3.373. Constructibility and the identity section
+
+The two-stratum pair \((\Omega,S)\) gives cohomological constructibility of \(A\), \(B\) and their shifts in precisely the formal-local sense of SH03, Dual kernels. Near \(S\), holomorphic coordinates identify the pair with a tangential ball times a normal disc and its puncture. Radial contractions in nested tangential balls and discs, and the oriented normal circle, identify the ordinary and compact-support formal systems with fixed finite complexes. These contractions commute with further shrinking; this proves representability of the systems, rather than just finiteness of their limits. Away from \(S\) the constant or zero coefficient model suffices.
+
+The local product model and the smooth-submanifold microsupport formula give
+
+\[
+ \operatorname{SS}(A),\operatorname{SS}(B)
+ \subset 0_{X\times Y}\cup T_S^*(X\times Y).
+\tag{LIT.10}
+\]
+
+For \(A\), this also follows from the exact localization triangle \(A\to\mathbf C_{X\times Y}\to\mathbf C_S\xrightarrow{+1}\). The same bound for \(B\) follows by the normal-disc calculation or constructible duality. The off-zero relation in either selected endpoint region is therefore contained in the same graph LIT.7, and has no component with only one endpoint covector zero.
+
+The rotated localization triangle supplies an actual morphism
+
+\[
+ \mathbf C_S[-1]\xrightarrow{\delta}A\longrightarrow
+ \mathbf C_{X\times Y}\xrightarrow{+1}.
+\tag{LIT.11}
+\]
+
+Its cone has only zero microsupport. Thus \(\delta\) is invertible in the localization at every nonzero incidence normal. The SH02 submanifold formula gives \(\mu\operatorname{hom}(\mathbf C_S,\mathbf C_S)|_{\dot T_S^*}=\mathbf C_{\dot T_S^*}\): normal specialization is supported on the zero normal section and its Fourier transform is the constant dual-normal coefficient. This has no codimension shift. The formula takes the identity to the constant section one. Conjugation by \(\delta[N]\), retaining its inverse, consequently proves the identity-induced isomorphism
+
+\[
+ \mathbf C_{\dot T_S^*}\xrightarrow[\operatorname{id}_K]{\ \sim\ }
+ \mu\operatorname{hom}(K,K)|_{\dot T_S^*}.
+\tag{LIT.12}
+\]
+
+Conjugating an identity gives an identity, so the possible sign of a chosen representative of \(\delta\) cancels. An abstract rank calculation is unnecessary.
+
+### 3.374. Localized equivalence for arbitrary bounded coefficients
+
+For an open \(U\subset\dot T^*X\), put \(U'=\chi(U)\). All hypotheses of SH03, When a kernel quantizes a contact transformation, Theorem 1 now hold: the coefficient field is \(\mathbf C\); the manifolds are finite-dimensional and compact; the kernel is bounded and cohomologically constructible; LIT.7 gives the two proper graph projections; LIT.10 gives both selected-region containments; and LIT.12 is the required identity-induced map. Hence
+
+\[
+ \begin{gathered}
+ \Phi:D^b(\mathbf C_Y;U')\xrightarrow{\sim}D^b(\mathbf C_X;U),\\
+ \mathcal T:D^b(\mathbf C_X;U)\xrightarrow{\sim}D^b(\mathbf C_Y;U').
+ \end{gathered}
+\tag{LIT.13}
+\]
+
+Here localization kills exactly the bounded complexes whose microsupport misses the indicated open. The inverse kernel has exactly the shift in LIT.1: with the complex orientations,
+
+\[
+ \mathrm tR\mathcal Hom(K,q_Y^{-1}\omega_Y)
+ =\mathrm tR\mathcal Hom(A[N],\mathbf C[2N])
+ \simeq\mathrm tB[N]=L.
+\tag{LIT.14}
+\]
+
+To compute it, Verdier duality on \(X\times Y\) gives \(D(A)=B[4N]\). The input shift subtracts \(N\), and the relative orientation subtracts \(2N\) from the product dual, leaving \([N]\). This is precisely the right relative dual, not an unshifted transposed kernel.
+
+The cited theorem proves invertibility of the actual adjunction unit and counit by applying the parameterized kernel construction to the diagonal and detecting their cones with the supported conormal coefficient model. Its dual-kernel proof retains the orientation factors and excludes escaping ambient covectors by graph properness. Its directional-morphism proof uses the actual fourfold Hom kernel, the repeated-variable exceptional restrictions, clean proper projections and compact replacement. Those are applicable here with the graph just verified; no constructibility hypothesis has been imposed on the input of LIT.13.
+
+### 3.375. Microsupport, morphisms and the unchanged parameter
+
+For every bounded \(F\) on \(X\) and every bounded \(G\) on \(Y\),
+
+\[
+\begin{gathered}
+ \operatorname{SS}(\mathcal TF)\cap\dot T^*Y
+   =\chi(\operatorname{SS}(F)\cap\dot T^*X),\\
+ \operatorname{SS}(\Phi G)\cap\dot T^*X
+   =\chi^{-1}(\operatorname{SS}(G)\cap\dot T^*Y).
+\end{gathered}
+\tag{LIT.15}
+\]
+
+Indeed, for every sufficiently small matched open pair, the transform and its inverse descend and are inverse by LIT.13. An object is zero in the localization at a covector exactly when that covector is absent from its microsupport, by the thick null-object criterion of §3.302–3.303. Apply both functors to this criterion. This proves both implications point by point. No assertion concerning zero covectors is part of LIT.15.
+
+The same theorem gives the natural comparison, for arbitrary bounded \(G_1,G_2\),
+
+\[
+ \chi^{-1}\bigl(\mu\operatorname{hom}_Y(G_2,G_1)|_{U'}\bigr)
+ \simeq\mu\operatorname{hom}_X(\Phi G_2,\Phi G_1)|_U.
+\tag{LIT.16}
+\]
+
+The inverse image is by a homeomorphism. Evaluation and the proper projection counits define this comparison. It respects identities and directional composition: before specialization, both parenthesizations are mates of the same successive evaluation; transitivity of the two projection counits gives the same trace. The full proof with its graded symmetry is SH02, Directional composition. In particular, the endomorphism object in LIT.16 is transported with its product and identity, not just with its cohomology dimensions.
+
+For a smooth parameter manifold \(Z\), the kernel
+
+\[
+ \Theta_ZK=\operatorname{pr}_{XY}^{-1}K\otimes\mathbf C_{\{z=z'\}}
+\tag{LIT.17}
+\]
+
+has twisted relation \((p,z;\zeta)\leftrightarrow(\chi(p),z;\zeta)\). The unchanged-parameter proof identifies its operator with the original convolution with \(Z\) retained. Above a compact set of endpoint covectors its relation is a closed subset of the product of two compact sets, so properness persists even for noncompact \(Z\). The input kernel covector in the second parameter is \(-\zeta\), exactly as required by the twisted relation.
+
+### 3.376. A strict action of a constant algebra
+
+Let \(R\) be any unital associative complex algebra, with no commutativity, Noetherian or finite global dimension assumption. Write \(R_X\) and \(R_Y\) for the constant sheaves of algebras. Define \(\Phi_R\) and \(\mathcal T_R\) by the same coefficient kernels, tensoring over \(\mathbf C\) and retaining the left \(R\)-action of the input. Then
+
+\[
+\begin{gathered}
+ \Phi_R:D^b(R_Y)\xrightarrow{\sim}D^b(R_X),\\
+ \mathcal T_R:D^b(R_X)\xrightarrow{\sim}D^b(R_Y),\\
+ \operatorname{For}\Phi_R\simeq\Phi\operatorname{For},\qquad
+ \operatorname{For}\mathcal T_R\simeq\mathcal T\operatorname{For}.
+\end{gathered}
+\tag{LIT.18}
+\]
+
+Here \(\operatorname{For}\) forgets the action. A direct construction proves all assertions. Tensor the bounded input and fixed bounded coefficient kernel, then use the finite smooth resolution from §3.371. Each term has its actual left \(R\)-action, commuting with the differential, restriction and projection. The resolution is functorial for complex-linear maps and homotopies; it neither replaces the action by cohomology endomorphisms nor chooses separate lifts of its generators. Acyclicity on opens holds after forgetting, and the same complexes compute the underlying derived image. Alternatively, forgetting preserves injectives because its left adjoint \(R\otimes_{\mathbf C}-\) is exact. The two diagonal comparisons LIT.2 tensor with the identity of each coefficient module. Their associativity and unit maps are therefore \(R\)-linear, proving both inverse equivalences in LIT.18.
+
+Let \(D^b(R_X;U)\) denote the quotient by objects whose underlying vector complex has microsupport disjoint from \(U\). The vector support theorem and the \(R\)-linear inverse maps prove
+
+\[
+ \Phi_R:D^b(R_Y;U')\xrightarrow{\sim}D^b(R_X;U).
+\tag{LIT.19}
+\]
+
+The coefficient algebra in this assertion is constant on the relevant base neighborhoods. No inverse to a differential operator on ordinary holomorphic functions is inferred.
+
+### 3.377. Finite free Hom commutes with this transport
+
+Let \(P\) be a bounded complex of finite free left \(R\)-modules and \(G\) a bounded complex of left \(R_Y\)-module sheaves. Denote its constant sheaf complex by \(P_Y\). There is a natural isomorphism of vector complexes
+
+\[
+ \Phi\,R\mathcal Hom_{R_Y}(P_Y,G)
+ \simeq R\mathcal Hom_{R_X}(P_X,\Phi_R G).
+\tag{LIT.20}
+\]
+
+Finite freeness makes internal Hom the actual finite total Hom complex. Its degree \(k\) differential is
+
+\[
+ d(\varphi)=d_G\varphi-(-1)^k\varphi d_P.
+\tag{LIT.21}
+\]
+
+Use the functorial resolution in §3.376. It commutes with finite direct sums, shifts and total complexes, with the tensor symmetry for each shift. Every coefficient of \(d_P\) acts through the retained strict action on \(G\); its image is the same coefficient acting on \(\Phi_R G\). These identifications give LIT.20 at the total-complex level, including LIT.21. They commute with chain maps, their compositions and chain homotopies. Bounded finite free complexes also preserve quasi-isomorphisms by their finite cell filtration, so the construction is independent of the chosen representative of \(G\).
+
+The Hom output in LIT.20 is a vector complex. For noncommutative \(R\) it does not carry an automatic left \(R\)-action: multiplication by a coefficient need not commute with a matrix entry of \(d_P\). The functor on that output is consequently \(\Phi\), not \(\Phi_R\).
+
+If \(\rho:R\xrightarrow{\sim}R'\) is an actual algebra isomorphism and \(\rho(P)\) denotes the same finite complex with transported coefficients, the same result is
+
+\[
+ \Phi\,R\mathcal Hom_R(P,G)
+ \simeq R\mathcal Hom_{R'}(\rho(P),\rho_*\Phi_R G).
+\tag{LIT.22}
+\]
+
+Here \(\rho_*\) means transport of the action by \(\rho^{-1}\). This statement remains valid after the matched microsupport localizations in LIT.19.
+
+### 3.378. The coefficient comparison needed for holomorphic solutions
+
+Apply the preceding construction to a fixed finite coefficient algebra acting strictly on a source cutoff object \(G_Y\). Write
+
+\[
+ \widehat G_X=\rho_*\Phi_R G_Y.
+\tag{LIT.23}
+\]
+
+This is an actual transported module object. Its finite Hom complexes are those of LIT.22. If a target cutoff object \(G_X\) is equipped with an actual module-derived isomorphism
+
+\[
+ \eta:\widehat G_X\xrightarrow{\sim}G_X
+ \quad\text{in }D^b(R'_X;U),
+\tag{LIT.24}
+\]
+
+then finite cell filtration shows that applying Hom from \(\rho(P)\) preserves this isomorphism: each cell contributes a shift of the underlying denominator cone, and a finite extension of null cones remains null. Combining with LIT.22 gives the comparison with the target coefficient object. The strict cutoff denominators of §§3.354–3.355 can then identify the appropriate finite differential-operator Hom complexes with actual holomorphic solutions, when their exact coefficient subalgebras and denominator maps match.
+
+LIT.24 is an additional mathematical hypothesis. The ring isomorphism defined by the normalized incidence pole classes in GL-DMOD, WT.1–WT.2, does not alone supply it. Nor does a vector-derived isomorphism with no compatible module action. The pole evaluations and their inverse products involve the specified holomorphic input densities and proper traces; identifying them with a comparison of the actual cutoff objects requires those same maps. Thus LIT.13–LIT.22 prove contact transport for bounded sheaves and their transported strict coefficients; they do not assert an identification of \(\Phi\mathcal O_Y\) with \(\mathcal O_X\), or the full reverse characteristic-support theorem for holomorphic solutions.
+
+![Legendre incidence carries a point conormal to a hyperplane conormal, with the input antipode and retained coefficient object](figures/legendre-incidence-sheaf-transport.svg)
+
+**Figure 3.52.** In the displayed \(N=2\) chart, a point \((t_0,x_0)=(1/4,1/2)\) has conormal slice \(\tau=1\), \(\xi=y\). Its image lies on \(s=1/4+y/2\), with \(\sigma=1\), \(\eta=-1/2\). The real parameter slice \(-1\leq y\leq1\) illustrates the exact complex contact map LIT.8. The lower diagram is LIT.20–LIT.24: the transported coefficient object is specified before any comparison with a target cutoff.
+
+### 3.379. Exercises on the inverse, its shift and point support
+
+**Exercise 3.FC.** For \(N=1\), compute the off-diagonal convolution fibre when both incidence kernels are replaced by extension by zero and both are shifted by \([1]\). Explain why it cannot be an inverse. Compute the correct derived-open-image fibre and its oriented boundary map.
+
+**Solution 3.FC.** Fix distinct projective points. The first affine fibre is \(\mathbf C\), and the second deleted hyperplane is a point. Two extensions by zero give \(\mathbf C_{\mathbf C^*}\) on that affine fibre. The triangle \(\mathbf C_{\mathbf C^*}\to\mathbf C_{\mathbf C}\to\mathbf C_{\{0\}}\xrightarrow{+1}\), together with the compact plane calculation, gives
+
+\[
+ H^qR\Gamma_c(\mathbf C^*;\mathbf C)=
+ \begin{cases}\mathbf C,&q=1,2,\\0,&\text{otherwise}.
+ \end{cases}
+\tag{LIT.25}
+\]
+
+The two nonzero degree identifications are explicit: the degree-zero point group maps isomorphically to compact degree one of the puncture, and compact degree two maps isomorphically to the oriented plane group. After the convolution shift \([2]\), the wrong off-diagonal fibre has nonzero cohomology in degrees \(-1\) and \(0\). It is not a diagonal kernel. With the correct second kernel \(Rj_{0*}\mathbf C_{\mathbf C^*}\), LIT.4 instead gives zero. Its compact connecting map takes the normalized circle class to \(-d\rho\wedge d\theta/(2\pi)\), whose integral is one. On the diagonal the affine fibre gives
+
+\[
+ R\Gamma_c(\mathbf C;\mathbf C)[2]=\mathbf C[0].
+\tag{LIT.26}
+\]
+
+Thus the choice of open image and the total real shift are both necessary.
+
+**Exercise 3.FD.** Let \(a=(t_0,x_0)\) be a point in the chart LIT.8. Compute \(\mathcal T\mathbf C_{\{a\}}\) and its nonzero microsupport, including the \(\tau\ne0\) chart. Determine the exact real slice in Figure 3.52.
+
+**Solution 3.FD.** Let \(H_a\subset Y\) be the incidence hyperplane and \(j_a:Y\setminus H_a\hookrightarrow Y\). Restricting \(B\) to \(Y\times\{a\}\) gives \(Rj_{a*}\mathbf C\). To verify this restriction, trivialize the incidence pair near \(a\) by a projective frame sending a fixed representative to the variable representative. The normal punctured-disc resolution and its circle generator then restrict to the identical resolution on the fibre, as in LI.8.3. Tensoring with the point sheaf and projecting gives
+
+\[
+ \begin{gathered}
+ \mathcal T\mathbf C_{\{a\}}\simeq
+ Rj_{a*}\mathbf C_{Y\setminus H_a}[N],\\
+ \operatorname{SS}(\mathcal T\mathbf C_{\{a\}})\cap\dot T^*Y
+ =\dot T_{H_a}^*Y.
+ \end{gathered}
+\tag{LIT.27}
+\]
+
+The support equality follows either from LIT.15 and the point conormal, or directly from the punctured-normal-disc model. On the selected chart it is
+
+\[
+ s=t_0+x_0^{\mathsf T}y,\qquad
+ (\sigma,\eta)=(\tau,-\tau x_0),\quad\tau\ne0.
+\tag{LIT.28}
+\]
+
+For \(N=2\), \(t_0=1/4\), \(x_0=1/2\), \(\tau=1\) and real \(y\in[-1,1]\), this is the line segment from \((y,s)=(-1,-1/4)\) to \((1,3/4)\), with constant \(\eta=-1/2\). The original base projection has rank zero; the target hyperplane projection has complex rank \(N-1\). No ordinary base biholomorphism carries these two germs when \(N>1\).
+
+### 3.380. A finite Hom calculation with a noncommutative action
+
+**Exercise 3.FE.** Let \(R=\mathbf C\langle a,b\rangle\), let \(G\) be a bounded complex of left \(R_Y\)-module sheaves, and take \(P^{-1}=R^2\), \(P^0=R\), with \(d(e_1)=a e_0\), \(d(e_2)=b e_0\). Compute its total Hom differential and prove the comparison LIT.20 for this complex. Check why the Hom output need not be an \(R\)-module.
+
+**Solution 3.FE.** In degree \(k\), identify a Hom element with \((u,v_1,v_2)\), where \(u\in G^k\), \(v_i\in G^{k-1}\). Left linearity gives \(\varphi(ae_0)=a\varphi(e_0)\); it never interchanges \(a\) and \(b\). Formula LIT.21 becomes
+
+\[
+ d(u,v_1,v_2)=
+ \bigl(d_Gu,\ d_Gv_1-(-1)^k au,\ d_Gv_2-(-1)^k bu\bigr).
+\tag{LIT.29}
+\]
+
+Applying the differential again gives zero: in each last component the two terms involving the action cancel because \(d_Ga=ad_G\), \(d_Gb=bd_G\), and \((-1)^{k+1}=-(-1)^k\). The functorial kernel resolution carries these very actions and differential maps to \(\Phi_R G\). It commutes with this three-term finite-sum description and its totalization; the tensor shift signs are exactly LIT.29 on both sides. This proves the comparison as an actual map of total complexes in the example, with no independently selected lifts of \(a\) and \(b\).
+
+For the last assertion, specialize to a sheaf with coefficient module \(\mathbf C^2\), where \(a=E_{12}\), \(b=E_{21}\). These matrices define a representation of the free algebra. In degree zero, the Hom differential is \(u\mapsto(-au,-bu)\). Componentwise multiplication by \(a\) commutes with this differential only if \(ab=ba\) on \(G\), whereas
+
+\[
+ \begin{gathered}
+ ab=E_{11},\qquad ba=E_{22},\\
+ (d\,a-a\,d)(u)=(0,(ab-ba)u).
+ \end{gathered}
+\tag{LIT.30}
+\]
+
+For \(u=(1,0)^{\mathsf T}\) the second component is nonzero. This is why the finite Hom comparison is a comparison of vector complexes, while the coefficient object itself retains the strict algebra action.
+
 ## 4. Betti, constructible, and tempered categories
 
 Now suppose \(k=\mathbb C\), and choose a coefficient field \(E\) of characteristic zero. The **large Betti** category consists of complexes of \(E\)-sheaves on the analytic stack, with no finite-dimensional stalk requirement. Its automorphic subcategory is

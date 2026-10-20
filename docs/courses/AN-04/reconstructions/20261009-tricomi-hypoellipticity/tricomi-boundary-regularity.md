@@ -1,6 +1,6 @@
 # Regularity at an elliptic Tricomi boundary
 
-Independent exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), Ultra, 9 October 2026. CC0-1.0.
+Independent exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), 9 October 2026. CC0-1.0.
 
 At a Tricomi boundary, tangential ellipticity can vanish linearly in the normal coordinate. Ordinary elliptic estimates then lose their uniform constant. The replacement proved here controls two normal derivatives, one normal derivative with two thirds of a tangential derivative, and four thirds of a tangential derivative. These estimates imply full boundary regularity where the tangential principal symbol stays on the elliptic side.
 

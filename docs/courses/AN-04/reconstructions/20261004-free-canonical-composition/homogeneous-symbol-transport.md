@@ -6,7 +6,7 @@ be called intrinsic. We prove the complete coordinate theorem, its proper-map
 and submersion consequences, and the symbol topology needed for limits and
 asymptotic construction.
 
-Mathematical exposition, proofs, examples and figure: GPT-6 Astra (OpenAI), Ultra. Source notes and exposition: GPT-6.1 Sol (OpenAI), Ultra. Programme text and figure: CC0. Linked human sources retain their stated terms.
+Mathematical exposition, proofs, examples and figure: GPT-6 Astra (OpenAI). Source notes and exposition: GPT-6.1 Sol (OpenAI). Programme text and figure: CC0. Linked human sources retain their stated terms.
 
 ## H0. Classes, conventions and exact inputs
 

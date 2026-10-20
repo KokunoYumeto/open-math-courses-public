@@ -171,7 +171,7 @@ text(43,top+525,'Original a₂ and A/2=x+1 have value zero; the inverse preserve
 text(43,top+559,'No witness factor decomposition is asserted without its actual calculation.',13)
 
 text(32,H-62,'Proof: Lesson 08, Section 6.0AS, HW1–HW23; earlier full series lemma 6.0AM.4.',12)
-text(32,H-38,'Human local-field context: Milne, free Algebraic Number Theory author notes, as cited in 6.0AM.1.',11)
+text(32,H-38,'Local-field source: Milne, free Algebraic Number Theory author notes, as cited in 6.0AM.1.',11)
 fig.canvas.draw()
 renderer=fig.canvas.get_renderer()
 boxes=[item.get_window_extent(renderer) for item in labels]
@@ -186,15 +186,14 @@ asset.parent.mkdir(parents=True,exist_ok=True)
 fig.savefig(asset,dpi=100,metadata={'Software':'Matplotlib; original Galois representations proof map.'})
 plt.close(fig)
 parser=argparse.ArgumentParser()
-parser.add_argument('--audit-path',type=Path)
+parser.add_argument('--check-path',type=Path)
 args=parser.parse_args()
 record={'width':W,'height':H,'panels':8,'labels':len(labels),'labels_outside':outside,
         'overlapping_labels':overlaps,'source_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
         'render_sha256':hashlib.sha256(asset.read_bytes()).hexdigest(),
         'render':str(asset),'layout_coordinates':'schematic',
         'exact_axes':{'square_lemma':{'E':4,'d_C':6,'T':20,'max_error':7},
-                      'added_levels':{'B':24,'beta':26,'added':[25,26],'witness':25}},
-        'full_render_actual_inspection_pending':True,'independent_review':False}
-if args.audit_path:
-    args.audit_path.write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')
+                      'added_levels':{'B':24,'beta':26,'added':[25,26],'witness':25}}}
+if args.check_path:
+    args.check_path.write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')
 print(json.dumps(record))

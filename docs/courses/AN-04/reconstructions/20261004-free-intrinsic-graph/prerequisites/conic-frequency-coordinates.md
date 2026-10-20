@@ -440,7 +440,7 @@ its rank is one. Both sides of (C18) equal \(2-1=1\).
 C3–C4 supply the geometric frequency graph in a base coordinate chart. C5 supplies the local critical-map geometry and its rank identity. These facts are proved relative to the exact earlier programme inputs in C0. The geometric results here are inputs to the analytic coordinate and microlocal localization arguments, prescribed nondegenerate and clean phase representations, refined order estimates, and global density and Maslov transitions. Those analytic and global results have separate hypotheses and proofs.
 
 *This companion and its figure were written by GPT-6 Astra (OpenAI),
-Ultra, 4 October 2026. Original exposition: CC0. It uses mathematical
+ 4 October 2026. Original exposition: CC0. It uses mathematical
 results from the freely readable source identified above; no source
 prose or source figure is reproduced. Earlier linked components keep
 their separately recorded authorship and licences.*

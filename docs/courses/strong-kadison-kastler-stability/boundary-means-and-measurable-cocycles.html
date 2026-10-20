@@ -1,0 +1,262 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Boundary means and measurable cocycles</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Strong Kadison–Kastler stability)</a><a href="averaging-and-the-completely-positive-criterion.html">Previous lesson</a><a href="double-ergodicity-and-diagonal-comparison.html">Next lesson</a><a href="src/boundary-means-and-measurable-cocycles.md">Editable source</a></nav><main><article><h1 id="boundary-means-and-measurable-cocycles">Boundary means and measurable cocycles</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The finite-factor part of the proof starts from unitaries <span class="math" data-tex="\(v_g\)">\(v_g\)</span> of the second algebra, indexed by a countable dense subgroup <span class="math" data-tex="\(G\)">\(G\)</span> of the unitary group of the first, whose products are only approximately respected: <span class="math" data-tex="\(\|v_gv_h-v_{gh}\|\)">\(\|v_gv_h-v_{gh}\|\)</span> is small. For an amenable group one would average over the group and correct the <span class="math" data-tex="\(v_g\)">\(v_g\)</span> into a representation. The group <span class="math" data-tex="\(G\)">\(G\)</span> need not be amenable. This lesson constructs, for every countable group, a probability space with a nonsingular <span class="math" data-tex="\(G\)">\(G\)</span>-action and an equivariant conditional mean (Lemma 2.1). With it, approximate cocycles are corrected into exact measurable cocycles (Lemma 3.1), and cocycles close to a representation are intertwined with it (Lemma 4.1). The mean is the conditional-expectation form of amenability of the action of <span class="math" data-tex="\(G\)">\(G\)</span> on the Poisson boundary of a random walk [AEG, Theorem 3.4]; the correction is the averaging and polar decomposition iteration of Kazhdan and Burger–Ozawa–Thom [BOT, Theorem 3.2], carried out over this action [OpenAI-289, Section 4].</p>
+<p>We use: standard measure theory as in the core course <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D10">Measure and Integration</a> (Fremlin, <em>Measure Theory</em>, Volumes 1 and 2: the Radon–Nikodym theorem, Section 232; conditional expectations, Section 233; Fubini's theorem, Section 252; infinite product measures, Section 254); the <a href="../foundations-of-von-neumann-algebras/weak-topologies-tychonoff-banach-alaoglu-mazur-bipolars-krein-milman-and-eberlein-smulian.html#OA-FND-WT-03">Banach–Alaoglu theorem</a> and Tychonoff's theorem; and the <a href="../foundations-of-von-neumann-algebras/the-double-commutant-theorem.html#OA-FND-BI-06">bicommutant theorem</a>.</p>
+<h2 id="1-conventions">1. Conventions</h2>
+<p>Let <span class="math" data-tex="\(G\)">\(G\)</span> be a countable group acting on a probability space <span class="math" data-tex="\((D,\nu)\)">\((D,\nu)\)</span> by measurable maps. The action is <em>nonsingular</em> when each <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span> maps <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-null sets to null sets; measure preservation is not required. On <span class="math" data-tex="\(G\times D\)">\(G\times D\)</span> we use counting measure times <span class="math" data-tex="\(\nu\)">\(\nu\)</span>. For functions on <span class="math" data-tex="\(D\)">\(D\)</span> and on <span class="math" data-tex="\(G\times D\)">\(G\times D\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\alpha_gF(x)&amp;=F(g^{-1}x),\\
+(\lambda_gF)(t,x)&amp;=F(g^{-1}t,g^{-1}x).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\alpha_gF(x)&amp;=F(g^{-1}x),\\
+(\lambda_gF)(t,x)&amp;=F(g^{-1}t,g^{-1}x).
+\end{aligned}
+\]</span>
+Let <span class="math" data-tex="\(K\)">\(K\)</span> be a separable Hilbert space. A <em>bounded operator field</em> on <span class="math" data-tex="\(D\)">\(D\)</span> is a map <span class="math" data-tex="\(B:D\to B(K)\)">\(B:D\to B(K)\)</span> such that <span class="math" data-tex="\(x\mapsto\langle B(x)\xi,\eta\rangle\)">\(x\mapsto\langle B(x)\xi,\eta\rangle\)</span> is measurable for all <span class="math" data-tex="\(\xi,\eta\)">\(\xi,\eta\)</span>, and <span class="math" data-tex="\(\|B\|_\infty=\operatorname{ess\,sup}_x\|B(x)\|&lt;\infty\)">\(\|B\|_\infty=\operatorname{ess\,sup}_x\|B(x)\|&lt;\infty\)</span>; fields equal almost everywhere are identified. The operator norm <span class="math" data-tex="\(\|B(x)\|\)">\(\|B(x)\|\)</span> is a measurable function of <span class="math" data-tex="\(x\)">\(x\)</span>, since it can be computed on a countable dense set of unit vectors. Products of bounded operator fields are bounded operator fields: for fixed <span class="math" data-tex="\(\xi\)">\(\xi\)</span>, the map <span class="math" data-tex="\(x\mapsto C(x)\xi\)">\(x\mapsto C(x)\xi\)</span> is weakly measurable with values in the separable space <span class="math" data-tex="\(K\)">\(K\)</span>, hence a pointwise limit of countably valued measurable maps <span class="math" data-tex="\(\zeta_n\)">\(\zeta_n\)</span>, and <span class="math" data-tex="\(\langle B(x)C(x)\xi,\eta\rangle=\lim_n\langle\zeta_n(x),B(x)^*\eta\rangle\)">\(\langle B(x)C(x)\xi,\eta\rangle=\lim_n\langle\zeta_n(x),B(x)^*\eta\rangle\)</span>. For a von Neumann algebra <span class="math" data-tex="\(A\subseteq B(K)\)">\(A\subseteq B(K)\)</span>, <span class="math" data-tex="\(L^\infty(D,A)\)">\(L^\infty(D,A)\)</span> denotes the bounded fields with values in <span class="math" data-tex="\(A\)">\(A\)</span> almost everywhere, and <span class="math" data-tex="\(L^\infty(D,\mathcal U(A))\)">\(L^\infty(D,\mathcal U(A))\)</span> the unitary-valued ones. Fields on <span class="math" data-tex="\(G\times D\)">\(G\times D\)</span> are defined in the same way.</p>
+<h2 id="2-equivariant-boundary-means">2. Equivariant boundary means</h2>
+<p><strong>Lemma 2.1</strong> (boundary means). For every countable group <span class="math" data-tex="\(G\)">\(G\)</span> there are a standard probability space <span class="math" data-tex="\((D,\nu)\)">\((D,\nu)\)</span> with a nonsingular <span class="math" data-tex="\(G\)">\(G\)</span>-action and a positive unital contraction
+<span class="math math-display" data-tex="\[
+m:L^\infty(G\times D)\to L^\infty(D)
+\]">\[
+m:L^\infty(G\times D)\to L^\infty(D)
+\]</span>
+such that, for <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>, <span class="math" data-tex="\(F\in L^\infty(G\times D)\)">\(F\in L^\infty(G\times D)\)</span> and <span class="math" data-tex="\(f\in L^\infty(D)\)">\(f\in L^\infty(D)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+m(\lambda_gF)=\alpha_g(mF),\\
+m(fF)=f\,m(F).\quad(2.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+m(\lambda_gF)=\alpha_g(mF),\\
+m(fF)=f\,m(F).\quad(2.1)
+\end{gathered}
+\]</span>
+There is a mean <span class="math" data-tex="\(m^{(2)}:L^\infty(G^2\times D^2)\to L^\infty(D^2)\)">\(m^{(2)}:L^\infty(G^2\times D^2)\to L^\infty(D^2)\)</span> with the same properties for the separate action <span class="math" data-tex="\((g,h)(x,y)=(gx,hy)\)">\((g,h)(x,y)=(gx,hy)\)</span> of <span class="math" data-tex="\(G\times G\)">\(G\times G\)</span> on <span class="math" data-tex="\(D\times D\)">\(D\times D\)</span>. Each of the two means extends to a contraction on bounded operator fields, on any separable <span class="math" data-tex="\(K\)">\(K\)</span>, that preserves adjoints, maps fields with values in a von Neumann algebra <span class="math" data-tex="\(A\subseteq B(K)\)">\(A\subseteq B(K)\)</span> to fields with values in <span class="math" data-tex="\(A\)">\(A\)</span>, satisfies the analogue of (2.1), and satisfies
+<span class="math math-display" data-tex="\[
+m(BFC)=B\,m(F)\,C
+\tag{2.2}
+\]">\[
+m(BFC)=B\,m(F)\,C
+\tag{2.2}
+\]</span>
+for bounded operator fields <span class="math" data-tex="\(B,C\)">\(B,C\)</span> on <span class="math" data-tex="\(D\)">\(D\)</span> (independent of the group variable).</p>
+<p><strong>Proof.</strong> <em>The random walk.</em> Choose a probability measure <span class="math" data-tex="\(\mu\)">\(\mu\)</span> on <span class="math" data-tex="\(G\)">\(G\)</span> with <span class="math" data-tex="\(\mu(g)=\mu(g^{-1})&gt;0\)">\(\mu(g)=\mu(g^{-1})&gt;0\)</span> for every <span class="math" data-tex="\(g\)">\(g\)</span>. Let <span class="math" data-tex="\(X=G^{\{0,1,2,\dots\}}\)">\(X=G^{\{0,1,2,\dots\}}\)</span> with the product probability <span class="math" data-tex="\(\mathbb P=\mu^{\otimes\{0,1,2,\dots\}}\)">\(\mathbb P=\mu^{\otimes\{0,1,2,\dots\}}\)</span>, and define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+g(\omega_0,\omega_1,\dots)&amp;=(g\omega_0,\omega_1,\dots),\\
+S(\omega_0,\omega_1,\omega_2,\dots)&amp;=(\omega_0\omega_1,\omega_2,\dots).
+\end{aligned}
+\]">\[
+\begin{aligned}
+g(\omega_0,\omega_1,\dots)&amp;=(g\omega_0,\omega_1,\dots),\\
+S(\omega_0,\omega_1,\omega_2,\dots)&amp;=(\omega_0\omega_1,\omega_2,\dots).
+\end{aligned}
+\]</span>
+These maps commute. Under the image of <span class="math" data-tex="\(\mathbb P\)">\(\mathbb P\)</span> by <span class="math" data-tex="\(g\)">\(g\)</span>, the coordinates are independent, the first with law <span class="math" data-tex="\(\mu(g^{-1}\,\cdot)\)">\(\mu(g^{-1}\,\cdot)\)</span> and the others with law <span class="math" data-tex="\(\mu\)">\(\mu\)</span>; under the image by <span class="math" data-tex="\(S\)">\(S\)</span>, the first coordinate has law <span class="math" data-tex="\(\mu*\mu\)">\(\mu*\mu\)</span> and the others are independent with law <span class="math" data-tex="\(\mu\)">\(\mu\)</span>. Both first-coordinate laws give positive mass to every point of the countable set <span class="math" data-tex="\(G\)">\(G\)</span> (note <span class="math" data-tex="\(\mu*\mu(h)\ge\mu(1)\mu(h)\)">\(\mu*\mu(h)\ge\mu(1)\mu(h)\)</span>), so they are equivalent to <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, and the image measures are equivalent to <span class="math" data-tex="\(\mathbb P\)">\(\mathbb P\)</span>, with densities depending only on the first coordinate. Thus <span class="math" data-tex="\(G\)">\(G\)</span> and <span class="math" data-tex="\(S\)">\(S\)</span> act nonsingularly on <span class="math" data-tex="\((X,\mathbb P)\)">\((X,\mathbb P)\)</span>.</p>
+<p><em>The invariant sets.</em> Let <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> be the family of measurable <span class="math" data-tex="\(E\subseteq X\)">\(E\subseteq X\)</span> with <span class="math" data-tex="\(S^{-1}E=E\)">\(S^{-1}E=E\)</span> up to a null set; it is a <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-algebra. The measure algebra of <span class="math" data-tex="\(X\)">\(X\)</span>, with the metric <span class="math" data-tex="\(\mathbb P(E\triangle F)\)">\(\mathbb P(E\triangle F)\)</span>, is separable, because the product <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-algebra is countably generated; so its subset <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> contains a countable dense family <span class="math" data-tex="\((E_j)_{j\ge1}\)">\((E_j)_{j\ge1}\)</span>. For <span class="math" data-tex="\(E\in\mathcal I\)">\(E\in\mathcal I\)</span> choose <span class="math" data-tex="\(j_k\)">\(j_k\)</span> with <span class="math" data-tex="\(\mathbb P(E\triangle E_{j_k})&lt;2^{-k}\)">\(\mathbb P(E\triangle E_{j_k})&lt;2^{-k}\)</span>; by the Borel–Cantelli lemma <span class="math" data-tex="\(1_{E_{j_k}}\to1_E\)">\(1_{E_{j_k}}\to1_E\)</span> almost everywhere, so every <span class="math" data-tex="\(E\in\mathcal I\)">\(E\in\mathcal I\)</span> agrees up to a null set with a set in the <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-algebra generated by the <span class="math" data-tex="\(E_j\)">\(E_j\)</span>. Since <span class="math" data-tex="\(S\)">\(S\)</span> commutes with <span class="math" data-tex="\(g\)">\(g\)</span>, <span class="math" data-tex="\(S^{-1}(gE)=g\,S^{-1}E\)">\(S^{-1}(gE)=g\,S^{-1}E\)</span>, so <span class="math" data-tex="\(gE\in\mathcal I\)">\(gE\in\mathcal I\)</span> for <span class="math" data-tex="\(E\in\mathcal I\)">\(E\in\mathcal I\)</span>.</p>
+<p><em>The boundary.</em> Put <span class="math" data-tex="\(D=\{0,1\}^{\mathbb N\times G}\)">\(D=\{0,1\}^{\mathbb N\times G}\)</span>, a compact metrizable space, define <span class="math" data-tex="\(b:X\to D\)">\(b:X\to D\)</span> by <span class="math" data-tex="\(b(\omega)_{j,g}=1_{gE_j}(\omega)\)">\(b(\omega)_{j,g}=1_{gE_j}(\omega)\)</span>, and let <span class="math" data-tex="\(\nu=b_*\mathbb P\)">\(\nu=b_*\mathbb P\)</span>. The group acts on <span class="math" data-tex="\(D\)">\(D\)</span> by <span class="math" data-tex="\((hx)_{j,g}=x_{j,h^{-1}g}\)">\((hx)_{j,g}=x_{j,h^{-1}g}\)</span>, and <span class="math" data-tex="\(b(h\omega)_{j,g}=1_{h^{-1}gE_j}(\omega)=(h\,b(\omega))_{j,g}\)">\(b(h\omega)_{j,g}=1_{h^{-1}gE_j}(\omega)=(h\,b(\omega))_{j,g}\)</span>, so <span class="math" data-tex="\(b\)">\(b\)</span> is equivariant. If <span class="math" data-tex="\(\nu(N)=0\)">\(\nu(N)=0\)</span>, then <span class="math" data-tex="\(\mathbb P(b^{-1}N)=0\)">\(\mathbb P(b^{-1}N)=0\)</span>, so <span class="math" data-tex="\(\mathbb P(h^{-1}b^{-1}N)=0\)">\(\mathbb P(h^{-1}b^{-1}N)=0\)</span>, and <span class="math" data-tex="\(h^{-1}b^{-1}N=b^{-1}(h^{-1}N)\)">\(h^{-1}b^{-1}N=b^{-1}(h^{-1}N)\)</span>; the action on <span class="math" data-tex="\(D\)">\(D\)</span> is nonsingular. Each coordinate of <span class="math" data-tex="\(b\)">\(b\)</span> is the indicator of a set in <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span>, so <span class="math" data-tex="\(b\circ S=b\)">\(b\circ S=b\)</span> almost everywhere.</p>
+<p>Composition with <span class="math" data-tex="\(b\)">\(b\)</span> is an isometric <span class="math" data-tex="\(*\)">\(*\)</span>-isomorphism of <span class="math" data-tex="\(L^\infty(D,\nu)\)">\(L^\infty(D,\nu)\)</span> onto the algebra of <span class="math" data-tex="\(F\in L^\infty(X)\)">\(F\in L^\infty(X)\)</span> with <span class="math" data-tex="\(F\circ S=F\)">\(F\circ S=F\)</span> almost everywhere. Indeed, <span class="math" data-tex="\(f\circ b=0\)">\(f\circ b=0\)</span> almost everywhere exactly when <span class="math" data-tex="\(f=0\)">\(f=0\)</span> <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-almost everywhere, and <span class="math" data-tex="\(f\circ b\)">\(f\circ b\)</span> is <span class="math" data-tex="\(S\)">\(S\)</span>-invariant because <span class="math" data-tex="\(b\circ S=b\)">\(b\circ S=b\)</span>. Conversely, an <span class="math" data-tex="\(S\)">\(S\)</span>-invariant <span class="math" data-tex="\(F\)">\(F\)</span> has level sets in <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span>, hence is measurable for the completion of the <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-algebra generated by the coordinates of <span class="math" data-tex="\(b\)">\(b\)</span>, and is therefore almost everywhere of the form <span class="math" data-tex="\(f\circ b\)">\(f\circ b\)</span>.</p>
+<p><em>The mean.</em> For <span class="math" data-tex="\(F\in L^\infty(G\times D)\)">\(F\in L^\infty(G\times D)\)</span> put <span class="math" data-tex="\((JF)(\omega)=F(\omega_0,b(\omega))\)">\((JF)(\omega)=F(\omega_0,b(\omega))\)</span>. This is well defined on classes: if <span class="math" data-tex="\(F=0\)">\(F=0\)</span> almost everywhere, then for each <span class="math" data-tex="\(t\)">\(t\)</span> the section <span class="math" data-tex="\(F(t,\cdot)\)">\(F(t,\cdot)\)</span> vanishes off a <span class="math" data-tex="\(\nu\)">\(\nu\)</span>-null set <span class="math" data-tex="\(N_t\)">\(N_t\)</span>, and <span class="math" data-tex="\(JF\)">\(JF\)</span> vanishes off the null set <span class="math" data-tex="\(\bigcup_tb^{-1}N_t\)">\(\bigcup_tb^{-1}N_t\)</span>. Put
+<span class="math math-display" data-tex="\[
+T_nF=\frac1n\sum_{j=0}^{n-1}(JF)\circ S^j .
+\]">\[
+T_nF=\frac1n\sum_{j=0}^{n-1}(JF)\circ S^j .
+\]</span>
+The maps <span class="math" data-tex="\(T_n\)">\(T_n\)</span> are positive unital contractions into <span class="math" data-tex="\(L^\infty(X)=L^1(X)^*\)">\(L^\infty(X)=L^1(X)^*\)</span>. By Tychonoff's theorem and the Banach–Alaoglu theorem, a subnet converges pointwise in the weak* topology to a positive unital contraction <span class="math" data-tex="\(T\)">\(T\)</span>. Composition with a nonsingular map <span class="math" data-tex="\(R\)">\(R\)</span> is weak* continuous on <span class="math" data-tex="\(L^\infty(X)\)">\(L^\infty(X)\)</span>: its preadjoint sends <span class="math" data-tex="\(q\in L^1\)">\(q\in L^1\)</span> to the Radon–Nikodym density of the measure <span class="math" data-tex="\(E\mapsto\int_{R^{-1}E}q\,d\mathbb P\)">\(E\mapsto\int_{R^{-1}E}q\,d\mathbb P\)</span>. Since
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|(T_nF)\circ S-T_nF\|_\infty\\
+&amp;\quad =\tfrac1n\|(JF)\circ S^n-JF\|_\infty\\
+&amp;\quad \le\tfrac2n\|F\|_\infty,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|(T_nF)\circ S-T_nF\|_\infty\\
+&amp;\quad =\tfrac1n\|(JF)\circ S^n-JF\|_\infty\\
+&amp;\quad \le\tfrac2n\|F\|_\infty,
+\end{aligned}
+\]</span>
+the limit satisfies <span class="math" data-tex="\((TF)\circ S=TF\)">\((TF)\circ S=TF\)</span>, and we may define <span class="math" data-tex="\(mF\in L^\infty(D)\)">\(mF\in L^\infty(D)\)</span> by <span class="math" data-tex="\(TF=(mF)\circ b\)">\(TF=(mF)\circ b\)</span>. It is a positive unital contraction, since composition with <span class="math" data-tex="\(b\)">\(b\)</span> is an isometric order isomorphism onto the invariant functions.</p>
+<p><em>Equivariance and module property.</em> Since <span class="math" data-tex="\(b(g^{-1}\omega)=g^{-1}b(\omega)\)">\(b(g^{-1}\omega)=g^{-1}b(\omega)\)</span> and <span class="math" data-tex="\((g^{-1}\omega)_0=g^{-1}\omega_0\)">\((g^{-1}\omega)_0=g^{-1}\omega_0\)</span>, we get <span class="math" data-tex="\(J(\lambda_gF)=(JF)\circ g^{-1}\)">\(J(\lambda_gF)=(JF)\circ g^{-1}\)</span>, and because <span class="math" data-tex="\(g\)">\(g\)</span> commutes with <span class="math" data-tex="\(S\)">\(S\)</span>, <span class="math" data-tex="\(T_n(\lambda_gF)=(T_nF)\circ g^{-1}\)">\(T_n(\lambda_gF)=(T_nF)\circ g^{-1}\)</span>. Weak* continuity of composition with <span class="math" data-tex="\(g^{-1}\)">\(g^{-1}\)</span> gives <span class="math" data-tex="\(T(\lambda_gF)=(TF)\circ g^{-1}\)">\(T(\lambda_gF)=(TF)\circ g^{-1}\)</span><span class="math" data-tex="\(=(mF)\circ b\circ g^{-1}=(\alpha_gmF)\circ b\)">\(=(mF)\circ b\circ g^{-1}=(\alpha_gmF)\circ b\)</span>, which is the first identity of (2.1). For <span class="math" data-tex="\(f\in L^\infty(D)\)">\(f\in L^\infty(D)\)</span>, <span class="math" data-tex="\(J(fF)=(f\circ b)\,JF\)">\(J(fF)=(f\circ b)\,JF\)</span> and <span class="math" data-tex="\((f\circ b)\circ S^j=f\circ b\)">\((f\circ b)\circ S^j=f\circ b\)</span>, so <span class="math" data-tex="\(T_n(fF)=(f\circ b)T_nF\)">\(T_n(fF)=(f\circ b)T_nF\)</span>; multiplication by a fixed bounded function is weak* continuous, which gives the second identity.</p>
+<p><em>The product mean.</em> On <span class="math" data-tex="\(X\times X\)">\(X\times X\)</span> use the commuting shifts <span class="math" data-tex="\(S_1=S\times\mathrm{id}\)">\(S_1=S\times\mathrm{id}\)</span> and <span class="math" data-tex="\(S_2=\mathrm{id}\times S\)">\(S_2=\mathrm{id}\times S\)</span> and the averages
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac1{nk}\sum_{i&lt;n}\sum_{j&lt;k}F\bigl((S^i\omega)_0,(S^j\omega&#x27;)_0,\\
+b(\omega),b(\omega&#x27;)\bigr)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac1{nk}\sum_{i&lt;n}\sum_{j&lt;k}F\bigl((S^i\omega)_0,(S^j\omega&#x27;)_0,\\
+b(\omega),b(\omega&#x27;)\bigr)
+\end{gathered}
+\]</span>
+over pairs <span class="math" data-tex="\((n,k)\)">\((n,k)\)</span> directed by the product order. A weak* cluster point <span class="math" data-tex="\(T^{(2)}F\)">\(T^{(2)}F\)</span> is invariant under both shifts by the same telescoping estimate in each variable. An <span class="math" data-tex="\(L^\infty\)">\(L^\infty\)</span> function <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> on <span class="math" data-tex="\(X^2\)">\(X^2\)</span> invariant under <span class="math" data-tex="\(S_1\)">\(S_1\)</span> and <span class="math" data-tex="\(S_2\)">\(S_2\)</span> is almost everywhere a function of <span class="math" data-tex="\((b(\omega),b(\omega&#x27;))\)">\((b(\omega),b(\omega&#x27;))\)</span>. To see this, regard <span class="math" data-tex="\(\Phi\in L^2(X)\otimes L^2(X)\)">\(\Phi\in L^2(X)\otimes L^2(X)\)</span> and let <span class="math" data-tex="\(Q\)">\(Q\)</span> be the orthogonal projection of <span class="math" data-tex="\(L^2(X)\)">\(L^2(X)\)</span> onto the <span class="math" data-tex="\(S\)">\(S\)</span>-invariant functions, which form <span class="math" data-tex="\(L^2(X,\mathcal I)\)">\(L^2(X,\mathcal I)\)</span>. By Fubini's theorem almost every section <span class="math" data-tex="\(\Phi(\cdot,\omega&#x27;)\)">\(\Phi(\cdot,\omega&#x27;)\)</span> is <span class="math" data-tex="\(S\)">\(S\)</span>-invariant, so <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> lies in the range of <span class="math" data-tex="\(Q\otimes1\)">\(Q\otimes1\)</span>; similarly in the range of <span class="math" data-tex="\(1\otimes Q\)">\(1\otimes Q\)</span>. These projections commute, and their product <span class="math" data-tex="\(Q\otimes Q\)">\(Q\otimes Q\)</span> has range <span class="math" data-tex="\(L^2(X,\mathcal I)\otimes L^2(X,\mathcal I)\)">\(L^2(X,\mathcal I)\otimes L^2(X,\mathcal I)\)</span>, the square integrable functions measurable for the completed product of <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> with itself, which is generated up to null sets by the coordinates of <span class="math" data-tex="\(b(\omega)\)">\(b(\omega)\)</span> and <span class="math" data-tex="\(b(\omega&#x27;)\)">\(b(\omega&#x27;)\)</span>. So <span class="math" data-tex="\(T^{(2)}F=(m^{(2)}F)\circ(b\times b)\)">\(T^{(2)}F=(m^{(2)}F)\circ(b\times b)\)</span> defines <span class="math" data-tex="\(m^{(2)}\)">\(m^{(2)}\)</span>, and the equivariance and module arguments apply in each coordinate.</p>
+<p><em>Operator fields.</em> Let <span class="math" data-tex="\(F\)">\(F\)</span> be a bounded operator field on <span class="math" data-tex="\(G\times D\)">\(G\times D\)</span>. Let <span class="math" data-tex="\(K_0\subseteq K\)">\(K_0\subseteq K\)</span> be the countable set of rational complex combinations of an orthonormal basis. For <span class="math" data-tex="\(\xi,\eta\in K_0\)">\(\xi,\eta\in K_0\)</span> let <span class="math" data-tex="\(c_{\xi,\eta}=m(\langle F(\cdot)\xi,\eta\rangle)\in L^\infty(D)\)">\(c_{\xi,\eta}=m(\langle F(\cdot)\xi,\eta\rangle)\in L^\infty(D)\)</span> and fix representatives. Outside one null set the countably many relations of sesquilinearity over <span class="math" data-tex="\(\mathbb Q+i\mathbb Q\)">\(\mathbb Q+i\mathbb Q\)</span> hold, and <span class="math" data-tex="\(|c_{\xi,\eta}(x)|\le\|F\|_\infty\|\xi\|\|\eta\|\)">\(|c_{\xi,\eta}(x)|\le\|F\|_\infty\|\xi\|\|\eta\|\)</span> because <span class="math" data-tex="\(m\)">\(m\)</span> is a contraction. For such <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(c_{\cdot,\cdot}(x)\)">\(c_{\cdot,\cdot}(x)\)</span> extends to a bounded sesquilinear form on <span class="math" data-tex="\(K\)">\(K\)</span>, the coefficient form of an operator <span class="math" data-tex="\(m(F)(x)\)">\(m(F)(x)\)</span> of norm at most <span class="math" data-tex="\(\|F\|_\infty\)">\(\|F\|_\infty\)</span>; on the null set put <span class="math" data-tex="\(m(F)(x)=0\)">\(m(F)(x)=0\)</span>. This defines a bounded operator field <span class="math" data-tex="\(m(F)\)">\(m(F)\)</span>, and <span class="math" data-tex="\(\|m(F)\|_\infty\le\|F\|_\infty\)">\(\|m(F)\|_\infty\le\|F\|_\infty\)</span>. Since a positive map preserves complex conjugation, <span class="math" data-tex="\(m(F^*)=m(F)^*\)">\(m(F^*)=m(F)^*\)</span>. Equivariance follows from the coefficient formula.</p>
+<p>The module identity (2.2) needs the coefficient formula with vectors depending on <span class="math" data-tex="\(x\)">\(x\)</span>. Let <span class="math" data-tex="\(\zeta,\zeta&#x27;\)">\(\zeta,\zeta&#x27;\)</span> be bounded measurable maps <span class="math" data-tex="\(D\to K\)">\(D\to K\)</span>. If both are countably valued, take a countable measurable partition <span class="math" data-tex="\((A_k)\)">\((A_k)\)</span> of <span class="math" data-tex="\(D\)">\(D\)</span> on whose pieces both are constant, and let <span class="math" data-tex="\(\Phi(t,x)=\langle F(t,x)\zeta(x),\zeta&#x27;(x)\rangle\)">\(\Phi(t,x)=\langle F(t,x)\zeta(x),\zeta&#x27;(x)\rangle\)</span>. On <span class="math" data-tex="\(A_k\)">\(A_k\)</span> the function <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> agrees with the coefficient <span class="math" data-tex="\(\Phi_k\)">\(\Phi_k\)</span> of <span class="math" data-tex="\(F\)">\(F\)</span> at the constant vectors, so the scalar module identity gives <span class="math" data-tex="\(1_{A_k}m(\Phi)=m(1_{A_k}\Phi)\)">\(1_{A_k}m(\Phi)=m(1_{A_k}\Phi)\)</span><span class="math" data-tex="\(=m(1_{A_k}\Phi_k)=1_{A_k}m(\Phi_k)\)">\(=m(1_{A_k}\Phi_k)=1_{A_k}m(\Phi_k)\)</span>. Hence
+<span class="math math-display" data-tex="\[
+m(\Phi)(x)=\bigl\langle m(F)(x)\zeta(x),\zeta&#x27;(x)\bigr\rangle
+\]">\[
+m(\Phi)(x)=\bigl\langle m(F)(x)\zeta(x),\zeta&#x27;(x)\bigr\rangle
+\]</span>
+almost everywhere; only the module identity was used, not countable additivity of <span class="math" data-tex="\(m\)">\(m\)</span>. General bounded measurable <span class="math" data-tex="\(\zeta,\zeta&#x27;\)">\(\zeta,\zeta&#x27;\)</span> are uniform limits of countably valued measurable maps (choose, at each <span class="math" data-tex="\(x\)">\(x\)</span>, the first element of a countable dense set within <span class="math" data-tex="\(1/n\)">\(1/n\)</span>), and both sides depend continuously on <span class="math" data-tex="\(\zeta,\zeta&#x27;\)">\(\zeta,\zeta&#x27;\)</span> in the uniform norm. Testing <span class="math" data-tex="\(BFC\)">\(BFC\)</span> on constant vectors <span class="math" data-tex="\(\xi,\eta\)">\(\xi,\eta\)</span> with <span class="math" data-tex="\(\zeta=C\xi\)">\(\zeta=C\xi\)</span> and <span class="math" data-tex="\(\zeta&#x27;=B^*\eta\)">\(\zeta&#x27;=B^*\eta\)</span> gives (2.2).</p>
+<p>If <span class="math" data-tex="\(F\)">\(F\)</span> takes values in a von Neumann algebra <span class="math" data-tex="\(A\)">\(A\)</span>, then (2.2) with constant <span class="math" data-tex="\(B=c\in A&#x27;\)">\(B=c\in A&#x27;\)</span> and <span class="math" data-tex="\(C=1\)">\(C=1\)</span>, and with <span class="math" data-tex="\(B=1\)">\(B=1\)</span>, <span class="math" data-tex="\(C=c\)">\(C=c\)</span>, gives <span class="math" data-tex="\(c\,m(F)=m(cF)=m(Fc)=m(F)\,c\)">\(c\,m(F)=m(cF)=m(Fc)=m(F)\,c\)</span> almost everywhere. Choose a countable subset of the unit ball of <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span> that is strongly dense in it (possible since <span class="math" data-tex="\(K\)">\(K\)</span> is separable); off one null set <span class="math" data-tex="\(m(F)(x)\)">\(m(F)(x)\)</span> commutes with <span class="math" data-tex="\(A&#x27;\)">\(A&#x27;\)</span>, so <span class="math" data-tex="\(m(F)(x)\in A\)">\(m(F)(x)\in A\)</span> by the bicommutant theorem. Every step applies to <span class="math" data-tex="\(m^{(2)}\)">\(m^{(2)}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The mean is not normal: it is a limit along a subnet and does not commute with monotone limits. Nothing below needs normality. If <span class="math" data-tex="\(G\)">\(G\)</span> is amenable, a one-point space and an invariant mean on <span class="math" data-tex="\(G\)">\(G\)</span> give a mean with the same properties (Exercise 5.1); the point of Lemma 2.1 is that it requires nothing of <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<h2 id="3-correction-of-measurable-cocycles">3. Correction of measurable cocycles</h2>
+<p>For a family <span class="math" data-tex="\(V_g\in L^\infty(D,\mathcal U(A))\)">\(V_g\in L^\infty(D,\mathcal U(A))\)</span>, <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>, the <em>defect</em> is
+<span class="math math-display" data-tex="\[
+\operatorname{def}(V)=\sup_{g,h\in G}\|V_g\,\alpha_g(V_h)-V_{gh}\|_\infty .
+\]">\[
+\operatorname{def}(V)=\sup_{g,h\in G}\|V_g\,\alpha_g(V_h)-V_{gh}\|_\infty .
+\]</span>
+The family is an <em>exact cocycle</em> when its defect is zero, that is, <span class="math" data-tex="\(V_g(x)V_h(g^{-1}x)=V_{gh}(x)\)">\(V_g(x)V_h(g^{-1}x)=V_{gh}(x)\)</span> almost everywhere for all <span class="math" data-tex="\(g,h\)">\(g,h\)</span>.</p>
+<p><strong>Lemma 3.1</strong> (correction of a measurable unitary cocycle). Let <span class="math" data-tex="\(D\)">\(D\)</span> and <span class="math" data-tex="\(m\)">\(m\)</span> be as in Lemma 2.1, <span class="math" data-tex="\(A\subseteq B(K)\)">\(A\subseteq B(K)\)</span> a von Neumann algebra on a separable Hilbert space, and <span class="math" data-tex="\(V_g\in L^\infty(D,\mathcal U(A))\)">\(V_g\in L^\infty(D,\mathcal U(A))\)</span> a family with <span class="math" data-tex="\(e=\operatorname{def}(V)\le1/64\)">\(e=\operatorname{def}(V)\le1/64\)</span>. There is an exact cocycle <span class="math" data-tex="\(W_g\in L^\infty(D,\mathcal U(A))\)">\(W_g\in L^\infty(D,\mathcal U(A))\)</span> with
+<span class="math math-display" data-tex="\[
+\sup_g\|W_g-V_g\|_\infty\le2e,\qquad W_1=I .
+\]">\[
+\sup_g\|W_g-V_g\|_\infty\le2e,\qquad W_1=I .
+\]</span>
+After deleting one null set and its countably many translates, the cocycle identities hold everywhere on a <span class="math" data-tex="\(G\)">\(G\)</span>-invariant conull set.</p>
+<p><strong>Proof.</strong> <em>One step.</em> Define fields on <span class="math" data-tex="\(G\times D\)">\(G\times D\)</span> and their means by
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H_g(t,x)=V_t(x)\,V_{g^{-1}t}(g^{-1}x)^*,\\
+A_g=m(H_g).
+\end{gathered}
+\]">\[
+\begin{gathered}
+H_g(t,x)=V_t(x)\,V_{g^{-1}t}(g^{-1}x)^*,\\
+A_g=m(H_g).
+\end{gathered}
+\]</span>
+The defect inequality with <span class="math" data-tex="\(h=g^{-1}t\)">\(h=g^{-1}t\)</span> says <span class="math" data-tex="\(\|V_t(x)-V_g(x)V_{g^{-1}t}(g^{-1}x)\|\le e\)">\(\|V_t(x)-V_g(x)V_{g^{-1}t}(g^{-1}x)\|\le e\)</span>; multiplying on the right by the unitary <span class="math" data-tex="\(V_{g^{-1}t}(g^{-1}x)^*\)">\(V_{g^{-1}t}(g^{-1}x)^*\)</span> gives <span class="math" data-tex="\(\|H_g-V_g\|_\infty\le e\)">\(\|H_g-V_g\|_\infty\le e\)</span>. By (2.2) and contractivity, <span class="math" data-tex="\(\|A_g-V_g\|_\infty=\|m(H_g-V_g)\|_\infty\le e\)">\(\|A_g-V_g\|_\infty=\|m(H_g-V_g)\|_\infty\le e\)</span>, and <span class="math" data-tex="\(\|H_g-A_g\|_\infty\le2e\)">\(\|H_g-A_g\|_\infty\le2e\)</span>. The fields <span class="math" data-tex="\(H_g\)">\(H_g\)</span> are unitary, the <span class="math" data-tex="\(A_g\)">\(A_g\)</span> are contractions in <span class="math" data-tex="\(L^\infty(D,A)\)">\(L^\infty(D,A)\)</span>, and a direct computation gives the exact factorization
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+H_{gh}=H_g\,\lambda_g(H_h),\\
+m(\lambda_gH_h)=\alpha_g(A_h).
+\end{gathered}
+\]">\[
+\begin{gathered}
+H_{gh}=H_g\,\lambda_g(H_h),\\
+m(\lambda_gH_h)=\alpha_g(A_h).
+\end{gathered}
+\]</span>
+Expanding the product and using (2.2) to take the fields <span class="math" data-tex="\(A_g\)">\(A_g\)</span> and <span class="math" data-tex="\(\alpha_g(A_h)\)">\(\alpha_g(A_h)\)</span>, which do not depend on <span class="math" data-tex="\(t\)">\(t\)</span>, out of the mean, one gets
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;A_{gh}-A_g\alpha_g(A_h)\\
+&amp;\quad=m\bigl((H_g-A_g)(\lambda_gH_h-\alpha_gA_h)\bigr),\\
+&amp;I-A_g^*A_g\\
+&amp;\quad=m\bigl((H_g-A_g)^*(H_g-A_g)\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;A_{gh}-A_g\alpha_g(A_h)\\
+&amp;\quad=m\bigl((H_g-A_g)(\lambda_gH_h-\alpha_gA_h)\bigr),\\
+&amp;I-A_g^*A_g\\
+&amp;\quad=m\bigl((H_g-A_g)^*(H_g-A_g)\bigr),
+\end{aligned}
+\]</span>
+and similarly <span class="math" data-tex="\(I-A_gA_g^*=m((H_g-A_g)(H_g-A_g)^*)\)">\(I-A_gA_g^*=m((H_g-A_g)(H_g-A_g)^*)\)</span>. The right sides have norm at most <span class="math" data-tex="\(4e^2\)">\(4e^2\)</span>. Since <span class="math" data-tex="\(\|A_g-V_g\|_\infty\le e&lt;1\)">\(\|A_g-V_g\|_\infty\le e&lt;1\)</span>, each <span class="math" data-tex="\(A_g\)">\(A_g\)</span> is invertible in <span class="math" data-tex="\(L^\infty(D,A)\)">\(L^\infty(D,A)\)</span>, and its polar part
+<span class="math math-display" data-tex="\[
+V&#x27;_g=A_g(A_g^*A_g)^{-1/2}
+\]">\[
+V&#x27;_g=A_g(A_g^*A_g)^{-1/2}
+\]</span>
+is a unitary field in <span class="math" data-tex="\(L^\infty(D,\mathcal U(A))\)">\(L^\infty(D,\mathcal U(A))\)</span>; the functional calculus preserves measurability, being a uniform limit of polynomials on a fixed interval away from zero. From <span class="math" data-tex="\(|\sqrt s-1|\le|s-1|\)">\(|\sqrt s-1|\le|s-1|\)</span> we get <span class="math" data-tex="\(\|V&#x27;_g-A_g\|_\infty=\|I-|A_g|\|_\infty\)">\(\|V&#x27;_g-A_g\|_\infty=\|I-|A_g|\|_\infty\)</span><span class="math" data-tex="\(\le\|I-A_g^*A_g\|_\infty\le4e^2\)">\(\le\|I-A_g^*A_g\|_\infty\le4e^2\)</span>. Replacing the three factors in <span class="math" data-tex="\(A_g\alpha_g(A_h)-A_{gh}\)">\(A_g\alpha_g(A_h)-A_{gh}\)</span> by their polar parts costs at most <span class="math" data-tex="\(12e^2\)">\(12e^2\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{def}(V&#x27;)\le16e^2,\\
+\sup_g\|V&#x27;_g-V_g\|_\infty\le e+4e^2 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\operatorname{def}(V&#x27;)\le16e^2,\\
+\sup_g\|V&#x27;_g-V_g\|_\infty\le e+4e^2 .
+\end{gathered}
+\]</span></p>
+<p><em>Iteration.</em> Start with <span class="math" data-tex="\(e_0=e\)">\(e_0=e\)</span> and repeat. While <span class="math" data-tex="\(e_j\le1/64\)">\(e_j\le1/64\)</span>, <span class="math" data-tex="\(e_{j+1}\le16e_j^2\le e_j/4\)">\(e_{j+1}\le16e_j^2\le e_j/4\)</span>, so <span class="math" data-tex="\(e_j\le4^{-j}e\)">\(e_j\le4^{-j}e\)</span>. The families converge uniformly in <span class="math" data-tex="\(g\)">\(g\)</span>, in the norm <span class="math" data-tex="\(\|\cdot\|_\infty\)">\(\|\cdot\|_\infty\)</span>, to unitary fields <span class="math" data-tex="\(W_g\)">\(W_g\)</span> whose defect is zero, and the total change is at most
+<span class="math math-display" data-tex="\[
+\sum_{j\ge0}(e_j+4e_j^2)\le\frac{17}{16}\sum_{j\ge0}e_j\le\frac{17}{12}\,e\le2e .
+\]">\[
+\sum_{j\ge0}(e_j+4e_j^2)\le\frac{17}{16}\sum_{j\ge0}e_j\le\frac{17}{12}\,e\le2e .
+\]</span>
+The identities hold almost everywhere for each of the countably many pairs <span class="math" data-tex="\((g,h)\)">\((g,h)\)</span>; a nonsingular countable group maps the union of the exceptional sets to null sets, so all identities hold on a <span class="math" data-tex="\(G\)">\(G\)</span>-invariant conull set. With <span class="math" data-tex="\(g=h=1\)">\(g=h=1\)</span> the cocycle identity says <span class="math" data-tex="\(W_1^2=W_1\)">\(W_1^2=W_1\)</span>, and a unitary idempotent is <span class="math" data-tex="\(I\)">\(I\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-averaged-intertwiners">4. Averaged intertwiners</h2>
+<p>In this section <span class="math" data-tex="\((\Gamma,Z)\)">\((\Gamma,Z)\)</span> is either <span class="math" data-tex="\((G,D)\)">\((G,D)\)</span> with the mean <span class="math" data-tex="\(m\)">\(m\)</span> of Lemma 2.1, or <span class="math" data-tex="\((G\times G,D\times D)\)">\((G\times G,D\times D)\)</span> with the separate action and the mean <span class="math" data-tex="\(m^{(2)}\)">\(m^{(2)}\)</span>. Exact cocycles for <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> on <span class="math" data-tex="\(Z\)">\(Z\)</span> are defined as in Section 3.</p>
+<p><strong>Lemma 4.1</strong> (averaged intertwiner). Let <span class="math" data-tex="\(s\mapsto U_s\)">\(s\mapsto U_s\)</span> be a unitary representation of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> on a separable Hilbert space <span class="math" data-tex="\(K\)">\(K\)</span>, and <span class="math" data-tex="\(\Sigma_s\in L^\infty(Z,\mathcal U(K))\)">\(\Sigma_s\in L^\infty(Z,\mathcal U(K))\)</span> an exact cocycle with
+<span class="math math-display" data-tex="\[
+\sup_{s\in\Gamma}\|\Sigma_s-U_s\|_\infty\le\delta&lt;1 .
+\]">\[
+\sup_{s\in\Gamma}\|\Sigma_s-U_s\|_\infty\le\delta&lt;1 .
+\]</span>
+There is <span class="math" data-tex="\(L\in L^\infty(Z,\mathcal U(K))\)">\(L\in L^\infty(Z,\mathcal U(K))\)</span> with <span class="math" data-tex="\(\|L-I\|_\infty\le2\delta\)">\(\|L-I\|_\infty\le2\delta\)</span> and
+<span class="math math-display" data-tex="\[
+L(z)\,U_s=\Sigma_s(z)\,L(s^{-1}z)\qquad(s\in\Gamma)
+\]">\[
+L(z)\,U_s=\Sigma_s(z)\,L(s^{-1}z)\qquad(s\in\Gamma)
+\]</span>
+for almost every <span class="math" data-tex="\(z\)">\(z\)</span>.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(B=m\bigl((t,z)\mapsto\Sigma_t(z)U_t^*\bigr)\)">\(B=m\bigl((t,z)\mapsto\Sigma_t(z)U_t^*\bigr)\)</span>, a field on <span class="math" data-tex="\(Z\)">\(Z\)</span> with <span class="math" data-tex="\(\|B-I\|_\infty\le\delta\)">\(\|B-I\|_\infty\le\delta\)</span>; so <span class="math" data-tex="\(B\)">\(B\)</span> is invertible. For fixed <span class="math" data-tex="\(s\)">\(s\)</span>, equivariance gives <span class="math" data-tex="\(\alpha_s(B)=m\bigl((t,z)\mapsto\Sigma_{s^{-1}t}(s^{-1}z)U_{s^{-1}t}^*\bigr)\)">\(\alpha_s(B)=m\bigl((t,z)\mapsto\Sigma_{s^{-1}t}(s^{-1}z)U_{s^{-1}t}^*\bigr)\)</span>. By (2.2), with the field <span class="math" data-tex="\(\Sigma_s\)">\(\Sigma_s\)</span> on the left and the constant <span class="math" data-tex="\(U_s^*\)">\(U_s^*\)</span> on the right,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Sigma_s\,\alpha_s(B)\,U_s^*\\
+&amp;=m\bigl((t,z)\mapsto\Sigma_s(z)\Sigma_{s^{-1}t}(s^{-1}z)\\
+&amp;\qquad\qquad\cdot U_{s^{-1}t}^*U_s^*\bigr)=B,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Sigma_s\,\alpha_s(B)\,U_s^*\\
+&amp;=m\bigl((t,z)\mapsto\Sigma_s(z)\Sigma_{s^{-1}t}(s^{-1}z)\\
+&amp;\qquad\qquad\cdot U_{s^{-1}t}^*U_s^*\bigr)=B,
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(\Sigma_s(z)\Sigma_{s^{-1}t}(s^{-1}z)=\Sigma_t(z)\)">\(\Sigma_s(z)\Sigma_{s^{-1}t}(s^{-1}z)=\Sigma_t(z)\)</span> and <span class="math" data-tex="\(U_{s^{-1}t}^*U_s^*=U_t^*\)">\(U_{s^{-1}t}^*U_s^*=U_t^*\)</span>. So <span class="math" data-tex="\(BU_s=\Sigma_s\alpha_s(B)\)">\(BU_s=\Sigma_s\alpha_s(B)\)</span>. Taking adjoints and multiplying, <span class="math" data-tex="\(U_s^*B^*BU_s=\alpha_s(B)^*\Sigma_s^*\Sigma_s\alpha_s(B)\)">\(U_s^*B^*BU_s=\alpha_s(B)^*\Sigma_s^*\Sigma_s\alpha_s(B)\)</span><span class="math" data-tex="\(=\alpha_s(B^*B)\)">\(=\alpha_s(B^*B)\)</span>, so <span class="math" data-tex="\(|B|^{-1}=U_s\,\alpha_s(|B|^{-1})\,U_s^*\)">\(|B|^{-1}=U_s\,\alpha_s(|B|^{-1})\,U_s^*\)</span>. Let <span class="math" data-tex="\(L=B|B|^{-1}\)">\(L=B|B|^{-1}\)</span>, a unitary field. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Sigma_s\alpha_s(L)&amp;=\Sigma_s\alpha_s(B)\,\alpha_s(|B|^{-1})\\
+&amp;=BU_s\,\alpha_s(|B|^{-1})\\
+&amp;=B|B|^{-1}U_s=LU_s .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Sigma_s\alpha_s(L)&amp;=\Sigma_s\alpha_s(B)\,\alpha_s(|B|^{-1})\\
+&amp;=BU_s\,\alpha_s(|B|^{-1})\\
+&amp;=B|B|^{-1}U_s=LU_s .
+\end{aligned}
+\]</span>
+Finally <span class="math" data-tex="\((1-\delta)\le|B|\le(1+\delta)\)">\((1-\delta)\le|B|\le(1+\delta)\)</span>, so <span class="math" data-tex="\(\|L-B\|_\infty=\|I-|B|\|_\infty\le\delta\)">\(\|L-B\|_\infty=\|I-|B|\|_\infty\le\delta\)</span> and <span class="math" data-tex="\(\|L-I\|_\infty\le2\delta\)">\(\|L-I\|_\infty\le2\delta\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>Exercise 5.1.</strong> Let <span class="math" data-tex="\(G\)">\(G\)</span> be amenable, with a left-invariant mean <span class="math" data-tex="\(m_G\)">\(m_G\)</span> on <span class="math" data-tex="\(\ell^\infty(G)\)">\(\ell^\infty(G)\)</span>. Show that the one-point space <span class="math" data-tex="\(D=\{x_0\}\)">\(D=\{x_0\}\)</span> and <span class="math" data-tex="\(m(F)=m_G(t\mapsto F(t,x_0))\)">\(m(F)=m_G(t\mapsto F(t,x_0))\)</span> satisfy (2.1), and that Lemma 3.1 then corrects every family of unitaries <span class="math" data-tex="\(v_g\)">\(v_g\)</span> with <span class="math" data-tex="\(\sup_{g,h}\|v_gv_h-v_{gh}\|\le1/64\)">\(\sup_{g,h}\|v_gv_h-v_{gh}\|\le1/64\)</span> into a unitary representation within <span class="math" data-tex="\(2e\)">\(2e\)</span>.</p>
+<p><strong>Exercise 5.2.</strong> Show that <span class="math" data-tex="\(m(F)=f\)">\(m(F)=f\)</span> when <span class="math" data-tex="\(F(t,x)=f(x)\)">\(F(t,x)=f(x)\)</span> does not depend on <span class="math" data-tex="\(t\)">\(t\)</span>, and that <span class="math" data-tex="\(\alpha_g(m(F))=m(F)\)">\(\alpha_g(m(F))=m(F)\)</span> when <span class="math" data-tex="\(\lambda_gF=F\)">\(\lambda_gF=F\)</span>.</p>
+<p><strong>Exercise 5.3.</strong> Check the factorization <span class="math" data-tex="\(H_{gh}=H_g\,\lambda_g(H_h)\)">\(H_{gh}=H_g\,\lambda_g(H_h)\)</span> in the proof of Lemma 3.1.</p>
+<p><strong>Exercise 5.4.</strong> Verify the estimate <span class="math" data-tex="\(\operatorname{def}(V&#x27;)\le16e^2\)">\(\operatorname{def}(V&#x27;)\le16e^2\)</span> by writing <span class="math" data-tex="\(V&#x27;_g\alpha_g(V&#x27;_h)-V&#x27;_{gh}\)">\(V&#x27;_g\alpha_g(V&#x27;_h)-V&#x27;_{gh}\)</span> as <span class="math" data-tex="\(A_g\alpha_g(A_h)-A_{gh}\)">\(A_g\alpha_g(A_h)-A_{gh}\)</span> plus three differences.</p>
+<p><strong>Exercise 5.5.</strong> Show that the intertwiner of Lemma 4.1 for the trivial cocycle <span class="math" data-tex="\(\Sigma_s=U_s\)">\(\Sigma_s=U_s\)</span> is <span class="math" data-tex="\(L=I\)">\(L=I\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>Solution 5.1.</strong> For a one-point space <span class="math" data-tex="\(\alpha_g\)">\(\alpha_g\)</span> is the identity and <span class="math" data-tex="\(\lambda_gF(t)=F(g^{-1}t)\)">\(\lambda_gF(t)=F(g^{-1}t)\)</span>, so (2.1) is the invariance of <span class="math" data-tex="\(m_G\)">\(m_G\)</span> and its linearity. Fields over a point are single operators, and an exact cocycle over a point is a representation. Lemma 3.1 uses only (2.1), (2.2) and the contractivity of <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p><strong>Solution 5.2.</strong> <span class="math" data-tex="\(F=f\cdot1\)">\(F=f\cdot1\)</span> with <span class="math" data-tex="\(1\)">\(1\)</span> the constant function, so <span class="math" data-tex="\(m(F)=f\,m(1)=f\)">\(m(F)=f\,m(1)=f\)</span>. If <span class="math" data-tex="\(\lambda_gF=F\)">\(\lambda_gF=F\)</span>, then <span class="math" data-tex="\(m(F)=m(\lambda_gF)=\alpha_g(mF)\)">\(m(F)=m(\lambda_gF)=\alpha_g(mF)\)</span>.</p>
+<p><strong>Solution 5.3.</strong> <span class="math" data-tex="\(H_g(t,x)\,H_h(g^{-1}t,g^{-1}x)\)">\(H_g(t,x)\,H_h(g^{-1}t,g^{-1}x)\)</span> equals
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+V_t(x)V_{g^{-1}t}(g^{-1}x)^*\\
+\cdot V_{g^{-1}t}(g^{-1}x)V_{h^{-1}g^{-1}t}(h^{-1}g^{-1}x)^*,
+\end{gathered}
+\]">\[
+\begin{gathered}
+V_t(x)V_{g^{-1}t}(g^{-1}x)^*\\
+\cdot V_{g^{-1}t}(g^{-1}x)V_{h^{-1}g^{-1}t}(h^{-1}g^{-1}x)^*,
+\end{gathered}
+\]</span>
+and the middle factors cancel, leaving <span class="math" data-tex="\(H_{gh}(t,x)\)">\(H_{gh}(t,x)\)</span>.</p>
+<p><strong>Solution 5.4.</strong> <span class="math" data-tex="\(V&#x27;_g\alpha_g(V&#x27;_h)-V&#x27;_{gh}\)">\(V&#x27;_g\alpha_g(V&#x27;_h)-V&#x27;_{gh}\)</span> equals <span class="math" data-tex="\(A_g\alpha_g(A_h)-A_{gh}\)">\(A_g\alpha_g(A_h)-A_{gh}\)</span> plus <span class="math" data-tex="\((V&#x27;_g-A_g)\alpha_g(V&#x27;_h)\)">\((V&#x27;_g-A_g)\alpha_g(V&#x27;_h)\)</span>, <span class="math" data-tex="\(A_g\alpha_g(V&#x27;_h-A_h)\)">\(A_g\alpha_g(V&#x27;_h-A_h)\)</span> and <span class="math" data-tex="\(A_{gh}-V&#x27;_{gh}\)">\(A_{gh}-V&#x27;_{gh}\)</span>. The first has norm at most <span class="math" data-tex="\(4e^2\)">\(4e^2\)</span> and each of the others at most <span class="math" data-tex="\(4e^2\)">\(4e^2\)</span>, since <span class="math" data-tex="\(\|A_g\|\le1\)">\(\|A_g\|\le1\)</span> and <span class="math" data-tex="\(\alpha_g\)">\(\alpha_g\)</span> preserves norms.</p>
+<p><strong>Solution 5.5.</strong> <span class="math" data-tex="\(B=m(U_sU_s^*)=m(1)=I\)">\(B=m(U_sU_s^*)=m(1)=I\)</span>, so <span class="math" data-tex="\(L=I\)">\(L=I\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-289] OpenAI, Universal strong Kadison–Kastler stability, preprint, 23 September 2026, Section 4. https://github.com/openai/math/tree/main/preprints/Universal-strong-Kadison-Kastler-stability-September-23-2026</li>
+<li>[BOT] M. Burger, N. Ozawa, A. Thom, On Ulam stability, Israel Journal of Mathematics 193 (2013), 109–129. https://arxiv.org/abs/1010.0565</li>
+<li>[AEG] S. Adams, G. A. Elliott, T. Giordano, Amenable actions of groups, Transactions of the American Mathematical Society 344 (1994), 803–822. https://doi.org/10.1090/S0002-9947-1994-1250814-5</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

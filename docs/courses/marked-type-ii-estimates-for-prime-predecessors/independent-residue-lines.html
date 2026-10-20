@@ -1,0 +1,208 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Independent residue lines</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Marked Type II estimates for prime predecessors)</a><a href="root-residues.html">Previous lesson</a><a href="lifespans-and-the-memory-space.html">Next lesson</a><a href="src/independent-residue-lines.md">Editable source</a></nav><main><article><h1 id="independent-residue-lines">Independent residue lines</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The moment <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> of <a href="from-the-moment-to-the-pairing.html"><em>From the moment to the pairing</em></a> is a sum over closed paths starting at a root position <span class="math" data-tex="\(P\)">\(P\)</span>. Written in coordinates adapted to the root, every condition along the path takes one of two forms: an archimedean condition on the root <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> and its ratio <span class="math" data-tex="\(r\)">\(r\)</span>, or a divisibility condition <span class="math" data-tex="\(p\mid(\text{first coordinate})\)">\(p\mid(\text{first coordinate})\)</span>, which says that a fixed projective line modulo <span class="math" data-tex="\(p\)">\(p\)</span> equals the kernel line of the root matrix modulo <span class="math" data-tex="\(p\)">\(p\)</span>. This lesson uses <a href="root-residues.html"><em>Root residues</em></a> to replace the sum over roots by an integral over the archimedean data and by independent, uniformly distributed kernel lines, one for each group prime. The damping factors involve every group prime, so the product over primes is first truncated by Bonferroni's inequalities; the truncation is accurate because, in the model, a prime that is never in a list affects the path only with probability <span class="math" data-tex="\(O(N/p)\)">\(O(N/p)\)</span>.</p>
+<p><strong>Prerequisites.</strong> <a href="physical-states-and-good-positions.html"><em>Physical states and good positions</em></a>; <a href="from-the-moment-to-the-pairing.html"><em>From the moment to the pairing</em></a>, Lemma 2.1 and Section 4; <a href="root-residues.html"><em>Root residues</em></a>, Theorem 2.1.</p>
+<h2 id="1-coordinates-at-the-root">1. Coordinates at the root</h2>
+<p>Let <span class="math" data-tex="\(P=(u,v)\in\Omega\)">\(P=(u,v)\in\Omega\)</span> be a position and <span class="math" data-tex="\(g=g(P)=\begin{pmatrix}u&amp;c\\v&amp;d\end{pmatrix}\)">\(g=g(P)=\begin{pmatrix}u&amp;c\\v&amp;d\end{pmatrix}\)</span> its root matrix, with <span class="math" data-tex="\(r=c/u\)">\(r=c/u\)</span>. Every position <span class="math" data-tex="\(Q\)">\(Q\)</span> can be written uniquely as <span class="math" data-tex="\(Q=gz\)">\(Q=gz\)</span> with <span class="math" data-tex="\(z\in\mathbb Z^2\)">\(z\in\mathbb Z^2\)</span> primitive, and <span class="math" data-tex="\(\det(gz,gz&#x27;)=\det(z,z&#x27;)\)">\(\det(gz,gz&#x27;)=\det(z,z&#x27;)\)</span>. Put <span class="math" data-tex="\(\tau(z)=z_1+rz_2\)">\(\tau(z)=z_1+rz_2\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(gz)_1=u\,\tau(z),\\
+(gz)_2=v\,\tau(z)+\frac{z_2}u,\quad(1.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+(gz)_1=u\,\tau(z),\\
+(gz)_2=v\,\tau(z)+\frac{z_2}u,\quad(1.1)
+\end{gathered}
+\]</span>
+<p>since <span class="math" data-tex="\(d-vc/u=1/u\)">\(d-vc/u=1/u\)</span>. If <span class="math" data-tex="\(w\)">\(w\)</span> is an integer vector with <span class="math" data-tex="\(\det(z,w)=1\)">\(\det(z,w)=1\)</span>, then <span class="math" data-tex="\(gw\)">\(gw\)</span> completes <span class="math" data-tex="\(gz\)">\(gz\)</span> to a matrix of determinant one, so the ratio of Lesson 8 at the position <span class="math" data-tex="\(gz\)">\(gz\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+r_{gz}=\frac{\tau(w)}{\tau(z)}\bmod1 .\quad(1.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+r_{gz}=\frac{\tau(w)}{\tau(z)}\bmod1 .\quad(1.2)
+\end{gathered}
+\]</span>
+<p>For a prime <span class="math" data-tex="\(p\)">\(p\)</span>, the first row <span class="math" data-tex="\((u,c)\)">\((u,c)\)</span> of <span class="math" data-tex="\(g\)">\(g\)</span> is nonzero modulo <span class="math" data-tex="\(p\)">\(p\)</span>, because <span class="math" data-tex="\(ud-vc=1\)">\(ud-vc=1\)</span>. Let <span class="math" data-tex="\(\ell_p(g)\in\mathbb P^1(\mathbb F_p)\)">\(\ell_p(g)\in\mathbb P^1(\mathbb F_p)\)</span> be the line orthogonal to it, and write <span class="math" data-tex="\([z]_p\)">\([z]_p\)</span> for the line through <span class="math" data-tex="\(z\)">\(z\)</span> modulo <span class="math" data-tex="\(p\)">\(p\)</span> (defined since <span class="math" data-tex="\(z\)">\(z\)</span> is primitive). Then</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+p\mid(gz)_1\iff[z]_p=\ell_p(g).\quad(1.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+p\mid(gz)_1\iff[z]_p=\ell_p(g).\quad(1.3)
+\end{gathered}
+\]</span>
+<p><strong>Lemma 1.1 (the tube).</strong> Let <span class="math" data-tex="\(z_0=e_1,z_1,\dots,z_n=e_1\)">\(z_0=e_1,z_1,\dots,z_n=e_1\)</span>, <span class="math" data-tex="\(n\le N\)">\(n\le N\)</span>, be the coordinates at the root of the positions of a closed path whose consecutive positions are joined by edges with <span class="math" data-tex="\(\mathcal K\ne0\)">\(\mathcal K\ne0\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|z_{j,2}|\le2560NH,\\
+|z_{j,1}|\le2600NH,\\
+\frac1{16}\le\tau(z_j)\le16 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+|z_{j,2}|\le2560NH,\\
+|z_{j,1}|\le2600NH,\\
+\frac1{16}\le\tau(z_j)\le16 .
+\end{gathered}
+\]</span>
+<p><strong>Proof.</strong> By Lemma 2.1 of Lesson 9 the slope changes by at most <span class="math" data-tex="\(10H/U^2\)">\(10H/U^2\)</span> along an edge, so the slopes of <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(gz_j\)">\(gz_j\)</span> differ by at most <span class="math" data-tex="\(10NH/U^2\)">\(10NH/U^2\)</span>. Hence <span class="math" data-tex="\(|z_{j,2}|=|\det(e_1,z_j)|\)">\(|z_{j,2}|=|\det(e_1,z_j)|\)</span><span class="math" data-tex="\(=|\det(P,gz_j)|\)">\(=|\det(P,gz_j)|\)</span><span class="math" data-tex="\(\le256U^2\cdot10NH/U^2\)">\(\le256U^2\cdot10NH/U^2\)</span>. By (1.1), <span class="math" data-tex="\(\tau(z_j)=(gz_j)_1/u\in[1/16,16]\)">\(\tau(z_j)=(gz_j)_1/u\in[1/16,16]\)</span>, and <span class="math" data-tex="\(z_{j,1}=\tau(z_j)-rz_{j,2}\)">\(z_{j,1}=\tau(z_j)-rz_{j,2}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-moment-as-a-path-sum">2. The moment as a path sum</h2>
+<p>Expanding the products <span class="math" data-tex="\(\mathcal A\mathcal A^*\cdots\mathcal A\mathcal A^*\)">\(\mathcal A\mathcal A^*\cdots\mathcal A\mathcal A^*\)</span> in (0.1) of Lesson 9, each factor <span class="math" data-tex="\(\mathcal A=\mathcal G\mathcal S\mathcal T\mathcal S\mathcal G\)">\(\mathcal A=\mathcal G\mathcal S\mathcal T\mathcal S\mathcal G\)</span> contributes a reordering of the source lists, an edge, a reordering of the target lists and the two goodness indicators, and each factor <span class="math" data-tex="\(\mathcal A^*\)">\(\mathcal A^*\)</span> the same with a reversed edge (Lemma 2.1 of Lesson 8). A <strong>path datum</strong> consists of the coordinates <span class="math" data-tex="\(z_0=e_1,z_1,\dots,z_N=e_1\)">\(z_0=e_1,z_1,\dots,z_N=e_1\)</span>, the ordered lists at the <span class="math" data-tex="\(N+1\)">\(N+1\)</span> visits, and the reorderings used; its <strong>weight</strong> <span class="math" data-tex="\(w\)">\(w\)</span> is the product of <span class="math" data-tex="\(\prod_iV_i^{-M}\)">\(\prod_iV_i^{-M}\)</span> for the initial lists, of <span class="math" data-tex="\(\prod_iV_i^{-1}\)">\(\prod_iV_i^{-1}\)</span> for the new labels of every edge, of <span class="math" data-tex="\((M!)^{-K}\)">\((M!)^{-K}\)</span> for every reordering, and of the multipliers <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> or <span class="math" data-tex="\(\overline{\mathcal K}\)">\(\overline{\mathcal K}\)</span> <em>without</em> their damping factors. By Lemma 1.1 and (1.1)–(1.3), <span class="math" data-tex="\(w\)">\(w\)</span> does not depend on the root: <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> depends on <span class="math" data-tex="\(\det(z_j,z_{j+1})\)">\(\det(z_j,z_{j+1})\)</span> and the labels only.</p>
+<p>What depends on the root is:</p>
+<ol>
+<li>the <strong>archimedean factor</strong> <span class="math" data-tex="\(\mathrm{Arch}(u,v,r)\in\{0,1\}\)">\(\mathrm{Arch}(u,v,r)\in\{0,1\}\)</span>: all positions <span class="math" data-tex="\(gz_j\)">\(gz_j\)</span> lie in <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, and all states at the visits are good;</li>
+<li>the <strong>arithmetic factor</strong>: every label at visit <span class="math" data-tex="\(j\)">\(j\)</span> divides <span class="math" data-tex="\((gz_j)_1\)">\((gz_j)_1\)</span>, and the damping. At visit <span class="math" data-tex="\(j\)">\(j\)</span> the damping is <span class="math" data-tex="\(q_j^{\,\omega((gz_j)_1)-KM}\)">\(q_j^{\,\omega((gz_j)_1)-KM}\)</span>, where</li>
+</ol>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+q_j=\varkappa=\tfrac14\ (0&lt;j&lt;N),\\
+q_0=q_N=\sqrt\varkappa=\tfrac12,
+\end{gathered}
+\]">\[
+\begin{gathered}
+q_j=\varkappa=\tfrac14\ (0&lt;j&lt;N),\\
+q_0=q_N=\sqrt\varkappa=\tfrac12,
+\end{gathered}
+\]</span>
+<p>because an interior visit is an endpoint of two edges and the two end visits of one.</p>
+<p>Let <span class="math" data-tex="\(A_p\subseteq\{0,\dots,N\}\)">\(A_p\subseteq\{0,\dots,N\}\)</span> be the set of visits at which the prime <span class="math" data-tex="\(p\)">\(p\)</span> is in a list, and put <span class="math" data-tex="\(\eta_j=1-q_j\)">\(\eta_j=1-q_j\)</span>. By (1.3) the arithmetic factor is <span class="math" data-tex="\(\prod_p\Phi_p(\ell_p(g))\)">\(\prod_p\Phi_p(\ell_p(g))\)</span>, the product over all group primes, where</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Phi_p(\ell)&amp;=\prod_{j\in A_p}\mathbf 1_{[z_j]_p=\ell}\\
+&amp;\quad\times\prod_{j\notin A_p}\bigl(1-\eta_j\mathbf 1_{[z_j]_p=\ell}\bigr).\quad(2.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Phi_p(\ell)&amp;=\prod_{j\in A_p}\mathbf 1_{[z_j]_p=\ell}\\
+&amp;\quad\times\prod_{j\notin A_p}\bigl(1-\eta_j\mathbf 1_{[z_j]_p=\ell}\bigr).\quad(2.1)
+\end{aligned}
+\]</span>
+<p>Indeed, a prime in the list at visit <span class="math" data-tex="\(j\)">\(j\)</span> must divide <span class="math" data-tex="\((gz_j)_1\)">\((gz_j)_1\)</span>, and every other mark of <span class="math" data-tex="\((gz_j)_1\)">\((gz_j)_1\)</span> contributes one factor <span class="math" data-tex="\(q_j=1-\eta_j\)">\(q_j=1-\eta_j\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathfrak m&amp;=\sum_{\text{data}}w\sum_{P}\mathrm{Arch}(u,v,r)\\
+&amp;\quad\times\prod_p\Phi_p\bigl(\ell_p(g(P))\bigr),\quad(2.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathfrak m&amp;=\sum_{\text{data}}w\sum_{P}\mathrm{Arch}(u,v,r)\\
+&amp;\quad\times\prod_p\Phi_p\bigl(\ell_p(g(P))\bigr),\quad(2.2)
+\end{aligned}
+\]</span>
+<p>the inner sum over roots <span class="math" data-tex="\(P=(u,v)\in\Omega\)">\(P=(u,v)\in\Omega\)</span>, primitive.</p>
+<p><strong>Lemma 2.1 (budgets).</strong> The data with nonzero weight satisfy <span class="math" data-tex="\(\sum|w|\le\exp(O_K(L^{0.73}))\)">\(\sum|w|\le\exp(O_K(L^{0.73}))\)</span>. At most <span class="math" data-tex="\((N+1)KM\)">\((N+1)KM\)</span> primes are active (in some list) along a datum, and their product is at most <span class="math" data-tex="\(\exp(O_K(L^{0.72}))\)">\(\exp(O_K(L^{0.72}))\)</span>.</p>
+<p><strong>Proof.</strong> By Lemma 1.1 there are <span class="math" data-tex="\(\exp(O(N\log(NH)))=\exp(O_K(L^{0.71}))\)">\(\exp(O(N\log(NH)))=\exp(O_K(L^{0.71}))\)</span> choices of the <span class="math" data-tex="\(z_j\)">\(z_j\)</span>. The labels number <span class="math" data-tex="\(KM+KN\)">\(KM+KN\)</span>, each chosen among at most <span class="math" data-tex="\(\exp(2L^{0.2})\)">\(\exp(2L^{0.2})\)</span> primes, giving <span class="math" data-tex="\(\exp(O_K(L^{0.71}))\)">\(\exp(O_K(L^{0.71}))\)</span> choices, and the reorderings cost <span class="math" data-tex="\((M!)^{2KN}=\exp(O_K(L^{0.52}))\)">\((M!)^{2KN}=\exp(O_K(L^{0.52}))\)</span>. Each factor of <span class="math" data-tex="\(w\)">\(w\)</span> is bounded: <span class="math" data-tex="\(V_i^{-1}\le2\)">\(V_i^{-1}\le2\)</span>, <span class="math" data-tex="\(|\mathcal K|\le2\)">\(|\mathcal K|\le2\)</span> because <span class="math" data-tex="\(D\ge d_0\)">\(D\ge d_0\)</span> and <span class="math" data-tex="\(|\mathfrak M|\le1\)">\(|\mathfrak M|\le1\)</span>, and <span class="math" data-tex="\((M!)^{-K}\le1\)">\((M!)^{-K}\le1\)</span>. The product of the active primes is at most <span class="math" data-tex="\(\exp(2L^{0.2})^{(N+1)KM}\)">\(\exp(2L^{0.2})^{(N+1)KM}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-bonferroni-s-inequalities-for-numbers">3. Bonferroni's inequalities for numbers</h2>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-tex="\(X_1,\dots,X_n\in[0,1]\)">\(X_1,\dots,X_n\in[0,1]\)</span> and let <span class="math" data-tex="\(e_k\)">\(e_k\)</span> be their elementary symmetric functions. For every <span class="math" data-tex="\(T\ge0\)">\(T\ge0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Bigl|\prod_{i=1}^n(1-X_i)-\sum_{k=0}^T(-1)^ke_k\Bigr|\\
+\le e_{T+1}.\quad(3.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Bigl|\prod_{i=1}^n(1-X_i)-\sum_{k=0}^T(-1)^ke_k\Bigr|\\
+\le e_{T+1}.\quad(3.1)
+\end{gathered}
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(\xi_1,\dots,\xi_n\)">\(\xi_1,\dots,\xi_n\)</span> be independent random variables with <span class="math" data-tex="\(\Pr(\xi_i=1)=X_i\)">\(\Pr(\xi_i=1)=X_i\)</span> and <span class="math" data-tex="\(\Pr(\xi_i=0)=1-X_i\)">\(\Pr(\xi_i=0)=1-X_i\)</span>, and let <span class="math" data-tex="\(\nu=\sum_i\xi_i\)">\(\nu=\sum_i\xi_i\)</span>. Then <span class="math" data-tex="\(\mathbb E\binom\nu k=e_k\)">\(\mathbb E\binom\nu k=e_k\)</span> and <span class="math" data-tex="\(\Pr(\nu=0)=\prod(1-X_i)\)">\(\Pr(\nu=0)=\prod(1-X_i)\)</span>. For an integer <span class="math" data-tex="\(\nu\ge1\)">\(\nu\ge1\)</span>, <span class="math" data-tex="\(\sum_{k\le T}(-1)^k\binom\nu k=(-1)^T\binom{\nu-1}T\)">\(\sum_{k\le T}(-1)^k\binom\nu k=(-1)^T\binom{\nu-1}T\)</span>, which has absolute value at most <span class="math" data-tex="\(\binom\nu{T+1}\)">\(\binom\nu{T+1}\)</span> (Lemma 4.1 of <a href="primes-divisors-mean-squares-and-rough-numbers.html"><em>Primes, divisors, mean squares and rough numbers</em></a>); for <span class="math" data-tex="\(\nu=0\)">\(\nu=0\)</span> the sum is <span class="math" data-tex="\(1\)">\(1\)</span>. Take expectations. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The variables <span class="math" data-tex="\(\xi_i\)">\(\xi_i\)</span> are an auxiliary device: (3.1) is an inequality between numbers, valid for every choice of the <span class="math" data-tex="\(X_i\)">\(X_i\)</span> in <span class="math" data-tex="\([0,1]\)">\([0,1]\)</span>.</p>
+<h2 id="4-the-model-and-the-replacement">4. The model and the replacement</h2>
+<p>The <strong>model</strong> replaces the root by a point <span class="math" data-tex="\(\mathbf a=(a_1,a_2,a_3)\in Q_0\)">\(\mathbf a=(a_1,a_2,a_3)\in Q_0\)</span><span class="math" data-tex="\(=[1,16]\times[1,2]\times[0,1]\)">\(=[1,16]\times[1,2]\times[0,1]\)</span>, with the real matrix</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g(\mathbf a)=\begin{pmatrix}Ua_1&amp;Ua_1a_3\\ Va_2&amp;Va_2a_3+1/(Ua_1)\end{pmatrix}\\
+\in\mathrm{SL}_2(\mathbb R),
+\end{gathered}
+\]">\[
+\begin{gathered}
+g(\mathbf a)=\begin{pmatrix}Ua_1&amp;Ua_1a_3\\ Va_2&amp;Va_2a_3+1/(Ua_1)\end{pmatrix}\\
+\in\mathrm{SL}_2(\mathbb R),
+\end{gathered}
+\]</span>
+<p>so that <span class="math" data-tex="\(u=Ua_1\)">\(u=Ua_1\)</span>, <span class="math" data-tex="\(v=Va_2\)">\(v=Va_2\)</span>, <span class="math" data-tex="\(r=a_3\)">\(r=a_3\)</span>, and (1.1), (1.2) define <span class="math" data-tex="\(\mathrm{Arch}(\mathbf a)\)">\(\mathrm{Arch}(\mathbf a)\)</span> for real <span class="math" data-tex="\(\mathbf a\)">\(\mathbf a\)</span>. The kernel lines are replaced by independent random lines <span class="math" data-tex="\(\ell_p\)">\(\ell_p\)</span>, uniformly distributed in <span class="math" data-tex="\(\mathbb P^1(\mathbb F_p)\)">\(\mathbb P^1(\mathbb F_p)\)</span>, one for each group prime. The <strong>model moment</strong> at <span class="math" data-tex="\(\mathbf a\)">\(\mathbf a\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathfrak m(\mathbf a)&amp;=\sum_{\text{data}}w\,\mathrm{Arch}(\mathbf a)\\
+&amp;\quad\times\mathbb E\prod_p\Phi_p(\ell_p).\quad(4.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathfrak m(\mathbf a)&amp;=\sum_{\text{data}}w\,\mathrm{Arch}(\mathbf a)\\
+&amp;\quad\times\mathbb E\prod_p\Phi_p(\ell_p).\quad(4.1)
+\end{aligned}
+\]</span>
+<p><strong>Theorem 4.1 (replacement of the root average).</strong> For every fixed <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span> and large <span class="math" data-tex="\(x\)">\(x\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{\mathfrak m}{UV}=\frac1{\zeta(2)}\int_{Q_0}\mathfrak m(\mathbf a)\,d\mathbf a\\
++O\bigl(L^{-AN}\bigr).\quad(4.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{\mathfrak m}{UV}=\frac1{\zeta(2)}\int_{Q_0}\mathfrak m(\mathbf a)\,d\mathbf a\\
++O\bigl(L^{-AN}\bigr).\quad(4.2)
+\end{gathered}
+\]</span>
+<p>The same holds, with the same proof, for any path sum of the form (2.2) with at most <span class="math" data-tex="\(N\)">\(N\)</span> edges and weights satisfying the budget of Lemma 2.1, and also with <span class="math" data-tex="\(|w|\)">\(|w|\)</span> in place of <span class="math" data-tex="\(w\)">\(w\)</span> and with <span class="math" data-tex="\(\mathrm{Arch}\)">\(\mathrm{Arch}\)</span> replaced by the indicator that some visit fails a goodness test.</p>
+<p><strong>Proof.</strong> <em>Truncating the damping.</em> Fix a datum. Let <span class="math" data-tex="\(\mathcal P_{\rm act}\)">\(\mathcal P_{\rm act}\)</span> be its active primes and <span class="math" data-tex="\(\mathcal P_{\rm rest}\)">\(\mathcal P_{\rm rest}\)</span> the other group primes. For <span class="math" data-tex="\(p\in\mathcal P_{\rm rest}\)">\(p\in\mathcal P_{\rm rest}\)</span> put <span class="math" data-tex="\(X_p(\ell)=1-\Phi_p(\ell)\in[0,1]\)">\(X_p(\ell)=1-\Phi_p(\ell)\in[0,1]\)</span>. Let <span class="math" data-tex="\(T=\lceil L^{0.76}\rceil\)">\(T=\lceil L^{0.76}\rceil\)</span> and let <span class="math" data-tex="\(B_T=\sum_{k\le T}(-1)^ke_k\)">\(B_T=\sum_{k\le T}(-1)^ke_k\)</span> and <span class="math" data-tex="\(e_{T+1}\)">\(e_{T+1}\)</span> be formed from the numbers <span class="math" data-tex="\(X_p(\ell_p)\)">\(X_p(\ell_p)\)</span>, <span class="math" data-tex="\(p\in\mathcal P_{\rm rest}\)">\(p\in\mathcal P_{\rm rest}\)</span>. Since <span class="math" data-tex="\(|\Phi_p|\le1\)">\(|\Phi_p|\le1\)</span> and <span class="math" data-tex="\(\mathrm{Arch}\in\{0,1\}\)">\(\mathrm{Arch}\in\{0,1\}\)</span>, Lemma 3.1 gives, for every choice of lines,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Bigl|\prod_p\Phi_p-\prod_{p\in\mathcal P_{\rm act}}\Phi_p\cdot B_T\Bigr|\le e_{T+1} .\quad(4.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Bigl|\prod_p\Phi_p-\prod_{p\in\mathcal P_{\rm act}}\Phi_p\cdot B_T\Bigr|\le e_{T+1} .\quad(4.3)
+\end{gathered}
+\]</span>
+<p><em>Residue conditions.</em> Each <span class="math" data-tex="\(\Phi_p\)">\(\Phi_p\)</span> and each <span class="math" data-tex="\(X_p\)">\(X_p\)</span> depends on <span class="math" data-tex="\(\ell\)">\(\ell\)</span> only through the indicators <span class="math" data-tex="\(\mathbf 1_{\ell=\lambda}\)">\(\mathbf 1_{\ell=\lambda}\)</span> for the at most <span class="math" data-tex="\(N+1\)">\(N+1\)</span> lines <span class="math" data-tex="\(\lambda\in\{[z_j]_p\}\)">\(\lambda\in\{[z_j]_p\}\)</span>: for <span class="math" data-tex="\(p\in\mathcal P_{\rm act}\)">\(p\in\mathcal P_{\rm act}\)</span>, <span class="math" data-tex="\(\Phi_p\)">\(\Phi_p\)</span> is a constant times <span class="math" data-tex="\(\mathbf 1_{\ell=\lambda_p}\)">\(\mathbf 1_{\ell=\lambda_p}\)</span> for the common active line <span class="math" data-tex="\(\lambda_p\)">\(\lambda_p\)</span> (or zero if the active lines disagree), and for <span class="math" data-tex="\(p\in\mathcal P_{\rm rest}\)">\(p\in\mathcal P_{\rm rest}\)</span>, <span class="math" data-tex="\(X_p(\ell)=\sum_\lambda X_p(\lambda)\mathbf 1_{\ell=\lambda}\)">\(X_p(\ell)=\sum_\lambda X_p(\lambda)\mathbf 1_{\ell=\lambda}\)</span>. Expanding, <span class="math" data-tex="\(\prod_{\rm act}\Phi_p\cdot B_T\)">\(\prod_{\rm act}\Phi_p\cdot B_T\)</span> and <span class="math" data-tex="\(e_{T+1}\)">\(e_{T+1}\)</span> become linear combinations, with coefficients of modulus at most <span class="math" data-tex="\(1\)">\(1\)</span>, of products <span class="math" data-tex="\(\prod_{p\in\mathcal S}\mathbf 1_{\ell_p=\lambda_p}\)">\(\prod_{p\in\mathcal S}\mathbf 1_{\ell_p=\lambda_p}\)</span> over sets <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span> of at most <span class="math" data-tex="\(|\mathcal P_{\rm act}|+T+1\)">\(|\mathcal P_{\rm act}|+T+1\)</span> primes. The number of such products is at most <span class="math" data-tex="\((N+2)^{T+1}\bigl(K\exp(2L^{0.2})\bigr)^{T+1}\)">\((N+2)^{T+1}\bigl(K\exp(2L^{0.2})\bigr)^{T+1}\)</span><span class="math" data-tex="\(=\exp(O_K(L^{0.96}))\)">\(=\exp(O_K(L^{0.96}))\)</span>. For each of them, <span class="math" data-tex="\(S=\prod_{p\in\mathcal S}p\)">\(S=\prod_{p\in\mathcal S}p\)</span> satisfies <span class="math" data-tex="\(\log S\le O_K(L^{0.72})+2(T+1)L^{0.2}\)">\(\log S\le O_K(L^{0.72})+2(T+1)L^{0.2}\)</span><span class="math" data-tex="\(\le L^{0.99}\)">\(\le L^{0.99}\)</span>, and the condition <span class="math" data-tex="\(\ell_p(g)=\lambda_p\)">\(\ell_p(g)=\lambda_p\)</span> for all <span class="math" data-tex="\(p\in\mathcal S\)">\(p\in\mathcal S\)</span> holds for exactly <span class="math" data-tex="\(\prod_{p\in\mathcal S}p(p-1)\)">\(\prod_{p\in\mathcal S}p(p-1)\)</span> residue classes <span class="math" data-tex="\(g_0\in\mathrm{SL}_2(\mathbb Z/S\mathbb Z)\)">\(g_0\in\mathrm{SL}_2(\mathbb Z/S\mathbb Z)\)</span>, a fraction <span class="math" data-tex="\(\prod_{p\in\mathcal S}(p+1)^{-1}\)">\(\prod_{p\in\mathcal S}(p+1)^{-1}\)</span> of the group (Exercise 11.3).</p>
+<p><em>The archimedean grid.</em> Fix a datum and put <span class="math" data-tex="\(\epsilon=\delta/1600\)">\(\epsilon=\delta/1600\)</span>. Divide <span class="math" data-tex="\(Q_0\)">\(Q_0\)</span> into cubes of side about <span class="math" data-tex="\(x^{-\epsilon}\)">\(x^{-\epsilon}\)</span>. The factor <span class="math" data-tex="\(\mathrm{Arch}\)">\(\mathrm{Arch}\)</span> is constant on every cube that does not meet the following set <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>: the surfaces <span class="math" data-tex="\(a_1\tau(z_j)\in\{1,16\}\)">\(a_1\tau(z_j)\in\{1,16\}\)</span> and <span class="math" data-tex="\(a_2\tau(z_j)+z_{j,2}/(UVa_1)\in\{1,2\}\)">\(a_2\tau(z_j)+z_{j,2}/(UVa_1)\in\{1,2\}\)</span>, and the planes <span class="math" data-tex="\(a_3=r_0\)">\(a_3=r_0\)</span> at which a goodness test at some visit changes its outcome. By (1.2), on the region <span class="math" data-tex="\(\tau(z_j)\ge1/32\)">\(\tau(z_j)\ge1/32\)</span> the function <span class="math" data-tex="\(a_3\mapsto r_{gz_j}\)">\(a_3\mapsto r_{gz_j}\)</span> is monotone with derivative <span class="math" data-tex="\(1/\tau(z_j)^2\le1024\)">\(1/\tau(z_j)^2\le1024\)</span>, and each test involves at most <span class="math" data-tex="\(\exp(o(L))\)">\(\exp(o(L))\)</span> conditions of the form <span class="math" data-tex="\(\|n\,r_{gz_j}\|\le\epsilon_0\)">\(\|n\,r_{gz_j}\|\le\epsilon_0\)</span> with integers <span class="math" data-tex="\(|n|\le\exp(o(L))\)">\(|n|\le\exp(o(L))\)</span> (Definition 3.1 of Lesson 8, including the weighted exceptional sets of (G2), which change only where one of their conditions does). So there are <span class="math" data-tex="\(\exp(o(L))\)">\(\exp(o(L))\)</span> such planes. Where <span class="math" data-tex="\(\tau(z_j)&lt;1/16\)">\(\tau(z_j)&lt;1/16\)</span>, the condition <span class="math" data-tex="\(a_1\tau(z_j)\ge1\)">\(a_1\tau(z_j)\ge1\)</span> fails and <span class="math" data-tex="\(\mathrm{Arch}=0\)">\(\mathrm{Arch}=0\)</span>, so only the region <span class="math" data-tex="\(\tau(z_j)\ge1/16\)">\(\tau(z_j)\ge1/16\)</span> matters. There the first surface is the graph <span class="math" data-tex="\(a_1=c/\tau(z_j)\)">\(a_1=c/\tau(z_j)\)</span>, <span class="math" data-tex="\(c\in\{1,16\}\)">\(c\in\{1,16\}\)</span>, of a function of <span class="math" data-tex="\(a_3\)">\(a_3\)</span> whose derivative <span class="math" data-tex="\(cz_{j,2}/\tau(z_j)^2\)">\(cz_{j,2}/\tau(z_j)^2\)</span> is at most <span class="math" data-tex="\(\exp(o(L))\)">\(\exp(o(L))\)</span> by Lemma 1.1, and the second is the graph of a function <span class="math" data-tex="\(a_2\)">\(a_2\)</span> of <span class="math" data-tex="\((a_1,a_3)\)">\((a_1,a_3)\)</span> with partial derivatives at most <span class="math" data-tex="\(\exp(o(L))\)">\(\exp(o(L))\)</span>. A graph over a square with derivatives at most <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> meets <span class="math" data-tex="\(O((\Lambda+1)x^{2\epsilon})\)">\(O((\Lambda+1)x^{2\epsilon})\)</span> cubes, and a plane <span class="math" data-tex="\(a_3=r_0\)">\(a_3=r_0\)</span> meets <span class="math" data-tex="\(O(x^{2\epsilon})\)">\(O(x^{2\epsilon})\)</span>. Hence the cubes meeting <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> have total volume <span class="math" data-tex="\(x^{-\epsilon+o(1)}\)">\(x^{-\epsilon+o(1)}\)</span>.</p>
+<p>For each residue condition <span class="math" data-tex="\(g\equiv g_0\ (S)\)">\(g\equiv g_0\ (S)\)</span> and each cube, Theorem 2.1 of Lesson 10 counts the roots with <span class="math" data-tex="\(\mathbf a\)">\(\mathbf a\)</span> in the cube, with relative main term <span class="math" data-tex="\(\mathrm{vol}/(\zeta(2)|\mathrm{SL}_2(\mathbb Z/S\mathbb Z)|)\)">\(\mathrm{vol}/(\zeta(2)|\mathrm{SL}_2(\mathbb Z/S\mathbb Z)|)\)</span> and error <span class="math" data-tex="\(O(UVx^{-\delta/200})\)">\(O(UVx^{-\delta/200})\)</span>. Summing over the <span class="math" data-tex="\(O(x^{3\epsilon})\)">\(O(x^{3\epsilon})\)</span> cubes, treating the cubes meeting <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> by the upper bound <span class="math" data-tex="\(0\le\mathrm{Arch}\le1\)">\(0\le\mathrm{Arch}\le1\)</span>, and then over the <span class="math" data-tex="\(\exp(O_K(L^{0.96}))\)">\(\exp(O_K(L^{0.96}))\)</span> residue conditions and the <span class="math" data-tex="\(\exp(O_K(L^{0.73}))\)">\(\exp(O_K(L^{0.73}))\)</span> weighted data, the replacement of the sum over roots of <span class="math" data-tex="\(w\,\mathrm{Arch}\prod_{\rm act}\Phi_p\,B_T\)">\(w\,\mathrm{Arch}\prod_{\rm act}\Phi_p\,B_T\)</span> by <span class="math" data-tex="\(UV/\zeta(2)\)">\(UV/\zeta(2)\)</span> times the integral of its model expectation costs</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+UV\,x^{-\delta/200+3\epsilon+o(1)}+UV\,x^{-\epsilon+o(1)}\\
+=UV\,x^{-\epsilon+o(1)} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+UV\,x^{-\delta/200+3\epsilon+o(1)}+UV\,x^{-\epsilon+o(1)}\\
+=UV\,x^{-\epsilon+o(1)} .
+\end{gathered}
+\]</span>
+<p><em>The truncation error.</em> The same replacement applies to <span class="math" data-tex="\(\sum|w|\sum_Pe_{T+1}\)">\(\sum|w|\sum_Pe_{T+1}\)</span>. In the model, the lines are independent and <span class="math" data-tex="\(\mathbb E X_p(\ell_p)\le\sum_j\eta_j/(p+1)\le(N+1)/p\)">\(\mathbb E X_p(\ell_p)\le\sum_j\eta_j/(p+1)\le(N+1)/p\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E\,e_{T+1}&amp;\le\frac1{(T+1)!}\Bigl(\sum_p\mathbb EX_p\Bigr)^{T+1}\\
+&amp;\le\Bigl(\frac{2eK(N+1)}{T+1}\Bigr)^{T+1}\\
+&amp;\le\exp\bigl(-\tfrac15L^{0.76}\log L\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E\,e_{T+1}&amp;\le\frac1{(T+1)!}\Bigl(\sum_p\mathbb EX_p\Bigr)^{T+1}\\
+&amp;\le\Bigl(\frac{2eK(N+1)}{T+1}\Bigr)^{T+1}\\
+&amp;\le\exp\bigl(-\tfrac15L^{0.76}\log L\bigr),
+\end{aligned}
+\]</span>
+<p>because <span class="math" data-tex="\(\sum_p1/p\le2K\)">\(\sum_p1/p\le2K\)</span> over the group primes and <span class="math" data-tex="\(N+1\le L^{0.51}\)">\(N+1\le L^{0.51}\)</span>. Multiplied by the budget <span class="math" data-tex="\(\exp(O_K(L^{0.73}))\)">\(\exp(O_K(L^{0.73}))\)</span>, this is far smaller than <span class="math" data-tex="\(L^{-AN}=\exp(-O(L^{0.5}\log L))\)">\(L^{-AN}=\exp(-O(L^{0.5}\log L))\)</span>. The same bound controls the model counterpart of (4.3). Collecting the errors and dividing by <span class="math" data-tex="\(UV\)">\(UV\)</span> proves (4.2). The variants stated after the theorem only change the weights or the archimedean indicator, and the indicator of failing a test is again constant off the planes described above. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In the model the structure of the moment is transparent: each group prime contributes an independent factor <span class="math" data-tex="\(\mathbb E\,\Phi_p(\ell_p)\)">\(\mathbb E\,\Phi_p(\ell_p)\)</span>, and <span class="math" data-tex="\(\ell_p\)">\(\ell_p\)</span> is a uniform line, so a prescribed line has probability <span class="math" data-tex="\(1/(p+1)\)">\(1/(p+1)\)</span>. The next lesson evaluates these factors exactly.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>11.1.</strong> Verify (1.1) and (1.2) directly from the matrix <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(\det(z,w)=1\)">\(\det(z,w)=1\)</span>.</p>
+<p><strong>11.2.</strong> Show that if <span class="math" data-tex="\(g\)">\(g\)</span> is uniformly distributed in <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb F_p)\)">\(\mathrm{SL}_2(\mathbb F_p)\)</span>, then <span class="math" data-tex="\(\ell_p(g)\)">\(\ell_p(g)\)</span> is uniformly distributed among the <span class="math" data-tex="\(p+1\)">\(p+1\)</span> lines.</p>
+<p><strong>11.3.</strong> Show that the condition <span class="math" data-tex="\(\ell_p(g)=\lambda\)">\(\ell_p(g)=\lambda\)</span> holds for exactly <span class="math" data-tex="\(p(p-1)\)">\(p(p-1)\)</span> elements of <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb F_p)\)">\(\mathrm{SL}_2(\mathbb F_p)\)</span>.</p>
+<p><strong>11.4.</strong> Let <span class="math" data-tex="\(X_1=X_2=\frac12\)">\(X_1=X_2=\frac12\)</span>. Compute both sides of (3.1) for <span class="math" data-tex="\(T=0,1,2\)">\(T=0,1,2\)</span>.</p>
+<p><strong>11.5.</strong> Explain why the damping at the two end visits is <span class="math" data-tex="\(\sqrt\varkappa\)">\(\sqrt\varkappa\)</span> per extra mark, and at interior visits <span class="math" data-tex="\(\varkappa\)">\(\varkappa\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>11.1.</strong> <span class="math" data-tex="\((gz)_1=uz_1+cz_2=u(z_1+rz_2)\)">\((gz)_1=uz_1+cz_2=u(z_1+rz_2)\)</span>. <span class="math" data-tex="\((gz)_2=vz_1+dz_2=v\tau(z)+(d-vr)z_2\)">\((gz)_2=vz_1+dz_2=v\tau(z)+(d-vr)z_2\)</span> and <span class="math" data-tex="\(d-vr=(ud-vc)/u=1/u\)">\(d-vr=(ud-vc)/u=1/u\)</span>. The matrix with columns <span class="math" data-tex="\(gz,gw\)">\(gz,gw\)</span> is <span class="math" data-tex="\(g\)">\(g\)</span> times the matrix with columns <span class="math" data-tex="\(z,w\)">\(z,w\)</span>, so its determinant is <span class="math" data-tex="\(1\)">\(1\)</span>, and its ratio is <span class="math" data-tex="\((gw)_1/(gz)_1=\tau(w)/\tau(z)\)">\((gw)_1/(gz)_1=\tau(w)/\tau(z)\)</span>.</p>
+<p><strong>11.2.</strong> The first row of a uniform element of <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb F_p)\)">\(\mathrm{SL}_2(\mathbb F_p)\)</span> is uniform among the <span class="math" data-tex="\(p^2-1\)">\(p^2-1\)</span> nonzero vectors, since each has exactly <span class="math" data-tex="\(p\)">\(p\)</span> completions. The orthogonal line of a nonzero row is determined by the row up to the <span class="math" data-tex="\(p-1\)">\(p-1\)</span> nonzero scalars, so each line arises from <span class="math" data-tex="\(p-1\)">\(p-1\)</span> rows, with probability <span class="math" data-tex="\((p-1)/(p^2-1)=1/(p+1)\)">\((p-1)/(p^2-1)=1/(p+1)\)</span>.</p>
+<p><strong>11.3.</strong> By the previous solution: <span class="math" data-tex="\(p-1\)">\(p-1\)</span> rows, each with <span class="math" data-tex="\(p\)">\(p\)</span> completions.</p>
+<p><strong>11.4.</strong> The product is <span class="math" data-tex="\(\frac14\)">\(\frac14\)</span>, <span class="math" data-tex="\(e_1=1\)">\(e_1=1\)</span>, <span class="math" data-tex="\(e_2=\frac14\)">\(e_2=\frac14\)</span>, <span class="math" data-tex="\(e_3=0\)">\(e_3=0\)</span>. For <span class="math" data-tex="\(T=0\)">\(T=0\)</span>: <span class="math" data-tex="\(|\frac14-1|=\frac34\le e_1=1\)">\(|\frac14-1|=\frac34\le e_1=1\)</span>. For <span class="math" data-tex="\(T=1\)">\(T=1\)</span>: <span class="math" data-tex="\(|\frac14-0|=\frac14\le e_2\)">\(|\frac14-0|=\frac14\le e_2\)</span>. For <span class="math" data-tex="\(T=2\)">\(T=2\)</span>: <span class="math" data-tex="\(|\frac14-\frac14|=0\le e_3=0\)">\(|\frac14-\frac14|=0\le e_3=0\)</span>.</p>
+<p><strong>11.5.</strong> In (2.2) of Lesson 8 every edge contributes <span class="math" data-tex="\(\varkappa^{(\omega-KM)/2}\)">\(\varkappa^{(\omega-KM)/2}\)</span> at each of its two endpoints. An interior visit is the target of one edge and the source of the next, so it receives <span class="math" data-tex="\(\varkappa^{\omega-KM}\)">\(\varkappa^{\omega-KM}\)</span>; the first and last visits belong to one edge each.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[PD] OpenAI, <em>The Poisson–Dirichlet law for prime predecessors</em>, OpenAI Math Release preprint, 24 September 2026, Section 3.5. https://github.com/openai/math/tree/main/preprints/The-Poisson-Dirichlet-Law-for-Prime-Predecessors-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

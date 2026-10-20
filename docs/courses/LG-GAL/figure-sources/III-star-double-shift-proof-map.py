@@ -85,7 +85,7 @@ ax.text(4.5, 2.37,
     ha='center', va='center', fontsize=10.8, linespacing=1.6)
 ax.text(4.5, 1.18, 'Remaining III* scope: high a₁/a₃ with e ≥ 2, or e = 1 and d = 15',
         ha='center', fontsize=11.5, fontweight='bold')
-ax.text(4.5, .55, 'Every other residual family and the universal NF24 identity remain required.\n'
+ax.text(4.5, .55, 'Other residual families are outside these hypotheses; general NF24 is JM30–JM32.\n'
         'Full conditions and proof locators: Lesson 8, Sections 6.0R.1–7.',
         ha='center', va='center', fontsize=11.5, linespacing=1.6)
 dest = Path(__file__).resolve().parents[1]/'assets/III-star-double-shift-proof-map.png'

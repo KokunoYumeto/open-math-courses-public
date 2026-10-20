@@ -1,6 +1,6 @@
 # Orders and the discriminant theorem
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
 A prime can divide the discriminant for two different reasons: the field extension can ramify, or an order can lose information before reduction. The trace pairing detects both. We will prove the criterion for arbitrary orders, over any Dedekind base, and keep inseparable residue fields in view.
 
@@ -137,14 +137,14 @@ If a root is repeated, the Chinese remainder decomposition has a factor \(\bar k
 
 ## Proof dependencies
 
-The trace-pairing criterion, its inseparable-field argument, the arbitrary-order discriminant criterion, the local index-discriminant calculation, all four reductions and all five exercise solutions are proved above. The complete earlier primitive-element, Artinian product, finite étale field-algebra, field-differential, quadratic-basis and index-criterion proofs have the exact links and locators at their applications. The DVR and Dedekind localization characterization is proved in Discrete valuation rings and Dedekind domains, and in the first lesson's ideal theory. No external citation replaces a supplied proof. Noncommutative orders use different trace conventions and are outside this theorem; [Voight]'s free corrected edition explains that setting.
+The trace-pairing criterion, its inseparable-field argument, the arbitrary-order discriminant criterion, the local index-discriminant calculation, all four reductions and all five exercise solutions are proved above. The complete earlier primitive-element, Artinian product, finite étale field-algebra, field-differential, quadratic-basis and index-criterion proofs have the exact links and locators at their applications. The DVR and Dedekind localization characterization is proved in Discrete valuation rings and Dedekind domains, and in the first lesson's ideal theory. Noncommutative orders use different trace conventions and are outside this theorem; [Voight]'s free corrected edition explains that setting.
 
-The linked combined Kähler-differential edition retains its declared GNU FDL terms; its expression is not reproduced here. This lesson's new exposition is independently written CC0. An export omitting a linked component retains that external proof dependency.
+The linked Kähler-differential edition carries its own GNU FDL notice.
 
 ## References
 
 - **[Milne]** J. S. Milne, *Fields and Galois Theory*, Theorems 5.1 and 5.18, Proposition 8.6 and Corollary 8.7, and *Algebraic Number Theory*, Chapters 2–3 (quadratic bases in the Introduction, p. 8); [author's notes](https://www.jmilne.org/math/CourseNotes/).
-- **[Stacks]** The Stacks Project, Tags [0BIE](https://stacks.math.columbia.edu/tag/0BIE), [0BVH](https://stacks.math.columbia.edu/tag/0BVH) and [0BJF](https://stacks.math.columbia.edu/tag/0BJF). The corresponding [AI Integrated Stacks Project English reader](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/discriminant.html) contains AI-proposed corrections and additions, not reviewed by the Stacks Project's maintainers.
+- **[Stacks]** The Stacks Project, Tags [0BIE](https://stacks.math.columbia.edu/tag/0BIE), [0BVH](https://stacks.math.columbia.edu/tag/0BVH) and [0BJF](https://stacks.math.columbia.edu/tag/0BJF). The corresponding [AI Integrated Stacks Project English reader](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/discriminant.html) includes AI-authored supplementary material.
 - **[Noether]** Emmy Noether, *The Discriminant Theorem for Orders of an Algebraic Number Field or Function Field*, especially Sections 6–8, and *On Maximal Domains of Integral Functions*, in the [freely accessible English corpus edition](https://zenodo.org/records/21923146), version 2026.08.13-r1, items 31 and 35; [editable source and linked reader](https://github.com/KokunoYumeto/emmy-noether-en). This is a machine-assisted working translation. The original articles are *Der Diskriminantensatz für die Ordnungen eines algebraischen Zahl- oder Funktionenkörpers*, Journal für die reine und angewandte Mathematik **157** (1927), 82–104, and *Über Maximalbereiche aus ganzzahligen Funktionen*, Matematicheskii Sbornik **36** (1929), 65–72; the latter also has a [free original-journal archive entry](https://www.mathnet.ru/eng/sm7340).
 - **[Voight]** John Voight, [*Quaternion Algebras*, free corrected author edition](https://jvoight.github.io/quat-book-v1.0.5.pdf), stable version 1.0.5, 10 January 2024, Chapters 7 and 9–15; [author's version page](https://jvoight.github.io/quat.html).
 - **Additional prerequisite tags:** [00KJ](https://stacks.math.columbia.edu/tag/00KJ), [00U3](https://stacks.math.columbia.edu/tag/00U3), and [034X](https://stacks.math.columbia.edu/tag/034X).

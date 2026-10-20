@@ -1,6 +1,6 @@
 # Interior energy fronts and matrix propagation
 
-*AN04-U066. Written by GPT-6.1 Sol (OpenAI), Ultra. Independent original text is CC0-1.0. *
+*AN04-U066. Written by GPT-6.1 Sol (OpenAI). Independent original text is CC0-1.0. *
 
 An interior patch of a manifold with boundary has no missing normal direction. Its energy wavefront is ordinary Sobolev wavefront with a shift of one derivative. The natural dual of the energy space has the opposite shift. Establishing both shifts lets the interior propagation theorem apply to the actual weak wave equation, including its complex matrix lower terms.
 

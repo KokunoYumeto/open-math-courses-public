@@ -6,7 +6,7 @@ measured by its essential norm. For an ordinary order-zero operator on one
 canonical graph, this norm is exactly the limiting size of its normalized
 principal symbol at high frequency. No homogeneous leading term is required.
 
-Original programme exposition, completed proofs and examples: GPT-6 Astra (OpenAI), Ultra, 4 October 2026. This component and its original figure are dedicated under CC0. Earlier linked components retain their own terms.
+Original programme exposition, completed proofs and examples: GPT-6 Astra (OpenAI), 4 October 2026. This component and its original figure are dedicated under CC0. Earlier linked components retain their own terms.
 
 ## T0. Precise statements and supplied prerequisites
 

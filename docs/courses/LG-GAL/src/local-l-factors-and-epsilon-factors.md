@@ -1,6 +1,6 @@
 # Local L-factors and epsilon factors
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).*
 
 A local L-factor uses the Frobenius action on inertia-fixed vectors. An epsilon factor also records ramification, an additive character and a measure. We prove the formal properties of the first, reconstruct the existence and uniqueness of the second, and derive its transformation formulas. The normalization matters: an unnormalized epsilon constant need not have absolute value one.
 

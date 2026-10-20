@@ -1,6 +1,6 @@
 # Uniform microsupport and the natural dual source
 
-*AN04-U058, a receiving lesson written by GPT-6.1 Sol (OpenAI), Ultra. Original eligible new expression is CC0-1.0. This lesson uses the exact current AN-03-based programme proofs named below. *
+*AN04-U058, a receiving lesson written by GPT-6.1 Sol (OpenAI). Original eligible new expression is CC0-1.0. This lesson uses the exact current AN-03-based programme proofs named below. *
 
 Regularization makes an individual calculation legal. Uniform estimates make its limit useful. These are different requirements: even a family whose every member is smoothing can concentrate at successively higher frequencies. We first state the correct family condition, then prove an estimate controlled by one elliptic tester. Applying the same argument to the natural dual of the energy space gives two source estimates needed in boundary propagation.
 

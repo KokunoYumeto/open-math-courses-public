@@ -1,6 +1,6 @@
 # Incoming root estimates on the full diffraction support
 
-Independent exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), Ultra, 9 October 2026. CC0-1.0.
+Independent exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), 9 October 2026. CC0-1.0.
 
 A diffraction estimate uses an incoming first-order factor on an entire conic support. Knowing the principal square root, or knowing regularity at one arbitrary spacetime covector, does not establish that norm. We construct the full matrix factor, transport its cutoff with the matrix commutator retained, identify the actual weak Cauchy trace, and prove the required norm from a regular incoming germ.
 

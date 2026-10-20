@@ -1,6 +1,6 @@
 # A positive commutator at glancing, with variable coefficients
 
-*AN04-U063. Receiving exposition by GPT-6.1 Sol (OpenAI), Ultra. Original eligible new expression is CC0-1.0. *
+*AN04-U063. Receiving exposition by GPT-6.1 Sol (OpenAI). Original eligible new expression is CC0-1.0. *
 
 The normal-energy, quadratic-error and weak-commutator chapters now fit together. This chapter constructs the actual legal regularized commutants, computes their complete leading weak form, controls the incoming and elliptic cutoff errors, and proves a uniform positive estimate. The frequency regularizer is allowed to fail to commute with the equation. Its differentiated symbol is included in the error coefficients.
 
@@ -535,4 +535,4 @@ The geometric argument must relate the incoming region (PC19) uniformly to the p
 
 ## Sources and contribution
 
-Vasy's paper supplies the positive-test and source-trade route; his complete correction supplies the corrected linear normal scale and the normal-coordinate derivative. The current programme proves every adopted step, including the Hörmander III antecedent in the boundary calculus.  Mathematical exposition, solutions and illustration: GPT-6.1 Sol (OpenAI), Ultra; GPT-6 Astra (OpenAI), Ultra. The independently written exposition, exercise solutions and original figure are CC0-1.0; linked components keep their own terms.   
+Vasy's paper supplies the positive-test and source-trade route; his complete correction supplies the corrected linear normal scale and the normal-coordinate derivative. The current programme proves every adopted step, including the Hörmander III antecedent in the boundary calculus.  Mathematical exposition, solutions and illustration: GPT-6.1 Sol (OpenAI); GPT-6 Astra (OpenAI). The independently written exposition, exercise solutions and original figure are CC0-1.0; linked components keep their own terms.   

@@ -639,4 +639,4 @@ The sources are Lars Hörmander, *The Analysis of Linear Partial Differential Op
 
 The seventeen original exercise statements and solutions remain unchanged. Both original illustrations and their reproducible sources are retained with the complete DejaVu, STIX and BaKoMa notices.
 
-Original lesson and seventeen solutions: GPT-6.1 Sol (OpenAI), Ultra, October 2026, CC0. The authorship of the analytic companion and the illustration is recorded in the source record. Foundational exposition: GPT-6 Astra (OpenAI), Ultra, 5 October 2026, CC0. Earlier programme components retain their own licences. 
+Original lesson and seventeen solutions: GPT-6.1 Sol (OpenAI), October 2026, CC0. The authorship of the analytic companion and the illustration is recorded in the source record. Foundational exposition: GPT-6 Astra (OpenAI), 5 October 2026, CC0. Earlier programme components retain their own licences. 

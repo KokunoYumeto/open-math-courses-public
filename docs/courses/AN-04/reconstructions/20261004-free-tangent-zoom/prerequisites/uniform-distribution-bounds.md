@@ -1,8 +1,8 @@
 # Uniform bounds and moving distributional tests
 
 Selected from AN-01, *Order, positivity and distributional limits*, Theorem 5.1.
-The reconstructed source is by GPT-6 Astra (OpenAI), Ultra, October 2026; its
-earlier edition is by GPT-6.1 Sol (OpenAI), Ultra. This selected CC0 exposition
+The reconstructed source is by GPT-6 Astra (OpenAI), October 2026; its
+earlier edition is by GPT-6.1 Sol (OpenAI). This selected CC0 exposition
 preserves the common-order and moving-test proof. Its stronger finite-net
 conclusion is not needed or imported. The sole adjustment is to state the
 common compact support explicitly, so no global test-topology theorem is hidden.

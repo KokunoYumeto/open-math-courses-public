@@ -2,7 +2,7 @@
 
 *Original exposition and proofs: GPT-6 Astra (OpenAI), October 2026. CC0.*
 
-A distribution at a point reads finitely many derivatives. An analytic functional at a point can read infinitely many, provided its coefficients decrease fast enough. To make this a local theory on real sets, we must first show that a functional initially defined on entire functions can act on a function holomorphic only near its carrier. The central construction below gives that extension by an explicit Gaussian approximation.
+A distribution at a point reads finitely many derivatives. An analytic functional at a point can read infinitely many, provided its coefficients decrease fast enough. To make this a local theory on real sets, we must first show that a functional initially defined on entire functions can act on a function holomorphic only near its carrier. The central construction below gives that extension by an explicit Gaussian approximation. In one complex variable, regular simple arcs give minimal complex carriers; polynomial approximation distinguishes a genuine carrier from a path image containing a loop.
 
 We use bilinear pairings and ordinary derivatives. The supplied [Cauchy reading](../prerequisites/U011-free-foundations/complex-contours-U070.md), CX7–CX11 and CMI6–CMI8, proves the Cauchy formula, derivative bounds and convergent several-variable Taylor expansions. [Functional foundations](../prerequisites/U011-free-foundations/functional-foundations-U008.md), BF1–BF2, supplies the metric for a countable family of seminorms. [Integration foundations](../prerequisites/U011-free-foundations/banach-foundation-bridges.md), Sections 15–16, supplies dominated convergence, Fubini and substitution. Cutoffs, compactness and elementary derivative rules are in [metric foundations](../prerequisites/U011-free-foundations/metric-foundation-bridges.md), Sections 12–13. The normalized Gaussian and its Fourier transform are proved in [Fourier foundations](../prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.md), F3.
 
@@ -281,6 +281,182 @@ For \(\operatorname{dist}(z,K)<\varepsilon\), choose \(x\in K\) with \(|z-x|<\va
 
 The theorem proves a necessary growth estimate and uniqueness. A characterization of which entire functions satisfying (F2) arise as transforms requires a further existence argument. Likewise, completeness for a fixed carrier in Theorem 1 does not yet assert completeness modulo functionals carried by a smaller set.
 
+## Paths, polynomial approximation and minimal complex carriers
+
+We now work in one complex variable. A carrier \(K\) of a nonzero functional is **minimal** if none of its proper compact subsets is a carrier. This differs from a smallest carrier, which must be contained in every carrier. Complex carriers can have several incomparable minimal members.
+
+We need polynomial approximation on planar compact sets, including disconnected ones. The proof uses the contour integral and triangle theorem CX1–CX4, the Cauchy estimates CX6–CX9, and the rectangle index calculation in Section 6 of the [Cauchy reading](../prerequisites/U011-free-foundations/complex-contours-U070.md).
+
+**Lemma 9 (polynomial approximation on a neighborhood).** Let \(E\subset\mathbb C\) be compact, with connected complement, and let \(V\) be an open neighborhood of \(E\). There is a compact \(L\) such that
+\[
+ E\subset\operatorname{int}L,\qquad L\subset V,\qquad
+                     \mathbb C\setminus L\ \text{is connected}.
+ \tag{P1}
+\]
+If \(f\) is holomorphic on \(V\), polynomials \(p_j\) can be chosen with
+\[
+                     \sup_L|p_j-f|\longrightarrow0.
+ \tag{P2}
+\]
+On every compact subset of \(\operatorname{int}L\), every fixed derivative converges uniformly as well. The empty set causes no restriction.
+
+**Proof: compact neighborhoods without holes.** Assume \(E\ne\varnothing\), and choose \(R\) with \(E\subset B(0,R-1)\). An open connected subset of the plane is polygonally connected: the points reachable from a fixed point by a finite polygonal path in the open set form a nonempty relatively open set, and their complement is relatively open too, since a small ball can be joined by straight segments. Connectedness makes the reachable set the whole open set.
+
+Put \(C=\overline{B(0,R)}\setminus V\). This is a compact subset of \(\mathbb C\setminus E\). From each \(c\in C\), choose a polygonal path in that complement to a point outside \(\overline{B(0,R)}\), and continue radially to infinity. The radial continuation avoids \(E\). The compact initial path has positive distance from \(E\); a sufficiently small ball about \(c\) joins to that same path by straight segments with a positive distance from \(E\). A finite collection of these balls covers \(C\). Consequently, for some \(\delta>0\), every point of \(C\) lies in the unbounded component of
+\(\mathbb C\setminus E_\delta\), where
+\[
+                  E_\delta=\{z:\operatorname{dist}(z,E)\le\delta\}.
+ \tag{P3}
+\]
+Decrease \(\delta\) so that \(E_\delta\subset B(0,R)\). If \(C\) is empty, only this last condition is needed. The exterior of \(\overline{B(0,R)}\) is connected, so the complement of \(E_\delta\) has exactly one unbounded component \(O_\infty\). Components of an open set are open, by the same small-ball argument. Thus \(L=\mathbb C\setminus O_\infty\) is closed and bounded. It contains \(E_\delta\), and misses \(C\) and the exterior of the large disk. Therefore \(L\subset V\), proving (P1).
+
+**Proof: Cauchy sums with finitely many poles.** For any compact \(L\subset V\), choose a square grid of sufficiently small mesh and take the finite union \(Q\) of all its closed cells meeting a small closed neighborhood of \(L\). The mesh and neighborhood can be chosen so that \(Q\subset V\) and \(L\subset\operatorname{int}Q\). The exterior edges, with their inherited orientations, form a finite chain \(\Gamma_Q\) at positive distance from \(L\). Each shared edge cancels with its oppositely oriented copy.
+
+For \(z\in\operatorname{int}Q\) off the grid lines, apply the Cauchy formula in each cell and add. The cell containing \(z\) contributes \(f(z)\); the others contribute zero. To obtain that rectangular formula directly, subtract \(f(z)\), divide by \(\zeta-z\), use the point-removal triangle argument CX3–CX5, and apply the inside/outside rectangle index calculation. Continuity on \(\operatorname{int}Q\) includes its grid-line points, and therefore every point of \(L\), even if \(L\) has no off-grid points nearby. Hence
+\[
+ f(z)=\frac1{2\pi i}\int_{\Gamma_Q}
+                  \frac{f(\zeta)}{\zeta-z}\,d\zeta,\qquad z\in L.
+ \tag{P4}
+\]
+The kernel is jointly continuous on the finite edge chain times \(L\). Its Riemann sums converge uniformly on \(L\), because uniform continuity bounds every summand's error by its edge length times a common modulus of continuity. These sums are rational functions with finitely many poles in \(\mathbb C\setminus L\).
+
+**Proof: moving every pole to polynomial approximation.** Let \(\mathcal P_L\) be the uniform closure on \(L\) of polynomials. It is a closed algebra: uniform convergence preserves sums, and the uniformly bounded factors make products converge uniformly. Let
+\[
+ T=\{a\in\mathbb C\setminus L:
+                         (z-a)^{-1}\in\mathcal P_L\}.
+ \tag{P5}
+\]
+It contains every sufficiently large \(a\), by the uniformly convergent expansion
+\((z-a)^{-1}=-\sum_{m\ge0}z^m a^{-m-1}\).
+If \(a\in T\) and \(|b-a|<\operatorname{dist}(a,L)\), then
+\[
+ \frac1{z-b}
+   =\sum_{m\ge0}\frac{(b-a)^m}{(z-a)^{m+1}}
+ \tag{P6}
+\]
+converges uniformly on \(L\); every finite sum belongs to \(\mathcal P_L\). Thus \(T\) is relatively open. If \(a_j\in T\) tends to \(a\notin L\), their kernels converge uniformly on \(L\), so \(a\in T\). Thus \(T\) is relatively closed. The connectedness in (P1) gives \(T=\mathbb C\setminus L\). Every rational Cauchy sum in (P4) therefore belongs to \(\mathcal P_L\), and so does \(f|_L\). This proves (P2).
+
+Finally, if \(H\Subset\operatorname{int}L\), choose \(\rho>0\) so that every closed disk of radius \(\rho\) centered in \(H\) lies in \(\operatorname{int}L\). CX9 gives
+\[
+ \sup_H|p_j^{(k)}-f^{(k)}|
+       \le k!\rho^{-k}\sup_L|p_j-f|,\qquad k\ge0.
+ \tag{P7}
+\]
+The same sequence works for every fixed \(k\). \(\square\)
+
+**Lemma 10 (the complement of a regular simple arc).** Suppose
+\(\gamma:[0,1]\to\mathbb C\) is injective and \(C^1\), with
+\(\gamma'(t)\ne0\) for every \(t\), using one-sided derivatives at the endpoints. Then \(\mathbb C\setminus A\), \(A=\gamma([0,1])\), is path connected. Every compact subset of \(A\) also has connected complement.
+
+**Proof.** Regard complex multiplication by \(i\) as a counterclockwise right-angle rotation, and put
+\[
+ \tau(t)=\frac{\gamma'(t)}{|\gamma'(t)|},\qquad
+ \nu(t)=i\tau(t),\qquad m=\min_{[0,1]}|\gamma'|>0.
+ \tag{P8}
+\]
+Uniform continuity gives \(0<\eta<1\) such that, when \(|s-t|\le\eta\), the tangent projection satisfies
+\[
+ \begin{cases}
+ \operatorname{Re}((\gamma(s)-\gamma(t))\overline{\tau(t)})
+                       \ge (m/2)(s-t),&s\ge t,\\
+ \operatorname{Re}((\gamma(s)-\gamma(t))\overline{\tau(t)})
+                       \le (m/2)(s-t),&s\le t.
+ \end{cases}
+ \tag{P9}
+\]
+Indeed integrate \(\gamma'\) from \(t\) to \(s\), using
+\(\operatorname{Re}(\gamma'(r)\overline{\tau(t)})\ge m/2\) on that interval.
+Injectivity and compactness give
+\[
+             c=\min_{|s-t|\ge\eta}|\gamma(s)-\gamma(t)|>0.
+ \tag{P10}
+\]
+For \(0<\varepsilon<c\), both continuous side paths
+\(\gamma(t)\pm\varepsilon\nu(t)\) avoid \(A\). A point of \(A\) at parameter distance at least \(\eta\) is too far away by (P10); a nearer point has a nonzero tangent projection by (P9), whereas the normal displacement has zero projection.
+
+Connect the two side paths at \(\gamma(0)\) by the semicircle of radius \(\varepsilon\) in the half-plane
+\(\operatorname{Re}((z-\gamma(0))\overline{\tau(0)})\le0\).
+Connect them at \(\gamma(1)\) by the semicircle in the opposite outward half-plane,
+\(\operatorname{Re}((z-\gamma(1))\overline{\tau(1)})\ge0\).
+The same near/far argument shows that both caps avoid \(A\). Their union with the two side paths is a path-connected set \(B_\varepsilon\subset\mathbb C\setminus A\). The side paths need not be differentiable or injective; neither property is used.
+
+For \(z\notin A\), choose a nearest point \(q=\gamma(t_0)\), and let \(d=|z-q|>0\). If \(0<t_0<1\), differentiating the squared distance gives
+\(\operatorname{Re}((z-q)\overline{\gamma'(t_0)})=0\).
+If \(t_0=0\), the right derivative gives that expression \(\le0\); if \(t_0=1\), the left derivative gives it \(\ge0\). Thus, for \(0<\varepsilon<\min(c,d)\), the point
+\[
+                         q+\varepsilon\frac{z-q}{d}
+ \tag{P11}
+\]
+lies on a side path or its appropriate outward cap. The segment from \(z\) to (P11) avoids \(A\): every point of that segment is at distance strictly less than \(d\) from \(z\), whereas \(d\) was its distance to \(A\). Given two points outside \(A\), choose one \(\varepsilon\) smaller than both distances. Their two segments and a path in \(B_\varepsilon\) connect them in the complement.
+
+For completeness, \(A\) has empty interior. Near each parameter, (P9) makes its tangent projection strictly monotone, so that part of the arc is a graph in rotated coordinates. Injectivity and compactness separate a smaller parameter neighborhood from the remaining distant parameters. A sufficiently small disk about its central arc point therefore meets only this graph; moving slightly in its normal direction leaves it. Thus every neighborhood of an arc point meets \(\mathbb C\setminus A\).
+
+If \(E\subset A\) is compact, every point of \(A\setminus E\) has a small disk disjoint from \(E\), and that disk contains a point outside \(A\). Join them within the disk, then use the path connectedness already proved outside \(A\). This proves the assertion for every compact subset \(E\), including disconnected ones. \(\square\)
+
+**Theorem 11 (a path functional and all simple-arc minimal carriers).** Let \(a\ne b\) be complex numbers. For an entire \(f\), define
+\[
+                U_{a,b}(f)=\int_a^b f(z)\,dz
+ \tag{P12}
+\]
+along the straight segment. Every \(C^1\) path from \(a\) to \(b\) gives the same value and has its compact image as a carrier. If the path is injective with nonvanishing derivative, its image is a minimal carrier.
+
+**Proof: independence and a carrier estimate.** The Taylor series \(f(z)=\sum_{k\ge0}c_kz^k\) has the entire primitive
+\(\Phi(z)=\sum_{k\ge0}c_kz^{k+1}/(k+1)\), by uniform convergence and differentiation on compact disks. The real chain rule and fundamental theorem give the integral along any \(C^1\) path \(\gamma\) as \(\Phi(b)-\Phi(a)\). If its image is \(A\), then for every neighborhood \(\Omega\supset A\),
+\[
+ |U_{a,b}(f)|
+       \le\left(\int_0^1|\gamma'(t)|\,dt\right)\sup_\Omega|f|.
+ \tag{P13}
+\]
+This is exactly the carrier condition. Also \(U_{a,b}(1)=b-a\ne0\).
+
+**Proof: no proper compact subset of a simple arc carries it.** Let \(K\) be a proper compact subset of an injective regular arc \(A\). Since \(\gamma^{-1}(K)\) is closed and proper, its complement contains an interior parameter \(t_0\in(0,1)\). This remains true if an initially missing point was an endpoint, by continuity and closedness. Choose
+\[
+ 0<s<t<1,\qquad [s,t]\cap\gamma^{-1}(K)=\varnothing,
+ \quad A_0=\gamma([0,s]),\quad A_1=\gamma([t,1]).
+ \tag{P14}
+\]
+The two compact subarcs are disjoint, \(a\in A_0\), \(b\in A_1\), and \(K\subset E=A_0\cup A_1\). Choose disjoint open neighborhoods \(V_0,V_1\) of them, and define \(h=0\) on \(V_0\), \(h=1\) on \(V_1\). This is a holomorphic function on \(V=V_0\cup V_1\).
+
+Lemma 10 gives connected complement for \(E\). Lemma 9 supplies a compact \(L\), \(E\subset\operatorname{int}L\subset L\subset V\), and polynomials \(p_j\to h\) uniformly on \(L\). Choose a bounded open neighborhood \(\Omega\) of \(K\) with \(\overline\Omega\subset\operatorname{int}L\). Formula (P7), applied on \(\overline\Omega\), gives
+\[
+ \sup_\Omega|p_j'|\longrightarrow0,\qquad
+                         p_j(b)-p_j(a)\longrightarrow1.
+ \tag{P15}
+\]
+If \(K\) were a carrier, its estimate for this one fixed \(\Omega\) would imply
+\[
+ |p_j(b)-p_j(a)|=|U_{a,b}(p_j')|
+                       \le C_\Omega\sup_\Omega|p_j'|\longrightarrow0,
+ \tag{P16}
+\]
+contradicting (P15). If \(K=\varnothing\), the nonzero value on \(1\) already rules it out. Every proper compact subset is excluded, proving minimality. \(\square\)
+
+**Corollary 12 (two minimal carriers and a nonminimal path image).** The upper and lower semicircles
+\[
+ A_\pm=\left\{\frac{1-\cos(\pi t)}2
+                  \ \pm\ \frac{i\sin(\pi t)}2:0\le t\le1\right\}
+ \tag{P17}
+\]
+are incomparable minimal carriers of \(U_{0,1}\). Their intersection \(\{0,1\}\) is not a carrier, so this functional has no smallest complex carrier. Regularity of a parametrized path alone does not imply minimality of its image.
+
+**Proof.** Both parametrizations in (P17) are injective and have derivative of constant modulus \(\pi/2\). Their imaginary parts have opposite strict signs in the interior, so their intersection is exactly the two endpoints. Theorem 11 proves minimality; either arc's proper subset \(\{0,1\}\) therefore cannot be a carrier. A smallest carrier would be contained in this intersection, and enlarging a carrier preserves the carrier estimate, a contradiction.
+
+For the last assertion, use the path on \([0,2\pi+1]\)
+\[
+ \lambda(s)=
+ \begin{cases}
+ i(1-e^{is}),&0\le s\le2\pi,\\
+ s-2\pi,&2\pi\le s\le2\pi+1.
+ \end{cases}
+ \tag{P18}
+\]
+Both values at the join are zero and both derivatives are \(1\); on the circle \(\lambda'(s)=e^{is}\), while on the segment it is \(1\). Thus \(\lambda\) is \(C^1\) with nonvanishing derivative. It traverses the circle of center \(i\) and radius \(1\), then the segment \([0,1]\). The circle contributes zero by the entire primitive, and the segment alone is already a carrier. Its image is therefore not minimal. An affine increasing reparametrization places the example on \([0,1]\) without changing these conclusions. \(\square\)
+
+![Two incomparable minimal semicircle carriers and a regular path with a redundant circular loop](../figures/simple-arcs-and-complex-carriers.png)
+
+*Left: the two exact arcs (P17), each oriented from \(0\) to \(1\). Their common endpoints cannot carry \(U_{0,1}\), by Theorem 11. Right: (P18), with a unit circle centered at \(i\), followed by the real segment from \(0\) to \(1\). Its entire-test integral equals that along the segment. The circle changes the path image but does not change the functional. [Vector figure](../figures/simple-arcs-and-complex-carriers.svg) · [Reproducible figure source](../figures/simple-arcs-and-complex-carriers.py).*
+
+
 ## Exercises with full solutions
 
 **Exercise 1 — an infinite point measurement.** Evaluate (D5) on \(e^{tz}\), and show directly that its value is entire in \(t\).
@@ -328,6 +504,68 @@ Use the bounds for both sequences at \(\delta/2\). Each product is at most \(C(\
 \]
 The first identity uses the minus sign in the definition of a distributional derivative. The second follows from \(\partial_{\zeta_j}e^{-ix\cdot\zeta}=-ix_j e^{-ix\cdot\zeta}\). For the third, factor \(e^{-i(x+y)\cdot\zeta}\) and use the tensor pairing. Theorem 8 makes these identities injective descriptions of the respective operations.
 
+**Exercise 9 (basic) — endpoints, moments and the derivative sign.** For \(U=U_{0,1}\), find \(U(z^k)\), its Fourier–Laplace transform \(U(e^{-iz\zeta})\), and its derivative \(U'(f)=-U(f')\).
+
+**Solution.** The primitive on the real segment gives
+\[
+ U(z^k)=\frac1{k+1},\qquad
+ U(e^{-iz\zeta})=\frac{1-e^{-i\zeta}}{i\zeta},\qquad
+                         U'=\delta_0-\delta_1.
+ \tag{P19}
+\]
+The quotient has its removable value \(1\) at \(\zeta=0\), as follows from the exponential power series. The derivative identity is
+\(-[f(1)-f(0)]=f(0)-f(1)\). The same values arise from either semicircle, even though neither semicircle is a real carrier.
+
+**Exercise 10 (intermediate) — an explicit gap test.** Show directly, without invoking Lemma 9, that
+\(K=[0,1/3]\cup[2/3,1]\) is not a carrier of \(U_{0,1}\). Use
+\(\Omega=\{z:\operatorname{dist}(z,K)<1/200\}\) and the entire polynomials
+\(q_N(z)=[4z(1-z)]^N\).
+
+**Solution.** For \(x\in K\), \(0\le4x(1-x)\le8/9\). If \(|z-x|<1/200\), then
+\[
+ |4z(1-z)-4x(1-x)|
+       \le4|z-x|(1+|z-x|)
+       \le\frac{201}{10000}.
+ \tag{P20}
+\]
+Here \(|1-2x|\le1\) was used in the expansion
+\[
+ z(1-z)-x(1-x)=(z-x)(1-2x)-(z-x)^2.
+\]
+Thus \(\sup_\Omega|q_N|\le(11/12)^N\), since \(8/9+201/10000<11/12\). On the real subinterval \([5/12,7/12]\), of length \(1/6\), one has \(4x(1-x)\ge35/36\). Positivity on the whole unit interval gives
+\[
+ U(q_N)\ge\frac16(35/36)^N,\qquad
+ \frac{U(q_N)}{(11/12)^N}\ge\frac16(35/33)^N\longrightarrow\infty.
+ \tag{P21}
+\]
+No fixed carrier constant for \(\Omega\) can satisfy (A1). A gap in this real arc is detected by one explicit entire-test sequence.
+
+**Exercise 11 (advanced) — a nonvanishing holomorphic weight.** Let \(A\) be a regular simple \(C^1\) arc from \(a\ne b\), and let \(g\) be holomorphic on a neighborhood of \(A\), with no zero on \(A\). Prove that
+\[
+                       V_g(f)=\int_A g(z)f(z)\,dz
+ \tag{P22}
+\]
+has \(A\) as a minimal complex carrier, even when \(g\) has no entire extension. For the arcs (P17), the choice \(g(z)=1/(z-2)\) is allowed.
+
+**Solution.** The length bound times \(\sup_A|g|\) proves that \(A\) is a carrier. Shrink its neighborhood \(W\) so that \(g\) is holomorphic and nonzero there. Suppose a proper compact \(K\subset A\) were a carrier of \(V_g\). We show that it would also carry \(U_{a,b}\).
+
+Let \(O\) be any open neighborhood of \(K\). By Lemmas 9–10 choose a compact \(L\) with \(A\subset\operatorname{int}L\subset L\subset W\) and connected complement. For each entire \(f\), approximate the holomorphic function \(f/g\) uniformly on \(L\) by polynomials \(p_j\). Choose one bounded open \(\Omega\) with
+\(K\subset\Omega\), \(\overline\Omega\subset O\cap\operatorname{int}L\).
+This choice depends on \(O,K,L\), not on \(f\) or \(j\). Then
+\[
+ \begin{split}
+ V_g(p_j)&\longrightarrow U_{a,b}(f),\\
+ |V_g(p_j)|&\le C_\Omega\sup_\Omega|p_j|
+       \longrightarrow C_\Omega\sup_\Omega|f/g|
+       \le C_\Omega\sup_{\overline\Omega}|1/g|\,\sup_O|f|.
+ \end{split}
+ \tag{P23}
+\]
+The convergence of the supremum follows from uniform convergence on \(L\); convergence of the path integral follows from its length bound. Formula (P23) is a carrier estimate for \(U_{a,b}\) on every \(O\), contradicting Theorem 11. The empty-carrier case follows by the same argument, or because uniform polynomial approximation to \(1/g\) on \(L\) makes the values tend to \(b-a\ne0\). Thus \(A\) is minimal. The point \(2\) lies off both compact arcs, so the stated example is holomorphic and nonzero on a neighborhood of each.
+
+
 ## Mathematical source
 
 Lars Hörmander, *The Analysis of Linear Partial Differential Operators I*, second edition, 2003 reprint, Section 9.1: Definition 9.1.1, Proposition 9.1.2 and the operations and Fourier–Laplace discussion following Theorem 9.1.8.
+
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second-edition reprint, Springer, 2003, [doi:10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), Section 9.1, the complex-carrier example preceding Proposition 9.1.2. Lemmas 9–10 and Theorem 11 give polynomial approximation and the exact regular-simple-arc minimality statement; Corollary 12 distinguishes a regular path with a loop.

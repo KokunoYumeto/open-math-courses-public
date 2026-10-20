@@ -79,7 +79,7 @@ ax.text(450, 137, 'Exact proof locators: Lesson 13 §3.2B, Lemmas S.1–S.3 and 
         ha='center', fontsize=12, color='#334155')
 ax.text(450, 108, 'Free source: W. Li, Newforms and functional equations (1975), pp. 287–293.',
         ha='center', fontsize=12, color='#334155')
-ax.text(450, 79, 'Schematic of the proved maps; no claim of full course or independent-review closure.',
+ax.text(450, 79, 'Schematic of the maps with the hypotheses displayed above.',
         ha='center', fontsize=11, color='#475569')
 fig.savefig(PACKAGE/'assets/weight-one-finite-prime-support-proof-map.png', dpi=100,
             metadata={'Software':'Matplotlib', 'Title':'Finite-prime Fourier-support proof map'})

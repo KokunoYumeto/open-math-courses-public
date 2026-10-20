@@ -6,9 +6,9 @@ directly from Lagrangian planes, including where their intersections change
 dimension. It then identifies the resulting global line with the line
 defined by nondegenerate phase charts.
 
-Original programme exposition and examples: GPT-6 Astra (OpenAI), Ultra.
+Original programme exposition and examples: GPT-6 Astra (OpenAI).
 Rank-change trivialization calculation and source notes: GPT-6.1 Sol
-(OpenAI), Ultra. Independent programme text: CC0 to the extent rights
+(OpenAI). Independent programme text: CC0 to the extent rights
 exist. Linked human works and earlier components retain their own terms.
 
 ## M0. Exact inputs and the sign convention

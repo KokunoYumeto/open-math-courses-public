@@ -251,6 +251,39 @@ All sums and the limit have support in \(\operatorname{supp}f+\operatorname{supp
 \]
 These are global moduli of continuity of the zero extensions, so the estimate is uniform in \(x\) and tends to zero. Only cubes meeting a fixed bounded neighborhood of \(\operatorname{supp}g\) contribute; their total volume is bounded for small \(h\). This proves uniform convergence of every indicated derivative. Differentiating the ordinary integral is justified by the same uniform difference quotients. A nonzero summand requires \(hm\in\operatorname{supp}g\) and \(x-hm\in\operatorname{supp}f\); the integral vanishes off the same compact sum. \(\square\)
 
+## Ordinary convolution and the allocation of derivatives
+
+**Theorem 2.3 (finite regularity in both factors).** If \(u\in C_c^j(\mathbb R^n)\) and \(v\in L^1_{\rm loc}(\mathbb R^n)\), then the ordinary convolution is \(C^j\) and
+\[
+ \begin{gathered}
+ (u*v)(x)=\int u(x-y)v(y)\,dy,\\
+ \partial^\alpha(u*v)=(\partial^\alpha u)*v
+ \quad(|\alpha|\le j).
+ \end{gathered}                                               \tag{C1}
+\]
+If in addition \(v\in C^k(\mathbb R^n)\), then \(u*v\in C^{j+k}\) and
+\[
+ \partial^{\alpha+\beta}(u*v)
+       =(\partial^\alpha u)*(\partial^\beta v),
+ \qquad |\alpha|\le j,\quad |\beta|\le k.                       \tag{C2}
+\]
+Either factor may be the compact one, with the corresponding exchange of their regularities.
+
+**Proof.** On a compact neighborhood of an output point, all contributing \(y\)'s in (C1) belong to one compact set \(L\), obtained by subtracting \(\operatorname{supp}u\) from that output neighborhood. The integral is absolutely convergent, bounded by \(\|u\|_\infty\int_L|v|\). Uniform continuity of \(u\), followed by this bound, proves continuity. Difference quotients of \(u\) through order \(j\) converge uniformly on the fixed compact input region to the indicated derivatives, by the ordinary fundamental theorem of calculus. Their integrals therefore converge to the integrals of the derivatives. Induction proves (C1) as actual continuous derivatives.
+
+Substitution \(z=x-y\) gives the equal expression \(\int u(z)v(x-z)\,dz\), proving commutation when the two expressions are defined. Apply (C1) first through order \(|\alpha|\), and write its result as \(\int(\partial^\alpha u)(z)v(x-z)\,dz\). Its integration is on the fixed compact support of \(u\). If \(v\in C^k\), difference quotients through order \(k\) converge uniformly on the compact set of relevant \(x-z\)'s. Differentiating in \(x\) proves (C2), with continuous right-hand side. For any multi-index \(\gamma\) of length at most \(j+k\), choose \(\alpha\le\gamma\) of length \(\min(j,|\gamma|)\), and put \(\beta=\gamma-\alpha\). All derivatives through that total order exist by this argument, proving \(C^{j+k}\). Commutation proves the assertion when the other factor is compact. No boundedness of \(v\) at infinity was used. \(\square\)
+
+The ordinary integral gives the distributional convolution already constructed. For a compact test \(\phi\), all contributing pairs in
+\[
+ \int (u*v)(x)\phi(x)\,dx
+       =\iint u(z)v(y)\phi(z+y)\,dz\,dy                         \tag{C3}
+\]
+lie in one compact product, and the absolute integrand is bounded by a constant times \(\mathbf1_{\operatorname{supp}u}(z)\mathbf1_L(y)|v(y)|\). Fubini and the substitution \(x=z+y\) prove (C3). B5 identifies this with the tensor pairing. When \(u,v\) are both compact and continuous, Fubini on the full product also gives
+\[
+ \int(u*v)=\left(\int u\right)\left(\int v\right).              \tag{C4}
+\]
+For three continuous functions, at least two compact, Theorem 3.1 below gives ordinary associativity: every inner and outer convolution is a continuous function by (C1), their distributions agree by that theorem, and B0 identifies their continuous representatives pointwise.
+
 ## Associativity and continuity need support control
 
 **Theorem 3.1 (associativity).** Let \(F,G,H\) be nonempty closed envelopes of the supports of \(u,v,w\). Suppose that the preimage of every compact set under addition of triples in \(F\times G\times H\) is compact. Then both iterated convolutions exist and
@@ -436,6 +469,52 @@ Use the finite-order bound of \(u\) on that compact neighborhood. On a bounded f
 \]
 omitting the second bound if \(X=\mathbb R^n\); a zero cutoff requires no distance restriction. Put \(f_i=(\chi_i u)*\rho_i\). Theorems 1.1 and 2.1 put \(f_i\) in \(C_c^\infty(X)\). On a fixed compact test support and its one small compact neighborhood, \(\chi_i=1\) eventually. Formula (5.4) therefore makes its pairing with \(f_i\) exactly its pairing with the local \(u*\rho_i\). Theorem 5.2 proves convergence uniformly on every bounded test family. If \(X=\varnothing\), the only distribution is zero and the zero sequence suffices. \(\square\)
 
+## Norm convergence of varying averaging kernels
+
+**Theorem 5.4 (uniform, integral and local approximation).** Let the smooth compact kernels \(\rho_\lambda\) satisfy (5.3), and put \(M=\sup_\lambda\|\rho_\lambda\|_1\). For \(v\in L^p(\mathbb R^n)\), \(1\le p<\infty\), the convolutions are smooth and
+\[
+ \|\rho_\lambda*v-v\|_p
+ \le M\sup_{|h|\le r_\lambda}\|v(\,\cdot-h)-v\|_p
+ \longrightarrow0.                                          \tag{C5}
+\]
+For \(u\in C_c^j(\mathbb R^n)\), they converge to \(u\) uniformly with every derivative through order \(j\), and their supports eventually lie in one common compact set. For an open \(X\), the corresponding statements hold locally on every compact subset of \(X\) for \(L^p_{\rm loc}(X)\) and \(C^j(X)\) data, on the output domains of Proposition 5.1.
+
+**Proof.** Translation continuity in \(L^p\), including \(p=1\), is proved in the supplied measure foundation, Section 15.3. It uses density and is valid for every finite \(p\). Normalization gives, for almost every \(x\),
+\[
+ (\rho_\lambda*v-v)(x)
+       =\int\rho_\lambda(h)\bigl(v(x-h)-v(x)\bigr)\,dh.
+\]
+For \(p>1\), Hölder applied with measure \(|\rho_\lambda(h)|\,dh\), followed by Tonelli, gives
+\[
+ \|\rho_\lambda*v-v\|_p^p
+ \le \|\rho_\lambda\|_1^{p-1}
+       \int |\rho_\lambda(h)|\,\|v(\,\cdot-h)-v\|_p^p\,dh.
+                                                               \tag{C6}
+\]
+For \(p=1\), the triangle inequality and Tonelli give the same formula with exponent zero. These bounds also justify the almost-everywhere integrals. Since the kernel is supported in the radius \(r_\lambda\) ball, (C6) implies (C5), and translation continuity makes the supremum tend to zero. An \(L^p\) function is locally integrable by Hölder on compact sets. Theorem 2.3 with the compact smooth kernel, for every \(j\), proves smoothness of its convolution representative.
+
+For \(u\in C_c^j\), Theorem 2.3 allows the derivative to fall on \(u\). Each \(\partial^\alpha u\), \(|\alpha|\le j\), is uniformly continuous on the whole space: it is continuous and zero outside a compact set, and uniform continuity on a slightly larger compact neighborhood handles its boundary as well. Thus
+\[
+ \|\partial^\alpha(\rho_\lambda*u-u)\|_\infty
+ \le M\sup_{\substack{x\in\mathbb R^n\\|h|\le r_\lambda}}
+       |\partial^\alpha u(x-h)-\partial^\alpha u(x)|
+ \longrightarrow0.                                          \tag{C7}
+\]
+For \(r_\lambda\le1\), all supports lie in
+\(\operatorname{supp}u+\overline B(0,1)\), which is compact.
+
+For the local statements, fix \(K\Subset X\) and choose \(\delta>0\) such that \(K+\overline B(0,2\delta)\Subset X\). The compact cutoff construction in [Local data and compatible products](local-data-and-compatible-products.md#restriction-and-a-local-uniqueness-principle) gives \(\theta\in C_c^\infty(X)\), equal to one near that compact neighborhood. The product \(\theta v\), extended by zero, belongs to global \(L^p\), or to \(C_c^j\) for \(C^j\) data. For \(r_\lambda<\delta\), its convolution equals the local convolution on a neighborhood of \(K\), since all input points \(x-h\) there lie where \(\theta=1\). The global estimates now imply the required local \(L^p\) norms or uniform derivative estimates on \(K\). This localization needs no extension or growth assumption on the original data outside \(X\). \(\square\)
+
+**Corollary 5.5 (locally integrable functions are determined almost everywhere).** If \(f,g\in L^1_{\rm loc}(X)\) have equal integrals against every test in \(C_c^\infty(X)\), then \(f=g\) almost everywhere on \(X\).
+
+**Proof.** Put \(w=f-g\). Choose nonnegative normalized compact smooth kernels with radii tending to zero. For \(x\) in a fixed compact \(K\Subset X\) and a sufficiently small radius, \(y\mapsto\rho_\lambda(x-y)\) is a test in \(X\). Its pairing with \(w\) is zero by hypothesis. Thus \(w*\rho_\lambda=0\) on \(K\). The local \(p=1\) conclusion of Theorem 5.4 yields \(\|w\|_{L^1(K)}=0\). Exhaust \(X\) by countably many compact subsets; the union of the corresponding null sets is null. This proves the assertion. If both functions are continuous, they agree everywhere by B0, or because a nonzero continuous difference would have nonzero magnitude on a ball of positive measure. \(\square\)
+
+The finite-\(p\) restriction is essential: smooth averages of a step converge in each local finite-\(p\) norm but retain an essential supremum error of \(1/2\), as Solution 13 proves.
+
+![A compact lattice partition and the transition layer of a smoothed step.](../figures/local-averaging-and-lattice-partitions.png)
+
+*The right panel uses the even normalized kernel proportional to \(\exp(-1/(1-t^2))\) on \(|t|<1\), zero elsewhere, and \(\varepsilon=0.25\). The averaged step equals the step outside \([-\varepsilon,\varepsilon]\). Its error is at most \(1/2\), with that essential supremum attained as a limit near zero. The left panel illustrates the lattice normalization in [Local data and compatible products, Proposition 1.2](local-data-and-compatible-products.md#one-compact-profile-for-every-lattice-translate). Curves are numerical samples; (C5)–(C7) and Solution 13 give the proofs. [Reproducible figure](../figures/local-averaging-and-lattice-partitions.py).*
+
 ## Translation-invariant operators have one convolution kernel
 
 We first prove the two kernel facts needed for the operator theorem.
@@ -567,6 +646,11 @@ including all translated derivatives.
 
 11. **Centered translation differences.** For arbitrary \(u\in\mathcal D^\prime(\mathbb R^n)\) and \(v\in\mathbb R^n\), find the strong limit of \((\tau_{hv}u-2u+\tau_{-hv}u)/h^2\), and give an error of order \(h^2\) on each bounded test family. Calculate both signs explicitly for \(u=\delta_0\) and \(u=H\) in one dimension with \(v=1\).
 
+
+12. **Sharing three derivatives — intermediate.** For \(u\in C_c^1(\mathbb R^2)\), \(v\in C^2(\mathbb R^2)\), express \(\partial_1^2\partial_2(u*v)\) without asking either input for a third derivative. Justify continuity and compactness of the relevant integration domain.
+13. **A persistent uniform error — intermediate.** Let \(\rho\in C_c^\infty(\mathbb R)\) be even, nonnegative and normalized, with support in \([-1,1]\). For \(H=\mathbf1_{(0,\infty)}\) and \(\rho_\varepsilon(x)=\varepsilon^{-1}\rho(x/\varepsilon)\), prove that the error is supported in \([-\varepsilon,\varepsilon]\), has essential supremum \(1/2\), and satisfies \(\|\rho_\varepsilon*H-H\|_{L^p(K)}\le (2\varepsilon)^{1/p}/2\) for every compact \(K\) and finite \(p\ge1\). Explain why this is a local example, since \(H\notin L^p(\mathbb R)\).
+14. **Zero mass with a nonzero convolution — intermediate.** Let \(\rho\in C_c^\infty(\mathbb R)\) have integral one. For \(u=\rho'\) and \(v=\rho\), compute the integral and first moment of \(u*v\). Deduce that its vanishing integral does not make the convolution zero.
+
 ## Complete solutions
 
 **Solution 1.** Evaluation and (1.8) give
@@ -665,6 +749,31 @@ Every bounded test family has a uniform bound for this seminorm, proving strong 
 \((\phi(h)-2\phi(0)+\phi(-h))/h^2\to\phi''(0)\), the pairing of \(+\delta_0''\). With \(u=H\), the limit is \(H''=\delta'_0\), whose pairing is \(-\phi'(0)\). These signs follow from differentiating the distribution; the displayed second-difference coefficients are \(+1,-2,+1\).
 
 
+
+**Solution 12.** Take \(\alpha=(1,0)\), \(\beta=(1,1)\) in (C2). Then
+\[
+ \partial_1^2\partial_2(u*v)(x)
+       =\int(\partial_1u)(z)(\partial_1\partial_2v)(x-z)\,dz.
+\]
+The \(z\)-integral is on \(\operatorname{supp}u\). On any compact output neighborhood, \(x-z\) lies in one compact set where the second derivative of \(v\) is continuous and uniformly continuous. The integral is therefore continuous in \(x\). Theorem 2.3 proves it is the actual third derivative; the first factor supplies one derivative and the second supplies two.
+
+**Solution 13.** Substitution gives
+\[
+ (\rho_\varepsilon*H)(x)=F(x/\varepsilon),\qquad
+ F(s)=\int_{-\infty}^{s}\rho(t)\,dt.
+\]
+The function \(F\) is zero for \(s\le-1\), one for \(s\ge1\), and satisfies \(F(0)=1/2\) by evenness. It is nondecreasing, with \(F(-s)=1-F(s)\). Thus the error vanishes outside the stated interval and its magnitude is at most \(1/2\). Continuity of \(F\) at zero makes the error arbitrarily close to \(1/2\) on sets of positive measure on either side of zero, so the essential supremum is exactly \(1/2\). Integrating the pointwise \(p\)-th power bound over a set of length at most \(2\varepsilon\) proves the local estimate. The global \(L^p\) theorem does not apply to \(H\), but its local form does. The error itself does belong to global \(L^p\) and satisfies the same bound there.
+
+**Solution 14.** Integration by parts gives \(\int\rho'=0\) and \(\int x\rho'(x)\,dx=-1\); boundary terms vanish by compact support. Formula (C4) gives \(\int(u*v)=0\). Fubini and \(x=z+y\), justified on the compact input product, yield
+\[
+ \int x(u*v)(x)\,dx
+ =\left(\int z u(z)\,dz\right)\left(\int v\right)
+   +\left(\int u\right)\left(\int yv(y)\,dy\right)
+ =-1.
+\]
+Consequently \(u*v\) is nonzero. Cancellation of total mass is compatible with a nonzero first moment and nonzero function.
+
+
 ## Programme proof locations and sources
 
 - [U008, Order, positivity and distributional limits](order-positivity-and-limits.md): the definition and bounded-family characterization (T1), Proposition 1.2 for finite differentiability, Proposition 1.1 for the sequential criterion, and the entire proof of Theorem 5.1 for uniform order and strong sequential convergence.
@@ -673,6 +782,6 @@ Every bounded test family has a uniform bound for this seminorm, proving strong 
 - Semyon Dyatlov, [*Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs*](https://math.mit.edu/~dyatlov/18.155/155-notes.pdf), freely accessible MIT notes, 2 October 2026 version. Propositions 6.3 and Lemma 6.8 provide the parameter and integral arguments; Theorems 6.4, 6.7, 6.10 and 7.1 provide smooth convolution, approximation and tensor construction. Chapter 8 gives the proper-support pairing and singular-support localization. The Fourier kernel sketch in Theorem 7.6 is expanded here into the complete compact-cutoff construction K1, with its norm bound, convergence and compatibility proofs.
 - Richard Melrose, [*18.155 Lecture 15: Schwartz's kernel theorem*](https://math.mit.edu/~rbm/18.155-F16/L15.pdf), freely accessible MIT lecture, 1 November 2016. Pages 2–4 explain separate continuity, the Baire estimate and localization by cutoffs. The kernel construction here uses the supplied Fourier inversion proof and the explicit integral (K2); it does not require the lecture's additional Sobolev-space machinery.
 
-- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second edition, Springer, 2003, §4.2, Exercise 4.2.5. ISBN 978-3-642-61497-2. Proposition 1.2 proves the translation limit and its bounded-test remainder estimate.
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second edition, Springer, 2003, §1.2, pp. 14–15, for tests and determination of locally integrable functions; §1.3, pp. 16–18, for ordinary convolution, allocation of derivatives and approximation; §4.2, Exercise 4.2.5. ISBN 978-3-642-61497-2. Proposition 1.2 proves the translation limit and its bounded-test remainder estimate.
 
-Every distributional construction and operator identity used above has its proof here or at one of the exact programme locations listed. The freely accessible human texts support the construction of these proofs.
+The ordinary convolution identities (C1)–(C4), norm estimates (C5)–(C7) and almost-everywhere determination are proved in Theorems 2.3 and 5.4 and Corollary 5.5. The local cutoff used in Theorem 5.4 is constructed in [Local data and compatible products](local-data-and-compatible-products.md#restriction-and-a-local-uniqueness-principle).

@@ -10,7 +10,7 @@ from PIL import Image, ImageDraw, ImageFont
 
 WIDTH, HEIGHT = 3300, 3700
 OUT = Path(__file__).resolve().parents[1] / 'assets/affine-sheaf-proof-map.png'
-FONT_DIR = Path("C:/Windows/Fonts")
+FONT_DIR = Path('.')
 REGULAR = FONT_DIR / "segoeui.ttf"
 BOLD = FONT_DIR / "segoeuib.ttf"
 im = Image.new("RGB", (WIDTH, HEIGHT), "#f7f8fb")

@@ -393,4 +393,4 @@ The base image is the unit sphere. The derivative of \(\theta\mapsto\theta/|\the
 - [Hörmander III] Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, Springer eBook reprint, 2007, ISBN 978-3-540-49938-1; corrected second printing, 1994.
 - Lars Hörmander, *Fourier integral operators. I*, Acta Mathematica 127 (1971), Section 3.1, especially the generating-function results used in the programme's earlier geometry companion. [Free primary-source reading](https://projecteuclid.org/journals/acta-mathematica/volume-127/issue-none/Fourier-integral-operators-I/10.1007/BF02392052.pdf).
 
-*Programme text: GPT-6.1 Sol and GPT-6 Astra (OpenAI), Ultra. Original lesson text: CC0. The separately linked AN-03 flow companion retains its own licence and credit.*
+*Programme text: GPT-6.1 Sol and GPT-6 Astra (OpenAI). Original lesson text: CC0. The separately linked AN-03 flow companion retains its own licence and credit.*

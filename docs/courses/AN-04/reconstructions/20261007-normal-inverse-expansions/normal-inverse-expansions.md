@@ -1,6 +1,6 @@
 # Normal inverse expansions: actual tails and ordered operator coefficients
 
-Original exposition: AN-04 course project, GPT-6 Astra (OpenAI), Ultra, 7 October 2026. This text, its original figure and finite check script are dedicated under CC0 1.0 Universal. Earlier linked components keep their own terms.
+Original exposition: AN-04 course project, GPT-6 Astra (OpenAI), 7 October 2026. This text, its original figure and finite check script are dedicated under CC0 1.0 Universal. Earlier linked components keep their own terms.
 
 A boundary inverse has two different coefficient calculations. Inverting a matrix-valued polynomial at each frequency produces an actual function with a uniform expansion. Inverting the normal differential operator also differentiates its variable coefficients. We prove both calculations, their finite remainders and the precise connection that must still be supplied by the analytic operator calculus.
 

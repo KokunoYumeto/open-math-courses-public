@@ -1,0 +1,208 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Logarithmic phases at polynomial scales</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Marked Type II estimates for prime predecessors)</a><a href="primes-divisors-mean-squares-and-rough-numbers.html">Previous lesson</a><a href="a-mean-value-theorem-and-logarithmic-phases-at-large-height.html">Next lesson</a><a href="src/logarithmic-phases-at-polynomial-scales.md">Editable source</a></nav><main><article><h1 id="logarithmic-phases-at-polynomial-scales">Logarithmic phases at polynomial scales</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Sums of <span class="math" data-tex="\(n^{it}\)">\(n^{it}\)</span> over a progression appear twice in this course: in the rough part of the prime coefficient (Lesson 6) and in a Gram matrix of evaluations of a Dirichlet polynomial (Lesson 17). In both places the progression has length at least <span class="math" data-tex="\(x^{\delta}\)">\(x^{\delta}\)</span> for a fixed <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, and the frequency <span class="math" data-tex="\(t\)">\(t\)</span> is at most a fixed power of <span class="math" data-tex="\(x\)">\(x\)</span>. In this regime the ratio <span class="math" data-tex="\(\log|t|/\log(\text{length})\)">\(\log|t|/\log(\text{length})\)</span> is bounded, and classical van der Corput differencing gives a saving of a fixed power of the length. This lesson proves that saving with full uniformity in the shift and the residue class.</p>
+<p><strong>Prerequisites.</strong> <a href="../NT-ZETA/NT-ZETA-07.html"><em>Exponential sums and a subconvex bound</em></a>, Theorems 2.1 (Kusmin–Landau), 2.2 (second-derivative sum test) and 3.1 (van der Corput's inequality); <a href="primes-divisors-mean-squares-and-rough-numbers.html"><em>Primes, divisors, mean squares and rough numbers</em></a>, Lemma 5.1.</p>
+<p>Throughout, <span class="math" data-tex="\(H\ge2\)">\(H\ge2\)</span>, <span class="math" data-tex="\(0\le u\le1\)">\(0\le u\le1\)</span>, <span class="math" data-tex="\(t\)">\(t\)</span> is real, <span class="math" data-tex="\(J\subseteq[H,2H]\)">\(J\subseteq[H,2H]\)</span> is an interval, and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S=\sum_{n\in J}(n+u)^{it}=\sum_{n\in J}e\bigl(f(n)\bigr),\\
+f(y)=\frac t{2\pi}\log(y+u).\quad(0.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+S=\sum_{n\in J}(n+u)^{it}=\sum_{n\in J}e\bigl(f(n)\bigr),\\
+f(y)=\frac t{2\pi}\log(y+u).\quad(0.1)
+\end{gathered}
+\]</span>
+<p>The derivatives of the phase are</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f^{(j)}(y)=\frac t{2\pi}\cdot\frac{(-1)^{j-1}(j-1)!}{(y+u)^j}\\
+(j\ge1).\quad(0.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+f^{(j)}(y)=\frac t{2\pi}\cdot\frac{(-1)^{j-1}(j-1)!}{(y+u)^j}\\
+(j\ge1).\quad(0.2)
+\end{gathered}
+\]</span>
+<h2 id="1-small-frequencies">1. Small frequencies</h2>
+<p><strong>Lemma 1.1.</strong> If <span class="math" data-tex="\(0&lt;|t|\le\pi H\)">\(0&lt;|t|\le\pi H\)</span>, then <span class="math" data-tex="\(|S|\ll H/|t|\)">\(|S|\ll H/|t|\)</span>, with an absolute implied constant.</p>
+<p><strong>Proof.</strong> Replacing <span class="math" data-tex="\(t\)">\(t\)</span> by <span class="math" data-tex="\(-t\)">\(-t\)</span> conjugates <span class="math" data-tex="\(S\)">\(S\)</span>, so let <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>. For consecutive integers <span class="math" data-tex="\(n,n+1\in J\)">\(n,n+1\in J\)</span> the increment of the phase is <span class="math" data-tex="\(\delta_n=f(n+1)-f(n)=\int_n^{n+1}f&#x27;(y)\,dy\)">\(\delta_n=f(n+1)-f(n)=\int_n^{n+1}f&#x27;(y)\,dy\)</span>. By (0.2), <span class="math" data-tex="\(f&#x27;(y)=t/(2\pi(y+u))\)">\(f&#x27;(y)=t/(2\pi(y+u))\)</span> decreases and lies in <span class="math" data-tex="\([t/(2\pi(2H+2)),\,t/(2\pi H)]\)">\([t/(2\pi(2H+2)),\,t/(2\pi H)]\)</span> on <span class="math" data-tex="\([H,2H+1]\)">\([H,2H+1]\)</span>. So the increments decrease and lie in <span class="math" data-tex="\([\Delta,1-\Delta]\)">\([\Delta,1-\Delta]\)</span> with <span class="math" data-tex="\(\Delta=t/(4\pi(H+1))\le\frac14\)">\(\Delta=t/(4\pi(H+1))\le\frac14\)</span>, because <span class="math" data-tex="\(t/(2\pi H)\le\frac12\le1-\Delta\)">\(t/(2\pi H)\le\frac12\le1-\Delta\)</span>. The Kusmin–Landau inequality (Theorem 2.1 of <a href="../NT-ZETA/NT-ZETA-07.html"><em>Exponential sums and a subconvex bound</em></a>) gives <span class="math" data-tex="\(|S|\ll\Delta^{-1}\ll H/t\)">\(|S|\ll\Delta^{-1}\ll H/t\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-repeated-differencing">2. Repeated differencing</h2>
+<p>For a finite sequence <span class="math" data-tex="\(z=(z_n)\)">\(z=(z_n)\)</span> of complex numbers indexed by an interval of integers and an integer <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>, let <span class="math" data-tex="\(\Delta_kz\)">\(\Delta_kz\)</span> be the sequence <span class="math" data-tex="\(n\mapsto z_{n+k}\overline{z_n}\)">\(n\mapsto z_{n+k}\overline{z_n}\)</span>, indexed by those <span class="math" data-tex="\(n\)">\(n\)</span> for which both <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(n+k\)">\(n+k\)</span> are indices of <span class="math" data-tex="\(z\)">\(z\)</span>. For <span class="math" data-tex="\(\mathbf k=(k_1,\dots,k_d)\)">\(\mathbf k=(k_1,\dots,k_d)\)</span> put <span class="math" data-tex="\(\Delta_{\mathbf k}z=\Delta_{k_d}\cdots\Delta_{k_1}z\)">\(\Delta_{\mathbf k}z=\Delta_{k_d}\cdots\Delta_{k_1}z\)</span> and <span class="math" data-tex="\(S_{\mathbf k}=\sum_n(\Delta_{\mathbf k}z)_n\)">\(S_{\mathbf k}=\sum_n(\Delta_{\mathbf k}z)_n\)</span>.</p>
+<p><strong>Lemma 2.1 (iterated van der Corput inequality).</strong> Let <span class="math" data-tex="\(L_0\ge1\)">\(L_0\ge1\)</span> be an integer and <span class="math" data-tex="\(z\)">\(z\)</span> a sequence with <span class="math" data-tex="\(|z_n|\le1\)">\(|z_n|\le1\)</span> indexed by at most <span class="math" data-tex="\(L_0\)">\(L_0\)</span> consecutive integers. For every integer <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span> and <span class="math" data-tex="\(1\le K\le L_0\)">\(1\le K\le L_0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Bigl(\frac{|S_\varnothing|}{L_0}\Bigr)^{2^d}
+\le c_d\Bigl(\frac1K\\
++\frac1{K^d}\sum_{\mathbf k\in[1,K)^d}\frac{|S_{\mathbf k}|}{L_0}\Bigr),\quad(2.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Bigl(\frac{|S_\varnothing|}{L_0}\Bigr)^{2^d}
+\le c_d\Bigl(\frac1K\\
++\frac1{K^d}\sum_{\mathbf k\in[1,K)^d}\frac{|S_{\mathbf k}|}{L_0}\Bigr),\quad(2.1)
+\end{gathered}
+\]</span>
+<p>where <span class="math" data-tex="\(S_\varnothing=\sum_nz_n\)">\(S_\varnothing=\sum_nz_n\)</span>, the sum is over integer vectors <span class="math" data-tex="\(\mathbf k\)">\(\mathbf k\)</span> with <span class="math" data-tex="\(1\le k_i&lt;K\)">\(1\le k_i&lt;K\)</span>, and <span class="math" data-tex="\(c_1=4\)">\(c_1=4\)</span>, <span class="math" data-tex="\(c_{d+1}=8c_d^2\)">\(c_{d+1}=8c_d^2\)</span>.</p>
+<p><strong>Proof.</strong> Extend <span class="math" data-tex="\(z\)">\(z\)</span> by zeros to exactly <span class="math" data-tex="\(L_0\)">\(L_0\)</span> consecutive indices; this changes none of the sums <span class="math" data-tex="\(S_{\mathbf k}\)">\(S_{\mathbf k}\)</span>. Van der Corput's inequality (Theorem 3.1 of <a href="../NT-ZETA/NT-ZETA-07.html"><em>Exponential sums and a subconvex bound</em></a>) with <span class="math" data-tex="\(H=K\)">\(H=K\)</span>, in the form with moduli, gives</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K^2|S_\varnothing|^2&amp;\le(L_0+K-1)\\
+&amp;\quad\times\Bigl(KL_0+2K\sum_{k&lt;K}|S_k|\Bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+K^2|S_\varnothing|^2&amp;\le(L_0+K-1)\\
+&amp;\quad\times\Bigl(KL_0+2K\sum_{k&lt;K}|S_k|\Bigr),
+\end{aligned}
+\]</span>
+<p>because <span class="math" data-tex="\(\sum|z_n|^2\le L_0\)">\(\sum|z_n|^2\le L_0\)</span> and <span class="math" data-tex="\(K-k\le K\)">\(K-k\le K\)</span>. Since <span class="math" data-tex="\(L_0+K-1\le2L_0\)">\(L_0+K-1\le2L_0\)</span>, dividing by <span class="math" data-tex="\(K^2L_0^2\)">\(K^2L_0^2\)</span> gives (2.1) for <span class="math" data-tex="\(d=1\)">\(d=1\)</span> with <span class="math" data-tex="\(c_1=4\)">\(c_1=4\)</span>. Each <span class="math" data-tex="\(\Delta_{\mathbf k}z\)">\(\Delta_{\mathbf k}z\)</span> again has terms of modulus at most <span class="math" data-tex="\(1\)">\(1\)</span> and at most <span class="math" data-tex="\(L_0\)">\(L_0\)</span> indices, so the case <span class="math" data-tex="\(d=1\)">\(d=1\)</span> applies to it. Assume (2.1) for <span class="math" data-tex="\(d\)">\(d\)</span>. Squaring, using <span class="math" data-tex="\((a+b)^2\le2a^2+2b^2\)">\((a+b)^2\le2a^2+2b^2\)</span> and Cauchy's inequality for the average over the at most <span class="math" data-tex="\(K^d\)">\(K^d\)</span> vectors <span class="math" data-tex="\(\mathbf k\)">\(\mathbf k\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl(\frac{|S_\varnothing|}{L_0}\Bigr)^{2^{d+1}}\\
+&amp;\quad\le2c_d^2\Bigl(\frac1{K^2}+\frac1{K^d}\sum_{\mathbf k}\frac{|S_{\mathbf k}|^2}{L_0^2}\Bigr)\\
+&amp;\quad\le2c_d^2\Bigl(\frac1{K^2}+\frac2K\\
+&amp;\qquad+\frac4{K^{d+1}}\sum_{\mathbf k,k&#x27;}\frac{|S_{(\mathbf k,k&#x27;)}|}{L_0}\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl(\frac{|S_\varnothing|}{L_0}\Bigr)^{2^{d+1}}\\
+&amp;\quad\le2c_d^2\Bigl(\frac1{K^2}+\frac1{K^d}\sum_{\mathbf k}\frac{|S_{\mathbf k}|^2}{L_0^2}\Bigr)\\
+&amp;\quad\le2c_d^2\Bigl(\frac1{K^2}+\frac2K\\
+&amp;\qquad+\frac4{K^{d+1}}\sum_{\mathbf k,k&#x27;}\frac{|S_{(\mathbf k,k&#x27;)}|}{L_0}\Bigr).
+\end{aligned}
+\]</span>
+<p>This is (2.1) for <span class="math" data-tex="\(d+1\)">\(d+1\)</span> with <span class="math" data-tex="\(c_{d+1}=8c_d^2\)">\(c_{d+1}=8c_d^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the sequence <span class="math" data-tex="\(z_n=e(f(n))\)">\(z_n=e(f(n))\)</span>, <span class="math" data-tex="\(n\in J\)">\(n\in J\)</span>, the differenced sequence is <span class="math" data-tex="\((\Delta_{\mathbf k}z)_n=e(g_{\mathbf k}(n))\)">\((\Delta_{\mathbf k}z)_n=e(g_{\mathbf k}(n))\)</span>, where <span class="math" data-tex="\(g_{\mathbf k}=\Delta_{k_d}\cdots\Delta_{k_1}f\)">\(g_{\mathbf k}=\Delta_{k_d}\cdots\Delta_{k_1}f\)</span> and <span class="math" data-tex="\(\Delta_kg(y)=g(y+k)-g(y)\)">\(\Delta_kg(y)=g(y+k)-g(y)\)</span>. Since <span class="math" data-tex="\(\Delta_kg(y)=k\int_0^1g&#x27;(y+k\theta)\,d\theta\)">\(\Delta_kg(y)=k\int_0^1g&#x27;(y+k\theta)\,d\theta\)</span>, induction gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g_{\mathbf k}(y)=k_1\cdots k_d\\
+\times\int_{[0,1]^d}f^{(d)}\bigl(y+\textstyle\sum_ik_i\theta_i\bigr)\,d\theta,\quad(2.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+g_{\mathbf k}(y)=k_1\cdots k_d\\
+\times\int_{[0,1]^d}f^{(d)}\bigl(y+\textstyle\sum_ik_i\theta_i\bigr)\,d\theta,\quad(2.2)
+\end{gathered}
+\]</span>
+<p>and the same formula holds for every derivative of <span class="math" data-tex="\(g_{\mathbf k}\)">\(g_{\mathbf k}\)</span>, with <span class="math" data-tex="\(f^{(d)}\)">\(f^{(d)}\)</span> replaced by the corresponding derivative of <span class="math" data-tex="\(f^{(d)}\)">\(f^{(d)}\)</span>.</p>
+<h2 id="3-the-power-saving">3. The power saving</h2>
+<p><strong>Theorem 3.1 (logarithmic phases with bounded height ratio).</strong> Fix <span class="math" data-tex="\(\Lambda\ge1\)">\(\Lambda\ge1\)</span> and put <span class="math" data-tex="\(d_\Lambda=\lceil\Lambda\rceil\)">\(d_\Lambda=\lceil\Lambda\rceil\)</span> and <span class="math" data-tex="\(c_\Lambda=1/(d_\Lambda2^{d_\Lambda+2})\)">\(c_\Lambda=1/(d_\Lambda2^{d_\Lambda+2})\)</span>. There is <span class="math" data-tex="\(C_\Lambda\)">\(C_\Lambda\)</span> such that, for all <span class="math" data-tex="\(H\ge2\)">\(H\ge2\)</span>, <span class="math" data-tex="\(0\le u\le1\)">\(0\le u\le1\)</span>, real <span class="math" data-tex="\(t\)">\(t\)</span> with <span class="math" data-tex="\(1\le|t|\le H^\Lambda\)">\(1\le|t|\le H^\Lambda\)</span>, and every interval <span class="math" data-tex="\(J\subseteq[H,2H]\)">\(J\subseteq[H,2H]\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Bigl|\sum_{n\in J}(n+u)^{it}\Bigr|\\
+\le C_\Lambda\Bigl(\frac H{|t|}+H^{1-c_\Lambda}\Bigr).\quad(3.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Bigl|\sum_{n\in J}(n+u)^{it}\Bigr|\\
+\le C_\Lambda\Bigl(\frac H{|t|}+H^{1-c_\Lambda}\Bigr).\quad(3.1)
+\end{gathered}
+\]</span>
+<p><strong>Proof.</strong> If <span class="math" data-tex="\(|t|\le\pi H\)">\(|t|\le\pi H\)</span>, Lemma 1.1 applies. Let <span class="math" data-tex="\(|t|&gt;\pi H\)">\(|t|&gt;\pi H\)</span> and put <span class="math" data-tex="\(\lambda=\log|t|/\log H\)">\(\lambda=\log|t|/\log H\)</span>, so <span class="math" data-tex="\(1&lt;\lambda\le\Lambda\)">\(1&lt;\lambda\le\Lambda\)</span>, and let <span class="math" data-tex="\(d=\lceil\lambda\rceil-1\)">\(d=\lceil\lambda\rceil-1\)</span>. Then <span class="math" data-tex="\(1\le d&lt;d_\Lambda\)">\(1\le d&lt;d_\Lambda\)</span> and <span class="math" data-tex="\(d&lt;\lambda\le d+1\)">\(d&lt;\lambda\le d+1\)</span>. Put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K=\Bigl\lfloor\frac{H^{1/(2d)}}{2d}\Bigr\rfloor,\qquad L_0=\lfloor H\rfloor+2 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+K=\Bigl\lfloor\frac{H^{1/(2d)}}{2d}\Bigr\rfloor,\qquad L_0=\lfloor H\rfloor+2 .
+\end{gathered}
+\]</span>
+<p>If <span class="math" data-tex="\(K&lt;1\)">\(K&lt;1\)</span>, then <span class="math" data-tex="\(H\)">\(H\)</span> is bounded in terms of <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>, and (3.1) holds trivially after enlarging <span class="math" data-tex="\(C_\Lambda\)">\(C_\Lambda\)</span>. Let <span class="math" data-tex="\(K\ge1\)">\(K\ge1\)</span>. The interval <span class="math" data-tex="\(J\)">\(J\)</span> contains at most <span class="math" data-tex="\(L_0\)">\(L_0\)</span> integers, and <span class="math" data-tex="\(L_0\le2H\)">\(L_0\le2H\)</span>. Apply Lemma 2.1 to <span class="math" data-tex="\(z_n=e(f(n))\)">\(z_n=e(f(n))\)</span>, <span class="math" data-tex="\(n\in J\)">\(n\in J\)</span>.</p>
+<p>Fix <span class="math" data-tex="\(\mathbf k\in[1,K)^d\)">\(\mathbf k\in[1,K)^d\)</span>. The sum <span class="math" data-tex="\(S_{\mathbf k}\)">\(S_{\mathbf k}\)</span> runs over an interval of integers <span class="math" data-tex="\(n\)">\(n\)</span> of length at most <span class="math" data-tex="\(2H\)">\(2H\)</span>, and in (2.2) the arguments <span class="math" data-tex="\(y+\sum_ik_i\theta_i+u\)">\(y+\sum_ik_i\theta_i+u\)</span> lie in <span class="math" data-tex="\([H,2H+dK+1]\subseteq[H,3H]\)">\([H,2H+dK+1]\subseteq[H,3H]\)</span>. By (0.2) and (2.2), <span class="math" data-tex="\(g_{\mathbf k}&#x27;&#x27;\)">\(g_{\mathbf k}&#x27;&#x27;\)</span> has constant sign and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+k_1\cdots k_d\,m_0\le|g_{\mathbf k}&#x27;&#x27;|\le3^{d+2}k_1\cdots k_d\,m_0,\\
+m_0=\frac{|t|\,(d+1)!}{2\pi(3H)^{d+2}}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+k_1\cdots k_d\,m_0\le|g_{\mathbf k}&#x27;&#x27;|\le3^{d+2}k_1\cdots k_d\,m_0,\\
+m_0=\frac{|t|\,(d+1)!}{2\pi(3H)^{d+2}}.
+\end{gathered}
+\]</span>
+<p>The second-derivative sum test (Theorem 2.2 of <a href="../NT-ZETA/NT-ZETA-07.html"><em>Exponential sums and a subconvex bound</em></a>) with <span class="math" data-tex="\(M=k_1\cdots k_dm_0\)">\(M=k_1\cdots k_dm_0\)</span> and <span class="math" data-tex="\(A=3^{d+2}\)">\(A=3^{d+2}\)</span> gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|S_{\mathbf k}|\ll_d H\sqrt{m_0\,k_1\cdots k_d}\\
++\frac1{\sqrt{m_0\,k_1\cdots k_d}} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+|S_{\mathbf k}|\ll_d H\sqrt{m_0\,k_1\cdots k_d}\\
++\frac1{\sqrt{m_0\,k_1\cdots k_d}} .
+\end{gathered}
+\]</span>
+<p>Average over <span class="math" data-tex="\(\mathbf k\)">\(\mathbf k\)</span>, using <span class="math" data-tex="\(\sum_{k&lt;K}\sqrt k\le K^{3/2}\)">\(\sum_{k&lt;K}\sqrt k\le K^{3/2}\)</span> and <span class="math" data-tex="\(\sum_{k&lt;K}1/\sqrt k\le2\sqrt K\)">\(\sum_{k&lt;K}1/\sqrt k\le2\sqrt K\)</span>:</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac1{K^d}\sum_{\mathbf k}|S_{\mathbf k}|\ll_d HK^{d/2}\sqrt{m_0}\\
++\frac{2^d}{K^{d/2}\sqrt{m_0}} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac1{K^d}\sum_{\mathbf k}|S_{\mathbf k}|\ll_d HK^{d/2}\sqrt{m_0}\\
++\frac{2^d}{K^{d/2}\sqrt{m_0}} .
+\end{gathered}
+\]</span>
+<p>Here <span class="math" data-tex="\(m_0\asymp_dH^{\lambda-d-2}\)">\(m_0\asymp_dH^{\lambda-d-2}\)</span> and <span class="math" data-tex="\(K^d\asymp_dH^{1/2}\)">\(K^d\asymp_dH^{1/2}\)</span>. Since <span class="math" data-tex="\(\lambda\le d+1\)">\(\lambda\le d+1\)</span>, the first term is <span class="math" data-tex="\(\ll_dH^{1+(\lambda-d-2)/2+1/4}\le H^{3/4}\)">\(\ll_dH^{1+(\lambda-d-2)/2+1/4}\le H^{3/4}\)</span>. Since <span class="math" data-tex="\(\lambda&gt;d\)">\(\lambda&gt;d\)</span>, the second is <span class="math" data-tex="\(\ll_dH^{(d+2-\lambda)/2-1/4}\le H^{3/4}\)">\(\ll_dH^{(d+2-\lambda)/2-1/4}\le H^{3/4}\)</span>. Inserting these into (2.1), with <span class="math" data-tex="\(L_0\ge H\)">\(L_0\ge H\)</span> and <span class="math" data-tex="\(1/K\ll_dH^{-1/(2d)}\)">\(1/K\ll_dH^{-1/(2d)}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Bigl(\frac{|S|}{L_0}\Bigr)^{2^d}\ll_dH^{-1/(2d)}+H^{-1/4}\\
+\le2H^{-1/(4d)} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Bigl(\frac{|S|}{L_0}\Bigr)^{2^d}\ll_dH^{-1/(2d)}+H^{-1/4}\\
+\le2H^{-1/(4d)} .
+\end{gathered}
+\]</span>
+<p>Hence <span class="math" data-tex="\(|S|\ll_\Lambda H^{1-1/(d2^{d+2})}\le H^{1-c_\Lambda}\)">\(|S|\ll_\Lambda H^{1-1/(d2^{d+2})}\le H^{1-c_\Lambda}\)</span>, because <span class="math" data-tex="\(d&lt;d_\Lambda\)">\(d&lt;d_\Lambda\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The saving comes from comparing two scales: the differencing lowers the effective size of the phase by a factor <span class="math" data-tex="\(K\)">\(K\)</span> at each step, until its second derivative is small enough for the second-derivative test to win. The number of steps is about <span class="math" data-tex="\(\log|t|/\log H\)">\(\log|t|/\log H\)</span>, and each step halves the exponent of the saving; this is why the method needs a bounded ratio <span class="math" data-tex="\(\log|t|/\log H\)">\(\log|t|/\log H\)</span>.</p>
+<h2 id="4-progressions-and-weights">4. Progressions and weights</h2>
+<p><strong>Corollary 4.1 (logarithmic phases on progressions).</strong> Fix <span class="math" data-tex="\(\delta_1&gt;0\)">\(\delta_1&gt;0\)</span>, <span class="math" data-tex="\(C_0&gt;0\)">\(C_0&gt;0\)</span> and <span class="math" data-tex="\(\Lambda_1\ge1\)">\(\Lambda_1\ge1\)</span>. There are <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> and <span class="math" data-tex="\(C\)">\(C\)</span>, depending only on <span class="math" data-tex="\(\delta_1\)">\(\delta_1\)</span> and <span class="math" data-tex="\(\Lambda_1\)">\(\Lambda_1\)</span>, such that for large <span class="math" data-tex="\(x\)">\(x\)</span>, uniformly for <span class="math" data-tex="\(x^{\delta_1}\le N\le x^{\Lambda_1}\)">\(x^{\delta_1}\le N\le x^{\Lambda_1}\)</span>, moduli <span class="math" data-tex="\(1\le q\le L^{C_0}\)">\(1\le q\le L^{C_0}\)</span>, integers <span class="math" data-tex="\(a\)">\(a\)</span>, intervals <span class="math" data-tex="\(J\subseteq[N,2N]\)">\(J\subseteq[N,2N]\)</span> and real <span class="math" data-tex="\(t\)">\(t\)</span> with <span class="math" data-tex="\(1\le|t|\le x^{\Lambda_1}\)">\(1\le|t|\le x^{\Lambda_1}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Bigl|\sum_{\substack{n\in J\\ n\equiv a\ (q)}}n^{it}\Bigr|\le C\,\frac Nq\Bigl(\frac1{|t|}+x^{-c}\Bigr).\quad(4.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Bigl|\sum_{\substack{n\in J\\ n\equiv a\ (q)}}n^{it}\Bigr|\le C\,\frac Nq\Bigl(\frac1{|t|}+x^{-c}\Bigr).\quad(4.1)
+\end{gathered}
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(a_0\in[1,q]\)">\(a_0\in[1,q]\)</span> satisfy <span class="math" data-tex="\(a_0\equiv a\ (q)\)">\(a_0\equiv a\ (q)\)</span>, and write <span class="math" data-tex="\(n=qb+a_0\)">\(n=qb+a_0\)</span>. Then <span class="math" data-tex="\(n^{it}=q^{it}(b+u)^{it}\)">\(n^{it}=q^{it}(b+u)^{it}\)</span> with <span class="math" data-tex="\(u=a_0/q\in(0,1]\)">\(u=a_0/q\in(0,1]\)</span>, and <span class="math" data-tex="\(b\)">\(b\)</span> runs over the integers of an interval contained in <span class="math" data-tex="\([H_0,2H_0+2]\)">\([H_0,2H_0+2]\)</span>, where <span class="math" data-tex="\(H_0=N/q-1\ge N/(2q)\ge x^{\delta_1/2}\)">\(H_0=N/q-1\ge N/(2q)\ge x^{\delta_1/2}\)</span> for large <span class="math" data-tex="\(x\)">\(x\)</span>. At most three values of <span class="math" data-tex="\(b\)">\(b\)</span> exceed <span class="math" data-tex="\(2H_0\)">\(2H_0\)</span>. Apply Theorem 3.1 to the rest, with <span class="math" data-tex="\(H=H_0\)">\(H=H_0\)</span> and <span class="math" data-tex="\(\Lambda=4\Lambda_1/\delta_1\)">\(\Lambda=4\Lambda_1/\delta_1\)</span>; this is admissible because <span class="math" data-tex="\(|t|\le x^{\Lambda_1}\le H_0^{2\Lambda_1/\delta_1}\)">\(|t|\le x^{\Lambda_1}\le H_0^{2\Lambda_1/\delta_1}\)</span>. The result is <span class="math" data-tex="\(|\cdot|\le C(H_0/|t|+H_0^{1-c_\Lambda})+3\)">\(|\cdot|\le C(H_0/|t|+H_0^{1-c_\Lambda})+3\)</span>, and <span class="math" data-tex="\(H_0^{-c_\Lambda}\le x^{-c_\Lambda\delta_1/2}\)">\(H_0^{-c_\Lambda}\le x^{-c_\Lambda\delta_1/2}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 4.2 (partial summation).</strong> Let <span class="math" data-tex="\(J\)">\(J\)</span> be an interval, <span class="math" data-tex="\(a_n\)">\(a_n\)</span> complex numbers for the integers <span class="math" data-tex="\(n\in J\)">\(n\in J\)</span>, and <span class="math" data-tex="\(g\)">\(g\)</span> a function of bounded variation <span class="math" data-tex="\(V_J(g)\)">\(V_J(g)\)</span> on <span class="math" data-tex="\(J\)">\(J\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Bigl|\sum_{n\in J}a_ng(n)\Bigr|\le\Bigl(\sup_J|g|+V_J(g)\Bigr)\\
+\times\max_{J&#x27;}\Bigl|\sum_{n\in J&#x27;}a_n\Bigr|,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Bigl|\sum_{n\in J}a_ng(n)\Bigr|\le\Bigl(\sup_J|g|+V_J(g)\Bigr)\\
+\times\max_{J&#x27;}\Bigl|\sum_{n\in J&#x27;}a_n\Bigr|,
+\end{gathered}
+\]</span>
+<p>the maximum over the initial segments <span class="math" data-tex="\(J&#x27;\)">\(J&#x27;\)</span> of <span class="math" data-tex="\(J\)">\(J\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(n_1&lt;\cdots&lt;n_s\)">\(n_1&lt;\cdots&lt;n_s\)</span> be the integers of <span class="math" data-tex="\(J\)">\(J\)</span> and <span class="math" data-tex="\(A_j=\sum_{i\le j}a_{n_i}\)">\(A_j=\sum_{i\le j}a_{n_i}\)</span>. Abel summation gives <span class="math" data-tex="\(\sum_ja_{n_j}g(n_j)=A_sg(n_s)\)">\(\sum_ja_{n_j}g(n_j)=A_sg(n_s)\)</span><span class="math" data-tex="\(-\sum_{j&lt;s}A_j\bigl(g(n_{j+1})-g(n_j)\bigr)\)">\(-\sum_{j&lt;s}A_j\bigl(g(n_{j+1})-g(n_j)\bigr)\)</span>, and <span class="math" data-tex="\(\sum_j|g(n_{j+1})-g(n_j)|\le V_J(g)\)">\(\sum_j|g(n_{j+1})-g(n_j)|\le V_J(g)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Combining Corollary 4.1 with Lemma 4.2, the bound (4.1) holds for <span class="math" data-tex="\(\sum_{n\in J,\,n\equiv a}g(n)n^{it}\)">\(\sum_{n\in J,\,n\equiv a}g(n)n^{it}\)</span>, multiplied by <span class="math" data-tex="\(\sup|g|+V_J(g)\)">\(\sup|g|+V_J(g)\)</span>.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Let <span class="math" data-tex="\(H\ge9\)">\(H\ge9\)</span> and <span class="math" data-tex="\(1\le t\le\sqrt H/4\)">\(1\le t\le\sqrt H/4\)</span>. Show that <span class="math" data-tex="\(|\sum_{H&lt;n\le2H}n^{it}|\ge H/(8t)\)">\(|\sum_{H&lt;n\le2H}n^{it}|\ge H/(8t)\)</span>, so the term <span class="math" data-tex="\(H/|t|\)">\(H/|t|\)</span> in (3.1) cannot be omitted.</p>
+<p><strong>5.2.</strong> Prove (2.2) by induction on <span class="math" data-tex="\(d\)">\(d\)</span>.</p>
+<p><strong>5.3.</strong> In the proof of Theorem 3.1, check that the case <span class="math" data-tex="\(d=1\)">\(d=1\)</span> (that is, <span class="math" data-tex="\(H&lt;|t|\le H^2\)">\(H&lt;|t|\le H^2\)</span>) gives <span class="math" data-tex="\(|S|\ll H^{7/8}\)">\(|S|\ll H^{7/8}\)</span>, and that this is the bound of the van der Corput process with one differencing step.</p>
+<p><strong>5.4.</strong> Let <span class="math" data-tex="\(N=\exp(L/(\log L)^2)\)">\(N=\exp(L/(\log L)^2)\)</span> and <span class="math" data-tex="\(|t|=x^3\)">\(|t|=x^3\)</span>. Compute <span class="math" data-tex="\(\lambda=\log|t|/\log N\)">\(\lambda=\log|t|/\log N\)</span> and explain why Theorem 3.1 gives no saving uniform in <span class="math" data-tex="\(x\)">\(x\)</span> for this choice.</p>
+<p><strong>5.5.</strong> Let <span class="math" data-tex="\(x^{\delta_1}\le N\le x\)">\(x^{\delta_1}\le N\le x\)</span>, <span class="math" data-tex="\(q\le L^{C_0}\)">\(q\le L^{C_0}\)</span>, and <span class="math" data-tex="\(g(y)=1/\log y\)">\(g(y)=1/\log y\)</span> on <span class="math" data-tex="\([N,2N]\)">\([N,2N]\)</span>. Use Lemma 4.2 and Corollary 4.1 to bound <span class="math" data-tex="\(\sum_{n\in J,\,n\equiv a\,(q)}n^{it}/\log n\)">\(\sum_{n\in J,\,n\equiv a\,(q)}n^{it}/\log n\)</span> for <span class="math" data-tex="\(1\le|t|\le x^2\)">\(1\le|t|\le x^2\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> By Lemma 5.1 of <a href="primes-divisors-mean-squares-and-rough-numbers.html"><em>Primes, divisors, mean squares and rough numbers</em></a> with <span class="math" data-tex="\(q=1\)">\(q=1\)</span>, the sum differs from <span class="math" data-tex="\(\int_H^{2H}y^{it}dy=H^{1+it}(2^{1+it}-1)/(1+it)\)">\(\int_H^{2H}y^{it}dy=H^{1+it}(2^{1+it}-1)/(1+it)\)</span> by at most <span class="math" data-tex="\(3+t\)">\(3+t\)</span>. Since <span class="math" data-tex="\(|2^{1+it}-1|\ge1\)">\(|2^{1+it}-1|\ge1\)</span> and <span class="math" data-tex="\(|1+it|\le2t\)">\(|1+it|\le2t\)</span>, the integral has modulus at least <span class="math" data-tex="\(H/(2t)\)">\(H/(2t)\)</span>. Hence the sum has modulus at least <span class="math" data-tex="\(H/(2t)-3-t\)">\(H/(2t)-3-t\)</span>. For <span class="math" data-tex="\(t\le\sqrt H/4\)">\(t\le\sqrt H/4\)</span> we have <span class="math" data-tex="\(3H/(8t)\ge\frac32\sqrt H\ge3+\frac14\sqrt H\ge3+t\)">\(3H/(8t)\ge\frac32\sqrt H\ge3+\frac14\sqrt H\ge3+t\)</span>, because <span class="math" data-tex="\(\sqrt H\ge3\)">\(\sqrt H\ge3\)</span>. So <span class="math" data-tex="\(H/(2t)-3-t\ge H/(8t)\)">\(H/(2t)-3-t\ge H/(8t)\)</span>.</p>
+<p><strong>5.2.</strong> For <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, <span class="math" data-tex="\(g(y+k)-g(y)=\int_0^kg&#x27;(y+s)\,ds\)">\(g(y+k)-g(y)=\int_0^kg&#x27;(y+s)\,ds\)</span><span class="math" data-tex="\(=k\int_0^1g&#x27;(y+k\theta)\,d\theta\)">\(=k\int_0^1g&#x27;(y+k\theta)\,d\theta\)</span>. If (2.2) holds for <span class="math" data-tex="\(d\)">\(d\)</span>, apply the case <span class="math" data-tex="\(d=1\)">\(d=1\)</span> to <span class="math" data-tex="\(g_{\mathbf k}\)">\(g_{\mathbf k}\)</span> and differentiate (2.2) under the integral sign.</p>
+<p><strong>5.3.</strong> For <span class="math" data-tex="\(d=1\)">\(d=1\)</span>, <span class="math" data-tex="\(K\asymp H^{1/2}\)">\(K\asymp H^{1/2}\)</span>, and (2.1) gives <span class="math" data-tex="\((|S|/L_0)^2\ll H^{-1/2}+H^{-1/4}\)">\((|S|/L_0)^2\ll H^{-1/2}+H^{-1/4}\)</span>, so <span class="math" data-tex="\(|S|\ll H^{7/8}\)">\(|S|\ll H^{7/8}\)</span>. This is the classical bound obtained from one application of van der Corput's inequality followed by the second-derivative test.</p>
+<p><strong>5.4.</strong> Here <span class="math" data-tex="\(\log N=L/(\log L)^2\)">\(\log N=L/(\log L)^2\)</span> and <span class="math" data-tex="\(\log|t|=3L\)">\(\log|t|=3L\)</span>, so <span class="math" data-tex="\(\lambda=3(\log L)^2\to\infty\)">\(\lambda=3(\log L)^2\to\infty\)</span>. Theorem 3.1 needs <span class="math" data-tex="\(\Lambda\ge\lambda\)">\(\Lambda\ge\lambda\)</span>, and its saving exponent <span class="math" data-tex="\(c_\Lambda\)">\(c_\Lambda\)</span> is about <span class="math" data-tex="\(2^{-\Lambda}/\Lambda\)">\(2^{-\Lambda}/\Lambda\)</span>; then <span class="math" data-tex="\(N^{c_\Lambda}\)">\(N^{c_\Lambda}\)</span> is <span class="math" data-tex="\(\exp\bigl(L(\log L)^{-2}c_\Lambda\bigr)\)">\(\exp\bigl(L(\log L)^{-2}c_\Lambda\bigr)\)</span>, and <span class="math" data-tex="\(c_\Lambda\)">\(c_\Lambda\)</span> decreases faster than any power of <span class="math" data-tex="\(1/L\)">\(1/L\)</span>. The next lesson treats this range by a mean value theorem whose cost grows only polynomially with the degree.</p>
+<p><strong>5.5.</strong> Lemma 4.2 with <span class="math" data-tex="\(g(y)=1/\log y\)">\(g(y)=1/\log y\)</span>, for which <span class="math" data-tex="\(\sup|g|+V(g)\le2/\log N\)">\(\sup|g|+V(g)\le2/\log N\)</span>, gives the bound <span class="math" data-tex="\(\frac{2}{\log N}\cdot C\frac Nq(1/|t|+x^{-c})\)">\(\frac{2}{\log N}\cdot C\frac Nq(1/|t|+x^{-c})\)</span>, that is <span class="math" data-tex="\(O\bigl(N/(qL)\cdot(1/|t|+x^{-c})\bigr)\)">\(O\bigl(N/(qL)\cdot(1/|t|+x^{-c})\bigr)\)</span> with an implied constant depending on <span class="math" data-tex="\(\delta_1\)">\(\delta_1\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[PD] OpenAI, <em>The Poisson–Dirichlet law for prime predecessors</em>, OpenAI Math Release preprint, 24 September 2026, Section 2 and Appendix (Lemma 9.5 there covers a wider range by a different method). https://github.com/openai/math/tree/main/preprints/The-Poisson-Dirichlet-Law-for-Prime-Predecessors-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

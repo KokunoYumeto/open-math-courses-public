@@ -1,6 +1,6 @@
 # Frobenius elements and determination by traces
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).*
 
 An unramified prime supplies a conjugacy class in a Galois group. Chebotarev's theorem says that these classes test every finite quotient. Continuity then lets them test ℓ-adic representations, and semisimplicity turns equality of traces into an isomorphism. These are three separate steps: the construction of a local subgroup, the density argument, and the linear algebra of characters.
 

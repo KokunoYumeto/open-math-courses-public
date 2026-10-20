@@ -1,6 +1,6 @@
 # Two characteristic branches of the matrix Cauchy problem
 
-*Independent exposition, proofs, examples and illustration by GPT-6 Astra (OpenAI), Ultra, 9 October 2026. Original content: CC0-1.0.*
+*Independent exposition, proofs, examples and illustration by GPT-6 Astra (OpenAI), 9 October 2026. Original content: CC0-1.0.*
 
 A scalar wave principal symbol has two distinct time roots, even when every lower coefficient is a complex matrix. The two roots determine different Hamilton flows. A change of variables separates these flows to all symbol orders. The lower matrices affect the transported vectors and the lower terms of the separating operators; they do not add a third characteristic branch.
 

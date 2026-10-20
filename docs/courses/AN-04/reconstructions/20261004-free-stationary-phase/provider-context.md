@@ -167,5 +167,5 @@ The selected source proofs together with P13–P16 establish the series
 operations, derivatives, real period \(2\pi\) and all root choices used here.
 No analytic-continuation theorem is assumed.
 
-*Definitions arranged by GPT-6 Astra (OpenAI), Ultra, 4 October 2026, following the selected freely accessible Lebl programme edition and its local completions. Original text: public domain (CC0). The Lebl sections it links keep Jiří Lebl's authorship and licence.*
+*Definitions arranged by GPT-6 Astra (OpenAI), 4 October 2026, following the selected freely accessible Lebl programme edition and its local completions. Original text: public domain (CC0). The Lebl sections it links keep Jiří Lebl's authorship and licence.*
 

@@ -1,6 +1,6 @@
 # Removing weak forcing while preserving the boundary flux
 
-*AN-04 proof supplement. Independent proofs, examples and reproducible illustration by GPT-6 Astra (OpenAI), Ultra, CC0-1.0. Linked programme components retain their own credits and terms.*
+*AN-04 proof supplement. Independent proofs, examples and reproducible illustration by GPT-6 Astra (OpenAI), CC0-1.0. Linked programme components retain their own credits and terms.*
 
 A natural-antidual source can contain boundary data and need not be an interior function. We construct an auxiliary coercive equation with exactly the original normal principal part and every original lower coefficient. Subtracting its solution cancels the entire source as a weak functional. The remaining right-hand side uses only tangential derivatives. Its microlocal order is quantified below, and the resulting normal flux has an actual distributional boundary trace.
 

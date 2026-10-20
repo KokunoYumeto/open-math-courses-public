@@ -1,0 +1,306 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A mean value theorem and logarithmic phases at large height</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Marked Type II estimates for prime predecessors)</a><a href="logarithmic-phases-at-polynomial-scales.html">Previous lesson</a><a href="a-zero-free-strip-at-large-height.html">Next lesson</a><a href="src/a-mean-value-theorem-and-logarithmic-phases-at-large-height.md">Editable source</a></nav><main><article><h1 id="a-mean-value-theorem-and-logarithmic-phases-at-large-height">A mean value theorem and logarithmic phases at large height</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The zero-free region of <a href="a-zero-free-strip-at-large-height.html"><em>A zero-free strip at large height</em></a> needs cancellation in <span class="math" data-tex="\(\sum n^{iv}\)">\(\sum n^{iv}\)</span> over progressions of length about <span class="math" data-tex="\(\exp(L/(\log L)^2)\)">\(\exp(L/(\log L)^2)\)</span> at heights <span class="math" data-tex="\(|v|\)">\(|v|\)</span> up to <span class="math" data-tex="\(x^3\)">\(x^3\)</span>. Then <span class="math" data-tex="\(\log|v|/\log(\text{length})\)">\(\log|v|/\log(\text{length})\)</span> is of order <span class="math" data-tex="\((\log L)^2\)">\((\log L)^2\)</span>, and repeated differencing (Lesson 3) gives no useful saving. Vinogradov's method expands the phase into a polynomial of degree <span class="math" data-tex="\(k\approx4\log|v|/\log(\text{length})\)">\(k\approx4\log|v|/\log(\text{length})\)</span> and controls the resulting polynomial sums on average by a mean value theorem. What matters here is that every constant depends on <span class="math" data-tex="\(k\)">\(k\)</span> only through a factor <span class="math" data-tex="\(\exp(Ck^{C})\)">\(\exp(Ck^{C})\)</span>. This lesson proves such a mean value theorem by Linnik's <span class="math" data-tex="\(p\)">\(p\)</span>-adic iteration and deduces the required cancellation.</p>
+<p><strong>Prerequisites.</strong> <a href="primes-divisors-mean-squares-and-rough-numbers.html"><em>Primes, divisors, mean squares and rough numbers</em></a>, Lemma 1.3; <a href="logarithmic-phases-at-polynomial-scales.html"><em>Logarithmic phases at polynomial scales</em></a>, Lemma 1.1; <a href="../harmonic-analysis-on-locally-compact-groups/reader/measure-and-hilbert-space-tools.html"><em>Measure and Hilbert space tools for Haar integration</em></a>, Theorem 3.1 (Hölder's inequality).</p>
+<h2 id="1-a-mean-value-theorem-with-uniform-constants">1. A mean value theorem with uniform constants</h2>
+<p>For integers <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>, <span class="math" data-tex="\(s\ge1\)">\(s\ge1\)</span> and real <span class="math" data-tex="\(M\ge1\)">\(M\ge1\)</span>, let <span class="math" data-tex="\(J_{s,k}(M)\)">\(J_{s,k}(M)\)</span> be the number of pairs of <span class="math" data-tex="\(s\)">\(s\)</span>-tuples <span class="math" data-tex="\(\mathbf u,\mathbf v\in\{1,\dots,\lfloor M\rfloor\}^s\)">\(\mathbf u,\mathbf v\in\{1,\dots,\lfloor M\rfloor\}^s\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{i=1}^su_i^j=\sum_{i=1}^sv_i^j\qquad(1\le j\le k),
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{i=1}^su_i^j=\sum_{i=1}^sv_i^j\qquad(1\le j\le k),
+\end{gathered}
+\]</span>
+<p>and put <span class="math" data-tex="\(\kappa=k(k+1)/2\)">\(\kappa=k(k+1)/2\)</span>. For <span class="math" data-tex="\(\boldsymbol\alpha\in\mathbb R^k\)">\(\boldsymbol\alpha\in\mathbb R^k\)</span> let</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+f(\boldsymbol\alpha)=\sum_{n\le M}e\Bigl(\sum_{j=1}^k\alpha_jn^j\Bigr).
+\end{gathered}
+\]">\[
+\begin{gathered}
+f(\boldsymbol\alpha)=\sum_{n\le M}e\Bigl(\sum_{j=1}^k\alpha_jn^j\Bigr).
+\end{gathered}
+\]</span>
+<p><strong>Lemma 1.1 (basic properties).</strong></p>
+<ol>
+<li><span class="math" data-tex="\(J_{s,k}(M)=\int_{[0,1]^k}|f(\boldsymbol\alpha)|^{2s}\,d\boldsymbol\alpha\)">\(J_{s,k}(M)=\int_{[0,1]^k}|f(\boldsymbol\alpha)|^{2s}\,d\boldsymbol\alpha\)</span>.</li>
+<li>The system <span class="math" data-tex="\(\sum_iu_i^j=\sum_iv_i^j\)">\(\sum_iu_i^j=\sum_iv_i^j\)</span> <span class="math" data-tex="\((j\le k)\)">\((j\le k)\)</span> is invariant under the translation of all variables by one integer, so the number of its solutions with all variables in any set of <span class="math" data-tex="\(\lfloor M\rfloor\)">\(\lfloor M\rfloor\)</span> consecutive integers is <span class="math" data-tex="\(J_{s,k}(M)\)">\(J_{s,k}(M)\)</span>.</li>
+<li>For every integer vector <span class="math" data-tex="\(\mathbf c\)">\(\mathbf c\)</span> and every set <span class="math" data-tex="\(I\)">\(I\)</span> of <span class="math" data-tex="\(\lfloor M\rfloor\)">\(\lfloor M\rfloor\)</span> consecutive integers, the number of <span class="math" data-tex="\(\mathbf u,\mathbf v\in I^s\)">\(\mathbf u,\mathbf v\in I^s\)</span> with <span class="math" data-tex="\(\sum_i(u_i^j-v_i^j)=c_j\)">\(\sum_i(u_i^j-v_i^j)=c_j\)</span> for all <span class="math" data-tex="\(j\le k\)">\(j\le k\)</span> is at most <span class="math" data-tex="\(J_{s,k}(M)\)">\(J_{s,k}(M)\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> 1. Expand <span class="math" data-tex="\(|f|^{2s}=f^s\overline f^{\,s}\)">\(|f|^{2s}=f^s\overline f^{\,s}\)</span> and use <span class="math" data-tex="\(\int_0^1e(m\alpha)\,d\alpha=\mathbf 1_{m=0}\)">\(\int_0^1e(m\alpha)\,d\alpha=\mathbf 1_{m=0}\)</span> for integers <span class="math" data-tex="\(m\)">\(m\)</span>. 2. By the binomial theorem, <span class="math" data-tex="\(\sum_i(u_i+b)^j-\sum_i(v_i+b)^j\)">\(\sum_i(u_i+b)^j-\sum_i(v_i+b)^j\)</span> is a combination of the differences <span class="math" data-tex="\(\sum_iu_i^l-\sum_iv_i^l\)">\(\sum_iu_i^l-\sum_iv_i^l\)</span>, <span class="math" data-tex="\(l\le j\)">\(l\le j\)</span>, because both sides have <span class="math" data-tex="\(s\)">\(s\)</span> terms. 3. With <span class="math" data-tex="\(g\)">\(g\)</span> the exponential sum over <span class="math" data-tex="\(I\)">\(I\)</span>, the count is <span class="math" data-tex="\(\int|g|^{2s}e(-\boldsymbol\alpha\cdot\mathbf c)\,d\boldsymbol\alpha\le\int|g|^{2s}\)">\(\int|g|^{2s}e(-\boldsymbol\alpha\cdot\mathbf c)\,d\boldsymbol\alpha\le\int|g|^{2s}\)</span>, which is <span class="math" data-tex="\(J_{s,k}(M)\)">\(J_{s,k}(M)\)</span> by parts 1 and 2. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.2 (power sums modulo prime powers).</strong> Let <span class="math" data-tex="\(r&gt;k\)">\(r&gt;k\)</span> be prime and <span class="math" data-tex="\(h\ge1\)">\(h\ge1\)</span>. The <span class="math" data-tex="\(k\)">\(k\)</span>-tuples <span class="math" data-tex="\(\mathbf z\in(\mathbb Z/r^h\mathbb Z)^k\)">\(\mathbf z\in(\mathbb Z/r^h\mathbb Z)^k\)</span> whose entries are pairwise distinct modulo <span class="math" data-tex="\(r\)">\(r\)</span> and whose power sums <span class="math" data-tex="\(\sum_iz_i^j\)">\(\sum_iz_i^j\)</span> <span class="math" data-tex="\((1\le j\le k)\)">\((1\le j\le k)\)</span> take prescribed values modulo <span class="math" data-tex="\(r^h\)">\(r^h\)</span> are at most <span class="math" data-tex="\(k!\)">\(k!\)</span> in number; any two of them are permutations of each other.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(e_j\)">\(e_j\)</span> be the elementary symmetric functions of <span class="math" data-tex="\(\mathbf z\)">\(\mathbf z\)</span> and <span class="math" data-tex="\(p_j=\sum_iz_i^j\)">\(p_j=\sum_iz_i^j\)</span>. Newton's identities <span class="math" data-tex="\(je_j=\sum_{l=1}^j(-1)^{l-1}e_{j-l}p_l\)">\(je_j=\sum_{l=1}^j(-1)^{l-1}e_{j-l}p_l\)</span>, with <span class="math" data-tex="\(e_0=1\)">\(e_0=1\)</span>, determine <span class="math" data-tex="\(e_1,\dots,e_k\)">\(e_1,\dots,e_k\)</span> modulo <span class="math" data-tex="\(r^h\)">\(r^h\)</span> from the <span class="math" data-tex="\(p_j\)">\(p_j\)</span>, since <span class="math" data-tex="\(j\le k&lt;r\)">\(j\le k&lt;r\)</span> is invertible. So all such tuples share the polynomial <span class="math" data-tex="\(F(X)=\prod_i(X-z_i)\)">\(F(X)=\prod_i(X-z_i)\)</span> modulo <span class="math" data-tex="\(r^h\)">\(r^h\)</span>. Let <span class="math" data-tex="\(\mathbf z,\mathbf z&#x27;\)">\(\mathbf z,\mathbf z&#x27;\)</span> be two of them. Modulo <span class="math" data-tex="\(r\)">\(r\)</span>, <span class="math" data-tex="\(F\)">\(F\)</span> splits over the field <span class="math" data-tex="\(\mathbb F_r\)">\(\mathbb F_r\)</span> with the roots <span class="math" data-tex="\(z_1,\dots,z_k\)">\(z_1,\dots,z_k\)</span>, so each <span class="math" data-tex="\(z_i&#x27;\)">\(z_i&#x27;\)</span> is congruent modulo <span class="math" data-tex="\(r\)">\(r\)</span> to exactly one <span class="math" data-tex="\(z_{\sigma(i)}\)">\(z_{\sigma(i)}\)</span>, and <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> is a permutation because the <span class="math" data-tex="\(z_i&#x27;\)">\(z_i&#x27;\)</span> are distinct modulo <span class="math" data-tex="\(r\)">\(r\)</span>. In <span class="math" data-tex="\(0\equiv F(z_i&#x27;)=\prod_l(z_i&#x27;-z_l)\pmod{r^h}\)">\(0\equiv F(z_i&#x27;)=\prod_l(z_i&#x27;-z_l)\pmod{r^h}\)</span>, every factor with <span class="math" data-tex="\(l\ne\sigma(i)\)">\(l\ne\sigma(i)\)</span> is a unit modulo <span class="math" data-tex="\(r\)">\(r\)</span>, so <span class="math" data-tex="\(z_i&#x27;\equiv z_{\sigma(i)}\pmod{r^h}\)">\(z_i&#x27;\equiv z_{\sigma(i)}\pmod{r^h}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.3 (the congruence step).</strong> Let <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span>, <span class="math" data-tex="\(s\ge1\)">\(s\ge1\)</span>, let <span class="math" data-tex="\(r&gt;k\)">\(r&gt;k\)</span> be a prime with <span class="math" data-tex="\(r^k\ge M\)">\(r^k\ge M\)</span> and <span class="math" data-tex="\(r\le M\)">\(r\le M\)</span>, and let <span class="math" data-tex="\(N_r\)">\(N_r\)</span> be the number of solutions counted by <span class="math" data-tex="\(J_{s+k,k}(M)\)">\(J_{s+k,k}(M)\)</span> in which the first <span class="math" data-tex="\(k\)">\(k\)</span> coordinates of <span class="math" data-tex="\(\mathbf u\)">\(\mathbf u\)</span> are pairwise distinct modulo <span class="math" data-tex="\(r\)">\(r\)</span>, and likewise for <span class="math" data-tex="\(\mathbf v\)">\(\mathbf v\)</span>. Then</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+N_r\le k!\,r^{2s+\kappa-k}M^k\,J_{s,k}(\lceil M/r\rceil).\quad(1.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+N_r\le k!\,r^{2s+\kappa-k}M^k\,J_{s,k}(\lceil M/r\rceil).\quad(1.1)
+\end{gathered}
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(F_r(\boldsymbol\alpha)\)">\(F_r(\boldsymbol\alpha)\)</span> be the sum of <span class="math" data-tex="\(e(\sum_j\alpha_j\sum_{i\le k}z_i^j)\)">\(e(\sum_j\alpha_j\sum_{i\le k}z_i^j)\)</span> over <span class="math" data-tex="\(\mathbf z\in\{1,\dots,\lfloor M\rfloor\}^k\)">\(\mathbf z\in\{1,\dots,\lfloor M\rfloor\}^k\)</span> with entries distinct modulo <span class="math" data-tex="\(r\)">\(r\)</span>, and <span class="math" data-tex="\(f_a\)">\(f_a\)</span> the part of <span class="math" data-tex="\(f\)">\(f\)</span> with <span class="math" data-tex="\(n\equiv a\ (r)\)">\(n\equiv a\ (r)\)</span>. Then <span class="math" data-tex="\(N_r=\int|F_r|^2|f|^{2s}\)">\(N_r=\int|F_r|^2|f|^{2s}\)</span>. Since <span class="math" data-tex="\(f=\sum_{a\bmod r}f_a\)">\(f=\sum_{a\bmod r}f_a\)</span>, Hölder's inequality for the counting measure on the <span class="math" data-tex="\(r\)">\(r\)</span> residues (Theorem 3.1 of <a href="../harmonic-analysis-on-locally-compact-groups/reader/measure-and-hilbert-space-tools.html"><em>Measure and Hilbert space tools for Haar integration</em></a>) gives <span class="math" data-tex="\(|f|^{2s}\le r^{2s-1}\sum_a|f_a|^{2s}\)">\(|f|^{2s}\le r^{2s-1}\sum_a|f_a|^{2s}\)</span>, so <span class="math" data-tex="\(N_r\le r^{2s}\max_a\int|F_r|^2|f_a|^{2s}\)">\(N_r\le r^{2s}\max_a\int|F_r|^2|f_a|^{2s}\)</span>.</p>
+<p>Fix <span class="math" data-tex="\(a\)">\(a\)</span>. The integral counts solutions in which the last <span class="math" data-tex="\(s\)">\(s\)</span> coordinates on each side are <span class="math" data-tex="\(\equiv a\ (r)\)">\(\equiv a\ (r)\)</span>. Translate every variable by <span class="math" data-tex="\(-a\)">\(-a\)</span> (Lemma 1.1(2)). The last coordinates become <span class="math" data-tex="\(r\tilde u_i\)">\(r\tilde u_i\)</span>, <span class="math" data-tex="\(r\tilde v_i\)">\(r\tilde v_i\)</span>, so the first parts <span class="math" data-tex="\(\mathbf z=(u_i-a)_{i\le k}\)">\(\mathbf z=(u_i-a)_{i\le k}\)</span> and <span class="math" data-tex="\(\mathbf z&#x27;=(v_i-a)_{i\le k}\)">\(\mathbf z&#x27;=(v_i-a)_{i\le k}\)</span> satisfy</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{i\le k}z_i^j\equiv\sum_{i\le k}{z&#x27;_i}^{\,j}\pmod{r^j}\\
+(1\le j\le k).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{i\le k}z_i^j\equiv\sum_{i\le k}{z&#x27;_i}^{\,j}\pmod{r^j}\\
+(1\le j\le k).
+\end{gathered}
+\]</span>
+<p>There are at most <span class="math" data-tex="\(M^k\)">\(M^k\)</span> choices of <span class="math" data-tex="\(\mathbf z\)">\(\mathbf z\)</span>. Given <span class="math" data-tex="\(\mathbf z\)">\(\mathbf z\)</span>, the power sums of <span class="math" data-tex="\(\mathbf z&#x27;\)">\(\mathbf z&#x27;\)</span> are prescribed modulo <span class="math" data-tex="\(r^j\)">\(r^j\)</span>; lifting them to residues modulo <span class="math" data-tex="\(r^k\)">\(r^k\)</span> can be done in <span class="math" data-tex="\(\prod_{j\le k}r^{k-j}=r^{\kappa-k}\)">\(\prod_{j\le k}r^{k-j}=r^{\kappa-k}\)</span> ways, and for each lift Lemma 1.2 leaves at most <span class="math" data-tex="\(k!\)">\(k!\)</span> residue vectors <span class="math" data-tex="\(\mathbf z&#x27;\bmod r^k\)">\(\mathbf z&#x27;\bmod r^k\)</span>. Since <span class="math" data-tex="\(M\le r^k\)">\(M\le r^k\)</span>, each residue class modulo <span class="math" data-tex="\(r^k\)">\(r^k\)</span> has at most one representative among the <span class="math" data-tex="\(\lfloor M\rfloor\)">\(\lfloor M\rfloor\)</span> admissible values. Given both first parts, the variables <span class="math" data-tex="\(\tilde u_i,\tilde v_i\)">\(\tilde u_i,\tilde v_i\)</span> run over a set of at most <span class="math" data-tex="\(\lceil M/r\rceil\)">\(\lceil M/r\rceil\)</span> consecutive integers and satisfy <span class="math" data-tex="\(\sum_i(\tilde u_i^j-\tilde v_i^j)=c_j\)">\(\sum_i(\tilde u_i^j-\tilde v_i^j)=c_j\)</span> for integers <span class="math" data-tex="\(c_j\)">\(c_j\)</span> determined by <span class="math" data-tex="\(\mathbf z,\mathbf z&#x27;\)">\(\mathbf z,\mathbf z&#x27;\)</span>; Lemma 1.1(3) bounds their number by <span class="math" data-tex="\(J_{s,k}(\lceil M/r\rceil)\)">\(J_{s,k}(\lceil M/r\rceil)\)</span>. Multiplying the three counts proves (1.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 1.4 (mean value with uniform constants).</strong> There are absolute constants <span class="math" data-tex="\(C_1,C_2\)">\(C_1,C_2\)</span> such that for every <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> some integer <span class="math" data-tex="\(s\)">\(s\)</span> with <span class="math" data-tex="\(k\le s\le C_1k^3\)">\(k\le s\le C_1k^3\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+J_{s,k}(M)\le\exp(C_1k^{C_2})\\
+\times M^{2s-\kappa+1/100}\quad(M\ge1).\quad(1.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+J_{s,k}(M)\le\exp(C_1k^{C_2})\\
+\times M^{2s-\kappa+1/100}\quad(M\ge1).\quad(1.2)
+\end{gathered}
+\]</span>
+<p><strong>Proof.</strong> We prove by induction along <span class="math" data-tex="\(s=k,2k,3k,\dots\)">\(s=k,2k,3k,\dots\)</span> bounds</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+J_{s,k}(M)\le C_sM^{E_s}\quad(M\ge1),\\
+E_s=2s-\kappa+\epsilon_s,\\
+\epsilon_{s+k}=\Bigl(1-\frac1k\Bigr)\epsilon_s,\quad(1.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+J_{s,k}(M)\le C_sM^{E_s}\quad(M\ge1),\\
+E_s=2s-\kappa+\epsilon_s,\\
+\epsilon_{s+k}=\Bigl(1-\frac1k\Bigr)\epsilon_s,\quad(1.3)
+\end{gathered}
+\]</span>
+<p>starting from <span class="math" data-tex="\(C_k=1\)">\(C_k=1\)</span>, <span class="math" data-tex="\(\epsilon_k=\kappa\)">\(\epsilon_k=\kappa\)</span>, which is the trivial bound <span class="math" data-tex="\(J_{k,k}(M)\le M^{2k}\)">\(J_{k,k}(M)\le M^{2k}\)</span>. Note that <span class="math" data-tex="\(E_k=2k\)">\(E_k=2k\)</span> and <span class="math" data-tex="\(E_{s+k}-E_s=2k-\epsilon_s/k\)">\(E_{s+k}-E_s=2k-\epsilon_s/k\)</span><span class="math" data-tex="\(\ge2k-(k+1)/2&gt;0\)">\(\ge2k-(k+1)/2&gt;0\)</span>, so <span class="math" data-tex="\(E_s\ge2k\)">\(E_s\ge2k\)</span> throughout.</p>
+<p>By Lemma 1.3 of Lesson 2 there is an absolute <span class="math" data-tex="\(A_1\)">\(A_1\)</span> such that for every <span class="math" data-tex="\(k\ge2\)">\(k\ge2\)</span> and every <span class="math" data-tex="\(y\ge A_1k^6\)">\(y\ge A_1k^6\)</span> the interval <span class="math" data-tex="\([y,2y]\)">\([y,2y]\)</span> contains at least <span class="math" data-tex="\(k^3\)">\(k^3\)</span> primes, all larger than <span class="math" data-tex="\(k\)">\(k\)</span>. Fix <span class="math" data-tex="\(s\)">\(s\)</span> and let <span class="math" data-tex="\(M\ge1\)">\(M\ge1\)</span>.</p>
+<p><em>Small <span class="math" data-tex="\(M\)">\(M\)</span>.</em> If <span class="math" data-tex="\(M^{1/k}&lt;A_1k^6\)">\(M^{1/k}&lt;A_1k^6\)</span>, the trivial bound <span class="math" data-tex="\(J_{s+k,k}(M)\le M^{2(s+k)}=M^{E_{s+k}}M^{\kappa-\epsilon_{s+k}}\)">\(J_{s+k,k}(M)\le M^{2(s+k)}=M^{E_{s+k}}M^{\kappa-\epsilon_{s+k}}\)</span> gives (1.3) with a constant at most <span class="math" data-tex="\(M^\kappa\le(A_1k^6)^{k\kappa}=\exp(O(k^3\log2k))\)">\(M^\kappa\le(A_1k^6)^{k\kappa}=\exp(O(k^3\log2k))\)</span>.</p>
+<p><em>Large <span class="math" data-tex="\(M\)">\(M\)</span>.</em> Let <span class="math" data-tex="\(M^{1/k}\ge A_1k^6\)">\(M^{1/k}\ge A_1k^6\)</span> and choose primes <span class="math" data-tex="\(r_1,\dots,r_{k^3}\in[M^{1/k},2M^{1/k}]\)">\(r_1,\dots,r_{k^3}\in[M^{1/k},2M^{1/k}]\)</span>, all larger than <span class="math" data-tex="\(k\)">\(k\)</span>; then <span class="math" data-tex="\(r^k\ge M\)">\(r^k\ge M\)</span> and <span class="math" data-tex="\(r\le2M^{1/k}\le M\)">\(r\le2M^{1/k}\le M\)</span>. Call an <span class="math" data-tex="\((s+k)\)">\((s+k)\)</span>-tuple <em>degenerate</em> if it has fewer than <span class="math" data-tex="\(k\)">\(k\)</span> distinct coordinates. Such a tuple is described by a list of <span class="math" data-tex="\(k-1\)">\(k-1\)</span> values and an assignment of each coordinate to one of them, so there are at most <span class="math" data-tex="\(M^{k-1}k^{s+k}\)">\(M^{k-1}k^{s+k}\)</span> of them. The solutions with a degenerate <span class="math" data-tex="\(\mathbf u\)">\(\mathbf u\)</span> number <span class="math" data-tex="\(\int G\overline f^{\,s+k}\)">\(\int G\overline f^{\,s+k}\)</span>, where <span class="math" data-tex="\(G\)">\(G\)</span> is the exponential sum over degenerate tuples, and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Bigl|\int G\overline f^{\,s+k}\Bigr|\le M^{k-1}k^{s+k}\int|f|^{s+k}\\
+\le M^{k-1}k^{s+k}J_{s+k,k}(M)^{1/2}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Bigl|\int G\overline f^{\,s+k}\Bigr|\le M^{k-1}k^{s+k}\int|f|^{s+k}\\
+\le M^{k-1}k^{s+k}J_{s+k,k}(M)^{1/2}.
+\end{gathered}
+\]</span>
+<p>The same holds for degenerate <span class="math" data-tex="\(\mathbf v\)">\(\mathbf v\)</span>. In a solution with both sides nondegenerate, choose <span class="math" data-tex="\(k\)">\(k\)</span> positions with distinct entries on each side and permute them to the front; this shows that such solutions number at most <span class="math" data-tex="\((s+k)^{2k}\)">\((s+k)^{2k}\)</span> times those whose first <span class="math" data-tex="\(k\)">\(k\)</span> entries are distinct on both sides. The product of the two Vandermonde determinants of these entries is a nonzero integer of modulus less than <span class="math" data-tex="\(M^{k(k-1)}\)">\(M^{k(k-1)}\)</span>, so at most <span class="math" data-tex="\(k^2(k-1)&lt;k^3\)">\(k^2(k-1)&lt;k^3\)</span> of the primes <span class="math" data-tex="\(r_l\ge M^{1/k}\)">\(r_l\ge M^{1/k}\)</span> divide it, and some <span class="math" data-tex="\(r_l\)">\(r_l\)</span> separates both sets of entries. By Lemma 1.3,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+J_{s+k,k}(M)\\
+\le2M^{k-1}k^{s+k}J_{s+k,k}(M)^{1/2}\\
++k^3(s+k)^{2k}k!\max_lr_l^{2s+\kappa-k}\\
+\times M^kJ_{s,k}(\lceil M/r_l\rceil).
+\end{gathered}
+\]">\[
+\begin{gathered}
+J_{s+k,k}(M)\\
+\le2M^{k-1}k^{s+k}J_{s+k,k}(M)^{1/2}\\
++k^3(s+k)^{2k}k!\max_lr_l^{2s+\kappa-k}\\
+\times M^kJ_{s,k}(\lceil M/r_l\rceil).
+\end{gathered}
+\]</span>
+<p>Insert (1.3) for <span class="math" data-tex="\(s\)">\(s\)</span>, with <span class="math" data-tex="\(\lceil M/r\rceil\le2M/r\)">\(\lceil M/r\rceil\le2M/r\)</span>. Since <span class="math" data-tex="\(2s+\kappa-k-E_s=k^2-\epsilon_s\ge0\)">\(2s+\kappa-k-E_s=k^2-\epsilon_s\ge0\)</span> and <span class="math" data-tex="\(r\le2M^{1/k}\)">\(r\le2M^{1/k}\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;r^{2s+\kappa-k}M^k\Bigl(\frac{2M}r\Bigr)^{E_s}\\
+&amp;\quad\le2^{E_s+k^2}M^{k+E_s+k-\epsilon_s/k}\\
+&amp;\quad=2^{E_s+k^2}M^{E_{s+k}}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;r^{2s+\kappa-k}M^k\Bigl(\frac{2M}r\Bigr)^{E_s}\\
+&amp;\quad\le2^{E_s+k^2}M^{k+E_s+k-\epsilon_s/k}\\
+&amp;\quad=2^{E_s+k^2}M^{E_{s+k}}.
+\end{aligned}
+\]</span>
+<p>An inequality <span class="math" data-tex="\(J\le a\sqrt J+b\)">\(J\le a\sqrt J+b\)</span> implies <span class="math" data-tex="\(J\le a^2+2b\)">\(J\le a^2+2b\)</span>. Here <span class="math" data-tex="\(a^2=4k^{2(s+k)}M^{2k-2}\le4k^{2(s+k)}M^{E_{s+k}}\)">\(a^2=4k^{2(s+k)}M^{2k-2}\le4k^{2(s+k)}M^{E_{s+k}}\)</span>, because <span class="math" data-tex="\(E_{s+k}\ge2k\)">\(E_{s+k}\ge2k\)</span>. Thus (1.3) holds for <span class="math" data-tex="\(s+k\)">\(s+k\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\log C_{s+k}\le\log(1+C_s)\\
++O\bigl((s+k^3)\log2k\bigr),
+\end{gathered}
+\]">\[
+\begin{gathered}
+\log C_{s+k}\le\log(1+C_s)\\
++O\bigl((s+k^3)\log2k\bigr),
+\end{gathered}
+\]</span>
+<p>which also covers the small-<span class="math" data-tex="\(M\)">\(M\)</span> constant; here <span class="math" data-tex="\(E_s\le2s+\kappa\)">\(E_s\le2s+\kappa\)</span> was used for the factor <span class="math" data-tex="\(2^{E_s}\)">\(2^{E_s}\)</span>.</p>
+<p>After <span class="math" data-tex="\(n\)">\(n\)</span> steps, <span class="math" data-tex="\(\epsilon=\kappa(1-1/k)^n\le\kappa e^{-n/k}\)">\(\epsilon=\kappa(1-1/k)^n\le\kappa e^{-n/k}\)</span>, which is at most <span class="math" data-tex="\(1/100\)">\(1/100\)</span> once <span class="math" data-tex="\(n=\lceil k\log(100\kappa)\rceil\)">\(n=\lceil k\log(100\kappa)\rceil\)</span>. Then <span class="math" data-tex="\(s=k+nk=O(k^2\log2k)\le C_1k^3\)">\(s=k+nk=O(k^2\log2k)\le C_1k^3\)</span>, and the constants satisfy <span class="math" data-tex="\(\log C_s\)">\(\log C_s\)</span><span class="math" data-tex="\(=O(n(k^2\log2k+k^3)\log2k)\)">\(=O(n(k^2\log2k+k^3)\log2k)\)</span><span class="math" data-tex="\(=O(k^5)\)">\(=O(k^5)\)</span>. Since <span class="math" data-tex="\(M\ge1\)">\(M\ge1\)</span> and <span class="math" data-tex="\(E_s\le2s-\kappa+1/100\)">\(E_s\le2s-\kappa+1/100\)</span>, this proves (1.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The exponent <span class="math" data-tex="\(2s-\kappa\)">\(2s-\kappa\)</span> cannot be lowered: the vector of power sums takes at most <span class="math" data-tex="\(\prod_j(sM^j+1)\)">\(\prod_j(sM^j+1)\)</span> values, and Cauchy's inequality gives <span class="math" data-tex="\(J_{s,k}(M)\ge\lfloor M\rfloor^{2s}/\prod_j(sM^j+1)\)">\(J_{s,k}(M)\ge\lfloor M\rfloor^{2s}/\prod_j(sM^j+1)\)</span> (Exercise 4.2). Theorem 1.4 loses only <span class="math" data-tex="\(1/100\)">\(1/100\)</span> in the exponent, at a cost <span class="math" data-tex="\(\exp(C_1k^{C_2})\)">\(\exp(C_1k^{C_2})\)</span> that is polynomial in <span class="math" data-tex="\(k\)">\(k\)</span> after taking logarithms. Much sharper results are known, but this weak form with explicit uniformity is all that is needed below.</p>
+<h2 id="2-logarithmic-phases-on-short-progressions">2. Logarithmic phases on short progressions</h2>
+<p>Put <span class="math" data-tex="\(T=\log L=\log\log x\)">\(T=\log L=\log\log x\)</span>.</p>
+<p><strong>Theorem 2.1 (logarithmic phases at large height).</strong> Fix <span class="math" data-tex="\(C_0&gt;0\)">\(C_0&gt;0\)</span>. There is an absolute constant <span class="math" data-tex="\(C_3\)">\(C_3\)</span> such that, for <span class="math" data-tex="\(x\)">\(x\)</span> large in terms of <span class="math" data-tex="\(C_0\)">\(C_0\)</span>, uniformly for</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\exp(L/T^2)\le N\le2x^5,\qquad q\le L^{C_0},\\
+\exp\bigl(L/(2T^2)\bigr)\le|v|\le4x^3,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\exp(L/T^2)\le N\le2x^5,\qquad q\le L^{C_0},\\
+\exp\bigl(L/(2T^2)\bigr)\le|v|\le4x^3,
+\end{gathered}
+\]</span>
+<p>every residue <span class="math" data-tex="\(a\)">\(a\)</span> modulo <span class="math" data-tex="\(q\)">\(q\)</span> and every interval <span class="math" data-tex="\(I\subseteq[N,2N]\)">\(I\subseteq[N,2N]\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Bigl|\sum_{\substack{n\in I\\ n\equiv a\ (q)}}n^{iv}\Bigr|\le\frac Nq\exp\Bigl(-\frac L{T^{C_3}}\Bigr).\quad(2.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Bigl|\sum_{\substack{n\in I\\ n\equiv a\ (q)}}n^{iv}\Bigr|\le\frac Nq\exp\Bigl(-\frac L{T^{C_3}}\Bigr).\quad(2.1)
+\end{gathered}
+\]</span>
+<p>One can take <span class="math" data-tex="\(C_3=10\)">\(C_3=10\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(a_0\in[1,q]\)">\(a_0\in[1,q]\)</span> with <span class="math" data-tex="\(a_0\equiv a\ (q)\)">\(a_0\equiv a\ (q)\)</span>, and write <span class="math" data-tex="\(n=qb+a_0\)">\(n=qb+a_0\)</span>, <span class="math" data-tex="\(u=a_0/q\in(0,1]\)">\(u=a_0/q\in(0,1]\)</span> and <span class="math" data-tex="\(H=N/q\)">\(H=N/q\)</span>. Then <span class="math" data-tex="\(n^{iv}=q^{iv}(b+u)^{iv}\)">\(n^{iv}=q^{iv}(b+u)^{iv}\)</span>, and <span class="math" data-tex="\(b\)">\(b\)</span> runs over the integers of an interval <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> on which <span class="math" data-tex="\(b+u\in[H,2H]\)">\(b+u\in[H,2H]\)</span>. Let <span class="math" data-tex="\(S=\sum_{b\in\mathcal I}e(F(b))\)">\(S=\sum_{b\in\mathcal I}e(F(b))\)</span> with <span class="math" data-tex="\(F(y)=(v/2\pi)\log(y+u)\)">\(F(y)=(v/2\pi)\log(y+u)\)</span>, and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+y_*=\frac{\log|v|}{\log H}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+y_*=\frac{\log|v|}{\log H}.
+\end{gathered}
+\]</span>
+<p>For large <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(\log H\ge L/T^2-C_0T\ge L/(2T^2)\)">\(\log H\ge L/T^2-C_0T\ge L/(2T^2)\)</span> and <span class="math" data-tex="\(\log|v|\le3L+2\)">\(\log|v|\le3L+2\)</span>, so <span class="math" data-tex="\(y_*\le7T^2\)">\(y_*\le7T^2\)</span>.</p>
+<p><em>The case <span class="math" data-tex="\(y_*&lt;4/5\)">\(y_*&lt;4/5\)</span>.</em> Then <span class="math" data-tex="\(|v|&lt;H^{4/5}&lt;\pi H\)">\(|v|&lt;H^{4/5}&lt;\pi H\)</span>, and the proof of Lemma 1.1 of <a href="logarithmic-phases-at-polynomial-scales.html"><em>Logarithmic phases at polynomial scales</em></a>, which uses only <span class="math" data-tex="\(b+u\in[H,2H]\)">\(b+u\in[H,2H]\)</span>, gives <span class="math" data-tex="\(|S|\ll H/|v|\le H\exp(-L/(2T^2))\)">\(|S|\ll H/|v|\le H\exp(-L/(2T^2))\)</span>.</p>
+<p><em>The case <span class="math" data-tex="\(y_*\ge4/5\)">\(y_*\ge4/5\)</span>.</em> Put</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M=\lfloor H^{3/4}\rfloor,\qquad k=\lceil4y_*+8\rceil,
+\end{gathered}
+\]">\[
+\begin{gathered}
+M=\lfloor H^{3/4}\rfloor,\qquad k=\lceil4y_*+8\rceil,
+\end{gathered}
+\]</span>
+<p>so that <span class="math" data-tex="\(12\le k\le28T^2+9\)">\(12\le k\le28T^2+9\)</span>. Shifting the summation by <span class="math" data-tex="\(h\in[1,M]\)">\(h\in[1,M]\)</span> changes <span class="math" data-tex="\(S\)">\(S\)</span> by at most <span class="math" data-tex="\(2h\)">\(2h\)</span> terms, so</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Bigl|S-\frac1M\sum_{h=1}^M\sum_{b\in\mathcal I}e\bigl(F(b+h)\bigr)\Bigr|\le2M.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Bigl|S-\frac1M\sum_{h=1}^M\sum_{b\in\mathcal I}e\bigl(F(b+h)\bigr)\Bigr|\le2M.
+\end{gathered}
+\]</span>
+<p>Taylor's formula with <span class="math" data-tex="\(\alpha_j(b)=F^{(j)}(b)/j!\)">\(\alpha_j(b)=F^{(j)}(b)/j!\)</span><span class="math" data-tex="\(=(-1)^{j-1}v/(2\pi j(b+u)^j)\)">\(=(-1)^{j-1}v/(2\pi j(b+u)^j)\)</span> gives <span class="math" data-tex="\(F(b+h)=F(b)+\sum_{j\le k}\alpha_j(b)h^j+R\)">\(F(b+h)=F(b)+\sum_{j\le k}\alpha_j(b)h^j+R\)</span>, where</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|R|\le\frac{|v|}{2\pi}\Bigl(\frac MH\Bigr)^{k+1}\\
+\le H^{y_*-(k+1)/4}\le H^{-9/4},
+\end{gathered}
+\]">\[
+\begin{gathered}
+|R|\le\frac{|v|}{2\pi}\Bigl(\frac MH\Bigr)^{k+1}\\
+\le H^{y_*-(k+1)/4}\le H^{-9/4},
+\end{gathered}
+\]</span>
+<p>because <span class="math" data-tex="\(M\le H^{3/4}\)">\(M\le H^{3/4}\)</span> and <span class="math" data-tex="\((k+1)/4\ge y_*+9/4\)">\((k+1)/4\ge y_*+9/4\)</span>. With <span class="math" data-tex="\(S_k(\boldsymbol\alpha)=\sum_{h\le M}e(\sum_{j\le k}\alpha_jh^j)\)">\(S_k(\boldsymbol\alpha)=\sum_{h\le M}e(\sum_{j\le k}\alpha_jh^j)\)</span> this yields</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|S|\le\frac1M\sum_{b\in\mathcal I}\bigl|S_k(\boldsymbol\alpha(b))\bigr|\\
++2M+1.\quad(2.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+|S|\le\frac1M\sum_{b\in\mathcal I}\bigl|S_k(\boldsymbol\alpha(b))\bigr|\\
++2M+1.\quad(2.2)
+\end{gathered}
+\]</span>
+<p><em>Occupancy.</em> Divide <span class="math" data-tex="\([0,1)^k\)">\([0,1)^k\)</span> into the <span class="math" data-tex="\(M^\kappa\)">\(M^\kappa\)</span> boxes that are products of intervals of length <span class="math" data-tex="\(M^{-j}\)">\(M^{-j}\)</span> in the <span class="math" data-tex="\(j\)">\(j\)</span>th coordinate. We claim that each box contains <span class="math" data-tex="\(\boldsymbol\alpha(b)\bmod1\)">\(\boldsymbol\alpha(b)\bmod1\)</span> for at most <span class="math" data-tex="\(e^{O(k)}H^{4/5}\)">\(e^{O(k)}H^{4/5}\)</span> values of <span class="math" data-tex="\(b\)">\(b\)</span>. Let <span class="math" data-tex="\(j_0=\lceil y_*+3/20\rceil\)">\(j_0=\lceil y_*+3/20\rceil\)</span>, so <span class="math" data-tex="\(1\le j_0\le y_*+23/20\le k\)">\(1\le j_0\le y_*+23/20\le k\)</span>. The coordinate <span class="math" data-tex="\(\alpha_{j_0}(b)\)">\(\alpha_{j_0}(b)\)</span> has modulus at most <span class="math" data-tex="\(H^{y_*-j_0}\le H^{-3/20}&lt;\frac12\)">\(H^{y_*-j_0}\le H^{-3/20}&lt;\frac12\)</span> and is monotone in <span class="math" data-tex="\(b\)">\(b\)</span>, with</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Bigl|\frac{d\alpha_{j_0}}{db}\Bigr|=\frac{|v|}{2\pi(b+u)^{j_0+1}}\ge\frac{H^{y_*-j_0-1}}{2\pi\,2^{j_0+1}} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Bigl|\frac{d\alpha_{j_0}}{db}\Bigr|=\frac{|v|}{2\pi(b+u)^{j_0+1}}\ge\frac{H^{y_*-j_0-1}}{2\pi\,2^{j_0+1}} .
+\end{gathered}
+\]</span>
+<p>An interval of length <span class="math" data-tex="\(M^{-j_0}\le2^{j_0}H^{-3j_0/4}\)">\(M^{-j_0}\le2^{j_0}H^{-3j_0/4}\)</span> on the circle meets <span class="math" data-tex="\((-\frac12,\frac12)\)">\((-\frac12,\frac12)\)</span> in at most two intervals of total length <span class="math" data-tex="\(M^{-j_0}\)">\(M^{-j_0}\)</span>, whose preimage under <span class="math" data-tex="\(\alpha_{j_0}\)">\(\alpha_{j_0}\)</span> has total length at most <span class="math" data-tex="\(e^{O(k)}H^{1+j_0/4-y_*}\)">\(e^{O(k)}H^{1+j_0/4-y_*}\)</span>. Since <span class="math" data-tex="\(y_*\ge4/5\)">\(y_*\ge4/5\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+1+\frac{j_0}4-y_*\le1-\frac{3y_*}4+\frac{23}{80}\\
+\le1-\frac5{16},
+\end{gathered}
+\]">\[
+\begin{gathered}
+1+\frac{j_0}4-y_*\le1-\frac{3y_*}4+\frac{23}{80}\\
+\le1-\frac5{16},
+\end{gathered}
+\]</span>
+<p>and the preimage contains at most <span class="math" data-tex="\(e^{O(k)}H^{11/16}+2\)">\(e^{O(k)}H^{11/16}+2\)</span> integers, which proves the claim.</p>
+<p><em>Suprema over boxes.</em> For every <span class="math" data-tex="\(s\ge1\)">\(s\ge1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_Q\sup_{\boldsymbol\alpha\in Q}|S_k(\boldsymbol\alpha)|^{2s}\\
+\le(4\pi)^{2sk}M^\kappa J_{s,k}(M).\quad(2.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_Q\sup_{\boldsymbol\alpha\in Q}|S_k(\boldsymbol\alpha)|^{2s}\\
+\le(4\pi)^{2sk}M^\kappa J_{s,k}(M).\quad(2.3)
+\end{gathered}
+\]</span>
+<p>To see this, rescale a box <span class="math" data-tex="\(Q\)">\(Q\)</span> to the unit cube by <span class="math" data-tex="\(\alpha_j=\beta_j+\theta_jM^{-j}\)">\(\alpha_j=\beta_j+\theta_jM^{-j}\)</span> and let <span class="math" data-tex="\(\Phi(\boldsymbol\theta)\)">\(\Phi(\boldsymbol\theta)\)</span> be <span class="math" data-tex="\(S_k\)">\(S_k\)</span> in these coordinates. In one variable, <span class="math" data-tex="\(\phi(\theta)=\phi(\theta&#x27;)+\int_{\theta&#x27;}^\theta\phi&#x27;\)">\(\phi(\theta)=\phi(\theta&#x27;)+\int_{\theta&#x27;}^\theta\phi&#x27;\)</span> and averaging over <span class="math" data-tex="\(\theta&#x27;\in[0,1]\)">\(\theta&#x27;\in[0,1]\)</span> give <span class="math" data-tex="\(|\phi(\theta)|\le\int_0^1|\phi|+\int_0^1|\phi&#x27;|\)">\(|\phi(\theta)|\le\int_0^1|\phi|+\int_0^1|\phi&#x27;|\)</span>. Applying this in each coordinate, <span class="math" data-tex="\(\sup|\Phi|\le\sum_{\boldsymbol\epsilon\in\{0,1\}^k}\int_{[0,1]^k}|\partial^{\boldsymbol\epsilon}\Phi|\)">\(\sup|\Phi|\le\sum_{\boldsymbol\epsilon\in\{0,1\}^k}\int_{[0,1]^k}|\partial^{\boldsymbol\epsilon}\Phi|\)</span>, and by Hölder's inequality</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sup|\Phi|^{2s}\le2^{k(2s-1)}\sum_{\boldsymbol\epsilon}\int_{[0,1]^k}|\partial^{\boldsymbol\epsilon}\Phi|^{2s}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sup|\Phi|^{2s}\le2^{k(2s-1)}\sum_{\boldsymbol\epsilon}\int_{[0,1]^k}|\partial^{\boldsymbol\epsilon}\Phi|^{2s}.
+\end{gathered}
+\]</span>
+<p>Each <span class="math" data-tex="\(\partial^{\boldsymbol\epsilon}\Phi\)">\(\partial^{\boldsymbol\epsilon}\Phi\)</span> is an exponential sum of the same shape as <span class="math" data-tex="\(S_k\)">\(S_k\)</span> whose coefficients <span class="math" data-tex="\(\prod_{j:\epsilon_j=1}2\pi i(h/M)^j\)">\(\prod_{j:\epsilon_j=1}2\pi i(h/M)^j\)</span> have modulus at most <span class="math" data-tex="\((2\pi)^k\)">\((2\pi)^k\)</span>. Summing over the boxes undoes the rescaling at the cost of the factor <span class="math" data-tex="\(M^\kappa\)">\(M^\kappa\)</span>, and the full-torus moment of such a sum is at most <span class="math" data-tex="\((2\pi)^{2sk}J_{s,k}(M)\)">\((2\pi)^{2sk}J_{s,k}(M)\)</span> by Lemma 1.1(1). This proves (2.3).</p>
+<p><em>Conclusion.</em> Take <span class="math" data-tex="\(s\)">\(s\)</span> from Theorem 1.4. By Hölder's inequality, the occupancy bound, (2.3) and (1.2),</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac1M\sum_{b\in\mathcal I}|S_k(\boldsymbol\alpha(b))|\\
+&amp;\quad\le\frac{(2H)^{1-1/(2s)}}M\\
+&amp;\qquad\times\Bigl(\sum_b|S_k(\boldsymbol\alpha(b))|^{2s}\Bigr)^{1/(2s)}\\
+&amp;\quad\le2H\bigl(e^{O(sk+k^{C_2})}H^{-1/5}M^{1/100}\bigr)^{1/(2s)} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac1M\sum_{b\in\mathcal I}|S_k(\boldsymbol\alpha(b))|\\
+&amp;\quad\le\frac{(2H)^{1-1/(2s)}}M\\
+&amp;\qquad\times\Bigl(\sum_b|S_k(\boldsymbol\alpha(b))|^{2s}\Bigr)^{1/(2s)}\\
+&amp;\quad\le2H\bigl(e^{O(sk+k^{C_2})}H^{-1/5}M^{1/100}\bigr)^{1/(2s)} .
+\end{aligned}
+\]</span>
+<p>Here <span class="math" data-tex="\(H^{-1/5}M^{1/100}\le H^{-77/400}\)">\(H^{-1/5}M^{1/100}\le H^{-77/400}\)</span>, <span class="math" data-tex="\(sk+k^{C_2}\ll T^{2\max(4,C_2)}\)">\(sk+k^{C_2}\ll T^{2\max(4,C_2)}\)</span>, <span class="math" data-tex="\(2s\ll T^6\)">\(2s\ll T^6\)</span>, and <span class="math" data-tex="\(\log H\ge L/(2T^2)\)">\(\log H\ge L/(2T^2)\)</span>. Since <span class="math" data-tex="\(L/T^2\)">\(L/T^2\)</span> exceeds every fixed power of <span class="math" data-tex="\(T\)">\(T\)</span> for large <span class="math" data-tex="\(x\)">\(x\)</span>, the right side is at most <span class="math" data-tex="\(H\exp(-L/T^9)\)">\(H\exp(-L/T^9)\)</span>. The other terms in (2.2) are <span class="math" data-tex="\(O(H^{3/4})\)">\(O(H^{3/4})\)</span>, which is smaller. Hence <span class="math" data-tex="\(|S|\le H\exp(-L/T^{10})\)">\(|S|\le H\exp(-L/T^{10})\)</span> for large <span class="math" data-tex="\(x\)">\(x\)</span>, and <span class="math" data-tex="\(|\sum_{n\in I,\,n\equiv a}n^{iv}|=|S|\)">\(|\sum_{n\in I,\,n\equiv a}n^{iv}|=|S|\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-exercises">3. Exercises</h2>
+<p><strong>4.1.</strong> Show that <span class="math" data-tex="\(J_{k,k}(M)\le k!\lfloor M\rfloor^k\)">\(J_{k,k}(M)\le k!\lfloor M\rfloor^k\)</span>. (Two <span class="math" data-tex="\(k\)">\(k\)</span>-tuples of integers with the same first <span class="math" data-tex="\(k\)">\(k\)</span> power sums are permutations of each other.)</p>
+<p><strong>4.2.</strong> Show that <span class="math" data-tex="\(J_{s,k}(M)\ge\lfloor M\rfloor^{2s}/\prod_{j\le k}(s\lfloor M\rfloor^j+1)\)">\(J_{s,k}(M)\ge\lfloor M\rfloor^{2s}/\prod_{j\le k}(s\lfloor M\rfloor^j+1)\)</span>, and deduce that the exponent <span class="math" data-tex="\(2s-\kappa\)">\(2s-\kappa\)</span> in (1.2) cannot be lowered.</p>
+<p><strong>4.3.</strong> Show that Lemma 1.2 fails for <span class="math" data-tex="\(r=k=2\)">\(r=k=2\)</span> and <span class="math" data-tex="\(h=2\)">\(h=2\)</span>: find two pairs with distinct residues modulo <span class="math" data-tex="\(2\)">\(2\)</span>, equal power sums modulo <span class="math" data-tex="\(4\)">\(4\)</span>, that are not permutations of each other modulo <span class="math" data-tex="\(4\)">\(4\)</span>.</p>
+<p><strong>4.4.</strong> In the proof of Theorem 2.1, take <span class="math" data-tex="\(y_*=1\)">\(y_*=1\)</span>. Compute <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(j_0\)">\(j_0\)</span>, and check the occupancy exponent <span class="math" data-tex="\(1+j_0/4-y_*\)">\(1+j_0/4-y_*\)</span>.</p>
+<p><strong>4.5.</strong> Deduce from Theorem 2.1 and partial summation that, under its hypotheses, <span class="math" data-tex="\(\sum_{n\in I,\,n\equiv a}n^{-\sigma+iv}\)">\(\sum_{n\in I,\,n\equiv a}n^{-\sigma+iv}\)</span><span class="math" data-tex="\(\ll N^{1-\sigma}q^{-1}\exp(-L/T^{C_3})\)">\(\ll N^{1-\sigma}q^{-1}\exp(-L/T^{C_3})\)</span> uniformly for <span class="math" data-tex="\(|\sigma-1|\le1/L\)">\(|\sigma-1|\le1/L\)</span>.</p>
+<h2 id="4-solutions">4. Solutions</h2>
+<p><strong>4.1.</strong> If <span class="math" data-tex="\(\mathbf u\)">\(\mathbf u\)</span> and <span class="math" data-tex="\(\mathbf v\)">\(\mathbf v\)</span> have the same power sums <span class="math" data-tex="\(p_1,\dots,p_k\)">\(p_1,\dots,p_k\)</span>, Newton's identities over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> give the same elementary symmetric functions, hence the same polynomial <span class="math" data-tex="\(\prod(X-u_i)=\prod(X-v_i)\)">\(\prod(X-u_i)=\prod(X-v_i)\)</span>, so <span class="math" data-tex="\(\mathbf v\)">\(\mathbf v\)</span> is a permutation of <span class="math" data-tex="\(\mathbf u\)">\(\mathbf u\)</span>. For each of the <span class="math" data-tex="\(\lfloor M\rfloor^k\)">\(\lfloor M\rfloor^k\)</span> choices of <span class="math" data-tex="\(\mathbf u\)">\(\mathbf u\)</span> there are at most <span class="math" data-tex="\(k!\)">\(k!\)</span> choices of <span class="math" data-tex="\(\mathbf v\)">\(\mathbf v\)</span>.</p>
+<p><strong>4.2.</strong> Let <span class="math" data-tex="\(R(\mathbf c)\)">\(R(\mathbf c)\)</span> be the number of <span class="math" data-tex="\(\mathbf u\in\{1,\dots,\lfloor M\rfloor\}^s\)">\(\mathbf u\in\{1,\dots,\lfloor M\rfloor\}^s\)</span> with power-sum vector <span class="math" data-tex="\(\mathbf c\)">\(\mathbf c\)</span>. Then <span class="math" data-tex="\(\sum R=\lfloor M\rfloor^s\)">\(\sum R=\lfloor M\rfloor^s\)</span> and <span class="math" data-tex="\(J_{s,k}(M)=\sum R^2\)">\(J_{s,k}(M)=\sum R^2\)</span>. The vector <span class="math" data-tex="\(\mathbf c\)">\(\mathbf c\)</span> takes at most <span class="math" data-tex="\(\prod_j(s\lfloor M\rfloor^j+1)\)">\(\prod_j(s\lfloor M\rfloor^j+1)\)</span> values, so Cauchy's inequality gives the bound. The denominator is <span class="math" data-tex="\(\asymp_{s,k}M^\kappa\)">\(\asymp_{s,k}M^\kappa\)</span>, so <span class="math" data-tex="\(J_{s,k}(M)\gg_{s,k}M^{2s-\kappa}\)">\(J_{s,k}(M)\gg_{s,k}M^{2s-\kappa}\)</span>, and a bound <span class="math" data-tex="\(M^{2s-\kappa-\eta}\)">\(M^{2s-\kappa-\eta}\)</span> with <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span> is impossible for large <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<p><strong>4.3.</strong> Take <span class="math" data-tex="\(\mathbf z=(0,1)\)">\(\mathbf z=(0,1)\)</span> and <span class="math" data-tex="\(\mathbf z&#x27;=(2,3)\)">\(\mathbf z&#x27;=(2,3)\)</span>. Both have entries <span class="math" data-tex="\(0,1\)">\(0,1\)</span> modulo <span class="math" data-tex="\(2\)">\(2\)</span>. Their sums are <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(5\equiv1\)">\(5\equiv1\)</span> modulo <span class="math" data-tex="\(4\)">\(4\)</span>, and their sums of squares are <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(13\equiv1\)">\(13\equiv1\)</span> modulo <span class="math" data-tex="\(4\)">\(4\)</span>. But <span class="math" data-tex="\(\{2,3\}\ne\{0,1\}\)">\(\{2,3\}\ne\{0,1\}\)</span> modulo <span class="math" data-tex="\(4\)">\(4\)</span>. The proof breaks at Newton's identity <span class="math" data-tex="\(2e_2=e_1p_1-p_2\)">\(2e_2=e_1p_1-p_2\)</span>, which cannot be divided by <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+<p><strong>4.4.</strong> For <span class="math" data-tex="\(y_*=1\)">\(y_*=1\)</span>, <span class="math" data-tex="\(k=\lceil12\rceil=12\)">\(k=\lceil12\rceil=12\)</span> and <span class="math" data-tex="\(j_0=\lceil1.15\rceil=2\)">\(j_0=\lceil1.15\rceil=2\)</span>. Then <span class="math" data-tex="\(1+j_0/4-y_*=1/2\le11/16\)">\(1+j_0/4-y_*=1/2\le11/16\)</span>, so each box contains <span class="math" data-tex="\(e^{O(k)}H^{1/2}\)">\(e^{O(k)}H^{1/2}\)</span> points.</p>
+<p><strong>4.5.</strong> By Lemma 4.2 of Lesson 3 with <span class="math" data-tex="\(g(n)=n^{-\sigma}\)">\(g(n)=n^{-\sigma}\)</span>, whose supremum plus variation on <span class="math" data-tex="\([N,2N]\)">\([N,2N]\)</span> is at most <span class="math" data-tex="\(2N^{-\sigma}\)">\(2N^{-\sigma}\)</span>, the sum is at most <span class="math" data-tex="\(2N^{-\sigma}\)">\(2N^{-\sigma}\)</span> times the maximum of (2.1) over initial segments of <span class="math" data-tex="\(I\)">\(I\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[PD] OpenAI, <em>The Poisson–Dirichlet law for prime predecessors</em>, OpenAI Math Release preprint, 24 September 2026, Appendix, Lemmas 9.2–9.5. https://github.com/openai/math/tree/main/preprints/The-Poisson-Dirichlet-Law-for-Prime-Predecessors-September-24-2026</li>
+<li>T. D. Wooley, <em>Vinogradov's mean value theorem via efficient congruencing</em>, Annals of Mathematics 175 (2012), 1575–1627, Section 2, explains Linnik's <span class="math" data-tex="\(p\)">\(p\)</span>-adic form of the classical iteration. Free version: arXiv:1101.0574. https://arxiv.org/abs/1101.0574</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

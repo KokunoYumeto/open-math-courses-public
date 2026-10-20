@@ -8,12 +8,19 @@ from pathlib import Path
 import math
 from PIL import Image, ImageDraw, ImageFont
 
+def installed_font_path(filename):
+    try:
+        return Path(ImageFont.truetype(filename,12).path)
+    except OSError:
+        return Path(filename)
+
+
 W, H = 2600, 3260
 OUT = Path(__file__).resolve().parents[1] / 'assets/coherent-complex-proof-map.png'
-REGULAR = [Path('C:/Windows/Fonts/segoeui.ttf'),
-           Path('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')]
-BOLD = [Path('C:/Windows/Fonts/segoeuib.ttf'),
-        Path('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf')]
+REGULAR = [installed_font_path('segoeui.ttf'),
+           installed_font_path('DejaVuSans.ttf')]
+BOLD = [installed_font_path('segoeuib.ttf'),
+        installed_font_path('DejaVuSans-Bold.ttf')]
 regular = next((p for p in REGULAR if p.is_file()), None)
 bold = next((p for p in BOLD if p.is_file()), None)
 if regular is None or bold is None:

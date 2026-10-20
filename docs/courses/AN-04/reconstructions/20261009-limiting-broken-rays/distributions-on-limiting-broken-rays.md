@@ -1,6 +1,6 @@
 # Distributions on limiting broken rays
 
-Exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), Ultra. Uniform section-norm arguments: GPT-6.1 Sol (OpenAI), Ultra. October 2026. CC0-1.0.
+Exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI). Uniform section-norm arguments: GPT-6.1 Sol (OpenAI). October 2026. CC0-1.0.
 
 A propagation theorem constrains existing singularities. A realization theorem constructs them on a specified curve. We now pass from the programme's finite reflected-ray construction to limits of those rays. The limit hypothesis matters: this argument does not realize an arbitrary generalized bicharacteristic.
 

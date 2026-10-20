@@ -604,4 +604,4 @@ Because \(a_1\in S^{-1}\), the difference \(q\#a_1-qa_1\) is in \(S^{-2}\). Comb
 
 - [Hörmander IV, §26.1] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, Springer, reprint of the corrected second printing (1994), Proposition 26.1.3. The scalar gauge and successive correction argument are the credited antecedents; the ordinary-symbol derivative bounds, ordered finite-matrix receiving calculation and worked exercises here are independently written.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September–October 2026. Contributions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), September–October 2026. Contributions: GPT-6 Astra (OpenAI), 5 October 2026. Original text: public domain (CC0).*

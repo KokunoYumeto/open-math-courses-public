@@ -1,0 +1,240 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Stability of finite factors</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Strong Kadison–Kastler stability)</a><a href="common-tracial-position-and-jordan-maps.html">Previous lesson</a><a href="preparing-infinite-factors.html">Next lesson</a><a href="src/stability-of-finite-factors.md">Editable source</a></nav><main><article><h1 id="stability-of-finite-factors">Stability of finite factors</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves strong Kadison–Kastler stability for finite factors on separable Hilbert spaces, with a modulus that does not depend on the factors (Theorem 2.1). The proof has two halves. In common tracial position, the boundary of the earlier lessons turns approximate multiplicativity of nearby unitaries into an exact isomorphism close to the identity in operator norm (Proposition 1.1). The cocycle correction, the averaged intertwiner, the diagonal comparison and double ergodicity are used in turn, and Herstein's lemma fixes the orientation. Back in the original representation, the uniform commutator estimate upgrades the operator norm bound to a completely bounded one, and close representations are conjugate by a unitary near the identity [OpenAI-289, Section 5].</p>
+<p>We use: <a href="close-operator-algebras.html">Close operator algebras</a> (Lemmas 1.4, 1.5 and 3.3); <a href="averaging-and-the-completely-positive-criterion.html">Averaging and the completely positive criterion</a> (Theorem 3.1, Christensen's theorem); <a href="boundary-means-and-measurable-cocycles.html">Boundary means and measurable cocycles</a> (Lemmas 2.1, 3.1 and 4.1); <a href="double-ergodicity-and-diagonal-comparison.html">Double ergodicity and diagonal comparison</a> (Lemmas 1.1 and 2.1); <a href="irreducible-hyperfinite-subfactors.html">Irreducible hyperfinite subfactors</a> (Lemmas 1.1 and 2.1, Corollary 2.2); <a href="common-tracial-position-and-jordan-maps.html">Common tracial position and Jordan maps</a> (Proposition 1.2, Lemmas 2.1, 2.2 and 3.1); <a href="../kadisons-similarity-problem/the-uniform-commutator-estimate.html#3-removing-separability">Theorem 3.1 of The uniform commutator estimate</a> (for every von Neumann algebra <span class="math" data-tex="\(P\subseteq B(K)\)">\(P\subseteq B(K)\)</span> and <span class="math" data-tex="\(Y\in B(K)\)">\(Y\in B(K)\)</span>, <span class="math" data-tex="\(\|\operatorname{ad}_Y|_P\|_{\rm cb}\le C\,\|\operatorname{ad}_Y|_P\|\)">\(\|\operatorname{ad}_Y|_P\|_{\rm cb}\le C\,\|\operatorname{ad}_Y|_P\|\)</span> with an absolute constant <span class="math" data-tex="\(C&lt;6308\)">\(C&lt;6308\)</span>); and <a href="../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#OA-FND-WA-18">Corollary 11.4</a> (<span class="math" data-tex="\(*\)">\(*\)</span>-isomorphisms of von Neumann algebras are normal).</p>
+<h2 id="1-an-isomorphism-in-common-tracial-position">1. An isomorphism in common tracial position</h2>
+<p><strong>Proposition 1.1.</strong> Let <span class="math" data-tex="\(M,N\subseteq B(K)\)">\(M,N\subseteq B(K)\)</span> be II<span class="math" data-tex="\(_1\)">\(_1\)</span> factors on a separable Hilbert space in common standard tracial position with the vector <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. Suppose that <span class="math" data-tex="\(M\cap N\)">\(M\cap N\)</span> contains a hyperfinite subfactor <span class="math" data-tex="\(R=(\bigcup_jQ_j)&#x27;&#x27;\)">\(R=(\bigcup_jQ_j)&#x27;&#x27;\)</span> as in Lemma 2.1 of <a href="irreducible-hyperfinite-subfactors.html">Irreducible hyperfinite subfactors</a>, irreducible in <span class="math" data-tex="\(M\)">\(M\)</span>, and that <span class="math" data-tex="\(J_MrJ_M=J_NrJ_N\)">\(J_MrJ_M=J_NrJ_N\)</span> for every <span class="math" data-tex="\(r\in R\)">\(r\in R\)</span>. If <span class="math" data-tex="\(d(M,N)&lt;b&lt;1/1564\)">\(d(M,N)&lt;b&lt;1/1564\)</span>, there is a normal <span class="math" data-tex="\(*\)">\(*\)</span>-isomorphism <span class="math" data-tex="\(\vartheta:M\to N\)">\(\vartheta:M\to N\)</span> with
+<span class="math math-display" data-tex="\[
+\sup_{x\in M_1}\|\vartheta(x)-x\|\le252\,b .
+\]">\[
+\sup_{x\in M_1}\|\vartheta(x)-x\|\le252\,b .
+\]</span></p>
+<p><strong>Proof.</strong> <em>Nearby unitaries.</em> The unitary group of <span class="math" data-tex="\(M\)">\(M\)</span> is separable for the strong topology, because <span class="math" data-tex="\(K\)">\(K\)</span> is separable; let <span class="math" data-tex="\(G\subseteq\mathcal U(M)\)">\(G\subseteq\mathcal U(M)\)</span> be a countable strongly dense subgroup. For <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span> choose <span class="math" data-tex="\(y\in N_1\)">\(y\in N_1\)</span> with <span class="math" data-tex="\(\|y-g\|&lt;b\)">\(\|y-g\|&lt;b\)</span>. Then <span class="math" data-tex="\(1-b\le|y|\le1\)">\(1-b\le|y|\le1\)</span>, so <span class="math" data-tex="\(y\)">\(y\)</span> is invertible and its polar part <span class="math" data-tex="\(v_g\in\mathcal U(N)\)">\(v_g\in\mathcal U(N)\)</span> satisfies <span class="math" data-tex="\(\|v_g-y\|=\|1-|y|\|\le b\)">\(\|v_g-y\|=\|1-|y|\|\le b\)</span> and <span class="math" data-tex="\(\|v_g-g\|\le2b\)">\(\|v_g-g\|\le2b\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|v_gv_h-v_{gh}\|\le\|v_g-g\|+\|v_h\\
+&amp;\qquad -h\|+\|gh-v_{gh}\|\le6b .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|v_gv_h-v_{gh}\|\le\|v_g-g\|+\|v_h\\
+&amp;\qquad -h\|+\|gh-v_{gh}\|\le6b .
+\end{aligned}
+\]</span></p>
+<p><em>The boundary cocycle.</em> Let <span class="math" data-tex="\((D,\nu)\)">\((D,\nu)\)</span> be the boundary of <span class="math" data-tex="\(G\)">\(G\)</span> from Lemma 2.1 of <a href="boundary-means-and-measurable-cocycles.html">Boundary means and measurable cocycles</a>. Regarded as constant fields, the <span class="math" data-tex="\(v_g\)">\(v_g\)</span> have defect at most <span class="math" data-tex="\(6b\le1/64\)">\(6b\le1/64\)</span>. Lemma 3.1 there gives an exact cocycle <span class="math" data-tex="\(W_g\in L^\infty(D,\mathcal U(N))\)">\(W_g\in L^\infty(D,\mathcal U(N))\)</span> with <span class="math" data-tex="\(\|W_g-v_g\|_\infty\le12b\)">\(\|W_g-v_g\|_\infty\le12b\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+W_g(x)W_h(g^{-1}x)=W_{gh}(x),\\
+\|W_g-g\|_\infty\le14b .\quad(1.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+W_g(x)W_h(g^{-1}x)=W_{gh}(x),\\
+\|W_g-g\|_\infty\le14b .\quad(1.1)
+\end{gathered}
+\]</span></p>
+<p><em>Comparison with the left and right actions.</em> On <span class="math" data-tex="\(D^2\)">\(D^2\)</span>, with the separate action of <span class="math" data-tex="\(G\times G\)">\(G\times G\)</span>, put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+\Sigma_{g,h}(x,y)&amp;=W_g(x)\,J_NW_h(y)J_N,
+\end{aligned}\\
+U_{g,h}=g\,J_MhJ_M .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+\Sigma_{g,h}(x,y)&amp;=W_g(x)\,J_NW_h(y)J_N,
+\end{aligned}\\
+U_{g,h}=g\,J_MhJ_M .
+\end{gathered}
+\]</span>
+Since <span class="math" data-tex="\(J_MhJ_M\in M&#x27;\)">\(J_MhJ_M\in M&#x27;\)</span>, <span class="math" data-tex="\(U\)">\(U\)</span> is a unitary representation of <span class="math" data-tex="\(G\times G\)">\(G\times G\)</span>; since <span class="math" data-tex="\(J_NW_h(y)J_N\in N&#x27;\)">\(J_NW_h(y)J_N\in N&#x27;\)</span> commutes with <span class="math" data-tex="\(W_{g&#x27;}(g^{-1}x)\in N\)">\(W_{g&#x27;}(g^{-1}x)\in N\)</span>, <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> is an exact cocycle. By (1.1) and Lemma 2.2 of <a href="common-tracial-position-and-jordan-maps.html">Common tracial position and Jordan maps</a>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|\Sigma_{g,h}-U_{g,h}\|_\infty\\
+&amp;\quad\le\|W_g-g\|_\infty+\|W_h-h\|_\infty\\
+&amp;\qquad+2\|J_N-J_M\|\\
+&amp;\quad\le28b+1536b=1564b&lt;1 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|\Sigma_{g,h}-U_{g,h}\|_\infty\\
+&amp;\quad\le\|W_g-g\|_\infty+\|W_h-h\|_\infty\\
+&amp;\qquad+2\|J_N-J_M\|\\
+&amp;\quad\le28b+1536b=1564b&lt;1 .
+\end{aligned}
+\]</span>
+Lemma 4.1 of the boundary lesson, for <span class="math" data-tex="\((G\times G,D\times D)\)">\((G\times G,D\times D)\)</span>, gives a measurable <span class="math" data-tex="\(L:D^2\to\mathcal U(K)\)">\(L:D^2\to\mathcal U(K)\)</span> with <span class="math" data-tex="\(\|L-I\|_\infty\le3128b\)">\(\|L-I\|_\infty\le3128b\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L(x,y)\,U_{g,h}\\
+=\Sigma_{g,h}(x,y)\,L(g^{-1}x,h^{-1}y).\quad(1.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+L(x,y)\,U_{g,h}\\
+=\Sigma_{g,h}(x,y)\,L(g^{-1}x,h^{-1}y).\quad(1.2)
+\end{gathered}
+\]</span></p>
+<p><em>Comparison along the diagonal.</em> By (1.1), <span class="math" data-tex="\(\|W_g(x)W_g(y)^*-I\|\le28b&lt;1\)">\(\|W_g(x)W_g(y)^*-I\|\le28b&lt;1\)</span>. Lemma 1.1 of <a href="double-ergodicity-and-diagonal-comparison.html">Double ergodicity and diagonal comparison</a>, for <span class="math" data-tex="\(A=N\)">\(A=N\)</span> in standard tracial position, gives a measurable <span class="math" data-tex="\(a:D^2\to\mathcal U(N)\)">\(a:D^2\to\mathcal U(N)\)</span> with <span class="math" data-tex="\(\|a-I\|_\infty\le56b\)">\(\|a-I\|_\infty\le56b\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a(x,y)\\
+=W_g(x)\,a(g^{-1}x,g^{-1}y)\,W_g(y)^* .\quad(1.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+a(x,y)\\
+=W_g(x)\,a(g^{-1}x,g^{-1}y)\,W_g(y)^* .\quad(1.3)
+\end{gathered}
+\]</span></p>
+<p><em>A constant vector.</em> Put <span class="math" data-tex="\(f(x,y)=L(x,y)^*a(x,y)\Omega\)">\(f(x,y)=L(x,y)^*a(x,y)\Omega\)</span>, a bounded measurable map <span class="math" data-tex="\(D^2\to K\)">\(D^2\to K\)</span>. Right multiplication by <span class="math" data-tex="\(W_g(y)^*\)">\(W_g(y)^*\)</span> is <span class="math" data-tex="\(J_NW_g(y)J_N\)">\(J_NW_g(y)J_N\)</span>, so (1.3) gives <span class="math" data-tex="\(a(x,y)\Omega=\Sigma_{g,g}(x,y)\,a(g^{-1}x,g^{-1}y)\Omega\)">\(a(x,y)\Omega=\Sigma_{g,g}(x,y)\,a(g^{-1}x,g^{-1}y)\Omega\)</span>, and (1.2) with <span class="math" data-tex="\(h=g\)">\(h=g\)</span> turns this into
+<span class="math math-display" data-tex="\[
+f(x,y)=U_{g,g}\,f(g^{-1}x,g^{-1}y).
+\]">\[
+f(x,y)=U_{g,g}\,f(g^{-1}x,g^{-1}y).
+\]</span>
+By Lemma 2.1 of the double ergodicity lesson, <span class="math" data-tex="\(f\)">\(f\)</span> is almost everywhere a constant vector fixed by every <span class="math" data-tex="\(U_{g,g}=gJ_MgJ_M\)">\(U_{g,g}=gJ_MgJ_M\)</span>. The vectors fixed by these unitaries are the multiples of <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>. Indeed, invariance extends from <span class="math" data-tex="\(G\)">\(G\)</span> to all of <span class="math" data-tex="\(\mathcal U(M)\)">\(\mathcal U(M)\)</span> by strong density, since <span class="math" data-tex="\(u\mapsto uJ_MuJ_M\)">\(u\mapsto uJ_MuJ_M\)</span> is strongly continuous on unitaries. Averaging <span class="math" data-tex="\(uJ_MuJ_M\)">\(uJ_MuJ_M\)</span> over the Haar measure of <span class="math" data-tex="\(\mathcal U(Q_j)\)">\(\mathcal U(Q_j)\)</span> sends <span class="math" data-tex="\(x\Omega\)">\(x\Omega\)</span> to <span class="math" data-tex="\(E_j(x)\Omega\)">\(E_j(x)\Omega\)</span>, and by Corollary 2.2 of the hyperfinite lesson these averages converge strongly to the projection onto <span class="math" data-tex="\(\mathbb C\Omega\)">\(\mathbb C\Omega\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L(x,y)^*a(x,y)\Omega=\lambda\Omega,\\
+|\lambda|=1,\\
+|\lambda-1|\le3184b,\quad(1.4)
+\end{gathered}
+\]">\[
+\begin{gathered}
+L(x,y)^*a(x,y)\Omega=\lambda\Omega,\\
+|\lambda|=1,\\
+|\lambda-1|\le3184b,\quad(1.4)
+\end{gathered}
+\]</span>
+for almost every <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span>.</p>
+<p><em>A unitary on the trace Hilbert space.</em> Choose a point <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> at which (1.2), (1.3) and (1.4) hold, together with their versions at all translates by <span class="math" data-tex="\(G\times G\)">\(G\times G\)</span>; such points form a conull set, since <span class="math" data-tex="\(G\)">\(G\)</span> is countable and the action nonsingular. Put
+<span class="math math-display" data-tex="\[
+S_0=\lambda\,a(x,y)^*L(x,y),
+\]">\[
+S_0=\lambda\,a(x,y)^*L(x,y),
+\]</span>
+a unitary of <span class="math" data-tex="\(K\)">\(K\)</span>. By (1.4), <span class="math" data-tex="\(L(x,y)\Omega=\bar\lambda a(x,y)\Omega\)">\(L(x,y)\Omega=\bar\lambda a(x,y)\Omega\)</span>, so <span class="math" data-tex="\(S_0\Omega=\Omega\)">\(S_0\Omega=\Omega\)</span>. For <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>, (1.2) with <span class="math" data-tex="\(h=1\)">\(h=1\)</span> reads <span class="math" data-tex="\(L(x,y)g=W_g(x)L(g^{-1}x,y)\)">\(L(x,y)g=W_g(x)L(g^{-1}x,y)\)</span>, and (1.4) at <span class="math" data-tex="\((g^{-1}x,y)\)">\((g^{-1}x,y)\)</span> gives <span class="math" data-tex="\(L(g^{-1}x,y)\Omega=\bar\lambda a(g^{-1}x,y)\Omega\)">\(L(g^{-1}x,y)\Omega=\bar\lambda a(g^{-1}x,y)\Omega\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S_0g\Omega=b_g\Omega,\\
+\begin{aligned}
+b_g&amp;=a(x,y)^*W_g(x)\,a(g^{-1}x,y)\\
+&amp;\in\mathcal U(N),
+\end{aligned}
+\end{gathered}
+\]">\[
+\begin{gathered}
+S_0g\Omega=b_g\Omega,\\
+\begin{aligned}
+b_g&amp;=a(x,y)^*W_g(x)\,a(g^{-1}x,y)\\
+&amp;\in\mathcal U(N),
+\end{aligned}
+\end{gathered}
+\]</span>
+with <span class="math" data-tex="\(\|b_g-g\|\le56b+14b+56b=126b\)">\(\|b_g-g\|\le56b+14b+56b=126b\)</span>.</p>
+<p><em>All unitaries.</em> Let <span class="math" data-tex="\(u\in\mathcal U(M)\)">\(u\in\mathcal U(M)\)</span> and <span class="math" data-tex="\(g_j\in G\)">\(g_j\in G\)</span> with <span class="math" data-tex="\(g_j\to u\)">\(g_j\to u\)</span> strongly. The vectors <span class="math" data-tex="\(b_{g_j}\Omega=S_0g_j\Omega\)">\(b_{g_j}\Omega=S_0g_j\Omega\)</span> converge. For unitaries of <span class="math" data-tex="\(N\)">\(N\)</span>, <span class="math" data-tex="\(\|(b-b&#x27;)\Omega\|=\|b-b&#x27;\|_2=\|b^*-b&#x27;^*\|_2\)">\(\|(b-b&#x27;)\Omega\|=\|b-b&#x27;\|_2=\|b^*-b&#x27;^*\|_2\)</span>, so <span class="math" data-tex="\(b_{g_j}^*\Omega\)">\(b_{g_j}^*\Omega\)</span> converges too. A bounded sequence in <span class="math" data-tex="\(N\)">\(N\)</span> whose vectors at <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> converge converges strongly, because it then converges on the dense set <span class="math" data-tex="\(N&#x27;\Omega\)">\(N&#x27;\Omega\)</span>. So <span class="math" data-tex="\(b_{g_j}\)">\(b_{g_j}\)</span> and <span class="math" data-tex="\(b_{g_j}^*\)">\(b_{g_j}^*\)</span> converge strongly, to a unitary <span class="math" data-tex="\(b_u\in N\)">\(b_u\in N\)</span> and its adjoint, with <span class="math" data-tex="\(S_0u\Omega=b_u\Omega\)">\(S_0u\Omega=b_u\Omega\)</span> and, since norm balls are weakly closed, <span class="math" data-tex="\(\|b_u-u\|\le126b\)">\(\|b_u-u\|\le126b\)</span>.</p>
+<p><em>A Jordan isomorphism.</em> Every <span class="math" data-tex="\(z\in M\)">\(z\in M\)</span> is a linear combination of unitaries, so <span class="math" data-tex="\(S_0z\Omega\in N\Omega\)">\(S_0z\Omega\in N\Omega\)</span>, and since <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is separating for <span class="math" data-tex="\(N\)">\(N\)</span> there is a unique <span class="math" data-tex="\(\vartheta(z)\in N\)">\(\vartheta(z)\in N\)</span> with
+<span class="math math-display" data-tex="\[
+\vartheta(z)\Omega=S_0z\Omega .
+\]">\[
+\vartheta(z)\Omega=S_0z\Omega .
+\]</span>
+The map <span class="math" data-tex="\(\vartheta\)">\(\vartheta\)</span> is linear, <span class="math" data-tex="\(\vartheta(1)=1\)">\(\vartheta(1)=1\)</span> and <span class="math" data-tex="\(\vartheta(u)=b_u\)">\(\vartheta(u)=b_u\)</span> for unitaries <span class="math" data-tex="\(u\)">\(u\)</span>. A self-adjoint contraction <span class="math" data-tex="\(h\)">\(h\)</span> is the average of the unitaries <span class="math" data-tex="\(h\pm i(1-h^2)^{1/2}\)">\(h\pm i(1-h^2)^{1/2}\)</span>, so <span class="math" data-tex="\(\|\vartheta(h)-h\|\le126b\)">\(\|\vartheta(h)-h\|\le126b\)</span>, and splitting into real and imaginary parts,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|\vartheta(z)-z\|\le252\,b\,\|z\|\\
+(z\in M).\quad(1.5)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|\vartheta(z)-z\|\le252\,b\,\|z\|\\
+(z\in M).\quad(1.5)
+\end{gathered}
+\]</span>
+In particular <span class="math" data-tex="\(\vartheta\)">\(\vartheta\)</span> is bounded and maps unitaries to unitaries. For <span class="math" data-tex="\(z=z^*\)">\(z=z^*\)</span> and real <span class="math" data-tex="\(t\)">\(t\)</span>, expand <span class="math" data-tex="\(\vartheta(e^{itz})^*\vartheta(e^{itz})=1\)">\(\vartheta(e^{itz})^*\vartheta(e^{itz})=1\)</span> as a norm convergent power series in <span class="math" data-tex="\(t\)">\(t\)</span>. The coefficient of <span class="math" data-tex="\(t\)">\(t\)</span> gives <span class="math" data-tex="\(\vartheta(z)^*=\vartheta(z)\)">\(\vartheta(z)^*=\vartheta(z)\)</span>; applied to <span class="math" data-tex="\(z^2\)">\(z^2\)</span> as well, the coefficient of <span class="math" data-tex="\(t^2\)">\(t^2\)</span> gives <span class="math" data-tex="\(\vartheta(z^2)=\vartheta(z)^2\)">\(\vartheta(z^2)=\vartheta(z)^2\)</span>. Polarizing, <span class="math" data-tex="\(\vartheta\)">\(\vartheta\)</span> preserves adjoints and the Jordan product <span class="math" data-tex="\(x\circ y=\frac12(xy+yx)\)">\(x\circ y=\frac12(xy+yx)\)</span>.</p>
+<p><em>Bijectivity and orientation.</em> By (1.5) and <span class="math" data-tex="\(252b&lt;1\)">\(252b&lt;1\)</span>, <span class="math" data-tex="\(\vartheta\)">\(\vartheta\)</span> is injective with closed range. Every <span class="math" data-tex="\(y\in N_1\)">\(y\in N_1\)</span> lies within <span class="math" data-tex="\(b\)">\(b\)</span> of some <span class="math" data-tex="\(x\in M_1\)">\(x\in M_1\)</span>, hence within <span class="math" data-tex="\(253b&lt;1\)">\(253b&lt;1\)</span> of <span class="math" data-tex="\(\vartheta(x)\)">\(\vartheta(x)\)</span>; a proper closed subspace of <span class="math" data-tex="\(N\)">\(N\)</span> would have points of <span class="math" data-tex="\(N_1\)">\(N_1\)</span> at distance arbitrarily close to <span class="math" data-tex="\(1\)">\(1\)</span> (Riesz's lemma, as in the proof of Proposition 4.1 of the averaging lesson), so <span class="math" data-tex="\(\vartheta\)">\(\vartheta\)</span> is onto. By Lemma 3.1 of <a href="common-tracial-position-and-jordan-maps.html">Common tracial position and Jordan maps</a>, <span class="math" data-tex="\(\vartheta\)">\(\vartheta\)</span> is a homomorphism or an antihomomorphism. If it were an antihomomorphism, then for unitaries <span class="math" data-tex="\(z,w\in M\)">\(z,w\in M\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|zw-wz\|&amp;\le\|zw-\vartheta(zw)\|\\
+&amp;\quad +\|\vartheta(w)\vartheta(z)-wz\|\\
+&amp;\le3\cdot126\,b&lt;2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|zw-wz\|&amp;\le\|zw-\vartheta(zw)\|\\
+&amp;\quad +\|\vartheta(w)\vartheta(z)-wz\|\\
+&amp;\le3\cdot126\,b&lt;2 .
+\end{aligned}
+\]</span>
+But <span class="math" data-tex="\(M\)">\(M\)</span> contains a unital copy of <span class="math" data-tex="\(M_2(\mathbb C)\)">\(M_2(\mathbb C)\)</span>, hence self-adjoint unitaries <span class="math" data-tex="\(z,w\)">\(z,w\)</span> with <span class="math" data-tex="\(zw=-wz\)">\(zw=-wz\)</span> and <span class="math" data-tex="\(\|zw-wz\|=2\)">\(\|zw-wz\|=2\)</span>. So <span class="math" data-tex="\(\vartheta\)">\(\vartheta\)</span> is a <span class="math" data-tex="\(*\)">\(*\)</span>-isomorphism, normal by Corollary 11.4 of the foundations lesson. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-return-to-the-original-hilbert-space">2. Return to the original Hilbert space</h2>
+<p><strong>Theorem 2.1</strong> (strong stability of finite factors). There are <span class="math" data-tex="\(t_{\rm fin}&gt;0\)">\(t_{\rm fin}&gt;0\)</span> and a nondecreasing function <span class="math" data-tex="\(\eta_{\rm fin}:(0,t_{\rm fin})\to(0,\infty)\)">\(\eta_{\rm fin}:(0,t_{\rm fin})\to(0,\infty)\)</span> with <span class="math" data-tex="\(\eta_{\rm fin}(t)\to0\)">\(\eta_{\rm fin}(t)\to0\)</span> as <span class="math" data-tex="\(t\to0\)">\(t\to0\)</span>, such that the following holds. Let <span class="math" data-tex="\(H\)">\(H\)</span> be a nonzero separable Hilbert space, <span class="math" data-tex="\(M\subseteq B(H)\)">\(M\subseteq B(H)\)</span> a unital finite factor and <span class="math" data-tex="\(N\subseteq B(H)\)">\(N\subseteq B(H)\)</span> a unital von Neumann algebra with <span class="math" data-tex="\(d(M,N)&lt;t&lt;t_{\rm fin}\)">\(d(M,N)&lt;t&lt;t_{\rm fin}\)</span>. Then <span class="math" data-tex="\(N\)">\(N\)</span> is a finite factor and there is a unitary <span class="math" data-tex="\(u\in B(H)\)">\(u\in B(H)\)</span> with
+<span class="math math-display" data-tex="\[
+uMu^*=N,\qquad\|u-I\|\le\eta_{\rm fin}(t).
+\]">\[
+uMu^*=N,\qquad\|u-I\|\le\eta_{\rm fin}(t).
+\]</span></p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(C&lt;6308\)">\(C&lt;6308\)</span> be the constant of the uniform commutator estimate, and for <span class="math" data-tex="\(0&lt;t&lt;10^{-14}\)">\(0&lt;t&lt;10^{-14}\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\beta(t)&amp;=50948\sqrt{302t},\qquad b(t)=3\beta(t),\\
+e(t)&amp;=252\,b(t)+\beta(t)+604t .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\beta(t)&amp;=50948\sqrt{302t},\qquad b(t)=3\beta(t),\\
+e(t)&amp;=252\,b(t)+\beta(t)+604t .
+\end{aligned}
+\]</span>
+Choose <span class="math" data-tex="\(t_{\rm fin}&gt;0\)">\(t_{\rm fin}&gt;0\)</span> so small that <span class="math" data-tex="\(t_{\rm fin}&lt;1/101\)">\(t_{\rm fin}&lt;1/101\)</span>, <span class="math" data-tex="\(302t_{\rm fin}&lt;1.74\cdot10^{-13}\)">\(302t_{\rm fin}&lt;1.74\cdot10^{-13}\)</span>, <span class="math" data-tex="\(b(t_{\rm fin})&lt;1/1564\)">\(b(t_{\rm fin})&lt;1/1564\)</span> and <span class="math" data-tex="\(Ce(t_{\rm fin})&lt;2\)">\(Ce(t_{\rm fin})&lt;2\)</span>; and put <span class="math" data-tex="\(\eta_{\rm fin}(t)=150t+Ce(t)\)">\(\eta_{\rm fin}(t)=150t+Ce(t)\)</span>, a nondecreasing function tending to <span class="math" data-tex="\(0\)">\(0\)</span>. Let <span class="math" data-tex="\(d(M,N)&lt;t&lt;t_{\rm fin}\)">\(d(M,N)&lt;t&lt;t_{\rm fin}\)</span>.</p>
+<p>By Lemma 1.1 of <a href="irreducible-hyperfinite-subfactors.html">Irreducible hyperfinite subfactors</a>, <span class="math" data-tex="\(N\)">\(N\)</span> is a finite factor. By Lemma 1.4(2) of <a href="close-operator-algebras.html">Close operator algebras</a>, <span class="math" data-tex="\(M\subset_tN\)">\(M\subset_tN\)</span> and <span class="math" data-tex="\(N\subset_tM\)">\(N\subset_tM\)</span>.</p>
+<p><em>Matrix algebras.</em> If <span class="math" data-tex="\(M\)">\(M\)</span> or <span class="math" data-tex="\(N\)">\(N\)</span> is finite-dimensional, it is injective, and Theorem 3.1 of the averaging lesson (Christensen's theorem, with <span class="math" data-tex="\(t&lt;1/101\)">\(t&lt;1/101\)</span>) gives a unitary within <span class="math" data-tex="\(150t\)">\(150t\)</span> of <span class="math" data-tex="\(I\)">\(I\)</span> conjugating one of them onto the other; its adjoint, or itself, conjugates <span class="math" data-tex="\(M\)">\(M\)</span> onto <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p><em>Type II<span class="math" data-tex="\(_1\)">\(_1\)</span>.</em> Otherwise both are II<span class="math" data-tex="\(_1\)">\(_1\)</span> factors with separable preduals. Let <span class="math" data-tex="\(R\subseteq M\)">\(R\subseteq M\)</span> be the subfactor of Lemma 2.1 of the hyperfinite lesson; it is injective and <span class="math" data-tex="\(R&#x27;\cap M=\mathbb C1\)">\(R&#x27;\cap M=\mathbb C1\)</span>. Since <span class="math" data-tex="\(R\subset_tN\)">\(R\subset_tN\)</span>, Christensen's theorem gives a unitary <span class="math" data-tex="\(w\)">\(w\)</span> with <span class="math" data-tex="\(wRw^*\subseteq N\)">\(wRw^*\subseteq N\)</span> and <span class="math" data-tex="\(\|w-I\|\le150t\)">\(\|w-I\|\le150t\)</span>. Put <span class="math" data-tex="\(N_0=w^*Nw\)">\(N_0=w^*Nw\)</span>. Then <span class="math" data-tex="\(R\subseteq M\cap N_0\)">\(R\subseteq M\cap N_0\)</span>, and by Lemma 1.5 of <a href="close-operator-algebras.html">Close operator algebras</a>, <span class="math" data-tex="\(d(M,N_0)&lt;301t\)">\(d(M,N_0)&lt;301t\)</span>, so <span class="math" data-tex="\(M\subset_gN_0\)">\(M\subset_gN_0\)</span> and <span class="math" data-tex="\(N_0\subset_gM\)">\(N_0\subset_gM\)</span> with <span class="math" data-tex="\(g=302t\)">\(g=302t\)</span>.</p>
+<p>Proposition 1.2 of <a href="common-tracial-position-and-jordan-maps.html">Common tracial position and Jordan maps</a> gives faithful normal representations <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(\rho\)">\(\rho\)</span> of <span class="math" data-tex="\(N_0\)">\(N_0\)</span> on a separable space <span class="math" data-tex="\(K\)">\(K\)</span>, with <span class="math" data-tex="\(M_s=\pi(M)\)">\(M_s=\pi(M)\)</span> and <span class="math" data-tex="\(N_s=\rho(N_0)\)">\(N_s=\rho(N_0)\)</span> in common standard tracial position, <span class="math" data-tex="\(\pi|_R=\rho|_R\)">\(\pi|_R=\rho|_R\)</span>, and <span class="math" data-tex="\(\beta&lt;\beta(t)\)">\(\beta&lt;\beta(t)\)</span>. The subfactor <span class="math" data-tex="\(\pi(R)\)">\(\pi(R)\)</span> is generated by the full matrix algebras <span class="math" data-tex="\(\pi(Q_j)\)">\(\pi(Q_j)\)</span> and is irreducible in <span class="math" data-tex="\(M_s\)">\(M_s\)</span>, since <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is an isomorphism. By Lemma 2.1 of that lesson, its right actions agree, and <span class="math" data-tex="\(d(M_s,N_s)\le2\beta&lt;b(t)\)">\(d(M_s,N_s)\le2\beta&lt;b(t)\)</span>. Proposition 1.1 gives a normal <span class="math" data-tex="\(*\)">\(*\)</span>-isomorphism <span class="math" data-tex="\(\vartheta_s:M_s\to N_s\)">\(\vartheta_s:M_s\to N_s\)</span> with <span class="math" data-tex="\(\|\vartheta_s(x)-x\|\le252b(t)\)">\(\|\vartheta_s(x)-x\|\le252b(t)\)</span> on <span class="math" data-tex="\((M_s)_1\)">\((M_s)_1\)</span>.</p>
+<p>Transport it: <span class="math" data-tex="\(\theta=\rho^{-1}\circ\vartheta_s\circ\pi:M\to N_0\)">\(\theta=\rho^{-1}\circ\vartheta_s\circ\pi:M\to N_0\)</span> is a normal <span class="math" data-tex="\(*\)">\(*\)</span>-isomorphism. For <span class="math" data-tex="\(x\in M_1\)">\(x\in M_1\)</span> choose <span class="math" data-tex="\(y\in(N_0)_1\)">\(y\in(N_0)_1\)</span> with <span class="math" data-tex="\(\|x-y\|&lt;g\)">\(\|x-y\|&lt;g\)</span>. Since <span class="math" data-tex="\(\rho\)">\(\rho\)</span> is isometric and by part (3) of the common-position proposition,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|\theta(x)-x\|\\
+&amp;\quad\le\|\vartheta_s\pi(x)-\rho(y)\|+\|y-x\|\\
+&amp;\quad\le\|\vartheta_s\pi(x)-\pi(x)\|\\
+&amp;\qquad+\|\pi(x)-\rho(y)\|+g\\
+&amp;\quad\le252\,b(t)+\beta+2g\le e(t).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|\theta(x)-x\|\\
+&amp;\quad\le\|\vartheta_s\pi(x)-\rho(y)\|+\|y-x\|\\
+&amp;\quad\le\|\vartheta_s\pi(x)-\pi(x)\|\\
+&amp;\qquad+\|\pi(x)-\rho(y)\|+g\\
+&amp;\quad\le252\,b(t)+\beta+2g\le e(t).
+\end{aligned}
+\]</span></p>
+<p><em>Complete boundedness.</em> The map <span class="math" data-tex="\(x\mapsto x\oplus\theta(x)\)">\(x\mapsto x\oplus\theta(x)\)</span> is a faithful normal representation of <span class="math" data-tex="\(M\)">\(M\)</span> on <span class="math" data-tex="\(H\oplus H\)">\(H\oplus H\)</span>; let <span class="math" data-tex="\(P\)">\(P\)</span> be its image, a von Neumann algebra, and <span class="math" data-tex="\(s(\xi,\eta)=(\eta,\xi)\)">\(s(\xi,\eta)=(\eta,\xi)\)</span> the self-adjoint switch. The commutator <span class="math" data-tex="\([s,x\oplus\theta(x)]\)">\([s,x\oplus\theta(x)]\)</span> has off-diagonal entries <span class="math" data-tex="\(\pm(\theta(x)-x)\)">\(\pm(\theta(x)-x)\)</span>, so <span class="math" data-tex="\(\|\operatorname{ad}_s|_P\|\le e(t)\)">\(\|\operatorname{ad}_s|_P\|\le e(t)\)</span>, because <span class="math" data-tex="\(\|x\oplus\theta(x)\|=\|x\|\)">\(\|x\oplus\theta(x)\|=\|x\|\)</span>. The uniform commutator estimate gives <span class="math" data-tex="\(\|\operatorname{ad}_s|_P\|_{\rm cb}\le Ce(t)\)">\(\|\operatorname{ad}_s|_P\|_{\rm cb}\le Ce(t)\)</span>. At matrix level <span class="math" data-tex="\(n\)">\(n\)</span>, the commutator of <span class="math" data-tex="\(s^{(n)}\)">\(s^{(n)}\)</span> with <span class="math" data-tex="\(X\oplus\theta_n(X)\)">\(X\oplus\theta_n(X)\)</span> has off-diagonal blocks <span class="math" data-tex="\(\pm(\theta_n(X)-X)\)">\(\pm(\theta_n(X)-X)\)</span>, so
+<span class="math math-display" data-tex="\[
+\|\theta-\mathrm{id}_M\|_{\rm cb}\le C\,e(t)&lt;2,
+\]">\[
+\|\theta-\mathrm{id}_M\|_{\rm cb}\le C\,e(t)&lt;2,
+\]</span>
+where <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is regarded as a representation of <span class="math" data-tex="\(M\)">\(M\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span>. Lemma 3.3 of <a href="close-operator-algebras.html">Close operator algebras</a> gives a unitary <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(vxv^*=\theta(x)\)">\(vxv^*=\theta(x)\)</span> for <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span> and <span class="math" data-tex="\(\|v-I\|\le Ce(t)\)">\(\|v-I\|\le Ce(t)\)</span>; so <span class="math" data-tex="\(vMv^*=\theta(M)=N_0\)">\(vMv^*=\theta(M)=N_0\)</span>.</p>
+<p><em>Conclusion.</em> The unitary <span class="math" data-tex="\(u=wv\)">\(u=wv\)</span> satisfies <span class="math" data-tex="\(uMu^*=wN_0w^*=N\)">\(uMu^*=wN_0w^*=N\)</span> and <span class="math" data-tex="\(\|u-I\|\le150t+Ce(t)=\eta_{\rm fin}(t)\)">\(\|u-I\|\le150t+Ce(t)=\eta_{\rm fin}(t)\)</span>. In the matrix case the bound <span class="math" data-tex="\(150t\)">\(150t\)</span> is smaller. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The constants are far from optimal; what matters is that every threshold and every bound is a function of <span class="math" data-tex="\(t\)">\(t\)</span> alone. Two different commutator arguments enter: Lemma 3.1 of the hyperfinite lesson controls a bimodular operator on the trace Hilbert space, and the uniform commutator estimate controls all matrix levels of a derivation. Neither alone produces a multiplicative map; the boundary does.</p>
+<h2 id="3-exercises">3. Exercises</h2>
+<p><strong>Exercise 3.1.</strong> Show that <span class="math" data-tex="\(U_{g,h}=g\,J_MhJ_M\)">\(U_{g,h}=g\,J_MhJ_M\)</span> defines a unitary representation of <span class="math" data-tex="\(G\times G\)">\(G\times G\)</span> and that its restriction to the diagonal is <span class="math" data-tex="\(g\mapsto gJ_MgJ_M\)">\(g\mapsto gJ_MgJ_M\)</span>, which acts on <span class="math" data-tex="\(x\Omega\)">\(x\Omega\)</span> as <span class="math" data-tex="\(gxg^*\Omega\)">\(gxg^*\Omega\)</span>.</p>
+<p><strong>Exercise 3.2.</strong> In the proof of Proposition 1.1, show that <span class="math" data-tex="\(\vartheta(1)=1\)">\(\vartheta(1)=1\)</span> from <span class="math" data-tex="\(S_0\Omega=\Omega\)">\(S_0\Omega=\Omega\)</span>.</p>
+<p><strong>Exercise 3.3.</strong> Let <span class="math" data-tex="\(\vartheta\)">\(\vartheta\)</span> be a linear map between unital C*-algebras that maps unitaries to unitaries and <span class="math" data-tex="\(1\)">\(1\)</span> to <span class="math" data-tex="\(1\)">\(1\)</span>. Use the power series argument of the proof to show that <span class="math" data-tex="\(\vartheta(h^2)=\vartheta(h)^2\)">\(\vartheta(h^2)=\vartheta(h)^2\)</span> for self-adjoint <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<p><strong>Exercise 3.4.</strong> Show that in a II<span class="math" data-tex="\(_1\)">\(_1\)</span> factor there are self-adjoint unitaries <span class="math" data-tex="\(z,w\)">\(z,w\)</span> with <span class="math" data-tex="\(zw=-wz\)">\(zw=-wz\)</span>.</p>
+<p><strong>Exercise 3.5.</strong> Show that the representation <span class="math" data-tex="\(x\mapsto x\oplus\theta(x)\)">\(x\mapsto x\oplus\theta(x)\)</span> in the proof of Theorem 2.1 is isometric, and that <span class="math" data-tex="\(\|[s,x\oplus\theta(x)]\|=\|\theta(x)-x\|\)">\(\|[s,x\oplus\theta(x)]\|=\|\theta(x)-x\|\)</span>.</p>
+<h2 id="4-solutions">4. Solutions</h2>
+<p><strong>Solution 3.1.</strong> <span class="math" data-tex="\(J_MhJ_M\in M&#x27;\)">\(J_MhJ_M\in M&#x27;\)</span> commutes with <span class="math" data-tex="\(g&#x27;\in M\)">\(g&#x27;\in M\)</span>, so <span class="math" data-tex="\(U_{g,h}U_{g&#x27;,h&#x27;}=gg&#x27;J_Mhh&#x27;J_M=U_{gg&#x27;,hh&#x27;}\)">\(U_{g,h}U_{g&#x27;,h&#x27;}=gg&#x27;J_Mhh&#x27;J_M=U_{gg&#x27;,hh&#x27;}\)</span>. For <span class="math" data-tex="\(h=g\)">\(h=g\)</span>, <span class="math" data-tex="\(gJ_MgJ_M(x\Omega)=g(xg^*\Omega)=gxg^*\Omega\)">\(gJ_MgJ_M(x\Omega)=g(xg^*\Omega)=gxg^*\Omega\)</span>, using that <span class="math" data-tex="\(J_Mg^*J_M\)">\(J_Mg^*J_M\)</span> is right multiplication by <span class="math" data-tex="\(g\)">\(g\)</span> and <span class="math" data-tex="\(J_MgJ_M\)">\(J_MgJ_M\)</span> by <span class="math" data-tex="\(g^*\)">\(g^*\)</span>.</p>
+<p><strong>Solution 3.2.</strong> <span class="math" data-tex="\(\vartheta(1)\Omega=S_01\Omega=\Omega=1\Omega\)">\(\vartheta(1)\Omega=S_01\Omega=\Omega=1\Omega\)</span>, and <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> is separating for <span class="math" data-tex="\(N\)">\(N\)</span>.</p>
+<p><strong>Solution 3.3.</strong> <span class="math" data-tex="\(\vartheta(e^{ith})=\sum_n(it)^n\vartheta(h^n)/n!\)">\(\vartheta(e^{ith})=\sum_n(it)^n\vartheta(h^n)/n!\)</span> in norm, by continuity of <span class="math" data-tex="\(\vartheta\)">\(\vartheta\)</span>: a self-adjoint element of norm at most <span class="math" data-tex="\(1\)">\(1\)</span> is the average of two unitaries, so <span class="math" data-tex="\(\|\vartheta(z)\|\le2\|z\|\)">\(\|\vartheta(z)\|\le2\|z\|\)</span> for every <span class="math" data-tex="\(z\)">\(z\)</span>. The constant term of <span class="math" data-tex="\(\vartheta(e^{ith})^*\vartheta(e^{ith})=1\)">\(\vartheta(e^{ith})^*\vartheta(e^{ith})=1\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>; the coefficient of <span class="math" data-tex="\(t\)">\(t\)</span> is <span class="math" data-tex="\(i(\vartheta(h)-\vartheta(h)^*)=0\)">\(i(\vartheta(h)-\vartheta(h)^*)=0\)</span>; the coefficient of <span class="math" data-tex="\(t^2\)">\(t^2\)</span> is <span class="math" data-tex="\(-\frac12\vartheta(h^2)^*+\vartheta(h)^*\vartheta(h)-\frac12\vartheta(h^2)\)">\(-\frac12\vartheta(h^2)^*+\vartheta(h)^*\vartheta(h)-\frac12\vartheta(h^2)\)</span>, and self-adjointness of <span class="math" data-tex="\(\vartheta(h)\)">\(\vartheta(h)\)</span> and <span class="math" data-tex="\(\vartheta(h^2)\)">\(\vartheta(h^2)\)</span> gives <span class="math" data-tex="\(\vartheta(h^2)=\vartheta(h)^2\)">\(\vartheta(h^2)=\vartheta(h)^2\)</span>.</p>
+<p><strong>Solution 3.4.</strong> A II<span class="math" data-tex="\(_1\)">\(_1\)</span> factor contains two equivalent orthogonal projections with sum <span class="math" data-tex="\(1\)">\(1\)</span>, hence matrix units <span class="math" data-tex="\(e_{ij}\)">\(e_{ij}\)</span>, <span class="math" data-tex="\(i,j\le2\)">\(i,j\le2\)</span>. Put <span class="math" data-tex="\(z=e_{11}-e_{22}\)">\(z=e_{11}-e_{22}\)</span> and <span class="math" data-tex="\(w=e_{12}+e_{21}\)">\(w=e_{12}+e_{21}\)</span>.</p>
+<p><strong>Solution 3.5.</strong> <span class="math" data-tex="\(\|x\oplus\theta(x)\|=\max(\|x\|,\|\theta(x)\|)=\|x\|\)">\(\|x\oplus\theta(x)\|=\max(\|x\|,\|\theta(x)\|)=\|x\|\)</span>, since <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is an isomorphism. The commutator is the operator matrix with zero diagonal and off-diagonal entries <span class="math" data-tex="\(\theta(x)-x\)">\(\theta(x)-x\)</span> and <span class="math" data-tex="\(x-\theta(x)\)">\(x-\theta(x)\)</span>, whose norm is <span class="math" data-tex="\(\|\theta(x)-x\|\)">\(\|\theta(x)-x\|\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-289] OpenAI, Universal strong Kadison–Kastler stability, preprint, 23 September 2026, Section 5. https://github.com/openai/math/tree/main/preprints/Universal-strong-Kadison-Kastler-stability-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

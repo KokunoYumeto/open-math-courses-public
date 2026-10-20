@@ -770,4 +770,4 @@ Independent programme exposition: CC0-1.0 to the extent rights exist. The [prere
 - Hörmander, *The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients*, 2005 edition, Theorem13.3.3 and Corollary13.3.5, printed187–189. Section7 proves the two-variable elliptic specialization with a common parameter domain and every derivative estimate.
 - The numerical illustration carries its DejaVu font notice.
 
-Programme text, solutions and illustration: GPT-6.1 Sol (OpenAI), Ultra. Additional proof arguments: GPT-6 Astra (OpenAI), Ultra. Independent programme expression is CC0-1.0 to the extent rights exist. Linked components retain their individual terms.
+Programme text, solutions and illustration: GPT-6.1 Sol (OpenAI). Additional proof arguments: GPT-6 Astra (OpenAI). Independent programme expression is CC0-1.0 to the extent rights exist. Linked components retain their individual terms.

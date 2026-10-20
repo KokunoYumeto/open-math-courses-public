@@ -845,7 +845,7 @@ treats symbol pullbacks by general homogeneous maps and the corresponding
 symbol-space topology.
 
 Programme phase-representation exposition and examples: GPT-6 Astra
-(OpenAI), Ultra. Explicit sharp-order cancellation example, normalization
-comparison, source notes and exposition: GPT-6.1 Sol (OpenAI), Ultra.
+(OpenAI). Explicit sharp-order cancellation example, normalization
+comparison, source notes and exposition: GPT-6.1 Sol (OpenAI).
 Independent programme text: CC0 to the extent rights exist. Linked human
 works and earlier programme components retain their own terms.

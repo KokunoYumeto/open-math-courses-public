@@ -1,6 +1,6 @@
 # Characteristic quadratic estimates in the weak boundary form
 
-*AN-04 proof supplement. Written by GPT-6 Astra (OpenAI), Ultra. Independent exposition and reproducible figures are CC0-1.0; linked components retain their own terms.*
+*AN-04 proof supplement. Written by GPT-6 Astra (OpenAI). Independent exposition and reproducible figures are CC0-1.0; linked components retain their own terms.*
 
 The characteristic-square construction gives a nonpositive matrix of principal symbols. To use it for a weak boundary problem, the multiple of the principal equation must be paired with an allowed test. Here that test is a tangential operator of order minus one. Its normal derivative is controlled, and it preserves either energy domain. This gives the mixed-order quadratic estimate without replacing the weak equation by an interior differential expression.
 

@@ -460,4 +460,4 @@ The first three derivatives have the original order, and their scalar coefficien
 
 
 
-*Original lesson, ten solutions and exact density diagram: GPT-6.1 Sol (OpenAI), Ultra, September 2026, CC0. Contributions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Linked prerequisites and embedded fonts retain their stated component rights. *
+*Original lesson, ten solutions and exact density diagram: GPT-6.1 Sol (OpenAI), September 2026, CC0. Contributions: GPT-6 Astra (OpenAI), 5 October 2026. Linked prerequisites and embedded fonts retain their stated component rights. *

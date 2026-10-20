@@ -1,0 +1,223 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A zero-free strip at large height</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Marked Type II estimates for prime predecessors)</a><a href="a-mean-value-theorem-and-logarithmic-phases-at-large-height.html">Previous lesson</a><a href="long-prime-polynomials.html">Next lesson</a><a href="src/a-zero-free-strip-at-large-height.md">Editable source</a></nav><main><article><h1 id="a-zero-free-strip-at-large-height">A zero-free strip at large height</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Cancellation in <span class="math" data-tex="\(\sum_p\chi(p)p^{-1+it}\)">\(\sum_p\chi(p)p^{-1+it}\)</span> over primes <span class="math" data-tex="\(p\asymp N\)">\(p\asymp N\)</span>, with <span class="math" data-tex="\(\log N\asymp\log x\)">\(\log N\asymp\log x\)</span> and <span class="math" data-tex="\(|t|\)">\(|t|\)</span> as large as <span class="math" data-tex="\(x^2\)">\(x^2\)</span>, requires the <span class="math" data-tex="\(L\)">\(L\)</span>-functions of the characters to have no zeros in a strip to the left of <span class="math" data-tex="\(\operatorname{Re}s=1\)">\(\operatorname{Re}s=1\)</span> up to height about <span class="math" data-tex="\(x^2\)">\(x^2\)</span>, of width <span class="math" data-tex="\(w\)">\(w\)</span> with <span class="math" data-tex="\(w\log x/\log\log x\to\infty\)">\(w\log x/\log\log x\to\infty\)</span>. The classical region of de la Vallée Poussin has width about <span class="math" data-tex="\(1/\log x\)">\(1/\log x\)</span> at that height, which is not enough. This lesson proves a strip of width <span class="math" data-tex="\(c(\log\log x)^2/\log x\)">\(c(\log\log x)^2/\log x\)</span> for characters of modulus at most a power of <span class="math" data-tex="\(\log x\)">\(\log x\)</span>, from the cancellation of Lesson 4.</p>
+<p><strong>Prerequisites.</strong> <a href="a-mean-value-theorem-and-logarithmic-phases-at-large-height.html"><em>A mean value theorem and logarithmic phases at large height</em></a>, Theorem 2.1; <a href="../NT-ZETA/NT-ZETA-05.html"><em>Entire functions of order one and the Hadamard product of xi</em></a>, Theorem 1.1 and inequality (4); <span class="unlinked"><em>Growth bounds and wider zero-free regions</em></span>, Theorem 1.1 (Landau's lemma); <a href="../NT-ZETA/NT-ZETA-08.html"><em>Nonvanishing on the line one and a zero-free region</em></a>, (1.1) and Lemma 3.1.</p>
+<p>To avoid a clash with <span class="math" data-tex="\(L=\log x\)">\(L=\log x\)</span>, the Dirichlet <span class="math" data-tex="\(L\)">\(L\)</span>-function of a character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is written <span class="math" data-tex="\(D(s,\chi)\)">\(D(s,\chi)\)</span>. Throughout,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L=\log x,\qquad T=\log L,\\
+r_*=\frac{T^4}L,
+\end{gathered}
+\]">\[
+\begin{gathered}
+L=\log x,\qquad T=\log L,\\
+r_*=\frac{T^4}L,
+\end{gathered}
+\]</span>
+<p><span class="math" data-tex="\(C_0&gt;0\)">\(C_0&gt;0\)</span> is fixed, and <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is a character of modulus <span class="math" data-tex="\(q\le L^{C_0}\)">\(q\le L^{C_0}\)</span>. Constants may depend on <span class="math" data-tex="\(C_0\)">\(C_0\)</span>.</p>
+<h2 id="1-a-truncated-series">1. A truncated series</h2>
+<p>For a character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> modulo <span class="math" data-tex="\(q\)">\(q\)</span> put <span class="math" data-tex="\(c_\chi=\varphi(q)/q\)">\(c_\chi=\varphi(q)/q\)</span> if <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is principal and <span class="math" data-tex="\(c_\chi=0\)">\(c_\chi=0\)</span> otherwise. Then <span class="math" data-tex="\(A(u)=\sum_{n\le u}\chi(n)=c_\chi u+R(u)\)">\(A(u)=\sum_{n\le u}\chi(n)=c_\chi u+R(u)\)</span> with <span class="math" data-tex="\(|R(u)|\le q\)">\(|R(u)|\le q\)</span> for all <span class="math" data-tex="\(u\ge0\)">\(u\ge0\)</span>, because <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is periodic and its sum over a period is <span class="math" data-tex="\(\varphi(q)\)">\(\varphi(q)\)</span> or <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> For <span class="math" data-tex="\(\operatorname{Re}s=\sigma&gt;1\)">\(\operatorname{Re}s=\sigma&gt;1\)</span> and <span class="math" data-tex="\(Y\ge1\)">\(Y\ge1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+D(s,\chi)=\sum_{n\le Y}\frac{\chi(n)}{n^s}+\frac{c_\chi Y^{1-s}}{s-1}\\
++E(s),\\
+E(s)=-\frac{R(Y)}{Y^s}\\
++s\int_Y^\infty\frac{R(u)\,du}{u^{s+1}} .\quad(1.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+D(s,\chi)=\sum_{n\le Y}\frac{\chi(n)}{n^s}+\frac{c_\chi Y^{1-s}}{s-1}\\
++E(s),\\
+E(s)=-\frac{R(Y)}{Y^s}\\
++s\int_Y^\infty\frac{R(u)\,du}{u^{s+1}} .\quad(1.1)
+\end{gathered}
+\]</span>
+<p>The right side defines a meromorphic continuation of <span class="math" data-tex="\(D(s,\chi)\)">\(D(s,\chi)\)</span> to <span class="math" data-tex="\(\sigma&gt;0\)">\(\sigma&gt;0\)</span>, holomorphic except for a simple pole at <span class="math" data-tex="\(s=1\)">\(s=1\)</span> when <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is principal, and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|E(s)|\le q\Bigl(1+\frac{|s|}\sigma\Bigr)Y^{-\sigma}\\
+(\sigma&gt;0).\quad(1.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+|E(s)|\le q\Bigl(1+\frac{|s|}\sigma\Bigr)Y^{-\sigma}\\
+(\sigma&gt;0).\quad(1.2)
+\end{gathered}
+\]</span>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(\sigma&gt;1\)">\(\sigma&gt;1\)</span>, <span class="math" data-tex="\(\sum_{n&gt;Y}\chi(n)n^{-s}=\int_Y^\infty u^{-s}dA(u)\)">\(\sum_{n&gt;Y}\chi(n)n^{-s}=\int_Y^\infty u^{-s}dA(u)\)</span>. Insert <span class="math" data-tex="\(A=c_\chi u+R\)">\(A=c_\chi u+R\)</span> and integrate the <span class="math" data-tex="\(R\)">\(R\)</span> part by parts. The integral in <span class="math" data-tex="\(E\)">\(E\)</span> converges absolutely and locally uniformly for <span class="math" data-tex="\(\sigma&gt;0\)">\(\sigma&gt;0\)</span>, which gives the continuation, and (1.2) follows from <span class="math" data-tex="\(|R|\le q\)">\(|R|\le q\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-growth-near-the-line-one">2. Growth near the line one</h2>
+<p><strong>Lemma 2.1.</strong> For large <span class="math" data-tex="\(x\)">\(x\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\log|D(\sigma+iv,\chi)|\le C\,T^2\\
+\bigl(|\sigma-1|\le10r_*,\\
+\tfrac12\le|v|\le3x^3\bigr).\quad(2.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\log|D(\sigma+iv,\chi)|\le C\,T^2\\
+\bigl(|\sigma-1|\le10r_*,\\
+\tfrac12\le|v|\le3x^3\bigr).\quad(2.1)
+\end{gathered}
+\]</span>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(s=\sigma+iv\)">\(s=\sigma+iv\)</span> be in the stated range. Then <span class="math" data-tex="\(|s-1|\ge\frac12\)">\(|s-1|\ge\frac12\)</span>, and <span class="math" data-tex="\(|\sigma-1|\le10r_*\)">\(|\sigma-1|\le10r_*\)</span> gives <span class="math" data-tex="\(Y^{|1-\sigma|}\le\exp(10r_*\log Y)\)">\(Y^{|1-\sigma|}\le\exp(10r_*\log Y)\)</span> for <span class="math" data-tex="\(Y\ge1\)">\(Y\ge1\)</span>.</p>
+<p><em>Moderate heights, <span class="math" data-tex="\(|v|\le\exp(L/(2T^2))\)">\(|v|\le\exp(L/(2T^2))\)</span>.</em> Take <span class="math" data-tex="\(Y=\exp(2L/T^2)\)">\(Y=\exp(2L/T^2)\)</span> in (1.1). Then <span class="math" data-tex="\(10r_*\log Y=20T^2\)">\(10r_*\log Y=20T^2\)</span>, so</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Bigl|\sum_{n\le Y}\frac{\chi(n)}{n^s}\Bigr|\le\sum_{n\le Y}\frac{Y^{|1-\sigma|}}n\\
+\le(1+\log Y)e^{20T^2},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Bigl|\sum_{n\le Y}\frac{\chi(n)}{n^s}\Bigr|\le\sum_{n\le Y}\frac{Y^{|1-\sigma|}}n\\
+\le(1+\log Y)e^{20T^2},
+\end{gathered}
+\]</span>
+<p>and the pole term is at most <span class="math" data-tex="\(2e^{20T^2}\)">\(2e^{20T^2}\)</span>. By (1.2), <span class="math" data-tex="\(|E|\le L^{C_0}\cdot4|s|Y^{-\sigma}\)">\(|E|\le L^{C_0}\cdot4|s|Y^{-\sigma}\)</span><span class="math" data-tex="\(\le\exp(-3L/(2T^2)+O(T^2))\)">\(\le\exp(-3L/(2T^2)+O(T^2))\)</span>, which is negligible. Hence <span class="math" data-tex="\(|D|\le\exp(O(T^2))\)">\(|D|\le\exp(O(T^2))\)</span>.</p>
+<p><em>Large heights, <span class="math" data-tex="\(\exp(L/(2T^2))&lt;|v|\le3x^3\)">\(\exp(L/(2T^2))&lt;|v|\le3x^3\)</span>.</em> Take <span class="math" data-tex="\(Y=x^5\)">\(Y=x^5\)</span>. The terms with <span class="math" data-tex="\(n\le N_1:=\exp(L/T^2)\)">\(n\le N_1:=\exp(L/T^2)\)</span> contribute at most <span class="math" data-tex="\((1+L)\exp(10r_*L/T^2)=\exp(O(T^2))\)">\((1+L)\exp(10r_*L/T^2)=\exp(O(T^2))\)</span>. Split <span class="math" data-tex="\(N_1&lt;n\le x^5\)">\(N_1&lt;n\le x^5\)</span> into <span class="math" data-tex="\(O(L)\)">\(O(L)\)</span> dyadic ranges <span class="math" data-tex="\([N&#x27;,2N&#x27;]\)">\([N&#x27;,2N&#x27;]\)</span>. On each, write <span class="math" data-tex="\(\chi(n)=\sum_a\chi(a)\mathbf 1_{n\equiv a\,(q)}\)">\(\chi(n)=\sum_a\chi(a)\mathbf 1_{n\equiv a\,(q)}\)</span> over the residues <span class="math" data-tex="\(a\)">\(a\)</span> modulo <span class="math" data-tex="\(q\)">\(q\)</span> and apply Theorem 2.1 of <a href="a-mean-value-theorem-and-logarithmic-phases-at-large-height.html"><em>A mean value theorem and logarithmic phases at large height</em></a> to the phase <span class="math" data-tex="\(n^{-iv}\)">\(n^{-iv}\)</span>; its hypotheses hold because <span class="math" data-tex="\(N&#x27;\in[N_1,2x^5]\)">\(N&#x27;\in[N_1,2x^5]\)</span> and <span class="math" data-tex="\(\exp(L/(2T^2))\le|v|\le4x^3\)">\(\exp(L/(2T^2))\le|v|\le4x^3\)</span>. Each partial sum of <span class="math" data-tex="\(\chi(n)n^{-iv}\)">\(\chi(n)n^{-iv}\)</span> over the range is therefore at most <span class="math" data-tex="\(q\cdot(N&#x27;/q)\exp(-L/T^{10})\)">\(q\cdot(N&#x27;/q)\exp(-L/T^{10})\)</span>. Partial summation against <span class="math" data-tex="\(n^{-\sigma}\)">\(n^{-\sigma}\)</span> (Lemma 4.2 of <a href="logarithmic-phases-at-polynomial-scales.html"><em>Logarithmic phases at polynomial scales</em></a>) bounds the range by <span class="math" data-tex="\(2N&#x27;^{1-\sigma}\exp(-L/T^{10})\)">\(2N&#x27;^{1-\sigma}\exp(-L/T^{10})\)</span><span class="math" data-tex="\(\le2\exp(50T^4-L/T^{10})\)">\(\le2\exp(50T^4-L/T^{10})\)</span>. The <span class="math" data-tex="\(O(L)\)">\(O(L)\)</span> ranges together contribute <span class="math" data-tex="\(o(1)\)">\(o(1)\)</span>. The pole term is at most <span class="math" data-tex="\(2x^{50r_*}\exp(-L/(2T^2))=o(1)\)">\(2x^{50r_*}\exp(-L/(2T^2))=o(1)\)</span>, and <span class="math" data-tex="\(|E|\le L^{C_0}\cdot8x^3\cdot x^{-5\sigma}\le x^{-1}\)">\(|E|\le L^{C_0}\cdot8x^3\cdot x^{-5\sigma}\le x^{-1}\)</span>. Hence again <span class="math" data-tex="\(|D|\le\exp(O(T^2))\)">\(|D|\le\exp(O(T^2))\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-logarithmic-derivative-on-a-small-disc">3. The logarithmic derivative on a small disc</h2>
+<p><strong>Lemma 3.1 (local formula).</strong> For large <span class="math" data-tex="\(x\)">\(x\)</span>, let <span class="math" data-tex="\(1\le|v|\le\frac52x^3\)">\(1\le|v|\le\frac52x^3\)</span> and <span class="math" data-tex="\(s_0=1+r_*+iv\)">\(s_0=1+r_*+iv\)</span>. The zeros <span class="math" data-tex="\(\rho\)">\(\rho\)</span> of <span class="math" data-tex="\(D(s,\chi)\)">\(D(s,\chi)\)</span> with <span class="math" data-tex="\(|\rho-s_0|\le4r_*\)">\(|\rho-s_0|\le4r_*\)</span> are <span class="math" data-tex="\(O(T^2)\)">\(O(T^2)\)</span> in number, counted with multiplicity, and</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{D&#x27;}D(s,\chi)=\sum_{|\rho-s_0|\le4r_*}\frac1{s-\rho}\\
++O\Bigl(\frac L{T^2}\Bigr)\\
+(|s-s_0|\le2r_*).\quad(3.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{D&#x27;}D(s,\chi)=\sum_{|\rho-s_0|\le4r_*}\frac1{s-\rho}\\
++O\Bigl(\frac L{T^2}\Bigr)\\
+(|s-s_0|\le2r_*).\quad(3.1)
+\end{gathered}
+\]</span>
+<p><strong>Proof.</strong> The closed disc <span class="math" data-tex="\(|s-s_0|\le8r_*\)">\(|s-s_0|\le8r_*\)</span> lies in the region of Lemma 2.1, because <span class="math" data-tex="\(|\sigma-1|\le9r_*\)">\(|\sigma-1|\le9r_*\)</span> and <span class="math" data-tex="\(||{\operatorname{Im}s}|-|v||\le8r_*\)">\(||{\operatorname{Im}s}|-|v||\le8r_*\)</span>, and it avoids the pole at <span class="math" data-tex="\(1\)">\(1\)</span>. So <span class="math" data-tex="\(f(s)=D(s,\chi)\)">\(f(s)=D(s,\chi)\)</span> is holomorphic there with <span class="math" data-tex="\(|f|\le e^{CT^2}\)">\(|f|\le e^{CT^2}\)</span>. At the centre the Euler product gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|f(s_0)|\ge\prod_p\Bigl(1+\frac1{p^{1+r_*}}\Bigr)^{-1}\\
+=\frac{\zeta(2+2r_*)}{\zeta(1+r_*)}\ge\frac{r_*}{1+r_*},
+\end{gathered}
+\]">\[
+\begin{gathered}
+|f(s_0)|\ge\prod_p\Bigl(1+\frac1{p^{1+r_*}}\Bigr)^{-1}\\
+=\frac{\zeta(2+2r_*)}{\zeta(1+r_*)}\ge\frac{r_*}{1+r_*},
+\end{gathered}
+\]</span>
+<p>because <span class="math" data-tex="\(\zeta(\sigma)\le1+1/(\sigma-1)\)">\(\zeta(\sigma)\le1+1/(\sigma-1)\)</span> for <span class="math" data-tex="\(\sigma&gt;1\)">\(\sigma&gt;1\)</span>. Thus <span class="math" data-tex="\(\log(e^{CT^2}/|f(s_0)|)\)">\(\log(e^{CT^2}/|f(s_0)|)\)</span><span class="math" data-tex="\(\le CT^2+\log(2L/T^4)=O(T^2)\)">\(\le CT^2+\log(2L/T^4)=O(T^2)\)</span>.</p>
+<p>Jensen's formula in the form (4) of <a href="../NT-ZETA/NT-ZETA-05.html"><em>Entire functions of order one and the Hadamard product of xi</em></a>, applied on the disc of radius <span class="math" data-tex="\(8r_*\)">\(8r_*\)</span>, bounds the number of zeros with <span class="math" data-tex="\(|\rho-s_0|\le4r_*\)">\(|\rho-s_0|\le4r_*\)</span> by <span class="math" data-tex="\(O(T^2)/\log2\)">\(O(T^2)/\log2\)</span>. Landau's lemma (Theorem 1.1 of <span class="unlinked"><em>Growth bounds and wider zero-free regions</em></span>) with <span class="math" data-tex="\(\Upsilon=8r_*\)">\(\Upsilon=8r_*\)</span>, <span class="math" data-tex="\(R=4r_*\)">\(R=4r_*\)</span> and <span class="math" data-tex="\(r=2r_*\)">\(r=2r_*\)</span> gives (3.1) with error at most</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{6\cdot O(T^2)}{2r_*\log2}=O\Bigl(\frac{T^2}{r_*}\Bigr)=O\Bigl(\frac L{T^2}\Bigr). \ \square
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{6\cdot O(T^2)}{2r_*\log2}=O\Bigl(\frac{T^2}{r_*}\Bigr)=O\Bigl(\frac L{T^2}\Bigr). \ \square
+\end{gathered}
+\]</span>
+<h2 id="4-the-strip">4. The strip</h2>
+<p>We use the zeta function through two facts. First, for <span class="math" data-tex="\(1&lt;\sigma\le2\)">\(1&lt;\sigma\le2\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+-\frac{\zeta&#x27;}\zeta(\sigma)\le\frac1{\sigma-1}+C_\zeta .\quad(4.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+-\frac{\zeta&#x27;}\zeta(\sigma)\le\frac1{\sigma-1}+C_\zeta .\quad(4.1)
+\end{gathered}
+\]</span>
+<p>Indeed, <span class="math" data-tex="\(F(s)=(s-1)\zeta(s)\)">\(F(s)=(s-1)\zeta(s)\)</span> is holomorphic and nonzero on <span class="math" data-tex="\(|s-1|\le\frac14\)">\(|s-1|\le\frac14\)</span> (Lemma 3.1 of <a href="../NT-ZETA/NT-ZETA-08.html"><em>Nonvanishing on the line one and a zero-free region</em></a>), so <span class="math" data-tex="\(-\zeta&#x27;/\zeta(\sigma)=1/(\sigma-1)-F&#x27;/F(\sigma)\)">\(-\zeta&#x27;/\zeta(\sigma)=1/(\sigma-1)-F&#x27;/F(\sigma)\)</span> with <span class="math" data-tex="\(F&#x27;/F\)">\(F&#x27;/F\)</span> bounded on <span class="math" data-tex="\([1,\frac54]\)">\([1,\frac54]\)</span>; for <span class="math" data-tex="\(\frac54\le\sigma\le2\)">\(\frac54\le\sigma\le2\)</span>, <span class="math" data-tex="\(-\zeta&#x27;/\zeta(\sigma)\le-\zeta&#x27;/\zeta(\frac54)\)">\(-\zeta&#x27;/\zeta(\sigma)\le-\zeta&#x27;/\zeta(\frac54)\)</span>. Second, the identity <span class="math" data-tex="\(3+4\cos\theta+\cos2\theta=2(1+\cos\theta)^2\)">\(3+4\cos\theta+\cos2\theta=2(1+\cos\theta)^2\)</span> ((1.1) of that lesson).</p>
+<p><strong>Theorem 4.1 (zero-free strip).</strong> There is <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>, depending on <span class="math" data-tex="\(C_0\)">\(C_0\)</span>, such that for large <span class="math" data-tex="\(x\)">\(x\)</span> no <span class="math" data-tex="\(D(s,\chi)\)">\(D(s,\chi)\)</span> with <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of modulus <span class="math" data-tex="\(q\le L^{C_0}\)">\(q\le L^{C_0}\)</span> vanishes in</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Re}s\ge1-\frac{cT^2}L,\\
+1\le|\operatorname{Im}s|\le x^3.\quad(4.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\operatorname{Re}s\ge1-\frac{cT^2}L,\\
+1\le|\operatorname{Im}s|\le x^3.\quad(4.2)
+\end{gathered}
+\]</span>
+<p>Moreover</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\Bigl|\frac{D&#x27;}D(s,\chi)\Bigr|\le C\,L\\
+\Bigl(1-\frac{cT^2}{2L}\le\operatorname{Re}s\le1+\frac1L,\\
+2\le|\operatorname{Im}s|\le\frac{x^3}2\Bigr).\quad(4.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\Bigl|\frac{D&#x27;}D(s,\chi)\Bigr|\le C\,L\\
+\Bigl(1-\frac{cT^2}{2L}\le\operatorname{Re}s\le1+\frac1L,\\
+2\le|\operatorname{Im}s|\le\frac{x^3}2\Bigr).\quad(4.3)
+\end{gathered}
+\]</span>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(\sigma&gt;1\)">\(\sigma&gt;1\)</span>, the coefficients of <span class="math" data-tex="\(-D&#x27;/D(s,\chi)=\sum_n\Lambda(n)\chi(n)n^{-s}\)">\(-D&#x27;/D(s,\chi)=\sum_n\Lambda(n)\chi(n)n^{-s}\)</span> give, term by term,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+0&amp;\le3\Bigl(-\frac{\zeta&#x27;}\zeta(\sigma)\Bigr)\\
+&amp;\quad+4\operatorname{Re}\Bigl(-\frac{D&#x27;}D(\sigma+iv,\chi)\Bigr)\\
+&amp;\quad+\operatorname{Re}\Bigl(-\frac{D&#x27;}D(\sigma+2iv,\chi^2)\Bigr).\quad(4.4)
+\end{aligned}
+\]">\[
+\begin{aligned}
+0&amp;\le3\Bigl(-\frac{\zeta&#x27;}\zeta(\sigma)\Bigr)\\
+&amp;\quad+4\operatorname{Re}\Bigl(-\frac{D&#x27;}D(\sigma+iv,\chi)\Bigr)\\
+&amp;\quad+\operatorname{Re}\Bigl(-\frac{D&#x27;}D(\sigma+2iv,\chi^2)\Bigr).\quad(4.4)
+\end{aligned}
+\]</span>
+<p>Indeed, at <span class="math" data-tex="\(n\)">\(n\)</span> with <span class="math" data-tex="\(\chi(n)=0\)">\(\chi(n)=0\)</span> the bracket is <span class="math" data-tex="\(3\Lambda(n)n^{-\sigma}\ge0\)">\(3\Lambda(n)n^{-\sigma}\ge0\)</span>, and otherwise <span class="math" data-tex="\(\chi(n)n^{-iv}=e^{i\theta}\)">\(\chi(n)n^{-iv}=e^{i\theta}\)</span> and the bracket is <span class="math" data-tex="\(\Lambda(n)n^{-\sigma}(3+4\cos\theta+\cos2\theta)\ge0\)">\(\Lambda(n)n^{-\sigma}(3+4\cos\theta+\cos2\theta)\ge0\)</span>.</p>
+<p>Suppose <span class="math" data-tex="\(\rho=\beta+iv\)">\(\rho=\beta+iv\)</span> is a zero with <span class="math" data-tex="\(\beta\ge1-cT^2/L\)">\(\beta\ge1-cT^2/L\)</span> and <span class="math" data-tex="\(1\le|v|\le x^3\)">\(1\le|v|\le x^3\)</span>. The Euler product shows <span class="math" data-tex="\(\beta\le1\)">\(\beta\le1\)</span>. Put <span class="math" data-tex="\(\sigma=1+20cT^2/L\)">\(\sigma=1+20cT^2/L\)</span>, which is less than <span class="math" data-tex="\(1+r_*\)">\(1+r_*\)</span> for large <span class="math" data-tex="\(x\)">\(x\)</span>. Apply Lemma 3.1 at the height <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(s=\sigma+iv\)">\(s=\sigma+iv\)</span>: then <span class="math" data-tex="\(|s-s_0|&lt;r_*\)">\(|s-s_0|&lt;r_*\)</span>, and <span class="math" data-tex="\(|\rho-s_0|=1+r_*-\beta\le4r_*\)">\(|\rho-s_0|=1+r_*-\beta\le4r_*\)</span>, so <span class="math" data-tex="\(\rho\)">\(\rho\)</span> occurs in the sum. Every zero <span class="math" data-tex="\(\rho&#x27;\)">\(\rho&#x27;\)</span> in that sum has <span class="math" data-tex="\(\operatorname{Re}\rho&#x27;\le1&lt;\sigma\)">\(\operatorname{Re}\rho&#x27;\le1&lt;\sigma\)</span>, so <span class="math" data-tex="\(\operatorname{Re}(1/(s-\rho&#x27;))\ge0\)">\(\operatorname{Re}(1/(s-\rho&#x27;))\ge0\)</span>, and the term of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> equals <span class="math" data-tex="\(1/(\sigma-\beta)\)">\(1/(\sigma-\beta)\)</span>. Therefore</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\operatorname{Re}\Bigl(-\frac{D&#x27;}D(\sigma+iv,\chi)\Bigr)\\
+\le-\frac1{\sigma-\beta}+C&#x27;\frac L{T^2}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\operatorname{Re}\Bigl(-\frac{D&#x27;}D(\sigma+iv,\chi)\Bigr)\\
+\le-\frac1{\sigma-\beta}+C&#x27;\frac L{T^2}.
+\end{gathered}
+\]</span>
+<p>At the height <span class="math" data-tex="\(2v\)">\(2v\)</span>, with <span class="math" data-tex="\(1\le2|v|\le\frac52x^3\)">\(1\le2|v|\le\frac52x^3\)</span>, Lemma 3.1 applies to <span class="math" data-tex="\(\chi^2\)">\(\chi^2\)</span> (also when <span class="math" data-tex="\(\chi^2\)">\(\chi^2\)</span> is principal, since the disc avoids <span class="math" data-tex="\(s=1\)">\(s=1\)</span>), and dropping the nonnegative zero terms gives <span class="math" data-tex="\(\operatorname{Re}(-D&#x27;/D(\sigma+2iv,\chi^2))\le C&#x27;L/T^2\)">\(\operatorname{Re}(-D&#x27;/D(\sigma+2iv,\chi^2))\le C&#x27;L/T^2\)</span>. With (4.1), inequality (4.4) becomes</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\le\frac3{\sigma-1}-\frac4{\sigma-\beta}+5C&#x27;\frac L{T^2}+3C_\zeta .
+\end{gathered}
+\]">\[
+\begin{gathered}
+0\le\frac3{\sigma-1}-\frac4{\sigma-\beta}+5C&#x27;\frac L{T^2}+3C_\zeta .
+\end{gathered}
+\]</span>
+<p>Here <span class="math" data-tex="\(\sigma-1=20cT^2/L\)">\(\sigma-1=20cT^2/L\)</span> and <span class="math" data-tex="\(\sigma-\beta\le21cT^2/L\)">\(\sigma-\beta\le21cT^2/L\)</span>, so the right side is at most</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac L{T^2}\Bigl(\frac3{20c}-\frac4{21c}+5C&#x27;\Bigr)+3C_\zeta\\
+=\frac L{T^2}\Bigl(5C&#x27;-\frac{17}{420c}\Bigr)+3C_\zeta,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac L{T^2}\Bigl(\frac3{20c}-\frac4{21c}+5C&#x27;\Bigr)+3C_\zeta\\
+=\frac L{T^2}\Bigl(5C&#x27;-\frac{17}{420c}\Bigr)+3C_\zeta,
+\end{gathered}
+\]</span>
+<p>which is negative for large <span class="math" data-tex="\(x\)">\(x\)</span> once <span class="math" data-tex="\(c&lt;17/(4200C&#x27;)\)">\(c&lt;17/(4200C&#x27;)\)</span>. This contradiction proves (4.2).</p>
+<p>For (4.3), let <span class="math" data-tex="\(s\)">\(s\)</span> be in the stated region and apply Lemma 3.1 with <span class="math" data-tex="\(v=\operatorname{Im}s\)">\(v=\operatorname{Im}s\)</span>; then <span class="math" data-tex="\(|s-s_0|\le r_*+cT^2/(2L)\le2r_*\)">\(|s-s_0|\le r_*+cT^2/(2L)\le2r_*\)</span>. Every zero <span class="math" data-tex="\(\rho&#x27;\)">\(\rho&#x27;\)</span> in the sum satisfies <span class="math" data-tex="\(|\operatorname{Im}\rho&#x27;|\in[|v|-4r_*,|v|+4r_*]\subseteq[1,x^3]\)">\(|\operatorname{Im}\rho&#x27;|\in[|v|-4r_*,|v|+4r_*]\subseteq[1,x^3]\)</span>, hence <span class="math" data-tex="\(\operatorname{Re}\rho&#x27;&lt;1-cT^2/L\)">\(\operatorname{Re}\rho&#x27;&lt;1-cT^2/L\)</span> by (4.2), and <span class="math" data-tex="\(|s-\rho&#x27;|\ge cT^2/(2L)\)">\(|s-\rho&#x27;|\ge cT^2/(2L)\)</span>. The <span class="math" data-tex="\(O(T^2)\)">\(O(T^2)\)</span> zero terms contribute <span class="math" data-tex="\(O(L/c)\)">\(O(L/c)\)</span>, and the error in (3.1) is <span class="math" data-tex="\(O(L/T^2)\)">\(O(L/T^2)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The width <span class="math" data-tex="\(cT^2/L\)">\(cT^2/L\)</span> comes from balancing two scales: the growth bound <span class="math" data-tex="\(\log|D|\ll T^2\)">\(\log|D|\ll T^2\)</span> controls the zeros on discs of radius <span class="math" data-tex="\(r_*=T^4/L\)">\(r_*=T^4/L\)</span>, and the logarithmic derivative is then known up to an error <span class="math" data-tex="\(T^2/r_*=L/T^2\)">\(T^2/r_*=L/T^2\)</span>. The programme also contains the much wider Vinogradov–Korobov region for characters (Theorem 8.3 of <a href="../NT-DIRL/NT-DIRL-07.html"><em>Zero-free regions and the exceptional zero</em></a>); the strip proved here rests only on the elementary mean value theorem of Lesson 4 and suffices for the next lesson.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Check that (1.1) agrees with the Dirichlet series for <span class="math" data-tex="\(\sigma&gt;1\)">\(\sigma&gt;1\)</span>, and that for <span class="math" data-tex="\(0&lt;\sigma\le1\)">\(0&lt;\sigma\le1\)</span> its right side does not depend on <span class="math" data-tex="\(Y\)">\(Y\)</span>.</p>
+<p><strong>5.2.</strong> Prove <span class="math" data-tex="\(\zeta(\sigma)\le\sigma/(\sigma-1)\)">\(\zeta(\sigma)\le\sigma/(\sigma-1)\)</span> for <span class="math" data-tex="\(\sigma&gt;1\)">\(\sigma&gt;1\)</span>, and deduce <span class="math" data-tex="\(|D(1+r+iv,\chi)|\ge r/(1+r)\)">\(|D(1+r+iv,\chi)|\ge r/(1+r)\)</span> for every character and <span class="math" data-tex="\(r&gt;0\)">\(r&gt;0\)</span>.</p>
+<p><strong>5.3.</strong> Prove <span class="math" data-tex="\(3+4\cos\theta+\cos2\theta=2(1+\cos\theta)^2\)">\(3+4\cos\theta+\cos2\theta=2(1+\cos\theta)^2\)</span>.</p>
+<p><strong>5.4.</strong> At height <span class="math" data-tex="\(|t|=x^2\)">\(|t|=x^2\)</span> and modulus <span class="math" data-tex="\(q\le L^{C_0}\)">\(q\le L^{C_0}\)</span>, the classical region has width about <span class="math" data-tex="\(c_1/\log(q(|t|+2))\asymp1/L\)">\(c_1/\log(q(|t|+2))\asymp1/L\)</span>. Let <span class="math" data-tex="\(N=x^{1/2}\)">\(N=x^{1/2}\)</span>. Compute <span class="math" data-tex="\(N^{-w}\)">\(N^{-w}\)</span> for <span class="math" data-tex="\(w=c_1/(3L)\)">\(w=c_1/(3L)\)</span> and for <span class="math" data-tex="\(w=cT^2/(2L)\)">\(w=cT^2/(2L)\)</span>, and explain which one beats every fixed power of <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p><strong>5.5.</strong> Show that the number of zeros of <span class="math" data-tex="\(D(s,\chi)\)">\(D(s,\chi)\)</span> with <span class="math" data-tex="\(|\rho-(1+r_*+iv)|\le4r_*\)">\(|\rho-(1+r_*+iv)|\le4r_*\)</span> is <span class="math" data-tex="\(O(T^2)\)">\(O(T^2)\)</span> uniformly in <span class="math" data-tex="\(1\le|v|\le\frac52x^3\)">\(1\le|v|\le\frac52x^3\)</span>, using Jensen's formula directly rather than its corollary.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> For <span class="math" data-tex="\(\sigma&gt;1\)">\(\sigma&gt;1\)</span> the identity is the partial summation of the proof. For two values <span class="math" data-tex="\(Y&lt;Y&#x27;\)">\(Y&lt;Y&#x27;\)</span>, both right sides are holomorphic in <span class="math" data-tex="\(\sigma&gt;0\)">\(\sigma&gt;0\)</span> away from <span class="math" data-tex="\(s=1\)">\(s=1\)</span> and agree for <span class="math" data-tex="\(\sigma&gt;1\)">\(\sigma&gt;1\)</span>, so they agree on <span class="math" data-tex="\(\sigma&gt;0\)">\(\sigma&gt;0\)</span> by uniqueness of analytic continuation.</p>
+<p><strong>5.2.</strong> <span class="math" data-tex="\(\zeta(\sigma)\le1+\int_1^\infty u^{-\sigma}du\)">\(\zeta(\sigma)\le1+\int_1^\infty u^{-\sigma}du\)</span><span class="math" data-tex="\(=1+1/(\sigma-1)=\sigma/(\sigma-1)\)">\(=1+1/(\sigma-1)=\sigma/(\sigma-1)\)</span>. Then <span class="math" data-tex="\(|D(1+r+iv,\chi)|\)">\(|D(1+r+iv,\chi)|\)</span><span class="math" data-tex="\(\ge\zeta(2+2r)/\zeta(1+r)\)">\(\ge\zeta(2+2r)/\zeta(1+r)\)</span><span class="math" data-tex="\(\ge1/\zeta(1+r)\ge r/(1+r)\)">\(\ge1/\zeta(1+r)\ge r/(1+r)\)</span>, as in the proof of Lemma 3.1.</p>
+<p><strong>5.3.</strong> <span class="math" data-tex="\(\cos2\theta=2\cos^2\theta-1\)">\(\cos2\theta=2\cos^2\theta-1\)</span>, so the left side is <span class="math" data-tex="\(2+4\cos\theta+2\cos^2\theta\)">\(2+4\cos\theta+2\cos^2\theta\)</span>.</p>
+<p><strong>5.4.</strong> <span class="math" data-tex="\(\log N=L/2\)">\(\log N=L/2\)</span>, so <span class="math" data-tex="\(N^{-w}=e^{-c_1/6}\)">\(N^{-w}=e^{-c_1/6}\)</span> for the classical width, a constant, and <span class="math" data-tex="\(N^{-w}=\exp(-cT^2/4)=L^{-cT/4}\)">\(N^{-w}=\exp(-cT^2/4)=L^{-cT/4}\)</span> for the strip of this lesson, which is smaller than <span class="math" data-tex="\(L^{-A}\)">\(L^{-A}\)</span> for every fixed <span class="math" data-tex="\(A\)">\(A\)</span> once <span class="math" data-tex="\(T&gt;4A/c\)">\(T&gt;4A/c\)</span>.</p>
+<p><strong>5.5.</strong> With <span class="math" data-tex="\(f(s)=D(s,\chi)\)">\(f(s)=D(s,\chi)\)</span> on the disc of radius <span class="math" data-tex="\(8r_*\)">\(8r_*\)</span> about <span class="math" data-tex="\(s_0\)">\(s_0\)</span>, Jensen's formula gives <span class="math" data-tex="\(\sum_{|\rho-s_0|&lt;8r_*}\log(8r_*/|\rho-s_0|)\)">\(\sum_{|\rho-s_0|&lt;8r_*}\log(8r_*/|\rho-s_0|)\)</span><span class="math" data-tex="\(\le\max\log|f|-\log|f(s_0)|=O(T^2)\)">\(\le\max\log|f|-\log|f(s_0)|=O(T^2)\)</span> (after perturbing the radius to avoid zeros on the circle). Each zero with <span class="math" data-tex="\(|\rho-s_0|\le4r_*\)">\(|\rho-s_0|\le4r_*\)</span> contributes at least <span class="math" data-tex="\(\log2\)">\(\log2\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[PD] OpenAI, <em>The Poisson–Dirichlet law for prime predecessors</em>, OpenAI Math Release preprint, 24 September 2026, Appendix, Lemmas 9.6–9.8. https://github.com/openai/math/tree/main/preprints/The-Poisson-Dirichlet-Law-for-Prime-Predecessors-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

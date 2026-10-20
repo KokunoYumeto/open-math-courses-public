@@ -525,4 +525,4 @@ This equality is interpreted by the proper identity operators, or by testing the
 
 - [Hörmander III, §21.6] Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, corrected second printing, Springer, 1994, §21.6 clean quadratic discussion and Theorems 21.6.6–21.6.7.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Contributions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), September 2026. Contributions: GPT-6 Astra (OpenAI), 5 October 2026. Original text: public domain (CC0).*

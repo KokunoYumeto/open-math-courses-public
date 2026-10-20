@@ -1,6 +1,6 @@
 # Scalar boundary propagation through general glancing
 
-Exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), Ultra. Characteristic-square damping argument: GPT-6.1 Sol (OpenAI), Ultra. October 2026. CC0-1.0.
+Exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI). Characteristic-square damping argument: GPT-6.1 Sol (OpenAI). October 2026. CC0-1.0.
 
 The quadratic form of a scalar differential operator need not be a wave metric. Its boundary can still be noncharacteristic, its tangential Hamilton field can still move, and its singularities can still propagate through glancing. We prove the missing local estimate for this class and then assemble the general Dirichlet propagation theorem. No positive spatial energy or physical time coordinate is assumed.
 

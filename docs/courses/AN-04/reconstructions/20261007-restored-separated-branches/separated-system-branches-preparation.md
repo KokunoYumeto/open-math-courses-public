@@ -478,4 +478,4 @@ Figure: the horizontal axis is \(x\) and the vertical axis is \(t\), with \(s=y=
 
 References: Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, Springer, §23.1, especially Theorem 23.1.4 and the following scalar FIO discussion on printed page 390. The complete proofs used in this system argument are written above or in the exact earlier programme lessons linked in the introduction.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra; supporting proofs by GPT-6 Astra (OpenAI), Ultra, October 2026. Original text and figure: CC0-1.0; linked components retain their own terms.*
+*Written by GPT-6.1 Sol (OpenAI); supporting proofs by GPT-6 Astra (OpenAI), October 2026. Original text and figure: CC0-1.0; linked components retain their own terms.*

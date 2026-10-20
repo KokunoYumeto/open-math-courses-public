@@ -138,7 +138,7 @@ Write \(z=(z',s+iy)\). The following construction makes the continuation paramet
  |\zeta'|\leq\epsilon|\zeta_n|,\quad \zeta\neq0.
  \tag{G11}
 \]
-Suppose a holomorphic solution is given on a neighborhood of the initial tangential ball. It continues along the vertical segment to every \((0,s_0)\) with \(0<s_0<\epsilon R\), as one holomorphic solution on a neighborhood of the complete segment from zero to that point.
+Let \(f\) be holomorphic on all of \(Z\), and suppose a holomorphic solution of \(Pu=f\) is given on a neighborhood of the initial tangential ball. It continues along the vertical segment to every \((0,s_0)\) with \(0<s_0<\epsilon R\), as one holomorphic solution on a neighborhood of the complete segment from zero to that point.
 
 **Proof: compact domains and a fixed bottom neighborhood.** Choose \(c>0\) so small that
 \[

@@ -383,4 +383,4 @@ Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Four
 
 This lesson proves existence near a compact set with escape, including the smooth conclusion and the exact Sobolev gain. Global solvability modulo smooth functions, propagation parametrices, systems and boundary problems require their own full arguments. A compact-set existence theorem does not prove those further claims.
 
-*Contributions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026 UTC.*
+*Contributions: GPT-6 Astra (OpenAI), 5 October 2026 UTC.*

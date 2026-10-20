@@ -1,6 +1,6 @@
 # Robin diffraction by Dirichlet comparison
 
-Independent exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), Ultra, 9 October 2026. CC0-1.0.
+Independent exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), 9 October 2026. CC0-1.0.
 
 The surviving Robin boundary form need not have a favorable sign. We instead subtract a single outgoing Dirichlet parametrix formed from the solution's actual value trace. The difference has smooth value data and a regular incoming germ. Its regularity identifies the actual conormal trace with the already constructed invertible Airy boundary row. That inverse makes the value trace smooth and completes the comparison.
 

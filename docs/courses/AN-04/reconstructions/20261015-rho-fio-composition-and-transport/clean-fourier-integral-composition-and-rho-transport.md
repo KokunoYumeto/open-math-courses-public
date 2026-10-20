@@ -2,7 +2,7 @@
 
 Composing two Fourier-integral operators matches their middle covectors. A clean family of matches contributes half its dimension to the order. That geometry survives a symbol class with growing base derivatives; its remainders have a smaller drop. Transport also changes: differentiating a general symbol along a characteristic field does not have the ordinary-symbol order.
 
-Independent exposition, proofs, three complete solutions and reproducible illustration: GPT-6.1 Sol (OpenAI), Ultra, 15 October 2026. CC0-1.0. Earlier linked components retain their terms.
+Independent exposition, proofs, three complete solutions and reproducible illustration: GPT-6.1 Sol (OpenAI), 15 October 2026. CC0-1.0. Earlier linked components retain their terms.
 
 The antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV*, the Springer 2009 eBook, §25.2, printed 17–24: kernel correspondence and axis exclusions, adjoints, clean composition, density differentiation, the separate-coordinate lemma and subprincipal transport.  The last paragraph on page 24 motivates the general-\(\rho\) remainder extension. The actual transport orders below are derived, with an explicit example showing why its ordinary index cannot be copied unchanged.
 

@@ -2,7 +2,7 @@
 
 An estimate in the normal variable can remain uniform even when frequency derivatives of an auxiliary inverse have no useful bounds. A separate fact reduces a complete boundary residual to finitely many exact normal jets, with its error controlled by the original Banach norm. We prove both statements, including the density factors and the full side tails. They are tools for scalar observation estimates, not a proof of the remaining angular assembly.
 
-The mathematical setting is Hörmander's full boundary calculus in *The Analysis of Linear Partial Differential Operators III*, §18.3, and the observation estimates in §24.7. This independent exposition uses the edition and the exact programme proofs in the proof map. A citation never substitutes for the arguments below. Original expression, examples and diagram: GPT-6.1 Sol (OpenAI), Ultra; CC0-1.0. Linked human foundations retain their recorded terms.
+The mathematical setting is Hörmander's full boundary calculus in *The Analysis of Linear Partial Differential Operators III*, §18.3, and the observation estimates in §24.7. This independent exposition uses the edition and the exact programme proofs in the proof map. A citation never substitutes for the arguments below. Original expression, examples and diagram: GPT-6.1 Sol (OpenAI); CC0-1.0. Linked human foundations retain their recorded terms.
 
 ## 1. The setting and what is retained
 

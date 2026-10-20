@@ -2,9 +2,9 @@
 
 *Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
-The construction of Lessons 18 and 19 counts integers \(d\) whose predecessor \(d-1\) has a prescribed shape, and then removes the composite \(d\). Both steps require bilinear sums \(\sum_{m,n}\alpha_m\beta_n\,F(mn-1)\mathcal W(mn-1)\) to be small, where \(\mathcal W\) is a weight that marks prime factors of \(mn-1\) from fixed groups of primes. A theorem of OpenAI's companion paper on the Poisson–Dirichlet law for prime predecessors gives this when \(\alpha_m\) is the indicator of primes minus its average over \(W\)-rough numbers. Its proof uses \(\alpha\) only through cancellation against Dirichlet characters of small modulus twisted by \(m^{it}\). This lesson states these two facts as named results and proves the corresponding cancellation for the coefficient that replaces the indicator of \(x^\gamma\)-rough numbers by its density \(D_\gamma(\log m/L)/L\) of [*A block sieve and rough-number densities*](a-block-sieve-and-rough-number-densities.md).
+The construction of Lessons 18 and 19 counts integers \(d\) whose predecessor \(d-1\) has a prescribed shape, and then removes the composite \(d\). Both steps require bilinear sums \(\sum_{m,n}\alpha_m\beta_n\,F(mn-1)\mathcal W(mn-1)\) to be small, where \(\mathcal W\) is a weight that marks prime factors of \(mn-1\) from fixed groups of primes. A theorem of OpenAI's companion paper on the Poisson–Dirichlet law for prime predecessors gives this when \(\alpha_m\) is the indicator of primes minus its average over \(W\)-rough numbers. Its proof uses \(\alpha\) only through cancellation against Dirichlet characters of small modulus twisted by \(m^{it}\). Both facts are theorems of [*The marked Type II estimate*](course:marked-type-ii-estimates-for-prime-predecessors/the-marked-type-ii-estimate), the first lesson of the course *Marked Type II estimates for prime predecessors*, which proves them. This lesson states them in the form used here and proves the corresponding cancellation for the coefficient that replaces the indicator of \(x^\gamma\)-rough numbers by its density \(D_\gamma(\log m/L)/L\) of [*A block sieve and rough-number densities*](a-block-sieve-and-rough-number-densities.md).
 
-**Prerequisites.** [*A block sieve and rough-number densities*](a-block-sieve-and-rough-number-densities.md), (1.1)–(1.4), Lemma 1.1 and Lemma 2.1; [*The Siegel–Walfisz theorem*](course:NT-DIRL/NT-DIRL-11), Theorem 2.1; [*Counting primes by elementary means: Chebyshev and Mertens*](course:NT-ZETA/NT-ZETA-02), Theorems 3.1 and 4.2.
+**Prerequisites.** [*A block sieve and rough-number densities*](a-block-sieve-and-rough-number-densities.md), (1.1)–(1.4), Lemma 1.1 and Lemma 2.1; [*The Siegel–Walfisz theorem*](course:NT-DIRL/NT-DIRL-11), Theorem 2.1; [*Counting primes by elementary means: Chebyshev and Mertens*](course:NT-ZETA/NT-ZETA-02), Theorems 3.1 and 4.2; [*The marked Type II estimate*](course:marked-type-ii-estimates-for-prime-predecessors/the-marked-type-ii-estimate), Theorems 2.2 and 2.3; [*A mean value theorem and logarithmic phases at large height*](course:marked-type-ii-estimates-for-prime-predecessors/a-mean-value-theorem-and-logarithmic-phases-at-large-height), Theorem 2.1; [*Long prime polynomials*](course:marked-type-ii-estimates-for-prime-predecessors/long-prime-polynomials), Theorem 1.1.
 
 ## 1. Marked weights
 
@@ -26,9 +26,9 @@ V_i=\sum_{p\in\mathcal P_i}\frac1p,\\
 \]
 By Mertens' estimate (Theorem 3.1 of [*Counting primes by elementary means*](course:NT-ZETA/NT-ZETA-02)), \(V_i=\log2+o(1)\). The weight \(\mathcal W\) is nonnegative, vanishes unless every group supplies a prime divisor, and is bounded in terms of \(K\) and \(q\), since \(jq^{j-1}\) is bounded. A function \(F\) on positive integers is **group-invariant** if \(F(ph)=F(h)\) for every group prime \(p\) and every \(h\); equivalently, \(F(h)\) depends only on \(h\) with all its group prime powers removed.
 
-## 2. Named results
+## 2. The marked Type II estimate and long prime polynomials
 
-**Named result N5** (one-sided marked Type II estimate [PD, Theorem 3.1]). Fix \(\delta,C,D_*>0\) and \(q\in(0,1)\). Let \(H_m,H_n\ge x^\delta\) with \(X=H_mH_n\asymp x\). Let \(F\) be group-invariant with \(|F|\le1\). Let \(\alpha_m\) be supported on an interval in \([H_m,2H_m]\), where
+**N5** (one-sided marked Type II estimate [PD, Theorem 3.1]; Theorem 2.3 of [*The marked Type II estimate*](course:marked-type-ii-estimates-for-prime-predecessors/the-marked-type-ii-estimate)). Fix \(\delta,C,D_*>0\) and \(q\in(0,1)\). Let \(H_m,H_n\ge x^\delta\) with \(X=H_mH_n\asymp x\). Let \(F\) be group-invariant with \(|F|\le1\). Let \(\alpha_m\) be supported on an interval in \([H_m,2H_m]\), where
 \[
 \begin{gathered}
 \begin{aligned}
@@ -47,7 +47,7 @@ and let \(\beta_n\) be supported on \(W\)-rough integers in \([H_n,2H_n]\) with 
 \]
 The lower bound for \(K\) does not depend on the \(a_i\); the constant \(C'\) and the threshold for \(x\) may.
 
-**Named result N6** (coefficient criterion [OpenAI-029, Lemma 10.2], extracted from the proof of N5 in [PD, Sections 3–5]). In N5, replace \(\alpha\) by any sequence supported on \(W\)-rough integers of an interval \(I\subseteq[H_m,2H_m]\), keep \(\beta\) as there, and assume \(|\alpha_m|\le L^C\). Suppose that for all fixed \(A_0,B,A>0\), every Dirichlet character \(\chi\) of modulus \(k\le L^{A_0}\) and every \(|t|\le2XL^B\),
+**N6** (coefficient criterion [OpenAI-029, Lemma 10.2], extracted from the proof of N5 in [PD, Sections 3–5]; Theorem 2.2 of [*The marked Type II estimate*](course:marked-type-ii-estimates-for-prime-predecessors/the-marked-type-ii-estimate)). In N5, replace \(\alpha\) by any sequence supported on \(W\)-rough integers of an interval \(I\subseteq[H_m,2H_m]\), keep \(\beta\) as there, and assume \(|\alpha_m|\le L^C\). Suppose that for all fixed \(A_0,B,A>0\), every Dirichlet character \(\chi\) of modulus \(k\le L^{A_0}\) and every \(|t|\le2XL^B\),
 \[
 \begin{aligned}
 &\Bigl|\frac1{H_m}\sum_m\alpha_m\chi(m)m^{it}\Bigr|\\
@@ -56,7 +56,7 @@ The lower bound for \(K\) does not depend on the \(a_i\); the constant \(C'\) an
 \]
 uniformly in the interval, the character and \(t\). Then (2.1) holds for \(K\) large enough in terms of the fixed data, with the same uniformity.
 
-**Named result N7** (long prime polynomials and logarithmic phases [PD, Lemmas 2.3 and 2.4], proved in [PD, Appendix, Lemmas 9.1 and 9.5]; also [PP, Lemmas 3.1 and 3.3]).
+**N7** (long prime polynomials and logarithmic phases [PD, Lemmas 2.3 and 2.4], proved in [PD, Appendix, Lemmas 9.1 and 9.5]; also [PP, Lemmas 3.1 and 3.3]; Theorem 1.1 of [*Long prime polynomials*](course:marked-type-ii-estimates-for-prime-predecessors/long-prime-polynomials) and Theorem 2.1 of [*A mean value theorem and logarithmic phases at large height*](course:marked-type-ii-estimates-for-prime-predecessors/a-mean-value-theorem-and-logarithmic-phases-at-large-height)).
 
 1. Fix \(0<\tau<\theta<1\) and \(C,A>0\). There is \(B_0\) such that for \(x^\tau/2\le N\le x^\theta\), every character \(\chi\) of modulus \(k\le L^C\), every interval \(J\subseteq[N,2N]\) and \(L^{B_0}\le|u|\le x^2\),
 \[
@@ -66,11 +66,11 @@ uniformly in the interval, the character and \(t\). Then (2.1) holds for \(K\) l
 \[
 \begin{aligned}
 &\Bigl|\sum_{\substack{n\in J\\ n\equiv a\ (k)}}n^{iu}\Bigr|\\
-&\quad \le C\,\frac Nk\exp\Bigl(-\frac L{(\log L)^{C_3}}\Bigr).
+&\quad \le\frac Nk\exp\Bigl(-\frac L{(\log L)^{C_3}}\Bigr).
 \end{aligned}
 \]
 
-These three results are used without proof in the programme. N5 and N6 rest on a determinant estimate with marks on one side and on a major-arc analysis; N7 rests on Vinogradov's mean-value method and a zero-free strip at large height.
+The course *Marked Type II estimates for prime predecessors* proves all three, in the following form. Its Theorem 2.2 is N6 without the restriction to an interval: the coefficient may be any sequence on the \(W\)-rough integers of \([H_m,2H_m]\). In Theorems 2.2 and 2.3 the number of groups needed depends only on \(C\) and \(D_*\). Theorem 1.1 of *Long prime polynomials* holds for \(x^\tau/2\le N\le x^{1/\tau}\), which contains the range of N7(1), with \(B_0=A+8\). Theorem 2.1 of *A mean value theorem and logarithmic phases at large height* is N7(2), with \(C_3=10\). N5 and N6 rest on a determinant estimate with marks on one side and on a major-arc analysis; N7 rests on Vinogradov's mean-value method and a zero-free strip at large height.
 
 ## 3. Characters on rough numbers
 

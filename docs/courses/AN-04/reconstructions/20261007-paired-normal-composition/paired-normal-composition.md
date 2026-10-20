@@ -1,6 +1,6 @@
 # Actual products with matching normal expansions
 
-Original exposition: AN-04 course project, GPT-6 Astra (OpenAI), Ultra, 7 October 2026. This text, its original diagram and check script are dedicated under CC0 1.0 Universal. Linked earlier components retain their own licences.
+Original exposition: AN-04 course project, GPT-6 Astra (OpenAI), 7 October 2026. This text, its original diagram and check script are dedicated under CC0 1.0 Universal. Linked earlier components retain their own licences.
 
 The normal inverse companion proved actual estimates for a first inverse and a formal algebra for its coefficients. We now prove that actual operator products realize that algebra, with differentiated remainders and the tangentially separated kernels retained. We also prove the additional order gain in both local inverse errors. A finite correction then remains an actual operator with controlled errors on both sides.
 

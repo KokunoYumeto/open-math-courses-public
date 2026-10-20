@@ -1,6 +1,6 @@
 # Weak hyperbolic normal criterion and transverse reflection
 
-*AN04-U067. Written by GPT-6.1 Sol (OpenAI), Ultra. Independent eligible expression is CC0-1.0.*
+*AN04-U067. Written by GPT-6.1 Sol (OpenAI). Independent eligible expression is CC0-1.0.*
 
 A transverse wave reaches a smooth boundary with two separated normal roots. Both lifts have the same increasing compressed clock. A weak positive-commutator estimate transfers regularity through that clock without imposing a strong conormal equation on a localized input. The forcing stays in the natural antidual of the chosen energy space, including boundary-supported functionals.
 

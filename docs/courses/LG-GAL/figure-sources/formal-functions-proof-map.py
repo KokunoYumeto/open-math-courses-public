@@ -1,12 +1,19 @@
 """Reproduce the actual Rees base change, kernel square and formal-functions bounds."""
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
+
+def installed_font_path(filename):
+    try:
+        return Path(ImageFont.truetype(filename,12).path)
+    except OSError:
+        return Path(filename)
+
 import math
 
 W, H = 2600, 3460
 OUT = Path(__file__).resolve().parent.parent / 'assets' / 'formal-functions-proof-map.png'
-REG = [Path('C:/Windows/Fonts/segoeui.ttf'), Path('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')]
-BOLD = [Path('C:/Windows/Fonts/segoeuib.ttf'), Path('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf')]
+REG = [installed_font_path('segoeui.ttf'), installed_font_path('DejaVuSans.ttf')]
+BOLD = [installed_font_path('segoeuib.ttf'), installed_font_path('DejaVuSans-Bold.ttf')]
 regular = next(p for p in REG if p.is_file())
 bold = next(p for p in BOLD if p.is_file())
 im = Image.new('RGB', (W, H), '#f5f7fb')

@@ -1,6 +1,6 @@
 # Zero extension and incoming regularity at a glancing ray
 
-Original exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), Ultra, 9 October 2026. Original content is CC0-1.0. Earlier components retain their terms.
+Original exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), 9 October 2026. Original content is CC0-1.0. Earlier components retain their terms.
 
 The boundary source construction gives an actual L2 source with regularity in compressed spacetime directions. This chapter proves that its zero extension is ordinarily microlocally smooth at every finite normal lift of the relevant nonzero tangential boundary covector. Ordinary matrix propagation can then carry the actual incoming Cauchy solution through a strictly diffractive tangency. The causal boundary correction remains a separate part of the original solution.
 

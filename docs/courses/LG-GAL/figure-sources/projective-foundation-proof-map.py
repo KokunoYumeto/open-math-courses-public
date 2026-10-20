@@ -7,13 +7,20 @@ from pathlib import Path
 import math
 from PIL import Image, ImageDraw, ImageFont
 
+def installed_font_path(filename):
+    try:
+        return Path(ImageFont.truetype(filename,12).path)
+    except OSError:
+        return Path(filename)
+
+
 W, H = 2600, 3640
 SCALE = 13/15
 OUT = Path(__file__).resolve().parents[1] / 'assets/projective-foundation-proof-map.png'
-REGULAR = [Path('C:/Windows/Fonts/seguisym.ttf'),
-           Path('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf')]
-BOLD = [Path('C:/Windows/Fonts/segoeuib.ttf'),
-        Path('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf')]
+REGULAR = [installed_font_path('seguisym.ttf'),
+           installed_font_path('DejaVuSans.ttf')]
+BOLD = [installed_font_path('segoeuib.ttf'),
+        installed_font_path('DejaVuSans-Bold.ttf')]
 reg = next((p for p in REGULAR if p.is_file()), None)
 strong = next((p for p in BOLD if p.is_file()), None)
 if reg is None or strong is None:

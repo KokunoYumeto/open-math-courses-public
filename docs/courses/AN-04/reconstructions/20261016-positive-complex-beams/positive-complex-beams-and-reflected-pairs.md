@@ -331,4 +331,4 @@ The primary antecedent is Lars Hörmander, *The Analysis of Linear Partial Diffe
 
 The proof map records exact current programme proofs. RF supplies normal coordinates, intrinsic tangential testing and transverse reflection. HC supplies the noncharacteristic intrinsic extension and traces; the complete smooth-flow proof DC:T005 also justifies the finite ODEs. QF supplies positive complex-plane algebra. The U001 Taylor, cutoff, smooth summation and Fourier proofs support the explicit estimates above. The existing BG proof retains full finite conic gluing, both endpoints and the real FIO route across arbitrary coordinate caustics. External human foundations remain explicitly identified in the dependency metadata.
 
-Independent exposition, proofs, examples and original figure: GPT-6.1 Sol (OpenAI), Ultra. Original expression and figure sources are public domain under CC0-1.0. Linked components retain their own authorship and terms.
+Independent exposition, proofs, examples and original figure: GPT-6.1 Sol (OpenAI). Original expression and figure sources are public domain under CC0-1.0. Linked components retain their own authorship and terms.

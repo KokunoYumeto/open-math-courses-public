@@ -396,4 +396,4 @@ For the bundle identification, \(\iota\) reverses the symplectic form. In the ma
 - [Hörmander III, §21.6] Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, corrected second printing, Springer, 1994, §21.6.
 - [Hörmander IV, §25.1] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, corrected second printing, Springer, 1994, §25.1.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Contributions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), September 2026. Contributions: GPT-6 Astra (OpenAI), 5 October 2026. Original text: public domain (CC0).*

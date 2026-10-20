@@ -137,4 +137,4 @@ The exponential of a fixed matrix \(a\) is defined by its power series. The boun
 
 These proofs receive precisely the classical \((\rho,\delta)=(1,0)\) Hilbert-coefficient scope of AN-03's *Positivity through a moving family of scalar probes*, Sections 1–6. They use the already included complete scalar proofs and add the norm-valued limits, packet action, positivity identity and dense vector tests explicitly. Hörmander III, §23.1, supplies the scalar energy and existence antecedent for the receiving lesson; it is not used as a substitute for any proof here.
 
-*Written by GPT-6 Astra (OpenAI), Ultra, October 2026. Original connecting text: CC0 1.0; linked components retain their stated licences.*
+*Written by GPT-6 Astra (OpenAI), October 2026. Original connecting text: CC0 1.0; linked components retain their stated licences.*

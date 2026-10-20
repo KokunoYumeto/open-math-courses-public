@@ -355,6 +355,151 @@ Completeness of the complex numbers defines a pointwise limit, and this same uni
 Every compact subset of \(X\) has a finite cover by such smaller balls. The local limits agree on overlaps, since they are limits of the same pointwise sequence. Thus they define a locally Lipschitz function \(v\) on \(X\), with uniform convergence on each compact. For every test \(\phi\), uniform convergence on its support gives
 \(\int u_j\phi\to\int v\phi\). The original distributional convergence gives the same limit \(u(\phi)\), so \(u=v\) as distributions. \(\square\)
 
+## Compact profiles and their surviving moments
+
+A complex profile can have zero mass while retaining a higher moment. The [integral Taylor formula](when-a-kernel-is-smooth.md#taylor-estimates-on-compact-neighborhoods) supplies the exact multivariable remainder used here; no positivity or symmetry of the profile is assumed.
+
+**Theorem 9 (compact-profile expansion).** Let \(v\in C_c^\infty(\mathbb R^n;\mathbb C)\), \(a\in\mathbb R^n\), and \(0<|\varepsilon|\le1\). Put
+\[
+ V_\varepsilon(x)=|\varepsilon|^{-n}
+                    v((x-a)/\varepsilon),\qquad
+ m_\alpha=\int y^\alpha v(y)\,dy .
+ \tag{M1}
+\]
+For every integer \(N\ge0\),
+\[
+ V_\varepsilon
+ =\sum_{|\alpha|\le N}
+       \frac{(-1)^{|\alpha|}\varepsilon^{|\alpha|}m_\alpha}
+            {\alpha!}\,\partial^\alpha\delta_a
+       +R_{\varepsilon,N}.
+ \tag{M2}
+\]
+There is one compact \(K\), independent of \(\varepsilon\), on which
+\[
+ \begin{gathered}
+ |R_{\varepsilon,N}(\phi)|
+ \le |\varepsilon|^{N+1}C_{v,N}
+                   \max_{|\beta|=N+1}\sup_K|\partial^\beta\phi|,\\
+ C_{v,N}=\sum_{|\beta|=N+1}\frac1{\beta!}
+                         \int |y^\beta v(y)|\,dy .
+ \end{gathered}
+ \tag{M3}
+\]
+This estimate holds for every smooth \(\phi\), not only compact tests. In particular, for an integer \(r\ge0\), if \(m_\alpha=0\) for \(|\alpha|<r\), then
+\[
+ \varepsilon^{-r}V_\varepsilon\longrightarrow
+       (-1)^r\sum_{|\alpha|=r}\frac{m_\alpha}{\alpha!}
+                          \partial^\alpha\delta_a
+ \tag{M4}
+\]
+strongly in \(\mathcal E'\) and in \(\mathcal D'\), through either sign of \(\varepsilon\). The limit is nonzero precisely when at least one degree-\(r\) moment is nonzero. For \(r=0\) it is \(m_0\delta_a\).
+
+**Proof.** The absolute Jacobian in \(x=a+\varepsilon y\) is \(|\varepsilon|^n\), so
+\[
+                    V_\varepsilon(\phi)=\int v(y)\phi(a+\varepsilon y)\,dy .
+ \tag{M5}
+\]
+Take \(K=a+[-1,1]\operatorname{supp}v\), including \(a\) if the profile is zero. It is compact and contains every segment from \(a\) to \(a+\varepsilon y\) that is used in the integral. Taylor's integral formula gives the degree-\(N\) polynomial, with remainder
+\[
+ (N+1)\sum_{|\beta|=N+1}
+ \frac{\varepsilon^{N+1}y^\beta}{\beta!}
+ \int_0^1(1-s)^N\partial^\beta\phi(a+s\varepsilon y)\,ds .
+ \tag{M6}
+\]
+Since \((N+1)\int_0^1(1-s)^Nds=1\), integrating its absolute value proves (M3). The polynomial integrates to
+\(\sum_{|\alpha|\le N}\varepsilon^{|\alpha|}m_\alpha\partial^\alpha\phi(a)/\alpha!\).
+The identity
+\(\partial^\alpha\delta_a(\phi)=(-1)^{|\alpha|}\partial^\alpha\phi(a)\)
+gives exactly (M2), including its signs.
+
+Use \(N=r\) and divide by \(\varepsilon^r\). All lower coefficients vanish, and the error is at most \(|\varepsilon|C_{v,r}\) times the displayed derivative seminorm. Bounded subsets of \(C^\infty\) have that seminorm uniformly bounded; bounded compact-test families do as well, by U008, (T1)–(T2). The common compact support also makes the pairings valid in \(\mathcal E'\), as proved in the linked Taylor lesson. This proves both strong limits. If \(m_\alpha\ne0\) at degree \(r\), choose a compact smooth test equal to \((x-a)^\alpha\) near \(a\). Its degree-\(r\) derivatives isolate this coefficient, and the limiting pairing is \(m_\alpha\ne0\). The converse is immediate. \(\square\)
+
+## A boundary preserves an oscillatory jet
+
+On the whole line, Lemma 1 gives
+\[
+ \left|\left\langle t^q e^{i\sigma tx},\phi\right\rangle\right|
+ \le t^{q-L}\|\phi^{(L)}\|_1
+       \longrightarrow0
+ \quad(L>q,\ \sigma\in\{-1,1\}).
+ \tag{M7}
+\]
+Thus every fixed power disappears on compact tests. Cutting the oscillation at one endpoint changes the conclusion.
+
+**Theorem 10 (one-sided endpoint expansion).** Fix \(a\in\mathbb R\), \(\sigma\in\{-1,1\}\) and \(t\ge1\), and set
+\[
+ T_{t,\sigma,a}(x)=t\,\boldsymbol1_{\{x>a\}}
+                           e^{i\sigma t(x-a)} .
+ \tag{M8}
+\]
+For every integer \(N\ge1\) and every compact smooth test,
+\[
+ \begin{aligned}
+ T_{t,\sigma,a}(\phi)
+  &=\sum_{j=0}^{N-1}(i\sigma)^{j+1}t^{-j}\phi^{(j)}(a)
+        +E_{t,N}(\phi),\\
+ |E_{t,N}(\phi)|
+  &\le t^{-N}\left(
+          |\phi^{(N)}(a)|+
+          \int_a^\infty|\phi^{(N+1)}(x)|\,dx\right).
+ \end{aligned}
+ \tag{M9}
+\]
+Consequently \(T_{t,\sigma,a}\to i\sigma\delta_a\) strongly in \(\mathcal D'\). In distribution notation the \(j\)-th term of the expansion is
+\((-1)^j(i\sigma)^{j+1}t^{-j}\partial^j\delta_a\).
+
+**Proof.** Write \(h(y)=\phi(a+y)\) for \(y\ge0\) and
+\(J_t(h)=\int_0^\infty e^{i\sigma ty}h(y)\,dy\).
+Integration by parts gives
+\[
+               J_t(h)=\frac{i\sigma}{t}h(0)
+                         +\frac{i\sigma}{t}J_t(h').
+ \tag{M10}
+\]
+The endpoint at infinity is zero by compact support. In particular its sign at zero is retained. Iterate (M10) \(N+1\) times and multiply by \(t\). The first \(N\) terms are those in (M9); the remaining two are
+\((i\sigma)^{N+1}t^{-N}h^{(N)}(0)\) and
+\((i\sigma)^{N+1}t^{-N}J_t(h^{(N+1)})\).
+Their absolute values give the asserted bound. On a bounded compact-test family, the integral norm is bounded by the length of one common support interval times a derivative supremum. Taking \(N=1\) proves strong convergence. Distributional differentiation supplies the stated coefficient signs. \(\square\)
+
+The jump, rather than rapid oscillation alone, accounts for the point mass. In particular the positive and negative frequency signs give opposite imaginary masses.
+
+## The mass selected by a monomial phase
+
+**Corollary 11 (every degree and both frequency signs).** For \(k\ge2\) and \(\sigma\in\{-1,1\}\),
+\[
+ t^{1/k}e^{i\sigma tx^k}
+                   \longrightarrow C_{k,\sigma}\delta_0
+             \quad\hbox{strongly in }\mathcal S'\hbox{ and }\mathcal D',
+ \qquad t\to\infty,
+ \tag{M11}
+\]
+where
+\[
+ C_{k,\sigma}=\frac{2}{k}\Gamma(1/k)
+ \begin{cases}
+ e^{i\sigma\pi/(2k)},&k\text{ even},\\
+ \cos(\pi/(2k)),&k\text{ odd}.
+ \end{cases}
+ \tag{M12}
+\]
+Every one of these constants is nonzero.
+
+**Proof.** [Finite-order phases and missing powers](finite-order-phases-and-missing-powers.md), Lemma 1 and Theorem 2, proves the full expansion (P9), including its finite Fourier-moment remainder. Its formulas (P7)–(P8), at \(j=0\), are exactly (M12). Set \(N=1\) in (P9) and multiply by \(t^{1/k}\). The error is bounded by
+\[
+           C_k t^{-1/k}\int|\xi|\,|\widehat\phi(\xi)|\,d\xi .
+ \tag{M13}
+\]
+The estimate after (P5) bounds this moment by finitely many Schwartz seminorms. It is uniform on bounded Schwartz families and on bounded compact-test families, proving both strong conclusions.
+
+For clarity, the coefficients here come from actual convergent integrals: [Polynomial phases and Fourier tails](polynomial-phases-and-fourier-tails.md), Theorem B and Solutions 8 and 10, proves the entire Fourier profile and its two oriented-ray formulas. Its positive-Gamma integral calculation gives
+\(\int_0^\infty e^{-y^k}dy=\Gamma(1/k)/k>0\).
+For even \(k\) the two rays contribute the same phase; for odd \(k\) they contribute conjugate phases. The resulting cosine is positive since \(0<\pi/(2k)<\pi/2\). No convergence of a high undamped real moment is assumed. \(\square\)
+
+![Point-mass coefficients for monomial phases of degrees two through seven](../figures/monomial-concentration-coefficients.png)
+
+*The points are the constants \(C_{k,\sigma}\) in (M12), for \(2\le k\le7\). Even degrees give conjugate coefficients when the frequency sign changes; odd degrees give the same positive real coefficient for both signs. The plotted coordinates are numerical evaluations of the exact formula. Corollary 11 supplies the proof. [Figure source](../figures/monomial-concentration-coefficients.py).*
+
 ## Exercises with complete solutions
 
 **Exercise 1 (foundation) — the mass of a narrow Gaussian.** Fix \(c\in\mathbb R\) and \(\gamma>0\). Determine the real \(\beta\) for which \(t^\beta e^{-t^\gamma(x-c)^2/4}\) has a finite nonzero distributional limit as \(t\to\infty\). Give the limit and classify all other \(\beta\).
@@ -423,10 +568,53 @@ since squaring \(|x|+j^{-1}\) bounds \(x^2+j^{-2}\) above. Thus the sequence con
 \]
 Therefore the integral outside this interval tends to \(2\sqrt\pi\). The constant function one is not a compactly supported test on \(\mathbb R\), so its total-mass integral is not a pairing whose convergence is required by \(\mathcal D'\) convergence. The support restriction on the tests accounts for both statements.
 
+**Exercise 9 (foundation) — a signed scale and a dipole.** Let \(\rho\in C_c^\infty(\mathbb R)\) have integral one. With \(v=\rho'\), determine the limit of \(\varepsilon^{-1}|\varepsilon|^{-1}v((x-a)/\varepsilon)\) through both signs of \(\varepsilon\).
+
+**Solution.** Integration by parts gives \(m_0=\int\rho'=0\) and \(m_1=\int y\rho'(y)dy=-1\). Formula (M4) with \(r=1\) therefore gives \(\delta'_a\), for both signs. Its pairing is \(-\phi'(a)\). The normalization is \(\varepsilon^{-1}\), retaining its sign; replacing this factor by \(|\varepsilon|^{-1}\) would reverse the negative-scale limit. The error is \(O(|\varepsilon|)\) on each bounded smooth-test family.
+
+**Exercise 10 (intermediate) — two cancellations select a mixed derivative.** Let \(\rho\in C_c^\infty(\mathbb R)\) have integral one and put \(v(y_1,y_2)=\rho'(y_1)\rho'(y_2)\). Find the limit of \(\varepsilon^{-2}|\varepsilon|^{-2}v(x/\varepsilon)\).
+
+**Solution.** Fubini factors every moment. All moments of degrees zero and one vanish, because one factor is \(\int\rho'=0\). At degree two, the pure moments still have this zero factor, whereas
+\[
+ m_{(1,1)}=
+        \left(\int y\rho'(y)\,dy\right)^2=1.
+ \tag{M14}
+\]
+Thus (M4) gives \(\partial_1\partial_2\delta_0\). It pairs to \(\partial_1\partial_2\phi(0)\), with positive sign. A test equal to \(x_1x_2\) near zero proves it is nonzero. Both signs of \(\varepsilon\) give this same limit.
+
+**Exercise 11 (advanced) — two endpoints and every subsequential limit.** Fix \(a<b\), \(\sigma\in\{-1,1\}\), and put \(B_t=t\boldsymbol1_{(a,b)}e^{i\sigma t(x-a)}\). Determine exactly when \(B_{t_j}\) converges for \(t_j\to\infty\), and describe all possible limits.
+
+**Solution.** One integration by parts, followed by another for the remaining integral, gives
+\[
+ B_t(\phi)=i\sigma\phi(a)
+       -i\sigma e^{i\sigma t(b-a)}\phi(b)+O_\phi(t^{-1}).
+ \tag{M15}
+\]
+Indeed the first boundary term is
+\([e^{i\sigma t(x-a)}\phi(x)/(i\sigma)]_a^b\).
+The remainder is \(i\sigma\int_a^b e^{i\sigma t(x-a)}\phi'(x)dx\); integrating it once more bounds it by
+\(t^{-1}(|\phi'(a)|+|\phi'(b)|+\int_a^b|\phi''|)\).
+These bounds are uniform on bounded compact-test sets.
+
+If \(e^{i\sigma t_j(b-a)}\to z\), (M15) gives the strong limit \(i\sigma(\delta_a-z\delta_b)\). Conversely, a compact test equal to one at \(b\) and zero near \(a\) shows that distributional convergence forces this scalar phase to converge. Its limit has \(|z|=1\). Every such \(z=e^{i\theta}\) occurs by choosing positive \(t_j\to\infty\) with \(\sigma t_j(b-a)=\theta+2\pi n_j\). In particular phases \(1\) and \(-1\) give distinct limits, so the full family has no limit.
+
+**Exercise 12 (intermediate) — a translated odd phase and its only nonzero scale.** For \(c\in\mathbb R\), a smooth complex function \(b\) with \(b(c)\ne0\), and real \(\beta\), classify the limits of \(t^\beta b(x)e^{-it(x-c)^5}\).
+
+**Solution.** Translate \(y=x-c\) and use the compact smooth test \(b(c+y)\phi(c+y)\). Corollary 11 gives the nonzero limit
+\[
+ \frac25\Gamma(1/5)\cos(\pi/10)\,b(c)\delta_c
+                    \qquad(\beta=1/5).
+ \tag{M16}
+\]
+The odd degree makes this coefficient independent of the frequency sign. For \(\beta<1/5\), multiply the bounded normalized pairings by \(t^{\beta-1/5}\) to obtain zero, uniformly on bounded compact-test families. For \(\beta>1/5\), choose a test equal to one near \(c\). Its normalized pairing tends to a nonzero complex number, so the modulus after the additional power tends to infinity. There is no distributional limit. Multiplication by the fixed smooth \(b\) preserves each bounded compact-test family by the finite Leibniz rule, justifying the uniform claims without a global bound on \(b\).
+
 ## References
 
-- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second edition, 2003 reprint, Chapter II, Exercises 2.5–2.10 and 2.15–2.16, pp. 373–374; answers, pp. 395–397.
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second edition, 2003 reprint, Section 2.1, Examples 2.1.10–2.1.14; Chapter II, Exercises 2.5–2.10 and 2.15–2.16, pp. 373–374; answers, pp. 395–397.
 - [Fourier foundations](../prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.md), F2–F4: exact Gaussian mass, rapid Fourier decrease and both inverse identities.
 - [Cauchy kernels and distributional boundary limits](cauchy-kernels-and-boundary-limits.md), Theorem 4.1, and [Finite parts of singular powers](finite-parts-of-singular-powers.md), Proposition 5.1: principal values, pole boundary signs and the weak derivative of the logarithm.
 - [Odd powers and collapsing hyperbolas](odd-powers-and-collapsing-hyperbolas.md), Lemma 2.1, (2.4)–(2.5): smooth descent of an arbitrary even function through the square coordinate, used in (L24).
 - [Order, positivity and distributional limits](order-positivity-and-limits.md), Section 1; [scalar calculus](../prerequisites/U011-free-foundations/metric-foundation-bridges.md), §§12–13; [integration foundations](../prerequisites/U011-free-foundations/banach-foundation-bridges.md), §§15–16: the complete test, compactness, calculus and integration inputs.
+
+- [Finite-order phases and missing powers](finite-order-phases-and-missing-powers.md), Lemma 1 and Theorem 2; [Polynomial phases and Fourier tails](polynomial-phases-and-fourier-tails.md), Theorem B and Solutions 8 and 10: entire profiles, oriented-ray coefficients and the complete finite-order remainder.
+- [When a kernel is smooth](when-a-kernel-is-smooth.md#taylor-estimates-on-compact-neighborhoods): compact distributions, strong smooth-test topology and the full integral Taylor formula.

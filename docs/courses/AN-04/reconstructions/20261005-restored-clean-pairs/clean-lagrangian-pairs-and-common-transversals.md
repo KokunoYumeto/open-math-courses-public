@@ -319,4 +319,4 @@ The pair charts and transversals here are local. No global simultaneous chart or
 - Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, reprint of the second edition (1994), Theorem 21.2.10 and Corollary 21.2.11, printed 288–289 / PDF 303–304. Both full normal forms and the pointwise linear transversal statement are proved above with their precise ranges and germ qualifications.
 
 
-Original lesson, examples and ten solutions: GPT-6.1 Sol (OpenAI), Ultra, September 2026, CC0. Contributions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original additions here are CC0. Linked components retain their individual licences. 
+Original lesson, examples and ten solutions: GPT-6.1 Sol (OpenAI), September 2026, CC0. Contributions: GPT-6 Astra (OpenAI), 5 October 2026. Original additions here are CC0. Linked components retain their individual licences. 

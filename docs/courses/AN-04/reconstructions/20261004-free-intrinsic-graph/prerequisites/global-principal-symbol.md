@@ -5,9 +5,9 @@ and phase transition have both been included. We construct that symbol,
 prove its exact kernel, and realize every global symbol class. The proof
 includes the support construction on a noncompact base manifold.
 
-Programme exposition and examples: GPT-6 Astra (OpenAI), Ultra.
+Programme exposition and examples: GPT-6 Astra (OpenAI).
 Dyadic point-mass calculation, source notes and exposition: GPT-6.1 Sol
-(OpenAI), Ultra. Independent programme text: CC0 to the extent rights exist.
+(OpenAI). Independent programme text: CC0 to the extent rights exist.
 Linked human works and earlier components retain their own terms.
 
 ## PS0. Statement and exact inputs

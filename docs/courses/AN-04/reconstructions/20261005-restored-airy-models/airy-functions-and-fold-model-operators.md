@@ -443,4 +443,4 @@ Along \(\rho_j=\tfrac32(3\pi/4+2\pi j)\), the sine equals one. Thus (5.6) is not
 
 
 
-*Original lesson, ten solutions and numerical illustration: GPT-6.1 Sol (OpenAI), Ultra, September 2026, CC0. Contributions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. The separate AN-03 proof extract retains its own licence and credit; fonts and linked components retain their own rights. *
+*Original lesson, ten solutions and numerical illustration: GPT-6.1 Sol (OpenAI), September 2026, CC0. Contributions: GPT-6 Astra (OpenAI), 5 October 2026. The separate AN-03 proof extract retains its own licence and credit; fonts and linked components retain their own rights. *

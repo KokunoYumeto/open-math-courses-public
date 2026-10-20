@@ -55,7 +55,7 @@ for top, bottom in [(17.3,16.45),(13.9,13.05),(10.5,9.65)]:
 arrow(7.1,6.25)
 ax.text(5.05,6.67,'JM28–JM32: comparison closes the gap',fontsize=10,
         va='center',color='#365675')
-ax.text(4.5,2.9,'All original residual preparations now covered',ha='center',
+ax.text(4.5,2.9,'All original residual preparations are covered',ha='center',
         fontsize=16,fontweight='bold')
 ax.text(4.5,1.65,
         'Even star rows 2 ≤ r ≤ 2g − 3, including r < g\n'

@@ -102,9 +102,7 @@ ax.text(4.5,2.1,
     'i₄, i₈ are R-lengths; ℓ₀, ℓ₃ use the factor integer rings. Both residue degrees are one.',
     ha='center',va='center',fontsize=10.15,linespacing=1.6)
 ax.text(4.5,.81,
-    'Full proof: Lesson 8, Sections 6.0Z.1–8, RO1–RO17. No universal NF24 claim.\n'
-    'Higher-e complementary II* ranges, other additive cases, distinct reviews and audits remain.\n'
-    'Free human writing material: Milne, Algebraic Number Theory, Prop. 7.55 / Rem. 7.56.',
+    'Full proof: Lesson 8, Sections 6.0Z.1–8, RO1–RO17. The displayed family-specific hypotheses apply.\nHigher-e complementary II* ranges and other additive cases are outside these hypotheses.\nSource: Milne, Algebraic Number Theory, Prop. 7.55 / Rem. 7.56.',
     ha='center',va='center',fontsize=10.1,linespacing=1.6)
 fig.canvas.draw();renderer=fig.canvas.get_renderer()
 for label in ax.texts:

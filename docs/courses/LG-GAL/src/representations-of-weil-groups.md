@@ -1,6 +1,6 @@
 # Representations of Weil groups
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).*
 
 A Weil group allows Frobenius to act by an arbitrary invertible matrix while keeping inertia compact. This separates two kinds of information: a finite inertia action and the eigenvalues, or Jordan blocks, of Frobenius. We prove how that separation controls irreducibility and semisimplicity, then compute the determinant of induction and classify the representations at a real place.
 
@@ -8,7 +8,7 @@ We assume Frobenius elements and determination by traces and basic finite-group 
 
 ## 0. Local norm foundations in both characteristics
 
-The finite reciprocity input in §1 has a source chain that must be verified independently of the Weil-group topology. We first reconstruct the local norm facts needed by that chain, including the characteristic-\(p\) unit argument. Write \(R=\mathcal O_F\). All local fields and valuations here are those constructed in the first lesson.
+Section 1 uses finite local reciprocity. We first prove the required local norm properties, including the characteristic-\(p\) unit argument. Write \(R=\mathcal O_F\). All local fields and valuations here are those constructed in the first lesson.
 
 **Lemma 0.1 (normal bases and Hilbert 90).** If \(L/F\) is finite Galois with group \(G\), there is an \(a\in L\) such that \(\{\sigma a\mid\sigma\in G\}\) is an \(F\)-basis. Every multiplicative cocycle \(c_{\sigma\tau}=c_\sigma\sigma(c_\tau)\) in \(L^\times\) has the form \(c_\sigma=b/\sigma b\) for some \(b\ne0\).
 
@@ -314,7 +314,7 @@ The same argument for any open finite-index subgroup proves that the groups (0LT
 
 Finally an arbitrary open finite-index \(U\) contains some \(U_C\) of (0LT12). In the finite abelian group \(\operatorname{Gal}(C/F)\), let \(H\) be the image of \(U\) and put \(M=C^H\). Finite reciprocity and its exact norm kernels give \(N_{M/F}M^\times=U\). The norm/field containment theorem gives uniqueness. This proves the existence assertion as well as cofinality, without using Hasse–Arf or abelian conductor integrality. \(\square\)
 
-The formal-module construction and uniformizer comparison come from the actually read free Milne I§§2–3 material; their integral recurrences, division degrees and completion descent were proved in Lemmas 0.8A–0.8C. The finite invariant, exact abelian norm kernels and functoriality were proved separately in Lemmas 0.5–0.6 and Theorem 0.7. Combining them above supplies the full local prerequisite before the Weil-group quotient uses it.
+For the formal-module construction and uniformizer comparison, see also Milne, I §§2–3; their integral recurrences, division degrees and completion descent were proved in Lemmas 0.8A–0.8C. The finite invariant, exact abelian norm kernels and functoriality were proved separately in Lemmas 0.5–0.6 and Theorem 0.7. Combining them above supplies the full local prerequisite before the Weil-group quotient uses it.
 
 ## 1. The group and the reciprocity convention
 

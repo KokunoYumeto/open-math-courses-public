@@ -258,4 +258,4 @@ This proves the local signed construction, its exact strictly delayed residual, 
 
 Hörmander IV, Lemma 26.1.15 and the beginning of the final construction of Theorem 26.1.14, printed 71–72/PDF 82–83, supply the antecedents for the local construction and displacement-measure estimate. The exact complete programme proofs are cited at the beginning. The cutoff identities, one fixed cone selection, full defect calculation, complete support and scale arguments, solved examples and coordinate diagram are independently written.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Original text and coordinate diagram: public domain \(CC0\).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text and coordinate diagram: public domain \(CC0\).*

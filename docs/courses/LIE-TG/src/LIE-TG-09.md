@@ -233,7 +233,7 @@ The source also asserts orbit separation. Its passage from complexified orbits t
 
 That counterexample does not disprove finite differential generation: its constant invariant field is already finitely generated. It also does not replace geometric orbits over an algebraic closure by real-point orbits. The explicit metric argument in NOE-SYM-03 and the local proofs in this lesson are retained with their own hypotheses.
 
-The general Lie–Tresse assertion requires a correctly scoped rational quotient; symbolic stabilization on the pullback of one finite-level open set; stable horizontal rank; invariant derivations on the quotient by their common annihilator; symbol cohomology and affine-orbit arguments; and a unique higher-jet polynomial expansion with order induction and commutator control. Proposition 4.2 establishes fixed-level algebraic field generation, and Lemma 4.3 establishes coefficient invariance under its stated hypotheses. These results do not establish the other assertions or prove the general theorem.
+Theorem 4.19 constructs a rational orbit quotient at each specified algebraic jet level, with geometric orbit fibres and the full rational invariant field. Theorem 4.21 and Corollary 4.22 supply stable horizontal rank and invariant derivations modulo the common horizontal annihilator, with their stated integral-tower hypotheses. Theorem 4.24 supplies the mixed finite observation theorem. For the induced point actions of Section 4.16, Theorem 4.28 proves one common finite-level invariant domain, the full orbit-symbol specialization comparison and adjacent first-derivative stabilizer-image equality at every higher jet. Symbol cohomology, affine geometric quotient bundles and the unique low-rational/high-polynomial generation induction remain further assertions. The action-only-on-an-equation extension requires its compatible-action comparison. Proposition 4.2 and Lemma 4.3 retain their algebraic field-generation and coefficient-invariance scopes. The general finite differential-generation theorem is not proved here.
 
 ### 4.6. Symbolic stabilization: generators are not a free basis
 
@@ -465,7 +465,7 @@ This is the required prolongation equality, with the same $q$ for every field sp
 
 **Hypothesis for the orbit-symbol application.** To use Lemma 4.7 for Lie–Tresse, one must construct such a relation module over an actual finite-level base and prove that the annihilator of every relevant higher-jet orbit symbol is exactly $J_j(\alpha)$ at every point under consideration. Existence of a relation module at each separate infinite jet does not do this. Neither may one replace the image in the definition of $J_j$ by a kernel after specialization without proof. For example, multiplication by $t$ on $\mathbb Q[t]$ has zero kernel; at the specialization $t=0$ its induced map $\mathbb Q\to\mathbb Q$ is zero and has kernel $\mathbb Q$. Thus specialization of a kernel is not in general the kernel of the specialized map.
 
-There are consequently two precise outstanding requirements: prove the stabilizer-image lifting at every higher jet over one finite-level open set, and prove a single relation presentation with the stated specialization comparison on that domain. The algebra in Lemma 4.7 closes the uniform bound **after** that comparison; it does not supply the comparison itself. The full general theorem and the downstream horizontal-rank, symbol-cohomology and affine-orbit arguments remain to be proved at their original scope.
+The orbit-symbol application requires both a common finite-level invariant domain and an actual specialization comparison for the full symbol annihilators. Lemma 4.7 supplies the algebraic bound after that comparison. In the point-action setting of Section 4.16, Theorem 4.28 constructs the domain and the full relation presentation, including the required first-derivative stabilizer-image equality. The full general finite-generation theorem additionally requires its cohomology, affine quotient and polynomial induction arguments.
 
 *Figure 4.2 and Sections 4.7–4.8: GPT-6 Astra (OpenAI). CC0 1.0.*
 
@@ -896,7 +896,7 @@ The prolonged coefficient formula in Example 4.10 subtracts $-2j u_j$ at each po
 
 *Figure 4.5.* The maps and hypotheses of Lemma 4.13. The two terms in the difference need not separately be admissible. Equations (4.18) and (4.20) establish admissibility and the action of their difference. Diagram and Section 4.11: GPT-6.1 Sol (OpenAI). CC0 1.0.
 
-**Scope of the contraction result.** Lemma 4.13 supplies a weaker representative construction than vanishing of the entire lower ordinary jet. On a finite-order regular neighborhood, Corollary 4.14 turns first-derivative image lifting into contraction by this construction. For the general Lie–Tresse theorem one must still prove that the required regularity and image equality hold over the entire higher-jet inverse image of one finite-level invariant open set, or supply another general comparison giving contraction there. The examples in Sections 4.7–4.9 prevent inferring that assertion from stabilized total images. A full application also requires the relation-module specialization comparison and the assertions listed in Section 4.5.
+**Scope of the contraction result.** Lemma 4.13 gives the Spencer representative construction under its finite-order regularity and tangent-derivative normalization hypotheses. Corollary 4.14 obtains that normalization from adjacent first-derivative stabilizer-image equality. For the point actions specified in Section 4.16, Theorem 4.28 supplies these hypotheses on the entire higher inverse image of one invariant finite-level open. Examples 4.6 and 4.8 still distinguish this argument from an inference based only on total images. The cohomology, affine quotient and generation assertions remain separate.
 
 ### 4.12. A common parameter domain for pure transformation symbols
 
@@ -1026,6 +1026,683 @@ $$
 $$
 
 when the transformation-jet truncation is onto. Thus $\varpi_j^\perp\subseteq H_j^\perp$, and the possible additional orbit directions correspond to the full stabilizer-lifting quotient. Proposition 4.17 neither makes that quotient vanish nor proves a uniform formula for it. Nor is vanishing necessary for using the different contraction route of Corollary 4.14. The full Lie–Tresse argument still requires its common invariant domain, the stated regularity and first-derivative-image comparison or another general contraction argument, and a correct relation presentation for the full orbit symbols. This proposition does not prove the quotient, horizontal-rank, invariant-derivation, cohomology or order-induction assertions of the general theorem.
+
+### 4.13. A rational orbit quotient at a fixed jet level
+
+The algebraic group acting at a specified finite jet level has a rational orbit quotient. This assertion concerns that level. It does not assert regularity at every higher level above its domain.
+
+Let $k=\mathbb C$, let $G$ be a smooth affine algebraic group, and let $X$ be an integral separated variety with a regular $G$-action. The group may be disconnected. An invariant rational function means an identity for the full action on its domains of definition. An **orbit quotient** below means a surjective morphism of varieties whose fibres on algebraically closed extension fields are the group orbits, together with the asserted identification of rational function fields. No assertion about a quotient of individual real-point orbits is implicit in this definition.
+
+**Theorem 4.19 (a finite-level rational orbit quotient).** There are a nonempty $G$-invariant open subset $U\subset X$, an integral finite-type variety $Y$, and invariant rational functions $c_1,\ldots,c_N$ regular on $U$, giving a surjective morphism
+
+$$
+q:U\longrightarrow Y,
+$$
+
+such that, for every algebraically closed extension $\Omega\supset k$ and every $x,x'\in U(\Omega)$,
+
+$$
+\begin{aligned}
+q(x)=q(x')&\Longleftrightarrow x'\in G(\Omega)x,\\
+k(X)^G&=k(c_1,\ldots,c_N)\\
+&=k(Y).
+\end{aligned}
+\tag{4.32}
+$$
+
+The same construction is defined over $\mathbb R$ for a geometrically integral real variety and a geometrically reduced real affine algebraic group. Its orbit assertion is then about the action after extension to $\mathbb C$, and to algebraically closed extension fields. It need not distinguish different real orbits in one complex orbit.
+
+*Proof.* We first give the algebraic ingredients, including the specialization and field-generation steps.
+
+**Monic elimination with parameters.** Let $R$ be a finite-type integral $k$-algebra, $K=\operatorname{Frac}R$, and $J\subset R[g_1,\ldots,g_s,y_1,\ldots,y_m]$ a finitely generated ideal. There is a nonzero $f\in R$ such that elimination of the $g$ variables commutes with every field map $a:R_f\to L$:
+
+$$
+\begin{gathered}
+J(a)=\operatorname{im}(J_f\otimes_{R_f}L\to L[g,y]),\\
+J(a)\cap L[y]=L[y]B_y(a),\\
+J_f\cap R_f[y]=R_f[y]B_y.
+\end{gathered}
+\tag{4.33}
+$$
+
+Here $B_y$ specializes to the reduced Gröbner basis of the eliminated ideal for one fixed monomial order on $y$.
+
+To prove this, order monomials by a block order eliminating $g$ before $y$, and compute a monic Gröbner basis over $K$. The algorithm does not require homogeneous equations: division strictly decreases the monomial, and every added nonzero $S$-polynomial remainder strictly enlarges the leading-monomial ideal in $K[g,y]$. The Hilbert basis theorem, proved in Noetherian and Artinian rings, Theorem 2.1, makes this process finite. The cancellation argument of Lemma 4.16 proves the Gröbner criterion: a representation of a nonzero ideal element with minimum maximum monomial cannot have its maximum cancel, since an $S$-polynomial reduction replaces that cancellation by smaller monomials.
+
+Reduce the finite basis so that every leading coefficient is one and no other monomial is divisible by a leading monomial of the basis. This uses finitely many divisions. Retain the finite identities expressing the resulting basis in the original generators and conversely, and reducing all its $S$-polynomials to zero. Invert the product $f$ of all coefficient denominators in these identities. Monic division and those identities are valid over $R_f$ and survive every map to a field. Every leading monomial survives, and the reduction inequalities survive. Thus the specialized list is a Gröbner basis of the specialized ideal. It stays reduced: deleting a coefficient that becomes zero introduces no forbidden monomial and does not change a leading monomial.
+
+A basis element whose leading monomial has no $g$ has no $g$ anywhere, by the elimination order. Division of a polynomial in $y$ uses only these elements and only $y$ monomial multipliers. This proves (4.33). Finally a reduced monic basis is unique. Its leading monomials are the unique minimal monomial generators of the leading ideal. Subtract two basis elements with the same leading monomial: the difference is in the ideal and consists of standard monomials, so it must be zero. This also proves the asserted uniqueness after specialization. No freeness of an ideal on its generators has been assumed.
+
+**Vanishing and closure.** We use the following point test over an algebraically closed field $\Omega$. A function in a reduced finite-type $\Omega$-algebra is zero if it vanishes at every $\Omega$-point. Here is a proof of the required Nullstellensatz. A field finitely generated as an $\Omega$-algebra is algebraic and finite over $\Omega$: choose an algebraically independent sublist $t_1,\ldots,t_r$ of its generators. After inverting one nonzero polynomial $h(t)$, the other generators satisfy monic equations over $A=\Omega[t_1,\ldots,t_r,h^{-1}]$. The given field is then integral over $A$, since it already contains $h^{-1}$. If a field is integral over a subring, that subring is a field: a monic equation for $a^{-1}$, multiplied by $a^{n-1}$, places $a^{-1}$ in the subring for every nonzero $a$ there. But if $r>0$, some $t_1-b$, $b\in\Omega$, does not divide $h$ and remains a nonunit of $A$. There are infinitely many such linear factors and only finitely many can divide $h$. Thus $r=0$, and algebraic closedness makes the field equal to $\Omega$.
+
+Every maximal ideal of a nonzero finite-type $\Omega$-algebra therefore gives an $\Omega$-point. If $p$ vanishes at every point of the zero set of an ideal $I$, the ideal $(I,zp-1)$ in one extra variable is the unit ideal; otherwise a maximal ideal would give a point with $p\ne0$. Substitute $z=p^{-1}$ in an expression for 1 and clear denominators to obtain $p^r\in I$ for some $r$. For radical $I$ this gives $p\in I$. This proves the point test and identifies the kernel of a coordinate map from a reduced affine variety with the ideal of the closure of its image.
+
+We shall also use the point test for products. A tensor in the product of two reduced finite-type $\Omega$-algebras can be written $\sum_i a_i\otimes b_i$ with the $b_i$ linearly independent over $\Omega$. If it vanishes at all pairs of points, then for each point of the first factor the point test in the second factor gives $\sum_i a_i(x)b_i=0$. Independence gives $a_i(x)=0$ for every $i$ and $x$, and the point test gives $a_i=0$. Thus product functions are determined by pairs of points; in particular the product algebra is reduced, since every nilpotent vanishes at those points. The same argument proves that a reduced finite-type algebra over an algebraically closed field stays reduced after any field extension: write a tensor as a linear combination of elements of the original algebra with linearly independent field coefficients, and evaluate at the original field's points. A nilpotent has zero evaluation, forcing all its original coefficients to vanish. The same statements on affine charts apply to varieties.
+
+**The family of orbit ideals.** Choose a nonempty affine open $V\subset X$ and write $R=k[V]$. Embed $V$ in an affine space with coordinates $y$, and embed the affine group $G$ in an affine space with coordinates $g$. The graph
+
+$$
+\Gamma=\{(g,x,y)\in G\times V\times V:y=gx\}
+$$
+
+is closed in $G\times V\times V$: it is the restriction of the graph of the morphism $G\times V\to X$, and $X$ is separated. Thus it has a finite ideal $J$ in $R[g,y]$. It is also isomorphic to the open subset $\{(g,x):gx\in V\}$ of $G\times V$. At every field-valued $x$ its fibre is the open subset $\{g:gx\in V\}$ of $G$. In particular it is reduced after extension to an algebraically closed field and is nonempty, because it contains the identity.
+
+Apply (4.33). For every algebraically closed extension $\Omega$ and $x\in V_f(\Omega)$, the list $B_y(x)$ is the reduced basis of the ideal of
+
+$$
+\overline{G(\Omega)x\cap V_\Omega}^{\,V_\Omega}.
+\tag{4.34}
+$$
+
+Indeed the fibre of the graph is exactly the indicated orbit-map domain, and the preceding point test identifies its elimination ideal with the closure ideal. This treats all components of $G$; no component has been discarded by choosing a single group-coordinate denominator.
+
+Let $c_1,\ldots,c_N\in R_f$ be the nonconstant coefficients of $B_y$. Two points in $V_f(\Omega)$ have equal coefficient tuples if and only if the closures (4.34) are equal. Equality in the forward direction follows from equality of the bases; in the reverse direction it follows from uniqueness of the reduced monic basis. If the list has no nonconstant coefficients, its coefficient tuple is the unique point of the zero-dimensional affine space.
+
+**Orbits and their closures.** Every algebraic-group orbit is open in its closure. To see this without a connectedness assumption, its orbit map has constructible image by Chevalley's theorem, AG-MO, Theorem 4.2. A dense constructible subset contains a nonempty relatively open subset of its closure. For completeness in the reducible case, remove the intersections of the finitely many irreducible components; on a component met densely, the irreducible constructibility criterion gives such an open subset away from the other components. Choose a point of that subset in the orbit. Every other point of the orbit is its translate. Translates preserve the orbit closure, and the translates of the chosen relatively open subset cover the orbit. Their union is therefore relatively open.
+
+The intersection of an orbit with $V_\Omega$ is likewise open and dense in its closure there. Two such intersections with the same closure meet: two open dense subsets of any nonempty space have nonempty intersection. Since group orbits are disjoint, they must be the same orbit. Thus the coefficient tuple separates the $G(\Omega)$-orbits meeting $V_f(\Omega)$. Points already in the same orbit give the same tuple. It follows also that each $c_i$ is an invariant rational function for the full group.
+
+**Generation of the invariant field.** Put $F=k(c_1,\ldots,c_N)\subset k(X)^G$ and $K=k(X)$. The reduced orbit basis $B_y$ has its coefficients in $F$. If $h=p(x)/r(x)\in k(X)^G$, choose representatives $p,r\in k[y]$ for its numerator and denominator on $V$, with $p(x),r(x)\ne0$ for $h\ne0$. The zero function needs no argument. Invariance on the graph gives
+
+$$
+\begin{gathered}
+r(x)p(y)-p(x)r(y)\\
+\in J_K\cap K[y].
+\end{gathered}
+\tag{4.35}
+$$
+
+This is an identity of rational functions on the graph, including each group component. Reduce $p(y)$ and $r(y)$ by the monic basis $B_y$. Their normal forms $A(y),C(y)$ have coefficients in $F$, because the input coefficients are in $k$ and monic division uses only coefficients of $B_y$. Neither normal form is zero. Otherwise the corresponding polynomial belongs to the generic orbit ideal, and evaluation at the identity point $y=x$ would give $p(x)=0$ or $r(x)=0$ in $K$. Reducing (4.35) now gives
+
+$$
+r(x)A(y)=p(x)C(y).
+$$
+
+Choose a monomial whose coefficient $C_\alpha$ is nonzero. Comparing that coefficient yields
+
+$$
+h=\frac{p(x)}{r(x)}=\frac{A_\alpha}{C_\alpha}\in F.
+\tag{4.36}
+$$
+
+This proves $k(X)^G=F$, with no appeal to a quotient theorem or to orbit separation by infinitesimal invariants.
+
+**An invariant open domain and a finite-type target.** For $k=\mathbb C$, set $U_1=\bigcup_{g\in G(k)}gV_f$. This is a nonempty invariant open subset. Define $c_i$ on $gV_f$ by transporting its regular function from $V_f$. On an overlap the two preimages are in the same orbit and their coefficients agree, by the orbit comparison. The functions therefore glue to regular invariant functions on $U_1$. They define a morphism $q_1:U_1\to\mathbb A^N$. Their geometric fibres are single orbits: move any pair of points to $V_f$ and use the coefficient comparison. The same construction holds over every algebraically closed extension. Indeed $U_1$ is quasi-compact, so finitely many of the displayed translates cover it, and this cover remains a cover after extension. Its invariance also persists: the closed complement is stable under $G(k)$, and the point test on the reduced product of that complement with the smooth group makes this an identity for the algebraic action. It therefore holds after every field extension.
+
+Let $\overline Y$ be the closure of the image. It is integral, and its function field is $k(c_1,\ldots,c_N)$. Chevalley's theorem and the dense-constructible criterion give a nonempty open $Y\subset\overline Y$ contained in the image. Set $U=q_1^{-1}(Y)$. This is nonempty, open and invariant, and $q=q_1|_U$ is surjective. Geometric surjectivity follows too: a nonempty finite-type fibre remains nonempty under field extension, and a nonempty finite-type scheme over an algebraically closed field has a point by the point test proved above. These are the required properties.
+
+For real data, perform the finite elimination over $\mathbb R(X)$. Its identities and monic bases remain valid over algebraically closed extension fields. The complex invariant open $U_1$ is stable under conjugation. Its closed complement is consequently defined over $\mathbb R$: on a real affine chart its ideal is stable under conjugation, and the real and imaginary parts of its elements generate the same ideal after extension to $\mathbb C$. The same argument descends the regular coefficient functions and the image closure. Choose the target open contained in the image over $\mathbb R$ by Chevalley's theorem. The normal-form proof (4.35)–(4.36) applies over $\mathbb R$ as written. All orbit comparisons remain geometric comparisons. This proves the real assertion. $\square$
+
+**Application to finite equation jets.** At a fixed $a\in M$ and fixed order $j$, suppose that the algebraic equation fibre $X=E^j_a$ is integral over $\mathbb C$, or geometrically integral over $\mathbb R$, and that the affine algebraic isotropy group $G=G^j_a$ acts regularly on it with the corresponding group hypotheses of the theorem. The theorem constructs its finite-type rational orbit quotient and invariant field, including disconnected isotropy. It imposes no conclusion about a common domain for the actions at all larger orders. In particular it does not establish the regularity or image equality assumed in Corollary 4.14, or the full orbit-symbol comparison in Section 4.12.
+
+**Example 4.20 (disconnected and real actions).** The two-element group acting on the line by $x\mapsto-x$ has orbit ideal $(y^2-x^2)$ at a generic point. Its coefficient gives $x^2$, and (4.36) gives $k(x)^G=k(x^2)$. Its Lie algebra is zero, so infinitesimal invariance alone would give the wrong field. For $\mathbb G_m$ acting on the plane by $(x,y)\mapsto(\lambda x,\lambda^{-1}y)$, the locus $xy\ne0$ has orbit equation $XY=xy$, and its invariant field is $k(xy)$. Finally $\mathbb G_m$ acting on the real punctured line by $x\mapsto\lambda^2x$ has one geometric orbit and constant rational invariant field, but two real-point orbits, distinguished by sign. The theorem's real assertion makes precisely this distinction.
+
+The orbit-basis construction and coefficient rewriting are treated in Evelyne Hubert and Irina A. Kogan, [*Rational invariants of a group action. Construction and rewriting*, author's manuscript](https://iakogan.math.ncsu.edu/papers/rinvHubertKogan.pdf), Proposition 2.7, Theorem 2.14, Lemma 2.15 and Theorem 2.16. Equations (4.33)–(4.36) supply the elimination, specialization, separation and rewriting arguments used here.
+
+![Vertical nonzero-x lines are group orbits, while every point on x=0 is fixed; the quotient and the two different orbit ideals are displayed.](../figures/finite-level-orbit-quotient.svg)
+
+*Figure 4.7.* The exact additive action of Exercise 8. The nonzero-$x$ vertical lines are fibres of its orbit quotient. Points marked on the excluded line represent different fixed-point orbits. Diagram: GPT-6.1 Sol (OpenAI). CC0 1.0.
+
+### 4.14. Horizontal rank and derivations modulo the common annihilator
+
+An invariant derivation need not have a group-invariant horizontal vector field as its representative. The relevant vector space is the horizontal space divided by the directions that annihilate every invariant. We construct that quotient and its derivations on one finite-level domain.
+
+First work with an integral algebraic equation-jet tower $X_j$ over a characteristic-zero field $k$, with dominant projections. Write $K_j=k(X_j)$ and $K_\infty=\bigcup_jK_j$. In a graph chart the commuting total derivatives $D_1,\ldots,D_n$ send functions of order $j$ to functions of order at most $j+1$. They send regular functions to regular horizontal differentials on the next jet level. Put
+
+$$
+d_h f=\sum_{a=1}^nD_a(f)\,dx^a.
+$$
+
+Let $F\subset K_\infty$ be the field of full-group rational differential invariants. The actions at finite levels, including their actions on the horizontal bundle $\tau$, are regular. The horizontal differential is covariant under them. Indeed the inverse graph-transversality matrix in Section 2 transforms the total derivatives, while its inverse transforms the horizontal coframe; their contraction is unchanged. Consequently $d_h(g^*f)=g^*(d_hf)$. All invariance assertions below concern these full actions, including their disconnected components.
+
+**Theorem 4.21 (one domain for horizontal rank).** There are an integer $\ell$, invariants $I_1,\ldots,I_r$ of orders at most $\ell-1$, and a nonempty invariant open $U\subset X_\ell$, with $0\le r\le n$, such that the following holds at every higher jet above $U$. The horizontal differentials of all invariants defined there span exactly
+
+$$
+\begin{gathered}
+W=\operatorname{span}\{d_hI_1,\ldots,d_hI_r\},\\
+\operatorname{rank}W=r.
+\end{gathered}
+\tag{4.37}
+$$
+
+More precisely, at order $j\ge\ell$, use invariants of orders at most $j-1$ regular near the projected jet. Their evaluated horizontal differentials span the pullback of the same rank-$r$ subbundle on $U$. Its annihilator $L\subset\tau$ has rank $n-r$, and $\tau/L$ is canonically dual to $W$. These assertions hold at algebraically closed field-valued points, including nongeneric higher jets above $U$.
+
+*Proof.* Over the field $K_\infty$, the horizontal cotangent space has dimension $n$. The span of $\{d_hJ:J\in F\}$ therefore has a basis selected from that set, say $d_hI_1,\ldots,d_hI_r$. One obtains such a basis by successively adjoining a member outside the preceding span. This can happen at most $n$ times, so only finitely many invariants and finite jet orders are used. Choose $\ell$ large enough for all these horizontal forms and for the functions themselves to have the stated orders.
+
+Take the locus where the $I_i$ are regular on their defining lower levels, their horizontal forms are regular at level $\ell$, and these forms are independent. It is a nonempty open: on an affine bundle chart independence is the nonvanishing of one of finitely many $r$-row minors, and at least one such minor is a nonzero rational function. Denominators and minors all occur at finite level. Use the full regularity and independence locus, rather than a selected minor chart, for $U$. Regularity is preserved by a regular isomorphism and independence by an invertible horizontal transformation. Since the $I_i$ are invariant and $d_h$ is covariant, this full locus is invariant.
+
+For any $J\in F$, maximality of the chosen basis makes every $(r+1)$-row minor of the matrix with rows $d_hI_i,d_hJ$ zero in $K_\infty$. Choose a finite level containing the entries. Dominance injects its rational function field into $K_\infty$, so these minors are already zero rational functions at that finite level. Clear their denominators. On an integral affine chart the resulting numerators are zero elements of its coordinate ring; they therefore vanish at every field-valued point where the original entries are regular. This includes every compatible higher jet over $U$ at which $J$ is regular. The nonzero $r$-minor supplied by the chosen forms then forces $d_hJ$ to lie in their evaluated span. This proves the uniform assertion for every $J$ and every higher order; no intersection of infinitely many open subsets is taken.
+
+On a minor chart, let $A_{ib}=D_{a_b}I_i$ be an invertible $r$-column submatrix. For each unselected column $c$, the vector
+
+$$
+\begin{gathered}
+Z_c=D_c\\
+-\sum_{b,i}(A^{-1})_{bi}(D_cI_i)D_{a_b}
+\end{gathered}
+$$
+
+annihilates every $d_hI_i$. A vector in their common kernel has its selected coordinates uniquely determined by its unselected coordinates through this same formula. Thus the $Z_c$ are a free basis of the kernel, of length $n-r$. The map $v\mapsto(d_hI_i(v))_i$ is onto, with right inverse given by the selected columns of $A^{-1}$. It identifies the quotient with a rank-$r$ free module and identifies its pairing with the forms with the ordinary nondegenerate evaluation pairing. These kernels and pairings agree on overlaps, because their definitions use the same forms. They give the subbundle $L$, the quotient and the claimed duality. If $r=0$, every $d_hJ$ is zero by the same rational identity argument; take $W=0$ and $L=\tau$. $\square$
+
+**Corollary 4.22 (invariant differentiation on the quotient).** On this domain there are $r$ derivations $\nabla_i:F\to F$, characterized, for every $J\in F$, by
+
+$$
+d_hJ=\sum_{i=1}^r\nabla_i(J)\,d_hI_i.
+\tag{4.38}
+$$
+
+They are represented locally by horizontal vector fields with coefficients of order at most $\ell$. Representatives differing by $L$ give the same operation on every invariant. The derivations commute on $F$. Every horizontal derivation preserving $F$, modulo those annihilating $F$, is uniquely an $F$-linear combination of the $\nabla_i$.
+
+They also preserve the invariant algebra of functions rational through order $\ell$ and polynomial in higher graph-jet coordinates, with the equations imposed. On finite orders this operation sends order $m$ to order at most $m+1$ when $m\ge\ell$.
+
+*Proof.* The coefficients in (4.38) exist and are unique by the basis property over $K_\infty$. Linearity and the Leibniz rule for $d_h$ make each coefficient operation a derivation. Apply a prolonged group transformation to (4.38). Both $J$ and the $I_i$ are invariant, and their horizontal differentials transform covariantly. Uniqueness gives $g^*\nabla_i(J)=\nabla_i(J)$ on their common domains, hence $\nabla_i(J)\in F$. This uses the full group action, not only infinitesimal invariance.
+
+Here is an explicit representative and its order bound. Choose $r$ columns $a_1,\ldots,a_r$ for which
+
+$$
+A_{ib}=D_{a_b}I_i,
+\qquad\Delta=\det A\ne0.
+$$
+
+On that minor chart put
+
+$$
+\widetilde\nabla_i
+=\sum_{b=1}^r(A^{-1})_{bi}D_{a_b}.
+\tag{4.39}
+$$
+
+The index order is fixed by $\widetilde\nabla_i(I_j)=\sum_b A_{jb}(A^{-1})_{bi}=\delta_{ji}$. Pairing (4.38) with this vector field proves that its operation on $J$ is $\nabla_i(J)$. The inverse-matrix entries are cofactors divided by $\Delta$; all their jet variables have order at most $\ell$. A second choice of columns gives the same values on the $I_j$, so the difference of the two representatives belongs to $L$. Theorem 4.21 makes that difference annihilate every invariant. Thus the operations glue over the invariant domain, even if a particular minor or a particular representative is not invariant.
+
+The commutator of two horizontal fields is horizontal. For $V=\sum_a v^aD_a$ and $H=\sum_b w^bD_b$, this follows directly from $[D_a,D_b]=0$:
+
+$$
+\begin{gathered}
+\bigl[V,H\bigr]\\
+=\sum_{a,b}(v^aD_aw^b-w^aD_av^b)D_b.
+\end{gathered}
+\tag{4.40}
+$$
+
+For representatives of $\nabla_i,\nabla_j$, this bracket annihilates every $I_s$, since their derivatives are constants $\delta_{si}$. It lies in $L$ and therefore annihilates all of $F$. This proves commutation as derivations of $F$; it does not assert that the chosen horizontal fields commute. More generally, if $V$ annihilates $F$ and $H$ preserves it, then $[H,V]J=H(0)-V(HJ)=0$ for every $J\in F$. Thus the annihilating fields form a Lie ideal among the preserving fields, and brackets of the quotient classes are independent of representatives.
+
+If a horizontal field $H$ preserves $F$, apply (4.38) to obtain
+
+$$
+H(J)=\sum_iH(I_i)\nabla_i(J).
+$$
+
+The coefficients $H(I_i)$ belong to $F$. The representation is unique, because evaluation on $I_j$ reads off its $j$th coefficient. This also proves that no nonzero $F$-linear combination of the $\nabla_i$ acts trivially. If $H$ preserves the stated rational-polynomial invariant algebra, the same coefficients belong to that algebra, since each $I_i$ belongs to it.
+
+Finally, differentiation of $p/q$ introduces the denominator $q^2$, never a denominator in a new higher coordinate. A total derivative sends each higher jet coordinate $u_J^\alpha$ to $u_{J,a}^\alpha$. It therefore preserves the algebra obtained by allowing rational coefficients through level $\ell$ and polynomial higher coordinates. The equations are preserved by total differentiation because the equation is formally integrable. Multiplication by an inverse-matrix coefficient in (4.39) introduces only the low-level denominator $\Delta$. Thus $\nabla_i$ preserves the stated function class. Where an invariant function is regular above $U$, use a nonzero minor at that point; its representative differentiates regular functions there. The results consequently remain regular on the same inverse-image domain, despite possible poles of a different representative. Formula (4.39) uses coefficients of order at most $\ell$ and one total derivative, proving the filtration bound. For $r=0$ the preserving horizontal fields all annihilate $F$ and the quotient is zero. $\square$
+
+**Smooth point coordinates.** The argument also applies to the fibrewise algebraic setting of Section 4.2, with smooth dependence on the point manifold and a transitive pseudogroup. Fix a point $a$. The invariant functions and their horizontal differentials restrict to rational functions and rational horizontal forms on the integral jet fibres over $a$. Work over the union of their fibre function fields for the finite-dimensional basis selection. Covariance and transitivity transport independence and all vanishing minors to every other point fibre: a transformation carrying $a$ to another point carries the same invariant functions and their horizontal forms. In particular a rational invariant vanishing on the fibre over $a$ vanishes on every transported fibre, so this restriction loses no invariant identity. The regularity and independence locus of the selected functions is open by smoothness in the point coordinates and the minor criterion, fibrewise Zariski open, and invariant. The same denominator clearing proves the assertion at every higher jet in each fibre. Matrix inversion, the chain rule and the quotient argument above have smooth coefficients in point coordinates and rational coefficients in finite jet variables. The proof therefore requires no algebraicity of the point coordinates. Integral fibre fields, the regular finite-level actions, the total-derivative structure and covariance are the hypotheses used here; none is inferred from an unproved stabilizer-rank assertion.
+
+**Example 4.23 (different representatives).** For the translation action $(x,y)\mapsto(x+t,y-t)$, put $I=x+y$ and $V=\partial_x-\partial_y$. The invariant field is $k(I)$, $W=k(x,y)(dx+dy)$, and $L=k(x,y)V$. Both
+
+$$
+\begin{aligned}
+H_x&=\partial_x+xV,\\
+H_y&=\partial_x+yV
+\end{aligned}
+$$
+
+represent $d/dI$. Neither field is invariant under all the translations. Their difference is $(x-y)V$, and $[H_x,H_y]=-(I+1)V$. Hence their commutator is generally nonzero as a vector field and zero as an operation on every invariant. Exercise 9 proves these assertions directly.
+
+![At (1,0), two distinct horizontal representatives change I=x+y by one; their difference lies along the level line I=1.](../figures/horizontal-quotient-derivations.svg)
+
+*Figure 4.8.* The vectors $H_x=(2,-1)$ and $H_y=(1,0)$ at $(1,0)$ have the same class modulo $L=\operatorname{span}(1,-1)$. Both endpoints lie on $I=2$. The drawn arrows are values at this point, rather than global constant fields. Diagram: GPT-6.1 Sol (OpenAI). CC0 1.0.
+
+Horizontal differentials, the quotient by their common annihilator and invariant derivations are treated in [Kruglikov–Lychagin, arXiv:1111.5480v3](https://arxiv.org/abs/1111.5480v3), §§1.3–1.4 and 2.3. The proofs above supply the finite-domain rank argument, coefficient covariance, quotient independence, commutator and function-class arguments used here. They do not establish the common-domain orbit-symbol/stabilizer comparison of Sections 4.11–4.12, affine orbit bundles, symbol cohomology or the generation of all higher invariants.
+
+### 4.15. Finite observations with equation-preserving normal directions
+
+Tangency equations are differentiated along a graph. The determining equations for an ambient transformation are differentiated in every ambient direction. These two operations must be kept distinct. We prove a finite observation theorem that permits both operations, while allowing the normal directions on the equation space to have nonzero brackets.
+
+Let $A$ be an integral $\mathbb Q$-algebra. Suppose it carries commuting derivations $D_1,\ldots,D_n$ and elements $u^a_\alpha$, where $1\le a\le c$ and $\alpha\in\mathbb N^n$, satisfying
+
+$$
+D_i u^a_\alpha=u^a_{\alpha+e_i}.
+\tag{4.41}
+$$
+
+Let $Z_1,\ldots,Z_c$ be further derivations of $A$. They need not commute with one another or with the $D_i$. Introduce coefficient-independent polynomial variables $p_1,\ldots,p_n,q_1,\ldots,q_c$. On polynomial rows in
+
+$$
+M=A[p,q]^t
+$$
+
+define additive operators, acting componentwise, by
+
+$$
+\begin{aligned}
+T_i&=D_i+p_i+\sum_a u^a_{e_i}q_a,\\
+N_a&=Z_a+q_a.
+\end{aligned}
+\tag{4.42}
+$$
+
+The derivations in this formula act on coefficients only. The $T_i$ commute: the commutator of their multiplication terms is zero, and the remaining coefficient is $D_i u^a_{e_j}-D_j u^a_{e_i}=0$. No corresponding commutation assertion is made for the $N_a$.
+
+Fix a finite list of rows $P$ in $M$. Let $H$ be the $A$-span of all words in the $T_i,N_a$ applied to $P$, including words of length zero. Fix polynomial rows $B_1,\ldots,B_s$, to be differentiated only by the $T_i$, and further polynomial rows $O_1,\ldots,O_m$, whose values are the observations. For $k\ge0$, let
+
+$$
+\begin{gathered}
+H_k=\operatorname{span}_A\{WP:\operatorname{length}W\le k\}.
+\end{gathered}
+$$
+
+Every displayed generating set is finite. For a nonzero $f\in A$ and an ordinary unital field map $\lambda:A_f\to L$, notation such as $H_k(\lambda)$ means the span of the evaluated generating rows. No derivations on $L$ are prescribed, and $\lambda$ is not required to commute with any derivation.
+
+Write $S_O(b,\lambda)=\sum_jb_jO_j(\lambda)$ and
+
+$$
+\begin{gathered}
+\mathcal B_k(\lambda)=\operatorname{span}_L\{(T^\alpha B_a)(\lambda)\},\\
+1\le a\le s,\qquad |\alpha|\le k.
+\end{gathered}
+$$
+
+**Theorem 4.24 (one finite bound for the observed relation spaces).** There are a nonzero $f\in A$, an integer $M\ge0$ and a direct summand $C\subset A_f^m$, free of finite rank, such that every field map $\lambda:A_f\to L$, every $k\ge M$ and every $b\in L^m$ satisfy
+
+$$
+\begin{gathered}
+b\in C(\lambda)\quad\Longleftrightarrow\\
+S_O(b,\lambda)\in H_k(\lambda)+\mathcal B_k(\lambda).
+\end{gathered}
+\tag{4.43}
+$$
+
+Here $C(\lambda)$ is the image of $C\otimes_{A_f}L$ in $L^m$. Both its dimension and its comparison with the finite rows are uniform over all these ordinary field maps. There are finitely many generators of $C$ with identities in the rows on the right at order $M$.
+
+If these rows are equations on ordinary transformation jets and the $O_j$ are all coordinate rows through a fixed order $d$, the projections of their finite solution spaces to those $d$-jets are consequently the same for every $k\ge M$. Extra fixed linear constraints on the observed $d$-jets may be imposed after taking this projection.
+
+*Proof.* We give the basis, localization and elimination arguments, including the treatment of polynomial observations.
+
+**Ordered coefficient bases.** Write $F_\beta=N_1^{\beta_1}\cdots N_c^{\beta_c}$ in that fixed order. For a constant component row $e_j$, $F_\beta e_j=q^\beta e_j$. The rows
+
+$$
+b_{\alpha,\beta,j}=T^\alpha q^\beta e_j
+\tag{4.44}
+$$
+
+are an $A$-basis of $M$. In ordinary polynomial degree their leading terms are
+
+$$
+\left(p+u_1q\right)^\alpha q^\beta e_j.
+$$
+
+The linear substitution $(p,q)\mapsto(p+u_1q,q)$ is invertible over $A$. Subtract the leading degree in that basis and induct on the remaining degree. This proves existence and uniqueness of the coefficient expansion and also proves it after every coefficient specialization.
+
+To see the normal action in this basis, use formal variables $s=(s_1,\ldots,s_n)$, put $E(s)=\exp(\sum_i s_iD_i)$, and set
+
+$$
+\Phi=\sum_i s_ip_i+
+\sum_{a,\,|\gamma|>0}u^a_\gamma\frac{s^\gamma}{\gamma!}q_a.
+$$
+
+Then
+
+$$
+e^{sT}h=e^\Phi E(s)h.
+\tag{4.45}
+$$
+
+Indeed $D_i\Phi=\partial_{s_i}\Phi-p_i-\sum_a u^a_{e_i}q_a$ by (4.41). Differentiating the right side in $s_i$ therefore gives $T_i$ applied to it, and its constant term is $h$. Formal coefficient recursion gives the identity. Only division by positive integers is used.
+
+Apply $N_a$ to (4.45) with $h=q^\beta e_j$ and read its coefficients. Suppress the fixed component $j$ and write $c_{b\gamma}={\alpha\choose\gamma}Z_a(u^b_\gamma)$. One obtains
+
+$$
+\begin{gathered}
+N_a b_{\alpha,\beta}-b_{\alpha,\beta+e_a}\\
+=\sum_{b,\,0<\gamma\le\alpha}
+ c_{b\gamma}b_{\alpha-\gamma,\beta+e_b}.
+\end{gathered}
+\tag{4.46}
+$$
+
+Order the basis first by $|\beta|$, then by $|\alpha|$, followed by additive monomial tie breakers and the component. Solving (4.46) for $N_ab_{\alpha,\beta}$ gives the unique leading term $b_{\alpha,\beta+e_a}$ with coefficient one. The other terms have smaller tangential degree. Multiplication of a coefficient by a derivation in the Leibniz rule also gives a smaller term. The operator $T_i$ has the exact basis shift $\alpha\mapsto\alpha+e_i$.
+
+**Polynomial observation copies.** The observations may have coefficients on which the $Z_a$ act. A freely normally differentiated scalar copy of such an observation would impose unintended equations. Instead collect all the $B_a,O_j$ into a polynomial matrix $B$ of row degree at most $r$. Adjoin one dummy unknown $\eta$ per row, impose each $\eta=0$ and all its ordinary derivatives as determining rows, and form the unipotent matrix
+
+$$
+\mathcal C=\begin{pmatrix}I&0\\B&I\end{pmatrix}.
+\tag{4.47}
+$$
+
+Use a full coefficient-module copy with operators transported through the map $v\mapsto v\mathcal C$ to the enlarged ambient module. Its ordered basis maps to $T^\alpha F_\beta\mathcal C_j$. To decode a row, first decode its dummy components in (4.44), subtract the corresponding full dummy basis rows, and decode its remaining original components. This finite triangular subtraction proves that it is an $A$-basis, preserved by arbitrary coefficient specialization.
+
+Give original components weight zero and dummy components weight $r$, denoting the component weight by $w_j$. Order this basis by the pair
+
+$$
+(|\beta|+w_j,\ |\alpha|),
+\tag{4.48}
+$$
+
+then by additive tie breakers. The tangential action is still an exact shift. We prove the normal leading shift; this is the point at which the full observation copy matters.
+
+For a dummy row $B_j+e_{\eta_j}$, the elementary ordered expansion gives
+
+$$
+\begin{gathered}
+F_\beta B_j=q^\beta B_j+R_\beta,\\
+\deg_{p,q}R_\beta\le |\beta|+r-1.
+\end{gathered}
+\tag{4.49}
+$$
+
+Every other summand uses at least one $Z$ on a coefficient and hence at most $|\beta|-1$ multiplication factors $q$. This uses no commutation between the $Z_a$.
+
+Put $A_{ab}(s)=\sum_{|\gamma|>0}Z_a(u^b_\gamma)s^\gamma/\gamma!$ and $H_\beta=E(s)F_\beta B_j$. Subtract from $N_a$ of the dummy basis row its expected shifted dummy row and the dummy corrections in (4.46). The remaining original-component expression is $e^\Phi$ times
+
+$$
+\begin{gathered}
+R(s,p,q)=\\
+Z_a(H_\beta)+q_aH_\beta-H_{\beta+e_a}\\
+{}+\sum_b A_{ab}(s)
+  \left(q_bH_\beta-H_{\beta+e_b}\right).
+\end{gathered}
+\tag{4.50}
+$$
+
+Its polynomial degree is at most $|\beta|+r$. In each parenthesis the apparent degree-$|\beta|+r+1$ term cancels by (4.49); a coefficient derivation adds no polynomial degree.
+
+For any coefficient series $H(s,p,q)$ of polynomial degree at most $d$, each coefficient of $e^\Phi H$ has ordinary canonical normal degree at most $d$. To prove this for a monomial, eliminate each $p_i$ using
+
+$$
+\begin{gathered}
+p_ie^\Phi=\partial_{s_i}e^\Phi-
+\sum_b U_i^b(s)q_be^\Phi,
+\\
+U_i^b(s)=\sum_\gamma u^b_{\gamma+e_i}\frac{s^\gamma}{\gamma!}.
+\end{gathered}
+$$
+
+The product rule, repeated finitely many times, gives $q$ monomials of degree at most $d$ times tangential derivatives of $e^\Phi$, with coefficient series. Reading a fixed coefficient is a finite operation and gives (4.44) with the asserted normal bound. Thus the original-component remainder in (4.50) has weighted normal degree at most $|\beta|+r$, strictly below the expected dummy leading degree $|\beta|+r+1$. The dummy corrections have smaller tangential degree. This proves the unit normal leading shift in (4.48) at all orders.
+
+**Finite monic localization.** Work over $K=\operatorname{Frac}A$. In any finite direct sum of the above modules, place the entire ambient block ahead of the observation blocks. The resulting order is a well-order preserved by each leading shift. For any $K$-subspace stable under the operators, its leading monomials form an upward-closed subset of a finite polynomial module $K[t,q]^v$. The polynomial and module Noetherian theorems in AG-CA-03, Theorems 1.1 and 2.1, Proposition 1.2 give finitely many monic rows $G$ generating that leading monomial submodule.
+
+Division cancels a leading term with an ordered operator multiple of a row of $G$. The leading shifts just proved make that cancellation valid and leave smaller terms. The well-order proves termination. A nonzero standard remainder cannot lie in the original stable subspace, since its leading monomial would have a divisor from $G$. Thus $G$ generates it by these ordered prolongations.
+
+If the stable subspace is generated by finitely many initial rows, retain finite word expressions for the members of $G$ in those rows. Invert the finitely many coefficient denominators in these expressions and in $G$, with product $f\ne0$. All coefficient derivatives of $A_f$ remain in $A_f$. Every prolongation of $G$ is now in the original $A_f$-row span. Conversely every original word has a division remainder in $A_f$; that remainder is zero over $K$, hence was zero in $A_f$. This proves equality over $A_f$.
+
+Division gives a coefficient-module direct sum of the relation span and the free module on its standard monomials. Uniqueness over $K$ proves uniqueness and linearity over $A_f$. After an arbitrary field map, the same splitting persists. The rows, their prolongations and their identities are evaluated after all operations have been performed over $A_f$; this argument does not ask an ordinary coefficient specialization to commute with differentiation.
+
+**Graph elimination and a finite normal bound.** Map the sum of the ambient and full gauged observation copies to the enlarged ambient module modulo its determining rows. Send an ambient row to itself and an observation row through (4.47). The kernel is generated under the operators by the initial determining rows in the ambient block and the finitely many graph rows $(-\mathcal C_j,e_j)$. Every observation basis row is an ordered prolongation of a zeroth-order basis row, so subtracting these graph rows leaves exactly the ambient determining span. This proves the kernel assertion.
+
+Apply the monic localization to this finite graph presentation. Eliminate the entire ambient block. Intersect the remaining relation space with weighted normal degree at most $r$. This coefficient space is a finite free tangential operator module: in an original component $|\beta|\le r$, and in a dummy component $\beta=0$. Its relation module is generated by the finitely many ordered normal shifts of $G$ whose leading weight is at most $r$, with arbitrary tangential prolongations. Indeed every divisor and normal multiplier in a division at that weight has the same bound; lower terms also remain within it. This argument also proves that the intersection commutes with every ordinary coefficient specialization.
+
+There are now only finitely many normal-index/component positions. Tangential component elimination retains the zeroth-normal dummy positions representing the $O_j$ and $B_a$. The operators $T_i$ act as pure shifts on these positions. A further application of the same monic argument, with an elimination order on these finitely many components, gives their exact specialized tangential relations. This does not impose normal derivatives on any $B_a$.
+
+Project these relations onto their $O$ components, forgetting the $B$ components. Projection of a row span commutes with specialization. Choose a final degree-compatible tangential monic basis of that projected module and clear its finitely many coefficient denominators as well. Its intersection with tangential degree zero is a finite free direct summand $C\subset A_f^m$, with the same specialized degree-zero intersection. Division proves this directly: only degree-zero leading rows can divide a degree-zero term, and their standard component positions give the complementary free summand. It follows that
+
+$$
+\begin{gathered}
+b\in C(\lambda)\quad\Longleftrightarrow\\
+S_O(b,\lambda)\in H(\lambda)+\mathcal B_\infty(\lambda),
+\end{gathered}
+$$
+
+where $\mathcal B_\infty(\lambda)=\bigcup_k\mathcal B_k(\lambda)$.
+
+Each of the finitely many degree-zero generators has a finite identity in determining words and tangential $B$ rows. Let $M$ bound all lengths and tangential orders in these identities. Their specializations prove containment in the right side of (4.43) for every $k\ge M$. The reverse containment follows from inclusion in the full row span just identified. This proves (4.43), including the finite identities.
+
+Finally, in a finite-dimensional vector space the annihilator of the projection of a common kernel is the relation space among the observed coordinate rows modulo the original equation rows. For a direct proof, a linear functional on the observed coordinates vanishes on that projection exactly when its pullback vanishes on the common kernel; extend a basis of the kernel to a basis of the whole space to see that such a pullback is a linear combination of the equation rows. Taking annihilators twice proves equality of the projected solution spaces. Intersecting that fixed projection with further fixed observed constraints proves the last assertion. Empty lists, $n=0$, $c=0$ and zero-rank observation spaces are included in the same finite-module argument. $\square$
+
+**Ambient determining rows.** Suppose $P$ has basic-point coefficients, and $Z_a$ acts on those coefficients as $\partial_{u^a}$, while $D_i$ acts as $\partial_{x^i}+\sum_a u^a_{e_i}\partial_{u^a}$. Then $N_a$ on a determining row is its ordinary $u^a$ prolongation, and $T_i-\sum_a u^a_{e_i}N_a$ is its ordinary $x^i$ prolongation. Conversely $T_i$ is the corresponding combination of ordinary prolongations. The span $H$ is therefore exactly the ordinary prolonged determining span: both contain the initial rows and are closed under the indicated operations and coefficient multiplication. If the determining system is formally integrable, its finite raw matrices have the actual admissible transformation-jet kernels. Theorem 4.24 then supplies uniform finite observations of the actual tangency system once the coefficient algebra and the equation-preserving lifts have been constructed. It does not by itself construct those lifts for an unspecified action.
+
+**Example 4.25 (curvature in a characteristic observation).** On straight-line graph jets in three-dimensional affine space, write
+
+$$
+\begin{gathered}
+u_{xx}=v_{xx}=0,\qquad p=u_x,\quad q=v_x,\\
+A=\mathbb Q[x,u,v,p,q].
+\end{gathered}
+$$
+
+The equation derivations
+
+$$
+\begin{gathered}
+D=\partial_x+p\partial_u+q\partial_v,\\
+Z_1=\partial_u+v\partial_p,\qquad Z_2=\partial_v
+\end{gathered}
+$$
+
+are regular on this coefficient algebra. No derivative of a higher graph coefficient is needed: all higher ones are zero, and $D(p)=D(q)=0$. The normal bracket is $[Z_1,Z_2]=-\partial_p$. For transformation components $(\xi,\beta,\gamma)$, the characteristic rows are
+
+$$
+Q_1=\beta-p\xi,\qquad Q_2=\gamma-q\xi.
+$$
+
+With the full zeroth-order gauge having rows $(\xi,Q_1,Q_2)$, the normal operators $N_1=Z_1+z_u$, $N_2=Z_2+z_v$ satisfy
+
+$$
+[N_1,N_2]Q_1=\xi.
+$$
+
+Indeed their multiplication variables commute with the coefficient derivations, so their bracket is $-\partial_p$ on coefficients. Applied to the graph row $(-Q_1,e_{Q_1})$, the full gauged action gives $(-\xi,e_\xi)$, which still maps to zero. A free scalar observation basis would instead have zero bracket on its constant basis and would give $(-\xi,0)$. That would falsely force $\xi$ into the tangency relation span.
+
+To see the error geometrically, the line $(x,u,v)=(t,pt,qt)$ is preserved by the tangential translation with constant velocity $(1,p,q)$. Its characteristic values are $Q_1=Q_2=0$ and all their tangential derivatives are zero, while $\xi=1$. Thus the false scalar relation excludes an actual allowed translation. The full gauged copy retains it.
+
+![For the line (t,t,t/2), translation by (1,1,1/2) has zero characteristic normal components. The normal commutator produces a matching xi term in both components of the full graph relation.](../figures/normal-curvature-observation.svg)
+
+*Figure 4.9.* The line and its translation are drawn by the explicitly displayed linear projection. The right-hand diagram is the exact graph relation of Example 4.25. The coefficient-basis map sends $e_{Q_1}$ to $\beta-p\xi$, so its normal curvature remains inside the observation copy. Theorem 4.24 explains why the full copy can be eliminated without introducing an additional tangency equation.
+
+The distinction between ordinary coefficient specialization and differential specialization is also relevant to the common-domain problem in Kruglikov–Lychagin, [*Global Lie–Tresse theorem*, arXiv version 3, Section 2.2](https://arxiv.org/abs/1111.5480v3). Theorem 4.24 proves its stated coefficient-module assertion directly. Applying it to all higher jets on one invariant finite-level domain still requires the actual coefficient algebra, raw determining comparison and transport of the resulting domain.
+
+*Theorem 4.24, Example 4.25 and Figure 4.9: GPT-6.1 Sol (OpenAI). Independently authored text and diagram, CC0 1.0.*
+
+### 4.16. One domain for the full symbols of a point action
+
+We now consider the action induced by ambient point transformations. Let $G^j\subset D^j(M)$ be a transitive finite-order jet pseudogroup: $G^0=M\times M$, the adjacent projections are surjective smooth bundles, and above its defining order the equations are their ordinary prolongations. The fixed-point jet groups are algebraic. Let $E^j\subset J^j(M,n)$ be invariant, with smooth surjective projections, nonsingular irreducible algebraic fibres, and affine-bundle projections above its finite defining order. These are the hypotheses used below. An action specified only on an equation requires its own comparison with the characteristic and determining rows; no such comparison is inferred from fibrewise isotropy algebraicity alone.
+
+Over $\mathbb C$ the base is holomorphic and the algebraic fibres are integral. Over $\mathbb R$ the coordinate algebra of a fibre means its algebra of polynomial functions on the actual real algebraic set. This convention gives geometric integrality. Indeed, if $A$ is that algebra and the real set is irreducible, $A$ is a domain: a product vanishing everywhere expresses the set as a union of two algebraic closed subsets. In $\operatorname{Frac}A$, a root $f/g$ of $T^2+1$ would give $f^2+g^2=0$. At every real point both functions would vanish, so both are zero in $A$, contradicting $g\ne0$. Thus the monic quotient $A[T]/(T^2+1)$ embeds in the field $\operatorname{Frac}(A)[T]/(T^2+1)$ and is a domain. This quotient is $A\otimes_{\mathbb R}\mathbb C$. Its real points are Zariski dense because a complex polynomial vanishing there has both real and imaginary parts zero in $A$. If fibres are instead given as arbitrary real schemes, geometric integrality is an explicit hypothesis; a prime ideal such as $(x^2+y^2)$ must not be confused with the polynomial-function ideal $(x,y)$ of its real points.
+
+Write $m=\dim M$, choose graph coordinates $(x^i,u^a)$, and let $\tau$ and $\nu=T_aM/\tau$ denote the graph tangent and normal spaces. The full orbit tangent space is $\Delta_k\subset T E^k$, and its vertical symbol is
+
+$$
+\varpi_k=\Delta_k\cap\ker d\pi_{k,k-1}.
+\tag{4.51}
+$$
+
+It includes contributions from transformation jets of every lower order.
+
+**Lemma 4.26 (formal coefficients preserving the equation).** Fix a base point $a$ and a nonempty affine graph chart of an initial equation fibre. Let $R_j$ be the coordinate algebras of its higher inverse images. There are formal base coordinates $w$, a compatible formal family of admissible point transformations $g_w$ with $g_0=\mathrm{id}$ and $g_w(a)=w$, and the integral coefficient algebra
+
+$$
+A=\bigcup_j R_j[[w]]
+\tag{4.52}
+$$
+
+with the following properties. Every element has a fixed finite fibre order $j$. Formal transport by $g_w$ and its inverse identifies the actual equation ideals at each finite order. The total derivatives preserve $A$, commute and raise finite fibre order at most one. There are equation-tangent derivations $Z_a$ preserving each finite fibre level and acting as $\partial_{u^a}$ on all formal basic-point coefficients. The raw linearized determining equations have the actual admissible tangent-jet kernels and surjective adjacent projections.
+
+*Proof.* First verify the assertion about raw equations. Choose regular local defining functions for $G^q$ near the identity section. Their differentials generate its conormal space. At the next prolongation, their ordinary total derivatives are affine in the new highest transformation derivatives. The solution fibre over an admissible lower jet is an affine space. Its homogeneous kernel is exactly its vertical tangent space, so the bundle hypothesis makes the highest coefficient matrix have constant rank. On a rank-minor chart solve the independent equations for that many highest coordinates. Every remaining affine equation has its linear part in their span; its residual constant vanishes on the lower system because every lower jet has a lift. The old regular equations and these independent new equations therefore generate the local vanishing ideal and have independent differentials. Induction proves that linearizing all raw prolonged equations gives the actual tangent space at every order. The same affine argument applies to the formally integrable equation $E$ above its defining order. It uses its regular reduced ideal, rather than an arbitrary list of equations with multiplicities.
+
+The tangent maps of the source-fixed projections of $G$ at the identity are onto. A tangent lift has zero source component when its projection does, since the jet projection preserves source. Starting from each member of a basis of $T_aM$, choose compatible lifts at all orders. They are the ordinary Taylor coefficients of formal vector fields $X_1,\ldots,X_m$. If $P$ is any initial linear determining row, the coefficient of $y^\alpha$ in $P(X_b)(y)$ is its ordinary $\alpha$-prolongation at $a$, divided by $\alpha!$. Every such coefficient is zero. Thus these fields solve the determining system as full formal germs, and their point components form an invertible formal matrix at $a$.
+
+Their formal flows belong to $G$. Here is a finite-order verification. Right composition with an arrow sends a source-fixed tangent vector at the target identity to a tangent vector at that arrow; differentiate the groupoid composition map to obtain this identity. Taking Taylor series preserves it. The resulting right-translated field on $G^j$ preserves its regular completed ideal: in coordinates where that ideal is $(s_1,\ldots,s_h)$, tangency says that each derivative of $s_\mu$ lies in the same ideal, and the product rule gives preservation of every ideal element. The formal flow recursion divides its degree-$r$ right-hand coefficient by $r+1$ to determine degree $r+1$. It therefore preserves the ideal term by term. The $j$-jet of the formal point flow satisfies this same finite coordinate equation, by differentiating composition with $\mathrm{id}+\epsilon X_b$, $\epsilon^2=0$. Its initial condition is the identity, so the coefficient recursion identifies the two flows. This proves admissibility at every formal source, with compatibility under jet projection; convergence is not asserted.
+
+Compose the flows in a fixed order with $m$ parameters and apply them to $a$. The linear part of this point map is the chosen basis of $T_aM$. It has a formal inverse: at degree $r$, subtract the degree-$r$ error using the inverse linear matrix, after the lower degrees have been fixed. Reparametrizing the flow composition gives $g_w(a)=w$ and $g_0=\mathrm{id}$.
+
+We next verify preservation of the whole algebraic equation fibre. At any finite $j$, the source-$a$ part of $G^j$ has a smooth local section $\rho_j(w)$ over the target base, with $\rho_j(0)=\mathrm{id}$. Successive local trivializations of the assumed bundle projections give such a section. The graph formulas of Section 2 make its action and inverse rational in the graph derivatives, with smooth base coefficients. Transporting the full polynomial ideal at $a$ by $\rho_j(w)^{-1}$ consequently describes the actual finite equation ideal over nearby base points. The graph-transversality denominator has constant term one. Thus these descriptions have bounded fibre degree, after retaining the finitely many initial chart denominators. The sections at different $j$ are only used to identify these finite ideals and need not themselves be compatible.
+
+For every actual source-$a$ arrow near the identity, invariance of $E$ says that these ideal equations vanish after acting on every point of the fibre. They are rational identities in its coordinate algebra. In the real case the density proved above justifies the same identities after complexification. Take Taylor series in finite arrow coordinates and substitute the admissible formal arrow $g_w$. The identities remain true in $R_j[[w]]$; each transversality inverse is its geometric series, with a finite contribution at each fixed $w$-degree. Apply the inverse formal arrow for the converse. This identifies the whole fibre ideals, rather than a completion at one selected fibre point.
+
+Above the initial affine chart, prolonged equation fibres are closed affine subsets of its polynomial higher-derivative coordinates, defined by the raw prolonged ideal. The regular-ideal argument already proved gives their actual reduced coordinate algebras. The projections are onto, so $R_j\to R_{j+1}$ is injective. Every $R_j$ is a finite-type coordinate algebra with only the finitely many initial chart elements inverted. This proves integrality of (4.52) and its fixed finite fibre order convention; it is not the larger ring $R_\infty[[w]]$.
+
+Total differentiation of an order-$j$ graph function uses only graph order $j+1$. Conjugate it by the formal transport and its inverse to obtain its action on (4.52). A coefficient of formal degree $r$ uses only finitely many coefficients through degree $r+1$, so the action is defined on arbitrary series of bounded fibre order. The prolonged $X_b$ preserve each finite equation level by the ideal identities. Their point-component inverse matrix has formal basic-point coefficients and an invertible constant part. Take the corresponding combinations of the prolonged fields whose point values are the coordinate-normal directions. These are the required $Z_a$. Multiplying a prolonged field by a basic function is used here as an equation-tangent derivation; it is not asserted to be the ordinary prolongation of the resulting point field. This distinction permits noncommuting lifts.
+
+Finally, pushforward by the full formal germ $g_w$ identifies finite admissible determining jets. The change is triangular in vector-field derivative order with invertible first Jacobians, and its inverse comes from $g_w^{-1}$. Nonzero vector-field values can require transformation derivatives through order $j+1$ to transform a $j$-jet; those derivatives are available and retained. Differentiating a graph deformation gives the invertible normal first-jet transformation of its characteristic, followed by an invertible triangular transformation of its tangential derivatives through each finite order. Thus the finite raw determining and tangency matrices are the actual transported matrices. This also proves the last assertion of the lemma. $\square$
+
+**Lemma 4.27 (the highest relations of the full orbit).** For the coefficient algebra of Lemma 4.26, there are one nonzero coefficient denominator $f$, integers $M,q$ and a finite degree-compatible monic tangential relation presentation $K_Q$ such that, at the actual higher jets to which this presentation specializes,
+
+$$
+\begin{gathered}
+\operatorname{Ann}(\varpi_k)=(\operatorname{gr}K_Q)_k,\\
+k>M.
+\end{gathered}
+\tag{4.53}
+$$
+
+The annihilator is in $S^k\tau\otimes\nu^*$. For $k>M$ and $k\ge q$ one has $\varpi_{k+1}=\varpi_k^{(1)}$. At each sufficiently high order the full action rank is constant in the presentation. For any preassigned finite ordinary observation order $d$, one may enlarge the same finite data so the low-$d$ tangency projections stabilize.
+
+*Proof.* Let $P$ be the finite linear determining rows with basic-point coefficients. Lemma 4.26 supplies the derivations required in Theorem 4.24. Its final paragraph identifies their full mixed closure $H_P$ with the ordinary prolonged determining span. Use the characteristic observations
+
+$$
+Q^a=\beta^a-\sum_i u^a_{e_i}\xi^i.
+$$
+
+Stop the graph elimination in the proof of Theorem 4.24 after retaining only the characteristic tangential positions, before projecting onto degree-zero low observations. It gives their entire tangential kernel modulo $H_P$. Choose a final monic order comparing total tangential degree first and clear its finitely many coefficient identities. Call the resulting module $K_Q$. The same graph splitting and division prove that every ordinary field specialization has exactly the specialized relation kernel. Its finite-degree quotients have the standard tangential monomials as coefficient bases. This is a kernel comparison proved by elimination, rather than an appeal to tensoring a generic kernel.
+
+At an actual formal transported point, let $F_kM$ be the ordinary-order-$k$ row space and $\mathcal P_k$ the span of the raw determining rows through order $k$. Formal integrability supplies the further strictness
+
+$$
+H_P\cap F_kM=\mathcal P_k.
+\tag{4.54}
+$$
+
+A row on the left annihilates every infinite admissible solution jet. Each admissible $k$-jet extends, by the surjective linear projections in Lemma 4.26, so the row annihilates the full finite admissible space. Extending a basis of that kernel shows that its annihilator is the raw row span, which proves (4.54). The converse is immediate. This argument is used only at the actual specializations supplied by that lemma; formal integrability of an unrelated ordinary field map is not assumed. Since $T^\alpha Q$ has ordinary transformation-derivative order at most $|\alpha|$, the rank of the $Q$ rows through $k$ on the raw determining space is the number of standard tangential monomials through $k$.
+
+Include the $n$ point-value rows $\xi^i_0$. Theorem 4.24 supplies their split finite relation space $C$ modulo the determining and tangential $Q$ rows, with finitely many relation lifts $(c_r,q_r)$. Choose $M$ bounding their tangential orders and their actual raw determining orders. A mixed word of length $r$ on an initial order-$q_0$ determining row has raw order at most $q_0+r$; this offset is included in $M$. For every $k\ge M$, any relation among point rows and $Q$ rows through $k$ has its point component in $C$. Subtract the coefficient-linear combination of the fixed lifts with that component. The remainder is in $K_Q$. Above order $M$, the highest $Q$-coordinate image is therefore exactly $(\operatorname{gr}K_Q)_k$.
+
+The actual prolonged graph-action rows satisfy
+
+$$
+\Phi^a_\alpha=T^\alpha Q^a+
+\sum_i u^a_{\alpha+e_i}\xi^i_0.
+\tag{4.55}
+$$
+
+This is the graph-deformation formula of Section 2: differentiate the normal variation at fixed transformed abscissa, then add the motion of that abscissa. At $\alpha=0$ it reads $\beta^a=Q^a+\sum_i u^a_{e_i}\xi^i_0$. With point rows included, (4.55) is an invertible triangular row change leaving the highest vertical covector coefficients unchanged. The apparent graph order $k+1$ in separate characteristic rows cancels in the full action rows.
+
+Restrict $\operatorname{Ann}(\Delta_k)$ to the ambient vertical space $V_k=S^k\tau^*\otimes\nu$. Its image is exactly $\operatorname{Ann}_{V_k}(\Delta_k\cap V_k)$. One inclusion follows by evaluation. For the other, a functional on $V_k$ vanishing on the intersection extends to $\Delta_k+V_k$ by declaring it zero on $\Delta_k$; the intersection condition makes this well defined. Extend a basis once more to the full ambient space. This proves the reverse inclusion. The intersection is the full symbol (4.51), so the preceding highest-relation calculation proves (4.53). The equation-symbol annihilators are already included because $\Delta_k\subset T E^k$; none are discarded.
+
+Let $q$ bound the degrees of the finite monic rows of $K_Q$. Their highest homogeneous parts generate $\operatorname{gr}K_Q$: degree-compatible division cancels the highest degree using those parts, while differentiating a coefficient has smaller tangential degree. For $k\ge q$, every coefficient needed in degree $k+1$ has positive degree and has a tangent degree-one factor. Thus
+
+$$
+(\operatorname{gr}K_Q)_{k+1}
+=\tau(\operatorname{gr}K_Q)_k.
+$$
+
+The symmetric-multilinear pairing of Lemma 4.5 makes multiplication adjoint to insertion. Taking annihilators proves the prolongation equality.
+
+The full action rank through $k$ is the $Q$ row rank plus $n-\operatorname{rank}C$, both fixed integers in this monic presentation. To obtain the last assertion, apply Theorem 4.24 also to all ordinary coordinate rows through the prescribed $d$. Its finite-dimensional annihilator argument gives the stable low-$d$ solution projections. Intersect with $\xi_0=0$ in that fixed observed space; $Q_0=0$ then imposes $\beta_0=0$ too. For $d\ge1$ the derivative restriction to $\tau$ is a fixed linear operation on these observed jets. Its images therefore agree at all adjacent sufficiently high truncations, without an assertion that whole stabilizers lift. $\square$
+
+**Theorem 4.28 (a common invariant domain for a point action).** Under the hypotheses of this section, fix $d\ge1$. There are a finite integer $\ell$ and a nonempty invariant fibrewise Zariski-open $U\subset E^\ell$ such that every higher geometric jet above $U$ has the following properties:
+
+1. The full orbit tangent spaces have constant rank at each order $k\ge\ell$.
+2. Their point-fixing tangency kernels have the same low-$d$ projection at every further truncation. In particular, adjacent first-derivative stabilizer images on $\tau$ agree.
+3. For every $k\ge\ell$, $\varpi_{k+1}=\varpi_k^{(1)}$.
+4. Locally on $U$, all these high symbol annihilators are the field-valued images of one finitely generated homogeneous relation module over $\operatorname{Sym}(\tau)$. Its coefficients occur at finite level, and the presentations agree intrinsically on overlaps.
+
+The choice of $\ell,U$ may depend on the preassigned $d$. There is no assertion of a single bound simultaneously for all ordinary observation orders.
+
+*Proof.* Work first in the fixed fibre chart of Lemma 4.26. All finitely many coefficient localizations required in Lemma 4.27 have a product
+
+$$
+0\ne f\in R_l[[w]]
+$$
+
+for one finite $l$. Choose a nonzero coefficient $h\in R_l$ in this series. For any geometric higher jet $b$ above $D(h)$, extend it to an infinite jet, enlarging its algebraically closed coefficient field $L$ when necessary. The onto affine-bundle projections permit the successive choices. Coefficient evaluation gives
+
+$$
+A_f\longrightarrow F=\operatorname{Frac}(L[[w]]),
+\tag{4.56}
+$$
+
+because $f(w,b)$ has the nonzero coefficient $h(b)$. Lemma 4.26 identifies these specialized finite matrices with the actual matrices at $g_w\cdot b$. Formal germ pushforward transports them back to the original $b$. This includes the low ordinary observation jets and the vertical symbol insertion maps, and all changes are invertible at each finite order. Matrix rank and equality of finite-dimensional linear subspaces are detected after a field extension by Gaussian elimination. The conclusions of Lemma 4.27 therefore hold at every such $b$ over $L$ itself. This does not evaluate a denominator inverse at $w=0$.
+
+Choose $l$ above $M+1,q,d$ and all coefficient orders used. This gives the first three assertions over the entire higher inverse image of the same finite fibre open. In particular the raw orbit distributions are regular at every sufficiently high level, and the image equality has exactly the scope required in Corollary 4.14. That corollary supplies its Spencer representative construction on this domain as well. The direct highest-relation argument additionally gives the eventual equality of symbols.
+
+We must put the relation coefficients on the original finite fibre. Choose a degree $N>M$, $N\ge q$. The tail of $\operatorname{gr}K_Q$ is generated in degree $N$: multiply its finitely many homogeneous generators of degree $e\le N$ by all monomials of degree $N-e$. Enlarge $l\ge N$ to contain their coefficients. Transport these finitely many degree-$N$ rows back by the dual vertical symbol matrix of $g_w$. That matrix and its inverse depend only on the first transformation jet and the graph tangent plane, since the highest graph derivative is multiplied by the normal Jacobian and the inverse tangent Jacobians; derivatives of those coefficients multiply lower graph derivatives. They therefore have entries in $R_1[[w]]$ and intertwine tangent multiplication. Clear all denominator powers with one power of $f$. The resulting finite rows lie in
+
+$$
+R_l[[w]][t]\otimes\nu^*,\qquad \deg_t=N.
+$$
+
+At every original $b$ above $D(h)$ their span over $F$ is the constant-in-$w$ space $\operatorname{Ann}(\varpi_N(b))\otimes_LF$.
+
+If finitely many series in a finite-dimensional $L$-space have $F$-span $C\otimes_LF$ for a fixed $L$-subspace $C$, their coefficient span is exactly $C$. A functional annihilating $C$ annihilates every series and hence every coefficient, so each coefficient lies in $C$. Conversely, let $B$ be their coefficient span and choose a basis and complement of $B$ in the finite space. Each series belongs to $B\otimes_LF$, so $C\otimes_LF\subset B\otimes_LF$ and field faithfulness gives $C\subset B$. This proves the assertion.
+
+Take all formal coefficients of the transported rows. They lie in the one finite free $R_l$-module $S^N\tau\otimes\nu^*$. Its coefficient submodule is generated by finitely many of them, by AG-CA-03, Theorems 1.1 and 2.1, Proposition 1.2. Quotients and localization preserve the Noetherian property: pull a submodule back before taking a quotient, and localize a finite generating list. Thus it applies to the coordinate algebra $R_l$. Let $I\subset R_l[t]\otimes\nu^*$ be the homogeneous module generated by that finite coefficient list in degree $N$. The coefficient-span argument proves
+
+$$
+\begin{gathered}
+\operatorname{image}(I_k\otimes_{R_l}L)\\
+=\operatorname{Ann}(\varpi_k(b)),\qquad k\ge N,
+\end{gathered}
+\tag{4.57}
+$$
+
+inside the ambient symmetric covector space. Multiplication by any fixed tangent monomial commutes with coefficient extraction, so the degree-$N$ list works in every higher degree. Equation (4.57) is an image assertion proved at every actual point; a kernel after specialization is not substituted for it.
+
+Saturate $D(h)$ by the full algebraic isotropy group $G_a^l$. Its translates are open and their union is invariant. An $l$-jet of a translating arrow lifts through every higher order by the bundle projections and hence to a compatible formal arrow. Applying it and its inverse transfers each conclusion to every higher extension over the translated open, with the same bounds. This includes disconnected isotropy. A finite number of these chart/translate opens cover the saturation: a finite-type algebraic variety is Noetherian, and every open in a Noetherian space is quasi-compact. For the latter implication, if a cover has no finite subcover, successively add an open containing a point outside the preceding finite union, contradicting the ascending chain condition on opens.
+
+The degree-$N$ images on two charts have constant rank and the same intrinsic value at every higher extension. They are subbundles: on a nonzero rank-minor chart, row reduction expresses the image as the graph of a regular coefficient matrix; larger minors vanish identically because they vanish at all geometric points of a reduced coordinate algebra. On overlaps the two graph matrices agree at all geometric points, so they agree as regular functions. Hence the degree-$N$ subbundles glue, and their tangent-polynomial generated modules glue in every higher degree. This proves the finite-presentation assertion without requiring a global free frame.
+
+Transport the isotropy-invariant open over all base points. It is independent of the chosen arrow because two such arrows differ by isotropy. Local smooth sections of the source-$a$ arrow bundle identify it with a product over a base neighborhood; it is therefore open, invariant and fibrewise Zariski open. No algebraic structure on a smooth base is inferred. Increase $\ell$ to include all the finite orders and charts above.
+
+In the real convention, replace $h$ by $h\overline h$ if complex coefficients were used. This is a nonzero real coordinate function, so its nonvanishing locus meets the real fibre; it also lies in both complex nonvanishing loci. Intersect the finitely many opens with their conjugates before saturating. The saturation is conjugation stable. Its complementary ideal is generated by real and imaginary parts of a finite conjugation-stable generating list, so the domain is defined over $\mathbb R$. The density established at the start gives a nonempty real locus, and the geometric rank and symbol conclusions descend by field faithfulness. This completes all four assertions. $\square$
+
+**Example 4.29 (a nonlinear smooth-base transport).** Let $H(0)=0$ and $H'(u)=e^{u^2}$. The coordinates $(x,H(u))$ are locally invertible since $H'$ is positive. Translations in these coordinates give
+
+$$
+X=x+b,\qquad H(U)=H(u)+c.
+$$
+
+They are transitive point transformations. Their first-order equations are $X_x=1$, $X_u=0$, $U_x=0$ and $U_u=e^{u^2-U^2}$. Every source and target point determines a unique jet at every order by differentiation, so the projections are surjective smooth bundles and the system is formally integrable. All fixed-point jet groups are trivial and hence algebraic, although the displayed base coefficients are not polynomials.
+
+Straight lines in $(x,H(u))$ give the invariant equation
+
+$$
+u_{xx}+2u\,u_x^2=0.
+$$
+
+Put $p=u_x$. Its total derivative and a formal infinitesimal frame are
+
+$$
+\begin{gathered}
+D=\partial_x+p\partial_u-2up^2\partial_p,\\
+X_1=\partial_x,\qquad X_2=e^{-u^2}\partial_u.
+\end{gathered}
+$$
+
+Higher graph derivatives are obtained by repeatedly applying $D$ to $p$, so they are polynomials in $u,p$. Each higher projection after order one has point fibres; all fixed-base equation fibres are affine lines. The prolongation of $X_2$ has $p$ coefficient $-2up e^{-u^2}$. Its normalized equation-tangent lift is
+
+$$
+Z=e^{u^2}\operatorname{pr}X_2
+=\partial_u-2up\partial_p.
+$$
+
+It acts as $\partial_u$ on basic functions and is not the ordinary coordinate prolongation of $\partial_u$.
+
+At $a=(0,0)$ use the formal target coordinate $u=w$ and source slope $p_0$. The arrow with $c=H(w)$ gives
+
+$$
+\begin{gathered}
+u=w,\qquad p=e^{-w^2}p_0,\\
+u_{xx}=-2w e^{-2w^2}p_0^2.
+\end{gathered}
+$$
+
+The last series has zero constant term but coefficient $-2p_0^2$ at degree one. On $p_0\ne0$ it is nonzero in $\operatorname{Frac}(L[[w]])$, with inverse
+
+$$
+-\frac{e^{2w^2}}{2wp_0^2}.
+$$
+
+This displays exactly why coefficient selection in (4.56) cannot be replaced by evaluating the denominator at $w=0$.
+
+![Formal transport sends source slope p0 to exp(-w squared)p0. At p0=1 the slope stays positive, while the transported second derivative changes sign and vanishes at w=0; its linear Taylor coefficient is nonzero.](../figures/formal-transport-common-domain.svg)
+
+*Figure 4.10.* The left-hand maps are the coefficient selection and faithful field extension in Theorem 4.28. The curves on the right are the analytic functions of Example 4.29 at $p_0=1$, sampled from the displayed formulas. The zero constant term of the second derivative is visible at the centre; its coefficient $-2$ selects the finite source-slope domain.
+
+For this example the determining equations are $\xi_x=\xi_u=\beta_x=0$ and $\beta_u+2u\beta=0$. They give $\xi=b$ and $\beta=c e^{-u^2}$, so the raw admissible jet space has dimension two at every order. The invariant $I=e^{u^2}p$ is the line slope in $(x,H(u))$ and $D(I)=0$ on the equation. At each finite level the orbits are exactly its level sets: translate $x$ and $H(u)$ while retaining this slope. Thus there are no new higher symbols, and the full vertical orbit symbols are zero from order one onward. The horizontal rank of the invariant field is zero even though $I$ is nonconstant.
+
+Theorem 4.28 establishes the common-domain and full-symbol assertions for the point actions specified in this section. Uniform quotient-symbol cohomology, geometric affine quotient bundles and the low-rational/high-polynomial generation induction are further assertions. The geometric-orbit convention remains in force; individual real orbits inside a complex orbit need not be separated by rational invariants.
+
+*Section 4.16 and Figure 4.10: GPT-6.1 Sol (OpenAI). CC0 1.0.*
 
 ## 5. Euclidean curvature
 
@@ -1174,6 +1851,24 @@ and its differentiated constraints prescribe $\beta_{xx}=A+xB$ and $\beta_{xu}=x
 
 **Exercise 7 (medium).** Put $R=\mathbb Q[a]$ and $I=(az-t,t^2)\subset R[t,z]$. Eliminate $z$ over the fraction field $\mathbb Q(a)$, and find one nonzero parameter denominator that makes the elimination presentation valid under every field specialization. Compare the intersection with $L[t]$ when $a$ specializes to a nonzero scalar and when it specializes to zero. Explain why a generic elimination calculation alone does not determine every fibre.
 
+**Exercise 8 (orbit ideals and an exceptional parameter).** Let the additive group act on the affine plane by $t\cdot(x,y)=(x,y+tx)$. Compute the orbit ideal and rational invariant field on $x\ne0$. At $x=0$, compare the actual orbit ideal with the specialization of the generic orbit ideal. Explain why the finite parameter localization in (4.33) is necessary even for a smooth connected group.
+
+**Exercise 9 (quotient derivations).** Let $\mathbb G_a$ act on the plane by $(x,y)\mapsto(x+t,y-t)$. Prove that the rational invariant field is $k(x+y)$ and compute its horizontal annihilator. With $V=\partial_x-\partial_y$, show that $H_x=\partial_x+xV$ and $H_y=\partial_x+yV$ induce the same derivation on this field. Compute their difference and commutator, and show that neither field is itself group-invariant.
+
+**Exercise 10 (normal curvature and finite-order observations).** In Example 4.25:
+
+1. Compute $[N_1,N_2](v z_u^2\xi)$ and $[N_1,N_2](v z_x^2\xi)$. Explain why the nonzero bracket on $Q_1$ does not require these two brackets to be nonzero.
+2. Adjoin a dummy component $\eta=0$ and take the polynomial observation $B=pz_u^2\xi$. Write the two rows of its unipotent gauge. Compute the normal commutator on its zeroth-order dummy row and decode the resulting graph relation.
+3. Give the dummy component weight two. List the normal indices retained in an original component and in the dummy component when weighted normal degree is at most two. Explain why the subsequent elimination uses only finitely many tangential component positions.
+4. Impose the ordinary translation determining equations, so all positive ordinary derivatives of $(\xi,\beta,\gamma)$ are zero. Find the tangency solution space for the line of slopes $(p,q)$, and then its point-fixing subspace. Check the full-copy and free-scalar conclusions against these spaces.
+
+**Exercise 11 (formal transport and the full action rows).** For Example 4.29:
+
+1. Compute the ordinary $u$-derivatives of $\beta_u+2u\beta=0$ through arbitrary order. At $u=0$, determine the ordinary jets of $\beta=c e^{-u^2}$ and verify that each finite raw admissible space has dimension two.
+2. Put $Q=\beta-p\xi$. Show, using the determining equations and $D(p)=-2up^2$, that $D(Q)+2upQ=0$. Compute the point-fixing tangency kernel and its first-derivative image.
+3. Expand $-2wp_0^2e^{-2w^2}$ through degree seven. Verify the proposed inverse as a Laurent series and identify a nonempty finite-level source-slope domain on which the series is nonzero. Explain why the coefficient field extension is valid there despite its zero constant term.
+4. In the proof of Lemma 4.27, explain why the point-value rows must be retained when passing from $T^\alpha Q$ to the actual action rows. Check the distinction against the common-scaling action of Example 4.8 at order two.
+
 ## 9. Solutions
 
 **Solution 1.** The recurrence gives $\phi_p=D_x(2u)-pD_xx=p$, and $\phi_q=D_xp-qD_xx=0$. Thus $\operatorname{pr}^{(2)}v=x\partial_x+2u\partial_u+p\partial_p$, with no $\partial_q$ term. Equivalently, the finite scaling sends $(x,u,p,q)$ to $(e^t x,e^{2t}u,e^tp,q)$.
@@ -1221,13 +1916,62 @@ Since $H(x)=1$, the last expression equals $x(H(A)-B-pC)=xc^\alpha_0$. This is e
 
 **Solution 7.** Over $\mathbb Q(a)$, use the monic list $z-t/a,t^2$, with $z$ larger than every power of $t$. Their $S$-polynomial is $-t^3/a$, which reduces to zero by $t^2$. Thus the elimination ideal is $(t^2)$. Invert $f=a$. The same two monic polynomials generate $I$ over $R_a[t,z]$, and the same reduction works after every map $R_a\to L$. Equivalently, substituting $z=t/a$ identifies the quotient with $L[t]/(t^2)$, so the kernel of $L[t]$ is exactly $(t^2)$. At $a=0$ the specialized ideal is $(t)$, and its intersection with $L[t]$ is $(t)$. The degree-one relation at that fibre is absent from the generic intersection. Inverting $a$ is what makes the claimed specialization statement correct.
 
+**Solution 8.** With target coordinates $(X,Y)$ the graph ideal is $(X-x,Y-y-tx)$. On $x\ne0$, the second equation solves $t=(Y-y)/x$, and elimination gives $(X-x)$. The orbit is exactly the vertical line $X=x$, so $q(x,y)=x$ is an orbit quotient there. Its coefficient $x$ generates the rational invariant field by (4.36); alternatively invariance under all translations of $y$ makes a rational function independent of $y$. At $(0,y)$, every group element fixes the point, and the actual orbit ideal is $(X,Y-y)$. The specialization of the generic ideal is only $(X)$. Thus elimination before specialization omits the extra equation $Y-y$ at this parameter. Inverting $x$ excludes precisely this comparison failure. The exceptional line consists of distinct fixed-point orbits; its removal is a domain restriction, not an identification of those points.
+
+**Solution 9.** Use the coordinates $I=x+y,z=x$, in which the action fixes $I$ and sends $z$ to $z+t$. Write an invariant as $p(I,z)/q(I,z)$. Since $k$ is infinite, some $c\in k$ has $q(I,c)\ne0$ as a polynomial in $I$: otherwise the polynomial in $z$ would have infinitely many roots over $k(I)$. In the rational invariance identity substitute $t=c-z$. It gives $p(I,z)/q(I,z)=p(I,c)/q(I,c)\in k(I)$. Conversely every rational function of $I$ is invariant. The annihilator of $dI=dx+dy$ is the line spanned by $V$. Since $H_xI=H_yI=1$, both operators send $f(I)$ to $f'(I)$. Their difference is $(x-y)V$. Directly evaluating the bracket on $x$ gives $-x-1-y=-(I+1)$ and on $y$ gives $x+1+y=I+1$. Thus $[H_x,H_y]=-(I+1)V$, which annihilates $k(I)$. Translation pushes $V$ and $\partial_x$ to themselves, but changes the coefficient $x$ to $x-t$ and $y$ to $y+t$ in target coordinates. Neither representative is fixed by all translations. At $(1,0)$ the two vectors are $(2,-1)$ and $(1,0)$, as in Figure 4.8.
+
+**Solution 10.** The bracket is $-\partial_p$ on the coefficient ring and leaves every ordinary transformation-derivative variable fixed. Both coefficients $v$ are independent of $p$, so the two brackets in part 1 are zero. In contrast $Q_1=\beta-p\xi$ has a $p$ coefficient, giving $-\partial_pQ_1=\xi$. The result depends on the observation coefficient, not just on the nonzero bracket of the lifts.
+
+For part 2 the gauge rows, in the $(\xi,\eta)$ coefficient module, are $(1,0)$ and $(pz_u^2,1)$. The second row represents $B+\eta$. Its commutator is $(-z_u^2,0)$, an original-component row. On the graph relation $(-(pz_u^2,1),e_\eta)$ the full transported action therefore gives the matching pair consisting of $(z_u^2,0)$ in the ambient block and $-z_u^2e_\xi$ in the observation block. Their graph image is zero. Discarding the original-component position before this calculation would instead introduce an unsupported relation $z_u^2\xi=0$.
+
+An original component has weight zero, so its retained normal indices are $(0,0),(1,0),(0,1),(2,0),(1,1),(0,2)$. A dummy component has weight two, so only $(0,0)$ is retained there. Each pair of a component with one of these finitely many indices is a component position in a module with only the tangential variables. Arbitrarily large tangential order changes monomials in that finite module, not its number of components. The bounded-weight division in Theorem 4.24 supplies its relations before component elimination.
+
+For translations, $D(p)=D(q)=0$ and all positive ordinary derivatives of the constant transformation field vanish. Hence the tangency equations reduce to $\beta=p\xi$ and $\gamma=q\xi$, with solution space $\{a(1,p,q):a\in F\}$ over the coefficient field $F$. Fixing the base point imposes $\xi=\beta=\gamma=0$, so its point-fixing subspace is zero. The full gauged relation allows every tangential translation. The false free-scalar consequence $\xi=0$ would erase the entire one-dimensional tangency space before point fixing and is therefore incorrect. $\square$
+
+**Solution 11.** Differentiating $\beta_u+2u\beta=0$ $j$ times gives
+
+$$
+\beta_{u^{j+1}}+2u\beta_{u^j}
++2j\beta_{u^{j-1}}=0,
+$$
+
+where the last summand is zero at $j=0$. Every derivative containing $x$ is zero. At $u=0$ the odd $u$-derivatives vanish and
+
+$$
+\beta_{u^{2r}}(0)=(-1)^r\frac{(2r)!}{r!}\,c.
+$$
+
+These formulas follow by comparing coefficients of $c\sum_r(-1)^ru^{2r}/r!$. All positive ordinary derivatives of $\xi=b$ are zero. The raw recurrences therefore determine every finite admissible jet by the two free values $b,c$, and every such pair gives a solution, proving dimension two and onto adjacent projections.
+
+On the equation, the determining equations give $D\xi=0$ and $D\beta=-2up\beta$. Hence
+
+$$
+\begin{aligned}
+DQ&=-2up\beta+2up^2\xi\\
+&=-2upQ.
+\end{aligned}
+$$
+
+Tangency is $\beta=p\xi$. Point fixing adds $\xi=0$, which gives $\beta=0$, so all determining jets vanish. The point-fixing kernel and its first-derivative image are both zero. This does not erase the one-dimensional tangency space before point fixing.
+
+The requested expansion is
+
+$$
+p_0^2\left(-2w+4w^3-4w^5+\frac83w^7\right)
++O(w^9).
+$$
+
+Multiplying the exact formal expressions $-2wp_0^2e^{-2w^2}$ and $-e^{2w^2}/(2wp_0^2)$ gives one. Thus $p_0\ne0$ is a sufficient finite-level domain. There the linear coefficient $-2p_0^2$ is nonzero, so the denominator is a nonzero element of the integral series ring and becomes invertible in its fraction field. Its value at $w=0$ is zero and provides no such inverse in the series ring itself.
+
+Finally, (4.55) adds the point-value row $\xi_0$ multiplied by a graph coefficient. With point rows present it is an invertible triangular change and does not alter the highest vertical covector coefficient. Dropping them would change the relation problem. For common scalings and translations with $u_2\ne0$, the full order-two vertical orbit symbol is the line generated by $-u_2\partial_{u_2}$, although the pure order-two transformation symbol is zero. Its full annihilator is therefore zero. Using the pure symbol would incorrectly give the whole one-dimensional covector space. The point-row comparison retains the full symbol and hence the correct annihilator. $\square$
+
 ## References
 
 - Michael Kunzinger, [*Lie Transformation Groups*](https://www.mat.univie.ac.at/~mike/teaching/ss15/ltg.pdf), §§3.8–3.12; in particular the prolongation construction, Theorem 3.10.6, the heat-equation example 3.11.1, and the local-solvability qualification in §3.12.
 - Joël Merker, [*Four explicit formulas for the prolongations of an infinitesimal Lie symmetry and multivariate Faà di Bruno formulas*](https://arxiv.org/abs/math/0411650), §1, for arbitrary numbers of independent and dependent variables. The recurrence and characteristic proof above supply the full multi-index argument required here.
 - Boris Kruglikov and Valentin Lychagin, [*Global Lie–Tresse theorem*](https://arxiv.org/abs/1111.5480v3), version 3, 13 June 2015, §§0.1–0.2 and 3. Section 4 above distinguishes the finite-generation assertion from the false individual-real-orbit separation inference.
-- Sophus Lie and Friedrich Engel, *Theorie der Transformationsgruppen*, Volume I, Chapters 26–27, for projective and linear homogeneous transformation groups; Volume II for differential equations and contact transformations.
+- Sophus Lie and Friedrich Engel, *Theorie der Transformationsgruppen*, Volume I, Chapters 26–27, for projective and linear homogeneous transformation groups; [English translation and modern presentation by Joël Merker](https://arxiv.org/abs/1003.3202v1). [Volume II, German original](https://archive.org/details/theotransformation02liesrich), for differential equations and contact transformations.
 
-The local results hold on their stated regular domains. Proposition 4.2 and Lemma 4.3 give algebraic field-generation and coefficient-invariance results. Lemmas 4.5 and 4.7 establish stabilization for a fixed symbolic system and for specializations of a single relation module. Examples 4.4 and 4.6 disprove two algebraic inferences, rather than the general Lie–Tresse theorem. Example 4.8 concerns the whole-space image-to-section inference in an actual pseudogroup; Proposition 4.9 establishes the domain and symbol inclusion for that action. Lemma 4.13 and Corollary 4.14 prove contraction under their stated finite-order regularity and first-derivative-image hypotheses. Proposition 4.17 concerns pure transformation symbols. The uniform stabilizer and full orbit-symbol specialization comparisons are not established here; none of these statements is a proof of the general theorem.
+The local results hold on their stated regular domains. Proposition 4.2 and Lemma 4.3 give algebraic field generation and coefficient invariance. Lemmas 4.5 and 4.7 concern fixed symbolic systems and specializations of a relation module. Examples 4.4 and 4.6 distinguish finite generation from freeness and total images from individual fibre images; they do not refute the general Lie–Tresse theorem. Proposition 4.9 proves the uniform homothety domain. Lemma 4.13 and Corollary 4.14 give the Spencer contraction construction, while Proposition 4.17 concerns pure transformation symbols. Theorem 4.24 proves the mixed observation theorem. Lemmas 4.26–4.27 and Theorem 4.28 establish the actual common domain and full orbit-symbol comparison for the induced point actions stated there. The compatible action-only extension, uniform quotient-symbol cohomology, affine quotient bundles and polynomial-generation induction are not established here. The general finite differential-generation theorem remains unproved in this lesson.
 
 **Mathematical dependencies:** statements, hypotheses and prerequisite references.

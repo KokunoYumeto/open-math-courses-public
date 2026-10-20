@@ -8,13 +8,20 @@ from pathlib import Path
 import math
 from PIL import Image, ImageDraw, ImageFont
 
+def installed_font_path(filename):
+    try:
+        return Path(ImageFont.truetype(filename,12).path)
+    except OSError:
+        return Path(filename)
+
+
 WIDTH, HEIGHT = 3200, 2780
 BG = "#fbfcfe"
 INK = "#132d45"
 MUTED = "#3e5970"
 EDGE = "#557188"
 FONT_CANDIDATES = [
-    (Path("C:/Windows/Fonts/segoeui.ttf"), Path("C:/Windows/Fonts/segoeuib.ttf")),
+    (installed_font_path('segoeui.ttf'), installed_font_path('segoeuib.ttf')),
     (Path("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"),
      Path("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf")),
 ]

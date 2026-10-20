@@ -5793,7 +5793,7 @@ The following inputs remain unproved in this leaf. Their source locators identif
 
 2. **Sectorial complex-analytic operator action and relative vanishing.** HolIII IV.4.4.1 imports Kashiwara–Schapira, *Micro-hyperbolic systems*, Theorem 4.5.1. That theorem is freely available, but its proof reduces to its own Theorem 4.1.1 and Corollary 3.2.5, which require the convergent complex-domain kernel action and division estimates. HolIII weakens its condition (c3) to exactness on $\Omega_1\setminus\Omega_0$. The exact weakened statement, the cone conditions, and every cohomological shift still require a complete proof. A smooth real-symbol propagation or Egorov argument cannot replace the complex factorial-growth action.
 
-3. **Continuation on the entire hypersurface complement.** HolIII IV.4.5.2 refers to an earlier continuation argument and leaves the proof to the reader. It must be supplied for representatives of every sectorial solution, including all branches of the singular characteristic support, with one actual multivalued germ of finite determination. IV.4.5.3's second-fibration and Hartogs argument also requires the convergence and sheaf action proved in III.4. It is not a meromorphic coefficient calculation.
+3. **Continuation on the entire hypersurface complement.** Section5.82, CF.A--CF.H proves multivalued holomorphic continuation on one common neighbourhood for every prescribed finite list of actual holonomic function solutions, including every characteristic branch. Finite determination of the whole directional solution space and compatibility with all infinite-order operators require further arguments.
 
 4. **Separation of sections at singular support.** IV.4.6.1 and IV.4.6.2 assert finite dimensionality and injectivity of evaluation against sectorial solutions on $M^\infty$. The argument uses generic-position realization and a support/purity assertion for actual infinite-order sections. Testing smooth characteristic strata alone does not prove the assertion at the assigned singular point. Positive-degree completion's zero-object detection is a different functor and does not establish this separation.
 
@@ -6380,7 +6380,7 @@ If the starting object is an actual coherent sheaf germ, the distinguished-stalk
 
 Under G.1's actual premise, L.1–L.6 prove the actual finite-order bounded generic-position realization and polynomial-matrix resolution, with the exact bound $q=2d+1$ and one base neighbourhood. The finite-ring submodule comparison is F.13. These supply the finite-order clauses corresponding to HolIII III.5's ordinary realization. Equality of a characteristic support defined through an infinite-order extension with the given principal support remains the explicit G.6 interface, if that convention is used.
 
-The proof contains no $\mathscr E^\infty$ or $\mathscr A^\infty$ tensor identity. The sectorial kernel action, Micro-hyperbolic relative vanishing, continuation, singular-support separation, infinite-order linearity, faithful finite D-type embedding, regular finite-pole recovery, intrinsic microlocal order correspondence, C.1 and arbitrary proper analytic regularity remain open. A finite free actual resolution is a prerequisite for those arguments, not their proof.
+The proof contains no $\mathscr E^\infty$ or $\mathscr A^\infty$ tensor identity. Canonical kernel action is proved in Section5.43. The all-degree complex relative vanishing for this bounded actual complex, with acyclicity required only over the closed changing carrier, is proved in Section5.80, CP.F--CP.G. Continued solutions, singular-support separation, infinite-order linearity, faithful D-type embedding, regular finite-pole recovery, intrinsic order correspondence, C.1 and arbitrary proper analytic regularity require further arguments. A finite free actual resolution is a prerequisite for those arguments, not their proof.
 
 The figure below records the base bound, the polynomial bound, the cone signs (L.3), the explicit syzygy stabilization (L.6), actual exact-completion detection, and the root bound (L.9) on the entire conic chart. Free human reading: Kashiwara–Kawai, [author-hosted HolIII](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), III.5.3–III.5.8.
 
@@ -14613,7 +14613,7 @@ In equation ISF.16, \(J_{\rm out}=L\), so the special log coefficient is \(K_{\r
 
 #### ISF.5. Retained boundaries
 
-This proves the chosen-fibration special sheaf, exact joint bounds, full product and maps to the full ring. Moving-sector propagation, finite-determination monodromy, III.4.9 for arbitrary monodromy ideals, section separation and D-type realization remain separate. Complete free III.4 pages are retained as context; none is imported as a theorem premise.
+The chosen-fibration special sheaf has the stated exact joint bounds, full product and maps to the full ring. The full special tensor for arbitrary monodromy ideals and the prescribed-complement D-type realization are proved in §5.79, FB.D–FB.F. Complex relative propagation for the whole generic-position actual complex is proved in Section5.80, CP.F--CP.G. Common continued solutions, section separation and faithful realization of an arbitrary holonomic module remain separate mathematical obligations.
 
 **Full infinite balanced reconstruction for the entire generic holonomic germ.**
 
@@ -32560,6 +32560,8 @@ The existence of a modification in DT.F is also an explicit
 geometric hypothesis; it is not a conclusion of an
 algebraic-only resolution theorem.
 
+The canonical all-parameter comparison and the D-type realization for a prescribed analytic hypersurface are proved in §5.79, FB.D–FB.F.
+
 ![The localized transfer and a ramified logarithmic image](assets/finite-analytic-d-type.png)
 
 **Figure DT.1.** Panel A is the actual finite transfer comparison
@@ -36635,6 +36637,5247 @@ QG.A–QG.F include the analytic continuation,
 bounded extension, monomial principalization,
 global centres and finite termination proofs
 used in this construction.
+
+
+### 5.78. Finite covers across a normal-crossing boundary
+
+Let \(Y\) be a connected smooth complex manifold, let
+\(E=\bigcup_{i=1}^r E_i\) be a finite simple normal-crossing divisor, and put
+\(U=Y\setminus E\). Let
+\[
+h:V\longrightarrow U
+\tag{TF.1}
+\]
+be a positive finite unramified analytic covering of degree \(n\).
+The space \(V\) may be disconnected. There is a canonical finite flat map
+\[
+\begin{gathered}
+f:N\longrightarrow Y,\\
+f^{-1}(U)=V,\\
+\operatorname{rank}_{\mathcal O_Y}f_*\mathcal O_N=n,
+\end{gathered}
+\tag{TF.2}
+\]
+with \(N\) normal. It is constructed by actual convergent algebras below.
+
+Suppose, in addition, that \(Y\) has a closed projective embedding over a
+polydisc \(B\), with proper structure map \(p:Y\to B\). Near any fixed
+\(b_0\in B\), there is a finite sequence of normalized monomial blowups
+\[
+Z\xrightarrow{\mu}N\xrightarrow{f}Y
+\tag{TF.3}
+\]
+such that \(Z\) is smooth,
+\(D=((f\mu)^{-1}E)_{\mathrm{red}}\) is SNC,
+and \(\mu\) is an isomorphism off \(f^{-1}(E)\). Both the composite and
+its map to a smaller entire base polydisc are proper and locally
+projective. In particular,
+\[
+(f\mu)^{-1}(U)=V
+\tag{TF.4}
+\]
+with precisely the covering TF.1. The construction adds no branch
+component outside \(E\).
+
+#### TF.A. Convergent invariant algebras
+
+Take an adapted polydisc \(W\subset Y\), with coordinates
+\((x_1,\ldots,x_k,z_1,\ldots,z_{d-k})\), for which
+\[
+E\cap W=\{x_1\cdots x_k=0\}.
+\tag{TF.5}
+\]
+The exponential covering and finite path-and-square lifting in
+§5.77, QG.A
+identify the fundamental group of \(W\setminus E\) with \(\mathbf Z^k\).
+Its commuting permutations on the \(n\) sheets are killed by
+\[
+e=n!.
+\tag{TF.6}
+\]
+The proof is the cycle-length and factorial calculation in QG.A, and
+does not require the original covering to be normal. After the power
+map
+\[
+x_i=u_i^e,\qquad z_j=z_j,
+\tag{TF.7}
+\]
+the pulled-back covering is trivial. Write
+\(G=(\mathbf Z/e\mathbf Z)^k\), acting by coordinate roots of unity.
+Each connected component of TF.1 over \(W\setminus E\) is
+\(\widetilde W^*/K\), for a subgroup \(K\subset G\). Indeed the transitive
+action of the abelian group \(G\) on that component's fibre has constant
+stabilizer \(K\), and is its action on \(G/K\). Sheet identifications
+are holomorphic because the maps are local biholomorphisms.
+
+Put \(A=\mathbf C\{x,z\}\) and \(C=\mathbf C\{u,z\}\) at the indicated
+origins. Absolute Taylor convergence gives
+\[
+C=\bigoplus_{0\leq\alpha_i<e}A\,u^\alpha.
+\tag{TF.8}
+\]
+For completeness, group the Taylor terms by their exponent vector
+modulo \(e\). On a smaller product, each grouped series is absolutely
+convergent; after removing its fixed factor \(u^\alpha\), it is a
+convergent series in \((u_1^e,\ldots,u_k^e,z)\). Uniqueness follows by
+comparing Taylor coefficients. Thus TF.8 is an identity of convergent
+germ modules.
+
+If \(a=(a_i)\in G\), the character of \(u^\alpha\) is
+\(\exp(2\pi i\sum_i a_i\alpha_i/e)\). Define
+\[
+\begin{gathered}
+S_K=\{\alpha\in\{0,\ldots,e-1\}^k\mid\\
+\textstyle\sum_i a_i\alpha_i=0\pmod e\\
+\text{for every }a\in K\}.
+\end{gathered}
+\tag{TF.9}
+\]
+Then
+\[
+\begin{gathered}
+C^K=\bigoplus_{\alpha\in S_K}A\,u^\alpha,\\
+|S_K|=\frac{e^k}{|K|}.
+\end{gathered}
+\tag{TF.10}
+\]
+The first identity follows by averaging Taylor coefficients. For the
+cardinality, average the character action on the \(e^k\)-dimensional
+space spanned by these monomials. Its trace is \(e^k\) at the identity
+and zero at any other \(a\), since one geometric sum
+\(\sum_{\ell=0}^{e-1}\exp(2\pi i a_i\ell/e)\) vanishes. The average is
+an idempotent with image the fixed monomials, proving the count.
+Multiplication is the finite carry table
+\[
+\begin{gathered}
+u^\alpha u^\beta=x^{q(\alpha,\beta)}u^{\gamma(\alpha,\beta)},\\
+\alpha_i+\beta_i=e q_i+\gamma_i,\\
+0\leq\gamma_i<e .
+\end{gathered}
+\tag{TF.11}
+\]
+The residue \(\gamma\) again belongs to \(S_K\).
+
+These formulas give actual finite analytic models. Use coordinates
+\(T_\alpha\), set \(T_0=1\), and impose all the carry relations TF.11.
+They reduce every polynomial to the \(A\)-span of the \(T_\alpha\);
+TF.8 proves that this span has no relation. In addition,
+\[
+T_\alpha^e=x^\alpha.
+\tag{TF.12}
+\]
+Convergent series cause no new relations or generators. First reduce
+the exponent of each of the finitely many \(T_\alpha\)'s modulo \(e\)
+using TF.12. The grouped sums converge on a smaller base because the
+corresponding root moduli tend to zero. Reduce the resulting finite
+list of monomials by TF.11. This proves the same finite presentation
+for convergent local rings. Away from the origins one uses the
+identical calculation for the boundary coordinates that vanish there.
+
+The analytic space so defined is the quotient of the power polydisc
+by \(K\). To check its points and topology, take a fibre of TF.8 over
+a base point. It is a product of truncated root algebras. Its reduced
+quotient is the algebra of functions on the finite power-map fibre.
+Averaging commutes with this fibre quotient and with its nilpotent
+kernel, because division by \(|K|\) is possible. Its invariant reduced
+quotient is therefore the algebra of functions on the \(K\)-orbits.
+Invariants separate those orbits: interpolate a polynomial on the
+finite set and average it over \(K\). This identifies the quotient
+points. The monic bounds TF.12 make inverse images of compact base
+sets compact in these coordinates, so this finite quotient map is
+proper.
+
+The normality used here is analytic. A fraction of holomorphic germs
+integral over \(\mathbf C\{u,z\}\) is locally bounded off its
+denominator, by the root bound of QG.A. The Riemann-extension argument
+in §5.32, J.0
+extends it holomorphically; this proves that the germ ring is
+integrally closed. The argument can also be seen directly: choose
+one transverse variable in which the nonzero denominator is not
+identically zero, and a small circle on which it has no zero. The
+Cauchy integral of the bounded fraction around that fixed circle is
+jointly holomorphic. On each generic transverse disc, bounded
+one-variable Laurent extension makes it equal to the fraction.
+Density gives the equality everywhere.
+
+If a fraction in \(\operatorname{Frac}(C^K)\) is integral over \(C^K\),
+it is a fraction in \(\operatorname{Frac}(C)\) satisfying that same
+monic equation. It belongs to \(C\), and its invariance puts it in
+\(C^K\). At an arbitrary quotient point, choose disjoint small
+polydiscs around its finitely many representatives. Its germ is the
+invariant germ at one representative under the stabilizer. The
+stabilizer acts diagonally only on coordinates that vanish at that
+point, and fixes the others. The preceding argument proves normality
+there as well.
+
+#### TF.B. Canonical gluing and finite projectivity
+
+For open \(W\subset Y\), let \(\mathcal A(W)\) consist of the holomorphic
+functions on \(h^{-1}(W\setminus E)\) that are locally bounded over
+every point of \(W\). The condition means that, near that point, one
+bound works on all the finitely many sheets. It is a sheaf of
+\(\mathcal O_Y\)-algebras. On TF.5 its germ is exactly the direct sum of
+the algebras TF.10, one for each orbit of the local monodromy.
+A bounded function lifts to a bounded invariant holomorphic function
+on \(\widetilde W^*\). Successive Laurent coefficients in each
+punctured coordinate have no negative terms, by the fixed-radius
+estimate in QG.A; hence it extends holomorphically to \(\widetilde W\).
+Conversely a holomorphic germ on that finite quotient is locally
+bounded over the base.
+
+Consequently \(\mathcal A\) is locally free of rank \(n\), with the
+finite convergent multiplication tables just constructed. The local
+finite analytic spaces glue by this one algebra sheaf. More
+explicitly, on any overlap their coordinate functions are the same
+bounded functions on the original covering. Their extensions are
+unique by density. They therefore give mutually inverse
+holomorphic maps satisfying the cocycle condition. Distinct points
+over one base point are separated in one of these finite local
+models; points over distinct base points are separated downstairs.
+The glued space is Hausdorff and second countable. Properness is
+local on the base here: cover a compact set by finitely many smaller
+neighbourhoods whose closures lie in the finite-model
+neighbourhoods. Its inverse image is a closed subset of the finite
+union of their compact inverse images. This proves TF.2, including
+flatness, surjectivity and normality.
+
+This also proves uniqueness among normal finite analytic extensions
+with a finite \(\mathcal O_Y\)-algebra and the prescribed dense
+covering. Sections of such an algebra satisfy monic equations by
+the determinant argument; their restrictions to the covering are
+bounded by QG.A. Thus it is a subalgebra of \(\mathcal A\).
+The two algebras have the same generic rank \(n\). Localizing over
+the base fraction field therefore gives the same finite product
+of fields. Every element of \(\mathcal A\) is integral over the
+smaller algebra, since it is integral already over \(\mathcal O_Y\).
+Normality of its finitely many local factors forces equality.
+The same argument extends isomorphisms and deck actions uniquely.
+
+We give the projectivity argument in a form also usable for the
+normalizations below. Suppose \(T\) is closed in
+\(\mathbf P^a\times B\), and a finite analytic space \(T'\to T\)
+has a coherent finite algebra \(\mathcal C\). Let
+\(L=\mathcal O_{\mathbf P^a}(1)|_T\). Closed coherent pushforward and
+Theorem5.8
+give, after one base shrinking, finitely many generators of
+\(\mathcal C\otimes L^q\). They define a closed immersion
+\[
+T'\ \longrightarrow\operatorname{Tot}\bigl((L^q)^{\oplus s}\bigr).
+\tag{TF.13}
+\]
+Indeed on a trivialization their entries generate \(\mathcal C\)
+as an \(\mathcal O_T\)-module and hence as an algebra. The local
+finite analytic presentations give the closed immersion there.
+Compact inverse images under the finite map have uniformly bounded
+coordinates, so its image remains closed in
+\[
+\mathbf P_T\bigl(\mathcal O_T\oplus(L^q)^{\oplus s}\bigr),
+\tag{TF.14}
+\]
+using the convention of lines. This has a closed projective embedding
+over \(B\). For an explicit construction, tensor its dual bundle by
+\(L^\ell\), with \(\ell\geq q\). The factors \(L^\ell\) and
+\(L^{\ell-q}\) are generated by finitely many projective monomials.
+The resulting surjection from a trivial bundle gives a closed
+embedding of TF.14 in \(T\times\mathbf P^c\). The product embedding
+and the Segre equations proved in QG.A finish the construction.
+Thus finite maps with these coherent algebras preserve local
+projectivity over the original polydisc. This argument assumes
+neither smoothness nor normality of \(T\).
+
+#### TF.C. Boundary lattices and actual monomial ideals
+
+The local model TF.10 has invariant character lattice
+\[
+\begin{gathered}
+M=\{a\in\mathbf Z^k\mid\\
+\textstyle\sum_i b_i a_i=0\pmod e\\
+\text{for every }b\in K\},\\
+N_M=\operatorname{Hom}_{\mathbf Z}(M,\mathbf Z),\\
+\sigma=\mathbf R_{\geq0}^k\subset (N_M)_{\mathbf R}.
+\end{gathered}
+\tag{TF.15}
+\]
+The standard orthant is viewed in the dual lattice, which can be
+larger than \(\mathbf Z^k\). Its rays have primitive lattice
+generators \(v_1,\ldots,v_k\). The quotient ring consists of the
+convergent sums of \(\chi^m\), for
+\[
+m\in \sigma^\vee\cap M.
+\tag{TF.16}
+\]
+The primitive ray valuation agrees with the actual
+order along its divisor. At a generic point of that
+coordinate hyperplane, its stabilizer in the diagonal
+group fixes every nonzero coordinate and rotates only
+the vanishing coordinate, say with order \(c_i\).
+The quotient transverse coordinate is \(u_i^{c_i}\).
+Thus the order of an invariant monomial there is its
+\(u_i\)-exponent divided by \(c_i\). This is the pairing
+with the primitive ray vector: the double-annihilator
+calculation TF.10 says that the possible exponents have
+greatest common divisor \(c_i\).
+Each ray corresponds to the image of one coordinate hyperplane.
+That image is normal: its ring is the invariant quotient after
+setting that coordinate equal to zero, since averaging is exact.
+Images of distinct coordinate hyperplanes are distinct, since a
+diagonal group does not permute them. Thus the reduced boundary is
+a union of normal divisors with no local self-intersection. Give the
+whole reduced preimage of each original \(E_i\) one label
+\(D_i\); a labelled divisor may have disjoint components.
+At a point it has at most one local branch.
+
+A full-dimensional simplicial cone with independent primitive
+generators \(v_i\) also has such a convergent quotient model. Let
+\[
+L_\sigma=\sum_i\mathbf Z v_i\subset N_M.
+\tag{TF.17}
+\]
+The dual \(L_\sigma^\vee\) has the coordinate basis dual to the
+\(v_i\)'s. The finite diagonal group
+\(\operatorname{Hom}(L_\sigma^\vee/M,\mathbf C^*)\) on the power
+coordinates has invariant monomials precisely \(M\). TF.A proves
+the convergent quotient description. Character separation
+in this assertion follows directly from TF.10: choose
+an integer \(q\) with \(qL_\sigma^\vee\subset M\).
+In the finite group \(L_\sigma^\vee/qL_\sigma^\vee\),
+a subgroup is contained in its double annihilator,
+and TF.10 gives equal cardinalities, hence equality.
+Faces give the same
+description with the nonvanishing coordinates made invertible;
+near any chosen values of those coordinates they are ordinary
+holomorphic parameters.
+
+Here are intrinsic ways to identify this lattice information on
+overlaps. A holomorphic function on a power polydisc whose zero
+set is contained in the coordinate boundary is a coordinate
+monomial times a unit. The earlier
+analytic Nullstellensatz, Theorem5.1
+puts a power of the product of those coordinates in its principal
+ideal. QG.B's coordinate-prime division applied to that product
+then gives the assertion. The unit factor of an invariant function
+has nonzero value at the origin, so its character is trivial.
+It follows that its monomial exponent lies in \(M\).
+Use the group completion of this monoid of holomorphic
+boundary equations to define its boundary-order lattice.
+That completion is \(M\): add a sufficiently large interior
+integral monomial to any given \(m\in M\) to write it as a
+difference of two exponents in TF.16. This definition uses
+only holomorphic equations, their boundary orders and units,
+so it is independent of the quotient coordinates. It also
+identifies the primitive ray valuations and the face lattices.
+
+For clarity, the local ideal with prescribed nonnegative boundary
+orders can be read without a divisor theorem. Expand a holomorphic
+germ in its invariant power-series monomials. Requiring order
+at least \(a_i\) along the \(i\)-th ray selects exactly the terms
+with
+\[
+\langle m,v_i\rangle\geq a_i.
+\tag{TF.18}
+\]
+If an \(m_0\in M\) has those boundary values, division by
+\(\chi^{m_0}\) is actual coordinate division upstairs, preserves
+invariance, and converges. In particular, for a sufficiently
+divisible positive integer \(a\),
+\[
+\mathcal O_N(-aD_i)
+\tag{TF.19}
+\]
+is an invertible monomial ideal for the \(i\)-th boundary divisor:
+the rational vector dual to \(v_i\) becomes integral after
+multiplication by \(a\). Local principal generators of this ideal
+differ by units and glue. On any finite quotient atlas one common
+multiple suffices for every occurrence of a given component.
+
+There are finitely many *labelled cone types*, which is
+the finiteness needed below. A type records the set of
+boundary labels through a point and its boundary-order
+sublattice of \(\mathbf Z^I\), where \(I\) is that label set.
+Initially the finitely many subgroups of
+\((\mathbf Z/e\mathbf Z)^k\), for \(k\leq d\), and the
+finitely many possible label sets give all types by TF.15.
+This uses finite types, without assuming that all strata
+or all their connected components form a finite set.
+It also supplies one common Cartier multiple for TF.19.
+
+The cones fit along faces. In a quotient chart, passing
+to a boundary face means making the other coordinates
+nonzero; its lattice is
+\[
+N_\tau=N_M\cap\operatorname{span}_{\mathbf R}\tau.
+\tag{TF.20}
+\]
+Equivalently its order lattice is the image of the full
+order lattice under restriction to those labels. Boundary
+orders identify these restrictions on overlaps. An
+overlap automorphism fixing all the labelled primitive
+rays is the identity on their real span.
+
+For a fixed label set \(I\), this face type is locally
+constant on the whole closed intersection
+\(D_I=\bigcap_{i\in I}D_i\), including its deeper strata.
+In one quotient chart it is obtained by inverting the
+other coordinates, giving exactly TF.20 at every such
+point. Each of these intersections is locally a quotient
+of one coordinate intersection, hence locally normal
+and locally irreducible. The locus in \(D_I\) of any
+specified face type is consequently open and closed
+in \(D_I\), and is closed analytic in \(N\). Near its
+points it is all of that coordinate intersection;
+near its complement it is empty. This gives coherent
+ideals for the possibly disconnected loci, without a
+finite-component assumption.
+
+#### TF.D. A coherent normalized blowup for one star
+
+Let \(\tau\) be one of these cones, with rays \(v_1,\ldots,v_s\),
+and choose a primitive interior lattice point
+\[
+v=\sum_{i=1}^s\alpha_i v_i,\qquad \alpha_i>0.
+\tag{TF.21}
+\]
+Let \(C_\tau\) be the whole closed locus of that labelled
+face type in its boundary intersection. Thus every
+occurrence of this type is treated together. Choose
+positive integers \(a_i\) with
+\[
+a_i\alpha_i=c>0
+\tag{TF.22}
+\]
+for one rational \(c\), and sufficiently divisible that each
+\(a_iD_i\) is Cartier throughout all the finitely many types. Such a common
+multiple exists because all the \(\alpha_i\)'s are rational.
+Near \(C_\tau\) form
+\[
+\mathcal I=\sum_{i=1}^s\mathcal O_N(-a_iD_i).
+\tag{TF.23}
+\]
+Its zero set is that intersection. To select \(C_\tau\),
+use TF.23 off the closed complementary type loci of
+that intersection and use the unit ideal off \(C_\tau\).
+These two definitions coincide on their overlap, where
+some summand is already the unit ideal. They give a
+coherent global ideal. In particular all occurrences
+of one coface type that has this face are affected;
+one does not leave unmodified copies of the same type.
+
+On a quotient chart for any cone \(\gamma\) containing \(\tau\),
+write its generators as \(\chi^{m_i}\), where
+\[
+\langle m_i,v_j\rangle=a_i\delta_{ij}.
+\tag{TF.24}
+\]
+Here \(j\) ranges over every ray of \(\gamma\); the other values
+are zero. The integer divisibility in TF.22 ensures \(m_i\in M\).
+Unit multiples of these generators do not change the ideal.
+The blowup has the usual ratio charts
+\[
+\mathcal O[\chi^{m_j-m_i}:1\leq j\leq s].
+\tag{TF.25}
+\]
+They are the closure of the isomorphism locus, not extra
+components of equations that disappear on localization.
+Let \(R_i\) consist of all primitive ray generators
+of \(\gamma\) other than \(v_i\). Its \(i\)-th cone is
+\[
+\begin{gathered}
+\gamma_i=\{w\in\gamma\mid\\
+\langle m_i,w\rangle\leq\langle m_j,w\rangle\\
+\text{for }1\leq j\leq s\},\\
+\gamma_i=\operatorname{Cone}(v,R_i).
+\end{gathered}
+\tag{TF.26}
+\]
+To check the equality, write \(w=\sum_j\lambda_jv_j\).
+TF.22 says that the inequalities are
+\(\lambda_i/\alpha_i\leq\lambda_j/\alpha_j\) for \(j\leq s\).
+Subtract \((\lambda_i/\alpha_i)v\). The remainder has
+nonnegative coefficients and its \(i\)-th coefficient is zero.
+This also proves that these cones cover the old cone and meet
+in their indicated faces. Off the chosen intersection the
+blowup is the identity.
+
+We construct the normalization of TF.25 explicitly. Let \(S\)
+be its exponent semigroup, including the old monomials.
+Its group is \(M\), and its real cone is \(\gamma_i^\vee\).
+The first assertion holds already for the old full-dimensional
+cone: add a sufficiently positive interior integral vector to
+both \(m\) and zero to write any \(m\in M\) as a difference of
+two elements of the old semigroup. The second assertion is
+the dual inequality description TF.26. Here the cone
+on the finite semigroup generators is closed: an
+interior point of \(\gamma_i\) is strictly positive on
+every nonzero generator, so a convergent sequence in
+that cone has bounded nonnegative generator
+coefficients and a convergent coefficient subsequence.
+For a point outside this closed convex cone, its
+nearest point gives a separating linear functional
+by differentiating the squared distance along each
+segment in the cone. Hence taking its dual twice
+recovers it. This proves the asserted dual
+inequality description. The saturated semigroup is
+\[
+\overline S=M\cap\gamma_i^\vee.
+\tag{TF.27}
+\]
+It is finite as an \(S\)-module. Choose on each extreme ray of
+the simplicial cone \(\gamma_i^\vee\) a nonzero element
+\(w_j\in S\). Every \(m\in\overline S\) is
+\(\sum_j b_jw_j\), with \(b_j\geq0\). Subtracting the integer
+parts of the \(b_j\)'s leaves an element in the finite set
+\[
+\begin{gathered}
+\Bigl\{\sum_j t_jw_j\mid\\
+0\leq t_j<1\Bigr\}\cap M.
+\end{gathered}
+\tag{TF.28}
+\]
+This gives the finite module generators. Each of them has a
+positive integer multiple in \(S\), by rationality of its
+coefficients in these \(w_j\)'s, and therefore satisfies a
+monic monomial equation over the ratio chart.
+
+This is a convergent analytic normalization as well. Construct
+the chart for \(\gamma_i^\vee\cap M\) as the finite diagonal
+quotient in TF.C. The old monomial generators together with
+TF.28 generate its polynomial monomial algebra. Thus their
+coordinates give a closed analytic embedding into the ratio
+chart times an affine space; the equations are their finite
+monomial relations, restricted to the original analytic
+chart domain and its holomorphic parameters. Each new
+coordinate satisfies the monic monomial equation just given.
+Homogenize these equations in one common projective space.
+At infinity they say that every new coordinate is zero,
+which is impossible in projective space. The same closed
+embedding therefore lies in that projective space and is
+proper over the ratio chart. Its fibres are finite by the
+monic equations.
+
+Its analytic algebra is coherent: embed the ratio chart in
+a coordinate polydisc, use closed coherent pushforward, and
+apply the ordinary projective coherent-image proof,
+Lemma5.9.1, to this closed projective embedding. The
+resulting algebra is a finite module over the ratio-chart
+ring. This proves analytic finiteness at points where
+monomial coordinates vanish and at points where they do
+not vanish, without a formal-to-convergent assertion.
+Its normal local rings are the invariant convergent
+rings proved normal in TF.A. Properness and finite fibres
+identify the stalk of its pushed algebra with the product
+of the finitely many local normal rings above that point:
+disjoint neighbourhoods of that finite fibre contain the
+entire inverse image of a sufficiently small base
+neighbourhood, since the proper image of their closed
+complement misses the point. On the dense torus the
+map is the identity, so the total meromorphic algebras
+agree.
+It is therefore precisely the integral closure of the ratio
+chart in its total meromorphic algebra: integrality puts it
+in the integral closure, and any further integral fraction
+belongs to this normal ring. At a point with several analytic
+branches, use the product of their meromorphic fields and
+the direct sum of the normal local factors. The single
+polynomial semigroup domain can acquire several analytic
+branches in such a germ; no unibranch assumption is used.
+
+On overlapping ratio charts, these integral closures in the
+same total meromorphic algebra coincide. They glue, including across
+the original quotient-coordinate overlaps. Thus TF.23 has a
+global normalized blowup with the star subdivision TF.26.
+Give its new exceptional divisor one new label. Its
+components are locally the image of one coordinate
+hyperplane, hence normal and locally disjoint within
+that label. The other labels are the strict transforms
+of the old ones. Each old labelled cone type gives
+only finitely many new labelled types by TF.26 and
+their face restrictions. Thus there are still finitely
+many types after the operation.
+It is proper and projective over the original smaller base.
+The raw coherent blowup is the closed graph construction
+proved in QG.C using Theorem5.8 and Lemma5.9.1; the same ratio
+argument applies to the present coherent ideal. Its
+normalization is finite with the coherent algebra TF.28, so
+TF.13–TF.14 applies. Every chart remains an actual simplicial
+quotient chart. Its reduced boundary is the full coordinate
+boundary in that chart, including all exceptional components.
+There is no omitted chart at the other end of an exceptional
+fibre.
+
+#### TF.E. Finite global termination
+
+For an independent-ray cone \(\gamma\) define its multiplicity by
+\[
+\begin{gathered}
+\operatorname{mult}(\gamma)\\
+=[\,N_\gamma:\textstyle\sum_{\rho\subset\gamma}
+\mathbf Z v_\rho\,].
+\end{gathered}
+\tag{TF.29}
+\]
+It equals the number of lattice points in the half-open
+parallelepiped on its primitive generators. Subtracting integer
+parts gives one representative of each coset, and uniqueness
+follows from independence. Multiplicity one is exactly the
+condition that the quotient chart is smooth with its
+coordinate SNC boundary: the generators are then a lattice
+basis. If \(\eta\) is a face, its lattice quotient injects
+into the lattice quotient in TF.29, since the integer span
+of all rays intersects its real span in the integer span
+of its own rays. Thus
+\[
+\operatorname{mult}(\eta)\mid\operatorname{mult}(\gamma).
+\tag{TF.30}
+\]
+
+Let \(M_0>1\) be the largest multiplicity among the finite
+labelled cone types and choose a type attaining it.
+In that cone choose a
+minimal nonregular face \(\tau\). Every proper face of \(\tau\)
+is regular. Since \(\operatorname{mult}(\tau)>1\), its
+half-open parallelepiped contains a nonzero lattice point
+\(v_0=\sum_i b_iv_i\), with \(0\leq b_i<1\).
+All its coefficients are positive. A zero coefficient would
+put it in the lattice of a proper regular face, where all
+coefficients in that face's primitive basis must be integers,
+forcing \(v_0=0\). Divide by the positive integer that makes
+its ray primitive. This gives TF.21 with
+\[
+0<\alpha_i<1.
+\tag{TF.31}
+\]
+Perform the global normalized blowup TF.D for the whole
+closed locus of this labelled face type.
+
+For any affected coface \(\gamma\) and \(i\leq s\), determinant
+linearity in its real span gives the following equality.
+Here index equals absolute determinant in a lattice basis:
+integer row and column operations from the Euclidean
+algorithm put a full-rank integer matrix into triangular
+form, preserving both index and absolute determinant;
+successive division by its diagonal entries counts the
+cosets as their product. Thus the determinant computation
+measures exactly TF.29:
+\[
+\begin{gathered}
+\operatorname{mult}(\gamma_i)
+=\alpha_i\operatorname{mult}(\gamma)\\
+<\operatorname{mult}(\gamma).
+\end{gathered}
+\tag{TF.32}
+\]
+The determinants use the same ambient lattice before and
+after the operation. Primitive generators are used for all
+the rays, including \(v\), so there is no missing lattice
+factor. These are integers. New faces have multiplicity at
+most that of their new cofaces by TF.30. Hence no new cone
+of multiplicity \(M_0\) appears, while at least the selected
+cone of multiplicity \(M_0\) disappears.
+
+If \(c_{M_0}\) is the number of labelled types of that multiplicity,
+the global lexicographic pair
+\[
+(M_0,c_{M_0})
+\tag{TF.33}
+\]
+strictly decreases. The first entry is a positive integer;
+at each fixed first entry only finitely many second-entry
+decreases can occur. The set of types remains finite,
+since each operation replaces a finite list of types by
+finite lists of subdivided types and faces. Treating the
+whole face-type locus removes every occurrence of the
+selected maximal type. Induction on \(M_0\) proves that only
+finitely many operations occur. Every terminal cone is
+regular. The convergent charts in TF.C–TF.D prove that the
+whole terminal space is smooth and its full reduced inverse
+boundary is SNC. Each normalized blowup is an isomorphism
+off the boundary. All components meet that dense open set,
+because the raw blowup is its graph closure and the finite
+normalization has the same meromorphic fields.
+
+All constructions can first be made intrinsically on the
+chosen base neighbourhood. The finite termination just
+proved permits the finitely many projective-embedding
+shrinkings in TF.B and TF.D to be combined into one smaller
+polydisc. Thus the entire resulting morphism, rather than
+a disjoint union of open quotient charts, is proper and
+locally projective. This proves TF.3–TF.4.
+
+The empty-boundary and minimum-degree cases are included.
+When \(k=0\), the local algebra is the direct sum of
+\(n\) copies of the base ring, with no power variables.
+If \(E\) is empty, \(N=V\) is already smooth and no
+boundary blowup occurs. When \(n=1\), TF.2 is \(Y\)
+itself and every cone is already regular. In dimension
+zero the same construction is the finite set of
+covering points, with empty boundary.
+
+#### TF.F. Globally labelled roots on a projective SNC base
+
+Let \(P(t,y)\) be a monic degree-\(m\) polynomial with
+holomorphic coefficients on \(Y\). Suppose all its roots
+lie in one disc \(D_r\Subset D_R\), and that its nonzero
+discriminant has support in \(E\). On \(U\) its ordered
+distinct-root tuples form an actual finite unramified
+cover of degree
+\[
+m!.
+\tag{TF.34}
+\]
+The local holomorphic branches are proved in QG.A.
+Their ordered tuples give all \(m!\) local sheets.
+They are proper over compact subsets of \(U\), since their
+coordinates stay in the fixed smaller root disc and the
+polynomial and elementary-symmetric equations define a
+closed subset there.
+
+Apply TF.2–TF.4 to this covering. Its coordinate functions
+are bounded, so TF.B extends them to \(N\) and their
+pullbacks give global holomorphic roots on \(Z\):
+\[
+\begin{gathered}
+P(t,g(z))\\
+=\prod_{\nu=1}^m(t-r_\nu(z)),\\
+g=f\mu.
+\end{gathered}
+\tag{TF.35}
+\]
+The identities hold first off the boundary and then by
+density everywhere. They retain the strict bound
+\(|r_\nu|<r\). Indeed the root set over the compact central
+fibre is compact and has maximum modulus strictly less
+than \(r\). Choose an intermediate radius \(r'<r\) above
+that maximum. Properness and the closed polynomial root
+set let us shrink \(B\) so that all roots there have modulus
+less than \(r'\). Their bounded extensions have modulus
+at most \(r'\) by continuity from the dense complement.
+
+On each SNC chart of \(Z\), the pulled-back discriminant
+is a coordinate monomial times a unit. Its zero set is
+contained in that chart's boundary, so this is the
+Nullstellensatz and coordinate-prime argument of TF.C.
+The product identity
+\[
+\prod_{\nu<\lambda}(r_\nu-r_\lambda)^2
+           =\Delta_P\circ g
+\tag{TF.36}
+\]
+and QG.B give a monomial times a unit for each root
+difference. None is the zero germ, since the roots are
+distinct on the dense complement in every component.
+
+The global monomial principalization QG.C now applies to
+the finitely many root-cluster ideals on \(Z\).
+Here is the finiteness needed for this application.
+Finitely many SNC charts cover the compact central
+fibre. After shrinking \(B\), their union contains the
+entire inverse image of \(B\), by properness. The
+monomial orders of the finitely many root differences
+therefore have only finitely many values. Refine each
+boundary label by the vector of those orders on its
+components. Each refined label is an open and closed
+union in that normal divisor, hence is closed analytic;
+there are finitely many labels and no self-intersections.
+Every collision ideal is a sum of monomials with fixed
+orders on these labels.
+
+The proof of QG.C applies verbatim to these finitely
+many labels, treating a disjoint union of centre
+components in one blowup. Its maximal positive-plus-
+negative invariant counts meeting labelled pairs.
+The new exponent difference is constant on the
+whole new exceptional label. Thus its strict
+decrease and termination do not require a count
+of connected strata. On the resulting
+base, QG.D separates the global graph sections by closed
+graph-centre blowups; its exact nonnegative weight
+decrease proves termination. Consequently there is a
+proper locally projective map from a smooth manifold
+onto \(D_R\times Y\) whose reduced inverse image of
+\[
+\begin{gathered}
+\{P(t,y)=0\}\\
+\cup\ (D_R\times E)
+\end{gathered}
+\tag{TF.37}
+\]
+is SNC, and which is a surjective finite unramified
+covering of degree \(m!\) off precisely that chosen
+boundary. The graph blowups are isomorphisms off it.
+Every complementary chart is included by QG.D.
+Thus all the TC finite D-type, canonical de Rham,
+ordinary infinity/function and full source infinity
+proper-image comparisons apply to TF.37 with this
+geometry constructed. This statement uses a supplied
+projective SNC base \(Y\); it does not assert that an
+arbitrary analytic discriminant is SNC in the
+original base coordinates.
+
+#### TF.G. A double cover and its whole exceptional line
+
+Take \(Y\) to be a bidisc with boundary \(xy=0\) and
+the connected two-sheeted covering determined by
+\[
+w^2=xy.
+\tag{TF.38}
+\]
+Let \(K_2=\{\pm1\}\) act by simultaneous sign
+on \((u,v)\). Its normal extension is
+\[
+\begin{gathered}
+x=u^2,\qquad y=v^2,\\
+w=uv,\qquad N=\widetilde Y/K_2,\\
+f_*\mathcal O_N=\mathcal O_Y\oplus w\mathcal O_Y .
+\end{gathered}
+\tag{TF.39}
+\]
+Here
+\[
+\begin{gathered}
+M=\{(a,b)\in\mathbf Z^2\mid\\
+a+b\text{ is even}\},\\
+N_M=\mathbf Z^2+\mathbf Z(1/2,1/2),\\
+\sigma=\operatorname{Cone}((1,0),(0,1)),\\
+\operatorname{mult}(\sigma)=2 .
+\end{gathered}
+\tag{TF.40}
+\]
+The interior primitive point \(v_*=(1/2,1/2)\) has both
+coefficients \(1/2\). Its star is the normalized blowup
+of \((x,y)\). On the \(x\)-ratio chart, put
+\[
+\begin{gathered}
+y=xq,\qquad w^2=x^2q,\\
+s=w/x,\qquad q=s^2,\\
+(x,y,w)=(x,xs^2,xs).
+\end{gathered}
+\tag{TF.41}
+\]
+The integral coordinate \(s\) is essential; the raw
+ratio chart does not already have this normal ring.
+If \(w/x\) belonged to its local ring at
+\(x=q=w=0\), restriction to \(x=w=0\) would give a
+holomorphic germ \(a(q)\) with \(a(q)^2=q\). Its
+vanishing order would satisfy \(2\operatorname{ord}_0a=1\),
+which is impossible. Thus the finite integral
+adjoining in TF.41 is substantive.
+The other chart is
+\[
+(x,y,w)=(yt^2,y,yt),
+\tag{TF.42}
+\]
+and their overlap is
+\[
+t=s^{-1},\qquad y=xs^2 .
+\tag{TF.43}
+\]
+The exceptional curves \(x=0\) and \(y=0\) glue by
+this reciprocal coordinate to the entire
+\(\mathbf P^1\), including \(s=0\) and \(t=0\).
+Write \(\gamma_x=\operatorname{Cone}(v_*,(0,1))\)
+and \(\gamma_y=\operatorname{Cone}((1,0),v_*)\).
+Both new cones have multiplicity one:
+\[
+\operatorname{mult}(\gamma_x)
+=\operatorname{mult}(\gamma_y)=1 .
+\tag{TF.44}
+\]
+In the two charts the full pullback boundary equations
+and map Jacobians are respectively
+\[
+\begin{array}{c|c|c}
+ & xy & \det D(x,y)\\ \hline
+(x,s) & x^2s^2 & 2xs\\
+(y,t) & y^2t^2 & -2yt .
+\end{array}
+\tag{TF.45}
+\]
+The column order in the second determinant is \((y,t)\);
+the target order is \((x,y)\). These are actual complex
+identities. The reduced boundary is \(xs=0\) or \(yt=0\),
+SNC in both charts. The degree off \(xy=0\) is two.
+The projective graph and finite normalization prove
+properness of the whole map, including that complete
+exceptional line.
+
+![Finite normal extension, a primitive lattice star and both normalized double-cover charts](assets/finite-toroidal-cover.png)
+
+**Figure TF.1.** Panel A is the actual diagram TF.1–TF.4.
+The finite map \(f\) has rank \(n\), and \(\mu\) is the
+global boundary modification. Panel B uses exactly the
+lattice TF.40, its primitive inserted ray and the two
+regular cones TF.44. Its coordinate axes have equal
+scales; the lattice covolume is \(1/2\). The shaded
+triangles are sections of the two cones in that
+specific example. Panel C gives both complex charts
+TF.41–TF.43 and their reciprocal overlap, which
+contains the entire exceptional \(\mathbf P^1\) after
+gluing. Panel D shows the real coordinate slices of
+TF.45, with all imaginary coordinates zero and equal
+axes. Each full chart has complex dimension two.
+The map and gluing panels have no metric scale.
+
+Editable SVG,
+exact figure data
+and reproducible source.
+
+Freely accessible further reading: Enokizono–Hashizume,
+[*Semistable reduction for complex analytic spaces*,
+arXiv2404.05124v3, Proposition2.25](https://arxiv.org/pdf/2404.05124v3);
+Karu, [*Toric Geometry*, notes by Ronagh, §§11–13](https://pooya-git.github.io/files/toric2011.pdf).
+TF.A–TF.G provide the convergent algebras, global
+coherent ideals, projectivity and finite termination
+arguments used here.
+
+
+### 5.79. Analytic hypersurfaces, proper trace and the prescribed complement
+
+Let \(X\) be a sufficiently small coordinate neighbourhood in a
+complex manifold of dimension \(n\), let \(S\) be a reduced analytic
+hypersurface, and put \(j:U=X\setminus S\hookrightarrow X\).
+All local systems have finite complex rank. All tensor products
+without a derived symbol are ordinary algebraic sheaf tensor
+products. Write \(B_X=\mathcal D_X^\infty\).
+
+We use the finite D-type class of
+§5.72, DT.E:
+coherent holonomic finite-order modules localized at \(S\), with
+flat restriction to \(U\), regular at a generic smooth transverse
+point of every component of \(S\). Its full faithfulness, its finite
+projective meromorphic coefficient module in DT.A, and the exact
+proper localization proof DT.B will be used with these hypotheses.
+The global logarithmic lattice and its coherent operator generator
+are proved in
+§§5.0–5.3.
+The supplied-generator proper coherence and characteristic-image
+theorems are
+§§5.9–5.12.
+
+#### FB.A. An alteration with an explicitly enlarged boundary
+
+For every nonzero holomorphic germ \(h\), there is a polydisc
+representative \(X\), an analytic hypersurface \(T\) containing
+\(\{h=0\}\), and a proper locally projective map
+\[
+g:Z\longrightarrow X
+\tag{FB.1}
+\]
+such that \(Z\) is smooth of dimension \(n\),
+\(D=(g^{-1}T)_{\mathrm{red}}\) is SNC, and
+\[
+g:Z\setminus D\longrightarrow X\setminus T
+\tag{FB.2}
+\]
+is a finite unramified covering of positive degree.
+Every component of \(Z\) meets this complement.
+Moreover, \(T=S\cup A\), where \(S=\{h=0\}_{\mathrm{red}}\)
+and \(A\) has no component in common with \(S\).
+The added hypersurface is part of this geometric assertion.
+
+Here is a dimension induction, including repeated equations.
+A unit, or dimension zero, uses the identity and empty boundary.
+Otherwise choose a direction on which the first nonzero homogeneous
+part of \(h\) is nonzero. The full convergent preparation proof in
+analytic preparation, Theorem 1 and Proposition 4
+gives coordinates \((t,z)\), polydiscs \(D_R\times B\), and
+\[
+\begin{gathered}
+h(t,z)=u(t,z)P(t,z),\\
+P=t^m+\sum_{i=1}^m a_i(z)t^{m-i},\\
+u\ne0,\qquad a_i(0)=0.
+\end{gathered}
+\tag{FB.3}
+\]
+Its contour proof supplies a strict circle containing every root,
+uniformly on a smaller \(B\). In particular all graphs below lie
+strictly inside \(D_R\).
+
+Put \(A_B=\mathbf C\{z\}\) and \(K=\operatorname{Frac}(A_B)\).
+In \(K[t]\) let \(Q\) be the monic product of the distinct monic
+irreducible factors of \(P\). Equivalently
+\[
+Q=P/\gcd(P,\partial_tP).
+\tag{FB.4}
+\]
+All roots of \(P\) are integral over \(A_B\). A finite collection of
+integral elements generates a finite \(A_B\)-module: reduce powers
+successively by their monic equations. Multiplication by any
+element of that algebra preserves this finite spanning module;
+the adjugate determinant identity applied to its spanning relations
+gives a monic equation for that element. Thus sums and products of
+the roots are integral as well. The coefficients of \(Q\), which
+are symmetric expressions in a subset of these roots, belong to
+\(K\) and are integral over \(A_B\). Coefficient normality
+§5.32, J.0
+therefore puts them in \(A_B\).
+
+Monic polynomial division in \(A_B[t]\), followed by its injection
+in \(K[t]\), proves
+\[
+\begin{gathered}
+Q\mid P,\qquad P\mid Q^m,\\
+\{P=0\}=\{Q=0\}.
+\end{gathered}
+\tag{FB.5}
+\]
+These identities hold on every special fibre. In particular
+\(Q(t,0)=t^q\), where \(q=\deg Q\ge1\).
+The nonzero discriminant
+\[
+\Delta(z)=\operatorname{disc}_tQ
+\tag{FB.6}
+\]
+is holomorphic on \(B\).
+
+Apply the induction hypothesis in dimension \(n-1\) to \(\Delta\).
+It gives a hypersurface \(H\) containing \(\{\Delta=0\}\)
+and a proper locally projective \(p:Y\to B\), with \(Y\) smooth,
+\[
+E=(p^{-1}H)_{\mathrm{red}}\text{ SNC},
+\tag{FB.7}
+\]
+and a positive finite unramified cover off \(H\).
+If \(\Delta\) is a unit take \(Y=B\) and \(H=E=\varnothing\).
+Over this entire supplied projective SNC base, apply
+§5.78, TF.F
+to \(Q(t,p(y))\).
+That proof constructs its actual ordered-root cover, its finite
+normal analytic extension, the coherent normalized monomial
+blowups, and the global graph-separating blowups.
+It gives a smooth source and a proper locally projective map to
+\(D_R\times Y\), with reduced inverse boundary SNC and with finite
+unramified degree \(q!\) off
+\(\{Q(t,p(y))=0\}\cup(D_R\times E)\).
+Compose with \(\operatorname{id}_{D_R}\times p\) and set
+\[
+\begin{gathered}
+T=\{Q=0\}\cup A,\\
+A=D_R\times H .
+\end{gathered}
+\tag{FB.8}
+\]
+The inverse of this exact \(T\) is the boundary just constructed.
+Projective embeddings compose by the Segre embedding; properness
+and covering degrees compose. Thus FB.1–FB.2 follow, with positive
+degree \(q!\deg p\).
+The complement of a hypersurface in a polydisc is path connected:
+the complex affine line through two complement points has a
+nonzero restricted equation, so only finitely many zeros meet
+the compact segment between them. Small complex detours in
+that line avoid those zeros inside the polydisc.
+Consequently each covering degree used in the induction is constant.
+There is no common component of \(A\) and \(S\): a component of
+the vertical hypersurface \(D_R\times H\) contained in \(\{Q=0\}\)
+would make the monic polynomial \(Q(t,z)\) vanish for every \(t\)
+at a generic point of that component of \(H\).
+Its leading coefficient is one. This is impossible.
+This completes the induction.
+
+The geometry may use a different coordinate projection from one
+subsequently used to define a monodromy group. Its target remains
+the original neighbourhood with its original \(S\).
+
+#### FB.B. Distribution forms and their Dolbeault resolution
+
+A \((p,q)\)-current on a complex \(n\)-fold is a continuous linear
+functional on compactly supported smooth \((n-p,n-q)\)-forms.
+Differentiation uses the integration-by-parts sign, so that
+the inclusion of smooth forms as currents commutes with
+\(\partial\), \(\bar\partial\), and their sum.
+Use complex orientation and the ordinary integration pairing.
+The complex of \((p,q)\)-currents resolves \(\Omega^p\).
+We give the local distribution argument needed for this assertion.
+
+With \(dA=dx\,dy\) and
+\(\partial_{\bar z}=(\partial_x+i\partial_y)/2\), Stokes' formula
+on a punctured disc, followed by the inner-circle limit, gives
+\[
+\partial_{\bar z}\frac1{\pi z}=\delta_0.
+\tag{FB.9}
+\]
+Indeed \(1/z\) is locally integrable; the outer boundary vanishes
+for a compactly supported test function, and the inner boundary
+is its value at zero, since its difference from that value is
+bounded by a constant times the circle radius. These estimates
+also justify the distributional limit.
+
+Take nested polydiscs and a cutoff \(\chi_i\) in coordinate \(z_i\),
+equal to one on the inner disc and compactly supported in the
+outer disc. Partial convolution, with distribution coefficients
+in the other variables, defines
+\[
+\begin{gathered}
+T_i v=\frac1{\pi z_i}*_{i}(\chi_i v),\\
+\partial_{\bar z_i}T_i v=v\\
+\text{on the inner polydisc}.
+\end{gathered}
+\tag{FB.10}
+\]
+Partial convolution is defined by transposing its integral on
+test functions; one factor has compact support in the convolved
+variable. It commutes with derivatives in the other variables.
+The companion identity is
+\[
+\begin{gathered}
+T_i\partial_{\bar z_i}v=v-P_i v,\\
+P_i v=\frac1{\pi z_i}*_{i}
+             ((\partial_{\bar z_i}\chi_i)v).
+\end{gathered}
+\tag{FB.11}
+\]
+On the inner disc the kernel in \(P_i\) has no singularity in
+the \(z_i\) variable. Thus \(P_i v\) is holomorphic in that
+variable, with distribution coefficients in the others.
+
+For a closed positive-degree \((0,q)\)-current write
+\(v=v_0+d\bar z_i\wedge v_1\), with neither \(v_\nu\) containing
+\(d\bar z_i\). Subtract \(\bar\partial T_i v_1\).
+The result has no \(d\bar z_i\) component by FB.10; it is closed,
+so its other components are \(\partial_{\bar z_i}\)-closed.
+Choose the cutoffs independently in each variable. Each later
+\(T_j\) commutes with the already treated derivatives.
+After all \(n\) variables a positive-degree form with no
+antiholomorphic differential component is zero.
+This gives local exactness by finitely many contractions on one
+smaller polydisc.
+
+A degree-zero closed distribution is an ordinary holomorphic
+function. To see the regularity, mollify it on an inner polydisc.
+Its mollifications are smooth and \(\bar\partial\)-closed.
+Choose a fixed product of radial smooth averaging kernels
+supported in still smaller discs. The holomorphic mean-value
+formula makes convolution with that kernel the identity on
+each mollification on a further inner product.
+Passing to the distributional limit gives \(v=v*\psi\).
+The right side is smooth. Its Cauchy–Riemann equations, or the
+one-variable Cauchy formula successively, make it holomorphic.
+This proves the assertion in degree zero, hence the resolution.
+The same proof with fixed holomorphic \(p\)-forms proves it for
+every \(p\).
+
+Current sheaves and smooth form sheaves are modules over smooth
+functions. Partitions of unity and the acyclicity proof in
+§5.34, R.5
+make both resolutions section-acyclic on every open subset.
+If \(h\) is a holomorphic equation, algebraically localize these
+resolutions at \(h\). Localization is flat and exact.
+For a finite projective \(\mathcal O[1/h]\)-module take a finite
+free ambient module and its idempotent; the corresponding
+direct summand of the localized resolutions remains exact.
+In particular a fraction in localized currents means an
+algebraic fraction. It does not require multiplying a
+distribution by a singular function.
+
+All these constructions admit holomorphic auxiliary parameters.
+One can resolve those parameters first by smooth Dolbeault
+forms, use the fixed-coordinate Cauchy–Green contractions of
+§5.34, R.2–R.3, and then use FB.10–FB.11 in the source variables.
+The two sets of operators commute. On each compact product all
+distribution orders are finite; each convolution is continuous
+on the corresponding finite test-function seminorms.
+Thus parameter differentiation passes through it.
+The finite contractions use one common smaller parameter product.
+The section-acyclic comparison at parameter germs is precisely
+the double-resolution argument in
+§5.75, PD.B.
+It applies also to these finite-order distribution seminorms.
+
+#### FB.C. A split proper trace before any Riemann–Hilbert theorem
+
+Suppose \(g:Z\to X\) is proper between smooth \(n\)-folds, and is
+a positive finite unramified cover of degree \(d\) off an analytic
+hypersurface \(T\), with every component of \(Z\) meeting this
+complement. Let \(S\subset T\), and let \(Q\) be a finite
+projective \(\mathcal O_X(*S)\)-module with integrable connection.
+Its ordinary meromorphic pullback \(g^*Q\), localized along
+\(D_0=(g^{-1}S)_{\mathrm{red}}\), is its unshifted finite
+operator inverse image \(g^+Q\): \(Q\) is \(\mathcal O_X\)-flat.
+There are natural finite-operator derived morphisms
+\[
+\begin{gathered}
+u_Q:Q\longrightarrow g_+g^+Q,\\
+\operatorname{tr}_Q:g_+g^+Q\longrightarrow Q,\\
+\operatorname{tr}_Q u_Q=d\,\operatorname{id}_Q .
+\end{gathered}
+\tag{FB.12}
+\]
+No concentration assertion about \(g_+g^+Q\) is made here.
+
+We construct the maps with their density convention.
+For the right module \(Q^r=\Omega_X^n\otimes Q\), a flat right
+Spencer resolution, with degree \(p-n\), is
+\[
+\begin{gathered}
+C_X^p=\Omega_X^p\otimes_{\mathcal O_X}Q\\
+\otimes_{\mathcal O_X}\mathcal D_X,\\
+0\le p\le n .
+\end{gathered}
+\tag{FB.13}
+\]
+Its differential on an induced tensor is
+\[
+\begin{gathered}
+\delta_X(\alpha\otimes P)\\
+=d_\nabla\alpha\otimes P\\
+{}+\sum_j dx_j\wedge\alpha\otimes\partial_{x_j}P.
+\end{gathered}
+\tag{FB.14}
+\]
+The right operator acts on the last factor. The displayed
+\(\partial_{x_j}P\) is multiplication in \(\mathcal D_X\).
+The coefficient relation is respected because
+\(\partial_j(fP)=f\partial_jP+(\partial_jf)P\).
+Integrability gives \(\delta_X^2=0\).
+The augmentation in top degree is the right action on
+\(\Omega_X^n\otimes Q\). For example in dimension one
+\[
+\begin{gathered}
+(dx\otimes m)\partial_x\\
+=-dx\otimes\nabla_{\partial_x}m .
+\end{gathered}
+\tag{FB.15}
+\]
+the two terms in FB.14 cancel under the augmentation.
+This fixes the plus sign in FB.14.
+PBW symbols, with the exterior-degree shifts, give the
+polynomial-variable Koszul resolution. A leading-order
+preimage lowers a finite operator order and terminates.
+Since \(Q\) is coefficient-flat, the induced terms are
+right \(\mathcal D_X\)-flat. This proves the stated resolution.
+
+Tensoring the analogous right source resolution with
+\(\mathcal D_{Z\to X}\) gives the complex computing the
+right direct image, before \(Rg_*\), with terms
+\[
+\begin{gathered}
+C_g^p=\Omega_Z^p\otimes g^*Q\\
+\otimes_{g^{-1}\mathcal O_X}g^{-1}\mathcal D_X .
+\end{gathered}
+\tag{FB.16}
+\]
+and differential
+\[
+\begin{gathered}
+\delta_g(\beta\otimes P)\\
+=d_{g^*\nabla}\beta\otimes P\\
+{}+\sum_j dg_j\wedge\beta\otimes\partial_{x_j}P .
+\end{gathered}
+\tag{FB.17}
+\]
+There is no inverse Jacobian in this complex.
+Pullback of forms defines a right \(\mathcal D_X\)-linear
+chain map \(C_X\to g_*C_g\), hence the first map of FB.12.
+It is a chain map by the chain rule in every exterior degree,
+including at critical points. In left-module transfer
+notation its top-density representative is
+\[
+\begin{gathered}
+m\longmapsto\eta\otimes1\otimes Jg^*m,\\
+J=\det(dg),\\
+\eta=dz\otimes g^*(dx)^{-1}.
+\end{gathered}
+\tag{FB.18}
+\]
+Thus this representative is holomorphic at critical points.
+It is not the unweighted transfer generator.
+
+Resolve the coefficient form factors of FB.16 by smooth
+Dolbeault forms, and those of FB.13 by currents, using FB.B
+and algebraic localization. These source resolutions are
+\(g_*\)-acyclic because \(g\) is proper and they are fine;
+the same compact-fibre argument works with each finite
+operator head and pole bound. A compact fibre needs only
+finitely many coefficient charts, hence one common bound.
+The target current resolution is also section-acyclic.
+
+Proper push of currents is defined by
+\[
+\langle g_*\beta,\phi\rangle
+       =\langle\beta,g^*\phi\rangle .
+\tag{FB.19}
+\]
+Properness makes the test support compact.
+Equal complex dimensions make it preserve bidegrees.
+Integration by parts and pullback of smooth forms give
+\[
+\begin{gathered}
+g_*\partial=\partial g_*,
+\qquad g_*\bar\partial=\bar\partial g_*,\\
+g_*(dg_j\wedge\beta)=dx_j\wedge g_*\beta .
+\end{gathered}
+\tag{FB.20}
+\]
+The coefficient projection formula is immediate in a
+finite free target frame. It passes to a finite projective
+summand by its idempotent. For denominators define
+\[
+g_*\!\left(\frac{\beta}{(g^*h)^k}\right)
+                  =\frac{g_*\beta}{h^k}.
+\tag{FB.21}
+\]
+The holomorphic projection formula makes this well-defined
+under the localization relations and changes of equation.
+It also proves invariance under meromorphic changes of
+ambient frame and its idempotent.
+On the last \(\mathcal D_X\) factor use the identity.
+FB.20 now proves that current push is a chain map for
+FB.14–FB.17, not just for their coefficient differentials.
+Use actual \((p,q)\)-forms with their wedge order; the
+Dolbeault differential on a \((p,0)\)-form times a
+\((0,q)\)-form has its \((-1)^p\) sign.
+The source and target shifts are both \([n]\).
+There is consequently no additional relative-dimension sign.
+This constructs \(\operatorname{tr}_Q\) in FB.12.
+
+For a smooth form \(\omega\), change variables on each sheet
+off \(T\) proves
+\[
+g_*g^*\omega=d\,\omega
+\quad\text{as currents}.
+\tag{FB.22}
+\]
+The real Jacobian of a nonsingular holomorphic map is
+\(|J|^2>0\), so each sheet has sign plus.
+The discarded analytic zero sets have real measure zero:
+adapted preparation gives finitely many zeros on a generic
+one-dimensional complex slice, and Fubini proves this
+locally; the remaining lower-dimensional slice locus is
+handled inductively. Source exceptional divisors have
+the same property. Both sides of the smooth integration
+identity therefore retain their full integral.
+Apply this to every smooth coefficient form and every
+finite operator head. FB.22 identifies trace after unit
+with \(d\) times the current inclusion in every Spencer
+degree. The inclusion is a quasi-isomorphism by FB.B.
+This proves FB.12 in the derived operator category.
+For \(n=0\) it is the diagonal and sum on a finite set.
+For the identity map it is the identity in every degree.
+Restrictions, connection maps, and independent parameters
+commute with all the displayed maps.
+
+This finite Spencer/current construction is also described,
+for the untwisted trace, in Pierre Schapira's freely
+accessible [lecture notes, §2.6](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/lectnotes/Dmod.pdf).
+FB.B–FB.22 give the coefficient, localization, degree and
+splitting arguments used here.
+
+#### FB.D. Removing the added boundary from the actual module
+
+Let \(L\) be a local system on the original \(U=X\setminus S\).
+Apply FB.A. The divisor
+\[
+D_0=(g^{-1}S)_{\mathrm{red}}
+\tag{FB.23}
+\]
+is a subunion of the SNC divisor \(D\), hence is SNC.
+Let \(E_\Sigma\) be the normalized logarithmic extension
+of \(g_U^{-1}L\) from \(Z\setminus D_0\), and put
+\[
+\begin{gathered}
+M_0=E_\Sigma(*D_0),\\
+M_T=M_0(*D).
+\end{gathered}
+\tag{FB.24}
+\]
+There is no pole at a component of \(D\) outside \(D_0\)
+in \(M_0\): on that open set it is the original flat bundle.
+The same logarithmic lattice is normalized along \(D\),
+with residue zero at every added component. Its localization
+is therefore the normalized source \(M_T\) used by TC.
+The logarithmic generator \(E_\Sigma(D_0)\) generates \(M_0\)
+over finite operators, by the full shifted-residue
+factorial proof in
+§5.73, SI.
+It is one global coherent generator on the inverse image
+of a smaller target polydisc.
+Thus §§5.9–5.12 apply to give
+\[
+N_0=g_+M_0\in D^b_{\mathrm{hol}}(\mathcal D_X).
+\tag{FB.25}
+\]
+This is exactly where the proper-coherence generator
+hypothesis is supplied.
+
+Localization of the actual transfer complex and DT.B give
+\[
+\begin{gathered}
+N_0(*A)\simeq g_+M_T=N_T,\\
+N_0(*S)=N_0 .
+\end{gathered}
+\tag{FB.26}
+\]
+Here \(N_T\) is concentrated in degree zero by DT.C–DT.D,
+since \(J\) is invertible after inverting \(D\).
+For clarity, localization in FB.26 is not the restriction
+of holomorphic functions to the complement.
+On a finite Spencer term, commute a target inverse
+equation through its finite derivative head. The finite
+commutator expansion raises the pole order finitely.
+The inverse operation is the same expansion on the
+source inverse equation. These give inverse localized
+transfer complexes and commute with their differential.
+The underlying coefficient localization is a filtered
+colimit of finite pole stages. Proper compact-fibre
+commutation DT.B identifies its derived push.
+The same argument with \(S\) applies because \(M_0\) is
+already localized there.
+
+By
+§5.76, TC.B–TC.C
+the normalized finite-cover projector has an actual
+coherent finite D-type image \(Q_T\) along \(T\), and
+an actual surjection
+\[
+\epsilon:N_T\longrightarrow Q_T
+\tag{FB.27}
+\]
+whose local system is \(L|_{X\setminus T}\).
+Define the finite-operator module
+\[
+\begin{gathered}
+Q_0=\operatorname{im}\bigl(\\
+H^0N_0\longrightarrow N_T\\
+\xrightarrow{\epsilon} Q_T\bigr).
+\end{gathered}
+\tag{FB.28}
+\]
+This is an image of a map between coherent holonomic
+modules, so is coherent holonomic. It is \(S\)-localized:
+the source and target of the map are \(S\)-localized,
+and the inverse multiplication by an equation of \(S\)
+commutes with the map. Away \(A\), it is \(Q_T\).
+Since \(S,A\) have no common component, it is generically
+regular transverse to every component of \(S\).
+
+We prove its crucial restriction statement across \(A\).
+On \(U\), put \(F=L\otimes_{\mathbf C}\mathcal O_U\).
+Then \(M_0|_{Z\setminus D_0}=g_U^+F\).
+FB.C, applied on \(U\), supplies the normalized trace
+\[
+\begin{gathered}
+g_{U,+}g_U^+F\longrightarrow F,\\
+(\operatorname{tr}/d)u_F=1.
+\end{gathered}
+\tag{FB.29}
+\]
+After inverting \(A\), this map is FB.27, under the
+canonical D-type identification of \(Q_T|_U\) with
+\(F(*A)\). Both are the sheetwise normalized sum on
+the unramified open set, and DT.E makes their actual
+localized operator morphisms equal.
+
+This equality determines the unlocalized map into
+\(F(*A)\) as well. Indeed
+\(\mathcal D_U(*A)\) is right \(\mathcal D_U\)-flat:
+its tensor with any left module is just its exact
+coefficient localization, since as a right module it
+is \(\mathcal O_U(*A)\otimes_{\mathcal O_U}\mathcal D_U\).
+Extension and restriction of scalars give derived
+localization adjunction for any \(A\)-localized target.
+Consequently the map \(N_0|_U\to F(*A)\) in FB.28 is
+the map FB.29 followed by \(F\hookrightarrow F(*A)\).
+On degree zero FB.29 is surjective, by its section.
+Taking the image in FB.28 therefore gives
+\[
+Q_0|_U=F.
+\tag{FB.30}
+\]
+All hypotheses of DT.E for the original \(S\) are now
+verified. DT.A makes \(Q_0\) finite projective over
+\(\mathcal O_X(*S)\). Its local system is precisely \(L\).
+DT.E supplies the unique extension of every local-system
+map and proves independence of the geometric choices.
+Thus every local system on the prescribed complement
+has an actual finite D-type realization there.
+For an arbitrary smooth \(X\), make these constructions on
+a coordinate cover. DT.E gives the unique isomorphism on
+each overlap inducing the identity of \(L\).
+Faithfulness makes the triple-overlap composites agree.
+The sheaf of compatible local sections glues the modules;
+operator coherence, holonomicity, localization and generic
+regularity are local and are preserved.
+Thus the same essential surjectivity holds globally.
+
+#### FB.E. Pullback, de Rham and all auxiliary parameters
+
+There is a canonical meromorphic connection isomorphism
+\[
+g^+Q_0\simeq M_0 .
+\tag{FB.31}
+\]
+First invert all of \(D\). Then \(g^+Q_0(*D)=g^*Q_T\).
+The evaluation map from \(g^*N_T\) to \(M_T\), restricted
+to the normalized trace summand, is an isomorphism off
+\(D\). It is a finite meromorphic matrix map on source
+charts: use the actual degree-zero identification
+\(N_T=g_*M_T\) of DT.C and evaluate sections.
+Both sides are finite projective meromorphic modules.
+They have coherent holomorphic lattices: put each
+projective module in a finite free ambient module
+by its idempotent and clear its finitely many
+denominators. The image of the resulting finite
+holomorphic matrix is such a lattice.
+Clear denominators in the evaluation map as well.
+Its lattice kernel and cokernel are coherent and
+vanish off \(D\); the analytic Nullstellensatz
+therefore kills them locally by a power of an
+equation of \(D\). Inverting that equation proves
+that the evaluation map is an isomorphism.
+This argument does not assume a projective module
+over a localized coefficient ring is free.
+
+That isomorphism restricts on \(Z\setminus D_0\) to
+the identity of the pulled-back flat bundle, even
+across the extra components of \(D\).
+It and its inverse have no poles at those components.
+Here is the precise cancellation at crossings.
+In an SNC chart write each matrix entry, in finite
+free ambient modules for the two projective summands,
+as
+\[
+\frac{a(z)}
+ {z_1^{b_1}\cdots z_k^{b_k}},\qquad b_i\ge0.
+\tag{FB.32}
+\]
+If \(z_i=0\) is an extra component, holomorphy at
+generic points of that component makes the first
+\(b_i\) Taylor coefficients of \(a\) in \(z_i\)
+zero on a nonempty open subset of the remaining
+punctured coordinate product. They are holomorphic
+coefficients, hence identically zero by the identity
+theorem. Thus \(z_i^{b_i}\) divides \(a\).
+Repeat for every extra component, in both matrices.
+Only \(D_0\) denominators remain. The inverse and
+idempotent identities hold by density.
+This proves FB.31 over \(\mathcal O_Z(*D_0)\).
+It uses actual finite meromorphic entries, rather
+than a formal or arbitrary-growth Laurent series.
+
+FB.C now applies globally to \(Q_0\) and FB.31.
+It gives derived maps
+\[
+\begin{gathered}
+Q_0\xrightarrow{u}N_0\xrightarrow{r}Q_0,\\
+ru=1,\qquad r=\operatorname{tr}/d .
+\end{gathered}
+\tag{FB.33}
+\]
+The composite \(N_0\to Q_0\hookrightarrow Q_T\)
+is the original localized trace map: derived
+localization adjunction and DT.E identify it after
+inverting \(A\), just as in FB.D.
+In particular the image in FB.28 is this actual
+degree-zero trace image.
+
+Write \(\operatorname{DR}_X(Q)=
+(\Omega_X^\bullet\otimes Q)[n]\).
+The finite Spencer associativity proof
+§5.74, AD.B
+and the full SNC de Rham proof give
+\[
+\begin{gathered}
+\operatorname{DR}_X N_0
+ \simeq Rg_*\operatorname{DR}_ZM_0\\
+ \simeq Rj_*K,\\
+K=Rg_{U,*}g_U^{-1}L[n].
+\end{gathered}
+\tag{FB.34}
+\]
+Composition of these derived sheaf images uses the
+ordinary exact inverse-image/injective adjunction;
+it requires no analytic proper base-change assertion.
+Under the Spencer augmentations, FB.33 becomes
+pullback of forms and the normalized current push.
+This follows directly by tensoring FB.14 and FB.17
+with \(\mathcal O_X\); the differential becomes the
+connection differential, and FB.19 remains current
+push. Thus the maps on \(U\) are
+\[
+\begin{gathered}
+u_U:L[n]\to K,\\
+r_U:K\to L[n],\\
+r_Uu_U=1 .
+\end{gathered}
+\tag{FB.35}
+\]
+
+Let \(c:\operatorname{DR}_XQ_0\to Rj_*L[n]\) be
+the canonical open-adjunction map.
+Maps into \(Rj_*\) are determined by their restriction
+to \(U\). Equations FB.34–FB.35 therefore give
+\[
+\begin{gathered}
+\operatorname{DR}(u)=Rj_*u_U\circ c,\\
+c\circ\operatorname{DR}(r)=Rj_*r_U .
+\end{gathered}
+\tag{FB.36}
+\]
+The map \(\operatorname{DR}(r)\circ Rj_*u_U\) is
+a two-sided inverse of \(c\), by FB.33 and FB.35.
+Consequently
+\[
+\operatorname{DR}_XQ_0
+       \xrightarrow{\;\sim\;}Rj_*L[n]
+\tag{FB.37}
+\]
+is the canonical comparison, including at singular
+points of the original hypersurface.
+This proof does not replace \(N_0\) by \(H^0N_0\).
+
+Let \(A_{\mathrm{par}}\) be any auxiliary polydisc
+and use the product geometry
+\(\operatorname{id}_{A_{\mathrm{par}}}\times g\).
+It is proper and locally projective by the
+compact-projection and pulled-back projective
+embedding argument in PD.D.
+Repeat FB.D for the horizontal local system
+pulled from \(L\).
+The resulting finite D-type module is canonically
+\(Q_0^{[A_{\mathrm{par}}]}\), by DT.E:
+the finite parameter extension is coherent
+holonomic, localized at \(A_{\mathrm{par}}\times S\),
+and has the same generic transverse logarithmic
+models, as proved in PD.23.
+This is an identification of actual modules, not
+a claimed tensor base change of analytic images.
+
+Use only source-variable forms in FB.13–FB.22.
+The parameter version of FB.B makes the trace and
+unit commute with every auxiliary derivative.
+AD.B's transfer associativity works with the same
+relative Spencer complex: in the full product transfer,
+the identity parameter coordinates supply their ordinary
+Spencer Koszul factors. Their symbols are the independent
+parameter derivative variables; the finite leading-order
+Koszul reduction augments these factors to the identity
+before the relative forms are taken.
+There is no parameter differential or parameter shift
+left in this augmentation. PD.C's full relative
+SNC calculation supplies its source comparison.
+The inverse argument FB.34–FB.36 is unchanged,
+with coefficients \(p_A^{-1}\mathcal O_A\) and
+without a parameter shift. Hence
+\[
+\begin{gathered}
+\operatorname{DR}^{0}_{X/A}
+      (Q_0^{[A]})\\
+\xrightarrow{\;\sim\;}
+Rj_{A,*}(p_A^{-1}\mathcal O_A
+                    \otimes_{\mathbf C}L).
+\end{gathered}
+\tag{FB.38}
+\]
+This also commutes with actual infinite operators
+in auxiliary variables. Fix a compact product
+and choose a larger Cauchy product first.
+All source homotopies and current pushes above
+are independent of the auxiliary variable and
+continuous on finitely many distribution
+seminorms on the proper source compact.
+Cauchy bounds for any fixed additional finite
+derivative multiply the coefficient bounds by
+its fixed factorial. Choose the defining
+infinite-operator epsilon below that margin.
+The remaining multi-index sums are products of
+geometric series, exactly as in PD.D.
+They converge normally in those seminorms and
+commute with the maps.
+
+The proof of PD.E uses its geometric hypothesis
+only to obtain the canonical all-parameter
+comparison PD.22. Replace that input by FB.38;
+its diagonal support, purity, orientation and
+Cauchy-unit proof PD.28–PD.34a then applies
+with \(F_A=\mathcal O_{A\times U}\otimes_{\mathbf C}p_U^{-1}L\), to give
+\[
+\begin{gathered}
+B_X\otimes_{\mathcal D_X}Q_0\\
+\xrightarrow{\;\sim\;}
+j_*(L\otimes_{\mathbf C}\mathcal O_U),\\
+B_{A\times X}\otimes_{\mathcal D_{A\times X}}
+       Q_0^{[A]}\\
+\xrightarrow{\;\sim\;}j_{A,*}F_A .
+\end{gathered}
+\tag{FB.39}
+\]
+The maps are actual infinite-operator action;
+no growth condition is imposed on the right.
+The full naturality and two operator actions,
+the ordinary inverse, and finite tensor
+kernel witnesses are those proved in
+PD.33–PD.36. Thus FB.39 is an ordinary tensor
+isomorphism, not a definition of its left side.
+
+#### FB.F. The special tensor for the original monodromy group
+
+Take exactly the Weierstrass situation and exceptional
+set \(S_0\) of
+§5.70, PM.
+Thus \(P\) has degree \(m\), the original \(H_0\)
+contains its discriminant, and
+\[
+\begin{gathered}
+S_0=\{P=0\}\cup A_0,\\
+A_0=D_R\times H_0,\\
+\pi=\pi_1(X\setminus S_0).
+\end{gathered}
+\tag{FB.40}
+\]
+For every cofinite left ideal \(\mathfrak a\)
+of \(\mathbf C\pi\), set
+\[
+\begin{gathered}
+V_{\mathfrak a}=\mathbf C\pi/\mathfrak a,\\
+q=\dim_{\mathbf C}V_{\mathfrak a}.
+\end{gathered}
+\tag{FB.41}
+\]
+Use its dual flat bundle with PD.F's convention:
+for a function \(f\),
+\(\lambda_f(\gamma v_0)=T_\gamma f\) and
+\(T_\gamma\lambda=\lambda\rho(\gamma)\).
+FB.D realizes it by an actual finite
+D-type module \(Q_{\mathfrak a}\) along this
+exact \(S_0\). FB.39 and its auxiliary version
+identify \(B\otimes Q_{\mathfrak a}\) with
+the full function module, naturally when
+\(\mathfrak b\subset\mathfrak a\).
+The geometry used to prove existence has
+not changed \(\pi\), \(S_0\), or either ideal.
+
+PM constructs the full primitive representation
+\(W\), including the period and initial-value
+subspaces, with rank at most \(q(m+1)\).
+Its exact finite-annihilator proof gives
+\[
+\begin{gathered}
+\mathfrak b=\operatorname{Ann}
+          (V_{\mathfrak a}\oplus W)
+          \subset\mathfrak a,\\
+\mathfrak b\text{ two-sided},\\
+\dim\mathbf C\pi/\mathfrak b
+            \le q^2(m+2)^2 .
+\end{gathered}
+\tag{FB.42}
+\]
+For \(q=0\) both representations are zero, so
+\(\mathfrak b=\mathfrak a=\mathbf C\pi\) and
+the tensor assertion is the zero assertion.
+All hypotheses of
+§5.71, ST.20
+are therefore satisfied on the original
+complement. ST.16–ST.19 and PM's actual
+primitive give, writing \(N_{\mathfrak a}=B\otimes Q_{\mathfrak a}\),
+\[
+\begin{gathered}
+\operatorname{im}\bigl(
+\mathcal T\otimes_B N_{\mathfrak a}
+\longrightarrow\\
+\mathcal T\otimes_B N_{\mathfrak b}
+\bigr)\\
+\subset\operatorname{im}(\text{unit}).
+\end{gathered}
+\tag{FB.43}
+\]
+This includes every positive operator head,
+the spatial kernels, arbitrary auxiliary
+polydiscs, and the actual ordinary tensor
+balancing witnesses. The exact domains,
+special operator algebra \(\mathcal T\),
+and unit in FB.43 are those of ST.1–ST.4.
+Their finite relation proof is part of
+ST.16–ST.19, not a replacement by a
+function-valued image condition.
+
+The original special-tensor statement is
+Kashiwara–Kawai, §III.4, Proposition 3.4.9,
+in their freely accessible
+[author text](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf).
+FB.A–FB.42 supply the actual module input
+to the full PM/ST proof for its fixed
+exceptional hypersurface.
+This conclusion concerns D-type modules
+and the special tensor. It does not assert
+the arbitrary holonomic-module faithful
+embedding, nor the full proper
+regular-holonomic Riemann–Hilbert theorem.
+
+#### FB.G. Ramification and apparent poles
+
+For \(t=w^e\), \(e\ge1\), write the trace
+of holomorphic one-forms over a punctured
+disc as the sum over its \(e\) inverse
+branches. The power series calculation is
+\[
+\begin{gathered}
+\operatorname{Tr}(a(w)\,dw)\\
+=\sum_{\ell\ge0}a_{e\ell+e-1}t^\ell\,dt,\\
+a(w)=\sum_{k\ge0}a_kw^k .
+\end{gathered}
+\tag{FB.44}
+\]
+The series converges on every smaller target
+disc by the source Cauchy bounds.
+It extends holomorphically through zero.
+For Laurent polynomials the two traces are
+\[
+\begin{gathered}
+T_0(w^{e\ell})=e\,t^\ell,\\
+T_1(w^{e\ell+e-1})=t^\ell,\\
+\ell\in\mathbf Z .
+\end{gathered}
+\tag{FB.45}
+\]
+Both traces vanish on every other integer monomial exponent.
+Direct differentiation gives, including
+negative powers when they are permitted,
+\[
+\begin{gathered}
+T_1(a')=(T_0a)',\\
+T_1(ew^{e-1}a)=T_0a,\\
+T_1(ew^{e-1})=e .
+\end{gathered}
+\tag{FB.46}
+\]
+These are respectively the connection and
+operator-head parts of the right Spencer
+chain-map check, and the density-unit
+normalization.
+If \(S=\varnothing\) and the branch value
+is only an added boundary, FB.44 gives
+holomorphic target coefficients. A
+meromorphic coefficient \(1/t\) is not
+created in its normalized invariant
+image. If \(S=\{0\}\), finite negative
+source exponents give exactly finite
+target poles. This distinguishes the
+two roles of a boundary.
+
+An independent parameter with
+noncommuting connection matrices can be
+seen in the determinant-one gauge
+\[
+\begin{gathered}
+G(t,a)\\
+=(I+tE_{12})(I+aE_{21}),\\
+A=G^{-1}\partial_tG,\\
+C=G^{-1}\partial_aG .
+\end{gathered}
+\tag{FB.47}
+\]
+Differentiating \(G^{-1}G=I\) gives
+\[
+\partial_a A-\partial_t C+[C,A]=0.
+\tag{FB.48}
+\]
+The matrices need not commute.
+After \(t=w^e\), the source matrices
+are \(ew^{e-1}A(w^e,a)\) and \(C(w^e,a)\).
+The projection formula and FB.46 prove
+both chain-map identities with this
+parameter. No scalar-residue
+commutativity assumption is involved.
+
+Finally the repeated cusp equation
+\[
+h=e^t(t^2-x^3)^2
+\tag{FB.49}
+\]
+has \(Q=t^2-x^3\) and \(\Delta=4x^3\).
+In the actual chart
+\(x=u^2,\ t=u^3(1+v)\) of QG.F,
+\[
+\begin{gathered}
+g^*h=e^{u^3(1+v)}\\
+\cdot\,u^{12}v^2(v+2)^2 .
+\end{gathered}
+\tag{FB.50}
+\]
+Its support is the inverse support of
+\(Q\); its multiplicities are those of
+the original \(h\). FB.5 removes no
+special-fibre support and FB.50 retains
+the full pullback equation.
+
+![Prescribed and added divisors, the coherent trace image, and the Jacobian-weighted ramified trace.](assets/analytic-fixed-boundary.png)
+
+The map and module panels show FB.8,
+FB.23–FB.30 and FB.33. They are
+commutative-diagram schematics without
+a metric scale. The ramified disc panel
+shows the exact exponent selection and
+normalization FB.44–FB.46; it does not
+represent a higher-dimensional
+exceptional fibre.
+
+Editable SVG,
+exact figure data,
+and reproducible source.
+
+
+### 5.80. Complex propagation through a cone-flat change of support
+
+We use ordinary holomorphic functions, with unrestricted growth at
+their open boundary. Every operator has an actual convergent
+coefficient representative. Free-module matrices and their
+contractions are finite; tensor products are algebraic.
+
+The canonical kernel ring and its genuine module-derived support
+objects, including finite common representatives, are proved in
+§5.43, DL.1–DL.8 and DLG.1–DLG.7.
+Its complete weighted Dolbeault argument is DLH.1–DLH.4.
+The actual finite symbol map and its full canonical multiplication
+are §§5.38–5.42.
+In particular a bounded exact complex of finite free actual
+operator modules has a finite matrix contraction, and DL.26
+transfers that contraction to internal Hom with the supported
+module object. An action in the endomorphism ring of a derived
+vector complex alone is insufficient for that assertion.
+
+Write \(X=\mathbf C^N\), viewed also as a real vector space.
+For a proper closed convex cone \(G\), the \(G\)-opens are the
+ordinary opens \(V\) satisfying \(V+G\subset V\).
+The identity from the ordinary topology to this topology is
+\(q_G\). A coefficient domain is round if every order interval
+with its endpoints in the domain remains in the domain.
+The cone is proper when \(G\cap(-G)=\{0\}\).
+
+For real covectors use the negative-polar convention
+\[
+\begin{gathered}K^-=\{\eta:\eta(w)\le0\\
+\text{for every }w\in K\}.\end{gathered}
+\tag{CP.0}
+\]
+The real covector corresponding to a complex covector
+\(p\) is \(w\mapsto\operatorname{Re}\langle p,w\rangle\).
+An actual-operator complex below includes its finite
+canonical-kernel representatives. Its actual finite
+microlocal matrices are defined on the strict negative
+polar of its carrier, with the same finite differential
+identities. Localization always refers to that actual
+matrix complex. The canonical Hom uses the kernel
+ring of the carrier in use; its comparison with actual
+operators concerns the specified matrices and their
+finite identities. No map from arbitrary canonical
+kernels to finite symbols is required.
+
+#### CP.A. Convex coefficient domains and linear caps
+
+Every nonempty open convex subset \(V\) of \(\mathbf C^N\)
+has a smooth strictly plurisubharmonic exhaustion.
+Here is an explicit construction that also covers nonsmooth
+convex cones.
+
+For each integer \(m\ge2\), cover the compact set
+\(\partial V\cap\{|x|\le m\}\) by finitely many supporting
+affine functions
+\[
+\begin{gathered}h_{m,j}>0\text{ on }V,\\ |dh_{m,j}|=1,\\
+1\le j\le n_m.\end{gathered}
+\tag{CP.1}
+\]
+so that at every point of that boundary piece one of them
+is less than \(2^{-2m}\).
+To obtain them, a separating affine hyperplane at each
+boundary point gives a function zero there and positive
+inside \(V\); continuity and compactness give the finite
+cover. Separation follows directly from the nearest-point
+inequality for closed convex sets, proved below in CP.D,
+by approaching a boundary point from the exterior.
+Empty boundary pieces contribute zero.
+
+Choose integers \(a_m\ge2\) with
+\[
+\begin{gathered}(m-1)a_m\\
+\ge2m+\log_2\max(1,n_m).\end{gathered}
+\tag{CP.2}
+\]
+and set
+\[
+\begin{gathered}f_m(x)=\\
+\frac{2^{-m}}{n_m}\sum_{j=1}^{n_m}\left(\frac{2^{-m}}{h_{m,j}(x)}\right)^{a_m},\\
+\psi(x)=|x|^2+\sum_{m\ge2}f_m(x).\end{gathered}
+\tag{CP.3}
+\]
+On a compact subset of \(V\), each normalized supporting
+function is bounded below by the distance of that compact
+to the complement of \(V\). Thus for every fixed derivative
+order \(r\), the \(m\)-th derivative sum is bounded by a
+constant times
+\[
+2^{-m}a_m^r\delta^{-r}
+              (2^{-m}/\delta)^{a_m}.
+\tag{CP.4}
+\]
+This is summable: eventually the parenthesized ratio is
+at most \(1/2\), and \(a^r2^{-a}\) is bounded for integral
+\(a\ge2\). Consequently CP.3 and all its derivatives
+converge locally normally.
+Each summand is real convex, since the second derivative
+of a positive affine function to a negative power is
+positive semidefinite. Its Levi form is therefore
+nonnegative. The quadratic makes \(\psi\) strictly
+plurisubharmonic.
+
+At a finite boundary point, choose \(m\) arbitrarily large
+whose boundary piece contains that point. In a small
+neighbourhood the selected function is less than
+\(2^{1-2m}\); CP.2 makes its contribution at least \(2^m\).
+Thus \(\psi\) tends to infinity at the boundary.
+It tends to infinity at infinity because all \(f_m\)
+are nonnegative. Its sublevels are compact in \(V\).
+If \(V\) is the whole space use only the quadratic.
+This proves the assertion, including unbounded domains.
+
+DLH.1–DLH.4 now gives the full Dolbeault vanishing on
+every such \(V\), and on its intersection with an open
+affine halfspace. All hypotheses of that proof are
+verified by CP.3; its unrestricted-input weight is
+allowed to depend on the whole given closed form.
+
+Let \(G\) have interior and choose \(v\in\operatorname{int}G\).
+The translated cones
+\[
+\begin{gathered}V_{x,b}=x-bv+\operatorname{int}G,\\ b>0.\end{gathered}
+\tag{CP.5}
+\]
+are a cofinal \(G\)-neighbourhood basis at \(x\).
+Indeed they contain \(x\). A small ordinary ball about
+\(x\) inside a \(G\)-open contains the backward shift
+\(x-bv\), whose forward cone is then contained in it.
+These basis domains and their linear halfspace
+intersections are convex. The preceding vanishing proves
+\(Rq_{G*}\mathcal O=q_{G*}\mathcal O\) on these bases,
+exactly by the stalk calculation DL.17–DL.18.
+
+For a proper nonzero cone with empty interior replace
+CP.5 by \(B(x,b)+G\). These convex ordinary opens are
+again a cofinal cone-open basis: start with an ordinary
+ball in the given cone-open and then add \(G\).
+Their halfspace intersections are convex too.
+Each nonempty basis open meets every sufficiently
+far future halfspace, by translating along a nonzero
+vector of \(G\). Holomorphic restriction to that
+nonempty intersection is injective by the identity
+argument in DL.5, since the basis open is connected.
+Thus the same support sequence is concentrated in
+degree one. This verifies the analytic hypotheses
+of DL.6 for every proper nonzero convex cone,
+including a single ray.
+The remaining geometric hypothesis also has a direct
+form. A real linear function \(\ell\) strictly positive
+on \(G\setminus\{0\}\) satisfies
+\[
+|w|\le C_G\ell(w)\qquad(w\in G).
+\tag{CP.6}
+\]
+Its proof is the positive minimum of \(\ell\) on
+\(G\cap S^{2N-1}\). Such an \(\ell\) exists as follows.
+For every unit \(w\in G\), separate \(-w\) from
+\(G\) by the nearest-point inequality. The separating
+functional is nonnegative on \(G\) and positive on
+\(w\). A finite cover of the unit cone and the sum
+of these functionals give strict positivity there.
+Consequently a linear future cap bounds all input
+lengths, and gives precisely DL.14's proper intersection
+and common collar. Kernel cup, finite complement cubes,
+excision and normalized trace in DLG.1–DLG.7 are
+intrinsic; they use only that bound, roundness, and
+the analytic concentration just verified.
+Their signs, unit and finite-module comparison remain
+unchanged. This proves the actual module-derived
+construction for these convex cones.
+
+For \(G\subset H\), restriction to a common smaller
+\(H\)-round coefficient domain and enlargement of the
+kernel support give the canonical ring map
+\[
+E(G;D)\longrightarrow E(H;D').
+\tag{CP.7}
+\]
+The two products agree by the same finite triple
+complement cube and proper trace: the support
+inclusions commute with cup, and the common round
+domain makes both intermediate intersections proper.
+The diagonal unit is the same class.
+This supplies the change of carrier used below.
+It asserts no surjectivity of the map from actual
+finite symbols onto arbitrary canonical kernel classes.
+
+#### CP.B. The actual action at a \(C^1\) boundary
+
+Let \(\rho\) be real \(C^1\) near \(0\), with
+\(\rho(0)=0\) and \(d\rho(0)\ne0\). Put
+\[
+\begin{gathered}Z=\{\rho\le0\},\\
+p=-2\partial\rho(0),\\
+\operatorname{Re}\langle p,w\rangle\\
+=-d\rho(0)(w).\end{gathered}
+\tag{CP.8}
+\]
+This is the outward complex covector for the open side
+\(\{\rho>0\}\). In particular \(\rho=-\operatorname{Re}t\)
+gives \(p=dt\).
+Every group
+\[
+\mathcal H_Z^q(\mathcal O)_0
+\tag{CP.9}
+\]
+has the canonical actual finite \(E_p\)-module action.
+We give the common-domain construction.
+
+For a finite family of actual symbols and identities at
+\(p\), choose their common canonical carrier \(G\) and
+coefficient domain by DL.7. In complex linear coordinates
+with \(p=dt\), these carriers can be chosen among the
+strict negative-real-time cones of DL.11.
+Thus with \(\ell=d\rho(0)\), for some \(c>0\),
+\[
+\ell(w)\ge c|w|\qquad(w\in G).
+\tag{CP.10}
+\]
+Write \(\rho=\ell+r\). On a smaller convex ball,
+\(r\) is \(\epsilon\)-Lipschitz for a fixed
+\(0<\epsilon<c/2\), by continuity of \(d\rho\).
+Extend it to all of the real vector space by
+\[
+\begin{gathered}\widetilde r(y)=\\
+\inf_{z\in B}\bigl(r(z)+\epsilon|y-z|\bigr).\end{gathered}
+\tag{CP.11}
+\]
+The Lipschitz inequality makes this equal to \(r\)
+on \(B\). The triangle inequality proves that it
+is globally \(\epsilon\)-Lipschitz. The infimum is
+finite because \(B\) is bounded and \(r\) is bounded
+there. Set \(\widetilde\rho=\ell+\widetilde r\).
+For \(\kappa=c-\epsilon>0\),
+\[
+\begin{gathered}\widetilde\rho(y+w)-\widetilde\rho(y)\\
+\ge\kappa|w|\quad(w\in G).\end{gathered}
+\tag{CP.12}
+\]
+
+For \(b>0\) small use the \(G\)-opens
+\[
+\begin{gathered}
+\Omega_b=B(0,b)+\operatorname{int}G,\\
+\Omega_{0,b}=\Omega_b\cap\{\widetilde\rho>0\},\\
+S_b=\Omega_b\setminus\Omega_{0,b}.
+\end{gathered}
+\tag{CP.13}
+\]
+The second is invariant by CP.12.
+If \(y=z+w\), \(|z|<b\), \(w\in G\), and \(y\in S_b\),
+then
+\[
+0\ge\widetilde\rho(y)\ge-Lb+\kappa|w|.
+\tag{CP.14}
+\]
+Here \(L\) is one Lipschitz bound for \(\widetilde\rho\).
+It follows that \(|y|\le Cb\), with fixed \(C\).
+Choose \(A>\|\ell\|C\).
+The linear future halfspace \(\omega_b=\{\ell>Ab\}\)
+satisfies
+\[
+\Omega_b\cap\omega_b\subset\Omega_{0,b}.
+\tag{CP.15}
+\]
+Moreover the closure of \(\Omega_b\setminus\omega_b\)
+lies in a ball of radius \(C'b\), by CP.10.
+For small \(b\) it lies strictly inside the fixed
+coefficient domain. CP.A and DL.6 therefore give
+the genuine \(E(G;D)\)-module-derived support object
+for \(S_b\), with its ordinary cohomology comparison.
+
+Choose \(C''>C'\) and
+\(W_b=\Omega_b\cap B(0,C''b)\).
+It contains \(B(0,b)\) and shrinks to zero.
+All of \(S_b\) lies in \(W_b\), and
+\(\widetilde\rho=\rho\) there for small \(b\).
+Ordinary excision consequently gives
+\[
+\begin{gathered}R\Gamma_{S_b}(\Omega_b;\mathcal O)\\
+\simeq R\Gamma_{Z\cap W_b}(W_b;\mathcal O).\end{gathered}
+\tag{CP.16}
+\]
+The \(W_b\) are cofinal ordinary neighbourhoods.
+Their filtered cohomology limit is exactly CP.9.
+Finite products, sums, relations and coordinate changes
+share one carrier and coefficient domain by DL.7.
+The support comparisons in CP.16 are the same canonical
+cup, excision and trace comparisons, so these actions
+agree at a common refinement. They define the asserted
+actual \(E_p\)-action and its unit.
+There is no distributional product with a pole and
+no fixed-neighbourhood action of every stalk germ.
+
+Let \(P^\bullet\) be a bounded finite-free actual
+operator complex with a compatible kernel representative,
+and suppose its finite microlocal localization at \(p\)
+is exact. It has a finite \(E_p\)-linear contraction
+\(h\): split the last surjection, then descend through
+the resulting projective kernels. After a common
+finite refinement its identities act on CP.16.
+The vertical-cohomology spectral complex for the finite
+Hom double complex has rows
+\[
+\operatorname{Hom}(P^\bullet,
+                   \mathcal H_Z^q(\mathcal O)_0).
+\tag{CP.17}
+\]
+Each is contracted by
+\(\phi\mapsto(-1)^{\deg\phi}\phi h\), with the exact
+total signs of DL.26.
+There are finitely many \(P\)-columns, so row
+elimination in each total degree terminates.
+Thus the local supported Hom complex is acyclic.
+No flatness of the cohomology group as an \(E_p\)-module
+is required.
+
+#### CP.C. Compact fronts and both limits
+
+We record the sheaf argument with its topology.
+Let \(\Omega_s\), \(0\le s\le1\), be increasing
+\(G\)-opens whose changing part has compact closure
+in the coefficient domain. Suppose
+\[
+\begin{gathered}
+\Omega_s=\bigcup_{r<s}\Omega_r\quad(0<s\le1),\\
+\bigcap_{r>s}\Omega_r
+          \subset\overline{\Omega_s}\quad(0\le s<1).
+\end{gathered}
+\tag{CP.18}
+\]
+Assume they are locally invariant under a common
+open cone containing \(G\setminus\{0\}\), uniformly
+near that compact carrier.
+Set
+\[
+K_s=\bigcap_{r>s}
+                 \overline{\Omega_r\setminus\Omega_s}.
+\tag{CP.19}
+\]
+These are compact subsets of
+\(\overline{\Omega_s}\setminus\Omega_s\).
+To verify the inclusion, choose a small thick
+constant cone \(H\) at a proposed front point,
+with \(G\setminus\{0\}\subset\operatorname{int}H\).
+Local invariance and membership in
+\(\overline{\Omega_r}\) put its small strict
+forward cone in every \(\Omega_r\), \(r>s\).
+CP.18 puts that cone in \(\overline{\Omega_s}\).
+An invariant open is the interior of its closure:
+a small backward shift from an interior point
+of the closure, followed by a strict forward
+shift, proves this directly.
+Taking the forward shifts to zero proves the
+claimed inclusion.
+
+At \(x\in K_s\), every ordinary neighbourhood \(U\)
+contains a neighbourhood of \(x\) in
+\((X\setminus\Omega_s)_G\).
+Here is the useful quantitative observation.
+The unit directions of \(G\) are compactly
+inside \(\operatorname{int}H\).
+Choose a short length \(\delta\) so that
+\(x+\delta(G\cap S^{2N-1})\) is in the local
+strict forward cone and in \(U\).
+A sufficiently small translation \(V\) preserves
+all these endpoints in \(\Omega_s\).
+Every longer \(G\)-ray from \(V\) is then in
+\(\Omega_s\); every shorter ray is in \(U\).
+Consequently
+\[
+(V+G)\setminus\Omega_s\subset U.
+\tag{CP.20}
+\]
+This proves both the ordinary induced topology
+on \(K_s\) and relative separation of two distinct
+front points. For \(G=\{0\}\) it is just the
+ordinary topology.
+
+Write \(Y_r=\Omega_r\setminus\Omega_s\), viewed
+as open in \(X\setminus\Omega_s\), and let \(j_r\)
+be that inclusion. For a sheaf \(L\) on the
+complement put
+\[
+T_sL=\underset{r>s}{\operatorname{colim}}\,
+                        j_{r*}j_r^{-1}L.
+\tag{CP.21}
+\]
+Its derived functor is computed on an injective
+resolution. Restriction to an open preserves
+injectives because extension by zero is exact;
+open direct image preserves injectives because
+inverse image is exact.
+
+We need compact neighbourhood continuity only on
+\(K_s\), which has its ordinary compact Hausdorff
+topology. A section over a closed subset of
+\(K_s\) is represented on one ambient neighbourhood:
+choose finitely many representatives, shrink their
+closed pieces in the compact set, and shrink the
+ambient neighbourhoods until their finitely many
+overlap identities hold. CP.20 allows these
+shrinking neighbourhoods in the cone topology
+as well. This is the finite compact gluing
+argument of DT.B.
+For an ambient injective, its flabbiness extends
+that represented section to the whole ambient
+space. Its restriction to \(K_s\) is therefore soft.
+Filtered colimits of these restrictions remain
+soft: represent the compact section at one common
+index, extend there, and pass to the colimit.
+The compact soft acyclicity proof C1–C4 used in
+DT.B
+applies on this compact Hausdorff set.
+It is not being applied on the whole cone space.
+
+Every neighbourhood of \(K_s\) contains \(Y_r\)
+for a sufficiently close \(r>s\). Otherwise the
+nested compact sets in CP.19 have a point outside
+that neighbourhood. Sections on the compact
+front commute with the filtered colimit by the
+same finite gluing argument. An injective
+resolution now gives, in every degree,
+\[
+\begin{gathered}\underset{r>s}{\operatorname{colim}}H^k(Y_r;L)\\
+\simeq H^k(K_s;RT_sL),\\
+(RT_sL)_x\\
+\simeq\underset{r>s,\ U\ni x}{\operatorname{colim}}R\Gamma(U\cap Y_r;L).\end{gathered}
+\tag{CP.22}
+\]
+For example, the first identity follows by taking
+sections of the injective complex on \(Y_r\),
+then on neighbourhoods of \(K_s\), then on
+\(K_s\). The restrictions there are soft, and
+all filtered colimits are exact.
+
+Let \(F\) be a bounded-below complex on the cone
+space, zero on \(\Omega_0\). Apply CP.22 to
+the extraordinary restriction of \(F\) to
+the closed complement of \(\Omega_s\).
+If all the local shell limits in CP.22 vanish,
+the support triangle gives
+\[
+\begin{gathered}\underset{r>s}{\operatorname{colim}}H^k(\Omega_r;F)\\
+\xrightarrow{\;\sim\;}H^k(\Omega_s;F).\end{gathered}
+\tag{CP.23}
+\]
+
+The other limit has a separate proof. For an
+increasing countable open cover \(U_j\) of \(U\),
+resolve \(F\) by injectives \(I^\bullet\).
+The complex sequence
+\[
+\begin{gathered}0\longrightarrow\Gamma(U;I^\bullet)\\
+\longrightarrow\prod_j\Gamma(U_j;I^\bullet)\\
+\xrightarrow{\,1-\mathrm{shift}\,}\prod_j\Gamma(U_j;I^\bullet)\\
+\longrightarrow0.\end{gathered}
+\tag{CP.24}
+\]
+is exact. The kernel equality is ordinary sheaf
+gluing. Surjectivity in each degree follows
+recursively from flabby restriction: after
+choosing one component, lift its prescribed
+difference to the next component.
+The long exact sequence gives
+\[
+\begin{gathered}0\to\lim\nolimits^1 H^{k-1}(U_j;F)\\
+\to H^k(U;F)\\
+\to\lim H^k(U_j;F)\to0.\end{gathered}
+\tag{CP.25}
+\]
+Only the case where the lower-degree restriction
+maps are already isomorphisms will be used.
+For that case \(1-\mathrm{shift}\) on their
+product is surjective by the same recursion,
+so its cokernel \(\lim^1\) is zero.
+No general Mittag–Leffler premise is omitted.
+
+Here is the elementary ordered-group argument.
+For a family \(V_s\) with the right continuity
+CP.23 and left inverse-limit continuity, first
+fix \(w\in V_b\) whose restriction to \(V_a\)
+is zero. The set of times where it is zero is
+an initial interval. Left continuity includes
+its supremum, and right direct-limit injectivity
+extends it to the right unless the endpoint
+has been reached. Thus every restriction is
+injective.
+Regard all \(V_s\) as nested subgroups of \(V_a\).
+Left continuity takes intersections at limit
+times; right continuity says every element at
+a time occurs in a slightly later subgroup.
+For a fixed element its membership times again
+form an initial interval closed at its supremum
+and extendible to the right. It therefore
+belongs to \(V_b\). All restrictions are
+isomorphisms.
+
+Induct on cohomological degree starting below
+the bound for \(F\). A countable sequence of
+times increasing to \(s\), CP.18 and CP.25
+give the left continuity in that degree,
+because the lower-degree groups are already
+constant. CP.23 and the ordered-group
+argument make the degree constant as well.
+Its initial value is zero on \(\Omega_0\).
+Hence
+\[
+\begin{gathered}R\Gamma(\Omega_s;F)=0\\
+(0\le s\le1).\end{gathered}
+\tag{CP.26}
+\]
+This is the compact-front criterion.
+
+#### CP.D. Rounded convex wedges
+
+Let \(K\) be a proper closed convex cone with
+interior, let \(\ell>0\) on \(K\setminus\{0\}\),
+and choose \(v\in\operatorname{int}K\) with
+\(\ell(v)=1\). Keep a nonzero operator carrier
+\(G\) with
+\(G\setminus\{0\}\subset\operatorname{int}K\).
+It is \(G\) that defines the initial module
+topology and the finite kernel representatives.
+Put
+\[
+\begin{gathered}\Omega=\operatorname{int}K,\\
+\omega=\Omega\cap\{\ell>1\}.\end{gathered}
+\tag{CP.27}
+\]
+Assume the closed cap \(K\cap\{\ell\le1\}\)
+is compactly inside the coefficient domain.
+Let \(P^\bullet\) be a bounded finite-free
+actual-operator complex over the \(G\)-kernel
+ring, whose localization
+is exact at all nonzero covectors in the
+negative polar of \(K\), above this cap.
+Then its supported Hom object for
+\(\Omega\setminus\omega\) vanishes.
+
+We give the rounded fronts used to prove it.
+The nearest point \(\pi_K(x)\) exists and is
+unique: bounded minimizing sequences have
+convergent subsequences, and the midpoint
+identity gives uniqueness.
+Its variational inequality is
+\[
+\begin{gathered}\langle x-\pi_K(x),z-\pi_K(x)\rangle\\
+\le0\quad(z\in K).\end{gathered}
+\tag{CP.28}
+\]
+Applying it twice gives
+\(|\pi_K(x)-\pi_K(y)|\le|x-y|\).
+Expanding the two squared distances, once
+using \(\pi_K(x)\) and once \(\pi_K(x+h)\),
+therefore proves
+\[
+\begin{gathered}d\,\operatorname{dist}(x,K)^2\\
+=2(x-\pi_K(x)).\end{gathered}
+\tag{CP.29}
+\]
+The squared distance is \(C^1\); the distance
+itself is \(C^1\) off \(K\).
+For a cone, CP.28 also gives
+\(\langle x-\pi_K(x),\pi_K(x)\rangle=0\)
+and puts the distance gradient in the negative
+polar of \(K\). Its pairing with the interior
+vector \(v\) is strictly negative.
+
+For \(\epsilon>0\), use the downward-closed
+open subset of \(\mathbf R^2\)
+\[
+\begin{gathered}U_\epsilon=\\
+\{a<0\}\cup\{b<\epsilon\}\\
+\cup\left\{\begin{gathered}0\le a<\epsilon,\\
+0\le b<2\epsilon,\\
+(\epsilon-a)^2+(2\epsilon-b)^2\\
+{}>\epsilon^2\end{gathered}\right\}.\end{gathered}
+\tag{CP.30}
+\]
+Its boundary is the ray \(a=0,\ b\ge2\epsilon\),
+the ray \(b=\epsilon,\ a\ge\epsilon\), and
+the intervening quarter circle.
+Their tangent lines agree at both joins,
+so the boundary is \(C^1\).
+
+Set
+\[
+\begin{gathered}\delta_s(x)=\\
+\operatorname{dist}(x-(1-s)v,K),\\
+\Omega_{\epsilon,s}=\{x\in\Omega:\\
+(1-\ell(x),\delta_s(x))\in U_\epsilon\}.\end{gathered}
+\tag{CP.31}
+\]
+These opens contain \(\omega\), increase with
+\(s\), and are invariant by \(K\).
+Indeed adding a vector of \(K\) decreases
+both coordinates in CP.30.
+For sufficiently negative \(s\) they equal
+\(\omega\). The reason is that, on
+\(\ell\le1\), a point within \(2\epsilon\)
+of \((1-s)v+K\) would have
+\(1-s\le1+2\epsilon\|\ell\|\).
+
+Put \(r=\operatorname{dist}(v,\partial K)>0\).
+The ball of radius \(r(1-s)\) about every
+point of \((1-s)v+K\) lies in \(K\).
+Thus
+\[
+2\epsilon<r(1-s)
+\tag{CP.32}
+\]
+makes the whole changing front lie strictly
+inside \(\Omega\). Its cap is compact.
+On an active front \(\delta_s\ge\epsilon\),
+so the distance is \(C^1\).
+Its outward conormal is a nonzero
+nonnegative combination of
+\(-d\ell\) and \(d\delta_s\), including
+the two joined rays.
+Both are in the negative polar of \(K\)
+and pair strictly negatively with \(v\).
+The conormal consequently stays in that
+negative polar and is never zero.
+
+Distance to the translated cone decreases
+strictly as \(s\) increases wherever it is
+positive. For example CP.29 and the strictly
+negative gradient pairing with \(v\)
+prove this along each such interval.
+Together with the downward property of
+CP.30, this proves CP.18 for these fronts.
+It also proves
+\[
+\begin{gathered}\overline{\Omega_{\epsilon,s_1}\setminus\Omega_{\epsilon,s_0}}\\
+\subset\Omega_{\epsilon,s_2}\\
+(s_0<s_1<s_2).\end{gathered}
+\tag{CP.33}
+\]
+in the changing cap. At the quarter-circle
+joins use continuity and the same strict
+distance decrease; the fixed halfspace
+part is already in every open.
+In particular each compact front point
+is in every later open.
+
+Apply CP.C in the \(G\)-topology to the
+supported Hom object for \(\Omega\setminus\omega\).
+The opens are invariant under the open cone
+\(\operatorname{int}K\), which contains the
+entire nonzero operator carrier \(G\).
+This strict inclusion is the uniformity
+hypothesis needed in CP.20.
+At an active front the local shell is
+the ordinary \(C^1\) boundary support:
+all later opens contain an ordinary
+neighbourhood of that point, by CP.33.
+The finite Hom and support identities of
+DL.6 identify its local shell limit with
+CP.17. Its outward covector lies in the
+negative polar where the complex is
+exact, so CP.B kills that limit.
+The initial supported object is zero on
+\(\omega\). CP.26 proves vanishing on
+each \(\Omega_{\epsilon,s}\) satisfying
+CP.32.
+
+Finally choose \(c>4/r\), let
+\(\epsilon_{j+1}=\epsilon_j/2\), and set
+\(s_j=1-c\epsilon_j\).
+They satisfy CP.32.
+The displacement
+\((c\epsilon_j-c\epsilon_{j+1})v\)
+has an interior-cone radius
+\(rc\epsilon_j/2>2\epsilon_j\).
+It therefore absorbs the full
+\(2\epsilon_j\)-tube of the earlier
+translated cone into the later cone.
+Consequently
+\[
+\begin{gathered}\Omega_{\epsilon_j,s_j}\subset\Omega_{\epsilon_{j+1},s_{j+1}},\\
+\bigcup_j\Omega_{\epsilon_j,s_j}=\Omega.\end{gathered}
+\tag{CP.34}
+\]
+Every interior point eventually lies
+in the translated cone itself, proving
+the union assertion.
+All cohomology groups on these opens
+are zero. CP.24–CP.25, now with zero
+groups, give vanishing on \(\Omega\).
+
+This is also sheaf vanishing for the
+complex obtained by CP.7's change to the
+\(K\)-kernel ring. For clarity, first
+keep the \(G\)-module support object and
+push it by the identity map of cone spaces
+\(q:\Omega_G\to\Omega_K\). The ordinary
+comparison and cone-change roof of DL.6
+and DLG.7 identify this derived pushforward
+with the \(K\)-support object, after finite
+free Hom with the scalar-extended matrices.
+They identify each matrix action by the
+same kernel cup and trace; this uses the
+full cube, not a surjectivity assertion
+about finite symbols. Every translated cone
+inside \(\Omega\), with the same linear
+future halfspace, has a smaller cap
+inside the given one, or has empty
+cap. The identical proof applies.
+Its cohomology is the just-proved ordinary
+cohomology of the \(G\)-object on that open.
+Those cones are a cofinal \(K\)-basis, so
+the cohomology stalks of the supported
+Hom object all vanish.
+
+#### CP.E. A variable-cone shell
+
+An ordinary open is flat for an open convex cone
+field \(Q\) if it is locally invariant under every
+fixed smaller closed cone whose nonzero directions
+lie in \(Q\). A locally closed set is \(Q\)-flat
+if locally it is a difference of two such opens.
+Every segment below stays in the neighbourhood
+in which this invariance is asserted.
+
+Consider a family as in CP.C. Fix \(s<t\),
+a front point \(x\in K_s\), and put
+\[
+Y=\Omega_t\setminus\Omega_s .
+\tag{CP.35}
+\]
+Suppose \(Y\) is \(Q\)-flat near \(x\),
+\(Q(x)\) lies in a strictly positive
+linear halfspace, and
+\(G\setminus\{0\}\subset Q(x)\).
+Assume the localized finite complex is exact
+at the base point \(x\) for every nonzero real
+covector strictly negative on \(Q(x)\).
+Then the local shell limit required in CP.22
+is zero in every degree.
+
+Choose proper closed thick cones
+\[
+\begin{gathered}G\setminus\{0\}\subset\operatorname{int}K_0,\\
+K_0\setminus\{0\}\subset\operatorname{int}K_1,\\
+K_1\setminus\{0\}\subset Q(x).\end{gathered}
+\tag{CP.36}
+\]
+such that exactness holds above one neighbourhood
+\(U\) at all nonzero covectors in \(K_0^-\).
+Here is the compactness argument for this choice.
+Exhaust \(Q(x)\) by increasing closed inner cones
+containing the compact unit directions of \(G\)
+in their interiors. Their unit negative polars
+decrease to the unit negative polar of \(Q(x)\).
+For an open full-dimensional cone, a nonzero
+covector nonpositive on its closure is strictly
+negative at every interior point: equality there
+would allow a small perturbation on which it
+is positive. The limiting unit covectors
+therefore lie in the open exactness locus.
+Nested compactness puts one whole inner-cone
+polar in that locus. Enlarge that inner cone
+slightly inside \(Q(x)\) to obtain \(K_1\).
+A finite cover of the compact unit polar,
+with finite actual contraction representatives,
+gives one base neighbourhood \(U\).
+Shrink it so that \(K_1\setminus\{0\}\subset Q(y)\)
+throughout. There is also a fixed thick cone
+inside both the original front-invariance field
+and \(\operatorname{int}K_1\), containing all
+nonzero directions of \(G\).
+
+If \(x\notin\overline Y\), the shell is locally
+empty. Otherwise write \(Y=V_1\setminus V_0\)
+on a smaller \(K_1\)-round neighbourhood \(U\),
+with \(V_0\subset V_1\) locally invariant.
+We have
+\[
+\begin{gathered}x\in\overline{V_0},\\
+(x+\operatorname{int}K_1)\cap U\subset V_0.\end{gathered}
+\tag{CP.37}
+\]
+If \(x\in V_1\), approach it by points of
+\(\Omega_s\); those in \(V_1\) are in \(V_0\).
+If \(x\notin V_1\), its strict forward cone
+for the shared smaller cone is in \(\Omega_s\),
+by CP.C, and in \(V_1\), because
+\(x\in\overline Y\subset\overline{V_1}\).
+It is consequently in \(V_0\) and approaches
+\(x\). A small perturbation of a strict
+forward segment and local invariance of
+\(V_0\) prove the second assertion of CP.37.
+
+For \(y\) close to \(x\), put
+\(V=y+\operatorname{int}K_0\).
+The set \(Y\cap U\cap V\) lies in any
+prescribed smaller ordinary neighbourhood
+\(W\) of \(x\). Indeed choose a short length
+\(\delta\). The compact set
+\(x+\delta(K_0\cap S^{2N-1})\) is strictly
+inside \(V_0\), by CP.36–CP.37. This remains
+true after a small translation of \(x\).
+Every longer ray, while in the round \(U\),
+then stays in \(V_0\) and avoids \(Y\).
+Shorter rays remain in \(W\). Choose
+\(\overline W\Subset U\); the closure of
+the intersection is then compactly inside \(U\).
+
+Choose a linear functional positive on \(K_0\)
+and a future halfspace \(\omega\) with
+\[
+\begin{gathered}B=V\setminus\omega,\\
+\overline B\Subset U,\\
+x\in\operatorname{int}B.\end{gathered}
+\tag{CP.38}
+\]
+Take \(y\in x-\operatorname{int}K_0\)
+close to \(x\), with the cut a small positive
+distance beyond \(x\). Bound CP.6 makes the
+whole cap small. Choose \(W\) inside the
+interior of this cap, and then move \(y\)
+closer while retaining the cut. It follows that
+\[
+\begin{gathered}C=Y\cap U\cap V=Y\cap B,\\
+\overline C\Subset U.\end{gathered}
+\tag{CP.39}
+\]
+All these caps lie in a common smaller round
+coefficient domain for CP.7.
+
+The set \(C\) is actually locally closed in
+\(V_{K_0}\). This does not follow just from
+ordinary compactness; complete the opens:
+\[
+\begin{gathered}A_i=(V_i\cap U\cap V)+K_0,\\ i=0,1.\end{gathered}
+\tag{CP.40}
+\]
+They are ordinary open and \(K_0\)-invariant.
+Their restrictions to \(U\cap V\) are exactly
+the original ones, since a segment with both
+endpoints in the round \(U\) stays there.
+No difference remains outside \(U\). A
+forward ray starting in \(V_1\setminus V_0\)
+must leave that difference before leaving
+\(U\), since \(\overline C\Subset U\).
+It cannot leave \(V_1\) while in \(U\),
+so it enters \(V_0\). Its remaining forward
+ray lies in \(A_0\). Thus
+\(A_1\setminus A_0=C\), as required.
+
+Push the finite kernel matrices to the
+\(K_0\)-carrier by CP.7. CP.D gives
+\[
+\begin{gathered}R\mathcal Hom\bigl(P^\bullet,\\
+R\Gamma_B(q_{K_0*}\mathcal O|_V)\bigr)=0\\
+\text{on }V_{K_0}.\end{gathered}
+\tag{CP.41}
+\]
+Apply derived support in \(C\) to this zero
+object. The exact support identity is
+\[
+\begin{gathered}R\Gamma_C R\Gamma_B=R\Gamma_C,\\ C\subset B.\end{gathered}
+\tag{CP.42}
+\]
+For closed supports it is the literal
+identity on injectives. For a difference
+of opens it is the finite relative support
+cube of DL.6 and DLG.3. Equivalently, the
+constant sheaf extended by zero from \(C\),
+tensored over \(\mathbf C\) with the one
+extended by zero from \(B\), is that same
+sheaf on \(C\); their Hom adjunction is
+CP.42. Finite free Hom commutes with the
+cube term by term. The ordinary comparison
+of CP.A and DL.6 now gives
+\[
+\begin{gathered}R\operatorname{Hom}\bigl(P^\bullet,\\
+R\Gamma_C(V;\mathcal O)\bigr)=0.\end{gathered}
+\tag{CP.43}
+\]
+These comparisons are canonical kernel cup,
+controlled excision and proper trace on a
+common collar. Arbitrary restriction of a
+proper source support is not being assumed.
+
+Locally closed support depends only on an
+open neighbourhood of that set. Extension
+by zero of its constant sheaf and open
+adjunction prove this excision; the relative
+support cube gives the same map. Apply it
+to the ordinary open \(U\cap V\cap\Omega_t\),
+which contains \(C\). The set \(C\) is
+closed there and is its complement of
+\(\Omega_s\). Thus CP.43 is the precise
+supported Hom for the local shell there.
+As \(U\) shrinks and \(y\) approaches
+\(x\) from behind, \(U\cap V\) is a
+cofinal system of ordinary neighbourhoods
+of \(x\). This proves the local shell limit
+vanishing in every degree.
+
+#### CP.F. Propagation with an actual ray carrier
+
+Fix a nonzero proper closed convex carrier
+\(G\), a round coefficient domain \(D\),
+and a bounded finite-free compatible actual
+operator complex \(P^\bullet\) over its
+canonical kernel ring. Every point of
+\(D\) has a sufficiently small round
+neighbourhood \(U\) with the following property.
+
+Let \(\Omega_0\subset\Omega_1\) be ordinary
+opens, with
+\[
+\begin{gathered}Z=\Omega_1\setminus\Omega_0,\\ K=\overline Z\Subset U.\end{gathered}
+\tag{CP.44}
+\]
+Suppose both opens are flat on \(U\) for
+an open convex cone field \(R\) containing
+\(G\setminus\{0\}\). Suppose there are
+an open convex cone field \(Q\) and a real
+\(C^1\) function \(\chi\) near \(K\), with
+\[
+\begin{gathered}G\setminus\{0\}\subset Q(x),\\
+d\chi(x)(w)>0\\
+(w\in Q(x)),\\
+Z\text{ is }Q\text{-flat near }K.\end{gathered}
+\tag{CP.45}
+\]
+Assume that at every \(x\in K\) the
+localized complex is exact at each nonzero
+covector strictly negative on \(Q(x)\).
+Then
+\[
+\begin{gathered}R\operatorname{Hom}\bigl(P^\bullet,\\
+R\Gamma_Z(\Omega_1;\mathcal O)\bigr)=0.\end{gathered}
+\tag{CP.46}
+\]
+The acyclicity hypothesis is on the closed
+carrier \(K\); it requires no unrelated
+base points.
+
+First justify the actual module object
+for the locally flat pair. Choose a proper
+thick cone \(H\) containing the nonzero
+directions of \(G\) in its interior and
+lying in both fields near \(K\).
+It can be chosen so close to \(G\) that
+all order diamonds between points of a
+small thickening of \(K\) lie in \(U\).
+Indeed use decreasing closed thick cones
+approaching \(G\), inside one fixed proper
+thick cone. Diamonds of a compact endpoint
+set are closed and bounded by a positive
+functional on that fixed cone. Their
+intersection is the \(G\)-diamond set,
+inside the \(G\)-round \(U\). Nested
+compactness allows first a small endpoint
+thickening and then a sufficiently close
+\(H\). The interior of this diamond hull
+is an \(H\)-round neighbourhood \(U_1\)
+of \(K\), compactly inside \(U\): an
+interval between two hull points remains
+between a pair of the original endpoints.
+
+The set \(Z\) is order-convex there.
+For \(z,z'\in Z\) and
+\(z\le_H y\le_H z'\), forward invariance
+puts \(y\) in \(\Omega_1\); if it were
+in \(\Omega_0\), so would be \(z'\).
+Put
+\[
+\begin{gathered}A=Z+H,\\
+B=A\setminus Z.\end{gathered}
+\tag{CP.47}
+\]
+Both are global \(H\)-opens, with difference
+exactly \(Z\). For openness of \(A\),
+fix \(v\in G\setminus\{0\}\).
+Every \(z\in Z\) has a small backward
+shift \(z-\epsilon v\) in
+\(\operatorname{int}Z\). It is in
+\(\Omega_1\) by openness. A small ball
+there cannot meet \(\Omega_0\): its strict
+forward segments to \(z\) lie in \(R\)
+and would force \(z\in\Omega_0\).
+This interior point and its forward
+translate give an ordinary neighbourhood
+of every point of \(A\).
+On \(U_1\), forward invariance gives
+\(A\subset\Omega_1\), and hence
+\(B=A\cap\Omega_0\). Outside \(K\) the
+difference \(Z\) is absent. These observations
+prove that \(B\) is open. If a forward
+translate of a point of \(B\) were in
+\(Z\), order-convexity between its
+original point in \(Z\) and that endpoint
+would put the intermediate point in
+\(Z\), a contradiction. Thus \(B+H\subset B\).
+
+We have \(A\subset U+H\). A linear
+future halfspace beyond \(K\) makes its
+complementary cap compactly inside \(D\)
+when the original \(U\) is small enough.
+This is uniform for \(H\) in the fixed
+proper thick cone: CP.6 bounds the cap
+by a constant times the diameter of \(U\).
+CP.A and DL.6 give the actual module-derived
+object for \(A\setminus B=Z\), including
+the case of a single ray \(G\).
+Excision on the common open neighbourhood
+\(A\cap\Omega_1\) of \(Z\) identifies
+its underlying supported cohomology with
+the original one in CP.46.
+
+Rescale \(\chi\) by a positive affine
+map so that \(0<\chi<1\) on \(K\).
+Let \(N\) be its open neighbourhood
+of definition, containing \(K\).
+Only its values on \(Z\) matter.
+Use the superlevel sweep
+\[
+\begin{gathered}A_s=B\cup\\
+\bigl(A\cap N\cap\{\chi>1-s\}\bigr),\\
+0\le s\le1.\end{gathered}
+\tag{CP.48}
+\]
+Its initial open is \(B\); its final
+open is \(A\). It is \(H\)-invariant.
+If the endpoints of a forward segment
+are in \(Z\), order-convexity keeps
+the segment there and \(\chi\) increases.
+An endpoint in \(B\) is already in
+every \(A_s\). The left union condition
+CP.18 follows from the strict superlevel.
+At a level boundary, small strict forward
+shifts either increase \(\chi\) or enter
+\(B\); hence the right intersection lies
+in the closure of the current open.
+The changing carrier is in \(K\) and
+all opens have the uniform local invariance
+cone \(\operatorname{int}H\).
+
+Every shell is \(Q\)-flat. Locally write
+\(Z=V_1\setminus V_0\); then
+\[
+\begin{gathered}
+c_u=1-u,\\
+A_t\setminus A_s\\
+=Z\cap\{c_t<\chi\le c_s\}\\
+=(V_1\cap\{\chi>c_t\})\\
+\setminus(V_0\cup\{\chi>c_s\}).
+\end{gathered}
+\tag{CP.49}
+\]
+Superlevels are locally forward invariant
+by CP.45; intersections and unions preserve
+that property. CP.E applies at every compact
+front point. Its exactness premise is the
+assumption over \(K\), with an actual
+neighbourhood for each compact polar as
+proved there. All local shell limits
+vanish. The supported object is zero on
+\(B\), so CP.C gives CP.46 in every degree.
+
+#### CP.G. Whole generic-position complexes and calibrations
+
+The theorem applies to the actual bounded
+generic-position complex for every coherent
+holonomic germ. The precise inputs are
+§5.31, L.4–L.6
+and §5.49, ISF.3–ISF.4 and ISR.5.
+Its polynomial matrices have one common
+base neighbourhood. L.6 proves exactness
+in positive degrees on the entire
+\(\tau\ne0\) chart and identifies degree-zero
+cohomology with the whole realized module.
+Every normalized covector of its support
+is bounded there, including all singular
+branches. ISF.3–ISF.4 give the actual
+special-kernel representatives, their
+products and finite differential identities:
+uniform finite spatial polynomial degree
+is in that special class. Its carrier is
+the negative real-time ray. The strict
+negative polar of that ray has
+\(\operatorname{Re}\tau>0\), hence \(\tau\ne0\).
+
+Thus CP.46 holds for this whole complex
+whenever the pair in CP.44–CP.45 has its
+nonzero negative covectors disjoint from
+the realized characteristic support over
+the closed changing carrier. Positive-degree
+exactness is L.6; degree-zero vanishing
+is exactly the stated support condition.
+No exactness over the polynomial coefficient
+ring is required. Nor is an arbitrary
+finite microlocal symbol asserted to be
+special; ISF.10 gives the contrary example.
+
+Here is an exact real section of the
+rounded geometry. Write
+\(X=-\operatorname{Re}t\),
+\(Y=\operatorname{Im}t\), and take
+\[
+\begin{gathered}K=\{(X,Y):X\ge2|Y|\},\\
+\ell(X,Y)=X,\quad v=(1,0),\\
+r=1/\sqrt5,\quad c=16,\\
+\epsilon\in\{1/20,1/40,1/80\},\\
+1-s=16\epsilon.\end{gathered}
+\tag{CP.50}
+\]
+The strict bound \(c>4/r\) follows by
+squaring the positive numbers. For
+\(q=(X-16\epsilon,Y)\), the squared distance
+in CP.31 is zero if \(q\in K\), and
+otherwise is exactly
+\[
+\begin{gathered}M(q)=\max\{0,\\
+2q_X+q_Y,\ 2q_X-q_Y\},\\
+|q|^2-M(q)^2/5.\end{gathered}
+\tag{CP.51}
+\]
+The two boundary rays have unit directions
+\((2,1)/\sqrt5\) and \((2,-1)/\sqrt5\).
+Projection on a ray uses its positive scalar
+projection; the nearer ray gives CP.51.
+The quarter-circle joins are exact: its
+normal at \((0,2\epsilon)\) is horizontal,
+and its normal at \((\epsilon,\epsilon)\)
+is vertical, matching the straight pieces.
+
+![Rounded quadrant and nested noncharacteristic fronts](assets/complex-propagation.png)
+
+**Figure CP.1.** Upper panel: the exact scaled boundary of
+CP.30 has centre \((1,2)\), radius one and the two
+matching normal directions. The shaded open is
+the side of decreasing coordinates. Lower panel: the
+real section CP.50 uses CP.51's squared distance;
+the three sampled regions are nested in the order
+proved in CP.34. The sloping cone boundary is
+excluded. The dashed line is \(\ell=1\), the
+boundary of the initial future open; the rounded
+opens may include parts of this line. The colour regions
+are a grid rendering of those formulas, not a
+numerical proof. CP.B–CP.F prove propagation on
+the full complex domain with its actual operators.
+Free human sources: [Kashiwara–Schapira, §4](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf)
+and [Kashiwara–Kawai, IV.4.4](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf).
+
+The ordinary cohomology, finite actual
+operators and closed-carrier quantifiers
+are part of CP.46. Common finite-dimensional
+determination of continued solutions,
+separation of singular holonomic germs
+and faithful D-type embedding require
+additional arguments.
+
+Free further reading: Kashiwara–Schapira,
+[Micro-hyperbolic systems, §4](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/Microhyp.pdf),
+and Kashiwara–Kawai,
+[Holonomic systems III, IV.4.4](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf).
+
+
+### 5.81. Transverse local systems of actual holonomic solution complexes
+
+Put \(X=\mathbf C_t\times\mathbf C_x^n\),
+\(F(t,x)=x\), and write \(u=-\operatorname{Re}t\).
+Put \(z=(\operatorname{Im}t,x)\) and \(|z|=|\operatorname{Im}t|+|x|\). The carrier and its thick approximations are
+\[
+\begin{gathered}G_0=\{u\ge0,\ z=0\},\\
+G_b=\{u\ge b|z|\},\\ b>0.\end{gathered}
+\tag{CS.1}
+\]
+The norm on \(\mathbf C^n\) is Euclidean.
+For the real vector collecting imaginary time
+and spatial coordinates use the sum norm in
+CS.1. The transverse argument below assumes
+\(n\ge1\); when \(n=0\), pair independence
+still holds and local constancy on the
+one-point base is immediate.
+All opens called cone-open are also ordinary open.
+The map from the ordinary topology to the
+\(G_0\)-topology is \(q\).
+
+Fix a bounded finite-free complex \(P^\bullet\)
+over the canonical ring \(R=E(G_0;D)\), with
+the compatible actual finite operator matrices
+specified in §5.80, CP.B and CP.G.
+Let \(A\) be its degree-zero actual support on
+the chart \(\tau\ne0\). Assume its actual
+complex has no cohomology in degrees
+other than zero there, and that
+\[
+\begin{gathered}A\subset\{|\xi|\le|\tau|\},\\
+S=\overline{\pi(A)}.\end{gathered}
+\tag{CS.2}
+\]
+In particular its actual complex is exact
+over a base point outside \(S\).
+These hypotheses hold for the whole
+generic-position complex of
+§5.31, L.4–L.6:
+choose the normalized-covector bound there
+smaller than \(1/\sqrt n\) when \(n>0\).
+Its special thin-ray kernel representatives
+and their finite differential identities
+are §5.49, ISF.3–ISF.4.
+Localization below means these actual
+finite matrices, with their canonical kernel
+comparison; an arbitrary canonical kernel
+is not assigned a finite symbol.
+
+The distinguished base point is zero.
+Choose the small round neighbourhood \(U\)
+of CP.F and a positive number \(e\) with
+\[
+\begin{gathered}
+\overline U\subset
+ \{|\operatorname{Re}t|<e\},\\
+\overline{(U+G_0)\cap\{u\le e\}}\Subset D.
+\end{gathered}
+\tag{CS.3}
+\]
+All changing carriers have compact closure
+inside \(U\). The supported module-derived
+objects and their ordinary-cohomology
+comparison are the actual ones of CP.A,
+DL.6 and DLG.7. Finite free Hom commutes
+with their support cubes and comparisons.
+Both conditions in CS.3 can be arranged:
+take \(U\subset B(0,r_0)\),
+\(e=2r_0\), and \(B(0,3r_0)\Subset D\).
+The truncated ray cone has norm less
+than \(\sqrt5r_0<3r_0\).
+On the common ray-open completion
+\((U+G_0)\cup\{u>e\}\), its auxiliary
+cap is therefore compactly inside the
+one coefficient domain. Intersecting
+this completion with any source open
+is ordinary excision around every
+carrier in \(U\). The support functors
+on one auxiliary module resolution
+realize all the transition maps below.
+No coefficient domain is changed with
+the index of an inverse-limit family.
+There is no growth condition on the
+holomorphic functions at an open boundary.
+
+#### CS.A. Arbitrary ray-open supports away from the projection
+
+For \(G_0\)-opens \(\Omega_0\subset\Omega_1\),
+put
+\[
+\begin{gathered}Z=\Omega_1\setminus\Omega_0,\\
+K=\overline Z\Subset U,\\
+\mathscr H_{\Omega_1,\Omega_0}\\
+=R\mathcal Hom_R\bigl(P^\bullet,\\
+R\Gamma_Z(q_*\mathcal O|_{\Omega_1})\bigr).\end{gathered}
+\tag{CS.4}
+\]
+If \(K\cap S=\varnothing\), then
+\(\mathscr H_{\Omega_1,\Omega_0}=0\).
+Consequently its ordinary global supported
+Hom vanishes in every degree.
+The condition concerns the closed carrier
+\(K\), including its boundary.
+
+Let \(E=\{u>e\}\). Adding \(E\) to both
+opens leaves \(Z\) unchanged, by CS.3.
+Excision identifies the module objects:
+use the common ordinary open containing
+\(Z\) and the identical support cube.
+Thus assume \(E\subset\Omega_0\).
+
+The relative neighbourhoods relevant to
+a point of \(Z\) have a basis represented by
+\[
+\begin{gathered}V=(B_\delta(y)+G_a)\cup E,\\
+V\subset\Omega_1.\end{gathered}
+\tag{CS.5}
+\]
+for sufficiently small \(\delta\) and large
+\(a\). Indeed a small closed ball about
+\(y\), followed by its \(G_0\)-rays up to
+the future level \(u=e+1\), is compactly
+in any given \(G_0\)-open neighbourhood.
+The corresponding truncated \(G_a\)-cones
+decrease to these rays as \(a\) increases;
+compactness puts one of them in that
+neighbourhood. All further points are in
+\(E\). Adding \(E\) does not affect the
+supported object, which is zero there.
+This proves the required cofinality for
+its cohomology stalks.
+
+Fix such a \(V\). For \(b\ge a\) define
+\[
+\Omega_0(b)=
+ \{y:y+G_b\subset\Omega_0\}.
+\tag{CS.6}
+\]
+It is \(G_b\)-invariant and contains
+\(E\). It is ordinary open: truncate the
+forward cone at \(u=e+1\); this compact
+part has a positive neighbourhood margin
+inside \(\Omega_0\). A small translation
+retains that margin, and the remaining
+tail stays in \(E\).
+The opens increase to \(\Omega_0\).
+For any \(y\in\Omega_0\), its truncated
+\(G_0\)-ray is compactly in \(\Omega_0\).
+The decreasing compact truncated cones
+put \(y+G_b\) there for sufficiently
+large \(b\), and the rest is again in
+\(E\).
+
+The stronger closure statement is
+\[
+\bigcap_{b\ge a}
+ \overline{V\setminus\Omega_0(b)}
+=\overline{V\setminus\Omega_0}.
+\tag{CS.7}
+\]
+All the sets on the left are compact:
+they lie in the truncation \(u\le e\)
+of CS.5, which is bounded.
+One inclusion is immediate from
+\(\Omega_0(b)\subset\Omega_0\).
+For the other, let \(p\) be outside
+the closure on the right. Choose an
+ordinary neighbourhood \(N\) with
+\(V\cap N\subset\Omega_0\), and shrink
+to \(N'\) about \(p\).
+
+Here is the uniform cone estimate.
+Write a cone vector as \((s,w)\), where
+\(s\) is its \(u\)-component and the
+norm of \(w\) is the sum norm in CS.1. For
+\(y\in N'\), a target point not in \(E\)
+has \(s\le M\) for one fixed \(M\).
+Choose a small \(d>0\) and then
+\(b\) with \(aM/b<d\). Decompose
+\[
+\begin{gathered}(s,w)=(\min(s,d),w)\\
+{}+(s-\min(s,d),0).\end{gathered}
+\tag{CS.8}
+\]
+The first vector is in \(G_a\): for
+\(s\le d\) use \(b\ge a\); for
+\(s>d\) use \(a|w|\le aM/b<d\).
+It is small enough that its translate
+of \(N'\) lies in \(N\).
+The second vector lies in \(G_0\).
+Thus a point of \(V\cap N'\) first
+moves to \(V\cap N\subset\Omega_0\),
+then stays in \(\Omega_0\) along the
+remaining ray. Targets in \(E\) need
+no estimate. This proves
+\(V\cap N'\subset\Omega_0(b)\), excluding
+\(p\) from the left side of CS.7.
+
+The compact sets in CS.7 therefore lie
+in \(U\setminus S\) for all sufficiently
+large \(b\). Apply CP.F to the two
+\(G_b\)-opens \(V\) and
+\(V\cap\Omega_0(b)\), using the original
+operator carrier \(G_0\), the constant
+fields \(R=Q=\operatorname{int}G_b\),
+and time function \(u\).
+Their negative covectors have
+\(\operatorname{Re}\tau>0\), hence
+\(\tau\ne0\), and their base points
+are outside \(S\). All localized
+actual complexes are consequently
+exact. We obtain
+\[
+\begin{gathered}R\operatorname{Hom}_R\bigl(P^\bullet,\\
+R\Gamma_{V\setminus\Omega_0(b)}(V;\mathcal O)\bigr)=0.\end{gathered}
+\tag{CS.9}
+\]
+
+To pass to the limit, take an increasing
+sequence \(b_j\to\infty\).
+Use the support triangle on \(V\)
+and the explicit injective-resolution
+sequence CP.24 for the increasing
+opens \(V\cap\Omega_0(b_j)\).
+Finite free Hom commutes with its
+products and cones. This identifies
+the supported complex for
+\(V\setminus\Omega_0\) with the
+derived inverse limit of those in
+CS.9. Both its inverse-limit and
+its degree-one-limit term vanish:
+on the zero cohomology groups the
+map \(1-\mathrm{shift}\) is surjective.
+It is zero in every degree.
+The basis CS.5 now kills all the
+cohomology stalks of CS.4, proving
+the assertion. This is an inverse-limit
+argument, not an assumed interchange
+of sections with a filtered colimit.
+
+#### CS.B. Independence of the support pair
+
+Let \(W\subset\mathbf C^n\) be open,
+and assume in addition to CS.4 that
+\[
+S\cap F^{-1}(W)
+ \subset\Omega_1\setminus\overline{\Omega_0}.
+\tag{CS.10}
+\]
+The complex
+\[
+\mathscr L=
+ R(F|_{\Omega_1})_*
+       \mathscr H_{\Omega_1,\Omega_0}|_W
+\tag{CS.11}
+\]
+is independent, by canonical derived
+isomorphisms, of the pair satisfying
+these conditions. The map \(F\) is
+continuous for the cone topology:
+the inverse image of an ordinary
+base open is invariant by \(G_0\).
+
+It suffices to compare over relatively
+compact open subsets \(W'\Subset W\).
+The closed parts of every comparison
+are then compactly inside \(U\).
+For two admissible pairs use the common
+outer and inner opens
+\[
+\begin{gathered}
+\Omega_1''=\Omega_1\cap\Omega_1',\\
+\Omega_0''=(\Omega_0\cup\Omega_0')
+                         \cap\Omega_1''.
+\end{gathered}
+\tag{CS.12}
+\]
+First restrict an outer open to
+\(\Omega_1''\), keeping its own
+inner open intersected with that
+outer open. The support triangle
+has as its third term the supported
+Hom on the portion removed from
+the outer open. The closed carrier
+of that portion, intersected with
+the old support, avoids \(S\):
+CS.10 puts \(S\) in the interior
+of both outer opens over
+\(\overline{W'}\).
+CS.A makes that third term zero.
+
+Next enlarge the inner open to
+\(\Omega_0''\). The analogous triangle
+has a term supported in the added
+inner portion. Its closed carrier
+again avoids \(S\), since CS.10
+keeps \(S\) outside the closures
+of both inner opens over
+\(\overline{W'}\). CS.A kills that
+term too. Restriction and the support
+inclusion therefore give a canonical
+span of quasi-isomorphisms through
+the common pair CS.12.
+
+All these maps are maps of the same
+finite relative support cubes and
+ordinary injective comparisons of
+DL.6–DLG.7. A third pair is compared
+using the intersection of all three
+outer opens and the union of their
+inner opens there. The resulting
+cubes commute. Thus the isomorphisms
+satisfy the cocycle identity, rather
+than depending on the order of
+pairwise comparisons.
+
+#### CS.C. A common thick-cone buffer
+
+After shrinking \(W\) relatively
+compactly, the pair in CS.11 can
+be chosen with both opens invariant
+under one \(G_b\), and containing
+the common future \(E\).
+
+Indeed the set
+\(S\cap F^{-1}(\overline W)\)
+is compact: CS.10 puts it in the
+compact carrier and it is closed
+there. Choose an ordinary open
+\(U'\) around it with
+\[
+\overline{U'}\Subset
+ (\Omega_1\setminus\overline{\Omega_0})\cap U.
+\tag{CS.13}
+\]
+For large \(b\), the compact order
+diamond
+\[
+(\overline{U'}+G_b)
+ \cap(\overline{U'}-G_b)
+\tag{CS.14}
+\]
+is contained in \(U\). To prove
+this, keep the cones inside one
+fixed proper cone. A strictly
+positive linear functional bounds
+the lengths between the compact
+endpoints, as in CP.6. The diamonds
+are closed bounded sets decreasing
+to the \(G_0\)-diamond of
+\(\overline{U'}\), which is inside
+the round \(U\). Compactness gives
+the asserted containment.
+
+Set
+\[
+\begin{gathered}A'=(U'+G_b)\cup E,\\
+B'=A'\cap\\
+(X\setminus(\overline{U'}-G_b)).\end{gathered}
+\tag{CS.15}
+\]
+The backward cone in this expression
+is closed, since it is the sum of
+a compact set and a closed cone.
+Its complement is forward invariant.
+Thus \(A'\) and \(B'\) are ordinary
+\(G_b\)-opens and \(B'\subset A'\).
+The future \(E\) is disjoint from
+the backward cone by CS.3, so it
+is contained in both opens.
+Their closed difference lies in
+CS.14, compactly inside \(U\).
+Every point of \(S\) over
+\(\overline W\) is in \(U'\),
+hence in \(A'\) and in the interior
+of that backward cone. It is
+outside \(\overline{B'}\).
+This pair satisfies CS.10.
+CS.B provides its canonical comparison
+with the original pair.
+
+#### CS.D. Tilted funnels and their actual noncharacteristic cones
+
+Use the common pair of CS.C, and keep
+\(Z=\Omega_1\setminus\Omega_0\).
+For a transverse centre \(x_0\), a radius
+\(r>0\), and \(a>1\), set
+\[
+\begin{gathered}d(x)=|x-x_0|,\\
+V(a,r)=E\cup\\
+\{\operatorname{Re}t<a(r-d(x))-e\},\\
+\Omega(a,r)=\Omega_1\cap V(a,r),\\
+C(a,r)=R\operatorname{Hom}_R\bigl(P^\bullet,\\
+R\Gamma_Z(\Omega(a,r);\mathcal O)\bigr).\end{gathered}
+\tag{CS.16}
+\]
+The restriction maps give isomorphisms
+\[
+\begin{gathered}C(a,r'')\longrightarrow C(a,r'),\\
+C(a',r')\longrightarrow C(a,r'),\\
+0<r'\le r'',\\
+1<a\le a',\quad ar'>2e.\end{gathered}
+\tag{CS.17}
+\]
+All transverse balls used here have
+closure in the base under consideration.
+
+First, the opens in each comparison
+are nested. Increasing radius increases
+the funnel. For increasing \(a\), points
+with \(d\ge r\) lie in the funnel only
+inside \(E\); with \(d<r\), increasing
+\(a\) increases the right side.
+Each restriction triangle has third
+term the supported Hom on
+\[
+\begin{gathered}Y=(\Omega_1\cap V_{\rm large})\\
+\setminus(\Omega_0\cup V_{\rm small}).\end{gathered}
+\tag{CS.18}
+\]
+Its closed carrier is a compact subset
+of the original \(K\Subset U\).
+It is separated from the axis \(x=x_0\).
+Indeed outside the smaller funnel,
+\[
+\begin{gathered}\operatorname{Re}t\ge a(r'-d)-e,\\
+d\ge r'-2e/a>0\\
+\text{on the closed carrier}.\end{gathered}
+\tag{CS.19}
+\]
+The last inequality uses
+\(\operatorname{Re}t<e\) on \(\overline U\).
+Thus \(d\) is smooth on a neighbourhood
+of that carrier.
+
+We verify every cone hypothesis of CP.F.
+For the radius comparison put \(a'=a\)
+in the following construction. For the
+aperture comparison retain both values.
+Choose
+\[
+\begin{gathered}0<\epsilon<\frac{a^2-1}{2a},\\
+B>\max(b,a'+\epsilon).\end{gathered}
+\tag{CS.20}
+\]
+Here \(G_b\) is the common buffer cone
+from CS.C. Put \(R_*=\operatorname{int}G_B\).
+Both opens defining CS.18 are locally
+\(R_*\)-invariant. This follows for
+the original pair from \(B>b\), for
+the funnels from \(B>a'\), and for
+\(E\) from decreasing real time.
+
+Near a point with \(d>0\), put
+\(v_0=(x-x_0)/d\) and
+\(q(v)=\operatorname{Re}\sum_j\overline{v_{0,j}}v_j\).
+For a tangent vector \((w,v)\in\mathbf C\times\mathbf C^n\)
+let \(Q_*\) be defined by both strict
+inequalities
+\[
+\begin{gathered}\operatorname{Re}w+a q(v)\\
+{}<-\epsilon(|\operatorname{Im}w|+|v|),\\
+\operatorname{Re}w+a' q(v)\\
+{}<-\epsilon(|\operatorname{Im}w|+|v|).\end{gathered}
+\tag{CS.21}
+\]
+It is an open convex cone. It contains
+\(R_*\), since \(B>a'+\epsilon\),
+and it contains the entire nonzero
+\(G_0\)-ray in its interior.
+
+Choose an ordinary neighbourhood \(N\)
+of the intersection of \(S\) with the
+closed carrier of CS.18, with
+\[
+\begin{gathered}N\subset\Omega_1\setminus\overline{\Omega_0},\\
+d>0\text{ on }N.\end{gathered}
+\tag{CS.22}
+\]
+This is possible by CS.10 and CS.19.
+The carrier has base in the closed
+larger transverse ball, inside \(W\):
+CS.18 excludes \(E\), and CS.16 then
+forces \(d\) below that ball's radius.
+Define a cone field by taking \(Q_*\)
+on \(N\) and \(R_*\) outside it;
+precisely, its total open set is the
+union of the constant field \(R_*\)
+with \(Q_*\) over \(N\).
+Its fibres are convex because the
+larger cone contains \(R_*\).
+
+The set \(Y\) is flat for this field.
+Outside \(N\) all defining opens are
+\(R_*\)-invariant. On \(N\), the
+original outer open is full and the
+inner open is absent. Only the two
+funnel inequalities remain. Their
+defining functions
+\(\operatorname{Re}t+a d\) and
+\(\operatorname{Re}t+a'd\) strictly
+decrease along CS.21, so their
+sublevels are locally invariant.
+The union and difference presentation
+in CS.18 proves the required flatness.
+The common time function is
+\[
+\chi=-\operatorname{Re}t-a d.
+\tag{CS.23}
+\]
+It is \(C^1\) near the changing carrier
+and has positive derivative on the
+whole cone field, by CS.21 and the
+strict bound for \(R_*\).
+
+It remains to check actual acyclicity
+above \(S\), where the enlarged cone
+is needed. Let a nonzero real covector
+negative on \(Q_*\) be written
+\[
+\begin{gathered}\eta(w,v)=A\operatorname{Re}w\\
+{}+C\operatorname{Im}w+\zeta(v).\end{gathered}
+\tag{CS.24}
+\]
+Taking arbitrarily negative real
+\(w\) gives \(A\ge0\).
+If \(A=0\), one may choose imaginary
+\(w\) and \(v\) arbitrarily and then
+make its real part sufficiently
+negative to satisfy CS.21. This
+forces \(C=0\) and \(\zeta=0\),
+contrary to nonzeroness. Thus
+normalize \(A=1\).
+
+For fixed \(y=\operatorname{Im}w\)
+and \(v\), let the real part of
+\(w\) approach its largest permitted
+value in CS.21. Negativity gives
+\[
+\begin{gathered}C y+\zeta(v)\le\\
+\max(aq(v),a' q(v))\\
+{}+\epsilon(|y|+|v|).\end{gathered}
+\tag{CS.25}
+\]
+Taking \(v=0\) and both signs of
+\(y\) proves \(|C|\le\epsilon\).
+Taking \(y=0\), \(v=-v_0\) proves
+\(\zeta(v_0)\ge a-\epsilon\).
+For the corresponding complex covector
+\((\tau,\xi)\), therefore,
+\[
+\begin{gathered}\operatorname{Re}\tau=1,\\
+|\operatorname{Im}\tau|\le\epsilon,\\
+|\xi|\ge a-\epsilon\\
+{}>\sqrt{1+\epsilon^2}\ge|\tau|.\end{gathered}
+\tag{CS.26}
+\]
+The strict middle inequality is
+equivalent to \(a^2-2a\epsilon>1\),
+which is CS.20. It contradicts
+the characteristic bound CS.2.
+Outside \(S\) the actual complex
+is already exact at every covector
+in this chart. Thus the localized
+complex is exact on the required
+negative covectors above the entire
+closed changing carrier.
+
+All hypotheses of CP.F have now
+been verified, with the original
+thin operator carrier unchanged.
+It kills CS.18 in every degree.
+The restriction triangle proves
+both quasi-isomorphisms CS.17.
+They are the natural restriction
+maps, so the radius and aperture
+squares commute.
+
+#### CS.E. Ball restriction and local constancy
+
+For a fixed radius, the \(G_0\)-opens
+\(V(a,r)\) increase with \(a\), and
+\[
+\begin{gathered}\bigcup_{a>0}V(a,r)\\
+=E\cup F^{-1}(B(x_0,r)).\end{gathered}
+\tag{CS.27}
+\]
+On \(U\), this follows directly
+from \(\operatorname{Re}t+e>0\):
+the inequality defining the funnel
+eventually holds exactly when
+\(d<r\). Globally, points already
+in \(E\) are included on both
+sides, and for points outside
+\(E\) the same inequality has
+a nonnegative left side. At
+\(d=r\) it is strict and fails.
+
+The supported object is zero on
+\(E\). The ordinary excision and
+finite support cube consequently
+identify its cohomology on the
+right side of CS.27 with that
+on \(F^{-1}(B(x_0,r))\).
+Use a sequence \(a_j\to\infty\)
+and CP.24 on the increasing
+left-side opens intersected with
+\(\Omega_1\). The transition maps
+on every cohomology group are
+isomorphisms once \(a_jr>2e\),
+by CS.17. The explicit recursive
+solution of \(1-\mathrm{shift}\)
+therefore kills its degree-one
+inverse-limit term. Hence
+\[
+\begin{gathered}H^k(B(x_0,r);\mathscr L)\\
+\simeq H^k(C(a,r))\\
+\text{for }ar>2e.\end{gathered}
+\tag{CS.28}
+\]
+The identification with direct-image
+cohomology is literal on injective
+resolutions: inverse image is exact,
+so direct image preserves injectives,
+and sections over a base open are
+sections over its inverse image.
+For \(0<r'\le r''\), choose
+\(a\) with \(ar'>2e\) and use
+CS.17. Its commuting aperture
+squares make CS.28 compatible
+with the ordinary ball restriction.
+We have proved, for every degree,
+\[
+\begin{gathered}H^k(B(x_0,r'');\mathscr L)\\
+\xrightarrow{\;\sim\;}H^k(B(x_0,r');\mathscr L).\end{gathered}
+\tag{CS.29}
+\]
+
+We prove the sheaf consequence,
+including the bounded-complex step.
+First let \(T\) be a sheaf on a
+Euclidean open set whose sections
+on concentric balls have these
+restriction isomorphisms. Fix a
+ball \(B(c,R)\) and \(y\) in it.
+Put \(d_0=|y-c|<R\) and
+\[
+\begin{gathered}c_t=c+t(y-c),\\
+R_t=R-td_0,\\
+B_t=B(c_t,R_t),\\
+0\le t\le1.\end{gathered}
+\tag{CS.30}
+\]
+For sufficiently close \(t<t'\),
+insert between \(B_t\) and a
+smaller ball the two balls
+\[
+\begin{gathered}B_{t'},\\
+B(c_t,R-(2t'-t)d_0),\\
+B(c_{t'},R-(3t'-2t)d_0).\end{gathered}
+\tag{CS.31}
+\]
+They are nested in that order
+after \(B_t\). Each containment
+is the triangle inequality for
+the centre displacement.
+If their three restriction maps
+are \(f,g,h\), then \(gf\) and
+\(hg\) are isomorphisms by
+concentricity. The first makes
+\(g\) surjective, the second
+injective, so \(g\), and then
+\(f\), are isomorphisms.
+The smallest radius stays positive
+on a sufficiently fine finite
+partition of \([0,1]\), since
+\(R-d_0>0\). Thus restriction
+from \(B_0\) to \(B_1\) is an
+isomorphism. Concentricity at
+\(y\) and the stalk limit give
+\[
+\Gamma(B(c,R);T)\xrightarrow{\sim}T_y.
+\tag{CS.32}
+\]
+These maps for all \(y\) identify
+\(T\) on the ball with the
+constant sheaf of its sections.
+Indeed the map from that constant
+sheaf sends a locally constant
+choice of global sections to
+their restrictions; it is an
+isomorphism on every stalk.
+So \(T\) is locally constant.
+
+We also need the cohomology of
+a constant vector sheaf on a
+ball, without a finite-rank
+assumption. Resolve it by the
+sheaf of smooth differential
+forms with locally finite vector
+coefficients. This is the
+sheafification of the algebraic
+tensor with the vector space.
+It is a module over smooth
+functions, hence acyclic by the
+complete partition-of-unity proof
+R.5.
+On a ball centred at zero use
+the radial homotopy, for \(j>0\),
+\[
+(h\alpha)_x=
+ \int_0^1 s^{j-1}\iota_x\alpha_{sx}\,ds.
+\tag{CS.33}
+\]
+Differentiating the pullback under
+\(x\mapsto sx\) and integrating
+gives \(dh+hd=1-\operatorname{ev}_0\).
+Each compact family of radial
+segments is covered by finitely
+many coefficient neighbourhoods,
+so the integral takes values in
+one finite-dimensional span on
+that family. Thus it defines
+smooth locally finite-vector
+forms even for an arbitrary
+coefficient vector space.
+The same contraction on small
+balls proves local exactness.
+This is an acyclic resolution,
+and proves zero higher cohomology
+and the expected degree-zero
+sections on the full ball.
+
+A locally constant sheaf on a
+ball is constant. To see this
+with the same generality, transport
+along a path by finitely many
+constant neighbourhoods. Subdivide
+a homotopy square into such
+neighbourhoods; the two edge
+transports agree on each little
+square and therefore on the whole
+square. Straight paths in the
+convex ball and their straight
+homotopies give the trivialization.
+This argument uses no bound on
+the dimension of its fibres.
+
+Now let \(T^\bullet\) be bounded
+below and satisfy CS.29 in all
+degrees. Start with its lowest
+possible cohomology degree \(b\).
+The truncation triangle gives
+\[
+\begin{gathered}\mathcal H^b(T^\bullet)[-b]\longrightarrow T^\bullet\\
+\longrightarrow\tau_{>b}T^\bullet,\\
+H^b(B;T^\bullet)\\
+=\Gamma(B;\mathcal H^b(T^\bullet)).\end{gathered}
+\tag{CS.34}
+\]
+The equality follows because derived
+sections of a complex with no
+cohomology through degree \(b\)
+have none through that degree:
+replace it by its good truncation
+and take the first-quadrant injective
+double resolution, which starts
+in degree \(b+1\).
+The single-sheaf result
+CS.32 makes \(\mathcal H^b\)
+locally constant. Its derived
+sections on balls have restriction
+isomorphisms in every degree by
+CS.33 and the preceding transport
+argument. The truncation triangle
+then gives CS.29 for
+\(\tau_{>b}T^\bullet\) as well.
+Repeat in degree \(b+1\).
+Each specified degree requires
+only finitely many repetitions.
+Every cohomology sheaf of
+\(T^\bullet\) is locally constant.
+
+#### CS.F. The transverse solution local system
+
+For every admissible original
+ray-open pair satisfying CS.4
+and CS.10, each cohomology sheaf
+of CS.11 is locally constant
+on \(W\). The canonical pair
+comparisons of CS.B identify
+these sheaves, their restriction
+maps and their transports.
+
+Indeed use CS.C to choose a common
+thick-cone buffer locally on \(W\).
+CS.D–CS.E prove CS.29 there.
+The complex CS.11 is bounded
+below: its support resolution is
+bounded below, finite free Hom
+changes the lower bound by only
+the finite length of \(P^\bullet\),
+and a derived direct image is
+computed by a bounded-below
+injective resolution. The
+bounded-complex argument of
+CS.E applies. Pair independence
+then gives the assertion for
+the original pair and glues
+it on \(W\).
+
+No singular stratum of \(S\)
+or discriminant fibre has been
+deleted from this assertion.
+Its characteristic hypothesis
+is on the whole actual complex.
+Finite-dimensionality is a
+separate fibre computation:
+if one fibre in a connected
+component is finite dimensional,
+local constancy makes every fibre
+there have the same finite
+dimension. Continuing individual
+holomorphic representatives,
+their common finite determination
+and faithful actual-module
+separation require further
+arguments.
+
+#### CS.G. Exact support and conormal examples
+
+In the real plane \(t=-u+iw\),
+take the ray-open pair
+\[
+\begin{gathered}
+\Omega_1=\{u>0\},\\
+\Omega_0=\{u>h(w)\},\\
+h(w)=\sqrt{\max(0,1-w^2)}.
+\end{gathered}
+\tag{CS.35}
+\]
+Its closed changing carrier is
+the closed upper half unit disc.
+For the two-dimensional cone
+\(u\ge b|w|\), the eroded open
+CS.6 has boundary
+\[
+\begin{gathered}h_b(w)=\\
+\sup_z\bigl(h(w+z)-b|z|\bigr).\end{gathered}
+\tag{CS.36}
+\]
+This follows by taking the least
+allowed forward \(u\)-component
+for each displacement \(z\).
+On the circular arc the tangent
+slope is \(-w/\sqrt{1-w^2}\).
+It reaches magnitude \(b\) at
+\(w_b=b/\sqrt{1+b^2}\).
+The two tangent lines there have
+intercept \(\sqrt{1+b^2}\).
+The supremum in CS.36 is therefore
+\(h\) on \(|w|\le w_b\), those
+tangent lines beyond that interval,
+and zero after they cross the axis.
+To verify the supremum, on each
+side maximize the concave circular
+arc minus a linear function: its
+derivative vanishes at the stated
+tangent point, or at \(z=0\)
+when the point lies between them.
+The zero part of \(h\) contributes
+the lower bound zero.
+
+Thus the compact carrier of
+\(\Omega_1\setminus\Omega_0(b)\)
+is bounded by the unchanged central
+arc and these tangent segments.
+Its endpoint has
+\[
+|w|=\sqrt{1+b^{-2}}.
+\tag{CS.37}
+\]
+The zero-height tails beyond this
+endpoint are not part of the
+closed changing carrier: their
+neighbourhoods have \(h_b=0\),
+so the two opens coincide there.
+For \(b=4/3\), the complex point
+\(S_* =\{t=6i/5\}\) lies in
+the approximating carrier. For
+\(b=12/5\), the endpoint is
+\(13/12<6/5\), so the whole
+carrier avoids \(S_*\).
+This illustrates why the closure
+and eventual compact containment
+in CS.7 are needed.
+
+For the funnel and covector
+inequalities take the exact values
+\[
+\begin{gathered}e=1/8,\quad a=3,\quad a'=4,\\
+\epsilon=1/4,\quad r=1/4,\\
+ar=3/4>2e=1/4,\\
+(a-\epsilon)^2=121/16\\
+{}>17/16=1+\epsilon^2.\end{gathered}
+\tag{CS.38}
+\]
+The real section of the funnel has
+\(\operatorname{Im}t=\operatorname{Im}x=0\).
+Its sloping boundary normals have
+positive spatial-to-time ratio
+\(a\) or \(a'\) on the positive
+radial side. The negative-polar
+calculation CS.24–CS.26 treats
+all complex tangent directions,
+including imaginary time and
+transverse spatial components;
+the real section does not replace it.
+
+![Closed support carriers and transverse noncharacteristic funnels](assets/transverse-solution-systems.png)
+
+**Figure CS.1.** Upper panel: the real plane
+\(t=-u+iw\) and the exact carrier boundaries
+CS.35–CS.37. The tangent segments meet the
+unit semicircle at their exact contact points.
+The marked complex point belongs to the first
+closed approximating carrier and is excluded
+from the later ones. Zero-height tails beyond
+the finite endpoints are absent. Lower panel:
+the real section of CS.38, with the common
+future \(E\) and the strip containing the
+changing support. The displayed normal is
+ordered as \((\tau,\xi)\); its plotted arrow
+has components \((\xi,\tau)\) in the labelled
+horizontal and vertical axes. CS.24–CS.26
+prove the full complex covector bound.
+Free human source: [Kashiwara–Kawai, IV.4.4](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf).
+
+Editable SVG,
+exact figure data,
+and reproducible source.
+
+Free further reading: Kashiwara–Kawai,
+[Holonomic systems III, IV.4.4.2–IV.4.4.6](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf).
+
+
+### 5.82. Common-domain continuation of actual holonomic function solutions
+
+Let \(X=\mathbf C_t\times\mathbf C_x^n\), let
+\(q_0=(0,0)\), and let \(p_0=(q_0;1,0)\).
+Let \(M\) be a coherent actual finite-order
+microlocal module whose reduced support \(A\)
+is a homogeneous analytic Lagrangian in generic
+position:
+\[
+\begin{gathered}
+A\cap\pi^{-1}(q_0)=\mathbf C^\times p_0.
+\end{gathered}
+\tag{CF.1}
+\]
+All statements concern the whole module,
+including its principal nilpotents and
+intersecting characteristic branches.
+Write \(S=\pi(A)\) on a sufficiently small
+base neighbourhood.
+
+We use the directional function module
+\[
+\begin{gathered}
+\mathcal C=\underset{V,Z}{\operatorname{colim}}
+ H_Z^1(V;\mathcal O),\\
+C_0(Z)\subset\{\operatorname{Re}t\ge0\}.
+\end{gathered}
+\tag{CF.2}
+\]
+Here \(V\) is an ordinary neighbourhood of
+zero, \(Z\) is relatively closed, and
+\(C_0(Z)\) consists of limits of positive
+rescalings of points of \(Z\) tending to zero.
+The support condition includes the zero
+vector. There is no growth condition on a
+holomorphic representative at its open
+boundary.
+
+**Theorem CF.1.** Let
+\(\Phi:M_{p_0}\to\mathcal C\) be an actual
+\(\mathscr E_{p_0}\)-linear map.
+For any finite list \(s_1,\ldots,s_m\) and
+holomorphic representatives of
+\(\Phi(s_1),\ldots,\Phi(s_m)\), there is one
+ordinary neighbourhood \(V\) of zero on
+which all these representatives continue
+as multivalued holomorphic functions on
+\(V\setminus S\).
+A branch of each continuation agrees with
+its prescribed representative on a smaller
+admissible negative domain.
+For finitely many maps \(\Phi\), the same
+neighbourhood can be used.
+
+Multivalued means analytic continuation
+along every path from a fixed initial germ,
+with equality along homotopic paths with
+fixed endpoints. Finite determination and
+faithful evaluation are separate assertions.
+They are not hypotheses or conclusions of
+this theorem.
+
+The actual lattice, full factorial norms
+and finite-head division used below are
+§5.32, J.1–J.3
+and
+§5.55, DP.1–DP.4.
+The complete canonical support action and
+convex Dolbeault proof are
+§5.43
+and
+§5.80, CP.A.
+The primitive normalization is
+§5.33, K.2
+and its actual supported comparison in
+§5.53, AM.B.
+
+#### CF.A. Convex representatives and the full directional action
+
+Put \(r=\operatorname{Re}t\) and
+\(z=(\operatorname{Im}t,x)\), with
+\(|z|=|\operatorname{Im}t|+|x|\).
+For each \(a>0\), put
+\[
+G_a=\{(r,z):r\le-a|z|\}.
+\tag{CF.3}
+\]
+Every support in CF.2 is locally contained
+in a larger admissible support whose
+complement is convex and invariant under
+\(G_a\).
+
+Indeed, on its negative-\(r\) part,
+\((-r)/|z|\) tends uniformly to zero.
+Failure would give, by normalizing a
+sequence and taking a unit-sphere
+subsequence, a tangent vector with
+negative \(r\).
+The same argument excludes points with
+\(z=0,r<0\) sufficiently near zero.
+Choose a continuous nondecreasing modulus
+\(\omega(s)\to0\) such that
+\[
+\begin{gathered}-r\le |z|\omega(|z|),\\
+\text{on }Z\cap\{r<0\}.\end{gathered}
+\tag{CF.4}
+\]
+For completeness, first bound the ratio
+on shrinking punctured balls by its
+supremum. Choose radii where this bound
+is below \(2^{-k}\), and interpolate
+monotonically above the bound using
+the preceding radius. This gives the
+stated continuous majorant.
+Define
+\[
+\begin{gathered}
+\phi(s)=\int_0^{2s}\omega(v)\,dv,\\
+Z'=\{r\ge-\phi(|z|)\}.
+\end{gathered}
+\tag{CF.5}
+\]
+The function \(\phi\) is convex,
+nondecreasing, dominates \(s\omega(s)\),
+and is \(o(s)\). On a small interval it
+has Lipschitz constant \(L<a\).
+Extend it linearly beyond that interval
+with the final slope when necessary.
+The set \(Z'\) contains \(Z\) locally,
+has the required tangent cone, and has
+convex complement. For \(s\ge a|w|\),
+\[
+\begin{gathered}r-s+\phi(|z+w|)\\
+\le r+\phi(|z|)-s+L|w|<0\\
+\text{if }r+\phi(|z|)<0.\end{gathered}
+\tag{CF.6}
+\]
+Thus its complement is \(G_a\)-open.
+
+This construction also supplies the
+compact cap needed for the actual
+operator action. Let
+\(\Omega=B_\epsilon+G_a\), using the
+sum norm for the ball.
+For \(b+(-s,w)\in Z'\cap\Omega\),
+the inequalities
+\(r\le\epsilon-s\),
+\(|z|\le\epsilon+s/a\), and
+\(r\ge-L|z|\) give
+\[
+(1-L/a)s\le(1+L)\epsilon.
+\tag{CF.7}
+\]
+Consequently the closed carrier is
+contained in a fixed constant times
+this small ball. Choose \(\epsilon\)
+so its closure is compact in the
+coefficient domain and the original
+ordinary neighbourhood.
+Both \(\Omega\) and \(\Omega\setminus Z'\)
+are convex and cone-open.
+
+The full convex Dolbeault vanishing
+of CP.A and DLH gives, by the
+ordinary support triangle,
+\[
+\begin{gathered}
+H_{Z'}^k(\Omega;\mathcal O)=0\quad(k\ne1),\\
+H_{Z'}^1(\Omega;\mathcal O)\\
+=\mathcal O(\Omega\setminus Z')/
+                    \mathcal O(\Omega).
+\end{gathered}
+\tag{CF.8}
+\]
+The degree-zero group vanishes by
+the identity theorem. Ordinary
+excision transfers a class from
+the original neighbourhood to
+this completion, since the closed
+carrier is compact in their overlap.
+It follows that CF.2 consists
+precisely of these actual function
+classes. A class is zero exactly
+when, after one refinement, its
+representative extends holomorphically
+to an ordinary neighbourhood of zero.
+Any finite family of classes and
+equalities admits one common refinement.
+
+The full real kernel representatives
+of AM.H have strict negative pairing
+with \(dt\) on their nonzero normal
+cones. Compactness of the unit normal
+cone puts any finite family in one
+carrier \(G_a\), after shrinking.
+If no such actual containment held,
+normalizing the failing points would
+contradict that strict pairing.
+DL.6–DLG.7 acts on the cone-closed
+supports just constructed, with the
+common cap CF.7. Its cup, excision
+and normalized trace comparisons
+identify refinements and both products.
+Taking the filtered colimit gives
+the whole real kernel action on
+\(\mathcal C\). Restriction along
+the proved inclusions
+\(\mathscr E\to\mathscr E^\infty
+\to\mathscr E^{\mathbb R}\)
+gives the action used in the theorem.
+No map from an arbitrary canonical
+kernel to a finite symbol is asserted.
+
+In particular, for a coefficient
+depending only on \(x\), the actual
+action of \(h^k=D_t^{-k}\) on a
+representative is, modulo a
+holomorphic germ,
+\[
+\begin{gathered}h^k f(t,x)=\\
+\int_A^t\frac{(t-s)^{k-1}}{(k-1)!}f(s,x)\,ds,\\
+k\ge1.\end{gathered}
+\tag{CF.9}
+\]
+The path lies initially in the convex
+negative domain. This is exactly the
+positive primitive normalization of
+K.2 and its supported AM.B comparison.
+In the quotient \(hD_t=1\), because
+the omitted initial value is
+holomorphic on the full neighbourhood.
+
+#### CF.B. Finite coefficient modules from an isolated principal fibre
+
+Choose the actual \(h\)-injective
+lattice \(M_0\subset M\) of J.1,
+and set \(L=M_0/hM_0\).
+The following variant of the finite
+division argument is useful:
+\[
+\begin{gathered}
+\dim_{\mathbf C}L/(x)L<\infty\\
+\Longrightarrow
+M_0=\sum_{j=1}^q R_0u_j,\\
+R_0=\left\{\begin{gathered}
+\sum_{k\ge0}a_k(x)h^k:\\
+ |a_k|_K\le BC^k k!
+\end{gathered}\right\}.
+\end{gathered}
+\tag{CF.10}
+\]
+Every coefficient list has one common
+holomorphic parameter domain.
+
+Here is why the weaker premise suffices.
+In DP.5 take the normal variables
+\(v=(t,\xi/\tau)\). The specialized
+principal relation module has quotient
+\(L/(x)L\). Each normal coordinate
+acts nilpotently on this finite local
+quotient: a nonzero eigenvalue would
+contradict invertibility of that
+coordinate minus the eigenvalue.
+Their commuting actions therefore
+make a power of \((v)\) annihilate
+the quotient. The specialized head
+diagram has finite complement.
+
+Lift its finitely many minimal heads
+to actual relations. The principal
+kernel equality is obtained by
+subtracting \(h\) times a lift of
+the image divided by \(h\).
+Use precisely the hierarchical
+normal radii, component weights,
+parameter shrink and positive-index
+shrink in DP.7–DP.11.
+They give its two one-eighth error
+bounds on one domain. For a time
+head the complete correction is
+\[
+\begin{gathered}
+Q\circ(t^az^\beta)-Qt^az^\beta\\
+=\sum_{j=1}^a\binom aj
+ (\partial_\tau^jQ)t^{a-j}z^\beta.
+\end{gathered}
+\tag{CF.11}
+\]
+The weighted coefficient inverse
+of the head map has norm at most
+one, and the total error has norm
+at most one quarter.
+Its Neumann solution therefore
+converges with norm at most
+four thirds of the input norm,
+as in DP.12–DP.14.
+The finite inverse-ordering formula
+DP.16 converts its ordinary remainder
+to actual coefficient products.
+This proves CF.10 for every germ,
+with the full factorial bound.
+No formal specialization of \(h\)
+has been used.
+
+The same argument with \(h\) absent
+proves the ordinary finite-fibre
+lemma for coherent analytic modules:
+an isolated finite principal fibre
+over the base makes the module finite
+over the base germ ring.
+The head projections, radius choices,
+geometric inverse and finite remainder
+are the preceding argument with its
+positive-index terms removed.
+Apply it first to the variables
+\(z=\xi/\tau\), using J.3.
+Thus \(L\) is finite over
+\(\mathcal O_{t,x}\).
+
+This also proves the required local
+finite projection of its support.
+The algebra
+\(\mathcal O_{t,x,z}/\operatorname{Ann}L\)
+injects into
+\(\operatorname{End}_{\mathcal O_{t,x}}L\).
+The latter is finite: a finite
+presentation embeds this Hom into
+a finite power of the finite module
+\(L\), and the coefficient ring is
+Noetherian. Hence the support algebra
+is finite over the base.
+Its normal coordinates satisfy monic
+equations and are nilpotent on the
+central finite fibre. Their roots
+therefore stay in a compact smaller
+normal polydisc after shrinking the
+base. This gives properness of this
+local finite projection.
+The image is exactly the analytic
+support of \(L\) as a base module.
+For example, on a nonzero fibre
+the commuting normal-coordinate
+matrices have a simultaneous
+eigencharacter: take an eigenspace
+of one, restrict the others, and
+repeat. It supplies a point of
+the fibre support. The converse
+is immediate by restriction.
+The minor test for a finite
+base presentation shows that
+this image \(S\) is analytic.
+
+Finite integrality preserves
+component dimensions, as in
+the finite-projection proof of
+analytic dimension, Theorem 5.4.
+Thus \(S\) is a pure
+\(n\)-dimensional germ in
+\(\mathbf C^{n+1}\).
+It has a reduced hypersurface
+equation. One direct verification
+uses factoriality of the analytic
+germ ring, proved in
+The local ring of holomorphic germs, §3.
+Factor any nonzero equation
+vanishing on \(S\).
+Each irreducible component of
+\(S\) lies in one irreducible
+factor hypersurface. Their
+dimensions agree; strict inclusion
+would lower dimension by
+Proposition 5.5 of the dimension
+lesson. The reduced product
+of the selected factors defines
+exactly \(S\).
+
+#### CF.C. Spanning ordinary linear fibrations
+
+Let \(f\) be that reduced equation,
+with first nonzero homogeneous part
+\(f_m\). Choose a vector \(v_0\)
+with \(f_m(v_0)\ne0\) and
+\(p_0(v_0)\ne0\), and normalize
+\(p_0(v_0)=1\).
+The excluded vectors are zeros
+of two nonzero polynomials,
+so they do not fill the vector
+space. Take \(v_0\) as the time
+axis and a basis \(e_1,\ldots,e_n\)
+of \(\ker p_0\) as spatial axes.
+For sufficiently small nonzero
+\(\lambda\), put
+\[
+\begin{gathered}v_j=v_0-\lambda e_j,\\
+1\le j\le n,\\
+ F_0(t,x)=x,\\
+F_j(t,x)=x+\lambda t e_j.\end{gathered}
+\tag{CF.12}
+\]
+All \(f_m(v_j)\) remain nonzero.
+Each vertical line meets \(S\)
+only at zero locally.
+The \(n+1\) vertical directions
+span the ambient tangent space:
+\[
+\begin{gathered}\left|\det(v_0,v_1,\ldots,v_n)\right|\\
+=|\lambda|^n.\end{gathered}
+\tag{CF.13}
+\]
+Moreover \(p_0(v_j)=1\).
+
+For each \(F_j\), the normalized
+support over its central fibre
+is isolated: its base point must
+be zero, and CF.1 then fixes its
+normalized covector.
+The analytic Nullstellensatz and
+the finite-monomial argument of
+J.3 give the finite-dimensional
+principal fibre in CF.10.
+Thus the whole actual module is
+finite over its coefficient ring
+\(R_{0,j}\) in every fibration.
+
+These are ordinary linear
+coordinate changes. Their finite,
+infinite and real actions and
+inverse maps are proved in
+§5.56, BCT.5.3.
+They keep \(t\) unchanged.
+Consequently they keep the
+directional tangent condition
+in CF.2 unchanged. The full
+normal derivative changes by
+an elliptic order-zero factor
+times the old derivative;
+its inverse has the compatible
+actual action.
+All finite lists and their
+relations can be represented
+on one common refinement.
+
+In these directions preparation
+of \(f\) gives a monic
+Weierstrass equation
+\(p_j(t,x)=0\).
+Its coefficient orders and
+the elementary root bound give
+\(|t|\le C_j|x|\) on \(S\)
+in this fibration.
+The exact preparation proof
+is
+AG-QC, §2;
+the coefficient orders and root
+bound are
+analytic parametrization, Lemma 2.1 and Proposition 2.2.
+The discriminant \(H_j\) is proper:
+the reduced polynomial is
+square-free over the coefficient
+fraction field in characteristic
+zero. Its resultant with its
+derivative is therefore nonzero.
+Off \(H_j\), its roots are
+distinct holomorphic graphs by
+the implicit-function proof
+in AG-QC, Lemma 2.2.
+
+#### CF.D. A rectangular Volterra equation with the exact support
+
+Fix one fibration.
+Choose \(u_1,\ldots,u_q\) lifting
+a basis of \(L/(x)L\).
+They generate \(L\) over
+\(\mathcal O_x\). They also
+generate \(M_0\) over \(R_0\):
+express a finite generating list
+modulo \(h\) in their lifts,
+and invert the finite matrix
+\(I-hC\) by DP.20.
+Use coefficient rows and the
+generator column \(u\).
+There is an actual matrix
+\[
+tu=T(x,h)u.
+\tag{CF.14}
+\]
+A row relation \(a\) means
+\(au=0\).
+Take a finite presentation
+of \(L\) over \(\mathcal O_x\).
+Every principal relation row
+lifts to an actual \(R_0\)-row
+relation: divide its image
+in \(hM_0\) by \(h\), express
+the quotient in the same
+generators, and subtract \(h\)
+times those coefficients.
+Denote the finite lifted
+matrix by \(a(x,h)\).
+
+Put \(T_0=T\bmod h\) and
+\(a_0=a\bmod h\).
+The matrix \(T_0(0)\) is
+nilpotent: it is the action
+of \(t\) on the finite local
+fibre with basis \(u\bmod(x,h)\).
+The rectangular matrix
+\[
+B_0(t,x)=
+\begin{pmatrix}tI-T_0(x)\\ a_0(x)\end{pmatrix}
+\tag{CF.15}
+\]
+has full column rank at every
+point outside \(S\).
+
+To prove this exact assertion,
+evaluate a coefficient row
+\(\sum_{m\ge0}c_m(x)t^m\)
+as \(\sum_m c_m(x)T_0(x)^m\).
+Choose a weighted basis making
+the norm of the nilpotent
+\(T_0(0)\) arbitrarily small,
+then shrink \(x\). The series
+converges normally on smaller
+products. The identity
+\[
+\begin{gathered}
+t^mI-T_0^m\\
+=(tI-T_0)\sum_{b=0}^{m-1}
+                       t^{m-1-b}T_0^b
+\end{gathered}
+\tag{CF.16}
+\]
+has a normally summable
+coefficient-series version.
+The principal relation rows
+are stable under \(T_0\),
+because \(t\) acts on \(L\).
+Evaluation therefore identifies
+the base-module cokernel of
+CF.15 with \(L\) as a base
+module. These are finite
+coherent base presentations.
+Their germ isomorphism and
+its inverse extend to one
+smaller base neighbourhood:
+extend the finitely many
+images of generators, their
+relation identities and the
+two composition identities,
+as in J.1. Its support is exactly
+\(S\), by CF.B. At a base
+point, a finite presentation
+has zero cokernel precisely
+when its value is onto, by
+finite commutative Nakayama.
+Equivalently CF.15 has full
+column rank there. This proves
+the claim without inverting
+a transverse parameter minor.
+
+All entries of the positive
+\(h\)-parts have one factorial
+estimate. Their kernels are
+\[
+\begin{gathered}K_A(t,s,x)=\\
+\sum_{k\ge1}A_k(x)\frac{(t-s)^{k-1}}{(k-1)!}.\end{gathered}
+\tag{CF.17}
+\]
+If \(|A_k|\le BC^kk!\), their
+absolute sum is at most
+\[
+\frac{BC}{(1-C|t-s|)^2}.
+\tag{CF.18}
+\]
+Thus they and every fixed
+derivative converge normally
+on one smaller two-time
+product with \(C|t-s|<1\).
+The finite list permits a
+single such product.
+Stack the kernels of \(-T\)
+and \(+a\), with their zero
+coefficients omitted, to
+obtain the rectangular kernel
+\(K\).
+
+Let \(f\) be the column of
+representatives of \(\Phi(u)\).
+The finite relation residuals
+are zero in \(\mathcal C\).
+By CF.A they extend as
+holomorphic functions near
+zero. The actual primitive
+comparison gives
+\[
+\begin{gathered}
+B_0(t,x)f(t,x)\\
+{}+\int_A^t K(t,s,x)f(s,x)\,ds\\
+=g(t,x).
+\end{gathered}
+\tag{CF.19}
+\]
+Here \(g\) is holomorphic on
+one full product, including
+the initial slice \(t=A\).
+
+That last domain assertion
+requires choosing the anchor
+twice. Begin with an anchor
+\(A_0<0\) in the common convex
+representative domain.
+The finitely many residuals
+extend near zero, possibly
+to a time disc not containing
+\(A_0\). Choose a new negative
+\(A\) inside that disc.
+The difference of the two
+primitive formulas is the
+integral over the fixed
+compact path from \(A_0\)
+to \(A\). Its output and
+parameter dependence is
+holomorphic on the whole
+new product, by CF.17 and
+the original representative
+along that path.
+Subtract this memory correction
+from the extended residual.
+This gives CF.19 with \(A\)
+inside its full domain.
+Shrink the transverse ball
+so \((A,x)\) lies in the
+initial domain and every
+root of \(p_j\) lies in
+\(|t|<|A|/4\).
+
+#### CF.E. Every path outside one vertical discriminant
+
+Suppose a branch is known
+along a compact vertical path
+from \(A\) to \(a\), avoiding
+\(S\). Its old memory
+\[
+\begin{gathered}I_{\mathrm{old}}(t,x)=\\
+\int_{A\rightsquigarrow a}K(t,s,x)f(s,x)\,ds.\end{gathered}
+\tag{CF.20}
+\]
+is holomorphic in the new
+output \(t\) and in nearby
+parameters. At \(a\), choose
+a nonzero square minor of
+CF.15 and obtain a holomorphic
+left inverse \(J\) of \(B_0\).
+In the following formula, the arguments
+\(t,x\) of \(J,g,I_{\mathrm{old}},b\)
+are suppressed in the first two rows, and
+\(H(t,s,x)=J(t,x)K(t,s,x)\).
+On a small disc the new
+branch solves
+\[
+\begin{gathered}H=JK,\\
+b=J(g-I_{\mathrm{old}}),\\
+ f(t,x)=b(t,x)\\
+{}-\int_a^t H(t,s,x)f(s,x)\,ds.\end{gathered}
+\tag{CF.21}
+\]
+If the last kernel is bounded
+by \(L\), its \(k\)-fold
+successive integral has bound
+\[
+\frac{L^k|t-a|^k}{k!}.
+\tag{CF.22}
+\]
+Parametrize each integration
+by the ordered real simplex
+in a complex segment; its
+volume is \(1/k!\), by
+successive elementary integration.
+The series therefore converges
+normally and solves CF.21.
+The same bound for a difference
+proves uniqueness.
+All bounds are uniform on a
+smaller parameter compact,
+so the solution is jointly
+holomorphic.
+
+Every rectangular row of
+CF.19 still holds. Its
+residual is holomorphic and
+zero on the open overlap
+with the preceding branch.
+The identity theorem makes
+it zero on the whole
+connected product. A finite
+disc cover thus continues
+the branch along every
+vertical path in the punctured
+time disc.
+
+Off the discriminant \(H_j\),
+the punctured time discs are
+locally topologically trivial,
+with \(A\) fixed.
+Here is an explicit construction.
+At a parameter value choose
+disjoint small discs about
+the distinct roots, away
+from \(A\) and the boundary.
+Choose smooth cutoffs equal
+to one near their centres.
+Translate each root by its
+cutoff times its small
+displacement. The resulting
+map is the identity plus
+a perturbation with Lipschitz
+constant less than one.
+The iteration \(y=w-\delta(y)\)
+converges geometrically to
+its unique inverse. It
+therefore gives the required
+homeomorphism, fixing the
+boundary and \(A\).
+
+A path in
+\[
+X\setminus\bigl(S\cup F_j^{-1}(H_j)\bigr)
+\tag{CF.23}
+\]
+has a finite cover by these
+trivializations. Transport
+the vertical memory path
+through that cover.
+Its actual holomorphic
+formulas use fixed compact
+contour pieces on each
+smaller parameter neighbourhood,
+where those pieces still
+avoid \(S\), together with
+small holomorphic endpoint
+segments. CF.20–CF.22 prove
+joint holomorphy there.
+The cutoff motion is used
+only to identify contour
+classes, not as a
+holomorphic formula.
+This proves continuation
+along every path of CF.23.
+
+We recall explicitly the
+path-homotopy argument.
+An analytic continuation
+is a chain of holomorphic
+germs agreeing on nonempty
+overlaps. Uniqueness is
+the identity theorem on
+small balls. For a fixed
+path its finitely many
+overlap balls also support
+all sufficiently close
+paths, with the same
+endpoint germ. Subdivide
+a homotopy square into
+finitely many rectangles
+inside such overlap
+neighbourhoods. The two
+edge continuations around
+each rectangle agree.
+Successively cancelling
+interior edges proves
+equality at the endpoint
+for the two boundary paths.
+This proves fixed-endpoint
+homotopy invariance and
+applies to every continuation
+constructed here.
+
+#### CF.F. All branches and all fibrations
+
+Put \(D_j=F_j^{-1}(H_j)\).
+The common bad set
+\[
+Z=\bigcap_{j=0}^n D_j
+\tag{CF.24}
+\]
+has complex codimension at
+least two. Otherwise an
+irreducible hypersurface
+component \(T\) of \(Z\)
+is a component of every
+\(D_j\). Each \(D_j\) is
+invariant along its constant
+vertical direction \(v_j\).
+At a regular point of \(T\)
+away from the other finitely
+many components of all
+\(D_j\), each \(v_j\) is
+therefore tangent to \(T\).
+Such a point exists because
+a proper analytic subset
+of an irreducible component
+has smaller dimension.
+CF.13 contradicts the
+dimension of its tangent
+space. For \(n=0\) the
+bad transverse set is
+empty.
+
+Fix one of the prescribed
+elements \(s\). In each
+fibration choose \(N\)
+with \(h_j^Ns\in M_0\),
+and adjoin this element
+to its finite coefficient
+generators.
+Express the \(t\)-action
+on the added generator
+using the original ones.
+The enlarged \(T_0(0)\)
+is block triangular with
+the old nilpotent block
+and a zero redundant
+diagonal block.
+The principal presentation
+still presents \(L\).
+Thus the same argument
+continues a representative
+of \(\Phi(h_j^Ns)\).
+Apply \(D_{t,j}^N\) to
+recover a representative
+of \(\Phi(s)\).
+Its difference from the
+prescribed representative
+is holomorphic near zero,
+by CF.8. Add this ordinary
+holomorphic germ back
+on a common smaller
+neighbourhood.
+The continuations from
+all fibrations now agree
+with exactly the same
+initial scalar germ.
+
+Choose one ordinary ball
+\(V\) inside all their
+finitely many product
+domains. A sufficiently
+narrow negative cone
+misses \(S\), by the
+linear root bound in CF.C.
+It contains an initial
+point outside every
+\(D_j\), since finitely
+many proper analytic
+sets cannot fill an open.
+Write \(M'=V\setminus S\).
+
+Agreement of one initial
+branch alone does not
+justify gluing all branches.
+The required path argument
+is as follows.
+A path in \(M'\setminus Z\)
+has a finite cover by balls,
+each missing one \(D_j\).
+Choose its intermediate
+overlap points outside
+all the \(D_j\).
+Inside one such ball,
+two of these points can
+be joined while avoiding
+all the other \(D_k\):
+the complex line through
+them is not contained in
+their union, so its
+intersection with that
+union is discrete.
+A compact line segment
+meets only finitely many
+of these points after
+choosing a slightly
+larger segment domain;
+small planar detours
+avoid them.
+This new path is homotopic
+to the old segment in
+the original ball,
+which misses the selected
+\(D_j\).
+
+Inductively the continuation
+arriving at an overlap can
+be reached along a path
+avoiding every \(D_k\).
+The next fibration therefore
+continues precisely that
+branch; CF.E and its
+homotopy argument identify
+the two paths through
+the ball. This proves
+continuation of every
+branch along every path
+in \(M'\setminus Z\).
+
+#### CF.G. Removal of the codimension-two intersection
+
+We give the two local
+facts required to cross
+\(Z\setminus S\), without
+a boundedness assumption.
+
+An analytic subset of
+complex dimension at
+most \(N-2\) has a
+countable cover by
+Lipschitz images of real
+boxes of dimension at
+most \(2N-4\), where
+\(N=n+1\).
+To see this, use
+local parametrization, Theorem 4.1
+on its finitely many
+irreducible local components.
+The generic-sheet part
+is a smooth manifold.
+Its remaining analytic
+part has smaller dimension
+by Proposition 5.5.
+Repeat on that part;
+dimension decreases at
+each repetition.
+Countable coordinate
+charts and compact
+subcharts yield the
+claimed Lipschitz cover.
+The finite component
+decomposition follows
+directly from Noetherianity:
+a nonprime radical ideal
+splits its zero set
+using \(ab\) in the
+ideal but neither factor
+in it; Noetherian
+induction terminates
+these proper splittings.
+
+Let \(B\) be a small
+convex ball disjoint
+from \(S\).
+Every loop in \(B\setminus Z\)
+contracts there.
+First approximate it by
+a polygonal loop within
+its positive compact
+distance from \(Z\).
+Fill that loop by its
+Lipschitz cone in \(B\).
+Perturb the filling \(F\)
+by \(\beta v\), where
+\(\beta\) is Lipschitz,
+zero on the boundary
+and positive in the
+interior.
+A boundary collar
+remains disjoint from
+\(Z\) for sufficiently
+small \(v\).
+On the sets \(\beta\ge1/k\),
+the forbidden vectors
+are images of pairs
+\((z,y)\) under
+\[
+v=\frac{z-F(y)}{\beta(y)}.
+\tag{CF.25}
+\]
+Their parameter boxes
+have dimension at most
+\((2N-4)+2=2N-2\).
+Each such Lipschitz
+image has zero
+\(2N\)-dimensional
+volume. Indeed a
+bounded \(m\)-box
+has \(O(\delta^{-m})\)
+cubes of side \(\delta\);
+their images fit cubes
+of diameter \(O(\delta)\),
+whose total ambient
+volume tends to zero
+when \(m<2N\).
+Countably many such
+images still have zero
+volume. An arbitrarily
+small permitted \(v\)
+therefore gives a
+contraction missing
+\(Z\). Paths between
+two points are obtained
+by the complex-line
+detours used in CF.F.
+Thus \(B\setminus Z\)
+is connected and simply
+connected. CF.E makes
+every continued branch
+single valued there.
+
+Such a single-valued
+holomorphic function
+extends across \(Z\).
+Choose a nonzero local
+equation vanishing on
+\(Z\), and a line on
+which its first nonzero
+homogeneous part does
+not vanish.
+This line meets \(Z\)
+only at the centre
+locally. Take a small
+circle on it and a
+transverse polydisc
+so the full cylinder
+over the circle misses
+\(Z\).
+The projection of the
+part of \(Z\) inside
+the cylinder is locally
+closed, by compactness
+and the side-boundary
+exclusion. Its image
+has empty interior:
+the preceding box cover
+now projects sets of
+dimension at most
+\(2N-4\) into dimension
+\(2N-2\).
+Define the extension
+by the fixed-circle
+Cauchy integral in
+the line coordinate.
+It is jointly holomorphic.
+Over the dense set
+of transverse points
+outside that projection,
+the whole fibre disc
+misses \(Z\); Cauchy's
+formula gives the
+original function.
+Continuity identifies
+the two functions at
+every remaining point
+outside \(Z\).
+Uniqueness makes these
+extensions agree on
+overlaps.
+
+We may consequently
+continue along paths
+through \(Z\setminus S\)
+as well. For \(N=1\)
+there is no such
+codimension-two set.
+This proves Theorem
+CF.1 for one element.
+There are finitely
+many fibrations,
+relations, prescribed
+elements and maps.
+Intersect their finitely
+many ordinary neighbourhoods
+and take a smaller ball.
+This proves its common-domain
+assertion.
+
+#### CF.H. Exact examples and the scope of continuation
+
+For the complex cusp
+\(S=\{t^2=x^3\}\), take
+\[
+F_0=x,\qquad F_1=x+t/2.
+\tag{CF.26}
+\]
+Their vertical vectors,
+ordered as \((t,x)\),
+are \((1,0)\) and
+\((1,-1/2)\).
+The respective local
+discriminants are
+\(x=0\) and \(x+t/2=0\);
+their cylinders meet
+only at the origin.
+For the second projection,
+the critical equation
+on the cusp is
+\(2t+3x^2/2=0\).
+Together with \(t^2=x^3\)
+it gives
+\(x^3(9x/16-1)=0\).
+The second solution is
+outside a sufficiently
+small neighbourhood,
+so the stated local
+discriminant is exact.
+
+A scalar kernel
+calibration is
+\[
+\begin{gathered}A=-1/2,\quad\alpha=1/8,\\
+ f(t)=\frac{81}{625}\frac{(t-\alpha)^3}{(t+\alpha)^5},\\
+ (t^2-\alpha^2)f(t)\\
+{}-\int_A^t f(s)\,ds=1.\end{gathered}
+\tag{CF.27}
+\]
+Differentiate the last
+left side. The identity
+\((t^2-\alpha^2)f'
++2tf=f\) makes its
+derivative zero.
+Its value at \(A\)
+is one, proving the
+equation on every
+continued contour.
+This checks the sign
+and the fixed memory
+mechanism, not a
+classification theorem.
+
+One fibration alone
+is insufficient.
+The equation
+\[
+\begin{gathered}(t^2-x^3)\partial_t f=f,\\
+ f(A,x)=1.\end{gathered}
+\tag{CF.28}
+\]
+has a holomorphic
+initial negative-cone
+representative
+\[
+\begin{gathered}R(t,\rho)=\log\frac{t-\rho}{t+\rho},\\
+ U(t,\rho)=\\
+\frac{R(t,\rho)-R(A,\rho)}{2\rho},\\
+ f(t,x)=e^{U(t,\rho)},\\
+\rho^2=x^3.\end{gathered}
+\tag{CF.29}
+\]
+The initial logarithms
+expand in odd powers
+of \(\rho\); division
+by \(2\rho\) leaves
+a convergent series
+in \(x^3\), when \(t\)
+and \(A\) are on the
+initial negative side.
+A positive loop about
+\(t=\rho\) multiplies
+this branch by
+\(\exp(\pi i/\rho)\),
+which has an essential
+transverse singularity
+at \(x=0\), even for
+fixed nonzero \(t\).
+Integration by parts
+gives its uniform
+analytic Volterra
+equation
+\[
+\begin{gathered}(t^2-x^3)f(t,x)\\
+{}-\int_A^t(2s+1)f(s,x)\,ds\\
+=A^2-x^3.\end{gathered}
+\tag{CF.30}
+\]
+Thus a full two-time
+kernel and the exact
+principal singular set
+do not by themselves
+prove continuation
+across a vertical
+discriminant.
+The single differential
+relation in two
+variables has
+characteristic equation
+\((t^2-x^3)\tau=0\),
+of dimension three;
+it is not holonomic
+of dimension two.
+The full holonomic
+hypothesis in CF.1
+supplies the finite
+systems in all the
+spanning fibrations,
+which is the additional
+step in CF.F.
+
+![Spanning linear fibrations and a fixed Volterra memory contour](assets/linear-fibration-continuation.png)
+
+**Figure CF.1.** Upper panel:
+the real section of
+the complex cusp
+in CF.26 and its
+two local bad
+cylinders.
+The vector coordinates
+are ordered \((t,x)\);
+the plotted axes are
+ordered \((x,t)\).
+The general spanning
+argument is CF.C
+and the common
+bad-set calculation
+is CF.F.
+Lower panel: the contour
+in CF.27 has upper
+semicircular detours
+of radius \(1/16\)
+about the marked
+points \(\pm1/8\).
+CF.D–CF.E proves
+the full matrix
+memory construction;
+this scalar example
+calibrates its signs.
+Free human source
+context:
+[Kashiwara–Kawai, Holonomic systems III, IV.4.5](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf).
+Full figure,
+editable SVG,
+exact data
+and figure source.
+
+Theorem CF.1 proves
+continuation on one
+common ordinary
+neighbourhood for
+every prescribed
+finite list.
+It does not assert
+finite rank of the
+whole directional
+solution space,
+a common monodromy
+annihilator under
+all infinite-order
+operators, singular
+evaluation separation,
+or the faithful
+D-type embedding.
+Those require their
+own arguments.
 
 
 ## 6. What monodromy misses in the irregular world

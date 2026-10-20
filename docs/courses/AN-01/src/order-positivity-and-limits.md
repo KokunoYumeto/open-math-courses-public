@@ -69,6 +69,40 @@ It follows as well that \(\phi_j\to0\) in this topology exactly when all support
 
 Uniform continuity of each compactly supported derivative makes this converge uniformly to \(\partial^\alpha f\). All approximants have support in one compact neighborhood \(K_1\Subset X\). Bound (1.2) makes their values under \(u\) a Cauchy family. Define the extension by its limit. Two such approximating families have a common larger compact support and their difference tends to zero in \(C^k\), so the limit is independent of the approximation. This also proves linearity and uniqueness, and passing the estimate to the limit proves continuity. When \(\operatorname{supp}f\subset\operatorname{int}K\), small convolutions remain in \(K\), retaining \(C_K\). For tests supported merely in \(K\), use one fixed larger neighborhood \(K_1\) for the whole family. \(\square\)
 
+
+**Proposition 1.3 (the exact order of discrete jets).** Let \(A\subset X\) be locally finite: every compact subset of \(X\) meets only finitely many points of \(A\). At each \(a\in A\), choose a nonzero finite family of coefficients \(c_{a,\alpha}\), and let
+\[
+ r_a=\max\{|\alpha|:c_{a,\alpha}\ne0\},\qquad
+ u=\sum_{a\in A}\sum_\alpha c_{a,\alpha}\partial^\alpha\delta_a.
+ \tag{V1}
+\]
+Then \(u\) is a distribution, its support is \(A\), and it has order at most \(m\) on \(X\) if and only if every \(r_a\le m\). Thus its finite order, when \(A\ne\varnothing\) and the orders are bounded, is exactly \(\max_a r_a\). No lower bound on the nonzero coefficients is required.
+
+**Proof.** Every compact test meets only finitely many points. Its pairing is a finite sum
+\[
+ u(\phi)=\sum_{a,\alpha}c_{a,\alpha}(-1)^{|\alpha|}
+                                      \partial^\alpha\phi(a).
+ \tag{V2}
+\]
+The sum of the absolute coefficients on a fixed compact set, and the largest of their degrees, give (1.2). If all degrees are at most \(m\), the same calculation gives order at most \(m\) on every compact.
+
+Local finiteness implies that \(A\) is relatively closed and that each of its points is isolated. Indeed a closed ball contained in \(X\) contains only finitely many points of \(A\); smaller balls exclude that finite set, or all but its center. Fix \(a\in A\), and choose \(\alpha\) with \(|\alpha|=r_a\), \(c_{a,\alpha}\ne0\). Take a smooth compact \(\eta\), equal to one near zero. For sufficiently small \(\varepsilon>0\), the tests
+\[
+ \phi_\varepsilon(x)=(x-a)^\alpha
+                            \eta((x-a)/\varepsilon)
+ \tag{V3}
+\]
+lie in any prescribed isolating neighborhood of \(a\). Their derivatives at \(a\) vanish in every degree at most \(r_a\) except for the multi-index \(\alpha\), where the value is \(\alpha!\). Therefore
+\[
+ u(\phi_\varepsilon)=
+                (-1)^{r_a}c_{a,\alpha}\alpha!\ne0.
+ \tag{V4}
+\]
+Writing \(\phi_\varepsilon(x)=\varepsilon^{r_a}
+ b((x-a)/\varepsilon)\), \(b(z)=z^\alpha\eta(z)\), shows that each derivative of degree \(j\) has supremum at most \(C_j\varepsilon^{r_a-j}\). If \(m<r_a\), the seminorm \(p_{K,m}(\phi_\varepsilon)\) tends to zero on one common compact neighborhood \(K\), contradicting an order-\(m\) estimate and (V4).
+
+The same nonzero test can be placed in every neighborhood of \(a\), so \(a\) belongs to the support. Off \(A\) a neighborhood misses all points and has zero pairing. This proves the support assertion. If \(A\) is empty the distribution is zero and has order at most every nonnegative integer. \(\square\)
+
 ## One weighted estimate for every support
 
 **Theorem 2.1 (locally finite derivative weights).** A linear form \(u\) is a distribution if and only if there are continuous nonnegative functions \(\rho_\alpha\) on \(X\) such that only finitely many are nonzero on each compact set and
@@ -133,7 +167,16 @@ The included functional foundations prove this exact complex Hahn–Banach state
 
 Let \(C_0(X)\) consist of continuous complex functions vanishing at infinity, meaning that \(\{|f|\ge\varepsilon\}\) is compact for each \(\varepsilon>0\). Its norm is \(\|f\|_\infty\). Such a function is bounded: outside the compact set for \(\varepsilon=1\) it is less than one, and on that compact it has a finite maximum. Compactly supported continuous functions are dense in this norm. Indeed, multiply \(f\) by a cutoff equal to one on \(\{|f|\ge\varepsilon\}\), giving error at most \(\varepsilon\).
 
-**Lemma 3.1 (complex representation on \(C_0\)).** A bounded complex-linear functional \(L\) on \(C_0(X)\) is integration against a unique finite complex Radon measure \(\mu\), with \(|\mu|(X)\le4\|L\|\).
+The space \(C_0(X)\) is complete. A uniformly Cauchy sequence has a uniform limit, by scalar completeness, and the usual uniform-limit estimate proves that the limit is continuous. If \(\|f-f_j\|_\infty<\varepsilon/2\), the set where \(|f|\ge\varepsilon\) is closed in \(X\) and lies in the compact set where \(|f_j|\ge\varepsilon/2\). It is therefore compact, so the limit still belongs to \(C_0(X)\).
+
+**Lemma 3.1 (complex representation on \(C_0\)).** A bounded complex-linear functional \(L\) on \(C_0(X)\) is integration against a unique finite complex Radon measure \(\mu\). Its norm is exactly
+\[
+ \|L\|=|\mu|(X)
+   =\sup_{\substack{f\in C_c^\infty(X)\\\|f\|_\infty\le1}}
+                            \left|\int f\,d\mu\right|.
+ \tag{V5}
+\]
+Conversely every finite complex Radon measure defines such a functional. The supremum in (V5) need not be attained.
 
 **Proof.** For a bounded real-linear functional \(a\) on real \(C_0(X)\), define on \(f\ge0\)
 
@@ -148,7 +191,31 @@ Extend by differences of nonnegative functions. The extension is well-defined: i
 
 Theorem M applied to their restrictions to \(C_c(X;\mathbb R)\) gives positive Radon measures \(\mu_+,\mu_-\). The open-set formula (M5) bounds each total mass by \(\|a\|\). They represent \(a=a_+-a_-\) on \(C_c\); density and the finite mass bounds extend this equality to \(C_0\).
 
-Apply this to \(\operatorname{Re}L\) and \(\operatorname{Im}L\) on real functions, whose norms are at most \(\|L\|\). Their four positive measures give a complex measure representing \(L\), by complex linearity. The variation construction (M10) bounds its mass by the sum of those four masses. The uniqueness for complex Radon measures proved after (M11) gives uniqueness here. \(\square\)
+Apply this to \(\operatorname{Re}L\) and \(\operatorname{Im}L\) on real functions, whose norms are at most \(\|L\|\). Their four positive measures give a complex measure representing \(L\), by complex linearity. The variation construction (M10) bounds its mass by the sum of those four masses. The uniqueness for complex Radon measures proved after (M11) gives uniqueness here.
+
+It remains to compute the norm. Inequality (M11) gives \(\|L\|\le|\mu|(X)\) and also gives the converse construction of a bounded functional from any finite complex Radon measure. Fix a finite Borel partition \(E_1,\ldots,E_q\) of \(X\). Choose
+\[
+ \theta_j=
+ \begin{cases}
+ \overline{\mu(E_j)}/|\mu(E_j)|,&\mu(E_j)\ne0,\\
+ 0,&\mu(E_j)=0,
+ \end{cases}
+ \qquad s=\sum_{j=1}^q\theta_j1_{E_j}.
+ \tag{V6}
+\]
+Then \(|s|\le1\) and \(\int s\,d\mu=\sum_j|\mu(E_j)|\). The variation is a finite positive Radon measure by (M10). Its proved inner regularity on Borel sets supplies compact \(K_j\subset E_j\) with
+\[
+ \sum_j|\mu|(E_j\setminus K_j)<\varepsilon.
+ \tag{V7}
+\]
+The nonempty \(K_j\) are disjoint compact sets. Their pairwise distances are positive, and their union is compactly inside \(X\). Consequently they have pairwise disjoint relatively compact open neighborhoods \(U_j\subset X\): choose sufficiently small distance neighborhoods, satisfying the finitely many pairwise and boundary separation constraints. A missing constraint imposes no restriction; if all \(K_j\) are empty take every cutoff to be zero. The cutoff construction (M1) gives \(0\le\chi_j\le1\), equal to one near \(K_j\), with compact support in \(U_j\). For empty \(K_j\), use \(\chi_j=0\).
+
+The smooth function \(f=\sum_j\theta_j\chi_j\) has compact support and supremum at most one, because its nonzero summands have disjoint supports. It equals \(s\) on \(\bigcup_jK_j\), and \(|f-s|\le2\) elsewhere. Hence (M11) and (V7) give
+\[
+ \left|\int f\,d\mu-\sum_j|\mu(E_j)|\right|<2\varepsilon.
+ \tag{V8}
+\]
+Taking the supremum over these smooth tests and then letting \(\varepsilon\) decrease to zero bounds each partition sum by that supremum. Taking the supremum over finite partitions gives \(|\mu|(X)\) by (M10). This proves all equalities in (V5). It also covers \(\mu=0\). No measurable polar decomposition is needed. \(\square\)
 
 **Theorem 3.2 (measure-derivative representation).** Each \(u\in\mathcal D'(X)\) has a representation
 
@@ -172,13 +239,13 @@ Each \(\nu_\alpha\) is a locally finite complex Radon measure, and each compact 
 
 The scalar triangle inequalities prove the norm properties by summing their finite partial sums and taking increasing limits. Finite-coordinate truncations are dense, since the tails of the convergent nonnegative series tend to zero. Completeness of \(B\) is not needed.
 
-Map a test to \(J\phi=(\rho_\alpha\partial^\alpha\phi)_\alpha\). Each component is continuous with compact support, and only finitely many components occur. Estimate (2.1) makes \(F(J\phi)=u(\phi)\) a well-defined linear functional of norm at most one on \(J\mathcal D(X)\): a zero value of \(J\phi\) forces \(u(\phi)=0\). Extend \(F\) to \(L\) on \(B\) by the included Hahn–Banach proof. Each coordinate restriction has norm at most one, so Lemma 3.1 represents it by a finite complex measure \(\mu_\alpha\) of variation at most four. Density of finite-coordinate truncations gives
+Map a test to \(J\phi=(\rho_\alpha\partial^\alpha\phi)_\alpha\). Each component is continuous with compact support, and only finitely many components occur. Estimate (2.1) makes \(F(J\phi)=u(\phi)\) a well-defined linear functional of norm at most one on \(J\mathcal D(X)\): a zero value of \(J\phi\) forces \(u(\phi)=0\). Extend \(F\) to \(L\) on \(B\) by the included Hahn–Banach proof. Each coordinate restriction has norm at most one, so Lemma 3.1 represents it by a finite complex measure \(\mu_\alpha\) of variation at most one. Density of finite-coordinate truncations gives
 
 \[
  L(g)=\sum_\alpha\int g_\alpha\,d\mu_\alpha.
 \]
 
-The series is absolutely convergent, bounded by \(4\sum_\alpha\|g_\alpha\|_\infty\). Put \(\nu_\alpha=\rho_\alpha\mu_\alpha\). The continuous-weight proof (M12) makes this a locally finite complex Radon measure supported in \(\operatorname{supp}\rho_\alpha\). For compact \(K\), take a larger compact neighborhood \(K_1\Subset X\). All but finitely many weights vanish on \(K_1\), so the corresponding measure supports miss \(\operatorname{int}K_1\). This proves the neighborhood version of local finiteness. Applying the last display to \(J\phi\) proves the first equality of (3.2).
+The series is absolutely convergent, bounded by \(\sum_\alpha\|g_\alpha\|_\infty\). Put \(\nu_\alpha=\rho_\alpha\mu_\alpha\). The continuous-weight proof (M12) makes this a locally finite complex Radon measure supported in \(\operatorname{supp}\rho_\alpha\). For compact \(K\), take a larger compact neighborhood \(K_1\Subset X\). All but finitely many weights vanish on \(K_1\), so the corresponding measure supports miss \(\operatorname{int}K_1\). This proves the neighborhood version of local finiteness. Applying the last display to \(J\phi\) proves the first equality of (3.2).
 
 The distributional derivative is defined by \((\partial^\alpha v)(\phi)=(-1)^{|\alpha|}v(\partial^\alpha\phi)\). A finite-order estimate for the right side shows this is again a distribution. This convention gives the second equality of (3.2). If the order is at most \(k\), the higher weights, and hence their measures, are zero. Conversely, a finite-degree representation satisfies on \(\mathcal D_K\)
 
@@ -192,6 +259,27 @@ The sum is finite. Without a degree bound, the assumed locally finite family sti
 **Corollary 3.3 (order zero is precisely a measure).** Order-zero distributions are exactly locally finite complex Radon measures. The measure is unique and acts continuously on \(C_c(X)\).
 
 **Proof.** Set \(k=0\) in Theorem 3.2 for existence and its converse. If two measures agree on smooth tests, the uniform approximations of Proposition 1.2 and their compact variation bounds give equality on \(C_c(X)\). The local complex-measure uniqueness proved in the measure prerequisite then identifies them. \(\square\)
+
+
+**Corollary 3.4 (the exact dual norm for a summable array).** For the countable array space \(B\) used in Theorem 3.2, every bounded linear functional has a unique representation
+\[
+ L(g)=\sum_\alpha\int_Xg_\alpha\,d\mu_\alpha,\qquad
+ \|L\|=\sup_\alpha|\mu_\alpha|(X)<\infty.
+ \tag{V9}
+\]
+Conversely any family of finite complex Radon measures with this uniformly bounded variation defines a functional on \(B\) by the displayed absolutely convergent series.
+
+**Proof.** Insert a function in just the \(\alpha\)-th coordinate. This inclusion is isometric, so the coordinate restriction \(L_\alpha\) has norm at most \(\|L\|\). Lemma 3.1 gives its unique measure and the identity \(\|L_\alpha\|=|\mu_\alpha|(X)\). Finite-coordinate truncations converge in the norm of \(B\); applying continuity gives the series formula for every \(g\). Conversely, if \(M=\sup_\alpha|\mu_\alpha|(X)<\infty\), then
+\[
+ \sum_\alpha\left|\int g_\alpha\,d\mu_\alpha\right|
+              \le M\sum_\alpha\|g_\alpha\|_\infty=M\|g\|_B.
+ \tag{V10}
+\]
+Thus the series defines a bounded linear functional with norm at most \(M\). Restricting to every coordinate gives the reverse inequality, and Lemma 3.1 gives uniqueness coordinate by coordinate. In particular a Hahn–Banach extension of norm at most one in Theorem 3.2 gives \(|\mu_\alpha|(X)\le1\) for every coordinate, with no summability requirement on those total variations. \(\square\)
+
+![Disjoint smooth tests align the three complex point masses and attain their total variation.](../figures/complex-mass-and-smooth-tests.png)
+
+*For \(\mu=2\delta_{-1}+i\delta_1-3\delta_3\), the left panel shows the real and imaginary parts of a compact smooth test with values \(1,-i,-1\) at the three atoms and supremum one. The right panel shows its three positive integral contributions \(2,1,3\), totaling \(|\mu|(\mathbb R)=6\). Disjoint supports enforce the supremum bound. Lemma 3.1 and Solution 6 give the argument; the curves illustrate the specified smooth formula. [Figure source](../figures/complex-mass-and-smooth-tests.py).*
 
 ## Positivity forces order zero
 
@@ -300,6 +388,12 @@ converge to \(-\delta'_0\) on smooth tests: the fundamental theorem gives \(v_j(
 4. **Two representations of zero — intermediate.** Express the derivative of \(h\in C_c^\infty(\mathbb R)\) in the first form of (3.2). Then use a nonzero \(h\) and \(h'\) to construct a nonzero measure family representing the zero distribution, and check the signs.
 5. **Uniform continuous tests — advanced.** Under Theorem 5.2, suppose a family \(\mathcal B\subset C_c(X)\) has common compact support, uniformly bounded values and a common modulus of continuity after zero extension. Prove convergence is uniform over \(\mathcal B\), using one finite net for the whole family.
 
+
+6. **Aligning three complex masses — foundation.** Let \(\mu=2\delta_{-1}+i\delta_1-3\delta_3\). Construct a compact smooth \(f\) with \(\|f\|_\infty=1\) and \(\int f\,d\mu=6\). Compare this value with the integral of a cutoff equal to one near all three atoms.
+7. **A supremum without a maximizer — intermediate.** On \(\mathbb R\), let \(d\mu=e^{-|x|}\,dx\). Prove that its \(C_0\) functional has norm two but attains that norm at no function in the closed unit ball of \(C_0(\mathbb R)\). Give smooth compact tests whose values approach two.
+8. **Uniform coordinate bounds are enough — intermediate.** Set \(\mu_j=\delta_j\), \(j\ge1\), and \(L(g)=\sum_{j\ge1}g_j(j)\) on \(\ell^1(C_0(\mathbb R))\). Compute its norm. Explain why \(\sum_j|\mu_j|(\mathbb R)<\infty\) is not a hypothesis of Corollary 3.4.
+9. **Small coefficients near a boundary — advanced.** On \(X=(0,1)\), prove that \(u=\sum_{j\ge2}2^{-j}\partial^j\delta_{1/j}\) is a distribution with no finite global order. Determine its support relative to \(X\), and explain why the small coefficients do not change the conclusion.
+
 ## Complete solutions
 
 **Solution 1.** A compact set meets only finitely many positive integers. On \(\mathcal D_K\), the pairing is consequently a finite sum, bounded by \(\sum_{j\in K\cap\mathbb N}p_{K,j}(\phi)\). This is a local finite-order estimate, and is zero when the index set is empty.
@@ -331,7 +425,28 @@ Choose a compact neighborhood and cutoff as in (5.3), giving a common bound \(M\
 
 Each of the finitely many centers converges by (5.2). Taking the supremum and then the limit superior bounds it by \(2M\varepsilon\); let \(\varepsilon\downarrow0\). The single finite net makes this estimate uniform over the entire family.
 
-## Programme proof locations and freely accessible sources
+
+**Solution 6.** Choose disjoint compact smooth bumps \(b_a\), supported in \((a-1/2,a+1/2)\), with \(0\le b_a\le1\), \(b_a(a)=1\), for \(a=-1,1,3\). The function \(f=b_{-1}-ib_1-b_3\) has supremum one because the supports are disjoint. Its integral is \(2+i(-i)-3(-1)=6\). The partition into the three atoms and their complement gives variation at least \(2+1+3\); the triangle inequality bounds every partition sum by six. Thus this is exactly the total variation and functional norm. A cutoff equal to one at all atoms instead has integral \(2+i-3=-1+i\), whose modulus is \(\sqrt2\). Equal test values do not align the different complex phases.
+
+**Solution 7.** Integration on the two half-lines gives \(\mu(\mathbb R)=2\), hence norm two by (V5). Suppose \(\|f\|_\infty\le1\). Since \(f\) vanishes at infinity, \(|f|\le1/2\) outside some interval \([-R,R]\). That outside region has positive measure, so
+\[
+ \left|\int f\,d\mu\right|
+ \le\int|f|\,d\mu
+ \le2-\tfrac12\mu(\mathbb R\setminus[-R,R])<2.
+ \tag{V11}
+\]
+Thus no function in the unit ball attains the norm. On the other hand choose \(0\le\chi_R\le1\), equal to one on \([-R,R]\), supported in \((-R-1,R+1)\). The cutoff proof (M1) supplies smooth such functions, and
+\[
+ 2(1-e^{-R})\le\int\chi_R\,d\mu\le2.
+ \tag{V12}
+\]
+Their pairings tend to two, giving a concrete maximizing sequence.
+
+**Solution 8.** Each coordinate measure has variation one, so (V10) bounds \(L\) by the array norm. A single nonzero coordinate, containing a compact bump equal to one at its indicated integer and of supremum one, gives equality. Hence \(\|L\|=1\). The series of all coordinate variations diverges, but the input suprema form a summable series. Their product bound in (V10), not summability of the measure norms, is what makes the pairing converge.
+
+**Solution 9.** Every compact subset of \((0,1)\) has positive distance from zero and meets only finitely many \(1/j\). Thus the set of atoms is locally finite in this open interval. Proposition 1.3 gives a distribution with support exactly \(\{1/j:j\ge2\}\), a relatively closed subset of \((0,1)\). Given \(m\), choose \(j>m\). In a compact neighborhood of \(1/j\) missing the other atoms, (V3) gives a constant nonzero pairing \((-1)^j2^{-j}j!\), while its derivatives through degree \(m\) tend uniformly to zero. This contradicts an order-\(m\) estimate. The coefficient is fixed and nonzero during this limiting test; its small size as \(j\) changes cannot remove the contradiction.
+
+## Programme proof locations and sources
 
 - [Scalar calculus and Euclidean topology](../prerequisites/U011-free-foundations/metric-foundation-bridges.md): Sections 12.1–12.9 and 13.1–13.5 for arithmetic, compactness, continuity and calculus; Section 13.10 for the exact smooth ball cutoff. This selection retains CC0 1.0.
 - [Complex scalars and finite algebra](../prerequisites/U011-free-foundations/stable-prerequisite-bridges.md): Sections 10.1–10.6 for the scalar and norm rules used in those proofs. CC0 1.0.
@@ -340,3 +455,5 @@ Each of the finitely many centers converges by (5.2). Taking the supremum and th
 - [Positive functionals and locally finite measures](../prerequisites/U011-free-foundations/positive-measure-foundations-U008.md): compact cutoffs, finite partitions, Theorem M, Borel regularity, complex variation, uniqueness and continuous weights, including the locally finite complex-measure convention. This adaptation of the earlier CC0 programme measure lesson is CC0.
 
 The free human sources used for comparison and construction are Semyon Dyatlov's [*Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs*](https://math.mit.edu/~dyatlov/18.155/155-notes.pdf), Section 4.3, Theorems 4.14 and 4.16 and Propositions 4.15, 4.17–4.18; Paul Garrett's [*Banach Spaces*](https://www-users.cse.umn.edu/~garrett/m/fun/notes_2016-17/02_banach.pdf), Section 9, and [*Review of metric spaces*](https://www-users.cse.umn.edu/~garrett/m/fun/notes_2012-13/01_metric_spaces.pdf), Theorem 4.0.1; and D. H. Fremlin's free author edition of [*Measure Theory*, Chapter 43](https://www1.essex.ac.uk/maths/people/fremlin/chap43.pdf), 436J. Their citations do not replace any of the programme proofs listed above.
+
+Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second edition, Springer, 2003, Section 2.1, especially Example 2.1.2 and the measure-duality argument following Theorem 2.1.5.

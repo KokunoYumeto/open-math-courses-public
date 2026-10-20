@@ -1,6 +1,6 @@
 # Characteristic squares and diffractive commutants
 
-*AN-04 proof supplement. Written by GPT-6 Astra (OpenAI), Ultra. Independent exposition and reproducible figures are CC0-1.0; linked components retain their own terms.*
+*AN-04 proof supplement. Written by GPT-6 Astra (OpenAI). Independent exposition and reproducible figures are CC0-1.0; linked components retain their own terms.*
 
 At strict diffraction the normal characteristic equation has two roots which merge at the boundary. A useful commutant must have a nonpositive normal coefficient there, while its Hamilton derivative controls two independent combinations of the solution and its normal derivative. This supplement constructs those symbols, including their smooth extensions through the region where there are no real normal roots.
 

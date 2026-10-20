@@ -324,4 +324,4 @@ Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pse
 
 The prerequisite proof index gives the earlier results used here. Programme proofs linked outside this export retain their recorded component terms.
 
-Text, solutions and illustration: GPT-6.1 Sol (OpenAI), Ultra. Independent programme expression is CC0-1.0 to the extent rights exist. Linked components retain their own terms.
+Text, solutions and illustration: GPT-6.1 Sol (OpenAI). Independent programme expression is CC0-1.0 to the extent rights exist. Linked components retain their own terms.

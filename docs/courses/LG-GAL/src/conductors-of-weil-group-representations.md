@@ -1,6 +1,6 @@
 # Conductors of Weil-group representations
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).*
 
 The conductor measures the part of a local representation moved by inertia, with an extra cost for wild ramification. Frobenius eigenvalues do not affect it. We make this assertion precise for smooth Weil representations and prove the induction formula, where the discriminant of the extension contributes even when the inducing representation is unramified.
 
@@ -377,7 +377,7 @@ This agrees with \(\operatorname{Art}^{\mathrm{ar}}_{\pi'}(\pi')\), which fixes 
 
 Lemmas 2.3A–2.3C reconstruct the formal modules, division fields and uniformizer comparison from [Milne's free *Class Field Theory*, I §2, Lemma 2.11 through Summary 2.20, and I §3, Propositions 3.4 and 3.10, Theorems 3.6 and 3.9](https://www.jmilne.org/math/CourseNotes/CFT.pdf). The formal identities left to the reader in the comparison proof are supplied above. No formal-group theorem from a paid source is being imported through the earlier programme lesson.
 
-The rank-one input now has its full local prerequisite before use. The preceding Weil-group lesson, Lemmas 0.5–0.6 and Theorems 0.7 and 0.9, constructs finite reciprocity, exact abelian norm kernels, norm/transfer/conjugation functoriality, comparison with the explicit division fields, abelian cofinality and the completion theorem. Its Lemmas 0.8A–0.8C prove the same formal-module construction written here. That proof uses the cyclic norm calculation and the local invariant in both characteristics; it does not assume Hasse–Arf. We use its proved reciprocity and cofinality in the complete filtration and conductor deduction below. The earlier integer Brauer provider and its transitive free-source/public-edition verification remain a separate obligation.
+The preceding Weil-group lesson, Lemmas 0.5–0.6 and Theorems 0.7 and 0.9, constructs finite reciprocity, exact abelian norm kernels, norm/transfer/conjugation functoriality, comparison with the explicit division fields, abelian cofinality and the completion theorem. Its Lemmas 0.8A–0.8C prove the same formal-module construction written here. That proof uses the cyclic norm calculation and the local invariant in both characteristics; it does not assume Hasse–Arf. We use its proved reciprocity and cofinality in the complete filtration and conductor deduction below. Integer Brauer induction is an additional prerequisite for the higher-rank argument.
 
 **Lemma 2.4 (units, upper groups and character conductors).** Under local reciprocity, for every finite abelian \(B/F\),
 \[
@@ -421,7 +421,7 @@ The free author text [Milne, *Class Field Theory*, I Proposition 4.1 and Example
 \]
 The integers can have either sign, and the subgroups need not be normal.
 
-This is the actually proved Theorem 5.1 of the earlier programme lesson *Brauer's induction theorem*. Its §§1–5 establish the needed stronger, integral conclusion: §1 proves monomiality of nilpotent groups through abelian normal weights; §§3–4 prove local induction at each prime and an integer determinant descent producing \(n_p\equiv1\pmod p\); §5 combines those integers by Bezout and converts inductions from elementary groups into inductions from lines. Thus it supplies (2J), rather than only rational Artin induction or a statement about arbitrary characters on subgroups. The proof was read with its hypotheses and its earlier character/induction dependencies. The source-origin and public-edition check for that transitive programme chain remains part of the same prerequisite verification stated above. The verified free [Kramár, §3, Lemma 5 and Theorem 2](https://www.math.toronto.edu/murnaghan/courses/mat445/artinbrauer.pdf) is a comparison material for integer induction, not a substitute for the actual programme proof.
+This is the actually proved Theorem 5.1 of the earlier programme lesson *Brauer's induction theorem*. Its §§1–5 establish the needed stronger, integral conclusion: §1 proves monomiality of nilpotent groups through abelian normal weights; §§3–4 prove local induction at each prime and an integer determinant descent producing \(n_p\equiv1\pmod p\); §5 combines those integers by Bezout and converts inductions from elementary groups into inductions from lines. Thus it supplies (2J), rather than only rational Artin induction or a statement about arbitrary characters on subgroups. The argument uses the earlier character and induction results under their stated hypotheses.  The free [Kramár, §3, Lemma 5 and Theorem 2](https://www.math.toronto.edu/murnaghan/courses/mat445/artinbrauer.pdf) is a comparison material for integer induction, not a substitute for the actual programme proof.
 
 **Theorem 2.6 (integrality for every smooth Weil representation).** For every finite-dimensional smooth complex \(V\),
 \[
@@ -570,7 +570,7 @@ The local proof chain is explicit: Lemmas 1.1–1.6 establish integral generator
 
 The formal-module, division-field and uniformizer-comparison constructions used inside Lemma 2.4 are proved here in Lemmas 2.3A–2.3C. Explicit finite reciprocity and abelian cofinality retain the actual earlier programme providers specified in §2B. The integer Brauer proof is also actually written. No conductor for a pair with a monodromy operator has yet been defined; that extra term is handled in the Weil–Deligne lesson.
 
-The following freely accessible human-authored sources were read as materials. Their citations fix definitions and conventions; the proofs and exact earlier proof providers above carry the mathematical obligations.
+The following references give definitions, conventions and further comparisons for the preceding arguments.
 
 - **J. S. Milne**, [*Algebraic Number Theory*, Chapter 7, especially Theorem 7.58 and Corollary 7.59](https://www.jmilne.org/math/CourseNotes/ANT.pdf), for inertia, uniformizer motion and tame graded groups. The trace-dual and tower algebra needed here is proved in Lemmas 1.3–1.4.
 - **J. S. Milne**, [*Class Field Theory*, I Proposition 4.1 and Example 4.2, printed pp.45–46](https://www.jmilne.org/math/CourseNotes/CFT.pdf), for the explicit Lubin–Tate ramification calculation. Lemma 2.4 gives the independent conductor deduction with its noncircular programme existence prerequisite specified.

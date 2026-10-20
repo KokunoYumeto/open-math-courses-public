@@ -1,6 +1,6 @@
 # Elliptic corrections in the original boundary energy norm
 
-Original exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), Ultra, 9 October 2026. CC0-1.0.
+Original exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), 9 October 2026. CC0-1.0.
 
 Subtracting a normal elliptic correction prepares a smooth tangential forcing term, but a propagation argument must eventually return to the original solution. This lesson proves that the correction has every compressed Sobolev order in the original H1 energy norm. Its proof controls the interior kernel on the whole shrinking collar; smooth boundary traces alone do not supply that control.
 

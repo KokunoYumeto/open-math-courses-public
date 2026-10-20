@@ -137,11 +137,11 @@ line(ax, .258, r'$D_4=12n+6,\quad d_{L/F}=12n+14,\quad D_8=36n+26$', 15)
 line(ax, .153, r'$i_8=18n+41,\quad\delta=12n+8,\quad f(E/K)=12n+10$', 15)
 line(ax, .057, 'Every n is proved by the uniform argument; a finite list of cases is not used.', 11)
 
-fig.text(.055, .067, 'Human writing material: J. S. Milne, freely accessible Algebraic Number Theory notes,', fontsize=10, color=ink, va='top')
+fig.text(.055, .067, 'Source: J. S. Milne, freely accessible Algebraic Number Theory notes,', fontsize=10, color=ink, va='top')
 fig.text(.055, .057, 'Proposition 2.43; Proposition 7.55 and Remark 7.56. www.jmilne.org/math/CourseNotes/ANT.pdf', fontsize=9, color=ink, va='top')
 fig.text(.055, .047, f'Every specialized assertion is proved in {prefix}.1–8 or in its exact earlier programme providers.', fontsize=9, color=ink, va='top')
 fig.text(.055, .037, 'Together with Section 6.0AO, this covers h ≥ k, including infinity, under the remaining domain bounds.', fontsize=9, color=ink, va='top')
-fig.text(.055, .027, 'Lower first/third/fourth values, other preparations and universal NF24 remain; full-course review is pending.', fontsize=9, color=ink, va='top')
+fig.text(.055, .027, 'Lower first/third/fourth values and other preparations are outside these hypotheses.', fontsize=9, color=ink, va='top')
 fig.canvas.draw()
 renderer = fig.canvas.get_renderer()
 text_bounds = []

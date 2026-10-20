@@ -1,0 +1,130 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A common modular action</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Strong Kadison–Kastler stability)</a><a href="near-normalizers-at-every-time.html">Previous lesson</a><a href="common-crossed-products.html">Next lesson</a><a href="src/a-common-modular-action.md">Editable source</a></nav><main><article><h1 id="a-common-modular-action">A common modular action</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The previous lesson produced, for a prepared pair <span class="math" data-tex="\(M,N\)">\(M,N\)</span> and every time <span class="math" data-tex="\(t\)">\(t\)</span>, a unitary <span class="math" data-tex="\(n_t\)">\(n_t\)</span> normalizing <span class="math" data-tex="\(M\)">\(M\)</span> and close to <span class="math" data-tex="\(\Delta_N^{it}\Delta_M^{-it}\)">\(\Delta_N^{it}\Delta_M^{-it}\)</span>. These unitaries are chosen one time at a time: they need not be measurable in <span class="math" data-tex="\(t\)">\(t\)</span>, and they need not multiply correctly. This lesson corrects their multiplication law inside the normalizer group of <span class="math" data-tex="\(M\)">\(M\)</span> (Lemma 2.1), by an averaging iteration with an invariant mean on the real numbers as a discrete group. An intertwining argument then gives a single unitary <span class="math" data-tex="\(q\)">\(q\)</span> near the identity such that the modular group of <span class="math" data-tex="\(N\)">\(N\)</span> leaves <span class="math" data-tex="\(qMq^*\)">\(qMq^*\)</span> invariant (Theorem 3.1). The modular group of <span class="math" data-tex="\(N\)">\(N\)</span> itself is unchanged, and this is what makes the crossed products of the next lesson comparable [OpenAI-289, Section 7].</p>
+<p>We use: <a href="close-operator-algebras.html">Close operator algebras</a> (Lemma 1.5); <a href="averaging-and-the-completely-positive-criterion.html">Averaging and the completely positive criterion</a> (Proposition 2.1 and Lemma 2.2, the invariant mean <span class="math" data-tex="\(m\)">\(m\)</span> on <span class="math" data-tex="\(\mathbb R_d\)">\(\mathbb R_d\)</span> and operator means <span class="math" data-tex="\(m_s\)">\(m_s\)</span>); <a href="infinitesimal-normalizers-of-type-iii-factors.html">Infinitesimal normalizers of type III factors</a> (Lemma 4.1 and the groups <span class="math" data-tex="\(\mathcal G_P\subseteq\mathcal N_P\)">\(\mathcal G_P\subseteq\mathcal N_P\)</span>); <a href="near-normalizers-at-every-time.html">Near normalizers at every time</a> (Theorem 1.1).</p>
+<h2 id="1-normalizers-and-their-small-corrections">1. Normalizers and their small corrections</h2>
+<p>For a factor <span class="math" data-tex="\(P\subseteq B(H)\)">\(P\subseteq B(H)\)</span>, <span class="math" data-tex="\(\mathcal N_P\)">\(\mathcal N_P\)</span> is the group of unitaries <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(vPv^*=P\)">\(vPv^*=P\)</span>. It is closed in operator norm (Exercise 5.1 of the lesson on infinitesimal normalizers). By Lemma 4.1 of that lesson, every <span class="math" data-tex="\(v\in\mathcal N_P\)">\(v\in\mathcal N_P\)</span> with <span class="math" data-tex="\(\|v-1\|&lt;1/6\)">\(\|v-1\|&lt;1/6\)</span> factors as <span class="math" data-tex="\(v=ab&#x27;\)">\(v=ab&#x27;\)</span> with <span class="math" data-tex="\(a\in\mathcal U(P)\)">\(a\in\mathcal U(P)\)</span>, <span class="math" data-tex="\(b&#x27;\in\mathcal U(P&#x27;)\)">\(b&#x27;\in\mathcal U(P&#x27;)\)</span> and <span class="math" data-tex="\(\|a-1\|+\|b&#x27;-1\|\le10\|v-1\|\)">\(\|a-1\|+\|b&#x27;-1\|\le10\|v-1\|\)</span>. This local product structure lets an average of normalizers be corrected back into the normalizer group: averages are taken separately in <span class="math" data-tex="\(P\)">\(P\)</span> and in <span class="math" data-tex="\(P&#x27;\)">\(P&#x27;\)</span>.</p>
+<h2 id="2-correction-of-normalizer-representations">2. Correction of normalizer representations</h2>
+<p><strong>Lemma 2.1</strong> (correction of normalizer representations). Let <span class="math" data-tex="\(P\subseteq B(H)\)">\(P\subseteq B(H)\)</span> be a factor and <span class="math" data-tex="\(v_t\in\mathcal N_P\)">\(v_t\in\mathcal N_P\)</span>, <span class="math" data-tex="\(t\in\mathbb R\)">\(t\in\mathbb R\)</span>, any family with
+<span class="math math-display" data-tex="\[
+e:=\sup_{t,s\in\mathbb R}\|v_tv_s-v_{t+s}\|&lt;\frac1{7208}.
+\]">\[
+e:=\sup_{t,s\in\mathbb R}\|v_tv_s-v_{t+s}\|&lt;\frac1{7208}.
+\]</span>
+There is a representation <span class="math" data-tex="\(z\)">\(z\)</span> of the discrete group <span class="math" data-tex="\(\mathbb R_d\)">\(\mathbb R_d\)</span> with values in <span class="math" data-tex="\(\mathcal N_P\)">\(\mathcal N_P\)</span> and
+<span class="math math-display" data-tex="\[
+\sup_t\|z_t-v_t\|\le4e .
+\]">\[
+\sup_t\|z_t-v_t\|\le4e .
+\]</span></p>
+<p><strong>Proof.</strong> <em>Averaging.</em> Put
+<span class="math math-display" data-tex="\[
+F_t(s)=v_{t+s}v_s^*,\qquad A_t=m_sF_t(s).
+\]">\[
+F_t(s)=v_{t+s}v_s^*,\qquad A_t=m_sF_t(s).
+\]</span>
+Each <span class="math" data-tex="\(F_t(s)\)">\(F_t(s)\)</span> is a normalizer with <span class="math" data-tex="\(\|F_t(s)-v_t\|\le e\)">\(\|F_t(s)-v_t\|\le e\)</span>, hence <span class="math" data-tex="\(\|A_t-v_t\|\le e\)">\(\|A_t-v_t\|\le e\)</span> by Lemma 2.2(3) of the averaging lesson. The exact factorization <span class="math" data-tex="\(F_{t+r}(s)=F_t(r+s)F_r(s)\)">\(F_{t+r}(s)=F_t(r+s)F_r(s)\)</span>, translation invariance and the module property give
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+A_{t+r}-A_tA_r\\
+=m_s\bigl[(F_t(r+s)-A_t)(F_r(s)-A_r)\bigr],
+\end{gathered}
+\]">\[
+\begin{gathered}
+A_{t+r}-A_tA_r\\
+=m_s\bigl[(F_t(r+s)-A_t)(F_r(s)-A_r)\bigr],
+\end{gathered}
+\]</span>
+as one checks by expanding the right side; the centered factors have norm at most <span class="math" data-tex="\(2e\)">\(2e\)</span>, so <span class="math" data-tex="\(\|A_{t+r}-A_tA_r\|\le4e^2\)">\(\|A_{t+r}-A_tA_r\|\le4e^2\)</span>. Likewise <span class="math" data-tex="\(1-A_t^*A_t=m_s|F_t(s)-A_t|^2\)">\(1-A_t^*A_t=m_s|F_t(s)-A_t|^2\)</span> has norm at most <span class="math" data-tex="\(4e^2\)">\(4e^2\)</span>.</p>
+<p><em>Staying among normalizers.</em> Taking polar parts of <span class="math" data-tex="\(A_t\)">\(A_t\)</span> in <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span> would leave <span class="math" data-tex="\(\mathcal N_P\)">\(\mathcal N_P\)</span>. Instead, factor <span class="math" data-tex="\(F_t(s)v_t^*=a_{t,s}b&#x27;_{t,s}\)">\(F_t(s)v_t^*=a_{t,s}b&#x27;_{t,s}\)</span> by Lemma 4.1 of the infinitesimal lesson: <span class="math" data-tex="\(F_t(s)v_t^*\)">\(F_t(s)v_t^*\)</span> is a normalizer within <span class="math" data-tex="\(e&lt;1/6\)">\(e&lt;1/6\)</span> of <span class="math" data-tex="\(1\)">\(1\)</span>, so <span class="math" data-tex="\(a_{t,s}\in\mathcal U(P)\)">\(a_{t,s}\in\mathcal U(P)\)</span>, <span class="math" data-tex="\(b&#x27;_{t,s}\in\mathcal U(P&#x27;)\)">\(b&#x27;_{t,s}\in\mathcal U(P&#x27;)\)</span> and <span class="math" data-tex="\(\|a_{t,s}-1\|,\|b&#x27;_{t,s}-1\|\le10e\)">\(\|a_{t,s}-1\|,\|b&#x27;_{t,s}-1\|\le10e\)</span>. These choices need not depend measurably or continuously on anything. The averages <span class="math" data-tex="\(a_t=m_sa_{t,s}\)">\(a_t=m_sa_{t,s}\)</span> and <span class="math" data-tex="\(b&#x27;_t=m_sb&#x27;_{t,s}\)">\(b&#x27;_t=m_sb&#x27;_{t,s}\)</span> lie in <span class="math" data-tex="\(P\)">\(P\)</span> and <span class="math" data-tex="\(P&#x27;\)">\(P&#x27;\)</span> by Lemma 2.2(2) of the averaging lesson, and are within <span class="math" data-tex="\(10e\)">\(10e\)</span> of <span class="math" data-tex="\(1\)">\(1\)</span>. Expanding the centered product <span class="math" data-tex="\((a_{t,s}-a_t)(b&#x27;_{t,s}-b&#x27;_t)\)">\((a_{t,s}-a_t)(b&#x27;_{t,s}-b&#x27;_t)\)</span> under the mean,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|m_s(a_{t,s}b&#x27;_{t,s})-a_tb&#x27;_t\|\le(20e)^2,\\
+\|1-a_t^*a_t\|,\ \|1-b_t&#x27;^*b&#x27;_t\|\le(20e)^2 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|m_s(a_{t,s}b&#x27;_{t,s})-a_tb&#x27;_t\|\le(20e)^2,\\
+\|1-a_t^*a_t\|,\ \|1-b_t&#x27;^*b&#x27;_t\|\le(20e)^2 .
+\end{gathered}
+\]</span>
+Since <span class="math" data-tex="\(10e&lt;1\)">\(10e&lt;1\)</span>, <span class="math" data-tex="\(a_t\)">\(a_t\)</span> and <span class="math" data-tex="\(b&#x27;_t\)">\(b&#x27;_t\)</span> are invertible, and their unitary polar parts <span class="math" data-tex="\(\hat a_t\in P\)">\(\hat a_t\in P\)</span>, <span class="math" data-tex="\(\hat b&#x27;_t\in P&#x27;\)">\(\hat b&#x27;_t\in P&#x27;\)</span> satisfy <span class="math" data-tex="\(\|\hat a_t-a_t\|=\|1-|a_t|\|\le400e^2\)">\(\|\hat a_t-a_t\|=\|1-|a_t|\|\le400e^2\)</span> and the same for <span class="math" data-tex="\(b&#x27;_t\)">\(b&#x27;_t\)</span>. Put
+<span class="math math-display" data-tex="\[
+w_t=\hat a_t\hat b&#x27;_tv_t\in\mathcal N_P .
+\]">\[
+w_t=\hat a_t\hat b&#x27;_tv_t\in\mathcal N_P .
+\]</span>
+Since <span class="math" data-tex="\(A_t=m_s(a_{t,s}b&#x27;_{t,s})v_t\)">\(A_t=m_s(a_{t,s}b&#x27;_{t,s})v_t\)</span> by the module property, <span class="math" data-tex="\(\|w_t-A_t\|\le1200e^2\)">\(\|w_t-A_t\|\le1200e^2\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|w_t-v_t\|\le e+1200e^2,\\
+\|w_tw_r-w_{t+r}\|\le3604e^2,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|w_t-v_t\|\le e+1200e^2,\\
+\|w_tw_r-w_{t+r}\|\le3604e^2,
+\end{gathered}
+\]</span>
+the second by comparing <span class="math" data-tex="\(w_tw_r\)">\(w_tw_r\)</span> with <span class="math" data-tex="\(A_tA_r\)">\(A_tA_r\)</span> (using <span class="math" data-tex="\(\|A_t\|\le1\)">\(\|A_t\|\le1\)</span> and <span class="math" data-tex="\(\|w_r\|=1\)">\(\|w_r\|=1\)</span>), <span class="math" data-tex="\(A_tA_r\)">\(A_tA_r\)</span> with <span class="math" data-tex="\(A_{t+r}\)">\(A_{t+r}\)</span>, and <span class="math" data-tex="\(A_{t+r}\)">\(A_{t+r}\)</span> with <span class="math" data-tex="\(w_{t+r}\)">\(w_{t+r}\)</span>.</p>
+<p><em>Iteration.</em> Repeat with <span class="math" data-tex="\(w\)">\(w\)</span> in place of <span class="math" data-tex="\(v\)">\(v\)</span>. With <span class="math" data-tex="\(e_0=e\)">\(e_0=e\)</span> and <span class="math" data-tex="\(e_{j+1}\le3604e_j^2\)">\(e_{j+1}\le3604e_j^2\)</span>, the bound <span class="math" data-tex="\(e_j&lt;1/7208\)">\(e_j&lt;1/7208\)</span> gives <span class="math" data-tex="\(e_{j+1}\le e_j/2\)">\(e_{j+1}\le e_j/2\)</span>, and each displacement <span class="math" data-tex="\(e_j+1200e_j^2\)">\(e_j+1200e_j^2\)</span> is at most <span class="math" data-tex="\(2e_j\)">\(2e_j\)</span>. The families converge uniformly in <span class="math" data-tex="\(t\)">\(t\)</span>, in operator norm, to unitaries <span class="math" data-tex="\(z_t\)">\(z_t\)</span> with <span class="math" data-tex="\(z_tz_r=z_{t+r}\)">\(z_tz_r=z_{t+r}\)</span>, and <span class="math" data-tex="\(\|z_t-v_t\|\le\sum_j2e_j\le4e\)">\(\|z_t-v_t\|\le\sum_j2e_j\le4e\)</span>. Since <span class="math" data-tex="\(\mathcal N_P\)">\(\mathcal N_P\)</span> is norm closed, <span class="math" data-tex="\(z_t\in\mathcal N_P\)">\(z_t\in\mathcal N_P\)</span>. The multiplication law gives <span class="math" data-tex="\(z_0^2=z_0\)">\(z_0^2=z_0\)</span>, so <span class="math" data-tex="\(z_0=1\)">\(z_0=1\)</span>, and <span class="math" data-tex="\(z_{-t}=z_t^*\)">\(z_{-t}=z_t^*\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-common-modular-action">3. The common modular action</h2>
+<p><strong>Theorem 3.1</strong> (a common modular action). There are absolute constants <span class="math" data-tex="\(c_{\rm mod}&gt;0\)">\(c_{\rm mod}&gt;0\)</span> and <span class="math" data-tex="\(C_{\rm mod}\)">\(C_{\rm mod}\)</span> with the following property. Let <span class="math" data-tex="\(M,N\subseteq B(H)\)">\(M,N\subseteq B(H)\)</span> be a prepared pair with <span class="math" data-tex="\(d_{\rm cb}(M,N)&lt;\gamma&lt;c_{\rm mod}\)">\(d_{\rm cb}(M,N)&lt;\gamma&lt;c_{\rm mod}\)</span>. There is a unitary <span class="math" data-tex="\(q\in B(H)\)">\(q\in B(H)\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|q-1\|\le C_{\rm mod}\gamma,\\
+d_{\rm cb}(qMq^*,N)\le C_{\rm mod}\gamma,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|q-1\|\le C_{\rm mod}\gamma,\\
+d_{\rm cb}(qMq^*,N)\le C_{\rm mod}\gamma,
+\end{gathered}
+\]</span>
+<span class="math math-display" data-tex="\[
+\Delta_N^{it}(qMq^*)\Delta_N^{-it}=qMq^*\qquad(t\in\mathbb R).
+\]">\[
+\Delta_N^{it}(qMq^*)\Delta_N^{-it}=qMq^*\qquad(t\in\mathbb R).
+\]</span>
+The algebra <span class="math" data-tex="\(N\)">\(N\)</span> and its modular group are unchanged.</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(U_t=\Delta_N^{it}\)">\(U_t=\Delta_N^{it}\)</span>. Theorem 1.1 of the previous lesson gives normalizers <span class="math" data-tex="\(n_t\in\mathcal N_M\)">\(n_t\in\mathcal N_M\)</span> with <span class="math" data-tex="\(\|n_t-\Delta_N^{it}\Delta_M^{-it}\|\le C\gamma\)">\(\|n_t-\Delta_N^{it}\Delta_M^{-it}\|\le C\gamma\)</span>. Since <span class="math" data-tex="\(\Delta_M^{it}\)">\(\Delta_M^{it}\)</span> normalizes <span class="math" data-tex="\(M\)">\(M\)</span>, the unitaries <span class="math" data-tex="\(v_t=n_t\Delta_M^{it}\)">\(v_t=n_t\Delta_M^{it}\)</span> lie in <span class="math" data-tex="\(\mathcal N_M\)">\(\mathcal N_M\)</span>, and <span class="math" data-tex="\(\|v_t-U_t\|\le C\gamma\)">\(\|v_t-U_t\|\le C\gamma\)</span>. As <span class="math" data-tex="\(U\)">\(U\)</span> is a representation, <span class="math" data-tex="\(\sup_{t,s}\|v_tv_s-v_{t+s}\|\le3C\gamma\)">\(\sup_{t,s}\|v_tv_s-v_{t+s}\|\le3C\gamma\)</span>. For <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> below an absolute threshold, Lemma 2.1 gives a representation <span class="math" data-tex="\(z\)">\(z\)</span> of <span class="math" data-tex="\(\mathbb R_d\)">\(\mathbb R_d\)</span> in <span class="math" data-tex="\(\mathcal N_M\)">\(\mathcal N_M\)</span> with <span class="math" data-tex="\(\|z_t-U_t\|\le C&#x27;\gamma\)">\(\|z_t-U_t\|\le C&#x27;\gamma\)</span> for all <span class="math" data-tex="\(t\)">\(t\)</span>, where <span class="math" data-tex="\(C&#x27;=13C\)">\(C&#x27;=13C\)</span>.</p>
+<p><em>Intertwining.</em> Put <span class="math" data-tex="\(T=m_t\,z_tU_t^*\)">\(T=m_t\,z_tU_t^*\)</span>. It is within <span class="math" data-tex="\(C&#x27;\gamma\)">\(C&#x27;\gamma\)</span> of <span class="math" data-tex="\(1\)">\(1\)</span>, hence invertible for small <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>. For every <span class="math" data-tex="\(s\)">\(s\)</span>, translation invariance and the two multiplication laws give
+<span class="math math-display" data-tex="\[
+z_sTU_s^*=m_t\,z_{s+t}U_{s+t}^*=T,
+\]">\[
+z_sTU_s^*=m_t\,z_{s+t}U_{s+t}^*=T,
+\]</span>
+so <span class="math" data-tex="\(z_sT=TU_s\)">\(z_sT=TU_s\)</span>. Taking adjoints, <span class="math" data-tex="\(T^*z_s=U_sT^*\)">\(T^*z_s=U_sT^*\)</span>, so <span class="math" data-tex="\(U_sT^*T=T^*z_sT=T^*TU_s\)">\(U_sT^*T=T^*z_sT=T^*TU_s\)</span>: the operator <span class="math" data-tex="\(|T|\)">\(|T|\)</span> commutes with every <span class="math" data-tex="\(U_s\)">\(U_s\)</span>. Its polar part <span class="math" data-tex="\(w=T|T|^{-1}\)">\(w=T|T|^{-1}\)</span> therefore satisfies <span class="math" data-tex="\(z_sw=wU_s\)">\(z_sw=wU_s\)</span>, and <span class="math" data-tex="\(\|w-1\|\le2\|T-1\|\le2C&#x27;\gamma\)">\(\|w-1\|\le2\|T-1\|\le2C&#x27;\gamma\)</span>. In particular <span class="math" data-tex="\(z_s=wU_sw^*\)">\(z_s=wU_sw^*\)</span>, so <span class="math" data-tex="\(z\)">\(z\)</span> is strongly continuous, although the <span class="math" data-tex="\(n_t\)">\(n_t\)</span> were chosen without any regularity.</p>
+<p><em>Conclusion.</em> Put <span class="math" data-tex="\(q=w^*\)">\(q=w^*\)</span>. Since <span class="math" data-tex="\(z_s\)">\(z_s\)</span> normalizes <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(U_s=w^*z_sw\)">\(U_s=w^*z_sw\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;U_s(qMq^*)U_s^*\\
+&amp;\quad =w^*z_s(ww^*)M(ww^*)z_s^*w\\
+&amp;\quad =w^*Mw=qMq^* .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;U_s(qMq^*)U_s^*\\
+&amp;\quad =w^*z_s(ww^*)M(ww^*)z_s^*w\\
+&amp;\quad =w^*Mw=qMq^* .
+\end{aligned}
+\]</span>
+By Lemma 1.5 of <a href="close-operator-algebras.html">Close operator algebras</a>, <span class="math" data-tex="\(d_{\rm cb}(qMq^*,N)\le\gamma+2\|q-1\|\)">\(d_{\rm cb}(qMq^*,N)\le\gamma+2\|q-1\|\)</span>. Enlarging the constant and decreasing the threshold to meet the finitely many absolute smallness conditions proves the theorem. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>Exercise 4.1.</strong> Check the factorization <span class="math" data-tex="\(F_{t+r}(s)=F_t(r+s)F_r(s)\)">\(F_{t+r}(s)=F_t(r+s)F_r(s)\)</span> and the identity for <span class="math" data-tex="\(A_{t+r}-A_tA_r\)">\(A_{t+r}-A_tA_r\)</span>.</p>
+<p><strong>Exercise 4.2.</strong> Show that if <span class="math" data-tex="\(v\)">\(v\)</span> is an exact representation of <span class="math" data-tex="\(\mathbb R_d\)">\(\mathbb R_d\)</span> in <span class="math" data-tex="\(\mathcal N_P\)">\(\mathcal N_P\)</span>, then the construction in the proof of Lemma 2.1 returns <span class="math" data-tex="\(w_t=v_t\)">\(w_t=v_t\)</span> after one step, provided the factorizations are chosen as <span class="math" data-tex="\(a_{t,s}=b&#x27;_{t,s}=1\)">\(a_{t,s}=b&#x27;_{t,s}=1\)</span>.</p>
+<p><strong>Exercise 4.3.</strong> Let <span class="math" data-tex="\(U\)">\(U\)</span> be a strongly continuous unitary group and <span class="math" data-tex="\(z_s=wU_sw^*\)">\(z_s=wU_sw^*\)</span> with <span class="math" data-tex="\(w\)">\(w\)</span> unitary. Show that <span class="math" data-tex="\(z\)">\(z\)</span> is strongly continuous.</p>
+<p><strong>Exercise 4.4.</strong> In the proof of Theorem 3.1, show that <span class="math" data-tex="\(T\)">\(T\)</span> commutes with every operator commuting with all <span class="math" data-tex="\(z_s\)">\(z_s\)</span> and all <span class="math" data-tex="\(U_s\)">\(U_s\)</span>.</p>
+<p><strong>Exercise 4.5.</strong> Why can the unitary <span class="math" data-tex="\(w\)">\(w\)</span> not be obtained by averaging <span class="math" data-tex="\(z_tU_t^*\)">\(z_tU_t^*\)</span> over a probability measure on <span class="math" data-tex="\(\mathbb R\)">\(\mathbb R\)</span> without further information on <span class="math" data-tex="\(t\mapsto z_t\)">\(t\mapsto z_t\)</span>?</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>Solution 4.1.</strong> <span class="math" data-tex="\(F_t(r+s)F_r(s)\)">\(F_t(r+s)F_r(s)\)</span><span class="math" data-tex="\(=v_{t+r+s}v_{r+s}^*v_{r+s}v_s^*=v_{t+r+s}v_s^*\)">\(=v_{t+r+s}v_{r+s}^*v_{r+s}v_s^*=v_{t+r+s}v_s^*\)</span><span class="math" data-tex="\(=F_{t+r}(s)\)">\(=F_{t+r}(s)\)</span>. Expanding <span class="math" data-tex="\(m_s[(F_t(r+s)-A_t)(F_r(s)-A_r)]\)">\(m_s[(F_t(r+s)-A_t)(F_r(s)-A_r)]\)</span> gives <span class="math" data-tex="\(m_s[F_t(r+s)F_r(s)]-A_tA_r\)">\(m_s[F_t(r+s)F_r(s)]-A_tA_r\)</span><span class="math" data-tex="\(-A_tA_r+A_tA_r\)">\(-A_tA_r+A_tA_r\)</span>, using <span class="math" data-tex="\(m_sF_t(r+s)=A_t\)">\(m_sF_t(r+s)=A_t\)</span> and the module property; the first term is <span class="math" data-tex="\(A_{t+r}\)">\(A_{t+r}\)</span>.</p>
+<p><strong>Solution 4.2.</strong> Then <span class="math" data-tex="\(F_t(s)=v_t\)">\(F_t(s)=v_t\)</span> for all <span class="math" data-tex="\(s\)">\(s\)</span>, <span class="math" data-tex="\(A_t=v_t\)">\(A_t=v_t\)</span>, and with trivial factorizations <span class="math" data-tex="\(a_t=b&#x27;_t=1\)">\(a_t=b&#x27;_t=1\)</span>, so <span class="math" data-tex="\(w_t=v_t\)">\(w_t=v_t\)</span>.</p>
+<p><strong>Solution 4.3.</strong> <span class="math" data-tex="\(\|(z_s-z_{s_0})\xi\|=\|(U_s-U_{s_0})w^*\xi\|\)">\(\|(z_s-z_{s_0})\xi\|=\|(U_s-U_{s_0})w^*\xi\|\)</span>.</p>
+<p><strong>Solution 4.4.</strong> If <span class="math" data-tex="\(c\)">\(c\)</span> commutes with every <span class="math" data-tex="\(z_t\)">\(z_t\)</span> and <span class="math" data-tex="\(U_t\)">\(U_t\)</span>, it commutes with <span class="math" data-tex="\(z_tU_t^*\)">\(z_tU_t^*\)</span>, and by the module property of the operator mean with <span class="math" data-tex="\(T\)">\(T\)</span>.</p>
+<p><strong>Solution 4.5.</strong> Averaging against a measure requires the integrand <span class="math" data-tex="\(t\mapsto z_tU_t^*\)">\(t\mapsto z_tU_t^*\)</span> to be measurable, and the <span class="math" data-tex="\(z_t\)">\(z_t\)</span> are produced by choices at each time separately. The invariant mean on <span class="math" data-tex="\(\mathbb R_d\)">\(\mathbb R_d\)</span> needs no measurability.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-289] OpenAI, Universal strong Kadison–Kastler stability, preprint, 23 September 2026, Section 7. https://github.com/openai/math/tree/main/preprints/Universal-strong-Kadison-Kastler-stability-September-23-2026</li>
+<li>[BOT] M. Burger, N. Ozawa, A. Thom, On Ulam stability, Israel Journal of Mathematics 193 (2013), 109–129 (the averaging and polar decomposition iteration for approximate representations). https://arxiv.org/abs/1010.0565</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

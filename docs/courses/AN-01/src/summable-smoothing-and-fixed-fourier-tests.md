@@ -60,6 +60,100 @@ Each derivative sequence converges uniformly, to a continuous function \(g_k\). 
 \(\rho_N^{(k)}(y)-\rho_N^{(k)}(x)=\int_x^y\rho_N^{(k+1)}(t)\,dt\)
 gives \(g_k'=g_{k+1}\). Thus \(\rho=g_0\) is smooth. All functions have support in one fixed compact interval, so uniform convergence also gives convergence in \(L^1\). The integrals, nonnegativity and bounds (S2) follow from the finite ones. \(\square\)
 
+## One-sided averages and their full derivative bounds
+
+Write \(P_a=a^{-1}\mathbf1_{[0,a]}\), and let
+\[
+ u_N=P_{a_0}*\cdots*P_{a_N},\qquad
+ A_N=\sum_{i=0}^N a_i,\qquad a_i>0.                            \tag{B1}
+\]
+Endpoint values of the indicators do not affect any integral. All finite convolutions are nonnegative, have integral one and are supported in \([0,A_N]\), by finite Fubini and addition of the input supports.
+
+**Corollary 1.1 (one-sided summable averages).** For \(N\ge1\), \(u_N\in C_c^{N-1}(\mathbb R)\). For \(0\le j\le N-1\),
+\[
+ \begin{aligned}
+ \|u_N^{(j)}\|_\infty&\le\frac{2^j}{a_0\cdots a_j},\\
+ \|u_N^{(j)}\|_1&\le\frac{2^j}{a_0\cdots a_{j-1}}.
+ \end{aligned}                                                \tag{B2}
+\]
+The second denominator is one when \(j=0\). If \(A=\sum_{i\ge0}a_i<\infty\), these functions and every fixed derivative converge uniformly to a nonnegative \(u\in C_c^\infty(\mathbb R)\), supported in \([0,A]\), with integral one. For every \(j\ge0\),
+\[
+ |u^{(j)}(x)|\le\frac12\|u^{(j+1)}\|_1
+             \le\frac{2^j}{a_0\cdots a_j}.                    \tag{B3}
+\]
+For \(N\ge j+1\) there is the explicit error bound
+\[
+ \|u^{(j)}-u_N^{(j)}\|_\infty
+ \le\frac{2^{j+1}}{a_0\cdots a_{j+1}}
+                   \sum_{i>N}a_i.                           \tag{B4}
+\]
+No monotonicity of the widths is required for these conclusions.
+
+**Proof.** For continuous \(f\), the fundamental theorem gives
+\[
+ (P_a*f)'=a^{-1}(f-\tau_af),\qquad \tau_af(x)=f(x-a).
+                                                               \tag{B5}
+\]
+The convolution of two interval densities is continuous and Lipschitz, as proved in Lemma 1 by the overlap-length formula. Apply (B5) to \(j\) of the factors, leaving at least two undifferentiated. This proves the regularity and the exact identity
+\[
+ u_N^{(j)}
+ =\left[\prod_{i=0}^{j-1}a_i^{-1}(1-\tau_{a_i})\right]
+       (P_{a_j}*\cdots*P_{a_N}).                              \tag{B6}
+\]
+It has \(2^j\) signed terms. Each remaining convolution has integral one and supremum at most \(1/a_j\): integrate the bounded factor \(P_{a_j}\) against the other probability densities. Translations preserve both norms. This proves (B2).
+
+The two-interval overlap estimate also gives a Lipschitz constant
+\[
+ \operatorname{Lip}(u_N^{(j)})
+ \le\frac{2^{j+1}}{a_0\cdots a_{j+1}}
+ \qquad(N\ge j+1).                                           \tag{B7}
+\]
+Indeed leave the factors with indices \(j,j+1\) together in (B6), use their Lipschitz constant \(2/(a_ja_{j+1})\), and average over all later densities. Averaging preserves that constant.
+
+For \(M>N\), \(u_M^{(j)}\) is an average of translates of \(u_N^{(j)}\) by numbers in \([0,\sum_{i=N+1}^M a_i]\). Thus (B7) bounds their uniform difference by its constant times that tail. When the total sum is finite, all fixed derivative sequences are uniformly Cauchy. The fundamental-theorem limit argument in Lemma 1 identifies their limits as the derivatives of one smooth function. All supports lie in the same compact interval \([0,A]\), so the convergence is also in \(L^1\); it preserves mass and the bounds in (B2). Letting \(M\to\infty\) proves (B4).
+
+Finally \(g=u^{(j)}\) is compact and smooth. Integration of \(g'\) from either end gives
+\[
+ |g(x)|\le\min\left(\int_{-\infty}^x|g'|,
+                         \int_x^\infty|g'|\right)
+          \le\frac12\int_{\mathbb R}|g'|.
+\]
+Apply the \(L^1\) bound at order \(j+1\) to obtain (B3), including its factor \(1/2\). \(\square\)
+
+**Proposition 1.2 (a divergent sum moves the mass out of every bounded interval).** Suppose \(0<a_i\le B<\infty\) and \(\sum_i a_i=\infty\). The one-sided convolutions in (B1) converge to zero in \(C^\infty\) on every compact interval. More precisely, put
+\[
+ c_B=\frac{1-e^{-1}}{2B}.
+\]
+For \(j\ge0\), \(N\ge j+1\), and real \(R\),
+\[
+ \sup_{x\le R}|u_N^{(j)}(x)|
+ \le\frac{2^j}{a_0\cdots a_j}
+       \exp\left(\frac R B-c_B\sum_{i=j+1}^N a_i\right).
+                                                               \tag{B8}
+\]
+Every \(u_N\) still has integral one. The conclusion is local convergence, and need not be uniform on the whole line.
+
+**Proof.** For \(0\le t\le B\), convexity of the exponential puts its graph below the chord between the endpoints:
+\[
+ e^{-t/B}\le1-\frac{1-e^{-1}}{B}t.
+\]
+Convexity follows, for instance, from its nonnegative second derivative and the fundamental theorem. Averaging over \(0\le t\le a\le B\) gives
+\[
+ \int e^{-t/B}P_a(t)\,dt\le1-c_Ba\le e^{-c_Ba}.                \tag{B9}
+\]
+For any finite consecutive product of the densities, write its input variables as \(t_i\). On \(\sum t_i\le R\) one has
+\(1\le\exp((R-\sum t_i)/B)\). Integrate this inequality against their product and use Fubini and (B9). The mass of their convolution in \((-\infty,R]\) is at most
+\[
+ \exp\left(R/B-c_B\sum_i a_i\right).                           \tag{B10}
+\]
+This proof uses only finite integrals; no infinite product probability space is needed.
+
+The tail density \(P_{a_j}*\cdots*P_{a_N}\), at a point \(x\le R\), is at most \(1/a_j\) times the mass of \(P_{a_{j+1}}*\cdots*P_{a_N}\) in \((-\infty,R]\). This follows directly from integrating that tail over \([x-a_j,x]\). In (B6) every translation has a nonnegative displacement, so all its evaluations still occur at points at most \(R\). Summing its \(2^j\) terms and applying (B10) proves (B8). The tail sum diverges for each fixed \(j\), proving the asserted convergence. The total mass is always one by finite Fubini, so convergence cannot hold in global \(L^1\). Solution 7 also shows why global uniform convergence cannot be asserted. \(\square\)
+
+![Moving concentration intervals for one-sided averages and the complex neighborhood determined by a factorial bound.](../figures/escaping-averages-and-analytic-tubes.png)
+
+*Left: for \(a_i=1/(i+1)\), the mean \(A_N/2\) moves to the right. The band of radius one about that mean contains at least \(5/6\) of the mass for every \(N\), by the exact second-moment calculation in Solution 7. It is a mass bound, not a graph of the density. Right: the union of disks of radius \(1/4\) centered on \([-1,2]\), the holomorphic domain in [Derivative budgets and unique jets, Theorem 7](derivative-budgets-and-unique-jets.md#factorial-bounds-and-complex-neighborhoods) for \(K=4\). Dashed boundaries are excluded. [Figure source](../figures/escaping-averages-and-analytic-tubes.py).*
+
 ## Directional derivatives in the original norm
 
 **Lemma 2 (a norm-adapted basis).** In a real normed space \(V\) of dimension \(n\ge1\), there is a basis \(e_1,\ldots,e_n\), with coordinate functionals \(\ell_i\), for which
@@ -258,6 +352,32 @@ For bounded \(r\), the polynomial bound of the one compact distribution bounds i
 **Exercise 5 (rescaling the original norm).** Replace \(\|\cdot\|\) in Theorem 3 by \(c\|\cdot\|\), \(c>0\), and every width \(d_j\) by \(cd_j\). Show that the resulting directional bound has the same numerical right side as (S8).
 
 **Solution.** Distances and the width sum are both multiplied by \(c\), so the strict gap assumption is preserved. In order \(k\), the product of direction norms is multiplied by \(c^k\), while the width product is multiplied by the same \(c^k\). They cancel exactly. This shows why it matters to retain the input directions and the original norm in the estimate.
+
+**Exercise 6 (a telescoping width budget).** For \(a_i=d/[(i+1)(i+2)]\), \(d>0\), calculate the support interval, the bound in (B3) and the error bound in (B4).
+
+**Solution.** The identity \(1/[(i+1)(i+2)]=1/(i+1)-1/(i+2)\) gives \(A=d\) and \(\sum_{i>N}a_i=d/(N+2)\). Also
+\[
+ \prod_{i=0}^j a_i=\frac{d^{j+1}}{(j+1)!(j+2)!}.
+\]
+Consequently the limit is supported in \([0,d]\), and
+\[
+ \begin{aligned}
+ \|u^{(j)}\|_\infty&\le\frac{2^j(j+1)!(j+2)!}{d^{j+1}},\\
+ \|u^{(j)}-u_N^{(j)}\|_\infty
+ &\le\frac{2^{j+1}(j+2)!(j+3)!}{d^{j+1}(N+2)}
+ \quad(N\ge j+1).
+ \end{aligned}                                               \tag{B11}
+\]
+These estimates have a fixed derivative order; they do not assert a single convergence rate uniform over every order.
+
+**Exercise 7 (local decay without global uniform decay).** Set \(a_i=1/(i+1)\). Prove that \(u_N\to0\) in every local \(C^j\) norm but \(\|u_N\|_\infty\ge5/12\) for all \(N\ge1\). Establish the mass statement in the figure.
+
+**Solution.** The width sum diverges by comparison with \(\int_1^{N+2}dt/t\), and all widths are at most one. Proposition 1.2 proves local convergence. Put \(m_N=A_N/2\) and \(v_N(x)=u_N(x+m_N)\). Direct integration of \(P_a\) gives mean \(a/2\) and centered second moment \(a^2/12\). Finite Fubini applied to the sum of the input variables gives mean \(m_N\); in the centered square all mixed terms vanish because each centered input has integral zero. Thus
+\[
+ \int x^2v_N(x)\,dx=\frac1{12}\sum_{i=0}^N a_i^2
+ \le\frac16.
+\]
+Here \(\sum_{k\ge1}k^{-2}\le1+\int_1^\infty t^{-2}dt=2\). On \(|x|>1\), \(1\le x^2\), so the mass there is at most \(1/6\). At least \(5/6\) lies in \([-1,1]\), an interval of length two, implying \(\|v_N\|_\infty\ge5/12\). Translation preserves the supremum norm. In the original coordinates this is the asserted band \([m_N-1,m_N+1]\), whose center diverges. Local loss of all mass is consistent with this moving concentration.
 
 ## Sources
 

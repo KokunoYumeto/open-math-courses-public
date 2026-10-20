@@ -63,6 +63,162 @@ On the lower side use reference height \(-T\) and the same two integrals, with t
 
 The logarithmic majorant therefore has integral \(2T\). On compact sets away from height zero, \(G\) is smooth and bounded. This proves the local integrability. \(\square\)
 
+## One more primitive has a continuous trace
+
+An integrable bound for the derivative gives both a boundary trace and a quantitative modulus of continuity. The construction uses vertical integrals; horizontal comparison takes place at a height comparable to the separation of the boundary points.
+
+**Proposition 1.2 (an integrable derivative bound).** Let \(H\) be holomorphic on \(I+i(0,\gamma)\). Fix a compact interval \(J\Subset I\) and \(0<T<\gamma\). Suppose
+
+\[
+|H'(x+it)|\le w(t)\quad(x\in J,\ 0<t<T),
+\qquad W(s)=\int_0^s w(t)\,dt,
+\tag{T1}
+\]
+
+where \(w\) is nonnegative, nonincreasing and integrable on \((0,T)\). Then \(H(x+iy)\) has a uniform limit \(h(x)\) on \(J\) as \(y\downarrow0\), with
+
+\[
+\begin{aligned}
+|H(x+iy)-h(x)|&\le W(y),\\
+|h(x)-h(x')|&\le 2W(d)+d\,w(d)\le3W(d),
+\quad d=|x-x'|\in(0,T).
+\end{aligned}
+\tag{T2}
+\]
+
+Consequently \(H\), with value \(h\) on the boundary, is jointly continuous there. The same conclusions hold on the lower side, using \(H(x-iy)\) and \(|y|\).
+
+**Proof.** The Cauchy–Riemann identity \(H_y=iH'\) and the fundamental theorem on a positive-height interval give
+
+\[
+|H(x+iy)-H(x+iv)|
+\le\int_{\min(y,v)}^{\max(y,v)}w(t)\,dt.
+\tag{T3}
+\]
+
+The right side tends to zero uniformly in \(x\in J\) when \(y,v\downarrow0\). Scalar completeness gives the pointwise limits. Passing \(v\downarrow0\) in (T3) proves the first estimate of (T2), hence uniform convergence. Each positive-height restriction is continuous in \(x\), so its uniform limit is continuous: compare two limiting values through one fixed sufficiently small height and use three terms.
+
+For the quantitative horizontal estimate, compare \(h(x)\) and \(h(x')\) through \(H(x+id)\) and \(H(x'+id)\). The two vertical errors are at most \(W(d)\). The horizontal segment stays over the interval \(J\), and its integral of \(H'\) has modulus at most \(d\,w(d)\). Monotonicity gives \(d\,w(d)\le\int_0^d w(t)\,dt\). This proves the second estimate. Integrability implies \(W(s)\to0\) as \(s\downarrow0\), by dominated convergence applied to \(w\,1_{(0,s)}\). For \(x\to x_0\) and \(y\downarrow0\), the bound
+\(|H(x+iy)-h(x_0)|\le W(y)+|h(x)-h(x_0)|\)
+proves joint continuity.
+
+On the lower side \(dH(x-it)/dt=-iH'(x-it)\); the absolute vertical estimate and the horizontal argument are unchanged. The conclusions agree on overlapping compact intervals, since they are limits of the same function. Thus local hypotheses of this form give a trace on all of \(I\). \(\square\)
+
+**Theorem 1.3 (a continuous primitive represents the boundary).** Under (1.2), each side admits a holomorphic \(H^\pm\) such that
+
+\[
+\partial_x^{N+1}H^\pm=f,\qquad
+H^\pm(x\pm iy)\longrightarrow h^\pm(x)
+\quad\hbox{locally uniformly on }I.
+\tag{T4}
+\]
+
+For \(N\ge1\) the continuous traces are locally Hölder of every exponent \(0<\alpha<1\), and on each compact interval
+
+\[
+\begin{aligned}
+|H^\pm(x\pm iy)-h^\pm(x)|
+   &\le A_Jy\bigl(2+\log(T/y)\bigr),\\
+|h^\pm(x)-h^\pm(x')|
+   &\le3A_Jd\bigl(2+\log(T/d)\bigr),
+\end{aligned}
+\tag{T5}
+\]
+
+for \(0<y,d<T\), where \(d=|x-x'|\). For \(N=0\) the vertical bound is \(C_Jy\), and the trace is locally Lipschitz with constant \(C_J\), whenever \(|f|\le C_J\) on the corresponding compact strip.
+
+For every \(\phi\in C_c^{N+1}(I)\),
+
+\[
+\begin{aligned}
+f_\pm(\phi)
+ &=(-1)^{N+1}\int_I h^\pm(x)\phi^{(N+1)}(x)\,dx,\\
+\left|\int_I f(x\pm iy)\phi(x)\,dx-f_\pm(\phi)\right|
+ &\le A_Jy\bigl(2+\log(T/y)\bigr)
+                    \|\phi^{(N+1)}\|_{L^1}.
+\end{aligned}
+\tag{T6}
+\]
+
+Here \(J\) contains the test support. For \(N=0\), replace the last coefficient by \(C_Jy\). These statements also hold with local polynomial bounds and locally chosen \(N\).
+
+**Proof.** Lemma 1.1 supplies \(G^\pm\) with \(\partial_x^NG^\pm=f\) and the logarithmic bound. Apply the explicit primitive construction (1.4) once more, to \(G^\pm\), obtaining \(H^\pm\) with \((H^\pm)'=G^\pm\). The reference-height integrals are over compact intervals; the estimate on any given \(J\) follows by enlarging it to include the fixed reference point. No existence theorem for path integrals is needed.
+
+For \(N\ge1\) use Proposition 1.2 with
+
+\[
+w(t)=A_J(1+\log(T/t)),\qquad
+W(s)=A_Js(2+\log(T/s)).
+\tag{T7}
+\]
+
+To compute this integral, integrate the logarithm on \((\varepsilon,s)\) and let \(\varepsilon\downarrow0\). The endpoint term \(\varepsilon\log(T/\varepsilon)\) tends to zero: with \(r=\log(T/\varepsilon)\), it is \(Tr e^{-r}\), and \(e^r\ge r^2/2\). This proves (T7) and all trace assertions except the Hölder estimate. For that estimate put \(d=Te^{-r}\), \(r\ge0\). Then
+\[
+d^{1-\alpha}(2+\log(T/d))
+=T^{1-\alpha}(2+r)e^{-(1-\alpha)r}
+\tag{T8}
+\]
+is bounded: differentiation locates any interior maximum, and the same exponential estimate gives decay at infinity. Multiplying by \(d^\alpha\) proves the local Hölder bounds. Distances at least a fixed small positive value are covered by boundedness of the continuous trace on the compact interval.
+
+When \(N=0\), take \(G^\pm=f\) and \(w=C_J\). The vertical estimate is immediate. For the sharper horizontal bound, first integrate \(f=(H^\pm)'\) on the horizontal segment at height \(\pm y\). It gives \(|H^\pm(x\pm iy)-H^\pm(x'\pm iy)|\le C_J|x-x'|\). Let \(y\downarrow0\), proving the stated Lipschitz constant.
+
+At each positive height, integrate by parts \(N+1\) times in \(x\). All endpoint terms vanish, because the test and its derivatives are compactly supported inside \(I\). Thus
+\[
+\int_I f(x\pm iy)\phi(x)\,dx
+=(-1)^{N+1}\int_I H^\pm(x\pm iy)\phi^{(N+1)}(x)\,dx.
+\tag{T9}
+\]
+Uniform convergence of \(H^\pm\) on the support gives (T6), including its error estimate. The limiting functional has order at most \(N+1\), since its modulus is at most
+\(\|h^\pm\|_{L^\infty(J)}|J|\|\phi^{(N+1)}\|_\infty\).
+It equals the preceding lesson's boundary value because both are limits of the same pairings. This proves the boundary theorem directly from primitives, independently of the finite test-polynomial argument. Local constructions agree as distributions on overlaps by the same limit. \(\square\)
+
+The signs in (T6) come solely from horizontal integration by parts. Upper and lower heights do not change those signs; they can change the traces themselves.
+
+### The logarithmic modulus at a simple pole
+
+**Proposition 1.4 (sharpness and the signed jump).** On the upper and lower half-planes choose the logarithms
+\(\log_\pm z=\log|z|+i\arg_\pm z\), with \(0<\arg_+z<\pi\) and \(-\pi<\arg_-z<0\). Put
+
+\[
+H^\pm(z)=z(\log_\pm z-1).
+\tag{T10}
+\]
+
+Then \((H^\pm)''=1/z\). Both have continuous traces at zero, but neither trace is Lipschitz on any interval containing zero. Their boundary difference and its second distributional derivative are
+
+\[
+\begin{aligned}
+h^+(x)-h^-(x)&=2\pi i\,x\,1_{\{x<0\}},\\
+\partial_x^2(h^+-h^-)&=-2\pi i\,\delta_0.
+\end{aligned}
+\tag{T11}
+\]
+
+**Proof.** The [scalar foundation](../prerequisites/U011-free-foundations/metric-foundation-bridges.md), Sections 13.7–13.9, proves the complex exponential, real logarithm and arctangent with their derivatives and circular parametrization. In particular the angles can be written explicitly as
+\(\arg_\pm(x+iy)=\pm\pi/2-\arctan(x/y)\) when \(\pm y>0\). The proved inverse-tangent identities give their claimed ranges and polar coordinates. Differentiating these formulas gives the angle derivatives \(-y/(x^2+y^2)\), \(x/(x^2+y^2)\). The real derivatives of \(\log|z|\) are \(x/(x^2+y^2)\), \(y/(x^2+y^2)\). Combining them proves
+\(\partial_x\log_\pm z=1/z\) and
+\(\partial_y\log_\pm z=i/z\), so these are holomorphic logarithms. The chain and product rules now give (T10)' \(=\log_\pm z\) and (T10)'' \(=1/z\).
+
+At the origin, \(|H^\pm(z)|\le |z|(|\log|z||+\pi+1)\to0\), using the exponential estimate from (T7). Away from zero the one-sided angles tend to zero on the positive real axis and to \(\pm\pi\) on the negative axis. Hence, with \(h^\pm(0)=0\),
+\[
+h^\pm(x)=
+\begin{cases}
+x(\log x-1),&x>0,\\
+x(\log|x|-1\pm i\pi),&x<0.
+\end{cases}
+\tag{T12}
+\]
+For \(x>0\), \(|h^\pm(x)-h^\pm(0)|/x=|\log x-1|\to\infty\); this rules out a Lipschitz bound. On bounded rectangles the logarithm is bounded by a constant times \(1+\log(T/y)\), after adjusting the constant and height \(T\). Indeed \(|z|\ge |y|\), the angle is bounded by \(\pi\), and the positive part of \(\log|z|\) is bounded there. Thus this example has precisely the kind of modulus in (T5).
+
+The first identity in (T11) follows from (T12). For the second, test directly. If \(q(x)=x1_{\{x<0\}}\), integration by parts gives
+\(-\int_{-\infty}^0x\phi'(x)\,dx=\int_{-\infty}^0\phi(x)\,dx\), because the term at zero contains the factor \(x=0\). A second derivative gives
+\(-\int_{-\infty}^0\phi'(x)\,dx=-\phi(0)\).
+Consequently \(q''=-\delta_0\). Combining this with (T6) recovers the upper-minus-lower pole jump with its exact sign. \(\square\)
+
+![Continuous logarithmic primitive and its signed boundary jump](../figures/logarithmic-boundary-trace.png)
+
+*The real trace in (T12) tends to zero while its quotient by \(x>0\) is unbounded. The lower panel shows \(\operatorname{Im}(h^+-h^-)/(2\pi)=x1_{\{x<0\}}\). Its first derivative is \(1_{\{x<0\}}\) and its second is \(-\delta_0\), as proved in (T11). All curves use the exact formulas; the displayed interval is a finite view of their local behavior.*
+
 ## The repeated integral gives the extension and its source
 
 At a nonzero height define the horizontal pairing
@@ -359,6 +515,11 @@ If the boundaries match, the proved radial regularity gives a holomorphic repres
 
 Prove holomorphy away from the positive integers and existence of both distributional boundaries. Show that no fixed polynomial exponent controls every compact horizontal interval. Compute the entire jump and canonical source, with every coefficient, and decide whether the boundaries match.
 
+10. **An integrable power — intermediate.** Replace the logarithmic derivative bound in Proposition 1.2 by \(w(t)=At^{-\beta}\), \(0<\beta<1\). Compute the vertical error and the trace modulus. Use a holomorphic power on the upper half-plane to show that the exponent \(1-\beta\) cannot generally be increased.
+11. **Uniform boundary measurements — intermediate.** For tests with one compact support \(J\) and \(\|\phi^{(N+1)}\|_{L^1}\le1\), prove uniform convergence of the positive-height measurements to their boundaries. Extend this to moving tests converging in \(C^{N+1}\) with that support.
+12. **The ambiguity of a primitive — advanced.** Show that any two holomorphic \((N+1)\)-fold primitives of the same function on a connected strip differ by a complex polynomial of degree at most \(N\). Explain why their continuous traces define the same distribution in (T6).
+13. **Bounded functions need not have a pointwise limit — advanced.** On the upper half-plane take \(f(z)=\exp(i\log_+z)\). Prove boundedness and failure of a limit at zero along the positive imaginary axis. Construct a primitive whose trace is locally Lipschitz, and reconcile these two facts.
+
 ## Complete solutions
 
 **Solution 1.** For \(q>1\), the integral is \((y^{1-q}-T^{1-q})/(q-1)\), at most \(y^{-(q-1)}/(q-1)\). For \(q=1\) it is \(\log(T/y)\). Each reference-height horizontal integral adds only a compact-interval constant. Starting with positive integer \(N\), after \(N-1\) primitives the exponent is one, and one more primitive gives the logarithm. For \(N=0\) the function is already bounded. The nonnegative double integral in Lemma 1.1 gives \(\int_0^T(1+\log(T/y))\,dy=2T\), proving the required integrability.
@@ -420,9 +581,45 @@ The higher-pole boundary formula in the preceding lesson gives
 
 Both point-supported sums are locally finite and therefore define distributions: on each compact set only finitely many derivative evaluations remain, giving a finite-order bound. For a compact horizontal test, split off all the finitely many nearby poles. The remaining tail is holomorphic through a neighborhood of its support and has equal upper and lower traces there, so it has zero jump. This proves the first distribution identity without an unjustified exchange of infinite boundary limits. Formula (5.8) supplies the second, with \((i/2)(-2\pi i)=\pi\). A test supported near \(1\), equal to one at that point, detects \(a_1=1/2\), so the jump is nonzero and the two sides do not extend holomorphically through the whole interval.
 
-## Programme proof locations and freely accessible sources
+**Solution 10.** Here \(W(s)=As^{1-\beta}/(1-\beta)\), so the vertical error is at most this quantity and the horizontal estimate is at most
+\(3Ad^{1-\beta}/(1-\beta)\). For sharpness define
+\(H(z)=\exp((1-\beta)\log_+z)/(1-\beta)\).
+The logarithm derivative proved in Proposition 1.4 and the exponential chain rule give \(H'(z)=\exp(-\beta\log_+z)\), whose modulus is \(|z|^{-\beta}\le y^{-\beta}\). Its trace has value zero at the origin and equals \(x^{1-\beta}/(1-\beta)\) for \(x>0\). If it were Hölder with exponent \(\alpha>1-\beta\) there, the quotient by \(x^\alpha\) would be bounded, but it is \(x^{1-\beta-\alpha}/(1-\beta)\to\infty\).
+
+**Solution 11.** The error estimate (T6) is independent of the chosen test once its support and the indicated \(L^1\) norm are fixed. Its coefficient tends to zero by (T7), proving uniform convergence over the whole family. For moving tests \(\phi_y\to\phi\) in \(C^{N+1}\), their derivative norms in \(L^1\) are bounded by \(|J|\) times their bounded supremum norms. Apply (T6) to \(\phi_y\), then estimate
+\[
+|f_+(\phi_y-\phi)|
+\le \|h^+\|_{L^\infty(J)}|J|
+                 \|(\phi_y-\phi)^{(N+1)}\|_\infty\longrightarrow0.
+\tag{T13}
+\]
+Adding the two errors proves convergence to \(f_+(\phi)\). The same estimates hold below the interval. No bound on a higher derivative is required.
+
+**Solution 12.** Let \(Q\) be the difference. Then \(Q^{(N+1)}=0\). A holomorphic function with zero complex derivative has both real partial derivatives zero by the Cauchy–Riemann equations. Integration along horizontal and vertical segments in the strip makes it constant. Apply this to \(Q^{(N)}\), obtaining a constant \(c\); subtract \(cz^N/N!\) from \(Q\). The resulting \(N\)th derivative is zero. Repeat down to degree zero. This also proves the \(N=0\) case directly. Thus \(Q=P\) for a polynomial of degree at most \(N\). Its trace is the same polynomial on the real interval. For a compact \(C^{N+1}\) test,
+\[
+(-1)^{N+1}\int P(x)\phi^{(N+1)}(x)\,dx
+=\int P^{(N+1)}(x)\phi(x)\,dx=0.
+\]
+All integrations by parts have vanishing endpoint terms. Hence the boundary distribution is independent of the primitive choice.
+
+**Solution 13.** Write \(z=re^{i\theta}\), \(0<\theta<\pi\). Then
+\(f(z)=e^{-\theta}e^{i\log r}\), so \(e^{-\pi}<|f(z)|<1\). Along \(z=iy\) its value is \(e^{-\pi/2}e^{i\log y}\). The sequences \(y_k=e^{-2\pi k}\) and \(\widetilde y_k=e^{-2\pi k-\pi}\) tend to zero and give the distinct values \(e^{-\pi/2}\) and \(-e^{-\pi/2}\). There is no limit at zero.
+
+Nevertheless
+\[
+H(z)=\frac{\exp((1+i)\log_+z)}{1+i},
+\qquad H'=f,\qquad |H(z)|\le |z|/\sqrt2 .
+\tag{T14}
+\]
+The derivative identity follows by the chain rule, and the modulus bound follows from
+\(|\exp((1+i)(\log r+i\theta))|=r e^{-\theta}\).
+Define the trace at zero to be zero; elsewhere its one-sided formula is continuous. The bounded-derivative case of Theorem 1.3 gives Lipschitz constant one on every compact real interval, including those meeting zero. A Lipschitz primitive need not have a derivative continuous at every boundary point. Its distributional derivative is nevertheless exactly the boundary of \(f\), by (T6).
+
+## Programme proof locations and sources
 
 - [Order, positivity and distributional limits](order-positivity-and-limits.md), Proposition 1.2 and Theorem 5.1, and its supplied [functional foundation](../prerequisites/U011-free-foundations/functional-foundations-U008.md), Sections 6 and 14.1–14.2: finite-order extension, Baire and complete smooth support spaces. The finite-\(C^k\) completeness proof is (F1) above. The original lesson is CC0; the selected functional foundation retains CC0 1.0.
 - [Cauchy kernels and distributional boundary limits](cauchy-kernels-and-boundary-limits.md), Theorem 1.1, the harmonic distribution lemma, Proposition 2.1, Corollary 2.2, Theorem 3.1, Corollary 3.2 and the pole formulas in Section 4: relative Cauchy–Pompeiu, radial averaging (R5), regularity, power series, finite-test boundaries and exact jumps. The lesson is CC0; its three supplied foundational selections retain CC0 1.0.
 - Debraj Chakrabarti and Rasul Shafikov, [*Distributional boundary values of holomorphic functions on product domains*, free author preprint, arXiv:1505.01230v1 (2015)](https://arxiv.org/abs/1505.01230v1), Sections 2.3, 2.5 and 2.6: distributional-extension growth, canonical extension and its boundary current. The scaled radial test in Section 2.3 provides a comparison for the growth argument; here the horizontal family bound and the height integral give the precise power \(k+1\). All strip-specific proofs and prerequisites are supplied above or in the exact preceding programme texts.
 - Avi Zeff, [*Lecture 12: Pompeiu's formula* (2026)](https://math.berkeley.edu/~avizeff/complex_analysis_S26/lecture_12.html), Section 2. The complete relative identity used here is proved in the preceding Cauchy-kernel lesson; this free lecture supplies the human-source comparison.
+
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second edition, Springer, 2003, Section 3.1, Theorems 3.1.11–3.1.12: repeated holomorphic primitives and distributional boundaries. The quantitative trace construction and its examples are proved in Section 1 above.

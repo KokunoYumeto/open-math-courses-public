@@ -1,6 +1,6 @@
 # Modular curves over Q and the Eichler–Shimura congruence
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).*
 
 A Hecke operator changes an elliptic curve by taking quotients by finite subgroups. Frobenius changes its coefficients by taking powers in a finite field. In characteristic \(p\), the degree-\(p\) Hecke correspondence separates into Frobenius and its transpose. This geometric identity produces the quadratic polynomials that will describe the Galois representations of weight-two forms.
 
@@ -48,11 +48,11 @@ The quotient and dual have the unambiguous identity \(\widehat q q=[N]\). The tw
 
 #### 1.0Q.1. The precise previously written foundations
 
-The following are the proof providers actually inspected for this construction, not unnamed quotient or moduli theorems.
+The construction uses the following earlier results.
 
 1. The finite nonnegative projective complex computing coherent cohomology after every base change is the actual proof of *Base change and the Grothendieck complex*, Lemma 3.1 and Theorem 3.2. Its finite coherent-cohomology and affine Čech prerequisites retain their earlier-programme scope.
 2. Field curve Riemann–Roch, duality, positive-degree vanishing and degree-three very ampleness are proved in *Abelian varieties*, Lemma 9.11 and Example 9.12, and used explicitly below. Their projective duality, regular-local and proper coherent-finiteness foundations are retained. The earlier elliptic Tate-module lesson, Sections 0.C–0.F, proves proper coherent finiteness, formal functions and proper finite-geometric-fibre finiteness over locally Noetherian bases. Theorem 0.F.1 and the family-embedding argument in Section 0.F.4 supply exactly the finiteness and whole-base closed-immersion steps used here. No unrestricted normalization, conductor or quasi-finite factorization theorem is an input to this Noetherian construction. The basic affine sheaf, Proj, derived, curve and étale prerequisites of those local proofs remain explicit.
-3. Faithfully flat module, algebra and affine-morphism descent are proved at the beginning of *Quotients and torsors*. Its complete affine and global quotient proofs, Theorem 4.3, Corollary 4.4 and Theorem 5.2, were inspected, but the special finite-constant-group quotient required here is proved directly in §§1.0Q.3–1.0Q.4. Its finite affine orbit-neighbourhood mechanism and Lemma 5.4 were also inspected. We do not import their general quotient assertion as a substitute for the construction.
+3. Faithfully flat module, algebra and affine-morphism descent are proved at the beginning of *Quotients and torsors*. For related affine and global quotient results, see Theorem 4.3, Corollary 4.4 and Theorem 5.2 of that lesson, and Lemma 5.4 for finite affine orbit neighbourhoods. Sections 1.0Q.3–4 below prove the special finite-constant-group quotient directly.
 4. The differential criterion for finite flat étale maps, étale local-ring regularity, smoothness over a perfect field and from flatness and smooth fibres, and étale coordinates have actual proofs in *Étale morphisms and their local structure*, Lemma 1.2 and Theorems 1.3 and 5.1, and *Smooth morphisms*, Theorems 2.1, 3.1 and 4.1. Their commutative-algebra flatness and regularity prerequisites are retained.
 5. The field multiplication degree \(n^2\), torsion basis, dual isogeny, and every Weil-pairing property used below are the complete actual proofs in LG-GAL's elliptic Tate-module lesson, Lemmas 1.1–1.4. Its Sections 0.C–0.F prove the Noetherian proper-étale, elliptic multiplication and relative-isogeny assertions; Sections 1.4A.1–1.4A.2 prove the field cyclic quotient, constants and rigidity used by the Weil pairing. Lemma 3.0 supplies the further local lifting argument. Section 1.0Q.6 below extends the field pairing to families without determining maps on a nonreduced base merely from its fibres.
 
@@ -96,9 +96,9 @@ Rescale \(x,y\) together to make the two leading coefficients equal, as in the f
  E:\quad y^2=x^3+ax+b,\qquad 4a^3+27b^2\in\mathcal O_S^\times.       \tag{Q1}
 \]
 
-Here is the scheme-embedding check. The three sections of \(\mathcal O(3O)\) generate it on every fibre, hence on \(E\) by Nakayama. They define \(i:E\to\mathbf P^2_S\). This map is proper (closed graph followed by a proper projection), and every fibre map is a closed immersion by the inspected field very-ampleness proof. Its fibres over points of \(\mathbf P^2_S\) are finite, so foundation 2 makes \(i\) finite. On an affine target chart its algebra cokernel is finite. After tensoring with every base residue field it is zero, because the corresponding fibre map is a closed immersion; finite pushforward here is just affine tensor product. Local Nakayama makes the cokernel zero, so \(i\) is a closed immersion. Its image lies in the cubic given by the relation. That cubic is smooth and flat over \(S\), by the Jacobian calculation with the discriminant unit. The ideal of \(E\) in it has zero fibre: tensoring the ideal sequence is left exact because \(E/S\) is flat. Nakayama makes the ideal zero. This proves (Q1) as a family isomorphism, including over nonreduced \(S\).
+Here is the scheme-embedding check. The three sections of \(\mathcal O(3O)\) generate it on every fibre, hence on \(E\) by Nakayama. They define \(i:E\to\mathbf P^2_S\). This map is proper (closed graph followed by a proper projection), and every fibre map is a closed immersion by the field very-ampleness proof. Its fibres over points of \(\mathbf P^2_S\) are finite, so foundation 2 makes \(i\) finite. On an affine target chart its algebra cokernel is finite. After tensoring with every base residue field it is zero, because the corresponding fibre map is a closed immersion; finite pushforward here is just affine tensor product. Local Nakayama makes the cokernel zero, so \(i\) is a closed immersion. Its image lies in the cubic given by the relation. That cubic is smooth and flat over \(S\), by the Jacobian calculation with the discriminant unit. The ideal of \(E\) in it has zero fibre: tensoring the ideal sequence is left exact because \(E/S\) is flat. Nakayama makes the ideal zero. This proves (Q1) as a family isomorphism, including over nonreduced \(S\).
 
-Here is the relative pointed group-law construction used for the universal short cubic. We actually inspected the complete point-class and secant proofs, *Abelian varieties*, Lemma 9.0a and Theorem 9.0, and its later relative calculation at line 3367. On the square of the universal cubic the three minors of the two coordinate vectors generate the pullback of the projective diagonal ideal, hence its Cartier diagonal ideal. Dividing by a local equation gives three coefficients generating the unit ideal; they glue to the secant-or-tangent line morphism. On the pulled-back cubic this line cuts an effective relative Cartier divisor with fibre degree three, since an integral cubic has no line component. It contains the two universal point graphs as Cartier divisors, including their intersection. More explicitly, in an étale curve parameter their ideals are \(t-p,t-q\). Modulo the second ideal the first becomes \(q-p\), a local equation of the diagonal in the parameter base and a non-zero-divisor. If the line equation is \((t-p)h\) and vanishes modulo \(t-q\), this non-zero-divisor forces \(h\) to vanish there. Thus the equation is divisible by \((t-p)(t-q)\). Away from the intersection the ideals are comaximal and the same divisibility holds. The residual divisor has fibre length one; its local derivative in a curve parameter is a unit. The inspected étale-coordinate criterion makes it étale; it is proper and thus finite, and finite étale rank one is an isomorphism to the parameter base by the unit map and Nakayama. It is therefore the graph of a morphism giving the third point. Reflection through the origin is its restriction, and composing reflection with the third-point map gives addition. These computations construct the operations over
+Here is the relative pointed group-law construction used for the universal short cubic. For the point-class and secant arguments, see *Abelian varieties*, Lemma 9.0a and Theorem 9.0. On the square of the universal cubic the three minors of the two coordinate vectors generate the pullback of the projective diagonal ideal, hence its Cartier diagonal ideal. Dividing by a local equation gives three coefficients generating the unit ideal; they glue to the secant-or-tangent line morphism. On the pulled-back cubic this line cuts an effective relative Cartier divisor with fibre degree three, since an integral cubic has no line component. It contains the two universal point graphs as Cartier divisors, including their intersection. More explicitly, in an étale curve parameter their ideals are \(t-p,t-q\). Modulo the second ideal the first becomes \(q-p\), a local equation of the diagonal in the parameter base and a non-zero-divisor. If the line equation is \((t-p)h\) and vanishes modulo \(t-q\), this non-zero-divisor forces \(h\) to vanish there. Thus the equation is divisible by \((t-p)(t-q)\). Away from the intersection the ideals are comaximal and the same divisibility holds. The residual divisor has fibre length one; its local derivative in a curve parameter is a unit. The étale-coordinate criterion makes it étale; it is proper and thus finite, and finite étale rank one is an isomorphism to the parameter base by the unit map and Nakayama. It is therefore the graph of a morphism giving the third point. Reflection through the origin is its restriction, and composing reflection with the third-point map gives addition. These computations construct the operations over
 
 \[
  B=\mathbf Q[a,b,(4a^3+27b^2)^{-1}].                              \tag{Q2}
@@ -216,7 +216,7 @@ Applying \(\Phi\) to (Q7) gives the \(h\)-coordinate \(z_h\), by (Q5). Applying 
 
 by the second equality of (Q6). Thus (Q4) is an isomorphism, with its nilpotent structure retained.
 
-The Reynolds map \(e=N^{-1}\sum_g g:A\to D\) is a \(D\)-linear retraction. Hence every fibre of the finite projective \(D\)-module \(A\) is nonzero, and \(D\to A\) is faithfully flat. If its fibre rank is \(r>0\), (Q4) says \(r^2=Nr\), hence \(r=N\). Its base change along itself is the disjoint union of \(N\) identities. Differential base change and faithful flatness give \(\Omega_{A/D}=0\); the actually inspected finite-presentation, flat differential criterion makes \(A/D\) étale. Therefore
+The Reynolds map \(e=N^{-1}\sum_g g:A\to D\) is a \(D\)-linear retraction. Hence every fibre of the finite projective \(D\)-module \(A\) is nonzero, and \(D\to A\) is faithfully flat. If its fibre rank is \(r>0\), (Q4) says \(r^2=Nr\), hence \(r=N\). Its base change along itself is the disjoint union of \(N\) identities. Differential base change and faithful flatness give \(\Omega_{A/D}=0\); the finite-presentation, flat differential criterion makes \(A/D\) étale. Therefore
 
 \[
  U\to Y_U=\operatorname{Spec}D
@@ -230,7 +230,7 @@ The invariants commute with *arbitrary* change of \(R\): \(e\) is an idempotent,
 
 #### 1.0Q.4. Invariant relative affine charts and gluing
 
-We now produce the charts of §1.0Q.3, rather than assume an orbit quotient exists. On an affine base open, §1.0Q.2.2 embeds \(E\) in projective space. Any finite set of points of \(E\) has an affine open neighbourhood: if their homogeneous primes are \(\mathfrak p_i\), choose a positive-degree homogeneous element avoiding all of them by homogeneous prime avoidance. Explicitly discard primes contained in another; choose for each remaining prime a homogeneous \(a_i\notin\mathfrak p_i\) in the irrelevant ideal and homogeneous \(b_{ij}\in\mathfrak p_j\setminus\mathfrak p_i\). The products \(a_i\prod_{j\ne i}b_{ij}\), raised to a common degree and added, avoid all the primes, since only the designated summand survives modulo each prime. The corresponding projective standard open cuts out an affine open of the closed embedded \(E\). This is the full finite-set argument of the inspected programme Lemma 5.4, written here for the needed projective case.
+We now produce the charts of §1.0Q.3, rather than assume an orbit quotient exists. On an affine base open, §1.0Q.2.2 embeds \(E\) in projective space. Any finite set of points of \(E\) has an affine open neighbourhood: if their homogeneous primes are \(\mathfrak p_i\), choose a positive-degree homogeneous element avoiding all of them by homogeneous prime avoidance. Explicitly discard primes contained in another; choose for each remaining prime a homogeneous \(a_i\notin\mathfrak p_i\) in the irrelevant ideal and homogeneous \(b_{ij}\in\mathfrak p_j\setminus\mathfrak p_i\). The products \(a_i\prod_{j\ne i}b_{ij}\), raised to a common degree and added, avoid all the primes, since only the designated summand survives modulo each prime. The corresponding projective standard open cuts out an affine open of the closed embedded \(E\). This is the full finite-set argument of the programme Lemma 5.4, written here for the needed projective case.
 
 Apply this to the finite orbit of a point, obtaining an affine open \(V\) containing it. Set
 
@@ -264,7 +264,7 @@ The quotient is of finite presentation over \(S\) by the affine finite-type argu
 
 Flatness descends explicitly. For an injection of base modules, tensor its pullback to a quotient chart with the faithfully flat \(D\)-algebra \(A\). It becomes injective since \(E/S\) is flat. Faithfulness gives injectivity already after tensoring with \(D\), so \(D\) is flat over the base. On a geometric fibre the étale cover \(E_{\bar s}\to E'_{\bar s}\) descends regularity of local rings, by the actual étale-local-ring proof in foundation 4. Over characteristic zero regular finite-type curves are smooth. The flat, finite-presentation fibre criterion therefore makes \(E'/S\) smooth. Its fibres are geometrically connected, since they are surjective images of the connected elliptic fibres, and have dimension one by the finite map.
 
-Their genus is one. On each smooth fibre, translation trivializes the rank-one differential bundle of this proper one-dimensional group: at a point translate its tangent space back to zero, algebraically by the group maps. Thus its canonical degree is zero. The inspected curve duality formula \(2g-2=\deg\Omega^1\) gives \(g=1\). Together with its zero section this proves \(E'/S\) is an elliptic scheme. In particular §1.0Q.2.2 also supplies its relative projective model; projectivity of the quotient was not presumed in its construction.
+Their genus is one. On each smooth fibre, translation trivializes the rank-one differential bundle of this proper one-dimensional group: at a point translate its tangent space back to zero, algebraically by the group maps. Thus its canonical degree is zero. The curve duality formula \(2g-2=\deg\Omega^1\) gives \(g=1\). Together with its zero section this proves \(E'/S\) is an elliptic scheme. In particular §1.0Q.2.2 also supplies its relative projective model; projectivity of the quotient was not presumed in its construction.
 
 The scheme-section identity \([N]P=O\) gives \([N](x+iP)=[N]x\) as scheme maps, so the quotient universal property uniquely produces
 
@@ -300,7 +300,7 @@ Let \(U,V\) be the universal torsion sections on \(E_T\), and put
  D_V=(V)-(O),\qquad M=[n]^*\mathcal O(D_V).
 \]
 
-Every geometric fibre of \(M\) is trivial by the actually inspected field point-class and dual-multiplication proof in the Tate lesson: its class is \([n]V=0\). The second coherent consequence in §1.0Q.2.1 applies because \(T\) is reduced. Locally on \(T\) choose a trivialization of \(M\), giving a relative rational function \(g_V\) with Cartier divisor \([n]^*D_V\). These divisors restrict correctly to fibres: \([n]\) is finite étale and the point divisors are relative Cartier divisors. Translation by \(U\) preserves the displayed divisor since \([n]\circ t_U=[n]\). Therefore
+Every geometric fibre of \(M\) is trivial by the field point-class and dual-multiplication proof in the Tate lesson: its class is \([n]V=0\). The second coherent consequence in §1.0Q.2.1 applies because \(T\) is reduced. Locally on \(T\) choose a trivialization of \(M\), giving a relative rational function \(g_V\) with Cartier divisor \([n]^*D_V\). These divisors restrict correctly to fibres: \([n]\) is finite étale and the point divisors are relative Cartier divisors. Translation by \(U\) preserves the displayed divisor since \([n]\circ t_U=[n]\). Therefore
 
 \[
  e_n(U,V)=g_V(X)/g_V(X+U)                                      \tag{Q15}
@@ -413,12 +413,12 @@ The quotient construction and its marked central return are illustrated below. T
 
 The named earlier programme proofs supply the module-descent, coherent-complex, curve, étale and smoothness interfaces used above. Their transitive foundations remain precisely those recorded in §1.0Q.1. In particular the field pairing retains the finite translation-quotient route through *Abelian varieties*, Proposition 6.3, and *Quotients and torsors*, Theorem 5.2, and the pointed-law compatibility route through rigidity Corollary 2.3. These are explicit programme obligations until their complete supporting proofs are bound.
 
-- [Official Stacks finite quotient proof, Tag 07S5](https://stacks.math.columbia.edu/tag/07S5), including its proof and affine/orbit prerequisites, and [Tag 03C8](https://stacks.math.columbia.edu/tag/03C8), were actually read. The special constant-group algebra (Q4)–(Q8) is written here explicitly, so the theorem citation is not its proof provider.
-- [Official Stacks Tag 03GW](https://stacks.math.columbia.edu/tag/03GW), [Tag 02LN](https://stacks.math.columbia.edu/tag/02LN), [Tag 02LR](https://stacks.math.columbia.edu/tag/02LR), and [Tag 02LS](https://stacks.math.columbia.edu/tag/02LS) were actually read with their full displayed proofs. Their listed supporting lemmas are not declared recursively certified merely because they are linked.
+- [Official Stacks finite quotient proof, Tag 07S5](https://stacks.math.columbia.edu/tag/07S5), including its proof and affine/orbit prerequisites, and [Tag 03C8](https://stacks.math.columbia.edu/tag/03C8), give related proofs. The special constant-group algebra (Q4)–(Q8) is written here explicitly, so the theorem citation is not its proof provider.
+- [Official Stacks Tag 03GW](https://stacks.math.columbia.edu/tag/03GW), [Tag 02LN](https://stacks.math.columbia.edu/tag/02LN), [Tag 02LR](https://stacks.math.columbia.edu/tag/02LR), and [Tag 02LS](https://stacks.math.columbia.edu/tag/02LS) give the corresponding proofs. The argument requires the subsidiary results specified with those proofs.
 - [Milne's freely accessible author notes](https://www.jmilne.org/math/CourseNotes/AV.pdf), I §13, printed pp.57–58, actually supply the reciprocal-translation convention. Lemma 13.1 and Proposition 13.2 there refer elsewhere for their proofs; those references are not imported. The actual local Tate-module Lemma 1.4 supplies the complete elliptic proofs, and §1.0Q.6 here supplies the relative passage.
 - [Deligne–Rapoport's freely accessible original author-hosted paper](https://publications.ias.edu/sites/default/files/Number22.pdf), I §§2 and 6 and IV §3.20–4.4, discusses the relative pairing and quotient conventions. Its relative pairing and quotient remarks are source assertions with explicit imports; they do not replace §§1.0Q.3–1.0Q.8. In particular IV §3.20 calls its relative pairing identification known, rather than writing the proof needed here.
 
-These freely accessible materials provide conventions and comparisons for the written proof. They do not close an unwritten prerequisite through citation.
+These references give conventions and further comparisons for the preceding arguments.
 
 ![Exact relative cyclic quotient, its dual, marked covariance and the chosen central return](../assets/relative-cyclic-quotient-proof-map.png)
 
@@ -847,7 +847,7 @@ existence calculation in Theorem 4.1 compute the effect of changing an oriented
 integral lattice basis. The elementary
 surjectivity \(\operatorname{SL}_2(\mathbf Z)\to
 \operatorname{SL}_2(\mathbf Z/M)\) is proved in the earlier congruence
-subgroups lesson, Lemma 1.1. Those complete proofs were read for this step.
+subgroups lesson, Lemma 1.1. Those results apply to this step.
 
 The convergent Weierstrass series, evaluated at \(1/M,\tau/M\), and then
 normalized by the unit (F6), give a holomorphic map
@@ -931,11 +931,11 @@ their exact foundational interfaces still retained:
   argument. Only the already written analytic constructions are used.
 
 The free original [Deligne–Rapoport paper, IV §5.1–5.4](https://publications.ias.edu/sites/default/files/Number22.pdf)
-was actually inspected on PDF pages 83–84 (zero-based). It describes the
+(PDF pages 84–85) describes the
 analytic frame quotient and its determinant components; its recollection of
 uniformization and reduction is not substituted for the complete earlier
 proofs used in §1.0F.8. The official [Stacks finite quotient proof, Tag 07S5](https://stacks.math.columbia.edu/tag/07S5)
-was read for comparison. Its general theorem does not replace our algebra.
+gives a related comparison. Its general theorem does not replace our algebra.
 The Noetherian finiteness and family-embedding interface is now the written
 local proof in the earlier Tate-module lesson, Sections 0.C–0.F. Those proofs
 apply on nonreduced bases and keep the full coherent and infinitesimal data.
@@ -1475,7 +1475,7 @@ The normalization of the point diamond and its classical term are actually check
 
 Lemma 1.4 supplies the algebraically closed field-extension step in the degree-one arithmetic comparison, including its trace, cup pairing and finite correspondences. Its Jacobian base-change argument uses the actual all-test-scheme representation and rigidification in the earlier Picard construction. The earlier Picard, duality and analytic Riemann–Roch proofs have their own prerequisite proofs, which remain required.
 
-The sources listed below are freely accessible mathematical materials. Actual earlier programme proofs are bound by their written titles and numbered locators above. In particular none of the analytic comparison or algebraic-geometry bindings here asserts that an uninspected transitive prerequisite has been certified. The full analytic Abel–Jacobi torus uniformization is not used as a substitute for Lemma 1.3's Kummer and cup argument.
+The sources listed below are freely accessible mathematical materials. Actual earlier programme proofs are bound by their written titles and numbered locators above. In particular none of the analytic comparison or algebraic-geometry bindings here asserts that an untransitive prerequisite has been certified. The full analytic Abel–Jacobi torus uniformization is not used as a substitute for Lemma 1.3's Kummer and cup argument.
 
 ## 8. Graded exercises with complete solutions
 

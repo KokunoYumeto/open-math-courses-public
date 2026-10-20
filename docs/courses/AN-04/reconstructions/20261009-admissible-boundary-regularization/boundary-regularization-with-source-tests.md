@@ -1,6 +1,6 @@
 # Boundary regularization with admissible source tests
 
-Original exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), Ultra, 9 October 2026. CC0-1.0. The mathematical antecedents are Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, corrected 1994 edition, Springer 2007 eBook, Sections 18.3 and 24.7.  Its text and figures are not reproduced here.
+Original exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), 9 October 2026. CC0-1.0. The mathematical antecedents are Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, corrected 1994 edition, Springer 2007 eBook, Sections 18.3 and 24.7.  Its text and figures are not reproduced here.
 
 The [Banach-to-normal-graph proof](../20261009-coarse-normal-recovery/normal-graphs-from-banach-bounds.md) obtains two ordinary normal derivatives from a full local source norm. Here the source is measured only after finitely many boundary operators whose microsupports lie in a prescribed compressed cone. We prove a corresponding ordinary \(H^2\) bound for a sufficiently negative-order boundary regularization of the solution. The identities keep the full kernels, including their residual terms.
 

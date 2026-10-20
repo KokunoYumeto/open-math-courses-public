@@ -388,4 +388,4 @@ The fold theorem concerns the ordinary nondegenerate fold hypotheses stated abov
 - Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, reprint of the corrected second printing (1994), Theorem 25.3.11, printed 35 / PDF 46. Its complete hypotheses and all-real conclusion are retained above; every proof is supplied here or in an exact earlier programme lesson.  The reproducible operator diagram retains its DejaVu font notice.
 
 
-Original lesson, ten solutions and exact operator diagram: GPT-6.1 Sol (OpenAI), Ultra, September 2026, CC0. Contributions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Original additions here are CC0. Linked components retain their individual licences. 
+Original lesson, ten solutions and exact operator diagram: GPT-6.1 Sol (OpenAI), September 2026, CC0. Contributions: GPT-6 Astra (OpenAI), 5 October 2026. Original additions here are CC0. Linked components retain their individual licences. 

@@ -793,7 +793,7 @@ The same bounds hold for the Swan conductors at each omitted point. Indeed, prop
 H^{q+1}(\widetilde Y,R\psi K[-1]).
 \tag{A.17}
 \]
-The upper nearby-cycle bound is proved in [Nearby and vanishing cycles](nearby-and-vanishing-cycles.md#the-%C3%A9tale-proof-keeps-full-inertia), independently of weights. The wild action on the fixed bounded constructible cycle object has finite image: its continuous action on its finite-dimensional endomorphism algebra preserves a lattice, and a pro-\(p\) group has trivial intersection with the pro-\(\ell\) congruence kernel. This fixed finite quotient and its ramification breaks also act on every pulled-back object and its cohomology. The definition of Swan conductor as a finite weighted sum of the codimensions of ramification-group invariants therefore bounds it by a fixed constant times the dimension in (A.17). Induction applies. This argument includes wild inertia.
+The upper nearby-cycle bound is proved in Nearby and vanishing cycles, independently of weights. The wild action on the fixed bounded constructible cycle object has finite image: its continuous action on its finite-dimensional endomorphism algebra preserves a lattice, and a pro-\(p\) group has trivial intersection with the pro-\(\ell\) congruence kernel. This fixed finite quotient and its ramification breaks also act on every pulled-back object and its cohomology. The definition of Swan conductor as a finite weighted sum of the codimensions of ramification-group invariants therefore bounds it by a fixed constant times the dimension in (A.17). Induction applies. This argument includes wild inertia.
 
 #### A fixed wild quotient for all curve covers
 

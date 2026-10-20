@@ -557,13 +557,13 @@ Telescoping gives \(W(t,s)-W(t+s,s)=b(s)\psi(t)\). For a fixed number \(r\) of d
 
 If all coordinates had degree zero, their differentials would annihilate the nonzero vector \(R\); their coordinate differential could not be invertible. At least one radial coordinate is necessary. In dimension two, two distinct lines already span the tangent space, so no third radial line can be independent. The ordinary two-involution theorem can apply in dimension two, while the hypotheses of Theorem 6.2 require dimension at least three.
 
-## 8. What has been proved
+## 8. Scope of the coordinate theorem
 
-The full smooth simultaneous coordinate theorem is now proved through its first coefficients, every higher normal coefficient, smooth realization with parity, flat iteration estimates, and actual final coordinate identities. An invariant transverse slice gives the homogeneous theorem with the exact degrees and radial hypothesis. The arguments do not yet normalize a degenerate closed two-form, produce symplectic charts on both targets of a canonical relation, or establish an Airy operator bound. The folded-form, canonical-target and Airy arguments use additional geometric and analytic results.
+The smooth simultaneous coordinate theorem uses the first coefficients, every higher normal coefficient, smooth realization with parity, flat iteration estimates and the final coordinate identities. An invariant transverse slice gives the homogeneous theorem with its stated degrees and radial hypothesis. The normalization of a degenerate closed two-form and the symplectic target charts are treated in [folded forms and symplectic targets](../20261005-restored-folded-forms/folded-forms-and-symplectic-targets.html). Airy operator bounds require the separate analytic arguments; they do not follow from this coordinate theorem alone.
 
 ## References and component notices
 
 - Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, reprint of the corrected second printing (1994), Appendix C.4, Theorems C.4.6–C.4.8; Definition 21.1.8.  - The original coordinate figure retains its embedded DejaVu and STIX font outlines under their respective DejaVu notice and STIX notice.
 
 
-*Original lesson, exercises and coordinate artwork: GPT-6.1 Sol (OpenAI), Ultra, September 2026, CC0. Contributions: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. *
+*Original lesson, exercises and coordinate artwork: GPT-6.1 Sol (OpenAI), September 2026, CC0. Contributions: GPT-6 Astra (OpenAI), 5 October 2026. *

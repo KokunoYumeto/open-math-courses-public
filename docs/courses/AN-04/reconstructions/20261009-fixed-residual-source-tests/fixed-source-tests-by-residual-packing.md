@@ -1,6 +1,6 @@
 # Fixed source tests by packing residual outputs
 
-Original exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), Ultra, 9 October 2026. CC0-1.0. The antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, corrected 1994 edition, Springer 2007 eBook, Sections 18.3 and 24.7.  The argument below supplies a constructive fixed-test step in the parameter-dependent observation problem.
+Original exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), 9 October 2026. CC0-1.0. The antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, corrected 1994 edition, Springer 2007 eBook, Sections 18.3 and 24.7.  The argument below supplies a constructive fixed-test step in the parameter-dependent observation problem.
 
 The [admissible regularization proof](../20261009-admissible-boundary-regularization/boundary-regularization-with-source-tests.md) controls a regularized solution by finitely many source operators that can vary with the coefficient parameter. Here we replace a smooth compact parameter family of those operators by two fixed tests: one elliptic in the prescribed compressed cone and one residual. The residual test is an actual compact boundary operator; its source contribution is not discarded.
 

@@ -1,6 +1,6 @@
 # The converse and composition series
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
 Ideal factorization appears to be a conclusion about multiplication. In fact, it also forces finite generation, dimension one and integral closedness. We first recover these properties from unique factorization, then read prime multiplicities from the simple constituents of quotient modules. Finally, we prove that the existence of factorizations already forces uniqueness. This connects ideal theory to a general invariant, module length.
 
@@ -206,11 +206,11 @@ Matusita proves the existence-only implication in [Matusita, Section 2, Satz 5].
 
 ## What this lesson does not prove
 
-Jordan–Hölder is proved in Noetherian and Artinian rings, Theorem 3.2, as specified at the start. The two converses, integral closedness, the composition series and both non-factorization examples are proved here. The proof of Theorem 4.3 includes the localization and quotient comparisons on which it depends; its free reference supplies source material rather than replacing an argument.
+Jordan–Hölder is proved in Noetherian and Artinian rings, Theorem 3.2, as specified at the start. The two converses, integral closedness, the composition series and both non-factorization examples are proved here. The proof of Theorem 4.3 includes its localization and quotient comparisons.
 
 ## References
 
 - **[Noether]** Emmy Noether, *Abstrakter Aufbau der Idealtheorie in algebraischen Zahl- und Funktionenkörpern*, Mathematische Annalen **96** (1927), 26–61, Sections 4, 9 and 10, [freely accessible journal scan](https://visuallibrary.net/download/pdf/154089.pdf).
-- **[Stacks]** The Stacks Project, Tags [034X](https://stacks.math.columbia.edu/tag/034X), [00IU](https://stacks.math.columbia.edu/tag/00IU) and [00IX](https://stacks.math.columbia.edu/tag/00IX), also in the corresponding sections of the [AI Integrated Stacks Project English algebra reader](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html). AI Integrated Stacks Project contains AI-proposed corrections and AI-written additions and is not reviewed by the Stacks Project's maintainers.
+- **[Stacks]** The Stacks Project, Tags [034X](https://stacks.math.columbia.edu/tag/034X), [00IU](https://stacks.math.columbia.edu/tag/00IU) and [00IX](https://stacks.math.columbia.edu/tag/00IX), also in the corresponding sections of the [AI Integrated Stacks Project English algebra reader](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html). The edition includes AI-authored supplementary material.
 - **[Milne]** J. S. Milne, *Algebraic Number Theory*, Chapter 3, [author's notes](https://www.jmilne.org/math/CourseNotes/ANT.pdf).
 - **[Matusita]** Kameo Matusita, *Über ein bewertungstheoretisches Axiomensystem für die Dedekind-Noethersche Idealtheorie*, Japanese Journal of Mathematics **19** (1944), 97–110, Section 2, especially Satz 5 and the argument on pp. 103–106, [freely accessible journal edition](https://www.jstage.jst.go.jp/article/jjm1924/19/1/19_1_97/_pdf/-char/en).

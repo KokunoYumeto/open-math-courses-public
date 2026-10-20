@@ -268,6 +268,82 @@ a contradiction. Therefore \(T\ge A_m/16\) for every \(m\), and taking increasin
 
 *For \(M_{2r}=((2r)!)^2\) and \(M_{2r+1}=e^3(2r)!(2r+2)!\), the odd logarithmic weights lie three units above their neighboring chord. The left panel shows this convex boundary through index eight; the mathematical definition continues for every index. The right panel shows its exact paired widths \(a_{2r+1}=a_{2r+2}=1/[(2r+1)(2r+2)]\) and their cumulative sum, tending to \(2\log2\). Lemma 1 and Exercise 3 prove the minorant and the infinite sum. The finite sum permits the compact function in (J14). [Editable figure source](../figures/convex-weights-and-widths.py).*
 
+## Factorial bounds and complex neighborhoods
+
+We use the supplied [complex contour proofs](../prerequisites/U011-free-foundations/complex-contours-U070.md), Sections 16.1–16.3: the triangle argument, circle formula, all derivative estimates, identity principle and joint power series on polydiscs. In particular these results follow from complex differentiability, rather than being assumed in its definition. [Derivative growth and finite-order localization, Proposition 3](derivative-growth-and-finite-order-localization.md#growth-scales-and-a-useful-shift-estimate) proves the real Taylor remainder and factorial bounds used below.
+
+**Theorem 7 (a common complex neighborhood of an interval).** Let \(I=[a,b]\), \(a<b\), and let \(f\in C^\infty(I)\): all real derivatives exist on the interior and extend continuously to the one-sided endpoint derivatives. Suppose
+\[
+ \sup_I|f^{(j)}|\le K^{j+1}j!\quad(j\ge0),\qquad K\ge1.
+                                                               \tag{A1}
+\]
+There is a unique holomorphic extension of \(f\) to
+\[
+ \Omega_{1/K}(I)=\bigcup_{y\in I}\{z\in\mathbb C:|z-y|<1/K\}.
+                                                               \tag{A2}
+\]
+For every \(y\in I\), on its indicated disk this extension is
+\[
+ \begin{aligned}
+ F(z)&=\sum_{j=0}^\infty\frac{f^{(j)}(y)}{j!}(z-y)^j,\\
+ |F(z)|&\le\frac{K}{1-K|z-y|}.
+ \end{aligned}                                               \tag{A3}
+\]
+Conversely, the restriction of any holomorphic function on an open complex neighborhood of \(I\) satisfies (A1) for some \(K\). Thus the factorial class on the whole compact interval is exactly the class of these restrictions, including extension past both endpoints.
+
+**Proof.** At any \(y\in I\), (A1) bounds the \(j\)-th series term by \(K(K|z-y|)^j\). On every smaller closed disk the series and every fixed differentiated series converge uniformly: their bounds are geometric terms times a polynomial in \(j\), whose successive ratio tends to a number below one. The uniform differentiation theorem gives a holomorphic sum. Summing the undifferentiated geometric series gives (A3).
+
+For a real \(x\in I\) with \(|x-y|<1/K\), the integral Taylor remainder after degree \(m-1\) is at most \(K(K|x-y|)^m\). It tends to zero, so this local sum equals \(f(x)\). The same argument holds at the endpoints with one-sided derivatives and the segment contained in \(I\).
+
+If two of the disks overlap, their real centers have distance less than \(2/K\). Their intersection is convex, hence connected, and contains a nonempty real interval inside \(I\): use their midpoint when the centers differ, and a small interval on the available side when they coincide at an endpoint. Both sums equal \(f\) on that interval. The one-variable identity principle makes them equal throughout the overlap. They therefore define one holomorphic function on (A2). That domain is connected, since every disk meets the interval of centers. The identity principle also proves uniqueness.
+
+For the converse, compactness gives \(r>0\) such that all closed radius-\(r\) disks centered on \(I\) lie in the given open neighborhood. Their union is compact, so \(F\) has a finite bound \(M\) there. The proved Cauchy estimate gives
+\[
+ |F^{(j)}(x)|\le M r^{-j}j!\quad(x\in I).
+                                                               \tag{A4}
+\]
+Take \(K\ge\max(1,M,r^{-1})\). Restriction of the power series shows that these complex derivatives restrict to all real derivatives, including the one-sided endpoint values. This proves (A1). \(\square\)
+
+**Corollary 8 (the several-variable statement with compatible extensions).** Let \(X\subset\mathbb R^n\) be open and \(f\in C^\infty(X)\). The following are equivalent:
+
+1. For every compact \(K_0\subset X\), there are \(A,B\ge1\) such that
+\[
+ \sup_{K_0}|\partial^\alpha f|
+       \le A B^{|\alpha|}|\alpha|!\quad\hbox{for all }\alpha.
+                                                               \tag{A5}
+\]
+2. There is an open \(\Omega\subset\mathbb C^n\) containing \(X\) and a holomorphic \(F\) on \(\Omega\) whose restriction is \(f\).
+
+The holomorphic germ at every point of \(X\) is unique. The condition with \(\alpha!\) instead of \(|\alpha|!\) defines the same local class, after changing \(B\).
+
+**Proof.** Fix a real center \(y\) and a closed real \(\ell^1\) ball about it compactly contained in \(X\). On that ball choose the constants in (A5). For a sufficiently small \(r<1/B\), the series
+\[
+ F_y(z)=\sum_{\alpha\in\mathbb N_0^n}
+                  \frac{\partial^\alpha f(y)}{\alpha!}(z-y)^\alpha
+                                                               \tag{A6}
+\]
+converges absolutely on the complex ball \(|z-y|_1<r\). Indeed the sum of the absolute terms of total degree \(m\) is at most
+\[
+ A B^m\sum_{|\alpha|=m}\frac{m!}{\alpha!}|(z-y)^\alpha|
+       =A(B|z-y|_1)^m.                                       \tag{A7}
+\]
+Its differentiated series converge uniformly on smaller neighborhoods, by the same geometric bounds with polynomial factors, or the explicit coefficient calculation in Proposition 3 cited above, with complex absolute values. This gives holomorphy. The real integral Taylor formula on the ball has the same remainder bound as (A7), so \(F_y=f\) on its real part.
+
+Choose each radius so that its real ball lies in \(X\). Two such complex balls have a convex intersection. If that intersection is nonempty, taking real parts of one of its points shows that their real balls intersect in a nonempty real open set. The two holomorphic functions coincide there. To pass from that real set to a complex neighborhood, put a small complex polydisc about one of its real points inside the intersection. Fix all but the first coordinate real and apply the one-variable identity principle; then fix all but the second coordinate, allowing the first to be complex, and continue through every coordinate. The difference is zero on the polydisc.
+
+For any other point of the convex intersection, restrict the difference to the complex line joining it to a point of this zero polydisc. The line parameter has an open domain containing the real segment from zero to one, all in one connected component. It is zero for parameters near zero, hence zero at one by the one-variable identity principle. Thus the local functions agree on the entire intersection. Their union defines the required \(F\) on an open neighborhood of \(X\). The same local argument proves uniqueness of its germ along \(X\).
+
+Conversely, for a compact \(K_0\subset X\), choose one positive coordinate radius \(r\) whose closed complex polydiscs centered on \(K_0\) all lie in \(\Omega\). Their union is compact; let \(M\) bound \(F\) there. The iterated Cauchy formula gives
+\[
+ |\partial^\alpha F(x)|\le M\alpha!r^{-|\alpha|}
+       \le M|\alpha|!r^{-|\alpha|}\quad(x\in K_0).             \tag{A8}
+\]
+This is (A5). Finally \(\alpha!\le|\alpha|!\le n^{|\alpha|}\alpha!\), because the multinomial coefficient \(|\alpha|!/\alpha!\) is one of the nonnegative terms summing to \(n^{|\alpha|}\). These inequalities absorb the choice of factorial into the constant \(B\). \(\square\)
+
+![A moving mass interval and the complex tube supplied by a factorial derivative estimate.](../figures/escaping-averages-and-analytic-tubes.png)
+
+*Right: for \(I=[-1,2]\), \(K=4\), (A2) is the open tube of radius \(1/4\). Its rounded ends express continuation beyond both real endpoints. The smaller tube of radius \(1/8\) has \(|F|\le8\) by (A3). The left panel is the one-sided convolution example in [Summable smoothing and fixed Fourier tests, Solution 7](summable-smoothing-and-fixed-fourier-tests.md#exercises-with-full-solutions). The geometry represents exact domains and bounds; it does not portray values of an unspecified holomorphic function. [Figure source](../figures/escaping-averages-and-analytic-tubes.py).*
+
 ## Exercises with complete solutions
 
 **Exercise 1 — the Gevrey threshold (foundation).** For \(s>0\), set \(M_j=(j!)^s\). Determine exactly when the class is quasianalytic.
@@ -322,6 +398,23 @@ Integrating the increasing function \(\log t\) on unit intervals gives
 For the upper bound, apply the lower endpoint estimate to the sum through \(n-1\) and then add \(\log n\). Since the integral is \(n\log n-n+1\), (J20) implies \(n(n!)^{-1/n}\to e\). For any \(\varepsilon>0\), all sufficiently large terms lie between \((e-\varepsilon)/n\) and \((e+\varepsilon)/n\). Summing and dividing by \(H_N\to\infty\) shows
 \(\sum_{n\le N}(n!)^{-1/n}/H_N\to e\); the finitely many initial terms disappear in the quotient. The ratio of the full left side to the full right sum is at least this partial numerator divided by \(H_N+N^{-2}\), whose limit is \(e\). Any smaller proposed universal constant fails for a sufficiently large \(N\). \(\square\)
 
+**Exercise 6 — a quantitative interval extension (foundation).** Suppose \(I=[-1,2]\) and \(\sup_I|f^{(j)}|\le4^{j+1}j!\). Give a common complex domain and a uniform bound on its radius-\(1/8\) subdomain. If every derivative at the left endpoint vanishes, prove that the extension is zero.
+
+**Solution.** Theorem 7 gives \(\Omega_{1/4}(I)\). Every point of \(\Omega_{1/8}(I)\) lies at distance less than \(1/8\) from some \(y\in I\), so (A3) bounds its value by \(4/(1-4/8)=8\). A zero jet at \(-1\) makes its Taylor series identically zero in the disk centered there. The full tube is connected, so the identity principle gives zero throughout. The endpoint is a real boundary point of the original interval but an interior point of the complex extension domain.
+
+**Exercise 7 — a smaller factorial budget gives an entire function (intermediate).** If \(\sup_I|f^{(j)}|\le K^{j+1}(j!)^{1/2}\), prove that \(f\) is the restriction of an entire function, rather than merely a function on a small tube.
+
+**Solution.** At any \(y\in I\), the absolute Taylor terms are bounded by \(K(K|z-y|)^j/(j!)^{1/2}\). The ratio of consecutive bounds is \(K|z-y|/\sqrt{j+1}\), tending to zero uniformly on each bounded disk. Every fixed differentiated series has the same ratio limit, since its extra factors are polynomial in \(j\). Thus the series defines an entire function. For real \(x\in I\), Taylor remainder is bounded by \(K(K|x-y|)^m/(m!)^{1/2}\), which tends to zero by the same ratio argument. It therefore restricts to \(f\) on the whole interval. The identity principle makes the entire extension independent of the chosen center.
+
+**Exercise 8 — a joint estimate for a coupled function (intermediate).** For \(f(x_1,x_2)=\exp(x_1x_2)\), obtain explicit constants in (A5) on \([-R,R]^2\), \(R\ge0\), using its complex extension.
+
+**Solution.** The exponential series composed with the polynomial \(z_1z_2\) is entire: the series and every differentiated series converge uniformly on compact sets by their factorial denominators. On the closed coordinate-radius-one polydisc about any real point in \([-R,R]^2\), one has \(|z_1z_2|\le(R+1)^2\), so \(|e^{z_1z_2}|\le e^{(R+1)^2}\). Formula (A8) gives
+\[
+ |\partial^\alpha f|\le e^{(R+1)^2}\alpha!
+                      \le e^{(R+1)^2}|\alpha|!.
+\]
+Thus \(A=e^{(R+1)^2}\), \(B=1\) work. The dependence between the two coordinates is retained; a product of independent one-variable functions was not assumed.
+
 ## Sources
 
-Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition (1990), Springer, 2003, [doi:10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), Section 1.3, Lemma 1.3.6, Theorem 1.3.8 and Lemma 1.3.9. The numerical criterion and averaging method are presented here with their full arguments. The convex-boundary construction, organization, figure and exercises use original exposition. The earlier programme proofs linked above supply the summable smoothing and microlocal localization used in Corollary 5.
+Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition (1990), Springer, 2003, [doi:10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), Section 1.3, Lemma 1.3.6, Theorem 1.3.8, Lemma 1.3.9 and the factorial-weight discussion on p. 24. The numerical criterion and averaging method are presented here with their full arguments. The convex-boundary construction, organization, figure and exercises use original exposition. The earlier programme proofs linked above supply the summable smoothing and microlocal localization used in Corollary 5.

@@ -1,6 +1,6 @@
 # Global inverses and the circle multiplier
 
-This companion supplies the two remaining prerequisite arguments for [Graph operators, continuity and Egorov](graph-operators-continuity-and-egorov.md). The proofs below are independently written. Author: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. This component is dedicated under CC0-1.0. Earlier linked components retain their individual licences.
+This companion supplies the two remaining prerequisite arguments for [Graph operators, continuity and Egorov](graph-operators-continuity-and-egorov.md). The proofs below are independently written. Author: GPT-6 Astra (OpenAI), 5 October 2026. This component is dedicated under CC0-1.0. Earlier linked components retain their individual licences.
 
 The exact inputs are conic parametrices K2–K4, ordinary composition and proper support O3–O6, conic smoothing T2, [partitions PS5](../20261004-free-intrinsic-graph/prerequisites/global-principal-symbol.md), [Hilbert space and compactness T1–T2](../20261004-free-canonical-composition/compactness-and-essential-norms.md), measure and compact smooth density M7, and periodic Fourier reconstruction, Section 13.2. The [proof map](proof-map.json) binds the Fourier, integral and elementary calculus inputs as well.
 

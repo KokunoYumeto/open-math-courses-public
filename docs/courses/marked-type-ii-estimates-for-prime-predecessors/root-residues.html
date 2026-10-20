@@ -1,0 +1,205 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Root residues</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Marked Type II estimates for prime predecessors)</a><a href="from-the-moment-to-the-pairing.html">Previous lesson</a><a href="independent-residue-lines.html">Next lesson</a><a href="src/root-residues.md">Editable source</a></nav><main><article><h1 id="root-residues">Root residues</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The moment of <a href="from-the-moment-to-the-pairing.html"><em>From the moment to the pairing</em></a> is a sum over closed paths that start at a position <span class="math" data-tex="\(P\)">\(P\)</span>, the <em>root</em>. Divisibility of the first coordinates along the path by group primes depends only on <span class="math" data-tex="\(P\)">\(P\)</span> modulo those primes, once the path is written in coordinates adapted to <span class="math" data-tex="\(P\)">\(P\)</span>. This lesson proves that, as <span class="math" data-tex="\(P=(u,v)\)">\(P=(u,v)\)</span> varies over a box, the integer matrix completing <span class="math" data-tex="\(P\)">\(P\)</span> to an element of <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb Z)\)">\(\mathrm{SL}_2(\mathbb Z)\)</span> is equidistributed modulo every squarefree <span class="math" data-tex="\(S\)">\(S\)</span> up to <span class="math" data-tex="\(\exp(L^{0.99})\)">\(\exp(L^{0.99})\)</span>, jointly with the archimedean data <span class="math" data-tex="\(u/U\)">\(u/U\)</span>, <span class="math" data-tex="\(v/V\)">\(v/V\)</span> and the ratio <span class="math" data-tex="\(r_P\)">\(r_P\)</span>. The arithmetic input is a fourth-moment bound for Kloosterman sums, from which an elementary pointwise bound <span class="math" data-tex="\(m^{3/4+\epsilon}\)">\(m^{3/4+\epsilon}\)</span> follows; this weak bound suffices because the moduli are tiny compared with the box.</p>
+<p><strong>Prerequisites.</strong> <a href="physical-states-and-good-positions.html"><em>Physical states and good positions</em></a>, Section 3; <a href="primes-divisors-mean-squares-and-rough-numbers.html"><em>Primes, divisors, mean squares and rough numbers</em></a>, Lemma 2.1.</p>
+<h2 id="1-kloosterman-sums">1. Kloosterman sums</h2>
+<p>For an integer <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span> and residues <span class="math" data-tex="\(h,k\)">\(h,k\)</span> modulo <span class="math" data-tex="\(m\)">\(m\)</span>, the <strong>Kloosterman sum</strong> is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+K_m(h,k)=\sum_{y\in(\mathbb Z/m\mathbb Z)^\times}e\Bigl(\frac{hy+k\bar y}m\Bigr),
+\end{gathered}
+\]">\[
+\begin{gathered}
+K_m(h,k)=\sum_{y\in(\mathbb Z/m\mathbb Z)^\times}e\Bigl(\frac{hy+k\bar y}m\Bigr),
+\end{gathered}
+\]</span>
+<p>where <span class="math" data-tex="\(\bar y\)">\(\bar y\)</span> is the inverse of <span class="math" data-tex="\(y\)">\(y\)</span> modulo <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p><strong>Lemma 1.1 (fourth moment).</strong> <span class="math" data-tex="\(\displaystyle\sum_{h,k\bmod m}|K_m(h,k)|^4\le2\tau_3(m)\,m^4\)">\(\displaystyle\sum_{h,k\bmod m}|K_m(h,k)|^4\le2\tau_3(m)\,m^4\)</span>.</p>
+<p><strong>Proof.</strong> Expanding <span class="math" data-tex="\(|K_m|^4=K_m^2\overline{K_m}^{\,2}\)">\(|K_m|^4=K_m^2\overline{K_m}^{\,2}\)</span> and summing over <span class="math" data-tex="\(h,k\)">\(h,k\)</span> by orthogonality, the left side is <span class="math" data-tex="\(m^2T_m\)">\(m^2T_m\)</span>, where <span class="math" data-tex="\(T_m\)">\(T_m\)</span> counts unit quadruples <span class="math" data-tex="\((y_1,y_2,z_1,z_2)\)">\((y_1,y_2,z_1,z_2)\)</span> modulo <span class="math" data-tex="\(m\)">\(m\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+y_1+y_2=z_1+z_2,\\
+\bar y_1+\bar y_2=\bar z_1+\bar z_2 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+y_1+y_2=z_1+z_2,\\
+\bar y_1+\bar y_2=\bar z_1+\bar z_2 .
+\end{gathered}
+\]</span>
+<p>Put <span class="math" data-tex="\(\sigma=y_1+y_2\)">\(\sigma=y_1+y_2\)</span>. The second relation, multiplied by the unit <span class="math" data-tex="\(y_1y_2z_1z_2\)">\(y_1y_2z_1z_2\)</span>, reads <span class="math" data-tex="\(\sigma(z_1z_2-y_1y_2)=0\)">\(\sigma(z_1z_2-y_1y_2)=0\)</span>. With <span class="math" data-tex="\(z_2=\sigma-z_1\)">\(z_2=\sigma-z_1\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;z_1z_2-y_1y_2\\
+&amp;\quad=z_1(y_1+y_2)-z_1^2-y_1y_2\\
+&amp;\quad=-(z_1-y_1)(z_1-y_2).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;z_1z_2-y_1y_2\\
+&amp;\quad=z_1(y_1+y_2)-z_1^2-y_1y_2\\
+&amp;\quad=-(z_1-y_1)(z_1-y_2).
+\end{aligned}
+\]</span>
+<p>So <span class="math" data-tex="\(T_m\)">\(T_m\)</span> is at most the number of triples <span class="math" data-tex="\((y_1,y_2,z_1)\)">\((y_1,y_2,z_1)\)</span> modulo <span class="math" data-tex="\(m\)">\(m\)</span> with <span class="math" data-tex="\(m\mid\ell_1\ell_2\ell_3\)">\(m\mid\ell_1\ell_2\ell_3\)</span>, where <span class="math" data-tex="\(\ell_1=y_1+y_2\)">\(\ell_1=y_1+y_2\)</span>, <span class="math" data-tex="\(\ell_2=z_1-y_1\)">\(\ell_2=z_1-y_1\)</span>, <span class="math" data-tex="\(\ell_3=z_1-y_2\)">\(\ell_3=z_1-y_2\)</span>. The linear map <span class="math" data-tex="\((y_1,y_2,z_1)\mapsto(\ell_1,\ell_2,\ell_3)\)">\((y_1,y_2,z_1)\mapsto(\ell_1,\ell_2,\ell_3)\)</span> has determinant <span class="math" data-tex="\(2\)">\(2\)</span>; its kernel modulo <span class="math" data-tex="\(m\)">\(m\)</span> consists of <span class="math" data-tex="\(y_1=y_2=z_1=y\)">\(y_1=y_2=z_1=y\)</span> with <span class="math" data-tex="\(2y\equiv0\)">\(2y\equiv0\)</span>, at most two elements, so every triple <span class="math" data-tex="\((\ell_1,\ell_2,\ell_3)\)">\((\ell_1,\ell_2,\ell_3)\)</span> has at most two preimages. If <span class="math" data-tex="\(m\mid\ell_1\ell_2\ell_3\)">\(m\mid\ell_1\ell_2\ell_3\)</span>, one can write <span class="math" data-tex="\(m=d_1d_2d_3\)">\(m=d_1d_2d_3\)</span> with <span class="math" data-tex="\(d_j\mid\ell_j\)">\(d_j\mid\ell_j\)</span>, by distributing the exponent of each prime power dividing <span class="math" data-tex="\(m\)">\(m\)</span> among the three factors. For fixed <span class="math" data-tex="\((d_1,d_2,d_3)\)">\((d_1,d_2,d_3)\)</span> there are <span class="math" data-tex="\(m^3/(d_1d_2d_3)=m^2\)">\(m^3/(d_1d_2d_3)=m^2\)</span> triples with <span class="math" data-tex="\(d_j\mid\ell_j\)">\(d_j\mid\ell_j\)</span>. Hence <span class="math" data-tex="\(T_m\le2\tau_3(m)m^2\)">\(T_m\le2\tau_3(m)m^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.2 (a pointwise bound).</strong> For every <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span> there is <span class="math" data-tex="\(C_\epsilon\)">\(C_\epsilon\)</span> such that</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|K_m(h,k)|\\
+\le C_\epsilon\,m^{3/4+\epsilon}(h,k,m)^{1/4}.\quad(1.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+|K_m(h,k)|\\
+\le C_\epsilon\,m^{3/4+\epsilon}(h,k,m)^{1/4}.\quad(1.1)
+\end{gathered}
+\]</span>
+<p><strong>Proof.</strong> For a unit <span class="math" data-tex="\(s\)">\(s\)</span>, substituting <span class="math" data-tex="\(y\mapsto sy\)">\(y\mapsto sy\)</span> shows <span class="math" data-tex="\(K_m(hs,k\bar s)=K_m(h,k)\)">\(K_m(hs,k\bar s)=K_m(h,k)\)</span>. The stabilizer of <span class="math" data-tex="\((h,k)\)">\((h,k)\)</span> under <span class="math" data-tex="\((h,k)\mapsto(hs,k\bar s)\)">\((h,k)\mapsto(hs,k\bar s)\)</span> consists of the units <span class="math" data-tex="\(s\)">\(s\)</span> with <span class="math" data-tex="\(h(s-1)\equiv k(s-1)\equiv0\ (m)\)">\(h(s-1)\equiv k(s-1)\equiv0\ (m)\)</span>, that is <span class="math" data-tex="\(s\equiv1\)">\(s\equiv1\)</span> modulo <span class="math" data-tex="\(m/g\)">\(m/g\)</span> with <span class="math" data-tex="\(g=(h,k,m)\)">\(g=(h,k,m)\)</span>. So the orbit of <span class="math" data-tex="\((h,k)\)">\((h,k)\)</span> has <span class="math" data-tex="\(\varphi(m)/\#\{\text{stabilizer}\}=\varphi(m/g)\)">\(\varphi(m)/\#\{\text{stabilizer}\}=\varphi(m/g)\)</span> elements, all with the same Kloosterman sum, and Lemma 1.1 gives <span class="math" data-tex="\(\varphi(m/g)|K_m(h,k)|^4\le2\tau_3(m)m^4\)">\(\varphi(m/g)|K_m(h,k)|^4\le2\tau_3(m)m^4\)</span>. Since <span class="math" data-tex="\(\tau_3(m)\le\tau(m)^2\ll_\epsilon m^{\epsilon}\)">\(\tau_3(m)\le\tau(m)^2\ll_\epsilon m^{\epsilon}\)</span> and <span class="math" data-tex="\(\varphi(n)\gg_\epsilon n^{1-\epsilon}\)">\(\varphi(n)\gg_\epsilon n^{1-\epsilon}\)</span> (Exercise 10.5), the bound follows after renaming <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The classical Weil bound gives the exponent <span class="math" data-tex="\(1/2+\epsilon\)">\(1/2+\epsilon\)</span>; the weaker exponent <span class="math" data-tex="\(3/4\)">\(3/4\)</span> is all that is used below.</p>
+<h2 id="2-root-matrices">2. Root matrices</h2>
+<p>For a primitive vector <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> with <span class="math" data-tex="\(u,v\ge2\)">\(u,v\ge2\)</span>, there is a unique integer matrix</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g(u,v)=\begin{pmatrix}u&amp;c\\v&amp;d\end{pmatrix},\\
+ud-vc=1,\qquad0\le c&lt;u,\quad(2.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+g(u,v)=\begin{pmatrix}u&amp;c\\v&amp;d\end{pmatrix},\\
+ud-vc=1,\qquad0\le c&lt;u,\quad(2.1)
+\end{gathered}
+\]</span>
+<p>the <strong>root matrix</strong> of <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span>, and we put <span class="math" data-tex="\(r=c/u\in[0,1)\)">\(r=c/u\in[0,1)\)</span>. This is the ratio <span class="math" data-tex="\(r_P\)">\(r_P\)</span> of Lesson 8 for <span class="math" data-tex="\(P=(u,v)\)">\(P=(u,v)\)</span>. From <span class="math" data-tex="\(ud=1+vc\)">\(ud=1+vc\)</span> one finds <span class="math" data-tex="\(d/v=c/u+1/(uv)\)">\(d/v=c/u+1/(uv)\)</span>, so <span class="math" data-tex="\(1\le d&lt;v\)">\(1\le d&lt;v\)</span> (Exercise 10.4).</p>
+<p>For a squarefree <span class="math" data-tex="\(S\)">\(S\)</span>, the group <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb Z/S\mathbb Z)\)">\(\mathrm{SL}_2(\mathbb Z/S\mathbb Z)\)</span> is the product of the groups <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb F_p)\)">\(\mathrm{SL}_2(\mathbb F_p)\)</span>, <span class="math" data-tex="\(p\mid S\)">\(p\mid S\)</span>, by the Chinese remainder theorem, and <span class="math" data-tex="\(|\mathrm{SL}_2(\mathbb F_p)|=p(p^2-1)\)">\(|\mathrm{SL}_2(\mathbb F_p)|=p(p^2-1)\)</span>. Hence</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\mathrm{SL}_2(\mathbb Z/S\mathbb Z)|\\
+=S^3\prod_{p\mid S}\Bigl(1-\frac1{p^2}\Bigr).\quad(2.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+|\mathrm{SL}_2(\mathbb Z/S\mathbb Z)|\\
+=S^3\prod_{p\mid S}\Bigl(1-\frac1{p^2}\Bigr).\quad(2.2)
+\end{gathered}
+\]</span>
+<p><strong>Theorem 2.1 (equidistribution of root matrices).</strong> Fix <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>. For large <span class="math" data-tex="\(x\)">\(x\)</span>, uniformly for <span class="math" data-tex="\(U,V\ge x^\delta\)">\(U,V\ge x^\delta\)</span> with <span class="math" data-tex="\(U,V\le x^2\)">\(U,V\le x^2\)</span>, squarefree <span class="math" data-tex="\(S\le\exp(L^{0.99})\)">\(S\le\exp(L^{0.99})\)</span>, <span class="math" data-tex="\(g_0\in\mathrm{SL}_2(\mathbb Z/S\mathbb Z)\)">\(g_0\in\mathrm{SL}_2(\mathbb Z/S\mathbb Z)\)</span> and intervals <span class="math" data-tex="\(I_1\subseteq[1,16]\)">\(I_1\subseteq[1,16]\)</span>, <span class="math" data-tex="\(I_2\subseteq[1,2]\)">\(I_2\subseteq[1,2]\)</span>, <span class="math" data-tex="\(I_3\subseteq[0,1]\)">\(I_3\subseteq[0,1]\)</span>, the number of primitive <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> with</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac uU\in I_1,\quad\frac vV\in I_2,\quad r\in I_3,\\
+g(u,v)\equiv g_0\ (S)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac uU\in I_1,\quad\frac vV\in I_2,\quad r\in I_3,\\
+g(u,v)\equiv g_0\ (S)
+\end{gathered}
+\]</span>
+<p>is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{UV\,|I_1||I_2||I_3|}{\zeta(2)\,|\mathrm{SL}_2(\mathbb Z/S\mathbb Z)|}\\
++O\bigl(UV\,x^{-\delta/200}\bigr).\quad(2.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{UV\,|I_1||I_2||I_3|}{\zeta(2)\,|\mathrm{SL}_2(\mathbb Z/S\mathbb Z)|}\\
++O\bigl(UV\,x^{-\delta/200}\bigr).\quad(2.3)
+\end{gathered}
+\]</span>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(g_0=\begin{pmatrix}u_0&amp;c_0\\v_0&amp;d_0\end{pmatrix}\)">\(g_0=\begin{pmatrix}u_0&amp;c_0\\v_0&amp;d_0\end{pmatrix}\)</span>. Suppose first <span class="math" data-tex="\(U\le V\)">\(U\le V\)</span>. Fix <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(u/U\in I_1\)">\(u/U\in I_1\)</span> and <span class="math" data-tex="\(u\equiv u_0\ (S)\)">\(u\equiv u_0\ (S)\)</span>. The matrix (2.1) exists with the prescribed residues exactly when the pair <span class="math" data-tex="\((c,v)\)">\((c,v)\)</span> satisfies</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+c\equiv c_0,\quad v\equiv v_0\ (S),\\
+cv\equiv ud_0-1\ (uS),\quad(2.4)
+\end{gathered}
+\]">\[
+\begin{gathered}
+c\equiv c_0,\quad v\equiv v_0\ (S),\\
+cv\equiv ud_0-1\ (uS),\quad(2.4)
+\end{gathered}
+\]</span>
+<p>because <span class="math" data-tex="\(ud-vc=1\)">\(ud-vc=1\)</span> with <span class="math" data-tex="\(d\equiv d_0\ (S)\)">\(d\equiv d_0\ (S)\)</span> means <span class="math" data-tex="\(1+vc\equiv ud_0\)">\(1+vc\equiv ud_0\)</span> modulo <span class="math" data-tex="\(uS\)">\(uS\)</span>; primitivity is then automatic.</p>
+<p><em>Counting residues.</em> Every solution of (2.4) has <span class="math" data-tex="\(c\)">\(c\)</span> a unit modulo <span class="math" data-tex="\(u\)">\(u\)</span>, since <span class="math" data-tex="\(cv\equiv-1\ (u)\)">\(cv\equiv-1\ (u)\)</span>. Conversely, for <span class="math" data-tex="\(c\equiv c_0\ (S)\)">\(c\equiv c_0\ (S)\)</span> a unit modulo <span class="math" data-tex="\(u\)">\(u\)</span>, write <span class="math" data-tex="\(v=v_0+Sj\)">\(v=v_0+Sj\)</span>; since <span class="math" data-tex="\(cv_0\equiv c_0v_0\equiv u_0d_0-1\ (S)\)">\(cv_0\equiv c_0v_0\equiv u_0d_0-1\ (S)\)</span>, the last congruence of (2.4) becomes a linear congruence for <span class="math" data-tex="\(j\)">\(j\)</span> modulo <span class="math" data-tex="\(u\)">\(u\)</span> with the unit coefficient <span class="math" data-tex="\(c\)">\(c\)</span>, which has exactly one solution. The residues <span class="math" data-tex="\(c=c_0+Si\)">\(c=c_0+Si\)</span>, <span class="math" data-tex="\(i\bmod u\)">\(i\bmod u\)</span>, are units modulo every prime <span class="math" data-tex="\(p\mid(u,S)\)">\(p\mid(u,S)\)</span> automatically (from <span class="math" data-tex="\(u_0d_0-v_0c_0\equiv1\)">\(u_0d_0-v_0c_0\equiv1\)</span> and <span class="math" data-tex="\(p\mid u_0\)">\(p\mid u_0\)</span>), and modulo each prime <span class="math" data-tex="\(p\mid u\)">\(p\mid u\)</span>, <span class="math" data-tex="\(p\nmid S\)">\(p\nmid S\)</span>, exactly a fraction <span class="math" data-tex="\(1-1/p\)">\(1-1/p\)</span> of them are units. So the number of solutions of (2.4) modulo <span class="math" data-tex="\(uS\)">\(uS\)</span> is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M(u)=u\prod_{\substack{p\mid u\\ p\nmid S}}\Bigl(1-\frac1p\Bigr).
+\end{gathered}
+\]">\[
+\begin{gathered}
+M(u)=u\prod_{\substack{p\mid u\\ p\nmid S}}\Bigl(1-\frac1p\Bigr).
+\end{gathered}
+\]</span>
+<p><em>Discrepancy.</em> We claim that for every rectangle <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> in the torus <span class="math" data-tex="\((\mathbb Z/uS\mathbb Z)^2\)">\((\mathbb Z/uS\mathbb Z)^2\)</span> (a product of two intervals of residues),</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\#\{(c,v)\in\mathcal R\ \text{solving (2.4)}\}\\
+=M(u)\frac{|\mathcal R|}{(uS)^2}+O(u^{0.99}S^2).\quad(2.5)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\#\{(c,v)\in\mathcal R\ \text{solving (2.4)}\}\\
+=M(u)\frac{|\mathcal R|}{(uS)^2}+O(u^{0.99}S^2).\quad(2.5)
+\end{gathered}
+\]</span>
+<p>Let <span class="math" data-tex="\(S_1=\prod_{p\mid(u,S)}p\)">\(S_1=\prod_{p\mid(u,S)}p\)</span>, <span class="math" data-tex="\(S_2=S/S_1\)">\(S_2=S/S_1\)</span> and <span class="math" data-tex="\(m_1=uS_1\)">\(m_1=uS_1\)</span>, so that <span class="math" data-tex="\((m_1,S_2)=1\)">\((m_1,S_2)=1\)</span> and <span class="math" data-tex="\(uS=m_1S_2\)">\(uS=m_1S_2\)</span>. Modulo <span class="math" data-tex="\(S_2\)">\(S_2\)</span> the pair <span class="math" data-tex="\((c,v)\)">\((c,v)\)</span> is fixed by (2.4). Modulo <span class="math" data-tex="\(m_1\)">\(m_1\)</span>, (2.4) says <span class="math" data-tex="\(c\equiv c_0\ (S_1)\)">\(c\equiv c_0\ (S_1)\)</span> and <span class="math" data-tex="\(cv\equiv A\ (m_1)\)">\(cv\equiv A\ (m_1)\)</span> with <span class="math" data-tex="\(A=ud_0-1\)">\(A=ud_0-1\)</span>, which is a unit modulo <span class="math" data-tex="\(m_1\)">\(m_1\)</span>; the condition <span class="math" data-tex="\(v\equiv v_0\ (S_1)\)">\(v\equiv v_0\ (S_1)\)</span> then follows. Let <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> be the inverse of <span class="math" data-tex="\(S_2\)">\(S_2\)</span> modulo <span class="math" data-tex="\(m_1\)">\(m_1\)</span>. For <span class="math" data-tex="\((h,k)\not\equiv(0,0)\)">\((h,k)\not\equiv(0,0)\)</span>, the Chinese remainder theorem and detection of <span class="math" data-tex="\(c\equiv c_0\ (S_1)\)">\(c\equiv c_0\ (S_1)\)</span> by additive characters give, up to a factor of modulus one,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{(c,v)}e\Bigl(\frac{hc+kv}{uS}\Bigr)\\
+&amp;\quad=\frac1{S_1}\sum_{j\bmod S_1}e\Bigl(-\frac{jc_0}{S_1}\Bigr)\\
+&amp;\qquad\times K_{m_1}(\gamma h+ju,\ \gamma kA).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{(c,v)}e\Bigl(\frac{hc+kv}{uS}\Bigr)\\
+&amp;\quad=\frac1{S_1}\sum_{j\bmod S_1}e\Bigl(-\frac{jc_0}{S_1}\Bigr)\\
+&amp;\qquad\times K_{m_1}(\gamma h+ju,\ \gamma kA).
+\end{aligned}
+\]</span>
+<p>If <span class="math" data-tex="\(g&#x27;=(\gamma h+ju,\gamma kA,m_1)\)">\(g&#x27;=(\gamma h+ju,\gamma kA,m_1)\)</span>, then <span class="math" data-tex="\(g&#x27;&#x27;=(g&#x27;,u)\)">\(g&#x27;&#x27;=(g&#x27;,u)\)</span> divides <span class="math" data-tex="\(k\)">\(k\)</span> and <span class="math" data-tex="\(\gamma h\)">\(\gamma h\)</span>, hence <span class="math" data-tex="\(h\)">\(h\)</span>, so <span class="math" data-tex="\(g&#x27;&#x27;\mid(h,k,u)\)">\(g&#x27;&#x27;\mid(h,k,u)\)</span>, and <span class="math" data-tex="\(g&#x27;/g&#x27;&#x27;\)">\(g&#x27;/g&#x27;&#x27;\)</span> divides <span class="math" data-tex="\(S_1\)">\(S_1\)</span>. For <span class="math" data-tex="\(0&lt;\max(|h|,|k|)\le u^{0.02}\)">\(0&lt;\max(|h|,|k|)\le u^{0.02}\)</span> this gives <span class="math" data-tex="\(g&#x27;\le S_1u^{0.02}\)">\(g&#x27;\le S_1u^{0.02}\)</span>, and Lemma 1.2 with <span class="math" data-tex="\(\epsilon=1/200\)">\(\epsilon=1/200\)</span> bounds the sum by <span class="math" data-tex="\(O((uS)^{3/4+1/200}(Su^{0.02})^{1/4})\)">\(O((uS)^{3/4+1/200}(Su^{0.02})^{1/4})\)</span><span class="math" data-tex="\(=O(u^{0.76}S^2)\)">\(=O(u^{0.76}S^2)\)</span>.</p>
+<p>Next, sandwich the indicator of each of the two intervals of <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span>, viewed in <span class="math" data-tex="\(\mathbb R/\mathbb Z\)">\(\mathbb R/\mathbb Z\)</span> after division by <span class="math" data-tex="\(uS\)">\(uS\)</span>, between smooth functions obtained by enlarging or shrinking the interval by <span class="math" data-tex="\(2\Delta\)">\(2\Delta\)</span> and convolving with a bump of width <span class="math" data-tex="\(\Delta=u^{-0.01}\)">\(\Delta=u^{-0.01}\)</span>. Their integrals differ from the interval lengths by <span class="math" data-tex="\(O(\Delta)\)">\(O(\Delta)\)</span>, their Fourier coefficients are bounded by <span class="math" data-tex="\(1\)">\(1\)</span>, and those of frequency <span class="math" data-tex="\(n\ne0\)">\(n\ne0\)</span> are <span class="math" data-tex="\(O_j((\Delta|n|)^{-j})\)">\(O_j((\Delta|n|)^{-j})\)</span> for every <span class="math" data-tex="\(j\)">\(j\)</span>. The lower and upper products of these functions bound the indicator of <span class="math" data-tex="\(\mathcal R\)">\(\mathcal R\)</span> from below and above. Expanding in Fourier series, the zero frequency gives <span class="math" data-tex="\(M(u)|\mathcal R|/(uS)^2\)">\(M(u)|\mathcal R|/(uS)^2\)</span> up to <span class="math" data-tex="\(O(\Delta M(u))=O(u^{0.99})\)">\(O(\Delta M(u))=O(u^{0.99})\)</span>; the <span class="math" data-tex="\(O(u^{0.04})\)">\(O(u^{0.04})\)</span> frequency pairs with <span class="math" data-tex="\(\max(|h|,|k|)\le u^{0.02}\)">\(\max(|h|,|k|)\le u^{0.02}\)</span> give <span class="math" data-tex="\(O(u^{0.80}S^2)\)">\(O(u^{0.80}S^2)\)</span>; and the remaining frequencies, bounded trivially by <span class="math" data-tex="\(M(u)\le u\)">\(M(u)\le u\)</span>, give <span class="math" data-tex="\(O(u\,\Delta^{-1}\cdot\Delta^{-10}u^{-0.18})=O(u^{0.93})\)">\(O(u\,\Delta^{-1}\cdot\Delta^{-10}u^{-0.18})=O(u^{0.93})\)</span> with <span class="math" data-tex="\(j=10\)">\(j=10\)</span>. This proves (2.5).</p>
+<p><em>Summing over <span class="math" data-tex="\(v\)">\(v\)</span>.</em> The integers <span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(c/u\in I_3\)">\(c/u\in I_3\)</span> form an interval of length <span class="math" data-tex="\(u|I_3|&lt;uS\)">\(u|I_3|&lt;uS\)</span>, and the integers <span class="math" data-tex="\(v\)">\(v\)</span> with <span class="math" data-tex="\(v/V\in I_2\)">\(v/V\in I_2\)</span> an interval of length <span class="math" data-tex="\(V|I_2|\)">\(V|I_2|\)</span>, which is covered by <span class="math" data-tex="\(O(V/(uS)+1)=O(V/u)\)">\(O(V/(uS)+1)=O(V/u)\)</span> intervals of length at most <span class="math" data-tex="\(uS\)">\(uS\)</span> (recall <span class="math" data-tex="\(u\le16U\le16V\)">\(u\le16U\le16V\)</span>). Applying (2.5) to each gives the count</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{V|I_2||I_3|}{S^2}\prod_{\substack{p\mid u\\ p\nmid S}}\Bigl(1-\frac1p\Bigr)+O\bigl(Vu^{-0.01}S^2\bigr).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{V|I_2||I_3|}{S^2}\prod_{\substack{p\mid u\\ p\nmid S}}\Bigl(1-\frac1p\Bigr)+O\bigl(Vu^{-0.01}S^2\bigr).
+\end{gathered}
+\]</span>
+<p><em>Summing over <span class="math" data-tex="\(u\)">\(u\)</span>.</em> Expanding the product as <span class="math" data-tex="\(\sum_{l\mid u,\,(l,S)=1}\mu(l)/l\)">\(\sum_{l\mid u,\,(l,S)=1}\mu(l)/l\)</span> and counting <span class="math" data-tex="\(u\equiv u_0\ (S)\)">\(u\equiv u_0\ (S)\)</span>, <span class="math" data-tex="\(l\mid u\)">\(l\mid u\)</span>, in <span class="math" data-tex="\(UI_1\)">\(UI_1\)</span> by the Chinese remainder theorem,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\substack{u/U\in I_1\\ u\equiv u_0\,(S)}}\prod_{\substack{p\mid u\\ p\nmid S}}\Bigl(1-\frac1p\Bigr)\\
+&amp;\quad=\frac{U|I_1|}S\sum_{(l,S)=1}\frac{\mu(l)}{l^2}+O(\log U)\\
+&amp;\quad=\frac{U|I_1|}{\zeta(2)S}\prod_{p\mid S}\Bigl(1-\frac1{p^2}\Bigr)^{-1}\\
+&amp;\qquad+O(\log U).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\substack{u/U\in I_1\\ u\equiv u_0\,(S)}}\prod_{\substack{p\mid u\\ p\nmid S}}\Bigl(1-\frac1p\Bigr)\\
+&amp;\quad=\frac{U|I_1|}S\sum_{(l,S)=1}\frac{\mu(l)}{l^2}+O(\log U)\\
+&amp;\quad=\frac{U|I_1|}{\zeta(2)S}\prod_{p\mid S}\Bigl(1-\frac1{p^2}\Bigr)^{-1}\\
+&amp;\qquad+O(\log U).
+\end{aligned}
+\]</span>
+<p>By (2.2) the main term is the one in (2.3). The errors total <span class="math" data-tex="\(O(UV(U^{-0.01}S^2+U^{-1}\log U))\)">\(O(UV(U^{-0.01}S^2+U^{-1}\log U))\)</span>, and <span class="math" data-tex="\(S^2\le\exp(2L^{0.99})=x^{o(1)}\)">\(S^2\le\exp(2L^{0.99})=x^{o(1)}\)</span>, <span class="math" data-tex="\(U\ge x^\delta\)">\(U\ge x^\delta\)</span>.</p>
+<p><em>The case <span class="math" data-tex="\(V&lt;U\)">\(V&lt;U\)</span>.</em> By Exercise 10.4, the completion with <span class="math" data-tex="\(0\le c&lt;u\)">\(0\le c&lt;u\)</span> is also the one with <span class="math" data-tex="\(1\le d&lt;v\)">\(1\le d&lt;v\)</span>, and <span class="math" data-tex="\(c\equiv c_0\ (S)\)">\(c\equiv c_0\ (S)\)</span> together with <span class="math" data-tex="\(ud-vc=1\)">\(ud-vc=1\)</span> means <span class="math" data-tex="\(ud\equiv1+vc_0\)">\(ud\equiv1+vc_0\)</span> modulo <span class="math" data-tex="\(vS\)">\(vS\)</span>. Fixing <span class="math" data-tex="\(v\equiv v_0\ (S)\)">\(v\equiv v_0\ (S)\)</span> and counting pairs <span class="math" data-tex="\((d,u)\)">\((d,u)\)</span> with <span class="math" data-tex="\(d\equiv d_0\)">\(d\equiv d_0\)</span>, <span class="math" data-tex="\(u\equiv u_0\ (S)\)">\(u\equiv u_0\ (S)\)</span> and <span class="math" data-tex="\(du\equiv1+vc_0\ (vS)\)">\(du\equiv1+vc_0\ (vS)\)</span>, the argument above applies with the roles of <span class="math" data-tex="\((u,c)\)">\((u,c)\)</span> and <span class="math" data-tex="\((v,d)\)">\((v,d)\)</span> exchanged and with the third coordinate <span class="math" data-tex="\(d/v\)">\(d/v\)</span> in place of <span class="math" data-tex="\(c/u\)">\(c/u\)</span>. Since <span class="math" data-tex="\(d/v-c/u=1/(uv)\)">\(d/v-c/u=1/(uv)\)</span><span class="math" data-tex="\(\in[1/(32UV),1/(UV)]\)">\(\in[1/(32UV),1/(UV)]\)</span>, the condition <span class="math" data-tex="\(r\in I_3\)">\(r\in I_3\)</span> is sandwiched between two conditions <span class="math" data-tex="\(d/v\in I_3^\pm\)">\(d/v\in I_3^\pm\)</span> for intervals that differ from <span class="math" data-tex="\(I_3\)">\(I_3\)</span> by <span class="math" data-tex="\(O(1/(UV))\)">\(O(1/(UV))\)</span> at the endpoints; their main terms differ by <span class="math" data-tex="\(O(1)\)">\(O(1)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In words: the residues of the root matrix modulo <span class="math" data-tex="\(S\)">\(S\)</span> are uniformly distributed in <span class="math" data-tex="\(\mathrm{SL}_2(\mathbb Z/S\mathbb Z)\)">\(\mathrm{SL}_2(\mathbb Z/S\mathbb Z)\)</span>, independently of the size of the root and of its ratio, and primitive vectors have density <span class="math" data-tex="\(1/\zeta(2)\)">\(1/\zeta(2)\)</span>. The saving <span class="math" data-tex="\(x^{-\delta/200}\)">\(x^{-\delta/200}\)</span> is a fixed power of <span class="math" data-tex="\(x\)">\(x\)</span>, which will absorb the <span class="math" data-tex="\(\exp(o(L))\)">\(\exp(o(L))\)</span> many residue conditions and grid cells that occur in the next lesson.</p>
+<h2 id="3-exercises">3. Exercises</h2>
+<p><strong>10.1.</strong> Prove that <span class="math" data-tex="\(K_m(h,k)\)">\(K_m(h,k)\)</span> is real, and that <span class="math" data-tex="\(K_m(h,k)=K_m(k,h)\)">\(K_m(h,k)=K_m(k,h)\)</span>.</p>
+<p><strong>10.2.</strong> For a prime <span class="math" data-tex="\(m=p\)">\(m=p\)</span>, count exactly the triples <span class="math" data-tex="\((\ell_1,\ell_2,\ell_3)\)">\((\ell_1,\ell_2,\ell_3)\)</span> modulo <span class="math" data-tex="\(p\)">\(p\)</span> with <span class="math" data-tex="\(p\mid\ell_1\ell_2\ell_3\)">\(p\mid\ell_1\ell_2\ell_3\)</span>, and compare with the bound <span class="math" data-tex="\(\tau_3(p)p^2\)">\(\tau_3(p)p^2\)</span>.</p>
+<p><strong>10.3.</strong> Prove <span class="math" data-tex="\(|\mathrm{SL}_2(\mathbb F_p)|=p(p^2-1)\)">\(|\mathrm{SL}_2(\mathbb F_p)|=p(p^2-1)\)</span> by counting first columns and their completions.</p>
+<p><strong>10.4.</strong> For a primitive <span class="math" data-tex="\((u,v)\)">\((u,v)\)</span> with <span class="math" data-tex="\(u,v\ge2\)">\(u,v\ge2\)</span> and its root matrix, show <span class="math" data-tex="\(d/v=c/u+1/(uv)\)">\(d/v=c/u+1/(uv)\)</span> and <span class="math" data-tex="\(1\le d&lt;v\)">\(1\le d&lt;v\)</span>.</p>
+<p><strong>10.5.</strong> Prove <span class="math" data-tex="\(\tau(n)\ll_\epsilon n^\epsilon\)">\(\tau(n)\ll_\epsilon n^\epsilon\)</span> and <span class="math" data-tex="\(\varphi(n)\gg_\epsilon n^{1-\epsilon}\)">\(\varphi(n)\gg_\epsilon n^{1-\epsilon}\)</span>.</p>
+<h2 id="4-solutions">4. Solutions</h2>
+<p><strong>10.1.</strong> Replacing <span class="math" data-tex="\(y\)">\(y\)</span> by <span class="math" data-tex="\(-y\)">\(-y\)</span> shows <span class="math" data-tex="\(K_m(h,k)=K_m(-h,-k)=\overline{K_m(h,k)}\)">\(K_m(h,k)=K_m(-h,-k)=\overline{K_m(h,k)}\)</span>. Replacing <span class="math" data-tex="\(y\)">\(y\)</span> by <span class="math" data-tex="\(\bar y\)">\(\bar y\)</span> exchanges <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(k\)">\(k\)</span>.</p>
+<p><strong>10.2.</strong> The complement consists of triples of nonzero residues, so the count is <span class="math" data-tex="\(p^3-(p-1)^3=3p^2-3p+1\le3p^2\)">\(p^3-(p-1)^3=3p^2-3p+1\le3p^2\)</span><span class="math" data-tex="\(=\tau_3(p)p^2\)">\(=\tau_3(p)p^2\)</span>.</p>
+<p><strong>10.3.</strong> A first column is any nonzero vector of <span class="math" data-tex="\(\mathbb F_p^2\)">\(\mathbb F_p^2\)</span>, in <span class="math" data-tex="\(p^2-1\)">\(p^2-1\)</span> ways. For each, the second columns with determinant <span class="math" data-tex="\(1\)">\(1\)</span> form a coset of the line spanned by the first column, in <span class="math" data-tex="\(p\)">\(p\)</span> ways.</p>
+<p><strong>10.4.</strong> From <span class="math" data-tex="\(ud=1+vc\)">\(ud=1+vc\)</span>, <span class="math" data-tex="\(d/v=c/u+1/(uv)\)">\(d/v=c/u+1/(uv)\)</span>. Since <span class="math" data-tex="\(0\le c\le u-1\)">\(0\le c\le u-1\)</span>, <span class="math" data-tex="\(d=(1+vc)/u\)">\(d=(1+vc)/u\)</span> lies in <span class="math" data-tex="\([1/u,(1+v(u-1))/u]\)">\([1/u,(1+v(u-1))/u]\)</span>; as <span class="math" data-tex="\(d\)">\(d\)</span> is an integer and <span class="math" data-tex="\((1+v(u-1))/u&lt;v\)">\((1+v(u-1))/u&lt;v\)</span> for <span class="math" data-tex="\(u\ge2\)">\(u\ge2\)</span>, we get <span class="math" data-tex="\(1\le d\le v-1\)">\(1\le d\le v-1\)</span>.</p>
+<p><strong>10.5.</strong> <span class="math" data-tex="\(\tau(n)n^{-\epsilon}=\prod_{p^e\|n}(e+1)p^{-e\epsilon}\)">\(\tau(n)n^{-\epsilon}=\prod_{p^e\|n}(e+1)p^{-e\epsilon}\)</span>. For <span class="math" data-tex="\(p\ge2^{1/\epsilon}\)">\(p\ge2^{1/\epsilon}\)</span> each factor is at most <span class="math" data-tex="\((e+1)2^{-e}\le1\)">\((e+1)2^{-e}\le1\)</span>; for the finitely many smaller primes each factor is bounded by <span class="math" data-tex="\(\max_e(e+1)2^{-e\epsilon}&lt;\infty\)">\(\max_e(e+1)2^{-e\epsilon}&lt;\infty\)</span>. For <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, <span class="math" data-tex="\(\varphi(n)/n=\prod_{p\mid n}(1-1/p)\)">\(\varphi(n)/n=\prod_{p\mid n}(1-1/p)\)</span>. For <span class="math" data-tex="\(p\)">\(p\)</span> larger than a bound <span class="math" data-tex="\(p_\epsilon\)">\(p_\epsilon\)</span>, <span class="math" data-tex="\(1-1/p\ge e^{-2/p}\ge p^{-\epsilon}\)">\(1-1/p\ge e^{-2/p}\ge p^{-\epsilon}\)</span>; the product over these primes is at least <span class="math" data-tex="\(n^{-\epsilon}\)">\(n^{-\epsilon}\)</span>, and the primes below <span class="math" data-tex="\(p_\epsilon\)">\(p_\epsilon\)</span> contribute at least <span class="math" data-tex="\(2^{-p_\epsilon}\)">\(2^{-p_\epsilon}\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[PD] OpenAI, <em>The Poisson–Dirichlet law for prime predecessors</em>, OpenAI Math Release preprint, 24 September 2026, Section 3.4. https://github.com/openai/math/tree/main/preprints/The-Poisson-Dirichlet-Law-for-Prime-Predecessors-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

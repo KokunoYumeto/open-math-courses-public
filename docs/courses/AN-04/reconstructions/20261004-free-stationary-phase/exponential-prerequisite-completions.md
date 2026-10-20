@@ -20,7 +20,7 @@ programme exposition.
 
 Independent programme text: CC0 to the extent rights exist. Uniform
 Gaussian-factor estimate, nonuniform example and source notes:
-GPT-6.1 Sol (OpenAI), Ultra. Earlier programme components retain their
+GPT-6.1 Sol (OpenAI). Earlier programme components retain their
 own terms.
 
 The earlier topology, differential and compact-integral chains supply the

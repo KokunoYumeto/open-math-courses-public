@@ -1,0 +1,227 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Close operator algebras</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Strong Kadison–Kastler stability)</a><a href="averaging-and-the-completely-positive-criterion.html">Next lesson</a><a href="src/close-operator-algebras.md">Editable source</a></nav><main><article><h1 id="close-operator-algebras">Close operator algebras</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Two operator algebras acting on the same Hilbert space are close when every contraction of either one lies near a contraction of the other. Kadison and Kastler introduced this distance in 1972 and asked whether sufficiently close von Neumann algebras are conjugate by a unitary near the identity. This course proves that they are, with a tolerance that depends only on the required closeness of the unitary to the identity: Theorem 2.1 below [OpenAI-289]. The course also proves that the corresponding statement fails for separable C*-algebras [OpenAI-289b] and for one-sided near inclusions of von Neumann algebras [OpenAI-289c]. This lesson fixes the distances, states the three theorems, and proves the elementary tools used throughout: estimates for conjugation by unitaries close to the identity, the distance from an operator to a commutant, the conjugacy of close representations, and the absorption of matrix levels by infinite families of isometries.</p>
+<p>We use: Corollary 4.5 of <a href="../kadisons-similarity-problem/completely-bounded-homomorphisms-and-similarity.html#4-rectangular-derivations">Completely bounded homomorphisms and similarity</a> (Arveson's distance formula); from the foundations course, <a href="../foundations-of-von-neumann-algebras/compact-and-trace-class-operators-the-predual-of-b-h-and-the-operator-topologies.html#OA-FND-LT-10">Corollary 9.7(a)</a> (the unit ball of <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span> is weakly compact), <a href="../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#OA-FND-WA-19">Proposition 12.1</a> (the kernel and image of a normal representation) and <a href="../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-17">Corollary 13.5</a> (a properly infinite projection is a sum of countably many mutually orthogonal projections equivalent to it); and the continuous functional calculus.</p>
+<h2 id="1-distances-between-operator-algebras">1. Distances between operator algebras</h2>
+<p>All Hilbert spaces are complex, and inner products are linear in the first variable. For a subset <span class="math" data-tex="\(X\subseteq B(H)\)">\(X\subseteq B(H)\)</span> we write <span class="math" data-tex="\(X_1\)">\(X_1\)</span> for the set of its elements of norm at most <span class="math" data-tex="\(1\)">\(1\)</span>. A C*-algebra or von Neumann algebra on <span class="math" data-tex="\(H\)">\(H\)</span> is <em>unital</em> when it contains the identity <span class="math" data-tex="\(I=I_H\)">\(I=I_H\)</span>. For <span class="math" data-tex="\(x\in B(H)\)">\(x\in B(H)\)</span> and <span class="math" data-tex="\(Y\subseteq B(H)\)">\(Y\subseteq B(H)\)</span>, <span class="math" data-tex="\(\operatorname{dist}(x,Y)=\inf_{y\in Y}\|x-y\|\)">\(\operatorname{dist}(x,Y)=\inf_{y\in Y}\|x-y\|\)</span>.</p>
+<p><strong>Definition 1.1</strong> (Kadison–Kastler distance). For subsets <span class="math" data-tex="\(X,Y\subseteq B(H)\)">\(X,Y\subseteq B(H)\)</span> put
+<span class="math math-display" data-tex="\[
+\delta(X,Y)=\sup_{x\in X_1}\operatorname{dist}(x,Y_1).
+\]">\[
+\delta(X,Y)=\sup_{x\in X_1}\operatorname{dist}(x,Y_1).
+\]</span>
+For C*-algebras <span class="math" data-tex="\(A,B\subseteq B(H)\)">\(A,B\subseteq B(H)\)</span> the <em>Kadison–Kastler distance</em> is
+<span class="math math-display" data-tex="\[
+d(A,B)=\max\{\delta(A,B),\,\delta(B,A)\},
+\]">\[
+d(A,B)=\max\{\delta(A,B),\,\delta(B,A)\},
+\]</span>
+the Hausdorff distance between the two unit balls in operator norm.</p>
+<p><strong>Definition 1.2</strong> (near inclusions). Let <span class="math" data-tex="\(\gamma&gt;0\)">\(\gamma&gt;0\)</span>. We write <span class="math" data-tex="\(A\subset_\gamma B\)">\(A\subset_\gamma B\)</span> if there is <span class="math" data-tex="\(\gamma&#x27;&lt;\gamma\)">\(\gamma&#x27;&lt;\gamma\)</span> such that <span class="math" data-tex="\(\operatorname{dist}(x,B)\le\gamma&#x27;\)">\(\operatorname{dist}(x,B)\le\gamma&#x27;\)</span> for every <span class="math" data-tex="\(x\in A_1\)">\(x\in A_1\)</span>. The approximating element of <span class="math" data-tex="\(B\)">\(B\)</span> is not required to be a contraction. The <em>one-sided gap</em> is
+<span class="math math-display" data-tex="\[
+\gamma(A,B)=\sup_{x\in A_1}\operatorname{dist}(x,B).
+\]">\[
+\gamma(A,B)=\sup_{x\in A_1}\operatorname{dist}(x,B).
+\]</span></p>
+<p><strong>Definition 1.3</strong> (matrix levels). For <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, <span class="math" data-tex="\(M_n(A)\)">\(M_n(A)\)</span> is the algebra of <span class="math" data-tex="\(n\times n\)">\(n\times n\)</span> matrices over <span class="math" data-tex="\(A\)">\(A\)</span>, acting on <span class="math" data-tex="\(H^n=H\oplus\dots\oplus H\)">\(H^n=H\oplus\dots\oplus H\)</span> with its operator norm. For a linear map <span class="math" data-tex="\(T:A\to B(K)\)">\(T:A\to B(K)\)</span>, the map <span class="math" data-tex="\(T_n:M_n(A)\to B(K^n)\)">\(T_n:M_n(A)\to B(K^n)\)</span> applies <span class="math" data-tex="\(T\)">\(T\)</span> entrywise, and <span class="math" data-tex="\(\|T\|_{\rm cb}=\sup_n\|T_n\|\)">\(\|T\|_{\rm cb}=\sup_n\|T_n\|\)</span>; <span class="math" data-tex="\(T\)">\(T\)</span> is <em>completely bounded</em> when this is finite. For <span class="math" data-tex="\(x\in B(H)\)">\(x\in B(H)\)</span> we write <span class="math" data-tex="\(x^{(n)}\)">\(x^{(n)}\)</span> for the diagonal matrix with entries <span class="math" data-tex="\(x\)">\(x\)</span>. The <em>completely bounded distance</em> is
+<span class="math math-display" data-tex="\[
+d_{\rm cb}(A,B)=\sup_{n\ge1}d\bigl(M_n(A),M_n(B)\bigr).
+\]">\[
+d_{\rm cb}(A,B)=\sup_{n\ge1}d\bigl(M_n(A),M_n(B)\bigr).
+\]</span>
+For <span class="math" data-tex="\(h\in B(H)\)">\(h\in B(H)\)</span>, <span class="math" data-tex="\(\operatorname{ad}_h(x)=[h,x]=hx-xh\)">\(\operatorname{ad}_h(x)=[h,x]=hx-xh\)</span>.</p>
+<p>Since <span class="math" data-tex="\(n=1\)">\(n=1\)</span> is allowed, <span class="math" data-tex="\(d(A,B)\le d_{\rm cb}(A,B)\)">\(d(A,B)\le d_{\rm cb}(A,B)\)</span>.</p>
+<p><strong>Lemma 1.4</strong> (normalizing approximants).</p>
+<ol>
+<li>If <span class="math" data-tex="\(\|x\|\le1\)">\(\|x\|\le1\)</span> and <span class="math" data-tex="\(\|x-y\|\le r\)">\(\|x-y\|\le r\)</span>, then <span class="math" data-tex="\(y_0=y/\max\{1,\|y\|\}\)">\(y_0=y/\max\{1,\|y\|\}\)</span> satisfies <span class="math" data-tex="\(\|y_0\|\le1\)">\(\|y_0\|\le1\)</span> and <span class="math" data-tex="\(\|x-y_0\|\le2r\)">\(\|x-y_0\|\le2r\)</span>.</li>
+<li>If <span class="math" data-tex="\(A\subset_\gamma B\)">\(A\subset_\gamma B\)</span>, then <span class="math" data-tex="\(\delta(A,B)&lt;2\gamma\)">\(\delta(A,B)&lt;2\gamma\)</span>. If <span class="math" data-tex="\(d(A,B)&lt;\gamma\)">\(d(A,B)&lt;\gamma\)</span>, then <span class="math" data-tex="\(A\subset_\gamma B\)">\(A\subset_\gamma B\)</span> and <span class="math" data-tex="\(B\subset_\gamma A\)">\(B\subset_\gamma A\)</span>.</li>
+<li>For C*-algebras <span class="math" data-tex="\(A,B,C\subseteq B(H)\)">\(A,B,C\subseteq B(H)\)</span>, <span class="math" data-tex="\(d(A,C)\le d(A,B)+d(B,C)\)">\(d(A,C)\le d(A,B)+d(B,C)\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) If <span class="math" data-tex="\(\|y\|\le1\)">\(\|y\|\le1\)</span> then <span class="math" data-tex="\(y_0=y\)">\(y_0=y\)</span>. Otherwise <span class="math" data-tex="\(\|y-y_0\|=\|y\|-1\)">\(\|y-y_0\|=\|y\|-1\)</span><span class="math" data-tex="\(\le\|y-x\|+\|x\|-1\le r\)">\(\le\|y-x\|+\|x\|-1\le r\)</span>, and <span class="math" data-tex="\(\|x-y_0\|\le2r\)">\(\|x-y_0\|\le2r\)</span>.</p>
+<p>(2) Let <span class="math" data-tex="\(\gamma&#x27;&lt;\gamma\)">\(\gamma&#x27;&lt;\gamma\)</span> be as in Definition 1.2, <span class="math" data-tex="\(x\in A_1\)">\(x\in A_1\)</span> and <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>. Choose <span class="math" data-tex="\(y\in B\)">\(y\in B\)</span> with <span class="math" data-tex="\(\|x-y\|\le\gamma&#x27;+\eta\)">\(\|x-y\|\le\gamma&#x27;+\eta\)</span>. Part (1) gives <span class="math" data-tex="\(y_0\in B_1\)">\(y_0\in B_1\)</span> with <span class="math" data-tex="\(\|x-y_0\|\le2\gamma&#x27;+2\eta\)">\(\|x-y_0\|\le2\gamma&#x27;+2\eta\)</span>. Hence <span class="math" data-tex="\(\delta(A,B)\le2\gamma&#x27;&lt;2\gamma\)">\(\delta(A,B)\le2\gamma&#x27;&lt;2\gamma\)</span>. Conversely, if <span class="math" data-tex="\(d(A,B)&lt;\gamma\)">\(d(A,B)&lt;\gamma\)</span>, take <span class="math" data-tex="\(\gamma&#x27;=d(A,B)\)">\(\gamma&#x27;=d(A,B)\)</span>: every <span class="math" data-tex="\(x\in A_1\)">\(x\in A_1\)</span> has <span class="math" data-tex="\(\operatorname{dist}(x,B)\le\operatorname{dist}(x,B_1)\le\gamma&#x27;\)">\(\operatorname{dist}(x,B)\le\operatorname{dist}(x,B_1)\le\gamma&#x27;\)</span>, and symmetrically.</p>
+<p>(3) For <span class="math" data-tex="\(x\in A_1\)">\(x\in A_1\)</span> and <span class="math" data-tex="\(y\in B_1\)">\(y\in B_1\)</span>, <span class="math" data-tex="\(\operatorname{dist}(x,C_1)\)">\(\operatorname{dist}(x,C_1)\)</span><span class="math" data-tex="\(\le\|x-y\|+\operatorname{dist}(y,C_1)\)">\(\le\|x-y\|+\operatorname{dist}(y,C_1)\)</span><span class="math" data-tex="\(\le\|x-y\|+\delta(B,C)\)">\(\le\|x-y\|+\delta(B,C)\)</span>. Taking the infimum over <span class="math" data-tex="\(y\)">\(y\)</span> and then the supremum over <span class="math" data-tex="\(x\)">\(x\)</span> gives <span class="math" data-tex="\(\delta(A,C)\le\delta(A,B)+\delta(B,C)\)">\(\delta(A,C)\le\delta(A,B)+\delta(B,C)\)</span>. Exchange <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(C\)">\(C\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.5</strong> (conjugation by a unitary near the identity). Let <span class="math" data-tex="\(v\in B(H)\)">\(v\in B(H)\)</span> be unitary and <span class="math" data-tex="\(A,B\subseteq B(H)\)">\(A,B\subseteq B(H)\)</span> C*-algebras.</p>
+<ol>
+<li><span class="math" data-tex="\(\|vxv^*-x\|\le2\|v-I\|\,\|x\|\)">\(\|vxv^*-x\|\le2\|v-I\|\,\|x\|\)</span> for every <span class="math" data-tex="\(x\in B(H)\)">\(x\in B(H)\)</span>.</li>
+<li><span class="math" data-tex="\(d(A,vBv^*)\le d(A,B)+2\|v-I\|\)">\(d(A,vBv^*)\le d(A,B)+2\|v-I\|\)</span> and <span class="math" data-tex="\(d_{\rm cb}(A,vBv^*)\)">\(d_{\rm cb}(A,vBv^*)\)</span><span class="math" data-tex="\(\le d_{\rm cb}(A,B)+2\|v-I\|\)">\(\le d_{\rm cb}(A,B)+2\|v-I\|\)</span>.</li>
+<li>For unitaries <span class="math" data-tex="\(v_1,\dots,v_k\)">\(v_1,\dots,v_k\)</span>, <span class="math" data-tex="\(\|v_1\cdots v_k-I\|\le\sum_j\|v_j-I\|\)">\(\|v_1\cdots v_k-I\|\le\sum_j\|v_j-I\|\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) <span class="math" data-tex="\(vxv^*-x=(v-I)xv^*+x(v^*-I)\)">\(vxv^*-x=(v-I)xv^*+x(v^*-I)\)</span>, and <span class="math" data-tex="\(\|v^*-I\|=\|v-I\|\)">\(\|v^*-I\|=\|v-I\|\)</span>. (2) The map <span class="math" data-tex="\(x\mapsto vxv^*\)">\(x\mapsto vxv^*\)</span> carries <span class="math" data-tex="\(B_1\)">\(B_1\)</span> onto <span class="math" data-tex="\((vBv^*)_1\)">\((vBv^*)_1\)</span>, so (1) gives <span class="math" data-tex="\(d(B,vBv^*)\le2\|v-I\|\)">\(d(B,vBv^*)\le2\|v-I\|\)</span>; apply Lemma 1.4(3). At matrix level <span class="math" data-tex="\(n\)">\(n\)</span>, <span class="math" data-tex="\(M_n(vBv^*)=v^{(n)}M_n(B)v^{(n)*}\)">\(M_n(vBv^*)=v^{(n)}M_n(B)v^{(n)*}\)</span> and <span class="math" data-tex="\(\|v^{(n)}-I\|=\|v-I\|\)">\(\|v^{(n)}-I\|=\|v-I\|\)</span>. (3) Induction on <span class="math" data-tex="\(k\)">\(k\)</span>, using
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+v_1\cdots v_k-I&amp;=v_1\cdots v_{k-1}(v_k-I)\\
+&amp;\quad +(v_1\cdots v_{k-1}-I).
+\end{aligned}\\
+\square
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+v_1\cdots v_k-I&amp;=v_1\cdots v_{k-1}(v_k-I)\\
+&amp;\quad +(v_1\cdots v_{k-1}-I).
+\end{aligned}\\
+\square
+\end{gathered}
+\]</span></p>
+<h2 id="2-three-theorems">2. Three theorems</h2>
+<p><strong>Theorem 2.1</strong> (strong Kadison–Kastler stability [OpenAI-289]). For every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> there is <span class="math" data-tex="\(\delta(\varepsilon)&gt;0\)">\(\delta(\varepsilon)&gt;0\)</span> with the following property. Let <span class="math" data-tex="\(H\)">\(H\)</span> be a Hilbert space and <span class="math" data-tex="\(M,N\subseteq B(H)\)">\(M,N\subseteq B(H)\)</span> unital von Neumann algebras with <span class="math" data-tex="\(d(M,N)&lt;\delta(\varepsilon)\)">\(d(M,N)&lt;\delta(\varepsilon)\)</span>. Then there is a unitary <span class="math" data-tex="\(u\in B(H)\)">\(u\in B(H)\)</span> with
+<span class="math math-display" data-tex="\[
+uMu^*=N,\qquad\|u-I\|&lt;\varepsilon.
+\]">\[
+uMu^*=N,\qquad\|u-I\|&lt;\varepsilon.
+\]</span></p>
+<p>The number <span class="math" data-tex="\(\delta(\varepsilon)\)">\(\delta(\varepsilon)\)</span> depends on <span class="math" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> alone: it is the same for all pairs of algebras, of every type, in every representation and on Hilbert spaces of every dimension. The converse direction is elementary.</p>
+<p><strong>Proposition 2.2.</strong> If <span class="math" data-tex="\(M,N\subseteq B(H)\)">\(M,N\subseteq B(H)\)</span> are unital C*-algebras and <span class="math" data-tex="\(uMu^*=N\)">\(uMu^*=N\)</span> for a unitary <span class="math" data-tex="\(u\)">\(u\)</span>, then <span class="math" data-tex="\(d_{\rm cb}(M,N)\le2\|u-I\|\)">\(d_{\rm cb}(M,N)\le2\|u-I\|\)</span> and <span class="math" data-tex="\(d(M&#x27;,N&#x27;)\le2\|u-I\|\)">\(d(M&#x27;,N&#x27;)\le2\|u-I\|\)</span>.</p>
+<p><strong>Proof.</strong> Lemma 1.5(2) with <span class="math" data-tex="\(B=M\)">\(B=M\)</span> gives <span class="math" data-tex="\(d_{\rm cb}(M,uMu^*)\le2\|u-I\|\)">\(d_{\rm cb}(M,uMu^*)\le2\|u-I\|\)</span>. Since <span class="math" data-tex="\(N&#x27;=uM&#x27;u^*\)">\(N&#x27;=uM&#x27;u^*\)</span>, the same lemma applies to the commutants. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So Theorem 2.1 also says that a small ordinary distance forces a small completely bounded distance and a small distance between the commutants, uniformly over all algebras and representations (the corollary in the last lesson on the main theorem). The proof of Theorem 2.1 occupies most of this course. It first treats finite factors on separable Hilbert spaces (the next six lessons), then infinite factors on separable spaces, then arbitrary von Neumann algebras on separable spaces, and finally arbitrary Hilbert spaces. One feature runs through all of it: every estimate must be independent of the algebras. For a single factor <span class="math" data-tex="\(M\)">\(M\)</span> one might prove a statement with a tolerance <span class="math" data-tex="\(\delta_M(\varepsilon)&gt;0\)">\(\delta_M(\varepsilon)&gt;0\)</span> valid in every representation of <span class="math" data-tex="\(M\)">\(M\)</span>; positivity of each <span class="math" data-tex="\(\delta_M(\varepsilon)\)">\(\delta_M(\varepsilon)\)</span> would not give <span class="math" data-tex="\(\inf_M\delta_M(\varepsilon)&gt;0\)">\(\inf_M\delta_M(\varepsilon)&gt;0\)</span>, which is what Theorem 2.1 asserts.</p>
+<p>The next two theorems show that the hypotheses of Theorem 2.1 cannot be weakened in two natural directions.</p>
+<p><strong>Theorem 2.3</strong> (close separable C*-algebras [OpenAI-289b]). For every <span class="math" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span> there are a separable Hilbert space <span class="math" data-tex="\(H\)">\(H\)</span> and unital norm-separable C*-algebras <span class="math" data-tex="\(A,B\subseteq B(H)\)">\(A,B\subseteq B(H)\)</span> with
+<span class="math math-display" data-tex="\[
+d(A,B)&lt;\varepsilon,\qquad A&#x27;&#x27;=B&#x27;&#x27;,
+\]">\[
+d(A,B)&lt;\varepsilon,\qquad A&#x27;&#x27;=B&#x27;&#x27;,
+\]</span>
+such that no unitary <span class="math" data-tex="\(u\in B(H)\)">\(u\in B(H)\)</span> satisfies <span class="math" data-tex="\(uAu^*=B\)">\(uAu^*=B\)</span>.</p>
+<p><strong>Theorem 2.4</strong> (one-sided near inclusions [OpenAI-289c]). There are <span class="math" data-tex="\(\varepsilon_0&gt;0\)">\(\varepsilon_0&gt;0\)</span>, separable Hilbert spaces <span class="math" data-tex="\(H_n\)">\(H_n\)</span> and unital von Neumann algebras <span class="math" data-tex="\(M_n,N_n\subseteq B(H_n)\)">\(M_n,N_n\subseteq B(H_n)\)</span> with <span class="math" data-tex="\(\gamma(M_n,N_n)\to0\)">\(\gamma(M_n,N_n)\to0\)</span>, such that for all sufficiently large <span class="math" data-tex="\(n\)">\(n\)</span> unitaries <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(uM_nu^*\subseteq N_n\)">\(uM_nu^*\subseteq N_n\)</span> exist, and every such unitary satisfies <span class="math" data-tex="\(\|u-I\|\ge\varepsilon_0\)">\(\|u-I\|\ge\varepsilon_0\)</span>.</p>
+<p>Theorem 2.3 is proved in the lessons <a href="convergent-sequences-and-a-relative-tensor-norm.html">Convergent sequences and a relative tensor norm</a> and <a href="a-free-group-deformation-and-close-separable-algebras.html">A free-group deformation and close separable algebras</a>; Theorem 2.4 in <a href="a-circle-family-and-a-near-inclusion.html">A circle family and a near inclusion</a> and <a href="almost-commuting-matrices-and-small-embeddings.html">Almost commuting matrices and small embeddings</a>. These four lessons use only the present lesson and one another.</p>
+<p>Earlier positive results covered type I algebras, amenable algebras, close separable nuclear C*-algebras, and particular nonamenable II<span class="math" data-tex="\(_1\)">\(_1\)</span> factors; [CCSSWW, Section 1] and [CSSWW] survey this work and its connection with Kadison's similarity problem, which the course <a href="../kadisons-similarity-problem/completely-bounded-homomorphisms-and-similarity.html">Kadison's similarity problem</a> treats.</p>
+<h2 id="3-commutants-and-close-representations">3. Commutants and close representations</h2>
+<p><strong>Proposition 3.1</strong> (distance to a commutant). Let <span class="math" data-tex="\(A\subseteq B(H)\)">\(A\subseteq B(H)\)</span> be a unital C*-algebra and <span class="math" data-tex="\(h\in B(H)\)">\(h\in B(H)\)</span>. Then
+<span class="math math-display" data-tex="\[
+\operatorname{dist}(h,A&#x27;)=\tfrac12\|\operatorname{ad}_h|_A\|_{\rm cb},
+\]">\[
+\operatorname{dist}(h,A&#x27;)=\tfrac12\|\operatorname{ad}_h|_A\|_{\rm cb},
+\]</span>
+and the distance is attained.</p>
+<p><strong>Proof.</strong> This is Corollary 4.5 of <a href="../kadisons-similarity-problem/completely-bounded-homomorphisms-and-similarity.html#4-rectangular-derivations">Completely bounded homomorphisms and similarity</a>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.2.</strong> Let <span class="math" data-tex="\(A,B\subseteq B(H)\)">\(A,B\subseteq B(H)\)</span> be unital C*-algebras with <span class="math" data-tex="\(d_{\rm cb}(A,B)\le\gamma\)">\(d_{\rm cb}(A,B)\le\gamma\)</span>. For <span class="math" data-tex="\(h\in A&#x27;\)">\(h\in A&#x27;\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\|\operatorname{ad}_h|_B\|_{\rm cb}\le2\gamma\|h\|,\\
+\operatorname{dist}(h,B&#x27;)\le\gamma\|h\|.
+\end{gathered}
+\]">\[
+\begin{gathered}
+\|\operatorname{ad}_h|_B\|_{\rm cb}\le2\gamma\|h\|,\\
+\operatorname{dist}(h,B&#x27;)\le\gamma\|h\|.
+\end{gathered}
+\]</span>
+Consequently <span class="math" data-tex="\(d(A&#x27;,B&#x27;)\le2\gamma\)">\(d(A&#x27;,B&#x27;)\le2\gamma\)</span>.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(Y\in M_n(B)_1\)">\(Y\in M_n(B)_1\)</span> and <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>. Choose <span class="math" data-tex="\(X\in M_n(A)_1\)">\(X\in M_n(A)_1\)</span> with <span class="math" data-tex="\(\|Y-X\|\le\gamma+\eta\)">\(\|Y-X\|\le\gamma+\eta\)</span>. Since <span class="math" data-tex="\(h\in A&#x27;\)">\(h\in A&#x27;\)</span>, <span class="math" data-tex="\(h^{(n)}\)">\(h^{(n)}\)</span> commutes with <span class="math" data-tex="\(X\)">\(X\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|[h^{(n)},Y]\|&amp;=\|[h^{(n)},Y-X]\|\\
+&amp;\le2\|h\|(\gamma+\eta).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|[h^{(n)},Y]\|&amp;=\|[h^{(n)},Y-X]\|\\
+&amp;\le2\|h\|(\gamma+\eta).
+\end{aligned}
+\]</span>
+This proves the first bound, and Proposition 3.1 gives the second, with an attained distance: some <span class="math" data-tex="\(z\in B&#x27;\)">\(z\in B&#x27;\)</span> has <span class="math" data-tex="\(\|h-z\|\le\gamma\|h\|\)">\(\|h-z\|\le\gamma\|h\|\)</span>. For <span class="math" data-tex="\(h\in(A&#x27;)_1\)">\(h\in(A&#x27;)_1\)</span>, Lemma 1.4(1) turns <span class="math" data-tex="\(z\)">\(z\)</span> into an element of <span class="math" data-tex="\((B&#x27;)_1\)">\((B&#x27;)_1\)</span> within <span class="math" data-tex="\(2\gamma\)">\(2\gamma\)</span> of <span class="math" data-tex="\(h\)">\(h\)</span>. Hence <span class="math" data-tex="\(\delta(A&#x27;,B&#x27;)\le2\gamma\)">\(\delta(A&#x27;,B&#x27;)\le2\gamma\)</span>, and by symmetry <span class="math" data-tex="\(d(A&#x27;,B&#x27;)\le2\gamma\)">\(d(A&#x27;,B&#x27;)\le2\gamma\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>A <em>representation</em> of a von Neumann algebra <span class="math" data-tex="\(P\)">\(P\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span> is a unital <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism <span class="math" data-tex="\(P\to B(H)\)">\(P\to B(H)\)</span>; it is <em>normal</em> when it is continuous for the <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>-weak topologies.</p>
+<p><strong>Lemma 3.3</strong> (close representations). Let <span class="math" data-tex="\(P\)">\(P\)</span> be a von Neumann algebra and <span class="math" data-tex="\(\rho,\theta:P\to B(H)\)">\(\rho,\theta:P\to B(H)\)</span> normal representations with <span class="math" data-tex="\(\|\rho-\theta\|_{\rm cb}\le e&lt;2\)">\(\|\rho-\theta\|_{\rm cb}\le e&lt;2\)</span>. There is a unitary <span class="math" data-tex="\(u\in B(H)\)">\(u\in B(H)\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u\rho(x)u^*=\theta(x)\quad(x\in P),\\
+\|u-I\|\le e.
+\end{gathered}
+\]">\[
+\begin{gathered}
+u\rho(x)u^*=\theta(x)\quad(x\in P),\\
+\|u-I\|\le e.
+\end{gathered}
+\]</span></p>
+<p><strong>Proof.</strong> On <span class="math" data-tex="\(H\oplus H\)">\(H\oplus H\)</span> let <span class="math" data-tex="\(\pi(x)=\rho(x)\oplus\theta(x)\)">\(\pi(x)=\rho(x)\oplus\theta(x)\)</span>, a normal representation of <span class="math" data-tex="\(P\)">\(P\)</span>, and let <span class="math" data-tex="\(S(\xi,\eta)=(\eta,\xi)\)">\(S(\xi,\eta)=(\eta,\xi)\)</span> be the flip. By <a href="../foundations-of-von-neumann-algebras/the-universal-enveloping-von-neumann-algebra-of-a-c-star-algebra-and-w-star-algebras.html#OA-FND-WA-19">Proposition 12.1</a>, <span class="math" data-tex="\(\ker\pi=P(1-z)\)">\(\ker\pi=P(1-z)\)</span> for a central projection <span class="math" data-tex="\(z\)">\(z\)</span>, <span class="math" data-tex="\(\pi(P)\)">\(\pi(P)\)</span> is a von Neumann algebra, and <span class="math" data-tex="\(\pi\)">\(\pi\)</span> restricts to a <span class="math" data-tex="\(*\)">\(*\)</span>-isomorphism of <span class="math" data-tex="\(Pz\)">\(Pz\)</span> onto <span class="math" data-tex="\(\pi(P)\)">\(\pi(P)\)</span>. The amplifications of an injective <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphism are injective <span class="math" data-tex="\(*\)">\(*\)</span>-homomorphisms, hence isometric. So every <span class="math" data-tex="\(Y\in M_n(\pi(P))\)">\(Y\in M_n(\pi(P))\)</span> is <span class="math" data-tex="\(\pi_n(X)\)">\(\pi_n(X)\)</span> for some <span class="math" data-tex="\(X\in M_n(Pz)\)">\(X\in M_n(Pz)\)</span> with <span class="math" data-tex="\(\|X\|=\|Y\|\)">\(\|X\|=\|Y\|\)</span>.</p>
+<p>Identify <span class="math" data-tex="\((H\oplus H)^n\)">\((H\oplus H)^n\)</span> with <span class="math" data-tex="\(H^n\oplus H^n\)">\(H^n\oplus H^n\)</span>. Then <span class="math" data-tex="\(S^{(n)}\)">\(S^{(n)}\)</span> is the flip of the two summands, <span class="math" data-tex="\(\pi_n(X)=\rho_n(X)\oplus\theta_n(X)\)">\(\pi_n(X)=\rho_n(X)\oplus\theta_n(X)\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+[S^{(n)},\pi_n(X)]&amp;=\begin{pmatrix}0&amp;\theta_n(X)-\rho_n(X)\\ \rho_n(X)-\theta_n(X)&amp;0\end{pmatrix},
+\end{aligned}
+\]">\[
+\begin{aligned}
+[S^{(n)},\pi_n(X)]&amp;=\begin{pmatrix}0&amp;\theta_n(X)-\rho_n(X)\\ \rho_n(X)-\theta_n(X)&amp;0\end{pmatrix},
+\end{aligned}
+\]</span>
+of norm <span class="math" data-tex="\(\|\theta_n(X)-\rho_n(X)\|\le e\|X\|=e\|Y\|\)">\(\|\theta_n(X)-\rho_n(X)\|\le e\|X\|=e\|Y\|\)</span>. Hence <span class="math" data-tex="\(\|\operatorname{ad}_S|_{\pi(P)}\|_{\rm cb}\le e\)">\(\|\operatorname{ad}_S|_{\pi(P)}\|_{\rm cb}\le e\)</span>, and Proposition 3.1 gives <span class="math" data-tex="\(D\in\pi(P)&#x27;\)">\(D\in\pi(P)&#x27;\)</span> with <span class="math" data-tex="\(\|D-S\|\le e/2\)">\(\|D-S\|\le e/2\)</span>.</p>
+<p>Write <span class="math" data-tex="\(D\)">\(D\)</span> as a <span class="math" data-tex="\(2\times2\)">\(2\times2\)</span> operator matrix and let <span class="math" data-tex="\(T\)">\(T\)</span> be its lower left entry. The lower left entry of <span class="math" data-tex="\(D-S\)">\(D-S\)</span> is <span class="math" data-tex="\(T-I\)">\(T-I\)</span>, so <span class="math" data-tex="\(r:=\|T-I\|\le e/2&lt;1\)">\(r:=\|T-I\|\le e/2&lt;1\)</span>. Comparing lower left entries in <span class="math" data-tex="\(D\pi(x)=\pi(x)D\)">\(D\pi(x)=\pi(x)D\)</span> gives <span class="math" data-tex="\(T\rho(x)=\theta(x)T\)">\(T\rho(x)=\theta(x)T\)</span> for all <span class="math" data-tex="\(x\in P\)">\(x\in P\)</span>. Applying this to <span class="math" data-tex="\(x^*\)">\(x^*\)</span> and taking adjoints gives <span class="math" data-tex="\(\rho(x)T^*=T^*\theta(x)\)">\(\rho(x)T^*=T^*\theta(x)\)</span>, so
+<span class="math math-display" data-tex="\[
+\rho(x)T^*T=T^*\theta(x)T=T^*T\rho(x).
+\]">\[
+\rho(x)T^*T=T^*\theta(x)T=T^*T\rho(x).
+\]</span>
+Since <span class="math" data-tex="\(\|T\xi\|\)">\(\|T\xi\|\)</span> lies between <span class="math" data-tex="\((1-r)\|\xi\|\)">\((1-r)\|\xi\|\)</span> and <span class="math" data-tex="\((1+r)\|\xi\|\)">\((1+r)\|\xi\|\)</span>, the spectrum of <span class="math" data-tex="\(|T|=(T^*T)^{1/2}\)">\(|T|=(T^*T)^{1/2}\)</span> lies in <span class="math" data-tex="\([1-r,1+r]\)">\([1-r,1+r]\)</span>. So <span class="math" data-tex="\(T\)">\(T\)</span> is invertible, <span class="math" data-tex="\(|T|^{-1}\)">\(|T|^{-1}\)</span> commutes with <span class="math" data-tex="\(\rho(P)\)">\(\rho(P)\)</span>, and <span class="math" data-tex="\(u=T|T|^{-1}\)">\(u=T|T|^{-1}\)</span> is a unitary with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+u\rho(x)&amp;=T\rho(x)|T|^{-1}\\
+&amp;=\theta(x)T|T|^{-1}=\theta(x)u.
+\end{aligned}
+\]">\[
+\begin{aligned}
+u\rho(x)&amp;=T\rho(x)|T|^{-1}\\
+&amp;=\theta(x)T|T|^{-1}=\theta(x)u.
+\end{aligned}
+\]</span>
+Finally <span class="math" data-tex="\(u-T=u(I-|T|)\)">\(u-T=u(I-|T|)\)</span>, so <span class="math" data-tex="\(\|u-I\|\le\|I-|T|\|+\|T-I\|\)">\(\|u-I\|\le\|I-|T|\|+\|T-I\|\)</span><span class="math" data-tex="\(\le2r\le e\)">\(\le2r\le e\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The constant <span class="math" data-tex="\(e\)">\(e\)</span> in Lemma 3.3 comes from the factor <span class="math" data-tex="\(\tfrac12\)">\(\tfrac12\)</span> in Proposition 3.1; [OpenAI-289, Lemma 2.3] states the bound <span class="math" data-tex="\(4e\)">\(4e\)</span> for <span class="math" data-tex="\(e&lt;1/4\)">\(e&lt;1/4\)</span>. Exercise 5.3 shows that Lemma 3.3 is sharp up to a factor <span class="math" data-tex="\(2\)">\(2\)</span>.</p>
+<h2 id="4-infinite-families-of-isometries">4. Infinite families of isometries</h2>
+<p><strong>Definition 4.1.</strong> An <em>infinite family of isometries</em> in a von Neumann algebra <span class="math" data-tex="\(P\subseteq B(H)\)">\(P\subseteq B(H)\)</span> is a sequence <span class="math" data-tex="\((s_i)_{i\ge1}\)">\((s_i)_{i\ge1}\)</span> in <span class="math" data-tex="\(P\)">\(P\)</span> with <span class="math" data-tex="\(s_i^*s_j=\delta_{ij}I\)">\(s_i^*s_j=\delta_{ij}I\)</span> and <span class="math" data-tex="\(\sum_is_is_i^*=I\)">\(\sum_is_is_i^*=I\)</span>, the sum converging strongly.</p>
+<p>If <span class="math" data-tex="\(P\)">\(P\)</span> is properly infinite, it contains such a family: by <a href="../foundations-of-von-neumann-algebras/projections-and-types-of-von-neumann-algebras.html#OA-FND-TY-17">Corollary 13.5</a>, <span class="math" data-tex="\(I=\sum_ie_i\)">\(I=\sum_ie_i\)</span> with mutually orthogonal projections <span class="math" data-tex="\(e_i\)">\(e_i\)</span> equivalent to <span class="math" data-tex="\(I\)">\(I\)</span>, and partial isometries <span class="math" data-tex="\(s_i\in P\)">\(s_i\in P\)</span> with <span class="math" data-tex="\(s_i^*s_i=I\)">\(s_i^*s_i=I\)</span> and <span class="math" data-tex="\(s_is_i^*=e_i\)">\(s_is_i^*=e_i\)</span> form the family.</p>
+<p><strong>Lemma 4.2</strong> (absorbing matrix levels). Let <span class="math" data-tex="\((s_i)\)">\((s_i)\)</span> be an infinite family of isometries in <span class="math" data-tex="\(B(H)\)">\(B(H)\)</span>, and <span class="math" data-tex="\(S\)">\(S\)</span> the von Neumann algebra it generates. For every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> there are <span class="math" data-tex="\(t_1,\dots,t_n\in S\)">\(t_1,\dots,t_n\in S\)</span> with
+<span class="math math-display" data-tex="\[
+t_k^*t_l=\delta_{kl}I,\qquad\sum_{k=1}^nt_kt_k^*=I.
+\]">\[
+t_k^*t_l=\delta_{kl}I,\qquad\sum_{k=1}^nt_kt_k^*=I.
+\]</span>
+The operator <span class="math" data-tex="\(V_n:H^n\to H\)">\(V_n:H^n\to H\)</span>, <span class="math" data-tex="\(V_n(\xi_1,\dots,\xi_n)=\sum_kt_k\xi_k\)">\(V_n(\xi_1,\dots,\xi_n)=\sum_kt_k\xi_k\)</span>, is unitary. For every von Neumann algebra <span class="math" data-tex="\(P\supseteq S\)">\(P\supseteq S\)</span> and every <span class="math" data-tex="\(Y\in S&#x27;\)">\(Y\in S&#x27;\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;V_nM_n(P)V_n^*=P,\\
+&amp;V_n[x_{kl}]V_n^*=\textstyle\sum_{k,l}t_kx_{kl}t_l^*,\\
+&amp;V_nY^{(n)}V_n^*=Y.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;V_nM_n(P)V_n^*=P,\\
+&amp;V_n[x_{kl}]V_n^*=\textstyle\sum_{k,l}t_kx_{kl}t_l^*,\\
+&amp;V_nY^{(n)}V_n^*=Y.
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(t_k=\sum_{i\ge1}s_{n(i-1)+k}s_i^*\)">\(t_k=\sum_{i\ge1}s_{n(i-1)+k}s_i^*\)</span>. On a vector <span class="math" data-tex="\(\xi\)">\(\xi\)</span> the terms are mutually orthogonal, with <span class="math" data-tex="\(\|s_{n(i-1)+k}s_i^*\xi\|^2=\langle s_is_i^*\xi,\xi\rangle\)">\(\|s_{n(i-1)+k}s_i^*\xi\|^2=\langle s_is_i^*\xi,\xi\rangle\)</span>, summing to <span class="math" data-tex="\(\|\xi\|^2\)">\(\|\xi\|^2\)</span>; so the series converges strongly and <span class="math" data-tex="\(t_k\in S\)">\(t_k\in S\)</span>. Since <span class="math" data-tex="\(n(i-1)+k=n(j-1)+l\)">\(n(i-1)+k=n(j-1)+l\)</span> with <span class="math" data-tex="\(1\le k,l\le n\)">\(1\le k,l\le n\)</span> forces <span class="math" data-tex="\(i=j\)">\(i=j\)</span> and <span class="math" data-tex="\(k=l\)">\(k=l\)</span>, we get <span class="math" data-tex="\(s_{n(i-1)+k}^*t_l\xi=\delta_{kl}s_i^*\xi\)">\(s_{n(i-1)+k}^*t_l\xi=\delta_{kl}s_i^*\xi\)</span>, hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+t_k^*t_l\xi&amp;=\sum_is_is_{n(i-1)+k}^*t_l\xi\\
+&amp;=\delta_{kl}\sum_is_is_i^*\xi=\delta_{kl}\xi.
+\end{aligned}
+\]">\[
+\begin{aligned}
+t_k^*t_l\xi&amp;=\sum_is_is_{n(i-1)+k}^*t_l\xi\\
+&amp;=\delta_{kl}\sum_is_is_i^*\xi=\delta_{kl}\xi.
+\end{aligned}
+\]</span>
+Also <span class="math" data-tex="\(t_kt_k^*=\sum_is_{n(i-1)+k}s_{n(i-1)+k}^*\)">\(t_kt_k^*=\sum_is_{n(i-1)+k}s_{n(i-1)+k}^*\)</span>, and summing over <span class="math" data-tex="\(k\)">\(k\)</span> gives <span class="math" data-tex="\(\sum_ms_ms_m^*=I\)">\(\sum_ms_ms_m^*=I\)</span>. The adjoint of <span class="math" data-tex="\(V_n\)">\(V_n\)</span> is <span class="math" data-tex="\(\xi\mapsto(t_1^*\xi,\dots,t_n^*\xi)\)">\(\xi\mapsto(t_1^*\xi,\dots,t_n^*\xi)\)</span>; the two relations say <span class="math" data-tex="\(V_n^*V_n=I\)">\(V_n^*V_n=I\)</span> and <span class="math" data-tex="\(V_nV_n^*=I\)">\(V_nV_n^*=I\)</span>. The formula for <span class="math" data-tex="\(V_n[x_{kl}]V_n^*\)">\(V_n[x_{kl}]V_n^*\)</span> is a direct computation; it lies in <span class="math" data-tex="\(P\)">\(P\)</span> when the <span class="math" data-tex="\(x_{kl}\)">\(x_{kl}\)</span> do, and every <span class="math" data-tex="\(x\in P\)">\(x\in P\)</span> equals <span class="math" data-tex="\(V_n[t_k^*xt_l]V_n^*\)">\(V_n[t_k^*xt_l]V_n^*\)</span>. Finally <span class="math" data-tex="\(V_nY^{(n)}V_n^*=\sum_kt_kYt_k^*\)">\(V_nY^{(n)}V_n^*=\sum_kt_kYt_k^*\)</span><span class="math" data-tex="\(=Y\sum_kt_kt_k^*=Y\)">\(=Y\sum_kt_kt_k^*=Y\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 4.3.</strong> If unital von Neumann algebras <span class="math" data-tex="\(M,N\subseteq B(H)\)">\(M,N\subseteq B(H)\)</span> contain a common infinite family of isometries, then <span class="math" data-tex="\(d_{\rm cb}(M,N)=d(M,N)\)">\(d_{\rm cb}(M,N)=d(M,N)\)</span>.</p>
+<p><strong>Proof.</strong> The unitary <span class="math" data-tex="\(V_n\)">\(V_n\)</span> of Lemma 4.2 maps the unit balls of <span class="math" data-tex="\(M_n(M)\)">\(M_n(M)\)</span> and <span class="math" data-tex="\(M_n(N)\)">\(M_n(N)\)</span> onto those of <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span>, preserving distances, so <span class="math" data-tex="\(d(M_n(M),M_n(N))=d(M,N)\)">\(d(M_n(M),M_n(N))=d(M,N)\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>Exercise 5.1.</strong> Show that <span class="math" data-tex="\(d(A,B)\le1\)">\(d(A,B)\le1\)</span> for all unital C*-algebras <span class="math" data-tex="\(A,B\subseteq B(H)\)">\(A,B\subseteq B(H)\)</span>, and that <span class="math" data-tex="\(d(A,B)=0\)">\(d(A,B)=0\)</span> only if <span class="math" data-tex="\(A=B\)">\(A=B\)</span>.</p>
+<p><strong>Exercise 5.2.</strong> Show that <span class="math" data-tex="\(\gamma(A,B)\le\delta(A,B)\le2\gamma(A,B)\)">\(\gamma(A,B)\le\delta(A,B)\le2\gamma(A,B)\)</span>, and that <span class="math" data-tex="\(\gamma(A,B)=0\)">\(\gamma(A,B)=0\)</span> exactly when <span class="math" data-tex="\(A\subseteq B\)">\(A\subseteq B\)</span>.</p>
+<p><strong>Exercise 5.3.</strong> Let <span class="math" data-tex="\(\rho\)">\(\rho\)</span> be a normal representation of a von Neumann algebra <span class="math" data-tex="\(P\)">\(P\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(\theta=v\rho(\cdot)v^*\)">\(\theta=v\rho(\cdot)v^*\)</span> for a unitary <span class="math" data-tex="\(v\)">\(v\)</span>. Show that <span class="math" data-tex="\(\|\rho-\theta\|_{\rm cb}\le2\|v-I\|\)">\(\|\rho-\theta\|_{\rm cb}\le2\|v-I\|\)</span>. Deduce that, when <span class="math" data-tex="\(\|\rho-\theta\|_{\rm cb}&lt;2\)">\(\|\rho-\theta\|_{\rm cb}&lt;2\)</span>, the infimum <span class="math" data-tex="\(m\)">\(m\)</span> of <span class="math" data-tex="\(\|u-I\|\)">\(\|u-I\|\)</span> over all unitaries <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(u\rho(\cdot)u^*=\theta\)">\(u\rho(\cdot)u^*=\theta\)</span> satisfies <span class="math" data-tex="\(m\le\|\rho-\theta\|_{\rm cb}\le2m\)">\(m\le\|\rho-\theta\|_{\rm cb}\le2m\)</span>.</p>
+<p><strong>Exercise 5.4.</strong> Show that the sequence <span class="math" data-tex="\(d(M_n(A),M_n(B))\)">\(d(M_n(A),M_n(B))\)</span>, <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, is nondecreasing.</p>
+<p><strong>Exercise 5.5.</strong> Show that <span class="math" data-tex="\(B(\ell^2)\)">\(B(\ell^2)\)</span> contains an infinite family of isometries and that a von Neumann algebra in which every isometry is unitary contains none.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>Solution 5.1.</strong> For <span class="math" data-tex="\(x\in A_1\)">\(x\in A_1\)</span>, <span class="math" data-tex="\(0\in B_1\)">\(0\in B_1\)</span> gives <span class="math" data-tex="\(\operatorname{dist}(x,B_1)\le\|x\|\le1\)">\(\operatorname{dist}(x,B_1)\le\|x\|\le1\)</span>. If <span class="math" data-tex="\(d(A,B)=0\)">\(d(A,B)=0\)</span>, every <span class="math" data-tex="\(x\in A_1\)">\(x\in A_1\)</span> is a norm limit of elements of <span class="math" data-tex="\(B_1\)">\(B_1\)</span>; <span class="math" data-tex="\(B\)">\(B\)</span> is norm closed, so <span class="math" data-tex="\(x\in B\)">\(x\in B\)</span>. Hence <span class="math" data-tex="\(A\subseteq B\)">\(A\subseteq B\)</span>, and symmetrically.</p>
+<p><strong>Solution 5.2.</strong> <span class="math" data-tex="\(\operatorname{dist}(x,B)\le\operatorname{dist}(x,B_1)\)">\(\operatorname{dist}(x,B)\le\operatorname{dist}(x,B_1)\)</span> gives the first inequality, and Lemma 1.4(1) the second. If <span class="math" data-tex="\(\gamma(A,B)=0\)">\(\gamma(A,B)=0\)</span>, every element of <span class="math" data-tex="\(A_1\)">\(A_1\)</span> is a limit of elements of <span class="math" data-tex="\(B\)">\(B\)</span>, hence lies in <span class="math" data-tex="\(B\)">\(B\)</span>; scaling gives <span class="math" data-tex="\(A\subseteq B\)">\(A\subseteq B\)</span>. The converse is immediate.</p>
+<p><strong>Solution 5.3.</strong> At matrix level <span class="math" data-tex="\(n\)">\(n\)</span>, <span class="math" data-tex="\(\theta_n(X)=v^{(n)}\rho_n(X)v^{(n)*}\)">\(\theta_n(X)=v^{(n)}\rho_n(X)v^{(n)*}\)</span> and Lemma 1.5(1) gives <span class="math" data-tex="\(\|\theta_n(X)-\rho_n(X)\|\le2\|v-I\|\|X\|\)">\(\|\theta_n(X)-\rho_n(X)\|\le2\|v-I\|\|X\|\)</span>. Every unitary <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(u\rho(\cdot)u^*=\theta\)">\(u\rho(\cdot)u^*=\theta\)</span> therefore satisfies <span class="math" data-tex="\(\|\rho-\theta\|_{\rm cb}\le2\|u-I\|\)">\(\|\rho-\theta\|_{\rm cb}\le2\|u-I\|\)</span>, so <span class="math" data-tex="\(\|\rho-\theta\|_{\rm cb}\le2m\)">\(\|\rho-\theta\|_{\rm cb}\le2m\)</span>. Lemma 3.3 produces such a <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(\|u-I\|\le\|\rho-\theta\|_{\rm cb}\)">\(\|u-I\|\le\|\rho-\theta\|_{\rm cb}\)</span>, so <span class="math" data-tex="\(m\le\|\rho-\theta\|_{\rm cb}\)">\(m\le\|\rho-\theta\|_{\rm cb}\)</span>.</p>
+<p><strong>Solution 5.4.</strong> Let <span class="math" data-tex="\(X\in M_n(A)_1\)">\(X\in M_n(A)_1\)</span>. Then <span class="math" data-tex="\(X\oplus0\in M_{n+1}(A)_1\)">\(X\oplus0\in M_{n+1}(A)_1\)</span>. For <span class="math" data-tex="\(Y&#x27;\in M_{n+1}(B)_1\)">\(Y&#x27;\in M_{n+1}(B)_1\)</span>, the upper left <span class="math" data-tex="\(n\times n\)">\(n\times n\)</span> corner <span class="math" data-tex="\(Y\)">\(Y\)</span> of <span class="math" data-tex="\(Y&#x27;\)">\(Y&#x27;\)</span> lies in <span class="math" data-tex="\(M_n(B)_1\)">\(M_n(B)_1\)</span> and <span class="math" data-tex="\(\|X-Y\|\le\|X\oplus0-Y&#x27;\|\)">\(\|X-Y\|\le\|X\oplus0-Y&#x27;\|\)</span>. Hence <span class="math" data-tex="\(\operatorname{dist}(X,M_n(B)_1)\)">\(\operatorname{dist}(X,M_n(B)_1)\)</span><span class="math" data-tex="\(\le\delta(M_{n+1}(A),M_{n+1}(B))\)">\(\le\delta(M_{n+1}(A),M_{n+1}(B))\)</span>, and symmetrically.</p>
+<p><strong>Solution 5.5.</strong> Write <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span> as a disjoint union of infinite sets <span class="math" data-tex="\(N_1,N_2,\dots\)">\(N_1,N_2,\dots\)</span> and let <span class="math" data-tex="\(s_i\)">\(s_i\)</span> map the standard basis bijectively onto the basis vectors indexed by <span class="math" data-tex="\(N_i\)">\(N_i\)</span>. If every isometry is unitary and <span class="math" data-tex="\((s_i)\)">\((s_i)\)</span> were an infinite family, <span class="math" data-tex="\(s_1s_1^*=I\)">\(s_1s_1^*=I\)</span> would force <span class="math" data-tex="\(s_2s_2^*=0\)">\(s_2s_2^*=0\)</span>, contradicting <span class="math" data-tex="\(s_2^*s_2=I\)">\(s_2^*s_2=I\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-289] OpenAI, Universal strong Kadison–Kastler stability, preprint, 23 September 2026. https://github.com/openai/math/tree/main/preprints/Universal-strong-Kadison-Kastler-stability-September-23-2026</li>
+<li>[OpenAI-289b] OpenAI, Close separable C*-algebras without spatial conjugacy, preprint, 5 October 2026. https://github.com/openai/math/tree/main/preprints/Close-Separable-Cstar-Algebras-Without-Spatial-Conjugacy-October-5-2026</li>
+<li>[OpenAI-289c] OpenAI, Near inclusions of von Neumann algebras without small spatial embeddings, preprint, 5 October 2026. https://github.com/openai/math/tree/main/preprints/Near-Inclusions-of-von-Neumann-Algebras-Without-Small-Spatial-Embeddings-October-5-2026</li>
+<li>[CCSSWW] J. Cameron, E. Christensen, A. M. Sinclair, R. R. Smith, S. White, A. D. Wiggins, Kadison–Kastler stable factors, Duke Mathematical Journal 163 (2014), 2639–2686. https://arxiv.org/abs/1209.4116</li>
+<li>[CSSWW] E. Christensen, A. M. Sinclair, R. R. Smith, S. A. White, W. Winter, Perturbations of nuclear C*-algebras, Acta Mathematica 208 (2012), 93–150. https://arxiv.org/abs/0910.4953</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

@@ -1,0 +1,258 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Rescaled Tomita graphs</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Strong Kadison–Kastler stability)</a><a href="preparing-infinite-factors.html">Previous lesson</a><a href="infinitesimal-normalizers-of-type-iii-factors.html">Next lesson</a><a href="src/rescaled-tomita-graphs.md">Editable source</a></nav><main><article><h1 id="rescaled-tomita-graphs">Rescaled Tomita graphs</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>For a prepared pair <span class="math" data-tex="\(M,N\)">\(M,N\)</span> with common vector <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, each algebra has its Tomita operator <span class="math" data-tex="\(S_P\)">\(S_P\)</span>, the closure of <span class="math" data-tex="\(x\Omega\mapsto x^*\Omega\)">\(x\Omega\mapsto x^*\Omega\)</span>, and its modular operator <span class="math" data-tex="\(\Delta_P=S_P^*S_P\)">\(\Delta_P=S_P^*S_P\)</span>. This lesson shows that a small completely bounded distance between <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span> forces the graphs of the rescaled operators <span class="math" data-tex="\(cS_P\)">\(cS_P\)</span> to be close, uniformly in <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> (Proposition 2.1). Bounding a single element in operator norm would lose this uniformity as <span class="math" data-tex="\(c\to0\)">\(c\to0\)</span> or <span class="math" data-tex="\(c\to\infty\)">\(c\to\infty\)</span>. Instead a graph vector is first flattened by random signs and Haar unitaries, then replicated into a row, where closeness at one matrix level supplies the estimate. A consequence is that the spectral projections of <span class="math" data-tex="\(\log\Delta_M\)">\(\log\Delta_M\)</span> and <span class="math" data-tex="\(\log\Delta_N\)">\(\log\Delta_N\)</span> for separated half-lines are almost orthogonal (Corollary 3.1). This is the comparison of the two modular actions on which the next lessons build [OpenAI-289, Section 6].</p>
+<p>We use: <a href="close-operator-algebras.html">Close operator algebras</a> (Exercise 5.4 and Lemma 1.4); <a href="preparing-infinite-factors.html">Preparing infinite factors</a> (Definition 5.1 and the identity (5.1)); the Tomita–Takesaki theorem for a faithful normal state, <a href="../OA-MOD/OA-MOD-FS.html">Modular time from a faithful normal state</a>; and the <a href="../OA-MOD/OA-MOD-CZ.html#recognize-exactly-the-fixed-observations">fixed-point criterion</a> for centralizers.</p>
+<h2 id="1-graphs-and-their-symmetries">1. Graphs and their symmetries</h2>
+<p>Fix a prepared pair <span class="math" data-tex="\(M,N\subseteq B(H)\)">\(M,N\subseteq B(H)\)</span> with vector <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, state <span class="math" data-tex="\(\varphi=\langle\cdot\,\Omega,\Omega\rangle\)">\(\varphi=\langle\cdot\,\Omega,\Omega\rangle\)</span> and subfactor <span class="math" data-tex="\(R=(\bigcup_jR_j)&#x27;&#x27;\)">\(R=(\bigcup_jR_j)&#x27;&#x27;\)</span>. Let <span class="math" data-tex="\(\overline H\)">\(\overline H\)</span> be the conjugate Hilbert space, with vectors <span class="math" data-tex="\(\bar\xi\)">\(\bar\xi\)</span> and <span class="math" data-tex="\(\alpha\bar\xi=\overline{\bar\alpha\xi}\)">\(\alpha\bar\xi=\overline{\bar\alpha\xi}\)</span>; an operator <span class="math" data-tex="\(T\)">\(T\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span> gives the operator <span class="math" data-tex="\(\bar T\bar\xi=\overline{T\xi}\)">\(\bar T\bar\xi=\overline{T\xi}\)</span> on <span class="math" data-tex="\(\overline H\)">\(\overline H\)</span>. For <span class="math" data-tex="\(P\in\{M,N\}\)">\(P\in\{M,N\}\)</span>, <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> and any <span class="math" data-tex="\(x\in B(H)\)">\(x\in B(H)\)</span> put
+<span class="math math-display" data-tex="\[
+g_c(x)=\bigl(x\Omega,\;c\,\overline{x^*\Omega}\bigr)\in H\oplus\overline H .
+\]">\[
+g_c(x)=\bigl(x\Omega,\;c\,\overline{x^*\Omega}\bigr)\in H\oplus\overline H .
+\]</span>
+This is complex linear in <span class="math" data-tex="\(x\)">\(x\)</span>. Let <span class="math" data-tex="\(E_c^P\)">\(E_c^P\)</span> be the orthogonal projection onto the closure of <span class="math" data-tex="\(\{g_c(x):x\in P\}\)">\(\{g_c(x):x\in P\}\)</span>, which is the graph of the closed linear operator <span class="math" data-tex="\(cS_P\)">\(cS_P\)</span>, followed by <span class="math" data-tex="\(\xi\mapsto\bar\xi\)">\(\xi\mapsto\bar\xi\)</span>, from <span class="math" data-tex="\(H\)">\(H\)</span> to <span class="math" data-tex="\(\overline H\)">\(\overline H\)</span>. Also <span class="math" data-tex="\(\|g_c(x)\|^2=\varphi(x^*x)+c^2\varphi(xx^*)\)">\(\|g_c(x)\|^2=\varphi(x^*x)+c^2\varphi(xx^*)\)</span>.</p>
+<p><strong>Lemma 1.1</strong> (common symmetries). For unitaries <span class="math" data-tex="\(r,s\in R\)">\(r,s\in R\)</span> let <span class="math" data-tex="\(\rho_s=J_Ms^*J_M=J_Ns^*J_N\)">\(\rho_s=J_Ms^*J_M=J_Ns^*J_N\)</span>, right multiplication by <span class="math" data-tex="\(s\)">\(s\)</span>, and
+<span class="math math-display" data-tex="\[
+U_{r,s}=r\rho_s\oplus\overline{s^*\rho_{r^*}} .
+\]">\[
+U_{r,s}=r\rho_s\oplus\overline{s^*\rho_{r^*}} .
+\]</span>
+Then <span class="math" data-tex="\(U_{r,s}\)">\(U_{r,s}\)</span> is unitary, <span class="math" data-tex="\(g_c(rxs)=U_{r,s}g_c(x)\)">\(g_c(rxs)=U_{r,s}g_c(x)\)</span> for every <span class="math" data-tex="\(x\in B(H)\)">\(x\in B(H)\)</span> commuting with <span class="math" data-tex="\(\rho_s\)">\(\rho_s\)</span> and <span class="math" data-tex="\(\rho_{r^*}\)">\(\rho_{r^*}\)</span>, and both projections <span class="math" data-tex="\(E_c^M,E_c^N\)">\(E_c^M,E_c^N\)</span> commute with every <span class="math" data-tex="\(U_{r,s}\)">\(U_{r,s}\)</span>. Moreover, for <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span> or <span class="math" data-tex="\(x\in N\)">\(x\in N\)</span>, the Haar averages <span class="math" data-tex="\(E_j(x)=\int_{\mathcal U(R_j)}uxu^*\,du\)">\(E_j(x)=\int_{\mathcal U(R_j)}uxu^*\,du\)</span> converge weakly to <span class="math" data-tex="\(\varphi(x)1\)">\(\varphi(x)1\)</span>.</p>
+<p><strong>Proof.</strong> The two expressions for <span class="math" data-tex="\(\rho_s\)">\(\rho_s\)</span> agree by Definition 5.1(3) of the preparation lesson, and <span class="math" data-tex="\(\rho_s\)">\(\rho_s\)</span> commutes with <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span>. For <span class="math" data-tex="\(x\in P\)">\(x\in P\)</span>, <span class="math" data-tex="\(rxs\Omega=r\rho_sx\Omega\)">\(rxs\Omega=r\rho_sx\Omega\)</span> and <span class="math" data-tex="\((rxs)^*\Omega=s^*x^*r^*\Omega=s^*\rho_{r^*}x^*\Omega\)">\((rxs)^*\Omega=s^*x^*r^*\Omega=s^*\rho_{r^*}x^*\Omega\)</span>, which gives the formula; the same computation applies to any <span class="math" data-tex="\(x\)">\(x\)</span> commuting with <span class="math" data-tex="\(\rho_s\)">\(\rho_s\)</span> and <span class="math" data-tex="\(\rho_{r^*}\)">\(\rho_{r^*}\)</span>. The adjoint of <span class="math" data-tex="\(U_{r,s}\)">\(U_{r,s}\)</span> is <span class="math" data-tex="\(U_{r^*,s^*}\)">\(U_{r^*,s^*}\)</span>, so each graph closure is invariant under a self-adjoint group of unitaries and reduces it. For the averages: every weak operator cluster point of <span class="math" data-tex="\(E_j(x)\)">\(E_j(x)\)</span> commutes with all <span class="math" data-tex="\(R_j\)">\(R_j\)</span>, hence lies in <span class="math" data-tex="\(R&#x27;\cap P=\mathbb C1\)">\(R&#x27;\cap P=\mathbb C1\)</span>, and <span class="math" data-tex="\(\varphi(E_j(x))=\varphi(x)\)">\(\varphi(E_j(x))=\varphi(x)\)</span> because <span class="math" data-tex="\(R\)">\(R\)</span> lies in the centralizer of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-uniform-comparison-of-the-graphs">2. Uniform comparison of the graphs</h2>
+<p><strong>Proposition 2.1</strong> (uniform graph comparison). Every prepared pair with <span class="math" data-tex="\(d_{\rm cb}(M,N)\le\gamma\)">\(d_{\rm cb}(M,N)\le\gamma\)</span> satisfies
+<span class="math math-display" data-tex="\[
+\sup_{c&gt;0}\|E_c^M-E_c^N\|\le5\cdot10^5\,\gamma .
+\]">\[
+\sup_{c&gt;0}\|E_c^M-E_c^N\|\le5\cdot10^5\,\gamma .
+\]</span></p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(T=(1-E_c^N)E_c^M\)">\(T=(1-E_c^N)E_c^M\)</span>. By Lemma 1.1, <span class="math" data-tex="\(T\)">\(T\)</span> commutes with every <span class="math" data-tex="\(U_{r,s}\)">\(U_{r,s}\)</span>. We first treat <span class="math" data-tex="\(c=\sqrt k\)">\(c=\sqrt k\)</span> with <span class="math" data-tex="\(k\in\mathbb N\)">\(k\in\mathbb N\)</span>, and we may suppose <span class="math" data-tex="\(T\ne0\)">\(T\ne0\)</span>.</p>
+<p><em>A flattened element with the signal.</em> Choose <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span> with <span class="math" data-tex="\(\|g_c(x)\|=1\)">\(\|g_c(x)\|=1\)</span> and <span class="math" data-tex="\(\|Tg_c(x)\|\ge\frac12\|T\|\)">\(\|Tg_c(x)\|\ge\frac12\|T\|\)</span>; this is possible since the vectors <span class="math" data-tex="\(g_c(x)\)">\(g_c(x)\)</span>, <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span>, are dense in the range of <span class="math" data-tex="\(E_c^M\)">\(E_c^M\)</span>. Write <span class="math" data-tex="\(\alpha=\varphi(x^*x)\)">\(\alpha=\varphi(x^*x)\)</span> and <span class="math" data-tex="\(\beta=\varphi(xx^*)\)">\(\beta=\varphi(xx^*)\)</span>, so <span class="math" data-tex="\(\alpha+k\beta=1\)">\(\alpha+k\beta=1\)</span>. Choose independent Haar unitaries <span class="math" data-tex="\(u_i,v_i\)">\(u_i,v_i\)</span> of <span class="math" data-tex="\(R_j\)">\(R_j\)</span> and independent fair signs <span class="math" data-tex="\(\epsilon_i\)">\(\epsilon_i\)</span>, <span class="math" data-tex="\(i\le m\)">\(i\le m\)</span>, and put
+<span class="math math-display" data-tex="\[
+x_i=u_ixv_i,\qquad y=m^{-1/2}\textstyle\sum_{i=1}^m\epsilon_ix_i .
+\]">\[
+x_i=u_ixv_i,\qquad y=m^{-1/2}\textstyle\sum_{i=1}^m\epsilon_ix_i .
+\]</span>
+By Lemma 1.1, <span class="math" data-tex="\(Tg_c(x_i)=U_{u_i,v_i}Tg_c(x)\)">\(Tg_c(x_i)=U_{u_i,v_i}Tg_c(x)\)</span>, so all the vectors <span class="math" data-tex="\(w_i=Tg_c(x_i)\)">\(w_i=Tg_c(x_i)\)</span> have norm <span class="math" data-tex="\(s_0=\|Tg_c(x)\|\)">\(s_0=\|Tg_c(x)\|\)</span>. For Hilbert space vectors, <span class="math" data-tex="\(\mathbb E_\epsilon\|\sum_i\epsilon_iw_i\|^2=\sum_i\|w_i\|^2\)">\(\mathbb E_\epsilon\|\sum_i\epsilon_iw_i\|^2=\sum_i\|w_i\|^2\)</span> and, expanding the fourth power over the three pairings of indices, <span class="math" data-tex="\(\mathbb E_\epsilon\|\sum_i\epsilon_iw_i\|^4\le3(\sum_i\|w_i\|^2)^2\)">\(\mathbb E_\epsilon\|\sum_i\epsilon_iw_i\|^4\le3(\sum_i\|w_i\|^2)^2\)</span>. So <span class="math" data-tex="\(Z=\|Tg_c(y)\|^2\)">\(Z=\|Tg_c(y)\|^2\)</span> has <span class="math" data-tex="\(\mathbb E_\epsilon Z=s_0^2\)">\(\mathbb E_\epsilon Z=s_0^2\)</span> and <span class="math" data-tex="\(\mathbb E_\epsilon Z^2\le3s_0^4\)">\(\mathbb E_\epsilon Z^2\le3s_0^4\)</span>. The Cauchy–Schwarz inequality applied to <span class="math" data-tex="\(Z1_{\{Z\ge\mathbb EZ/2\}}\)">\(Z1_{\{Z\ge\mathbb EZ/2\}}\)</span> gives <span class="math" data-tex="\(\mathbb P(Z\ge\mathbb EZ/2)\ge(\mathbb EZ)^2/(4\,\mathbb EZ^2)\ge1/12\)">\(\mathbb P(Z\ge\mathbb EZ/2)\ge(\mathbb EZ)^2/(4\,\mathbb EZ^2)\ge1/12\)</span>. Hence, for every choice of the unitaries, with sign probability at least <span class="math" data-tex="\(1/12\)">\(1/12\)</span>,
+<span class="math math-display" data-tex="\[
+\|Tg_c(y)\|\ge\frac{\|T\|}{2\sqrt2}.
+\tag{2.1}
+\]">\[
+\|Tg_c(y)\|\ge\frac{\|T\|}{2\sqrt2}.
+\tag{2.1}
+\]</span></p>
+<p><em>Fourth moments of the element.</em> The unitaries of <span class="math" data-tex="\(R\)">\(R\)</span> preserve <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, so <span class="math" data-tex="\(\mathbb E\varphi(y^*y)=\alpha\)">\(\mathbb E\varphi(y^*y)=\alpha\)</span>, <span class="math" data-tex="\(\mathbb E\varphi(yy^*)=\beta\)">\(\mathbb E\varphi(yy^*)=\beta\)</span> and <span class="math" data-tex="\(\mathbb E\|g_c(y)\|^2=1\)">\(\mathbb E\|g_c(y)\|^2=1\)</span>. Expand <span class="math" data-tex="\(\varphi((y^*y)^2)\)">\(\varphi((y^*y)^2)\)</span> and take the sign expectation. The terms with all four indices equal contribute <span class="math" data-tex="\(m^{-1}\varphi((x^*x)^2)\)">\(m^{-1}\varphi((x^*x)^2)\)</span>. For distinct <span class="math" data-tex="\(i,l\)">\(i,l\)</span>, use that elements of <span class="math" data-tex="\(R\)">\(R\)</span> can be moved cyclically under <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, and that <span class="math" data-tex="\(v_iv_l^*\)">\(v_iv_l^*\)</span> and <span class="math" data-tex="\(u_i^*u_l\)">\(u_i^*u_l\)</span> are Haar distributed:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathbb E\varphi(x_i^*x_ix_l^*x_l)&amp;=\varphi\bigl(x^*x\,E_j(x^*x)\bigr)\to\alpha^2,\\
+\mathbb E\varphi(x_i^*x_lx_l^*x_i)&amp;=\varphi\bigl(x^*E_j(xx^*)x\bigr)\to\alpha\beta,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathbb E\varphi(x_i^*x_ix_l^*x_l)&amp;=\varphi\bigl(x^*x\,E_j(x^*x)\bigr)\to\alpha^2,\\
+\mathbb E\varphi(x_i^*x_lx_l^*x_i)&amp;=\varphi\bigl(x^*E_j(xx^*)x\bigr)\to\alpha\beta,
+\end{aligned}
+\]</span>
+as <span class="math" data-tex="\(j\to\infty\)">\(j\to\infty\)</span>, by Lemma 1.1 applied to <span class="math" data-tex="\(\langle E_j(x^*x)\Omega,x^*x\Omega\rangle\)">\(\langle E_j(x^*x)\Omega,x^*x\Omega\rangle\)</span> and <span class="math" data-tex="\(\langle E_j(xx^*)x\Omega,x\Omega\rangle\)">\(\langle E_j(xx^*)x\Omega,x\Omega\rangle\)</span>. The third pairing is bounded by the second: <span class="math" data-tex="\(|\varphi(a^2)|\le\varphi(aa^*)^{1/2}\varphi(a^*a)^{1/2}\)">\(|\varphi(a^2)|\le\varphi(aa^*)^{1/2}\varphi(a^*a)^{1/2}\)</span> with <span class="math" data-tex="\(a=x_i^*x_l\)">\(a=x_i^*x_l\)</span>, and the two factors have equal expectations after exchanging <span class="math" data-tex="\(i\)">\(i\)</span> and <span class="math" data-tex="\(l\)">\(l\)</span>. The same computation for <span class="math" data-tex="\(yy^*\)">\(yy^*\)</span> exchanges <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> and <span class="math" data-tex="\(\beta\)">\(\beta\)</span>. Since <span class="math" data-tex="\(\alpha\le1\)">\(\alpha\le1\)</span>, <span class="math" data-tex="\(k\beta\le1\)">\(k\beta\le1\)</span> and <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>, the weighted off-diagonal limit satisfies
+<span class="math math-display" data-tex="\[
+\alpha^2+2\alpha\beta+k\beta^2+2k\alpha\beta\le6 .
+\]">\[
+\alpha^2+2\alpha\beta+k\beta^2+2k\alpha\beta\le6 .
+\]</span>
+Choose <span class="math" data-tex="\(m\)">\(m\)</span> with <span class="math" data-tex="\(m^{-1}(\varphi((x^*x)^2)+k\varphi((xx^*)^2))\le1\)">\(m^{-1}(\varphi((x^*x)^2)+k\varphi((xx^*)^2))\le1\)</span>, and then <span class="math" data-tex="\(j\)">\(j\)</span> so large that the off-diagonal contribution is at most <span class="math" data-tex="\(7\)">\(7\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E\bigl[\|g_c(y)\|^2+\varphi((y^*y)^2)+k\varphi((yy^*)^2)\bigr]\\
+&amp;\quad \le10 .\quad(2.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E\bigl[\|g_c(y)\|^2+\varphi((y^*y)^2)+k\varphi((yy^*)^2)\bigr]\\
+&amp;\quad \le10 .\quad(2.2)
+\end{aligned}
+\]</span>
+By Markov's inequality the bracket exceeds <span class="math" data-tex="\(240\)">\(240\)</span> with probability at most <span class="math" data-tex="\(1/24&lt;1/12\)">\(1/24&lt;1/12\)</span>. So some realization satisfies both (2.1) and the bound <span class="math" data-tex="\(240\)">\(240\)</span> for the bracket.</p>
+<p><em>Clipping.</em> For <span class="math" data-tex="\(b&gt;0\)">\(b&gt;0\)</span> let <span class="math" data-tex="\(f_b(t)=\min(1,b/t)\)">\(f_b(t)=\min(1,b/t)\)</span> and <span class="math" data-tex="\(f_b(0)=1\)">\(f_b(0)=1\)</span>. Put <span class="math" data-tex="\(z=y\,f_{K_1}(|y|)\)">\(z=y\,f_{K_1}(|y|)\)</span> with <span class="math" data-tex="\(K_1=4\sqrt{480}\)">\(K_1=4\sqrt{480}\)</span>. With the polar decomposition <span class="math" data-tex="\(y=w|y|\)">\(y=w|y|\)</span>, <span class="math" data-tex="\((y-z)^*(y-z)\)">\((y-z)^*(y-z)\)</span><span class="math" data-tex="\(=|y|^2(1-f_{K_1}(|y|))^2\le|y|^4/K_1^2\)">\(=|y|^2(1-f_{K_1}(|y|))^2\le|y|^4/K_1^2\)</span> and <span class="math" data-tex="\((y-z)(y-z)^*\le w|y|^4w^*/K_1^2\)">\((y-z)(y-z)^*\le w|y|^4w^*/K_1^2\)</span><span class="math" data-tex="\(=(yy^*)^2/K_1^2\)">\(=(yy^*)^2/K_1^2\)</span>, because <span class="math" data-tex="\(t(1-f_b(t))\le t^2/b\)">\(t(1-f_b(t))\le t^2/b\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|g_c(y-z)\|^2\\
+&amp;\quad\le K_1^{-2}\bigl[\varphi((y^*y)^2)+k\varphi((yy^*)^2)\bigr]\\
+&amp;\quad\le\frac{240}{K_1^2},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|g_c(y-z)\|^2\\
+&amp;\quad\le K_1^{-2}\bigl[\varphi((y^*y)^2)+k\varphi((yy^*)^2)\bigr]\\
+&amp;\quad\le\frac{240}{K_1^2},
+\end{aligned}
+\]</span>
+and with <span class="math" data-tex="\(a_0=1/(4\sqrt2)\)">\(a_0=1/(4\sqrt2)\)</span>, since <span class="math" data-tex="\(\sqrt{240}/K_1=a_0\)">\(\sqrt{240}/K_1=a_0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|Tg_c(z)\|&amp;\ge\Bigl(\frac1{2\sqrt2}-\frac{\sqrt{240}}{K_1}\Bigr)\|T\|\\
+&amp;=a_0\|T\|.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|Tg_c(z)\|&amp;\ge\Bigl(\frac1{2\sqrt2}-\frac{\sqrt{240}}{K_1}\Bigr)\|T\|\\
+&amp;=a_0\|T\|.
+\end{aligned}
+\]</span>
+Also <span class="math" data-tex="\(\|z\|\le K_1\)">\(\|z\|\le K_1\)</span>, <span class="math" data-tex="\(\alpha_z:=\varphi(z^*z)\le\varphi(y^*y)\le240\)">\(\alpha_z:=\varphi(z^*z)\le\varphi(y^*y)\le240\)</span> and <span class="math" data-tex="\(\beta_z:=\varphi(zz^*)\le\varphi(yy^*)\le240/k\)">\(\beta_z:=\varphi(zz^*)\le\varphi(yy^*)\le240/k\)</span>.</p>
+<p><em>A row.</em> A single element of norm <span class="math" data-tex="\(K_1\)">\(K_1\)</span> would still cost <span class="math" data-tex="\(\sqrt k\,K_1\gamma\)">\(\sqrt k\,K_1\gamma\)</span> on the second leg of the graph. To avoid this, let <span class="math" data-tex="\(r_1,\dots,r_k\)">\(r_1,\dots,r_k\)</span> be independent Haar unitaries of a large <span class="math" data-tex="\(R_{j&#x27;}\)">\(R_{j&#x27;}\)</span> and form the row and its square
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Y=[\,r_1z\ \cdots\ r_kz\,]\in M_{1,k}(M),\\
+A=YY^*=\textstyle\sum_ir_izz^*r_i^* .
+\end{gathered}
+\]">\[
+\begin{gathered}
+Y=[\,r_1z\ \cdots\ r_kz\,]\in M_{1,k}(M),\\
+A=YY^*=\textstyle\sum_ir_izz^*r_i^* .
+\end{gathered}
+\]</span>
+For rows of vectors use the normalized norm <span class="math" data-tex="\(\|(\eta_i)\|_{\rm av}^2=k^{-1}\sum_i\|\eta_i\|^2\)">\(\|(\eta_i)\|_{\rm av}^2=k^{-1}\sum_i\|\eta_i\|^2\)</span>. Since <span class="math" data-tex="\(Tg_c(r_iz)=U_{r_i,1}Tg_c(z)\)">\(Tg_c(r_iz)=U_{r_i,1}Tg_c(z)\)</span>, the row <span class="math" data-tex="\((Tg_c(Y_i))_i\)">\((Tg_c(Y_i))_i\)</span> has normalized norm at least <span class="math" data-tex="\(a_0\|T\|\)">\(a_0\|T\|\)</span> for every choice of the <span class="math" data-tex="\(r_i\)">\(r_i\)</span>. As before, as <span class="math" data-tex="\(j&#x27;\to\infty\)">\(j&#x27;\to\infty\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbb E\varphi(A^2)\to k\varphi((zz^*)^2)+k(k-1)\beta_z^2,\\
+&amp;\mathbb E\,k^{-1}\textstyle\sum_i\varphi(Y_i^*AY_i)\\
+&amp;\qquad\to\varphi((z^*z)^2)+(k-1)\alpha_z\beta_z .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbb E\varphi(A^2)\to k\varphi((zz^*)^2)+k(k-1)\beta_z^2,\\
+&amp;\mathbb E\,k^{-1}\textstyle\sum_i\varphi(Y_i^*AY_i)\\
+&amp;\qquad\to\varphi((z^*z)^2)+(k-1)\alpha_z\beta_z .
+\end{aligned}
+\]</span>
+With <span class="math" data-tex="\(\varphi((zz^*)^2)\le K_1^2\beta_z\)">\(\varphi((zz^*)^2)\le K_1^2\beta_z\)</span> and <span class="math" data-tex="\(\varphi((z^*z)^2)\le K_1^2\alpha_z\)">\(\varphi((z^*z)^2)\le K_1^2\alpha_z\)</span>, both limits are at most <span class="math" data-tex="\(240K_1^2+240^2\)">\(240K_1^2+240^2\)</span>. Choose <span class="math" data-tex="\(j&#x27;\)">\(j&#x27;\)</span> and a realization with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\varphi(A^2)+k^{-1}\textstyle\sum_i\varphi(Y_i^*AY_i)\le C_1:\\
+&amp;\quad =3.81\cdot10^6 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\varphi(A^2)+k^{-1}\textstyle\sum_i\varphi(Y_i^*AY_i)\le C_1:\\
+&amp;\quad =3.81\cdot10^6 .
+\end{aligned}
+\]</span></p>
+<p><em>Clipping the row.</em> Put <span class="math" data-tex="\(X=f_{K_2}(A^{1/2})Y\)">\(X=f_{K_2}(A^{1/2})Y\)</span>, so <span class="math" data-tex="\(\|X\|\le K_2\)">\(\|X\|\le K_2\)</span>, and <span class="math" data-tex="\(Q=1-f_{K_2}(A^{1/2})\)">\(Q=1-f_{K_2}(A^{1/2})\)</span>, so <span class="math" data-tex="\(Q^2\le A/K_2^2\)">\(Q^2\le A/K_2^2\)</span> and <span class="math" data-tex="\(Y-X=QY\)">\(Y-X=QY\)</span>. Since <span class="math" data-tex="\(c^2=k\)">\(c^2=k\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;k^{-1}\textstyle\sum_i\|g_c(Y_i-X_i)\|^2\\
+&amp;\quad =k^{-1}\sum_i\varphi(Y_i^*Q^2Y_i)\\
+&amp;\qquad +\varphi(QAQ)\le C_1/K_2^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;k^{-1}\textstyle\sum_i\|g_c(Y_i-X_i)\|^2\\
+&amp;\quad =k^{-1}\sum_i\varphi(Y_i^*Q^2Y_i)\\
+&amp;\qquad +\varphi(QAQ)\le C_1/K_2^2 .
+\end{aligned}
+\]</span>
+Choose <span class="math" data-tex="\(K_2=2\sqrt{C_1}/a_0\)">\(K_2=2\sqrt{C_1}/a_0\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\|(Tg_c(X_i))_i\|_{\rm av}&amp;\ge\Bigl(a_0-\frac{\sqrt{C_1}}{K_2}\Bigr)\|T\|\\
+&amp;=\frac{a_0}2\|T\| .\quad(2.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\|(Tg_c(X_i))_i\|_{\rm av}&amp;\ge\Bigl(a_0-\frac{\sqrt{C_1}}{K_2}\Bigr)\|T\|\\
+&amp;=\frac{a_0}2\|T\| .\quad(2.3)
+\end{aligned}
+\]</span></p>
+<p><em>Comparison at one matrix level.</em> Since <span class="math" data-tex="\(d_{\rm cb}(M,N)\le\gamma\)">\(d_{\rm cb}(M,N)\le\gamma\)</span>, there is a row <span class="math" data-tex="\(Z\in M_{1,k}(N)\)">\(Z\in M_{1,k}(N)\)</span> with <span class="math" data-tex="\(\|X-Z\|\le K_2\gamma\)">\(\|X-Z\|\le K_2\gamma\)</span>, up to an arbitrarily small slack (Exercise 5.4 of <a href="close-operator-algebras.html">Close operator algebras</a> and compression to the first row). For any row <span class="math" data-tex="\([e_i]\)">\([e_i]\)</span> of operators with norm at most <span class="math" data-tex="\(\eta\)">\(\eta\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;k^{-1}\textstyle\sum_i\|g_c(e_i)\|^2\\
+&amp;\quad =k^{-1}\sum_i\varphi(e_i^*e_i)+\varphi\bigl(\sum_ie_ie_i^*\bigr)\\
+&amp;\quad \le2\eta^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;k^{-1}\textstyle\sum_i\|g_c(e_i)\|^2\\
+&amp;\quad =k^{-1}\sum_i\varphi(e_i^*e_i)+\varphi\bigl(\sum_ie_ie_i^*\bigr)\\
+&amp;\quad \le2\eta^2 .
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(g_c(X_i)\)">\(g_c(X_i)\)</span> lies in the range of <span class="math" data-tex="\(E_c^M\)">\(E_c^M\)</span> and <span class="math" data-tex="\(g_c(Z_i)\)">\(g_c(Z_i)\)</span> in that of <span class="math" data-tex="\(E_c^N\)">\(E_c^N\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|(Tg_c(X_i))_i\|_{\rm av}\\
+&amp;\quad =\|((1-E_c^N)g_c(X_i-Z_i))_i\|_{\rm av}\\
+&amp;\quad \le\sqrt2K_2\gamma .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|(Tg_c(X_i))_i\|_{\rm av}\\
+&amp;\quad =\|((1-E_c^N)g_c(X_i-Z_i))_i\|_{\rm av}\\
+&amp;\quad \le\sqrt2K_2\gamma .
+\end{aligned}
+\]</span>
+With (2.3), <span class="math" data-tex="\(\|(1-E_c^N)E_c^M\|\le(2\sqrt2K_2/a_0)\gamma\)">\(\|(1-E_c^N)E_c^M\|\le(2\sqrt2K_2/a_0)\gamma\)</span><span class="math" data-tex="\(=16K_2\gamma\le3.534\cdot10^5\gamma\)">\(=16K_2\gamma\le3.534\cdot10^5\gamma\)</span>. The same holds with <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span> exchanged, and for orthogonal projections <span class="math" data-tex="\(\|E-F\|\)">\(\|E-F\|\)</span> is the larger of <span class="math" data-tex="\(\|(1-F)E\|\)">\(\|(1-F)E\|\)</span> and <span class="math" data-tex="\(\|(1-E)F\|\)">\(\|(1-E)F\|\)</span>.</p>
+<p><em>All rescalings.</em> The antiunitary flip <span class="math" data-tex="\(\Theta(\xi,\bar\eta)=(\eta,\bar\xi)\)">\(\Theta(\xi,\bar\eta)=(\eta,\bar\xi)\)</span> of <span class="math" data-tex="\(H\oplus\overline H\)">\(H\oplus\overline H\)</span> satisfies <span class="math" data-tex="\(\Theta g_c(x)=c\,g_{1/c}(x^*)\)">\(\Theta g_c(x)=c\,g_{1/c}(x^*)\)</span>, so it carries the graph for <span class="math" data-tex="\(c\)">\(c\)</span> onto the graph for <span class="math" data-tex="\(1/c\)">\(1/c\)</span>, for both algebras, and the bound holds for <span class="math" data-tex="\(c=1/\sqrt k\)">\(c=1/\sqrt k\)</span>. For <span class="math" data-tex="\(c\ge1\)">\(c\ge1\)</span> let <span class="math" data-tex="\(k=\lfloor c^2\rfloor\)">\(k=\lfloor c^2\rfloor\)</span>; then <span class="math" data-tex="\(r=c/\sqrt k\in[1,\sqrt2)\)">\(r=c/\sqrt k\in[1,\sqrt2)\)</span>, and <span class="math" data-tex="\(1\oplus r\)">\(1\oplus r\)</span> maps the graphs for <span class="math" data-tex="\(\sqrt k\)">\(\sqrt k\)</span> onto those for <span class="math" data-tex="\(c\)">\(c\)</span>. An invertible operator <span class="math" data-tex="\(V\)">\(V\)</span> multiplies the one-sided gap <span class="math" data-tex="\(\|(1-F)E\|\)">\(\|(1-F)E\|\)</span> between subspaces by at most <span class="math" data-tex="\(\|V\|\|V^{-1}\|\)">\(\|V\|\|V^{-1}\|\)</span>, here at most <span class="math" data-tex="\(\sqrt2\)">\(\sqrt2\)</span>. For <span class="math" data-tex="\(0&lt;c&lt;1\)">\(0&lt;c&lt;1\)</span> use <span class="math" data-tex="\(1/c\)">\(1/c\)</span> and the flip. Hence <span class="math" data-tex="\(\sup_c\|E_c^M-E_c^N\|\)">\(\sup_c\|E_c^M-E_c^N\|\)</span><span class="math" data-tex="\(\le\sqrt2\cdot3.534\cdot10^5\gamma\le5\cdot10^5\gamma\)">\(\le\sqrt2\cdot3.534\cdot10^5\gamma\le5\cdot10^5\gamma\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-separated-spectral-cuts">3. Separated spectral cuts</h2>
+<p><strong>Corollary 3.1</strong> (logarithmic modular cuts). For a prepared pair with <span class="math" data-tex="\(d_{\rm cb}(M,N)\le\gamma\)">\(d_{\rm cb}(M,N)\le\gamma\)</span>, put <span class="math" data-tex="\(L_P=\log\Delta_P\)">\(L_P=\log\Delta_P\)</span>. For every <span class="math" data-tex="\(a\in\mathbb R\)">\(a\in\mathbb R\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\bigl\|1_{(-\infty,a-1/2]}(L_N)\,1_{[a+1/2,\infty)}(L_M)\bigr\|\\
+&amp;\quad \le2.1\cdot10^6\,\gamma ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\bigl\|1_{(-\infty,a-1/2]}(L_N)\,1_{[a+1/2,\infty)}(L_M)\bigr\|\\
+&amp;\quad \le2.1\cdot10^6\,\gamma ,
+\end{aligned}
+\]</span>
+and the same holds with <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span> exchanged.</p>
+<p><strong>Proof.</strong> The projection onto the graph of a closed operator <span class="math" data-tex="\(A\)">\(A\)</span> has upper left entry <span class="math" data-tex="\((1+A^*A)^{-1}\)">\((1+A^*A)^{-1}\)</span>. For the graph of <span class="math" data-tex="\(cS_P\)">\(cS_P\)</span> followed by conjugation, <span class="math" data-tex="\(A^*A=c^2\Delta_P\)">\(A^*A=c^2\Delta_P\)</span>, so the upper left entry of <span class="math" data-tex="\(E_c^P\)">\(E_c^P\)</span> is <span class="math" data-tex="\((1+c^2\Delta_P)^{-1}=g(L_P+2\log c)\)">\((1+c^2\Delta_P)^{-1}=g(L_P+2\log c)\)</span> with <span class="math" data-tex="\(g(s)=(1+e^s)^{-1}\)">\(g(s)=(1+e^s)^{-1}\)</span>. Taking <span class="math" data-tex="\(c=e^{-a/2}\)">\(c=e^{-a/2}\)</span>, Proposition 2.1 gives
+<span class="math math-display" data-tex="\[
+\|g(L_M-a)-g(L_N-a)\|\le5\cdot10^5\gamma .
+\]">\[
+\|g(L_M-a)-g(L_N-a)\|\le5\cdot10^5\gamma .
+\]</span>
+Let <span class="math" data-tex="\(p=1_{(-\infty,a-1/2]}(L_N)\)">\(p=1_{(-\infty,a-1/2]}(L_N)\)</span>, <span class="math" data-tex="\(q=1_{[a+1/2,\infty)}(L_M)\)">\(q=1_{[a+1/2,\infty)}(L_M)\)</span>, and regard <span class="math" data-tex="\(X=pq\)">\(X=pq\)</span> as an operator from <span class="math" data-tex="\(qH\)">\(qH\)</span> to <span class="math" data-tex="\(pH\)">\(pH\)</span>. Let <span class="math" data-tex="\(A_0\)">\(A_0\)</span> and <span class="math" data-tex="\(B_0\)">\(B_0\)</span> be the restrictions of <span class="math" data-tex="\(g(L_N-a)\)">\(g(L_N-a)\)</span> to <span class="math" data-tex="\(pH\)">\(pH\)</span> and of <span class="math" data-tex="\(g(L_M-a)\)">\(g(L_M-a)\)</span> to <span class="math" data-tex="\(qH\)">\(qH\)</span>; since <span class="math" data-tex="\(g\)">\(g\)</span> is decreasing, <span class="math" data-tex="\(A_0\ge g(-1/2)\)">\(A_0\ge g(-1/2)\)</span> and <span class="math" data-tex="\(B_0\le g(1/2)\)">\(B_0\le g(1/2)\)</span>. As <span class="math" data-tex="\(p\)">\(p\)</span> commutes with <span class="math" data-tex="\(g(L_N-a)\)">\(g(L_N-a)\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> with <span class="math" data-tex="\(g(L_M-a)\)">\(g(L_M-a)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;A_0X-XB_0\\
+&amp;\quad=p\bigl(g(L_N-a)-g(L_M-a)\bigr)q\\
+&amp;\quad=:D_0,\qquad\|D_0\|\le5\cdot10^5\gamma .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;A_0X-XB_0\\
+&amp;\quad=p\bigl(g(L_N-a)-g(L_M-a)\bigr)q\\
+&amp;\quad=:D_0,\qquad\|D_0\|\le5\cdot10^5\gamma .
+\end{aligned}
+\]</span>
+Differentiating <span class="math" data-tex="\(t\mapsto e^{-tA_0}Xe^{tB_0}\)">\(t\mapsto e^{-tA_0}Xe^{tB_0}\)</span>, which tends to <span class="math" data-tex="\(0\)">\(0\)</span> since <span class="math" data-tex="\(\|e^{-tA_0}\|\|e^{tB_0}\|\le e^{-t(g(-1/2)-g(1/2))}\)">\(\|e^{-tA_0}\|\|e^{tB_0}\|\le e^{-t(g(-1/2)-g(1/2))}\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X=\int_0^\infty e^{-tA_0}D_0e^{tB_0}\,dt,\\
+\|X\|\le\frac{\|D_0\|}{g(-1/2)-g(1/2)} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+X=\int_0^\infty e^{-tA_0}D_0e^{tB_0}\,dt,\\
+\|X\|\le\frac{\|D_0\|}{g(-1/2)-g(1/2)} .
+\end{gathered}
+\]</span>
+Here <span class="math" data-tex="\(g(-1/2)-g(1/2)=\tanh(1/4)&gt;0.24\)">\(g(-1/2)-g(1/2)=\tanh(1/4)&gt;0.24\)</span>. Exchanging the algebras gives the other estimate. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>Exercise 4.1.</strong> Let <span class="math" data-tex="\(w_1,\dots,w_m\)">\(w_1,\dots,w_m\)</span> be vectors in a Hilbert space and <span class="math" data-tex="\(\epsilon_i\)">\(\epsilon_i\)</span> independent fair signs. Prove <span class="math" data-tex="\(\mathbb E\|\sum_i\epsilon_iw_i\|^4\le3(\sum_i\|w_i\|^2)^2\)">\(\mathbb E\|\sum_i\epsilon_iw_i\|^4\le3(\sum_i\|w_i\|^2)^2\)</span>.</p>
+<p><strong>Exercise 4.2.</strong> Prove the Paley–Zygmund bound used above: for a random variable <span class="math" data-tex="\(Z\ge0\)">\(Z\ge0\)</span> with <span class="math" data-tex="\(0&lt;\mathbb EZ^2&lt;\infty\)">\(0&lt;\mathbb EZ^2&lt;\infty\)</span>, <span class="math" data-tex="\(\mathbb P(Z\ge\mathbb EZ/2)\ge(\mathbb EZ)^2/(4\,\mathbb EZ^2)\)">\(\mathbb P(Z\ge\mathbb EZ/2)\ge(\mathbb EZ)^2/(4\,\mathbb EZ^2)\)</span>.</p>
+<p><strong>Exercise 4.3.</strong> Let <span class="math" data-tex="\(A\)">\(A\)</span> be a closed densely defined operator from <span class="math" data-tex="\(H\)">\(H\)</span> to <span class="math" data-tex="\(K\)">\(K\)</span>. Show that the orthogonal projection onto its graph has upper left entry <span class="math" data-tex="\((1+A^*A)^{-1}\)">\((1+A^*A)^{-1}\)</span>.</p>
+<p><strong>Exercise 4.4.</strong> For two orthogonal projections <span class="math" data-tex="\(E,F\)">\(E,F\)</span>, show that <span class="math" data-tex="\(\|E-F\|\)">\(\|E-F\|\)</span> is the larger of <span class="math" data-tex="\(\|(1-F)E\|\)">\(\|(1-F)E\|\)</span> and <span class="math" data-tex="\(\|(1-E)F\|\)">\(\|(1-E)F\|\)</span>.</p>
+<p><strong>Exercise 4.5.</strong> In the matrix example <span class="math" data-tex="\(M=M_2(\mathbb C)\)">\(M=M_2(\mathbb C)\)</span> with the state of density <span class="math" data-tex="\(h=\operatorname{diag}(\frac23,\frac13)\)">\(h=\operatorname{diag}(\frac23,\frac13)\)</span>, compute <span class="math" data-tex="\(\log\Delta\)">\(\log\Delta\)</span> on the matrix units and its spectrum.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>Solution 4.1.</strong> Expanding, <span class="math" data-tex="\(\mathbb E\|\sum\epsilon_iw_i\|^4\)">\(\mathbb E\|\sum\epsilon_iw_i\|^4\)</span><span class="math" data-tex="\(=\sum_{i,j,k,l}\mathbb E[\epsilon_i\epsilon_j\epsilon_k\epsilon_l]\langle w_i,w_j\rangle\langle w_k,\)">\(=\sum_{i,j,k,l}\mathbb E[\epsilon_i\epsilon_j\epsilon_k\epsilon_l]\langle w_i,w_j\rangle\langle w_k,\)</span><span class="math" data-tex="\(w_l\rangle\)">\(w_l\rangle\)</span>. Only the pairings <span class="math" data-tex="\(i=j,k=l\)">\(i=j,k=l\)</span>, <span class="math" data-tex="\(i=k,j=l\)">\(i=k,j=l\)</span> and <span class="math" data-tex="\(i=l,j=k\)">\(i=l,j=k\)</span> survive, with the all-equal terms counted once. Each pairing is at most <span class="math" data-tex="\((\sum\|w_i\|^2)^2\)">\((\sum\|w_i\|^2)^2\)</span> by <span class="math" data-tex="\(|\langle w_i,w_j\rangle|\le\|w_i\|\|w_j\|\)">\(|\langle w_i,w_j\rangle|\le\|w_i\|\|w_j\|\)</span>.</p>
+<p><strong>Solution 4.2.</strong> <span class="math" data-tex="\(\mathbb EZ\le\mathbb E[Z1_{\{Z&lt;\mathbb EZ/2\}}]\)">\(\mathbb EZ\le\mathbb E[Z1_{\{Z&lt;\mathbb EZ/2\}}]\)</span><span class="math" data-tex="\(+\mathbb E[Z1_{\{Z\ge\mathbb EZ/2\}}]\le\frac12\mathbb EZ\)">\(+\mathbb E[Z1_{\{Z\ge\mathbb EZ/2\}}]\le\frac12\mathbb EZ\)</span><span class="math" data-tex="\(+(\mathbb EZ^2)^{1/2}\mathbb P(Z\ge\mathbb EZ/2)^{1/2}\)">\(+(\mathbb EZ^2)^{1/2}\mathbb P(Z\ge\mathbb EZ/2)^{1/2}\)</span>.</p>
+<p><strong>Solution 4.3.</strong> The graph is the range of the injective operator <span class="math" data-tex="\(\xi\mapsto(\xi,A\xi)\)">\(\xi\mapsto(\xi,A\xi)\)</span> on the domain. The vector <span class="math" data-tex="\((\eta,0)\)">\((\eta,0)\)</span> decomposes as <span class="math" data-tex="\(((1+A^*A)^{-1}\eta,A(1+A^*A)^{-1}\eta)\)">\(((1+A^*A)^{-1}\eta,A(1+A^*A)^{-1}\eta)\)</span> plus <span class="math" data-tex="\((\eta-(1+A^*A)^{-1}\eta,-A(1+A^*A)^{-1}\eta)\)">\((\eta-(1+A^*A)^{-1}\eta,-A(1+A^*A)^{-1}\eta)\)</span>, and the second vector is orthogonal to every <span class="math" data-tex="\((\xi,A\xi)\)">\((\xi,A\xi)\)</span> because <span class="math" data-tex="\(A^*A(1+A^*A)^{-1}\eta=\eta-(1+A^*A)^{-1}\eta\)">\(A^*A(1+A^*A)^{-1}\eta=\eta-(1+A^*A)^{-1}\eta\)</span>.</p>
+<p><strong>Solution 4.4.</strong> <span class="math" data-tex="\(E-F=E(1-F)-(1-E)F\)">\(E-F=E(1-F)-(1-E)F\)</span>, and the two terms map into orthogonal subspaces from orthogonal subspaces, so the norm of their sum is the maximum of their norms; and <span class="math" data-tex="\(\|E(1-F)\|=\|(1-F)E\|\)">\(\|E(1-F)\|=\|(1-F)E\|\)</span>.</p>
+<p><strong>Solution 4.5.</strong> <span class="math" data-tex="\(\Delta x=hxh^{-1}\)">\(\Delta x=hxh^{-1}\)</span>, so <span class="math" data-tex="\(\Delta e_{12}=2e_{12}\)">\(\Delta e_{12}=2e_{12}\)</span>, <span class="math" data-tex="\(\Delta e_{21}=\frac12e_{21}\)">\(\Delta e_{21}=\frac12e_{21}\)</span> and <span class="math" data-tex="\(\Delta e_{ii}=e_{ii}\)">\(\Delta e_{ii}=e_{ii}\)</span>. The spectrum of <span class="math" data-tex="\(\log\Delta\)">\(\log\Delta\)</span> is <span class="math" data-tex="\(\{-\log2,0,\log2\}\)">\(\{-\log2,0,\log2\}\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-289] OpenAI, Universal strong Kadison–Kastler stability, preprint, 23 September 2026, Section 6. https://github.com/openai/math/tree/main/preprints/Universal-strong-Kadison-Kastler-stability-September-23-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

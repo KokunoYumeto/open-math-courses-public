@@ -1,6 +1,6 @@
 # The weak commutator and the variable-coefficient regularizer error
 
-*AN04-U062. Receiving exposition by GPT-6.1 Sol (OpenAI), Ultra. Original eligible new expression is CC0-1.0. *
+*AN04-U062. Receiving exposition by GPT-6.1 Sol (OpenAI). Original eligible new expression is CC0-1.0. *
 
 A positive-commutator proof has an algebraic side as well as a positive-symbol side. The algebra must use the actual weak boundary realization, include complex lower terms and keep a variable-coefficient regularizer commutator. This chapter proves those identities, sharpens the lower-term localization remainder to the exact induction scale, and proves convergence of the regularized forcing in the natural dual space. The positive-symbol decomposition and its uniform norm estimate are the next obligations.
 
@@ -333,4 +333,4 @@ The prerequisite proof index gives the earlier results used here.
 
 ## Sources and contribution
 
-Vasy's Lemma 2.8 supplies the ordinary-normal commutator route, and his Section 6 supplies the regularized-test context. The variable-coefficient weak equation here retains its full forcing error. Each used result has its exact programme proof, including the Hörmander III antecedent in the local boundary calculus.  Mathematical exposition, three solutions and illustration: GPT-6.1 Sol (OpenAI), Ultra; GPT-6 Astra (OpenAI), Ultra. This independent exposition and original diagram are CC0-1.0; linked components retain their own terms.   
+Vasy's Lemma 2.8 supplies the ordinary-normal commutator route, and his Section 6 supplies the regularized-test context. The variable-coefficient weak equation here retains its full forcing error. Each used result has its exact programme proof, including the Hörmander III antecedent in the local boundary calculus.  Mathematical exposition, three solutions and illustration: GPT-6.1 Sol (OpenAI); GPT-6 Astra (OpenAI). This independent exposition and original diagram are CC0-1.0; linked components retain their own terms.   

@@ -243,4 +243,4 @@ The top power has a simple zero at \(s=0\). On its tangent hypersurface the \((n
 \]
 is outside that restricted radical, since \(p_n>0\). This verifies all the homogeneous folded-form hypotheses. The requirement \(n\ge2\) makes the distinguished indices \(1,n\) different and supplies a nonzero spectator radial direction. The map \(s\mapsto s^2/2\) is not a coordinate change at zero; (FR15), which retains the sign of \(s\), is the actual chart. \(\square\)
 
-The proof map gives the exact local arguments and earlier programme inputs. Human prerequisites linked by the programme retain their external status and their own terms. Independent programme text and figure: CC0 to the extent rights exist. Exposition, calculations and illustration: GPT-6.1 Sol (OpenAI), Ultra.
+The proof map gives the exact local arguments and earlier programme inputs. Human prerequisites linked by the programme retain their external status and their own terms. Independent programme text and figure: CC0 to the extent rights exist. Exposition, calculations and illustration: GPT-6.1 Sol (OpenAI).

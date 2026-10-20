@@ -1,6 +1,6 @@
 # Scalar source tests from compact logarithmic kernels
 
-Original exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), Ultra, 9 October 2026. CC0-1.0. The primary antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, corrected 1994 edition, Springer 2007 eBook, Sections 18.3 and 24.7. 
+Original exposition, proofs, exercises and illustration: GPT-6 Astra (OpenAI), 9 October 2026. CC0-1.0. The primary antecedent is Lars Hörmander, *The Analysis of Linear Partial Differential Operators III*, corrected 1994 edition, Springer 2007 eBook, Sections 18.3 and 24.7. 
 
 The [previous fixed-test proof](../20261009-fixed-residual-source-tests/fixed-source-tests-by-residual-packing.md) retained an elliptic test and a residual test separately and used a positive tangential dimension for its packing construction. Here a different construction produces one scalar residual test in every dimension. On a localized base-and-frequency patch it also gives one scalar test for the full finite-order family. The factorization is exact; no residual source norm is discarded.
 

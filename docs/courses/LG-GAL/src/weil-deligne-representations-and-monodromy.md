@@ -1,6 +1,6 @@
 # Weil–Deligne representations and Grothendieck’s monodromy theorem
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).*
 
 A continuous representation can have infinite inertia image even when its coefficient characteristic differs from the residue characteristic. The infinite part is remarkably rigid: on a sufficiently small subgroup, one nilpotent matrix controls everything. A Weil–Deligne representation records that matrix separately from the representation with finite inertia image. This makes local factors and comparison between coefficient fields algebraic.
 

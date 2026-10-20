@@ -1,0 +1,271 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A circle family and a near inclusion</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Strong Kadison–Kastler stability)</a><a href="a-free-group-deformation-and-close-separable-algebras.html">Previous lesson</a><a href="almost-commuting-matrices-and-small-embeddings.html">Next lesson</a><a href="src/a-circle-family-and-a-near-inclusion.md">Editable source</a></nav><main><article><h1 id="a-circle-family-and-a-near-inclusion">A circle family and a near inclusion</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>If a unitary <span class="math" data-tex="\(u\)">\(u\)</span> satisfies <span class="math" data-tex="\(uMu^*\subseteq N\)">\(uMu^*\subseteq N\)</span>, then every contraction <span class="math" data-tex="\(x\in M\)">\(x\in M\)</span> lies within <span class="math" data-tex="\(2\|u-I\|\)">\(2\|u-I\|\)</span> of the element <span class="math" data-tex="\(uxu^*\)">\(uxu^*\)</span> of <span class="math" data-tex="\(N\)">\(N\)</span>, so <span class="math" data-tex="\(\gamma(M,N)\le2\|u-I\|\)">\(\gamma(M,N)\le2\|u-I\|\)</span>. Theorem 2.4 of <a href="close-operator-algebras.html">Close operator algebras</a> says that the converse fails without a uniform rate: one-sided gaps can tend to <span class="math" data-tex="\(0\)">\(0\)</span> while every implementing unitary stays far from <span class="math" data-tex="\(I\)">\(I\)</span>. For an injective source algebra <span class="math" data-tex="\(M\)">\(M\)</span> the converse holds with a linear bound: if <span class="math" data-tex="\(\gamma(M,N)&lt;\gamma&lt;1/100\)">\(\gamma(M,N)&lt;\gamma&lt;1/100\)</span>, Christensen's theorem gives a unitary <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(uMu^*\subseteq N\)">\(uMu^*\subseteq N\)</span> and <span class="math" data-tex="\(\|u-I\|\le150\gamma\)">\(\|u-I\|\le150\gamma\)</span> (Theorem 3.1 of <a href="averaging-and-the-completely-positive-criterion.html">Averaging and the completely positive criterion</a>). This lesson and <a href="almost-commuting-matrices-and-small-embeddings.html">Almost commuting matrices and small embeddings</a> prove Theorem 2.4 [OpenAI-289c].</p>
+<p>The idea is to encode a pair of unitary matrices <span class="math" data-tex="\(U,V\)">\(U,V\)</span> in a pair of von Neumann algebras. The present lesson builds, for every such pair, algebras <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span> with <span class="math" data-tex="\(W^*MW\subseteq N\)">\(W^*MW\subseteq N\)</span> for an explicit unitary <span class="math" data-tex="\(W\)">\(W\)</span>, and
+<span class="math math-display" data-tex="\[
+\gamma(M,N)\le C\,\|UV-VU\|
+\]">\[
+\gamma(M,N)\le C\,\|UV-VU\|
+\]</span>
+with an absolute constant <span class="math" data-tex="\(C\)">\(C\)</span> (Proposition 3.2). The next lesson shows that, for Voiculescu's almost commuting matrices, a unitary <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(uMu^*\subseteq N\)">\(uMu^*\subseteq N\)</span> and <span class="math" data-tex="\(\|u-I\|\)">\(\|u-I\|\)</span> small would produce a commuting pair of unitaries near <span class="math" data-tex="\((U,V)\)">\((U,V)\)</span>, which does not exist.</p>
+<p>The encoding needs representations of the free group that depend on a point <span class="math" data-tex="\(z\)">\(z\)</span> of the unit circle through Fourier coefficients with uniformly summable moments, so that <span class="math" data-tex="\(z\)">\(z\)</span> can be replaced by a unitary matrix (Section 1). They come from the deformation of <a href="a-free-group-deformation-and-close-separable-algebras.html">A free-group deformation and close separable algebras</a> by a twist along the homomorphism that counts generators.</p>
+<p>We use: <a href="close-operator-algebras.html">Close operator algebras</a> (Definition 1.2); <a href="a-free-group-deformation-and-close-separable-algebras.html">A free-group deformation and close separable algebras</a> (Lemmas 2.1 and 4.1, and the formulas for <span class="math" data-tex="\(T\)">\(T\)</span> in the proof of Proposition 2.2); and the <a href="../foundations-of-von-neumann-algebras/the-double-commutant-theorem.html#OA-FND-BI-06">double commutant theorem</a>.</p>
+<h2 id="1-a-circle-family-of-representations">1. A circle family of representations</h2>
+<p>Let <span class="math" data-tex="\(F\)">\(F\)</span> be the free group on <span class="math" data-tex="\(s_1,s_2,\dots\)">\(s_1,s_2,\dots\)</span>, let <span class="math" data-tex="\(K=\ell^2(F)\)">\(K=\ell^2(F)\)</span> with basis <span class="math" data-tex="\((\delta_x)\)">\((\delta_x)\)</span>, and let <span class="math" data-tex="\(\lambda_F,\rho_F\)">\(\lambda_F,\rho_F\)</span> be the left and right regular representations of <span class="math" data-tex="\(F\)">\(F\)</span>. Let <span class="math" data-tex="\(p_e\)">\(p_e\)</span> be the projection onto <span class="math" data-tex="\(\mathbb C\delta_e\)">\(\mathbb C\delta_e\)</span> and <span class="math" data-tex="\(\mathbb T=\{z\in\mathbb C:|z|=1\}\)">\(\mathbb T=\{z\in\mathbb C:|z|=1\}\)</span>. Fix <span class="math" data-tex="\(0&lt;t&lt;1\)">\(0&lt;t&lt;1\)</span> and <span class="math" data-tex="\(r=\sqrt{1-t^2}\)">\(r=\sqrt{1-t^2}\)</span>, and let <span class="math" data-tex="\(\pi_t\)">\(\pi_t\)</span> and the vectors <span class="math" data-tex="\(\xi_x\)">\(\xi_x\)</span> be as in Lemma 2.1 of <a href="a-free-group-deformation-and-close-separable-algebras.html">A free-group deformation and close separable algebras</a>, with <span class="math" data-tex="\(F\)">\(F\)</span> in place of the group called <span class="math" data-tex="\(G\)">\(G\)</span> there.</p>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(g\in F\)">\(g\in F\)</span> have prefixes <span class="math" data-tex="\(g_0=e,g_1,\dots,g_l=g\)">\(g_0=e,g_1,\dots,g_l=g\)</span>, let <span class="math" data-tex="\(M_g\)">\(M_g\)</span> be the span of <span class="math" data-tex="\(f_a=\delta_{g_a}\)">\(f_a=\delta_{g_a}\)</span> for <span class="math" data-tex="\(0\le a\le l\)">\(0\le a\le l\)</span>, and let <span class="math" data-tex="\(T_g=\pi_t(g)\lambda_F(g)^*\)">\(T_g=\pi_t(g)\lambda_F(g)^*\)</span>. Then <span class="math" data-tex="\(T_g\)">\(T_g\)</span> is the identity on <span class="math" data-tex="\(M_g^\perp\)">\(M_g^\perp\)</span>, maps <span class="math" data-tex="\(M_g\)">\(M_g\)</span> into itself, and
+<span class="math math-display" data-tex="\[
+|\langle T_gf_b,f_a\rangle|\le t^{|a-b|}\qquad(0\le a,b\le l).
+\]">\[
+|\langle T_gf_b,f_a\rangle|\le t^{|a-b|}\qquad(0\le a,b\le l).
+\]</span></p>
+<p><strong>Proof.</strong> For <span class="math" data-tex="\(g=e\)">\(g=e\)</span>, <span class="math" data-tex="\(T_g=I\)">\(T_g=I\)</span>. Otherwise the proof of Proposition 2.2 of that lesson gives <span class="math" data-tex="\(T_g\delta_y=\delta_y\)">\(T_g\delta_y=\delta_y\)</span> for <span class="math" data-tex="\(y\)">\(y\)</span> not a prefix of <span class="math" data-tex="\(g\)">\(g\)</span>, <span class="math" data-tex="\(T_gf_b=r\xi_{g_b}-tf_{b+1}\)">\(T_gf_b=r\xi_{g_b}-tf_{b+1}\)</span> for <span class="math" data-tex="\(b&lt;l\)">\(b&lt;l\)</span>, and <span class="math" data-tex="\(T_gf_l=\xi_g\)">\(T_gf_l=\xi_g\)</span>, where
+<span class="math math-display" data-tex="\[
+\xi_{g_b}=t^bf_0+r\sum_{a=1}^bt^{b-a}f_a .
+\]">\[
+\xi_{g_b}=t^bf_0+r\sum_{a=1}^bt^{b-a}f_a .
+\]</span>
+So the nonzero entries of column <span class="math" data-tex="\(b\)">\(b\)</span> are <span class="math" data-tex="\(rt^b\)">\(rt^b\)</span> or <span class="math" data-tex="\(t^l\)">\(t^l\)</span> in row <span class="math" data-tex="\(0\)">\(0\)</span>, <span class="math" data-tex="\(r^2t^{b-a}\)">\(r^2t^{b-a}\)</span> or <span class="math" data-tex="\(rt^{l-a}\)">\(rt^{l-a}\)</span> in rows <span class="math" data-tex="\(1\le a\le b\)">\(1\le a\le b\)</span>, and <span class="math" data-tex="\(-t\)">\(-t\)</span> in row <span class="math" data-tex="\(b+1\)">\(b+1\)</span>. Since <span class="math" data-tex="\(r\le1\)">\(r\le1\)</span>, each has absolute value at most <span class="math" data-tex="\(t^{|a-b|}\)">\(t^{|a-b|}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Let <span class="math" data-tex="\(q:F\to\mathbb Z\)">\(q:F\to\mathbb Z\)</span> be the homomorphism with <span class="math" data-tex="\(q(s_j)=1\)">\(q(s_j)=1\)</span> for all <span class="math" data-tex="\(j\)">\(j\)</span>, and for <span class="math" data-tex="\(z\in\mathbb T\)">\(z\in\mathbb T\)</span> let <span class="math" data-tex="\(D_z\)">\(D_z\)</span> be the diagonal unitary <span class="math" data-tex="\(D_z\delta_x=z^{-q(x)}\delta_x\)">\(D_z\delta_x=z^{-q(x)}\delta_x\)</span>. Put
+<span class="math math-display" data-tex="\[
+c_0=\frac{1+t}{1-t},\qquad c_k=\frac{2t^{|k|}}{1-t}\quad(k\ne0).
+\]">\[
+c_0=\frac{1+t}{1-t},\qquad c_k=\frac{2t^{|k|}}{1-t}\quad(k\ne0).
+\]</span></p>
+<p><strong>Proposition 1.2</strong> (the circle family). For <span class="math" data-tex="\(z\in\mathbb T\)">\(z\in\mathbb T\)</span> and <span class="math" data-tex="\(g\in F\)">\(g\in F\)</span> put
+<span class="math math-display" data-tex="\[
+\pi_z(g)=z^{q(g)}D_z\pi_t(g)D_z^* .
+\]">\[
+\pi_z(g)=z^{q(g)}D_z\pi_t(g)D_z^* .
+\]</span></p>
+<ol>
+<li>Each <span class="math" data-tex="\(\pi_z\)">\(\pi_z\)</span> is a unitary representation of <span class="math" data-tex="\(F\)">\(F\)</span>.</li>
+<li>There are operators <span class="math" data-tex="\(A_k(g)\)">\(A_k(g)\)</span>, for <span class="math" data-tex="\(k\in\mathbb Z\)">\(k\in\mathbb Z\)</span> and <span class="math" data-tex="\(g\in F\)">\(g\in F\)</span>, not depending on <span class="math" data-tex="\(z\)">\(z\)</span>, with <span class="math" data-tex="\(A_k(g)=0\)">\(A_k(g)=0\)</span> for <span class="math" data-tex="\(|k|&gt;|g|\)">\(|k|&gt;|g|\)</span>, <span class="math" data-tex="\(\|A_k(g)\|\le c_k\)">\(\|A_k(g)\|\le c_k\)</span>, and
+<span class="math math-display" data-tex="\[
+\pi_z(g)=\sum_{k\in\mathbb Z}z^kA_k(g).
+\]">\[
+\pi_z(g)=\sum_{k\in\mathbb Z}z^kA_k(g).
+\]</span></li>
+<li><span class="math" data-tex="\(\pi_z(s_j)\delta_e=tz\delta_e+r\delta_{s_j}\)">\(\pi_z(s_j)\delta_e=tz\delta_e+r\delta_{s_j}\)</span>, and <span class="math" data-tex="\(\pi_z(s_j)\to tz\,p_e\)">\(\pi_z(s_j)\to tz\,p_e\)</span> in the weak operator topology as <span class="math" data-tex="\(j\to\infty\)">\(j\to\infty\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) <span class="math" data-tex="\(g\mapsto z^{q(g)}\)">\(g\mapsto z^{q(g)}\)</span> is a homomorphism into <span class="math" data-tex="\(\mathbb T\)">\(\mathbb T\)</span>, and <span class="math" data-tex="\(g\mapsto D_z\pi_t(g)D_z^*\)">\(g\mapsto D_z\pi_t(g)D_z^*\)</span> is a unitary representation; their product is one.</p>
+<p>(2) Since <span class="math" data-tex="\(D_z\lambda_F(g)D_z^*\delta_x=z^{q(x)-q(gx)}\delta_{gx}\)">\(D_z\lambda_F(g)D_z^*\delta_x=z^{q(x)-q(gx)}\delta_{gx}\)</span><span class="math" data-tex="\(=z^{-q(g)}\lambda_F(g)\delta_x\)">\(=z^{-q(g)}\lambda_F(g)\delta_x\)</span>,
+<span class="math math-display" data-tex="\[
+\pi_z(g)=\bigl(D_zT_gD_z^*\bigr)\lambda_F(g).
+\]">\[
+\pi_z(g)=\bigl(D_zT_gD_z^*\bigr)\lambda_F(g).
+\]</span>
+The diagonal unitary <span class="math" data-tex="\(D_z\)">\(D_z\)</span> preserves <span class="math" data-tex="\(M_g\)">\(M_g\)</span> and <span class="math" data-tex="\(M_g^\perp\)">\(M_g^\perp\)</span>, so <span class="math" data-tex="\(D_zT_gD_z^*\)">\(D_zT_gD_z^*\)</span> is the identity on <span class="math" data-tex="\(M_g^\perp\)">\(M_g^\perp\)</span>, and on <span class="math" data-tex="\(M_g\)">\(M_g\)</span> its entry in row <span class="math" data-tex="\(a\)">\(a\)</span>, column <span class="math" data-tex="\(b\)">\(b\)</span> is <span class="math" data-tex="\(z^{q(g_b)-q(g_a)}\langle T_gf_b,f_a\rangle\)">\(z^{q(g_b)-q(g_a)}\langle T_gf_b,f_a\rangle\)</span>. Consecutive prefixes differ by one letter, so <span class="math" data-tex="\(|q(g_b)-q(g_a)|\le|a-b|\)">\(|q(g_b)-q(g_a)|\le|a-b|\)</span>. Let <span class="math" data-tex="\(B_k(g)\)">\(B_k(g)\)</span> be the operator whose matrix on <span class="math" data-tex="\(M_g\)">\(M_g\)</span> keeps the entries with <span class="math" data-tex="\(q(g_b)-q(g_a)=k\)">\(q(g_b)-q(g_a)=k\)</span> and replaces the others by <span class="math" data-tex="\(0\)">\(0\)</span>, plus the identity of <span class="math" data-tex="\(M_g^\perp\)">\(M_g^\perp\)</span> when <span class="math" data-tex="\(k=0\)">\(k=0\)</span>. Then <span class="math" data-tex="\(D_zT_gD_z^*=\sum_kz^kB_k(g)\)">\(D_zT_gD_z^*=\sum_kz^kB_k(g)\)</span>, a finite sum, and we put <span class="math" data-tex="\(A_k(g)=B_k(g)\lambda_F(g)\)">\(A_k(g)=B_k(g)\lambda_F(g)\)</span>.</p>
+<p>To bound <span class="math" data-tex="\(\|B_k(g)\|\)">\(\|B_k(g)\|\)</span>, recall the Schur test: if every row and every column of a matrix <span class="math" data-tex="\((m_{ab})\)">\((m_{ab})\)</span> has <span class="math" data-tex="\(\sum|m_{ab}|\le\sigma\)">\(\sum|m_{ab}|\le\sigma\)</span>, then its norm is at most <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, because
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl|\sum_{a,b}m_{ab}x_b\bar y_a\Bigr|\\
+&amp;\quad \le\sum_{a,b}|m_{ab}|\,\frac{|x_b|^2+|y_a|^2}2\le\sigma
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl|\sum_{a,b}m_{ab}x_b\bar y_a\Bigr|\\
+&amp;\quad \le\sum_{a,b}|m_{ab}|\,\frac{|x_b|^2+|y_a|^2}2\le\sigma
+\end{aligned}
+\]</span>
+for unit vectors <span class="math" data-tex="\(x,y\)">\(x,y\)</span>. In a row <span class="math" data-tex="\(a\)">\(a\)</span> of the matrix of <span class="math" data-tex="\(B_k(g)\)">\(B_k(g)\)</span> on <span class="math" data-tex="\(M_g\)">\(M_g\)</span>, the nonzero entries lie in columns <span class="math" data-tex="\(b\)">\(b\)</span> with <span class="math" data-tex="\(|a-b|\ge|k|\)">\(|a-b|\ge|k|\)</span>; there are at most two columns at each distance <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, one at distance <span class="math" data-tex="\(0\)">\(0\)</span>, and the entries at distance <span class="math" data-tex="\(m\)">\(m\)</span> are at most <span class="math" data-tex="\(t^m\)">\(t^m\)</span> by Lemma 1.1. So the row sums, and likewise the column sums, are at most <span class="math" data-tex="\(1+2t/(1-t)=c_0\)">\(1+2t/(1-t)=c_0\)</span> for <span class="math" data-tex="\(k=0\)">\(k=0\)</span> and <span class="math" data-tex="\(2\sum_{m\ge|k|}t^m=c_k\)">\(2\sum_{m\ge|k|}t^m=c_k\)</span> for <span class="math" data-tex="\(k\ne0\)">\(k\ne0\)</span>. On <span class="math" data-tex="\(M_g^\perp\)">\(M_g^\perp\)</span>, <span class="math" data-tex="\(B_0(g)\)">\(B_0(g)\)</span> is the identity and <span class="math" data-tex="\(c_0\ge1\)">\(c_0\ge1\)</span>. Hence <span class="math" data-tex="\(\|A_k(g)\|=\|B_k(g)\|\le c_k\)">\(\|A_k(g)\|=\|B_k(g)\|\le c_k\)</span>, and <span class="math" data-tex="\(B_k(g)=0\)">\(B_k(g)=0\)</span> when <span class="math" data-tex="\(|k|&gt;l\)">\(|k|&gt;l\)</span>.</p>
+<p>(3) The operator <span class="math" data-tex="\(T_{s_j}\)">\(T_{s_j}\)</span> is the identity off the span of <span class="math" data-tex="\(\delta_e\)">\(\delta_e\)</span> and <span class="math" data-tex="\(\delta_{s_j}\)">\(\delta_{s_j}\)</span>, and <span class="math" data-tex="\(T_{s_j}\delta_{s_j}=\xi_{s_j}=t\delta_e+r\delta_{s_j}\)">\(T_{s_j}\delta_{s_j}=\xi_{s_j}=t\delta_e+r\delta_{s_j}\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\pi_z(s_j)\delta_e&amp;=D_zT_{s_j}D_z^*\delta_{s_j}\\
+&amp;=z\,D_z(t\delta_e+r\delta_{s_j})\\
+&amp;=tz\delta_e+r\delta_{s_j}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\pi_z(s_j)\delta_e&amp;=D_zT_{s_j}D_z^*\delta_{s_j}\\
+&amp;=z\,D_z(t\delta_e+r\delta_{s_j})\\
+&amp;=tz\delta_e+r\delta_{s_j}.
+\end{aligned}
+\]</span>
+For <span class="math" data-tex="\(x\ne e\)">\(x\ne e\)</span> and all <span class="math" data-tex="\(j\)">\(j\)</span> with <span class="math" data-tex="\(s_j\ne x^{-1}\)">\(s_j\ne x^{-1}\)</span>, <span class="math" data-tex="\(s_jx\notin\{e,s_j\}\)">\(s_jx\notin\{e,s_j\}\)</span>, so <span class="math" data-tex="\(\pi_z(s_j)\delta_x=\delta_{s_jx}\)">\(\pi_z(s_j)\delta_x=\delta_{s_jx}\)</span>. For fixed <span class="math" data-tex="\(x,y\in F\)">\(x,y\in F\)</span>, <span class="math" data-tex="\(\langle\pi_z(s_j)\delta_x,\delta_y\rangle\)">\(\langle\pi_z(s_j)\delta_x,\delta_y\rangle\)</span> therefore tends to <span class="math" data-tex="\(tz\)">\(tz\)</span> if <span class="math" data-tex="\(x=y=e\)">\(x=y=e\)</span> and to <span class="math" data-tex="\(0\)">\(0\)</span> otherwise, which are the matrix entries of <span class="math" data-tex="\(tz\,p_e\)">\(tz\,p_e\)</span>. The operators <span class="math" data-tex="\(\pi_z(s_j)\)">\(\pi_z(s_j)\)</span> are unitaries, so convergence of the matrix entries implies weak operator convergence. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The constants enter through the two sums
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+S_0=\sum_kc_k=\frac{1+t}{1-t}+\frac{4t}{(1-t)^2},\\
+S_1=\sum_k|k|\,c_k=\frac{4t}{(1-t)^3}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+S_0=\sum_kc_k=\frac{1+t}{1-t}+\frac{4t}{(1-t)^2},\\
+S_1=\sum_k|k|\,c_k=\frac{4t}{(1-t)^3}.
+\end{gathered}
+\]</span>
+For <span class="math" data-tex="\(t=1/2\)">\(t=1/2\)</span>: <span class="math" data-tex="\(c_0=3\)">\(c_0=3\)</span>, <span class="math" data-tex="\(c_k=2^{2-|k|}\)">\(c_k=2^{2-|k|}\)</span> for <span class="math" data-tex="\(k\ne0\)">\(k\ne0\)</span>, <span class="math" data-tex="\(S_0=11\)">\(S_0=11\)</span> and <span class="math" data-tex="\(S_1=16\)">\(S_1=16\)</span>.</p>
+<h2 id="2-substituting-unitary-matrices-for-the-circle-parameter">2. Substituting unitary matrices for the circle parameter</h2>
+<p>Let <span class="math" data-tex="\(d\ge1\)">\(d\ge1\)</span> and let <span class="math" data-tex="\(U,V\)">\(U,V\)</span> be unitaries on <span class="math" data-tex="\(\mathbb C^d\)">\(\mathbb C^d\)</span>. On <span class="math" data-tex="\(L=K\otimes K\otimes\mathbb C^d\)">\(L=K\otimes K\otimes\mathbb C^d\)</span> define, for <span class="math" data-tex="\(g\in F\)">\(g\in F\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a(g)=\sum_kA_k(g)\otimes I\otimes U^k,\\
+b(g)=\sum_kI\otimes A_k(g)\otimes V^k .
+\end{gathered}
+\]">\[
+\begin{gathered}
+a(g)=\sum_kA_k(g)\otimes I\otimes U^k,\\
+b(g)=\sum_kI\otimes A_k(g)\otimes V^k .
+\end{gathered}
+\]</span>
+Both sums are finite.</p>
+<p><strong>Lemma 2.1.</strong> <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> are unitary representations of <span class="math" data-tex="\(F\)">\(F\)</span> on <span class="math" data-tex="\(L\)">\(L\)</span>, and as <span class="math" data-tex="\(j\to\infty\)">\(j\to\infty\)</span>, in the weak operator topology,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a(s_j)\to t\,p_e\otimes I\otimes U,\\
+b(s_j)\to t\,I\otimes p_e\otimes V .
+\end{gathered}
+\]">\[
+\begin{gathered}
+a(s_j)\to t\,p_e\otimes I\otimes U,\\
+b(s_j)\to t\,I\otimes p_e\otimes V .
+\end{gathered}
+\]</span></p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(U=\sum_zzP_z\)">\(U=\sum_zzP_z\)</span>, a finite sum over the eigenvalues <span class="math" data-tex="\(z\in\mathbb T\)">\(z\in\mathbb T\)</span> of <span class="math" data-tex="\(U\)">\(U\)</span>, with spectral projections <span class="math" data-tex="\(P_z\)">\(P_z\)</span>. Then <span class="math" data-tex="\(U^k=\sum_zz^kP_z\)">\(U^k=\sum_zz^kP_z\)</span>, and Proposition 1.2(2) gives
+<span class="math math-display" data-tex="\[
+a(g)=\sum_z\pi_z(g)\otimes I\otimes P_z .
+\]">\[
+a(g)=\sum_z\pi_z(g)\otimes I\otimes P_z .
+\]</span>
+The <span class="math" data-tex="\(P_z\)">\(P_z\)</span> are pairwise orthogonal with sum <span class="math" data-tex="\(I\)">\(I\)</span>, so <span class="math" data-tex="\(a\)">\(a\)</span> is a unitary representation because each <span class="math" data-tex="\(\pi_z\)">\(\pi_z\)</span> is one. By Proposition 1.2(3), <span class="math" data-tex="\(\pi_z(s_j)\otimes I\otimes P_z\to tz\,p_e\otimes I\otimes P_z\)">\(\pi_z(s_j)\otimes I\otimes P_z\to tz\,p_e\otimes I\otimes P_z\)</span> weakly: the matrix entries between elementary tensors converge, and the operators are bounded. Summing over <span class="math" data-tex="\(z\)">\(z\)</span> gives the limit <span class="math" data-tex="\(t\,p_e\otimes I\otimes U\)">\(t\,p_e\otimes I\otimes U\)</span>. The same argument with the eigenvalues of <span class="math" data-tex="\(V\)">\(V\)</span> applies to <span class="math" data-tex="\(b\)">\(b\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The ranges of <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> need not commute (Exercise 4.4); this is the point of the construction. Their failure to commute is controlled by the following elementary estimate.</p>
+<p><strong>Lemma 2.2.</strong> For unitaries <span class="math" data-tex="\(U,V\)">\(U,V\)</span> and integers <span class="math" data-tex="\(m,n\)">\(m,n\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|U^mV^n-V^nU^m\|\\
+&amp;\quad \le|m|\,|n|\,\|UV-VU\| .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|U^mV^n-V^nU^m\|\\
+&amp;\quad \le|m|\,|n|\,\|UV-VU\| .
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\([X,Y]=XY-YX\)">\([X,Y]=XY-YX\)</span> and <span class="math" data-tex="\(\nu=\|[U,V]\|\)">\(\nu=\|[U,V]\|\)</span>. Since <span class="math" data-tex="\([U^{-1},V]=-U^{-1}[U,V]U^{-1}\)">\([U^{-1},V]=-U^{-1}[U,V]U^{-1}\)</span>, <span class="math" data-tex="\(\|[U^{\pm1},V]\|=\nu\)">\(\|[U^{\pm1},V]\|=\nu\)</span>. For <span class="math" data-tex="\(m\ge1\)">\(m\ge1\)</span>, <span class="math" data-tex="\([U^m,V]=\sum_{i=0}^{m-1}U^i[U,V]U^{m-1-i}\)">\([U^m,V]=\sum_{i=0}^{m-1}U^i[U,V]U^{m-1-i}\)</span>, so <span class="math" data-tex="\(\|[U^m,V]\|\le m\nu\)">\(\|[U^m,V]\|\le m\nu\)</span>, and the same holds with <span class="math" data-tex="\(U^{-1}\)">\(U^{-1}\)</span> in place of <span class="math" data-tex="\(U\)">\(U\)</span>. Hence <span class="math" data-tex="\(\|[U^m,V]\|\le|m|\nu\)">\(\|[U^m,V]\|\le|m|\nu\)</span> for every integer <span class="math" data-tex="\(m\)">\(m\)</span>. Applying this to the unitaries <span class="math" data-tex="\(V\)">\(V\)</span> and <span class="math" data-tex="\(U^m\)">\(U^m\)</span> gives <span class="math" data-tex="\(\|[U^m,V^n]\|\le|n|\,\|[U^m,V]\|\le|m||n|\nu\)">\(\|[U^m,V^n]\|\le|n|\,\|[U^m,V]\|\le|m||n|\nu\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-two-algebras-and-the-near-inclusion">3. The two algebras and the near inclusion</h2>
+<p>Let <span class="math" data-tex="\(G=F\times F\)">\(G=F\times F\)</span>, <span class="math" data-tex="\(S=\ell^2(G)\)">\(S=\ell^2(G)\)</span> with basis <span class="math" data-tex="\((\delta_x)_{x\in G}\)">\((\delta_x)_{x\in G}\)</span>, and let <span class="math" data-tex="\(\lambda,\rho\)">\(\lambda,\rho\)</span> be the left and right regular representations of <span class="math" data-tex="\(G\)">\(G\)</span> on <span class="math" data-tex="\(S\)">\(S\)</span>. On <span class="math" data-tex="\(H=S\otimes L\)">\(H=S\otimes L\)</span>, every operator <span class="math" data-tex="\(T\)">\(T\)</span> has blocks <span class="math" data-tex="\(T_{x,y}\in B(L)\)">\(T_{x,y}\in B(L)\)</span>, defined by <span class="math" data-tex="\(\langle T_{x,y}v,w\rangle=\langle T(\delta_y\otimes v),\delta_x\otimes w\rangle\)">\(\langle T_{x,y}v,w\rangle=\langle T(\delta_y\otimes v),\delta_x\otimes w\rangle\)</span>. For <span class="math" data-tex="\(x=(x_1,x_2)\in G\)">\(x=(x_1,x_2)\in G\)</span> put
+<span class="math math-display" data-tex="\[
+f(x)=a(x_1)\,b(x_2),
+\]">\[
+f(x)=a(x_1)\,b(x_2),
+\]</span>
+a unitary of <span class="math" data-tex="\(L\)">\(L\)</span>, and let <span class="math" data-tex="\(W\)">\(W\)</span> be the block diagonal unitary of <span class="math" data-tex="\(H\)">\(H\)</span> with <span class="math" data-tex="\(W(\delta_x\otimes v)=\delta_x\otimes f(x)v\)">\(W(\delta_x\otimes v)=\delta_x\otimes f(x)v\)</span>. Define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+M=W\bigl(\lambda(G)&#x27;&#x27;\otimes I_L\bigr)W^*,\\
+N=\bigl(\rho(G)\otimes I_L\bigr)&#x27;,
+\end{gathered}
+\]">\[
+\begin{gathered}
+M=W\bigl(\lambda(G)&#x27;&#x27;\otimes I_L\bigr)W^*,\\
+N=\bigl(\rho(G)\otimes I_L\bigr)&#x27;,
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(\lambda(G)&#x27;&#x27;\otimes I_L\)">\(\lambda(G)&#x27;&#x27;\otimes I_L\)</span> denotes the set of operators <span class="math" data-tex="\(X\otimes I_L\)">\(X\otimes I_L\)</span> with <span class="math" data-tex="\(X\in\lambda(G)&#x27;&#x27;\)">\(X\in\lambda(G)&#x27;&#x27;\)</span>.</p>
+<p><strong>Lemma 3.1.</strong> <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(N\)">\(N\)</span> are von Neumann algebras on <span class="math" data-tex="\(H\)">\(H\)</span> containing <span class="math" data-tex="\(I_H\)">\(I_H\)</span>, and <span class="math" data-tex="\(W^*MW\subseteq N\)">\(W^*MW\subseteq N\)</span>. An operator <span class="math" data-tex="\(T\)">\(T\)</span> on <span class="math" data-tex="\(H\)">\(H\)</span> lies in <span class="math" data-tex="\(N\)">\(N\)</span> exactly when <span class="math" data-tex="\(T_{xq,yq}=T_{x,y}\)">\(T_{xq,yq}=T_{x,y}\)</span> for all <span class="math" data-tex="\(x,y,q\in G\)">\(x,y,q\in G\)</span>.</p>
+<p><strong>Proof.</strong> <span class="math" data-tex="\(N\)">\(N\)</span> is the commutant of a self-adjoint set, so it is a von Neumann algebra. An operator commuting with all <span class="math" data-tex="\(I_S\otimes Y\)">\(I_S\otimes Y\)</span>, <span class="math" data-tex="\(Y\in B(L)\)">\(Y\in B(L)\)</span>, has the form <span class="math" data-tex="\(X\otimes I_L\)">\(X\otimes I_L\)</span>: with matrix units of <span class="math" data-tex="\(L\)">\(L\)</span> relative to an orthonormal basis, this is the block argument in the proof of Lemma 4.1(1) of <a href="a-free-group-deformation-and-close-separable-algebras.html">A free-group deformation and close separable algebras</a>. It then commutes with <span class="math" data-tex="\(\lambda(G)&#x27;\otimes I_L\)">\(\lambda(G)&#x27;\otimes I_L\)</span> exactly when <span class="math" data-tex="\(X\in\lambda(G)&#x27;&#x27;\)">\(X\in\lambda(G)&#x27;&#x27;\)</span>. So <span class="math" data-tex="\(\lambda(G)&#x27;&#x27;\otimes I_L\)">\(\lambda(G)&#x27;&#x27;\otimes I_L\)</span> is the commutant of <span class="math" data-tex="\((\lambda(G)&#x27;\otimes I_L)\cup(I_S\otimes B(L))\)">\((\lambda(G)&#x27;\otimes I_L)\cup(I_S\otimes B(L))\)</span>, a von Neumann algebra, and so is its unitary conjugate <span class="math" data-tex="\(M\)">\(M\)</span>. Since <span class="math" data-tex="\(\rho(G)\subseteq\lambda(G)&#x27;\)">\(\rho(G)\subseteq\lambda(G)&#x27;\)</span>, every <span class="math" data-tex="\(X\in\lambda(G)&#x27;&#x27;\)">\(X\in\lambda(G)&#x27;&#x27;\)</span> commutes with <span class="math" data-tex="\(\rho(G)\)">\(\rho(G)\)</span>; so <span class="math" data-tex="\(W^*MW=\lambda(G)&#x27;&#x27;\otimes I_L\subseteq N\)">\(W^*MW=\lambda(G)&#x27;&#x27;\otimes I_L\subseteq N\)</span>. Finally, <span class="math" data-tex="\((\rho(q)\otimes I_L)(\delta_y\otimes v)=\delta_{yq^{-1}}\otimes v\)">\((\rho(q)\otimes I_L)(\delta_y\otimes v)=\delta_{yq^{-1}}\otimes v\)</span>, so <span class="math" data-tex="\(T\)">\(T\)</span> commutes with <span class="math" data-tex="\(\rho(q)\otimes I_L\)">\(\rho(q)\otimes I_L\)</span> exactly when <span class="math" data-tex="\(T_{xq^{-1},yq^{-1}}=T_{x,y}\)">\(T_{xq^{-1},yq^{-1}}=T_{x,y}\)</span> for all <span class="math" data-tex="\(x,y\)">\(x,y\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So <span class="math" data-tex="\(M\)">\(M\)</span> is spatially embedded in <span class="math" data-tex="\(N\)">\(N\)</span> by <span class="math" data-tex="\(W^*\)">\(W^*\)</span>. The next proposition shows that <span class="math" data-tex="\(M\)">\(M\)</span> is also nearly included in <span class="math" data-tex="\(N\)">\(N\)</span> when <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span> nearly commute.</p>
+<p><strong>Proposition 3.2.</strong> Let <span class="math" data-tex="\(\nu=\|UV-VU\|\)">\(\nu=\|UV-VU\|\)</span> and <span class="math" data-tex="\(C=2S_0^2S_1^2\)">\(C=2S_0^2S_1^2\)</span>. For every <span class="math" data-tex="\(X\in\lambda(G)&#x27;&#x27;\)">\(X\in\lambda(G)&#x27;&#x27;\)</span> there is <span class="math" data-tex="\(Y\in N\)">\(Y\in N\)</span> with
+<span class="math math-display" data-tex="\[
+\bigl\|W(X\otimes I_L)W^*-Y\bigr\|\le C\nu\|X\| .
+\]">\[
+\bigl\|W(X\otimes I_L)W^*-Y\bigr\|\le C\nu\|X\| .
+\]</span>
+For <span class="math" data-tex="\(X=\lambda(g)\)">\(X=\lambda(g)\)</span>, <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>, one can take <span class="math" data-tex="\(Y=\lambda(g)\otimes f(g)\)">\(Y=\lambda(g)\otimes f(g)\)</span>. In particular <span class="math" data-tex="\(\gamma(M,N)\le C\nu\)">\(\gamma(M,N)\le C\nu\)</span>, and <span class="math" data-tex="\(C=61952\)">\(C=61952\)</span> for <span class="math" data-tex="\(t=1/2\)">\(t=1/2\)</span>.</p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(X_{x,y}=\langle X\delta_y,\delta_x\rangle\)">\(X_{x,y}=\langle X\delta_y,\delta_x\rangle\)</span>. Since <span class="math" data-tex="\(X\)">\(X\)</span> commutes with <span class="math" data-tex="\(\rho(G)\)">\(\rho(G)\)</span>, <span class="math" data-tex="\(X_{xq,yq}=X_{x,y}\)">\(X_{xq,yq}=X_{x,y}\)</span> for all <span class="math" data-tex="\(x,y,q\)">\(x,y,q\)</span>. The operator <span class="math" data-tex="\(Z=W(X\otimes I_L)W^*\)">\(Z=W(X\otimes I_L)W^*\)</span> has blocks
+<span class="math math-display" data-tex="\[
+Z_{x,y}=X_{x,y}\,f(x)f(y)^* .
+\]">\[
+Z_{x,y}=X_{x,y}\,f(x)f(y)^* .
+\]</span>
+<em>Expansion.</em> Identify <span class="math" data-tex="\(H\)">\(H\)</span> with <span class="math" data-tex="\((S\otimes K\otimes K)\otimes\mathbb C^d\)">\((S\otimes K\otimes K)\otimes\mathbb C^d\)</span>. For <span class="math" data-tex="\(k,m\in\mathbb Z\)">\(k,m\in\mathbb Z\)</span> let <span class="math" data-tex="\(\Delta_{k,m}\)">\(\Delta_{k,m}\)</span> be the block diagonal operator on <span class="math" data-tex="\(S\otimes K\otimes K\)">\(S\otimes K\otimes K\)</span> whose block at <span class="math" data-tex="\(x\)">\(x\)</span> is <span class="math" data-tex="\(A_k(x_1)\otimes A_m(x_2)\)">\(A_k(x_1)\otimes A_m(x_2)\)</span>; then <span class="math" data-tex="\(\|\Delta_{k,m}\|\le c_kc_m\)">\(\|\Delta_{k,m}\|\le c_kc_m\)</span>. Put
+<span class="math math-display" data-tex="\[
+B_{kmph}=\Delta_{k,m}(X\otimes I_K\otimes I_K)\Delta_{h,p}^*,
+\]">\[
+B_{kmph}=\Delta_{k,m}(X\otimes I_K\otimes I_K)\Delta_{h,p}^*,
+\]</span>
+so <span class="math" data-tex="\(\|B_{kmph}\|\le c_kc_mc_pc_h\|X\|\)">\(\|B_{kmph}\|\le c_kc_mc_pc_h\|X\|\)</span>, and the block of <span class="math" data-tex="\(B_{kmph}\)">\(B_{kmph}\)</span> at <span class="math" data-tex="\((x,y)\)">\((x,y)\)</span> is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(A_k(x_1)\otimes A_m(x_2))\,X_{x,y}\\
+\cdot(A_h(y_1)\otimes A_p(y_2))^* .
+\end{gathered}
+\]">\[
+\begin{gathered}
+(A_k(x_1)\otimes A_m(x_2))\,X_{x,y}\\
+\cdot(A_h(y_1)\otimes A_p(y_2))^* .
+\end{gathered}
+\]</span>
+Expanding <span class="math" data-tex="\(f(x)=a(x_1)b(x_2)\)">\(f(x)=a(x_1)b(x_2)\)</span> and <span class="math" data-tex="\(f(y)^*=b(y_2)^*a(y_1)^*\)">\(f(y)^*=b(y_2)^*a(y_1)^*\)</span>,
+<span class="math math-display" data-tex="\[
+Z=\sum_{k,m,p,h}B_{kmph}\otimes U^kV^{m-p}U^{-h}.
+\]">\[
+Z=\sum_{k,m,p,h}B_{kmph}\otimes U^kV^{m-p}U^{-h}.
+\]</span>
+The series converges absolutely in norm, since <span class="math" data-tex="\(\sum c_kc_mc_pc_h=S_0^4\)">\(\sum c_kc_mc_pc_h=S_0^4\)</span>. Both sides have the same blocks, because each block of the right side is a finite sum equal to <span class="math" data-tex="\(Z_{x,y}\)">\(Z_{x,y}\)</span>; so they are equal.</p>
+<p><em>The reordered operator.</em> Define
+<span class="math math-display" data-tex="\[
+Y=\sum_{k,m,p,h}B_{kmph}\otimes U^{k-h}V^{m-p},
+\]">\[
+Y=\sum_{k,m,p,h}B_{kmph}\otimes U^{k-h}V^{m-p},
+\]</span>
+again absolutely convergent. Collecting terms, its blocks are
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Y_{x,y}&amp;=X_{x,y}\,a(x_1)a(y_1)^*\,b(x_2)b(y_2)^*\\
+&amp;=X_{x,y}\,f(xy^{-1}),
+\end{aligned}
+\]">\[
+\begin{aligned}
+Y_{x,y}&amp;=X_{x,y}\,a(x_1)a(y_1)^*\,b(x_2)b(y_2)^*\\
+&amp;=X_{x,y}\,f(xy^{-1}),
+\end{aligned}
+\]</span>
+using that <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span> are representations. Since <span class="math" data-tex="\((xq)(yq)^{-1}=xy^{-1}\)">\((xq)(yq)^{-1}=xy^{-1}\)</span> and <span class="math" data-tex="\(X_{xq,yq}=X_{x,y}\)">\(X_{xq,yq}=X_{x,y}\)</span>, Lemma 3.1 gives <span class="math" data-tex="\(Y\in N\)">\(Y\in N\)</span>.</p>
+<p><em>The estimate.</em> By Lemma 2.2,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\|U^kV^{m-p}U^{-h}-U^{k-h}V^{m-p}\|\\
+&amp;\quad =\|[V^{m-p},U^{-h}]\|\\
+&amp;\quad \le|m-p|\,|h|\,\nu .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\|U^kV^{m-p}U^{-h}-U^{k-h}V^{m-p}\|\\
+&amp;\quad =\|[V^{m-p},U^{-h}]\|\\
+&amp;\quad \le|m-p|\,|h|\,\nu .
+\end{aligned}
+\]</span>
+Hence <span class="math" data-tex="\(\|Z-Y\|\le\nu\|X\|\sum c_kc_mc_pc_h|m-p||h|\)">\(\|Z-Y\|\le\nu\|X\|\sum c_kc_mc_pc_h|m-p||h|\)</span>. Since <span class="math" data-tex="\(|m-p|\le|m|+|p|\)">\(|m-p|\le|m|+|p|\)</span>, the sum is at most <span class="math" data-tex="\(S_0S_1\cdot2S_0S_1=C\)">\(S_0S_1\cdot2S_0S_1=C\)</span>.</p>
+<p>For <span class="math" data-tex="\(X=\lambda(g)\)">\(X=\lambda(g)\)</span>, <span class="math" data-tex="\(X_{x,y}=1\)">\(X_{x,y}=1\)</span> if <span class="math" data-tex="\(x=gy\)">\(x=gy\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise, so <span class="math" data-tex="\(Y_{x,y}=f(g)\)">\(Y_{x,y}=f(g)\)</span> if <span class="math" data-tex="\(x=gy\)">\(x=gy\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise; that is, <span class="math" data-tex="\(Y=\lambda(g)\otimes f(g)\)">\(Y=\lambda(g)\otimes f(g)\)</span>. Finally, every contraction of <span class="math" data-tex="\(M\)">\(M\)</span> is <span class="math" data-tex="\(W(X\otimes I_L)W^*\)">\(W(X\otimes I_L)W^*\)</span> with <span class="math" data-tex="\(X\in\lambda(G)&#x27;&#x27;\)">\(X\in\lambda(G)&#x27;&#x27;\)</span> and <span class="math" data-tex="\(\|X\|\le1\)">\(\|X\|\le1\)</span>, so its distance to <span class="math" data-tex="\(N\)">\(N\)</span> is at most <span class="math" data-tex="\(C\nu\)">\(C\nu\)</span>. For <span class="math" data-tex="\(t=1/2\)">\(t=1/2\)</span>, <span class="math" data-tex="\(C=2\cdot11^2\cdot16^2=61952\)">\(C=2\cdot11^2\cdot16^2=61952\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>If <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span> commute, then <span class="math" data-tex="\(f\)">\(f\)</span> is a representation of <span class="math" data-tex="\(G\)">\(G\)</span>, each <span class="math" data-tex="\(W(\lambda(g)\otimes I_L)W^*=\lambda(g)\otimes f(g)\)">\(W(\lambda(g)\otimes I_L)W^*=\lambda(g)\otimes f(g)\)</span> lies in <span class="math" data-tex="\(N\)">\(N\)</span>, and <span class="math" data-tex="\(M\subseteq N\)">\(M\subseteq N\)</span> (Exercise 4.2). Proposition 3.2 is a quantitative form of this, valid on the whole unit ball of <span class="math" data-tex="\(M\)">\(M\)</span> and not only on the group unitaries.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>Exercise 4.1.</strong> Show that <span class="math" data-tex="\(\langle\pi_z(g)\delta_e,\delta_e\rangle=z^{q(g)}t^{|g|}\)">\(\langle\pi_z(g)\delta_e,\delta_e\rangle=z^{q(g)}t^{|g|}\)</span> for <span class="math" data-tex="\(g\in F\)">\(g\in F\)</span> and <span class="math" data-tex="\(z\in\mathbb T\)">\(z\in\mathbb T\)</span>.</p>
+<p><strong>Exercise 4.2.</strong> Suppose <span class="math" data-tex="\(UV=VU\)">\(UV=VU\)</span>. Show that <span class="math" data-tex="\(f\)">\(f\)</span> is a unitary representation of <span class="math" data-tex="\(G\)">\(G\)</span>, that <span class="math" data-tex="\(W(\lambda(g)\otimes I_L)W^*=\lambda(g)\otimes f(g)\)">\(W(\lambda(g)\otimes I_L)W^*=\lambda(g)\otimes f(g)\)</span>, and that <span class="math" data-tex="\(M\subseteq N\)">\(M\subseteq N\)</span>.</p>
+<p><strong>Exercise 4.3.</strong> Show that <span class="math" data-tex="\(\|\pi_z(s_j)-tz\,p_e\|\ge1\)">\(\|\pi_z(s_j)-tz\,p_e\|\ge1\)</span> for every <span class="math" data-tex="\(j\)">\(j\)</span>, so the limit in Proposition 1.2(3) is not a norm limit.</p>
+<p><strong>Exercise 4.4.</strong> For <span class="math" data-tex="\(v,w\in\mathbb C^d\)">\(v,w\in\mathbb C^d\)</span>, show that
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\bigl\langle[a(s_1),b(s_1)]\,\delta_e\otimes\delta_e\otimes v,\ \delta_e\otimes\delta_e\otimes w\bigr\rangle\\
+&amp;\quad =t^2\langle(UV-VU)v,w\rangle .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\bigl\langle[a(s_1),b(s_1)]\,\delta_e\otimes\delta_e\otimes v,\ \delta_e\otimes\delta_e\otimes w\bigr\rangle\\
+&amp;\quad =t^2\langle(UV-VU)v,w\rangle .
+\end{aligned}
+\]</span>
+Deduce <span class="math" data-tex="\(\|a(s_1)b(s_1)-b(s_1)a(s_1)\|\)">\(\|a(s_1)b(s_1)-b(s_1)a(s_1)\|\)</span><span class="math" data-tex="\(\ge t^2\|UV-VU\|\)">\(\ge t^2\|UV-VU\|\)</span>.</p>
+<p><strong>Exercise 4.5.</strong> Show that <span class="math" data-tex="\(\lambda(G)&#x27;&#x27;\)">\(\lambda(G)&#x27;&#x27;\)</span> commutes with <span class="math" data-tex="\(\rho(G)\)">\(\rho(G)\)</span> directly from <span class="math" data-tex="\(\rho(G)\subseteq\lambda(G)&#x27;\)">\(\rho(G)\subseteq\lambda(G)&#x27;\)</span>, and that <span class="math" data-tex="\(\lambda(g)\otimes f(g)\in N\)">\(\lambda(g)\otimes f(g)\in N\)</span> for every <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span> even when <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(V\)">\(V\)</span> do not commute.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>Solution 4.1.</strong> <span class="math" data-tex="\(D_z^*\delta_e=\delta_e\)">\(D_z^*\delta_e=\delta_e\)</span> because <span class="math" data-tex="\(q(e)=0\)">\(q(e)=0\)</span>, so <span class="math" data-tex="\(\pi_z(g)\delta_e=z^{q(g)}D_z\xi_g\)">\(\pi_z(g)\delta_e=z^{q(g)}D_z\xi_g\)</span>. Since <span class="math" data-tex="\(D_z^*\delta_e=\delta_e\)">\(D_z^*\delta_e=\delta_e\)</span>, <span class="math" data-tex="\(\langle D_z\xi_g,\delta_e\rangle=\langle\xi_g,\delta_e\rangle=t^{|g|}\)">\(\langle D_z\xi_g,\delta_e\rangle=\langle\xi_g,\delta_e\rangle=t^{|g|}\)</span> by Lemma 2.1(1) of <a href="a-free-group-deformation-and-close-separable-algebras.html">A free-group deformation and close separable algebras</a>.</p>
+<p><strong>Solution 4.2.</strong> If <span class="math" data-tex="\(UV=VU\)">\(UV=VU\)</span>, then every <span class="math" data-tex="\(a(g)\)">\(a(g)\)</span> commutes with every <span class="math" data-tex="\(b(h)\)">\(b(h)\)</span>, since <span class="math" data-tex="\(A_k(g)\otimes I\)">\(A_k(g)\otimes I\)</span> and <span class="math" data-tex="\(I\otimes A_m(h)\)">\(I\otimes A_m(h)\)</span> commute and <span class="math" data-tex="\(U^k\)">\(U^k\)</span> commutes with <span class="math" data-tex="\(V^m\)">\(V^m\)</span>. So <span class="math" data-tex="\(f(xy)=a(x_1y_1)b(x_2y_2)\)">\(f(xy)=a(x_1y_1)b(x_2y_2)\)</span><span class="math" data-tex="\(=a(x_1)b(x_2)a(y_1)b(y_2)\)">\(=a(x_1)b(x_2)a(y_1)b(y_2)\)</span><span class="math" data-tex="\(=f(x)f(y)\)">\(=f(x)f(y)\)</span>. For <span class="math" data-tex="\(g\in G\)">\(g\in G\)</span>, <span class="math" data-tex="\(W(\lambda(g)\otimes I)W^*(\delta_x\otimes v)\)">\(W(\lambda(g)\otimes I)W^*(\delta_x\otimes v)\)</span><span class="math" data-tex="\(=\delta_{gx}\otimes f(gx)f(x)^*v\)">\(=\delta_{gx}\otimes f(gx)f(x)^*v\)</span><span class="math" data-tex="\(=\delta_{gx}\otimes f(g)v\)">\(=\delta_{gx}\otimes f(g)v\)</span>. The operator <span class="math" data-tex="\(\lambda(g)\otimes f(g)\)">\(\lambda(g)\otimes f(g)\)</span> commutes with <span class="math" data-tex="\(\rho(G)\otimes I_L\)">\(\rho(G)\otimes I_L\)</span>, so it lies in <span class="math" data-tex="\(N\)">\(N\)</span>. By the double commutant theorem, <span class="math" data-tex="\(\lambda(G)&#x27;&#x27;\)">\(\lambda(G)&#x27;&#x27;\)</span> is the weak operator closure of the span of <span class="math" data-tex="\(\lambda(G)\)">\(\lambda(G)\)</span>; the map <span class="math" data-tex="\(X\mapsto W(X\otimes I_L)W^*\)">\(X\mapsto W(X\otimes I_L)W^*\)</span> is weakly continuous and <span class="math" data-tex="\(N\)">\(N\)</span> is weakly closed, so <span class="math" data-tex="\(M\subseteq N\)">\(M\subseteq N\)</span>.</p>
+<p><strong>Solution 4.3.</strong> For <span class="math" data-tex="\(x\ne e\)">\(x\ne e\)</span>, <span class="math" data-tex="\(p_e\delta_x=0\)">\(p_e\delta_x=0\)</span>, so <span class="math" data-tex="\((\pi_z(s_j)-tz\,p_e)\delta_x=\pi_z(s_j)\delta_x\)">\((\pi_z(s_j)-tz\,p_e)\delta_x=\pi_z(s_j)\delta_x\)</span> is a unit vector.</p>
+<p><strong>Solution 4.4.</strong> From the proof of Lemma 2.1 and Proposition 1.2(3), <span class="math" data-tex="\(a(s_1)(\delta_e\otimes\eta\otimes v)\)">\(a(s_1)(\delta_e\otimes\eta\otimes v)\)</span><span class="math" data-tex="\(=t\,\delta_e\otimes\eta\otimes Uv+r\,\delta_{s_1}\otimes\eta\otimes v\)">\(=t\,\delta_e\otimes\eta\otimes Uv+r\,\delta_{s_1}\otimes\eta\otimes v\)</span> for every <span class="math" data-tex="\(\eta\in K\)">\(\eta\in K\)</span>, and similarly for <span class="math" data-tex="\(b(s_1)\)">\(b(s_1)\)</span> in the second factor. Applying <span class="math" data-tex="\(b(s_1)\)">\(b(s_1)\)</span> and then <span class="math" data-tex="\(a(s_1)\)">\(a(s_1)\)</span> to <span class="math" data-tex="\(\delta_e\otimes\delta_e\otimes v\)">\(\delta_e\otimes\delta_e\otimes v\)</span>, the component along <span class="math" data-tex="\(\delta_e\otimes\delta_e\otimes\mathbb C^d\)">\(\delta_e\otimes\delta_e\otimes\mathbb C^d\)</span> is <span class="math" data-tex="\(t^2\,\delta_e\otimes\delta_e\otimes UVv\)">\(t^2\,\delta_e\otimes\delta_e\otimes UVv\)</span>; in the other order it is <span class="math" data-tex="\(t^2\,\delta_e\otimes\delta_e\otimes VUv\)">\(t^2\,\delta_e\otimes\delta_e\otimes VUv\)</span>. Taking the inner product with <span class="math" data-tex="\(\delta_e\otimes\delta_e\otimes w\)">\(\delta_e\otimes\delta_e\otimes w\)</span> gives the identity, and the norm bound follows by taking the supremum over unit vectors <span class="math" data-tex="\(v,w\)">\(v,w\)</span>.</p>
+<p><strong>Solution 4.5.</strong> Every <span class="math" data-tex="\(\rho(q)\)">\(\rho(q)\)</span> commutes with <span class="math" data-tex="\(\lambda(G)\)">\(\lambda(G)\)</span>, so <span class="math" data-tex="\(\rho(q)\in\lambda(G)&#x27;\)">\(\rho(q)\in\lambda(G)&#x27;\)</span>, and every element of <span class="math" data-tex="\(\lambda(G)&#x27;&#x27;=(\lambda(G)&#x27;)&#x27;\)">\(\lambda(G)&#x27;&#x27;=(\lambda(G)&#x27;)&#x27;\)</span> commutes with <span class="math" data-tex="\(\rho(q)\)">\(\rho(q)\)</span>. The operator <span class="math" data-tex="\(\lambda(g)\otimes f(g)\)">\(\lambda(g)\otimes f(g)\)</span> has blocks <span class="math" data-tex="\(f(g)\)">\(f(g)\)</span> at the pairs <span class="math" data-tex="\((gy,y)\)">\((gy,y)\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> elsewhere; these are invariant under <span class="math" data-tex="\((x,y)\mapsto(xq,yq)\)">\((x,y)\mapsto(xq,yq)\)</span>, so it lies in <span class="math" data-tex="\(N\)">\(N\)</span> by Lemma 3.1. What fails without commutation is the identity <span class="math" data-tex="\(W(\lambda(g)\otimes I_L)W^*=\lambda(g)\otimes f(g)\)">\(W(\lambda(g)\otimes I_L)W^*=\lambda(g)\otimes f(g)\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-289c] OpenAI, Near inclusions of von Neumann algebras without small spatial embeddings, preprint, 5 October 2026, Sections 2 and 3. https://github.com/openai/math/tree/main/preprints/Near-Inclusions-of-von-Neumann-Algebras-Without-Small-Spatial-Embeddings-October-5-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

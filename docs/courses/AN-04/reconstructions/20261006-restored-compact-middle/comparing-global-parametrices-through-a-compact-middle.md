@@ -207,9 +207,9 @@ for some \(c>0\), since \(\phi=1\) on a fixed interval about zero and its comple
 
 **Solution.** Here \(P^*=P\), \(E_+=iH(t-s)\delta(z-w)\), and \(E_-=-iH(s-t)\delta(z-w)\). Complex conjugation followed by endpoint interchange gives \(E_-^*=E_+\) and \(E_+^*=E_-\). Thus the backward right inverse supplies the forward left inverse. The other choice has relation \(\Delta^*\cup C^-\), outside the common forward-sign hypothesis of Section 4. Moreover \(E_+-E_-=i\delta(z-w)\) has every nonzero transverse conormal along all time pairs. It is elliptic of order \(-1/2\) on the complete characteristic relation, by the exact normalization already proved in that lesson; for \(n\ge2\) it is not smooth. No same-sign uniqueness statement can compare these opposite choices modulo a smooth kernel. After the correct choice, (CM14) gives a smooth difference and (CM16) gives the missing identity.
 
-## 7. The remaining global construction
+## 7. Scope of the parametrix comparison
 
-The compact-middle comparison, same-sign uniqueness and conditional adjoint conversion are now proved. The signed right parametrices must still be constructed near the diagonal and assembled with their exact residual orders; the complete directional correction supplies the subsequent kernel correction. The full theorem also requires the exact every-real Sobolev gain, global nonvanishing of the difference symbol, positive elliptic reduction for arbitrary real operator order and the stated sign choices on disconnected characteristic components. These remain substantive steps of the owned propagation programme.
+The compact-middle argument compares signed parametrices with the stated support and residual orders. It proves same-sign uniqueness and conditional adjoint conversion. The [global signed-parametrix construction](../20261006-restored-global-signed/global-signed-parametrices-from-local-delayed-errors.html) supplies the diagonal construction, residual correction, Sobolev gains and elliptic order reduction. The signs are chosen separately on disconnected characteristic components.
 
 ## References and scope
 

@@ -6,12 +6,19 @@ is represented. The full argument and assumptions are in CS0--CS8.
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
+def installed_font_path(filename):
+    try:
+        return Path(ImageFont.truetype(filename,12).path)
+    except OSError:
+        return Path(filename)
+
+
 W, H = 2600, 3780
 OUT = Path(__file__).resolve().parents[1] / 'assets/coherent-support-proof-map.png'
-REGULAR = (Path('C:/Windows/Fonts/seguisym.ttf'),
-           Path('/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'))
-BOLD = (Path('C:/Windows/Fonts/segoeuib.ttf'),
-        Path('/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'))
+REGULAR = (installed_font_path('seguisym.ttf'),
+           installed_font_path('DejaVuSans.ttf'))
+BOLD = (installed_font_path('segoeuib.ttf'),
+        installed_font_path('DejaVuSans-Bold.ttf'))
 INK, MUTED = '#192c45', '#40536c'
 BLUE, TEAL, PURPLE, ORANGE = '#225c95', '#076b6c', '#674392', '#97531e'
 

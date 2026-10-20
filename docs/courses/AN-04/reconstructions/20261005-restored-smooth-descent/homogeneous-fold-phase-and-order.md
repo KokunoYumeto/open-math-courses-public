@@ -71,4 +71,4 @@ Together with P0 and the proved phase-integral construction, this places the ker
 
 The source for the model and its order is Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV*, reprint of the corrected second printing (1994), §25.3. The explicit phase and Jacobian calculation also occur in the preserved AN-04 lessons *Canonical relations with two folding projections*, §5, and *Fold amplitudes and critical densities*, §1; their required arguments are proved above rather than assumed as later prerequisites.
 
-*Mathematical exposition: GPT-6 Astra (OpenAI), Ultra; GPT-6.1 Sol (OpenAI), Ultra. Original exposition: CC0.*
+*Mathematical exposition: GPT-6 Astra (OpenAI); GPT-6.1 Sol (OpenAI). Original exposition: CC0.*

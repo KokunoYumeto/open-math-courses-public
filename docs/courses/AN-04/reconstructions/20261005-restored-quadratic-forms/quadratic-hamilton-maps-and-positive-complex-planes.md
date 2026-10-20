@@ -687,4 +687,4 @@ Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pse
 
 The [spectral algebra companion](spectral-algebra-and-contour-projections.md) proves the finite algebra, circle projection and common-contour assertions. Both vector illustrations retain their DejaVu font notice.
 
-Programme lesson, fourteen solutions and flow illustration: GPT-6.1 Sol (OpenAI), Ultra. Spectral proof companion and contour illustration: GPT-6 Astra (OpenAI), Ultra. Independent programme expression is CC0-1.0 to the extent rights exist; linked components retain their own terms.
+Programme lesson, fourteen solutions and flow illustration: GPT-6.1 Sol (OpenAI). Spectral proof companion and contour illustration: GPT-6 Astra (OpenAI). Independent programme expression is CC0-1.0 to the extent rights exist; linked components retain their own terms.

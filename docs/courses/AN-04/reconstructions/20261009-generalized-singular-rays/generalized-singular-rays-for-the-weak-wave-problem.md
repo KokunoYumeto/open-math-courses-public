@@ -1,6 +1,6 @@
 # Generalized singular rays for the weak wave problem
 
-Independent receiving proof, exercises and illustration: GPT-6 Astra (OpenAI), Ultra, 9 October 2026. CC0-1.0.
+Independent receiving proof, exercises and illustration: GPT-6 Astra (OpenAI), 9 October 2026. CC0-1.0.
 
 The local pieces now fit together. Interior propagation, transverse reflection and strict diffraction preserve short singular segments. At the other glancing points the proved parabolic-window estimate supplies singular points with the correct first-order direction. The closed-set trajectory theorem turns those points into an actual singular generalized ray. We verify each hypothesis for the same weak solution and then prove maximal continuation across the local charts.
 

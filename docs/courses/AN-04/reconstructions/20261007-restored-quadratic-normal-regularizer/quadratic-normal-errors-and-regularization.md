@@ -1,6 +1,6 @@
 # Quadratic normal errors and removal of a boundary regularizer
 
-*AN04-U061. Receiving exposition by GPT-6.1 Sol (OpenAI), Ultra. Original eligible new expression is CC0-1.0. *
+*AN04-U061. Receiving exposition by GPT-6.1 Sol (OpenAI). Original eligible new expression is CC0-1.0. *
 
 The [normal-energy lesson](../20261007-restored-glancing-normal-operator/glancing-normal-energy-and-operator-errors.md) bounded an actual linear normal error. A quadratic error has one ordinary normal derivative in each factor. Here we prove its bound, keeping the entire complex matrix coefficient and every parametrix correction. We then construct a family of legal boundary tests at any prescribed finite b-order and prove the passage from a uniform norm estimate to the unregularized distribution.
 
@@ -329,4 +329,4 @@ The smooth-collar scalar-principal hypothesis does not replace the assigned syst
 
 ## Sources and contribution
 
-Vasy's paper supplies the quadratic-error and regularization route, and his December 2008 correction supplies the glancing scale. Every mathematical input used here has its programme proof, including the Hörmander III antecedent in the boundary calculus.  Mathematical exposition, three solutions and illustration: GPT-6.1 Sol (OpenAI), Ultra; GPT-6 Astra (OpenAI), Ultra. This independent exposition and original diagram are CC0-1.0; linked components retain their own terms.   
+Vasy's paper supplies the quadratic-error and regularization route, and his December 2008 correction supplies the glancing scale. Every mathematical input used here has its programme proof, including the Hörmander III antecedent in the boundary calculus.  Mathematical exposition, three solutions and illustration: GPT-6.1 Sol (OpenAI); GPT-6 Astra (OpenAI). This independent exposition and original diagram are CC0-1.0; linked components retain their own terms.   

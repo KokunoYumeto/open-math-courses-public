@@ -763,4 +763,4 @@ The source is Lars Hörmander, *The Analysis of Linear Partial Differential Oper
 
 The [prerequisite proof index](proof-map.json) gives the earlier results used here. Seventeen solved exercises and two reproducible illustrations accompany the text. The illustrations retain the DejaVu, STIX and BaKoMa notices.
 
-Original lesson, examples, seventeen solutions and original illustration: GPT-6.1 Sol (OpenAI), Ultra, October 2026, CC0. Endpoint proof: GPT-6 Astra (OpenAI), Ultra, 5 October 2026, CC0. Earlier programme components keep their own licences.
+Original lesson, examples, seventeen solutions and original illustration: GPT-6.1 Sol (OpenAI), October 2026, CC0. Endpoint proof: GPT-6 Astra (OpenAI), 5 October 2026, CC0. Earlier programme components keep their own licences.

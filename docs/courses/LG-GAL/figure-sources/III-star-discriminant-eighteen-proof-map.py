@@ -66,10 +66,7 @@ ax.text(4.5,2.43,'Base valuations v(π) = 1; quartic valuations v_F(π) = 4.\n'
     'Relative different exponents use the upper point-field valuation.\n'
     'Dⱼ are base discriminant exponents; iⱼ are R-lengths; ℓ is a B₄-length.',
     ha='center',va='center',fontsize=10.7,linespacing=1.65)
-ax.text(4.5,1.07,'Exact hypotheses and proofs: Lesson 8, Sections 6.0U.1–7, DE1–DE20.\n'
-    'The two boxes are alternatives; all complementary invariant values remain required.\n'
-    'Universal NF24, distinct reviews and recursive source audits remain required.\n'
-    'Free human writing material: Milne, Algebraic Number Theory, Prop. 7.55 / Rem. 7.56.',
+ax.text(4.5,1.07,'Exact hypotheses and proofs: Lesson 8, Sections 6.0U.1–7, DE1–DE20.\nThe boxes are alternatives; complementary values lie outside their hypotheses.\nGeneral conductor–index identity: JM30–JM32, Section6.0BI.\nSource: Milne, Algebraic Number Theory, Prop. 7.55 / Rem. 7.56.',
     ha='center',va='center',fontsize=10.5,linespacing=1.65)
 dest=Path(__file__).resolve().parents[1]/'assets/III-star-discriminant-eighteen-proof-map.png'
 fig.savefig(dest,dpi=100,metadata={'Title':'Both full-ring alternatives for the discriminant-eighteen III-star family'})

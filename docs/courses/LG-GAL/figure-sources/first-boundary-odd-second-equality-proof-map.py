@@ -105,10 +105,10 @@ line(ax,.245,r'$\epsilon_4=3,\quad\epsilon_8=7,\quad\nu=0,\quad\delta=4e$',17)
 line(ax,.13,r'$f(E/K)=4e+2=d-8,\quad M-1+f(E/K)=d$',18,color=green)
 line(ax,.045,'The tame conductor is two; the full different calculation precedes Swan use.',10)
 
-fig.text(.055,.048,'Human writing material: J. S. Milne, free Algebraic Number Theory notes,',fontsize=10,color=ink,va='top')
+fig.text(.055,.048,'Source: J. S. Milne, free Algebraic Number Theory notes,',fontsize=10,color=ink,va='top')
 fig.text(.055,.038,'Proposition 2.43; Proposition 7.55 and Remark 7.56. www.jmilne.org/math/CourseNotes/ANT.pdf',fontsize=9,color=ink,va='top')
 fig.text(.055,.028,'All specialized assertions are proved in 6.0AP.1–7 or the exact earlier lesson providers named there.',fontsize=9,color=ink,va='top')
-fig.text(.055,.018,'Full proof and eight-point solution accompany this map. Other preparations and universal NF24 remain.',fontsize=9,color=ink,va='top')
+fig.text(.055,.018,'Full proof and eight-point solution accompany this map. Other preparations are outside these hypotheses; general NF24 is JM30–JM32.',fontsize=9,color=ink,va='top')
 fig.canvas.draw();renderer=fig.canvas.get_renderer();text_bounds=[]
 for artist in fig.findobj(match=Text):
     if not artist.get_text():continue

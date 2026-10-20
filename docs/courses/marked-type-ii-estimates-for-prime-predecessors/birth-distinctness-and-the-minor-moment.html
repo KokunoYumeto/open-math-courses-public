@@ -1,0 +1,207 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Birth distinctness and the minor moment</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Marked Type II estimates for prime predecessors)</a><a href="dirty-edges.html">Previous lesson</a><a href="the-major-term-and-the-theorem.html">Next lesson</a><a href="src/birth-distinctness-and-the-minor-moment.md">Editable source</a></nav><main><article><h1 id="birth-distinctness-and-the-minor-moment">Birth distinctness and the minor moment</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The operator identity of <a href="lifespans-and-the-memory-space.html"><em>Lifespans and the memory space</em></a> holds for histories in which all prime labels are born with distinct values, while the norm bounds of the last three lessons hold for the operators without that restriction. This lesson connects the two. The indicator of distinct births is expanded exactly as an alternating sum over systems of equality constraints between birth values, graded by their <em>rank</em>, the number of independent equalities. A system of high rank forces many births to take prescribed values, each costing a factor at most <span class="math" data-tex="\(e^{-L^{0.1}}\)">\(e^{-L^{0.1}}\)</span>, and this beats the absolute size of the history sum. A system of low rank is written by circle orthogonality as an average of phases attached to the births; the phases modify at most twice as many steps as the rank, and every other step keeps its contraction <span class="math" data-tex="\(L^{-G}\)">\(L^{-G}\)</span>. This proves the bound for the moment required in <a href="from-the-moment-to-the-pairing.html"><em>From the moment to the pairing</em></a>. The lesson ends by removing the good-state projections and assembling the minor estimate of <a href="cauchys-inequality-and-the-determinant-equation.html"><em>Cauchy's inequality and the determinant equation</em></a>.</p>
+<p><strong>Prerequisites.</strong> <a href="lifespans-and-the-memory-space.html"><em>Lifespans and the memory space</em></a>, Theorem 4.1; <a href="truncation-adjoints-and-absolute-bounds.html"><em>Truncation, adjoints and absolute bounds</em></a>, Lemmas 1.1, 2.1, 3.1 and 4.1; <a href="dirty-edges.html"><em>Dirty edges</em></a>, Theorem 4.1; <a href="independent-residue-lines.html"><em>Independent residue lines</em></a>, Theorem 4.1; <a href="physical-states-and-good-positions.html"><em>Physical states and good positions</em></a>, Lemma 3.2 and Corollary 5.2; <a href="from-the-moment-to-the-pairing.html"><em>From the moment to the pairing</em></a>, Proposition 3.1.</p>
+<p>Throughout, the archimedean root is fixed until Section 3, and <span class="math" data-tex="\(\Delta=\max_{i,p}\nu_i(p)\le4e^{-L^{0.1}}\)">\(\Delta=\max_{i,p}\nu_i(p)\le4e^{-L^{0.1}}\)</span> (Lemma 2.1 of Lesson 12).</p>
+<h2 id="1-birth-addresses-and-the-cycle-identity">1. Birth addresses and the cycle identity</h2>
+<p><strong>Addresses.</strong> A <strong>birth address</strong> is one of the following positions in a history of (4.1) of Lesson 12, with operators truncated by <span class="math" data-tex="\(\Pi_B\)">\(\Pi_B\)</span>: one of the <span class="math" data-tex="\(KM\)">\(KM\)</span> slots of the initial lists; one of the <span class="math" data-tex="\(K\)">\(K\)</span> last slots of the target of an edge (before the final reordering of that edge); or one of the <span class="math" data-tex="\(B\)">\(B\)</span> ordered places of the new batch of a ghost operation in one group. Since <span class="math" data-tex="\(\Pi_B\)">\(\Pi_B\)</span> bounds every batch by <span class="math" data-tex="\(B\)">\(B\)</span>, these cover all births. An address is <strong>performed</strong> in a history if a birth happens there: an initial slot always, an edge slot if it is filled by a fresh prime (not by a promotion), and a batch place if the batch is at least that long. The number of addresses is</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Q_b=KM+KN+K(N+1)B\\
+\le L^{3}\quad(1.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+Q_b=KM+KN+K(N+1)B\\
+\le L^{3}\quad(1.1)
+\end{gathered}
+\]</span>
+<p>for large <span class="math" data-tex="\(x\)">\(x\)</span>. Order the addresses chronologically, with a fixed order inside each operation.</p>
+<p><strong>Lemma 1.1 (the cycle identity).</strong> For a finite set <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> of addresses, a set of performed addresses and an assignment of prime values to them,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbf 1\{\text{performed values distinct}\}\\
+&amp;\quad=\sum_{\mathcal C}\prod_{C\in\mathcal C}(-1)^{|C|-1}(|C|-1)!\\
+&amp;\qquad\times\mathbf 1_{E_C},\quad(1.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbf 1\{\text{performed values distinct}\}\\
+&amp;\quad=\sum_{\mathcal C}\prod_{C\in\mathcal C}(-1)^{|C|-1}(|C|-1)!\\
+&amp;\qquad\times\mathbf 1_{E_C},\quad(1.2)
+\end{aligned}
+\]</span>
+<p>where <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> runs over the collections of pairwise disjoint subsets of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> with at least two elements each, and <span class="math" data-tex="\(E_C\)">\(E_C\)</span> is the event that every address of <span class="math" data-tex="\(C\)">\(C\)</span> is performed and all have the same value.</p>
+<p><strong>Proof.</strong> Consider the permutations <span class="math" data-tex="\(\pi\)">\(\pi\)</span> of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> that fix every unperformed address and preserve the values. Their signs add up to <span class="math" data-tex="\(\prod\)">\(\prod\)</span> over the classes of equal value of <span class="math" data-tex="\(\sum_{\pi\in\mathrm{Sym}(\text{class})}\operatorname{sgn}\pi\)">\(\sum_{\pi\in\mathrm{Sym}(\text{class})}\operatorname{sgn}\pi\)</span>, which is <span class="math" data-tex="\(1\)">\(1\)</span> if every class is a singleton and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise. On the other hand, group the permutations by the supports <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> of their nontrivial cycles: a cycle on <span class="math" data-tex="\(C\)">\(C\)</span> has sign <span class="math" data-tex="\((-1)^{|C|-1}\)">\((-1)^{|C|-1}\)</span>, there are <span class="math" data-tex="\((|C|-1)!\)">\((|C|-1)!\)</span> cyclic orders on <span class="math" data-tex="\(C\)">\(C\)</span>, and such a permutation is admissible exactly when all the events <span class="math" data-tex="\(E_C\)">\(E_C\)</span> hold. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The <strong>rank</strong> of <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is <span class="math" data-tex="\(r(\mathcal C)=\sum_{C\in\mathcal C}(|C|-1)\)">\(r(\mathcal C)=\sum_{C\in\mathcal C}(|C|-1)\)</span>. A collection of rank <span class="math" data-tex="\(r\)">\(r\)</span> involves at most <span class="math" data-tex="\(2r\)">\(2r\)</span> addresses, and the sum of the coefficients <span class="math" data-tex="\(\prod(|C|-1)!\)">\(\prod(|C|-1)!\)</span> over all collections of rank <span class="math" data-tex="\(r\)">\(r\)</span> is the number of permutations of <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> that are products of <span class="math" data-tex="\(r\)">\(r\)</span> and no fewer transpositions; since an ordered list of <span class="math" data-tex="\(r\)">\(r\)</span> transpositions determines such a permutation,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{r(\mathcal C)=r}\prod_{C\in\mathcal C}(|C|-1)!\le Q_b^{2r}.\quad(1.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{r(\mathcal C)=r}\prod_{C\in\mathcal C}(|C|-1)!\le Q_b^{2r}.\quad(1.3)
+\end{gathered}
+\]</span>
+<h2 id="2-bounds-by-rank">2. Bounds by rank</h2>
+<p>Inserting (1.2) into the truncated history sum with globally distinct births writes it as <span class="math" data-tex="\(\sum_{\mathcal C}c_{\mathcal C}\Sigma(\mathcal C)\)">\(\sum_{\mathcal C}c_{\mathcal C}\Sigma(\mathcal C)\)</span>, where <span class="math" data-tex="\(c_{\mathcal C}=\prod(-1)^{|C|-1}(|C|-1)!\)">\(c_{\mathcal C}=\prod(-1)^{|C|-1}(|C|-1)!\)</span> and <span class="math" data-tex="\(\Sigma(\mathcal C)\)">\(\Sigma(\mathcal C)\)</span> is the history sum of <span class="math" data-tex="\(\langle\mathbf b,\mathcal G_0\mathcal E_0\cdots\mathcal E_{N-1}\mathcal G_N\mathbf b\rangle\)">\(\langle\mathbf b,\mathcal G_0\mathcal E_0\cdots\mathcal E_{N-1}\mathcal G_N\mathbf b\rangle\)</span> on <span class="math" data-tex="\(\mathscr H_B\)">\(\mathscr H_B\)</span> with the indicators <span class="math" data-tex="\(\mathbf 1_{E_C}\)">\(\mathbf 1_{E_C}\)</span> inserted and <em>no other distinctness condition</em>.</p>
+<p><strong>Lemma 2.1 (absolute bound).</strong> There is <span class="math" data-tex="\(C_1=C_1(K,A_0)\)">\(C_1=C_1(K,A_0)\)</span> such that for every collection of rank <span class="math" data-tex="\(r\)">\(r\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{\text{histories}}|\text{weight}|\prod_{C\in\mathcal C}\mathbf 1_{E_C}\\
+\le L^{C_1(N+1)}(8\Delta)^r .\quad(2.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{\text{histories}}|\text{weight}|\prod_{C\in\mathcal C}\mathbf 1_{E_C}\\
+\le L^{C_1(N+1)}(8\Delta)^r .\quad(2.1)
+\end{gathered}
+\]</span>
+<p><strong>Proof.</strong> In each block <span class="math" data-tex="\(C\)">\(C\)</span> call its earliest address the pivot. On <span class="math" data-tex="\(E_C\)">\(E_C\)</span>, every other address of <span class="math" data-tex="\(C\)">\(C\)</span> is performed with the value of the pivot, which is already determined when that address is reached. Drop all other requirements of <span class="math" data-tex="\(E_C\)">\(E_C\)</span>, and drop the requirement that the history ends at <span class="math" data-tex="\(\mathbf b\)">\(\mathbf b\)</span>, using <span class="math" data-tex="\(\mathbf b\le h=8^{k_{\rm tot}}\)">\(\mathbf b\le h=8^{k_{\rm tot}}\)</span> at the end and <span class="math" data-tex="\(h=1\)">\(h=1\)</span> at the start. Then the absolute sum is at most <span class="math" data-tex="\(\int\mathbf b\,d\mu\)">\(\int\mathbf b\,d\mu\)</span> (with the prescribed initial values) times the product over the operations of their weighted row sums with the prescribed values. A prescribed fresh value has measure at most <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> instead of a total mass <span class="math" data-tex="\(s_i\le2\)">\(s_i\le2\)</span>. For an edge with <span class="math" data-tex="\(s\)">\(s\)</span> prescribed values the crude bound with fixed values (Lemma 4.1 of Lesson 13) gives <span class="math" data-tex="\(L^{C_e}\Delta^s\)">\(L^{C_e}\Delta^s\)</span>. For a ghost operation with <span class="math" data-tex="\(s\)">\(s\)</span> prescribed batch places, the creation part of the row sum becomes, with <span class="math" data-tex="\(c=v_0\eta_jV_i/\rho\le8\)">\(c=v_0\eta_jV_i/\rho\le8\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{l\ge s}\frac{c^l\Delta^ss_i^{\,l-s}}{l!}\le(c\Delta)^s\sum_{m\ge0}\frac{(cs_i)^m}{m!}\\
+\le(8\Delta)^se^{9},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{l\ge s}\frac{c^l\Delta^ss_i^{\,l-s}}{l!}\le(c\Delta)^s\sum_{m\ge0}\frac{(cs_i)^m}{m!}\\
+\le(8\Delta)^se^{9},
+\end{gathered}
+\]</span>
+<p>and deletions and survivals contribute at most <span class="math" data-tex="\(1\)">\(1\)</span> as in Lemma 3.1 of Lesson 13. Each prescribed initial slot contributes <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>. The number of prescribed values is <span class="math" data-tex="\(\sum_C(|C|-1)=r\)">\(\sum_C(|C|-1)=r\)</span>. Multiplying over the <span class="math" data-tex="\(N\)">\(N\)</span> edges and <span class="math" data-tex="\(N+1\)">\(N+1\)</span> ghost operations gives (2.1) with <span class="math" data-tex="\(L^{C_1}\ge e^{9K}L^{C_e}\)">\(L^{C_1}\ge e^{9K}L^{C_e}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.2 (high ranks).</strong> Let <span class="math" data-tex="\(r_0=\lceil C&#x27;N\log L/L^{0.1}\rceil\)">\(r_0=\lceil C&#x27;N\log L/L^{0.1}\rceil\)</span> with <span class="math" data-tex="\(C&#x27;=2(C_1+E_0+4)\)">\(C&#x27;=2(C_1+E_0+4)\)</span>. For large <span class="math" data-tex="\(x\)">\(x\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{r(\mathcal C)\ge r_0}|c_{\mathcal C}\,\Sigma(\mathcal C)|\le L^{-(E_0+2)N}.\quad(2.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{r(\mathcal C)\ge r_0}|c_{\mathcal C}\,\Sigma(\mathcal C)|\le L^{-(E_0+2)N}.\quad(2.2)
+\end{gathered}
+\]</span>
+<p><strong>Proof.</strong> By (1.3) and (2.1), the left side is at most <span class="math" data-tex="\(L^{C_1(N+1)}\sum_{r\ge r_0}(8Q_b^2\Delta)^r\)">\(L^{C_1(N+1)}\sum_{r\ge r_0}(8Q_b^2\Delta)^r\)</span>. Since <span class="math" data-tex="\(8Q_b^2\Delta\le32L^6e^{-L^{0.1}}\le e^{-L^{0.1}/2}\)">\(8Q_b^2\Delta\le32L^6e^{-L^{0.1}}\le e^{-L^{0.1}/2}\)</span>, the series is at most <span class="math" data-tex="\(2e^{-r_0L^{0.1}/2}\le2L^{-C&#x27;N/2}=2L^{-(C_1+E_0+4)N}\)">\(2e^{-r_0L^{0.1}/2}\le2L^{-C&#x27;N/2}=2L^{-(C_1+E_0+4)N}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For a block <span class="math" data-tex="\(C=\{a_0,a_1,\dots,a_s\}\)">\(C=\{a_0,a_1,\dots,a_s\}\)</span> with pivot <span class="math" data-tex="\(a_0\)">\(a_0\)</span>, circle orthogonality gives</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathbf 1_{E_C}=\Bigl(\prod_{a\in C}\mathbf 1_{a\ \text{performed}}\Bigr)\\
+\times\int_{\mathbb T^s}\prod_{h=1}^se\bigl(\theta_h(p_{a_h}-p_{a_0})\bigr)\,d\theta,\\
+(2.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathbf 1_{E_C}=\Bigl(\prod_{a\in C}\mathbf 1_{a\ \text{performed}}\Bigr)\\
+\times\int_{\mathbb T^s}\prod_{h=1}^se\bigl(\theta_h(p_{a_h}-p_{a_0})\bigr)\,d\theta,\\
+(2.3)
+\end{gathered}
+\]</span>
+<p>where <span class="math" data-tex="\(p_a\)">\(p_a\)</span> is the value born at <span class="math" data-tex="\(a\)">\(a\)</span>. For fixed <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, each factor is attached to the operation in which its birth happens: the address <span class="math" data-tex="\(a_h\)">\(a_h\)</span> receives <span class="math" data-tex="\(\mathbf 1_{\rm performed}\,e(\theta_hp_{a_h})\)">\(\mathbf 1_{\rm performed}\,e(\theta_hp_{a_h})\)</span>, and the pivot receives <span class="math" data-tex="\(\mathbf 1_{\rm performed}\,e(-p_{a_0}\sum_h\theta_h)\)">\(\mathbf 1_{\rm performed}\,e(-p_{a_0}\sum_h\theta_h)\)</span>. These are <strong>local multipliers</strong> of modulus at most <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Lemma 2.3 (modified operations).</strong> For fixed <span class="math" data-tex="\(\theta\)">\(\theta\)</span>, an operation carrying local multipliers has norm at most <span class="math" data-tex="\(e^{9K}\)">\(e^{9K}\)</span> if it is a ghost operation and at most <span class="math" data-tex="\(L^{C_e}\)">\(L^{C_e}\)</span> if it is an edge; the initial vector multiplied by its local multipliers has norm <span class="math" data-tex="\(\|\mathbf b\|\)">\(\|\mathbf b\|\)</span>.</p>
+<p><strong>Proof.</strong> The multiplier at an edge address depends only on whether that slot is filled freshly and on the fresh value; it does not depend on which old particle is promoted. It therefore commutes with reordering the old particles, the modified edge maps symmetric functions of the memory to symmetric functions, and its weighted row and column sums are dominated by those of Lemma 4.1 of Lesson 13. The multiplier at a batch place depends on the coordinate of the ordered batch at that place. The rest of the history, as a function of the state after the ghost operation, is symmetric in the memory particles, because all later operations, with their own multipliers, preserve symmetric functions; working backwards from the end of the history, this holds at every step. Hence averaging the multiplier over the reorderings of the new batch does not change the history sum. The averaged multiplier has modulus at most <span class="math" data-tex="\(1\)">\(1\)</span> and is symmetric, so the modified ghost operation acts on symmetric functions, keeps its factor <span class="math" data-tex="\(1/l!\)">\(1/l!\)</span>, and is dominated by the absolute sums of Lemma 3.1 of Lesson 13. The initial multipliers are functions of the initial lists of modulus at most <span class="math" data-tex="\(1\)">\(1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 2.4 (low ranks).</strong> Let <span class="math" data-tex="\(G=E_0+4\)">\(G=E_0+4\)</span> and suppose <span class="math" data-tex="\(\|\mathcal E_j\|\le L^{-G}\)">\(\|\mathcal E_j\|\le L^{-G}\)</span> on <span class="math" data-tex="\(\mathscr H_B\)">\(\mathscr H_B\)</span> for every <span class="math" data-tex="\(j\)">\(j\)</span>. For large <span class="math" data-tex="\(x\)">\(x\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{r(\mathcal C)&lt;r_0}|c_{\mathcal C}\,\Sigma(\mathcal C)|\le L^{-(E_0+3)N}.\quad(2.4)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{r(\mathcal C)&lt;r_0}|c_{\mathcal C}\,\Sigma(\mathcal C)|\le L^{-(E_0+3)N}.\quad(2.4)
+\end{gathered}
+\]</span>
+<p><strong>Proof.</strong> Fix <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> of rank <span class="math" data-tex="\(r&lt;r_0\)">\(r&lt;r_0\)</span> and <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. The multipliers modify at most <span class="math" data-tex="\(2r\)">\(2r\)</span> operations. Bound the matrix element by the product of norms: modified edges by <span class="math" data-tex="\(L^{C_e}\)">\(L^{C_e}\)</span>, all ghost operations by <span class="math" data-tex="\(e^{9K}\)">\(e^{9K}\)</span>, unmodified edges by <span class="math" data-tex="\(L^{-G}\)">\(L^{-G}\)</span>, and the two end vectors by <span class="math" data-tex="\(\|\mathbf b\|\le2\)">\(\|\mathbf b\|\le2\)</span>. This gives <span class="math" data-tex="\(4e^{9K(N+1)}L^{-G(N-2r)}L^{2rC_e}\)">\(4e^{9K(N+1)}L^{-G(N-2r)}L^{2rC_e}\)</span>, and integrating over <span class="math" data-tex="\(\theta\in\mathbb T^r\)">\(\theta\in\mathbb T^r\)</span> does not increase it. By (1.3),</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{r&lt;r_0}Q_b^{2r}\cdot4e^{9K(N+1)}L^{-G(N-2r)+2rC_e}\\
+&amp;\quad\le4e^{9K(N+1)}L^{-GN}\bigl(L^{6+2G+2C_e}\bigr)^{r_0}\\
+&amp;\qquad\times r_0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{r&lt;r_0}Q_b^{2r}\cdot4e^{9K(N+1)}L^{-G(N-2r)+2rC_e}\\
+&amp;\quad\le4e^{9K(N+1)}L^{-GN}\bigl(L^{6+2G+2C_e}\bigr)^{r_0}\\
+&amp;\qquad\times r_0 .
+\end{aligned}
+\]</span>
+<p>Here <span class="math" data-tex="\(e^{9K(N+1)}=L^{9K(N+1)/\log L}\)">\(e^{9K(N+1)}=L^{9K(N+1)/\log L}\)</span> and <span class="math" data-tex="\((L^{6+2G+2C_e})^{r_0}r_0\)">\((L^{6+2G+2C_e})^{r_0}r_0\)</span> are <span class="math" data-tex="\(L^{o(N)}\)">\(L^{o(N)}\)</span>, because <span class="math" data-tex="\(r_0=O(N\log L/L^{0.1})\)">\(r_0=O(N\log L/L^{0.1})\)</span>. So the sum is <span class="math" data-tex="\(L^{-GN+o(N)}\le L^{-(E_0+3)N}\)">\(L^{-GN+o(N)}\le L^{-(E_0+3)N}\)</span> for large <span class="math" data-tex="\(x\)">\(x\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The constant <span class="math" data-tex="\(C_e(K,A_0)\)">\(C_e(K,A_0)\)</span>, which contains the factor <span class="math" data-tex="\(B^K\)">\(B^K\)</span>, is paid on only <span class="math" data-tex="\(2r=o(N)\)">\(2r=o(N)\)</span> steps; this is why it does not affect the choice of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<h2 id="3-the-minor-moment">3. The minor moment</h2>
+<p><strong>Theorem 3.1 (the minor moment).</strong> Fix <span class="math" data-tex="\(E_0&gt;0\)">\(E_0&gt;0\)</span>. If <span class="math" data-tex="\(A_0\ge E_0+7\)">\(A_0\ge E_0+7\)</span> and <span class="math" data-tex="\(K\ge200(E_0+7)\)">\(K\ge200(E_0+7)\)</span>, then for large <span class="math" data-tex="\(x\)">\(x\)</span>, every pad dyad <span class="math" data-tex="\(d_0\)">\(d_0\)</span> and every <span class="math" data-tex="\(Y\)">\(Y\)</span> in (2.1) of Lesson 7,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathfrak m=\sum_P\langle\mathbf u_P,(\mathcal A\mathcal A^*)^R\mathbf u_P\rangle\\
+\le UV\,L^{-E_0N}.\quad(3.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathfrak m=\sum_P\langle\mathbf u_P,(\mathcal A\mathcal A^*)^R\mathbf u_P\rangle\\
+\le UV\,L^{-E_0N}.\quad(3.1)
+\end{gathered}
+\]</span>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(G=E_0+4\)">\(G=E_0+4\)</span>. Then <span class="math" data-tex="\(A_0\ge G+3\)">\(A_0\ge G+3\)</span> and <span class="math" data-tex="\(0.005K\ge E_0+7&gt;G+2\)">\(0.005K\ge E_0+7&gt;G+2\)</span>, so Theorem 4.1 of Lesson 15 gives <span class="math" data-tex="\(\|\mathcal E_j\|\le L^{-G}\)">\(\|\mathcal E_j\|\le L^{-G}\)</span> on <span class="math" data-tex="\(\mathscr H_B\)">\(\mathscr H_B\)</span>. By Theorem 4.1 of Lesson 11, <span class="math" data-tex="\(\mathfrak m/UV\)">\(\mathfrak m/UV\)</span> equals <span class="math" data-tex="\(\zeta(2)^{-1}\int_{Q_0}\mathfrak m(\mathbf a)\,d\mathbf a\)">\(\zeta(2)^{-1}\int_{Q_0}\mathfrak m(\mathbf a)\,d\mathbf a\)</span> up to <span class="math" data-tex="\(O(L^{-AN})\)">\(O(L^{-AN})\)</span>. By Theorem 4.1 of Lesson 12, <span class="math" data-tex="\(\mathfrak m(\mathbf a)\)">\(\mathfrak m(\mathbf a)\)</span> is <span class="math" data-tex="\(\prod_pb&#x27;_p\le1\)">\(\prod_pb&#x27;_p\le1\)</span> times the history sum with globally distinct births. By Lemma 1.1 of Lesson 13, inserting <span class="math" data-tex="\(\Pi_B\)">\(\Pi_B\)</span> costs <span class="math" data-tex="\(O(L^{-AN})\)">\(O(L^{-AN})\)</span>. By (1.2) and Lemmas 2.2 and 2.4, the truncated sum is at most <span class="math" data-tex="\(L^{-(E_0+2)N}+L^{-(E_0+3)N}\)">\(L^{-(E_0+2)N}+L^{-(E_0+3)N}\)</span> in modulus. Since <span class="math" data-tex="\(Q_0\)">\(Q_0\)</span> has volume <span class="math" data-tex="\(15\)">\(15\)</span> and <span class="math" data-tex="\(\mathfrak m\ge0\)">\(\mathfrak m\ge0\)</span>, (3.1) follows for large <span class="math" data-tex="\(x\)">\(x\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-removing-goodness-and-the-minor-estimate">4. Removing goodness and the minor estimate</h2>
+<p><strong>Lemma 4.1 (good-state projections).</strong> For every fixed <span class="math" data-tex="\(A\)">\(A\)</span>, <span class="math" data-tex="\(|\langle f,\mathcal Tg\rangle-\langle f,\mathcal Ag\rangle|\ll UV\,L^{-A}\)">\(|\langle f,\mathcal Tg\rangle-\langle f,\mathcal Ag\rangle|\ll UV\,L^{-A}\)</span>.</p>
+<p><strong>Proof.</strong> Since <span class="math" data-tex="\(\mathcal Sf=f\)">\(\mathcal Sf=f\)</span>, <span class="math" data-tex="\(\mathcal Sg=g\)">\(\mathcal Sg=g\)</span>, and <span class="math" data-tex="\(\mathcal G\)">\(\mathcal G\)</span> commutes with <span class="math" data-tex="\(\mathcal S\)">\(\mathcal S\)</span>,</p>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\langle f,\mathcal Tg\rangle-\langle f,\mathcal Ag\rangle\\
+&amp;\quad=\langle(1-\mathcal G)f,\mathcal Tg\rangle\\
+&amp;\qquad+\langle\mathcal Gf,\mathcal T(1-\mathcal G)g\rangle .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\langle f,\mathcal Tg\rangle-\langle f,\mathcal Ag\rangle\\
+&amp;\quad=\langle(1-\mathcal G)f,\mathcal Tg\rangle\\
+&amp;\qquad+\langle\mathcal Gf,\mathcal T(1-\mathcal G)g\rangle .
+\end{aligned}
+\]</span>
+<p>Consider the first term; the second is the same with the reversed edge and the root at the target. Bound <span class="math" data-tex="\(|f|,|g|\le L^{2C}\)">\(|f|,|g|\le L^{2C}\)</span>. The remaining absolute sum over pairs of states joined by an edge, with a bad source, is a path sum with one edge, rooted at the source position. By Theorem 4.1 of Lesson 11, in the variant with absolute weights and the indicator of a failing test, it equals <span class="math" data-tex="\(UV/\zeta(2)\)">\(UV/\zeta(2)\)</span> times the integral of its model value, up to <span class="math" data-tex="\(O(UVL^{-A})\)">\(O(UVL^{-A})\)</span>. In the model, a prime that is in one of the two lists must have its random line equal to the line of its visit, with probability <span class="math" data-tex="\(1/(p+1)\)">\(1/(p+1)\)</span>; by the ban the two lists contain <span class="math" data-tex="\(M+1\)">\(M+1\)</span> distinct primes in each group, with measure <span class="math" data-tex="\(\prod_iV_i^{-(M+1)}\)">\(\prod_iV_i^{-(M+1)}\)</span>, so the sum over the lists of these probabilities is at most</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\prod_{i=1}^K\Bigl(\sum_{p\in\mathcal P_i}\frac1{V_i(p+1)}\Bigr)^{M+1}\le1,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\prod_{i=1}^K\Bigl(\sum_{p\in\mathcal P_i}\frac1{V_i(p+1)}\Bigr)^{M+1}\le1,
+\end{gathered}
+\]</span>
+<p>and the damping is at most <span class="math" data-tex="\(1\)">\(1\)</span>. For fixed lists there are at most <span class="math" data-tex="\(17\)">\(17\)</span> raw targets, and <span class="math" data-tex="\(O(Y)\)">\(O(Y)\)</span> comparison targets with multiplier <span class="math" data-tex="\(O(L^{3A_0}/Y)\)">\(O(L^{3A_0}/Y)\)</span>. The source is the root, so its ratio is <span class="math" data-tex="\(a_3\)">\(a_3\)</span>, and by Lemma 3.2 of Lesson 8 the set of <span class="math" data-tex="\(a_3\)">\(a_3\)</span> at which it fails a test has measure at most <span class="math" data-tex="\(e^{-cL^{0.1}}\)">\(e^{-cL^{0.1}}\)</span>, for every fixed lists and every <span class="math" data-tex="\(a_1,a_2\)">\(a_1,a_2\)</span>. Hence the model integral is <span class="math" data-tex="\(O(L^{3A_0}e^{-cL^{0.1}})\)">\(O(L^{3A_0}e^{-cL^{0.1}})\)</span>, and the first term is <span class="math" data-tex="\(O(UVL^{4C+3A_0}e^{-cL^{0.1}}+UVL^{-A})\)">\(O(UVL^{4C+3A_0}e^{-cL^{0.1}}+UVL^{-A})\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 4.2 (the minor estimate).</strong> Let <span class="math" data-tex="\(D_1&gt;0\)">\(D_1&gt;0\)</span>, <span class="math" data-tex="\(E_0=D_1+4C+2\)">\(E_0=D_1+4C+2\)</span>, <span class="math" data-tex="\(A_0\ge E_0+7\)">\(A_0\ge E_0+7\)</span> and <span class="math" data-tex="\(K\ge200(E_0+7)\)">\(K\ge200(E_0+7)\)</span>. Then, for large <span class="math" data-tex="\(x\)">\(x\)</span> and every <span class="math" data-tex="\(Y\)">\(Y\)</span> in (2.1) of Lesson 7,</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\mathcal Q_Y^{\rm min}|\ll XY\,L^{-D_1}.\quad(4.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+|\mathcal Q_Y^{\rm min}|\ll XY\,L^{-D_1}.\quad(4.1)
+\end{gathered}
+\]</span>
+<p><strong>Proof.</strong> By Corollary 5.2 of Lesson 8, <span class="math" data-tex="\(\mathcal Q_Y^{\rm min}=\sum_{d_0}\langle f,\mathcal Tg\rangle/d_0+O(XYL^{-D_1})\)">\(\mathcal Q_Y^{\rm min}=\sum_{d_0}\langle f,\mathcal Tg\rangle/d_0+O(XYL^{-D_1})\)</span>, the sum over at most <span class="math" data-tex="\(3KL^{0.21}\)">\(3KL^{0.21}\)</span> pad dyads. For each dyad, Lemma 4.1, Proposition 3.1 of Lesson 9 and Theorem 3.1 give</p>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\langle f,\mathcal Tg\rangle|\le C_{\rm abs}UV\,L^{4C-E_0}\\
++O(UVL^{-A}),
+\end{gathered}
+\]">\[
+\begin{gathered}
+|\langle f,\mathcal Tg\rangle|\le C_{\rm abs}UV\,L^{4C-E_0}\\
++O(UVL^{-A}),
+\end{gathered}
+\]</span>
+<p>and <span class="math" data-tex="\(UV=d_0YX\)">\(UV=d_0YX\)</span>. Dividing by <span class="math" data-tex="\(d_0\)">\(d_0\)</span> and summing over the dyads gives <span class="math" data-tex="\(O(XYL^{0.21+4C-E_0})=O(XYL^{-D_1})\)">\(O(XYL^{0.21+4C-E_0})=O(XYL^{-D_1})\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>16.1.</strong> Verify (1.2) for three addresses, all performed, with values <span class="math" data-tex="\((5,5,7)\)">\((5,5,7)\)</span> and with values <span class="math" data-tex="\((5,5,5)\)">\((5,5,5)\)</span>.</p>
+<p><strong>16.2.</strong> Show that a collection <span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> of rank <span class="math" data-tex="\(r\)">\(r\)</span> involves at most <span class="math" data-tex="\(2r\)">\(2r\)</span> addresses, with equality exactly when all blocks have two elements.</p>
+<p><strong>16.3.</strong> Count the permutations of <span class="math" data-tex="\(\{1,2,3\}\)">\(\{1,2,3\}\)</span> of rank <span class="math" data-tex="\(1\)">\(1\)</span> and of rank <span class="math" data-tex="\(2\)">\(2\)</span>, and compare with the bound <span class="math" data-tex="\(Q_b^{2r}\)">\(Q_b^{2r}\)</span> with <span class="math" data-tex="\(Q_b=3\)">\(Q_b=3\)</span>.</p>
+<p><strong>16.4.</strong> Show that the sum over <span class="math" data-tex="\(r\ge r_0\)">\(r\ge r_0\)</span> in Lemma 2.2 is dominated by its first term, and explain why a union bound over a single repeated prime would not suffice.</p>
+<p><strong>16.5.</strong> In the proof of Lemma 4.1, explain why the bound of the model sum over the lists by <span class="math" data-tex="\(1\)">\(1\)</span> does not lose any factor depending on <span class="math" data-tex="\(K\)">\(K\)</span> or <span class="math" data-tex="\(M\)">\(M\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>16.1.</strong> The collections are <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span>, the three pairs, and the triple. With values <span class="math" data-tex="\((5,5,7)\)">\((5,5,7)\)</span>, only <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span> (coefficient <span class="math" data-tex="\(1\)">\(1\)</span>) and the pair <span class="math" data-tex="\(\{1,2\}\)">\(\{1,2\}\)</span> (coefficient <span class="math" data-tex="\(-1\)">\(-1\)</span>) have their events satisfied, giving <span class="math" data-tex="\(0\)">\(0\)</span>: the values are not distinct. With <span class="math" data-tex="\((5,5,5)\)">\((5,5,5)\)</span>: <span class="math" data-tex="\(1-3+2\cdot1=0\)">\(1-3+2\cdot1=0\)</span>, since the triple has coefficient <span class="math" data-tex="\((-1)^2\cdot2!=2\)">\((-1)^2\cdot2!=2\)</span>.</p>
+<p><strong>16.2.</strong> A block <span class="math" data-tex="\(C\)">\(C\)</span> has <span class="math" data-tex="\(|C|\le2(|C|-1)\)">\(|C|\le2(|C|-1)\)</span> elements, with equality iff <span class="math" data-tex="\(|C|=2\)">\(|C|=2\)</span>. Summing over the blocks gives the claim.</p>
+<p><strong>16.3.</strong> Rank <span class="math" data-tex="\(1\)">\(1\)</span>: the three transpositions. Rank <span class="math" data-tex="\(2\)">\(2\)</span>: the two <span class="math" data-tex="\(3\)">\(3\)</span>-cycles. The bound gives <span class="math" data-tex="\(9\)">\(9\)</span> and <span class="math" data-tex="\(81\)">\(81\)</span>.</p>
+<p><strong>16.4.</strong> The ratio of consecutive terms is <span class="math" data-tex="\(8Q_b^2\Delta\le e^{-L^{0.1}/2}&lt;\frac12\)">\(8Q_b^2\Delta\le e^{-L^{0.1}/2}&lt;\frac12\)</span>. A union bound over one repeated value gains a single factor <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span>, while the absolute size of the history sum is <span class="math" data-tex="\(L^{C_1(N+1)}\)">\(L^{C_1(N+1)}\)</span>, far larger than <span class="math" data-tex="\(\Delta^{-1}\)">\(\Delta^{-1}\)</span>; one needs about <span class="math" data-tex="\(N\log L/L^{0.1}\)">\(N\log L/L^{0.1}\)</span> independent coincidences before the atoms win.</p>
+<p><strong>16.5.</strong> Each prime of the union of the two lists contributes <span class="math" data-tex="\(1/(V_i(p+1))\)">\(1/(V_i(p+1))\)</span>, and <span class="math" data-tex="\(\sum_{p\in\mathcal P_i}1/(V_i(p+1))\le\sum_p1/(V_ip)=1\)">\(\sum_{p\in\mathcal P_i}1/(V_i(p+1))\le\sum_p1/(V_ip)=1\)</span>. So each of the <span class="math" data-tex="\(K(M+1)\)">\(K(M+1)\)</span> factors is at most <span class="math" data-tex="\(1\)">\(1\)</span>; there is no factorial or combinatorial loss, because the lists are ordered and their measure is the product of the harmonic weights.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[PD] OpenAI, <em>The Poisson–Dirichlet law for prime predecessors</em>, OpenAI Math Release preprint, 24 September 2026, Sections 4.8 and 4.9. https://github.com/openai/math/tree/main/preprints/The-Poisson-Dirichlet-Law-for-Prime-Predecessors-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
