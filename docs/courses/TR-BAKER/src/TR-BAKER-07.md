@@ -1,6 +1,6 @@
 # Two logarithms II: explicit lower bounds
 
-*Draft. Public domain (CC0).*
+*Public domain (CC0).*
 
 A parameter theorem becomes useful only after its integers and inequalities have been checked. We now make that check for arbitrary two-term logarithmic forms, including multiplicative dependence, roots of unity, nonprincipal branches and collisions in the additive grid. The resulting constant is deliberately generous: it permits every numerical estimate to be visible.
 

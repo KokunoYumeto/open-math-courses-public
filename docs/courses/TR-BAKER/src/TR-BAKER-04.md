@@ -1,6 +1,6 @@
 # Effective lower bounds I: Baker's theorem and its arithmetic tools
 
-*Draft. Public domain (CC0).*
+*Public domain (CC0).*
 
 An effective logarithm estimate combines a rank argument with a comparison of arithmetic and analytic size. We begin with the rank test: how many exact zeros would force an exponential polynomial to be zero? We then choose polynomial bases that preserve its coefficients, prove the denominator bounds needed to clear its derivatives, and account for the height cost of normalizing the logarithmic form.
 

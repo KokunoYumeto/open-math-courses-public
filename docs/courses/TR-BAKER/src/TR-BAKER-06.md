@@ -1,6 +1,6 @@
 # Two logarithms I: interpolation determinants
 
-*Draft. Public domain (CC0).*
+*Public domain (CC0).*
 
 For two logarithms, one can build a determinant whose nonvanishing follows from a polynomial zero lemma. Its entries are algebraic, so height theory bounds it below. When the logarithmic form is small, its rows become nearly samples of functions of one variable; Taylor expansion then gives a large zero order and an analytic upper bound. Comparing the bounds produces a fully explicit parameter theorem.
 

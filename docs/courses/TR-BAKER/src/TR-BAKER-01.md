@@ -1,6 +1,6 @@
 # Linear forms in logarithms: the problem, the trivial bounds, and effectivity
 
-*Draft. Public domain (CC0).*
+*Public domain (CC0).*
 
 Two integers can be very large and still differ by one. To study a difference such as \(2^x-3^y\), divide by one of the powers. The question becomes how close \(2^x3^{-y}\) can be to \(1\). Taking logarithms changes multiplication into addition, but introduces a second question: how much cancellation can occur in \(x\log 2-y\log 3\)?
 

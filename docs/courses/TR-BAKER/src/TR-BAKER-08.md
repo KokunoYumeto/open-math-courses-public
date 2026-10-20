@@ -1,6 +1,6 @@
 # Linear forms in many logarithms: the modern estimates and how to use them
 
-*Draft. Public domain (CC0).*
+*Public domain (CC0).*
 
 An explicit logarithmic estimate must specify its field degree, height normalization, logarithm branches and coefficient parameter. Vanishing requires equal care: a multiplicative relation can become a nonzero logarithmic period. We begin with the arithmetic tools that distinguish these cases and quantify the small relations.
 

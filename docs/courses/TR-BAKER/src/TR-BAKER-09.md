@@ -1,6 +1,6 @@
 # p-adic analysis for linear forms in logarithms
 
-*Draft. Public domain (CC0).*
+*Public domain (CC0).*
 
 A congruence such as \(16^k\equiv1\pmod{5^s}\) says that a power is close to one in a nonarchimedean metric. Its precision is measured by \(v_5(16^k-1)\). Taking a p-adic logarithm turns powers into multiples, but only after checking the convergence domain. This lesson proves those checks, the Schwarz estimate for a power series, and a height bound for the precision of \(\alpha^m-1\).
 

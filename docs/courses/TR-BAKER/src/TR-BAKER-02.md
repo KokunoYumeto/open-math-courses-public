@@ -1,6 +1,6 @@
 # Baker's theorem I: building an auxiliary function
 
-*Draft. Public domain (CC0).*
+*Public domain (CC0).*
 
 The proof will compare two measurements of the same value: complex analysis makes it small, while arithmetic gives a lower limit if it is nonzero. For that comparison to work, the values under consideration must be algebraic after a controlled normalization. Ordinary derivatives of exponential functions introduce logarithms, so choosing the right derivatives is the first construction problem.
 

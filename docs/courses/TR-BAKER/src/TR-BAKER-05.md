@@ -1,6 +1,6 @@
 # Effective lower bounds II: proof of Baker's theorem
 
-*Draft. Public domain (CC0).*
+*Public domain (CC0).*
 
 A sufficiently small algebraic linear form will force an exact integer relation between its logarithms. The relation has coefficients bounded independently of the varying coefficient height. Once that assertion is proved, eliminating one logarithm gives the effective lower bound by induction. This is the target that determines the polynomial degrees, derivative orders and grid sizes below.
 

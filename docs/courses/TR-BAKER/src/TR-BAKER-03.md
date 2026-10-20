@@ -1,6 +1,6 @@
 # Baker's theorem II: extrapolation and the end of the proof
 
-*Draft. Public domain (CC0).*
+*Public domain (CC0).*
 
 The preceding lesson produced a nonzero integer coefficient array. To finish the proof, we must recover one of those integers from analytic data and show that its absolute value is below \(1\). We begin by deriving that recovery problem. It determines how many small derivatives we need, why close frequencies matter, and how exact zeros must be extended before Cauchy's formula can help.
 

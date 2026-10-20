@@ -1,6 +1,6 @@
 # Two p-adic logarithms: determinant bounds
 
-*Draft. Public domain (CC0).*
+*Public domain (CC0).*
 
 A large valuation of \(2^a-3^b\) means that the two powers agree to many p-adic digits. The determinant method measures how far this agreement can continue. It places products of powers in a single residue class, obtains a nonzero algebraic determinant, and compares a height bound with the large valuation forced by near agreement.
 
