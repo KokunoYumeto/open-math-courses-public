@@ -31,6 +31,74 @@ For compact continuous inputs the \(L^\infty\) estimate holds at every point.
 The included reciprocals give \(1/r_j\le1\). Thus every intermediate exponent is allowed, \(r_1=p_1\), \(r_k=q\), and
 \(1+1/r_j=1/r_{j-1}+1/p_j\). Apply the full two-factor Young proof in the integration foundations, Section 15.2, at each step. It includes zero norms and every infinite endpoint, and constructs the successive almost-everywhere convolutions. When \(k=1\) this is just equality. Convolution of two compact continuous functions is compactly supported and continuous by dominated convergence on a fixed integration set; induction gives the same for \(k\) factors. A continuous function satisfying an essential bound satisfies it everywhere, since a strict violation persists on a ball of positive measure. \(\square\)
 
+
+## Endpoint norms and the reflected kernel
+
+**Lemma 1.2 (smooth tests determine every integral norm).** For \(g\in L^1_{\mathrm{loc}}(\mathbb R^n)\) and \(1\le r\le\infty\),
+\[
+ \|g\|_r=\sup_{\substack{\varphi\in C_c^\infty\\\|\varphi\|_{r'}\le1}}
+                  \left|\int g\varphi\right|.
+ \tag{E1}
+\]
+Either side may be infinite. The pairing is bilinear; its maximizing phase is the conjugate of the phase of \(g\).
+
+**Proof.** Hölder gives the upper bound whenever the left side is finite. To prove the reverse bound, suppose the supremum on the right is a finite number \(A\). Its defining inequality extends to every bounded measurable compactly supported \(h\). Indeed choose a nonnegative compact smooth \(\rho\) of integral one. The integration foundations, Sections 15.2–15.4, give
+\(\|\rho_\varepsilon*h\|_{r'}\le\|h\|_{r'}\), including \(r'=\infty\), and convergence to \(h\) in \(L^1\). Choose a sequence with \(L^1\) errors at most \(2^{-j}\). Tonelli shows that the sum of the absolute errors is finite almost everywhere, so this sequence converges almost everywhere. The smoothed functions have modulus at most \(\|h\|_\infty\) and supports in one compact set. Dominated convergence against the locally integrable \(|g|\) therefore yields
+\[
+                         \left|\int gh\right|\le A\|h\|_{r'}.
+ \tag{E2}
+\]
+This argument uses no density assertion in the \(L^\infty\) norm.
+
+Put \(\sigma=\overline g/|g|\) where \(g\ne0\), and zero elsewhere. For \(1<r<\infty\), take
+\[
+B_j=\{|x|\le j,\ |g(x)|\le j\},\qquad
+ h_j=\sigma |g|^{r-1}1_{B_j}.
+\]
+With \(J_j=\int_{B_j}|g|^r\), (E2) gives \(J_j\le A J_j^{1/r'}\). The integral is finite. Division when it is positive gives \(J_j^{1/r}\le A\); when it is zero this is immediate. Monotone convergence proves \(\|g\|_r\le A\). For \(r=1\), use \(h_j=\sigma1_{\{|x|\le j\}}\), whose supremum norm is at most one, and then monotone convergence. For \(r=\infty\) and \(c>0\), if \(\{|g|>c\}\) has positive measure, it has an intersection \(E\) of positive finite measure with some bounded ball. The function \(h=\sigma1_E/|E|\) has integral norm one, and (E2) gives \(c\le A\). Thus \(|g|\le A\) almost everywhere. These arguments also show that a finite supremum forces a finite norm, settling the infinite case. \(\square\)
+
+**Proposition 1.3 (exact endpoint criteria and dual bounds).** Let \(k\in L^1_{\mathrm{loc}}(\mathbb R^n)\), and write \(\check k(x)=k(-x)\). A bound
+\[
+            \|k*\varphi\|_q\le C\|\varphi\|_p,
+                      \qquad\varphi\in C_c^\infty,
+ \tag{E3}
+\]
+holds if and only if
+\[
+            \|\check k*\psi\|_{p'}\le C\|\psi\|_{q'},
+                      \qquad\psi\in C_c^\infty.
+ \tag{E4}
+\]
+The best constants agree, for all \(1\le p,q\le\infty\). In particular,
+\[
+ \begin{array}{lll}
+ q=\infty:&\text{(E3) holds exactly when }k\in L^{p'},&
+                  C_{\mathrm{best}}=\|k\|_{p'},\\
+ p=1:&\text{(E3) holds exactly when }k\in L^q,&
+                  C_{\mathrm{best}}=\|k\|_q.
+ \end{array}
+ \tag{E5}
+\]
+When either criterion holds, the ordinary almost-everywhere convolution on all of the stated input space has this same operator norm.
+
+**Proof.** Convolution of a locally integrable \(k\) with a compact smooth test is smooth: on every compact output neighborhood, all kernel values used in
+\(\int k(z)\varphi(x-z)\,dz\) lie in a fixed compact set; derivatives of the test are uniformly bounded there, so dominated difference quotients apply. Fubini, with both test supports compact, gives
+\[
+ \int(k*\varphi)(x)\psi(x)\,dx
+       =\int\varphi(y)(\check k*\psi)(y)\,dy.
+ \tag{E6}
+\]
+Absolute integrability follows by bounding the tests and integrating \(|k|\) over the bounded set of their differences, with one additional finite support-volume factor. Assuming (E3), Hölder bounds the left side by \(C\|\varphi\|_p\|\psi\|_{q'}\). Lemma 1.2 applied to \(\check k*\psi\), with \(r=p'\), proves (E4). Reflection twice and the same argument prove the converse, with the identical constant.
+
+If \(q=\infty\), continuity makes the essential bound in (E3) valid at zero. Hence
+\[
+             \left|\int k(-y)\varphi(y)\,dy\right|
+                         \le C\|\varphi\|_p.
+\]
+Lemma 1.2 gives \(\|k\|_{p'}\le C\). Conversely Hölder gives the convolution bound with exactly \(\|k\|_{p'}\). For \(p=1\), use (E4), whose output exponent is infinity; the criterion just proved gives \(\|\check k\|_q\le C\), and Young supplies sufficiency. Reflection preserves every norm. Young and Hölder define the convolution on the whole input space with the stated upper bound; the smooth tests already force the same lower bound. At input exponent infinity, this is a direct integral construction, with no assertion that compact smooth functions are norm dense. \(\square\)
+
+The locally integrable function hypothesis matters. The distribution \(\delta_0\) acts by the identity on \(L^1\), but it is not an \(L^1\) kernel function. For \(k_a(x)=|x|^{-n/a}\), \(1<a<\infty\), the \(L^a\) integral diverges both at zero and at infinity. To see both divergences without a polar formula, integrate on the disjoint shells \(2^j<|x|<2^{j+1}\). Scaling gives the same positive finite integral on every shell, for all integers \(j\). The endpoint criteria therefore rule out both strong \(L^1\to L^a\) and \(L^{a'}\to L^\infty\) bounds. The intermediate estimates below have a different mechanism.
+
 ## A kernel difference is a Hölder estimate
 
 **Theorem 2.1 (every \(C^1\) homogeneous kernel).** Let \(K\in C^1(\mathbb R^n\setminus\{0\})\) be homogeneous of real degree \(\beta\). If \(1\le p\le\infty\) and
@@ -443,6 +511,124 @@ Each integral is absolutely finite there. On outward shells,
 \]
 Raising the preceding pointwise estimate to the \(a\)-th power and integrating cancels \(L^a\). Taking its \(a\)-th root proves the assertion. Faces have measure zero by the supplied coordinate measure construction. \(\square\)
 
+
+## From cancellation to strong fractional estimates
+
+The decomposition and tail estimate give a second proof of the fractional inequalities. The integral defining the operator, including the infinite sum of bad pieces, can be handled before using any weak bound.
+
+**Proposition 6.3 (the cancellation route to the weak endpoint).** For \(1<a<\infty\), \(k_a(x)=|x|^{-n/a}\), and \(f\in L^1\), the convolution is absolutely finite almost everywhere and
+\[
+             |\{x:|k_a*f(x)|>t\}|
+                     \le A_{n,a}t^{-a}\|f\|_1^a,\qquad t>0.
+ \tag{C1}
+\]
+This follows from Proposition 3.2 and Lemmas 6.1–6.2 alone.
+
+**Proof.** The inner-shell computation in Proposition 3.2 gives \(J=\int_{|z|\le1}k_a(z)\,dz<\infty\), since \(n-n/a>0\). For any bounded measurable \(B\),
+\[
+ \sup_y\int_B k_a(x-y)\,dx\le J+|B|,
+ \qquad
+ \int_B(k_a*|h|)(x)\,dx\le(J+|B|)\|h\|_1.
+ \tag{C2}
+\]
+For the first inequality split at \(|x-y|=1\); on the outer part \(k_a\le1\). Tonelli gives the second. Exhausting space by bounded balls proves almost-everywhere absolute finiteness and continuity of this convolution map from \(L^1\) into \(L^1_{\mathrm{loc}}\).
+
+It suffices to take \(\|f\|_1=1\); the zero function is immediate, and scalar multiplication will restore its norm. Decompose at height \(s>0\) by Lemma 6.1:
+\(f=v+\sum_i w_i\), with disjoint cubes \(Q_i\). Its proof gives
+\[
+ \|v\|_1\le1,\quad\|v\|_\infty\le2^ns,\quad
+ \sum_i\|w_i\|_1\le2,\quad\sum_i|Q_i|\le s^{-1}.
+\]
+Proposition 3.2 at \(p=1\) therefore gives
+\(\|k_a*v\|_\infty\le B_{n,a}s^{1/a}\). Choose
+\(s=(t/(2B_{n,a}))^a\). If \(\Omega=\bigcup_i Q_i^*\), then
+\[
+ |\Omega|\le 2^n s^{-1},\qquad
+ \left\|\sum_i |k_a*w_i|\right\|_{L^a(\Omega^c)}
+                    \le C_{n,a}\sum_i\|w_i\|_1\le2C_{n,a}.
+ \tag{C3}
+\]
+Indeed \(\Omega^c\subset(Q_i^*)^c\); Lemma 6.2 and finite Minkowski give the bound for finite sums, and monotone convergence of their \(a\)-th powers gives it for the full nonnegative sum. On every bounded \(B\), (C2) also shows
+\(\sum_i\|k_a*w_i\|_{L^1(B)}<\infty\). Thus the series converges absolutely almost everywhere locally and in \(L^1(B)\), and its sum is \(k_a*(f-v)\): apply (C2) to the \(L^1\) remainders of Lemma 6.1. This identifies the series used in (C3) with the actual convolution.
+
+Outside \(\Omega\), exceeding \(t\) requires the bad sum to exceed \(t/2\). For any nonnegative \(H\), the pointwise inequality \(1_{\{H>t/2\}}\le(2H/t)^a\) bounds its level-set measure. Equations (C3) and the chosen \(s\) give
+\[
+ |\{|k_a*f|>t\}|
+ \le 2^n(2B_{n,a}/t)^a+(4C_{n,a}/t)^a.
+\]
+For general nonzero \(f\), apply this to \(f/\|f\|_1\) at level \(t/\|f\|_1\). This proves (C1). \(\square\)
+
+**Proposition 6.4 (a level-set interpolation proof).** If \(1<p<a'\) and \(1/q=1/p-1/a'\), then
+\[
+                           \|k_a*f\|_q\le C_{n,a,p}\|f\|_p.
+ \tag{C4}
+\]
+Proposition 6.3 and the supremum estimate of Proposition 3.2 suffice; no maximal-function estimate is needed in this proof.
+
+**Proof.** First \(q>a\), since \(1/q=1/p-1+1/a<1/a\). The zero input is immediate; normalize a nonzero input to \(\|f\|_p=1\). For each \(s>0\), split
+\[
+                  v_s=f1_{\{|f|\le s\}},\qquad
+                  w_s=f1_{\{|f|>s\}}.
+\]
+The high part is integrable:
+\(\|w_s\|_1\le s^{1-p}\int|f|^p=s^{1-p}\).
+The low part belongs to \(L^p\cap L^\infty\). Thus its convolution is absolutely defined everywhere by Proposition 3.2, and the high part's is absolutely defined almost everywhere by (C2). Taking, for example, \(s=1\) first proves that the absolute convolution of \(f\) exists almost everywhere independently of subsequent choices of level.
+
+Put \(D=2C_{n,a,p}^{\,*}>0\), where \(C_{n,a,p}^{\,*}\) is a positive constant valid in Proposition 3.2. Because \(1-p/a'=p/q\), that proposition gives \(\|k_a*v_s\|_\infty\le(D/2)s^{p/q}\). For level \(t>0\) choose \(s=(t/D)^{q/p}\). The weak bound for \(w_s\) then implies
+\[
+ m(t):=|\{|k_a*f|>t\}|
+ \le A\,2^a t^{-a}
+        \left(\int |f(x)|1_{\{t<D|f(x)|^{p/q}\}}\,dx\right)^a.
+ \tag{C5}
+\]
+The level-set identity follows directly from
+\(z^q=\int_0^z qt^{q-1}\,dt\) and Tonelli. Hence
+\[
+ \|k_a*f\|_q^q
+ \le qA\,2^a\int_0^\infty t^{q-1-a}
+           \left(\int |f(x)|1_{\{t<D|f(x)|^{p/q}\}}\,dx\right)^a dt.
+ \tag{C6}
+\]
+
+Here is the integral triangle estimate with the weight actually required. For a nonnegative measurable \(H(x,t)\) and \(d\mu(t)=t^{q-1-a}dt\),
+\[
+ \left\|\int H(x,\cdot)\,dx\right\|_{L^a(\mu)}
+              \le\int\|H(x,\cdot)\|_{L^a(\mu)}\,dx.
+ \tag{C7}
+\]
+To prove it, replace \(H\) by
+\(\min(H,j)1_{\{|x|\le j,\ 1/j\le t\le j\}}\).
+Its integral \(M_j(t)\) is bounded and supported on a set of finite \(\mu\)-measure. Tonelli and Hölder give
+\[
+ \int M_j^a\,d\mu
+ =\int\!\int H_j(x,t)M_j(t)^{a-1}\,d\mu(t)\,dx
+ \le\|M_j\|_{L^a(\mu)}^{a-1}
+                           \int\|H_j(x,\cdot)\|_{L^a(\mu)}dx.
+\]
+Divide when the norm is positive, and treat its zero value directly. These truncations increase to \(H\); monotone convergence, first in \(t\) and then in \(x\), proves (C7), including infinite values. Hölder for this measure is the same scalar normalization proof as in Section 15.2 of the integration foundations.
+
+Apply (C7) to \(H(x,t)=|f(x)|1_{\{0<t<D|f(x)|^{p/q}\}}\). Since \(q>a\),
+\[
+ \begin{aligned}
+ \|H(x,\cdot)\|_{L^a(\mu)}
+ &=\frac{D^{(q-a)/a}}{(q-a)^{1/a}}\,
+          |f(x)|^{\,1+p(q-a)/(aq)},\\
+ 1+\frac{p(q-a)}{aq}
+ &=1+\frac pa-\frac pq=p.
+ \end{aligned}
+ \tag{C8}
+\]
+At \(f(x)=0\), both sides are zero. The right side of (C6) is therefore at most
+\[
+        qA\,2^a\,\frac{D^{q-a}}{q-a}
+                               \left(\int |f|^p\right)^a,
+\]
+which is a constant under our normalization. Taking the \(q\)-th root and rescaling proves (C4) for every \(L^p\) input. The proof includes absolute convergence and requires neither a prior strong fractional bound nor a limiting passage from compact inputs. \(\square\)
+
+![Endpoint kernel averages and the different tails of positive and mean-zero inputs](../figures/convolution-endpoints-and-cancellation.png)
+
+*Figure. Left: averages \(k*\eta_\varepsilon\) of \(k(x)=e^{-|x|}\), with \(\eta_\varepsilon=(2\varepsilon)^{-1}1_{[-\varepsilon,\varepsilon]}\), approach the kernel as the unit-mass input concentrates. Solution 11 gives the exact formulas and endpoint norms. Right: for \(x>1\), the positive input \(1_{[-1,1]}\) has potential \(2(\sqrt{x+1}-\sqrt{x-1})\), whereas the mean-zero input \(1_{[-1,0]}-1_{[0,1]}\) has potential \(2(\sqrt{x+1}-2\sqrt x+\sqrt{x-1})\). Their absolute values have respective asymptotics \(2x^{-1/2}\) and \(\tfrac12x^{-3/2}\), proved in Solution 5. The logarithmic axes display the extra power supplied by cancellation. [Editable figure script](../figures/convolution-endpoints-and-cancellation.py).*
+
 ## Exercises
 
 **Exercise 1 (basic).** Put \(f=1_{[0,1]}\) on the line. Find \(f*f*f\), its maximum, and its squared \(L^2\) norm. Check the Young estimates using exponent triples \((1,2,2)\) and \((1,1,2)\).
@@ -472,6 +658,18 @@ Find the maximal selected cubes, the good and zero-mean functions, and all \(L^1
  f(y)=1_{(0,e^{-2})}(y)y^{-1/2}(\log(1/y))^{-3/4}.
 \]
 Prove \(f\in L^2\cap L^1\), but \(k*f\) has infinite essential supremum. Establish divergence on sets of positive measure. Explain its almost-everywhere existence and compare the other strong endpoint using \(1_{[-1,1]}\).
+
+
+**Exercise 11 (introductory: exact endpoint norms).** On \(\mathbb R\), let \(k(x)=e^{-|x|}\). Find the norms of convolution by \(k\) from \(L^1\) to every \(L^q\), and from \(L^p\) to \(L^\infty\), including both infinite endpoints. For \(\eta_\varepsilon=(2\varepsilon)^{-1}1_{[-\varepsilon,\varepsilon]}\), compute \(k*\eta_\varepsilon\) and show that these unit-\(L^1\) inputs approach the first family of norms. Find an \(L^2\) input attaining the \(L^2\to L^\infty\) norm.
+
+**Exercise 12 (intermediate: a weighted integral triangle calculation).** Take \(a=2,p=4/3,q=4\), \(D>0\), and \(f(x)=c1_E(x)\), where \(0<|E|<\infty\) and \(c\ne0\). Evaluate both sides of (C7) for the function \(H\) used in (C8), with \(d\mu=t\,dt\). Explain why equality holds and verify the exponent identity in (C8).
+
+**Exercise 13 (advanced: countably many cancellation pieces).** Suppose \(\int w_j=0\), each \(w_j\in L^1\) is supported in a cube \(Q_j\), \(\sum_j\|w_j\|_1=M<\infty\), and \(\sum_j|Q_j|=V<\infty\). The cubes need not be disjoint. Show that \(w=\sum_jw_j\) is an \(L^1\) function and that
+\[
+ |\{|k_a*w|>t\}|\le 2^nV+(C_{n,a}M/t)^a.
+ \tag{C9}
+\]
+Identify the convolution with the full sum, and explain why cancellation is needed for the bound outside the doubled cubes.
 
 ## Complete solutions
 
@@ -682,10 +880,59 @@ For every prescribed level, this lower bound exceeds the level on an entire suff
 
 For the other endpoint, \(1_{[-1,1]}\in L^1\). Solution 5 computed its potential and proved that the squared tail has divergent integral. Thus strong \(L^1\to L^2\) fails as well, despite the valid weak estimate.
 
-## Free sources and exact proof dependencies
+
+**Solution 11.** For finite \(r\ge1\), direct integration gives
+\(\|k\|_r=(2/r)^{1/r}\); \(\|k\|_\infty=1\).
+Proposition 1.3 therefore gives
+\[
+ \|T_k\|_{1\to q}=
+ \begin{cases}(2/q)^{1/q},&q<\infty,\\1,&q=\infty,\end{cases}
+ \qquad
+ \|T_k\|_{p\to\infty}=
+ \begin{cases}(2/p')^{1/p'},&p>1,\\1,&p=1.\end{cases}
+ \tag{E7}
+\]
+At \(p=\infty\) the first formula in the second brace is \(2\), since \(p'=1\).
+Integrating the exponential on either side of zero yields
+\[
+ (k*\eta_\varepsilon)(x)=
+ \begin{cases}
+ e^{-|x|}\sinh(\varepsilon)/\varepsilon,& |x|\ge\varepsilon,\\
+ [1-e^{-\varepsilon}\cosh(x)]/\varepsilon,& |x|\le\varepsilon.
+ \end{cases}
+ \tag{E8}
+\]
+The two expressions agree at the endpoints. They converge pointwise to \(k\); at zero, use \((1-e^{-\varepsilon})/\varepsilon\to1\). For \(0<\varepsilon\le1\) and \(|x|\ge1\), the first expression is bounded by a fixed constant times \(e^{-|x|}\), while on \([-1,1]\) every average is at most one. Dominated convergence of the \(q\)-th power of the difference proves convergence in each finite \(L^q\). Also \(|e^{-|x-h|}-e^{-|x|}|\le|h|\): the absolute-value function is Lipschitz and the derivative of \(e^{-t}\) has modulus at most one for \(t\ge0\). Averaging gives uniform error at most \(\varepsilon/2\). Thus the output norms converge to all the first-family values with input norms exactly one.
+
+For \(p=2\), take \(f=k\), whose \(L^2\) norm is one. Splitting the convolution integral at \(0\) and \(x\) for \(x\ge0\) gives
+\[
+                         (k*k)(x)=(1+|x|)e^{-|x|}.
+\]
+Its maximum is one, attained at zero, and continuity makes the essential supremum one as well. This attains the \(L^2\to L^\infty\) norm in (E7).
+
+**Solution 12.** Put \(b=D|c|^{1/3}\). Then
+\[
+ H(x,t)=|c|1_E(x)1_{(0,b)}(t),\qquad
+ \left\|\int H\,dx\right\|_{L^2(t\,dt)}
+        =|c||E|\left(\frac{b^2}{2}\right)^{1/2}
+        =\frac D{\sqrt2}|E||c|^{4/3}.
+\]
+For each \(x\in E\), \(\|H(x,\cdot)\|_{L^2(t\,dt)}=D|c|^{4/3}/\sqrt2\); it vanishes elsewhere. Integration gives exactly the same answer. All nonzero sections are the same nonnegative function of \(t\), so the triangle estimate loses nothing. The exponent is
+\(1+(4/3)(4-2)/(2\cdot4)=4/3=p\), and \(q-a=2>0\) ensures integrability at \(t=0\). This checks the weighted calculation for actual sections, not just a formal exponent relation.
+
+**Solution 13.** Tonelli gives \(\int\sum_j|w_j|=M\). The series thus converges absolutely almost everywhere to \(w\), and its \(L^1\) remainders have norms at most the tails of the convergent sum of norms. By (C2), the convolved series is absolutely convergent in \(L^1(B)\) for every bounded \(B\), and its sum equals \(k_a*w\) there. Taking a countable exhaustion makes this an almost-everywhere identity on the whole space.
+
+For \(\Omega=\bigcup_jQ_j^*\), countable subadditivity gives \(|\Omega|\le2^nV\), without disjointness. Lemma 6.2 and the finite triangle inequality give
+\(\|\sum_{j\le N}|k_a*w_j|\|_{L^a(\Omega^c)}
+\le C_{n,a}\sum_{j\le N}\|w_j\|_1\).
+Monotone convergence gives the same bound with \(C_{n,a}M\) for the whole sum. Apply \(1_{\{H>t\}}\le(H/t)^a\) outside \(\Omega\), and include its measure, to obtain (C9). Cancellation is the hypothesis of Lemma 6.2 that supplies its integrable \(L^a\) tail. Solution 5's positive interval input has a nonintegrable \(L^2\) tail for \(a=2\), so this step cannot simply omit the zero-mean condition.
+
+## Sources and exact proof dependencies
 
 Terence Tao's freely available [UCLA 247A Notes 3](https://www.math.ucla.edu/~tao/247a.1.06f/notes3.pdf), pages 1–4, 13–14 and 23–24, provides the finite covering, maximal-function, density/differentiation and dyadic-decomposition mechanisms. Lemmas 3.0 and 6.1 above supply the full estimates and differentiation proof, including the strong maximal bound directly from level sets. No interpolation theorem is left as an external prerequisite.
 
 The freely available MIT OpenCourseWare [18.S997 lecture 30, “Hardy–Littlewood–Sobolev inequality”](https://ocw.mit.edu/courses/18-s997-the-polynomial-method-fall-2012/214a7e215cfb9c3bdd3507e528b8db3c_MIT18_S997F12_lec30.pdf), Sections 2–3, pages 1–4, develops the maximal-function and near/far balancing method. Theorem 3.1 above proves each shell estimate, balances the powers explicitly and proves both strong-endpoint failures for the precise unnormalized kernel used in this lesson.
 
 Tao's [UCLA 247A Notes 4](https://www.math.ucla.edu/~tao/247a.1.06f/notes4.pdf), Lemma 2.7, pages 7–8, supplies the mean-zero kernel-subtraction mechanism. Lemma 6.2 gives the full argument for this lesson's fractional kernel, with its actual doubled cube and scale-independent tail integral. The gradient conclusions use the supplied Newtonian and distributional programme proofs identified before Section 1, and are derived fully in Sections 4–5. Every exercise has its complete solution here.
+
+Lars Hörmander, *The Analysis of Linear Partial Differential Operators I*, second edition, Section 4.5, pages 116–124, treats Young bounds, fractional integration and weak-gradient embeddings. Lemma 1.2 and Proposition 1.3 give the endpoint norm and reflected-kernel arguments; Propositions 6.3–6.4 give the cancellation and level-set route to the fractional estimates, including the countable sums and weighted integral triangle inequality.

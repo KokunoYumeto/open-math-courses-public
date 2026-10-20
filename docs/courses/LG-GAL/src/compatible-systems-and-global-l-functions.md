@@ -11581,9 +11581,1180 @@ By DC7 and DC8 the two frames of the dualizing line are \(e_0=dt/(2v)\) and \(e_
 \]
 The first equality uses \(dt=-u^{-2}du\) and \(v=u^{-(g+1)}w\). The transition for \(\mathcal O(g-1)\) in these two charts is \(u^{g-1}\); changing the sign of the second frame absorbs the minus sign. This computation concerns the actual finite map and its two charts. It supplies no comparison map for a separate proper birational modification.
 
+### 2AI. Projective duality and the birational canonical trace
+
+In this section \(A\) is either a field or a regular local ring of dimension two. In the latter case its regular parameter pair is fixed. The arithmetic applications use \(A=R[t]_{\mathfrak p}\), with \(\mathfrak p\) of height two, and normal projective models over a finite normal \(A\)-algebra. All schemes, modules and sheaves in the construction are Noetherian and coherent unless otherwise specified. A complex has cohomological differential of degree one; \(K[a]^j=K^{j+a}\), with differential \((-1)^a d_K\). Thus a module \(M\) in cohomology degree \(c\) is denoted \(M[-c]\).
+
+We construct the trace using the Laurent-monomial complexes of Lesson 3, PF5–PF8. The local height estimate is the proved argument JN19–JN21 in Lesson 8, §6.0BJ.6. The normal intersection, finite duality and homological prerequisites are HB1, CN1–CN2 and DC1–DC7. Free comparisons are the Stacks Project's [projective cohomology pairing](https://stacks.math.columbia.edu/tag/01XS), [proper trace](https://stacks.math.columbia.edu/tag/0AWG), and [curve duality](https://stacks.math.columbia.edu/tag/0E31), and [generation of curve adjoints](https://stacks.math.columbia.edu/tag/0B5H). The construction and the comparisons used below have their proofs here.
+
+#### 2AI.1. Finite twist resolutions and an explicit trace
+
+**PD1.** Every coherent sheaf on \(P=\mathbf P_A^N\) has a finite resolution by finite direct sums of twists \(\mathcal O_P(a)\). For \(N\ge1\), one can obtain a resolution of length at most \(N+3\) when \(\dim A=2\), and at most \(N+1\) when \(A\) is a field. In particular its derived global sections can be represented by a bounded complex of finite free \(A\)-modules.
+
+*Proof.* PF7 gives a finite sum \(E_0\) of twists mapping onto the sheaf \(G\), with coherent kernel. Apply PF7 again to that kernel, choosing the twists in \(E_1\) sufficiently negative that every entry of \(E_1\to E_0\) has nonnegative homogeneous degree. PF6 identifies each such entry with a homogeneous polynomial. The cokernel of this graded polynomial matrix is a finite graded module \(M\) over
+\[
+ S=A[X_0,\ldots,X_N],\qquad
+ \widetilde M=G.
+ \tag{PD1}
+\]
+Here sheafification is exact on the standard affine charts, since it consists of localization followed by taking the degree-zero summand. Thus this is a presentation of the actual sheaf, not merely a map agreeing generically.
+
+Write \(\mathfrak b=(\mathfrak a,X_0,\ldots,X_N)\), where \(\mathfrak a=0\) in the field case. A finite graded module, bounded below in degree, satisfies graded Nakayama for this ideal. Indeed, if \(M=\mathfrak bM\), its lowest-degree component is its own \(\mathfrak a\)-multiple and is zero by ordinary Nakayama; induction on the degree gives the same conclusion in every degree. This proof also shows that homogeneous lifts of a basis of \(M/\mathfrak bM\) generate \(M\). Build a minimal graded free resolution by repeating these lifts on the finite graded kernels. Its differentials have entries in \(\mathfrak b\).
+
+The sequence consisting of the base parameters followed by \(X_0,\ldots,X_N\) is regular and generates \(\mathfrak b\). Successively quotienting its base parameters leaves a polynomial ring over the residue field; quotienting the variables then leaves that field. Its Koszul complex resolves \(S/\mathfrak b\). The double-complex argument in DC1 compares its tensor product with \(M\) to the minimal resolution tensored with \(S/\mathfrak b\). The former has length \(N+3\), or \(N+1\), and the latter has zero differentials. The free modules beyond that length have zero reduction, and graded Nakayama makes them zero. Sheafifying gives the finite resolution asserted. For \(N=0\), use the affine free-resolution bound DC1 directly, with all twists identified with the one trivial line as in PF13.
+
+For a twist, PF11 is an explicit contraction on every Laurent weight except the surviving degree-zero or degree-\(N\) weights. It also contracts the augmented nonnegative weights onto their degree-zero diagonal copy. Consequently its Čech complex is homotopy equivalent to its finite free cohomology groups, placed in those degrees. The formulas preserve finite Laurent support, so their direct sum is a genuine homotopy, not an interchange of infinite products. A bounded complex of finite sums of twists is a finite iteration of mapping cones. Its total Čech complex is therefore homotopy equivalent to a bounded complex of finite free modules: replace a column by its finite free homotopy model, transfer the adjoining map by the homotopy equivalences, and take its cone; continue through the finitely many columns. Each cone of a map of bounded finite free complexes is again bounded finite free. This proves the last assertion. \(\square\)
+
+We use only the following meanings of derived notation. A quasi-isomorphism is a map of complexes inducing isomorphisms on cohomology. Complexes are compared up to such maps, and maps are compared up to chain homotopy. The notation \(R\Gamma\) denotes total Čech cohomology on a finite affine cover, with the resolution comparison of SC11–SC15; \(R\operatorname{Hom}\) is computed using locally free resolutions in the first variable or injective resolutions in the second. Finite tensor resolutions compute \(\otimes^{\mathbf L}\).
+
+There are enough injective sheaves of modules for these comparisons. For a point \(z\), an injective \(\mathcal O_z\)-module defines an injective skyscraper sheaf: Hom into it is Hom from the stalk, and taking a stalk is exact. Embed each stalk module into an injective by DC1's coinduced-character construction. The product of the resulting skyscraper sheaves receives an injective map from the original sheaf, because a section with all zero germs is zero. Products of injectives are injective coordinate by coordinate. Iterating gives the resolutions. Such sheaves are flasque: extend a map from the extension-by-zero structure module of an open subset into the injective sheaf. This extends every section on that open subset. Thus these resolutions compute the same cohomology as SC's flasque resolutions. A finite locally free first argument preserves this injective comparison by tensor-Hom adjunction, so its Hom complex computes the derived Hom used here. Lifting comparison maps into injective resolutions and the CN1 homotopy construction prove independence. Totalizations below are finite in each specified degree, or have the bounded-cover stabilization stated in PD4; no unproved convergence assertion is implicit in the notation.
+
+**PD2.** Put \(\Omega_P=\Omega^N_{P/A}\). For every bounded coherent complex \(G\) on \(P\), there is a natural isomorphism
+\[
+ R\Gamma\,R\mathcal Hom_P(G,\Omega_P[N])
+       \simeq R\operatorname{Hom}_A(R\Gamma G,A).
+ \tag{PD2}
+\]
+Its trace on \(H^N(P,\Omega_P)\) is an explicit coefficient functional.
+
+*Proof.* On the \(i\)-th chart let
+\[
+ \eta_i=(-1)^i\,d(X_0/X_i)\wedge\cdots
+             \widehat{d(X_i/X_i)}\cdots\wedge d(X_N/X_i).
+ \tag{PD3}
+\]
+Differentiating the ratio coordinates and expanding the determinant gives \(\eta_j=(X_i/X_j)^{N+1}\eta_i\). Terms containing two copies of the differential of the distinguished ratio vanish, and the remaining determinant has exactly this ratio and the displayed orientation signs. Thus \(\Omega_P\simeq\mathcal O_P(-N-1)\). In this identification the trace is
+\[
+ \operatorname{res}:H^N(P,\mathcal O_P(-N-1))\longrightarrow A,
+ \qquad c\longmapsto[X_0^{-1}\cdots X_N^{-1}]c.
+ \tag{PD4}
+\]
+It is defined already on the full-intersection Čech term and kills coboundaries: a monomial from any omitted-coordinate term has nonnegative exponent in that omitted coordinate, so cannot contribute this coefficient.
+
+For \(G=\mathcal O_P(d)\), multiplication followed by (PD4) pairs its surviving nonnegative weights \(X^\alpha\) with the weights \(X^{-\alpha-\mathbf1}\) of \(\mathcal O_P(-d-N-1)\). Its matrix in these two bases is the identity. If the first twist instead has top cohomology, the roles reverse. If neither twist has surviving weights, both sides are zero. PF11 contracts all the other weights. It follows that the evaluation pairing induces the isomorphism (PD2) for each twist, including its degree and shift. For \(N=0\), the single frame \(X_0^d\) pairs with \(X_0^{-d-1}\); PF13 gives the same assertion for every integer \(d\), including negative ones.
+
+Here is the complex map underlying this calculation. For a finite twist resolution \(E\), compose Čech cup product and evaluation
+\[
+ C^\bullet(\mathcal Hom(E,\Omega_P[N]))\otimes_A C^\bullet(E)
+    \longrightarrow C^\bullet(\Omega_P[N])
+    \xrightarrow{\operatorname{res}}A.
+ \tag{PD5}
+\]
+For Čech degrees \(p,q\) use the ordered overlapping-index product \((a\smile b)_{i_0\ldots i_{p+q}}=a_{i_0\ldots i_p}b_{i_p\ldots i_{p+q}}\). If \(a\) has internal degree \(r\), insert \((-1)^{rq}\). With total differential \(\delta+(-1)^p d\), deleting a common index gives the usual two boundary terms, while deletion of any other index gives its corresponding term on one factor. The factor \((-1)^{rq}\) is precisely the sign for moving the second Čech degree past the first internal degree. These facts verify the Leibniz rule, hence (PD5) is a complex map. Its Hom adjoint is the map in (PD2). Each Čech term of a twist is a free \(A\)-module on Laurent monomials. The complex is bounded, and the contractions in PD1 show that its Hom computes the indicated derived Hom over \(A\).
+
+Filter by the finitely many degrees of \(E\). On each successive column the map just proved is the twist isomorphism. Taking a cone preserves quasi-isomorphisms, by the long exact sequence of the cone; induction proves (PD2) for the entire resolution. A bounded coherent complex is obtained by the same finite cone argument from its coherent terms, resolving them by PD1. The injective comparisons above make evaluation and this construction natural in the actual coherent complex, independent of the chosen resolutions. This proves (PD2), with its trace and signs. \(\square\)
+
+#### 2AI.2. The local Ext concentration
+
+**PD3.** Let \(B\) be a finite normal domain over the regular local surface ring \(A\), in a finite separable extension of its fraction field, and let \(X\) be a normal projective modification of \(\operatorname{Spec}B\). Suppose its closed local rings have dimension two, as for the models of HR1. For a closed immersion \(i:X\hookrightarrow\mathbf P_A^N\), the only nonzero sheaf Ext of \(i_*\mathcal O_X\) into \(\Omega_P\) is in degree \(N\). The sheaf
+\[
+ i_*\omega_X=\mathcal Ext^N_P(i_*\mathcal O_X,\Omega_P)
+ \tag{PD6}
+\]
+is finite, and its module at each point of \(X\) is dualizing for that local ring. On \(X\), it is torsion-free of rank one and reflexive.
+
+*Proof.* We give the local algebra needed for concentration. Every localization of a polynomial ring over \(A\) has a regular parameter sequence generating its maximal ideal. To see this explicitly, first localize the base at the contraction of the prime. This base is a field, a DVR, or \(A\) itself, by HB1 and regularity. Quotient its zero, one or two regular parameters. The remaining local ring is a localization of a polynomial ring over the resulting field \(K\). Choose a maximal algebraically independent subcollection of the images of the polynomial variables in its residue field and invert all nonzero polynomials in them. The remaining variable images are algebraic over that rational-function field. Adjoin them in order. The minimal polynomial of the next image has coefficients in the preceding field; clear its finitely many coefficient denominators, which are units at the given prime. Successive quotients are localizations of polynomial rings over the successive finite fields. The resulting triangular equations form a regular sequence, and their final quotient is the residue field. They generate the localized maximal ideal. Together with the base parameters they form the claimed sequence.
+
+If its length is \(d\), the prime ideals obtained by these successive domain quotients give a chain of length \(d\); the general local height bound JN21 gives the reverse inequality because there are \(d\) maximal-ideal generators. Thus the local dimension is \(d\). For a closed point over the closed point of \(A\), all \(N\) affine fibre coordinates are algebraic over the residue field, so \(d=N+2\). At the generic point of \(X\), the base is its fraction field and the function-field extension is finite, so the corresponding ambient local ring has dimension \(N\).
+
+Write \(S\) for an ambient closed local ring and \(T=S/I\) for the local ring on \(X\). The ideal \(I\) is prime and has height \(N\): localization at \(I\) is the ambient generic local ring just computed. The balanced Koszul argument DC1 works with any number \(d\) of regular parameters. It gives a minimal finite free resolution of every finite \(S\)-module of length at most \(d\), and compares its reduction modulo the maximal ideal to Koszul homology. The self-duality of the exterior Koszul complex gives, up to its explicit orientation signs,
+\[
+ \operatorname{Ext}^j_S(k,M)
+      =H_{d-j}(K_\bullet\otimes_S M),\qquad
+ H_a(K_\bullet\otimes_S M)=P_a\otimes_S k
+ \tag{PD7}
+\]
+when \(P_\bullet\) is minimal. Here \(k\) is the residue field of \(S\); the equalities mean the natural cohomology identifications, with the parameter orientation fixed.
+
+Normality of the two-dimensional local domain \(T\) supplies a regular pair \(a,b\) in its maximal ideal. Indeed choose \(a\ne0\); HB1 says that the finitely many associated primes of \(T/aT\) have height one, so prime avoidance chooses \(b\) outside them. Thus \(\operatorname{Hom}_S(k,T)=0\). In the sequence for \(0\to T\xrightarrow aT\to T/aT\to0\), its scalar action on Ext from \(k\) is zero by CN1, and \(\operatorname{Hom}_S(k,T/aT)=0\) because \(b\) is regular there. The sequence gives \(\operatorname{Ext}^1_S(k,T)=0\). Formula (PD7) makes the last two terms of its minimal resolution zero. Hence its length is at most \(d-2=N\).
+
+We also prove the lower Ext bound, rather than inferring it from a dimension slogan. A regular sequence \(c_1,\ldots,c_j\) in \(S\) has the following property: all associated primes of its quotient have height \(j\). At an associated prime \(Q\), localize its Koszul resolution. All its parameters belong to \(Q\), so the resolution is minimal there and its degree-\(j\) reduction is nonzero. If the regular ambient local ring at \(Q\) has dimension \(r\), balancing with its parameter Koszul resolution gives \(j\le r\). Its quotient has a nonzero socle, since \(Q\) is associated. The first equality of (PD7) then gives nonzero Koszul homology in degree \(r\). The length-\(j\) resolution gives the reverse inequality \(r\le j\). Thus \(r=j\).
+
+Inductively choose \(c_{j+1}\in I\) avoiding these associated primes for \(j<N\). This is possible: each has height \(j\), so cannot contain the height-\(N\) prime \(I\); finite prime avoidance applies. It is regular modulo the previous sequence. We obtain a regular sequence of length \(N\) in \(I\). Repeating CN2 along it shows
+\[
+ \operatorname{Ext}^q_S(T,S)=0\ (q<N),\qquad
+ \operatorname{Ext}^q_S(T,S)=0\ (q>N).
+ \tag{PD8}
+\]
+The second vanishing uses the resolution bound just proved. Twisting the target by the ambient line does not change this conclusion.
+
+For reference, the same concentration argument holds at every point of \(X\). At a height-one point, its DVR local ring gives one regular parameter, killing \(\operatorname{Hom}(k,T)\); at its generic point no such killing is needed. The ambient dimensions are respectively \(N+1\) and \(N\). For the first assertion one can compute the contracted base prime directly. The modification is an isomorphism at height-one points of the normal finite base, by QD1's DVR argument. A curve whose image has height one on the regular base therefore has an algebraic residue extension there. A contracted curve maps to the closed base point and has residue transcendence degree one, by the finite-type curve calculation of Lesson 3. The same polynomial-variable calculation gives \(N+1\) in both cases. These exhaust height-one points by the arithmetic model dimension calculations of HR1 and the generic finite map. Alternatively, concentration at closed points already proves the sheaf vanishing, because a nonempty closed support on a projective scheme over a local base meets the closed fibre.
+
+Let \(W=\operatorname{Ext}^N_S(T,S)\). Dualizing the finite free resolution of \(T\), and reversing it, gives a free resolution of \(W\) of length at most \(N\). Its double dual is the original complex, so
+\[
+ \operatorname{Ext}^N_S(W,S)=T,
+ \qquad\operatorname{Ext}^{q\ne N}_S(W,S)=0.
+ \tag{PD9}
+\]
+There is a useful explicit change of rings here. For a finite \(T\)-module \(M\), a free \(T\)-resolution and an injective \(S\)-resolution of \(S\) give the double complex
+\(\operatorname{Hom}_T(P_\bullet,\operatorname{Hom}_S(T,J^\bullet))\).
+Its terms are \(\operatorname{Hom}_S(P_\bullet,J^\bullet)\). Resolving the first variable first gives \(R\operatorname{Hom}_S(M,S)\), since each \(J\) is injective. Resolving the second first uses (PD8) and leaves just \(W\) in degree \(N\). The injective resolution can be chosen of length \(d\), by the DC1 ideal criterion and the length-\(d\) free-resolution bound. Each total degree is finite. Thus
+\[
+ \operatorname{Ext}^j_T(M,W)
+       \simeq\operatorname{Ext}^{N+j}_S(M,S).
+ \tag{PD10}
+\]
+Formula (PD9) proves the homothety and self-Ext properties of \(W\); the comparison identifies homothety with the double-dual evaluation. Formula (PD10) gives injective dimension at most two at a closed point, at most one at a height-one point, and zero at the generic point. The ideal criterion supplies these as actual injective-resolution bounds.
+
+The reversed free resolution and (PD7) also kill the first two residue-field Ext groups of \(W\) at a closed point, and the first at a height-one point. Prime avoidance, followed by the same nonzerodivisor sequence argument, therefore gives depth at least two and one there, respectively. At the generic point homothety says that the endomorphisms of the resulting nonzero vector space form the one-dimensional field itself; hence that vector space has dimension one. The depth assertions exclude every nonminimal associated prime, so \(W\) is torsion-free of rank one. Its height-one modules are consequently free over their DVRs. QD6 gives its finite double dual. If its quotient by \(W\) were nonzero at a closed point, select a nonzero socle class and lift it to \(v\) in that double dual. For a regular pair \(a,b\) on \(W\), both \(av,bv\) belong to \(W\), and \(b(av)=a(bv)\). Regularity of \(b\) on \(W/aW\) makes \(av\in aW\); cancellation in the generic vector space gives \(v\in W\), a contradiction. Thus the double dual is already \(W\). This proves reflexivity and the local dualizing claims in (PD6). \(\square\)
+
+#### 2AI.3. Intrinsic duality and the actual birational trace
+
+**PD4.** For the normal projective models of PD3 there is a natural isomorphism
+\[
+ R\operatorname{Hom}_X(F,\omega_X)
+       \simeq R\operatorname{Hom}_A(R\Gamma(X,F),A)
+ \tag{PD11}
+\]
+for every bounded coherent complex \(F\). The module \(\omega_X\), with this duality, is independent of the projective embedding. The assertion also holds for bounded-above coherent complexes, interpreted by bounded-cover stabilization. When \(X=\operatorname{Spec}B\) is finite over \(A\), it agrees with the finite module \(W_B=\operatorname{Hom}_A(B,A)\) and its evaluation duality in DC2.
+
+*Proof.* In an injective resolution \(J^\bullet\) of the ambient line \(\Omega_P\), the sheaves \(\mathcal Hom_P(i_*\mathcal O_X,J^\bullet)\) are injective as \(\mathcal O_X\)-modules. Evaluation gives
+\[
+ \mathcal Hom_X(F,\mathcal Hom_P(i_*\mathcal O_X,J))
+          =\mathcal Hom_P(i_*F,J).
+ \tag{PD12}
+\]
+The equality holds on each chart by the elementary quotient-ring adjunction, and its evaluation formula makes the chart equalities agree. The closed immersion is exact on modules; hence the right adjoint in (PD12) preserves injectives. By PD3, its complex shifted by \(N\) has cohomology just \(\omega_X\) in degree zero. Comparison with an injective resolution of that module, or the double-complex calculation (PD10), therefore identifies
+\[
+ R\operatorname{Hom}_X(F,\omega_X)
+   =R\operatorname{Hom}_P(i_*F,\Omega_P[N]).
+ \tag{PD13}
+\]
+Apply PD2 to \(i_*F\), using exact closed-immersion cohomology SC15, to obtain (PD11).
+
+Here and below these are natural maps, not identifications of dimensions. To check independence, each candidate module with (PD11) represents the same functor
+\(F\mapsto\operatorname{Hom}(R\Gamma F,A)\) in degree zero on the category of bounded coherent complexes with quasi-isomorphisms inverted. Apply the two representations to the identity map of each candidate. Naturality gives inverse comparison maps, and gives uniqueness of a comparison preserving the representation. Explicitly, a natural transformation between represented Hom functors is composition with its value on the identity; this follows by applying naturality to every map into that identity's object. Thus the comparisons satisfy their cocycle on three embeddings. This is the elementary represented-functor argument, with no existence theorem for a proper adjoint as an input.
+
+We spell out the extension used for tensor products below. A coherent sheaf on a projective scheme has a bounded-above resolution by finite sums of negative twists of an ample line: repeatedly apply PF7 to the coherent kernel. The same construction resolves a bounded-above coherent complex; at each degree cover its finite kernel and lift the finitely many generators needed for the preceding differential. Lifts against an earlier surjection exist after making the chosen twists sufficiently negative, because its coherent kernel has \(H^1=0\) after a sufficiently high twist by PF8. This constructs an actual differential with square zero, one degree at a time. Each degree is a finite sum, and the resolution remains bounded above. Its totalization resolves the original complex by the kernel construction and exactness on the affine charts.
+
+Let \(Q^\bullet\) be such a resolution, and discard its terms below degree \(-m\). The quotient discarded complex has no terms above degree \(-m-1\). On a cover with Čech degrees \(0,\ldots,b\), its global sections have no cohomology above degree \(-m-1+b\). Hom into the bounded injective resolution of \(A\) from DC1 therefore has no cohomology below degree \(m+1-b\). On the sheaf-Hom side, the discarded locally free terms dualize into degrees at least \(m+1\); the nonnegative Čech degrees do not lower this bound. Thus, in each fixed cohomology degree, both sides and their map stabilize as \(m\) increases. PD11 for bounded truncations proves PD11 in that degree, for all degrees. This also proves the tensor-Hom and cover comparisons used on these complexes: truncate far enough for the degree in question, where they are finite double complexes, and then use the displayed bounds. No limit of an unverified unbounded cohomology sequence is used.
+
+For a finite \(X=\operatorname{Spec}B\), DC2 gives the natural adjunction
+\[
+ R\operatorname{Hom}_B(F,W_B)
+       =R\operatorname{Hom}_A(F,A).
+ \tag{PD14}
+\]
+Its injective resolution is explicitly coinduced there. Affine cohomology identifies its right side with the right side of PD11. Uniqueness of the representing module now gives the asserted comparison, with its evaluation normalization. The normalization can also be checked on a monic equation \(h(z)=z^n+\sum_{i<n}c_i z^i\). In \(\mathbf P^1_A\) its homogenization defines a divisor disjoint from infinity. Dualizing its equation gives \(\omega_D=\mathcal O_D(n-2)\). For \(j\le n-2\), the section \(z^j\) lifts globally to \(\mathcal O(n-2)\), so its connecting trace is zero. For \(j=n-1\), use the lift \(z^{n-1}\) on the finite chart and the lift \(-\sum_{i<n}c_i u^{n-1-i}\) in the infinity frame, where \(u=z^{-1}\). Their difference, expressed in the finite frame, is \(z^{-1}h(z)\). Dividing by the equation in the connecting complex gives exactly the class \(z^{-1}\) of \(\mathcal O(-2)\), whose trace is one. Thus the equation-dual generator is the coefficient functional extracting \(z^{n-1}\), as in DC7. Iterating ordered monic equations gives the corresponding product normalization, with the Koszul equation order fixing its sign. \(\square\)
+
+**PD5.** Let \(g:X\to Y\) be a proper birational map of normal projective models as in PD3. There is a natural isomorphism and trace
+\[
+ Rg_*\omega_X
+     \simeq R\mathcal Hom_Y(Rg_*\mathcal O_X,\omega_Y),
+ \qquad
+ \operatorname{tr}_g:Rg_*\omega_X\longrightarrow\omega_Y.
+ \tag{PD15}
+\]
+The trace is obtained by dualizing the actual unit \(\mathcal O_Y\to Rg_*\mathcal O_X\). It is transitive for composites and localizes on \(Y\). Wherever \(R^1g_*\mathcal O_X=0\), it is an isomorphism; in particular
+\[
+ g_*\omega_X=\omega_Y,\qquad R^1g_*\omega_X=0
+ \tag{PD16}
+\]
+there. This includes the closed-local rational models of HR4 and their normal projective modifications, after projective spreading and localization.
+
+*Proof.* Proper coherent cohomology and HR1 give a bounded coherent \(Rg_*\mathcal O_X\), with cohomology only in degrees zero and one. Its degree-zero sheaf is \(\mathcal O_Y\): a birational proper map into a normal chart has precisely its integral regular functions, by HB21's finite-module argument. The same bounded coherence holds for \(Rg_*\omega_X\). Since \(\omega_Y\) has local injective dimension at most two, the right-hand complex in PD15 also has bounded coherent cohomology; its local Ext modules are computed from finite free resolutions of the finite coherent cohomology modules. For a complex in degrees zero and one these local degrees lie between \(-1\) and two.
+
+For a bounded coherent complex \(F\) on \(Y\), resolve it by the negative twists in PD4. Pull back that locally free complex to compute \(Lg^*F\). On the affine covers, ordinary pullback-pushforward adjunction, tensor-Hom adjunction, and projection with a finite free factor are the usual module identities. Totalizing them gives
+\[
+ \begin{aligned}
+ R\operatorname{Hom}_Y(F,Rg_*\omega_X)
+  &\simeq R\operatorname{Hom}_X(Lg^*F,\omega_X)\\
+  &\simeq R\operatorname{Hom}_A(R\Gamma(X,Lg^*F),A)\\
+  &\simeq R\operatorname{Hom}_A
+       (R\Gamma(Y,F\otimes^{\mathbf L}Rg_*\mathcal O_X),A)\\
+  &\simeq R\operatorname{Hom}_Y
+       (F\otimes^{\mathbf L}Rg_*\mathcal O_X,\omega_Y)\\
+  &\simeq R\operatorname{Hom}_Y
+       (F,R\mathcal Hom_Y(Rg_*\mathcal O_X,\omega_Y)).
+ \end{aligned}
+ \tag{PD17}
+\]
+Here the second and fourth comparisons are PD4. We justify the third, including a possibly infinite tensor resolution. On an affine open of \(Y\), cover its inverse image by finitely many affine opens of \(X\). Their intersections are affine because the models are separated. SC11's finite Čech complex computes the higher image. A finite locally free factor from \(Y\) tensors this complex term by term and gives exactly the pullback Čech complex. This proves projection in each degree of the twist resolution. The fixed finite Čech bound and the truncation estimates in PD4 prove the total comparison in each required degree. The first and last comparisons follow in the same way from the termwise module adjunctions, using an injective target resolution for the first one. All are natural in \(F\), including derived maps, because the comparison resolutions and homotopies are natural as in CN1.
+
+Taking degree-zero Hom in PD17 and using the represented-functor argument of PD4 proves PD15 as a unique isomorphism of bounded coherent complexes on \(Y\). Precompose its right side with the unit to obtain the displayed trace. For composable maps the unit is the composite of the two units. Dualizing reverses their order, while the comparisons in PD17 are tensor and evaluation adjunctions. Thus the two trace maps compose to the trace of the composite. This can also be checked by applying PD17 to any \(F\): both composites precompose its image with that same composite unit, so uniqueness gives equality.
+
+These formulas localize because finite coherent resolutions, their Hom, and the higher-image Čech complexes localize, by SC14 and CN1. On an open set where \(R^1g_*\mathcal O_X=0\), the unit is a quasi-isomorphism; there are no higher images by HR1. Its dual is therefore an isomorphism, proving PD16.
+
+For the local projective consequence one can spread the specified modification itself, rather than only a domination. Let \(T=\mathcal O_{Y,y}\), and embed the given normal projective \(T\)-modification in \(\mathbf P^m_T\). Its generic point has homogeneous coordinates in the common function field. Take the integral schematic closure of that point in \(\mathbf P^m_Y\). On the local base its ideal is the contraction of the same homogeneous generic prime, so localization of that closure is exactly the original integral closed \(T\)-model. Normalize the global closure. This is finite by FM5, and commutes with localization by TN2; at \(T\) the given model was already normal. Thus the resulting normal projective global model localizes to the specified projective modification. For a localization of the initial finite normal base, use the same closure over that base first. It remains projective over the regular base \(A\). Localizing PD15 now gives the comparison for the actual local modification. Rationality kills the stalk of \(R^1g_*\mathcal O_X\) there; its coherent support consequently misses a neighborhood of that point. Thus PD16 and the induced evaluation \(g^*\omega_Y\to\omega_X\) are valid there. This proves the claimed local consequence without assuming that module principalization was a canonical-sheaf comparison. \(\square\)
+#### 2AI.4. Cartier curves, exceptional cohomology and completion
+
+**PD6.** A projective Cohen–Macaulay curve \(E\) over a field \(k\), with every component of dimension one, has a coherent dualizing module \(\omega_E\) and natural dualities
+\[
+ \operatorname{Hom}_E(F,\omega_E)
+       \simeq\operatorname{Hom}_k(H^1(E,F),k),\qquad
+ \operatorname{Ext}^1_E(F,\omega_E)
+       \simeq\operatorname{Hom}_k(H^0(E,F),k),
+ \quad \operatorname{Ext}^{j>1}_E(F,\omega_E)=0.
+ \tag{PD18}
+\]
+Here \(F\) is any coherent sheaf. No reducedness or geometric smoothness is assumed. If \(E\) is an effective Cartier divisor on a normal surface \(X\) of PD3 and is supported over the closed point of \(A\), then, using the fixed ordered base parameters to identify \(\operatorname{Ext}^2_A(k,A)\) with \(k\),
+\[
+ \omega_E\simeq
+   \bigl(\omega_X\otimes\mathcal O_X(E)\bigr)|_E.
+ \tag{PD19}
+\]
+In this formula the restriction is the tensor quotient, with its nonreduced structure retained.
+
+*Proof.* Embed the curve in \(\mathbf P_k^M\). At a closed point the ambient regular local ring has dimension \(M\). A Cohen–Macaulay curve has a nonzerodivisor in its maximal ideal, so the residue-field Hom into its local module is zero. The minimal-resolution calculation PD7 consequently bounds its projective dimension by \(M-1\). Every minimal prime of its ambient annihilator has height \(M-1\): its function field has transcendence degree one by Lesson 3's curve calculation, and the triangular-variable proof in PD3 computes the ambient generic local dimension. There are no embedded closed associated points, since a nonzerodivisor exists there. The regular-sequence-in-the-annihilator argument of PD3 therefore works to length \(M-1\), whether or not that annihilator is prime. It proves Ext concentration in degree \(M-1\). Its dual module and the double-complex change of rings PD10 prove local homothety, self-Ext vanishing and injective dimension at most one. At generic Artinian points the bound is zero. This constructs the actual dualizing module without imposing a generically reduced condition.
+
+PD2 and the closed-immersion adjunction PD12 now give
+\[
+ R\operatorname{Hom}_E(F,\omega_E[1])
+        \simeq R\operatorname{Hom}_k(R\Gamma(E,F),k).
+ \tag{PD20}
+\]
+The shift is one because the ambient shift is \(M\) and its only Ext sheaf has degree \(M-1\). A curve has no coherent cohomology above degree one by HR1's curve proof. Taking the two cohomology degrees of (PD20) proves every assertion of (PD18). In particular for an invertible sheaf \(L\),
+\[
+ H^1(E,\omega_E\otimes L)
+       \simeq\operatorname{Hom}_k(H^0(E,L^{-1}),k).
+ \tag{PD21}
+\]
+
+For the Cartier assertion use the actual resolution
+\(0\to\mathcal O_X(-E)\to\mathcal O_X\to\mathcal O_E\to0\).
+The module \(\omega_X\) is torsion-free, so its Hom complex has only degree-one cohomology, namely the right-hand module in (PD19). Its local form is the computation DC6; when the local equation of \(E\) is multiplied by a unit, the quotient generator is divided by that unit. These are exactly the transitions of \(\mathcal O_X(E)|_E\). Thus
+\[
+ R\mathcal Hom_X(\mathcal O_E,\omega_X)
+    \simeq\bigl((\omega_X\otimes\mathcal O_X(E))|_E\bigr)[-1].
+ \tag{PD22}
+\]
+Closed-immersion adjunction shows that this complex represents
+\(F\mapsto R\operatorname{Hom}_A(R\Gamma(E,F),A)\).
+For a complex of \(k\)-modules, twice CN2 along the fixed regular base parameters, including its free-cover comparison, identifies this functor with
+\(R\operatorname{Hom}_k(R\Gamma(E,F),k)[-2]\).
+Equivalently, coinduce an injective \(A\)-resolution to \(k\), whose only cohomology is \(k\) in degree two, and use the double-complex argument PD10. By (PD20) the representing object is \(\omega_E[-1]\). Uniqueness in PD4 identifies it with (PD22), proving (PD19). This proof accounts for both the exceptional-divisor factor and the base-dimension shift. \(\square\)
+
+**PD7.** Let \(T\) be a rational closed local surface ring furnished by HR4, let
+\(p:P=\operatorname{Bl}_{\mathfrak m_T}\operatorname{Spec}T\to\operatorname{Spec}T\),
+and let \(E\) be its exceptional divisor. Write \(L=\mathfrak m_T\mathcal O_P=\mathcal O_P(1)=\mathcal O_P(-E)\). Then the actual canonical module comparison and cohomology are
+\[
+ \Gamma(P,\omega_P)=\omega_T,\qquad
+ H^1(P,\omega_P\otimes L^n)=0\quad(n\ge0),
+ \tag{PD23}
+\]
+and the restriction map and adjunction give
+\[
+ \Gamma(P,\omega_P)\twoheadrightarrow
+       \Gamma(E,\omega_E\otimes L|_E),\qquad
+ \omega_P|_E=\omega_E\otimes L|_E.
+ \tag{PD24}
+\]
+The canonical evaluation \(p^*\omega_T\to\omega_P\) is onto if and only if the curve sheaf \(\omega_E\otimes L|_E\) is globally generated. This criterion keeps the genuine curve-generation assertion separate from rank-one principalization.
+
+*Proof.* The ordinary blowup is normal by HR7 and is projective. Spread it from the local model as in PD5 and restrict its canonical module. The trace in PD16, rationality and HR1 give the first formula in PD23 and \(H^1(P,\omega_P)=0\).
+
+HR8 gives \(H^0(E,\mathcal O_E)=\ell=\kappa(T)\), \(H^1(E,\mathcal O_E)=0\), and a very ample \(L|_E\) of positive degree. For every \(j\ge1\),
+\[
+ H^0(E,L^{-j}|_E)=0.
+ \tag{PD25}
+\]
+Indeed, multiply a putative section by global generators of \(L^j|_E\). If all products are zero, generation forces the section to be zero. If any product is nonzero, it is a nonzero scalar in the field \(\ell\), hence a unit on all of \(E\). That section and its multiplying section then trivialize the line, which would give degree zero. But the degree is \(j\deg(L|_E)>0\), by CE1. This proves PD25, with all nilpotents still present. Applying PD21, over the residue field of the original regular base, gives \(H^1(E,\omega_E\otimes L^j|_E)=0\) for \(j\ge1\). The possible finite extension of the constant field does not affect this vanishing.
+
+PD19 identifies \(\omega_P|_E\) with \(\omega_E\otimes L|_E\), because \(\mathcal O_P(E)=L^{-1}\). Tensor the Cartier restriction sequence with \(\omega_P\otimes L^n\). It is exact since the Cartier equation is regular on the torsion-free canonical module. It gives
+\[
+ 0\longrightarrow\omega_P\otimes L^{n+1}
+ \longrightarrow\omega_P\otimes L^n
+ \longrightarrow i_*(\omega_E\otimes L^{n+1}|_E)
+ \longrightarrow0.
+ \tag{PD26}
+\]
+The last term has zero first cohomology for \(n\ge0\). Thus the maps from \(H^1(P,\omega_P\otimes L^{n+1})\) onto \(H^1(P,\omega_P\otimes L^n)\) are surjective. Serre vanishing PF8 kills the groups for sufficiently large \(n\); descending through these surjections proves their vanishing for every \(n\ge0\). Taking sections for \(n=0\) gives the surjection in PD24.
+
+The trace identification in PD23 defines the evaluation in the statement. If its source sections generate, their restrictions generate the curve sheaf. Conversely, if the curve sheaf is generated, lift a finite set of its generators by PD24. At every point of \(E\) their image generates \(\omega_P/L\omega_P\); Nakayama makes them generate the local canonical module. Away from \(E\) the blowup is an isomorphism over an affine open of \(\operatorname{Spec}T\); the canonical comparison there is the identity and the full finite module \(\omega_T\) generates its associated sheaf. Hence the entire canonical evaluation is onto. The argument proves the criterion, rather than silently assuming its curve-generation premise. \(\square\)
+
+**PD8.** The completed local canonical module of every model in PD3 is dualizing for the completed local ring, without any assumption that this completed ring is normal. Its rank-one freeness descends and ascends under completion. The canonical sheaves and trace comparisons of PD4–PD5 also carry compatible actions of every supplied finite group of automorphisms of the models and of the regular base, with its given semilinear action. No averaging or division by the group order is required.
+
+*Proof.* At a closed point use the presentation \(T=S/I\), its finite free resolution and the length-\(N\) regular sequence in \(I\) from PD3. Completion is flat and faithfully flat by EA7. It preserves the ambient regular parameter sequence and its generation of the maximal ideal, the regular sequence in \(I\), and the exact finite free resolution and its dual. Thus
+\[
+ \widehat{\omega_T}
+       \simeq\operatorname{Ext}^N_{\widehat S}
+                      (\widehat T,\widehat S)
+ \tag{PD27}
+\]
+in the corresponding ambient line frame. The same concentration, double-dual and injective-bound proof PD9–PD10 now makes this an actual dualizing module, even if \(\widehat T\) has additional components or nilpotents. At a height-one point the DVR computation has the same assertion, or use DC7's one-parameter proof. Freeness of rank one ascends by tensoring. If the completed module is free of rank one, its residue quotient has dimension one, so Nakayama makes \(\omega_T\) cyclic. The module is torsion-free of rank one on the original normal local domain, by PD3; its cyclic surjection from that domain has zero kernel. Thus it is free. No normality of a surface completion follows from these assertions.
+
+For the action statement first fix the regular base. An automorphism of \(X\) transports \(F\), its actual Čech cohomology, and its evaluation maps. Apply the unique representing comparison in PD4 to obtain the transported map on \(\omega_X\). For two automorphisms the composite transports cohomology in the same way as their group composite. Uniqueness therefore proves the cocycle identity. Trace compatibility follows because PD15 is dual to the structure-sheaf unit, which is preserved by these automorphisms. If the base has a supplied ring automorphism \(\sigma\), transport its scalars as well; on a Hom module the transport is
+\[
+ \lambda\longmapsto \sigma\circ\lambda\circ\sigma^{-1},
+ \tag{PD28}
+\]
+with the first and last \(\sigma\)'s acting on their respective target and source modules. The Čech coefficient functional and the Hom adjunctions commute with this scalar transport. The same uniqueness proof gives the semilinear cocycle and trace compatibility. On finite charts this is precisely the dual-basis transport of DC2 and DC4. The construction uses group composition and functorial evaluation only, so remains valid when the residue characteristic divides the group order. \(\square\)
+
+
+#### 2AI.5. Generating the exceptional adjoint and a Gorenstein modification
+
+**PD9.** Let \(E/k\) be a projective Cohen–Macaulay curve of pure dimension one, with \(H^0(E,\mathcal O_E)=k\). If \(L\) is very ample and \(\deg L\ge2\), then \(\omega_E\otimes L\) is globally generated. The assertion includes nonreduced curves.
+
+*Proof.* First record a consequence of PD18. Suppose
+\[
+ 0\longrightarrow\omega_E\longrightarrow F
+    \longrightarrow Q\longrightarrow0
+ \tag{PD29}
+\]
+is exact, \(Q\) has finite support and \(k\)-length at least two, and \(F\) has no nonzero subsheaf with finite support. Let \(G\) be the subsheaf of \(F\) generated by its global sections, and let \(F'=\omega_E+G\). Since \(H^1(E,\omega_E)\) has dimension one by PD18, the image of \(H^0(E,F)\) in \(H^0(E,Q)\) has dimension at least \(\operatorname{length}_k Q-1\), so \(F'/\omega_E\ne0\).
+
+Every map \(F'\to\omega_E\) restricts on \(\omega_E\) to a scalar: local homothety gives the sheaf identity \(\mathcal Hom(\omega_E,\omega_E)=\mathcal O_E\), whose global sections are \(k\). If that scalar is zero, the map factors through the finite-support quotient \(F'/\omega_E\), and is zero since \(\omega_E\) has no finite-support subsheaf. If that scalar is nonzero, divide by it to obtain a retraction of \(\omega_E\hookrightarrow F'\). Its kernel is a nonzero finite-support subsheaf isomorphic to \(F'/\omega_E\), contrary to the hypothesis on \(F\). Thus \(\operatorname{Hom}(F',\omega_E)=0\), and PD18 gives \(H^1(E,F')=0\). In
+\(0\to F'\to F\to F/F'\to0\), sections therefore surject onto the finite-support quotient. But every section of \(F\) already belongs to \(G\subset F'\); its image is zero. Hence \(H^0(E,F/F')=0\), forcing \(F/F'=0\). Finite-support sheaves on this projective curve are modules on a finite affine scheme and are generated by their sections, as in HR2. We have proved that \(G\to Q\) is onto in (PD29).
+
+Assume for a moment that \(k\) is algebraically closed. At a chosen closed point \(z\), take a section \(s\) of \(L\) which vanishes at \(z\) and at none of the generic points of the curve components. Such a section exists: very ampleness separates \(z\) from a second point on each component, so the subspace of sections vanishing at \(z\) is not contained in any of the finitely many subspaces vanishing identically on a component. A vector space over the infinite field \(k\) is not a finite union of proper linear subspaces. One proof chooses a line with direction outside the previously chosen finitely many kernels and avoids the finitely many forbidden scalar values; induction gives this finite-subspace avoidance.
+
+The associated points of a Cohen–Macaulay pure curve, and of its dualizing module, are its generic points. Indeed a closed associated point would give depth zero there, whereas their local depth is at least one, as proved in PD6. Consequently multiplication by \(s\) injects both \(\mathcal O_E\) into \(L\) and \(\omega_E\) into \(\omega_E\otimes L\). The latter quotient \(Q_s\) has finite support, and
+\[
+ \operatorname{length}_k Q_s
+   =\chi(\omega_E\otimes L)-\chi(\omega_E)
+   =-\chi(L^{-1})+\chi(\mathcal O_E)=\deg L\ge2.
+ \tag{PD30}
+\]
+The middle equality uses both parts of PD18 on the invertible sheaves; the last is the Euler-degree identity CE1. Thus (PD29) applies with \(F=\omega_E\otimes L\). Its generated subsheaf surjects onto \(Q_s\). At \(z\), the section \(s\) lies in the maximal ideal, so Nakayama shows that those generating sections generate the entire stalk of \(F\). Since \(z\) was arbitrary, the sheaf is globally generated.
+
+Finally pass from an arbitrary \(k\) to an algebraic closure. The Cohen–Macaulay and pure-dimension conditions persist here by an elementary local test: a closed point after an algebraic field extension maps to a closed point of the original curve, and a nonzerodivisor parameter there stays a nonzerodivisor after the flat field extension and localization. It still belongs to the maximal ideal. The curve dimension and purity are preserved by the finite curve-algebra dimension calculation, or by a finite affine normalization over a polynomial line; the finitely many equations involved descend to a finite subextension. Thus there are no new embedded closed points or zero-dimensional components. PD6 constructs its dualizing sheaf from a finite locally free resolution on projective space. Tensoring that resolution and its dual with the field extension is exact, so formation of \(\omega_E\) commutes with this extension. Finite affine Čech complexes give the same base change for global sections and Euler characteristics, by SC14; in particular \(H^0(\mathcal O)\) becomes the algebraic closure and the degree stays \(\deg L\). The algebraically closed case therefore applies. Its evaluation map is the tensor product of the original evaluation map. The cokernel tensors to zero, and faithful flatness forces that cokernel to be zero. This proves generation over \(k\) itself. \(\square\)
+
+**PD10.** A rational local surface ring \(T\) furnished by HR4 has a normal projective modification \(V\to\operatorname{Spec}T\), obtained by finitely many ordinary point blowups, on which the canonical sheaf is invertible. Every local ring on \(V\) is Gorenstein, and its closed two-dimensional local rings remain rational. A supplied finite action on \(T\), with the compatible action on the arithmetic base, can be retained throughout, including in residue characteristics dividing its order.
+
+*Proof.* On the ordinary maximal-ideal blowup at a nonregular rational local surface point, HR8 gives
+\[
+ \deg\mathcal O_E(1)=
+       \dim_{\ell}\mathfrak m/\mathfrak m^2-1\ge2.
+ \tag{PD31}
+\]
+Here dimension two and cotangent dimension two are exactly the regular case. The curve is Cohen–Macaulay, its global function field of constants is the residue field \(\ell\), and its indicated line is very ample. PD9 applies to its dualizing module over \(\ell\). If the adjunction in PD19 was normalized over the smaller finite constant field \(k\), the two dualizing modules differ by the constant line \(\operatorname{Hom}_k(\ell,k)\), by finite adjunction; this is a one-dimensional \(\ell\)-space by DC5's functional argument, even for inseparable residue extensions. Tensoring a constant line does not affect generation. Thus \(\omega_E\otimes\mathcal O_E(1)\) is generated in the actual adjunction of PD24. PD7 proves that the canonical evaluation is onto at every point over this nonregular centre.
+
+The module \(\omega_T\) is finite reflexive of rank one by PD3. Apply QD8 to it. We obtain a finite sequence
+\[
+ V=X_n\longrightarrow X_{n-1}\longrightarrow\cdots
+       \longrightarrow X_0=\operatorname{Spec}T
+ \tag{PD32}
+\]
+of ordinary closed-point blowups on which the quotient of the pullback of \(\omega_T\) by torsion is invertible. Each intermediate model is normal and all its closed surface local rings are rational, by HR4 and HR7.
+
+At a singular point \(z\) of \(V\), every image \(z_i\in X_i\) is singular. In fact a blowup centred at a regular surface point is regular over that point by BP1, and away from its centre is the identity; subsequent blowups at regular points remain regular by that same calculation. Therefore a final singular point cannot lie above an earlier regular point. At each \(z_i\), the next map is either the identity locally or the blowup of a nonregular rational point. Its canonical evaluation is onto by the first paragraph. The trace comparisons are transitive by PD5, so their composite gives a surjection
+\[
+ (\pi^*\omega_T)_z\twoheadrightarrow\omega_{V,z},
+       \qquad \pi:V\to\operatorname{Spec}T.
+ \tag{PD33}
+\]
+The torsion maps to zero because the target is torsion-free. Its invertible torsion-free quotient therefore surjects onto the rank-one torsion-free target. The kernel of that line surjection has generic rank zero and is zero in a domain. Thus \(\omega_{V,z}\) is invertible.
+
+At a regular point the canonical module is invertible too. Its regular ring parameter sequence is regular on this reflexive module: the height-one intersection QD6 proves the two-parameter assertion exactly as in DC1, and the DVR and field cases have one or no parameter. To verify freeness from the module properties already proved, quotient by that sequence. The Cartier dualizing calculation DC6, which uses only the dualizing properties and a regular equation, applies successively. It leaves a dualizing module over the residue field. Homothety makes the endomorphism algebra of that finite vector space the field itself, so its dimension is one. Nakayama and the rank-one torsion-free argument of DC5 lift its generator to an isomorphism with the original regular local ring. This proves the assertion at dimensions two, one and zero.
+
+The canonical sheaf on \(V\) is therefore locally free of rank one everywhere. Its local finite injective resolutions in PD3 make the local rings themselves have finite injective dimension: this is exactly the Gorenstein condition of CN6. Rationality has already been retained at the closed surface local rings. For a supplied finite action, PD8 provides the action on the canonical module, and QD8 supplies equivariant principalization by finite orbits of point centres. Disjoint orbit centres are the corresponding individual blowups in either order. The preceding local argument is unchanged, and uses no averaging. This proves the equivariant assertion as well. \(\square\)\n\nPD1–PD10 give the projective canonical module, the proper birational trace and a rational Gorenstein modification. Termination of a resolution and the initial regular or nodal model require further arguments.\n
+
+### Exercise 2AI — projective trace and Gorenstein modification (100 points)
+
+1. **(10 points.)** On \(\mathbf P^2_A\), write dual monomial bases for \(H^0(\mathcal O(d))\) and \(H^2(\mathcal O(-d-3))\), for \(d\ge0\), using PD4's coefficient trace. Give the dimensions for \(d=0,1,2\). Account for the acyclic twists \(-1,-2\) and for \(\mathbf P^0_A\) with an arbitrary negative twist. Which of these twist statements still holds over \(A=\mathbf Z/8\mathbf Z\)?
+
+2. **(10 points.)** Let \(\Delta\subset\mathbf P^1_A\) be the section \(X_1=0\). Use its one-equation resolution to compute \(R\mathcal Hom(\mathcal O_\Delta,\mathcal O(-2)[1])\). Explain its degree and compare its duality with finite evaluation on \(\operatorname{Spec}A\).
+
+3. **(10 points.)** On \(\mathbf P^1_k\), let the involution exchange the ordered coordinates \(X_0,X_1\). Compute its action on the normalized class in \(H^1(\omega_{\mathbf P^1})\), including the change of the ordered Čech tuple. Then take \(k=\mathbf F_4\) and combine coordinate interchange with the coefficient automorphism \(a\mapsto a^2\). Verify its square and trace compatibility. Explain why division by the group order would be unavailable and unnecessary.
+
+4. **(15 points.)** Let \(A=k[x,y]_{(x,y)}\), with \(\operatorname{char}k=0\), and put
+\[
+ S=A[u,v]_{(x,y,u,v)},\qquad
+ T=S/(u^2-x,v^2-y).
+ \tag{PDX1}
+\]
+Write the Koszul resolution and its dual. Compute all \(\operatorname{Ext}^j_S(T,S)\), and identify the degree-two generator with the coefficient functional on the finite \(A\)-basis \(1,u,v,uv\). Give its trace-lattice representative and account for the number four.
+
+5. **(15 points.)** Blow up the origin of a regular affine plane over a field. With \(E\) exceptional and \(L=\mathcal O(-E)\), compare the canonical sheaf with the pullback of the plane's canonical line. Compute the restricted adjoint in PD24, and the image of canonical evaluation. Verify that the trace identifies global canonical sections although this evaluation is not onto. Explain why this is compatible with PD10.
+
+6. **(15 points.)** Let \(E\subset\mathbf P^2_k\) be the double line cut out by \(X_2^2\), and let \(L=\mathcal O_E(1)\). Compute \(\omega_E\), \(H^0(\mathcal O_E)\), \(H^1(\mathcal O_E)\), \(H^1(\omega_E)\), and \(\omega_E\otimes L\). Identify its nilradical and verify directly that the adjoint-generation conclusion retains its nonzero nilpotents.
+
+7. **(15 points.)** Suppose \(X\to\operatorname{Spec}B\) is a normal projective modification, \(B/A\) is finite normal as in DC, and \(V=H^1(X,\mathcal O_X)\) has finite \(A\)-length. Derive the exact sequence
+\[
+ 0\longrightarrow\Gamma(X,\omega_X)\longrightarrow W_B
+ \longrightarrow\operatorname{Ext}^2_A(V,A)
+ \longrightarrow H^1(X,\omega_X)\longrightarrow0.
+ \tag{PDX2}
+\]
+Explain what rationality supplies and why the existence of this exact sequence alone does not prove \(V=0\).
+
+8. **(10 points.)** In characteristic zero consider the normal rational cubic Veronese surface ring at its vertex,
+\[
+ T=k[u^3,u^2v,uv^2,v^3]_{(u^3,u^2v,uv^2,v^3)},
+ \quad x=u^3,\quad y=v^3.
+ \tag{PDX3}
+\]
+Normality and rationality are the proved Veronese example of Exercise 2AF. Compute its type over \(A=k[x,y]_{(x,y)}\). On the vertex blowup use the two charts
+\[
+ A[t]/(y-xt^3),\qquad A[s]/(x-ys^3),
+ \qquad s=t^{-1}.
+ \tag{PDX4}
+\]
+Verify regularity and compute the canonical transition using these relative hypersurface equations. Compare the exceptional adjoint with the regular-point example in part 5.
+
+**Complete solution.**
+
+1. The nonnegative exponent triples \(\alpha_0+\alpha_1+\alpha_2=d\) give the basis \(X^\alpha\). The dual basis is
+\[
+ X_0^{-\alpha_0-1}X_1^{-\alpha_1-1}X_2^{-\alpha_2-1}.
+ \tag{PDX5}
+\]
+The coefficient of \((X_0X_1X_2)^{-1}\) in a product is one exactly for the matching triples and zero otherwise. There are \(\binom{d+2}{2}\) triples: choose the two separating positions among \(d+2\) positions in the usual two-bar encoding, or sum \(d-i+1\) over \(0\le i\le d\). The dimensions are \(1,3,6\). Neither of the twists \(-1,-2\) has all-nonnegative or all-negative weights of that sum, so its entire complex contracts by PF11. For \(\mathbf P^0\) there is one frame \(X_0^d\) for every integer \(d\); it pairs with \(X_0^{-d-1}\) and never disappears because \(d\) is negative. These explicit free-module and contraction statements hold over every coefficient ring, including \(\mathbf Z/8\mathbf Z\). They do not assert PD1's finite resolution bound for arbitrary coherent modules over a nonregular coefficient ring.
+
+2. The resolution is \(0\to\mathcal O(-1)\xrightarrow{X_1}\mathcal O\to\mathcal O_\Delta\to0\). Its shifted dual is
+\[
+ [\mathcal O(-2)\xrightarrow{X_1}\mathcal O(-1)]
+       \quad\text{in degrees }-1,0.
+ \tag{PDX6}
+\]
+Its sole cohomology is \(\mathcal O_\Delta(-1)\) in degree zero. At the section, \(X_0^{-1}\) trivializes that line, so it is the module \(A\). This agrees with finite duality for \(\Delta=\operatorname{Spec}A\), namely evaluation \(\operatorname{Hom}_A(A,A)\to A\). Equivalently the coefficient trace on \(H^1(\mathcal O(-2))\) in the total complex sends its standard generator to one. Omitting the shift would incorrectly place the dual in degree one.
+
+3. Put \(t=X_1/X_0\). The overlap differential class \(dt/t\) is a normalized generator. Pullback under \(t\mapsto t^{-1}\) gives \(-dt/t\), but interchange of the ordered Čech tuple \((0,1)\) with \((1,0)\) gives a second minus sign. Thus the cohomology class and its trace are unchanged. In characteristic two the two signs are both one, with the same result. On \(\mathbf F_4\), the combined action sends the scalar multiple \(a\) of that class to \(a^2\) times the class. Its square is the identity because coordinate interchange squares to the identity and \(a^4=a\). Therefore
+\[
+ \operatorname{res}(\sigma c)=\sigma(\operatorname{res}c),
+ \qquad\sigma^2=1.
+ \tag{PDX7}
+\]
+The order is two and the characteristic is two, so an averaging factor \(1/2\) does not exist. The action and the equality were obtained from pullback, ordered signs and coefficient transport instead.
+
+4. Write \(f=u^2-x\), \(g=v^2-y\). Their successive quotients eliminate \(x\), then \(y\), and are domains, so they are a regular sequence. The resolution and its dual have maps
+\[
+ 0\to S\xrightarrow{(-g,f)}S^2\xrightarrow{(f,g)}S\to T\to0,
+ \qquad
+ 0\to S\xrightarrow{(f,g)^t}S^2\xrightarrow{(-g,f)}S\to0.
+ \tag{PDX8}
+\]
+The same regular-sequence kernel calculation as CN3 makes the dual exact below its last term. Its last cokernel is \(T\). Thus \(\operatorname{Ext}^2_S(T,S)=T\) and all other degrees vanish. In the orientation \(f,g\), its equation-dual generator corresponds to the finite coefficient functional \(\lambda\) extracting \(uv\). One can fix this identification explicitly by performing the one-equation coefficient residue first for \(u^2-x\), then for \(v^2-y\): in each quotient take the coefficient of the first power of its variable. The tensor of the two Koszul maps gives exactly \(\lambda\), with the stated equation order. Its multiplication pairing is a unit permutation matrix. The four independent sign changes of \(u,v\), as computed in Exercise 2AH, give
+\[
+ \lambda(b)=\operatorname{Tr}\left(\frac{b}{4uv}\right).
+ \tag{PDX9}
+\]
+Each quadratic contributes its derivative \(2u\) or \(2v\); their product is \(4uv\). This is also the finite-duality normalization of the local Ext generator in PD14.
+
+5. In the chart \(y=xt\), \(dx\wedge dy=x\,dx\wedge dt\). In the other chart \(x=ys\), \(dx\wedge dy=y\,ds\wedge dy\). The same identities follow from the relative one-equation Koszul duals of the two blowup charts. They show
+\[
+ \omega_P=p^*\omega_{\mathbf A^2}\otimes\mathcal O(E),
+ \qquad\operatorname{im}(p^*\omega_{\mathbf A^2}\to\omega_P)
+             =\omega_P(-E).
+ \tag{PDX10}
+\]
+On \(E=\mathbf P^1_k\) the normal line is \(\mathcal O(-1)\), so \(\omega_P|_E=\mathcal O(-1)\). This equals \(\omega_E\otimes L|_E=\mathcal O(-2)\otimes\mathcal O(1)\). It has no global sections and is not zero, hence is not globally generated. The canonical evaluation fails precisely by its exceptional factor. BP2 proves that this regular blowup has zero first structure-sheaf cohomology, so PD16 identifies its global canonical module with the original one. The quotient \(\mathcal O_E(-1)\) has both cohomology groups zero, consistent with that comparison. PD10 requires canonical surjectivity at nonregular centres; here the centre is regular and every point above it is already regular. It therefore yields no contradiction and illustrates why the two cases are distinguished.
+
+6. Dualize \(0\to\mathcal O(-2)\xrightarrow{X_2^2}\mathcal O\to\mathcal O_E\to0\) into \(\omega_{\mathbf P^2}=\mathcal O(-3)\). Its sole Ext sheaf is
+\(\omega_E=\mathcal O_E(-1)\). The original sequence and the twist cohomology in PF12 give \(H^0(\mathcal O_E)=k\), \(H^1(\mathcal O_E)=0\). PD18 gives \(H^1(\omega_E)=k\). Moreover \(\omega_E\otimes L=\mathcal O_E\), generated by its unit section. If \(D\) is the reduced line, its nilradical fits in
+\[
+ 0\longrightarrow\mathcal O_D(-1)\longrightarrow\mathcal O_E
+       \longrightarrow\mathcal O_D\longrightarrow0.
+ \tag{PDX11}
+\]
+It is the nonzero ideal generated locally by the class of \(X_2\), whose square is zero. Generation by the unit is generation over the entire nonreduced algebra, not just at its reduced points. The degree of \(L\) is two, either from this filtration and the Euler-degree formula or from the original quadratic equation. This is an actual nonreduced instance of PD9.
+
+7. A finite-length \(A\)-module has Ext into \(A\) only in degree two. For the residue field this is the dual two-parameter Koszul complex. Induction on a composition series, using CN1's Ext sequence, gives the assertion for \(V\). HR1 gives the two cohomology modules of \(C=R\Gamma(X,\mathcal O_X)\), namely \(B\) in degree zero and \(V\) in degree one. Its truncation sequence is
+\(B\to C\to V[-1]\to B[1]\).
+Dualize it over \(A\). PD11 identifies its middle dual with \(R\Gamma(X,\omega_X)\), while DC1 makes the dual of \(B\) equal to \(W_B\) in degree zero. The dual of \(V[-1]\) has \(\operatorname{Ext}^2_A(V,A)\) in degree one. The resulting cohomology sequence is exactly (PDX2); the map into \(W_B\) is the actual trace, because the original map out of \(B\) was the structure-sheaf unit. Rationality gives \(V=0\), whence canonical sections identify and their first cohomology is zero. Without rationality, a nonzero defect term is entirely compatible with this sequence. Writing it supplies no vanishing proof for that term or for \(V\).
+
+8. Over \(A\), the three disjoint exponent classes give the basis \(1,e=u^2v,f=uv^2\). Their products satisfy \(e^2=xf\), \(f^2=ye\), \(ef=xy\). Modulo \((x,y)\), the quotient is \(k[e,f]/(e,f)^2\), of socle dimension two. DC5 gives type two; the original normal rational local ring is not Gorenstein. The two extreme coordinate charts cover the vertex blowup: the homogeneous relations \(e^3=x^2y\), \(f^3=xy^2\) show that a projective point with both extreme coordinates zero has every coordinate zero. On the \(x\)-chart put \(t=v/u=e/x\); then \(f/x=t^2\), \(y/x=t^3\). The chart is the first ring in (PDX4); the other is the second. Eliminating \(y\) or \(x\) identifies them with localizations of \(k[x,t]\) or \(k[y,s]\). Hence both are regular.
+
+Let \(F_A=y-xt^3\), \(F_B=x-ys^3\). The relative one-equation dual frames are \(dt/F_A\), \(ds/F_B\), where this notation means the Koszul equation-dual frame, not a meromorphic pole on the quotient. The two charts glue to the hypersurface in \(\mathbf P^1_A\) cut out by \(yZ_0^3-xZ_1^3\). Its one-equation dual in PD6 gives these same canonical frames. On the overlap,
+\[
+ F_B=-t^{-3}F_A,\quad ds=-t^{-2}dt,
+ \qquad\frac{ds}{F_B}=t\frac{dt}{F_A}.
+ \tag{PDX12}
+\]
+This is the transition of \(\mathcal O_{\mathbf P^1}(1)\) on the exceptional line. Here \(L|_E=\mathcal O(3)\), so \(\omega_E\otimes L|_E=\mathcal O(-2)\otimes\mathcal O(3)=\mathcal O(1)\), which is generated. PD7 gives canonical surjectivity, in contrast with \(\mathcal O(-1)\) in part 5. This particular non-Gorenstein point is resolved by one ordinary blowup; PD10's general conclusion is a Gorenstein modification, not a one-step resolution of every rational singularity.
+
+### 2AJ. Exceptional conics and a conormal bound along an arc
+
+#### 2AJ.1. The exceptional conic of a rational Gorenstein point
+
+**CA1.** Let \((T,\mathfrak m,\ell)\) be a nonregular rational local surface ring furnished by HR4, and assume its canonical module \(\omega_T\) is free of rank one. Let
+\[
+ p:P=\operatorname{Bl}_{\mathfrak m}(\operatorname{Spec}T)
+ \longrightarrow\operatorname{Spec}T,
+ \qquad E=p^{-1}(\mathfrak m),\qquad
+ L=\mathfrak m\mathcal O_P=\mathcal O_P(-E).
+ \tag{CA1}
+\]
+Then the actual canonical evaluation is an isomorphism
+\[
+ p^*\omega_T\xrightarrow{\ \sim\ }\omega_P.
+ \tag{CA2}
+\]
+The scheme \(P\) is normal, its local rings are Gorenstein, and its closed two-dimensional local rings are rational. Its exceptional curve, with its full scheme structure, is a plane conic. More precisely, for any minimal generators \(x_1,x_2,x_3\) of \(\mathfrak m\), there is a nonzero homogeneous quadratic form \(q\), unique up to a nonzero scalar, such that
+\[
+ \operatorname{gr}_{\mathfrak m}T
+   \cong \ell[t_1,t_2,t_3]/(q),\qquad
+ (E,L|_E)\cong
+ \bigl(\operatorname{Proj}\ell[t_1,t_2,t_3]/(q),\mathcal O_E(1)\bigr).
+ \tag{CA3}
+\]
+In particular
+\[
+ \deg(L|_E)=2,\qquad
+ \dim_\ell\mathfrak m^n/\mathfrak m^{n+1}=2n+1,\qquad
+ \lambda_T(T/\mathfrak m^N)=N^2
+ \quad(n\geq0,\ N\geq1).
+ \tag{CA4}
+\]
+
+*Proof.* HR7 proves normality of the ordinary blowup; HR4 proves rationality at its closed surface points. HR8 says that \(L|_E\) is very ample, that its degree is at least two at this nonregular centre, and that \(H^0(E,\mathcal O_E)=\ell\), \(H^1(E,\mathcal O_E)=0\). PD9 gives generation of the exceptional adjoint, and PD7 identifies this with surjectivity of the evaluation in (CA2). Its source is invertible and its target is torsion-free of rank one by PD3. The kernel has generic rank zero inside an invertible sheaf on the integral scheme \(P\), so it is zero. This proves (CA2). The actual dualizing modules constructed in PD3 have finite injective dimension. Their freeness in (CA2) is therefore the Gorenstein assertion, including at points of dimension one and zero.
+
+Use duality over \(\ell\) on \(E\). If the canonical normalization was first taken over the smaller residue field of the arithmetic base, finite adjunction changes it by the one-dimensional constant line \(\operatorname{Hom}_k(\ell,k)\), as proved in DC5 and PD10. Choosing a nonzero vector in this line does not change Euler characteristics or degrees. Cartier adjunction PD6 and (CA2) consequently identify the \(\ell\)-dualizing sheaf with \(L^{-1}|_E\). PD6 gives
+\[
+ H^0(E,L^{-1}|_E)=0,\qquad
+ \dim_\ell H^1(E,L^{-1}|_E)=1.
+ \tag{CA5}
+\]
+On the other hand CE1 gives
+\(\chi(E,L^{-1}|_E)=1-\deg(L|_E)\).
+Thus the degree is two. HR8 now gives the remaining numerical assertions in (CA4), and in particular \(\dim_\ell\mathfrak m/\mathfrak m^2=3\).
+
+Let \(S=\ell[t_1,t_2,t_3]\), mapping its variables to the initial classes of the chosen generators. The map \(S\to\operatorname{gr}_{\mathfrak m}T\) is onto: every element of every ideal power is a sum of products of the generators. In degree two its source has dimension six and its target has dimension five. Its kernel there is therefore spanned by one nonzero quadratic form \(q\). Multiplication by \(q\) is injective on \(S\), since \(S\) is a domain. Hence, setting negative graded pieces to zero,
+\[
+ \dim_\ell(S/(q))_n
+ =\binom{n+2}{2}-\binom n2=2n+1
+ \quad(n\geq0).
+ \tag{CA6}
+\]
+The surjection from \(S/(q)\) to the associated graded ring is an isomorphism in every degree by these dimensions. Taking Proj proves the assertion about the whole exceptional scheme, including a possible double line. No division by two and no reducedness assumption entered the proof. \(\square\)
+
+**CA2.** With the same generators, the quadratic form in (CA3) can be lifted to an exact relation
+\[
+ \sum_{1\leq i\leq j\leq3}a_{ij}x_ix_j=0,
+ \qquad
+ q=\sum_{i\leq j}\overline a_{ij}t_it_j.
+ \tag{CA7}
+\]
+On the \(x_1\)-chart, put \(y_2=x_2/x_1\), \(y_3=x_3/x_1\). Then \(E\) has affine equation \(q(1,y_2,y_3)=0\), and \(x_1\) is its Cartier equation in \(P\).
+
+*Proof.* First lift the coefficients of \(q\) arbitrarily. Their quadratic combination belongs to \(\mathfrak m^3\), and so is a sum of cubic monomials in the \(x_i\) with coefficients in \(T\). Subtracting these terms from the lifted coefficients gives (CA7) without changing their residues. The Rees chart satisfies \(\mathfrak m\mathcal O_P=(x_1)\), with \(x_1\) nonzero in its domain. Its reduction modulo that Cartier equation is the corresponding chart of the Proj in (CA3), giving exactly the indicated affine equation. \(\square\)
+
+These assertions apply again at any subsequent nonregular rational Gorenstein centre of the indicated models. For a supplied finite group, the evaluation and its isomorphism are compatible with the transported canonical actions by PD8. A choice of generator of a canonical line need not be invariant.
+
+#### 2AJ.2. An integer which decreases along a nonsingular arc
+
+**CA3.** Let \((A,\mathfrak n)\) be a Noetherian local domain and let
+\(\varphi:A\twoheadrightarrow R\) be a surjection onto a discrete valuation ring. Let \(\pi\) be a uniformizer of \(R\), choose \(x\in A\) mapping to \(\pi\), and put \(\mathfrak p=\ker\varphi\). Assume \(\mathfrak p\ne0\) and that \(A_{\mathfrak p}\) is a discrete valuation ring. Blow up successive closed points selected by this arc, and write \(A_i\twoheadrightarrow R\) for the resulting local rings and maps, with \(A_0=A\). Define
+\[
+ \mathfrak p_i=\ker(A_i\to R),\qquad
+ M_i=\mathfrak p_i/\mathfrak p_i^2,\qquad
+ t_i=\lambda_R\bigl(\operatorname{tors}_R M_i\bigr).
+ \tag{CA8}
+\]
+Each \(M_i\) is a finite rank-one \(R\)-module. If \(r_i\) is the minimal number of generators of \(\mathfrak p_i\), then
+\[
+ t_{i+1}\leq t_i-(r_i-1).
+ \tag{CA9}
+\]
+If \(A_i\) is nonregular, then \(r_i\geq2\). Consequently the local ring along the arc becomes regular after at most \(t_0\) point blowups. Completeness of \(A\) or \(R\) is not required.
+
+*Proof.* Surjectivity persists because every later chart contains the image of \(A\). At every stage
+\(\mathfrak n_i=(x,\mathfrak p_i)\), since the image of the maximal ideal in \(R\) is \((\pi)\). The pullback of that ideal to the arc is principal, so the selected point lies on the \(x\)-chart. Explicitly its next local ring is
+\[
+ A_{i+1}
+ =\bigl(A_i[\mathfrak n_i/x]\bigr)_{\varphi_{i+1}^{-1}((\pi))},
+ \qquad
+ \varphi_{i+1}(a/x)=\varphi_i(a)/\pi
+ \quad(a\in\mathfrak n_i).
+ \tag{CA10}
+\]
+The chart is a subring of the fraction field of \(A\). The displayed map is well-defined: clear a power of the nonzero element \(x\) in a relation, apply \(\varphi_i\), and cancel the corresponding power of \(\pi\) in the domain \(R\). Localizing at the inverse image of its maximal ideal extends this map, since all inverted elements map to units.
+
+These blowups are isomorphisms on \(D(x)\). Since \(x\notin\mathfrak p\), localization at the generic point of the arc identifies every \((A_i)_{\mathfrak p_i}\) with \(A_{\mathfrak p}\). In particular the conormal module there has dimension one over \(K=\operatorname{Frac}R\). The module \(M_i\) is finite over \(A_i/\mathfrak p_i=R\), so its rank is one and its torsion has finite length.
+
+Fix a stage and abbreviate its symbols to \(A,\mathfrak p,M,t,r\). Choose minimal generators \(v_1,\ldots,v_r\) of \(\mathfrak p\). They also minimally generate \(M\) over \(R\), because
+\[
+ M/\pi M
+ =\mathfrak p/(\mathfrak p^2+x\mathfrak p)
+ =\mathfrak p/\mathfrak n\mathfrak p.
+ \tag{CA11}
+\]
+Set \(N=\ker(R^r\to M)\). Thus \(N\subset\pi R^r\), and its rank is \(r-1\). Over a discrete valuation ring one may diagonalize a finite relation matrix by choosing a nonzero entry of least valuation, moving it to the first position, and subtracting its multiples from its row and column. It divides every entry, so these operations are invertible. Repeating on the smaller matrix terminates. The resulting diagonal exponents \(e_1,\ldots,e_{r-1}\) are positive, since \(N\subset\pi R^r\). Therefore
+\[
+ R^r/N\cong R\oplus\bigoplus_{j=1}^{r-1}R/(\pi^{e_j}),
+ \qquad t=\sum_j e_j.
+ \tag{CA12}
+\]
+
+In the next chart put \(w_j=v_j/x\). Its arc kernel is generated by the \(w_j\): setting these ratios to zero leaves exactly the quotient \(A/\mathfrak p=R\), and localization preserves this quotient. For \(b=(b_j)\in\pi^{-1}N\), choose lifts \(\beta_j\in A\) of its coordinates. The relation \(\pi b\in N\) means that, for suitable \(\gamma_{jl}\in A\),
+\[
+ \sum_j x\beta_jv_j=\sum_{j,l}\gamma_{jl}v_jv_l.
+\]
+Substitute \(v_j=xw_j\) and cancel \(x^2\) in the chart domain. Modulo the square of its arc kernel the resulting equation is \(\sum_j b_j[w_j]=0\). Hence there is a surjection
+\[
+ R^r/(\pi^{-1}N)\twoheadrightarrow M_{i+1}.
+ \tag{CA13}
+\]
+Here \(\pi^{-1}N\) lies in \(R^r\), since \(N\subset\pi R^r\). Dividing its diagonal matrix by \(\pi\) shows that the source has rank one and torsion length \(\sum_j(e_j-1)=t-(r-1)\). The surjection is an isomorphism after tensoring with \(K\): both modules are one-dimensional there. Its kernel is consequently torsion, and the torsion length of the quotient cannot increase. This proves (CA9).
+
+Finally, if \(t_i=0\), then \(M_i\cong R\), so (CA11) and Nakayama give a single generator of \(\mathfrak p_i\). Thus \(\mathfrak n_i\) has two generators. The strict chain \((0)\subset\mathfrak p_i\subset\mathfrak n_i\) has length two, and the height bound for a two-generated maximal ideal gives the opposite dimension bound. The local ring has dimension and embedding dimension two, so is regular. The same argument applies if \(r_i=1\), because a rank-one module generated by one element over the domain \(R\) is free. At each nonregular stage, therefore, (CA9) decreases the nonnegative integer \(t_i\) by at least one. This proves the stated bound. \(\square\)
+
+**CA4.** The bound in CA3 can be attained in every characteristic. For an integer \(s\geq0\), put
+\[
+ A_s=\bigl(k[x,u,v]/(u^2-x^sv)\bigr)_{(x,u,v)},
+ \quad R=k[x]_{(x)},\quad
+ \varphi_s(u)=\varphi_s(v)=0,\quad \varphi_s(x)=x.
+ \tag{CA14}
+\]
+Then \(t_0=s\), and the arc requires exactly \(s\) point blowups to reach a regular local ring.
+
+*Proof.* The element \(x^sv\) is not a square in \(k(x,v)\), since its \(v\)-adic valuation is one. Thus \(U^2-x^sv\) is irreducible in that field in every characteristic. The polynomial quotient is free with basis \(1,u\) over \(k[x,v]\) and embeds into this quadratic field, so is a domain. At \(\mathfrak p=(u,v)\), the element \(x\) is a unit, and \(v=x^{-s}u^2\). Its localized maximal ideal is generated by \(u\), giving a discrete valuation ring. Reduction of the defining relation modulo \(\mathfrak p^2\) gives
+\[
+ M_0\cong R\cdot[u]\oplus(R/(x^s))\cdot[v],\qquad t_0=s.
+ \tag{CA15}
+\]
+For \(s>0\), the selected \(x\)-chart has \(u=xu_1\), \(v=xv_1\). Cancelling \(x^2\) gives exactly the local domain with equation \(u_1^2=x^{s-1}v_1\). To check that there are no additional relations, the same quadratic irreducibility embeds this equation ring into the common fraction field; it contains the original ring and the two ratios and is generated by them. Localization at the arc point gives precisely its local ring at \((x,u_1,v_1)\). Thus the successive local rings are \(A_s,A_{s-1},\ldots,A_0\). For positive exponent the equation is in the square of the maximal ideal, so the dimension is two and the embedding dimension is three. At exponent zero, eliminating \(v\) gives \(A_0\cong k[x,u]_{(x,u)}\). This proves both exactness of the bound and regularity at its last stage. \(\square\)
+
+CA3 applies to an actual surjective arc with regular localization at its kernel. It does not assert that a tower of singular points supplies such an arc, or that a normal local surface has normal completion. Related treatments are the Stacks Project's [formal arcs](https://stacks.math.columbia.edu/tag/0BG2), [regularity along an arc](https://stacks.math.columbia.edu/tag/0BG3), and [rational double points](https://stacks.math.columbia.edu/tag/0BGB).
+
+**Exercise 2AJ (100 points): conics, conormal torsion and selected blowups.**
+
+1. **(10 points.)** Under CA1, deduce \(\deg L|_E=2\) directly from the two Euler characteristics of \(\mathcal O_E\) and \(L^{-1}|_E\). Compute the first four graded dimensions and \(\lambda(T/\mathfrak m^5)\). Explain why this calculation still applies to a double line in characteristic two.
+
+2. **(15 points.)** For the double conic \(q=t_3^2\), give an explicit basis of each graded piece of \(k[t_1,t_2,t_3]/(q)\). Describe both affine charts on its reduced supporting line and identify the nonzero square-zero ideal. Explain why a quadratic initial relation in a three-generated maximal ideal can be lifted to an exact relation as in CA7.
+
+3. **(20 points.)** Let \(R\) be a discrete valuation ring with uniformizer \(\pi\). In \(R^3\), let \(N\) be generated by \(\pi^2e_1\) and \(\pi^5e_2\). Compute the rank and torsion length of \(R^3/N\) and \(R^3/(\pi^{-1}N)\). Exhibit a further quotient of the latter which has rank one and torsion length two. Use these modules to explain both the subtraction \(r-1\) and the possible strict inequality in CA9.
+
+4. **(20 points.)** For CA14 with \(s=3\), write every selected affine equation until the local ring becomes regular. Compute every conormal module and its torsion length. Verify the cancellation and the minimal-generator assertions in characteristic two as well as in characteristic different from two.
+
+5. **(20 points.)** Let
+\[
+ B_j=\bigl(k[x,u_j,v_j]/(u_j^2-x^jv_j^3)\bigr)_{(x,u_j,v_j)}
+ \quad(j\geq0),
+ \qquad R=k[x]_{(x)},
+ \tag{CAX1}
+\]
+with the arc sending \(u_j,v_j\) to zero. Prove that these are domains, that the selected blowup takes \(B_j\) to \(B_{j+1}\), and that every selected point is singular. Compute the rank and torsion of the conormal module. Identify exactly which hypothesis of CA3 fails.
+
+6. **(15 points.)** Suppose a finite group acts compatibly on \(A\twoheadrightarrow R\), allowing a nontrivial action on the residue field. Show that it preserves the selected centres and that the integers \(r_i,t_i\) are invariant. Explain why averaging over the group is unnecessary, including when its order is divisible by the residue characteristic. State which further assertion would still be needed to apply CA3 to an arbitrary tower of singular points.
+
+**Complete solution.**
+
+1. HR8 gives \(\chi(\mathcal O_E)=1\). Cartier adjunction and curve duality give \(\chi(L^{-1}|_E)=-1\), whereas the Euler-degree formula gives \(\chi(L^{-1}|_E)=1-\deg(L|_E)\). Thus the degree is two. CA4 gives the dimensions \(1,3,5,7\) in degrees zero through three and length \(5^2=25\). These are computations on the full Cohen–Macaulay exceptional scheme; neither its duality nor its Hilbert function requires reduction or division by two.
+
+2. In degree \(n\), the monomials are
+\[
+ t_1^at_2^{n-a}\ (0\leq a\leq n),\qquad
+ t_3t_1^at_2^{n-1-a}\ (0\leq a\leq n-1).
+ \tag{CAX2}
+\]
+The second list is empty for \(n=0\). They are independent and span, because a polynomial modulo the monic relation \(t_3^2\) has a unique remainder of degree at most one in \(t_3\). Their number is \(2n+1\). The \(t_1\)-chart is \(k[z,\epsilon]/(\epsilon^2)\), with \(z=t_2/t_1\), \(\epsilon=t_3/t_1\). The \(t_2\)-chart is \(k[w,\eta]/(\eta^2)\), with \(w=z^{-1}\), \(\eta=\epsilon/z\). The ideal generated by \(\epsilon\), respectively \(\eta\), is nonzero and square-zero. Its transition identifies it with \(\mathcal O_{\mathbf P^1}(-1)\). The corresponding exact sequence is
+\[
+ 0\longrightarrow\mathcal O_{\mathbf P^1}(-1)
+ \longrightarrow\mathcal O_E
+ \longrightarrow\mathcal O_{\mathbf P^1}\longrightarrow0.
+ \tag{CAX3}
+\]
+For the lifting assertion, the chosen quadratic combination lies in \(\mathfrak m^3\). Write it as a sum of cubic generator monomials; absorb each coefficient times one generator into the coefficient of the other two. This subtracts the entire cubic remainder, changes every quadratic coefficient only by an element of \(\mathfrak m\), and gives the exact relation.
+
+3. The first quotient is
+\[
+ R^3/N\cong R/(\pi^2)\oplus R/(\pi^5)\oplus R,
+ \qquad t=7.
+ \tag{CAX4}
+\]
+Dividing the embedded relation module by \(\pi\) gives
+\[
+ R^3/(\pi^{-1}N)
+ \cong R/(\pi)\oplus R/(\pi^4)\oplus R,
+ \qquad t=5=7-(3-1).
+ \tag{CAX5}
+\]
+Quotient further by the image of \(e_1\) and \(\pi^2e_2\). The result is \(R/(\pi^2)\oplus R\), of rank one and torsion length two. There are \(r-1\) nonzero diagonal relations because the conormal rank is one. Each loses one power of \(\pi\); extra relations in the next chart can kill further torsion. The quotient must retain rank one: a relation killing its free summand would invalidate the torsion comparison.
+
+4. The successive equations are
+\[
+ u^2=x^3v,\qquad
+ u_1^2=x^2v_1,\qquad
+ u_2^2=xv_2,\qquad
+ u_3^2=v_3.
+ \tag{CAX6}
+\]
+At each step \(u_i=xu_{i+1}\), \(v_i=xv_{i+1}\), and cancellation of \(x^2\) is valid in the domain chart. The conormal modules are
+\[
+ R\oplus R/(x^3),\quad
+ R\oplus R/(x^2),\quad
+ R\oplus R/(x),\quad R.
+ \tag{CAX7}
+\]
+Their torsion lengths are \(3,2,1,0\). For positive exponent the two arc-kernel generators remain independent modulo the maximal ideal times that kernel, while the ambient maximal ideal has the three independent classes \(x,u_i,v_i\). The last equation eliminates \(v_3\), leaving the regular ring \(k[x,u_3]_{(x,u_3)}\). The domain proof uses the odd valuation of \(v\) in \(x^sv\), so still holds in characteristic two. None of the substitutions or the conormal calculation uses a derivative or a division by two.
+
+5. The element \(x^jv_j^3\) has odd \(v_j\)-adic valuation in \(k(x,v_j)\). It is not a square, so the same monic-quadratic argument as in CA4 proves that \(B_j\) is a domain, in every characteristic. On the selected \(x\)-chart substitution and cancellation give
+\[
+ (xu_{j+1})^2-x^j(xv_{j+1})^3
+ =x^2\bigl(u_{j+1}^2-x^{j+1}v_{j+1}^3\bigr).
+ \tag{CAX8}
+\]
+Irreducibility and the common fraction-field chart argument in CA4 prove the exact next local-ring description. At its arc point the defining equation always belongs to \((x,u_j,v_j)^2\); thus its dimension is two and its embedding dimension is three. All these points are singular.
+
+For \(\mathfrak p_j=(u_j,v_j)\), the defining relation has no linear term in these two generators. Hence
+\[
+ \mathfrak p_j/\mathfrak p_j^2
+ \cong R\cdot[u_j]\oplus R\cdot[v_j].
+ \tag{CAX9}
+\]
+It has rank two and torsion zero. After localizing at \(\mathfrak p_j\), the quotient field of \(R\) is the residue field, the local dimension is one, and its maximal ideal still needs two generators. This localization is not regular and is not a discrete valuation ring. It is precisely the generic-regularity hypothesis of CA3 which fails; torsion zero in a rank-two conormal module supplies no termination conclusion.
+
+6. Compatibility transports the kernel \(\mathfrak p_i\), its square, and the selected maximal ideal. The Rees construction transports the blowup action, and the map to \(R\) selects the transported same point. Induction therefore gives compatible actions at every stage. On the conormal module these maps are semilinear for the automorphism of \(R\). An automorphism of a discrete valuation ring carries \(\pi\) to a unit times \(\pi\), preserves the generic rank, and carries each simple residue-field factor of a torsion composition series to another simple factor. Thus it preserves \(t_i\). It also preserves the dimension of \(M_i/\pi M_i\), which is \(r_i\) by CA11. These are functorial transports, so require no invariant splitting or group average. To use this termination bound for an arbitrary singular tower, one must still construct a surjective discrete-valuation arc selecting that tower and prove regularity at its kernel. Normality of the relevant completion can supply the latter only after that normality has itself been established.
+
+### 2AK. A quotient arc from a fixed exceptional coordinate
+
+#### 2AK.1. The curvilinear quotients
+
+**FA1.** Consider an infinite sequence of injective local maps of Noetherian local domains
+\[
+ (A_0,\mathfrak m_0,k)\longrightarrow
+ (A_1,\mathfrak m_1,k)\longrightarrow
+ (A_2,\mathfrak m_2,k)\longrightarrow\cdots,
+ \tag{FA1}
+\]
+inducing the indicated identical residue field. Suppose a nonzero element \(x\in\mathfrak m_0\) satisfies
+\[
+ \mathfrak m_iA_{i+1}=xA_{i+1}\qquad(i\geq0).
+ \tag{FA2}
+\]
+There is a complete discrete valuation ring \(R\), with uniformizer the image of \(x\) and residue field \(k\), and compatible local maps \(A_i\to R\). The map from the completion \(\widehat A_0\to R\) is surjective. If the maps in (FA1) are local maps at successive point blowups, these points are the points selected by this arc.
+
+For each fixed \(i\), put
+\[
+ J_{i,n}=\ker\bigl(A_i\longrightarrow
+ A_{i+n}/\mathfrak m_{i+n}^{n+1}\bigr)
+ \qquad(n\geq0).
+ \tag{FA3}
+\]
+These ideals decrease with \(n\). The quotient \(A_i/J_{i,n}\) has maximal ideal generated by \(x\), has length \(n+1\), and has nonzero class \(x^n\). Its residue field is \(k\).
+
+*Proof.* At every stage \(j\),
+\[
+ x^e\notin\mathfrak m_j^{e+1}\qquad(e\geq0).
+ \tag{FA4}
+\]
+Indeed, (FA2) would send such an inclusion to \(x^e\in x^{e+1}A_{j+1}\). Cancelling in the domain would make \(x\) a unit, contrary to locality. Each map sends maximal ideal into maximal ideal, so \(\mathfrak m_i^{n+1}\subset J_{i,n}\).
+
+Fix \(i\). We prove the assertions about its quotients by induction. At \(n=0\) the quotient is \(k\). Assume they hold for \(n\). If \(f\notin J_{i,n}\), its class in this principal-maximal-ideal Artinian local quotient has the form \(u x^e\), where \(u\) lifts to a unit of \(A_i\) and \(0\leq e\leq n\). Thus \(f-u x^e\) maps into \(\mathfrak m_{i+n}^{n+1}\), and then into \(\mathfrak m_{i+n+1}^{n+1}\). Since \(u\) remains a unit and (FA4) holds at stage \(i+n+1\), this image cannot cancel its term \(u x^e\) modulo \(\mathfrak m_{i+n+1}^{n+2}\). Hence \(f\notin J_{i,n+1}\). This proves the required inclusion \(J_{i,n+1}\subset J_{i,n}\).
+
+For \(f\in J_{i,n}\), its image at stage \(i+n\) lies in the \((n+1)\)-st power of that maximal ideal. By (FA2) its image at stage \(i+n+1\) is \(x^{n+1}a\). Choose \(c\in A_i\) with the same residue as \(a\); this uses the identical residue fields. Then
+\[
+ f-cx^{n+1}\in J_{i,n+1}.
+ \tag{FA5}
+\]
+The class of \(x^{n+1}\) is nonzero in this kernel quotient by (FA4), so \(J_{i,n}/J_{i,n+1}\) is one-dimensional over \(k\). Multiplication by \(\mathfrak m_i\) kills that quotient. The length therefore increases by one. Moreover, any class from \(\mathfrak m_i\) is, modulo \(J_{i,n}\), a multiple of \(x\). Formula (FA5) shows that its remaining part is also a multiple of \(x\) modulo \(J_{i,n+1}\). This proves the principal-maximal-ideal assertion at the next stage. The nonvanishing assertion is again (FA4), completing the induction.
+
+Let
+\[
+ R_i=\varprojlim_n A_i/J_{i,n}.
+ \tag{FA6}
+\]
+Choose once and for all a set of representatives in \(A_i\) of its residue field, with zero representing zero. Formula (FA5) allows every element of \(R_i\) to be represented by a convergent expansion
+\[
+ c_0+c_1x+c_2x^2+\cdots,
+ \tag{FA7}
+\]
+where the \(c_j\) are chosen representatives. To construct it, choose the constant term from the zeroth quotient, then correct at step \(n+1\) by the kernel generator \(x^{n+1}\). The expansion is unique for these representatives: a first different coefficient gives a nonzero lowest power of \(x\) in a suitable finite quotient.
+
+It follows directly that the kernel of \(R_i\to A_i/J_{i,n}\) is \(x^{n+1}R_i\). Namely, its first \(n+1\) coefficients vanish and the remaining expansion can be divided by \(x^{n+1}\). Thus \(R_i\) is complete and separated for its principal maximal ideal \((x)\). Its nonzero elements have the form \(x^e u\), with \(u\) a unit: a nonzero constant coefficient is a unit by successive inversion in the finite local quotients. No power of \(x\) vanishes. Products of two nonzero elements therefore cannot vanish. Every nonzero ideal is generated by an element of least such exponent. Consequently \(R_i\) is a discrete valuation ring.
+
+Since \(\mathfrak m_i^{n+1}\subset J_{i,n}\), the map \(A_i\to R_i\) extends to \(\widehat A_i\). It is onto: the partial sums of (FA7) are a Cauchy sequence for the original \(\mathfrak m_i\)-adic topology, so converge in \(\widehat A_i\) to an element mapping to that expansion. This proves surjectivity from the completion, without asserting that \(A_i\to R_i\) itself is onto.
+
+The map \(A_i\to A_{i+1}\) sends \(J_{i,n+1}\) into \(J_{i+1,n}\): both conditions are tested at stage \(i+n+1\), and the former uses its \((n+2)\)-nd maximal-ideal power instead of its \((n+1)\)-st. Hence it extends to a continuous map \(R_i\to R_{i+1}\). It fixes \(x\) and induces the identity on residue fields. Such a map between these complete discrete valuation rings is an isomorphism. Injectivity follows from the expression \(x^e u\); surjectivity follows by lifting each residue coefficient and summing the resulting series in the complete source. Identify all \(R_i\) with \(R=R_0\) through these maps. The local maps from the \(A_i\) are compatible by construction, with \(x\) a uniformizer.
+
+In the point-blowup case their closed points are precisely the points selected by the arc: each map is local, and the pullback of the centre ideal to \(R\) is \((x)\). The universal blowup map can also be seen on the \(x\)-chart by sending every \(a/x\) to its quotient in \(R\), just as in CA10. \(\square\)
+
+#### 2AK.2. Comparing the two completed local rings
+
+**FA2.** Let \((A,\mathfrak m)\) be a Noetherian local ring and let \(X\) be a locally Noetherian scheme over \(A\). Put
+\[
+ X'=X\times_{\operatorname{Spec}A}\operatorname{Spec}\widehat A.
+ \tag{FA8}
+\]
+For a point \(p\in X\) over the closed point of \(\operatorname{Spec}A\), there is a unique point \(q\in X'\) over \(p\). The natural map induces isomorphisms
+\[
+ \mathcal O_{X,p}/\mathfrak m_p^n
+ \xrightarrow{\ \sim\ }
+ \mathcal O_{X',q}/\mathfrak m_q^n
+ \quad(n\geq1),\qquad
+ \widehat{\mathcal O_{X,p}}\cong\widehat{\mathcal O_{X',q}}.
+ \tag{FA9}
+\]
+In particular their residue fields and cotangent spaces agree.
+
+*Proof.* Work on an affine neighbourhood \(\operatorname{Spec}B\) of \(p\), and put \(B'=B\otimes_A\widehat A\). The fibre over \(p\) is
+\(\operatorname{Spec}(\kappa(p)\otimes_A\widehat A)=\operatorname{Spec}\kappa(p)\), since \(\mathfrak m\) kills \(\kappa(p)\). This proves uniqueness of \(q\). For every \(n\), the elementary completion quotients give
+\[
+ B'/\mathfrak m^nB'
+ \cong B\otimes_A(\widehat A/\mathfrak m^n\widehat A)
+ \cong B/\mathfrak m^nB.
+ \tag{FA10}
+\]
+Here the middle completion quotient is \(A/\mathfrak m^n\), as in EA7. In these identical rings the prime ideals corresponding to \(p\) and \(q\) are identical. Their \(n\)-th powers and their localizations are consequently identical as well. Since \(\mathfrak m^nB\subset p^n\) and \(\mathfrak m^nB'\subset q^n\), these are exactly the quotients in (FA9). Taking inverse limits proves the completion assertion. For the cotangent spaces take \(n=1,2\). No normality assertion is made about either completion. \(\square\)
+
+#### 2AK.3. Termination with a normal initial completion
+
+**FA3.** Suppose \(A_0\) is a two-dimensional Noetherian local domain, and its completion \(\widehat A_0\) is a normal domain of dimension two. Consider a tower of successive closed-point blowups with local rings \(A_i\) at the chosen points. Assume that each \(A_i\) has dimension two, that all successive residue fields are the same, and that a fixed nonzero \(x\in\mathfrak m_0\) satisfies (FA2). Then some \(A_i\) is regular.
+
+*Proof.* Suppose all were nonregular, so the tower continued indefinitely. FA1 supplies a complete discrete valuation ring \(R\), compatible local maps from the tower, and a surjection
+\[
+ \widehat A_0\twoheadrightarrow R.
+ \tag{FA11}
+\]
+Its kernel \(\mathfrak p\) is prime. It is not maximal, since its quotient is a discrete valuation ring rather than a field, and it is nonzero, since a zero kernel would identify the two-dimensional domain \(\widehat A_0\) with the one-dimensional ring \(R\). Thus it has height one in this two-dimensional domain. Normality and the height-one local-ring calculation in HB1 make \((\widehat A_0)_{\mathfrak p}\) a discrete valuation ring. All the hypotheses of CA3 now hold for (FA11).
+
+We identify its selected blowups with the base changes of the given ones. Completion is flat by EA7. For any centre ideal \(I\), flatness identifies \(I^n\otimes_A\widehat A\) with its image \((I\widehat A)^n\) inside \(\widehat A\), in every degree. Tensoring the Rees algebra therefore gives exactly the Rees algebra of the extended ideal. This proves that the blowup commutes with this base change. The centre at each chosen point has residue field \(k\); its base change is the same single reduced point, since \(k\otimes_{A_0}\widehat A_0=k\). The compatible maps to \(R\) in FA1 select that point, with the same residue field. Hence the local rings \(B_i\) of this base-changed tower are precisely the local rings selected by the arc (FA11).
+
+CA3 proves that some \(B_i\) is a regular local ring of dimension two. FA2 identifies its residue field and cotangent space with those of \(A_i\). Since the latter local ring has dimension two by hypothesis, its embedding dimension is two and it is regular. This contradicts the supposed tower. \(\square\)
+
+The hypotheses in FA3 include normality of the initial completion. FA1 and FA2 do not supply that hypothesis, nor do they supply a fixed coordinate or constant residue fields for an arbitrary tower. Related treatments are the Stacks Project's [quotient arcs from a tower](https://stacks.math.columbia.edu/tag/0BG2), [base change to the completion](https://stacks.math.columbia.edu/tag/0BG5), and [regularity along a quotient arc](https://stacks.math.columbia.edu/tag/0BG3).
+
+**Exercise 2AK (100 points): finite jets and quotient arcs.**
+
+1. **(25 points.)** Let \(f(x)=\sum_{j\geq1}a_jx^j\in xk[[x]]\). Starting with \(A_0=k[x,y]_{(x,y)}\), put
+\[
+ z_n=\frac{y-\sum_{j=1}^n a_jx^j}{x^n},\qquad
+ A_n=k[x,z_n]_{(x,z_n)}\quad(n\geq1).
+ \tag{FAX1}
+\]
+Write the local transitions, check FA2, and compute \(J_{0,n}\) from FA3. Identify the quotient arc from FA1. Give an example where the map from \(A_0\) to the complete discrete valuation ring is not onto, although the map from its completion is onto.
+
+2. **(25 points.)** Take the constant sequence \(A_i=\mathbf Z_{(p)}\), with \(x=p\). Compute the ideals and limits in FA3 and FA6. Use this example to explain why the representatives in FA7 must not be assumed to form a coefficient field. For \(p=2\), explain the addition of the two constant expansions representing one.
+
+3. **(25 points.)** Let \(A=k[t]_{(t)}\), \(B=A[z]\), and let \(h\in k[z]\) be monic irreducible of degree \(d\). At the point \(p=(t,h)\), describe the residue field, cotangent dimension, and the dimension over \(k\) of the quotient by the \(n\)-th maximal-ideal power. Verify directly the finite-quotient assertion in FA9 after replacing \(A\) by \(k[[t]]\). Allow \(h\) to be inseparable; do not assume a coefficient field has been chosen in the completed local ring.
+
+4. **(25 points.)** In the family \(B_j\) of Exercise 2AJ, part 5, prove that the fixed coordinate \(x\) satisfies FA2 and all residue fields stay equal. Identify the complete quotient arc. Show directly that the completion of \(B_0\) is not normal. Explain why this gives no contradiction to either CA3 or FA3.
+
+**Complete solution.**
+
+1. Put \(z_0=y\). The relation between successive generators is
+\[
+ z_n=x(z_{n+1}+a_{n+1}).
+ \tag{FAX2}
+\]
+Thus each map is the local map on the \(x\)-chart of the blowup, recentered at the point with coordinate \(z_n/x=a_{n+1}\). Its maximal-ideal extension is \((x)\), and its residue map is the identity of \(k\). In \(A_n/\mathfrak m_n^{n+1}\), the term \(x^nz_n\) vanishes. Hence
+\[
+ J_{0,n}
+ =\left(x^{n+1},\ y-\sum_{j=1}^n a_jx^j\right)A_0.
+ \tag{FAX3}
+\]
+Indeed, the indicated quotient is \(k[x]/(x^{n+1})\), and its image in the target is injective, since no power \(x^e\), \(e\leq n\), lies in the next power of \((x,z_n)\). Its limit is \(k[[x]]\), and the completed quotient map is \(k[[x,y]]\to k[[x]]\), with \(y\mapsto f(x)\) and \(x\mapsto x\). Its kernel is \((y-f(x))\): formal substitution by \(y-f(x)\) is an invertible change of variables with inverse substitution by \(y+f(x)\). For \(k=\mathbf F_2\) and \(f=0\), the image of \(A_0\) is the countable ring \(\mathbf F_2[x]_{(x)}\), whereas \(\mathbf F_2[[x]]\) is uncountable by the diagonal argument on binary coefficient sequences. Thus the uncompleted map is not onto. Its completion is onto by its displayed formula.
+
+2. Here
+\[
+ J_{i,n}=p^{n+1}\mathbf Z_{(p)},\qquad
+ R_i=\varprojlim_n\mathbf Z/p^{n+1}\mathbf Z=\mathbf Z_p.
+ \tag{FAX4}
+\]
+The representatives \(0,1,\ldots,p-1\) give the usual unique expansions in powers of \(p\). They do not give a field homomorphism \(\mathbf F_p\to\mathbf Z_p\). The target has characteristic zero: an integer prime to \(p\) is a unit, and no power of \(p\) vanishes in all these finite quotients. A unital homomorphism from \(\mathbf F_p\) would instead force \(p\) times one to be zero. For \(p=2\), adding the two constant digits one gives the expansion with zero constant term and digit one in degree one, because \(1+1=2=x\). The construction in FA1 uses representatives as a set and permits these carries; it does not identify the ring with \(\mathbf F_p[[x]]\).
+
+3. The residue field is \(\ell=k[z]/(h)\). Repeated division by the monic polynomial \(h\), together with expansion in \(t\), gives a unique representative modulo \((t,h)^n\) of the form
+\[
+ \sum_{a+b<n}t^ah(z)^b c_{ab}(z),\qquad
+ \deg c_{ab}<d.
+ \tag{FAX5}
+\]
+To see uniqueness, first compare coefficients in powers of \(t\); for each such coefficient the successive monic divisions by \(h\) are unique. Denominators inverted at \(p\) are units in this finite local quotient, so localization introduces no further relations. Thus its \(k\)-dimension is \(d\,n(n+1)/2\). Its cotangent space has \(\ell\)-basis given by \(t,h\), and dimension two. Modulo \(t^n\), the two coefficient rings \(k[t]_{(t)}\) and \(k[[t]]\) have exactly the same quotient. Taking the further quotient by \((t,h)^n\) therefore gives the same representatives (FAX5) and exactly the same ring. This proves FA9 here. Monic division never uses \(h'\), so the proof includes inseparable \(h\). The vector-space description uses representatives of residue classes and makes no coefficient-field assertion about the completed local ring.
+
+4. The transitions are \(u_j=xu_{j+1}\), \(v_j=xv_{j+1}\). Hence the extension of \((x,u_j,v_j)\) is \((x)\), and the closed-point residue field is always \(k\). For the initial ring, the same finite-jet calculation kills \(u_0,v_0\) modulo the \((n+1)\)-st maximal-ideal power at stage \(n\), so its quotient arc is \(k[[x]]\), with \(u_0,v_0\mapsto0\).
+
+The initial completed ring is \(C=k[[x,u,v]]/(u^2-v^3)\). Reduction by the monic quadratic gives unique expressions \(a(x,v)+u b(x,v)\). The substitution \(v=s^2\), \(u=s^3\) embeds this ring in \(k[[x,s]]\): its two summands have respectively even \(s\)-exponents and odd exponents at least three, so cannot cancel. The fraction \(u/v\) maps to \(s\); it is integral, satisfying \((u/v)^2=v\), but does not belong to \(C\), whose image has no term of \(s\)-degree one. Thus \(C\) is a domain and is not normal. FA3's normal-completion hypothesis fails. At the kernel \((u,v)\), the original ring has one-dimensional localization with embedding dimension two, so CA3's generic discrete-valuation hypothesis also fails. Every selected point can remain singular, as computed in Exercise 2AJ, without contradicting either theorem.
+
+### 2AL. Quadratic ideals and the nonsquare exceptional conic
+
+#### 2AL.1. Coefficient derivations and quadratic ideal squares
+
+**QB1.** If a field \(k\) has characteristic two and \(c\notin k^2\), there is a derivation \(\theta:k\to k\), killing \(k^2\), for which \(\theta(c)\ne0\).
+
+*Proof.* Choose a maximal set \(\mathcal B\subset k\) whose squarefree monomials are linearly independent over \(k^2\); unions of chains preserve this property, so the maximal-set argument applies. For a finite subset, the span of its squarefree monomials is a field. It is closed under multiplication because every square lies in \(k^2\); the inverse of a nonzero element \(a\) is \(a/a^2\). The union of these finite fields is \(k^2(\mathcal B)\). If an element \(b\) of \(k\) lay outside this field, its polynomial \(T^2-b^2\) would be irreducible over it, and adjoining \(b\) would preserve squarefree-monomial independence, contrary to maximality. Thus these monomials form a basis of \(k\) over \(k^2\).
+
+For each \(b\in\mathcal B\), differentiate this basis expansion formally in \(b\). The rule is well-defined and satisfies the product rule: on each finite subfield it is the derivative on the polynomial presentation with relations \(T_a^2-a^2\), and those relations have derivative zero. These derivatives agree on overlaps of the finite subfields. Since the basis expansion of \(c\) has a nonconstant monomial, differentiating with respect to a variable in that monomial is nonzero. Distinct monomials containing that variable give distinct monomials after differentiation, so cannot cancel. \(\square\)
+
+**QB2.** Let \(I\subset k[x,y]\) be an ideal with \(\dim_k k[x,y]/I>1\), allowing infinite dimension. If a nonzero polynomial \(q\) of degree at most two lies in \(I^2\), then
+\[
+ q=\lambda\ell(x,y)^2
+ \tag{QB1}
+\]
+for a nonzero \(\lambda\in k\) and an affine linear polynomial \(\ell\).
+
+*Proof.* First suppose \(I\) contains a nonzero affine linear polynomial. It is nonconstant, since \(I\) is proper. An invertible affine change of variables makes it \(x\). The image of \(I\) in \(k[y]\) is either zero or is generated by a monic polynomial \(F\). In the latter case \(\deg F\geq2\), since the quotient has dimension greater than one. Thus \(I=(x)\) or \(I=(x,F(y))\). In the first case \(q\) is a constant times \(x^2\). In the second, reduction modulo \(x\) shows that \(q(0,y)\) is divisible by \(F^2\); its degree is at most two, so it is zero. Write \(q=x(a x+B(y))\) with \(\deg B\leq1\). Modulo \(x^2\), membership in \(I^2=(x^2,xF,F^2)\) implies that \(B\) is divisible by \(F\), so \(B=0\). This proves the assertion whenever \(I\) contains such a linear polynomial.
+
+Both ordinary partial derivatives of \(q\) lie in \(I\): the derivative of a product of two elements of \(I\) has a factor from \(I\) in each term. If either derivative is nonzero, it is an affine linear polynomial and the preceding paragraph applies. A nonzero constant derivative would make \(I\) the whole ring, which is excluded. In characteristic different from two, vanishing of both derivatives would make \(q\) constant, again impossible for nonzero \(q\in I^2\). The remaining case has characteristic two. After interchanging variables and scaling, it has the form
+\[
+ q=a+d x^2+y^2\in I^2.
+ \tag{QB2}
+\]
+If \(a,d\) are squares in \(k\), this is already a linear square. Otherwise choose, by QB1, a coefficient derivation nonzero on at least one of them. Extend it to \(k[x,y]\) by killing \(x,y\). Its value on \(q\) belongs to \(I\), so
+\[
+ \theta(a)+\theta(d)x^2\in I.
+ \tag{QB3}
+\]
+If \(\theta(d)=0\), this is a nonzero constant, a contradiction. Put \(\alpha=\theta(a)/\theta(d)\) and \(\beta=a+d\alpha\). Then
+\[
+ J=(f,g)=(x^2+\alpha,y^2+\beta)\subset I,
+ \qquad q=df+g.
+ \tag{QB4}
+\]
+The quotient by \(J\) has basis \(1,x,y,xy\). Moreover \(J/J^2\) is free over this quotient on \([f],[g]\). Here is the required independence. If \(Af+Bg\in J^2\), reduction modulo \(f\), followed by cancellation of the monic polynomial \(g\), gives \(B\in J\). Reducing modulo \(g\) and cancelling the monic polynomial \(f\) gives \(A\in J\). Thus \(q\notin J^2\), because its second coefficient is one, and \(J\ne I\).
+
+If \(I\) contains a nonzero affine linear polynomial, the first paragraph finishes the proof. Otherwise the coefficient of \(xy\) injects the vector space \(I/J\) into \(k\): an element with zero such coefficient would be a nonzero affine linear element of \(I\). Since \(J\ne I\), that vector space has dimension one.
+
+Extend scalars to an algebraic closure \(K\) of \(k\), and translate \(x,y\) by square roots of \(\alpha,\beta\). The quotient by the translated \(J\) is \(Q=K[x,y]/(x^2,y^2)\). The translated \(I/J\) is a one-dimensional ideal of \(Q\). Multiplication by \(x\) and \(y\) on it is nilpotent, and hence is zero on this one-dimensional vector space. The common annihilator of \(x,y\) in \(Q\) is exactly \(Kxy\), as direct multiplication of \(c_0+c_1x+c_2y+c_3xy\) shows. Therefore the translated extended ideal is
+\[
+ I_K=(x^2,xy,y^2)=(x,y)^2,
+ \qquad I_K^2=(x,y)^4.
+ \tag{QB5}
+\]
+But the translated \(q\) remains a nonzero polynomial of degree at most two, and cannot belong to \((x,y)^4\). Field extension preserves the membership \(q\in I^2\), so this is a contradiction. This proves QB2 in every characteristic, with no perfectness assumption. \(\square\)
+
+#### 2AL.2. The nonregular points of a nonsquare conic
+
+**QB3.** Let \(q\in k[t_1,t_2,t_3]\) be a nonzero homogeneous quadratic form which is not a nonzero scalar times the square of a linear form over \(k\). The plane conic \(E=V(q)\) has at most one nonregular closed point. If such a point exists, it is \(k\)-rational. After a linear change of coordinates it is \([1:0:0]\) and
+\[
+ q=q_2(t_2,t_3),
+ \tag{QB6}
+\]
+where the binary quadratic form \(q_2\) is still not a scalar linear square.
+
+*Proof.* Choose an affine plane chart at a nonregular closed point \(p\), and let \(I\subset k[x,y]\) be its maximal ideal. Its ambient local ring is regular of dimension two by the triangular polynomial-local-ring calculation in PD3. The conic local ring is one-dimensional. If its equation did not belong to the square of the ambient maximal ideal, its quotient cotangent space would have dimension one, making this local curve regular. Thus the dehomogenized equation belongs to \(I^2k[x,y]_I\), and in fact to \(I^2\). For this last assertion, every polynomial outside \(I\) is a unit modulo \(I^2\): lift its inverse modulo \(I\) and correct by \(1-h\) when the product is \(1+h\), with \(h\in I\). Hence localization creates no new membership in \(I^2\).
+
+If \(\kappa(p)\ne k\), this ideal has colength greater than one. QB2 would make the dehomogenized equation a scalar affine linear square; homogenizing would make \(q\) a scalar homogeneous linear square. This contradicts the hypothesis. Thus \(p\) is rational. Move it to \([1:0:0]\). Nonregularity means that \(q(1,t_2,t_3)\) has neither a constant nor a linear term, which proves (QB6).
+
+If \(q_2\) has a rational zero in \(\mathbf P^1\), division by the corresponding linear factor gives two distinct linear factors over \(k\). They are distinct because a repeated factor would be a scalar square. The conic is then the union of two distinct lines, each regular away from their single intersection \([1:0:0]\). If \(q_2\) has no rational zero, that vertex is the conic's only rational point. Every nonregular closed point was proved rational, so it is again the only possible one. This proves the assertion, including for inseparable conics which become nonreduced after extending the field. \(\square\)
+
+#### 2AL.3. Termination in the nonsquare case
+
+**QB4.** Let \((T,\mathfrak m,k)\) be a nonregular rational Gorenstein local surface ring furnished by HR4. Assume \(\widehat T\) is a normal domain of dimension two. Suppose the quadratic equation of its associated graded ring in (CA3) is not a scalar linear square. Then a finite sequence of ordinary blowups at nonregular closed points gives a regular model. Each intervening model is normal and Gorenstein, its closed local surface rings are rational, and there is at most one nonregular point at each stage. A supplied finite action can be retained throughout.
+
+*Proof.* CA1 proves the asserted normal, Gorenstein and rational properties after each such blowup. Off the exceptional curve the first blowup is an isomorphism, and the punctured spectrum of the normal local surface is regular by HB1. A regular exceptional-curve local ring also forces its surface local ring to be regular: lift its one maximal-ideal generator and adjoin the Cartier equation of the curve, giving at most two generators in dimension two. Thus every nonregular point of the blowup is a nonregular point of its exceptional conic. QB3 shows that there is at most one and that it is rational.
+
+Call an element \(x\) of a minimal generating set for \(\mathfrak m\) a good coordinate if the quadratic equation restricted to the projective line \(x=0\) is not a scalar linear square. This definition is independent of the other two generators: that line and its restricted quadratic form change only by an invertible change of its coordinates and a nonzero scalar. If the blowup has a nonregular point, QB3 places it at the vertex of a binary nonsquare conic. Choosing a coordinate nonzero at that vertex provides a good coordinate.
+
+For any good coordinate, the nonregular point cannot lie on the line \(x=0\). Indeed, it is rational. If the restricted binary form has no rational zero, that line has no rational intersection point. If it has a rational zero, its two factors are distinct. At either zero the equation has a nonzero linear term along the line, so the conic and then the surface are regular there. Consequently \(x\) is the Cartier equation of the exceptional divisor in the local ring at the unique nonregular point, and the old maximal ideal extends to \((x)\) there.
+
+We prove that the same element remains a good coordinate at that point. Complete \(x\) to minimal generators \(x,u,v\), and recenter the rational point on the \(x\)-chart so that \(U=u/x\), \(V=v/x\) have residue zero. The recentering uses arbitrary lifts of residue-field elements in \(T\); it does not require a coefficient field. By CA2 the quadratic relation can be written exactly as
+\[
+ ax^2+b xu+c xv+d u^2+e uv+f v^2=0,
+ \quad a,b,c\in\mathfrak m,
+ \quad q_2=\overline d\,u^2+\overline e\,uv+\overline f\,v^2.
+ \tag{QB7}
+\]
+Here \(q_2\) is nonsquare, since the rational point is nonregular on the exceptional conic. In the local chart, divide by \(x^2\) and put \(A=a/x\), \(B=b/x\), \(C=c/x\). These elements exist because \(\mathfrak m\) extends to \((x)\). The relation is
+\[
+ x(A+BU+CV)+dU^2+eUV+fV^2=0.
+ \tag{QB8}
+\]
+The maximal ideal at this point is generated by \(x,U,V\). If \(A\) had nonzero residue, the linear part of (QB8) would eliminate \(x\) from its cotangent space and make the surface regular. Hence \(A\) belongs to this maximal ideal. The degree-two initial relation in (QB8) restricts, on \(x=0\), to the same binary form \(q_2\). It is nonzero, and CA1 says that there is exactly one quadratic initial relation up to scalar. Therefore it is the new quadratic equation, its restriction is nonsquare, and \(x\) remains good. In particular the new quadratic form is not itself a scalar square.
+
+If successive blowups at the unique nonregular point never stopped, their closed local surface rings would all have dimension two by HR1 and would all have residue field \(k\) by QB3. The fixed element \(x\) would satisfy \(\mathfrak m_iT_{i+1}=xT_{i+1}\) at every stage. FA3, using only the stated normal initial completion, excludes precisely this infinite tower. Thus the process stops after finitely many blowups. All other points stay regular because the blowups are isomorphisms away from their centres. The final whole model is regular.
+
+A supplied finite group preserves the unique nonregular point at each stage, hence its full maximal ideal. Its action therefore lifts through every Rees blowup. This remains true for semilinear residue-field actions and in wild residue characteristic. The good coordinate used in the termination proof need not be invariant. No group averaging is used. \(\square\)
+
+QB4 addresses the nonsquare exceptional conic under a normal-initial-completion hypothesis. The double-line case and normality of the completions needed for the general model construction require separate arguments. Related treatments are the Stacks Project's [rational double points](https://stacks.math.columbia.edu/tag/0BGB) and [coefficient derivations in characteristic p](https://stacks.math.columbia.edu/tag/031W).
+
+**Exercise 2AL (100 points): imperfect fields and nonsquare conics.**
+
+1. **(15 points.)** For \(k=\mathbf F_2(a,b)\), construct the two coefficient derivations with \(\partial_a(a)=1\), \(\partial_a(b)=0\), \(\partial_b(a)=0\), \(\partial_b(b)=1\). Compute their values on \(a+b^2\) and \(ab\). Explain their extension to rational functions and their vanishing on squares.
+
+2. **(20 points.)** For \(k=\mathbf F_2(a)\), put \(I=(x^2+a,y)\) and \(q=x^2+a+y^2\). Compute the colength, show \(q\in I\), and prove \(q\notin I^2\). Explain why zero ordinary partial derivatives cannot replace QB1's coefficient derivations.
+
+3. **(15 points.)** Show that the colength condition in QB2 cannot be dropped by using \(I=(x,y)\), \(q=xy\), in every characteristic. Then compute the common annihilator of \(x,y\) in \(K[x,y]/(x^2,y^2)\), and show that \((x,y)^4\) contains no nonzero polynomial of degree at most two.
+
+4. **(20 points.)** Over \(k=\mathbf F_2(a)\), consider
+\[
+ E=V(X^2+aY^2)\subset\mathbf P^2_k.
+ \tag{QBX1}
+\]
+Find its rational points and its nonregular closed points. Describe its \(Y\ne0\) chart, and its base change to an algebraic closure. Distinguish regularity from geometric reducedness in this example.
+
+5. **(15 points.)** For \(e\geq2\), compute the three ordinary blowup charts at the origin of
+\[
+ H_e=\operatorname{Spec}k[x,u,v]/(uv-x^e).
+ \tag{QBX2}
+\]
+Locate their nonregular points and determine how many successive blowups at those points are needed for a regular model. Give the calculation in arbitrary characteristic, without invoking a classification of surface singularities.
+
+6. **(15 points.)** On \(H_e\), let an involution exchange \(u,v\) and fix \(x\). Describe its lift through the blowup charts and the resulting finite sequence. Explain why this works in characteristic two. State precisely why QB4 does not settle the double-line case, and give a regular surface with a nonregular Cartier divisor to show why the exceptional curve alone does not determine surface regularity.
+
+**Complete solution.**
+
+1. Differentiate polynomials formally in \(a\) or \(b\), and extend by
+\[
+ \partial(f/g)=\frac{g\partial f-f\partial g}{g^2}.
+ \tag{QBX3}
+\]
+If two fractions agree, differentiating their cross-multiplied equality proves that the resulting fractions agree. This constructs a derivation on the field. The values are
+\[
+ \partial_a(a+b^2)=1,\quad\partial_b(a+b^2)=0,\qquad
+ \partial_a(ab)=b,\quad\partial_b(ab)=a.
+ \tag{QBX4}
+\]
+Every square has derivative zero by the product rule and characteristic two. In particular these derivations kill \(k^2\), while detecting coefficients that ordinary differentiation in \(x,y\) would treat as constants.
+
+2. The quotient is \(k[x]/(x^2+a)\), a field of degree two, since \(a\) is not a square in \(\mathbf F_2(a)\). For the latter assertion the order of vanishing at \(a=0\) of a square rational function is even, whereas that of \(a\) is one. Hence the colength is two. Writing \(f=x^2+a\) gives \(q=f+y^2\in I\). But \(I/I^2\) is free over \(k[x,y]/I\) on \([f],[y]\), by the monic two-equation calculation in QB2. Its class \([q]=[f]\) is nonzero, so \(q\notin I^2\). Both ordinary derivatives are zero, but the coefficient derivation with \(\theta(a)=1\) gives \(\theta(q)=1\). If \(q\) belonged to \(I^2\), this value would have to belong to \(I\), which is impossible. This gives a second direct proof and explains the coefficient-derivation step.
+
+3. The ideal \((x,y)\) has colength one and its square contains \(xy\). A nonzero scalar times an affine linear square cannot equal \(xy\): the constant, \(x^2\), and \(y^2\) coefficients would respectively force the constant, \(x\), and \(y\) coefficients of the linear form to vanish. This argument is valid in every characteristic. In the four-dimensional algebra with basis \(1,x,y,xy\), multiplication gives
+\[
+ x(c_0+c_1x+c_2y+c_3xy)=c_0x+c_2xy,\qquad
+ y(c_0+c_1x+c_2y+c_3xy)=c_0y+c_1xy.
+ \tag{QBX5}
+\]
+Thus the common annihilator is \(Kxy\). Every monomial in \((x,y)^4\) has total degree at least four; independence of polynomial monomials excludes a nonzero element of degree at most two.
+
+4. If a rational point had \(Y\ne0\), its ratio \(X/Y\) would square to \(a\), which is impossible. Thus the only rational point is \([0:0:1]\). Its affine equation is \(x^2+ay^2\in(x,y)^2\), so its local dimension is one and its embedding dimension is two: it is nonregular. The quadratic form is not a scalar linear square over \(k\), since such a presentation would make the ratio \(a\) of its two nonzero square coefficients a square. QB3 shows that all nonregular closed points are rational, so the vertex is the only one.
+
+On \(Y\ne0\), put \(w=X/Y\), \(z=Z/Y\). Its ring is
+\[
+ k[w,z]/(w^2+a)=k(\sqrt a)[z].
+ \tag{QBX6}
+\]
+It is regular, as a polynomial line over a field. On extending scalars to an algebraic closure, the equation becomes \((X+\sqrt aY)^2\), a double line. Thus a regular open part of a curve over an imperfect field can fail to be geometrically reduced. The nonregular point calculation used local rings over the original field, not a geometric smoothness criterion.
+
+5. On the \(x\)-chart put \(u=xU\), \(v=xV\); cancellation of \(x^2\) gives
+\[
+ UV=x^{e-2}.
+ \tag{QBX7}
+\]
+On the \(u\)-chart put \(x=uX\), \(v=uW\); its equation is \(W=u^{e-2}X^e\), so eliminating \(W\) gives a regular polynomial plane. The \(v\)-chart is the same calculation with \(u,v\) exchanged. These are the exact charts: each displayed domain embeds in the common fraction field and is generated by the corresponding ratios. If \(e=2\), the \(x\)-chart is \(UV=1\), which is regular. If \(e=3\), it is \(UV=x\), which is also regular. For \(e\geq4\), it is the same family with exponent \(e-2\), and its only nonregular point is the origin. Away from \(U=V=0\), eliminate the other variable. If \(U=V=0\), the equation forces \(x=0\); at this origin the defining equation is quadratic or higher and the embedding dimension is three in dimension two. Hence each step subtracts two from the exponent until exponent zero or one gives a regular chart. The number of blowups is \(\lfloor e/2\rfloor\). All these identities and generator calculations work in every characteristic.
+
+6. The involution exchanges the \(u\)- and \(v\)-charts. It preserves the \(x\)-chart and exchanges \(U,V\) in (QBX7). Every remaining nonregular point is the unique origin, so its maximal ideal is invariant and the action lifts again through the next Rees algebra. This describes the action on the entire finite sequence. In characteristic two the involution still has square one, and neither the chart maps nor the centre ideals require a division by two.
+
+QB4 assumes that the initial conic equation is not a scalar linear square. For a double line this fails, and QB3's conclusion that there is at most one nonregular conic point is false. The higher-order terms of the surface equations need a separate argument. Nonregularity of the curve itself does not imply nonregularity of the surface: in the regular affine plane \(\operatorname{Spec}k[s,t]\), the Cartier divisor \(s^2=0\) is nonreduced and nonregular at its points, while the surface is regular everywhere.
+
+### 2AM. Regularizing an arc with a singular curve image
+
+#### 2AM.1. Finiteness and the fraction field of the image
+
+**SA1.** Let \((A,\mathfrak m,k)\) be a complete Noetherian local ring, and let \(A\to R\) be a continuous local homomorphism to a complete discrete valuation ring. Assume its residue field \(\ell\) is finite over \(k\), and
+\[
+ \mathfrak mR\ne0.
+ \tag{SA1}
+\]
+Then \(R\) is a finite module over the image \(B\) of \(A\). The ring \(B\) is a complete Noetherian local domain of dimension one. Write \(F=\operatorname{Frac}B\), \(L=\operatorname{Frac}R\). If a subring \(D\subset R\) lies in \(F\) and is dense in \(R\), then
+\[
+ F=L,
+ \qquad R\text{ is the finite normalization of }B,
+ \qquad \delta=\lambda_B(R/B)<\infty.
+ \tag{SA2}
+\]
+No coefficient field in either complete local ring is assumed.
+
+*Proof.* Choose \(g\in\mathfrak m\) with nonzero image \(\overline g\in R\). The quotient \(R/\overline gR\) is finite as an \(A\)-module. Indeed, filter it by powers of a uniformizer of \(R\). Each successive factor is its residue field \(\ell\), on which \(A\) acts through \(k\); it is finite-dimensional over \(k\). There are finitely many factors because \(\overline g\ne0\).
+
+Choose lifts \(r_1,\ldots,r_s\in R\) of generators of this quotient. Repeatedly expressing a remainder modulo \(\overline gR\) gives, for each \(r\in R\),
+\[
+ r=\sum_{j=1}^s\left(\sum_{n=0}^{N-1}a_{nj}\overline g^{\,n}\right)r_j
+       +\overline g^{\,N}r^{(N)},\qquad a_{nj}\in\operatorname{im}A.
+ \tag{SA3}
+\]
+Choose lifts of every \(a_{nj}\) in \(A\). Since \(g\in\mathfrak m\), the series \(\sum_n a_{nj}g^n\) converges in the complete ring \(A\). Continuity sends its sum to the corresponding sum in \(R\); the last term in (SA3) tends to zero in the valuation topology. Thus the \(r_j\) generate \(R\) as an \(A\)-module and as a \(B\)-module.
+
+The kernel of the map from \(A\) is prime. Its quotient \(B\) is a complete Noetherian local ring by exactness of completion on finite modules, proved in EA6–EA7 of [Lesson 1, §5B.3](profinite-groups-and-adic-representations.md#5b-3-completion-including-the-flatness-proof). It is a domain, since it embeds in \(R\). A finite algebra is integral by the finite-module characteristic-polynomial argument; going up and incomparability for integral domains, as proved in TN3, identify its dimension with that of \(R\), namely one.
+
+The \(B\)-module
+\[
+ C=F\cap R\subset R
+ \tag{SA4}
+\]
+is finite because \(R\) is finite and \(B\) is Noetherian. It is closed in \(R\). To verify the relevant topology, the nonzero ideal \(\mathfrak m_BR\) is a positive power of the uniformizer, so its powers give the same topology as the valuation powers. Exactness and separatedness of completion on the finite modules \(C,R,R/C\), from EA6–EA7, make \(C\) closed for this topology. If \(D\subset C\) is dense, it follows that \(C=R\). Hence \(L\subset F\), and the reverse inclusion is automatic. This proves \(F=L\).
+
+Now \(R\) is finite and birational over \(B\) and is integrally closed. Any fraction integral over \(B\) is also integral over \(R\), so lies in \(R\); conversely every element of \(R\) is integral over \(B\). Thus it is the full normalization. The finite \(B\)-module \(R/B\) has rank zero. A common nonzero denominator of finitely many generators annihilates it, so its support in this one-dimensional local domain consists only of the closed point. Equivalently its annihilator contains a power of the maximal ideal. Its length \(\delta\) is finite. \(\square\)
+
+#### 2AM.2. Making the curve-image map surjective
+
+**SA2.** Let \(A\) be a complete normal Noetherian local domain of dimension two. Let \(A\to R\) be a continuous local map to a complete discrete valuation ring, with finite residue extension and nonzero maximal-ideal image. Assume its image \(B\) satisfies
+\[
+ \operatorname{Frac}B=\operatorname{Frac}R.
+ \tag{SA5}
+\]
+Successive ordinary blowups at the points selected by this arc reach a local ring \(A_N\) whose map to \(R\) is onto. One can take
+\[
+ N\leq\delta=\lambda_B(R/B).
+ \tag{SA6}
+\]
+After finitely many further selected point blowups the local ring is regular. The intermediate local domains need not be assumed normal.
+
+*Proof.* SA1 makes \(R\) finite and birational over \(B\), with finite defect length. A nonzero ideal of a discrete valuation ring is invertible, so the arc lifts through a point blowup whenever the centre ideal has nonzero image. This also follows directly by choosing a centre generator of smallest positive valuation and using its affine blowup chart. All selected points lie over the original closed point and are closed. On an affine chart their residue images are finitely generated \(k\)-subalgebras of the finite field extension \(\ell/k\). Such an algebra is finite-dimensional over \(k\) and is a domain, so is a field; the corresponding chart prime is maximal.
+
+Write \(A_i\to R\) for the resulting local maps and \(B_i\) for their images. These images are local subrings between \(B\) and \(R\). They are finite \(B\)-modules, being submodules of the finite module \(R\), and they have the same fraction field. Their maximal ideals are the images of those of \(A_i\), because the maps to the valuation ring are local. The nonzero image of the original maximal ideal remains nonzero at every stage.
+
+Suppose \(B_i\ne R\). Choose \(a\in\mathfrak m_i\) whose image has the smallest valuation among images of a finite generating set for \(\mathfrak m_i\). This image generates \(\mathfrak m_iR\), so the selected next point is on the \(a\)-chart. The next image contains
+\[
+ B_i[\mathfrak m_{B_i}/\overline a]\subset B_{i+1}\subset R.
+ \tag{SA7}
+\]
+If \(B_{i+1}=B_i\), then every quotient \(b/\overline a\), \(b\in\mathfrak m_{B_i}\), belongs to \(B_i\). Thus \(\mathfrak m_{B_i}=\overline aB_i\). This one-dimensional Noetherian local domain would be a discrete valuation ring by the principal-maximal-ideal calculation in HB1. Since \(R\) is finite, birational and integral over it, integral closedness would give \(R=B_i\), a contradiction. Hence \(B_i\subsetneq B_{i+1}\) whenever \(B_i\ne R\). Each such strict inclusion decreases
+\[
+ \lambda_B(R/B_i)
+ \tag{SA8}
+\]
+by at least one. The initial length is \(\delta\), proving (SA6) and eventual surjectivity.
+
+It remains to justify applying CA3 once the image is \(R\). The original kernel \(\mathfrak p\) is a nonzero, nonmaximal prime: its quotient has dimension one by SA1, whereas \(A\) has dimension two. Thus \(A_{\mathfrak p}\) is a discrete valuation ring by normality and HB1. All blowup centres lie over the original closed point, so the blowups are isomorphisms near \(\mathfrak p\). The localization of \(A_N\) at its arc kernel is therefore exactly \(A_{\mathfrak p}\). The map \(A_N\twoheadrightarrow R\) now satisfies every hypothesis of CA3. Its conormal-torsion bound proves regularity after finitely many further point blowups. \(\square\)
+
+#### 2AM.3. A fixed-coordinate tail over the original normal completion
+
+**SA3.** Let \((T,\mathfrak m,k)\) be a two-dimensional Noetherian local domain whose completion is a normal domain of dimension two. Consider a tower of selected closed-point blowups, with all selected local rings of dimension two. Suppose that from some finite stage onward the residue field is a fixed finite extension \(\ell/k\), and that a fixed nonzero element of the local ring at that stage satisfies the displayed identity (FA2) for its extended centre ideals. Let \(R\) be the complete quotient DVR obtained from that tail by FA1. If
+\[
+ \mathfrak mR\ne0,
+ \tag{SA9}
+\]
+then a selected local ring of the tower is regular. No normality of completions of the later local rings is assumed.
+
+*Proof.* Suppose the tower stayed nonregular indefinitely. FA1 constructs \(R\) and compatible local maps on the tail. Composition gives maps on every preceding local ring as well. The map \(T\to R\) is continuous and extends to \(\widehat T\): the image of \(\mathfrak m\) lies in the maximal ideal of \(R\), so its \(n\)-th power maps into the \(n\)-th valuation power. Put
+\[
+ A=\widehat T,\qquad B=\operatorname{im}(A\to R),\qquad F=\operatorname{Frac}B.
+ \tag{SA10}
+\]
+SA1 gives finiteness of \(R\) over \(B\), using the finite residue extension and (SA9).
+
+The image \(D\) of the first local ring of the fixed-coordinate tail is dense in \(R\), by the inverse-limit quotient construction in FA1. It lies in \(F\). Indeed, let \(\mathfrak p_0\) be the kernel of \(T\to R\). The generic point of the arc maps to \(\mathfrak p_0\), outside the original closed point by (SA9). Every preceding point blowup is an isomorphism over that punctured spectrum. The generic arc point on the tail therefore has residue field \(\kappa(\mathfrak p_0)=\operatorname{Frac}(T/\mathfrak p_0)\). It is a generization of the selected closed point, so evaluation of its local ring, and hence of \(D\), factors through this field. The image of \(T/\mathfrak p_0\) lies in \(B\), so the field lies in \(F\). Thus \(D\subset F\cap R\). The density clause of SA1 proves \(F=\operatorname{Frac}R\).
+
+Apply SA2 to \(A\to R\). To compare its selected blowups with the given tower, use flatness of \(T\to\widehat T\) from EA7. In every degree the Rees algebra base changes to the Rees algebra of the extended centre ideal, as proved in FA3. A selected closed point over the original closed fibre has a unique corresponding point after base change, with identical residue field, by FA2. The local maps to \(R\) select these same points. SA2 consequently gives regularity of one local ring of the base-changed tower. It is a two-dimensional regular local ring by CA3. FA2 identifies its cotangent space with that of the given selected local ring, whose dimension is two by hypothesis. The latter ring is therefore regular, contrary to the supposed infinite nonregular tower. \(\square\)
+
+The nonzero image condition (SA9) is part of this statement. The theorem does not cover an arc lying entirely in the original closed fibre. Related treatments are the Stacks Project's [formal arcs](https://stacks.math.columbia.edu/tag/0BG1), [regularity along a nonsingular quotient arc](https://stacks.math.columbia.edu/tag/0BG3), and [one-dimensional normalization and defect length](https://stacks.math.columbia.edu/tag/0C1R).
+
+**Exercise 2AM (100 points): finite arc images and normalization length.**
+
+1. **(20 points.)** In SA1 explain the roles of the nonzero maximal-ideal image and the finite residue extension. Use the local maps \(k\to k[[t]]\) and \(k[[x]]\to L[[t]]\), \(x\mapsto t\), where \([L:k]=\infty\). Then show that \(x\mapsto t^2\) gives a finite map \(k[[x]]\to k[[t]]\) for which the fraction fields of the image and target differ, in every characteristic.
+2. **(25 points.)** In \(R=k[[t]]\) let \(B=k[[t^3,t^4]]\), meaning the image of substitution \(k[[u,v]]\to R\), \(u\mapsto t^3\), \(v\mapsto t^4\). Prove that \(R\) is its finite birational normalization, compute \(\lambda_B(R/B)\), and compute the local image after the first point blowup selected by this arc. Compare the number of steps with (SA6).
+3. **(25 points.)** Prove directly that \(k((t^2))\cap k[[t]]=k[[t^2]]\) and that this is closed in \(k[[t]]\). Explain why no subring of \(k((t^2))\cap k[[t]]\) can be dense in \(k[[t]]\). Relate this to the finite-submodule argument for \(C\) in SA1, without assuming equal characteristic in that argument.
+4. **(30 points.)** Let \(T=k[x,y]_{(x,y)}\). On its \(x\)-blowup chart take
+\[
+ D=k[x,u]_{(x,u)},\qquad y=xu,
+ \qquad D\longrightarrow k[[t]],\quad x\longmapsto0,\quad u\longmapsto t.
+ \tag{SAX1}
+\]
+Show that the map from \(D\) has dense image while the original maximal ideal of \(T\) has zero image. Construct an infinite tower from \(D\) satisfying (FA2), with the same fixed coordinate and residue field. Determine the regularity of its local rings. Explain exactly what this example does and does not establish about the hypothesis (SA9).
+
+**Complete solution.**
+
+1. For the field map the source maximal ideal is zero and the target residue extension is trivial. The target has the linearly independent elements \(1,t,t^2,\ldots\) over \(k\), so is not finite over \(k\). For the map to \(L[[t]]\), the image of \((x)\) is \((t)\ne0\). If the target were a finite \(k[[x]]\)-module, its quotient by \(x\) would be a finite-dimensional \(k\)-vector space. That quotient is \(L\), contradicting the chosen infinite degree.
+
+   For \(x\mapsto t^2\), split a series into its even and odd exponents:
+\[
+ k[[t]]=k[[t^2]]\oplus t\,k[[t^2]].
+ \tag{SAX2}
+\]
+This gives a free module of rank two over the image. The image fraction field consists of Laurent series with even exponents, so it does not contain \(t\). This calculation uses no division by two and applies also in characteristic two. Finiteness alone therefore does not imply the birational assertion in (SA2).
+
+2. For each residue class modulo three, the least exponent in the semigroup generated by three and four is respectively \(0,4,8\). Grouping the terms of a series by these classes gives
+\[
+ B=k[[t^3]]\oplus t^4k[[t^3]]\oplus t^8k[[t^3]],
+ \qquad
+ R=k[[t^3]]\oplus t\,k[[t^3]]\oplus t^2k[[t^3]].
+ \tag{SAX3}
+\]
+For completeness, the semigroup contains \(6,7,8\), and adding three proves it contains every integer at least six. Its missing nonnegative exponents are exactly \(1,2,5\). The displayed descriptions also show that each series with the allowed exponents is the indicated substitution of a formal series in \(u,v\).
+
+   The ring \(B\) is a quotient of \(k[[u,v]]\), hence is complete and Noetherian. The second decomposition makes \(R\) finite over \(k[[t^3]]\), and thus finite over \(B\). Moreover \(t=t^4/t^3\) belongs to \(\operatorname{Frac}B\). The same decomposition shows that every series in \(R\) lies in this fraction field: its three coefficient series lie in \(k[[t^3]]\subset B\). Consequently the fraction fields agree. The valuation test for integrality makes \(R\) integrally closed: an element of negative valuation cannot satisfy a monic equation with coefficients of nonnegative valuation, since the leading power would have uniquely smallest valuation. Thus \(R\) is the normalization, as in SA1.
+
+   The classes of \(t,t^2,t^5\) form a \(k\)-basis of \(R/B\). It is a finite-length module over the local ring \(B\), whose residue field is \(k\), so its length is three. Indeed each simple factor is \(k\), and dimensions over \(k\) add in short exact sequences. The maximal ideal of \(B\) is \((t^3,t^4)\). Its least-valuation generator is \(t^3\), and the selected chart adjoins \(t^4/t^3=t\). The decomposition of \(R\) in (SAX3) gives \(B[t]=R\); localization at the selected point leaves this local ring unchanged. Thus surjectivity of the curve image takes one blowup, within the bound \(1\leq\delta=3\).
+
+3. A Laurent series in \(t^2\) belongs to \(k[[t]]\) exactly when its lowest exponent is nonnegative. The intersection is therefore \(k[[t^2]]\). It is closed: if a series has a nonzero coefficient at an odd exponent \(j\), its coset modulo \(t^{j+1}\) cannot be represented by a series in \(t^2\). These cosets give an open complement. In particular the open set \(t+t^2k[[t]]\) misses the intersection, and hence every one of its subrings. None is dense.
+
+   In SA1 the same closedness follows from a finite module rather than a coefficient expansion. The intersection \(C=F\cap R\) is a \(B\)-submodule of the finite module \(R\), hence is finite. EA6–EA7 make the submodule closed in the \(\mathfrak m_B\)-adic topology. Since \(\mathfrak m_BR\) is a nonzero positive uniformizer power, that topology on \(R\) is exactly its valuation topology. This proof works also when the complete local rings have mixed characteristic.
+
+4. A polynomial in \(u\) approximates any element of \(k[[t]]\) to any prescribed finite order. Thus the image of \(D\) is dense. Nevertheless \(x\) and \(y=xu\) both map to zero, so \((x,y)R=0\). Put \(D_0=D\), write \(x=v_0\), and define
+\[
+ D_n=k[u,v_n]_{(u,v_n)},\qquad
+ v_n=u v_{n+1},\qquad
+ x=u^n v_n,\qquad y=u^{n+1}v_n.
+ \tag{SAX4}
+\]
+The next ring is the local ring at the origin of the \(u\)-chart of the point blowup. Each map is injective, since it is substitution in the common rational function field. The extended maximal ideal is \((u,uv_{n+1})=(u)\), so the fixed element is always \(u\), and every residue field is \(k\). The compatible maps send \(u\) to \(t\) and every \(v_n\) to zero. They have the quotient DVR of FA1, while the image of the original maximal ideal remains zero.
+
+   Every \(D_n\) is the two-dimensional regular local ring of a polynomial plane at its origin. The example shows that the fixed-coordinate and residue-field conditions alone do not imply (SA9), even when the original ring has normal completion. It is not a nonregular tower and gives no counterexample to termination. It supplies no argument for removing (SA9) from SA3. \(\square\)
+
 **Theorem 2.4 (full local abelian compatibility; remaining geometric proof obligation).** For every abelian variety over a nonarchimedean local field of characteristic zero, its prime-to-residue-characteristic rational Tate modules have a common Galois-invariant Frobenius-semisimple Weil–Deligne class over \(\overline{\mathbf Q}\).
 
-The potentially good comparison is Lemma 2.3, with the good-model and torsion proofs GQ1–GQ5. For supplied integral period data, PM1–PM8 give the full inertia matrix, ramification normalization, finite equivariance, Frobenius-semisimple blocks and actual examples. From a genuine local-field period presentation, PC0–PC8 give the integral period lattice, nondegenerate rational valuation pairing, all torsion levels and transitions, compactness and supplied-map functoriality. FF1–FF8 prove all-integer finite flat multiplication, canonical subgroup closures and extension for finite étale models; FQ1–FQ6 and IS1–IS8 construct finite flat quotients, the full integral torus-by-abelian quotient sequence, good reduction under isogeny and transfer of genuine period presentations through arbitrary isogenies. DR1–DR8 construct divisor parameter schemes, full collision algebras and finite flat ordered and addition maps. JC1–JC9 construct pointed curve Picard components and Jacobians over arbitrary fields, their universal rigidified line bundles, full nonreduced families, field descent, high-degree projective-bundle Abel maps and tangent differentials. AL1–AL8 in §2L gives the Albanese property on full parameter schemes,finite-curve norm and pullback maps,their degree and composition identities,and the infinitesimal trace. CD1–CD8 in §2M constructs one smooth projective geometrically integral marked curve after a finite separable extension and a smooth surjective map from its Jacobian, with its full kernel and rational Tate sequence. NL1–NL8 in §2N constructs a curve test for the full normalized translation-line family, its finite ample kernel and a finite flat isogeny onto an abelian subvariety of a curve Jacobian, with descended line and saturated Tate image. NR1–NR8 in §2O proves the coherent degree-one dimension,constructs abelian complements over the original field and makes the dominating curve Jacobian an isogeny product with a factor isogenous to the given abelian variety,with full kernel degrees and rational Tate projectors. NC1–NC8 in §2P constructs split nodal curves and their full-family generalized Jacobians,with cycle-character torus,component-Jacobian quotient,normalization cohomology,full multiplication kernels,Tate sequence and finite actions. NQ1–NQ8 in §2Q constructs the identity formal Picard group of a supplied proper flat nodal family,with every square-zero line lift,unique formal coordinates,prime-to-characteristic torsion lifting and supplied family actions. This does not lift the entire semiabelian special group or construct a model or period covering. NA1–NA8 in §2R proves finite locally free and line algebraization on a supplied flat projective model over a complete local base,and constructs a saturated special-fibre Tate submodule of the actual generic Jacobian when the model is normal and integral. Model existence,the whole semiabelian lift and the initial period covering remain to be constructed. NS1–NS8 in §2S constructs a flat projective closure of an embedded generic curve and resolves supplied algebraic nodal charts by intrinsic point blowups,with exceptional chains,supplied actions,cycle lattices and ramification. Producing nodal charts after finite extension for an arbitrary curve remains a separate proof obligation. NE1–NE8 in §2T constructs actual algebraic étale node charts from completed split rational special-fibre nodes over a complete DVR,then applies the intrinsic resolution and lifts a generic rational point to a smooth section. It does not produce a nodal special fibre for an arbitrary curve. VP1–VP8 in §2U constructs the vertical Picard exact sequence,intersection matrix and finite numerical torsion obstruction on a supplied regular projective model,and proves prime-to-characteristic Picard specialization to its reduced fibre. General regular-model existence,minimalization and the geometric inequalities forcing nodal reduction remain to be proved. RC1–RC8 in §2V proves the prime-to-characteristic Picard-torsion rank of any connected reduced proper curve over an algebraically closed field,with an exact conductor defect and multicross equality criterion. This supplies the reduced-curve bound;the Gorenstein-to-nodal step and model-existence inequalities remain separate. CN1–CN8 in §2W proves local Ext change of rings,completion comparison,Artin and canonical-module duality,and the Gorenstein type-one criterion. It proves that equality in the reduced-curve torsion bound forces the reduced fibre of a supplied regular model to be nodal. Applying NE to the model still requires the original fibre to be reduced. MG1–MG8 in §2X proves actual primitive-cycle constants and cohomology,Euler and genus formulas,the component-graph defect,and strict genus loss for a nonreduced primitive fibre under numerical minimality. It proves a conditional reduced nodal-fibre criterion once the actual generic torsion rank and numerical obstruction bound are supplied. Regular-model construction remains to be proved. UB1–UB8 in §2Y proves the uniform genus-dependent obstruction-rank bound for numerically minimal models with algebraically closed residue field,including all long path and fork cases. It chooses the prime before separable torsion splitting and proves nodality for a supplied numerically minimal model after that extension. Initial regular-model construction remains required. EC1–EC8 in §2Z constructs projective exceptional-curve contractions,proves the regular local ring and blowup description,and gives their Picard and numerical transformations. It constructs terminating numerical minimalization,with supplied finite actions,and then a nodal model from a supplied regular projective model after the UB torsion-splitting extension. Initial regular-model existence remains required. RB1–RB8 in §2AA constructs finite unramified residue lifts,geometric component splitting and minimalization over a finite base,and proves the perfect-residue-field passage to an actual finite split nodal model from a supplied regular model. This covers the finite residue fields of the local-field theorem. Initial regular-model existence and the whole semiabelian lift and analytic covering remain required. TN1–TN8 in §2AB constructs a finite normal projective model of the smooth characteristic-zero generic curve by trace enclosures on the two projective-line charts. A finite group of base-field automorphisms extends to such a normal model through an invariant rational function. Resolution to a regular model,with equivariance when required,remains to be constructed. BP1–BP8 in §2AC proves terminating ideal principalization by regular point blowups,with residue-degree-weighted colength decrease and finite actions. It dominates arbitrary proper modifications of a regular local surface,without an assumed projective embedding,and proves their first structure-sheaf cohomology vanishes when the modification is normal. These are regular-base statements; resolution of the singular normal model requires a terminating desingularization argument. FM1–FM8 in §2AD constructs finite-cover domination over regular modifications,including residue characteristics dividing the auxiliary Galois group order. It proves finite normalization for proper birational models and their localizations,an exceptional Cartier intersection obstruction,and injectivity of first cohomology into the punctured surface. HB1–HB8 in §2AE gives a uniform length bound for normal modifications of local finite covers in the complete-DVR setting with perfect residue field. HR1–HR8 in §2AF gives rational local models, normal maximal-ideal blowups and the full ideal-power and exceptional-curve cohomology. QD1–QD8 in §2AG gives finite point-blowup domination, full reflexive transforms and simultaneous rank-one principalization with supplied finite actions. DC1–DC8 in §2AH constructs dualizing modules on finite normal surface charts and the initial finite normal model, with finite-map evaluation, Cartier reduction, the type-one criterion and completion. Proper birational canonical comparison and a terminating normal-surface resolution argument are additionally required. A curve acquires a rational point after a finite separable extension. For an arbitrary abelian variety, the remaining geometric work includes the semistable curve and formal/analytic constructions producing the initial integral extension and genuinely locally covering period maps, with finite point-lifting, kernel and compatible finite-action properties. Identification with a separately constructed dual-model pairing requires its own duality argument. Deligne’s freely accessible Example 8.10, printed p.571, states the full theorem without proving it and does not discharge these constructions. The theorem is retained in full generality; its full proof is not claimed complete.
+The potentially good comparison is Lemma 2.3, with the good-model and torsion proofs GQ1–GQ5. For supplied integral period data, PM1–PM8 give the full inertia matrix, ramification normalization, finite equivariance, Frobenius-semisimple blocks and actual examples. From a genuine local-field period presentation, PC0–PC8 give the integral period lattice, nondegenerate rational valuation pairing, all torsion levels and transitions, compactness and supplied-map functoriality. FF1–FF8 prove all-integer finite flat multiplication, canonical subgroup closures and extension for finite étale models; FQ1–FQ6 and IS1–IS8 construct finite flat quotients, the full integral torus-by-abelian quotient sequence, good reduction under isogeny and transfer of genuine period presentations through arbitrary isogenies. DR1–DR8 construct divisor parameter schemes, full collision algebras and finite flat ordered and addition maps. JC1–JC9 construct pointed curve Picard components and Jacobians over arbitrary fields, their universal rigidified line bundles, full nonreduced families, field descent, high-degree projective-bundle Abel maps and tangent differentials. AL1–AL8 in §2L gives the Albanese property on full parameter schemes,finite-curve norm and pullback maps,their degree and composition identities,and the infinitesimal trace. CD1–CD8 in §2M constructs one smooth projective geometrically integral marked curve after a finite separable extension and a smooth surjective map from its Jacobian, with its full kernel and rational Tate sequence. NL1–NL8 in §2N constructs a curve test for the full normalized translation-line family, its finite ample kernel and a finite flat isogeny onto an abelian subvariety of a curve Jacobian, with descended line and saturated Tate image. NR1–NR8 in §2O proves the coherent degree-one dimension,constructs abelian complements over the original field and makes the dominating curve Jacobian an isogeny product with a factor isogenous to the given abelian variety,with full kernel degrees and rational Tate projectors. NC1–NC8 in §2P constructs split nodal curves and their full-family generalized Jacobians,with cycle-character torus,component-Jacobian quotient,normalization cohomology,full multiplication kernels,Tate sequence and finite actions. NQ1–NQ8 in §2Q constructs the identity formal Picard group of a supplied proper flat nodal family,with every square-zero line lift,unique formal coordinates,prime-to-characteristic torsion lifting and supplied family actions. This does not lift the entire semiabelian special group or construct a model or period covering. NA1–NA8 in §2R proves finite locally free and line algebraization on a supplied flat projective model over a complete local base,and constructs a saturated special-fibre Tate submodule of the actual generic Jacobian when the model is normal and integral. Model existence,the whole semiabelian lift and the initial period covering remain to be constructed. NS1–NS8 in §2S constructs a flat projective closure of an embedded generic curve and resolves supplied algebraic nodal charts by intrinsic point blowups,with exceptional chains,supplied actions,cycle lattices and ramification. Producing nodal charts after finite extension for an arbitrary curve remains a separate proof obligation. NE1–NE8 in §2T constructs actual algebraic étale node charts from completed split rational special-fibre nodes over a complete DVR,then applies the intrinsic resolution and lifts a generic rational point to a smooth section. It does not produce a nodal special fibre for an arbitrary curve. VP1–VP8 in §2U constructs the vertical Picard exact sequence,intersection matrix and finite numerical torsion obstruction on a supplied regular projective model,and proves prime-to-characteristic Picard specialization to its reduced fibre. General regular-model existence,minimalization and the geometric inequalities forcing nodal reduction remain to be proved. RC1–RC8 in §2V proves the prime-to-characteristic Picard-torsion rank of any connected reduced proper curve over an algebraically closed field,with an exact conductor defect and multicross equality criterion. This supplies the reduced-curve bound;the Gorenstein-to-nodal step and model-existence inequalities remain separate. CN1–CN8 in §2W proves local Ext change of rings,completion comparison,Artin and canonical-module duality,and the Gorenstein type-one criterion. It proves that equality in the reduced-curve torsion bound forces the reduced fibre of a supplied regular model to be nodal. Applying NE to the model still requires the original fibre to be reduced. MG1–MG8 in §2X proves actual primitive-cycle constants and cohomology,Euler and genus formulas,the component-graph defect,and strict genus loss for a nonreduced primitive fibre under numerical minimality. It proves a conditional reduced nodal-fibre criterion once the actual generic torsion rank and numerical obstruction bound are supplied. Regular-model construction remains to be proved. UB1–UB8 in §2Y proves the uniform genus-dependent obstruction-rank bound for numerically minimal models with algebraically closed residue field,including all long path and fork cases. It chooses the prime before separable torsion splitting and proves nodality for a supplied numerically minimal model after that extension. Initial regular-model construction remains required. EC1–EC8 in §2Z constructs projective exceptional-curve contractions,proves the regular local ring and blowup description,and gives their Picard and numerical transformations. It constructs terminating numerical minimalization,with supplied finite actions,and then a nodal model from a supplied regular projective model after the UB torsion-splitting extension. Initial regular-model existence remains required. RB1–RB8 in §2AA constructs finite unramified residue lifts,geometric component splitting and minimalization over a finite base,and proves the perfect-residue-field passage to an actual finite split nodal model from a supplied regular model. This covers the finite residue fields of the local-field theorem. Initial regular-model existence and the whole semiabelian lift and analytic covering remain required. TN1–TN8 in §2AB constructs a finite normal projective model of the smooth characteristic-zero generic curve by trace enclosures on the two projective-line charts. A finite group of base-field automorphisms extends to such a normal model through an invariant rational function. Resolution to a regular model,with equivariance when required,remains to be constructed. BP1–BP8 in §2AC proves terminating ideal principalization by regular point blowups,with residue-degree-weighted colength decrease and finite actions. It dominates arbitrary proper modifications of a regular local surface,without an assumed projective embedding,and proves their first structure-sheaf cohomology vanishes when the modification is normal. These are regular-base statements; resolution of the singular normal model requires a terminating desingularization argument. FM1–FM8 in §2AD constructs finite-cover domination over regular modifications,including residue characteristics dividing the auxiliary Galois group order. It proves finite normalization for proper birational models and their localizations,an exceptional Cartier intersection obstruction,and injectivity of first cohomology into the punctured surface. HB1–HB8 in §2AE gives a uniform length bound for normal modifications of local finite covers in the complete-DVR setting with perfect residue field. HR1–HR8 in §2AF gives rational local models, normal maximal-ideal blowups and the full ideal-power and exceptional-curve cohomology. QD1–QD8 in §2AG gives finite point-blowup domination, full reflexive transforms and simultaneous rank-one principalization with supplied finite actions. DC1–DC8 in §2AH constructs dualizing modules on finite normal surface charts and the initial finite normal model, with finite-map evaluation, Cartier reduction, the type-one criterion and completion. PD1–PD10 in §2AI constructs projective canonical modules, the proper birational trace, Cartier curve duality, exceptional adjoint generation and a finite rational Gorenstein modification, with supplied finite actions. CA1–CA4 in §2AJ identifies the exceptional conics and gives a conormal-torsion termination bound along a supplied quotient arc whose generic localization is a discrete valuation ring. FA1–FA3 in §2AK constructs the complete quotient arc for a fixed exceptional coordinate and constant residue fields, compares the completed local rings and proves termination when the initial completion is normal. QB1–QB4 in §2AL proves the quadratic-ideal lemma over arbitrary residue fields and resolves the nonsquare exceptional-conic case under normal initial completion. SA1–SA3 in §2AM proves finite generation of complete arc images, regularization of a singular curve image by a normalization-length bound, and termination of a nonvertical fixed-coordinate tail over the original normal completion. The double-line case, vertical tails and the required completion-normality hypotheses remain necessary for general rational Gorenstein surface resolution. A curve acquires a rational point after a finite separable extension. For an arbitrary abelian variety, the remaining geometric work includes the semistable curve and formal/analytic constructions producing the initial integral extension and genuinely locally covering period maps, with finite point-lifting, kernel and compatible finite-action properties. Identification with a separately constructed dual-model pairing requires its own duality argument. Deligne’s freely accessible Example 8.10, printed p.571, states the full theorem without proving it and does not discharge these constructions. The theorem is retained in full generality; its full proof is not claimed complete.
 
 For an elliptic curve the local classification gives every case without invoking the unproved higher-dimensional part. At good places use (6) and \(N=0\). At potentially good places use Lemma 2.3. At potentially multiplicative places use the Tate-curve proof and its quadratic descent in *Elliptic curves over local fields and their Weil–Deligne representations*, §§3–5: the common quadratic splitting character \(\eta_v\) and the common block are
 \[

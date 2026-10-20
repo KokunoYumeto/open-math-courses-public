@@ -10615,7 +10615,7 @@ With the matrix Haar density, the compact part of \(P_n\) has volume \(\prod_{j=
 \]
 the matrix Haar volume of \(\mathrm{GL}_n(\mathcal O)\). The centre contributes the first factor. This checks both the projective density and the central normalization.
 
-The conclusion of Theorem 6.284 is existence of a Whittaker functional. Its proof supplies neither its dimension nor uniqueness of a generic irreducible at a given cuspidal support. Generic pseudo-coefficient trace isolation, integral representation transfer and exact global spectral extraction remain additional assertions.
+The conclusion of Theorem 6.284 is existence of a Whittaker functional. Its proof supplies neither its dimension nor uniqueness of a generic irreducible at a given cuspidal support. The generic pseudo-coefficient identity is Theorem 6.374. Integral representation transfer and exact global spectral extraction require further arguments.
 
 
 ### 6.46 Transpose symmetry and Whittaker uniqueness
@@ -10814,7 +10814,7 @@ The implication follows by choosing \(f=e_J\) for any vector fixed by \(J\). Thi
 <figcaption>Figure 32. The maps, their kernels and the transpose relation are (6.651) and (6.654)–(6.655). The connecting lines express the bilinear-kernel comparison, followed by the common quotient. No Hilbert closure or bounded Whittaker evaluation is required.</figcaption>
 </figure>
 
-Whittaker uniqueness and the genericity theorem do not alone classify generic irreducibles or isolate a discrete series among them by a compact trace test. Those assertions, individual transfer-coefficient integrality and the full local and global representation correspondences require additional arguments.
+Whittaker uniqueness and the genericity theorem do not alone classify generic irreducibles or isolate a discrete series among them by a compact trace test. The generic factorization and trace identity are Theorems 6.373–6.374. Individual transfer-coefficient integrality and the full local and global representation correspondences require additional arguments.
 
 
 ### 6.47 Whittaker coinvariants of induction and actual induced traces
@@ -11409,7 +11409,7 @@ For an arbitrary irreducible admissible \(G_3\)-module, (6.703) permits exactly 
  \end{array}
 \tag{6.714}
 \]
-The two ordered patterns \((2,1)\) and \((1,2)\) are both retained here; the existence proof has not identified their induced modules. If the original module is generic, it is the unique generic occurrence in its chosen cuspidal embedding. General composition and irreducibility criteria, generic trace isolation, and the local and global representation correspondences require further arguments.
+The two ordered patterns \((2,1)\) and \((1,2)\) are both retained here; the existence proof has not identified their induced modules. If the original module is generic, it is the unique generic occurrence in its chosen cuspidal embedding. The exact generic factorization and segment-product criterion are Theorem 6.373 and Corollary 6.375; the generic trace identity is Theorem 6.374. General nongeneric composition questions and the local and global representation correspondences require further arguments.
 
 <figure class="induction-modulus-diagram" style="margin:1.2rem 0;overflow-x:auto">
 <svg xmlns="http://www.w3.org/2000/svg" width="744" height="330" viewBox="0 0 744 330" role="img" aria-labelledby="induction-modulus-title induction-modulus-desc">
@@ -12602,9 +12602,852 @@ Finally \(\rho\not\simeq\nu\rho\): at \(\varpi_FI_a\), their central characters 
 <figcaption>Figure 49. A highest derivative of index k less than n has positive remaining rank. Lemma 6.342 forces two cuspidals related by ν among the exact original labels. Their absence excludes a degenerate submodule and yields Theorem 6.343. The connecting lines are logical implications, with no metric or converse assertion; compare Bernstein–Zelevinsky, Sections 4.7–4.8 of the free NUMDAM edition linked below.</figcaption>
 </figure>
 
-The sufficient criterion and shifted-support lemma do not identify where a generic constituent sits when some cuspidals differ by \(\nu\). That placement is required for the full generic Kirillov construction and for isolation of noncuspidal discrete series.
+The ordered criterion in Theorem 6.348 determines a suitable inducing order for the generic constituent even when some cuspidals differ by \(\nu\). Theorem 6.349 gives the resulting full generic Kirillov construction. Theorem 6.374 isolates each split discrete series among all generic irreducibles with its central character.
 
 The normalized functors and highest-derivative pairing may be compared with Bernstein–Zelevinsky, [the free NUMDAM edition](https://www.numdam.org/item/10.24033/asens.1333.pdf), Sections 3.2–3.8 and 4.7–4.8. The module filtration here follows directly from Theorem 6.320 and the explicit relation calculation (6.821).
+
+
+### 6.54 Ordered cuspidal induction and the full generic Kirillov model
+
+Let \(G_n=\mathrm{GL}_n(F)\), where \(F\) is a nondiscrete nonarchimedean local field of either characteristic. All modules have complex scalars. Retain the normalized functors (6.810), \(\nu=|\det|\), \(G_0=P_1=1\), and the fixed nontrivial additive character \(\psi\). Besides ordinary normalized induction \(\rho\times\sigma\), use the following two products. For \(k,m\ge1\), with \(\rho\) on \(G_k\), \(\tau\) on \(P_m\), and \(n=k+m\), put
+\[
+ \begin{split}
+ \rho\star\tau
+  &=\operatorname{cInd}_{(G_k\times P_m)U_{k,m}}^{P_n}
+        \bigl(\nu(A)^{m/2}\nu(B)^{-k/2}\rho\otimes\tau\bigr),\\
+ \tau\diamond\rho
+  &=\operatorname{cInd}_{H_{m,k}}^{P_n}
+        \bigl(\nu(A)^{k/2}\nu(B)^{-m/2}\tau\otimes\rho\bigr),\\
+ H_{m,k}&=\left\{\begin{pmatrix}A&X&b\\0&B&0\\0&0&1\end{pmatrix}:
+ A\in G_{m-1},\ B\in G_k,\ X\in M_{m-1,k}(F),\ b\in F^{m-1}\right\}.
+ \end{split}
+\tag{6.826}
+\]
+In the first line, \(B\in P_m\) occupies the last \(m\) standard indices and \(U_{k,m}\) is the upper rectangle. In the second, \(\tau\) acts on \(\left(\begin{smallmatrix}A&b\\0&1\end{smallmatrix}\right)\) at indices \((1,\ldots,m-1,n)\), and \(\rho\) acts on the middle \(k\) indices. Both displayed covariances include all normalizations; the rectangle acts trivially. In particular,
+\[
+ \delta_{M_{m-1,k}}(A,B)^{1/2}\nu(B)^{-1/2}
+                =\nu(A)^{k/2}\nu(B)^{-m/2}.
+\tag{6.827}
+\]
+The extra negative half-power on \(B\) is part of \(\diamond\). It cannot be omitted. Products with a \(G_0\)-module mean tensoring by its vector space. A term involving the zero functor \(\Phi_1^-\) is zero; no group \(P_0\) is used.
+
+**Lemma 6.344 — a twisted relative affine section integral.** Let \(N=F^l\) be a column space, let \(M\subset G_l\) be closed, and suppose \(M\) fixes a character \(\theta\) of \(N\). Let \(R\subset M\) be closed, let \(W\subset N\) be an \(R\)-stable linear subspace, and let \(\eta\) be a smooth \(R\ltimes W\)-module. For \(P=M\ltimes N\), the integral
+\[
+ \begin{split}
+ \mathcal Qf(m)&=\int_{W\backslash N}\theta(x)^{-1}[f(xm)]\,d\bar x,\\
+ \left(\operatorname{cInd}_{R\ltimes W}^{P}\eta\right)_{N,\theta}
+       &\simeq\operatorname{cInd}_{R}^{M}
+                   \bigl(\kappa\otimes\eta_{W,\theta|_W}\bigr),\qquad
+ \kappa(r)=\frac{|\det(r|_N)|}{|\det(r|_W)|}
+ \end{split}
+\tag{6.828}
+\]
+is onto and has exactly the algebraic twisted relation kernel. The quotient \(R\backslash M\) need not be compact.
+
+**Proof: the fibre integral.** Put \(Y=\operatorname{cInd}_W^N\eta\). Choose increasing compact lattices exhausting \(N\). For any \(y\in Y\), one such \(K\) has support in \(WK\). Twisted averaging gives \(y_K=E_{K,\theta}y\), determined by \(v=y_K(0)\), with \(\eta(w)v=\theta(w)v\) for \(w\in W\cap K\). Its integral is
+\[
+ q(y)=\frac{\operatorname{vol}K}{\operatorname{vol}(W\cap K)}[v],\qquad
+ (E_{L,\theta}y_K)(0)=
+ \frac{\operatorname{vol}K\operatorname{vol}(W\cap L)}
+      {\operatorname{vol}L\operatorname{vol}(W\cap K)}
+                     E_{W\cap L,\theta}v\quad(L\supset K).
+\tag{6.829}
+\]
+These are direct compact quotient integrals, as in (6.659)–(6.660). If \(q(y)=0\), express \(v\) by finitely many twisted \(W\)-relations and choose \(L\) containing their translating elements. The last average is zero, and \(E_{L,\theta}y_K\) is consequently zero on its entire support \(WL\). Thus the kernel is the algebraic relation space. Conversely any fibre quotient vector is attained by a section supported on \(WK\), whose value is a small \(W\cap K\)-average of a lift; the first positive scalar in (6.829) can be inverted. This proves the fibre assertion. All vector integrals are finite sums after a compact-open partition.
+
+**Proof: sections in stages and the uniform kernel.** The exact stage maps are \(f\mapsto[m\mapsto(x\mapsto f(xm))]\) and their inverse by evaluation. Their \(R\)-action on \(Y\) is \((r y)(x)=\eta(r)y(r^{-1}x)\). It is smooth: a compact section is determined by finitely many cosets \(W x_i K\) and fibre values; a small subgroup of \(R\) preserves \(K\), fixes those values and has \(r^{-1}x_i\in x_i+K\). Compact support in stages gives finitely many values \(y_i\) on compact representative sets \(C_i\subset M\). Their fibre supports and the \(C_i\) give compact support of the inverse section modulo \(R\ltimes W\). A single small last-column lattice fixes the inverse section, since all conjugates needed over the finitely many compact \(C_i\) lie in prescribed stabilizing neighborhoods. Together with its open right \(M\)-stabilizer this proves actual smoothness. Restriction proves the converse.
+
+Compact induction from a closed \(R\) is exact here without compactness of the whole quotient. At a compact open right level \(J\subset M\), a compact section has only finitely many nonzero double-coset values at \(Rm_iJ\). These values lie in invariants under the compact group \(R\cap m_iJm_i^{-1}\). Lift each by that compact average in a surjective fibre map, keeping all other coset values zero. The resulting section is still compactly supported modulo \(R\) and right \(J\)-invariant. Injections and kernels are pointwise. This proves exactness.
+
+Changing variables in the fibre integral gives \(q(r y)=\kappa(r)\eta(r)q(y)\), since \(R\) preserves \(\theta\). Exact compact induction therefore makes (6.828) onto. If it kills \(f\), its finite values \(y_i\) on \(C_i\) lie in \(\ker q\). By (6.829), take lattices \(K_i\) whose twisted averages annihilate them. The union of \(\{m^{-1}x:m\in C_i,\ x\in K_i\}\) is compact, so it lies in one lattice \(K\). For \(m\in C_i\), \(mK\supset K_i\), and the twisted \(mK\)-average kills \(y_i\). The fixed character is unchanged under these conjugations. Hence \(E_{K,\theta}f=0\) everywhere, using covariance on the other representatives. Averaging differences are finite sums of twisted translation differences of smooth vectors. Conversely the integral kills every such difference. This proves the exact kernel. \(\square\)
+
+**Theorem 6.345 — the two-orbit mirabolic restriction.** For all smooth \(\rho\) on \(G_a\) and \(\sigma\) on \(G_b\), with \(a,b>0\), there is an exact sequence
+\[
+ 0\longrightarrow(\rho|_{P_a})\diamond\sigma
+ \longrightarrow(\rho\times\sigma)|_{P_{a+b}}
+ \longrightarrow\rho\star(\sigma|_{P_b})\longrightarrow0.
+\tag{6.830}
+\]
+No splitting is asserted.
+
+**Proof: both orbits and their charts.** Set \(N=a+b\), let \(Q\) be the ordinary \((a,b)\)-parabolic, and let \(E_a\) be the first standard column subspace. The quotient \(Q\backslash G_N\) identifies with the Grassmannian by \(Qg\mapsto g^{-1}E_a\). The mirabolic group preserves the last row \(e_N\). It has a closed orbit of planes inside \(\ker e_N\) and an open orbit of planes not contained there. It is transitive on each: in the closed case complete a basis of the plane inside \(F^{N-1}\); in the open case choose a basis of its intersection with that hyperplane and one vector \(y+e_N\), and use the upper-right translation to remove \(y\).
+
+These operations give local sections, not just a set-theoretic orbit description. On a Grassmann pivot chart, choose the unique column basis with its specified pivot rows equal to the identity. Complete it by the nonpivot standard columns. On the closed orbit this gives \(C\in G_{N-1}\); \(\operatorname{diag}(C^{-1},1)\) sends the plane to \(E_a\). On an open chart choose pivots \(J\cup\{N\}\), with \(|J|=a-1\). The first \(a-1\) basis columns have last coordinate zero and the last is \(y+e_N\). Complete the first columns to \(C\in G_{N-1}\). The matrix \(\left(\begin{smallmatrix}C^{-1}&-C^{-1}y\\0&1\end{smallmatrix}\right)\) sends the plane to \(\operatorname{span}(e_1,\ldots,e_{a-1},e_N)\). Every matrix entry and its inverse in these charts is rational with a nonzero pivot denominator, hence continuous. Their restrictions to compact open subcharts give local trivializations for smooth section values.
+
+Take the identity as the closed representative. For the open representative use the permutation matrix \(w\) with
+\[
+ w e_i=e_i\ (i<a),\qquad w e_i=e_{i+1}\ (a\le i<N),\qquad
+                              w e_N=e_a.
+\tag{6.831}
+\]
+Thus \(w^{-1}E_a=\operatorname{span}(e_1,\ldots,e_{a-1},e_N)\). The closed stabilizer \(Q\cap P_N\) is \((G_a\times P_b)U_{a,b}\). In the open stabilizer \(P_N\cap w^{-1}Qw\), the first source block acts on \((1,\ldots,a-1,N)\), the second on \((a,\ldots,N-1)\). The last-row condition forces the bottom-left-to-middle entries to zero. The remaining matrices are exactly \(H_{a,b}\) of (6.826). The source modulus on them is \(\nu(A)^{b/2}\nu(B)^{-a/2}\), exactly the \(\diamond\) covariance, including its extra half-power.
+
+Restriction of a section to an orbit is identified with \(f_w(p)=f(wp)\); its inverse is determined by source covariance. The charts just constructed make these continuous inverses on the associated section bundles. On the closed orbit the full section space has compact quotient support automatically. On the open orbit the kernel of closed restriction has compact quotient support there. Restriction onto the closed orbit is onto: take a finite compact-open chart partition of the support, extend its finitely many fibre values to the chart neighborhoods, and put zero elsewhere. Smoothness follows from the open stabilizers of those values and the continuous matrix transition functions. A section vanishing on the closed subset has compact support in its open complement. Extension by zero and restriction therefore give the exact open/closed sequence, with the two covariances already computed. This proves (6.830). \(\square\)
+
+
+<figure class="two-mirabolic-orbits" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="390" viewBox="0 0 744 390" role="img" aria-labelledby="two-mirabolic-orbits-50-title two-mirabolic-orbits-50-desc"><title id="two-mirabolic-orbits-50-title">The two mirabolic orbits on rank-two planes in four dimensions</title><desc id="two-mirabolic-orbits-50-desc">The ordinary parabolic Q two two quotient is the Grassmannian of two-dimensional column subspaces of F four. The group P four fixes the last row e four. The closed orbit consists of planes inside its kernel F three and has representative span e one e two. The open orbit has representative span e one e four and is obtained by the column permutation e two to e three, e three to e four, e four to e two. The closed module is rho star sigma restricted to P two; the open module is rho restricted to P two diamond sigma. Both source covariances are nu A times nu B inverse. For the open stabilizer, the rectangle half-modulus requires the extra nu B inverse half factor. These are a submodule and a quotient in an exact sequence, without a splitting assertion.</desc><rect x="1" y="1" width="742" height="388" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/><g fill="#fff" stroke="#7395ae"><rect x="24" y="68" width="336" height="180" rx="8"/><rect x="384" y="68" width="336" height="180" rx="8"/></g><g fill="#17354d" font-family="sans-serif" text-anchor="middle" font-size="17"><text x="372" y="31">Q₂,₂ ∖ G₄: two-dimensional planes W ⊂ F⁴; P₄ fixes e₄</text><text x="192" y="99">closed: W ⊂ ker e₄</text><text x="192" y="131">representative ⟨e₁,e₂⟩</text><text x="192" y="163">ρ ⋆ (σ|P₂)</text><text x="192" y="195">source G₂ × P₂</text><text x="192" y="227">covariance ν(A) ν(B)⁻¹</text><text x="552" y="99">open: W ⊄ ker e₄</text><text x="552" y="131">representative ⟨e₁,e₄⟩</text><text x="552" y="163">(ρ|P₂) ⋄ σ</text><text x="552" y="195">source P₂ on (1,4), G₂ on (2,3)</text><text x="552" y="227">same covariance; extra ν(B)⁻¹ᐟ²</text><text x="372" y="284">w: e₂ ↦ e₃, e₃ ↦ e₄, e₄ ↦ e₂; e₁ stays fixed</text><text x="372" y="321">0 → (ρ|P₂) ⋄ σ → (ρ × σ)|P₄ → ρ ⋆ (σ|P₂) → 0</text><text x="372" y="365">Theorem 6.345 and (6.827); exact module maps, no splitting.</text></g></svg>
+<figcaption>Figure 50. The two displayed rank-two planes are exact orbit representatives in Theorem 6.345. Formula (6.831) gives the column permutation and (6.827) gives the extra middle-block half-power. The lower line is the exact support sequence, with no splitting assertion. The drawing records planes, groups and module maps; it has no metric scale. For comparison see Bernstein–Zelevinsky, Section 7.1 of the free NUMDAM edition linked below.</figcaption>
+</figure>
+
+**Theorem 6.346 — the negative derivative product identities.** For all smooth modules in the indicated ranks,
+\[
+ \Psi_n^-(\rho\star\tau)=\rho\times\Psi_m^-\tau,\qquad
+ \Psi_n^-(\tau\diamond\rho)=\Psi_m^-\tau\times\rho,
+\tag{6.832}
+\]
+and
+\[
+ \begin{gathered}
+ \Phi_n^-(\rho\star\tau)=\rho\star\Phi_m^-\tau,\\
+ 0\longrightarrow(\Phi_m^-\tau)\diamond\rho
+ \longrightarrow\Phi_n^-(\tau\diamond\rho)
+ \longrightarrow(\Psi_m^-\tau)\star(\rho|_{P_k})\longrightarrow0.
+ \end{gathered}
+\tag{6.833}
+\]
+All maps are natural. The boundary conventions after (6.827) apply.
+
+**Proof: the common actual quotient map.** Write \(l=n-1\) and \(V=N_n=F^l\). For \(\Psi^-\), the remaining group is \(G_l\), the character is one, and Lemma 6.344 applies directly to the source subgroup. For \(\Phi^-\), the remaining group is \(P_l\), the stabilizer of \(e_l\); write \(Q=P_l\ltimes V\). For either product the projection of its source subgroup to \(G_l\) is a parabolic \(R\). Its \(V\)-intersection is either all \(V\) for \(\star\), or its first \(m-1\) coordinate space for \(\diamond\). The quotient by the source subgroup is a vector bundle over \(R\backslash G_l\): choose a Gaussian representative in the latter quotient and a complement to that \(V\)-intersection. Changes of representative act linearly on the complement quotient. Thus the two Grassmann orbits of Theorem 6.345 pull back to exactly two \(Q\)-orbits, with continuous product charts. The compact section extension and restriction argument in that theorem applies also to this vector bundle; it uses only the compact support of each section, not compactness of the entire bundle.
+
+On the orbit of \(w\), put \(R_w=P_l\cap w^{-1}Rw\), \(W_w=w^{-1}W\), and let \(\eta^w\) be its transported fibre action. Its section module is \(\operatorname{cInd}_{R_w\ltimes W_w}^{Q}\eta^w\). The map to the normalized derivative is explicitly
+\[
+ f_w\longmapsto\left[h\longmapsto
+ \nu(h)^{-1/2}\int_{W_w\backslash V}
+              \psi(-e_lx)[f_w(xh)]\,d\bar x\right],\qquad h\in P_l.
+\tag{6.834}
+\]
+For the ordinary quotient, replace the character by one, take \(h\in G_l\) and the single identity orbit. The integrals are on compactly supported orbit sections. Lemma 6.344 proves surjectivity and the full algebraic kernel on each orbit, uniformly on the compact representative sets of each section. The exterior \(\nu(h)^{-1/2}\) converts its ordinary right action into the normalized derivative action: right translation by \(h_0\) before this exterior factor contributes \(\nu(h_0)^{1/2}\), which is cancelled by the functor normalization. Exact twisted coinvariants pass the orbit support sequence to an exact sequence.
+
+**Proof: all characters and moduli.** For \(\star\), put \(a=k\), \(b=m-1\); its projected parabolic has blocks \((a,b)\) and \(W=V\). The identity closed orbit has \(R_w=(G_a\times P_b)U_{a,b}\). Its fibre character on \(\tau\)'s last column is exactly the standard last-coordinate character. Thus its fibre quotient is \(\rho\otimes\tau_{N_m,\psi_e}\), and its quotient-measure factor \(\kappa\) is one. On the open orbit use (6.831) in dimension \(l\). Transporting \(\psi(e_lx)\) back gives \(\psi(x_a)\). The top \(a\) entries of the source last column act trivially, being in its upper rectangle. A nontrivial value of \(\psi(x_a)\) therefore annihilates every fibre vector. This orbit contributes zero. If \(m=1\), there is only the single orbit, the source is \(\Psi_n^+\rho\), and its nontrivial derivative is zero, as (6.833) requires.
+
+For \(\diamond\), put \(a=m-1\), \(b=k\). At the closed identity orbit, \(R_w=(G_a\times P_b)U_{a,b}\) and \(W_w=F^a\). The character is trivial on \(W_w\), so its fibre is \(\tau_{N_m,1}\otimes\rho|_{P_b}\). At the open orbit use (6.831) with this \(a\). Here \(W_w=\operatorname{span}(e_1,\ldots,e_{a-1},e_l)\), and the transported character is the standard nontrivial character on \(\tau\)'s last column. Its stabilizer in that block is \(P_a\), placed at indices \((1,\ldots,a-1,l)\). The middle block remains \(G_b\), so \(R_w=H_{a,b}\subset P_l\), with its indicated upper rectangle. Both quotient spaces \(V/W_w\) have determinant \(\nu(B)\), giving \(\kappa=\nu(B)\). The source covariance, fibre conversion and target normalization multiply as follows:
+\[
+ \begin{array}{c|c|c}
+ &\kappa&\text{resulting fibre covariance}\\\hline
+ \star,\ \Psi^-\text{ or closed }\Phi^-&1&
+        \nu(A)^{(m-1)/2}\nu(B)^{-k/2}\rho\otimes(\Psi_m^-\tau\text{ or }\Phi_m^-\tau)\\
+ \diamond,\ \Psi^-\text{ or either }\Phi^-&\nu(B)&
+        \nu(A)^{k/2}\nu(B)^{-(m-1)/2}
+                          (\Psi_m^-\tau\text{ or }\Phi_m^-\tau)\otimes\rho .
+ \end{array}
+\tag{6.835}
+\]
+Indeed the source \(\star\) exponents are \((m/2,-k/2)\), conversion of the last-column quotient into its normalized functor adds \(+1/2\) on \(B\), and target normalization subtracts \(1/2\) on both blocks. For \(\diamond\), the source exponents are \((k/2,-m/2)\), the fibre conversion adds \(+1/2\) on \(A\), the quotient integral adds \(+1\) on \(B\), and target normalization subtracts \(1/2\) on each. These give exactly (6.835), for arbitrary block matrices, since each character is a determinant. In the table all fibre actions are restricted to the stabilizers just specified. The closed term is \(\star\) and the open term is \(\diamond\) in their new ranks. With a trivial character and remaining group \(G_l\), the same calculation gives the two ordinary products in (6.832).
+
+If \(m=1\) in \(\diamond\), then \(a=0\) and there is only the closed orbit. Its fibre quotient is \(\tau\), the \(G_0\)-module, and the resulting \(\Phi^-\)-module is \(\tau\otimes\rho|_{P_k}\). The left term in (6.833) is zero. This proves every boundary case and the theorem. \(\square\)
+
+**Lemma 6.347 — positive functors and a noncompact support test.** Where the functors are defined,
+\[
+ \rho\star\Phi_m^+\tau=\Phi_n^+(\rho\star\tau),\qquad
+ \rho\star\Psi_m^+\sigma=\Psi_n^+(\rho\times\sigma).
+\tag{6.836}
+\]
+If \(k>0\), every nonzero \(P_n\)-submodule \(Z\subset\tau\diamond\rho\) has \(\Phi_n^-Z\ne0\).
+
+**Proof: compact induction in stages.** For closed matrix subgroups \(K\subset L\subset G\), the stage maps for bare compact induction are
+\[
+ f\longmapsto[g\longmapsto(h\longmapsto f(hg))],\qquad
+                    F\longmapsto[g\longmapsto F(g)(1)].
+\tag{6.837}
+\]
+They are inverse and respect covariance and right translation. To check the spaces, a compact quotient support intersects each closed fibre \(K\backslash Lg\) in a compact set. Its image in \(L\backslash G\) is compact. Conversely a smooth compact outer section has finitely many values on compact representative sets at one right level. The finite union of the compact supports of those inner values times the representative sets has compact image in \(K\backslash G\). An open right stabilizer of the outer section fixes the evaluated section; a right stabilizer of \(f\) fixes the stage section. This proves the actual compact-section identity, not merely a formal evaluation identity.
+
+Apply it to the first equality in (6.836). Both sides become compact induction from
+\(((G_k\times P_{m-1})U_{k,m-1})N_n\). The last-column character is \(\psi(x_{n-1})\). On the two remaining blocks, the left covariance is
+\(\nu(A)^{m/2}\nu(B)^{-k/2}\nu(B)^{1/2}\); the right covariance is
+\(\nu(A)^{(m-1)/2}\nu(B)^{-k/2}\nu(A)^{1/2}\nu(B)^{1/2}\).
+They agree exactly, as do the fibre actions. For \(\Psi^+\), the whole last column acts trivially on both sides. Restriction of a section to \(G_{n-1}\) and inflation are inverse; both have covariance \(\nu(A)^{m/2}\nu(B)^{(1-k)/2}\). The \(G_0\) boundary is plain tensoring. This proves (6.836).
+
+**Proof: the support test.** If \(\Phi_n^-Z=0\), (6.811) says that \(N_n\) acts trivially on \(Z\). Translate a nonzero section so that \(f(1)\ne0\). It then satisfies \(f(x)=f(1)\ne0\) for every \(x\in N_n\). But
+\[
+ H_{m,k}N_n\text{ is closed in }P_n,\qquad
+ H_{m,k}\backslash H_{m,k}N_n
+       \simeq (H_{m,k}\cap N_n)\backslash N_n\simeq F^k.
+\tag{6.838}
+\]
+The first assertion follows by projecting onto the closed \((m-1,k)\)-parabolic in \(G_{n-1}\). The homeomorphism follows by cancelling its Levi and rectangle on the left; the remaining column quotient is its middle \(k\) entries. Thus the compact quotient support of \(f\) would contain this entire closed noncompact fibre. This is impossible for \(k>0\) over a local field. The case \(m=1\) has the same fibre and needs no first block. \(\square\)
+
+
+<figure class="two-derivative-orbits" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="390" viewBox="0 0 744 390" role="img" aria-labelledby="two-derivative-orbits-51-title two-derivative-orbits-51-desc"><title id="two-derivative-orbits-51-title">The two terms of the nontrivial derivative of the second product</title><desc id="two-derivative-orbits-51-desc">For tau on P m and rho on G k, the source last-column subspace W has dimension m minus one. The nontrivial row quotient has an open orbit where its character on W is nontrivial and a closed orbit where it is trivial. The open submodule is Phi minus tau diamond rho. The closed quotient is Psi minus tau star rho restricted to P k. On both orbits the quotient last-column space has dimension k and determinant nu B. Multiplying source covariance, normalized fibre conversion and normalized target action gives exponents k over two on A and minus m minus one over two on B. The support test requires this affine fibre F k to be a closed noncompact subspace; it is false over finite fields.</desc><rect x="1" y="1" width="742" height="388" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/><g fill="#fff" stroke="#7395ae"><rect x="24" y="62" width="336" height="128" rx="8"/><rect x="384" y="62" width="336" height="128" rx="8"/></g><g fill="#17354d" font-family="sans-serif" text-anchor="middle" font-size="17"><text x="372" y="31">τ on Pₘ; ρ on Gₖ; n = m + k; k &gt; 0</text><text x="192" y="94">open: character on W is ψ</text><text x="192" y="126">submodule (Φ⁻τ) ⋄ ρ</text><text x="192" y="160">W = ⟨e₁,…,eₘ₋₂,eₙ₋₁⟩</text><text x="552" y="94">closed: character on W is 1</text><text x="552" y="126">quotient (Ψ⁻τ) ⋆ (ρ|Pₖ)</text><text x="552" y="160">W = ⟨e₁,…,eₘ₋₁⟩</text><text x="372" y="230">0 → (Φ⁻τ) ⋄ ρ → Φ⁻(τ ⋄ ρ) → (Ψ⁻τ) ⋆ (ρ|Pₖ) → 0</text><text x="372" y="270">both orbit integrals: κ = det(V/W) in absolute value = ν(B)</text><text x="372" y="307">source × κ × fibre × target gives ν(A)ᵏᐟ² ν(B)⁻⁽ᵐ⁻¹⁾ᐟ²</text><text x="372" y="346">closed affine fibre Fᵏ is noncompact: the support test uses this.</text><text x="372" y="375">Theorem 6.346 and Lemma 6.347; finite fields do not give that test.</text></g></svg>
+<figcaption>Figure 51. These are the actual character quotients, quotient-Haar factor and normalized modules in (6.833)–(6.835). The open term is zero at m=1, as specified in the proof. The support test (6.838) uses an infinite local field; its explicit finite-field failure appears in Example 6.351. The text is an algebraic diagram, with no scale. Compare Bernstein–Zelevinsky, Sections 7.2–7.3 of the free NUMDAM edition linked below.</figcaption>
+</figure>
+
+**Theorem 6.348 — the ordered nondegeneracy criterion.** Let \(I=\rho_1\times\cdots\times\rho_s\) with irreducible admissible cuspidals, in the given order. Suppose
+\[
+                   \rho_j\not\simeq\nu\rho_i\qquad(i<j).
+\tag{6.839}
+\]
+Then \(I|_{P_n}\) has no nonzero degenerate submodule, where degenerate means that its top derivative, or full Whittaker quotient, is zero.
+
+**Proof.** Induct on \(s\). For \(s=1\), Corollary 6.302 makes the restriction simple with nonzero top derivative. Suppose \(s>1\), put \(a=\deg\rho_1\), and write \(I=\rho_1\times I_0\), with \(n_0=\deg I_0>0\). If a nonzero degenerate mirabolic submodule existed, choose a simple submodule \(Z\) of it, using finite mirabolic length from Theorem 6.308. It is still degenerate by exactness. Sequence (6.830) gives two possibilities: \(Z\) lies in \((\rho_1|_{P_a})\diamond I_0\), or it injects into \(\rho_1\star(I_0|_{P_{n_0}})\).
+
+In the first case put \(T=\rho_1|_{P_a}\), \(S=T\diamond I_0\). Corollary 6.302 and (6.815) give \(T^{(i)}=0\) for \(i<a\) and a one-dimensional \(T^{(a)}\); choose an identification of this last space with \(\mathbb C\). Iterating (6.832)–(6.833) gives
+\[
+ S^{(i)}=0\ (i<a),\qquad
+ (\Phi^-)^i S=((\Phi^-)^iT)\diamond I_0\ (i<a),\qquad
+                  (\Phi^-)^a S=I_0|_{P_{n_0}}.
+\tag{6.840}
+\]
+The last step uses \(\Psi_1^-\mathbb C=\mathbb C\), \(\Phi_1^-\mathbb C=0\) and the boundary term of (6.833). Since all derivatives of \(Z\) below \(a\) vanish, its nonzero derivative filtration implies \((\Phi^-)^{a-1}Z\ne0\). Apply the support test of Lemma 6.347 to its inclusion in \(((\Phi^-)^{a-1}T)\diamond I_0\). It gives \((\Phi^-)^aZ\ne0\). This is a degenerate submodule of \(I_0|_{P_{n_0}}\), since its top derivative is \(Z^{(n)}=0\). The later factors satisfy (6.839), contradicting induction. For \(a=1\) there are zero initial iterations and the same support test applies directly.
+
+In the second case let \(k<n\) be the highest nonzero derivative of \(Z\). The \(\star\) identities give an actual injection
+\[
+                 Z^{(k)}\ \longrightarrow\rho_1\times I_0^{(k)}.
+\tag{6.841}
+\]
+If \(k>n_0\) the right side is zero, so \(k\le n_0\). The right side has an actual finite filtration by \(\rho_1\) times the remaining cuspidal products of \(I_0\), by Theorem 6.340 and exact induction. Hence it is admissible and finite length. Choose an irreducible submodule \(\sigma\subset Z^{(k)}\). Its exact cuspidal datum contains \(\rho_1\): every filtration quotient on the right is a cuspidal induction containing that labelled factor, and Theorem 6.322 gives its entire datum, with multiplicities. Lemma 6.342, applied to \(Z\subset I\), therefore forces \(\nu\rho_1\) among the original factors. It cannot equal \(\rho_1\), by its central absolute value, so it equals some later \(\rho_j\), contrary to (6.839). Both cases are impossible. \(\square\)
+
+**Theorem 6.349 — a faithful generic Kirillov realization.** Let \(V\) be irreducible admissible and generic on \(G_n\). For every nonzero Whittaker functional \(\ell\), the restriction map
+\[
+ V\longrightarrow\operatorname{Ind}_{U_n}^{P_n}\theta_n,
+              \qquad v\longmapsto\bigl[p\longmapsto\ell(\pi(p)v)\bigr]
+\tag{6.842}
+\]
+is injective. Its image contains the compact Whittaker module \(\operatorname{cInd}_{U_n}^{P_n}\theta_n\). The image is the Kirillov model on \(P_n\); it need not consist only of compactly supported sections.
+
+**Proof: an order and the embedding.** For a cuspidal \(\rho\) of rank \(r\), define the real number
+\[
+        t(\rho)=-\frac{\log_q|\omega_\rho(\varpi_F)|}{r},\qquad
+                         t(\nu\rho)=t(\rho)+1.
+\tag{6.843}
+\]
+The central character and its absolute value were proved in Theorem 6.311. Order the exact cuspidal multiset of \(V\) by nonincreasing \(t\). A later factor cannot be \(\nu\) times an earlier one, by the displayed strict increase. Let \(I\) be induction in this order. It has finite length, so choose an irreducible \(G_n\)-submodule \(X\). Theorem 6.348 makes \(X\) generic: otherwise its nonzero restriction would be a degenerate mirabolic submodule. Corollary 6.330 identifies \(X\) with \(V\). Thus \(V\) embeds in this \(I\) and inherits the absence of nonzero degenerate mirabolic submodules.
+
+The map (6.842) is smooth, has the stated left Whittaker covariance and commutes with right \(P_n\)-translation. If its kernel is \(K\), exactness gives
+\[
+ K^{(n)}\hookrightarrow V^{(n)}\simeq\mathbb C,
+           \qquad\ell|_K=0,\qquad K^{(n)}=0.
+\tag{6.844}
+\]
+Indeed \(\ell\) factors through the one-dimensional top quotient and is nonzero there, so is injective on it. The absence of a nonzero degenerate submodule forces \(K=0\). The compact image assertion follows from the canonical layer in Corollary 6.350 below. No irreducibility of the whole mirabolic restriction is asserted. \(\square\)
+
+**Corollary 6.350 — the essential compact socle and mirabolic endomorphisms.** In Theorem 6.349, the restriction of \(V\) has a unique simple submodule, contained in every nonzero mirabolic submodule. It is
+\[
+ S=(\Phi^+)^{n-1}V^{(n)}\simeq
+                       \operatorname{cInd}_{U_n}^{P_n}\theta_n,
+             \qquad\operatorname{End}_{P_n}V=\mathbb C.
+\tag{6.845}
+\]
+The same assertions hold for an ordered cuspidal induction satisfying (6.839). More generally, between any two smooth mirabolic modules with one-dimensional top derivative and no nonzero degenerate submodule, the Hom space has dimension at most one and every nonzero map is injective. If \(V\) is cuspidal, its whole Kirillov image is the compact module.
+
+**Proof.** Iterating (6.811) identifies the deepest layer of the derivative filtration with \((\Phi^+)^{n-1}V^{(n)}\), as an actual submodule, and its top quotient maps isomorphically onto \(V^{(n)}\). This space is one-dimensional. Each \(\Phi^+\) preserves simple modules, so the layer is simple. Compact induction in stages, (6.837), identifies it with the displayed compact Whittaker module: the nested last columns multiply to \(U_n\), their characters multiply to \(\theta_n\), and every normalizing character is one on this unipotent source. At each intermediate induction, multiplying sections by the corresponding determinant character moves that character to the inducing subgroup, as in the proof of (6.818); its restriction to the ultimate unipotent source is one. The character multiplication follows entry by entry from the adjacent entries of successive last columns.
+
+A nonzero submodule \(Z\subset V|_{P_n}\) has \(Z^{(n)}\ne0\). Its inclusion in \(V^{(n)}\) is therefore an isomorphism of one-dimensional spaces. Naturality of the deepest layer embeds its compact simple layer onto \(S\); hence \(S\subset Z\). This proves essentiality and uniqueness. For a mirabolic endomorphism \(T\), its top derivative is a scalar \(c\). Exactness gives
+\[
+             \bigl(\operatorname{im}(T-c)\bigr)^{(n)}=0.
+\tag{6.846}
+\]
+The image is a mirabolic submodule and therefore must be zero. Thus every endomorphism is scalar, even though the restriction need not be simple. More generally, a map between two smooth mirabolic modules with these top-derivative and nondegeneracy properties that kills the source compact socle has zero top derivative, because that socle maps isomorphically on top derivatives. Its image is then a degenerate submodule of the target and must be zero. Restriction to the source socle therefore injects the Hom space into maps between the two simple compact socles, a one-dimensional space by the equivalence of Lemma 6.336. A nonzero map cannot have a nonzero kernel, since that kernel would contain the source socle. This proves both assertions about maps.
+
+For completeness, (6.842) maps \(S\) onto the entire compact Whittaker submodule. Evaluation at one gives an explicit adjunction between maps into full smooth Whittaker induction and functionals on the top quotient: a functional \(a\) gives \(s\mapsto[p\mapsto a(ps)]\), and evaluation is its inverse. Consequently this Hom space for \(S\) is one-dimensional. The natural inclusion of compact sections and the restriction of (6.842) are both nonzero maps in it. The latter is nonzero because \(S^{(n)}\to V^{(n)}\) is an isomorphism. They differ by a nonzero scalar, so have the same image. This proves the image assertion in Theorem 6.349 without assuming it there. For an ordered induction, top dimension one follows from Whittaker heredity, and Theorem 6.348 supplies the same absence of degenerate submodules; the identical proof applies. If \(V\) is cuspidal, Corollary 6.302 makes the restriction simple, so it equals \(S\). \(\square\)
+
+**Example 6.351 — a faithful model does not imply an irreducible induction.** In degree two let
+\[
+ I_-=\nu^{-1/2}\times\nu^{1/2},\qquad
+ I_+=\nu^{1/2}\times\nu^{-1/2},\qquad
+ 0\to1\to I_-\to\mathrm{St}\to0,\qquad
+ 0\to\mathrm{St}\to I_+\to1\to0.
+\tag{6.847}
+\]
+These are the proved nonsplit sequences of Example 6.334. The first order violates (6.839) and has the displayed degenerate mirabolic submodule. The second order satisfies (6.839), has no such submodule, and embeds faithfully in full Whittaker induction on \(P_2\), by the kernel argument (6.844). Nevertheless it is reducible as a \(G_2\)-module. The essential compact socle lies properly inside its Steinberg restriction. Indeed (6.340) gives mirabolic length three for \(I_+\), while its trivial quotient has length one; thus the Steinberg restriction has length two, whereas the compact socle is simple. Its mirabolic endomorphism algebra, and that of \(I_+\), is scalar by Corollary 6.350.
+
+A higher example is \(J=\nu\times1\times\nu^{-1}\) on \(G_3\). It satisfies (6.839) in the displayed order. Its derivative filtrations from Theorem 6.340 give
+\[
+ \operatorname{length}_{G_2}J^{(1)}=2+1+2=5,\qquad
+ \operatorname{length}_{G_1}J^{(2)}=3,\qquad
+ \dim J^{(3)}=1,\qquad\operatorname{length}_{P_3}J=9.
+\tag{6.848}
+\]
+Indeed the three first-derivative quotients are \(\nu\times1\), \(\nu\times\nu^{-1}\), and \(1\times\nu^{-1}\). The first and last have length two by (6.847), after twisting, whereas the middle has length one by Theorem 6.343. The second derivative has the three one-dimensional remaining characters, and the top quotient is one-dimensional. Add lengths using (6.816). The induction \(J\) is reducible: induce the nontrivial exact sequence for \(\nu\times1\) with \(\nu^{-1}\); both end modules are nonzero, since a nonzero inducing vector gives a nonzero compact-flag section. Exactness is Theorem 6.306. Thus \(J\) has mirabolic length nine, an essential compact simple socle, scalar mirabolic endomorphisms and a faithful Whittaker realization, while remaining reducible on \(G_3\).
+
+
+<figure class="ordered-generic-kirillov" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="390" viewBox="0 0 744 390" role="img" aria-labelledby="generic-kirillov-52-title generic-kirillov-52-desc"><title id="generic-kirillov-52-title">Ordered induction, a faithful Kirillov map and the essential compact socle</title><desc id="generic-kirillov-52-desc">Order the cuspidals by nonincreasing t rho, where t of nu rho is t rho plus one. The ordered induction has no nonzero degenerate mirabolic submodule. A generic irreducible with this exact data embeds by generic uniqueness. The kernel K of its Whittaker restriction map has zero top derivative and hence is zero. Its image in full Whittaker induction contains the compact simple socle S, which lies in every nonzero submodule. In degree two S has mirabolic length one, Steinberg restriction T length two and the reducible ordered induction I plus restriction A length three, with proper inclusions S inside T inside A. All three have scalar mirabolic endomorphisms; their unequal lengths do not imply that they are simple.</desc><rect x="1" y="1" width="742" height="388" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/><g fill="#fff" stroke="#7395ae"><rect x="24" y="25" width="696" height="64" rx="8"/><rect x="24" y="126" width="314" height="84" rx="8"/><rect x="405" y="126" width="315" height="84" rx="8"/><rect x="24" y="270" width="696" height="73" rx="8"/></g><g fill="none" stroke="#355a7a" stroke-width="2"><path d="M372 89 V112 H181 V126 M372 112 H562 V126 M338 168 H405 M395 162 L405 168 L395 174"/></g><g fill="#17354d" font-family="sans-serif" text-anchor="middle" font-size="17"><text x="372" y="53">t₁ ≥ t₂ ≥ ⋯; t(νρ) = t(ρ) + 1</text><text x="372" y="78">ordered I: no nonzero degenerate Pₙ-submodule</text><text x="181" y="158">generic V embeds in I</text><text x="181" y="190">unique generic exact data</text><text x="562" y="158">Kirillov kernel K: K⁽ⁿ⁾ = 0</text><text x="562" y="190">therefore K = 0</text><text x="372" y="245">compact S ⊂ V|Pₙ ⊂ full Whittaker induction; S is essential</text><text x="372" y="299">degree 2: S[1] ⊂ St|P₂[2] ⊂ I₊|P₂[3]</text><text x="372" y="328">brackets give exact P₂-lengths; each endomorphism algebra is ℂ</text><text x="372" y="372">Theorems 6.348–349, Corollary 6.350 and Example 6.351.</text></g></svg>
+<figcaption>Figure 52. Sorting the real central exponents gives the exact ordered hypothesis (6.839). The kernel argument (6.844) proves a faithful map, and (6.845) identifies the essential compact image. The last row records exact mirabolic lengths, proved in Example 6.351 and Solution 7.41: the Steinberg restriction contains its compact socle properly. Lines denote implications and inclusions, not geometric projections. Compare Bernstein–Zelevinsky, Sections 4.9–4.15 of the free NUMDAM edition linked below.</figcaption>
+</figure>
+
+The local-field support hypothesis is substantive. Over a finite field, the analogous \(\operatorname{Ind}_{G_1(\mathbb F_q)}^{P_2(\mathbb F_q)}1\) is the permutation module on \(\mathbb F_q\). Its nonzero constant functions form a trivial last-column submodule, whose nontrivial character quotient is zero. The fibre in (6.838) is then finite and compact, so that support contradiction is unavailable. Finite orbit and matrix calculations do not prove the local noncompact support test.
+
+For comparison, Bernstein–Zelevinsky, Sections 4.9–4.15 and 7.1–7.3 of the [free NUMDAM edition](https://www.numdam.org/item/10.24033/asens.1333.pdf), treat these products and the generic Kirillov construction. The orbit-section maps, compact kernels and modulus factors needed here are proved above. The segment construction and complete split discrete-series classification are Theorems 6.367 and 6.373. Theorem 6.374 proves generic trace isolation, and Corollary 6.375 gives the full generic-segment product criterion. Individual representation transfers require further arguments.
+
+
+### 6.55 Adjacent cuspidal twists and disconnected generic products
+
+Let \(F\) be a nonarchimedean local field, of either characteristic, let \(q\) be its residue cardinality, and put \(G_n=\mathrm{GL}_n(F)\), \(K_n=\mathrm{GL}_n(\mathcal O_F)\) and \(\nu(g)=|\det g|_F\). Representations are smooth complex representations. Cuspidals and irreducibles in this section are admissible. Products mean normalized parabolic induction. The adjoint of a compact test is \(f^*(g)=\overline{f(g^{-1})}\); these groups are unimodular. A Hermitian form is conjugate-linear in its first variable. The reducibility assertion is related to Zelevinsky, §1.11; the form-continuity argument and the trace obstruction are given below in finite-dimensional terms.
+
+**Lemma 6.352 — invariant forms and finite Hecke spaces.** Fix a unitary cuspidal \(\rho_0\) of \(G_r\), with its original smooth module, and set
+\[
+ I_s=\nu^s\rho_0\times\nu^{-s}\rho_0\qquad(s\in\mathbb R).
+\tag{6.849}
+\]
+Suppose that every \(I_s\) is irreducible. Each \(I_s\) then has a nondegenerate invariant Hermitian form, unique up to a nonzero real factor. For every principal congruence subgroup \(J\subset K_{2r}\), its nonzero fixed space \(E=I_s^J\) is one fixed finite-dimensional vector space, independent of \(s\). The restriction of an invariant nondegenerate form to \(E\) is nondegenerate. With a fixed basis of \(E\), the entire space of matrices satisfying
+\[
+ \mathcal L_s=\{H:H M_s(f)=M_s(f^*)^*H\quad
+                (f\in e_J\mathcal H(G_{2r})e_J)\}
+\tag{6.850}
+\]
+is a complex line; its nonzero matrices are invertible. Here \(M_s(f)\) is the actual action on \(E\), and the last star denotes conjugate transpose. The matrices \(M_s(f)\) are Laurent-polynomial in \(X=q^s\).
+
+**Proof.** The Hermitian dual of a unitary admissible smooth module is that module: on each finite compact fixed space the invariant positive form identifies its conjugate dual by ordinary finite-dimensional linear algebra, and compact averaging makes these identifications compatible. The original smooth vectors are retained by Theorem 6.311. The compact-flag duality used in Lemma 6.342 therefore identifies the smooth Hermitian dual of \(I_s\) with \(I_{-s}\). Theorem 6.329 identifies these two irreducible inductions. An isomorphism to the Hermitian dual gives a nonzero invariant sesquilinear form \(B\). Its adjoint \(B^*(v,w)=\overline{B(w,v)}\) is invariant as well. For a vector fixed by a compact open group, invariance shows that the corresponding functional is fixed by that group, so the adjoint again belongs to the smooth dual. At least one of \(B+B^*\) and \(i(B-B^*)\) is a nonzero Hermitian form. Its radical is an invariant submodule and is zero by irreducibility. Admissible Schur's lemma, proved using finite Hecke spaces in Lemma 6.287, makes any two such forms proportional; Hermitian symmetry makes their proportionality real.
+
+The compact model consists of the same locally constant \(K_{2r}\)-functions for every \(s\): unramified twists are trivial on the compact Levi intersection. Admissibility and the actual matrices are Lemmas 6.296 and 6.333. Write \(e_J\) for normalized compact averaging. It is self-adjoint for every invariant Hermitian form, including an indefinite one. If \(v\in E\) is orthogonal to \(E\), then
+\[
+ B(v,w)=B(e_Jv,w)=B(v,e_Jw)=0\quad(w\in I_s),
+\tag{6.851}
+\]
+so \(v=0\). Thus its Gram matrix \(H_0\) is invertible and satisfies (6.850).
+
+The \(e_J\mathcal H(G)e_J\)-module \(E\) is simple. Indeed a nonzero corner-submodule \(L\subset E\) generates \(I_s\), by irreducibility, and \(e_J\mathcal H(G)L=e_J\mathcal H(G)e_JL=L\), so \(L=E\). If \(H\) is any solution of (6.850), then \(H_0^{-1}H\) commutes with this corner action. A commuting matrix has a complex eigenvalue; its eigenspace is a nonzero invariant subspace, hence all of \(E\). It is scalar. This proves the assertions about \(\mathcal L_s\). Taking adjoints in its defining equations, and replacing \(f\) by \(f^*\), also shows that \(\mathcal L_s\) is stable under conjugate transpose. \(\square\)
+
+**Lemma 6.353 — continuity of the signature.** Under the hypothesis of Lemma 6.352, every \(I_s\) is unitarizable, with its given smooth module.
+
+**Proof: a local analytic matrix, without a finite presentation.** Fix one nonzero fixed space \(E\) of dimension \(d\), and fix \(s_0\). The equations (6.850) are complex-linear in the \(d^2\) entries of \(H\). A finite selection of tests already cuts out the one-dimensional solution space at \(s_0\): starting with all matrices, if the current intersection is larger than \(\mathcal L_{s_0}\), choose an equation that excludes a matrix in that difference. Dimension decreases, so this stops after finitely many choices. The resulting finite constraint matrix \(C(s)\) has real-analytic coefficients and rank \(d^2-1\) at \(s_0\). A nonzero minor of that size stays nonzero on a neighbourhood. For every nearby \(s\), the nonzero full solution line lies in \(\ker C(s)\), so its rank is at most \(d^2-1\). Consequently
+\[
+ \ker C(s)=\mathcal L_s,\qquad \dim\ker C(s)=1
+                    \quad(s\text{ near }s_0).
+\tag{6.852}
+\]
+For \(d=1\) the same statement uses the empty rank-zero minor. No assertion that the Hecke algebra is finitely generated or finitely presented is involved.
+
+Choose a Hermitian \(H_0\in\mathcal L_{s_0}\) and a vector \(v\) with \(v^*H_0v\ne0\). Such a vector exists: if every diagonal value were zero, expanding the values on \(v+w\) and \(v+iw\) would make every matrix coefficient zero. Scale \(H_0\) so that this value is one. Add the equation \(v^*Hv=1\) to the finite system and select a nonsingular square subsystem. Matrix inversion gives a unique real-analytic solution \(H(s)\) near \(s_0\). It solves the full system by (6.852). Its conjugate transpose is another solution with the same normalization, hence is equal to it. Thus
+\[
+ H(s)^*=H(s),\qquad\det H(s)\ne0,\qquad v^*H(s)v=1.
+\tag{6.853}
+\]
+
+Definiteness up to sign and indefiniteness are disjoint open alternatives for this local family. For a positive matrix, the minimum of \(w^*Hw\) on the unit sphere is positive; entrywise continuity preserves a positive lower bound. Negative definiteness is identical after multiplication by \(-1\). For an indefinite matrix choose one positive and one negative vector; their strict signs persist. These alternatives cover every nonsingular Hermitian matrix. Indeed a semidefinite form with an isotropic nonzero vector has a radical: the values on \(v+zw\), for small complex \(z\) of both signs and phases, force \(B(v,w)=0\) for every \(w\). A nonsingular semidefinite form is therefore definite. Multiplication of \(H\) by a nonzero real scalar does not change which alternative holds. The alternatives consequently define disjoint open subsets of the real parameter line, independently of all local choices of normalization. At \(s=0\) normalized induction of the unitary \(\rho_0\otimes\rho_0\) has an invariant positive form by Lemma 6.331. The real line is connected, so every restriction to this fixed \(E\) is definite up to sign.
+
+Repeat this conclusion for every principal congruence subgroup with nonzero fixed vectors. At a fixed \(s\), take a global invariant Hermitian form and scale it to be positive on one nonzero \(J_0\)-fixed vector. Every finer principal fixed space contains that vector. Its definite restriction must have the positive sign. Every smooth vector lies in one of those finer spaces, so the global form is positive definite. Its invariant completion is a strongly continuous unitary representation: orbit continuity holds first on the dense smooth subspace and then on the completion by the isometric action. Compact averaging has the same finite-dimensional image as before, since that image was already complete. Thus the completion has exactly the original smooth module, as in Lemma 6.331. \(\square\)
+
+<figure class="signature-continuity-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="340" viewBox="0 0 744 340" role="img" aria-labelledby="signature-continuity-title signature-continuity-desc">
+<title id="signature-continuity-title">A finite fixed space and its invariant Hermitian line</title>
+<desc id="signature-continuity-desc">Assume every I_s is irreducible. On a fixed finite-dimensional space E, all invariant Gram matrices form a complex line. Finitely many equations have rank d squared minus one locally. Normalization by v star H v equals one yields a real-analytic nonsingular Hermitian matrix. Its signature cannot cross from definite to indefinite without singularity. Positivity at s equals zero therefore forces definiteness for all real s. Finer fixed spaces containing one positive vector give positivity on the whole smooth module.</desc>
+<rect x="1" y="1" width="742" height="338" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<g fill="#fff" stroke="#7395ae"><rect x="23" y="35" width="334" height="79" rx="8"/><rect x="387" y="35" width="334" height="79" rx="8"/><rect x="23" y="154" width="698" height="73" rx="8"/></g>
+<g fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle"><text x="190" y="65">E = I_s^J, fixed finite dimension d</text><text x="190" y="94">all Gram solutions: one line</text><text x="554" y="65">finite matrix C(s), rank d² − 1</text><text x="554" y="94">v*H(s)v = 1, det H(s) ≠ 0</text><text x="372" y="184">definite and indefinite are disjoint open alternatives</text><text x="372" y="212">positive at s = 0 + connected ℝ ⇒ definite everywhere</text><text x="372" y="271">one positive vector fixes the sign on every finer fixed space</text><text x="372" y="309">Lemma 6.353: an invariant positive form on the smooth module</text></g>
+<g stroke="#356a91" stroke-width="2" fill="none"><path d="M357 75 H387 M190 114 V134 H372 V154 M554 114 V134 H372"/></g>
+</svg>
+<figcaption>Figure 53. The maps and ranks are (6.850)–(6.853). Each analytic choice is local in the parameter; positivity on the whole representation follows by compatible signs on nested compact fixed spaces. For the adjacent-cuspidal problem, compare Zelevinsky, §1.11, in the free NUMDAM edition.</figcaption>
+</figure>
+
+**Lemma 6.354 — a uniform unitary trace bound.** Let \(V_s\) be admissible smooth modules realized on a common compact model with \(D=\dim V_s^J\) independent of \(s\). If \(V_s\) is unitarizable, then for every ordinary bi-\(J\)-invariant compact test,
+\[
+ |\operatorname{Tr}V_s(f)|\le D\|f\|_1,
+ \qquad \|f\|_1=\int_G|f(g)|\,dg.
+\tag{6.854}
+\]
+If one such trace is a nonconstant Laurent polynomial in \(q^s\), the modules cannot all be unitarizable for \(s\in\mathbb R\).
+
+**Proof.** In the unitary completion, \(e_J\) is the orthogonal projection onto its original \(D\)-dimensional fixed space. The relation \(f=e_Jfe_J\) makes the integrated operator zero on its orthogonal complement and preserves that fixed space. For a smooth vector the integral is a finite sum over compact cosets; the triangle inequality and the isometric action give operator norm at most \(\|f\|_1\). Density extends this bound to the completion. In an orthonormal basis of the fixed space, each diagonal coefficient has absolute value at most this norm, proving (6.854). The bound does not depend on which invariant positive form realizes the unitary completion. Write a Laurent polynomial as \(p(X)=\sum_{a\le j\le b}c_jX^j\), with extreme nonzero coefficients. If \(b>0\), divide by \(X^b\) and let \(X\to\infty\); if \(a<0\), divide by \(X^a\) and let \(X\to0^+\). Unless it is constant, one of these gives unbounded absolute value. This contradicts (6.854). \(\square\)
+
+**Theorem 6.355 — adjacent cuspidal twists are reducible.** For every cuspidal \(\rho\) of \(G_r\),
+\[
+                         \rho\times\nu\rho
+                         \quad\text{is reducible}.
+\tag{6.855}
+\]
+
+**Proof.** Theorem 6.311 writes \(\rho=\nu^t\rho_0\), with \(t\in\mathbb R\) and unitary \(\rho_0\). Multiplication of a section by the scalar character of its argument identifies twisting an induction with induction of the twisted data; explicitly, send a section \(f(g)\) to \(\nu(g)^{t+1/2}f(g)\), with inverse multiplication by \(\nu(g)^{-t-1/2}\). The covariance and right-translation formulas identify the twisted representations. Hence \(\rho\times\nu\rho\) is the twist by \(\nu^{t+1/2}\) of \(I_{-1/2}\) in (6.849). Twisting has an inverse and preserves irreducibility.
+
+Suppose the module in (6.855) were irreducible. Theorem 6.329 makes \(I_{1/2}\) irreducible as well. For any other real \(s\), the two factors of \(I_s\) cannot be positive \(\nu\)-twists of one another. On the scalar \(\varpi_F1_r\), unitarity of \(\rho_0\) gives
+\[
+ \left|\omega_{\nu^s\rho_0}(\varpi_F1_r)\right|=q^{-rs};
+ \qquad \nu^s\rho_0\simeq\nu^{t'}\rho_0
+                         \Longrightarrow s=t'.
+\tag{6.856}
+\]
+Thus the exceptional equalities would force \(2s=1\) or \(2s=-1\). The sufficient criterion in Theorem 6.343 proves irreducibility at every remaining \(s\). All modules \(I_s\) are therefore irreducible under the supposition, and Lemma 6.353 makes them all unitarizable.
+
+But \(I_0\) and \(I_1\) have distinct exact cuspidal multisets, respectively \(\{\rho_0,\rho_0\}\) and \(\{\nu\rho_0,\nu^{-1}\rho_0\}\), by (6.856). Uniqueness in Theorem 6.322 makes these irreducibles nonisomorphic. Ordinary trace separation, Lemma 6.287, gives a compact test \(f\) with different traces at these two parameters. Take a sufficiently small principal \(J\) so that \(f=e_Jfe_J\). Lemma 6.333 identifies its actual trace with a Laurent polynomial:
+\[
+ \operatorname{Tr}I_s(f)=p(q^s),\qquad p(1)\ne p(q),
+ \qquad D=\dim I_s^J\text{ is independent of }s.
+\tag{6.857}
+\]
+If \(D=0\) both displayed traces would vanish, so \(D>0\). Lemma 6.354 contradicts their simultaneous unitarizability. This proves reducibility. All integrations used compact support and all analytic matrices were finite; the argument applies in either field characteristic. \(\square\)
+
+**Corollary 6.356 — the complete two-cuspidal criterion and its extensions.** For cuspidals \(\rho\) of \(G_a\) and \(\tau\) of \(G_b\), the product is reducible exactly when
+\[
+ a=b,\qquad \tau\simeq\nu\rho\quad\text{or}\quad\rho\simeq\nu\tau.
+\tag{6.858}
+\]
+For the adjacent pair put \(I_+=\nu\rho\times\rho\) and \(I_-=\rho\times\nu\rho\). There are nonisomorphic irreducibles \(S,T\) and nonsplit sequences
+\[
+ \begin{aligned}
+ 0&\longrightarrow S\longrightarrow I_+\longrightarrow T\longrightarrow0,\\
+ 0&\longrightarrow T\longrightarrow I_-\longrightarrow S\longrightarrow0.
+ \end{aligned}
+\tag{6.859}
+\]
+Here \(S\) is generic and \(T\) is nongeneric. Each displayed submodule is the unique nonzero proper submodule. For the standard parabolic with block sizes \((r,r)\),
+\[
+ r_{(r,r)}S\simeq\nu\rho\otimes\rho,\qquad
+ r_{(r,r)}T\simeq\rho\otimes\nu\rho.
+\tag{6.860}
+\]
+Both intertwining spaces between \(I_+\) and \(I_-\) have dimension one, and both composites of nonzero opposite maps are zero.
+
+**Proof.** The nonadjacent cases, including repeated isomorphic factors, are Theorem 6.343; adjacency is Theorem 6.355 and order comparison. Scalar absolute values make \(\rho\) and \(\nu\rho\) nonisomorphic, so Theorem 6.328 gives exactly (6.859), its nonsplitting and the intertwining assertions. Its detector calculation (6.781) gives (6.860). The order \((\nu\rho,\rho)\) satisfies Theorem 6.348, since \(\rho\not\simeq\nu^2\rho\); thus its simple submodule is generic. Whittaker heredity and exactness make its quotient nongeneric. The opposite sequences identify the other constituents as stated. \(\square\)
+
+**Theorem 6.357 — generic factors with no cross adjacency.** Let \(V_1,V_2\) be generic irreducibles, of positive ranks, and let \(\mathcal S_1,\mathcal S_2\) be their exact cuspidal multisets. Suppose
+\[
+ \rho\in\mathcal S_1,\ \tau\in\mathcal S_2
+       \quad\Longrightarrow\quad
+       \tau\not\simeq\nu\rho\ \text{ and }\ \rho\not\simeq\nu\tau.
+\tag{6.861}
+\]
+Then \(V_1\times V_2\) is irreducible and generic, and is the unique generic irreducible with exact data \(\mathcal S_1\sqcup\mathcal S_2\). Every compact discrete pseudo-coefficient has zero trace on this product when central characters agree.
+
+**Proof.** The proof of Theorem 6.349 embeds each \(V_i\) into a cuspidal induction ordered by descending central absolute exponent. Concatenate these two orders. Each internal order satisfies (6.839), and (6.861) supplies that condition across the two lists. Exactness of induction gives an embedding of \(A=V_1\times V_2\) into this ordered induction. Theorem 6.348 makes every nonzero mirabolic submodule of \(A\) nondegenerate.
+
+The smooth contragredient of a generic irreducible is generic. In detail, Lemma 6.287 identifies it with the twist by the transpose-inverse involution of (6.639); that involution sends \(U_n\) to itself and its chosen character to its inverse. Conjugation by the diagonal with successive alternating signs restores the character. In characteristic two the inverse is already the same character. Thus transport of a nonzero functional proves genericity. The compact-flag dual pairing identifies \(A^\vee\) with \(V_1^\vee\times V_2^\vee\). Its cuspidal data are the dual data, and duality takes \(\nu\rho\) to \(\nu^{-1}\rho^\vee\), so (6.861) is preserved. The preceding ordered-embedding argument applies to \(A^\vee\) too.
+
+Corollary 6.325 makes \(A\) finite length and admissible. It has a simple submodule \(X\) and a simple quotient \(Y\). The absence of degenerate mirabolic submodules makes \(X\) generic; applying that property to \(Y^\vee\subset A^\vee\) makes \(Y\) generic. Heredity gives \(\dim A_{U,\theta}=1\). Exactness of this quotient makes both maps
+\[
+ X_{U,\theta}\longrightarrow A_{U,\theta}
+       \longrightarrow Y_{U,\theta}
+\tag{6.862}
+\]
+isomorphisms of lines. Their composite is nonzero, hence \(X\to Y\) is an isomorphism of irreducibles. It splits the quotient \(A\to Y\), giving \(A=X\oplus\ker(A\to Y)\). The kernel has zero Whittaker quotient, so its restriction is a degenerate mirabolic submodule and must be zero. Thus \(A\) is irreducible. Its exact data are the union by Theorem 6.322, and generic uniqueness is Theorem 6.330. Corollary 6.297 gives the trace assertion because this is a proper induction, without requiring its inducing factors to be tempered. \(\square\)
+
+**Corollary 6.358 — connected cuspidal data of a discrete series.** For any cuspidal multiset \(\mathcal S\), make a graph on its distinct isomorphism classes, joining two classes precisely when one is \(\nu\) times the other. Retain repetitions as multiplicities on vertices. If this graph is disconnected, the generic irreducible with data \(\mathcal S\) is a proper irreducible parabolic induction. It is not square-integrable modulo the centre. Consequently the data of every unitary discrete series of split \(G_n\) are, for some cuspidal \(\rho\), integers \(a\le b\) and positive integers \(m_j\),
+\[
+                  \bigsqcup_{j=a}^b\{\nu^j\rho\}^{m_j}.
+\tag{6.863}
+\]
+This assertion does not require the multiplicities \(m_j\) to be one.
+
+**Proof.** For each connected component \(\mathcal S_i\), take the unique generic irreducible \(V_i\) with those data, whose existence follows from cuspidal Whittaker heredity and finite length and whose uniqueness is Theorem 6.330. There is no cross adjacency between components. Repeated application of Theorem 6.357 makes \(V_1\times\cdots\times V_c\) irreducible and generic with the full data. If \(c>1\), it is a proper induction, so every compact discrete test of its central character has trace zero.
+
+If this product were a discrete series \(\pi\), its own compact test would instead have trace one by Corollary 6.117 applied to \(\tau=\pi\). The central character of the inducing product is exactly that of \(\pi\), since it is the same representation, so Corollary 6.297 applies to that very test and gives a contradiction. This uses the actual compact test and its normalization, rather than a general assertion about spectra of induced representations. Every discrete series is generic by Theorem 6.284, so the argument applies to it.
+
+Finally a connected graph of these vertices lies on one \(\nu\)-orbit: follow a path from any base vertex. Equation (6.856), with the central absolute exponent in place of a unitary normalization, makes distinct integral powers nonisomorphic. A finite connected subset of the integer line has no missing integer between its least and greatest elements. This is exactly (6.863), retaining its positive multiplicities. A single vertex, with any multiplicity, is allowed by this conclusion; square-integrability imposes further conditions beyond connectedness. \(\square\)
+
+<figure class="cuspidal-components-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="340" viewBox="0 0 744 340" role="img" aria-labelledby="cuspidal-components-title cuspidal-components-desc">
+<title id="cuspidal-components-title">Cuspidal adjacency components and discrete-series support</title>
+<desc id="cuspidal-components-desc">Vertices are distinct cuspidal isomorphism classes, and an edge means an exact positive or negative determinant twist by one. The example on one orbit has exponents zero, one, three and four, with multiplicities one, two, one and one. The missing exponent two separates two components. The generic representation is the irreducible product of the generic factors for the two components and has zero compact discrete-test trace. A discrete series would have trace one on its own test, so cannot have this disconnected support. Connected support is a whole integer interval, with positive multiplicities still retained.</desc>
+<rect x="1" y="1" width="742" height="338" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<g fill="#fff" stroke="#7395ae"><rect x="25" y="35" width="290" height="84" rx="8"/><rect x="429" y="35" width="290" height="84" rx="8"/></g>
+<g stroke="#356a91" stroke-width="3"><path d="M100 72 H240 M504 72 H644"/></g>
+<g fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle"><text x="100" y="62">ρ</text><text x="240" y="62">νρ (twice)</text><text x="372" y="75">ν²ρ absent</text><text x="504" y="62">ν³ρ</text><text x="644" y="62">ν⁴ρ</text><text x="170" y="104">component 1: V₁ generic</text><text x="574" y="104">component 2: V₂ generic</text><text x="372" y="167">no cross adjacency ⇒ V₁ × V₂ irreducible (6.357)</text><text x="372" y="209">proper induction ⇒ Tr(V₁ × V₂)(fπ) = 0</text><text x="372" y="251">π discrete series ⇒ Tr π(fπ) = 1: incompatible</text><text x="372" y="300">connected data: every integer in [a,b], multiplicities retained</text></g>
+</svg>
+<figcaption>Figure 54. The graph uses exact cuspidal classes, not only their central exponents. The product map and trace obstruction are Theorem 6.357 and Corollary 6.358. Formula (6.863) asserts connectedness and no holes; it is not the multiplicity-one segment classification. For the support graph, compare Zelevinsky, §2.2, in the free NUMDAM edition.</figcaption>
+</figure>
+
+**Example 6.359 — the Gram matrix for a rank-two principal series.** Take \(r=1\), \(\rho_0=1\), \(J=1+\varpi_FM_2(\mathcal O_F)\), and \(E=I_s^J\). Its compact model has the projective-line basis indexed by \(\mathbb P^1(\mathbb F_q)\). Set \(x=q^{-s}\), \(y=q^s\), so \(xy=1\). Let \(\mathbf j\) be the all-ones column and write
+\[
+             H_s=(qx-y)\operatorname{Id}+(y-x)\mathbf j\mathbf j^*.
+\tag{6.864}
+\]
+This matrix satisfies the adjoint relations for the compact permutation action and the actual Hecke operator \(U\) of Exercise 7.39. Its eigenvalues on the standard and constant compact types, respectively, are
+\[
+ \lambda_{\mathrm{std}}=qx-y\quad(\text{multiplicity }q),\qquad
+ \lambda_{\mathrm{const}}=qy-x\quad(\text{multiplicity }1).
+\tag{6.865}
+\]
+It is positive for \(|s|<1/2\), singular at either endpoint, and indefinite outside. At \(s=1/2\) its radical on this fixed space is the standard compact type in the Steinberg submodule of \(I_+\); at \(s=-1/2\) it is the constant line in the trivial submodule of \(I_-\), for the normalization \(\rho=\nu^{-1/2}\) of (6.859).
+
+**Calculation.** The finite projective action is two-transitive: a projective change of basis takes any two distinct lines to any other two. Thus its invariant matrices have one common diagonal entry and one common off-diagonal entry, and are \(a\operatorname{Id}+b\mathbf j\mathbf j^*\). In the ordering \((\infty,0,\text{other finite points})\), the matrix \(C=U/\sqrt q\) of (7.96) has entry \(x\) in column \(\infty\) of every row other than \(0\), and entry \(y\) in every finite column of row \(0\); all other entries vanish. The central uniformizer acts by \(xy=1\). If \(w\) exchanges \(0,\infty\) and permutes the remaining points, the adjoint double coset is consequently \(U^*=wUw\). Multiplying the two matrices, the equation \(HC=(wCw)^*H\) reduces to
+\[
+                         (a+qb)x=(a+b)y.
+\tag{6.866}
+\]
+For clarity the two row types of \(HC\) are \(x(a+qb)\) in column \(\infty\), with the correction \(-ax\) in row \(0\), and \(by\) in each finite column, with the correction \(+ay\) in row \(0\). The adjoint equation exchanges the corresponding distinguished row and column types; (6.866) is their equality. Choosing \(a=qx-y\), \(b=y-x\) solves it. The all-ones matrix is zero on the sum-zero subspace and is multiplication by \(q+1\) on constants, proving (6.865). The sign assertions follow from \(y/x=q^{2s}\). At the positive endpoint the only nonzero quotient compact type is constant; at the negative endpoint the constant type is the trivial submodule, as in Example 6.351. These give exactly the stated radicals.
+
+There is also a spherical trace comparison. For the normalized first spherical test \(T_1\) of (6.803), the unit spherical line has trace \(\sqrt q(x+y)\), and \(\|T_1\|_1=q+1\). The exact margin is
+\[
+          (q+1)^2-q(x+y)^2=(qx-y)(qy-x).
+\tag{6.867}
+\]
+It is negative for \(|s|>1/2\), so the unitary trace bound fails there. This concrete calculation concerns rank one inducing characters; the higher cuspidal ranks are covered by Theorem 6.355, using ordinary trace separation rather than a spherical vector. \(\square\)
+
+<figure class="principal-signature-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="340" viewBox="0 0 744 340" role="img" aria-labelledby="principal-signature-title principal-signature-desc">
+<title id="principal-signature-title">Exact signature changes at the two reducibility parameters</title>
+<desc id="principal-signature-desc">For the rank-two principal series with x equals q to minus s and y equals q to s, the eigenvalues are qx minus y of multiplicity q and qy minus x of multiplicity one. For s below minus one half their signs are plus and minus. At minus one half the constant line is the radical. Between the endpoints both signs are plus. At plus one half the q-dimensional standard type is the radical. Above plus one half the signs are minus and plus. The spherical trace margin is their product. The diagram records exact signs and endpoints for every q greater than one, and is not a numerical plot.</desc>
+<rect x="1" y="1" width="742" height="338" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<path d="M55 82 H689" stroke="#356a91" stroke-width="3"/><path d="M255 70 V94 M489 70 V94" stroke="#356a91" stroke-width="3"/>
+<rect x="260" y="106" width="224" height="88" rx="8" fill="#e2f3e6" stroke="#75a484"/>
+<g fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle"><text x="130" y="53">s &lt; −1/2</text><text x="372" y="53">−1/2 &lt; s &lt; 1/2</text><text x="614" y="53">s &gt; 1/2</text><text x="130" y="134">standard +</text><text x="130" y="168">constant −</text><text x="372" y="134">standard + (dimension q)</text><text x="372" y="168">constant + (dimension 1)</text><text x="614" y="134">standard −</text><text x="614" y="168">constant +</text><text x="255" y="226">s = −1/2: constant radical</text><text x="489" y="261">s = 1/2: standard radical</text><text x="372" y="308">trace margin = (qx − y)(qy − x); negative outside</text></g>
+</svg>
+<figcaption>Figure 55. The signs and radicals are the exact formulas (6.864)–(6.867), valid for every residue cardinality. Only the constant and standard compact types are shown. Their radicals lie in the indicated global submodules; a compact type is not being identified with the whole Steinberg representation.</figcaption>
+</figure>
+
+
+### 6.56 Generic segments, discrete series and generic trace isolation
+
+Keep \(F,q,G_n,K_n,\nu\) as in Section 6.55, with \(F\) of either nonarchimedean characteristic. Fix an irreducible admissible cuspidal \(\rho\) of \(G_r\), integers \(a\le b\), and put
+\[
+ \rho_j=\nu^j\rho,\quad s=b-a+1,\quad n=rs,\quad
+ I[a,b]=\rho_b\times\rho_{b-1}\times\cdots\times\rho_a.
+\tag{6.868}
+\]
+Write \(S[a,b]\) for the unique generic irreducible with that exact cuspidal multiset, as supplied by Corollary 6.330. This definition does not assume square integrability. For an empty interval use the one-dimensional module on \(G_0\). The Jacquet modules below are normalized. Their finite length does not mean that their underlying vector spaces are finite-dimensional. Zelevinsky, §§2.1–2.2 and 3.7 of the free NUMDAM edition, gives related cuspidal-order and derivative constructions; his ascending segment convention is different from the descending generic convention (6.868).
+
+**Lemma 6.360 — actual cuspidal components selected by a central operator.** Let \(R\) be the standard parabolic with \(s\) blocks of size \(r\). The actual module \(r_R I[a,b]\) is a direct sum of the \(s!\) distinct ordered tensors
+\[
+ L_{\boldsymbol j}=\rho_{j_1}\otimes\cdots\otimes\rho_{j_s},
+                 \qquad (j_1,\ldots,j_s)\text{ a permutation of }(a,\ldots,b).
+\tag{6.869}
+\]
+Every submodule is the sum of a subset of these particular components.
+
+**Proof.** The normalized geometric filtration in Theorem 6.320 has exactly these composition factors, each once: a cuspidal source block cannot be divided among target blocks, and the remaining cells are the labelled block permutations. Their entries are the actual twists, with no residual modulus, by (6.753)–(6.756). Put \(c=\omega_\rho(\varpi_F1_r)\). For each target block let \(Z_h\) be the action of its scalar uniformizer. These are commuting central endomorphisms. Set
+\[
+ B=q^{r(b-a)}+1,\qquad
+ T=c^{-1}q^{rb}\sum_{h=1}^s B^{h-1}Z_h,\qquad
+ \lambda_{\boldsymbol j}=\sum_{h=1}^s B^{h-1}q^{r(b-j_h)}.
+\tag{6.870}
+\]
+The operator acts on \(L_{\boldsymbol j}\) by \(\lambda_{\boldsymbol j}\). Each base-\(B\) digit \(q^{r(b-j_h)}\) is an integer strictly between zero and \(B\). Repeated division by \(B\), taking the remainder at each step, recovers every digit. Distinct permutations therefore give distinct eigenvalues.
+
+A central operator preserves every term of a composition series. Successively applying its scalar factors gives
+\[
+ P(T)=0,\qquad P(X)=\prod_{\boldsymbol j}(X-\lambda_{\boldsymbol j}),\qquad
+ p_{\boldsymbol j}(T)=\prod_{\boldsymbol l\ne\boldsymbol j}
+           \frac{T-\lambda_{\boldsymbol l}}{\lambda_{\boldsymbol j}-\lambda_{\boldsymbol l}}.
+\tag{6.871}
+\]
+Indeed each scalar factor kills its corresponding quotient, and all factors commute, so their product kills the whole filtration. The roots are distinct. Evaluation at every root shows that \(\sum p_{\boldsymbol j}=1\), \(p_{\boldsymbol j}^2=p_{\boldsymbol j}\) and \(p_{\boldsymbol j}p_{\boldsymbol l}=0\) for unequal indices modulo \(P\): a polynomial zero at every root is divisible by \(P\), by successive division by its linear factors. Thus these are actual orthogonal projections on the module, even when it is infinite-dimensional. Their images each have the single composition factor \(L_{\boldsymbol j}\), hence length one and are that irreducible tensor. A submodule is preserved by all these polynomials and therefore decomposes by the same projections. Each intersection with a simple component is either zero or the whole component. This proves both assertions. The case \(s=1\) uses the empty product \(p=1\). \(\square\)
+
+**Theorem 6.361 — the segment as an intersection of submodules.** The module \(S[a,b]\) is the unique simple submodule of \(I[a,b]\), and lies in every nonzero submodule. For \(a<i\le b\), the exact induced embedding defines
+\[
+ J_i=\rho_b\times\cdots\times\rho_{i+1}
+           \times S[i-1,i]\times\rho_{i-2}\times\cdots\times\rho_a
+                 \ \subset I[a,b].
+\tag{6.872}
+\]
+Then, as actual submodules,
+\[
+ S[a,b]=\bigcap_{i=a+1}^b J_i,\qquad
+ r_R S[a,b]=\rho_b\otimes\rho_{b-1}\otimes\cdots\otimes\rho_a.
+\tag{6.873}
+\]
+For \(a=b\) the intersection means \(I[a,a]=\rho_a\).
+
+**Proof: existence and the pair profiles.** Descending order satisfies (6.839), since the central absolute exponent increases strictly under \(\nu\). Theorem 6.348 makes every simple submodule of \(I[a,b]\) generic. Finite length supplies one, and Corollary 6.330 gives just one generic occurrence. Two different simple submodules would have zero intersection and give two occurrences, which is impossible. This proves uniqueness and containment in every nonzero submodule. Corollary 6.356 identifies \(S[i-1,i]\) with the actual generic submodule of the adjacent descending pair; exact induction and transitivity give (6.872).
+
+Apply Theorem 6.320 to \(r_RJ_i\), with source blocks \(r,\ldots,r,2r,r,\ldots,r\). Every singleton cuspidal must occupy a whole target block: splitting it would take a proper zero Jacquet quotient. These singletons occupy \(s-2\) different target blocks. The two remaining blocks receive the \(2r\)-factor. In their increasing target order its contribution is exactly
+\(r_{(r,r)}S[i-1,i]=\rho_i\otimes\rho_{i-1}\), by (6.860). There is one surviving cell for every ordering of all the labels in which \(i\) precedes \(i-1\), and no others. The within-target parabolic is the entire target Levi, since every row receives one whole \(r\)-block. Formula (6.753) therefore gives precisely that ordered tensor; all its normalization factors have already been included. Thus
+\[
+ r_RJ_i=\bigoplus_{\boldsymbol j:\,i\text{ precedes }i-1}
+                 L_{\boldsymbol j}\ \subset r_RI[a,b].
+\tag{6.874}
+\]
+The filtration first gives its factors; Lemma 6.360 identifies the actual submodule with this sum of components. For \(s\ge2\) its length is \(s!/2\), by exchanging the positions of the two specified labels.
+
+**Proof: the intersection and its length.** Put \(J=\bigcap J_i\). Each \(J_i\) is nonzero, hence contains the unique simple submodule just proved; consequently \(J\ne0\). The intersection is the kernel of the map \(I\to\bigoplus_i I/J_i\). Exactness of Jacquet coinvariants identifies its Jacquet module with the intersection of (6.874) inside \(r_RI\). The only permutation in which every \(i\) precedes \(i-1\) is \((b,b-1,\ldots,a)\). Hence \(r_RJ\) is the single tensor in (6.873).
+
+Every irreducible subquotient of \(J\) has the full exact cuspidal data, by Theorem 6.322. Its cuspidal embedding therefore uses \(s\) blocks of size \(r\), whose standard parabolic is precisely \(R\). First Frobenius makes its \(R\)-Jacquet module nonzero. Exactness and finite length now give \(\ell(J)\le\ell(r_RJ)=1\), also the detector inequality of Lemma 6.327. Since \(J\ne0\), it is the simple submodule \(S[a,b]\). This proves both equalities as modules, rather than equalities of composition classes. \(\square\)
+
+<figure class="segment-intersection-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="360" viewBox="0 0 744 360" role="img" aria-labelledby="segment-intersection-title segment-intersection-desc">
+<title id="segment-intersection-title">The generic segment as an actual intersection</title>
+<desc id="segment-intersection-desc">For the descending induction rho two times rho one times rho zero, the full Jacquet module has six distinct components, labelled by permutations. J two retains two one zero, two zero one, zero two one, because two precedes one. J one retains one zero two, one two zero, two one zero, because one precedes zero. Their intersection retains only two one zero. A central polynomial projector selects each actual component even for an infinite-dimensional Jacquet module. Exact Jacquet functors preserve the intersection, and its Jacquet length one proves that the actual intersection is the generic simple segment.</desc>
+<rect x="1" y="1" width="742" height="358" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<g fill="#fff" stroke="#7395ae"><rect x="24" y="46" width="334" height="98" rx="8"/><rect x="386" y="46" width="334" height="98" rx="8"/><rect x="24" y="194" width="696" height="71" rx="8"/></g>
+<g fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle"><text x="191" y="75">r_R J₂: 2 precedes 1</text><text x="191" y="109">210, 201, 021</text><text x="553" y="75">r_R J₁: 1 precedes 0</text><text x="553" y="109">102, 120, 210</text><text x="372" y="224">intersection: the single actual component 210</text><text x="372" y="251">r_R(J₁ ∩ J₂) = ρ₂ ⊗ ρ₁ ⊗ ρ₀</text><text x="372" y="303">length detection ⇒ J₁ ∩ J₂ = S[0,2] is simple</text><text x="372" y="337">Theorem 6.361; polynomial projections: (6.870)–(6.871).</text></g>
+<g stroke="#356a91" stroke-width="2" fill="none"><path d="M191 144 V167 H372 V194 M553 144 V167 H372"/></g>
+</svg>
+<figcaption>Figure 56. Labels such as 210 denote the exact ordered tensors in (6.869), not just central exponents. Formula (6.874) gives both lists; exactness gives the intersection in (6.873). The polynomial projections act on the actual module and require no finite-dimensional Jacquet space. Compare Zelevinsky, §§2.1–2.2, in the free NUMDAM edition.</figcaption>
+</figure>
+
+**Theorem 6.362 — every normalized Jacquet module of a generic segment.** Let \(P\) have block dimensions \(n_1,\ldots,n_t\). Then \(r_PS[a,b]=0\) unless every \(n_j\) is divisible by \(r\). Otherwise write \(n_j=r\ell_j\), \(m_0=0\), \(m_j=\ell_1+\cdots+\ell_j\), so \(m_t=s\). There is an isomorphism of actual Levi modules
+\[
+ r_PS[a,b]\simeq\bigotimes_{j=1}^t
+          S[b-m_j+1,\ b-m_{j-1}].
+\tag{6.875}
+\]
+The right side is irreducible. Its blocks are consecutive chunks of the descending list, with their exact determinant twists.
+
+**Proof.** The geometric filtration of \(r_PI[a,b]\) assigns each cuspidal whole to a target block; any split source cuspidal gives zero. If a target dimension is not a multiple of \(r\), no assignment is possible, and exactness gives the vanishing for \(S\). If all dimensions are multiples, each nonzero layer is an external product of normalized cuspidal inductions on the assigned subsets. Every constituent of \(r_PS\) consequently has, in each Levi factor, precisely the data of one such subset, by Theorem 6.322.
+
+Refine \(P\) by the full \(r\)-block parabolic \(R\). Each such constituent has nonzero Jacquet module for this refinement inside the Levi: its irreducible external factors admit cuspidal embeddings, all with blocks of size \(r\), and first Frobenius makes those quotients nonzero. Here external tensor products commute with Jacquet quotients. Algebraically, the relation space for a product of radicals is the sum of the tensor relation spaces in the separate factors. Successive tensor quotients over \(\mathbb C\) give the claimed identity; normalized moduli are the products of those in the factors.
+
+Normalized transitivity follows by taking these radical quotients in stages: the larger radical is the semidirect product of the outer radical with the within-Levi radical, its relation quotient is the iterated quotient, and its half-modulus is their product, by (6.698). Thus
+\[
+ r_R^G S=r_{R\cap M}^M(r_P^G S)
+             =\rho_b\otimes\cdots\otimes\rho_a.
+\tag{6.876}
+\]
+Finite-length admissibility is Corollary 6.325. Every constituent on the middle expression has nonzero refined quotient, so exactness and its length one force \(r_PS\) itself to be nonzero and irreducible. Factor it as \(X_1\otimes\cdots\otimes X_t\), using Lesson 12, Theorem 4.1. Each refined quotient is nonzero. Since their external product is the simple tensor in (6.876), each is simple: a proper nonzero submodule in one factor would tensor to a proper nonzero submodule of the product, by exactness of vector-space tensor products. Uniqueness of external irreducible factorization therefore identifies them with the corresponding consecutive tensors in (6.876).
+
+Choose a cuspidal embedding of \(X_j\). Its ordered data must be that same consecutive descending tensor, because first Frobenius makes them a quotient of the full \(r\)-block Jacquet module just identified. Descending cuspidal induction has no degenerate mirabolic submodule by Theorem 6.348, so \(X_j\) is generic. Corollary 6.330 identifies it with the indicated \(S\) on that chunk. This proves (6.875), including the full-block case \(P=G\). \(\square\)
+
+**Lemma 6.363 — derivatives as a partial Whittaker quotient.** For a smooth \(G_n\)-module \(V\), let \(V^{(m)}\) be the normalized derivative of (6.815), \(1\le m\le n\). For \(0<m<n\),
+\[
+ V^{(m)}\simeq\bigl(r_{(n-m,m)}V\bigr)_{\,1\times U_m,\,1\times\theta_m}
+                       \quad\text{as }G_{n-m}\text{-modules}.
+\tag{6.877}
+\]
+For \(m=n\) this is the full Whittaker quotient on \(G_0\).
+
+**Proof: the actual quotient map and its normalization.** Let \(Q_m\) consist of matrices
+\[
+ Q_m=\left\{\begin{pmatrix}1_{n-m}&X\\0&u\end{pmatrix}:
+                  X\in M_{n-m,m}(F),\ u\in U_m\right\},\qquad
+ \vartheta_m\!\begin{pmatrix}1&X\\0&u\end{pmatrix}=\theta_m(u).
+\tag{6.878}
+\]
+Successively taking the last-column quotients in \(\Psi^-\) and \(\Phi^-\) gives precisely \(V_{Q_m,\vartheta_m}\) as a vector space. To verify the relation space directly, expand a member into its last-column factors. The last \(m-1\) columns contribute the selected last simple-root characters, and the remaining column and rectangular entries contribute character one. The relation for a product follows from
+\(h_1h_2v-\vartheta(h_1h_2)v=h_1(h_2v-\vartheta(h_2)v)+\vartheta(h_2)(h_1v-\vartheta(h_1)v)\).
+This proves equality of the algebraic relation spaces in both directions. Thus the map is the class of a vector sent to its successive classes, with the same inverse induced by the identity on \(V\).
+
+The rectangular radical is normal in \(Q_m\), and the quotient is \(U_m\). Taking its trivial quotient and then its \(\theta_m\)-quotient gives the same vector quotient. On the surviving \(G_{n-m}\), each of the \(m\) normalized last-column functors contributes \(\nu^{-1/2}\), for a total \(\nu^{-m/2}\). For the parabolic \((n-m,m)\),
+\[
+ \delta^{1/2}(A,B)=\nu(A)^{m/2}\nu(B)^{-(n-m)/2}.
+\tag{6.879}
+\]
+Normalized Jacquet action on the first block also multiplies its raw action by \(\nu(A)^{-m/2}\). The second-block modulus is trivial on \(U_m\), so taking its Whittaker quotient introduces no first-block factor. This proves equivariance of the actual quotient map in (6.877). For \(m=n\) all that remains is \(U_n,\theta_n\), with the trivial \(G_0\)-action. No extra determinant shift is suppressed. \(\square\)
+
+**Corollary 6.364 — all derivatives and the mirabolic length of a segment.** For \(n=rs\), the nonzero positive derivatives are exactly
+\[
+ S[a,b]^{(ir)}\simeq S[a+i,b]\quad(1\le i<s),\qquad
+ S[a,b]^{(n)}\simeq\mathbb C.
+\tag{6.880}
+\]
+All other positive indices give zero. Its restriction to \(P_n\) has length \(s\).
+
+**Proof.** For \(m<n\) use (6.877) and Theorem 6.362. Unless \(r\mid m\), its Jacquet module is zero. If \(m=ir\), (6.875) is \(S[a+i,b]\otimes S[a,a+i-1]\). The second factor is generic with a one-dimensional Whittaker quotient by Theorems 6.291 and 6.330. Taking that quotient gives (6.880); its scalar identification with \(\mathbb C\) requires a choice of nonzero functional, so the displayed isomorphism is not claimed to be canonical. The full derivative is likewise a line. The finite mirabolic filtration of Theorem 6.337 has these derivative modules as its successive smaller-group factors; the positive functors preserve their simple composition length. There are exactly \(s\) nonzero irreducible factors, so the length is \(s\), also (6.816). This includes \(s=1\), when the cuspidal restriction is simple, and \(r=1,s=2\), when the Steinberg restriction has length two. \(\square\)
+
+<figure class="segment-chunks-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="360" viewBox="0 0 744 360" role="img" aria-labelledby="segment-chunks-title segment-chunks-desc">
+<title id="segment-chunks-title">Exact Jacquet chunks and derivatives</title>
+<desc id="segment-chunks-desc">For S zero to three and cuspidal rank r equals two, the descending exponents are three, two, one, zero. The parabolic of dimensions four, two, two has Jacquet module S two to three tensor rho one tensor rho zero. Its positive derivative of index two is S one to three, index four is S two to three, index six is rho three and index eight is a line on G zero. All other positive derivatives vanish. These four factors give exact mirabolic length four. The arrows denote quotient and derivative operations, not an embedding into the Levi.</desc>
+<rect x="1" y="1" width="742" height="358" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<g fill="#fff" stroke="#7395ae"><rect x="24" y="40" width="696" height="73" rx="8"/><rect x="24" y="152" width="696" height="98" rx="8"/></g>
+<g fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle"><text x="372" y="69">r = 2: S[0,3] on G₈; descending data 3, 2, 1, 0</text><text x="372" y="99">r_(4,2,2) S[0,3] = S[2,3] ⊗ ρ₁ ⊗ ρ₀</text><text x="90" y="182">index</text><text x="250" y="182">2</text><text x="390" y="182">4</text><text x="530" y="182">6</text><text x="660" y="182">8</text><text x="90" y="216">module</text><text x="250" y="216">S[1,3]</text><text x="390" y="216">S[2,3]</text><text x="530" y="216">ρ₃</text><text x="660" y="216">ℂ</text><text x="372" y="280">indices 1, 3, 5, 7 vanish; exact P₈-length = 4</text><text x="372" y="324">Theorems 6.362–6.364; all determinant twists retained.</text></g>
+<path d="M372 113 V152" fill="none" stroke="#356a91" stroke-width="2"/>
+</svg>
+<figcaption>Figure 57. The example uses the original exact twists ρ<sub>j</sub> = ν<sup>j</sup>ρ. The normalized Jacquet quotient is (6.875), and the derivative quotients are (6.877)–(6.880). Each derivative identification uses a choice of basis in the discarded Whittaker line. Compare Zelevinsky, §3.7, in the free NUMDAM edition.</figcaption>
+</figure>
+
+**Theorem 6.365 — a coefficient criterion before unitarization.** Let \(V\) be a smooth admissible representation of split \(G_n\), with a scalar unitary central character. For a smooth-dual functional \(\lambda\) call \(g\mapsto\lambda(gv)\) an algebraic smooth coefficient. Fix \(1\le p<\infty\). All these coefficients belong to \(L^p(G_n/Z)\) if and only if, for every principal level \(J=1+\varpi_F^m M_n(\mathcal O_F)\) and every \(1\le h<n\), each eigenvalue \(\alpha\) of the normalized Jacquet action of \(a_h=\operatorname{diag}(\varpi_F1_h,1_{n-h})\) on its Levi fixed space satisfies
+\[
+              |\alpha|\delta_h^{1/2-1/p}<1,\qquad
+                  \delta_h=q^{-h(n-h)}.
+\tag{6.881}
+\]
+A zero Jacquet fixed space imposes no condition. No positive inner product on \(V\) is assumed.
+
+**Proof: finite matrices and necessity.** Set \(T_c=e_J\pi(c)e_J\) on the finite space \(E=V^J\). Lemma 6.22 applies without unitarity. It identifies the stable image of \(T_{a_h}\) with the unnormalized Jacquet fixed space; its stable kernel is nilpotent. Therefore the nonzero eigenvalues of \(T_{a_h}\) are \(\delta_h^{1/2}\) times the normalized eigenvalues. Choose any basis \(v_i\) of \(E\), with coordinate functionals extended to smooth-dual functionals by \(\lambda_i\circ e_J\). Their coefficients at \(a_h^k\) are the matrix entries of \(T_{a_h}^k\), by the positive product identity (6.54). Their absolute values are constant on the corresponding central \(J\)-double coset, since the centre acts by a unitary scalar. The disjoint cosets have volumes \(\operatorname{vol}(\overline J)\delta_h^{-k}\), by (6.55). Integrability of all these coefficients forces every entry of \((\delta_h^{-1/p}T_{a_h})^k\) to be \(p\)-summable in \(k\). An eigenvalue of absolute value at least one contradicts that assertion: its powers give an operator norm at least one, whereas in a fixed finite-dimensional coordinate norm that operator norm is bounded by a constant times the largest matrix entry. This gives (6.881), including its strict boundary.
+
+**Proof: sufficiency on every Cartan face.** The operators \(T_{a_h}\) commute by the probability-average identity (6.54), whose proof uses only smooth finite compact averages. For each normalized operator \(A_h=\delta_h^{-1/p}T_{a_h}\), condition (6.881) and its nilpotent part put all eigenvalues strictly inside the unit circle. Finite Jordan expansion, including the finitely many zero-root powers, gives \(\|A_h^k\|\le C_h\gamma^k\), with a common \(\gamma<1\) for this finite collection. Thus, for \(t_{\boldsymbol l}=\prod_h a_h^{l_h}\),
+\[
+ \sum_{\boldsymbol l\in\mathbb Z_{\ge0}^{n-1}}
+        \left(\prod_h\delta_h^{-l_h}\right)\|T_{t_{\boldsymbol l}}\|^p
+   \le C\sum_{\boldsymbol l}\gamma^{p\sum_h l_h}<\infty.
+\tag{6.882}
+\]
+The sum includes zero coordinates, hence every boundary face; nilpotent initial terms have not been discarded.
+
+For a given \(v,\lambda\), compactness of \(K_n\) and smoothness make their rotated sets \(K_nv\) and \(\{\lambda\circ\pi(k):k\in K_n\}\) finite. Choose a principal \(J\) fixing all of them. Every coefficient on \(k_1Jt_{\boldsymbol l}Jk_2\) is consequently one of finitely many fixed vector-functional matrix coefficients of \(T_{t_{\boldsymbol l}}\), bounded by a common constant times its chosen coordinate norm. Lemma 6.23 covers all of \(G_n/Z\) by finitely many such translates at each \(\boldsymbol l\), with total volume at most a fixed multiple of \(\prod_h\delta_h^{-l_h}\). Formula (6.882) proves the full integral bound. This repeats the finite-matrix argument of Theorem 6.25 with arbitrary coordinate functionals, so it does not require an orthonormal basis or an invariant norm. For \(n=1\), the central quotient is a point, and the empty conditions and conclusion hold directly. \(\square\)
+
+**Lemma 6.366 — the exact central exponents of a centred segment.** Let \(\rho_0\) be unitary cuspidal of \(G_r\), let \(s\ge1\), and let \(\operatorname{St}_s(\rho_0)\) denote the generic irreducible with data
+\[
+        \{\nu^{j-(s-1)/2}\rho_0:0\le j<s\}.
+\tag{6.883}
+\]
+This notation here specifies its data and genericity. Its central character is \(\omega_{\rho_0}^{s}\). For the Jacquet module of block dimensions \(r\ell_1,\ldots,r\ell_t\), put \(m_j=\ell_1+\cdots+\ell_j\), \(m_0=0\). The average determinant exponent in block \(j\), and the absolute central exponent at a cut \(h=rM\), are respectively
+\[
+ t_j=\frac{s-m_j-m_{j-1}}2,\qquad
+ \left|r_{(rM,r(s-M))}\operatorname{St}_s(\rho_0)(a_{rM})\right|
+                   =q^{-rM(s-M)/2}\quad(0<M<s).
+\tag{6.884}
+\]
+The second expression means the absolute value of its scalar action on that irreducible Jacquet module. At cuts not divisible by \(r\) the Jacquet module is zero.
+
+**Proof.** Apply (6.875) with base cuspidal \(\nu^{-(s-1)/2}\rho_0\). The descending chunk in block \(j\) has exponents from \(s-m_j-(s-1)/2\) through \(s-m_{j-1}-1-(s-1)/2\). Their mean is the first formula. Their sum over all blocks is zero, giving the stated central character. For the prefix containing \(M\) cuspidals, the sum of their exponents is
+\[
+ \sum_{u=s-M}^{s-1}\left(u-\frac{s-1}2\right)
+                                =\frac{M(s-M)}2.
+\tag{6.885}
+\]
+The scalar uniformizer on its rank-\(rM\) group acts by \(\omega_{\rho_0}(\varpi_F1_r)^M\) times \(q^{-rM(s-M)/2}\). Its first factor has absolute value one, proving (6.884). These are normalized Jacquet exponents; the unnormalized finite Hecke eigenvalue also includes \(\delta_{rM}^{1/2}=q^{-r^2M(s-M)/2}\). This distinction fixes the sign and the factor \(r\). \(\square\)
+
+**Theorem 6.367 — square-integrable representations from every centred cuspidal segment.** The smooth module \(\operatorname{St}_s(\rho_0)\) has an irreducible admissible unitary discrete-series realization with its original smooth vectors, for every unitary cuspidal \(\rho_0\), every \(s\ge1\), and both field characteristics. Every \(S[a,b]\) is essentially discrete series. If \(\rho=\nu^t\rho_0\), \(t\in\mathbb R\), then
+\[
+ S[a,b]\simeq\nu^{,t+(a+b)/2}\operatorname{St}_{b-a+1}(\rho_0),
+\tag{6.886}
+\]
+and it is unitary precisely when \(t+(a+b)/2=0\).
+
+**Proof: integrability and a positive form.** The module in (6.883) is irreducible admissible and has a unitary scalar central character. Lemma 6.366 makes every nonzero normalized maximal Jacquet eigenvalue strictly smaller than one in absolute value. All other such Jacquet modules vanish. Theorem 6.365 at \(p=2\) therefore makes every algebraic smooth coefficient square-integrable modulo the centre.
+
+Choose a nonzero smooth-dual functional \(\lambda\), and define the actual linear map
+\[
+ \mathcal C_\lambda:V\longrightarrow L^2_\omega(G_n/Z),\qquad
+      (\mathcal C_\lambda v)(g)=\lambda(\pi(g)v),\qquad
+ B(v,w)=\int_{G_n/Z}(\mathcal C_\lambda v)(g)
+                   \overline{(\mathcal C_\lambda w)(g)}\,d\bar g.
+\tag{6.887}
+\]
+Here \(L^2_\omega\) consists of functions \(f(zg)=\omega(z)f(g)\), and its right action is \((R_hf)(g)=f(gh)\). The integral is finite by the coefficient criterion and Cauchy–Schwarz. The map intertwines \(\pi(h)\) with \(R_h\), by direct substitution. It is nonzero, since at the identity some \(\lambda(v)\ne0\), and that locally constant coefficient is nonzero on an open set of positive quotient measure. Its kernel is invariant and is zero by irreducibility. Consequently \(B\) is positive definite. Right translation preserves quotient Haar measure and the unitary central covariance, so \(B\) is invariant. In this formula it is linear in its first variable, as in Section 6.9.
+
+Complete in this norm. The isometric action is strongly continuous, since the dense original vectors have open stabilizers. Its compact projection has precisely the original finite-dimensional fixed space: applying the projection to the dense subspace gives that space, already complete, and continuity gives no extra fixed vectors. Thus the smooth module of the completion is exactly \(V\). A nonzero closed invariant subspace has a nonzero compact fixed vector, by strong convergence of principal averages to the identity; that vector lies in \(V\) and generates it by algebraic irreducibility. The subspace is therefore the whole completion. This proves unitary irreducibility and admissibility.
+
+To exhibit a Hilbert coefficient with the asserted integrability, choose a compact group fixing \(\lambda\). It satisfies \(\lambda(v)=\lambda(e_Jv)\). The finite-dimensional fixed space and its inherited positive norm make this a bounded functional, represented by a vector of \(V^J\). Hence the nonzero coefficient already used in (6.887) is a smooth Hilbert coefficient and lies in \(L^2\). This proves the discrete-series assertion; Theorems 6.15 and 6.34 then give the corresponding Hilbert-coefficient and uniform decay conclusions.
+
+**Proof: the exact twists.** Theorem 6.311 gives \(\rho=\nu^t\rho_0\). Twisting the actual induction sections and using generic uniqueness gives (6.886), since both sides have exactly the same cuspidal data. Thus every segment is an essentially discrete series with this specified unitary twist. Its scalar central absolute value is \(|z|^{rs(t+(a+b)/2)}\), because the centred factor is unitary. If it were unitary this value would be one for \(z=\varpi_F\), forcing the exponent to vanish. Conversely the vanishing exponent leaves the unitary representation already constructed. The classification of all discrete series is Theorem 6.373. \(\square\)
+
+<figure class="segment-square-integrability-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="360" viewBox="0 0 744 360" role="img" aria-labelledby="segment-square-integrability-title segment-square-integrability-desc">
+<title id="segment-square-integrability-title">From exact Jacquet exponents to a unitary discrete series</title>
+<desc id="segment-square-integrability-desc">The centred segment has unitary total central character. At a cut of rank rM, its normalized Jacquet scalar has absolute value q to minus rM times s minus M divided by two, strictly less than one; cuts not divisible by r vanish. The unnormalized Hecke eigenvalue has the additional half modulus q to minus r squared M times s minus M divided by two. The coefficient criterion proved without unitarity gives square-integrable algebraic coefficients. A nonzero coefficient map into the right regular L2 space is injective, and its pulled-back norm is positive and invariant. Finite compact fixed spaces preserve exactly the original smooth module in the unitary completion.</desc>
+<rect x="1" y="1" width="742" height="358" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<g fill="#fff" stroke="#7395ae"><rect x="24" y="33" width="696" height="83" rx="8"/><rect x="24" y="156" width="696" height="66" rx="8"/></g>
+<g fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle"><text x="372" y="63">cut h = rM: normalized |α| = q^(−rM(s−M)/2) &lt; 1</text><text x="372" y="94">Hecke eigenvalue: δ_h^(1/2) α; other cuts have zero Jacquet module</text><text x="372" y="183">finite-matrix criterion (6.881)–(6.882)</text><text x="372" y="208">every smooth algebraic coefficient belongs to L²(G/Z)</text><text x="372" y="267">injective coefficient map ⇒ positive invariant norm (6.887)</text><text x="372" y="309">unitary completion retains precisely the original smooth vectors</text><text x="372" y="341">Theorems 6.365–6.367; no prior unitarity assumption on the segment.</text></g>
+<g stroke="#356a91" stroke-width="2" fill="none"><path d="M372 116 V156 M372 222 V240"/></g>
+</svg>
+<figcaption>Figure 58. The normalized and unnormalized exponents are distinguished in Lemma 6.366. The positive form is the actual coefficient integral (6.887). This constructs the centred segment as a discrete series; the converse classification is Theorem 6.373.</figcaption>
+</figure>
+
+**Corollary 6.368 — the sharp coefficient boundary.** If \(s\ge2\) and \(1\le p<\infty\), every nonzero smooth coefficient of \(\operatorname{St}_s(\rho_0)\) belongs to \(L^p(G_{rs}/Z)\) exactly when
+\[
+                         p>\frac{2r}{r+1}.
+\tag{6.888}
+\]
+For \(s=1\), all smooth coefficients are compact modulo the centre and belong to every such \(L^p\).
+
+**Proof.** At a cut \(h=rM\), substitute (6.884) and \(\delta_h=q^{-r^2M(s-M)}\) into (6.881). The expression is strictly smaller than one exactly when
+\(1+r-2r/p>0\), which is (6.888). All remaining Jacquet modules vanish. For \(s\ge2\) at least one cut is present, and its nonzero Jacquet module has a nonzero fixed space at some principal Levi level, by smoothness. Thus failure of the strict inequality, including equality, violates the necessary condition. This initially concerns all coefficients together. Every coefficient is a finite linear combination of left and right translates of any fixed nonzero coefficient: algebraic irreducibility of \(V\) and its smooth dual, Lemma 6.287, expresses the chosen vector and functional in finite spans of the corresponding orbits. Translation preserves quotient \(L^p\) norms, and finite sums preserve membership for \(p\ge1\). Hence one nonzero coefficient belongs precisely when all do. The cuspidal case \(s=1\) is Lemma 6.310. \(\square\)
+
+**A rank-six example.** Let \(\rho_0\) be unitary cuspidal of \(G_2\) and take \(s=3\). The discrete series \(\operatorname{St}_3(\rho_0)\) has exact data \(\nu\rho_0,\rho_0,\nu^{-1}\rho_0\). Its maximal normalized Jacquet modules vanish at cuts \(1,3,5\). At either cut \(2\) or \(4\),
+\[
+       |\alpha|=q^{-2},\qquad\delta_h=q^{-8},\qquad
+       |T_{a_h}|_{\mathrm{stable}}=q^{-6},\qquad
+       |\delta_h^{-1/2}T_{a_h}|_{\mathrm{stable}}=q^{-2}.
+\tag{6.889}
+\]
+The stable absolute values mean the eigenvalue moduli; there may also be a nilpotent kernel on a principal fixed space. At the other cuts the entire fixed-space operator is nilpotent by Lemma 6.22. Its positive derivatives are at indices \(2,4,6\), with modules respectively \(S[0,1]\), \(\nu\rho_0\), and a line, where \(S[0,1]\) uses base \(\rho_0\). Thus the \(P_6\)-length is three. Indeed removing the lowest exponent leaves the exact exponents \(0,1\); removing two leaves exponent \(1\). The derivative at index two is the positive \(\nu^{1/2}\)-twist of \(\operatorname{St}_2(\rho_0)\), rather than a centred discrete series. The one-step case \(r=1,s=2\) is the Steinberg sequence of Section 6.55. The exclusion of other discrete-series data and the generic trace identity are proved in Theorems 6.373–6.374.
+
+
+**Lemma 6.369 — derivative layers of products of generic segments.** Let \(A=S_1[a_1,b_1]\times\cdots\times S_t[a_t,b_t]\), where the base cuspidal for factor \(i\) has rank \(r_i\). Put \(s_i=b_i-a_i+1\) and \(N=\sum_i r_i s_i\). For \(0<m<N\), \(A^{(m)}\) has a finite filtration with quotients
+\[
+ \prod_{i=1}^t S_i[a_i+u_i,b_i],\qquad
+      0\le u_i\le s_i,\quad \sum_i r_i u_i=m,
+\tag{6.890}
+\]
+where empty segments are omitted. Every listed tuple contributes once. In particular these derivatives are finite length and admissible.
+
+**Proof.** Apply the normalized geometric filtration to the target parabolic \((N-m,m)\). A cell assigns \(r_i(s_i-u_i)\) dimensions of the \(i\)-th source block to the first row, and \(r_i u_i\) to the second; all other assignments vanish by Theorem 6.362. Its source Jacquet module is the actual tensor of the upper suffix \(S_i[a_i+u_i,b_i]\) and lower prefix \(S_i[a_i,a_i+u_i-1]\). The normalized layer (6.753) is therefore the external product of their respective ordered inductions in the two target rows. This uses the same source-factor order in each row and includes all half-moduli. Take the second-row Whittaker quotient. It is exact by compact averaging, and heredity gives a one-dimensional quotient of every product of its generic prefix factors. Lemma 6.363 then gives exactly (6.890). Identifying that line with \(\mathbb C\) requires a choice, so the quotient isomorphisms are not declared canonical. Finite-length admissible induction is Corollary 6.325. For an empty target row the corresponding product or Whittaker quotient is its \(G_0\) line; this also gives the full top derivative and the zero-index identity. \(\square\)
+
+Call two segments *linked* if their union is a segment, neither contains the other, and both lie on the same exact \(\nu\)-orbit of cuspidals. Thus disjoint adjacent intervals are linked, equal or nested intervals are not linked, and different orbits are not linked.
+
+**Lemma 6.370 — incompatible suffix and prefix selections.** Suppose \(\Delta_1,\ldots,\Delta_t\) are pairwise unlinked segments. Choose a suffix \(E_i\) and a prefix \(F_i\) of each \(\Delta_i\), allowing either to be empty. Here a nonempty suffix contains the upper endpoint and a nonempty prefix contains the lower endpoint. If at least one \(E_i\) is nonempty, then
+\[
+                    \nu\!\left(\bigcup_i E_i\right)
+                          \ne\bigcup_i F_i.
+\tag{6.891}
+\]
+This is already an assertion about underlying sets; equality of multisets is consequently impossible as well.
+
+**Proof.** Work on an exact \(\nu\)-orbit where a suffix occurs and identify its cuspidal classes with integers. Distinct integral twists are distinct by the central absolute exponent. If equality held, take the greatest integer \(x\) in the selected suffix union. A suffix containing \(x\) belongs to an interval \(\Delta_i\) ending at \(x\), since its whole upper end is selected. Equality puts \(x+1\) in a selected prefix of another interval \(\Delta_j\). Those two intervals have connected union: \(\Delta_j\) contains \(x+1\) and starts no later than that integer. It extends strictly past \(\Delta_i\). Being unlinked, it must contain \(\Delta_i\). Write \(c\) for its lower endpoint; then \(c\le x\), and its selected prefix contains \(c\).
+
+Equality now puts \(c-1\) in a selected suffix of some \(\Delta_k\). This interval and \(\Delta_j\) again have connected union, since they contain the consecutive integers \(c-1,c\). The former cannot be contained in the latter, which starts at \(c\). Being unlinked, it must contain \(\Delta_j\). Its suffix containing \(c-1\) therefore continues at least through the upper endpoint of \(\Delta_j\), which is at least \(x+1\). This contradicts the definition of \(x\). All selected sets on this orbit are finite, so that greatest integer exists. Other orbits are disjoint and cannot affect the contradiction. \(\square\)
+
+**Theorem 6.371 — unlinked generic segments induce irreducibly.** If the segments defining \(A\) in Lemma 6.369 are pairwise unlinked, then \(A\) is irreducible and generic. Its restriction to the mirabolic subgroup has no nonzero degenerate submodule.
+
+**Proof: exclusion of a degenerate submodule.** Each segment embeds into its descending cuspidal induction by Theorem 6.361. Exact induction embeds \(A\) into a full cuspidal induction. It therefore has finite mirabolic length, by Theorem 6.308. Suppose \(0\ne Z\subset A|_{P_N}\) is degenerate. Its highest nonzero derivative has some index \(k<N\). It is a submodule of the finite-length admissible \(A^{(k)}\), by Lemma 6.369, so choose an irreducible admissible submodule \(\sigma\subset Z^{(k)}\).
+
+The ordinary evaluation pairing of \(A\) with \(A^\vee\) separates vectors: compact averaging and finite fixed-space duality give a separating functional on any nonzero vector. Restrict its first argument to \(Z\) and twist its second by \(\nu\). As in Lemma 6.342 this is a \(\Delta_{P_N}\)-pairing nondegenerate in its first argument. The highest-derivative pairing of Theorem 6.339 gives
+\[
+ \sigma\hookrightarrow\bigl((\nu A^\vee)^{(k)}\bigr)^\vee,
+            \qquad (\nu A^\vee)^{(k)}\twoheadrightarrow\sigma^\vee.
+\tag{6.892}
+\]
+The second arrow uses exact admissible smooth duality and biduality. Its source is finite length and admissible by the derivative layers for the dual segments. This use of the highest-derivative pairing does not assume that the highest derivative of an arbitrary irreducible is irreducible.
+
+Each layer in Lemma 6.369 embeds in the full induction of its cuspidal data, by Theorem 6.361 and exact induction. Theorem 6.322 therefore shows that the data of \(\sigma\) are the multiset union of some suffixes \(E_i\subset\Delta_i\). At least one is nonempty, since its remaining rank is \(N-k>0\). The smooth dual of a generic segment is the generic segment on the dual data, by dual genericity and Corollary 6.330; its endpoints are reversed. Derivatives of those segments retain suffixes of the dual intervals, whose duals are prefixes of the original intervals. The extra \(\nu\) in (6.892) becomes \(\nu^{-1}\) on those prefixes after dualizing. Thus for some prefixes \(F_i\subset\Delta_i\),
+\[
+ \operatorname{cusp}(\sigma)=\bigsqcup_i E_i
+                        =\nu^{-1}\!\left(\bigsqcup_i F_i\right).
+\tag{6.893}
+\]
+For explicit endpoints, a suffix \([1-b_i+v_i,1-a_i]\) of the \(\nu\)-twisted dual interval becomes \([a_i-1,b_i-v_i-1]\), exactly \(\nu^{-1}\) times an original prefix. Determinant twists commute with the normalized derivative quotients because they are trivial on the unipotent relation groups. The underlying sets in (6.893) contradict Lemma 6.370. Hence \(Z\) does not exist.
+
+**Proof: irreducibility.** Duality preserves the unlinked condition and takes the product to the product of its generic dual segments, by compact-flag duality. The preceding argument also excludes degenerate mirabolic submodules in \(A^\vee\). The module \(A\) is finite length and has a one-dimensional Whittaker quotient by heredity. Choose a simple submodule \(X\) and a simple quotient \(Y\). The absence of degenerate submodules in \(A\) and \(A^\vee\) makes both generic. Exactness gives isomorphisms of lines \(X_{U,\theta}\to A_{U,\theta}\to Y_{U,\theta}\). Thus the composite \(X\to Y\) is nonzero and is an isomorphism of simples. It splits \(A\to Y\). The remaining kernel has zero top Whittaker quotient and is a degenerate mirabolic submodule of \(A\), so is zero. This proves irreducibility and genericity. \(\square\)
+
+**Lemma 6.372 — the unique unlinked segment decomposition of a multiset.** Every finite multiset \(\mathcal S\) of cuspidal classes has a unique expression as the multiset union of pairwise unlinked segments. On each exact \(\nu\)-orbit, choose an integer coordinate and let \(d(j)\) be its multiplicity. Its segments are the connected components of the finite level sets
+\[
+                      E_h=\{j\in\mathbb Z:d(j)\ge h\},
+                       \qquad h=1,2,\ldots.
+\tag{6.894}
+\]
+Each component is retained once at each level where it occurs. Repeated equal segments are permitted.
+
+**Proof: construction.** Every finite connected subset of the integer line is an interval. Counting the levels containing an integer gives \(d(j)\), so the intervals in (6.894) reproduce the multiset. Two components from the same level are disjoint with at least one missing integer between them. For different levels, the higher-level component is contained in a unique lower-level component. It is either contained in the other selected component or separated from it by a missing integer at the lower level. Thus any two constructed intervals are nested or separated, and cannot be linked. Translation of the integer coordinate changes none of the actual cuspidal segments.
+
+**Proof: uniqueness.** In any pairwise unlinked family the maximal distinct intervals are disjoint and not adjacent; every other interval is contained in one of them. Their union is the full support, so these maximal intervals are exactly its connected components. Remove one copy of each. This subtracts one from every positive multiplicity, leaves the remaining intervals pairwise unlinked, and strictly decreases the finite total multiplicity. Induction recovers the connected components at the next level, and then all further levels. It also recovers repeated equal maximal intervals, one copy per step. The empty multiset starts the induction. Different exact \(\nu\)-orbits are disjoint, so the construction and uniqueness apply independently on them. \(\square\)
+
+**Theorem 6.373 — generic factorization and the full split discrete-series classification.** Every generic irreducible admissible representation of \(G_N\) is, up to permutation of its factors, the irreducible product of the generic segments in the unique decomposition of its exact cuspidal multiset from Lemma 6.372. In particular every unitary discrete series of split \(G_N\) is
+\[
+                  \operatorname{St}_s(\rho_0),\qquad
+                  rs=N,\quad \rho_0\text{ unitary cuspidal on }G_r.
+\tag{6.895}
+\]
+The integer \(s\) and the isomorphism class of \(\rho_0\) are unique. These statements hold in both field characteristics.
+
+**Proof.** The product attached to Lemma 6.372 is irreducible and generic by Theorem 6.371 and embeds into the full induction of the prescribed cuspidals, by Theorem 6.361 and exact induction. Theorem 6.322 therefore gives exactly that prescribed multiset. Generic uniqueness, Corollary 6.330, identifies it with the given representation. Reordering has the same conclusion for each order, since the unlinked hypothesis is order-independent. Conversely any factorization into pairwise unlinked generic segments gives that same cuspidal multiset and is the unique decomposition of Lemma 6.372.
+
+Let \(\pi\) be a unitary discrete series. It is generic by Theorem 6.284. If its segment factorization had at least two factors, it would be a proper irreducible parabolic induction. Its own compact discrete test has trace one by Corollary 6.117 and trace zero by Corollary 6.297, a contradiction. Thus there is a single segment. Theorem 6.367 unitarizes it exactly by centring its cuspidal exponents; the unitary central character forces its remaining real twist to vanish. This gives (6.895). Conversely all the modules in that display are discrete series by Theorem 6.367. Exact cuspidal-data uniqueness recovers the number of cuspidals, their common rank and their ordered real exponents; the central middle twist recovers precisely \(\rho_0\). This proves uniqueness. The argument does not assume a classification of all nongeneric irreducibles. \(\square\)
+
+**Theorem 6.374 — compact trace isolation among every generic irreducible.** Let \(\pi\) be a unitary discrete series of split \(G_N(F)\), with central character \(\omega\). Its compact discrete test \(f_{\pi,m}\), at a generating level as in Corollary 6.117, satisfies
+\[
+ \operatorname{Tr}\tau(f_{\pi,m})=\begin{cases}
+                  1,&\tau\simeq\pi,\\
+                  0,&\tau\not\simeq\pi,
+                 \end{cases}
+ \quad\text{for every generic irreducible admissible }\tau
+                     \text{ of central character }\omega.
+\tag{6.896}
+\]
+No temperedness or unitarity hypothesis on \(\tau\) is needed.
+
+**Proof.** Factor \(\tau\) by Theorem 6.373. If it has at least two segment factors, it is itself a proper induction, so Corollary 6.297 gives trace zero for this very compact test. Its inducing factors are admissible and have the required common scalar action on the ambient centre, since the induced representation has character \(\omega\); no temperedness is required in that trace theorem. Such an induction cannot be \(\pi\), by the own-test contradiction used in Theorem 6.373.
+
+If there is one segment, Theorem 6.367 expresses it as a real determinant twist of a centred unitary discrete series. Its unitary central character \(\omega\) forces that real exponent to be zero. Thus \(\tau\) is a unitary discrete series. It is covered by the tempered pseudo-coefficient identity in Corollary 6.117: its unitary coefficients are bounded and square-integrable, hence belong to every \(L^{2+\epsilon}\) by \(|c|^{2+\epsilon}\le\|c\|_\infty^\epsilon|c|^2\), the criterion of Corollary 6.26. That identity gives exactly (6.896). The traces throughout are the finite-rank integrated operators already constructed, not formal coefficient sums. \(\square\)
+
+<figure class="generic-segment-isolation-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="360" viewBox="0 0 744 360" role="img" aria-labelledby="generic-segment-isolation-title generic-segment-isolation-desc">
+<title id="generic-segment-isolation-title">Unlinked height intervals and actual generic trace isolation</title>
+<desc id="generic-segment-isolation-desc">The multiplicity profile on exponents minus one, zero, one is one, two, one. Its first level is the whole interval minus one to one, and its second level is the singleton zero. These are nested unlinked segments, so their generic product St three rho times rho is irreducible and has proper induced trace zero. In general a generic representation has the unique unlinked segment factorization. Two or more factors give zero compact discrete-test trace without temperedness. One factor with a unitary central character is a unitary discrete series, where the trace is the Kronecker delta to pi.</desc>
+<rect x="1" y="1" width="742" height="358" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<g fill="#fff" stroke="#7395ae"><rect x="24" y="34" width="696" height="101" rx="8"/><rect x="24" y="183" width="334" height="92" rx="8"/><rect x="386" y="183" width="334" height="92" rx="8"/></g>
+<g fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle"><text x="372" y="62">d(−1), d(0), d(1) = 1, 2, 1</text><text x="372" y="91">height intervals: [−1,1] and [0,0], nested and unlinked</text><text x="372" y="120">generic representation = St₃(ρ) × ρ, irreducible</text><text x="191" y="213">two or more segment factors</text><text x="191" y="245">proper induction ⇒ trace 0</text><text x="553" y="213">one factor + unitary centre</text><text x="553" y="245">discrete series ⇒ trace δ_(π,τ)</text><text x="372" y="317">Theorem 6.374: every generic τ with central character ωπ</text><text x="372" y="342">the first branch includes non-tempered representations</text></g>
+<g stroke="#356a91" stroke-width="2" fill="none"><path d="M372 135 V157 H191 V183 M372 157 H553 V183"/></g>
+</svg>
+<figcaption>Figure 59. Take ρ unitary cuspidal. The height construction is (6.894), and irreducibility is Theorem 6.371. The two trace branches are the proof of (6.896); they concern the actual generic representation. The proper-induction branch cannot be applied merely to a generic constituent of a reducible induction. For the related segment factorization, compare Zelevinsky, §§9.7–9.10, in the free NUMDAM edition.</figcaption>
+</figure>
+
+
+**Corollary 6.375 — the complete reducibility criterion for generic segment products.** A finite product of generic segments is irreducible if and only if no two of its segments are linked.
+
+**Proof: a linked pair has different derivative data.** The unlinked direction is Theorem 6.371. For a linked pair choose coordinates on its common exact cuspidal orbit so that \(\Delta=[a,b]\), \(\Gamma=[c,d]\), where \(a<c\le b+1\) and \(b<d\). The cuspidal multiplicity function of the pair has height intervals \(U=[a,d]\) and \(H=[c,b]\), the latter omitted if empty. Its unique generic irreducible is consequently \(C=S[U]\times S[H]\), by Theorem 6.373. Put
+\[
+ E=[c-1,b],\qquad k=r(d-a).
+\tag{6.897}
+\]
+The interval \(E\) is nonempty. Lemma 6.369 makes \(S[E]\) an actual derivative filtration quotient of index \(k\) of \(S[\Delta]\times S[\Gamma]\): retain \(E\) from the first factor and remove all of the second. It is therefore an irreducible composition factor of that derivative.
+
+It cannot occur in \(C^{(k)}\). Each of its layers is a product of a suffix of \(U\) with a suffix of \(H\). A nonempty suffix of \(U\) contains \(d\), which is absent from \(E\); if that suffix is empty, every remaining cuspidal lies in \(H=[c,b]\), which omits \(c-1\). Exact cuspidal-data uniqueness thus excludes the datum of \(S[E]\) from every layer. If the linked product were irreducible, heredity would make it generic and identify it with \(C\), contradicting these actual derivative composition factors. This proves reducibility of either ordering of a linked pair.
+
+**Proof: any number of factors.** If a linked pair occurs in a list, choose one with the smallest distance between its positions. Every factor between them is unlinked with the first factor, or there would be a closer linked pair. Two unlinked factors commute by an actual isomorphism: both ordered products are irreducible and generic by Theorem 6.371 and have the same exact data, so Corollary 6.330 identifies them. Exact induction transports this isomorphism within a longer list. Move the first chosen factor across the intervening ones and make the linked pair consecutive. Its reducibility supplies a nonzero proper submodule with nonzero quotient. Exact induction preserves both nonzero modules: a nonzero fibre vector gives a nonzero section on a sufficiently small compact open flag chart, as in Lemma 6.306. Thus the whole product is reducible. This argument requires no commutativity assertion for arbitrary reducible products. \(\square\)
+
+<figure class="linked-segment-derivative-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="300" viewBox="0 0 744 300" role="img" aria-labelledby="linked-segment-derivative-title linked-segment-derivative-desc">
+<title id="linked-segment-derivative-title">A derivative separates a linked product from its generic factor</title>
+<desc id="linked-segment-derivative-desc">The linked intervals are Delta zero to two and Gamma one to three. Their height intervals are the union zero to three and intersection one to two. In the derivative of index three r, the original product has S zero to two as a filtration quotient by removing all of Gamma. The generic factor is the irreducible product of the union and intersection segments. Its derivative cannot have cuspidal data zero, one, two: a nonempty union suffix contains three, and removing it leaves only data from one to two, omitting zero. The two derivatives therefore have different composition factors, proving reducibility of the original linked product.</desc>
+<rect x="1" y="1" width="742" height="298" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<g fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle"><text x="372" y="34">Δ = [0,2], Γ = [1,3]; U = [0,3], H = [1,2]</text><text x="372" y="84">derivative index 3r of S[Δ] × S[Γ]: quotient S[0,2]</text><text x="372" y="132">generic factor C = S[U] × S[H], irreducible</text><text x="372" y="181">nonempty U-suffix contains 3, absent from [0,2]</text><text x="372" y="213">empty U-suffix leaves H-data only, omitting 0</text><text x="372" y="265">S[0,2] cannot occur in C^(3r) ⇒ the linked product is reducible</text></g>
+<g fill="none" stroke="#7395ae"><rect x="24" y="55" width="696" height="48" rx="8"/><rect x="24" y="150" width="696" height="81" rx="8"/></g>
+</svg>
+<figcaption>Figure 60. The witness is (6.897) with a=0, b=2, c=1, d=3. The derivative has remaining rank 3r, so the indicated quotient has the correct rank. Corollary 6.375 compares exact composition data of derivatives, not just their dimensions. Compare Zelevinsky, §9.9, in the free NUMDAM edition.</figcaption>
+</figure>
 
 
 ## 7. Exercises with complete solutions
@@ -12758,6 +13601,47 @@ The normalized functors and highest-derivative pairing may be compared with Bern
 3. In degree two take the inducing \(P_1\)-module to be \(\mathbb C\). In (6.819), put \(F(\xi)=G(\xi)=\mathbf1_{\varpi^b\mathcal O^\times}(\xi)\). Compute the pairing and its simultaneous right-translation factor for \(a=\varpi^c\). Check both placements of \(\Delta_{P_2}\) relative to the smooth dual of \(\Psi_2^+1\).
 4. Compute the highest derivative of the trivial \(P_2\)-module. Apply (6.824) to its inclusion in \(i_B(\nu^{-1/2},\nu^{1/2})\). Explain why it gives no contradiction there, and why it is not a submodule of the opposite order.
 5. For general \(n,k\), identify the upper-right rectangle and the lower-right Whittaker roots in the derivative relation group. Compute the determinant exponent on \(G_{n-k}\). Partition the characters in \(\Omega_n\) by their rightmost zero and derive \(F_s=\sum_{t=1}^s\binom stF_{s-t}\), with \(F_0=1\), from (6.820).
+
+
+**Exercise 7.41 — orbit maps, normalized derivatives and the compact socle.**
+
+1. For the restriction of \(\rho\times\sigma\) from \(G_4\), with both ranks two, write the open permutation in (6.831), its stabilizer in \(P_4\), and its source covariance. Isolate the extra factor in (6.827). Evaluate that covariance at the \(P_2\)-element \(\operatorname{diag}(\varpi,1)\) and the middle \(G_2\)-element \(\varpi I_2\).
+2. For \(\tau\diamond\rho\) with ranks \(m=3,k=2\), compute every factor of the normalized derivative map on the closed orbit when \(A=B=\operatorname{diag}(\varpi,1)\). On the open orbit take \(A=\operatorname{diag}(\varpi,1)\in P_2\) and \(B=\varpi I_2\). Check the two final covariances against (6.835).
+3. Over \(\mathbb F_q\), exhibit a nonzero submodule contradicting the support test of Lemma 6.347 outside its local-field hypotheses. Over \(\mathbb F_2\), explain why the two-dimensional sum-zero module of \(G_2(\mathbb F_2)\simeq S_3\) cannot have a faithful restriction Whittaker map on \(P_2(\mathbb F_2)\).
+4. Determine the mirabolic lengths of \(I_-,I_+\) and Steinberg in (6.847). Determine the kernel of their Whittaker restriction maps, and locate the compact simple socle inside the latter two modules.
+5. Verify every length in (6.848) and produce a nonzero degenerate submodule of \(\nu\times\nu^{-1}\times1\). Explain why this does not assert a general converse reducibility criterion.
+6. Put \(S=\operatorname{cInd}_{U_2}^{P_2}\theta_2\), \(T=\mathrm{St}|_{P_2}\), \(A=I_+|_{P_2}\). Determine all nine dimensions \(\dim\operatorname{Hom}_{P_2}(X,Y)\), for \(X,Y\in\{S,T,A\}\).
+
+
+**Exercise 7.42 — signatures, adjacent twists and support components.**
+
+1. For the local matrix construction in Lemma 6.353, explain why finitely many equations suffice near one parameter even when no finite presentation of the corner algebra has been given. Include the case \(\dim E=1\), and explain why a global indefinite form cannot restrict degenerately to a compact fixed space.
+2. In Example 6.359 take \(q=4\). Compute \(H_s\), its two eigenvalues and rank at \(s=-1,-1/2,0,1/2,1\). Identify the two endpoint radicals and compute the spherical trace margin at these five parameters. Explain why a zero endpoint margin permits reducibility but does not prove it by itself.
+3. Suppose an actual compact trace on a common fixed space is \(p(q^s)=q^{2s}+3+q^{-s}\). Give an explicit inequality in \(s\) that contradicts the unitary bound with fixed-space dimension \(D\) and test norm \(L>0\). Explain why an arbitrary normalization of invariant positive forms cannot change that conclusion. Describe precisely how trace separation supplies a nonconstant polynomial in Theorem 6.355.
+4. For a cuspidal \(\rho\) of rank \(r\), identify the exact Jacquet modules, genericity, kernels and images in the two sequences (6.859). Describe which nonzero map between the two inductions has generic image. Explain why identical composition factors do not make those inductions isomorphic.
+5. Let \(\rho\) have rank \(r\) and let the exact data be \(\{\rho,\nu\rho,\nu\rho,\nu^3\rho,\nu^4\rho\}\). Determine the support components and the ranks of their generic factors. Prove that the generic representation with the full data is not a discrete series, retaining the repeated label. State the obstruction to drawing the same conclusion from connectedness alone.
+6. For \(m\ge2\), show that the generic representation with data \(\{\rho\}^m\) is irreducible induction and is not a discrete series, although its support graph is connected. More generally, explain why an argument using only zero trace on the whole adjacent induction cannot isolate its generic constituent. Use the rank-two Euler traces as an explicit example.
+
+
+**Exercise 7.43 — actual segment projections and coefficient exponents.**
+
+1. In Lemma 6.360 take \(q=2,r=1,a=0,b=2\). List the central eigenvalue (6.870) for each permutation. Give the polynomial projection onto the component 210, and list the components of \(r_RJ_1\), \(r_RJ_2\), and their intersection. Explain why this remains a statement about actual modules when their vector spaces are infinite-dimensional.
+2. Let \(\rho\) have rank two. Compute \(r_{(4,2,2)}S[-1,2]\), every positive derivative, and its exact mirabolic length. Determine \(r_{(3,5)}S[-1,2]\). Retain all twists and indicate where an identification uses a chosen Whittaker line.
+3. For \(\operatorname{St}_3(\rho_0)\) with \(\rho_0\) unitary of rank two, calculate every maximal Jacquet cut, its normalized scalar modulus, the unnormalized stable Hecke eigenvalue modulus and its half-modulus. Give numerical values when \(q=2\).
+4. Derive the sharp \(L^p\) inequality for a general centred segment with \(s\ge2\). In the preceding rank-six example evaluate the expression in (6.881) at \(p=1,4/3,3/2,2\), including the equality case. Explain why a nilpotent part of a compact Hecke matrix does not alter the criterion.
+5. Let an irreducible admissible smooth module of unitary central character have all algebraic coefficients in \(L^2\). Prove directly that (6.887) gives a positive invariant norm, that its completion has exactly the original smooth module, and that one of its nonzero \(L^2\) coefficients becomes a Hilbert coefficient. Identify the separate roles of irreducibility and admissibility.
+6. If \(\rho=\nu^{3/4}\rho_0\) with \(\rho_0\) unitary of rank two, write \(S[-2,1]\) as an exact real determinant twist of a unitary discrete series. Determine whether \(S[-2,1]\) is unitary and compute its central absolute value at a scalar uniformizer.
+
+
+**Exercise 7.44 — unlinked intervals and generic trace isolation.**
+
+1. On one exact cuspidal orbit the multiplicities at consecutive exponents \(-2,-1,0,1,2\) are \(1,3,2,3,1\). Find every height interval and its multiplicity. Check all pairs for linkage, recover the data and factor the corresponding generic representation. Explain why no different unlinked segment family gives the same data.
+2. Give a complete endpoint proof of Lemma 6.370 for intervals on \(\mathbb Z\), allowing empty selected tails and heads. Explain why the hypothesis of at least one nonempty suffix cannot be omitted. Describe exactly how the \(\nu\)-twist of the dual derivative yields original prefixes in (6.893).
+3. Let \(\rho_0\) be unitary cuspidal of rank \(r\). For exact multiplicities \(1,2,1\) at exponents \(-1,0,1\), identify the generic representation, prove it irreducible, and show that it is not a discrete series. State what its compact discrete-test trace is at every compatible central character.
+4. For \(G_2\), take \(\tau=\nu\times\nu^{-1}\), where the factors are characters of \(F^\times\). Prove that it is irreducible and generic with trivial central character, and prove directly from a spherical trace that it is not unitarizable. Compute its trace on \(f_{\mathrm{St},m}\). Contrast this with the generic constituent of the reducible induction \(\nu^{1/2}\times\nu^{-1/2}\).
+5. Explain the exact uses of local genericity, the discrete series' own compact test, and generic uniqueness in Theorems 6.373–6.374. Explain which additional assertions are still needed to derive an exact global prescribed-discrete-series globalization or an individual integral Jacquet–Langlands representation transfer.
+
+6. Apply Corollary 6.375 to the linked intervals \([0,2]\), \([1,3]\). Give the derivative index and its distinguishing irreducible quotient. Prove reducibility of the three-factor product with intervals \([0,1],[4,4],[1,2]\), using actual unlinked exchanges to make a linked pair adjacent.
 
 
 **Solution 7.1.** Let \(\sigma\) be the nontrivial automorphism, \(t=\xi+\sigma\xi\), and \(n=\xi\sigma\xi\). The reduction of \(T^2-tT+n\) is irreducible and separable, so its lift is irreducible over \(\mathbb Q_p\). In the cyclic model
@@ -13472,7 +14356,7 @@ This is a noncentral rational class retained by the first congruence and exclude
                      \qquad\det(a)=-3,\qquad a\ne0.
 \tag{7.51}
 \]
-The trivial representation gives \(1-1=0\), and the sign representation gives \((-1)-(-1)=0\). Thus all irreducible traces vanish although the standard operator is nonzero. A pseudo-coefficient specifies traces. It need not annihilate every unwanted local representation as an operator, so a nonzero projection of a Poincaré function need not have the desired local component by that argument alone. One needs an actual spectral constituent and a justified trace isolation or local operator projection. Global genericity is proved in Theorem 6.276, but the local isolation of a discrete series among generic irreducibles and exact discrete-series globalization are additional assertions.
+The trivial representation gives \(1-1=0\), and the sign representation gives \((-1)-(-1)=0\). Thus all irreducible traces vanish although the standard operator is nonzero. A pseudo-coefficient specifies traces. It need not annihilate every unwanted local representation as an operator, so a nonzero projection of a Poincaré function need not have the desired local component by that argument alone. One needs an actual spectral constituent and a justified trace isolation or local operator projection. Global genericity is Theorem 6.276 and the local generic trace identity is Theorem 6.374. Exact discrete-series globalization still requires a global spectral-existence argument.
 
 
 **Solution 7.32.**
@@ -13519,7 +14403,7 @@ The finite zero row has mass \(1/4\), not zero. Moreover the smaller finite stab
 
 4. A smooth \(G_n\)-vector is fixed by a compact open \(J\). Equivariance makes its image under \(T\) fixed by \(J\cap P_n\), and hence by some \(J_n(a)\). Theorem 6.282 defines evaluation on that space and bounds it by \(q^{a n(n-1)/4}\). Boundedness of \(T\), together with density of smooth vectors, gives a nonzero smooth image. Some \(P_n\)-translate of that image has nonzero \(\ell_n\), by separation; equivariance makes the same statement for \(\ell_nT\) on a translated input. The Whittaker character identity follows from (6.627).
 
-The Hilbert multiplicity space can have many components, and the argument chooses one nonzero component map. It does not calculate the number of independent Whittaker functionals, prove mirabolic irreducibility, classify generic irreducibles, or establish uniqueness at a given cuspidal support. None of those assertions is needed for this existence proof. Local generic trace isolation, integral Jacquet–Langlands transfer and global spectral extraction remain separate proof obligations.
+The Hilbert multiplicity space can have many components, and the argument chooses one nonzero component map. It does not calculate the number of independent Whittaker functionals, prove mirabolic irreducibility, classify generic irreducibles, or establish uniqueness at a given cuspidal support. None of those assertions is needed for this existence proof. The local generic trace identity is Theorem 6.374. Integral Jacquet–Langlands transfer and global spectral extraction require further arguments.
 
 
 **Solution 7.33.**
@@ -13576,7 +14460,7 @@ The left kernel of \(B(f_1,f_2)=D(f_1*f_2)\) is \(L_\ell\), since the vectors \(
 \]
 Fixing \(\ell'\ne0\) fixes this kernel. Schur's lemma makes any two quotient identifications scalar multiples, and compact-subgroup identities recover the same scalar relation between the original functionals. Each smoothing step takes place in a finite-dimensional compact-open fixed space. It requires no globally bounded Whittaker functional on a Hilbert completion.
 
-**(e)** Every unitary split discrete series over either characteristic has a nonzero Whittaker functional by Theorem 6.284, and its Whittaker space has dimension exactly one by Theorem 6.291. This does not give a compact test whose trace isolates that discrete series among all generic irreducibles. Such a trace-isolation theorem, together with global spectral extraction, is still needed for the indicated globalization argument.
+**(e)** Every unitary split discrete series over either characteristic has a nonzero Whittaker functional by Theorem 6.284, and its Whittaker space has dimension exactly one by Theorem 6.291. The compact test in Theorem 6.374 isolates that discrete series among all generic irreducibles with its central character. Exact globalization additionally requires the actual global spectral extraction.
 
 
 
@@ -13640,7 +14524,7 @@ The operator of \(f\) is \(1/48\) times the identity. The identity of the probab
    =-1+1.
 \tag{7.68}
 \]
-The non-generic constituent contributes a nonzero cancelling trace. Therefore vanishing of the whole induction does not force vanishing of its generic factor. Generic trace isolation needs the additional irreducibility or composition information specified after Example 6.298.
+The non-generic constituent contributes a nonzero cancelling trace. Therefore vanishing of the whole induction does not force vanishing of its generic factor. The irreducible generic factorization in Theorem 6.373 supplies the additional information used in the trace-isolation proof of Theorem 6.374.
 
 
 **Solution 7.35.**
@@ -13760,7 +14644,7 @@ The induced exact sequence follows from (6.697). Taking fixed vectors under a su
  V_{U_n,\theta_n}\simeq(I_{\mathrm{cusp}})_{U_n,\theta_n}\simeq\mathbb C.
 \tag{7.80}
 \]
-Thus \(V\) accounts for the unique generic occurrence in that chosen induction. This neither puts the generic factor into the submodule position for every other induction nor compares different orders or proves uniqueness of inducing data. Finite length and one generic occurrence also allow other, non-generic constituents. Their traces can cancel: Example 6.298 has total trace zero, generic trace one and non-generic trace minus one. The required composition or irreducibility control and generic trace isolation remain separate mathematical assertions.
+Thus \(V\) accounts for the unique generic occurrence in that chosen induction. This neither puts the generic factor into the submodule position for every other induction nor compares different orders or proves uniqueness of inducing data. Finite length and one generic occurrence also allow other, non-generic constituents. Their traces can cancel: Example 6.298 has total trace zero, generic trace one and non-generic trace minus one. The generic factorization and trace identity are established in Theorems 6.373–6.374 using the unlinked-segment product theorem, rather than the finite-length bound alone.
 
 
 **Solution 7.37.**
@@ -14009,9 +14893,266 @@ This agrees with the ordered-partition count of Theorem 6.303, while (6.816) con
 
 
 
+**Solution 7.41.**
+
+1. In column convention,
+\[
+ w=\begin{pmatrix}1&0&0&0\\0&0&0&1\\0&1&0&0\\0&0&1&0\end{pmatrix},\qquad
+ P_4\cap w^{-1}Q_{2,2}w
+  =\left\{\begin{pmatrix}a&x_1&x_2&b\\0&B_{11}&B_{12}&0\\
+                       0&B_{21}&B_{22}&0\\0&0&0&1\end{pmatrix}\right\}.
+\tag{7.105}
+\]
+Here \(a\ne0\), \(B\in G_2\). The first source representation is restricted to \(\left(\begin{smallmatrix}a&b\\0&1\end{smallmatrix}\right)\). The covariance is \(|a|\,|\det B|^{-1}\rho\otimes\sigma\). The rectangle alone has half-modulus \(|a|\,|\det B|^{-1/2}\), so the extra factor is \(|\det B|^{-1/2}\). At the requested elements \(|a|=q^{-1}\), \(|\det B|=q^{-2}\); the covariance scalar is \(q\), with the actual source operators still acting on their fibre. This is a covariance factor, not a numerical value of the representations.
+
+2. The quotient-measure factor is \(\nu(B)\) on both orbits. Converting the \(\tau\)-quotient to \(\Psi^-\tau\) or \(\Phi^-\tau\) contributes \(\nu(A)^{1/2}\); target normalization contributes \((\nu(A)\nu(B))^{-1/2}\). The complete scalar calculation is
+\[
+ \begin{array}{c|cc|c|c|c|c|c}
+ &\nu(A)&\nu(B)&\text{source}&\kappa&\text{fibre conversion}&
+                     \text{target normalization}&\text{product}\\\hline
+ \text{closed}&q^{-1}&q^{-1}&q^{1/2}&q^{-1}&q^{-1/2}&q&1\\
+ \text{open}&q^{-1}&q^{-2}&q^2&q^{-2}&q^{-1/2}&q^{3/2}&q
+ \end{array}
+\tag{7.106}
+\]
+The resulting covariance \(\nu(A)\nu(B)^{-1}\) is respectively one and \(q\), agreeing with the \(\star\) and \(\diamond\) modules in their new ranks. The closed middle block belongs to \(P_2\); the open middle block is the full \(G_2\), so both chosen matrices are in their required stabilizers.
+
+3. Identify \(G_1(\mathbb F_q)\backslash P_2(\mathbb F_q)\) with the additive affine line. The constant function one is fixed by every translation and dilation and spans a nonzero trivial submodule. For any nontrivial additive character \(\psi\), choose \(x\) with \(\psi(x)\ne1\); its twisted relation is multiplication by \(1-\psi(x)\), so
+\[
+   \left(\mathbb C\mathbf1\right)_{N_2(\mathbb F_q),\psi}=0.
+\tag{7.107}
+\]
+There is no support contradiction because the whole fibre is finite and compact. For \(q=2\), the standard two-dimensional sum-zero module restricts to the order-two mirabolic group as its positive and negative eigenspaces, each of dimension one: that generator is a transposition of the three nonzero columns. Its nontrivial Whittaker quotient is one-dimensional, while \(\operatorname{Ind}_{U_2(\mathbb F_2)}^{P_2(\mathbb F_2)}\psi\) is one-dimensional since \(U_2=P_2\). No map from the two-dimensional module into this target is injective. This is an explicit finite-field failure of the local-field conclusion, not a local counterexample.
+
+4. Each of \(I_\pm\) has two one-dimensional first-derivative quotients and one one-dimensional top quotient. Their mirabolic lengths are therefore three. The trivial restriction has length one, and either exact sequence in (6.847) gives
+\[
+ \operatorname{length}_{P_2}I_-=\operatorname{length}_{P_2}I_+=3,
+ \qquad\operatorname{length}_{P_2}\mathrm{St}=2,
+ \qquad\operatorname{length}_{P_2}S=1.
+\tag{7.108}
+\]
+The \(I_+\) kernel is zero by (6.839) and (6.844). The Steinberg kernel is zero by Theorem 6.349; Steinberg is the generic irreducible in (6.847). A Whittaker functional on \(I_-\) kills its trivial submodule, factors through Steinberg, and is nonzero there by exactness of the top quotient. Its restriction map consequently has exactly that trivial submodule as kernel. The essential compact socle of \(I_+\) lies inside Steinberg, and it is a proper submodule of the Steinberg restriction by the displayed lengths. Thus the compact socle is not the whole Steinberg restriction.
+
+5. The first-derivative quotients of \(J\) have lengths \(2,1,2\), as proved in Example 6.351; the second-derivative quotients are the characters \(\nu,1,\nu^{-1}\), and the third derivative has dimension one. Hence
+\[
+                (\operatorname{length}J^{(1)},
+                   \operatorname{length}J^{(2)},
+                   \operatorname{length}J^{(3)})=(5,3,1),
+                      \qquad\operatorname{length}_{P_3}J=9.
+\tag{7.109}
+\]
+The ascending pair \(\nu^{-1}\times1\) contains the character \(\nu^{-1/2}\circ\det\) of \(G_2\), by twisting the first sequence in (6.847). Exact induction therefore gives a nonzero injection
+\[
+ \nu\times(\nu^{-1/2}\circ\det_{G_2})
+                   \hookrightarrow\nu\times\nu^{-1}\times1,
+ \qquad
+ \bigl(\nu\times(\nu^{-1/2}\circ\det_{G_2})\bigr)^{(3)}=0.
+\tag{7.110}
+\]
+The last equality is Whittaker heredity: a determinant character of \(G_2\) is trivial on its unipotent group and has zero nontrivial Whittaker quotient. The induced module is nonzero by a compact-flag section with a nonzero fibre value. This proves a degenerate submodule for this particular bad order. It uses the already proved degree-two character example, not a general theorem that \(\rho\times\nu\rho\) is reducible for arbitrary cuspidal rank.
+
+6. There are actual inclusions \(S\subsetneq T\subsetneq A\), with lengths \(1,2,3\). Each has top derivative dimension one and no nonzero degenerate submodule. The last assertion for \(S\) follows from simplicity and genericity, for \(T\) from Theorem 6.349, and for \(A\) from Theorem 6.348. Corollary 6.350 bounds each Hom space by one and makes every nonzero map injective. The inclusions and scalar identities realize one map when the source occurs at or before the target; a map in the reverse direction would inject a longer finite-length module into a shorter one. Thus, with sources indexing rows,
+\[
+ \begin{array}{c|ccc}
+ \dim\operatorname{Hom}_{P_2}(X,Y)&Y=S&Y=T&Y=A\\\hline
+ X=S&1&1&1\\X=T&0&1&1\\X=A&0&0&1
+ \end{array}.
+\tag{7.111}
+\]
+A proper inclusion can therefore be the unique nonzero mirabolic map up to scalar; scalar endomorphisms do not force a module of length two or three to be simple.
+
+
+**Solution 7.42.**
+
+1. In the \(d^2\)-dimensional matrix space, successively select a test equation that excludes a vector not in the full solution line. Each selection strictly decreases the current kernel dimension. The process stops with dimension one. A nonzero rank-\(d^2-1\) minor of this finite system persists near the parameter. At every nearby parameter an actual invariant form exists, so the finite kernel cannot have dimension zero; it is exactly the full solution line. For \(d=1\) no rank condition is needed: normalize the nonzero scalar matrix to one. For a compact fixed vector, the identity
+\[
+       B(v,w)=B(v,e_Jw)\quad(v=e_Jv)
+\tag{7.112}
+\]
+shows that orthogonality to the fixed space would be orthogonality to the entire representation. Nondegeneracy of the global form excludes such a nonzero vector, regardless of its signature. These facts justify the analytic local choice; they assert no finite presentation for the Hecke algebra.
+
+2. Write \(J_5=\mathbf j\mathbf j^*\). The five matrices and eigenvalue data are
+\[
+\begin{array}{c|c|c|c|c}
+s&H_s&\lambda_{\mathrm{std}}&\lambda_{\mathrm{const}}&\operatorname{rank}H_s\\\hline
+-1&(63/4)\operatorname{Id}-(15/4)J_5&63/4&-3&5\\
+-1/2&(15/2)\operatorname{Id}-(3/2)J_5&15/2&0&4\\
+0&3\operatorname{Id}&3&3&5\\
+1/2&(3/2)J_5&0&15/2&1\\
+1&-3\operatorname{Id}+(15/4)J_5&-3&63/4&5
+\end{array}
+\tag{7.113}
+\]
+The standard eigenvalue has multiplicity four; the constant eigenvalue has multiplicity one. At \(-1/2\) the radical is the constant line, the fixed part of the trivial submodule of \(I_-\); at \(1/2\) it is the four-dimensional standard type in the Steinberg submodule of \(I_+\). The margins, in the same parameter order, are
+\[
+                  -189/4,\quad0,\quad9,\quad0,\quad-189/4.
+\tag{7.114}
+\]
+They are products of the two displayed eigenvalues. A vanishing margin means equality in one necessary unitary bound, which alone supplies no invariant submodule. Reducibility follows from Theorem 6.355, or the actual rank-two sequences, rather than that equality. The finite radical is a fixed-space calculation and is not the whole Steinberg module.
+
+3. For \(s>\max(0,\log_q(\max(1,DL)))\), one has \(q^{2s}>DL\); since the other two terms are positive,
+\[
+       p(q^s)>DL\ge|\operatorname{Tr}V_s(f)|
+                       \quad\text{if }V_s\text{ were unitary}.
+\tag{7.115}
+\]
+The strict inequality contradicts (6.854). Traces and the test norm are fixed algebraic and Haar quantities. Rescaling, or changing, the invariant positive inner product does not change the trace; the norm estimate holds in every such inner product. In Theorem 6.355 one first supposes all parameters irreducible, proves that parameters zero and one have different exact cuspidal data, and applies Lemma 6.287 to obtain one actual test with different traces. Its Laurent polynomial therefore cannot be constant. No particular trace polynomial or spherical vector is required at higher cuspidal rank.
+
+4. Set \(A:I_+\to I_-\) and \(B:I_-\to I_+\) nonzero. With the notation of (6.859),
+\[
+\begin{gathered}
+ r_{(r,r)}S=\nu\rho\otimes\rho,\qquad
+ r_{(r,r)}T=\rho\otimes\nu\rho,\\
+ S\text{ generic},\quad T\text{ nongeneric},\qquad
+ \ker A=S,\ \operatorname{im}A=T,\qquad
+ \ker B=T,\ \operatorname{im}B=S,\\
+ BA=0,\qquad AB=0.
+\end{gathered}
+\tag{7.116}
+\]
+Thus the map from the ascending induction \(I_-\) to the descending induction \(I_+\) has generic image. Both intertwiners have one-dimensional Hom spaces, but both have proper kernels and images. An isomorphism would identify the unique simple submodules \(S,T\), which are nonisomorphic. The modules have equal Grothendieck classes \([S]+[T]\) and opposite nonsplit extensions.
+
+5. There is no vertex at exponent two. The two components, including multiplicities, are
+\[
+ \mathcal S_1=\{\rho,\nu\rho,\nu\rho\},\qquad
+ \mathcal S_2=\{\nu^3\rho,\nu^4\rho\},\qquad
+ V(\mathcal S)=V(\mathcal S_1)\times V(\mathcal S_2).
+\tag{7.117}
+\]
+The ranks are \(3r,2r\), and the total rank is \(5r\). Equation (6.856) distinguishes the integral powers, and no cross pair differs by \(\nu\). Theorem 6.357 makes this proper induction irreducible. Every compact discrete test has zero trace on it. If it were a discrete series, its own test would have trace one by Corollary 6.117, a contradiction. The repeated \(\nu\rho\) contributes twice to the rank and to the exact data; it is not discarded when making the graph on distinct vertices. Connectedness alone does not control multiplicities, nor prove square-integrability of the resulting generic module.
+
+6. There is no equality \(\rho\simeq\nu\rho\), by the central absolute exponent. Theorem 6.343 gives
+\[
+         V(\{\rho\}^m)=\underbrace{\rho\times\cdots\times\rho}_{m\text{ factors}}
+                    \quad\text{irreducible}.
+\tag{7.118}
+\]
+It is proper induction when \(m\ge2\), so the same own-test contradiction excludes a discrete series. Its graph has a single vertex of multiplicity \(m\), which is connected. In contrast, the adjacent induction in (6.859) is reducible. Trace additivity says only that the traces on its two simple constituents sum to zero for a compact discrete test. In the \(G_2\) example,
+\[
+ \operatorname{Tr}\mathrm{St}(f_{\mathrm{St},m})=1,\qquad
+ \operatorname{Tr}\mathbf1(f_{\mathrm{St},m})=-1,\qquad
+ \operatorname{Tr}I_\pm(f_{\mathrm{St},m})=0.
+\tag{7.119}
+\]
+Here the generic factor has nonzero trace even though the induction has zero trace. The irreducibility in Theorem 6.357 is what permits a zero induced trace to apply to the generic representation itself. \(\square\)
+
+
+**Solution 7.43.**
+
+1. Here \(B=5\), and the digits corresponding to labels \(0,1,2\) are \(4,2,1\). In the order of the permutation labels,
+\[
+ \begin{array}{c|rrrrrr}
+ \boldsymbol j&012&021&102&120&201&210\\\hline
+ \lambda_{\boldsymbol j}&39&59&47&107&71&111
+ \end{array}\qquad
+ p_{210}(T)=\frac{(T-39)(T-59)(T-47)(T-107)(T-71)}{38338560}.
+\tag{7.120}
+\]
+The denominator is \(72\cdot52\cdot64\cdot4\cdot40\). The adjacent profiles are \(r_RJ_1=102\oplus120\oplus210\) and \(r_RJ_2=021\oplus201\oplus210\), so the intersection is exactly 210. The finite composition filtration gives the annihilating polynomial with those six distinct roots on the whole module. Polynomial division and the projection identities are algebraic identities of endomorphisms and do not require finite-dimensional underlying spaces. Exact Jacquet quotients preserve the actual kernel defining the intersection.
+
+2. Consecutive chunks of the descending list \(2,1,0,-1\) give
+\[
+ \begin{gathered}
+ r_{(4,2,2)}S[-1,2]=S[1,2]\otimes\rho_0\otimes\rho_{-1},\qquad
+ r_{(3,5)}S[-1,2]=0,\\
+ S[-1,2]^{(2)}\simeq S[0,2],\quad
+ S[-1,2]^{(4)}\simeq S[1,2],\quad
+ S[-1,2]^{(6)}\simeq\rho_2,\quad
+ S[-1,2]^{(8)}\simeq\mathbb C.
+ \end{gathered}
+\tag{7.121}
+\]
+Here \(\rho_j=\nu^j\rho\); the symbol \(\rho_0\) in this answer denotes that base cuspidal, with no unitarity assertion. The odd positive derivatives vanish, and the \(P_8\)-length is four. The displayed derivative isomorphisms identify a discarded one-dimensional Whittaker quotient with \(\mathbb C\) by a choice. The dimension-three target block in \((3,5)\) cannot be filled by unsplit cuspidal blocks of dimension two, so its Jacquet module vanishes.
+
+3. Only cuts two and four survive; the other cuts are one, three and five. At either surviving cut the prefix exponent sum is one, and its cuspidal rank is two. Thus
+\[
+ |\alpha|=q^{-2},\quad\delta_h=q^{-8},\quad
+ \delta_h^{1/2}=q^{-4},\quad
+ |T_{a_h}|_{\mathrm{stable}}=q^{-6}.
+\tag{7.122}
+\]
+At \(q=2\) these four values are \(1/4,1/256,1/16,1/64\). The stable normalization \(\delta_h^{-1/2}T_{a_h}\) has eigenvalue modulus \(1/4\). At the vanished cuts the full compact fixed-space operator is nilpotent, by Lemma 6.22. A compact fixed space may also have a nilpotent kernel at the surviving cuts; (7.122) specifies its nonzero eigenvalue moduli, not an operator norm in an unspecified basis.
+
+4. At a surviving cut put \(u=M(s-M)>0\). The left side of the criterion is
+\[
+ q^{-ru/2}\,q^{-r^2u(1/2-1/p)}
+       =q^{-(ru/2)(1+r-2r/p)}.
+\tag{7.123}
+\]
+It is strictly below one exactly when \(p>2r/(r+1)\). For rank two and \(s=3\), its values at \(p=1,4/3,3/2,2\) are respectively \(q^2,1,q^{-2/3},q^{-2}\). Thus the equality case fails the necessary strict criterion. Every nilpotent matrix contributes only finitely many nonzero powers, hence a finite contribution to the positive power sum. Jordan blocks with nonzero eigenvalue contribute polynomial factors in the power; when the eigenvalue modulus is strictly below one these factors are absorbed by a slightly larger exponential rate still below one. Neither changes the strict boundary. For a cuspidal segment of length one no proper Jacquet cut survives, and its coefficients are compact modulo the centre instead.
+
+5. The coefficient map intertwines the given module with right translation by direct substitution. Its kernel is an invariant submodule and is proper, since the nonzero functional detects a vector at the identity and on a neighbourhood. Irreducibility makes this kernel zero. The pulled-back \(L^2\) form is therefore positive definite, and right Haar invariance makes it invariant. Its completion has a strongly continuous isometric action because the original dense vectors have open stabilizers. Compact averaging maps that dense subspace onto the original fixed space; admissibility makes this space finite-dimensional and closed. Hence the completed fixed space is precisely the original one. The union of all those fixed spaces is the smooth module.
+
+A functional fixed by \(J\) factors through \(e_J\). It is bounded there by finite dimension, and \(e_J\) is an orthogonal projection in the invariant completion, so it extends boundedly to that completion. Finite-dimensional Riesz representation gives a representing vector in the original fixed space. Thus the original algebraic coefficient is a Hilbert coefficient and is nonzero and square-integrable. Irreducibility also makes the completion irreducible: any nonzero closed invariant subspace has a nonzero fixed vector at some compact level, and that vector generates the original smooth module. Admissibility is what prevents extra fixed, and hence extra smooth, vectors from appearing in the completion.
+
+6. The interval has length four and midpoint \(-1/2\). Formula (6.886) gives
+\[
+ S[-2,1]\simeq\nu^{1/4}\operatorname{St}_4(\rho_0)
+       \quad\text{on }G_8,\qquad
+ |\omega_{S[-2,1]}(\varpi_F1_8)|=q^{-2}.
+\tag{7.124}
+\]
+The real twist is \(3/4-1/2=1/4\). Its central absolute value is not one, so this essentially discrete series is not unitary. The centred factor is unitary by Theorem 6.367. \(\square\)
+
+
+**Solution 7.44.**
+
+1. The positive level sets, with their connected components, are
+\[
+ \begin{array}{c|l}
+ h=1&[-2,2]\\
+ h=2&[-1,1]\\
+ h=3&[-1,-1],\ [1,1]
+ \end{array}\qquad
+ V\simeq S[-2,2]\times S[-1,1]\times\rho_{-1}\times\rho_1.
+\tag{7.125}
+\]
+The total cuspidal multiplicity is \(5+3+1+1=10\), equal to \(1+3+2+3+1\). The first two segments contain all the smaller ones; the last two are separated by the missing exponent zero at their level, so are not adjacent. Every pair is therefore unlinked. Theorem 6.371 makes the displayed product irreducible and generic. Removing one copy of each connected component of the full support first forces \([-2,2]\), then forces \([-1,1]\), then forces the two singletons. This proves uniqueness, including their multiplicities, by the induction of Lemma 6.372.
+
+2. Suppose the shifted union of selected suffixes equalled the union of selected prefixes, and take the largest selected suffix integer \(x\). Some source interval ends at \(x\). A selected prefix containing \(x+1\) belongs to an interval extending past \(x\), whose union with the first is connected. The unlinked condition forces it to contain the first interval. If \(c\) is its lower endpoint, its selected prefix contains \(c\), so a selected suffix must contain \(c-1\). The interval of this suffix has connected union with the interval beginning at \(c\), but extends to its left; nonlinkage forces it to contain that interval. Its suffix then continues past \(x\), a contradiction. Empty selections cause no difficulty, since the chosen \(x\), \(x+1\) and \(c-1\) each lie in a specified nonempty selection. If every suffix is empty, every prefix may be empty as well, giving equality; the nonempty hypothesis is necessary.
+
+For a segment \([a,b]\), the \(\nu\)-twisted dual has endpoints \([1-b,1-a]\). A derivative retaining its suffix with lower endpoint \(1-b+v\) has dual endpoints
+\[
+       [a-1,b-v-1]=\nu^{-1}[a,b-v].
+\tag{7.126}
+\]
+This is precisely the shifted original prefix, with emptiness retained if the whole factor was removed. Thus (6.892) forces the multiset equality (6.893). It is not an assumption that arbitrary highest derivatives are irreducible.
+
+3. The height intervals are \([-1,1]\) and \([0,0]\), so
+\[
+                  V\simeq\operatorname{St}_3(\rho_0)\times\rho_0
+                          \quad\text{on }G_{4r}.
+\tag{7.127}
+\]
+The intervals are nested, so the product is irreducible and generic by Theorem 6.371. It is a proper induction. Every compatible compact discrete test has trace zero by Corollary 6.297. If it were a discrete series, its own such test would have trace one, a contradiction. Its support graph is connected, but its multiplicity two at exponent zero prevents it from being a single segment. This is the stronger exclusion supplied by Theorem 6.373.
+
+4. The two singleton segments are separated by exponent zero, so they are unlinked. Equivalently their ratio is \(\nu^2\), and Corollary 6.356 gives irreducibility; heredity gives genericity. The product central character is one. With \(x=q^{-1},y=q\), the spherical test from (6.803) has trace \(\sqrt q(q+q^{-1})\) and norm \(q+1\). Its squared norm margin is
+\[
+             (q+1)^2-q(q+q^{-1})^2
+                       =(1-q)(q^2-q^{-1})<0.
+\tag{7.128}
+\]
+Thus its trace violates the necessary unitary bound (6.854), proving nonunitarizability. The actual compact Euler trace is nevertheless
+\[
+ \operatorname{Tr}\tau(f_{\mathrm{St},m})=0,\qquad
+ \operatorname{Tr}\mathrm{St}(f_{\mathrm{St},m})=1.
+\tag{7.129}
+\]
+The first is the trace on a proper irreducible induction. By contrast the adjacent induction is reducible, with Steinberg as its generic submodule and the trivial representation as quotient. Its total Euler trace is zero because the nongeneric quotient has trace \(-1\). This does not contradict generic trace isolation: its generic constituent is Steinberg, on which the trace is one.
+
+5. Discrete-series genericity puts \(\pi\) in the class governed by exact generic cuspidal data. Generic uniqueness identifies every generic module with the irreducible product constructed from the canonical unlinked interval family. If that family has several factors, the representation itself is a proper induction. Its own-test traces would be both zero and one if it were a discrete series, so a discrete series has only one factor. Its unitary centre then centres the segment and gives the classification. For any other generic \(\tau\) of that same unitary central character, several factors give zero trace by proper induction, and one factor is a unitary discrete series, where Corollary 6.117 gives the Kronecker delta.
+
+These are local finite-rank trace identities. An exact global realization still requires an actual cuspidal spectral constituent and the relevant global trace identity, outside-place isolation and finite spectral fibre. A nonzero cuspidal Poincaré function alone is not that extraction. Individual Jacquet–Langlands representation transfer also requires an integral representation construction or the missing integrality and positivity of its character coefficients; real norm-one rows alone do not give it. No global spectral or individual representation-existence assertion follows solely from (6.896).
+
+
+6. The first product has total rank \(6r\), and its derivative of index \(3r\) has quotient \(S[0,2]\). Its unique generic irreducible is \(S[0,3]\times S[1,2]\). In the same derivative of that product, every nonempty suffix of the first segment contains exponent three; if it is removed, the other factor has no exponent zero. Thus the datum \([0,2]\) occurs only in the derivative of the original product, which is consequently reducible. For the three-factor example, \([0,1]\) and \([4,4]\) are unlinked, so their two ordered products are actually isomorphic. Exchange them inside the full induction. The intervals \([0,1]\) and \([1,2]\) are then consecutive and linked. Their nonzero proper submodule and quotient remain nonzero under exact induction with the \([4,4]\) factor. The original three-factor product is reducible as well. \(\square\)
+
+
 ## 8. Proofs and prerequisites
 
-The class matching is fully proved in Theorem 1.1, the trivial/Steinberg character calculation in Proposition 2.2, the complete real local correspondence in Lemmas 2.3–2.4 and Theorem 2.5, and the all-prime dimension equality in Theorem 4.2. Lemma 2.6, Theorem 2.7 and Proposition 2.8 prove the finite-place regular character theorem, including compact split elements, in all characteristics. They include the exact tree complex, uniform fixed-tube trace stabilization, principal/special character formulas and finite elliptic compact-type sum. Section 2.4 proves finite-place smooth transfer, including the inseparable support needed in characteristic two, by the signed Euler test and the exact orbital-coordinate lift. Lemma 2.11 proves the full two-term scalar orbital germ and the negative scalar-value identity for every matching pair. Proposition 2.12 proves the paired formal degree for special representations. Lemma 2.13, Theorem 2.14 and Corollary 2.15 prove the whole depth-zero local bijection, its negative character identity on every regular elliptic class, paired formal degrees, and every determinant/norm twist of that family. The finite-tree character argument includes deep scalar-residue classes and all residue characteristics. Theorem 2.16 proves the full Schur constant for every irreducible admissible compact induction, Corollary 2.17 computes the division degree and reduces equality to an explicit dimension-volume identity, and Proposition 2.18 calculates the unramified and ramified inducing volumes in every characteristic. Theorem 2.30 proves the all-level bijection, character identity and paired type dimensions by the quaternion construction and elliptic orthogonality. Lemmas 2.19–2.21 and Theorem 2.22 prove real character integration across the singular set, the scalar-value identity for every matching pair, and real smooth/spectral transfer with common-support polynomially bounded wave tests. The Gaussian orbital example computes the scalar sign directly. Sections 2.8–2.10 supply the full finite representation construction, arbitrary-test character integration, Fourier comparison, elliptic orthogonality, all-level bijection, full factor and formal-degree equality, and every-pair spectral transfer. Sections 3.3–3.6 prove the full global quaternion correspondence over \(\mathbb Q\): equal paired volumes, absolute discrete traces, the truncated-kernel comparison, cancellation of the split/unipotent/continuous terms, the residual characters, and positive outside trace separation. The real proof includes the principal/complementary square-integrability exclusions, a trace-class regularization of the disk character and explicit paired formal degrees (2.23)–(2.24). Both level examples, the order calculation, the Brandt matrices and the exercise solutions include their computations. Sections 6.16–6.18 give the Schwartz trace calculus, explicit nilpotent and unipotent orbital measures, unipotent orbital continuity, compact-support germ expansions and scalar homogeneity. Exercises 7.6–7.7 compute division-matrix kernel flags and explain coincident homogeneity degrees. Section 6.19 gives the uniform Schwartz constant terms and polynomially weighted orbital reduction. Section 6.20 proves the exact elliptic radial sums, sharp Schwartz convergence and actual elliptic coefficient–character formula in division rank two. Exercise 7.8 computes a separable degree-four example in characteristic two with both torus normalizations. Section 6.21 proves the compact flag-kernel estimate, angular spherical bound, quantitative elliptic conjugator bound, every-rank elliptic convergence and coefficient formula, and polynomially weighted regular convergence. Exercise 7.9 distinguishes the angular estimate from a false pointwise bound. Section 6.22 proves a completed Schwartz resolution, higher-extension vanishing for tempered pairs with a discrete-series member, compact pseudo-coefficients, the cellular formal-degree formula and fixed-level finiteness of discrete series. Exercise 7.10 computes a lattice cut and a rank-two formal-degree quantum. Section 6.23 proves the finite-commutator identity for compact discrete tests, all their ordinary regular orbital values, a division-norm fixed-set contraction, explicit matching Euler tests in every degree, and the probability normalization of elliptic class measure. Exercise 7.11 computes fixed-interior signs and distinguishes regular orbital matching from scalar test values. Section 6.24 constructs the Iwahori sign discrete series by an explicit Schwartz projection, proves its irreducibility, admissibility and formal degree, computes the Euler test on this family and gives an absolute elliptic character moment bound. Exercise 7.12 computes a rank-three division example and its cyclic phases. Section 6.25 proves a bounded apartment contraction, the signed Euler cocenter identity and actual norm-character-family transfer in every degree; it computes the general zero-orbit germ, near-identity elliptic discrete characters and integral formal-degree ratios. Figure 5 shows the rank-two apartment averages and their Hecke coefficients. Exercise 7.13 checks an infinite primitive, both torus measures and the degree integrality obstruction. Section 6.26 classifies every primary fibre, constructs locally finite orbital measures and compact-test germs including inseparable elements, proves compact parabolic descent and gives finite germ expressions for elliptic discrete characters. Figure 6 and Exercise 7.14 compute the two inseparable primary types in dimension four. Section 6.27 proves a quotient conjugator bound for every closed orbit, identifies the exact nilpotent obstruction to the flag submersion, constructs actual character densities on the whole D-irreducible open set including inseparable elements, and extends Schwartz convergence and discrete-test vanishing to one-chain primary orbits. Its double-primary germ formula has one remaining coefficient. Figure 7 and Exercise 7.15 compute the inseparable quartic chamber, both coefficient-orbital measures and the necessity of the centralizer quotient. Section 6.28 counts all saturated quadratic lattices in odd division degree, proves the resulting absolute Schwartz orbitals for every linear or quadratic primary partition, computes the Euler orbital at every closed primary element, and gives the quadratic closed germ and finite elliptic character expansions for split \(\mathrm{GL}_4\). The dimension sum does not establish individual coefficient integrality or positivity; elliptic orthogonality is Theorem 6.271. Figure 8 and Exercise 7.16 give exact lattice counts, ramification factors and the convergent shell estimate. Section 6.29 proves all ordinary orbital Schwartz bounds in division rank two by an exact tree displacement and weighted shell count, and proper-flag bounds and discrete-test vanishing in rank three. It constructs compact conjugacy representatives for bounded reduced polynomials, proves the finite-extension index and embedding rules including inseparable fields, and evaluates primary germs at multiplicity at most two and throughout rank three. Its elliptic character extension criterion gives finite complex character expansions and finite elliptic \(L^2\) norms in every division rank at most three, every inner form of degrees four and six, and the further split degrees specified there. Figure 9 and Exercise 7.17 compute an inseparable quaternion fixed tree, its sharp positive convergence threshold and an explicit primary polynomial limit. These statements leave individual character coefficients and general representation transfer as additional conclusions; elliptic orthogonality is Theorem 6.271. Section 6.30 constructs an integral involution model for ramified quadratic fields in even division degree under its specified odd-residue or inseparable characteristic-two hypotheses. It proves exact fixed-lattice descent, paired lattice normal forms and stabilizer masses over the noncommutative fixed division algebra, every-rank absolute Schwartz convergence, primary-partition vanishing and closed germs, and a singular Steinberg coefficient orbital. Figure 10 and Exercise 7.18 compute paired lengths and exact masses, with formal-degree and Haar factors in division degrees two and four. Section 6.31 proves the unramified quadratic lattice normal forms and exact orbit masses in every even division degree and both characteristics. Its partition and finite-series identities establish exhaustiveness in all ranks and indices. The resulting Schwartz bounds extend primary-partition traces and closed germs to these fields and give the singular unit Iwahori Steinberg orbital two. Figure 11 and Exercise 7.19 compute the two valuation colors and exact normalized-lattice counts. Section 6.32 proves the ramified quadratic recurrence, stable sums and intersections, exact coefficient descent and stabilizer masses without an involution hypothesis. It gives every linear or quadratic primary Schwartz trace and closed germ in every rank, division degree and field characteristic, including wild separable fields. Its elliptic extension criterion covers every inner form of degree eight and of twice a prime degree, with finite complex character expansions and their stated limits. Figure 12 and Exercise 7.20 compute a separable characteristic-two wild field, its rank-five masses and the mixed-characteristic Eisenstein recurrence. Section 6.33 proves the higher-degree Eisenstein recurrence, integral Moore-matrix descent, exact stable lattice sums and intersections, and the total normalized-lattice series for totally ramified fields whose degree divides the division degree. Its cubic examples give the two first-level orbit masses, a three-submodule obstruction to direct-sum classification, and two infinite families with exact stabilizers and Cartan heights. Their convergent contributions and the explicit index-two count distinguish these families from a full cubic orbital bound. Figure 13 and Exercise 7.21 compute the finite-field quotient, masses and root-height counterexample. Section 6.34 counts every normalized cyclic quotient in all totally ramified degrees dividing the division degree, proves their exact Cartan heights and restricted Schwartz bounds for every field generator, and classifies every cubic cyclic-quotient orbit with its exact mass. Its integral dual-module argument includes inseparable cubic fields. Figure 14 and Exercise 7.22 compute the intermediate cubic orbits and the complete index-two count. Quotients with several positive lengths remain outside that restricted convergence estimate. Section 6.35 proves normalized opposite-algebra lattice duality with exact orbit masses and conjugate Cartan lists, and the complete dual-cyclic Schwartz subseries in every totally ramified degree dividing the division degree. It gives the cubic dual families, both cyclic orientations and the count of every cubic elementary quotient type in either characteristic. Over the specified characteristic-two cubic field it proves an intermediate-intersection stabilizer explicitly and classifies every normalized lattice through index four by an independent exact total count. Figure 15 and Exercise 7.23 compute the dual masses and finite cubic configurations. The complete rank-three estimate is Section 6.37. Section 6.36 proves exact normalized power heights in every totally ramified degree dividing the division degree and an exact extreme-Cartan identity for every totally ramified cubic field. Its integral right-module dual gives complete cubic cyclic-quotient orbit classifications and masses in every division rank, including noncommutative centralizers. It describes the dual families, counts every rank-three elementary quotient type, and proves that each equal-positive-length type is one orbit with its full subseries bound. Figure 16 and Exercise 7.24 compute quaternionic-centralizer masses and a wild separable characteristic-three uniformizer whose conjugation is not periodic. The unequal-length estimates in division rank three are Section 6.37. Section 6.37 proves the full ordinary Schwartz orbital bound in division rank three for every generator of every totally ramified field embedded in the division algebra. Its incidence count gives the exact uniformizer height distribution in all such degrees and the exponential saving for arbitrary generators. It proves the primary-partition traces and zeros, closed character germ and singular Steinberg coefficient orbital for this family, including wild and inseparable extensions. Figure 17 and Exercise 7.25 compute interior height counts in degrees three and four. Section 6.38 treats fields with nontrivial residue extension. Section 6.38 constructs an integral coefficient order for every field embedded in the division algebra. Finite least-length colors, compact coefficient-primitive frames and an actual top-cyclic incidence bound prove ordinary Schwartz convergence, polynomial tails and traces for every such closed orbit in division rank three. The primary-module dichotomy and the proper-flag bounds then cover every ordinary orbital in division ranks at most three, in both characteristics. It gives the residue-degree factor in the closed Euler and singular Steinberg values, the closed character germ, and a mixed inseparable example. Figure 18 and Exercise 7.26 distinguish ambient refinement counts from coefficient-normalized counts. General higher-rank noncompact closed orbitals, arbitrary-test character integration, individual transfer coefficients and the full local and global representation correspondences remain separate obligations. Section 6.39 proves Schwartz traces and zeros for every proper-flag orbit in division rank four, and gives every rank-four primary closed compact germ without assuming closed-orbit Schwartz convergence there. It proves finite real elliptic character expansions for every division rank at most four, and reality in the earlier finite-expansion ranges. Polynomial sublevel estimates give quantitative elliptic discriminant tails and compact finite-level trace approximants to their Gram matrices. Its exact complementary trace limit and uniform fixed-space integrability criterion distinguish those results from full elliptic orthogonality. Figures 19–20 and Exercise 7.27 give an inseparable quartic, a rank-four Cartan limit and explicit concentration and character-coefficient examples. Corollary 6.272 proves vanishing of the stated trace limits. Higher-rank noncompact closed orbitals, individual coefficient integrality and the full local and global representation transfers require further arguments. Section 6.40 proves smooth transfer of every division-group test to every inner form of the same degree, using central-covariant polynomial profiles and the Euler function. In division ranks at most four it gives the inverse profile and a canonical linear cocenter isomorphism, elliptic discrete-character independence and uniqueness of any such discrete-series transfer candidate. Its exact finite trace duality proves positive-definite elliptic Gram matrices and exact separation of finite packets by regular-support tests. Figures 21–22 and Exercise 7.28 display the normalization, matrix identities and complementary trace limits. Orthogonality and the transfer-test trace identity are Theorem 6.271 and Corollary 6.272. Coefficient integrality, representation-transfer existence and the general global correspondences require additional arguments. Section 6.41 gives a finite principal Jacquet model with exact Haar factors and proves compatibility of normalized constant terms with algebraic projective traces. A cubical resolution along the proper Levi central flat cancels identical projective modules, proving every proper ordinary orbital of compact Euler–Poincaré tests zero in every division rank and both characteristics. It gives all closed primary compact germs, finite real elliptic character expansions, the inverse linear cocenter map, elliptic independence and finite regular-support trace separation in every rank. Figures 23–24 and Exercise 7.29 display the finite flag normalization, central-flat cancellation and an inseparable rank-six example. General closed Schwartz convergence, individual coefficient integrality and full local and global representation transfer require additional arguments. The complementary-trace limit is Corollary 6.272. Sections 6.42–6.43 construct very cuspidal Euler representatives by rational finite flag characters, including Frobenius and cyclic graded pieces. Their conjugation kernels define continuous Schwartz traces. A uniform discriminant estimate on conjugation overlaps proves the cutoff limit and the elliptic pairing, giving the cuspidal trace identity, elliptic discrete-series orthogonality and actual vanishing of complementary transfer traces in every rank and both characteristics. Figures 25–26 and Exercise 7.30 display the finite cycles, kernel comparison and exact normalizations. Individual coefficient integrality, representation existence and completeness, general noncompact closed Schwartz estimates, arbitrary-test character integration and the full global correspondences require further arguments. Section 6.44 proves global Whittaker injectivity for smooth cuspidal functions on GLn over number fields and function fields, with a function-field additive-duality proof and compact successive Fourier integrals. It extracts local Whittaker functionals from a given tensor realization and constructs nonzero compact cuspidal Poincaré functions using one translated-unipotent-zero component and one shrinking auxiliary place. Figures 27–28 and Exercise 7.31 give the Fourier steps, rational-support isolation, trace-dual constants and the distinction between trace and operator zeros. Section 6.45 gives explicit row-section Haar densities, the regular mirabolic Hilbert decomposition, preferred smooth evaluation and its sharp principal-level norm bound. The central regular representation restricts to a mirabolic regular multiplicity by a projective-row calculation. A discrete-series coefficient embedding therefore gives a nonzero Whittaker functional for every split degree in both field characteristics. Figures 29–30 and Exercise 7.32 display the exact measures, functional maps, projective masses and the positive zero Fourier fibre in finite models. Section 6.46 proves transpose symmetry in the compact cocenter, the contragredient identity and Whittaker multiplicity one for split general linear groups in every nonarchimedean field characteristic. Its twisted Bruhat quotients, compatible block-scalar representatives and finite involution filtration are explicit. Figures 31–32 and Exercise 7.33 give the matrices and algebraic kernels. Section 6.47 computes Whittaker coinvariants of every smooth parabolic induction by explicit block shuffles and compact averaging. It gives the unique generic occurrence in a given finite composition series. Frobenius adjunction and finite principal Jacquet coordinates give the actual induced-trace identity in every division rank, so compact Euler tests annihilate all proper induced traces, including non-tempered inductions. Figures 33–34 and Exercise 7.34 give the stabilizers, Haar factors and finite matrices. A rank-two principal series shows why the generic constituent of a reducible induction can nevertheless have nonzero trace. Section 6.48 proves additive detection by compact character projectors and detection of every nonzero mirabolic module by finitely many simple-root characters. The resulting integer bounds composition length. Every irreducible admissible cuspidal representation is generic and remains irreducible on the mirabolic subgroup. The exact character profiles of cuspidal induction count ordered partitions of its labelled blocks, giving finite length bounded by 1, 3, 13, 75 and 541 for one through five blocks, and exactly one generic occurrence. Figures 35–36 and Exercise 7.35 give the projector identities, ordered partitions and strict length-bound example. Sections 6.49–6.52 prove normalized functor identities, cuspidal embeddings, the geometric Jacquet filtration and factorial finite-length bounds for every division general-linear group in both characteristics. Cuspidal data determine the complete composition multiset of induction independently of block order. A nontrivial reducible two-block exchange gives two opposite nonsplit extensions and one-dimensional intertwining spaces. In the split group, each exact cuspidal multiset has one generic irreducible, occurring once in every ordering. Normalized unitary induction preserves its original smooth module and invariant smooth complements; pairwise inequivalent unitary cuspidals induce irreducibly, with unitary identifications between orders. Ordinary compact tests have actual Laurent-polynomial matrices on common fixed spaces. Figures 37–46 and Exercises 7.36–7.39 give the functors, projectors, two-flag cells, exchange maps, unitary norms, explicit Hecke matrices and division self-twists. Section 6.53 constructs the normalized mirabolic functors by compact Fourier projectors and proves their exact filtration, smooth-dual pairing and highest-derivative pairing. Its actual derivative modules have quotients indexed by subsets of the cuspidal labels. Their shifted support proves irreducibility whenever no two inducing cuspidals differ by the positive determinant character, including repeated isomorphic factors, and gives exact mirabolic length \(2^s-1\) under that hypothesis. Figures 47–49 and Exercise 7.40 display the modules, pairings and length counts. The ordered generic Kirillov construction, the converse reducibility criterion, noncuspidal discrete-series trace isolation, transfer integrality and global spectral extraction require further arguments. Corollary 4.1 is deduced from the proved global theorem and earlier course results; the independent dimension calculation is not substituted for the theorem.
+The class matching is fully proved in Theorem 1.1, the trivial/Steinberg character calculation in Proposition 2.2, the complete real local correspondence in Lemmas 2.3–2.4 and Theorem 2.5, and the all-prime dimension equality in Theorem 4.2. Lemma 2.6, Theorem 2.7 and Proposition 2.8 prove the finite-place regular character theorem, including compact split elements, in all characteristics. They include the exact tree complex, uniform fixed-tube trace stabilization, principal/special character formulas and finite elliptic compact-type sum. Section 2.4 proves finite-place smooth transfer, including the inseparable support needed in characteristic two, by the signed Euler test and the exact orbital-coordinate lift. Lemma 2.11 proves the full two-term scalar orbital germ and the negative scalar-value identity for every matching pair. Proposition 2.12 proves the paired formal degree for special representations. Lemma 2.13, Theorem 2.14 and Corollary 2.15 prove the whole depth-zero local bijection, its negative character identity on every regular elliptic class, paired formal degrees, and every determinant/norm twist of that family. The finite-tree character argument includes deep scalar-residue classes and all residue characteristics. Theorem 2.16 proves the full Schur constant for every irreducible admissible compact induction, Corollary 2.17 computes the division degree and reduces equality to an explicit dimension-volume identity, and Proposition 2.18 calculates the unramified and ramified inducing volumes in every characteristic. Theorem 2.30 proves the all-level bijection, character identity and paired type dimensions by the quaternion construction and elliptic orthogonality. Lemmas 2.19–2.21 and Theorem 2.22 prove real character integration across the singular set, the scalar-value identity for every matching pair, and real smooth/spectral transfer with common-support polynomially bounded wave tests. The Gaussian orbital example computes the scalar sign directly. Sections 2.8–2.10 supply the full finite representation construction, arbitrary-test character integration, Fourier comparison, elliptic orthogonality, all-level bijection, full factor and formal-degree equality, and every-pair spectral transfer. Sections 3.3–3.6 prove the full global quaternion correspondence over \(\mathbb Q\): equal paired volumes, absolute discrete traces, the truncated-kernel comparison, cancellation of the split/unipotent/continuous terms, the residual characters, and positive outside trace separation. The real proof includes the principal/complementary square-integrability exclusions, a trace-class regularization of the disk character and explicit paired formal degrees (2.23)–(2.24). Both level examples, the order calculation, the Brandt matrices and the exercise solutions include their computations. Sections 6.16–6.18 give the Schwartz trace calculus, explicit nilpotent and unipotent orbital measures, unipotent orbital continuity, compact-support germ expansions and scalar homogeneity. Exercises 7.6–7.7 compute division-matrix kernel flags and explain coincident homogeneity degrees. Section 6.19 gives the uniform Schwartz constant terms and polynomially weighted orbital reduction. Section 6.20 proves the exact elliptic radial sums, sharp Schwartz convergence and actual elliptic coefficient–character formula in division rank two. Exercise 7.8 computes a separable degree-four example in characteristic two with both torus normalizations. Section 6.21 proves the compact flag-kernel estimate, angular spherical bound, quantitative elliptic conjugator bound, every-rank elliptic convergence and coefficient formula, and polynomially weighted regular convergence. Exercise 7.9 distinguishes the angular estimate from a false pointwise bound. Section 6.22 proves a completed Schwartz resolution, higher-extension vanishing for tempered pairs with a discrete-series member, compact pseudo-coefficients, the cellular formal-degree formula and fixed-level finiteness of discrete series. Exercise 7.10 computes a lattice cut and a rank-two formal-degree quantum. Section 6.23 proves the finite-commutator identity for compact discrete tests, all their ordinary regular orbital values, a division-norm fixed-set contraction, explicit matching Euler tests in every degree, and the probability normalization of elliptic class measure. Exercise 7.11 computes fixed-interior signs and distinguishes regular orbital matching from scalar test values. Section 6.24 constructs the Iwahori sign discrete series by an explicit Schwartz projection, proves its irreducibility, admissibility and formal degree, computes the Euler test on this family and gives an absolute elliptic character moment bound. Exercise 7.12 computes a rank-three division example and its cyclic phases. Section 6.25 proves a bounded apartment contraction, the signed Euler cocenter identity and actual norm-character-family transfer in every degree; it computes the general zero-orbit germ, near-identity elliptic discrete characters and integral formal-degree ratios. Figure 5 shows the rank-two apartment averages and their Hecke coefficients. Exercise 7.13 checks an infinite primitive, both torus measures and the degree integrality obstruction. Section 6.26 classifies every primary fibre, constructs locally finite orbital measures and compact-test germs including inseparable elements, proves compact parabolic descent and gives finite germ expressions for elliptic discrete characters. Figure 6 and Exercise 7.14 compute the two inseparable primary types in dimension four. Section 6.27 proves a quotient conjugator bound for every closed orbit, identifies the exact nilpotent obstruction to the flag submersion, constructs actual character densities on the whole D-irreducible open set including inseparable elements, and extends Schwartz convergence and discrete-test vanishing to one-chain primary orbits. Its double-primary germ formula has one remaining coefficient. Figure 7 and Exercise 7.15 compute the inseparable quartic chamber, both coefficient-orbital measures and the necessity of the centralizer quotient. Section 6.28 counts all saturated quadratic lattices in odd division degree, proves the resulting absolute Schwartz orbitals for every linear or quadratic primary partition, computes the Euler orbital at every closed primary element, and gives the quadratic closed germ and finite elliptic character expansions for split \(\mathrm{GL}_4\). The dimension sum does not establish individual coefficient integrality or positivity; elliptic orthogonality is Theorem 6.271. Figure 8 and Exercise 7.16 give exact lattice counts, ramification factors and the convergent shell estimate. Section 6.29 proves all ordinary orbital Schwartz bounds in division rank two by an exact tree displacement and weighted shell count, and proper-flag bounds and discrete-test vanishing in rank three. It constructs compact conjugacy representatives for bounded reduced polynomials, proves the finite-extension index and embedding rules including inseparable fields, and evaluates primary germs at multiplicity at most two and throughout rank three. Its elliptic character extension criterion gives finite complex character expansions and finite elliptic \(L^2\) norms in every division rank at most three, every inner form of degrees four and six, and the further split degrees specified there. Figure 9 and Exercise 7.17 compute an inseparable quaternion fixed tree, its sharp positive convergence threshold and an explicit primary polynomial limit. These statements leave individual character coefficients and general representation transfer as additional conclusions; elliptic orthogonality is Theorem 6.271. Section 6.30 constructs an integral involution model for ramified quadratic fields in even division degree under its specified odd-residue or inseparable characteristic-two hypotheses. It proves exact fixed-lattice descent, paired lattice normal forms and stabilizer masses over the noncommutative fixed division algebra, every-rank absolute Schwartz convergence, primary-partition vanishing and closed germs, and a singular Steinberg coefficient orbital. Figure 10 and Exercise 7.18 compute paired lengths and exact masses, with formal-degree and Haar factors in division degrees two and four. Section 6.31 proves the unramified quadratic lattice normal forms and exact orbit masses in every even division degree and both characteristics. Its partition and finite-series identities establish exhaustiveness in all ranks and indices. The resulting Schwartz bounds extend primary-partition traces and closed germs to these fields and give the singular unit Iwahori Steinberg orbital two. Figure 11 and Exercise 7.19 compute the two valuation colors and exact normalized-lattice counts. Section 6.32 proves the ramified quadratic recurrence, stable sums and intersections, exact coefficient descent and stabilizer masses without an involution hypothesis. It gives every linear or quadratic primary Schwartz trace and closed germ in every rank, division degree and field characteristic, including wild separable fields. Its elliptic extension criterion covers every inner form of degree eight and of twice a prime degree, with finite complex character expansions and their stated limits. Figure 12 and Exercise 7.20 compute a separable characteristic-two wild field, its rank-five masses and the mixed-characteristic Eisenstein recurrence. Section 6.33 proves the higher-degree Eisenstein recurrence, integral Moore-matrix descent, exact stable lattice sums and intersections, and the total normalized-lattice series for totally ramified fields whose degree divides the division degree. Its cubic examples give the two first-level orbit masses, a three-submodule obstruction to direct-sum classification, and two infinite families with exact stabilizers and Cartan heights. Their convergent contributions and the explicit index-two count distinguish these families from a full cubic orbital bound. Figure 13 and Exercise 7.21 compute the finite-field quotient, masses and root-height counterexample. Section 6.34 counts every normalized cyclic quotient in all totally ramified degrees dividing the division degree, proves their exact Cartan heights and restricted Schwartz bounds for every field generator, and classifies every cubic cyclic-quotient orbit with its exact mass. Its integral dual-module argument includes inseparable cubic fields. Figure 14 and Exercise 7.22 compute the intermediate cubic orbits and the complete index-two count. Quotients with several positive lengths remain outside that restricted convergence estimate. Section 6.35 proves normalized opposite-algebra lattice duality with exact orbit masses and conjugate Cartan lists, and the complete dual-cyclic Schwartz subseries in every totally ramified degree dividing the division degree. It gives the cubic dual families, both cyclic orientations and the count of every cubic elementary quotient type in either characteristic. Over the specified characteristic-two cubic field it proves an intermediate-intersection stabilizer explicitly and classifies every normalized lattice through index four by an independent exact total count. Figure 15 and Exercise 7.23 compute the dual masses and finite cubic configurations. The complete rank-three estimate is Section 6.37. Section 6.36 proves exact normalized power heights in every totally ramified degree dividing the division degree and an exact extreme-Cartan identity for every totally ramified cubic field. Its integral right-module dual gives complete cubic cyclic-quotient orbit classifications and masses in every division rank, including noncommutative centralizers. It describes the dual families, counts every rank-three elementary quotient type, and proves that each equal-positive-length type is one orbit with its full subseries bound. Figure 16 and Exercise 7.24 compute quaternionic-centralizer masses and a wild separable characteristic-three uniformizer whose conjugation is not periodic. The unequal-length estimates in division rank three are Section 6.37. Section 6.37 proves the full ordinary Schwartz orbital bound in division rank three for every generator of every totally ramified field embedded in the division algebra. Its incidence count gives the exact uniformizer height distribution in all such degrees and the exponential saving for arbitrary generators. It proves the primary-partition traces and zeros, closed character germ and singular Steinberg coefficient orbital for this family, including wild and inseparable extensions. Figure 17 and Exercise 7.25 compute interior height counts in degrees three and four. Section 6.38 treats fields with nontrivial residue extension. Section 6.38 constructs an integral coefficient order for every field embedded in the division algebra. Finite least-length colors, compact coefficient-primitive frames and an actual top-cyclic incidence bound prove ordinary Schwartz convergence, polynomial tails and traces for every such closed orbit in division rank three. The primary-module dichotomy and the proper-flag bounds then cover every ordinary orbital in division ranks at most three, in both characteristics. It gives the residue-degree factor in the closed Euler and singular Steinberg values, the closed character germ, and a mixed inseparable example. Figure 18 and Exercise 7.26 distinguish ambient refinement counts from coefficient-normalized counts. General higher-rank noncompact closed orbitals, arbitrary-test character integration, individual transfer coefficients and the full local and global representation correspondences remain separate obligations. Section 6.39 proves Schwartz traces and zeros for every proper-flag orbit in division rank four, and gives every rank-four primary closed compact germ without assuming closed-orbit Schwartz convergence there. It proves finite real elliptic character expansions for every division rank at most four, and reality in the earlier finite-expansion ranges. Polynomial sublevel estimates give quantitative elliptic discriminant tails and compact finite-level trace approximants to their Gram matrices. Its exact complementary trace limit and uniform fixed-space integrability criterion distinguish those results from full elliptic orthogonality. Figures 19–20 and Exercise 7.27 give an inseparable quartic, a rank-four Cartan limit and explicit concentration and character-coefficient examples. Corollary 6.272 proves vanishing of the stated trace limits. Higher-rank noncompact closed orbitals, individual coefficient integrality and the full local and global representation transfers require further arguments. Section 6.40 proves smooth transfer of every division-group test to every inner form of the same degree, using central-covariant polynomial profiles and the Euler function. In division ranks at most four it gives the inverse profile and a canonical linear cocenter isomorphism, elliptic discrete-character independence and uniqueness of any such discrete-series transfer candidate. Its exact finite trace duality proves positive-definite elliptic Gram matrices and exact separation of finite packets by regular-support tests. Figures 21–22 and Exercise 7.28 display the normalization, matrix identities and complementary trace limits. Orthogonality and the transfer-test trace identity are Theorem 6.271 and Corollary 6.272. Coefficient integrality, representation-transfer existence and the general global correspondences require additional arguments. Section 6.41 gives a finite principal Jacquet model with exact Haar factors and proves compatibility of normalized constant terms with algebraic projective traces. A cubical resolution along the proper Levi central flat cancels identical projective modules, proving every proper ordinary orbital of compact Euler–Poincaré tests zero in every division rank and both characteristics. It gives all closed primary compact germs, finite real elliptic character expansions, the inverse linear cocenter map, elliptic independence and finite regular-support trace separation in every rank. Figures 23–24 and Exercise 7.29 display the finite flag normalization, central-flat cancellation and an inseparable rank-six example. General closed Schwartz convergence, individual coefficient integrality and full local and global representation transfer require additional arguments. The complementary-trace limit is Corollary 6.272. Sections 6.42–6.43 construct very cuspidal Euler representatives by rational finite flag characters, including Frobenius and cyclic graded pieces. Their conjugation kernels define continuous Schwartz traces. A uniform discriminant estimate on conjugation overlaps proves the cutoff limit and the elliptic pairing, giving the cuspidal trace identity, elliptic discrete-series orthogonality and actual vanishing of complementary transfer traces in every rank and both characteristics. Figures 25–26 and Exercise 7.30 display the finite cycles, kernel comparison and exact normalizations. Individual coefficient integrality, representation existence and completeness, general noncompact closed Schwartz estimates, arbitrary-test character integration and the full global correspondences require further arguments. Section 6.44 proves global Whittaker injectivity for smooth cuspidal functions on GLn over number fields and function fields, with a function-field additive-duality proof and compact successive Fourier integrals. It extracts local Whittaker functionals from a given tensor realization and constructs nonzero compact cuspidal Poincaré functions using one translated-unipotent-zero component and one shrinking auxiliary place. Figures 27–28 and Exercise 7.31 give the Fourier steps, rational-support isolation, trace-dual constants and the distinction between trace and operator zeros. Section 6.45 gives explicit row-section Haar densities, the regular mirabolic Hilbert decomposition, preferred smooth evaluation and its sharp principal-level norm bound. The central regular representation restricts to a mirabolic regular multiplicity by a projective-row calculation. A discrete-series coefficient embedding therefore gives a nonzero Whittaker functional for every split degree in both field characteristics. Figures 29–30 and Exercise 7.32 display the exact measures, functional maps, projective masses and the positive zero Fourier fibre in finite models. Section 6.46 proves transpose symmetry in the compact cocenter, the contragredient identity and Whittaker multiplicity one for split general linear groups in every nonarchimedean field characteristic. Its twisted Bruhat quotients, compatible block-scalar representatives and finite involution filtration are explicit. Figures 31–32 and Exercise 7.33 give the matrices and algebraic kernels. Section 6.47 computes Whittaker coinvariants of every smooth parabolic induction by explicit block shuffles and compact averaging. It gives the unique generic occurrence in a given finite composition series. Frobenius adjunction and finite principal Jacquet coordinates give the actual induced-trace identity in every division rank, so compact Euler tests annihilate all proper induced traces, including non-tempered inductions. Figures 33–34 and Exercise 7.34 give the stabilizers, Haar factors and finite matrices. A rank-two principal series shows why the generic constituent of a reducible induction can nevertheless have nonzero trace. Section 6.48 proves additive detection by compact character projectors and detection of every nonzero mirabolic module by finitely many simple-root characters. The resulting integer bounds composition length. Every irreducible admissible cuspidal representation is generic and remains irreducible on the mirabolic subgroup. The exact character profiles of cuspidal induction count ordered partitions of its labelled blocks, giving finite length bounded by 1, 3, 13, 75 and 541 for one through five blocks, and exactly one generic occurrence. Figures 35–36 and Exercise 7.35 give the projector identities, ordered partitions and strict length-bound example. Sections 6.49–6.52 prove normalized functor identities, cuspidal embeddings, the geometric Jacquet filtration and factorial finite-length bounds for every division general-linear group in both characteristics. Cuspidal data determine the complete composition multiset of induction independently of block order. A nontrivial reducible two-block exchange gives two opposite nonsplit extensions and one-dimensional intertwining spaces. In the split group, each exact cuspidal multiset has one generic irreducible, occurring once in every ordering. Normalized unitary induction preserves its original smooth module and invariant smooth complements; pairwise inequivalent unitary cuspidals induce irreducibly, with unitary identifications between orders. Ordinary compact tests have actual Laurent-polynomial matrices on common fixed spaces. Figures 37–46 and Exercises 7.36–7.39 give the functors, projectors, two-flag cells, exchange maps, unitary norms, explicit Hecke matrices and division self-twists. Section 6.53 constructs the normalized mirabolic functors by compact Fourier projectors and proves their exact filtration, smooth-dual pairing and highest-derivative pairing. Its actual derivative modules have quotients indexed by subsets of the cuspidal labels. Their shifted support proves irreducibility whenever no two inducing cuspidals differ by the positive determinant character, including repeated isomorphic factors, and gives exact mirabolic length \(2^s-1\) under that hypothesis. Figures 47–49 and Exercise 7.40 display the modules, pairings and length counts. 
+
+Section 6.54 proves the two-orbit mirabolic restriction sequence and the positive and negative derivative product identities, with actual compact section maps, algebraic kernels and all quotient-Haar factors. An ordered induction with no later cuspidal equal to the positive determinant twist of an earlier one has no nonzero degenerate mirabolic submodule. Every generic irreducible admissible split representation therefore has a faithful Kirillov realization containing its essential compact simple socle. Mirabolic endomorphisms are scalar; Hom spaces between modules with the stated property have dimension at most one and every nonzero map is injective. Figures 50–52 and Exercise 7.41 give the orbits, normalization factors, exact rank-two and rank-three lengths and a finite-field counterexample to the noncompact support test. Section 6.55 proves the complete two-cuspidal reducibility criterion by invariant Hermitian forms on finite Hecke spaces and a Laurent-trace bound. Generic factors with no cross adjacency induce irreducibly. Disconnected exact cuspidal support therefore excludes a discrete series by its own compact test. Figures 53–55 and Exercise 7.42 give the signature argument, support graph, endpoint Gram matrices and exact trace margins. Section 6.56 constructs generic segments as actual intersections, computes every normalized Jacquet module and derivative, and proves square integrability by a coefficient criterion valid before unitarization. Unlinked segments induce irreducibly; the unique height-interval decomposition gives the generic factorization and full split discrete-series classification. Compact discrete tests isolate a discrete series among all generic irreducibles of its central character, including non-tempered representations. A derivative witness proves the converse linked-segment reducibility criterion. Figures 56–60 and Exercises 7.43–7.44 give the exact projections, chunks, norms, interval combinatorics and traces. Individual representation-transfer integrality and actual global spectral extraction require further arguments. Corollary 4.1 is deduced from the proved global theorem and earlier course results; the independent dimension calculation is not substituted for the theorem.
 
 The following references specify the prerequisites and related treatments:
 
@@ -14071,7 +15212,9 @@ The following references specify the prerequisites and related treatments:
 
 - J.-L. Waldspurger, “La formule de Plancherel pour les groupes p-adiques, d’après Harish-Chandra,” *Journal of the Institute of Mathematics of Jussieu* **2** (2003), 235–333, Lemmas II.1.1, II.1.3–II.1.5, §§II.3–II.4, §III.6 and the opening of §III.7. [Freely accessible full text](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/FF540ECB59B31AFC0A7874C87F54EE0A/S1474748003000082a.pdf/la-formule-de-plancherel-pour-les-groupes-p-adiques-dapres-harish-chandra.pdf). Section 6.15 supplies the lattice-height, spherical and unipotent estimates used here; Section 6.16 proves the Schwartz calculus and tempered trace extension.
 
-- I. N. Bernstein and A. V. Zelevinsky, “Induced representations of reductive p-adic groups. I,” *Annales scientifiques de l’École Normale Supérieure*, fourth series, **10** (1977), 441–472, §1.5, §§1.8–1.9, §§2.4–2.17, §§3.1–3.8, §§4.7–4.8, §§5.1–5.7 and §6.4. [Free full text](https://www.numdam.org/item/10.24033/asens.1333.pdf).
+- I. N. Bernstein and A. V. Zelevinsky, “Induced representations of reductive p-adic groups. I,” *Annales scientifiques de l’École Normale Supérieure*, fourth series, **10** (1977), 441–472, §1.5, §§1.8–1.9, §§2.4–2.17, §§3.1–3.8, §§4.7–4.15, §§5.1–5.7, §6.4 and §§7.1–7.3. [Free full text](https://www.numdam.org/item/10.24033/asens.1333.pdf).
+
+- A. V. Zelevinsky, “Induced representations of reductive p-adic groups. II. On irreducible representations of GL(n),” *Annales scientifiques de l’École Normale Supérieure*, fourth series, **13** (1980), 165–210, §1.11, §§2.1–2.2, §3.7 and §§9.1–9.10. [Free full text](https://www.numdam.org/item/10.24033/asens.1379.pdf).
 - I. N. Bernstein and A. V. Zelevinsky, “Representations of the group GL(n,F) where F is a non-Archimedean local field,” *Russian Mathematical Surveys* **31**:3 (1976), 1–68, §§3.21–3.24, §3.27, §§5.12–5.23 and §§7.3–7.13. [Free author-hosted full text](https://www.math.tau.ac.il/~bernstei/Publication_list/publication_texts/B-Zel-RepsGL-Usp.pdf).
 
 - J. W. Cogdell, *L-functions and Converse Theorems for GL_n*, Lecture 1, Sections 1.1–1.2. [Free author lecture notes](https://people.math.osu.edu/cogdell.1/pcmi-www.pdf).

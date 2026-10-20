@@ -296,6 +296,66 @@ Each summand is continuous and supported in \(\operatorname{supp}\psi_j\). Near 
 
 If \(f\) is compact, choose a single compact cutoff \(\psi=1\) near its support, extend \(f\) by zero, and use one \(m>k\) and \(a=A_m*f\). The identity \(f(\varphi)=f(\psi\varphi)\) and the same finite product expansion give only finitely many coefficients, all supported in \(\operatorname{supp}\psi\Subset X\). \(\square\)
 
+
+## Finite families and prescribed coefficient regularity
+
+The order of a distribution on an open set is a global integer, even though its estimate has a different constant on each compact set. Thus \(f\) has order at most \(k\) if for every \(K\Subset X\),
+\[
+ |f(\varphi)|\le C_K\max_{|\beta|\le k}\sup_K|\partial^\beta\varphi|,
+ \qquad \varphi\in\mathcal D_K.
+ \tag{P1}
+\]
+The constant \(C_K\) need not stay bounded as \(K\) expands or approaches the boundary. Compact support is not required.
+
+**Proposition 6.2 (finite coefficient families characterize finite order).** Fix an integer \(r\ge0\). Every distribution on \(X\) has a representation (6.2) with \(f_\alpha\in C^r(X)\) and a locally finite family of supports. Such a representation can use only finitely many multi-indices if and only if the distribution has finite order on \(X\).
+
+More precisely, if \(f\) has order at most \(k\), the coefficients can be chosen with
+\[
+ f(\varphi)=
+ \sum_{0\le\alpha_i\le k+r+2}
+       \int_X f_\alpha\,\partial^\alpha\varphi\,dx,
+ \qquad f_\alpha\in C^r(X).
+ \tag{P2}
+\]
+Thus at most \((k+r+3)^n\) coefficients suffice in this construction. No optimality of this multidimensional count is asserted. If \(f\) has compact support, all coefficients may in addition have compact support in any prescribed open neighborhood of that support inside \(X\).
+
+**Proof.** Use B0's locally finite partition \(\psi_j\) and the compact cutoffs \(\chi_j=1\) near \(\operatorname{supp}\psi_j\). Each compact distribution \(g_j=\chi_jf\), extended by zero, has some finite order \(k_j\) on the whole space. If (P1) holds, all these orders can be chosen equal to \(k\). Indeed the product rule on the fixed compact support of \(\chi_j\) gives
+\[
+ |g_j(\theta)|=|f(\chi_j\theta)|
+       \le C_j\max_{|\beta|\le k}\sup_{\mathbb R^n}
+                                  |\partial^\beta\theta|.
+ \tag{P3}
+\]
+Every derivative of \(\chi_j\theta\) uses at most \(k\) derivatives of \(\theta\). Only the constant changes with \(j\).
+
+Choose \(m_j=k_j+r+1\), and use the kernels and differential operators of (6.3). Then
+\[
+ a_j=A_{m_j}*g_j\in C^r(\mathbb R^n),\qquad
+ Q_{m_j}a_j=g_j,\qquad
+ \lambda_j=(k_j+r+2,\ldots,k_j+r+2).
+ \tag{P4}
+\]
+For the regularity, \(x_+^{m_j}\) is \(C^{m_j-1}\): its derivatives through order \(m_j-1\) have matching zero limits at the origin. The product \(A_{m_j}\) is consequently \(C^{k_j+r}\). The finite-regularity part of U021, Theorem 2.1, applies to this kernel and the compact order-\(k_j\) factor. Its proof differentiates the kernel pairing in the \(C^{k_j}\) test norm and identifies it with distributional convolution. Differentiating that convolution and using \(Q_{m_j}A_{m_j}=\delta_0\) proves the second identity in (P4).
+
+Now take exactly the product expansion (6.5)–(6.6), with these \(a_j,\lambda_j\). Each coefficient is a sum of \(C^r\) functions supported in the locally finite family \(\operatorname{supp}\psi_j\). On a neighborhood of every point only finitely many terms occur, so differentiation through order \(r\) is termwise and the coefficient is \(C^r\). On that same neighborhood only finitely many \(\lambda_j\)'s occur; hence only finitely many coefficient supports can meet a smaller neighborhood. This proves the locally finite assertion with the exact integration-by-parts signs of (6.6).
+
+If \(k_j=k\) for all \(j\), then \(\lambda_j=(k+r+2,\ldots,k+r+2)\) is fixed. There are just the multi-indices in (P2), regardless of the number of partition pieces. The coefficient sums remain locally finite, although their supports need not be compact. This proves (P2). For compact \(f\), choose a single \(\psi=1\) near its support, with compact support in the prescribed neighborhood, and use the last paragraph of Theorem 6.1 with \(m=k+r+1\). Every coefficient is supported in \(\operatorname{supp}\psi\).
+
+Conversely, suppose (6.2) uses a finite set \(A\) of multi-indices and continuous coefficients. For nonempty \(A\), put \(M=\max_{\alpha\in A}|\alpha|\). On any compact \(K\Subset X\),
+\[
+ |f(\varphi)|\le
+ \left(\sum_{\alpha\in A}\int_K|f_\alpha(x)|\,dx\right)
+       \max_{|\beta|\le M}\sup_K|\partial^\beta\varphi|.
+ \tag{P5}
+\]
+The integrals are finite because the coefficients are continuous on a compact set. The same \(M\) works for every \(K\), proving finite order. An empty family represents zero, which has order at most zero. This proves the equivalence. \(\square\)
+
+The integer \(r\) is chosen before constructing the coefficients. It does not give one family of smooth coefficients for a singular distribution: every finite or locally finite sum of derivatives of smooth functions is smooth. Solutions 9–11 distinguish noncompact support, unbounded local orders, and the exact one-dimensional derivative cost for a point source.
+
+![A periodic continuous primitive and continuous primitives of three finite regularities](../figures/finite-order-continuous-primitives.png)
+
+*Figure. Left: the continuous one-periodic function \(p(j+s)=s(1-s)/2\), \(0\le s\le1\). Its slope jumps upward by one at each integer, so \(p''=\sum_{j\in\mathbb Z}\delta_j-1\) and \(p'''=\sum_{j\in\mathbb Z}\delta'_j\), as proved in Solution 9. The marked points are zeros of the continuous function, not values of a delta distribution. Right: \(a_r(x)=x_+^{r+1}/(r+1)!\) for \(r=0,1,2\). It is \(C^r\), and its derivative of order \(r+2\) is \(\delta_0\). Solution 11 proves that this derivative order is minimal even among finite sums with \(C^r\) coefficients. [Editable figure script](../figures/finite-order-continuous-primitives.py).*
+
 ## Two kernels with different kinds of continuation
 
 For clarity, the elementary interval fact used in the first example is also proved here. If \(T'=0\) on an open interval \(I\), choose \(\rho\in\mathcal D(I)\) with \(\int\rho=1\). For any \(\phi\in\mathcal D(I)\), the test \(\phi-(\int\phi)\rho\) has integral zero; its primitive from \(-\infty\), after extending it by zero, is a compact smooth function supported in the convex hull of the two test supports, hence in \(I\). Pairing that derivative with \(T\) gives \(T(\phi)=T(\rho)\int\phi\). Thus \(T\) is constant. This also proves that \(T''=0\) implies \(T\) is affine: apply the result to \(T'\), then subtract the corresponding multiple of \(x\).
@@ -367,6 +427,23 @@ use \(m=4\) in (6.3) to calculate a continuous \(a\) with \(\partial_x^5\partial
  \end{aligned}
 \]
 For \(\lambda=0\), calculate the best maximum error in approximating constants \(c_-,c_+\) on the two components of \(Y_1\) by a constant on \(X_1\).
+
+
+**Exercise 9 (intermediate: finite order without compact support).** Let
+\[
+ T=\sum_{j\in\mathbb Z}\delta'_j,\qquad
+ p(j+s)=\frac{s(1-s)}2\quad(0\le s\le1).
+\]
+Prove that \(T\) has exact order one and support \(\mathbb Z\), that \(p\) is a continuous periodic function, and that \(p'''=T\). Write the one-coefficient version of (6.2), including its sign. Explain why no finite representation of \(T\) can have all its coefficients compactly supported.
+
+**Exercise 10 (intermediate: orders escaping to infinity).** On \(\mathbb R\), set \(S=\sum_{j\ge1}\delta_j^{(j)}\). Prove that \(S\) is a distribution but has no finite representation by derivatives of continuous functions. Construct a locally finite such representation explicitly from a cutoff \(\chi\in C_c^\infty((-1/3,1/3))\) equal to one near zero and the functions \(h_j(x)=\chi(x-j)(x-j)_+\).
+
+**Exercise 11 (advanced: the sharp cost for a point source).** Fix an integer \(r\ge0\). Prove that \(\delta_0\) can be written as a derivative of order \(r+2\) of a \(C^r(\mathbb R)\) function. Prove that no finite representation
+\[
+             \delta_0=\sum_{j=0}^{r+1}\partial_x^j b_j,
+             \qquad b_j\in C^r(\mathbb R),
+\]
+is possible, even locally on an interval containing zero. Explain why no locally finite representation with smooth coefficients exists.
 
 ## Complete solutions
 
@@ -459,7 +536,57 @@ For \(X_1,Y_1\) the criterion fails, since one ambient interval meets both small
 
 Finally, for \(\lambda=0\), any constant \(c\) has maximum error \(\max(|c-c_-|,|c-c_+|)\ge|c_+-c_-|/2\) by the triangle inequality. The midpoint \(c=(c_-+c_+)/2\) attains equality, including for complex coefficients.
 
-## Programme proof locations and freely accessible sources
+
+**Solution 9.** Each compact test meets finitely many integers, and
+\[
+ T(\varphi)=-\sum_{j\in\mathbb Z}\varphi'(j).
+ \tag{P6}
+\]
+The number of integers in a fixed compact set gives an order-one estimate. The full discrete-jet result in U008, Proposition 1.3, gives exact order one and support \(\mathbb Z\). Directly, a test \(\varepsilon\psi(x/\varepsilon)\), with \(\psi'(0)=1\) and small support, has supremum tending to zero but pairs as \(-1\); translating this test detects every integer.
+
+The defining polynomial has value zero at both ends of each unit interval, so the pieces glue continuously and periodically. On each open interval \(p'(j+s)=1/2-s\) and \(p''=-1\). Integration by parts over the finitely many intervals meeting a test gives no atom in the first derivative, since \(p\) is continuous. In the second derivative the slope jump is \(1/2-(-1/2)=1\) at every integer. Hence
+\[
+ p''=\sum_{j\in\mathbb Z}\delta_j-1,\qquad
+ p'''=T,\qquad
+ T(\varphi)=-\int_{\mathbb R}p(x)\varphi'''(x)\,dx.
+ \tag{P7}
+\]
+Thus the coefficient in (6.2) is \(f_3=-p\). A finite union of compact coefficient supports is compact, and differentiation cannot enlarge a support. Such coefficients therefore cannot represent the unbounded support \(\mathbb Z\).
+
+**Solution 10.** Local finiteness of the positive integers makes the pairing with every test a finite sum. On each compact set its largest occurring derivative order gives a distribution estimate. For any proposed global order \(M\), choose \(j>M\) and an isolating neighborhood of \(j\). U008, Proposition 1.3, proves exact order \(j\) there by rescaling a test whose \(j\)-th derivative at \(j\) is nonzero while all derivatives through \(M\) tend uniformly to zero. Thus no global finite order exists. Proposition 6.2 excludes every finite continuous-coefficient representation.
+
+For the requested explicit representation, write \(s=x-j\) and define
+\[
+ s_j(x)=\chi^{(j+2)}(s)s_+
+                  +(j+2)\chi^{(j+1)}(s)1_{(0,\infty)}(s).
+ \tag{P8}
+\]
+Both terms vanish on a neighborhood of \(s=0\), because \(\chi\) is constant there, so \(s_j\) is smooth with compact support. The product rule for \(\partial_x^{j+2}(\chi(s)s_+)\) has the displayed terms when zero or one derivatives hit \(s_+\). If at least two hit it, that factor is a delta derivative at zero. Every derivative of \(\chi\) of positive order vanishes near zero, so all these terms vanish except the term with no derivative on \(\chi\), which is \(\delta_j^{(j)}\). Therefore
+\[
+ S=-\sum_{j\ge1}s_j+\sum_{j\ge1}\partial_x^{j+2}h_j.
+ \tag{P9}
+\]
+The supports lie in disjoint intervals centered at the positive integers and are locally finite. Thus \(b_0=-\sum_js_j\) is smooth, every \(h_j\) is continuous, and (P9) is a legitimate locally finite distributional sum. In the integral convention (6.2), use \(f_0=b_0\) and \(f_{j+2}=(-1)^{j+2}h_j\). The family consisting of \(\operatorname{supp}f_0\) and the disjoint locally finite \(\operatorname{supp}h_j\)'s is locally finite.
+
+**Solution 11.** Identity (6.1), with \(m=r+1\), gives
+\[
+ a_r(x)=\frac{x_+^{r+1}}{(r+1)!}\in C^r(\mathbb R),
+ \qquad \partial_x^{r+2}a_r=\delta_0.
+ \tag{P10}
+\]
+Its derivatives through order \(r\) match continuously at zero, and its next derivative is the step function, so it is not \(C^{r+1}\).
+
+Suppose the proposed lower-order representation holds on an interval \(J\) containing zero. Choose \(x_*\in J\) and form
+\[
+ F(x)=\int_{x_*}^x b_0(s)\,ds
+                     +\sum_{j=1}^{r+1}b_j^{(j-1)}(x).
+ \tag{P11}
+\]
+All summands are continuous because \(j-1\le r\), and distributionally \(F'=\delta_0\). Since \(H=1_{(0,\infty)}\) also has \(H'=\delta_0\), the interval zero-derivative fact proved before Example 7.1 implies \(H-F\) is constant. On each side of zero, equality of the corresponding continuous functions as distributions implies equality pointwise, by testing with nonnegative bumps around any nonzero difference. Thus \(F\) has constant values on the two sides differing by one. This contradicts continuity at zero. The derivative cost in (P10) is therefore sharp.
+
+Finally, on every small neighborhood a locally finite family of smooth coefficient supports leaves only finitely many summands. Their distributional derivatives are their smooth classical derivatives. Such a representation would make \(\delta_0\) smooth near zero, which Theorem 1.2's point-mass argument excludes.
+
+## Programme proof locations and sources
 
 - [U021: convolution](convolution-as-addition-of-supports.md), B0–B3, Theorems 1.1, 2.1, 3.1, 3.2, 4.1 and Corollary 4.2: all localization, proper convolution, finite regularity and singular-support statements used here. [U008: order and limits](order-positivity-and-limits.md), Proposition 1.2 and Theorem 5.1: finite-order actions and uniform bounded-test convergence.
 - [Functional foundations](../prerequisites/U011-free-foundations/functional-foundations-U008.md), Section 5: complete norm-preserving real and complex Hahn–Banach, used in Lemma 3.1 after the proved seminorm quotient. [U015](holomorphic-boundaries-in-convex-cones.md), Section 3: polydisk Cauchy estimates, convergent holomorphic Taylor series and identity principle.
@@ -467,3 +594,5 @@ Finally, for \(\lambda=0\), any constant \(c\) has maximum error \(\max(|c-c_-|,
 - [Metric foundations](../prerequisites/U011-free-foundations/metric-foundation-bridges.md), §§12–13, [stable algebra foundations](../prerequisites/U011-free-foundations/stable-prerequisite-bridges.md), §10, and [Banach foundations](../prerequisites/U011-free-foundations/banach-foundation-bridges.md), §§15.1–15.4, 16.1–16.2: scalar calculus, cutoffs, finite-dimensional compactness, finite algebra, integral convergence and product measures. The supplied components retain their stated licenses.
 - Semyon Dyatlov, [*Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs*](https://math.mit.edu/~dyatlov/18.155/155-notes.pdf), October 2, 2026, Theorem 4.6 and Proposition 4.12, pp. 46–49, and the proof of Theorem 9.14, pp. 103–104. These freely available notes supply the compact-duality and localized fundamental-solution proof mechanisms; the complete needed arguments are given above.
 - Bernard Malgrange, [*Existence et approximation des solutions des équations aux dérivées partielles et des équations de convolution*](https://www.numdam.org/item/10.5802/aif.65.pdf), *Annales de l'Institut Fourier* 6 (1956), 271–355, Chapter III, §1, Theorems 1–2, and §2, Propositions 4–8, especially pp. 328–337. This freely readable original paper supplies the annihilator, compact-hole and summable-correction methods. The present lesson proves the needed scalar constant-coefficient assertions directly from its analytic fundamental-solution hypothesis, including both ambient-domain cases, all local prerequisites and arbitrary distributional forcing.
+
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second edition, 2003 reprint, DOI [10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), §4.4, especially Theorem 4.4.7, pp. 109–116. Fundamental solutions, continuation, approximation and continuous-coefficient representations.

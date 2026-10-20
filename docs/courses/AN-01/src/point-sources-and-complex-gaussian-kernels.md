@@ -255,6 +255,78 @@ There is no need for the real and imaginary parts to commute. For example
 \]
 Its determinant is \(1+i\), and the displayed real parts are semidefinite. Formula (3.5) still has a multiplier of modulus at most one, even though the original Gaussian lacks decay in one real direction. Purely imaginary invertible matrices are included for the same reason.
 
+
+## Cross terms and Gaussian moments
+
+For any symmetric matrix \(A\), write
+\(\Delta_A=\sum_{r,s}A_{rs}\partial_r\partial_s\).
+Every sum below is finite when it acts on a polynomial.
+
+**Proposition 3.2 (polynomial Gaussian tests).** Let \(B\in\overline{\mathcal H}^{\times}\), \(t>0\), and \(P\) be a polynomial of degree at most \(d\). Put \(C_t=B+tI\). Then
+\[
+ \begin{aligned}
+ &\int_{\mathbb R^n} e^{-x^TBx/t}P(x)e^{-|x|^2}\,dx\\
+ &\quad=\frac{(\pi t)^{n/2}}{g(C_t)}
+       \sum_{m=0}^{\lfloor d/2\rfloor}
+           \frac{(t/4)^m}{m!}
+           (\Delta_{C_t^{-1}}^mP)(0).
+ \end{aligned}
+ \tag{J1}
+\]
+In particular, for a homogeneous polynomial of degree \(2m\) the unnormalized integral is \(O(t^{n/2+m})\) as \(t\downarrow0\). Every homogeneous polynomial of odd total degree has integral zero. A monomial with an odd exponent in one coordinate may have a nonzero integral.
+
+**Proof.** The real part of \(C_t\) is positive definite. Thus the integral and all its moments converge absolutely. The transform identity (3.2), with \(C_t\) held fixed while differentiating the frequency, gives
+\[
+ \int e^{-x^TC_tx/t}P(x)\,dx
+ =\frac{(\pi t)^{n/2}}{g(C_t)}
+   \left.
+    P(i\partial_\xi)
+       e^{-t\xi^TC_t^{-1}\xi/4}
+   \right|_{\xi=0}.
+ \tag{J2}
+\]
+Each differentiated integrand is a polynomial times a strictly decreasing Gaussian, so dominated difference quotients justify every derivative. The sign follows from
+\(\partial_\xi^\alpha e^{-ix\cdot\xi}=(-ix)^\alpha e^{-ix\cdot\xi}\).
+
+Expand the exponential at \(\xi=0\). A derivative of degree at most \(d\) can use only powers \(m\le\lfloor d/2\rfloor\) of its quadratic polynomial. For homogeneous polynomials \(Q,P\) of the same degree,
+\[
+ (P(\partial_\xi)Q)(0)=(Q(\partial_x)P)(0).
+ \tag{J3}
+\]
+Indeed, on monomials both sides are zero unless the multiindices agree, in which case both equal that multiindex factorial times the two coefficients. Bilinearity proves the identity. For degree \(2m\), the factor \(i^{2m}=(-1)^m\) cancels the sign in \((-t/4)^m\). Applying (J3) to \(Q(\xi)=(\xi^TC_t^{-1}\xi)^m\) proves (J1), first on homogeneous parts and then on their finite sum.
+
+The matrices \(C_t^{-1}\) remain bounded for small \(t\), since \(B\) is invertible; \(g(C_t)\) tends to the nonzero value \(g(B)\), by Lemma 2.1. For homogeneous degree \(2m\), only the \(m\)-th term in (J1) survives. This proves its stated bound. For odd total degree every term vanishes. Equivalently, the change \(x\mapsto-x\) reverses an odd polynomial while preserving the quadratic form.
+
+To see the last assertion, take
+\[
+ B=\begin{pmatrix}2&1\\1&2\end{pmatrix},\qquad
+ P(x)=x_1x_2,\qquad
+ D_t=(t+1)(t+3).
+ \tag{J4}
+\]
+Here \(g(B)=\sqrt3\), \(g(C_t)=\sqrt{D_t}\), and
+\[
+ C_t^{-1}=\frac1{D_t}
+       \begin{pmatrix}t+2&-1\\-1&t+2\end{pmatrix}.
+\]
+The two mixed derivatives in \(\Delta_{C_t^{-1}}P\) give \(-2/D_t\). Hence
+\[
+ \begin{aligned}
+ \int e^{-x^TBx/t}x_1x_2e^{-|x|^2}\,dx
+    &=-\frac{\pi t^2}{2D_t^{3/2}},\\
+ M_t^B(x_1x_2e^{-|x|^2})
+    &=-\frac{\sqrt3\,t}{2D_t^{3/2}}\ne0.
+ \end{aligned}
+ \tag{J5}
+\]
+Both coordinate exponents are odd, while the total degree is even. \(\square\)
+
+For a diagonal \(B\), reflection in any single coordinate preserves the whole weight. An odd exponent in that coordinate then does force zero. With cross terms, the symmetry that always remains is simultaneous reflection in every coordinate.
+
+![A signed mixed Gaussian moment and its exact dependence on scale.](../figures/mixed-gaussian-moments.png)
+
+*Figure. Left: the exact signed integrand \((\sqrt3/\pi)x_1x_2e^{-3x_1^2-2x_1x_2-3x_2^2}\), sampled on the displayed square, for the normalized pairing in (J5) at \(t=1\). The integral in (J5) is over the entire plane. Right: its exact value as a function of \(t\), with the first-order expression \(-t/6\) and the exact point \((1,-\sqrt6/64)\). The curves and color values are evaluations of these formulas; no numerical integral is used to establish the identity. Proposition 3.2 and Solution 7 give the proof. The [editable figure script](../figures/mixed-gaussian-moments.py) reproduces the image.*
+
 ## Integrate the kernels in time
 
 Let \(A=A^T\), \(\operatorname{Re}A\ge0\), and \(\det A\ne0\). For \(t>0\) define
@@ -386,6 +458,50 @@ Only one classical integration by parts is used, and \(C^{2j-1}\) regularity is 
 
 This estimate concerns the unnormalized integral. Dividing by \(t^{n/2}\) changes the power to \(t^{j-n/2}\); the mass-concentration assertion of Theorem 3.1 is proved separately.
 
+
+## Gaussian Taylor subtraction at the exact derivative count
+
+The polynomial calculation and the zero-jet estimate also give a direct finite-derivative proof of the concentration bound.
+
+**Corollary 5.2 (Taylor subtraction and concentration).** Fix \(B\in\overline{\mathcal H}^{\times}\). For every even integer \(k\ge n\), there is a constant \(C_{B,k,n}\) such that
+\[
+ t^{-n/2}
+ \left|\int e^{-x^TBx/t}\phi(x)\,dx\right|
+ \le C_{B,k,n}\sum_{|\alpha|\le k}N(\partial^\alpha\phi),
+ \quad 0<t<1,\quad \phi\in C_c^k(\mathbb R^n).
+ \tag{J6}
+\]
+For every such test, \(M_t^B(\phi)\to\phi(0)\). The argument uses the transform identity (3.2) for polynomial Gaussian tests and the zero-jet estimate (5.1).
+
+**Proof.** We first extend (5.1) to the specific noncompact remainders needed here. Suppose a \(C^{2j}\) function \(\psi\) has zero jets below \(2j\), and every derivative through order \(2j\) is integrable and tends to zero at infinity. Choose a smooth compact cutoff \(\chi_R(x)=\chi(x/R)\), equal to one near zero, with \(R\to\infty\). The product rule gives
+\[
+ N\bigl(\partial^\alpha(\chi_R\psi-\psi)\bigr)\longrightarrow0
+ \quad (|\alpha|\le2j).
+ \tag{J7}
+\]
+For the term without a derivative on the cutoff, the \(L^1\) tail and the supremum of the derivative outside a growing ball tend to zero. A term with \(q\ge1\) cutoff derivatives has coefficient bounded by \(CR^{-q}\), supported outside that ball, and is bounded by the corresponding \(L^1\) or supremum norm of a lower derivative of \(\psi\). These estimates prove (J7). The cutoffs do not alter any jet at zero for large \(R\). Apply Lemma 5.1 to \(\chi_R\psi\); its support-independent constant permits passage to the limit. The integrals converge by the \(L^1\) difference and \(|e^{-x^TBx/t}|\le1\). Thus (5.1) holds for \(\psi\).
+
+Let \(T\) be the Taylor polynomial through degree \(k-1\) at zero of \(\phi(x)e^{|x|^2}\), and write
+\[
+ \phi=T e^{-|x|^2}+\psi .
+ \tag{J8}
+\]
+The product rule shows that \(\partial^\alpha\psi(0)=0\) for every \(|\alpha|<k\). Each coefficient of \(T\) is a fixed finite linear combination of derivatives of \(\phi\) at zero, hence is bounded by \(C_{k,n}\sum_{|\alpha|<k}\|\partial^\alpha\phi\|_\infty\). Derivatives of every fixed monomial times \(e^{-|x|^2}\) are integrable, bounded, and tend to zero at infinity, by the Gaussian estimates in the Fourier foundation. Consequently
+\[
+ \sum_{|\alpha|\le k}N(\partial^\alpha\psi)
+ \le C_{k,n}\sum_{|\alpha|\le k}N(\partial^\alpha\phi).
+ \tag{J9}
+\]
+The extended Lemma 5.1, with \(j=k/2\), bounds the normalized remainder by the right side times \(t^{(k-n)/2}\le1\).
+
+Apply (J1) separately to the homogeneous parts of \(T\). Odd total degrees vanish. A term of degree \(2m\) is bounded after division by \(t^{n/2}\) by a constant times \(t^m\) times its coefficient norm. The inverse \(C_t^{-1}\) and \(g(C_t)^{-1}\) are uniformly bounded for \(0\le t\le1\): the entire path has invertible matrices, with compact parameter interval, and Lemma 2.1 supplies the continuous nonzero branch. There are finitely many polynomial terms. Together with (J9) this proves (J6).
+
+For a compact smooth \(\phi\), make (J8) instead with any even \(K>n\). The normalized remainder is \(O(t^{(K-n)/2})\), tending to zero. In the polynomial part, every positive even degree tends to zero after normalization, while the constant term contributes
+\(\phi(0)g(B)/g(B+tI)\to\phi(0)\).
+This proves concentration for smooth tests.
+
+Finally approximate a compact \(C^k\) test by compact smooth tests on one common support, converging in \(C^k\), using the proved approximation in U008. On that support their \(L^1\) derivative differences also tend to zero. Multiplication of (J6) by the fixed factor \(\pi^{-n/2}|g(B)|\) gives a uniform bound on the difference of their normalized pairings for all \(0<t<1\). The values at zero converge as well. In the three-term difference between \(M_t^B(\phi)\) and \(\phi(0)\), first make these two approximation errors small, and then use the smooth concentration limit. This proves the assertion at exactly the stated finite regularity. \(\square\)
+
 ## Exercises
 
 **Exercise 1 (basic: anisotropic diffusion).** In dimension two take \(A=\operatorname{diag}(2,1/2)\). Write \(G_A\), compute its spatial mass and its two second moments, and identify its point-source operator.
@@ -399,6 +515,13 @@ This estimate concerns the unnormalized integral. Dividing by \(t^{n/2}\) change
 **Exercise 5 (intermediate: signed planar point sources).** Set \(p=(1,0)\), \(q=(-1,0)\), and \(F=2\Phi_2(\cdot-p)-3\Phi_2(\cdot-q)\). Find its Laplacian and the outward flux of its gradient through the circle of radius two. Compute \(\Delta\log|f|\) for \(f(z)=(z-1)^2/(z+1)^3\). Explain why the outer flux is well defined despite the interior singularities.
 
 **Exercise 6 (advanced: time zero away from the source).** In one spatial dimension compare \(A=3\) with \(A=i\) near a fixed nonzero spatial point. Prove that the first kernel extends smoothly by zero across \(t=0\), whereas the second has no continuous extension there. Reconcile this with the distributional source identity.
+
+
+**Exercise 7 (intermediate: cross terms retain an odd-coordinate moment).** For the real matrix \(B\) in (J4), evaluate \(M_t^B(x_1x_2e^{-|x|^2})\), prove that its quotient by \(t\) tends to \(-1/6\), and evaluate it at \(t=1\). Determine \(M_t^B(x_1^2x_2e^{-|x|^2})\). Explain the difference using an actual symmetry of the weight.
+
+**Exercise 8 (advanced: the fourth mixed moment).** For the same \(B\), evaluate \(M_t^B(x_1^2x_2^2e^{-|x|^2})\). Determine the limit after division by \(t^2\). Account for all mixed derivatives; treating the two coordinates as independent does not give the same coefficient.
+
+**Exercise 9 (advanced: a purely oscillatory cross term).** Put \(B=\left(\begin{smallmatrix}0&i\\i&0\end{smallmatrix}\right)\). Determine \(g(B)\) and compute \(M_t^B(x_1x_2e^{-|x|^2})\). Explain why its ordinary spatial integral exists for every \(t>0\), and find its first nonzero term as \(t\downarrow0\).
 
 ## Complete solutions
 
@@ -453,7 +576,59 @@ For \(A=i\), the kernel is
 \((4\pi t)^{-1/2}e^{-i\pi/4}e^{ix^2/(4t)}\).
 At each fixed nonzero \(x\), its modulus is \((4\pi t)^{-1/2}\), tending to infinity. It has no continuous extension. The iterated distributional pairing still exists and satisfies its source equation; the smooth-extension assertion was limited to real positive definite matrices.
 
-## Programme proof locations and freely accessible sources
+
+**Solution 7.** Equation (J5) gives
+\[
+ M_t^B(x_1x_2e^{-|x|^2})
+       =-\frac{\sqrt3\,t}{2((t+1)(t+3))^{3/2}}.
+ \tag{J10}
+\]
+Dividing by \(t\) and taking \(t\downarrow0\) gives
+\(-\sqrt3/(2\,3^{3/2})=-1/6\).
+At \(t=1\) it is \(-\sqrt3/(2\,8^{3/2})=-\sqrt6/64\).
+The monomial \(x_1^2x_2\) has odd total degree, so simultaneous reflection \(x\mapsto-x\) changes its sign and preserves both quadratic factors; its integral is zero. Reflecting only \(x_1\) changes the cross term \(2x_1x_2\) in \(x^TBx\), so that reflection cannot be used to cancel the moment \(x_1x_2\).
+
+**Solution 8.** Write \(C=C_t^{-1}\). Applying its quadratic differential operator twice to \(P=x_1^2x_2^2\) gives
+\[
+ \begin{aligned}
+ \Delta_CP&=2C_{11}x_2^2+8C_{12}x_1x_2+2C_{22}x_1^2,\\
+ (\Delta_C^2P)(0)&=8C_{11}C_{22}+16C_{12}^2.
+ \end{aligned}
+ \tag{J11}
+\]
+Only \(m=2\) contributes in (J1). Multiplying by the normalization in \(M_t^B\) therefore gives
+\[
+ \begin{aligned}
+ M_t^B(Pe^{-|x|^2})
+ &=\frac{g(B)}{g(C_t)}
+        \frac{t^2}{4}(C_{11}C_{22}+2C_{12}^2)\\
+ &=\frac{\sqrt3\,t^2((t+2)^2+2)}{4D_t^{5/2}}.
+ \end{aligned}
+ \tag{J12}
+\]
+Its quotient by \(t^2\) tends to
+\(\sqrt3\cdot6/(4\,3^{5/2})=1/6\).
+The term \(2C_{12}^2\) is supplied by the mixed derivative terms in (J11); it is nonzero here.
+
+**Solution 9.** The matrix is \(iH\) for the real symmetric matrix
+\(H=\left(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\right)\), whose eigenvectors \((1,1)\) and \((1,-1)\) have eigenvalues \(1\) and \(-1\). Its signature is zero and \(|\det H|=1\); Lemma 2.1 gives \(g(B)=1\). Also
+\[
+ C_t=\begin{pmatrix}t&i\\i&t\end{pmatrix},\quad
+ C_t^{-1}=\frac1{1+t^2}
+              \begin{pmatrix}t&-i\\-i&t\end{pmatrix},\quad
+ g(C_t)=\sqrt{1+t^2}.
+ \tag{J13}
+\]
+For the last branch, diagonalization gives scalar factors with eigenvalues \(t+i\) and \(t-i\); their right-half-plane square roots are conjugate and their product is positive. Formula (J1), with \((\Delta_{C_t^{-1}}x_1x_2)(0)=-2i/(1+t^2)\), yields
+\[
+ M_t^B(x_1x_2e^{-|x|^2})
+      =-\frac{it}{2(1+t^2)^{3/2}}
+      =-\frac i2t+O(t^3).
+ \tag{J14}
+\]
+The error follows from the mean value bound for \((1+s)^{-3/2}\) on \(0\le s\le1\), with \(s=t^2\). Since \(\operatorname{Re}B=0\), the modulus of the unnormalized integrand is \(|x_1x_2|e^{-|x|^2}\), an integrable function. Thus every integral used here is an ordinary absolutely convergent spatial integral.
+
+## Programme proof locations and sources
 
 - [Boundary flux and weak identities](boundary-flux-and-weak-identities.md), Theorem 2.1; [Homogeneous extensions and angular moments](homogeneous-extensions-and-angular-moments.md), Theorem 6.1 and Corollary 6.2; [angular foundations](../prerequisites/U011-free-foundations/angular-foundations-U018.md), A4–A5: all boundary, polar, source and sphere-normalization inputs.
 - [Schwartz Fourier foundations](../prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.md), F1–F5; [Complex powers at a boundary](complex-powers-at-a-boundary.md), Lemma H0: full Fourier seminorms, Gaussian mass, both inverses, direct transposes and the right-half-plane logarithm.
@@ -461,5 +636,7 @@ At each fixed nonzero \(x\), its modulus is \((4\pi t)^{-1/2}\), tending to infi
 - [Order, positivity and distributional limits](order-positivity-and-limits.md), finite-\(C^k\) extension; [finite algebra foundation](../prerequisites/U011-free-foundations/stable-prerequisite-bridges.md), Sections 10.1–10.6: the test approximation and algebra from which the additional proofs above proceed.
 - [Semyon Dyatlov, *Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs*](https://math.mit.edu/~dyatlov/18.155/155-notes.pdf), Proposition 9.6 and Section 11.1: freely accessible radial Laplacian and Gaussian/Fourier proofs. The Laplacian proof above includes every dimension and the first-derivative boundary error.
 - [Michael E. Taylor, *Fourier Analysis, Distributions, and Constant-Coefficient Linear PDE*, author-hosted text](https://mtaylor.web.unc.edu/wp-content/uploads/sites/16915/2018/04/fourier.pdf), Section 3, formulas (3.13)–(3.21), and Section 5, formulas (5.10)–(5.11): free Gaussian normalization, square-integral and heat-kernel calculations. Our Fourier normalization is (3.1), and the complete matrix branch, semidefinite boundary limit, finite-regularity estimates and distributional time-source proof are supplied here.
+
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition, Springer, 2003, [doi:10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), §§3.3–3.4, pp.80–86: point sources, complex Gaussian concentration and integral normalizations. The polynomial identities (J1)–(J14) and their proofs use the matrix Gaussian transform and the explicit test estimates supplied in this lesson.
 
 This original exposition is CC0. Separately credited earlier foundation selections retain their stated CC0 1.0 licences.

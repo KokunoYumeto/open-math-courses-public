@@ -67,6 +67,63 @@ For a vector \(c\) and any real matrix \(A:\mathbb R^m\to\mathbb R^n\), includin
 \]
 Cauchy–Schwarz gives the upper bound. If \(A^T\xi\ne0\), take the unit vector \(A^T\xi/|A^T\xi|\); otherwise every point of the ball gives equality.
 
+
+## Families of supports and finite approximations
+
+**Proposition 1.2 (the support function of a family).** Let \((K_a)_{a\in A}\) be a nonempty family of nonempty compact subsets of \(\mathbb R^n\), and set
+\[
+ F(\xi)=\sup_{a\in A}H_{K_a}(\xi).
+ \tag{F1}
+\]
+The following conditions are equivalent: \(F\) is finite in every direction; the \(2n\) numbers \(F(e_j),F(-e_j)\) are finite; the sets \(K_a\) all lie in one bounded set. Under these conditions,
+\[
+ K=\overline{\bigcup_{a\in A}K_a},\qquad C=\operatorname{ch}K
+ \quad\text{are compact, and}\quad H_K=H_C=F.
+ \tag{F2}
+\]
+The set \(C\) is the unique compact convex set with support function \(F\). The set \(K\) need not be convex.
+
+**Proof.** Finiteness in every direction implies finiteness at the stated coordinate directions. If those \(2n\) values are finite, every \(x\in K_a\) obeys
+\[
+ -F(-e_j)\le x_j\le F(e_j)\qquad(1\le j\le n).
+ \tag{F3}
+\]
+Thus the union is bounded. Conversely, containment of the union in \(\overline B(0,R)\) gives \(F(\xi)\le R|\xi|\) by Cauchy–Schwarz. Since the family contains a point, its scalar product with \(\xi\) also gives a finite lower bound, so \(F(\xi)\) is a real number.
+
+The closure \(K\) is compact by closed-and-bounded compactness. Its convex hull closure \(C\) is compact by the argument preceding Theorem 1.1. Taking a supremum over the union means first taking the supremum in each member and then over \(a\), which gives \(F\). The scalar product is continuous, so passing to the closure does not change that supremum: approximate each closure point by a sequence of points of the union. Passing to finite convex combinations and then their closure also preserves the supremum, as in (1.1). Hence (F2) holds. The uniqueness assertion is Theorem 1.1. \(\square\)
+
+Both signs in (F3) matter. A bound on positive coordinate directions alone permits the sets to escape to infinity in a negative direction, as Exercise 9 shows.
+
+**Proposition 1.3 (finite families approximate the convex envelope).** Assume the equivalent boundedness conditions in Proposition 1.2. For each \(\varepsilon>0\) there is a finite nonempty \(I\subset A\) such that
+\[
+ C_I=\operatorname{ch}\bigcup_{a\in I}K_a
+ \quad\text{satisfies}\quad
+ C_I\subset C\subset C_I+\varepsilon\overline B(0,1).
+ \tag{F4}
+\]
+Consequently, in every direction,
+\[
+ 0\le F(\xi)-\max_{a\in I}H_{K_a}(\xi)\le\varepsilon|\xi|.
+ \tag{F5}
+\]
+One can choose finite \(I_1\subseteq I_2\subseteq\cdots\) with error at most \(1/j\) at step \(j\). Their convex envelopes increase to a dense subset of \(C\).
+
+**Proof.** Put \(E=\bigcup_aK_a\). Since \(K=\overline E\), the balls \(B(x,\varepsilon)\), \(x\in E\), cover \(K\). Compactness gives a finite subcover with centers \(x_1,\ldots,x_m\), and choose \(a_i\) so that \(x_i\in K_{a_i}\). Let \(I=\{a_1,\ldots,a_m\}\). Then every point of \(K\) is within \(\varepsilon\) of some point of \(C_I\).
+
+The sum \(C_I+\varepsilon\overline B(0,1)\) is compact, as the continuous image under addition of a product of compact sets. It is convex because convex combinations can be taken in the two factors separately. Since it contains \(K\), it contains \(C=\operatorname{ch}K\). This proves (F4), and \(C_I\subset C\) follows directly from its construction. The support-sum identity and (1.7) give
+\[
+ H_{C_I+\varepsilon\overline B}(\xi)=H_{C_I}(\xi)+\varepsilon|\xi|,
+ \qquad H_{C_I}(\xi)=\max_{a\in I}H_{K_a}(\xi),
+ \tag{F6}
+\]
+so (F5) follows by taking suprema in (F4).
+
+For each \(j\), choose a finite set giving error \(1/j\), and replace it by its union with all previously chosen sets. These unions are finite and increasing, and enlarging \(C_I\) preserves (F4) with the same error. Given \(x\in C\), (F4) supplies \(x_j\in C_{I_j}\) with \(|x-x_j|\le1/j\), so their union is dense in \(C\). \(\square\)
+
+![A regular hexagon, its directional support deficit, and cancellation into two boundary intervals.](../figures/finite-support-envelopes.png)
+
+*Figure. Top left: \(C_6\), the convex hull of six equally spaced unit-circle points, and the unit disk. The marked radial segment joins an edge midpoint to the circle in its normal direction; its length is \(1-\cos(\pi/6)=1-\sqrt3/2\). Top right: the exact directional deficit \(1-H_{C_6}(\cos\theta,\sin\theta)\), whose maximum is that same number. Proposition 1.3 and Solution 11 give the approximation and sharp polygon bound. Bottom: the regular density of \(1_{(-2,2)}*(\delta_{-1/2}-\delta_{1/2})\), equal to \(+1\) on the left boundary interval and \(-1\) on the right, with zero interior. The gray line marks the full input-support sum. Endpoint values of the density are immaterial; its support includes all four endpoints. Proposition 4.5 and Solution 12 prove this boundary cancellation. [Editable figure script](../figures/finite-support-envelopes.py).*
+
 ## Two square-integral identities locate a self-convolution
 
 For a smooth compact function put \(\widetilde u(x)=\overline{u(-x)}\).
@@ -259,6 +316,36 @@ Then the exact support of \(P(\partial_x,\partial_y)u\) is as follows.
 \]
 These terms give all stated upper inclusions. If \(c\ne0\), the distribution equals the nonzero constant \(c\) on the open square, so support closedness fills \(Q\). If \(c=0\) and \(A\ne0\), in a neighborhood of any relative interior point of a vertical edge the only nonzero term is the normal point jet \(\pm A(\partial_x)\delta_{\pm1}\) times the nonzero interval density in \(y\). Independence of point jets supplies a normal test with nonzero pairing; a tangential nonnegative test of positive integral completes a detecting tensor test. Thus every such edge point belongs to the support. Taking closures adds both corners of each edge, regardless of \(C\). The same argument applies to horizontal edges and \(B\). Finally, if only \(C\ne0\), at each vertex the distribution is the nonzero point jet \(\pm C(\partial_x,\partial_y)\delta_{\text{vertex}}\). Distinct vertices are separated by tests, and point-jet independence prevents cancellation at any one of them. These facts prove all cases. \(\square\)
 
+
+**Proposition 4.5 (zero mass confines the output to the boundary).** Let \(X\subset\mathbb R^n\) be bounded and open, let \(v\in\mathcal E'\), and suppose
+\[
+ \operatorname{supp}v\subset\overline B(a,r),\quad r\ge0,\qquad v(1)=0.
+ \tag{F7}
+\]
+Here \(v(1)\) is the extended pairing of U021, B0. Then
+\[
+ \operatorname{supp}(1_X*v)\subset\partial X+\overline B(a,r).
+ \tag{F8}
+\]
+The boundary on the right is the ordinary topological boundary. In particular this assertion applies to smooth compact kernels of integral zero.
+
+**Proof.** If \(X\) is empty, the convolution is zero. Otherwise \(\partial X\) is a nonempty compact set. Fix \(x_0\) outside the right side of (F8). Then
+\(\operatorname{dist}(x_0-a,\partial X)>r\), so choose \(\delta>0\) such that the ball \(B(x_0-a,r+3\delta)\) misses \(\partial X\).
+
+The indicator \(1_X\) is constant, with value \(c=0\) or \(1\), throughout that ball. To justify this, a segment in the ball joining a point of \(X\) to a point outside \(X\) would have a first exit from the open set \(X\); that exit lies in \(\partial X\), a contradiction. A point outside \(X\) and outside its boundary lies in the exterior of \(\overline X\). Thus the statement also holds pointwise away from the boundary.
+
+Put \(W=B(x_0,\delta)\). Choose \(\chi\in C_c^\infty(B(x_0-a,r+3\delta))\) equal to one near \(\overline B(x_0-a,r+\delta)\), using the earlier compact cutoff construction. For \(z\in W\), all points \(z-y\), \(y\in\operatorname{supp}v\), lie where \(\chi=1\). The support inclusion of U021, Theorem 1.1, therefore gives
+\[
+ (1_X*v)|_W=((\chi1_X)*v)|_W=c(\chi*v)|_W.
+ \tag{F9}
+\]
+Indeed the support of \((1-\chi)1_X\) cannot add with \(\operatorname{supp}v\) to a point of \(W\). Since \(\chi\) is smooth and compact, U021, Theorem 2.1, evaluates the last expression at every \(z\in W\) as
+\[
+ c\,v_y(\chi(z-y))=c\,v(1)=0.
+ \tag{F10}
+\]
+The equality of the pairings holds because the two smooth functions agree near \(\operatorname{supp}v\). Every point outside the compact set \(\partial X+\overline B(a,r)\) thus has a neighborhood where the convolution vanishes, proving (F8). \(\square\)
+
 ## Exercises
 
 **Exercise 1 (basic).** For \(c=(3,0)\), \(A=\begin{pmatrix}2&0\\1&2\end{pmatrix}\), let \(K=c+A\overline B(0,1)\). Compute \(H_K\), a supporting point in each nonzero direction, a Cartesian inequality for \(K\), and its area.
@@ -297,6 +384,23 @@ Give \(f_3\) as a signed sum of point masses, with its density factor.
 Let \(F_S\) be the union of closed cube faces where each coordinate in \(S\) is an endpoint \(\pm1\). Prove \(\operatorname{supp}P(\partial)U=\bigcup_{P_S\ne0}F_S\). Identify the support for \(P=s_1s_2+s_2s_3\).
 
 **Exercise 8 (advanced).** For linearly independent \(a,b\in\mathbb R^2\), let \(w=\delta_0+\delta_a+\delta_b\). Given \(0\ne g\in\mathcal E'\), show that \(w*u=g\) has at most one compact solution. Obtain a necessary inequality for every directional width of \(\operatorname{ch}\operatorname{supp}g\), and exclude a solution when \(g\) is supported on a line.
+
+
+**Exercise 9 (basic: the missing signs).** Let \(K_m=\{-m e_1\}\subset\mathbb R^n\), \(m=1,2,\ldots\). Compute \(F(\xi)=\sup_mH_{K_m}(\xi)\), including the cases \(\xi_1>0\), \(\xi_1=0\) and \(\xi_1<0\). Explain why finiteness at \(e_1,\ldots,e_n\) does not imply uniform boundedness.
+
+**Exercise 10 (intermediate: closure and convexification).** For rational \(q\in[0,1)\), let \(K_q=\{(\cos2\pi q,\sin2\pi q)\}\). Determine the union, its closure, its closed convex hull and \(F\). Explain which of these sets is recovered uniquely from the support function.
+
+**Exercise 11 (advanced: a sharp finite approximation).** Let \(N\ge3\) and
+\[
+ v_k=(\cos(2\pi k/N),\sin(2\pi k/N)),\quad 0\le k<N,\qquad
+ C_N=\operatorname{ch}\{v_0,\ldots,v_{N-1}\}.
+ \tag{F11}
+\]
+Find \(H_{C_N}\) and the smallest \(\varepsilon_N\ge0\) such that
+\(\overline B(0,1)\subset C_N+\varepsilon_N\overline B(0,1)\).
+Prove \(\varepsilon_N\le\pi^2/(2N^2)\), and identify all unit directions where the maximum support deficit occurs.
+
+**Exercise 12 (intermediate: two signed boundary intervals).** For \(0<h<2\), let \(u=1_{(-2,2)}\) and \(v=\delta_{-h}-\delta_h\). Compute the regular density of \(u*v\), its exact support, the sum of the input supports, and its distributional derivative. Identify the signs and all endpoints in the boundary inclusion (F8).
 
 ## Complete solutions
 
@@ -393,10 +497,69 @@ For a nonempty compact \(E\), its directional width is \(W_E(\xi)=H_E(\xi)+H_E(-
 \]
 For \(\xi\ne0\), this last width is strictly positive: if it were zero, all three scalar products would equal zero, so \(\xi\) would be perpendicular to the basis \(a,b\), a contradiction. A nonempty compact set in an affine line has zero width in a nonzero normal direction. Thus a line-supported \(g\ne0\) cannot admit a compact solution. The inequality is a necessary condition; the argument makes no assertion of sufficiency.
 
-## Programme proof locations and freely accessible sources
+
+**Solution 9.** The scalar products are \(-m\xi_1\). Their supremum is \(-\xi_1\) if \(\xi_1>0\), zero if \(\xi_1=0\), and \(+\infty\) if \(\xi_1<0\). In particular \(F(e_1)=-1\), \(F(e_j)=0\) for \(j>1\), while \(F(-e_1)=+\infty\). The positive coordinate tests bound each coordinate above but do not bound it below. Indeed the points have norms \(m\to\infty\).
+
+**Solution 10.** The union is the set of points with rational angular parameter on the unit circle. It is dense in that circle: for every real parameter, rational parameters approach it, and sine and cosine are continuous. It is not the whole circle; an irrational parameter has a different point, since equality of both coordinates means the parameters differ by an integer. The closure is therefore the unit circle.
+
+Its closed convex hull is the unit disk. Convexity of the disk gives one inclusion. Conversely, for any unit vector \(\omega\) and \(0\le r\le1\),
+\[
+ r\omega=\frac{1+r}{2}\omega+\frac{1-r}{2}(-\omega),
+ \tag{F12}
+\]
+so every disk point is a convex combination of circle points. For \(\xi\ne0\), the scalar product on the circle is at most \(|\xi|\), with equality at \(\xi/|\xi|\); density gives the same supremum on the rational-angle union. At zero the value is zero. Thus \(F(\xi)=|\xi|\). Theorem 1.1 uniquely recovers the unit disk among compact convex sets. Neither the original dense union nor its circular closure is determined uniquely by that support function.
+
+**Solution 11.** For \(\xi=r(\cos\theta,\sin\theta)\), \(r\ge0\), the support function is
+\[
+ H_{C_N}(\xi)
+   =r\max_{0\le k<N}\cos(\theta-2\pi k/N)
+   =r\cos d_N(\theta),
+ \qquad 0\le d_N(\theta)\le\pi/N,
+ \tag{F13}
+\]
+where \(d_N(\theta)\) is the least circular angular distance to a vertex direction, measured in \([0,\pi]\). On that interval cosine is decreasing, so the nearest vertex gives the maximum. Each direction lies in one of the arcs of length \(2\pi/N\) between consecutive vertices. The largest nearest distance is \(\pi/N\), attained precisely at the arc midpoints. Hence
+\[
+ \sup_{|\xi|=1}\bigl(|\xi|-H_{C_N}(\xi)\bigr)
+       =1-\cos(\pi/N).
+ \tag{F14}
+\]
+The support function of \(C_N+\varepsilon\overline B\) is \(H_{C_N}+\varepsilon|\xi|\). By (1.6), inclusion of the unit disk is equivalent to
+\(|\xi|\le H_{C_N}(\xi)+\varepsilon|\xi|\) in every direction. Equations (F13)–(F14) therefore give the exact least value
+\(\varepsilon_N=1-\cos(\pi/N)\). All maximizing unit directions have angle \((2k+1)\pi/N\), modulo \(2\pi\).
+
+Finally, \(\sin s=\int_0^s\cos t\,dt\le s\) for \(s\ge0\). Therefore, for \(0\le t\le\pi/N\),
+\[
+ 1-\cos t=\int_0^t\sin s\,ds\le t^2/2.
+ \tag{F15}
+\]
+Taking \(t=\pi/N\) proves the claimed bound.
+
+**Solution 12.** The two point masses translate the indicator in opposite directions:
+\[
+ u*v=1_{(-2-h,\,2-h)}-1_{(-2+h,\,2+h)}.
+ \tag{F16}
+\]
+Because \(0<h<2\), the overlap interval \((-2+h,2-h)\) is nonempty. The density is \(+1\) on \((-2-h,-2+h)\), \(-1\) on \((2-h,2+h)\), and zero elsewhere, apart from irrelevant endpoint values. A nonzero constant density is detected by a test of positive integral in every interior subinterval. Closure of support therefore gives exactly
+\[
+ [-2-h,-2+h]\ \cup\ [2-h,2+h].
+ \tag{F17}
+\]
+The sum of the input supports is instead
+\([-2,2]+\{-h,h\}=[-2-h,2+h]\), since the two translated closed intervals overlap. The kernel has mass zero and support in \([-h,h]\), and
+\(\partial(-2,2)+[-h,h]\) is exactly (F17). Thus the boundary bound is attained while the ordinary support-sum inclusion is strict. Finally, the fundamental theorem in each interval gives
+\[
+ \partial_x(u*v)=\delta_{-2-h}-\delta_{-2+h}
+                    -\delta_{2-h}+\delta_{2+h}.
+ \tag{F18}
+\]
+All four points are distinct under the stated restriction on \(h\).
+
+## Programme proof locations and sources
 
 - [Convolution as addition of supports](convolution-as-addition-of-supports.md), B0–B3 and Theorems 1.1, 2.1, 3.1, 3.2, 5.2: localization, tensors, proper convolution, support inclusion, smoothness, associativity, joint limits on fixed supports and normalized mollifiers. These are the exact earlier proofs used throughout Sections 2–4 and the solutions.
 - [Angular foundations](../prerequisites/U011-free-foundations/angular-foundations-U018.md), A3: independence of arbitrary finite point jets, used in Corollary 4.3, Proposition 4.4 and Solution 7.
 - [Schwartz and Fourier foundations](../prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.md), F3: the full real Gaussian mass proof used in (3.5)–(3.6).
 - [Metric foundations](../prerequisites/U011-free-foundations/metric-foundation-bridges.md), §§12–13: finite-dimensional compactness, completeness of the real numbers, scalar fundamental theorem, exponential series and smooth cutoffs. [Stable algebra foundations](../prerequisites/U011-free-foundations/stable-prerequisite-bridges.md), §10: finite-dimensional linear algebra and determinants. [Banach foundations](../prerequisites/U011-free-foundations/banach-foundation-bridges.md), §§15.1–15.3, 16.1–16.2: dominated convergence, Fubini–Tonelli, Cauchy–Schwarz, linear changes of variables and product measures. These supplied components retain their stated licenses.
 - Andrew Comech, *Solutions with compact time spectrum to nonlinear Klein–Gordon and Schrödinger equations and the Titchmarsh theorem for partial convolution*, [freely accessible author preprint, arXiv:1810.09047v4](https://arxiv.org/pdf/1810.09047), December 30, 2020, §§2.3–2.5, pp. 7–9. The scalar self-convolution mechanism and polynomial increment argument in Lemmas 5–8 guide Sections 2–3 here. The present lesson supplies the conjugate-reflection identity, all-dimensional derivative estimate, finite polynomial hull argument, Gaussian localization and fixed-profile distributional limit in full; no partial-convolution theorem or external proof is assumed.
+
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition, Springer, 2003, [doi:10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), §4.3, pp.105–109: support functions, arbitrary families of compact sets, boundary cancellation and the convolution support theorem. Propositions 1.2–1.3 and 4.5 give the family, finite-approximation and boundary arguments.

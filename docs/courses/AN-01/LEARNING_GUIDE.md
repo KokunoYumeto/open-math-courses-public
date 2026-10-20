@@ -201,6 +201,18 @@ The lesson numbers identify stable files. Within a route, follow the linked prer
 
 - **Continuous primitives at a boundary.** [*Gluing holomorphic sides*](src/gluing-holomorphic-sides.md#one-more-primitive-has-a-continuous-trace) constructs continuous traces from integrable derivative bounds, proves quantitative convergence of distributional measurements, and derives the signed pole jump from two continuous primitives. Thirteen solved exercises include sharp Hölder bounds and a bounded holomorphic function with no pointwise boundary limit.
 
+- **Mixed Gaussian moments.** [*Point sources and complex Gaussian kernels*](src/point-sources-and-complex-gaussian-kernels.md#cross-terms-and-gaussian-moments) evaluates polynomial Gaussian tests for complex symmetric matrices, distinguishes total parity from coordinate parity, and proves concentration by Gaussian Taylor subtraction at the finite derivative count. Nine solved exercises include second and fourth mixed moments and a purely oscillatory cross term.
+
+- **Finite measurements and zero measures.** [*Convolution as addition of supports*](src/convolution-as-addition-of-supports.md#finite-measurements-and-the-weak-topology) identifies the continuous weak dual and gives exact smooth interpolation of finitely many tests, with seventeen solved exercises. [*Compactness and complex-line positivity*](src/compactness-and-complex-line-positivity.md#equal-weights-and-polynomial-zero-measures) constructs integer-weighted atomic approximations to positive Radon measures and realizes them as normalized polynomial-zero measures, with ten solved exercises.
+
+- **Families of compact supports.** [*Convex supports and convolution cancellation*](src/convex-supports-and-convolution-cancellation.md#families-of-supports-and-finite-approximations) characterizes uniformly bounded families by their support functions and proves uniform finite approximation of the convex envelope. A compact zero-mass kernel confines convolution with a domain indicator to its boundary neighborhood. Twelve solved exercises include escaping negative supports, the sharp polygon error and two signed boundary intervals.
+
+- **Finite order and continuous primitives.** [*Fundamental solutions, continuation and approximation*](src/fundamental-solutions-continuation-and-approximation.md#finite-families-and-prescribed-coefficient-regularity) represents every distribution by locally finite derivatives of coefficients with any prescribed finite regularity. A finite coefficient family exists exactly for distributions of globally finite order. Eleven solved exercises include a periodic source without compact support, unbounded local jet orders and the sharp derivative cost of a point source.
+
+- **Convolution endpoints and cancellation.** [*Convolution estimates and weak-gradient embeddings*](src/convolution-estimates-and-weak-gradient-embeddings.md#endpoint-norms-and-the-reflected-kernel) proves the exact endpoint kernel norms and both maximal-function and cancellation proofs of fractional integration. Thirteen solved exercises include concentrated unit mass, sharp endpoint obstructions and countable mean-zero decompositions.
+
+- **Regularization and kernel limits.** [*Distributions as kernels*](src/distributions-as-kernels.md#recovering-a-kernel-by-decreasing-its-smoothing-scale) gives Fourier-series and scale-Taylor constructions of the distribution kernel, with explicit finite-order bounds. Seven solved exercises include logarithmic convergence, differentiated point evaluations and the second-moment error.
+
 Every available lesson contains its own graded problems and complete solutions. The course scope describes the lessons collected in this reader.
 
 ## Sources and contributions

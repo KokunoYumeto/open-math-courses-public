@@ -2,7 +2,7 @@
 
 *Written by GPT-6.1 Sol (OpenAI), September 2026. Public domain (CC0).*
 
-*Prerequisite exposition by GPT-6 Astra (OpenAI), October 2026. *
+*Additional exposition by GPT-6 Astra (OpenAI), October 2026.*
 
 An integral kernel records how an operator transfers information from an input point to an output point. A function kernel cannot describe evaluation or differentiation. A distribution on the product space can describe both. This lesson proves Laurent Schwartz's kernel theorem and explains precisely which continuity assumptions it needs. The local theorem has no growth condition at infinity. Its tempered counterpart has a global polynomial bound.
 
@@ -216,6 +216,139 @@ Lemma 3.1 implies uniqueness on that rectangle. In particular the construction i
 
 On overlaps of two product rectangles, cover the overlap by smaller product rectangles. The two distributions agree on product tests in each smaller rectangle and hence agree there by Lemma 3.1. They therefore glue. Explicitly, choose a locally finite partition subordinate to the product-rectangle cover and define the value on a global test by the finite sum of the corresponding localized values. For two such partitions, refine each term by the other partition. Only finitely many terms meet the test support, the two local distributions agree on every intersection, and both double sums therefore coincide. This proves independence of the partition. On each compact support only finitely many distribution estimates are needed, so the result is continuous. This gives \(K\in\mathcal D'(U\times V)\). To verify (4.1) on an arbitrary product test, choose product partitions on \(U\) and \(V\). The two test functions split into finite sums, each localized product has the already proved pairing, and bilinearity recombines them to \(b(\psi,\phi)\). Lemma 3.1 gives global uniqueness. All four correspondences are inverse. \(\square\)
 
+
+## Recovering a kernel by decreasing its smoothing scale
+
+A smooth approximation can grow without bound at each smaller scale while converging as a distribution. Differentiation in the scale is useful when it can be transferred to the test function. The following estimate quantifies that mechanism.
+
+**Lemma 4.2 (Taylor convergence with a fixed distribution order).** Let \(W\subset\mathbb R^d\) be open, \(M\ge0\) an integer, and \(0<\varepsilon\le b\le1\). Suppose \(F_\varepsilon\in\mathcal D'(W)\), each scalar pairing is \(C^{M+1}\) in \(\varepsilon>0\), and for every compact \(L\Subset W\),
+\[
+ |\partial_\varepsilon^j F_\varepsilon(\Phi)|
+       \le C_{L,j}\varepsilon^{-M}p_{L,j}(\Phi),
+ \qquad 0\le j\le M+1,\quad\Phi\in\mathcal D_L(W).
+ \tag{R1}
+\]
+Then \(F_\varepsilon\) converges to a distribution \(F_0\) of order at most \(M+1\). On each fixed support,
+\[
+ |(F_\varepsilon-F_0)(\Phi)|
+ \le C_L\varepsilon\bigl(1+\log(b/\varepsilon)\bigr)
+                                      p_{L,M+1}(\Phi).
+ \tag{R2}
+\]
+For \(M=0\), the logarithm can be omitted. In particular convergence is uniform on bounded test families.
+
+**Proof.** Fix \(\Phi\) and put \(f(t)=F_t(\Phi)\). Repeated integration of the fundamental theorem, or integration by parts in its integral remainder, gives
+\[
+ f(\varepsilon)=
+ \sum_{j=0}^{M}\frac{(\varepsilon-b)^j}{j!}f^{(j)}(b)
+ +\frac{(-1)^{M+1}}{M!}
+                 \int_\varepsilon^b(t-\varepsilon)^M f^{(M+1)}(t)\,dt.
+ \tag{R3}
+\]
+For \(M=0\) this is \(f(\varepsilon)=f(b)-\int_\varepsilon^b f'(t)\,dt\). Integrating the remainder once by parts proves the next value of \(M\), so (R3) holds for every integer \(M\).
+
+By (R1), \(t^M|f^{(M+1)}(t)|\le C_{L,M+1}p_{L,M+1}(\Phi)\). Consequently the following absolutely convergent expression defines a linear functional:
+\[
+ F_0(\Phi)=
+ \sum_{j=0}^{M}\frac{(-b)^j}{j!}f^{(j)}(b)
+ +\frac{(-1)^{M+1}}{M!}
+                          \int_0^b t^M f^{(M+1)}(t)\,dt.
+ \tag{R4}
+\]
+The finite sum and integral are bounded by a constant times \(p_{L,M+1}(\Phi)\). Thus \(F_0\) is a distribution with this same order on every compact support; its constants may depend on \(L\).
+
+Subtract (R4) from (R3). The finite polynomial changes by at most \(C_L\varepsilon p_{L,M+1}(\Phi)\). For \(M\ge1\), the elementary factorization of two \(M\)-th powers gives
+\[
+ 0\le t^M-(t-\varepsilon)^M\le M\varepsilon t^{M-1},
+                  \qquad \varepsilon\le t\le b.
+\]
+The integral over \(0<t<\varepsilon\) is bounded by \(C_L\varepsilon p_{L,M+1}(\Phi)\); the change of weight on the remaining interval is bounded by
+\[
+ C_LM\varepsilon\int_\varepsilon^b\frac{dt}{t}\,
+          p_{L,M+1}(\Phi)
+ =C_LM\varepsilon\log(b/\varepsilon)p_{L,M+1}(\Phi).
+\]
+For \(M=0\), that change of weight is zero. This proves (R2). Its factor tends to zero: writing \(s=b/\varepsilon\), one has \((1+\log s)/s\to0\), for example from \(\log s=\int_1^s t^{-1}dt\le2\sqrt s\). Lemma 1.1 then gives uniform convergence on bounded test families. Since the limit has been obtained from the actual scalar pairings, it is independent of the chosen \(b\). \(\square\)
+
+**Theorem 4.3 (regularized bilinear kernels).** Let \(b(\psi,\phi)\) be a separately continuous bilinear form on \(\mathcal D(U)\times\mathcal D(V)\), where \(U\subset\mathbb R^m\), \(V\subset\mathbb R^n\). Choose relatively compact open sets \(U_0\Subset U\), \(V_0\Subset V\), and compact neighborhoods \(L_U\Subset U,L_V\Subset V\) of their closures. Suppose
+\[
+ |b(\psi,\phi)|\le C p_{L_U,r}(\psi)p_{L_V,s}(\phi)
+ \tag{R5}
+\]
+on those fixed supports, as supplied by Lemma 2.1. Let \(\rho,\sigma\) be compact smooth functions of integral one on the two Euclidean spaces. Define
+\[
+ \begin{split}
+ \rho_\varepsilon(z)&=\varepsilon^{-m}\rho(z/\varepsilon),&
+ \sigma_\varepsilon(w)&=\varepsilon^{-n}\sigma(w/\varepsilon),\\
+ K_\varepsilon(x,y)&=
+ b\bigl(\rho_\varepsilon(x-\cdot),
+        \sigma_\varepsilon(y-\cdot)\bigr),&
+ \mu&=r+s+m+n .
+ \end{split}
+ \tag{R6}
+\]
+For a sufficiently small fixed \(b_0>0\), all input supports in (R6), with \(0<\varepsilon\le b_0\), lie in \(L_U,L_V\). On \(U_0\times V_0\), the smooth functions \(K_\varepsilon\) converge to the unique kernel of \(b\). That kernel has order at most \(\mu+1\) there, and the convergence satisfies (R2) with \(M=\mu\), \(b=b_0\). These local limits agree on overlaps and define the kernel on all of \(U\times V\).
+
+**Proof.** Shrink \(b_0\le1\) so that the translated scaled profile supports stay in the specified compact neighborhoods, with positive margins. Smooth dependence of the profiles on \((x,y,\varepsilon)\) holds in every fixed-support test seminorm when \(\varepsilon>0\). The joint estimate (R5) allows differentiation of their bilinear pairing: expand a difference of two pairings into the changes in its two factors and use their seminorm limits. The same argument applies after every derivative. Thus \(K_\varepsilon\) is smooth in all these parameters.
+
+For any compact smooth profile \(h\) on \(\mathbb R^e\), direct differentiation proves the scale identity
+\[
+ \partial_\varepsilon\{\varepsilon^{-e}h(z/\varepsilon)\}
+ =\sum_{\nu=1}^{e}
+       \partial_{z_\nu}\{\varepsilon^{-e}h_\nu(z/\varepsilon)\},
+                 \qquad h_\nu(t)=-t_\nu h(t).
+ \tag{R7}
+\]
+Both sides are \(\varepsilon^{-e-1}[-e h(t)-t\cdot\nabla h(t)]\), with \(t=z/\varepsilon\). No additional inverse power remains outside the spatial derivatives on the right.
+
+Write \(z=(x,y)\), \(\alpha=(\alpha_x,\alpha_y)\), and let \(K_{\varepsilon,\alpha}\) denote (R6) with profiles
+\((-t)^{\alpha_x}\rho(t)\) and \((-w)^{\alpha_y}\sigma(w)\). Applying (R7) repeatedly to the two factors yields
+\[
+ \partial_\varepsilon^jK_\varepsilon
+   =\sum_{|\alpha|=j}\frac{j!}{\alpha!}
+                                  \partial_z^\alpha K_{\varepsilon,\alpha}.
+ \tag{R8}
+\]
+Induction proves the coefficient: differentiating one more time chooses one of the \(m+n\) spatial coordinates, and the numbers of ordered choices with multiplicities \(\alpha\) are \(j!/\alpha!\). The altered profiles have the original compact supports. Their fixed derivative norms and (R5) imply
+\[
+ \sup_{U_0\times V_0}|K_{\varepsilon,\alpha}|
+                         \le C_\alpha\varepsilon^{-\mu}.
+ \tag{R9}
+\]
+Indeed derivatives through order \(r\) of the first scaled profile cost at most \(\varepsilon^{-m-r}\), and derivatives through order \(s\) of the second cost at most \(\varepsilon^{-n-s}\), since \(\varepsilon\le1\).
+
+For a test \(\Phi\) on a fixed compact support, integrate (R8) by parts. The test has no boundary terms. Its compact containing volume and the finite coefficient sum give
+\[
+ |\partial_\varepsilon^j\langle K_\varepsilon,\Phi\rangle|
+                     \le C_{L,j}\varepsilon^{-\mu}p_{L,j}(\Phi).
+ \tag{R10}
+\]
+Lemma 4.2 now constructs a distributional limit \(K_0\) and proves its order and convergence estimate.
+
+It remains to identify its product-test values. For \(\psi\in\mathcal D(U_0)\), \(\phi\in\mathcal D(V_0)\), integration of (R6) gives
+\[
+ \langle K_\varepsilon,\psi\otimes\phi\rangle
+       =b(\psi*\check\rho_\varepsilon,\phi*\check\sigma_\varepsilon),
+       \qquad\check\rho(t)=\rho(-t),\quad\check\sigma(w)=\sigma(-w).
+ \tag{R11}
+\]
+For justification, replace the two ordinary compact integrals by Riemann sums. Every derivative of the input profiles converges uniformly in those sums, with a common compact support. Estimate (R5) therefore passes the two limits through \(b\). The identity
+\[
+       \int\psi(x)\rho_\varepsilon(x-u)\,dx
+                   =\int\rho(t)\psi(u+\varepsilon t)\,dt
+\]
+proves both the reflection and the full scaling factor in (R11). Uniform continuity of every derivative on a compact neighborhood shows that these averages tend to \(\psi,\phi\) in their fixed-support test spaces. Since both profiles have integral one, (R5) gives \(K_0(\psi\otimes\phi)=b(\psi,\phi)\).
+
+Here product-test uniqueness also has a direct averaging proof. For a compact smooth \(H(x,y)\), its convolution with a product of two compact normalized profiles tends to \(H\) in every derivative seminorm, with one common compact support. For each fixed scale, Riemann sums for this convolution are finite sums of product tests. Choose scales tending to zero and meshes so that the smoothing and sum errors through derivative order \(j\) are each at most \(1/j\). The resulting sequence converges to \(H\) in the test space. Product tests therefore detect all distributions. The construction can keep supports in any prescribed product neighborhoods of the two compact projections.
+
+Consequently the local limits agree on every smaller product rectangle in an overlap. The partition and refinement argument in the proof of Theorem 4.1 glues them to a global distribution: it uses only this uniqueness, a finite partition near each compact test support, and the local finite-order bounds. Product partitions show that the glued distribution pairs to \(b(\psi,\phi)\) for arbitrary product tests. It is the unique kernel, and all continuity conclusions of Theorem 4.1 follow from its kernel estimate. \(\square\)
+
+The order \(\mu+1\) is an upper bound supplied by this construction, not necessarily the least order of the kernel. Solution 6 exhibits a kernel of exact order one with a larger bound from (R6). Solution 7 shows how vanishing first moments give faster convergence when two additional test derivatives are controlled.
+
+![Concentration of two regularized point kernels and a logarithmic scale error](../figures/regularized-point-kernels.png)
+
+*Figure. The first two panels are numerical samples of \(K_\varepsilon(x,y)=\rho_\varepsilon(x)\rho_\varepsilon(y)\), the regularization of the point kernel \(K=\delta_0\otimes\delta_0\), at \(\varepsilon=1\) and \(1/2\). Here \(\rho(t)=c\exp[-1/(1-t^2)]\) for \(|t|<1\), zero otherwise, with \(c^{-1}=\int_{-1}^1\exp[-1/(1-t^2)]dt\). Each exact kernel has integral one; the support contracts by two in each direction and the central value grows by four. The color scale is shared. The last panel plots the exact scalar coefficient \(\varepsilon\log(1/\varepsilon)\) of the error from Solution 5. Its quotient by \(\varepsilon\) is unbounded, even though it tends to zero. [Editable figure script](../figures/regularized-point-kernels.py).*
+
 ## Polynomial control on the whole space
 
 For \(d\ge1\), let \(\mathcal S(\mathbb R^d)\) be the Schwartz space, with increasing seminorms
@@ -389,6 +522,19 @@ is tempered. Describe its operator on Schwartz functions. Prove that if all \(a_
 \]
 Suppose all product-test pairings converge to those of a weakly continuous \(T\). Prove that their kernels converge to the kernel of \(T\) on every test in \(\mathcal D(U\times V)\). Identify the extra ingredient beyond density that makes this implication valid.
 
+
+**Exercise 5 (intermediate: why a logarithmic rate occurs).** Fix a nonzero \(h\in C_c^\infty(W)\) and set \(F_\varepsilon=\varepsilon\log(\varepsilon)\,h\), \(0<\varepsilon\le1/2\). Verify every hypothesis of Lemma 4.2 with \(M=1\), find the limit, and prove that an \(O(\varepsilon)\) bound for its value on every fixed test is false.
+
+**Exercise 6 (intermediate: a differentiated point evaluation).** On the line, let \(b(\psi,\phi)=\psi'(a)\phi(c)\). Compute \(K_\varepsilon\) from (R6) for arbitrary compact smooth unit-integral profiles, which need not be even. Determine the limiting kernel, its exact order, and the bound \(\mu+1\) obtained from Theorem 4.3. Verify the sign by pairing with a general two-variable test.
+
+**Exercise 7 (advanced: the second-moment error).** Suppose \(\rho,\sigma\) in Theorem 4.3 are nonnegative and even. Let the resulting kernel \(K\) have order at most \(q\) on a compact neighborhood of a test support \(L\). Prove, for sufficiently small \(\varepsilon\),
+\[
+ |(K_\varepsilon-K)(\Phi)|\le C_L\varepsilon^2p_{L,q+2}(\Phi),
+                      \qquad \Phi\in\mathcal D_L.
+ \tag{R12}
+\]
+Identify the needed first-moment cancellations, and explain why this estimate does not make the logarithm in Lemma 4.2 unnecessary under that lemma's weaker assumptions.
+
 ## Solutions
 
 **Solution 1.** Set \(y=x+3t\), so \(dt=dy/3\). A kernel is
@@ -442,10 +588,69 @@ The displayed lattice is closed and discrete. The kernel vanishes on its complem
 \]
 For fixed \(H_0\), the first term tends to zero by the hypothesis. The second can be made arbitrarily small uniformly in \(\ell\). A finite product-rectangle partition handles a general compactly supported \(H\). The necessary extra ingredient is uniform continuity in a common seminorm. Density alone supplies approximations but gives no uniform bound on their errors under a varying family of functionals.
 
+
+**Solution 5.** The scalar coefficient and its first two derivatives are
+\[
+ \varepsilon\log\varepsilon,\qquad1+\log\varepsilon,\qquad\varepsilon^{-1}.
+\]
+For \(0<\varepsilon\le1/2\), all three moduli are bounded by a fixed multiple of \(\varepsilon^{-1}\). For example, \(\log(1/\varepsilon)\le1/\varepsilon\), by integrating \(t^{-1}\le1\) from \(1\) to \(1/\varepsilon\). On each fixed support \(L\), \(|\int h\Phi|\le\|h\|_{L^1(L)}p_{L,0}(\Phi)\le\|h\|_{L^1(L)}p_{L,j}(\Phi)\). These are all the bounds (R1) for \(j=0,1,2\). The limit is zero.
+
+Choose \(\Phi=\overline h\), a compact smooth test. Then
+\[
+ \frac{|F_\varepsilon(\Phi)|}{\varepsilon}
+          =\log(1/\varepsilon)\int|h|^2\longrightarrow\infty.
+\]
+The integral is positive: a nonzero continuous function has modulus bounded below on a small ball. Hence even for this one fixed test an \(O(\varepsilon)\) estimate fails. This proves necessity of allowing a logarithm in the abstract scale lemma; it makes no optimality claim for every family of mollified kernels.
+
+**Solution 6.** Differentiating the first profile in its test variable contributes a minus sign:
+\[
+ K_\varepsilon(x,y)
+      =-\rho_\varepsilon'(x-a)\sigma_\varepsilon(y-c).
+ \tag{R13}
+\]
+For a general compact smooth \(\Phi\), integration by parts in \(x\) followed by \(x=a+\varepsilon t,\ y=c+\varepsilon w\) gives
+\[
+ \langle K_\varepsilon,\Phi\rangle
+ =\int\rho(t)\sigma(w)
+                \partial_x\Phi(a+\varepsilon t,c+\varepsilon w)\,dt\,dw
+ \longrightarrow\partial_x\Phi(a,c).
+ \tag{R14}
+\]
+Uniform convergence of the smooth derivative on the fixed compact set of \((t,w)\) proves the limit, even for signed or complex profiles. Thus
+\(K=-\delta_a'\otimes\delta_c\). It has order at most one. To exclude order zero, take \(\Phi_\lambda(x,y)=\lambda\,\eta((x-a)/\lambda)\theta(y-c)\), where \(\eta,\theta\) are compact smooth, \(\eta'(0)=1\) and \(\theta(0)=1\). For \(0<\lambda\le1\), these tests have a common compact support, their supremum norms tend to zero, but \(K(\Phi_\lambda)=1\). Hence the exact order is one. In (R5), \(r=1,s=0,m=n=1\), so \(\mu=3\) and the constructed bound is four. The difference between this bound and the least order is explicit.
+
+**Solution 7.** The global kernel identity, applied to the product profiles in (R6), gives
+\(K_\varepsilon(z)=K(\rho_\varepsilon(x-\cdot)\sigma_\varepsilon(y-\cdot))\).
+Passing a compact parameter integral through this finite-order pairing is justified by Riemann-sum convergence in its controlling derivative seminorm. Consequently
+\[
+ \langle K_\varepsilon,\Phi\rangle
+ =K(A_\varepsilon\Phi),\qquad
+ A_\varepsilon\Phi(u,v)
+ =\int\rho(t)\sigma(w)\Phi(u+\varepsilon t,v+\varepsilon w)\,dt\,dw .
+ \tag{R15}
+\]
+All these averaged tests have support in one compact neighborhood \(J\Subset U\times V\) of \(L\), for sufficiently small scales. Use an order-\(q\) estimate for \(K\) on that neighborhood.
+
+For any smooth \(G\) and displacement \(h\), two applications of the scalar fundamental theorem give
+\[
+ G(z+h)-G(z)-DG(z)h
+    =\int_0^1(1-\tau)\sum_{i,j}h_i h_j
+                           \partial_i\partial_jG(z+\tau h)\,d\tau .
+ \tag{R16}
+\]
+Apply this with \(G=\partial^\beta\Phi\), \(|\beta|\le q\), and \(h=\varepsilon(t,w)\). Evenness makes \(\int t_i\rho(t)dt=0\) and \(\int w_j\sigma(w)dw=0\), by reflection in all coordinates. The product profile therefore has every first moment zero. Its integral is one, so the constant terms cancel the subtraction of \(\Phi\). Since the profiles have compact support, the integral of \(|(t,w)|_1^2\rho(t)\sigma(w)\) is finite. Formula (R16) yields
+\[
+ p_{J,q}(A_\varepsilon\Phi-\Phi)
+ \le\frac{\varepsilon^2}{2}
+      \left(\int |(t,w)|_1^2\rho(t)\sigma(w)\,dt\,dw\right)
+                                      p_{L,q+2}(\Phi).
+\]
+Here derivatives of the globally defined test vanish off its support, so their global suprema equal their suprema on \(L\); all relevant segments stay inside the domain after the neighborhood is fixed. Apply the order-\(q\) bound of \(K\) to prove (R12). The abstract lemma assumes neither the averaging representation (R15) nor zero first moments, and controls only \(M+1\) test derivatives. This estimate uses two further derivatives beyond the chosen kernel order. Solution 5 therefore presents no contradiction.
+
 ## References
 
 - The supplied [scalar calculus](../prerequisites/U011-free-foundations/metric-foundation-bridges.md), [finite algebra](../prerequisites/U011-free-foundations/stable-prerequisite-bridges.md), [measure](../prerequisites/U011-free-foundations/banach-foundation-bridges.md) and [functional](../prerequisites/U011-free-foundations/functional-foundations-U008.md) proof components provide the exact earlier programme arguments listed at the start. They retain their stated licences, including CC0 1.0 for the functional selection. The compact-layer partition proof is also supplied in the programme's boundary-flux lesson and is reproduced here as a complete CC0 proof, independent of that lesson's later results.
-- [Dyatlov 2026] Semyon Dyatlov, *Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs*, MIT, 2 October 2026, §7.2.1, Theorem 7.6, pp. 81–82. [Open notes](https://math.mit.edu/~dyatlov/18.155/155-notes.pdf). The Fourier-series construction is compared with the fully written local argument above.
-- [Melrose 2016] Richard Melrose, *18.155 Lecture 15*, MIT, 1 November 2016, Theorem 1 and the local reduction, pp. 2–4. [Open lecture](https://math.mit.edu/~rbm/18.155-F16/L15.pdf). The tempered kernel statement and weak continuity formulation are compared here; the lesson retains its spatial-lattice proof in place of that lecture's Sobolev/Riesz route.
+- [Dyatlov 2026] Semyon Dyatlov, *Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs*, MIT, 2 October 2026, §7.2.1, Theorem 7.6, pp. 81–82. [Open notes](https://math.mit.edu/~dyatlov/18.155/155-notes.pdf). Fourier-series construction of the local kernel.
+- [Melrose 2016] Richard Melrose, *18.155 Lecture 15*, MIT, 1 November 2016, Theorem 1 and the local reduction, pp. 2–4. [Open lecture](https://math.mit.edu/~rbm/18.155-F16/L15.pdf). Tempered kernels and weak continuity.
 - [Schwartz 1952] Laurent Schwartz, *Théorie des noyaux*, Proceedings of the International Congress of Mathematicians, Cambridge, Massachusetts, 1950, volume I, American Mathematical Society, 1952, pp. 220–230, especially §§2–4 and Theorems I–II, pp. 221–223. [Freely accessible proceedings, volume I](https://www.mathunion.org/fileadmin/ICM/Proceedings/ICM1950.1/ICM1950.1.ocr.pdf). These give the original operator, bilinear and weak/strong continuity formulations; the programme proofs are supplied above.
-- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second edition (1990), 2003 reprint, ISBN 978-3-642-61497-2, §5.2, Theorems 5.2.1 and 5.2.4 and Example 5.2.5, pp. 128–131. The exact copy supplies the comparison for the local theorem, kernel support relation and continuous-graph example. The independently expressed local Fourier and tempered spatial-lattice proofs, examples and worked problems are retained.
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second edition (1990), 2003 reprint, ISBN 978-3-642-61497-2, §§5.1–5.2, pp. 126–132. Tensor products, regularized bilinear kernels, the kernel support relation and continuous graph operators.

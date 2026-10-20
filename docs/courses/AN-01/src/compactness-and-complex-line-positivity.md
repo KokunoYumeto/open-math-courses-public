@@ -160,6 +160,58 @@ U020 Corollary 1.2 proves local integrability and (3.2), including a local logar
 
 At almost every point of \(V\), \(f\ne0\) by Lemma 3.1, and \(\log|f_j|\to\log|f|\) there. The summable-error argument in Theorem 2.1 gives almost-everywhere convergence along a further subsequence of any \(L^1\)-convergent subsequence. Its limit is therefore \(\log|f|\). If convergence of the whole sequence failed on a compact in \(V\), select a subsequence with errors bounded below by some \(\eta>0\). The further subsequence just obtained contradicts that bound. Finally cover \(K\) by finitely many connected relatively compact neighborhoods and take the largest exceptional index. This also handles infinitely many ambient components. \(\square\)
 
+
+## Equal weights and polynomial zero measures
+
+The positive measures occurring as logarithmic Laplacians can approximate any positive Radon measure in the plane. The following construction specifies the topology and all normalization constants.
+
+**Proposition 3.4 (integer-weighted atomic approximation).** Let \(\mu\) be a positive Radon measure on an open \(X\subset\mathbb C\). There are integers \(N_j\to\infty\), finitely many points \(a_{j\ell}\in X\), and nonnegative integers \(m_{j\ell}\) such that
+\[
+ \nu_j=\frac1{N_j}\sum_\ell m_{j\ell}\delta_{a_{j\ell}}
+       \longrightarrow\mu
+       \quad\text{on every }C_c(X)\text{ test}.
+ \tag{Q1}
+\]
+The nonzero polynomials
+\[
+ P_j(z)=\prod_\ell(z-a_{j\ell})^{m_{j\ell}}
+ \quad\text{satisfy}\quad
+ \frac1{2\pi N_j}\Delta\log|P_j|=\nu_j
+ \quad\text{on }X.
+ \tag{Q2}
+\]
+An empty product is \(1\).
+
+**Proof.** Choose a compact exhaustion \(K_j\subset\operatorname{int}K_{j+1}\) of \(X\), with interiors covering \(X\), as in U021 Corollary 5.3. Partition \(K_j\) by its intersections with a grid of half-open squares of diameter at most \(1/j\). Only finitely many are nonempty; denote these disjoint Borel sets by \(E_{j\ell}\), \(1\le\ell\le L_j\), and choose \(a_{j\ell}\in E_{j\ell}\). Every cell has finite measure. Choose an integer
+\[
+ N_j\ge j\max(1,L_j),\qquad
+ m_{j\ell}=\lfloor N_j\mu(E_{j\ell})\rfloor .
+ \tag{Q3}
+\]
+Then \(0\le\mu(E_{j\ell})-m_{j\ell}/N_j<1/N_j\).
+
+Fix \(\phi\in C_c(X)\) and extend it by zero to the plane. This extension is continuous with compact support and hence uniformly continuous. For large \(j\), its support is in \(K_j\). Let \(\omega_\phi(\delta)\) be its uniform modulus of continuity. Choose one compact neighborhood \(L\Subset X\) of its support. Every cell on which either \(\phi(a_{j\ell})\) or some \(\phi(x)\), \(x\in E_{j\ell}\), is nonzero lies in \(L\) for all sufficiently large \(j\), since its diameter is at most \(1/j\). All other cells contribute zero. Thus
+\[
+ \begin{aligned}
+ |\nu_j(\phi)-\mu(\phi)|
+ &\le \|\phi\|_\infty L_j/N_j
+   +\sum_\ell\int_{E_{j\ell}}
+                   |\phi(a_{j\ell})-\phi(x)|\,d\mu(x)\\
+ &\le \|\phi\|_\infty/j+\mu(L)\omega_\phi(1/j)
+ \longrightarrow0.
+ \end{aligned}
+ \tag{Q4}
+\]
+The local mass \(\mu(L)\) is fixed; no bound on the possibly growing \(\mu(K_j)\) is required. This proves (Q1), including disconnected or unbounded domains. If \(X\) is empty use \(\nu_j=0\), \(P_j=1\), \(N_j=j\).
+
+Each \(P_j\) is a nonzero polynomial with exactly the displayed zeros and multiplicities after merging any repeated points. The planar point-source identity (3.2), or the sum of the finitely many locally integrable functions \(\log|z-a_{j\ell}|\), gives (Q2). Division by \(2\pi N_j\) fixes its exact mass. \(\square\)
+
+Thus the curvature measures converge. Convergence of their logarithmic potentials requires additional control of additive harmonic terms and is not asserted by (Q1).
+
+![Smooth interpolation of two measurements and equal-weight approximation of a positive measure.](../figures/finite-measurements-and-zero-counts.png)
+
+*Figure. The right panel shows \(N=8\) equally weighted zeros at \((\ell-\tfrac12)/N\). The step is their exact cumulative mass, compared with uniform length measure on \([0,1]\); its largest error is \(1/(2N)\). Solution 9 gives the logarithmic Laplacian and a smooth-test error bound. The left panel shows the distinct finite-measurement interpolation construction in [Convolution as addition of supports, Propositions 5.6–5.7](convolution-as-addition-of-supports.md#finite-measurements-and-the-weak-topology); its normalization is evaluated numerically only for plotting. [Editable figure script](../figures/finite-measurements-and-zero-counts.py).*
+
 ## A monotone measure of logarithmic curvature
 
 Let \(C_m=\pi^{m/2}/\Gamma(1+m/2)\) be the volume of the real \(m\)-dimensional unit ball, with \(C_0=1\). The angular foundations A4–A5 prove these constants. Gamma recurrence gives \(\sigma_{2n-1}=2\pi C_{2n-2}\). For proper plurisubharmonic \(u\) and its positive measure \(\mu=\Delta u\), define
@@ -357,6 +409,11 @@ Show that real subharmonicity and positive diagonal Levi entries do not give plu
 
 **Exercise 8 (advanced: two shifted rays).** For \(b=-1+2i\) and \(v(z)=2|\operatorname{Im}\sqrt{(z-b)^2-9}|\), determine the Laplacian and its mass on \(\{b+x:3<|x|<R\}\). Prove the endpoint masses vanish and evaluate the mass at \(R=5\).
 
+
+**Exercise 9 (intermediate: equally spaced zeros).** Put \(a_{\ell,N}=(\ell-\tfrac12)/N\), \(1\le\ell\le N\), and \(P_N(z)=\prod_{\ell=1}^N(z-a_{\ell,N})\). Determine \((2\pi N)^{-1}\Delta\log|P_N|\). Prove convergence to uniform length measure on \([0,1]\), a cumulative-mass error \(1/(2N)\), and a test error at most \(\|\partial_x\phi\|_{\infty,[0,1]}/(4N)\) for smooth planar tests.
+
+**Exercise 10 (advanced: the missing normalization of potentials).** For \(u_N(z)=N\), determine the curvature measures and the local integrals. Explain why even identical curvature measures do not imply local \(L^1\) convergence of their potentials. State precisely which conclusion of Proposition 3.4 survives.
+
 ## Solutions
 
 **Solution 1.** Proposition 3.2 gives subharmonicity. Polar integration and integration by parts give
@@ -426,7 +483,29 @@ For the sine value, the scalar angle-addition identities give \(4c^3-3c+1=(c+1)(
 \]
 The antiderivative follows directly by differentiation on \(x>3\) and its zero limit at \(3\). At \(R=5\) the mass is \(32\).
 
-## Programme proof locations and freely accessible sources
+
+**Solution 9.** The zeros are distinct and simple. Formula (3.2) gives
+\[
+ \frac1{2\pi N}\Delta\log|P_N|
+     =\frac1N\sum_{\ell=1}^N\delta_{a_{\ell,N}}.
+ \tag{Q5}
+\]
+Partition \([0,1]\) into \(I_{\ell,N}=[(\ell-1)/N,\ell/N]\), with endpoint overlaps irrelevant to length measure. For a continuous test, the difference between its atomic average and its line integral is bounded by its modulus of continuity at \(1/(2N)\), which tends to zero. For a smooth test, the fundamental theorem along the real segment instead gives
+\[
+ \begin{aligned}
+ \left|\frac1N\sum_{\ell=1}^N\phi(a_{\ell,N})
+                      -\int_0^1\phi(x)\,dx\right|
+ &\le \|\partial_x\phi\|_{\infty,[0,1]}
+                 \sum_{\ell=1}^N\int_{I_{\ell,N}}|x-a_{\ell,N}|\,dx\\
+ &=\frac{\|\partial_x\phi\|_{\infty,[0,1]}}{4N}.
+ \end{aligned}
+ \tag{Q6}
+\]
+The cumulative atomic mass is \(N^{-1}\#\{\ell:a_{\ell,N}\le s\}\), while the length mass is \(\min(1,\max(0,s))\). Between adjacent midpoints the step differs from the linear function by at most \(1/(2N)\). At a midpoint its value after the jump differs by exactly \(1/(2N)\); outside \([0,1]\) they agree. This proves the exact supremum.
+
+**Solution 10.** The constants are harmonic, so every \(\Delta u_N\) is the zero measure. On any compact set \(K\) of positive area, \(\int_K|u_N|=N|K|\to\infty\). If they converged in \(L^1(K)\), the triangle inequality would bound these norms, a contradiction. The curvature measures nevertheless converge, indeed are equal for all \(N\). Proposition 3.4 concerns convergence of the normalized Laplacian measures on compact continuous tests; it does not remove harmonic ambiguity from the potentials.
+
+## Programme proof locations and sources
 
 - [Positive derivatives and canonical representatives](positive-derivatives-and-canonical-representatives.md), Lemma 2.1, Theorems 3.1–3.2 and Corollary 3.3: complete shell formula, canonical representative, local integrability, sphere recovery and radial smoothing.
 - [Order, positivity and distributional limits](order-positivity-and-limits.md), Corollary 3.3 and Theorems 4.1, 5.1–5.2: Radon measures, sequential bounded-test convergence, and convergence on continuous compact tests. [Convolution as addition of supports](convolution-as-addition-of-supports.md), B1–B3 and Proposition 5.1: parameter tests and local smoothing.
@@ -434,3 +513,5 @@ The antiderivative follows directly by differentiation on \(x>3\) and its zero l
 - [Holomorphic boundaries in convex cones](holomorphic-boundaries-in-convex-cones.md), polydisk Cauchy proof, (3.1), and Lemma 3.1: locally convergent power series with coefficient and derivative bounds, and the identity principle.
 - [Integration foundations](../prerequisites/U011-free-foundations/banach-foundation-bridges.md), §§15–16; [scalar foundations](../prerequisites/U011-free-foundations/metric-foundation-bridges.md), §§12–13; [finite algebra](../prerequisites/U011-free-foundations/stable-prerequisite-bridges.md), §§10.1–10.6; and [angular foundations](../prerequisites/U011-free-foundations/angular-foundations-U018.md), A4–A5: the measure, compactness, scalar calculus, Euclidean and sphere proofs used above.
 - Ahmed Zeriahi, *Introduction to Pluripotential Theory*, SEAMS School, Hanoi, 2017, [free author-hosted lecture notes](https://www.math.univ-toulouse.fr/~zeriahi/PPT-SEAMS2017.pdf), Proposition 1.34, Propositions 1.45–1.46, Theorem 1.49, Lemma 2.26, Theorem 2.32 and Corollary 2.34. Their proofs provide comparisons for line averaging, smoothing, compactness and logarithmic curvature. The present lesson supplies the stated arbitrary-domain generality, subsequence construction, boundary-mass limits, holomorphic rescaling and full cut calculations.
+
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition, Springer, 2003, [doi:10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), §4.1, pp.88–100: smooth approximation, weak duality, subharmonic limits and logarithmic curvature. The finite-measurement and integer-weight constructions above provide their full arguments.

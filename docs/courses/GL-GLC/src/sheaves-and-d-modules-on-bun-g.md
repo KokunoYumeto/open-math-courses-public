@@ -16021,6 +16021,1424 @@ For the last assertion, specialize to a sheaf with coefficient module \(\mathbf 
 
 For \(u=(1,0)^{\mathsf T}\) the second component is nonzero. This is why the finite Hom comparison is a comparison of vector complexes, while the coefficient object itself retains the strict algebra action.
 
+### 3.381. Holomorphic density kernels and their coefficient maps
+
+Let \(X\) and \(Y\) be complex manifolds, with \(Y\) compact of complex dimension \(N\). Write \(p_X,p_Y\) for the projections and put
+
+\[
+ \mathcal H_{XY}=\mathcal O_{X\times Y}\otimes_{p_Y^{-1}\mathcal O_Y}p_Y^{-1}\Omega_Y^N.
+\tag{HIC.1}
+\]
+
+This is a holomorphic coefficient line in degree zero. A **density kernel map** is an ordinary derived morphism \(u:K\to\mathcal H_{XY}[N]\), where \(K\) is a bounded vector sheaf complex on the product. No constructibility of \(K\) is required in this definition. The kernel operator is \(\Phi_KF=Rp_{X!}(K\otimes p_Y^{-1}F)\). We shall construct a natural vector-derived morphism
+
+\[
+ \vartheta_u:\Phi_K\mathcal O_Y\longrightarrow\mathcal O_X.
+\tag{HIC.2}
+\]
+
+The input density, its shift and its trace are part of this construction. The trace used below is the operator-normalized trace of GL-DMOD, §5.67, PE.2, whose complete current, support and sign proofs are §5.34–§5.35. An ordinary map HIC.2 is not by itself a comparison of modules over the target microdifferential coefficient algebra.
+
+### 3.382. The proper trace on the full Dolbeault complexes
+
+Resolve \(\mathcal H_{XY}\) by smooth \((0,q)\)-forms with that coefficient line, in all product coordinates, with differential \(\delta=\bar\partial\). Resolve \(\mathcal O_X\) by its full Dolbeault complex as well. The exact local contraction and the comparison with currents are R.2–R.4 of the cited §5.34. The injective-resolution and partition argument R.5–R.6 proves that each smooth or current term is \(p_{X!}\)-acyclic and that these complexes compute the actual derived image. Compactness of \(Y\) makes the projection proper; the same source proof also retains proper supports on local coefficient domains.
+
+In a holomorphic input frame \(\eta_Y\), realize a coefficient form by \(J(\alpha\otimes\eta_Y)=\alpha\wedge\eta_Y\). Integrating the full form in the positive complex orientation and returning to coefficient notation gives \(I_q\), of antiholomorphic degree \(q-N\). Define
+
+\[
+ \begin{gathered}
+ q_N=(2\pi i)^{-N},\\
+ T_Y^q=q_N(-1)^{N(q-N)}I_q,\quad q\geq N,\\
+ T_Y^q=0,\quad q<N.
+ \end{gathered}
+\tag{HIC.3}
+\]
+
+The source is shifted by \([N]\), so its differential is \((-1)^N\delta\). Fibre integration commutes with the full-form \(\bar\partial\): base differentiation passes under a compact integral, and vertical derivatives integrate to zero. Therefore
+
+\[
+ T_Y^{q+1}(-1)^N\delta=\delta T_Y^q,
+ \qquad
+ N(q+1-N)+N\equiv N(q-N)\pmod2.
+\tag{HIC.4}
+\]
+
+At \(q=N-1\), the only possible term is a vertical derivative of top fibre degree, whose integral is zero by integration by parts. This verifies the chain map in every degree, including that boundary. Its derived map is
+
+\[
+ T_Y:Rp_{X!}\mathcal H_{XY}[N]\longrightarrow\mathcal O_X.
+\tag{HIC.5}
+\]
+
+### 3.383. Coordinate invariance and an actual derived construction
+
+A holomorphic input coordinate change contributes \(\det J\) to its top holomorphic block and \(\overline{\det J}\) to its top antiholomorphic block. The real change of variables has determinant \(|\det J|^2>0\); thus HIC.3 is unchanged. For a change depending holomorphically on the output, the additional terms in a full-form lift contain an output holomorphic differential. They have fewer than \(N\) vertical holomorphic factors and therefore integrate to zero. The trace is consequently defined on the relative density line without a chosen full-form lift. These statements also follow directly for currents by transposition on compact tests, as proved in V.4.
+
+Multiplication of holomorphic coefficients is the ordinary sheaf morphism
+
+\[
+ m:\mathcal H_{XY}\otimes p_Y^{-1}\mathcal O_Y\longrightarrow\mathcal H_{XY}.
+\tag{HIC.6}
+\]
+
+Tensor over \(\mathbf C\) is exact on stalks. Apply the derived proper image to \(u\otimes1\), then multiplication and HIC.5:
+
+\[
+ \begin{gathered}
+ \vartheta_u=T_Y\,Rp_{X!}(m[N])\,Rp_{X!}(u\otimes1),\\
+ Rp_{X!}(K\otimes p_Y^{-1}\mathcal O_Y)
+ \longrightarrow\mathcal O_X.
+ \end{gathered}
+\tag{HIC.7}
+\]
+
+All three arrows are actual derived morphisms. The acyclic-resolution comparison in R.6 uses natural germ embeddings, their cokernels and a finite total complex; it identifies the smooth and current models with the injective definition of \(Rp_!\). Thus changing those models or a representative roof of \(u\) does not change HIC.7. The construction is complex-linear and natural in the source kernel. A cochain homotopy between two common-roof evaluations is sent to the corresponding cochain homotopy after tensor, multiplication and trace. It is not inferred from equality on their cohomology groups.
+
+### 3.384. Consecutive kernels and the ordered density product
+
+Let \(Z\) be compact of complex dimension \(M\). Take \(K\) on \(X\times Y\), \(H\) on \(Y\times Z\), and density kernel maps \(u:K\to\mathcal H_{XY}[N]\), \(v:H\to\mathcal H_{YZ}[M]\). On the triple product, multiply the joint holomorphic coefficients, retaining the ordered holomorphic blocks \(\Omega_Y^N\) before \(\Omega_Z^M\). Apply \(T_Y\), with the \(Z\)-block retained, to define
+
+\[
+ u\star v:K\circ H\longrightarrow\mathcal H_{XZ}[M].
+\tag{HIC.8}
+\]
+
+The tensor shifts use the specified suspension identification
+
+\[
+ A[N]\otimes B[M]\longrightarrow(A\otimes B)[N+M],
+ \qquad a\otimes b\longmapsto(-1)^{M|a|}a\otimes b,
+\tag{HIC.9}
+\]
+
+where \(|a|\) is its degree before suspension. This follows by checking the differentials in each factor: increasing \(|a|\) contributes the missing \((-1)^M\), and the second-factor differential already has the required total sign. The trace on HIC.8 is then the first-block trace, with the induced tensor regrouping; it is not an additional unsigned trace on a doubly suspended coefficient.
+
+To form the ordinary cup, represent the two derived evaluations on bounded common roofs into their smooth Dolbeault complexes. Their products in the shared middle variables are products of smooth coefficients. The current model is used for the separate diagonal residue below and compared to the smooth model through R.6. No product of arbitrary currents with a shared singular parameter is used here.
+
+### 3.385. Composition is preserved before cohomology
+
+The maps just constructed satisfy
+
+\[
+ \begin{gathered}
+ \vartheta_{u\star v}
+ =\vartheta_u\circ\Phi_K(\vartheta_v),\\
+ \Phi_{K\circ H}\mathcal O_Z\longrightarrow\mathcal O_X,
+ \end{gathered}
+\tag{HIC.10}
+\]
+
+using the proper convolution associator. Here is the sign and map check. Before integration, both sides evaluate the same two kernel maps on the pulled-back holomorphic input and multiply the same joint coefficient on \(X\times Y\times Z\). All projections are proper in their forgotten factors. Fubini for smooth coefficients on compact sets identifies the two repeated integrations. For original antiholomorphic degree \(q\), the raw trace signs obey
+
+\[
+ \begin{gathered}
+ (-1)^{N(q-N)}(-1)^{M(q-N-M)}\\
+ =(-1)^{NM}(-1)^{(N+M)(q-N-M)},\\
+ q_Nq_M=q_{N+M}.
+ \end{gathered}
+\tag{HIC.11}
+\]
+
+The extra \((-1)^{NM}\) is exactly the tensor regrouping of the two shifted holomorphic blocks in HIC.9. The ungraded coefficient cup has the full-form conversion sign \((-1)^{Nq'}\) when its first holomorphic block crosses a second antiholomorphic block of degree \(q'\). These are V.8 and V.12–V.14, with their full degree computations. They identify the two trace presentations, rather than counting their suspension sign twice. The normalized scalars multiply as in HIC.11, so no new scalar remains.
+
+This calculation takes place on the smooth common-roof evaluation complexes and their proper-image comparisons. Naturality of the actual trace and the tensor–Hom evaluation identifies the resulting derived maps with HIC.7 on both sides. It proves HIC.10 for the whole bounded complexes and their attaching maps. Repeated application gives associativity for every finite sequence of such ordinary density kernel maps.
+
+### 3.386. The diagonal Cauchy class acts as the identity
+
+Take \(Y=X\), of complex dimension \(N\), locally near the diagonal; only the support on the diagonal is needed to make the projection proper. Put \(w_i=y_i-x_i\). The one-coordinate current identity, proved by the deleted-disc Green calculation R.3, gives
+
+\[
+ \int_{\mathbf C}\bar\partial(1/w)\wedge dw\ h(w)=2\pi i\,h(0)
+\tag{HIC.12}
+\]
+
+for a holomorphic test near zero, with a cutoff equal to one near the current support. The integral means the supported current applied to that test; no extension of the holomorphic test outside its domain is required. Define
+
+\[
+ \begin{gathered}
+ r_N=(-1)^{N(N-1)/2},\\
+ C_\Delta^{\rm raw}
+ =r_N\,\bar\partial(1/w_1)\wedge\cdots\wedge\bar\partial(1/w_N)\\
+       \otimes dy_1\wedge\cdots\wedge dy_N.
+ \end{gathered}
+\tag{HIC.13}
+\]
+
+Its ungraded antiholomorphic-first realization is the ordered product of the \(N\) full one-coordinate blocks: moving each \(dy_i\) past later antiholomorphic factors contributes \(r_N\), which cancels the displayed \(r_N\). The current is closed and supported on the diagonal. It defines a map \(u_\Delta:\mathbf C_\Delta\to\mathcal H_{XX}[N]\). The current is multiplied only by locally constant sections of \(\mathbf C_\Delta\) for this map. Coordinate invariance can be checked in the holomorphic normal coordinates: the inverse normal determinant of the residue and the determinant of the input top form cancel on the diagonal. The base-dependent lower vertical-degree terms integrate to zero as in §3.383.
+
+Iterating HIC.12 in the fixed coordinate order and using the top-degree sign \(T_Y^N=q_NI_N\) proves
+
+\[
+ \vartheta_{u_\Delta}(h)=q_N(2\pi i)^Nh=h,
+ \qquad \vartheta_{u_\Delta}=\operatorname{id}_{\mathcal O_X}.
+\tag{HIC.14}
+\]
+
+Indeed \(\Phi_{\mathbf C_\Delta}\mathcal O_X=\mathcal O_X\) in degree zero, so equality on all holomorphic germs proves equality of these ordinary derived degree-zero maps. This is the Cauchy class with the explicit convention HIC.13 and the trace HIC.3. Comparing another diagonal evaluation with this class requires its actual coefficient and source map.
+
+### 3.387. The two open–closed source maps have opposite directions
+
+Return to the projective incidence of §3.369, with \(\dim X=\dim Y=N\), closed hypersurface \(S\), complement \(j\), and \(A=j_!\mathbf C\), \(B=Rj_*\mathbf C\). There are actual triangles
+
+\[
+ \begin{gathered}
+ \mathbf C_S[-1]\xrightarrow{\delta}A\longrightarrow\mathbf C_{X\times Y}\xrightarrow{+1},\\
+ \mathbf C_{X\times Y}\longrightarrow B\xrightarrow{\beta}\mathbf C_S[-1]\xrightarrow{+1}.
+ \end{gathered}
+\tag{HIC.15}
+\]
+
+The first is the rotated open–closed triangle. For the second, the normal complex line has its complex orientation and \(i^!\mathbf C_{X\times Y}=\mathbf C_S[-2]\). The disc relative-cohomology calculation gives this purity isomorphism with positive normal orientation; tensoring the normal disc with tangential balls gives the formula locally and the complex orientation glues it. The closed-support triangle \(i_*i^!\mathbf C\to\mathbf C\to Rj_*\mathbf C\xrightarrow{+1}\), rotated once, gives the second line of HIC.15. Thus the derived-open-image map points from \(B\) to the shifted closed source.
+
+For any bounded vector complex \(F\) on the compact input \(Y\), proper product base change, as proved in LI.8.1, gives
+
+\[
+ Rp_{X!}(\mathbf C_{X\times Y}\otimes p_Y^{-1}F)
+ \simeq\mathbf C_X\otimes R\Gamma(Y;F).
+\tag{HIC.16}
+\]
+
+One can test this canonical base-change map on each fibre: the compact-fibre comparison identifies it with the identity of \(R\Gamma(Y;F)\). The complex on the right is bounded by the finite compact-fibre resolution and is locally constant. Its microsupport lies in the zero section. Therefore, after shifting HIC.15 by \([N]\), tensoring with the input and projecting, both resulting maps are denominators at every nonzero output covector. This uses the projected constant product complex; the tensor cone on the whole product need not itself have zero microsupport.
+
+### 3.388. Forward and reverse holomorphic incidence maps
+
+Restrict the output to the affine chart of LIT.8 and keep the entire projective input. Let \(J_+=\mathbf C_{S_+}[N-1]\), \(J_-=\mathbf C_{S_-}[N-1]\) on the forward and transposed pair spaces. The shifted maps HIC.15 induce
+
+\[
+ \begin{gathered}
+ c_+:\Phi_{J_+}\mathcal O_Y\longrightarrow\Phi_K\mathcal O_Y,\\
+ c_-:\Phi_L\mathcal O_X\longrightarrow\Phi_{J_-}\mathcal O_X.
+ \end{gathered}
+\tag{HIC.17}
+\]
+
+Each is invertible at the selected nonzero output covector by HIC.16. The ordinary global sections GP.5 and GP.15 of the cited GL-DMOD proof have evaluations
+
+\[
+ \begin{gathered}
+ u_{+,N}:J_+\longrightarrow\mathcal H_{XY}[N],\\
+ m_{+,N}=N![\Omega_{\rm hom}/F_h^{N+1}],\\
+ u_{-,1}:J_-\longrightarrow\mathcal H_{YX}[N],\\
+ m_{-,1}=N[\Omega'_{\rm hom}/A_h^{N+1}].
+ \end{gathered}
+\tag{HIC.18}
+\]
+
+These are evaluations of closed incidence sections, using the positive connecting convention \((0,-\text{pole})\) of HI.25 in the same source proof. They are not assumed ordinary maps from an open kernel. The homogeneous top forms have weight \(N+1\); division by the indicated powers is invariant under homogeneous scaling, including a base-dependent scaling because Euler contraction of the numerator vanishes. In the ordered affine frames,
+
+\[
+ \begin{gathered}
+ f=s-t-x^{\mathsf T}y,\qquad g=t-s+y^{\mathsf T}x,\\
+ D_t^N(\eta_Y/f)=N!\eta_Y/f^{N+1},\\
+ D_s(\eta_X/g^N)=N\eta_X/g^{N+1}.
+ \end{gathered}
+\tag{HIC.19}
+\]
+
+Both signs are positive since the respective output-time derivative of the denominator is \(-1\). The ordered reverse spatial reflection and density are the ones in GP.4; no reflection is absorbed into a newly chosen scalar.
+
+### 3.389. Actual inverse derivatives and the two vector roofs
+
+Let \(D_t\) act on \(\mathcal O_X\). For any positive integer \(r\), the finite free resolution of \(\mathcal D_X/\mathcal D_XD_t^r\) has one differential given by right multiplication by \(D_t^r\). It is injective since its principal symbol \(\tau^r\) is a nonzero divisor. Its solution complex is the two-term Hom complex with differential \(-D_t^r\). In the cone convention of §§3.323–3.334,
+
+\[
+ \begin{gathered}
+ \operatorname{Cone}(D_t^r:\mathcal O_X\to\mathcal O_X)
+ \\{}\simeq\operatorname{Sol}(\mathcal D_X/\mathcal D_XD_t^r)[1].
+ \end{gathered}
+\tag{HIC.20}
+\]
+
+The proved SCP upper characteristic-support inclusion puts this cone in \(\{\tau=0\}\). Thus \(D_t^r\) is an actual denominator at every covector with \(\tau\ne0\). Its inverse in that localization is unique. The identical argument applies to \(D_s\) on the other side. It does not give an ordinary inverse of differentiation on a neighborhood.
+
+With HIC.7 applied to HIC.18, define the actual vector-derived maps
+
+\[
+ \begin{gathered}
+ \vartheta_+=(D_t^N)^{-1}\,\vartheta_{u_{+,N}}\,c_+^{-1},\\
+ \vartheta_+:\Phi_K\mathcal O_Y\longrightarrow\mathcal O_X,\\
+ \vartheta_-=(D_s)^{-1}\,\vartheta_{u_{-,1}}\,c_-,\\
+ \vartheta_-:\Phi_L\mathcal O_X\longrightarrow\mathcal O_Y.
+ \end{gathered}
+\tag{HIC.21}
+\]
+
+All arrows are now specified ordinary derived maps or actual selected-covector denominators. The forward source comparison is inverted; the reverse comparison is used in its original direction. Their normalization is HIC.3, with the factorials, ordered frames and derivative powers of HIC.18–HIC.19.
+
+### 3.390. The exact scope of these coefficient maps
+
+For ordinary proper density kernel maps, HIC.10 proves compatibility with composition and HIC.14 fixes the diagonal normalization. The exact source-counit comparison for HIC.21 is proved in §§3.397–3.400. Without normalizing the reverse map, the unit equations would read
+
+\[
+ \begin{gathered}
+ \vartheta_+\circ\Phi_K(\vartheta_-)=\epsilon_X(\mathcal O_X),\\
+ \vartheta_-\circ\Phi_L(\vartheta_+)=\epsilon_Y(\mathcal O_Y)
+ \end{gathered}
+\tag{HIC.22}
+\]
+
+These equations require the single reverse-map normalization of §3.401. Its scalar is determined by the actual composed evaluations with the same density and trace convention.
+
+For the holomorphic solution comparison of §3.378, one must also retain the coefficient action: either an actual module-derived roof \(\rho_*\Phi_R G_Y\simeq G_X\), or the corresponding coherent finite diagram for the chosen resolution, maps and homotopies. HIC.21 constructs the underlying vector maps but does not supply that action comparison. Thus no general contact solution equivalence, reverse characteristic-support inclusion or nilpotent regularity conclusion follows yet from HIC.21 alone.
+
+![Ordered holomorphic trace, all-dimensional Cauchy unit and the opposite directions of the two incidence source maps](figures/holomorphic-incidence-coefficient-maps.svg)
+
+**Figure 3.53.** The first panel is the actual trace formula HIC.3–HIC.7. The second records the ordered normal-class factor \(r_N\), which makes the full Cauchy block integrate to \((2\pi i)^N\); HIC.14 then gives the identity. The last panel retains the different source arrows of HIC.17 and the derivative denominators of HIC.21. The inverse-pair and module-action comparisons are the additional hypotheses stated in §3.390.
+
+### 3.391. Exercises on the normal sign and consecutive traces
+
+**Exercise 3.FF.** In complex dimension two, compute the full-form sign of the unsigned antiholomorphic-first normal coefficient \(\bar\partial(1/w_1)\wedge\bar\partial(1/w_2)\otimes dy_1\wedge dy_2\). Compare its normalized trace with that of HIC.13.
+
+**Solution 3.FF.** Moving \(dy_1\) to its position immediately after the first antiholomorphic factor crosses exactly one antiholomorphic factor. Hence the full form without \(r_2\) is minus the ordered product of the two positive one-coordinate blocks. Since \(r_2=-1\),
+
+\[
+ \begin{gathered}
+ I_2(C_{\rm unsigned})=-(2\pi i)^2,\qquad
+ I_2(C_\Delta^{\rm raw})=(2\pi i)^2,\\
+ T_Y(C_{\rm unsigned})=-1,\qquad T_Y(C_\Delta^{\rm raw})=1.
+ \end{gathered}
+\tag{HIC.23}
+\]
+
+At antiholomorphic degree two the trace sign in HIC.3 is positive, so it cannot cancel an omitted normal-class factor. The suspension sign belongs to the definition of that single normal class, before any between-kernel product.
+
+**Exercise 3.FG.** Take two consecutive one-dimensional complex fibres. Compute the two raw trace signs in original antiholomorphic degree \(q\geq2\), and compare them with the single two-dimensional trace. Account for the tensor regrouping and normalization.
+
+**Solution 3.FG.** The first trace uses degree \(q\), the second degree \(q-1\). Therefore
+
+\[
+ (-1)^{q-1}(-1)^{q-2}=-1,\qquad
+ (-1)^{2(q-2)}=1.
+\tag{HIC.24}
+\]
+
+The relative sign is \((-1)^{1\cdot1}\). Regrouping the two shifted holomorphic blocks contributes that same sign, by HIC.9 and its first-block suspension convention. Thus the two presentations agree; adding another suspension sign would change the operation. Finally
+
+\[
+ q_1^2=(2\pi i)^{-2}=q_2.
+\tag{HIC.25}
+\]
+
+The equality includes the scalar as well as the parity. It is the \(N=M=1\) instance of the full composition calculation, not an unsigned Fubini assertion.
+
+### 3.392. The one-dimensional incidence calibration
+
+**Exercise 3.FH.** Let \(N=1\) and use affine coordinates \(t,s\). Identify the two closed incidence source operators, compute the maps from the globalizing double poles, and simplify the vector roofs HIC.21. Explain what this calculation does and does not establish in general dimension.
+
+**Solution 3.FH.** Incidence is the diagonal \(s=t\). Both shifted closed kernels are \(\mathbf C_\Delta[0]\), so each closed-source coefficient operator is \(\mathcal O\) in degree zero. The input densities are \(ds\) forward and \(dt\) reverse. The source maps remain
+
+\[
+ c_+:\mathcal O_X\longrightarrow\Phi_K\mathcal O_Y,\qquad
+ c_-:\Phi_L\mathcal O_X\longrightarrow\mathcal O_Y.
+\tag{HIC.26}
+\]
+
+For a holomorphic germ \(h\), the positive one-variable Cauchy formula and its derivative give
+
+\[
+ \begin{gathered}
+ \frac1{2\pi i}\oint\frac{h(s)}{s-t}\,ds=h(t),\\
+ \frac1{2\pi i}\oint\frac{h(s)}{(s-t)^2}\,ds=h'(t).
+ \end{gathered}
+\tag{HIC.27}
+\]
+
+For example, expand \(h\) in its convergent Taylor series on a smaller circle. Uniform convergence permits termwise integration, and the only nonzero period has exponent \(-1\). This proves both formulas and their positive normalization. The double pole is a relative class or a finite derivative of the simple-pole distribution; it is not asserted locally integrable. The positive connecting representative \((0,-h/(s-t))\) becomes the current \(\bar\partial(h/(s-t))\) by V.2, so the source evaluation has exactly the sign used in HIC.27. The reverse formulas use \(h(t)/(t-s)\) and \(h(t)/(t-s)^2\) with the positive input \(dt\) orientation. The globalizing factors in HIC.18 are both one when \(N=1\). Consequently
+
+\[
+ \vartheta_{u_{+,1}}=D_t,\qquad
+ \vartheta_{u_{-,1}}=D_s.
+\tag{HIC.28}
+\]
+
+At a nonzero time covector these derivatives are denominators by HIC.20, so HIC.21 simplifies to
+
+\[
+ \vartheta_+=c_+^{-1},\qquad \vartheta_-=c_-.
+\tag{HIC.29}
+\]
+
+Each is therefore a vector-derived isomorphism in this one-dimensional case. Ordinary differentiation still has nonzero kernel: on a disc,
+
+\[
+ 0\longrightarrow\mathbf C\longrightarrow\mathcal O
+ \xrightarrow{D_t}\mathcal O\longrightarrow0.
+\tag{HIC.30}
+\]
+
+Surjectivity follows by integrating a convergent Taylor series on a smaller disc, and the kernel consists of constants. Localization removes the constant cone, rather than choosing an ordinary inverse on \(\mathcal O\). This calculation fixes the displayed vector maps for the diagonal incidence. The source-counit normalization is given in §3.401; the compatible cutoff module action is the additional condition of §3.402.
+
+### 3.393. A local vector inverse pair for holomorphic coefficients
+
+Use the projective incidence kernels \(K,L\), the contact map \(\chi\), and the two vector maps \(\vartheta_+,\vartheta_-\) of LIT.1–LIT.16 and HIC.21. Fix a covector \(p\) with \(\tau\ne0\), and \(q=\chi(p)\). All statements in this section concern sufficiently small matched cotangent neighborhoods of \(p,q\). Put
+
+\[
+ \begin{gathered}
+ a=\vartheta_+:\Phi_K\mathcal O_Y\longrightarrow\mathcal O_X,\\
+ b=\vartheta_-:\Phi_L\mathcal O_X\longrightarrow\mathcal O_Y.
+ \end{gathered}
+ \tag{VIT.1}
+\]
+
+**Theorem.** There is a nonzero constant \(\lambda\) such that \(a\) and \(\widetilde b=\lambda^{-1}b\) are inverse coefficient maps relative to the coherent source counits of LIT.6. In particular \(a\) and \(b\) are vector-derived isomorphisms in the matched localizations. The proof retains the actual ordinary density evaluations and their normalized trace.
+
+The object \(\mathcal O_X\) is nonzero in this localization. Choose a complex linear coordinate \(t\) whose real differential represents \(p\). The holomorphic function \(1/t\) on a negative real half-ball cannot extend across zero, by the identity theorem. The support long exact sequence therefore injects its nonzero quotient class into the degree-one support test at \(p\). The class stays nonzero on every smaller ball. This is an actual defining support test, so \(p\in\operatorname{SS}(\mathcal O_X)\).
+
+A cone invisible only at the matched product conormal cannot be discarded without further information. For example, let the output be an affine line, the input be \(\mathbf P^1\), and take the kernel \(C=\mathbf C_{\{t=0\}}\boxtimes\mathbf C_Y\). Then
+
+\[
+ \Phi_C\mathcal O_Y
+ =\mathbf C_{\{0\}}\otimes R\Gamma(Y;\mathcal O_Y)\ne0.
+ \tag{VIT.2}
+\]
+
+Its degree-zero coefficient contains the nonzero global section \(1\), so it has the point conormal. On the affine endpoint pair, \(u=t,w=t'-t\), its kernel is constant in \(w\) and misses every nonzero diagonal conormal. The shifted algebraic solution source is \(\delta_u\boxtimes\mathcal O_w\), whose global \(D_w\)-action is locally nilpotent. Polynomial derivative torsion alone therefore does not justify the coefficient-transform descent. The proof below uses an additional actual trivial connection factor.
+
+### 3.394. Removing a trivial polynomial connection from all morphisms
+
+Let \(B\) be a polynomial Weyl algebra and let \(A_u\) be the Weyl algebra of one variable \(u\). The exact functor
+
+\[
+ \begin{gathered}
+ \mathsf F(M)=\mathbf C[u]\otimes_{\mathbf C}M,\\
+ D_u=\partial_u,\qquad A=A_u\otimes_{\mathbf C}B.
+ \end{gathered}
+ \tag{VIT.3}
+\]
+
+is fully faithful on bounded coherent derived categories, including every shifted morphism. Here is a direct proof. Resolve \(\mathbf C[u]\) by \([A_u\xrightarrow{\cdot D_u}A_u]\) in degrees \(-1,0\), and use bounded finite projective \(B\)-resolutions for the other input. Such resolutions and polynomial Weyl Noetherianity are the filtered operator results used in SCP and GL-DMOD, AS.0–AS.5. Finite projectivity identifies the resulting mapping complex with the total tensor of the reduced mapping complex and
+
+\[
+ [\mathbf C[u]\xrightarrow{-\partial_u}\mathbf C[u]]
+ \quad\text{in degrees }0,1.
+ \tag{VIT.4}
+\]
+
+This last complex contracts to its constant coefficient. If \(i\) includes constants and \(\epsilon\) is evaluation at zero, the degree-minus-one homotopy is
+
+\[
+ h^1(f)=-\int_0^u f(v)\,dv,\qquad
+ dh+hd=1-i\epsilon.
+ \tag{VIT.5}
+\]
+
+The integral is a finite polynomial primitive. The identities follow by differentiation and the fundamental theorem of calculus; the negative sign matches VIT.4. Tensoring this contraction with the reduced mapping complex, with the total differential signs, proves the claimed mapping quasi-isomorphism. The inclusion is induced by the actual exterior-product functor, so it preserves compositions and identities. Iterate for several \(u\)-coordinates.
+
+Consequently the maps and equalities in a finite source-roof diagram can be represented in the reduced derived category. The displayed mapping contraction retains their finite homotopy comparisons on common projective models. When clearing \(D_w\)-denominators, the finite coherent-lattice construction of OD.2 can be performed in the reduced algebra \(B\), before restoring the connection factor. No lattice chosen in an unrestricted ambient algebra is presumed to retain that factor.
+
+### 3.395. The entire incidence convolution has that factor
+
+Use affine endpoint coordinates \(u=(t,x)\), \(w=t'-t\), \(z=x'-x\), with \(d=N-1\). On the projective middle space make the homogeneous change
+
+\[
+ \begin{gathered}
+ v_h=s_h-t\lambda-x^{\mathsf T}y_h,\\
+ F_h=v_h,\qquad G_h=w\lambda-v_h+z^{\mathsf T}y_h.
+ \end{gathered}
+ \tag{VIT.6}
+\]
+
+The change is unipotent with determinant one. It is an algebraic automorphism over the endpoint base, and the transformed equations and the middle infinity divisor are independent of every \(u\)-coordinate. In its affine chart the normal sum is \(F=w+z^{\mathsf T}y\). The exact affine Spencer model AS.6–AS.10 is
+
+\[
+ \begin{gathered}
+ Q=\mathbf C[u]\otimes Q_{\mathrm{red}},\\
+ Q_{\mathrm{red}}
+ =\bigl(\mathbf C[z,y,\tau]e\otimes\Lambda^\bullet(dy),\\
+          \ \sum_jdy_j\wedge(\partial_{y_j}+z_j\tau)\bigr)[d],\\
+ D_{u_i}=\partial_{u_i},\qquad \tau=D_w,\\
+ D_{z_j}=\partial_{z_j}+y_j\tau,\qquad
+ w=-z^{\mathsf T}y-\partial_\tau.
+ \end{gathered}
+ \tag{VIT.7}
+\]
+
+The normal residue map and its explicit homotopy in AS.1 do not involve \(u\). Every relative degree, the top section and the endpoint actions retain this factor. The raw Spencer terms need not be finite modules over the endpoint algebra. Their bounded coherent derived object is supplied by the actual proper algebraic realization AS.5; take finite projective models of that object when using VIT.3.
+
+The same conclusion holds for the closed projective convolution \(\overline Q\), its affine-boundary comparison and the diagonal module:
+
+\[
+ \begin{gathered}
+ \overline Q=\mathcal O_{\mathbf A^N_u}\boxtimes\overline Q_{\mathrm{red}},\\
+ Q=\mathcal O_{\mathbf A^N_u}\boxtimes Q_{\mathrm{red}},\\
+ \Delta_{\mathrm{alg}}=\mathcal O_{\mathbf A^N_u}\boxtimes\Delta_{\mathrm{red}}.
+ \end{gathered}
+ \tag{VIT.8}
+\]
+
+To see this on whole complexes, use the fixed finite standard cover in \((\lambda,v_h,y_h)\). The coordinate localization complexes for the two incidence modules, their tensor and the relative Spencer differentials are independent of \(u\). The cover and all its intersections are fixed in these coordinates; their finite Čech totalization tensors with \(\mathbf C[u]\). This proves VIT.8 for the proper and open-direct models and their comparison maps. On the sheaf side the same coordinate change makes the constant incidence pairs independent of \(u\), and proper product base change retains the factor. The full algebraic RH equivalence and its actual exterior comparison identify these with the displayed operator factors. Those exact maps, including ordinary inverse, exterior products and proper trace, are proved in RH Theorems 1.12, 1.19, 1.22–1.23. VIT.3 then reduces every map of the source roofs as well.
+
+### 3.396. Derivative torsion with the factor is invisible to coefficient realization
+
+In the reduced polynomial Weyl algebra \(B\), powers of \(\tau=D_w\) form the Ore set of AS.11–AS.12; its localization is right flat. For a finite module \(T\) with zero localization, the finite Taylor calculation FD.11–FD.14 gives
+
+\[
+ \begin{gathered}
+ \Pi(m)=\sum_{k\ge0}\frac{(-w)^k}{k!}\tau^km,\qquad
+ T=\mathbf C[w]\otimes\ker\tau,\\
+ m=\sum_{j\ge0}\frac{w^j}{j!}\Pi(\tau^jm).
+ \end{gathered}
+ \tag{VIT.9}
+\]
+
+Each sum is finite on each vector. The Weyl commutator makes \(\tau\Pi=0\), and the binomial coefficient sum proves the last identity. Applying \(\Pi\tau^r\) to the highest power of a polynomial relation proves injectivity. Taylor coefficients of finitely many generators give finite generation of \(\ker\tau\) over the spatial algebra. This is a polynomial calculation; no nilpotence after arbitrary analytic multiplication is asserted.
+
+The finite connection resolution and a holomorphic primitive in \(w\) give the actual unshifted solution comparison OD.2. Restoring the \(u\)-factor gives
+
+\[
+ \operatorname{Sol}(\mathcal O_u\boxtimes T)
+ =\mathbf C_u\boxtimes\mathbf C_w\boxtimes\operatorname{Sol}(\ker\tau).
+ \tag{VIT.10}
+\]
+
+In the original endpoint times this is constant in both \(t\) and \(t'\). Its spatial variables may still be coupled by \(z=x'-x\). Tensoring with any bounded input, including \(\mathcal O_{X'}\), leaves a constant **output** \(t\)-factor. Product base change for proper-support image therefore makes its kernel output pulled back from the spatial output. Its microsupport has \(\tau_t=0\).
+
+For a bounded reduced coherent complex whose cohomology is \(\tau\)-torsion, use its finite cohomological truncation triangles. Solution and kernel realization are exact on these triangles, so every output cone is null at \(\tau_t\ne0\). Thus the contravariant functor
+
+\[
+ \mathcal V(T)=
+ \Phi_{\operatorname{Sol}(\mathcal O_u\boxtimes T)[N]}\mathcal O_{X'}
+ \quad\text{in }D^b(\mathbf C_X;p)
+ \tag{VIT.11}
+\]
+
+kills the reduced localization kernel. OD.2's finite coherent lattices and its actual cleared homotopies consequently make it descend on the image of bounded coherent \(B\)-complexes in the localized derived category. This controls all forgotten input covectors, including zero. It is the property missing in VIT.2.
+
+### 3.397. The exact ordinary source roofs
+
+Let \(J_+=\mathbf C_{S_+}[N-1]\), \(J_-=\mathbf C_{S_-}[N-1]\), and use the actual \(\delta,\beta\) of HIC.15. With the coherent counits \(\epsilon_X,\epsilon_Y\), the two source roofs are
+
+\[
+ \begin{gathered}
+ K\circ L\ \longleftarrow\ J_+\circ L\ \longrightarrow\ J_+\circ J_-,\\
+ L\circ K\ \longleftarrow\ L\circ J_+\ \longrightarrow\ J_-\circ J_+.
+ \end{gathered}
+ \tag{VIT.12}
+\]
+
+The left arrows use \(\delta\), and the right arrows use \(\beta\). They are precisely the shifted ordinary roofs SN.5–SN.6: both factors are shifted by \(N\). Each comparison cone has locally constant finite cohomology on the entire affine endpoint pair. The cone from \(\delta\) integrates the derived open direct image on the compact middle space, hence the ordinary cohomology of an affine \(N\)-space. The cone from \(\beta\) integrates the incidence hyperplane \(\mathbf P^{N-1}\). The finite de Rham–Čech calculation in SN.1 proves finiteness, and projective frames trivialize the families, with the positive circle boundary of SN.0. On affine endpoint pairs these local systems are constant. These are actual cone and map computations, not a matched-conormal rank argument.
+
+The closed convolution is \(Rp_!\mathbf C_{\overline W}[2N-2]\). PE.1's proper solution comparison and its shift give
+
+\[
+ \begin{gathered}
+ J_+\circ J_-\simeq\operatorname{Sol}(\overline Q)[N],\\
+ \mathbf C_\Delta=\operatorname{Sol}(\Delta_{\mathrm{alg}})[N].
+ \end{gathered}
+ \tag{VIT.13}
+\]
+
+The source roof therefore corresponds under the full algebraic RH equivalence to a coherent operator roof between \(\overline Q\) and \(\Delta_{\mathrm{alg}}\). Its constant cones become derivative torsion. The closed-to-affine boundary has both times free, exactly as OD.4 proves. All these objects have VIT.8's factor, and VIT.3 reduces the maps. Consequently their source comparisons become isomorphisms after reduced \(\tau\)-localization and may be used in VIT.11.
+
+Endpoint coefficients may first be restricted to affine neighborhoods and extended by zero. These are input denominators in the matched localization, so LIT's actual graph equivalence permits the replacements. The middle projective space is retained, as in GP.1–GP.4. Affine time derivatives extend as the holomorphic projective translation vector fields, so differentiating the stated global sections preserves their global middle representatives. All subsequent affine-input integrations use proper-support representatives, not restriction of a proper-support section to an arbitrary source open. R.5–R.7 and HIC's trace proof give the same ordinary composition on these supports.
+
+### 3.398. The two globalizers contribute N + 1 derivatives
+
+Let \(\mathfrak a,\mathfrak b\) denote the forward and opposite raw pole sections, so \(m_{+,N}=D_t^N\mathfrak a\) and \(m_{-,1}=D_s\mathfrak b\). Write \(U=\vartheta_{u_{+,N}}\), \(V=\vartheta_{u_{-,1}}\) for the ordinary closed-source coefficient maps. The exact time intertwining is
+
+\[
+ U\,\Phi_{J_+}(D_s)=D_tU,\qquad
+ V\,\Phi_{J_-}(D_t)=D_sV.
+ \tag{VIT.14}
+\]
+
+Here the derivative on the right acts on the target holomorphic sheaf; no ordinary derivative action on an unspecified transformed coefficient object is being assumed. To check the maps, use the unipotent coordinates of VIT.6 and the corresponding reverse coordinates. The global meromorphic density sections and the fixed finite localization/current cover are independent of the common time. Differentiating a pulled-back input coefficient \(h(s,y)\), with \(s=t+x^{\mathsf T}y+v\), gives exactly \(D_sh\). The relative density's full-form lift adds only lower vertical holomorphic-degree terms, whose trace is zero by HIC.3–HIC.5. Differentiation commutes with the proper trace; the vertical total derivative integrates to zero in every cochain degree. The positive relative-pole representatives and the full Dolbeault/Spencer comparison therefore give VIT.14 on the actual evaluation complexes, including their complement terms. The global translation vector extends to the projective middle space, and its action on the homogeneous density is the same determinant-one change.
+
+At the operator section level this is the relative Spencer boundary
+
+\[
+ [m_{+,N}\otimes D_s\mathfrak b]
+ =-[D_sm_{+,N}\otimes\mathfrak b]
+ =D_t[m_{+,N}\otimes\mathfrak b].
+ \tag{VIT.15}
+\]
+
+Indeed the differential of the next-to-top middle Spencer term inserts the total middle derivative. Moving it across the two coefficient factors produces their Leibniz sum; the ordered top-column augmentation has coefficient \(+1\), as AS.6 and PE.2 prove. Since \((D_t+D_s)m_{+,N}=0\), that sum gives the displayed signs. The remaining middle differentials commute with this calculation, so it is a boundary in the entire relative complex.
+
+GP.3–GP.4 computes the singly globalized classes. Applying VIT.15, and its reverse version \(N\) times, gives
+
+\[
+ h_{N,1}=D_t^{N+1}h,\qquad
+ h'_{1,N}=D_s^{N+1}h'.
+ \tag{VIT.16}
+\]
+
+The factorials \(N!\) and \(N\) are already contained in the two globalizing sections HIC.18; no additional factorial is inserted. The maps from a free polynomial operator source representing these sections are determined by these degree-zero classes. This particular section calculation therefore gives equality of the corresponding actual evaluation maps. It makes no assertion that arbitrary degree-zero action lifts determine a coherent module diagram.
+
+### 3.399. Scalar comparison in the reduced operator category
+
+The reduced diagonal module has normal form \(\mathbf C[\tau,\tau^{-1},\nu_1,\ldots,\nu_d]e_\Delta\), with \(w=-\partial_\tau\), \(z_j=-\partial_{\nu_j}\). An endomorphism is determined by the image of \(e_\Delta\); its annihilator forces every \(\nu_j\)- and \(\tau\)-derivative of that image to vanish. Thus
+
+\[
+ \begin{gathered}
+ \operatorname{End}_{B_\tau}(\Delta_{\mathrm{red},\tau})=\mathbf C,\\
+ \operatorname{Aut}_{B_\tau}(\Delta_{\mathrm{red},\tau})=\mathbf C^\times.
+ \end{gathered}
+ \tag{VIT.17}
+\]
+
+The same statement holds for degree-zero derived endomorphisms because this module is concentrated in degree zero. There is no claim about centralizers in the whole real operator ring.
+
+AS.17–AS.30 gives the actual affine roof \(Q\to H^0Q\leftarrow\Delta_{\mathrm{alg}}\). Its conjugation, top quotient, truncation and diagonal map are independent of \(u\), so it is a reduced roof. The ordinary source roof of VIT.12, together with the closed-to-affine comparison, gives another isomorphism from \(Q_{\mathrm{red},\tau}\) to \(\Delta_{\mathrm{red},\tau}\). Denote it by \(\alpha\). If \(\pi\) is truncation and \(j\) the AS diagonal map, then
+
+\[
+ \alpha=c_X\,j^{-1}\pi,\qquad c_X\in\mathbf C^\times
+ \tag{VIT.18}
+\]
+
+after localization. This is equality of actual reduced derived roofs. OD.2 realizes it with finitely many coherent lattices and cleared homotopies. VIT.11 then transports the equality to the coefficient realization. In particular, the equality is not being passed through that realization merely because two product microlocal classes agree. The reverse order gives its own nonzero constant \(c_Y\).
+
+### 3.400. Both coefficient products are nonzero scalars
+
+Let \(\operatorname{ev}(e_\Delta)\) be the raw ordered diagonal evaluation in the proper solution comparison. In each normal multiplication Koszul complex, the contraction off its zero set divides by its normal coordinate. Tensoring these contractions gives the ordered Čech product of the normal reciprocals. The finite normal calculation RH.1.vf–vg retains the determinant and the two matching tensor–Hom signs when converting this to the positive one-coordinate classes \(dw/w\). The tangential connection contraction evaluates the constant generator with a fixed nonzero sign and orientation scalar. Thus, in the fixed ordered frames,
+
+\[
+ \operatorname{ev}(e_\Delta)[N]=\kappa_Xu_\Delta,\qquad
+ \kappa_X\in\mathbf C^\times.
+ \tag{VIT.19}
+\]
+
+This is an equality of the actual ordinary diagonal density morphisms. Its coefficient is constant: the normal calculation has constant coefficients, and changing the normal frame multiplies the top form and inverse transfer determinant by inverse factors. Its nonvanishing follows from the explicit positive period \((2\pi i)^N\), not from a dimension count. HIC.14 identifies the coefficient realization of \(u_\Delta\) with the identity. The reverse diagonal has a corresponding nonzero \(\kappa_Y\).
+
+The use of the free operator section has a precise type. Write \(E_h,E_\Delta\) for its ordinary density realizations. AS.30 and naturality of HIC.7 give \(E_h\mathcal V(\pi_{\mathrm{red}})=((-1)^d/d!)E_\Delta\mathcal V(j_{\mathrm{red}})\) before localization. Only the two comparison maps need VIT.11's descent. The free operator source of the section evaluation is not presumed to have a trivial connection factor or to be holonomic. PE.2 proves its finite-projective evaluation identity on those actual section maps.
+
+The proper ordinary evaluation square PE.11 identifies \(u_{+,N}\star u_{-,1}\) with the evaluation of \(h_{N,1}\), using exactly HIC's operator-normalized trace. Naturality of \(\delta,\beta\) in the whole bounded input gives precisely VIT.12 as the source roof of the coefficient composite. VIT.14 moves the inverse input derivatives through \(U,V\); the two powers combine to \(D_t^{-(N+1)}\), or \(D_s^{-(N+1)}\) in the reverse order. They cancel VIT.16's numerator derivatives by their actual localized inverses. Applying VIT.18–VIT.19 to the AS section identities therefore gives
+
+\[
+ \begin{gathered}
+ a\,\Phi_K(b)=\lambda_X\,\epsilon_X(\mathcal O_X),\\
+ b\,\Phi_L(a)=\lambda_Y\,\epsilon_Y(\mathcal O_Y).
+ \end{gathered}
+ \tag{VIT.20}
+\]
+
+Every scalar is nonzero. More explicitly, with the source ratios defined in the displayed directions,
+
+\[
+ \lambda_X=c_X\frac{(-1)^d}{d!}\kappa_X,\qquad
+ \lambda_Y=c_Y\frac1{d!}\kappa_Y.
+ \tag{VIT.21}
+\]
+
+AS.26 supplies the first factorial factor. AS.32–AS.35 supplies the second, after its separate middle spatial reflection and ordered-density sign. No numerical value is assigned to either source ratio or raw solution-frame coefficient. Their definitions use the actual ordinary roofs and the calibrated trace.
+
+### 3.401. One normalization gives both inverses
+
+Put \(F=\Phi_K\), \(G=\Phi_L\), \(A=\mathcal O_X\), \(B=\mathcal O_Y\). The counits satisfy \(F\epsilon_Y=\epsilon_XF\), by LIT.6. Associativity, naturality of \(\epsilon_X\), and VIT.20 give
+
+\[
+ \lambda_X\,a\,\epsilon_X(FB)
+ =a\,F(b)\,FG(a)
+ =\lambda_Y\,a\,F(\epsilon_Y(B)).
+ \tag{VIT.22}
+\]
+
+The two last source maps are equal by coherence. The map \(a\) is nonzero because its product in VIT.20 is a nonzero scalar times an isomorphism. Hence \(\lambda_X=\lambda_Y=:\lambda\). Define \(\widetilde b=\lambda^{-1}b\). Then
+
+\[
+ \begin{gathered}
+ a\,F(\widetilde b)=\epsilon_X(A),\qquad
+ \widetilde b\,G(a)=\epsilon_Y(B),\\
+ a^{-1}=F(\widetilde b)\epsilon_X(A)^{-1}.
+ \end{gathered}
+ \tag{VIT.23}
+\]
+
+For completeness, the first equation makes \(a\) split surjective. The second makes \(G(a)\) split injective; the equivalence \(G\) reflects this property, so \(a\) is split injective. Its two one-sided inverses must coincide, proving the displayed inverse. The same argument applies to \(\widetilde b\). These are actual maps of localized bounded sheaf complexes.
+
+### 3.402. Full directional endomorphisms and the coefficient-action boundary
+
+LIT's directional-Hom comparison applies to the nonconstructible bounded sheaf \(\mathcal O_Y\). Conjugating it by \(a\) and its actual inverse gives
+
+\[
+ \chi^{-1}\mu\operatorname{hom}_Y(\mathcal O_Y,\mathcal O_Y)
+ \simeq
+ \mu\operatorname{hom}_X(\mathcal O_X,\mathcal O_X)
+ \tag{VIT.24}
+\]
+
+on the matched regions. This transports the full derived endomorphism object, with its identity and composition, by the actual evaluation and counit maps.
+
+Identifying VIT.24 with the specified whole \(E/B/C\) operator quantization requires the corresponding canonical operator realization and its compatible action maps. For finite solution complexes, the precise sufficient datum remains LIT.24: a module-derived comparison of the strict cutoff objects, or an equivalent coherent finite diagram for the chosen resolutions and homotopies. The vector isomorphism \(a\), even together with VIT.24, is not asserted to be that module comparison. General contact transport of holomorphic solution complexes, reverse characteristic-support inclusion and the nilpotent image conclusion retain this hypothesis.
+
+![A trivial common time factor makes the actual source comparison safe for coefficient realization, whereas derivative torsion alone does not](figures/vector-incidence-inverse-pair.svg)
+
+**Figure 3.54.** The top panel separates the point-output counterexample VIT.2 from the two-time-constant solution kernel VIT.10. The middle panel is the reduced mapping contraction and the actual source comparison VIT.3–VIT.18. The last panel shows the \(N+1\) derivative cancellation and the single scalar normalization in VIT.20–VIT.23. All arrows concern vector-derived coefficient maps; the cutoff module-action comparison is specified in §3.402.
+
+### 3.403. Exercises on the obstruction and the polynomial factor
+
+**Exercise 3.FI.** Compute the covectors of the kernel \(\mathbf C_{\{t=0\}}\boxtimes\mathbf C_Y\) in coordinates \(u=t,w=t'-t\). Explain why it is invisible at a nonzero diagonal conormal but its holomorphic coefficient output is not.
+
+**Solution 3.FI.** Its conormal consists of the first endpoint covector \((\alpha,0)\), with \(\alpha\ne0\). Since \(dt=du\), it has
+
+\[
+ (\xi_u,\xi_w)=(\alpha,0),\qquad
+ (\tau,-\tau)_{\mathrm{endpoints}}=(0,-\tau)_{(u,w)}.
+ \tag{VIT.25}
+\]
+
+These are different nonzero directions. The kernel therefore misses the matched diagonal direction while retaining nonzero output covectors over zero input covectors. With compact input \(Y=\mathbf P^1\), VIT.2 and the nonzero section \(1\) give a nonzero point-supported output. The smooth-submanifold coefficient formula then gives every nonzero point conormal, as required. No biduality of \(\mathcal O_Y\) is used.
+
+**Exercise 3.FJ.** In a module with \([\tau,w]=1\), take \(k\in\ker\tau\) and \(m=w^2k\). Compute its finite Taylor projection and recover \(m\) from VIT.9. Check the sign of VIT.5 on \(u^2\) in both degrees.
+
+**Solution 3.FJ.** Here \(\tau m=2wk\), \(\tau^2m=2k\), and all higher derivatives vanish. Hence
+
+\[
+ \Pi(m)=w^2k-2w^2k+w^2k=0,\qquad
+ \Pi(\tau m)=0,\qquad \Pi(\tau^2m)=2k.
+ \tag{VIT.26}
+\]
+
+The only nonzero term in the reconstruction is \(w^2(2k)/2!=w^2k\). This uses the genuine Weyl commutator, not commutation of \(w\) with \(\tau\). In degree one the contraction gives \(h(u^2)=-u^3/3\), so
+
+\[
+ \begin{gathered}
+ (-\partial_u)h(u^2)=u^2,\\
+ h(-\partial_u u^2)=u^2-u^2|_{u=0}=u^2.
+ \end{gathered}
+ \tag{VIT.27}
+\]
+
+The first equation checks degree one, the second degree zero. On a constant in degree zero the right side of \(1-i\epsilon\) is zero. Tensoring these identities with a reduced mapping complex inserts exactly the usual total sign, so the contraction retains arbitrary coefficient differentials.
+
+### 3.404. The derivative count in the two coefficient products
+
+**Exercise 3.FK.** In the forward order start with the global sections \(m_{+,N}=D_t^N\mathfrak a\) and \(m_{-,1}=D_s\mathfrak b\). Compute the product section and the denominator power. Repeat in the reverse order. Explain why two unrelated scalar normalizations are unnecessary.
+
+**Solution 3.FK.** The total middle derivative is a Spencer boundary, and \((D_t+D_s)m_{+,N}=0\). VIT.15 therefore gives
+
+\[
+ [m_{+,N}\otimes D_s\mathfrak b]
+ =D_t[m_{+,N}\otimes\mathfrak b]=D_t^{N+1}h.
+ \tag{VIT.28}
+\]
+
+Naturality of the source maps and VIT.14 move the reverse inverse derivative through the forward evaluation. Thus the denominator is \(D_t^{-N}D_t^{-1}=D_t^{-(N+1)}\), which cancels that numerator. In the reverse order \((D_s+D_t)m_{-,1}=0\). Moving each of the \(N\) middle derivatives from \(D_t^N\mathfrak a\) gives
+
+\[
+ [m_{-,1}\otimes D_t^N\mathfrak a]
+ =D_s^N[m_{-,1}\otimes\mathfrak a]=D_s^{N+1}h'.
+ \tag{VIT.29}
+\]
+
+Its denominator is \(D_s^{-1}D_s^{-N}=D_s^{-(N+1)}\). Each equality is in the full relative Spencer complex modulo its displayed boundary, with the same surviving input density. Finally the two ordinary products have the form VIT.20; coherence gives
+
+\[
+ (\lambda_X-\lambda_Y)\,a\,\epsilon_X(FB)=0.
+ \tag{VIT.30}
+\]
+
+Since \(\epsilon_X(FB)\) is invertible and \(a\ne0\), the constants are equal. Rescaling \(b\) once by their common inverse normalizes both products. This argument neither replaces the source counits nor changes the specified whole operator ring quantization.
+
+### 3.405. Ordered polynomial incidence operators
+
+Put \(d=N-1\). Let \(W_X\) be the polynomial Weyl algebra in \((t,x_1,\ldots,x_d)\), with \(\tau=D_t\), \(\xi_i=D_{x_i}\). Write \(W_{X,\tau}\) for its actual Ore localization at the powers of \(\tau\). Let \(W_{Y,\sigma}\) be the corresponding algebra in \((s,y)\), with \(\sigma=D_s\), \(\eta_i=D_{y_i}\). Ore existence and flatness here are the polynomial calculations Regular singularities, AS.11–AS.12; no localization at an arbitrary analytic derivative is implicit.
+
+The incidence map has the following ordered quantization:
+
+\[
+ \begin{gathered}
+ \rho(\sigma)=\tau,\qquad \rho(y_i)=\xi_i\tau^{-1},\\
+ \rho(\eta_i)=-x_i\tau,\qquad
+ \rho(s)=t+E_x\tau^{-1},\\
+ E_x=\sum_i x_i\xi_i.
+ \end{gathered}
+ \tag{PDT.1}
+\]
+
+It is an isomorphism of these polynomial Ore algebras. To prove the assertion, set \(Y_i=\xi_i\tau^{-1}\), \(H_i=-x_i\tau\), \(S=t+E_x\tau^{-1}\). The Weyl relation gives
+
+\[
+ [H_i,Y_j]=-x_i\xi_j+\xi_jx_i=\delta_{ij}.
+ \tag{PDT.2}
+\]
+
+The \(Y_i\) commute, the \(H_i\) commute, and \(\tau\) commutes with both families. Also \([\tau,S]=1\). The remaining relations follow from
+
+\[
+ \begin{gathered}
+ \bigl[t,Y_i\bigr]=\xi_i\tau^{-2},\qquad
+ [E_x\tau^{-1},Y_i]=-\xi_i\tau^{-2},\\
+ [t,H_i]=x_i,\qquad
+ [E_x\tau^{-1},H_i]=-x_i.
+ \end{gathered}
+ \tag{PDT.3}
+\]
+
+For example \([t,\tau^{-1}]=\tau^{-2}\), while \([E_x,\xi_i]=-\xi_i\) and \([E_x,x_i]=x_i\). This checks every generator pair and defines the homomorphism. Its inverse is
+
+\[
+ \begin{gathered}
+ \phi(\tau)=\sigma,\qquad \phi(x_i)=-\eta_i\sigma^{-1},\\
+ \phi(\xi_i)=y_i\sigma,\qquad
+ \phi(t)=s+(E_y+d)\sigma^{-1},\\
+ E_y=\sum_i y_i\eta_i.
+ \end{gathered}
+ \tag{PDT.4}
+\]
+
+Indeed \([y_i\sigma,-\eta_j\sigma^{-1}]=\delta_{ij}\), and the two families commute separately and with \(\sigma\). The proposed time image has commutator one with \(\sigma\). Its commutators with \(-\eta_i\sigma^{-1}\) are \(-\eta_i\sigma^{-2}\) from \(s\) and \(+\eta_i\sigma^{-2}\) from the Euler term. Its commutators with \(y_i\sigma\) are \(-y_i\) and \(+y_i\). Thus it defines a homomorphism as well.
+
+### 3.406. The inverse time correction and the two pole orders
+
+The dimension term in PDT.4 is essential. Ordering the products gives
+
+\[
+ \rho(E_y)=-(E_x+d),\qquad
+ \phi(E_x)=-(E_y+d).
+ \tag{PDT.5}
+\]
+
+Consequently \(\rho\phi(t)=t\) and \(\phi\rho(s)=s\). Both composites also fix all the derivative and spatial generators, proving the inverse assertion. On principal coordinates these maps are LIT.8–LIT.9. Their lower-order correction must still be retained in an operator calculation.
+
+The globalizing sections of HIC.18 have different undifferentiated pole orders. In affine frames write \(F=s-t-x^{\mathsf T}y\), \(A=t-s+y^{\mathsf T}x\). Their exact differentiated identities are
+
+\[
+ \begin{gathered}
+ m_{+,N}=\frac{N!\,\Omega}{F^{N+1}},\qquad
+ D_t(Fm_{+,N})=N m_{+,N},\\
+ m_{-,1}=\frac{N\,\Omega'}{A^{N+1}},\qquad
+ D_s(Am_{-,1})=N m_{-,1}.
+ \end{gathered}
+ \tag{PDT.6}
+\]
+
+They follow by differentiating \(F\) and \(A\), whose indicated derivatives are \(-1\). These are meromorphic relative-class identities; their distributional versions are obtained by differentiating the same relative representatives. The forward raw pole has order one and is differentiated \(N\) times. The reverse raw pole has order \(N\) and is differentiated once. They are not two identical simple poles.
+
+The algebraic source of the normalization correction is
+
+\[
+ \tau^{-r}t=t\tau^{-r}-r\tau^{-r-1}\quad(r\ge1).
+ \tag{PDT.7}
+\]
+
+For \(r=1\), multiply \(\tau t-t\tau=1\) by the inverse on both sides. Induction gives the displayed formula. Thus moving the forward \(N\) inverse derivatives past time subtracts \(N\); moving the single reverse inverse derivative subtracts one. Applied to the \(N\) in PDT.6, the respective remainders are zero and \(N-1=d\). This explains the ordered formulas algebraically. Establishing all their spatial and time-multiplication identities simultaneously on cutoff complexes remains the action condition below.
+
+### 3.407. A linear directional test of holomorphic functions
+
+Choose a complex linear coordinate \(t\) with \(p=d\operatorname{Re}t\) at the origin, and put \(M=\{\operatorname{Re}t=0\}\), \(H=\mathbf C_M\). Define the exact bounded test functor
+
+\[
+ \mathsf T_p(F)=\mu\operatorname{hom}(H,F)_p
+ \simeq(\mu_MF)_p
+ \simeq(R\Gamma_{\{\operatorname{Re}t\ge0\}}F)_0.
+ \tag{PDT.8}
+\]
+
+Here and below a covector is identified with its positive real conormal direction. The first isomorphism is Local morphisms in cotangent directions, SH02-MH-SUBMANIFOLD. The last one follows directly from that lesson's directional support formula SH02-MH-TESTS. In this rank-one normal bundle, the positive closed halfspace is a final admissible support after shrinking. To check this, if an admissible closed \(Z\) had negative-normal points approaching zero, project each point to \(M\) and divide its negative normal coordinate by its absolute value. This would put the negative unit normal in \(C_M(Z)_0\), contrary to the strict positive-polar condition. Hence \(Z\) is contained in the positive halfspace near zero. That halfspace itself is admissible. Support enlargement and neighborhood restriction therefore give the last identification with its original maps.
+
+This proof works for every bounded vector sheaf complex. In particular \(\mathsf T_p\) kills any cone whose microsupport misses \(p\), by the defining local support test. It consequently sends the corresponding localized denominators to ordinary quasi-isomorphisms.
+
+For the holomorphic sheaf the test is concentrated in degree one:
+
+\[
+ \begin{gathered}
+ \mathsf T_p(\mathcal O_X)\simeq V_p[-1],\\
+ V_p=\varinjlim_B
+ \frac{\mathcal O(B\cap\{\operatorname{Re}t<0\})}{\mathcal O(B)}.
+ \end{gathered}
+ \tag{PDT.9}
+\]
+
+Take cofinal product polydiscs \(B\) in \(t,x\). Both \(B\) and its negative half are convex complex domains. Their positive holomorphic sheaf cohomology vanishes by the complete convex-domain proof Riemannian connections and convex neighbourhoods, Theorem B.5. The localization triangle therefore has only the kernel and cokernel of restriction in degrees zero and one. The kernel is zero by the holomorphic identity theorem. Its cokernel is the displayed quotient. Filtered vector-space colimits are exact, which proves concentration on the stalk. In particular
+
+\[
+ [1/t]\ne0\quad\hbox{in }V_p.
+ \tag{PDT.10}
+\]
+
+An extension of \(1/t\) to a smaller full polydisc would satisfy \(tg=1\) there by the identity theorem and then at \(t=0\), an impossibility.
+
+### 3.408. The derivative is invertible on this tested coefficient
+
+Finite differential operators act on the localization triangle and therefore on \(V_p\). The induced time derivative is bijective. If \(D_tf\) extends to a full polydisc, take a holomorphic \(t\)-primitive of that extension. The difference from \(f\) is independent of \(t\) on the connected halfdisc and is holomorphic in \(x\), so it extends as well. This proves injectivity on the quotient. For surjectivity, integrate any half-polydisc coefficient along paths in its simply connected negative halfdisc, with an anchor fixed independently of \(x\). Differentiation under the path integral shows holomorphic dependence on \(x\). The primitive is defined on a smaller product domain, which suffices in the filtered germ. Thus
+
+\[
+ D_t:V_p\xrightarrow{\sim}V_p.
+ \tag{PDT.11}
+\]
+
+This is an actual statement about the quotient coefficient. Differentiation on ordinary holomorphic germs still has a nonzero constant kernel. For example a branch on the negative halfdisc gives
+
+\[
+ D_t[\log(-t)]=[1/t]\quad\hbox{in }V_p.
+ \tag{PDT.12}
+\]
+
+Changing the branch adds a constant, which is zero in this quotient.
+
+### 3.409. Keeping strict coefficient actions during a test
+
+Let \(A\) be any constant unital complex algebra, with no finite global-dimension hypothesis. The functor \(\mathsf T_p\) has an \(A\)-linear derived construction on bounded \(A\)-module sheaves. Resolve the output in injective \(A\)-module sheaves. Such an injective is injective after forgetting to vector sheaves: induction \(A\otimes_{\mathbf C}-\) is exact, and the forgetful functor is its right adjoint. Internal Hom with the fixed vector input \(H\), normal specialization, the Fourier kernel and the stalk all retain the output action. Finite-dimensional boundedness is the vector-sheaf bound SH02-MH-BOUNDED. Thus
+
+\[
+ \mathsf T_p:D^b(A_X\text{-Mod})
+ \longrightarrow D^b(A\text{-Mod})
+ \tag{PDT.13}
+\]
+
+has the vector test PDT.8 as its underlying functor. The same conclusion follows from the support-functor model in PDT.8, using the same module-injective resolution.
+
+For a bounded finite free \(A\)-complex \(P\), there is a natural equivalence
+
+\[
+ \mathsf T_p R\mathcal Hom_A(P,G)
+ \simeq R\operatorname{Hom}_A(P,\mathsf T_pG).
+ \tag{PDT.14}
+\]
+
+On a free term both sides are the same finite sum of \(\mathsf T_pG\). Each matrix is sent to its written Hom action, with differential \(d(f)=d_Gf-(-1)^{|f|}fd_P\). This identifies the maps and total signs. A finite free-cell filtration then proves the equivalence and its naturality for attaching maps, finite maps and chain homotopies. No assertion about infinite products or infinite resolutions is needed.
+
+### 3.410. Two tested coefficients in matched incidence directions
+
+Use \(K,L,a\) of VIT.1–VIT.23, with \(F=\Phi_K\), \(q=\chi(p)\). Fix actual strict cutoff objects \(G_Y,G_X\) as in RKC.19–RKC.22, on corresponding charts. Their vector denominators are \(G_Y\simeq\mathcal O_Y\) at \(q\) and \(G_X\simeq\mathcal O_X\) at \(p\). Assume a constant algebra \(A\) acts on both cutoff objects through specified actual canonical kernel-ring maps. Give \(F_AG_Y\) the transported strict action of LIT.19. Put
+
+\[
+ E=\mathsf T_p(F_AG_Y),\qquad
+ D=\mathsf T_p(G_X).
+ \tag{PDT.15}
+\]
+
+The letter \(D\) here denotes the tested complex, not a differential-operator sheaf. LIT's graph equivalence sends the input vector denominator to an output denominator. Applying the exact test, the actual vector inverse \(a\), and the target denominator gives
+
+\[
+ E\xrightarrow[\text{vector-derived}]{\ \alpha\ }
+ D,\qquad
+ E\simeq V_p[-1]\simeq D.
+ \tag{PDT.16}
+\]
+
+More explicitly the middle vector object is \(\mathsf T_p(F\mathcal O_Y)\), followed by \(\mathsf T_p(a)\) to \(\mathsf T_p(\mathcal O_X)\); the cutoff comparisons are inverted only after their test cones are proved zero. No \(A\)-linearity of these middle vector arrows is assumed. Both endpoint complexes have cohomology in degree one only.
+
+The same tested coefficient can be written on the input side. The full directional-Hom comparison of LIT.14–LIT.18 and its actual dual kernel gives
+
+\[
+ \mathsf T_p(F\mathcal O_Y)
+ \simeq
+ \mu\operatorname{hom}(L H,\mathcal O_Y)_q.
+ \tag{PDT.17}
+\]
+
+Here \(L H=\Phi_LH\); it is a bounded constructible test object. The coefficient \(\mathcal O_Y\) need not be constructible. The formula follows by applying the directional comparison to \((LH,\mathcal O_Y)\) and then the coherent counit \(F L H\simeq H\). Thus this input-side tested object is also concentrated in degree one.
+
+### 3.411. A strictification theorem after concentration
+
+**Theorem.** Suppose \(A\) is generated as a unital algebra by \(z_1,\ldots,z_m\), and the vector isomorphism \(\alpha\) in PDT.16 satisfies
+
+\[
+ H^1(\alpha)\,z_i=z_i\,H^1(\alpha)
+ \quad(1\le i\le m)
+ \tag{PDT.18}
+\]
+
+for the specified endpoint actions. Then it has an actual lift \(E\simeq D\) in \(D^b(A\text{-Mod})\). Its underlying vector-derived map is the specified \(\alpha\).
+
+Indeed PDT.18 implies equivariance for every word by induction on word length, and for finite linear combinations by linearity. The given actions factor through \(A\), so this proves an \(A\)-linear isomorphism on cohomology. For either complex \(C=E,D\), the good truncation gives \(A\)-linear quasi-isomorphisms
+
+\[
+ C\ \longleftarrow\ \tau_{\le1}C\
+ \longrightarrow\ H^1(C)[-1].
+ \tag{PDT.19}
+\]
+
+The right arrow is zero below degree one and the degree-one quotient from cycles to cohomology. Both maps are quasi-isomorphisms because all other cohomology is zero. Inserting the \(A\)-linear map \(H^1(\alpha)\) between these roofs proves
+
+\[
+ E\simeq H^1(E)[-1]
+ \xrightarrow{\,H^1(\alpha)[-1]\,}
+ H^1(D)[-1]\simeq D
+ \quad\text{in }D^b(A\text{-Mod}).
+ \tag{PDT.20}
+\]
+
+After forgetting \(A\), objects concentrated in a single degree have degree-zero morphisms exactly the morphisms of their cohomology vector spaces. This follows by the same truncation roofs and the fully faithful embedding of the heart into its derived category. Hence the underlying map in PDT.20 is \(\alpha\), not merely an unspecified vector isomorphism.
+
+Concentration is used on the tested coefficient complexes. Nothing here replaces a full kernel complex by its degree-zero cohomology before tensoring, and nothing lifts the untested vector map to a cutoff module map automatically.
+
+### 3.412. The resulting finite solution-complex comparison
+
+Let \(P\) be a bounded finite free \(A\)-complex. LIT.22, PDT.14 and PDT.20 give
+
+\[
+ \begin{gathered}
+ \mathsf T_p F R\mathcal Hom_A(P,G_Y)\\
+ \simeq R\operatorname{Hom}_A(P,E)\\
+ \simeq R\operatorname{Hom}_A(P,D)\\
+ \simeq \mathsf T_p R\mathcal Hom_A(P,G_X).
+ \end{gathered}
+ \tag{PDT.21}
+\]
+
+This is an equivalence of the entire tested vector complexes, including all their cohomology groups. It is natural in finite maps and homotopies of \(P\). The terms need not themselves be concentrated in degree one.
+
+More generally suppose \(P,Q\) are bounded finite free complexes and actual matrices over \(A\) satisfy
+
+\[
+ \begin{gathered}
+ f:P\longrightarrow Q,\qquad g:Q\longrightarrow P,\\
+ gf-1=dH+Hd,\qquad fg-1=dJ+Jd.
+ \end{gathered}
+ \tag{PDT.22}
+\]
+
+Applying internal Hom and the tests retains these identities. On a homogeneous Hom entry of degree \(k\), the homotopy induced by \(H\) is
+
+\[
+ S_H(\psi)=(-1)^k\psi H,\qquad
+ dS_H+S_Hd=\psi(gf-1),
+ \tag{PDT.23}
+\]
+
+and likewise for \(J\). Expanding the internal Hom differential cancels the two mixed terms and proves the formula. Thus the comparison includes the chosen resolutions, maps and homotopies. When their realized differential operators are finite, the \(D_0\)-linear cutoff denominators RKC.22 identify the corresponding finite Hom complexes with the actual holomorphic solution complexes after this test. Whole canonical entries in the comparison matrices still require their specified actual common-ring realizations.
+
+### 3.413. A finite relation algebra and the remaining action condition
+
+There is a useful way to retain exactly the required finite data. List all entries of the complexes, maps, homotopies and the scalar unit in PDT.22. Introduce finitely many noncommuting letters, and let
+
+\[
+ A=\mathbf C\langle z_1,\ldots,z_m\rangle/
+       (\text{entries of the required finite matrix identities}).
+ \tag{PDT.24}
+\]
+
+The quotient uses the two-sided ideal generated by those entries. The identities include \(d^2=0\), the two chain-map equations and both displayed homotopy equations. This is a finite list of noncommutative polynomials. Actual common-ring realizations that satisfy the identities give homomorphisms from this algebra, by the universal property of a quotient. No commutativity or finite global dimension of \(A\) is inferred. The finite realization proof Regular singularities, ID.1–ID.2 supplies such common realizations only for equations already proved in the actual operator germs.
+
+In incidence applications, the two realizations must match the whole real-ring map \(\Phi\) of Regular singularities, WT.2–WT.12. The exact remaining test is
+
+\[
+ H^1(\alpha)\,r_Y(z_i)
+     =r_X(z_i)\,H^1(\alpha)
+ \quad\hbox{for every selected generator}.
+ \tag{PDT.25}
+\]
+
+Once these finitely many equalities are proved for the specified actual actions, PDT.19–PDT.23 supply the coherent tested comparison. A finite generator formula in the polynomial Ore algebra is not a proof of PDT.25 for arbitrary whole infinite-order entries. Nor does the tested module roof imply the untested cutoff-module roof LIT.24. General contact transport of all solution objects, the reverse support comparison and the nilpotent image assertions retain their remaining action and geometric hypotheses.
+
+![Ordered time correction, one-degree directional coefficients and the finite equivariance condition for a genuine tested module comparison](figures/pure-directional-test-comparison.svg)
+
+**Figure 3.55.** The first panel is the exact ordered inverse PDT.4–PDT.5. The second is the halfspace quotient PDT.9, concentrated in degree one; it includes the nonzero class \(1/t\) and its primitive on the negative halfdisc. The last panel is PDT.18–PDT.21. The generator-equivariance condition is an explicit premise; the output is a module-derived roof for tested coefficients.
+
+### 3.414. Exercise and solution: the missing inverse term
+
+**Exercise 3.FL.** For \(d=2\), use the proposed inverse time \(s+E_y\sigma^{-1}\) without its scalar correction. Compute its forward image, and find the correction that makes the two maps inverse. Explain why the principal contact coordinates do not detect the error.
+
+**Solution 3.FL.** Ordering each \(\xi_i x_i=x_i\xi_i+1\) gives \(\rho(E_y)=-(E_x+2)\). Therefore
+
+\[
+ \rho(s+E_y\sigma^{-1})=t-2\tau^{-1}.
+ \tag{PDT.26}
+\]
+
+Adding \(2\sigma^{-1}\) repairs it:
+
+\[
+ \rho\bigl(s+(E_y+2)\sigma^{-1}\bigr)=t.
+ \tag{PDT.27}
+\]
+
+The other composite is checked using \(\phi(E_x)=-(E_y+2)\). The correction has order minus one, whereas time and \(E_y\sigma^{-1}\) have order zero. It disappears from the principal order-zero coordinate map but is nonzero in the actual Ore algebra, since \(\tau\) is invertible and the coefficient field has characteristic zero.
+
+### 3.415. Exercise and solution: retain the whole tested complex
+
+**Exercise 3.FM.** Let \(A=\mathbf C[e]/(e^2)\), \(V=A\), and \(P\) have one copy of \(A\) in degrees \(-2,-1,0\), with both differentials multiplication by \(e\). Compute all cohomology of \(R\operatorname{Hom}_A(P,V[-1])\). Does purity of the tested coefficient allow the solution complex to be truncated to its first nonzero cohomology?
+
+**Solution 3.FM.** The relation \(e^2=0\) makes \(P\) a complex; it is bounded free, so ordinary internal Hom computes its derived Hom. Before the coefficient shift its maps are
+
+\[
+ \operatorname{Hom}_A(P,V)
+ =[A\xrightarrow{-e}A\xrightarrow{e}A],
+ \qquad\deg=(0,1,2).
+ \tag{PDT.28}
+\]
+
+The signs are \(-(-1)^k\) in Hom degree \(k\). Both kernels of multiplication by \(e\) are \(eA\), and its image is \(eA\). Thus the unshifted cohomology is \(eA,0,A/eA\) in degrees zero, one and two. After shifting the coefficient,
+
+\[
+ H^kR\operatorname{Hom}_A(P,V[-1])
+ =
+ \begin{cases}
+ eA,&k=1,\\
+ A/eA,&k=3,\\
+ 0,&k\ne1,3.
+ \end{cases}
+ \tag{PDT.29}
+\]
+
+Each nonzero space has complex dimension one. The degree-three group must be retained. The argument uses a finite free complex; it does not require a finite free resolution of every \(A\)-module. In particular the possible infinite global dimension of this coefficient algebra causes no problem.
+
+### 3.416. The actual time-generator comparison
+
+**Exercise 3.FN.** Take \(A=\mathbf C[z,z^{-1}]\), acting on the input cutoff by \(z=D_s\), on the output cutoff by \(z=D_t\), and by their actual inverses for \(z^{-1}\). Prove PDT.25 for this algebra in every incidence dimension \(N\ge1\). Distinguish this assertion from the whole operator-action comparison.
+
+**Solution 3.FN.** HIC.21 gives \(a=D_t^{-N}U c_+^{-1}\). The source denominator \(c_+\) is natural for the input derivative. VIT.14 proves \(U\Phi_{J_+}(D_s)=D_tU\) on the actual ordinary evaluation complexes. Since the output inverse powers commute with \(D_t\), these identities give \(aF(D_s)=D_ta\) in the selected localization. The RKC cutoff denominators are linear for these finite derivatives. Applying \(\mathsf T_p\) and degree-one cohomology therefore gives
+
+\[
+ \begin{gathered}
+ H^1(\alpha)\,D_s=D_t\,H^1(\alpha),\\
+ H^1(\alpha)\,D_s^{-1}=D_t^{-1}\,H^1(\alpha).
+ \end{gathered}
+ \tag{PDT.30}
+\]
+
+For the second equation, multiply the first by the two inverses. They exist on the strict cutoff modules by the actual canonical product identities; on the tested holomorphic quotient they are exactly the unique inverse PDT.11. Thus the two Laurent generators satisfy PDT.18, and PDT.19–PDT.21 give the actual module-derived comparison for the tested time-action complexes.
+
+This proves all Laurent-polynomial time identities and their finite-complex comparisons. It does not establish the spatial, time-multiplication or arbitrary full infinite-order identities in PDT.25. Those operators require their own actual action comparisons; neither their principal symbols nor the ordered polynomial algebra calculation substitutes for them.
+
+### 3.417. Polynomial incidence operators on the actual tested coefficients
+
+Use the incidence kernels, vector map \(a\), strict cutoff objects and exact test of VIT and PDT. Work locally at matched covectors \(p,q=\chi(p)\) with nonzero time component. Put \(d=N-1\), \(\tau=D_t\), \(\sigma=D_s\), \(\xi_i=D_{x_i}\), \(\eta_i=D_{y_i}\). Let \(A=W_{Y,\sigma}\) be the polynomial Weyl algebra with the time derivative inverted. The ordered map of PDT.1–PDT.5 is
+
+\[
+ \begin{gathered}
+ \rho(\sigma)=\tau,\quad \rho(\sigma^{-1})=\tau^{-1},\\
+ \rho(y_i)=\xi_i\tau^{-1},\quad
+ \rho(\eta_i)=-x_i\tau,\\
+ \rho(s)=t+E_x\tau^{-1},\qquad E_x=\sum_i x_i\xi_i .
+ \end{gathered}
+ \tag{PIA.1}
+\]
+
+**Theorem.** The specified polynomial actions satisfy PDT.25. Consequently the vector comparison between the two tested cutoff coefficients lifts to an isomorphism in \(D^b(A\text{-Mod})\), and all bounded finite free \(A\)-complexes have the complete tested Hom comparison of PDT.21. This assertion uses the actual derivative inverse in the selected localization. It does not assert an inverse derivative on ordinary holomorphic functions.
+
+Write
+
+\[
+ J_+=\mathbf C_{S_+}[N-1],\qquad
+ U=\vartheta_{u_{+,N}},\qquad
+ a=\tau^{-N}U c_+^{-1}.
+ \tag{PIA.2}
+\]
+
+Here \(U:\Phi_{J_+}\mathcal O_Y\to\mathcal O_X\) is the ordinary proper density evaluation, and \(c_+\) is the closed-to-open source denominator. The proof establishes the needed finite operator identities for these exact maps before applying the pure test.
+
+### 3.418. Affine input operators and proper representatives
+
+Restrict the input coefficient to the affine incidence chart \(j:Y_0\hookrightarrow Y\) and extend it by zero. At the selected input covector this is a denominator; LIT's graph equivalence sends it to an output denominator. The ordinary projection formula identifies the resulting closed source with the affine source extended by zero:
+
+\[
+ J_+\otimes \pi_Y^{-1}j_!\mathcal O_{Y_0}
+ \simeq
+ j'_!\bigl(J_+|_{X\times Y_0}
+                 \otimes \pi_{Y_0}^{-1}\mathcal O_{Y_0}\bigr).
+ \tag{PIA.3}
+\]
+
+The map \(j'\) is the corresponding product open embedding, and \(\pi_Y,\pi_{Y_0}\) are the input projections. This follows on stalks from exact inverse image and extension by zero over \(\mathbf C\). Composing proper-support images gives the same affine integral while retaining the entire projective middle in its original description. In the following calculations the coefficient maps are evaluated on this replaced input. After the selected localization, its input denominator identifies them with the maps of PIA.2.
+
+An input polynomial multiplication or constant affine derivative is an actual endomorphism of this extended coefficient. Its support stays in the input open. Translation derivatives extend to projective translation vector fields preserving the infinity divisor. Polynomial functions need only be defined on the affine input; extension by zero defines their coefficient maps without a fictitious global projective function.
+
+Use the smooth/current and proper-image models of HIC and Regular singularities, R.5–R.7, DL.1–DL.3 and DLG.1–DLG.7. On every compact output family, proper-support representatives admit a collar in the actual affine source. Finitely many chosen expressions and their comparison homotopies admit one common refinement. Arbitrary proper sections are not restricted to arbitrary source opens.
+
+In affine frames set
+
+\[
+ F=s-t-x^{\mathsf T}y,\qquad
+ \Omega=ds\wedge dy_1\wedge\cdots\wedge dy_d,\qquad
+ m=\frac{N!\,\Omega}{F^{N+1}}.
+ \tag{PIA.4}
+\]
+
+This is the restriction of the actual globalizing section HIC.18. Products by affine polynomials and their finite derivatives are legitimate relative density classes on the source of PIA.3.
+
+### 3.419. Differentiating the full relative maps
+
+For a relative density class \(c\) on this affine source, write \(U_c\) for its ordinary evaluation. Coefficient multiplication before the normalized trace gives
+
+\[
+ U_{bc}=U_c\,\Phi_{J_+}(b),\qquad
+ U_{hc}=h\,U_c,
+ \tag{PIA.5}
+\]
+
+where \(b\) is an input polynomial and \(h\) an output polynomial. The equations are literal multiplication identities on each whole-domain and complement entry. The input top line is ungraded.
+
+Here is the derivative comparison, including the choices in that model. On a full relative cone with \(\delta=\bar\partial\), the collar and its derivative homotopy are
+
+\[
+ \begin{gathered}
+ L_\eta(v,w)=(\eta v+\delta\eta\,w,\eta w),\\
+ K_D(v,w)=((D\eta)w,0),\\
+ \bigl[D,L_\eta\bigr]=dK_D+K_Dd .
+ \end{gathered}
+ \tag{PIA.6}
+\]
+
+Direct expansion of the relative differential \(d(v,w)=(\delta v,rv-\delta w)\) proves the equation. The terms containing a derivative of the collar vanish near the support before extension by zero. The final proper collar makes the traced homotopy proper. This is exactly DL.8; it includes the complement term.
+
+The finite complement-cover comparison has the same derivative compatibility. Let \(P\) be the cube-to-full-cone map, \(\iota\) its augmentation and \(H\) its degree-minus-one contraction. Entrywise differentiation commutes with the augmentation. DLG.14 then gives
+
+\[
+ PD-DP=d(PDH)+(PDH)d .
+ \tag{PIA.7}
+\]
+
+Here the differential on the relevant total complexes is understood. The formula follows by multiplying \(1-\iota P=dH+Hd\) by \(PD\). It retains every finite-cover entry; no derivative of a partition is discarded.
+
+For an output coordinate derivative, differentiation commutes with the properly supported trace. PIA.6–PIA.7 account for the collar and cover choices. It follows, as an equality of the resulting derived maps, that
+
+\[
+ U_{Dc}=D\,U_c .
+ \tag{PIA.8}
+\]
+
+The density derivative is taken at fixed middle coordinates. The positive relative pole representative \((0,-c)\) of HI.25 fixes the connecting sign. Its finite meromorphic identities are identities of the actual density morphisms, not just of their principal symbols.
+
+### 3.420. Vertical integration by parts with every complement retained
+
+Let \(D_v\) be one of the constant affine middle derivatives \(D_s,D_{y_i}\). In the displayed frame its density divergence is zero. Proper Stokes applied to the total vertical derivative gives
+
+\[
+ U_c\,\Phi_{J_+}(D_v)=-U_{D_vc}.
+ \tag{PIA.9}
+\]
+
+For completeness, form the full relative cup before the collar and trace. If a kernel cochain is \((k_0,k_1)\) of degree \(r\), and an input cochain is \((f_0,f_1)\), its four entries are
+
+\[
+ \bigl(k_0f_0,\ k_1f_0,\
+       (-1)^r k_0f_1,\ (-1)^{r-1}k_1f_1\bigr).
+ \tag{PIA.10}
+\]
+
+The degree-zero derivative obeys Leibniz in each of these entries, with the displayed signs unchanged. Thus the sum of differentiating the kernel and differentiating the input is the entrywise total derivative. Apply the finite full-cone comparison and proper collar. PIA.6–PIA.7 identify their derivative corrections as full homotopies. In every partition-localized complement term, subordinate supports and the collar make the coefficient compactly supported inside its actual complement domain. It can be integrated there and extended by zero where permitted; no unweighted complement primitive is extended across an excluded face.
+
+On those proper smooth coefficients the integral of \(D_v\) is zero, by real-coordinate integration by parts for the two real derivatives constituting \(D_v\). The current version is the same identity by distributional transposition. The normalized trace signs depend on cochain degree, which \(D_v\) does not change. The whole-domain and output-complement calculations therefore give PIA.9 together. This proves the identity for the bounded derived evaluations and hence after the exact test.
+
+### 3.421. The spatial and derivative identities
+
+Direct differentiation of PIA.4 gives the actual meromorphic relative-class identities
+
+\[
+ D_sm=-D_tm,\qquad
+ D_{x_i}m=y_iD_tm,\qquad
+ D_{y_i}m=x_iD_tm .
+ \tag{PIA.11}
+\]
+
+They hold for the positive relative representatives and their distributional derivatives as well. The coefficient maps are obtained by the same normal connecting morphism HI.25; its source is the fixed closed constant sheaf. Thus these section equalities give equalities of those morphisms with the indicated coefficient derivatives. No action of the normal derivative on that constant source sheaf is being assumed.
+
+Using PIA.5, PIA.8 and PIA.9 gives
+
+\[
+ \begin{gathered}
+ U\,\Phi_{J_+}(D_s)=\tau U,\\
+ D_{x_i}U=\tau U\,\Phi_{J_+}(y_i),\\
+ U\,\Phi_{J_+}(D_{y_i})=-x_i\tau U.
+ \end{gathered}
+ \tag{PIA.12}
+\]
+
+For the middle equation, first differentiate the density in \(x_i\), then multiply its time derivative by \(y_i\) before evaluation. All identities are made on the same finite common support refinement.
+
+The source map \(c_+\) is natural for every chosen input endomorphism. Since \(D_{x_i}\), \(x_i\) and \(\tau\) have the indicated commutations with \(\tau^{-N}\), PIA.2 gives
+
+\[
+ \begin{gathered}
+ a\,\Phi_K(\sigma)=\tau a,\\
+ a\,\Phi_K(y_i)=\xi_i\tau^{-1}a,\\
+ a\,\Phi_K(\eta_i)=-x_i\tau a.
+ \end{gathered}
+ \tag{PIA.13}
+\]
+
+In the second equation multiply the corresponding PIA.12 identity by the localized inverse of \(\tau\). That inverse exists by HIC.20; it has not been applied to ordinary holomorphic functions on a full neighborhood.
+
+### 3.422. Time multiplication and the cancellation of the globalizer
+
+The lower-pole class has the same closed source. Put \(W=U_{Fm}\). By PIA.5 and the identity defining \(F\),
+
+\[
+ W=U\,\Phi_{J_+}(s)-tU
+          -\sum_i x_iU\,\Phi_{J_+}(y_i).
+ \tag{PIA.14}
+\]
+
+Differentiate the relative density. Since \(D_tF=-1\), the factorial in \(m\) gives \(D_t(Fm)=Nm\), as in PDT.6. Hence
+
+\[
+ \tau W=NU,\qquad W=N\tau^{-1}U
+ \quad\hbox{in the selected localization}.
+ \tag{PIA.15}
+\]
+
+The first identity is proved before inverting the derivative. Substituting PIA.12 and PIA.15 into PIA.14 yields
+
+\[
+ U\,\Phi_{J_+}(s)
+   =(t+E_x\tau^{-1}+N\tau^{-1})U.
+ \tag{PIA.16}
+\]
+
+Now \(\tau^{-N}t=t\tau^{-N}-N\tau^{-N-1}\). Moving that factor through the first term cancels precisely the last \(N\) in PIA.16. Naturality of \(c_+\) therefore gives
+
+\[
+ a\,\Phi_K(s)=(t+E_x\tau^{-1})a .
+ \tag{PIA.17}
+\]
+
+The parameter-zero forward quantization is thus fixed by the actual globalizer and its actual inverse derivative normalization. A different power cannot silently be substituted.
+
+### 3.423. The full polynomial Ore action after the pure test
+
+The first identity in PIA.13 and the two actual localized derivative inverses also give
+
+\[
+ a\,\Phi_K(\sigma^{-1})=\tau^{-1}a .
+ \tag{PIA.18}
+\]
+
+Together PIA.13, PIA.17 and PIA.18 establish the intertwining equation for every generator of \(A\). Induction on finite word length and linearity prove
+
+\[
+ a\,\Phi_K(Q)=\rho(Q)a\qquad(Q\in W_{Y,\sigma}).
+ \tag{PIA.19}
+\]
+
+The written order of every noncommuting word is preserved. PDT.1–PDT.5 already proves all algebra relations, including the ordered inverse time. The map is the finite restriction of the whole canonical incidence transport: Regular singularities, LI.3–LI.6, LN.30 and WT.6 identifies that restriction with \(L_0\), with exactly these values. A principal contact map alone would not determine this assertion.
+
+Choose the actual finite common canonical-ring realizations on the two cutoff objects for these generators and relations. The RKC denominators are linear for their finite differential operators. The inverse time action on the tested coefficient is the unique inverse of PDT.11. Thus the vector comparison \(\alpha\) of PDT.16 satisfies
+
+\[
+ H^1(\alpha)\,r_Y(Q)
+       =r_X(\rho(Q))\,H^1(\alpha)
+ \qquad(Q\in W_{Y,\sigma}).
+ \tag{PIA.20}
+\]
+
+Here \(r_X\) denotes the natural target polynomial Ore action; equivalently one may absorb \(\rho\) into the input-algebra realization. Only finitely many generator and relation representatives need a common refinement. Their actual ring homomorphism then defines every finite polynomial word; no uniform estimate for an infinite sequence of words is inferred.
+
+### 3.424. Module-derived comparison and its exact scope
+
+Give the tested target coefficient its \(A\)-action through \(\rho\). PDT.18–PDT.20 applies to PIA.20 and gives the actual module-derived isomorphism
+
+\[
+ \mathsf T_p(\Phi_A G_Y)
+       \simeq {}_\rho\mathsf T_p(G_X)
+       \quad\hbox{in }D^b(A\text{-Mod}).
+ \tag{PIA.21}
+\]
+
+The symbol \({}_\rho\) here means that \(Q\in A\) acts on the target by \(\rho(Q)\). Both tested coefficient complexes have cohomology only in degree one. Their good-truncation roofs are \(A\)-linear, so PIA.21 retains the specified vector map \(\alpha\). Its inverse is an actual module-derived inverse; the scalar normalization of the opposite vector incidence map does not change the polynomial action.
+
+For every bounded finite free \(A\)-complex \(P\), the full finite Hom comparison is
+
+\[
+ \begin{gathered}
+ \mathsf T_p\Phi_K R\mathcal Hom_A(P,G_Y)\\
+ \simeq
+ R\operatorname{Hom}_A
+       \bigl(P,{}_\rho\mathsf T_p(G_X)\bigr).
+ \end{gathered}
+ \tag{PIA.22}
+\]
+
+This includes every cohomology degree, every specified finite map and each chain homotopy. PDT.22–PDT.23 gives the explicit Hom homotopy. The theorem does not truncate the resulting solution complex to the single degree of its coefficient.
+
+A single linear test is not conservative, as Solution 3.FQ shows. The theorem therefore asserts PIA.21–PIA.22 for the specified tested complexes. Analytic coefficients given by infinite Taylor series and whole infinite-order operators require their further common-domain and action comparisons. Nor is an untested strict cutoff-module roof, general characteristic-support equality or a nilpotent image theorem a consequence of the polynomial result.
+
+![The actual pole derivative identities, cancellation of the normalizing power and a smooth cubic showing the nonconservativity of one linear test](figures/tested-polynomial-incidence-action.svg)
+
+**Figure 3.56.** The first two panels show PIA.11–PIA.20 with the fixed input density and the cancellation of \(N\). The last panel is the real curve \(t=u^3,x=u\) of Solution 3.FQ, plotted for \(-1\le u\le1\). Its horizontal coordinate is \(x=u\), its vertical coordinate is \(t=u^3\), and the selected normal at zero is \(d\operatorname{Re}t\). The linear support test vanishes there although the covector lies in the conormal.
+
+### 3.425. Exercise and solution: a noncommuting input word
+
+**Exercise 3.FO.** For \(d\ge1\), compute the tested action of \(Q=y_i\eta_j\sigma^{-1}\), keeping the input order. Compare it with the principal-symbol expression that omits the commutator.
+
+**Solution 3.FO.** PIA.1 and PIA.19 give
+
+\[
+ \begin{gathered}
+ \rho(y_i\eta_j\sigma^{-1})
+   =-\xi_i x_j\tau^{-1}\\
+   =-(x_j\xi_i+\delta_{ij})\tau^{-1}.
+ \end{gathered}
+ \tag{PIA.23}
+\]
+
+The scalar term appears because \(\xi_i x_j=x_j\xi_i+\delta_{ij}\). For \(i=j\), omitting it changes the operator by the nonzero \(-\tau^{-1}\). On the actual tested coefficients this means
+
+\[
+ H^1(\alpha)\,r_Y(Q)
+   =-r_X\bigl((x_j\xi_i+\delta_{ij})\tau^{-1}\bigr)
+          H^1(\alpha).
+ \tag{PIA.24}
+\]
+
+This is the finite polynomial module identity, including its lower-order term. It does not follow by multiplying only the principal coordinate functions.
+
+### 3.426. Exercise and solution: changing the differentiating power
+
+**Exercise 3.FP.** For an integer \(k\ge N\), put \(m_k=k!\Omega/F^{k+1}\), \(U_k=U_{m_k}\). Compare \(\tau^{-k}U_kc_+^{-1}\) with \(a\). Then compute the time image if the normalizing power is \(\tau^{-r}\), where \(r\ge0\).
+
+**Solution 3.FP.** The higher class is the \((k-N)\)-th time derivative of \(m\), so PIA.8 gives \(U_k=\tau^{k-N}U\). In the projective frame its rational coefficient is \(k!\lambda^{k-N}/F_h^{k+1}\), of homogeneous degree \(-(N+1)\). The homogeneous top form has weight \(N+1\), so their product descends to the projective input and has the stated affine restriction. Also \(D_tF_h=-\lambda\), which verifies the same successive derivative identity globally. Consequently
+
+\[
+ \tau^{-k}U_kc_+^{-1}=a.
+ \tag{PIA.25}
+\]
+
+For \(a_{k,r}=\tau^{-r}U_kc_+^{-1}\), one has \(a_{k,r}=\tau^{k-r}a\). Conjugating PIA.17 by that integer power and using the actual Weyl commutator gives
+
+\[
+ a_{k,r}\Phi_K(s)
+   =\bigl(t+(E_x+k-r)\tau^{-1}\bigr)a_{k,r}.
+ \tag{PIA.26}
+\]
+
+All other generator images are unchanged. For positive exponents, induction from \([\tau,t]=1\) gives \(\tau^jt\tau^{-j}=t+j\tau^{-1}\); PDT.7 proves the negative exponents. Thus the required parameter-zero map occurs for \(r=k\). For the original \(k=N\), choosing \(r=1\) would instead add \((N-1)\tau^{-1}\) to time.
+
+### 3.427. Exercise and solution: one linear test can vanish on a conormal
+
+**Exercise 3.FQ.** In a neighborhood of zero in \(\mathbf C^2_{t,x}\), let \(C\) be the smooth real curve \(t=u^3,x=u\), with \(u\) real, and let \(F_C=\mathbf C_C\). Show that \(p=d\operatorname{Re}t\) belongs to its microsupport at zero but \(\mathsf T_p(F_C)=0\) for the linear test of PDT.8.
+
+**Solution 3.FQ.** The curve is closed in a sufficiently small ambient coordinate neighborhood: it is defined there by \(\operatorname{Im}t=\operatorname{Im}x=0\) and \(\operatorname{Re}t=(\operatorname{Re}x)^3\). Its tangent at zero is the real \(x\)-axis. Hence
+
+\[
+ p(\dot t,\dot x)=0
+ \quad\text{for }(\dot t,\dot x)=(0,\dot u),
+ \qquad
+ p\in T_C^*\mathbf C^2\setminus0.
+ \tag{PIA.27}
+\]
+
+Membership in the microsupport can also be checked directly. For \(u_0>0\), the phase \(\varphi=\operatorname{Re}(t-3u_0^2x)\), restricted to the curve with \(u=u_0+v\), has difference from its critical value \(v^2(3u_0+v)\). It is nonnegative near that point, so its supported constant sheaf has a nonzero degree-zero stalk. The resulting microsupport covectors \(d\operatorname{Re}t-3u_0^2d\operatorname{Re}x\) tend to \(p\) as \(u_0\) decreases to zero. Microsupport is closed, since its defining vanishing condition is open. Hence \(p\) lies in it. On \(C\), the support condition \(\operatorname{Re}t\ge0\) is exactly \(u\ge0\). The local support sequence is therefore
+
+\[
+ \mathbf C
+   \xrightarrow{\ \mathrm{id}\ }\mathbf C
+   \longrightarrow
+   \mathsf T_p(F_C)[1],
+ \qquad
+ \mathsf T_p(F_C)=0.
+ \tag{PIA.28}
+\]
+
+Both the small interval and its negative half are contractible; their ordinary constant-sheaf cohomology is concentrated in degree zero, and restriction is the identity. This proves the displayed vanishing in all degrees. It does not contradict the defining microsupport criterion, which requires vanishing for a neighborhood of covectors and all admitted tests, not one fixed linear function at the base point. The cubic has nearby nonzero conormals approaching \(p\).
+
+### 3.428. Polynomial words and whole analytic inputs
+
+The proved finite statement can be recorded as
+
+\[
+ Q\in W_{Y,\sigma}
+ \ \Longrightarrow\
+ \text{PIA.19--PIA.22 with the specified actual actions}.
+ \tag{PIA.29}
+\]
+
+Every such \(Q\) is a finite sum of finite words. For an analytic coefficient \(b(s,y)=\sum_\alpha c_\alpha\,(s,y)^\alpha\), expanded about the affine coordinate origin, its partial Taylor sums alone do not establish the operator identity. One must justify the limit on common coefficient domains and proper support representatives. For a whole infinite-order input, the positive homogeneous head and negative factorial tail have their separate estimates. Neither is a finite word calculation.
+
+For a selected full operator germ, the required further comparison is still
+
+\[
+ H^1(\alpha)\,r_Y(Q)
+    =r_X(\Phi(Q))\,H^1(\alpha),
+ \qquad Q\in\mathcal E^{\mathbb R}_{Y,q},
+ \tag{PIA.30}
+\]
+
+where \(\Phi\) is the exact whole-ring map WT.2 and the operators are realized on the chosen cutoff coefficients. Its germ identity is already an actual kernel product. Matching that product to these tested coefficient maps must retain the ordinary evaluation comparison, all complement entries, density normalization and common proper collar. The polynomial theorem proves the stated finite subalgebra case; it does not assert this remaining whole-input comparison.
+
 ## 4. Betti, constructible, and tempered categories
 
 Now suppose \(k=\mathbb C\), and choose a coefficient field \(E\) of characteristic zero. The **large Betti** category consists of complexes of \(E\)-sheaves on the analytic stack, with no finite-dimensional stalk requirement. Its automorphic subcategory is

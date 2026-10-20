@@ -515,6 +515,60 @@ The finite-\(p\) restriction is essential: smooth averages of a step converge in
 
 *The right panel uses the even normalized kernel proportional to \(\exp(-1/(1-t^2))\) on \(|t|<1\), zero elsewhere, and \(\varepsilon=0.25\). The averaged step equals the step outside \([-\varepsilon,\varepsilon]\). Its error is at most \(1/2\), with that essential supremum attained as a limit near zero. The left panel illustrates the lattice normalization in [Local data and compatible products, Proposition 1.2](local-data-and-compatible-products.md#one-compact-profile-for-every-lattice-translate). Curves are numerical samples; (C5)–(C7) and Solution 13 give the proofs. [Reproducible figure](../figures/local-averaging-and-lattice-partitions.py).*
 
+
+## Finite measurements and the weak topology
+
+A basic weak neighborhood of \(T\in\mathcal D'(X)\) specifies finitely many tests \(\phi_1,\ldots,\phi_m\) and positive tolerances \(\varepsilon_i\), and consists of the distributions \(S\) satisfying
+\[
+ |(S-T)(\phi_i)|<\varepsilon_i\quad(1\le i\le m).
+ \tag{W1}
+\]
+Pairings remain complex linear. The empty list imposes no condition.
+
+**Proposition 5.6 (the continuous dual of the weak distribution space).** A complex-linear map \(\Lambda:\mathcal D'(X)\to\mathbb C\) is continuous for the weak topology if and only if there is a unique \(\psi\in\mathcal D(X)\) such that
+\[
+ \Lambda(T)=T(\psi)\qquad(T\in\mathcal D'(X)).
+ \tag{W2}
+\]
+
+**Proof.** Evaluation on a fixed test is continuous by (W1). Conversely, continuity at zero supplies a basic neighborhood on which \(|\Lambda(T)|<1\). Define the linear map
+\[
+ E(T)=(T(\phi_1),\ldots,T(\phi_m)).
+ \tag{W3}
+\]
+If \(E(T)=0\), every scalar multiple of \(T\) is in that neighborhood. Linearity and the bound force \(\Lambda(T)=0\). Thus \(\Lambda\) induces a well-defined linear functional \(\ell\) on the subspace \(E(\mathcal D'(X))\subset\mathbb C^m\). Choose a basis of that subspace, extend it to a basis of \(\mathbb C^m\), and extend \(\ell\) by assigning zero to the additional basis vectors. This finite basis construction terminates after at most \(m\) independent choices. In coordinate form the extension is \(\ell(z)=\sum_i c_i z_i\). Hence \(\psi=\sum_i c_i\phi_i\) gives (W2). If the list is empty, the same scaling argument gives \(\Lambda=0\) and we take \(\psi=0\).
+
+For uniqueness, the point mass \(\delta_x\) is a distribution for every \(x\in X\), since \(|\delta_x(\phi)|\le\sup|\phi|\). Two representing tests therefore have equal values at every \(x\). If \(X\) is empty all the spaces are zero and the conclusion still holds. \(\square\)
+
+**Proposition 5.7 (exact interpolation of finitely many measurements).** Given \(T\in\mathcal D'(X)\) and finitely many \(\phi_i\in\mathcal D(X)\), there is \(f\in\mathcal D(X)\) with
+\[
+ \int_X f(x)\phi_i(x)\,dx=T(\phi_i)\quad\text{for every }i.
+ \tag{W4}
+\]
+The support of \(f\) can be contained in the union of the test supports. Consequently the distributions defined by compact smooth functions are weakly dense in \(\mathcal D'(X)\).
+
+**Proof.** Choose a basis \(\psi_1,\ldots,\psi_r\) from the finite span of the \(\phi_i\). For \(r=0\), take \(f=0\). Otherwise define
+\[
+ G_{ij}=\int_X\psi_i\overline{\psi_j},\qquad
+ q_i=T(\psi_i),\qquad Ga=q,\qquad
+ f=\sum_{j=1}^r a_j\overline{\psi_j}.
+ \tag{W5}
+\]
+All these integrals are over one compact set. The Hermitian matrix \(G\) is positive definite: for \(c\ne0\),
+\[
+ c^*Gc=\int_X\left|\sum_i\overline{c_i}\psi_i\right|^2>0.
+ \tag{W6}
+\]
+Independence makes the smooth function inside the modulus nonzero somewhere; continuity gives a ball where its squared modulus has a positive lower bound. That ball has positive volume. If \(Gc=0\), (W6) would force \(c=0\). Thus the columns are independent and form a basis of \(\mathbb C^r\), so \(Ga=q\) has a unique solution. This uses only finite-dimensional basis extension, not an infinite-dimensional representation theorem.
+
+Formula (W5) gives a compact smooth \(f\), supported in the union of the \(\psi_i\) supports, and \(\int f\psi_i=(Ga)_i=q_i\). Every original test is a linear combination of this basis, so (W4) follows. The basis may be selected from the original tests, giving the asserted support inclusion. Every neighborhood (W1) consequently contains a regular distribution with exactly the same listed values as \(T\). This proves weak density. Corollary 5.3 supplies the stronger sequential approximation with control of all bounded test families. \(\square\)
+
+The conjugates in (W5) are essential: the distributional pairing is bilinear, while the positive Gram matrix uses a conjugate to guarantee invertibility. Exact agreement on a finite list also does not identify the full distribution. Solution 15 exhibits a test on which the interpolant and its target disagree.
+
+![Smooth interpolation of two measurements and equal-weight approximation of a positive measure.](../figures/finite-measurements-and-zero-counts.png)
+
+*Figure. Left: the exact interpolant \(f=-xb/A_2\) for the two tests \(b,xb\) and target \(\delta'_0\), where \(b(x)=e^{1-1/(1-x^2)}\) for \(|x|<1\), zero otherwise, and \(A_2=\int x^2b(x)^2\,dx\). The plot evaluates this positive normalization by numerical quadrature; the identities \(\int fb=0\) and \(\int fxb=-1\) follow exactly from parity and the definition of \(A_2\), as in Solution 15. Right: the cumulative masses of eight atoms of weight \(1/8\) at \((j-\tfrac12)/8\) and of uniform length measure on \([0,1]\). Their maximum cumulative difference is \(1/16\). These atoms are the normalized logarithmic curvature of the polynomial in [Compactness and complex-line positivity, Solution 9](compactness-and-complex-line-positivity.md#solutions). [Editable figure script](../figures/finite-measurements-and-zero-counts.py).*
+
 ## Translation-invariant operators have one convolution kernel
 
 We first prove the two kernel facts needed for the operator theorem.
@@ -651,6 +705,11 @@ including all translated derivatives.
 13. **A persistent uniform error — intermediate.** Let \(\rho\in C_c^\infty(\mathbb R)\) be even, nonnegative and normalized, with support in \([-1,1]\). For \(H=\mathbf1_{(0,\infty)}\) and \(\rho_\varepsilon(x)=\varepsilon^{-1}\rho(x/\varepsilon)\), prove that the error is supported in \([-\varepsilon,\varepsilon]\), has essential supremum \(1/2\), and satisfies \(\|\rho_\varepsilon*H-H\|_{L^p(K)}\le (2\varepsilon)^{1/p}/2\) for every compact \(K\) and finite \(p\ge1\). Explain why this is a local example, since \(H\notin L^p(\mathbb R)\).
 14. **Zero mass with a nonzero convolution — intermediate.** Let \(\rho\in C_c^\infty(\mathbb R)\) have integral one. For \(u=\rho'\) and \(v=\rho\), compute the integral and first moment of \(u*v\). Deduce that its vanishing integral does not make the convolution zero.
 
+
+15. **A derivative measured twice — intermediate.** Let \(b\) be the even compact smooth bump in the figure, and put \(A_2=\int x^2b^2\). For the tests \(b,xb\) and target \(T=\delta'_0\), find the interpolant in Proposition 5.7. Show that it fails to match the same target on the test \(x^3b\).
+16. **Complex tests and the conjugation — intermediate.** Replace the tests in Exercise 15 by \(b,ixb\). Compute their Gram matrix, target values and interpolant. Show explicitly that omitting the conjugates from (W5), while retaining the same coefficients, gives the wrong second measurement.
+17. **Freedom inside any open region — advanced.** Fix finitely many tests on an open \(X\subset\mathbb R^n\), \(n\ge1\). For every nonempty open \(V\subset X\), construct a nonzero \(h\in C_c^\infty(V)\) whose pairings with all the listed tests vanish. Deduce nonuniqueness of smooth interpolation even when the permitted perturbation region is prescribed.
+
 ## Complete solutions
 
 **Solution 1.** Evaluation and (1.8) give
@@ -774,6 +833,24 @@ The function \(F\) is zero for \(s\le-1\), one for \(s\ge1\), and satisfies \(F(
 Consequently \(u*v\) is nonzero. Cancellation of total mass is compatible with a nonzero first moment and nonzero function.
 
 
+
+**Solution 15.** The bump is smooth at both endpoints by the exponential flatness construction in the scalar cutoff foundation. It is positive on \((-1,1)\), \(b(0)=1\), and \(b'(0)=0\) by evenness. Hence the target values are \(0,-1\). Parity makes the Gram matrix diagonal with entries \(A_0=\int b^2>0\) and \(A_2>0\). Formula (W5) gives \(f=-xb/A_2\). Its two pairings are \(0,-1\). However,
+\[
+ \delta'_0(x^3b)=0,\qquad
+ \int f(x)x^3b(x)\,dx=-\frac{\int x^4b(x)^2\,dx}{A_2}<0.
+ \tag{W7}
+\]
+The numerator is positive on a nonempty interval away from zero. Thus the finite measurements agree while the distributions differ.
+
+**Solution 16.** The mixed Gram entries are \(-i\int xb^2\) and \(i\int xb^2\), both zero. The diagonal remains \(A_0,A_2\); the target vector is \((0,-i)\). Thus \(a_1=0\), \(a_2=-i/A_2\), and
+\[
+ f=(-i/A_2)\overline{ixb}=-xb/A_2,\qquad \int f(ixb)=-i.
+ \tag{W8}
+\]
+Using \(a_2(ixb)\) instead gives \(+xb/A_2\), whose second pairing is \(+i\), not \(-i\).
+
+**Solution 17.** If there are \(m\) tests, choose \(m+1\) disjoint closed balls of positive radius inside \(V\). This is possible by placing finitely many distinct points in a small ball contained in \(V\), and then choosing radii smaller than their mutual distances and distances to that ball's boundary. Let \(\eta_j\) be a nonzero smooth bump in the \(j\)-th ball. Form the \(m\)-by-\((m+1)\) matrix \(B_{ij}=\int\eta_j\phi_i\). Its columns are linearly dependent in \(\mathbb C^m\), so some nonzero vector \(c\) satisfies \(Bc=0\). Then \(h=\sum_jc_j\eta_j\) has the required pairings and support. It is nonzero because the supports are disjoint and one coefficient is nonzero. Adding any scalar multiple of \(h\) to an interpolant preserves every listed measurement.
+
 ## Programme proof locations and sources
 
 - [U008, Order, positivity and distributional limits](order-positivity-and-limits.md): the definition and bounded-family characterization (T1), Proposition 1.2 for finite differentiability, Proposition 1.1 for the sequential criterion, and the entire proof of Theorem 5.1 for uniform order and strong sequential convergence.
@@ -785,3 +862,5 @@ Consequently \(u*v\) is nonzero. Cancellation of total mass is compatible with a
 - Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second edition, Springer, 2003, §1.2, pp. 14–15, for tests and determination of locally integrable functions; §1.3, pp. 16–18, for ordinary convolution, allocation of derivatives and approximation; §4.2, Exercise 4.2.5. ISBN 978-3-642-61497-2. Proposition 1.2 proves the translation limit and its bounded-test remainder estimate.
 
 The ordinary convolution identities (C1)–(C4), norm estimates (C5)–(C7) and almost-everywhere determination are proved in Theorems 2.3 and 5.4 and Corollary 5.5. The local cutoff used in Theorem 5.4 is constructed in [Local data and compatible products](local-data-and-compatible-products.md#restriction-and-a-local-uniqueness-principle).
+
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition, Springer, 2003, [doi:10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), §4.1, pp.88–100: smooth approximation, weak duality, subharmonic limits and logarithmic curvature. The finite-measurement and integer-weight constructions above provide their full arguments.

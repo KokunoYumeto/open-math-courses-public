@@ -40,6 +40,13 @@ def heads(text):
     return [(i,m[1],m[2]) for i,line in enumerate(text.splitlines(),1)
             if (m:=re.match(r'^(#{1,6})\s+(.+)$',line))]
 
+def validate_math_environment_arguments(tex):
+    if re.search(r'\\(?:lhook|joinrel)\b',tex):
+        raise ValueError('Use the supported hookrightarrow macro for an injection arrow')
+    if re.search(r'\\begin\{(?:gathered|aligned)\}\s*\[(?![tbc]\])',tex):
+        raise ValueError('A leading bracket in gathered/aligned needs an empty group before it; otherwise it is consumed as a position argument')
+
+
 def render_unit(unit,files,aliases,links,assets=None,verify_identity=True):
     raw=files[unit['source']]
     if sha(raw)!=unit['source_sha256']:
@@ -67,6 +74,8 @@ def render_unit(unit,files,aliases,links,assets=None,verify_identity=True):
     if layout.count('{{LESSON_BODY}}')!=1:
         raise ValueError('Layout must contain exactly one lesson body slot')
     dom=BeautifulSoup(layout.replace('{{LESSON_BODY}}','\n'+body+'\n'),'html.parser')
+    for math_node in dom.select('[data-tex]'):
+        validate_math_environment_arguments(math_node['data-tex'])
     repaired=[]
     for pre in list(dom.select('article pre')):
         text=pre.get_text();digest=sha(text.encode())
