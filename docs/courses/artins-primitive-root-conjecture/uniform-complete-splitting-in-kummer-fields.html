@@ -1,0 +1,176 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Uniform complete splitting in Kummer fields</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Artin&#x27;s primitive root conjecture)</a><a href="the-zero-free-strip.html">Previous lesson</a><a href="a-block-sieve-and-rough-number-densities.html">Next lesson</a><a href="src/uniform-complete-splitting-in-kummer-fields.md">Editable source</a></nav><main><article><h1 id="uniform-complete-splitting-in-kummer-fields">Uniform complete splitting in Kummer fields</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves Proposition 5.2 of <a href="artins-conjecture-and-the-index-of-a-prime.html"><em>Artin's conjecture and the index of a prime</em></a>: the number of primes <span class="math" data-tex="\(p\in(x,2x]\)">\(p\in(x,2x]\)</span> that split completely in the Kummer field <span class="math" data-tex="\(K_q=\mathbb Q(\mu_q,a^{1/q})\)">\(K_q=\mathbb Q(\mu_q,a^{1/q})\)</span> is <span class="math" data-tex="\(O\bigl(x/(q(q-1)\log x)+x^{1-\delta_0}\bigr)\)">\(O\bigl(x/(q(q-1)\log x)+x^{1-\delta_0}\bigr)\)</span>, uniformly for primes <span class="math" data-tex="\(q\le\exp((\log x)^{0.3})\)">\(q\le\exp((\log x)^{0.3})\)</span>. The field <span class="math" data-tex="\(K_q\)">\(K_q\)</span> is not cyclotomic, but after adjoining <span class="math" data-tex="\(\mu_{12q}\)">\(\mu_{12q}\)</span> it becomes an abelian extension of the cyclotomic field <span class="math" data-tex="\(\mathbb Q(\mu_{12q})\)">\(\mathbb Q(\mu_{12q})\)</span>, to which the zero-free strip of <a href="the-zero-free-strip.html"><em>The zero-free strip</em></a> applies; the strip then descends to <span class="math" data-tex="\(\zeta_{K_q}\)">\(\zeta_{K_q}\)</span>. A smoothed explicit formula, whose error depends on the field only through its degree and discriminant, converts the zero-free strip into the count. The uniformity in <span class="math" data-tex="\(q\)">\(q\)</span> rests on a zero count for Dedekind zeta functions with absolute constants, used as a named result.</p>
+<p><strong>Prerequisites.</strong> <a href="artins-conjecture-and-the-index-of-a-prime.html"><em>Artin's conjecture and the index of a prime</em></a>, Section 3 and Proposition 5.2; <a href="the-zero-free-strip.html"><em>The zero-free strip</em></a>, Corollary 4.2; <a href="../NT-ANT/cyclotomic-fields.html"><em>Cyclotomic fields</em></a>, Theorem 12.2; <a href="../NT-ANT/the-different-and-the-discriminant.html"><em>The different and the discriminant</em></a>, (1)–(4), Proposition 14.2 and Theorem 14.3; <a href="../NT-ANT/discriminants-and-integral-bases.html"><em>Discriminants and integral bases</em></a>, Proposition 2.2; <a href="../NT-CFT/hilberts-theorem-90-and-kummer-theory.html"><em>Hilbert's theorem 90 and Kummer theory</em></a>, Theorem 3.3; <a href="../NT-CFT/artin-l-functions-conductors-and-discriminants.html"><em>Artin L-functions, conductors and discriminants</em></a>, Proposition 21.1 and Theorem 21.2; <a href="../NT-EXPF/NT-EXPF-02.html"><em>Explicit formulas for Dirichlet L-functions and primes in progressions</em></a>, Section 6 and Theorem 6.1; <a href="../NT-ZETA/NT-ZETA-03.html"><em>The Gamma function and Stirling's formula</em></a>, Section 5.</p>
+<h2 id="1-degree-discriminant-and-the-zero-free-strip">1. Degree, discriminant and the zero-free strip</h2>
+<p>Fix an integer <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(|a|&gt;1\)">\(|a|&gt;1\)</span>, and recall <span class="math" data-tex="\(E_q=\mathbb Q(\mu_q)\)">\(E_q=\mathbb Q(\mu_q)\)</span>, <span class="math" data-tex="\(K_q=\mathbb Q(\mu_q,a^{1/q})\)">\(K_q=\mathbb Q(\mu_q,a^{1/q})\)</span> from Lesson 1. Put <span class="math" data-tex="\(\delta_0=10^{-6}\)">\(\delta_0=10^{-6}\)</span>.</p>
+<p><strong>Lemma 1.1</strong> (the Kummer fields [OpenAI-029, Lemma 9.1]). For every sufficiently large prime <span class="math" data-tex="\(q\)">\(q\)</span>, the degree <span class="math" data-tex="\(n_q=[K_q:\mathbb Q]\)">\(n_q=[K_q:\mathbb Q]\)</span> and the absolute discriminant <span class="math" data-tex="\(D_q\)">\(D_q\)</span> satisfy
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+n_q=q(q-1),\\
+D_q\le q^{q(q-2)}\bigl(q^q|a|^{q-1}\bigr)^{q-1},\\
+\log D_q+n_q\le C_a\,n_q\log(2q),\quad(1.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+n_q=q(q-1),\\
+D_q\le q^{q(q-2)}\bigl(q^q|a|^{q-1}\bigr)^{q-1},\\
+\log D_q+n_q\le C_a\,n_q\log(2q),\quad(1.1)
+\end{gathered}
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\zeta_{K_q}(s)\ne0\\
+(\operatorname{Re}s&gt;1-\delta_0).\quad(1.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\zeta_{K_q}(s)\ne0\\
+(\operatorname{Re}s&gt;1-\delta_0).\quad(1.2)
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> <em>Degree.</em> Choose a prime <span class="math" data-tex="\(\ell\mid a\)">\(\ell\mid a\)</span> and take <span class="math" data-tex="\(q\ne\ell\)">\(q\ne\ell\)</span>, <span class="math" data-tex="\(q&gt;v_\ell(a)\)">\(q&gt;v_\ell(a)\)</span>. By Theorem 12.2 of <a href="../NT-ANT/cyclotomic-fields.html"><em>Cyclotomic fields</em></a>, <span class="math" data-tex="\(|d_{E_q}|=q^{q-2}\)">\(|d_{E_q}|=q^{q-2}\)</span>, so <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is unramified in <span class="math" data-tex="\(E_q\)">\(E_q\)</span> and every prime of <span class="math" data-tex="\(E_q\)">\(E_q\)</span> above <span class="math" data-tex="\(\ell\)">\(\ell\)</span> gives <span class="math" data-tex="\(a\)">\(a\)</span> the valuation <span class="math" data-tex="\(v_\ell(a)\)">\(v_\ell(a)\)</span>, which is not divisible by <span class="math" data-tex="\(q\)">\(q\)</span>. Hence <span class="math" data-tex="\(a\)">\(a\)</span> is not a <span class="math" data-tex="\(q\)">\(q\)</span>th power in <span class="math" data-tex="\(E_q\)">\(E_q\)</span>. Since <span class="math" data-tex="\(\mu_q\subset E_q\)">\(\mu_q\subset E_q\)</span>, Kummer theory (Theorem 3.3 of <a href="../NT-CFT/hilberts-theorem-90-and-kummer-theory.html"><em>Hilbert's theorem 90 and Kummer theory</em></a>) makes <span class="math" data-tex="\(K_q/E_q\)">\(K_q/E_q\)</span> cyclic, with <span class="math" data-tex="\(\sigma\mapsto\sigma(a^{1/q})/a^{1/q}\)">\(\sigma\mapsto\sigma(a^{1/q})/a^{1/q}\)</span> embedding its Galois group in <span class="math" data-tex="\(\mu_q\)">\(\mu_q\)</span>; the degree divides <span class="math" data-tex="\(q\)">\(q\)</span> and is not <span class="math" data-tex="\(1\)">\(1\)</span>, so it is <span class="math" data-tex="\(q\)">\(q\)</span>, and <span class="math" data-tex="\(n_q=q(q-1)\)">\(n_q=q(q-1)\)</span>.</p>
+<p><em>Discriminant.</em> Let <span class="math" data-tex="\(\alpha=a^{1/q}\)">\(\alpha=a^{1/q}\)</span>, with minimal polynomial <span class="math" data-tex="\(f(T)=T^q-a\)">\(f(T)=T^q-a\)</span> over <span class="math" data-tex="\(E_q\)">\(E_q\)</span>, and let <span class="math" data-tex="\(B\)">\(B\)</span> be the ring of integers of <span class="math" data-tex="\(K_q\)">\(K_q\)</span>, <span class="math" data-tex="\(A\)">\(A\)</span> that of <span class="math" data-tex="\(E_q\)">\(E_q\)</span>. The trace-dual of <span class="math" data-tex="\(A[\alpha]\)">\(A[\alpha]\)</span> is <span class="math" data-tex="\(f&#x27;(\alpha)^{-1}A[\alpha]\)">\(f&#x27;(\alpha)^{-1}A[\alpha]\)</span> (Euler's lemma, in the proof of Proposition 14.2 of <a href="../NT-ANT/the-different-and-the-discriminant.html"><em>The different and the discriminant</em></a>), and it contains the trace-dual <span class="math" data-tex="\(J_{B/A}\)">\(J_{B/A}\)</span> of the larger ring <span class="math" data-tex="\(B\)">\(B\)</span>, by (1) there. Hence <span class="math" data-tex="\(f&#x27;(\alpha)J_{B/A}\subseteq A[\alpha]\subseteq B\)">\(f&#x27;(\alpha)J_{B/A}\subseteq A[\alpha]\subseteq B\)</span>, that is, <span class="math" data-tex="\(f&#x27;(\alpha)\in\mathfrak D_{B/A}\)">\(f&#x27;(\alpha)\in\mathfrak D_{B/A}\)</span> by (4) there. Taking norms with (15) of Theorem 14.3, the relative discriminant divides <span class="math" data-tex="\(N_{K_q/E_q}(f&#x27;(\alpha))A\)">\(N_{K_q/E_q}(f&#x27;(\alpha))A\)</span>, and by Proposition 2.2 of <a href="../NT-ANT/discriminants-and-integral-bases.html"><em>Discriminants and integral bases</em></a> this is the discriminant of <span class="math" data-tex="\(f\)">\(f\)</span>, <span class="math" data-tex="\(\pm q^qa^{q-1}\)">\(\pm q^qa^{q-1}\)</span>. The tower formula (16) of Theorem 14.3 then gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D_q&amp;=|d_{E_q}|^{q}\,\operatorname N_{E_q/\mathbb Q}(\mathfrak d_{K_q/E_q})\\
+&amp;\le q^{q(q-2)}\bigl(q^q|a|^{q-1}\bigr)^{q-1},
+\end{aligned}
+\]">\[
+\begin{aligned}
+D_q&amp;=|d_{E_q}|^{q}\,\operatorname N_{E_q/\mathbb Q}(\mathfrak d_{K_q/E_q})\\
+&amp;\le q^{q(q-2)}\bigl(q^q|a|^{q-1}\bigr)^{q-1},
+\end{aligned}
+\]</span>
+and taking logarithms gives the last bound in (1.1).</p>
+<p><em>The zero-free strip.</em> Put <span class="math" data-tex="\(F_q=\mathbb Q(\mu_{12q})\)">\(F_q=\mathbb Q(\mu_{12q})\)</span>, a cyclotomic field containing <span class="math" data-tex="\(\mu_{12}\)">\(\mu_{12}\)</span>, and <span class="math" data-tex="\(\widetilde K_q=K_qF_q\)">\(\widetilde K_q=K_qF_q\)</span>. The extension <span class="math" data-tex="\(\widetilde K_q/F_q\)">\(\widetilde K_q/F_q\)</span> is cyclic, being generated by <span class="math" data-tex="\(a^{1/q}\)">\(a^{1/q}\)</span> over a field containing <span class="math" data-tex="\(\mu_q\)">\(\mu_q\)</span>. The extension <span class="math" data-tex="\(\widetilde K_q/K_q\)">\(\widetilde K_q/K_q\)</span> is abelian, since restriction embeds its Galois group in the abelian group <span class="math" data-tex="\(\operatorname{Gal}(F_q/\mathbb Q)\)">\(\operatorname{Gal}(F_q/\mathbb Q)\)</span>. By (4) of Proposition 21.1 and Theorem 21.2 of <a href="../NT-CFT/artin-l-functions-conductors-and-discriminants.html"><em>Artin L-functions, conductors and discriminants</em></a>, for an abelian extension the Dedekind zeta function of the top field is the product of the primitive Hecke <span class="math" data-tex="\(L\)">\(L\)</span>-functions of the characters of its Galois group:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\zeta_{\widetilde K_q}(s)=\prod_{\eta}L_{F_q}(s,\eta),\\
+\frac{\zeta_{\widetilde K_q}(s)}{\zeta_{K_q}(s)}=\prod_{\eta&#x27;\ne1}L_{K_q}(s,\eta&#x27;),
+\end{gathered}
+\]">\[
+\begin{gathered}
+\zeta_{\widetilde K_q}(s)=\prod_{\eta}L_{F_q}(s,\eta),\\
+\frac{\zeta_{\widetilde K_q}(s)}{\zeta_{K_q}(s)}=\prod_{\eta&#x27;\ne1}L_{K_q}(s,\eta&#x27;),
+\end{gathered}
+\]</span>
+with <span class="math" data-tex="\(\eta\)">\(\eta\)</span> running over the characters of <span class="math" data-tex="\(\operatorname{Gal}(\widetilde K_q/F_q)\)">\(\operatorname{Gal}(\widetilde K_q/F_q)\)</span> and <span class="math" data-tex="\(\eta&#x27;\)">\(\eta&#x27;\)</span> over the nontrivial characters of <span class="math" data-tex="\(\operatorname{Gal}(\widetilde K_q/K_q)\)">\(\operatorname{Gal}(\widetilde K_q/K_q)\)</span>, viewed as finite-order Hecke characters. Every <span class="math" data-tex="\(L_{F_q}(s,\eta)\)">\(L_{F_q}(s,\eta)\)</span> has no zero in <span class="math" data-tex="\(\operatorname{Re}s&gt;1-\delta_0\)">\(\operatorname{Re}s&gt;1-\delta_0\)</span> by Corollary 4.2 of Lesson 14, so neither has <span class="math" data-tex="\(\zeta_{\widetilde K_q}\)">\(\zeta_{\widetilde K_q}\)</span>. Every <span class="math" data-tex="\(L_{K_q}(s,\eta&#x27;)\)">\(L_{K_q}(s,\eta&#x27;)\)</span> is entire, <span class="math" data-tex="\(\eta&#x27;\)">\(\eta&#x27;\)</span> being nonprincipal. A zero of <span class="math" data-tex="\(\zeta_{K_q}\)">\(\zeta_{K_q}\)</span> in the half-plane would therefore be a zero of <span class="math" data-tex="\(\zeta_{\widetilde K_q}\)">\(\zeta_{\widetilde K_q}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The width <span class="math" data-tex="\(\delta_0\)">\(\delta_0\)</span> does not depend on <span class="math" data-tex="\(q\)">\(q\)</span>; everything else that enters below depends on <span class="math" data-tex="\(K_q\)">\(K_q\)</span> only through <span class="math" data-tex="\(n_q\)">\(n_q\)</span> and <span class="math" data-tex="\(D_q\)">\(D_q\)</span>.</p>
+<h2 id="2-a-uniform-zero-count">2. A uniform zero count</h2>
+<p>For a number field <span class="math" data-tex="\(K\)">\(K\)</span> of degree <span class="math" data-tex="\(n_K\)">\(n_K\)</span> and absolute discriminant <span class="math" data-tex="\(d_K\)">\(d_K\)</span>, let <span class="math" data-tex="\(N_K(T)\)">\(N_K(T)\)</span> be the number of zeros <span class="math" data-tex="\(\rho=\beta+i\gamma\)">\(\rho=\beta+i\gamma\)</span> of <span class="math" data-tex="\(\zeta_K\)">\(\zeta_K\)</span> with <span class="math" data-tex="\(0&lt;\beta&lt;1\)">\(0&lt;\beta&lt;1\)</span> and <span class="math" data-tex="\(|\gamma|\le T\)">\(|\gamma|\le T\)</span>, counted with multiplicity.</p>
+<p><strong>Named result N4</strong> (Hasanalizade, Shen and Wong [HSW, Corollary 1.2]). For every number field <span class="math" data-tex="\(K\)">\(K\)</span> and every <span class="math" data-tex="\(T\ge1\)">\(T\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl|N_K(T)-\frac T\pi\log\Bigl(d_K\Bigl(\frac T{2\pi e}\Bigr)^{n_K}\Bigr)\Bigr|\\
+&amp;\quad \le0.228\,(\log d_K+n_K\log T)\\
+&amp;\qquad +23.108\,n_K+4.520 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl|N_K(T)-\frac T\pi\log\Bigl(d_K\Bigl(\frac T{2\pi e}\Bigr)^{n_K}\Bigr)\Bigr|\\
+&amp;\quad \le0.228\,(\log d_K+n_K\log T)\\
+&amp;\qquad +23.108\,n_K+4.520 .
+\end{aligned}
+\]</span>
+It is used without proof in the programme.</p>
+<p><strong>Corollary 2.1.</strong> There is an absolute constant <span class="math" data-tex="\(C\)">\(C\)</span> such that for every number field <span class="math" data-tex="\(K\)">\(K\)</span> and every real <span class="math" data-tex="\(t\)">\(t\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\#\{\rho:\ t\le\gamma\le t+1\}\\
+&amp;\le C\bigl(\log d_K+n_K\log(2+|t|)\bigr).\quad(2.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\#\{\rho:\ t\le\gamma\le t+1\}\\
+&amp;\le C\bigl(\log d_K+n_K\log(2+|t|)\bigr).\quad(2.1)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(|t|\ge2\)">\(|t|\ge2\)</span> the zeros counted lie in <span class="math" data-tex="\(|t|-1\le|\gamma|\le|t|+1\)">\(|t|-1\le|\gamma|\le|t|+1\)</span>, so their number is at most <span class="math" data-tex="\(N_K(|t|+1)-N_K(|t|-1-\epsilon)\)">\(N_K(|t|+1)-N_K(|t|-1-\epsilon)\)</span> for small <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>. By N4 the main terms differ by at most <span class="math" data-tex="\(\frac2\pi\log(d_K((|t|+2)/(2\pi))^{n_K})+O(1)\)">\(\frac2\pi\log(d_K((|t|+2)/(2\pi))^{n_K})+O(1)\)</span>, and the errors add at most twice the right side of N4 at height <span class="math" data-tex="\(|t|+1\)">\(|t|+1\)</span>. For <span class="math" data-tex="\(|t|&lt;2\)">\(|t|&lt;2\)</span> use <span class="math" data-tex="\(N_K(3)\)">\(N_K(3)\)</span>. Both are at most <span class="math" data-tex="\(C(\log d_K+n_K\log(2+|t|))\)">\(C(\log d_K+n_K\log(2+|t|))\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-a-smooth-prime-ideal-estimate">3. A smooth prime-ideal estimate</h2>
+<p><strong>Lemma 3.1</strong> (smooth prime ideals [OpenAI-029, Lemma 9.2]). Fix <span class="math" data-tex="\(0&lt;\delta&lt;\frac12\)">\(0&lt;\delta&lt;\frac12\)</span> and a nonnegative <span class="math" data-tex="\(\phi\in C_c^\infty([\frac12,3])\)">\(\phi\in C_c^\infty([\frac12,3])\)</span>. Let <span class="math" data-tex="\(K\)">\(K\)</span> be a number field of degree <span class="math" data-tex="\(n\)">\(n\)</span> and absolute discriminant <span class="math" data-tex="\(D\)">\(D\)</span> such that <span class="math" data-tex="\(\zeta_K\)">\(\zeta_K\)</span> has no zero in <span class="math" data-tex="\(\operatorname{Re}s&gt;1-\delta\)">\(\operatorname{Re}s&gt;1-\delta\)</span>. For every <span class="math" data-tex="\(x\ge2\)">\(x\ge2\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Theta_{K,\phi}(x)\\
+&amp;\quad=\sum_{\mathfrak p}\sum_{m\ge1}(\log\operatorname N\mathfrak p)\,\phi\Bigl(\frac{\operatorname N\mathfrak p^m}x\Bigr)\\
+&amp;\quad\le C_{\phi}\bigl(x+x^{1-\delta}(\log D+n)\bigr),\quad(3.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Theta_{K,\phi}(x)\\
+&amp;\quad=\sum_{\mathfrak p}\sum_{m\ge1}(\log\operatorname N\mathfrak p)\,\phi\Bigl(\frac{\operatorname N\mathfrak p^m}x\Bigr)\\
+&amp;\quad\le C_{\phi}\bigl(x+x^{1-\delta}(\log D+n)\bigr),\quad(3.1)
+\end{aligned}
+\]</span>
+with <span class="math" data-tex="\(C_\phi\)">\(C_\phi\)</span> independent of <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(x\)">\(x\)</span>; the sum runs over the nonzero prime ideals of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p><em>Proof.</em> Apply Theorem 6.1 of <a href="../NT-EXPF/NT-EXPF-02.html"><em>Explicit formulas for Dirichlet L-functions and primes in progressions</em></a> to the trivial Hecke character of <span class="math" data-tex="\(K\)">\(K\)</span>, for which <span class="math" data-tex="\(L=\zeta_K\)">\(L=\zeta_K\)</span>, <span class="math" data-tex="\(Q=D\)">\(Q=D\)</span>, the completed function has its two poles at <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>, and <span class="math" data-tex="\(G(s)=\Gamma_{\mathbb R}(s)^{r_1}\Gamma_{\mathbb C}(s)^{r_2}\)">\(G(s)=\Gamma_{\mathbb R}(s)^{r_1}\Gamma_{\mathbb C}(s)^{r_2}\)</span>, with the test function <span class="math" data-tex="\(f(y)=\phi(y/x)\)">\(f(y)=\phi(y/x)\)</span>. Its Mellin transform is <span class="math" data-tex="\(H(s)=\int_0^\infty f(y)y^s\,dy/y=x^s\Phi(s)\)">\(H(s)=\int_0^\infty f(y)y^s\,dy/y=x^s\Phi(s)\)</span>, with <span class="math" data-tex="\(\Phi(s)=\int_0^\infty\phi(t)t^s\,dt/t\)">\(\Phi(s)=\int_0^\infty\phi(t)t^s\,dt/t\)</span> entire and, by repeated integration by parts, <span class="math" data-tex="\(|\Phi(\sigma+it)|\le C_{\phi,A}(1+|t|)^{-A}\)">\(|\Phi(\sigma+it)|\le C_{\phi,A}(1+|t|)^{-A}\)</span> on <span class="math" data-tex="\(0\le\sigma\le1\)">\(0\le\sigma\le1\)</span>. Since <span class="math" data-tex="\(x\ge2\)">\(x\ge2\)</span>, <span class="math" data-tex="\(f(1)=0\)">\(f(1)=0\)</span>, and <span class="math" data-tex="\(f^\sharp(y)=y^{-1}f(y^{-1})\)">\(f^\sharp(y)=y^{-1}f(y^{-1})\)</span> vanishes for <span class="math" data-tex="\(y\ge1\)">\(y\ge1\)</span>; so the dual prime sum and the conductor term disappear, and (6.3) there reads
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Theta_{K,\phi}(x)=H(1)+H(0)-\sum_\rho H(\rho)\\
+&amp;\quad+\frac1{2\pi}\int_{\mathbb R}2\operatorname{Re}\frac{G&#x27;}G\bigl(\tfrac12+it\bigr)\\
+&amp;\qquad\times H\bigl(\tfrac12+it\bigr)\,dt ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Theta_{K,\phi}(x)=H(1)+H(0)-\sum_\rho H(\rho)\\
+&amp;\quad+\frac1{2\pi}\int_{\mathbb R}2\operatorname{Re}\frac{G&#x27;}G\bigl(\tfrac12+it\bigr)\\
+&amp;\qquad\times H\bigl(\tfrac12+it\bigr)\,dt ,
+\end{aligned}
+\]</span>
+the sum running over the zeros of the completed function, which are the zeros of <span class="math" data-tex="\(\zeta_K\)">\(\zeta_K\)</span> with <span class="math" data-tex="\(0&lt;\operatorname{Re}\rho&lt;1\)">\(0&lt;\operatorname{Re}\rho&lt;1\)</span>.</p>
+<p>Here <span class="math" data-tex="\(H(1)=x\Phi(1)\)">\(H(1)=x\Phi(1)\)</span> and <span class="math" data-tex="\(H(0)=\Phi(0)\)">\(H(0)=\Phi(0)\)</span>. Every zero has <span class="math" data-tex="\(\operatorname{Re}\rho\le1-\delta\)">\(\operatorname{Re}\rho\le1-\delta\)</span>, so <span class="math" data-tex="\(|H(\rho)|\le x^{1-\delta}C_{\phi,3}(1+|\gamma|)^{-3}\)">\(|H(\rho)|\le x^{1-\delta}C_{\phi,3}(1+|\gamma|)^{-3}\)</span>; grouping the zeros in unit intervals of height and using (2.1),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_\rho|H(\rho)|\le C\,x^{1-\delta}\sum_{k\in\mathbb Z}(1+|k|)^{-3}\\
+&amp;\qquad\times\bigl(\log D+n\log(2+|k|)\bigr)\\
+&amp;\quad\le C\,x^{1-\delta}(\log D+n).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_\rho|H(\rho)|\le C\,x^{1-\delta}\sum_{k\in\mathbb Z}(1+|k|)^{-3}\\
+&amp;\qquad\times\bigl(\log D+n\log(2+|k|)\bigr)\\
+&amp;\quad\le C\,x^{1-\delta}(\log D+n).
+\end{aligned}
+\]</span>
+Finally <span class="math" data-tex="\(\frac{G&#x27;}G\)">\(\frac{G&#x27;}G\)</span> is a sum of <span class="math" data-tex="\(r_1+r_2\le n\)">\(r_1+r_2\le n\)</span> logarithmic derivatives of <span class="math" data-tex="\(\Gamma_{\mathbb R}\)">\(\Gamma_{\mathbb R}\)</span> and <span class="math" data-tex="\(\Gamma_{\mathbb C}\)">\(\Gamma_{\mathbb C}\)</span>, each <span class="math" data-tex="\(O(\log(2+|t|))\)">\(O(\log(2+|t|))\)</span> on <span class="math" data-tex="\(\operatorname{Re}s=\frac12\)">\(\operatorname{Re}s=\frac12\)</span> (Section 5 of <a href="../NT-ZETA/NT-ZETA-03.html"><em>The Gamma function and Stirling's formula</em></a>); so the integral is at most <span class="math" data-tex="\(C\,x^{1/2}n\)">\(C\,x^{1/2}n\)</span><span class="math" data-tex="\(\int(\log(2+|t|))|\Phi(\frac12+it)|\,dt\)">\(\int(\log(2+|t|))|\Phi(\frac12+it)|\,dt\)</span><span class="math" data-tex="\(\le C_\phi x^{1/2}n\le C_\phi x^{1-\delta}n\)">\(\le C_\phi x^{1/2}n\le C_\phi x^{1-\delta}n\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Only the first-power terms of prime ideals of degree one matter in the application, but the estimate keeps all terms: they are nonnegative.</p>
+<h2 id="4-proof-of-the-uniform-splitting-bound">4. Proof of the uniform splitting bound</h2>
+<p><em>Proof of Proposition 5.2 of Lesson 1.</em> Fix a nonnegative <span class="math" data-tex="\(\phi\in C_c^\infty([\frac12,3])\)">\(\phi\in C_c^\infty([\frac12,3])\)</span> with <span class="math" data-tex="\(\phi\ge1\)">\(\phi\ge1\)</span> on <span class="math" data-tex="\([1,2]\)">\([1,2]\)</span>. Let <span class="math" data-tex="\(q\)">\(q\)</span> be large enough for Lemma 1.1, and apply Lemma 3.1 to <span class="math" data-tex="\(K_q\)">\(K_q\)</span> with <span class="math" data-tex="\(\delta=\delta_0\)">\(\delta=\delta_0\)</span>, which is allowed by (1.2). A rational prime <span class="math" data-tex="\(p\in(x,2x]\)">\(p\in(x,2x]\)</span> with <span class="math" data-tex="\(p\nmid aq\)">\(p\nmid aq\)</span> that splits completely in <span class="math" data-tex="\(K_q\)">\(K_q\)</span> has <span class="math" data-tex="\(n_q\)">\(n_q\)</span> prime ideals above it, each of norm <span class="math" data-tex="\(p\)">\(p\)</span>, and their first-power terms contribute at least <span class="math" data-tex="\(n_q\log p\ge n_q\log x\)">\(n_q\log p\ge n_q\log x\)</span> to the nonnegative sum <span class="math" data-tex="\(\Theta_{K_q,\phi}(x)\)">\(\Theta_{K_q,\phi}(x)\)</span>. The primes dividing <span class="math" data-tex="\(aq\)">\(aq\)</span> are <span class="math" data-tex="\(O_a(1)+1\)">\(O_a(1)+1\)</span> in number. With <span class="math" data-tex="\(L=\log x\)">\(L=\log x\)</span>, (3.1) and (1.1) give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\#\{p\ \text{prime}:x&lt;p\le2x,\\
+&amp;\qquad p\ \text{splits completely in}\ K_q\}\\
+&amp;\le\frac{C_\phi}{n_qL}\bigl(x+x^{1-\delta_0}(\log D_q+n_q)\bigr)+C_a\\
+&amp;\le C_a&#x27;\Bigl(\frac x{q(q-1)L}+\frac{x^{1-\delta_0}\log(2q)}L\Bigr)\\
+&amp;\quad+C_a .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\#\{p\ \text{prime}:x&lt;p\le2x,\\
+&amp;\qquad p\ \text{splits completely in}\ K_q\}\\
+&amp;\le\frac{C_\phi}{n_qL}\bigl(x+x^{1-\delta_0}(\log D_q+n_q)\bigr)+C_a\\
+&amp;\le C_a&#x27;\Bigl(\frac x{q(q-1)L}+\frac{x^{1-\delta_0}\log(2q)}L\Bigr)\\
+&amp;\quad+C_a .
+\end{aligned}
+\]</span>
+For <span class="math" data-tex="\(q\le\exp(L^{0.3})\)">\(q\le\exp(L^{0.3})\)</span>, <span class="math" data-tex="\(\log(2q)/L\le2L^{-0.7}\)">\(\log(2q)/L\le2L^{-0.7}\)</span> is bounded once <span class="math" data-tex="\(x\)">\(x\)</span> is large, which gives (5.2) of Lesson 1, with constants and a threshold for <span class="math" data-tex="\(x\)">\(x\)</span> independent of <span class="math" data-tex="\(q\)">\(q\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The only property of the cyclotomic fields <span class="math" data-tex="\(\mathbb Q(\mu_{12q})\)">\(\mathbb Q(\mu_{12q})\)</span> used is the zero-free strip of Lesson 14 with a width independent of <span class="math" data-tex="\(q\)">\(q\)</span>. A width shrinking like <span class="math" data-tex="\(1/\log q\)">\(1/\log q\)</span>, as classical zero-free regions give, would only control <span class="math" data-tex="\(q\)">\(q\)</span> up to a power of <span class="math" data-tex="\(\log x\)">\(\log x\)</span> in this argument; this is why Theorem 5.3 of Lesson 1 is stated uniformly over all cyclotomic fields containing <span class="math" data-tex="\(\mu_{12}\)">\(\mu_{12}\)</span>.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Compute <span class="math" data-tex="\(D_q\)">\(D_q\)</span> exactly for <span class="math" data-tex="\(a=2\)">\(a=2\)</span> and <span class="math" data-tex="\(q=3\)">\(q=3\)</span>, and compare with the bound (1.1).</p>
+<p><strong>5.2.</strong> Show that <span class="math" data-tex="\(a\)">\(a\)</span> is a <span class="math" data-tex="\(q\)">\(q\)</span>th power in <span class="math" data-tex="\(E_q\)">\(E_q\)</span> for no prime <span class="math" data-tex="\(q\)">\(q\)</span> larger than every exponent in the factorization of <span class="math" data-tex="\(a\)">\(a\)</span>, using only the argument of Lemma 1.1.</p>
+<p><strong>5.3.</strong> In Corollary 2.1, explain why zeros with <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> in <span class="math" data-tex="\([t,t+1]\)">\([t,t+1]\)</span> satisfy <span class="math" data-tex="\(|t|-1\le|\gamma|\le|t|+1\)">\(|t|-1\le|\gamma|\le|t|+1\)</span>, and why the main terms of N4 at heights <span class="math" data-tex="\(T\)">\(T\)</span> and <span class="math" data-tex="\(T+2\)">\(T+2\)</span> differ by <span class="math" data-tex="\(O(\log d_K+n_K\log(2+T))\)">\(O(\log d_K+n_K\log(2+T))\)</span>.</p>
+<p><strong>5.4.</strong> Show that <span class="math" data-tex="\(\log D_q\le q(q-2)\log q\)">\(\log D_q\le q(q-2)\log q\)</span><span class="math" data-tex="\(+(q-1)\bigl(q\log q+(q-1)\log|a|\bigr)\)">\(+(q-1)\bigl(q\log q+(q-1)\log|a|\bigr)\)</span> and deduce <span class="math" data-tex="\(\log D_q\le C_a\,q^2\log q\)">\(\log D_q\le C_a\,q^2\log q\)</span>.</p>
+<p><strong>5.5.</strong> Suppose a zero-free region of width <span class="math" data-tex="\(c/\log D_q\)">\(c/\log D_q\)</span> were all that is known for <span class="math" data-tex="\(\zeta_{K_q}\)">\(\zeta_{K_q}\)</span>. Show that the error term <span class="math" data-tex="\(x^{1-\delta}\log D_q\)">\(x^{1-\delta}\log D_q\)</span> would then be smaller than <span class="math" data-tex="\(x/(q^2\log x)\)">\(x/(q^2\log x)\)</span> only for <span class="math" data-tex="\(q\)">\(q\)</span> up to a power of <span class="math" data-tex="\(\log x\)">\(\log x\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> For <span class="math" data-tex="\(q=3\)">\(q=3\)</span> the field <span class="math" data-tex="\(K_3=\mathbb Q(\mu_3,2^{1/3})\)">\(K_3=\mathbb Q(\mu_3,2^{1/3})\)</span> has degree <span class="math" data-tex="\(6\)">\(6\)</span>, and <span class="math" data-tex="\(D_3=2^4\cdot3^7=34992\)">\(D_3=2^4\cdot3^7=34992\)</span> (the splitting field of <span class="math" data-tex="\(T^3-2\)">\(T^3-2\)</span>). The bound is <span class="math" data-tex="\(3^{3}(3^3\cdot2^2)^2=27\cdot11664=314928\)">\(3^{3}(3^3\cdot2^2)^2=27\cdot11664=314928\)</span>.</p>
+<p><strong>5.2.</strong> If <span class="math" data-tex="\(\ell\mid a\)">\(\ell\mid a\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span> exceeds <span class="math" data-tex="\(v_\ell(a)\)">\(v_\ell(a)\)</span>, the valuation of <span class="math" data-tex="\(a\)">\(a\)</span> at a prime of <span class="math" data-tex="\(E_q\)">\(E_q\)</span> above <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is <span class="math" data-tex="\(v_\ell(a)\)">\(v_\ell(a)\)</span> for <span class="math" data-tex="\(q\ne\ell\)">\(q\ne\ell\)</span>, which is not divisible by <span class="math" data-tex="\(q\)">\(q\)</span>; a <span class="math" data-tex="\(q\)">\(q\)</span>th power has valuations divisible by <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p><strong>5.3.</strong> If <span class="math" data-tex="\(t\le\gamma\le t+1\)">\(t\le\gamma\le t+1\)</span> then <span class="math" data-tex="\(|\gamma|\)">\(|\gamma|\)</span> lies between <span class="math" data-tex="\(|t|-1\)">\(|t|-1\)</span> and <span class="math" data-tex="\(|t|+1\)">\(|t|+1\)</span>. The derivative of <span class="math" data-tex="\(\frac T\pi\log(d_K(T/(2\pi e))^{n_K})\)">\(\frac T\pi\log(d_K(T/(2\pi e))^{n_K})\)</span> in <span class="math" data-tex="\(T\)">\(T\)</span> is <span class="math" data-tex="\(\frac1\pi(\log d_K+n_K\log(T/(2\pi)))\)">\(\frac1\pi(\log d_K+n_K\log(T/(2\pi)))\)</span>, so over an interval of length <span class="math" data-tex="\(2\)">\(2\)</span> the change is <span class="math" data-tex="\(O(\log d_K+n_K\log(2+T))\)">\(O(\log d_K+n_K\log(2+T))\)</span>.</p>
+<p><strong>5.4.</strong> From (1.1), <span class="math" data-tex="\(\log D_q\le q(q-2)\log q\)">\(\log D_q\le q(q-2)\log q\)</span><span class="math" data-tex="\(+(q-1)(q\log q+(q-1)\log|a|)\)">\(+(q-1)(q\log q+(q-1)\log|a|)\)</span>, which is the stated expression and at most <span class="math" data-tex="\((2q^2)\log q+q^2\log|a|\le C_aq^2\log q\)">\((2q^2)\log q+q^2\log|a|\le C_aq^2\log q\)</span>.</p>
+<p><strong>5.5.</strong> With <span class="math" data-tex="\(\delta=c/\log D_q\asymp1/(q^2\log q)\)">\(\delta=c/\log D_q\asymp1/(q^2\log q)\)</span>, <span class="math" data-tex="\(x^{-\delta}=\exp(-c\log x/\log D_q)\)">\(x^{-\delta}=\exp(-c\log x/\log D_q)\)</span> is small only when <span class="math" data-tex="\(\log D_q\le\epsilon\log x\)">\(\log D_q\le\epsilon\log x\)</span>, that is, <span class="math" data-tex="\(q^2\log q\ll\log x\)">\(q^2\log q\ll\log x\)</span>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-029] OpenAI, <em>Primitive roots for every admissible integer base</em>, OpenAI Math Release preprint, 4 October 2026, Section 9. https://github.com/openai/math/tree/main/preprints/Primitive-roots-for-every-admissible-integer-base-October-4-2026</li>
+<li>[HSW] E. Hasanalizade, Q. Shen and P.-J. Wong, <em>Counting zeros of Dedekind zeta functions</em>, arXiv:2102.04663v3 (2021), Theorem 1.1 and Corollary 1.2. https://arxiv.org/abs/2102.04663</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

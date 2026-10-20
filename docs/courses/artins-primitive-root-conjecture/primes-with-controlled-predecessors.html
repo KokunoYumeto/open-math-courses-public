@@ -1,0 +1,447 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Primes with controlled predecessors</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Artin&#x27;s primitive root conjecture)</a><a href="weights-mass-and-distribution-in-a-progression.html">Previous lesson</a><a href="src/primes-with-controlled-predecessors.md">Editable source</a></nav><main><article><h1 id="primes-with-controlled-predecessors">Primes with controlled predecessors</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson proves Proposition 5.1 of <a href="artins-conjecture-and-the-index-of-a-prime.html"><em>Artin's conjecture and the index of a prime</em></a> with the weights <span class="math" data-tex="\(w(d)\)">\(w(d)\)</span> of <a href="weights-mass-and-distribution-in-a-progression.html"><em>Weights, mass and distribution in a progression</em></a>. A lower block sieve shows that the integers <span class="math" data-tex="\(d\)">\(d\)</span> with <span class="math" data-tex="\(P^-(d)&gt;x^b\)">\(P^-(d)&gt;x^b\)</span> carry weight about <span class="math" data-tex="\(\mathfrak S_Me^{-\gamma_E}X_0/(bL)\)">\(\mathfrak S_Me^{-\gamma_E}X_0/(bL)\)</span>. The composite ones among them are removed in two steps. Those whose least prime factor lies below <span class="math" data-tex="\(x^{1/2-\kappa}\)">\(x^{1/2-\kappa}\)</span> are grouped by the size of that factor; in each group the marked Type II estimate replaces the roughness condition on the cofactor by its density, and Buchstab's identity shows that all groups together carry at most the weight of the rough numbers minus the weight that Buchstab's identity assigns to the primes. Composites <span class="math" data-tex="\(d=pq\)">\(d=pq\)</span> with both factors near <span class="math" data-tex="\(\sqrt x\)">\(\sqrt x\)</span> are bounded by an upper sieve for pairs, at a cost proportional to <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>. Choosing <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, <span class="math" data-tex="\(b\)">\(b\)</span> and the number <span class="math" data-tex="\(K\)">\(K\)</span> of prime groups in this order leaves a positive proportion of the weight on primes.</p>
+<p><strong>Prerequisites.</strong> <a href="artins-conjecture-and-the-index-of-a-prime.html"><em>Artin's conjecture and the index of a prime</em></a>, (4.1) and Proposition 5.1; <a href="a-block-sieve-and-rough-number-densities.html"><em>A block sieve and rough-number densities</em></a>, (1.1)–(1.3), Lemma 1.1, Lemma 2.1 and Lemma 3.1; <a href="marked-type-ii-estimates.html"><em>Marked Type II estimates and rough factors</em></a>, Section 1; <a href="weights-mass-and-distribution-in-a-progression.html"><em>Weights, mass and distribution in a progression</em></a>, Sections 1–5; <a href="../NT-ZETA/NT-ZETA-02.html"><em>Counting primes by elementary means: Chebyshev and Mertens</em></a>, Theorems 3.1 and 4.2.</p>
+<p>Keep the data <span class="math" data-tex="\(M,c,u,\Psi\)">\(M,c,u,\Psi\)</span> of Lesson 18, the weights <span class="math" data-tex="\(w\)">\(w\)</span> of (1.2) there, the total weight <span class="math" data-tex="\(X_0\)">\(X_0\)</span>, the harmonic mass <span class="math" data-tex="\(J_0\)">\(J_0\)</span>, the parameters <span class="math" data-tex="\(\kappa,\epsilon,b,D\)">\(\kappa,\epsilon,b,D\)</span> of (4.1) there, and the densities <span class="math" data-tex="\(g_r\)">\(g_r\)</span> and remainders <span class="math" data-tex="\(E_r\)">\(E_r\)</span> of (4.2) there. As in Lesson 18, <span class="math" data-tex="\(\ell\)">\(\ell\)</span> runs over odd squarefree integers.</p>
+<h2 id="1-the-initial-lower-bound">1. The initial lower bound</h2>
+<p>Put <span class="math" data-tex="\(z=x^b\)">\(z=x^b\)</span> and
+<span class="math math-display" data-tex="\[
+S_b=\sum_{P^-(d)&gt;x^b}w(d).
+\]">\[
+S_b=\sum_{P^-(d)&gt;x^b}w(d).
+\]</span></p>
+<p><strong>Proposition 1.1</strong> (the initial lower bound [OpenAI-029, (12.12)]). There are absolute constants <span class="math" data-tex="\(b_1,C_s&gt;0\)">\(b_1,C_s&gt;0\)</span> such that for <span class="math" data-tex="\(0&lt;b&lt;b_1\)">\(0&lt;b&lt;b_1\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac L{\mathfrak S_MX_0}\,S_b&amp;\ge\frac{e^{-\gamma_E}}b\bigl(1-C_se^{-1/(20b)}\bigr)\\
+&amp;\quad+o(1).\quad(1.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac L{\mathfrak S_MX_0}\,S_b&amp;\ge\frac{e^{-\gamma_E}}b\bigl(1-C_se^{-1/(20b)}\bigr)\\
+&amp;\quad+o(1).\quad(1.1)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> Fix <span class="math" data-tex="\(r\le x^\epsilon\)">\(r\le x^\epsilon\)</span> and regard the primes <span class="math" data-tex="\(Q\)">\(Q\)</span> counted in <span class="math" data-tex="\(A_r\)">\(A_r\)</span>, with the weights <span class="math" data-tex="\(\Psi((crQ+1)/x)\)">\(\Psi((crQ+1)/x)\)</span>, as the objects of Lemma 2.1 of Lesson 16. The sieving primes are the odd <span class="math" data-tex="\(p\le z\)">\(p\le z\)</span>, and the bad condition at <span class="math" data-tex="\(p\)">\(p\)</span> is <span class="math" data-tex="\(p\mid crQ+1\)">\(p\mid crQ+1\)</span>. For <span class="math" data-tex="\(\ell\)">\(\ell\)</span> composed of these primes the weight of the objects satisfying the bad conditions at all <span class="math" data-tex="\(p\mid\ell\)">\(p\mid\ell\)</span> is <span class="math" data-tex="\(A_r(\ell)=g_r(\ell)A_r+E_r(\ell)\)">\(A_r(\ell)=g_r(\ell)A_r+E_r(\ell)\)</span>, by (4.2) of Lesson 18. Since <span class="math" data-tex="\(g_r(p)\le1/(p-1)\le\frac12\)">\(g_r(p)\le1/(p-1)\le\frac12\)</span> and <span class="math" data-tex="\(\sum_{v&lt;p\le v^2}1/(p-1)\)">\(\sum_{v&lt;p\le v^2}1/(p-1)\)</span> is bounded by Mertens' estimate, (2.1) of Lesson 16 holds with <span class="math" data-tex="\(\eta_0=\frac12\)">\(\eta_0=\frac12\)</span> and an absolute <span class="math" data-tex="\(C_0\)">\(C_0\)</span>. Take <span class="math" data-tex="\(H=2\lfloor1/(40b)\rfloor\)">\(H=2\lfloor1/(40b)\rfloor\)</span>; for small <span class="math" data-tex="\(b\)">\(b\)</span> it exceeds the threshold of Lemma 2.1 of Lesson 16, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+z^{4H+2}\le x^{0.2+2b}&lt;D,\\
+e^{-H}\le e^2e^{-1/(20b)} .\quad(1.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+z^{4H+2}\le x^{0.2+2b}&lt;D,\\
+e^{-H}\le e^2e^{-1/(20b)} .\quad(1.2)
+\end{gathered}
+\]</span>
+Every supported <span class="math" data-tex="\(d=crQ+1\)">\(d=crQ+1\)</span> is odd, so the objects with no bad condition are those with <span class="math" data-tex="\(P^-(crQ+1)&gt;z\)">\(P^-(crQ+1)&gt;z\)</span>. By (2.2) of Lesson 16 and (5.2) of Lesson 18, their weight is at least
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(1+o(1))\,A_r\,V_M(z)\bigl(1-Ce^2e^{-1/(20b)}\bigr)\\
+&amp;\qquad-C\sum_{\ell\le D}|E_r(\ell)| ,\quad(1.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(1+o(1))\,A_r\,V_M(z)\bigl(1-Ce^2e^{-1/(20b)}\bigr)\\
+&amp;\qquad-C\sum_{\ell\le D}|E_r(\ell)| ,\quad(1.3)
+\end{aligned}
+\]</span>
+with an <span class="math" data-tex="\(o(1)\)">\(o(1)\)</span> uniform in <span class="math" data-tex="\(r\)">\(r\)</span>. Multiply by <span class="math" data-tex="\(\mathcal W(r)\)">\(\mathcal W(r)\)</span> and sum over <span class="math" data-tex="\(r\le x^\epsilon\)">\(r\le x^\epsilon\)</span>. By Lemma 3.1 and (4.4) of Lesson 18,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{r\le x^\epsilon}\mathcal W(r)A_r\\
+&amp;\quad =X_0+O_K\bigl(x\exp(-\epsilon L^{1-a_K})\bigr)\\
+&amp;\quad =(1+o(1))X_0 ,\quad(1.4)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{r\le x^\epsilon}\mathcal W(r)A_r\\
+&amp;\quad =X_0+O_K\bigl(x\exp(-\epsilon L^{1-a_K})\bigr)\\
+&amp;\quad =(1+o(1))X_0 ,\quad(1.4)
+\end{aligned}
+\]</span>
+and by (4.3) there with <span class="math" data-tex="\(A=3\)">\(A=3\)</span> the remainders contribute <span class="math" data-tex="\(O(xJ_0L^{-3})=o(X_0/L)\)">\(O(xJ_0L^{-3})=o(X_0/L)\)</span>. Finally <span class="math" data-tex="\(V_M(z)=(1+o(1))\mathfrak S_Me^{-\gamma_E}/(bL)\)">\(V_M(z)=(1+o(1))\mathfrak S_Me^{-\gamma_E}/(bL)\)</span> by Lemma 5.1 of Lesson 18, since <span class="math" data-tex="\(\log z=bL\)">\(\log z=bL\)</span>. The terms with <span class="math" data-tex="\(r&gt;x^\epsilon\)">\(r&gt;x^\epsilon\)</span> contribute nonnegatively to <span class="math" data-tex="\(S_b\)">\(S_b\)</span>, and (1.1) follows with <span class="math" data-tex="\(C_s=Ce^2\)">\(C_s=Ce^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-mass-conditioned-on-a-prime-divisor">2. Mass conditioned on a prime divisor</h2>
+<p><strong>Lemma 2.1</strong> (mass conditioned on a prime divisor [OpenAI-029, Lemma 12.4]). For fixed <span class="math" data-tex="\(b\le\gamma&lt;\gamma&#x27;\le\frac12-\kappa\)">\(b\le\gamma&lt;\gamma&#x27;\le\frac12-\kappa\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\substack{x^\gamma&lt;n\le x^{\gamma&#x27;}\\ n\ \text{prime}}}\ \sum_{\substack{n\mid d\\ P^-(d)&gt;W}}w(d)\\
+&amp;\quad=\mathfrak S_M\,X_0\,V(W)\\
+&amp;\qquad\times\Bigl(\log\frac{\gamma&#x27;}\gamma+o(1)\Bigr).\quad(2.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\substack{x^\gamma&lt;n\le x^{\gamma&#x27;}\\ n\ \text{prime}}}\ \sum_{\substack{n\mid d\\ P^-(d)&gt;W}}w(d)\\
+&amp;\quad=\mathfrak S_M\,X_0\,V(W)\\
+&amp;\qquad\times\Bigl(\log\frac{\gamma&#x27;}\gamma+o(1)\Bigr).\quad(2.1)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> For large <span class="math" data-tex="\(x\)">\(x\)</span> the primes <span class="math" data-tex="\(n\)">\(n\)</span> in (2.1) exceed <span class="math" data-tex="\(W\)">\(W\)</span> and every group prime, so <span class="math" data-tex="\(n\nmid Mr\)">\(n\nmid Mr\)</span> for every group integer <span class="math" data-tex="\(r\)">\(r\)</span>, and <span class="math" data-tex="\(g_r(n)=1/(n-1)\)">\(g_r(n)=1/(n-1)\)</span>. Fix <span class="math" data-tex="\(r\le x^\epsilon\)">\(r\le x^\epsilon\)</span> and such an <span class="math" data-tex="\(n\)">\(n\)</span>, and apply Lemma 2.1 of Lesson 16 to the <span class="math" data-tex="\(Q\)">\(Q\)</span> counted in <span class="math" data-tex="\(A_r\)">\(A_r\)</span> with <span class="math" data-tex="\(n\mid crQ+1\)">\(n\mid crQ+1\)</span>, the odd primes <span class="math" data-tex="\(p\le W\)">\(p\le W\)</span>, and the bad conditions <span class="math" data-tex="\(p\mid crQ+1\)">\(p\mid crQ+1\)</span>. For <span class="math" data-tex="\(\ell\)">\(\ell\)</span> composed of odd primes <span class="math" data-tex="\(p\le W\)">\(p\le W\)</span>, the product <span class="math" data-tex="\(n\ell\)">\(n\ell\)</span> is odd and squarefree, and multiplicativity of <span class="math" data-tex="\(g_r\)">\(g_r\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+A_r(n\ell)&amp;=\frac{A_r}{n-1}\,g_r(\ell)+E_r(n\ell),\quad(2.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+A_r(n\ell)&amp;=\frac{A_r}{n-1}\,g_r(\ell)+E_r(n\ell),\quad(2.2)
+\end{aligned}
+\]</span>
+also for <span class="math" data-tex="\(\ell=1\)">\(\ell=1\)</span>. Take <span class="math" data-tex="\(X&#x27;=A_r/(n-1)\)">\(X&#x27;=A_r/(n-1)\)</span>, <span class="math" data-tex="\(E(\ell)=E_r(n\ell)\)">\(E(\ell)=E_r(n\ell)\)</span> and <span class="math" data-tex="\(H=2\lceil(\log L)^2\rceil\)">\(H=2\lceil(\log L)^2\rceil\)</span>. The relative error <span class="math" data-tex="\(e^{-H}\)">\(e^{-H}\)</span> tends to <span class="math" data-tex="\(0\)">\(0\)</span>, and the remainder moduli satisfy
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+\ell&amp;\le W^{4H+2}\\
+&amp;=\exp\bigl(O(L^{0.24}(\log L)^2)\bigr)\\
+&amp;=x^{o(1)},
+\end{aligned}\\
+n\ell\le x^{1/2-\kappa+o(1)}&lt;D .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+\ell&amp;\le W^{4H+2}\\
+&amp;=\exp\bigl(O(L^{0.24}(\log L)^2)\bigr)\\
+&amp;=x^{o(1)},
+\end{aligned}\\
+n\ell\le x^{1/2-\kappa+o(1)}&lt;D .
+\end{gathered}
+\]</span>
+The map <span class="math" data-tex="\((n,\ell)\mapsto n\ell\)">\((n,\ell)\mapsto n\ell\)</span> is injective, because <span class="math" data-tex="\(n\)">\(n\)</span> is the only prime factor of <span class="math" data-tex="\(n\ell\)">\(n\ell\)</span> above <span class="math" data-tex="\(W\)">\(W\)</span>. After summing over <span class="math" data-tex="\(n\)">\(n\)</span> and over <span class="math" data-tex="\(r\le x^\epsilon\)">\(r\le x^\epsilon\)</span> with the weights <span class="math" data-tex="\(\mathcal W(r)\)">\(\mathcal W(r)\)</span>, all remainders together are therefore bounded by the left side of (4.3) of Lesson 18, which is <span class="math" data-tex="\(O(xJ_0L^{-3})\)">\(O(xJ_0L^{-3})\)</span>; this is <span class="math" data-tex="\(o(X_0V(W))\)">\(o(X_0V(W))\)</span>, because <span class="math" data-tex="\(X_0V(W)\asymp xJ_0L^{-1.24}\)">\(X_0V(W)\asymp xJ_0L^{-1.24}\)</span> by (4.4) of Lesson 18 and (1.2) of Lesson 16.</p>
+<p>For the main terms, the sieve product <span class="math" data-tex="\(\prod_{2&lt;p\le W}(1-g_r(p))\)">\(\prod_{2&lt;p\le W}(1-g_r(p))\)</span> is <span class="math" data-tex="\((1+o(1))\mathfrak S_MV(W)\)">\((1+o(1))\mathfrak S_MV(W)\)</span> uniformly in <span class="math" data-tex="\(r\)">\(r\)</span>, by Lemma 5.1 of Lesson 18. Mertens' estimate (Theorem 3.1 of <a href="../NT-ZETA/NT-ZETA-02.html"><em>Counting primes by elementary means</em></a>) gives <span class="math" data-tex="\(\sum_{x^\gamma&lt;n\le x^{\gamma&#x27;}}1/(n-1)=\log(\gamma&#x27;/\gamma)+o(1)\)">\(\sum_{x^\gamma&lt;n\le x^{\gamma&#x27;}}1/(n-1)=\log(\gamma&#x27;/\gamma)+o(1)\)</span>, and (1.4) evaluates the sum over <span class="math" data-tex="\(r\le x^\epsilon\)">\(r\le x^\epsilon\)</span>. This gives the contribution of <span class="math" data-tex="\(r\le x^\epsilon\)">\(r\le x^\epsilon\)</span>. A supported <span class="math" data-tex="\(d\)">\(d\)</span> has at most <span class="math" data-tex="\(\log(2x)/(bL)\le2/b\)">\(\log(2x)/(bL)\le2/b\)</span> distinct prime factors above <span class="math" data-tex="\(x^b\)">\(x^b\)</span>, so the part of the left side of (2.1) with <span class="math" data-tex="\(r&gt;x^\epsilon\)">\(r&gt;x^\epsilon\)</span> is at most <span class="math" data-tex="\((2/b)\sum_{r&gt;x^\epsilon}\mathcal W(r)A_r\)">\((2/b)\sum_{r&gt;x^\epsilon}\mathcal W(r)A_r\)</span><span class="math" data-tex="\(=O_K(x\exp(-\epsilon L^{1-a_K}))\)">\(=O_K(x\exp(-\epsilon L^{1-a_K}))\)</span>, which is <span class="math" data-tex="\(o(X_0V(W))\)">\(o(X_0V(W))\)</span> by Lemma 3.1 of Lesson 18. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-removing-composites-by-their-least-prime-factor">3. Removing composites by their least prime factor</h2>
+<p>For <span class="math" data-tex="\(b\le\gamma&lt;\gamma&#x27;\le\frac12-\kappa\)">\(b\le\gamma&lt;\gamma&#x27;\le\frac12-\kappa\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+U_\kappa=\sum_{P^-(d)&gt;x^{1/2-\kappa}}w(d),\\
+\begin{aligned}
+T_{\gamma,\gamma&#x27;}&amp;=\sum_{\substack{x^\gamma&lt;n\le x^{\gamma&#x27;}\\ n\ \text{prime}}}\ \sum_{P^-(m)&gt;x^\gamma}w(mn).
+\end{aligned}\quad(3.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+U_\kappa=\sum_{P^-(d)&gt;x^{1/2-\kappa}}w(d),\\
+\begin{aligned}
+T_{\gamma,\gamma&#x27;}&amp;=\sum_{\substack{x^\gamma&lt;n\le x^{\gamma&#x27;}\\ n\ \text{prime}}}\ \sum_{P^-(m)&gt;x^\gamma}w(mn).
+\end{aligned}\quad(3.1)
+\end{gathered}
+\]</span>
+If <span class="math" data-tex="\(x^\gamma&lt;P^-(d)\le x^{\gamma&#x27;}\)">\(x^\gamma&lt;P^-(d)\le x^{\gamma&#x27;}\)</span>, then <span class="math" data-tex="\(n=P^-(d)\)">\(n=P^-(d)\)</span> and <span class="math" data-tex="\(m=d/n\)">\(m=d/n\)</span> satisfy <span class="math" data-tex="\(P^-(m)\ge n&gt;x^\gamma\)">\(P^-(m)\ge n&gt;x^\gamma\)</span>, so <span class="math" data-tex="\(w(d)\)">\(w(d)\)</span> is one of the terms of <span class="math" data-tex="\(T_{\gamma,\gamma&#x27;}\)">\(T_{\gamma,\gamma&#x27;}\)</span>; this holds also when <span class="math" data-tex="\(n^2\mid d\)">\(n^2\mid d\)</span>.</p>
+<p><strong>Lemma 3.1</strong> (the cost of one bin [OpenAI-029, (12.14)]). If <span class="math" data-tex="\(K\)">\(K\)</span> is at least a bound that depends on <span class="math" data-tex="\(b,\gamma,\kappa\)">\(b,\gamma,\kappa\)</span> but not on the <span class="math" data-tex="\(a_i\)">\(a_i\)</span>, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac L{\mathfrak S_MX_0}\,T_{\gamma,\gamma&#x27;}&amp;\le\sup_{\gamma\le t\le\gamma&#x27;}D_\gamma(1-t)\,\log\frac{\gamma&#x27;}\gamma\\
+&amp;\quad+o(1).\quad(3.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac L{\mathfrak S_MX_0}\,T_{\gamma,\gamma&#x27;}&amp;\le\sup_{\gamma\le t\le\gamma&#x27;}D_\gamma(1-t)\,\log\frac{\gamma&#x27;}\gamma\\
+&amp;\quad+o(1).\quad(3.2)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> Split <span class="math" data-tex="\(n\)">\(n\)</span> and <span class="math" data-tex="\(m\)">\(m\)</span> into dyads <span class="math" data-tex="\([N,2N)\)">\([N,2N)\)</span> and <span class="math" data-tex="\([H_m,2H_m)\)">\([H_m,2H_m)\)</span>, with <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(H_m\)">\(H_m\)</span> powers of <span class="math" data-tex="\(2\)">\(2\)</span>, and keep the pairs of dyads that contain some <span class="math" data-tex="\(n\in(x^\gamma,x^{\gamma&#x27;}]\)">\(n\in(x^\gamma,x^{\gamma&#x27;}]\)</span> and <span class="math" data-tex="\(m\)">\(m\)</span> with <span class="math" data-tex="\(x&lt;mn&lt;2x\)">\(x&lt;mn&lt;2x\)</span>. For such a pair, <span class="math" data-tex="\(\log m/L=1-t+O(L^{-1})\)">\(\log m/L=1-t+O(L^{-1})\)</span> with <span class="math" data-tex="\(t=\log n/L\in(\gamma,\gamma&#x27;]\)">\(t=\log n/L\in(\gamma,\gamma&#x27;]\)</span>, and <span class="math" data-tex="\(b\le\gamma\)">\(b\le\gamma\)</span>, <span class="math" data-tex="\(\gamma&#x27;\le\frac12-\kappa\)">\(\gamma&#x27;\le\frac12-\kappa\)</span>; so for large <span class="math" data-tex="\(x\)">\(x\)</span>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+&amp;\Bigl[\frac{\log H_m}L,\frac{\log(2H_m)}L\Bigr]\\
+&amp;\quad \subseteq[s_-,s_+],
+\end{aligned}\\
+s_-=\frac12+\frac\kappa2,\\
+s_+=1-\frac b2 ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+&amp;\Bigl[\frac{\log H_m}L,\frac{\log(2H_m)}L\Bigr]\\
+&amp;\quad \subseteq[s_-,s_+],
+\end{aligned}\\
+s_-=\frac12+\frac\kappa2,\\
+s_+=1-\frac b2 ,
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(\gamma&lt;s_-\)">\(\gamma&lt;s_-\)</span>. Both scales are at least <span class="math" data-tex="\(x^{b/2}\)">\(x^{b/2}\)</span>, their product is <span class="math" data-tex="\(\asymp x\)">\(\asymp x\)</span>, and there are <span class="math" data-tex="\(O(L)\)">\(O(L)\)</span> pairs, since the <span class="math" data-tex="\(m\)">\(m\)</span> with <span class="math" data-tex="\(x&lt;mn&lt;2x\)">\(x&lt;mn&lt;2x\)</span> for <span class="math" data-tex="\(n\in[N,2N)\)">\(n\in[N,2N)\)</span> lie in <span class="math" data-tex="\((x/(2N),2x/N)\)">\((x/(2N),2x/N)\)</span>, which meets at most three dyads. In each pair apply Lemma 2.1 of Lesson 18 with <span class="math" data-tex="\(\delta=b/2\)">\(\delta=b/2\)</span>, <span class="math" data-tex="\(I=[H_m,2H_m)\)">\(I=[H_m,2H_m)\)</span>, and <span class="math" data-tex="\(b_n\)">\(b_n\)</span> the indicator of the primes of the <span class="math" data-tex="\(n\)">\(n\)</span>-dyad in <span class="math" data-tex="\((x^\gamma,x^{\gamma&#x27;}]\)">\((x^\gamma,x^{\gamma&#x27;}]\)</span>, which is supported on <span class="math" data-tex="\(W\)">\(W\)</span>-rough integers. On the support <span class="math" data-tex="\(m\ge x^{1/2}&gt;x^\gamma\)">\(m\ge x^{1/2}&gt;x^\gamma\)</span>, and the total error is <span class="math" data-tex="\(O(xL^{-5})=o(X_0/L)\)">\(O(xL^{-5})=o(X_0/L)\)</span> by (4.4) of Lesson 18 and <span class="math" data-tex="\(J_0\ge1\)">\(J_0\ge1\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+T_{\gamma,\gamma&#x27;}&amp;=\sum_{\substack{x^\gamma&lt;n\le x^{\gamma&#x27;}\\ n\ \text{prime}}}\ \sum_m\frac{D_\gamma(\log m/L)}{L\,V(W)}\\
+&amp;\quad \,\mathbf 1_{P^-(m)&gt;W}\,w(mn)\\
+&amp;\quad +o\Bigl(\frac{X_0}L\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+T_{\gamma,\gamma&#x27;}&amp;=\sum_{\substack{x^\gamma&lt;n\le x^{\gamma&#x27;}\\ n\ \text{prime}}}\ \sum_m\frac{D_\gamma(\log m/L)}{L\,V(W)}\\
+&amp;\quad \,\mathbf 1_{P^-(m)&gt;W}\,w(mn)\\
+&amp;\quad +o\Bigl(\frac{X_0}L\Bigr).
+\end{aligned}
+\]</span>
+By Lemma 1.1 of Lesson 16, <span class="math" data-tex="\(D_\gamma\)">\(D_\gamma\)</span> is uniformly continuous on <span class="math" data-tex="\([s_-,s_+]\)">\([s_-,s_+]\)</span>, so on the support of the summand <span class="math" data-tex="\(D_\gamma(\log m/L)\)">\(D_\gamma(\log m/L)\)</span><span class="math" data-tex="\(\le\sup_{\gamma\le t\le\gamma&#x27;}D_\gamma(1-t)+o(1)\)">\(\le\sup_{\gamma\le t\le\gamma&#x27;}D_\gamma(1-t)+o(1)\)</span>. Since <span class="math" data-tex="\(n&gt;W\)">\(n&gt;W\)</span>, the condition <span class="math" data-tex="\(P^-(m)&gt;W\)">\(P^-(m)&gt;W\)</span> is <span class="math" data-tex="\(P^-(mn)&gt;W\)">\(P^-(mn)&gt;W\)</span>, and Lemma 2.1 gives (3.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 3.2</strong> (after the least-factor subtraction [OpenAI-029, (12.15)]). Let <span class="math" data-tex="\(0&lt;b&lt;\min(b_0,b_1)\)">\(0&lt;b&lt;\min(b_0,b_1)\)</span>, where <span class="math" data-tex="\(b_0\)">\(b_0\)</span> and <span class="math" data-tex="\(C_d\)">\(C_d\)</span> are the constants of (3.2) of Lesson 16. There is a partition <span class="math" data-tex="\(b=\gamma_0&lt;\gamma_1&lt;\cdots&lt;\gamma_J=\frac12-\kappa\)">\(b=\gamma_0&lt;\gamma_1&lt;\cdots&lt;\gamma_J=\frac12-\kappa\)</span> such that, if <span class="math" data-tex="\(K\)">\(K\)</span> is at least a bound depending on <span class="math" data-tex="\(b\)">\(b\)</span>, <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> and the partition but not on the <span class="math" data-tex="\(a_i\)">\(a_i\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac L{\mathfrak S_MX_0}\,U_\kappa\\
+&amp;\quad\ge0.9-\frac{e^{-\gamma_E}}b\,(C_s+C_d)\,e^{-1/(20b)}\\
+&amp;\qquad+o(1).\quad(3.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac L{\mathfrak S_MX_0}\,U_\kappa\\
+&amp;\quad\ge0.9-\frac{e^{-\gamma_E}}b\,(C_s+C_d)\,e^{-1/(20b)}\\
+&amp;\qquad+o(1).\quad(3.3)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> The points <span class="math" data-tex="\((\gamma,1-t)\)">\((\gamma,1-t)\)</span> with <span class="math" data-tex="\(b\le\gamma\le t\le\frac12-\kappa\)">\(b\le\gamma\le t\le\frac12-\kappa\)</span> form a compact set on which <span class="math" data-tex="\(1-t-\gamma\ge2\kappa\)">\(1-t-\gamma\ge2\kappa\)</span>, so by Lemma 1.1 of Lesson 16 the function <span class="math" data-tex="\((\gamma,t)\mapsto D_\gamma(1-t)\)">\((\gamma,t)\mapsto D_\gamma(1-t)\)</span> is uniformly continuous there. Choose <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span> with <span class="math" data-tex="\(\eta\log(1/(2b))\le0.1\)">\(\eta\log(1/(2b))\le0.1\)</span>, then <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> such that <span class="math" data-tex="\(|D_\gamma(1-t)-D_{\gamma&#x27;&#x27;}(1-t&#x27;&#x27;)|\le\eta\)">\(|D_\gamma(1-t)-D_{\gamma&#x27;&#x27;}(1-t&#x27;&#x27;)|\le\eta\)</span> whenever <span class="math" data-tex="\(|\gamma-\gamma&#x27;&#x27;|\le\delta\)">\(|\gamma-\gamma&#x27;&#x27;|\le\delta\)</span> and <span class="math" data-tex="\(|t-t&#x27;&#x27;|\le\delta\)">\(|t-t&#x27;&#x27;|\le\delta\)</span>, and a partition of mesh at most <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. For <span class="math" data-tex="\(\gamma_{j-1}\le t&#x27;\le\gamma_j\)">\(\gamma_{j-1}\le t&#x27;\le\gamma_j\)</span> and every <span class="math" data-tex="\(t\in[\gamma_{j-1},\gamma_j]\)">\(t\in[\gamma_{j-1},\gamma_j]\)</span>, <span class="math" data-tex="\(D_{\gamma_{j-1}}(1-t&#x27;)\le D_t(1-t)+\eta\)">\(D_{\gamma_{j-1}}(1-t&#x27;)\le D_t(1-t)+\eta\)</span>. Integrating against <span class="math" data-tex="\(dt/t\)">\(dt/t\)</span> over each bin and using Buchstab's identity (3.1) of Lesson 16 and <span class="math" data-tex="\(D\ge0\)">\(D\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{j=1}^J\sup_{\gamma_{j-1}\le t&#x27;\le\gamma_j}D_{\gamma_{j-1}}(1-t&#x27;)\\
+&amp;\qquad \log\frac{\gamma_j}{\gamma_{j-1}}\\
+&amp;\quad \le\int_b^{1/2-\kappa}\bigl(D_t(1-t)+\eta\bigr)\frac{dt}t\\
+&amp;\quad \le D_b(1)-1+0.1 .\quad(3.4)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{j=1}^J\sup_{\gamma_{j-1}\le t&#x27;\le\gamma_j}D_{\gamma_{j-1}}(1-t&#x27;)\\
+&amp;\qquad \log\frac{\gamma_j}{\gamma_{j-1}}\\
+&amp;\quad \le\int_b^{1/2-\kappa}\bigl(D_t(1-t)+\eta\bigr)\frac{dt}t\\
+&amp;\quad \le D_b(1)-1+0.1 .\quad(3.4)
+\end{aligned}
+\]</span>
+Every <span class="math" data-tex="\(d\)">\(d\)</span> with <span class="math" data-tex="\(x^b&lt;P^-(d)\le x^{1/2-\kappa}\)">\(x^b&lt;P^-(d)\le x^{1/2-\kappa}\)</span> lies in exactly one bin, so <span class="math" data-tex="\(S_b-U_\kappa\le\sum_jT_{\gamma_{j-1},\gamma_j}\)">\(S_b-U_\kappa\le\sum_jT_{\gamma_{j-1},\gamma_j}\)</span>. By (1.1), (3.2) and (3.4),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac L{\mathfrak S_MX_0}\,U_\kappa&amp;\ge\frac{e^{-\gamma_E}}b\bigl(1-C_se^{-1/(20b)}\bigr)\\
+&amp;\quad -D_b(1)+0.9\\
+&amp;\quad +o(1),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac L{\mathfrak S_MX_0}\,U_\kappa&amp;\ge\frac{e^{-\gamma_E}}b\bigl(1-C_se^{-1/(20b)}\bigr)\\
+&amp;\quad -D_b(1)+0.9\\
+&amp;\quad +o(1),
+\end{aligned}
+\]</span>
+and the bound <span class="math" data-tex="\(D_b(1)\le\frac{e^{-\gamma_E}}b(1+C_de^{-1/(20b)})\)">\(D_b(1)\le\frac{e^{-\gamma_E}}b(1+C_de^{-1/(20b)})\)</span> of (3.2) of Lesson 16 gives (3.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The term <span class="math" data-tex="\(1\)">\(1\)</span> in Buchstab's identity, which is the contribution of the primes to <span class="math" data-tex="\(D_b(1)\)">\(D_b(1)\)</span>, is what survives the subtraction.</p>
+<h2 id="4-an-upper-bound-for-rough-pairs">4. An upper bound for rough pairs</h2>
+<p><strong>Lemma 4.1</strong> (rough pairs [OpenAI-029, Lemma 12.5]). Let <span class="math" data-tex="\(\mathcal B=[M_1,2M_1)\times[M_2,2M_2)\)">\(\mathcal B=[M_1,2M_1)\times[M_2,2M_2)\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac x4\le M_1M_2\le2x,\\
+\begin{aligned}
+\frac{x^{0.46}}2&amp;\le M_i\\
+&amp;\le2x^{0.54}\quad(i=1,2).
+\end{aligned}\quad(4.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac x4\le M_1M_2\le2x,\\
+\begin{aligned}
+\frac{x^{0.46}}2&amp;\le M_i\\
+&amp;\le2x^{0.54}\quad(i=1,2).
+\end{aligned}\quad(4.1)
+\end{gathered}
+\]</span>
+Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\substack{(m,n)\in\mathcal B\\ P^-(m)&gt;W,\ P^-(n)&gt;W}}w(mn)\\
+&amp;\quad \le C_1X_0V(W)^2 ,\quad(4.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\substack{(m,n)\in\mathcal B\\ P^-(m)&gt;W,\ P^-(n)&gt;W}}w(mn)\\
+&amp;\quad \le C_1X_0V(W)^2 ,\quad(4.2)
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(C_1\)">\(C_1\)</span> depends only on <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>; in particular it does not depend on <span class="math" data-tex="\(K,\kappa,b,\epsilon\)">\(K,\kappa,b,\epsilon\)</span>.</p>
+<p><em>Proof.</em> <em>Reduction to a sieve problem.</em> Fix a group integer <span class="math" data-tex="\(r\le x^{0.11}\)">\(r\le x^{0.11}\)</span> and put <span class="math" data-tex="\(k=cr\)">\(k=cr\)</span> and <span class="math" data-tex="\(z&#x27;=x^{0.002}\)">\(z&#x27;=x^{0.002}\)</span>. If <span class="math" data-tex="\(w(mn)\ne0\)">\(w(mn)\ne0\)</span> and <span class="math" data-tex="\(mn-1\)">\(mn-1\)</span> has group part <span class="math" data-tex="\(r\)">\(r\)</span>, then <span class="math" data-tex="\(mn-1=kQ\)">\(mn-1=kQ\)</span> with a prime <span class="math" data-tex="\(Q&gt;x^{0.9}\)">\(Q&gt;x^{0.9}\)</span>, so <span class="math" data-tex="\(mn\equiv1\pmod k\)">\(mn\equiv1\pmod k\)</span>. Let <span class="math" data-tex="\(j\le z&#x27;\)">\(j\le z&#x27;\)</span> be an odd prime with <span class="math" data-tex="\(j\nmid r\)">\(j\nmid r\)</span>. Then <span class="math" data-tex="\(j\nmid k\)">\(j\nmid k\)</span> and <span class="math" data-tex="\(j\ne Q\)">\(j\ne Q\)</span>, so <span class="math" data-tex="\(mn\not\equiv1\pmod j\)">\(mn\not\equiv1\pmod j\)</span>; and if <span class="math" data-tex="\(j\le W\)">\(j\le W\)</span>, then <span class="math" data-tex="\(mn\not\equiv0\pmod j\)">\(mn\not\equiv0\pmod j\)</span>, because <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(n\)">\(n\)</span> are <span class="math" data-tex="\(W\)">\(W\)</span>-rough. The <strong>bad condition</strong> at <span class="math" data-tex="\(j\)">\(j\)</span> is: <span class="math" data-tex="\(mn\equiv1\pmod j\)">\(mn\equiv1\pmod j\)</span>, or <span class="math" data-tex="\(j\le W\)">\(j\le W\)</span> and <span class="math" data-tex="\(mn\equiv0\pmod j\)">\(mn\equiv0\pmod j\)</span>. Using <span class="math" data-tex="\(\Psi\le1\)">\(\Psi\le1\)</span>, <span class="math" data-tex="\(F\le1\)">\(F\le1\)</span> and Lemma 1.1 of Lesson 18, the left side of (4.2) is at most <span class="math" data-tex="\(\sum_r\mathcal W(r)S_r\)">\(\sum_r\mathcal W(r)S_r\)</span>, where <span class="math" data-tex="\(S_r\)">\(S_r\)</span> is the number of pairs in <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> with <span class="math" data-tex="\(mn\equiv1\pmod k\)">\(mn\equiv1\pmod k\)</span> and no bad condition at any odd prime <span class="math" data-tex="\(j\le z&#x27;\)">\(j\le z&#x27;\)</span> with <span class="math" data-tex="\(j\nmid r\)">\(j\nmid r\)</span>.</p>
+<p><em>Local counts.</em> Modulo a prime <span class="math" data-tex="\(j\)">\(j\)</span> there are <span class="math" data-tex="\(j-1\)">\(j-1\)</span> residue pairs with product <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\(2j-1\)">\(2j-1\)</span> with product <span class="math" data-tex="\(0\)">\(0\)</span>. For squarefree <span class="math" data-tex="\(\ell\)">\(\ell\)</span> composed of these primes <span class="math" data-tex="\(j\)">\(j\)</span> put
+<span class="math math-display" data-tex="\[
+\rho(\ell)=\prod_{j\mid\ell}\bigl(j-1+(2j-1)\mathbf 1_{j\le W}\bigr).
+\]">\[
+\rho(\ell)=\prod_{j\mid\ell}\bigl(j-1+(2j-1)\mathbf 1_{j\le W}\bigr).
+\]</span>
+By the Chinese remainder theorem exactly <span class="math" data-tex="\(\varphi(k)\rho(\ell)\)">\(\varphi(k)\rho(\ell)\)</span> residue pairs modulo <span class="math" data-tex="\(k\ell\)">\(k\ell\)</span> satisfy <span class="math" data-tex="\(mn\equiv1\pmod k\)">\(mn\equiv1\pmod k\)</span> and the bad conditions at all <span class="math" data-tex="\(j\mid\ell\)">\(j\mid\ell\)</span>. Each residue pair has <span class="math" data-tex="\((M_1/(k\ell)+O(1))(M_2/(k\ell)+O(1))\)">\((M_1/(k\ell)+O(1))(M_2/(k\ell)+O(1))\)</span> representatives in <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span>, so the number of pairs in <span class="math" data-tex="\(\mathcal B\)">\(\mathcal B\)</span> with these conditions is <span class="math" data-tex="\(X&#x27;g(\ell)+E(\ell)\)">\(X&#x27;g(\ell)+E(\ell)\)</span>, where
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X&#x27;=M_1M_2\frac{\varphi(k)}{k^2},\qquad g(\ell)=\frac{\rho(\ell)}{\ell^2},\\
+\begin{aligned}
+|E(\ell)|&amp;\le C\varphi(k)\rho(\ell)\\
+&amp;\quad\times\Bigl(\frac{M_1+M_2}{k\ell}+1\Bigr).\quad(4.3)
+\end{aligned}
+\end{gathered}
+\]">\[
+\begin{gathered}
+X&#x27;=M_1M_2\frac{\varphi(k)}{k^2},\qquad g(\ell)=\frac{\rho(\ell)}{\ell^2},\\
+\begin{aligned}
+|E(\ell)|&amp;\le C\varphi(k)\rho(\ell)\\
+&amp;\quad\times\Bigl(\frac{M_1+M_2}{k\ell}+1\Bigr).\quad(4.3)
+\end{aligned}
+\end{gathered}
+\]</span>
+For <span class="math" data-tex="\(j\le W\)">\(j\le W\)</span>, <span class="math" data-tex="\(g(j)=(3j-2)/j^2\le7/9\)">\(g(j)=(3j-2)/j^2\le7/9\)</span>, and for <span class="math" data-tex="\(j&gt;W\)">\(j&gt;W\)</span>, <span class="math" data-tex="\(g(j)=(j-1)/j^2\le1/j\)">\(g(j)=(j-1)/j^2\le1/j\)</span>; in both cases <span class="math" data-tex="\(g(j)\le3/j\)">\(g(j)\le3/j\)</span>. So (2.1) of Lesson 16 holds with <span class="math" data-tex="\(\eta_0=2/9\)">\(\eta_0=2/9\)</span> and an absolute <span class="math" data-tex="\(C_0\)">\(C_0\)</span>, and its upper bound (2.3), with <span class="math" data-tex="\((z&#x27;)^{10}=x^{0.02}\)">\((z&#x27;)^{10}=x^{0.02}\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S_r&amp;\le C\,X&#x27;\prod_{\substack{2&lt;j\le z&#x27;\\ j\nmid r}}(1-g(j))\\
+&amp;\quad +\sum_{\ell\le x^{0.02}}|E(\ell)| .\quad(4.4)
+\end{aligned}
+\]">\[
+\begin{aligned}
+S_r&amp;\le C\,X&#x27;\prod_{\substack{2&lt;j\le z&#x27;\\ j\nmid r}}(1-g(j))\\
+&amp;\quad +\sum_{\ell\le x^{0.02}}|E(\ell)| .\quad(4.4)
+\end{aligned}
+\]</span></p>
+<p><em>The remainders.</em> For squarefree <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, <span class="math" data-tex="\(\rho(\ell)\le\prod_{j\mid\ell}3j\le\tau(\ell)^2\ell\)">\(\rho(\ell)\le\prod_{j\mid\ell}3j\le\tau(\ell)^2\ell\)</span>, where <span class="math" data-tex="\(\tau\)">\(\tau\)</span> is the divisor function. With <span class="math" data-tex="\(\varphi(k)\le k\le4r\)">\(\varphi(k)\le k\le4r\)</span>, (4.3) gives <span class="math" data-tex="\(|E(\ell)|\le C\tau(\ell)^2(M_1+M_2+4r\ell)\)">\(|E(\ell)|\le C\tau(\ell)^2(M_1+M_2+4r\ell)\)</span>. Let <span class="math" data-tex="\(\tau_4(n)\)">\(\tau_4(n)\)</span> be the number of ordered factorizations <span class="math" data-tex="\(n=a_1a_2a_3a_4\)">\(n=a_1a_2a_3a_4\)</span> into positive integers. At a prime power <span class="math" data-tex="\(p^e\)">\(p^e\)</span>, <span class="math" data-tex="\((e+1)^2\le\frac{(e+1)(e+2)(e+3)}6\)">\((e+1)^2\le\frac{(e+1)(e+2)(e+3)}6\)</span>, so <span class="math" data-tex="\(\tau(n)^2\le\tau_4(n)\)">\(\tau(n)^2\le\tau_4(n)\)</span>, and for <span class="math" data-tex="\(Y\ge2\)">\(Y\ge2\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{n\le Y}\tau(n)^2&amp;\le\sum_{a_1a_2a_3\le Y}\frac Y{a_1a_2a_3}\\
+&amp;\le Y(1+\log Y)^3 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{n\le Y}\tau(n)^2&amp;\le\sum_{a_1a_2a_3\le Y}\frac Y{a_1a_2a_3}\\
+&amp;\le Y(1+\log Y)^3 .
+\end{aligned}
+\]</span>
+With <span class="math" data-tex="\(Y=x^{0.02}\)">\(Y=x^{0.02}\)</span>, <span class="math" data-tex="\(M_1+M_2\le4x^{0.54}\)">\(M_1+M_2\le4x^{0.54}\)</span> and <span class="math" data-tex="\(r\le x^{0.11}\)">\(r\le x^{0.11}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\ell\le x^{0.02}}|E(\ell)|\\
+&amp;\quad \le C\bigl(x^{0.56}+rx^{0.04}\bigr)L^3\\
+&amp;\quad \le C\,\frac xr\bigl(x^{-0.33}+x^{-0.74}\bigr)L^3 .\quad(4.5)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\ell\le x^{0.02}}|E(\ell)|\\
+&amp;\quad \le C\bigl(x^{0.56}+rx^{0.04}\bigr)L^3\\
+&amp;\quad \le C\,\frac xr\bigl(x^{-0.33}+x^{-0.74}\bigr)L^3 .\quad(4.5)
+\end{aligned}
+\]</span></p>
+<p><em>The main term.</em> For <span class="math" data-tex="\(j\le W\)">\(j\le W\)</span> and for <span class="math" data-tex="\(W&lt;j\le z&#x27;\)">\(W&lt;j\le z&#x27;\)</span> respectively,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+1-\frac{3j-2}{j^2}&amp;=\bigl(1-\tfrac1j\bigr)^3\bigl(1-\tfrac1{(j-1)^2}\bigr),\\
+1-\frac{j-1}{j^2}&amp;=\bigl(1-\tfrac1j\bigr)\bigl(1+\tfrac1{j(j-1)}\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+1-\frac{3j-2}{j^2}&amp;=\bigl(1-\tfrac1j\bigr)^3\bigl(1-\tfrac1{(j-1)^2}\bigr),\\
+1-\frac{j-1}{j^2}&amp;=\bigl(1-\tfrac1j\bigr)\bigl(1+\tfrac1{j(j-1)}\bigr).
+\end{aligned}
+\]</span>
+The factors <span class="math" data-tex="\(1-(j-1)^{-2}\)">\(1-(j-1)^{-2}\)</span> are at most <span class="math" data-tex="\(1\)">\(1\)</span>, and the product of the factors <span class="math" data-tex="\(1+1/(j(j-1))\)">\(1+1/(j(j-1))\)</span> is at most <span class="math" data-tex="\(\exp(\sum_{j\ge2}\frac1{j(j-1)})=e\)">\(\exp(\sum_{j\ge2}\frac1{j(j-1)})=e\)</span>. Every group prime is below <span class="math" data-tex="\(W\)">\(W\)</span>, and restoring the primes <span class="math" data-tex="\(j\mid r\)">\(j\mid r\)</span> changes <span class="math" data-tex="\(\prod_{2&lt;j\le W}(1-1/j)^3\)">\(\prod_{2&lt;j\le W}(1-1/j)^3\)</span> by a factor <span class="math" data-tex="\(1+o(1)\)">\(1+o(1)\)</span>, by (5.2) of Lesson 18. Since <span class="math" data-tex="\(\prod_{2&lt;j\le y}(1-1/j)=2V(y)\)">\(\prod_{2&lt;j\le y}(1-1/j)=2V(y)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\prod_{\substack{2&lt;j\le z&#x27;\\ j\nmid r}}(1-g(j))\\
+&amp;\quad \le(8e+o(1))\,V(W)^3\,\frac{V(z&#x27;)}{V(W)}\\
+&amp;\quad =(8e+o(1))\,V(W)^2\,V(z&#x27;) .\quad(4.6)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\prod_{\substack{2&lt;j\le z&#x27;\\ j\nmid r}}(1-g(j))\\
+&amp;\quad \le(8e+o(1))\,V(W)^3\,\frac{V(z&#x27;)}{V(W)}\\
+&amp;\quad =(8e+o(1))\,V(W)^2\,V(z&#x27;) .\quad(4.6)
+\end{aligned}
+\]</span></p>
+<p><em>Summation.</em> Here <span class="math" data-tex="\(X&#x27;\le M_1M_2/k\le2x/(cr)\le x/r\)">\(X&#x27;\le M_1M_2/k\le2x/(cr)\le x/r\)</span>, and <span class="math" data-tex="\(V(W)^2V(z&#x27;)\asymp L^{-1.48}\)">\(V(W)^2V(z&#x27;)\asymp L^{-1.48}\)</span> by (1.2) of Lesson 16, so (4.4)–(4.6) give <span class="math" data-tex="\(S_r\le C(x/r)V(W)^2V(z&#x27;)\)">\(S_r\le C(x/r)V(W)^2V(z&#x27;)\)</span> with an absolute <span class="math" data-tex="\(C\)">\(C\)</span>, uniformly for <span class="math" data-tex="\(r\le x^{0.11}\)">\(r\le x^{0.11}\)</span>. Multiplying by <span class="math" data-tex="\(\mathcal W(r)\)">\(\mathcal W(r)\)</span> and summing, the left side of (4.2) is at most <span class="math" data-tex="\(CxJ_0V(W)^2V(z&#x27;)\)">\(CxJ_0V(W)^2V(z&#x27;)\)</span>. Finally <span class="math" data-tex="\(V(z&#x27;)\le C/L\)">\(V(z&#x27;)\le C/L\)</span>, and <span class="math" data-tex="\(xJ_0/L\le CX_0\)">\(xJ_0/L\le CX_0\)</span> by (4.4) of Lesson 18 with a constant depending only on <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>. Only <span class="math" data-tex="\(J_0\)">\(J_0\)</span>, and not the pointwise bound <span class="math" data-tex="\(B_K\)">\(B_K\)</span>, entered this calculation. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-composites-with-two-nearly-equal-prime-factors">5. Composites with two nearly equal prime factors</h2>
+<p><strong>Proposition 5.1</strong> (balanced composites [OpenAI-029, (12.17)]). If <span class="math" data-tex="\(K\)">\(K\)</span> is at least a bound depending on <span class="math" data-tex="\(b\)">\(b\)</span> but not on the <span class="math" data-tex="\(a_i\)">\(a_i\)</span>, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\substack{P^-(d)&gt;x^{1/2-\kappa}\\ d\ \text{composite}}}w(d)\\
+&amp;\quad\le C_2\bigl(\kappa+L^{-1}\bigr)\frac{X_0}L\\
+&amp;\qquad+o\Bigl(\frac{X_0}L\Bigr),\quad(5.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\substack{P^-(d)&gt;x^{1/2-\kappa}\\ d\ \text{composite}}}w(d)\\
+&amp;\quad\le C_2\bigl(\kappa+L^{-1}\bigr)\frac{X_0}L\\
+&amp;\qquad+o\Bigl(\frac{X_0}L\Bigr),\quad(5.1)
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(C_2\)">\(C_2\)</span> depends only on <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>.</p>
+<p><em>Proof.</em> <em>Boxes.</em> Let <span class="math" data-tex="\(d&lt;2x\)">\(d&lt;2x\)</span> be composite with <span class="math" data-tex="\(P^-(d)&gt;x^{1/2-\kappa}\)">\(P^-(d)&gt;x^{1/2-\kappa}\)</span>. Three prime factors would give <span class="math" data-tex="\(d&gt;x^{3/2-3\kappa}&gt;2x\)">\(d&gt;x^{3/2-3\kappa}&gt;2x\)</span>, so <span class="math" data-tex="\(d=pq\)">\(d=pq\)</span> with primes <span class="math" data-tex="\(x^{1/2-\kappa}&lt;p\le q&lt;2x^{1/2+\kappa}\)">\(x^{1/2-\kappa}&lt;p\le q&lt;2x^{1/2+\kappa}\)</span>. Cover the ordered pairs of such primes with product in <span class="math" data-tex="\((x,2x)\)">\((x,2x)\)</span> by the dyadic boxes <span class="math" data-tex="\(\mathcal B=[M_1,2M_1)\times[M_2,2M_2)\)">\(\mathcal B=[M_1,2M_1)\times[M_2,2M_2)\)</span>, with <span class="math" data-tex="\(M_i\)">\(M_i\)</span> powers of <span class="math" data-tex="\(2\)">\(2\)</span>, that meet <span class="math" data-tex="\([x^{1/2-\kappa},2x^{1/2+\kappa}]\)">\([x^{1/2-\kappa},2x^{1/2+\kappa}]\)</span> in each coordinate and contain a pair with product in <span class="math" data-tex="\((x,2x)\)">\((x,2x)\)</span>. Since <span class="math" data-tex="\(\kappa&lt;0.01\)">\(\kappa&lt;0.01\)</span>, every such box satisfies (4.1) and lies in <span class="math" data-tex="\([x^{0.46},x^{0.54}]^2\)">\([x^{0.46},x^{0.54}]^2\)</span> for large <span class="math" data-tex="\(x\)">\(x\)</span>. The first coordinate takes at most <span class="math" data-tex="\(2\kappa L/\log2+3\)">\(2\kappa L/\log2+3\)</span> values, and the product condition leaves at most three second coordinates for each, so there are at most <span class="math" data-tex="\(C_{\rm dyad}(\kappa L+1)\)">\(C_{\rm dyad}(\kappa L+1)\)</span> boxes with an absolute <span class="math" data-tex="\(C_{\rm dyad}\)">\(C_{\rm dyad}\)</span>.</p>
+<p><em>Replacing the primes.</em> In a box take <span class="math" data-tex="\(\gamma=0.4\)">\(\gamma=0.4\)</span>, <span class="math" data-tex="\(s_-=0.46\)">\(s_-=0.46\)</span>, <span class="math" data-tex="\(s_+=0.54\)">\(s_+=0.54\)</span> and <span class="math" data-tex="\(\delta=b/2\)">\(\delta=b/2\)</span> in Lemma 2.1 of Lesson 18. A composite <span class="math" data-tex="\(m\le x^{0.54}\)">\(m\le x^{0.54}\)</span> has <span class="math" data-tex="\(P^-(m)\le x^{0.27}\)">\(P^-(m)\le x^{0.27}\)</span>, so on <span class="math" data-tex="\([x^{0.46},x^{0.54}]\)">\([x^{0.46},x^{0.54}]\)</span> the function <span class="math" data-tex="\(R_{0.4}\)">\(R_{0.4}\)</span> is the indicator <span class="math" data-tex="\(\mathbf 1_p\)">\(\mathbf 1_p\)</span> of the primes; and <span class="math" data-tex="\(D_{0.4}(s)=1/s\)">\(D_{0.4}(s)=1/s\)</span> for <span class="math" data-tex="\(s&lt;0.8\)">\(s&lt;0.8\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+B_{0.4}(m)&amp;=\frac{\mathbf 1_{P^-(m)&gt;W}}{V(W)\log m}\\
+&amp;=:B(m).\quad(5.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+B_{0.4}(m)&amp;=\frac{\mathbf 1_{P^-(m)&gt;W}}{V(W)\log m}\\
+&amp;=:B(m).\quad(5.2)
+\end{aligned}
+\]</span>
+Write
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathbf 1_p(m)\mathbf 1_p(n)-B(m)B(n)\\
+&amp;\quad =\bigl(\mathbf 1_p(m)-B(m)\bigr)\mathbf 1_p(n)\\
+&amp;\qquad +B(m)\bigl(\mathbf 1_p(n)-B(n)\bigr).\quad(5.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathbf 1_p(m)\mathbf 1_p(n)-B(m)B(n)\\
+&amp;\quad =\bigl(\mathbf 1_p(m)-B(m)\bigr)\mathbf 1_p(n)\\
+&amp;\qquad +B(m)\bigl(\mathbf 1_p(n)-B(n)\bigr).\quad(5.3)
+\end{aligned}
+\]</span>
+Apply Lemma 2.1 of Lesson 18 to the first term with the companion <span class="math" data-tex="\(\mathbf 1_p(n)\)">\(\mathbf 1_p(n)\)</span> on <span class="math" data-tex="\([M_2,2M_2)\)">\([M_2,2M_2)\)</span>, and to the second with the roles of <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(n\)">\(n\)</span> exchanged and the companion <span class="math" data-tex="\(B(m)\)">\(B(m)\)</span> on <span class="math" data-tex="\([M_1,2M_1)\)">\([M_1,2M_1)\)</span>; the weight <span class="math" data-tex="\(w(mn)\)">\(w(mn)\)</span> depends only on the product, and <span class="math" data-tex="\(0\le B(m)\le1\)">\(0\le B(m)\le1\)</span> for large <span class="math" data-tex="\(x\)">\(x\)</span>, since <span class="math" data-tex="\(V(W)^{-1}\asymp L^{0.24}\)">\(V(W)^{-1}\asymp L^{0.24}\)</span> and <span class="math" data-tex="\(\log m\ge0.46L\)">\(\log m\ge0.46L\)</span>. Both companions are supported on <span class="math" data-tex="\(W\)">\(W\)</span>-rough integers. Over all boxes the errors total <span class="math" data-tex="\(O((\kappa L+1)xL^{-6})=o(X_0/L)\)">\(O((\kappa L+1)xL^{-6})=o(X_0/L)\)</span>.</p>
+<p><em>The main term.</em> On a box, <span class="math" data-tex="\(B(m)B(n)\le(0.46L)^{-2}V(W)^{-2}\)">\(B(m)B(n)\le(0.46L)^{-2}V(W)^{-2}\)</span><span class="math" data-tex="\(\mathbf 1_{P^-(m)&gt;W}\mathbf 1_{P^-(n)&gt;W}\)">\(\mathbf 1_{P^-(m)&gt;W}\mathbf 1_{P^-(n)&gt;W}\)</span>, so Lemma 4.1 bounds its contribution by <span class="math" data-tex="\((0.46)^{-2}C_1X_0/L^2\)">\((0.46)^{-2}C_1X_0/L^2\)</span>. The ordered prime pairs in the boxes count every composite <span class="math" data-tex="\(d\)">\(d\)</span> of (5.1) at least once, and summing over the boxes gives (5.1) with <span class="math" data-tex="\(C_2=(0.46)^{-2}C_1C_{\rm dyad}\)">\(C_2=(0.46)^{-2}C_1C_{\rm dyad}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-the-choice-of-parameters">6. The choice of parameters</h2>
+<p><strong>Theorem 6.1</strong> (Proposition 5.1 of Lesson 1 [OpenAI-029, Proposition 2.1]). Let <span class="math" data-tex="\(M\)">\(M\)</span> be a positive multiple of <span class="math" data-tex="\(8\)">\(8\)</span>, <span class="math" data-tex="\(c\in\{2,4\}\)">\(c\in\{2,4\}\)</span>, and let <span class="math" data-tex="\(u\)">\(u\)</span> satisfy (4.1) of Lesson 1. For all sufficiently large <span class="math" data-tex="\(x\)">\(x\)</span> there are <span class="math" data-tex="\(\gg_{M,c,u}x/L^2\)">\(\gg_{M,c,u}x/L^2\)</span> primes <span class="math" data-tex="\(p\in(x,2x)\)">\(p\in(x,2x)\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+p\equiv u\pmod M,\\
+p-1=crQ,\\
+Q&gt;x^{0.9}\ \text{prime},\quad(6.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+p\equiv u\pmod M,\\
+p-1=crQ,\\
+Q&gt;x^{0.9}\ \text{prime},\quad(6.1)
+\end{gathered}
+\]</span>
+where every prime divisor of the integer <span class="math" data-tex="\(r\)">\(r\)</span> lies in <span class="math" data-tex="\(\bigl(\exp(L^{0.1}),\exp(L^{0.3})\bigr)\)">\(\bigl(\exp(L^{0.1}),\exp(L^{0.3})\bigr)\)</span>.</p>
+<p><em>Proof.</em> Fix <span class="math" data-tex="\(M,c,u\)">\(M,c,u\)</span> and a smooth <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> as in Lesson 18; they determine <span class="math" data-tex="\(\mathfrak S_M\)">\(\mathfrak S_M\)</span> and <span class="math" data-tex="\(C_2\)">\(C_2\)</span>. Choose the parameters in this order:</p>
+<ol>
+<li><span class="math" data-tex="\(0&lt;\kappa&lt;0.01\)">\(0&lt;\kappa&lt;0.01\)</span> with <span class="math" data-tex="\(C_2\kappa&lt;\mathfrak S_M/4\)">\(C_2\kappa&lt;\mathfrak S_M/4\)</span>, and <span class="math" data-tex="\(0&lt;\epsilon&lt;\kappa\)">\(0&lt;\epsilon&lt;\kappa\)</span>;</li>
+<li><span class="math" data-tex="\(0&lt;b&lt;0.01\)">\(0&lt;b&lt;0.01\)</span>, below the thresholds <span class="math" data-tex="\(b_0\)">\(b_0\)</span> of (3.2) of Lesson 16 and <span class="math" data-tex="\(b_1\)">\(b_1\)</span> of Proposition 1.1, with <span class="math" data-tex="\(\frac{e^{-\gamma_E}}b(C_s+C_d)e^{-1/(20b)}&lt;0.2\)">\(\frac{e^{-\gamma_E}}b(C_s+C_d)e^{-1/(20b)}&lt;0.2\)</span>; this is possible because the left side tends to <span class="math" data-tex="\(0\)">\(0\)</span> as <span class="math" data-tex="\(b\to0\)">\(b\to0\)</span>;</li>
+<li>the partition of Proposition 3.2;</li>
+<li><span class="math" data-tex="\(K\)">\(K\)</span> at least the bounds of Lemma 3.1 for the finitely many bins and of Proposition 5.1; these bounds do not depend on the <span class="math" data-tex="\(a_i\)">\(a_i\)</span>;</li>
+<li><span class="math" data-tex="\(a_i=0.1+0.1i/(K+1)\)">\(a_i=0.1+0.1i/(K+1)\)</span> for <span class="math" data-tex="\(1\le i\le K\)">\(1\le i\le K\)</span>.</li>
+</ol>
+<p>A prime <span class="math" data-tex="\(d\in(x,2x)\)">\(d\in(x,2x)\)</span> has <span class="math" data-tex="\(P^-(d)=d&gt;x^{1/2-\kappa}\)">\(P^-(d)=d&gt;x^{1/2-\kappa}\)</span>, so it is counted by <span class="math" data-tex="\(U_\kappa\)">\(U_\kappa\)</span>, and the other terms of <span class="math" data-tex="\(U_\kappa\)">\(U_\kappa\)</span> are composite. By (3.3) and (5.1), for large <span class="math" data-tex="\(x\)">\(x\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac L{\mathfrak S_MX_0}\sum_{d\ \text{prime}}w(d)\\
+&amp;\quad \ge0.9-0.2-\frac{C_2\kappa}{\mathfrak S_M}+o(1)\\
+&amp;\quad \ge0.9-0.2-\frac14+o(1)&gt;\frac14 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac L{\mathfrak S_MX_0}\sum_{d\ \text{prime}}w(d)\\
+&amp;\quad \ge0.9-0.2-\frac{C_2\kappa}{\mathfrak S_M}+o(1)\\
+&amp;\quad \ge0.9-0.2-\frac14+o(1)&gt;\frac14 .
+\end{aligned}
+\]</span>
+By (4.4) of Lesson 18, <span class="math" data-tex="\(X_0\gg xJ_0/L\ge x/L\)">\(X_0\gg xJ_0/L\ge x/L\)</span>, and <span class="math" data-tex="\(w\le B_K\)">\(w\le B_K\)</span> by (1.3) there. So the number of primes <span class="math" data-tex="\(d\)">\(d\)</span> with <span class="math" data-tex="\(w(d)&gt;0\)">\(w(d)&gt;0\)</span> is at least <span class="math" data-tex="\(\mathfrak S_MX_0/(4B_KL)\gg x/L^2\)">\(\mathfrak S_MX_0/(4B_KL)\gg x/L^2\)</span>, with a constant depending on <span class="math" data-tex="\(M,c,u\)">\(M,c,u\)</span> through the choices above. For each of them, (1.2) and Lemma 1.1 of Lesson 18 give <span class="math" data-tex="\(x&lt;d&lt;2x\)">\(x&lt;d&lt;2x\)</span>, <span class="math" data-tex="\(d\equiv u\pmod M\)">\(d\equiv u\pmod M\)</span> and <span class="math" data-tex="\(d-1=crQ\)">\(d-1=crQ\)</span> with <span class="math" data-tex="\(Q&gt;x^{0.9}\)">\(Q&gt;x^{0.9}\)</span> prime and <span class="math" data-tex="\(r\)">\(r\)</span> a group integer, and a group prime <span class="math" data-tex="\(p\)">\(p\)</span> satisfies <span class="math" data-tex="\(\exp(L^{0.1})&lt;\exp(L^{a_1})\le p\)">\(\exp(L^{0.1})&lt;\exp(L^{a_1})\le p\)</span><span class="math" data-tex="\(\le\exp(2L^{a_K})&lt;\exp(L^{0.3})\)">\(\le\exp(2L^{a_K})&lt;\exp(L^{0.3})\)</span> for large <span class="math" data-tex="\(x\)">\(x\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Together with Proposition 5.2 of Lesson 1, which Lesson 15 derives from the zero-free strip of Lessons 2–14, Theorem 6.1 proves Theorem 2.1 of Lesson 1: every admissible integer is a primitive root modulo <span class="math" data-tex="\(\gg x/(\log x)^2\)">\(\gg x/(\log x)^2\)</span> primes in <span class="math" data-tex="\((x,2x)\)">\((x,2x)\)</span>.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> Verify the two factorizations of <span class="math" data-tex="\(1-g(j)\)">\(1-g(j)\)</span> in the proof of Lemma 4.1.</p>
+<p><strong>7.2.</strong> For a prime <span class="math" data-tex="\(j\)">\(j\)</span>, count the residue pairs <span class="math" data-tex="\((a,b)\)">\((a,b)\)</span> modulo <span class="math" data-tex="\(j\)">\(j\)</span> with <span class="math" data-tex="\(ab\equiv1\)">\(ab\equiv1\)</span> and with <span class="math" data-tex="\(ab\equiv0\)">\(ab\equiv0\)</span>, and show that <span class="math" data-tex="\((3j-2)/j^2\le7/9\)">\((3j-2)/j^2\le7/9\)</span> for every prime <span class="math" data-tex="\(j\ge3\)">\(j\ge3\)</span>.</p>
+<p><strong>7.3.</strong> Prove <span class="math" data-tex="\(\tau(n)^2\le\tau_4(n)\)">\(\tau(n)^2\le\tau_4(n)\)</span> and <span class="math" data-tex="\(\sum_{n\le Y}\tau_4(n)\le Y(1+\log Y)^3\)">\(\sum_{n\le Y}\tau_4(n)\le Y(1+\log Y)^3\)</span> for <span class="math" data-tex="\(Y\ge2\)">\(Y\ge2\)</span>.</p>
+<p><strong>7.4.</strong> Let <span class="math" data-tex="\(0&lt;\kappa&lt;1/6\)">\(0&lt;\kappa&lt;1/6\)</span>. Show that for large <span class="math" data-tex="\(x\)">\(x\)</span> an integer <span class="math" data-tex="\(d&lt;2x\)">\(d&lt;2x\)</span> with <span class="math" data-tex="\(P^-(d)&gt;x^{1/2-\kappa}\)">\(P^-(d)&gt;x^{1/2-\kappa}\)</span> has at most two prime factors counted with multiplicity.</p>
+<p><strong>7.5.</strong> Show that for every <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span> there is <span class="math" data-tex="\(b_*&gt;0\)">\(b_*&gt;0\)</span> with <span class="math" data-tex="\(\frac{e^{-\gamma_E}}b\,C\,e^{-1/(20b)}&lt;0.2\)">\(\frac{e^{-\gamma_E}}b\,C\,e^{-1/(20b)}&lt;0.2\)</span> for <span class="math" data-tex="\(0&lt;b&lt;b_*\)">\(0&lt;b&lt;b_*\)</span>.</p>
+<p><strong>7.6.</strong> For <span class="math" data-tex="\((M,c,u)=(8,4,5)\)">\((M,c,u)=(8,4,5)\)</span>, show that every prime <span class="math" data-tex="\(p\)">\(p\)</span> of Theorem 6.1 satisfies <span class="math" data-tex="\(p\equiv5\pmod8\)">\(p\equiv5\pmod8\)</span> and that <span class="math" data-tex="\((p-1)/4=rQ\)">\((p-1)/4=rQ\)</span> is odd.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> <span class="math" data-tex="\((1-\frac1j)^3(1-\frac1{(j-1)^2})\)">\((1-\frac1j)^3(1-\frac1{(j-1)^2})\)</span><span class="math" data-tex="\(=\frac{(j-1)^3}{j^3}\cdot\frac{j(j-2)}{(j-1)^2}=\frac{(j-1)(j-2)}{j^2}\)">\(=\frac{(j-1)^3}{j^3}\cdot\frac{j(j-2)}{(j-1)^2}=\frac{(j-1)(j-2)}{j^2}\)</span><span class="math" data-tex="\(=1-\frac{3j-2}{j^2}\)">\(=1-\frac{3j-2}{j^2}\)</span>, and <span class="math" data-tex="\((1-\frac1j)(1+\frac1{j(j-1)})\)">\((1-\frac1j)(1+\frac1{j(j-1)})\)</span><span class="math" data-tex="\(=\frac{j-1}j\cdot\frac{j^2-j+1}{j(j-1)}=\frac{j^2-j+1}{j^2}=1-\frac{j-1}{j^2}\)">\(=\frac{j-1}j\cdot\frac{j^2-j+1}{j(j-1)}=\frac{j^2-j+1}{j^2}=1-\frac{j-1}{j^2}\)</span>.</p>
+<p><strong>7.2.</strong> <span class="math" data-tex="\(ab\equiv1\)">\(ab\equiv1\)</span> forces <span class="math" data-tex="\(a\)">\(a\)</span> to be a unit and <span class="math" data-tex="\(b=a^{-1}\)">\(b=a^{-1}\)</span>: <span class="math" data-tex="\(j-1\)">\(j-1\)</span> pairs. <span class="math" data-tex="\(ab\equiv0\)">\(ab\equiv0\)</span> means <span class="math" data-tex="\(a\equiv0\)">\(a\equiv0\)</span> or <span class="math" data-tex="\(b\equiv0\)">\(b\equiv0\)</span>: <span class="math" data-tex="\(j+j-1=2j-1\)">\(j+j-1=2j-1\)</span> pairs. The function <span class="math" data-tex="\(3/t-2/t^2\)">\(3/t-2/t^2\)</span> has derivative <span class="math" data-tex="\((4-3t)/t^3&lt;0\)">\((4-3t)/t^3&lt;0\)</span> for <span class="math" data-tex="\(t\ge2\)">\(t\ge2\)</span>, so its value at a prime <span class="math" data-tex="\(j\ge3\)">\(j\ge3\)</span> is at most its value <span class="math" data-tex="\(7/9\)">\(7/9\)</span> at <span class="math" data-tex="\(3\)">\(3\)</span>.</p>
+<p><strong>7.3.</strong> Both functions are multiplicative, with <span class="math" data-tex="\(\tau(p^e)^2=(e+1)^2\)">\(\tau(p^e)^2=(e+1)^2\)</span> and <span class="math" data-tex="\(\tau_4(p^e)=\binom{e+3}3\)">\(\tau_4(p^e)=\binom{e+3}3\)</span>; the inequality <span class="math" data-tex="\(6(e+1)\le(e+2)(e+3)\)">\(6(e+1)\le(e+2)(e+3)\)</span> is <span class="math" data-tex="\(0\le e^2-e\)">\(0\le e^2-e\)</span>. Next, <span class="math" data-tex="\(\sum_{n\le Y}\tau_4(n)\)">\(\sum_{n\le Y}\tau_4(n)\)</span> counts the quadruples with <span class="math" data-tex="\(a_1a_2a_3a_4\le Y\)">\(a_1a_2a_3a_4\le Y\)</span>, which is <span class="math" data-tex="\(\sum_{a_1a_2a_3\le Y}\lfloor Y/(a_1a_2a_3)\rfloor\)">\(\sum_{a_1a_2a_3\le Y}\lfloor Y/(a_1a_2a_3)\rfloor\)</span><span class="math" data-tex="\(\le Y(\sum_{a\le Y}1/a)^3\le Y(1+\log Y)^3\)">\(\le Y(\sum_{a\le Y}1/a)^3\le Y(1+\log Y)^3\)</span>.</p>
+<p><strong>7.4.</strong> Three prime factors larger than <span class="math" data-tex="\(x^{1/2-\kappa}\)">\(x^{1/2-\kappa}\)</span> have product larger than <span class="math" data-tex="\(x^{3/2-3\kappa}=x\cdot x^{1/2-3\kappa}\)">\(x^{3/2-3\kappa}=x\cdot x^{1/2-3\kappa}\)</span>, which exceeds <span class="math" data-tex="\(2x\)">\(2x\)</span> for large <span class="math" data-tex="\(x\)">\(x\)</span> because <span class="math" data-tex="\(1/2-3\kappa&gt;0\)">\(1/2-3\kappa&gt;0\)</span>.</p>
+<p><strong>7.5.</strong> With <span class="math" data-tex="\(s=1/b\)">\(s=1/b\)</span>, the left side is <span class="math" data-tex="\(e^{-\gamma_E}Cse^{-s/20}\)">\(e^{-\gamma_E}Cse^{-s/20}\)</span>, which tends to <span class="math" data-tex="\(0\)">\(0\)</span> as <span class="math" data-tex="\(s\to\infty\)">\(s\to\infty\)</span>.</p>
+<p><strong>7.6.</strong> <span class="math" data-tex="\(p\equiv u=5\pmod8\)">\(p\equiv u=5\pmod8\)</span>. The prime factors of <span class="math" data-tex="\(r\)">\(r\)</span> are group primes, hence odd, and <span class="math" data-tex="\(Q&gt;x^{0.9}\)">\(Q&gt;x^{0.9}\)</span> is an odd prime, so <span class="math" data-tex="\(rQ=(p-1)/4\)">\(rQ=(p-1)/4\)</span> is odd.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-029] OpenAI, <em>Primitive roots for every admissible integer base</em>, OpenAI Math Release preprint, 4 October 2026, Sections 12.3–12.6. https://github.com/openai/math/tree/main/preprints/Primitive-roots-for-every-admissible-integer-base-October-4-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

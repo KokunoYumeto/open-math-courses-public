@@ -1,0 +1,266 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Marked Type II estimates and rough factors</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Artin&#x27;s primitive root conjecture)</a><a href="a-block-sieve-and-rough-number-densities.html">Previous lesson</a><a href="weights-mass-and-distribution-in-a-progression.html">Next lesson</a><a href="src/marked-type-ii-estimates.md">Editable source</a></nav><main><article><h1 id="marked-type-ii-estimates-and-rough-factors">Marked Type II estimates and rough factors</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The construction of Lessons 18 and 19 counts integers <span class="math" data-tex="\(d\)">\(d\)</span> whose predecessor <span class="math" data-tex="\(d-1\)">\(d-1\)</span> has a prescribed shape, and then removes the composite <span class="math" data-tex="\(d\)">\(d\)</span>. Both steps require bilinear sums <span class="math" data-tex="\(\sum_{m,n}\alpha_m\beta_n\,F(mn-1)\mathcal W(mn-1)\)">\(\sum_{m,n}\alpha_m\beta_n\,F(mn-1)\mathcal W(mn-1)\)</span> to be small, where <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span> is a weight that marks prime factors of <span class="math" data-tex="\(mn-1\)">\(mn-1\)</span> from fixed groups of primes. A theorem of OpenAI's companion paper on the Poisson–Dirichlet law for prime predecessors gives this when <span class="math" data-tex="\(\alpha_m\)">\(\alpha_m\)</span> is the indicator of primes minus its average over <span class="math" data-tex="\(W\)">\(W\)</span>-rough numbers. Its proof uses <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> only through cancellation against Dirichlet characters of small modulus twisted by <span class="math" data-tex="\(m^{it}\)">\(m^{it}\)</span>. This lesson states these two facts as named results and proves the corresponding cancellation for the coefficient that replaces the indicator of <span class="math" data-tex="\(x^\gamma\)">\(x^\gamma\)</span>-rough numbers by its density <span class="math" data-tex="\(D_\gamma(\log m/L)/L\)">\(D_\gamma(\log m/L)/L\)</span> of <a href="a-block-sieve-and-rough-number-densities.html"><em>A block sieve and rough-number densities</em></a>.</p>
+<p><strong>Prerequisites.</strong> <a href="a-block-sieve-and-rough-number-densities.html"><em>A block sieve and rough-number densities</em></a>, (1.1)–(1.4), Lemma 1.1 and Lemma 2.1; <a href="../NT-DIRL/NT-DIRL-11.html"><em>The Siegel–Walfisz theorem</em></a>, Theorem 2.1; <a href="../NT-ZETA/NT-ZETA-02.html"><em>Counting primes by elementary means: Chebyshev and Mertens</em></a>, Theorems 3.1 and 4.2.</p>
+<h2 id="1-marked-weights">1. Marked weights</h2>
+<p>Keep <span class="math" data-tex="\(L=\log x\)">\(L=\log x\)</span>, <span class="math" data-tex="\(W=\exp(L^{0.24})\)">\(W=\exp(L^{0.24})\)</span> and <span class="math" data-tex="\(V(y)=\prod_{p\le y}(1-1/p)\)">\(V(y)=\prod_{p\le y}(1-1/p)\)</span> from Lesson 16. Dirichlet characters, principal ones included, are extended by zero on nonunits. Fix an integer <span class="math" data-tex="\(K\ge1\)">\(K\ge1\)</span> and numbers <span class="math" data-tex="\(0.1&lt;a_1&lt;\cdots&lt;a_K&lt;0.2\)">\(0.1&lt;a_1&lt;\cdots&lt;a_K&lt;0.2\)</span> before letting <span class="math" data-tex="\(x\)">\(x\)</span> grow, and define the <strong>groups</strong>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal P_i=\{p\ \text{prime}:L^{a_i}\le\log p\le2L^{a_i}\}\\
+(1\le i\le K),\quad(1.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal P_i=\{p\ \text{prime}:L^{a_i}\le\log p\le2L^{a_i}\}\\
+(1\le i\le K),\quad(1.1)
+\end{gathered}
+\]</span>
+which are disjoint for large <span class="math" data-tex="\(x\)">\(x\)</span>. For <span class="math" data-tex="\(h\ge1\)">\(h\ge1\)</span> and <span class="math" data-tex="\(0&lt;q&lt;1\)">\(0&lt;q&lt;1\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+V_i=\sum_{p\in\mathcal P_i}\frac1p,\\
+\omega_i(h)=\#\{p\in\mathcal P_i:p\mid h\},\\
+\omega=\sum_i\omega_i,\\
+\mathcal W(h)=q^{\omega(h)-K}\prod_{i=1}^K\frac{\omega_i(h)}{V_i}.\quad(1.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+V_i=\sum_{p\in\mathcal P_i}\frac1p,\\
+\omega_i(h)=\#\{p\in\mathcal P_i:p\mid h\},\\
+\omega=\sum_i\omega_i,\\
+\mathcal W(h)=q^{\omega(h)-K}\prod_{i=1}^K\frac{\omega_i(h)}{V_i}.\quad(1.2)
+\end{gathered}
+\]</span>
+By Mertens' estimate (Theorem 3.1 of <a href="../NT-ZETA/NT-ZETA-02.html"><em>Counting primes by elementary means</em></a>), <span class="math" data-tex="\(V_i=\log2+o(1)\)">\(V_i=\log2+o(1)\)</span>. The weight <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span> is nonnegative, vanishes unless every group supplies a prime divisor, and is bounded in terms of <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span>, since <span class="math" data-tex="\(jq^{j-1}\)">\(jq^{j-1}\)</span> is bounded. A function <span class="math" data-tex="\(F\)">\(F\)</span> on positive integers is <strong>group-invariant</strong> if <span class="math" data-tex="\(F(ph)=F(h)\)">\(F(ph)=F(h)\)</span> for every group prime <span class="math" data-tex="\(p\)">\(p\)</span> and every <span class="math" data-tex="\(h\)">\(h\)</span>; equivalently, <span class="math" data-tex="\(F(h)\)">\(F(h)\)</span> depends only on <span class="math" data-tex="\(h\)">\(h\)</span> with all its group prime powers removed.</p>
+<h2 id="2-named-results">2. Named results</h2>
+<p><strong>Named result N5</strong> (one-sided marked Type II estimate [PD, Theorem 3.1]). Fix <span class="math" data-tex="\(\delta,C,D_*&gt;0\)">\(\delta,C,D_*&gt;0\)</span> and <span class="math" data-tex="\(q\in(0,1)\)">\(q\in(0,1)\)</span>. Let <span class="math" data-tex="\(H_m,H_n\ge x^\delta\)">\(H_m,H_n\ge x^\delta\)</span> with <span class="math" data-tex="\(X=H_mH_n\asymp x\)">\(X=H_mH_n\asymp x\)</span>. Let <span class="math" data-tex="\(F\)">\(F\)</span> be group-invariant with <span class="math" data-tex="\(|F|\le1\)">\(|F|\le1\)</span>. Let <span class="math" data-tex="\(\alpha_m\)">\(\alpha_m\)</span> be supported on an interval in <span class="math" data-tex="\([H_m,2H_m]\)">\([H_m,2H_m]\)</span>, where
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+\alpha_m&amp;=m^{iv}\Bigl(\mathbf 1_{m\ \text{prime}}\\
+&amp;\quad -\frac{\mathbf 1_{P^-(m)&gt;W}}{V(W)\log m}\Bigr),
+\end{aligned}\\
+|v|\le L^C,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+\alpha_m&amp;=m^{iv}\Bigl(\mathbf 1_{m\ \text{prime}}\\
+&amp;\quad -\frac{\mathbf 1_{P^-(m)&gt;W}}{V(W)\log m}\Bigr),
+\end{aligned}\\
+|v|\le L^C,
+\end{gathered}
+\]</span>
+and let <span class="math" data-tex="\(\beta_n\)">\(\beta_n\)</span> be supported on <span class="math" data-tex="\(W\)">\(W\)</span>-rough integers in <span class="math" data-tex="\([H_n,2H_n]\)">\([H_n,2H_n]\)</span> with <span class="math" data-tex="\(|\beta_n|\le L^C\)">\(|\beta_n|\le L^C\)</span>. If <span class="math" data-tex="\(K\)">\(K\)</span> is large enough in terms of <span class="math" data-tex="\(\delta,C,D_*,q\)">\(\delta,C,D_*,q\)</span>, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl|\sum_{m,n}\alpha_m\beta_n\,F(mn-1)\,\mathcal W(mn-1)\Bigr|\\
+&amp;\quad \le C&#x27;\,X\,L^{-D_*}.\quad(2.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl|\sum_{m,n}\alpha_m\beta_n\,F(mn-1)\,\mathcal W(mn-1)\Bigr|\\
+&amp;\quad \le C&#x27;\,X\,L^{-D_*}.\quad(2.1)
+\end{aligned}
+\]</span>
+The lower bound for <span class="math" data-tex="\(K\)">\(K\)</span> does not depend on the <span class="math" data-tex="\(a_i\)">\(a_i\)</span>; the constant <span class="math" data-tex="\(C&#x27;\)">\(C&#x27;\)</span> and the threshold for <span class="math" data-tex="\(x\)">\(x\)</span> may.</p>
+<p><strong>Named result N6</strong> (coefficient criterion [OpenAI-029, Lemma 10.2], extracted from the proof of N5 in [PD, Sections 3–5]). In N5, replace <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> by any sequence supported on <span class="math" data-tex="\(W\)">\(W\)</span>-rough integers of an interval <span class="math" data-tex="\(I\subseteq[H_m,2H_m]\)">\(I\subseteq[H_m,2H_m]\)</span>, keep <span class="math" data-tex="\(\beta\)">\(\beta\)</span> as there, and assume <span class="math" data-tex="\(|\alpha_m|\le L^C\)">\(|\alpha_m|\le L^C\)</span>. Suppose that for all fixed <span class="math" data-tex="\(A_0,B,A&gt;0\)">\(A_0,B,A&gt;0\)</span>, every Dirichlet character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of modulus <span class="math" data-tex="\(k\le L^{A_0}\)">\(k\le L^{A_0}\)</span> and every <span class="math" data-tex="\(|t|\le2XL^B\)">\(|t|\le2XL^B\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl|\frac1{H_m}\sum_m\alpha_m\chi(m)m^{it}\Bigr|\\
+&amp;\quad \le C_A\,L^{-A},\quad(2.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl|\frac1{H_m}\sum_m\alpha_m\chi(m)m^{it}\Bigr|\\
+&amp;\quad \le C_A\,L^{-A},\quad(2.2)
+\end{aligned}
+\]</span>
+uniformly in the interval, the character and <span class="math" data-tex="\(t\)">\(t\)</span>. Then (2.1) holds for <span class="math" data-tex="\(K\)">\(K\)</span> large enough in terms of the fixed data, with the same uniformity.</p>
+<p><strong>Named result N7</strong> (long prime polynomials and logarithmic phases [PD, Lemmas 2.3 and 2.4], proved in [PD, Appendix, Lemmas 9.1 and 9.5]; also [PP, Lemmas 3.1 and 3.3]).</p>
+<ol>
+<li>Fix <span class="math" data-tex="\(0&lt;\tau&lt;\theta&lt;1\)">\(0&lt;\tau&lt;\theta&lt;1\)</span> and <span class="math" data-tex="\(C,A&gt;0\)">\(C,A&gt;0\)</span>. There is <span class="math" data-tex="\(B_0\)">\(B_0\)</span> such that for <span class="math" data-tex="\(x^\tau/2\le N\le x^\theta\)">\(x^\tau/2\le N\le x^\theta\)</span>, every character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of modulus <span class="math" data-tex="\(k\le L^C\)">\(k\le L^C\)</span>, every interval <span class="math" data-tex="\(J\subseteq[N,2N]\)">\(J\subseteq[N,2N]\)</span> and <span class="math" data-tex="\(L^{B_0}\le|u|\le x^2\)">\(L^{B_0}\le|u|\le x^2\)</span>,
+<span class="math math-display" data-tex="\[
+\Bigl|\sum_{p\in J}\chi(p)\,p^{-1+iu}\Bigr|\le C_{\tau,\theta,C,A}\,L^{-A}.
+\]">\[
+\Bigl|\sum_{p\in J}\chi(p)\,p^{-1+iu}\Bigr|\le C_{\tau,\theta,C,A}\,L^{-A}.
+\]</span></li>
+<li>Fix <span class="math" data-tex="\(C&gt;0\)">\(C&gt;0\)</span>. There is an absolute <span class="math" data-tex="\(C_3&gt;0\)">\(C_3&gt;0\)</span> such that for large <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(\exp(L/(\log L)^2)\le N\le2x^5\)">\(\exp(L/(\log L)^2)\le N\le2x^5\)</span>, <span class="math" data-tex="\(k\le L^C\)">\(k\le L^C\)</span>, <span class="math" data-tex="\(\exp(L/(2(\log L)^2))\le|u|\le4x^3\)">\(\exp(L/(2(\log L)^2))\le|u|\le4x^3\)</span>, every residue <span class="math" data-tex="\(a\)">\(a\)</span> modulo <span class="math" data-tex="\(k\)">\(k\)</span> and every interval <span class="math" data-tex="\(J\subseteq[N,2N]\)">\(J\subseteq[N,2N]\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl|\sum_{\substack{n\in J\\ n\equiv a\ (k)}}n^{iu}\Bigr|\\
+&amp;\quad \le C\,\frac Nk\exp\Bigl(-\frac L{(\log L)^{C_3}}\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl|\sum_{\substack{n\in J\\ n\equiv a\ (k)}}n^{iu}\Bigr|\\
+&amp;\quad \le C\,\frac Nk\exp\Bigl(-\frac L{(\log L)^{C_3}}\Bigr).
+\end{aligned}
+\]</span></li>
+</ol>
+<p>These three results are used without proof in the programme. N5 and N6 rest on a determinant estimate with marks on one side and on a major-arc analysis; N7 rests on Vinogradov's mean-value method and a zero-free strip at large height.</p>
+<h2 id="3-characters-on-rough-numbers">3. Characters on rough numbers</h2>
+<p><strong>Lemma 3.1</strong> (rough counts [PD, Lemma 2.5]). Fix <span class="math" data-tex="\(\delta,C,A_0,A&gt;0\)">\(\delta,C,A_0,A&gt;0\)</span>. For <span class="math" data-tex="\(x^\delta\le H\le x^C\)">\(x^\delta\le H\le x^C\)</span>, every interval <span class="math" data-tex="\(I\subseteq[H,2H]\)">\(I\subseteq[H,2H]\)</span> and every character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of modulus <span class="math" data-tex="\(k\le L^{A_0}\)">\(k\le L^{A_0}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\substack{n\in I\\ P^-(n)&gt;W}}\chi(n)\\
+&amp;\quad =\mathbf 1_{\chi\ \text{principal}}\,V(W)\,|I|\\
+&amp;\qquad +O(H\,L^{-A}).\quad(3.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\substack{n\in I\\ P^-(n)&gt;W}}\chi(n)\\
+&amp;\quad =\mathbf 1_{\chi\ \text{principal}}\,V(W)\,|I|\\
+&amp;\qquad +O(H\,L^{-A}).\quad(3.1)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> For large <span class="math" data-tex="\(x\)">\(x\)</span>, every prime factor of <span class="math" data-tex="\(k\)">\(k\)</span> is below <span class="math" data-tex="\(W\)">\(W\)</span>, so a <span class="math" data-tex="\(W\)">\(W\)</span>-rough <span class="math" data-tex="\(n\)">\(n\)</span> is a unit modulo <span class="math" data-tex="\(k\)">\(k\)</span> and the principal character is <span class="math" data-tex="\(1\)">\(1\)</span> on it. Fix a unit residue <span class="math" data-tex="\(b\)">\(b\)</span> modulo <span class="math" data-tex="\(k\)">\(k\)</span>, and apply Lemma 2.1 of Lesson 16 to <span class="math" data-tex="\(\{n\in I:n\equiv b\ (k)\}\)">\(\{n\in I:n\equiv b\ (k)\}\)</span> with the primes <span class="math" data-tex="\(p\le W\)">\(p\le W\)</span>, <span class="math" data-tex="\(p\nmid k\)">\(p\nmid k\)</span>, and the conditions <span class="math" data-tex="\(p\mid n\)">\(p\mid n\)</span>. By the Chinese remainder theorem, <span class="math" data-tex="\(A(d)=|I|/(kd)+O(1)\)">\(A(d)=|I|/(kd)+O(1)\)</span>, so <span class="math" data-tex="\(X&#x27;=|I|/k\)">\(X&#x27;=|I|/k\)</span>, <span class="math" data-tex="\(g(d)=1/d\)">\(g(d)=1/d\)</span>, <span class="math" data-tex="\(|E(d)|\le1\)">\(|E(d)|\le1\)</span>, and (2.1) of Lesson 16 holds with absolute constants. Take the sieve depth <span class="math" data-tex="\(2\lceil(A+A_0)\log L\rceil\)">\(2\lceil(A+A_0)\log L\rceil\)</span>, so that its relative error is <span class="math" data-tex="\(O(L^{-A-A_0})\)">\(O(L^{-A-A_0})\)</span> and the remainder sum is at most <span class="math" data-tex="\(W^{O(\log L)}=x^{o(1)}\)">\(W^{O(\log L)}=x^{o(1)}\)</span>. Since <span class="math" data-tex="\(\prod_{p\le W,\,p\nmid k}(1-1/p)=V(W)k/\varphi(k)\)">\(\prod_{p\le W,\,p\nmid k}(1-1/p)=V(W)k/\varphi(k)\)</span>, the count in each unit class is <span class="math" data-tex="\(V(W)|I|/\varphi(k)+O(HL^{-A-A_0})\)">\(V(W)|I|/\varphi(k)+O(HL^{-A-A_0})\)</span>. Multiply by <span class="math" data-tex="\(\chi(b)\)">\(\chi(b)\)</span> and sum over the <span class="math" data-tex="\(\varphi(k)\le L^{A_0}\)">\(\varphi(k)\le L^{A_0}\)</span> classes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-rough-proxy-at-high-frequencies">4. The rough proxy at high frequencies</h2>
+<p><strong>Lemma 4.1</strong> (the proxy bound [PD, proof of Lemma 5.2]). Fix <span class="math" data-tex="\(\delta,A_0&gt;0\)">\(\delta,A_0&gt;0\)</span>, let <span class="math" data-tex="\(x^\delta\le M\le x\)">\(x^\delta\le M\le x\)</span>, and put <span class="math" data-tex="\(T_*=\exp(L/(\log L)^2)\)">\(T_*=\exp(L/(\log L)^2)\)</span>. There are <span class="math" data-tex="\(C_0,c_0&gt;0\)">\(C_0,c_0&gt;0\)</span>, depending on <span class="math" data-tex="\(\delta,A_0\)">\(\delta,A_0\)</span>, such that for every fixed <span class="math" data-tex="\(A_4\)">\(A_4\)</span>, every interval <span class="math" data-tex="\(I&#x27;\subseteq[M,2M]\)">\(I&#x27;\subseteq[M,2M]\)</span>, every character <span class="math" data-tex="\(\chi\)">\(\chi\)</span> of modulus <span class="math" data-tex="\(k\le L^{A_0}\)">\(k\le L^{A_0}\)</span> and <span class="math" data-tex="\(1\le|u|&lt;x^2\)">\(1\le|u|&lt;x^2\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl|\frac1{M\,V(W)}\sum_{\substack{m\in I&#x27;\\ P^-(m)&gt;W}}\frac{\chi(m)\,m^{iu}}{\log m}\Bigr|\\
+&amp;\quad\le C\,L^{-A_4}+C\,L^{C_0}\Delta(u),\quad(4.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl|\frac1{M\,V(W)}\sum_{\substack{m\in I&#x27;\\ P^-(m)&gt;W}}\frac{\chi(m)\,m^{iu}}{\log m}\Bigr|\\
+&amp;\quad\le C\,L^{-A_4}+C\,L^{C_0}\Delta(u),\quad(4.1)
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(C_3\)">\(C_3\)</span> is the constant of N7 and
+<span class="math math-display" data-tex="\[
+\Delta(u)=\begin{cases}|u|^{-1}+x^{-c_0},&amp;|u|\le T_*,\\ e^{-L/(\log L)^{C_3}},&amp;T_*\le|u|&lt;x^2 .\end{cases}
+\]">\[
+\Delta(u)=\begin{cases}|u|^{-1}+x^{-c_0},&amp;|u|\le T_*,\\ e^{-L/(\log L)^{C_3}},&amp;T_*\le|u|&lt;x^2 .\end{cases}
+\]</span></p>
+<p><em>Proof.</em> <em>Truncation.</em> Let <span class="math" data-tex="\(S_W=\sum_{p\le W}1/p\)">\(S_W=\sum_{p\le W}1/p\)</span>, which is <span class="math" data-tex="\(0.24\log L+O(1)\)">\(0.24\log L+O(1)\)</span> by Mertens, and for an integer <span class="math" data-tex="\(r\)">\(r\)</span> put <span class="math" data-tex="\(T_r(m)=\sum\mu(d)\)">\(T_r(m)=\sum\mu(d)\)</span> over the squarefree <span class="math" data-tex="\(d\mid m\)">\(d\mid m\)</span> composed of primes <span class="math" data-tex="\(p\le W\)">\(p\le W\)</span> with at most <span class="math" data-tex="\(r\)">\(r\)</span> prime factors. If <span class="math" data-tex="\(m\)">\(m\)</span> has <span class="math" data-tex="\(s\)">\(s\)</span> prime factors <span class="math" data-tex="\(p\le W\)">\(p\le W\)</span>, then <span class="math" data-tex="\(T_r(m)=\sum_{a\le r}(-1)^a\binom sa\)">\(T_r(m)=\sum_{a\le r}(-1)^a\binom sa\)</span>, which differs from <span class="math" data-tex="\(\mathbf 1_{s=0}\)">\(\mathbf 1_{s=0}\)</span> by at most <span class="math" data-tex="\(\binom s{r+1}\)">\(\binom s{r+1}\)</span> (Exercise 4.1 of Lesson 16). Summing <span class="math" data-tex="\(\binom s{r+1}\)">\(\binom s{r+1}\)</span>, the number of divisors <span class="math" data-tex="\(d\)">\(d\)</span> with <span class="math" data-tex="\(r+1\)">\(r+1\)</span> such primes, over <span class="math" data-tex="\(m\in I&#x27;\)">\(m\in I&#x27;\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{m\in I&#x27;}\bigl|\mathbf 1_{P^-(m)&gt;W}-T_r(m)\bigr|\\
+&amp;\quad \le\sum_{\omega(d)=r+1}\Bigl(\frac{2M}d+1\Bigr)\\
+&amp;\quad \le2M\frac{S_W^{r+1}}{(r+1)!}+W^{r+1}.\quad(4.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{m\in I&#x27;}\bigl|\mathbf 1_{P^-(m)&gt;W}-T_r(m)\bigr|\\
+&amp;\quad \le\sum_{\omega(d)=r+1}\Bigl(\frac{2M}d+1\Bigr)\\
+&amp;\quad \le2M\frac{S_W^{r+1}}{(r+1)!}+W^{r+1}.\quad(4.2)
+\end{aligned}
+\]</span>
+With <span class="math" data-tex="\(r=\lceil c\log L\rceil\)">\(r=\lceil c\log L\rceil\)</span> and <span class="math" data-tex="\(c\)">\(c\)</span> large, the first term is <span class="math" data-tex="\(O(ML^{-A_4-1})\)">\(O(ML^{-A_4-1})\)</span>, and the second is <span class="math" data-tex="\(\exp(O(L^{0.24}\log L))=x^{o(1)}\)">\(\exp(O(L^{0.24}\log L))=x^{o(1)}\)</span>. Moreover <span class="math" data-tex="\(\sum_d1/d\le\prod_{p\le W}(1+1/p)\le CL^{0.24}\)">\(\sum_d1/d\le\prod_{p\le W}(1+1/p)\le CL^{0.24}\)</span> over all <span class="math" data-tex="\(d\)">\(d\)</span> used, and <span class="math" data-tex="\(1/V(W)\le CL^{0.24}\)">\(1/V(W)\le CL^{0.24}\)</span>.</p>
+<p><em>One divisor.</em> For a used <span class="math" data-tex="\(d\)">\(d\)</span> prime to <span class="math" data-tex="\(k\)">\(k\)</span> (the others give <span class="math" data-tex="\(\chi(m)=0\)">\(\chi(m)=0\)</span>), write <span class="math" data-tex="\(m=dz\)">\(m=dz\)</span> and split <span class="math" data-tex="\(z\)">\(z\)</span> into residues <span class="math" data-tex="\(a\)">\(a\)</span> modulo <span class="math" data-tex="\(k\)">\(k\)</span>; the range of <span class="math" data-tex="\(z\)">\(z\)</span> is an interval of scale <span class="math" data-tex="\(N&#x27;=M/d\ge x^{\delta}/W^{r}\ge x^{\delta/2}\)">\(N&#x27;=M/d\ge x^{\delta}/W^{r}\ge x^{\delta/2}\)</span>. For <span class="math" data-tex="\(|u|\le T_*\)">\(|u|\le T_*\)</span>, comparison with the integral gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+\sum_{\substack{z\in J\\ z\equiv a\ (k)}}z^{iu}&amp;=\frac1k\int_Jy^{iu}\,dy+O(1+|u|),
+\end{aligned}\\
+\Bigl|\int_Jy^{iu}\,dy\Bigr|\le\frac{4N&#x27;}{|u|},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+\sum_{\substack{z\in J\\ z\equiv a\ (k)}}z^{iu}&amp;=\frac1k\int_Jy^{iu}\,dy+O(1+|u|),
+\end{aligned}\\
+\Bigl|\int_Jy^{iu}\,dy\Bigr|\le\frac{4N&#x27;}{|u|},
+\end{gathered}
+\]</span>
+since <span class="math" data-tex="\(y^{iu}\)">\(y^{iu}\)</span> has total variation <span class="math" data-tex="\(O(|u|)\)">\(O(|u|)\)</span> on <span class="math" data-tex="\(J\)">\(J\)</span> and an antiderivative <span class="math" data-tex="\(y^{1+iu}/(1+iu)\)">\(y^{1+iu}/(1+iu)\)</span>. For <span class="math" data-tex="\(T_*\le|u|&lt;x^2\)">\(T_*\le|u|&lt;x^2\)</span>, N7(2) applies, because <span class="math" data-tex="\(N&#x27;\ge x^{\delta/2}\ge\exp(L/(\log L)^2)\)">\(N&#x27;\ge x^{\delta/2}\ge\exp(L/(\log L)^2)\)</span> and <span class="math" data-tex="\(|u|\ge T_*\)">\(|u|\ge T_*\)</span>. The factor <span class="math" data-tex="\(d^{iu}\chi(d)\)">\(d^{iu}\chi(d)\)</span> has absolute value at most <span class="math" data-tex="\(1\)">\(1\)</span>, and partial summation handles <span class="math" data-tex="\(1/\log m\)">\(1/\log m\)</span>, which has bounded variation relative to its size on the dyad.</p>
+<p><em>Assembling.</em> Summing over the residues and over the <span class="math" data-tex="\(d\le W^r\)">\(d\le W^r\)</span> with the weight bounds above, the error terms <span class="math" data-tex="\(O(1+|u|)\)">\(O(1+|u|)\)</span> contribute <span class="math" data-tex="\(O(kW^rT_*/M)=O(x^{-c_0})\)">\(O(kW^rT_*/M)=O(x^{-c_0})\)</span> after division by <span class="math" data-tex="\(M\)">\(M\)</span>, and the main terms contribute at most <span class="math" data-tex="\(CL^{C_0}|u|^{-1}\)">\(CL^{C_0}|u|^{-1}\)</span>, respectively <span class="math" data-tex="\(CL^{C_0}\exp(-L/(\log L)^{C_3})\)">\(CL^{C_0}\exp(-L/(\log L)^{C_3})\)</span>, with <span class="math" data-tex="\(C_0\)">\(C_0\)</span> accounting for <span class="math" data-tex="\(L^{0.24}\cdot L^{0.24}\cdot L^{A_0}\)">\(L^{0.24}\cdot L^{0.24}\cdot L^{A_0}\)</span> and the partial summation. The truncation error (4.2) gives the term <span class="math" data-tex="\(L^{-A_4}\)">\(L^{-A_4}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-a-rough-factor-type-ii-estimate">5. A rough-factor Type II estimate</h2>
+<p>Let <span class="math" data-tex="\(D_\gamma\)">\(D_\gamma\)</span> be the densities (1.3) of Lesson 16.</p>
+<p><strong>Proposition 5.1</strong> (rough-factor Type II estimate [OpenAI-029, Proposition 10.3]). Keep the marked data and the hypotheses on <span class="math" data-tex="\(F,\beta,H_m,H_n\)">\(F,\beta,H_m,H_n\)</span> of N5. Fix <span class="math" data-tex="\(0&lt;\gamma&lt;w_-&lt;w_+&lt;1\)">\(0&lt;\gamma&lt;w_-&lt;w_+&lt;1\)</span> with <span class="math" data-tex="\([\log H_m/L,\log(2H_m)/L]\subseteq[w_-,w_+]\)">\([\log H_m/L,\log(2H_m)/L]\subseteq[w_-,w_+]\)</span>. On an interval <span class="math" data-tex="\(I\subseteq[H_m,2H_m]\)">\(I\subseteq[H_m,2H_m]\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+\alpha_m&amp;=m^{iv}\Bigl(\mathbf 1_{P^-(m)&gt;x^\gamma}\\
+&amp;\quad -\frac{D_\gamma(\log m/L)}{L\,V(W)}\mathbf 1_{P^-(m)&gt;W}\Bigr),
+\end{aligned}\\
+|v|\le L^C,\quad(5.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+\alpha_m&amp;=m^{iv}\Bigl(\mathbf 1_{P^-(m)&gt;x^\gamma}\\
+&amp;\quad -\frac{D_\gamma(\log m/L)}{L\,V(W)}\mathbf 1_{P^-(m)&gt;W}\Bigr),
+\end{aligned}\\
+|v|\le L^C,\quad(5.1)
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(\alpha_m=0\)">\(\alpha_m=0\)</span> outside <span class="math" data-tex="\(I\)">\(I\)</span>. Then (2.1) holds for every fixed <span class="math" data-tex="\(D_*\)">\(D_*\)</span> once <span class="math" data-tex="\(K\)">\(K\)</span> is large in terms of the fixed data, with a lower bound for <span class="math" data-tex="\(K\)">\(K\)</span> independent of the <span class="math" data-tex="\(a_i\)">\(a_i\)</span>.</p>
+<p><em>Proof.</em> We verify (2.2) and apply N6. Put <span class="math" data-tex="\(M=H_m\)">\(M=H_m\)</span>, <span class="math" data-tex="\(R_\gamma(m)=\mathbf 1_{P^-(m)&gt;x^\gamma}\)">\(R_\gamma(m)=\mathbf 1_{P^-(m)&gt;x^\gamma}\)</span>, and <span class="math" data-tex="\(J=\lfloor w_+/\gamma\rfloor\)">\(J=\lfloor w_+/\gamma\rfloor\)</span>; an <span class="math" data-tex="\(x^\gamma\)">\(x^\gamma\)</span>-rough <span class="math" data-tex="\(m\le2M\)">\(m\le2M\)</span> has at most <span class="math" data-tex="\(J\)">\(J\)</span> prime factors.</p>
+<p><em>Prime products.</em> Let <span class="math" data-tex="\(T_\gamma(m)\)">\(T_\gamma(m)\)</span> be the sum over <span class="math" data-tex="\(j\le J\)">\(j\le J\)</span> of <span class="math" data-tex="\(1/j!\)">\(1/j!\)</span> times the number of ordered <span class="math" data-tex="\(j\)">\(j\)</span>-tuples <span class="math" data-tex="\((p_1,\dots,p_j)\)">\((p_1,\dots,p_j)\)</span> of primes <span class="math" data-tex="\(p_i&gt;x^\gamma\)">\(p_i&gt;x^\gamma\)</span> with <span class="math" data-tex="\(p_1\cdots p_j=m\)">\(p_1\cdots p_j=m\)</span>. For squarefree <span class="math" data-tex="\(x^\gamma\)">\(x^\gamma\)</span>-rough <span class="math" data-tex="\(m\)">\(m\)</span> this is <span class="math" data-tex="\(1\)">\(1\)</span>; for an <span class="math" data-tex="\(x^\gamma\)">\(x^\gamma\)</span>-rough <span class="math" data-tex="\(m\)">\(m\)</span> with multiplicities <span class="math" data-tex="\(e_p\)">\(e_p\)</span> it is <span class="math" data-tex="\(1/\prod e_p!\)">\(1/\prod e_p!\)</span>; and it is <span class="math" data-tex="\(0\)">\(0\)</span> if <span class="math" data-tex="\(m\)">\(m\)</span> is not <span class="math" data-tex="\(x^\gamma\)">\(x^\gamma\)</span>-rough. So <span class="math" data-tex="\(R_\gamma-T_\gamma\)">\(R_\gamma-T_\gamma\)</span> is supported on <span class="math" data-tex="\(m\)">\(m\)</span> divisible by <span class="math" data-tex="\(p^2\)">\(p^2\)</span> for some <span class="math" data-tex="\(p&gt;x^\gamma\)">\(p&gt;x^\gamma\)</span>, and on every subinterval of the dyad
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{M\le m\le2M}|R_\gamma(m)-T_\gamma(m)|\\
+&amp;\quad \le\sum_{p&gt;x^\gamma}\frac{2M}{p^2}\le C\,M\,x^{-\gamma},\quad(5.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{M\le m\le2M}|R_\gamma(m)-T_\gamma(m)|\\
+&amp;\quad \le\sum_{p&gt;x^\gamma}\frac{2M}{p^2}\le C\,M\,x^{-\gamma},\quad(5.2)
+\end{aligned}
+\]</span>
+also after any twist of absolute value at most <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><em>Low frequencies: the rough count.</em> For fixed <span class="math" data-tex="\(A_0,A_1\)">\(A_0,A_1\)</span>, every <span class="math" data-tex="\(k\le L^{A_0}\)">\(k\le L^{A_0}\)</span>, every <span class="math" data-tex="\(\chi\)">\(\chi\)</span> modulo <span class="math" data-tex="\(k\)">\(k\)</span> and every interval <span class="math" data-tex="\(I&#x27;\subseteq[M,2M]\)">\(I&#x27;\subseteq[M,2M]\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{m\in I&#x27;}R_\gamma(m)\chi(m)\\
+&amp;\quad =\mathbf 1_{\chi\ \text{principal}}\frac1L\int_{I&#x27;}D_\gamma\Bigl(\frac{\log y}L\Bigr)\\
+&amp;\qquad dy+O(ML^{-A_1}).\quad(5.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{m\in I&#x27;}R_\gamma(m)\chi(m)\\
+&amp;\quad =\mathbf 1_{\chi\ \text{principal}}\frac1L\int_{I&#x27;}D_\gamma\Bigl(\frac{\log y}L\Bigr)\\
+&amp;\qquad dy+O(ML^{-A_1}).\quad(5.3)
+\end{aligned}
+\]</span>
+To see this, use <span class="math" data-tex="\(T_\gamma\)">\(T_\gamma\)</span> and (5.2). Split each prime variable of the <span class="math" data-tex="\(j\)">\(j\)</span>-prime term into dyads <span class="math" data-tex="\([P_i,2P_i)\)">\([P_i,2P_i)\)</span>, with <span class="math" data-tex="\(x^\gamma/2\le P_i\le2M\)">\(x^\gamma/2\le P_i\le2M\)</span>; there are <span class="math" data-tex="\(O(L^j)\)">\(O(L^j)\)</span> boxes. On a dyad of scale <span class="math" data-tex="\(P\)">\(P\)</span>, <span class="math" data-tex="\(\log P\asymp L\)">\(\log P\asymp L\)</span>, and the Siegel–Walfisz theorem (Theorem 2.1 of <a href="../NT-DIRL/NT-DIRL-11.html"><em>The Siegel–Walfisz theorem</em></a>), converted to primes by partial summation and to characters by orthogonality over the at most <span class="math" data-tex="\(L^{A_0}\)">\(L^{A_0}\)</span> classes, gives for every subinterval <span class="math" data-tex="\(J&#x27;\subseteq[P,2P]\)">\(J&#x27;\subseteq[P,2P]\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_{p\in J&#x27;}\chi(p)&amp;=\mathbf 1_{\chi\ \text{principal}}\int_{J&#x27;}\frac{dy}{\log y}\\
+&amp;\quad +O(PL^{-A_2}),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_{p\in J&#x27;}\chi(p)&amp;=\mathbf 1_{\chi\ \text{principal}}\int_{J&#x27;}\frac{dy}{\log y}\\
+&amp;\quad +O(PL^{-A_2}),
+\end{aligned}
+\]</span>
+with <span class="math" data-tex="\(A_2\)">\(A_2\)</span> arbitrary; the primes involved exceed <span class="math" data-tex="\(k\)">\(k\)</span>. In a box, replace the prime measures one at a time: with the other variables fixed, the product condition leaves an interval for the remaining one, the error is <span class="math" data-tex="\(O(P_iL^{-A_2})\)">\(O(P_iL^{-A_2})\)</span>, and the other variables have total mass <span class="math" data-tex="\(O(P_h)\)">\(O(P_h)\)</span>; so each box has error <span class="math" data-tex="\(O(ML^{-A_2})\)">\(O(ML^{-A_2})\)</span>, and <span class="math" data-tex="\(A_2\)">\(A_2\)</span> large absorbs the <span class="math" data-tex="\(O(L^j)\)">\(O(L^j)\)</span> boxes. For nonprincipal <span class="math" data-tex="\(\chi\)">\(\chi\)</span> the main terms vanish. For principal <span class="math" data-tex="\(\chi\)">\(\chi\)</span> the main term of the <span class="math" data-tex="\(j\)">\(j\)</span>-prime part is <span class="math" data-tex="\(\frac1{j!}\int_{y_i&gt;x^\gamma,\ \prod y_i\in I&#x27;}\prod dy_i/\log y_i\)">\(\frac1{j!}\int_{y_i&gt;x^\gamma,\ \prod y_i\in I&#x27;}\prod dy_i/\log y_i\)</span>, and Lemma 1.1 of Lesson 16 sums these to the main term of (5.3).</p>
+<p><em>Low frequencies: cancellation.</em> Let <span class="math" data-tex="\(u=t+v\)">\(u=t+v\)</span> and fix <span class="math" data-tex="\(B_2&gt;C+2\)">\(B_2&gt;C+2\)</span>. If <span class="math" data-tex="\(|t|\le L^{B_2}\)">\(|t|\le L^{B_2}\)</span>, then <span class="math" data-tex="\(|u|\le2L^{B_2}\)">\(|u|\le2L^{B_2}\)</span>. Partial summation of (5.3) against <span class="math" data-tex="\(y^{iu}\)">\(y^{iu}\)</span>, whose total variation on the dyad is <span class="math" data-tex="\(O(1+|u|)\)">\(O(1+|u|)\)</span>, gives <span class="math" data-tex="\(\mathbf 1_{\chi\ \text{principal}}\frac1L\int_ID_\gamma(\log y/L)y^{iu}dy\)">\(\mathbf 1_{\chi\ \text{principal}}\frac1L\int_ID_\gamma(\log y/L)y^{iu}dy\)</span><span class="math" data-tex="\(+O(ML^{-A_1}(1+|u|))\)">\(+O(ML^{-A_1}(1+|u|))\)</span>. Partial summation of (3.1) against <span class="math" data-tex="\(D_\gamma(\log y/L)y^{iu}/(LV(W))\)">\(D_\gamma(\log y/L)y^{iu}/(LV(W))\)</span> gives the same main term with an error <span class="math" data-tex="\(O(ML^{-A}L^{C&#x27;})\)">\(O(ML^{-A}L^{C&#x27;})\)</span>: <span class="math" data-tex="\(D_\gamma\)">\(D_\gamma\)</span> is Lipschitz on <span class="math" data-tex="\([w_-,w_+]\)">\([w_-,w_+]\)</span> (Lemma 1.1 of Lesson 16), and <span class="math" data-tex="\(LV(W)\asymp L^{0.76}\)">\(LV(W)\asymp L^{0.76}\)</span> by Mertens' product theorem. The two main terms cancel in <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span>, so (2.2) holds for <span class="math" data-tex="\(|t|\le L^{B_2}\)">\(|t|\le L^{B_2}\)</span> once <span class="math" data-tex="\(A_1\)">\(A_1\)</span> and <span class="math" data-tex="\(A\)">\(A\)</span> are chosen after <span class="math" data-tex="\(B_2\)">\(B_2\)</span>.</p>
+<p><em>High frequencies.</em> Choose <span class="math" data-tex="\(0&lt;\tau&lt;\gamma\)">\(0&lt;\tau&lt;\gamma\)</span> and <span class="math" data-tex="\(w_+&lt;\theta&lt;1\)">\(w_+&lt;\theta&lt;1\)</span>. Let <span class="math" data-tex="\(L^{B_2}\le|t|\le2XL^B\)">\(L^{B_2}\le|t|\le2XL^B\)</span>; then <span class="math" data-tex="\(|u|\asymp|t|\)">\(|u|\asymp|t|\)</span> and <span class="math" data-tex="\(L^{B_0}\le|u|&lt;x^2\)">\(L^{B_0}\le|u|&lt;x^2\)</span>, where <span class="math" data-tex="\(B_0\)">\(B_0\)</span> is taken from N7(1) for the accuracy <span class="math" data-tex="\(A_3\)">\(A_3\)</span>. Every prime dyad of the convolution lies in <span class="math" data-tex="\([x^\tau/2,x^\theta]\)">\([x^\tau/2,x^\theta]\)</span>, and N7(1) with partial summation gives <span class="math" data-tex="\(|\sum_{p\in J&#x27;}\chi(p)p^{iu}|\le CPL^{-A_3}\)">\(|\sum_{p\in J&#x27;}\chi(p)p^{iu}|\le CPL^{-A_3}\)</span> on every subinterval. In each box fix all primes but one, bound that one slot by this estimate and the others trivially: the box contributes <span class="math" data-tex="\(O(ML^{-A_3})\)">\(O(ML^{-A_3})\)</span>, and with (5.2) the prime-product part of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> has the saving <span class="math" data-tex="\(L^{-A}\)">\(L^{-A}\)</span> for <span class="math" data-tex="\(A_3\)">\(A_3\)</span> large. For the proxy part write
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\frac{D_\gamma(w)}{L\,V(W)}=\frac{w\,D_\gamma(w)}{V(W)\log m}\\
+(w=\log m/L);
+\end{gathered}
+\]">\[
+\begin{gathered}
+\frac{D_\gamma(w)}{L\,V(W)}=\frac{w\,D_\gamma(w)}{V(W)\log m}\\
+(w=\log m/L);
+\end{gathered}
+\]</span>
+the factor <span class="math" data-tex="\(wD_\gamma(w)\)">\(wD_\gamma(w)\)</span> is bounded with bounded variation on <span class="math" data-tex="\([w_-,w_+]\)">\([w_-,w_+]\)</span>, so Lemma 4.1 and one partial summation bound this part by <span class="math" data-tex="\(C(L^{-A_4}+L^{C_0}|u|^{-1}\)">\(C(L^{-A_4}+L^{C_0}|u|^{-1}\)</span><span class="math" data-tex="\(+L^{C_0}x^{-c_0}+L^{C_0}e^{-L/(\log L)^{C_3}})\)">\(+L^{C_0}x^{-c_0}+L^{C_0}e^{-L/(\log L)^{C_3}})\)</span>, which is <span class="math" data-tex="\(O(L^{-A})\)">\(O(L^{-A})\)</span> when <span class="math" data-tex="\(B_2&gt;A+C_0+2\)">\(B_2&gt;A+C_0+2\)</span> and <span class="math" data-tex="\(A_4\ge A\)">\(A_4\ge A\)</span>. Choosing first <span class="math" data-tex="\(A\)">\(A\)</span>, then <span class="math" data-tex="\(A_3,A_4\)">\(A_3,A_4\)</span> and <span class="math" data-tex="\(B_0\)">\(B_0\)</span>, and finally <span class="math" data-tex="\(B_2&gt;\max\{C+2,B_0+2,A+C_0+2\}\)">\(B_2&gt;\max\{C+2,B_0+2,A+C_0+2\}\)</span> covers all <span class="math" data-tex="\(|t|\le2XL^B\)">\(|t|\le2XL^B\)</span>. The conjugated coefficients satisfy the same bounds, with <span class="math" data-tex="\(\overline\chi\)">\(\overline\chi\)</span> and <span class="math" data-tex="\(-t\)">\(-t\)</span>.</p>
+<p><em>Support and size.</em> For large <span class="math" data-tex="\(x\)">\(x\)</span>, <span class="math" data-tex="\(x^\gamma&gt;W\)">\(x^\gamma&gt;W\)</span>, so both parts of (5.1) are supported on <span class="math" data-tex="\(W\)">\(W\)</span>-rough integers, and <span class="math" data-tex="\(|\alpha_m|\le1+\sup D_\gamma/(LV(W))\le2\)">\(|\alpha_m|\le1+\sup D_\gamma/(LV(W))\le2\)</span>. With these hypotheses verified, N6 gives (2.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The point of Proposition 5.1 is that <span class="math" data-tex="\(\mathbf 1_{P^-(m)&gt;x^\gamma}\)">\(\mathbf 1_{P^-(m)&gt;x^\gamma}\)</span>, unlike the prime indicator of N5, can be computed by a sieve but has no cancellation of its own; the subtraction of <span class="math" data-tex="\(D_\gamma(\log m/L)/(LV(W))\)">\(D_\gamma(\log m/L)/(LV(W))\)</span> times the <span class="math" data-tex="\(W\)">\(W\)</span>-rough indicator removes exactly its main terms, leaving a coefficient that the marked bilinear machinery can absorb.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Show that <span class="math" data-tex="\(jq^{j-1}\le\max(1,\,1/(e\,q\log(1/q)))\)">\(jq^{j-1}\le\max(1,\,1/(e\,q\log(1/q)))\)</span> for <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span> and <span class="math" data-tex="\(0&lt;q&lt;1\)">\(0&lt;q&lt;1\)</span>, and deduce a bound for <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span> in terms of <span class="math" data-tex="\(K\)">\(K\)</span> and <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p><strong>6.2.</strong> Show that a function <span class="math" data-tex="\(F\)">\(F\)</span> on positive integers satisfies <span class="math" data-tex="\(F(ph)=F(h)\)">\(F(ph)=F(h)\)</span> for all group primes <span class="math" data-tex="\(p\)">\(p\)</span> if and only if <span class="math" data-tex="\(F(h)=F(h/h_{\mathcal P})\)">\(F(h)=F(h/h_{\mathcal P})\)</span>, where <span class="math" data-tex="\(h_{\mathcal P}\)">\(h_{\mathcal P}\)</span> is the largest divisor of <span class="math" data-tex="\(h\)">\(h\)</span> composed of group primes.</p>
+<p><strong>6.3.</strong> In (5.2), show that <span class="math" data-tex="\(\sum_{p&gt;y}p^{-2}\le2/y\)">\(\sum_{p&gt;y}p^{-2}\le2/y\)</span> for <span class="math" data-tex="\(y\ge2\)">\(y\ge2\)</span>.</p>
+<p><strong>6.4.</strong> In Lemma 4.1, check that <span class="math" data-tex="\(S_W^{r+1}/(r+1)!\le L^{-A}\)">\(S_W^{r+1}/(r+1)!\le L^{-A}\)</span> when <span class="math" data-tex="\(r=\lceil c\log L\rceil\)">\(r=\lceil c\log L\rceil\)</span> with <span class="math" data-tex="\(c\)">\(c\)</span> large, using <span class="math" data-tex="\(n!\ge(n/e)^n\)">\(n!\ge(n/e)^n\)</span>.</p>
+<p><strong>6.5.</strong> For the coefficient of N5 with <span class="math" data-tex="\(v=0\)">\(v=0\)</span>, <span class="math" data-tex="\(\alpha_m=\mathbf 1_{m\ \text{prime}}\)">\(\alpha_m=\mathbf 1_{m\ \text{prime}}\)</span><span class="math" data-tex="\(-\mathbf 1_{P^-(m)&gt;W}/(V(W)\log m)\)">\(-\mathbf 1_{P^-(m)&gt;W}/(V(W)\log m)\)</span>, show that (2.2) holds for <span class="math" data-tex="\(|t|\le L^{B&#x27;}\)">\(|t|\le L^{B&#x27;}\)</span> and every fixed <span class="math" data-tex="\(B&#x27;\)">\(B&#x27;\)</span>, using the Siegel–Walfisz theorem and Lemma 3.1.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> The maximum of <span class="math" data-tex="\(jq^{j-1}\)">\(jq^{j-1}\)</span> over real <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span> is at <span class="math" data-tex="\(j=1/\log(1/q)\)">\(j=1/\log(1/q)\)</span> when this exceeds <span class="math" data-tex="\(1\)">\(1\)</span>, with value <span class="math" data-tex="\(1/(eq\log(1/q))\)">\(1/(eq\log(1/q))\)</span>. Then <span class="math" data-tex="\(\mathcal W(h)\le q^{-K}\prod_i\omega_i(h)q^{\omega_i(h)}/V_i\)">\(\mathcal W(h)\le q^{-K}\prod_i\omega_i(h)q^{\omega_i(h)}/V_i\)</span><span class="math" data-tex="\(\le\bigl(\max_j jq^{j-1}\bigr)^K\prod_iV_i^{-1}\)">\(\le\bigl(\max_j jq^{j-1}\bigr)^K\prod_iV_i^{-1}\)</span>, bounded since <span class="math" data-tex="\(V_i\to\log2\)">\(V_i\to\log2\)</span>.</p>
+<p><strong>6.2.</strong> If <span class="math" data-tex="\(F(ph)=F(h)\)">\(F(ph)=F(h)\)</span> for all group primes, remove the group prime factors of <span class="math" data-tex="\(h\)">\(h\)</span> one at a time. Conversely <span class="math" data-tex="\(ph\)">\(ph\)</span> and <span class="math" data-tex="\(h\)">\(h\)</span> have the same quotient by their group parts.</p>
+<p><strong>6.3.</strong> <span class="math" data-tex="\(\sum_{p&gt;y}p^{-2}\le\sum_{n&gt;y}n^{-2}\)">\(\sum_{p&gt;y}p^{-2}\le\sum_{n&gt;y}n^{-2}\)</span><span class="math" data-tex="\(\le\int_{y-1}^\infty t^{-2}\,dt=1/(y-1)\)">\(\le\int_{y-1}^\infty t^{-2}\,dt=1/(y-1)\)</span><span class="math" data-tex="\(\le2/y\)">\(\le2/y\)</span>.</p>
+<p><strong>6.4.</strong> With <span class="math" data-tex="\(S_W\le\log L\)">\(S_W\le\log L\)</span> and <span class="math" data-tex="\(n=r+1\ge c\log L\)">\(n=r+1\ge c\log L\)</span>, <span class="math" data-tex="\(S_W^n/n!\le(eS_W/n)^n\le(e/c)^{c\log L}\)">\(S_W^n/n!\le(eS_W/n)^n\le(e/c)^{c\log L}\)</span><span class="math" data-tex="\(=L^{-c\log(c/e)}\)">\(=L^{-c\log(c/e)}\)</span>, which is below <span class="math" data-tex="\(L^{-A}\)">\(L^{-A}\)</span> for <span class="math" data-tex="\(c\)">\(c\)</span> large.</p>
+<p><strong>6.5.</strong> By Siegel–Walfisz, <span class="math" data-tex="\(\sum_{p\in I&#x27;}\chi(p)\)">\(\sum_{p\in I&#x27;}\chi(p)\)</span><span class="math" data-tex="\(=\mathbf 1_{\chi\ \text{principal}}\int_{I&#x27;}dy/\log y\)">\(=\mathbf 1_{\chi\ \text{principal}}\int_{I&#x27;}dy/\log y\)</span><span class="math" data-tex="\(+O(H_mL^{-A})\)">\(+O(H_mL^{-A})\)</span> on every subinterval, and by Lemma 3.1, <span class="math" data-tex="\(\sum_{m\in I&#x27;,\,P^-(m)&gt;W}\chi(m)\)">\(\sum_{m\in I&#x27;,\,P^-(m)&gt;W}\chi(m)\)</span><span class="math" data-tex="\(=\mathbf 1_{\chi\ \text{principal}}V(W)|I&#x27;|\)">\(=\mathbf 1_{\chi\ \text{principal}}V(W)|I&#x27;|\)</span><span class="math" data-tex="\(+O(H_mL^{-A})\)">\(+O(H_mL^{-A})\)</span>. Partial summation against <span class="math" data-tex="\(y^{it}\)">\(y^{it}\)</span> (variation <span class="math" data-tex="\(O(1+|t|)\le O(L^{B&#x27;})\)">\(O(1+|t|)\le O(L^{B&#x27;})\)</span>) and against <span class="math" data-tex="\(y^{it}/(V(W)\log y)\)">\(y^{it}/(V(W)\log y)\)</span> turns both into <span class="math" data-tex="\(\mathbf 1_{\chi\ \text{principal}}\int_Iy^{it}dy/\log y\)">\(\mathbf 1_{\chi\ \text{principal}}\int_Iy^{it}dy/\log y\)</span><span class="math" data-tex="\(+O(H_mL^{-A+B&#x27;+1})\)">\(+O(H_mL^{-A+B&#x27;+1})\)</span>; the main terms cancel, and <span class="math" data-tex="\(A\)">\(A\)</span> is arbitrary.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-029] OpenAI, <em>Primitive roots for every admissible integer base</em>, OpenAI Math Release preprint, 4 October 2026, Section 10. https://github.com/openai/math/tree/main/preprints/Primitive-roots-for-every-admissible-integer-base-October-4-2026</li>
+<li>[PD] OpenAI, <em>The Poisson–Dirichlet law for prime predecessors</em>, OpenAI Math Release preprint, 24 September 2026, Theorem 3.1, Lemmas 2.3–2.5, Sections 3–5 and the Appendix. https://github.com/openai/math/tree/main/preprints/The-Poisson-Dirichlet-Law-for-Prime-Predecessors-September-24-2026</li>
+<li>[PP] OpenAI, <em>Prime predecessors with an even number of prime factors</em>, OpenAI Math Release preprint, 17 September 2026, Section 3, Lemmas 3.1 and 3.3. https://github.com/openai/math/tree/main/preprints/Prime-Predecessors-with-an-Even-Number-of-Prime-Factors-September-17-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

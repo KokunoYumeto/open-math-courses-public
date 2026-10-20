@@ -1,0 +1,252 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Artin&#x27;s conjecture and the index of a prime</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Artin&#x27;s primitive root conjecture)</a><a href="s-integers-and-sixth-power-classes.html">Next lesson</a><a href="src/artins-conjecture-and-the-index-of-a-prime.md">Editable source</a></nav><main><article><h1 id="artin-s-conjecture-and-the-index-of-a-prime">Artin's conjecture and the index of a prime</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>An integer <span class="math" data-tex="\(a\)">\(a\)</span> is a primitive root modulo a prime <span class="math" data-tex="\(p\)">\(p\)</span> when its powers run through all nonzero residues modulo <span class="math" data-tex="\(p\)">\(p\)</span>. Artin conjectured in 1927 that every integer other than <span class="math" data-tex="\(-1\)">\(-1\)</span> and the squares is a primitive root modulo infinitely many primes. This course proves that conjecture in the following quantitative form, after OpenAI's 2026 paper [OpenAI-029]: for every such <span class="math" data-tex="\(a\)">\(a\)</span>, every sufficiently large dyadic interval <span class="math" data-tex="\((x,2x)\)">\((x,2x)\)</span> contains at least a constant times <span class="math" data-tex="\(x/(\log x)^2\)">\(x/(\log x)^2\)</span> primes with primitive root <span class="math" data-tex="\(a\)">\(a\)</span>. This lesson reduces the theorem to two propositions. The first supplies many primes <span class="math" data-tex="\(p\)">\(p\)</span> for which <span class="math" data-tex="\(p-1\)">\(p-1\)</span> has a very restricted factorization; the second bounds, uniformly in a growing prime <span class="math" data-tex="\(q\)">\(q\)</span>, the number of primes that split completely in the Kummer field <span class="math" data-tex="\(\mathbb Q(\mu_q,a^{1/q})\)">\(\mathbb Q(\mu_q,a^{1/q})\)</span>. The second rests on a zero-free strip of fixed width for all Hecke <span class="math" data-tex="\(L\)">\(L\)</span>-functions of finite order over cyclotomic fields containing <span class="math" data-tex="\(\mu_{12}\)">\(\mu_{12}\)</span>, which occupies Lessons 2–14.</p>
+<p><strong>Prerequisites.</strong> <a href="../NT-ANT/hilberts-ramification-theory-in-galois-extensions.html"><em>Hilbert's ramification theory in Galois extensions</em></a>, Theorem 6.2, Proposition 6.3 and Corollary 6.5; <a href="../NT-ANT/decomposition-of-primes-in-extensions.html"><em>Decomposition of primes in extensions</em></a>, Theorem 5.4; <a href="../NT-ANT/cyclotomic-fields.html"><em>Cyclotomic fields</em></a>, Theorems 12.1, 12.3 and 12.5 with the supplements (22).</p>
+<h2 id="1-the-order-and-the-index">1. The order and the index</h2>
+<p>Let <span class="math" data-tex="\(a\)">\(a\)</span> be an integer and <span class="math" data-tex="\(p\)">\(p\)</span> a prime not dividing <span class="math" data-tex="\(a\)">\(a\)</span>. The <strong>order</strong> <span class="math" data-tex="\(\operatorname{ord}_p(a)\)">\(\operatorname{ord}_p(a)\)</span> is the least <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span> with <span class="math" data-tex="\(a^k\equiv1\pmod p\)">\(a^k\equiv1\pmod p\)</span>; it divides <span class="math" data-tex="\(p-1\)">\(p-1\)</span>. The <strong>index</strong> of <span class="math" data-tex="\(a\)">\(a\)</span> at <span class="math" data-tex="\(p\)">\(p\)</span> is
+<span class="math math-display" data-tex="\[
+i_p(a)=\frac{p-1}{\operatorname{ord}_p(a)} .
+\]">\[
+i_p(a)=\frac{p-1}{\operatorname{ord}_p(a)} .
+\]</span>
+Thus <span class="math" data-tex="\(a\)">\(a\)</span> is a primitive root modulo <span class="math" data-tex="\(p\)">\(p\)</span> exactly when <span class="math" data-tex="\(i_p(a)=1\)">\(i_p(a)=1\)</span>. Call <span class="math" data-tex="\(a\)">\(a\)</span> <strong>admissible</strong> if <span class="math" data-tex="\(a\ne-1\)">\(a\ne-1\)</span> and <span class="math" data-tex="\(a\)">\(a\)</span> is not the square of an integer. Both conditions are necessary for primitive roots at infinitely many primes: <span class="math" data-tex="\(-1\)">\(-1\)</span> has order at most <span class="math" data-tex="\(2\)">\(2\)</span>, and for an odd prime <span class="math" data-tex="\(p\nmid b\)">\(p\nmid b\)</span> the square <span class="math" data-tex="\(b^2\)">\(b^2\)</span> has order dividing <span class="math" data-tex="\((p-1)/2\)">\((p-1)/2\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(p\nmid a\)">\(p\nmid a\)</span> and let <span class="math" data-tex="\(q\)">\(q\)</span> be a prime. Then <span class="math" data-tex="\(q\mid i_p(a)\)">\(q\mid i_p(a)\)</span> if and only if
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+p\equiv1\pmod q\\
+\text{and}\\
+a^{(p-1)/q}\equiv1\pmod p .
+\end{gathered}
+\]">\[
+\begin{gathered}
+p\equiv1\pmod q\\
+\text{and}\\
+a^{(p-1)/q}\equiv1\pmod p .
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> If <span class="math" data-tex="\(q\mid i_p(a)\)">\(q\mid i_p(a)\)</span>, then <span class="math" data-tex="\(q\mid p-1\)">\(q\mid p-1\)</span> and <span class="math" data-tex="\(\operatorname{ord}_p(a)\)">\(\operatorname{ord}_p(a)\)</span> divides <span class="math" data-tex="\((p-1)/q\)">\((p-1)/q\)</span>, so <span class="math" data-tex="\(a^{(p-1)/q}\equiv1\)">\(a^{(p-1)/q}\equiv1\)</span>. Conversely, if <span class="math" data-tex="\(q\mid p-1\)">\(q\mid p-1\)</span> and <span class="math" data-tex="\(a^{(p-1)/q}\equiv1\)">\(a^{(p-1)/q}\equiv1\)</span>, then <span class="math" data-tex="\(\operatorname{ord}_p(a)\mid(p-1)/q\)">\(\operatorname{ord}_p(a)\mid(p-1)/q\)</span>, so <span class="math" data-tex="\(q\)">\(q\)</span> divides <span class="math" data-tex="\(i_p(a)\)">\(i_p(a)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-theorem">2. The theorem</h2>
+<p><strong>Theorem 2.1</strong> (primitive roots for every admissible base [OpenAI-029, Theorem 1.1]). For every admissible integer <span class="math" data-tex="\(a\)">\(a\)</span> there are constants <span class="math" data-tex="\(c_a&gt;0\)">\(c_a&gt;0\)</span> and <span class="math" data-tex="\(x_a\ge2\)">\(x_a\ge2\)</span> such that for every real <span class="math" data-tex="\(x\ge x_a\)">\(x\ge x_a\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\#\Bigl\{p\ \text{prime}:x&lt;p&lt;2x,\ p\nmid a,\\
+&amp;\qquad\operatorname{ord}_p(a)=p-1\Bigr\}\ge c_a\frac{x}{(\log x)^2}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\#\Bigl\{p\ \text{prime}:x&lt;p&lt;2x,\ p\nmid a,\\
+&amp;\qquad\operatorname{ord}_p(a)=p-1\Bigr\}\ge c_a\frac{x}{(\log x)^2}.
+\end{aligned}
+\]</span></p>
+<p>The constants depend on <span class="math" data-tex="\(a\)">\(a\)</span>. In particular every admissible integer, for instance <span class="math" data-tex="\(2\)">\(2\)</span>, is a primitive root modulo infinitely many primes. The predicted count is of order <span class="math" data-tex="\(x/\log x\)">\(x/\log x\)</span>, larger by a factor <span class="math" data-tex="\(\log x\)">\(\log x\)</span> than the bound of the theorem. Earlier unconditional results allowed a finite choice of bases: Gupta and Murty (1984) exhibited a set of thirteen integers containing one with the property, and Heath-Brown (1986) proved that at most two primes fail it. Hooley (1967) proved Artin's asymptotic under the generalized Riemann hypothesis for the Dedekind zeta functions of the fields <span class="math" data-tex="\(\mathbb Q(\mu_n,a^{1/n})\)">\(\mathbb Q(\mu_n,a^{1/n})\)</span>.</p>
+<h2 id="3-kummer-fields-and-complete-splitting">3. Kummer fields and complete splitting</h2>
+<p>For a prime <span class="math" data-tex="\(q\)">\(q\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+E_q=\mathbb Q(\mu_q),\\
+K_q=\mathbb Q(\mu_q,a^{1/q}).\quad(3.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+E_q=\mathbb Q(\mu_q),\\
+K_q=\mathbb Q(\mu_q,a^{1/q}).\quad(3.1)
+\end{gathered}
+\]</span>
+The field <span class="math" data-tex="\(K_q\)">\(K_q\)</span> is the splitting field of <span class="math" data-tex="\(T^q-a\)">\(T^q-a\)</span> over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, so it is Galois over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span> and does not depend on the choice of the root <span class="math" data-tex="\(a^{1/q}\)">\(a^{1/q}\)</span>.</p>
+<p><strong>Lemma 3.1</strong> (splitting test [OpenAI-029, Lemma 2.3]). Let <span class="math" data-tex="\(a\ne0\)">\(a\ne0\)</span> and let <span class="math" data-tex="\(p,q\)">\(p,q\)</span> be primes with <span class="math" data-tex="\(p\nmid aq\)">\(p\nmid aq\)</span>. Then <span class="math" data-tex="\(p\)">\(p\)</span> is unramified in <span class="math" data-tex="\(K_q\)">\(K_q\)</span>, and <span class="math" data-tex="\(p\)">\(p\)</span> splits completely in <span class="math" data-tex="\(K_q\)">\(K_q\)</span> if and only if
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+p\equiv1\pmod q\\
+\text{and}\\
+a^{(p-1)/q}\equiv1\pmod p.\quad(3.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+p\equiv1\pmod q\\
+\text{and}\\
+a^{(p-1)/q}\equiv1\pmod p.\quad(3.2)
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> be a root of <span class="math" data-tex="\(T^q-a\)">\(T^q-a\)</span> and <span class="math" data-tex="\(\zeta\)">\(\zeta\)</span> a primitive <span class="math" data-tex="\(q\)">\(q\)</span>th root of unity; the roots are <span class="math" data-tex="\(\alpha_i=\alpha\zeta^i\)">\(\alpha_i=\alpha\zeta^i\)</span>, <span class="math" data-tex="\(0\le i&lt;q\)">\(0\le i&lt;q\)</span>, and they are algebraic integers. Fix a prime <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span> of <span class="math" data-tex="\(K_q\)">\(K_q\)</span> above <span class="math" data-tex="\(p\)">\(p\)</span>. The discriminant of <span class="math" data-tex="\(T^q-a\)">\(T^q-a\)</span> is <span class="math" data-tex="\(\pm q^qa^{q-1}\)">\(\pm q^qa^{q-1}\)</span>, and it equals <span class="math" data-tex="\(\pm\prod_{i\ne j}(\alpha_i-\alpha_j)\)">\(\pm\prod_{i\ne j}(\alpha_i-\alpha_j)\)</span>. Since <span class="math" data-tex="\(p\nmid qa\)">\(p\nmid qa\)</span>, no difference <span class="math" data-tex="\(\alpha_i-\alpha_j\)">\(\alpha_i-\alpha_j\)</span> with <span class="math" data-tex="\(i\ne j\)">\(i\ne j\)</span> lies in <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span>: the roots have distinct reductions modulo <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span>.</p>
+<p>An element <span class="math" data-tex="\(\tau\)">\(\tau\)</span> of the inertia group <span class="math" data-tex="\(I_{\mathfrak P}\)">\(I_{\mathfrak P}\)</span> acts trivially on the residue field (Theorem 6.2 of <a href="../NT-ANT/hilberts-ramification-theory-in-galois-extensions.html"><em>Hilbert's ramification theory in Galois extensions</em></a>), so <span class="math" data-tex="\(\tau(\alpha_i)\equiv\alpha_i\pmod{\mathfrak P}\)">\(\tau(\alpha_i)\equiv\alpha_i\pmod{\mathfrak P}\)</span>. Since <span class="math" data-tex="\(\tau\)">\(\tau\)</span> permutes the roots and their reductions are distinct, <span class="math" data-tex="\(\tau(\alpha_i)=\alpha_i\)">\(\tau(\alpha_i)=\alpha_i\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>. The roots generate <span class="math" data-tex="\(K_q\)">\(K_q\)</span>, so <span class="math" data-tex="\(\tau=1\)">\(\tau=1\)</span>. Hence <span class="math" data-tex="\(I_{\mathfrak P}\)">\(I_{\mathfrak P}\)</span> is trivial and <span class="math" data-tex="\(p\)">\(p\)</span> is unramified.</p>
+<p>Let <span class="math" data-tex="\(\sigma=\operatorname{Frob}_{\mathfrak P}\)">\(\sigma=\operatorname{Frob}_{\mathfrak P}\)</span> (Proposition 6.3 there), so <span class="math" data-tex="\(\sigma(x)\equiv x^p\pmod{\mathfrak P}\)">\(\sigma(x)\equiv x^p\pmod{\mathfrak P}\)</span> for integral <span class="math" data-tex="\(x\)">\(x\)</span>. The <span class="math" data-tex="\(q\)">\(q\)</span>th roots of unity also have distinct reductions modulo <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span>, because <span class="math" data-tex="\(\prod_{i=1}^{q-1}(1-\zeta^i)=q\)">\(\prod_{i=1}^{q-1}(1-\zeta^i)=q\)</span> is prime to <span class="math" data-tex="\(p\)">\(p\)</span>. From <span class="math" data-tex="\(\sigma(\zeta)\equiv\zeta^p\)">\(\sigma(\zeta)\equiv\zeta^p\)</span> and <span class="math" data-tex="\(\sigma(\zeta)\in\mu_q\)">\(\sigma(\zeta)\in\mu_q\)</span> we get <span class="math" data-tex="\(\sigma(\zeta)=\zeta^p\)">\(\sigma(\zeta)=\zeta^p\)</span>. So <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> fixes <span class="math" data-tex="\(E_q\)">\(E_q\)</span> exactly when <span class="math" data-tex="\(p\equiv1\pmod q\)">\(p\equiv1\pmod q\)</span>.</p>
+<p>Suppose <span class="math" data-tex="\(p\equiv1\pmod q\)">\(p\equiv1\pmod q\)</span>. The element <span class="math" data-tex="\(\sigma(\alpha)/\alpha\)">\(\sigma(\alpha)/\alpha\)</span> is a root of unity of order dividing <span class="math" data-tex="\(q\)">\(q\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{\sigma(\alpha)}\alpha&amp;\equiv\alpha^{p-1}=(\alpha^q)^{(p-1)/q}\\
+&amp;=a^{(p-1)/q}\pmod{\mathfrak P},
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{\sigma(\alpha)}\alpha&amp;\equiv\alpha^{p-1}=(\alpha^q)^{(p-1)/q}\\
+&amp;=a^{(p-1)/q}\pmod{\mathfrak P},
+\end{aligned}
+\]</span>
+where division is allowed because <span class="math" data-tex="\(p\nmid a\)">\(p\nmid a\)</span>. Reduction modulo <span class="math" data-tex="\(\mathfrak P\)">\(\mathfrak P\)</span> is injective on <span class="math" data-tex="\(\mu_q\)">\(\mu_q\)</span>, and <span class="math" data-tex="\(\mathfrak P\cap\mathbb Z=p\mathbb Z\)">\(\mathfrak P\cap\mathbb Z=p\mathbb Z\)</span>. Therefore <span class="math" data-tex="\(\sigma(\alpha)=\alpha\)">\(\sigma(\alpha)=\alpha\)</span> if and only if <span class="math" data-tex="\(a^{(p-1)/q}\equiv1\pmod p\)">\(a^{(p-1)/q}\equiv1\pmod p\)</span>.</p>
+<p>Together, <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> fixes the generators <span class="math" data-tex="\(\zeta,\alpha\)">\(\zeta,\alpha\)</span> of <span class="math" data-tex="\(K_q\)">\(K_q\)</span> exactly when (3.2) holds. By Corollary 6.5 there, an unramified prime splits completely exactly when its Frobenius is trivial. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>By Lemma 1.1, a prime <span class="math" data-tex="\(q\)">\(q\)</span> divides <span class="math" data-tex="\(i_p(a)\)">\(i_p(a)\)</span> exactly when <span class="math" data-tex="\(p\)">\(p\)</span> splits completely in <span class="math" data-tex="\(K_q\)">\(K_q\)</span> (for <span class="math" data-tex="\(p\nmid aq\)">\(p\nmid aq\)</span>). Hooley's approach to Artin's conjecture counts the primes up to <span class="math" data-tex="\(x\)">\(x\)</span> with these splitting conditions; the obstacle is that <span class="math" data-tex="\(q\)">\(q\)</span> ranges up to about <span class="math" data-tex="\(\sqrt x\)">\(\sqrt x\)</span> while unconditional prime ideal theorems in <span class="math" data-tex="\(K_q\)">\(K_q\)</span> are only uniform for very small <span class="math" data-tex="\(q\)">\(q\)</span>. The proof below avoids most of this range: it constructs primes <span class="math" data-tex="\(p\)">\(p\)</span> for which every prime factor of <span class="math" data-tex="\(p-1\)">\(p-1\)</span> other than <span class="math" data-tex="\(2\)">\(2\)</span> lies either in a short range <span class="math" data-tex="\((\exp((\log x)^{0.1}),\exp((\log x)^{0.3}))\)">\((\exp((\log x)^{0.1}),\exp((\log x)^{0.3}))\)</span> or is a single prime larger than <span class="math" data-tex="\(x^{0.9}\)">\(x^{0.9}\)</span>.</p>
+<h2 id="4-a-progression-of-quadratic-nonresidues">4. A progression of quadratic nonresidues</h2>
+<p>The index at the prime <span class="math" data-tex="\(2\)">\(2\)</span> is controlled by Euler's criterion: if <span class="math" data-tex="\(\bigl(\tfrac ap\bigr)=-1\)">\(\bigl(\tfrac ap\bigr)=-1\)</span>, then <span class="math" data-tex="\(a^{(p-1)/2}\equiv-1\)">\(a^{(p-1)/2}\equiv-1\)</span>, so <span class="math" data-tex="\(i_p(a)\)">\(i_p(a)\)</span> is odd. The next lemma finds an arithmetic progression of such primes with the side conditions needed in Proposition 5.1.</p>
+<p><strong>Lemma 4.1</strong> (a progression of quadratic nonresidues [OpenAI-029, Lemma 2.4]). Let <span class="math" data-tex="\(a\)">\(a\)</span> be admissible and put
+<span class="math math-display" data-tex="\[
+M=8\prod_{\substack{\ell\mid a\\ \ell\ \text{odd prime}}}\ell .
+\]">\[
+M=8\prod_{\substack{\ell\mid a\\ \ell\ \text{odd prime}}}\ell .
+\]</span>
+There are <span class="math" data-tex="\(c\in\{2,4\}\)">\(c\in\{2,4\}\)</span> and an integer <span class="math" data-tex="\(u\)">\(u\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(u,M)=1,\\
+c\mid u-1,\\
+\Bigl(\frac{u-1}c,\frac Mc\Bigr)=1,\quad(4.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+(u,M)=1,\\
+c\mid u-1,\\
+\Bigl(\frac{u-1}c,\frac Mc\Bigr)=1,\quad(4.1)
+\end{gathered}
+\]</span>
+such that every prime <span class="math" data-tex="\(p\equiv u\pmod M\)">\(p\equiv u\pmod M\)</span> satisfies <span class="math" data-tex="\(p\nmid a\)">\(p\nmid a\)</span> and <span class="math" data-tex="\(\bigl(\tfrac ap\bigr)=-1\)">\(\bigl(\tfrac ap\bigr)=-1\)</span>.</p>
+<p><em>Proof.</em> Write <span class="math" data-tex="\(a=d_0t^2\)">\(a=d_0t^2\)</span> with <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span> and <span class="math" data-tex="\(d_0\)">\(d_0\)</span> squarefree (possibly negative). Since <span class="math" data-tex="\(a\)">\(a\)</span> is not a square, <span class="math" data-tex="\(d_0\ne1\)">\(d_0\ne1\)</span>. We choose <span class="math" data-tex="\(u\)">\(u\)</span> to be a unit modulo <span class="math" data-tex="\(M\)">\(M\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+u\not\equiv1\pmod\ell\quad(\ell\mid M\ \text{odd}),\\
+u\bmod 8\in\{3,5,7\}.\quad(4.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+u\not\equiv1\pmod\ell\quad(\ell\mid M\ \text{odd}),\\
+u\bmod 8\in\{3,5,7\}.\quad(4.2)
+\end{gathered}
+\]</span>
+Every prime <span class="math" data-tex="\(p\equiv u\pmod M\)">\(p\equiv u\pmod M\)</span> is then odd and different from every odd prime <span class="math" data-tex="\(\ell\mid a\)">\(\ell\mid a\)</span>, so <span class="math" data-tex="\(p\nmid a\)">\(p\nmid a\)</span>, and <span class="math" data-tex="\(\bigl(\tfrac ap\bigr)=\bigl(\tfrac{d_0}p\bigr)\)">\(\bigl(\tfrac ap\bigr)=\bigl(\tfrac{d_0}p\bigr)\)</span> because <span class="math" data-tex="\(p\nmid t\)">\(p\nmid t\)</span>.</p>
+<p><em>Case 1: an odd prime <span class="math" data-tex="\(j\ge5\)">\(j\ge5\)</span> divides <span class="math" data-tex="\(d_0\)">\(d_0\)</span>.</em> Quadratic reciprocity and the supplements (Theorem 12.5 and (22) of <a href="../NT-ANT/cyclotomic-fields.html"><em>Cyclotomic fields</em></a>) write <span class="math" data-tex="\(\bigl(\tfrac{d_0}p\bigr)\)">\(\bigl(\tfrac{d_0}p\bigr)\)</span> as a sign depending only on <span class="math" data-tex="\(p\bmod 8\)">\(p\bmod 8\)</span> and on <span class="math" data-tex="\(p\)">\(p\)</span> modulo the odd primes of <span class="math" data-tex="\(d_0\)">\(d_0\)</span> other than <span class="math" data-tex="\(j\)">\(j\)</span>, times <span class="math" data-tex="\(\bigl(\tfrac pj\bigr)\)">\(\bigl(\tfrac pj\bigr)\)</span>. Fix <span class="math" data-tex="\(u\bmod 8\)">\(u\bmod 8\)</span> and <span class="math" data-tex="\(u\)">\(u\)</span> modulo the odd primes of <span class="math" data-tex="\(M\)">\(M\)</span> other than <span class="math" data-tex="\(j\)">\(j\)</span> within (4.2). Among the residues modulo <span class="math" data-tex="\(j\)">\(j\)</span> other than <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> there are <span class="math" data-tex="\((j-3)/2\ge1\)">\((j-3)/2\ge1\)</span> squares and <span class="math" data-tex="\((j-1)/2\ge2\)">\((j-1)/2\ge2\)</span> nonsquares, so <span class="math" data-tex="\(u\bmod j\)">\(u\bmod j\)</span> can be chosen with <span class="math" data-tex="\(u\not\equiv1\)">\(u\not\equiv1\)</span> and <span class="math" data-tex="\(\bigl(\tfrac{d_0}p\bigr)=-1\)">\(\bigl(\tfrac{d_0}p\bigr)=-1\)</span>.</p>
+<p><em>Case 2: no prime <span class="math" data-tex="\(j\ge5\)">\(j\ge5\)</span> divides <span class="math" data-tex="\(d_0\)">\(d_0\)</span>.</em> Then <span class="math" data-tex="\(d_0\in\{-1,\pm2,\pm3,\pm6\}\)">\(d_0\in\{-1,\pm2,\pm3,\pm6\}\)</span>. Take <span class="math" data-tex="\(u\bmod 8\)">\(u\bmod 8\)</span> from the table, and <span class="math" data-tex="\(u\equiv2\pmod 3\)">\(u\equiv2\pmod 3\)</span> whenever <span class="math" data-tex="\(3\mid M\)">\(3\mid M\)</span>:</p>
+<table>
+<thead>
+<tr>
+<th><span class="math" data-tex="\(d_0\)">\(d_0\)</span></th>
+<th><span class="math" data-tex="\(-1\)">\(-1\)</span></th>
+<th><span class="math" data-tex="\(2\)">\(2\)</span></th>
+<th><span class="math" data-tex="\(-2\)">\(-2\)</span></th>
+<th><span class="math" data-tex="\(3\)">\(3\)</span></th>
+<th><span class="math" data-tex="\(-3\)">\(-3\)</span></th>
+<th><span class="math" data-tex="\(6\)">\(6\)</span></th>
+<th><span class="math" data-tex="\(-6\)">\(-6\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math" data-tex="\(u\bmod 8\)">\(u\bmod 8\)</span></td>
+<td><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td><span class="math" data-tex="\(7\)">\(7\)</span></td>
+<td><span class="math" data-tex="\(5\)">\(5\)</span></td>
+<td><span class="math" data-tex="\(5\)">\(5\)</span></td>
+<td><span class="math" data-tex="\(3\)">\(3\)</span></td>
+<td><span class="math" data-tex="\(7\)">\(7\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The supplements give <span class="math" data-tex="\(\bigl(\tfrac{-1}p\bigr)=-1\)">\(\bigl(\tfrac{-1}p\bigr)=-1\)</span> for <span class="math" data-tex="\(p\equiv3\pmod 4\)">\(p\equiv3\pmod 4\)</span>, <span class="math" data-tex="\(\bigl(\tfrac2p\bigr)=-1\)">\(\bigl(\tfrac2p\bigr)=-1\)</span> for <span class="math" data-tex="\(p\equiv3,5\pmod 8\)">\(p\equiv3,5\pmod 8\)</span>, and <span class="math" data-tex="\(\bigl(\tfrac{-2}p\bigr)=\bigl(\tfrac{-1}p\bigr)\bigl(\tfrac2p\bigr)=-1\)">\(\bigl(\tfrac{-2}p\bigr)=\bigl(\tfrac{-1}p\bigr)\bigl(\tfrac2p\bigr)=-1\)</span> for <span class="math" data-tex="\(p\equiv7\pmod 8\)">\(p\equiv7\pmod 8\)</span>. For the last four columns the class of <span class="math" data-tex="\(p\)">\(p\)</span> modulo <span class="math" data-tex="\(24\)">\(24\)</span> is <span class="math" data-tex="\(5,5,11,23\)">\(5,5,11,23\)</span>. Reciprocity gives <span class="math" data-tex="\(\bigl(\tfrac3p\bigr)=\bigl(\tfrac p3\bigr)=-1\)">\(\bigl(\tfrac3p\bigr)=\bigl(\tfrac p3\bigr)=-1\)</span> and <span class="math" data-tex="\(\bigl(\tfrac{-3}p\bigr)=\bigl(\tfrac p3\bigr)=-1\)">\(\bigl(\tfrac{-3}p\bigr)=\bigl(\tfrac p3\bigr)=-1\)</span> for <span class="math" data-tex="\(p\equiv5\pmod{24}\)">\(p\equiv5\pmod{24}\)</span>. For <span class="math" data-tex="\(p\equiv11\pmod{24}\)">\(p\equiv11\pmod{24}\)</span>, <span class="math" data-tex="\(\bigl(\tfrac2p\bigr)=-1\)">\(\bigl(\tfrac2p\bigr)=-1\)</span> and <span class="math" data-tex="\(\bigl(\tfrac3p\bigr)=-\bigl(\tfrac p3\bigr)=1\)">\(\bigl(\tfrac3p\bigr)=-\bigl(\tfrac p3\bigr)=1\)</span>, so <span class="math" data-tex="\(\bigl(\tfrac6p\bigr)=-1\)">\(\bigl(\tfrac6p\bigr)=-1\)</span>. For <span class="math" data-tex="\(p\equiv23\pmod{24}\)">\(p\equiv23\pmod{24}\)</span>, <span class="math" data-tex="\(\bigl(\tfrac{-1}p\bigr)=-1\)">\(\bigl(\tfrac{-1}p\bigr)=-1\)</span>, <span class="math" data-tex="\(\bigl(\tfrac2p\bigr)=1\)">\(\bigl(\tfrac2p\bigr)=1\)</span> and <span class="math" data-tex="\(\bigl(\tfrac3p\bigr)=-\bigl(\tfrac p3\bigr)=1\)">\(\bigl(\tfrac3p\bigr)=-\bigl(\tfrac p3\bigr)=1\)</span>, so <span class="math" data-tex="\(\bigl(\tfrac{-6}p\bigr)=-1\)">\(\bigl(\tfrac{-6}p\bigr)=-1\)</span>. The odd primes of <span class="math" data-tex="\(M\)">\(M\)</span> not dividing <span class="math" data-tex="\(d_0\)">\(d_0\)</span> divide <span class="math" data-tex="\(t\)">\(t\)</span> only; give <span class="math" data-tex="\(u\)">\(u\)</span> any residue allowed by (4.2) there. The Chinese remainder theorem combines the choices into a class <span class="math" data-tex="\(u\bmod M\)">\(u\bmod M\)</span>.</p>
+<p><em>The divisor <span class="math" data-tex="\(c\)">\(c\)</span>.</em> If <span class="math" data-tex="\(u\equiv3\)">\(u\equiv3\)</span> or <span class="math" data-tex="\(7\pmod 8\)">\(7\pmod 8\)</span> take <span class="math" data-tex="\(c=2\)">\(c=2\)</span>; if <span class="math" data-tex="\(u\equiv5\pmod 8\)">\(u\equiv5\pmod 8\)</span> take <span class="math" data-tex="\(c=4\)">\(c=4\)</span>. In both cases <span class="math" data-tex="\((u-1)/c\)">\((u-1)/c\)</span> is odd, and for odd <span class="math" data-tex="\(\ell\mid M\)">\(\ell\mid M\)</span> it is prime to <span class="math" data-tex="\(\ell\)">\(\ell\)</span> because <span class="math" data-tex="\(u\not\equiv1\pmod\ell\)">\(u\not\equiv1\pmod\ell\)</span>. This gives (4.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(a=2\)">\(a=2\)</span> one can take <span class="math" data-tex="\((M,c,u)=(8,4,5)\)">\((M,c,u)=(8,4,5)\)</span>: primes <span class="math" data-tex="\(p\equiv5\pmod 8\)">\(p\equiv5\pmod 8\)</span> have <span class="math" data-tex="\(\bigl(\tfrac2p\bigr)=-1\)">\(\bigl(\tfrac2p\bigr)=-1\)</span>.</p>
+<h2 id="5-two-propositions-and-the-proof-of-the-theorem">5. Two propositions and the proof of the theorem</h2>
+<p>Write <span class="math" data-tex="\(L=\log x\)">\(L=\log x\)</span>. The following two propositions are proved in the rest of the course.</p>
+<p><strong>Proposition 5.1</strong> (primes with controlled predecessors [OpenAI-029, Proposition 2.1]). Let <span class="math" data-tex="\(M\)">\(M\)</span> be a fixed positive multiple of <span class="math" data-tex="\(8\)">\(8\)</span>, <span class="math" data-tex="\(c\in\{2,4\}\)">\(c\in\{2,4\}\)</span>, and <span class="math" data-tex="\(u\)">\(u\)</span> an integer satisfying (4.1). For all sufficiently large <span class="math" data-tex="\(x\)">\(x\)</span> there are <span class="math" data-tex="\(\gg_{M,c,u}x/L^2\)">\(\gg_{M,c,u}x/L^2\)</span> primes <span class="math" data-tex="\(p\in(x,2x)\)">\(p\in(x,2x)\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+p\equiv u\pmod M,\\
+p-1=crQ,\\
+Q&gt;x^{0.9}\ \text{prime},\quad(5.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+p\equiv u\pmod M,\\
+p-1=crQ,\\
+Q&gt;x^{0.9}\ \text{prime},\quad(5.1)
+\end{gathered}
+\]</span>
+where every prime divisor of the integer <span class="math" data-tex="\(r\)">\(r\)</span> lies in <span class="math" data-tex="\(\bigl(\exp(L^{0.1}),\exp(L^{0.3})\bigr)\)">\(\bigl(\exp(L^{0.1}),\exp(L^{0.3})\bigr)\)</span>.</p>
+<p>Lessons 16–19 prove Proposition 5.1 with a sieve and bilinear estimates.</p>
+<p><strong>Proposition 5.2</strong> (uniform complete splitting [OpenAI-029, Proposition 2.2]). Fix an integer <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(|a|&gt;1\)">\(|a|&gt;1\)</span> and put <span class="math" data-tex="\(\delta_0=10^{-6}\)">\(\delta_0=10^{-6}\)</span>. For all sufficiently large <span class="math" data-tex="\(x\)">\(x\)</span> and all primes <span class="math" data-tex="\(q\)">\(q\)</span> that are sufficiently large in terms of <span class="math" data-tex="\(a\)">\(a\)</span> and satisfy <span class="math" data-tex="\(q\le\exp(L^{0.3})\)">\(q\le\exp(L^{0.3})\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\#\{p\ \text{prime}:x&lt;p\le2x,\\
+&amp;\qquad p\ \text{splits completely in}\ K_q\}\\
+&amp;\quad\ll_a\frac{x}{q(q-1)L}+x^{1-\delta_0}.\quad(5.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\#\{p\ \text{prime}:x&lt;p\le2x,\\
+&amp;\qquad p\ \text{splits completely in}\ K_q\}\\
+&amp;\quad\ll_a\frac{x}{q(q-1)L}+x^{1-\delta_0}.\quad(5.2)
+\end{aligned}
+\]</span>
+The implied constant and the threshold for <span class="math" data-tex="\(x\)">\(x\)</span> do not depend on <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p>Lesson 15 deduces Proposition 5.2 from the following theorem, proved in Lessons 2–14. A <strong>finite-order Hecke character</strong> of a number field <span class="math" data-tex="\(F\)">\(F\)</span> is a continuous character of the idèle class group <span class="math" data-tex="\(F^\times\backslash\mathbb A_F^\times\)">\(F^\times\backslash\mathbb A_F^\times\)</span> with finite image.</p>
+<p><strong>Theorem 5.3</strong> (a zero-free strip [OpenAI-029, Theorem 1.2]). Let <span class="math" data-tex="\(F\)">\(F\)</span> be a cyclotomic field containing <span class="math" data-tex="\(\mu_{12}\)">\(\mu_{12}\)</span>. For every finite-order Hecke character <span class="math" data-tex="\(\eta\)">\(\eta\)</span> of <span class="math" data-tex="\(F\)">\(F\)</span>, the <span class="math" data-tex="\(L\)">\(L\)</span>-function <span class="math" data-tex="\(L_F(s,\eta)\)">\(L_F(s,\eta)\)</span> has no zero in the half-plane <span class="math" data-tex="\(\operatorname{Re}s&gt;1-10^{-6}\)">\(\operatorname{Re}s&gt;1-10^{-6}\)</span>.</p>
+<p>The principal character is included, with its pole at <span class="math" data-tex="\(s=1\)">\(s=1\)</span>. The width <span class="math" data-tex="\(10^{-6}\)">\(10^{-6}\)</span> is the same for all such fields and characters; this uniformity is what makes (5.2) uniform in <span class="math" data-tex="\(q\)">\(q\)</span>.</p>
+<p><em>Proof of Theorem 2.1.</em> Fix an admissible <span class="math" data-tex="\(a\)">\(a\)</span>; then <span class="math" data-tex="\(|a|&gt;1\)">\(|a|&gt;1\)</span>. Choose <span class="math" data-tex="\(M,c,u\)">\(M,c,u\)</span> by Lemma 4.1 and let <span class="math" data-tex="\(\mathcal R(x)\)">\(\mathcal R(x)\)</span> be the set of <span class="math" data-tex="\(\gg_ax/L^2\)">\(\gg_ax/L^2\)</span> primes given by Proposition 5.1. For <span class="math" data-tex="\(p\in\mathcal R(x)\)">\(p\in\mathcal R(x)\)</span> we have <span class="math" data-tex="\(p\nmid a\)">\(p\nmid a\)</span> and <span class="math" data-tex="\(\bigl(\tfrac ap\bigr)=-1\)">\(\bigl(\tfrac ap\bigr)=-1\)</span>, so Euler's criterion gives <span class="math" data-tex="\(a^{(p-1)/2}\equiv-1\pmod p\)">\(a^{(p-1)/2}\equiv-1\pmod p\)</span> and <span class="math" data-tex="\(i_p(a)\)">\(i_p(a)\)</span> is odd: an even index would make <span class="math" data-tex="\(\operatorname{ord}_p(a)\)">\(\operatorname{ord}_p(a)\)</span> divide <span class="math" data-tex="\((p-1)/2\)">\((p-1)/2\)</span>.</p>
+<p>Suppose <span class="math" data-tex="\(i_p(a)&gt;1\)">\(i_p(a)&gt;1\)</span> and let <span class="math" data-tex="\(q\)">\(q\)</span> be a prime factor of <span class="math" data-tex="\(i_p(a)\)">\(i_p(a)\)</span>. Then <span class="math" data-tex="\(q\)">\(q\)</span> is odd and divides <span class="math" data-tex="\(p-1=crQ\)">\(p-1=crQ\)</span> with <span class="math" data-tex="\(c\)">\(c\)</span> a power of <span class="math" data-tex="\(2\)">\(2\)</span>, so <span class="math" data-tex="\(q=Q\)">\(q=Q\)</span> or <span class="math" data-tex="\(q\mid r\)">\(q\mid r\)</span>. By Lemma 1.1, <span class="math" data-tex="\(a^{(p-1)/q}\equiv1\pmod p\)">\(a^{(p-1)/q}\equiv1\pmod p\)</span>.</p>
+<p><em>The case <span class="math" data-tex="\(q=Q\)">\(q=Q\)</span>.</em> Then <span class="math" data-tex="\(j=(p-1)/Q=cr\)">\(j=(p-1)/Q=cr\)</span> satisfies <span class="math" data-tex="\(1\le j&lt;2x^{0.1}\)">\(1\le j&lt;2x^{0.1}\)</span>, and <span class="math" data-tex="\(p\)">\(p\)</span> divides <span class="math" data-tex="\(a^j-1\)">\(a^j-1\)</span>, hence the positive integer
+<span class="math math-display" data-tex="\[
+B_a(x)=\prod_{1\le j\le2x^{0.1}}|a^j-1| .
+\]">\[
+B_a(x)=\prod_{1\le j\le2x^{0.1}}|a^j-1| .
+\]</span>
+No factor vanishes because <span class="math" data-tex="\(|a|&gt;1\)">\(|a|&gt;1\)</span>, and <span class="math" data-tex="\(\log B_a(x)\)">\(\log B_a(x)\)</span><span class="math" data-tex="\(\le\sum_{j\le2x^{0.1}}(j\log|a|+\log2)\)">\(\le\sum_{j\le2x^{0.1}}(j\log|a|+\log2)\)</span><span class="math" data-tex="\(\ll_ax^{0.2}\)">\(\ll_ax^{0.2}\)</span>. Each prime <span class="math" data-tex="\(p&gt;x\)">\(p&gt;x\)</span> dividing <span class="math" data-tex="\(B_a(x)\)">\(B_a(x)\)</span> contributes at least <span class="math" data-tex="\(L\)">\(L\)</span> to this logarithm, so at most <span class="math" data-tex="\(O_a(x^{0.2}/L)=o(x/L^2)\)">\(O_a(x^{0.2}/L)=o(x/L^2)\)</span> primes of <span class="math" data-tex="\(\mathcal R(x)\)">\(\mathcal R(x)\)</span> arise in this case.</p>
+<p><em>The case <span class="math" data-tex="\(q\mid r\)">\(q\mid r\)</span>.</em> Then <span class="math" data-tex="\(\exp(L^{0.1})&lt;q&lt;\exp(L^{0.3})\)">\(\exp(L^{0.1})&lt;q&lt;\exp(L^{0.3})\)</span>, so <span class="math" data-tex="\(q\)">\(q\)</span> is large enough for Proposition 5.2 once <span class="math" data-tex="\(x\)">\(x\)</span> is large, and <span class="math" data-tex="\(p\nmid aq\)">\(p\nmid aq\)</span>. By Lemmas 1.1 and 3.1, <span class="math" data-tex="\(p\)">\(p\)</span> splits completely in <span class="math" data-tex="\(K_q\)">\(K_q\)</span>. Summing (5.2) over all such <span class="math" data-tex="\(q\)">\(q\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\#\{p\in\mathcal R(x):\text{this case}\}\\
+&amp;\quad\ll_a\frac xL\sum_{m&gt;\exp(L^{0.1})}\frac1{m(m-1)}\\
+&amp;\qquad+x^{1-\delta_0}\exp(L^{0.3})\\
+&amp;\quad\ll_a\frac xL\exp(-L^{0.1})\\
+&amp;\qquad+x\exp(-\delta_0L+L^{0.3}),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\#\{p\in\mathcal R(x):\text{this case}\}\\
+&amp;\quad\ll_a\frac xL\sum_{m&gt;\exp(L^{0.1})}\frac1{m(m-1)}\\
+&amp;\qquad+x^{1-\delta_0}\exp(L^{0.3})\\
+&amp;\quad\ll_a\frac xL\exp(-L^{0.1})\\
+&amp;\qquad+x\exp(-\delta_0L+L^{0.3}),
+\end{aligned}
+\]</span>
+where the first sum runs over all integers and telescopes. Both terms are <span class="math" data-tex="\(o(x/L^2)\)">\(o(x/L^2)\)</span>.</p>
+<p>Removing the two exceptional sets leaves <span class="math" data-tex="\(\gg_ax/L^2\)">\(\gg_ax/L^2\)</span> primes in <span class="math" data-tex="\((x,2x)\)">\((x,2x)\)</span> with <span class="math" data-tex="\(i_p(a)=1\)">\(i_p(a)=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>When <span class="math" data-tex="\(a=b^h\)">\(a=b^h\)</span> with <span class="math" data-tex="\(h&gt;1\)">\(h&gt;1\)</span> odd, no separate treatment is needed: for large <span class="math" data-tex="\(x\)">\(x\)</span> every prime factor of <span class="math" data-tex="\(h\)">\(h\)</span> is smaller than every odd prime factor of <span class="math" data-tex="\(p-1=crQ\)">\(p-1=crQ\)</span>, so <span class="math" data-tex="\((h,p-1)=1\)">\((h,p-1)=1\)</span> and the power map <span class="math" data-tex="\(y\mapsto y^h\)">\(y\mapsto y^h\)</span> is a bijection of <span class="math" data-tex="\(\mathbb F_p^\times\)">\(\mathbb F_p^\times\)</span>. Exercise 8.1 makes this precise.</p>
+<h2 id="6-several-prime-bases-at-once">6. Several prime bases at once</h2>
+<p>The same two propositions give primes at which several prime bases are primitive roots simultaneously. The bases must be multiplicatively independent modulo squares for such a statement: Exercise 8.3 shows that <span class="math" data-tex="\(2\)">\(2\)</span>, <span class="math" data-tex="\(3\)">\(3\)</span> and <span class="math" data-tex="\(6\)">\(6\)</span> are never primitive roots modulo the same prime <span class="math" data-tex="\(p&gt;3\)">\(p&gt;3\)</span>.</p>
+<p><strong>Theorem 6.1</strong> (simultaneous primitive roots [OpenAI-029S, Theorem 1.1]). Let <span class="math" data-tex="\(q_1,\dots,q_k\)">\(q_1,\dots,q_k\)</span> be distinct positive primes. There are <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> and <span class="math" data-tex="\(x_0\)">\(x_0\)</span> such that for <span class="math" data-tex="\(x\ge x_0\)">\(x\ge x_0\)</span> at least <span class="math" data-tex="\(cx/(\log x)^2\)">\(cx/(\log x)^2\)</span> primes <span class="math" data-tex="\(p\in(x,2x)\)">\(p\in(x,2x)\)</span> satisfy <span class="math" data-tex="\(p\nmid q_1\cdots q_k\)">\(p\nmid q_1\cdots q_k\)</span> and <span class="math" data-tex="\(\operatorname{ord}_p(q_i)=p-1\)">\(\operatorname{ord}_p(q_i)=p-1\)</span> for every <span class="math" data-tex="\(i\)">\(i\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(M=8\prod_{q_i\ \text{odd}}q_i\)">\(M=8\prod_{q_i\ \text{odd}}q_i\)</span>. Choose <span class="math" data-tex="\(u\)">\(u\)</span> with <span class="math" data-tex="\(u\equiv5\pmod 8\)">\(u\equiv5\pmod 8\)</span> and, for each odd <span class="math" data-tex="\(q_i\)">\(q_i\)</span>, <span class="math" data-tex="\(u\)">\(u\)</span> congruent modulo <span class="math" data-tex="\(q_i\)">\(q_i\)</span> to a quadratic nonresidue. Then <span class="math" data-tex="\((u,M)=1\)">\((u,M)=1\)</span>, <span class="math" data-tex="\(4\mid u-1\)">\(4\mid u-1\)</span>, <span class="math" data-tex="\((u-1)/4\)">\((u-1)/4\)</span> is odd, and <span class="math" data-tex="\(u\not\equiv1\pmod{q_i}\)">\(u\not\equiv1\pmod{q_i}\)</span>; so <span class="math" data-tex="\((M,4,u)\)">\((M,4,u)\)</span> satisfies (4.1). Proposition 5.1 gives <span class="math" data-tex="\(\gg x/L^2\)">\(\gg x/L^2\)</span> primes <span class="math" data-tex="\(p\equiv u\pmod M\)">\(p\equiv u\pmod M\)</span> with <span class="math" data-tex="\(p-1=4rQ\)">\(p-1=4rQ\)</span>. For such <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(p\equiv5\pmod 8\)">\(p\equiv5\pmod 8\)</span>, so <span class="math" data-tex="\(\bigl(\tfrac2p\bigr)=-1\)">\(\bigl(\tfrac2p\bigr)=-1\)</span> and, for odd <span class="math" data-tex="\(q_i\)">\(q_i\)</span>, reciprocity with <span class="math" data-tex="\(p\equiv1\pmod 4\)">\(p\equiv1\pmod 4\)</span> gives <span class="math" data-tex="\(\bigl(\tfrac{q_i}p\bigr)=\bigl(\tfrac p{q_i}\bigr)=\bigl(\tfrac u{q_i}\bigr)=-1\)">\(\bigl(\tfrac{q_i}p\bigr)=\bigl(\tfrac p{q_i}\bigr)=\bigl(\tfrac u{q_i}\bigr)=-1\)</span>. For each fixed base <span class="math" data-tex="\(q_i\)">\(q_i\)</span> the proof of Theorem 2.1 applies verbatim with <span class="math" data-tex="\(a=q_i\)">\(a=q_i\)</span> and removes <span class="math" data-tex="\(o(x/L^2)\)">\(o(x/L^2)\)</span> primes. There are finitely many bases, so <span class="math" data-tex="\(\gg x/L^2\)">\(\gg x/L^2\)</span> primes remain at which every <span class="math" data-tex="\(q_i\)">\(q_i\)</span> has index <span class="math" data-tex="\(1\)">\(1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>OpenAI's second paper [OpenAI-029S] states Theorem 6.1 conditionally on four inputs; Theorem 5.3, Proposition 5.1 and the sieve lemmas of Lesson 16 are those inputs, and this course proves them.</p>
+<h2 id="7-a-map-of-the-proof">7. A map of the proof</h2>
+<ul>
+<li><strong>Lessons 2–4</strong> set up the arithmetic of a cyclotomic field <span class="math" data-tex="\(F\supseteq\mu_{12}\)">\(F\supseteq\mu_{12}\)</span>: <span class="math" data-tex="\(S\)">\(S\)</span>-integers, sextic residue symbols with a reciprocity law free of supplementary factors, Kummer characters, and the Hecke characters that describe the phases of cubic and sextic Gauss sums.</li>
+<li><strong>Lesson 5</strong> defines a family of coefficient sums <span class="math" data-tex="\(B_m(Z)\)">\(B_m(Z)\)</span> built from cubic Gauss sums and states the two estimates of the same average that prove Theorem 5.3: an upper bound from a reflected second moment, and an asymptotic from Poisson summation whose main term involves <span class="math" data-tex="\(1/L^S(s,\eta)\)">\(1/L^S(s,\eta)\)</span>.</li>
+<li><strong>Lessons 6–10</strong> prove the second moment: the cubic theta representation of Kazhdan and Patterson supplies the coefficients, a Weyl reflection turns the twisted sums into quadratic symbols, and a quadratic large sieve bounds them.</li>
+<li><strong>Lessons 11–14</strong> carry out the Poisson summation, the Euler product of the main term, the zero detection for the other frequencies, and the Mellin continuation that gives Theorem 5.3.</li>
+<li><strong>Lesson 15</strong> proves Proposition 5.2 from Theorem 5.3 with an explicit formula whose error depends on the field only through its degree and discriminant.</li>
+<li><strong>Lessons 16–19</strong> prove Proposition 5.1: weights on the integers <span class="math" data-tex="\(crQ+1\)">\(crQ+1\)</span>, a block sieve, Bombieri–Vinogradov, marked bilinear estimates and Buchstab's densities remove the composite values.</li>
+</ul>
+<h2 id="8-exercises">8. Exercises</h2>
+<p><strong>8.1.</strong> Let <span class="math" data-tex="\(a=b^h\)">\(a=b^h\)</span> with <span class="math" data-tex="\(b\)">\(b\)</span> an integer and <span class="math" data-tex="\(h&gt;1\)">\(h&gt;1\)</span> odd, and let <span class="math" data-tex="\(p\)">\(p\)</span> be a prime with <span class="math" data-tex="\(p-1=crQ\)">\(p-1=crQ\)</span> as in (5.1), <span class="math" data-tex="\(p\nmid a\)">\(p\nmid a\)</span>, and <span class="math" data-tex="\(x\)">\(x\)</span> large. Show that <span class="math" data-tex="\((h,p-1)=1\)">\((h,p-1)=1\)</span>, and deduce that <span class="math" data-tex="\(a\)">\(a\)</span> is a primitive root modulo <span class="math" data-tex="\(p\)">\(p\)</span> if and only if <span class="math" data-tex="\(b\)">\(b\)</span> is.</p>
+<p><strong>8.2.</strong> Check the table of Lemma 4.1 in the column <span class="math" data-tex="\(d_0=-3\)">\(d_0=-3\)</span> directly: if <span class="math" data-tex="\(p\equiv5\pmod{24}\)">\(p\equiv5\pmod{24}\)</span>, then <span class="math" data-tex="\(\bigl(\tfrac{-3}p\bigr)=-1\)">\(\bigl(\tfrac{-3}p\bigr)=-1\)</span>.</p>
+<p><strong>8.3.</strong> Let <span class="math" data-tex="\(p&gt;3\)">\(p&gt;3\)</span> be prime. Show that <span class="math" data-tex="\(2\)">\(2\)</span>, <span class="math" data-tex="\(3\)">\(3\)</span> and <span class="math" data-tex="\(6\)">\(6\)</span> are not all primitive roots modulo <span class="math" data-tex="\(p\)">\(p\)</span>.</p>
+<p><strong>8.4.</strong> For <span class="math" data-tex="\(a=2\)">\(a=2\)</span> and <span class="math" data-tex="\((M,c,u)=(8,4,5)\)">\((M,c,u)=(8,4,5)\)</span>, verify (4.1), and show that <span class="math" data-tex="\(p-1=4rQ\)">\(p-1=4rQ\)</span> forces <span class="math" data-tex="\(r\)">\(r\)</span> odd for every prime <span class="math" data-tex="\(p\equiv5\pmod 8\)">\(p\equiv5\pmod 8\)</span>.</p>
+<p><strong>8.5.</strong> Let <span class="math" data-tex="\(|a|&gt;1\)">\(|a|&gt;1\)</span>. Show that the number of primes <span class="math" data-tex="\(p\in(x,2x)\)">\(p\in(x,2x)\)</span> dividing <span class="math" data-tex="\(B_a(x)\)">\(B_a(x)\)</span> is at most <span class="math" data-tex="\(\log B_a(x)/\log x\)">\(\log B_a(x)/\log x\)</span>, and that this is <span class="math" data-tex="\(O_a(x^{0.2}/\log x)\)">\(O_a(x^{0.2}/\log x)\)</span>.</p>
+<h2 id="9-solutions">9. Solutions</h2>
+<p><strong>8.1.</strong> For large <span class="math" data-tex="\(x\)">\(x\)</span>, every prime factor of <span class="math" data-tex="\(h\)">\(h\)</span> is smaller than <span class="math" data-tex="\(\exp(L^{0.1})\)">\(\exp(L^{0.1})\)</span>, so it divides none of <span class="math" data-tex="\(r\)">\(r\)</span> and <span class="math" data-tex="\(Q\)">\(Q\)</span>; it is odd, so it does not divide <span class="math" data-tex="\(c\)">\(c\)</span>. Hence <span class="math" data-tex="\((h,p-1)=1\)">\((h,p-1)=1\)</span>. Then <span class="math" data-tex="\(y\mapsto y^h\)">\(y\mapsto y^h\)</span> is an automorphism of the cyclic group <span class="math" data-tex="\(\mathbb F_p^\times\)">\(\mathbb F_p^\times\)</span>, and it maps generators to generators; so <span class="math" data-tex="\(b^h\)">\(b^h\)</span> generates exactly when <span class="math" data-tex="\(b\)">\(b\)</span> does.</p>
+<p><strong>8.2.</strong> For <span class="math" data-tex="\(p\equiv5\pmod{24}\)">\(p\equiv5\pmod{24}\)</span> we have <span class="math" data-tex="\(p\equiv1\pmod 4\)">\(p\equiv1\pmod 4\)</span> and <span class="math" data-tex="\(p\equiv2\pmod 3\)">\(p\equiv2\pmod 3\)</span>. Then <span class="math" data-tex="\(\bigl(\tfrac{-1}p\bigr)=1\)">\(\bigl(\tfrac{-1}p\bigr)=1\)</span> and <span class="math" data-tex="\(\bigl(\tfrac3p\bigr)=\bigl(\tfrac p3\bigr)=\bigl(\tfrac23\bigr)=-1\)">\(\bigl(\tfrac3p\bigr)=\bigl(\tfrac p3\bigr)=\bigl(\tfrac23\bigr)=-1\)</span>, so <span class="math" data-tex="\(\bigl(\tfrac{-3}p\bigr)=-1\)">\(\bigl(\tfrac{-3}p\bigr)=-1\)</span>.</p>
+<p><strong>8.3.</strong> A primitive root modulo an odd prime is a quadratic nonresidue. If <span class="math" data-tex="\(2\)">\(2\)</span> and <span class="math" data-tex="\(3\)">\(3\)</span> are nonresidues, then <span class="math" data-tex="\(\bigl(\tfrac6p\bigr)=\bigl(\tfrac2p\bigr)\bigl(\tfrac3p\bigr)=1\)">\(\bigl(\tfrac6p\bigr)=\bigl(\tfrac2p\bigr)\bigl(\tfrac3p\bigr)=1\)</span>, so <span class="math" data-tex="\(6\)">\(6\)</span> is a residue and not a primitive root.</p>
+<p><strong>8.4.</strong> <span class="math" data-tex="\((5,8)=1\)">\((5,8)=1\)</span>, <span class="math" data-tex="\(4\mid 5-1\)">\(4\mid 5-1\)</span>, and <span class="math" data-tex="\((u-1)/c=1\)">\((u-1)/c=1\)</span> is prime to <span class="math" data-tex="\(M/c=2\)">\(M/c=2\)</span>. If <span class="math" data-tex="\(p\equiv5\pmod 8\)">\(p\equiv5\pmod 8\)</span>, then <span class="math" data-tex="\(p-1\equiv4\pmod 8\)">\(p-1\equiv4\pmod 8\)</span>, so <span class="math" data-tex="\((p-1)/4=rQ\)">\((p-1)/4=rQ\)</span> is odd and <span class="math" data-tex="\(r\)">\(r\)</span> is odd.</p>
+<p><strong>8.5.</strong> Distinct primes <span class="math" data-tex="\(p_1,\dots,p_n&gt;x\)">\(p_1,\dots,p_n&gt;x\)</span> dividing the positive integer <span class="math" data-tex="\(B_a(x)\)">\(B_a(x)\)</span> satisfy <span class="math" data-tex="\(x^n&lt;p_1\cdots p_n\le B_a(x)\)">\(x^n&lt;p_1\cdots p_n\le B_a(x)\)</span>, so <span class="math" data-tex="\(n&lt;\log B_a(x)/\log x\)">\(n&lt;\log B_a(x)/\log x\)</span>. The bound <span class="math" data-tex="\(\log B_a(x)\)">\(\log B_a(x)\)</span><span class="math" data-tex="\(\le\sum_{j\le2x^{0.1}}(j\log|a|+\log 2)\)">\(\le\sum_{j\le2x^{0.1}}(j\log|a|+\log 2)\)</span><span class="math" data-tex="\(\le(2x^{0.1})^2\log|a|+2x^{0.1}\log2\)">\(\le(2x^{0.1})^2\log|a|+2x^{0.1}\log2\)</span> gives the second claim.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-029] OpenAI, <em>Primitive roots for every admissible integer base</em>, OpenAI Math Release preprint, 4 October 2026. https://github.com/openai/math/tree/main/preprints/Primitive-roots-for-every-admissible-integer-base-October-4-2026</li>
+<li>[OpenAI-029S] OpenAI, <em>Simultaneous primitive roots: a conditional lower bound for prime bases</em>, OpenAI Math Release preprint, 4 October 2026. https://github.com/openai/math/tree/main/preprints/Simultaneous-primitive-roots-a-conditional-lower-bound-for-prime-bases-October-4-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

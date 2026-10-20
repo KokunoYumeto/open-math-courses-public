@@ -2,7 +2,7 @@
 
 *Written by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
-Closedness and positive conicity are the only restrictions on the wavefront set of a complex distribution. We prove this in a form that realizes the same set simultaneously for smooth, analytic and every admissible derivative-growth regularity. The construction places singularities at a dense collection of base-direction pairs. A geometric gap gives holomorphic continuation everywhere else, while a strict coefficient bound prevents the chosen singularities from cancelling.
+Closedness and positive conicity are the only restrictions on the wavefront set of a complex distribution. We prove this in a form that realizes the same set simultaneously for smooth, analytic and every admissible derivative-growth regularity. The construction places singularities at a dense collection of base-direction pairs. A geometric gap gives holomorphic continuation everywhere else, while a strict coefficient bound prevents the chosen singularities from cancelling. A separate compact-packet construction realizes any smooth wavefront set with any prescribed finite differentiability, and gives real-valued realizations for symmetric direction sets.
 
 The prerequisites are [Continuing the spherical kernel](continuing-the-spherical-kernel.md), Theorem 4 for the continuation domain, Theorem 6 for conic exponential decay, and Theorem 7 for positivity and boundary growth; [Holomorphic decompositions of tempered distributions](holomorphic-decompositions-of-tempered-distributions.md), Theorem 4 for its polynomial-growth converse; and [Boundary regularity and conic decomposition](boundary-regularity-and-conic-decomposition.md), Theorem 3 and Exercise 5 for the exact boundary characterization and restriction to open sets. [Cones and derivative-growth wavefronts](cones-and-derivative-growth-wavefronts.md), Theorems 3 and 5–7, supplies controlled localization, projection, comparison and finite sums. Polydisk Cauchy estimates and power series are proved in Section 3 of [Holomorphic boundaries in convex cones](holomorphic-boundaries-in-convex-cones.md). The [Fourier foundation](../prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.md), F1–F5, fixes the transform and conjugation conventions, and the [metric foundation](../prerequisites/U011-free-foundations/metric-foundation-bridges.md) supplies Euclidean compactness and the elementary topology used below.
 
@@ -242,6 +242,121 @@ Here \(R\) stays bounded up to \(t=1\), whereas \(A(t)\) diverges. This is a con
 
 *Left: the two prescribed rays in the real cotangent plane, with unit points \((0,1)\) and \((2,-1)\) marked. Middle: their opposite imaginary boundary points \(0-i\) and \(2+i\) in the unit tube; the dotted path is \(z=-it\). Right: numerical samples for \(0\le t\le0.98\) of the exact functions \(|U(-it)|\), \(A(t)/4\), and the lower bound \(A(t)/4-|R(t)|\) from (20)–(21). The vertical scale is logarithmic. The finite plot illustrates the formulas; the proof of divergence is Lemma 3. [Editable figure source](../figures/prescribed-wavefront-poles.py).*
 
+## Prescribed smooth directions with finite differentiability
+
+The smooth wavefront set records failure of infinite differentiability. A function can have many continuous derivatives and still carry any prescribed closed conic set of smooth singular directions. The following construction gives this additional control by separating the frequencies of compact packets. The simultaneous realization in Theorem 5 remains a separate assertion about all derivative-growth classes.
+
+We use the Fourier convention in (1), the finite-derivative convergence and compact smooth bump arguments in the supplied [metric foundation](../prerequisites/U011-free-foundations/metric-foundation-bridges.md), Sections 13.7 and 13.10, and the Fourier estimates in the [Schwartz foundation](../prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.md), F1–F5. The fixed-cutoff convolution proof in [Boundary regularity and conic decomposition](boundary-regularity-and-conic-decomposition.md), Lemma 2 and (16), supplies locality and angular shrinking. These are ordinary smooth-wavefront estimates; no bound for an analytic or derivative-growth wavefront is inferred from them.
+
+Fix a nonnegative real \(\varphi\in C_c^\infty(\mathbb R^n)\), supported in the unit ball, with \(\int\varphi=1\). Such a function is obtained by dividing a nonzero nonnegative bump by its positive integral. Thus \(\widehat\varphi(0)=1\).
+
+**Lemma 6 (uniform compact packets).** Let \(r\ge0\) be an integer, put \(a=3r+2\), and choose any sequence \(x_j\in\mathbb R^n\), \(\theta_j\in S^{n-1}\). Then
+\[
+ u(x)=\sum_{j=1}^{\infty}j^{-a}\varphi(j(x-x_j))
+                                      e^{ij^3x\cdot\theta_j}
+ \tag{P1}
+\]
+belongs to \(C_b^r(\mathbb R^n)\cap L^1(\mathbb R^n)\). Here \(C_b^r\) means that the function and all derivatives through order \(r\) are continuous and bounded.
+
+For any fixed \(\chi\in C_c^\infty\), put
+\[
+ \varphi_j(z)=\chi(x_j+z/j)\varphi(z).
+ \tag{P2}
+\]
+This is a bounded family of compact smooth tests: for every integer \(N\ge0\),
+\[
+ |\widehat{\varphi_j}(\eta)|\le C_{\chi,N}(1+|\eta|)^{-N}
+                \quad\hbox{for every }j,\eta.
+ \tag{P3}
+\]
+Moreover,
+\[
+ \widehat{\chi u}(\xi)=
+ \sum_{j=1}^{\infty} j^{-a-n}
+ e^{-i(\xi-j^3\theta_j)\cdot x_j}
+ \widehat{\varphi_j}\bigl((\xi-j^3\theta_j)/j\bigr).
+ \tag{P4}
+\]
+
+**Proof.** At derivative order \(|\alpha|\le r\), Leibniz's rule bounds the \(j\)-th differentiated term by
+\[
+ C_\alpha j^{-a+3|\alpha|}\le C_\alpha j^{-2}.
+ \tag{P5}
+\]
+Indeed a derivative on the bump contributes \(j\), and one on the exponential contributes at most \(j^3\); the finitely many bump derivatives are bounded independently of the center. Thus all these derivative series converge uniformly on the whole space. Successive use of the fundamental theorem on coordinate segments identifies their sums as the derivatives of the sum. This proves \(C_b^r\), including \(r=0\). The \(L^1\) norm of the \(j\)-th term is \(j^{-a-n}\|\varphi\|_1\). Its summable series proves the \(L^1\) assertion, and identifies the pointwise sum with that \(L^1\) limit by domination.
+
+Each derivative of (P2) is a finite sum of \(j^{-|\beta|}(\partial^\beta\chi)(x_j+z/j)\) times a fixed derivative of \(\varphi\). All supports lie in the same unit ball, and all derivative bounds are uniform even when the centers escape to infinity. Integration by parts with \((1-\Delta_z)^q\), where \(2q\ge N\), proves (P3). Finally substitute \(x=x_j+z/j\) in each localized Fourier integral. This gives its exact factor in (P4); summable \(L^1\) norms justify exchanging the sum and the integral. \(\square\)
+
+**Theorem 7 (finite differentiability with an exact smooth wavefront).** For every open \(X\subset\mathbb R^n\), every relatively closed conic
+\(S\subset X\times(\mathbb R^n\setminus\{0\})\), and every integer \(r\ge0\), there is a complex function \(u\in C^r(X)\) with
+\[
+                         \operatorname{WF}(u)=S.
+ \tag{P6}
+\]
+It can be chosen as the restriction of a function in \(C_b^r(\mathbb R^n)\cap L^1(\mathbb R^n)\).
+
+**Selection of packets.** First suppose \(X=\mathbb R^n\). If \(S\) is empty take zero. Otherwise use the countable dense selection in (5). Form an infinite sequence \((x_j,\theta_j)\in S_1\) by repeating every selected pair infinitely often: use periodic repetitions for a finite list, and successive initial segments of lengths \(1,2,3,\ldots\) for an infinite list. Every point of \(S_1\) is then approached along a subsequence with indices tending to infinity. More explicitly, choose a selected pair within \(1/k\) of the desired point and choose its occurrence after the preceding index. Apply (P1).
+
+**Excluding all other directions.** Let \((x_0,\xi_0)\notin S\). Relative closedness gives an open base neighborhood \(U\) and an open cone \(V\) about \(\xi_0\) with \((U\times V)\cap S=\varnothing\). Choose a compact smooth \(\chi=1\) near \(x_0\), with support at positive distance from the complement of \(U\). Terms with \(x_j\notin U\) vanish on this support for all sufficiently large \(j\), because their spatial radii are at most \(1/j\). The remaining finitely many such terms are smooth.
+
+For terms with \(x_j\in U\), we have \(\theta_j\notin V\). On a smaller cone \(V'\) whose angular closure lies in \(V\), compact angular separation gives
+\[
+ |\xi-j^3\theta_j|\ge c(|\xi|+j^3),\qquad \xi\in V'.
+ \tag{P7}
+\]
+The positive constant follows by normalizing the sum of the two lengths to one: a zero difference would put one unit direction in both separated angular sets. For \(|\xi|\ge1\),
+\[
+ \frac{|\xi|+j^3}{j}\ge|\xi|^{2/3}.
+ \tag{P8}
+\]
+If \(j\le|\xi|^{1/3}\), the first summand proves this; otherwise the second does. Equations (P3)–(P4) therefore bound the sum of these terms by
+\(C_N|\xi|^{-2N/3}\sum_jj^{-a-n}\). The exponent \(N\) is arbitrary, and the omitted finite smooth sum also decreases rapidly after localization. Hence \((x_0,\xi_0)\) is regular, proving \(\operatorname{WF}(u)\subset S\).
+
+**Retaining every prescribed direction.** Fix \((x_0,\theta_0)\in S_1\), an arbitrary compact smooth \(\chi=1\) near \(x_0\), and an arbitrary open cone about \(\theta_0\). Along a subsequence, \(x_k\to x_0\), \(\theta_k\to\theta_0\), and \(k\to\infty\). For sufficiently large such \(k\), the whole \(k\)-th bump lies where \(\chi=1\), so \(\varphi_k=\varphi\); also \(k^3\theta_k\) lies in that cone. At this frequency the \(k\)-th summand of (P4) is exactly \(k^{-a-n}\).
+
+All other summands are smaller together, regardless of their complex phases. For \(j\ne k\),
+\[
+ \frac{|k^3\theta_k-j^3\theta_j|}{j}
+ \ge \frac{|k^3-j^3|}{j}
+ =|k-j|\left(\frac{k^2}{j}+k+j\right)
+ \ge k|k-j|.
+ \tag{P9}
+\]
+Consequently (P3) gives
+\[
+ \left|\widehat{\chi u}(k^3\theta_k)-k^{-a-n}\right|
+ \le C_N\sum_{j\ne k}j^{-a-n}(1+k|k-j|)^{-N}
+ \le C'_N k^{-N}.
+ \tag{P10}
+\]
+The last inequality uses \(|k-j|\ge1\) and the convergent sum of \(j^{-a-n}\). Choose one integer \(N>a+n\). For all sufficiently large indices in the subsequence,
+\[
+              |\widehat{\chi u}(k^3\theta_k)|
+                         \ge\tfrac12 k^{-a-n}.
+ \tag{P11}
+\]
+This contradicts rapid decay in the chosen cone: a decay exponent \(M>(a+n)/3\) would give an upper bound \(C_M k^{-3M}\). Since both the cutoff and the cone were arbitrary, \((x_0,\theta_0)\in\operatorname{WF}(u)\). Positive conicity gives every covector in \(S\), proving equality.
+
+For general \(X\), take the closure of \(S\) in the full punctured cotangent space, apply the whole-space construction, and restrict the function to \(X\). Formula (18) and the proved locality of smooth wavefront give exactly (P6). Restriction preserves \(C^r\). This also covers empty and disconnected open sets. \(\square\)
+
+**Corollary 8 (real-valued realization).** In Theorem 7 a real-valued function exists if and only if \(S\) is invariant under \((x,\xi)\mapsto(x,-\xi)\).
+
+**Proof.** Necessity follows from the conjugation identity (22), proved in Exercise 3. For sufficiency on the whole space, retain the same normalized real bump, sequence and exponent, and set
+\[
+ v(x)=\sum_{j=1}^{\infty}j^{-a}\varphi(j(x-x_j))
+                                      \cos(j^3x\cdot\theta_j).
+ \tag{P12}
+\]
+The derivative and integrability bounds of Lemma 6 apply to both exponential halves, so \(v\) is real and belongs to \(C_b^r\cap L^1\). The upper-bound proof gives
+\(\operatorname{WF}(v)\subset S\cup(-S)=S\).
+
+For the lower bound at \(k^3\theta_k\), the positive \(k\)-th exponential contributes exactly \(\tfrac12k^{-a-n}\). For both signs of every \(j\ne k\), the radial separation (P9) applies unchanged. Their combined error is at most \(C_Nk^{-N}\). The negative \(k\)-th exponential has argument \(2k^2\theta_k\) in \(\widehat\varphi\), so its magnitude is at most \(C_Nk^{-a-n-2N}\). Choose \(N>a+n\). Their sum is less than \(\tfrac14k^{-a-n}\) for sufficiently large \(k\), leaving the same failure of rapid decay. Thus \(S\subset\operatorname{WF}(v)\). For a relatively closed symmetric \(S\) over \(X\), its full closure is symmetric; restriction finishes the proof. \(\square\)
+
+[![Shrinking spatial packets and separated cubic carrier frequencies.](../figures/finite-regularity-wavefront-packets.png)](../figures/finite-regularity-wavefront-packets.svg)
+
+*Left: exact unit-height envelopes \(\rho(jx)\), where \(\rho(s)=\exp(1-1/(1-s^2))\) for \(|s|<1\) and zero otherwise, for \(j=2,4,8\). The proof uses their integral-normalized version with coefficient \(j^{-3r-2}\). Right: carrier frequencies \(j^3\) for \(j=2,\ldots,6\), with bars \([j^3-j,j^3+j]\) marking the frequency scale \(j\) in (P4). These bars are scale markers, not Fourier support bounds. The exact separation and noncancellation estimates are (P9)–(P11). [Reproducible figure source](../figures/finite-regularity-wavefront-packets.py).*
+
+
 ## Exercises with complete solutions
 
 **Exercise 1 — empty, finite and dense sets (foundation).** Explain why the construction must allow a finite list of distinct pairs. For a finite nonempty \(S_1\), check the proof of Theorem 5 without adding repeated pairs. What distribution realizes the empty set?
@@ -277,7 +392,29 @@ When \(S\) is symmetric, (22) gives \(\mathcal W(\overline u)=S\). The finite-su
 \(S=(F_+\times(0,\infty))\cup(F_-\times(-\infty,0))\)
 is relatively closed in the punctured cotangent space: each sign component is open and closed there, and each base set is relatively closed in \(X\). It is conic. Apply Theorem 5. Its projection to the base is \(F_+\cup F_-\). The analytic projection theorem proved in the conic lesson identifies this with analytic singular support. Outside the union the distribution is analytic, hence smooth. At any point of the union at least one smooth wavefront direction is present by (16), whereas a smooth function has no such direction by the compact-cutoff integration-by-parts estimate. Thus its smooth singular support is also precisely \(F_+\cup F_-\). In particular the two regularity singular supports coincide for this construction even when the individual positive and negative direction sets differ. \(\square\)
 
+**Exercise 6 — a uniform approximation with derivatives (foundation).** Let \(u_J\) be the first \(J\) terms of (P1). Show that
+\(\max_{|\alpha|\le r}\|\partial^\alpha(u-u_J)\|_\infty\le C_r/J\).
+Does this imply that the limit is smooth?
+
+**Solution.** Sum (P5) over \(j>J\), and use
+\(\sum_{j>J}j^{-2}\le\int_J^\infty t^{-2}\,dt=1/J\).
+There are finitely many multi-indices through order \(r\), so their constants have a finite maximum. The same calculation proves the estimate for (P12). It concerns only the prescribed finite derivative orders. If \(S\ne\varnothing\), Theorem 7 gives a nonempty smooth wavefront, so the limit is not smooth everywhere. A sequence of smooth functions converging with finitely many derivatives need not have a smooth limit. \(\square\)
+
+**Exercise 7 — a point with just one direction (intermediate).** On \(\mathbb R^2\), prescribe the positive multiples of \(e_1\) over the origin and no other singular covectors. Produce a bounded integrable \(C^4\) realization. Explain exactly what changes when cosines replace the complex exponentials.
+
+**Solution.** Take \(r=4\), \(a=14\), \(x_j=0\) and \(\theta_j=e_1\) in (P1). Theorem 7 applies to the closed conic set
+\(S=\{(0,se_1):s>0\}\), and Lemma 6 gives boundedness, integrability and four continuous bounded derivatives. This function is smooth off zero but is not smooth on any neighborhood of zero, since its smooth wavefront there is nonempty. It cannot be real-valued, because (22) would force the negative direction as well.
+
+For the cosine series, the upper bound is \(S\cup(-S)\). The noncancellation proof of Corollary 8 applies at the positive frequencies. The function is real, so (22) supplies the negative frequencies. Its exact smooth wavefront is therefore \(\{(0,se_1):s\ne0\}\); there are no directions with a nonzero second component. \(\square\)
+
+**Exercise 8 — confining the physical support (advanced).** Suppose the projection \(K\) of \(S\) to \(X\) is compact. Given any open \(O\subset X\) containing \(K\), show that a realization in Theorem 7 can be chosen in \(C_c^r(O)\). Give the real-valued version and explain the case \(S=\varnothing\).
+
+**Solution.** Choose a compact smooth \(b\) supported in \(O\) and equal to one on a neighborhood of \(K\). Explicitly, cover \(K\) by finitely many inner balls whose larger closed balls lie in \(O\). The supplied bump construction gives real \(b_\ell=1\) on these inner balls, supported in the larger balls. Then \(b=1-\prod_\ell(1-b_\ell)\) has the required properties. If \(u\) is supplied by Theorem 7, set \(w=bu\), extending by zero outside \(O\) when necessary. It belongs to \(C_c^r(O)\): the support of \(b\) stays inside \(O\), so no boundary derivative is introduced by the extension. Smooth multiplication gives \(\operatorname{WF}(w)\subset\operatorname{WF}(u)=S\). At every base point of \(S\), \(w=u\) on a neighborhood because \(b=1\) there. Locality gives the reverse inclusion. Thus \(\operatorname{WF}(w)=S\). If \(S\) is symmetric, take the real realization of Corollary 8 and a real \(b\). Conversely a real realization still requires symmetry by (22). For empty \(S\), zero has empty support and works even when \(O\) is empty. \(\square\)
+
+
 ## References
 
 - The earlier programme proofs linked above supply kernel continuation, exact boundary growth, the tempered representation converse, wavefront characterization, localization and class comparison. All the selection, summation, geometric exclusion and noncancellation arguments needed for realization are proved here.
 - Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition (1990), Springer, 2003, [doi:10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), Section 8.4, Theorem 8.4.14. This is the simultaneous realization target. The exposition, coefficient variant, uniform continuation argument, examples, figure and exercises here are independently organized and expressed.
+
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second-edition reprint, Springer, 2003, [doi:10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), Theorem 8.1.4 and its continuous-function construction. Lemma 6 and Theorem 7 give the finite-differentiability packet estimates; Corollary 8 gives the real-valued construction.

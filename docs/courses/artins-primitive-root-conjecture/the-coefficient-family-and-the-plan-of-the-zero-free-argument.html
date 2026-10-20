@@ -1,0 +1,258 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The coefficient family and the plan of the zero-free argument</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Artin&#x27;s primitive root conjecture)</a><a href="gauss-sums-and-the-correction-characters.html">Previous lesson</a><a href="cubic-theta-and-its-whittaker-coefficients.html">Next lesson</a><a href="src/the-coefficient-family-and-the-plan-of-the-zero-free-argument.md">Editable source</a></nav><main><article><h1 id="the-coefficient-family-and-the-plan-of-the-zero-free-argument">The coefficient family and the plan of the zero-free argument</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson defines the sums <span class="math" data-tex="\(B_m(Z)\)">\(B_m(Z)\)</span> on which the proof of the zero-free strip rests, states the two estimates that the following lessons prove, and proves the final step: a power saving for one inverse Mellin integral excludes zeros of <span class="math" data-tex="\(L_F(s,\eta)\)">\(L_F(s,\eta)\)</span> from a half-plane. The sums <span class="math" data-tex="\(B_m(Z)\)">\(B_m(Z)\)</span> are smoothed series over ideals <span class="math" data-tex="\(\mathfrak A=\mathfrak c\mathfrak n^3\)">\(\mathfrak A=\mathfrak c\mathfrak n^3\)</span> of cubic Gauss sum coefficients twisted by the sextic symbol <span class="math" data-tex="\(\chi_{\mathfrak A}(m)\)">\(\chi_{\mathfrak A}(m)\)</span>. Lessons 6–10 bound their mean square over a box of rows <span class="math" data-tex="\(m\)">\(m\)</span>. Lessons 11–14 insert them into an additive average, the probe, and evaluate that average by Poisson summation; its main term contains <span class="math" data-tex="\(1/L^S(s,\eta)\)">\(1/L^S(s,\eta)\)</span>. Comparing the upper bound with the evaluation gives the power saving.</p>
+<p><strong>Prerequisites.</strong> <a href="s-integers-and-sixth-power-classes.html"><em>S-integers and sixth-power classes</em></a>, Lemma 2.1 and Lemma 4.1; <a href="sextic-reciprocity-and-kummer-characters.html"><em>Sextic reciprocity and Kummer characters</em></a>, Section 1; <a href="gauss-sums-and-the-correction-characters.html"><em>Gauss sums and the correction characters</em></a>, (3.1), Proposition 5.1 and Lemma 6.1; <a href="../NT-ADL/NT-ADL-10.html"><em>Hecke L-functions and the Dedekind zeta function</em></a>.</p>
+<h2 id="1-incomplete-l-functions">1. Incomplete L-functions</h2>
+<p>Keep <span class="math" data-tex="\(F\supseteq\mu_{12}\)">\(F\supseteq\mu_{12}\)</span>, <span class="math" data-tex="\(S\)">\(S\)</span>, <span class="math" data-tex="\(R\)">\(R\)</span>, <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and the allowed generators of Lessons 2–4. For <span class="math" data-tex="\(\operatorname{Re}s&gt;1\)">\(\operatorname{Re}s&gt;1\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\zeta_F^S(s)=\sum_{\mathfrak a}q_{\mathfrak a}^{-s},\\
+\begin{aligned}
+L^S(s,\eta)&amp;=\prod_{\mathfrak p\notin S}\bigl(1-\eta(\mathfrak p)q_{\mathfrak p}^{-s}\bigr)^{-1},
+\end{aligned}\quad(1.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\zeta_F^S(s)=\sum_{\mathfrak a}q_{\mathfrak a}^{-s},\\
+\begin{aligned}
+L^S(s,\eta)&amp;=\prod_{\mathfrak p\notin S}\bigl(1-\eta(\mathfrak p)q_{\mathfrak p}^{-s}\bigr)^{-1},
+\end{aligned}\quad(1.1)
+\end{gathered}
+\]</span>
+the sums and products being over exterior ideals and primes. The same symbols denote their meromorphic continuations to <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> (<a href="../NT-ADL/NT-ADL-10.html"><em>Hecke L-functions and the Dedekind zeta function</em></a>); <span class="math" data-tex="\(L^S(s,\eta)\)">\(L^S(s,\eta)\)</span> is entire unless <span class="math" data-tex="\(\eta\)">\(\eta\)</span> is principal, when it has a simple pole at <span class="math" data-tex="\(s=1\)">\(s=1\)</span>. It differs from <span class="math" data-tex="\(L_F(s,\eta)\)">\(L_F(s,\eta)\)</span> by the finitely many factors <span class="math" data-tex="\(1-\eta(\mathfrak p)q_{\mathfrak p}^{-s}\)">\(1-\eta(\mathfrak p)q_{\mathfrak p}^{-s}\)</span> with <span class="math" data-tex="\(\mathfrak p\in S\)">\(\mathfrak p\in S\)</span> unramified for <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, whose zeros lie on <span class="math" data-tex="\(\operatorname{Re}s=0\)">\(\operatorname{Re}s=0\)</span>.</p>
+<h2 id="2-a-gaussian-weight">2. A Gaussian weight</h2>
+<p>For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;P_G(t)\\
+&amp;\quad =\frac1{2\sqrt\pi}\exp\Bigl(-\frac{(\log t)^2}4\Bigr).\quad(2.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;P_G(t)\\
+&amp;\quad =\frac1{2\sqrt\pi}\exp\Bigl(-\frac{(\log t)^2}4\Bigr).\quad(2.1)
+\end{aligned}
+\]</span></p>
+<p><strong>Lemma 2.1.</strong> For every <span class="math" data-tex="\(\xi\in\mathbb C\)">\(\xi\in\mathbb C\)</span>, <span class="math" data-tex="\(\int_0^\infty P_G(t)t^\xi\,\frac{dt}t=e^{\xi^2}\)">\(\int_0^\infty P_G(t)t^\xi\,\frac{dt}t=e^{\xi^2}\)</span>. For every real <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> and <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, <span class="math" data-tex="\(P_G(t)\le e^{\sigma^2}t^{-\sigma}\)">\(P_G(t)\le e^{\sigma^2}t^{-\sigma}\)</span>.</p>
+<p><em>Proof.</em> With <span class="math" data-tex="\(v=\log t\)">\(v=\log t\)</span> the integral is <span class="math" data-tex="\(\frac1{2\sqrt\pi}\int_{\mathbb R}e^{-v^2/4+\xi v}\,dv\)">\(\frac1{2\sqrt\pi}\int_{\mathbb R}e^{-v^2/4+\xi v}\,dv\)</span><span class="math" data-tex="\(=\frac{e^{\xi^2}}{2\sqrt\pi}\int_{\mathbb R}e^{-(v-2\xi)^2/4}\,dv=e^{\xi^2}\)">\(=\frac{e^{\xi^2}}{2\sqrt\pi}\int_{\mathbb R}e^{-(v-2\xi)^2/4}\,dv=e^{\xi^2}\)</span>, first for real <span class="math" data-tex="\(\xi\)">\(\xi\)</span> and then for all <span class="math" data-tex="\(\xi\)">\(\xi\)</span> because both sides are entire. The bound follows from <span class="math" data-tex="\(v^2/4\ge\sigma v-\sigma^2\)">\(v^2/4\ge\sigma v-\sigma^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-coefficient-sums">3. The coefficient sums</h2>
+<p>Put <span class="math" data-tex="\(\vartheta=\overline\Lambda\,\overline G\,\eta\)">\(\vartheta=\overline\Lambda\,\overline G\,\eta\)</span> as in Lesson 4. For <span class="math" data-tex="\(m\in R\)">\(m\in R\)</span> and <span class="math" data-tex="\(Z&gt;0\)">\(Z&gt;0\)</span> define
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+B_m(Z)&amp;=\sum_{\substack{\mathfrak c\ \text{squarefree}\\ \mathfrak n}}\frac{\gamma_2(\mathfrak c)}{q_{\mathfrak c}^{1/2}q_{\mathfrak n}}\\
+&amp;\quad \,\vartheta(\mathfrak A)\,\chi_{\mathfrak A}(m)\,P_G\Bigl(\frac{q_{\mathfrak A}}Z\Bigr),
+\end{aligned}\\
+\mathfrak A=\mathfrak c\mathfrak n^3 ,\quad(3.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+B_m(Z)&amp;=\sum_{\substack{\mathfrak c\ \text{squarefree}\\ \mathfrak n}}\frac{\gamma_2(\mathfrak c)}{q_{\mathfrak c}^{1/2}q_{\mathfrak n}}\\
+&amp;\quad \,\vartheta(\mathfrak A)\,\chi_{\mathfrak A}(m)\,P_G\Bigl(\frac{q_{\mathfrak A}}Z\Bigr),
+\end{aligned}\\
+\mathfrak A=\mathfrak c\mathfrak n^3 ,\quad(3.1)
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(\mathfrak c\)">\(\mathfrak c\)</span> runs over squarefree exterior ideals and <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span> over all exterior ideals, possibly sharing primes with <span class="math" data-tex="\(\mathfrak c\)">\(\mathfrak c\)</span>. The symbol <span class="math" data-tex="\(\chi_{\mathfrak A}(m)\)">\(\chi_{\mathfrak A}(m)\)</span> carries the unit mask of Lesson 3, so it vanishes when <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(\mathfrak A\)">\(\mathfrak A\)</span> share a prime.</p>
+<p><strong>Lemma 3.1</strong> ([OpenAI-029, (4.2)–(4.3)]). The series (3.1) converges absolutely, and for every <span class="math" data-tex="\(\sigma&gt;1/2\)">\(\sigma&gt;1/2\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\mathfrak c,\mathfrak n}\Bigl|\frac{\gamma_2(\mathfrak c)}{q_{\mathfrak c}^{1/2}q_{\mathfrak n}}\,P_G\Bigl(\frac{q_{\mathfrak A}}Z\Bigr)\Bigr|\\
+&amp;\quad\le e^{\sigma^2}Z^\sigma\,\zeta_F^S(\sigma+\tfrac12)\\
+&amp;\qquad\times\zeta_F^S(3\sigma+1).\quad(3.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\mathfrak c,\mathfrak n}\Bigl|\frac{\gamma_2(\mathfrak c)}{q_{\mathfrak c}^{1/2}q_{\mathfrak n}}\,P_G\Bigl(\frac{q_{\mathfrak A}}Z\Bigr)\Bigr|\\
+&amp;\quad\le e^{\sigma^2}Z^\sigma\,\zeta_F^S(\sigma+\tfrac12)\\
+&amp;\qquad\times\zeta_F^S(3\sigma+1).\quad(3.2)
+\end{aligned}
+\]</span>
+Moreover <span class="math" data-tex="\(B_0(Z)=P_G(1/Z)\)">\(B_0(Z)=P_G(1/Z)\)</span>.</p>
+<p><em>Proof.</em> For squarefree <span class="math" data-tex="\(\mathfrak c\)">\(\mathfrak c\)</span>, <span class="math" data-tex="\(|\gamma_2(\mathfrak c)|=1\)">\(|\gamma_2(\mathfrak c)|=1\)</span>: by (5.2) of Lesson 4 it is a product of prime Gauss sums of absolute value <span class="math" data-tex="\(1\)">\(1\)</span> and of roots of unity. Lemma 2.1 gives <span class="math" data-tex="\(P_G(q_{\mathfrak A}/Z)\le e^{\sigma^2}Z^\sigma q_{\mathfrak c}^{-\sigma}q_{\mathfrak n}^{-3\sigma}\)">\(P_G(q_{\mathfrak A}/Z)\le e^{\sigma^2}Z^\sigma q_{\mathfrak c}^{-\sigma}q_{\mathfrak n}^{-3\sigma}\)</span>, and the remaining sum is at most <span class="math" data-tex="\(\zeta_F^S(\sigma+1/2)\zeta_F^S(3\sigma+1)\)">\(\zeta_F^S(\sigma+1/2)\zeta_F^S(3\sigma+1)\)</span>, finite for <span class="math" data-tex="\(\sigma&gt;1/2\)">\(\sigma&gt;1/2\)</span>. For <span class="math" data-tex="\(m=0\)">\(m=0\)</span>, <span class="math" data-tex="\(\chi_{\mathfrak A}(0)=0\)">\(\chi_{\mathfrak A}(0)=0\)</span> unless <span class="math" data-tex="\(\mathfrak A=R\)">\(\mathfrak A=R\)</span>, which forces <span class="math" data-tex="\(\mathfrak c=\mathfrak n=R\)">\(\mathfrak c=\mathfrak n=R\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The value of <span class="math" data-tex="\(\vartheta(\mathfrak A)\chi_{\mathfrak A}(m)\)">\(\vartheta(\mathfrak A)\chi_{\mathfrak A}(m)\)</span> does not depend on any choice of generators; the factor <span class="math" data-tex="\(\gamma_2(\mathfrak c)/(q_{\mathfrak c}^{1/2}q_{\mathfrak n})\)">\(\gamma_2(\mathfrak c)/(q_{\mathfrak c}^{1/2}q_{\mathfrak n})\)</span> will be identified in Lesson 6 as the product of the local spherical Whittaker values of a cubic theta function at the idèle with components <span class="math" data-tex="\(A=cn^3\)">\(A=cn^3\)</span>.</p>
+<h2 id="4-scales-rows-and-their-two-parts">4. Scales, rows and their two parts</h2>
+<p>The comparison uses the exponents
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a=\frac9{10},\qquad b=\frac{133}{1000},\\
+M_0=a+b=\frac{1033}{1000},\\
+h_0=1-a=\frac1{10},\\
+X=Z^a,\qquad Y=Z^b .\quad(4.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+a=\frac9{10},\qquad b=\frac{133}{1000},\\
+M_0=a+b=\frac{1033}{1000},\\
+h_0=1-a=\frac1{10},\\
+X=Z^a,\qquad Y=Z^b .\quad(4.1)
+\end{gathered}
+\]</span>
+For a compact set <span class="math" data-tex="\(\mathscr K\subset F_S^\times\)">\(\mathscr K\subset F_S^\times\)</span> put
+<span class="math math-display" data-tex="\[
+\mathscr B_Z(\mathscr K)=R\cap\ell_{Z^{M_0}}\mathscr K ,
+\]">\[
+\mathscr B_Z(\mathscr K)=R\cap\ell_{Z^{M_0}}\mathscr K ,
+\]</span>
+with <span class="math" data-tex="\(\ell_T\)">\(\ell_T\)</span> as in Lesson 2. On this set every local absolute value of <span class="math" data-tex="\(\ell_{Z^{M_0}}^{-1}m\)">\(\ell_{Z^{M_0}}^{-1}m\)</span> is bounded above and away from zero; in particular <span class="math" data-tex="\(q_{(m)}\asymp_{\mathscr K}Z^{M_0}\)">\(q_{(m)}\asymp_{\mathscr K}Z^{M_0}\)</span>. For <span class="math" data-tex="\(m\ne0\)">\(m\ne0\)</span> factor its exterior ideal as
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(m)_S=\mathfrak h(m)\,\mathfrak d(m),\\
+\mathfrak h(m)=\prod_{v_{\mathfrak p}(m)\ge2}\mathfrak p^{v_{\mathfrak p}(m)},\\
+\mathfrak d(m)=\prod_{v_{\mathfrak p}(m)=1}\mathfrak p .\quad(4.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+(m)_S=\mathfrak h(m)\,\mathfrak d(m),\\
+\mathfrak h(m)=\prod_{v_{\mathfrak p}(m)\ge2}\mathfrak p^{v_{\mathfrak p}(m)},\\
+\mathfrak d(m)=\prod_{v_{\mathfrak p}(m)=1}\mathfrak p .\quad(4.2)
+\end{gathered}
+\]</span>
+The ideal <span class="math" data-tex="\(\mathfrak d(m)\)">\(\mathfrak d(m)\)</span> is squarefree and prime to <span class="math" data-tex="\(\mathfrak h(m)\)">\(\mathfrak h(m)\)</span>, and every exponent of <span class="math" data-tex="\(\mathfrak h(m)\)">\(\mathfrak h(m)\)</span> is at least <span class="math" data-tex="\(2\)">\(2\)</span>: <span class="math" data-tex="\(\mathfrak h(m)\)">\(\mathfrak h(m)\)</span> is <strong>powerful</strong>.</p>
+<p><strong>Proposition 4.1</strong> (the reflected second moment [OpenAI-029, Proposition 4.1]). Fix a compact set <span class="math" data-tex="\(\mathscr K\subset F_S^\times\)">\(\mathscr K\subset F_S^\times\)</span>. For every <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>, every <span class="math" data-tex="\(Z\ge2\)">\(Z\ge2\)</span> and all <span class="math" data-tex="\(P,D\ge1\)">\(P,D\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\substack{m\in\mathscr B_Z(\mathscr K)\\ P\le q_{\mathfrak h(m)}&lt;2P\\ D\le q_{\mathfrak d(m)}&lt;2D}}|B_m(Z)|^2\\
+&amp;\quad \ll_{\mathscr K,\epsilon}Z^\epsilon P^{1/2}\Bigl(D+\frac{D^2P}Z\Bigr),\quad(4.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\substack{m\in\mathscr B_Z(\mathscr K)\\ P\le q_{\mathfrak h(m)}&lt;2P\\ D\le q_{\mathfrak d(m)}&lt;2D}}|B_m(Z)|^2\\
+&amp;\quad \ll_{\mathscr K,\epsilon}Z^\epsilon P^{1/2}\Bigl(D+\frac{D^2P}Z\Bigr),\quad(4.3)
+\end{aligned}
+\]</span>
+and consequently
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{m\in\mathscr B_Z(\mathscr K)}|B_m(Z)|^2\\
+&amp;\quad \ll_{\mathscr K,\epsilon}Z^{2M_0-1+\epsilon}.\quad(4.4)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{m\in\mathscr B_Z(\mathscr K)}|B_m(Z)|^2\\
+&amp;\quad \ll_{\mathscr K,\epsilon}Z^{2M_0-1+\epsilon}.\quad(4.4)
+\end{aligned}
+\]</span>
+The estimate is uniform when <span class="math" data-tex="\(\mathscr K\)">\(\mathscr K\)</span> is multiplied by an element of a fixed compact subset of <span class="math" data-tex="\(F_S^1\)">\(F_S^1\)</span>.</p>
+<p>Lessons 6–10 prove Proposition 4.1. The deduction of (4.4) from (4.3) is short: a nonempty dyad has <span class="math" data-tex="\(P,D\ge1\)">\(P,D\ge1\)</span> and <span class="math" data-tex="\(PD\ll Z^{M_0}\)">\(PD\ll Z^{M_0}\)</span>, so <span class="math" data-tex="\(P^{1/2}D\le PD\ll Z^{M_0}\le Z^{2M_0-1}\)">\(P^{1/2}D\le PD\ll Z^{M_0}\le Z^{2M_0-1}\)</span> (as <span class="math" data-tex="\(M_0&gt;1\)">\(M_0&gt;1\)</span>) and <span class="math" data-tex="\(P^{1/2}D^2P/Z=(PD)^2/(ZP^{1/2})\)">\(P^{1/2}D^2P/Z=(PD)^2/(ZP^{1/2})\)</span><span class="math" data-tex="\(\ll Z^{2M_0-1}\)">\(\ll Z^{2M_0-1}\)</span>; there are <span class="math" data-tex="\(O((\log Z)^2)\)">\(O((\log Z)^2)\)</span> dyads.</p>
+<h2 id="5-the-probe-and-its-two-evaluations">5. The probe and its two evaluations</h2>
+<p>Lesson 11 defines, for weights <span class="math" data-tex="\(W_0,W_1\)">\(W_0,W_1\)</span> fixed there, an average
+<span class="math math-display" data-tex="\[
+I_Z=I(Z^a,Z^b,Z)
+\]">\[
+I_Z=I(Z^a,Z^b,Z)
+\]</span>
+which pairs <span class="math" data-tex="\(B_m(Z)\)">\(B_m(Z)\)</span>, for <span class="math" data-tex="\(m\)">\(m\)</span> in a compact annular box of norm <span class="math" data-tex="\(\asymp XY=Z^{M_0}\)">\(\asymp XY=Z^{M_0}\)</span>, with a normalized sum of <span class="math" data-tex="\(\chi_{\mathfrak s}(d)\,\mathrm e(-md/s)\)">\(\chi_{\mathfrak s}(d)\,\mathrm e(-md/s)\)</span> over exterior ideals <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span> of norm <span class="math" data-tex="\(\asymp Y\)">\(\asymp Y\)</span> and residues <span class="math" data-tex="\(d\)">\(d\)</span> modulo <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span>. The rest of the proof consists of three statements.</p>
+<ul>
+<li><strong>(P1)</strong> (Lesson 11) For every <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>, <span class="math" data-tex="\(I_Z\ll Z^{(2M_0-1-b)/2+\epsilon}=Z^{933/2000+\epsilon}\)">\(I_Z\ll Z^{(2M_0-1-b)/2+\epsilon}=Z^{933/2000+\epsilon}\)</span>. The additive factor has squared mass <span class="math" data-tex="\(O(Y^{-1})\)">\(O(Y^{-1})\)</span> over the rows, by a large sieve for additive fractions; with (4.4) and Cauchy–Schwarz this gives (P1).</li>
+<li><strong>(P2)</strong> (Lessons 11–14) There is a constant <span class="math" data-tex="\(c_0\ne0\)">\(c_0\ne0\)</span> such that, for large <span class="math" data-tex="\(Z\)">\(Z\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+I_Z&amp;=c_0f_\eta(Z)\\
+&amp;\quad +O\bigl(Z^{7/15-0.0004}\bigr),
+\end{aligned}\\
+\begin{aligned}
+f_\eta(Z)&amp;=\frac1{2\pi i}\int_{(2)}Z^{s-8/15}\\
+&amp;\quad e^{(s-5/6)^2}\,\frac{\mathcal H_\eta(s)}{L^S(s,\eta)}\\
+&amp;\quad \,ds .
+\end{aligned}\quad(5.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+I_Z&amp;=c_0f_\eta(Z)\\
+&amp;\quad +O\bigl(Z^{7/15-0.0004}\bigr),
+\end{aligned}\\
+\begin{aligned}
+f_\eta(Z)&amp;=\frac1{2\pi i}\int_{(2)}Z^{s-8/15}\\
+&amp;\quad e^{(s-5/6)^2}\,\frac{\mathcal H_\eta(s)}{L^S(s,\eta)}\\
+&amp;\quad \,ds .
+\end{aligned}\quad(5.1)
+\end{gathered}
+\]</span></li>
+<li><strong>(H)</strong> (Lesson 12) The function <span class="math" data-tex="\(\mathcal H_\eta\)">\(\mathcal H_\eta\)</span>, an Euler product of local corrections, is holomorphic, bounded and nowhere zero on an open neighbourhood of the closed half-plane <span class="math" data-tex="\(\operatorname{Re}s\ge0.998\)">\(\operatorname{Re}s\ge0.998\)</span>, uniformly in the height.</li>
+</ul>
+<p>The exponent <span class="math" data-tex="\(s-8/15\)">\(s-8/15\)</span> in (5.1) is <span class="math" data-tex="\(a/2+s-1+h_0/6\)">\(a/2+s-1+h_0/6\)</span>; at <span class="math" data-tex="\(s=1\)">\(s=1\)</span> it is <span class="math" data-tex="\(7/15\)">\(7/15\)</span>. The reflection exponent is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\frac{2M_0-1-b}2&amp;=\frac{933}{2000}\\
+&amp;=\frac7{15}-\frac1{6000}.\quad(5.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\frac{2M_0-1-b}2&amp;=\frac{933}{2000}\\
+&amp;=\frac7{15}-\frac1{6000}.\quad(5.2)
+\end{aligned}
+\]</span>
+So (P1) and (P2) together give, for large <span class="math" data-tex="\(Z\)">\(Z\)</span>,
+<span class="math math-display" data-tex="\[
+f_\eta(Z)\ll Z^{7/15-1/20000},
+\tag{5.3}
+\]">\[
+f_\eta(Z)\ll Z^{7/15-1/20000},
+\tag{5.3}
+\]</span>
+using (P1) with <span class="math" data-tex="\(\epsilon=10^{-5}\)">\(\epsilon=10^{-5}\)</span> and <span class="math" data-tex="\(1/6000-10^{-5}&gt;1/20000\)">\(1/6000-10^{-5}&gt;1/20000\)</span>, and <span class="math" data-tex="\(0.0004&gt;1/20000\)">\(0.0004&gt;1/20000\)</span>.</p>
+<h2 id="6-from-a-power-saving-to-a-zero-free-half-plane">6. From a power saving to a zero-free half-plane</h2>
+<p><strong>Proposition 6.1</strong> (Mellin continuation [OpenAI-029, Section 8.3]). Let <span class="math" data-tex="\(\delta_1&gt;0\)">\(\delta_1&gt;0\)</span> and let <span class="math" data-tex="\(\mathcal H\)">\(\mathcal H\)</span> be holomorphic, bounded and nowhere zero on an open set containing the closed half-plane <span class="math" data-tex="\(\operatorname{Re}s\ge1-\delta_1\)">\(\operatorname{Re}s\ge1-\delta_1\)</span>. For real <span class="math" data-tex="\(c,s_0\)">\(c,s_0\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+f(Z)&amp;=\frac1{2\pi i}\int_{(2)}Z^{s-c}e^{(s-s_0)^2}\\
+&amp;\quad \,\frac{\mathcal H(s)}{L^S(s,\eta)}\,ds
+\end{aligned}\\
+(Z&gt;0).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+f(Z)&amp;=\frac1{2\pi i}\int_{(2)}Z^{s-c}e^{(s-s_0)^2}\\
+&amp;\quad \,\frac{\mathcal H(s)}{L^S(s,\eta)}\,ds
+\end{aligned}\\
+(Z&gt;0).
+\end{gathered}
+\]</span>
+If <span class="math" data-tex="\(0&lt;\delta\le\delta_1\)">\(0&lt;\delta\le\delta_1\)</span> and <span class="math" data-tex="\(f(Z)\ll Z^{1-c-\delta}\)">\(f(Z)\ll Z^{1-c-\delta}\)</span> for all large <span class="math" data-tex="\(Z\)">\(Z\)</span>, then <span class="math" data-tex="\(L^S(s,\eta)\)">\(L^S(s,\eta)\)</span> and <span class="math" data-tex="\(L_F(s,\eta)\)">\(L_F(s,\eta)\)</span> have no zero in <span class="math" data-tex="\(\operatorname{Re}s&gt;1-\delta\)">\(\operatorname{Re}s&gt;1-\delta\)</span>.</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(\mathscr A(s)=e^{(s-s_0)^2}\mathcal H(s)/L^S(s,\eta)\)">\(\mathscr A(s)=e^{(s-s_0)^2}\mathcal H(s)/L^S(s,\eta)\)</span>. For <span class="math" data-tex="\(\operatorname{Re}s=\sigma&gt;1\)">\(\operatorname{Re}s=\sigma&gt;1\)</span>, the Euler product gives <span class="math" data-tex="\(|1/L^S(s,\eta)|\le\prod_{\mathfrak p}(1+q_{\mathfrak p}^{-\sigma})\le\zeta_F(\sigma)\)">\(|1/L^S(s,\eta)|\le\prod_{\mathfrak p}(1+q_{\mathfrak p}^{-\sigma})\le\zeta_F(\sigma)\)</span>, and <span class="math" data-tex="\(|e^{(s-s_0)^2}|=e^{(\sigma-s_0)^2-(\operatorname{Im}s)^2}\)">\(|e^{(s-s_0)^2}|=e^{(\sigma-s_0)^2-(\operatorname{Im}s)^2}\)</span>. So <span class="math" data-tex="\(\mathscr A\)">\(\mathscr A\)</span> is holomorphic on <span class="math" data-tex="\(\operatorname{Re}s&gt;1\)">\(\operatorname{Re}s&gt;1\)</span> and decays like a Gaussian on vertical lines there, uniformly on compact ranges of <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>.</p>
+<p><em>Small <span class="math" data-tex="\(Z\)">\(Z\)</span>.</em> The line of integration may be moved from <span class="math" data-tex="\(2\)">\(2\)</span> to any <span class="math" data-tex="\(\sigma_R&gt;2\)">\(\sigma_R&gt;2\)</span>, the horizontal segments vanishing by the Gaussian decay. On the new line <span class="math" data-tex="\(|Z^{s-c}|=Z^{\sigma_R-c}\)">\(|Z^{s-c}|=Z^{\sigma_R-c}\)</span>. Hence <span class="math" data-tex="\(f(Z)=O_{A}(Z^{A})\)">\(f(Z)=O_{A}(Z^{A})\)</span> for <span class="math" data-tex="\(0&lt;Z\le1\)">\(0&lt;Z\le1\)</span> and every <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>.</p>
+<p><em>The transform.</em> By the two bounds, <span class="math" data-tex="\(\mathcal T(s)=\int_0^\infty f(Z)Z^{c-s}\,\frac{dZ}Z\)">\(\mathcal T(s)=\int_0^\infty f(Z)Z^{c-s}\,\frac{dZ}Z\)</span> converges absolutely and locally uniformly on <span class="math" data-tex="\(\operatorname{Re}s&gt;1-\delta\)">\(\operatorname{Re}s&gt;1-\delta\)</span>: at infinity the integrand is <span class="math" data-tex="\(O(Z^{1-\delta-\operatorname{Re}s})\)">\(O(Z^{1-\delta-\operatorname{Re}s})\)</span>, and at zero it is <span class="math" data-tex="\(O(Z^A)\)">\(O(Z^A)\)</span> for every <span class="math" data-tex="\(A\)">\(A\)</span>. So <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> is holomorphic there.</p>
+<p><em>Identification.</em> With <span class="math" data-tex="\(Z=e^t\)">\(Z=e^t\)</span> and <span class="math" data-tex="\(s=2+i\tau\)">\(s=2+i\tau\)</span>, the definition of <span class="math" data-tex="\(f\)">\(f\)</span> reads
+<span class="math math-display" data-tex="\[
+e^{-(2-c)t}f(e^t)=\frac1{2\pi}\int_{\mathbb R}e^{i\tau t}\mathscr A(2+i\tau)\,d\tau .
+\]">\[
+e^{-(2-c)t}f(e^t)=\frac1{2\pi}\int_{\mathbb R}e^{i\tau t}\mathscr A(2+i\tau)\,d\tau .
+\]</span>
+The function <span class="math" data-tex="\(\tau\mapsto\mathscr A(2+i\tau)\)">\(\tau\mapsto\mathscr A(2+i\tau)\)</span> is continuous and rapidly decreasing, and the left side is integrable in <span class="math" data-tex="\(t\)">\(t\)</span> by the bounds on <span class="math" data-tex="\(f\)">\(f\)</span>. Fourier inversion gives <span class="math" data-tex="\(\mathcal T(2+i\tau)=\mathscr A(2+i\tau)\)">\(\mathcal T(2+i\tau)=\mathscr A(2+i\tau)\)</span> for all real <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Both functions are holomorphic on <span class="math" data-tex="\(\operatorname{Re}s&gt;1\)">\(\operatorname{Re}s&gt;1\)</span>, so they agree there. On <span class="math" data-tex="\(\operatorname{Re}s&gt;1-\delta\)">\(\operatorname{Re}s&gt;1-\delta\)</span> the function <span class="math" data-tex="\(\mathscr A\)">\(\mathscr A\)</span> is meromorphic, by the continuation of <span class="math" data-tex="\(L^S(s,\eta)\)">\(L^S(s,\eta)\)</span>, and agrees with the holomorphic <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> on an open subset of this connected half-plane; so <span class="math" data-tex="\(\mathscr A\)">\(\mathscr A\)</span> has no pole there.</p>
+<p><em>Conclusion.</em> If <span class="math" data-tex="\(L^S(s_1,\eta)=0\)">\(L^S(s_1,\eta)=0\)</span> with <span class="math" data-tex="\(\operatorname{Re}s_1&gt;1-\delta\)">\(\operatorname{Re}s_1&gt;1-\delta\)</span>, then <span class="math" data-tex="\(s_1\)">\(s_1\)</span> is a pole of <span class="math" data-tex="\(\mathscr A\)">\(\mathscr A\)</span>, because <span class="math" data-tex="\(e^{(s-s_0)^2}\mathcal H(s)\)">\(e^{(s-s_0)^2}\mathcal H(s)\)</span> does not vanish there; this is impossible. A pole of <span class="math" data-tex="\(L^S\)">\(L^S\)</span> at <span class="math" data-tex="\(s=1\)">\(s=1\)</span> only makes <span class="math" data-tex="\(\mathscr A\)">\(\mathscr A\)</span> vanish. Finally <span class="math" data-tex="\(L_F(s,\eta)\)">\(L_F(s,\eta)\)</span> differs from <span class="math" data-tex="\(L^S(s,\eta)\)">\(L^S(s,\eta)\)</span> by finitely many factors <span class="math" data-tex="\(1-\eta(\mathfrak p)q_{\mathfrak p}^{-s}\)">\(1-\eta(\mathfrak p)q_{\mathfrak p}^{-s}\)</span> with <span class="math" data-tex="\(|\eta(\mathfrak p)|=1\)">\(|\eta(\mathfrak p)|=1\)</span>, whose zeros have real part <span class="math" data-tex="\(0\)">\(0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 6.2.</strong> Statements (P1), (P2) and (H) imply Theorem 5.3 of <a href="artins-conjecture-and-the-index-of-a-prime.html"><em>Artin's conjecture and the index of a prime</em></a>: <span class="math" data-tex="\(L_F(s,\eta)\)">\(L_F(s,\eta)\)</span> has no zero in <span class="math" data-tex="\(\operatorname{Re}s&gt;1-1/20000\)">\(\operatorname{Re}s&gt;1-1/20000\)</span>, in particular none in <span class="math" data-tex="\(\operatorname{Re}s&gt;1-10^{-6}\)">\(\operatorname{Re}s&gt;1-10^{-6}\)</span>.</p>
+<p><em>Proof.</em> Apply Proposition 6.1 with <span class="math" data-tex="\(c=8/15\)">\(c=8/15\)</span>, <span class="math" data-tex="\(s_0=5/6\)">\(s_0=5/6\)</span>, <span class="math" data-tex="\(\mathcal H=\mathcal H_\eta\)">\(\mathcal H=\mathcal H_\eta\)</span>, <span class="math" data-tex="\(\delta_1=0.002\)">\(\delta_1=0.002\)</span> and <span class="math" data-tex="\(\delta=1/20000\)">\(\delta=1/20000\)</span>, using (5.3) and (H); note <span class="math" data-tex="\(1-c-\delta=7/15-1/20000\)">\(1-c-\delta=7/15-1/20000\)</span>. The field <span class="math" data-tex="\(F\)">\(F\)</span> and the character <span class="math" data-tex="\(\eta\)">\(\eta\)</span> were arbitrary, and the number <span class="math" data-tex="\(1/20000\)">\(1/20000\)</span> does not depend on them. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>All constants and the points from which (P1), (P2) and (5.3) hold may depend on <span class="math" data-tex="\(F\)">\(F\)</span>, <span class="math" data-tex="\(S\)">\(S\)</span>, <span class="math" data-tex="\(\eta\)">\(\eta\)</span> and the weights; only the numerical saving <span class="math" data-tex="\(1/20000\)">\(1/20000\)</span> is uniform, and that is all Corollary 6.2 needs.</p>
+<h2 id="7-a-map-of-lessons-6-14">7. A map of Lessons 6–14</h2>
+<ul>
+<li><strong>Lesson 6</strong> introduces the cubic theta representation of Kazhdan and Patterson and computes its local Whittaker functions; their product at <span class="math" data-tex="\(A=cn^3\)">\(A=cn^3\)</span> is the coefficient in (3.1).</li>
+<li><strong>Lesson 7</strong> chooses the components at <span class="math" data-tex="\(S\)">\(S\)</span>, bounds the integrals over sets of fixed norm, and constructs a kernel that turns the archimedean Whittaker profile into exactly <span class="math" data-tex="\(P_G\)">\(P_G\)</span>.</li>
+<li><strong>Lesson 8</strong> writes <span class="math" data-tex="\(B_m(Z)\)">\(B_m(Z)\)</span> as an average of the theta function over a torus orbit, with the twist <span class="math" data-tex="\(\chi_{\mathfrak A}(m)\)">\(\chi_{\mathfrak A}(m)\)</span> inserted by unipotent translations.</li>
+<li><strong>Lesson 9</strong> applies the rational Weyl element, which reflects the norm and turns the moving twist into a quadratic symbol <span class="math" data-tex="\(\chi_{\mathfrak d}(c&#x27;)^3\)">\(\chi_{\mathfrak d}(c&#x27;)^3\)</span> between a row prime and a column prime.</li>
+<li><strong>Lesson 10</strong> bounds the reflected sums with the quadratic large sieve over number fields and proves Proposition 4.1.</li>
+<li><strong>Lesson 11</strong> defines the probe, proves (P1), and applies Poisson summation, which produces three Mellin variables and a Dirichlet series indexed by frequencies <span class="math" data-tex="\(ur^6\)">\(ur^6\)</span>.</li>
+<li><strong>Lesson 12</strong> factors that Dirichlet series as <span class="math" data-tex="\(\zeta_F^S(6z)L^S(w,\chi_\bullet(u))\,\mathcal H_u\)">\(\zeta_F^S(6z)L^S(w,\chi_\bullet(u))\,\mathcal H_u\)</span><span class="math" data-tex="\(/L^S(\xi,\eta\overline{\chi_\bullet(u)})\)">\(/L^S(\xi,\eta\overline{\chi_\bullet(u)})\)</span> and proves (H).</li>
+<li><strong>Lesson 13</strong> bounds the inverse <span class="math" data-tex="\(L\)">\(L\)</span>-functions of the other frequencies by a conductor large sieve and zero detection.</li>
+<li><strong>Lesson 14</strong> isolates the double residue of the principal frequency, bounds everything else, and proves (P2).</li>
+</ul>
+<h2 id="8-exercises">8. Exercises</h2>
+<p><strong>8.1.</strong> Compute <span class="math" data-tex="\(\int_0^\infty P_G(t)\,\frac{dt}t\)">\(\int_0^\infty P_G(t)\,\frac{dt}t\)</span> and <span class="math" data-tex="\(\int_0^\infty P_G(t)\,dt\)">\(\int_0^\infty P_G(t)\,dt\)</span>.</p>
+<p><strong>8.2.</strong> Show that every powerful ideal has a unique expression <span class="math" data-tex="\(\mathfrak r^2\mathfrak s^3\)">\(\mathfrak r^2\mathfrak s^3\)</span> with <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span> squarefree, and deduce that the number of powerful exterior ideals of norm less than <span class="math" data-tex="\(2P\)">\(2P\)</span> is <span class="math" data-tex="\(O(P^{1/2})\)">\(O(P^{1/2})\)</span>.</p>
+<p><strong>8.3.</strong> Check the arithmetic <span class="math" data-tex="\(a/2+1-1+h_0/6=7/15\)">\(a/2+1-1+h_0/6=7/15\)</span> and <span class="math" data-tex="\((2M_0-1-b)/2=933/2000\)">\((2M_0-1-b)/2=933/2000\)</span><span class="math" data-tex="\(=7/15-1/6000\)">\(=7/15-1/6000\)</span>.</p>
+<p><strong>8.4.</strong> In Proposition 6.1, suppose only that <span class="math" data-tex="\(f(Z)\ll Z^{1-c}\)">\(f(Z)\ll Z^{1-c}\)</span>. What does the proof give?</p>
+<h2 id="9-solutions">9. Solutions</h2>
+<p><strong>8.1.</strong> Lemma 2.1 with <span class="math" data-tex="\(\xi=0\)">\(\xi=0\)</span> gives <span class="math" data-tex="\(1\)">\(1\)</span>; with <span class="math" data-tex="\(\xi=1\)">\(\xi=1\)</span> it gives <span class="math" data-tex="\(e\)">\(e\)</span>.</p>
+<p><strong>8.2.</strong> For a prime exponent <span class="math" data-tex="\(e\ge2\)">\(e\ge2\)</span>, write <span class="math" data-tex="\(e=2r+3s\)">\(e=2r+3s\)</span> with <span class="math" data-tex="\(s\in\{0,1\}\)">\(s\in\{0,1\}\)</span> equal to the parity of <span class="math" data-tex="\(e\)">\(e\)</span>; this is possible and unique since <span class="math" data-tex="\(e-3s\)">\(e-3s\)</span> is then even and nonnegative. The number of <span class="math" data-tex="\(\mathfrak r^2\mathfrak s^3\)">\(\mathfrak r^2\mathfrak s^3\)</span> of norm less than <span class="math" data-tex="\(2P\)">\(2P\)</span> is at most <span class="math" data-tex="\(\sum_{\mathfrak s}\#\{\mathfrak r:q_{\mathfrak r}&lt;(2P)^{1/2}q_{\mathfrak s}^{-3/2}\}\)">\(\sum_{\mathfrak s}\#\{\mathfrak r:q_{\mathfrak r}&lt;(2P)^{1/2}q_{\mathfrak s}^{-3/2}\}\)</span><span class="math" data-tex="\(\ll P^{1/2}\sum_{\mathfrak s}q_{\mathfrak s}^{-3/2}\ll P^{1/2}\)">\(\ll P^{1/2}\sum_{\mathfrak s}q_{\mathfrak s}^{-3/2}\ll P^{1/2}\)</span>, using that there are <span class="math" data-tex="\(O(t)\)">\(O(t)\)</span> ideals of norm at most <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p><strong>8.3.</strong> <span class="math" data-tex="\(9/20+1/60=27/60+1/60\)">\(9/20+1/60=27/60+1/60\)</span><span class="math" data-tex="\(=28/60=7/15\)">\(=28/60=7/15\)</span>. <span class="math" data-tex="\(2M_0-1-b=2.066-1-0.133\)">\(2M_0-1-b=2.066-1-0.133\)</span><span class="math" data-tex="\(=0.933\)">\(=0.933\)</span>, and <span class="math" data-tex="\(7/15-933/2000\)">\(7/15-933/2000\)</span><span class="math" data-tex="\(=(2800-2799)/6000=1/6000\)">\(=(2800-2799)/6000=1/6000\)</span>.</p>
+<p><strong>8.4.</strong> The transform converges on <span class="math" data-tex="\(\operatorname{Re}s&gt;1\)">\(\operatorname{Re}s&gt;1\)</span> only, and no zero is excluded; the argument needs a genuine power saving <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-029] OpenAI, <em>Primitive roots for every admissible integer base</em>, OpenAI Math Release preprint, 4 October 2026, Sections 4 and 8. https://github.com/openai/math/tree/main/preprints/Primitive-roots-for-every-admissible-integer-base-October-4-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

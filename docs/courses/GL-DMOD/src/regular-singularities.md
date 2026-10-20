@@ -33877,6 +33877,2766 @@ AD.A–AD.E prove the stated comparisons and cusp construction
 with the exact earlier programme dependencies above.
 
 
+### 5.75. Diagonal reconstruction of meromorphic D-type modules
+
+Let \(X\) be a complex manifold of dimension \(n\).
+Write \(B_X=D_X^\infty\) for the actual ordinary infinite-order
+ring, with its every-epsilon coefficient bounds on one common
+holomorphic domain. All its module tensors below are ordinary
+algebraic sheaf tensors.
+
+The ordinary diagonal kernel and its actual residue product are
+proved in
+§5.44, IK.4 and OR.1–OR.4.
+The actual right flatness
+\[
+B_X\ \text{is right flat over }\mathcal D_X
+\tag{PD.1}
+\]
+is §5.47, MF.6–MF.7.
+These results include the full positive head and finite
+matrix relations. No completion of a module tensor is made.
+
+We prove a reconstruction using relative de Rham complexes with
+holomorphic parameters. For finite divisorial D-type modules
+it gives the actual infinity/function comparison whenever a
+proper locally projective SNC modification of the pair is
+supplied. Analytic existence of such a modification remains a
+hypothesis.
+
+#### PD.A. Analytic exterior coefficients and the derived diagonal
+
+Let \(A\) be a parameter polydisc. For a coherent finite
+\(\mathcal D_Y\)-module \(M\), define its analytic exterior
+coefficient extension by
+\[
+\begin{gathered}
+M^{[A]}=
+\mathcal O_{A\times Y}
+\otimes_{p_Y^{-1}\mathcal O_Y}p_Y^{-1}M,\\
+p_Y:A\times Y\longrightarrow Y.
+\end{gathered}
+\tag{PD.2}
+\]
+Its coefficients are joint holomorphic functions.
+It has the usual connection in the parameter directions,
+as well as the \(Y\)-operator action.
+
+The coefficient extension in PD.2 is flat.
+At a coordinate point put \(H=\mathbf C\{y\}\).
+The map
+\[
+\begin{gathered}
+H\longrightarrow H[a]_{(\mathfrak m_H,a)}\\
+\longrightarrow\mathbf C\{y,a\}.
+\end{gathered}
+\tag{PD.3}
+\]
+is a polynomial extension followed by localization and
+the faithfully flat relative analytification of
+GL06, Lemma3.0c.1.
+Both maps are flat; thus PD.2 is exact on stalks.
+The case of no parameters is the identity.
+
+Let \(A=X\), \(Y=X\), and distinguish output \(x\) and input
+\(y\). Put
+\[
+\begin{gathered}
+\Delta=\{y=x\}\subset X\times X,\\
+\delta:X\hookrightarrow X\times X,\\
+\operatorname{DR}^0_y(M^{[X]})=\\
+\bigl[\Omega^\bullet_{X\times X/X}
+\otimes M^{[X]}\bigr].
+\end{gathered}
+\tag{PD.4}
+\]
+Relative forms are in degrees \(0,\ldots,n\), with the
+unshifted \(y\)-connection differential.
+Here \(R\Gamma_\Delta\) is ordinary derived
+sheaf support on the closed diagonal, applied
+to complexes of complex-vector-space sheaves.
+It is not the finite-pole local cohomology
+defined by a union of annihilators of powers
+of the diagonal ideal.
+There is a natural derived identity
+\[
+\begin{gathered}
+B_X\otimes_{\mathcal D_X}^L M\\
+\simeq\delta^{-1}R\Gamma_\Delta\\
+\bigl(\operatorname{DR}^0_y(M^{[X]})\bigr)[2n].
+\end{gathered}
+\tag{PD.5}
+\]
+For a module the left side is concentrated in degree zero
+by PD.1. This is an identity of actual ordinary module
+extensions.
+
+We prove the derived identity, including its two shifts.
+On \(X\times Y\), let
+\[
+\mathcal C=\mathcal O_{X\times Y}
+\otimes_{p_Y^{-1}\mathcal O_Y}p_Y^{-1}\omega_Y.
+\tag{PD.6}
+\]
+It is a right \(p_Y^{-1}\mathcal D_Y\)-module by negative
+Lie derivative in \(y\). In a constant input volume frame,
+\[
+(g\,dy)\partial_{y_i}=-(\partial_{y_i}g)\,dy.
+\tag{PD.7}
+\]
+Choose a finite free left operator resolution \(P^\bullet\)
+of \(M\) on one input neighbourhood, using GL06,
+Theorem3.0c. Its length and every matrix size are finite.
+The relative right Spencer calculation, with PD.3's flat
+coefficient extension, gives
+\[
+\begin{gathered}
+\mathcal C\otimes_{p_Y^{-1}\mathcal D_Y}^L p_Y^{-1}M\\
+\simeq\operatorname{DR}^0_y(M^{[X]})[n].
+\end{gathered}
+\tag{PD.8}
+\]
+The normalized shift and the negative input density action
+are precisely those of the de Rham lesson, Proposition1.1,
+and §5.74, AD.1–AD.2. Both sides of PD.8 can be computed
+by the finite complex \(\mathcal C\otimes P^\bullet\).
+
+The ordinary diagonal calculation has its derived form
+\[
+\begin{gathered}
+\mathcal H^q_\Delta(\mathcal C)=0\quad(q\ne n),\\
+\delta^{-1}\mathcal H^n_\Delta(\mathcal C)=B_X.
+\end{gathered}
+\tag{PD.9}
+\]
+Here is the concentration assertion in the same actual
+coordinate cube, rather than a formal support convention.
+Set \(w=y-x\), and use the finite puncture cover indexed
+by the coordinates with \(w_i\ne0\).
+OC.1–OC.3 in §5.44 proves that the holomorphic row computes
+the actual supported derived object.
+On the face with puncture set \(J\), Laurent projection
+decomposes a holomorphic coefficient into the finitely
+many sectors with negative-coordinate set \(I\subseteq J\).
+The Cauchy projections realize this decomposition on
+smaller annuli and products, with normal convergence.
+For a fixed \(I\), the face complex has entries precisely
+for \(J\supseteq I\).
+If \(I\ne\{1,\ldots,n\}\), choose the least coordinate
+outside \(I\). Inserting and removing this coordinate
+with the cube's alternating incidence sign gives a
+contraction: the two operations in that coordinate sum
+to the identity, while their crosses with every other
+coordinate cancel.
+If \(I\) is the full set, only the top face remains,
+in degree \(n\).
+This proves the vanishing in PD.9.
+
+The surviving coefficient is the actual IK.12 kernel
+\[
+\begin{gathered}
+\kappa(P)=\frac1{(2\pi i)^n}\sum_{\alpha\ge0}\\
+a_\alpha(x)\frac{\alpha!}{(y-x)^{\alpha+\mathbf1}}\,dy,\\
+P=\sum_{\alpha\ge0}a_\alpha(x)\partial_x^\alpha.
+\end{gathered}
+\tag{PD.10}
+\]
+Its common-domain Cauchy bounds and all fixed derivatives
+are exactly IK.13 and IK.4. Face terms are actual cube
+boundaries, not discarded germs.
+The expression PD.10 denotes the normalized ordered
+kernel class of IK.4 and V.15–V.17; it is not an
+unsigned top-face entry.
+In particular the right input action PD.7 gives
+\[
+\kappa(P)\partial_{y_i}=\kappa(P\partial_{x_i});
+\tag{PD.11}
+\]
+differentiating \((y_i-x_i)^{-\alpha_i-1}\) cancels the
+negative transpose and gives the factorial
+\((\alpha_i+1)!\).
+Left output differentiation gives
+\(\kappa(\partial_{x_i}P)\), including the derivative of
+\(a_\alpha(x)\). Holomorphic multipliers have the same
+two actions by the Cauchy formula.
+The full residue product theorem therefore identifies
+PD.9 as the stated bimodule, with its fixed input
+top-form line.
+
+Apply \(R\Gamma_\Delta\) to the finite complex
+\(\mathcal C\otimes P^\bullet\).
+Each term is a finite sum of \(\mathcal C\).
+The finite column filtration and PD.9 identify its
+supported total complex with
+\[
+\delta_*(B_X\otimes_{\mathcal D_X}P^\bullet)[-n].
+\tag{PD.12}
+\]
+Every differential is the same finite right operator
+matrix by PD.7 and PD.11.
+Equation PD.8 contributes one shift by \(n\), and PD.12
+contributes the other.
+Their combination is PD.5.
+There are no infinite totalization diagonals.
+Full output infinite operators act on the holomorphic
+puncture cube by their actual Cauchy-convergent action;
+this commutes with all finite input matrices.
+The ordinary residue product identifies this action with
+left multiplication on \(B_X\).
+Thus PD.5 retains the full output action.
+It requires no infinite-order action on point-supported
+ordinary distributions.
+
+The construction is natural in finite operator matrices,
+resolution comparison maps and restrictions.
+The intrinsic ordinary kernel and the density change
+make it independent of coordinates.
+For \(n=0\), the cube, both shifts and the kernel
+augmentation are identities.
+
+#### PD.B. Holomorphic parameters in relative topological calculations
+
+We use the sheaf
+\[
+\mathcal F=p_A^{-1}\mathcal O_A\otimes_{\mathbf C}L
+\tag{PD.13}
+\]
+on a product of \(A\) and a source open with finite-rank
+local system \(L\).
+It means holomorphic parameter germs which are locally
+constant in the source variables in a flat frame.
+It is not the sheaf of arbitrary holomorphic functions
+of both sets of variables.
+
+Two elementary relative resolutions justify the
+parameter calculations below.
+Resolve PD.13 in the source real variables by smooth
+relative de Rham forms whose coefficients are
+holomorphic in \(a\).
+Radial integration in a source ball gives
+\[
+\begin{gathered}
+d_yH_y+H_yd_y\\
+=1-\operatorname{ev}_{y=y_0}.
+\end{gathered}
+\tag{PD.14}
+\]
+The integrals commute with every parameter derivative,
+are holomorphic in \(a\), and are bounded on compact
+products by the same finite integration interval.
+Thus this is a sheaf resolution.
+
+Its section calculations at a parameter germ can be
+derived using smooth forms in all variables and the
+Dolbeault differential in \(a\).
+The local Cauchy–Green operators \(T_i,P_i\) of
+§5.34, R.2–R.3
+act only in \(a_i\), with cutoffs independent of \(y\).
+They have
+\[
+\bar\partial_aT+T\bar\partial_a=1-P
+\tag{PD.15}
+\]
+on one smaller parameter polydisc; \(P\) is holomorphic
+in all parameter coordinates.
+The construction is by finitely many coordinate
+contractions. Each integral has compact parameter
+support, so all source derivatives pass under it on
+each source compact.
+The same smaller parameter polydisc works on the
+whole chosen source open: no bound at its boundary
+is required, since the estimates are local on source
+compacts and the cutoff domain is fixed in \(a\).
+
+For completeness, smooth forms in both variable sets
+are section-acyclic by the partition and injective
+comparison in §5.34, R.5.
+Use them as the Dolbeault resolution in \(a\).
+At a parameter germ PD.15 eliminates every positive
+Dolbeault row in its section complex.
+For a finite relative de Rham degree range the
+elimination is finite, on one smaller parameter
+polydisc.
+It leaves precisely the smooth relative source
+complex with holomorphic parameters.
+PD.14 then computes that complex on a contractible
+source ball or convex source chart.
+This proves the acyclic comparisons used here at
+parameter germs, with actual integral operators.
+It does not appeal to exactness of a completed tensor
+product of arbitrary solution spaces.
+
+In particular a finite good cover in the source by
+contractible convex charts computes PD.13 at a
+parameter germ by the finite Čech complex with
+coefficient \(\mathcal O_{A,a}\) and the flat transition
+matrices of \(L\).
+Logarithmic sector charts are allowed: their log
+coordinates give convex rectangles, and their radial
+homotopy stays in those rectangles.
+The same argument applies to a finite good cover of a
+real sphere and its contractible intersections.
+Finite Čech operations are finite sums and matrices;
+tensoring their vector-space calculations with
+\(\mathcal O_{A,a}\) is exact.
+
+We will also use real-normal purity with these
+coefficients. On a product with an oriented real
+normal ball of dimension \(m\), the supported object
+along its zero section satisfies
+\[
+\begin{gathered}
+R\Gamma_{t=0}(p_A^{-1}\mathcal O_A)\\
+\simeq i_*\mathcal O_A[-m].
+\end{gathered}
+\tag{PD.16}
+\]
+The relative cone for the ball and punctured ball
+computes it.
+Radial contraction computes the ball.
+The punctured ball retracts radially to its sphere;
+the finite sphere cover just described computes
+constant coefficient cohomology in degrees \(0,m-1\),
+with the usual reduced interpretation for \(m=1\).
+The constant degree-zero part cancels in the relative
+cone; the surviving orientation class is in degree \(m\).
+Here is the sphere calculation with these coefficients.
+The zero-sphere has two points, so its reduced
+degree-zero cohomology is one copy of
+\(\mathcal O_{A,a}\).
+For a positive-dimensional sphere take the two
+slightly enlarged open hemispheres.
+Each contracts in a convex chart.
+Their intersection is a belt which retracts
+onto the equatorial sphere.
+The two-open-cover exact sequence, or its
+two-column Čech cone, therefore identifies
+the reduced cohomology in degree \(q\) with
+the equator's reduced cohomology in degree
+\(q-1\).
+Induction gives exactly one copy of
+\(\mathcal O_{A,a}\) in top degree and zero
+in every other reduced degree.
+All contractions and the two-cover maps
+are those of PD.14–PD.15; they are actual
+maps with the same parameter domain.
+Choose the top class by the boundary of
+the positively oriented normal ball.
+The ordered boundary signs in the
+two-cover cone preserve that choice
+under an orientation-preserving change
+of normal coordinates.
+This proves PD.16, including the map and its chosen
+orientation, for arbitrary parameter germs.
+For \(m=0\) it is the identity.
+
+#### PD.C. The relative SNC de Rham comparison
+
+Let \(Z\) have dimension \(n\), let \(D\subset Z\) be SNC,
+and let \(M=E_\Sigma(*D)\) be the normalized logarithmic
+extension of a finite-rank local system \(L_Z\).
+Let \(j_{A,Z}:A\times(Z\setminus D)\hookrightarrow A\times Z\).
+Then the natural relative comparison is
+\[
+\begin{gathered}
+\operatorname{DR}^0_{Z/A}(M^{[A]})\\
+\longrightarrow Rj_{A,Z,*}\bigl(\\
+p_A^{-1}\mathcal O_A\otimes_{\mathbf C}L_Z\bigr),
+\end{gathered}
+\tag{PD.17}
+\]
+and it is a quasi-isomorphism.
+Here the left differential uses only source \(Z\)
+coordinates, not \(a\).
+All auxiliary parameter derivatives commute with it.
+
+We give the parameter argument explicitly.
+In a normalized SNC chart the residues are commuting
+constant matrices \(A_i\), with
+\[
+0\le\operatorname{Re}\operatorname{Spec}(A_i)<1.
+\tag{PD.18}
+\]
+Theorem5.4's tangential radial homotopy acts only
+in the source tangential coordinates.
+The normal Laurent coefficient homotopy is
+\[
+h_\nu=(\nu_iI+A_i)^{-1}\iota_i,
+\tag{PD.19}
+\]
+where \(i\) is the least nonzero normal exponent,
+and \(h_0=0\).
+Every inverse in PD.19 has a common norm bound,
+including its nilpotent part, as proved in
+§5.4, the convergent Laurent homotopy.
+The homotopy changes no source Laurent exponent or
+finite pole lower bound.
+For a compact parameter product take the same
+source circles and radial segments for every
+parameter point. Cauchy's coefficient estimates
+and normal convergence then give these same
+homotopies on joint holomorphic coefficients.
+All fixed \(a\)-derivatives commute with the circle
+and radial integrals, or follow from a further
+fixed parameter Cauchy margin.
+The parameter domain is independent of the
+Laurent index.
+
+The residual complex is the finite Koszul complex
+of the \(A_i\), with holomorphic parameter
+coefficients.
+On the topological side use Theorem5.4's two-sector
+cover in each normal coordinate.
+PD.B proves that this actual finite cover computes
+the derived image on the right of PD.17 at
+parameter germs.
+Its finite complex is the monodromy Koszul
+complex with
+\[
+T_i=\exp(-2\pi iA_i).
+\tag{PD.20}
+\]
+The exact period comparison of Theorem5.4 is a
+finite matrix map between these residual
+complexes. Its invertible factors, terminating
+nilpotent series, exterior signs and circle
+periods are unchanged after adjoining the
+holomorphic parameter coefficients.
+Thus it remains a quasi-isomorphism.
+The original comparison PD.17 is the restriction
+map followed by the relative flat-frame
+Poincaré augmentation, because these are the
+maps used in those homotopies and periods.
+This proves PD.17 on every chart and every
+parameter germ, so the natural maps glue.
+No generic-stratum replacement is involved.
+
+#### PD.D. Relative comparison through a supplied modification
+
+Let \(S\subset X\) be reduced, \(U=X\setminus S\),
+and let \(Q\) be a finite divisorial D-type module
+along \(S\), in the exact sense of DT.E.
+Suppose there is a proper locally projective
+SNC modification
+\[
+f:Z\longrightarrow X
+\tag{PD.21}
+\]
+with \(Z\) smooth of dimension \(n\), which
+is an isomorphism over \(U\), whose inverse
+boundary is SNC, and whose open complement is
+dense in every source component.
+Let \(L\) be the horizontal local system of \(Q|_U\).
+For every parameter polydisc \(A\), with
+\(j_A:A\times U\hookrightarrow A\times X\),
+the natural comparison is a quasi-isomorphism
+\[
+\begin{gathered}
+\operatorname{DR}^0_{X/A}(Q^{[A]})\\
+\longrightarrow
+Rj_{A,*}(p_A^{-1}\mathcal O_A\otimes_{\mathbf C}L).
+\end{gathered}
+\tag{PD.22}
+\]
+It commutes with restrictions, D-type morphisms
+and every parameter derivative.
+
+We first justify the module identification in
+this family, rather than assuming an analytic
+proper base-change theorem.
+The extension \(Q^{[A]}\) is a coherent holonomic
+\(\mathcal D_{A\times X}\)-module.
+Indeed extend a good filtration using PD.3.
+Each finite filtered term and each exact graded
+sequence remains exact.
+The parameter derivatives act only on the
+holomorphic coefficients and preserve every
+filtered term. Thus the graded parameter
+covariables act by zero, and
+\[
+\begin{gathered}
+\operatorname{Ch}(Q^{[A]})\\
+=T_A^*A\times\operatorname{Ch}(Q).
+\end{gathered}
+\tag{PD.23}
+\]
+Here \(T_A^*A\) denotes the zero section.
+The graded local generators prove coherence,
+and this characteristic support has dimension
+\(\dim A+\dim X\), on each nonzero component.
+Multiplication by \(h(x)\) is bijective after
+extension because \(Q\) is already localized.
+Its generic transverse logarithmic models
+extend with constant parameter connection,
+so it is in DT.E's full D-type class for
+\(A\times S\).
+
+Apply DT.D to
+\[
+f_A=\operatorname{id}_A\times f.
+\tag{PD.24}
+\]
+This map is proper and locally projective,
+and its open restriction is an isomorphism.
+Indeed the inverse image of a compact
+set in \(A\times X\) is closed in the
+product of its compact \(A\)-projection
+with the compact inverse image of
+its \(X\)-projection.
+The supplied local projective
+embedding pulls back to a closed
+embedding in the same projective
+space over \(A\times X\).
+The normalized source is \(M^{[A]}\), where
+\(M=E_\Sigma(*f^{-1}S)\) for the pulled-back
+local system.
+It has the coherent logarithmic generator
+required by DT.D.
+The resulting target \(N_A=f_{A,+}M^{[A]}\)
+is in the same finite D-type class as
+\(Q^{[A]}\).
+Their identified horizontal local systems
+agree on \(A\times U\).
+DT.E's full faithfulness therefore gives the
+unique actual finite operator isomorphism
+\[
+Q^{[A]}\simeq N_A=f_{A,*}M^{[A]}.
+\tag{PD.25}
+\]
+It is compatible with all parameter
+derivatives. This argument does not infer
+PD.25 from a tensor product of spaces of
+analytic sections.
+
+Now repeat AD.C's form-degree comparison
+using only the \(X\) and \(Z\) forms.
+The relative Jacobian is the same \(J\);
+its inverse and all exterior powers are
+finite-pole units.
+Every source relative form lattice is
+coherent on \(A\times Z\).
+Its positive higher images vanish after
+localization, by DT.7 and the finite-cover
+argument in AD.17–AD.18, applied to \(f_A\).
+Consequently every relative form degree
+has the actual isomorphism
+\[
+\begin{gathered}
+\Omega_X^b\otimes Q^{[A]}\\
+\longrightarrow
+f_{A,*}(\Omega_Z^b\otimes M^{[A]}),
+\end{gathered}
+\tag{PD.26}
+\]
+given by pullback of the form.
+The chain rule proves compatibility with
+the relative differentials; no parameter
+form or shift has been added.
+Termwise acyclicity and the finite form
+filtration identify its total complex with
+the derived pushed relative complex.
+
+Apply PD.17 to that source.
+Derived pushforward composition gives the
+right side of PD.22, since \(f_A\) is the
+identity on the open complement.
+On that complement the map is the
+relative Poincaré identification.
+Derived open adjunction determines a map
+into \(Rj_{A,*}\) by its open restriction.
+Hence the composite is the natural map
+in PD.22.
+This proves it, including every point of
+the singular divisor.
+
+The source integral estimates in PD.C
+also give compatibility with actual
+infinite operators in the parameter
+variables: on a compact parameter
+product choose one larger Cauchy
+product before summing, then choose
+the coefficient epsilon below that
+margin.
+The derivative factorial cancels
+the operator coefficient factorial,
+leaving a finite product of geometric
+series.
+All source homotopies are parameter
+independent, so the same normally
+convergent series commutes with them.
+The finite maps and the canonical
+open restriction characterization
+preserve this compatibility in PD.22.
+
+#### PD.E. Actual ordinary infinity reconstruction
+
+Under the hypotheses of PD.D there is a canonical
+isomorphism
+\[
+\begin{gathered}
+B_X\otimes_{\mathcal D_X}Q
+\xrightarrow{\;\Phi_Q\;}
+j_*(Q|_U).
+\end{gathered}
+\tag{PD.27}
+\]
+The right side means all holomorphic sections
+of the flat bundle on \(U\), without a
+finite-pole or growth restriction at \(S\).
+The map is actual operator action.
+It includes singular points of \(S\).
+
+Apply PD.22 with parameter \(A=X\) to the
+input copy of \(X\) in PD.5.
+Write
+\[
+W=X\times U,\qquad \bar j:W\hookrightarrow X\times X.
+\]
+For any complex sheaf \(F\) on \(W\), there is a
+natural support identity
+\[
+\begin{gathered}
+R\Gamma_\Delta R\bar j_*F\\
+\simeq R\bar j_*R\Gamma_{\Delta\cap W}F.
+\end{gathered}
+\tag{PD.28}
+\]
+To prove it, use the support triangle defined
+by the open complement of \(\Delta\).
+Restriction to that open commutes with
+\(R\bar j_*\), since it is restriction on
+the target of the direct image.
+Composing the two open direct images in
+either order gives the direct image of
+the same open intersection.
+Their natural restriction maps agree.
+The fibres of these maps in the support
+triangles are therefore the two sides
+of PD.28.
+Equivalently one may compute all these
+maps by injective complex-sheaf
+resolutions; inverse image is exact,
+so each open direct image preserves
+injectives.
+
+Take
+\[
+F=p_X^{-1}\mathcal O_X
+\otimes_{\mathbf C}p_U^{-1}L.
+\tag{PD.29}
+\]
+The set \(\Delta\cap W\) is the closed graph
+\[
+\delta_U:U\longrightarrow X\times U,\qquad u\mapsto(u,u).
+\]
+Near each of its points trivialize \(L\),
+and use \(w=y-x\) as normal coordinates.
+The sheaf in PD.29 is then constant in
+the real normal variables, with
+holomorphic coefficient sheaf in \(x\).
+PD.16, with the complex normal orientation
+of real dimension \(2n\), gives
+\[
+\begin{gathered}
+R\Gamma_{\Delta\cap W}F
+\simeq\delta_{U,*}H[-2n],\\
+H=Q|_U=L\otimes_{\mathbf C}\mathcal O_U.
+\end{gathered}
+\tag{PD.30}
+\]
+The local identifications glue, since flat
+changes of \(L\)-frame commute with the
+normal contraction and the complex
+normal orientation is intrinsic.
+
+Combining PD.5 and PD.22–PD.30 gives
+\[
+B_X\otimes_{\mathcal D_X}Q
+\simeq Rj_*H.
+\tag{PD.31}
+\]
+Here the final pushforward uses the equality
+\[
+\bar j\circ\delta_U=\delta\circ j.
+\tag{PD.32}
+\]
+Closed pushforward by \(\delta\) is exact.
+Thus
+\(R\bar j_*\delta_{U,*}H=\delta_*Rj_*H\),
+and applying \(\delta^{-1}\) gives PD.31.
+No nonproper base-change statement for
+pullback by the diagonal is assumed.
+
+The left side of PD.31 is the ordinary
+tensor in degree zero by right flatness.
+It follows at the same time that
+\[
+R^bj_*H=0\quad(b>0).
+\tag{PD.33}
+\]
+Taking degree zero in PD.31 gives an
+actual \(\mathcal O_X\)-linear sheaf
+isomorphism to \(j_*H\).
+Indeed all maps retain multiplication
+by the output coefficient \(a(x)\);
+the relative purity contractions act
+only in the normal variables.
+
+We identify its normalization and its map.
+For a flat frame on a small open in \(U\),
+the kernel unit in PD.10 is the product
+of the ordered one-variable Cauchy
+units. In one variable its normalized
+residue on the positive circle is
+\[
+\frac1{2\pi i}\int_{|w|=\rho}\frac{dw}{w}=1.
+\tag{PD.34}
+\]
+The relative Spencer shifts in PD.8
+and PD.12 give the total shift \([2n]\).
+Use the same ordered cup and input
+density conventions as the proved
+ordinary kernel theorem and §5.35,
+V.15–V.17.
+Here is the totalization sign explicitly.
+Put \(r_n=(-1)^{n(n-1)/2}\).
+The literal top-cube coefficient of
+the kernel unit is \(r_n(-1)^n\)
+times its expression in PD.10.
+Moving the shift \([n]\) through a
+Čech column of degree \(q\) multiplies
+that column by \((-1)^{nq}\):
+substituting into the two total
+differentials verifies this chain map.
+At the surviving \(q=n\), this factor
+is \((-1)^n\).
+Finally changing anti-first normal
+forms to the interleaved ordered real
+normal orientation contributes \(r_n\).
+Their product is
+\[
+r_n(-1)^n\,(-1)^{n^2}r_n=1.
+\tag{PD.34a}
+\]
+Thus the Cauchy unit gives the positive
+normal orientation class in PD.30.
+The finite ordered residue is \(1\)
+in every dimension, by \(n\) successive
+applications of PD.34.
+Thus the isomorphism obtained from
+PD.31 restricts to the identity
+action on each flat frame vector.
+On \(U\), the empty-divisor case of
+§5.73, SI.C–SI.D
+identifies \(B_U\otimes_{D_U}H\)
+with \(H\) by actual action.
+Its flat frame vectors form an
+\(\mathcal O_U\)-basis.
+The \(\mathcal O_U\)-linearity and
+the unit calculation therefore
+identify the whole open restriction
+with the identity on \(H\).
+This includes the empty product
+when \(n=0\).
+
+Independently the actual Cauchy-convergent
+action on flat holomorphic frames defines
+\(\Phi_Q\) in PD.27.
+Both sheaf maps have that same open
+restriction. Ordinary open adjunction
+identifies a map into \(j_*H\) with its
+restriction into \(H\).
+They are therefore equal.
+In particular PD.27 is \(B_X\)-linear
+for the actual full action, not only
+an isomorphism of complex sheaves.
+It is natural for D-type morphisms,
+restrictions and changes of frame.
+
+The inverse uses finite ordinary tensors.
+Indeed on a common neighbourhood choose
+the finite presentation
+\[
+\mathcal D_X^{r_1}\longrightarrow
+\mathcal D_X^{r_0}\longrightarrow Q\longrightarrow0.
+\tag{PD.35}
+\]
+The finite resolution and the finite
+support cube used to prove PD.5
+identify its degree-zero object with
+\[
+B_X^{r_0}/\operatorname{im}(B_X^{r_1}).
+\tag{PD.36}
+\]
+Every holomorphic section germ in
+PD.27 therefore has an inverse
+represented by one row in
+\(B_X^{r_0}\), hence by \(r_0\)
+elementary tensors.
+A row with zero image belongs to
+the image of the finite matrix in
+PD.36; its preimage is one actual
+row of length \(r_1\).
+These are finite algebraic balancing
+witnesses.
+All their entries have actual
+common-domain coefficient
+representatives: there are finitely
+many entries and germ equalities,
+and the ordinary kernel extraction
+and matrix relation theorem give
+their every-epsilon bounds.
+No limiting element of a completed
+tensor or closure of a relation
+subspace occurs in this proof.
+
+Finally, the same construction on
+\(A\times X\), using the product
+modification and the trivial
+parameter connection, gives
+\[
+\begin{gathered}
+D^\infty_{A\times X}
+\otimes_{D_{A\times X}}Q^{[A]}\\
+\simeq j_{A,*}(Q^{[A]}|_{A\times U}).
+\end{gathered}
+\tag{PD.37}
+\]
+Its map is again actual action.
+Consequently the inverse is natural
+in all parameter restrictions and
+derivatives as well.
+This proves the required actual
+auxiliary-parameter comparison at
+the full supplied-modification
+generality.
+
+#### PD.F. General cofinite left ideals and special tensor lifting
+
+Let the connected complement \(U\) have fundamental group
+\(\pi\), with the continuation convention of PM.A:
+\[
+T_{\gamma\eta}=T_\gamma T_\eta.
+\tag{PD.38}
+\]
+Fix a cofinite left ideal \(\mathfrak a\subset\mathbf C[\pi]\),
+and put
+\[
+\begin{gathered}
+V_{\mathfrak a}=\mathbf C[\pi]/\mathfrak a,\\
+v_0=1+\mathfrak a,\\
+q=\dim_{\mathbf C}V_{\mathfrak a}.
+\end{gathered}
+\tag{PD.39}
+\]
+Left multiplication gives a representation \(\rho\) on
+\(V_{\mathfrak a}\), and \(v_0\) is cyclic.
+No right-ideal assumption is made.
+Choose the left deck action on the universal cover so
+that analytic continuation \(T_\gamma\) is pullback
+by the inverse deck transformation.
+This realizes PD.38.
+Form the holomorphic flat bundle \(E_{\mathfrak a}\)
+by quotienting \(\widetilde U\times V_{\mathfrak a}^*\)
+with the action
+\[
+\begin{gathered}
+\gamma\cdot(\widetilde u,\lambda)\\
+=(\gamma\widetilde u,\lambda\rho_\gamma^{-1}).
+\end{gathered}
+\tag{PD.39a}
+\]
+It is a group action: two successive fibre maps
+multiply as
+\(\rho_\eta^{-1}\rho_\gamma^{-1}
+=\rho_{\gamma\eta}^{-1}\).
+The trivial connection descends because these
+matrices are constant.
+Let \(L_{\mathfrak a}\) be its horizontal local
+system. A section has an equivariant
+holomorphic functional
+\[
+\lambda(\gamma\widetilde u)
+=\lambda(\widetilde u)\rho_\gamma^{-1}.
+\tag{PD.39b}
+\]
+Equivalently its branch continuation is
+\[
+T_\gamma\lambda=\lambda\rho_\gamma.
+\tag{PD.40}
+\]
+This inverse transition rule fixes the variance and
+every matrix order explicitly. It requires no
+meromorphic free frame on all of \(X\).
+
+Let \(\mathscr F_{\mathfrak a}\) denote multivalued
+holomorphic functions whose continuation action is
+annihilated by \(\mathfrak a\).
+There is a canonical identification
+\[
+E_{\mathfrak a}\simeq\mathscr F_{\mathfrak a}.
+\tag{PD.41}
+\]
+To prove it, a function \(f\) determines
+\[
+\lambda_f(\gamma v_0)=T_\gamma f.
+\tag{PD.42}
+\]
+The linear extension is well defined, since a
+relation in \(V_{\mathfrak a}\) is an element
+of \(\mathfrak a\) and kills \(f\).
+At each branch it is holomorphic.
+For every cyclic vector \(\eta v_0\),
+\[
+\begin{gathered}
+(T_\gamma\lambda_f)(\eta v_0)
+=T_{\gamma\eta}f\\
+=\lambda_f(\rho_\gamma\rho_\eta v_0).
+\end{gathered}
+\tag{PD.43}
+\]
+Those vectors span \(V_{\mathfrak a}\).
+Equation PD.43 is exactly PD.40, without commuting
+the two representation matrices.
+
+Conversely, for a row satisfying PD.40 put
+\[
+f=\lambda(v_0).
+\tag{PD.44}
+\]
+Then \(T_\gamma f=\lambda(\rho_\gamma v_0)\),
+so every \(a\in\mathfrak a\) kills \(f\) because
+\(\rho(a)v_0=0\).
+If \(f\) is zero as a multivalued function, all its
+branches vanish, so \(\lambda\) kills the entire
+cyclic span and is zero.
+The two displayed constructions are inverse.
+This proves PD.41, including every branch and
+every noncommuting continuation matrix.
+For \(q=0\) all these objects are zero.
+
+Use the supplied modification PD.21 and DT.D–DT.F
+to construct its finite D-type module
+\(Q_{\mathfrak a}\), with horizontal local system
+\(L_{\mathfrak a}\).
+PD.27 and PD.37 give the actual isomorphisms
+\[
+\begin{gathered}
+B_X\otimes_{\mathcal D_X}Q_{\mathfrak a}
+\simeq\mathscr F_{\mathfrak a},\\
+D^\infty_{A\times X}\\
+{}\otimes_{D_{A\times X}}Q_{\mathfrak a}^{[A]}\\
+\simeq\mathscr F_{\mathfrak a}(A;X).
+\end{gathered}
+\tag{PD.45}
+\]
+Functions on the second right side are jointly
+holomorphic in the auxiliary parameters and
+the lifted source variables.
+All coordinate derivatives commute with
+PD.42–PD.44, since analytic continuation
+commutes with differentiation.
+The complete ordinary infinite actions do too:
+on a compact branch chart Cauchy's bound and
+the every-epsilon coefficient condition give
+absolute normal convergence of the whole head.
+The finite \(q\)-dimensional branch span
+permits one bound for every entry of
+each fixed finite branch list in
+PD.42–PD.43. No boundedness of the
+representation on all of \(\pi\)
+is asserted.
+
+If \(\mathfrak b\subseteq\mathfrak a\), the
+quotient map
+\[
+V_{\mathfrak b}\longrightarrow V_{\mathfrak a}
+\tag{PD.46}
+\]
+intertwines every group element and takes
+the cyclic vector to the cyclic vector.
+Dualizing gives a horizontal map
+\(L_{\mathfrak a}\to L_{\mathfrak b}\).
+DT.E extends it uniquely to the actual
+finite operator map
+\[
+Q_{\mathfrak a}\longrightarrow Q_{\mathfrak b}.
+\tag{PD.47}
+\]
+Pairing with the cyclic vectors shows that
+PD.47 is precisely inclusion of the
+function spaces in PD.41.
+Naturality of PD.27 and PD.37 proves the
+same statement after actual infinity
+extension, with all auxiliary variables.
+This establishes the ideal-map compatibility
+without treating a left ideal as two-sided.
+
+Here is the consequence for the chosen-fibration
+special tensor of §5.71.
+Use the full Weierstrass setup PM.A, with
+\(m\) distinct normal punctures off the base
+discriminant \(H\).
+Take \(H\) a hypersurface or empty, and
+assume the ambient pair with boundary
+\[
+\begin{gathered}
+\{P(t,x)=0\}\\
+{}\cup(D_R\times H).
+\end{gathered}
+\tag{PD.48}
+\]
+has the supplied proper locally projective
+SNC modification above.
+Write \(T=\widetilde E^\infty\) for the
+full chosen-fibration special ring,
+\(R=D_X^\infty\), and
+\[
+N_{\mathfrak c}=R\otimes_{\mathcal D_X}Q_{\mathfrak c}.
+\]
+For every cofinite left ideal \(\mathfrak a\)
+there is a cofinite two-sided
+\(\mathfrak b\subseteq\mathfrak a\) such that
+\[
+\begin{gathered}
+\operatorname{im}\bigl(T\otimes_RN_{\mathfrak a}\\
+\longrightarrow T\otimes_RN_{\mathfrak b}\bigr)\\
+\subseteq\operatorname{im}\bigl(N_{\mathfrak b}\\
+\longrightarrow T\otimes_RN_{\mathfrak b}\bigr),\\
+\dim\mathbf C[\pi]/\mathfrak b\le q^2(m+2)^2.
+\end{gathered}
+\tag{PD.49}
+\]
+Indeed PD.45 and PD.47 are precisely the
+actual parameter and ideal compatibility
+in §5.71, ST.20.
+PM.B–PM.D gives its uniform relative
+primitive representation \(\mathbb W\),
+with \(\dim\mathbb W=q(m+1)\).
+Take
+\[
+\mathfrak b=\operatorname{Ann}(V_{\mathfrak a}\oplus\mathbb W).
+\tag{PD.50}
+\]
+Its being contained in \(\mathfrak a\)
+follows by applying an annihilating
+element to the cyclic vector in
+\(V_{\mathfrak a}\).
+Its codimension is at most the dimension
+of the endomorphism algebra of the
+\(q(m+2)\)-dimensional representation,
+which is the bound in PD.49.
+The full primitive theorem applies
+to every special head and spatial
+kernel on its common domains.
+ST.12–ST.19 then supplies the actual
+finite algebraic tensor image
+witnesses in PD.49.
+This uses the entire primitive
+representation, not a finite-order
+truncation of a special operator.
+
+The analytic modification hypothesis
+in PD.48 remains explicit.
+These arguments do not prove existence
+of analytic log-resolutions, the
+general solution reconstruction theorem
+for arbitrary holonomic modules, or
+the whole-module continuation and
+singular-germ separation required
+for I23.
+
+#### PD.G. The flat bundle and point-module degree checks
+
+For \(M=\mathcal O_X\), the relative holomorphic
+Poincaré contraction in the input variables gives
+\[
+\operatorname{DR}^0_y(\mathcal O_{X\times X})
+\simeq p_X^{-1}\mathcal O_X.
+\tag{PD.51}
+\]
+PD.16 in real normal dimension \(2n\) then makes
+PD.5 equal to \(\mathcal O_X\) in degree zero.
+The Cauchy-unit calculation PD.34–PD.34a shows
+that the identification is the identity,
+not an unspecified nonzero scalar.
+
+For a point at the coordinate origin take
+\[
+\delta_0=
+\mathcal D_X\Big/\sum_{i=1}^n\mathcal D_Xx_i.
+\tag{PD.52}
+\]
+The finite closed-embedding calculation of
+the de Rham lesson, Proposition3.1, gives
+the relative complex, with holomorphic
+output parameters,
+\[
+\begin{gathered}
+\operatorname{DR}^0_y(\delta_0^{[X]})\\
+\simeq p_X^{-1}\mathcal O_X
+\otimes\mathbf C_{\{y=0\}}[-n].
+\end{gathered}
+\tag{PD.53}
+\]
+The same finite normal-derivative Koszul
+contraction proves this with parameters;
+its rows are polynomial in input
+derivatives and leave every output
+coefficient unchanged.
+On that support, the diagonal condition
+is \(x=0\). Therefore PD.5 becomes
+\[
+B_X\otimes_{\mathcal D_X}\delta_0
+\simeq\mathcal H^n_{\{0\}}(\mathcal O_X).
+\tag{PD.54}
+\]
+Indeed PD.53 gives one shift by \(-n\);
+the point-supported holomorphic
+cohomology is in degree \(n\) by
+the same finite Laurent-sector cube
+used in PD.9. The final shift
+\([2n]\) leaves degree zero.
+
+This point module includes essential
+principal parts, rather than only
+finite normal derivatives.
+With the explicit coordinate
+point-generator normalization
+\[
+e_0\longmapsto
+\left[\frac1{x_1\cdots x_n}\right],
+\]
+its derivative coefficients are
+\[
+\begin{gathered}
+\partial^\alpha e_0\longmapsto\\
+(-1)^{|\alpha|}\alpha!
+\bigl[x^{-\alpha-\mathbf1}\bigr].
+\end{gathered}
+\tag{PD.55}
+\]
+The sign and factorial follow by
+ordinary differentiation.
+An actual constant-coefficient head
+\(\sum_\alpha c_\alpha\partial^\alpha\)
+therefore gives the fully negative
+Laurent series with coefficients
+\((-1)^{|\alpha|}\alpha!c_\alpha\).
+Its every-epsilon estimates give
+normal convergence on every
+coordinate-punctured compact.
+Conversely, arbitrary small Cauchy
+circles of a fully negative
+holomorphic principal part bound
+its Laurent coefficients by
+\[
+|b_\alpha|\le M_\rho
+\prod_i\rho_i^{\alpha_i+1}.
+\tag{PD.56}
+\]
+Dividing by \(\alpha!\) gives all
+the required epsilon bounds on
+one coefficient domain.
+Thus the entire principal part,
+not a finite truncation, is
+represented by an actual head.
+Terms missing a negative coordinate
+are exactly the face boundaries.
+
+In one dimension the explicit
+example is
+\[
+\begin{gathered}
+P=\sum_{\nu\ge0}
+\frac{(-1)^\nu}{(\nu!)^2}\partial_x^\nu,\\
+P e_0\longmapsto
+\left[\frac{e^{1/x}}x\right].
+\end{gathered}
+\tag{PD.57}
+\]
+For every \(\epsilon>0\), its
+coefficient estimate holds with
+prefactor \(e^{1/\epsilon}\),
+by the positive exponential
+series.
+This example distinguishes
+PD.54's ordinary holomorphic
+local cohomology from a module
+of finite-order point-supported
+distributions.
+
+![Ordinary diagonal reconstruction, the punctured diagonal and finite module degrees](assets/parametric-diagonal-reconstruction.png)
+
+**Figure PD.1.** Panel A is the actual derived diagonal
+identity PD.5 and the reconstruction PD.22–PD.34a
+under the supplied SNC modification.
+Here \(F\) is PD.29 and \(H=Q|_U\).
+The three orientation and totalization signs have
+product one.
+Panel B is only the real slice
+\(\operatorname{Im}x=\operatorname{Im}y=0\)
+of the one-dimensional complex product.
+Both real coordinates range from \(-1\) to \(1\)
+with equal axis scale.
+The input boundary \(y=0\) is excluded from
+\(W=X\times U\); the open circle marks the
+omitted origin of \(\Delta\cap W\).
+The full normal \(w=y-x\) is complex, of
+real dimension two, rather than the
+one-dimensional real normal drawn in this slice.
+Panel C gives a cyclic nonabelian quotient:
+\(S-T\) kills \(v_0\), while its right
+product with \(S\) does not.
+Panel D records the absolute cohomological
+degrees in PD.5, PD.51 and PD.53.
+Its point-module row is full holomorphic
+local cohomology, including the essential
+principal part PD.57.
+The algebraic and degree panels have
+no geometric scale.
+
+Editable SVG,
+exact figure data, and
+reproducible source.
+Freely accessible further reading:
+[Kashiwara–Kawai, *Holonomic systems III*, I.4.9, II.2.2.4 and III.4.9, printed pp.852, 864 and 898–899](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf).
+PD.A–PD.G give the actual diagonal,
+parameter and finite tensor arguments
+at the stated supplied-modification
+generality.
+
+
+### 5.76. Trace descent through an SNC cover
+
+Let \(X\) be a complex manifold, \(S\subset X\) a reduced
+analytic hypersurface, and \(j:U=X\setminus S\hookrightarrow X\).
+An empty hypersurface is allowed.
+Suppose a holomorphic map
+\[
+f:Z\longrightarrow X
+\tag{TC.1}
+\]
+is supplied with these properties:
+it is proper and locally projective;
+both manifolds have dimension \(n\);
+the open \(V=f^{-1}U\) is dense in every source component;
+its reduced boundary \(D=Z\setminus V\) is SNC;
+and
+\[
+h=f|_V:V\longrightarrow U
+\tag{TC.2}
+\]
+is a surjective finite covering by local biholomorphisms.
+The degree is positive and locally constant on \(U\).
+The map need not be a modification or a Galois cover.
+
+We use the exact finite D-type class of
+§5.72, DT.E.
+Its modules are coherent holonomic, localized along \(S\),
+connections off \(S\), and regular in the stated generic
+transverse families on every divisor component.
+DT.A proves that they are finite projective over
+\(\mathcal O_X(*S)\).
+All finite module images below are actual sheaf images.
+All tensors with \(B_X=D_X^\infty\) are ordinary algebraic
+sheaf tensors with the full every-epsilon coefficients.
+
+#### TC.A. Finite fibres and the normalized trace
+
+Let \(L\) be a finite-rank local system on \(U\). Put
+\[
+K=h_*h^{-1}L.
+\tag{TC.3}
+\]
+On an evenly covered open \(W\subset U\) of degree \(d\),
+\[
+\begin{gathered}
+K|_W=\bigoplus_{\nu=1}^dL|_W,\\
+\iota(v)=(v,\ldots,v),\\
+r(v_1,\ldots,v_d)=d^{-1}\sum_{\nu=1}^dv_\nu.
+\end{gathered}
+\tag{TC.4}
+\]
+These maps do not require a numbering of the sheets:
+permuting the summands changes neither formula.
+Continuation transports all entries by the local-system
+maps and permutes the fibre, so the formulas commute
+with continuation.
+They therefore glue to horizontal maps with
+\[
+\begin{gathered}
+\iota:L\longrightarrow K,\\ r:K\longrightarrow L,\\
+r\iota=1,\quad e=\iota r,\quad e^2=e.
+\end{gathered}
+\tag{TC.5}
+\]
+No extension of the locally constant degree to a chosen
+holomorphic function on \(X\) is needed.
+The normalization in TC.4 is made in local systems on \(U\).
+It works component by component even when degrees differ.
+Surjectivity and positivity in TC.2 are needed for \(r\iota=1\).
+
+The kernel \(K_0=\ker r\) is a local system and
+\[
+\begin{gathered}
+K=\iota L\oplus K_0,\\
+v=e v+(1-e)v.
+\end{gathered}
+\tag{TC.6}
+\]
+This is the decomposition of a finite direct sum on each
+evenly covered chart; it glues because \(e\) is horizontal.
+For a morphism \(a:L\to L'\), applying it on every sheet
+commutes with \(\iota,r,e\).
+All these assertions include rank zero and \(d=1\).
+
+#### TC.B. The actual coherent summand
+
+Pull \(L\) back to \(V\), form its normalized SNC extension
+\(E_\Sigma\), and set
+\[
+\begin{gathered}
+M=E_\Sigma(*D),\\
+N=f_+M=f_*M.
+\end{gathered}
+\tag{TC.7}
+\]
+DT.D
+applies to exactly TC.1–TC.2.
+It proves the degree-zero equality in TC.7, coherence
+and holonomicity over \(\mathcal D_X\), finite projectivity
+over \(\mathcal O_X(*S)\), and the full generic logarithmic
+target model including ramified Jordan blocks.
+Its horizontal local system is \(K\).
+
+DT.E full faithfulness, applied to \(N,N\), lifts \(e\)
+uniquely to an actual finite operator endomorphism
+\[
+\epsilon:N\longrightarrow N.
+\tag{TC.8}
+\]
+The map \(\epsilon^2-\epsilon\) is zero on \(U\).
+Faithfulness makes it zero on \(X\).
+Consequently
+\[
+\begin{gathered}
+Q_L=\operatorname{im}\epsilon,\\
+Q_0=\operatorname{im}(1-\epsilon),\\
+N=Q_L\oplus Q_0.
+\end{gathered}
+\tag{TC.9}
+\]
+The decomposition is literal:
+every section \(s\) is \(\epsilon s+(1-\epsilon)s\);
+an element in the two images is both fixed and killed
+by \(\epsilon\), and hence is zero.
+The inclusions and projections in TC.9 are finite
+operator maps.
+
+We check every defining condition for these images.
+Analytic operator coherence makes both images coherent.
+They are subquotients of the holonomic module \(N\),
+so the good-filtration characteristic inclusion and
+Bernstein dimension bound make every nonzero image
+holonomic.
+Multiplication by an equation of \(S\), and its inverse
+on \(N\), commute with \(\epsilon\). Both images are
+therefore already localized.
+Off \(S\), TC.6 identifies their flat bundles.
+
+At a generic smooth boundary point DT.D supplies a
+normalized logarithmic model for \(N\).
+The normalized map theorem of §5.0 extends its horizontal
+projector holomorphically across that boundary.
+It remains an idempotent by density.
+An idempotent matrix on a finite free holomorphic module
+has a locally free image: choose a basis of its image and
+kernel at the point; apply \(\epsilon\) and \(1-\epsilon\)
+to holomorphic lifts of that basis. Their combined
+determinant is nonzero at the point, hence remains a unit
+after shrinking. They give the two complementary frames.
+The image lattice is stable under the logarithmic
+connection because the projector is horizontal.
+Its residue is the restriction of the original residue,
+so its eigenvalues remain in the normalized strip and
+all its nilpotent parts are retained.
+This proves the required generic transverse regularity.
+Thus \(Q_L,Q_0\) belong to the full DT.E class.
+Their horizontal local systems are \(L,K_0\), respectively.
+DT.A then also proves their finite meromorphic projectivity.
+
+The construction is functorial in \(L\).
+The sheetwise map \(K\to K'\) lifts by DT.E; its commutator
+with the two lifted projectors vanishes on \(U\), hence
+vanishes everywhere. It restricts to the required map
+\(Q_L\to Q_{L'}\).
+Composition and identities follow by faithfulness.
+
+For any existing D-type \(Q\) with horizontal local system
+\(L\), DT.E lifts the identified local systems to maps
+between \(Q\) and \(Q_L\). Their composites restrict to
+identities and therefore are identities:
+\[
+Q\simeq Q_L.
+\tag{TC.10}
+\]
+This also proves independence of the supplied cover,
+whenever more than one such cover is available.
+The isomorphism is the unique one inducing the identity
+on \(L\), so these isomorphisms satisfy the cocycle
+identity without a common refinement.
+
+The class is abelian with its actual operator kernels and
+cokernels. Indeed these are coherent holonomic subquotients;
+they are localized because localization of the original
+map is already the same map between the same modules.
+On \(U\) a horizontal matrix is constant in flat frames,
+so its kernel and cokernel are flat bundles.
+At a generic smooth boundary point use the normalized
+logarithmic map theorem on a product of a disc and a
+polydisc. In the normalized constant residue frames a
+horizontal map is the constant map intertwining residues:
+the one-variable normalized map proof excludes every
+nonzero Laurent exponent, and the tangential equations
+exclude dependence on the other coordinates.
+Its kernel and quotient therefore have constant
+logarithmic residue models.
+They meet DT.E's generic regularity condition.
+Restriction to \(L\) is exact on these kernels and
+cokernels. TC.9–TC.10 and full faithfulness prove an
+exact equivalence, writing DType and Loc for these two categories,
+\[
+\begin{gathered}
+\operatorname{DType}(X,S)
+\simeq\operatorname{Loc}_{\rm fin}(U)
+\end{gathered}
+\tag{TC.11}
+\]
+under TC.1–TC.2.
+DT.22–DT.23 supplies a coherent holomorphic generator
+near every compact subset for every object in TC.11.
+
+#### TC.C. Parameters and the canonical relative comparison
+
+For a parameter polydisc \(A\), use the joint analytic
+coefficient extension of PD.2:
+\[
+\begin{gathered}Q^{[A]}=\\ \mathcal O_{A\times X}\otimes_{p_X^{-1}\mathcal O_X}p_X^{-1}Q.\end{gathered}
+\tag{TC.12}
+\]
+PD.A
+proves that it is exact.
+PD.D's good-filtration calculation shows that it is a
+finite D-type module on \(A\times X\), with trivial
+connection in the parameter direction.
+This assertion uses no modification of \(X\).
+The same calculation applies to \(N\).
+
+The map \(f_A=\operatorname{id}_A\times f\) is proper and
+locally projective by PD.D's compact-product and
+pulled-back projective-embedding arguments.
+Its boundary is \(A\times D\), and its complement map
+is the finite cover \(h_A=\operatorname{id}_A\times h\).
+DT.D gives
+\[
+\begin{gathered}N_A=f_{A,*}M^{[A]}\\ =f_{A,+}M^{[A]}.\end{gathered}
+\tag{TC.13}
+\]
+Both \(N^{[A]}\) and \(N_A\) are finite D-type, and their
+horizontal local systems are canonically identified.
+DT.E therefore gives the unique isomorphism
+\[
+N^{[A]}\simeq N_A.
+\tag{TC.14}
+\]
+It includes the parameter connection.
+This proves the needed actual module comparison
+without assuming a proper analytic coefficient
+base-change formula.
+
+Flatness of TC.12 preserves the direct sum TC.9.
+The endomorphism \(\epsilon^{[A]}\) agrees, under TC.14,
+with the lifted sheetwise projector for \(h_A\):
+their restrictions agree, so faithfulness identifies them.
+In particular
+\[
+\operatorname{im}\epsilon^{[A]}=Q_L^{[A]}.
+\tag{TC.15}
+\]
+The identifications commute with parameter restrictions:
+extend the finite coefficient maps on the smaller product
+and use their identical open restrictions and faithfulness.
+They commute with all parameter derivatives because they
+are maps of the full finite operator modules.
+
+There is a canonical relative quasi-isomorphism
+\[
+\begin{gathered}
+c_N^A:\operatorname{DR}^0_{X/A}(N^{[A]})\\
+\longrightarrow
+Rj_{A,*}(p_A^{-1}\mathcal O_A\otimes_{\mathbf C}K),
+\end{gathered}
+\tag{TC.16}
+\]
+where \(j_A:A\times U\hookrightarrow A\times X\).
+Here is the generically finite argument in all degrees.
+The relative form map is AD.C's pullback:
+\[
+\begin{gathered}
+\Omega_X^b\otimes N^{[A]}\\
+\longrightarrow
+f_{A,*}(\Omega_Z^b\otimes M^{[A]}),\\
+0\le b\le n.
+\end{gathered}
+\tag{TC.17}
+\]
+The inverse Jacobian and its exterior powers are finite-pole
+units, by DT.8–DT.9.
+Thus this is an isomorphism in every degree.
+Its compatibility with the differentials is the lifted
+connection chain rule.
+Every source form lattice is coherent.
+Its positive proper images vanish on the finite-cover
+open and are killed after localization by DT.7.
+AD.17–AD.18 therefore makes TC.17 termwise acyclic for
+proper image. The finite form filtration identifies
+the actual relative complex with the derived image.
+
+Apply the parameter SNC comparison PD.C to the source.
+Composing its open pushforward with \(f_A\) gives
+\[
+\begin{gathered}
+Rf_{A,*}Rj_{Z,A,*}\\ (p_A^{-1}\mathcal O_A\otimes h^{-1}L)\\
+=Rj_{A,*}Rh_{A,*}\\ (p_A^{-1}\mathcal O_A\otimes h^{-1}L).
+\end{gathered}
+\tag{TC.18}
+\]
+Finite covering image is exact: on a small evenly covered
+open its section functor is a finite direct sum of the
+identical section functor on that open, and the stalk
+calculation is the same finite direct sum.
+On these opens it also commutes with the parameter
+coefficient sheaf. Hence the right side of TC.18 is
+exactly the right side of TC.16.
+All comparisons restrict to the flat-frame Poincaré
+map on \(U\).
+Derived open adjunction, as in AD.27, identifies their
+composite with the canonical map TC.16.
+
+Naturality of this canonical map gives
+\[
+c_N^A\epsilon^{[A]}
+ =Rj_{A,*}(1\otimes e)\,c_N^A.
+\tag{TC.19}
+\]
+Both sides have the same open restriction, which proves
+the equality by that same derived adjunction.
+On the finite direct decompositions TC.6, TC.9 and TC.15,
+TC.19 says that the quasi-isomorphism TC.16 is block
+diagonal. Its cone is the direct sum of the two block
+cones. A finite direct sum of cohomology sheaves is zero
+only if both summands are zero. Thus its \(L\)-block is
+a quasi-isomorphism:
+\[
+\begin{gathered}
+c_Q^A:\operatorname{DR}^0_{X/A}(Q^{[A]})\\
+\longrightarrow
+Rj_{A,*}(p_A^{-1}\mathcal O_A\otimes_{\mathbf C}L).
+\end{gathered}
+\tag{TC.20}
+\]
+Equation TC.10 gives it for every finite D-type \(Q\).
+The map is the canonical restriction comparison.
+It includes every singular point of \(S\), all morphisms
+and all parameter restrictions and derivatives.
+For actual infinite parameter heads, PD.C–PD.D's same
+fixed Cauchy margins justify normal convergence and
+commutation with the source homotopies.
+Alternatively, TC.20's canonical characterization on the
+open identifies the resulting action maps once those
+same coefficient bounds define them.
+No infinite tensor of solution spaces enters TC.20.
+
+#### TC.D. Ordinary infinity reconstruction and finite witnesses
+
+The conclusion of PD.E now holds under TC.1–TC.2:
+\[
+\begin{gathered}
+B_X\otimes_{\mathcal D_X}Q
+\xrightarrow{\;\Phi_Q\;}j_*(Q|_U),\\
+D^\infty_{A\times X}
+\otimes_{D_{A\times X}}Q^{[A]}\\
+\xrightarrow{\;\Phi_{Q,A}\;}
+j_{A,*}(Q^{[A]}|_{A\times U}).
+\end{gathered}
+\tag{TC.21}
+\]
+Both maps are actual full operator action and are
+isomorphisms. They are natural in finite D-type
+morphisms, all auxiliary parameters and restrictions.
+
+To verify that the proof uses no birational premise,
+insert TC.20 into the actual derived diagonal PD.5.
+The support/open identity PD.28 uses only the target
+open \(X\times U\).
+The graph \(\delta_U\) there is closed and has oriented
+real normal dimension \(2n\); PD.B gives its purity.
+The equality of the two composite pushforwards PD.32
+gives \(Rj_*(Q|_U)\).
+Ordinary right flatness places the left side in degree
+zero. The Cauchy unit and totalization sign PD.34–PD.34a
+give the identity open action, and ordinary open
+adjunction identifies the map with \(\Phi_Q\).
+None of these steps uses that \(f|_V\) has degree one.
+Repeating on \(A\times X\) proves the second map.
+It also gives
+\[
+\begin{gathered}
+R^bj_*(Q|_U)=0,\\
+R^bj_{A,*}(Q^{[A]}|_{A\times U})=0\\ (b>0).
+\end{gathered}
+\tag{TC.22}
+\]
+
+For a finite presentation on one neighborhood,
+\[
+\mathcal D_X^{r_1}\xrightarrow{F}
+\mathcal D_X^{r_0}\longrightarrow Q\longrightarrow0,
+\tag{TC.23}
+\]
+the source in TC.21 is the actual quotient
+\[
+B_X^{r_0}/\operatorname{im}(B_X^{r_1}\xrightarrow{F}B_X^{r_0}).
+\tag{TC.24}
+\]
+Every holomorphic section germ on the right of TC.21
+therefore has a representative consisting of \(r_0\)
+actual infinite heads. Every zero relation has one
+preimage row of length \(r_1\).
+Finitely many entries and germ equalities can be
+represented on a common neighborhood.
+The existing ordinary kernel and finite relation
+bounds retain every epsilon on that domain.
+There is no closure of the relation image and no
+completed module tensor.
+These statements also apply to the second map of TC.21,
+using a finite presentation over \(D_{A\times X}\).
+
+The projector itself survives ordinary infinity
+extension as the actual split projector
+\[
+\begin{gathered}
+1\otimes\epsilon:
+B_X\otimes_{\mathcal D_X}N\\ \longrightarrow B_X\otimes_{\mathcal D_X}N,\\
+\operatorname{im}(1\otimes\epsilon)
+=B_X\otimes_{\mathcal D_X}Q_L.
+\end{gathered}
+\tag{TC.25}
+\]
+This follows by tensoring the two finite split maps
+in TC.9; it does not even require tensor flatness.
+Under TC.21 it is the fibrewise projector
+\(j_*(1\otimes e)\) on holomorphic flat-bundle sections.
+Thus the finite witnesses in TC.24 belong to the
+actual summand, not merely a completed invariant space.
+
+The comparisons also hold for bounded complexes with
+finite D-type cohomology. The canonical relative
+restriction map commutes with finite truncation
+triangles, as in AD.28a; TC.20 on each cohomology
+module and induction over the finite cohomological
+range prove it for the complex.
+The diagonal PD.5 and right flatness then give
+the corresponding derived infinity comparison.
+In the relative comparison the target is
+\(Rj_{A,*}j_A^{-1}\operatorname{DR}^0_{X/A}\);
+no equivalence between the ambient derived category
+and the derived category of its heart is assumed.
+
+#### TC.E. The full SNC infinity image
+
+The same cover gives an actual proper-image comparison
+for any normalized logarithmic source, even when its
+local system \(L_Z\) is not pulled back from \(U\).
+Put
+\[
+\begin{gathered}
+M=E_\Sigma(L_Z)(*D),\\ N=f_+M=f_*M,\\
+M^\infty=B_Z\otimes_{\mathcal D_Z}M.
+\end{gathered}
+\tag{TC.26}
+\]
+Then \(N\) is finite D-type by DT.D and has horizontal
+local system \(h_*L_Z\).
+The source SNC comparison SI.C–SI.D gives
+\[
+M^\infty=j_{Z,*}(M|_V).
+\tag{TC.27}
+\]
+The identity modification of the SNC pair on \(Z\)
+meets the hypothesis of PD.D.
+PD.33 applied there also proves that this source
+open image has no positive higher direct images.
+Consequently
+\[
+\begin{gathered}
+Rf_*M^\infty\\ =Rf_*Rj_{Z,*}(M|_V)\\
+=Rj_*Rh_*(M|_V).
+\end{gathered}
+\tag{TC.28}
+\]
+The finite covering functor \(h_*\) is exact on all
+complex sheaves, not only local systems.
+On evenly covered opens,
+\[
+\begin{gathered}h_*(M|_V)\\ =\mathcal O_U\otimes_{\mathbf C}h_*L_Z\\ =N|_U.\end{gathered}
+\tag{TC.29}
+\]
+The pullback coefficient identification is valid
+because every sheet is a local biholomorphism.
+TC.21–TC.22 for \(N\) therefore give
+\[
+\begin{gathered}
+B_X\otimes_{\mathcal D_X}f_+M
+\simeq f_*M^\infty,\\
+R^bf_*M^\infty=0\qquad(b>0).
+\end{gathered}
+\tag{TC.30}
+\]
+The first isomorphism is canonical full target
+\(B_X\)-linear action.
+On the right define the target action over the
+unramified open by the target coordinate action on
+each sheet and continue its holomorphic section
+sheaf \(j_*h_*(M|_V)\).
+Cauchy convergence on each fixed compact branch
+chart defines every full head there.
+All maps in TC.27–TC.30 are the identical map on that
+open, so open adjunction identifies the whole maps
+and their full actions.
+This asserts no infinite chain-rule action on an
+arbitrary singular transfer distribution.
+The equality uses the actual source SNC infinity
+module and its entire positive heads.
+Its target inverse and zero witnesses are the
+finite presentation witnesses TC.23–TC.24 for \(N\).
+
+The proof repeats on \(A\times Z\to A\times X\)
+with joint holomorphic coefficients:
+TC.14 supplies its actual finite image, and the
+source identity-SNC comparison and TC.22 supply
+both open-image acyclicity statements.
+Thus TC.30 includes the full auxiliary infinite
+operators, not only fixed finite parameter derivatives.
+It is natural in source local-system maps and
+the corresponding finite logarithmic maps.
+It is a theorem for the full class TC.1–TC.2,
+not a claim about arbitrary proper images of
+arbitrary regular holonomic modules.
+
+#### TC.F. Cofinite left ideals and the full special tensor
+
+Let \(\pi=\pi_1(U)\), with the convention
+\(T_{\gamma\eta}=T_\gamma T_\eta\), and let
+\(\mathfrak a\subset\mathbf C[\pi]\) be a cofinite
+left ideal. Write
+\[
+\begin{gathered}
+V_{\mathfrak a}=\mathbf C[\pi]/\mathfrak a,\\
+q=\dim_{\mathbf C}V_{\mathfrak a},\\
+v_0=1+\mathfrak a.
+\end{gathered}
+\tag{TC.31}
+\]
+PD.F proves the exact dual flat-bundle/function
+realization with its inverse deck convention:
+\[
+\begin{gathered}
+\lambda_f(\gamma v_0)=T_\gamma f,\\
+T_\gamma\lambda=\lambda\rho_\gamma,\\
+f=\lambda(v_0).
+\end{gathered}
+\tag{TC.32}
+\]
+This proof does not use an SNC modification.
+It includes all noncommuting matrices and
+requires no two-sidedness of \(\mathfrak a\).
+Use TC.B to realize its horizontal local
+system by the actual module \(Q_{\mathfrak a}\).
+TC.21 then gives
+\[
+\begin{gathered}
+B_X\otimes_{\mathcal D_X}Q_{\mathfrak a}
+\simeq\mathscr F_{\mathfrak a},\\
+D^\infty_{A\times X}
+\otimes_{D_{A\times X}}Q_{\mathfrak a}^{[A]}\\
+\simeq\mathscr F_{\mathfrak a}(A;X).
+\end{gathered}
+\tag{TC.33}
+\]
+For \(\mathfrak b\subseteq\mathfrak a\), the quotient
+\(V_{\mathfrak b}\to V_{\mathfrak a}\) dualizes to the
+horizontal inclusion of these function models.
+TC.B's functoriality and TC.21's actual action identify
+the resulting finite and infinite operator maps.
+All coordinates and auxiliary parameters are retained.
+
+In the full Weierstrass setup PM.A take the target
+boundary to be
+\[
+\begin{gathered}
+\{P(t,x)=0\}\\ {}\cup(D_R\times H),\\
+H\text{ a hypersurface}\\ \text{or empty}.
+\end{gathered}
+\tag{TC.34}
+\]
+Suppose this pair has a cover TC.1–TC.2.
+Let \(m\) be the number of distinct normal punctures
+off \(H\), and put
+\[
+\begin{gathered}R=D_X^\infty,\quad T=\widetilde E^\infty,\\ N_{\mathfrak c}=R\otimes_{\mathcal D_X}Q_{\mathfrak c}.\end{gathered}
+\tag{TC.35}
+\]
+TC.33 is the exact actual auxiliary comparison and
+ideal compatibility required in ST.20.
+The entire PM relative primitive representation
+\(\mathbb W\), including all special heads and spatial
+kernels, has dimension \(q(m+1)\).
+Set
+\[
+\mathfrak b=\operatorname{Ann}(V_{\mathfrak a}\oplus\mathbb W).
+\tag{TC.36}
+\]
+It is a two-sided ideal contained in \(\mathfrak a\),
+since applying an annihilator to \(v_0\) gives its
+membership in \(\mathfrak a\).
+Its quotient embeds into the endomorphisms of the
+\(q(m+2)\)-dimensional representation.
+The complete finite balancing criterion ST.12–ST.20
+therefore proves
+\[
+\begin{gathered}
+\operatorname{im}(T\otimes_RN_{\mathfrak a}\\ \longrightarrow T\otimes_RN_{\mathfrak b})\\
+\subseteq\operatorname{im}(N_{\mathfrak b}\\ \longrightarrow T\otimes_RN_{\mathfrak b}),\\
+\dim_{\mathbf C}\mathbf C[\pi]/\mathfrak b\\
+\le q^2(m+2)^2.
+\end{gathered}
+\tag{TC.37}
+\]
+These are actual ordinary tensor images with finite
+witnesses, not closure statements or finite-order
+truncations.
+The supplied finite SNC cover is still a geometric
+hypothesis. Neither this descent nor TC.30 proves its
+existence for a general analytic pair, the general
+holonomic solution reconstruction theorem, I23, or
+arbitrary analytic proper regularity.
+
+#### TC.G. Sheet permutations, Jordan blocks and density
+
+On an evenly covered chart of rank \(r\), order the
+sheets temporarily. With sheet vectors first,
+\[
+\begin{gathered}
+\iota=\mathbf1_d\otimes I_r,\\
+r=d^{-1}\mathbf1_d^{\,t}\otimes I_r,\\
+e=d^{-1}J_d\otimes I_r,
+\end{gathered}
+\tag{TC.38}
+\]
+where \(J_d\) is the all-one matrix.
+Continuation around a loop with sheet permutation
+\(P_\gamma\) and local-system matrix \(A_\gamma\) is
+\[
+P_\gamma\otimes A_\gamma.
+\tag{TC.39}
+\]
+Every permutation fixes the all-one column and row,
+so TC.38 commutes with TC.39 even when the matrices
+for different loops do not commute.
+For instance the degree-three action of \(S_3\) on
+its three cosets of a transposition subgroup is a
+nonnormal covering representation. Its two generating
+sheet permutations do not commute. The same formula
+still has rank \(r\) and trace \(r\), and its complement
+has rank \((d-1)r\).
+This is a fibrewise average; it is not an average over
+the global deck group of a nonnormal cover.
+
+Here is a ramified connection that also fixes the
+residue index and density. On a disc take
+\[
+\begin{gathered}
+t=w^3,\quad S=\{t=0\},\\ D=\{w=0\},\quad J=3w^2,\\
+A=\frac25I_2+N,\\
+N=\begin{pmatrix}0&1\\0&0\end{pmatrix}.
+\end{gathered}
+\tag{TC.40}
+\]
+Let the target connection in a row of basis vectors
+\(a\) be \(\nabla_{\partial_t}a=t^{-1}aA\).
+Its pulled-back frame has residue \(3A\).
+The normalized source frame is
+\[
+\begin{gathered}
+v=w^{-1}f^*a,\\
+B=3A-I_2\\
+{}=\frac15I_2+3N,\\
+\nabla_{\partial_w}v=w^{-1}vB.
+\end{gathered}
+\tag{TC.41}
+\]
+This spectrum lies in the normalized strip.
+In the target meromorphic basis
+\(v,wv,w^2v\), DT.20 gives the three residue blocks
+\[
+\begin{gathered}
+R_j=(B+jI_2)/3,\\ j=0,1,2,\\
+R_0=\frac1{15}I_2+N,\\
+R_1=\frac25I_2+N,\\
+R_2=\frac{11}{15}I_2+N.
+\end{gathered}
+\tag{TC.42}
+\]
+The unit sends \(a\) to \(wv\).
+For a source section \(w^jv\), its coefficient
+relative to \(f^*a\) is \(w^{j-1}\).
+The normalized trace over the three roots is zero
+for exponents \(-1,1\) and one for exponent zero:
+on the roots \(w,\zeta w,\zeta^2w\), this is the
+finite geometric sum \(1+\zeta+\zeta^2=0\).
+Thus the actual lifted projector in this basis is
+\[
+\epsilon=\operatorname{diag}(0_2,I_2,0_2).
+\tag{TC.43}
+\]
+It selects index \(1\), not index \(0\).
+Its retained block is exactly \(A\), including the
+nilpotent entry one. It commutes with the whole
+target connection since TC.42 is block diagonal.
+
+The left transfer frame is
+\(\eta=dw\otimes f^*(dt)^{-1}\).
+Its actual augmentation DT.11 is
+\[
+\begin{gathered}\eta\otimes P\otimes m\\ \longmapsto P(t,\nabla_{\partial_t})(m/J).\end{gathered}
+\tag{TC.44}
+\]
+In particular the unit vector \(a\) is represented by
+\[
+\begin{gathered}
+\eta\otimes1\otimes Jf^*a\\
+=\eta\otimes1\otimes3w^3v.
+\end{gathered}
+\tag{TC.45}
+\]
+The image is \(wv=f^*a\); its normalized trace is \(a\).
+Inserting \(f^*a\) without the factor \(J\) would
+instead give \(a/(3w^2)\) on a sheet, whose trace is
+zero. Hence omitting the density cannot yield the
+unit or its retraction.
+There is no cohomological shift: source and target
+have the same dimension.
+For dimension zero, the determinant, both density
+lines and the form complexes are empty products;
+the construction is precisely the finite set
+average TC.4 in degree zero.
+
+![Finite-cover trace, the actual summand and a ramified Jordan example](assets/snc-cover-trace-descent.png)
+
+**Figure TC.1.** Panel A shows the actual split maps
+TC.4–TC.9 and their ordinary infinity extension
+TC.21–TC.25.
+The dotted vertical lines denote the finite D-type
+realization, rather than morphisms between sheaves
+on different spaces.
+Panel B is the real slice \(t=w^3\), \(-1\le w\le1\),
+with equal scales; the complex punctured-disc
+cover has degree three.
+Panel C gives the exact three rank-two residue
+blocks TC.42, including their nilpotent entries,
+and the index-one projector TC.43.
+The source and transfer units are TC.41 and
+TC.44–TC.45. Algebraic panels have no metric scale.
+
+Editable SVG,
+exact figure data, and
+reproducible source.
+Freely accessible further reading:
+[Kashiwara–Kawai, *Holonomic systems III*, II.2.2.4 and III.4.9, printed pp.864 and 898–899](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf).
+TC.A–TC.G prove the stated trace, summand, parameter
+and proper-image comparisons with the exact earlier
+programme dependencies above.
+
+
+### 5.77. Power covers and monomial root graphs
+
+Let \(B\) be a polydisc with coordinates
+\((z_1,\ldots,z_d)\), and let
+\[
+\begin{gathered}
+P(t,z)=t^m+a_1(z)t^{m-1}\\ {}+\cdots+a_m(z),\\
+m\ge1,\qquad a_j(0)=0.
+\end{gathered}
+\tag{QG.1}
+\]
+Suppose its discriminant is not identically zero and
+\[
+\begin{gathered}
+\Delta_P=z_1^{b_1}\cdots z_k^{b_k}c(z),\\
+b_i\ge0,\quad c(z)\ne0,\\ 0\le k\le d.
+\end{gathered}
+\tag{QG.2}
+\]
+Zero exponents are allowed, so the chosen coordinate
+boundary may be larger than the discriminant.
+After shrinking \(B\), choose \(0<r<R\) so that all roots
+lie in \(|t|<r\). Set
+\[
+\begin{gathered}
+X=D_R\times B,\\
+S=\operatorname{Supp}\\ \{P(t,z)z_1\cdots z_k=0\}.
+\end{gathered}
+\tag{QG.3}
+\]
+There is a proper locally projective map of smooth
+complex manifolds
+\[
+F:Z\longrightarrow X
+\tag{QG.4}
+\]
+of equal dimension, whose inverse reduced boundary is
+SNC, and whose restriction off \(S\) is a surjective
+finite unramified covering. Its degree can be taken
+to be \((m!)^k\).
+We construct it with actual holomorphic functions and
+finitely many smooth blowups.
+
+All arguments allow additional joint holomorphic
+coordinates among the unramified base coordinates,
+provided QG.2 holds with a nowhere-zero unit on that
+product. The coordinate boundary in QG.3 is part of
+the statement.
+
+#### QG.A. The finite root cover and bounded extension
+
+For a monic complex polynomial, every root satisfies
+\[
+|t|\le1+\max_j|a_j|.
+\tag{QG.5}
+\]
+Indeed, for \(|t|>1+M\), the sum of the absolute values
+of the lower terms is at most
+\(M(|t|^{m-1}+\cdots+1)<|t|^m\).
+For completeness, existence of the complex roots
+follows from the Cauchy formula: if a nonconstant
+polynomial had no zero, its reciprocal would be a
+bounded entire function, using its growth at infinity
+and a positive minimum on a compact disc.
+Cauchy estimates make its derivative zero. This is
+impossible. Division by the resulting linear factor
+and induction gives all \(m\) roots with multiplicity.
+
+The discriminant means the symmetric root product
+\[
+\Delta_P=\prod_{i<j}(t_i-t_j)^2.
+\tag{QG.6}
+\]
+It is a polynomial in the coefficients.
+One elementary symmetric-polynomial argument suffices:
+the largest monomial of a symmetric homogeneous
+polynomial has ordered exponents. Subtract the
+corresponding product of elementary symmetric
+polynomials to cancel it. Lexicographic reduction
+terminates among the finitely many monomials of that
+degree. Applying the argument to each homogeneous
+degree expresses QG.6 in the elementary symmetric
+polynomials, hence in the coefficients.
+In particular QG.2 says that all roots are distinct
+on
+\[
+\begin{gathered}B^*=\\ \{z\in B\mid z_1\cdots z_k\ne0\}.\end{gathered}
+\tag{QG.7}
+\]
+
+A simple root depends holomorphically on the base.
+Here is the local argument. At a root \(t_0\) with
+derivative \(c_0\ne0\), iterate
+\[
+t_{\nu+1}=t_\nu-c_0^{-1}P(t_\nu,z).
+\tag{QG.8}
+\]
+On a small closed disc about \(t_0\), and a sufficiently
+small base polydisc, the derivative of this iteration
+in \(t\) has norm less than \(1/2\), and its value at
+the centre is within half the disc radius.
+It maps the disc into itself and converges uniformly
+by the geometric contraction estimate.
+Its iterates are holomorphic in \(z\); their uniform
+limit is holomorphic by the Cauchy formula.
+It is the unique root in that disc.
+Use disjoint discs at the \(m\) simple roots.
+These \(m\) branches give all roots by their number.
+Thus the zero set over QG.7 is an actual finite
+holomorphic covering of degree \(m\).
+
+Its monodromy is a permutation representation.
+The logarithmic cover of a punctured polydisc has
+coordinates \(z_i=\exp(w_i)\) for \(i\le k\), with
+\(\operatorname{Re}w_i<\log R_i\).
+That product of half-planes and discs is convex.
+Path lifting in a finite covering follows by
+successively using its sheet charts on a finite
+cover of the compact path.
+Homotopy invariance follows by subdividing a compact
+homotopy square into finitely many small rectangles
+whose images lie in sheet charts; labels agree on
+shared edges, and induction across the rectangles
+identifies the lifted endpoints.
+Consequently this logarithmic cover trivializes the
+root cover. Its deck translations are the independent
+\(2\pi i\) translations, so the monodromy is generated
+by \(k\) commuting permutations.
+
+Put \(N=m!\). Each permutation of \(m\) letters has
+order dividing \(N\). Its order divides the product
+of its cycle lengths; that product divides \(m!\),
+because the product of their factorials divides
+\(m!\) by the integer multinomial count.
+The power substitution
+\[
+\begin{gathered}
+q:\widetilde B\longrightarrow B,\\
+z_i=u_i^N\quad(i\le k),\\ z_i=u_i\quad(i>k)
+\end{gathered}
+\tag{QG.9}
+\]
+therefore kills every root monodromy generator.
+It gives globally labelled holomorphic roots
+\(r_1,\ldots,r_m\) on \(\widetilde B^*\).
+The source radii are \(R_i^{1/N}\) in the first
+\(k\) coordinates and \(R_i\) in the others.
+The labels are consistent on the whole punctured
+product, not just on a sector.
+With no ramified coordinate the power map is the
+identity. In degree one its exponent is one;
+empty products and empty circle integrations
+have their identity meanings.
+
+These roots extend jointly holomorphically to
+\(\widetilde B\). To check this without a removable
+singularity citation, use QG.5 on a fixed smaller
+product. Every branch is uniformly bounded there.
+In one punctured coordinate its negative Laurent
+coefficient of order \(j\ge1\), estimated on a
+circle of radius \(\rho\), has norm at most
+\(M\rho^j\). Letting \(\rho\) tend to zero makes
+that coefficient zero. The nonnegative series,
+or its fixed outer-circle Cauchy integral, is the
+extension.
+Apply this in each of the finitely many punctured
+coordinates. Equivalently the extension on an
+inner product is
+\[
+\begin{gathered}\frac1{(2\pi i)^k}\int_{|\zeta_i|=\rho_i}\\ r_\nu(\zeta,u')\prod_{i=1}^k\frac{d\zeta_i}{\zeta_i-u_i}.\end{gathered}
+\tag{QG.10}
+\]
+The fixed circles miss all coordinate hyperplanes.
+This integral is holomorphic in all remaining
+coordinates, including every auxiliary parameter.
+It agrees with the branch on the punctured product
+by the one-coordinate argument.
+Different circles give the same extension by
+density. All fixed derivatives follow from an
+additional fixed Cauchy margin.
+Thus
+\[
+\begin{gathered}P(t,q(u))\\ =\prod_{\nu=1}^m(t-r_\nu(u)).\end{gathered}
+\tag{QG.11}
+\]
+as an identity on the whole product.
+
+The uniform root bound inside \(D_r\) required in
+QG.3 can also be chosen directly: shrink \(B\) until
+\(\sum_j\sup_B|a_j|r^{-j}<1\).
+For \(|t|\ge r\) this makes the sum of the lower
+terms strictly smaller than \(|t|^m\), so there
+are no such roots.
+
+The power map QG.9 is proper and locally projective.
+The preimage of a compact subset stays a positive
+distance from every source polydisc boundary and
+is closed, hence compact.
+Alternatively its graph is the closed incidence
+space in \(B\times(\mathbf P^1)^k\) with equations
+\[
+U_i^N=z_iV_i^N.
+\tag{QG.12}
+\]
+No solution has \(V_i=0\), since that would force
+\(U_i=0\). Thus this is precisely the power cover.
+For any finite number of projective factors,
+use all product homogeneous monomials.
+On a chart where one product monomial is
+nonzero, their ratios recover every factor's
+affine coordinate. The equations equating
+the two products obtained by exchanging one
+factor force each remaining monomial ratio
+to be the product of those affine coordinates.
+Thus these equations define exactly the
+image on every projective chart.
+They give the closed Segre embedding in one
+projective space, with the same argument
+as AD.33a.
+Off the coordinate boundary, its Jacobian factors
+are \(Nu_i^{N-1}\); it is unramified of degree \(N^k\).
+
+#### QG.B. Actual monomial differences
+
+Each nonzero difference of two extended roots has
+the form
+\[
+\begin{gathered}r_i-r_j=u^{\alpha_{ij}}v_{ij}(u),\\ v_{ij}(u)\ne0,\end{gathered}
+\tag{QG.13}
+\]
+after one common shrinking of \(\widetilde B\).
+The multi-index is supported in the first \(k\)
+coordinates. It is an integer multi-index; no
+formal coefficient field is being used.
+
+Here is the needed factor argument.
+The local ring of convergent holomorphic germs is
+an integral domain, and each coordinate \(u_i\)
+is prime: the quotient by \(u_i\) is the convergent
+ring in the other coordinates, also an integral
+domain. Vanishing at \(u_i=0\) is divisibility by
+\(u_i\), by the convergent Taylor expansion.
+If a finite product of germs is a coordinate
+monomial times a unit, choose a coordinate with
+positive exponent. Its primality puts that
+coordinate in at least one factor. Divide it out
+and induct on the total monomial exponent.
+At exponent zero, the product is a unit and every
+factor is a unit.
+This proves that each factor is a monomial times
+a unit; no unique-factorization theorem is needed.
+
+Apply this argument to QG.6 after QG.9 and QG.11:
+\[
+\begin{gathered}\prod_{i<j}(r_i-r_j)^2\\ =u_1^{Nb_1}\cdots u_k^{Nb_k}c(q(u)).\end{gathered}
+\tag{QG.14}
+\]
+No difference is the zero germ, because all roots
+are distinct off the coordinate boundary.
+There are finitely many differences, so shrink
+once to make all their unit factors nonvanishing.
+The same proof works with all holomorphic
+parameters present.
+
+#### QG.C. Principalizing finite monomial sums
+
+We need a global operation on a smooth SNC pair
+\((Y,E)\), with finitely many boundary components
+on the neighborhood under consideration.
+An invertible monomial ideal has the form
+\[
+\begin{gathered}\mathcal I=\mathcal O_Y\left(-\sum_i a_iE_i\right),\\ a_i\ge0.\end{gathered}
+\tag{QG.15}
+\]
+We first principalize the sum of two such ideals.
+If the exponents of the second are \(b_i\), put
+\[
+d_i=a_i-b_i.
+\tag{QG.16}
+\]
+On a coordinate chart, one of the two monomials
+divides the other exactly when the nonzero
+\(d_i\) of the components through that point
+have only one sign.
+Their sum is then the smaller principal ideal.
+If both signs occur, two opposite-sign components
+meet.
+
+For all meeting opposite-sign pairs set
+\[
+\begin{gathered}
+M=\max\{p+q\mid\\ E_i\cap E_j\ne\varnothing,\\
+d_i=p>0,\\ d_j=-q<0\}.
+\end{gathered}
+\tag{QG.17}
+\]
+Choose a pair attaining \(M\), and blow up the
+whole smooth intersection \(E_i\cap E_j\).
+Its connected components are disjoint, so they
+may be treated together.
+In coordinates \(x,y\) for the pair the two
+charts are
+\[
+\begin{gathered}(x,y)=(x,xv),\\ (x,y)=(wy,y).\end{gathered}
+\tag{QG.18}
+\]
+All other boundary coordinates are unchanged.
+These charts prove smoothness and the SNC
+property of the reduced total boundary.
+They also show that the strict transforms of
+the chosen pair are disjoint.
+On every new exceptional component the exponent
+difference of the two total ideals is
+\[
+d_{\rm new}=p-q.
+\tag{QG.19}
+\]
+
+Every new opposite-sign meeting pair has sum
+strictly less than \(M\).
+For if \(p>q\), its other component must have
+negative difference \(-q'\) and meet the centre.
+That old component already met \(E_i\), so
+\(p+q'\le M=p+q\), giving \(q'\le q\).
+Its new sum is at most
+\((p-q)+q'=p<M\).
+If \(p<q\), use the old pair with \(E_j\) to
+obtain the analogous bound \(q<M\).
+If \(p=q\), the exceptional difference is zero
+and makes no opposite-sign pair.
+Distinct exceptional components over disjoint
+centre components do not meet.
+
+All other old meeting pairs are unchanged or
+disappear. The chosen maximal pair disappears,
+and no new maximal pair occurs.
+Let \(c_M\) count the meeting pairs with sum \(M\).
+Then the lexicographic invariant
+\[
+(M,c_M)
+\tag{QG.20}
+\]
+strictly decreases, until no opposite signs meet.
+The first entry is a positive integer and the
+second is finite at each stage. After finitely
+many decreases at a fixed first entry that entry
+drops; induction on it proves termination.
+This gives an invertible monomial total image
+of the sum.
+Near a fixed compact set only finitely many
+boundary components and their centre components
+are needed: take finitely many SNC charts and
+shrink around that compact set. In the application
+below the initial boundary is coordinate and
+all these base operations have finitely many
+coordinate charts. In each, the old coordinates
+are monomials in the new coordinates and the
+domain is given by the original monomial
+polydisc inequalities. Its coordinate strata
+are connected whenever nonempty, by the
+convexity of their logarithmic modulus
+inequalities and the connected angular tori.
+There are finitely many such charts at each
+finite stage. Thus only finitely many boundary
+and intersection components occur, and the
+finiteness condition used in QG.20 holds there.
+It also holds on the entire inverse image of
+a smaller base polydisc.
+
+A finite sum of invertible monomial ideals is
+principalized by adding its summands one at a time
+and applying this two-ideal construction.
+Every already invertible ideal stays invertible
+under subsequent pullback.
+Repeating for any finite family of such sums
+therefore principalizes them all.
+Every centre lies in the boundary, so the
+resulting map is an isomorphism off that boundary.
+
+We record projectivity as well as local charts.
+A blowup in the coordinate centre of QG.18 is the
+closed incidence space with \(xV=yU\) in
+\(Y\times\mathbf P^1\) on a trivializing chart.
+Its maps glue intrinsically for the coherent
+centre ideal.
+To see that the finite composition is locally
+projective over the original polydisc, use
+Theorem5.8.
+If the current \(Y\) is closed in a projective
+space over that polydisc, push its coherent
+centre ideal into the projective space.
+Lemma5.9.1 proves coherence of this closed push.
+Theorem5.8 supplies, over a smaller entire
+polydisc, finitely many generators after one
+projective twist.
+The blowup is the closure of the graph of these
+generators in \(Y\times\mathbf P^{s-1}\).
+Its affine charts are the degree-zero rings
+generated by the ratios of these generators,
+which are exactly the charts of the centre
+blowup. Twisting all generators by one line
+does not change their ratios.
+The product projective embedding and Segre give
+a closed embedding over the original base.
+This proves projectivity by induction through
+the finite sequence. Properness also follows
+from each closed incidence map and compactness
+of its projective fibre.
+Only finitely many base shrinkings occur.
+
+#### QG.D. Global root sections and collision ideals
+
+For every subset \(A\subseteq\{1,\ldots,m\}\)
+of size at least two, take the root-cluster ideal
+\[
+\mathcal I_A=(r_i-r_j:i,j\in A).
+\tag{QG.21}
+\]
+By QG.13 it is a finite sum of invertible
+monomial ideals on \(\widetilde B\).
+QG.C produces a proper projective base modification
+\[
+\beta:B'\longrightarrow\widetilde B
+\tag{QG.22}
+\]
+on which every total image of QG.21 is invertible
+monomial and the reduced inverse coordinate
+boundary \(E\) is SNC.
+The pulled-back roots are globally labelled
+holomorphic functions on \(B'\).
+They remain inside \(D_r\).
+Their graphs are closed sections of
+\[
+Y_0=B'\times D_R\longrightarrow B'.
+\tag{QG.23}
+\]
+We resolve their intersections by globally
+closed centres, keeping the base \(B'\) fixed.
+
+The following description remains valid after
+each of the blowups to be used.
+The ambient space is smooth near every root
+section; its projection to \(B'\) is smooth of
+relative dimension one there.
+The vertical reduced boundary is SNC and meets
+each root section transversely.
+Near a point where the sections in \(A\) coincide,
+choose a fibre coordinate \(v\).
+Their collision ideal on the base is generated by
+\[
+\begin{gathered}v(\sigma_i)-v(\sigma_j),\\ i,j\in A.\end{gathered}
+\tag{QG.24}
+\]
+Where they do not all coincide, set this ideal
+to the unit ideal.
+These definitions glue.
+On a change of fibre coordinate \(v'=\phi(b,v)\),
+the difference of two values is their old
+difference times the holomorphic divided
+difference of \(\phi\).
+At a common section value this factor is a
+unit, since the fibre-coordinate derivative
+is nonzero. The inverse coordinate gives the
+reverse inclusion of the generated ideals.
+Off the collision locus at least one difference
+is a unit.
+Thus QG.24 is a well-defined coherent ideal.
+Initially it is precisely the total image of
+QG.21, hence is invertible monomial.
+
+Choose a cluster \(C\) of largest cardinality
+among all roots that coincide at any base point.
+If that cardinality is one, all root sections
+are disjoint and there is nothing to do.
+Otherwise its collision ideal is a nonunit
+invertible monomial, so some component \(E_i\)
+occurs with positive coefficient.
+All sections in \(C\) coincide along the whole
+\(E_i\).
+No root outside \(C\) can meet them at a point
+of \(E_i\): that would give a larger cluster.
+Choose one of its roots and let the centre be
+\[
+\sigma_c(E_i),\qquad c\in C.
+\tag{QG.25}
+\]
+The centre is independent of the choice within
+\(C\), since those sections coincide on \(E_i\).
+It is smooth and closed.
+Near it the coordinates are \(x=0\) for \(E_i\)
+and \(v=0\) for the chosen section.
+Blow up \((x,v)\).
+
+Every root in \(C\) has local value \(v=xg_j(b)\).
+Its strict section lies in the \(x\)-chart,
+with new fibre coordinate
+\[
+\begin{gathered}v_1=v/x,\\ v_1(\sigma_j)=g_j(b).\end{gathered}
+\tag{QG.26}
+\]
+All roots outside \(C\) are disjoint from the
+centre and remain unchanged near their images.
+Each strict root section is still isomorphic
+to the base: the centre pulls back to the
+Cartier divisor \(E_i\) on a section in \(C\),
+and to the empty set on every other section.
+The same charts QG.18 prove smoothness,
+properness and the SNC property of the full
+vertical boundary.
+Near a section in \(C\), only \(x=0\) and the
+other base-boundary coordinates occur; the
+old strict \(x\)-divisor lies on the other
+chart and misses that section.
+The projection is still smooth of relative
+dimension one near every section.
+
+For clarity this includes the complementary
+chart. There \(x=vw\); a strict root in \(C\)
+satisfies \(1=w g_j(b)\).
+At \(w=0\) this is impossible.
+Where \(w\ne0\), the point is already in
+the \(x\)-chart QG.26.
+Roots outside \(C\) miss the centre altogether.
+Thus no unexamined strict root occurs at the
+other end of the exceptional projective line.
+The remaining boundary there is the coordinate
+vertical boundary, already SNC.
+
+For every \(A\subseteq C\) of size at least two,
+QG.26 divides its collision ideal by \(x\).
+For a subset containing a root of \(C\) and a
+root outside \(C\), its collision ideal is a
+unit along \(E_i\), both before and after the
+blowup. Elsewhere it is unchanged.
+For a subset disjoint from \(C\), the operation
+misses all its sections.
+Therefore the update is exactly
+\[
+\begin{gathered}
+\mathcal I_A'=\mathcal I_A(E_i),\\ (A\subseteq C,\ |A|\ge2),\\ \mathcal I_A'=\mathcal I_A\\ (A\not\subseteq C).
+\end{gathered}
+\tag{QG.27}
+\]
+In the first line every relevant coefficient
+was positive because all those roots coincided
+on \(E_i\).
+All collision ideals thus remain invertible
+monomial ideals on the same base with the
+same boundary components.
+
+Write their coefficients as \(a_{A,i}\) and put
+\[
+W=\sum_{|A|\ge2}\sum_i a_{A,i}.
+\tag{QG.28}
+\]
+This is a finite nonnegative integer.
+The exact change in QG.27 is
+\[
+\begin{gathered}W'=W\\ {}-(2^{|C|}-|C|-1).\end{gathered}
+\tag{QG.29}
+\]
+The subtracted number counts the subsets
+of \(C\) of size at least two and is positive.
+Thus at most the initial \(W\) blowups can occur.
+If two roots still met, their monomial collision
+ideal would be nonunit and a maximal cluster
+would allow another step.
+The terminal root sections are consequently
+all disjoint.
+Each remains transverse to the vertical
+boundary, so their union with that boundary
+is SNC.
+
+This is a global construction on \(Y_0\).
+Its centres are the closed sections QG.25,
+not a disjoint union of local charts.
+QG.C's projective graph argument applies to
+each coherent centre ideal over the original
+target \(X\). The finite resulting map
+\[
+\mu:Z\longrightarrow Y_0
+\tag{QG.30}
+\]
+is proper and locally projective.
+
+#### QG.E. The actual SNC cover and D-type consequences
+
+Compose the constructed maps:
+\[
+F=(\operatorname{id}_{D_R}\times(q\beta))\mu.
+\tag{QG.31}
+\]
+The factor order in QG.23 is interchanged in this
+formula only to match \(X=D_R\times B\).
+All maps are holomorphic, proper and locally
+projective, by QG.A, QG.C and QG.D.
+Their source is smooth and has dimension \(d+1\).
+
+The reduced inverse of \(S\) is exactly the
+vertical reduced boundary together with the
+strict root graphs.
+Indeed QG.11 identifies the inverse polynomial
+divisor with these graphs before blowing up.
+Every exceptional divisor of the graph operations
+is vertical, since its centre lies over an
+\(E_i\). QG.D proved the SNC assertion on the
+whole source, including the complementary charts.
+Off \(S\), the base modifications and graph
+blowups are isomorphisms, while QG.9 is the
+unramified covering of degree \(N^k\).
+This proves every assertion of QG.4.
+The complement is dense in every source
+component: each coordinate blowup is the
+closure of its isomorphism locus, and that
+locus contains the dense complement of these
+divisors.
+
+Hence §5.76, TC.A–TC.F
+applies to QG.3 with geometry constructed here.
+Every finite-rank local system on \(X\setminus S\)
+has its actual finite divisorial D-type module.
+For every module \(Q\) in that class and every
+auxiliary polydisc \(A\),
+\[
+\begin{gathered}
+D_X^\infty\otimes_{\mathcal D_X}Q
+\simeq j_*(Q|_{X\setminus S}),\\
+D^\infty_{A\times X}
+\otimes_{D_{A\times X}}Q^{[A]}\\
+\simeq j_{A,*}(Q^{[A]}|_{A\times(X\setminus S)}).
+\end{gathered}
+\tag{QG.32}
+\]
+These are the canonical actual actions with
+finite ordinary inverse and kernel witnesses.
+The canonical relative de Rham comparison,
+full SNC source infinity proper image, every
+morphism and parameter compatibility also
+follow with exactly TC's proved maps.
+
+For the PM Weierstrass setup with the coordinate
+exceptional base hypersurface in QG.3, every
+cofinite left ideal \(\mathfrak a\) of rank \(q\)
+has the natural actual function model of TC.F.
+There is a cofinite two-sided
+\(\mathfrak b\subseteq\mathfrak a\) with
+\[
+\begin{gathered}
+\operatorname{im}(T\otimes_RN_{\mathfrak a}\\ \longrightarrow T\otimes_RN_{\mathfrak b})\\
+\subseteq\operatorname{im}(N_{\mathfrak b}\\ \longrightarrow T\otimes_RN_{\mathfrak b}),\\
+\dim_{\mathbf C}\mathbf C[\pi]/\mathfrak b\\ \le q^2(m+2)^2.
+\end{gathered}
+\tag{QG.33}
+\]
+Here \(R,T,N_{\mathfrak c}\) have exactly the
+definitions in TC.35. This conclusion uses
+the full PM primitive representation and
+the finite balancing theorem ST, not a
+finite-order truncation.
+
+The monomial-discriminant hypothesis QG.2 is
+essential to the construction given here.
+A general analytic discriminant need not have
+that form in the original base coordinates.
+Nor do local power covers on charts of a
+modified base automatically glue to a proper
+global cover. QG.4 does not assert either of
+those additional geometric inputs.
+
+#### QG.F. A cubic cusp after a quadratic power cover
+
+Take the exact pair
+\[
+\begin{gathered}
+P(t,x)=t^2-x^3,\\ \Delta_P=4x^3,\\
+S=\{x(t^2-x^3)=0\}.
+\end{gathered}
+\tag{QG.34}
+\]
+The power substitution \(x=u^2\) gives globally
+split roots \(u^3,-u^3\).
+Their collision ideal is \((u^3)\), already
+invertible, with \(W=3\).
+Put \(v_0=t-u^3\), so the two graphs are
+\(v_0=0,-2u^3\).
+Blow up their common section over \(u=0\)
+three times.
+In the successive root charts,
+\[
+v_0=uv_1=u^2v_2=u^3v_3.
+\tag{QG.35}
+\]
+Their graph differences have orders \(3,2,1,0\).
+In the final chart, writing \(v=v_3\), the map is
+\[
+\begin{gathered}
+x=u^2,\\ t=u^3(1+v),\\
+P=u^6v(v+2),\\
+xP=u^8v(v+2),\\
+\det\frac{\partial(x,t)}{\partial(u,v)}=2u^4.
+\end{gathered}
+\tag{QG.36}
+\]
+The reduced boundary is \(u=0\), \(v=0\) or
+\(v=-2\). At most two of its components meet
+at a point, with independent differentials.
+
+The complementary charts can be checked at
+every step. Before the next blowup the root
+coordinate has values \(0,-2u^a\), with
+\(a=3,2,1\). Its other chart is
+\[
+u=vw,\qquad v_{\rm old}=v.
+\tag{QG.37}
+\]
+The nonzero strict root satisfies
+\[
+1=-2v^{a-1}w^a.
+\tag{QG.38}
+\]
+It has no point at \(w=0\).
+For \(w\ne0\) it is in the root chart already
+displayed in QG.35. The zero root's strict
+transform also lies entirely in that root
+chart. All other points in QG.37 have only
+the vertical coordinate boundary.
+This verifies the entire exceptional fibre,
+not just the final finite-\(v\) chart.
+The map is a degree-two unramified covering
+off exactly the boundary QG.34.
+The orders \(6,8\) and the Jacobian \(2u^4\)
+are actual pullback identities, not just
+orders of a reduced support.
+
+![Power splitting, monomial principalization and global graph separation](assets/quasiordinary-SNC-geometry.png)
+
+**Figure QG.1.** Panel A records the proper maps
+QG.9, QG.22 and QG.30 and their degree
+\((m!)^k\) on the complement.
+Panel B is the integer cone calculation for the
+two monomials \(x^3,y^2\): a ray \((a,b)\)
+has exponent difference \(3a-2b\).
+Every listed adjacent cone is unimodular, and
+its two ray differences have no opposite signs.
+This is a lattice diagram, not the analytic
+space itself.
+Panel C plots the real split graphs
+\(t=\pm u^3\), \(-1\le u\le1\), after \(x=u^2\).
+Its axes use the same scale.
+Panel D shows the two separated graph sections
+\(v=0,-2\) and the vertical divisor \(u=0\)
+in QG.36. It is a real coordinate slice;
+the full charts are complex two-dimensional.
+The exact pullback and Jacobian are QG.36.
+Algebraic map panels have no metric scale.
+
+Editable SVG,
+exact figure data, and
+reproducible source.
+Freely accessible further reading:
+[Parusiński–Rond, *The Abhyankar–Jung theorem*, arXiv1103.2559v2, Proposition2.1](https://arxiv.org/pdf/1103.2559).
+QG.A–QG.F include the analytic continuation,
+bounded extension, monomial principalization,
+global centres and finite termination proofs
+used in this construction.
+
+
 ## 6. What monodromy misses in the irregular world
 
 Consider $\partial_t e=t^{-2}e$. A horizontal coefficient is $e^{1/t}$; its ordinary monodromy is trivial. The trivial connection also has trivial monodromy, but (1.5) proves these meromorphic connections are not isomorphic. For $t=r e^{i\theta}$,

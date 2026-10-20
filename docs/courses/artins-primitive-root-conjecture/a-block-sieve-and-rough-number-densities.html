@@ -1,0 +1,250 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A block sieve and rough-number densities</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Artin&#x27;s primitive root conjecture)</a><a href="uniform-complete-splitting-in-kummer-fields.html">Previous lesson</a><a href="marked-type-ii-estimates.html">Next lesson</a><a href="src/a-block-sieve-and-rough-number-densities.md">Editable source</a></nav><main><article><h1 id="a-block-sieve-and-rough-number-densities">A block sieve and rough-number densities</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>Lessons 16–19 prove Proposition 5.1 of <a href="artins-conjecture-and-the-index-of-a-prime.html"><em>Artin's conjecture and the index of a prime</em></a>: many primes <span class="math" data-tex="\(p\le 2x\)">\(p\le 2x\)</span> have <span class="math" data-tex="\(p-1=crQ\)">\(p-1=crQ\)</span> with <span class="math" data-tex="\(Q\)">\(Q\)</span> a large prime and all prime factors of <span class="math" data-tex="\(r\)">\(r\)</span> in a middle range. The construction counts integers <span class="math" data-tex="\(d\)">\(d\)</span> with a controlled predecessor and removes the composite <span class="math" data-tex="\(d\)">\(d\)</span>. This lesson supplies the two elementary tools. The first is a block form of the Brun–Hooley sieve, due in this form to Ford and Halberstam, whose error terms carry no divisor weights. The second is Buchstab's least-prime-factor identity for the densities of rough numbers, together with an upper bound for these densities that comes from the block sieve.</p>
+<p><strong>Prerequisites.</strong> <a href="../NT-ZETA/NT-ZETA-02.html"><em>Counting primes by elementary means: Chebyshev and Mertens</em></a>, Theorems 3.1 and 4.2; <a href="../NT-ZETA/NT-ZETA-09.html"><em>The prime number theorem</em></a>, Theorem 3.1.</p>
+<h2 id="1-notation">1. Notation</h2>
+<p>Let <span class="math" data-tex="\(x\)">\(x\)</span> be large and put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+L=\log x,\\
+W=\exp(L^{0.24}),\\
+V(y)=\prod_{p\le y}\Bigl(1-\frac1p\Bigr).\quad(1.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+L=\log x,\\
+W=\exp(L^{0.24}),\\
+V(y)=\prod_{p\le y}\Bigl(1-\frac1p\Bigr).\quad(1.1)
+\end{gathered}
+\]</span>
+For an integer <span class="math" data-tex="\(m&gt;1\)">\(m&gt;1\)</span> let <span class="math" data-tex="\(P^-(m)\)">\(P^-(m)\)</span> be its least prime factor, and <span class="math" data-tex="\(P^-(1)=\infty\)">\(P^-(1)=\infty\)</span>; <span class="math" data-tex="\(m\)">\(m\)</span> is <strong><span class="math" data-tex="\(y\)">\(y\)</span>-rough</strong> if <span class="math" data-tex="\(P^-(m)&gt;y\)">\(P^-(m)&gt;y\)</span>. By Mertens' product theorem (Theorem 4.2 of <a href="../NT-ZETA/NT-ZETA-02.html"><em>Counting primes by elementary means</em></a>),
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+V(y)\sim\frac{e^{-\gamma_E}}{\log y}\\
+(y\to\infty),\quad(1.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+V(y)\sim\frac{e^{-\gamma_E}}{\log y}\\
+(y\to\infty),\quad(1.2)
+\end{gathered}
+\]</span>
+with Euler's constant <span class="math" data-tex="\(\gamma_E\)">\(\gamma_E\)</span>.</p>
+<p>For <span class="math" data-tex="\(w&gt;\gamma&gt;0\)">\(w&gt;\gamma&gt;0\)</span> define the <strong>rough-number densities</strong>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;D_\gamma(w)=\sum_{j\ge1}D_{\gamma,j}(w),\\
+&amp;D_{\gamma,1}(w)=\frac1w,\\
+&amp;D_{\gamma,j}(w)=\frac1{j!}\int_{\substack{t_i\ge\gamma\ (i&lt;j)\\ \sum_{i&lt;j}t_i\le w-\gamma}}\frac1{w-\sum_{i&lt;j}t_i}\\
+&amp;\qquad\times\prod_{i&lt;j}\frac{dt_i}{t_i}\quad(j\ge2).\quad(1.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;D_\gamma(w)=\sum_{j\ge1}D_{\gamma,j}(w),\\
+&amp;D_{\gamma,1}(w)=\frac1w,\\
+&amp;D_{\gamma,j}(w)=\frac1{j!}\int_{\substack{t_i\ge\gamma\ (i&lt;j)\\ \sum_{i&lt;j}t_i\le w-\gamma}}\frac1{w-\sum_{i&lt;j}t_i}\\
+&amp;\qquad\times\prod_{i&lt;j}\frac{dt_i}{t_i}\quad(j\ge2).\quad(1.3)
+\end{aligned}
+\]</span>
+The term <span class="math" data-tex="\(D_{\gamma,j}(w)\)">\(D_{\gamma,j}(w)\)</span> vanishes unless <span class="math" data-tex="\(w\ge j\gamma\)">\(w\ge j\gamma\)</span>, so the sum is finite. The <span class="math" data-tex="\(j\)">\(j\)</span>th term is the density of products of <span class="math" data-tex="\(j\)">\(j\)</span> primes larger than <span class="math" data-tex="\(x^\gamma\)">\(x^\gamma\)</span>, in logarithmic coordinates <span class="math" data-tex="\(t=\log p/L\)">\(t=\log p/L\)</span>, the factor <span class="math" data-tex="\(1/j!\)">\(1/j!\)</span> removing the order of the primes.</p>
+<p><strong>Lemma 1.1</strong> (meaning and regularity [OpenAI-029, (10.10)]). For an interval <span class="math" data-tex="\(I\)">\(I\)</span> with closure in <span class="math" data-tex="\((x^\gamma,\infty)\)">\((x^\gamma,\infty)\)</span> and every <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac1{j!}\int_{\substack{y_i&gt;x^\gamma\\ \prod_iy_i\in I}}\prod_{i=1}^j\frac{dy_i}{\log y_i}\\
+&amp;\quad =\frac1L\int_ID_{\gamma,j}\Bigl(\frac{\log y}L\Bigr)dy .\quad(1.4)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac1{j!}\int_{\substack{y_i&gt;x^\gamma\\ \prod_iy_i\in I}}\prod_{i=1}^j\frac{dy_i}{\log y_i}\\
+&amp;\quad =\frac1L\int_ID_{\gamma,j}\Bigl(\frac{\log y}L\Bigr)dy .\quad(1.4)
+\end{aligned}
+\]</span>
+The functions <span class="math" data-tex="\(D_{\gamma,j}\)">\(D_{\gamma,j}\)</span> and <span class="math" data-tex="\(D_\gamma\)">\(D_\gamma\)</span> are jointly continuous on compact subsets of <span class="math" data-tex="\(\{w&gt;\gamma&gt;0\}\)">\(\{w&gt;\gamma&gt;0\}\)</span> and, for fixed <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>, Lipschitz in <span class="math" data-tex="\(w\)">\(w\)</span> on compact intervals; in particular <span class="math" data-tex="\(wD_\gamma(w)\)">\(wD_\gamma(w)\)</span> has bounded total variation on every compact interval above <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(j=1\)">\(j=1\)</span> both integrands are <span class="math" data-tex="\(1/\log y\)">\(1/\log y\)</span>. For <span class="math" data-tex="\(j\ge2\)">\(j\ge2\)</span> change variables to <span class="math" data-tex="\(y=\prod_iy_i\)">\(y=\prod_iy_i\)</span> and <span class="math" data-tex="\(t_i=\log y_i/L\)">\(t_i=\log y_i/L\)</span> for <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>, with <span class="math" data-tex="\(w=\log y/L\)">\(w=\log y/L\)</span>; then <span class="math" data-tex="\(\log y_j=L(w-\sum_{i&lt;j}t_i)\)">\(\log y_j=L(w-\sum_{i&lt;j}t_i)\)</span> and
+<span class="math math-display" data-tex="\[
+\prod_{i=1}^j\frac{dy_i}{\log y_i}=\frac{dy}L\,\frac{\prod_{i&lt;j}dt_i/t_i}{w-\sum_{i&lt;j}t_i},
+\]">\[
+\prod_{i=1}^j\frac{dy_i}{\log y_i}=\frac{dy}L\,\frac{\prod_{i&lt;j}dt_i/t_i}{w-\sum_{i&lt;j}t_i},
+\]</span>
+because <span class="math" data-tex="\(dy_i=Ly_i\,dt_i\)">\(dy_i=Ly_i\,dt_i\)</span> and <span class="math" data-tex="\(\log y_i=Lt_i\)">\(\log y_i=Lt_i\)</span> for <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>, while for fixed <span class="math" data-tex="\(y_1,\dots,y_{j-1}\)">\(y_1,\dots,y_{j-1}\)</span>, <span class="math" data-tex="\(dy_j=dy/\prod_{i&lt;j}y_i\)">\(dy_j=dy/\prod_{i&lt;j}y_i\)</span> and <span class="math" data-tex="\(\log y_j=L(w-\sum_{i&lt;j}t_i)\)">\(\log y_j=L(w-\sum_{i&lt;j}t_i)\)</span>; the factors <span class="math" data-tex="\(y_i\)">\(y_i\)</span> cancel. The strict and weak inequalities differ on null sets. For the regularity at the points <span class="math" data-tex="\(w=j\gamma\)">\(w=j\gamma\)</span>, put <span class="math" data-tex="\(s=w-j\gamma\ge0\)">\(s=w-j\gamma\ge0\)</span>, <span class="math" data-tex="\(t_i=\gamma+sy_i\)">\(t_i=\gamma+sy_i\)</span> for <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>, and <span class="math" data-tex="\(y_j=1-\sum_{i&lt;j}y_i\)">\(y_j=1-\sum_{i&lt;j}y_i\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;D_{\gamma,j}(w)=\frac{s^{j-1}}{j!}\\
+&amp;\quad\int_{\substack{y_i\ge0\\ \sum_{i&lt;j}y_i\le1}}\ \prod_{i\le j}\frac1{\gamma+sy_i}\ \prod_{i&lt;j}dy_i ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;D_{\gamma,j}(w)=\frac{s^{j-1}}{j!}\\
+&amp;\quad\int_{\substack{y_i\ge0\\ \sum_{i&lt;j}y_i\le1}}\ \prod_{i\le j}\frac1{\gamma+sy_i}\ \prod_{i&lt;j}dy_i ,
+\end{aligned}
+\]</span>
+with every denominator bounded below by <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span>; extended by zero for <span class="math" data-tex="\(s&lt;0\)">\(s&lt;0\)</span>, this is continuous and Lipschitz on compact sets. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-a-block-sieve-with-bounded-coefficients">2. A block sieve with bounded coefficients</h2>
+<p><strong>Lemma 2.1</strong> (block sieve [OpenAI-029, Lemma 11.1]). Let <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be a finite set with nonnegative weights, <span class="math" data-tex="\(z\ge2\)">\(z\ge2\)</span>, and <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> a set of primes at most <span class="math" data-tex="\(z\)">\(z\)</span>; for each <span class="math" data-tex="\(p\in\mathcal P\)">\(p\in\mathcal P\)</span> let a <strong>bad condition</strong> on <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> be given. Suppose that for every squarefree <span class="math" data-tex="\(d\)">\(d\)</span> composed of primes of <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> the weight of the objects satisfying the bad conditions at all <span class="math" data-tex="\(p\mid d\)">\(p\mid d\)</span> is
+<span class="math math-display" data-tex="\[
+A(d)=X&#x27;g(d)+E(d),
+\]">\[
+A(d)=X&#x27;g(d)+E(d),
+\]</span>
+with <span class="math" data-tex="\(X&#x27;\ge0\)">\(X&#x27;\ge0\)</span>, <span class="math" data-tex="\(g\)">\(g\)</span> multiplicative, <span class="math" data-tex="\(g(1)=1\)">\(g(1)=1\)</span>, and, for fixed <span class="math" data-tex="\(\eta_0&gt;0\)">\(\eta_0&gt;0\)</span> and <span class="math" data-tex="\(C_0\)">\(C_0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0\le g(p)\le1-\eta_0,\\
+\sum_{\substack{v&lt;p\le v^2\\ p\in\mathcal P}}g(p)\le C_0\quad(v&gt;1).\quad(2.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+0\le g(p)\le1-\eta_0,\\
+\sum_{\substack{v&lt;p\le v^2\\ p\in\mathcal P}}g(p)\le C_0\quad(v&gt;1).\quad(2.1)
+\end{gathered}
+\]</span>
+Then for every sufficiently large even integer <span class="math" data-tex="\(H\)">\(H\)</span> the weight <span class="math" data-tex="\(S\)">\(S\)</span> of the objects satisfying no bad condition is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S&amp;=X&#x27;\prod_{p\in\mathcal P}(1-g(p))\bigl(1+O(e^{-H})\bigr)\\
+&amp;\quad+O\Bigl(\sum_{\substack{d\le z^{4H+2}\\ d\mid\prod_{p\in\mathcal P}p}}|E(d)|\Bigr),\quad(2.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+S&amp;=X&#x27;\prod_{p\in\mathcal P}(1-g(p))\bigl(1+O(e^{-H})\bigr)\\
+&amp;\quad+O\Bigl(\sum_{\substack{d\le z^{4H+2}\\ d\mid\prod_{p\in\mathcal P}p}}|E(d)|\Bigr),\quad(2.2)
+\end{aligned}
+\]</span>
+and for <span class="math" data-tex="\(H=2\)">\(H=2\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+S&amp;\le C\,X&#x27;\prod_{p\in\mathcal P}(1-g(p))\\
+&amp;\quad +\sum_{\substack{d\le z^{10}\\ d\mid\prod_{p\in\mathcal P}p}}|E(d)|.\quad(2.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+S&amp;\le C\,X&#x27;\prod_{p\in\mathcal P}(1-g(p))\\
+&amp;\quad +\sum_{\substack{d\le z^{10}\\ d\mid\prod_{p\in\mathcal P}p}}|E(d)|.\quad(2.3)
+\end{aligned}
+\]</span>
+The constants and the threshold for <span class="math" data-tex="\(H\)">\(H\)</span> depend only on <span class="math" data-tex="\(\eta_0\)">\(\eta_0\)</span> and <span class="math" data-tex="\(C_0\)">\(C_0\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(b_p\in\{0,1\}\)">\(b_p\in\{0,1\}\)</span> indicate the bad condition at <span class="math" data-tex="\(p\)">\(p\)</span>. Divide <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> into the blocks <span class="math" data-tex="\(\mathcal B_j=\{p\in\mathcal P:z^{2^{-j-1}}&lt;p\le z^{2^{-j}}\}\)">\(\mathcal B_j=\{p\in\mathcal P:z^{2^{-j-1}}&lt;p\le z^{2^{-j}}\}\)</span>, <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>, and put <span class="math" data-tex="\(h_j=(j+1)H\)">\(h_j=(j+1)H\)</span>, which is even. Let <span class="math" data-tex="\(I_j\)">\(I_j\)</span> indicate that no condition of block <span class="math" data-tex="\(j\)">\(j\)</span> holds, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+U_j=\sum_{\substack{J\subseteq\mathcal B_j\\ |J|\le h_j}}(-1)^{|J|}\prod_{p\in J}b_p,\\
+T_j=\sum_{\substack{J\subseteq\mathcal B_j\\ |J|=h_j+1}}\prod_{p\in J}b_p .
+\end{gathered}
+\]">\[
+\begin{gathered}
+U_j=\sum_{\substack{J\subseteq\mathcal B_j\\ |J|\le h_j}}(-1)^{|J|}\prod_{p\in J}b_p,\\
+T_j=\sum_{\substack{J\subseteq\mathcal B_j\\ |J|=h_j+1}}\prod_{p\in J}b_p .
+\end{gathered}
+\]</span>
+If exactly <span class="math" data-tex="\(t\)">\(t\)</span> conditions of block <span class="math" data-tex="\(j\)">\(j\)</span> hold, then <span class="math" data-tex="\(U_j=\sum_{a=0}^{h_j}(-1)^a\binom ta\)">\(U_j=\sum_{a=0}^{h_j}(-1)^a\binom ta\)</span>, which is <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(t=0\)">\(t=0\)</span> and <span class="math" data-tex="\(\binom{t-1}{h_j}\)">\(\binom{t-1}{h_j}\)</span> for <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>, because <span class="math" data-tex="\(h_j\)">\(h_j\)</span> is even; and <span class="math" data-tex="\(T_j=\binom t{h_j+1}\ge\binom{t-1}{h_j}\)">\(T_j=\binom t{h_j+1}\ge\binom{t-1}{h_j}\)</span>. Hence <span class="math" data-tex="\(0\le I_j\le U_j\)">\(0\le I_j\le U_j\)</span> and <span class="math" data-tex="\(U_j-I_j\le T_j\)">\(U_j-I_j\le T_j\)</span>. Telescoping the product of nonnegative factors,
+<span class="math math-display" data-tex="\[
+0\le\prod_jU_j-\prod_jI_j\le\sum_jT_j\prod_{k\ne j}U_k ,
+\]">\[
+0\le\prod_jU_j-\prod_jI_j\le\sum_jT_j\prod_{k\ne j}U_k ,
+\]</span>
+so the polynomials <span class="math" data-tex="\(U=\prod_jU_j\)">\(U=\prod_jU_j\)</span> and <span class="math" data-tex="\(B=U-\sum_jT_j\prod_{k\ne j}U_k\)">\(B=U-\sum_jT_j\prod_{k\ne j}U_k\)</span> in the <span class="math" data-tex="\(b_p\)">\(b_p\)</span> satisfy <span class="math" data-tex="\(B\le\mathbf 1_{\text{no bad condition}}\le U\)">\(B\le\mathbf 1_{\text{no bad condition}}\le U\)</span>.</p>
+<p><em>Coefficients and supports.</em> A monomial of <span class="math" data-tex="\(U\)">\(U\)</span> has degree at most <span class="math" data-tex="\(h_j\)">\(h_j\)</span> in block <span class="math" data-tex="\(j\)">\(j\)</span>; a monomial of the <span class="math" data-tex="\(j\)">\(j\)</span>th correction has degree exactly <span class="math" data-tex="\(h_j+1\)">\(h_j+1\)</span> in block <span class="math" data-tex="\(j\)">\(j\)</span> and at most <span class="math" data-tex="\(h_k\)">\(h_k\)</span> in the others. So these sets of monomials are pairwise disjoint, each monomial occurs once, and every coefficient of <span class="math" data-tex="\(U\)">\(U\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> is <span class="math" data-tex="\(0\)">\(0\)</span> or <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>. The product of the primes of a monomial of <span class="math" data-tex="\(U\)">\(U\)</span> has logarithm at most <span class="math" data-tex="\(\log z\sum_j(j+1)H2^{-j}=4H\log z\)">\(\log z\sum_j(j+1)H2^{-j}=4H\log z\)</span>, and a correction adds at most <span class="math" data-tex="\(\log z\)">\(\log z\)</span>; so every monomial corresponds to a squarefree <span class="math" data-tex="\(d\le z^{4H+2}\)">\(d\le z^{4H+2}\)</span>.</p>
+<p><em>Main terms.</em> Let the <span class="math" data-tex="\(b_p\)">\(b_p\)</span> be independent Bernoulli variables with means <span class="math" data-tex="\(g(p)\)">\(g(p)\)</span>, and write <span class="math" data-tex="\(\mathbb E\)">\(\mathbb E\)</span> for this auxiliary expectation; by multiplicativity, <span class="math" data-tex="\(\mathbb E\prod_{p\mid d}b_p=g(d)\)">\(\mathbb E\prod_{p\mid d}b_p=g(d)\)</span>. Each block lies in an interval <span class="math" data-tex="\((v,v^2]\)">\((v,v^2]\)</span>, so by (2.1) and <span class="math" data-tex="\(-\log(1-u)\le u/\eta_0\)">\(-\log(1-u)\le u/\eta_0\)</span> for <span class="math" data-tex="\(0\le u\le1-\eta_0\)">\(0\le u\le1-\eta_0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+a_j&amp;=\mathbb EI_j=\prod_{p\in\mathcal B_j}(1-g(p))\\
+&amp;\ge e^{-C_0/\eta_0}=:a_*,
+\end{aligned}\\
+t_j=\mathbb ET_j\le\frac{C_0^{h_j+1}}{(h_j+1)!},\\
+a_j\le\mathbb EU_j\le a_j+t_j .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+a_j&amp;=\mathbb EI_j=\prod_{p\in\mathcal B_j}(1-g(p))\\
+&amp;\ge e^{-C_0/\eta_0}=:a_*,
+\end{aligned}\\
+t_j=\mathbb ET_j\le\frac{C_0^{h_j+1}}{(h_j+1)!},\\
+a_j\le\mathbb EU_j\le a_j+t_j .
+\end{gathered}
+\]</span>
+Put <span class="math" data-tex="\(R_H=\sum_jt_j/a_j\)">\(R_H=\sum_jt_j/a_j\)</span>. Since <span class="math" data-tex="\(C_0^n/n!\le e^{-2n}\)">\(C_0^n/n!\le e^{-2n}\)</span> for large <span class="math" data-tex="\(n\)">\(n\)</span>, <span class="math" data-tex="\(R_H\le Ce^{-H}\)">\(R_H\le Ce^{-H}\)</span> for large even <span class="math" data-tex="\(H\)">\(H\)</span>; for <span class="math" data-tex="\(H=2\)">\(H=2\)</span>, <span class="math" data-tex="\(R_H\)">\(R_H\)</span> is bounded. By independence of the blocks,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\prod_ja_j\le\mathbb EU\le e^{R_H}\prod_ja_j,\\
+\mathbb E(U-B)\le R_He^{R_H}\prod_ja_j ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\prod_ja_j\le\mathbb EU\le e^{R_H}\prod_ja_j,\\
+\mathbb E(U-B)\le R_He^{R_H}\prod_ja_j ,
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(\prod_ja_j=\prod_{p\in\mathcal P}(1-g(p))\)">\(\prod_ja_j=\prod_{p\in\mathcal P}(1-g(p))\)</span>.</p>
+<p><em>Back to <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span>.</em> Summing a polynomial <span class="math" data-tex="\(\sum_Jc_J\prod_{p\in J}b_p\)">\(\sum_Jc_J\prod_{p\in J}b_p\)</span> over <span class="math" data-tex="\(\mathcal A\)">\(\mathcal A\)</span> with the weights gives <span class="math" data-tex="\(\sum_Jc_JA(d_J)\)">\(\sum_Jc_JA(d_J)\)</span><span class="math" data-tex="\(=X&#x27;\sum_Jc_Jg(d_J)+\sum_Jc_JE(d_J)\)">\(=X&#x27;\sum_Jc_Jg(d_J)+\sum_Jc_JE(d_J)\)</span>, that is, <span class="math" data-tex="\(X&#x27;\)">\(X&#x27;\)</span> times its expectation plus at most <span class="math" data-tex="\(\sum_{d\le z^{4H+2}}|E(d)|\)">\(\sum_{d\le z^{4H+2}}|E(d)|\)</span>. Since <span class="math" data-tex="\(S\)">\(S\)</span> lies between the sums of <span class="math" data-tex="\(B\)">\(B\)</span> and of <span class="math" data-tex="\(U\)">\(U\)</span>, (2.2) and (2.3) follow. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-rough-number-densities">3. Rough-number densities</h2>
+<p><strong>Lemma 3.1</strong> (Buchstab's identity and an upper bound [OpenAI-029, Lemma 11.2]). For <span class="math" data-tex="\(0&lt;b&lt;\frac12\)">\(0&lt;b&lt;\frac12\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_b^{1/2}D_t(1-t)\,\frac{dt}t\\
+&amp;\quad =D_b(1)-1,\quad(3.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_b^{1/2}D_t(1-t)\,\frac{dt}t\\
+&amp;\quad =D_b(1)-1,\quad(3.1)
+\end{aligned}
+\]</span>
+the integrand at <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span> taken as its left limit. There are absolute constants <span class="math" data-tex="\(b_0,C_d&gt;0\)">\(b_0,C_d&gt;0\)</span> such that for <span class="math" data-tex="\(0&lt;b&lt;b_0\)">\(0&lt;b&lt;b_0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+D_b(1)&amp;\le\frac{e^{-\gamma_E}}b\bigl(1+C_de^{-1/(20b)}\bigr).\quad(3.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+D_b(1)&amp;\le\frac{e^{-\gamma_E}}b\bigl(1+C_de^{-1/(20b)}\bigr).\quad(3.2)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> <em>The identity.</em> Write the <span class="math" data-tex="\(j\)">\(j\)</span>th term of <span class="math" data-tex="\(D_b(1)\)">\(D_b(1)\)</span>, <span class="math" data-tex="\(j\ge2\)">\(j\ge2\)</span>, as the integral of the measure <span class="math" data-tex="\(\frac1{j!}\frac{dt_1\cdots dt_{j-1}}{t_1\cdots t_j}\)">\(\frac1{j!}\frac{dt_1\cdots dt_{j-1}}{t_1\cdots t_j}\)</span> over <span class="math" data-tex="\(t_1+\cdots+t_j=1\)">\(t_1+\cdots+t_j=1\)</span>, <span class="math" data-tex="\(t_i\ge b\)">\(t_i\ge b\)</span>, where <span class="math" data-tex="\(t_j=1-\sum_{i&lt;j}t_i\)">\(t_j=1-\sum_{i&lt;j}t_i\)</span>. This measure is invariant under permutations of all <span class="math" data-tex="\(j\)">\(j\)</span> coordinates: exchanging <span class="math" data-tex="\(t_j\)">\(t_j\)</span> with an independent coordinate is a linear change of variables with determinant <span class="math" data-tex="\(\pm1\)">\(\pm1\)</span>. Off a null set the smallest coordinate is unique; select it in <span class="math" data-tex="\(j\)">\(j\)</span> ways and call its value <span class="math" data-tex="\(t\le\frac12\)">\(t\le\frac12\)</span>. The other <span class="math" data-tex="\(j-1\)">\(j-1\)</span> coordinates sum to <span class="math" data-tex="\(1-t\)">\(1-t\)</span> and are at least <span class="math" data-tex="\(t\)">\(t\)</span>, and their measure is the <span class="math" data-tex="\((j-1)\)">\((j-1)\)</span>st term of <span class="math" data-tex="\(D_t(1-t)\)">\(D_t(1-t)\)</span> times <span class="math" data-tex="\(dt/t\)">\(dt/t\)</span>, since <span class="math" data-tex="\(j/j!=1/(j-1)!\)">\(j/j!=1/(j-1)!\)</span>. Summing over <span class="math" data-tex="\(j\ge2\)">\(j\ge2\)</span> gives (3.1); the term <span class="math" data-tex="\(j=1\)">\(j=1\)</span> of <span class="math" data-tex="\(D_b(1)\)">\(D_b(1)\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><em>A lower bound by rough integers.</em> Let <span class="math" data-tex="\(R_b(x)\)">\(R_b(x)\)</span><span class="math" data-tex="\(=\#\{n:x&lt;n\le2x,\ P^-(n)&gt;x^b\}\)">\(=\#\{n:x&lt;n\le2x,\ P^-(n)&gt;x^b\}\)</span>. We show <span class="math" data-tex="\(D_b(1)\le\liminf_{x\to\infty}\frac LxR_b(x)\)">\(D_b(1)\le\liminf_{x\to\infty}\frac LxR_b(x)\)</span>. Fix <span class="math" data-tex="\(j\ge2\)">\(j\ge2\)</span> and <span class="math" data-tex="\(\eta&gt;0\)">\(\eta&gt;0\)</span>, and count ordered lists of primes <span class="math" data-tex="\((p_1,\dots,p_j)\)">\((p_1,\dots,p_j)\)</span>, each with weight <span class="math" data-tex="\(1/j!\)">\(1/j!\)</span>, with <span class="math" data-tex="\(p_i&gt;x^b\)">\(p_i&gt;x^b\)</span> for <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>, <span class="math" data-tex="\(Q=p_1\cdots p_{j-1}&lt;x^{1-b-\eta}\)">\(Q=p_1\cdots p_{j-1}&lt;x^{1-b-\eta}\)</span>, and <span class="math" data-tex="\(x/Q&lt;p_j\le2x/Q\)">\(x/Q&lt;p_j\le2x/Q\)</span>. Then <span class="math" data-tex="\(p_j&gt;x^{b+\eta}\)">\(p_j&gt;x^{b+\eta}\)</span>, so the product lies in <span class="math" data-tex="\(R_b(x)\)">\(R_b(x)\)</span>; an integer with prime multiplicities <span class="math" data-tex="\(e_1,e_2,\dots\)">\(e_1,e_2,\dots\)</span> receives total weight <span class="math" data-tex="\(1/\prod e_i!\le1\)">\(1/\prod e_i!\le1\)</span>, and its number of prime factors determines <span class="math" data-tex="\(j\)">\(j\)</span>. With the primes in <span class="math" data-tex="\((x,2x]\)">\((x,2x]\)</span> this gives a lower bound for <span class="math" data-tex="\(R_b(x)\)">\(R_b(x)\)</span>. By the prime number theorem (Theorem 3.1 of <a href="../NT-ZETA/NT-ZETA-09.html"><em>The prime number theorem</em></a>), uniformly for <span class="math" data-tex="\(Q&lt;x^{1-b-\eta}\)">\(Q&lt;x^{1-b-\eta}\)</span>, the number of <span class="math" data-tex="\(p_j\)">\(p_j\)</span> is <span class="math" data-tex="\((1+o(1))x/(Q\log(x/Q))\)">\((1+o(1))x/(Q\log(x/Q))\)</span>. By Mertens' estimate (Theorem 3.1 of <a href="../NT-ZETA/NT-ZETA-02.html"><em>Counting primes by elementary means</em></a>), <span class="math" data-tex="\(\sum_{x^\alpha&lt;p\le x^\beta}1/p\to\log(\beta/\alpha)\)">\(\sum_{x^\alpha&lt;p\le x^\beta}1/p\to\log(\beta/\alpha)\)</span> for fixed <span class="math" data-tex="\(0&lt;\alpha&lt;\beta\)">\(0&lt;\alpha&lt;\beta\)</span>, so the measures <span class="math" data-tex="\(\sum_p p^{-1}\delta_{\log p/L}\)">\(\sum_p p^{-1}\delta_{\log p/L}\)</span> converge to <span class="math" data-tex="\(dt/t\)">\(dt/t\)</span> on compact subsets of <span class="math" data-tex="\((0,\infty)\)">\((0,\infty)\)</span>, and so do their finite products. On the truncated simplex <span class="math" data-tex="\(t_i\ge b\)">\(t_i\ge b\)</span>, <span class="math" data-tex="\(\sum_{i&lt;j}t_i&lt;1-b-\eta\)">\(\sum_{i&lt;j}t_i&lt;1-b-\eta\)</span>, the function <span class="math" data-tex="\((1-\sum_{i&lt;j}t_i)^{-1}\)">\((1-\sum_{i&lt;j}t_i)^{-1}\)</span> is bounded and the boundary is null. Hence <span class="math" data-tex="\(\frac Lx\)">\(\frac Lx\)</span> times the weighted count tends to
+<span class="math math-display" data-tex="\[
+\frac1{j!}\int_{\substack{t_i\ge b\ (i&lt;j)\\ \sum_{i&lt;j}t_i&lt;1-b-\eta}}\frac1{1-\sum_{i&lt;j}t_i}\prod_{i&lt;j}\frac{dt_i}{t_i},
+\]">\[
+\frac1{j!}\int_{\substack{t_i\ge b\ (i&lt;j)\\ \sum_{i&lt;j}t_i&lt;1-b-\eta}}\frac1{1-\sum_{i&lt;j}t_i}\prod_{i&lt;j}\frac{dt_i}{t_i},
+\]</span>
+and the primes in <span class="math" data-tex="\((x,2x]\)">\((x,2x]\)</span> contribute <span class="math" data-tex="\(1\)">\(1\)</span>. Only finitely many <span class="math" data-tex="\(j\)">\(j\)</span> occur. Letting <span class="math" data-tex="\(x\to\infty\)">\(x\to\infty\)</span> and then <span class="math" data-tex="\(\eta\downarrow0\)">\(\eta\downarrow0\)</span> gives the claim.</p>
+<p><em>An upper bound by the block sieve.</em> Apply Lemma 2.1 to the integers <span class="math" data-tex="\(n\in(x,2x]\)">\(n\in(x,2x]\)</span> with weight <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(z=x^b\)">\(z=x^b\)</span>, <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> the primes up to <span class="math" data-tex="\(z\)">\(z\)</span>, and the bad conditions <span class="math" data-tex="\(p\mid n\)">\(p\mid n\)</span>. Then <span class="math" data-tex="\(X&#x27;=x\)">\(X&#x27;=x\)</span>, <span class="math" data-tex="\(g(d)=1/d\)">\(g(d)=1/d\)</span>, <span class="math" data-tex="\(|E(d)|\le1\)">\(|E(d)|\le1\)</span>, and (2.1) holds with <span class="math" data-tex="\(\eta_0=\frac12\)">\(\eta_0=\frac12\)</span> and an absolute <span class="math" data-tex="\(C_0\)">\(C_0\)</span>, by Mertens' estimate. Take <span class="math" data-tex="\(H=2\lfloor1/(40b)\rfloor\)">\(H=2\lfloor1/(40b)\rfloor\)</span>; for small <span class="math" data-tex="\(b\)">\(b\)</span> it is admissible, and <span class="math" data-tex="\(b(4H+2)\le\frac15+2b&lt;1\)">\(b(4H+2)\le\frac15+2b&lt;1\)</span>. Lemma 2.1 gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+R_b(x)&amp;\le xV(x^b)\bigl(1+Ce^{-H}\bigr)\\
+&amp;\quad +C\,x^{1/5+2b},
+\end{aligned}\\
+e^{-H}\le e^2e^{-1/(20b)} .
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+R_b(x)&amp;\le xV(x^b)\bigl(1+Ce^{-H}\bigr)\\
+&amp;\quad +C\,x^{1/5+2b},
+\end{aligned}\\
+e^{-H}\le e^2e^{-1/(20b)} .
+\end{gathered}
+\]</span>
+Multiply by <span class="math" data-tex="\(L/x\)">\(L/x\)</span> and let <span class="math" data-tex="\(x\to\infty\)">\(x\to\infty\)</span>; by (1.2), <span class="math" data-tex="\(LV(x^b)\to e^{-\gamma_E}/b\)">\(LV(x^b)\to e^{-\gamma_E}/b\)</span>. With the lower bound this proves (3.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In (3.1), the term <span class="math" data-tex="\(1\)">\(1\)</span> is the contribution of the primes, and the integral is the contribution of the composite rough numbers, organized by their least prime factor <span class="math" data-tex="\(x^t\)">\(x^t\)</span>. This is the subtraction used in Lesson 19: after the composites are removed, a positive mass of primes remains.</p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>4.1.</strong> Verify <span class="math" data-tex="\(\sum_{a=0}^h(-1)^a\binom ta=(-1)^h\binom{t-1}h\)">\(\sum_{a=0}^h(-1)^a\binom ta=(-1)^h\binom{t-1}h\)</span> for <span class="math" data-tex="\(t\ge1\)">\(t\ge1\)</span>.</p>
+<p><strong>4.2.</strong> Compute <span class="math" data-tex="\(D_b(1)\)">\(D_b(1)\)</span> for <span class="math" data-tex="\(\frac13&lt;b&lt;\frac12\)">\(\frac13&lt;b&lt;\frac12\)</span>, and check (3.1) in this range.</p>
+<p><strong>4.3.</strong> Show that <span class="math" data-tex="\(\sum_{j\ge0}(j+1)2^{-j}=4\)">\(\sum_{j\ge0}(j+1)2^{-j}=4\)</span>.</p>
+<p><strong>4.4.</strong> For <span class="math" data-tex="\(b=1/100\)">\(b=1/100\)</span>, compute <span class="math" data-tex="\(H=2\lfloor1/(40b)\rfloor\)">\(H=2\lfloor1/(40b)\rfloor\)</span> and the exponent <span class="math" data-tex="\(b(4H+2)\)">\(b(4H+2)\)</span>.</p>
+<p><strong>4.5.</strong> Explain why <span class="math" data-tex="\(e^{-\gamma_E}/b\)">\(e^{-\gamma_E}/b\)</span> is the natural size of <span class="math" data-tex="\(D_b(1)\)">\(D_b(1)\)</span>, using the heuristic that an integer near <span class="math" data-tex="\(x\)">\(x\)</span> is <span class="math" data-tex="\(x^b\)">\(x^b\)</span>-rough with probability about <span class="math" data-tex="\(V(x^b)\)">\(V(x^b)\)</span>.</p>
+<h2 id="5-solutions">5. Solutions</h2>
+<p><strong>4.1.</strong> By induction on <span class="math" data-tex="\(h\)">\(h\)</span>: the case <span class="math" data-tex="\(h=0\)">\(h=0\)</span> is <span class="math" data-tex="\(1=\binom{t-1}0\)">\(1=\binom{t-1}0\)</span>, and <span class="math" data-tex="\((-1)^{h-1}\binom{t-1}{h-1}+(-1)^h\binom th\)">\((-1)^{h-1}\binom{t-1}{h-1}+(-1)^h\binom th\)</span><span class="math" data-tex="\(=(-1)^h\bigl(\binom th-\binom{t-1}{h-1}\bigr)\)">\(=(-1)^h\bigl(\binom th-\binom{t-1}{h-1}\bigr)\)</span><span class="math" data-tex="\(=(-1)^h\binom{t-1}h\)">\(=(-1)^h\binom{t-1}h\)</span>.</p>
+<p><strong>4.2.</strong> For <span class="math" data-tex="\(b&gt;\frac13\)">\(b&gt;\frac13\)</span> only <span class="math" data-tex="\(j=1,2\)">\(j=1,2\)</span> occur, and <span class="math" data-tex="\(D_{b,2}(1)=\frac12\int_b^{1-b}\frac{dt}{t(1-t)}=\log\frac{1-b}b\)">\(D_{b,2}(1)=\frac12\int_b^{1-b}\frac{dt}{t(1-t)}=\log\frac{1-b}b\)</span>. So <span class="math" data-tex="\(D_b(1)=1+\log\frac{1-b}b\)">\(D_b(1)=1+\log\frac{1-b}b\)</span>. On the left of (3.1), for <span class="math" data-tex="\(t\in(b,\frac12)\)">\(t\in(b,\frac12)\)</span> one has <span class="math" data-tex="\(1-t&lt;2t\)">\(1-t&lt;2t\)</span>, so <span class="math" data-tex="\(D_t(1-t)=\frac1{1-t}\)">\(D_t(1-t)=\frac1{1-t}\)</span>, and <span class="math" data-tex="\(\int_b^{1/2}\frac{dt}{t(1-t)}=\log\frac{1-b}b\)">\(\int_b^{1/2}\frac{dt}{t(1-t)}=\log\frac{1-b}b\)</span>.</p>
+<p><strong>4.3.</strong> <span class="math" data-tex="\(\sum_{j\ge0}(j+1)y^j=(1-y)^{-2}\)">\(\sum_{j\ge0}(j+1)y^j=(1-y)^{-2}\)</span>, which is <span class="math" data-tex="\(4\)">\(4\)</span> at <span class="math" data-tex="\(y=\frac12\)">\(y=\frac12\)</span>.</p>
+<p><strong>4.4.</strong> <span class="math" data-tex="\(1/(40b)=2.5\)">\(1/(40b)=2.5\)</span>, so <span class="math" data-tex="\(H=4\)">\(H=4\)</span>, and <span class="math" data-tex="\(b(4H+2)=18/100=0.18\)">\(b(4H+2)=18/100=0.18\)</span>.</p>
+<p><strong>4.5.</strong> The density of <span class="math" data-tex="\(x^b\)">\(x^b\)</span>-rough integers near <span class="math" data-tex="\(x\)">\(x\)</span> is <span class="math" data-tex="\(V(x^b)\sim e^{-\gamma_E}/(bL)\)">\(V(x^b)\sim e^{-\gamma_E}/(bL)\)</span> by (1.2); <span class="math" data-tex="\(D_b(1)/L\)">\(D_b(1)/L\)</span> is the density of rough integers in the logarithmic normalization of (1.4), so <span class="math" data-tex="\(D_b(1)\approx LV(x^b)\approx e^{-\gamma_E}/b\)">\(D_b(1)\approx LV(x^b)\approx e^{-\gamma_E}/b\)</span> for small <span class="math" data-tex="\(b\)">\(b\)</span>. The sieve bound (3.2) makes the upper half of this precise.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-029] OpenAI, <em>Primitive roots for every admissible integer base</em>, OpenAI Math Release preprint, 4 October 2026, Sections 10 and 11. https://github.com/openai/math/tree/main/preprints/Primitive-roots-for-every-admissible-integer-base-October-4-2026</li>
+<li>[FH] K. Ford and H. Halberstam, <em>The Brun–Hooley sieve</em>, J. Number Theory 81 (2000), 335–350, Section 1, Lemma 1. https://doi.org/10.1006/jnth.1999.2479</li>
+<li>[Buchstab] A. Buchstab, <em>Asymptotische Abschätzung einer allgemeinen zahlentheoretischen Funktion</em>, Mat. Sbornik 2(44) (1937), 1239–1246. https://www.mathnet.ru/eng/sm5649</li>
+<li>[OpenAI-WDG] OpenAI, <em>Weighted dilation graphs, smooth shifted primes and totient fibers</em>, OpenAI Math Release preprint, 24 September 2026, Lemmas 2.9 and 7.4. https://github.com/openai/math/tree/main/preprints/Weighted-Dilation-Graphs-Smooth-Shifted-Primes-and-Totient-Fibers-September-24-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

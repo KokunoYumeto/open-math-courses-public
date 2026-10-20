@@ -2,7 +2,7 @@
 
 *Written by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
-A kernel has two covector components. Either component may vanish although the pair is singular. Those zero components determine whether a kernel can act on a distribution, and even a zero intermediate covector can carry a singularity through a composition. We develop products, integration and kernel action with these cases included, and prove the convergence statement that makes extension from smooth inputs unique. Transverse smooth densities have explicit restriction and product formulas, including the intersection angle factor and the support of each restricted weight.
+A kernel has two covector components. Either component may vanish although the pair is singular. Those zero components determine whether a kernel can act on a distribution, and even a zero intermediate covector can carry a singularity through a composition. We develop products, integration and kernel action with these cases included, and prove the convergence statement that makes extension from smooth inputs unique. Transverse smooth densities have explicit restriction and product formulas, including the intersection angle factor and the support of each restricted weight. Tangential coefficients and transverse deltas give exact wavefront formulas; analytic submanifold densities retain both normal signs at every point in the support of their coefficient.
 
 Pairings are complex-linear. Our Fourier transform is \(\widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx\), with inverse factor \((2\pi)^{-n}\). Open sets lie in Euclidean spaces. A closed conic subset of a nonzero cotangent space is closed *relative to that space*.
 
@@ -512,6 +512,103 @@ All coefficients on the right are evaluated on \(W\). These formulas follow from
 *Left: two lines at angle \(\pi/6\) have \(\sigma=1/2\), so their unit arclength densities multiply to \(2\delta_0\), as in Exercise 11. Middle: the projection to the plane \(z=0\) of Exercise 12's intersection \((s,-s^2,0)\); the displayed covectors are \(\pm0.18(2s,1)\) within that plane. Ambient conormals also have an arbitrary \(dz\) component. Right: the exact coefficient \(1/\sin\theta\) for \(0<\theta\le\pi/2\); the plotted interval starts at \(0.12\) radians. Its divergence as the lines become parallel is proved in Exercise 11. [Reproducible figure source](../figures/transverse-density-factors.py).*
 
 
+## Tangential singularities and analytic submanifold densities
+
+A delta in normal coordinates fixes the normal support, but it does not remove singularities of its tangential coefficient. The following exact formula distinguishes these two sources of wavefront. It also gives the analytic and derivative-growth versions of the density formulas.
+
+**Lemma 10 (a transverse delta with an arbitrary coefficient).** Let \(A\subset\mathbb R^d\) be open, let \(a\in\mathcal D'(A)\), and let \(k\ge1\). On \(A\times\mathbb R^k\), put
+\[
+ w=a(y)\otimes\delta_0(z),\qquad
+ \langle w,\phi\rangle=\langle a,\phi(\,\cdot,0)\rangle .
+ \tag{T1}
+\]
+For every growth sequence used in this lesson,
+\[
+ \begin{split}
+ W_L(w)={}&
+ \{(y,0;0,\zeta):y\in\operatorname{supp}a,\ \zeta\ne0\}\\
+ &{}\cup
+ \{(y,0;\eta,\zeta):(y,\eta)\in W_L(a),\
+                                      \zeta\in\mathbb R^k\}.
+ \end{split}
+ \tag{T2}
+\]
+The same equality holds for ordinary smooth wavefront. In the second set \(\eta\ne0\), including when \(\zeta=0\).
+
+**Proof of the upper inclusion.** The support is \(\operatorname{supp}a\times\{0\}\) by the exact tensor-support formula. A point delta has every nonzero covector at zero in each wavefront class: its localized transform is one, so every direction is in ordinary wavefront; class comparison includes those directions in \(W_L\), and it vanishes elsewhere. Insert this and its support zero section into Theorem 1. The resulting set is exactly the right side of (T2).
+
+**Proof of the normal directions.** Fix \(y_0\in\operatorname{supp}a\), \(\zeta_0\ne0\), and any compact smooth cutoff \(\chi\) equal to one near \((y_0,0)\). Then \(b(y)=\chi(y,0)a(y)\) is a nonzero compact distribution, because \(a\) is not zero on any neighborhood of \(y_0\). The tensor pairing gives
+\[
+           \widehat{\chi w}(\eta,\zeta)=\widehat b(\eta).
+ \tag{T3}
+\]
+There exists \(\eta_*\) with \(\widehat b(\eta_*)\ne0\). Otherwise Fourier inversion of every compact smooth test inside the finite-order pairing would give \(b=0\); the supplied Fourier proof justifies this absolutely convergent integral in all derivatives through the order of \(b\). At \((\eta_*,t\zeta_0)\), \(t\to+\infty\), the transform in (T3) is the same nonzero number. These frequencies eventually lie in every cone about \((0,\zeta_0)\). Thus that normal direction is in ordinary wavefront, and therefore in \(W_L\). Replacing \(\zeta_0\) by its negative proves the other sign without a reality assumption on \(a\).
+
+**Proof of the tangential directions.** Suppose \(\eta_0\ne0\) and \(w\) is \(L\)-regular at \((y_0,0;\eta_0,\zeta_0)\). Choose compact product neighborhoods and a smaller conic neighborhood of this covector whose closures remain regular. Controlled cutoffs \(\alpha_N(y)\), \(\beta_N(z)\) supported in these neighborhoods and equal to one on fixed smaller neighborhoods have controlled products. Compact conic localization, proved in [Cones and derivative-growth wavefronts](cones-and-derivative-growth-wavefronts.md), Theorem 4, gives the required \(L_N\) estimate for \((\alpha_N\otimes\beta_N)w\) there. Since \(\beta_N(0)=1\), its transform is exactly
+\[
+ \widehat{(\alpha_N\otimes\beta_N)w}(\eta,\zeta)
+                         =\widehat{\alpha_Na}(\eta).
+ \tag{T4}
+\]
+Define the linear map
+\[
+       B\eta=\frac{\eta\cdot\eta_0}{|\eta_0|^2}\,\zeta_0.
+ \tag{T5}
+\]
+The map \(\eta\mapsto(\eta,B\eta)\) sends \(\eta_0\) to the chosen covector. Continuity and positive homogeneity give a cone about \(\eta_0\) mapped into the regular cone. On it (T4) and \(|(\eta,B\eta)|\ge|\eta|\) give
+\[
+       |\widehat{\alpha_Na}(\eta)|
+                      \le C(DL_N/|\eta|)^N .
+ \tag{T6}
+\]
+The sequence \(\alpha_Na\) is bounded in a common compact distribution space: \(a\) has finite order on the fixed cutoff support, and all fixed derivatives of \(\alpha_N\) are uniformly bounded. It equals \(a\) on a fixed neighborhood of \(y_0\). Hence (T6) is an \(L\)-regular witness for \(a\) at \((y_0,\eta_0)\). This proves the second lower inclusion by contraposition. For ordinary wavefront use fixed product cutoffs and the ordinary localization estimate; restriction to the same linear frequency graph gives every rapid-decay power for one fixed \(\alpha a\).
+
+If \(d=0\), \(a\) is a scalar, and only the first set can contribute; its nonzero case is a point mass. If \(k=0\), interpret (T1) as \(w=a\), delete the empty normal set, and (T2) is the identity. The empty-domain and zero-distribution cases have empty wavefront. \(\square\)
+
+**Theorem 11 (exact conormals at the matching regularity).** Let \(M\) be a relatively closed real analytic embedded submanifold without boundary in an open \(X\subset\mathbb R^n\). If \(a\in C^L(M;\mathbb C)\), the density distribution
+\[
+              u(\phi)=\int_M a\,\phi\,dS_M
+ \tag{T7}
+\]
+has
+\[
+ W_L(u)=\operatorname{WF}(u)
+ =\{(x,\xi):x\in\operatorname{supp}_M a,\quad
+                      \xi\ne0,\quad \xi|_{T_xM}=0\}.
+ \tag{T8}
+\]
+In particular if \(a\) is real analytic, then \(\operatorname{WF}_A(u)\), every \(W_L(u)\), and \(\operatorname{WF}(u)\) equal the set in (T8). Zeros of \(a\) that remain in its support do not remove their conormal fibers.
+
+Here \(C^L(M)\) means that the coefficient lies in \(C^L\) in analytic coordinates. Coordinate independence follows from [Analytic maps and derivative growth](analytic-maps-and-derivative-growth.md), Theorem 3 and the following coordinate argument. Existence and the exact smooth-density formula, including arbitrary smooth zeros, are [Cones and derivative-growth wavefronts](cones-and-derivative-growth-wavefronts.md), Theorem 9 and Corollary 10.
+
+**Proof.** The smooth-density construction already proves that (T7) is a distribution with support \(\operatorname{supp}_M a\). In an analytic flattening chart \(x=h(y,z)\), \(M=\{h(y,0)\}\), its exact scalar pullback is
+\[
+ h^*u=g(y)\delta_0(z),\qquad
+ g(y)=
+ \frac{a(h(y,0))
+       \sqrt{\det(D_yh(y,0)^TD_yh(y,0))}}
+      {|\det Dh(y,0)|}.
+ \tag{T9}
+\]
+The cited smooth proof derives this formula from the distributional change of variables; there is no missing Jacobian. Analytic flattening follows by completing analytic defining functions to an invertible square map and using [Analytic pullback and cotangent directions](analytic-pullback-and-cotangent-directions.md), Lemma 3. Its Theorem 4 supplies the analytic coordinate equality used below.
+
+The Gram determinant is positive. Its positive square root is analytic locally: the map \(s\mapsto s^2\) has nonzero derivative at every positive \(s\), so the analytic inverse theorem gives its positive inverse near each positive value. The nonzero determinant of \(Dh\) has constant sign on a small connected chart, making its absolute value analytic there; its reciprocal is analytic by the geometric series. Thus all factors in (T9) other than the coefficient are positive analytic functions.
+
+Analytic substitution and multiplication preserve \(C^L\), so \(g\in C^L\); its support is exactly the local coordinate support of \(a\). The projection theorem gives \(W_L(g)=\varnothing\). Lemma 10 leaves exactly the nonzero normal covectors over that support. Analytic coordinate covariance sends \((\eta,\zeta)=(0,\zeta)\) to the ambient covectors annihilating the columns of \(D_yh\), precisely \(T_xM\). It gives equality in (T8). The cited smooth-density theorem gives the same ordinary wavefront. For analytic \(a\), take the analytic scale and use \(\operatorname{WF}\subset W_L\subset\operatorname{WF}_A\) for every other scale.
+
+The empty Gram determinant is one. If \(M\) has dimension zero, each local distribution is a weighted point mass. If it has codimension zero, \(u\) is locally the \(C^L\) function \(a\) and the conormal set with zero removed is empty. These cases agree with (T8). \(\square\)
+
+For an analytic coefficient on a connected \(M\), either it is identically zero or its support is all of \(M\). Indeed, the points where its germ is zero form an open set. That set is also closed: at a limit point in an analytic chart all derivatives vanish by continuity, so the convergent Taylor series makes the germ zero. Connectedness proves the dichotomy. On disconnected \(M\), apply it to each connected component. Thus “nonzero analytic density” must be interpreted component by component when some components carry the zero density.
+
+**Corollary 12 (analytic transverse densities, with restricted zeros).** In Theorem 9, suppose \(Y,Z\) are analytic and \(a,b\) are \(C^L\) in their analytic coordinates. Both formulas (R4) hold, and every ordinary-wavefront equality (R5) also holds with \(W_L\). If \(a,b\) are analytic, those formulas give their analytic wavefronts and every derivative-growth wavefront as well.
+
+**Proof.** Theorem 9 supplies the distributions and their exact density factors. The joint defining functions have independent analytic differentials, so their analytic coordinate completion makes \(W\) an analytic submanifold both of \(X\) and of \(Y\). The Gram factors in (R2) are positive analytic by the argument in (T9); hence \(\sigma\) and \(1/\sigma\) are analytic. The restrictions of \(a,b\) to \(W\) are \(C^L\) by analytic substitution. Their product is \(C^L\): in the Leibniz sum at derivative order \(j\), monotonicity bounds each factor's derivative weight by the corresponding power of \(L_j\), and the sum of binomial coefficients is \(2^j\), absorbed into a fixed exponential. Multiplication by the analytic \(1/\sigma\) preserves that class. Apply Theorem 11 to each density in (R4), in the ambient space or in an analytic chart on \(Y\). Its positive metric-volume factor does not change the support. The supports are exactly those in (R5), even if a restricted coefficient vanishes on part or all of \(W\). Analytic coefficients belong to every stated class, proving the last assertion. \(\square\)
+
+![Normal directions for an analytic density with a zero, and the extra analytic directions of a smooth flat tangential coefficient.](../figures/tangential-coefficients-and-normal-directions.png)
+
+*Left: on the parabola \(t=s^2\), the analytic weight \(s^2\) vanishes at the origin but its support still contains that point. The displayed covectors are scaled samples of both signs of \((-2s,1)\), including at zero. Right: for \(h(s)\delta_0(t)\), with the smooth flat \(h\) of Exercise 15, the ordinary wavefront at the origin contains just the two unit normal covectors, while the analytic wavefront contains the full unit circle. Lemma 10 explains the additional directions from the tangential coefficient. [Vector figure](../figures/tangential-coefficients-and-normal-directions.svg) · [Reproducible figure source](../figures/tangential-coefficients-and-normal-directions.py).*
+
+
 ## Exercises with complete solutions
 
 **Exercise 1 — a zero endpoint is indispensable.** Compute the wavefront of \(\delta_0(x)\otimes1_y\) on \(\mathbb R^2\) for every \(L\), and explain why the product of the two nonzero wavefront sets is insufficient in (2).
@@ -610,6 +707,67 @@ Indeed the tangent \((1,-2s,0)\) annihilates precisely those covectors, and the 
 The second weight is identically zero on \(W\). Both its restriction and its product with \(dS_Y\) are therefore zero by (R4), with empty supports and wavefronts. Nevertheless \(z|_Z=x^2+y\) has nonzero values arbitrarily close to every point of \(W\), so \(z\,dS_Z\) has the full normal fiber of \(Z\) over each such point. Those fibers are noncharacteristic for restriction to \(Y\). Thus the general pullback bound can be strict even when the original distribution has every conormal direction along the intersection. The exact support in (R5) is the support of the restricted coefficient, not the intersection of the original support with \(Y\). \(\square\)
 
 
+**Exercise 14 (foundation: an analytic zero on a curved density).** On \(M=\{(s,t):t=s^2\}\), take \(u=s^2dS_M\). Determine its density relative to \(ds\), its support and its smooth, analytic and derivative-growth wavefronts, including the fiber at zero.
+
+**Solution.** The parametrization \(\gamma(s)=(s,s^2)\) has Gram length \(\sqrt{1+4s^2}\), so
+\[
+ \langle u,\phi\rangle
+       =\int_{\mathbb R}s^2\sqrt{1+4s^2}\,\phi(s,s^2)\,ds .
+ \tag{T10}
+\]
+The polynomial weight is nonzero except at zero, and its support on \(M\) is the entire parabola. The tangent \((1,2s)\) is annihilated exactly by multiples of \((-2s,1)\). Theorem 11 gives, in all the stated classes,
+\[
+       \{(s,s^2;\lambda(-2s,1)):
+                                  s\in\mathbb R,\ \lambda\ne0\}.
+ \tag{T11}
+\]
+At zero these include both nonzero vertical rays. Multiplication by a vanishing analytic weight does not generally preserve wavefront, but this density retains singular directions because every neighborhood along the supporting curve has a nonzero coefficient. \(\square\)
+
+**Exercise 15 (intermediate: a smooth tangential coefficient adds analytic directions).** Let \(h(s)=e^{-1/s^2}\) for \(s>0\), and \(h(s)=0\) for \(s\le0\). Determine the ordinary and analytic wavefronts of \(w(s,t)=h(s)\delta_0(t)\).
+
+**Solution.** Repeated differentiation on \(s>0\) gives a polynomial in \(1/s\) times \(e^{-1/s^2}\). Each expression tends to zero at \(s=0\): after \(v=1/s^2\), the exponential series dominates any prescribed power of \(v\). Extending each derivative by zero, and applying the fundamental theorem successively across zero, proves that \(h\) is smooth and all its derivatives vanish at zero. It is analytic off zero and has support \([0,\infty)\). It is not analytic at zero, because its Taylor series there is zero but \(h\) is positive immediately to the right. The projection theorem for analytic wavefront therefore gives a nonempty fiber at zero. That fiber is symmetric: if a bounded compact sequence \(v_N\) witnesses regularity of the real distribution \(h\) in a cone, then \(\overline{v_N}\) is another such sequence and
+\(\widehat{\overline{v_N}}(\eta)=\overline{\widehat{v_N}(-\eta)}\)
+gives regularity in the opposite cone with the same bounds. Its contrapositive makes singular directions symmetric. In one dimension a nonempty symmetric conic fiber contains both rays. Thus
+\[
+ \operatorname{WF}(h)=\varnothing,\qquad
+ \operatorname{WF}_A(h)=\{(0,\eta):\eta\ne0\}.
+ \tag{T12}
+\]
+Lemma 10 now gives
+\[
+ \begin{aligned}
+ \operatorname{WF}(w)
+   &=\{(s,0;0,\zeta):s\ge0,\ \zeta\ne0\},\\
+ \operatorname{WF}_A(w)
+   &=\{(s,0;0,\zeta):s>0,\ \zeta\ne0\}\\
+   &\qquad{}\cup
+       \{(0,0;\eta,\zeta):(\eta,\zeta)\ne(0,0)\}.
+ \end{aligned}
+ \tag{T13}
+\]
+In particular every tilted covector at the origin is analytically singular. The fact that the coefficient is smooth does not make it analytic in the tangential variable. The figure shows the unit sections of these exact fibers. \(\square\)
+
+**Exercise 16 (advanced: analytic restriction can cancel a whole component).** In \(\mathbb R^3\), take \(Y=\{z=0\}\), \(Z=\{z=x^2+y\}\), and the distributions \(dS_Y\), \(a\,dS_Z\) with \(a=y\) or \(a=z\). Determine the analytic and derivative-growth wavefronts of their products and of the restrictions to \(Y\).
+
+**Solution.** The surfaces are analytic and transverse. Their intersection is \(W=\{(s,-s^2,0)\}\), with
+\(\sigma(s)=\sqrt{(1+4s^2)/(2+4s^2)}\), as calculated in Exercise 12. For \(a=y\), the restricted weight is \(-s^2\). Formula (R4) gives coefficient \(-s^2/\sigma(s)\) relative to arclength on \(W\), for both restriction and product in their respective ambient spaces. Its support is the entire curve, including zero. Corollary 12 therefore gives all covectors
+\[
+ \lambda(2s,1)\quad(\lambda\ne0)
+ \tag{T14}
+\]
+inside \(Y\), and
+\[
+ \lambda(2s,1,0)+\mu(0,0,1)
+                          \quad((\lambda,\mu)\ne(0,0))
+ \tag{T15}
+\]
+for the ambient product, based at the corresponding curve point. These are exactly the analytic, smooth and every stated derivative-growth wavefront.
+
+For \(a=z\), its restriction to \(W\) is identically zero. Both resulting distributions vanish, hence all their wavefronts are empty. Yet \(z|_Z=x^2+y\) is analytic and has support all of \(Z\); Theorem 11 gives the full conormal bundle of \(Z\) for the original density. Thus analyticity does not turn the general pullback inclusion into equality for arbitrary embeddings. The exact restricted coefficient, rather than the intersection of the original support with \(Y\), determines the answer. \(\square\)
+
+
 ## Sources
 
 Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition (1990), Springer, 2003, [doi:10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), Sections 8.2 and 8.5, especially Definition 8.2.2, Examples 8.2.8 and 8.2.11, Theorems 8.2.9–8.2.14 and 8.5.4–8.5.5. These provide the convergence and wavefront-operation targets. The organization, proofs, examples, exercises and illustration here are independently expressed. The earlier programme proofs used in those arguments are linked at the beginning of the lesson.
+
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second-edition reprint, Springer, 2003, [doi:10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), Section 8.5, the analytic submanifold-density observation following Theorem 8.5.2. Lemma 10 and Theorem 11 give exact wavefront formulas for tangential coefficients and analytic submanifold densities; Corollary 12 and Exercises 14–16 treat transverse intersections and restricted zeros.

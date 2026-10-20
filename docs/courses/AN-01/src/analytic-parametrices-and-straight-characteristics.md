@@ -2,7 +2,7 @@
 
 *Written by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0). *
 
-A directional inverse can carry a singularity forward or backward along a characteristic line. To use that inverse at analytic regularity, its error must itself be analytic. We construct two such inverses for constant-coefficient equations, prove their analytic wavefront bounds, and then propagate singularities at every derivative-growth scale. The spatial cutoff in the propagation argument is smooth; we keep track of the analytic directions it introduces.
+A directional inverse can carry a singularity forward or backward along a characteristic line. To use that inverse at analytic regularity, its error must itself be analytic. We construct two such inverses for constant-coefficient equations, prove their analytic wavefront bounds, and then propagate singularities at every derivative-growth scale. The spatial cutoff in the propagation argument is smooth; we keep track of the analytic directions it introduces. An imaginary displacement estimate quantifies the error for every further real perturbation vector.
 
 Use \(D=-i\partial\), the Fourier inverse factor \((2\pi)^{-n}\), and complex-linear distribution pairings. Let \(n\ge1\) and let \(P\) be a polynomial of degree \(m\ge1\). Its top homogeneous part is denoted by \(p\). Here **real principal type** means
 \[
@@ -85,6 +85,84 @@ At \(z_0=\xi+itv(\xi)\), the derivative of \(Q\) differs from \(\nabla q_q(\xi)\
  \tag{8}
 \]
 For large \(|\xi|\), every second derivative along this segment is bounded by a constant times \(|\xi|^{q-2}\), since \(v\) is bounded and \(s\le|\xi|\). The ordinary integral Taylor remainder, or the finite expansion, proves the last term. Enlarge \(R\) so \(C_t/R\le c_0/4\), and choose \(0<\epsilon\le1\) so \(C_1\epsilon\le c_0/4\). The two errors in (8) are at most \((c_0/2)s|\xi|^{q-1}\). Combining with (5) proves (6). \(\square\)
+
+### Arbitrary imaginary perturbations
+
+An additional imaginary displacement need not follow a positive gradient direction, and its length need not be small relative to the frequency. The following estimate retains its linear contribution and bounds the remaining terms uniformly.
+
+**Lemma 2a (all real perturbation vectors).** Let \(P\) satisfy (1), of degree \(m\ge1\), and set \(v(\xi)=|\xi|^{1-m}\nabla p(\xi)\). There are positive constants \(t,c,C,R\), depending only on \(P\), such that, for every real \(\xi,V\) with \(r=|\xi|\ge R\),
+\[
+ \begin{aligned}
+ \operatorname{Im}P(\xi+itv(\xi)+iV)
+ &\ge c(1+r)^{m-1}+\nabla p(\xi)\cdot V\\
+ &\qquad-C(1+|V|)|V|(r+|V|)^{m-2}.
+ \end{aligned}
+ \tag{D1}
+\]
+There is no restriction on the direction or size of \(V\). The right side may be negative. In degree one the stronger exact formula in the proof has no error term.
+
+**Proof.** First suppose \(m\ge2\). Lemma 2, with \(Q=P\), supplies fixed \(t>0\) and \(R\ge1\) such that
+\[
+ z_0=\xi+itv(\xi),\qquad
+ \operatorname{Im}P(z_0)\ge2r^{m-1},\qquad
+ |\nabla P(z_0)-\nabla p(\xi)|\le A r^{m-2}.
+ \tag{D2}
+\]
+Here and below the norm of a complex vector is its Euclidean norm. To spell out the last estimate, \(\nabla(P-p)\) has degree at most \(m-2\), while
+\(\nabla p(z_0)-\nabla p(\xi)\) is the integral of
+\(D^2p(\xi+istv(\xi))\,itv(\xi)\) for \(0\le s\le1\).
+The vector \(v\) is bounded on the sphere and homogeneous of degree zero. Each monomial of these derivatives therefore has size at most a constant times \(r^{m-2}\), since \(r\ge1\) and \(t\) is fixed. This proves the last estimate, including \(m=2\), with one constant \(A\) for all directions.
+
+Write \(s=|V|\). Every point \(z_0+i\lambda V\), \(0\le\lambda\le1\), has norm at most
+\((1+t\sup|v|)(r+s)\). Every second derivative of \(P\) is a polynomial of degree at most \(m-2\). Bounding its finitely many monomials, and using \(r+s\ge1\), gives
+\[
+ \left|\sum_{j,k}V_jV_k
+        \partial_j\partial_kP(z_0+i\lambda V)\right|
+       \le B s^2(r+s)^{m-2}.
+ \tag{D3}
+\]
+For example, a common bound on the individual second derivatives gives this inequality because
+\(\sum_{j,k}|V_jV_k|=(\sum_j|V_j|)^2\le n|V|^2\).
+No restriction \(s\le r\) was used.
+
+Apply the fundamental theorem of calculus twice to the polynomial
+\(g(\lambda)=P(z_0+i\lambda V)\). Integrating
+\(g'(\lambda)=g'(0)+\int_0^\lambda g''(a)\,da\) gives
+\[
+ P(z_0+iV)=P(z_0)+i\nabla P(z_0)\cdot V
+   -\int_0^1(1-\lambda)
+       \sum_{j,k}V_jV_k\partial_j\partial_kP(z_0+i\lambda V)\,d\lambda .
+ \tag{D4}
+\]
+The change in the order of integration is over a compact triangle with continuous integrand, separately in real and imaginary parts. In particular the sign preceding the integral is \(i^2=-1\).
+
+The imaginary part of the linear term is
+\(\operatorname{Re}\nabla P(z_0)\cdot V\). Since \(\nabla p(\xi)\) is real, (D2)–(D4) give the lower bound
+\[
+ 2r^{m-1}+\nabla p(\xi)\cdot V
+       -A s r^{m-2}-\tfrac12B s^2(r+s)^{m-2}.
+\]
+The two errors are bounded by
+\(C(1+s)s(r+s)^{m-2}\) for a fixed positive \(C\).
+Also \(2r^{m-1}\ge2^{\,2-m}(1+r)^{m-1}\) when \(r\ge1\).
+Thus (D1) holds with \(c=2^{\,2-m}\), after enlarging \(C\) if needed.
+
+If \(m=1\), write \(P(\zeta)=a\cdot\zeta+b\), where
+\(a\in\mathbb R^n\setminus\{0\}\) and \(b\in\mathbb C\).
+Then \(v=a\), and direct evaluation gives
+\[
+ \operatorname{Im}P(\xi+ita+iV)
+       =t|a|^2+\operatorname{Im}b+a\cdot V.
+ \tag{D5}
+\]
+Choose \(t>0\) so that \(t|a|^2+\operatorname{Im}b\ge1\).
+Take \(c=1\), \(R=1\), and any positive \(C\). Subtracting the nonnegative quantity
+\(C(1+|V|)|V|/(r+|V|)\) weakens this exact bound and proves (D1).
+The denominator is nonzero because \(r\ge1\).
+This treats every allowed degree and completes the proof. \(\square\)
+
+The estimate controls the error around the positive displaced graph. It does not say that every further displacement avoids zeros or keeps the imaginary part positive. Exercises 9–11 give exact examples and the uniform positive-direction consequence.
+
 
 ## 3. Two inverses with entire errors
 
@@ -370,9 +448,73 @@ where \(\rho\) is compact smooth and one near zero. Determine its two transition
 
 **Solution.** Suppose \(F=\operatorname{supp}u\) is nonempty and compact. It is a proper closed subset and has a boundary point: join a point of \(F\) to a point outside a sufficiently large ball, and take the first exit parameter along their segment. U085's limiting-normal result supplies a nonzero covector at some boundary point, in the closed normal set. Corollary 6 makes it characteristic and places the whole line in direction \(\nabla p(\xi)\ne0\) inside \(F\). That line is unbounded, contradicting compactness. The earlier U089 half-space argument proves compact-support uniqueness for every nonzero constant-coefficient polynomial, without the real-principal-type assumption. The present proof is an additional consequence of propagation and does not replace that more general result.
 
+**Exercise 9 (foundation: a further displacement can reach a zero).** For \(P(\zeta_1,\zeta_2)=\zeta_1-i\), use \(t=2\) in Lemma 2a. Determine the imaginary part for every real \(\xi,V\), and find zeros reached from arbitrarily large real frequencies.
+
+**Solution.** Here \(p(\xi)=\xi_1\) and \(v=(1,0)\). Directly,
+\(P(\xi+2i(1,0)+iV)=\xi_1+i(1+V_1)\).
+Its imaginary part is exactly \(1+V_1\), as in (D5); \(V_2\) has no effect. At \(\xi=(0,L)\), \(L\ge1\), choosing \(V=(-1,0)\) makes the polynomial zero, although the unperturbed displaced value is \(i\). Its real principal gradient never vanishes, so the hypotheses hold. The unrestricted estimate (D1) remains valid: its linear contribution is negative at this perturbation, and it makes no positive lower-bound assertion there.
+
+**Exercise 10 (intermediate: a nonlinear estimate with explicit constants).** Let
+\[
+ P(\zeta_1,\zeta_2)=\zeta_1^3-\zeta_2^3-i(\zeta_1^2+\zeta_2^2).
+\]
+Check real principal type. For \(\xi=(r,0)\), \(r\ge2\), set \(t=1\) and allow every \(V\in\mathbb R^2\). Prove (D1) with \(c=1/2\), \(C=11\) on these frequencies, and explain why positivity can fail.
+
+**Solution.** The principal gradient is \((3\xi_1^2,-3\xi_2^2)\), which vanishes only at zero. Thus (1) holds. On the specified frequencies \(v=(3,0)\). Put \(y=V_1\), \(z=V_2\). Expansion of the two cubes and the two squares gives the exact identity
+\[
+ \operatorname{Im}P((r,0)+i(3,0)+i(y,z))
+    =8r^2-18+3r^2y-21y-8y^2-y^3+z^2+z^3.
+ \tag{D6}
+\]
+The baseline \(8r^2-18\) is at least \(2r^2\) for \(r\ge2\). With \(s=(y^2+z^2)^{1/2}\), the remaining error after the linear principal term is bounded below by
+\(-21s-8s^2-s^3\). Indeed \(z^2\ge0\), \(|y|\le s\), and
+\(|y|^3+|z|^3\le s(y^2+z^2)=s^3\). Finally
+\[
+ 21s+8s^2+s^3
+ \le11(1+s)s(r+s),\qquad
+ 2r^2\ge\tfrac12(1+r)^2\quad(r\ge2).
+ \tag{D7}
+\]
+For the first inequality, expand the right side at its smallest permitted \(r=2\):
+it is \(22s+33s^2+11s^3\), whose coefficients dominate those on the left.
+This proves (D1) for all vectors \(V\) on the stated frequency ray, with the claimed constants. These explicit constants are asserted on this ray; the general lemma supplies constants uniform over all real frequency directions.
+
+For \(r=3,z=0\), (D6) becomes
+\(54+6y-8y^2-y^3\). Its value is \(54\) at \(y=0\) and \(-27\) at \(y=3\). Thus even a further displacement in the positive principal-gradient direction can lose positivity when its length is not restricted relative to the frequency. This imaginary-part calculation alone does not assert a zero of the complex polynomial.
+
+![Exact imaginary polynomial values and the uniform perturbation error bound](../figures/arbitrary-imaginary-perturbations.png)
+
+*The exact polynomial of Exercise 10 at \(\xi=(3,0)\), \(t=1\), \(V=(y,0)\). Left: its imaginary part \(54+6y-8y^2-y^3\) and the principal linear predictor \(54+27y\); the marked values are \(54\) and \(-27\). Right: the absolute difference \(|-21y-8y^2-y^3|\) and its proved bound \(11(1+|y|)|y|(3+|y|)\), on a logarithmic vertical scale. Both quantities vanish at zero, which is omitted only from that logarithmic panel. Each curve uses 1,801 samples on \([-5,4]\). The all-vector inequalities are proved in (D6)–(D7); the samples illustrate them. [Vector figure](../figures/arbitrary-imaginary-perturbations.svg) · [Plotting source](../figures/arbitrary-imaginary-perturbations.py).*
+
+**Exercise 11 (advanced: a uniform cone of positive further displacements).** Suppose unit real vectors \(e\) and frequency directions obey
+\(\nabla p(\xi)\cdot e\ge\kappa r^{m-1}\) with a fixed \(\kappa>0\).
+Use Lemma 2a to find fixed \(\epsilon>0\) and \(R'>0\) for which
+\[
+ \operatorname{Im}P(\xi+itv(\xi)+ise)
+     \ge c r^{m-1}+\tfrac12\kappa s r^{m-1},
+ \qquad r\ge R',\quad 0\le s\le\epsilon r.
+ \tag{D8}
+\]
+The constants must be uniform over all such pairs of directions.
+
+**Solution.** If \(m\ge2\), choose \(0<\epsilon\le1\) and \(R'\ge\max(R,1)\) so that
+\[
+ C\,2^{m-2}\epsilon\le\kappa/4,\qquad
+ C\,2^{m-2}/R'\le\kappa/4.
+\]
+These are choices of fixed positive constants. For \(s\le\epsilon r\), the error in (D1) is at most
+\[
+ C\,2^{m-2}(r^{-1}+\epsilon)s r^{m-1}
+       \le\tfrac12\kappa s r^{m-1}.
+\]
+The baseline \(c(1+r)^{m-1}\) is at least \(cr^{m-1}\), while the principal linear term is at least \(\kappa s r^{m-1}\). This proves (D8), including \(s=0\). The choices used only \(C,m,\kappa,R\), so they are uniform over the specified directions. If \(m=1\), (D5) gives the stronger bound \(1+\kappa s\) for every \(s\ge0\), with the choice of \(t,c=1\) from its proof; one may take \(\epsilon=1,R'=1\). The unrestricted estimate and the positive conic estimate therefore have different conclusions, both with their full quantified hypotheses.
+
+
 ## Proof locations and mathematical source
 
 - [Holomorphic boundaries and analytic directions](holomorphic-boundaries-and-analytic-directions.md), Theorem 2, supplies the full-cone boundary estimate used in (19). The growth bound here is uniform even near the cone's edge.
 - [Boundary regularity and conic decomposition](boundary-regularity-and-conic-decomposition.md), Theorem 4, supplies the actual direction-selecting operators. Lemma 4 above proves their required commutation. [Analytic pullback and cotangent directions](analytic-pullback-and-cotangent-directions.md), Theorem 2, controls the spatial cutoff, and [Keeping zero covectors in kernel operations](keeping-zero-covectors-in-kernel-operations.md), Corollary 7, supplies the exact convolution bound.
 - [Both analytic directions at support boundaries](both-analytic-directions-at-support-boundaries.md) and [Analytic equations and characteristic directions](analytic-equations-and-characteristic-directions.md) supply the closed support-normal inclusion and noncharacteristic differential regularity. [Characteristic planes and convex-domain uniqueness](characteristic-planes-and-convex-domain-uniqueness.md), Corollary 5, retains the more general compact-support alternative mentioned in Exercise 8.
 - Lars Hörmander, *The Analysis of Linear Partial Differential Operators I*, second edition, 2003 reprint, Definition 8.3.5, Lemma 8.3.6 and Theorem 8.3.7, pp. 275–278, and Theorems 8.6.12–8.6.13 with Corollary 8.6.14, pp. 313–315, are the mathematical antecedents. The weighted graph homotopy, exposition, exercises and figure here are independently expressed. The general smooth Fourier-integral propagation theorem has its separate programme proof; it is not being used as an analytic estimate.
+
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second-edition reprint, Springer, 2003, [doi:10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), Lemma 8.3.6 for arbitrary imaginary perturbations. Lemma 2a proves the estimate in every positive degree; Exercises 9–11 treat zeros, explicit nonlinear constants and uniform conic perturbations.

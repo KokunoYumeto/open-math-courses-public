@@ -260,7 +260,7 @@ The right side is bounded by a constant independent of real \(x\) and \(|\eta|\l
 **Proof of the sector bound.** Fix \(|\arg w|\le\theta<\pi/2\), \(|w|\ge1\). Use the permitted ray with argument \(-\arg w\) in (17), and rescale it to \(\zeta=\overline w\,r\). Pointwise this gives
 
 \[
- K_0(w)=(2\pi)^{-n}\overline w^{,n}
+ K_0(w)=(2\pi)^{-n}(\overline w)^n
         \int_0^\infty
         \frac{I_0(ir|w|^2)}{I_0(r\overline w)}r^{n-1}\,dr.
  \tag{21}

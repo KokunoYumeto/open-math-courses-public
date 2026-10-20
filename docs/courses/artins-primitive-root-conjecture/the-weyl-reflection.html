@@ -1,0 +1,499 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Weyl reflection</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Artin&#x27;s primitive root conjecture)</a><a href="a-theta-expression-for-the-coefficient-sums.html">Previous lesson</a><a href="the-quadratic-large-sieve-and-the-reflected-moment.html">Next lesson</a><a href="src/the-weyl-reflection.md">Editable source</a></nav><main><article><h1 id="the-weyl-reflection">The Weyl reflection</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p><a href="a-theta-expression-for-the-coefficient-sums.html"><em>A theta expression for the coefficient sums</em></a> wrote <span class="math" data-tex="\(B_m(Z)\)">\(B_m(Z)\)</span> as a Gaussian average of the theta average <span class="math" data-tex="\(\mathcal T_m(l)\)">\(\mathcal T_m(l)\)</span>, and noted that <span class="math" data-tex="\(\mathcal T_m(l)\)">\(\mathcal T_m(l)\)</span> can be computed after applying the rational Weyl element <span class="math" data-tex="\(w\)">\(w\)</span>. This lesson carries out that computation. At <span class="math" data-tex="\(S\)">\(S\)</span>, <span class="math" data-tex="\(w\)">\(w\)</span> inverts the norm variable; a frequency of norm <span class="math" data-tex="\(Q/(q_{\mathfrak d}^2q_{\mathfrak f}^2)\)">\(Q/(q_{\mathfrak d}^2q_{\mathfrak f}^2)\)</span> then contributes at the reflected norm <span class="math" data-tex="\(ZQ/(q_{\mathfrak d}^2q_{\mathfrak f}^2)\)">\(ZQ/(q_{\mathfrak d}^2q_{\mathfrak f}^2)\)</span>. At a row prime, <span class="math" data-tex="\(w\)">\(w\)</span> turns each Fourier mask into a short Gauss sum. At a prime dividing <span class="math" data-tex="\(m\)">\(m\)</span> exactly once the result is a first power of the sextic symbol, while a squarefree column prime contributes the power <span class="math" data-tex="\(-4\)">\(-4\)</span> of the same pairing. By reciprocity the product of the two is the cube of the sextic symbol, a quadratic symbol, and the resulting bilinear form in row and column ideals is the object of the quadratic large sieve in Lesson 10.</p>
+<p><strong>Prerequisites.</strong> <a href="s-integers-and-sixth-power-classes.html"><em>S-integers and sixth-power classes</em></a>, Lemma 2.1, Section 3 and Lemma 4.1; <a href="sextic-reciprocity-and-kummer-characters.html"><em>Sextic reciprocity and Kummer characters</em></a>, Section 1 and Proposition 2.1; <a href="gauss-sums-and-the-correction-characters.html"><em>Gauss sums and the correction characters</em></a>, Lemma 1.1; <a href="the-coefficient-family-and-the-plan-of-the-zero-free-argument.html"><em>The coefficient family and the plan of the zero-free argument</em></a>, Section 4; <a href="cubic-theta-and-its-whittaker-coefficients.html"><em>Cubic theta and its Whittaker coefficients</em></a>, N1, (1.2), (1.3), (2.1), (2.3), Proposition 4.1 and Lemma 6.1; <a href="norm-sheets-and-exact-gaussian-smoothing.html"><em>Norm sheets and exact Gaussian smoothing</em></a>, Lemmas 2.1, 3.1, 5.1 and 6.1; <a href="a-theta-expression-for-the-coefficient-sums.html"><em>A theta expression for the coefficient sums</em></a>, Sections 1–6.</p>
+<h2 id="1-the-local-effect-of-the-weyl-element">1. The local effect of the Weyl element</h2>
+<p>Fix an exterior prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> with allowed generator <span class="math" data-tex="\(p\)">\(p\)</span>, used as uniformizer, and write <span class="math" data-tex="\(\chi=\chi_{\mathfrak p}\)">\(\chi=\chi_{\mathfrak p}\)</span>, <span class="math" data-tex="\(\psi=\psi_{\mathfrak p}\)">\(\psi=\psi_{\mathfrak p}\)</span>, <span class="math" data-tex="\(q=q_{\mathfrak p}\)">\(q=q_{\mathfrak p}\)</span> and <span class="math" data-tex="\(W_e=W_{\mathfrak p}(a(p^e))\)">\(W_e=W_{\mathfrak p}(a(p^e))\)</span>, so that <span class="math" data-tex="\(|W_e|\)">\(|W_e|\)</span> is <span class="math" data-tex="\(q^{-k}\)">\(q^{-k}\)</span>, <span class="math" data-tex="\(q^{-k-1/2}\)">\(q^{-k-1/2}\)</span> or <span class="math" data-tex="\(0\)">\(0\)</span> for <span class="math" data-tex="\(e=3k\)">\(e=3k\)</span>, <span class="math" data-tex="\(3k+1\)">\(3k+1\)</span>, <span class="math" data-tex="\(3k+2\)">\(3k+2\)</span> with <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span> (Proposition 4.1 of Lesson 6). Let <span class="math" data-tex="\(\alpha_{\mathfrak p,j}\)">\(\alpha_{\mathfrak p,j}\)</span> and <span class="math" data-tex="\(\tau_{\mathfrak p,j}\)">\(\tau_{\mathfrak p,j}\)</span> be the masks and Gauss sums of Section 3 of Lesson 8. From (1.3) of Lesson 6 and bimultiplicativity, for integers <span class="math" data-tex="\(e_1,e_2\)">\(e_1,e_2\)</span> and units <span class="math" data-tex="\(u,v\)">\(u,v\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal C_{\mathfrak p}\bigl(p^{e_1}u,\,p^{e_2}v\bigr)\\
+&amp;\quad =\chi(u)^{2e_2}\chi(v)^{-2e_1}.\quad(1.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathcal C_{\mathfrak p}\bigl(p^{e_1}u,\,p^{e_2}v\bigr)\\
+&amp;\quad =\chi(u)^{2e_2}\chi(v)^{-2e_1}.\quad(1.1)
+\end{aligned}
+\]</span></p>
+<p>For <span class="math" data-tex="\(0\le j\le5\)">\(0\le j\le5\)</span>, an integer <span class="math" data-tex="\(e\)">\(e\)</span> and a unit <span class="math" data-tex="\(t\)">\(t\)</span>, put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal R_{\mathfrak p,j,e}(t)&amp;=\sum_{x\in k_{\mathfrak p}^\times}\alpha_{\mathfrak p,j}(x)\\
+&amp;\quad \,W_{\mathfrak p}\bigl(a(p^{e-2}t)\,w\,n(x/p)\bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal R_{\mathfrak p,j,e}(t)&amp;=\sum_{x\in k_{\mathfrak p}^\times}\alpha_{\mathfrak p,j}(x)\\
+&amp;\quad \,W_{\mathfrak p}\bigl(a(p^{e-2}t)\,w\,n(x/p)\bigr),
+\end{aligned}
+\]</span>
+the contribution of the nonzero digits to the reflected Whittaker value at a frequency of valuation <span class="math" data-tex="\(e-2\)">\(e-2\)</span>.</p>
+<p><strong>Lemma 1.1</strong> (local reflection [OpenAI-029, Lemma 6.2]). <span class="math" data-tex="\(\mathcal R_{\mathfrak p,j,e}=0\)">\(\mathcal R_{\mathfrak p,j,e}=0\)</span> for <span class="math" data-tex="\(e&lt;0\)">\(e&lt;0\)</span>. For <span class="math" data-tex="\(e\ge0\)">\(e\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal R_{\mathfrak p,j,e}(t)&amp;=W_e\,\chi(t)^{4+2e}\\
+&amp;\quad \sum_{x\in k_{\mathfrak p}^\times}\alpha_{\mathfrak p,j}(x)\\
+&amp;\quad \,\chi(x)^4\,\psi\bigl(p^{e-1}t/x\bigr).\quad(1.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal R_{\mathfrak p,j,e}(t)&amp;=W_e\,\chi(t)^{4+2e}\\
+&amp;\quad \sum_{x\in k_{\mathfrak p}^\times}\alpha_{\mathfrak p,j}(x)\\
+&amp;\quad \,\chi(x)^4\,\psi\bigl(p^{e-1}t/x\bigr).\quad(1.2)
+\end{aligned}
+\]</span>
+Put <span class="math" data-tex="\(s_{\mathfrak p,j,e}=\mathcal R_{\mathfrak p,j,e}(1)\)">\(s_{\mathfrak p,j,e}=\mathcal R_{\mathfrak p,j,e}(1)\)</span>, and choose exponents modulo <span class="math" data-tex="\(6\)">\(6\)</span> by <span class="math" data-tex="\(b_{j,0}\equiv8-j\)">\(b_{j,0}\equiv8-j\)</span> and <span class="math" data-tex="\(b_{j,e}\equiv4+2e\)">\(b_{j,e}\equiv4+2e\)</span> for <span class="math" data-tex="\(e&gt;0\)">\(e&gt;0\)</span>. Then
+<span class="math math-display" data-tex="\[
+\mathcal R_{\mathfrak p,j,e}(t)=s_{\mathfrak p,j,e}\,\chi(t)^{b_{j,e}} .
+\tag{1.3}
+\]">\[
+\mathcal R_{\mathfrak p,j,e}(t)=s_{\mathfrak p,j,e}\,\chi(t)^{b_{j,e}} .
+\tag{1.3}
+\]</span>
+Moreover:</p>
+<ol>
+<li><span class="math" data-tex="\(|s_{\mathfrak p,j,0}|\le1\)">\(|s_{\mathfrak p,j,0}|\le1\)</span>, and for <span class="math" data-tex="\(e&gt;0\)">\(e&gt;0\)</span>, <span class="math" data-tex="\(|s_{\mathfrak p,j,e}|\le q^{1/2}|W_e|\)">\(|s_{\mathfrak p,j,e}|\le q^{1/2}|W_e|\)</span>; for <span class="math" data-tex="\(e&gt;0\)">\(e&gt;0\)</span>, <span class="math" data-tex="\(s_{\mathfrak p,j,e}=0\)">\(s_{\mathfrak p,j,e}=0\)</span> unless <span class="math" data-tex="\(j=4\)">\(j=4\)</span>, and <span class="math" data-tex="\(s_{\mathfrak p,j,e}=0\)">\(s_{\mathfrak p,j,e}=0\)</span> when <span class="math" data-tex="\(e\equiv2\pmod3\)">\(e\equiv2\pmod3\)</span>.</li>
+<li>For <span class="math" data-tex="\(j=1\)">\(j=1\)</span>: <span class="math" data-tex="\(\mathcal R_{\mathfrak p,1,e}=0\)">\(\mathcal R_{\mathfrak p,1,e}=0\)</span> for <span class="math" data-tex="\(e\ne0\)">\(e\ne0\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal R_{\mathfrak p,1,0}(t)=\xi_{\mathfrak p}\,\chi(t),\\
+\xi_{\mathfrak p}=\frac1{\tau_{\mathfrak p,1}}\sum_{x\in k_{\mathfrak p}^\times}\chi(x)^3\psi(x/p),\\
+|\xi_{\mathfrak p}|=1 .\quad(1.4)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal R_{\mathfrak p,1,0}(t)=\xi_{\mathfrak p}\,\chi(t),\\
+\xi_{\mathfrak p}=\frac1{\tau_{\mathfrak p,1}}\sum_{x\in k_{\mathfrak p}^\times}\chi(x)^3\psi(x/p),\\
+|\xi_{\mathfrak p}|=1 .\quad(1.4)
+\end{gathered}
+\]</span></li>
+<li>The zero digit carries weight <span class="math" data-tex="\(\alpha_{\mathfrak p,j}(0)\)">\(\alpha_{\mathfrak p,j}(0)\)</span>, which is nonzero only for <span class="math" data-tex="\(j=0\)">\(j=0\)</span>; at a frequency <span class="math" data-tex="\(\nu\)">\(\nu\)</span> its contribution is <span class="math" data-tex="\((1-q^{-1})W_{\mathfrak p}(a(\nu))\)">\((1-q^{-1})W_{\mathfrak p}(a(\nu))\)</span>.</li>
+</ol>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(x\in k_{\mathfrak p}^\times\)">\(x\in k_{\mathfrak p}^\times\)</span>, represented by a unit, and <span class="math" data-tex="\(H=x/p\)">\(H=x/p\)</span>. By (2.1) of Lesson 6, <span class="math" data-tex="\(wn(H)=n(H^{-1})a(-H^{-2})\bar n(H^{-1})\)">\(wn(H)=n(H^{-1})a(-H^{-2})\bar n(H^{-1})\)</span>. Here <span class="math" data-tex="\(a(-H^{-2})=a(H^{-2})a(-1)\)">\(a(-H^{-2})=a(H^{-2})a(-1)\)</span>, with trivial cocycle because <span class="math" data-tex="\(-1\)">\(-1\)</span> is a sixth power, and <span class="math" data-tex="\(k_x=a(-1)\bar n(p/x)\)">\(k_x=a(-1)\bar n(p/x)\)</span> lies in the split compact subgroup, so it fixes the spherical vector. Commuting <span class="math" data-tex="\(n(p/x)\)">\(n(p/x)\)</span> to the left, <span class="math" data-tex="\(a(p^{e-2}t)n(p/x)=n(p^{e-1}t/x)a(p^{e-2}t)\)">\(a(p^{e-2}t)n(p/x)=n(p^{e-1}t/x)a(p^{e-2}t)\)</span>, and the Whittaker functional gives the factor <span class="math" data-tex="\(\psi(p^{e-1}t/x)\)">\(\psi(p^{e-1}t/x)\)</span>. With <span class="math" data-tex="\(H^{-2}=p^2x^{-2}\)">\(H^{-2}=p^2x^{-2}\)</span>, (1.1) gives
+<span class="math math-display" data-tex="\[
+\mathcal C_{\mathfrak p}\bigl(p^{e-2}t,\,p^2x^{-2}\bigr)=\chi(t)^4\chi(x)^{4(e-2)} .
+\]">\[
+\mathcal C_{\mathfrak p}\bigl(p^{e-2}t,\,p^2x^{-2}\bigr)=\chi(t)^4\chi(x)^{4(e-2)} .
+\]</span>
+The remaining argument is <span class="math" data-tex="\(a(p^ etx^{-2})\)">\(a(p^ etx^{-2})\)</span>. By Proposition 4.1 of Lesson 6 its value is <span class="math" data-tex="\(0\)">\(0\)</span> for <span class="math" data-tex="\(e&lt;0\)">\(e&lt;0\)</span> and <span class="math" data-tex="\(\chi(t)^{2e}\chi(x)^{-4e}W_e\)">\(\chi(t)^{2e}\chi(x)^{-4e}W_e\)</span> for <span class="math" data-tex="\(e\ge0\)">\(e\ge0\)</span>. The product of the three factors is <span class="math" data-tex="\(W_e\chi(t)^{4+2e}\chi(x)^{-8}\psi(p^{e-1}t/x)\)">\(W_e\chi(t)^{4+2e}\chi(x)^{-8}\psi(p^{e-1}t/x)\)</span>, and <span class="math" data-tex="\(\chi^{-8}=\chi^4\)">\(\chi^{-8}=\chi^4\)</span>; this is (1.2).</p>
+<p>For <span class="math" data-tex="\(e&gt;0\)">\(e&gt;0\)</span> the additive factor is <span class="math" data-tex="\(1\)">\(1\)</span>, and the digit sum is <span class="math" data-tex="\(\sum_x\alpha_{\mathfrak p,j}(x)\chi(x)^4\)">\(\sum_x\alpha_{\mathfrak p,j}(x)\chi(x)^4\)</span>. For <span class="math" data-tex="\(j\ne0\)">\(j\ne0\)</span> it is <span class="math" data-tex="\(\tau_{\mathfrak p,j}^{-1}\sum_x\chi(x)^{4-j}\)">\(\tau_{\mathfrak p,j}^{-1}\sum_x\chi(x)^{4-j}\)</span>, which vanishes unless <span class="math" data-tex="\(j=4\)">\(j=4\)</span>; for <span class="math" data-tex="\(j=0\)">\(j=0\)</span> it is <span class="math" data-tex="\(-q^{-1}\sum_x\chi(x)^4=0\)">\(-q^{-1}\sum_x\chi(x)^4=0\)</span>. In every case its absolute value is at most <span class="math" data-tex="\(\sum_x|\alpha_{\mathfrak p,j}(x)|\le q^{1/2}\)">\(\sum_x|\alpha_{\mathfrak p,j}(x)|\le q^{1/2}\)</span> (Lemma 3.1 of Lesson 8). The dependence on <span class="math" data-tex="\(t\)">\(t\)</span> is <span class="math" data-tex="\(\chi(t)^{4+2e}\)">\(\chi(t)^{4+2e}\)</span>, and <span class="math" data-tex="\(W_e=0\)">\(W_e=0\)</span> for <span class="math" data-tex="\(e\equiv2\pmod3\)">\(e\equiv2\pmod3\)</span>.</p>
+<p>For <span class="math" data-tex="\(e=0\)">\(e=0\)</span> substitute <span class="math" data-tex="\(x=t/y\)">\(x=t/y\)</span>, so that <span class="math" data-tex="\(\chi(x)^4=\chi(t)^4\chi(y)^{-4}\)">\(\chi(x)^4=\chi(t)^4\chi(y)^{-4}\)</span> and <span class="math" data-tex="\(\psi(t/(px))=\psi(y/p)\)">\(\psi(t/(px))=\psi(y/p)\)</span>. For <span class="math" data-tex="\(j\ne0\)">\(j\ne0\)</span>, <span class="math" data-tex="\(\alpha_{\mathfrak p,j}(x)=\tau_{\mathfrak p,j}^{-1}\chi(t)^{-j}\chi(y)^j\)">\(\alpha_{\mathfrak p,j}(x)=\tau_{\mathfrak p,j}^{-1}\chi(t)^{-j}\chi(y)^j\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal R_{\mathfrak p,j,0}(t)&amp;=\chi(t)^{8-j}\,\frac{1}{\tau_{\mathfrak p,j}}\\
+&amp;\quad \sum_{y\in k_{\mathfrak p}^\times}\chi(y)^{j-4}\psi(y/p).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal R_{\mathfrak p,j,0}(t)&amp;=\chi(t)^{8-j}\,\frac{1}{\tau_{\mathfrak p,j}}\\
+&amp;\quad \sum_{y\in k_{\mathfrak p}^\times}\chi(y)^{j-4}\psi(y/p).
+\end{aligned}
+\]</span>
+The last sum is a Gauss sum of absolute value <span class="math" data-tex="\(q^{1/2}\)">\(q^{1/2}\)</span> if <span class="math" data-tex="\(j\ne4\)">\(j\ne4\)</span> (Lemma 1.1 of Lesson 4) and equals <span class="math" data-tex="\(-1\)">\(-1\)</span> if <span class="math" data-tex="\(j=4\)">\(j=4\)</span>; with <span class="math" data-tex="\(|\tau_{\mathfrak p,j}|=q^{1/2}\)">\(|\tau_{\mathfrak p,j}|=q^{1/2}\)</span> the absolute value is at most <span class="math" data-tex="\(1\)">\(1\)</span>. For <span class="math" data-tex="\(j=1\)">\(j=1\)</span>, <span class="math" data-tex="\(\chi^{j-4}=\chi^{-3}=\chi^3\)">\(\chi^{j-4}=\chi^{-3}=\chi^3\)</span> and <span class="math" data-tex="\(8-j=7\equiv1\pmod 6\)">\(8-j=7\equiv1\pmod 6\)</span>, which is (1.4). For <span class="math" data-tex="\(j=0\)">\(j=0\)</span>, <span class="math" data-tex="\(\alpha_{\mathfrak p,0}(x)=-q^{-1}\)">\(\alpha_{\mathfrak p,0}(x)=-q^{-1}\)</span> and the same substitution gives <span class="math" data-tex="\(-q^{-1}\chi(t)^8\sum_y\chi(y)^{-4}\psi(y/p)\)">\(-q^{-1}\chi(t)^8\sum_y\chi(y)^{-4}\psi(y/p)\)</span>, of absolute value <span class="math" data-tex="\(q^{-1/2}\)">\(q^{-1/2}\)</span>. This proves (1.3) and part 1. Part 2 is the case <span class="math" data-tex="\(j=1\)">\(j=1\)</span>: for <span class="math" data-tex="\(e&gt;0\)">\(e&gt;0\)</span> it vanishes because <span class="math" data-tex="\(j\ne4\)">\(j\ne4\)</span>. For part 3, <span class="math" data-tex="\(w\)">\(w\)</span> lies in the split compact subgroup, so <span class="math" data-tex="\(W_{\mathfrak p}(a(\nu)w)=W_{\mathfrak p}(a(\nu))\)">\(W_{\mathfrak p}(a(\nu)w)=W_{\mathfrak p}(a(\nu))\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-active-primes-and-the-reflected-frequencies">2. Active primes and the reflected frequencies</h2>
+<p>Let <span class="math" data-tex="\(m\in R\)">\(m\in R\)</span> be nonzero and factor its exterior ideal as <span class="math" data-tex="\(\mathfrak m=\mathfrak h\mathfrak d\)">\(\mathfrak m=\mathfrak h\mathfrak d\)</span>, with <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span> powerful and <span class="math" data-tex="\(\mathfrak d\)">\(\mathfrak d\)</span> squarefree and prime to <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span> ((4.2) of Lesson 5). Every prime of <span class="math" data-tex="\(\mathfrak d\)">\(\mathfrak d\)</span> has <span class="math" data-tex="\(j_{\mathfrak p}=1\)">\(j_{\mathfrak p}=1\)</span>. In the digit sum at a prime <span class="math" data-tex="\(\mathfrak p\mid\mathfrak m\)">\(\mathfrak p\mid\mathfrak m\)</span>, call <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> <strong>active</strong> for a digit vector if its digit is nonzero. Since <span class="math" data-tex="\(\alpha_{\mathfrak p,j}(0)=0\)">\(\alpha_{\mathfrak p,j}(0)=0\)</span> for <span class="math" data-tex="\(j\ne0\)">\(j\ne0\)</span>, every prime with <span class="math" data-tex="\(j_{\mathfrak p}\ne0\)">\(j_{\mathfrak p}\ne0\)</span> is active, in particular every prime of <span class="math" data-tex="\(\mathfrak d\)">\(\mathfrak d\)</span>. The possible sets of active primes of <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span> are the squarefree ideals in
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal F(\mathfrak h)=\bigl\{\mathfrak f\ \text{squarefree}:\ \mathfrak f\mid\operatorname{rad}(\mathfrak h),\\
+&amp;\qquad\mathfrak p\mid\mathfrak f\ \text{whenever}\ \mathfrak p\mid\mathfrak h\\
+&amp;\qquad\text{and}\ j_{\mathfrak p}\ne0\bigr\},\quad(2.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathcal F(\mathfrak h)=\bigl\{\mathfrak f\ \text{squarefree}:\ \mathfrak f\mid\operatorname{rad}(\mathfrak h),\\
+&amp;\qquad\mathfrak p\mid\mathfrak f\ \text{whenever}\ \mathfrak p\mid\mathfrak h\\
+&amp;\qquad\text{and}\ j_{\mathfrak p}\ne0\bigr\},\quad(2.1)
+\end{aligned}
+\]</span>
+and the inactive primes of <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span> carry the scalar
+<span class="math math-display" data-tex="\[
+I_{\mathfrak h,\mathfrak f}=\prod_{\mathfrak p\mid\mathfrak h,\ \mathfrak p\nmid\mathfrak f}\bigl(1-q_{\mathfrak p}^{-1}\bigr).
+\]">\[
+I_{\mathfrak h,\mathfrak f}=\prod_{\mathfrak p\mid\mathfrak h,\ \mathfrak p\nmid\mathfrak f}\bigl(1-q_{\mathfrak p}^{-1}\bigr).
+\]</span>
+Since every exponent of <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span> is at least <span class="math" data-tex="\(2\)">\(2\)</span>,
+<span class="math math-display" data-tex="\[
+q_{\mathfrak f}^2\le q_{\mathfrak h}\qquad(\mathfrak f\in\mathcal F(\mathfrak h)).
+\tag{2.2}
+\]">\[
+q_{\mathfrak f}^2\le q_{\mathfrak h}\qquad(\mathfrak f\in\mathcal F(\mathfrak h)).
+\tag{2.2}
+\]</span>
+For squarefree <span class="math" data-tex="\(\mathfrak f\)">\(\mathfrak f\)</span> let <span class="math" data-tex="\(\mathcal A(\mathfrak f)\)">\(\mathcal A(\mathfrak f)\)</span> be the set of integral exterior ideals supported on the primes of <span class="math" data-tex="\(\mathfrak f\)">\(\mathfrak f\)</span> all of whose exponents are congruent to <span class="math" data-tex="\(0\)">\(0\)</span> or <span class="math" data-tex="\(1\)">\(1\)</span> modulo <span class="math" data-tex="\(3\)">\(3\)</span>; in particular <span class="math" data-tex="\(\mathcal A(R)=\{R\}\)">\(\mathcal A(R)=\{R\}\)</span>.</p>
+<p><strong>Lemma 2.1</strong> (reflected frequencies [OpenAI-029, (6.14)]). Fix <span class="math" data-tex="\(\mathfrak f\in\mathcal F(\mathfrak h)\)">\(\mathfrak f\in\mathcal F(\mathfrak h)\)</span>, and choose representatives <span class="math" data-tex="\(\varepsilon_u\in U_S\)">\(\varepsilon_u\in U_S\)</span> of the classes <span class="math" data-tex="\(u\in U_6\)">\(u\in U_6\)</span>. In the Fourier expansion of <span class="math" data-tex="\(\theta_\upsilon(wg(y,\mathbf x))\)">\(\theta_\upsilon(wg(y,\mathbf x))\)</span>, summed over the digit vectors with active set <span class="math" data-tex="\(\mathfrak d\mathfrak f\)">\(\mathfrak d\mathfrak f\)</span>, every frequency <span class="math" data-tex="\(\nu\in F^\times\)">\(\nu\in F^\times\)</span> with a nonzero exterior coefficient is of the form
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\nu=\gamma\nu_0,\\
+\nu_0=\varepsilon_u\,\frac{a&#x27;_{\mathfrak f}\,c&#x27;\,(n&#x27;)^3}{(df)^2},\\
+\gamma\in\Gamma ,\quad(2.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\nu=\gamma\nu_0,\\
+\nu_0=\varepsilon_u\,\frac{a&#x27;_{\mathfrak f}\,c&#x27;\,(n&#x27;)^3}{(df)^2},\\
+\gamma\in\Gamma ,\quad(2.3)
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(\mathfrak a&#x27;_{\mathfrak f}\in\mathcal A(\mathfrak f)\)">\(\mathfrak a&#x27;_{\mathfrak f}\in\mathcal A(\mathfrak f)\)</span>, <span class="math" data-tex="\(\mathfrak c&#x27;\)">\(\mathfrak c&#x27;\)</span> is squarefree, <span class="math" data-tex="\(\mathfrak n&#x27;\)">\(\mathfrak n&#x27;\)</span> is integral, <span class="math" data-tex="\((\mathfrak c&#x27;\mathfrak n&#x27;,\mathfrak d\mathfrak f)=1\)">\((\mathfrak c&#x27;\mathfrak n&#x27;,\mathfrak d\mathfrak f)=1\)</span>, and <span class="math" data-tex="\(d,f,a&#x27;_{\mathfrak f},c&#x27;,n&#x27;\)">\(d,f,a&#x27;_{\mathfrak f},c&#x27;,n&#x27;\)</span> are the fixed allowed generators of <span class="math" data-tex="\(\mathfrak d,\mathfrak f,\mathfrak a&#x27;_{\mathfrak f},\mathfrak c&#x27;,\mathfrak n&#x27;\)">\(\mathfrak d,\mathfrak f,\mathfrak a&#x27;_{\mathfrak f},\mathfrak c&#x27;,\mathfrak n&#x27;\)</span>. The data <span class="math" data-tex="\((\mathfrak a&#x27;_{\mathfrak f},\mathfrak c&#x27;,\mathfrak n&#x27;,u,\gamma)\)">\((\mathfrak a&#x27;_{\mathfrak f},\mathfrak c&#x27;,\mathfrak n&#x27;,u,\gamma)\)</span> are uniquely determined by <span class="math" data-tex="\(\nu\)">\(\nu\)</span>.</p>
+<p><em>Proof.</em> At an exterior prime <span class="math" data-tex="\(\mathfrak q\nmid\mathfrak d\mathfrak f\)">\(\mathfrak q\nmid\mathfrak d\mathfrak f\)</span>, the local factor is a spherical value, either because <span class="math" data-tex="\(\mathfrak q\nmid\mathfrak m\)">\(\mathfrak q\nmid\mathfrak m\)</span> and <span class="math" data-tex="\(w\)">\(w\)</span> is compact, or by Lemma 1.1(3) at an inactive prime; it vanishes unless <span class="math" data-tex="\(v_{\mathfrak q}(\nu)\ge0\)">\(v_{\mathfrak q}(\nu)\ge0\)</span> and <span class="math" data-tex="\(v_{\mathfrak q}(\nu)\not\equiv2\pmod3\)">\(v_{\mathfrak q}(\nu)\not\equiv2\pmod3\)</span>. At <span class="math" data-tex="\(\mathfrak p\mid\mathfrak d\)">\(\mathfrak p\mid\mathfrak d\)</span>, Lemma 1.1(2) forces <span class="math" data-tex="\(v_{\mathfrak p}(\nu)=-2\)">\(v_{\mathfrak p}(\nu)=-2\)</span>. At <span class="math" data-tex="\(\mathfrak p\mid\mathfrak f\)">\(\mathfrak p\mid\mathfrak f\)</span>, Lemma 1.1 forces <span class="math" data-tex="\(e_{\mathfrak p}=v_{\mathfrak p}(\nu)+2\ge0\)">\(e_{\mathfrak p}=v_{\mathfrak p}(\nu)+2\ge0\)</span> with <span class="math" data-tex="\(e_{\mathfrak p}\not\equiv2\pmod3\)">\(e_{\mathfrak p}\not\equiv2\pmod3\)</span>. So the ideal of <span class="math" data-tex="\(\nu\)">\(\nu\)</span> is <span class="math" data-tex="\(\mathfrak a&#x27;_{\mathfrak f}\mathfrak c&#x27;(\mathfrak n&#x27;)^3(\mathfrak d\mathfrak f)^{-2}\)">\(\mathfrak a&#x27;_{\mathfrak f}\mathfrak c&#x27;(\mathfrak n&#x27;)^3(\mathfrak d\mathfrak f)^{-2}\)</span>, where <span class="math" data-tex="\(\mathfrak a&#x27;_{\mathfrak f}=\prod_{\mathfrak p\mid\mathfrak f}\mathfrak p^{e_{\mathfrak p}}\)">\(\mathfrak a&#x27;_{\mathfrak f}=\prod_{\mathfrak p\mid\mathfrak f}\mathfrak p^{e_{\mathfrak p}}\)</span> and <span class="math" data-tex="\(\mathfrak c&#x27;(\mathfrak n&#x27;)^3\)">\(\mathfrak c&#x27;(\mathfrak n&#x27;)^3\)</span> is the part of the ideal prime to <span class="math" data-tex="\(\mathfrak d\mathfrak f\)">\(\mathfrak d\mathfrak f\)</span>, with <span class="math" data-tex="\(\mathfrak c&#x27;\)">\(\mathfrak c&#x27;\)</span> and <span class="math" data-tex="\(\mathfrak n&#x27;\)">\(\mathfrak n&#x27;\)</span> determined by the valuations <span class="math" data-tex="\(3k\)">\(3k\)</span> and <span class="math" data-tex="\(3k+1\)">\(3k+1\)</span>. Then <span class="math" data-tex="\(\nu/(a&#x27;_{\mathfrak f}c&#x27;(n&#x27;)^3(df)^{-2})\in U_S\)">\(\nu/(a&#x27;_{\mathfrak f}c&#x27;(n&#x27;)^3(df)^{-2})\in U_S\)</span>, and it is <span class="math" data-tex="\(\varepsilon_u\gamma\)">\(\varepsilon_u\gamma\)</span> for exactly one class <span class="math" data-tex="\(u\)">\(u\)</span> and one <span class="math" data-tex="\(\gamma\in\Gamma\)">\(\gamma\in\Gamma\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the absolute estimates define, for <span class="math" data-tex="\(e\ge0\)">\(e\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+\beta_{\mathfrak p}(e)&amp;=\begin{cases}1,&amp;e=0,\\ q_{\mathfrak p}^{-k},&amp;e=1+3k,\ k\ge0,\\ q_{\mathfrak p}^{1/2-k},&amp;e=3k,\ k\ge1,\\ 0,&amp;\text{otherwise},\end{cases}
+\end{aligned}\\
+\beta_{\mathfrak f}(\mathfrak a&#x27;_{\mathfrak f})=\prod_{\mathfrak p\mid\mathfrak f}\beta_{\mathfrak p}\bigl(v_{\mathfrak p}(\mathfrak a&#x27;_{\mathfrak f})\bigr).\quad(2.4)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+\beta_{\mathfrak p}(e)&amp;=\begin{cases}1,&amp;e=0,\\ q_{\mathfrak p}^{-k},&amp;e=1+3k,\ k\ge0,\\ q_{\mathfrak p}^{1/2-k},&amp;e=3k,\ k\ge1,\\ 0,&amp;\text{otherwise},\end{cases}
+\end{aligned}\\
+\beta_{\mathfrak f}(\mathfrak a&#x27;_{\mathfrak f})=\prod_{\mathfrak p\mid\mathfrak f}\beta_{\mathfrak p}\bigl(v_{\mathfrak p}(\mathfrak a&#x27;_{\mathfrak f})\bigr).\quad(2.4)
+\end{gathered}
+\]</span></p>
+<p><strong>Lemma 2.2</strong> ([OpenAI-029, (6.15), (6.27)]). <span class="math" data-tex="\(|s_{\mathfrak p,j,e}|\le\beta_{\mathfrak p}(e)\)">\(|s_{\mathfrak p,j,e}|\le\beta_{\mathfrak p}(e)\)</span> for all <span class="math" data-tex="\(j\)">\(j\)</span> and <span class="math" data-tex="\(e\ge0\)">\(e\ge0\)</span>. For <span class="math" data-tex="\(\sigma\ge0\)">\(\sigma\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E_{\mathfrak p}(\sigma)&amp;:=\sum_{e\ge0}\beta_{\mathfrak p}(e)\,q_{\mathfrak p}^{-\sigma e}\\
+&amp;=1+\frac{q_{\mathfrak p}^{-\sigma}+q_{\mathfrak p}^{-1/2-3\sigma}}{1-q_{\mathfrak p}^{-1-3\sigma}}\\
+&amp;\le3+\sqrt2 ,\quad(2.5)
+\end{aligned}
+\]">\[
+\begin{aligned}
+E_{\mathfrak p}(\sigma)&amp;:=\sum_{e\ge0}\beta_{\mathfrak p}(e)\,q_{\mathfrak p}^{-\sigma e}\\
+&amp;=1+\frac{q_{\mathfrak p}^{-\sigma}+q_{\mathfrak p}^{-1/2-3\sigma}}{1-q_{\mathfrak p}^{-1-3\sigma}}\\
+&amp;\le3+\sqrt2 ,\quad(2.5)
+\end{aligned}
+\]</span>
+and for every <span class="math" data-tex="\(\delta_1&gt;0\)">\(\delta_1&gt;0\)</span>, <span class="math" data-tex="\(\prod_{\mathfrak p\mid\mathfrak f}E_{\mathfrak p}(\sigma)\le C_{\delta_1}q_{\mathfrak f}^{\delta_1}\)">\(\prod_{\mathfrak p\mid\mathfrak f}E_{\mathfrak p}(\sigma)\le C_{\delta_1}q_{\mathfrak f}^{\delta_1}\)</span> uniformly in <span class="math" data-tex="\(\sigma\ge0\)">\(\sigma\ge0\)</span> and squarefree <span class="math" data-tex="\(\mathfrak f\)">\(\mathfrak f\)</span>.</p>
+<p><em>Proof.</em> The first bound is Lemma 1.1(1) with the values of <span class="math" data-tex="\(|W_e|\)">\(|W_e|\)</span>: <span class="math" data-tex="\(q^{1/2}q^{-k-1/2}=q^{-k}\)">\(q^{1/2}q^{-k-1/2}=q^{-k}\)</span> for <span class="math" data-tex="\(e=3k+1\)">\(e=3k+1\)</span> and <span class="math" data-tex="\(q^{1/2}q^{-k}\)">\(q^{1/2}q^{-k}\)</span> for <span class="math" data-tex="\(e=3k\ge3\)">\(e=3k\ge3\)</span>. The series (2.5) is <span class="math" data-tex="\(1+\sum_{k\ge0}q^{-k-\sigma(1+3k)}+\sum_{k\ge1}q^{1/2-k-3\sigma k}\)">\(1+\sum_{k\ge0}q^{-k-\sigma(1+3k)}+\sum_{k\ge1}q^{1/2-k-3\sigma k}\)</span>, two geometric series. For <span class="math" data-tex="\(\sigma\ge0\)">\(\sigma\ge0\)</span> and <span class="math" data-tex="\(q\ge2\)">\(q\ge2\)</span> its value is at most <span class="math" data-tex="\(1+(1+2^{-1/2})/(1-\frac12)=3+\sqrt2\)">\(1+(1+2^{-1/2})/(1-\frac12)=3+\sqrt2\)</span>. For the product, the primes with <span class="math" data-tex="\(q_{\mathfrak p}&lt;(3+\sqrt2)^{1/\delta_1}\)">\(q_{\mathfrak p}&lt;(3+\sqrt2)^{1/\delta_1}\)</span> are finitely many and contribute a constant; every other factor is at most <span class="math" data-tex="\(3+\sqrt2\le q_{\mathfrak p}^{\delta_1}\)">\(3+\sqrt2\le q_{\mathfrak p}^{\delta_1}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-reflected-profiles">3. The reflected profiles</h2>
+<p>The vector <span class="math" data-tex="\(\varphi_\upsilon\)">\(\varphi_\upsilon\)</span> of Lesson 8, Section 4, translated by <span class="math" data-tex="\(w\)">\(w\)</span> at <span class="math" data-tex="\(S\)">\(S\)</span>, has an <span class="math" data-tex="\(S\)">\(S\)</span>-Whittaker function
+<span class="math math-display" data-tex="\[
+\mathcal W^w_\upsilon(v)=\mathcal W_{S,\upsilon}\bigl(a(v)w\bigr)\qquad(v\in F_S^\times).
+\]">\[
+\mathcal W^w_\upsilon(v)=\mathcal W_{S,\upsilon}\bigl(a(v)w\bigr)\qquad(v\in F_S^\times).
+\]</span>
+It is a finite sum of products of local Whittaker functions of the components of <span class="math" data-tex="\(\varphi_\upsilon\)">\(\varphi_\upsilon\)</span> translated by the local Weyl elements: at a complex place, of the rotation by <span class="math" data-tex="\(w\)">\(w\)</span> of the derivative vector of Lemma 2.1 of Lesson 7; at the finite places of <span class="math" data-tex="\(S\)">\(S\)</span>, of smooth vectors, through the factorization in the proof of Lemma 3.1 of Lesson 6. Fix such a presentation
+<span class="math math-display" data-tex="\[
+\mathcal W^w_\upsilon(v)=\sum_{\ell=1}^{J_\upsilon}\prod_{a\in S}h_{\upsilon,\ell,a}(v_a).
+\]">\[
+\mathcal W^w_\upsilon(v)=\sum_{\ell=1}^{J_\upsilon}\prod_{a\in S}h_{\upsilon,\ell,a}(v_a).
+\]</span>
+By Lemmas 2.1 and 3.1 of Lesson 7, the local factors satisfy the hypotheses of Lemma 5.1 there with any <span class="math" data-tex="\(\delta&lt;1/3\)">\(\delta&lt;1/3\)</span>. Write <span class="math" data-tex="\(H_S\)">\(H_S\)</span> also for the pairing on <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span>, and for <span class="math" data-tex="\(\kappa\in\mathcal V\)">\(\kappa\in\mathcal V\)</span> and <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span> define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H_{\upsilon,\kappa,\ell}(x)&amp;=\int_{X_x}\mathbf 1_B\bigl(\kappa[v]^{-1}\bigr)\\
+&amp;\quad \,H_S(\kappa,[v])^2\,L_\upsilon(v)\\
+&amp;\quad \prod_{a\in S}h_{\upsilon,\ell,a}(v_a)\,d_x^\times v ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+H_{\upsilon,\kappa,\ell}(x)&amp;=\int_{X_x}\mathbf 1_B\bigl(\kappa[v]^{-1}\bigr)\\
+&amp;\quad \,H_S(\kappa,[v])^2\,L_\upsilon(v)\\
+&amp;\quad \prod_{a\in S}h_{\upsilon,\ell,a}(v_a)\,d_x^\times v ,
+\end{aligned}
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\Phi_{\upsilon,\kappa}(x)&amp;=\sum_{\ell=1}^{J_\upsilon}\int_0^\infty\mathcal K(T)\\
+&amp;\quad \,H_{\upsilon,\kappa,\ell}(x/T)\,\frac{dT}T .\quad(3.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\Phi_{\upsilon,\kappa}(x)&amp;=\sum_{\ell=1}^{J_\upsilon}\int_0^\infty\mathcal K(T)\\
+&amp;\quad \,H_{\upsilon,\kappa,\ell}(x/T)\,\frac{dT}T .\quad(3.1)
+\end{aligned}
+\]</span></p>
+<p><strong>Lemma 3.1</strong> (reflected profiles [OpenAI-029, (6.16)]). There is <span class="math" data-tex="\(\alpha&gt;0\)">\(\alpha&gt;0\)</span> such that for every <span class="math" data-tex="\(N&gt;0\)">\(N&gt;0\)</span> and integer <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+&amp;\bigl|(x\partial_x)^j\Phi_{\upsilon,\kappa}(x)\bigr|\\
+&amp;\quad \le C_{N,j}\min(x^\alpha,x^{-N})
+\end{aligned}\\
+(x&gt;0),\quad(3.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+&amp;\bigl|(x\partial_x)^j\Phi_{\upsilon,\kappa}(x)\bigr|\\
+&amp;\quad \le C_{N,j}\min(x^\alpha,x^{-N})
+\end{aligned}\\
+(x&gt;0),\quad(3.2)
+\end{gathered}
+\]</span>
+uniformly in <span class="math" data-tex="\(\upsilon\in U_6\)">\(\upsilon\in U_6\)</span> and <span class="math" data-tex="\(\kappa\in\mathcal V\)">\(\kappa\in\mathcal V\)</span>.</p>
+<p><em>Proof.</em> The factor <span class="math" data-tex="\(\mathbf 1_B(\kappa[v]^{-1})H_S(\kappa,[v])^2\)">\(\mathbf 1_B(\kappa[v]^{-1})H_S(\kappa,[v])^2\)</span> is a bounded function of the class <span class="math" data-tex="\([v]\in\mathcal V\)">\([v]\in\mathcal V\)</span>, and <span class="math" data-tex="\(L_\upsilon\)">\(L_\upsilon\)</span> is a smooth unitary character. Lemma 5.1 of Lesson 7, applied to the finite family of all <span class="math" data-tex="\((\upsilon,\kappa,\ell)\)">\((\upsilon,\kappa,\ell)\)</span>, with the kernel <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> of Lemma 6.1 there, gives (3.2) for each term; the family is finite. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-frozen-row-and-column-factors">4. Frozen, row and column factors</h2>
+<p>The coefficient of a reflected frequency will be split into a factor that depends on neither the row ideal <span class="math" data-tex="\(\mathfrak d\)">\(\mathfrak d\)</span> nor the column ideal <span class="math" data-tex="\(\mathfrak c&#x27;\)">\(\mathfrak c&#x27;\)</span>, a factor depending on <span class="math" data-tex="\(\mathfrak d\)">\(\mathfrak d\)</span> alone, a factor depending on <span class="math" data-tex="\(\mathfrak c&#x27;\)">\(\mathfrak c&#x27;\)</span> alone, and one joint symbol. Fix <span class="math" data-tex="\(\upsilon\)">\(\upsilon\)</span> and a <strong>frozen tuple</strong>
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathfrak t=(\mathfrak h,\mathfrak f,\mathfrak a&#x27;_{\mathfrak f},\mathfrak n&#x27;,u),\\
+\mathfrak f\in\mathcal F(\mathfrak h),\\
+\mathfrak a&#x27;_{\mathfrak f}\in\mathcal A(\mathfrak f),\\
+(\mathfrak n&#x27;,\mathfrak f)=1,\\
+u\in U_6 ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathfrak t=(\mathfrak h,\mathfrak f,\mathfrak a&#x27;_{\mathfrak f},\mathfrak n&#x27;,u),\\
+\mathfrak f\in\mathcal F(\mathfrak h),\\
+\mathfrak a&#x27;_{\mathfrak f}\in\mathcal A(\mathfrak f),\\
+(\mathfrak n&#x27;,\mathfrak f)=1,\\
+u\in U_6 ,
+\end{gathered}
+\]</span>
+together with two <strong>class slices</strong> <span class="math" data-tex="\(z_d,z_c\in B\)">\(z_d,z_c\in B\)</span>. Put <span class="math" data-tex="\(L=L_\upsilon\)">\(L=L_\upsilon\)</span>, <span class="math" data-tex="\(\varepsilon=\varepsilon_u\)">\(\varepsilon=\varepsilon_u\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\kappa_6(\mathfrak t;z_d,z_c)&amp;=[\varepsilon]\,[a&#x27;_{\mathfrak f}]\,z_c\,[n&#x27;]^3\,z_d^{-2}\,[f]^{-2}\\
+&amp;\in\mathcal V .\quad(4.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\kappa_6(\mathfrak t;z_d,z_c)&amp;=[\varepsilon]\,[a&#x27;_{\mathfrak f}]\,z_c\,[n&#x27;]^3\,z_d^{-2}\,[f]^{-2}\\
+&amp;\in\mathcal V .\quad(4.1)
+\end{aligned}
+\]</span>
+For <span class="math" data-tex="\(\mathfrak p\mid\mathfrak f\)">\(\mathfrak p\mid\mathfrak f\)</span> abbreviate <span class="math" data-tex="\(e_{\mathfrak p}=v_{\mathfrak p}(\mathfrak a&#x27;_{\mathfrak f})\)">\(e_{\mathfrak p}=v_{\mathfrak p}(\mathfrak a&#x27;_{\mathfrak f})\)</span>, <span class="math" data-tex="\(s_{\mathfrak p}=s_{\mathfrak p,j_{\mathfrak p},e_{\mathfrak p}}\)">\(s_{\mathfrak p}=s_{\mathfrak p,j_{\mathfrak p},e_{\mathfrak p}}\)</span> and <span class="math" data-tex="\(b_{\mathfrak p}=b_{j_{\mathfrak p},e_{\mathfrak p}}\)">\(b_{\mathfrak p}=b_{j_{\mathfrak p},e_{\mathfrak p}}\)</span>. Define the <strong>frozen factor</strong>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\omega_{\upsilon,\mathfrak t}&amp;=I_{\mathfrak h,\mathfrak f}\,L(a&#x27;_{\mathfrak f})^{-1}L(n&#x27;)^{-3}\\
+&amp;\quad L(f)^2\prod_{\mathfrak p\mid\mathfrak f}s_{\mathfrak p}\\
+&amp;\quad \,\chi_{\mathfrak p}\Bigl(\varepsilon\,\frac{a&#x27;_{\mathfrak f}}{p^{e_{\mathfrak p}}}\,(n&#x27;)^3\Bigl(\frac fp\Bigr)^{-2}\Bigr)^{b_{\mathfrak p}} .\quad(4.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\omega_{\upsilon,\mathfrak t}&amp;=I_{\mathfrak h,\mathfrak f}\,L(a&#x27;_{\mathfrak f})^{-1}L(n&#x27;)^{-3}\\
+&amp;\quad L(f)^2\prod_{\mathfrak p\mid\mathfrak f}s_{\mathfrak p}\\
+&amp;\quad \,\chi_{\mathfrak p}\Bigl(\varepsilon\,\frac{a&#x27;_{\mathfrak f}}{p^{e_{\mathfrak p}}}\,(n&#x27;)^3\Bigl(\frac fp\Bigr)^{-2}\Bigr)^{b_{\mathfrak p}} .\quad(4.2)
+\end{aligned}
+\]</span>
+For a squarefree <span class="math" data-tex="\(\mathfrak d\)">\(\mathfrak d\)</span> with <span class="math" data-tex="\((\mathfrak d,\mathfrak h\mathfrak n&#x27;)=1\)">\((\mathfrak d,\mathfrak h\mathfrak n&#x27;)=1\)</span> and <span class="math" data-tex="\([d]=z_d\)">\([d]=z_d\)</span> define the <strong>row factor</strong>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\rho_{\upsilon,\mathfrak t,z_d}(\mathfrak d)&amp;=L(d)^2\prod_{\mathfrak p\mid\mathfrak d}\xi_{\mathfrak p}\\
+&amp;\quad \,\chi_{\mathfrak p}\Bigl(\varepsilon\,a&#x27;_{\mathfrak f}\,(n&#x27;)^3\Bigl(\frac dp\Bigr)^{-2}f^{-2}\Bigr)\\
+&amp;\quad \prod_{\mathfrak p\mid\mathfrak f}\chi_{\mathfrak p}(d)^{-2b_{\mathfrak p}},\quad(4.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\rho_{\upsilon,\mathfrak t,z_d}(\mathfrak d)&amp;=L(d)^2\prod_{\mathfrak p\mid\mathfrak d}\xi_{\mathfrak p}\\
+&amp;\quad \,\chi_{\mathfrak p}\Bigl(\varepsilon\,a&#x27;_{\mathfrak f}\,(n&#x27;)^3\Bigl(\frac dp\Bigr)^{-2}f^{-2}\Bigr)\\
+&amp;\quad \prod_{\mathfrak p\mid\mathfrak f}\chi_{\mathfrak p}(d)^{-2b_{\mathfrak p}},\quad(4.3)
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(\rho_{\upsilon,\mathfrak t,z_d}(\mathfrak d)=0\)">\(\rho_{\upsilon,\mathfrak t,z_d}(\mathfrak d)=0\)</span> for other <span class="math" data-tex="\(\mathfrak d\)">\(\mathfrak d\)</span>. For a squarefree <span class="math" data-tex="\(\mathfrak c&#x27;\)">\(\mathfrak c&#x27;\)</span> with <span class="math" data-tex="\((\mathfrak c&#x27;,\mathfrak f)=1\)">\((\mathfrak c&#x27;,\mathfrak f)=1\)</span> and <span class="math" data-tex="\([c&#x27;]=z_c\)">\([c&#x27;]=z_c\)</span> define the <strong>column factor</strong>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\lambda_{\upsilon,\mathfrak t,z_c}(\mathfrak c&#x27;)&amp;=L(c&#x27;)^{-1}\\
+&amp;\quad \prod_{\mathfrak p\mid\mathfrak f}\chi_{\mathfrak p}(c&#x27;)^{b_{\mathfrak p}}\\
+&amp;\quad \prod_{\mathfrak q\mid\mathfrak c&#x27;}g_{2,\mathfrak q}\\
+&amp;\quad \,\chi_{\mathfrak q}\Bigl(\varepsilon\,a&#x27;_{\mathfrak f}\,\frac{c&#x27;}q\,f^{-2}\Bigr)^2 ,\quad(4.4)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\lambda_{\upsilon,\mathfrak t,z_c}(\mathfrak c&#x27;)&amp;=L(c&#x27;)^{-1}\\
+&amp;\quad \prod_{\mathfrak p\mid\mathfrak f}\chi_{\mathfrak p}(c&#x27;)^{b_{\mathfrak p}}\\
+&amp;\quad \prod_{\mathfrak q\mid\mathfrak c&#x27;}g_{2,\mathfrak q}\\
+&amp;\quad \,\chi_{\mathfrak q}\Bigl(\varepsilon\,a&#x27;_{\mathfrak f}\,\frac{c&#x27;}q\,f^{-2}\Bigr)^2 ,\quad(4.4)
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(\lambda_{\upsilon,\mathfrak t,z_c}(\mathfrak c&#x27;)=0\)">\(\lambda_{\upsilon,\mathfrak t,z_c}(\mathfrak c&#x27;)=0\)</span> for other <span class="math" data-tex="\(\mathfrak c&#x27;\)">\(\mathfrak c&#x27;\)</span>. Here <span class="math" data-tex="\(g_{2,\mathfrak q}\)">\(g_{2,\mathfrak q}\)</span> is the normalized Gauss sum of Lesson 6, Section 4, with <span class="math" data-tex="\(|g_{2,\mathfrak q}|=1\)">\(|g_{2,\mathfrak q}|=1\)</span>. On the stated supports every argument of a character is a unit at its prime, so negative powers are defined. None of the three factors depends on <span class="math" data-tex="\(Z\)">\(Z\)</span>; <span class="math" data-tex="\(\omega\)">\(\omega\)</span> does not depend on <span class="math" data-tex="\(\mathfrak d\)">\(\mathfrak d\)</span> or <span class="math" data-tex="\(\mathfrak c&#x27;\)">\(\mathfrak c&#x27;\)</span>, <span class="math" data-tex="\(\rho\)">\(\rho\)</span> depends on <span class="math" data-tex="\(\mathfrak d\)">\(\mathfrak d\)</span> alone and <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> on <span class="math" data-tex="\(\mathfrak c&#x27;\)">\(\mathfrak c&#x27;\)</span> alone. They satisfy
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\omega_{\upsilon,\mathfrak t}|\le\beta_{\mathfrak f}(\mathfrak a&#x27;_{\mathfrak f}),\\
+|\rho_{\upsilon,\mathfrak t,z_d}|\le1,\\
+|\lambda_{\upsilon,\mathfrak t,z_c}|\le1,\quad(4.5)
+\end{gathered}
+\]">\[
+\begin{gathered}
+|\omega_{\upsilon,\mathfrak t}|\le\beta_{\mathfrak f}(\mathfrak a&#x27;_{\mathfrak f}),\\
+|\rho_{\upsilon,\mathfrak t,z_d}|\le1,\\
+|\lambda_{\upsilon,\mathfrak t,z_c}|\le1,\quad(4.5)
+\end{gathered}
+\]</span>
+by Lemmas 1.1 and 2.2, because characters and <span class="math" data-tex="\(L\)">\(L\)</span> have absolute value at most one and <span class="math" data-tex="\(|\xi_{\mathfrak p}|=|g_{2,\mathfrak q}|=1\)">\(|\xi_{\mathfrak p}|=|g_{2,\mathfrak q}|=1\)</span>.</p>
+<h2 id="5-the-reflected-expansion">5. The reflected expansion</h2>
+<p><strong>Lemma 5.1</strong> (the reflected expansion [OpenAI-029, Lemma 6.3]). Let <span class="math" data-tex="\(m\in R\)">\(m\in R\)</span> be nonzero with <span class="math" data-tex="\((m)_S=\mathfrak h\mathfrak d\)">\((m)_S=\mathfrak h\mathfrak d\)</span>, let <span class="math" data-tex="\(\upsilon=\upsilon_m\)">\(\upsilon=\upsilon_m\)</span>, and let <span class="math" data-tex="\(Z&gt;0\)">\(Z&gt;0\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;B_m(Z)=\sum_{\mathfrak f\in\mathcal F(\mathfrak h)}\ \sum_{\substack{\mathfrak a&#x27;_{\mathfrak f}\in\mathcal A(\mathfrak f),\ \mathfrak n&#x27;\\ (\mathfrak n&#x27;,\mathfrak f)=1}}\ \sum_{\substack{u\in U_6\\z_d,z_c\in B}}\\
+&amp;\quad\frac{\omega_{\upsilon,\mathfrak t}}{q_{\mathfrak n&#x27;}}\,\rho_{\upsilon,\mathfrak t,z_d}(\mathfrak d)\\
+&amp;\quad\times\sum_{\mathfrak c&#x27;\ \text{squarefree}}\frac{\lambda_{\upsilon,\mathfrak t,z_c}(\mathfrak c&#x27;)}{q_{\mathfrak c&#x27;}^{1/2}}\,\chi_{\mathfrak d}(c&#x27;)^3\\
+&amp;\quad\Phi_{\upsilon,\kappa_6(\mathfrak t;z_d,z_c)}\Bigl(\frac{Zq_{\mathfrak a&#x27;_{\mathfrak f}}q_{\mathfrak c&#x27;}q_{\mathfrak n&#x27;}^3}{q_{\mathfrak d}^2q_{\mathfrak f}^2}\Bigr),\quad(5.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;B_m(Z)=\sum_{\mathfrak f\in\mathcal F(\mathfrak h)}\ \sum_{\substack{\mathfrak a&#x27;_{\mathfrak f}\in\mathcal A(\mathfrak f),\ \mathfrak n&#x27;\\ (\mathfrak n&#x27;,\mathfrak f)=1}}\ \sum_{\substack{u\in U_6\\z_d,z_c\in B}}\\
+&amp;\quad\frac{\omega_{\upsilon,\mathfrak t}}{q_{\mathfrak n&#x27;}}\,\rho_{\upsilon,\mathfrak t,z_d}(\mathfrak d)\\
+&amp;\quad\times\sum_{\mathfrak c&#x27;\ \text{squarefree}}\frac{\lambda_{\upsilon,\mathfrak t,z_c}(\mathfrak c&#x27;)}{q_{\mathfrak c&#x27;}^{1/2}}\,\chi_{\mathfrak d}(c&#x27;)^3\\
+&amp;\quad\Phi_{\upsilon,\kappa_6(\mathfrak t;z_d,z_c)}\Bigl(\frac{Zq_{\mathfrak a&#x27;_{\mathfrak f}}q_{\mathfrak c&#x27;}q_{\mathfrak n&#x27;}^3}{q_{\mathfrak d}^2q_{\mathfrak f}^2}\Bigr),\quad(5.1)
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(\mathfrak t=(\mathfrak h,\mathfrak f,\mathfrak a&#x27;_{\mathfrak f},\mathfrak n&#x27;,u)\)">\(\mathfrak t=(\mathfrak h,\mathfrak f,\mathfrak a&#x27;_{\mathfrak f},\mathfrak n&#x27;,u)\)</span> and all ideal sums are over integral exterior ideals. The expansion converges absolutely.</p>
+<p><em>Proof.</em> Start from (6.2) of Lesson 8 and the second expression for <span class="math" data-tex="\(\mathcal T_m(l)\)">\(\mathcal T_m(l)\)</span> in (5.2) there. By Lemma 5.1 of Lesson 8 the constant terms integrate to <span class="math" data-tex="\(0\)">\(0\)</span>, so only the nonconstant Fourier terms of <span class="math" data-tex="\(\theta_\upsilon(wg(y,\mathbf x))\)">\(\theta_\upsilon(wg(y,\mathbf x))\)</span> remain. Their components are as follows. At <span class="math" data-tex="\(S\)">\(S\)</span>, <span class="math" data-tex="\(a(\nu)wa(y)=a(\nu)a(y^{-1})w\)">\(a(\nu)wa(y)=a(\nu)a(y^{-1})w\)</span><span class="math" data-tex="\(=\mathcal C_S(\nu,y^{-1})\,a(\nu/y)w\)">\(=\mathcal C_S(\nu,y^{-1})\,a(\nu/y)w\)</span> by (2.1) and (1.2) of Lesson 6, so the <span class="math" data-tex="\(S\)">\(S\)</span>-factor is <span class="math" data-tex="\(\mathcal C_S(\nu,y^{-1})\mathcal W^w_\upsilon(\nu/y)\)">\(\mathcal C_S(\nu,y^{-1})\mathcal W^w_\upsilon(\nu/y)\)</span>. At an exterior prime not dividing <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> it is <span class="math" data-tex="\(W_{\mathfrak q}(a(\nu))\)">\(W_{\mathfrak q}(a(\nu))\)</span>, since <span class="math" data-tex="\(w\)">\(w\)</span> is compact. At <span class="math" data-tex="\(\mathfrak p\mid\mathfrak m\)">\(\mathfrak p\mid\mathfrak m\)</span> it is <span class="math" data-tex="\(W_{\mathfrak p}(a(\nu)wn(x_{\mathfrak p}/p))\)">\(W_{\mathfrak p}(a(\nu)wn(x_{\mathfrak p}/p))\)</span>.</p>
+<p><em>Absolute bounds before the digit sums.</em> Put <span class="math" data-tex="\(F^{\mathrm{abs}}(v)=\sum_\ell\prod_{a\in S}|h_{\upsilon,\ell,a}(v_a)|\)">\(F^{\mathrm{abs}}(v)=\sum_\ell\prod_{a\in S}|h_{\upsilon,\ell,a}(v_a)|\)</span> and <span class="math" data-tex="\(H^{\mathrm{abs}}(x)=\int_{X_x}F^{\mathrm{abs}}\,d_x^\times v\)">\(H^{\mathrm{abs}}(x)=\int_{X_x}F^{\mathrm{abs}}\,d_x^\times v\)</span>; by Lemma 5.1 of Lesson 7, <span class="math" data-tex="\(H^{\mathrm{abs}}(x)\le C_\sigma x^{-\sigma}\)">\(H^{\mathrm{abs}}(x)\le C_\sigma x^{-\sigma}\)</span> for every <span class="math" data-tex="\(\sigma\ge0\)">\(\sigma\ge0\)</span>. For <span class="math" data-tex="\(\nu_0\in F^\times\)">\(\nu_0\in F^\times\)</span>, the sets <span class="math" data-tex="\(\gamma\nu_0\Omega_l^{-1}\)">\(\gamma\nu_0\Omega_l^{-1}\)</span>, <span class="math" data-tex="\(\gamma\in\Gamma\)">\(\gamma\in\Gamma\)</span>, partition <span class="math" data-tex="\(X_{|\nu_0|_S/l}\)">\(X_{|\nu_0|_S/l}\)</span> up to null sets, and inversion and translation preserve the sheet measures; so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\gamma\in\Gamma}\int_{\Omega_l}F^{\mathrm{abs}}(\gamma\nu_0/y)\,d_l^\times y\\
+&amp;\quad =H^{\mathrm{abs}}\bigl(|\nu_0|_S/l\bigr)\\
+&amp;\quad \le C_\sigma\bigl(|\nu_0|_S/l\bigr)^{-\sigma}.\quad(5.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\gamma\in\Gamma}\int_{\Omega_l}F^{\mathrm{abs}}(\gamma\nu_0/y)\,d_l^\times y\\
+&amp;\quad =H^{\mathrm{abs}}\bigl(|\nu_0|_S/l\bigr)\\
+&amp;\quad \le C_\sigma\bigl(|\nu_0|_S/l\bigr)^{-\sigma}.\quad(5.2)
+\end{aligned}
+\]</span>
+For a fixed digit vector, the proof of Lemma 1.1 shows that a nonzero digit at <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> contributes the absolute value <span class="math" data-tex="\(|W_e|\)">\(|W_e|\)</span> at <span class="math" data-tex="\(e=v_{\mathfrak p}(\nu)+2\ge0\)">\(e=v_{\mathfrak p}(\nu)+2\ge0\)</span>, and a zero digit the spherical absolute value. For <span class="math" data-tex="\(\sigma&gt;1/2\)">\(\sigma&gt;1/2\)</span>, <span class="math" data-tex="\(\sum_{e\ge0}|W_e|q_{\mathfrak p}^{-\sigma e}\)">\(\sum_{e\ge0}|W_e|q_{\mathfrak p}^{-\sigma e}\)</span><span class="math" data-tex="\(=(1+q_{\mathfrak p}^{-1/2-\sigma})/(1-q_{\mathfrak p}^{-1-3\sigma})\)">\(=(1+q_{\mathfrak p}^{-1/2-\sigma})/(1-q_{\mathfrak p}^{-1-3\sigma})\)</span>, and the shift <span class="math" data-tex="\(e-2\)">\(e-2\)</span> multiplies this by <span class="math" data-tex="\(q_{\mathfrak p}^{2\sigma}\)">\(q_{\mathfrak p}^{2\sigma}\)</span>. Grouping the frequencies <span class="math" data-tex="\(\nu\)">\(\nu\)</span> by their ideal, their class in <span class="math" data-tex="\(U_6\)">\(U_6\)</span> and <span class="math" data-tex="\(\gamma\in\Gamma\)">\(\gamma\in\Gamma\)</span>, (5.2) bounds the integrated absolute Fourier series by a constant (depending on the row) times <span class="math" data-tex="\(l^{\sigma}\zeta_F^S(\sigma+\frac12)\zeta_F^S(3\sigma+1)\)">\(l^{\sigma}\zeta_F^S(\sigma+\frac12)\zeta_F^S(3\sigma+1)\)</span>, and the <span class="math" data-tex="\(T\)">\(T\)</span>-average of (6.2) of Lesson 8 then converges absolutely because <span class="math" data-tex="\(M_\sigma(\mathcal K)&lt;\infty\)">\(M_\sigma(\mathcal K)&lt;\infty\)</span>. The digit sums are finite, with total mass bounded by Lemma 3.1 of Lesson 8. So the series may be integrated term by term and the finite digit sums evaluated first.</p>
+<p><em>Digits.</em> Expand the product over <span class="math" data-tex="\(\mathfrak p\mid\mathfrak m\)">\(\mathfrak p\mid\mathfrak m\)</span> of the local digit sums by the set of active primes. By Lemma 1.1 the active set is <span class="math" data-tex="\(\mathfrak d\mathfrak f\)">\(\mathfrak d\mathfrak f\)</span> with <span class="math" data-tex="\(\mathfrak f\in\mathcal F(\mathfrak h)\)">\(\mathfrak f\in\mathcal F(\mathfrak h)\)</span>; each inactive prime contributes <span class="math" data-tex="\((1-q_{\mathfrak p}^{-1})\)">\((1-q_{\mathfrak p}^{-1})\)</span> times a spherical value, and each active prime the value <span class="math" data-tex="\(\mathcal R_{\mathfrak p,j_{\mathfrak p},e}(t)\)">\(\mathcal R_{\mathfrak p,j_{\mathfrak p},e}(t)\)</span> of (1.3). By Lemma 2.1, the frequencies are <span class="math" data-tex="\(\nu=\gamma\nu_0\)">\(\nu=\gamma\nu_0\)</span> as in (2.3). Every local factor is unchanged under <span class="math" data-tex="\(\nu\mapsto\gamma\nu\)">\(\nu\mapsto\gamma\nu\)</span>, because <span class="math" data-tex="\(\chi_{\mathfrak p}(\gamma)=1\)">\(\chi_{\mathfrak p}(\gamma)=1\)</span>; so the exterior coefficient may be taken outside the <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>-orbit.</p>
+<p><em>The exterior coefficient.</em> Fix the data of (2.3). At <span class="math" data-tex="\(\mathfrak p\mid\mathfrak d\)">\(\mathfrak p\mid\mathfrak d\)</span>, <span class="math" data-tex="\(\nu_0=p^{-2}t\)">\(\nu_0=p^{-2}t\)</span> with the unit <span class="math" data-tex="\(t=\varepsilon a&#x27;_{\mathfrak f}c&#x27;(n&#x27;)^3(d/p)^{-2}f^{-2}\)">\(t=\varepsilon a&#x27;_{\mathfrak f}c&#x27;(n&#x27;)^3(d/p)^{-2}f^{-2}\)</span>, and Lemma 1.1(2) gives <span class="math" data-tex="\(\xi_{\mathfrak p}\chi_{\mathfrak p}(t)\)">\(\xi_{\mathfrak p}\chi_{\mathfrak p}(t)\)</span>. At <span class="math" data-tex="\(\mathfrak p\mid\mathfrak f\)">\(\mathfrak p\mid\mathfrak f\)</span>, <span class="math" data-tex="\(\nu_0=p^{e_{\mathfrak p}-2}t\)">\(\nu_0=p^{e_{\mathfrak p}-2}t\)</span> with <span class="math" data-tex="\(t=\varepsilon(a&#x27;_{\mathfrak f}/p^{e_{\mathfrak p}})c&#x27;(n&#x27;)^3d^{-2}(f/p)^{-2}\)">\(t=\varepsilon(a&#x27;_{\mathfrak f}/p^{e_{\mathfrak p}})c&#x27;(n&#x27;)^3d^{-2}(f/p)^{-2}\)</span>, and (1.3) gives <span class="math" data-tex="\(s_{\mathfrak p}\chi_{\mathfrak p}(t)^{b_{\mathfrak p}}\)">\(s_{\mathfrak p}\chi_{\mathfrak p}(t)^{b_{\mathfrak p}}\)</span>. At <span class="math" data-tex="\(\mathfrak q\mid\mathfrak c&#x27;\)">\(\mathfrak q\mid\mathfrak c&#x27;\)</span> with <span class="math" data-tex="\(k=v_{\mathfrak q}(\mathfrak n&#x27;)\)">\(k=v_{\mathfrak q}(\mathfrak n&#x27;)\)</span>, the valuation is <span class="math" data-tex="\(1+3k\)">\(1+3k\)</span> and the unit is <span class="math" data-tex="\(\varepsilon a&#x27;_{\mathfrak f}(c&#x27;/q)(n&#x27;/q^k)^3(df)^{-2}\)">\(\varepsilon a&#x27;_{\mathfrak f}(c&#x27;/q)(n&#x27;/q^k)^3(df)^{-2}\)</span>; Proposition 4.1 of Lesson 6 gives <span class="math" data-tex="\(q_{\mathfrak q}^{-k-1/2}g_{2,\mathfrak q}\)">\(q_{\mathfrak q}^{-k-1/2}g_{2,\mathfrak q}\)</span> times the square of <span class="math" data-tex="\(\chi_{\mathfrak q}\)">\(\chi_{\mathfrak q}\)</span> of this unit, in which the cube <span class="math" data-tex="\((n&#x27;/q^k)^3\)">\((n&#x27;/q^k)^3\)</span> disappears. At a prime of <span class="math" data-tex="\(\mathfrak n&#x27;\)">\(\mathfrak n&#x27;\)</span> not dividing <span class="math" data-tex="\(\mathfrak c&#x27;\)">\(\mathfrak c&#x27;\)</span> the valuation is <span class="math" data-tex="\(3k\)">\(3k\)</span> and the value <span class="math" data-tex="\(q_{\mathfrak q}^{-k}\)">\(q_{\mathfrak q}^{-k}\)</span>, the unit entering to a power divisible by <span class="math" data-tex="\(6\)">\(6\)</span>. Every other exterior factor is <span class="math" data-tex="\(1\)">\(1\)</span>. With <span class="math" data-tex="\(I_{\mathfrak h,\mathfrak f}\)">\(I_{\mathfrak h,\mathfrak f}\)</span> for the inactive primes, which may also divide <span class="math" data-tex="\(\mathfrak c&#x27;\)">\(\mathfrak c&#x27;\)</span> or <span class="math" data-tex="\(\mathfrak n&#x27;\)">\(\mathfrak n&#x27;\)</span>, the exterior coefficient is, on <span class="math" data-tex="\((\mathfrak d,\mathfrak h\mathfrak n&#x27;)=(\mathfrak c&#x27;,\mathfrak f)=(\mathfrak d,\mathfrak c&#x27;)=1\)">\((\mathfrak d,\mathfrak h\mathfrak n&#x27;)=(\mathfrak c&#x27;,\mathfrak f)=(\mathfrak d,\mathfrak c&#x27;)=1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal E_{\mathfrak t}(\mathfrak d,\mathfrak c&#x27;)=\frac{I_{\mathfrak h,\mathfrak f}}{q_{\mathfrak c&#x27;}^{1/2}q_{\mathfrak n&#x27;}}\\
+&amp;\quad\prod_{\mathfrak p\mid\mathfrak d}\xi_{\mathfrak p}\chi_{\mathfrak p}\Bigl(\varepsilon a&#x27;_{\mathfrak f}c&#x27;(n&#x27;)^3\Bigl(\frac dp\Bigr)^{-2}f^{-2}\Bigr)\\
+&amp;\quad\times\prod_{\mathfrak p\mid\mathfrak f}s_{\mathfrak p}\chi_{\mathfrak p}\Bigl(\varepsilon\frac{a&#x27;_{\mathfrak f}}{p^{e_{\mathfrak p}}}c&#x27;(n&#x27;)^3\\
+&amp;\qquad\qquad d^{-2}\Bigl(\frac fp\Bigr)^{-2}\Bigr)^{b_{\mathfrak p}}\\
+&amp;\quad\times\prod_{\mathfrak q\mid\mathfrak c&#x27;}g_{2,\mathfrak q}\chi_{\mathfrak q}\Bigl(\varepsilon a&#x27;_{\mathfrak f}\frac{c&#x27;}q(df)^{-2}\Bigr)^2 .\quad(5.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathcal E_{\mathfrak t}(\mathfrak d,\mathfrak c&#x27;)=\frac{I_{\mathfrak h,\mathfrak f}}{q_{\mathfrak c&#x27;}^{1/2}q_{\mathfrak n&#x27;}}\\
+&amp;\quad\prod_{\mathfrak p\mid\mathfrak d}\xi_{\mathfrak p}\chi_{\mathfrak p}\Bigl(\varepsilon a&#x27;_{\mathfrak f}c&#x27;(n&#x27;)^3\Bigl(\frac dp\Bigr)^{-2}f^{-2}\Bigr)\\
+&amp;\quad\times\prod_{\mathfrak p\mid\mathfrak f}s_{\mathfrak p}\chi_{\mathfrak p}\Bigl(\varepsilon\frac{a&#x27;_{\mathfrak f}}{p^{e_{\mathfrak p}}}c&#x27;(n&#x27;)^3\\
+&amp;\qquad\qquad d^{-2}\Bigl(\frac fp\Bigr)^{-2}\Bigr)^{b_{\mathfrak p}}\\
+&amp;\quad\times\prod_{\mathfrak q\mid\mathfrak c&#x27;}g_{2,\mathfrak q}\chi_{\mathfrak q}\Bigl(\varepsilon a&#x27;_{\mathfrak f}\frac{c&#x27;}q(df)^{-2}\Bigr)^2 .\quad(5.3)
+\end{aligned}
+\]</span></p>
+<p><em>The quadratic pairing.</em> The factors involving both <span class="math" data-tex="\(\mathfrak d\)">\(\mathfrak d\)</span> and <span class="math" data-tex="\(\mathfrak c&#x27;\)">\(\mathfrak c&#x27;\)</span> are <span class="math" data-tex="\(\prod_{\mathfrak p\mid\mathfrak d}\chi_{\mathfrak p}(c&#x27;)\)">\(\prod_{\mathfrak p\mid\mathfrak d}\chi_{\mathfrak p}(c&#x27;)\)</span> and <span class="math" data-tex="\(\prod_{\mathfrak q\mid\mathfrak c&#x27;}\chi_{\mathfrak q}(d)^{-4}\)">\(\prod_{\mathfrak q\mid\mathfrak c&#x27;}\chi_{\mathfrak q}(d)^{-4}\)</span>. Since <span class="math" data-tex="\(c&#x27;\)">\(c&#x27;\)</span> and <span class="math" data-tex="\(d\)">\(d\)</span> are products of allowed generators of their primes up to elements of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, on which the symbols are <span class="math" data-tex="\(1\)">\(1\)</span>, these are products over pairs <span class="math" data-tex="\(\mathfrak p\mid\mathfrak d\)">\(\mathfrak p\mid\mathfrak d\)</span>, <span class="math" data-tex="\(\mathfrak q\mid\mathfrak c&#x27;\)">\(\mathfrak q\mid\mathfrak c&#x27;\)</span> of <span class="math" data-tex="\(\chi_{\mathfrak p}(q)\chi_{\mathfrak q}(p)^{-4}\)">\(\chi_{\mathfrak p}(q)\chi_{\mathfrak q}(p)^{-4}\)</span>. By reciprocity for allowed generators (Proposition 2.1 of Lesson 3),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\chi_{\mathfrak p}(q)\,\chi_{\mathfrak q}(p)^{-4}=\chi_{\mathfrak p}(q)^{1-4}\\
+&amp;\quad =\chi_{\mathfrak p}(q)^3 ,\quad(5.4)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\chi_{\mathfrak p}(q)\,\chi_{\mathfrak q}(p)^{-4}=\chi_{\mathfrak p}(q)^{1-4}\\
+&amp;\quad =\chi_{\mathfrak p}(q)^3 ,\quad(5.4)
+\end{aligned}
+\]</span>
+and the product over the pairs is <span class="math" data-tex="\(\chi_{\mathfrak d}(c&#x27;)^3\)">\(\chi_{\mathfrak d}(c&#x27;)^3\)</span>. The <span class="math" data-tex="\(S\)">\(S\)</span>-character of <span class="math" data-tex="\(\nu_0\)">\(\nu_0\)</span> is <span class="math" data-tex="\(L(\nu_0)^{-1}=L(a&#x27;_{\mathfrak f})^{-1}L(c&#x27;)^{-1}L(n&#x27;)^{-3}\)">\(L(\nu_0)^{-1}=L(a&#x27;_{\mathfrak f})^{-1}L(c&#x27;)^{-1}L(n&#x27;)^{-3}\)</span><span class="math" data-tex="\(L(d)^2L(f)^2\)">\(L(d)^2L(f)^2\)</span>, because <span class="math" data-tex="\(L\)">\(L\)</span> is trivial on <span class="math" data-tex="\(U_S\)">\(U_S\)</span>. Splitting every other character value by multiplicativity and comparing with (4.2)–(4.4) gives, when <span class="math" data-tex="\([d]=z_d\)">\([d]=z_d\)</span> and <span class="math" data-tex="\([c&#x27;]=z_c\)">\([c&#x27;]=z_c\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal E_{\mathfrak t}(\mathfrak d,\mathfrak c&#x27;)\,L(\nu_0)^{-1}\\
+&amp;\quad =\frac{\omega_{\upsilon,\mathfrak t}\,\rho_{\upsilon,\mathfrak t,z_d}(\mathfrak d)\,\lambda_{\upsilon,\mathfrak t,z_c}(\mathfrak c&#x27;)}{q_{\mathfrak c&#x27;}^{1/2}q_{\mathfrak n&#x27;}}\\
+&amp;\qquad \,\chi_{\mathfrak d}(c&#x27;)^3 .\quad(5.5)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathcal E_{\mathfrak t}(\mathfrak d,\mathfrak c&#x27;)\,L(\nu_0)^{-1}\\
+&amp;\quad =\frac{\omega_{\upsilon,\mathfrak t}\,\rho_{\upsilon,\mathfrak t,z_d}(\mathfrak d)\,\lambda_{\upsilon,\mathfrak t,z_c}(\mathfrak c&#x27;)}{q_{\mathfrak c&#x27;}^{1/2}q_{\mathfrak n&#x27;}}\\
+&amp;\qquad \,\chi_{\mathfrak d}(c&#x27;)^3 .\quad(5.5)
+\end{aligned}
+\]</span>
+The symbol <span class="math" data-tex="\(\chi_{\mathfrak d}(c&#x27;)^3\)">\(\chi_{\mathfrak d}(c&#x27;)^3\)</span> vanishes when <span class="math" data-tex="\(\mathfrak d\)">\(\mathfrak d\)</span> and <span class="math" data-tex="\(\mathfrak c&#x27;\)">\(\mathfrak c&#x27;\)</span> share a prime, the support of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> excludes primes shared by <span class="math" data-tex="\(\mathfrak d\)">\(\mathfrak d\)</span> and <span class="math" data-tex="\(\mathfrak h\mathfrak n&#x27;\)">\(\mathfrak h\mathfrak n&#x27;\)</span>, and the supports of <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> and of the index set exclude primes shared by <span class="math" data-tex="\(\mathfrak f\)">\(\mathfrak f\)</span> and <span class="math" data-tex="\(\mathfrak c&#x27;\mathfrak n&#x27;\)">\(\mathfrak c&#x27;\mathfrak n&#x27;\)</span>. Together these are exactly the conditions <span class="math" data-tex="\((\mathfrak c&#x27;\mathfrak n&#x27;,\mathfrak d\mathfrak f)=1\)">\((\mathfrak c&#x27;\mathfrak n&#x27;,\mathfrak d\mathfrak f)=1\)</span> of Lemma 2.1.</p>
+<p><em>The S-integral.</em> For <span class="math" data-tex="\(\nu=\gamma\nu_0\)">\(\nu=\gamma\nu_0\)</span>, substitute <span class="math" data-tex="\(v=\gamma\nu_0/y\)">\(v=\gamma\nu_0/y\)</span>, which is legitimate by (5.2). Then <span class="math" data-tex="\([y]=[\nu_0][v]^{-1}\)">\([y]=[\nu_0][v]^{-1}\)</span> and <span class="math" data-tex="\(L(y)^{-1}=L(\nu_0)^{-1}L(v)\)">\(L(y)^{-1}=L(\nu_0)^{-1}L(v)\)</span>, and by Lemma 6.1 of Lesson 6, alternation (Lemma 3.1 of Lesson 2) and <span class="math" data-tex="\([\gamma]=1\)">\([\gamma]=1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal C_S(\gamma\nu_0,y^{-1})\\
+&amp;\quad =H_S\bigl(\gamma\nu_0,v/(\gamma\nu_0)\bigr)^2\\
+&amp;\quad =H_S(\nu_0,v)^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathcal C_S(\gamma\nu_0,y^{-1})\\
+&amp;\quad =H_S\bigl(\gamma\nu_0,v/(\gamma\nu_0)\bigr)^2\\
+&amp;\quad =H_S(\nu_0,v)^2 .
+\end{aligned}
+\]</span>
+Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\gamma\in\Gamma}\int_{\Omega_l}\mathbf 1_B([y])L(y)^{-1}\\
+&amp;\qquad \mathcal C_S(\gamma\nu_0,y^{-1})\mathcal W^w_\upsilon(\gamma\nu_0/y)\,d_l^\times y\\
+&amp;\quad =L(\nu_0)^{-1}\\
+&amp;\qquad \int_{X_{|\nu_0|_S/l}}\mathbf 1_B\bigl([\nu_0][v]^{-1}\bigr)\\
+&amp;\qquad H_S(\nu_0,v)^2L(v)\,\mathcal W^w_\upsilon(v)\,d^\times v .\quad(5.6)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\gamma\in\Gamma}\int_{\Omega_l}\mathbf 1_B([y])L(y)^{-1}\\
+&amp;\qquad \mathcal C_S(\gamma\nu_0,y^{-1})\mathcal W^w_\upsilon(\gamma\nu_0/y)\,d_l^\times y\\
+&amp;\quad =L(\nu_0)^{-1}\\
+&amp;\qquad \int_{X_{|\nu_0|_S/l}}\mathbf 1_B\bigl([\nu_0][v]^{-1}\bigr)\\
+&amp;\qquad H_S(\nu_0,v)^2L(v)\,\mathcal W^w_\upsilon(v)\,d^\times v .\quad(5.6)
+\end{aligned}
+\]</span>
+By Lemma 2.1 of Lesson 2 the sheet norm is
+<span class="math math-display" data-tex="\[
+\frac{|\nu_0|_S}l=\frac{q_{\mathfrak a&#x27;_{\mathfrak f}}q_{\mathfrak c&#x27;}q_{\mathfrak n&#x27;}^3}{q_{\mathfrak d}^2q_{\mathfrak f}^2\,l}.
+\]">\[
+\frac{|\nu_0|_S}l=\frac{q_{\mathfrak a&#x27;_{\mathfrak f}}q_{\mathfrak c&#x27;}q_{\mathfrak n&#x27;}^3}{q_{\mathfrak d}^2q_{\mathfrak f}^2\,l}.
+\]</span>
+Inside the integral <span class="math" data-tex="\(\nu_0\)">\(\nu_0\)</span> enters only through its class, which is <span class="math" data-tex="\(\kappa_6(\mathfrak t;z_d,z_c)\)">\(\kappa_6(\mathfrak t;z_d,z_c)\)</span> when <span class="math" data-tex="\([d]=z_d\)">\([d]=z_d\)</span> and <span class="math" data-tex="\([c&#x27;]=z_c\)">\([c&#x27;]=z_c\)</span>. Insert the partitions of <span class="math" data-tex="\(\mathfrak d\)">\(\mathfrak d\)</span> and <span class="math" data-tex="\(\mathfrak c&#x27;\)">\(\mathfrak c&#x27;\)</span> by these classes, use (5.5), split <span class="math" data-tex="\(\mathcal W^w_\upsilon\)">\(\mathcal W^w_\upsilon\)</span> into its <span class="math" data-tex="\(J_\upsilon\)">\(J_\upsilon\)</span> terms, and put <span class="math" data-tex="\(l=T/Z\)">\(l=T/Z\)</span> in (6.2) of Lesson 8; the <span class="math" data-tex="\(T\)">\(T\)</span>-integral produces <span class="math" data-tex="\(\Phi_{\upsilon,\kappa_6}\)">\(\Phi_{\upsilon,\kappa_6}\)</span> at <span class="math" data-tex="\(Z|\nu_0|_S\)">\(Z|\nu_0|_S\)</span>, which is (5.1).</p>
+<p><em>Absolute convergence of the grouped expansion.</em> Put <span class="math" data-tex="\(Q=q_{\mathfrak a&#x27;_{\mathfrak f}}q_{\mathfrak c&#x27;}q_{\mathfrak n&#x27;}^3\)">\(Q=q_{\mathfrak a&#x27;_{\mathfrak f}}q_{\mathfrak c&#x27;}q_{\mathfrak n&#x27;}^3\)</span> and <span class="math" data-tex="\(t_{\mathfrak d}=q_{\mathfrak d}^2q_{\mathfrak f}^2/Z\)">\(t_{\mathfrak d}=q_{\mathfrak d}^2q_{\mathfrak f}^2/Z\)</span>. By (4.5), (2.5) and Lemma 2.2, dropping squarefreeness and coprimality in a nonnegative majorant, for <span class="math" data-tex="\(\sigma&gt;1/2\)">\(\sigma&gt;1/2\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal D_{\mathfrak f}(\sigma):=\sum_{\mathfrak a&#x27;_{\mathfrak f},\mathfrak c&#x27;,\mathfrak n&#x27;}\beta_{\mathfrak f}(\mathfrak a&#x27;_{\mathfrak f})\,q_{\mathfrak c&#x27;}^{-1/2}q_{\mathfrak n&#x27;}^{-1}Q^{-\sigma}\\
+&amp;\quad\le\zeta_F^S(\sigma+\tfrac12)\,\zeta_F^S(3\sigma+1)\prod_{\mathfrak p\mid\mathfrak f}E_{\mathfrak p}(\sigma)\\
+&amp;\quad&lt;\infty ,\quad(5.7)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathcal D_{\mathfrak f}(\sigma):=\sum_{\mathfrak a&#x27;_{\mathfrak f},\mathfrak c&#x27;,\mathfrak n&#x27;}\beta_{\mathfrak f}(\mathfrak a&#x27;_{\mathfrak f})\,q_{\mathfrak c&#x27;}^{-1/2}q_{\mathfrak n&#x27;}^{-1}Q^{-\sigma}\\
+&amp;\quad\le\zeta_F^S(\sigma+\tfrac12)\,\zeta_F^S(3\sigma+1)\prod_{\mathfrak p\mid\mathfrak f}E_{\mathfrak p}(\sigma)\\
+&amp;\quad&lt;\infty ,\quad(5.7)
+\end{aligned}
+\]</span>
+and the absolute profile dominates every class multiplier, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_0^\infty|\mathcal K(T)|\sum_{\mathfrak a&#x27;_{\mathfrak f},\mathfrak c&#x27;,\mathfrak n&#x27;}\beta_{\mathfrak f}(\mathfrak a&#x27;_{\mathfrak f})\\
+&amp;\qquad \,q_{\mathfrak c&#x27;}^{-1/2}q_{\mathfrak n&#x27;}^{-1}\,H^{\mathrm{abs}}\Bigl(\frac Q{t_{\mathfrak d}T}\Bigr)\frac{dT}T\\
+&amp;\quad \le C_\sigma\,t_{\mathfrak d}^{\sigma}M_\sigma(\mathcal K)\,\mathcal D_{\mathfrak f}(\sigma).\quad(5.8)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_0^\infty|\mathcal K(T)|\sum_{\mathfrak a&#x27;_{\mathfrak f},\mathfrak c&#x27;,\mathfrak n&#x27;}\beta_{\mathfrak f}(\mathfrak a&#x27;_{\mathfrak f})\\
+&amp;\qquad \,q_{\mathfrak c&#x27;}^{-1/2}q_{\mathfrak n&#x27;}^{-1}\,H^{\mathrm{abs}}\Bigl(\frac Q{t_{\mathfrak d}T}\Bigr)\frac{dT}T\\
+&amp;\quad \le C_\sigma\,t_{\mathfrak d}^{\sigma}M_\sigma(\mathcal K)\,\mathcal D_{\mathfrak f}(\sigma).\quad(5.8)
+\end{aligned}
+\]</span>
+There are <span class="math" data-tex="\(|U_6|\,|B|^2\)">\(|U_6|\,|B|^2\)</span> choices of <span class="math" data-tex="\((u,z_d,z_c)\)">\((u,z_d,z_c)\)</span>, and <span class="math" data-tex="\(\mathcal F(\mathfrak h)\)">\(\mathcal F(\mathfrak h)\)</span> is finite. This justifies every exchange and proves the absolute convergence of (5.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(m=0\)">\(m=0\)</span> the identity <span class="math" data-tex="\(B_0(Z)=P_G(1/Z)\)">\(B_0(Z)=P_G(1/Z)\)</span> of Lemma 3.1 of Lesson 5 holds instead.</p>
+<p>In (5.1) the row <span class="math" data-tex="\(m\)">\(m\)</span> enters only through <span class="math" data-tex="\(\upsilon\)">\(\upsilon\)</span>, the frozen data built from <span class="math" data-tex="\(\mathfrak h\)">\(\mathfrak h\)</span>, the row factor <span class="math" data-tex="\(\rho(\mathfrak d)\)">\(\rho(\mathfrak d)\)</span> and the symbol <span class="math" data-tex="\(\chi_{\mathfrak d}(c&#x27;)^3\)">\(\chi_{\mathfrak d}(c&#x27;)^3\)</span>; the column <span class="math" data-tex="\(\mathfrak c&#x27;\)">\(\mathfrak c&#x27;\)</span> enters only through <span class="math" data-tex="\(\lambda(\mathfrak c&#x27;)\)">\(\lambda(\mathfrak c&#x27;)\)</span>, <span class="math" data-tex="\(\chi_{\mathfrak d}(c&#x27;)^3\)">\(\chi_{\mathfrak d}(c&#x27;)^3\)</span> and the profile argument. Since <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> decays rapidly for large argument, the effective length of the column sum is <span class="math" data-tex="\(q_{\mathfrak c&#x27;}\lesssim q_{\mathfrak d}^2q_{\mathfrak f}^2/Z\le q_{\mathfrak d}^2q_{\mathfrak h}/Z\)">\(q_{\mathfrak c&#x27;}\lesssim q_{\mathfrak d}^2q_{\mathfrak f}^2/Z\le q_{\mathfrak d}^2q_{\mathfrak h}/Z\)</span> by (2.2); this is the length <span class="math" data-tex="\(D^2P/Z\)">\(D^2P/Z\)</span> of Proposition 4.1 of Lesson 5.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Derive (1.1) from (1.3) of Lesson 6.</p>
+<p><strong>6.2.</strong> Show that <span class="math" data-tex="\(s_{\mathfrak p,4,e}=W_e(q_{\mathfrak p}-1)/\tau_{\mathfrak p,4}\)">\(s_{\mathfrak p,4,e}=W_e(q_{\mathfrak p}-1)/\tau_{\mathfrak p,4}\)</span> for <span class="math" data-tex="\(e&gt;0\)">\(e&gt;0\)</span>, and compute <span class="math" data-tex="\(|s_{\mathfrak p,4,e}|\)">\(|s_{\mathfrak p,4,e}|\)</span> for <span class="math" data-tex="\(e=1\)">\(e=1\)</span> and <span class="math" data-tex="\(e=3\)">\(e=3\)</span>.</p>
+<p><strong>6.3.</strong> Suppose <span class="math" data-tex="\(m\)">\(m\)</span> generates a squarefree exterior ideal. Show that <span class="math" data-tex="\(\mathcal F(\mathfrak h)=\{R\}\)">\(\mathcal F(\mathfrak h)=\{R\}\)</span> and <span class="math" data-tex="\(\mathcal A(R)=\{R\}\)">\(\mathcal A(R)=\{R\}\)</span>, and write (5.1) in this case.</p>
+<p><strong>6.4.</strong> Show that <span class="math" data-tex="\(\xi_{\mathfrak p}=g_{3,\mathfrak p}/g_{-1,\mathfrak p}\)">\(\xi_{\mathfrak p}=g_{3,\mathfrak p}/g_{-1,\mathfrak p}\)</span> in the notation <span class="math" data-tex="\(g_j=q^{-1/2}\sum_x\chi(x)^j\psi(x/p)\)">\(g_j=q^{-1/2}\sum_x\chi(x)^j\psi(x/p)\)</span> of Lesson 6, Section 4, and conclude <span class="math" data-tex="\(|\xi_{\mathfrak p}|=1\)">\(|\xi_{\mathfrak p}|=1\)</span>.</p>
+<p><strong>6.5.</strong> Let <span class="math" data-tex="\(\mathfrak h=\mathfrak p^6\)">\(\mathfrak h=\mathfrak p^6\)</span>. List <span class="math" data-tex="\(\mathcal F(\mathfrak h)\)">\(\mathcal F(\mathfrak h)\)</span>, and compute <span class="math" data-tex="\(I_{\mathfrak h,\mathfrak f}\)">\(I_{\mathfrak h,\mathfrak f}\)</span> for each member.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> Bimultiplicativity gives <span class="math" data-tex="\(\mathcal C(p^{e_1}u,p^{e_2}v)=\mathcal C(p,p)^{e_1e_2}\,\mathcal C(p,v)^{e_1}\)">\(\mathcal C(p^{e_1}u,p^{e_2}v)=\mathcal C(p,p)^{e_1e_2}\,\mathcal C(p,v)^{e_1}\)</span><span class="math" data-tex="\(\,\mathcal C(u,p)^{e_2}\,\mathcal C(u,v)\)">\(\,\mathcal C(u,p)^{e_2}\,\mathcal C(u,v)\)</span>. By (1.3) of Lesson 6 the first and last factors are <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(\mathcal C(p,v)=\chi(v)^{-2}\)">\(\mathcal C(p,v)=\chi(v)^{-2}\)</span> and <span class="math" data-tex="\(\mathcal C(u,p)=\chi(u)^2\)">\(\mathcal C(u,p)=\chi(u)^2\)</span>.</p>
+<p><strong>6.2.</strong> For <span class="math" data-tex="\(e&gt;0\)">\(e&gt;0\)</span> and <span class="math" data-tex="\(j=4\)">\(j=4\)</span>, (1.2) at <span class="math" data-tex="\(t=1\)">\(t=1\)</span> gives <span class="math" data-tex="\(W_e\tau_{\mathfrak p,4}^{-1}\sum_{x\ne0}\chi(x)^{-4}\chi(x)^4\)">\(W_e\tau_{\mathfrak p,4}^{-1}\sum_{x\ne0}\chi(x)^{-4}\chi(x)^4\)</span><span class="math" data-tex="\(=W_e(q-1)/\tau_{\mathfrak p,4}\)">\(=W_e(q-1)/\tau_{\mathfrak p,4}\)</span>. Its absolute value is <span class="math" data-tex="\(|W_e|(q-1)q^{-1/2}\)">\(|W_e|(q-1)q^{-1/2}\)</span>: for <span class="math" data-tex="\(e=1\)">\(e=1\)</span> this is <span class="math" data-tex="\((q-1)/q\)">\((q-1)/q\)</span>, and for <span class="math" data-tex="\(e=3\)">\(e=3\)</span> it is <span class="math" data-tex="\((q-1)q^{-3/2}\)">\((q-1)q^{-3/2}\)</span>.</p>
+<p><strong>6.3.</strong> If <span class="math" data-tex="\(\mathfrak m\)">\(\mathfrak m\)</span> is squarefree, <span class="math" data-tex="\(\mathfrak h=R\)">\(\mathfrak h=R\)</span>, whose radical is <span class="math" data-tex="\(R\)">\(R\)</span>, so <span class="math" data-tex="\(\mathcal F(\mathfrak h)=\{R\}\)">\(\mathcal F(\mathfrak h)=\{R\}\)</span>; <span class="math" data-tex="\(\mathcal A(R)=\{R\}\)">\(\mathcal A(R)=\{R\}\)</span> by definition, <span class="math" data-tex="\(I_{R,R}=1\)">\(I_{R,R}=1\)</span> and <span class="math" data-tex="\(f=1\)">\(f=1\)</span>. Then <span class="math" data-tex="\(\omega_{\upsilon,\mathfrak t}=L(n&#x27;)^{-3}\)">\(\omega_{\upsilon,\mathfrak t}=L(n&#x27;)^{-3}\)</span>, the tuple is <span class="math" data-tex="\((R,R,R,\mathfrak n&#x27;,u)\)">\((R,R,R,\mathfrak n&#x27;,u)\)</span>, and (5.1) reads
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+B_m(Z)&amp;=\sum_{\mathfrak n&#x27;,u,z_d,z_c}\frac{L(n&#x27;)^{-3}}{q_{\mathfrak n&#x27;}}\rho(\mathfrak d)\\
+&amp;\quad \sum_{\mathfrak c&#x27;}\frac{\lambda(\mathfrak c&#x27;)}{q_{\mathfrak c&#x27;}^{1/2}}\chi_{\mathfrak d}(c&#x27;)^3\\
+&amp;\quad \,\Phi_{\upsilon,\kappa_6}\Bigl(\frac{Zq_{\mathfrak c&#x27;}q_{\mathfrak n&#x27;}^3}{q_{\mathfrak d}^2}\Bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+B_m(Z)&amp;=\sum_{\mathfrak n&#x27;,u,z_d,z_c}\frac{L(n&#x27;)^{-3}}{q_{\mathfrak n&#x27;}}\rho(\mathfrak d)\\
+&amp;\quad \sum_{\mathfrak c&#x27;}\frac{\lambda(\mathfrak c&#x27;)}{q_{\mathfrak c&#x27;}^{1/2}}\chi_{\mathfrak d}(c&#x27;)^3\\
+&amp;\quad \,\Phi_{\upsilon,\kappa_6}\Bigl(\frac{Zq_{\mathfrak c&#x27;}q_{\mathfrak n&#x27;}^3}{q_{\mathfrak d}^2}\Bigr).
+\end{aligned}
+\]</span></p>
+<p><strong>6.4.</strong> By (1.4), <span class="math" data-tex="\(\xi_{\mathfrak p}=\bigl(q^{1/2}g_3\bigr)/\bigl(q^{1/2}g_{-1}\bigr)\)">\(\xi_{\mathfrak p}=\bigl(q^{1/2}g_3\bigr)/\bigl(q^{1/2}g_{-1}\bigr)\)</span>, since <span class="math" data-tex="\(\tau_{\mathfrak p,1}=\sum_x\chi(x)^{-1}\psi(x/p)=q^{1/2}g_{-1}\)">\(\tau_{\mathfrak p,1}=\sum_x\chi(x)^{-1}\psi(x/p)=q^{1/2}g_{-1}\)</span>. Both <span class="math" data-tex="\(g_3\)">\(g_3\)</span> and <span class="math" data-tex="\(g_{-1}\)">\(g_{-1}\)</span> have absolute value <span class="math" data-tex="\(1\)">\(1\)</span> (Lesson 6, Section 4), so <span class="math" data-tex="\(|\xi_{\mathfrak p}|=1\)">\(|\xi_{\mathfrak p}|=1\)</span>.</p>
+<p><strong>6.5.</strong> The radical is <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> and <span class="math" data-tex="\(j_{\mathfrak p}=0\)">\(j_{\mathfrak p}=0\)</span>, so <span class="math" data-tex="\(\mathcal F(\mathfrak h)=\{R,\mathfrak p\}\)">\(\mathcal F(\mathfrak h)=\{R,\mathfrak p\}\)</span>: the prime may be inactive or active. Then <span class="math" data-tex="\(I_{\mathfrak h,R}=1-q_{\mathfrak p}^{-1}\)">\(I_{\mathfrak h,R}=1-q_{\mathfrak p}^{-1}\)</span> and <span class="math" data-tex="\(I_{\mathfrak h,\mathfrak p}=1\)">\(I_{\mathfrak h,\mathfrak p}=1\)</span>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-029] OpenAI, <em>Primitive roots for every admissible integer base</em>, OpenAI Math Release preprint, 4 October 2026, Section 6.2. https://github.com/openai/math/tree/main/preprints/Primitive-roots-for-every-admissible-integer-base-October-4-2026</li>
+<li>[QuasiRH] OpenAI, <em>The Quasi-Riemann Hypothesis: A Zero-Free Half-Plane Re(s) &gt; 7/8</em>, OpenAI Math Release preprint, 30 September 2026, Part I, Sections 5–7. https://github.com/openai/math/tree/main/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

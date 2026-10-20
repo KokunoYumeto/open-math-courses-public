@@ -8,7 +8,7 @@ We use the complete boundary-power construction in [Complex powers at a boundary
 
 The supplied [smooth pullback reading](../prerequisites/U011-free-foundations/smooth-pullback-and-fourier-normal-condition.md), Sections 18.1–18.5, proves ordinary wavefront localization, coordinate covariance and the exact submersion converse, especially (WF12)–(WF15). Its coordinate completion is [Regular level sets and transverse convolution](regular-level-sets-and-transverse-convolution.md), Lemma 0.2. [Cones and derivative-growth wavefronts](cones-and-derivative-growth-wavefronts.md), Theorem 6, proves \(\operatorname{WF}\subset\operatorname{WF}_A\); [Analytic equations and characteristic directions](analytic-equations-and-characteristic-directions.md), Theorem 3 and its preceding finite transpose construction, proves analytic regularity outside the characteristic set. The [Fourier](../prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.md), [Gamma](../prerequisites/U011-free-foundations/gamma-foundations-U016.md) and [angular](../prerequisites/U011-free-foundations/angular-foundations-U018.md) foundations supply the integrals, recurrence and sphere measure used below.
 
-All wavefront sets in the conclusions of this lesson are ordinary smooth wavefront sets. Fourier transformation uses \(e^{-ix\cdot\xi}\). Pairings are complex bilinear.
+The first classifications use ordinary smooth wavefront. Theorem 11 proves the same sets at analytic regularity and in every derivative-growth class defined below. Fourier transformation uses \(e^{-ix\cdot\xi}\). Pairings are complex bilinear.
 
 ## Scalar directions and the two boundary signs
 
@@ -481,6 +481,69 @@ No estimate of the form \(\operatorname{Im}F_\varepsilon\ge c\varepsilon^q\) occ
 *Left: the paths \(F_\varepsilon(s)=s+\varepsilon+i\varepsilon^2\), for \(s=-1/2,0,1/2\) and \(0\le\varepsilon\le0.4\), end at a real map with derivative one. Theorem 8 preserves the boundary distribution despite the real drift and changing height. Right: the exact profiles \(-\operatorname{Im}(x^2+i\varepsilon)^{-1}=\varepsilon/(x^4+\varepsilon^2)\), at \(\varepsilon=0.16,0.04,0.01\), have height \(\varepsilon^{-1}\) and a core width proportional to \(\sqrt\varepsilon\). Exercise 8 proves divergent mass near the critical point; the plotted samples are illustrations of that proof. [Reproducible figure source](../figures/moving-boundary-and-critical-concentration.py).*
 
 
+## Analytic directions and every derivative-growth class
+
+The scalar boundary signs also determine analytic directions. We use [Holomorphic boundaries and analytic directions](holomorphic-boundaries-and-analytic-directions.md), Lemma 1 and Theorem 2, for the proved polynomial-growth boundary estimate, and [Analytic pullback and cotangent directions](analytic-pullback-and-cotangent-directions.md), Theorems 4 and 6, for exact analytic coordinate and submersion covariance. The regularity comparisons and analytic-multiplier inclusion are [Cones and derivative-growth wavefronts](cones-and-derivative-growth-wavefronts.md), Theorems 6–7.
+
+Fix any nondecreasing sequence \(L_0=1\), \(j\le L_j\), \(L_{j+1}\le C L_j\). These hypotheses are the derivative-growth convention of that reading. In particular they include \(L_j=(j+1)^s\), \(s\ge1\). Its comparison theorem gives
+\[
+ \operatorname{WF}(u)\subset\operatorname{WF}_L(u)
+                       \subset\operatorname{WF}_A(u).
+ \tag{B1}
+\]
+For the second inclusion, the analytic sequence \(j+1\) is at most \(2L_j\) for \(j\ge1\); the harmless constant is absorbed into the witness estimate.
+
+**Lemma 10 (analytic scalar boundary signs).** Every equality in (Q2)–(Q3) holds with \(\operatorname{WF}\) replaced by \(\operatorname{WF}_A\), and also by \(\operatorname{WF}_L\).
+
+**Proof.** For real \(\alpha<0\), choose the holomorphic branch \(z^\alpha=\exp(\alpha\operatorname{Log}z)\) in the upper half-plane, with argument between zero and \(\pi\). At \(z=s+it\), \(t>0\),
+\[
+ |z^\alpha|=|z|^\alpha\le t^\alpha.
+ \tag{B2}
+\]
+On \(0<t<1\), this is bounded by \(t^{-m}\) for any integer \(m\ge-\alpha\). The boundary-power construction identifies its boundary as \(b_+^\alpha\). The dual of the positive imaginary ray is the nonnegative frequency ray in our Fourier convention. The cited boundary theorem therefore excludes all negative analytic directions.
+
+The same theorem applies to the upper logarithm. On a bounded real interval and \(0<t<1\), its argument is bounded by \(\pi\), its positive logarithmic part is bounded, and its negative logarithmic part is at most \(|\log t|\). Consequently
+\[
+ |\operatorname{Log}(s+it)|\le C+|\log t|
+                             \le C'(1+t^{-1}).
+ \tag{B3}
+\]
+The last inequality follows, for example, from
+\(-\log t=\int_t^1v^{-1}\,dv\le t^{-1}\).
+The boundary is \(\ell_+\), by the earlier logarithmic limit. Thus it too has no negative analytic direction.
+
+Both boundary functions are real analytic away from zero, including on the negative real half-line: near each nonzero real point their chosen branch has a holomorphic extension to a small disk avoiding zero. One can construct that local branch by the convergent logarithm series about the point, choosing its constant to match the upper value. The local analytic-function criterion therefore excludes every covector away from zero. Lemma 1 and (B1) force the positive ray at zero. This proves the upper-sign equalities. The lower branches satisfy the same polynomial bounds on the lower half-plane, whose imaginary cone has nonpositive dual; the same argument, with Lemma 1's lower ray, proves their equalities.
+
+For every real \(\beta\), \(\chi_\pm^\beta\) is analytic on each open half-line. At a negative integer it is supported at zero; otherwise its nonzero half-line density is a constant multiple of \(\exp(\beta\log|s|)\), an analytic function there. Hence its analytic wavefront is contained in the full punctured fiber at zero. Lemma 1 and (B1) already include that whole fiber. Finally (B1) places every intermediate \(\operatorname{WF}_L\) between two equal sets in all these cases. \(\square\)
+
+**Theorem 11 (the quadratic and causal classifications in every class).** For the distributions \(U_\pm,V_\pm\) of (Q4)–(Q5), all three sets
+\(\operatorname{WF}\), \(\operatorname{WF}_L\) and \(\operatorname{WF}_A\)
+are equal, with the exact values in (Q13). The same assertion holds for every forward or backward \(E_{k,c}\) in Corollary 6, with its exact set (Q17).
+
+**Proof for quadratic distributions.** On punctured space \(Q\) is an analytic submersion. Lemma 10 and exact analytic submersion covariance give precisely \(\mathcal C_\pm\) for \(U_\pm\), and \(\mathcal C\) for \(V_\pm\). Where \(Q\ne0\) the local formulas are analytic, so these exhaust the nonvertex analytic directions.
+
+At the vertex, each \(U_\pm\), and each odd-signature \(V_\pm\) specified in (Q13), already has the entire punctured smooth-wavefront fiber by the nonzero source identity. Inclusion (B1) gives the entire analytic fiber as well. A fiber has no additional nonzero covectors to include.
+
+In the remaining signature cases \(P_AV_\pm=0\) on the whole space. The analytic differential regularity theorem used in (Q15) gives the analytic upper bound \(B(\xi)=0\). The exact path (Q16) and closedness already give every one of these covectors in smooth wavefront. Thus the analytic and smooth fibers agree here too. This argument includes definite forms, for which the nonzero null fiber is empty, and the logarithmic two-dimensional cases. It uses the whole-space source identity at zero, not a nonexistent submersion at that point.
+
+**Proof for causal powers.** At a nonvertex forward cone point, \(t>0\) and \(dq_c\ne0\). The local formula in Corollary 6 is a nonzero scalar multiple of an analytic submersion pullback of \(\chi_+^\beta\), with \(\beta=k+(1-m)/2\). Lemma 10 gives both conormal signs exactly. In the cone interior the ordinary power is analytic; at negative integral parameters the scalar distribution vanishes there instead. Outside the cone the kernel is locally zero. Points with \(t=0\) other than the vertex also have a neighborhood disjoint from the supporting cone. Thus there are no other nonvertex analytic directions. At the vertex the equation \(P_c^{k+1}E_{k,c}=\delta_0\) supplies the full smooth fiber by (Q14), hence the full analytic fiber. Time reflection is an analytic diffeomorphism, so it proves the backward assertion. Finally (B1) gives every stated intermediate class. \(\square\)
+
+The distinction between a homogeneous equation and a point-source equation remains essential at analytic regularity. Characteristic directions bound the former. The latter can have a full vertex fiber even when nonvertex conormals have only characteristic limits.
+
+**Proposition 12 (analytic coordinates and nonvanishing weights).** Let \(\kappa:X\to Y\) be an analytic diffeomorphism, let \(a\) be a nowhere-zero complex-valued real analytic function on \(X\), and let \(u\) be any distribution in Theorem 11, restricted to \(Y\). Put \(v=a\,\kappa^*u\). Then
+\[
+ \operatorname{WF}(v)=\operatorname{WF}_L(v)=\operatorname{WF}_A(v)
+ =\{(x,D\kappa(x)^T\eta):
+                 (\kappa(x),\eta)\in\operatorname{WF}(u)\}.
+ \tag{B4}
+\]
+**Proof.** Analytic diffeomorphism covariance gives equality for \(\operatorname{WF}_L\) and \(\operatorname{WF}_A\); the supplied smooth covariance gives it for \(\operatorname{WF}\). Multiplication by \(a\) gives inclusion for each class. Its reciprocal is real analytic locally: extend its power series holomorphically, shrink until it stays nonzero, and expand \(1/a\) by the geometric series about its value at the center. Multiplication by that reciprocal gives the reverse inclusion. For smooth wavefront the same reciprocal is smooth. Theorem 11 therefore gives (B4). No assertion about a weight at one of its zeros follows from this argument. \(\square\)
+
+![An analytic bending of the forward wave cone and the full vertex covector circle.](../figures/analytic-curved-wave-cone.png)
+
+*The left panel uses the analytic map \(\kappa(r,z)=(r,z+r^2)\). Its forward cone boundaries are \(z=\pm r-r^2\), \(r>0\). The displayed arrows are normalized samples of both signs of the exact covectors \(d[r^2-(z+r^2)^2]\); they represent covectors in these fixed Euclidean coordinates, not propagation velocities. At the origin, the right panel shows every unit covector. The four marked null directions are only the limits of nonvertex conormals. Exercises 10–11 prove the formulas and the strict distinction. [Vector figure](../figures/analytic-curved-wave-cone.svg) · [Reproducible figure source](../figures/analytic-curved-wave-cone.py).*
+
+
 ## Exercises with complete solutions
 
 **Exercise 1 (foundation: the three-dimensional saddle).** Take \(Q=t^2-x^2-y^2\). Compute all four point-source coefficients and compare the vertex wavefronts of \(V_+\) and \(V_-\).
@@ -623,6 +686,60 @@ A distributional limit would have a finite limit on this one fixed test, so it c
 For contrast within this same calculation, \(f(z)=z\) has no singular boundary value: \(f(F_\varepsilon)=x^2+i\varepsilon\to x^2\) smoothly, although the limiting map remains critical at zero. Thus the submersion condition is sufficient for all the admitted boundary functions, and cannot simply be dropped for that entire class; it is not necessary for each individual regular function. \(\square\)
 
 
+**Exercise 9 (foundation: a zero of an analytic weight).** For an integer \(k\ge1\), determine the smooth, analytic and derivative-growth wavefronts of \(s^k b_+^{-k}\). Explain the role of the nonvanishing assumption in Proposition 12.
+
+**Solution.** The boundary-power construction gives \((s+it)^{-k}\to b_+^{-k}\) in distributions. On each compact test support these distributions have a common finite-order bound, by the boundary estimate. The multipliers \((s+it)^k\) tend to \(s^k\) with all derivatives there. Pairing the difference against a fixed test thus tends to zero by that common bound. Since the product before taking the limit is identically one,
+\[
+                  s^k b_+^{-k}=1.
+ \tag{B5}
+\]
+This function is analytic and every one of its wavefronts is empty. In contrast, Lemma 10 gives the positive ray at zero for \(b_+^{-k}\) in all three classes. The analytic weight has a zero at exactly that base point; its reciprocal is unavailable there. Thus analytic multiplication always gives the inclusion, but need not give equality at a zero. \(\square\)
+
+**Exercise 10 (intermediate: an analytic bending of a causal cone).** In one space dimension with speed one, let \(E_0(t,x)\) be the forward wave kernel of Corollary 6. For \(\kappa(r,z)=(r,z+r^2)\), compute all three wavefronts of
+\[
+                         v(r,z)=e^z\kappa^*E_0.
+ \tag{B6}
+\]
+Give its locally integrable density and the exact covectors on its two curved boundary branches.
+
+**Solution.** The inverse is \((t,x)\mapsto(t,x-t^2)\); both maps are polynomial and their Jacobian determinant is one. The causal formula for \(m=1,k=0\) is
+\(E_0(t,x)=\tfrac12\boldsymbol1_{\{t\ge|x|\}}\) almost everywhere. Consequently
+\[
+ v(r,z)=\tfrac12e^z\boldsymbol1_{\{r\ge|z+r^2|\}},\qquad
+ q(r,z)=r^2-(z+r^2)^2 .
+ \tag{B7}
+\]
+The zero-measure boundary does not affect this locally integrable density. The weight is nowhere zero and analytic. Since
+\[
+ D\kappa(r,z)^T(\tau,\xi)=(\tau+2r\xi,\xi),\qquad
+ dq=(2r-4r(z+r^2),-2(z+r^2)),
+ \tag{B8}
+\]
+Proposition 12 gives the nonvertex pairs \((r,z;\lambda\,dq)\) with \(r>0\), \(z=\pm r-r^2\), \(\lambda\ne0\), together with the entire punctured fiber at \((0,0)\). There are no other pairs. On the branch \(z=\varepsilon r-r^2\), \(\varepsilon=\pm1\), the covector is
+\[
+                     dq=(2r-4\varepsilon r^2,-2\varepsilon r).
+ \tag{B9}
+\]
+Its pairing with the tangent \((1,\varepsilon-2r)\) is zero. Both signs of every nonzero multiple occur. This proves the formulas displayed in the figure for smooth, analytic and every admitted derivative-growth wavefront. \(\square\)
+
+**Exercise 11 (advanced: what closure of the punctured cone misses).** For the distribution in Exercise 10, determine the fiber at zero of the closure, in the punctured cotangent space, of its nonvertex conormal set. Compare it with the actual wavefront fiber.
+
+**Solution.** Write the nonvertex covector on branch \(\varepsilon\) as
+\[
+       \lambda\,dq
+           =2r\lambda(1-2\varepsilon r,-\varepsilon).
+ \tag{B10}
+\]
+If these covectors tend to a finite nonzero \((\tau,\xi)\) as the base tends to zero, pass to one branch along a subsequence. The second component shows that \(2r\lambda\) has a finite limit \(b=-\varepsilon\xi\); the first then has limit \(b\). The limit is nonzero only if \(b\ne0\). Conversely, take \(\lambda=b/(2r)\) for any \(b\ne0\) and let \(r\downarrow0\). The resulting fiber is exactly
+\[
+             \{(\tau,\xi)\ne0:\tau^2=\xi^2\}.
+ \tag{B11}
+\]
+It has four directions on the unit circle. The actual wavefront at zero, by Theorem 11 and (B4), is the whole punctured plane: the point source supplies the other directions. For example \((1,0)\) is in all three wavefronts and is absent from this conormal closure. Taking the closure is necessary to retain the limiting null covectors, but cannot replace the separate vertex argument. \(\square\)
+
+
 ## Sources
 
 Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition (1990), Springer, 2003, [doi:10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), Theorem 6.2.1, Lemma 6.2.2, the two-dimensional remark following that lemma, and Example 8.2.6. The point-source and wavefront results are developed here with the exact earlier programme proofs listed above. The exposition, examples, exercises and figure are independently expressed.
+
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second-edition reprint, Springer, 2003, [doi:10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), Section 8.5, the analytic quadratic-boundary observation following Theorem 8.5.2. Lemma 10 and Theorem 11 give complete analytic and derivative-growth classifications, including logarithmic, one-sided and causal cases; Proposition 12 and Exercises 9–11 treat analytic coordinates and weights.

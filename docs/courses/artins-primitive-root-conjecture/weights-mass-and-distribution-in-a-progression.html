@@ -1,0 +1,306 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Weights, mass and distribution in a progression</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Artin&#x27;s primitive root conjecture)</a><a href="marked-type-ii-estimates.html">Previous lesson</a><a href="primes-with-controlled-predecessors.html">Next lesson</a><a href="src/weights-mass-and-distribution-in-a-progression.md">Editable source</a></nav><main><article><h1 id="weights-mass-and-distribution-in-a-progression">Weights, mass and distribution in a progression</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson sets up the construction that proves Proposition 5.1 of <a href="artins-conjecture-and-the-index-of-a-prime.html"><em>Artin's conjecture and the index of a prime</em></a>. Integers <span class="math" data-tex="\(d=crQ+1\)">\(d=crQ+1\)</span> in a fixed progression, with <span class="math" data-tex="\(Q&gt;x^{0.9}\)">\(Q&gt;x^{0.9}\)</span> prime and <span class="math" data-tex="\(r\)">\(r\)</span> composed of primes from the groups of <a href="marked-type-ii-estimates.html"><em>Marked Type II estimates and rough factors</em></a>, receive nonnegative weights <span class="math" data-tex="\(w(d)\)">\(w(d)\)</span> built from the marked weight <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span>. Three facts about these weights are proved here: the marked Type II estimate holds inside the progression; the total weight <span class="math" data-tex="\(X_0\)">\(X_0\)</span> is of order <span class="math" data-tex="\(xJ_0/L\)">\(xJ_0/L\)</span>, where <span class="math" data-tex="\(J_0\)">\(J_0\)</span> is a harmonic sum over the group integers <span class="math" data-tex="\(r\)">\(r\)</span>; and the family is well distributed in the sense of the Bombieri–Vinogradov theorem, which is what the sieve of Lesson 19 needs. Lesson 19 then shows that a positive proportion of the weight sits on primes.</p>
+<p><strong>Prerequisites.</strong> <a href="artins-conjecture-and-the-index-of-a-prime.html"><em>Artin's conjecture and the index of a prime</em></a>, (4.1) and Proposition 5.1; <a href="a-block-sieve-and-rough-number-densities.html"><em>A block sieve and rough-number densities</em></a>, (1.1)–(1.3); <a href="marked-type-ii-estimates.html"><em>Marked Type II estimates and rough factors</em></a>, Section 1, N6 and Proposition 5.1; <a href="../NT-DIRL/NT-DIRL-15.html"><em>The Bombieri–Vinogradov theorem</em></a>, Theorem 3.1 and Corollary 4.1; <a href="../NT-DIRL/NT-DIRL-11.html"><em>The Siegel–Walfisz theorem</em></a>, Theorem 2.1; <a href="../NT-ZETA/NT-ZETA-02.html"><em>Counting primes by elementary means: Chebyshev and Mertens</em></a>, Theorems 3.1 and 4.2.</p>
+<h2 id="1-the-weights">1. The weights</h2>
+<p>Fix <span class="math" data-tex="\(M,c,u\)">\(M,c,u\)</span> as in (4.1) of Lesson 1:
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+8\mid M,\quad c\in\{2,4\},\quad(u,M)=1,\\
+c\mid u-1,\quad\Bigl(\frac{u-1}c,\frac Mc\Bigr)=1 .\quad(1.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+8\mid M,\quad c\in\{2,4\},\quad(u,M)=1,\\
+c\mid u-1,\quad\Bigl(\frac{u-1}c,\frac Mc\Bigr)=1 .\quad(1.1)
+\end{gathered}
+\]</span>
+Use <span class="math" data-tex="\(L\)">\(L\)</span>, <span class="math" data-tex="\(W\)">\(W\)</span>, <span class="math" data-tex="\(V\)">\(V\)</span> of Lesson 16 and the groups <span class="math" data-tex="\(\mathcal P_i\)">\(\mathcal P_i\)</span> and the marked weight <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span> of Lesson 17 with <span class="math" data-tex="\(q=\frac12\)">\(q=\frac12\)</span>; the integer <span class="math" data-tex="\(K\)">\(K\)</span> and the exponents <span class="math" data-tex="\(0.1&lt;a_1&lt;\cdots&lt;a_K&lt;0.2\)">\(0.1&lt;a_1&lt;\cdots&lt;a_K&lt;0.2\)</span> are fixed before <span class="math" data-tex="\(x\)">\(x\)</span> grows and chosen at the end of Lesson 19. For large <span class="math" data-tex="\(x\)">\(x\)</span> the group primes lie in <span class="math" data-tex="\((\exp(L^{0.1}),\exp(L^{0.3}))\)">\((\exp(L^{0.1}),\exp(L^{0.3}))\)</span>, so they do not divide <span class="math" data-tex="\(M\)">\(M\)</span>. A <strong>group integer</strong> is a positive integer all of whose prime factors are group primes (including <span class="math" data-tex="\(1\)">\(1\)</span>), and <span class="math" data-tex="\(h_{\mathcal P}\)">\(h_{\mathcal P}\)</span> is the largest group-integer divisor of <span class="math" data-tex="\(h\)">\(h\)</span>.</p>
+<p>Fix a smooth <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span> supported in <span class="math" data-tex="\((1,2)\)">\((1,2)\)</span> with <span class="math" data-tex="\(0\le\Psi\le1\)">\(0\le\Psi\le1\)</span> and <span class="math" data-tex="\(A_\Psi=\int_1^2\Psi&gt;0\)">\(A_\Psi=\int_1^2\Psi&gt;0\)</span>, and put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;F(h)=\mathbf 1_{\{h/h_{\mathcal P}=cQ,\ Q&gt;x^{0.9}\ \text{prime}\}},\\
+&amp;w(d)=\mathbf 1\{d\equiv u\ (M)\}\,\Psi(d/x)\\
+&amp;\qquad\times F(d-1)\,\mathcal W(d-1)\\
+&amp;\qquad(d\ge2),\quad(1.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;F(h)=\mathbf 1_{\{h/h_{\mathcal P}=cQ,\ Q&gt;x^{0.9}\ \text{prime}\}},\\
+&amp;w(d)=\mathbf 1\{d\equiv u\ (M)\}\,\Psi(d/x)\\
+&amp;\qquad\times F(d-1)\,\mathcal W(d-1)\\
+&amp;\qquad(d\ge2),\quad(1.2)
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(w(1)=0\)">\(w(1)=0\)</span>. Since <span class="math" data-tex="\((ph)_{\mathcal P}=p\,h_{\mathcal P}\)">\((ph)_{\mathcal P}=p\,h_{\mathcal P}\)</span> for every group prime <span class="math" data-tex="\(p\)">\(p\)</span>, <span class="math" data-tex="\(F\)">\(F\)</span> is group-invariant: <span class="math" data-tex="\(F(ph)=F(h)\)">\(F(ph)=F(h)\)</span>.</p>
+<p><strong>Lemma 1.1</strong> (support). If <span class="math" data-tex="\(w(d)\ne0\)">\(w(d)\ne0\)</span>, then <span class="math" data-tex="\(d=crQ+1\)">\(d=crQ+1\)</span> with <span class="math" data-tex="\(r=(d-1)_{\mathcal P}\)">\(r=(d-1)_{\mathcal P}\)</span> a group integer and <span class="math" data-tex="\(Q&gt;x^{0.9}\)">\(Q&gt;x^{0.9}\)</span> prime, uniquely, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+r\le x^{0.11},\\
+\mathcal W(d-1)=\mathcal W(r),\\
+0\le w(d)\le B_K ,\quad(1.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+r\le x^{0.11},\\
+\mathcal W(d-1)=\mathcal W(r),\\
+0\le w(d)\le B_K ,\quad(1.3)
+\end{gathered}
+\]</span>
+with <span class="math" data-tex="\(B_K\)">\(B_K\)</span> depending only on <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p><em>Proof.</em> Neither <span class="math" data-tex="\(c\)">\(c\)</span> nor <span class="math" data-tex="\(Q\)">\(Q\)</span> has a group prime factor (group primes are odd and smaller than <span class="math" data-tex="\(x^{0.9}\)">\(x^{0.9}\)</span>), so <span class="math" data-tex="\(r=(d-1)_{\mathcal P}\)">\(r=(d-1)_{\mathcal P}\)</span>, the group primes of <span class="math" data-tex="\(d-1\)">\(d-1\)</span> are those of <span class="math" data-tex="\(r\)">\(r\)</span>, and <span class="math" data-tex="\(r\le2x/x^{0.9}\)">\(r\le2x/x^{0.9}\)</span>. Finally <span class="math" data-tex="\(\omega_i(h)2^{1-\omega_i(h)}\le1\)">\(\omega_i(h)2^{1-\omega_i(h)}\le1\)</span>, so <span class="math" data-tex="\(\mathcal W\le\prod_iV_i^{-1}\)">\(\mathcal W\le\prod_iV_i^{-1}\)</span>, which is bounded since <span class="math" data-tex="\(V_i\to\log2\)">\(V_i\to\log2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The total weight is <span class="math" data-tex="\(X_0=\sum_dw(d)\)">\(X_0=\sum_dw(d)\)</span>. The aim of Lessons 18–19 is <span class="math" data-tex="\(\sum_{d\ \text{prime}}w(d)\gg X_0/L\)">\(\sum_{d\ \text{prime}}w(d)\gg X_0/L\)</span>, together with <span class="math" data-tex="\(X_0\gg x/L\)">\(X_0\gg x/L\)</span>; with <span class="math" data-tex="\(w\le B_K\)">\(w\le B_K\)</span> this gives <span class="math" data-tex="\(\gg x/L^2\)">\(\gg x/L^2\)</span> primes.</p>
+<h2 id="2-the-marked-estimate-in-the-progression">2. The marked estimate in the progression</h2>
+<p>For fixed <span class="math" data-tex="\(\gamma&gt;0\)">\(\gamma&gt;0\)</span> and integers <span class="math" data-tex="\(m\)">\(m\)</span>, put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R_\gamma(m)=\mathbf 1\{P^-(m)&gt;x^\gamma\},\\
+\begin{aligned}
+B_\gamma(m)&amp;=\frac{D_\gamma(\log m/L)}{L\,V(W)}\\
+&amp;\quad \,\mathbf 1\{P^-(m)&gt;W\},
+\end{aligned}\quad(2.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+R_\gamma(m)=\mathbf 1\{P^-(m)&gt;x^\gamma\},\\
+\begin{aligned}
+B_\gamma(m)&amp;=\frac{D_\gamma(\log m/L)}{L\,V(W)}\\
+&amp;\quad \,\mathbf 1\{P^-(m)&gt;W\},
+\end{aligned}\quad(2.1)
+\end{gathered}
+\]</span>
+with the densities <span class="math" data-tex="\(D_\gamma\)">\(D_\gamma\)</span> of Lesson 16.</p>
+<p><strong>Lemma 2.1</strong> (Type II in the progression [OpenAI-029, Lemma 12.1]). Fix <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> and <span class="math" data-tex="\(0&lt;\gamma&lt;s_-&lt;s_+&lt;1\)">\(0&lt;\gamma&lt;s_-&lt;s_+&lt;1\)</span>. Let <span class="math" data-tex="\(H_m,H_n\ge x^\delta\)">\(H_m,H_n\ge x^\delta\)</span> with <span class="math" data-tex="\(H_mH_n\asymp x\)">\(H_mH_n\asymp x\)</span>, let <span class="math" data-tex="\(I\subseteq[H_m,2H_m]\)">\(I\subseteq[H_m,2H_m]\)</span> be an interval with <span class="math" data-tex="\([\log H_m/L,\log(2H_m)/L]\subseteq[s_-,s_+]\)">\([\log H_m/L,\log(2H_m)/L]\subseteq[s_-,s_+]\)</span>, and let <span class="math" data-tex="\(|b_n|\le1\)">\(|b_n|\le1\)</span> be supported on <span class="math" data-tex="\(W\)">\(W\)</span>-rough integers in <span class="math" data-tex="\([H_n,2H_n]\)">\([H_n,2H_n]\)</span>. There is <span class="math" data-tex="\(K_0\)">\(K_0\)</span>, independent of the <span class="math" data-tex="\(a_i\)">\(a_i\)</span>, such that for <span class="math" data-tex="\(K\ge K_0\)">\(K\ge K_0\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl|\sum_{m\in I,\,n}\bigl(R_\gamma(m)-B_\gamma(m)\bigr)\,b_n\,w(mn)\Bigr|\\
+&amp;\quad \le C\,x\,L^{-6},\quad(2.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl|\sum_{m\in I,\,n}\bigl(R_\gamma(m)-B_\gamma(m)\bigr)\,b_n\,w(mn)\Bigr|\\
+&amp;\quad \le C\,x\,L^{-6},\quad(2.2)
+\end{aligned}
+\]</span>
+uniformly in the dyads, the interval and the coefficients.</p>
+<p><em>Proof.</em> Since <span class="math" data-tex="\((u,M)=1\)">\((u,M)=1\)</span>, orthogonality of the characters <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> modulo <span class="math" data-tex="\(M\)">\(M\)</span> gives <span class="math" data-tex="\(\mathbf 1\{mn\equiv u\ (M)\}\)">\(\mathbf 1\{mn\equiv u\ (M)\}\)</span><span class="math" data-tex="\(=\varphi(M)^{-1}\sum_\lambda\overline{\lambda(u)}\lambda(m)\lambda(n)\)">\(=\varphi(M)^{-1}\sum_\lambda\overline{\lambda(u)}\lambda(m)\lambda(n)\)</span>. Let <span class="math" data-tex="\(\widehat\psi(v)=\frac1{2\pi}\int_{\mathbb R}\Psi(e^s)e^{-ivs}\,ds\)">\(\widehat\psi(v)=\frac1{2\pi}\int_{\mathbb R}\Psi(e^s)e^{-ivs}\,ds\)</span>, a Schwartz function; Fourier inversion in <span class="math" data-tex="\(\log y\)">\(\log y\)</span> gives <span class="math" data-tex="\(\Psi(mn/x)=\int_{\mathbb R}\widehat\psi(v)x^{-iv}m^{iv}n^{iv}\,dv\)">\(\Psi(mn/x)=\int_{\mathbb R}\widehat\psi(v)x^{-iv}m^{iv}n^{iv}\,dv\)</span>. For <span class="math" data-tex="\(|v|\le L\)">\(|v|\le L\)</span> and each <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, apply N6 of Lesson 17 to the group-invariant <span class="math" data-tex="\(F\)">\(F\)</span> of (1.2), with <span class="math" data-tex="\(C=2\)">\(C=2\)</span>, <span class="math" data-tex="\(D_*=6\)">\(D_*=6\)</span>, <span class="math" data-tex="\(\alpha_m=\mathbf 1_I(m)m^{iv}\lambda(m)(R_\gamma(m)-B_\gamma(m))\)">\(\alpha_m=\mathbf 1_I(m)m^{iv}\lambda(m)(R_\gamma(m)-B_\gamma(m))\)</span> and <span class="math" data-tex="\(\beta_n=b_n\lambda(n)n^{iv}\)">\(\beta_n=b_n\lambda(n)n^{iv}\)</span>. The proof of Proposition 5.1 of Lesson 17 shows that <span class="math" data-tex="\(\mathbf 1_I(m)m^{iv}(R_\gamma(m)-B_\gamma(m))\)">\(\mathbf 1_I(m)m^{iv}(R_\gamma(m)-B_\gamma(m))\)</span> satisfies (2.2) of Lesson 17; multiplying by <span class="math" data-tex="\(\lambda(m)\)">\(\lambda(m)\)</span> keeps this property, because <span class="math" data-tex="\(\lambda\chi\)">\(\lambda\chi\)</span> is a character of modulus at most <span class="math" data-tex="\(ML^{A_0}\le L^{A_0+1}\)">\(ML^{A_0}\le L^{A_0+1}\)</span>. Both sequences are supported on <span class="math" data-tex="\(W\)">\(W\)</span>-rough integers and bounded by <span class="math" data-tex="\(L^2\)">\(L^2\)</span>, since <span class="math" data-tex="\(x^\gamma&gt;W\)">\(x^\gamma&gt;W\)</span>, <span class="math" data-tex="\(D_\gamma\)">\(D_\gamma\)</span> is bounded on <span class="math" data-tex="\([s_-,s_+]\)">\([s_-,s_+]\)</span> and <span class="math" data-tex="\(LV(W)\asymp L^{0.76}\)">\(LV(W)\asymp L^{0.76}\)</span>. For <span class="math" data-tex="\(|v|&gt;L\)">\(|v|&gt;L\)</span>, <span class="math" data-tex="\(\int_{|v|&gt;L}|\widehat\psi|\le C_AL^{-A}\)">\(\int_{|v|&gt;L}|\widehat\psi|\le C_AL^{-A}\)</span>, while the bilinear sum is <span class="math" data-tex="\(O(x)\)">\(O(x)\)</span> by (1.3). Integrating over <span class="math" data-tex="\(v\)">\(v\)</span> and summing the <span class="math" data-tex="\(\varphi(M)\)">\(\varphi(M)\)</span> characters gives (2.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-the-harmonic-mass">3. The harmonic mass</h2>
+<p>For group integers <span class="math" data-tex="\(r\)">\(r\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+J_0=\sum_r\frac{\mathcal W(r)}r,\\
+A_r=\sum_{\substack{Q&gt;x^{0.9}\ \text{prime}\\ crQ+1\equiv u\ (M)}}\Psi\Bigl(\frac{crQ+1}x\Bigr),\\
+X_0=\sum_r\mathcal W(r)A_r .\quad(3.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+J_0=\sum_r\frac{\mathcal W(r)}r,\\
+A_r=\sum_{\substack{Q&gt;x^{0.9}\ \text{prime}\\ crQ+1\equiv u\ (M)}}\Psi\Bigl(\frac{crQ+1}x\Bigr),\\
+X_0=\sum_r\mathcal W(r)A_r .\quad(3.1)
+\end{gathered}
+\]</span></p>
+<p><strong>Lemma 3.1</strong> (harmonic mass [OpenAI-029, Lemma 12.2]). With <span class="math" data-tex="\(E_i(t)=\prod_{p\in\mathcal P_i}\bigl(1+\frac t{p-1}\bigr)\)">\(E_i(t)=\prod_{p\in\mathcal P_i}\bigl(1+\frac t{p-1}\bigr)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+J_0&amp;=\prod_{i=1}^K\frac{E_i&#x27;(1/2)}{V_i}\\
+&amp;=\prod_{i=1}^K\Bigl\{\frac{E_i(1/2)}{V_i}\sum_{p\in\mathcal P_i}\frac1{p-\frac12}\Bigr\}.\quad(3.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+J_0&amp;=\prod_{i=1}^K\frac{E_i&#x27;(1/2)}{V_i}\\
+&amp;=\prod_{i=1}^K\Bigl\{\frac{E_i(1/2)}{V_i}\sum_{p\in\mathcal P_i}\frac1{p-\frac12}\Bigr\}.\quad(3.2)
+\end{aligned}
+\]</span>
+Moreover, for every fixed <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+1\le J_0\le C_K,\\
+\begin{aligned}
+&amp;\sum_{r&gt;x^\epsilon}\frac{\mathcal W(r)}r\\
+&amp;\quad \le C_K\exp\bigl(-\epsilon L^{1-a_K}\bigr),
+\end{aligned}\quad(3.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+1\le J_0\le C_K,\\
+\begin{aligned}
+&amp;\sum_{r&gt;x^\epsilon}\frac{\mathcal W(r)}r\\
+&amp;\quad \le C_K\exp\bigl(-\epsilon L^{1-a_K}\bigr),
+\end{aligned}\quad(3.3)
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(A_r\le Cx/r\)">\(A_r\le Cx/r\)</span>; so the part of <span class="math" data-tex="\(X_0\)">\(X_0\)</span> with <span class="math" data-tex="\(r&gt;x^\epsilon\)">\(r&gt;x^\epsilon\)</span> is <span class="math" data-tex="\(O_K(x\exp(-\epsilon L^{1-a_K}))\)">\(O_K(x\exp(-\epsilon L^{1-a_K}))\)</span>.</p>
+<p><em>Proof.</em> Summing <span class="math" data-tex="\(p^{-j}\)">\(p^{-j}\)</span> over <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span> gives <span class="math" data-tex="\(1/(p-1)\)">\(1/(p-1)\)</span>, so <span class="math" data-tex="\(E_i(t)=\sum t^{\omega(r_i)}/r_i\)">\(E_i(t)=\sum t^{\omega(r_i)}/r_i\)</span> over the integers <span class="math" data-tex="\(r_i\)">\(r_i\)</span> supported on <span class="math" data-tex="\(\mathcal P_i\)">\(\mathcal P_i\)</span>, and <span class="math" data-tex="\(E_i&#x27;(t)=\sum\omega(r_i)t^{\omega(r_i)-1}/r_i\)">\(E_i&#x27;(t)=\sum\omega(r_i)t^{\omega(r_i)-1}/r_i\)</span>. With <span class="math" data-tex="\(q=\frac12\)">\(q=\frac12\)</span>, <span class="math" data-tex="\(\mathcal W(r)=\prod_i\omega_i(r)2^{1-\omega_i(r)}/V_i\)">\(\mathcal W(r)=\prod_i\omega_i(r)2^{1-\omega_i(r)}/V_i\)</span>, and a group integer factors uniquely as <span class="math" data-tex="\(\prod_ir_i\)">\(\prod_ir_i\)</span>; this gives the first expression in (3.2), and logarithmic differentiation of <span class="math" data-tex="\(E_i\)">\(E_i\)</span> gives the second. The integers with one prime, to the first power, from each group contribute <span class="math" data-tex="\(\prod_i(V_i^{-1}\sum_{p\in\mathcal P_i}p^{-1})=1\)">\(\prod_i(V_i^{-1}\sum_{p\in\mathcal P_i}p^{-1})=1\)</span>, and all terms are nonnegative, so <span class="math" data-tex="\(J_0\ge1\)">\(J_0\ge1\)</span>. Put <span class="math" data-tex="\(s=L^{-a_K}\)">\(s=L^{-a_K}\)</span>. A group prime has <span class="math" data-tex="\(p\le\exp(2L^{a_K})\)">\(p\le\exp(2L^{a_K})\)</span>, so <span class="math" data-tex="\(p^s\le e^2\)">\(p^s\le e^2\)</span> and <span class="math" data-tex="\(\sum_{j\ge1}p^{-j(1-s)}\le2e^2/p\)">\(\sum_{j\ge1}p^{-j(1-s)}\le2e^2/p\)</span> for large <span class="math" data-tex="\(x\)">\(x\)</span>. Bounding <span class="math" data-tex="\(\mathcal W\)">\(\mathcal W\)</span> by <span class="math" data-tex="\(B_K\)">\(B_K\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\sum_r\frac{\mathcal W(r)}{r^{1-s}}&amp;\le B_K\prod_{p\ \text{group}}\Bigl(1+\frac{2e^2}p\Bigr)\\
+&amp;\le B_K\exp\Bigl(2e^2\sum_iV_i\Bigr)\\
+&amp;\le C_K ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\sum_r\frac{\mathcal W(r)}{r^{1-s}}&amp;\le B_K\prod_{p\ \text{group}}\Bigl(1+\frac{2e^2}p\Bigr)\\
+&amp;\le B_K\exp\Bigl(2e^2\sum_iV_i\Bigr)\\
+&amp;\le C_K ,
+\end{aligned}
+\]</span>
+which bounds <span class="math" data-tex="\(J_0\)">\(J_0\)</span>, and on <span class="math" data-tex="\(r&gt;x^\epsilon\)">\(r&gt;x^\epsilon\)</span> the factor <span class="math" data-tex="\(r^{-s}\le x^{-\epsilon s}=\exp(-\epsilon L^{1-a_K})\)">\(r^{-s}\le x^{-\epsilon s}=\exp(-\epsilon L^{1-a_K})\)</span> gives the tail. Finally <span class="math" data-tex="\(A_r\)">\(A_r\)</span> counts at most <span class="math" data-tex="\(x/(cr)+1\)">\(x/(cr)+1\)</span> values of <span class="math" data-tex="\(Q\)">\(Q\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-distribution-of-the-family">4. Distribution of the family</h2>
+<p>Fix parameters
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+0&lt;\kappa&lt;0.01,\quad 0&lt;\epsilon&lt;\kappa,\\
+0&lt;b&lt;0.01,\quad D=x^{1/2-\kappa/2},\quad(4.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+0&lt;\kappa&lt;0.01,\quad 0&lt;\epsilon&lt;\kappa,\\
+0&lt;b&lt;0.01,\quad D=x^{1/2-\kappa/2},\quad(4.1)
+\end{gathered}
+\]</span>
+and put <span class="math" data-tex="\(N=M/c\)">\(N=M/c\)</span>. For an odd squarefree <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, let <span class="math" data-tex="\(A_r(\ell)\)">\(A_r(\ell)\)</span> be <span class="math" data-tex="\(A_r\)">\(A_r\)</span> restricted to <span class="math" data-tex="\(\ell\mid crQ+1\)">\(\ell\mid crQ+1\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g_r(\ell)=\frac{\mathbf 1\{(\ell,Mr)=1\}}{\varphi(\ell)},\\
+E_r(\ell)=A_r(\ell)-g_r(\ell)A_r ,\quad(4.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+g_r(\ell)=\frac{\mathbf 1\{(\ell,Mr)=1\}}{\varphi(\ell)},\\
+E_r(\ell)=A_r(\ell)-g_r(\ell)A_r ,\quad(4.2)
+\end{gathered}
+\]</span>
+so <span class="math" data-tex="\(g_r(1)=1\)">\(g_r(1)=1\)</span>, <span class="math" data-tex="\(E_r(1)=0\)">\(E_r(1)=0\)</span>.</p>
+<p><strong>Lemma 4.1</strong> (distribution [OpenAI-029, Lemma 12.3]). For every fixed <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{r\le x^\epsilon}\mathcal W(r)\sum_{\substack{\ell\le D\\ \ell\ \text{odd squarefree}}}|E_r(\ell)|\\
+&amp;\quad\le C_A\,x\,J_0\,L^{-A}.\quad(4.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{r\le x^\epsilon}\mathcal W(r)\sum_{\substack{\ell\le D\\ \ell\ \text{odd squarefree}}}|E_r(\ell)|\\
+&amp;\quad\le C_A\,x\,J_0\,L^{-A}.\quad(4.3)
+\end{aligned}
+\]</span>
+Moreover
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+X_0\sim\frac{x\,J_0\,A_\Psi}{c\,\varphi(N)\,L}\\
+(x\to\infty),\quad(4.4)
+\end{gathered}
+\]">\[
+\begin{gathered}
+X_0\sim\frac{x\,J_0\,A_\Psi}{c\,\varphi(N)\,L}\\
+(x\to\infty),\quad(4.4)
+\end{gathered}
+\]</span>
+and in particular <span class="math" data-tex="\(X_0\asymp xJ_0/L\)">\(X_0\asymp xJ_0/L\)</span>, with constants depending only on <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(\Psi\)">\(\Psi\)</span>.</p>
+<p><em>Proof.</em> <em>Classes.</em> For <span class="math" data-tex="\(r\le x^\epsilon\)">\(r\le x^\epsilon\)</span>, <span class="math" data-tex="\(d=crQ+1\in(x,2x)\)">\(d=crQ+1\in(x,2x)\)</span> forces <span class="math" data-tex="\(Q\ge x^{1-\epsilon}/4&gt;x^{0.9}\)">\(Q\ge x^{1-\epsilon}/4&gt;x^{0.9}\)</span>. The condition <span class="math" data-tex="\(d\equiv u\pmod M\)">\(d\equiv u\pmod M\)</span> is <span class="math" data-tex="\(rQ\equiv\frac{u-1}c\pmod N\)">\(rQ\equiv\frac{u-1}c\pmod N\)</span>; since <span class="math" data-tex="\(r\)">\(r\)</span> is prime to <span class="math" data-tex="\(M\)">\(M\)</span> and <span class="math" data-tex="\(\frac{u-1}c\)">\(\frac{u-1}c\)</span> is prime to <span class="math" data-tex="\(N\)">\(N\)</span> by (1.1), it is one reduced class of <span class="math" data-tex="\(Q\)">\(Q\)</span> modulo <span class="math" data-tex="\(N\)">\(N\)</span>. If an odd prime of <span class="math" data-tex="\(\ell\)">\(\ell\)</span> divides <span class="math" data-tex="\(r\)">\(r\)</span>, it cannot divide <span class="math" data-tex="\(crQ+1\)">\(crQ+1\)</span>; if it divides <span class="math" data-tex="\(M\)">\(M\)</span>, it cannot divide <span class="math" data-tex="\(d\equiv u\)">\(d\equiv u\)</span>, as <span class="math" data-tex="\((u,M)=1\)">\((u,M)=1\)</span>; so <span class="math" data-tex="\(A_r(\ell)=g_r(\ell)=0\)">\(A_r(\ell)=g_r(\ell)=0\)</span> when <span class="math" data-tex="\((\ell,Mr)&gt;1\)">\((\ell,Mr)&gt;1\)</span>. Otherwise <span class="math" data-tex="\(\ell\mid crQ+1\)">\(\ell\mid crQ+1\)</span> is the reduced class <span class="math" data-tex="\(Q\equiv-(cr)^{-1}\pmod\ell\)">\(Q\equiv-(cr)^{-1}\pmod\ell\)</span>, and the two conditions form one reduced class modulo <span class="math" data-tex="\(N\ell\)">\(N\ell\)</span>.</p>
+<p><em>Bombieri–Vinogradov.</em> With
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;E_\pi(Y,k)=\max_{2\le y\le Y}\ \max_{(v,k)=1}\\
+&amp;\qquad\Bigl|\pi(y;k,v)-\frac{\operatorname{li}(y)}{\varphi(k)}\Bigr| ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;E_\pi(Y,k)=\max_{2\le y\le Y}\ \max_{(v,k)=1}\\
+&amp;\qquad\Bigl|\pi(y;k,v)-\frac{\operatorname{li}(y)}{\varphi(k)}\Bigr| ,
+\end{aligned}
+\]</span>
+Corollary 4.1 of <a href="../NT-DIRL/NT-DIRL-15.html"><em>The Bombieri–Vinogradov theorem</em></a>, (4.2), gives for fixed <span class="math" data-tex="\(A&#x27;,\eta&gt;0\)">\(A&#x27;,\eta&gt;0\)</span> and large <span class="math" data-tex="\(Y\)">\(Y\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{k&lt;Y^{1/2-\eta}}E_\pi(Y,k)\\
+&amp;\quad \le C\,Y(\log Y)^{-A&#x27;} ,\quad(4.5)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{k&lt;Y^{1/2-\eta}}E_\pi(Y,k)\\
+&amp;\quad \le C\,Y(\log Y)^{-A&#x27;} ,\quad(4.5)
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(Y^{1/2-\eta}\le\sqrt Y(\log Y)^{-A&#x27;-2}\)">\(Y^{1/2-\eta}\le\sqrt Y(\log Y)^{-A&#x27;-2}\)</span> for large <span class="math" data-tex="\(Y\)">\(Y\)</span>. For <span class="math" data-tex="\(r\le x^\epsilon\)">\(r\le x^\epsilon\)</span> take <span class="math" data-tex="\(Y=2x/(cr)\ge x^{1-\epsilon}/2\)">\(Y=2x/(cr)\ge x^{1-\epsilon}/2\)</span>. The moduli <span class="math" data-tex="\(N\ell\le ND\)">\(N\ell\le ND\)</span> lie below <span class="math" data-tex="\(Y^{1/2-\eta}\)">\(Y^{1/2-\eta}\)</span> for large <span class="math" data-tex="\(x\)">\(x\)</span>, with <span class="math" data-tex="\(\eta=(\kappa-\epsilon)/4\)">\(\eta=(\kappa-\epsilon)/4\)</span>, because
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(1-\epsilon)\Bigl(\frac12-\eta\Bigr)-\Bigl(\frac12-\frac\kappa2\Bigr)\\
+&amp;\quad =\frac{(\kappa-\epsilon)(1+\epsilon)}4&gt;0 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(1-\epsilon)\Bigl(\frac12-\eta\Bigr)-\Bigl(\frac12-\frac\kappa2\Bigr)\\
+&amp;\quad =\frac{(\kappa-\epsilon)(1+\epsilon)}4&gt;0 .
+\end{aligned}
+\]</span>
+Put <span class="math" data-tex="\(I_r=\frac x{cr}\int_1^2\frac{\Psi(y)\,dy}{\log((xy-1)/(cr))}\)">\(I_r=\frac x{cr}\int_1^2\frac{\Psi(y)\,dy}{\log((xy-1)/(cr))}\)</span>; the substitution <span class="math" data-tex="\(t=(xy-1)/(cr)\)">\(t=(xy-1)/(cr)\)</span> turns it into <span class="math" data-tex="\(\int\Psi((crt+1)/x)\,dt/\log t\)">\(\int\Psi((crt+1)/x)\,dt/\log t\)</span>. Write <span class="math" data-tex="\(A_r(\ell)\)">\(A_r(\ell)\)</span> as a Stieltjes integral of <span class="math" data-tex="\(\Psi((crt+1)/x)\)">\(\Psi((crt+1)/x)\)</span> against <span class="math" data-tex="\(\pi(t;N\ell,v)\)">\(\pi(t;N\ell,v)\)</span> and integrate by parts. The main term <span class="math" data-tex="\(\operatorname{li}(t)/\varphi(N\ell)\)">\(\operatorname{li}(t)/\varphi(N\ell)\)</span> returns <span class="math" data-tex="\(I_r/\varphi(N\ell)\)">\(I_r/\varphi(N\ell)\)</span>, and the remainder is at most <span class="math" data-tex="\(E_\pi(Y,N\ell)\int|\Psi&#x27;|\)">\(E_\pi(Y,N\ell)\int|\Psi&#x27;|\)</span>, where <span class="math" data-tex="\(\int|\Psi&#x27;|\)">\(\int|\Psi&#x27;|\)</span> does not depend on <span class="math" data-tex="\(r\)">\(r\)</span>. Distinct <span class="math" data-tex="\(\ell\)">\(\ell\)</span> give distinct moduli <span class="math" data-tex="\(N\ell\)">\(N\ell\)</span>, so (4.5) gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\substack{\ell\le D\\ \ell\ \text{odd squarefree}}}\Bigl|A_r(\ell)-\frac{g_r(\ell)}{\varphi(N)}I_r\Bigr|\\
+&amp;\quad\le C_{A&#x27;}\frac xrL^{-A&#x27;} ,\quad(4.6)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\substack{\ell\le D\\ \ell\ \text{odd squarefree}}}\Bigl|A_r(\ell)-\frac{g_r(\ell)}{\varphi(N)}I_r\Bigr|\\
+&amp;\quad\le C_{A&#x27;}\frac xrL^{-A&#x27;} ,\quad(4.6)
+\end{aligned}
+\]</span>
+since <span class="math" data-tex="\(g_r(\ell)/\varphi(N)=1/\varphi(N\ell)\)">\(g_r(\ell)/\varphi(N)=1/\varphi(N\ell)\)</span> when <span class="math" data-tex="\((\ell,Mr)=1\)">\((\ell,Mr)=1\)</span>, and both terms vanish otherwise. The term <span class="math" data-tex="\(\ell=1\)">\(\ell=1\)</span> gives <span class="math" data-tex="\(A_r=I_r/\varphi(N)+O((x/r)L^{-A&#x27;})\)">\(A_r=I_r/\varphi(N)+O((x/r)L^{-A&#x27;})\)</span>. Replacing <span class="math" data-tex="\(I_r/\varphi(N)\)">\(I_r/\varphi(N)\)</span> by <span class="math" data-tex="\(A_r\)">\(A_r\)</span> in the other terms costs <span class="math" data-tex="\(\sum_{\ell\le D}g_r(\ell)\le\sum_{\ell\le D}1/\varphi(\ell)\le CL\)">\(\sum_{\ell\le D}g_r(\ell)\le\sum_{\ell\le D}1/\varphi(\ell)\le CL\)</span> times this error (expand <span class="math" data-tex="\(n/\varphi(n)=\sum_{d\mid n}\mu^2(d)/\varphi(d)\)">\(n/\varphi(n)=\sum_{d\mid n}\mu^2(d)/\varphi(d)\)</span>). With <span class="math" data-tex="\(A&#x27;=A+1\)">\(A&#x27;=A+1\)</span> and the weights <span class="math" data-tex="\(\mathcal W(r)\)">\(\mathcal W(r)\)</span>, (4.3) follows.</p>
+<p><em>The mass.</em> For <span class="math" data-tex="\(r\le x^\epsilon\)">\(r\le x^\epsilon\)</span> and <span class="math" data-tex="\(y\in(1,2)\)">\(y\in(1,2)\)</span>, <span class="math" data-tex="\(\log((xy-1)/(cr))\asymp L\)">\(\log((xy-1)/(cr))\asymp L\)</span>, so <span class="math" data-tex="\(I_r\asymp x/(rL)\)">\(I_r\asymp x/(rL)\)</span>, and the <span class="math" data-tex="\(\ell=1\)">\(\ell=1\)</span> term and Lemma 3.1 give <span class="math" data-tex="\(X_0\asymp xJ_0/L\)">\(X_0\asymp xJ_0/L\)</span>, the part <span class="math" data-tex="\(r&gt;x^\epsilon\)">\(r&gt;x^\epsilon\)</span> being negligible since <span class="math" data-tex="\(J_0\ge1\)">\(J_0\ge1\)</span>. For (4.4), fix <span class="math" data-tex="\(0&lt;\theta&lt;\epsilon\)">\(0&lt;\theta&lt;\epsilon\)</span>. For <span class="math" data-tex="\(r\le x^\theta\)">\(r\le x^\theta\)</span>, <span class="math" data-tex="\(\log((xy-1)/(cr))=L+O(\theta L+1)\)">\(\log((xy-1)/(cr))=L+O(\theta L+1)\)</span>, so <span class="math" data-tex="\(I_r=\frac{xA_\Psi}{crL}(1+O(\theta)+O(L^{-1}))\)">\(I_r=\frac{xA_\Psi}{crL}(1+O(\theta)+O(L^{-1}))\)</span> with constants independent of <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. Summing the <span class="math" data-tex="\(\ell=1\)">\(\ell=1\)</span> evaluation over <span class="math" data-tex="\(r\le x^\theta\)">\(r\le x^\theta\)</span> with weights, and bounding the parts <span class="math" data-tex="\(r&gt;x^\theta\)">\(r&gt;x^\theta\)</span> of <span class="math" data-tex="\(X_0\)">\(X_0\)</span> and of <span class="math" data-tex="\(J_0\)">\(J_0\)</span> by Lemma 3.1, gives <span class="math" data-tex="\(\frac{c\,\varphi(N)\,L\,X_0}{x\,J_0\,A_\Psi}=1+O(\theta)+o_\theta(1)\)">\(\frac{c\,\varphi(N)\,L\,X_0}{x\,J_0\,A_\Psi}=1+O(\theta)+o_\theta(1)\)</span>. Let <span class="math" data-tex="\(x\to\infty\)">\(x\to\infty\)</span>, then <span class="math" data-tex="\(\theta\to0\)">\(\theta\to0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\((M,c,u)=(8,4,5)\)">\((M,c,u)=(8,4,5)\)</span>, <span class="math" data-tex="\(N=2\)">\(N=2\)</span> and (4.4) reads <span class="math" data-tex="\(X_0\sim xJ_0A_\Psi/(4L)\)">\(X_0\sim xJ_0A_\Psi/(4L)\)</span>.</p>
+<h2 id="5-the-singular-product">5. The singular product</h2>
+<p>Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+V_M(y)=\prod_{\substack{2&lt;p\le y\\ p\nmid M}}\Bigl(1-\frac1{p-1}\Bigr),\\
+\begin{aligned}
+\mathfrak S_M&amp;=2\prod_{p&gt;2}\Bigl(1-\frac1{(p-1)^2}\Bigr)\\
+&amp;\quad\times\prod_{\substack{p\mid M\\ p&gt;2}}\Bigl(1-\frac1{p-1}\Bigr)^{-1}&gt;0 .\quad(5.1)
+\end{aligned}
+\end{gathered}
+\]">\[
+\begin{gathered}
+V_M(y)=\prod_{\substack{2&lt;p\le y\\ p\nmid M}}\Bigl(1-\frac1{p-1}\Bigr),\\
+\begin{aligned}
+\mathfrak S_M&amp;=2\prod_{p&gt;2}\Bigl(1-\frac1{(p-1)^2}\Bigr)\\
+&amp;\quad\times\prod_{\substack{p\mid M\\ p&gt;2}}\Bigl(1-\frac1{p-1}\Bigr)^{-1}&gt;0 .\quad(5.1)
+\end{aligned}
+\end{gathered}
+\]</span></p>
+<p><strong>Lemma 5.1</strong> ([OpenAI-029, (12.10)–(12.11)]). As <span class="math" data-tex="\(y\to\infty\)">\(y\to\infty\)</span>, <span class="math" data-tex="\(V_M(y)\sim\mathfrak S_MV(y)\)">\(V_M(y)\sim\mathfrak S_MV(y)\)</span> and <span class="math" data-tex="\(V(y)\sim e^{-\gamma_E}/\log y\)">\(V(y)\sim e^{-\gamma_E}/\log y\)</span>. For group integers <span class="math" data-tex="\(r\le x^{0.11}\)">\(r\le x^{0.11}\)</span> and all <span class="math" data-tex="\(y\)">\(y\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\sum_{p\mid r}\frac1p\le0.11\,L^{0.9}e^{-L^{0.1}}=o(1),\\
+\begin{aligned}
+&amp;\prod_{2&lt;p\le y}\bigl(1-g_r(p)\bigr)\\
+&amp;\quad =(1+o(1))\,V_M(y),
+\end{aligned}\quad(5.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\sum_{p\mid r}\frac1p\le0.11\,L^{0.9}e^{-L^{0.1}}=o(1),\\
+\begin{aligned}
+&amp;\prod_{2&lt;p\le y}\bigl(1-g_r(p)\bigr)\\
+&amp;\quad =(1+o(1))\,V_M(y),
+\end{aligned}\quad(5.2)
+\end{gathered}
+\]</span>
+uniformly, with an <span class="math" data-tex="\(o(1)\)">\(o(1)\)</span> independent of <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<p><em>Proof.</em> Compare factors with <span class="math" data-tex="\(V(y)\)">\(V(y)\)</span>: the prime <span class="math" data-tex="\(2\)">\(2\)</span> contributes <span class="math" data-tex="\(2\)">\(2\)</span>; an odd <span class="math" data-tex="\(p\nmid M\)">\(p\nmid M\)</span> contributes <span class="math" data-tex="\(\frac{1-1/(p-1)}{1-1/p}=1-\frac1{(p-1)^2}\)">\(\frac{1-1/(p-1)}{1-1/p}=1-\frac1{(p-1)^2}\)</span>; an odd <span class="math" data-tex="\(p\mid M\)">\(p\mid M\)</span> contributes <span class="math" data-tex="\((1-1/p)^{-1}=\bigl(1-\frac1{(p-1)^2}\bigr)\bigl(1-\frac1{p-1}\bigr)^{-1}\)">\((1-1/p)^{-1}=\bigl(1-\frac1{(p-1)^2}\bigr)\bigl(1-\frac1{p-1}\bigr)^{-1}\)</span>. The product of <span class="math" data-tex="\(1-(p-1)^{-2}\)">\(1-(p-1)^{-2}\)</span> converges, which gives <span class="math" data-tex="\(V_M\sim\mathfrak S_MV\)">\(V_M\sim\mathfrak S_MV\)</span>; Mertens' product theorem (Theorem 4.2 of <a href="../NT-ZETA/NT-ZETA-02.html"><em>Counting primes by elementary means</em></a>) gives the second relation. A group integer <span class="math" data-tex="\(r\le x^{0.11}\)">\(r\le x^{0.11}\)</span> has at most <span class="math" data-tex="\(0.11L/L^{0.1}\)">\(0.11L/L^{0.1}\)</span> prime factors, each above <span class="math" data-tex="\(e^{L^{0.1}}\)">\(e^{L^{0.1}}\)</span>; this gives the first part of (5.2), and the product differs from <span class="math" data-tex="\(V_M(y)\)">\(V_M(y)\)</span> by <span class="math" data-tex="\(\prod_{p\mid r,\,p\le y}(1-\frac1{p-1})^{-1}=1+o(1)\)">\(\prod_{p\mid r,\,p\le y}(1-\frac1{p-1})^{-1}=1+o(1)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Show that <span class="math" data-tex="\(j2^{1-j}\le1\)">\(j2^{1-j}\le1\)</span> for every integer <span class="math" data-tex="\(j\ge1\)">\(j\ge1\)</span>, and compute <span class="math" data-tex="\(\mathcal W(r)\)">\(\mathcal W(r)\)</span> for <span class="math" data-tex="\(r=p_1p_2\cdots p_K\)">\(r=p_1p_2\cdots p_K\)</span> with one prime <span class="math" data-tex="\(p_i\)">\(p_i\)</span> from each group.</p>
+<p><strong>6.2.</strong> For <span class="math" data-tex="\((M,c,u)=(8,4,5)\)">\((M,c,u)=(8,4,5)\)</span>, describe the class of <span class="math" data-tex="\(Q\)">\(Q\)</span> modulo <span class="math" data-tex="\(N=2\)">\(N=2\)</span> and check that every odd prime <span class="math" data-tex="\(Q\)">\(Q\)</span> is allowed.</p>
+<p><strong>6.3.</strong> Verify the identity <span class="math" data-tex="\((1-\epsilon)(\frac12-\eta)-(\frac12-\frac\kappa2)=\frac{(\kappa-\epsilon)(1+\epsilon)}4\)">\((1-\epsilon)(\frac12-\eta)-(\frac12-\frac\kappa2)=\frac{(\kappa-\epsilon)(1+\epsilon)}4\)</span> for <span class="math" data-tex="\(\eta=\frac{\kappa-\epsilon}4\)">\(\eta=\frac{\kappa-\epsilon}4\)</span>.</p>
+<p><strong>6.4.</strong> Show that <span class="math" data-tex="\(\sum_{\ell\le D}1/\varphi(\ell)\le C\log D\)">\(\sum_{\ell\le D}1/\varphi(\ell)\le C\log D\)</span> from <span class="math" data-tex="\(\frac n{\varphi(n)}=\sum_{d\mid n}\frac{\mu^2(d)}{\varphi(d)}\)">\(\frac n{\varphi(n)}=\sum_{d\mid n}\frac{\mu^2(d)}{\varphi(d)}\)</span>.</p>
+<p><strong>6.5.</strong> Compute <span class="math" data-tex="\(\mathfrak S_8\)">\(\mathfrak S_8\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> <span class="math" data-tex="\(j2^{1-j}\)">\(j2^{1-j}\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(j=1,2\)">\(j=1,2\)</span> and decreases for <span class="math" data-tex="\(j\ge2\)">\(j\ge2\)</span>. For <span class="math" data-tex="\(r=p_1\cdots p_K\)">\(r=p_1\cdots p_K\)</span>, every <span class="math" data-tex="\(\omega_i(r)=1\)">\(\omega_i(r)=1\)</span> and <span class="math" data-tex="\(\mathcal W(r)=\prod_iV_i^{-1}\)">\(\mathcal W(r)=\prod_iV_i^{-1}\)</span>.</p>
+<p><strong>6.2.</strong> <span class="math" data-tex="\(rQ\equiv\frac{5-1}4=1\pmod2\)">\(rQ\equiv\frac{5-1}4=1\pmod2\)</span>: <span class="math" data-tex="\(Q\)">\(Q\)</span> odd, which every prime <span class="math" data-tex="\(Q&gt;2\)">\(Q&gt;2\)</span> is.</p>
+<p><strong>6.3.</strong> The left side is <span class="math" data-tex="\(\frac\kappa2-\eta-\frac\epsilon2+\epsilon\eta\)">\(\frac\kappa2-\eta-\frac\epsilon2+\epsilon\eta\)</span><span class="math" data-tex="\(=\frac{2\kappa-\kappa+\epsilon-2\epsilon}4+\frac{\epsilon(\kappa-\epsilon)}4\)">\(=\frac{2\kappa-\kappa+\epsilon-2\epsilon}4+\frac{\epsilon(\kappa-\epsilon)}4\)</span><span class="math" data-tex="\(=\frac{(\kappa-\epsilon)(1+\epsilon)}4\)">\(=\frac{(\kappa-\epsilon)(1+\epsilon)}4\)</span>.</p>
+<p><strong>6.4.</strong> <span class="math" data-tex="\(\sum_{\ell\le D}\frac1{\varphi(\ell)}=\sum_{\ell\le D}\frac1\ell\sum_{d\mid\ell}\frac{\mu^2(d)}{\varphi(d)}\)">\(\sum_{\ell\le D}\frac1{\varphi(\ell)}=\sum_{\ell\le D}\frac1\ell\sum_{d\mid\ell}\frac{\mu^2(d)}{\varphi(d)}\)</span><span class="math" data-tex="\(\le\sum_d\frac{\mu^2(d)}{d\,\varphi(d)}\sum_{k\le D}\frac1k\)">\(\le\sum_d\frac{\mu^2(d)}{d\,\varphi(d)}\sum_{k\le D}\frac1k\)</span>, and <span class="math" data-tex="\(\sum_d\mu^2(d)/(d\varphi(d))\)">\(\sum_d\mu^2(d)/(d\varphi(d))\)</span> converges.</p>
+<p><strong>6.5.</strong> <span class="math" data-tex="\(M=8\)">\(M=8\)</span> has no odd prime factor, so <span class="math" data-tex="\(\mathfrak S_8=2\prod_{p&gt;2}(1-(p-1)^{-2})\approx1.3203\)">\(\mathfrak S_8=2\prod_{p&gt;2}(1-(p-1)^{-2})\approx1.3203\)</span>, twice the twin prime constant.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-029] OpenAI, <em>Primitive roots for every admissible integer base</em>, OpenAI Math Release preprint, 4 October 2026, Sections 12.1–12.2. https://github.com/openai/math/tree/main/preprints/Primitive-roots-for-every-admissible-integer-base-October-4-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

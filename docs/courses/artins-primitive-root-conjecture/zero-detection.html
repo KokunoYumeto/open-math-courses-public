@@ -1,0 +1,276 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Zero detection for the frequency characters</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Artin&#x27;s primitive root conjecture)</a><a href="the-euler-product-of-the-probe.html">Previous lesson</a><a href="the-zero-free-strip.html">Next lesson</a><a href="src/zero-detection.md">Editable source</a></nav><main><article><h1 id="zero-detection-for-the-frequency-characters">Zero detection for the frequency characters</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>After the Euler product of <a href="the-euler-product-of-the-probe.html"><em>The Euler product of the probe</em></a>, the frequency <span class="math" data-tex="\(u\)">\(u\)</span> enters the probe through <span class="math" data-tex="\(1/L^S(\xi,\eta\overline{\chi_\bullet(u)})\)">\(1/L^S(\xi,\eta\overline{\chi_\bullet(u)})\)</span>. Lesson 14 moves the <span class="math" data-tex="\(\xi\)">\(\xi\)</span>-contour of every nonprincipal frequency from <span class="math" data-tex="\(\operatorname{Re}\xi&gt;1\)">\(\operatorname{Re}\xi&gt;1\)</span> to <span class="math" data-tex="\(\operatorname{Re}\xi=0.998\)">\(\operatorname{Re}\xi=0.998\)</span>, which is only possible where this reciprocal is under control. This lesson shows that it is under control for all but <span class="math" data-tex="\(O(U^{1/2})\)">\(O(U^{1/2})\)</span> of the frequencies of norm about <span class="math" data-tex="\(U\)">\(U\)</span>. A zero of <span class="math" data-tex="\(L_F(s,\omega_u)\)">\(L_F(s,\omega_u)\)</span> close to <span class="math" data-tex="\(\operatorname{Re}s=1\)">\(\operatorname{Re}s=1\)</span> forces a long Dirichlet polynomial to be large; a large sieve over the frequency characters, ordered by conductor, shows that this happens rarely; and away from the exceptional characters the Borel–Carathéodory theorem and the three circles theorem bound the reciprocal by <span class="math" data-tex="\(U^\epsilon\)">\(U^\epsilon\)</span>.</p>
+<p><strong>Prerequisites.</strong> <a href="s-integers-and-sixth-power-classes.html"><em>S-integers and sixth-power classes</em></a>, Lemma 2.1 and Lemma 4.1; <a href="sextic-reciprocity-and-kummer-characters.html"><em>Sextic reciprocity and Kummer characters</em></a>, Lemmas 3.1, 3.2 and 4.1; <a href="the-quadratic-large-sieve-and-the-reflected-moment.html"><em>The quadratic large sieve and the reflected moment</em></a>, Lemma 3.1; <a href="the-poisson-probe.html"><em>The Poisson probe</em></a>, Lemma 3.1; <a href="../NT-ZETA/NT-ZETA-03.html"><em>The Gamma function and Stirling's formula</em></a>, Corollary 4.1; <a href="../NT-ZETA/NT-ZETA-05.html"><em>Entire functions of order one and the Hadamard product of xi</em></a>, Theorem 2.1; <a href="../NT-ZETA/NT-ZETA-06.html"><em>Growth in the critical strip: convexity and the Lindelöf hypothesis</em></a>, Theorem 2.1; <a href="../NT-ZETA/NT-ZETA-18.html"><em>The Riemann hypothesis implies the Lindelöf hypothesis</em></a>, Theorem 2.1; <a href="../NT-ADL/NT-ADL-09.html"><em>Tate's global theory: continuation and functional equation</em></a>, Theorem 9.2; <a href="../NT-ADL/NT-ADL-10.html"><em>Hecke L-functions and the Dedekind zeta function</em></a>, (1)–(3) and Theorem 10.1.</p>
+<h2 id="1-the-frequency-characters">1. The frequency characters</h2>
+<p>For <span class="math" data-tex="\(u\in\mathcal U\)">\(u\in\mathcal U\)</span> (Lemma 3.2 of Lesson 3) let <span class="math" data-tex="\(\omega_u\)">\(\omega_u\)</span> be the Hecke character <span class="math" data-tex="\(\eta\,\overline{\kappa_u}\)">\(\eta\,\overline{\kappa_u}\)</span>, with <span class="math" data-tex="\(\kappa_u\)">\(\kappa_u\)</span> the Kummer character of Lemma 3.1 of Lesson 3; as an idèle class character of finite order it has a well-defined conductor, and its ideal function, extended by zero on the primes of the conductor, is the primitive character inducing <span class="math" data-tex="\(\eta\overline{\chi_\bullet(u)}\)">\(\eta\overline{\chi_\bullet(u)}\)</span>. Write <span class="math" data-tex="\(L_F(s,\omega)\)">\(L_F(s,\omega)\)</span> for the complete finite <span class="math" data-tex="\(L\)">\(L\)</span>-function of a primitive character, a sum over all nonzero integral ideals of <span class="math" data-tex="\(\mathcal O_F\)">\(\mathcal O_F\)</span>.</p>
+<p><strong>Lemma 1.1</strong> (the family [OpenAI-029, (8.1)]). For <span class="math" data-tex="\(U\ge1\)">\(U\ge1\)</span>:</p>
+<ol>
+<li><span class="math" data-tex="\(\#\{u\in\mathcal U:U\le q_u&lt;2U\}\le C\,U\)">\(\#\{u\in\mathcal U:U\le q_u&lt;2U\}\le C\,U\)</span>, and <span class="math" data-tex="\(\operatorname N\mathfrak f_{\omega_u}\le C\,U\)">\(\operatorname N\mathfrak f_{\omega_u}\le C\,U\)</span> for these <span class="math" data-tex="\(u\)">\(u\)</span>;</li>
+<li>the characters <span class="math" data-tex="\(\omega_u\)">\(\omega_u\)</span>, <span class="math" data-tex="\(u\in\mathcal U\)">\(u\in\mathcal U\)</span>, are pairwise distinct, and at most one of them is principal;</li>
+<li>their local components at the places of <span class="math" data-tex="\(S\)">\(S\)</span> belong to a fixed finite set.</li>
+</ol>
+<p><em>Proof.</em> Part 1 is Lemma 4.1 of Lesson 3. For part 2, <span class="math" data-tex="\(\omega_u=\omega_{u&#x27;}\)">\(\omega_u=\omega_{u&#x27;}\)</span> means <span class="math" data-tex="\(\kappa_u=\kappa_{u&#x27;}\)">\(\kappa_u=\kappa_{u&#x27;}\)</span>, so <span class="math" data-tex="\(u=u&#x27;\)">\(u=u&#x27;\)</span> by Lemma 3.2 of Lesson 3; a principal <span class="math" data-tex="\(\omega_u\)">\(\omega_u\)</span> means <span class="math" data-tex="\(\kappa_u=\eta\)">\(\kappa_u=\eta\)</span>, which by distinctness happens for at most one <span class="math" data-tex="\(u\)">\(u\)</span>. For part 3, the component of <span class="math" data-tex="\(\kappa_u\)">\(\kappa_u\)</span> at <span class="math" data-tex="\(v\in S\)">\(v\in S\)</span> is <span class="math" data-tex="\(y\mapsto(u,y)_{6,v}\)">\(y\mapsto(u,y)_{6,v}\)</span> (Lemma 3.1 of Lesson 3), which depends only on the class of <span class="math" data-tex="\(u\)">\(u\)</span> in the finite group <span class="math" data-tex="\(F_v^\times/F_v^{\times6}\)">\(F_v^\times/F_v^{\times6}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.2</strong> (the divisor bound). Let <span class="math" data-tex="\(\tau_F(\mathfrak n)\)">\(\tau_F(\mathfrak n)\)</span> be the number of integral ideals dividing <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span>. For every <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>, <span class="math" data-tex="\(\tau_F(\mathfrak n)\le C_{F,\epsilon}(\operatorname N\mathfrak n)^\epsilon\)">\(\tau_F(\mathfrak n)\le C_{F,\epsilon}(\operatorname N\mathfrak n)^\epsilon\)</span>.</p>
+<p><em>Proof.</em> <span class="math" data-tex="\(\tau_F(\mathfrak n)(\operatorname N\mathfrak n)^{-\epsilon}=\prod_{\mathfrak p^a\parallel\mathfrak n}(a+1)q_{\mathfrak p}^{-a\epsilon}\)">\(\tau_F(\mathfrak n)(\operatorname N\mathfrak n)^{-\epsilon}=\prod_{\mathfrak p^a\parallel\mathfrak n}(a+1)q_{\mathfrak p}^{-a\epsilon}\)</span>. If <span class="math" data-tex="\(q_{\mathfrak p}\ge2^{1/\epsilon}\)">\(q_{\mathfrak p}\ge2^{1/\epsilon}\)</span>, the factor is at most <span class="math" data-tex="\((a+1)2^{-a}\le1\)">\((a+1)2^{-a}\le1\)</span>. The finitely many primes with <span class="math" data-tex="\(q_{\mathfrak p}&lt;2^{1/\epsilon}\)">\(q_{\mathfrak p}&lt;2^{1/\epsilon}\)</span> give factors at most <span class="math" data-tex="\(\sup_{a\ge0}(a+1)2^{-a\epsilon}&lt;\infty\)">\(\sup_{a\ge0}(a+1)2^{-a\epsilon}&lt;\infty\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-a-large-sieve-for-primitive-characters-of-bounded-conductor">2. A large sieve for primitive characters of bounded conductor</h2>
+<p><strong>Lemma 2.1</strong> (primitive conductor large sieve [OpenAI-029, Lemma 8.1]). Let <span class="math" data-tex="\(C_0&gt;0\)">\(C_0&gt;0\)</span>, let <span class="math" data-tex="\(\mathscr L_S\)">\(\mathscr L_S\)</span> be a finite set of possible local components at <span class="math" data-tex="\(S\)">\(S\)</span>, and let <span class="math" data-tex="\(\mathscr X(U)\)">\(\mathscr X(U)\)</span> be a family of distinct primitive finite-order Hecke characters of <span class="math" data-tex="\(F\)">\(F\)</span> with conductor norms at most <span class="math" data-tex="\(C_0U\)">\(C_0U\)</span> and components at <span class="math" data-tex="\(S\)">\(S\)</span> in <span class="math" data-tex="\(\mathscr L_S\)">\(\mathscr L_S\)</span>. For <span class="math" data-tex="\(N,U\ge2\)">\(N,U\ge2\)</span>, complex numbers <span class="math" data-tex="\(b_{\mathfrak n}\)">\(b_{\mathfrak n}\)</span> and <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\omega\in\mathscr X(U)}\Bigl|\sum_{\operatorname N\mathfrak n\le N}b_{\mathfrak n}\,\omega(\mathfrak n)\Bigr|^2\\
+&amp;\quad \le C_{F,S,C_0,\mathscr L_S,\epsilon}\,(N+U^2)(NU)^\epsilon\\
+&amp;\qquad \sum_{\operatorname N\mathfrak n\le N}|b_{\mathfrak n}|^2 ,\quad(2.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\omega\in\mathscr X(U)}\Bigl|\sum_{\operatorname N\mathfrak n\le N}b_{\mathfrak n}\,\omega(\mathfrak n)\Bigr|^2\\
+&amp;\quad \le C_{F,S,C_0,\mathscr L_S,\epsilon}\,(N+U^2)(NU)^\epsilon\\
+&amp;\qquad \sum_{\operatorname N\mathfrak n\le N}|b_{\mathfrak n}|^2 ,\quad(2.1)
+\end{aligned}
+\]</span>
+the sums running over integral ideals of <span class="math" data-tex="\(\mathcal O_F\)">\(\mathcal O_F\)</span>.</p>
+<p><em>Proof.</em> <em>Reduction to exterior ideals.</em> Write <span class="math" data-tex="\(\mathfrak n=\mathfrak n_S\mathfrak n^S\)">\(\mathfrak n=\mathfrak n_S\mathfrak n^S\)</span> with <span class="math" data-tex="\(\mathfrak n_S\)">\(\mathfrak n_S\)</span> supported on the finite places of <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(\mathfrak n^S\)">\(\mathfrak n^S\)</span> prime to them. There are <span class="math" data-tex="\(O((1+\log N)^{|S|})\)">\(O((1+\log N)^{|S|})\)</span> possible <span class="math" data-tex="\(\mathfrak n_S\)">\(\mathfrak n_S\)</span> of norm at most <span class="math" data-tex="\(N\)">\(N\)</span>, and for characters with the same components at <span class="math" data-tex="\(S\)">\(S\)</span> the value <span class="math" data-tex="\(\omega(\mathfrak n_S)\)">\(\omega(\mathfrak n_S)\)</span> is the same (or zero). Partition <span class="math" data-tex="\(\mathscr X(U)\)">\(\mathscr X(U)\)</span> according to the components at <span class="math" data-tex="\(S\)">\(S\)</span>, apply Cauchy–Schwarz over the <span class="math" data-tex="\(\mathfrak n_S\)">\(\mathfrak n_S\)</span> and over <span class="math" data-tex="\(O(\log N)\)">\(O(\log N)\)</span> dyadic ranges of <span class="math" data-tex="\(\operatorname N\mathfrak n^S\)">\(\operatorname N\mathfrak n^S\)</span>; the losses are powers of <span class="math" data-tex="\(\log N\)">\(\log N\)</span>, absorbed in <span class="math" data-tex="\(N^\epsilon\)">\(N^\epsilon\)</span>. It remains to prove (2.1) for coefficients on exterior ideals of norm in <span class="math" data-tex="\((N_1,2N_1]\)">\((N_1,2N_1]\)</span>, <span class="math" data-tex="\(N_1\le N\)">\(N_1\le N\)</span>, and characters with one fixed set of components at <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p><em>Values through residue characters.</em> Let <span class="math" data-tex="\(\omega\)">\(\omega\)</span> be such a character and <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span> the exterior part of its conductor. For an exterior ideal <span class="math" data-tex="\(\mathfrak n=nR\)">\(\mathfrak n=nR\)</span>, with <span class="math" data-tex="\(n\)">\(n\)</span> its balanced generator (Lemma 4.1 of Lesson 2), evaluate the idèle character at the principal idèle <span class="math" data-tex="\(n\)">\(n\)</span>: its value is <span class="math" data-tex="\(1\)">\(1\)</span>, and the unramified exterior components give <span class="math" data-tex="\(\omega(\mathfrak n)\)">\(\omega(\mathfrak n)\)</span> when <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span> is prime to <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span>. Hence
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\omega(\mathfrak n)=\lambda_S(n)\,\lambda_{\mathfrak q}(n),\\
+\lambda_S(n)=\prod_{v\in S}\omega_v(n)^{-1},\\
+\lambda_{\mathfrak q}(n)=\prod_{v\mid\mathfrak q}\omega_v(n)^{-1},
+\end{gathered}
+\]">\[
+\begin{gathered}
+\omega(\mathfrak n)=\lambda_S(n)\,\lambda_{\mathfrak q}(n),\\
+\lambda_S(n)=\prod_{v\in S}\omega_v(n)^{-1},\\
+\lambda_{\mathfrak q}(n)=\prod_{v\mid\mathfrak q}\omega_v(n)^{-1},
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(\lambda_S\)">\(\lambda_S\)</span> is the same unitary function for the whole slice, and <span class="math" data-tex="\(\lambda_{\mathfrak q}\)">\(\lambda_{\mathfrak q}\)</span> is a primitive character of <span class="math" data-tex="\((R/\mathfrak q)^\times\)">\((R/\mathfrak q)^\times\)</span>, extended by zero; both sides vanish when <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span> meets <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span>. In particular <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is determined by <span class="math" data-tex="\(\lambda_{\mathfrak q}\)">\(\lambda_{\mathfrak q}\)</span>.</p>
+<p><em>Gauss sums.</em> Let <span class="math" data-tex="\(q\)">\(q\)</span> generate <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span>, and for a primitive <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> modulo <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span> put <span class="math" data-tex="\(\tau(\overline\lambda)=\sum_{d\bmod\mathfrak q}\overline{\lambda(d)}\,\mathrm e(d/q)\)">\(\tau(\overline\lambda)=\sum_{d\bmod\mathfrak q}\overline{\lambda(d)}\,\mathrm e(d/q)\)</span>. Then for every <span class="math" data-tex="\(n\in R\)">\(n\in R\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+\lambda(n)\,\tau(\overline\lambda)&amp;=\sum_{d\bmod\mathfrak q}\overline{\lambda(d)}\,\mathrm e(nd/q),
+\end{aligned}\\
+|\tau(\overline\lambda)|^2=q_{\mathfrak q}.\quad(2.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+\lambda(n)\,\tau(\overline\lambda)&amp;=\sum_{d\bmod\mathfrak q}\overline{\lambda(d)}\,\mathrm e(nd/q),
+\end{aligned}\\
+|\tau(\overline\lambda)|^2=q_{\mathfrak q}.\quad(2.2)
+\end{gathered}
+\]</span>
+For a unit <span class="math" data-tex="\(n\)">\(n\)</span> the identity follows from <span class="math" data-tex="\(d\mapsto n^{-1}d\)">\(d\mapsto n^{-1}d\)</span>. If a prime <span class="math" data-tex="\(\mathfrak p\mid\mathfrak q\)">\(\mathfrak p\mid\mathfrak q\)</span> divides <span class="math" data-tex="\(n\)">\(n\)</span>, let <span class="math" data-tex="\(H\)">\(H\)</span> be the group of units congruent to <span class="math" data-tex="\(1\)">\(1\)</span> modulo <span class="math" data-tex="\(\mathfrak q\mathfrak p^{-1}\)">\(\mathfrak q\mathfrak p^{-1}\)</span>; for <span class="math" data-tex="\(h\in H\)">\(h\in H\)</span>, <span class="math" data-tex="\(nd(h-1)\in\mathfrak q\)">\(nd(h-1)\in\mathfrak q\)</span>, so <span class="math" data-tex="\(\mathrm e(ndh/q)=\mathrm e(nd/q)\)">\(\mathrm e(ndh/q)=\mathrm e(nd/q)\)</span>, while <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is nontrivial on <span class="math" data-tex="\(H\)">\(H\)</span> by primitivity, so the right side equals <span class="math" data-tex="\(\overline{\lambda(h)}\)">\(\overline{\lambda(h)}\)</span> times itself for some <span class="math" data-tex="\(\lambda(h)\ne1\)">\(\lambda(h)\ne1\)</span> and vanishes. Finally, <span class="math" data-tex="\((n,d)\mapsto\mathrm e(nd/q)\)">\((n,d)\mapsto\mathrm e(nd/q)\)</span> is a perfect pairing on <span class="math" data-tex="\(R/\mathfrak q\)">\(R/\mathfrak q\)</span> (Lemma 2.1 of Lesson 2), so Parseval gives <span class="math" data-tex="\(\sum_n|\sum_d\overline{\lambda(d)}\mathrm e(nd/q)|^2=q_{\mathfrak q}|(R/\mathfrak q)^\times|\)">\(\sum_n|\sum_d\overline{\lambda(d)}\mathrm e(nd/q)|^2=q_{\mathfrak q}|(R/\mathfrak q)^\times|\)</span>, while by the identity the left side is <span class="math" data-tex="\(|(R/\mathfrak q)^\times|\,|\tau(\overline\lambda)|^2\)">\(|(R/\mathfrak q)^\times|\,|\tau(\overline\lambda)|^2\)</span>.</p>
+<p><em>The sieve.</em> Put <span class="math" data-tex="\(T_{d/q}=\sum_{\mathfrak n}b_{\mathfrak n}\lambda_S(n)\mathrm e(nd/q)\)">\(T_{d/q}=\sum_{\mathfrak n}b_{\mathfrak n}\lambda_S(n)\mathrm e(nd/q)\)</span>. By (2.2), the sum over the characters of exterior conductor <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span> is at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\frac1{q_{\mathfrak q}}\sum_{\lambda\bmod\mathfrak q}\Bigl|\sum_{d}\overline{\lambda(d)}\,T_{d/q}\Bigr|^2\\
+&amp;\quad =\frac{|(R/\mathfrak q)^\times|}{q_{\mathfrak q}}\sum_{d\in(R/\mathfrak q)^\times}|T_{d/q}|^2\\
+&amp;\quad \le\sum_{d\in(R/\mathfrak q)^\times}|T_{d/q}|^2 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\frac1{q_{\mathfrak q}}\sum_{\lambda\bmod\mathfrak q}\Bigl|\sum_{d}\overline{\lambda(d)}\,T_{d/q}\Bigr|^2\\
+&amp;\quad =\frac{|(R/\mathfrak q)^\times|}{q_{\mathfrak q}}\sum_{d\in(R/\mathfrak q)^\times}|T_{d/q}|^2\\
+&amp;\quad \le\sum_{d\in(R/\mathfrak q)^\times}|T_{d/q}|^2 ,
+\end{aligned}
+\]</span>
+by orthogonality of the characters of <span class="math" data-tex="\((R/\mathfrak q)^\times\)">\((R/\mathfrak q)^\times\)</span>. Sum over <span class="math" data-tex="\(q_{\mathfrak q}\le C_0U\)">\(q_{\mathfrak q}\le C_0U\)</span>. The fractions <span class="math" data-tex="\(d/q\)">\(d/q\)</span> are distinct reduced fractions, and the balanced generators of the ideals on the dyad lie in <span class="math" data-tex="\(\ell_{2N_1}K\)">\(\ell_{2N_1}K\)</span> for a fixed compact <span class="math" data-tex="\(K\)">\(K\)</span>. The exchanged form of Lemma 3.1 of Lesson 11, with <span class="math" data-tex="\(V=\max(2,C_0U)\)">\(V=\max(2,C_0U)\)</span>, bounds the total by <span class="math" data-tex="\(C(N+U^2)\sum|b_{\mathfrak n}|^2\)">\(C(N+U^2)\sum|b_{\mathfrak n}|^2\)</span>, since <span class="math" data-tex="\(|\lambda_S|=1\)">\(|\lambda_S|=1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-a-conservative-convexity-bound">3. A conservative convexity bound</h2>
+<p><strong>Lemma 3.1</strong> ([OpenAI-029, (8.3)]). Let <span class="math" data-tex="\(A_F=[F:\mathbb Q]\)">\(A_F=[F:\mathbb Q]\)</span>. For every <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>, every nonprincipal primitive finite-order Hecke character <span class="math" data-tex="\(\omega\)">\(\omega\)</span> of <span class="math" data-tex="\(F\)">\(F\)</span> with <span class="math" data-tex="\(\operatorname N\mathfrak f_\omega\le C_0U\)">\(\operatorname N\mathfrak f_\omega\le C_0U\)</span>, <span class="math" data-tex="\(U\ge1\)">\(U\ge1\)</span>, and all <span class="math" data-tex="\(0\le\sigma\le4\)">\(0\le\sigma\le4\)</span>, <span class="math" data-tex="\(t\in\mathbb R\)">\(t\in\mathbb R\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;|L_F(\sigma+it,\omega)|\\
+&amp;\quad \le C_{F,C_0,\epsilon}\,U^{1/2+\epsilon}(2+|t|)^{A_F}.\quad(3.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;|L_F(\sigma+it,\omega)|\\
+&amp;\quad \le C_{F,C_0,\epsilon}\,U^{1/2+\epsilon}(2+|t|)^{A_F}.\quad(3.1)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(0&lt;\epsilon&#x27;\le\min(\epsilon,\frac14)\)">\(0&lt;\epsilon&#x27;\le\min(\epsilon,\frac14)\)</span>. Characters of finite order are trivial on <span class="math" data-tex="\(\mathbb C^\times\)">\(\mathbb C^\times\)</span>, which is divisible, so in the notation of (2) of <a href="../NT-ADL/NT-ADL-10.html"><em>Hecke L-functions and the Dedekind zeta function</em></a> every infinite component is trivial and <span class="math" data-tex="\(\Gamma_\infty(s,\omega)=\Gamma_{\mathbb C}(s)^{r}\)">\(\Gamma_\infty(s,\omega)=\Gamma_{\mathbb C}(s)^{r}\)</span>, <span class="math" data-tex="\(2r=A_F\)">\(2r=A_F\)</span>. On <span class="math" data-tex="\(\operatorname{Re}s=1+\epsilon&#x27;\)">\(\operatorname{Re}s=1+\epsilon&#x27;\)</span>, the Euler product gives <span class="math" data-tex="\(|L_F|\le\zeta_F(1+\epsilon&#x27;)\)">\(|L_F|\le\zeta_F(1+\epsilon&#x27;)\)</span>. On <span class="math" data-tex="\(\operatorname{Re}s=-\epsilon&#x27;\)">\(\operatorname{Re}s=-\epsilon&#x27;\)</span>, Theorem 10.1 there gives
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+|L_F(s,\omega)|&amp;=Q^{1/2+\epsilon&#x27;}\Bigl|\frac{\Gamma_{\mathbb C}(1-s)}{\Gamma_{\mathbb C}(s)}\Bigr|^r\\
+&amp;\quad\times|L_F(1-s,\overline\omega)|,
+\end{aligned}\\
+Q=|d_F|\operatorname N\mathfrak f_\omega ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+|L_F(s,\omega)|&amp;=Q^{1/2+\epsilon&#x27;}\Bigl|\frac{\Gamma_{\mathbb C}(1-s)}{\Gamma_{\mathbb C}(s)}\Bigr|^r\\
+&amp;\quad\times|L_F(1-s,\overline\omega)|,
+\end{aligned}\\
+Q=|d_F|\operatorname N\mathfrak f_\omega ,
+\end{gathered}
+\]</span>
+and Corollary 4.1 of <a href="../NT-ZETA/NT-ZETA-03.html"><em>The Gamma function and Stirling's formula</em></a> bounds the Gamma quotient by <span class="math" data-tex="\(C(2+|t|)^{1+2\epsilon&#x27;}\)">\(C(2+|t|)^{1+2\epsilon&#x27;}\)</span> (for <span class="math" data-tex="\(|t|\le1\)">\(|t|\le1\)</span> by continuity, as <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> has no pole at <span class="math" data-tex="\(-\epsilon&#x27;+it\)">\(-\epsilon&#x27;+it\)</span>). So <span class="math" data-tex="\(|L_F(-\epsilon&#x27;+it,\omega)|\)">\(|L_F(-\epsilon&#x27;+it,\omega)|\)</span><span class="math" data-tex="\(\le CU^{1/2+\epsilon&#x27;}(2+|t|)^{r(1+2\epsilon&#x27;)}\)">\(\le CU^{1/2+\epsilon&#x27;}(2+|t|)^{r(1+2\epsilon&#x27;)}\)</span>. In the strip, <span class="math" data-tex="\(\omega\)">\(\omega\)</span> is nontrivial on the norm-one idèle classes (a character of finite order is trivial on the positive reals), so by (19) of Theorem 9.2 of <a href="../NT-ADL/NT-ADL-09.html"><em>Tate's global theory</em></a> the completed function is entire and bounded on vertical strips, each of its two terms being an integral over norms at least one that converges uniformly there; with Stirling for <span class="math" data-tex="\(1/\Gamma_{\mathbb C}\)">\(1/\Gamma_{\mathbb C}\)</span>, this gives <span class="math" data-tex="\(|L_F(s,\omega)|\le D\exp(D(1+|t|))\)">\(|L_F(s,\omega)|\le D\exp(D(1+|t|))\)</span> on the strip. Theorem 2.1 of <a href="../NT-ZETA/NT-ZETA-06.html"><em>Growth in the critical strip</em></a>, whose proof bounds the constant by a fixed multiple of the larger boundary constant, gives (3.1) for <span class="math" data-tex="\(-\epsilon&#x27;\le\sigma\le1+\epsilon&#x27;\)">\(-\epsilon&#x27;\le\sigma\le1+\epsilon&#x27;\)</span>, with exponent <span class="math" data-tex="\(r(1+2\epsilon&#x27;)\le A_F\)">\(r(1+2\epsilon&#x27;)\le A_F\)</span>; for <span class="math" data-tex="\(1+\epsilon&#x27;\le\sigma\le4\)">\(1+\epsilon&#x27;\le\sigma\le4\)</span> the Euler product suffices. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The constant in (3.1) is crude but uniform; this is all the argument needs. The same proof gives polynomial bounds in <span class="math" data-tex="\(|t|\)">\(|t|\)</span> on fixed strips for <span class="math" data-tex="\((s-1)\zeta_F(s)\)">\((s-1)\zeta_F(s)\)</span>. Omitting the Euler factors at <span class="math" data-tex="\(S\)">\(S\)</span>, or at the primes dividing <span class="math" data-tex="\(u\)">\(u\)</span>, changes such bounds on a line <span class="math" data-tex="\(\operatorname{Re}s=\sigma_*&gt;0\)">\(\operatorname{Re}s=\sigma_*&gt;0\)</span> by at most <span class="math" data-tex="\(C_\epsilon q_u^\epsilon\)">\(C_\epsilon q_u^\epsilon\)</span>, since <span class="math" data-tex="\(\prod_{\mathfrak p\mid uR}(1\pm q_{\mathfrak p}^{-\sigma_*})^{\pm1}\le C_{\epsilon,\sigma_*}q_u^\epsilon\)">\(\prod_{\mathfrak p\mid uR}(1\pm q_{\mathfrak p}^{-\sigma_*})^{\pm1}\le C_{\epsilon,\sigma_*}q_u^\epsilon\)</span> by the argument of Lemma 1.2.</p>
+<h2 id="4-zero-detection">4. Zero detection</h2>
+<p><strong>Proposition 4.1</strong> (exceptional frequencies [OpenAI-029, Proposition 8.2]). There are <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span> and <span class="math" data-tex="\(U_0\)">\(U_0\)</span>, depending on <span class="math" data-tex="\(F\)">\(F\)</span>, <span class="math" data-tex="\(S\)">\(S\)</span> and <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, with the following property. For every <span class="math" data-tex="\(U\ge U_0\)">\(U\ge U_0\)</span> there is a set <span class="math" data-tex="\(\mathcal E(U)\subseteq\{u\in\mathcal U:U\le q_u&lt;2U\}\)">\(\mathcal E(U)\subseteq\{u\in\mathcal U:U\le q_u&lt;2U\}\)</span> with
+<span class="math math-display" data-tex="\[
+|\mathcal E(U)|\le C\,U^{1/2},
+\]">\[
+|\mathcal E(U)|\le C\,U^{1/2},
+\]</span>
+containing every <span class="math" data-tex="\(u\)">\(u\)</span> for which <span class="math" data-tex="\(\omega_u\)">\(\omega_u\)</span> is principal or <span class="math" data-tex="\(L_F(s,\omega_u)\)">\(L_F(s,\omega_u)\)</span> has a zero with <span class="math" data-tex="\(\operatorname{Re}s\ge0.996\)">\(\operatorname{Re}s\ge0.996\)</span>, <span class="math" data-tex="\(|\operatorname{Im}s|\le4U^\rho\)">\(|\operatorname{Im}s|\le4U^\rho\)</span>. For <span class="math" data-tex="\(u\notin\mathcal E(U)\)">\(u\notin\mathcal E(U)\)</span> and <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\bigl|L^S\bigl(\xi,\eta\overline{\chi_\bullet(u)}\bigr)^{-1}\bigr|\le C_\epsilon\,U^\epsilon\\
+(\operatorname{Re}\xi\ge0.998,\ |\operatorname{Im}\xi|\le2U^\rho).\quad(4.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\bigl|L^S\bigl(\xi,\eta\overline{\chi_\bullet(u)}\bigr)^{-1}\bigr|\le C_\epsilon\,U^\epsilon\\
+(\operatorname{Re}\xi\ge0.998,\ |\operatorname{Im}\xi|\le2U^\rho).\quad(4.1)
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(\sigma_0=0.996\)">\(\sigma_0=0.996\)</span> and fix <span class="math" data-tex="\(0&lt;\rho&lt;\min\{\frac1{10},\frac1{A_F+1}\}\)">\(0&lt;\rho&lt;\min\{\frac1{10},\frac1{A_F+1}\}\)</span>.</p>
+<p><em>The detector.</em> For a nonprincipal <span class="math" data-tex="\(\omega=\omega_u\)">\(\omega=\omega_u\)</span> in the dyad, put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+D_U(s,\omega)&amp;=\sum_{\operatorname N\mathfrak d\le U^2}\mu_F(\mathfrak d)\,\omega(\mathfrak d)\,\operatorname N\mathfrak d^{-s},
+\end{aligned}\\
+\alpha_U(\mathfrak n)=\sum_{\substack{\mathfrak d\mid\mathfrak n\\ \operatorname N\mathfrak d\le U^2}}\mu_F(\mathfrak d),
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+D_U(s,\omega)&amp;=\sum_{\operatorname N\mathfrak d\le U^2}\mu_F(\mathfrak d)\,\omega(\mathfrak d)\,\operatorname N\mathfrak d^{-s},
+\end{aligned}\\
+\alpha_U(\mathfrak n)=\sum_{\substack{\mathfrak d\mid\mathfrak n\\ \operatorname N\mathfrak d\le U^2}}\mu_F(\mathfrak d),
+\end{gathered}
+\]</span>
+with <span class="math" data-tex="\(\mu_F\)">\(\mu_F\)</span> the Möbius function of integral ideals. By complete multiplicativity of <span class="math" data-tex="\(\omega\)">\(\omega\)</span> (with the zero extension), <span class="math" data-tex="\(L_F(s,\omega)D_U(s,\omega)\)">\(L_F(s,\omega)D_U(s,\omega)\)</span><span class="math" data-tex="\(=\sum_{\mathfrak n}\alpha_U(\mathfrak n)\omega(\mathfrak n)\operatorname N\mathfrak n^{-s}\)">\(=\sum_{\mathfrak n}\alpha_U(\mathfrak n)\omega(\mathfrak n)\operatorname N\mathfrak n^{-s}\)</span> for <span class="math" data-tex="\(\operatorname{Re}s&gt;1\)">\(\operatorname{Re}s&gt;1\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\alpha_U(\mathcal O_F)=1,\\
+\alpha_U(\mathfrak n)=0\quad(1&lt;\operatorname N\mathfrak n\le U^2),\\
+|\alpha_U(\mathfrak n)|\le\tau_F(\mathfrak n),\quad(4.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\alpha_U(\mathcal O_F)=1,\\
+\alpha_U(\mathfrak n)=0\quad(1&lt;\operatorname N\mathfrak n\le U^2),\\
+|\alpha_U(\mathfrak n)|\le\tau_F(\mathfrak n),\quad(4.2)
+\end{gathered}
+\]</span>
+the middle statement because all divisors of such <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span> are counted and <span class="math" data-tex="\(\sum_{\mathfrak d\mid\mathfrak n}\mu_F(\mathfrak d)=0\)">\(\sum_{\mathfrak d\mid\mathfrak n}\mu_F(\mathfrak d)=0\)</span> for <span class="math" data-tex="\(\mathfrak n\ne\mathcal O_F\)">\(\mathfrak n\ne\mathcal O_F\)</span>.</p>
+<p>Suppose <span class="math" data-tex="\(L_F(\beta+i\gamma,\omega)=0\)">\(L_F(\beta+i\gamma,\omega)=0\)</span> with <span class="math" data-tex="\(\beta\ge\sigma_0\)">\(\beta\ge\sigma_0\)</span> and <span class="math" data-tex="\(|\gamma|\le4U^\rho\)">\(|\gamma|\le4U^\rho\)</span>; then <span class="math" data-tex="\(\beta\le1\)">\(\beta\le1\)</span> by the Euler product. Mellin inversion of <span class="math" data-tex="\(e^{-x}\)">\(e^{-x}\)</span> gives, with <span class="math" data-tex="\(c&gt;1\)">\(c&gt;1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{\mathfrak n}\alpha_U(\mathfrak n)\omega(\mathfrak n)\operatorname N\mathfrak n^{-\beta-i\gamma}\\
+&amp;\qquad e^{-\operatorname N\mathfrak n/U^{10}}=\frac1{2\pi i}\\
+&amp;\qquad \int_{(c)}L_F(\beta+i\gamma+v,\omega)\\
+&amp;\qquad \,D_U(\beta+i\gamma+v,\omega)\,\Gamma(v)\,U^{10v}\\
+&amp;\qquad \,dv .\quad(4.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{\mathfrak n}\alpha_U(\mathfrak n)\omega(\mathfrak n)\operatorname N\mathfrak n^{-\beta-i\gamma}\\
+&amp;\qquad e^{-\operatorname N\mathfrak n/U^{10}}=\frac1{2\pi i}\\
+&amp;\qquad \int_{(c)}L_F(\beta+i\gamma+v,\omega)\\
+&amp;\qquad \,D_U(\beta+i\gamma+v,\omega)\,\Gamma(v)\,U^{10v}\\
+&amp;\qquad \,dv .\quad(4.3)
+\end{aligned}
+\]</span>
+Move the line to <span class="math" data-tex="\(\operatorname{Re}v=\frac12-\beta\in[-\frac12,-0.496]\)">\(\operatorname{Re}v=\frac12-\beta\in[-\frac12,-0.496]\)</span>. The only pole crossed is <span class="math" data-tex="\(v=0\)">\(v=0\)</span>, with residue <span class="math" data-tex="\(L_F(\beta+i\gamma,\omega)D_U(\beta+i\gamma,\omega)=0\)">\(L_F(\beta+i\gamma,\omega)D_U(\beta+i\gamma,\omega)=0\)</span>; <span class="math" data-tex="\(L_F(\cdot,\omega)\)">\(L_F(\cdot,\omega)\)</span> is entire, and the exponential decay of <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> against the polynomial bound (3.1) removes the horizontal sides. On the new line, <span class="math" data-tex="\(|D_U|\le\sum_{\operatorname N\mathfrak d\le U^2}\operatorname N\mathfrak d^{-1/2}\le CU\)">\(|D_U|\le\sum_{\operatorname N\mathfrak d\le U^2}\operatorname N\mathfrak d^{-1/2}\le CU\)</span> by Lemma 3.1 of Lesson 10, <span class="math" data-tex="\(|U^{10v}|=U^{10(1/2-\beta)}\le U^{-4.96}\)">\(|U^{10v}|=U^{10(1/2-\beta)}\le U^{-4.96}\)</span>, and (3.1) at real part <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl|\text{right side of (4.3)}\Bigr|\\
+&amp;\quad \le C\,U^{-4.96+1/2+1+\epsilon}(2+4U^\rho)^{A_F}\\
+&amp;\quad \le C\,U^{-3.46+A_F\rho+\epsilon}=o(1),\quad(4.4)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl|\text{right side of (4.3)}\Bigr|\\
+&amp;\quad \le C\,U^{-4.96+1/2+1+\epsilon}(2+4U^\rho)^{A_F}\\
+&amp;\quad \le C\,U^{-3.46+A_F\rho+\epsilon}=o(1),\quad(4.4)
+\end{aligned}
+\]</span>
+since <span class="math" data-tex="\(A_F\rho&lt;1\)">\(A_F\rho&lt;1\)</span>.</p>
+<p>On the left of (4.3), the ideal <span class="math" data-tex="\(\mathcal O_F\)">\(\mathcal O_F\)</span> contributes <span class="math" data-tex="\(e^{-U^{-10}}=1+o(1)\)">\(e^{-U^{-10}}=1+o(1)\)</span>, the ideals with <span class="math" data-tex="\(1&lt;\operatorname N\mathfrak n\le U^2\)">\(1&lt;\operatorname N\mathfrak n\le U^2\)</span> contribute nothing, and those with <span class="math" data-tex="\(\operatorname N\mathfrak n&gt;U^{11}\)">\(\operatorname N\mathfrak n&gt;U^{11}\)</span> contribute at most a fixed power of <span class="math" data-tex="\(U\)">\(U\)</span> times <span class="math" data-tex="\(e^{-U/2}\)">\(e^{-U/2}\)</span>, by Lemma 1.2 and the ideal count. So the sum over <span class="math" data-tex="\(U^2&lt;\operatorname N\mathfrak n\le U^{11}\)">\(U^2&lt;\operatorname N\mathfrak n\le U^{11}\)</span> has absolute value at least <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span> for large <span class="math" data-tex="\(U\)">\(U\)</span>. Split this range into <span class="math" data-tex="\(O(\log U)\)">\(O(\log U)\)</span> dyads <span class="math" data-tex="\((N,2N]\)">\((N,2N]\)</span>. On each dyad write the weight as <span class="math" data-tex="\(\operatorname N\mathfrak n^{-\sigma_0}\)">\(\operatorname N\mathfrak n^{-\sigma_0}\)</span> times <span class="math" data-tex="\(w(\operatorname N\mathfrak n)\)">\(w(\operatorname N\mathfrak n)\)</span>, <span class="math" data-tex="\(w(t)=t^{\sigma_0-\beta}e^{-t/U^{10}}\)">\(w(t)=t^{\sigma_0-\beta}e^{-t/U^{10}}\)</span>, which is positive, decreasing and at most <span class="math" data-tex="\(1\)">\(1\)</span>. Order the ideals of the dyad by norm; by summation by parts, the weighted sum is at most twice the largest initial segment (a <strong>prefix</strong>) of the unweighted sums. Hence for some dyad <span class="math" data-tex="\(U^2/2&lt;N\le U^{11}\)">\(U^2/2&lt;N\le U^{11}\)</span> and some prefix,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl|\sum_{\mathfrak n\in\text{prefix}}\alpha_U(\mathfrak n)\,\omega(\mathfrak n)\operatorname N\mathfrak n^{-\sigma_0-i\gamma}\Bigr|\\
+&amp;\quad \ge\frac c{\log U}.\quad(4.5)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl|\sum_{\mathfrak n\in\text{prefix}}\alpha_U(\mathfrak n)\,\omega(\mathfrak n)\operatorname N\mathfrak n^{-\sigma_0-i\gamma}\Bigr|\\
+&amp;\quad \ge\frac c{\log U}.\quad(4.5)
+\end{aligned}
+\]</span></p>
+<p><em>Counting.</em> A prefix of a dyad is a disjoint union of at most <span class="math" data-tex="\(1+\log_2M\)">\(1+\log_2M\)</span> dyadic blocks of consecutive indices, <span class="math" data-tex="\(M\)">\(M\)</span> being the number of ideals in the dyad, one block from each level of the binary subdivision; by Cauchy–Schwarz its square is at most <span class="math" data-tex="\((1+\log_2M)\)">\((1+\log_2M)\)</span> times the sum of the squares over all blocks of all levels. For one block <span class="math" data-tex="\(I\)">\(I\)</span>, let <span class="math" data-tex="\(P_I(t)=\sum_{\mathfrak n\in I}\alpha_U(\mathfrak n)\omega(\mathfrak n)\operatorname N\mathfrak n^{-\sigma_0-it}\)">\(P_I(t)=\sum_{\mathfrak n\in I}\alpha_U(\mathfrak n)\omega(\mathfrak n)\operatorname N\mathfrak n^{-\sigma_0-it}\)</span>. For a smooth function on an interval of length three, the supremum of its square on the middle unit interval is at most a constant times the integral of <span class="math" data-tex="\(|P_I|^2+|P_I&#x27;|^2\)">\(|P_I|^2+|P_I&#x27;|^2\)</span> over the interval, and <span class="math" data-tex="\(P_I&#x27;\)">\(P_I&#x27;\)</span> has the coefficients multiplied by <span class="math" data-tex="\(-i\log\operatorname N\mathfrak n\)">\(-i\log\operatorname N\mathfrak n\)</span>. Apply Lemma 2.1, with Lemma 1.1, at each <span class="math" data-tex="\(t\)">\(t\)</span>, integrate over <span class="math" data-tex="\(|t|\le4U^\rho+2\)">\(|t|\le4U^\rho+2\)</span>, and sum over blocks and levels. The squared coefficient mass on a dyad is
+<span class="math math-display" data-tex="\[
+\sum_{N&lt;\operatorname N\mathfrak n\le2N}\tau_F(\mathfrak n)^2\operatorname N\mathfrak n^{-2\sigma_0}\le C_\epsilon N^{1-2\sigma_0+\epsilon},
+\]">\[
+\sum_{N&lt;\operatorname N\mathfrak n\le2N}\tau_F(\mathfrak n)^2\operatorname N\mathfrak n^{-2\sigma_0}\le C_\epsilon N^{1-2\sigma_0+\epsilon},
+\]</span>
+and since <span class="math" data-tex="\(U^2/2&lt;N\le U^{11}\)">\(U^2/2&lt;N\le U^{11}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;(N+U^2)\,N^{1-2\sigma_0+\epsilon}\le3N^{2-2\sigma_0+\epsilon}\\
+&amp;\quad \le3\,U^{11(0.008+\epsilon)}\\
+&amp;\quad =3\,U^{0.088+11\epsilon}.\quad(4.6)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;(N+U^2)\,N^{1-2\sigma_0+\epsilon}\le3N^{2-2\sigma_0+\epsilon}\\
+&amp;\quad \le3\,U^{11(0.008+\epsilon)}\\
+&amp;\quad =3\,U^{0.088+11\epsilon}.\quad(4.6)
+\end{aligned}
+\]</span>
+Altogether the sum over the characters of the dyad of the largest squared prefix over <span class="math" data-tex="\(|t|\le4U^\rho\)">\(|t|\le4U^\rho\)</span> is at most <span class="math" data-tex="\(C\,U^{0.088+\rho+O(\epsilon)}(\log U)^{C}\)">\(C\,U^{0.088+\rho+O(\epsilon)}(\log U)^{C}\)</span>. Each character with a zero in the rectangle contributes at least <span class="math" data-tex="\(c(\log U)^{-2}\)">\(c(\log U)^{-2}\)</span> by (4.5), for one of the <span class="math" data-tex="\(O(\log U)\)">\(O(\log U)\)</span> dyads. Hence at most <span class="math" data-tex="\(C\,U^{0.088+\rho+O(\epsilon)}\le U^{1/2}\)">\(C\,U^{0.088+\rho+O(\epsilon)}\le U^{1/2}\)</span> characters have such a zero, for <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> small, because <span class="math" data-tex="\(0.088+\rho&lt;0.19\)">\(0.088+\rho&lt;0.19\)</span>. Let <span class="math" data-tex="\(\mathcal E(U)\)">\(\mathcal E(U)\)</span> consist of the corresponding <span class="math" data-tex="\(u\)">\(u\)</span>, which are distinct by Lemma 1.1, together with the <span class="math" data-tex="\(u\)">\(u\)</span> (at most one) for which <span class="math" data-tex="\(\omega_u\)">\(\omega_u\)</span> is principal.</p>
+<p><em>The reciprocal.</em> Let <span class="math" data-tex="\(T=U^\rho\)">\(T=U^\rho\)</span>, <span class="math" data-tex="\(u\notin\mathcal E(U)\)">\(u\notin\mathcal E(U)\)</span>, <span class="math" data-tex="\(\omega=\omega_u\)">\(\omega=\omega_u\)</span>, and <span class="math" data-tex="\(|t|\le2T\)">\(|t|\le2T\)</span>. Consider the discs centred at <span class="math" data-tex="\(2+it\)">\(2+it\)</span> with radii
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+R_2=1.0035,\\
+r_2=1.003,\\
+r_1=1.002,\\
+r_0=0.999 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+R_2=1.0035,\\
+r_2=1.003,\\
+r_1=1.002,\\
+r_0=0.999 .
+\end{gathered}
+\]</span>
+For large <span class="math" data-tex="\(U\)">\(U\)</span> the disc of radius <span class="math" data-tex="\(R_2\)">\(R_2\)</span> lies in <span class="math" data-tex="\(\operatorname{Re}s&gt;0.996\)">\(\operatorname{Re}s&gt;0.996\)</span>, <span class="math" data-tex="\(|\operatorname{Im}s|&lt;4T\)">\(|\operatorname{Im}s|&lt;4T\)</span>, where <span class="math" data-tex="\(L_F(s,\omega)\)">\(L_F(s,\omega)\)</span> is entire and has no zero; so <span class="math" data-tex="\(\log L_F(s,\omega)\)">\(\log L_F(s,\omega)\)</span> has a branch there, equal at the centre to the logarithm of the Euler product. On the disc, <span class="math" data-tex="\(\operatorname{Re}\log L_F=\log|L_F|\le C\log U\)">\(\operatorname{Re}\log L_F=\log|L_F|\le C\log U\)</span> by (3.1), and <span class="math" data-tex="\(|\log L_F(2+it,\omega)|\le\log\zeta_F(2)\)">\(|\log L_F(2+it,\omega)|\le\log\zeta_F(2)\)</span>. Theorem 2.1 of <a href="../NT-ZETA/NT-ZETA-05.html"><em>Entire functions of order one and the Hadamard product of xi</em></a> (Borel–Carathéodory), applied to <span class="math" data-tex="\(\log L_F(s)-\log L_F(2+it)\)">\(\log L_F(s)-\log L_F(2+it)\)</span>, gives <span class="math" data-tex="\(|\log L_F|\le C\log U\)">\(|\log L_F|\le C\log U\)</span> on the disc of radius <span class="math" data-tex="\(r_2\)">\(r_2\)</span>. On the disc of radius <span class="math" data-tex="\(r_0\)">\(r_0\)</span>, the real parts are at least <span class="math" data-tex="\(1.001\)">\(1.001\)</span> and <span class="math" data-tex="\(|\log L_F|\le\log\zeta_F(1.001)\)">\(|\log L_F|\le\log\zeta_F(1.001)\)</span>. Hadamard's three circles theorem (Theorem 2.1 of <a href="../NT-ZETA/NT-ZETA-18.html"><em>The Riemann hypothesis implies the Lindelöf hypothesis</em></a>) gives, on the circle of radius <span class="math" data-tex="\(r_1\)">\(r_1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+|\log L_F(s,\omega)|\le C(\log U)^\theta,\\
+\theta=\frac{\log(1.002/0.999)}{\log(1.003/0.999)}&lt;1 .
+\end{gathered}
+\]">\[
+\begin{gathered}
+|\log L_F(s,\omega)|\le C(\log U)^\theta,\\
+\theta=\frac{\log(1.002/0.999)}{\log(1.003/0.999)}&lt;1 .
+\end{gathered}
+\]</span>
+These discs reach <span class="math" data-tex="\(\operatorname{Re}s=0.998\)">\(\operatorname{Re}s=0.998\)</span>, and absolute convergence covers <span class="math" data-tex="\(\operatorname{Re}s\ge3\)">\(\operatorname{Re}s\ge3\)</span>. So <span class="math" data-tex="\(|L_F(s,\omega)^{-1}|\le\exp(C(\log U)^\theta)\le C_\epsilon U^\epsilon\)">\(|L_F(s,\omega)^{-1}|\le\exp(C(\log U)^\theta)\le C_\epsilon U^\epsilon\)</span> for <span class="math" data-tex="\(\operatorname{Re}s\ge0.998\)">\(\operatorname{Re}s\ge0.998\)</span>, <span class="math" data-tex="\(|\operatorname{Im}s|\le2T\)">\(|\operatorname{Im}s|\le2T\)</span>. Finally <span class="math" data-tex="\(L^S(\xi,\eta\overline{\chi_\bullet(u)})^{-1}\)">\(L^S(\xi,\eta\overline{\chi_\bullet(u)})^{-1}\)</span> differs from <span class="math" data-tex="\(L_F(\xi,\omega_u)^{-1}\)">\(L_F(\xi,\omega_u)^{-1}\)</span> by the Euler factors at <span class="math" data-tex="\(S\)">\(S\)</span> and at the primes dividing <span class="math" data-tex="\(u\)">\(u\)</span>, which contribute at most <span class="math" data-tex="\(C_\epsilon q_u^\epsilon\le C_\epsilon&#x27;U^\epsilon\)">\(C_\epsilon q_u^\epsilon\le C_\epsilon&#x27;U^\epsilon\)</span> (end of Section 3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The numbers <span class="math" data-tex="\(0.996\)">\(0.996\)</span>, <span class="math" data-tex="\(0.998\)">\(0.998\)</span> and <span class="math" data-tex="\(\frac12\)">\(\frac12\)</span> are absolute; <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, <span class="math" data-tex="\(U_0\)">\(U_0\)</span> and the constants depend on the fixed data. Only <span class="math" data-tex="\(\rho&gt;0\)">\(\rho&gt;0\)</span> matters in Lesson 14.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Show that <span class="math" data-tex="\(\theta=\log(1.002/0.999)/\log(1.003/0.999)\)">\(\theta=\log(1.002/0.999)/\log(1.003/0.999)\)</span> is about <span class="math" data-tex="\(0.750\)">\(0.750\)</span>, and explain why <span class="math" data-tex="\(\theta&lt;1\)">\(\theta&lt;1\)</span> is all that is needed.</p>
+<p><strong>5.2.</strong> Prove that a character of <span class="math" data-tex="\(\mathbb C^\times\)">\(\mathbb C^\times\)</span> of finite order is trivial.</p>
+<p><strong>5.3.</strong> In (4.4), check the exponent: <span class="math" data-tex="\(10(\frac12-0.996)+\frac12+1=-3.46\)">\(10(\frac12-0.996)+\frac12+1=-3.46\)</span>.</p>
+<p><strong>5.4.</strong> In (4.6), check that <span class="math" data-tex="\(11(2-2\cdot0.996)=0.088\)">\(11(2-2\cdot0.996)=0.088\)</span>, and that <span class="math" data-tex="\(0.088+\rho&lt;\frac12\)">\(0.088+\rho&lt;\frac12\)</span> leaves room for every <span class="math" data-tex="\(\rho&lt;\frac1{10}\)">\(\rho&lt;\frac1{10}\)</span>.</p>
+<p><strong>5.5.</strong> Let <span class="math" data-tex="\(f\)">\(f\)</span> be continuously differentiable on <span class="math" data-tex="\([j-1,j+2]\)">\([j-1,j+2]\)</span>. Show that <span class="math" data-tex="\(\sup_{[j,j+1]}|f|^2\)">\(\sup_{[j,j+1]}|f|^2\)</span><span class="math" data-tex="\(\le\frac13\int_{j-1}^{j+2}|f|^2+2\int_{j-1}^{j+2}|f||f&#x27;|\)">\(\le\frac13\int_{j-1}^{j+2}|f|^2+2\int_{j-1}^{j+2}|f||f&#x27;|\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> <span class="math" data-tex="\(\log(1.002/0.999)\approx0.0029985\)">\(\log(1.002/0.999)\approx0.0029985\)</span> and <span class="math" data-tex="\(\log(1.003/0.999)\approx0.0039960\)">\(\log(1.003/0.999)\approx0.0039960\)</span>, so <span class="math" data-tex="\(\theta\approx0.7504\)">\(\theta\approx0.7504\)</span>. Any <span class="math" data-tex="\(\theta&lt;1\)">\(\theta&lt;1\)</span> makes <span class="math" data-tex="\((\log U)^\theta=o(\log U)\)">\((\log U)^\theta=o(\log U)\)</span>, so <span class="math" data-tex="\(\exp(C(\log U)^\theta)\)">\(\exp(C(\log U)^\theta)\)</span> is smaller than every positive power of <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p><strong>5.2.</strong> If <span class="math" data-tex="\(\chi^m=1\)">\(\chi^m=1\)</span> and <span class="math" data-tex="\(z\in\mathbb C^\times\)">\(z\in\mathbb C^\times\)</span>, choose <span class="math" data-tex="\(w\)">\(w\)</span> with <span class="math" data-tex="\(w^m=z\)">\(w^m=z\)</span>; then <span class="math" data-tex="\(\chi(z)=\chi(w)^m=1\)">\(\chi(z)=\chi(w)^m=1\)</span>.</p>
+<p><strong>5.3.</strong> <span class="math" data-tex="\(10(0.5-0.996)=-4.96\)">\(10(0.5-0.996)=-4.96\)</span>, and <span class="math" data-tex="\(-4.96+1.5=-3.46\)">\(-4.96+1.5=-3.46\)</span>.</p>
+<p><strong>5.4.</strong> <span class="math" data-tex="\(2-1.992=0.008\)">\(2-1.992=0.008\)</span> and <span class="math" data-tex="\(11\cdot0.008=0.088\)">\(11\cdot0.008=0.088\)</span>; <span class="math" data-tex="\(0.088+0.1=0.188&lt;0.5\)">\(0.088+0.1=0.188&lt;0.5\)</span>.</p>
+<p><strong>5.5.</strong> For <span class="math" data-tex="\(t\in[j,j+1]\)">\(t\in[j,j+1]\)</span> and <span class="math" data-tex="\(t&#x27;\in[j-1,j+2]\)">\(t&#x27;\in[j-1,j+2]\)</span>, <span class="math" data-tex="\(|f(t)|^2\le|f(t&#x27;)|^2+2\int_{j-1}^{j+2}|f||f&#x27;|\)">\(|f(t)|^2\le|f(t&#x27;)|^2+2\int_{j-1}^{j+2}|f||f&#x27;|\)</span>; average over <span class="math" data-tex="\(t&#x27;\)">\(t&#x27;\)</span>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-029] OpenAI, <em>Primitive roots for every admissible integer base</em>, OpenAI Math Release preprint, 4 October 2026, Section 8.1. https://github.com/openai/math/tree/main/preprints/Primitive-roots-for-every-admissible-integer-base-October-4-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

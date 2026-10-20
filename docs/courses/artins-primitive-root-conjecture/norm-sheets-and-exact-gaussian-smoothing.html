@@ -1,0 +1,369 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Norm sheets and exact Gaussian smoothing</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Artin&#x27;s primitive root conjecture)</a><a href="cubic-theta-and-its-whittaker-coefficients.html">Previous lesson</a><a href="a-theta-expression-for-the-coefficient-sums.html">Next lesson</a><a href="src/norm-sheets-and-exact-gaussian-smoothing.md">Editable source</a></nav><main><article><h1 id="norm-sheets-and-exact-gaussian-smoothing">Norm sheets and exact Gaussian smoothing</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The global Whittaker function of the cubic theta representation factors, by <a href="cubic-theta-and-its-whittaker-coefficients.html"><em>Cubic theta and its Whittaker coefficients</em></a>, into the exterior spherical values, which produce the coefficient of <span class="math" data-tex="\(B_m(Z)\)">\(B_m(Z)\)</span>, and a component at the places of <span class="math" data-tex="\(S\)">\(S\)</span>. This lesson chooses that component and controls it. At the finite places of <span class="math" data-tex="\(S\)">\(S\)</span> it is the indicator of a small subgroup; at the complex places it is a Bessel function <span class="math" data-tex="\(K_{1/3}\)">\(K_{1/3}\)</span>, multiplied by a power of the norm and an angular character. Integrated over the set of <span class="math" data-tex="\(y\in F_S^\times\)">\(y\in F_S^\times\)</span> of fixed norm <span class="math" data-tex="\(u\)">\(u\)</span>, a <strong>norm sheet</strong>, it becomes a one-variable profile with rapid decay at both ends. A kernel constructed from the Mellin transform of this profile turns it exactly into the Gaussian <span class="math" data-tex="\(P_G\)">\(P_G\)</span> of the coefficient family.</p>
+<p><strong>Prerequisites.</strong> <a href="s-integers-and-sixth-power-classes.html"><em>S-integers and sixth-power classes</em></a>, Sections 1 and 3; <a href="gauss-sums-and-the-correction-characters.html"><em>Gauss sums and the correction characters</em></a>, Lemma 6.1; <a href="cubic-theta-and-its-whittaker-coefficients.html"><em>Cubic theta and its Whittaker coefficients</em></a>, N1, (1.2), (2.1) and Lemma 3.1; <a href="the-coefficient-family-and-the-plan-of-the-zero-free-argument.html"><em>The coefficient family and the plan of the zero-free argument</em></a>, Lemma 2.1; <a href="../NT-ZETA/NT-ZETA-03.html"><em>The Gamma function and Stirling's formula</em></a>, Theorem 1.2 and Corollary 4.1.</p>
+<h2 id="1-bessel-integrals">1. Bessel integrals</h2>
+<p>For real <span class="math" data-tex="\(\nu\)">\(\nu\)</span> and <span class="math" data-tex="\(x&gt;0\)">\(x&gt;0\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;K_\nu(x)=\frac12\int_0^\infty s^{\nu-1}\\
+&amp;\qquad\times\exp\Bigl(-\frac x2\bigl(s+s^{-1}\bigr)\Bigr)\,ds .\quad(1.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;K_\nu(x)=\frac12\int_0^\infty s^{\nu-1}\\
+&amp;\qquad\times\exp\Bigl(-\frac x2\bigl(s+s^{-1}\bigr)\Bigr)\,ds .\quad(1.1)
+\end{aligned}
+\]</span>
+The substitution <span class="math" data-tex="\(s\mapsto s^{-1}\)">\(s\mapsto s^{-1}\)</span> gives <span class="math" data-tex="\(K_{-\nu}=K_\nu\)">\(K_{-\nu}=K_\nu\)</span>, and <span class="math" data-tex="\(s=e^\tau\)">\(s=e^\tau\)</span> gives <span class="math" data-tex="\(K_\nu(x)=\int_0^\infty e^{-x\cosh\tau}\cosh(\nu\tau)\,d\tau\)">\(K_\nu(x)=\int_0^\infty e^{-x\cosh\tau}\cosh(\nu\tau)\,d\tau\)</span>, the usual integral form of the modified Bessel function of the second kind [DLMF, §10.32].</p>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(\nu&gt;0\)">\(\nu&gt;0\)</span>.</p>
+<ol>
+<li>For real <span class="math" data-tex="\(\nu&#x27;\)">\(\nu&#x27;\)</span> and <span class="math" data-tex="\(a,b&gt;0\)">\(a,b&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_0^\infty t^{\nu&#x27;-1}e^{-at-b/t}\,dt\\
+&amp;\quad =2\Bigl(\frac ba\Bigr)^{\nu&#x27;/2}K_{\nu&#x27;}\bigl(2\sqrt{ab}\bigr).\quad(1.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_0^\infty t^{\nu&#x27;-1}e^{-at-b/t}\,dt\\
+&amp;\quad =2\Bigl(\frac ba\Bigr)^{\nu&#x27;/2}K_{\nu&#x27;}\bigl(2\sqrt{ab}\bigr).\quad(1.2)
+\end{aligned}
+\]</span></li>
+<li>For <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span> and complex <span class="math" data-tex="\(\mu\)">\(\mu\)</span> with <span class="math" data-tex="\(\operatorname{Re}\mu&gt;\nu\)">\(\operatorname{Re}\mu&gt;\nu\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_0^\infty x^{\mu-1}K_\nu(cx)\,dx\\
+&amp;\quad =2^{\mu-2}c^{-\mu}\,\Gamma\Bigl(\frac{\mu-\nu}2\Bigr)\\
+&amp;\qquad \Gamma\Bigl(\frac{\mu+\nu}2\Bigr).\quad(1.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_0^\infty x^{\mu-1}K_\nu(cx)\,dx\\
+&amp;\quad =2^{\mu-2}c^{-\mu}\,\Gamma\Bigl(\frac{\mu-\nu}2\Bigr)\\
+&amp;\qquad \Gamma\Bigl(\frac{\mu+\nu}2\Bigr).\quad(1.3)
+\end{aligned}
+\]</span></li>
+<li><span class="math" data-tex="\(K_\nu\)">\(K_\nu\)</span> is positive, <span class="math" data-tex="\(K_\nu(x)\le2^{\nu-1}\Gamma(\nu)x^{-\nu}\)">\(K_\nu(x)\le2^{\nu-1}\Gamma(\nu)x^{-\nu}\)</span>, <span class="math" data-tex="\(x^\nu K_\nu(x)\to2^{\nu-1}\Gamma(\nu)\)">\(x^\nu K_\nu(x)\to2^{\nu-1}\Gamma(\nu)\)</span> as <span class="math" data-tex="\(x\to0^+\)">\(x\to0^+\)</span>, and <span class="math" data-tex="\(K_\nu(x)\le e^{1-x}K_\nu(1)\)">\(K_\nu(x)\le e^{1-x}K_\nu(1)\)</span> for <span class="math" data-tex="\(x\ge1\)">\(x\ge1\)</span>.</li>
+</ol>
+<p><em>Proof.</em> (1) The substitution <span class="math" data-tex="\(t=\sqrt{b/a}\,s\)">\(t=\sqrt{b/a}\,s\)</span> turns <span class="math" data-tex="\(at+b/t\)">\(at+b/t\)</span> into <span class="math" data-tex="\(\sqrt{ab}\,(s+s^{-1})\)">\(\sqrt{ab}\,(s+s^{-1})\)</span> and the integral into <span class="math" data-tex="\((b/a)^{\nu&#x27;/2}\int_0^\infty s^{\nu&#x27;-1}e^{-\sqrt{ab}(s+s^{-1})}\,ds\)">\((b/a)^{\nu&#x27;/2}\int_0^\infty s^{\nu&#x27;-1}e^{-\sqrt{ab}(s+s^{-1})}\,ds\)</span>, which is (1.2) by (1.1).</p>
+<p>(3) The substitution <span class="math" data-tex="\(s=2u/x\)">\(s=2u/x\)</span> in (1.1) gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K_\nu(x)&amp;=\frac12\Bigl(\frac2x\Bigr)^\nu\int_0^\infty u^{\nu-1}\\
+&amp;\quad e^{-u-x^2/(4u)}\,du .
+\end{aligned}
+\]">\[
+\begin{aligned}
+K_\nu(x)&amp;=\frac12\Bigl(\frac2x\Bigr)^\nu\int_0^\infty u^{\nu-1}\\
+&amp;\quad e^{-u-x^2/(4u)}\,du .
+\end{aligned}
+\]</span>
+The integral is at most <span class="math" data-tex="\(\Gamma(\nu)\)">\(\Gamma(\nu)\)</span> and increases to <span class="math" data-tex="\(\Gamma(\nu)\)">\(\Gamma(\nu)\)</span> as <span class="math" data-tex="\(x\to0^+\)">\(x\to0^+\)</span>, by monotone convergence. For <span class="math" data-tex="\(x\ge1\)">\(x\ge1\)</span>, <span class="math" data-tex="\(s+s^{-1}\ge2\)">\(s+s^{-1}\ge2\)</span> gives <span class="math" data-tex="\(\frac x2(s+s^{-1})\ge(x-1)+\frac12(s+s^{-1})\)">\(\frac x2(s+s^{-1})\ge(x-1)+\frac12(s+s^{-1})\)</span>, hence the last bound.</p>
+<p>(2) Formula (1.2) with <span class="math" data-tex="\(\nu&#x27;=-\nu\)">\(\nu&#x27;=-\nu\)</span>, <span class="math" data-tex="\(a=1\)">\(a=1\)</span>, <span class="math" data-tex="\(b=c^2x^2/4\)">\(b=c^2x^2/4\)</span>, together with <span class="math" data-tex="\(K_{-\nu}=K_\nu\)">\(K_{-\nu}=K_\nu\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+K_\nu(cx)&amp;=\frac12\Bigl(\frac{cx}2\Bigr)^\nu\int_0^\infty t^{-\nu-1}\\
+&amp;\quad e^{-t-c^2x^2/(4t)}\,dt .
+\end{aligned}
+\]">\[
+\begin{aligned}
+K_\nu(cx)&amp;=\frac12\Bigl(\frac{cx}2\Bigr)^\nu\int_0^\infty t^{-\nu-1}\\
+&amp;\quad e^{-t-c^2x^2/(4t)}\,dt .
+\end{aligned}
+\]</span>
+Insert this into the left side of (1.3). For real <span class="math" data-tex="\(\mu&gt;\nu\)">\(\mu&gt;\nu\)</span> Tonelli's theorem allows the interchange, and for complex <span class="math" data-tex="\(\mu\)">\(\mu\)</span> the absolute integrand is the one for <span class="math" data-tex="\(\operatorname{Re}\mu\)">\(\operatorname{Re}\mu\)</span>. The substitution <span class="math" data-tex="\(y=c^2x^2/(4t)\)">\(y=c^2x^2/(4t)\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_0^\infty x^{\mu+\nu-1}e^{-c^2x^2/(4t)}\,dx=2^{\mu+\nu-1}\\
+&amp;\qquad c^{-\mu-\nu}\,t^{(\mu+\nu)/2}\,\Gamma\Bigl(\frac{\mu+\nu}2\Bigr),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_0^\infty x^{\mu+\nu-1}e^{-c^2x^2/(4t)}\,dx=2^{\mu+\nu-1}\\
+&amp;\qquad c^{-\mu-\nu}\,t^{(\mu+\nu)/2}\,\Gamma\Bigl(\frac{\mu+\nu}2\Bigr),
+\end{aligned}
+\]</span>
+and the remaining integral <span class="math" data-tex="\(\int_0^\infty t^{(\mu-\nu)/2-1}e^{-t}\,dt\)">\(\int_0^\infty t^{(\mu-\nu)/2-1}e^{-t}\,dt\)</span> is <span class="math" data-tex="\(\Gamma(\frac{\mu-\nu}2)\)">\(\Gamma(\frac{\mu-\nu}2)\)</span>. The constants combine to <span class="math" data-tex="\(\frac12\cdot2^{-\nu}c^\nu\cdot2^{\mu+\nu-1}c^{-\mu-\nu}=2^{\mu-2}c^{-\mu}\)">\(\frac12\cdot2^{-\nu}c^\nu\cdot2^{\mu+\nu-1}c^{-\mu-\nu}=2^{\mu-2}c^{-\mu}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-whittaker-function-at-a-complex-place">2. The Whittaker function at a complex place</h2>
+<p>Let <span class="math" data-tex="\(v\)">\(v\)</span> be a complex place. Every nontrivial character of the additive group <span class="math" data-tex="\(\mathbb C\)">\(\mathbb C\)</span> has the form <span class="math" data-tex="\(z\mapsto e^{i\operatorname{Re}(\alpha z)}\)">\(z\mapsto e^{i\operatorname{Re}(\alpha z)}\)</span> with <span class="math" data-tex="\(\alpha\ne0\)">\(\alpha\ne0\)</span>; rotating the coordinate, <span class="math" data-tex="\(\psi_v(z)=e^{ic_v\operatorname{Re}z}\)">\(\psi_v(z)=e^{ic_v\operatorname{Re}z}\)</span> with <span class="math" data-tex="\(c_v&gt;0\)">\(c_v&gt;0\)</span>. The rotation multiplies the angular characters below by constants of absolute value one, which are absorbed when vectors are scaled in Section 4. Write <span class="math" data-tex="\(|y|_v\)">\(|y|_v\)</span> for the square of the ordinary modulus, <span class="math" data-tex="\(\varrho=|y|_v^{1/2}\)">\(\varrho=|y|_v^{1/2}\)</span>, and <span class="math" data-tex="\(\mathcal D_vf(y)=\frac d{dt}f(e^{t/2}y)\big|_{t=0}\)">\(\mathcal D_vf(y)=\frac d{dt}f(e^{t/2}y)\big|_{t=0}\)</span>, so that <span class="math" data-tex="\(|e^{t/2}y|_v=e^t|y|_v\)">\(|e^{t/2}y|_v=e^t|y|_v\)</span>.</p>
+<p>By N1(3), <span class="math" data-tex="\(\Theta_v\)">\(\Theta_v\)</span> is the spherical principal series of <span class="math" data-tex="\(\mathrm{PGL}_2(\mathbb C)\)">\(\mathrm{PGL}_2(\mathbb C)\)</span> with normalized characters <span class="math" data-tex="\((|\cdot|_v^{1/6},|\cdot|_v^{-1/6})\)">\((|\cdot|_v^{1/6},|\cdot|_v^{-1/6})\)</span>, and it has a one-dimensional space of Whittaker functionals. Put <span class="math" data-tex="\(\nu_0=\frac12+\frac16=\frac23\)">\(\nu_0=\frac12+\frac16=\frac23\)</span>. The spherical section is
+<span class="math math-display" data-tex="\[
+f^\circ(g)=\Bigl(\frac{|\det g|}{|g_{21}|^2+|g_{22}|^2}\Bigr)^{2\nu_0},
+\]">\[
+f^\circ(g)=\Bigl(\frac{|\det g|}{|g_{21}|^2+|g_{22}|^2}\Bigr)^{2\nu_0},
+\]</span>
+with ordinary moduli. It is invariant under scalars, under the unitary group on the right and under <span class="math" data-tex="\(n(x)\)">\(n(x)\)</span> on the left, and on <span class="math" data-tex="\(g=n(x)a(y)k\)">\(g=n(x)a(y)k\)</span> it equals <span class="math" data-tex="\(|y|^{2\nu_0}=|y|_v^{2/3}\)">\(|y|^{2\nu_0}=|y|_v^{2/3}\)</span>, the normalized inducing law. Since <span class="math" data-tex="\(wn(x)a(y)=\begin{pmatrix}0&amp;1\\y&amp;x\end{pmatrix}\)">\(wn(x)a(y)=\begin{pmatrix}0&amp;1\\y&amp;x\end{pmatrix}\)</span>,
+<span class="math math-display" data-tex="\[
+f^\circ(wn(x)a(y))=\varrho^{2\nu_0}(\varrho^2+|x|^2)^{-2\nu_0}.
+\]">\[
+f^\circ(wn(x)a(y))=\varrho^{2\nu_0}(\varrho^2+|x|^2)^{-2\nu_0}.
+\]</span></p>
+<p><strong>Lemma 2.1</strong> ([OpenAI-029, (5.7), (5.11), (5.12)]). The spherical Whittaker function of <span class="math" data-tex="\(\Theta_v\)">\(\Theta_v\)</span> is a nonzero constant times <span class="math" data-tex="\(|y|_v^{1/2}K_{1/3}(c_v|y|_v^{1/2})\)">\(|y|_v^{1/2}K_{1/3}(c_v|y|_v^{1/2})\)</span>. Suitable first Lie derivatives of the spherical vector, for <span class="math" data-tex="\(m\in\{1,-1\}\)">\(m\in\{1,-1\}\)</span>, have Whittaker functions
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+W_{v,m}(a(y))&amp;=|y|_v\,\omega_m(y)\\
+&amp;\quad \,K_{1/3}\bigl(c_v|y|_v^{1/2}\bigr),
+\end{aligned}\\
+\omega_m(y)=\bigl(y/|y|_v^{1/2}\bigr)^m .\quad(2.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+W_{v,m}(a(y))&amp;=|y|_v\,\omega_m(y)\\
+&amp;\quad \,K_{1/3}\bigl(c_v|y|_v^{1/2}\bigr),
+\end{aligned}\\
+\omega_m(y)=\bigl(y/|y|_v^{1/2}\bigr)^m .\quad(2.1)
+\end{gathered}
+\]</span>
+For every fixed finite list of these vectors and their rotations by fixed elements of the maximal compact subgroup, every integer <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span> and every <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;|\mathcal D_v^jW(a(y))|\\
+&amp;\quad \le C_{A,j}\min\bigl(|y|_v^{1/3},|y|_v^{-A}\bigr).\quad(2.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;|\mathcal D_v^jW(a(y))|\\
+&amp;\quad \le C_{A,j}\min\bigl(|y|_v^{1/3},|y|_v^{-A}\bigr).\quad(2.2)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> The Jacquet integral <span class="math" data-tex="\(\int f^\circ(wn(x)a(y))\overline{\psi_v(x)}\,dx\)">\(\int f^\circ(wn(x)a(y))\overline{\psi_v(x)}\,dx\)</span> converges absolutely because <span class="math" data-tex="\(4\nu_0&gt;2\)">\(4\nu_0&gt;2\)</span>, and it is a nonzero Whittaker functional evaluated on <span class="math" data-tex="\(\pi(a(y))f^\circ\)">\(\pi(a(y))f^\circ\)</span>; by uniqueness every Whittaker function of the spherical vector is a multiple of it. With <span class="math" data-tex="\(R^{-\nu}=\Gamma(\nu)^{-1}\int_0^\infty t^{\nu-1}e^{-tR}\,dt\)">\(R^{-\nu}=\Gamma(\nu)^{-1}\int_0^\infty t^{\nu-1}e^{-tR}\,dt\)</span> for <span class="math" data-tex="\(R,\nu&gt;0\)">\(R,\nu&gt;0\)</span> and the Gaussian integral <span class="math" data-tex="\(\int_{\mathbb R^2}e^{-icx_1-t|x|^2}\,dx=\frac\pi te^{-c^2/(4t)}\)">\(\int_{\mathbb R^2}e^{-icx_1-t|x|^2}\,dx=\frac\pi te^{-c^2/(4t)}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\varrho^{2\nu_0}\int_{\mathbb R^2}\frac{e^{-ic_vx_1}\,dx}{(\varrho^2+|x|^2)^{2\nu_0}}=\frac{\pi\varrho^{2\nu_0}}{\Gamma(2\nu_0)}\\
+&amp;\qquad \int_0^\infty t^{2\nu_0-2}e^{-t\varrho^2-c_v^2/(4t)}\,dt\\
+&amp;\quad =c_v&#x27;\,\varrho K_{1/3}(c_v\varrho),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\varrho^{2\nu_0}\int_{\mathbb R^2}\frac{e^{-ic_vx_1}\,dx}{(\varrho^2+|x|^2)^{2\nu_0}}=\frac{\pi\varrho^{2\nu_0}}{\Gamma(2\nu_0)}\\
+&amp;\qquad \int_0^\infty t^{2\nu_0-2}e^{-t\varrho^2-c_v^2/(4t)}\,dt\\
+&amp;\quad =c_v&#x27;\,\varrho K_{1/3}(c_v\varrho),
+\end{aligned}
+\]</span>
+with <span class="math" data-tex="\(c_v&#x27;=2\pi(c_v/2)^{1/3}/\Gamma(4/3)\)">\(c_v&#x27;=2\pi(c_v/2)^{1/3}/\Gamma(4/3)\)</span>, by (1.2) with <span class="math" data-tex="\(\nu&#x27;=2\nu_0-1=1/3\)">\(\nu&#x27;=2\nu_0-1=1/3\)</span>, <span class="math" data-tex="\(a=\varrho^2\)">\(a=\varrho^2\)</span>, <span class="math" data-tex="\(b=c_v^2/4\)">\(b=c_v^2/4\)</span>. The interchange is absolute: without the phase the Gaussian integral leaves <span class="math" data-tex="\(\pi t^{2\nu_0-2}e^{-t\varrho^2}\)">\(\pi t^{2\nu_0-2}e^{-t\varrho^2}\)</span>, and <span class="math" data-tex="\(2\nu_0-2=-2/3&gt;-1\)">\(2\nu_0-2=-2/3&gt;-1\)</span>.</p>
+<p>By (2.1) of Lesson 6, <span class="math" data-tex="\(a(y)n(z)=n(yz)a(y)\)">\(a(y)n(z)=n(yz)a(y)\)</span>, so <span class="math" data-tex="\(W_{\pi(n(z))\varphi}(a(y))=\psi_v(yz)W_\varphi(a(y))\)">\(W_{\pi(n(z))\varphi}(a(y))=\psi_v(yz)W_\varphi(a(y))\)</span>. Differentiating in the two real directions of <span class="math" data-tex="\(z\)">\(z\)</span> at <span class="math" data-tex="\(0\)">\(0\)</span> and taking complex combinations multiplies the spherical Whittaker function by <span class="math" data-tex="\(y\)">\(y\)</span> or by <span class="math" data-tex="\(\bar y\)">\(\bar y\)</span>. Since <span class="math" data-tex="\(y\varrho=|y|_v\,\omega_1(y)\)">\(y\varrho=|y|_v\,\omega_1(y)\)</span> and <span class="math" data-tex="\(\bar y\varrho=|y|_v\,\omega_{-1}(y)\)">\(\bar y\varrho=|y|_v\,\omega_{-1}(y)\)</span>, this gives (2.1) after scaling.</p>
+<p>For the bounds, a rotation of a first Lie derivative of the spherical vector is another first Lie derivative, since <span class="math" data-tex="\(\pi(k)d\pi(X)=d\pi(\operatorname{Ad}(k)X)\pi(k)\)">\(\pi(k)d\pi(X)=d\pi(\operatorname{Ad}(k)X)\pi(k)\)</span> and the spherical vector is fixed. The operator <span class="math" data-tex="\(\mathcal D_v\)">\(\mathcal D_v\)</span> on Whittaker functions is right differentiation by <span class="math" data-tex="\(\operatorname{diag}(\frac12,0)\)">\(\operatorname{diag}(\frac12,0)\)</span>. Right differentiation of <span class="math" data-tex="\(f^\circ\)">\(f^\circ\)</span> by any element of the Lie algebra multiplies it by a real-rational function of the bottom row <span class="math" data-tex="\((y,x)\)">\((y,x)\)</span> that is homogeneous of degree <span class="math" data-tex="\(0\)">\(0\)</span> and smooth away from <span class="math" data-tex="\(0\)">\(0\)</span>, hence bounded, and this class of functions is stable under further right differentiation. So the Whittaker function of <span class="math" data-tex="\(\mathcal D_v^j\)">\(\mathcal D_v^j\)</span> applied to any listed vector is the Jacquet integral of <span class="math" data-tex="\(f^\circ(wn(x)a(y))R(y,x)\)">\(f^\circ(wn(x)a(y))R(y,x)\)</span> with such an <span class="math" data-tex="\(R\)">\(R\)</span>. After <span class="math" data-tex="\(h\)">\(h\)</span> derivatives in <span class="math" data-tex="\(x_1\)">\(x_1\)</span> this integrand is bounded by <span class="math" data-tex="\(C_h\varrho^{2\nu_0}(\varrho^2+|x|^2)^{-2\nu_0-h/2}\)">\(C_h\varrho^{2\nu_0}(\varrho^2+|x|^2)^{-2\nu_0-h/2}\)</span>. With <span class="math" data-tex="\(h=0\)">\(h=0\)</span> the integral of this bound is <span class="math" data-tex="\(C\varrho^{2-2\nu_0}=C|y|_v^{1/3}\)">\(C\varrho^{2-2\nu_0}=C|y|_v^{1/3}\)</span>. For <span class="math" data-tex="\(\varrho\ge1\)">\(\varrho\ge1\)</span>, integrating by parts <span class="math" data-tex="\(h\)">\(h\)</span> times against <span class="math" data-tex="\(e^{-ic_vx_1}\)">\(e^{-ic_vx_1}\)</span> gives <span class="math" data-tex="\(O(\varrho^{2-2\nu_0-h})\)">\(O(\varrho^{2-2\nu_0-h})\)</span>. Taking <span class="math" data-tex="\(h\)">\(h\)</span> large proves (2.2). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-bounds-at-the-finite-places-of-s">3. Bounds at the finite places of S</h2>
+<p><strong>Lemma 3.1</strong> ([OpenAI-029, (5.13)]). Let <span class="math" data-tex="\(v\)">\(v\)</span> be a finite place, <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> a smooth vector of <span class="math" data-tex="\(\Theta_v\)">\(\Theta_v\)</span> and <span class="math" data-tex="\(\lambda_v\)">\(\lambda_v\)</span> a Whittaker functional, and put <span class="math" data-tex="\(W_\varphi(y)=\lambda_v(\pi(a(y))\varphi)\)">\(W_\varphi(y)=\lambda_v(\pi(a(y))\varphi)\)</span>. For every <span class="math" data-tex="\(\delta&lt;1/3\)">\(\delta&lt;1/3\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+W_\varphi(y)=0\quad(|y|_v&gt;C_\varphi),\\
+\begin{aligned}
+|W_\varphi(y)|&amp;\le C_{\varphi,\delta}|y|_v^\delta\quad(|y|_v\le1).
+\end{aligned}\quad(3.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+W_\varphi(y)=0\quad(|y|_v&gt;C_\varphi),\\
+\begin{aligned}
+|W_\varphi(y)|&amp;\le C_{\varphi,\delta}|y|_v^\delta\quad(|y|_v\le1).
+\end{aligned}\quad(3.1)
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(J\)">\(J\)</span> be an open additive subgroup with <span class="math" data-tex="\(n(J)\)">\(n(J)\)</span> fixing <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>. For <span class="math" data-tex="\(x\in J\)">\(x\in J\)</span>, <span class="math" data-tex="\(W_\varphi(y)=\lambda_v(\pi(a(y))\pi(n(x))\varphi)\)">\(W_\varphi(y)=\lambda_v(\pi(a(y))\pi(n(x))\varphi)\)</span><span class="math" data-tex="\(=\psi_v(yx)W_\varphi(y)\)">\(=\psi_v(yx)W_\varphi(y)\)</span>; for large <span class="math" data-tex="\(|y|_v\)">\(|y|_v\)</span> some <span class="math" data-tex="\(x\in J\)">\(x\in J\)</span> has <span class="math" data-tex="\(\psi_v(yx)\ne1\)">\(\psi_v(yx)\ne1\)</span>, so <span class="math" data-tex="\(W_\varphi(y)=0\)">\(W_\varphi(y)=0\)</span>.</p>
+<p>For small <span class="math" data-tex="\(|y|_v\)">\(|y|_v\)</span>, let <span class="math" data-tex="\(z=a(\varpi_v^3)\)">\(z=a(\varpi_v^3)\)</span>, central in the covering torus. It normalizes the unipotent radical, so it acts on the ordinary Jacquet module, which is finite dimensional; by N1(4) its eigenvalues have absolute values <span class="math" data-tex="\(q_v^{-1}\)">\(q_v^{-1}\)</span> and <span class="math" data-tex="\(q_v^{-2}\)">\(q_v^{-2}\)</span>. Let <span class="math" data-tex="\(P\)">\(P\)</span> be the characteristic polynomial of this action. By the Cayley–Hamilton theorem, <span class="math" data-tex="\(P(\pi(z))\varphi=\sum_i(\pi(n(x_i))-1)\varphi_i\)">\(P(\pi(z))\varphi=\sum_i(\pi(n(x_i))-1)\varphi_i\)</span> for finitely many <span class="math" data-tex="\(x_i,\varphi_i\)">\(x_i,\varphi_i\)</span>. Apply <span class="math" data-tex="\(\lambda_v\circ\pi(a(y))\)">\(\lambda_v\circ\pi(a(y))\)</span>: the right side vanishes once <span class="math" data-tex="\(|y|_v\)">\(|y|_v\)</span> is small enough that <span class="math" data-tex="\(\psi_v(yx_i)=1\)">\(\psi_v(yx_i)=1\)</span> for all <span class="math" data-tex="\(i\)">\(i\)</span>. By (1.2) of Lesson 6 the cocycle of <span class="math" data-tex="\(a(y)\)">\(a(y)\)</span> and <span class="math" data-tex="\(a(\varpi_v^3)\)">\(a(\varpi_v^3)\)</span> is <span class="math" data-tex="\((y,\varpi_v^3)_{3,v}^2=1\)">\((y,\varpi_v^3)_{3,v}^2=1\)</span>, so the left side is <span class="math" data-tex="\(P(E)W_\varphi(y)\)">\(P(E)W_\varphi(y)\)</span> with <span class="math" data-tex="\(EW_\varphi(y)=W_\varphi(y\varpi_v^3)\)">\(EW_\varphi(y)=W_\varphi(y\varpi_v^3)\)</span>. An open subgroup of units consisting of cubes fixes <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> and has trivial cocycle with every <span class="math" data-tex="\(a(y)\)">\(a(y)\)</span>, so <span class="math" data-tex="\(W_\varphi\)">\(W_\varphi\)</span> is constant on its cosets. On each set <span class="math" data-tex="\(\{u\varpi_v^{j+3k}:k\ge0\}\)">\(\{u\varpi_v^{j+3k}:k\ge0\}\)</span>, with <span class="math" data-tex="\(j\)">\(j\)</span> and the coset of <span class="math" data-tex="\(u\)">\(u\)</span> fixed, the sequence of values satisfies the linear recurrence with characteristic polynomial <span class="math" data-tex="\(P\)">\(P\)</span> for large <span class="math" data-tex="\(k\)">\(k\)</span>, so it is a sum of polynomials in <span class="math" data-tex="\(k\)">\(k\)</span> times <span class="math" data-tex="\(k\)">\(k\)</span>th powers of roots of <span class="math" data-tex="\(P\)">\(P\)</span>. Since <span class="math" data-tex="\(|y|_v=q_v^{-j-3k}\)">\(|y|_v=q_v^{-j-3k}\)</span> and the roots have absolute values <span class="math" data-tex="\(q_v^{-1}\)">\(q_v^{-1}\)</span> and <span class="math" data-tex="\(q_v^{-2}\)">\(q_v^{-2}\)</span>, this gives (3.1); the finitely many remaining shells with <span class="math" data-tex="\(|y|_v\le1\)">\(|y|_v\le1\)</span> carry finitely many values. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The same conclusions hold for the finite sums of products of local functions at <span class="math" data-tex="\(S\)">\(S\)</span> that occur in Lemma 3.1 of Lesson 6.</p>
+<h2 id="4-a-finite-torus-cutoff-and-the-choice-at-s">4. A finite torus cutoff and the choice at S</h2>
+<p><strong>Lemma 4.1</strong> (finite torus cutoff [OpenAI-029, Lemma 5.3]). Let <span class="math" data-tex="\(S_f\)">\(S_f\)</span> be a finite set of finite places and <span class="math" data-tex="\(\lambda_f\ne0\)">\(\lambda_f\ne0\)</span> a Whittaker functional, with character <span class="math" data-tex="\(\prod_{v\in S_f}\psi_v\)">\(\prod_{v\in S_f}\psi_v\)</span>, on a smooth representation of the product of the local covers. Put <span class="math" data-tex="\(W_\varphi(y)=\lambda_f(\pi(a(y))\varphi)\)">\(W_\varphi(y)=\lambda_f(\pi(a(y))\varphi)\)</span> for <span class="math" data-tex="\(y\in\prod_{v\in S_f}F_v^\times\)">\(y\in\prod_{v\in S_f}F_v^\times\)</span>. For every open subgroup <span class="math" data-tex="\(H_f\)">\(H_f\)</span> of <span class="math" data-tex="\(\prod_{v\in S_f}\mathcal O_v^\times\)">\(\prod_{v\in S_f}\mathcal O_v^\times\)</span> there are a compact open product subgroup <span class="math" data-tex="\(U\subseteq H_f\)">\(U\subseteq H_f\)</span> and a smooth vector <span class="math" data-tex="\(\varphi_U\)">\(\varphi_U\)</span> with <span class="math" data-tex="\(W_{\varphi_U}=\mathbf 1_U\)">\(W_{\varphi_U}=\mathbf 1_U\)</span>.</p>
+<p><em>Proof.</em> Choose <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span> with <span class="math" data-tex="\(\lambda_f(\varphi)\ne0\)">\(\lambda_f(\varphi)\ne0\)</span>. The function <span class="math" data-tex="\(W_\varphi\)">\(W_\varphi\)</span> is locally constant near <span class="math" data-tex="\(1\)">\(1\)</span>; choose a product <span class="math" data-tex="\(U\subseteq H_f\)">\(U\subseteq H_f\)</span> of groups <span class="math" data-tex="\(1+\mathfrak p_v^{m_v}\)">\(1+\mathfrak p_v^{m_v}\)</span> on which it equals <span class="math" data-tex="\(\lambda_f(\varphi)\)">\(\lambda_f(\varphi)\)</span>. The function <span class="math" data-tex="\(\mathbf 1_U\)">\(\mathbf 1_U\)</span> is a Schwartz–Bruhat function on <span class="math" data-tex="\(\prod_{v\in S_f}F_v\)">\(\prod_{v\in S_f}F_v\)</span>, so by Fourier inversion there is a Schwartz–Bruhat function <span class="math" data-tex="\(\beta\)">\(\beta\)</span> with <span class="math" data-tex="\(\int\beta(t)\prod_v\psi_v(y_vt_v)\,dt=\mathbf 1_U(y)\)">\(\int\beta(t)\prod_v\psi_v(y_vt_v)\,dt=\mathbf 1_U(y)\)</span>. The vector <span class="math" data-tex="\(\varphi&#x27;=\int\beta(t)\pi(n(t))\varphi\,dt\)">\(\varphi&#x27;=\int\beta(t)\pi(n(t))\varphi\,dt\)</span> is a finite combination of translates of <span class="math" data-tex="\(\varphi\)">\(\varphi\)</span>, and <span class="math" data-tex="\(W_{\varphi&#x27;}(y)\)">\(W_{\varphi&#x27;}(y)\)</span><span class="math" data-tex="\(=W_\varphi(y)\int\beta(t)\prod_v\psi_v(y_vt_v)\,dt\)">\(=W_\varphi(y)\int\beta(t)\prod_v\psi_v(y_vt_v)\,dt\)</span><span class="math" data-tex="\(=\lambda_f(\varphi)\mathbf 1_U(y)\)">\(=\lambda_f(\varphi)\mathbf 1_U(y)\)</span>. Put <span class="math" data-tex="\(\varphi_U=\varphi&#x27;/\lambda_f(\varphi)\)">\(\varphi_U=\varphi&#x27;/\lambda_f(\varphi)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>The choice.</em> Let <span class="math" data-tex="\(\mathscr L\)">\(\mathscr L\)</span> be a fixed finite family of smooth unitary characters <span class="math" data-tex="\(\mathcal L_S\)">\(\mathcal L_S\)</span> of <span class="math" data-tex="\(F_S^\times\)">\(F_S^\times\)</span>, each radially trivial at the complex places with angular component <span class="math" data-tex="\(\omega_{m_v}\)">\(\omega_{m_v}\)</span>, <span class="math" data-tex="\(m_v\in\{1,-1\}\)">\(m_v\in\{1,-1\}\)</span>, at each complex place <span class="math" data-tex="\(v\)">\(v\)</span>. By Lemma 6.1 of <a href="gauss-sums-and-the-correction-characters.html"><em>Gauss sums and the correction characters</em></a>, <span class="math" data-tex="\(L_S\)">\(L_S\)</span> has this form; so does its product with any character of the finite group <span class="math" data-tex="\(\mathcal V=F_S^\times/F_S^{\times6}\)">\(\mathcal V=F_S^\times/F_S^{\times6}\)</span>, whose complex components are trivial. Factor the global functional at the complex places and apply Lemma 4.1 at the finite places of <span class="math" data-tex="\(S\)">\(S\)</span>, with an open subgroup contained in the sixth powers and in the kernels of the finite components of all <span class="math" data-tex="\(\mathcal L_S\in\mathscr L\)">\(\mathcal L_S\in\mathscr L\)</span>; this gives one subgroup <span class="math" data-tex="\(U=\prod_{v\in S_f}U_v\)">\(U=\prod_{v\in S_f}U_v\)</span>. At each complex place choose the derivative vector of the angular type of <span class="math" data-tex="\(\mathcal L_S\)">\(\mathcal L_S\)</span>. Scaling the vectors, the resulting <span class="math" data-tex="\(S\)">\(S\)</span>-Whittaker function is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+W_{S,\mathcal L_S}(a(y))&amp;=\mathbf 1_U(y_f)\prod_{v\mid\infty}|y_v|_v\\
+&amp;\quad \,\omega_{m_v}(y_v)\\
+&amp;\quad \,K_{1/3}\bigl(c_v|y_v|_v^{1/2}\bigr).\quad(4.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+W_{S,\mathcal L_S}(a(y))&amp;=\mathbf 1_U(y_f)\prod_{v\mid\infty}|y_v|_v\\
+&amp;\quad \,\omega_{m_v}(y_v)\\
+&amp;\quad \,K_{1/3}\bigl(c_v|y_v|_v^{1/2}\bigr).\quad(4.1)
+\end{aligned}
+\]</span>
+In particular <span class="math" data-tex="\(\mathcal L_S(y)^{-1}W_{S,\mathcal L_S}(a(y))\)">\(\mathcal L_S(y)^{-1}W_{S,\mathcal L_S}(a(y))\)</span> is the same function <span class="math" data-tex="\(\mathbf 1_U(y_f)\prod_v|y_v|_vK_{1/3}(c_v|y_v|_v^{1/2})\)">\(\mathbf 1_U(y_f)\prod_v|y_v|_vK_{1/3}(c_v|y_v|_v^{1/2})\)</span> for every member of the family.</p>
+<h2 id="5-integration-on-norm-sheets">5. Integration on norm sheets</h2>
+<p>Recall that <span class="math" data-tex="\(F\)">\(F\)</span> has <span class="math" data-tex="\(r\)">\(r\)</span> complex places and that <span class="math" data-tex="\(F_S^1\)">\(F_S^1\)</span> is the kernel of <span class="math" data-tex="\(|\cdot|_S\)">\(|\cdot|_S\)</span> on <span class="math" data-tex="\(F_S^\times\)">\(F_S^\times\)</span>. For <span class="math" data-tex="\(u&gt;0\)">\(u&gt;0\)</span> the <strong>norm sheet</strong> <span class="math" data-tex="\(X_u=\{y\in F_S^\times:|y|_S=u\}\)">\(X_u=\{y\in F_S^\times:|y|_S=u\}\)</span> is the coset <span class="math" data-tex="\(\ell_uF_S^1\)">\(\ell_uF_S^1\)</span>, with <span class="math" data-tex="\(\ell_u\)">\(\ell_u\)</span> as in Section 3 of <a href="s-integers-and-sixth-power-classes.html"><em>S-integers and sixth-power classes</em></a>. Give <span class="math" data-tex="\(F_S^\times\)">\(F_S^\times\)</span> the product of the local multiplicative Haar measures; at a complex place this is a constant times <span class="math" data-tex="\(dt/t\)">\(dt/t\)</span> times angle measure of mass one, with <span class="math" data-tex="\(t=|y_v|_v\)">\(t=|y_v|_v\)</span>. Since <span class="math" data-tex="\(u\mapsto\ell_u\)">\(u\mapsto\ell_u\)</span> is a continuous homomorphism splitting <span class="math" data-tex="\(|\cdot|_S\)">\(|\cdot|_S\)</span>, there is a Haar measure on <span class="math" data-tex="\(F_S^1\)">\(F_S^1\)</span> such that, with its translate to <span class="math" data-tex="\(X_u\)">\(X_u\)</span> by <span class="math" data-tex="\(\ell_u\)">\(\ell_u\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_{F_S^\times}f(y)\,d^\times y\\
+&amp;\quad =\int_0^\infty\int_{X_u}f(y)\,d_u^\times y\,\frac{du}u .\quad(5.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_{F_S^\times}f(y)\,d^\times y\\
+&amp;\quad =\int_0^\infty\int_{X_u}f(y)\,d_u^\times y\,\frac{du}u .\quad(5.1)
+\end{aligned}
+\]</span>
+By invariance the translated measure on <span class="math" data-tex="\(X_u\)">\(X_u\)</span> does not depend on the representative <span class="math" data-tex="\(\ell_u\)">\(\ell_u\)</span>.</p>
+<p><strong>Lemma 5.1</strong> (norm-sheet profiles [OpenAI-029, Lemma 5.4]). Let <span class="math" data-tex="\(\mathcal I\)">\(\mathcal I\)</span> be a finite index set and, for <span class="math" data-tex="\(\kappa\in\mathcal I\)">\(\kappa\in\mathcal I\)</span>, let <span class="math" data-tex="\(f_\kappa(y)=\sum_{\ell=1}^{L_\kappa}\prod_{v\in S}f_{\kappa,\ell,v}(y_v)\)">\(f_\kappa(y)=\sum_{\ell=1}^{L_\kappa}\prod_{v\in S}f_{\kappa,\ell,v}(y_v)\)</span>. Assume, for one <span class="math" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>:</p>
+<ul>
+<li>(a) at a finite <span class="math" data-tex="\(v\)">\(v\)</span>, <span class="math" data-tex="\(f_{\kappa,\ell,v}\)">\(f_{\kappa,\ell,v}\)</span> is locally constant, vanishes for <span class="math" data-tex="\(|y_v|_v&gt;C_v\)">\(|y_v|_v&gt;C_v\)</span>, and is <span class="math" data-tex="\(O(|y_v|_v^\delta)\)">\(O(|y_v|_v^\delta)\)</span> for <span class="math" data-tex="\(|y_v|_v\le1\)">\(|y_v|_v\le1\)</span>;</li>
+<li>(b) at a complex <span class="math" data-tex="\(v\)">\(v\)</span>, the factor is smooth and <span class="math" data-tex="\(|\mathcal D_v^jf_{\kappa,\ell,v}(y_v)|\)">\(|\mathcal D_v^jf_{\kappa,\ell,v}(y_v)|\)</span><span class="math" data-tex="\(\le C_{A,j}\min(|y_v|_v^\delta,|y_v|_v^{-A})\)">\(\le C_{A,j}\min(|y_v|_v^\delta,|y_v|_v^{-A})\)</span> for all <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span>, <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>.</li>
+</ul>
+<p>Put <span class="math" data-tex="\(H_\kappa(u)=\int_{X_u}f_\kappa\,d_u^\times y\)">\(H_\kappa(u)=\int_{X_u}f_\kappa\,d_u^\times y\)</span> and <span class="math" data-tex="\(D=u\frac d{du}\)">\(D=u\frac d{du}\)</span>. Fix a complex place <span class="math" data-tex="\(v_0\)">\(v_0\)</span> and define
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+H_{\kappa,j}^{\mathrm{abs}}(u)&amp;=\sum_{\ell}\int_{X_u}|\mathcal D_{v_0}^jf_{\kappa,\ell,v_0}(y_{v_0})|\\
+&amp;\quad \prod_{v\ne v_0}|f_{\kappa,\ell,v}(y_v)|\,d_u^\times y .
+\end{aligned}
+\]">\[
+\begin{aligned}
+H_{\kappa,j}^{\mathrm{abs}}(u)&amp;=\sum_{\ell}\int_{X_u}|\mathcal D_{v_0}^jf_{\kappa,\ell,v_0}(y_{v_0})|\\
+&amp;\quad \prod_{v\ne v_0}|f_{\kappa,\ell,v}(y_v)|\,d_u^\times y .
+\end{aligned}
+\]</span>
+Then <span class="math" data-tex="\(H_\kappa\)">\(H_\kappa\)</span> is smooth, and for <span class="math" data-tex="\(j\ge0\)">\(j\ge0\)</span> and <span class="math" data-tex="\(\sigma&gt;-\delta\)">\(\sigma&gt;-\delta\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+|D^jH_\kappa(u)|&amp;\le H_{\kappa,j}^{\mathrm{abs}}(u)\\
+&amp;\le C_{\sigma,j}u^{-\sigma}
+\end{aligned}\\
+(u&gt;0);\quad(5.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+|D^jH_\kappa(u)|&amp;\le H_{\kappa,j}^{\mathrm{abs}}(u)\\
+&amp;\le C_{\sigma,j}u^{-\sigma}
+\end{aligned}\\
+(u&gt;0);\quad(5.2)
+\end{gathered}
+\]</span>
+in particular, for <span class="math" data-tex="\(0&lt;\alpha&lt;\delta\)">\(0&lt;\alpha&lt;\delta\)</span> and every <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>, <span class="math" data-tex="\(|D^jH_\kappa(u)|+H_{\kappa,j}^{\mathrm{abs}}(u)\)">\(|D^jH_\kappa(u)|+H_{\kappa,j}^{\mathrm{abs}}(u)\)</span><span class="math" data-tex="\(\le C_{A,j}\min(u^\alpha,u^{-A})\)">\(\le C_{A,j}\min(u^\alpha,u^{-A})\)</span>. The same holds after multiplying each <span class="math" data-tex="\(f_\kappa\)">\(f_\kappa\)</span> by a fixed smooth unitary character of <span class="math" data-tex="\(F_S^\times\)">\(F_S^\times\)</span> and by a function of the class of <span class="math" data-tex="\(y\)">\(y\)</span> in <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\mathcal K\colon(0,\infty)\to\mathbb C\)">\(\mathcal K\colon(0,\infty)\to\mathbb C\)</span> have all absolute moments <span class="math" data-tex="\(M_\beta(\mathcal K)=\int_0^\infty|\mathcal K(T)|T^\beta\,\frac{dT}T\)">\(M_\beta(\mathcal K)=\int_0^\infty|\mathcal K(T)|T^\beta\,\frac{dT}T\)</span> finite. Then <span class="math" data-tex="\(\int_0^\infty\mathcal K(T)H_\kappa(uT^{\pm1})\,\frac{dT}T\)">\(\int_0^\infty\mathcal K(T)H_\kappa(uT^{\pm1})\,\frac{dT}T\)</span> and their absolute majorants obey the same two-ended bound, and for <span class="math" data-tex="\(x_i&gt;0\)">\(x_i&gt;0\)</span>, complex <span class="math" data-tex="\(a_i\)">\(a_i\)</span>, <span class="math" data-tex="\(\kappa_i\in\mathcal I\)">\(\kappa_i\in\mathcal I\)</span>, <span class="math" data-tex="\(\tau\in\{1,-1\}\)">\(\tau\in\{1,-1\}\)</span> and <span class="math" data-tex="\(\sigma&gt;-\delta\)">\(\sigma&gt;-\delta\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_0^\infty|\mathcal K(T)|\sum_i|a_i|\\
+&amp;\qquad \,H^{\mathrm{abs}}_{\kappa_i,0}(ux_iT^\tau)\,\frac{dT}T\le C_{\sigma,0}\,u^{-\sigma}\\
+&amp;\qquad M_{-\tau\sigma}(\mathcal K)\sum_i|a_i|x_i^{-\sigma}.\quad(5.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_0^\infty|\mathcal K(T)|\sum_i|a_i|\\
+&amp;\qquad \,H^{\mathrm{abs}}_{\kappa_i,0}(ux_iT^\tau)\,\frac{dT}T\le C_{\sigma,0}\,u^{-\sigma}\\
+&amp;\qquad M_{-\tau\sigma}(\mathcal K)\sum_i|a_i|x_i^{-\sigma}.\quad(5.3)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> At a finite place, (a) gives <span class="math" data-tex="\(\int|f_{\kappa,\ell,v}(y)||y|_v^\sigma\,d^\times y&lt;\infty\)">\(\int|f_{\kappa,\ell,v}(y)||y|_v^\sigma\,d^\times y&lt;\infty\)</span> for <span class="math" data-tex="\(\sigma&gt;-\delta\)">\(\sigma&gt;-\delta\)</span>: on the shell <span class="math" data-tex="\(|y|_v=q_v^{-k}\)">\(|y|_v=q_v^{-k}\)</span> the integrand is <span class="math" data-tex="\(O(q_v^{-k(\delta+\sigma)})\)">\(O(q_v^{-k(\delta+\sigma)})\)</span> for <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span>, and only finitely many shells with <span class="math" data-tex="\(k&lt;0\)">\(k&lt;0\)</span> meet the support. At a complex place, (b) gives <span class="math" data-tex="\(\int|f_{\kappa,\ell,v}||y|_v^\sigma\,d^\times y&lt;\infty\)">\(\int|f_{\kappa,\ell,v}||y|_v^\sigma\,d^\times y&lt;\infty\)</span> and <span class="math" data-tex="\(\sup|y|_v^\sigma|\mathcal D_v^jf_{\kappa,\ell,v}|&lt;\infty\)">\(\sup|y|_v^\sigma|\mathcal D_v^jf_{\kappa,\ell,v}|&lt;\infty\)</span>. On <span class="math" data-tex="\(X_u\)">\(X_u\)</span> use <span class="math" data-tex="\(t_{v_0}=|y_{v_0}|_{v_0}=u\prod_{v\ne v_0}|y_v|_v^{-1}\)">\(t_{v_0}=|y_{v_0}|_{v_0}=u\prod_{v\ne v_0}|y_v|_v^{-1}\)</span> as the dependent norm. By (5.1), up to a constant factor, the sheet measure is angle measure at <span class="math" data-tex="\(v_0\)">\(v_0\)</span> times the multiplicative measures at the other places, because <span class="math" data-tex="\(dt_{v_0}/t_{v_0}=du/u\)">\(dt_{v_0}/t_{v_0}=du/u\)</span> when the other coordinates are fixed. Multiply the absolute integrand by <span class="math" data-tex="\(u^\sigma=\prod_v|y_v|_v^\sigma\)">\(u^\sigma=\prod_v|y_v|_v^\sigma\)</span>, take the weighted supremum at <span class="math" data-tex="\(v_0\)">\(v_0\)</span> and the weighted integrals elsewhere: this gives the second inequality in (5.2). In this parametrization <span class="math" data-tex="\(D\)">\(D\)</span> differentiates only the <span class="math" data-tex="\(v_0\)">\(v_0\)</span>-factor, as <span class="math" data-tex="\(\mathcal D_{v_0}\)">\(\mathcal D_{v_0}\)</span>, and the majorants, uniform for <span class="math" data-tex="\(u\)">\(u\)</span> in compact sets, justify differentiating under the integral; this gives the first inequality. Taking <span class="math" data-tex="\(\sigma=-\alpha\)">\(\sigma=-\alpha\)</span> and <span class="math" data-tex="\(\sigma=A\)">\(\sigma=A\)</span> gives the two-ended bound.</p>
+<p>A function on the finite group <span class="math" data-tex="\(\mathcal V\)">\(\mathcal V\)</span> is a finite combination of products of local class indicators, because the sixth-power quotient is trivial at complex places and finite at finite places; local class indicators at finite places are locally constant and bounded. A unitary character factors over <span class="math" data-tex="\(S\)">\(S\)</span>; its finite components are locally constant of absolute value one, and its complex components have the form <span class="math" data-tex="\(|y|_v^{i\tau}\omega_m(y)\)">\(|y|_v^{i\tau}\omega_m(y)\)</span>, so <span class="math" data-tex="\(\mathcal D_v\)">\(\mathcal D_v\)</span> applied to their products with <span class="math" data-tex="\(f\)">\(f\)</span> only adds the term <span class="math" data-tex="\(i\tau f\)">\(i\tau f\)</span>. For the convolutions, apply the bounds with <span class="math" data-tex="\(\sigma=-\alpha\)">\(\sigma=-\alpha\)</span> or <span class="math" data-tex="\(\sigma=A\)">\(\sigma=A\)</span> under the <span class="math" data-tex="\(T\)">\(T\)</span>-integral, and (5.3) follows from (5.2) by Tonelli's theorem and the definition of the moments. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 5.2</strong> ([OpenAI-029, (5.19)]). If <span class="math" data-tex="\(\rho\in C_c^\infty(\mathbb R)\)">\(\rho\in C_c^\infty(\mathbb R)\)</span> is fixed and <span class="math" data-tex="\(\Phi_\kappa(u)=\int_0^\infty\mathcal K(T)H_\kappa(u/T)\,dT/T\)">\(\Phi_\kappa(u)=\int_0^\infty\mathcal K(T)H_\kappa(u/T)\,dT/T\)</span>, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\bigl\|\widehat{\rho(t)\Phi_\kappa(ue^t)}\bigr\|_{L^1(\mathbb R)}\\
+&amp;\quad \le C_{A,\rho}\min(u^\alpha,u^{-A}),\quad(5.4)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\bigl\|\widehat{\rho(t)\Phi_\kappa(ue^t)}\bigr\|_{L^1(\mathbb R)}\\
+&amp;\quad \le C_{A,\rho}\min(u^\alpha,u^{-A}),\quad(5.4)
+\end{aligned}
+\]</span>
+the Fourier transform being taken in <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<p><em>Proof.</em> For a function <span class="math" data-tex="\(g\)">\(g\)</span> supported in a fixed compact interval, <span class="math" data-tex="\(|\widehat g(\xi)|\le\|g\|_{L^1}\)">\(|\widehat g(\xi)|\le\|g\|_{L^1}\)</span> and <span class="math" data-tex="\(|\widehat g(\xi)|\le\xi^{-2}\|g&#x27;&#x27;\|_{L^1}\)">\(|\widehat g(\xi)|\le\xi^{-2}\|g&#x27;&#x27;\|_{L^1}\)</span>, so <span class="math" data-tex="\(\|\widehat g\|_{L^1}\)">\(\|\widehat g\|_{L^1}\)</span> is at most a constant times the suprema of <span class="math" data-tex="\(|g|\)">\(|g|\)</span> and <span class="math" data-tex="\(|g&#x27;&#x27;|\)">\(|g&#x27;&#x27;|\)</span>. For <span class="math" data-tex="\(g(t)=\rho(t)\Phi_\kappa(ue^t)\)">\(g(t)=\rho(t)\Phi_\kappa(ue^t)\)</span> these involve <span class="math" data-tex="\((D^j\Phi_\kappa)(ue^t)\)">\((D^j\Phi_\kappa)(ue^t)\)</span> with <span class="math" data-tex="\(j\le2\)">\(j\le2\)</span> and <span class="math" data-tex="\(ue^t\asymp u\)">\(ue^t\asymp u\)</span>, which Lemma 5.1 bounds by <span class="math" data-tex="\(C_A\min(u^\alpha,u^{-A})\)">\(C_A\min(u^\alpha,u^{-A})\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Fourier inversion with <span class="math" data-tex="\(t=\log x-\log y\)">\(t=\log x-\log y\)</span>, for <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> in fixed ratio intervals, therefore separates two norm variables at a bounded <span class="math" data-tex="\(L^1\)">\(L^1\)</span> cost while keeping any power saving for large <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<h2 id="6-exact-gaussian-smoothing">6. Exact Gaussian smoothing</h2>
+<p>For the function (4.1) the angular characters cancel against <span class="math" data-tex="\(\mathcal L_S^{-1}\)">\(\mathcal L_S^{-1}\)</span>. Define the radial profile
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+V(u)&amp;=\int_{X_u}\mathbf 1_U(y_f)\prod_{v\mid\infty}|y_v|_v\\
+&amp;\quad K_{1/3}\bigl(c_v|y_v|_v^{1/2}\bigr)\,d_u^\times y .\quad(6.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+V(u)&amp;=\int_{X_u}\mathbf 1_U(y_f)\prod_{v\mid\infty}|y_v|_v\\
+&amp;\quad K_{1/3}\bigl(c_v|y_v|_v^{1/2}\bigr)\,d_u^\times y .\quad(6.1)
+\end{aligned}
+\]</span>
+It is positive, and by Lemmas 2.1 and 5.1 (with <span class="math" data-tex="\(\delta=1/3\)">\(\delta=1/3\)</span>) it satisfies the two-ended bounds. In this section <span class="math" data-tex="\(\widehat f(s)=\int_0^\infty f(u)u^s\,du/u\)">\(\widehat f(s)=\int_0^\infty f(u)u^s\,du/u\)</span>.</p>
+<p><strong>Lemma 6.1</strong> (exact Gaussian smoothing [OpenAI-029, Lemma 5.5]). There are constants <span class="math" data-tex="\(C_0,A_0&gt;0\)">\(C_0,A_0&gt;0\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widehat V(s)=C_0A_0^s\bigl[\Gamma(s+\tfrac56)\Gamma(s+\tfrac76)\bigr]^r\\
+(\operatorname{Re}s&gt;-\tfrac56).\quad(6.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\widehat V(s)=C_0A_0^s\bigl[\Gamma(s+\tfrac56)\Gamma(s+\tfrac76)\bigr]^r\\
+(\operatorname{Re}s&gt;-\tfrac56).\quad(6.2)
+\end{gathered}
+\]</span>
+There is a smooth <span class="math" data-tex="\(\mathcal K\colon(0,\infty)\to\mathbb C\)">\(\mathcal K\colon(0,\infty)\to\mathbb C\)</span> with <span class="math" data-tex="\(|(T\partial_T)^j\mathcal K(T)|\le C_{N,j}\min(T^N,T^{-N})\)">\(|(T\partial_T)^j\mathcal K(T)|\le C_{N,j}\min(T^N,T^{-N})\)</span> for all <span class="math" data-tex="\(N,j\)">\(N,j\)</span>, with <span class="math" data-tex="\(\widehat{\mathcal K}(-s)=e^{s^2}/\widehat V(s)\)">\(\widehat{\mathcal K}(-s)=e^{s^2}/\widehat V(s)\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+&amp;\int_0^\infty\mathcal K(T)\,V(uT)\,\frac{dT}T\\
+&amp;\quad =P_G(u)
+\end{aligned}\\
+(u&gt;0).\quad(6.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+&amp;\int_0^\infty\mathcal K(T)\,V(uT)\,\frac{dT}T\\
+&amp;\quad =P_G(u)
+\end{aligned}\\
+(u&gt;0).\quad(6.3)
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> By (5.1) and Tonelli's theorem, <span class="math" data-tex="\(\widehat V(s)=\int_{F_S^\times}\mathbf 1_U(y_f)\prod_v|y_v|_v\)">\(\widehat V(s)=\int_{F_S^\times}\mathbf 1_U(y_f)\prod_v|y_v|_v\)</span><span class="math" data-tex="\(K_{1/3}(c_v|y_v|_v^{1/2})\,|y|_S^s\,d^\times y\)">\(K_{1/3}(c_v|y_v|_v^{1/2})\,|y|_S^s\,d^\times y\)</span> is the product of local Mellin integrals. A finite factor is the volume of <span class="math" data-tex="\(U_v\)">\(U_v\)</span>, on which <span class="math" data-tex="\(|y_v|_v=1\)">\(|y_v|_v=1\)</span>. At a complex place, with <span class="math" data-tex="\(t=|y_v|_v\)">\(t=|y_v|_v\)</span> and <span class="math" data-tex="\(t=x^2\)">\(t=x^2\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_0^\infty t^{s+1}K_{1/3}(c_v\sqrt t)\,\frac{dt}t\\
+&amp;\quad =2\int_0^\infty x^{2s+1}K_{1/3}(c_vx)\,dx\\
+&amp;\quad =2^{2s+1}c_v^{-2s-2}\,\Gamma(s+\tfrac56)\\
+&amp;\qquad \Gamma(s+\tfrac76),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_0^\infty t^{s+1}K_{1/3}(c_v\sqrt t)\,\frac{dt}t\\
+&amp;\quad =2\int_0^\infty x^{2s+1}K_{1/3}(c_vx)\,dx\\
+&amp;\quad =2^{2s+1}c_v^{-2s-2}\,\Gamma(s+\tfrac56)\\
+&amp;\qquad \Gamma(s+\tfrac76),
+\end{aligned}
+\]</span>
+by (1.3) with <span class="math" data-tex="\(\mu=2s+2\)">\(\mu=2s+2\)</span> and <span class="math" data-tex="\(\nu=1/3\)">\(\nu=1/3\)</span>, valid for <span class="math" data-tex="\(\operatorname{Re}s&gt;-5/6\)">\(\operatorname{Re}s&gt;-5/6\)</span>; the angle integrals change only constants. This is (6.2), with <span class="math" data-tex="\(A_0=\prod_{v\mid\infty}4c_v^{-2}\)">\(A_0=\prod_{v\mid\infty}4c_v^{-2}\)</span>.</p>
+<p>Put <span class="math" data-tex="\(\mathcal R_V(s)=e^{s^2}/\widehat V(s)=C_0^{-1}A_0^{-s}\)">\(\mathcal R_V(s)=e^{s^2}/\widehat V(s)=C_0^{-1}A_0^{-s}\)</span><span class="math" data-tex="\(e^{s^2}[\Gamma(s+\frac56)\Gamma(s+\frac76)]^{-r}\)">\(e^{s^2}[\Gamma(s+\frac56)\Gamma(s+\frac76)]^{-r}\)</span>. The reciprocal of the Gamma function is entire (Theorem 1.2 of <a href="../NT-ZETA/NT-ZETA-03.html"><em>The Gamma function and Stirling's formula</em></a>), so <span class="math" data-tex="\(\mathcal R_V\)">\(\mathcal R_V\)</span> is entire. On every closed vertical strip, Corollary 4.1 there gives <span class="math" data-tex="\(|\mathcal R_V(\sigma+it)|\le C(1+|t|)^Ce^{-t^2+\pi r|t|}\)">\(|\mathcal R_V(\sigma+it)|\le C(1+|t|)^Ce^{-t^2+\pi r|t|}\)</span>, also after multiplying by any fixed power of <span class="math" data-tex="\(s\)">\(s\)</span>. Define
+<span class="math math-display" data-tex="\[
+\mathcal K(T)=\frac1{2\pi i}\int_{(\sigma)}\mathcal R_V(s)T^s\,ds ;
+\]">\[
+\mathcal K(T)=\frac1{2\pi i}\int_{(\sigma)}\mathcal R_V(s)T^s\,ds ;
+\]</span>
+the integral converges absolutely and does not depend on <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span>, since the horizontal sides of rectangles tend to <span class="math" data-tex="\(0\)">\(0\)</span> by the Gaussian decay. Differentiation in <span class="math" data-tex="\(\log T\)">\(\log T\)</span> inserts powers of <span class="math" data-tex="\(s\)">\(s\)</span>; taking <span class="math" data-tex="\(\sigma=N\)">\(\sigma=N\)</span> for <span class="math" data-tex="\(T\le1\)">\(T\le1\)</span> and <span class="math" data-tex="\(\sigma=-N\)">\(\sigma=-N\)</span> for <span class="math" data-tex="\(T\ge1\)">\(T\ge1\)</span> gives the bounds. On a vertical line, <span class="math" data-tex="\(T^{-\sigma}\mathcal K(T)\)">\(T^{-\sigma}\mathcal K(T)\)</span> is the inverse Fourier transform in <span class="math" data-tex="\(\log T\)">\(\log T\)</span> of <span class="math" data-tex="\(t\mapsto\mathcal R_V(\sigma+it)\)">\(t\mapsto\mathcal R_V(\sigma+it)\)</span>, so Fourier inversion gives <span class="math" data-tex="\(\widehat{\mathcal K}(-s)=\mathcal R_V(s)\)">\(\widehat{\mathcal K}(-s)=\mathcal R_V(s)\)</span> there, and everywhere by analyticity. On a line <span class="math" data-tex="\(\sigma&gt;0\)">\(\sigma&gt;0\)</span>, <span class="math" data-tex="\(\int|\mathcal K(T)|T^{-\sigma}\,dT/T&lt;\infty\)">\(\int|\mathcal K(T)|T^{-\sigma}\,dT/T&lt;\infty\)</span> and <span class="math" data-tex="\(\int V(u)u^\sigma\,du/u&lt;\infty\)">\(\int V(u)u^\sigma\,du/u&lt;\infty\)</span>, so by Fubini's theorem the Mellin transform of the left side of (6.3) is <span class="math" data-tex="\(\widehat V(s)\widehat{\mathcal K}(-s)=e^{s^2}\)">\(\widehat V(s)\widehat{\mathcal K}(-s)=e^{s^2}\)</span>. By Lemma 2.1 of Lesson 5, <span class="math" data-tex="\(P_G\)">\(P_G\)</span> has the same transform, and Mellin inversion proves (6.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>After the Weyl element of Lesson 9 the norm variable is inverted; the same kernel then produces the profiles <span class="math" data-tex="\(\Phi_\kappa(u)=\int\mathcal K(T)H_\kappa(u/T)\,dT/T\)">\(\Phi_\kappa(u)=\int\mathcal K(T)H_\kappa(u/T)\,dT/T\)</span>, which obey the bounds of Lemma 5.1 and Corollary 5.2 for every fixed finite family of rotated profiles.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> Verify the matrix identity <span class="math" data-tex="\(wn(x)a(y)=\begin{pmatrix}0&amp;1\\y&amp;x\end{pmatrix}\)">\(wn(x)a(y)=\begin{pmatrix}0&amp;1\\y&amp;x\end{pmatrix}\)</span> and compute <span class="math" data-tex="\(f^\circ\)">\(f^\circ\)</span> on it.</p>
+<p><strong>7.2.</strong> Using Lemma 1.1(3), show that the Mellin integral of a complex factor in Lemma 6.1 converges exactly for <span class="math" data-tex="\(\operatorname{Re}s&gt;-5/6\)">\(\operatorname{Re}s&gt;-5/6\)</span>.</p>
+<p><strong>7.3.</strong> Show that <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> is real valued.</p>
+<p><strong>7.4.</strong> In Lemma 5.1 with one complex place and no finite places, show that <span class="math" data-tex="\(H_\kappa(u)\)">\(H_\kappa(u)\)</span> is the angular average of <span class="math" data-tex="\(f_\kappa\)">\(f_\kappa\)</span> on the circle <span class="math" data-tex="\(|y|_v=u\)">\(|y|_v=u\)</span>.</p>
+<p><strong>7.5.</strong> Show that <span class="math" data-tex="\(K_{1/2}(x)=\sqrt{\pi/(2x)}\,e^{-x}\)">\(K_{1/2}(x)=\sqrt{\pi/(2x)}\,e^{-x}\)</span>, and check (1.3) for <span class="math" data-tex="\(\nu=1/2\)">\(\nu=1/2\)</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> <span class="math" data-tex="\(n(x)a(y)=\begin{pmatrix}y&amp;x\\0&amp;1\end{pmatrix}\)">\(n(x)a(y)=\begin{pmatrix}y&amp;x\\0&amp;1\end{pmatrix}\)</span>, and multiplying by <span class="math" data-tex="\(w\)">\(w\)</span> on the left swaps the rows. Then <span class="math" data-tex="\(|\det|=|y|\)">\(|\det|=|y|\)</span> and the bottom row is <span class="math" data-tex="\((y,x)\)">\((y,x)\)</span>, so <span class="math" data-tex="\(f^\circ=(|y|/(|y|^2+|x|^2))^{4/3}\)">\(f^\circ=(|y|/(|y|^2+|x|^2))^{4/3}\)</span><span class="math" data-tex="\(=\varrho^{4/3}(\varrho^2+|x|^2)^{-4/3}\)">\(=\varrho^{4/3}(\varrho^2+|x|^2)^{-4/3}\)</span> with <span class="math" data-tex="\(\varrho=|y|\)">\(\varrho=|y|\)</span>.</p>
+<p><strong>7.2.</strong> Near <span class="math" data-tex="\(t=0\)">\(t=0\)</span>, Lemma 1.1(3) gives <span class="math" data-tex="\(|t^{s+1}K_{1/3}(c\sqrt t)|\asymp t^{\operatorname{Re}s+5/6}\)">\(|t^{s+1}K_{1/3}(c\sqrt t)|\asymp t^{\operatorname{Re}s+5/6}\)</span>, integrable against <span class="math" data-tex="\(dt/t\)">\(dt/t\)</span> near <span class="math" data-tex="\(0\)">\(0\)</span> exactly when <span class="math" data-tex="\(\operatorname{Re}s+5/6&gt;0\)">\(\operatorname{Re}s+5/6&gt;0\)</span>. For <span class="math" data-tex="\(t\ge c^{-2}\)">\(t\ge c^{-2}\)</span>, the bound <span class="math" data-tex="\(K_{1/3}(c\sqrt t)\le e^{1-c\sqrt t}K_{1/3}(1)\)">\(K_{1/3}(c\sqrt t)\le e^{1-c\sqrt t}K_{1/3}(1)\)</span> makes every power integrable.</p>
+<p><strong>7.3.</strong> <span class="math" data-tex="\(\overline{\mathcal R_V(\bar s)}=\mathcal R_V(s)\)">\(\overline{\mathcal R_V(\bar s)}=\mathcal R_V(s)\)</span> because <span class="math" data-tex="\(C_0,A_0&gt;0\)">\(C_0,A_0&gt;0\)</span> and the Gamma function is real on the real axis. Hence <span class="math" data-tex="\(\overline{\mathcal K(T)}\)">\(\overline{\mathcal K(T)}\)</span><span class="math" data-tex="\(=\frac1{2\pi}\int\overline{\mathcal R_V(\sigma+it)}\,T^{\sigma-it}\,dt\)">\(=\frac1{2\pi}\int\overline{\mathcal R_V(\sigma+it)}\,T^{\sigma-it}\,dt\)</span><span class="math" data-tex="\(=\frac1{2\pi}\int\mathcal R_V(\sigma-it)\,T^{\sigma-it}\,dt=\mathcal K(T)\)">\(=\frac1{2\pi}\int\mathcal R_V(\sigma-it)\,T^{\sigma-it}\,dt=\mathcal K(T)\)</span>.</p>
+<p><strong>7.4.</strong> With one place, <span class="math" data-tex="\(X_u\)">\(X_u\)</span> is the circle <span class="math" data-tex="\(|y|_v=u\)">\(|y|_v=u\)</span>, and its measure is the translate of angle measure of mass one.</p>
+<p><strong>7.5.</strong> By the representation in the proof of Lemma 1.1(3), <span class="math" data-tex="\(K_{1/2}(x)=\frac12(2/x)^{1/2}\int_0^\infty u^{-1/2}\)">\(K_{1/2}(x)=\frac12(2/x)^{1/2}\int_0^\infty u^{-1/2}\)</span><span class="math" data-tex="\(e^{-u-x^2/(4u)}\,du\)">\(e^{-u-x^2/(4u)}\,du\)</span>. With <span class="math" data-tex="\(u=w^2\)">\(u=w^2\)</span> and <span class="math" data-tex="\(a=x/2\)">\(a=x/2\)</span>, the integral is <span class="math" data-tex="\(2e^{-x}\int_0^\infty e^{-(w-a/w)^2}\,dw\)">\(2e^{-x}\int_0^\infty e^{-(w-a/w)^2}\,dw\)</span>. The substitution <span class="math" data-tex="\(w\mapsto a/w\)">\(w\mapsto a/w\)</span> shows that this last integral also equals <span class="math" data-tex="\(\int_0^\infty e^{-(w-a/w)^2}a\,w^{-2}\,dw\)">\(\int_0^\infty e^{-(w-a/w)^2}a\,w^{-2}\,dw\)</span>; adding the two forms and putting <span class="math" data-tex="\(z=w-a/w\)">\(z=w-a/w\)</span> gives twice it equal to <span class="math" data-tex="\(\int_{\mathbb R}e^{-z^2}\,dz=\sqrt\pi\)">\(\int_{\mathbb R}e^{-z^2}\,dz=\sqrt\pi\)</span>. So <span class="math" data-tex="\(K_{1/2}(x)=\sqrt{\pi/(2x)}\,e^{-x}\)">\(K_{1/2}(x)=\sqrt{\pi/(2x)}\,e^{-x}\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\int_0^\infty x^{\mu-1}K_{1/2}(cx)\,dx\\
+&amp;\quad =\sqrt{\frac\pi{2c}}\int_0^\infty x^{\mu-3/2}e^{-cx}\,dx\\
+&amp;\quad =\sqrt{\frac\pi2}\,\Gamma(\mu-\tfrac12)\,c^{-\mu}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\int_0^\infty x^{\mu-1}K_{1/2}(cx)\,dx\\
+&amp;\quad =\sqrt{\frac\pi{2c}}\int_0^\infty x^{\mu-3/2}e^{-cx}\,dx\\
+&amp;\quad =\sqrt{\frac\pi2}\,\Gamma(\mu-\tfrac12)\,c^{-\mu}.
+\end{aligned}
+\]</span>
+The duplication formula <span class="math" data-tex="\(\Gamma(z)\Gamma(z+\frac12)=2^{1-2z}\sqrt\pi\,\Gamma(2z)\)">\(\Gamma(z)\Gamma(z+\frac12)=2^{1-2z}\sqrt\pi\,\Gamma(2z)\)</span> with <span class="math" data-tex="\(z=\frac\mu2-\frac14\)">\(z=\frac\mu2-\frac14\)</span> turns the right side of (1.3) into <span class="math" data-tex="\(2^{\mu-2}c^{-\mu}\cdot2^{3/2-\mu}\sqrt\pi\,\Gamma(\mu-\frac12)\)">\(2^{\mu-2}c^{-\mu}\cdot2^{3/2-\mu}\sqrt\pi\,\Gamma(\mu-\frac12)\)</span>, the same expression.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-029] OpenAI, <em>Primitive roots for every admissible integer base</em>, OpenAI Math Release preprint, 4 October 2026, Section 5. https://github.com/openai/math/tree/main/preprints/Primitive-roots-for-every-admissible-integer-base-October-4-2026</li>
+<li>[KP] D. A. Kazhdan and S. J. Patterson, <em>Metaplectic forms</em>, Publ. Math. IHÉS 59 (1984), 35–142, Theorem I.2.9 and Theorems I.6.4–I.6.5. http://www.numdam.org/item/PMIHES_1984__59__35_0/</li>
+<li>[DLMF] <em>NIST Digital Library of Mathematical Functions</em>, §10.32 (integral representations of modified Bessel functions). https://dlmf.nist.gov/10.32</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

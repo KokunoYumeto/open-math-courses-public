@@ -656,7 +656,7 @@ Now use (B.H3) for \(P=N\). The kernel of the action at level \(n\) is open, and
 
 Finally, left multiplication, not conjugation, embeds the units of \(A[1/\pi]\) faithfully in the linear automorphisms of that algebra. A continuous compact inertia image preserves an \(O\)-lattice. A pro-\(p\) wild image intersects its pro-\(\ell\) congruence kernel trivially, and therefore has finite image. The fixed-quotient and uniform-conductor deduction is exactly Weights, Lemma A.1a. This direction is not circular: (B.H1)–(B.H6) use ordinary coefficient operations, finite constructibility and continuity only; they use neither the perverse degree conclusion of this appendix nor a weight theorem.
 
-The lemma supplies the previously implicit finite-End and continuous-action steps once the normalized nearby object has bounded constructible first reduction. It does not prove that geometric constructibility hypothesis, the ordinary affine bound, trait purity, or all recursive inputs of the linked operation providers. Over an arbitrary non-separably-closed field, finiteness of arithmetic cohomology needs its own hypotheses; we have made no such enlargement. Faithful finite coefficient extension, and the stated finite-coefficient-field convention, give the usual \(\overline{\mathbf Q}_\ell\) interpretation. \(\square\)
+The lemma proves the finite-End and continuous-action assertions once the normalized nearby object has bounded constructible first reduction. It does not prove that geometric constructibility hypothesis, the ordinary affine bound, trait purity, or all recursive inputs of the linked operation providers. Over an arbitrary non-separably-closed field, finiteness of arithmetic cohomology needs its own hypotheses; no such enlargement is asserted. Faithful finite coefficient extension, and the stated finite-coefficient-field convention, give the usual \(\overline{\mathbf Q}_\ell\) interpretation. \(\square\)
 
 ### Compare dimensions at the generic and special fibres
 
@@ -1782,7 +1782,7 @@ i^*PJ\simeq a_*k_*\simeq P',
 \qquad \epsilon:LP'\longrightarrow PJ.
 \tag{B.PO2}
 \]
-Here \(\epsilon\) is the open-adjunction transpose of the inverse identification. It is a closed degree-zero natural transformation for all homogeneous maps. Neither side has been replaced by an asserted functorial injective resolution.
+Here \(\epsilon\) is the open-adjunction transpose of the inverse identification. It is a closed degree-zero natural transformation for all homogeneous maps. No functorial injective resolution is assumed.
 
 For a K-injective \(I\) on \(U\), choose an object \(x=(I,A,q:JI\to A)\) of \(\mathcal G_J\). The composite \((Pq)\epsilon_I:LP'I\to PA\) is a quasi-isomorphism. Indeed \(w^*q:k_*I\to w^*A\) is a quasi-isomorphism between K-injectives: both \(k_*\) and \(w^*\) have exact left adjoints. By BF.1 it is a homotopy equivalence, and \(a_*\) preserves that homotopy equivalence. This proves the claim after restriction to \(V\). On its closed complement, the unbounded proper-base-change comparison of Proposition 5.2 identifies \(PA\), representing \(Rp_*JI\), with the proper image of a zero restricted complex. The source also vanishes there. Geometric stalks prove the claim. This uses the common torsion annihilator, not an invertibility assumption or a bounded-below truncation.
 
@@ -6958,7 +6958,7 @@ C_i^\rho&=(r_i\rho_i,1_{Z_i},H_i\rho_i):D_i^\rho\longrightarrow D_i.
 \end{aligned}
 \tag{B.PE8}
 \]
-Here \(V\) is whole semifree, and every \(V_i\) is h-projective by the free-index path filtration, not by an assertion that pointwise projectivity implies diagram projectivity. The maps \(q^\rho\) are strictly natural, and (B.PE4) proves strict naturality and closedness of \(C^\rho\). If \(q_i\) is a genuine replacement, so is \(q_i^\rho\); at the unit vertices no such assertion is made. Applying the strict functor \(F\) and the natural comparison to the full decorated diagram retains every original boundary. A formerly nonzero third coordinate, including the degree-minus-four cube term, is now the third-source block of \(W(f)\); it has not disappeared merely because \(F(f)\)'s external third coordinate is zero.
+Here \(V\) is whole semifree, and every \(V_i\) is h-projective by the free-index path filtration, not by an assertion that pointwise projectivity implies diagram projectivity. The maps \(q^\rho\) are strictly natural, and (B.PE4) proves strict naturality and closedness of \(C^\rho\). If \(q_i\) is a genuine replacement, so is \(q_i^\rho\); at the unit vertices no such assertion is made. Applying the strict functor \(F\) and the natural comparison to the full decorated diagram retains every original boundary. Every nonzero third coordinate of \(f\), including the degree-minus-four cube term, occurs in the third-source block of \(W(f)\), even though \(F(f)\)'s external third coordinate is zero.
 
 For completeness \(C_i^\rho\) is also an objectwise graph homotopy equivalence. Since \(W_i\) is homotopy equivalent to the original h-projective \(P_i\), the quasi-isomorphism \(\rho_i:V_i\to W_i\) is a homotopy equivalence. Choose \(\sigma,A,B\) with \(dA=\rho\sigma-1\), \(dB=\sigma\rho-1\). The cycle \(\rho B-A\rho\) can be made a boundary by changing \(B\) by a closed map: postcomposition by \(\rho\) on \(\operatorname{Hom}(V_i,-)\) is a quasi-isomorphism. Thus choose \(K\) so that \(\rho B-A\rho=dK\). Suppressing \(i\), in the graph category put
 \[
@@ -9101,9 +9101,7 @@ The existing geometric providers supply different, indispensable data:
 | B.CE10–11 | Relative lifts of a checked base diagram and re-resolution on restriction | A missing base boundary |
 | B.CY1–12 | A strict free cylinder realizing an already supplied comparison homotopy | A new homotopy not contained in its input |
 
-Thus the elementary mixed cube is not absent. The specific attachment still
-to verify is B.RCmp1, with its chosen geometric higher comparison and boundary,
-on the common whole model.
+The elementary mixed cube supplies the forward geometric data. For the free record on its upper and lower paths and their mixed cell, [B.1bk](#invert-the-geometric-mixed-paths-with-their-full-comparison) constructs the inverse comparison and full mate pair on the B.FP common model. Other record presentations require their own boundary data.
 
 #### The full mate pair, with its record differential
 
@@ -9361,16 +9359,9 @@ degree-minus-four third coordinate. The two must not be conflated.
 The endpoint target terms \(-T(g_T)+T(g_B)\) are required. Applying the
 closed-record B.HT9 equation without them leaves a nonzero boundary term.
 
-This establishes the target and full-lift interface *given* B.RCmp1–3 on
-the actual common model. It does not construct the geometric
-\(J(f_H)\). That map, its endpoints and the corresponding mate pair require
-compatible representatives through the KC/GC/MX and HN roofs, preserving the relative unit face,
-both inverse witnesses, signed bar coefficients, \(K_2\), and the specified ordered
-\(\Omega\). Applying the fixed-degree \(\Omega\) formula to a nonclosed family additionally
-requires its family differential.
+The target and full-lift interface uses B.RCmp1–3 on the actual common model. For the factorized B.GI three-generator mixed record, [B.1bl](#extend-the-actual-mixed-inverse-through-the-seven-object-triangle) constructs the full unit, mate and triangle records and their degree-minus-five comparison using its geometric \(J(f_H)\). The target data retain the KC/GC/MX and HN roofs, relative unit face, both inverse witnesses, signed bar coefficients, \(K_2\), and any compatible specified ordered \(\Omega\). A separately defined nonclosed multiplicative paste requires its actual family differential; a fixed-degree \(\Omega\) formula alone does not supply it.
 
-This conditional comparison does not establish all-array coherence,
-nearby-cycle descent, coefficient completion or the existence of its geometric inputs.
+Neither the general interface nor its three-generator instance establishes all-array coherence, nearby-cycle descent or coefficient completion.
 
 
 ### Keep the inverse witnesses and their higher obstruction
@@ -10437,7 +10428,7 @@ The Hom kernel of the graph projection is the shifted cone of
 \[
 dh_e=\Delta_e,\qquad
 a_i^dh_e-R_e=dq_e,
-\qquad |h_e|=-1,quad |q_e|=-2.
+\qquad |h_e|=-1,\quad |q_e|=-2.
 \tag{B.PR7}
 \]
 Write \(t_e=(0,h_e,q_e)\). Thus
@@ -10486,7 +10477,7 @@ For example, differentiating \(t(dc)\) gives
 The same whole Hom cone now supplies
 \[
 dZ=R,\qquad a_0^dZ-S=dW,
-\qquad |Z|=-2,quad |W|=-3.
+\qquad |Z|=-2,\quad |W|=-3.
 \tag{B.PR12}
 \]
 Thus \(t_c=(0,Z,W)\) is the full comparison of the original mixed cells. Neither \(K_d,K_o\) nor the rectangle witnesses were changed to obtain it. The target in B.PR12 includes the original mixed witnesses, the compositor witness and all the terms in B.PR9.
@@ -10544,6 +10535,1329 @@ E_v^oX_v-(DC_v)E_v^d=dA_v^{\mathrm{cmp}}.
 Indeed the right compositor was obtained by lifting \(Dc_T\) through its receiving factor comparison. Whisker that lift equation with the unchanged factors and apply the closed evaluation B.RK3–4. The graded tensor rule gives B.PR18; it is the compositor version of B.FK5. Composing with \(Dp\) places these comparisons in the actual whole prism model, with their third coordinates retained.
 
 B.PR13–18 specify the joint geometric parameter diagram and its factorized compositor maps. To use an independently prescribed right-word mixed cell or inverse homotopy, its full comparison with this whole prism is still required. B.WI17–18 measures the displacement of prescribed endpoint homotopies; B.PR12 does not assert that an arbitrary such displacement is exact. The RCmp target and mate construction must use the transported full records on this common index. Its higher triangle, all changing-array comparisons, nearby-cycle descent and normalized coefficient completion retain their respective hypotheses and proof obligations. \(\square\)
+
+### Transport the fixed factorized mixed cells through the prism
+
+**Proposition B.1bj (a relative right-kernel prism).** The two fixed factorized mixed diagrams of [B.FK](#transport-the-mixed-diagram-through-its-factorized-right-kernels) admit whole resolution roofs on the actual direct–ordered prism of [B.PR](#join-the-direct-and-ordered-mixed-diagrams-over-their-geometric-target). Their original mixed cells are retained under the augmentation maps. The six joining maps lift the actual factorized compositors, and the rectangle and prism comparisons have their full witnesses in the specified dual target. This constructs the forward geometric comparison; comparison of prescribed inverse homotopies retains the obstruction B.IW1.
+
+Keep the coefficient and geometric hypotheses of B.PR. Let \(\mathcal I_d,\mathcal I_o\) be its two right mixed indices and \(\mathcal J^r\) its right prism index, with the signs of B.PR15. Write \(N=DR^{\rm PR}\) for its actual whole dual diagram. For each \(\sigma=d,o\), the separately chosen B.MP model gives
+\[
+q_\sigma=Dp_\sigma:D\mathcal W^\sigma\longrightarrow N_\sigma,
+\qquad
+q^J_\sigma=Dp^{\rm PR}|_\sigma:
+D\mathcal W^\sigma\longrightarrow N|_\sigma.
+\tag{B.FP1}
+\]
+Both maps are strict on the entire mixed index and are objectwise homotopy equivalences by B.RD6 and B.PR14. No inverse of the unresolved raw dual target is involved.
+
+#### 1. Compare the actual whole roofs, including their mixed coefficients
+
+Let \(K^\sigma\) be the fixed right diagram of B.FK16–18. Its edge maps and its mixed value \(K^\sigma(c)\) remain fixed. Put
+\[
+\mathcal B_\sigma=B(\mathcal I_\sigma(-,-),\mathcal I_\sigma,K^\sigma),
+\qquad
+\pi_\sigma:\mathcal B_\sigma\to K^\sigma,
+\qquad
+\Psi_\sigma:\mathcal B_\sigma\to N_\sigma.
+\]
+Choose a whole h-projective replacement \(\rho_\sigma:P_\sigma\to\mathcal B_\sigma\) over the mixed index and both endpoint categories. Set
+\[
+u_\sigma=\pi_\sigma\rho_\sigma,
+\qquad v_\sigma=\Psi_\sigma\rho_\sigma.
+\tag{B.FP2}
+\]
+These are strict whole quasi-isomorphisms. In particular
+\(u_{\sigma,3}P_\sigma(c)=K^\sigma(c)u_{\sigma,0}\): the old mixed map has not been replaced. The map \(v_\sigma\) still uses B.FK19's length-one coefficient \(-Q_K\).
+
+Apply B.ND7 in the whole natural Hom complex to \(q_\sigma\). It supplies
+\[
+m_\sigma:P_\sigma\to D\mathcal W^\sigma,
+\qquad q_\sigma m_\sigma-v_\sigma=d\kappa_\sigma.
+\]
+Define
+\[
+\nu_\sigma=q^J_\sigma m_\sigma:P_\sigma\longrightarrow N|_\sigma.
+\tag{B.FP3}
+\]
+It is a strict whole quasi-isomorphism. The witness \(\kappa_\sigma\) is a whole degree-minus-one map. Thus on the mixed generator its naturality reads
+\(\kappa_{\sigma,3}P_\sigma(c)=-N_\sigma(c)\kappa_{\sigma,0}\).
+This sign keeps the higher datum in the comparison.
+
+We also need the actual vertex comparisons with the factorized kernels. Let \(E_{\sigma,v}:K_v^\sigma\to DW_v^\sigma\) be B.FK2, and put \(F_{\sigma,v}=q^J_{\sigma,v}E_{\sigma,v}\). At a vertex let \(\iota_v:K_v^\sigma\to\mathcal B_{\sigma,v}\) be the length-zero map with terminal identity. Then \(\pi_v\iota_v=1\) and \(\Psi_v\iota_v=q_{\sigma,v}E_{\sigma,v}\).
+
+The closed map \(\rho_v-\iota_vu_v\) becomes zero after \(\pi_v\). Since \(P_{\sigma,v}\) is h-projective in both endpoint variables and \(\pi_v\) is a quasi-isomorphism, B.ND7 gives a degree-minus-one map \(z_v\) with
+\(dz_v=\rho_v-\iota_vu_v\). Thus \(b_v=\Psi_vz_v\) satisfies
+\[
+db_v=v_v-q_{\sigma,v}E_{\sigma,v}u_v.
+\]
+Consequently
+\(q_{\sigma,v}(m_v-E_{\sigma,v}u_v)=d(\kappa_v+b_v)\).
+The full two-stage lifting argument of B.OD9 gives
+\[
+\begin{aligned}
+d\ell_v&=m_v-E_{\sigma,v}u_v,\\
+q_{\sigma,v}\ell_v-(\kappa_v+b_v)&=dw_v,
+\qquad |w_v|=-2.
+\end{aligned}\tag{B.FP4}
+\]
+With \(j_{\sigma,v}=q^J_{\sigma,v}\ell_v\), this yields
+\[
+\nu_{\sigma,v}-F_{\sigma,v}u_{\sigma,v}=dj_{\sigma,v}.
+\tag{B.FP5}
+\]
+All these vertex witnesses are whole in the endpoint variables. No naturality of the length-zero inclusion in the mixed index is assumed. The index-natural maps are B.FP2–3; the vertex witnesses will enter the graph construction explicitly.
+
+#### 2. Lift the specified factorized compositors
+
+Let \(X_v:K_v^d\to K_v^o\) be the exact B.PR16–18 factor map, and let \(s_v\) denote the corresponding arrow of \(\mathcal J^r\). Its comparison witness, after composition with \(q^J\), is
+\[
+F_{o,v}X_v-N(s_v)F_{d,v}=dG_v.
+\tag{B.FP6}
+\]
+Lift \(X_vu_{d,v}\) through the actual quasi-isomorphism \(u_{o,v}\), using the h-projective source \(P_{d,v}\). Retain both maps
+\[
+B_v:P_{d,v}\to P_{o,v},\qquad
+u_{o,v}B_v-X_vu_{d,v}=dt_v.
+\tag{B.FP7}
+\]
+The map \(B_v\) is closed and a quasi-isomorphism. Define its target witness by the explicit formula
+\[
+A_v=F_{o,v}t_v+G_vu_{d,v}
+       +j_{o,v}B_v-N(s_v)j_{d,v}.
+\tag{B.FP8}
+\]
+Differentiating and substituting B.FP5–7 cancels the four intermediate terms and gives
+\[
+\nu_{o,v}B_v-N(s_v)\nu_{d,v}=dA_v.
+\tag{B.FP9}
+\]
+Thus \(B_1\) lifts \(vL_0\), and \(B_3\) lifts \(L_2s\), through the actual B.PR17 factors. Their comparison with those maps includes \(t_v,G_v,j_{\sigma,v},w_v\); they are not arbitrary maps between equivalent objects.
+
+#### 3. Extend relative to both fixed mixed diagrams
+
+Use the graph category of maps \(\nu_{\sigma,v}:P_{\sigma,v}\to N_{\sigma,v}\). A degree-\(n\) arrow is \((f,g,h)\), with differential and product
+\[
+\begin{aligned}
+D(f,g,h)&=(df,dg,\nu' f-g\nu-dh),\\
+(f',g',h')(f,g,h)&=(f'f,g'g,h'f+(-1)^{|g'|}g'h).
+\end{aligned}\tag{B.FP10}
+\]
+Projection to \(g\) is degreewise surjective. Its kernel is the shifted cone of \(\operatorname{Hom}(P_{\sigma,v},\nu_{\tau,w})\), which is acyclic. The hypotheses are endpoint-whole h-projectivity of the source and the actual quasi-isomorphism \(\nu_{\tau,w}\).
+
+On each mixed subcategory use the fixed graph arrows
+\((P_\sigma(f),N(f),0)\), for every homogeneous \(f\). They are a strict diagram because \(\nu_\sigma\) is a strict natural map. Use \((B_v,N(s_v),A_v)\) on a compositor.
+
+For a rectangle over an edge \(e:i\to j\), put \(n_e=N(t_e^r)\). Its specified target boundary is B.PR15. Define
+\[
+\begin{aligned}
+\Delta_e&=P_o(e)B_i-B_jP_d(e),\\
+\Xi_e&=n_e\nu_{d,i}+N(e^o)A_i-A_jP_d(e).
+\end{aligned}
+\]
+Using B.FP9 and strict naturality inside each mixed diagram gives
+\(d\Xi_e=\nu_{o,j}\Delta_e\). Hence the same full Hom-cone lift supplies
+\[
+dh_e=\Delta_e,\qquad
+\nu_{o,j}h_e-\Xi_e=dq_e.
+\tag{B.FP11}
+\]
+Assign \(t_e^r\) the full graph triple \((h_e,n_e,q_e)\). The middle entry is the actual prism map \(n_e\), including its boundary; it was not set to zero to obtain an acyclic lifting problem.
+
+Extend these triples along paths by the signed rule B.PR15. For the upper path their source and third coordinates are
+\[
+\begin{aligned}
+h_T={}&h_{23}P_d(e_{12})P_d(e_{01})
+ +P_o(e_{23})h_{12}P_d(e_{01})
+ +P_o(e_{23})P_o(e_{12})h_{01},\\
+q_T={}&q_{23}P_d(e_{12})P_d(e_{01})
+ +N(e_{23}^o)q_{12}P_d(e_{01})
+ +N(e_{23}^o)N(e_{12}^o)q_{01}.
+\end{aligned}\tag{B.FP12}
+\]
+For the lower path substitute \((53,45,04)\) for \((23,12,01)\) throughout. Set \(h_\Delta=h_T-h_B\), \(q_\Delta=q_T-q_B\), and \(n_c=N(t_c^r)\). The source boundary and its target primitive are
+\[
+\begin{aligned}
+\Delta_c&=P_o(c)B_0-B_3P_d(c)-h_\Delta,\\
+\Xi_c&=n_c\nu_{d,0}-N(c^o)A_0
+             -A_3P_d(c)-q_\Delta.
+\end{aligned}\tag{B.FP13}
+\]
+They satisfy
+\(d\Delta_c=0\) and \(d\Xi_c=\nu_{o,3}\Delta_c\).
+To check the sign of the first \(A\)-term, multiply
+\((P_o(c),N(c^o),0)(B_0,N(s_0),A_0)\) in B.FP10: since \(|c|=-1\), its third coordinate is \(-N(c^o)A_0\). The other product has third coordinate \(A_3P_d(c)\). Their difference, minus the path triple, is the full prescribed boundary of \(t_c^r\). Applying \(D\) gives zero by B.PR15, which proves both displayed identities.
+
+The actual full lift is therefore
+\[
+dz=\Delta_c,\qquad
+\nu_{o,3}z-\Xi_c=dw,
+\qquad |z|=-2,\quad |w|=-3.
+\tag{B.FP14}
+\]
+Assign \(t_c^r\) the triple \((z,n_c,w)\). Freeness of the prism now gives a strict graph diagram on all of \(\mathcal J^r\), relative to the two fixed mixed diagrams. In particular both original \(K^\sigma(c)\) remain related to this diagram by the strict augmentations B.FP2. This extension did not change their source maps to force the higher equation.
+
+#### 4. Whole inversion and its precise remaining input
+
+Let \(\widehat P\) be the source diagram just constructed; its restrictions are literally \(P_d,P_o\). The signed graph-to-bar construction gives a strict quasi-isomorphism
+\[
+B(\mathcal J^r(-,-),\mathcal J^r,\widehat P)\longrightarrow N.
+\tag{B.FP15}
+\]
+The length-one value at \(t_c^r\), with terminal identity, is \(-w\). Resolve this whole diagram before selecting whole inverse maps or using a complex of natural transformations. After restriction, re-resolve on the smaller index whenever needed; B.ND6 only guarantees endpoint projectivity automatically.
+
+This provides a concrete common whole model for the actual factorized forward diagrams, their original mixed cells, and the specified compositor factors. A resolution inverse on this model is distinct from the inverse of a geometric compact-support comparison. The corresponding inverse records \(\theta_{\sigma,T},\theta_{\sigma,B},\theta_{\sigma,H}\) and their comparison obey the boundary
+\[
+dJ_H=\theta_{o,H}L_2s-vL_0\theta_{d,H}-J_T+J_B.
+\tag{B.FP16}
+\]
+The forward prism B.FP14 is the input to [the geometric inverse-record construction](#invert-the-geometric-mixed-paths-with-their-full-comparison). Independently prescribed \(J_T,J_B\) retain the exact displacement criterion of B.IW1 and B.WI17–18. The higher triangle, changing-array comparisons, geometric nearby-cycle descent and normalized coefficient completion retain their corresponding obligations. \(\square\)
+
+### Invert the geometric mixed paths with their full comparison
+
+**Proposition B.1bk (the geometric mixed inverse record).** On the actual whole model of [B.FP](#transport-the-fixed-factorized-mixed-cells-through-the-prism), the two compact-support paths have coherent inverse records. Their direct–ordered comparison has an explicit degree-minus-two mixed component and a degree-minus-three target witness. These supply B.RCmp1 on the free mixed record complex and hence its full mate pair. Independently prescribed endpoint homotopies remain subject to the explicit displacement criterion below.
+
+All geometry, coefficients and endpoint resolutions are those of B.FP. Work in its full dg graph category \(\mathscr G\), with differential B.FP10. Thus every map below retains its source, target and third coordinate. The symbol \(d\) in the following algebra denotes the differential of this dg category. Its source projection gives maps of the actual resolved kernel functors; projection is taken only after the full formulas have been constructed.
+
+#### 1. The four maps being inverted are geometric paths
+
+Let \(A_\sigma\) and \(B_\sigma\) be the graph objects at vertices \(0\) and \(3\), respectively, for \(\sigma=d,o\). Define \(\beta_{\sigma,T},\beta_{\sigma,B}:A_\sigma\to B_\sigma\) to be the upper and lower three-edge composites. Use the full graph values of B.FP for
+\[
+\begin{gathered}
+X:A_d\to A_o,\qquad Y:B_d\to B_o,\\
+H_\sigma:A_\sigma\to B_\sigma[-1],\qquad
+U_E:A_d\to B_o[-1]\quad(E=T,B),\\
+Z:A_d\to B_o[-2].
+\end{gathered}
+\]
+Their exact boundaries are
+\[
+\begin{aligned}
+dH_\sigma&=\beta_{\sigma,T}-\beta_{\sigma,B},\\
+dU_E&=\beta_{o,E}X-Y\beta_{d,E},\\
+dZ&=H_oX-YH_d-U_T+U_B.
+\end{aligned}\tag{B.GI1}
+\]
+Here \(Z\) is the full triple \((z,n_c,w)\) of B.FP14. In particular its third coordinate was not set to zero. The source projections of the \(\beta\)'s are the actual factorized compact-support paths, by the strict augmentations B.FP2. At vertex zero the initial realization is the proper–open word \(H_{h_0}\otimes H_{i_0}\); its comparison with the standard compactification is the retained first mixed edge. B.PR16 and B.FP7–9 identify \(X,Y\) with the corresponding actual \(vL_0,L_2s\), through their specified roofs. These identifications include those roof witnesses; they are not equalities between unrelated object models.
+
+Each \(\beta_{\sigma,E}\) is a homotopy equivalence in \(\mathscr G\). To verify this, project to the dual target \(N\). An edge there is the signed dual of an edge in the whole left prism resolution. The strict augmentation to the left word diagram is a quasi-isomorphism at each endpoint, and its word edge is a quasi-isomorphism. Hence the resolved edge is a quasi-isomorphism between endpoint h-projectives, so is a homotopy equivalence. Its signed dual and every finite path of these duals are homotopy equivalences.
+
+The projection from \(\mathscr G\) to the target Hom complex is degreewise surjective with acyclic kernel, by B.FP10. A chosen closed inverse of the target path therefore lifts to a closed graph map: lift it in graded degree zero, then correct its differential in the acyclic kernel. The two inverse equations also lift. Indeed, choose a graded lift of each target inverse homotopy; its differential minus the desired graph composite is a closed kernel element, whose primitive supplies the correction. Thus choose actual graph maps
+\[
+\theta_i:B_i\to A_i,\qquad
+d\ell_i=\theta_i\beta_i-1,\qquad
+dr_i=\beta_i\theta_i-1,
+\quad i=(\sigma,E).
+\tag{B.GI2}
+\]
+Every choice takes place in the whole endpoint Hom complexes. These are inverses of the geometric \(\beta_i\), not merely inverses of the augmentations used to construct their models.
+
+#### 2. A full inverse comparison for each side of the square
+
+Retain the original witnesses in B.GI2 and form the additional normalized package of B.IW2–3:
+\[
+\delta_i=\beta_i\ell_i-r_i\beta_i,
+\qquad
+\ell_i^c=\ell_i-\theta_i\delta_i,
+\qquad
+\tau_i=-r_i\delta_i.
+\tag{B.GI3}
+\]
+It satisfies
+\(d\delta_i=0\), \(d\ell_i^c=\theta_i\beta_i-1\), and
+\(d\tau_i=\beta_i\ell_i^c-r_i\beta_i\), as proved in B.IW3. These are full graph equations.
+
+Consider a side from \(i\) to \(j\), with closed maps \(a:A_i\to A_j\), \(b:B_i\to B_j\), and a specified \(h:A_i\to B_j[-1]\) satisfying
+\(dh=\beta_j a-b\beta_i\). Define
+\[
+\begin{aligned}
+J(a,b,h)&=-\theta_jh\theta_i
+                 +\ell_j^ca\theta_i-\theta_jbr_i,\\
+W(a,b,h)&=-r_jh\theta_i-r_jbr_i+\tau_ja\theta_i.
+\end{aligned}\tag{B.GI4}
+\]
+The types are \(J:B_i\to A_j[-1]\), \(W:B_i\to B_j[-2]\). Direct differentiation gives both equations
+\[
+\begin{aligned}
+dJ&=\theta_jb-a\theta_i,\\
+dW&=\beta_jJ+h\theta_i+br_i-r_jb.
+\end{aligned}\tag{B.GI5}
+\]
+For the second, substitute \(\beta_j\ell_j^c=r_j\beta_j+d\tau_j\) and \(\beta_i\theta_i=1+dr_i\). The resulting expression is
+\(-d(r_jh\theta_i)-d(r_jbr_i)+d(\tau_ja\theta_i)\), exactly B.GI4. This second equation retains the comparison in the receiving target; the first equation alone would not suffice for the next step.
+
+Use the same package at every occurrence of a vertex. Apply B.GI4 to the four sides:
+\[
+\begin{array}{c|c|c|c|c}
+\text{side}&i&j&(a,b,h)&(J,W)\\ \hline
+h_d&(d,B)&(d,T)&(1,1,H_d)&(\theta_{d,H},W_{d,H})\\
+h_o&(o,B)&(o,T)&(1,1,H_o)&(\theta_{o,H},W_{o,H})\\
+v_B&(d,B)&(o,B)&(X,Y,U_B)&(J_B,W_B)\\
+v_T&(d,T)&(o,T)&(X,Y,U_T)&(J_T,W_T).
+\end{array}\tag{B.GI6}
+\]
+In particular \(d\theta_{\sigma,H}=\theta_{\sigma,T}-\theta_{\sigma,B}\), and \(dJ_E=\theta_{o,E}Y-X\theta_{d,E}\).
+
+#### 3. An explicit primitive for the mixed inverse boundary
+
+Put
+\[
+\mathcal O=\theta_{o,H}Y-X\theta_{d,H}-J_T+J_B.
+\tag{B.GI7}
+\]
+Its differential is zero, but the required target primitive uses all four B.GI5 equations and the actual forward prism. It is
+\[
+\begin{aligned}
+\Xi={}&-Z\theta_{d,B}+W_{o,H}Y+H_oJ_B+W_B\\
+     &-W_T-U_T\theta_{d,H}-YW_{d,H}.
+\end{aligned}\tag{B.GI8}
+\]
+The types and degrees are \(\mathcal O:B_d\to A_o[-1]\) and \(\Xi:B_d\to B_o[-2]\). They satisfy
+\[
+d\Xi=\beta_{o,T}\mathcal O.
+\tag{B.GI9}
+\]
+Here is a full-boundary verification. In the ordinary arrow graph of the maps \(\beta_i\), a side is \((a,b,h)\), and its right-inverse comparison is the degree-minus-one arrow \((-J,0,-W)\) from the identity object at \(B_i\) to the object \(\beta_j\). B.GI5 says that its differential is the difference of the two composites with the closed arrows \((\theta_i,1,r_i)\). The forward square has degree-minus-one filler \((0,0,-Z)\), since its two composites differ in third coordinate by \(dZ\), according to B.GI1. The difference of the two side homotopy paths has source component \(-\mathcal O\). Its third component is
+\[
+-W_{o,H}Y-H_oJ_B-W_B+W_T+U_T\theta_{d,H}+YW_{d,H}.
+\]
+Subtracting this from the filler composed with \((\theta_{d,B},1,r_{d,B})\) gives precisely \(\Xi\). The graph differential of this complete boundary is zero, giving B.GI9. This calculation also fixes the sign of \(-Z\theta_{d,B}\).
+
+There is now a polynomial primitive, without any assertion that the underlying Hom complex is acyclic:
+\[
+\begin{aligned}
+J_H&=\theta_{o,T}\Xi-\ell_{o,T}^c\mathcal O,\\
+V_H&=r_{o,T}\Xi-\tau_{o,T}\mathcal O.
+\end{aligned}\tag{B.GI10}
+\]
+Their degrees are minus two and minus three. Since \(d\mathcal O=0\), equations B.GI3 and B.GI9 give
+\[
+dJ_H=\mathcal O,\qquad
+\beta_{o,T}J_H-\Xi=dV_H.
+\tag{B.GI11}
+\]
+For example, \(dJ_H=\theta_{o,T}\beta_{o,T}\mathcal O-(\theta_{o,T}\beta_{o,T}-1)\mathcal O\). The second identity follows by differentiating \(r_{o,T}\Xi-\tau_{o,T}\mathcal O\); the two terms containing \(r_{o,T}\beta_{o,T}\mathcal O\) cancel. Because the entire computation took place in \(\mathscr G\), B.GI10–11 retain the original forward target witnesses and their new inverse target coordinates.
+
+#### 4. The actual mixed record and its resolved mate
+
+Let \(\mathcal R\) be the free record complex on degree-zero generators \(f_T,f_B\) and a degree-minus-one generator \(f_H\), with \(\partial f_H=f_T-f_B\). Define
+\[
+\begin{array}{c|ccc}
+f&f_T&f_B&f_H\\ \hline
+\theta_\sigma(f)&\theta_{\sigma,T}&\theta_{\sigma,B}&\theta_{\sigma,H}\\
+J(f)&J_T&J_B&J_H.
+\end{array}
+\tag{B.GI12}
+\]
+B.GI5 and B.GI11 prove, for every homogeneous element of this complex,
+\[
+dJ(f)+J(\partial f)=\theta_o(f)Y-X\theta_d(f).
+\tag{B.GI13}
+\]
+The passage to the actual factorized functors requires the B.FP compositor witnesses. After source projection, write the endpoint augmentations as
+\(p_\sigma:A_\sigma\to\bar A_\sigma\),
+\(q_\sigma:B_\sigma\to\bar B_\sigma\), where
+\(\bar A_\sigma=V_\sigma L_0\), \(\bar B_\sigma=L_2S_\sigma\) are the actual right words. Put \(\bar X=vL_0\), \(\bar Y=L_2s\). B.FP7 gives the specified homotopies
+\[
+p_oX-\bar Xp_d=dt_A,
+\qquad q_oY-\bar Yq_d=dt_B.
+\tag{B.GI13a}
+\]
+All endpoint kernels here are whole h-projective. Choose inverses \(\eta_\sigma\) of \(q_\sigma\), retaining
+\(d\ell_\sigma^q=\eta_\sigma q_\sigma-1\) and
+\(dr_\sigma^q=q_\sigma\eta_\sigma-1\). The explicit inverse comparison is
+\[
+S=-\eta_ot_B\eta_d+\ell_o^qY\eta_d-\eta_o\bar Yr_d^q,
+\qquad dS=\eta_o\bar Y-Y\eta_d.
+\tag{B.GI13b}
+\]
+This is B.OD16 on these actual augmentation maps and the specified \(t_B\).
+For \(|f|=n\), define the factorized records by
+\[
+\begin{aligned}
+\bar\theta_\sigma(f)&=p_\sigma\theta_\sigma(f)\eta_\sigma,\\
+\bar J(f)&=p_oJ(f)\eta_d
+       +(-1)^n p_o\theta_o(f)S
+       +t_A\theta_d(f)\eta_d.
+\end{aligned}\tag{B.GI13c}
+\]
+Their exact boundary is
+\[
+d\bar J(f)+\bar J(\partial f)
+ =\bar\theta_o(f)\bar Y-\bar X\bar\theta_d(f).
+\tag{B.GI13d}
+\]
+Indeed the first term contributes B.GI13. In the second, the two occurrences of \(\theta_o(\partial f)S\) cancel because their signs are \((-1)^n\) and \((-1)^{n+1}\); its remaining term is \(p_o\theta_o(f)dS\). The third contributes \((dt_A)\theta_d(f)\eta_d\). Substitution of B.GI13a–b gives B.GI13d. At \(f_H\) the second correction in B.GI13c has a minus sign.
+
+The closed maps \(\bar\theta_{\sigma,E}\) are inverses of the actual factorized geometric paths. Their forward paths \(\bar\beta_{\sigma,E}\) satisfy
+\(q_\sigma\beta_{\sigma,E}=\bar\beta_{\sigma,E}p_\sigma\)
+by B.FP2. Thus their right inverse homotopy is
+\(r_\sigma^q+q_\sigma r_{\sigma,E}\eta_\sigma\).
+Each forward path is a quasi-isomorphism between whole h-projectives, so this right inverse is also an inverse in the homotopy category; B.ND7 supplies the left witness with its target comparison. All the augmentation and compositor witnesses remain part of B.GI13c.
+
+Equation B.GI13d is now the B.RCmp1 input with the actual \(L_2s,vL_0\). Evaluation at an h-projective module and full Hom adjunction preserve it. For a kernel map of degree \(r\), evaluation uses \(x\otimes z\mapsto(-1)^{r|x|}x\otimes f(z)\). Use the receiving replacements, target comparison \((t,v_N,w)\), and mate lifts of B.RCmp2 for these factorized records. With \(\bar J(f)\) in its displayed adjunction formula, \(K_M(f)\) is an actual target map. The whole-Hom cone construction gives the full pairs \(j(f),k(f)\), preserving the endpoint pairs already selected for this coherent route. On the mixed generator their equations are explicitly
+\[
+\begin{aligned}
+dj_H+j_T-j_B&=c_o(f_H)s-tc_d(f_H),\\
+q_oj_H-K_M(f_H)&=dk_H-k_T+k_B.
+\end{aligned}\tag{B.GI14}
+\]
+Here \(|j_H|=-2\), \(|k_H|=-3\). The signs are the record differential in B.RCmp2. The primitive \(\Gamma_H=\operatorname{Adj}^{-1}(k_H)\) retains the full target equation B.RCmp3, including \(\Gamma_T-\Gamma_B\). This establishes the inverse input and mate pair for this actual mixed record. The full seven-object record and its degree-minus-five comparison for these factorized inputs are constructed in [B.1bl](#extend-the-actual-mixed-inverse-through-the-seven-object-triangle). Other record presentations require their own prescribed boundaries.
+
+#### 5. Preserve the difference from previously prescribed choices
+
+If the inverse maps \(\theta_i\) are unchanged and only B.GI3 replaces \(\ell_i\) by \(\ell_i^c\), the unnormalized B.OD16 side comparison has the exact displacement
+\[
+J^c(a,b,h)=J^{\rm old}(a,b,h)-C(a,b),
+\qquad C(a,b)=\theta_j\delta_j a\theta_i,
+\qquad dC=0.
+\tag{B.GI15}
+\]
+This applies to horizontal sides as well as vertical ones. Consequently, with \(C_{h_d},C_{h_o},C_{v_T},C_{v_B}\) from the four sides, the old inverse obstruction is
+\[
+\mathcal O^{\rm old}=dJ_H+\mathcal D,
+\qquad
+\mathcal D=C_{h_o}Y-XC_{h_d}-C_{v_T}+C_{v_B}.
+\tag{B.GI16}
+\]
+All four terms are necessary. The old boundary has a primitive exactly when \(\mathcal D\) is a boundary; if \(dL=\mathcal D\), that primitive is \(J_H+L\). No vanishing is asserted for arbitrary old choices.
+
+More generally, first put any old inverse maps on this same actual model. If \(\bar\theta_i\) is another inverse with right witness \(\bar r_i\), retain the explicit comparison
+\[
+Q_i=\ell_i^c\bar\theta_i-\theta_i\bar r_i,
+\qquad dQ_i=\theta_i-\bar\theta_i.
+\tag{B.GI17}
+\]
+Transport its old horizontal and vertical homotopies by
+\[
+\bar\theta_{\sigma,H}^{\,*}=\bar\theta_{\sigma,H}+Q_{\sigma,T}-Q_{\sigma,B},
+\qquad
+\bar J_E^{\,*}=\bar J_E+Q_{o,E}Y-XQ_{d,E}.
+\tag{B.GI18}
+\]
+The transported homotopies have the same endpoint differentials as B.GI6. Their closed differences from B.GI6 replace the four \(C\)'s in B.GI16. Expanding B.GI18 shows that the added \(Q\)-terms cancel in the old mixed obstruction. Thus this comparison preserves the old obstruction rather than silently discarding it. Apply the same B.GI13c transport, including its \(S,t_A\) terms, to both routes before taking their difference. Full Hom adjunction and the B.RCmp formulas then carry that explicit route and its displacements to the mate diagram.
+
+The coherent route B.GI3–14 supplies the actual mixed inverse and its mate pair. [B.1bl](#extend-the-actual-mixed-inverse-through-the-seven-object-triangle) supplies the corresponding seven-object mixed triangle with its full higher coordinate. Independently fixed older routes retain their displacement criterion; changing-array coherence, geometric nearby-cycle descent and normalized coefficient completion require their further arguments. \(\square\)
+
+### Extend the actual mixed inverse through the seven-object triangle
+
+**Proposition B.1bl (the mixed triangle with its full higher witness).** On the whole B.FP model, the factorized geometric inverse record of B.GI13c extends to the seven-object diagram and its right-triangle comparison. The extension retains prescribed endpoint records and any prescribed unit and mate cells over these same factorized comparisons. Its mixed triangle comparison has an actual target of degree \(-4\) and a third coordinate of degree \(-5\). This assertion concerns the free three-generator mixed record; a multiplicative diagram with further relations requires those relations as well.
+
+Use the receiving adjunction \(L=L_2\dashv U=U_2\), the original initial triangle
+\(Q_0,R_0,u_0,z_0,J_0,\lambda_0,\alpha_0,\Gamma_0\), and the receiving replacements and comparison \((t,v_N,w)\) of B.HT. In particular \(\Gamma_0=\operatorname{Adj}_0^{-1}K_0\) uses the full retained \(K_0\); the nested folding contribution in B.NT7 is part of that datum. All Hom sources below are h-projective on the same whole free parameter category. The receiving replacement maps are quasi-isomorphisms there. Unit maps are not assumed to be quasi-isomorphisms. Coefficients may be any commutative ring, and the modules may be unbounded.
+
+#### 1. Construct the records over the actual factorized comparison
+
+Write \(\mathcal R\) for the complex with basis \(r_T,r_B\) in degree zero and \(r_H\) in degree \(-1\), with
+\[
+\partial r_T=\partial r_B=0,\qquad \partial r_H=r_T-r_B.
+\tag{B.MT1}
+\]
+In this subsection \(\theta_\sigma\) and \(J\) mean the barred, factorized maps of B.GI13c, including its \(S,t_A\) terms. They are maps between the actual functors, with
+\[
+d\theta_\sigma(r)=\theta_\sigma(\partial r),\qquad
+dJ(r)+J(\partial r)=\theta_o(r)Ls-vL_0\theta_d(r).
+\tag{B.MT2}
+\]
+Thus \(J(r_H)\) is the transported geometric mixed primitive, not a new arbitrary homotopy of its endpoints.
+
+For each \(\sigma=d,o\), form the complexes \(\widetilde{\mathscr U}_\sigma,\mathscr M_\sigma,\mathscr F_\sigma,\mathscr G_\sigma\) of B.UC, B.HC and B.RC using these fixed objects and maps. There are degreewise surjective chain maps
+\[
+\mathscr G_\sigma\longrightarrow\mathscr F_\sigma
+ \longrightarrow
+ \mathscr B_\sigma:=\widetilde{\mathscr U}_\sigma
+                   \times_{\Theta_\sigma}\mathscr M_\sigma
+ \longrightarrow\Theta_\sigma.
+\tag{B.MT3}
+\]
+Every arrow in B.MT3 has acyclic kernel. For the last arrow, B.UC3 and B.UC6 filter the kernel of \(\widetilde{\mathscr U}_\sigma\to\Theta_\sigma\) by the two lift cones and the unit-face cone. Each is a whole Hom cone through a genuine replacement. The kernel of \(\mathscr M_\sigma\to\Theta_\sigma\) is \(\mathcal C_{q_\sigma}(S_\sigma Q_0)\). The fibre product therefore has the direct sum of these two kernels. The middle arrow has the three omitted face cones and the \((a,h_a)\) lift cone of B.HC3. The first has kernel \(\mathcal C_{q_\sigma}(S_\sigma Q_0)[-2]\), with the positive cone differential of B.RC10. The finite filtrations prove acyclicity without an acyclicity assertion about a unit map.
+
+Here is the relative construction, including its existence step. If \(p:E\to B\) is one of these surjections, let \(e_T,e_B\) be prescribed closed lifts of \(b_T,b_B\), and let \(b_H\) satisfy \(db_H=b_T-b_B\). Choose a graded lift \(\widetilde e_H\) of \(b_H\). Then
+\[
+ z=d\widetilde e_H-e_T+e_B\in\ker(p),\qquad dz=0.
+\]
+Choose \(y\in\ker(p)\) with \(dy=z\). The element \(e_H=\widetilde e_H-y\) has exactly the specified image and differential. The same argument with zero lower boundary gives closed endpoint lifts when endpoints have not been prescribed. A graded lift of a basis vector needs only degreewise surjectivity; no splitting of \(p\) on an arbitrary module is asserted.
+
+Apply this construction successively in B.MT3 to \(\theta_\sigma(r)\). Prescribed unit cells and prescribed mates \((\theta_\sigma,c_\sigma,b_\sigma)\) are kept in the fibre product, provided their \(\theta\)-coordinates agree literally with B.MT2. The resulting maps
+\[
+ r\longmapsto f_\sigma(r)\in\mathscr F_\sigma,
+ \qquad r\longmapsto g_\sigma(r)=(f_\sigma(r),p_\sigma(r))
+                  \in\mathscr G_\sigma
+\tag{B.MT4}
+\]
+are chain maps and retain all prescribed endpoint lifts. In particular, with \(\omega_\sigma(f)=(\mathcal R_\sigma(f),\mathcal V_\sigma(f))\) denoting the B.RC discrepancy pair,
+\[
+\begin{aligned}
+ \partial f_{\sigma,H}&=f_{\sigma,T}-f_{\sigma,B},\\
+ \delta p_{\sigma,H}&=p_{\sigma,T}-p_{\sigma,B}
+                                      +\omega_\sigma(f_{\sigma,H}),\\
+ p_{\sigma,H}&=(P_{\sigma,H},W_{\sigma,H}),
+ \qquad |P_{\sigma,H}|=-3,\quad |W_{\sigma,H}|=-4.
+\end{aligned}\tag{B.MT5}
+\]
+The second right-hand side is a cycle because \(\delta\omega+\omega\partial=0\). This retains the original \(W_{\sigma,T},W_{\sigma,B}\), and any already supplied compatible \(p_{\sigma,H}\); solving only the first coordinate would not do so.
+
+#### 2. Keep the full mate comparison and the seven vertices
+
+Use B.RCmp's \(K_M(r)\), formed with the actual \(J(r),b_d(r),b_o(r)\). Put \(\Delta(r)=c_o(r)s-tc_d(r)\). Its equation is
+\(dK_M(r)+K_M(\partial r)=q_o\Delta(r)\), so \((\Delta,K_M)\) is a chain map into the full cone. For prescribed endpoint pairs \((j_T,k_T),(j_B,k_B)\), the mixed primitive is obtained from the closed cone element
+\[
+\bigl(\Delta(r_H)-j_T+j_B,\ K_M(r_H)-k_T+k_B\bigr).
+\tag{B.MT6}
+\]
+Its full primitive \((j_H,k_H)\) has degrees \(-2,-3\) and satisfies B.GI14. This construction uses the same mate records as B.MT4; it does not replace them while joining the four faces. Set \(\Gamma(r)=\operatorname{Adj}^{-1}k(r)\) and \(\beta_t=\operatorname{Adj}^{-1}w\). For the mixed cell its actual target identity is
+\[
+\begin{aligned}
+ d\Gamma_H-\Gamma_T+\Gamma_B
+  ={}&e_oLj_H-V_oe_0J_H-\beta_{o,H}Ls\\
+     &+v_N\beta_{d,H}+\beta_tLc_{d,H}.
+\end{aligned}\tag{B.MT7}
+\]
+
+Keep the seven vertices and their distinct labels from B.HT: \(\mathsf Q_0^u,\mathsf R_0^u,\mathsf A,\mathsf C,\mathsf Q_1^u,\mathsf R_1,\mathsf Q_1^q\). At the three unit vertices the maps are \(A(s_{Q_0}),A(s_{R_0}),A(t)\), where \(A(a)=(a,La,0)\). At the final vertex use \((t,v_N,w)\). At the other three vertices use the whole replacement lifts of B.HT, with their full third coordinates. These vertex comparisons are fixed for the record complex.
+
+The lower-arrow comparison \(H\) has the B.RCmp target table and satisfies
+\[
+\begin{aligned}
+ DH(x)+H(Dx)&=a_{\mathrm{head}}F(x)-G(x)a_{\mathrm{tail}},\\
+ H(xy)&=H(x)F(y)+(-1)^{|x|}G(x)H(y).
+\end{aligned}
+\tag{B.MT8}
+\]
+Here \(F=d,G=o\). The explicit unit-headed and mate formulas are
+\[
+\begin{aligned}
+ H(\mathbf c_L(r))&=-A(j(r)),\\
+ H(\mathbf c_R(r))&=(-j(r),-V_oe_0J(r),-k(r)),\\
+ H(\mathbf b(r))&=(0,\Gamma(r),0).
+\end{aligned}
+\tag{B.MT9}
+\]
+For each other free arrow or face, first keep the endpoint comparisons, then subtract the comparison on its differential and the differential of the prescribed target triple. The B.RCmp5 target identities, including B.MT7, make the residual a closed zero-target graph element. Its head is a genuine replacement, so the whole Hom cone supplies a full primitive. This gives B.MT8 in the order: fixed arrows, record arrows, four faces. The record boundary at \(r_H\) uses the already supplied \(r_T,r_B\) values. Initial unit arrows have the explicit naturality comparisons of B.HT; the remaining unit-headed arrow uses the first formula of B.MT9. This lists every kind of head used in the construction and avoids a lift through a unit.
+
+#### 3. The triangle residual and its degree-minus-five coordinate
+
+Let \(\mathbf P_\sigma(r)\) be the full graph triple supplied by \(g_\sigma(r)\) in B.FG12. Its actual target is \(V_\sigma\Gamma_0\theta_\sigma(r)\), and
+\[
+ D\mathbf P_\sigma(r)=\mathbf P_\sigma(\partial r)
+                        +\widehat{\mathbf R}_\sigma(f_\sigma(r)).
+\tag{B.MT10}
+\]
+In particular B.MT5 gives its existing degree-minus-four third coordinate at \(r_H\). Write \(a_0\) and \(a_q\) for the vertex comparisons at \(\mathsf Q_0^u\) and \(\mathsf Q_1^q\), and set
+\[
+\begin{aligned}
+ Z(r)&=a_q\mathbf P_d(r)-\mathbf P_o(r)a_0
+                                  -H(\widehat{\mathbf R}(r)),\\
+ T(r)&=-V_o\Gamma_0J(r).
+\end{aligned}\tag{B.MT11}
+\]
+The homogeneous discrepancy has its B.FG10 coefficient \((-1)^{|r|}\). Graded naturality of \(J(r)\) on \(J_0\) and the unit/counit face table give
+\(H(\widehat{\mathbf R}(r))_Z=V_o(d\Gamma_0)J(r)\), as calculated in B.RCmp7–8. Therefore
+\[
+ DZ(r)=Z(\partial r),\qquad Z(r)_Z=dT(r)+T(\partial r).
+\tag{B.MT12}
+\]
+For the first equality, differentiate B.MT11, use B.MT10 and B.MT8, and use \(D\widehat{\mathbf R}(r)=-\widehat{\mathbf R}(\partial r)\). The two discrepancy terms cancel. For the second, the target of the first two terms in B.MT11 is
+\(-V_o\Gamma_0(\theta_o(r)Ls-vL_0\theta_d(r))\).
+Subtracting the target of \(H(\widehat{\mathbf R})\) and using B.MT2 gives the displayed identity. No acyclicity of the actual target category is needed.
+
+Retain any endpoint comparisons \(X_T,X_B\) with
+\(DX_E=Z(r_E)\) and \((X_E)_Z=T(r_E)\), for \(E=T,B\). They exist by subtracting \(D(0,T(r_E),0)\) and lifting the remaining zero-target cycle through \(q_o\). Define the mixed residual
+\[
+ E_H=Z(r_H)-X_T+X_B.
+\tag{B.MT13}
+\]
+Equations B.MT12 imply
+\(DE_H=0\) and \((E_H)_Z=dT_H\). Write
+\(E_H=(A_H,dT_H,C_H)\), and let \(\eta_d:S_dQ_0\to ULS_dQ_0\) be the unit at the source vertex. Subtracting \(D(0,T_H,0)\) leaves the full cone cycle
+\[
+ (A_H,C_H+U(T_H)\eta_d)
+       \in\mathcal C_{q_o}(S_dQ_0)^{-3}.
+\tag{B.MT14}
+\]
+Indeed \(DE_H=0\) says
+\(dA_H=0\) and \(dC_H=q_oA_H-U(dT_H)\eta_d\). Since \(\eta_d\) is closed, differentiating the second entry of B.MT14 gives \(q_oA_H\). The plus sign before \(U(T_H)\eta_d\) is forced by the graph differential.
+
+Whole h-projectivity and the genuine replacement \(q_o\) now give a full primitive \((x_H,y_H)\), explicitly characterized by
+\[
+\begin{aligned}
+ dx_H&=A_H,\\
+ q_ox_H-dy_H&=C_H+U(T_H)\eta_d,\\
+ |x_H|&=-4,\qquad |y_H|=-5.
+\end{aligned}\tag{B.MT15}
+\]
+Thus the required full comparison is
+\[
+\begin{aligned}
+ X_H&=(x_H,T_H,y_H),\qquad T_H=-V_o\Gamma_0J_H,\\
+ DX_H&=a_q\mathbf P_d(r_H)-\mathbf P_o(r_H)a_0
+             -H(\widehat{\mathbf R}(r_H))-X_T+X_B.
+\end{aligned}\tag{B.MT16}
+\]
+This constructs the higher witness for the actual factorized mixed input. It keeps \(\beta_t,\Gamma_H,K_0,K_1\), both original \(\mathbf P_{\sigma,H}\) and their third coordinates. The new \(y_H\) is one degree lower than their \(W_{\sigma,H}\). Dropping \(-X_T+X_B\) would leave differential \(Z(r_T)-Z(r_B)\), so the closed-endpoint calculation alone cannot give B.MT16.
+
+#### 4. Retain ordered-paste endpoints without suppressing their family boundary
+
+Suppose the specified B.OP12 ordered endpoint pastes \(\mathbf P^a_E\) realize these same four-face records \(f_{o,E}\). Retain the B.OP13 triples \(\Omega_E\), with
+\[
+ D\Omega_E=\mathbf P^a_E-\mathbf P_{o,E},\qquad
+ (\Omega_E)_Z=0,\qquad E=T,B.
+\tag{B.MT17}
+\]
+These are full triples: their degree-minus-four coordinates are not set to zero. There is a concrete linear extension of the prescribed endpoint pastes,
+\[
+ \mathbf P^a_H{}^{,0}=\mathbf P_{o,H}+\Omega_T-\Omega_B.
+\tag{B.MT18}
+\]
+Its differential is \(\mathbf P^a_T-\mathbf P^a_B+\widehat{\mathbf R}_o(f_{o,H})\), and its target is the target of \(\mathbf P_{o,H}\). Its third coordinate is \(W_{o,H}+W_{\Omega_T}-W_{\Omega_B}\). If a different full \(\mathbf P^a_H\) with this boundary and target is prescribed, the difference \(\mathbf P^a_H-\mathbf P^a_H{}^{,0}\) is closed with target zero. The same whole Hom cone gives
+\[
+\begin{gathered}
+ \Omega_H=(u_H,0,v_H),\qquad |u_H|=-4,\quad |v_H|=-5,\\
+ D\Omega_H=\mathbf P^a_H-\mathbf P_{o,H}-\Omega_T+\Omega_B.
+\end{gathered}
+\tag{B.MT19}
+\]
+For the extension B.MT18 itself, \(\Omega_H=0\) satisfies this equation by construction. In both cases the retained family satisfies
+\(D\Omega(r)+\Omega(\partial r)=\mathbf P^a(r)-\mathbf P_o(r)\).
+Consequently
+\[
+ X^a(r)=X(r)-\Omega(r)a_0
+\tag{B.MT20}
+\]
+has the required comparison boundary with \(\mathbf P^a\) and the same actual target \(T(r)\). This follows by differentiating B.MT20 and using that \(a_0\) is closed; it includes the two endpoint terms at \(r_H\).
+
+The endpoint identification in this last construction is literal: B.OP and B.GI must use the same \(\theta\), mates and four faces, or carry their explicit comparison first. Independently prescribed inverse routes retain the B.GI15–18 displacement and its exactness criterion. B.MT18 is a linear extension of specified endpoint pastes; it does not identify an independently defined nonclosed multiplicative paste with that extension. Such an identification requires its actual family differential and the full comparison B.MT19. Changing-index arrays, geometric nearby-cycle descent and normalized coefficient completion therefore require their additional geometric and coefficient arguments. \(\square\)
+
+### Retain the mixed naturality target in an ordered paste
+
+**Proposition B.1bm (the mixed second-square comparison).** Allow both the first mate and the second geometric comparison in B.OP1 to vary over their specified mixed records. The square \(s_1h_0=hs\) is an endpoint identity. Its interval-family version has an explicit target homotopy, and the full comparison \(F_{a21}\) extends with that target, retaining its prescribed endpoint triples. The mixed third coordinate has degree \(-3\). This constructs the indicated square in the ordered paste, not the entire multiplicative family.
+
+Use a common whole model with the B.OP receiving replacements fixed. Let \(c_1\) and \(\theta_2\) be the actual first mate and second factorized comparison records, with
+\[
+ dc_{1,H}=c_{1,T}-c_{1,B},\qquad
+ d\theta_{2,H}=\theta_{2,T}-\theta_{2,B}.
+\tag{B.OPM1}
+\]
+Their endpoint maps are closed. The \(\theta_2\) record is whole graded-natural, including on the degree-minus-one \(c_{1,H}\). Thus these are stronger data than two unrelated endpoint homotopies. The coherent B.GI construction provides the comparison record on its stated common model; any separately prescribed route retains its B.GI15–18 displacement.
+
+#### 1. The interval product and its signs
+
+Give the free complex \(\mathcal R\) of B.MT1 the coproduct
+\[
+ \Delta r_E=r_E\otimes r_E\quad(E=T,B),\qquad
+ \Delta r_H=r_H\otimes r_B+r_T\otimes r_H.
+\tag{B.OPM2}
+\]
+This is a coassociative chain map. On \(r_H\), its differential is
+\((r_T-r_B)\otimes r_B+r_T\otimes(r_T-r_B)
+=r_T\otimes r_T-r_B\otimes r_B\).
+Both iterated coproducts are
+\(r_H\otimes r_B\otimes r_B+r_T\otimes r_H\otimes r_B+r_T\otimes r_T\otimes r_H\).
+The counit takes \(r_T,r_B\) to \(1\) and \(r_H\) to zero. No division by two and no cocommutativity assertion is involved.
+
+For homogeneous cochains \(A,B\) of degrees \(p,q\) with composable values in a dg category, set
+\[
+\begin{aligned}
+ \nabla A&=dA-(-1)^pA\partial,\\
+ (A\star B)_E&=A_EB_E,\\
+ (A\star B)_H&=(-1)^q A_HB_B+A_TB_H.
+\end{aligned}\tag{B.OPM3}
+\]
+The product is composition after B.OPM2, with the tensor sign
+\((-1)^{q|r_{(1)}|}\). Coassociativity proves associativity, and the chain-map identity gives
+\(\nabla(A\star B)=(\nabla A)\star B+(-1)^pA\star\nabla B\).
+These identities also follow by substituting the three displayed values. They apply to full decorated graph triples, including their third coordinates. Whole targets and structure maps in the square below are fixed, so all four arrow cochains lie in Hom complexes between fixed graph objects.
+
+#### 2. The target discrepancy is an explicit boundary
+
+Use the B.OP1 notation in each record degree:
+\[
+\begin{gathered}
+ s=\theta_{2,S_1Q_0},\qquad s_1=\theta_{2,Q_1},\\
+ h_0=L_2S_2c_1,\qquad h=V_2L_1c_1.
+\end{gathered}
+\tag{B.OPM4}
+\]
+All four are closed degree-zero cochains. Their mixed components have degree \(-1\). The actual target discrepancy is the closed cochain
+\(\mathcal N=s_1\star h_0-h\star s\). At the endpoints it is zero by naturality. At \(r_H\), its value is
+\[
+\begin{aligned}
+ \mathcal N_H
+  &=(s_1)_H(h_0)_B+(s_1)_T(h_0)_H\\
+  &\qquad-h_Hs_B-h_Ts_H\\
+  &=(h_B-h_T)s_H+h_H(s_T-s_B)\\
+  &=d(-h_Hs_H).
+\end{aligned}\tag{B.OPM5}
+\]
+For the second line, use naturality of the degree-minus-one \(\theta_{2,H}\) on the closed \(c_{1,B}\), and naturality of the degree-zero \(\theta_{2,T}\) on \(c_{1,H}\). The final line uses B.OPM1 and the odd degree of \(h_H\). Define the degree-minus-one target cochain
+\[
+ N_T=N_B=0,\qquad N_H=-h_Hs_H,
+ \qquad \nabla N=\mathcal N.
+\tag{B.OPM6}
+\]
+Here \(N_H:X_{21}\to V_2L_1Q_1\) has degree \(-2\). These are actual target maps before applying \(U_2\).
+
+The mixed discrepancy need not vanish even when all endpoint maps are invertible. For an algebraic example, take the graded-commutative dg algebra over \(\mathbf Q\)
+\[
+\begin{gathered}
+ A=\mathbf Q[a,b,x,y]/(a^2,ab,b^2),\\
+ |a|=|b|=0,\quad |x|=|y|=-1,\qquad dx=a,\quad dy=b.
+\end{gathered}
+\tag{B.OPM7}
+\]
+The odd variables are exterior variables. The defining ideal is differential-stable. Set \(c_B=1,c_T=1+a,c_H=x\) and \(\theta_B=1,\theta_T=1+b,\theta_H=y\). Scalar multiplication gives the graded naturality used above, and the endpoint inverses are \(1-a,1-b\). The mixed difference is \(xb-ay=-d(xy)\), which is nonzero: the two monomials \(xb,ay\) are independent in this quotient. This is a counterexample to inferring a strict family identity from endpoint naturality, not a claim about a particular geometric base-change square.
+
+#### 3. Lift the full square while preserving its endpoints
+
+Keep the actual whole replacement vertices \(A_{21},A_+,A_2,C_2\) of B.OP. Their targets are fixed at \(X_{21},Z_A,X_2,V_2L_1Q_1\), respectively. Lift the four closed target cochains \(s,h_0,h,s_1\) to closed degree-zero full graph cochains
+\[
+\begin{gathered}
+ i_A:A_{21}\to A_+,\qquad f:A_{21}\to A_2,\\
+ a_+:A_+\to C_2,\qquad v_2:A_2\to C_2,
+\end{gathered}
+\tag{B.OPM8}
+\]
+retaining their B.OP endpoint arrows. Such a relative lift exists: for each arrow, subtract \(D(0,t_H,0)\) from its prescribed endpoint difference, where \(t_H\) is its target's mixed component. The result is a closed zero-target element. The whole Hom cone through its receiving replacement supplies a full degree-minus-one primitive. Adding \((0,t_H,0)\) gives the required mixed arrow, including its degree-minus-two third coordinate. Every source here is whole h-projective, and every receiving map is a genuine replacement. No transported nonreplacement vertex or unit map is used in this lift.
+
+Put \(\mathcal D=v_2\star f-a_+\star i_A\). It is a closed degree-zero graph cochain with target \(\mathcal N\). Keep the prescribed endpoint comparisons \(F_T,F_B\) from B.OP2, so \(DF_E=\mathcal D_E\) and \((F_E)_Z=0\). Then
+\[
+\begin{gathered}
+ E_H=\mathcal D_H-F_T+F_B,\\
+ DE_H=0,\qquad (E_H)_Z=dN_H.
+\end{gathered}
+\tag{B.OPM9}
+\]
+The first identity follows from \(\nabla\mathcal D=0\). Write \(E_H=(A_H,dN_H,C_H)\), let \(q_A:A_{21}\to U_2X_{21}\) be the source structure map, and let \(q_C:C_2\to U_2V_2L_1Q_1\) be the receiving replacement. The full zero-target cone cycle is
+\[
+ (A_H,C_H+U_2(N_H)q_A)
+           \in\mathcal C_{q_C}(A_{21})^{-1}.
+\tag{B.OPM10}
+\]
+Indeed \(DE_H=0\) gives \(dC_H=q_CA_H-U_2(dN_H)q_A\); since \(q_A\) is closed, differentiating the second entry gives \(q_CA_H\). Whole Hom acyclicity supplies \(x_H,y_H\) with
+\[
+\begin{aligned}
+ dx_H&=A_H,\\
+ q_Cx_H-dy_H&=C_H+U_2(N_H)q_A,\\
+ |x_H|&=-2,\qquad |y_H|=-3.
+\end{aligned}\tag{B.OPM11}
+\]
+Thus the actual extended comparison is
+\[
+\begin{gathered}
+ (F_{a21})_H=(x_H,N_H,y_H),\\
+ D(F_{a21})_H+F_T-F_B=\mathcal D_H.
+\end{gathered}
+\tag{B.OPM12}
+\]
+Together with its unchanged endpoints this says
+\(\nabla F_{a21}=v_2\star f-a_+\star i_A\), with target exactly \(N\). If one factor has constant record, its mixed component is zero and this target correction vanishes. In general it cannot be discarded.
+
+In the later B.OP5–6 expressions the term \(-F_{a21}\star u_{21}\) contributes \(-N_H\) to the mixed target of \(E_{Fj}\), since the target of \(u_{21}\) is the constant identity. The term \(w_2\star F_{a21}\) contributes \((w_2)_Z N_H\) to that of \(E_{B21}\). The full target cancellations and mixed face fillers on this common whole model are proved in [B.NM11–16](#normalize-simultaneous-transport-and-fill-the-six-ordered-faces), using the actual transported second face and composite mate. The multiplicative triangle family and its exact geometric input remain required before applying B.MT19 to that paste. \(\square\)
+
+### Normalize simultaneous transport and fill the six ordered faces
+
+**Proposition B.1bn (mixed normalized transport on a common whole model).** Retain the interval coalgebra and simultaneous first and second records of B.1bm. The first seven-object graph has fixed underlying objects; its arrows are interval cochains, and its unit, replacement, counit and triangle arrows in (B.FG3)–(B.FG4) are constant. The outer whole dg functors are fixed, whereas their closed degree-zero comparison is an interval cochain that is graded natural in every component. Then normalized transport has explicit composition and unit-comparison homotopies. Its second face has target \(N(c_1)\), and its endpoint bridge has the additional target \(V_2e_1\star N(c_1)\). With these terms, all six residuals of (B.OP5)–(B.OP6) have zero target as full interval cochains. Each admits a full relative primitive preserving its prescribed endpoint primitives.
+
+The assertion concerns the displayed records on their common whole model. Identification with independently prescribed geometric inverse routes and the multiplicative triangle family requires their actual higher comparison; it is not a consequence of the six target cancellations.
+
+#### 1. Graph objects with varying structure maps
+
+Use \(\nabla\) and \(\star\) from (B.OPM2)–(B.OPM4). An interval graph object is a triple \((P,Z,q)\), where the underlying objects are fixed and \(q\) is a closed degree-zero interval cochain from \(P\) to \(\widehat UZ\). For a homogeneous arrow \(f=(a,w,h)\) of degree \(n\), put
+\[
+\begin{aligned}
+\mathbb D(a,w,h)&=(\nabla a,\nabla w,
+ q'\star a-\widehat U(w)\star q-\nabla h),\\
+(a',w',h')(a,w,h)&=
+ (a'\star a,w'\star w,
+ h'\star a+(-1)^{|f'|}\widehat U(w')\star h).
+\end{aligned}
+\tag{B.NM1}
+\]
+The graph proof (B.FG1), with its associative product and Leibniz differential replaced by \(\star,\nabla\), proves the dg axioms. Endpoint evaluation gives the corresponding endpoint graph. No structure map at a transported vertex is assumed to be a quasi-isomorphism. In particular its mixed component is retained, rather than identifying two different endpoint structure maps.
+
+Write \(A=\widehat L\Sigma\), \(B=\Omega L\) and let \(\sigma:A\to B\) be the outer comparison cochain. For a degree-\(n\) source cochain \(a:P\to P'\), define
+\[
+\begin{aligned}
+N(a)_T=N(a)_B&=0,\\
+N(a)_H&=(-1)^{n+1}B(a_H)\sigma_{P,H},\\
+\Delta(a)&=\sigma_{P'}\star A(a)-B(a)\star\sigma_P.
+\end{aligned}
+\tag{B.NM2}
+\]
+The degree of \(N(a)\) is \(n-1\). Whole graded naturality and \(\nabla\sigma=0\) give
+\[
+\begin{aligned}
+\Delta(a)&=\nabla N(a)+N(\nabla a),\\
+N(ba)&=N(b)\star A(a)+(-1)^{|b|}B(b)\star N(a).
+\end{aligned}
+\tag{B.NM3}
+\]
+Here the product in the second line is the interval product. For the first identity the endpoint terms vanish, and its mixed component is
+\[
+\Delta(a)_H=
+ \bigl(B(a_B)-B(a_T)\bigr)\sigma_{P,H}
+ +B(a_H)(\sigma_{P,T}-\sigma_{P,B}).
+\tag{B.NM4}
+\]
+Indeed \(\sigma_{P',H}A(a_B)=(-1)^nB(a_B)\sigma_{P,H}\), and the convolution contributes the second factor \((-1)^n\). Differentiate (B.NM2), using
+\(dB(a_H)=B((\nabla a)_H)+(-1)^n(B(a_T)-B(a_B))\).
+The term involving \((\nabla a)_H\) cancels against \(N(\nabla a)_H\), leaving (B.NM4). For the product identity insert
+\((ba)_H=(-1)^{|a|}b_Ha_B+b_Ta_H\), and move \(a_B\) past \(\sigma_H\) by graded naturality. The two resulting terms are exactly those on the right of (B.NM3). Thus these are identities in every homogeneous degree, including the nonclosed arrows.
+
+#### 2. The full transport and its composition homotopy
+
+For a fixed old graph object \(q:P\to UZ\), put \(e_q=\operatorname{Adj}^{-1}q\). For an old interval graph arrow \(f=(a,w,h):q\to q'\), write \(\beta_f=\operatorname{Adj}^{-1}h\). Define
+\[
+\begin{aligned}
+Tq&=(\Sigma P,\Omega Z,
+       \widehat{\operatorname{Adj}}(\Omega e_q\star\sigma_P)),\\
+T_1f&=\bigl(\Sigma a,\Omega w,
+       \widehat{\operatorname{Adj}}(
+       \Omega\beta_f\star\sigma_P+\Omega e_{q'}\star N(a))\bigr).
+\end{aligned}
+\tag{B.NM5}
+\]
+All transposes are taken on the admitted whole sources. They commute with differential and with precomposition by source arrows. The extra summand in (B.NM5) is part of the third coordinate. Its endpoints vanish; its mixed value has degree \(|f|-2\).
+
+The map \(T_1\) is a chain map. To check the third coordinate, transpose it. Subtracting the derivative of its last coordinate from the difference of the two structure-map products leaves
+\[
+\Omega\beta_{\mathbb Df}\star\sigma_P
+ +\Omega e_{q'}\star
+      (\Delta(a)-\nabla N(a))
+=\Omega\beta_{\mathbb Df}\star\sigma_P
+ +\Omega e_{q'}\star N(\nabla a).
+\tag{B.NM6}
+\]
+This is the third coordinate of \(T_1(\mathbb Df)\). The first two coordinates are chain maps directly.
+
+For composable \(f:q_0\to q_1\), \(g:q_1\to q_2\), with \(|g|=p\), set
+\[
+\begin{aligned}
+T_2(g,f)&=\bigl(0,0,
+ (-1)^{p+1}\widehat{\operatorname{Adj}}
+       (\Omega\beta_g\star N(a_f))\bigr),\\
+T_1(gf)-T_1(g)T_1(f)
+ &=\mathbb D T_2(g,f)+T_2(\mathbb Dg,f)
+       +(-1)^pT_2(g,\mathbb Df).
+\end{aligned}
+\tag{B.NM7}
+\]
+The degree of \(T_2(g,f)\) is \(|g|+|f|-1\), and its target and endpoint values vanish. To verify the identity, use the product rule for \(N\). The transposed third-coordinate difference is
+\[
+-\Omega\beta_g\star\Delta(a_f)
+ +(-1)^p\Omega
+     (\nabla\beta_g+\beta_{\mathbb Dg})\star N(a_f).
+\tag{B.NM8}
+\]
+Differentiating the third coordinate of \(T_2\) contributes an additional minus sign from (B.NM1). The three terms on the right of (B.NM7) therefore give precisely (B.NM8), by (B.NM3). This proves the stated composition homotopy with its full third coordinate; no higher functor identities are assumed here. It is zero whenever the source component of \(f\) is constant, and also whenever \(\beta_g=0\).
+
+At an old unit object put
+\[
+K_P=(1,\sigma_P,0):\nu'_P\longrightarrow T\nu_P,
+\qquad K^1(a)=(0,N(a),0):\nu'_P\longrightarrow T\nu_{P'}.
+\tag{B.NM9}
+\]
+The first arrow is closed. The unit-comparison square has the specified homotopy
+\[
+\begin{array}{ccc}
+\nu'_P&\xrightarrow{\ \widehat A(\Sigma a)\ }&\nu'_{P'}\\
+\downarrow K_P&&\downarrow K_{P'}\\
+T\nu_P&\xrightarrow{\ T_1(A(a))\ }&T\nu_{P'}
+\end{array}
+\]
+\[
+\begin{aligned}
+K_{P'}\widehat A(\Sigma a)-T_1(A(a))K_P
+ &=\mathbb D K^1(a)+K^1(\nabla a).
+\end{aligned}
+\tag{B.NM10}
+\]
+In this formula only, \(A(a)=(a,La,0)\) denotes the old unit graph arrow, as in B.UT; the functor \(\widehat L\Sigma\) in (B.NM2) remains unchanged. The two sides of (B.NM10) have coordinates \((0,\Delta(a),-\widehat{\operatorname{Adj}}N(a))\). This also explains the minus sign in the third coordinate: \(\widehat U(N(a))\widehat\eta_{\Sigma P}\) is its unit transpose. Thus the diagram displays a homotopy of full arrows, not a strict commutative square for a varying \(a\).
+
+#### 3. All four transported faces and the endpoint bridge
+
+Apply the construction to the first seven-object record, taking \(\Sigma=S_2\), \(\Omega=V_2\), \(\sigma=\vartheta_2\). All arrows below are total interval cochains; the original faces and bridge have degree minus one. Use the canonical new unit objects. At a nonunit target define the normalized degree-zero arrows by \(\bar g=T_1(g)K_i\), with \(K_i=1\) at a nonunit source. At a unit target use the canonical \(\widehat A(\Sigma a)\). Write \(K_0=K_{S_1Q_0}\), \(K_R=K_{S_1R_0}\), and \(c=c_1\). The full faces are
+\[
+\begin{aligned}
+\bar{\mathbf j}_U&=T_1(\mathbf j_U)K_0,\\
+\bar{\mathbf j}_F&=T_1(\mathbf j_F)K_0
+ +T_1(\mathbf u_1)K^1(c)
+ -T_2(\mathbf u_1,A(c))K_0,\\
+\bar{\mathbf j}_C&=T_1(\mathbf j_C)K_R
+ +T_2(\mathbf w,\mathbf c_M)K_R,\\
+\bar{\mathbf j}_\beta&=T_1(\mathbf j_\beta)
+ -T_2(\mathbf z_1,\mathbf a)+T_2(\mathbf w,\mathbf v),\\
+\bar{\mathbf b}&=T_1(\mathbf b)K_0
+ +T_1(\mathbf e_1)K^1(c).
+\end{aligned}
+\tag{B.NM11}
+\]
+They satisfy the four face equations (B.UT9), with total differential \(\mathbb D\), and
+\(\mathbb D\bar{\mathbf b}=\bar{\mathbf e}_1\bar{\mathbf c}_L-\bar{\mathbf c}_R\).
+Here the first record is closed as a total interval record; its mixed components need not be closed individually.
+
+For the second face, apply \(T_1\) to
+\(\mathbb D\mathbf j_F=\mathbf u_1A(c)-\mathbf a\mathbf u_X\).
+Equation (B.NM7) contributes \(\mathbb D T_2(\mathbf u_1,A(c))\); the other composition homotopy is zero because \(\mathbf u_X\) is constant. Equation (B.NM10) replaces \(T_1(A(c))K_0\) by \(K_{Q_1}\widehat A(S_2c)-\mathbb D K^1(c)\). This gives exactly the second line of (B.NM11). For the first face both rightmost source arrows are constant, so their composition homotopies vanish and their unit-comparison squares are strict. For the third face the only nonzero composition correction is \(-\mathbb D T_2(\mathbf w,\mathbf c_M)\), and for the fourth the two corrections have the signs displayed in (B.NM11). The bridge follows by the same unit-comparison calculation; \(\mathbf e_1\) has zero third coordinate, so its \(T_2\) term vanishes. This proves all five identities, including their third coordinates.
+
+Let \(N=N(c_1)\) and \(s=\vartheta_{2,S_1Q_0}\). The target coordinates are therefore
+\[
+\begin{aligned}
+(\bar{\mathbf j}_U)_Z&=V_2(V_1\lambda_0\star\vartheta_1)\star s,\\
+(\bar{\mathbf j}_F)_Z&=N,\\
+(\bar{\mathbf j}_C)_Z&=V_2(V_1\alpha_0\star\vartheta_{1,R_0})
+                         \star\vartheta_{2,S_1R_0},\\
+(\bar{\mathbf j}_\beta)_Z&=V_2\beta_1,\\
+(\bar{\mathbf b})_Z&=V_2\beta_1\star s+V_2e_1\star N.
+\end{aligned}
+\tag{B.NM12}
+\]
+The target of \(\mathbf u_1\) is the identity, and that of \(\mathbf e_1\) is \(e_1\); all \(T_2\) targets vanish. These facts give the second and fifth lines without suppressing their full witnesses. Every correction in (B.NM11) vanishes at both endpoints. In the mixed component the \(T_2\) third coordinates have degree minus three, so they cannot be discarded merely because their target coordinates vanish.
+
+#### 4. The actual composite mate and the six targets
+
+Retain the notation \(s,s_1,h_0,h,t\) of (B.OP1), now with interval products. Put \(\vartheta_{21}=t\star s\). The composite source mate is \(c_{21}=c_2\star S_2c_1\), and its actual witness has transpose
+\[
+\beta_{21}=\beta_2\star h_0+V_2\beta_1\star s
+                         +V_2e_1\star N.
+\tag{B.NM13}
+\]
+This is the full graph product \(\mathbf m_Q\bar{\mathbf c}_R\): (B.NM5) contributes \(V_2e_1\star N(c_1)\) because the receiving old structure map has transpose \(e_1\), and the third coordinate of \(\mathbf m_Q\) contributes \(\beta_2\star h_0\). It therefore retains the original nested mate, rather than choosing a different endpoint witness.
+
+One can also verify its boundary directly. The differential of the first two summands is
+\(e_2L_2c_{21}-V_2V_1e_0\star\vartheta_{21}-V_2e_1\star\Delta(c_1)\).
+Equation (B.NM3) says \(\nabla N=\Delta(c_1)\). The last summand supplies the missing term. Its endpoints are zero, so (B.NM13) agrees with (B.OP7) at the prescribed endpoints.
+
+Choose the full comparisons in (B.OP2)–(B.OP3) relatively with their prescribed endpoints. All have zero target except \(\mathbf F_{a,21}\), whose target is \(N\) as in B.OPM. This choice is possible: their receiving vertices are genuine whole replacements, and the kernel of target projection is the whole acyclic cone of that receiving replacement. This remains true for a varying source structure map, since a zero target arrow has differential \((\nabla a,0,q'\star a-\nabla h)\), independent of the source structure map. The prescribed nonzero target of \(\mathbf F_{a,21}\) has precisely the boundary established in (B.OPM6)–(B.OPM11). The other target boundaries agree as cochains, not just at endpoints. The arrows \(\mathbf h_{U,2},\mathbf G_z\) in (B.OP4) keep zero target: their defining target differences agree, and the source arrows in \(L\) and \(B_\alpha\) are constant.
+
+Use (B.NM11) for the transported faces, and (B.NM13) for the composite witness in the composite four-face record. Put \(\lambda'=V_2V_1\lambda_0\), \(\alpha'=V_2V_1\alpha_0\). The six target computations are
+\[
+\begin{array}{c|l}
+\text{residual}&\text{target cochain}\\ \hline
+E_U&\lambda'\star t\star s-\lambda'\star\vartheta_{21}=0\\
+E_{Fj}&N-N=0\\
+E_F&0\\
+E_C&\alpha'\star\vartheta_{21,R_0}
+          -\alpha'\star\vartheta_{21,R_0}=0\\
+E_{Bo}&V_2\beta_1-V_2\beta_1=0\\
+E_{B21}&\beta_2\star h_0+V_2\beta_1\star s
+                 -\beta_{21}+V_2e_1\star N=0.
+\end{array}
+\tag{B.NM14}
+\]
+In particular the two occurrences of \(N\) in the second row come from the actual transported second face and \(-\mathbf F_{a,21}\mathbf u_{21}\), respectively. The last row uses the actual composite mate witness. The other comparison terms have zero target. These cancellations would fail if either of those two prescribed terms were omitted.
+
+#### 5. Full relative primitives
+
+The residuals are closed total degree-minus-one graph cochains. This follows by substituting the four face identities and the full comparison equations (B.OP2)–(B.OP4) in (B.OP5)–(B.OP6); the signed words cancel in the dg category (B.NM1). For example the boundary of \(E_{Fj}\) is
+\[
+\begin{aligned}
+&\mathbf m_R(\bar{\mathbf u}_1\mathbf l_1
+                         -\bar{\mathbf a}\bar{\mathbf u}_X)
+ -(\mathbf m_R\bar{\mathbf u}_1-\mathbf v_2\mathbf u_{X,2})\mathbf l_1\\
+&\quad+\mathbf a^+(\mathbf m_A\bar{\mathbf u}_X-\mathbf i_A\mathbf u_{21})
+ -(\mathbf v_2\mathbf f-\mathbf a^+\mathbf i_A)\mathbf u_{21}\\
+&\quad+\mathbf v_2(\mathbf f\mathbf u_{21}-\mathbf u_{X,2}\mathbf l_1)
+ +(\mathbf m_R\bar{\mathbf a}-\mathbf a^+\mathbf m_A)\bar{\mathbf u}_X=0.
+\end{aligned}
+\tag{B.NM15}
+\]
+The other five substitutions are the same full-arrow identities used in B.OP; (B.NM11) supplies exactly those identities for simultaneous transport. No commutation of interval cochains is used in these cancellations.
+
+For any one residual \(E\), retain its prescribed endpoint primitives \(H_T,H_B\), of degree minus two, with zero target. Write
+\(Z=E_H+H_T-H_B\).
+Since \(\mathbb D E_H=-E_T+E_B\), this is a closed zero-target graph arrow of degree minus two. If its coordinates are \((A,0,C)\), the whole cone of the genuine receiving replacement \(q'\) gives
+\[
+\begin{aligned}
+dx&=A,&q'x-dy&=C,\\
+H_H&=(x,0,y),& |x|&=-3,\quad |y|=-4.
+\end{aligned}
+\tag{B.NM16}
+\]
+Together with the fixed endpoints this yields \(\mathbb D H=E\) as interval cochains. Apply it at the six receivers \(C^+,C_2,R_2,Q_2,Q_2,Q_2\) of (B.OP7). Their whole h-projectivity and quasi-isomorphism hypotheses are precisely those of the original ordered paste. No unit vertex or transported nonreplacement is used as an acyclic receiving cone. The degree-minus-four coordinate \(y\) is the mixed third witness of the chosen face primitive.
+
+Thus all six face primitives exist with their original endpoint values and their complete mixed witnesses. The full multiplicative triangle and its second witness on these common-model records are constructed in [B.MTP3–15](#carry-the-full-triangle-through-simultaneous-transport). Literal matching to a separately prescribed GI/MT geometric input, comparison with independently fixed inverse routes and coherence over changing indices retain their stated proof obligations. \(\square\)
+
+### Carry the full triangle through simultaneous transport
+
+**Proposition B.1bo (the multiplicative triangle on the specified common model).** Use the simultaneous whole-model records of B.1bn, including their full first and second triangle cochains and the six relative face primitives of (B.NM16). The corrected normalized first triangle has an explicit formula in \(T_1,T_2\). The ordered paste (B.OP12), formed with this triangle and the actual normalized faces, is a total interval primitive of the composite discrepancy and has its prescribed target. It preserves the original endpoint pastes and their second witnesses. Its comparison with any compatible composite triangle family admits the specified endpoint comparison and a mixed third coordinate of degree minus five.
+
+All statements are in the whole interval graph category (B.NM1). The identification of separately prescribed geometric records with these inputs, comparison with other inverse routes, and coherence over changing geometric indices are additional assertions.
+
+#### 1. The triangle correction forced by composition
+
+Retain the first record's notation \(\mathbf c_L=A(c)\), \(\mathbf J_0,\mathbf J_1\), \(\mathbf u_X,\mathbf u_1,\mathbf z_1,\mathbf w\), and \(\mathbf j_U,\mathbf j_F,\mathbf j_C,\mathbf j_\beta,\mathbf b\) from (B.FG3)–(B.FG12). These are total interval cochains: the four faces and bridge have degree minus one, and
+\[
+\mathbb D\mathbf P_1=\widehat{\mathbf R}_1,
+\qquad
+\widehat{\mathbf R}_1=
+ \mathbf c_R\mathbf J_0-\mathbf J_1A(c)-\mathbf B_1-\mathbf b.
+\tag{B.MTP1}
+\]
+Thus \(\mathbf P_1\) has degree minus two, including its actual mixed third coordinate of degree minus four. The original \(\mathbf J_1=(J_1,0,K_1)\), its differential, and the fixed arrows of (B.FG3) are constant in the first record. The outer comparison \(\sigma=\vartheta_2\) still varies.
+
+Let \(K_0=K_{S_1Q_0}\). Use the corrected faces and bridge (B.NM11) and the canonical new unit arrows. The transported terminal triangle is
+\[
+\bar{\mathbf J}_1=T_1(\mathbf J_1)K_{Q_1},
+\qquad
+\mathbb D\bar{\mathbf J}_1
+ =\bar{\mathbf z}_1\bar{\mathbf u}_1-\bar{\mathbf e}_1.
+\tag{B.MTP2}
+\]
+Indeed the source component of \(\mathbf u_1\) is constant, so \(T_2(\mathbf z_1,\mathbf u_1)=0\). The initial triangle \(\bar{\mathbf J}_0\) is the canonical unit arrow on its transported source. Its source component and differential are constant, so its unit-comparison square is strict by (B.NM2)–(B.NM3).
+
+Define a degree-minus-two full correction and triangle by
+\[
+\begin{aligned}
+\mathcal C={}&T_2(\mathbf J_1,A(c))
+ +T_2(\mathbf w,\mathbf j_U)-T_2(\mathbf z_1,\mathbf j_F),\\
+\bar{\mathbf P}_1={}&T_1(\mathbf P_1)K_0+\mathcal C K_0.
+\end{aligned}
+\tag{B.MTP3}
+\]
+Then
+\[
+\begin{aligned}
+\mathbb D(\mathcal C K_0)
+ &=\widehat{\mathbf R}_{1T}-T_1(\widehat{\mathbf R}_1)K_0,\\
+\mathbb D\bar{\mathbf P}_1&=\widehat{\mathbf R}_{1T},\\
+\widehat{\mathbf R}_{1T}
+ &=\bar{\mathbf c}_R\bar{\mathbf J}_0
+   -\bar{\mathbf J}_1\bar{\mathbf c}_L
+   -\bar{\mathbf B}_1-\bar{\mathbf b}.
+\end{aligned}
+\tag{B.MTP4}
+\]
+Here \(\bar{\mathbf B}_1\) is the signed four-face sum of the actual faces (B.NM11), not the image of the old sum under an assumed strict functor.
+
+We prove the correction identity without invoking unspecified higher functor relations. If \(k\) has degree zero and constant source component, (B.NM3), (B.NM7) and the full graph product give
+\[
+\begin{aligned}
+T_2(g,fk)&=T_2(g,f)T_1(k),\\
+T_2(\mathbf z_1\mathbf u_1,A(c))
+ &=T_2(\mathbf z_1,\mathbf u_1A(c))
+   +T_1(\mathbf z_1)T_2(\mathbf u_1,A(c)),\\
+T_2(\mathbf e_1,A(c))&=0.
+\end{aligned}
+\tag{B.MTP5}
+\]
+The first line uses \(N(a_fa_k)=N(a_f)\star\widehat L\Sigma(a_k)\). For the second, \(N(u_1)=0\) and
+\(\beta_{z_1u_1}=\beta_{z_1}Lu_1+e_1\beta_{u_1}\).
+The two summands of this transpose give the two right-hand third coordinates, while all first and target coordinates vanish. The last line follows from the zero third coordinate of \(\mathbf e_1\).
+
+Put \(Q=K^1(c)\). Both \(T_1(\mathbf J_1)Q\) and \(T_1(\mathbb D\mathbf J_1)Q\) are zero full arrows: \(Q\) has zero source and third coordinates, while these left factors have zero target. Expand (B.MTP1) by (B.NM7), and expand the normalized four-face sum by (B.NM11). The differentiated terms are exactly
+\(\mathbb D(T_2(\mathbf J_1,A(c))+T_2(\mathbf w,\mathbf j_U)-T_2(\mathbf z_1,\mathbf j_F))K_0\).
+The remaining terms are zero by
+\[
+\begin{aligned}
+T_2(\mathbb D\mathbf J_1,A(c))={}&
+ -T_2(\mathbf w,\mathbb D\mathbf j_U)
+ +T_2(\mathbf z_1,\mathbb D\mathbf j_F)\\
+&+T_2(\mathbf w,\mathbf c_M)T_1(\mathbf s_u)
+ +T_2(\mathbf z_1,\mathbf a)T_1(\mathbf u_X)\\
+&-T_2(\mathbf w,\mathbf v)T_1(\mathbf u_X)
+ +T_1(\mathbf z_1)T_2(\mathbf u_1,A(c)).
+\end{aligned}
+\tag{B.MTP6}
+\]
+To see this equality, substitute
+\(\mathbb D\mathbf j_U=\mathbf c_M\mathbf s_u-\mathbf v\mathbf u_X\),
+\(\mathbb D\mathbf j_F=\mathbf u_1A(c)-\mathbf a\mathbf u_X\), and
+\(\mathbb D\mathbf J_1=\mathbf z_1\mathbf u_1-\mathbf e_1\).
+The \(\mathbf c_M\mathbf s_u\), \(\mathbf v\mathbf u_X\) and \(\mathbf a\mathbf u_X\) terms cancel by the first line of (B.MTP5); the other two lines give the remaining equality. The unit-comparison terms cancel because
+\((T_1(\mathbf z_1)T_1(\mathbf u_1)-T_1(\mathbf e_1))Q=0\).
+This is the second zero full arrow just identified. These substitutions prove (B.MTP4) with all three coordinates.
+
+#### 2. Retain both original second witnesses
+
+Write \(\mathbf P_1=(P_1,\gamma_1,W_1)\), \(s=\vartheta_{2,S_1Q_0}\), and \(\beta_w,\beta_z\) for the transposes of the third coordinates of \(\mathbf w,\mathbf z_1\). The source and target coordinates of (B.MTP3) are
+\[
+(\bar{\mathbf P}_1)_{\rm src}=S_2P_1,
+\qquad
+(\bar{\mathbf P}_1)_Z=V_2\gamma_1\star s.
+\tag{B.MTP7}
+\]
+Its full third coordinate is the transpose under the receiving adjunction of
+\[
+\begin{aligned}
+&V_2(\operatorname{Adj}_1^{-1}W_1)\star s
+ +V_2e_1\star N(P_1)\\
+&\qquad+V_2\Gamma_1\star N(c_1)
+ -V_2\beta_w\star N(J_U)
+ +V_2\beta_z\star N(J_F),\\
+&\Gamma_1=\operatorname{Adj}_1^{-1}K_1.
+\end{aligned}
+\tag{B.MTP8}
+\]
+The inputs of \(N\) in this formula are source-coordinate cochains. Its first two terms come from (B.NM5), and the three signs of the other terms come from (B.NM7): \(|\mathbf J_1|=-1\), whereas \(|\mathbf w|=|\mathbf z_1|=0\). Composition with \(K_0\) leaves the third coordinate unchanged. In particular the mixed value of the first summand includes
+\(V_2(\operatorname{Adj}_1^{-1}W_{1,H})s_B\).
+The additional summands retain the original \(K_1\) and the original third coordinates of the replacement and counit arrows. Their endpoints vanish because every \(N\) has zero endpoint values.
+
+The initial witness \(\Gamma_0=\operatorname{Adj}_0^{-1}K_0^{\rm old}\), with the superscript distinguishing it from the unit comparison, occurs in
+\(\gamma_1=V_1\Gamma_0\star\vartheta_1\).
+It is the complete original witness, including the second folding coefficient of (B.NT7). Thus (B.MTP7) retains the initial witness and (B.MTP8) retains the intermediate witness; neither is inferred from an endpoint identity.
+
+#### 3. Paste the two full triangle families
+
+Use all the ordered objects and arrows of B.OP, with their full interval versions from B.NM. The symbols with subscript \(T\) in the following formulas mean normalized transport, not the top endpoint of the interval. In particular \(P_{1T}=\bar{\mathbf P}_1\), and \(j_{FT}\) has target \(N(c_1)\).
+
+The original intermediate triangle has constant source coordinate. Consequently \(N(J_1)=N(dJ_1)=0\), and the derivation of (B.OP8) applies to its full transported arrow. With the retained \(\Gamma_1\), it gives
+\[
+\begin{aligned}
+G&=(0,\gamma_2,0),& \gamma_2&=V_2\Gamma_1\star s_1,\\
+\mathbb DG&=C_\triangle-B_\alpha s_{u1}-m_Qz_TL,\\
+C_\triangle&=m_QE_QJ_{01}-m_QJ_{1T}.
+\end{aligned}
+\tag{B.MTP9}
+\]
+These are full-arrow equalities. The fixed-arrow composition homotopies vanish because their right source components are constant; the nonzero bridge in (B.MTP9) comes from \(K_1\), exactly as in (B.HB5)–(B.HB6).
+
+Form the three four-face sums \(B_T,B_2,B_{21}\) of (B.OP9), using the actual normalized and composite faces. Retain the six full primitives \(H_U,H_{Fj},H_F,H_C,H_{Bo},H_{B21}\) constructed in B.NM. The ordered expressions are
+\[
+\begin{aligned}
+\Psi={}&G_{w21}j_{U21}-G_{wT}j_{UT}-B_+F_u
+                   +j_{B2}K_f+G_zj_{FT},\\
+H_\Sigma={}&H_{Bo}u_T-H_Csu-w_+H_U
+                    +H_{B21}u_{21}+z_2H_F+w_2H_{Fj},\\
+K_{\rm paste}={}&G_zLl_1+\Psi+H_\Sigma,\\
+B_{\rm comp}={}&m_QB_T+(B_2-C_\triangle)l_1.
+\end{aligned}
+\tag{B.MTP10}
+\]
+All products are those of the interval graph category. The degree of \(G,K_{\rm paste}\) is minus two. The full boundary is
+\[
+B_{21}-B_{\rm comp}=\mathbb D(Gl_1+K_{\rm paste}).
+\tag{B.MTP11}
+\]
+For a direct verification substitute \(\mathbb DH_\nu=E_\nu\) from (B.OP5)–(B.OP6) into \(\mathbb DH_\Sigma\). Terms containing the six full faces combine to \(B_{21}-m_QB_T\). The comparison-arrow products combine with \(\mathbb D\Psi\). After their cancellation the remaining second-square identity is
+\[
+\begin{aligned}
+B_2-\bigl(G_zu_{1T}+w_2h_{U2}
+              -j_{B2}u_{X2}-z_2j_{F2}\bigr)
+ =C_\triangle-\mathbb DG-\mathbb D(G_zL).
+\end{aligned}
+\tag{B.MTP12}
+\]
+Indeed use \(j_{C2}=G_zE_R+B_\alpha\),
+\(j_{U2}=h_{U2}+m_RL\),
+\(\mathbb DL=E_Rs_{u1}-u_{1T}\),
+\(\mathbb DG_z=m_Qz_T-w_2m_R\), and (B.MTP9). On the left the terms containing \(j_{B2},j_{F2},h_{U2}\) cancel directly. Both sides reduce to
+\(G_zE_Rs_{u1}+B_\alpha s_{u1}+w_2m_RL-G_zu_{1T}\).
+This gives (B.MTP11). The calculation uses associativity and the graded Leibniz rule, not commutation of the two varying records.
+
+The corrected endpoint bridge is still the full product
+\(b_{21}=b_2l_1+m_Qb_{1T}\).
+By (B.NM11) and (B.NM13), its target includes the prescribed \(V_2e_1\star N(c_1)\). The full assembled primitive is
+\[
+\begin{aligned}
+P_{\rm ass}&=m_QP_{1T}+P_2l_1-Gl_1-K_{\rm paste},\\
+\mathbb DP_{\rm ass}&=\widehat R_{21},\\
+(P_{\rm ass})_Z&=\gamma_{21}
+                  =V_2V_1\Gamma_0\star\vartheta_{21}.
+\end{aligned}
+\tag{B.MTP13}
+\]
+To check the boundary, write
+\(\widehat R_{1T}=c_{RT}\bar J_0-J_{1T}l_1-B_T-b_{1T}\) and
+\(\widehat R_2=m_QE_QJ_{01}-J_2l_2-B_2-b_2\).
+The boundary of the first two terms of \(P_{\rm ass}\), less \(\widehat R_{21}\), is exactly \(B_{21}-B_{\rm comp}\). Equation (B.MTP11) cancels it. In the target, \(K_{\rm paste}\) is zero: each term contains a zero-target comparison or face primitive, including \(G_zj_{FT}\), despite the nonzero target of \(j_{FT}\). The \(\gamma_2\star h_0\) from \(P_2l_1\) is canceled by \(Gl_1\). The other target is (B.MTP7), equal to the displayed \(\gamma_{21}\) by associativity and the degree-minus-two constant \(\Gamma_0\). These are identities of whole interval cochains, before applying \(U_2\).
+
+Every \(T_2\) and \(N\) correction in (B.MTP3) vanishes at the endpoints; the six \(H_\nu\) retain their prescribed endpoints by B.NM. Hence the endpoints of \(P_{\rm ass}\) are exactly the original ordered pastes (B.OP12), with the same original triangle choices.
+
+#### 4. The full comparison to a prescribed composite family
+
+Let \(P_{21,T},P_{21,B}\) be compatible endpoint composite primitives with target \(\gamma_{21,T},\gamma_{21,B}\). There is a full interval primitive \(P_{21}\) with these endpoints and target \(\gamma_{21}\). Indeed put
+\[
+E=\widehat R_{21,H}+P_{21,T}-P_{21,B}=(A,d\gamma_{21,H},C).
+\tag{B.MTP14}
+\]
+It is closed of graph degree minus two, by the interval differential. Its displayed target follows from (B.MTP13). If \(\eta\) is the source unit and \(q_2\) the genuine receiving replacement, subtracting the graph differential of \((0,\gamma_{21,H},0)\) leaves the whole cone cycle \((A,C+U_2(\gamma_{21,H})\eta)\). Choose its full primitive \((x,y)\), of degrees minus three and minus four, and put \(P_{21,H}=(x,\gamma_{21,H},y)\). Then
+\(\mathbb DP_{21}=\widehat R_{21}\).
+If a compatible composite family was already specified, retain that family instead; this construction is not a replacement for its given mixed value.
+
+Now retain any prescribed endpoint comparisons \(\Omega_T,\Omega_B\) from (B.OP13), with zero target and
+\(\mathbb D\Omega_E=P_{{\rm ass},E}-P_{21,E}\).
+Write \(D=P_{\rm ass}-P_{21}\). It is a closed degree-minus-two interval cochain with zero target. Therefore
+\[
+\begin{aligned}
+Z&=D_H-\Omega_T+\Omega_B,
+                &\mathbb DZ&=0,\\
+\Omega_H&=(u,0,v),
+                &\mathbb D\Omega_H&=Z,\\
+|u|&=-4,&|v|&=-5,\\
+\mathbb D\Omega&=P_{\rm ass}-P_{21}.&&
+\end{aligned}
+\tag{B.MTP15}
+\]
+The middle line is a whole zero-target cone lift through \(q_2\), on the fixed whole h-projective source. Its third coordinate \(v\) is retained. The sign is fixed by the total degree minus three of \(\Omega\): its mixed differential is \(d\Omega_H+\Omega_T-\Omega_B\). No unit map is assumed to be a quasi-isomorphism.
+
+This constructs the actual multiplicative paste of the stated two records, rather than a linear interpolation between its endpoints. Its use for a separately fixed GI/MT geometric record still requires literal identification of that record's four faces and triangle data, with the actual common roofs and old-route differences. Coherence over all changing indices, geometric nearby-cycle descent and the subsequent coefficient completion retain their stated proof obligations. \(\square\)
+
+### Keep the intermediate compactification in the geometric inverse
+
+**Proposition B.1bp (the geometric middle exchange and its interval inverse).** The horizontal inverse record of B.GI has explicit left and right contraction cochains, with its given normalized endpoint contractions. Its source projection transfers through the actual factorized augmentation roofs as a whole-kernel inverse record. For the two successive base changes of B.PR, the first path ends at the standard compactification in the middle row, whereas the second begins at that row's proper–open factorization. Inserting the actual exchange inverse gives a typed composite inverse family. Its closed comparison cochains have the source and target required by B.NM and B.MTP.
+
+This determines the intermediate compactification and the inverse-family input. The comparison of the resulting forward word with the separately fixed ordered B.PR path, and the full mate and triangle identification on the KC/HN roofs, retain their further comparison data.
+
+#### 1. Both contraction cochains of the given geometric inverse
+
+Work first in the full graph category of B.GI. Write one horizontal forward family as \(\beta\), its forward homotopy as \(H=\beta_H\), and its endpoint inverse packages as \(\theta_E,\ell_E,r_E,\tau_E\), where here \(\ell_E=\ell_E^c\) is the normalized contraction of (B.GI3). Thus
+\[
+\begin{aligned}
+dH&=\beta_T-\beta_B,&
+d\ell_E&=\theta_E\beta_E-1,\\
+dr_E&=\beta_E\theta_E-1,&
+d\tau_E&=\beta_E\ell_E-r_E\beta_E.
+\end{aligned}
+\tag{B.GMI1}
+\]
+All symbols in this part are full graph arrows, so their third coordinates are included in products and differentials. Retain the actual mixed inverse of (B.GI4), and define
+\[
+\begin{aligned}
+\theta_H&=-\theta_TH\theta_B+\ell_T\theta_B-\theta_Tr_B,\\
+r_H&=-r_TH\theta_B-r_Tr_B+\tau_T\theta_B,\\
+\ell_H&=\theta_TH\ell_B-\ell_T\ell_B+\theta_T\tau_B.
+\end{aligned}
+\tag{B.GMI2}
+\]
+The degrees of the last two arrows are minus two. With the original endpoint values these give interval cochains satisfying
+\[
+\nabla\theta=0,\qquad
+\nabla r=\beta\star\theta-1,\qquad
+\nabla\ell=\theta\star\beta-1.
+\tag{B.GMI3}
+\]
+The first two identities are (B.GI5) on the horizontal side: explicitly,
+\(dr_H+r_T-r_B=H\theta_B+\beta_T\theta_H\).
+For the left identity, substitution of the first line of (B.GMI2) gives
+\[
+\begin{aligned}
+\theta_H\beta_B+\theta_TH-\ell_T+\ell_B
+={}&-\theta_TH\,d\ell_B+\ell_Td\ell_B
+      -\theta_Tr_B\beta_B+\ell_B\\
+={}&d(\theta_TH\ell_B-\ell_T\ell_B+\theta_T\tau_B).
+\end{aligned}
+\tag{B.GMI4}
+\]
+For the second equality use \(r_B\beta_B=\beta_B\ell_B-d\tau_B\) and
+\(1-\theta_T\beta_B=-d\ell_T+\theta_TdH\).
+This is exactly the mixed component of the last equation in (B.GMI3), since the total degree of \(\ell\) is minus one. The original unnormalized endpoint contractions are still distinct data, with their displacement given by (B.GI15)–(B.GI18); (B.GMI2) does not identify them with the normalized ones.
+
+#### 2. Transfer to the actual factorized kernel functors
+
+Take the source projection of these full graph cochains. In this paragraph every formula is in the whole bimodule Hom complexes of the factorized kernels, before evaluation on a particular source module. For one of the two geometric paths write
+\[
+\begin{gathered}
+p:A\longrightarrow\bar A,\qquad q:B\longrightarrow\bar B,\\
+q\star\beta=\bar\beta\star p,\qquad
+\bar\theta=p\star\theta\star\eta,\\
+d\ell^q=\eta q-1,\qquad dr^q=q\eta-1.
+\end{gathered}
+\tag{B.GMI5}
+\]
+Here \(p,q,\eta,\ell^q,r^q\) are the fixed augmentation package of (B.GI13a)–(B.GI13c). The first equality of cochains holds also at \(H\), because (B.FP2) is strict on the entire mixed index, including its prescribed mixed cell. The constants in this paragraph are regarded as interval cochains. Choose a whole inverse \(\zeta\) of \(p\) and its fixed right contraction \(r^p\), so that \(dr^p=p\zeta-1\). Such an inverse exists between these whole h-projective kernel models by B.ND7. Keep its left contraction and the original roof witnesses as well.
+
+The right contraction and a left contraction of \(\bar\theta\) are explicitly
+\[
+\begin{aligned}
+\bar r&=r^q+q\star r\star\eta,\\
+\Delta&=\bar\theta\star\bar\beta-1,\\
+C&=p\star\ell+p\star\theta\star\ell^q\star\beta,\\
+\bar\ell&=C\star\zeta-\Delta\star r^p.
+\end{aligned}
+\tag{B.GMI6}
+\]
+Indeed \(\bar\beta\star\bar\theta=q\star\beta\star\theta\star\eta\), proving
+\(\nabla\bar r=\bar\beta\star\bar\theta-1\).
+Also \(\nabla C=\Delta\star p\): expand (B.GMI3), use \(\eta q=1+d\ell^q\), and use the strict equality in (B.GMI5). Since \(\Delta\) is closed of degree zero,
+\[
+\nabla\bar\ell
+ =\Delta\star p\zeta-\Delta\star(p\zeta-1)
+ =\bar\theta\star\bar\beta-1.
+\tag{B.GMI7}
+\]
+The right endpoint contraction is exactly the one displayed after (B.GI13d). Formula (B.GMI6) specifies the left contraction rather than inferring its mixed component from the endpoint equations. A different already prescribed left contraction keeps its closed difference from this choice.
+
+The full evaluation and compositor witnesses in (B.FP4)–(B.FP9) remain attached to \(p,q\) and their comparisons. Equations (B.GMI5)–(B.GMI7) concern their whole-kernel source projections. In particular strictness in (B.GMI5) does not assert that the separately chosen full compositor witnesses vanish or that their graph lifts are strict. Those full coordinates are needed in the subsequent mate and triangle comparison.
+
+#### 3. The middle row has two different compactification words
+
+Use the cartesian rows \(r=0,1,2\) of B.PR. In right-kernel order put
+\[
+L_r^-=H_{h_r}\otimes H_{i_r},\qquad
+L_r^+=H_{k_r}\otimes H_{p_r},\qquad
+\varepsilon_r:L_r^-\longrightarrow L_r^+.
+\tag{B.GMI8}
+\]
+These are the actual proper–open and standard compactification words. The map \(\varepsilon_r\) is the exchange block (B.FK4), with its signed evaluation and full witness (B.FK5)–(B.FK9), not a relabelling of its source. The chosen whole models are h-projective and this block is a quasi-isomorphism, by B.FK. Choose a whole inverse \(\mu_1:L_1^+\to L_1^-\) of the middle block, retaining
+\[
+d a_1=\mu_1\varepsilon_1-1_{L_1^-},\qquad
+d b_1=\varepsilon_1\mu_1-1_{L_1^+}.
+\tag{B.GMI9}
+\]
+These are fixed cochains in the base-change interval. If an inverse and its witnesses are already specified, retain them. They are not assumed to be zero.
+
+Write \(V_i=A_{D,i}\), \(S_i=A_{U,i}\), with their chosen whole-kernel models. The actual first and second path families, transferred by (B.GMI5)–(B.GMI7), have types
+\[
+\begin{aligned}
+\beta_1 &: V_1L_0^-\longrightarrow L_1^+S_1,
+&\theta_1 &: L_1^+S_1\longrightarrow V_1L_0^-,\\
+\beta_2 &: V_2L_1^-\longrightarrow L_2^+S_2,
+&\theta_2 &: L_2^+S_2\longrightarrow V_2L_1^-.
+\end{aligned}
+\tag{B.GMI10}
+\]
+They have full interval contraction cochains, denoted \(\ell_i,r_i\), as in (B.GMI3). The first and second inverse families cannot be composed through an identification of \(L_1^-\) and \(L_1^+\). On the standard middle word define instead
+\[
+\begin{aligned}
+\beta_2^+&=\beta_2\star V_2\mu_1,
+&\theta_2^+&=V_2\varepsilon_1\star\theta_2,\\
+r_2^+&=r_2+\beta_2\star V_2a_1\star\theta_2,\\
+\ell_2^+&=V_2b_1+V_2\varepsilon_1\star\ell_2\star V_2\mu_1.
+\end{aligned}
+\tag{B.GMI11}
+\]
+Both comparison maps are closed. Their exact inverse equations are
+\(\nabla r_2^+=\beta_2^+\star\theta_2^+-1\) and
+\(\nabla\ell_2^+=\theta_2^+\star\beta_2^+-1\).
+For the first, expand \(\mu_1\varepsilon_1=1+da_1\); for the second expand \(\theta_2\star\beta_2=1+\nabla\ell_2\), then \(\varepsilon_1\mu_1=1+db_1\). These substitutions give exactly the two last lines of (B.GMI11). They apply to the mixed components as well as the endpoints.
+
+#### 4. The typed geometric composite inverse
+
+Set \(B=V_2\beta_1\), \(\Theta_B=V_2\theta_1\), \(C=\beta_2^+S_1\), \(\Theta_C=\theta_2^+S_1\), and whisker the corresponding contractions by the same functors. The geometric forward word and its inverse are
+\[
+\begin{aligned}
+\beta_{21}^{\rm fac}&=C\star B
+ = (\beta_2S_1)\star(V_2\mu_1S_1)\star(V_2\beta_1),\\
+\theta_{21}^{\rm fac}&=\Theta_B\star\Theta_C
+ =V_2\theta_1\star(V_2\varepsilon_1S_1)\star(\theta_2S_1),\\
+r_{21}^{\rm fac}&=r_C+C\star r_B\star\Theta_C,\\
+\ell_{21}^{\rm fac}&=\ell_B+\Theta_B\star\ell_C\star B.
+\end{aligned}
+\tag{B.GMI12}
+\]
+The subscripts on \(r_B,\ell_B,r_C,\ell_C\) in this display name the maps \(B,C\), not the bottom endpoint of the interval. Multiplying out \(B\star\Theta_B=1+\nabla r_B\) and \(\Theta_C\star C=1+\nabla\ell_C\) proves
+\[
+\nabla r_{21}^{\rm fac}=\beta_{21}^{\rm fac}\star\theta_{21}^{\rm fac}-1,
+\qquad
+\nabla\ell_{21}^{\rm fac}=\theta_{21}^{\rm fac}\star\beta_{21}^{\rm fac}-1.
+\tag{B.GMI13}
+\]
+All degree-zero factors are closed, so the displayed order and signs hold in the noncommutative interval convolution algebra. These contractions include \(a_1,b_1\) through (B.GMI11); no cancellation of the middle exchange is asserted without its witness.
+
+The forward route in (B.GMI12) has the following actual sequence of right-kernel words. Each tensor is over its displayed geometric intermediate endpoint category, and canonical associators are retained:
+\[
+\begin{array}{c|l}
+\text{stage}&\text{whole right-kernel word}\\ \hline
+0&H_{h_0}H_{i_0}P_{a_{D,1}}P_{a_{D,2}}\\
+1&P_{a_{U,1}}H_{k_1}H_{p_1}P_{a_{D,2}}\\
+2&P_{a_{U,1}}H_{h_1}H_{i_1}P_{a_{D,2}}\\
+3&P_{a_{U,1}}P_{a_{U,2}}H_{k_2}H_{p_2}.
+\end{array}
+\tag{B.GMI14}
+\]
+The three arrows are the whiskered first path, the whiskered \(\mu_1\), and the whiskered second path. The first and last words are the ordered source and target of (B.PR2), after the signed right-kernel realization. Evaluation uses the Koszul rule of (B.GI13d), so the resulting homogeneous comparison maps are dg natural on all admitted whole source modules.
+
+With the middle adjunction model fixed to the standard word \(L_1^+\), the two inverse comparison cochains for B.NM are therefore \(\theta_1,\theta_2^+\), and their product is exactly \(\theta_{21}^{\rm fac}\). The middle exchange and its two witnesses specify this input. To compare it with the separately constructed B.PR ordered path one must retain the full comparisons that interchange the successive proper and open blocks in (B.GMI14), together with the original mixed cells and the B.FP compositor witnesses. Equality of the endpoints of (B.GMI14) does not supply those comparisons. The full unit, mate and triangle data on the KC/HN roofs, and arbitrary older inverse-route displacements, likewise remain part of that geometric identification. \(\square\)
 
 ### Construct the inertia quotient and its exact invariants
 

@@ -1,0 +1,339 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>The Poisson probe</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Artin&#x27;s primitive root conjecture)</a><a href="the-quadratic-large-sieve-and-the-reflected-moment.html">Previous lesson</a><a href="the-euler-product-of-the-probe.html">Next lesson</a><a href="src/the-poisson-probe.md">Editable source</a></nav><main><article><h1 id="the-poisson-probe">The Poisson probe</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>This lesson defines the probe <span class="math" data-tex="\(I(X,Y,Z)\)">\(I(X,Y,Z)\)</span> of <a href="the-coefficient-family-and-the-plan-of-the-zero-free-argument.html"><em>The coefficient family and the plan of the zero-free argument</em></a> and evaluates it in two ways. The probe pairs the coefficient sums <span class="math" data-tex="\(B_m(Z)\)">\(B_m(Z)\)</span>, for rows <span class="math" data-tex="\(m\)">\(m\)</span> of norm about <span class="math" data-tex="\(XY\)">\(XY\)</span>, with an additive polynomial: a normalized sum of <span class="math" data-tex="\(\chi_{\mathfrak s}(d)\,\mathrm e(-md/s)\)">\(\chi_{\mathfrak s}(d)\,\mathrm e(-md/s)\)</span> over moduli <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span> of norm about <span class="math" data-tex="\(Y\)">\(Y\)</span>. The first evaluation is an upper bound: by Cauchy–Schwarz, the reflected second moment of <a href="the-quadratic-large-sieve-and-the-reflected-moment.html"><em>The quadratic large sieve and the reflected moment</em></a>, and a large sieve for separated additive fractions, the probe is <span class="math" data-tex="\(O(Z^{933/2000+\epsilon})\)">\(O(Z^{933/2000+\epsilon})\)</span>; this is statement (P1). The second evaluation applies Poisson summation to the row variable. The rows then become frequencies <span class="math" data-tex="\(h=ur^6\)">\(h=ur^6\)</span>, and three Mellin integrals express the probe through Dirichlet series <span class="math" data-tex="\(\mathcal F_u\)">\(\mathcal F_u\)</span>, which Lesson 12 factors into Euler products. The use of an additive polynomial with unrestricted cubes follows [QuasiRH].</p>
+<p><strong>Prerequisites.</strong> <a href="s-integers-and-sixth-power-classes.html"><em>S-integers and sixth-power classes</em></a>, Section 1, Lemma 2.1 and Lemma 4.1; <a href="sextic-reciprocity-and-kummer-characters.html"><em>Sextic reciprocity and Kummer characters</em></a>, Section 1, Lemma 3.2 and Lemma 4.1; <a href="the-coefficient-family-and-the-plan-of-the-zero-free-argument.html"><em>The coefficient family and the plan of the zero-free argument</em></a>, Sections 2–5; <a href="the-quadratic-large-sieve-and-the-reflected-moment.html"><em>The quadratic large sieve and the reflected moment</em></a>, Lemma 3.1 and Section 4; <a href="norm-sheets-and-exact-gaussian-smoothing.html"><em>Norm sheets and exact Gaussian smoothing</em></a>, (5.1) and Lemma 5.1; <a href="../NT-ADL/NT-ADL-07.html"><em>Tate's local theory at the finite places</em></a>, Theorem 7.2; <a href="../NT-ADL/NT-ADL-08.html"><em>Tate's local theory at the infinite places</em></a>, Theorem 8.1.</p>
+<h2 id="1-weights">1. Weights</h2>
+<p>Keep <span class="math" data-tex="\(F\)">\(F\)</span>, <span class="math" data-tex="\(S\)">\(S\)</span>, <span class="math" data-tex="\(R\)">\(R\)</span>, <span class="math" data-tex="\(\eta\)">\(\eta\)</span>, <span class="math" data-tex="\(\vartheta=\overline\Lambda\,\overline G\,\eta\)">\(\vartheta=\overline\Lambda\,\overline G\,\eta\)</span>, the allowed generators, the additive character <span class="math" data-tex="\(\mathrm e\)">\(\mathrm e\)</span> on <span class="math" data-tex="\(F_S\)">\(F_S\)</span> and the Fourier transform <span class="math" data-tex="\(\widehat f(y)=\int_{F_S}f(x)\mathrm e(-xy)\,dx\)">\(\widehat f(y)=\int_{F_S}f(x)\mathrm e(-xy)\,dx\)</span> of Lesson 2, and the scales <span class="math" data-tex="\(a,b,M_0,X=Z^a,Y=Z^b\)">\(a,b,M_0,X=Z^a,Y=Z^b\)</span> of Lesson 5. Every power of a residue character carries the unit mask.</p>
+<p>Choose a nonzero nonnegative <span class="math" data-tex="\(W_1\in C_c^\infty((0,\infty))\)">\(W_1\in C_c^\infty((0,\infty))\)</span> and put <span class="math" data-tex="\(\widehat W_1(w)=\int_0^\infty W_1(t)t^w\,dt/t\)">\(\widehat W_1(w)=\int_0^\infty W_1(t)t^w\,dt/t\)</span>, an entire function. Integration by parts in <span class="math" data-tex="\(\log t\)">\(\log t\)</span> gives, on every closed vertical strip and for every <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;|\widehat W_1(\sigma+i\tau)|\\
+&amp;\quad \le C_{A}(1+|\tau|)^{-A}.\quad(1.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;|\widehat W_1(\sigma+i\tau)|\\
+&amp;\quad \le C_{A}(1+|\tau|)^{-A}.\quad(1.1)
+\end{aligned}
+\]</span></p>
+<p><strong>Lemma 1.1</strong> (the row weight [OpenAI-029, (7.1)–(7.2)]). There is a product <span class="math" data-tex="\(W_0=\bigotimes_{v\in S}W_v\)">\(W_0=\bigotimes_{v\in S}W_v\)</span> of smooth compactly supported functions <span class="math" data-tex="\(W_v\)">\(W_v\)</span> on <span class="math" data-tex="\(F_v^\times\)">\(F_v^\times\)</span>, extended by zero to <span class="math" data-tex="\(F_v\)">\(F_v\)</span>, such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\widehat W_0(0)=0,\\
+M(1/6)\ne0,\\
+M(z)=\int_{F_S^\times}\widehat W_0(y)\,|y|_S^z\,d^\times y .\quad(1.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\widehat W_0(0)=0,\\
+M(1/6)\ne0,\\
+M(z)=\int_{F_S^\times}\widehat W_0(y)\,|y|_S^z\,d^\times y .\quad(1.2)
+\end{gathered}
+\]</span>
+The function <span class="math" data-tex="\(M\)">\(M\)</span> is holomorphic on <span class="math" data-tex="\(\operatorname{Re}z&gt;0\)">\(\operatorname{Re}z&gt;0\)</span>, and for every compact interval <span class="math" data-tex="\(J\subset(0,\infty)\)">\(J\subset(0,\infty)\)</span> and every <span class="math" data-tex="\(A&gt;0\)">\(A&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+&amp;|M(\sigma+i\tau)|\\
+&amp;\quad \le C_{J,A}(1+|\tau|)^{-A}
+\end{aligned}\\
+(\sigma\in J).\quad(1.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+&amp;|M(\sigma+i\tau)|\\
+&amp;\quad \le C_{J,A}(1+|\tau|)^{-A}
+\end{aligned}\\
+(\sigma\in J).\quad(1.3)
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> Since <span class="math" data-tex="\(W_0\)">\(W_0\)</span> is a product, <span class="math" data-tex="\(\widehat W_0=\bigotimes_v\widehat W_v\)">\(\widehat W_0=\bigotimes_v\widehat W_v\)</span> and <span class="math" data-tex="\(M(z)=\prod_vM_v(z)\)">\(M(z)=\prod_vM_v(z)\)</span> with <span class="math" data-tex="\(M_v(z)=\int_{F_v^\times}\widehat W_v(y)|y|_v^z\,d^\times y\)">\(M_v(z)=\int_{F_v^\times}\widehat W_v(y)|y|_v^z\,d^\times y\)</span>. By the local functional equation (Theorem 7.2 of <a href="../NT-ADL/NT-ADL-07.html"><em>Tate's local theory at the finite places</em></a> and Theorem 8.1 of <a href="../NT-ADL/NT-ADL-08.html"><em>Tate's local theory at the infinite places</em></a>), applied to the quasi-character <span class="math" data-tex="\(|\cdot|_v^{5/6}\)">\(|\cdot|_v^{5/6}\)</span> and the additive character <span class="math" data-tex="\(y\mapsto\psi_v(-y)\)">\(y\mapsto\psi_v(-y)\)</span>, there is <span class="math" data-tex="\(\rho_v\)">\(\rho_v\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+M_v(1/6)&amp;=\int_{F_v^\times}\widehat W_v(y)|y|_v^{1/6}\,d^\times y\\
+&amp;=\rho_v\int_{F_v^\times}W_v(y)|y|_v^{5/6}\,d^\times y
+\end{aligned}
+\]">\[
+\begin{aligned}
+M_v(1/6)&amp;=\int_{F_v^\times}\widehat W_v(y)|y|_v^{1/6}\,d^\times y\\
+&amp;=\rho_v\int_{F_v^\times}W_v(y)|y|_v^{5/6}\,d^\times y
+\end{aligned}
+\]</span>
+for every Schwartz function <span class="math" data-tex="\(W_v\)">\(W_v\)</span>. The constant <span class="math" data-tex="\(\rho_v\)">\(\rho_v\)</span> does not depend on the test function, and both integrals converge absolutely. A nonnegative nonzero test function makes the right integral positive, so <span class="math" data-tex="\(\rho_v\)">\(\rho_v\)</span> is finite; a test function whose Fourier transform is nonnegative and nonzero makes the left integral positive, so <span class="math" data-tex="\(\rho_v\ne0\)">\(\rho_v\ne0\)</span> (every Schwartz function is a Fourier transform).</p>
+<p>At all places of <span class="math" data-tex="\(S\)">\(S\)</span> but one complex place <span class="math" data-tex="\(v_1\)">\(v_1\)</span>, let <span class="math" data-tex="\(W_v\)">\(W_v\)</span> be nonnegative and nonzero, smooth and compactly supported in <span class="math" data-tex="\(F_v^\times\)">\(F_v^\times\)</span>. At <span class="math" data-tex="\(v_1\)">\(v_1\)</span> the additive measure is a constant times <span class="math" data-tex="\(|y|_{v_1}d^\times y\)">\(|y|_{v_1}d^\times y\)</span>, so <span class="math" data-tex="\(\widehat W_{v_1}(0)=\int W_{v_1}(y)\,dy\)">\(\widehat W_{v_1}(0)=\int W_{v_1}(y)\,dy\)</span> is a constant times <span class="math" data-tex="\(\int W_{v_1}|y|_{v_1}\,d^\times y\)">\(\int W_{v_1}|y|_{v_1}\,d^\times y\)</span>. Take nonnegative nonzero smooth radial bumps <span class="math" data-tex="\(b_1,b_2\)">\(b_1,b_2\)</span> supported in <span class="math" data-tex="\(1\le|y|_{v_1}\le2\)">\(1\le|y|_{v_1}\le2\)</span> and <span class="math" data-tex="\(3\le|y|_{v_1}\le4\)">\(3\le|y|_{v_1}\le4\)</span>, put <span class="math" data-tex="\(\mu_i=\int b_i|y|^{5/6}d^\times y&gt;0\)">\(\mu_i=\int b_i|y|^{5/6}d^\times y&gt;0\)</span>, let <span class="math" data-tex="\(m_i=\mu_i^{-1}\int b_i|y|\,d^\times y\)">\(m_i=\mu_i^{-1}\int b_i|y|\,d^\times y\)</span> be the average of <span class="math" data-tex="\(|y|^{1/6}\)">\(|y|^{1/6}\)</span> for the weight <span class="math" data-tex="\(b_i|y|^{5/6}d^\times y\)">\(b_i|y|^{5/6}d^\times y\)</span>, so <span class="math" data-tex="\(m_1\le2^{1/6}&lt;3^{1/6}\le m_2\)">\(m_1\le2^{1/6}&lt;3^{1/6}\le m_2\)</span>, and set <span class="math" data-tex="\(W_{v_1}=b_1-\lambda b_2\)">\(W_{v_1}=b_1-\lambda b_2\)</span> with <span class="math" data-tex="\(\lambda=m_1\mu_1/(m_2\mu_2)\)">\(\lambda=m_1\mu_1/(m_2\mu_2)\)</span>. Then <span class="math" data-tex="\(\int W_{v_1}|y|\,d^\times y=0\)">\(\int W_{v_1}|y|\,d^\times y=0\)</span>, so <span class="math" data-tex="\(\widehat W_0(0)=0\)">\(\widehat W_0(0)=0\)</span>, while <span class="math" data-tex="\(\int W_{v_1}|y|^{5/6}d^\times y=\mu_1(1-m_1/m_2)\ne0\)">\(\int W_{v_1}|y|^{5/6}d^\times y=\mu_1(1-m_1/m_2)\ne0\)</span>. Hence <span class="math" data-tex="\(M(1/6)=\prod_v\rho_v\int W_v|y|_v^{5/6}d^\times y\ne0\)">\(M(1/6)=\prod_v\rho_v\int W_v|y|_v^{5/6}d^\times y\ne0\)</span>.</p>
+<p>For <span class="math" data-tex="\(\sigma&gt;0\)">\(\sigma&gt;0\)</span> each <span class="math" data-tex="\(\int|\widehat W_v||y|_v^\sigma\,d^\times y\)">\(\int|\widehat W_v||y|_v^\sigma\,d^\times y\)</span> is finite: at a finite place <span class="math" data-tex="\(\widehat W_v\)">\(\widehat W_v\)</span> is locally constant with compact support, so the shells near <span class="math" data-tex="\(0\)">\(0\)</span> give a convergent geometric series; at a complex place <span class="math" data-tex="\(\widehat W_v\)">\(\widehat W_v\)</span> is bounded near <span class="math" data-tex="\(0\)">\(0\)</span> and of rapid decay. So <span class="math" data-tex="\(M\)">\(M\)</span> is holomorphic on <span class="math" data-tex="\(\operatorname{Re}z&gt;0\)">\(\operatorname{Re}z&gt;0\)</span>. At a complex place, an integration by parts in <span class="math" data-tex="\(\log|y|_v\)">\(\log|y|_v\)</span> shows that <span class="math" data-tex="\((\sigma+i\tau)M_v(\sigma+i\tau)\)">\((\sigma+i\tau)M_v(\sigma+i\tau)\)</span> is a constant times the same integral with <span class="math" data-tex="\(\widehat W_v\)">\(\widehat W_v\)</span> replaced by its radial logarithmic derivative, which has the same properties; repeating gives <span class="math" data-tex="\(M_v(\sigma+i\tau)\ll(1+|\tau|)^{-A}\)">\(M_v(\sigma+i\tau)\ll(1+|\tau|)^{-A}\)</span> uniformly for <span class="math" data-tex="\(\sigma\in J\)">\(\sigma\in J\)</span>, and the finite-place factors are bounded on such strips. This is (1.3). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-probe">2. The probe</h2>
+<p>For an exterior ideal <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span> with allowed generator <span class="math" data-tex="\(s\)">\(s\)</span> and <span class="math" data-tex="\(k\in R\)">\(k\in R\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;g_{\mathfrak s}(k)\\
+&amp;\quad =\sum_{d\bmod\mathfrak s}\chi_{\mathfrak s}(d)\,\mathrm e(kd/s).\quad(2.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;g_{\mathfrak s}(k)\\
+&amp;\quad =\sum_{d\bmod\mathfrak s}\chi_{\mathfrak s}(d)\,\mathrm e(kd/s).\quad(2.1)
+\end{aligned}
+\]</span>
+The summand depends only on <span class="math" data-tex="\(d\)">\(d\)</span> modulo <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span>, because <span class="math" data-tex="\(\mathrm e\)">\(\mathrm e\)</span> is trivial on <span class="math" data-tex="\(R\)">\(R\)</span> (Lemma 2.1 of Lesson 2), and the value does not depend on the allowed generator: replacing <span class="math" data-tex="\(s\)">\(s\)</span> by <span class="math" data-tex="\(s\epsilon^6\)">\(s\epsilon^6\)</span>, <span class="math" data-tex="\(\epsilon\in U_S\)">\(\epsilon\in U_S\)</span>, is undone by <span class="math" data-tex="\(d\mapsto d\epsilon^6\)">\(d\mapsto d\epsilon^6\)</span>, which leaves <span class="math" data-tex="\(\chi_{\mathfrak s}(d)\)">\(\chi_{\mathfrak s}(d)\)</span> unchanged. For <span class="math" data-tex="\(\mathfrak s=R\)">\(\mathfrak s=R\)</span> the sum is <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>Use the multiplicative Haar measure <span class="math" data-tex="\(d^\times y=\frac{dT}T\,dt\)">\(d^\times y=\frac{dT}T\,dt\)</span>, <span class="math" data-tex="\(y=t\ell_T\)">\(y=t\ell_T\)</span>, <span class="math" data-tex="\(t\in F_S^1\)">\(t\in F_S^1\)</span>, of (5.1) of Lesson 7, and on the compact group <span class="math" data-tex="\(F_S^1/U_S^6\)">\(F_S^1/U_S^6\)</span> the quotient measure induced by <span class="math" data-tex="\(dt\)">\(dt\)</span>. For <span class="math" data-tex="\(X,Y,Z&gt;0\)">\(X,Y,Z&gt;0\)</span> define the <strong>probe</strong>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;I(X,Y,Z)=\int_{F_S^1/U_S^6}\frac1Y\sum_{\mathfrak s}W_1\Bigl(\frac{q_{\mathfrak s}}Y\Bigr)\\
+&amp;\quad\times\frac1{\sqrt{q_{\mathfrak s}X}}\sum_{m\in R}q_{\mathfrak s}^{-1/2}g_{\mathfrak s}(-m)\\
+&amp;\quad\times W_0\Bigl(\frac m{t_0\ell_{q_{\mathfrak s}X}}\Bigr)B_m(Z)\,dt_0 .\quad(2.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;I(X,Y,Z)=\int_{F_S^1/U_S^6}\frac1Y\sum_{\mathfrak s}W_1\Bigl(\frac{q_{\mathfrak s}}Y\Bigr)\\
+&amp;\quad\times\frac1{\sqrt{q_{\mathfrak s}X}}\sum_{m\in R}q_{\mathfrak s}^{-1/2}g_{\mathfrak s}(-m)\\
+&amp;\quad\times W_0\Bigl(\frac m{t_0\ell_{q_{\mathfrak s}X}}\Bigr)B_m(Z)\,dt_0 .\quad(2.2)
+\end{aligned}
+\]</span>
+Here and below undecorated ideal sums run over integral exterior ideals. The term <span class="math" data-tex="\(m=0\)">\(m=0\)</span> vanishes because <span class="math" data-tex="\(W_0\)">\(W_0\)</span> is supported in <span class="math" data-tex="\(F_S^\times\)">\(F_S^\times\)</span>. For <span class="math" data-tex="\(\epsilon\in U_S^6\)">\(\epsilon\in U_S^6\)</span>, replacing <span class="math" data-tex="\(t_0\)">\(t_0\)</span> by <span class="math" data-tex="\(\epsilon t_0\)">\(\epsilon t_0\)</span> and <span class="math" data-tex="\(m\)">\(m\)</span> by <span class="math" data-tex="\(\epsilon m\)">\(\epsilon m\)</span> changes nothing: <span class="math" data-tex="\(\chi_{\mathfrak s}(\epsilon)=\chi_{\mathfrak A}(\epsilon)=1\)">\(\chi_{\mathfrak s}(\epsilon)=\chi_{\mathfrak A}(\epsilon)=1\)</span>, so <span class="math" data-tex="\(g_{\mathfrak s}(-\epsilon m)=g_{\mathfrak s}(-m)\)">\(g_{\mathfrak s}(-\epsilon m)=g_{\mathfrak s}(-m)\)</span> and <span class="math" data-tex="\(B_{\epsilon m}(Z)=B_m(Z)\)">\(B_{\epsilon m}(Z)=B_m(Z)\)</span>. So the integrand descends to the quotient, which is compact (proof of Lemma 4.1 of Lesson 2, balance); we integrate over representatives <span class="math" data-tex="\(t_0\)">\(t_0\)</span> in a fixed bounded subset of <span class="math" data-tex="\(F_S^1\)">\(F_S^1\)</span>. For each <span class="math" data-tex="\(t_0\)">\(t_0\)</span> the <span class="math" data-tex="\(m\)">\(m\)</span>-sum is finite, and the <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span>-sum is finite. The probe of Lesson 5 is <span class="math" data-tex="\(I_Z=I(Z^a,Z^b,Z)\)">\(I_Z=I(Z^a,Z^b,Z)\)</span>.</p>
+<h2 id="3-a-large-sieve-for-separated-additive-fractions">3. A large sieve for separated additive fractions</h2>
+<p><strong>Lemma 3.1</strong> (separated fractions [OpenAI-029, Lemma 7.1]). Let <span class="math" data-tex="\(K\subset F_S\)">\(K\subset F_S\)</span> be compact and <span class="math" data-tex="\(N,V\ge2\)">\(N,V\ge2\)</span>. For each exterior ideal <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span> with <span class="math" data-tex="\(q_{\mathfrak s}\le V\)">\(q_{\mathfrak s}\le V\)</span> choose a generator <span class="math" data-tex="\(s\)">\(s\)</span>, and let <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span> be a set of distinct points of <span class="math" data-tex="\(F_S/R\)">\(F_S/R\)</span> of the form <span class="math" data-tex="\(d/s+R\)">\(d/s+R\)</span> with <span class="math" data-tex="\(q_{\mathfrak s}\le V\)">\(q_{\mathfrak s}\le V\)</span> and <span class="math" data-tex="\(d\)">\(d\)</span> a unit modulo <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span>. Then for all complex <span class="math" data-tex="\(b_\alpha\)">\(b_\alpha\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{m\in R\cap\ell_NK}\Bigl|\sum_{\alpha\in\mathcal P}b_\alpha\,\mathrm e(m\alpha)\Bigr|^2\\
+&amp;\quad \le C_{F,S,K}\,(N+V^2)\sum_{\alpha\in\mathcal P}|b_\alpha|^2 ,\quad(3.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{m\in R\cap\ell_NK}\Bigl|\sum_{\alpha\in\mathcal P}b_\alpha\,\mathrm e(m\alpha)\Bigr|^2\\
+&amp;\quad \le C_{F,S,K}\,(N+V^2)\sum_{\alpha\in\mathcal P}|b_\alpha|^2 ,\quad(3.1)
+\end{aligned}
+\]</span>
+and the same holds with the roles of <span class="math" data-tex="\(m\)">\(m\)</span> and <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> exchanged.</p>
+<p><em>Proof.</em> <em>Separation.</em> Fractions <span class="math" data-tex="\(d/s\)">\(d/s\)</span>, <span class="math" data-tex="\(d&#x27;/s&#x27;\)">\(d&#x27;/s&#x27;\)</span> with different ideals <span class="math" data-tex="\(\mathfrak s\ne\mathfrak s&#x27;\)">\(\mathfrak s\ne\mathfrak s&#x27;\)</span> are different modulo <span class="math" data-tex="\(R\)">\(R\)</span>: at a prime where the valuations of <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span> and <span class="math" data-tex="\(\mathfrak s&#x27;\)">\(\mathfrak s&#x27;\)</span> differ, the fraction with the larger denominator valuation has valuation equal to minus that valuation, and the other has larger valuation, so the difference is not integral there. For two different points and any <span class="math" data-tex="\(r\in R\)">\(r\in R\)</span>, <span class="math" data-tex="\(d/s-d&#x27;/s&#x27;+r\)">\(d/s-d&#x27;/s&#x27;+r\)</span><span class="math" data-tex="\(=(ds&#x27;-d&#x27;s+rss&#x27;)/(ss&#x27;)\)">\(=(ds&#x27;-d&#x27;s+rss&#x27;)/(ss&#x27;)\)</span> has a nonzero numerator in <span class="math" data-tex="\(R\)">\(R\)</span>, so by Lemma 2.1 of Lesson 2
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\Bigl|\frac ds-\frac{d&#x27;}{s&#x27;}+r\Bigr|_S\ge\frac1{q_{\mathfrak s}q_{\mathfrak s&#x27;}}\\
+&amp;\quad \ge V^{-2},\quad(3.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\Bigl|\frac ds-\frac{d&#x27;}{s&#x27;}+r\Bigr|_S\ge\frac1{q_{\mathfrak s}q_{\mathfrak s&#x27;}}\\
+&amp;\quad \ge V^{-2},\quad(3.2)
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\(|r|_S\ge1\)">\(|r|_S\ge1\)</span> for <span class="math" data-tex="\(r\in R\setminus\{0\}\)">\(r\in R\setminus\{0\}\)</span>.</p>
+<p><em>A majorant.</em> Put <span class="math" data-tex="\(d_F=[F:\mathbb Q]=2r\)">\(d_F=[F:\mathbb Q]=2r\)</span> and <span class="math" data-tex="\(\delta=c\min(N^{-1/d_F},V^{-2/d_F})\)">\(\delta=c\min(N^{-1/d_F},V^{-2/d_F})\)</span> with a small constant <span class="math" data-tex="\(c&gt;0\)">\(c&gt;0\)</span>. At each complex place choose a smooth <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> supported in the unit disc with <span class="math" data-tex="\(\int\gamma\ne0\)">\(\int\gamma\ne0\)</span>, let <span class="math" data-tex="\(\check\gamma\)">\(\check\gamma\)</span> be its inverse Fourier transform, and put <span class="math" data-tex="\(\Phi_v(y)=4|\check\gamma(\delta y)|^2/|\check\gamma(0)|^2\)">\(\Phi_v(y)=4|\check\gamma(\delta y)|^2/|\check\gamma(0)|^2\)</span>. Then <span class="math" data-tex="\(\Phi_v\ge0\)">\(\Phi_v\ge0\)</span>, <span class="math" data-tex="\(\Phi_v\ge1\)">\(\Phi_v\ge1\)</span> where <span class="math" data-tex="\(\delta|y|\le c_0\)">\(\delta|y|\le c_0\)</span> for a fixed <span class="math" data-tex="\(c_0&gt;0\)">\(c_0&gt;0\)</span>, its Fourier transform is supported in a disc of ordinary radius <span class="math" data-tex="\(2\delta\)">\(2\delta\)</span>, and <span class="math" data-tex="\(\int\Phi_v=O(\delta^{-2})\)">\(\int\Phi_v=O(\delta^{-2})\)</span>. At each finite place of <span class="math" data-tex="\(S\)">\(S\)</span> let <span class="math" data-tex="\(\Phi_v\)">\(\Phi_v\)</span> be the indicator of a compact open subgroup <span class="math" data-tex="\(H_v\)">\(H_v\)</span> containing the projection of <span class="math" data-tex="\(K\)">\(K\)</span>; its Fourier transform is supported in the compact open subgroup <span class="math" data-tex="\(H_v^\perp\)">\(H_v^\perp\)</span>. The product <span class="math" data-tex="\(\Phi=\bigotimes\Phi_v\)">\(\Phi=\bigotimes\Phi_v\)</span> is nonnegative, at least <span class="math" data-tex="\(1\)">\(1\)</span> on <span class="math" data-tex="\(\ell_NK\)">\(\ell_NK\)</span> once <span class="math" data-tex="\(c\)">\(c\)</span> is small (the complex components of <span class="math" data-tex="\(\ell_N\)">\(\ell_N\)</span> have ordinary modulus <span class="math" data-tex="\(N^{1/d_F}\)">\(N^{1/d_F}\)</span>), and <span class="math" data-tex="\(\widehat\Phi(0)=\int\Phi\le C\delta^{-d_F}\le C&#x27;(N+V^2)\)">\(\widehat\Phi(0)=\int\Phi\le C\delta^{-d_F}\le C&#x27;(N+V^2)\)</span>. A point <span class="math" data-tex="\(\xi\)">\(\xi\)</span> of the support of <span class="math" data-tex="\(\widehat\Phi\)">\(\widehat\Phi\)</span> has <span class="math" data-tex="\(|\xi|_S\le C&#x27;&#x27;\delta^{d_F}\)">\(|\xi|_S\le C&#x27;&#x27;\delta^{d_F}\)</span>, the product of at most <span class="math" data-tex="\((2\delta)^2\)">\((2\delta)^2\)</span> over the <span class="math" data-tex="\(r\)">\(r\)</span> complex places and of bounded factors at the finite places. For <span class="math" data-tex="\(c\)">\(c\)</span> small this is less than <span class="math" data-tex="\(V^{-2}\)">\(V^{-2}\)</span> and less than <span class="math" data-tex="\(1\)">\(1\)</span>, so by (3.2) the support contains no point <span class="math" data-tex="\(r+\beta-\alpha\)">\(r+\beta-\alpha\)</span> with <span class="math" data-tex="\(r\in R\)">\(r\in R\)</span> and <span class="math" data-tex="\(\alpha\ne\beta\)">\(\alpha\ne\beta\)</span> in <span class="math" data-tex="\(\mathcal P\)">\(\mathcal P\)</span>, and no nonzero <span class="math" data-tex="\(r\in R\)">\(r\in R\)</span>.</p>
+<p><em>Poisson summation.</em> Majorize the left side of (3.1) by <span class="math" data-tex="\(\sum_{m\in R}\Phi(m)|\sum_\alpha b_\alpha\mathrm e(m\alpha)|^2\)">\(\sum_{m\in R}\Phi(m)|\sum_\alpha b_\alpha\mathrm e(m\alpha)|^2\)</span> and expand the square. By (2.1) of Lesson 2 applied to <span class="math" data-tex="\(x\mapsto\Phi(x)\mathrm e(x(\alpha-\beta))\)">\(x\mapsto\Phi(x)\mathrm e(x(\alpha-\beta))\)</span>, whose transform is <span class="math" data-tex="\(\xi\mapsto\widehat\Phi(\xi-\alpha+\beta)\)">\(\xi\mapsto\widehat\Phi(\xi-\alpha+\beta)\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{m\in R}\Phi(m)\,\mathrm e(m(\alpha-\beta))\\
+&amp;\quad =\sum_{r\in R}\widehat\Phi(r-\alpha+\beta)\\
+&amp;\quad =\mathbf 1_{\alpha=\beta}\,\widehat\Phi(0).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{m\in R}\Phi(m)\,\mathrm e(m(\alpha-\beta))\\
+&amp;\quad =\sum_{r\in R}\widehat\Phi(r-\alpha+\beta)\\
+&amp;\quad =\mathbf 1_{\alpha=\beta}\,\widehat\Phi(0).
+\end{aligned}
+\]</span>
+This gives (3.1). The exchanged inequality has the same constant, because a matrix and its adjoint have the same operator norm. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-bound-from-reflection">4. The bound from reflection</h2>
+<p><strong>Proposition 4.1</strong> ((P1) [OpenAI-029, Proposition 7.2]). For every <span class="math" data-tex="\(\epsilon&gt;0\)">\(\epsilon&gt;0\)</span> and <span class="math" data-tex="\(Z\ge2\)">\(Z\ge2\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;I(Z^a,Z^b,Z)\\
+&amp;\quad \le C_{\epsilon}\,Z^{(2M_0-1-b)/2+\epsilon}\\
+&amp;\quad =C_\epsilon\,Z^{933/2000+\epsilon}.\quad(4.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;I(Z^a,Z^b,Z)\\
+&amp;\quad \le C_{\epsilon}\,Z^{(2M_0-1-b)/2+\epsilon}\\
+&amp;\quad =C_\epsilon\,Z^{933/2000+\epsilon}.\quad(4.1)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> Fix <span class="math" data-tex="\(t_0\)">\(t_0\)</span> and write the integrand of (2.2) as <span class="math" data-tex="\(\sum_m\mathcal A(m)B_m(Z)\)">\(\sum_m\mathcal A(m)B_m(Z)\)</span>. Put <span class="math" data-tex="\(v=q_{\mathfrak s}/Y\)">\(v=q_{\mathfrak s}/Y\)</span> and <span class="math" data-tex="\(y=m/(t_0\ell_{XY})\)">\(y=m/(t_0\ell_{XY})\)</span>; since <span class="math" data-tex="\(\ell\)">\(\ell\)</span> is multiplicative, <span class="math" data-tex="\(m/(t_0\ell_{q_{\mathfrak s}X})=y/\ell_v\)">\(m/(t_0\ell_{q_{\mathfrak s}X})=y/\ell_v\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal A(m)&amp;=(XY)^{-1/2}\,\frac1Y\sum_{\mathfrak s}v^{-1/2}W_1(v)\\
+&amp;\quad\times W_0(y/\ell_v)\,q_{\mathfrak s}^{-1/2}g_{\mathfrak s}(-m).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal A(m)&amp;=(XY)^{-1/2}\,\frac1Y\sum_{\mathfrak s}v^{-1/2}W_1(v)\\
+&amp;\quad\times W_0(y/\ell_v)\,q_{\mathfrak s}^{-1/2}g_{\mathfrak s}(-m).
+\end{aligned}
+\]</span>
+For <span class="math" data-tex="\(v\)">\(v\)</span> in the compact support of <span class="math" data-tex="\(W_1\)">\(W_1\)</span>, <span class="math" data-tex="\(W_0(y/\ell_v)\ne0\)">\(W_0(y/\ell_v)\ne0\)</span> forces <span class="math" data-tex="\(y\)">\(y\)</span> into a fixed compact subset of <span class="math" data-tex="\(F_S^\times\)">\(F_S^\times\)</span>, so the rows lie in <span class="math" data-tex="\(\ell_{XY}K&#x27;\)">\(\ell_{XY}K&#x27;\)</span> for a fixed compact <span class="math" data-tex="\(K&#x27;\)">\(K&#x27;\)</span>. The function <span class="math" data-tex="\((\log v,y)\mapsto v^{-1/2}W_1(v)W_0(y/\ell_v)\)">\((\log v,y)\mapsto v^{-1/2}W_1(v)W_0(y/\ell_v)\)</span> is smooth in <span class="math" data-tex="\(\log v\)">\(\log v\)</span> with compact support; on an interval of length <span class="math" data-tex="\(P_0\)">\(P_0\)</span> containing that support, expand it in the Fourier series <span class="math" data-tex="\(\sum_jc_j(y)e^{2\pi ij\log v/P_0}\)">\(\sum_jc_j(y)e^{2\pi ij\log v/P_0}\)</span>, and restrict <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span> to the <span class="math" data-tex="\(q_{\mathfrak s}\)">\(q_{\mathfrak s}\)</span> with <span class="math" data-tex="\(\log v\)">\(\log v\)</span> in that interval, where the expansion is valid. Two integrations by parts give <span class="math" data-tex="\(|c_j(y)|\le C(1+j^2)^{-1}\)">\(|c_j(y)|\le C(1+j^2)^{-1}\)</span> uniformly in <span class="math" data-tex="\(y\)">\(y\)</span>, so <span class="math" data-tex="\(\sum_j\|c_j\|_\infty&lt;\infty\)">\(\sum_j\|c_j\|_\infty&lt;\infty\)</span>.</p>
+<p>For each <span class="math" data-tex="\(j\)">\(j\)</span>, expand <span class="math" data-tex="\(g_{\mathfrak s}(-m)=\sum_d\chi_{\mathfrak s}(d)\mathrm e(-md/s)\)">\(g_{\mathfrak s}(-m)=\sum_d\chi_{\mathfrak s}(d)\mathrm e(-md/s)\)</span> over units <span class="math" data-tex="\(d\)">\(d\)</span> modulo <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span>. This is a sum over the distinct fractions <span class="math" data-tex="\(-d/s\)">\(-d/s\)</span>, with coefficients of absolute value at most <span class="math" data-tex="\(Y^{-1}q_{\mathfrak s}^{-1/2}\)">\(Y^{-1}q_{\mathfrak s}^{-1/2}\)</span> and <span class="math" data-tex="\(q_{\mathfrak s}\le CY\)">\(q_{\mathfrak s}\le CY\)</span>; their total squared mass is at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;Y^{-2}\sum_{q_{\mathfrak s}\le CY}q_{\mathfrak s}^{-1}\,|(R/\mathfrak s)^\times|\\
+&amp;\quad \le Y^{-2}\#\{\mathfrak s:q_{\mathfrak s}\le CY\}\le CY^{-1}
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;Y^{-2}\sum_{q_{\mathfrak s}\le CY}q_{\mathfrak s}^{-1}\,|(R/\mathfrak s)^\times|\\
+&amp;\quad \le Y^{-2}\#\{\mathfrak s:q_{\mathfrak s}\le CY\}\le CY^{-1}
+\end{aligned}
+\]</span>
+by Lemma 3.1 of Lesson 10. The factor <span class="math" data-tex="\(c_j(y)\)">\(c_j(y)\)</span> depends on the row only and has absolute value at most <span class="math" data-tex="\(\|c_j\|_\infty\)">\(\|c_j\|_\infty\)</span>. Lemma 3.1 with <span class="math" data-tex="\(N=XY\)">\(N=XY\)</span>, <span class="math" data-tex="\(V=CY\)">\(V=CY\)</span>, and the triangle inequality over <span class="math" data-tex="\(j\)">\(j\)</span>, give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_m|\mathcal A(m)|^2\\
+&amp;\quad \le C(XY)^{-1}\,(XY+Y^2)\,Y^{-1}\\
+&amp;\quad \le CY^{-1},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_m|\mathcal A(m)|^2\\
+&amp;\quad \le C(XY)^{-1}\,(XY+Y^2)\,Y^{-1}\\
+&amp;\quad \le CY^{-1},
+\end{aligned}
+\]</span>
+since <span class="math" data-tex="\(Y\le X\)">\(Y\le X\)</span> (as <span class="math" data-tex="\(b&lt;a\)">\(b&lt;a\)</span>). The rows have <span class="math" data-tex="\(m\in\mathscr B_Z(K&#x27;)\)">\(m\in\mathscr B_Z(K&#x27;)\)</span> with <span class="math" data-tex="\(XY=Z^{M_0}\)">\(XY=Z^{M_0}\)</span>, so (4.4) of Lesson 5, proved in Lesson 10, gives <span class="math" data-tex="\(\sum_m|B_m(Z)|^2\le C_\epsilon Z^{2M_0-1+\epsilon}\)">\(\sum_m|B_m(Z)|^2\le C_\epsilon Z^{2M_0-1+\epsilon}\)</span>. By Cauchy–Schwarz the integrand is at most <span class="math" data-tex="\(C_\epsilon Y^{-1/2}Z^{M_0-1/2+\epsilon/2}=C_\epsilon Z^{(2M_0-1-b+\epsilon)/2}\)">\(C_\epsilon Y^{-1/2}Z^{M_0-1/2+\epsilon/2}=C_\epsilon Z^{(2M_0-1-b+\epsilon)/2}\)</span>, uniformly in <span class="math" data-tex="\(t_0\)">\(t_0\)</span>, and the quotient has finite measure. Finally <span class="math" data-tex="\((2M_0-1-b)/2\)">\((2M_0-1-b)/2\)</span><span class="math" data-tex="\(=(2.066-1.133)/2\)">\(=(2.066-1.133)/2\)</span><span class="math" data-tex="\(=933/2000\)">\(=933/2000\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-a-finite-fourier-transform">5. A finite Fourier transform</h2>
+<p>For an exterior ideal <span class="math" data-tex="\(\mathfrak A\)">\(\mathfrak A\)</span> with allowed generator <span class="math" data-tex="\(A\)">\(A\)</span>, and <span class="math" data-tex="\(k\in R\)">\(k\in R\)</span>, put
+<span class="math math-display" data-tex="\[
+g_{\chi_{\mathfrak A}}(A,k)=\sum_{x\bmod\mathfrak A}\chi_{\mathfrak A}(x)\,\mathrm e(kx/A),
+\]">\[
+g_{\chi_{\mathfrak A}}(A,k)=\sum_{x\bmod\mathfrak A}\chi_{\mathfrak A}(x)\,\mathrm e(kx/A),
+\]</span>
+and for <span class="math" data-tex="\(h\in R\)">\(h\in R\)</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+F(s,A,h)&amp;=\sum_{\substack{d\bmod\mathfrak s\\ h\equiv Ad\ (\mathfrak s)}}\chi_{\mathfrak s}(d)\\
+&amp;\quad \,g_{\chi_{\mathfrak A}}\Bigl(A,\frac{h-Ad}s\Bigr),\quad(5.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+F(s,A,h)&amp;=\sum_{\substack{d\bmod\mathfrak s\\ h\equiv Ad\ (\mathfrak s)}}\chi_{\mathfrak s}(d)\\
+&amp;\quad \,g_{\chi_{\mathfrak A}}\Bigl(A,\frac{h-Ad}s\Bigr),\quad(5.1)
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\((h-Ad)/s\in R\)">\((h-Ad)/s\in R\)</span> by the congruence. For the unit ideal the definitions mean one residue with character value <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Lemma 5.1</strong> ([OpenAI-029, (7.4)–(7.6)]). For all exterior ideals <span class="math" data-tex="\(\mathfrak s,\mathfrak A\)">\(\mathfrak s,\mathfrak A\)</span> and <span class="math" data-tex="\(h\in R\)">\(h\in R\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{m\bmod\mathfrak s\mathfrak A}q_{\mathfrak s}^{-1/2}g_{\mathfrak s}(-m)\,\chi_{\mathfrak A}(m)\\
+&amp;\qquad \,\mathrm e\Bigl(\frac{hm}{sA}\Bigr)=q_{\mathfrak s}^{1/2}F(s,A,h).\quad(5.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{m\bmod\mathfrak s\mathfrak A}q_{\mathfrak s}^{-1/2}g_{\mathfrak s}(-m)\,\chi_{\mathfrak A}(m)\\
+&amp;\qquad \,\mathrm e\Bigl(\frac{hm}{sA}\Bigr)=q_{\mathfrak s}^{1/2}F(s,A,h).\quad(5.2)
+\end{aligned}
+\]</span>
+Moreover <span class="math" data-tex="\(|F(s,A,h)|\le q_{\mathfrak s}q_{\mathfrak A}\)">\(|F(s,A,h)|\le q_{\mathfrak s}q_{\mathfrak A}\)</span>, and <span class="math" data-tex="\(F(s,A,\epsilon h)=F(s,A,h)\)">\(F(s,A,\epsilon h)=F(s,A,h)\)</span> for <span class="math" data-tex="\(\epsilon\in U_S^6\)">\(\epsilon\in U_S^6\)</span>.</p>
+<p><em>Proof.</em> Insert <span class="math" data-tex="\(g_{\mathfrak s}(-m)=\sum_d\chi_{\mathfrak s}(d)\mathrm e(-md/s)\)">\(g_{\mathfrak s}(-m)=\sum_d\chi_{\mathfrak s}(d)\mathrm e(-md/s)\)</span>; the left side becomes <span class="math" data-tex="\(q_{\mathfrak s}^{-1/2}\sum_d\chi_{\mathfrak s}(d)\sum_m\chi_{\mathfrak A}(m)\)">\(q_{\mathfrak s}^{-1/2}\sum_d\chi_{\mathfrak s}(d)\sum_m\chi_{\mathfrak A}(m)\)</span><span class="math" data-tex="\(\mathrm e(m(h-Ad)/(sA))\)">\(\mathrm e(m(h-Ad)/(sA))\)</span>. Write <span class="math" data-tex="\(m=x+Aj\)">\(m=x+Aj\)</span> with <span class="math" data-tex="\(x\)">\(x\)</span> modulo <span class="math" data-tex="\(\mathfrak A\)">\(\mathfrak A\)</span> and <span class="math" data-tex="\(j\)">\(j\)</span> modulo <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span>; this runs once through the residues modulo <span class="math" data-tex="\(sAR\)">\(sAR\)</span>, and <span class="math" data-tex="\(\chi_{\mathfrak A}(m)=\chi_{\mathfrak A}(x)\)">\(\chi_{\mathfrak A}(m)=\chi_{\mathfrak A}(x)\)</span>. The sum over <span class="math" data-tex="\(j\)">\(j\)</span> of <span class="math" data-tex="\(\mathrm e(j(h-Ad)/s)\)">\(\mathrm e(j(h-Ad)/s)\)</span> is <span class="math" data-tex="\(q_{\mathfrak s}\)">\(q_{\mathfrak s}\)</span> if <span class="math" data-tex="\(h\equiv Ad\pmod{\mathfrak s}\)">\(h\equiv Ad\pmod{\mathfrak s}\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise, because <span class="math" data-tex="\(R\)">\(R\)</span> is its own annihilator (Lemma 2.1 of Lesson 2). The remaining sum over <span class="math" data-tex="\(x\)">\(x\)</span> is <span class="math" data-tex="\(g_{\chi_{\mathfrak A}}(A,(h-Ad)/s)\)">\(g_{\chi_{\mathfrak A}}(A,(h-Ad)/s)\)</span>. Coprimality of <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span> and <span class="math" data-tex="\(\mathfrak A\)">\(\mathfrak A\)</span> is not needed. The bound holds because there are at most <span class="math" data-tex="\(q_{\mathfrak s}\)">\(q_{\mathfrak s}\)</span> residues <span class="math" data-tex="\(d\)">\(d\)</span> and <span class="math" data-tex="\(|g_{\chi_{\mathfrak A}}|\le q_{\mathfrak A}\)">\(|g_{\chi_{\mathfrak A}}|\le q_{\mathfrak A}\)</span>. For <span class="math" data-tex="\(\epsilon\in U_S^6\)">\(\epsilon\in U_S^6\)</span>, the substitutions <span class="math" data-tex="\(d\mapsto\epsilon d\)">\(d\mapsto\epsilon d\)</span> and <span class="math" data-tex="\(x\mapsto\epsilon^{-1}x\)">\(x\mapsto\epsilon^{-1}x\)</span> in (5.1) leave every symbol unchanged and turn <span class="math" data-tex="\(F(s,A,\epsilon h)\)">\(F(s,A,\epsilon h)\)</span> into <span class="math" data-tex="\(F(s,A,h)\)">\(F(s,A,h)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-poisson-summation-in-the-rows">6. Poisson summation in the rows</h2>
+<p>Put
+<span class="math math-display" data-tex="\[
+V_0(T)=\int_{F_S^1}\widehat W_0(t\ell_T)\,dt\qquad(T&gt;0).
+\]">\[
+V_0(T)=\int_{F_S^1}\widehat W_0(t\ell_T)\,dt\qquad(T&gt;0).
+\]</span>
+By (5.1) of Lesson 7 its Mellin transform is <span class="math" data-tex="\(\int_0^\infty V_0(T)T^z\,dT/T=M(z)\)">\(\int_0^\infty V_0(T)T^z\,dT/T=M(z)\)</span>. As in Lemma 5.1 of Lesson 7, using one weighted supremum at a complex place and weighted integrals elsewhere, <span class="math" data-tex="\(V_0^{\mathrm{abs}}(T)=\int_{F_S^1}|\widehat W_0(t\ell_T)|\,dt\le C_\sigma T^{-\sigma}\)">\(V_0^{\mathrm{abs}}(T)=\int_{F_S^1}|\widehat W_0(t\ell_T)|\,dt\le C_\sigma T^{-\sigma}\)</span> for every <span class="math" data-tex="\(\sigma&gt;0\)">\(\sigma&gt;0\)</span>, and the same bounds after differentiation in <span class="math" data-tex="\(\log T\)">\(\log T\)</span>; so <span class="math" data-tex="\(V_0\)">\(V_0\)</span> is smooth, and by (1.3) and Fourier inversion in <span class="math" data-tex="\(\log T\)">\(\log T\)</span>, <span class="math" data-tex="\(V_0(T)=\frac1{2\pi i}\int_{(\sigma)}M(z)T^{-z}\,dz\)">\(V_0(T)=\frac1{2\pi i}\int_{(\sigma)}M(z)T^{-z}\,dz\)</span> for every <span class="math" data-tex="\(\sigma&gt;0\)">\(\sigma&gt;0\)</span>.</p>
+<p>Let <span class="math" data-tex="\(\mathcal U\)">\(\mathcal U\)</span> be the set of representatives of Lemma 3.2 of Lesson 3, so that every nonzero <span class="math" data-tex="\(h\in R\)">\(h\in R\)</span> is <span class="math" data-tex="\(ur^6\)">\(ur^6\)</span> modulo <span class="math" data-tex="\(U_S^6\)">\(U_S^6\)</span> for a unique <span class="math" data-tex="\(u\in\mathcal U\)">\(u\in\mathcal U\)</span> and a unique exterior ideal <span class="math" data-tex="\(\mathfrak r\)">\(\mathfrak r\)</span> with allowed generator <span class="math" data-tex="\(r\)">\(r\)</span>; write <span class="math" data-tex="\(q_u=|u|_S\)">\(q_u=|u|_S\)</span>.</p>
+<p><strong>Proposition 6.1</strong> (the Poisson expression [OpenAI-029, (7.7)]). For <span class="math" data-tex="\(X,Y,Z&gt;0\)">\(X,Y,Z&gt;0\)</span>, with <span class="math" data-tex="\(\mathfrak A=\mathfrak c\mathfrak n^3\)">\(\mathfrak A=\mathfrak c\mathfrak n^3\)</span> and <span class="math" data-tex="\(A=cn^3\)">\(A=cn^3\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I(X,Y,Z)&amp;=\frac{X^{1/2}}Y\\
+&amp;\quad \sum_{\substack{\mathfrak c\ \text{squarefree}\\ \mathfrak n,\mathfrak s}}\frac{\gamma_2(\mathfrak c)\,\vartheta(\mathfrak A)}{q_{\mathfrak c}^{1/2}q_{\mathfrak n}q_{\mathfrak A}}\\
+&amp;\quad \,P_G\Bigl(\frac{q_{\mathfrak A}}Z\Bigr)W_1\Bigl(\frac{q_{\mathfrak s}}Y\Bigr)\\
+&amp;\quad \sum_{u\in\mathcal U}\sum_{\mathfrak r}F(s,A,ur^6)\\
+&amp;\quad \,V_0\Bigl(\frac{Xq_uq_{\mathfrak r}^6}{q_{\mathfrak A}}\Bigr),\quad(6.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+I(X,Y,Z)&amp;=\frac{X^{1/2}}Y\\
+&amp;\quad \sum_{\substack{\mathfrak c\ \text{squarefree}\\ \mathfrak n,\mathfrak s}}\frac{\gamma_2(\mathfrak c)\,\vartheta(\mathfrak A)}{q_{\mathfrak c}^{1/2}q_{\mathfrak n}q_{\mathfrak A}}\\
+&amp;\quad \,P_G\Bigl(\frac{q_{\mathfrak A}}Z\Bigr)W_1\Bigl(\frac{q_{\mathfrak s}}Y\Bigr)\\
+&amp;\quad \sum_{u\in\mathcal U}\sum_{\mathfrak r}F(s,A,ur^6)\\
+&amp;\quad \,V_0\Bigl(\frac{Xq_uq_{\mathfrak r}^6}{q_{\mathfrak A}}\Bigr),\quad(6.1)
+\end{aligned}
+\]</span>
+and the right side converges absolutely.</p>
+<p><em>Proof.</em> Insert (3.1) of Lesson 5 for <span class="math" data-tex="\(B_m(Z)\)">\(B_m(Z)\)</span> into (2.2); for fixed <span class="math" data-tex="\(t_0\)">\(t_0\)</span> the <span class="math" data-tex="\(m\)">\(m\)</span>-sum is finite and the ideal series converges absolutely (Lemma 3.1 of Lesson 5), so the sums may be exchanged. Fix <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span> and <span class="math" data-tex="\(\mathfrak A\)">\(\mathfrak A\)</span>. The coefficient <span class="math" data-tex="\(c(m)=q_{\mathfrak s}^{-1/2}g_{\mathfrak s}(-m)\chi_{\mathfrak A}(m)\)">\(c(m)=q_{\mathfrak s}^{-1/2}g_{\mathfrak s}(-m)\chi_{\mathfrak A}(m)\)</span> depends on <span class="math" data-tex="\(m\)">\(m\)</span> modulo <span class="math" data-tex="\(sAR\)">\(sAR\)</span>. Split <span class="math" data-tex="\(m=m_0+\ell\)">\(m=m_0+\ell\)</span> with <span class="math" data-tex="\(m_0\)">\(m_0\)</span> modulo <span class="math" data-tex="\(sAR\)">\(sAR\)</span> and <span class="math" data-tex="\(\ell\in sAR\)">\(\ell\in sAR\)</span>, and apply (2.2) of Lesson 2 to <span class="math" data-tex="\(\ell\mapsto\Phi(m_0+\ell)\)">\(\ell\mapsto\Phi(m_0+\ell)\)</span>, <span class="math" data-tex="\(\Phi(x)=W_0(x/\lambda)\)">\(\Phi(x)=W_0(x/\lambda)\)</span>, <span class="math" data-tex="\(\lambda=t_0\ell_{q_{\mathfrak s}X}\)">\(\lambda=t_0\ell_{q_{\mathfrak s}X}\)</span>. The transform of <span class="math" data-tex="\(x\mapsto\Phi(m_0+x)\)">\(x\mapsto\Phi(m_0+x)\)</span> is <span class="math" data-tex="\(\mathrm e(m_0\xi)\widehat\Phi(\xi)\)">\(\mathrm e(m_0\xi)\widehat\Phi(\xi)\)</span>, and <span class="math" data-tex="\(\widehat\Phi(\xi)=|\lambda|_S\widehat W_0(\lambda\xi)\)">\(\widehat\Phi(\xi)=|\lambda|_S\widehat W_0(\lambda\xi)\)</span> with <span class="math" data-tex="\(|\lambda|_S=q_{\mathfrak s}X\)">\(|\lambda|_S=q_{\mathfrak s}X\)</span>. With <span class="math" data-tex="\((sAR)^\perp=(sA)^{-1}R\)">\((sAR)^\perp=(sA)^{-1}R\)</span> and <span class="math" data-tex="\(|sA|_S=q_{\mathfrak s}q_{\mathfrak A}\)">\(|sA|_S=q_{\mathfrak s}q_{\mathfrak A}\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_{m\in R}c(m)\Phi(m)=\frac{q_{\mathfrak s}X}{q_{\mathfrak s}q_{\mathfrak A}}\\
+&amp;\qquad \sum_{h\in R}\widehat W_0\Bigl(\lambda\frac h{sA}\Bigr)\sum_{m_0\bmod sA}c(m_0)\\
+&amp;\qquad \,\mathrm e\Bigl(\frac{m_0h}{sA}\Bigr)=\frac{X\,q_{\mathfrak s}^{1/2}}{q_{\mathfrak A}}\\
+&amp;\qquad \sum_{h\in R}F(s,A,h)\,\widehat W_0\Bigl(\lambda\frac h{sA}\Bigr)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_{m\in R}c(m)\Phi(m)=\frac{q_{\mathfrak s}X}{q_{\mathfrak s}q_{\mathfrak A}}\\
+&amp;\qquad \sum_{h\in R}\widehat W_0\Bigl(\lambda\frac h{sA}\Bigr)\sum_{m_0\bmod sA}c(m_0)\\
+&amp;\qquad \,\mathrm e\Bigl(\frac{m_0h}{sA}\Bigr)=\frac{X\,q_{\mathfrak s}^{1/2}}{q_{\mathfrak A}}\\
+&amp;\qquad \sum_{h\in R}F(s,A,h)\,\widehat W_0\Bigl(\lambda\frac h{sA}\Bigr)
+\end{aligned}
+\]</span>
+by Lemma 5.1. Together with the factor <span class="math" data-tex="\((q_{\mathfrak s}X)^{-1/2}\)">\((q_{\mathfrak s}X)^{-1/2}\)</span> of (2.2) the multiplier is <span class="math" data-tex="\(X^{1/2}/q_{\mathfrak A}\)">\(X^{1/2}/q_{\mathfrak A}\)</span>. The term <span class="math" data-tex="\(h=0\)">\(h=0\)</span> vanishes because <span class="math" data-tex="\(\widehat W_0(0)=0\)">\(\widehat W_0(0)=0\)</span>.</p>
+<p>Group the nonzero <span class="math" data-tex="\(h\)">\(h\)</span> into orbits under <span class="math" data-tex="\(U_S^6\)">\(U_S^6\)</span>; <span class="math" data-tex="\(F(s,A,\cdot)\)">\(F(s,A,\cdot)\)</span> is constant on them by Lemma 5.1. For one orbit, the sum over its points of <span class="math" data-tex="\(\widehat W_0(t_0\ell_{q_{\mathfrak s}X}h/(sA))\)">\(\widehat W_0(t_0\ell_{q_{\mathfrak s}X}h/(sA))\)</span>, integrated over <span class="math" data-tex="\(t_0\in F_S^1/U_S^6\)">\(t_0\in F_S^1/U_S^6\)</span>, is the integral over <span class="math" data-tex="\(F_S^1\)">\(F_S^1\)</span> of <span class="math" data-tex="\(\widehat W_0(t\ell_{q_{\mathfrak s}X}h/(sA))\)">\(\widehat W_0(t\ell_{q_{\mathfrak s}X}h/(sA))\)</span>. The element <span class="math" data-tex="\(\ell_{q_{\mathfrak s}X}h/(sA)\)">\(\ell_{q_{\mathfrak s}X}h/(sA)\)</span> has norm <span class="math" data-tex="\(Xq_h/q_{\mathfrak A}\)">\(Xq_h/q_{\mathfrak A}\)</span>, and its norm-one part is absorbed by the invariance of <span class="math" data-tex="\(dt\)">\(dt\)</span>; so the orbit contributes <span class="math" data-tex="\(F(s,A,h)V_0(Xq_h/q_{\mathfrak A})\)">\(F(s,A,h)V_0(Xq_h/q_{\mathfrak A})\)</span>. Writing the orbits as <span class="math" data-tex="\(h=ur^6\)">\(h=ur^6\)</span> gives (6.1), with <span class="math" data-tex="\(q_h=q_uq_{\mathfrak r}^6\)">\(q_h=q_uq_{\mathfrak r}^6\)</span>.</p>
+<p>The exchanges are absolute. Take <span class="math" data-tex="\(\sigma&gt;1\)">\(\sigma&gt;1\)</span>. The orbit sum of <span class="math" data-tex="\(V_0^{\mathrm{abs}}(Xq_h/q_{\mathfrak A})\)">\(V_0^{\mathrm{abs}}(Xq_h/q_{\mathfrak A})\)</span> is at most <span class="math" data-tex="\(C_\sigma(q_{\mathfrak A}/X)^\sigma\sum_uq_u^{-\sigma}\sum_{\mathfrak r}q_{\mathfrak r}^{-6\sigma}\)">\(C_\sigma(q_{\mathfrak A}/X)^\sigma\sum_uq_u^{-\sigma}\sum_{\mathfrak r}q_{\mathfrak r}^{-6\sigma}\)</span>, finite by Lemma 4.1 of Lesson 3 and Lemma 3.1 of Lesson 10. With <span class="math" data-tex="\(|F|\le q_{\mathfrak s}q_{\mathfrak A}\)">\(|F|\le q_{\mathfrak s}q_{\mathfrak A}\)</span>, the remaining sum over <span class="math" data-tex="\(\mathfrak A\)">\(\mathfrak A\)</span> of <span class="math" data-tex="\(q_{\mathfrak c}^{-1/2}q_{\mathfrak n}^{-1}P_G(q_{\mathfrak A}/Z)q_{\mathfrak A}^{\sigma}\)">\(q_{\mathfrak c}^{-1/2}q_{\mathfrak n}^{-1}P_G(q_{\mathfrak A}/Z)q_{\mathfrak A}^{\sigma}\)</span> converges because <span class="math" data-tex="\(P_G(t)\le e^{\sigma&#x27;^2}t^{-\sigma&#x27;}\)">\(P_G(t)\le e^{\sigma&#x27;^2}t^{-\sigma&#x27;}\)</span> for every <span class="math" data-tex="\(\sigma&#x27;\)">\(\sigma&#x27;\)</span> (Lemma 2.1 of Lesson 5), and the <span class="math" data-tex="\(\mathfrak s\)">\(\mathfrak s\)</span>-sum is finite. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-three-mellin-variables">7. Three Mellin variables</h2>
+<p>Insert the Mellin inversions <span class="math" data-tex="\(P_G(t)=\frac1{2\pi i}\int_{(c)}e^{t&#x27;^2}t^{-t&#x27;}\,dt&#x27;\)">\(P_G(t)=\frac1{2\pi i}\int_{(c)}e^{t&#x27;^2}t^{-t&#x27;}\,dt&#x27;\)</span> (Lemma 2.1 of Lesson 5), <span class="math" data-tex="\(W_1(t)=\frac1{2\pi i}\int_{(c)}\widehat W_1(w)t^{-w}\,dw\)">\(W_1(t)=\frac1{2\pi i}\int_{(c)}\widehat W_1(w)t^{-w}\,dw\)</span>, and the inversion of <span class="math" data-tex="\(V_0\)">\(V_0\)</span>. The factors involving <span class="math" data-tex="\(\mathfrak A\)">\(\mathfrak A\)</span> are <span class="math" data-tex="\(q_{\mathfrak A}^{-1}q_{\mathfrak A}^{-t&#x27;}q_{\mathfrak A}^{z}\)">\(q_{\mathfrak A}^{-1}q_{\mathfrak A}^{-t&#x27;}q_{\mathfrak A}^{z}\)</span>; the substitution <span class="math" data-tex="\(t&#x27;=\xi+z-1\)">\(t&#x27;=\xi+z-1\)</span> turns them into <span class="math" data-tex="\(q_{\mathfrak A}^{-\xi}\)">\(q_{\mathfrak A}^{-\xi}\)</span>.</p>
+<p><strong>Proposition 7.1</strong> (three Mellin variables [OpenAI-029, (7.8)–(7.9)]). For <span class="math" data-tex="\(X,Y,Z&gt;0\)">\(X,Y,Z&gt;0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+I(X,Y,Z)&amp;=\frac1{(2\pi i)^3}\\
+&amp;\quad \int_{(4)}\int_{(4)}\int_{(2)}X^{1/2-z}\\
+&amp;\quad Z^{\xi+z-1}Y^{w-1}e^{(\xi+z-1)^2}\\
+&amp;\quad M(z)\,\widehat W_1(w)\\
+&amp;\quad \sum_{u\in\mathcal U}q_u^{-z}\\
+&amp;\quad \,\mathcal F_u(\xi,w,z)\,dz\,dw\\
+&amp;\quad \,d\xi ,\quad(7.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+I(X,Y,Z)&amp;=\frac1{(2\pi i)^3}\\
+&amp;\quad \int_{(4)}\int_{(4)}\int_{(2)}X^{1/2-z}\\
+&amp;\quad Z^{\xi+z-1}Y^{w-1}e^{(\xi+z-1)^2}\\
+&amp;\quad M(z)\,\widehat W_1(w)\\
+&amp;\quad \sum_{u\in\mathcal U}q_u^{-z}\\
+&amp;\quad \,\mathcal F_u(\xi,w,z)\,dz\,dw\\
+&amp;\quad \,d\xi ,\quad(7.1)
+\end{aligned}
+\]</span>
+with <span class="math" data-tex="\(\operatorname{Re}z=2\)">\(\operatorname{Re}z=2\)</span>, <span class="math" data-tex="\(\operatorname{Re}w=4\)">\(\operatorname{Re}w=4\)</span>, <span class="math" data-tex="\(\operatorname{Re}\xi=4\)">\(\operatorname{Re}\xi=4\)</span>, where
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+\mathcal F_u(\xi,w,z)&amp;=\sum_{\substack{\mathfrak c\ \text{squarefree}\\ \mathfrak n,\mathfrak s,\mathfrak r}}\gamma_2(\mathfrak c)\\
+&amp;\quad \,\vartheta(\mathfrak A)\,F(s,A,ur^6)\\
+&amp;\quad \,q_{\mathfrak c}^{-1/2-\xi}q_{\mathfrak n}^{-1-3\xi}q_{\mathfrak s}^{-w}\\
+&amp;\quad q_{\mathfrak r}^{-6z},
+\end{aligned}\\
+\mathfrak A=\mathfrak c\mathfrak n^3 .\quad(7.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+\mathcal F_u(\xi,w,z)&amp;=\sum_{\substack{\mathfrak c\ \text{squarefree}\\ \mathfrak n,\mathfrak s,\mathfrak r}}\gamma_2(\mathfrak c)\\
+&amp;\quad \,\vartheta(\mathfrak A)\,F(s,A,ur^6)\\
+&amp;\quad \,q_{\mathfrak c}^{-1/2-\xi}q_{\mathfrak n}^{-1-3\xi}q_{\mathfrak s}^{-w}\\
+&amp;\quad q_{\mathfrak r}^{-6z},
+\end{aligned}\\
+\mathfrak A=\mathfrak c\mathfrak n^3 .\quad(7.2)
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> After the three inversions in (6.1), the power of <span class="math" data-tex="\(q_{\mathfrak A}\)">\(q_{\mathfrak A}\)</span> is <span class="math" data-tex="\(q_{\mathfrak A}^{-1-t&#x27;+z}=q_{\mathfrak A}^{-\xi}\)">\(q_{\mathfrak A}^{-1-t&#x27;+z}=q_{\mathfrak A}^{-\xi}\)</span>, and <span class="math" data-tex="\(q_{\mathfrak c}^{-1/2}q_{\mathfrak n}^{-1}q_{\mathfrak A}^{-\xi}=q_{\mathfrak c}^{-1/2-\xi}q_{\mathfrak n}^{-1-3\xi}\)">\(q_{\mathfrak c}^{-1/2}q_{\mathfrak n}^{-1}q_{\mathfrak A}^{-\xi}=q_{\mathfrak c}^{-1/2-\xi}q_{\mathfrak n}^{-1-3\xi}\)</span>. The remaining powers are <span class="math" data-tex="\(X^{1/2}X^{-z}\)">\(X^{1/2}X^{-z}\)</span>, <span class="math" data-tex="\(Z^{t&#x27;}\)">\(Z^{t&#x27;}\)</span>, <span class="math" data-tex="\(Y^{-1}Y^{w}\)">\(Y^{-1}Y^{w}\)</span>, <span class="math" data-tex="\(q_{\mathfrak s}^{-w}\)">\(q_{\mathfrak s}^{-w}\)</span> and <span class="math" data-tex="\((q_uq_{\mathfrak r}^6)^{-z}\)">\((q_uq_{\mathfrak r}^6)^{-z}\)</span>. On the stated lines, <span class="math" data-tex="\(|F|\le q_{\mathfrak s}q_{\mathfrak A}\)">\(|F|\le q_{\mathfrak s}q_{\mathfrak A}\)</span> and <span class="math" data-tex="\(|\gamma_2(\mathfrak c)|=1\)">\(|\gamma_2(\mathfrak c)|=1\)</span> bound the series (7.2) by <span class="math" data-tex="\(\zeta_F^S(7/2)\zeta_F^S(10)\zeta_F^S(3)\zeta_F^S(12)\)">\(\zeta_F^S(7/2)\zeta_F^S(10)\zeta_F^S(3)\zeta_F^S(12)\)</span>, and <span class="math" data-tex="\(\sum_uq_u^{-2}\)">\(\sum_uq_u^{-2}\)</span> converges by Lemma 4.1 of Lesson 3. In the integrals, <span class="math" data-tex="\(M(z)\)">\(M(z)\)</span> and <span class="math" data-tex="\(\widehat W_1(w)\)">\(\widehat W_1(w)\)</span> decay faster than any power of the height, by (1.3) and (1.1), and <span class="math" data-tex="\(e^{(\xi+z-1)^2}\)">\(e^{(\xi+z-1)^2}\)</span> decays like a Gaussian in <span class="math" data-tex="\(\operatorname{Im}(\xi+z)\)">\(\operatorname{Im}(\xi+z)\)</span>; in the height variables <span class="math" data-tex="\(\operatorname{Im}(\xi+z)\)">\(\operatorname{Im}(\xi+z)\)</span>, <span class="math" data-tex="\(\operatorname{Im}z\)">\(\operatorname{Im}z\)</span>, <span class="math" data-tex="\(\operatorname{Im}w\)">\(\operatorname{Im}w\)</span> the integrand is absolutely integrable. So all exchanges are justified. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Lesson 12 factors <span class="math" data-tex="\(\mathcal F_u\)">\(\mathcal F_u\)</span> into an Euler product. The term <span class="math" data-tex="\(u=1\)">\(u=1\)</span> contains <span class="math" data-tex="\(1/L^S(\xi,\eta)\)">\(1/L^S(\xi,\eta)\)</span> and produces the main term of (P2); the other <span class="math" data-tex="\(u\)">\(u\)</span> are controlled in Lesson 13.</p>
+<h2 id="8-exercises">8. Exercises</h2>
+<p><strong>8.1.</strong> Show that <span class="math" data-tex="\(g_{R}(k)=1\)">\(g_{R}(k)=1\)</span> and that <span class="math" data-tex="\(g_{\mathfrak p}(0)=0\)">\(g_{\mathfrak p}(0)=0\)</span> for an exterior prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>.</p>
+<p><strong>8.2.</strong> In Lemma 3.1, show directly that two reduced fractions <span class="math" data-tex="\(d/s\)">\(d/s\)</span> and <span class="math" data-tex="\(d&#x27;/s\)">\(d&#x27;/s\)</span> with the same denominator are equal modulo <span class="math" data-tex="\(R\)">\(R\)</span> exactly when <span class="math" data-tex="\(d\equiv d&#x27;\pmod{\mathfrak s}\)">\(d\equiv d&#x27;\pmod{\mathfrak s}\)</span>.</p>
+<p><strong>8.3.</strong> Check the exponent in Proposition 4.1: <span class="math" data-tex="\(M_0=a+b\)">\(M_0=a+b\)</span>, and <span class="math" data-tex="\(\frac{2M_0-1-b}2=\frac a2+\frac b2-\frac12\)">\(\frac{2M_0-1-b}2=\frac a2+\frac b2-\frac12\)</span>. Evaluate it for <span class="math" data-tex="\(a=9/10\)">\(a=9/10\)</span>, <span class="math" data-tex="\(b=133/1000\)">\(b=133/1000\)</span>.</p>
+<p><strong>8.4.</strong> Let <span class="math" data-tex="\(\mathfrak A=R\)">\(\mathfrak A=R\)</span>. Show that <span class="math" data-tex="\(F(s,1,h)=\chi_{\mathfrak s}(h)\)">\(F(s,1,h)=\chi_{\mathfrak s}(h)\)</span>, and that (5.2) is then the Fourier inversion formula on <span class="math" data-tex="\(R/\mathfrak s\)">\(R/\mathfrak s\)</span> for the function <span class="math" data-tex="\(\chi_{\mathfrak s}\)">\(\chi_{\mathfrak s}\)</span>, whose transform is <span class="math" data-tex="\(g_{\mathfrak s}\)">\(g_{\mathfrak s}\)</span>.</p>
+<p><strong>8.5.</strong> Verify that the substitution <span class="math" data-tex="\(t&#x27;=\xi+z-1\)">\(t&#x27;=\xi+z-1\)</span> turns <span class="math" data-tex="\(Z^{t&#x27;}e^{t&#x27;^2}\)">\(Z^{t&#x27;}e^{t&#x27;^2}\)</span> and <span class="math" data-tex="\(q_{\mathfrak A}^{-1-t&#x27;+z}\)">\(q_{\mathfrak A}^{-1-t&#x27;+z}\)</span> into the factors displayed in (7.1) and (7.2).</p>
+<h2 id="9-solutions">9. Solutions</h2>
+<p><strong>8.1.</strong> For <span class="math" data-tex="\(\mathfrak s=R\)">\(\mathfrak s=R\)</span> there is one residue and the character value is <span class="math" data-tex="\(1\)">\(1\)</span>. For <span class="math" data-tex="\(k=0\)">\(k=0\)</span>, <span class="math" data-tex="\(g_{\mathfrak p}(0)=\sum_d\chi_{\mathfrak p}(d)=0\)">\(g_{\mathfrak p}(0)=\sum_d\chi_{\mathfrak p}(d)=0\)</span>, because <span class="math" data-tex="\(\chi_{\mathfrak p}\)">\(\chi_{\mathfrak p}\)</span> is a nontrivial character of <span class="math" data-tex="\(k_{\mathfrak p}^\times\)">\(k_{\mathfrak p}^\times\)</span> extended by zero.</p>
+<p><strong>8.2.</strong> <span class="math" data-tex="\(d/s-d&#x27;/s=(d-d&#x27;)/s\)">\(d/s-d&#x27;/s=(d-d&#x27;)/s\)</span> lies in <span class="math" data-tex="\(R\)">\(R\)</span> exactly when <span class="math" data-tex="\(d-d&#x27;\in sR=\mathfrak s\)">\(d-d&#x27;\in sR=\mathfrak s\)</span>.</p>
+<p><strong>8.3.</strong> <span class="math" data-tex="\(\frac{2(a+b)-1-b}2=\frac{2a+b-1}2=\frac a2+\frac b2-\frac12\)">\(\frac{2(a+b)-1-b}2=\frac{2a+b-1}2=\frac a2+\frac b2-\frac12\)</span>. For the given values, <span class="math" data-tex="\(\frac{1.8+0.133-1}2=\frac{0.933}2=\frac{933}{2000}\)">\(\frac{1.8+0.133-1}2=\frac{0.933}2=\frac{933}{2000}\)</span>.</p>
+<p><strong>8.4.</strong> With <span class="math" data-tex="\(\mathfrak A=R\)">\(\mathfrak A=R\)</span>, <span class="math" data-tex="\(A=1\)">\(A=1\)</span>, <span class="math" data-tex="\(\chi_R=1\)">\(\chi_R=1\)</span> and <span class="math" data-tex="\(g_{\chi_R}(1,k)=1\)">\(g_{\chi_R}(1,k)=1\)</span>; the congruence <span class="math" data-tex="\(h\equiv d\pmod{\mathfrak s}\)">\(h\equiv d\pmod{\mathfrak s}\)</span> leaves one residue <span class="math" data-tex="\(d=h\)">\(d=h\)</span>, so <span class="math" data-tex="\(F(s,1,h)=\chi_{\mathfrak s}(h)\)">\(F(s,1,h)=\chi_{\mathfrak s}(h)\)</span>. Then (5.2) reads <span class="math" data-tex="\(\sum_{m\bmod\mathfrak s}g_{\mathfrak s}(-m)\mathrm e(hm/s)=q_{\mathfrak s}\chi_{\mathfrak s}(h)\)">\(\sum_{m\bmod\mathfrak s}g_{\mathfrak s}(-m)\mathrm e(hm/s)=q_{\mathfrak s}\chi_{\mathfrak s}(h)\)</span>, which is Fourier inversion on <span class="math" data-tex="\(R/\mathfrak s\)">\(R/\mathfrak s\)</span> for the function <span class="math" data-tex="\(\chi_{\mathfrak s}\)">\(\chi_{\mathfrak s}\)</span>, whose transform is <span class="math" data-tex="\(g_{\mathfrak s}\)">\(g_{\mathfrak s}\)</span>.</p>
+<p><strong>8.5.</strong> <span class="math" data-tex="\(Z^{t&#x27;}=Z^{\xi+z-1}\)">\(Z^{t&#x27;}=Z^{\xi+z-1}\)</span>, <span class="math" data-tex="\(e^{t&#x27;^2}=e^{(\xi+z-1)^2}\)">\(e^{t&#x27;^2}=e^{(\xi+z-1)^2}\)</span>, and <span class="math" data-tex="\(-1-t&#x27;+z=-1-\xi-z+1+z=-\xi\)">\(-1-t&#x27;+z=-1-\xi-z+1+z=-\xi\)</span>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-029] OpenAI, <em>Primitive roots for every admissible integer base</em>, OpenAI Math Release preprint, 4 October 2026, Sections 7.1–7.2. https://github.com/openai/math/tree/main/preprints/Primitive-roots-for-every-admissible-integer-base-October-4-2026</li>
+<li>[QuasiRH] OpenAI, <em>The Quasi-Riemann Hypothesis: A Zero-Free Half-Plane Re(s) &gt; 7/8</em>, OpenAI Math Release preprint, 30 September 2026, Part I, Sections 6–7. https://github.com/openai/math/tree/main/preprints/The-Quasi-Riemann-Hypothesis-September-30-2026</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

@@ -2,7 +2,7 @@
 
 *Written by GPT-6 Astra (OpenAI), October 2026. Public domain (CC0).*
 
-A holomorphic function can diverge as it approaches a real boundary and still have a distributional boundary value. The allowed imaginary directions then constrain the singular Fourier directions of that distribution. We prove the constraint at analytic regularity, retaining both the polynomial boundary growth and the uniform bounds required of the compact witness sequence. A family of linear poles will show that the resulting orientation is exact.
+A holomorphic function can diverge as it approaches a real boundary and still have a distributional boundary value. The allowed imaginary directions then constrain the singular Fourier directions of that distribution. We prove the constraint at analytic regularity, retaining both the polynomial boundary growth and the uniform bounds required of the compact witness sequence. A family of linear poles will show that the resulting orientation is exact. Local wedges with polynomial bounds on each smaller cone have one common boundary and the same directional constraint.
 
 The prerequisites are [Holomorphic boundaries in convex cones](holomorphic-boundaries-in-convex-cones.md), Theorem 2.1, Corollary 2.2 and its polydisk Cauchy proof; [Derivative growth and finite-order localization](derivative-growth-and-finite-order-localization.md), Theorem 4 and Lemma 5; and [Cones and derivative-growth wavefronts](cones-and-derivative-growth-wavefronts.md), the analytic wavefront definition and projection theorem. We also use the complete one-variable pole formulas in [Cauchy kernels and distributional boundary limits](cauchy-kernels-and-boundary-limits.md), Section 4. Their supplied scalar and integration foundations justify the ordinary product rule, compact integrals, affine changes of variables and limiting arguments below.
 
@@ -244,6 +244,75 @@ At a point \(x_0\) on the hyperplane, \(u_{a,k}\) cannot be represented by a con
 For \(n=1\), \(a=1\) and \(k=1\), the earlier pole formula is
 \(u_{1,1}=\operatorname{pv}(1/x)-i\pi\delta_0\). Its analytic singular direction is positive. The negative sign in its concentrated term and the positive Fourier direction are compatible; they refer to different parts of the same Fourier convention.
 
+## Local wedges and angularly varying growth
+
+A bound uniform up to every edge of an approach cone is stronger than the directional conclusion requires. We now allow the permitted height, the polynomial order and its constant to depend on each smaller cone.
+
+Suppose first that \(\Gamma\ne\mathbb R^n\). Call a nonempty open convex cone \(V\) *strictly inside* \(\Gamma\) when
+\[
+                 \overline V\cap S^{n-1}\subset\Gamma.
+ \tag{B1}
+\]
+The left side is compact, so this condition includes a positive angular separation from the complement of \(\Gamma\). In particular a sufficiently small cone about any \(Y\in\Gamma\) has this property.
+
+Let \(f\) be one holomorphic function on an open subset of \(\mathbb C^n\) with the following local wedge property. For every open \(U\) with compact closure in \(X\), and every such \(V\), there are \(\epsilon>0\), an integer \(m\ge0\) and \(C<\infty\) for which \(f\) is defined throughout \(T_V(U,\epsilon)\) and
+\[
+ |f(x+iy)|\le C|y|^{-m}
+ \quad(x\in U,\ y\in V,\ 0<|y|<\epsilon).
+ \tag{B2}
+\]
+All three quantities may depend on \(U,V\). The same \(f\) is used on overlaps. For the full-space cone \(\Gamma=\mathbb R^n\), use the separate convention that \(f\) is holomorphic on a complex neighborhood of \(X\), with its ordinary trace.
+
+**Theorem 3 (one boundary from all smaller cones).** Under (B1)–(B2) there is a unique \(u\in\mathcal D'(X)\) such that, for every \(U,V\) as above and every \(\phi\in C_c^\infty(U)\),
+\[
+ u(\phi)=\lim_{\substack{y\in V\\|y|\to0}}
+                       \int_U f(x+iy)\phi(x)\,dx.
+ \tag{B3}
+\]
+On a fixed compact test support, the slices in a fixed \(V\) have a uniform bound by the derivatives through order \(m+1\), with \(m\) from (B2). The same limit holds for tests converging in that seminorm with common compact support. Moreover,
+\[
+ \operatorname{WF}_A(u)\subset X\times(\Gamma^*\setminus\{0\}).
+ \tag{B4}
+\]
+The convergence asserted in (B3) is uniform in the direction of approach within each fixed \(V\). No one growth bound over the whole of \(\Gamma\) is part of the hypothesis.
+
+**Proof: comparing approach directions.** For fixed \(U,V\), Theorem 2.1 and Corollary 2.2 of the cone-boundary lesson apply on \(T_V(U,\epsilon)\). They give a boundary \(u_{U,V}\), the stated finite-order bound and the moving-test limit.
+
+We verify that these local boundaries agree even for disjoint cones \(V\). Given two vectors \(Y,Z\in\Gamma\), the segment \(K=[Y,Z]\) is a compact subset of \(\Gamma\), and it avoids zero. Choose \(\delta>0\) so that
+\(K+\overline{B(0,\delta)}\subset\Gamma\). This set is compact and still avoids zero. Define
+\[
+ W=\{t(sY+(1-s)Z+w):
+                  t>0,\ 0\le s\le1,\ |w|<\delta\}.
+ \tag{B5}
+\]
+It is the positive cone on the open convex set \(K+B(0,\delta)\), hence is open and convex: a positive sum is its total coefficient times a convex combination in that set. Its closed unit directions lie in \(\Gamma\). Indeed normalize any convergent sequence of its nonzero vectors; the normalized bases lie in the compact set of normalizations of \(K+\overline{B(0,\delta)}\), all of which belong to \(\Gamma\). Thus \(W\) is strictly inside \(\Gamma\) and contains both \(Y,Z\).
+
+For any two strict cones \(V_1,V_2\), take \(Y\in V_1\), \(Z\in V_2\) and use (B5). The boundary from \(V_1\) agrees with the boundary from \(W\) by evaluating both limits along the ray \(tY\). The boundary from \(V_2\) agrees with it along \(tZ\). The heights may be shortened to their common positive minimum; this does not change either limit. Therefore \(u_{U,V}\) is independent of \(V\).
+
+The same ray comparison on test supports proves agreement when the real neighborhoods overlap. The complete local gluing theorem in [Local data and compatible products](local-data-and-compatible-products.md), Theorem 2.1, supplies \(u\) on \(X\). Equivalently, a finite test partition defines its value, and agreement on overlaps makes that value independent of the partition. Every compact support has an open neighborhood compactly inside \(X\), so one such neighborhood and one cone give its finite-order continuity bound. This proves that the glued object is a distribution. It also proves uniqueness and all the limits and bounds claimed in (B3), including the moving-test assertion.
+
+**Proof: excluding the forbidden frequencies.** If \(\xi_0\notin\Gamma^*\), choose \(Y\in\Gamma\) with \(Y\cdot\xi_0<0\). Choose a strict cone \(V\) about \(Y\). On every relatively compact real neighborhood, (B2) is precisely the uniform hypothesis needed for Theorem 2, now applied with \(V\) in place of \(\Gamma\). Since \(\xi_0\notin V^*\), that theorem excludes \((x_0,\xi_0)\). Its actual boundary is the glued \(u\), by (B3). This proves (B4) at every \(x_0\). When \(\Gamma=\mathbb R^n\), the polydisk power-series proof gives an analytic ordinary trace, the dual is \(\{0\}\), and all the asserted conclusions follow directly. \(\square\)
+
+**Corollary 4 (the regular remainder matters).** For the boundary \(u\) of Theorem 3 and any \(h\in C^\infty(X)\),
+\[
+ \operatorname{WF}(u+h)=\operatorname{WF}(u)
+        \subset X\times(\Gamma^*\setminus\{0\}).
+ \tag{B6}
+\]
+If \(h\) is real analytic, then also
+\[
+                       \operatorname{WF}_A(u+h)=\operatorname{WF}_A(u).
+ \tag{B7}
+\]
+A merely smooth \(h\) need not preserve (B4).
+
+**Proof.** A localized smooth function has rapidly decreasing Fourier transform, by repeated integration by parts. Adding it preserves rapid decay in both directions of the implication, since \(u=(u+h)-h\). This proves the equality in (B6) directly from the smooth-wavefront definition. The inclusion follows from (B4) and the proved comparison \(\operatorname{WF}\subset\operatorname{WF}_A\). For analytic \(h\), the analytic projection theorem gives empty analytic wavefront; applying the finite-sum inclusion first to \(u+h\) and then to \(u=(u+h)-h\) gives (B7). Exercise 7 proves the failure for a merely smooth remainder. \(\square\)
+
+[![A smaller angular cone and the angular growth of a linear pole.](../figures/local-cones-and-angular-growth.png)](../figures/local-cones-and-angular-growth.svg)
+
+*Left: the imaginary first quadrant \(\Gamma\), its strict sector \(15^\circ<\theta<75^\circ\), and the radius-\(1/4\) arc \(y=(\cos\theta,\sin\theta)/4\). Dashed rays are excluded boundaries. Right: for \(f(z)=1/z_1\) at real base zero, the exact normalized magnitude \(|y|\,|f(iy)|=1/\cos\theta\), on a logarithmic vertical scale. It is bounded on the indicated strict sector and diverges as \(\theta\to90^\circ\). The norm and angles refer to the imaginary displacement; the graph makes no assertion about Fourier support. Theorem 3 and Exercise 5 give the corresponding boundary and growth statements. [Reproducible figure source](../figures/local-cones-and-angular-growth.py).*
+
+
 ## Exercises with complete solutions
 
 **Exercise 1 — elementary cone geometry (foundation).** Compute the duals of the positive quadrant in \(\mathbb R^2\), the half-space cone \(\{y_n>0\}\), and \(\mathbb R^n\). State the respective restrictions given by (10).
@@ -266,7 +335,49 @@ For \(n=1\), \(a=1\) and \(k=1\), the earlier pole formula is
 **Solution.** Complex conjugation of the upper pole gives the lower pole, because it conjugates the functions at positive height and their distributional limits. Conjugation reflects wavefront covectors by Exercise 2 of the preceding wavefront lesson. Formula (17) therefore gives only the negative ray over zero for \((x-i0)^{-1}\). The pole formulas give
 \((x+i0)^{-1}+(x-i0)^{-1}=2\operatorname{pv}(1/x)\). Away from zero, this principal value is the analytic function \(1/x\). At zero it has no continuous representative, by the unbounded restriction away from zero used above. It is real, so the preceding conjugation argument makes its analytic wavefront set symmetric. Projection provides at least one direction; symmetry and conicity provide both. Thus \(\operatorname{WF}_A(\operatorname{pv}(1/x))=\{(0,\xi):\xi\ne0\}\). The sum gathers the two possible orientations, consistently with the wavefront inclusion for sums. \(\square\)
 
+**Exercise 5 — a bound on each smaller cone (foundation).** For \(f(z)=1/z_1\) and \(\Gamma=\{y_1>0,y_2>0\}\), prove (B2) on every strict cone. Show that no polynomial radial bound holds on the whole quadrant, even at real base zero. Identify the boundary using (18)–(19).
+
+**Solution.** On the compact set \(\overline V\cap S^1\), the first coordinate has a positive minimum \(c_V\). Thus
+\[
+ |f(x+iy)|\le y_1^{-1}\le c_V^{-1}|y|^{-1}.
+ \tag{B8}
+\]
+There is no dependence on the real base here. In the whole quadrant take
+\(y(t)=(e^{-1/t^2},t)\), \(t>0\). Then
+\(|f(iy(t))|=e^{1/t^2}\) and \(|y(t)|\ge t\).
+A bound \(C|y|^{-m}\) would imply \(e^{1/t^2}\le Ct^{-m}\), which fails: a term of the exponential series with integer degree greater than \(m/2\) already makes \(t^me^{1/t^2}\) unbounded. The boundary is
+\[
+ u(\phi)=\operatorname{pv}(1/s)\left(\int_{\mathbb R}\phi(s,t)\,dt\right)
+                  -i\pi\int_{\mathbb R}\phi(0,t)\,dt.
+ \tag{B9}
+\]
+The tangential integral is a compact smooth test, as proved in (18). Formula (19) reduces the limit to the one-variable pole formula. This example actually has that boundary along every approach with \(y_1>0\), because (19) depends only on \(y_1\); that additional fact is stronger than the strict-cone convergence guaranteed by Theorem 3. \(\square\)
+
+**Exercise 6 — two wedges with a common ray (intermediate).** Suppose two local wedges over \(X\subset\mathbb R^2\), with cones
+\(\Gamma_1=\{y_1>0,y_2>0\}\) and
+\(\Gamma_2=\{y_1>0,y_2<0\}\), satisfy Theorem 3 and have the same boundary \(u\). Determine the resulting analytic-wavefront bound. Give an example attaining its allowed directions.
+
+**Solution.** Their duals are respectively
+\(\{\xi_1\ge0,\xi_2\ge0\}\) and
+\(\{\xi_1\ge0,\xi_2\le0\}\). To verify either equality, nonnegative coordinate products give sufficiency; a coordinate with the wrong sign is exposed by increasing the corresponding allowed coordinate of \(y\) while holding the other fixed. Apply (B4) twice and intersect. The result is
+\[
+       \operatorname{WF}_A(u)\subset
+                  \{(x,t e_1):x\in X,\ t>0\}.
+ \tag{B10}
+\]
+The same holomorphic function \(1/z_1\) works in both wedges, with the strict-cone bounds just proved. Its common boundary (B9) has, by (17), exactly all positive \(e_1\) covectors over the line \(x_1=0\), and none over the other points. Thus a common boundary on these two wedges need not be analytic; their cones are not opposites. \(\square\)
+
+**Exercise 7 — a smooth term with two analytic directions (advanced).** On \(\mathbb R\), set \(h(x)=e^{-1/x^2}\) for \(x>0\) and \(h(x)=0\) for \(x\le0\). Prove that it is smooth, that it is not analytic at zero, and that its analytic wavefront over zero consists of both nonzero directions. Use the zero holomorphic function on the upper half-plane to explain the last sentence of Corollary 4.
+
+**Solution.** On the positive half-line every derivative is a polynomial in \(1/x\) times \(e^{-1/x^2}\), by induction with the product and chain rules. For every \(q\ge0\),
+\(x^{-q}e^{-1/x^2}\to0\): writing \(s=1/x^2\), use \(e^s\ge s^k/k!\) with an integer \(k>q/2\). The same bound with one extra inverse power makes each difference quotient at zero tend to zero. Induction therefore extends all derivatives continuously across zero, with \(h^{(j)}(0)=0\). The function is smooth.
+
+If it were analytic at zero, its convergent Taylor series there would be zero and would make it vanish on a neighborhood, contradicting \(h(x)>0\) for \(x>0\). The analytic-wavefront projection theorem consequently gives at least one analytic singular direction over zero. Since \(h\) is real, the conjugation identity reflects that direction; positive conicity then supplies both rays. Its smooth wavefront is empty. For \(f=0\) on the upper half-plane the boundary is zero and the allowed nonzero dual cone is the positive ray. Adding \(h\) produces a negative analytic direction as well, although (B6) remains valid with both smooth wavefronts empty. \(\square\)
+
+
 ## References
 
 - [Holomorphic boundaries in convex cones](holomorphic-boundaries-in-convex-cones.md), Theorem 2.1, Corollary 2.2 and the polydisk Cauchy proof; [Derivative growth and finite-order localization](derivative-growth-and-finite-order-localization.md), Theorem 4 and Lemma 5; [Cones and derivative-growth wavefronts](cones-and-derivative-growth-wavefronts.md), the analytic definition, projection, sum and conjugation arguments; and [Cauchy kernels and distributional boundary limits](cauchy-kernels-and-boundary-limits.md), Section 4. These are the available earlier programme proofs used here.
 - Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition (1990), Springer, 2003, [doi:10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), Theorem 8.4.8. This is the source for the analytic dual-cone boundary theorem. The directional cancellation proof, examples and exercises here are independently expressed, with the full boundary limit supplied by the earlier programme lesson.
+
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, second-edition reprint, Springer, 2003, [doi:10.1007/978-3-642-61497-2](https://doi.org/10.1007/978-3-642-61497-2), Theorem 8.1.6 and its following local-wedge and smooth-remainder remarks; Theorem 8.4.8 for the analytic bound. Theorems 2–3 prove the boundary estimate with the stated growth hypotheses; Corollary 4 distinguishes the two regularities.

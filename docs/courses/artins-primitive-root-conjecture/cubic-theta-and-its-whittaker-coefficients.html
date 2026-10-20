@@ -1,0 +1,289 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Cubic theta and its Whittaker coefficients</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Artin&#x27;s primitive root conjecture)</a><a href="the-coefficient-family-and-the-plan-of-the-zero-free-argument.html">Previous lesson</a><a href="norm-sheets-and-exact-gaussian-smoothing.html">Next lesson</a><a href="src/cubic-theta-and-its-whittaker-coefficients.md">Editable source</a></nav><main><article><h1 id="cubic-theta-and-its-whittaker-coefficients">Cubic theta and its Whittaker coefficients</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The coefficients <span class="math" data-tex="\(\gamma_2(\mathfrak c)/(q_{\mathfrak c}^{1/2}q_{\mathfrak n})\)">\(\gamma_2(\mathfrak c)/(q_{\mathfrak c}^{1/2}q_{\mathfrak n})\)</span> of the sums <span class="math" data-tex="\(B_m(Z)\)">\(B_m(Z)\)</span> of <a href="the-coefficient-family-and-the-plan-of-the-zero-free-argument.html"><em>The coefficient family and the plan of the zero-free argument</em></a> are Fourier coefficients of a cubic theta function: an automorphic form on a threefold cover of <span class="math" data-tex="\(\mathrm{PGL}_2\)">\(\mathrm{PGL}_2\)</span> over <span class="math" data-tex="\(F\)">\(F\)</span>, constructed by Kubota, Patterson, and Kazhdan and Patterson as a residue of Eisenstein series. Its Fourier coefficients are supported on ideals of the form <span class="math" data-tex="\(\mathfrak c\mathfrak n^3\)">\(\mathfrak c\mathfrak n^3\)</span>; this is why cubes appear in (3.1) of that lesson. This lesson states the properties of the cubic theta representation that the course uses, as a named result, and proves what is computed from them: the spherical Whittaker function at every prime outside <span class="math" data-tex="\(S\)">\(S\)</span>, by an explicit Jacquet integral; the normalized product formula for the global Whittaker function; and the cocycle of the cover at <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p><strong>Prerequisites.</strong> <a href="s-integers-and-sixth-power-classes.html"><em>S-integers and sixth-power classes</em></a>, (3.1)–(3.3) and Lemma 3.1; <a href="sextic-reciprocity-and-kummer-characters.html"><em>Sextic reciprocity and Kummer characters</em></a>, Section 1; <a href="gauss-sums-and-the-correction-characters.html"><em>Gauss sums and the correction characters</em></a>, (3.1), Lemma 1.1 and Proposition 5.1; <a href="../NT-ADL/NT-ADL-02.html"><em>The adèle ring of a number field</em></a>, Theorem 2.3; <a href="../NT-CFT/power-residue-symbols-and-reciprocity-laws.html"><em>Power residue symbols and reciprocity laws</em></a>, Theorem 23.3.</p>
+<h2 id="1-the-threefold-cover">1. The threefold cover</h2>
+<p>Write, for a field or ring of adèles,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+n(x)=\begin{pmatrix}1&amp;x\\0&amp;1\end{pmatrix},\\
+\bar n(x)=\begin{pmatrix}1&amp;0\\x&amp;1\end{pmatrix},\\
+a(y)=\begin{pmatrix}y&amp;0\\0&amp;1\end{pmatrix},\\
+w=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}.
+\end{gathered}
+\]">\[
+\begin{gathered}
+n(x)=\begin{pmatrix}1&amp;x\\0&amp;1\end{pmatrix},\\
+\bar n(x)=\begin{pmatrix}1&amp;0\\x&amp;1\end{pmatrix},\\
+a(y)=\begin{pmatrix}y&amp;0\\0&amp;1\end{pmatrix},\\
+w=\begin{pmatrix}0&amp;1\\1&amp;0\end{pmatrix}.
+\end{gathered}
+\]</span>
+At each place <span class="math" data-tex="\(v\)">\(v\)</span> of <span class="math" data-tex="\(F\)">\(F\)</span>, Kubota's construction, in the determinant-modified form of Kazhdan and Patterson, uses the cubic Hilbert symbol to define a central extension of <span class="math" data-tex="\(\mathrm{GL}_2(F_v)\)">\(\mathrm{GL}_2(F_v)\)</span> by <span class="math" data-tex="\(\mu_3\)">\(\mu_3\)</span>; its cocycle restricted to the diagonal torus is
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+&amp;\sigma_{c,v}\bigl(\operatorname{diag}(a,b),\operatorname{diag}(a&#x27;,b&#x27;)\bigr)\\
+&amp;\quad =(a,b&#x27;)_{3,v}\,(ab,a&#x27;b&#x27;)_{3,v}^{\,c},
+\end{aligned}\\
+c\in\mathbb Z/3\mathbb Z .\quad(1.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+&amp;\sigma_{c,v}\bigl(\operatorname{diag}(a,b),\operatorname{diag}(a&#x27;,b&#x27;)\bigr)\\
+&amp;\quad =(a,b&#x27;)_{3,v}\,(ab,a&#x27;b&#x27;)_{3,v}^{\,c},
+\end{aligned}\\
+c\in\mathbb Z/3\mathbb Z .\quad(1.1)
+\end{gathered}
+\]</span>
+On two scalars this is <span class="math" data-tex="\((z,z&#x27;)_{3,v}^{1+4c}\)">\((z,z&#x27;)_{3,v}^{1+4c}\)</span>, and for <span class="math" data-tex="\(c=2\)">\(c=2\)</span> it is <span class="math" data-tex="\(1\)">\(1\)</span>: the preimage of the scalars is then central and the ordinary scalar section is a homomorphism. Quotienting by the split scalars gives a threefold cover <span class="math" data-tex="\(\widetilde{\mathrm{PGL}}_2(F_v)\)">\(\widetilde{\mathrm{PGL}}_2(F_v)\)</span>, and the restricted product of these gives a cover of <span class="math" data-tex="\(\mathrm{PGL}_2(\mathbb A_F)\)">\(\mathrm{PGL}_2(\mathbb A_F)\)</span>.</p>
+<p>On the quotient torus, the section of <span class="math" data-tex="\(a(y)\)">\(a(y)\)</span> satisfies <span class="math" data-tex="\(a(x)a(y)=(x,y)_{3,v}^2\,a(xy)\)">\(a(x)a(y)=(x,y)_{3,v}^2\,a(xy)\)</span>. In a representation in which <span class="math" data-tex="\(\mu_3\)">\(\mu_3\)</span> acts through a fixed embedding <span class="math" data-tex="\(\iota\colon\mu_3(F)\to\mathbb C^\times\)">\(\iota\colon\mu_3(F)\to\mathbb C^\times\)</span> (a <strong>genuine</strong> representation), write
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\pi(a(x))\pi(a(y))\\
+&amp;\quad =\mathcal C_v(x,y)\,\pi(a(xy)) .\quad(1.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\pi(a(x))\pi(a(y))\\
+&amp;\quad =\mathcal C_v(x,y)\,\pi(a(xy)) .\quad(1.2)
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(-1=\zeta_{12}^6\)">\(-1=\zeta_{12}^6\)</span> is a cube, <span class="math" data-tex="\((\cdot,\cdot)_{3,v}^2\)">\((\cdot,\cdot)_{3,v}^2\)</span> is alternating and bimultiplicative. At a place <span class="math" data-tex="\(v\notin S\)">\(v\notin S\)</span> it is trivial on two units, and on a uniformizer and a unit it is the cubic residue symbol or its inverse, with the same orientation at all places. Choosing <span class="math" data-tex="\(\iota\)">\(\iota\)</span> accordingly, for every exterior prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, every uniformizer <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span> and all units <span class="math" data-tex="\(u,u&#x27;\)">\(u,u&#x27;\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal C_{\mathfrak p}(\varpi,u)=\chi_{\mathfrak p}(u)^{-2},\\
+\mathcal C_{\mathfrak p}(u,\varpi)=\chi_{\mathfrak p}(u)^{2},\\
+\mathcal C_{\mathfrak p}(u,u&#x27;)=1,\\
+\mathcal C_{\mathfrak p}(\varpi,\varpi)=1 .\quad(1.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal C_{\mathfrak p}(\varpi,u)=\chi_{\mathfrak p}(u)^{-2},\\
+\mathcal C_{\mathfrak p}(u,\varpi)=\chi_{\mathfrak p}(u)^{2},\\
+\mathcal C_{\mathfrak p}(u,u&#x27;)=1,\\
+\mathcal C_{\mathfrak p}(\varpi,\varpi)=1 .\quad(1.3)
+\end{gathered}
+\]</span>
+Comparing with the tame formula (3.2) of <a href="s-integers-and-sixth-power-classes.html"><em>S-integers and sixth-power classes</em></a> and Lemma 3.1 there, both sides of the identity <span class="math" data-tex="\(\mathcal C_{\mathfrak p}(x,y)=(x,y)_{6,\mathfrak p}^2\)">\(\mathcal C_{\mathfrak p}(x,y)=(x,y)_{6,\mathfrak p}^2\)</span> are bimultiplicative and agree on these generators; so
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\mathcal C_{\mathfrak p}(x,y)=(x,y)_{6,\mathfrak p}^2\\
+(x,y\in F_{\mathfrak p}^\times,\ \mathfrak p\notin S).\quad(1.4)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\mathcal C_{\mathfrak p}(x,y)=(x,y)_{6,\mathfrak p}^2\\
+(x,y\in F_{\mathfrak p}^\times,\ \mathfrak p\notin S).\quad(1.4)
+\end{gathered}
+\]</span></p>
+<h2 id="2-the-cubic-theta-representation">2. The cubic theta representation</h2>
+<p><strong>Named result N1</strong> (Kazhdan–Patterson). Let <span class="math" data-tex="\(F\)">\(F\)</span> be a number field containing <span class="math" data-tex="\(\mu_3\)">\(\mu_3\)</span>, and use the cover of Section 1 with <span class="math" data-tex="\(c=2\)">\(c=2\)</span>. With the ordinary torus section and the canonical splittings of the root groups:</p>
+<ol>
+<li><em>The cover.</em> It splits over <span class="math" data-tex="\(\mathrm{PGL}_2(F)\)">\(\mathrm{PGL}_2(F)\)</span>. In it, the lifts satisfy
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+n(x)a(y)=a(y)n(x/y),\\
+wa(y)w^{-1}=a(y^{-1}),\\
+wn(H)=n(H^{-1})a(-H^{-2})\bar n(H^{-1})\\
+(H\ne0).\quad(2.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+n(x)a(y)=a(y)n(x/y),\\
+wa(y)w^{-1}=a(y^{-1}),\\
+wn(H)=n(H^{-1})a(-H^{-2})\bar n(H^{-1})\\
+(H\ne0).\quad(2.1)
+\end{gathered}
+\]</span>
+At an exterior prime the compact subgroup <span class="math" data-tex="\(\mathrm{PGL}_2(\mathcal O_{\mathfrak p})\)">\(\mathrm{PGL}_2(\mathcal O_{\mathfrak p})\)</span> splits, and the splitting agrees with the sections on unit diagonals, on <span class="math" data-tex="\(w\)">\(w\)</span>, and on integral upper and lower root elements.</li>
+<li><em>The local exceptional representation at an exterior prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>.</em> Let <span class="math" data-tex="\(Q=q_{\mathfrak p}\)">\(Q=q_{\mathfrak p}\)</span>. There is a three-dimensional genuine representation <span class="math" data-tex="\(\sigma^-\)">\(\sigma^-\)</span> of the covering torus with a basis <span class="math" data-tex="\(e_0,e_1,e_2\)">\(e_0,e_1,e_2\)</span>, <span class="math" data-tex="\(e_j=Q^{-j/6}\sigma^-(a(\varpi^j))e_0\)">\(e_j=Q^{-j/6}\sigma^-(a(\varpi^j))e_0\)</span> and <span class="math" data-tex="\(e_{j+3}=e_j\)">\(e_{j+3}=e_j\)</span> for all <span class="math" data-tex="\(j\in\mathbb Z\)">\(j\in\mathbb Z\)</span>, such that
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+&amp;\sigma^-(a(\varpi^ju))\,e_0\\
+&amp;\quad =Q^{j/6}\chi_{\mathfrak p}(u)^{2j}e_j
+\end{aligned}\\
+(j\in\mathbb Z,\ u\in\mathcal O_{\mathfrak p}^\times).\quad(2.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+&amp;\sigma^-(a(\varpi^ju))\,e_0\\
+&amp;\quad =Q^{j/6}\chi_{\mathfrak p}(u)^{2j}e_j
+\end{aligned}\\
+(j\in\mathbb Z,\ u\in\mathcal O_{\mathfrak p}^\times).\quad(2.2)
+\end{gathered}
+\]</span>
+In the normalized induced representation <span class="math" data-tex="\(I^-\)">\(I^-\)</span>, realized by vector-valued functions with <span class="math" data-tex="\(f(n(x)a(y)g)=|y|_{\mathfrak p}^{1/2}\sigma^-(a(y))f(g)\)">\(f(n(x)a(y)g)=|y|_{\mathfrak p}^{1/2}\sigma^-(a(y))f(g)\)</span>, the spherical vector <span class="math" data-tex="\(f^\circ\)">\(f^\circ\)</span> with <span class="math" data-tex="\(f^\circ(k)=e_0\)">\(f^\circ(k)=e_0\)</span> on the compact subgroup lies in the irreducible subrepresentation <span class="math" data-tex="\(\Theta_{\mathfrak p}\)">\(\Theta_{\mathfrak p}\)</span> of <span class="math" data-tex="\(I^-\)">\(I^-\)</span>, and <span class="math" data-tex="\(\Theta_{\mathfrak p}\)">\(\Theta_{\mathfrak p}\)</span> has a one-dimensional space of Whittaker functionals.</li>
+<li><em>The global representation.</em> There is an irreducible genuine automorphic representation <span class="math" data-tex="\(\Theta=\bigotimes&#x27;_v\Theta_v\)">\(\Theta=\bigotimes&#x27;_v\Theta_v\)</span> of the cover of <span class="math" data-tex="\(\mathrm{PGL}_2(\mathbb A_F)\)">\(\mathrm{PGL}_2(\mathbb A_F)\)</span>, with <span class="math" data-tex="\(\Theta_{\mathfrak p}\)">\(\Theta_{\mathfrak p}\)</span> as in part 2 at almost all exterior primes, whose automorphic realization <span class="math" data-tex="\(\varphi\mapsto\theta_\varphi\)">\(\varphi\mapsto\theta_\varphi\)</span> has a nonzero Whittaker functional
+<span class="math math-display" data-tex="\[
+\lambda(\varphi)=\int_{F\backslash\mathbb A_F}\theta_\varphi(n(x))\overline{\psi(x)}\,dx ,
+\]">\[
+\lambda(\varphi)=\int_{F\backslash\mathbb A_F}\theta_\varphi(n(x))\overline{\psi(x)}\,dx ,
+\]</span>
+and every <span class="math" data-tex="\(\Theta_v\)">\(\Theta_v\)</span> has a one-dimensional space of Whittaker functionals. The automorphic functions have the absolutely and locally uniformly convergent Fourier expansion
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\theta_\varphi(g)=\theta_{\varphi,N}(g)\\
+&amp;\qquad+\sum_{\nu\in F^\times}\lambda\bigl(\Theta(a(\nu)g)\varphi\bigr),\\
+&amp;\theta_{\varphi,N}(g)\\
+&amp;\qquad=\int_{F\backslash\mathbb A_F}\theta_\varphi(n(x)g)\,dx .\quad(2.3)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\theta_\varphi(g)=\theta_{\varphi,N}(g)\\
+&amp;\qquad+\sum_{\nu\in F^\times}\lambda\bigl(\Theta(a(\nu)g)\varphi\bigr),\\
+&amp;\theta_{\varphi,N}(g)\\
+&amp;\qquad=\int_{F\backslash\mathbb A_F}\theta_\varphi(n(x)g)\,dx .\quad(2.3)
+\end{aligned}
+\]</span>
+At a complex place <span class="math" data-tex="\(\Theta_v\)">\(\Theta_v\)</span> is the spherical principal series of <span class="math" data-tex="\(\mathrm{PGL}_2(\mathbb C)\)">\(\mathrm{PGL}_2(\mathbb C)\)</span> with normalized characters <span class="math" data-tex="\((|\cdot|_v^{1/6},|\cdot|_v^{-1/6})\)">\((|\cdot|_v^{1/6},|\cdot|_v^{-1/6})\)</span>, and the constant term <span class="math" data-tex="\(\theta_{\varphi,N}\)">\(\theta_{\varphi,N}\)</span> lies in the induction from the Weyl-conjugate datum; in particular its dependence on a complex diagonal <span class="math" data-tex="\(a(y)\)">\(a(y)\)</span> is radial.</li>
+<li><em>Exponents.</em> At a finite place, the twisted Jacquet quotient of <span class="math" data-tex="\(\Theta_v\)">\(\Theta_v\)</span> is finite dimensional, and the element <span class="math" data-tex="\(a(\varpi_v^3)\)">\(a(\varpi_v^3)\)</span>, central in the covering torus, acts on the ordinary Jacquet module of <span class="math" data-tex="\(\Theta_v\)">\(\Theta_v\)</span> with eigenvalues of absolute values <span class="math" data-tex="\(q_v^{-1}\)">\(q_v^{-1}\)</span> and <span class="math" data-tex="\(q_v^{-2}\)">\(q_v^{-2}\)</span>.</li>
+</ol>
+<p>These statements are Kazhdan and Patterson's Proposition 0.1.1, Proposition 0.1.3 and Section 0.2 (the cover), Sections 0.3 and I.1 with Lemma I.1.3 (the torus representation and the spherical line), Theorem I.2.9 (a), (b), (f) (the exceptional representation), Corollary I.3.6 (uniqueness of Whittaker functionals; the case <span class="math" data-tex="\(r=2\)">\(r=2\)</span>, <span class="math" data-tex="\(n=3\)">\(n=3\)</span>, <span class="math" data-tex="\(2(c+1)\equiv0\pmod3\)">\(2(c+1)\equiv0\pmod3\)</span>), Proposition I.2.1, Lemma I.3.2 and Theorem I.2.9 (exponents), Theorems I.6.4–I.6.5 (complex places), and Sections II.1–II.2 with Theorems II.2.1 and II.2.5 (the global representation and its Whittaker functional), together with their corrections to the global formula. They are used without proof in the programme. The specialization to <span class="math" data-tex="\(c=2\)">\(c=2\)</span>, the exceptional character <span class="math" data-tex="\(\omega_v(s_v(\operatorname{diag}(t^3,t^{-3})))=|t|_v\)">\(\omega_v(s_v(\operatorname{diag}(t^3,t^{-3})))=|t|_v\)</span>, and its central datum are checked against Kazhdan and Patterson's conditions in Appendix A of [OpenAI-029].</p>
+<p>The places at which a chosen pure tensor in <span class="math" data-tex="\(\Theta\)">\(\Theta\)</span> is not the distinguished spherical vector, and the places where Theorem I.2.9 (f) is not available, form a finite set; it is one of the two finite sets included in <span class="math" data-tex="\(S\)">\(S\)</span> in Lesson 2.</p>
+<h2 id="3-the-normalized-global-whittaker-function">3. The normalized global Whittaker function</h2>
+<p><strong>Lemma 3.1</strong> ([OpenAI-029, (5.2)]). There is a pure tensor <span class="math" data-tex="\(\varphi^\circ\)">\(\varphi^\circ\)</span> with <span class="math" data-tex="\(\lambda(\varphi^\circ)\ne0\)">\(\lambda(\varphi^\circ)\ne0\)</span>. Choose <span class="math" data-tex="\(S\)">\(S\)</span> to contain its nondistinguished places, and for <span class="math" data-tex="\(\mathfrak p\notin S\)">\(\mathfrak p\notin S\)</span> let <span class="math" data-tex="\(W_{\mathfrak p}\)">\(W_{\mathfrak p}\)</span> be the spherical Whittaker function of <span class="math" data-tex="\(\Theta_{\mathfrak p}\)">\(\Theta_{\mathfrak p}\)</span> normalized by <span class="math" data-tex="\(W_{\mathfrak p}(1)=1\)">\(W_{\mathfrak p}(1)=1\)</span>. For every pure tensor <span class="math" data-tex="\(\varphi=\varphi_S\otimes\bigotimes_{v\notin S}\varphi_v\)">\(\varphi=\varphi_S\otimes\bigotimes_{v\notin S}\varphi_v\)</span> with <span class="math" data-tex="\(\varphi_v=\varphi_v^\circ\)">\(\varphi_v=\varphi_v^\circ\)</span> for almost all <span class="math" data-tex="\(v\)">\(v\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\mathcal W_\varphi(g):=\lambda(\Theta(g)\varphi)\\
+&amp;\quad=\mathcal W_{S,\varphi_S}(g_S)\prod_{v\notin S}W_{v,\varphi_v}(g_v),\quad(3.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\mathcal W_\varphi(g):=\lambda(\Theta(g)\varphi)\\
+&amp;\quad=\mathcal W_{S,\varphi_S}(g_S)\prod_{v\notin S}W_{v,\varphi_v}(g_v),\quad(3.1)
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(\mathcal W_{S,\varphi_S}\)">\(\mathcal W_{S,\varphi_S}\)</span> is a finite sum of products of local Whittaker functions at the places of <span class="math" data-tex="\(S\)">\(S\)</span>, factored at the complex places.</p>
+<p><em>Proof.</em> The restricted tensor product is spanned by pure tensors, so some pure tensor has <span class="math" data-tex="\(\lambda(\varphi^\circ)\ne0\)">\(\lambda(\varphi^\circ)\ne0\)</span>. For <span class="math" data-tex="\(v\notin S\)">\(v\notin S\)</span>, varying only the <span class="math" data-tex="\(v\)">\(v\)</span>-component of <span class="math" data-tex="\(\varphi^\circ\)">\(\varphi^\circ\)</span> defines a Whittaker functional of <span class="math" data-tex="\(\Theta_v\)">\(\Theta_v\)</span>, nonzero at <span class="math" data-tex="\(\varphi_v^\circ\)">\(\varphi_v^\circ\)</span>; normalize it there. If finitely many other components have been varied, the resulting functional of the <span class="math" data-tex="\(v\)">\(v\)</span>-component is still a Whittaker functional, hence a multiple of the normalized one by uniqueness (N1); evaluating at <span class="math" data-tex="\(\varphi_v^\circ\)">\(\varphi_v^\circ\)</span> identifies the multiple. Induction on the number of varied components gives (3.1) with the component at <span class="math" data-tex="\(S\)">\(S\)</span> collected into <span class="math" data-tex="\(\mathcal W_S\)">\(\mathcal W_S\)</span>. At the finite places of <span class="math" data-tex="\(S\)">\(S\)</span>, <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> factors through the tensor product of the finite-dimensional twisted Jacquet quotients (N1(4)), so it is a finite sum of products of local functionals; at the complex places uniqueness factors it. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-spherical-whittaker-function-at-an-exterior-prime">4. The spherical Whittaker function at an exterior prime</h2>
+<p>Fix an exterior prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> and drop it from the notation: <span class="math" data-tex="\(\psi=\psi_{\mathfrak p}\)">\(\psi=\psi_{\mathfrak p}\)</span> has conductor <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span>, <span class="math" data-tex="\(\mathcal O\)">\(\mathcal O\)</span> has additive volume <span class="math" data-tex="\(1\)">\(1\)</span>, <span class="math" data-tex="\(\chi=\chi_{\mathfrak p}\)">\(\chi=\chi_{\mathfrak p}\)</span>, <span class="math" data-tex="\(Q=q_{\mathfrak p}\)">\(Q=q_{\mathfrak p}\)</span>, and <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span> is a uniformizer. Write
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+g_j=Q^{-1/2}\sum_{x\bmod\mathfrak p}\chi(x)^j\psi(x/\varpi)\\
+(j\in\mathbb Z),
+\end{gathered}
+\]">\[
+\begin{gathered}
+g_j=Q^{-1/2}\sum_{x\bmod\mathfrak p}\chi(x)^j\psi(x/\varpi)\\
+(j\in\mathbb Z),
+\end{gathered}
+\]</span>
+with the unit mask. For <span class="math" data-tex="\(j\not\equiv0\pmod 6\)">\(j\not\equiv0\pmod 6\)</span>, <span class="math" data-tex="\(|g_j|=1\)">\(|g_j|=1\)</span> and <span class="math" data-tex="\(g_jg_{-j}=\chi(-1)^j=1\)">\(g_jg_{-j}=\chi(-1)^j=1\)</span> (Lemma 1.1 of <a href="gauss-sums-and-the-correction-characters.html"><em>Gauss sums and the correction characters</em></a>); in particular <span class="math" data-tex="\(g_2g_4=1\)">\(g_2g_4=1\)</span>. Since <span class="math" data-tex="\(\chi(-1)=1\)">\(\chi(-1)=1\)</span>, replacing <span class="math" data-tex="\(\psi(x/\varpi)\)">\(\psi(x/\varpi)\)</span> by its conjugate does not change <span class="math" data-tex="\(g_j\)">\(g_j\)</span>.</p>
+<p><strong>Proposition 4.1</strong> (local Whittaker values [OpenAI-029, Proposition 5.1(ii) and Appendix A]). For <span class="math" data-tex="\(u\in\mathcal O^\times\)">\(u\in\mathcal O^\times\)</span>, <span class="math" data-tex="\(e\in\mathbb Z\)">\(e\in\mathbb Z\)</span> and integers <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;W_{\mathfrak p}(a(\varpi^eu))=\chi(u)^{2e}\\
+&amp;\quad\cdot\begin{cases}0,&amp;e&lt;0,\\ Q^{-k},&amp;e=3k,\\ Q^{-k-1/2}\,g_2,&amp;e=3k+1,\\ 0,&amp;e=3k+2 .\end{cases}\quad(4.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;W_{\mathfrak p}(a(\varpi^eu))=\chi(u)^{2e}\\
+&amp;\quad\cdot\begin{cases}0,&amp;e&lt;0,\\ Q^{-k},&amp;e=3k,\\ Q^{-k-1/2}\,g_2,&amp;e=3k+1,\\ 0,&amp;e=3k+2 .\end{cases}\quad(4.1)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> <em>The Jacquet integral.</em> For smooth <span class="math" data-tex="\(f\in I^-\)">\(f\in I^-\)</span> put
+<span class="math math-display" data-tex="\[
+\mathscr J(f)=\lim_{L\to\infty}\int_{\varpi^{-L}\mathcal O}f(wn(x))\,\overline{\psi(x)}\,dx .
+\]">\[
+\mathscr J(f)=\lim_{L\to\infty}\int_{\varpi^{-L}\mathcal O}f(wn(x))\,\overline{\psi(x)}\,dx .
+\]</span>
+For large <span class="math" data-tex="\(|x|\)">\(|x|\)</span>, <span class="math" data-tex="\(\bar n(x^{-1})\)">\(\bar n(x^{-1})\)</span> fixes <span class="math" data-tex="\(f\)">\(f\)</span> on the right, and (2.1) with the transformation law gives <span class="math" data-tex="\(f(wn(x))=|x|^{-1}\sigma^-(a(-x^{-2}))f(1)\)">\(f(wn(x))=|x|^{-1}\sigma^-(a(-x^{-2}))f(1)\)</span>. Choose <span class="math" data-tex="\(m\)">\(m\)</span> so that <span class="math" data-tex="\(1+\varpi^m\mathcal O\)">\(1+\varpi^m\mathcal O\)</span> consists of cubes and fixes <span class="math" data-tex="\(f(1)\)">\(f(1)\)</span>. On a shell <span class="math" data-tex="\(x=\varpi^{-l}v\)">\(x=\varpi^{-l}v\)</span>, <span class="math" data-tex="\(v\in\mathcal O^\times\)">\(v\in\mathcal O^\times\)</span>, this expression is unchanged when <span class="math" data-tex="\(v\)">\(v\)</span> is replaced by <span class="math" data-tex="\(vu\)">\(vu\)</span> with <span class="math" data-tex="\(u\in1+\varpi^m\mathcal O\)">\(u\in1+\varpi^m\mathcal O\)</span>: the cocycles with <span class="math" data-tex="\(u\)">\(u\)</span> are trivial and <span class="math" data-tex="\(a(u^{-2})\)">\(a(u^{-2})\)</span> fixes <span class="math" data-tex="\(f(1)\)">\(f(1)\)</span>. The set <span class="math" data-tex="\(\{\varpi^{-l}vu:u\in1+\varpi^m\mathcal O\}\)">\(\{\varpi^{-l}vu:u\in1+\varpi^m\mathcal O\}\)</span> is the additive coset <span class="math" data-tex="\(\varpi^{-l}v+\varpi^{m-l}\mathcal O\)">\(\varpi^{-l}v+\varpi^{m-l}\mathcal O\)</span>, and <span class="math" data-tex="\(\psi\)">\(\psi\)</span> has integral zero over it once <span class="math" data-tex="\(l&gt;m\)">\(l&gt;m\)</span>, because <span class="math" data-tex="\(\psi\)">\(\psi\)</span> is then nontrivial on <span class="math" data-tex="\(\varpi^{m-l}\mathcal O\)">\(\varpi^{m-l}\mathcal O\)</span>. So the limit stabilizes. Translation of <span class="math" data-tex="\(x\)">\(x\)</span> shows <span class="math" data-tex="\(\mathscr J(\pi(n(t))f)=\psi(t)\mathscr J(f)\)">\(\mathscr J(\pi(n(t))f)=\psi(t)\mathscr J(f)\)</span>; each coordinate of <span class="math" data-tex="\(\mathscr J\)">\(\mathscr J\)</span> in the basis <span class="math" data-tex="\(e_0,e_1,e_2\)">\(e_0,e_1,e_2\)</span> is a Whittaker functional on <span class="math" data-tex="\(I^-\)">\(I^-\)</span>.</p>
+<p><em>The shells.</em> Let <span class="math" data-tex="\(e\ge0\)">\(e\ge0\)</span> and <span class="math" data-tex="\(J_e=\mathscr J(\pi(a(\varpi^e))f^\circ)\)">\(J_e=\mathscr J(\pi(a(\varpi^e))f^\circ)\)</span><span class="math" data-tex="\(=\int f^\circ(wn(x)a(\varpi^e))\overline{\psi(x)}\,dx\)">\(=\int f^\circ(wn(x)a(\varpi^e))\overline{\psi(x)}\,dx\)</span>. Put <span class="math" data-tex="\(x=\varpi^eH\)">\(x=\varpi^eH\)</span>. By (2.1), <span class="math" data-tex="\(wn(x)a(\varpi^e)=wa(\varpi^e)n(H)\)">\(wn(x)a(\varpi^e)=wa(\varpi^e)n(H)\)</span><span class="math" data-tex="\(=a(\varpi^{-e})wn(H)\)">\(=a(\varpi^{-e})wn(H)\)</span>. The measure gives <span class="math" data-tex="\(Q^{-e}\)">\(Q^{-e}\)</span>, the modular factor of <span class="math" data-tex="\(a(\varpi^{-e})\)">\(a(\varpi^{-e})\)</span> gives <span class="math" data-tex="\(Q^{e/2}\)">\(Q^{e/2}\)</span>, and <span class="math" data-tex="\(\sigma^-(a(\varpi^{-e}))\)">\(\sigma^-(a(\varpi^{-e}))\)</span> shifts the basis index by <span class="math" data-tex="\(-e\)">\(-e\)</span> with the factor <span class="math" data-tex="\(Q^{-e/6}\)">\(Q^{-e/6}\)</span> from (2.2), with no cocycle between pure uniformizer powers. So every shell carries the common factor <span class="math" data-tex="\(Q^{-e+e/2-e/6}=Q^{-2e/3}\)">\(Q^{-e+e/2-e/6}=Q^{-2e/3}\)</span>.</p>
+<p>For <span class="math" data-tex="\(H\in\mathcal O\)">\(H\in\mathcal O\)</span>, <span class="math" data-tex="\(wn(H)\)">\(wn(H)\)</span> is in the compact subgroup and <span class="math" data-tex="\(\psi(\varpi^eH)=1\)">\(\psi(\varpi^eH)=1\)</span>: this region contributes <span class="math" data-tex="\(e_{-e}\)">\(e_{-e}\)</span>. For <span class="math" data-tex="\(H=\varpi^{-l}v\)">\(H=\varpi^{-l}v\)</span> with <span class="math" data-tex="\(l\ge1\)">\(l\ge1\)</span>, <span class="math" data-tex="\(v\in\mathcal O^\times\)">\(v\in\mathcal O^\times\)</span>, (2.1) gives <span class="math" data-tex="\(wn(H)=n(H^{-1})a(-H^{-2})\bar n(H^{-1})\)">\(wn(H)=n(H^{-1})a(-H^{-2})\bar n(H^{-1})\)</span> with the last factor compact. The modular factor of <span class="math" data-tex="\(a(-H^{-2})\)">\(a(-H^{-2})\)</span> is <span class="math" data-tex="\(Q^{-l}\)">\(Q^{-l}\)</span>; by (1.2) and (1.3), <span class="math" data-tex="\(a(\varpi^{2l}v^{-2})=\mathcal C(\varpi^{2l},v^{-2})^{-1}a(\varpi^{2l})a(v^{-2})\)">\(a(\varpi^{2l}v^{-2})=\mathcal C(\varpi^{2l},v^{-2})^{-1}a(\varpi^{2l})a(v^{-2})\)</span> with <span class="math" data-tex="\(\mathcal C(\varpi^{2l},v^{-2})^{-1}=\chi(v)^{-8l}\)">\(\mathcal C(\varpi^{2l},v^{-2})^{-1}=\chi(v)^{-8l}\)</span>, and <span class="math" data-tex="\(\sigma^-(a(\varpi^{2l}))e_0=Q^{l/3}e_{2l}\)">\(\sigma^-(a(\varpi^{2l}))e_0=Q^{l/3}e_{2l}\)</span>; the sign in <span class="math" data-tex="\(-H^{-2}\)">\(-H^{-2}\)</span> has no effect, because <span class="math" data-tex="\(-1\)">\(-1\)</span> is a sixth power. With <span class="math" data-tex="\(dH=Q^l\,dv\)">\(dH=Q^l\,dv\)</span>, the shell contributes, inside the common factor,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+Q^{l/3}\,e_{2l-e}\;I_{e,l},\\
+I_{e,l}=\int_{\mathcal O^\times}\chi(v)^{-2l}\,\overline{\psi(\varpi^{e-l}v)}\,dv ,
+\end{gathered}
+\]">\[
+\begin{gathered}
+Q^{l/3}\,e_{2l-e}\;I_{e,l},\\
+I_{e,l}=\int_{\mathcal O^\times}\chi(v)^{-2l}\,\overline{\psi(\varpi^{e-l}v)}\,dv ,
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(\chi^{-8l}=\chi^{-2l}\)">\(\chi^{-8l}=\chi^{-2l}\)</span> as <span class="math" data-tex="\(\chi^6=1\)">\(\chi^6=1\)</span>. For <span class="math" data-tex="\(l\le e\)">\(l\le e\)</span> the additive factor is <span class="math" data-tex="\(1\)">\(1\)</span>, and <span class="math" data-tex="\(I_{e,l}=1-Q^{-1}\)">\(I_{e,l}=1-Q^{-1}\)</span> if <span class="math" data-tex="\(3\mid l\)">\(3\mid l\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise. For <span class="math" data-tex="\(l=e+1\)">\(l=e+1\)</span>, <span class="math" data-tex="\(I_{e,l}=Q^{-1/2}g_{-2l}\)">\(I_{e,l}=Q^{-1/2}g_{-2l}\)</span> if <span class="math" data-tex="\(3\nmid l\)">\(3\nmid l\)</span> and <span class="math" data-tex="\(I_{e,l}=-Q^{-1}\)">\(I_{e,l}=-Q^{-1}\)</span> if <span class="math" data-tex="\(3\mid l\)">\(3\mid l\)</span>. For <span class="math" data-tex="\(l&gt;e+1\)">\(l&gt;e+1\)</span>, each class modulo <span class="math" data-tex="\(\varpi^{l-e-1}\)">\(\varpi^{l-e-1}\)</span> splits into <span class="math" data-tex="\(Q\)">\(Q\)</span> lifts on which <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is constant and <span class="math" data-tex="\(\psi\)">\(\psi\)</span> sums to zero, so <span class="math" data-tex="\(I_{e,l}=0\)">\(I_{e,l}=0\)</span>.</p>
+<p><em>Summing.</em> For <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span> the unit ball and the shells <span class="math" data-tex="\(l=3,6,\dots,3k\)">\(l=3,6,\dots,3k\)</span> all carry the same basis vector, with total coefficient <span class="math" data-tex="\(1+(1-Q^{-1})\sum_{j=1}^kQ^j=Q^k\)">\(1+(1-Q^{-1})\sum_{j=1}^kQ^j=Q^k\)</span>. For <span class="math" data-tex="\(e=3k\)">\(e=3k\)</span> the terminal shell <span class="math" data-tex="\(l=3k+1\)">\(l=3k+1\)</span> contributes <span class="math" data-tex="\(Q^{k+1/3-1/2}g_{-2}e_2=Q^{k-1/6}g_4e_2\)">\(Q^{k+1/3-1/2}g_{-2}e_2=Q^{k-1/6}g_4e_2\)</span>; for <span class="math" data-tex="\(e=3k+1\)">\(e=3k+1\)</span> the terminal shell <span class="math" data-tex="\(l=3k+2\)">\(l=3k+2\)</span> contributes <span class="math" data-tex="\(Q^{k+2/3-1/2}g_{-4}e_0=Q^{k+1/6}g_2e_0\)">\(Q^{k+2/3-1/2}g_{-4}e_0=Q^{k+1/6}g_2e_0\)</span>; for <span class="math" data-tex="\(e=3k+2\)">\(e=3k+2\)</span> the terminal shell <span class="math" data-tex="\(l=3k+3\)">\(l=3k+3\)</span> contributes <span class="math" data-tex="\(-Q^k\)">\(-Q^k\)</span> times the vector <span class="math" data-tex="\(e_1\)">\(e_1\)</span> carried by the others. With the common factor,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+J_{3k}&amp;=Q^{-k}\bigl(e_0+Q^{-1/6}g_4e_2\bigr),\\
+J_{3k+1}&amp;=Q^{-k}\bigl(Q^{-1/2}g_2e_0+Q^{-2/3}e_2\bigr)\\
+&amp;=Q^{-k-1/2}g_2\bigl(e_0+Q^{-1/6}g_4e_2\bigr),\\
+J_{3k+2}&amp;=0,\quad(4.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+J_{3k}&amp;=Q^{-k}\bigl(e_0+Q^{-1/6}g_4e_2\bigr),\\
+J_{3k+1}&amp;=Q^{-k}\bigl(Q^{-1/2}g_2e_0+Q^{-2/3}e_2\bigr)\\
+&amp;=Q^{-k-1/2}g_2\bigl(e_0+Q^{-1/6}g_4e_2\bigr),\\
+J_{3k+2}&amp;=0,\quad(4.2)
+\end{aligned}
+\]</span>
+using <span class="math" data-tex="\(g_2g_4=1\)">\(g_2g_4=1\)</span>.</p>
+<p><em>Normalization.</em> <span class="math" data-tex="\(J_0=e_0+Q^{-1/6}g_4e_2\ne0\)">\(J_0=e_0+Q^{-1/6}g_4e_2\ne0\)</span>. Choose a coordinate of <span class="math" data-tex="\(\mathscr J\)">\(\mathscr J\)</span> that is nonzero at <span class="math" data-tex="\(J_0\)">\(J_0\)</span>; it is a Whittaker functional on <span class="math" data-tex="\(I^-\)">\(I^-\)</span>, nonzero on the subrepresentation <span class="math" data-tex="\(\Theta_{\mathfrak p}\ni f^\circ\)">\(\Theta_{\mathfrak p}\ni f^\circ\)</span>, hence the Whittaker functional of <span class="math" data-tex="\(\Theta_{\mathfrak p}\)">\(\Theta_{\mathfrak p}\)</span> up to a scalar (N1(2)). Since every <span class="math" data-tex="\(J_e\)">\(J_e\)</span> is a multiple of <span class="math" data-tex="\(J_0\)">\(J_0\)</span>, (4.2) gives the values (4.1) for <span class="math" data-tex="\(u=1\)">\(u=1\)</span>, <span class="math" data-tex="\(e\ge0\)">\(e\ge0\)</span>. For <span class="math" data-tex="\(e&lt;0\)">\(e&lt;0\)</span> choose <span class="math" data-tex="\(x\in\mathcal O\)">\(x\in\mathcal O\)</span> with <span class="math" data-tex="\(\psi(\varpi^ex)\ne1\)">\(\psi(\varpi^ex)\ne1\)</span>; the spherical vector is fixed by <span class="math" data-tex="\(n(x)\)">\(n(x)\)</span>, and <span class="math" data-tex="\(W(a(\varpi^e))=W(a(\varpi^e)n(x))\)">\(W(a(\varpi^e))=W(a(\varpi^e)n(x))\)</span><span class="math" data-tex="\(=\psi(\varpi^ex)W(a(\varpi^e))\)">\(=\psi(\varpi^ex)W(a(\varpi^e))\)</span>, so the value is <span class="math" data-tex="\(0\)">\(0\)</span>. Finally <span class="math" data-tex="\(a(\varpi^eu)=\mathcal C(\varpi^e,u)^{-1}a(\varpi^e)a(u)\)">\(a(\varpi^eu)=\mathcal C(\varpi^e,u)^{-1}a(\varpi^e)a(u)\)</span> with <span class="math" data-tex="\(\mathcal C(\varpi^e,u)^{-1}=\chi(u)^{2e}\)">\(\mathcal C(\varpi^e,u)^{-1}=\chi(u)^{2e}\)</span> by (1.3), and <span class="math" data-tex="\(a(u)\)">\(a(u)\)</span> fixes the spherical vector. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The middle value is <span class="math" data-tex="\(Q^{-k-1}\sum_x\chi(x)^2\psi(x/\varpi)\)">\(Q^{-k-1}\sum_x\chi(x)^2\psi(x/\varpi)\)</span>. The formula is compatible with the change of uniformizer: replacing <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span> by <span class="math" data-tex="\(\varpi u\)">\(\varpi u\)</span> multiplies the <span class="math" data-tex="\(e=1\)">\(e=1\)</span> value by <span class="math" data-tex="\(\chi(u)^2\)">\(\chi(u)^2\)</span>, both through the unit rule and through the substitution <span class="math" data-tex="\(x\mapsto ux\)">\(x\mapsto ux\)</span> in the Gauss sum.</p>
+<h2 id="5-the-exterior-coefficient">5. The exterior coefficient</h2>
+<p><strong>Corollary 5.1</strong> (the exterior theta coefficient [OpenAI-029, Corollary 5.2]). At every exterior prime use its allowed generator as the uniformizer in Proposition 4.1. Let <span class="math" data-tex="\(A\in R\setminus\{0\}\)">\(A\in R\setminus\{0\}\)</span> be an allowed generator of an exterior ideal <span class="math" data-tex="\(\mathfrak A\)">\(\mathfrak A\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\prod_{\mathfrak p\notin S}W_{\mathfrak p}(a(A))\\
+&amp;\quad=\begin{cases}\dfrac{\gamma_2(\mathfrak c)}{q_{\mathfrak c}^{1/2}q_{\mathfrak n}},&amp;\begin{aligned}&amp;\mathfrak A=\mathfrak c\mathfrak n^3,\\&amp;\mathfrak c\ \text{squarefree},\end{aligned}\\ 0,&amp;\text{otherwise}.\end{cases}\quad(5.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\prod_{\mathfrak p\notin S}W_{\mathfrak p}(a(A))\\
+&amp;\quad=\begin{cases}\dfrac{\gamma_2(\mathfrak c)}{q_{\mathfrak c}^{1/2}q_{\mathfrak n}},&amp;\begin{aligned}&amp;\mathfrak A=\mathfrak c\mathfrak n^3,\\&amp;\mathfrak c\ \text{squarefree},\end{aligned}\\ 0,&amp;\text{otherwise}.\end{cases}\quad(5.1)
+\end{aligned}
+\]</span>
+In the first case <span class="math" data-tex="\(\mathfrak c\)">\(\mathfrak c\)</span> and <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span> are uniquely determined; they need not be coprime.</p>
+<p><em>Proof.</em> By (4.1) only the valuations <span class="math" data-tex="\(3k\)">\(3k\)</span> and <span class="math" data-tex="\(3k+1\)">\(3k+1\)</span> survive, which is the unique decomposition <span class="math" data-tex="\(\mathfrak A=\mathfrak c\mathfrak n^3\)">\(\mathfrak A=\mathfrak c\mathfrak n^3\)</span> with <span class="math" data-tex="\(\mathfrak c\)">\(\mathfrak c\)</span> squarefree, and the magnitudes are <span class="math" data-tex="\(q_{\mathfrak p}^{-k}\)">\(q_{\mathfrak p}^{-k}\)</span> and <span class="math" data-tex="\(q_{\mathfrak p}^{-k-1/2}\)">\(q_{\mathfrak p}^{-k-1/2}\)</span>. Use the allowed product generator <span class="math" data-tex="\(A=cn^3\)">\(A=cn^3\)</span>; another allowed generator differs by an element of <span class="math" data-tex="\(U_S^6\)">\(U_S^6\)</span>, which does not change the local values. Let <span class="math" data-tex="\(l=v_{\mathfrak p}(\mathfrak n)\)">\(l=v_{\mathfrak p}(\mathfrak n)\)</span>. At <span class="math" data-tex="\(\mathfrak p\mid\mathfrak c\)">\(\mathfrak p\mid\mathfrak c\)</span> the valuation is <span class="math" data-tex="\(e=1+3l\)">\(e=1+3l\)</span> and the unit of <span class="math" data-tex="\(A\)">\(A\)</span> is <span class="math" data-tex="\((c/p)(n/p^l)^3\)">\((c/p)(n/p^l)^3\)</span>, so the unit factor in (4.1) is <span class="math" data-tex="\(\chi_{\mathfrak p}(c/p)^{2+6l}\chi_{\mathfrak p}(n/p^l)^{3(2+6l)}=\chi_{\mathfrak p}(c/p)^2\)">\(\chi_{\mathfrak p}(c/p)^{2+6l}\chi_{\mathfrak p}(n/p^l)^{3(2+6l)}=\chi_{\mathfrak p}(c/p)^2\)</span>. At a prime of <span class="math" data-tex="\(\mathfrak n\)">\(\mathfrak n\)</span> not dividing <span class="math" data-tex="\(\mathfrak c\)">\(\mathfrak c\)</span>, <span class="math" data-tex="\(e=3l\)">\(e=3l\)</span>, the unit is <span class="math" data-tex="\((n/p^l)^3\)">\((n/p^l)^3\)</span>, and its factor <span class="math" data-tex="\(\chi_{\mathfrak p}(n/p^l)^{18l}\)">\(\chi_{\mathfrak p}(n/p^l)^{18l}\)</span> is <span class="math" data-tex="\(1\)">\(1\)</span>. The prime sum <span class="math" data-tex="\(g_{2,\mathfrak p}\)">\(g_{2,\mathfrak p}\)</span> equals <span class="math" data-tex="\(\gamma_2(\mathfrak p)\)">\(\gamma_2(\mathfrak p)\)</span> (the sign of the additive argument is irrelevant since <span class="math" data-tex="\(\chi_{\mathfrak p}(-1)=1\)">\(\chi_{\mathfrak p}(-1)=1\)</span>). By (5.2) of Lesson 4, <span class="math" data-tex="\(\prod_{\mathfrak p\mid\mathfrak c}\chi_{\mathfrak p}(c/p)^2\gamma_2(\mathfrak p)=\gamma_2(\mathfrak c)\)">\(\prod_{\mathfrak p\mid\mathfrak c}\chi_{\mathfrak p}(c/p)^2\gamma_2(\mathfrak p)=\gamma_2(\mathfrak c)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-the-cocycle-at-s">6. The cocycle at S</h2>
+<p>Put <span class="math" data-tex="\(\mathcal C_S=\prod_{v\in S}\mathcal C_v\)">\(\mathcal C_S=\prod_{v\in S}\mathcal C_v\)</span>, a function on <span class="math" data-tex="\(F_S^\times\times F_S^\times\)">\(F_S^\times\times F_S^\times\)</span>.</p>
+<p><strong>Lemma 6.1</strong> ([OpenAI-029, (5.9)]). For all <span class="math" data-tex="\(x,y\in F_S^\times\)">\(x,y\in F_S^\times\)</span>,
+<span class="math math-display" data-tex="\[
+\mathcal C_S(x,y)=H_S(x,y)^2 .
+\tag{6.1}
+\]">\[
+\mathcal C_S(x,y)=H_S(x,y)^2 .
+\tag{6.1}
+\]</span>
+In particular <span class="math" data-tex="\(\mathcal C_S\)">\(\mathcal C_S\)</span> depends only on the classes of <span class="math" data-tex="\(x,y\)">\(x,y\)</span> in <span class="math" data-tex="\(\mathcal V=F_S^\times/F_S^{\times6}\)">\(\mathcal V=F_S^\times/F_S^{\times6}\)</span>.</p>
+<p><em>Proof.</em> For <span class="math" data-tex="\(a,b\in F^\times\)">\(a,b\in F^\times\)</span>, the product of the cocycles over all places is <span class="math" data-tex="\(\prod_v\iota\bigl((a,b)_{3,v}^2\bigr)=1\)">\(\prod_v\iota\bigl((a,b)_{3,v}^2\bigr)=1\)</span> by Hilbert's product formula (Theorem 23.3 of <a href="../NT-CFT/power-residue-symbols-and-reciprocity-laws.html"><em>Power residue symbols and reciprocity laws</em></a>), and likewise <span class="math" data-tex="\(\prod_v(a,b)_{6,v}^2=1\)">\(\prod_v(a,b)_{6,v}^2=1\)</span>. Hence, by (1.4),
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\mathcal C_S(a,b)&amp;=\prod_{v\notin S}\mathcal C_v(a,b)^{-1}\\
+&amp;=\prod_{v\notin S}(a,b)_{6,v}^{-2}\\
+&amp;=\prod_{v\in S}(a,b)_{6,v}^2\\
+&amp;=H_S(a,b)^2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\mathcal C_S(a,b)&amp;=\prod_{v\notin S}\mathcal C_v(a,b)^{-1}\\
+&amp;=\prod_{v\notin S}(a,b)_{6,v}^{-2}\\
+&amp;=\prod_{v\in S}(a,b)_{6,v}^2\\
+&amp;=H_S(a,b)^2 .
+\end{aligned}
+\]</span>
+Both sides of (6.1) are locally constant on <span class="math" data-tex="\(F_S^\times\times F_S^\times\)">\(F_S^\times\times F_S^\times\)</span>, and <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span> is dense in <span class="math" data-tex="\(F_S^\times\)">\(F_S^\times\)</span> (weak approximation, a consequence of Theorem 2.3 of <a href="../NT-ADL/NT-ADL-02.html"><em>The adèle ring of a number field</em></a>). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> Show that for <span class="math" data-tex="\(c=2\)">\(c=2\)</span> the cocycle (1.1) on the quotient torus satisfies <span class="math" data-tex="\(\sigma(a(x),a(y))=(x,y)_{3,v}^2\)">\(\sigma(a(x),a(y))=(x,y)_{3,v}^2\)</span>, and that it is alternating because <span class="math" data-tex="\(-1\)">\(-1\)</span> is a cube in <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>7.2.</strong> Verify the identity <span class="math" data-tex="\(n(x)a(y)=a(y)n(x/y)\)">\(n(x)a(y)=a(y)n(x/y)\)</span> and <span class="math" data-tex="\(wa(y)w^{-1}=a(y^{-1})\)">\(wa(y)w^{-1}=a(y^{-1})\)</span> at the level of matrices in <span class="math" data-tex="\(\mathrm{PGL}_2\)">\(\mathrm{PGL}_2\)</span>.</p>
+<p><strong>7.3.</strong> Using (4.1), show that the spherical Whittaker function satisfies <span class="math" data-tex="\(W_{\mathfrak p}(a(\varpi^{e+3}u))=Q^{-1}W_{\mathfrak p}(a(\varpi^eu))\)">\(W_{\mathfrak p}(a(\varpi^{e+3}u))=Q^{-1}W_{\mathfrak p}(a(\varpi^eu))\)</span> for <span class="math" data-tex="\(e\ge0\)">\(e\ge0\)</span>, and explain this through the eigenvalue of <span class="math" data-tex="\(a(\varpi^3)\)">\(a(\varpi^3)\)</span>.</p>
+<p><strong>7.4.</strong> Compute <span class="math" data-tex="\(\prod_{\mathfrak p}W_{\mathfrak p}(a(A))\)">\(\prod_{\mathfrak p}W_{\mathfrak p}(a(A))\)</span> for <span class="math" data-tex="\(\mathfrak A=\mathfrak p^4\)">\(\mathfrak A=\mathfrak p^4\)</span> and for <span class="math" data-tex="\(\mathfrak A=\mathfrak p^5\)">\(\mathfrak A=\mathfrak p^5\)</span>.</p>
+<p><strong>7.5.</strong> Check the shell bookkeeping of the proof of Proposition 4.1 for <span class="math" data-tex="\(e=1\)">\(e=1\)</span>: list the unit ball and the shells <span class="math" data-tex="\(l=1,2\)">\(l=1,2\)</span> with their basis vectors and coefficients.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> With <span class="math" data-tex="\(a(x)=\operatorname{diag}(x,1)\)">\(a(x)=\operatorname{diag}(x,1)\)</span> and <span class="math" data-tex="\(a(y)=\operatorname{diag}(y,1)\)">\(a(y)=\operatorname{diag}(y,1)\)</span>, (1.1) gives <span class="math" data-tex="\((x,1)_{3,v}(x,y)_{3,v}^{2}=(x,y)_{3,v}^2\)">\((x,1)_{3,v}(x,y)_{3,v}^{2}=(x,y)_{3,v}^2\)</span>. Alternation follows from <span class="math" data-tex="\((x,x)_{3,v}=(x,-1)_{3,v}^{-1}=1\)">\((x,x)_{3,v}=(x,-1)_{3,v}^{-1}=1\)</span>, since <span class="math" data-tex="\(-1\)">\(-1\)</span> is a cube.</p>
+<p><strong>7.2.</strong> <span class="math" data-tex="\(n(x)a(y)=\begin{pmatrix}y&amp;x\\0&amp;1\end{pmatrix}=a(y)n(x/y)\)">\(n(x)a(y)=\begin{pmatrix}y&amp;x\\0&amp;1\end{pmatrix}=a(y)n(x/y)\)</span>, and <span class="math" data-tex="\(wa(y)w^{-1}=\operatorname{diag}(1,y)\)">\(wa(y)w^{-1}=\operatorname{diag}(1,y)\)</span>, which equals <span class="math" data-tex="\(a(y^{-1})\)">\(a(y^{-1})\)</span> modulo scalars.</p>
+<p><strong>7.3.</strong> Valuations <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(e+3\)">\(e+3\)</span> lie in the same residue class modulo <span class="math" data-tex="\(3\)">\(3\)</span>, <span class="math" data-tex="\(k\)">\(k\)</span> increases by one, and <span class="math" data-tex="\(\chi(u)^{2(e+3)}=\chi(u)^{2e}\)">\(\chi(u)^{2(e+3)}=\chi(u)^{2e}\)</span>. The value of the normalized Weyl-conjugate inducing character on <span class="math" data-tex="\(a(\varpi^3)\)">\(a(\varpi^3)\)</span> is <span class="math" data-tex="\(Q^{1/2}\)">\(Q^{1/2}\)</span> and its modular factor is <span class="math" data-tex="\(Q^{-3/2}\)">\(Q^{-3/2}\)</span>; their product <span class="math" data-tex="\(Q^{-1}\)">\(Q^{-1}\)</span> is the eigenvalue on the spherical Whittaker function.</p>
+<p><strong>7.4.</strong> <span class="math" data-tex="\(4=3\cdot1+1\)">\(4=3\cdot1+1\)</span> gives <span class="math" data-tex="\(\mathfrak c=\mathfrak p\)">\(\mathfrak c=\mathfrak p\)</span>, <span class="math" data-tex="\(\mathfrak n=\mathfrak p\)">\(\mathfrak n=\mathfrak p\)</span> and the value <span class="math" data-tex="\(\gamma_2(\mathfrak p)/(q_{\mathfrak p}^{1/2}q_{\mathfrak p})\)">\(\gamma_2(\mathfrak p)/(q_{\mathfrak p}^{1/2}q_{\mathfrak p})\)</span>; <span class="math" data-tex="\(5\equiv2\pmod3\)">\(5\equiv2\pmod3\)</span> gives <span class="math" data-tex="\(0\)">\(0\)</span>.</p>
+<p><strong>7.5.</strong> For <span class="math" data-tex="\(e=1\)">\(e=1\)</span>: the unit ball gives <span class="math" data-tex="\(e_{-1}=e_2\)">\(e_{-1}=e_2\)</span> with coefficient <span class="math" data-tex="\(1\)">\(1\)</span>; the shell <span class="math" data-tex="\(l=1\)">\(l=1\)</span> has <span class="math" data-tex="\(I_{1,1}=0\)">\(I_{1,1}=0\)</span> since <span class="math" data-tex="\(3\nmid1\)">\(3\nmid1\)</span>; the shell <span class="math" data-tex="\(l=2=e+1\)">\(l=2=e+1\)</span> has <span class="math" data-tex="\(3\nmid2\)">\(3\nmid2\)</span>, coefficient <span class="math" data-tex="\(Q^{2/3}Q^{-1/2}g_{-4}=Q^{1/6}g_2\)">\(Q^{2/3}Q^{-1/2}g_{-4}=Q^{1/6}g_2\)</span> and vector <span class="math" data-tex="\(e_{3}=e_0\)">\(e_{3}=e_0\)</span>; shells <span class="math" data-tex="\(l\ge3\)">\(l\ge3\)</span> vanish. With the common factor <span class="math" data-tex="\(Q^{-2/3}\)">\(Q^{-2/3}\)</span> this is <span class="math" data-tex="\(J_1=Q^{-1/2}g_2e_0+Q^{-2/3}e_2\)">\(J_1=Q^{-1/2}g_2e_0+Q^{-2/3}e_2\)</span>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-029] OpenAI, <em>Primitive roots for every admissible integer base</em>, OpenAI Math Release preprint, 4 October 2026, Section 5 and Appendix A. https://github.com/openai/math/tree/main/preprints/Primitive-roots-for-every-admissible-integer-base-October-4-2026</li>
+<li>[KP] D. A. Kazhdan and S. J. Patterson, <em>Metaplectic forms</em>, Publ. Math. IHÉS 59 (1984), 35–142; corrections, Publ. Math. IHÉS 62 (1985), 203. http://www.numdam.org/item/PMIHES_1984__59__35_0/ and http://www.numdam.org/item/PMIHES_1985__62__203_0/</li>
+<li>T. Kubota, <em>Topological covering of SL(2) over a local field</em>, J. Math. Soc. Japan 19 (1967), 114–121. https://doi.org/10.2969/jmsj/01910114</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

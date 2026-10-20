@@ -1,0 +1,306 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Gauss sums and the correction characters</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Artin&#x27;s primitive root conjecture)</a><a href="sextic-reciprocity-and-kummer-characters.html">Previous lesson</a><a href="the-coefficient-family-and-the-plan-of-the-zero-free-argument.html">Next lesson</a><a href="src/gauss-sums-and-the-correction-characters.md">Editable source</a></nav><main><article><h1 id="gauss-sums-and-the-correction-characters">Gauss sums and the correction characters</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p>The coefficients of the cubic theta series of Lesson 6 are normalized quadratic-twisted cubic Gauss sums <span class="math" data-tex="\(\gamma_2(\mathfrak c)\)">\(\gamma_2(\mathfrak c)\)</span>. Their phases are not values of a multiplicative function of <span class="math" data-tex="\(\mathfrak c\)">\(\mathfrak c\)</span>, but at a prime they are tied to Hecke characters: the cube <span class="math" data-tex="\(\gamma_2(\mathfrak p)^3\)">\(\gamma_2(\mathfrak p)^3\)</span> is minus the value of a unitary Hecke character <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span> of infinite order, and the product <span class="math" data-tex="\(\gamma_1(\mathfrak p)\gamma_2(\mathfrak p)\)">\(\gamma_1(\mathfrak p)\gamma_2(\mathfrak p)\)</span> is minus <span class="math" data-tex="\(\Lambda(\mathfrak p)\)">\(\Lambda(\mathfrak p)\)</span> times the value of a finite-order character <span class="math" data-tex="\(G\)">\(G\)</span>. This lesson proves these identities. The ingredients are Gauss and Jacobi sums over finite fields, the lifting theorem of Davenport and Hasse (proved here), the normalization of cubic Jacobi sums over the Eisenstein integers, and Weil's index of quadratic characters, which controls the signs of quadratic Gauss sums. The lesson ends with the character <span class="math" data-tex="\(\vartheta=\overline\Lambda\,\overline G\,\eta\)">\(\vartheta=\overline\Lambda\,\overline G\,\eta\)</span> that appears in every later lesson.</p>
+<p><strong>Prerequisites.</strong> <a href="s-integers-and-sixth-power-classes.html"><em>S-integers and sixth-power classes</em></a>, Lemma 2.1, (3.1)–(3.3) and Lemma 4.1; <a href="sextic-reciprocity-and-kummer-characters.html"><em>Sextic reciprocity and Kummer characters</em></a>, (1.1)–(1.3) and Lemma 3.1; <a href="../NT-ADL/NT-ADL-06.html"><em>Quasi-characters and Hecke characters</em></a>, Theorem 6.3; <a href="../NT-ANT/cyclotomic-fields.html"><em>Cyclotomic fields</em></a>, Theorem 12.3.</p>
+<h2 id="1-gauss-and-jacobi-sums-over-a-finite-field">1. Gauss and Jacobi sums over a finite field</h2>
+<p>Let <span class="math" data-tex="\(k\)">\(k\)</span> be a finite field of odd size <span class="math" data-tex="\(Q\)">\(Q\)</span>, <span class="math" data-tex="\(\psi_k\)">\(\psi_k\)</span> a nontrivial additive character, and <span class="math" data-tex="\(\chi,\chi&#x27;\)">\(\chi,\chi&#x27;\)</span> multiplicative characters extended by <span class="math" data-tex="\(\chi(0)=0\)">\(\chi(0)=0\)</span>. Put
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G(\chi)=\sum_{x\in k}\chi(x)\psi_k(x),\\
+J(\chi,\chi&#x27;)=\sum_{x\in k}\chi(x)\chi&#x27;(1-x).
+\end{gathered}
+\]">\[
+\begin{gathered}
+G(\chi)=\sum_{x\in k}\chi(x)\psi_k(x),\\
+J(\chi,\chi&#x27;)=\sum_{x\in k}\chi(x)\chi&#x27;(1-x).
+\end{gathered}
+\]</span></p>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(\chi,\chi&#x27;\)">\(\chi,\chi&#x27;\)</span> be nontrivial.</p>
+<ol>
+<li><span class="math" data-tex="\(G(\chi)\overline{G(\chi)}=Q\)">\(G(\chi)\overline{G(\chi)}=Q\)</span> and <span class="math" data-tex="\(G(\chi)G(\overline\chi)=\chi(-1)Q\)">\(G(\chi)G(\overline\chi)=\chi(-1)Q\)</span>.</li>
+<li>If <span class="math" data-tex="\(\chi\chi&#x27;\)">\(\chi\chi&#x27;\)</span> is nontrivial, <span class="math" data-tex="\(J(\chi,\chi&#x27;)=G(\chi)G(\chi&#x27;)/G(\chi\chi&#x27;)\)">\(J(\chi,\chi&#x27;)=G(\chi)G(\chi&#x27;)/G(\chi\chi&#x27;)\)</span>.</li>
+<li>Replacing <span class="math" data-tex="\(\psi_k(x)\)">\(\psi_k(x)\)</span> by <span class="math" data-tex="\(\psi_k(ax)\)">\(\psi_k(ax)\)</span>, <span class="math" data-tex="\(a\in k^\times\)">\(a\in k^\times\)</span>, multiplies <span class="math" data-tex="\(G(\chi)\)">\(G(\chi)\)</span> by <span class="math" data-tex="\(\overline{\chi(a)}\)">\(\overline{\chi(a)}\)</span>.</li>
+</ol>
+<p><em>Proof.</em> <em>3</em> is the substitution <span class="math" data-tex="\(x\mapsto a^{-1}x\)">\(x\mapsto a^{-1}x\)</span>. <em>1:</em> <span class="math" data-tex="\(G(\chi)\overline{G(\chi)}=\sum_{x,y}\chi(x)\overline{\chi(y)}\psi_k(x-y)\)">\(G(\chi)\overline{G(\chi)}=\sum_{x,y}\chi(x)\overline{\chi(y)}\psi_k(x-y)\)</span>; put <span class="math" data-tex="\(x=ty\)">\(x=ty\)</span> for <span class="math" data-tex="\(y\ne0\)">\(y\ne0\)</span> to get <span class="math" data-tex="\(\sum_t\chi(t)\sum_{y\ne0}\psi_k((t-1)y)\)">\(\sum_t\chi(t)\sum_{y\ne0}\psi_k((t-1)y)\)</span>, which is <span class="math" data-tex="\(\sum_t\chi(t)(Q\mathbf 1_{t=1}-1)=Q\)">\(\sum_t\chi(t)(Q\mathbf 1_{t=1}-1)=Q\)</span>. Since <span class="math" data-tex="\(\overline{G(\chi)}=\chi(-1)G(\overline\chi)\)">\(\overline{G(\chi)}=\chi(-1)G(\overline\chi)\)</span> by <em>3</em> with <span class="math" data-tex="\(a=-1\)">\(a=-1\)</span>, the second identity follows. <em>2:</em> <span class="math" data-tex="\(G(\chi)G(\chi&#x27;)=\sum_{x,y}\chi(x)\chi&#x27;(y)\psi_k(x+y)\)">\(G(\chi)G(\chi&#x27;)=\sum_{x,y}\chi(x)\chi&#x27;(y)\psi_k(x+y)\)</span>. Group by <span class="math" data-tex="\(s=x+y\)">\(s=x+y\)</span>. For <span class="math" data-tex="\(s\ne0\)">\(s\ne0\)</span> write <span class="math" data-tex="\(x=su\)">\(x=su\)</span>, <span class="math" data-tex="\(y=s(1-u)\)">\(y=s(1-u)\)</span>: the contribution is <span class="math" data-tex="\(\chi\chi&#x27;(s)\psi_k(s)J(\chi,\chi&#x27;)\)">\(\chi\chi&#x27;(s)\psi_k(s)J(\chi,\chi&#x27;)\)</span>, summing to <span class="math" data-tex="\(G(\chi\chi&#x27;)J(\chi,\chi&#x27;)\)">\(G(\chi\chi&#x27;)J(\chi,\chi&#x27;)\)</span>. For <span class="math" data-tex="\(s=0\)">\(s=0\)</span> the contribution is <span class="math" data-tex="\(\chi&#x27;(-1)\sum_x\chi\chi&#x27;(x)=0\)">\(\chi&#x27;(-1)\sum_x\chi\chi&#x27;(x)=0\)</span>. Divide by <span class="math" data-tex="\(G(\chi\chi&#x27;)\ne0\)">\(G(\chi\chi&#x27;)\ne0\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 1.2</strong> (Davenport–Hasse lifting). Let <span class="math" data-tex="\(k&#x27;\supseteq k\)">\(k&#x27;\supseteq k\)</span> have degree <span class="math" data-tex="\(f\)">\(f\)</span>, and put <span class="math" data-tex="\(\chi&#x27;=\chi\circ\operatorname N_{k&#x27;/k}\)">\(\chi&#x27;=\chi\circ\operatorname N_{k&#x27;/k}\)</span>, <span class="math" data-tex="\(\psi&#x27;=\psi_k\circ\operatorname{Tr}_{k&#x27;/k}\)">\(\psi&#x27;=\psi_k\circ\operatorname{Tr}_{k&#x27;/k}\)</span>. If <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is nontrivial, then
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;-G_{k&#x27;}(\chi&#x27;,\psi&#x27;)\\
+&amp;\quad =\bigl(-G_k(\chi,\psi_k)\bigr)^f .\quad(1.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;-G_{k&#x27;}(\chi&#x27;,\psi&#x27;)\\
+&amp;\quad =\bigl(-G_k(\chi,\psi_k)\bigr)^f .\quad(1.1)
+\end{aligned}
+\]</span>
+Consequently, if <span class="math" data-tex="\(\chi,\chi&#x27;&#x27;\)">\(\chi,\chi&#x27;&#x27;\)</span> and <span class="math" data-tex="\(\chi\chi&#x27;&#x27;\)">\(\chi\chi&#x27;&#x27;\)</span> are nontrivial, <span class="math" data-tex="\(J_{k&#x27;}(\chi\circ\operatorname N,\chi&#x27;&#x27;\circ\operatorname N)=(-1)^{f-1}J_k(\chi,\chi&#x27;&#x27;)^f\)">\(J_{k&#x27;}(\chi\circ\operatorname N,\chi&#x27;&#x27;\circ\operatorname N)=(-1)^{f-1}J_k(\chi,\chi&#x27;&#x27;)^f\)</span>.</p>
+<p><em>Proof.</em> For a monic <span class="math" data-tex="\(h\in k[T]\)">\(h\in k[T]\)</span> of degree <span class="math" data-tex="\(d\)">\(d\)</span> with roots <span class="math" data-tex="\(\alpha_1,\dots,\alpha_d\)">\(\alpha_1,\dots,\alpha_d\)</span> in an algebraic closure, counted with multiplicity, put <span class="math" data-tex="\(\lambda(h)=\chi(\alpha_1\cdots\alpha_d)\psi_k(\alpha_1+\cdots+\alpha_d)\)">\(\lambda(h)=\chi(\alpha_1\cdots\alpha_d)\psi_k(\alpha_1+\cdots+\alpha_d)\)</span>. Both the sum and the product of the roots lie in <span class="math" data-tex="\(k\)">\(k\)</span>, and <span class="math" data-tex="\(\lambda(h_1h_2)=\lambda(h_1)\lambda(h_2)\)">\(\lambda(h_1h_2)=\lambda(h_1)\lambda(h_2)\)</span>. If <span class="math" data-tex="\(h=T^d+c_1T^{d-1}+\cdots+c_d\)">\(h=T^d+c_1T^{d-1}+\cdots+c_d\)</span>, then <span class="math" data-tex="\(\lambda(h)=\chi((-1)^dc_d)\psi_k(-c_1)\)">\(\lambda(h)=\chi((-1)^dc_d)\psi_k(-c_1)\)</span>. Consider the power series <span class="math" data-tex="\(L(u)=\sum_h\lambda(h)u^{\deg h}\)">\(L(u)=\sum_h\lambda(h)u^{\deg h}\)</span> over monic <span class="math" data-tex="\(h\)">\(h\)</span>. The monic polynomials of degree <span class="math" data-tex="\(1\)">\(1\)</span> contribute <span class="math" data-tex="\(\sum_{a\in k}\chi(a)\psi_k(a)u=G_k u\)">\(\sum_{a\in k}\chi(a)\psi_k(a)u=G_k u\)</span>. For <span class="math" data-tex="\(d\ge2\)">\(d\ge2\)</span> the coefficients <span class="math" data-tex="\(c_1\)">\(c_1\)</span> and <span class="math" data-tex="\(c_d\)">\(c_d\)</span> vary independently, and <span class="math" data-tex="\(\sum_{c_d}\chi((-1)^dc_d)=0\)">\(\sum_{c_d}\chi((-1)^dc_d)=0\)</span>; so
+<span class="math math-display" data-tex="\[
+L(u)=1+G_ku .
+\]">\[
+L(u)=1+G_ku .
+\]</span>
+Unique factorization in <span class="math" data-tex="\(k[T]\)">\(k[T]\)</span> and complete multiplicativity give <span class="math" data-tex="\(L(u)=\prod_P(1-\lambda(P)u^{\deg P})^{-1}\)">\(L(u)=\prod_P(1-\lambda(P)u^{\deg P})^{-1}\)</span> over monic irreducible <span class="math" data-tex="\(P\)">\(P\)</span>, as formal power series. Taking <span class="math" data-tex="\(u\frac d{du}\log\)">\(u\frac d{du}\log\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\sum_P\sum_{m\ge1}\deg(P)\,\lambda(P)^mu^{m\deg P}\\
+&amp;\quad =\frac{G_ku}{1+G_ku}\\
+&amp;\quad =\sum_{n\ge1}(-1)^{n-1}G_k^nu^n .
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\sum_P\sum_{m\ge1}\deg(P)\,\lambda(P)^mu^{m\deg P}\\
+&amp;\quad =\frac{G_ku}{1+G_ku}\\
+&amp;\quad =\sum_{n\ge1}(-1)^{n-1}G_k^nu^n .
+\end{aligned}
+\]</span>
+The coefficient of <span class="math" data-tex="\(u^f\)">\(u^f\)</span> on the left is <span class="math" data-tex="\(\sum_{e\mid f}\sum_{\deg P=e}e\,\lambda(P)^{f/e}\)">\(\sum_{e\mid f}\sum_{\deg P=e}e\,\lambda(P)^{f/e}\)</span>. An element <span class="math" data-tex="\(y\in k&#x27;\)">\(y\in k&#x27;\)</span> is a root of exactly one monic irreducible <span class="math" data-tex="\(P\)">\(P\)</span>, of degree <span class="math" data-tex="\(e\mid f\)">\(e\mid f\)</span>, whose <span class="math" data-tex="\(e\)">\(e\)</span> roots are its conjugates; then <span class="math" data-tex="\(\lambda(P)=\chi(\operatorname N_{k(y)/k}y)\psi_k(\operatorname{Tr}_{k(y)/k}y)\)">\(\lambda(P)=\chi(\operatorname N_{k(y)/k}y)\psi_k(\operatorname{Tr}_{k(y)/k}y)\)</span>, and <span class="math" data-tex="\(\lambda(P)^{f/e}=\chi(\operatorname N_{k&#x27;/k}y)\psi_k(\operatorname{Tr}_{k&#x27;/k}y)\)">\(\lambda(P)^{f/e}=\chi(\operatorname N_{k&#x27;/k}y)\psi_k(\operatorname{Tr}_{k&#x27;/k}y)\)</span>. The element <span class="math" data-tex="\(y=0\)">\(y=0\)</span> belongs to <span class="math" data-tex="\(P=T\)">\(P=T\)</span>, where <span class="math" data-tex="\(\lambda(T)=0\)">\(\lambda(T)=0\)</span>. So the coefficient is <span class="math" data-tex="\(G_{k&#x27;}(\chi&#x27;,\psi&#x27;)\)">\(G_{k&#x27;}(\chi&#x27;,\psi&#x27;)\)</span>, and <span class="math" data-tex="\(G_{k&#x27;}=(-1)^{f-1}G_k^f\)">\(G_{k&#x27;}=(-1)^{f-1}G_k^f\)</span>, which is (1.1). The statement for Jacobi sums follows from Lemma 1.1(2) at both levels, since <span class="math" data-tex="\(\chi\circ\operatorname N\)">\(\chi\circ\operatorname N\)</span> is nontrivial when <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is (the norm is surjective). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 1.3</strong> ([OpenAI-029, (3.11)]). Let <span class="math" data-tex="\(\chi\)">\(\chi\)</span> have exact order <span class="math" data-tex="\(6\)">\(6\)</span>, <span class="math" data-tex="\(\rho=\chi^2\)">\(\rho=\chi^2\)</span>, <span class="math" data-tex="\(\phi=\chi^3\)">\(\phi=\chi^3\)</span>, and <span class="math" data-tex="\(G_j=G(\chi^j)\)">\(G_j=G(\chi^j)\)</span>. Then
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+G_2G_4=Q,\\
+G_2^2=J(\rho,\rho)G_4,\\
+(Q^{-1/2}G_2)^3=Q^{-1/2}J(\rho,\rho),\quad(1.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+G_2G_4=Q,\\
+G_2^2=J(\rho,\rho)G_4,\\
+(Q^{-1/2}G_2)^3=Q^{-1/2}J(\rho,\rho),\quad(1.2)
+\end{gathered}
+\]</span>
+and the cube <span class="math" data-tex="\((Q^{-1/2}G_2)^3\)">\((Q^{-1/2}G_2)^3\)</span> does not depend on <span class="math" data-tex="\(\psi_k\)">\(\psi_k\)</span>. Moreover
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+J(\chi,\chi)=\overline{\chi(4)}\,J(\phi,\chi),\\
+G_1G_4=\overline{\chi(4)}\,G_2G_3 .\quad(1.3)
+\end{gathered}
+\]">\[
+\begin{gathered}
+J(\chi,\chi)=\overline{\chi(4)}\,J(\phi,\chi),\\
+G_1G_4=\overline{\chi(4)}\,G_2G_3 .\quad(1.3)
+\end{gathered}
+\]</span></p>
+<p><em>Proof.</em> <span class="math" data-tex="\(\rho(-1)=\chi(-1)^2\)">\(\rho(-1)=\chi(-1)^2\)</span> and <span class="math" data-tex="\(\chi(-1)^6=1\)">\(\chi(-1)^6=1\)</span> with <span class="math" data-tex="\(\chi(-1)=\pm1\)">\(\chi(-1)=\pm1\)</span>, so <span class="math" data-tex="\(\rho(-1)=1\)">\(\rho(-1)=1\)</span> and Lemma 1.1(1) gives <span class="math" data-tex="\(G_2G_4=Q\)">\(G_2G_4=Q\)</span> (as <span class="math" data-tex="\(\chi^4=\overline\rho\)">\(\chi^4=\overline\rho\)</span>). Lemma 1.1(2) with <span class="math" data-tex="\(\chi=\chi&#x27;=\rho\)">\(\chi=\chi&#x27;=\rho\)</span>, where <span class="math" data-tex="\(\rho^2=\chi^4\ne1\)">\(\rho^2=\chi^4\ne1\)</span>, gives the second identity, and multiplying it by <span class="math" data-tex="\(G_2\)">\(G_2\)</span> gives <span class="math" data-tex="\(G_2^3=QJ(\rho,\rho)\)">\(G_2^3=QJ(\rho,\rho)\)</span>. Changing <span class="math" data-tex="\(\psi_k\)">\(\psi_k\)</span> multiplies <span class="math" data-tex="\(G_2\)">\(G_2\)</span> by <span class="math" data-tex="\(\overline{\rho(a)}\)">\(\overline{\rho(a)}\)</span>, whose cube is <span class="math" data-tex="\(1\)">\(1\)</span>. For (1.3), put <span class="math" data-tex="\(x=(1+t)/2\)">\(x=(1+t)/2\)</span>: then <span class="math" data-tex="\(x(1-x)=(1-t^2)/4\)">\(x(1-x)=(1-t^2)/4\)</span>, so <span class="math" data-tex="\(J(\chi,\chi)=\overline{\chi(4)}\sum_t\chi(1-t^2)\)">\(J(\chi,\chi)=\overline{\chi(4)}\sum_t\chi(1-t^2)\)</span>. The number of <span class="math" data-tex="\(t\)">\(t\)</span> with <span class="math" data-tex="\(t^2=s\)">\(t^2=s\)</span> is <span class="math" data-tex="\(1+\phi(s)\)">\(1+\phi(s)\)</span>, so <span class="math" data-tex="\(\sum_t\chi(1-t^2)\)">\(\sum_t\chi(1-t^2)\)</span><span class="math" data-tex="\(=\sum_s\chi(1-s)+\sum_s\phi(s)\chi(1-s)\)">\(=\sum_s\chi(1-s)+\sum_s\phi(s)\chi(1-s)\)</span><span class="math" data-tex="\(=J(\phi,\chi)\)">\(=J(\phi,\chi)\)</span>. By Lemma 1.1(2), <span class="math" data-tex="\(J(\chi,\chi)=G_1^2/G_2\)">\(J(\chi,\chi)=G_1^2/G_2\)</span> and <span class="math" data-tex="\(J(\phi,\chi)=G_3G_1/G_4\)">\(J(\phi,\chi)=G_3G_1/G_4\)</span> (as <span class="math" data-tex="\(\phi\chi=\chi^4\ne1\)">\(\phi\chi=\chi^4\ne1\)</span>), which gives the last identity. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-cubic-jacobi-sums-over-the-eisenstein-integers">2. Cubic Jacobi sums over the Eisenstein integers</h2>
+<p>Let <span class="math" data-tex="\(E_0=\mathbb Q(\omega)\)">\(E_0=\mathbb Q(\omega)\)</span> with <span class="math" data-tex="\(\omega^2+\omega+1=0\)">\(\omega^2+\omega+1=0\)</span>, and <span class="math" data-tex="\(t=1-\omega\)">\(t=1-\omega\)</span>, so that <span class="math" data-tex="\((t^2)=(3)\)">\((t^2)=(3)\)</span>. The ring <span class="math" data-tex="\(\mathbb Z[\omega]\)">\(\mathbb Z[\omega]\)</span> has class number one, and its six units <span class="math" data-tex="\(\pm1,\pm\omega,\pm\omega^2\)">\(\pm1,\pm\omega,\pm\omega^2\)</span> map bijectively onto <span class="math" data-tex="\((\mathbb Z[\omega]/3)^\times\)">\((\mathbb Z[\omega]/3)^\times\)</span>, a group of order <span class="math" data-tex="\(6\)">\(6\)</span>. Hence every ideal <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> prime to <span class="math" data-tex="\(3\)">\(3\)</span> has a unique generator <span class="math" data-tex="\(\pi_+(\mathfrak a)\equiv1\pmod 3\)">\(\pi_+(\mathfrak a)\equiv1\pmod 3\)</span>, and <span class="math" data-tex="\(\pi_+(\mathfrak a\mathfrak b)=\pi_+(\mathfrak a)\pi_+(\mathfrak b)\)">\(\pi_+(\mathfrak a\mathfrak b)=\pi_+(\mathfrak a)\pi_+(\mathfrak b)\)</span>.</p>
+<p><strong>Lemma 2.1</strong> ([OpenAI-029, (3.12)]). Let <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span> be a prime of <span class="math" data-tex="\(\mathbb Z[\omega]\)">\(\mathbb Z[\omega]\)</span> not dividing <span class="math" data-tex="\(6\)">\(6\)</span>, with residue field of size <span class="math" data-tex="\(Q&#x27;\)">\(Q&#x27;\)</span>, and let <span class="math" data-tex="\(\rho(x)\equiv x^{(Q&#x27;-1)/3}\pmod{\mathfrak q}\)">\(\rho(x)\equiv x^{(Q&#x27;-1)/3}\pmod{\mathfrak q}\)</span> be its cubic residue character. Then
+<span class="math math-display" data-tex="\[
+J(\rho,\rho)=-\pi_+(\mathfrak q).
+\tag{2.1}
+\]">\[
+J(\rho,\rho)=-\pi_+(\mathfrak q).
+\tag{2.1}
+\]</span></p>
+<p><em>Proof.</em> <em>Divisibility.</em> Modulo <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span>, <span class="math" data-tex="\(J(\rho,\rho)\equiv\sum_{x}x^{k}(1-x)^k\)">\(J(\rho,\rho)\equiv\sum_{x}x^{k}(1-x)^k\)</span> with <span class="math" data-tex="\(k=(Q&#x27;-1)/3\)">\(k=(Q&#x27;-1)/3\)</span> (both sides vanish at <span class="math" data-tex="\(x=0,1\)">\(x=0,1\)</span>). Every monomial <span class="math" data-tex="\(x^j\)">\(x^j\)</span> in <span class="math" data-tex="\(x^k(1-x)^k\)">\(x^k(1-x)^k\)</span> has <span class="math" data-tex="\(0&lt;k\le j\le2k&lt;Q&#x27;-1\)">\(0&lt;k\le j\le2k&lt;Q&#x27;-1\)</span>, and <span class="math" data-tex="\(\sum_{x\in\mathbb F_{Q&#x27;}}x^j=0\)">\(\sum_{x\in\mathbb F_{Q&#x27;}}x^j=0\)</span> for such <span class="math" data-tex="\(j\)">\(j\)</span>. So <span class="math" data-tex="\(J\in\mathfrak q\)">\(J\in\mathfrak q\)</span>. <em>Norm.</em> By Lemma 1.1, <span class="math" data-tex="\(|J|^2=|G(\rho)|^4/|G(\rho^2)|^2=Q&#x27;\)">\(|J|^2=|G(\rho)|^4/|G(\rho^2)|^2=Q&#x27;\)</span>. <em>Congruence.</em> Write <span class="math" data-tex="\(\rho(x)=\omega^{k(x)}\)">\(\rho(x)=\omega^{k(x)}\)</span> with <span class="math" data-tex="\(k(x)\in\{0,1,2\}\)">\(k(x)\in\{0,1,2\}\)</span>; since <span class="math" data-tex="\(\omega=1-t\)">\(\omega=1-t\)</span>, <span class="math" data-tex="\(\omega^k\equiv1-kt\pmod{t^2}\)">\(\omega^k\equiv1-kt\pmod{t^2}\)</span>. Each value of <span class="math" data-tex="\(\rho\)">\(\rho\)</span> occurs <span class="math" data-tex="\((Q&#x27;-1)/3\)">\((Q&#x27;-1)/3\)</span> times on <span class="math" data-tex="\(\mathbb F_{Q&#x27;}^\times\)">\(\mathbb F_{Q&#x27;}^\times\)</span>, so <span class="math" data-tex="\(\sum_{x\ne0,1}k(x)=\sum_{x\ne0,1}k(1-x)\)">\(\sum_{x\ne0,1}k(x)=\sum_{x\ne0,1}k(1-x)\)</span><span class="math" data-tex="\(=Q&#x27;-1\)">\(=Q&#x27;-1\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+J&amp;\equiv(Q&#x27;-2)\\
+&amp;\quad-t\sum_{x\ne0,1}\bigl(k(x)+k(1-x)\bigr)\\
+&amp;=Q&#x27;-2-2(Q&#x27;-1)t\\
+&amp;\equiv-1\pmod 3,
+\end{aligned}
+\]">\[
+\begin{aligned}
+J&amp;\equiv(Q&#x27;-2)\\
+&amp;\quad-t\sum_{x\ne0,1}\bigl(k(x)+k(1-x)\bigr)\\
+&amp;=Q&#x27;-2-2(Q&#x27;-1)t\\
+&amp;\equiv-1\pmod 3,
+\end{aligned}
+\]</span>
+because <span class="math" data-tex="\(Q&#x27;\equiv1\pmod 3\)">\(Q&#x27;\equiv1\pmod 3\)</span>. The ideal <span class="math" data-tex="\((J)\)">\((J)\)</span> is contained in <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span> and has norm <span class="math" data-tex="\(|J|^2=Q&#x27;=\operatorname N\mathfrak q\)">\(|J|^2=Q&#x27;=\operatorname N\mathfrak q\)</span>, so <span class="math" data-tex="\((J)=\mathfrak q\)">\((J)=\mathfrak q\)</span>; and <span class="math" data-tex="\(-J\equiv1\pmod3\)">\(-J\equiv1\pmod3\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Define on ideals of <span class="math" data-tex="\(\mathbb Z[\omega]\)">\(\mathbb Z[\omega]\)</span> prime to <span class="math" data-tex="\(3\)">\(3\)</span>
+<span class="math math-display" data-tex="\[
+\Lambda_{E_0}(\mathfrak a)=\frac{\pi_+(\mathfrak a)}{|\pi_+(\mathfrak a)|}.
+\tag{2.2}
+\]">\[
+\Lambda_{E_0}(\mathfrak a)=\frac{\pi_+(\mathfrak a)}{|\pi_+(\mathfrak a)|}.
+\tag{2.2}
+\]</span>
+It is multiplicative, and on a principal ideal generated by <span class="math" data-tex="\(a\equiv1\pmod3\)">\(a\equiv1\pmod3\)</span> its value is <span class="math" data-tex="\(a/|a|\)">\(a/|a|\)</span>. So it is a Größencharakter modulo <span class="math" data-tex="\((3)\)">\((3)\)</span> with angular infinity type of exponent <span class="math" data-tex="\(1\)">\(1\)</span>, and by Theorem 6.3 of <a href="../NT-ADL/NT-ADL-06.html"><em>Quasi-characters and Hecke characters</em></a> it corresponds to a unitary Hecke character of <span class="math" data-tex="\(E_0\)">\(E_0\)</span> with finite conductor dividing <span class="math" data-tex="\((3)\)">\((3)\)</span>.</p>
+<h2 id="3-the-character-lambda">3. The character Lambda</h2>
+<p>Return to the field <span class="math" data-tex="\(F\supseteq\mu_{12}\)">\(F\supseteq\mu_{12}\)</span> and the data of Lessons 2 and 3. Since <span class="math" data-tex="\(\omega=\zeta_{12}^4\in F\)">\(\omega=\zeta_{12}^4\in F\)</span>, the field <span class="math" data-tex="\(F\)">\(F\)</span> contains <span class="math" data-tex="\(E_0\)">\(E_0\)</span>. Put
+<span class="math math-display" data-tex="\[
+\Lambda=\Lambda_{E_0}\circ\operatorname N_{F/E_0},
+\]">\[
+\Lambda=\Lambda_{E_0}\circ\operatorname N_{F/E_0},
+\]</span>
+the composition of (2.2) with the relative norm of ideals (equivalently, of idèles). It is a unitary Hecke character of <span class="math" data-tex="\(F\)">\(F\)</span>, unramified outside the places above <span class="math" data-tex="\(3\)">\(3\)</span>, which lie in <span class="math" data-tex="\(S\)">\(S\)</span>; at each complex place of <span class="math" data-tex="\(F\)">\(F\)</span> its infinity type is purely angular, of exponent <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span> in the ordinary angular coordinate, because the norm at infinity is a product of complex coordinates and their conjugates.</p>
+<p>For a squarefree exterior ideal <span class="math" data-tex="\(\mathfrak c\)">\(\mathfrak c\)</span> with allowed generator <span class="math" data-tex="\(c\)">\(c\)</span> define the normalized Gauss sums
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\begin{aligned}
+\gamma_j(\mathfrak c)&amp;=q_{\mathfrak c}^{-1/2}\sum_{x\bmod\mathfrak c}\chi_{\mathfrak c}(x)^j\\
+&amp;\quad \,\mathrm e(x/c),
+\end{aligned}\\
+\gamma_j(R)=1 .\quad(3.1)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\begin{aligned}
+\gamma_j(\mathfrak c)&amp;=q_{\mathfrak c}^{-1/2}\sum_{x\bmod\mathfrak c}\chi_{\mathfrak c}(x)^j\\
+&amp;\quad \,\mathrm e(x/c),
+\end{aligned}\\
+\gamma_j(R)=1 .\quad(3.1)
+\end{gathered}
+\]</span>
+By Lemma 2.1 of <a href="s-integers-and-sixth-power-classes.html"><em>S-integers and sixth-power classes</em></a>, <span class="math" data-tex="\(x\mapsto\mathrm e(x/c)\)">\(x\mapsto\mathrm e(x/c)\)</span> is a well-defined additive character of <span class="math" data-tex="\(R/\mathfrak c\)">\(R/\mathfrak c\)</span>, and <span class="math" data-tex="\(x\mapsto\mathrm e(xy/c)\)">\(x\mapsto\mathrm e(xy/c)\)</span> is trivial exactly when <span class="math" data-tex="\(y\in\mathfrak c\)">\(y\in\mathfrak c\)</span>. Replacing <span class="math" data-tex="\(c\)">\(c\)</span> by <span class="math" data-tex="\(\epsilon^6c\)">\(\epsilon^6c\)</span> with <span class="math" data-tex="\(\epsilon\in U_S\)">\(\epsilon\in U_S\)</span> is absorbed by the substitution <span class="math" data-tex="\(x\mapsto\epsilon^6x\)">\(x\mapsto\epsilon^6x\)</span>, so <span class="math" data-tex="\(\gamma_j(\mathfrak c)\)">\(\gamma_j(\mathfrak c)\)</span> does not depend on the allowed generator. At an exterior prime, the product formula for <span class="math" data-tex="\(\psi\)">\(\psi\)</span> gives <span class="math" data-tex="\(\mathrm e(x/p)=\psi_{\mathfrak p}(-x/p)\)">\(\mathrm e(x/p)=\psi_{\mathfrak p}(-x/p)\)</span>, since <span class="math" data-tex="\(x/p\)">\(x/p\)</span> is integral at every other place outside <span class="math" data-tex="\(S\)">\(S\)</span>; by (1.3) of Lesson 3, <span class="math" data-tex="\(\chi_{\mathfrak p}(-1)=1\)">\(\chi_{\mathfrak p}(-1)=1\)</span>, and the sign may be dropped in prime Gauss sums.</p>
+<p><strong>Lemma 3.1</strong> ([OpenAI-029, Lemma 3.4, first identity]). For every exterior prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>,
+<span class="math math-display" data-tex="\[
+\gamma_2(\mathfrak p)^3=-\Lambda(\mathfrak p).
+\tag{3.2}
+\]">\[
+\gamma_2(\mathfrak p)^3=-\Lambda(\mathfrak p).
+\tag{3.2}
+\]</span></p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(\mathfrak q=\mathfrak p\cap E_0\)">\(\mathfrak q=\mathfrak p\cap E_0\)</span>, with residue field of size <span class="math" data-tex="\(Q&#x27;\)">\(Q&#x27;\)</span>, and let <span class="math" data-tex="\(f\)">\(f\)</span> be the residue degree of <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> over <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span>; the residue field <span class="math" data-tex="\(k\)">\(k\)</span> of <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> has size <span class="math" data-tex="\(Q=Q&#x27;^f\)">\(Q=Q&#x27;^f\)</span>. The cubic character <span class="math" data-tex="\(\chi_{\mathfrak p}^2\)">\(\chi_{\mathfrak p}^2\)</span> at <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> is <span class="math" data-tex="\(x\mapsto x^{(Q-1)/3}\)">\(x\mapsto x^{(Q-1)/3}\)</span>, and <span class="math" data-tex="\(x^{(Q-1)/3}=(x^{(Q-1)/(Q&#x27;-1)})^{(Q&#x27;-1)/3}\)">\(x^{(Q-1)/3}=(x^{(Q-1)/(Q&#x27;-1)})^{(Q&#x27;-1)/3}\)</span>; so it is the cubic character of <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span> composed with the norm <span class="math" data-tex="\(k\to\mathbb F_{Q&#x27;}\)">\(k\to\mathbb F_{Q&#x27;}\)</span>. By Corollary 1.3 and Lemma 1.2, then Lemma 2.1,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\gamma_2(\mathfrak p)^3&amp;=Q^{-1/2}J_k(\chi_{\mathfrak p}^2,\chi_{\mathfrak p}^2)\\
+&amp;=Q^{-1/2}(-1)^{f-1}\bigl(-\pi_+(\mathfrak q)\bigr)^f\\
+&amp;=-\frac{\pi_+(\mathfrak q)^f}{Q^{1/2}} .
+\end{aligned}
+\]">\[
+\begin{aligned}
+\gamma_2(\mathfrak p)^3&amp;=Q^{-1/2}J_k(\chi_{\mathfrak p}^2,\chi_{\mathfrak p}^2)\\
+&amp;=Q^{-1/2}(-1)^{f-1}\bigl(-\pi_+(\mathfrak q)\bigr)^f\\
+&amp;=-\frac{\pi_+(\mathfrak q)^f}{Q^{1/2}} .
+\end{aligned}
+\]</span>
+Since <span class="math" data-tex="\(|\pi_+(\mathfrak q)|^2=Q&#x27;\)">\(|\pi_+(\mathfrak q)|^2=Q&#x27;\)</span> and <span class="math" data-tex="\(\operatorname N_{F/E_0}\mathfrak p=\mathfrak q^f\)">\(\operatorname N_{F/E_0}\mathfrak p=\mathfrak q^f\)</span>, the right side is <span class="math" data-tex="\(-\Lambda_{E_0}(\mathfrak q^f)=-\Lambda(\mathfrak p)\)">\(-\Lambda_{E_0}(\mathfrak q^f)=-\Lambda(\mathfrak p)\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-weil-index-and-the-character-g">4. The Weil index and the character G</h2>
+<p>The sign of the quadratic Gauss sum <span class="math" data-tex="\(\gamma_3(\mathfrak p)\)">\(\gamma_3(\mathfrak p)\)</span> is governed by a global reciprocity of a different kind. For a place <span class="math" data-tex="\(v\)">\(v\)</span> and <span class="math" data-tex="\(a\in F_v^\times\)">\(a\in F_v^\times\)</span>, Weil attached an eighth root of unity, the <strong>Weil index</strong> <span class="math" data-tex="\(\gamma_{\psi_v}(a)\)">\(\gamma_{\psi_v}(a)\)</span>, to the character of second degree <span class="math" data-tex="\(x\mapsto\psi_v(ax^2)\)">\(x\mapsto\psi_v(ax^2)\)</span> of <span class="math" data-tex="\(F_v\)">\(F_v\)</span>: it is the constant in the Fourier transform of this character as a tempered distribution. Put
+<span class="math math-display" data-tex="\[
+\mathfrak w_v(a)=\frac{\gamma_{\psi_v}(a)}{\gamma_{\psi_v}(1)} .
+\]">\[
+\mathfrak w_v(a)=\frac{\gamma_{\psi_v}(a)}{\gamma_{\psi_v}(1)} .
+\]</span></p>
+<p><strong>Named result N2</strong> (Weil's index).</p>
+<ol>
+<li><span class="math" data-tex="\(\mathfrak w_v(a)\)">\(\mathfrak w_v(a)\)</span> depends only on the square class of <span class="math" data-tex="\(a\)">\(a\)</span>, and <span class="math" data-tex="\(\mathfrak w_v(a)\mathfrak w_v(b)=(a,b)_{2,v}\,\mathfrak w_v(ab)\)">\(\mathfrak w_v(a)\mathfrak w_v(b)=(a,b)_{2,v}\,\mathfrak w_v(ab)\)</span> (Rao, Theorem A.4).</li>
+<li>For <span class="math" data-tex="\(a\in F^\times\)">\(a\in F^\times\)</span>, <span class="math" data-tex="\(\mathfrak w_v(a)=1\)">\(\mathfrak w_v(a)=1\)</span> for almost all <span class="math" data-tex="\(v\)">\(v\)</span>, and <span class="math" data-tex="\(\prod_v\mathfrak w_v(a)=1\)">\(\prod_v\mathfrak w_v(a)=1\)</span> (Weil's product formula, applied to the forms <span class="math" data-tex="\(ax^2\)">\(ax^2\)</span> and <span class="math" data-tex="\(x^2\)">\(x^2\)</span>; Liu–Zhu, Theorem 2.8).</li>
+<li>At a finite place <span class="math" data-tex="\(v\nmid2\)">\(v\nmid2\)</span> where <span class="math" data-tex="\(\psi_v\)">\(\psi_v\)</span> has conductor <span class="math" data-tex="\(\mathcal O_v\)">\(\mathcal O_v\)</span>, with residue field of size <span class="math" data-tex="\(q_v\)">\(q_v\)</span> and uniformizer <span class="math" data-tex="\(\varpi\)">\(\varpi\)</span>: <span class="math" data-tex="\(\mathfrak w_v(u)=1\)">\(\mathfrak w_v(u)=1\)</span> for units <span class="math" data-tex="\(u\)">\(u\)</span>, and <span class="math" data-tex="\(\mathfrak w_v(\varpi^{-1})\)">\(\mathfrak w_v(\varpi^{-1})\)</span><span class="math" data-tex="\(=q_v^{-1/2}\sum_{x\bmod\varpi}\psi_v(x^2/\varpi)\)">\(=q_v^{-1/2}\sum_{x\bmod\varpi}\psi_v(x^2/\varpi)\)</span> (Rao, Proposition A.11).</li>
+</ol>
+<p>These statements are used without proof in the programme. The symbol <span class="math" data-tex="\((a,b)_{2,v}\)">\((a,b)_{2,v}\)</span> is the quadratic Hilbert symbol, symmetric in its arguments, and equal to <span class="math" data-tex="\((a,b)_{6,v}^3\)">\((a,b)_{6,v}^3\)</span> in the notation of Lesson 2.</p>
+<p><strong>Lemma 4.1</strong> ([OpenAI-029, Lemma 3.4, the character G]). Put <span class="math" data-tex="\(\mathfrak w_S=\prod_{v\in S}\mathfrak w_v\)">\(\mathfrak w_S=\prod_{v\in S}\mathfrak w_v\)</span>. For every exterior prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> with allowed generator <span class="math" data-tex="\(p\)">\(p\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\gamma_3(\mathfrak p)\\
+&amp;\quad =\mathfrak w_S(p^{-1})^{-1}\in\{\pm1\},\quad(4.1)
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\gamma_3(\mathfrak p)\\
+&amp;\quad =\mathfrak w_S(p^{-1})^{-1}\in\{\pm1\},\quad(4.1)
+\end{aligned}
+\]</span>
+and <span class="math" data-tex="\([a]\mapsto\mathfrak w_S(a^{-1})^{-1}\)">\([a]\mapsto\mathfrak w_S(a^{-1})^{-1}\)</span> is a character of <span class="math" data-tex="\(B\)">\(B\)</span>. Consequently there is a finite-order Hecke character <span class="math" data-tex="\(G\)">\(G\)</span> of <span class="math" data-tex="\(F\)">\(F\)</span>, unramified outside <span class="math" data-tex="\(S\)">\(S\)</span>, with
+<span class="math math-display" data-tex="\[
+G(\mathfrak p)=\overline{\chi_{\mathfrak p}(4)}\,\gamma_3(\mathfrak p)
+\tag{4.2}
+\]">\[
+G(\mathfrak p)=\overline{\chi_{\mathfrak p}(4)}\,\gamma_3(\mathfrak p)
+\tag{4.2}
+\]</span>
+for every exterior prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> have residue field of size <span class="math" data-tex="\(Q\)">\(Q\)</span>. The number of square roots of <span class="math" data-tex="\(x\)">\(x\)</span> in the residue field is <span class="math" data-tex="\(1+\chi_{\mathfrak p}(x)^3\)">\(1+\chi_{\mathfrak p}(x)^3\)</span>, with the unit mask at <span class="math" data-tex="\(x=0\)">\(x=0\)</span>, and <span class="math" data-tex="\(\sum_x\psi_{\mathfrak p}(x/p)=0\)">\(\sum_x\psi_{\mathfrak p}(x/p)=0\)</span>. So
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;Q^{-1/2}\sum_{x\bmod\mathfrak p}\psi_{\mathfrak p}(x^2/p)\\
+&amp;\quad =Q^{-1/2}\sum_x\chi_{\mathfrak p}(x)^3\psi_{\mathfrak p}(x/p)\\
+&amp;\quad =\gamma_3(\mathfrak p),
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;Q^{-1/2}\sum_{x\bmod\mathfrak p}\psi_{\mathfrak p}(x^2/p)\\
+&amp;\quad =Q^{-1/2}\sum_x\chi_{\mathfrak p}(x)^3\psi_{\mathfrak p}(x/p)\\
+&amp;\quad =\gamma_3(\mathfrak p),
+\end{aligned}
+\]</span>
+the last step by the remark after (3.1). By N2(3), the left side is <span class="math" data-tex="\(\mathfrak w_{\mathfrak p}(p^{-1})\)">\(\mathfrak w_{\mathfrak p}(p^{-1})\)</span>. Apply N2(2) to <span class="math" data-tex="\(p^{-1}\in F^\times\)">\(p^{-1}\in F^\times\)</span>. At an exterior place other than <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, <span class="math" data-tex="\(p^{-1}\)">\(p^{-1}\)</span> is a unit; these places are odd, and <span class="math" data-tex="\(\psi_v\)">\(\psi_v\)</span> has conductor <span class="math" data-tex="\(\mathcal O_v\)">\(\mathcal O_v\)</span> there by the choice of <span class="math" data-tex="\(S\)">\(S\)</span>, so N2(3) gives <span class="math" data-tex="\(\mathfrak w_v(p^{-1})=1\)">\(\mathfrak w_v(p^{-1})=1\)</span>. The product formula leaves <span class="math" data-tex="\(\mathfrak w_S(p^{-1})\mathfrak w_{\mathfrak p}(p^{-1})=1\)">\(\mathfrak w_S(p^{-1})\mathfrak w_{\mathfrak p}(p^{-1})=1\)</span>, which is (4.1). Its square is <span class="math" data-tex="\(1\)">\(1\)</span> because <span class="math" data-tex="\(\gamma_3(\mathfrak p)^2=\chi_{\mathfrak p}(-1)^3=1\)">\(\gamma_3(\mathfrak p)^2=\chi_{\mathfrak p}(-1)^3=1\)</span> by Lemma 1.1(1).</p>
+<p>For allowed <span class="math" data-tex="\(a,b\)">\(a,b\)</span>, N2(1) gives <span class="math" data-tex="\(\mathfrak w_S(a^{-1})\mathfrak w_S(b^{-1})\)">\(\mathfrak w_S(a^{-1})\mathfrak w_S(b^{-1})\)</span><span class="math" data-tex="\(=\prod_{v\in S}(a^{-1},b^{-1})_{2,v}\,\mathfrak w_S((ab)^{-1})\)">\(=\prod_{v\in S}(a^{-1},b^{-1})_{2,v}\,\mathfrak w_S((ab)^{-1})\)</span>, and <span class="math" data-tex="\(\prod_{v\in S}(a^{-1},b^{-1})_{2,v}=H_S(a,b)^3=1\)">\(\prod_{v\in S}(a^{-1},b^{-1})_{2,v}=H_S(a,b)^3=1\)</span> because <span class="math" data-tex="\([a],[b]\in B\)">\([a],[b]\in B\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> is isotropic. So the map is a character of <span class="math" data-tex="\(B\)">\(B\)</span>; it depends only on square classes, hence only on the class in <span class="math" data-tex="\(B\)">\(B\)</span>. Lemma 3.1(4) of <a href="sextic-reciprocity-and-kummer-characters.html"><em>Sextic reciprocity and Kummer characters</em></a> extends it to a finite-order Hecke character unramified outside <span class="math" data-tex="\(S\)">\(S\)</span> whose value at <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span> is <span class="math" data-tex="\(\gamma_3(\mathfrak p)\)">\(\gamma_3(\mathfrak p)\)</span>. Since <span class="math" data-tex="\(4\in U_S\)">\(4\in U_S\)</span>, the Kummer character <span class="math" data-tex="\(\kappa_4\)">\(\kappa_4\)</span> is unramified outside <span class="math" data-tex="\(S\)">\(S\)</span> with <span class="math" data-tex="\(\kappa_4(\mathfrak p)=\chi_{\mathfrak p}(4)\)">\(\kappa_4(\mathfrak p)=\chi_{\mathfrak p}(4)\)</span>; multiplying by <span class="math" data-tex="\(\overline{\kappa_4}\)">\(\overline{\kappa_4}\)</span> gives <span class="math" data-tex="\(G\)">\(G\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-duplication-identity-and-multiplicativity">5. The duplication identity and multiplicativity</h2>
+<p><strong>Proposition 5.1</strong> ([OpenAI-029, Lemma 3.4]). For every exterior prime <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>,
+<span class="math math-display" data-tex="\[
+\gamma_1(\mathfrak p)\gamma_2(\mathfrak p)=-\Lambda(\mathfrak p)G(\mathfrak p).
+\tag{5.1}
+\]">\[
+\gamma_1(\mathfrak p)\gamma_2(\mathfrak p)=-\Lambda(\mathfrak p)G(\mathfrak p).
+\tag{5.1}
+\]</span>
+For coprime squarefree exterior ideals <span class="math" data-tex="\(\mathfrak c_1,\mathfrak c_2\)">\(\mathfrak c_1,\mathfrak c_2\)</span> with allowed generators <span class="math" data-tex="\(c_1,c_2\)">\(c_1,c_2\)</span>, and every integer <span class="math" data-tex="\(j\)">\(j\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\gamma_j(\mathfrak c_1\mathfrak c_2)&amp;=\chi_{\mathfrak c_1}(c_2)^j\chi_{\mathfrak c_2}(c_1)^j\\
+&amp;\quad \gamma_j(\mathfrak c_1)\gamma_j(\mathfrak c_2).\quad(5.2)
+\end{aligned}
+\]">\[
+\begin{aligned}
+\gamma_j(\mathfrak c_1\mathfrak c_2)&amp;=\chi_{\mathfrak c_1}(c_2)^j\chi_{\mathfrak c_2}(c_1)^j\\
+&amp;\quad \gamma_j(\mathfrak c_1)\gamma_j(\mathfrak c_2).\quad(5.2)
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> With <span class="math" data-tex="\(G_j\)">\(G_j\)</span> the Gauss sums of <span class="math" data-tex="\(\chi_{\mathfrak p}^j\)">\(\chi_{\mathfrak p}^j\)</span> for the additive character <span class="math" data-tex="\(x\mapsto\psi_{\mathfrak p}(x/p)\)">\(x\mapsto\psi_{\mathfrak p}(x/p)\)</span>, (1.3) and <span class="math" data-tex="\(G_2G_4=Q\)">\(G_2G_4=Q\)</span> give <span class="math" data-tex="\(G_1=\overline{\chi_{\mathfrak p}(4)}G_2^2G_3/Q\)">\(G_1=\overline{\chi_{\mathfrak p}(4)}G_2^2G_3/Q\)</span>, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\gamma_1\gamma_2&amp;=Q^{-1}G_1G_2=\overline{\chi_{\mathfrak p}(4)}\,Q^{-2}G_2^3G_3\\
+&amp;=\overline{\chi_{\mathfrak p}(4)}\,\gamma_3(\mathfrak p)\gamma_2(\mathfrak p)^3 ,
+\end{aligned}
+\]">\[
+\begin{aligned}
+\gamma_1\gamma_2&amp;=Q^{-1}G_1G_2=\overline{\chi_{\mathfrak p}(4)}\,Q^{-2}G_2^3G_3\\
+&amp;=\overline{\chi_{\mathfrak p}(4)}\,\gamma_3(\mathfrak p)\gamma_2(\mathfrak p)^3 ,
+\end{aligned}
+\]</span>
+which is <span class="math" data-tex="\(-\Lambda(\mathfrak p)G(\mathfrak p)\)">\(-\Lambda(\mathfrak p)G(\mathfrak p)\)</span> by (3.2) and (4.2). For (5.2), every residue modulo <span class="math" data-tex="\(\mathfrak c_1\mathfrak c_2\)">\(\mathfrak c_1\mathfrak c_2\)</span> is uniquely <span class="math" data-tex="\(x=c_2y_1+c_1y_2\)">\(x=c_2y_1+c_1y_2\)</span> with <span class="math" data-tex="\(y_i\)">\(y_i\)</span> modulo <span class="math" data-tex="\(\mathfrak c_i\)">\(\mathfrak c_i\)</span>, by the Chinese remainder theorem. Then <span class="math" data-tex="\(\mathrm e(x/(c_1c_2))=\mathrm e(y_1/c_1)\mathrm e(y_2/c_2)\)">\(\mathrm e(x/(c_1c_2))=\mathrm e(y_1/c_1)\mathrm e(y_2/c_2)\)</span> and <span class="math" data-tex="\(\chi_{\mathfrak c_1\mathfrak c_2}(x)^j=\chi_{\mathfrak c_1}(c_2y_1)^j\chi_{\mathfrak c_2}(c_1y_2)^j\)">\(\chi_{\mathfrak c_1\mathfrak c_2}(x)^j=\chi_{\mathfrak c_1}(c_2y_1)^j\chi_{\mathfrak c_2}(c_1y_2)^j\)</span>, which factors as stated; the product <span class="math" data-tex="\(c_1c_2\)">\(c_1c_2\)</span> is an allowed generator of <span class="math" data-tex="\(\mathfrak c_1\mathfrak c_2\)">\(\mathfrak c_1\mathfrak c_2\)</span>. The unit mask makes the formula valid for <span class="math" data-tex="\(j\equiv0\pmod6\)">\(j\equiv0\pmod6\)</span> as well. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="6-the-character-theta">6. The character theta</h2>
+<p>Put
+<span class="math math-display" data-tex="\[
+\vartheta=\overline\Lambda\,\overline G\,\eta .
+\tag{6.1}
+\]">\[
+\vartheta=\overline\Lambda\,\overline G\,\eta .
+\tag{6.1}
+\]</span>
+Its finite conductor is supported in <span class="math" data-tex="\(S\)">\(S\)</span>. Write <span class="math" data-tex="\(\vartheta_v\)">\(\vartheta_v\)</span> for its local components and define the smooth unitary character
+<span class="math math-display" data-tex="\[
+L_S(y)=\prod_{v\in S}\vartheta_v(y_v)^{-1}\qquad(y\in F_S^\times).
+\]">\[
+L_S(y)=\prod_{v\in S}\vartheta_v(y_v)^{-1}\qquad(y\in F_S^\times).
+\]</span></p>
+<p><strong>Lemma 6.1</strong> ([OpenAI-029, (3.14)]). For every exterior ideal <span class="math" data-tex="\(\mathfrak a\)">\(\mathfrak a\)</span> with allowed generator <span class="math" data-tex="\(a\)">\(a\)</span>, and every <span class="math" data-tex="\(\epsilon\in U_S\)">\(\epsilon\in U_S\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\vartheta(\mathfrak a)=L_S(a),\\
+L_S(\epsilon)=1 .\quad(6.2)
+\end{gathered}
+\]">\[
+\begin{gathered}
+\vartheta(\mathfrak a)=L_S(a),\\
+L_S(\epsilon)=1 .\quad(6.2)
+\end{gathered}
+\]</span>
+At each complex place the component of <span class="math" data-tex="\(L_S\)">\(L_S\)</span> is purely angular, of exponent <span class="math" data-tex="\(1\)">\(1\)</span> or <span class="math" data-tex="\(-1\)">\(-1\)</span>.</p>
+<p><em>Proof.</em> The idèle character <span class="math" data-tex="\(\vartheta\)">\(\vartheta\)</span> is trivial on <span class="math" data-tex="\(F^\times\)">\(F^\times\)</span>, so <span class="math" data-tex="\(\prod_{v\notin S}\vartheta_v(a)=L_S(a)\)">\(\prod_{v\notin S}\vartheta_v(a)=L_S(a)\)</span>. Outside <span class="math" data-tex="\(S\)">\(S\)</span> it is unramified, and <span class="math" data-tex="\(\prod_{v\notin S}\vartheta_v(a)=\prod_{\mathfrak p}\vartheta(\mathfrak p)^{v_{\mathfrak p}(a)}=\vartheta(\mathfrak a)\)">\(\prod_{v\notin S}\vartheta_v(a)=\prod_{\mathfrak p}\vartheta(\mathfrak p)^{v_{\mathfrak p}(a)}=\vartheta(\mathfrak a)\)</span>. For <span class="math" data-tex="\(\epsilon\in U_S\)">\(\epsilon\in U_S\)</span> the same product is <span class="math" data-tex="\(1\)">\(1\)</span>. Finite-order characters are trivial on the connected group <span class="math" data-tex="\(\mathbb C^\times\)">\(\mathbb C^\times\)</span>, so the complex components of <span class="math" data-tex="\(G\)">\(G\)</span> and <span class="math" data-tex="\(\eta\)">\(\eta\)</span> are trivial and those of <span class="math" data-tex="\(L_S\)">\(L_S\)</span> come from <span class="math" data-tex="\(\Lambda\)">\(\Lambda\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The relations (3.2), (5.1) and (6.2) are what the rest of the course uses: at a prime, <span class="math" data-tex="\(\gamma_1(\mathfrak p)\gamma_2(\mathfrak p)\vartheta(\mathfrak p)=-\eta(\mathfrak p)\)">\(\gamma_1(\mathfrak p)\gamma_2(\mathfrak p)\vartheta(\mathfrak p)=-\eta(\mathfrak p)\)</span>.</p>
+<h2 id="7-exercises">7. Exercises</h2>
+<p><strong>7.1.</strong> Show that <span class="math" data-tex="\(\gamma_j(\mathfrak p)\)">\(\gamma_j(\mathfrak p)\)</span> has absolute value <span class="math" data-tex="\(1\)">\(1\)</span> for <span class="math" data-tex="\(j\not\equiv0\pmod 6\)">\(j\not\equiv0\pmod 6\)</span>, and compute <span class="math" data-tex="\(\gamma_0(\mathfrak p)\)">\(\gamma_0(\mathfrak p)\)</span>.</p>
+<p><strong>7.2.</strong> Let <span class="math" data-tex="\(\mathfrak q=(3+\omega)\)">\(\mathfrak q=(3+\omega)\)</span>, of norm <span class="math" data-tex="\(7\)">\(7\)</span>. Find <span class="math" data-tex="\(\pi_+(\mathfrak q)\)">\(\pi_+(\mathfrak q)\)</span> and verify (2.1) by computing <span class="math" data-tex="\(J(\rho,\rho)\)">\(J(\rho,\rho)\)</span> in <span class="math" data-tex="\(\mathbb Z[\omega]\)">\(\mathbb Z[\omega]\)</span>.</p>
+<p><strong>7.3.</strong> Let <span class="math" data-tex="\(\ell\equiv2\pmod3\)">\(\ell\equiv2\pmod3\)</span> be a prime. Show that <span class="math" data-tex="\(\pi_+((\ell))=-\ell\)">\(\pi_+((\ell))=-\ell\)</span>, and deduce from Lemma 2.1 that the cubic Jacobi sum over <span class="math" data-tex="\(\mathbb F_{\ell^2}\)">\(\mathbb F_{\ell^2}\)</span> equals <span class="math" data-tex="\(\ell\)">\(\ell\)</span>.</p>
+<p><strong>7.4.</strong> Show that <span class="math" data-tex="\(\gamma_3(\mathfrak p)\)">\(\gamma_3(\mathfrak p)\)</span> is also equal to <span class="math" data-tex="\(\gamma_3\)">\(\gamma_3\)</span> computed with the additive character <span class="math" data-tex="\(x\mapsto\psi_{\mathfrak p}(ux/p)\)">\(x\mapsto\psi_{\mathfrak p}(ux/p)\)</span> for every unit <span class="math" data-tex="\(u\)">\(u\)</span> that is a square modulo <span class="math" data-tex="\(\mathfrak p\)">\(\mathfrak p\)</span>, and changes sign for a nonsquare.</p>
+<p><strong>7.5.</strong> Prove the claim in the proof of Lemma 1.2 that <span class="math" data-tex="\(\lambda(h_1h_2)=\lambda(h_1)\lambda(h_2)\)">\(\lambda(h_1h_2)=\lambda(h_1)\lambda(h_2)\)</span>, and that <span class="math" data-tex="\(\lambda(h)=\chi((-1)^dc_d)\psi_k(-c_1)\)">\(\lambda(h)=\chi((-1)^dc_d)\psi_k(-c_1)\)</span>.</p>
+<h2 id="8-solutions">8. Solutions</h2>
+<p><strong>7.1.</strong> For <span class="math" data-tex="\(j\not\equiv0\)">\(j\not\equiv0\)</span>, <span class="math" data-tex="\(\chi_{\mathfrak p}^j\)">\(\chi_{\mathfrak p}^j\)</span> is a nontrivial character and Lemma 1.1(1) gives <span class="math" data-tex="\(|G|^2=Q\)">\(|G|^2=Q\)</span>. For <span class="math" data-tex="\(j\equiv0\)">\(j\equiv0\)</span>, the unit mask gives <span class="math" data-tex="\(\gamma_0(\mathfrak p)=Q^{-1/2}\sum_{x\ne0}\mathrm e(x/p)=-Q^{-1/2}\)">\(\gamma_0(\mathfrak p)=Q^{-1/2}\sum_{x\ne0}\mathrm e(x/p)=-Q^{-1/2}\)</span>.</p>
+<p><strong>7.2.</strong> <span class="math" data-tex="\(3+\omega\equiv\omega\pmod 3\)">\(3+\omega\equiv\omega\pmod 3\)</span>, and the generator <span class="math" data-tex="\(\equiv1\)">\(\equiv1\)</span> is <span class="math" data-tex="\(\omega^{2}(3+\omega)=3\omega^2+1=-2-3\omega\)">\(\omega^{2}(3+\omega)=3\omega^2+1=-2-3\omega\)</span>. Modulo <span class="math" data-tex="\(\mathfrak q\)">\(\mathfrak q\)</span>, <span class="math" data-tex="\(\omega\equiv-3\equiv4\pmod7\)">\(\omega\equiv-3\equiv4\pmod7\)</span>, a cube root of unity in <span class="math" data-tex="\(\mathbb F_7\)">\(\mathbb F_7\)</span>. Computing <span class="math" data-tex="\(\rho(x)=x^2\bmod7\)">\(\rho(x)=x^2\bmod7\)</span> as a power of <span class="math" data-tex="\(4\)">\(4\)</span> for <span class="math" data-tex="\(x=2,\dots,6\)">\(x=2,\dots,6\)</span> and summing <span class="math" data-tex="\(\rho(x)\rho(1-x)\)">\(\rho(x)\rho(1-x)\)</span> gives <span class="math" data-tex="\(J=2+3\omega=-\pi_+(\mathfrak q)\)">\(J=2+3\omega=-\pi_+(\mathfrak q)\)</span>.</p>
+<p><strong>7.3.</strong> The generators of <span class="math" data-tex="\((\ell)\)">\((\ell)\)</span> are <span class="math" data-tex="\(\pm\ell\omega^i\)">\(\pm\ell\omega^i\)</span>, and <span class="math" data-tex="\(-\ell\equiv1\pmod3\)">\(-\ell\equiv1\pmod3\)</span>. The ideal <span class="math" data-tex="\((\ell)\)">\((\ell)\)</span> is prime of norm <span class="math" data-tex="\(\ell^2\)">\(\ell^2\)</span> (Theorem 12.3 of <a href="../NT-ANT/cyclotomic-fields.html"><em>Cyclotomic fields</em></a>), so (2.1) gives <span class="math" data-tex="\(J=\ell\)">\(J=\ell\)</span>.</p>
+<p><strong>7.4.</strong> Lemma 1.1(3) multiplies the Gauss sum of <span class="math" data-tex="\(\chi_{\mathfrak p}^3\)">\(\chi_{\mathfrak p}^3\)</span> by <span class="math" data-tex="\(\overline{\chi_{\mathfrak p}(u)^3}=\chi_{\mathfrak p}(u)^3\)">\(\overline{\chi_{\mathfrak p}(u)^3}=\chi_{\mathfrak p}(u)^3\)</span>, which is the quadratic character of <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<p><strong>7.5.</strong> The roots of <span class="math" data-tex="\(h_1h_2\)">\(h_1h_2\)</span> are those of <span class="math" data-tex="\(h_1\)">\(h_1\)</span> and <span class="math" data-tex="\(h_2\)">\(h_2\)</span> together, so their product is multiplicative and their sum additive; <span class="math" data-tex="\(\chi\)">\(\chi\)</span> is multiplicative and <span class="math" data-tex="\(\psi_k\)">\(\psi_k\)</span> additive. For <span class="math" data-tex="\(h=\prod(T-\alpha_i)\)">\(h=\prod(T-\alpha_i)\)</span>, <span class="math" data-tex="\(c_1=-\sum\alpha_i\)">\(c_1=-\sum\alpha_i\)</span> and <span class="math" data-tex="\(c_d=(-1)^d\prod\alpha_i\)">\(c_d=(-1)^d\prod\alpha_i\)</span>.</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-029] OpenAI, <em>Primitive roots for every admissible integer base</em>, OpenAI Math Release preprint, 4 October 2026, Section 3. https://github.com/openai/math/tree/main/preprints/Primitive-roots-for-every-admissible-integer-base-October-4-2026</li>
+<li>R. Ranga Rao, <em>On some explicit formulas in the theory of Weil representation</em>, Pacific J. Math. 157 (1993), 335–371, Appendix (Theorem A.4, Proposition A.11). https://msp.org/pjm/1993/157-2/pjm-v157-n2-p09-s.pdf</li>
+<li>D. Liu and Y. Zhu, <em>LCA(2), Weil index, and product formula</em>, arXiv:1708.09205v1, Section 2.4 (Theorem 2.8, Weil's product formula). https://arxiv.org/abs/1708.09205v1</li>
+<li>S. Baier and M. P. Young, <em>Mean values with cubic characters</em>, arXiv:0804.2233v4, Section 2.2 (the cubic Gauss sum identity in the form <span class="math" data-tex="\(g(n)^3=\mu(n)\operatorname N(n)n\)">\(g(n)^3=\mu(n)\operatorname N(n)n\)</span>). https://arxiv.org/abs/0804.2233v4</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
