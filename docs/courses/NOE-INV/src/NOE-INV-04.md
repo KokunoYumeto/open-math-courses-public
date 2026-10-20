@@ -1,642 +1,1082 @@
-# Polarization and invariants of many vectors
+# Invariant rings of ternary cubics and quartics
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex at Ultra, October 2026. Original exposition and proofs are CC0. This evolving lesson is being checked by its writing AI; no independent review is recorded.*
+*Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex at Ultra. Original exposition, proofs, exercises and diagrams are CC0.*
 
-Adding copies of a representation creates more invariants, but their essential patterns are already visible on a bounded number of copies. Polarization moves those patterns between the copies. We will prove the bound for an arbitrary subgroup of the general linear group, then obtain determinant generation for the special linear group.
+Two explicit invariants determine the invariant ring of a ternary cubic. A ternary quartic needs seven homogeneous parameters and thirteen algebra generators. We prove these assertions using alternating contractions, the Hesse pencil, a finite group and exact polynomial calculations. Determinant differential operators and exterior pairings provide complementary ways to organize the calculations.
 
-Let \(k\) have characteristic zero, let \(V=k^n\), and identify \(V^m\) with rows \(v_i=(x_{i1},\ldots,x_{in})\). The row convention is the transpose of the usual matrix of vector columns. The diagonal action on \(V\) commutes with substitutions among the \(m\) copies. Polynomial invariants mean polynomials fixed by every element of the specified subgroup; the subgroup need not be reductive or closed.
+We use the action and small binary covariants from Covariants, averaging and Hilbert finiteness, the tensor and symbolic methods from Polarization, vector invariants and symbolic evaluation, and the finite-averaging and Molien formula from Invariants of finite groups and Noether's degree bound. All three precede this lesson. The base field has characteristic zero; the arguments begin over the complex numbers and include their descent.
 
-The lesson Forms in several variables and Hilbert finiteness, Theorem 2.3, supplies complete reducibility for polynomial representations of \(\operatorname{SL}_r(\mathbb C)\). We will explain exactly how it supplies the row-substitution decompositions used here over an arbitrary characteristic-zero field.
+## 1. The complete invariant ring of a ternary cubic {#section-1}
 
-## 1. Polarizing and putting the variables back together
+
+Hilbert's theorem supplies finiteness without choosing generators. For a ternary cubic, two explicit contractions suffice. The completeness proof below uses a two-dimensional family and a finite group acting on it. The counting formula is Molien's formula, Theorem 4.1 of the preceding lesson; its finite-averaging proof is independent of this cubic example.
+
+Write a general cubic with multinomial coefficients:
+\[
+f(x,y,z)=\sum_{i+j+k=3}\frac{3!}{i!j!k!}c_{ijk}x^iy^jz^k.
+\]
+For four independent symbolic rows \(u,v,w,r\), let \(U_f\) replace a degree-three monomial in each row by the corresponding coefficient \(c_{ijk}\). Define
+[]{#equation-A1}
+
+\[
+\begin{gathered}
+S(f)=U_f\bigl([uvw][uvr][uwr][vwr]\bigr),\\
+H_f=\det\left(\frac{\partial^2f}{\partial x_i\partial x_j}\right),\qquad
+T(f)=\left.\frac{d}{ds}S(f+sH_f)\right|_{s=0}.
+\end{gathered}
+\tag{A1}
+\]
+Every symbolic row in the bracket product occurs three times, so its evaluation is defined. Equivariance of the umbral map makes \(S\) special-linear invariant and homogeneous of coefficient degree four. The chain rule gives
+\(H_{f\circ h}=\det(h)^2H_f\circ h\). Thus the cubic \(H_f\), whose coefficients have degree three in those of \(f\), is a special-linear covariant. Applying invariance of \(S\) to \(f+sH_f\) shows that \(T\) is invariant, of coefficient degree six. These are fixed normalizations of the Aronhold invariants; multiplying either by a nonzero constant changes neither its zero set nor the algebra it generates.
+
+Consider the **Hesse pencil of forms**, here including its scalar parameter:
+[]{#equation-A2}
+
+\[
+f_{a,b}=aF+bQ,\qquad F=x^3+y^3+z^3,\quad Q=xyz.
+\tag{A2}
+\]
+The two parameters \(a,b\) range independently over \(\mathbb C\).
+
+[]{#lemma-1-1}
+
+**Lemma 1.1 (restriction to the pencil is injective).** A polynomial invariant of ternary cubics is determined by its values on (A2).
+
+**Proof.** Consider the holomorphic map
+\[
+\operatorname{SL}_3(\mathbb C)\times\mathbb C^2
+\longrightarrow \operatorname{Sym}^3(\mathbb C^3)^*,
+\qquad (h,a,b)\longmapsto f_{a,b}\circ h.
+\]
+At \((I,1,0)\), its six off-diagonal matrix directions give the six distinct monomials \(3x_i^2x_j\), \(i\ne j\). Two trace-zero diagonal directions give
+\(3(x^3-z^3),3(y^3-z^3)\). The pencil directions give \(F,Q\). These ten cubics are independent: the mixed monomials and \(Q\) are distinct, while the two differences and the sum \(F\) span the pure cubes. The derivative therefore has rank ten. The complex inverse-function theorem puts a nonempty complex open set in the image. If an invariant vanishes on the pencil, it vanishes on this image by invariance, hence on that open set. A polynomial vanishing on a complex open set is identically zero. \(\square\)
+
+This argument needs no classification of singular cubics, and makes no claim that every cubic has a Hesse presentation. Density is enough to determine a polynomial.
+
+We next identify enough symmetries of the pencil to count its possible invariant polynomials. Fix a primitive cube root \(\zeta\), and put
+[]{#equation-A3}
+
+\[
+d=3(\zeta^2-\zeta),\qquad d^2=-27,
+\qquad
+A=\begin{pmatrix}\zeta&0\\0&1\end{pmatrix},\qquad
+B=\frac1d\begin{pmatrix}3&1\\18&-3\end{pmatrix}.
+\tag{A3}
+\]
+These matrices act on the column \((a,b)^t\). Both actions arise from determinant-one substitutions on \((x,y,z)\). For \(A\), choose \(\rho^3=\zeta\) and substitute
+\(\rho\operatorname{diag}(\zeta^{-1},1,1)(x,y,z)^t\). Its determinant is one, and it sends \(aF+bQ\) to \(\zeta aF+bQ\).
+
+For \(B\), let
+\[
+M=\begin{pmatrix}
+1&1&1\\1&\zeta&\zeta^2\\1&\zeta^2&\zeta
+\end{pmatrix}.
+\]
+Its determinant is \(d\). Direct multiplication gives
+\[
+F(Mx)=3F(x)+18Q(x),\qquad Q(Mx)=F(x)-3Q(x).
+\]
+Choose \(\sigma^3=d^{-1}\). Substitution by \(\sigma M\) has determinant one and induces exactly \(B\). Consequently, restriction of an invariant of ternary cubics is invariant under the group \(\Gamma=\langle A,B\rangle\).
+
+[]{#lemma-1-2}
+
+**Lemma 1.2 (the finite pencil group).** The group \(\Gamma\) has 24 elements, and
+[]{#equation-A4}
+
+\[
+\sum_{m\geq0}\dim\bigl(\mathbb C [a,b]^\Gamma_m\bigr)t^m
+=\frac1{(1-t^4)(1-t^6)}.
+\tag{A4}
+\]
+
+**Proof.** Put \(C=ABA^{-1}\) and \(D=A^2BA^{-2}\). Multiplying the displayed two-by-two matrices, using \(1+\zeta+\zeta^2=0\), gives
+\[
+A^3=I,\qquad B^2=C^2=D^2=-I,\qquad
+BC=D=-CB,
+\]
+and conjugation by \(A\) cycles \(B,C,D\). In particular
+\(\{I,-I,\pm B,\pm C,\pm D\}\) is a quaternion subgroup of eight distinct matrices. The three cosets obtained by multiplying it by \(I,A,A^2\) form a group containing both generators. They are distinct because their determinants are respectively \(1,\zeta,\zeta^2\). This proves the order 24 and gives every element without an appeal to a group classification.
+
+The same multiplication gives this entire trace and determinant list:
+
+| Number of matrices | Trace | Determinant |
+|---:|---|---|
+| 1 | \(2\) | \(1\) |
+| 1 | \(-2\) | \(1\) |
+| 6 | \(0\) | \(1\) |
+| 4 | \(1+\zeta\) | \(\zeta\) |
+| 4 | \(-1-\zeta\) | \(\zeta\) |
+| 4 | \(\zeta\) | \(\zeta^2\) |
+| 4 | \(-\zeta\) | \(\zeta^2\) |
+
+For a two-by-two matrix the Molien denominator is
+\(1-\operatorname{tr}(g)t+\det(g)t^2\). Averaging over \(g\) or \(g^{-1}\) gives the same sum, so the convention for the induced function action does not change it. Pairing the last four rows and using \(\zeta+\zeta^2=-1\) gives
+\[
+\frac1{24}\left(
+\frac1{(1-t)^2}+\frac1{(1+t)^2}+\frac6{1+t^2}
++\frac{4(2+t)}{(1-t)(1+t+t^2)}
++\frac{4(2-t)}{(1+t)(1-t+t^2)}\right).
+\]
+Multiplication by \((1-t^4)(1-t^6)\) reduces the parenthesis to 24; this is (A4). Molien's formula is an identity of formal power series, so this calculation determines every degree. \(\square\)
+
+The restrictions of our two global invariants can now be calculated. Their normalizations are
+[]{#equation-A5}
+
+\[
+\begin{split}
+S(f_{a,b})&=\frac{b^4-216a^3b}{54},\\
+T(f_{a,b})&=\frac4{27}
+\bigl(b^6+540a^3b^3-5832a^6\bigr).
+\end{split}
+\tag{A5}
+\]
+Here is a small way to check all constants. Invariance under \(A\) and degree four leave only \(a^3b,b^4\) in the first restriction. In the product of four determinants in (A1), the coefficient of the monomial using each of the three coordinates of each row once is 24. The coefficient using a pure cube in each of three rows and the product of coordinates in the remaining row, summed over the row choices, is \(-24\). Since \(c_{111}=b/6\) and \(c_{300}=c_{030}=c_{003}=a\) on the pencil, these give \(24(b/6)^4-24a^3(b/6)\), the first formula. Both coefficients follow by expanding the determinants as signed sums of their six permutations; the symbolic construction specifies the calculation completely.
+
+For the second formula, the Hessian matrix has diagonal entries \(6ax,6ay,6az\) and off-diagonal entries \(bz,by,bx\). Its determinant is
+\[
+H_{f_{a,b}}=-6ab^2F+(216a^3+2b^3)Q.
+\]
+Differentiate the first formula in the parameter direction
+\((-6ab^2,216a^3+2b^3)\). This gives exactly the second formula of (A5). Finally their parameter Jacobian is
+[]{#equation-A6}
+
+\[
+\det\frac{\partial(S(f_{a,b}),T(f_{a,b}))}{\partial(a,b)}
+=-\frac{256}{9}a^2(b^3+27a^3)^2,
+\tag{A6}
+\]
+which is nonzero as a polynomial. Thus these two restrictions are algebraically independent. For completeness, in characteristic zero a polynomial relation of least positive degree would, on differentiation and inversion of this nonzero Jacobian over \(\mathbb C(a,b)\), give two relations of smaller degree. Its two partial derivatives must therefore be zero polynomials, making it constant, a contradiction.
+
+[]{#theorem-1-3}
+
+**Theorem 1.3 (Aronhold's generators).** The invariant ring of a ternary cubic is
+[]{#equation-A7}
+
+\[
+\mathbb C [\operatorname{Sym}^3(\mathbb C^3)^*]^{\operatorname{SL}_3}
+=\mathbb C [S,T],\qquad \deg S=4,\quad\deg T=6.
+\tag{A7}
+\]
+There is no algebraic relation between the two generators.
+
+**Proof.** Algebraic independence makes the subalgebra of \(\mathbb C [a,b]^\Gamma\) generated by the two restrictions a polynomial algebra, with series
+\(1/((1-t^4)(1-t^6))\). Lemma 1.2 gives exactly that series for the whole invariant ring of the pencil. The inclusion is graded, and each degree is finite-dimensional. Equality of its dimensions in every degree therefore proves equality of the two algebras.
+
+Now let \(P\) be any invariant of ternary cubics. Its restriction is a \(\Gamma\)-invariant, hence a polynomial \(q(S(f_{a,b}),T(f_{a,b}))\). Both \(P\) and \(q(S,T)\) are global invariants with the same restriction. Lemma 1.1 makes them equal. Independence of the restrictions also rules out a global relation. \(\square\)
+
+In particular, \(S(F)=0,T(F)=-864\), whereas
+\(S(xyz)=1/54,T(xyz)=4/27\). A cubic with zero Hessian need not be recognized by a smooth normal form; the polynomial theorem applies to all coefficient values, including singular and zero cubics. Its nullcone is exactly \(V(S,T)\).
+
+The construction and completeness statement are due to Aronhold. The Hesse pencil and its finite symmetry group belong to the classical geometry surveyed by Artebani and Dolgachev in [The Hesse pencil of plane cubic curves](https://arxiv.org/abs/math/0611590). The proof here gives the explicit substitutions, finite group, generating invariants and all-degree dimension comparison, rather than requiring their proofs as an external input.
+
+The same theorem holds over any field of characteristic zero. Indeed the constructions have rational coefficients. In a fixed coefficient degree, invariance is the common kernel of the six rational matrices induced by \(x_j\partial/\partial x_i\), \(i\ne j\). Annihilation implies invariance under their unipotent subgroups by their finite exponential series, and these subgroups generate the special linear group by elementary matrix operations. Taking a kernel of these finite matrices commutes with extension of the ground field. The monomials \(S^iT^j\) form a basis of the kernel over \(\mathbb C\) by (A7); rational linear independence and rank then make them a basis over every characteristic-zero field. This descent does not assume that the entire field embeds into \(\mathbb C\).
+
+For the determinant calculations in Sections 2–3, let \(W\) be a polynomial representation of \(G=\operatorname{SL}_n(\mathbb C)\), put \(A=\mathbb C[W]\), and let \(G\) act by \((gF)(w)=F(g^{-1}w)\). These are the conventions of Sections 8–11 of the first lesson.
+
+## 2. Cayley's determinant differential operator {#section-2}
+
+Let \(X=(x_{ij})\), \(\Delta_X=\det X\), and
+\[
+\Omega_X=\det(\partial_{x_{ij}})
+=\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)
+\prod_{i=1}^n\partial_{x_{i,\sigma(i)}}.
+\]
+
+[]{#theorem-2-1}
+
+**Theorem 2.1 (Cayley's identity).** For every positive integer \(s\),
+[]{#equation-H5}
+
+\[
+\Omega_X\Delta_X^s
+=s(s+1)\cdots(s+n-1)\Delta_X^{s-1}.
+\tag{H5}
+\]
+
+**Proof.** The chain rule for left and right matrix multiplication shows that \(\Omega_X\Delta_X^s\) transforms, on either side, with determinant exponent \(s-1\). On invertible matrices the action is transitive, so the result is a scalar times \(\Delta_X^{s-1}\); polynomial density makes this true on all matrices. Evaluate the scalar at \(X=I\).
+
+For a fixed permutation \(\sigma\), the derivative
+\(\prod_i\partial_{x_{i,\sigma(i)}}\Delta_X^s\) at \(I\)
+is the coefficient of \(\prod_i t_{i,\sigma(i)}\) in
+\(\det(I+T)^s\). In formal power series,
+\[
+\det(I+T)^s
+=\exp\left(s\sum_{r\geq1}\frac{(-1)^{r-1}}r
+\operatorname{tr}(T^r)\right).
+\]
+To obtain that square-free monomial, each term in a trace must trace one cycle of \(\sigma\): every selected entry has its prescribed outgoing and incoming index, so a closed path cannot leave its cycle. A cycle of length \(r\) occurs \(r\) times in \(\operatorname{tr}(T^r)\), canceling the denominator \(r\). It contributes \(s(-1)^{r-1}\). The exponential joins disjoint cycles, with its factorial canceling their orderings. The coefficient is therefore
+\(\operatorname{sgn}(\sigma)s^{c(\sigma)}\), where \(c(\sigma)\) counts cycles, including fixed points.
+
+Summing with the signs in \(\Omega_X\) gives \(\sum_\sigma s^{c(\sigma)}\). This sum equals \(s(s+1)\cdots(s+n-1)\): when inserting the last letter into a permutation of \(n-1\) letters, it either forms a singleton, giving a factor \(s\), or is inserted after one of the \(n-1\) existing letters in a cycle, preserving the number of cycles. The recurrence starts with the value \(s\) for \(n=1\). This proves (H5). \(\square\)
+
+There is an algebraic form of compact averaging. For a homogeneous matrix polynomial \(P(X)\) of degree \(rn\), put
+[]{#equation-H6}
+
+\[
+L(P)=\frac{(\Omega_X^rP)(0)}{c_r},\qquad
+c_r=\prod_{s=1}^r s(s+1)\cdots(s+n-1);
+\quad c_0=1.
+\tag{H6}
+\]
+Put \(L(P)=0\) on homogeneous degrees not divisible by \(n\), and extend linearly.
+
+[]{#proposition-2-2}
+
+**Proposition 2.2 (the Omega projection).** \(L\) descends to a bi-invariant linear functional on
+\(\mathbb C [G]=\mathbb C [x_{ij}]/(\Delta_X-1)\),
+with \(L(1)=1\). Applying \(L\) to the matrix coefficients of the action on \(A\) gives the Reynolds operator of Theorem 9.1.
+
+**Proof.** The determinant chain rule makes \(L\) invariant under left and right multiplication by \(G\). By (H1), the left-invariant polynomials of degree \(rn\) are exactly the scalar multiples of \(\Delta_X^r\); degrees not divisible by \(n\) have none. Complete reducibility from Theorem 8.3 therefore implies that an invariant functional on each homogeneous piece is determined by its value on this single invariant vector, or is zero when no such vector exists. Cayley's identity gives \(L(\Delta_X^r)=1\).
+
+For homogeneous \(P\) of degree \(rn\), the two functionals \(P\mapsto L(P)\) and \(P\mapsto L(\Delta_XP)\) are invariant and both take the value one on \(\Delta_X^r\). Hence they coincide by that uniqueness. For other degrees both are zero. Thus \(L((\Delta_X-1)P)=0\) for every polynomial \(P\), proving descent.
+
+For \(F\in A\), its translate \(gF\) is a polynomial in the entries of \(g\) with coefficients in a finite-dimensional part of \(A\). Choose any representative \(P(X)\) for those matrix coefficients in the quotient coordinate ring and apply \(L\) coefficientwise. Descent makes the answer independent of that choice. Bi-invariance makes the resulting map equivariant with invariant image. Since \(L(1)=1\), it is the identity on invariants and hence a projection. It preserves the degree in \(W\). Uniqueness in Theorem 9.1 identifies it with \(\rho\). \(\square\)
+
+For \(n=1\), these formulas are evaluation at \(X=1\), as they should be for the trivial group.
+
+## 3. Decomposing a matrix product {#section-3}
+
+Noether's papers *On the invariant theory of forms in several variables* replace a collection of determinant expressions by a matrix product that retains entire exterior-power rows. Here is one of the decomposition identities in modern notation, with its signs and its reduction step.
+
+Let \(\alpha_1,\ldots,\alpha_\rho,\beta_1,\ldots,\beta_\sigma\) be covectors on \(\mathbb C^n\), and let \(y_1,\ldots,y_{\rho+\sigma}\) be vectors, where \(\rho+\sigma\leq n\). Define the matrix product by
+\[
+\langle\alpha_1\wedge\cdots\wedge\alpha_\rho,\,
+y_1\wedge\cdots\wedge y_\rho\rangle
+=\det(\alpha_i(y_j))_{1\leq i,j\leq\rho}.
+\]
+It depends on the exterior-power rows, not on the individual factors chosen to represent them.
+
+[]{#proposition-3-1}
+
+**Proposition 3.1 (decomposition identity).** Put \(q=\alpha_1\wedge\cdots\wedge\alpha_\rho\) and \(a=\beta_1\wedge\cdots\wedge\beta_\sigma\). Then
+[]{#equation-H7}
+
+\[
+\langle q\wedge a,y_1\wedge\cdots\wedge y_{\rho+\sigma}\rangle
+=\sum_{\substack{I\subset\{1,\ldots,\rho+\sigma\}\\|I|=\rho}}
+(-1)^{\sum_{i\in I}i-\rho(\rho+1)/2}
+\langle q,y_I\rangle\langle a,y_{I^c}\rangle.
+\tag{H7}
+\]
+The factors within \(y_I,y_{I^c}\) are in increasing index order.
+
+**Proof.** Form the \((\rho+\sigma)\)-square pairing matrix with its \(\alpha\)-rows first and its \(\beta\)-rows last. Expand its determinant along the first \(\rho\) rows. Choosing their columns \(I=\{i_1<\cdots<i_\rho\}\) leaves columns \(I^c\) for the other rows. The column shuffle has sign
+\((-1)^{\sum_j(i_j-j)}\), the displayed exponent. The two resulting minors are the two pairings on the right. This proves (H7). Since both factors are exterior pairings, the formula also proves that the apparent dependence on the individual vectors enters only through the exterior product on the left. \(\square\)
+
+This is Noether's 1911 paper, Section 5, equation (32). Her exponent adds rather than subtracts \(\rho(\rho+1)/2\); the difference is the even integer \(\rho(\rho+1)\), so the signs agree. Her 1910 announcement describes why retaining the exterior-power rows makes the symbolic representation explicit.
+
+The case \(\rho=1,\sigma=r-1\) is also a useful reduction formula:
+[]{#equation-H8}
+
+\[
+\langle\alpha\wedge b,y_1\wedge\cdots\wedge y_r\rangle
+=\sum_{j=1}^r(-1)^{j-1}
+\alpha(y_j)\langle b,y_1\wedge\cdots\widehat{y_j}\cdots\wedge y_r\rangle.
+\tag{H8}
+\]
+It is the first-row Laplace expansion, corresponding to the product identity of Section 3, equation (16) of the same paper. It replaces a pairing involving \(r\) rows by products involving one and \(r-1\) rows. Iterating reduces it to products of ordinary scalar pairings, with the alternating signs preserving the exterior row.
+
+For example, in dimension three it gives the entire reduction
+[]{#equation-H9}
+
+\[
+\begin{split}
+[\alpha\beta\gamma]\,[y_1y_2y_3]
+={}&\alpha(y_1)\bigl(\beta(y_2)\gamma(y_3)-\beta(y_3)\gamma(y_2)\bigr)\\
+&-\alpha(y_2)\bigl(\beta(y_1)\gamma(y_3)-\beta(y_3)\gamma(y_1)\bigr)\\
+&+\alpha(y_3)\bigl(\beta(y_1)\gamma(y_2)-\beta(y_2)\gamma(y_1)\bigr).
+\end{split}
+\tag{H9}
+\]
+The left side is the determinant of the pairing matrix by multiplicativity of determinants; (H8) gives exactly the right side. Every term is an invariant. If its covector rows are symbolic letters assigned to forms, umbral evaluation preserves the equality by linearity and gives a relation among actual concomitants. This is a concrete reduction inside invariant expressions, with no non-invariant coefficient introduced.
+
+## 4. Ternary forms and the scope of Noether's computation {#section-4}
+
+For a ternary form, symbolic letters have three coordinates, and brackets are \([abc]\). A bracket consumes one degree from each of three letters. For a quartic letter every symbolic expression must still use exactly four degrees of that letter before evaluation. The scalar-weight calculation in Section 1 of the first lesson gives
+\[
+3w=4\delta-\omega
+\]
+for a ternary quartic covariant of coefficient degree \(\delta\) and vector-variable order \(\omega\). A concomitant with dual-variable order \(\nu\) instead has \(3w=4\delta-\omega+\nu\), since the dual variables scale inversely. These formulas refer to our inverse-substitution convention.
+
+For example, the ternary Hessian \(\det(f_{x_ix_j})\) has coefficient degree three and order six, so weight two. The chain rule gives its covariance directly:
+the Hessian matrix after inverse substitution is
+\(g^{-\mathsf t}\operatorname{Hess}(f)(g^{-1}x)g^{-1}\);
+taking its determinant gives the factor \(\det(g)^{-2}\). The cubic-degree quartic invariant
+\[
+U([abc]^4)
+\]
+uses degree four in each of three letters and has weight four. Its nonvanishing can be checked on \(x^4+y^4+z^4\): each letter must use a single coordinate to degree four, so the six determinant-permutation terms survive, each with positive sign, giving value six.
+
+### A ternary quadratic
+
+For a quadratic \(f=x^{\mathsf t}Qx\) with symmetric \(3\times3\) matrix \(Q\), \(\det Q\) is an invariant of coefficient degree three and weight two. It generates the invariant ring.
+
+**Proof.** Over an algebraic closure, diagonalize a nondegenerate symmetric form by congruence: completing a square splits off a nonzero diagonal entry, and induction diagonalizes its orthogonal complement. A nonzero diagonal entry can be arranged whenever the form is nonzero, because the associated bilinear form is recovered from quadratic values by polarization and \(2\ne0\). Taking square roots of the nonzero diagonal entries shows that two nondegenerate forms are general-linearly congruent. If their determinants agree, a congruence between them has determinant \(1\) or \(-1\). In the latter case compose it with a reflection isometry of one diagonalized form, which has determinant \(-1\); the congruence is then special-linear.
+
+For an invariant polynomial \(F(Q)\), put \(h(t)=F(\operatorname{diag}(t,1,1))\). This is a polynomial. The orbit assertion gives \(F(Q)=h(\det Q)\) on the dense nondegenerate locus, so the equality is global. Descent to \(k\) follows by evaluating \(h\) on that same diagonal slice; its coefficients belong to \(k\). Thus the invariant ring is \(k [\det Q]\). \(\square\)
+
+### Relative completeness in the ternary quartic
+
+Noether's 1907 note and 1908 dissertation study a system containing covariants, contravariants and mixed forms of a general ternary quartic. The original term “biquadratic” here means degree four. Her count is **331 forms and subsystems, complete relative to two quadratic forms**. It is not the size of an absolutely complete covariant system, and it is not a list of 331 generators of the scalar invariant ring.
+
+The distinction is explicit in the 1908 introduction, printed page 25: the relatively complete system is formed modulo the pair \((\rho,t)\), and transvection with the system of that pair to obtain an absolutely complete system is left for further work. The closing summary on printed page 89 again states relative completeness for 331 forms and subsystems. The 1907 note describes the same termination at a pair of quadratic forms.
+
+A relative system supplies reduction expressions with additional moduli still present. Completing the calculation requires the simultaneous system of those moduli and the relevant foldings with the relative system. Merely counting the surviving forms before that last step cannot establish absolute completeness. The distinction is already visible in our elementary coefficient proof: computations after inverting \(a\) gave the localized kernel; the separate saturation argument was needed to obtain the full polynomial kernel.
+
+### Modern scalar invariants
+
+The scalar invariant ring of ternary quartics has seven homogeneous parameters of degrees
+\[
+3,6,9,12,15,18,27,
+\]
+and thirteen algebra generators of degrees
+\[
+3,6,9,9,12,12,15,15,18,18,21,21,27.
+\]
+These are different assertions. A homogeneous system of parameters gives a polynomial subalgebra over which the ring is finite; it need not itself generate the algebra.
+
+Dixmier proved the parameter assertion in *On the projective invariants of quartic plane curves* (1987). Ohno supplied the thirteen-generator result, and Elsenhans gave an explicit computational verification and another generator system in *Explicit computations of invariants of plane quartic curves*, Sections 5–6 (2015). His verification computes lower ranks by evaluations modulo a prime and compares them with the Hilbert-series dimensions through a proved degree bound. [Elsenhans's primary paper](https://math.uni-paderborn.de/fileadmin-eim/mathematik/AG-Computeralgebra/Publications-elsenhans/inv_pl_quart_5a.pdf)
+
+Sections 5–6 prove the seven-parameter and thirteen-generator theorems, including the exact all-degree and finite independence calculations.
+
+## 5. Seven parameters for a ternary quartic {#section-5}
+
+We now prove the seven-parameter assertion, including the finite calculations on which it depends. This is Dixmier's theorem. The singular-form reduction also appears in Lercier, Liu, Lorenzo García and Ritzenthaler, [*Reduction type of smooth plane quartics*, Theorem 4.1](https://arxiv.org/pdf/1803.05816v5). The proof uses explicit contractions, polynomial identities and a rational Jacobian certificate.
+
+Write a quartic with **ordinary**, rather than multinomially normalized, coefficients:
+\[
+F(x,y,z)=\sum_{i+j+k=4}c_{ijk}x^iy^jz^k.
+\]
+Put \(R=k [c_{ijk}]^{\operatorname{SL}_3}\). A **homogeneous system of parameters** here means algebraically independent homogeneous invariants \(q_1,\ldots,q_7\) such that \(R\) is a finite module over \(k [q_1,\ldots,q_7]\). Establishing independence alone would not establish this conclusion.
+
+### The contractions defining six parameters
+
+For forms occupying dual variable spaces, write \(A\mathbin{\lrcorner}B=A(\partial)B\). For example,
+\[
+\left(\sum a_{ijk}x^iy^jz^k\right)\mathbin{\lrcorner}B(u,v,w)
+=\sum a_{ijk}\partial_u^i\partial_v^j\partial_w^kB.
+\]
+This is an equivariant contraction: the chain rule cancels the transformations of the variables against those of the derivatives.
+
+Take vectors \(r,s\), and restrict \(F\) to their plane:
+\[
+F(rX+sY)=aX^4+bX^3Y+cX^2Y^2+dXY^3+eY^4.
+\]
+The binary quartic invariants in our earlier normalization are
+\[
+i=ae-\frac{bd}{4}+\frac{c^2}{12},\qquad
+j=\frac{ace}{6}+\frac{bcd}{48}-\frac{ad^2+b^2e}{16}-\frac{c^3}{216}.
+\]
+Define the ternary contravariants \(\sigma\) and \(\psi\) by
+[]{#equation-B25}
+
+\[
+\sigma(r\times s)=i(F(rX+sY)),\qquad
+\psi(r\times s)=j(F(rX+sY)).
+\tag{B25}
+\]
+They have coefficient degrees two and three, and dual-variable orders four and six.
+
+Here is why these definitions give polynomials. Two plane bases with the same nonzero cross product differ by a determinant-one binary change of basis, so their values of \(i,j\) agree. Scaling the cross product scales them to the fourth and sixth powers. On the chart \(u\ne0\), use
+\(r=(-v,u,0)\), \(s=(-w,0,u)\); their cross product is \(u(u,v,w)\). Thus
+[]{#equation-B26}
+
+\[
+\begin{gathered}
+\sigma(u,v,w)=\frac{i(F(-vX-wY,uX,uY))}{u^4},\\
+\psi(u,v,w)=\frac{j(F(-vX-wY,uX,uY))}{u^6}.
+\end{gathered}
+\tag{B26}
+\]
+The corresponding constructions on \(v\ne0\) and \(w\ne0\) agree on overlaps. A denominator in the first chart could only have the irreducible factor \(u\). Regularity on the second chart excludes a pole at the generic point of \(u=0\), so this factor cancels. This proves that (B26) is polynomial in the coefficients and dual variables. Homogeneity gives the stated orders. Applying \(g\in\operatorname{SL}_3\) to a plane basis sends its cross product to \(g^{-\mathsf t}(r\times s)\); hence (B25) proves contravariance.
+
+Set
+[]{#equation-B27}
+
+\[
+\rho=\frac{F\mathbin{\lrcorner}\psi}{144},\qquad
+\tau=\frac{\rho\mathbin{\lrcorner}F}{12}.
+\tag{B27}
+\]
+The first is a quadratic contravariant of coefficient degree four; the second is a quadratic covariant of degree five. Write
+\(\rho=u^{\mathsf t}Au\), \(\tau=x^{\mathsf t}Bx\), using symmetric matrices with half the mixed-term coefficient in each off-diagonal entry. Define
+[]{#equation-B28}
+
+\[
+\begin{aligned}
+I_3&=\frac{F\mathbin{\lrcorner}\sigma}{72},&
+I_9&=\operatorname{tr}(BA),\\
+I_{12}&=\det A,& I_{15}&=\det B,\\
+I_{18}&=\operatorname{tr}(\operatorname{adj}B\operatorname{adj}A).
+\end{aligned}
+\tag{B28}
+\]
+For \(I_6\), put \(a_\alpha=c_\alpha\alpha!/4!\), and index a six-by-six matrix by the degree-two monomials:
+[]{#equation-B29}
+
+\[
+I_6=\det(a_{\alpha+\beta})_{|\alpha|=|\beta|=2}.
+\tag{B29}
+\]
+This is the catalecticant determinant. In particular, its entries use normalized coefficients even though \(F\) was written with ordinary coefficients.
+
+All six expressions are invariants. Under \(g\in\operatorname{SL}_3\), the quadratic matrices become \(A\mapsto gAg^{\mathsf t}\) and \(B\mapsto g^{-\mathsf t}Bg^{-1}\), so the traces, determinants and adjugate trace in (B28) are unchanged. The catalecticant is a bilinear form on a symmetric-square space; its determinant changes by the square of \(\det(\operatorname{Sym}^2g)=\det(g)^4=1\). The identity for this last determinant follows first on diagonal matrices, where each diagonal entry occurs with total exponent four, and then on elementary matrices, whose symmetric-square matrices are unipotent. These generate the special linear group. The remaining contraction in (B28) is equivariant and has order zero. Their coefficient degrees are precisely their subscripts. On \(F=x^4+y^4+z^4\), \(I_3=1\), fixing the normalization.
+
+### A degree-27 discriminant, with a determinant formula
+
+We need both the zero set and a computable formula for the seventh parameter. We give the requisite resultant argument explicitly.
+
+[]{#lemma-5-1}
+
+**Lemma 5.1 (three cubics).** There is a polynomial \(\operatorname{Res}(g_1,g_2,g_3)\), of degree nine in each cubic's coefficients, whose vanishing is equivalent to the three homogeneous cubics having a common point of \(\mathbb P^2\). Normalize it to take value one on \((x^3,y^3,z^3)\). It is a determinant quotient of the degree-seven part of the cubic Koszul complex.
+
+**Proof.** Work first over \(\mathbb C\), and let \(S_d\) denote the space of ternary forms of degree \(d\). We spell out the elementary dimension facts used here. Dimension of an irreducible coefficient variety means the transcendence degree of its function field. An image parametrized by \(r\) independent coordinates has dimension at most \(r\), because its coordinate functions lie in that rational function field. A Jacobian of rank \(r\) gives the reverse bound: differentiating a polynomial relation of least degree would otherwise give a nonzero relation of smaller degree.
+
+An irreducible closed subset of \(\mathbb A^n\) of dimension \(n-1\) has a single irreducible defining polynomial. To see this, take an irreducible factor \(q\) of a nonzero polynomial in its prime ideal. A linear coordinate change makes \(q\) monic in the last coordinate: choose that coordinate's direction where the highest homogeneous part of \(q\) is nonzero. If the prime ideal contained \(h\notin(q)\), the nonzero Sylvester resultant of \(q,h\) in the last coordinate would give a relation among the other \(n-1\) coordinates. It is nonzero by Gauss's lemma, since \(q\) is irreducible and monic; the Sylvester adjugate gives an identity expressing it as a combination of \(q,h\). The other coordinates would then have transcendence degree at most \(n-2\), and the last is algebraic over them by the monic equation \(q\). This contradicts dimension \(n-1\). Thus the prime ideal is \((q)\). These observations justify the parameter counts and hypersurface assertions below.
+
+The incidence set
+\[
+Z=\{(g_1,g_2,g_3,P):g_1(P)=g_2(P)=g_3(P)=0\}
+\]
+is irreducible of dimension 29. Indeed, over each point of \(\mathbb P^2\) the three evaluations impose three independent linear equations on the 30 coefficients. On a coordinate chart this is a trivial affine bundle of dimension 27 over a two-dimensional chart, and the charts have dense overlaps.
+
+Its image in coefficient space is closed. To check this without assuming an elimination theorem, a triple outside the image has affine common zero set consisting only of the origin. The Nullstellensatz implies \((x,y,z)^N\subset(g_1,g_2,g_3)\) for some \(N\). Surjectivity of
+\(S_{N-3}^3\to S_N\), \((h_i)\mapsto\sum h_ig_i\), is an open matrix-rank condition. Conversely, surjectivity excludes a projective common zero. The complement of the image is the union of these open sets, and is therefore open.
+
+The image has dimension 29. For example, \(g_1=x^3-z^3\), \(g_2=y^3-z^3\) meet in nine distinct points, and one can choose \(g_3\) to vanish at exactly one of them. At that point the first two equations have an invertible Jacobian in the two affine point coordinates. Locally they solve for the point, and the third equation imposes one independent condition on the coefficient space. Thus the image is an irreducible hypersurface. Since the coefficient ring is a unique factorization domain, it has an irreducible defining polynomial \(D\), unique up to a constant.
+
+For a general fixed pair of cubics, there are nine distinct intersection points. Here is the degree count. Coprime cubics form a regular sequence of length two: the first is nonzero, and coprimality makes the second a nonzerodivisor modulo the first, by unique factorization. The two multiplication exact sequences give
+\[
+\operatorname{Hilb}_{S/(g_1,g_2)}(t)=\frac{(1-t^3)^2}{(1-t)^3}.
+\]
+Its coefficients are eventually nine. For distinct transverse projective zeros the eventual coefficient equals their number. Homogeneous interpolation separates the points. Transversality identifies the localized ideal with the reduced point ideal at each of them. The difference between the complete-intersection ideal and the intersection of these point ideals is consequently supported only at the origin; the Nullstellensatz makes a power of \((x,y,z)\) annihilate this finitely generated difference, so its graded pieces eventually vanish. Transversality is an open condition, and the displayed pair exhibits it. For this general pair, \(D\), viewed as a polynomial in \(g_3\), vanishes on the nine distinct evaluation hyperplanes \(g_3(P)=0\). Each occurs with multiplicity one: at a triple having just one common point, the preceding implicit-function calculation makes that evaluation the local defining equation, with nonzero derivative in a coefficient of \(g_3\). We may choose a smooth point of the irreducible hypersurface here: in characteristic zero an irreducible polynomial cannot divide all its nonzero partial derivatives, so its smooth locus is dense. Hence \(D\) has degree nine in that group of coefficients. Symmetry gives degree nine in each group.
+
+The promised determinant description supplies a rational formula and its coefficient field. Consider
+[]{#equation-B30}
+
+\[
+S_1^3\xrightarrow{K}S_4^3\xrightarrow{M}S_7,
+\qquad M(h_1,h_2,h_3)=\sum h_ig_i,
+\tag{B30}
+\]
+where the three components of \(K\) send a linear form \(\ell\), for a pair \(i<j\), to the tuple with \(g_j\ell\) in slot \(i\), \(-g_i\ell\) in slot \(j\), and zero elsewhere. Its dimensions are \(9,45,36\), and \(MK=0\). At \((x^3,y^3,z^3)\), \(M\) is surjective, because a monomial of degree seven must be divisible by one of \(x^3,y^3,z^3\). Also \(K\) is injective. Thus the generic complex is exact.
+
+The elementary complementary-minor identity for an exact complex says
+[]{#equation-B31}
+
+\[
+\det M_J=\varepsilon_J T\det K_{J^c}
+\tag{B31}
+\]
+for every set \(J\) of 36 domain basis elements, where \(\varepsilon_J\) is the basis-shuffle sign and \(T\) is a common rational function. To prove the identity, choose a basis of the kernel of \(M\) from the columns of \(K\), complete it to a basis of the middle space, and take the top exterior power. Expanding that wedge in the original basis gives exactly the complementary minors and their shuffle signs.
+
+In fact \(T\) is polynomial. The nine-row minors of \(K\) have no common irreducible factor. Whenever \(g_1,g_2\) are coprime, \(K\) is injective: its third-slot equation is a syzygy between \(g_1,g_2\) with linear coefficients; divisibility forces both coefficients to be zero because the cubics have degree three, and the remaining coefficient is then zero. The locus of noncoprime pairs has codimension at least two. For a common factor of degree one, two or three, its dimension in the 20-dimensional pair space is at most
+\[
+2+6+6=14,\quad 5+3+3=11,\quad 9+1+1=11,
+\]
+respectively: choose the common factor up to scalar and the two remaining factors. Consequently no hypersurface can divide all those minors. If the rational function \(T\) had an irreducible denominator after cancellation, (B31) would force that denominator to divide every minor of \(K\), a contradiction.
+
+Choose \(J\) as follows: for every degree-seven monomial, take the multiple of the first \(g_i\) for which its exponent in variable \(i\) is at least three. This selects 15, 12 and 9 domain elements in the three slots. In the complementary minor of \(K\), the remaining three rows in slot two involve \(g_1\), and the remaining six rows in slot three give three further \(g_1\) factors and three \(g_2\) factors. Equivalently its block form is triangular by the pairs \((1,2),(1,3),(2,3)\). Thus its multidegree is \((6,3,0)\), whereas \(\det M_J\) has multidegree \((15,12,9)\). It follows that \(T\) has multidegree \((9,9,9)\).
+
+At a general triple with a common point, evaluation at that point annihilates the image of \(M\), so all its maximal minors vanish; \(K\) still has rank nine. Therefore \(T\) vanishes on the irreducible incidence hypersurface, and \(D\) divides \(T\). Their equal multidegrees make the quotient a nonzero constant. Normalize the sign and constant at the three pure cubes. This gives \(\operatorname{Res}\), proves the formula, and proves the zero-set assertion everywhere, including multiple intersections. The matrices and normalization are rational, so the resulting polynomial is rational. The zero-set assertion extends to every characteristic-zero field as well. The finitely generated field of the given coefficients embeds in \(\mathbb C\). For each degree, surjectivity of the multiplication matrix used above is preserved under extension of fields. The Nullstellensatz's equivalence between some such surjectivity and absence of a projective zero therefore transfers the assertion to any algebraic closure of the coefficient field. \(\square\)
 
 Define
-\[
-D_{ij}=\sum_{a=1}^n x_{ia}\partial_{x_{ja}}\qquad(1\leq i,j\leq m).
-\tag{1}
-\]
-If \(i\ne j\), Taylor's formula gives
-\[
-F(\ldots,v_j+tv_i,\ldots)
-=\sum_{r\geq0}\frac{t^r}{r!}D_{ij}^rF.
-\tag{2}
-\]
-The sum is finite for each polynomial. For \(i=j\), \(D_{ii}\) is instead the Euler operator measuring degree in row \(i\).
+[]{#equation-B32}
 
-**Proposition 1.1 (commutation).** The \(D_{ij}\) commute with simultaneous linear substitution on \(V\), and
 \[
-[D_{ij},D_{kl}]=\delta_{jk}D_{il}-\delta_{li}D_{kj}.
-\tag{3}
+I_{27}(F)=\frac{\operatorname{Res}(F_x,F_y,F_z)}{4^{27}}.
+\tag{B32}
 \]
+Euler's equation \(4F=xF_x+yF_y+zF_z\) shows that its zero set is exactly the singular quartics. Its degree is 27, and its value on \(x^4+y^4+z^4\) is one.
 
-**Proof.** Replacing the rows by \(gv_i\) and applying the chain rule contracts the derivative with the same vector \(v_i\); the matrix and its inverse cancel. This proves commutation with the diagonal action, hence preservation of invariants. For (3), apply the product rule. The terms with two derivatives cancel in the difference. Differentiating the multiplier \(x_{ka}\) gives \(\delta_{jk}x_{ia}\partial_{x_{la}}\); differentiating \(x_{ia}\) in the opposite product gives \(-\delta_{li}x_{ka}\partial_{x_{ja}}\). Sum over \(a\). \(\square\)
+It is an invariant. Changes of variables and invertible combinations of the three cubic equations preserve the resultant hypersurface, so the irreducible polynomial in Lemma 5.1 transforms by a character. On either special linear group that character is trivial. Indeed, its restriction to an elementary one-parameter subgroup is a regular character \(\mathbb G_a\to\mathbb G_m\); the only units in \(\mathbb C [t]\) are nonzero constants, and the identity value is one. Elementary matrices generate \(\operatorname{SL}_3\). The chain rule for the three partial derivatives uses these two special linear actions, proving the assertion.
 
-A polynomial homogeneous of degree \(d\) on \(V\) has **full polarization**
-\[
-\mathcal PF(v_1,\ldots,v_d)
-=\frac1{d!}[t_1\cdots t_d]\,
-F(t_1v_1+\cdots+t_dv_d).
-\tag{4}
-\]
-It is symmetric and multilinear. **Restitution**, putting \(v_1=\cdots=v_d=v\), recovers \(F(v)\): the coefficient of \(t_1\cdots t_d\) in \((t_1+\cdots+t_d)^d\) is \(d!\). Conversely, a symmetric multilinear form is determined by that diagonal polynomial, since coefficient extraction in its diagonal expansion recovers \(d!\) times the form. For a multihomogeneous polynomial, perform (4) separately in each row. All these operations commute with the diagonal group action. Division by \(d!\) is the characteristic-zero step.
+### The exact elimination certificates
 
-## 2. The shifted determinant in Capelli's identity
+Some coefficients below are large, but the calculation is finite. The editable source package contains `quartic_algebra.py`, the construction scripts and every polynomial certificate used here. In particular, the certificates record the following rule for every contraction:
+[]{#equation-B33}
 
-Noncommuting entries require an order. For an \(r\times r\) operator matrix \(M\), put
 \[
-\operatorname{cdet}M
-=\sum_{\sigma\in S_r}\operatorname{sgn}(\sigma)
-M_{\sigma(1),1}\cdots M_{\sigma(r),r}.
+(a_\alpha x^\alpha)\mathbin{\lrcorner}(b_\beta u^\beta)
+=a_\alpha b_\beta\frac{\beta!}{(\beta-\alpha)!}u^{\beta-\alpha}
+\quad(\beta\geq\alpha),
+\tag{B33}
 \]
-The rightmost operator acts first.
+with zero contribution otherwise. Equations (B26)–(B29) and (B33) completely specify the calculation; no source-paper software is called.
+
+We use two elementary certificate principles. If two univariate polynomials have a common root, their Sylvester determinant is zero. Evaluation at that root gives a nonzero vector annihilated by the transpose of the Sylvester map \((a,b)\mapsto ap+bq\); this argument remains valid if a leading coefficient specializes to zero. Iterating this observation permits elimination in two stages. If several univariate polynomials vanish at the same value, their monic greatest common divisor also vanishes there: the Euclidean algorithm expresses that greatest common divisor as their polynomial linear combination.
 
-**Theorem 2.1 (Capelli).** If \(m=n\) and \(X=(x_{ia})\), then
+For an ideal-membership certificate, the data consist simply of polynomials \(h_i\) and the checked equality \(q=\sum h_ip_i\). This forces \(q=0\) at every common zero of the input polynomials. The stored branch identities use rational coefficients and are verified by exact multiplication. They do not require an assumption that numerical sample points exhaust a variety.
+
+[]{#lemma-5-2}
+
+**Lemma 5.2 (the distinct-tangent calculation).** For
+[]{#equation-B34}
+
 \[
-\operatorname{cdet}\bigl(D_{ij}+(n-j)\delta_{ij}\bigr)
-=\det(X)\det(\partial_{x_{ia}}).
-\tag{5}
+F=xyz^2+(x^3+y^3)z+Ay^4+Bxy^3-\frac92x^2y^2+Dx^3y+Ex^4,
+\tag{B34}
 \]
-The shift can equally be written \(n-i\) on the diagonal. The stated column order is essential.
+the equations \(I_6=I_9=I_{12}=I_{15}=I_{18}=0\) imply either
+[]{#equation-B35}
 
-**Proof.** Introduce anticommuting symbols \(e_1,\ldots,e_n\), with \(e_i^2=0\), commuting with the ordinary variables and differential operators. Put
 \[
-\xi_a=\sum_i e_ix_{ia},\qquad
-\eta_j=\sum_i e_iD_{ij}=\sum_a\xi_a\partial_{x_{ja}}.
+A=E=-\frac32,\quad B=D=-\frac{15}{4},
+\tag{B35}
 \]
-For distinct row indices \(j_1,\ldots,j_r\), let
+or
+[]{#equation-B36}
+
 \[
-N_{j_1,\ldots,j_r}
-=\sum_{a_1,\ldots,a_r}
-\xi_{a_1}\cdots\xi_{a_r}
-\partial_{x_{j_1a_1}}\cdots\partial_{x_{j_ra_r}};
-\qquad N_\varnothing=1.
+4A^2-6A+9=0,\quad E=\frac32-A,\quad
+B=\frac{15}{4}-\frac52A,\quad D=\frac52A.
+\tag{B36}
 \]
-The derivatives in \(N\) stand to the right of all multipliers. The product rule and
-\(\partial_{x_{ja}}\xi_b=\delta_{ab}e_j\)
-give
+
+**Proof.** Equation (B29) gives \(I_6=(4AE-9)/82944\), so \(A\ne0\) and \(E=9/(4A)\). Substitute this value into the four expressions of degrees 9, 12, 15 and 18. Clear the denominators, obtaining \(p_0,p_1,p_2,p_3\in\mathbb Q [D,B,A]\), in this order. The coefficient lists are in `case-2.1-resultants.json`; they are derived from (B26)–(B29), not supplied as unexplained inputs.
+
+Put \(r_i=\operatorname{Res}_D(p_0,p_i)\), for \(i=1,2,3\), then form \(\operatorname{Res}_B(r_i,r_j)\), for the three pairs. Their degrees in \(A\) are 204, 262 and 298. Exact Euclidean division gives their monic greatest common divisor
+[]{#equation-B37}
+
 \[
-\eta_jN_{j_1,\ldots,j_r}
-=N_{j,j_1,\ldots,j_r}-r e_jN_{j_1,\ldots,j_r}.
-\tag{6}
+\frac{A^{66}(2A+3)^8(4A^2-6A+9)^8}{2^{24}}.
+\tag{B37}
 \]
-To check the sign, when the derivative hits the \(l\)-th multiplier \(\xi_{a_l}\), it yields
-\(\xi_{a_l}\xi_{a_1}\cdots\xi_{a_{l-1}}e_j
-\xi_{a_{l+1}}\cdots\xi_{a_r}\).
-Moving \(e_j\) to the front gives sign \((-1)^l\); moving \(\xi_{a_l}\) to its original position gives \((-1)^{l-1}\). Their product is \(-1\). Each of the \(r\) terms therefore contributes \(-e_jN\).
+Every common zero of the original equations makes all three final resultants vanish, so (B37), together with \(A\ne0\), forces \(2A+3=0\) or \(4A^2-6A+9=0\).
 
-Starting from the right and using (6),
+For the first branch, substitute \(A=E=-3/2\) into the original four polynomial equations. Exact ideal-membership identities give
 \[
-(\eta_1+(n-1)e_1)(\eta_2+(n-2)e_2)\cdots\eta_n
-=N_{1,\ldots,n}.
-\tag{7}
+B+D+\frac{15}{2}=0,\qquad
+\left(B+\frac{15}{4}\right)^2=0.
 \]
-The coefficient of \(e_1\cdots e_n\) on the left is the column determinant in (5). On the right,
+These imply (B35). For the second branch, include \(4A^2-6A+9\) among the input equations and substitute \(E=3/2-A\). The corresponding identities give
 \[
-\xi_{a_1}\cdots\xi_{a_n}
-=e_1\cdots e_n\det(x_{i,a_j})_{i,j}.
+\frac23AB-5A-B+D=0,\qquad
+\left(B-\frac{15}{4}+\frac52A\right)^2=0.
 \]
-Only tuples that permute \(1,\ldots,n\) remain nonzero. Their signed derivative sum is \(\det(\partial_{x_{ia}})\); their common multiplier is \(\det X\). Taking the coefficient proves (5). \(\square\)
+The square determines \(B\); reducing the linear equation modulo \(4A^2-6A+9\) determines \(D\). This proves (B36). The full multipliers witnessing both pairs of identities are in `branch-identities.json`, and the verification is direct substitution and multiplication. \(\square\)
+
+Both forms in this lemma are a line times a cubic with a flex on that line. For (B35),
+[]{#equation-B38}
 
-For two rows, the identity reads
 \[
-(D_{11}+1)D_{22}-D_{21}D_{12}
-=(x_{11}x_{22}-x_{12}x_{21})
-(\partial_{11}\partial_{22}-\partial_{12}\partial_{21}).
-\tag{8}
+F=-\frac14(3x+3y-2z)
+(2x^3+3x^2y+3xy^2+2y^3+2xyz).
+\tag{B38}
 \]
-The added \(D_{22}\) cancels the term created when a derivative in \(D_{21}\) hits a multiplier in \(D_{12}\). Formula (6) is that same cancellation for all sizes.
+At \(P=(-1,1,0)\) the cubic gradient is \((3,3,-2)\), and restricting the cubic to \(z=3(x+y)/2\) gives \(2(x+y)^3\). Thus it is smooth at \(P\) and the line meets it three times there.
 
-## 3. A row bound without an unproved highest-weight theorem
-
-Write \(H_d=k[V^m]_d\). A subspace stable under row substitutions is stable under all \(D_{ij}\). Conversely, stability under all \(D_{ij}\) implies stability under row substitutions. For off-diagonal elementary matrices this follows from (2). For diagonal substitutions, the commuting \(D_{ii}\) have nonnegative integer eigenvalues; projections onto their eigenspaces are interpolation polynomials in them. Thus a stable subspace is multihomogeneous and stable under row scalings. Elementary matrices and diagonal matrices generate \(\operatorname{GL}_m(k)\).
-
-**Lemma 3.1 (complete reducibility for row substitutions).** Every \(\operatorname{GL}_m(k)\)-stable subspace of \(H_d\) has a \(\operatorname{GL}_m(k)\)-stable complement.
+For (B36), put
+\[
+\begin{aligned}
+L&=x+(2A/3-1)y+4Az/9,\\
+Q&=x^3+(A-3/2)x^2y-Axy^2+y^3+xyz.
+\end{aligned}
+\]
+Exact multiplication modulo \(4A^2-6A+9\) gives \(F=(3/2-A)LQ\). At \(P=(1-2A/3,1,0)\), the gradient of \(Q\) is
+\((-A,3/2,1-2A/3)=-A\nabla L\), which is nonzero. Substitution of \(L=0\) into \(Q\) gives \((x+(2A/3-1)y)^3\). This verifies the flex and all scalar factors in the factorizations.
 
-**Proof.** Over \(\mathbb C\), apply complete reducibility for \(\operatorname{SL}_m\) from the previous lesson. Scalar matrices act on \(H_d\) by scalars. Every complex general-linear matrix is a scalar times a special-linear matrix, so that complement is general-linear stable.
+### Why their common zeros are the null cone
 
-For arbitrary \(k\), let \(M\subset H_d\) be stable and choose a \(k\)-basis. Its finitely many entries in the monomial basis lie in a finitely generated field \(L\subset k\) over \(\mathbb Q\). The matrices of \(D_{ij}\) in the monomial basis are rational. Coordinates expressing \(D_{ij}\) of a chosen basis vector in the chosen basis can be computed using one nonzero maximal basis minor, so belong to \(L\). Hence the \(L\)-span \(M_L\) is stable.
+A convenient sufficient condition for a form to lie in the null cone is the following. If integers \((w_x,w_y,w_z)\) sum to zero and every monomial in \(F\) has positive weight \(iw_x+jw_y+kw_z\), then
+\(F(t^{w_x}x,t^{w_y}y,t^{w_z}z)\to0\) as \(t\to0\). This substitution is the inverse action of a determinant-one diagonal matrix. Every positive-degree homogeneous invariant therefore vanishes on \(F\).
 
-Embed \(L\) into \(\mathbb C\): choose algebraically independent complex values for a transcendence basis and then extend over the finite algebraic extension into the algebraically closed field \(\mathbb C\). Complex complete reducibility gives a projection \(p:H_d\otimes_L\mathbb C\to M_L\otimes_L\mathbb C\), commuting with every \(D_{ij}\) and equal to the identity on \(M_L\). Those properties are a finite system of linear equations for the entries of \(p\), with coefficients in \(L\). Gaussian elimination shows that a system consistent over \(\mathbb C\) is consistent over \(L\). Extend an \(L\)-solution to \(k\). Its kernel is a \(D_{ij}\)-stable, hence \(\operatorname{GL}_m(k)\)-stable, complement. \(\square\)
+[]{#lemma-5-3}
 
-**Lemma 3.2 (a highest row weight uses at most \(n\) rows).** A nonzero finite-dimensional \(\operatorname{GL}_m(k)\)-stable subspace of \(H_d\) contains a nonzero multihomogeneous polynomial \(F\) killed by every \(D_{ij}\) with \(i<j\). If \(m\geq n\), every such \(F\) depends only on its first \(n\) rows.
+**Lemma 5.3 (quartic common zeros).** The common zero set of \(I_3,I_6,I_9,I_{12},I_{15},I_{18},I_{27}\) is the null cone.
 
-**Proof.** Decompose into row multidegrees \(\lambda=(\lambda_1,\ldots,\lambda_m)\), using the interpolation projectors just described. Choose the lexicographically largest weight with a nonzero vector \(F\). For \(i<j\), \(D_{ij}\) changes that weight to \(\lambda+e_i-e_j\), a larger weight, or gives zero. Maximality therefore forces zero.
+**Proof.** We work over an algebraically closed characteristic-zero field. The zero form causes no difficulty. For a nonzero common zero, (B32) supplies a singular point. General linear coordinate changes and nonzero scalar multiples preserve the vanishing of homogeneous invariants: over this field a general linear matrix is a scalar times a special linear matrix. Move the singular point to \((0,0,1)\). The coefficients of \(z^4,xz^3,yz^3\) vanish, so
+[]{#equation-B39}
 
-For \(j>n\), the equations \(D_{ij}F=0\), \(1\leq i\leq n\), are
 \[
-\sum_{a=1}^n x_{ia}\partial_{x_{ja}}F=0.
+F=q_2(x,y)z^2+q_3(x,y)z+q_4(x,y).
+\tag{B39}
 \]
-In the fraction field of the polynomial ring the first \(n\)-row matrix is invertible. Thus every \(\partial_{x_{ja}}F=0\). These derivatives are polynomial and hence zero before localization. In characteristic zero, zero derivative means independence of that variable. This holds for every \(j>n\). \(\square\)
+If \(q_2=0\), the point has multiplicity at least three; weights \((1,1,-2)\) are positive on every monomial in (B39). Hence this form is in the null cone.
 
-The phrase “highest weight” here means precisely the maximal multidegree and its annihilation conditions. No classification of irreducible representations was used.
+Suppose the tangent quadratic has rank one. Normalize it to \(x^2\). If the coefficient of \(y^3\) in \(q_3\) is zero, the form has the shape
+[]{#equation-B40}
 
-**Theorem 3.3 (Weyl's polarization theorem).** For every subgroup \(G\subset\operatorname{GL}(V)\) and \(m\geq n\),
 \[
-k[V^m]^G
-=\operatorname{span}_k\{\text{row substitutions of }F:
-F\in k[V^n]^G\}.
-\tag{9}
+F=x^2z^2+(Lxy^2+Mx^2y+Nx^3)z
++Ay^4+Bxy^3+Cx^2y^2+Dx^3y+Ex^4.
+\tag{B40}
 \]
-If a set generates the smaller invariant ring as an algebra, its polarizations generate the larger invariant ring.
-
-**Proof.** In each total degree the invariant subspace \(M=H_d^G\) is stable under \(\operatorname{GL}_m\), by Proposition 1.1. Split it into simple submodules using Lemma 3.1. Every nonzero simple summand contains a highest-row-weight vector by Lemma 3.2. That vector is invariant and belongs to \(k[V^n]\). Its orbit spans the simple summand, since its span is a nonzero stable subspace. Summing proves (9).
-
-Equation (2), coefficient interpolation in \(t\), and the diagonal interpolation projectors show that orbit span and the span of all iterated \(D_{ij}\) agree. If \(S\) generates \(k[V^n]^G\), the algebra generated by its row translates contains all translates of every polynomial in \(S\), because row substitution is an algebra homomorphism. It therefore contains the space in (9). Equivalently, the Leibniz rule shows that all polarizations of those polynomials belong to the algebra generated by polarizations of \(S\). \(\square\)
-
-For \(m<n\), restrict the invariant ring on \(n\) copies by setting the extra rows to zero. Inclusion followed by restriction is the identity on the smaller invariant ring, so restrictions of its generators suffice.
-
-## 4. Brackets generate the special-linear invariants
-
-**Theorem 4.1 (first fundamental theorem for vectors).** For any \(m\), the invariant ring \(k[V^m]^{\operatorname{SL}_n}\) is generated by the \(n\)-row brackets
+Direct use of (B26)–(B29) gives
 \[
-[i_1\cdots i_n]=\det(v_{i_1},\ldots,v_{i_n}).
+I_3=(6A+L^2)/72,\qquad
+I_6=L^2(24A-L^2)/746496.
 \]
-When \(m<n\), this ring is \(k\).
+Thus \(A=-L^2/6\), and \(I_6=-5L^4/746496\) forces \(A=L=0\). Weights \((4,-1,-3)\) are now positive on all the remaining monomials in (B40).
 
-**Proof.** The direct matrix-orbit proof in the preceding lesson gives
-\(k[V^n]^{\operatorname{SL}_n}=k[\det(v_1,\ldots,v_n)]\).
-That proof works over any infinite field: invertible matrices of a specified determinant form a single special-linear orbit, and a polynomial equality on the open invertible locus is global.
+If the coefficient of \(y^3\) is nonzero, scale it to one. Replacing \(y\) by \(y-Lx/3\) removes \(xy^2z\); subsequently replacing \(z\) by \(z+bx+cy\), with suitable \(b,c\), removes \(x^3z,x^2yz\). The resulting shape is
+[]{#equation-B41}
 
-Apply Theorem 3.3. A row substitution replaces the determinant by the determinant of \(n\) linear combinations of the rows. By multilinearity and alternation it is a linear combination of \(n\)-row brackets. A translate of a polynomial in the determinant is therefore a polynomial in these brackets, proving generation. If \(m<n\), the restrictions of all such brackets are zero; the restriction argument after Theorem 3.3 leaves only constants. \(\square\)
-
-For three binary vectors, there are three brackets \([12],[13],[23]\) and no relation. On the open set \([12]=p\ne0\), choose
 \[
-v_1=(1,0),\quad v_2=(0,p),\quad
-v_3=(-r/p,q).
+F=x^2z^2+y^3z+Ay^4+Bxy^3+Cx^2y^2+Dx^3y+Ex^4.
+\tag{B41}
 \]
-Then the three brackets are \(p,q,r\). Their values fill a dense open set of affine three-space; thus a polynomial relation between them is zero.
-
-For four binary vectors, expansion gives
+Here \(I_3=A/12\) and \(I_6=C/20736\), so \(A=C=0\). With these substitutions,
 \[
-[12][34]-[13][24]+[14][23]=0.
-\tag{10}
+I_{15}=\frac{1125D^2}{165112971264},\qquad
+I_9=\frac{801B^2+585E}{2985984}.
 \]
-It is the only relation. In the abstract ring on six bracket variables modulo (10), the relation is primitive and linear in \([34]\); its leading coefficient \([12]\) is coprime to its constant coefficient. Gauss's lemma makes that quotient a domain. After inverting \([12]\), the remaining five brackets are independent: use the displayed coordinates for \(v_3\) and the corresponding pair of free coordinates for \(v_4\). The map from the abstract quotient to the actual invariant ring is therefore injective after localization, and hence injective before localization because the quotient is a domain. Theorem 4.1 gives surjectivity.
-
-### All bracket relations, with integer coefficients
+Thus \(D=0\), \(E=-89B^2/65\). Substitution into \(I_{18}\) gives
+\[
+I_{18}=\frac{6251B^4}{114831654912},
+\]
+forcing \(B=E=0\). The remaining form \(x^2z^2+y^3z\) has positive weights \((-3,-1,4)\).
 
-Generation and relations are different questions. We now give a presentation of the bracket algebra that also keeps track of its integral coefficient lattice. In this subsection \(R\) can be any commutative ring. Use an \(n\) by \(m\) matrix of independent variables \(z_{ai}\); its \(i\)-th column represents the vector previously written as row \(v_i\).
+It remains to treat rank two. Normalize \(q_2=xy\), and shift \(z\) by a linear form to remove the terms \(xy^2z,x^2yz\). Write
+[]{#equation-B42}
 
-For every strictly increasing \(n\)-tuple \(I\) introduce an indeterminate \(p_I\). Extend the notation to an ordered tuple by alternation, with a repeated index giving zero. A product
-\(p_{I_1}\cdots p_{I_s}\) is **standard** if
 \[
-(I_j)_a\leq (I_{j+1})_a
-\quad\text{for every }a=1,\ldots,n,\ j=1,\ldots,s-1.
+F=xyz^2+(sy^3+tx^3)z+Ay^4+Bxy^3+Cx^2y^2+Dx^3y+Ex^4.
+\tag{B42}
 \]
-Thus its columns increase strictly downward and its rows increase weakly to the right. The empty product is standard.
+If \(s,t\ne0\), diagonal scaling makes both one. Explicitly, choose \(\alpha^3/\beta^3=s/t\) and \(\gamma=s\beta^2/\alpha\); substitution by \((\alpha x,\beta y,\gamma z)\), followed by division by \(\alpha\beta\gamma^2\), does so. The equation \(I_3=0\) gives \(C=-9/2\), and Lemma 5.2 applies. Its factorizations show a line \(L\) times a cubic smooth at a point where \(L\) has triple contact. Send that point to \((0,0,1)\) and the line to \(x=0\). Smoothness and triple contact put the product in (B40) with \(A=L=0\): the cubic has a nonzero \(xz^2\) coefficient, no \(yz^2,y^2z\) terms, and restricts to a multiple of \(y^3\) on \(x=0\). The same weights \((4,-1,-3)\) prove null-cone membership.
 
-Here are the quadratic Grassmann–Plücker shuffle relations. Take ordered lists \(H,T,S\) of respective lengths \(t-1,n-t,n+1\), with \(1\leq t\leq n\), and set
+If precisely one of \(s,t\) is nonzero, exchange \(x,y\) if necessary and scale to \(s=0,t=1\). The first two parameter equations give
 \[
-\sum_{\substack{C\subset\{1,\ldots,n+1\}\\|C|=n-t+1}}
-\epsilon(C)\,p_{H,S_C}\,p_{S_{C^c},T}=0.
-\tag{21}
+C=0,\qquad AE=0.
 \]
-The sublists retain their order in \(S\), and \(\epsilon(C)\) is the sign of the permutation listing \(C\) first and \(C^c\) second. Signed tuples in (21) are interpreted by the alternating convention. For \(n=2\) the nonzero relations are exactly (10), with arbitrary four distinct indices.
+If \(A=0\), \(I_9=0\) forces \(B^2E=0\). Assuming \(B\ne0\) would give \(E=0\), and \(I_{12}=0\) then gives \(D^2=3B\). The remaining degree-18 equation is a nonzero scalar times \(B^3D(9B+D^2)=0\); hence \(D=0\), contradicting \(B\ne0\). Therefore \(B=0\).
 
-**Theorem 4.2 (integral second fundamental theorem).** The homomorphism
+If instead \(A\ne0\), then \(E=0\), and \(I_9=I_{15}=0\) give
 \[
-R[p_I]\longrightarrow R[z_{ai}],\qquad
-p_I\longmapsto \det(z_{a,i_b})_{a,b=1}^n
+B=\frac{2D^2}{45},\qquad A^2=\frac{42}{125}B^2D.
 \]
-has kernel generated by (21). Its image is a free \(R\)-module with the standard bracket products as a basis. In particular the presentation and the basis remain valid modulo every prime, and no additional relation appears there.
-
-**Proof.** First, (21) vanishes on actual determinants. Its left side is an alternating multilinear function of the \(n+1\) columns listed in \(S\). Indeed, an exchange within a chosen sublist changes its determinant sign; an exchange between the two sublists pairs the corresponding subset terms with opposite signs. It is zero when two columns coincide, including in characteristic two. Expand all columns in the \(n\) coordinate basis vectors. Every term has two equal basis columns, so the alternating function is zero. This argument is integral and uses no division.
+After these substitutions the numerator of \(-34828517376I_{12}\) is \(5216D^6/375\). Thus \(D=B=0\), then \(A=0\), a contradiction. We have proved \(A=B=C=0\) in this case. The form has multiplicity at least three at \((0,1,0)\), and weights \((1,-2,1)\) give the required limit.
 
-Next we straighten a nonstandard product. Order its increasing column tuples lexicographically. If the product is not standard, two consecutive columns \(A=(a_1,\ldots,a_n)\), \(B=(b_1,\ldots,b_n)\) have \(a_t>b_t\) for some position \(t\); take the first such position. Put
+Finally, if \(s=t=0\), the equations of degrees 3, 6 and 12 give
 \[
-H=(a_1,\ldots,a_{t-1}),\quad
-T=(b_{t+1},\ldots,b_n),\quad
-S=(a_t,\ldots,a_n,b_1,\ldots,b_t).
+C=0,\qquad AE=0,\qquad BD=0;
 \]
-The first \(n-t+1\) entries of \(S\) are all larger than its last \(t\) entries, because \(a_t>b_t\). The term choosing those first entries in (21) is \(p_Ap_B\), with coefficient one. Every other nonzero term chooses at least one \(b_i\leq b_t<a_t\) for its first determinant. After sorting that determinant, its tuple is lexicographically smaller than \(A\): the fixed initial entries \(H\) are retained, and at least one of the larger tail entries has been replaced by a smaller entry.
+the degree-nine equation gives \(AD^2+B^2E=0\). If \(A\ne0\), then \(E=D=0\). If \(A=0\), either \(B=0\), or \(B\ne0\) forces \(E=D=0\). Consequently either \(A=B=0\) or \(E=D=0\). Exchanging \(x,y\) reduces the second alternative to the first, and weights \((1,-2,1)\) again apply.
 
-No other term is the original product with its factors reversed. To see this, \(A<B\) lexicographically, since equal columns cannot violate componentwise order. Their first unequal position occurs before or at \(t\), and cannot be \(t\), where \(a_t>b_t\). Its entry in \(A\) is smaller than the corresponding entry in \(B\), and is not an entry of \(B\): all earlier entries agree and all later entries of \(B\) are larger. That entry belongs to \(H\), so the first determinant in another term cannot be \(p_B\).
+These exhaust (B39). Thus every common zero is in the null cone. Conversely, all seven expressions are homogeneous positive-degree invariants, so they vanish on the null cone by its definition. \(\square\)
 
-Consequently (21) expresses the original product as an integer linear combination of products whose sorted list of column tuples is lexicographically smaller. Other factors do not affect this conclusion: inserting the smaller new column before the former column \(A\) strictly decreases the sorted list. The number of columns and the multiset of all their indices are preserved. There are only finitely many such lists, so repeated straightening terminates in standard products. This proves that standard products span the quotient by the shuffle relations over \(R\).
+### Independence and module finiteness
 
-They are independent after substitution. Order the matrix variables lexicographically, row by row:
-\[
-z_{11}>z_{12}>\cdots>z_{1m}>
-z_{21}>\cdots>z_{nm}.
-\]
-The leading monomial of an increasing minor is its diagonal monomial
-\(\prod_a z_{a,i_a}\), with coefficient one: the determinant term using the smallest column in row one is largest, then the same argument applies to subsequent rows. Thus a standard product has leading monomial
-\[
-\prod_{j=1}^s\prod_{a=1}^n z_{a,(I_j)_a}.
-\]
-This monomial determines the standard product. For each coordinate row \(a\), it records the multiset of entries in row \(a\) of the tableau; weak increase puts that multiset in its unique order, recovering every column. Distinct standard products therefore have distinct leading monomials.
-
-In a nonzero finite \(R\)-linear combination of their images, choose the largest leading monomial among terms with nonzero coefficients. Smaller-leading polynomials cannot contribute to it, and its coefficient is the chosen nonzero coefficient times one. The combination is nonzero, even when \(R\) has zero divisors. Independence follows. Spanning and independence identify the kernel exactly with the shuffle ideal and establish all assertions. \(\square\)
+[]{#theorem-5-4}
 
-Combining Theorems 4.1 and 4.2 gives the full presentation of the vector invariant ring in characteristic zero. The relation theorem itself has no characteristic restriction. It also shows why a computation after inverting one bracket alone would not suffice: the standard basis controls the entire polynomial algebra, including its specializations at that bracket's zero set.
+**Theorem 5.4 (Dixmier's parameters).** Over every characteristic-zero field the seven invariants (B28), (B29) and (B32) are a homogeneous system of parameters for ternary quartics. Their degrees are \(3,6,9,12,15,18,27\).
 
-**Corollary 4.3 (integral vector invariants).** A polynomial with integer coefficients, universally invariant under \(\operatorname{SL}_n\) on any number of vector columns, is an integer polynomial in their brackets.
+**Proof.** Lemma 5.3 and Hilbert's nullcone finiteness theorem, Theorem 11.1 in the first lesson, prove module finiteness over \(\mathbb C\). It remains to prove algebraic independence; the following small exact witness does so without a quotient-dimension assumption.
 
-**Proof.** Over \(\mathbb Q\), Theorem 4.1 expresses it in brackets. Theorem 4.2 straightens that expression into a rational linear combination of standard products. Clear denominators with the least positive integer \(N\), obtaining
+Order the ordinary coefficients by the monomials
 \[
-NF=\sum_T c_T p_T,\qquad c_T\in\mathbb Z.
+x^4,x^3y,x^3z,x^2y^2,x^2yz,x^2z^2,xy^3,
+xy^2z,xyz^2,xz^3,y^4,y^3z,y^2z^2,yz^3,z^4.
 \]
-If a prime \(p\) divides \(N\), reduction modulo \(p\) makes the left side zero. Independence of standard products over \(\mathbb F_p\) makes every \(c_T\) divisible by \(p\). Dividing the integral identity by \(p\) contradicts minimality of \(N\). Hence \(N=1\). Conversely determinants are universally special-linear invariant, so all integer polynomials in them are invariant. \(\square\)
+Evaluate at the integer coefficient vector
+[]{#equation-B43}
 
-Noether's 1919 paper, Section 3, proves precisely the binary integral statement by normalizing bracket products and controlling relations modulo each prime. The tableau argument here supplies the same integral control in every dimension. Its binary step is particularly concrete:
 \[
-p_{14}p_{23}=p_{13}p_{24}-p_{12}p_{34}.
+(-4,-5,9,3,4,3,-7,7,2,-1,7,-1,-9,6,-3).
+\tag{B43}
 \]
-The nested pair on the left is replaced by the two standard pairings on the right. Leading diagonal monomials then certify that the standard expressions are unique.
-
-![Three pairings of four vector indices. The nested product of brackets 14 and 23 equals the product 13 and 24 minus the product 12 and 34. The two resulting products have componentwise ordered columns.](figures/bracket-straightening.png)
-
-The arcs record which indices belong to each bracket; they do not represent a geometric configuration of the vectors. The signs are those of (10). This is the \(n=2\) straightening step in Theorem 4.2, with no denominator introduced. Editable diagram.
+Take the first seven columns of the seven-parameter Jacobian in parameter order \(3,6,9,12,15,18,27\). All denominators of its rational entries are prime to 101. Reduction modulo 101 gives
+[]{#equation-B44}
 
-## 5. Repeated kinds of ground forms
-
-Let \(U\) be a representation of dimension \(D\), and let \(Z\) be another representation containing all the other ground forms. A kind of form occurring \(N\) times has coefficient space \(U^N\). The group acts diagonally on those copies and on \(Z\).
+\[
+\begin{pmatrix}
+63&55&90&49&92&14&37\\
+26&43&98&63&99&97&90\\
+90&62&48&57&87&86&36\\
+5&98&56&87&24&69&97\\
+17&58&82&52&33&21&60\\
+85&70&97&88&4&96&56\\
+54&76&72&40&70&79&23
+\end{pmatrix},
+\qquad\det\equiv47\pmod{101}.
+\tag{B44}
+\]
+The first six rows follow directly from the contractions. To specify the last row completely, form the matrices in (B30), selecting the 36 domain monomials by the rule in Lemma 5.1 and taking the complementary nine rows of \(K\). Both selected determinants are nonzero at (B43). If their matrices are \(M_0,K_0\), the derivative of their quotient in coefficient direction \(h\) is
+[]{#equation-B45}
 
-**Theorem 5.1 (Noether's reduction for repeated kinds).** In characteristic zero,
 \[
-k[Z\oplus U^N]^G
+I_{27}(F)\left(\operatorname{tr}(M_0^{-1}M_h)
+-\operatorname{tr}(K_0^{-1}K_h)\right).
+\tag{B45}
 \]
-is generated by polarizations, among the \(U\)-copies, of the invariants on \(Z\oplus U^{\min(N,D)}\). The operators do not act on the other kinds of ground forms.
+This is the usual determinant derivative, obtained by expanding \(\det(I+tA)=1+t\operatorname{tr}A+O(t^2)\). Normalize the quotient by its value at the Fermat quartic, as in (B32). The certificate `parameter-independence.json` contains the integer matrices, all rational derivatives and the minor; `check_quartic_independence.py` constructs them from (B25)–(B33). Thus (B44) is an exact rational nonvanishing certificate, although its compact display uses a finite field.
+
+A nonzero Jacobian minor proves independence in characteristic zero. For completeness, choose a nonzero polynomial relation of least total degree, if one exists. Differentiate it after substitution of the seven parameters. Full Jacobian rank forces all its partial derivatives, after that same substitution, to vanish. Some partial derivative is a nonzero polynomial of smaller degree, contradicting the choice of the relation.
 
-**Proof.** Repeat Lemmas 3.1–3.2 in a component of fixed total \(U\)-degree and fixed \(Z\)-degree. It is the tensor product of \(k[U^N]_d\) with the finite-dimensional space \(k[Z]_e\), on which the row-substitution group acts trivially. The same complete-reducibility proof applies. For a highest-row-weight invariant, the derivative equations in a row \(j>D\) are a \(D\times D\) system with the first \(D\) coefficient vectors as its matrix. In their fraction field that matrix is invertible, so the polynomial is independent of every later \(U\)-row. The orbit-span argument proves the assertion for \(N\geq D\). If \(N<D\), there is no reduction to perform. \(\square\)
+Finally, descend finiteness from \(\mathbb C\) to \(\mathbb Q\) and extend to \(k\). In each coefficient degree, invariants are the simultaneous kernels of the six rational elementary-matrix derivations for \(\operatorname{SL}_3\); the unipotent argument of Theorem 2.1, with Gaussian elimination in dimension three, proves this criterion. These finite kernels commute with field extension. The quotient by the ideal generated by the seven parameters also commutes with field extension degree by degree. Its complex dimension is finite, so its rational dimension is finite. Choose homogeneous rational lifts of a basis of that quotient; the degree induction in Theorem 11.1 of the first lesson makes them module generators. Extending scalars gives finiteness over \(k\), while (B44), as a rational nonzero determinant, gives independence over every characteristic-zero field. \(\square\)
 
-For binary quadratics \(D=3\), not two. Noether's 1916 paper credits the underlying reduction of repeated vector rows to Capelli, Mertens and Deruyts. Her answer to Hilbert applies that reduction to coefficient vectors of repeated ground forms. The number of copies is bounded by the dimension of the coefficient representation, not by the number of original polynomial variables.
+The parameter theorem is complete. The next section proves the full generator theorem by identifying an explicit free module basis.
 
-## 6. Vectors and dual vectors
+## 6. Thirteen generators for a ternary quartic {#section-6}
 
-The symbolic method also needs invariants involving both vectors and covectors. We give the tensor argument rather than assume a mixed version of the vector theorem.
+The parameter theorem leaves a concrete question: which elements generate its finite module? We answer it by constructing fifty independent elements with exactly the Hilbert-series degrees. This also proves algebra generation. The calculation below is an exact finite certificate, followed by an argument that applies in every degree and over every characteristic-zero field.
 
-**Lemma 6.1 (a tensor commutant).** The endomorphisms of \(V^{\otimes r}\) commuting with every \(g^{\otimes r}\), \(g\in\operatorname{GL}(V)\), are spanned by permutations of the \(r\) tensor factors.
+Dixmier supplied the seven parameters; Ohno supplied the additional generators and the fifty monomials used below. Compare [Ohno's primary preprint, Definition 3.1 and Theorem 4.1](https://aeb.win.tue.nl/math/ohno-preprint.2007.05.15.pdf), and [Elsenhans, Sections 5–6](https://math.uni-paderborn.de/fileadmin-eim/mathematik/AG-Computeralgebra/Publications-elsenhans/inv_pl_quart_5a.pdf). The polynomial formulas and arithmetic certificates below give the proof.
 
-**Proof.** First work over \(\mathbb C\). Let \(E=\operatorname{End}(V)\). Under
-\(\operatorname{End}(V^{\otimes r})=E^{\otimes r}\),
-conjugation by a factor permutation permutes the \(r\) factors. Its fixed subspace is the symmetric tensors, spanned by \(T^{\otimes r}\) with \(T\in E\). To verify the spanning assertion, polarize the power \((t_1T_1+\cdots+t_rT_r)^{\otimes r}\); its \(t_1\cdots t_r\) coefficient is the sum over factor permutations. Averaging factor permutations spans the fixed subspace in characteristic zero. Invertible \(T\) suffice: a linear functional vanishing on all their powers gives a polynomial on \(E\) vanishing on the dense invertible open set, and is therefore zero on every power.
+### Six additional contractions
 
-Thus the linear span of \(g^{\otimes r}\) is the commutant of the permutation algebra \(P\). We need that the double commutant of \(P\) is \(P\). Here is the finite-dimensional argument. Averaging over the finite group \(S_r\) makes every submodule split: average any linear projection onto the submodule, and its kernel is an invariant complement. Decompose \(V^{\otimes r}\) into copies of pairwise nonisomorphic simple \(P\)-modules \(U_a\). An endomorphism of a simple module is scalar: over \(\mathbb C\) it has an eigenvalue, and the kernel of the corresponding difference from a scalar is a nonzero submodule, hence the whole module. A map between distinct simples is zero, by its kernel and image.
+Retain the conventions and contractions (B25)–(B33). Define
+[]{#equation-B46}
 
-The image of \(P\) is the full product of matrix algebras on the \(U_a\). To prove this assertion, choose a basis \(u_{a,1},\ldots,u_{a,d_a}\) of each \(U_a\), and consider the image
 \[
-M=\{(pu_{a,j})_{a,j}:p\in P\}
-\subset\bigoplus_aU_a^{d_a}.
+\begin{aligned}
+H&=\frac{\det(F_{x_i x_j})}{1728},&
+\xi&=\frac{\sigma\mathbin{\lrcorner}H}{72},&
+\pi&=\frac{\rho\mathbin{\lrcorner}H}{2},\\
+\eta&=\frac{\xi\mathbin{\lrcorner}\sigma}{12},&
+\nu&=\frac{\eta\mathbin{\lrcorner}\pi}{4}.
+\end{aligned}
+\tag{B46}
 \]
-If it were proper, its split quotient would admit a nonzero map to some \(U_b\). Composing with the quotient gives a nonzero \(P\)-linear map annihilating \(M\). The preceding simple-module facts make that map \(\sum_jc_j\) times the coordinate identity on the copies of \(U_b\), and zero on other types. Evaluating at \(p=1\) yields
-\(\sum_jc_ju_{b,j}=0\), contradicting basis independence. Hence \(M\) is the whole direct sum. Specifying arbitrary images of those bases proves the assertion.
-
-Writing the original space as \(\bigoplus_a U_a\otimes\mathbb C^{m_a}\), its commutant is therefore
-\(\bigoplus_a I_{U_a}\otimes\operatorname{End}(\mathbb C^{m_a})\).
-The commutant of this algebra is
-\(\bigoplus_a\operatorname{End}(U_a)\otimes I\), precisely the image of \(P\). This proves the double-commutant assertion and the lemma over \(\mathbb C\).
-
-Over any characteristic-zero \(k\), commuting with all \(g^{\otimes r}\) is a system of rational linear equations: expand the commutator as a polynomial in the entries of a generic matrix. Vanishing for invertible matrices over the infinite field is equivalent to vanishing of all coefficients. The permutation operators have rational entries, and Gaussian elimination shows that equality of the two solution spaces over \(\mathbb C\) implies equality over \(k\). \(\square\)
-
-**Theorem 6.2 (mixed first fundamental theorem).** The special-linear invariant ring on any number of vectors \(v_i\) and dual vectors \(\alpha_j\) is generated by their pairings \(\alpha_j(v_i)\), vector determinants and dual-vector determinants.
-
-**Proof.** Full polarization from (4) reduces generation to multilinear invariants in \(r\) vector slots and \(s\) dual slots. First consider the general linear group. Scalar matrices make such an invariant zero unless \(r=s\). When \(r=s\), it corresponds to an endomorphism of \(V^{\otimes r}\); invariance says that endomorphism commutes with all \(g^{\otimes r}\). Lemma 6.1 expresses it as a sum of factor permutations. Each corresponding multilinear polynomial is
-\(\prod_j\alpha_j(v_{\sigma(j)})\).
-This proves the mixed general-linear theorem.
+The Hessian \(H\) is a degree-three covariant of order six. Indeed, the chain rule transforms its Hessian matrix by congruence, and the two determinant factors equal one on the special linear group. The forms \(\xi,\pi,\eta,\nu\) have coefficient degrees \(5,7,7,14\) and orders \(2,4,2,2\), respectively. The first and last are covariants, \(\eta\) is a contravariant, and \(\pi\) is a covariant. These types follow by alternating the dual spaces in each equivariant contraction.
 
-For the special linear group, first work over an algebraic closure. The central matrices \(\zeta I\), \(\zeta^n=1\), show that \(r-s=qn\) for an integer \(q\), unless the invariant is zero. A nonzero multilinear invariant \(F\) has general-linear determinant character \(q\): write \(g=\lambda h\), \(\lambda^n=\det g\), \(h\in\operatorname{SL}_n\), and use multilinearity to get \(F(gv,\alpha g^{-1})=\det(g)^qF(v,\alpha)\).
+Write their quadratic matrices as \(C,E,N\), so \(\xi=x^{\mathsf t}Cx\), \(\eta=u^{\mathsf t}Eu\), \(\nu=x^{\mathsf t}Nx\). With \(A,B\) still the matrices of \(\rho,\tau\), put
+[]{#equation-B47}
 
-If \(q\geq0\), introduce \(q\) blocks of \(n\) auxiliary dual vectors \(\beta_{\ell,1},\ldots,\beta_{\ell,n}\). The product
 \[
-F\prod_{\ell=1}^q\det(\beta_{\ell,1},\ldots,\beta_{\ell,n})
+\begin{aligned}
+J_9&=\operatorname{tr}(CA),&J_{12}&=\operatorname{tr}(BE),\\
+J_{15}&=\det C,&J_{18}&=\operatorname{tr}(\operatorname{adj}C\operatorname{adj}A),\\
+J_{21}^{a}&=\det E,&J_{21}^{b}&=\operatorname{tr}(NE).
+\end{aligned}
+\tag{B47}
 \]
-is general-linear invariant and multilinear in all its slots. The general-linear theorem writes it as a sum of products of pairings. Antisymmetrize in each auxiliary block, dividing by \(n!\). The left side is unchanged. On the right, the \(n\) pairings using one block become
-\[
-\frac1{n!}\det(\beta_{\ell,1},\ldots,\beta_{\ell,n})
-\det(v_{i_1},\ldots,v_{i_n}).
-\]
-If a vector slot repeats there, its determinant is zero. Cancel the product of auxiliary determinants in the polynomial domain. The result expresses \(F\) in vector determinants and the original pairings. If \(q<0\), use auxiliary vector blocks instead and obtain dual determinants and pairings.
-
-Finally restitute the polarized slots. Descent to \(k\) is again a finite rational linear-algebra assertion in each degree: invariance is the kernel of the coefficient equations for elementary unipotent substitutions, and the proposed spanning polynomials have integer coefficients. Gaussian elimination descends their spanning equality. \(\square\)
+The congruence and inverse-congruence calculation following (B29) proves that all six are invariants. Their subscripts give their coefficient degrees. In particular, (B46)–(B47) are definitions over \(\mathbb Q\), with no choice of roots or auxiliary normal form. The script `quartic_generators.py` implements precisely these contractions.
 
-This is the exact mixed theorem used for symbolic completeness in the first lesson.
+### The Hilbert series in all degrees
 
-### Two commuting substitution groups
+[]{#lemma-6-1}
 
-The same commutant argument explains the duality viewpoint on matrix polynomials. We state it over \(\mathbb C\), so simple finite-group modules and their multiplicity spaces can be used without a splitting-field qualification. Let \(U=\mathbb C^m\), \(V=\mathbb C^n\). Homogeneous degree-\(d\) polynomials in a matrix have the representation
-\(\operatorname{Sym}^d(U\otimes V)\), with duals inserted if the inverse action on coordinate functions is chosen. Row and column substitutions commute.
+**Lemma 6.1 (the quartic character calculation).** For \(R=\mathbb C [c_{ijk}]^{\operatorname{SL}_3}\),
+[]{#equation-B48}
 
-**Proposition 6.3 (matrix duality).** On each degree piece, the linear spans of the two general-linear substitution groups are mutual commutants. The joint representation is a direct sum of pairwise inequivalent simple tensor-product representations, each occurring once.
-
-**Proof.** Averaging over \(S_d\) identifies the symmetric power with
 \[
-\bigl(U^{\otimes d}\otimes V^{\otimes d}\bigr)^{S_d},
+\operatorname{Hilb}_R(t)=
+\frac{N(t)}{(1-t^3)(1-t^6)(1-t^9)(1-t^{12})(1-t^{15})(1-t^{18})(1-t^{27})},
+\tag{B48}
 \]
-where the same permutation acts on both tensor powers. Reorder the tensor factors to obtain this identification from \((U\otimes V)^{\otimes d}\).
+where
+[]{#equation-B49}
 
-Let \(S_a\) range over the simple complex \(S_d\)-modules. The finite-group splitting and simple-module arguments proved in Lemma 6.1 give
 \[
-U^{\otimes d}=\bigoplus_a M_a(U)\otimes S_a,\qquad
-V^{\otimes d}=\bigoplus_b M_b(V)\otimes S_b,
+\begin{aligned}
+N(t)={}&1+t^9+t^{12}+t^{15}+2t^{18}+3t^{21}+2t^{24}+3t^{27}\\
+&+4t^{30}+3t^{33}+4t^{36}+4t^{39}+3t^{42}+4t^{45}\\
+&+3t^{48}+2t^{51}+3t^{54}+2t^{57}+t^{60}+t^{63}+t^{66}+t^{75}.
+\end{aligned}
+\tag{B49}
 \]
-where a multiplicity space can be defined as
-\(M_a(U)=\operatorname{Hom}_{S_d}(S_a,U^{\otimes d})\).
-Absent types have zero multiplicity space. That lemma also proves that the span of \(\operatorname{GL}(U)\) on its tensor power is the full commutant of the permutation algebra. Hence its action on the nonzero \(M_a(U)\) has image
-\(\prod_a\operatorname{End}(M_a(U))\); the analogous statement holds for \(V\). Thus these are simple, pairwise inequivalent general-linear modules. Simplicity follows from the full matrix image, and inequivalence from the ability to act independently on distinct factors.
 
-Now
-\[
-(S_a\otimes S_b)^{S_d}
-\cong\operatorname{Hom}_{S_d}(S_a^*,S_b).
-\]
-Duals of simple finite-group modules are simple: the annihilator of a proper dual submodule would be an invariant subspace of the original module. Schur's lemma, proved in Lemma 6.1, makes the displayed space zero unless \(S_b\cong S_a^*\), when it is one-dimensional. If \(a^*\) denotes that dual type, the degree piece is therefore
+**Proof.** Averaging over \(\operatorname{SU}(3)\) projects each finite-dimensional coefficient-degree space onto its special-linear invariants, by the density and Reynolds arguments in the first lesson, Sections 8–9. The trace of that projection is its rank. A torus element \(\operatorname{diag}(x,y,(xy)^{-1})\) has the fifteen weights
 \[
-\bigoplus_a M_a(U)\otimes M_{a^*}(V),
+\mathcal W=\{(i-k,j-k):i,j,k\geq0,\ i+j+k=4\}.
 \]
-omitting zero terms.
-
-The two group spans on this direct sum are respectively
-\(\prod_a\operatorname{End}(M_a(U))\otimes I\) and
-\(\prod_a I\otimes\operatorname{End}(M_{a^*}(V))\).
-Their commutants are each other, by the same matrix-block computation used in Lemma 6.1. Each joint tensor summand is simple because the joint algebra contains its full endomorphism algebra, and different summands are inequivalent because their first factors are. Each occurs once in the displayed decomposition. This proves the proposition without an unproved classification of highest weights. \(\square\)
+The symmetric-algebra character is therefore
+\(\prod_{(a,b)\in\mathcal W}(1-tx^ay^b)^{-1}\), as follows by multiplying the geometric series of its fifteen generators. For \(|t|<1\) this series converges uniformly on the unit torus, so its averaging can be performed term by term.
 
-This is the polynomial matrix duality associated with the modern viewpoint of Howe; see his [Remarks on classical invariant theory](https://doi.org/10.1090/S0002-9947-1989-0986027-X), especially its introduction on the relation between polynomial and tensor invariants. A partition description of the multiplicity spaces gives more names for the summands, but is not needed for the polarization bound or for the mutual-commutant assertion proved here.
+We justify the torus integration factor here. Every unitary matrix is unitarily diagonalizable. For matrices with three distinct eigenvalues, the map from a conjugating flag and a diagonal matrix to its conjugate is six to one, the six choices being the eigenvalue order. In the tangent plane corresponding to a pair of eigenvectors \(i,j\), its differential multiplies the two-dimensional real area by \(|z_i-z_j|^2\): in complex coordinates it is multiplication by \(z_j-z_i\). Thus its Jacobian is \(\prod_{i<j}|z_i-z_j|^2\). Matrices with a repeated eigenvalue form a lower-dimensional set and have measure zero; this follows also from the nonzero discriminant equation in real coordinate charts. Change of variables for the invariant volume consequently expresses a class-function integral as a constant times its torus integral with this Jacobian. The constant is determined by the integral of one. Expanding the determinant \(\det(z_i^{j-1})\) and its conjugate shows that the constant term of their squared modulus is six: the only matching exponent permutations are equal permutations, modulo the common determinant-one exponent shift. Hence the normalized factor is \(1/6\).
 
-## 7. The binary Clebsch–Gordan expansion
-
-Use two binary pairs \(x=(x_1,x_2)\), \(y=(y_1,y_2)\). Put
-\[
-B=[xy]=x_1y_2-x_2y_1,\qquad
-\Omega=\partial_{x_1}\partial_{y_2}
--\partial_{x_2}\partial_{y_1}.
-\]
-For a binary form \(h(z)\) of degree \(a+b\), define its normalized \((a,b)\)-polar by
+Put
 \[
-\mathcal P_{a,b}h(x,y)
-=\frac1{\binom{a+b}{b}}[t^b]h(x+ty).
-\tag{11}
+D_+=(1-x^{-1}y)(1-x^{-2}y^{-1})(1-x^{-1}y^{-2}).
 \]
-It has bidegree \((a,b)\), equals \(h(x)\) on \(y=x\), and is killed by \(\Omega\). The last assertion follows by expanding the derivatives of \(h\): its second derivatives are symmetric, so the alternating contraction is zero.
+The squared Vandermonde on the unit torus is the product of these factors and their inverses in \(x,y\). Direct expansion gives
+\(\sum_{w\in S_3}wD_+=\prod_{i\ne j}(1-z_i/z_j)\).
+For a symmetric torus character, all six constant terms in that sum are equal. Therefore normalized averaging is the single constant term
+[]{#equation-B50}
 
-**Theorem 7.1 (binary series, with coefficients).** If \(F(x,y)\) has bidegree \((p,q)\), let
-\[
-h_k(z)=\left.\Omega^kF(x,y)\right|_{x=y=z},
-\quad 0\leq k\leq\min(p,q).
-\]
-Then
 \[
-F(x,y)=\sum_{k=0}^{\min(p,q)}
-\frac{(p+q-2k+1)!}{k!(p+q-k+1)!}
-B^k\,\mathcal P_{p-k,q-k}h_k(x,y).
-\tag{12}
+\operatorname{Hilb}_R(t)=\operatorname{CT}_{x,y}
+\frac{D_+}{\prod_{(a,b)\in\mathcal W}(1-tx^ay^b)}.
+\tag{B50}
 \]
-All operators here are equivariant for \(\operatorname{SL}_2\); the expansion also applies with other coefficient variables held fixed.
+This establishes the counting formula without assuming a freeness or Cohen–Macaulay theorem.
 
-**Proof.** The product rule gives, for a bihomogeneous \(L\) of total degree \(N\),
+Here is a finite rational evaluation of (B50), specifying the calculation rather than extrapolating a list of low degrees. First hold \(|y|=1\) and take \(|t|\) sufficiently small. The poles inside the \(x\)-circle come from the six weights
 \[
-\Omega(BL)=B\Omega L+(N+2)L.
+(-1,-1),\ (-2,-3),\ (-1,2),\ (-2,0),\ (-3,-2),\ (-4,-4).
 \]
-If \(\Omega L=0\), induction therefore gives
+There is no pole at \(x=0\): clearing the six negative-weight denominators gives total \(x\)-exponent thirteen, whereas \(D_+\) has negative exponent at most four; after the additional \(1/x\) the exponent is still at least eight. A weight \((-r,b)\) gives roots \(\alpha^r=ty^b\). Its residue in the integrand divided by \(x\) is
+[]{#equation-B51}
+
 \[
-\Omega(B^kL)=k(N+k+1)B^{k-1}L.
+\frac1r\frac{D_+(\alpha,y)}{
+\prod_{(a,c)\ne(-r,b)}(1-t\alpha^ay^c)}.
+\tag{B51}
 \]
-Apply this \(k\) times:
+Sum these \(r\) residues by reducing the fraction in the algebra
+\(\mathbb Q(t,y)[\alpha]/(\alpha^r-ty^b)\).
+The normalized trace is its coefficient of \(1\): the other basis monomials have trace zero. To compute that coefficient, form the \(r\)-by-\(r\) matrix for multiplication by the denominator, and solve against the numerator by Cramer's rule. All \(r\) are at most four. Negative powers are reduced using \(\alpha^r=ty^b\); multiplication by a common monomial clears them. This is the complete algorithm in `quartic_hilbert.py`.
+
+Adding the six rational functions and cancelling their polynomial greatest common divisors gives a numerator with 294 terms and a denominator with 726 terms in \(\mathbb Q [t,y]\). Their full coefficients are in `hilbert-series.json`. Factoring the latter denominator, its factors whose roots tend to zero with \(t\) are
+[]{#equation-B52}
+
 \[
-\left.\Omega^k(B^kL)\right|_{y=x}
-=k!\frac{(N+k+1)!}{(N+1)!}L(x,x).
-\tag{13}
+\begin{gathered}
+t-y,\quad t+y^2,\quad t^2-y,\quad t^2+ty+y^2,\\
+t^2+ty^2+y^4,\quad t^5-y^4,\quad t^5-y^7,\quad t^7-y^8,
+\end{gathered}
+\tag{B52}
 \]
-Fewer than \(k\) contractions leave a factor \(B\), which is zero on the diagonal. More than \(k\) contractions kill the remaining harmonic \(L\).
+each once, and \(t-y^2\) twice. All other nonconstant \(y\)-factors have roots tending to infinity; factors involving only \(t\) create no \(y\)-pole. These assertions follow by substituting \(y=t^{a/b}v\) in each binomial or homogeneous cyclotomic factor; they also determine the inside roots without numerical root finding.
 
-The maps \(h\mapsto B^k\mathcal P_{p-k,q-k}h\), with \(h\) of degree \(p+q-2k\), have linearly independent images: apply \(\Omega^k\) and then diagonal restriction, which isolates that summand by (13). The sum of their dimensions is
+There is now also the residue at \(y=0\). If the first rational function is \(n(y)/d(y)\), it is \(n(0)/d(0)\). For any monic inside factor \(q\) of multiplicity \(m\), write \(d=q^m h\), and put \(\phi=n/(yh)\). For \(m=1\), the sum of the residues is the trace of \(\phi/q'\) in \(\mathbb Q(t)[y]/q\). For \(m=2\), it is the trace of
+[]{#equation-B53}
+
 \[
-\sum_{k=0}^{\min(p,q)}(p+q-2k+1)=(p+1)(q+1),
+\frac{\phi'}{(q')^2}-\frac{\phi q''}{(q')^3}.
+\tag{B53}
 \]
-the dimension of all bidegree-\((p,q)\) polynomials. Hence these images are a direct-sum decomposition of that space. Equation (13), with \(N=p+q-2k\), then determines every coefficient of the decomposition and yields (12). \(\square\)
+Indeed, at a simple root \(\alpha\), write \(q=(y-\alpha)q_1\); then \(q_1(\alpha)=q'(\alpha)\) and \(q_1'(\alpha)=q''(\alpha)/2\). Taking the derivative of \(\phi/q_1^2\) proves (B53). The derivative \(\phi'\) is computed before reducing modulo \(q\). Inverses are obtained by the polynomial Euclidean algorithm, and a trace is the sum of the diagonal entries of the multiplication matrix. These quotient degrees are at most eight.
 
-For \(p=q=1\), formula (12) decomposes \(x_1y_2\) into
+The script `quartic_hilbert_second.py` performs those nine traces and the zero residue with rational polynomial pairs. Its certificate contains every traced fraction. Adding them gives \(n_*(t)/d_*(t)\); exact multiplication verifies
+[]{#equation-B54}
+
 \[
-\tfrac12(x_1y_2+x_2y_1)+\tfrac12[xy].
+n_*(t)\prod_{d\in\{3,6,9,12,15,18,27\}}(1-t^d)
+=d_*(t)N(t).
+\tag{B54}
 \]
-For \(F=f(x)g(y)\) of orders \(p,q\), the first lesson's transvectant normalization gives
+Thus the rational functions are equal. Equality for sufficiently small complex \(t\) gives equality of their Taylor series and proves (B48) in all degrees. This is the classical Hilbert series credited to Shioda in Ohno's Theorem 1.1; (B50)–(B54) give its full independent verification here. \(\square\)
+
+### Fifty monomials with the required degrees
+
+For this table only, abbreviate the six additional invariants by
 \[
-h_k=\frac{p!q!}{(p-k)!(q-k)!}(f,g)_k.
+(u,v,w,r,s,h)=(J_9,J_{12},J_{15},J_{18},J_{21}^{a},J_{21}^{b}).
 \]
-Substitution into (12) fixes the constants of the usual transvectant series.
+Each entry in the right column is a separate candidate secondary \(W\). We order by increasing degree, with the displayed left-to-right order within each row. There are fifty entries, including one.
 
-For any number of binary pairs, repeatedly apply (12) to two pairs, treating the other pairs as coefficient variables. Their diagonal form introduces one pair \(z\); expand that pair with the next one and continue. At every stage (11) and the displayed factorial coefficient specify the polar and contraction explicitly. The number of stages and the number of terms at each stage are finite. This gives a complete expansion for several binary series of variables, rather than only an existence assertion.
+| Degree | Secondary monomials |
+| --- | --- |
+| 0 | \(1\) |
+| 9 | \(u\) |
+| 12 | \(v\) |
+| 15 | \(w\) |
+| 18 | \(u^2,r\) |
+| 21 | \(uv,s,h\) |
+| 24 | \(uw,v^2\) |
+| 27 | \(u^3,ur,vw\) |
+| 30 | \(u^2v,us,uh,vr\) |
+| 33 | \(u^2w,uv^2,wr\) |
+| 36 | \(u^2r,uvw,ws,wh\) |
+| 39 | \(u^3v,u^2s,u^2h,rh\) |
+| 42 | \(uwr,v^2r,sh\) |
+| 45 | \(u^2vw,uws,uwh,vwr\) |
+| 48 | \(u^3s,u^3h,urh\) |
+| 51 | \(u^2wr,ush\) |
+| 54 | \(u^2ws,u^2wh,wrh\) |
+| 57 | \(u^2rh,wsh\) |
+| 60 | \(u^2sh\) |
+| 63 | \(uwrh\) |
+| 66 | \(uwsh\) |
+| 75 | \(u^2wsh\) |
 
-## 8. A general polarized series with finite matrix coefficients
+Counting the entries of each degree gives exactly (B49). The assertion that they are independent over the parameter ring is the substantive issue, proved next.
 
-The decomposition into a few-variable polynomial and polarization operators also has an explicit finite form in arbitrary dimension. The following construction gives coefficients by rational matrix operations; it does not require a classification of irreducible representations.
+### Why a nonsingular finite-field fibre proves independence
 
-On \(H_d\), use the Fischer inner product over \(\mathbb C\):
-\[
-\langle x^\alpha,x^\beta\rangle=\delta_{\alpha\beta}\alpha!.
-\]
-Multiplication by a variable is adjoint to its derivative, so \(D_{ij}^*=D_{ji}\). A **primary polynomial** will mean one killed by all \(D_{ij}\), \(i<j\). By Lemma 3.2 every primary polynomial uses at most the first \(n\) rows.
+[]{#lemma-6-2}
 
-**Theorem 8.1 (finite general series).** For fixed \(n,m,d\), there are explicit rational operators \(R_W\), all built from the \(D_{ij}\), such that
-\[
-F=\sum_W Wf_W,\qquad f_W=R_WF,
-\tag{14}
-\]
-where every \(f_W\) is primary and \(W\) is a word in polarization operators. If \(F\) is invariant under any diagonal group, every \(f_W\) is invariant. The construction is valid over every characteristic-zero field.
+**Lemma 6.2 (lifting an independence certificate).** Let \(q_1,\ldots,q_m\) and \(W_1,\ldots,W_\ell\) be rational polynomials in \(n\) variables whose coefficient denominators are prime to a prime \(p\). Suppose a finite reduced algebra over \(\mathbb F_p\) supplies points all having the same \(q\)-tuple \(c\in\mathbb F_p^m\). Suppose the \(q\)-Jacobian has rank \(m\) at every point, and the \(\ell\) functions \(W_i\) are linearly independent in that finite algebra. Then the \(W_i\) are linearly independent over \(\mathbb Q [q_1,\ldots,q_m]\).
 
-**Proof and construction.** In the monomial basis of \(H_d\), form the rational matrix
-\[
-Q=\sum_{i<j}D_{ji}D_{ij}.
-\]
-It is positive semidefinite, since
-\(\langle QF,F\rangle=\sum_{i<j}\|D_{ij}F\|^2\).
-Its kernel is exactly the primary subspace. Write its characteristic polynomial as \(t^s h(t)\) with \(h(0)\ne0\). The spectral theorem makes
-\[
-P=h(Q)/h(0)
-\]
-the orthogonal projection onto that kernel: it is one on the zero eigenspace and zero on every nonzero eigenspace. If \(Q=0\), take \(P=I\). This describes \(P\) by rational matrix entries.
+**Proof.** A squarefree polynomial quotient splits into a product of fields over a finite extension, by the Euclidean algorithm and the Chinese remainder identity. More generally the assumed reduced finite algebra splits into a product of copies of a finite extension: each finite field extension is separable because finite fields are perfect, as the Frobenius map is bijective. After adjoining all point coordinates, the evaluations of the \(W_i\) still have column rank \(\ell\). Select \(\ell\) evaluation rows with a nonzero square determinant.
 
-Let \(a=\dim H_d\), and take all words \(W\) of length at most \(a\) in the \(D_{ij}\), including the empty word. Their images of \(\operatorname{im}P\) span \(H_d\). Indeed, successive word spans form an ascending chain; once a step stops increasing, the span is stable under every \(D_{ij}\). It then contains the orbit span of every primary vector. Complete reducibility and Lemma 3.2 make that orbit span the whole space. Before stabilization there can be at most \(a\) strict increases.
+We describe the elementary characteristic-zero lifting step. Let \(\mathbb Z_p=\varprojlim_a\mathbb Z/p^a\mathbb Z\). Successive residues give a unique base-\(p\) expansion; its first nonzero digit shows that this is a domain of characteristic zero, with units precisely the elements nonzero modulo \(p\). For a finite residue field \(\mathbb F_{p^f}\), choose its monic irreducible defining polynomial and any monic integer lift. The algebra obtained by adjoining a root over \(\mathbb Z_p\) is complete, free of rank \(f\), and has that residue field. Every element not divisible by \(p\) is a unit: lift its residue inverse and invert \(1-pa\) by the convergent geometric series. Factoring out the first nonzero \(p\)-power from each element shows that products of nonzero elements are nonzero. Denote this complete characteristic-zero domain by \(O\).
 
-Form
-\[
-T=\sum_W WPW^*.
-\]
-It is positive definite: if \(\langle TF,F\rangle=0\), then \(PW^*F=0\) for every \(W\), making \(F\) orthogonal to all \(W\operatorname{im}P\), which span the space. Thus \(T\) is invertible. Compute \(T^{-1}\) by its adjugate divided by its nonzero determinant, and set
-\[
-R_W=PW^*T^{-1}.
-\]
-Now \(\sum_WWR_W=TT^{-1}=I\), proving (14), and \(R_WF\in\operatorname{im}P\). Every operator used commutes with a diagonal group by Proposition 1.1; inverses of invertible commuting operators also commute. This proves the invariance assertion.
+At each selected point choose \(m\) variable directions with invertible Jacobian minor, and lift the other coordinates arbitrarily to \(O\). Choose the same integer lift \(\widetilde c\) of the primary tuple for every point. If a current coordinate tuple solves \(q=\widetilde c\) modulo \(p^a\), a correction \(p^a v\) solves it modulo \(p^{a+1}\) by the invertible Jacobian and the first-order polynomial expansion. Start modulo \(p\) and repeat. Completeness gives a tuple with \(q=\widetilde c\) exactly. The chosen minor remains a unit.
 
-All entries and identities are rational. Their verification over \(\mathbb C\) therefore proves the same identities over every characteristic-zero field. The derivative argument in Lemma 3.2 proves that the primary images there also use only the first \(n\) rows. \(\square\)
+Now introduce independent formal variables \(z_1,\ldots,z_m\) and solve
+\(q=\widetilde c+z\) over \(O [[z_1,\ldots,z_m]]\) at each of these lifted points. The same linear correction, this time by total formal degree, constructs the solution recursively: after degrees below \(a\) have been solved, the degree-\(a\) error is removed by the invertible constant Jacobian. The square evaluation matrix of \(W\) has unit constant determinant, since its reduction modulo \(p\) is the selected nonzero determinant. It is therefore invertible over this formal power-series ring.
 
-This is a matrix form of the general series principle behind the Capelli–Mertens–Deruyts reduction: a polynomial is a finite sum of polars of primary polynomials, with invariant operations extracting the primary coefficients. It is less economical computationally than the specialized classical formulas, but gives a full finite construction and exact coefficients for any number of series. Theorem 5.1 applies it separately to each repeated kind of coefficient vector. The binary formula (12) is much shorter because its primary pieces can be indexed by a single contraction number.
+If \(\sum f_i(q)W_i=0\) with \(f_i\in\mathbb Q [T_1,\ldots,T_m]\), clear their common integer denominator. Evaluation at all these formal tuples and inversion of the matrix gives \(f_i(\widetilde c+z)=0\). Translation by a constant is injective on polynomial rings over the characteristic-zero domain \(O\); hence all \(f_i\) vanish. This proves independence. \(\square\)
 
-### Determinant powers and their generalization
+The full-rank Jacobian hypothesis is essential. A rank calculation in an arbitrary specialized fibre alone need not justify a characteristic-zero conclusion.
 
-There is a more structured version for \(r\leq n\) rows of \(n\) variables. For a coordinate subset \(I\subset\{1,\ldots,n\}\), \(|I|=r\), put
-\[
-\Delta_I=\det(x_{ia})_{1\leq i\leq r,\ a\in I},
-\qquad
-\Omega_I=\det(\partial_{x_{ia}})_{1\leq i\leq r,\ a\in I},
-\]
-in increasing coordinate order. A polynomial is **determinant-harmonic** if every \(\Omega_I\) kills it.
+### The exact fibre and its rank certificate
 
-**Theorem 8.2 (general determinant series).** Every homogeneous polynomial in \(r\leq n\) rows is a finite sum of products of their \(r\)-row determinants times determinant-harmonic polynomials. Each harmonic coefficient is a finite sum of polars of polynomials in only \(r-1\) rows. All extraction coefficients can be computed by rational finite matrices. For \(r=n\) the expansion has the unique form
-\[
-F=\Phi_0+\Delta\Phi_1+\cdots+\Delta^\mu\Phi_\mu,
-\qquad \Omega\Phi_i=0.
-\tag{17}
-\]
-For \(r>n\), Theorem 8.1 first reduces to \(n\) rows; thus these constructions give the series for every number of rows.
+Work modulo \(101\), where all contraction denominators are units. Use the family
+[]{#equation-B55}
 
-**Proof.** On each degree piece the adjoint of multiplication by \(\Delta_I\), in the Fischer inner product, is \(\Omega_I\). Hence
 \[
-H_d=\bigcap_I\ker\Omega_I\ \oplus\
-\sum_I\Delta_I H_{d-r}
-\tag{18}
+F_{A,B,D}=xyz^2+(x^3+y^3)z+Ay^4+Bxy^3-\frac92x^2y^2+Dx^3y+\frac9{4A}x^4.
+\tag{B55}
 \]
-as an orthogonal direct sum of the indicated harmonic space and the sum of determinant multiples. The second sum can have internal relations; (18) does not assert its summands are independent.
+Here \(A\ne0\); the contraction table for (B34) gives \(I_3=I_6=0\). Let \(q_d=I_d(F_{A,B,D})\). Take the numerator \(p_0\) of \(q_9\) and the numerator \(p_1\) of \(q_{18}\), in reduced rational form with integer coefficients. Require
+[]{#equation-B56}
 
-Here is a rational computation of the decomposition. The matrix
 \[
-K_d=\sum_I \Delta_I\Omega_I:H_d\to H_d
+p_0=p_1=0,\qquad q_{12}^5-q_{15}^4=0,\qquad q_{12}q_{15}\ne0.
+\tag{B56}
 \]
-is positive semidefinite, and its kernel is the harmonic space. If its characteristic polynomial is \(t^s h(t)\), \(h(0)\ne0\), put \(P_0=h(K_d)/h(0)\). As before, this is the harmonic projector; if \(K_d=0\), take \(P_0=I\). Choose a rational polynomial \(q(t)\) such that \(q(0)=0\) and \(tq(t)\equiv1\pmod{h(t)}\); the Euclidean algorithm gives an inverse of \(t\) modulo \(h\), and adding a multiple of \(h\) arranges \(q(0)=0\). Put \(K_d^+=q(K_d)\). On nonzero eigenspaces it is the inverse of \(K_d\), and on its kernel it is zero. Therefore
+The complete reduced numerators and denominators are supplied by `case-2.1.json` and the substitution \(E=9/(4A)\), so (B28)–(B29) also define them without relying on that table. Put \(a=q_{12}/q_{15}\). Then (B56) gives \(a^4q_{12}=a^5q_{15}=1\). Choose \(\lambda^3=a\) over a finite extension and scale \(F\) by \(\lambda\). Its seven parameter values become
+[]{#equation-B57}
+
 \[
-F=P_0F+\sum_I\Delta_I F_I,\qquad
-F_I=\Omega_I K_d^+F.
-\tag{19}
+(I_3,I_6,I_9,I_{12},I_{15},I_{18},I_{27})=(0,0,0,1,1,0,0).
+\tag{B57}
 \]
-Every \(F_I\) has degree \(d-r\). Reapply (19) to each of them. Degree decreases at every step, so the procedure terminates in products of minors times harmonic coefficients. It uses only rational matrices and rational inverses.
+For a secondary of degree \(d\), its scaled value is \(a^{d/3}W(F)\); every displayed secondary degree is divisible by three, so no root choice enters these values.
+
+Here are the precise finite data and checks. The generator certificate manifest links the full polynomial arrays and their hashes. `fibre-secondary-rank.json` supplies a monic polynomial \(G(A)\) of degree 300, together with coefficient arrays for \(B=b(A)\) and \(D=d(A)\) in
+[]{#equation-B58}
 
-It remains to justify the claimed polars of \(r-1\) rows. The exterior proof of Capelli's identity works unchanged when the number \(n\) of coordinate columns exceeds the number \(r\) of rows: extract \(e_1\cdots e_r\) from (7), retaining all coordinate subsets. It gives the rectangular identity
 \[
-\operatorname{cdet}(D_{ij}+(r-j)\delta_{ij})_{1\leq i,j\leq r}
-=\sum_{|I|=r}\Delta_I\Omega_I.
-\tag{20}
+\mathcal A=\mathbb F_{101}[A]/(G).
+\tag{B58}
 \]
-The harmonic space is stable under row substitutions. Indeed, row multiplication transforms each differential determinant by its determinant character, so its zero condition is preserved. Split it into simple row modules by Lemma 3.1. In each summand choose a maximal row weight \(F\), as in Lemma 3.2. Write that weight as \((\lambda_1,\ldots,\lambda_r)\). In the column determinant on the left of (20), every nonidentity permutation term kills \(F\): take its largest moved column \(j\). Its selected row is less than \(j\), so the factor \(D_{\sigma(j),j}\) is a raising operator; all factors to its right are diagonal and act by scalars. The identity term acts by
+Array index \(i\) is the coefficient of \(A^i\); every coefficient is an integer between zero and 100. Direct polynomial remainder calculations verify (B56). They also verify that \(G'\), \(A\), \(q_{12}\), \(q_{15}\), and the following two polynomials are units in \(\mathcal A\):
+[]{#equation-B59}
+
 \[
-\prod_{j=1}^r(\lambda_j+r-j).
+\begin{aligned}
+J&=\det\frac{\partial(p_0,p_1,q_{12}^5-q_{15}^4)}{\partial(A,B,D)},\\
+\Delta_h&=\operatorname{Res}_U(h,h'),\\
+h(U)&=AU^6-9U^5-4ADU^4+20AU^3-4ABU^2-4A^2U+A.
+\end{aligned}
+\tag{B59}
 \]
-The right side kills a harmonic \(F\), so this product is zero. The first \(r-1\) factors are positive integers; characteristic zero makes them nonzero. Hence \(\lambda_r=0\), and \(F\) is independent of its last row. Its orbit generates the summand. Thus every harmonic polynomial is a sum of polars of polynomials on \(r-1\) rows.
+For every claimed unit the certificate includes its inverse array; multiplication and reduction give one. It additionally checks the unit coefficient of the linear \(D\)-remainder used in constructing the fibre. The inverse of \(G'\) proves that \(G\) is squarefree, so (B58) is reduced.
 
-The coefficient extraction can be made explicit by the \(P,W,T^{-1}\) construction of Theorem 8.1 on the same degree space. All of its operators are polynomials in the \(D_{ij}\), or inverses of invertible such matrices, so they preserve the harmonic subspace. Its extracted primary coefficients are therefore harmonic; the argument with (20) makes each independent of row \(r\). This supplies the promised finite rational coefficients.
+The construction is short enough to reproduce. Eliminate \(D\) from \(p_0,p_1\) by a Sylvester resultant. After discarding the factor \(A^2\), its degree in \(B\) is twelve. Division of \(p_1\) by \(p_0\) gives a remainder linear in \(D\), so \(D=-M(A,B)/L(A,B)\) in \(\mathbb F_{101}(A)[B]/R\). Reduce \(q_{12}^5-q_{15}^4\) in this degree-twelve algebra and take the determinant of its multiplication matrix. The resulting rational norm has numerator degree 396 and denominator degree 198 in \(A\). A Euclidean remainder of degree one in \(B\) gives its rational coordinate. Taking the squarefree numerator, removing denominator factors and removing zeros of the two normalizing invariants leaves exactly degree 300. Original-equation remainders, \(J\), and \(\Delta_h\) then pass directly. `quartic_fibre.py` implements this construction; the verifier does not assume its elimination steps are correct, because it recomputes all retained equations and units directly in (B58).
 
-When \(r=n\), there is only one minor \(\Delta\). Multiplication by it is injective in the polynomial ring. Equation (18) then gives a unique harmonic coefficient and a unique quotient, at every degree step, proving uniqueness of (17). The proof by Fischer positivity establishes rational operator identities; those identities descend unchanged to any characteristic-zero field. \(\square\)
+We explain why these unit checks supply the Jacobian hypothesis of Lemma 6.2. First allow the coefficient \(C\) of \(x^2y^2\), the coefficient \(E\) of \(x^4\), and the scalar \(\lambda\) to vary. In the distinct-tangent family,
+\(I_3=(2C+9)/144\); at \(C=-9/2\),
+\(I_6=(4AE-9)/82944\).
+Thus \(I_3,I_6\) successively solve for \(C,E\), with derivatives \(1/72\) and \(A/20736\), both units. On that slice, \(p_0,p_1\) are unit multiples of \(q_9,q_{18}\) at their zeros. The unit \(J\) says that their differentials together with
+\(5q_{12}^4dq_{12}-4q_{15}^3dq_{15}\) have rank three in \(A,B,D\). Scalar variation adds the vector proportional to \((12q_{12},15q_{15})\) in the \(q_{12},q_{15}\) coordinates. It is nonzero, and the last displayed differential annihilates it by (B56). Consequently the four functions \(I_9,I_{18},I_{12},I_{15}\) have rank four after the scalar direction is added. Together with \(I_3,I_6\), their rank is six.
 
-Noether's *On series expansion in form theory* (1920), the addendum to Part III of her 1916 paper, explicitly corrects the earlier use of
-\(\Omega(\Delta\psi)=c_1\psi+c_2\Delta\Omega\psi\)
-as a general identity. It is valid for binary rows but not for arbitrary dimension. Equations (18)–(20) supply the necessary general projection and the quotient separately, so this proof does not make that assumption. In dimension two, (17) specializes to the explicitly normalized binary series in Section 7.
+Finally, (B55) has an ordinary node at \((0:0:1)\), since its affine quadratic term is \(xy\). There is no other singularity on \(xy=0\), because there \(F_z=x^3+y^3\) is nonzero away from that point. On the chart \(y=1,x=U\ne0\), completing the square in \(z\) gives the binary polynomial \(h(U)/A\). A further singularity is equivalent to a repeated root of \(h\). Hence the unit \(\Delta_h\) proves that this is the unique singular point.
 
-## 9. Orthogonal vectors and quadratic ground forms
+At a quartic with a unique ordinary node, the discriminant has nonzero differential in the \(z^4\)-coefficient direction. Locally solve the two affine critical-point equations by the invertible \(xy\)-Hessian. Euler's equation makes the remaining derivative equation four times the value of \(F\) at that critical point. Changing the \(z^4\) coefficient changes that value to first order by one. In the incidence construction of Lemma 5.1, the unique common point and its two transverse equations give a smooth local hypersurface with precisely this equation. The resultant is its reduced defining polynomial, so this local factor has multiplicity one.
 
-### Orthogonal invariants in dimension two
+For clarity, the same resultant argument applies over \(\overline{\mathbb F}_{101}\). The incidence bundle is irreducible of dimension 29; the pair \(x^3-z^3,y^3-z^3\) still has nine distinct transverse points, so the multidegree and reduced simple-zero calculation are unchanged. The determinant quotient in (B31) is integral before normalization: in the unique factorization ring of integer coefficient polynomials, a denominator would divide every maximal minor of \(K\). No nonconstant polynomial can do so by the coprime-pair argument, and no integer prime can do so because at the three pure cubes a complementary minor is one. Thus the normalized quotient reduces to the same resultant modulo 101. Only the normalization \(4^{27}\) is inverted. This proves the asserted nonzero discriminant derivative also in the field used by the certificate.
 
-Over \(\mathbb C\), write a vector as \((x_i,y_i)\), and put \(u_i=x_i+iy_i,\ v_i=x_i-iy_i\). The special orthogonal group acts by
-\(u_i\mapsto tu_i,\ v_i\mapsto t^{-1}v_i\).
-Indeed these substitutions preserve \(x_i^2+y_i^2=u_iv_i\), and every determinant-one isometry has this form in the isotropic basis. A reflection interchanges \(u_i,v_i\), and these two components give the whole orthogonal group.
+The six family directions preserve the fixed node and thus annihilate \(dI_{27}\). The extra \(z^4\) direction supplies the seventh rank. The full seven-parameter Jacobian therefore has rank seven at every point of the reduced fibre (B58), including after scaling by \(\lambda\).
 
-Torus-invariant monomials have equal total \(u\)- and \(v\)-degrees, so they are products of \(u_iv_j\). Put
+Evaluate the fifty scaled secondaries in \(\mathcal A\), and write their coefficient vectors as columns of a \(300\)-by-\(50\) matrix \(V\). The complete columns are in `fibre-secondary-rank.json`. Its rows numbered
 \[
-q_{ij}=u_iv_j+v_iu_j,\qquad r_{ij}=u_iv_j-v_iu_j.
+0,3,6,\ldots,147
 \]
-The torus ring is generated by the \(q_{ij},r_{ij}\), since \(2\) is invertible. The reflection fixes the \(q\)'s and negates the \(r\)'s. Averaging a polynomial expression with its reflected expression leaves only monomials with an even number of \(r\)-factors. Expansion gives
+form a square minor, with
+[]{#equation-B60}
+
 \[
-r_{ij}r_{kl}=q_{il}q_{jk}-q_{ik}q_{jl}.
+\det V_{\{0,3,\ldots,147\},\{1,\ldots,50\}}=70\quad\text{in }\mathbb F_{101}.
+\tag{B60}
 \]
-Pairing up those factors expresses every invariant in the \(q\)'s. Since
-\(q_{ij}=2(x_ix_j+y_iy_j)\), the orthogonal invariant ring is generated by the pairwise inner products.
+These are zero-based polynomial coefficient indices; the columns use the monomial table's order. `verify_quartic_generators.py` reconstructs (B55), all twelve contractions, all original equations and unit witnesses, the fifty columns, and (B60). Gaussian elimination modulo 101 uses only row operations and inverses of nonzero field elements. The nonzero determinant proves independence in the reduced algebra; it is an exact calculation, not a probabilistic sample or a numerical tolerance test. Lemma 6.2 and the full Jacobian just proved give independence of all fifty monomials over the rational parameter ring.
 
-### Binary quadratics retain orientation
+### Completion of the generator theorem
 
-For quadratics
-\[
-f_i=a_ix^2+2b_ixy+c_iy^2
-\]
-define
+[]{#theorem-6-3}
+
+**Theorem 6.3 (Dixmier–Ohno generation).** Over every field \(k\) of characteristic zero,
+[]{#equation-B61}
+
 \[
-h_i=a_ic_i-b_i^2,\quad
-M_{ij}=a_ic_j+c_ia_j-2b_ib_j,\quad
-\tau_{ijk}=\det\begin{pmatrix}
-a_i&b_i&c_i\\a_j&b_j&c_j\\a_k&b_k&c_k
-\end{pmatrix}.
-\tag{15}
+k [c_{ijk}]^{\operatorname{SL}_3}=
+k [I_3,I_6,I_9,I_{12},I_{15},I_{18},I_{27},
+J_9,J_{12},J_{15},J_{18},J_{21}^{a},J_{21}^{b}].
+\tag{B61}
 \]
-The first two are the discriminants and their polarizations:
-the coefficient of \(t\) in \(h(f_i+tf_j)\) is \(M_{ij}\).
-The determinant is also special-linear invariant. In fact the determinant of the coefficient representation \(\operatorname{Sym}^2(g^{-1})\) is \(\det(g)^{-3}\). One can check it on diagonal matrices, where its three eigenvalues multiply to that expression, and then on every matrix by polynomial density.
+Moreover the fifty displayed secondary monomials are a free basis over the polynomial ring in the seven parameters.
 
-**Theorem 9.1 (joint quadratic invariants).** In characteristic zero, the invariants of any number of binary quadratics are generated by the \(h_i,M_{ij},\tau_{ijk}\). For two quadratics the three generators \(h_1,h_2,M_{12}\) suffice.
+**Proof.** Work first over \(\mathbb Q\). Theorem 5.4 makes the parameter ring \(P\) a polynomial ring. Lemma 6.2 and (B55)–(B60) make the graded map
+\(\bigoplus_{W}P [-\deg W]\to R\), sending a basis element to \(W\), injective. The table and Lemma 6.1 give exactly the same Hilbert series for its domain and codomain. Each graded piece is finite-dimensional; an injective map between spaces of equal finite dimension is surjective. Therefore \(R=\bigoplus_W PW\). Every \(W\) is a monomial in the six additional invariants, so (B61) follows.
 
-**Proof.** Polarize any invariant in the coefficients into separate quadratic slots. The symbolic completeness proved by Theorem 6.2 and umbral evaluation expresses it as a sum of bracket monomials with degree two in each symbol letter. Such a monomial is a graph: its vertices are letters, its bracket factors are edges, and every vertex has degree two. A loop is zero. Every remaining component is a cycle, with a doubled edge allowed as a cycle of length two.
+For any characteristic-zero extension, the invariant spaces commute with scalar extension degree by degree, by the finite rational derivation kernels established in Theorem 5.4. The same is true of the displayed free \(P\)-module. Extending the rational equality proves both assertions over \(k\). Thus no external degree bound, unproved regular-sequence assertion or specialization shortcut is needed. \(\square\)
 
-For a symbol column \(a\), let
-\[
-J=\begin{pmatrix}0&1\\-1&0\end{pmatrix},\qquad
-N_a=aa^{\mathsf t}J.
-\]
-The product of brackets around a cycle is
-\[
-[a_1a_2]\cdots[a_ra_1]
-=\operatorname{tr}(N_{a_1}\cdots N_{a_r}).
-\]
-This follows by multiplying the rank-one matrices: every intervening scalar is \(a_i^{\mathsf t}Ja_{i+1}\), and the trace supplies the last bracket. Umbral evaluation in a quadratic slot gives the traceless matrix
-\[
-N(f_i)=\begin{pmatrix}-b_i&a_i\\-c_i&b_i\end{pmatrix}.
-\]
-Thus the cycle evaluates to the trace of a word in those matrices, with a possible sign when an edge orientation is reversed.
+This proves the full thirteen-generator theorem and identifies a concrete finite module basis. The certificate package includes the all-degree character calculation as well as the finite independence calculation, and its reproduction instructions keep the two logical steps separate.
 
-For any traceless \(2\times2\) matrices \(A,B\), direct multiplication gives
-\[
-AB+BA=\operatorname{tr}(AB)I.
-\tag{16}
-\]
-We claim that all word traces are polynomials in traces of lengths two and three. For a word of length \(r\geq4\), exchanging adjacent letters using (16) changes its trace to the negative trace of the exchanged word plus a product of a length-two trace and a length-\((r-2)\) trace. Repeating adjacent exchanges expresses its trace, modulo sums of such shorter products, as an alternating multilinear function of its \(r\) matrix arguments: antisymmetrize over all \(r!\) permutations and divide by \(r!\). The alternating part is zero, because the vector space of traceless \(2\times2\) matrices has dimension three and an alternating \(r\)-linear function on that space is zero for \(r>3\). This proves the claim by induction, with length-one traces zero.
 
-Multiplication gives
-\(\operatorname{tr}(N(f_i)N(f_j))=-M_{ij}\), including \(M_{ii}=2h_i\).
-Equation (16) makes the length-three trace alternating, so it is a scalar multiple of the determinant of the three coefficient rows. On the rows \((1,0,0),(0,1,0),(0,0,1)\), the trace is \(-1\); hence it is \(-\tau_{ijk}\). Consequently every cycle evaluation is in the algebra generated by (15). Products of cycles and restitution prove generation for the original invariant. With only two quadratic kinds, every alternating triple has repeated rows and is zero, leaving the three stated generators. \(\square\)
+## Exercises {#exercises}
 
-The triple determinant is necessary as soon as there are three quadratics. The two ordered triples
-\[
-(x^2,\,2xy,\,y^2),\qquad(y^2,\,2xy,\,x^2)
-\]
-have identical self-discriminants and all pairwise \(M_{ij}\), but their \(\tau_{123}\) are \(1\) and \(-1\). Thus a polynomial in the pairwise data cannot equal \(\tau_{123}\). The coefficient reflection \((a,b,c)\mapsto(c,b,a)\) preserves the bilinear discriminant form and reverses orientation. Special-linear substitutions on the binary variables preserve that orientation.
+[]{#exercise-1}
 
-## Exercises and solutions
+**Exercise 1 — The determinant character.** Show that a bracket of \(n\) vector columns is special-linear invariant and changes by \(\det g\) under \(v_i\mapsto gv_i\).
 
-**Exercise 1 — The row Lie algebra.** Verify (3) by applying both sides to a coordinate function, then explain why this suffices.
+[Solution](#solution-1).
 
-**Solution.** We have \(D_{ij}x_{ra}=\delta_{jr}x_{ia}\), so
-\[
-[D_{ij},D_{kl}]x_{ra}
-=\delta_{lr}\delta_{jk}x_{ia}
--\delta_{jr}\delta_{li}x_{ka}.
-\]
-This equals \((\delta_{jk}D_{il}-\delta_{li}D_{kj})x_{ra}\). The commutator of two derivations is a derivation, as expansion of the two product rules shows. A derivation on a polynomial ring is determined by its values on its coordinate generators, proving the identity.
+[]{#exercise-2}
+
+**Exercise 2 — Density from unit quaternions.** Prove the density of \(\operatorname{SU}(2)\) directly from its quaternion parametrization.
+
+[Solution](#solution-2).
+
+[]{#exercise-3}
+
+**Exercise 3 — Averaging a linear-form representation.** Compute \(\rho\) on \(\mathbb C [x,y]_2\) for the standard special-linear action, and determine it in every positive degree.
+
+[Solution](#solution-3).
 
-**Exercise 2 — Capelli on determinant powers.** Check (8) on \(\Delta^s\), where \(\Delta=x_{11}x_{22}-x_{12}x_{21}\) and \(s\geq1\).
+[]{#exercise-4}
 
-**Solution.** Each row Euler operator gives \(D_{ii}\Delta^s=s\Delta^s\), and \(D_{12}\Delta^s=0\): replacing row two by row one in the determinant gives zero. Thus the left side is \(s(s+1)\Delta^s\). For the right side, differentiate:
+**Exercise 4 — Finite generation and normality.** Deduce that \(B\) is a Noetherian normal domain. Explain why finite generation alone does not prove normality, using \(\mathbb C [t^2,t^3]\).
+
+[Solution](#solution-4).
+
+[]{#exercise-5}
+
+**Exercise 5 — The cubic nullcone.** Determine the nullcone of binary cubics and identify its defining invariant.
+
+[Solution](#solution-5).
+
+## Solutions {#solutions}
+
+### Solution 1
+
+The new column matrix is \(g(v_{i_1}\ \cdots\ v_{i_n})\). Multiplicativity of the determinant gives
+\([gv_{i_1}\cdots gv_{i_n}]=\det(g)[v_{i_1}\cdots v_{i_n}]\).
+On \(\operatorname{SL}_n\) the factor is one. Under the induced action on polynomial functions, \(gF(v)=F(g^{-1}v)\), the character is its inverse. Keeping these two assertions separate avoids a sign change in determinant weights.
+
+[Exercise 1](#exercise-1).
+
+### Solution 2
+
+Every element is
 \[
-\partial_{11}\partial_{22}\Delta^s
-=s\Delta^{s-1}+s(s-1)x_{11}x_{22}\Delta^{s-2},
+\begin{pmatrix}
+u+iv&s+it\\-s+it&u-iv
+\end{pmatrix},
+\qquad u,v,s,t\in\mathbb R,\quad u^2+v^2+s^2+t^2=1.
 \]
+To check the parametrization, a unitary determinant-one matrix has second row equal to the negative conjugate-swapped first row, and the norm condition gives the sphere equation; the converse follows by multiplication.
+
+Near the identity use real coordinates \(v,s,t\), with
+\(u=(1-v^2-s^2-t^2)^{1/2}\) and the positive root. The same formula is holomorphic for complex \(v,s,t\) near zero, using the square root with value one. Its derivative gives the three complex-independent matrices
 \[
-\partial_{12}\partial_{21}\Delta^s
-=-s\Delta^{s-1}+s(s-1)x_{12}x_{21}\Delta^{s-2}.
+\begin{pmatrix}i&0\\0&-i\end{pmatrix},\quad
+\begin{pmatrix}0&1\\-1&0\end{pmatrix},\quad
+\begin{pmatrix}0&i\\i&0\end{pmatrix},
 \]
-Their difference is
-\(s(s+1)\Delta^{s-1}\). Multiplication by \(\Delta\) agrees with the left side. For \(s=1\) the terms multiplied by \(s(s-1)\) are zero and the derivative difference is \(2\). This verifies the assigned test functions; Theorem 2.1 proves the operator equality on every polynomial.
+a basis of \(\mathfrak{sl}_2(\mathbb C)\). Thus it parametrizes a complex open neighbourhood of the identity. A polynomial vanishing on the real unit sphere vanishes on the real coordinate box here; the coordinatewise identity theorem makes it vanish on that complex neighbourhood. Connectedness, proved in Lemma 8.2 by elementary matrices, makes it vanish on all of \(\operatorname{SL}_2(\mathbb C)\).
+
+[Exercise 2](#exercise-2).
+
+### Solution 3
+
+Transitivity on nonzero vectors shows that an invariant polynomial on \(\mathbb C^2\) is constant: it has the same value on the punctured plane, a dense set. Hence the invariant subspace in every positive homogeneous degree is zero. A Reynolds operator projects onto that subspace, so
+\(\rho(ax^2+bxy+cy^2)=0\), and likewise in every positive degree. On constants it is the identity. In particular \(\rho(x^2)\) is not obtained by keeping only a torus-fixed monomial; being fixed by the whole group is the condition.
+
+[Exercise 3](#exercise-3).
 
-**Exercise 3 — Two quadratic kinds.** Prove that the invariants of two binary quadratics are generated by their discriminants and polarized discriminant.
+### Solution 4
 
-**Solution.** Theorem 9.1 expresses every invariant as a polynomial in \(h_1,h_2,M_{12}\) and triple determinants. A triple drawn from two kinds repeats a coefficient row, so its determinant is zero. The remaining three are invariant by (15), proving equality. They are also algebraically independent: on \(f_1=2bxy\), their values are
-\(-b^2,\ \alpha\gamma-\beta^2,\ -2b\beta\).
-When \(b\ne0\), these three quantities can be prescribed freely on a dense open set over the algebraic closure, by choosing \(b,\beta\) and then \(\alpha,\gamma\). A polynomial relation therefore vanishes identically.
+Theorem 10.1 makes \(B\) a quotient of a finite polynomial ring, hence Noetherian by the Hilbert basis theorem. It is a domain because \(A\) is, and the monic-equation argument of Corollary 10.2 proves it is integrally closed in its fraction field. For \(R=\mathbb C [t^2,t^3]\), the element \(t=t^3/t^2\) belongs to \(\operatorname{Frac}R\), and satisfies the monic polynomial \(Z^2-t^2\in R [Z]\). But \(t\notin R\): every nonconstant monomial in its generators has degree at least two. Thus \(R\) is finite type and a domain but is not normal.
 
-**Exercise 4 — A direct binary vector proof.** Prove bracket generation for binary vectors without Capelli, and organize the argument as induction in the number of rows.
+[Exercise 4](#exercise-4).
 
-**Solution.** For one row, special-linear transitivity on nonzero vectors gives only constants. For two rows, the determinant-orbit argument gives \(k[[12]]\). For \(m>2\), apply the row-maximal-weight proof in Section 3 with \(n=2\): any simple row-substitution component of the invariant space contains a vector killed by \(D_{ij}\), \(i<j\); the equations \(D_{1j}F=D_{2j}F=0\) and invertibility of the first two rows force independence of every later row. Its orbit generates that component from a polynomial in \([12]\). A row translate of \([12]\) is a linear combination of brackets \([ij]\), so each component, and then the entire invariant space, is in their algebra. This proves the induction step for every new row at once, using the two-row base case. It uses complete reducibility and row derivatives, with no Capelli identity. The determinant proof in Section 4 is its \(n\)-dimensional version.
+### Solution 5
 
-**Exercise 5 — More quadratic kinds and the missing generator.** Determine whether Weyl's theorem reduces an arbitrary number of binary quadratics to two quadratics. Give the correct bound and generating patterns.
+Theorem 13.2 gives root multiplicity \(>3/2\), hence at least two, for every nonzero cubic in the nullcone. The zero cubic is also there. The first lesson proves that the invariant ring is \(\mathbb C [\Delta]\), with
+\(\Delta=(2/27)[12]^2 [13]^2 [23]^2\).
+Its zero set is exactly the repeated-root locus, including zero, so \(\mathcal N=V(\Delta)\). Alternatively, a double-root cubic can be moved to one divisible by \(x^2\), and the diagonal one-parameter substitution in Theorem 13.2 sends it to zero; a three-distinct-root cubic has nonzero \(\Delta\).
 
-**Solution.** The coefficient representation has dimension three, so the bound is three. The triples displayed after Theorem 9.1 give a counterexample to generation solely by self- and pairwise discriminants: all those values agree, while \(\tau_{123}\) changes sign. Theorem 9.1 proves the corrected generating patterns are \(h_i,M_{ij},\tau_{ijk}\). These are precisely the polarizations of the corresponding invariants on three copies. The pair and triple generators have coefficient degrees two and three, respectively. This corrects the proposed two-copy deduction without weakening the actual polarization theorem.
+[Exercise 5](#exercise-5).
 
-## Sources and current check scope
 
-Vector generation, all bracket relations, integral straightening, the mixed vector theorem and both the binary and general series have complete proofs above. Noether's 1916 reduction paper and its 1920 addendum provide the historical comparison; the latter corrects the general determinant differential identity discussed after Theorem 8.2. Her 1919 paper, Section 3, supplies the original integral bracket argument. Kraft and Procesi's *Classical Invariant Theory: A Primer*, Sections 7.1–7.4, is a further comparison for polarization and vector invariants. These references receive credit without replacing the course proofs.
+## Further reading
 
-The false pairwise-only assertion for arbitrary binary quadratics has been replaced by the proved pair and triple generators. Exact finite tests check the binary expansion in 25 bidegrees, the Capelli operator order on 14 polynomials in dimensions one through four, and the quartic umbral normalization. These tests support the written arguments; they do not establish general theorems by sampling. The line-by-line self-check, original diagram and reading-format check are being completed.
+Noether’s 1910 announcement and 1911 paper develop matrix products and decomposition identities. Artebani and Dolgachev, [The Hesse pencil of plane cubic curves](https://arxiv.org/abs/math/0611590), treats the cubic geometry. The quartic constructions are due to Dixmier and Ohno; Ohno’s [preprint](https://aeb.win.tue.nl/math/ohno-preprint.2007.05.15.pdf), Lercier, Liu, Lorenzo García and Ritzenthaler’s [Reduction type of smooth plane quartics](https://arxiv.org/abs/1803.05816), and Elsenhans’s [Explicit computations of invariants of plane quartic curves](https://math.uni-paderborn.de/fileadmin-eim/mathematik/AG-Computeralgebra/Publications-elsenhans/inv_pl_quart_5a.pdf) describe the parameters and generators.

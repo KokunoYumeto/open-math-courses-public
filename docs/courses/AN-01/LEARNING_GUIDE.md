@@ -213,6 +213,20 @@ The lesson numbers identify stable files. Within a route, follow the linked prer
 
 - **Regularization and kernel limits.** [*Distributions as kernels*](src/distributions-as-kernels.md#recovering-a-kernel-by-decreasing-its-smoothing-scale) gives Fourier-series and scale-Taylor constructions of the distribution kernel, with explicit finite-order bounds. Seven solved exercises include logarithmic convergence, differentiated point evaluations and the second-moment error.
 
+- **Finite-order pullback and openness.** [*Regular level sets and transverse convolution*](src/regular-level-sets-and-transverse-convolution.md#pullback-with-a-fixed-derivative-cost) treats finite differentiability, the openness obstruction and all differential layers. Twenty-eight solved exercises include signed target cancellation, an open critical map and a weighted parabolic layer.
+
+- **Wave kernels and initial data.** [*Wave powers and complex potentials*](src/wave-powers-and-complex-potentials.md#time-slices-and-the-full-smooth-cauchy-problem) supplies compact spatial slices, all initial jets, half-space uniqueness and the full smooth Cauchy formula. Eleven solved exercises include forcing normalization and finite propagation.
+
+- **Scalar distributions and densities.** [*Regular level sets and transverse convolution*](src/regular-level-sets-and-transverse-convolution.md#distributions-and-densities-in-charts) constructs distributions on manifolds from an atlas and proves both test-space dualities. Twenty-eight solved exercises include nonlinear chart changes, orientation reversal and positive background densities.
+
+- **Tangent vectors and cotangent geometry.** [*Regular level sets and transverse convolution*](src/regular-level-sets-and-transverse-convolution.md#tangent-vectors-covectors-and-bundle-gluing) constructs smooth bundles and tangent vectors from first jets, proves the canonical one-form and full conormal bundle, and includes twenty-eight solved exercises. The problems distinguish tangent and covector transport and exhibit a nontrivial real line bundle.
+
+- **Differential forms and boundary orientation.** [*Regular level sets and transverse convolution*](src/regular-level-sets-and-transverse-convolution.md#exterior-differentiation-and-radial-primitives) proves exterior differentiation, radial primitives and Stokes’ formula, including the support conditions for submanifold distributions. Its twenty-eight solved exercises include polynomial primitives, annular periods and omitted endpoints.
+
+- **Principal symbols and Hamiltonian motion.** [*Regular level sets and transverse convolution*](src/regular-level-sets-and-transverse-convolution.md#principal-symbols-between-vector-bundles) proves the invariant leading polynomial, the local and global potential criteria for Lagrangian graphs, and Hamiltonian conservation and symplectic preservation. Its twenty-eight solved exercises include frame changes, a nonexact characteristic graph and both conormal signs of the wave equation.
+
+- **Flowouts and Cauchy data.** [*Regular level sets and transverse convolution*](src/regular-level-sets-and-transverse-convolution.md#embedded-flowouts-along-an-entire-initial-manifold) constructs embedded Hamiltonian flowouts, solves the noncharacteristic Hamilton–Jacobi Cauchy problem and treats two compatible equations without assuming commuting flows. Its twenty-eight solved exercises include a caustic, a repeated-bracket obstruction and an explicit compatible pair.
+
 Every available lesson contains its own graded problems and complete solutions. The course scope describes the lessons collected in this reader.
 
 ## Sources and contributions

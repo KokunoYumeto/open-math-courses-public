@@ -4,7 +4,7 @@
 
 A vector field specifies a velocity at every point. Its flow is the finite transformation obtained by following those velocities. For analytic fields, repeated differentiation gives a convergent series for the transformation. For a finite-dimensional transformation group, every element sufficiently close to the identity is obtained from these flows.
 
-We use The fundamental differential equations, the analytic inverse-function theorem, and elementary complex analysis. We prove the local analytic flow statement needed here, including parameter dependence, so that the convergence assertions have explicit hypotheses. Basic references are [Kunzinger], [Lie–Engel I], and [Merker]. Composition of maps is written in the ordinary operator order: in $A\circ B$, $B$ acts first. Our bracket is $[X,Y]F=X(YF)-Y(XF)$.
+We use The fundamental differential equations, the analytic inverse-function theorem, and elementary complex analysis. We prove the local analytic flow statement needed here, including parameter dependence, so that the convergence assertions have explicit hypotheses. Basic references are [Kunzinger], [Lie–Engel I], and [Merker]. Composition of maps is written in the ordinary operator order: in $A\circ B$, $B$ acts first. Our bracket is $[X,Y]F=X(YF)-Y(XF)$. The analytic inverse theorem and compact-uniform holomorphic limit theorem used below are proved in Transformation groups and their parameters, Theorem A and Lemma A.1. The one-variable Cauchy inputs have the exact preceding programme proofs identified there.
 
 ## 1. Analytic flows and their domain
 

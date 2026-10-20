@@ -1,482 +1,841 @@
-# Forms in several variables and Hilbert finiteness
+# Polarization, vector invariants and symbolic evaluation
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex at Ultra, October 2026. Original exposition and proofs are CC0. This evolving lesson is being checked by its writing AI; no independent review is recorded.*
+*Written and self-checked by GPT-6.1 Sol (OpenAI) in Codex at Ultra. Original exposition, proofs, exercises and diagrams are CC0.*
 
-A finite list of explicit covariants answers one computational problem. Hilbert's argument answers a different question: why must some finite list exist for every polynomial representation of the special linear group? Its essential step is a projection that turns coefficients in an ideal expression into invariant coefficients. We then determine the entire invariant ring of a ternary cubic by restricting to the Hesse pencil, before turning to nullcones and determinant operators.
+Polarization moves an invariant between copies of a representation. We prove how many copies suffice, obtain all vector and mixed-vector invariants, and determine every bracket relation over an arbitrary commutative ring. Tensor commutants explain why pairings and determinants suffice. We then use these results to justify symbolic evaluation and its completeness.
 
-We work over \(\mathbb C\). A polynomial representation of \(G=\operatorname{SL}_n(\mathbb C)\) is a homomorphism \(G\to\operatorname{GL}(W)\) whose matrix entries are regular functions of the matrix entries of \(g\); on \(G\), inverse entries are polynomial as well, since \(g^{-1}=\operatorname{adj}(g)\). Put \(A=\mathbb C[W]\), with action \((gF)(w)=F(g^{-1}w)\). Each degree \(A_d\) is a finite-dimensional polynomial representation.
+Let \(k\) have characteristic zero and \(V=k^n\). Copies of \(V\) are rows \(v_i=(x_{i1},\ldots,x_{in})\); diagonal substitution commutes with substitutions among the copies. Subgroups need not be reductive or closed. Covariants, averaging and Hilbert finiteness supplies complete reducibility and the elementary matrix-orbit argument. The integral bracket relation theorem states its wider coefficient-ring scope separately.
 
-We use normalized Haar measure from Haar measure on locally compact groups, Theorems 8.3 and 9.2, the Hilbert basis theorem from Noetherian and Artinian rings, Theorem 2.1, and the Nullstellensatz from The Nullstellensatz and Jacobson rings. These are existing prerequisite lessons with their own proofs. From the first lesson of this course we need the action conventions and covariance of alternating contractions; we do not assume its finite-generation conclusion.
+## 1. Polarizing and putting the variables back together {#section-1}
 
-## 1. Determinants and mixed variables
+Define
+[]{#equation-P1}
 
-For vector columns \(v_1,\ldots,v_m\in\mathbb C^n\), write
+\[
+D_{ij}=\sum_{a=1}^n x_{ia}\partial_{x_{ja}}\qquad(1\leq i,j\leq m).
+\tag{P1}
+\]
+If \(i\ne j\), Taylor's formula gives
+[]{#equation-P2}
+
+\[
+F(\ldots,v_j+tv_i,\ldots)
+=\sum_{r\geq0}\frac{t^r}{r!}D_{ij}^rF.
+\tag{P2}
+\]
+The sum is finite for each polynomial. For \(i=j\), \(D_{ii}\) is instead the Euler operator measuring degree in row \(i\).
+
+[]{#proposition-1-1}
+
+**Proposition 1.1 (commutation).** The \(D_{ij}\) commute with simultaneous linear substitution on \(V\), and
+[]{#equation-P3}
+
+\[
+[D_{ij},D_{kl}]=\delta_{jk}D_{il}-\delta_{li}D_{kj}.
+\tag{P3}
+\]
+
+**Proof.** Replacing the rows by \(gv_i\) and applying the chain rule contracts the derivative with the same vector \(v_i\); the matrix and its inverse cancel. This proves commutation with the diagonal action, hence preservation of invariants. For (P3), apply the product rule. The terms with two derivatives cancel in the difference. Differentiating the multiplier \(x_{ka}\) gives \(\delta_{jk}x_{ia}\partial_{x_{la}}\); differentiating \(x_{ia}\) in the opposite product gives \(-\delta_{li}x_{ka}\partial_{x_{ja}}\). Sum over \(a\). \(\square\)
+
+A polynomial homogeneous of degree \(d\) on \(V\) has **full polarization**
+[]{#equation-P4}
+
+\[
+\mathcal PF(v_1,\ldots,v_d)
+=\frac1{d!}[t_1\cdots t_d]\,
+F(t_1v_1+\cdots+t_dv_d).
+\tag{P4}
+\]
+It is symmetric and multilinear. **Restitution**, putting \(v_1=\cdots=v_d=v\), recovers \(F(v)\): the coefficient of \(t_1\cdots t_d\) in \((t_1+\cdots+t_d)^d\) is \(d!\). Conversely, a symmetric multilinear form is determined by that diagonal polynomial, since coefficient extraction in its diagonal expansion recovers \(d!\) times the form. For a multihomogeneous polynomial, perform (P4) separately in each row. All these operations commute with the diagonal group action. Division by \(d!\) is the characteristic-zero step.
+
+## 2. The shifted determinant in Capelli's identity {#section-2}
+
+Noncommuting entries require an order. For an \(r\times r\) operator matrix \(M\), put
+\[
+\operatorname{cdet}M
+=\sum_{\sigma\in S_r}\operatorname{sgn}(\sigma)
+M_{\sigma(1),1}\cdots M_{\sigma(r),r}.
+\]
+The rightmost operator acts first.
+
+[]{#theorem-2-1}
+
+**Theorem 2.1 (Capelli).** If \(m=n\) and \(X=(x_{ia})\), then
+[]{#equation-P5}
+
+\[
+\operatorname{cdet}\bigl(D_{ij}+(n-j)\delta_{ij}\bigr)
+=\det(X)\det(\partial_{x_{ia}}).
+\tag{P5}
+\]
+The shift can equally be written \(n-i\) on the diagonal. The stated column order is essential.
+
+**Proof.** Introduce anticommuting symbols \(e_1,\ldots,e_n\), with \(e_i^2=0\), commuting with the ordinary variables and differential operators. Put
+\[
+\xi_a=\sum_i e_ix_{ia},\qquad
+\eta_j=\sum_i e_iD_{ij}=\sum_a\xi_a\partial_{x_{ja}}.
+\]
+For distinct row indices \(j_1,\ldots,j_r\), let
+\[
+N_{j_1,\ldots,j_r}
+=\sum_{a_1,\ldots,a_r}
+\xi_{a_1}\cdots\xi_{a_r}
+\partial_{x_{j_1a_1}}\cdots\partial_{x_{j_ra_r}};
+\qquad N_\varnothing=1.
+\]
+The derivatives in \(N\) stand to the right of all multipliers. The product rule and
+\(\partial_{x_{ja}}\xi_b=\delta_{ab}e_j\)
+give
+[]{#equation-P6}
+
+\[
+\eta_jN_{j_1,\ldots,j_r}
+=N_{j,j_1,\ldots,j_r}-r e_jN_{j_1,\ldots,j_r}.
+\tag{P6}
+\]
+To check the sign, when the derivative hits the \(l\)-th multiplier \(\xi_{a_l}\), it yields
+\(\xi_{a_l}\xi_{a_1}\cdots\xi_{a_{l-1}}e_j
+\xi_{a_{l+1}}\cdots\xi_{a_r}\).
+Moving \(e_j\) to the front gives sign \((-1)^l\); moving \(\xi_{a_l}\) to its original position gives \((-1)^{l-1}\). Their product is \(-1\). Each of the \(r\) terms therefore contributes \(-e_jN\).
+
+Starting from the right and using (P6),
+[]{#equation-P7}
+
+\[
+(\eta_1+(n-1)e_1)(\eta_2+(n-2)e_2)\cdots\eta_n
+=N_{1,\ldots,n}.
+\tag{P7}
+\]
+The coefficient of \(e_1\cdots e_n\) on the left is the column determinant in (P5). On the right,
+\[
+\xi_{a_1}\cdots\xi_{a_n}
+=e_1\cdots e_n\det(x_{i,a_j})_{i,j}.
+\]
+Only tuples that permute \(1,\ldots,n\) remain nonzero. Their signed derivative sum is \(\det(\partial_{x_{ia}})\); their common multiplier is \(\det X\). Taking the coefficient proves (P5). \(\square\)
+
+For two rows, the identity reads
+[]{#equation-P8}
+
+\[
+(D_{11}+1)D_{22}-D_{21}D_{12}
+=(x_{11}x_{22}-x_{12}x_{21})
+(\partial_{11}\partial_{22}-\partial_{12}\partial_{21}).
+\tag{P8}
+\]
+The added \(D_{22}\) cancels the term created when a derivative in \(D_{21}\) hits a multiplier in \(D_{12}\). Formula (P6) is that same cancellation for all sizes.
+
+## 3. A row bound without an unproved highest-weight theorem {#section-3}
+
+Write \(H_d=k [V^m]_d\). A subspace stable under row substitutions is stable under all \(D_{ij}\). Conversely, stability under all \(D_{ij}\) implies stability under row substitutions. For off-diagonal elementary matrices this follows from (P2). For diagonal substitutions, the commuting \(D_{ii}\) have nonnegative integer eigenvalues; projections onto their eigenspaces are interpolation polynomials in them. Thus a stable subspace is multihomogeneous and stable under row scalings. Elementary matrices and diagonal matrices generate \(\operatorname{GL}_m(k)\).
+
+[]{#lemma-3-1}
+
+**Lemma 3.1 (complete reducibility for row substitutions).** Every \(\operatorname{GL}_m(k)\)-stable subspace of \(H_d\) has a \(\operatorname{GL}_m(k)\)-stable complement.
+
+**Proof.** Over \(\mathbb C\), apply complete reducibility for \(\operatorname{SL}_m\) from Theorem 8.3 of the first lesson. Scalar matrices act on \(H_d\) by scalars. Every complex general-linear matrix is a scalar times a special-linear matrix, so that complement is general-linear stable.
+
+For arbitrary \(k\), let \(M\subset H_d\) be stable and choose a \(k\)-basis. Its finitely many entries in the monomial basis lie in a finitely generated field \(L\subset k\) over \(\mathbb Q\). The matrices of \(D_{ij}\) in the monomial basis are rational. Coordinates expressing \(D_{ij}\) of a chosen basis vector in the chosen basis can be computed using one nonzero maximal basis minor, so belong to \(L\). Hence the \(L\)-span \(M_L\) is stable.
+
+Embed \(L\) into \(\mathbb C\): choose algebraically independent complex values for a transcendence basis and then extend over the finite algebraic extension into the algebraically closed field \(\mathbb C\). Complex complete reducibility gives a projection \(p:H_d\otimes_L\mathbb C\to M_L\otimes_L\mathbb C\), commuting with every \(D_{ij}\) and equal to the identity on \(M_L\). Those properties are a finite system of linear equations for the entries of \(p\), with coefficients in \(L\). Gaussian elimination shows that a system consistent over \(\mathbb C\) is consistent over \(L\). Extend an \(L\)-solution to \(k\). Its kernel is a \(D_{ij}\)-stable, hence \(\operatorname{GL}_m(k)\)-stable, complement. \(\square\)
+
+[]{#lemma-3-2}
+
+**Lemma 3.2 (a highest row weight uses at most \(n\) rows).** A nonzero finite-dimensional \(\operatorname{GL}_m(k)\)-stable subspace of \(H_d\) contains a nonzero multihomogeneous polynomial \(F\) killed by every \(D_{ij}\) with \(i<j\). If \(m\geq n\), every such \(F\) depends only on its first \(n\) rows.
+
+**Proof.** Decompose into row multidegrees \(\lambda=(\lambda_1,\ldots,\lambda_m)\), using the interpolation projectors just described. Choose the lexicographically largest weight with a nonzero vector \(F\). For \(i<j\), \(D_{ij}\) changes that weight to \(\lambda+e_i-e_j\), a larger weight, or gives zero. Maximality therefore forces zero.
+
+For \(j>n\), the equations \(D_{ij}F=0\), \(1\leq i\leq n\), are
+\[
+\sum_{a=1}^n x_{ia}\partial_{x_{ja}}F=0.
+\]
+In the fraction field of the polynomial ring the first \(n\)-row matrix is invertible. Thus every \(\partial_{x_{ja}}F=0\). These derivatives are polynomial and hence zero before localization. In characteristic zero, zero derivative means independence of that variable. This holds for every \(j>n\). \(\square\)
+
+The phrase “highest weight” here means precisely the maximal multidegree and its annihilation conditions. No classification of irreducible representations was used.
+
+[]{#theorem-3-3}
+
+**Theorem 3.3 (Weyl's polarization theorem).** For every subgroup \(G\subset\operatorname{GL}(V)\) and \(m\geq n\),
+[]{#equation-P9}
+
+\[
+k [V^m]^G
+=\operatorname{span}_k\{\text{row substitutions of }F:
+F\in k [V^n]^G\}.
+\tag{P9}
+\]
+If a set generates the smaller invariant ring as an algebra, its polarizations generate the larger invariant ring.
+
+**Proof.** In each total degree the invariant subspace \(M=H_d^G\) is stable under \(\operatorname{GL}_m\), by Proposition 1.1. Split it into simple submodules using Lemma 3.1. Every nonzero simple summand contains a highest-row-weight vector by Lemma 3.2. That vector is invariant and belongs to \(k [V^n]\). Its orbit spans the simple summand, since its span is a nonzero stable subspace. Summing proves (P9).
+
+Equation (P2), coefficient interpolation in \(t\), and the diagonal interpolation projectors show that orbit span and the span of all iterated \(D_{ij}\) agree. If \(S\) generates \(k [V^n]^G\), the algebra generated by its row translates contains all translates of every polynomial in \(S\), because row substitution is an algebra homomorphism. It therefore contains the space in (P9). Equivalently, the Leibniz rule shows that all polarizations of those polynomials belong to the algebra generated by polarizations of \(S\). \(\square\)
+
+For \(m<n\), restrict the invariant ring on \(n\) copies by setting the extra rows to zero. Inclusion followed by restriction is the identity on the smaller invariant ring, so restrictions of its generators suffice.
+
+## 4. Brackets generate the special-linear invariants {#section-4}
+
+[]{#theorem-4-1}
+
+**Theorem 4.1 (first fundamental theorem for vectors).** For any \(m\), the invariant ring \(k [V^m]^{\operatorname{SL}_n}\) is generated by the \(n\)-row brackets
 \[
 [i_1\cdots i_n]=\det(v_{i_1},\ldots,v_{i_n}).
 \]
-Multiplication of the matrix by \(g\) multiplies every bracket by \(\det g\), so these are special-linear invariants. The first fundamental theorem, proved in *Polarization and invariants of many vectors*, says they generate the invariant ring on any number of vectors.
+When \(m<n\), this ring is \(k\).
 
-For a dual vector \(\alpha\), the pairing \(\alpha(v)\) is invariant under
-\(v\mapsto gv,\ \alpha\mapsto\alpha g^{-1}\).
-Determinants of \(n\) dual rows instead scale by \(\det(g)^{-1}\). In symbolic notation, the letters of a form are dual rows and its ordinary variables are vector columns. Auxiliary dual variables describe contravariants. Polynomials depending on several sorts of auxiliary variables are called concomitants. These transformation rules keep the variable sorts distinct.
+**Proof.** The matrix-orbit proof in Section 7 of the first lesson gives
+\(k [V^n]^{\operatorname{SL}_n}=k [\det(v_1,\ldots,v_n)]\).
+That proof works over any infinite field: invertible matrices of a specified determinant form a single special-linear orbit, and a polynomial equality on the open invertible locus is global.
 
-For exactly \(n\) vector columns, bracket generation has a short direct proof. If \(F\) is invariant, define \(h(t)=F(\operatorname{diag}(t,1,\ldots,1))\). On invertible matrices, two matrices have the same determinant exactly when one is obtained from the other by left multiplication by a special-linear matrix. Thus \(F(X)=h(\det X)\) there. Since \(h\) is polynomial and invertible matrices form a dense open set, the equality holds for all \(X\). Consequently
+Apply Theorem 3.3. A row substitution replaces the determinant by the determinant of \(n\) linear combinations of the rows. By multilinearity and alternation it is a linear combination of \(n\)-row brackets. A translate of a polynomial in the determinant is therefore a polynomial in these brackets, proving generation. If \(m<n\), the restrictions of all such brackets are zero; the restriction argument after Theorem 3.3 leaves only constants. \(\square\)
+
+For three binary vectors, there are three brackets \([12],[13],[23]\) and no relation. On the open set \([12]=p\ne0\), choose
 \[
-\mathbb C[\operatorname{Mat}_n]^{\operatorname{SL}_n}=\mathbb C[\det X].
-\tag{1}
+v_1=(1,0),\quad v_2=(0,p),\quad
+v_3=(-r/p,q).
 \]
-For \(n=2\) this proves the invariant ring of a pair of vectors is \(\mathbb C[[12]]\).
+Then the three brackets are \(p,q,r\). Their values fill a dense open set of affine three-space; thus a polynomial relation between them is zero.
 
-## 2. Compact averaging and the unitary trick
+For four binary vectors, expansion gives
+[]{#equation-P10}
 
-**Theorem 2.1 (compact complete reducibility).** Every finite-dimensional continuous complex representation of a compact group \(K\) has an invariant positive-definite Hermitian inner product. Every invariant subspace has an invariant complement.
-
-**Proof.** Start with any positive-definite Hermitian form \(\langle\ ,\ \rangle_0\), and normalized Haar measure \(\mu\). On a compact group this measure is also right invariant: the right translate of a left Haar measure is left Haar, has the same total mass, and hence equals it by uniqueness. Define
 \[
-\langle v,w\rangle_K=\int_K
-\langle kv,kw\rangle_0\,d\mu(k).
+[12][34]-[13][24]+[14][23]=0.
+\tag{P10}
 \]
-It is Hermitian and invariant, by right translation in the integral. For \(v\ne0\), the continuous positive function \(\langle kv,kv\rangle_0\) has a positive minimum on \(K\); its integral is positive. If \(U\) is invariant, unitarity makes its orthogonal complement invariant: for \(v\perp U\) and \(u\in U\),
-\(\langle kv,u\rangle_K=\langle v,k^{-1}u\rangle_K=0\).
-Splitting successively proves complete reducibility. \(\square\)
+It is the only relation. In the abstract ring on six bracket variables modulo (P10), the relation is primitive and linear in \([34]\); its leading coefficient \([12]\) is coprime to its constant coefficient. Gauss's lemma makes that quotient a domain. After inverting \([12]\), the remaining five brackets are independent: use the displayed coordinates for \(v_3\) and the corresponding pair of free coordinates for \(v_4\). The map from the abstract quotient to the actual invariant ring is therefore injective after localization, and hence injective before localization because the quotient is a domain. Theorem 4.1 gives surjectivity.
 
-For \(G=\operatorname{SL}_n(\mathbb C)\), take
+### All bracket relations, with integer coefficients
+
+Generation and relations are different questions. We now give a presentation of the bracket algebra that also keeps track of its integral coefficient lattice. In this subsection \(R\) can be any commutative ring. Use an \(n\) by \(m\) matrix of independent variables \(z_{ai}\); its \(i\)-th column represents the vector previously written as row \(v_i\).
+
+For every strictly increasing \(n\)-tuple \(I\) introduce an indeterminate \(p_I\). Extend the notation to an ordered tuple by alternation, with a repeated index giving zero. A product
+\(p_{I_1}\cdots p_{I_s}\) is **standard** if
 \[
-K=\operatorname{SU}(n)=\{g:g^*g=I,\ \det g=1\}.
+(I_j)_a\leq (I_{j+1})_a
+\quad\text{for every }a=1,\ldots,n,\ j=1,\ldots,s-1.
 \]
-It is closed and bounded in a finite-dimensional real vector space, hence compact.
+Thus its columns increase strictly downward and its rows increase weakly to the right. The empty product is standard.
 
-**Lemma 2.2 (density of the unitary subgroup).** A regular function on \(G\) that vanishes on \(K\) is zero. The same holds for a holomorphic function.
+Here are the quadratic Grassmann–Plücker shuffle relations. Take ordered lists \(H,T,S\) of respective lengths \(t-1,n-t,n+1\), with \(1\leq t\leq n\), and set
+[]{#equation-P21}
 
-**Proof.** The real Lie algebra
-\(\mathfrak k=\{X:X^*=-X,\ \operatorname{tr}X=0\}\)
-has complex span \(\mathfrak{sl}_n(\mathbb C)\). Indeed every trace-zero matrix is the sum of a skew-Hermitian trace-zero matrix and \(i\) times another one, by separating its Hermitian and skew-Hermitian parts. Choose a real basis \(X_1,\ldots,X_{n^2-1}\) of \(\mathfrak k\); it is a complex basis of that complex span.
-
-The holomorphic map
 \[
-\Phi(z_1,\ldots,z_{n^2-1})
-=\exp(z_1X_1)\cdots\exp(z_{n^2-1}X_{n^2-1})
+\sum_{\substack{C\subset\{1,\ldots,n+1\}\\|C|=n-t+1}}
+\epsilon(C)\,p_{H,S_C}\,p_{S_{C^c},T}=0.
+\tag{P21}
 \]
-has invertible derivative at zero, so the complex inverse-function theorem gives a complex open neighbourhood of the identity in its image. For real \(z_j\), its image lies in \(K\). If \(P\) vanishes on \(K\), \(P\circ\Phi\) vanishes on a real open box. Applying the one-variable identity theorem to one coordinate at a time makes it zero on a complex neighbourhood of zero. Hence \(P\) vanishes on a complex open neighbourhood in \(G\).
+The sublists retain their order in \(S\), and \(\epsilon(C)\) is the sign of the permutation listing \(C\) first and \(C^c\) second. Signed tuples in (P21) are interpreted by the alternating convention. For \(n=2\) the nonzero relations are exactly (P10), with arbitrary four distinct indices.
 
-The group \(G\) is connected: elementary row operations express its matrices as products of elementary unipotent matrices and determinant-one diagonal matrices; the latter are products of diagonal \(2\times2\) blocks, themselves products of elementary matrices by the explicit calculation in the first lesson. Each elementary subgroup is the image of the connected plane \(\mathbb C\), and products give paths to the identity. Holomorphic continuation on this connected complex manifold now proves \(P=0\). The case \(n=1\) is immediate. \(\square\)
+[]{#theorem-4-2}
 
-**Theorem 2.3 (the unitary trick).** Every finite-dimensional polynomial representation of \(G\) is completely reducible.
-
-**Proof.** First, a \(K\)-invariant subspace \(U\) is \(G\)-invariant. For \(u\in U\) and a linear functional \(\ell\) vanishing on \(U\), the regular function \(g\mapsto\ell(gu)\) vanishes on \(K\), and hence on \(G\) by Lemma 2.2. Therefore \(gu\in U\).
-
-Given a \(G\)-invariant subspace, Theorem 2.1 supplies a \(K\)-invariant complement; the preceding argument makes that complement \(G\)-invariant. Repeating in finite dimension gives a direct sum of irreducibles. \(\square\)
-
-The passage from \(K\) to \(G\) uses holomorphic matrix coefficients. It does not apply to an arbitrary continuous representation of the underlying real group \(G\).
-
-## 3. The Reynolds projection
-
-Let \(B=A^G\). Degree by degree, define
+**Theorem 4.2 (integral second fundamental theorem).** The homomorphism
 \[
-\rho(F)=\int_K kF\,d\mu(k).
-\tag{2}
+R [p_I]\longrightarrow R [z_{ai}],\qquad
+p_I\longmapsto \det(z_{a,i_b})_{a,b=1}^n
 \]
-The integral is just integration of the finitely many coordinates in \(A_d\), not integration over an infinite-dimensional space.
+has kernel generated by (P21). Its image is a free \(R\)-module with the standard bracket products as a basis. In particular the presentation and the basis remain valid modulo every prime, and no additional relation appears there.
 
-**Theorem 3.1 (Reynolds).** The map \(\rho:A\to B\) is the unique degree-preserving, \(G\)-equivariant projection onto \(B\). It satisfies
+**Proof.** First, (P21) vanishes on actual determinants. Its left side is an alternating multilinear function of the \(n+1\) columns listed in \(S\). Indeed, an exchange within a chosen sublist changes its determinant sign; an exchange between the two sublists pairs the corresponding subset terms with opposite signs. It is zero when two columns coincide, including in characteristic two. Expand all columns in the \(n\) coordinate basis vectors. Every term has two equal basis columns, so the alternating function is zero. This argument is integral and uses no division.
+
+Next we straighten a nonstandard product. Order its increasing column tuples lexicographically. If the product is not standard, two consecutive columns \(A=(a_1,\ldots,a_n)\), \(B=(b_1,\ldots,b_n)\) have \(a_t>b_t\) for some position \(t\); take the first such position. Put
 \[
-\rho(bF)=b\rho(F)\quad(b\in B),\qquad
-\rho(b)=b.
-\tag{3}
+H=(a_1,\ldots,a_{t-1}),\quad
+T=(b_{t+1},\ldots,b_n),\quad
+S=(a_t,\ldots,a_n,b_1,\ldots,b_t).
 \]
+The first \(n-t+1\) entries of \(S\) are all larger than its last \(t\) entries, because \(a_t>b_t\). The term choosing those first entries in (P21) is \(p_Ap_B\), with coefficient one. Every other nonzero term chooses at least one \(b_i\leq b_t<a_t\) for its first determinant. After sorting that determinant, its tuple is lexicographically smaller than \(A\): the fixed initial entries \(H\) are retained, and at least one of the larger tail entries has been replaced by a smaller entry.
 
-**Proof.** Translation in (2) makes its image \(K\)-fixed, hence \(G\)-fixed by density. Averaging a fixed vector gives that vector, so it is a projection. It preserves degrees. Left and right invariance of Haar measure make it commute with \(K\), and density makes this commutation hold with \(G\) on every finite-dimensional degree piece. Pulling the \(K\)-fixed factor \(b\) out of the integral proves (3).
+No other term is the original product with its factors reversed. To see this, \(A<B\) lexicographically, since equal columns cannot violate componentwise order. Their first unequal position occurs before or at \(t\), and cannot be \(t\), where \(a_t>b_t\). Its entry in \(A\) is smaller than the corresponding entry in \(B\), and is not an entry of \(B\): all earlier entries agree and all later entries of \(B\) are larger. That entry belongs to \(H\), so the first determinant in another term cannot be \(p_B\).
 
-For uniqueness, use Theorem 2.3 on each \(A_d\). Any equivariant map to the trivial representation kills every nontrivial irreducible: a nonzero map from an irreducible to a trivial representation would be injective, forcing that irreducible to be trivial. On the sum of trivial summands a projection onto \(B_d\) is the identity. These two conditions determine it uniquely. \(\square\)
+Consequently (P21) expresses the original product as an integer linear combination of products whose sorted list of column tuples is lexicographically smaller. Other factors do not affect this conclusion: inserting the smaller new column before the former column \(A\) strictly decreases the sorted list. The number of columns and the multiset of all their indices are preserved. There are only finitely many such lists, so repeated straightening terminates in standard products. This proves that standard products span the quotient by the shuffle relations over \(R\).
 
-Thus a Reynolds projection is more than a linear choice of a complement. Its invariant-linearity is what permits the next degree induction.
-
-## 4. Hilbert finiteness and normality
-
-**Theorem 4.1 (Hilbert finiteness).** For every finite-dimensional polynomial representation \(W\) of \(\operatorname{SL}_n(\mathbb C)\), the invariant ring \(B=\mathbb C[W]^G\) is generated by finitely many homogeneous invariants.
-
-**Proof.** Let \(I=A\,B_+\) be the ideal generated by all positive-degree homogeneous invariants. The polynomial ring \(A\) is Noetherian by the Hilbert basis theorem. Hence \(I\) has finitely many ideal generators. Each is a finite \(A\)-linear combination of elements of \(B_+\), so collecting the finitely many invariants occurring in those expressions gives homogeneous invariants \(f_1,\ldots,f_s\) generating \(I\).
-
-If \(f\in B\) is homogeneous of positive degree \(d\), write
-\(f=\sum_i a_if_i\).
-Taking degree \(d\) components lets us choose \(a_i\) homogeneous of degree \(d-\deg f_i\), omitting a term when this number is negative. Apply (3):
+They are independent after substitution. Order the matrix variables lexicographically, row by row:
 \[
-f=\rho(f)=\sum_i\rho(a_i)f_i.
+z_{11}>z_{12}>\cdots>z_{1m}>
+z_{21}>\cdots>z_{nm}.
 \]
-Every nonzero \(\rho(a_i)\) has degree strictly less than \(d\). Induction on \(d\), starting with \(B_0=\mathbb C\), expresses \(f\) as a polynomial in the \(f_i\). Every invariant is a sum of homogeneous invariants, because the action preserves degree. Thus \(B=\mathbb C[f_1,\ldots,f_s]\). \(\square\)
-
-This proof establishes existence; the basis theorem does not supply a numerical bound on the degrees of the chosen \(f_i\).
-
-**Corollary 4.2 (normality).** \(B\) is a Noetherian normal domain.
-
-**Proof.** It is a finite-type algebra over a field, hence Noetherian, and a subring of the domain \(A\). If \(z\in\operatorname{Frac}B\) is integral over \(B\), the same monic equation makes it integral over \(A\). Polynomial rings are normal, by Integral extensions, lying over, going up and going down, Proposition 2.3, so \(z\in A\). Since it is a fraction of invariant elements, \(z\) is fixed by \(G\). Hence \(z\in B\). \(\square\)
-
-For example, the quadratic calculation in the first lesson gives
-\(\mathbb C[\operatorname{Sym}^2(\mathbb C^2)^*]^{\operatorname{SL}_2}
-=\mathbb C[ac-b^2]\).
-Applying Theorem 4.1 to coefficient variables together with auxiliary vector or dual-vector variables proves finite generation for their covariant and concomitant algebras as well.
-
-### The complete invariant ring of a ternary cubic
-
-Hilbert's theorem supplies finiteness without choosing generators. For a ternary cubic, two explicit contractions suffice. The completeness proof below uses a two-dimensional family and a finite group acting on it. The finite-group counting formula is Theorem 4.1 of Invariants of finite groups and Noether's degree bound; its proof uses finite averaging and is independent of this cubic example.
-
-Write a general cubic with multinomial coefficients:
+The leading monomial of an increasing minor is its diagonal monomial
+\(\prod_a z_{a,i_a}\), with coefficient one: the determinant term using the smallest column in row one is largest, then the same argument applies to subsequent rows. Thus a standard product has leading monomial
 \[
-f(x,y,z)=\sum_{i+j+k=3}\frac{3!}{i!j!k!}c_{ijk}x^iy^jz^k.
+\prod_{j=1}^s\prod_{a=1}^n z_{a,(I_j)_a}.
 \]
-For four independent symbolic rows \(u,v,w,r\), let \(U_f\) replace a degree-three monomial in each row by the corresponding coefficient \(c_{ijk}\). Define
+This monomial determines the standard product. For each coordinate row \(a\), it records the multiset of entries in row \(a\) of the tableau; weak increase puts that multiset in its unique order, recovering every column. Distinct standard products therefore have distinct leading monomials.
+
+In a nonzero finite \(R\)-linear combination of their images, choose the largest leading monomial among terms with nonzero coefficients. Smaller-leading polynomials cannot contribute to it, and its coefficient is the chosen nonzero coefficient times one. The combination is nonzero, even when \(R\) has zero divisors. Independence follows. Spanning and independence identify the kernel exactly with the shuffle ideal and establish all assertions. \(\square\)
+
+Combining Theorems 4.1 and 4.2 gives the full presentation of the vector invariant ring in characteristic zero. The relation theorem itself has no characteristic restriction. It also shows why a computation after inverting one bracket alone would not suffice: the standard basis controls the entire polynomial algebra, including its specializations at that bracket's zero set.
+
+[]{#corollary-4-3}
+
+**Corollary 4.3 (integral vector invariants).** A polynomial with integer coefficients, universally invariant under \(\operatorname{SL}_n\) on any number of vector columns, is an integer polynomial in their brackets.
+
+**Proof.** Over \(\mathbb Q\), Theorem 4.1 expresses it in brackets. Theorem 4.2 straightens that expression into a rational linear combination of standard products. Clear denominators with the least positive integer \(N\), obtaining
 \[
-S(f)=U_f\bigl([uvw][uvr][uwr][vwr]\bigr),\qquad
-H_f=\det\left(\frac{\partial^2f}{\partial x_i\partial x_j}\right),
+NF=\sum_T c_T p_T,\qquad c_T\in\mathbb Z.
+\]
+If a prime \(p\) divides \(N\), reduction modulo \(p\) makes the left side zero. Independence of standard products over \(\mathbb F_p\) makes every \(c_T\) divisible by \(p\). Dividing the integral identity by \(p\) contradicts minimality of \(N\). Hence \(N=1\). Conversely determinants are universally special-linear invariant, so all integer polynomials in them are invariant. \(\square\)
+
+Noether's 1919 paper, Section 3, proves precisely the binary integral statement by normalizing bracket products and controlling relations modulo each prime. The tableau argument here supplies the same integral control in every dimension. Its binary step is particularly concrete:
+\[
+p_{14}p_{23}=p_{13}p_{24}-p_{12}p_{34}.
+\]
+The nested pair on the left is replaced by the two standard pairings on the right. Leading diagonal monomials then certify that the standard expressions are unique.
+
+![Three pairings of four vector indices. The nested product of brackets 14 and 23 equals the product 13 and 24 minus the product 12 and 34. The two resulting products have componentwise ordered columns.](figures/bracket-straightening.png)
+
+The arcs record which indices belong to each bracket; they do not represent a geometric configuration of the vectors. The signs are those of (P10). This is the \(n=2\) straightening step in Theorem 4.2, with no denominator introduced. Editable diagram.
+
+## 5. Repeated kinds of ground forms {#section-5}
+
+Let \(U\) be a representation of dimension \(D\), and let \(Z\) be another representation containing all the other ground forms. A kind of form occurring \(N\) times has coefficient space \(U^N\). The group acts diagonally on those copies and on \(Z\).
+
+[]{#theorem-5-1}
+
+**Theorem 5.1 (Noether's reduction for repeated kinds).** In characteristic zero,
+\[
+k [Z\oplus U^N]^G
+\]
+is generated by polarizations, among the \(U\)-copies, of the invariants on \(Z\oplus U^{\min(N,D)}\). The operators do not act on the other kinds of ground forms.
+
+**Proof.** Repeat Lemmas 3.1–3.2 in a component of fixed total \(U\)-degree and fixed \(Z\)-degree. It is the tensor product of \(k [U^N]_d\) with the finite-dimensional space \(k [Z]_e\), on which the row-substitution group acts trivially. The same complete-reducibility proof applies. For a highest-row-weight invariant, the derivative equations in a row \(j>D\) are a \(D\times D\) system with the first \(D\) coefficient vectors as its matrix. In their fraction field that matrix is invertible, so the polynomial is independent of every later \(U\)-row. The orbit-span argument proves the assertion for \(N\geq D\). If \(N<D\), there is no reduction to perform. \(\square\)
+
+For binary quadratics \(D=3\), not two. Noether's 1916 paper credits the underlying reduction of repeated vector rows to Capelli, Mertens and Deruyts. Her answer to Hilbert applies that reduction to coefficient vectors of repeated ground forms. The number of copies is bounded by the dimension of the coefficient representation, not by the number of original polynomial variables.
+
+## 6. Vectors and dual vectors {#section-6}
+
+The symbolic method also needs invariants involving both vectors and covectors. We give the tensor argument rather than assume a mixed version of the vector theorem.
+
+[]{#lemma-6-1}
+
+**Lemma 6.1 (a tensor commutant).** The endomorphisms of \(V^{\otimes r}\) commuting with every \(g^{\otimes r}\), \(g\in\operatorname{GL}(V)\), are spanned by permutations of the \(r\) tensor factors.
+
+**Proof.** First work over \(\mathbb C\). Let \(E=\operatorname{End}(V)\). Under
+\(\operatorname{End}(V^{\otimes r})=E^{\otimes r}\),
+conjugation by a factor permutation permutes the \(r\) factors. Its fixed subspace is the symmetric tensors, spanned by \(T^{\otimes r}\) with \(T\in E\). To verify the spanning assertion, polarize the power \((t_1T_1+\cdots+t_rT_r)^{\otimes r}\); its \(t_1\cdots t_r\) coefficient is the sum over factor permutations. Averaging factor permutations spans the fixed subspace in characteristic zero. Invertible \(T\) suffice: a linear functional vanishing on all their powers gives a polynomial on \(E\) vanishing on the dense invertible open set, and is therefore zero on every power.
+
+Thus the linear span of \(g^{\otimes r}\) is the commutant of the permutation algebra \(P\). We need that the double commutant of \(P\) is \(P\). Here is the finite-dimensional argument. Averaging over the finite group \(S_r\) makes every submodule split: average any linear projection onto the submodule, and its kernel is an invariant complement. Decompose \(V^{\otimes r}\) into copies of pairwise nonisomorphic simple \(P\)-modules \(U_a\). An endomorphism of a simple module is scalar: over \(\mathbb C\) it has an eigenvalue, and the kernel of the corresponding difference from a scalar is a nonzero submodule, hence the whole module. A map between distinct simples is zero, by its kernel and image.
+
+The image of \(P\) is the full product of matrix algebras on the \(U_a\). To prove this assertion, choose a basis \(u_{a,1},\ldots,u_{a,d_a}\) of each \(U_a\), and consider the image
+\[
+M=\{(pu_{a,j})_{a,j}:p\in P\}
+\subset\bigoplus_aU_a^{d_a}.
+\]
+If it were proper, its split quotient would admit a nonzero map to some \(U_b\). Composing with the quotient gives a nonzero \(P\)-linear map annihilating \(M\). The preceding simple-module facts make that map \(\sum_jc_j\) times the coordinate identity on the copies of \(U_b\), and zero on other types. Evaluating at \(p=1\) yields
+\(\sum_jc_ju_{b,j}=0\), contradicting basis independence. Hence \(M\) is the whole direct sum. Specifying arbitrary images of those bases proves the assertion.
+
+Writing the original space as \(\bigoplus_a U_a\otimes\mathbb C^{m_a}\), its commutant is therefore
+\(\bigoplus_a I_{U_a}\otimes\operatorname{End}(\mathbb C^{m_a})\).
+The commutant of this algebra is
+\(\bigoplus_a\operatorname{End}(U_a)\otimes I\), precisely the image of \(P\). This proves the double-commutant assertion and the lemma over \(\mathbb C\).
+
+Over any characteristic-zero \(k\), commuting with all \(g^{\otimes r}\) is a system of rational linear equations: expand the commutator as a polynomial in the entries of a generic matrix. Vanishing for invertible matrices over the infinite field is equivalent to vanishing of all coefficients. The permutation operators have rational entries, and Gaussian elimination shows that equality of the two solution spaces over \(\mathbb C\) implies equality over \(k\). \(\square\)
+
+[]{#theorem-6-2}
+
+**Theorem 6.2 (mixed first fundamental theorem).** The special-linear invariant ring on any number of vectors \(v_i\) and dual vectors \(\alpha_j\) is generated by their pairings \(\alpha_j(v_i)\), vector determinants and dual-vector determinants.
+
+**Proof.** Full polarization from (P4) reduces generation to multilinear invariants in \(r\) vector slots and \(s\) dual slots. First consider the general linear group. Scalar matrices make such an invariant zero unless \(r=s\). When \(r=s\), it corresponds to an endomorphism of \(V^{\otimes r}\); invariance says that endomorphism commutes with all \(g^{\otimes r}\). Lemma 6.1 expresses it as a sum of factor permutations. Each corresponding multilinear polynomial is
+\(\prod_j\alpha_j(v_{\sigma(j)})\).
+This proves the mixed general-linear theorem.
+
+For the special linear group, first work over an algebraic closure. The central matrices \(\zeta I\), \(\zeta^n=1\), show that \(r-s=qn\) for an integer \(q\), unless the invariant is zero. A nonzero multilinear invariant \(F\) has general-linear determinant character \(q\): write \(g=\lambda h\), \(\lambda^n=\det g\), \(h\in\operatorname{SL}_n\), and use multilinearity to get \(F(gv,\alpha g^{-1})=\det(g)^qF(v,\alpha)\).
+
+If \(q\geq0\), introduce \(q\) blocks of \(n\) auxiliary dual vectors \(\beta_{\ell,1},\ldots,\beta_{\ell,n}\). The product
+\[
+F\prod_{\ell=1}^q\det(\beta_{\ell,1},\ldots,\beta_{\ell,n})
+\]
+is general-linear invariant and multilinear in all its slots. The general-linear theorem writes it as a sum of products of pairings. Antisymmetrize in each auxiliary block, dividing by \(n!\). The left side is unchanged. On the right, the \(n\) pairings using one block become
+\[
+\frac1{n!}\det(\beta_{\ell,1},\ldots,\beta_{\ell,n})
+\det(v_{i_1},\ldots,v_{i_n}).
+\]
+If a vector slot repeats there, its determinant is zero. Cancel the product of auxiliary determinants in the polynomial domain. The result expresses \(F\) in vector determinants and the original pairings. If \(q<0\), use auxiliary vector blocks instead and obtain dual determinants and pairings.
+
+Finally restitute the polarized slots. Descent to \(k\) is again a finite rational linear-algebra assertion in each degree: invariance is the kernel of the coefficient equations for elementary unipotent substitutions, and the proposed spanning polynomials have integer coefficients. Gaussian elimination descends their spanning equality. \(\square\)
+
+This mixed theorem is the input for symbolic completeness in Section 9 below.
+
+### Two commuting substitution groups
+
+The same commutant argument explains the duality viewpoint on matrix polynomials. We state it over \(\mathbb C\), so simple finite-group modules and their multiplicity spaces can be used without a splitting-field qualification. Let \(U=\mathbb C^m\), \(V=\mathbb C^n\). Homogeneous degree-\(d\) polynomials in a matrix have the representation
+\(\operatorname{Sym}^d(U\otimes V)\), with duals inserted if the inverse action on coordinate functions is chosen. Row and column substitutions commute.
+
+[]{#proposition-6-3}
+
+**Proposition 6.3 (matrix duality).** On each degree piece, the linear spans of the two general-linear substitution groups are mutual commutants. The joint representation is a direct sum of pairwise inequivalent simple tensor-product representations, each occurring once.
+
+**Proof.** Averaging over \(S_d\) identifies the symmetric power with
+\[
+\bigl(U^{\otimes d}\otimes V^{\otimes d}\bigr)^{S_d},
+\]
+where the same permutation acts on both tensor powers. Reorder the tensor factors to obtain this identification from \((U\otimes V)^{\otimes d}\).
+
+Let \(S_a\) range over the simple complex \(S_d\)-modules. The finite-group splitting and simple-module arguments proved in Lemma 6.1 give
+\[
+U^{\otimes d}=\bigoplus_a M_a(U)\otimes S_a,\qquad
+V^{\otimes d}=\bigoplus_b M_b(V)\otimes S_b,
+\]
+where a multiplicity space can be defined as
+\(M_a(U)=\operatorname{Hom}_{S_d}(S_a,U^{\otimes d})\).
+Absent types have zero multiplicity space. That lemma also proves that the span of \(\operatorname{GL}(U)\) on its tensor power is the full commutant of the permutation algebra. Hence its action on the nonzero \(M_a(U)\) has image
+\(\prod_a\operatorname{End}(M_a(U))\); the analogous statement holds for \(V\). Thus these are simple, pairwise inequivalent general-linear modules. Simplicity follows from the full matrix image, and inequivalence from the ability to act independently on distinct factors.
+
+Now
+\[
+(S_a\otimes S_b)^{S_d}
+\cong\operatorname{Hom}_{S_d}(S_a^*,S_b).
+\]
+Duals of simple finite-group modules are simple: the annihilator of a proper dual submodule would be an invariant subspace of the original module. Schur's lemma, proved in Lemma 6.1, makes the displayed space zero unless \(S_b\cong S_a^*\), when it is one-dimensional. If \(a^*\) denotes that dual type, the degree piece is therefore
+\[
+\bigoplus_a M_a(U)\otimes M_{a^*}(V),
+\]
+omitting zero terms.
+
+The two group spans on this direct sum are respectively
+\(\prod_a\operatorname{End}(M_a(U))\otimes I\) and
+\(\prod_a I\otimes\operatorname{End}(M_{a^*}(V))\).
+Their commutants are each other, by the same matrix-block computation used in Lemma 6.1. Each joint tensor summand is simple because the joint algebra contains its full endomorphism algebra, and different summands are inequivalent because their first factors are. Each occurs once in the displayed decomposition. This proves the proposition without an unproved classification of highest weights. \(\square\)
+
+This is the polynomial matrix duality associated with the modern viewpoint of Howe; see his [Remarks on classical invariant theory](https://www.math.utah.edu/~ptrapa/math-library/howe/howe-remarks-invariant-theory-TAMS-1989.pdf), especially its introduction on the relation between polynomial and tensor invariants. A partition description of the multiplicity spaces gives more names for the summands, but is not needed for the polarization bound or for the mutual-commutant assertion proved here.
+
+## 7. The binary Clebsch–Gordan expansion {#section-7}
+
+Use two binary pairs \(x=(x_1,x_2)\), \(y=(y_1,y_2)\). Put
+\[
+B=[xy]=x_1y_2-x_2y_1,\qquad
+\Omega=\partial_{x_1}\partial_{y_2}
+-\partial_{x_2}\partial_{y_1}.
+\]
+For a binary form \(h(z)\) of degree \(a+b\), define its normalized \((a,b)\)-polar by
+[]{#equation-P11}
+
+\[
+\mathcal P_{a,b}h(x,y)
+=\frac1{\binom{a+b}{b}}[t^b]h(x+ty).
+\tag{P11}
+\]
+It has bidegree \((a,b)\), equals \(h(x)\) on \(y=x\), and is killed by \(\Omega\). The last assertion follows by expanding the derivatives of \(h\): its second derivatives are symmetric, so the alternating contraction is zero.
+
+[]{#theorem-7-1}
+
+**Theorem 7.1 (binary series, with coefficients).** If \(F(x,y)\) has bidegree \((p,q)\), let
+\[
+h_k(z)=\left.\Omega^kF(x,y)\right|_{x=y=z},
+\quad 0\leq k\leq\min(p,q).
+\]
+Then
+[]{#equation-P12}
+
+\[
+F(x,y)=\sum_{k=0}^{\min(p,q)}
+\frac{(p+q-2k+1)!}{k!(p+q-k+1)!}
+B^k\,\mathcal P_{p-k,q-k}h_k(x,y).
+\tag{P12}
+\]
+All operators here are equivariant for \(\operatorname{SL}_2\); the expansion also applies with other coefficient variables held fixed.
+
+**Proof.** The product rule gives, for a bihomogeneous \(L\) of total degree \(N\),
+\[
+\Omega(BL)=B\Omega L+(N+2)L.
+\]
+If \(\Omega L=0\), induction therefore gives
+\[
+\Omega(B^kL)=k(N+k+1)B^{k-1}L.
+\]
+Apply this \(k\) times:
+[]{#equation-P13}
+
+\[
+\left.\Omega^k(B^kL)\right|_{y=x}
+=k!\frac{(N+k+1)!}{(N+1)!}L(x,x).
+\tag{P13}
+\]
+Fewer than \(k\) contractions leave a factor \(B\), which is zero on the diagonal. More than \(k\) contractions kill the remaining harmonic \(L\).
+
+The maps \(h\mapsto B^k\mathcal P_{p-k,q-k}h\), with \(h\) of degree \(p+q-2k\), have linearly independent images: apply \(\Omega^k\) and then diagonal restriction, which isolates that summand by (P13). The sum of their dimensions is
+\[
+\sum_{k=0}^{\min(p,q)}(p+q-2k+1)=(p+1)(q+1),
+\]
+the dimension of all bidegree-\((p,q)\) polynomials. Hence these images are a direct-sum decomposition of that space. Equation (P13), with \(N=p+q-2k\), then determines every coefficient of the decomposition and yields (P12). \(\square\)
+
+For \(p=q=1\), formula (P12) decomposes \(x_1y_2\) into
+\[
+\tfrac12(x_1y_2+x_2y_1)+\tfrac12 [xy].
+\]
+For \(F=f(x)g(y)\) of orders \(p,q\), the first lesson's transvectant normalization gives
+\[
+h_k=\frac{p!q!}{(p-k)!(q-k)!}(f,g)_k.
+\]
+Substitution into (P12) fixes the constants of the usual transvectant series.
+
+For any number of binary pairs, repeatedly apply (P12) to two pairs, treating the other pairs as coefficient variables. Their diagonal form introduces one pair \(z\); expand that pair with the next one and continue. At every stage (P11) and the displayed factorial coefficient specify the polar and contraction explicitly. The number of stages and the number of terms at each stage are finite. This gives a complete expansion for several binary series of variables, rather than only an existence assertion.
+
+## 8. A general polarized series with finite matrix coefficients {#section-8}
+
+The decomposition into a few-variable polynomial and polarization operators also has an explicit finite form in arbitrary dimension. The following construction gives coefficients by rational matrix operations; it does not require a classification of irreducible representations.
+
+On \(H_d\), use the Fischer inner product over \(\mathbb C\):
+\[
+\langle x^\alpha,x^\beta\rangle=\delta_{\alpha\beta}\alpha!.
+\]
+Multiplication by a variable is adjoint to its derivative, so \(D_{ij}^*=D_{ji}\). A **primary polynomial** will mean one killed by all \(D_{ij}\), \(i<j\). By Lemma 3.2 every primary polynomial uses at most the first \(n\) rows.
+
+[]{#theorem-8-1}
+
+**Theorem 8.1 (finite general series).** For fixed \(n,m,d\), there are explicit rational operators \(R_W\), all built from the \(D_{ij}\), such that
+[]{#equation-P14}
+
+\[
+F=\sum_W Wf_W,\qquad f_W=R_WF,
+\tag{P14}
+\]
+where every \(f_W\) is primary and \(W\) is a word in polarization operators. If \(F\) is invariant under any diagonal group, every \(f_W\) is invariant. The construction is valid over every characteristic-zero field.
+
+**Proof and construction.** In the monomial basis of \(H_d\), form the rational matrix
+\[
+Q=\sum_{i<j}D_{ji}D_{ij}.
+\]
+It is positive semidefinite, since
+\(\langle QF,F\rangle=\sum_{i<j}\|D_{ij}F\|^2\).
+Its kernel is exactly the primary subspace. Write its characteristic polynomial as \(t^s h(t)\) with \(h(0)\ne0\). The spectral theorem makes
+\[
+P=h(Q)/h(0)
+\]
+the orthogonal projection onto that kernel: it is one on the zero eigenspace and zero on every nonzero eigenspace. If \(Q=0\), take \(P=I\). This describes \(P\) by rational matrix entries.
+
+Let \(a=\dim H_d\), and take all words \(W\) of length at most \(a\) in the \(D_{ij}\), including the empty word. Their images of \(\operatorname{im}P\) span \(H_d\). Indeed, successive word spans form an ascending chain; once a step stops increasing, the span is stable under every \(D_{ij}\). It then contains the orbit span of every primary vector. Complete reducibility and Lemma 3.2 make that orbit span the whole space. Before stabilization there can be at most \(a\) strict increases.
+
+Form
+\[
+T=\sum_W WPW^*.
+\]
+It is positive definite: if \(\langle TF,F\rangle=0\), then \(PW^*F=0\) for every \(W\), making \(F\) orthogonal to all \(W\operatorname{im}P\), which span the space. Thus \(T\) is invertible. Compute \(T^{-1}\) by its adjugate divided by its nonzero determinant, and set
+\[
+R_W=PW^*T^{-1}.
+\]
+Now \(\sum_WWR_W=TT^{-1}=I\), proving (P14), and \(R_WF\in\operatorname{im}P\). Every operator used commutes with a diagonal group by Proposition 1.1; inverses of invertible commuting operators also commute. This proves the invariance assertion.
+
+All entries and identities are rational. Their verification over \(\mathbb C\) therefore proves the same identities over every characteristic-zero field. The derivative argument in Lemma 3.2 proves that the primary images there also use only the first \(n\) rows. \(\square\)
+
+This is a matrix form of the general series principle behind the Capelli–Mertens–Deruyts reduction: a polynomial is a finite sum of polars of primary polynomials, with invariant operations extracting the primary coefficients. It is less economical computationally than the specialized classical formulas, but gives a full finite construction and exact coefficients for any number of series. Theorem 5.1 applies it separately to each repeated kind of coefficient vector. The binary formula (P12) is much shorter because its primary pieces can be indexed by a single contraction number.
+
+### Determinant powers and their generalization
+
+There is a more structured version for \(r\leq n\) rows of \(n\) variables. For a coordinate subset \(I\subset\{1,\ldots,n\}\), \(|I|=r\), put
+\[
+\Delta_I=\det(x_{ia})_{1\leq i\leq r,\ a\in I},
 \qquad
-T(f)=\left.\frac{d}{ds}S(f+sH_f)\right|_{s=0}.
-\tag{A1}
+\Omega_I=\det(\partial_{x_{ia}})_{1\leq i\leq r,\ a\in I},
 \]
-Every symbolic row in the bracket product occurs three times, so its evaluation is defined. Equivariance of the umbral map makes \(S\) special-linear invariant and homogeneous of coefficient degree four. The chain rule gives
-\(H_{f\circ h}=\det(h)^2H_f\circ h\). Thus the cubic \(H_f\), whose coefficients have degree three in those of \(f\), is a special-linear covariant. Applying invariance of \(S\) to \(f+sH_f\) shows that \(T\) is invariant, of coefficient degree six. These are fixed normalizations of the Aronhold invariants; multiplying either by a nonzero constant changes neither its zero set nor the algebra it generates.
+in increasing coordinate order. A polynomial is **determinant-harmonic** if every \(\Omega_I\) kills it.
 
-Consider the **Hesse pencil of forms**, here including its scalar parameter:
+[]{#theorem-8-2}
+
+**Theorem 8.2 (general determinant series).** Every homogeneous polynomial in \(r\leq n\) rows is a finite sum of products of their \(r\)-row determinants times determinant-harmonic polynomials. Each harmonic coefficient is a finite sum of polars of polynomials in only \(r-1\) rows. All extraction coefficients can be computed by rational finite matrices. For \(r=n\) the expansion has the unique form
+[]{#equation-P17}
+
 \[
-f_{a,b}=aF+bQ,\qquad F=x^3+y^3+z^3,\quad Q=xyz.
-\tag{A2}
+F=\Phi_0+\Delta\Phi_1+\cdots+\Delta^\mu\Phi_\mu,
+\qquad \Omega\Phi_i=0.
+\tag{P17}
 \]
-The two parameters \(a,b\) range independently over \(\mathbb C\).
+For \(r>n\), Theorem 8.1 first reduces to \(n\) rows; thus these constructions give the series for every number of rows.
 
-**Lemma 4.3 (restriction to the pencil is injective).** A polynomial invariant of ternary cubics is determined by its values on (A2).
+**Proof.** On each degree piece the adjoint of multiplication by \(\Delta_I\), in the Fischer inner product, is \(\Omega_I\). Hence
+[]{#equation-P18}
 
-**Proof.** Consider the holomorphic map
 \[
-\operatorname{SL}_3(\mathbb C)\times\mathbb C^2
-\longrightarrow \operatorname{Sym}^3(\mathbb C^3)^*,
-\qquad (h,a,b)\longmapsto f_{a,b}\circ h.
+H_d=\bigcap_I\ker\Omega_I\ \oplus\
+\sum_I\Delta_I H_{d-r}
+\tag{P18}
 \]
-At \((I,1,0)\), its six off-diagonal matrix directions give the six distinct monomials \(3x_i^2x_j\), \(i\ne j\). Two trace-zero diagonal directions give
-\(3(x^3-z^3),3(y^3-z^3)\). The pencil directions give \(F,Q\). These ten cubics are independent: the mixed monomials and \(Q\) are distinct, while the two differences and the sum \(F\) span the pure cubes. The derivative therefore has rank ten. The complex inverse-function theorem puts a nonempty complex open set in the image. If an invariant vanishes on the pencil, it vanishes on this image by invariance, hence on that open set. A polynomial vanishing on a complex open set is identically zero. \(\square\)
+as an orthogonal direct sum of the indicated harmonic space and the sum of determinant multiples. The second sum can have internal relations; (P18) does not assert its summands are independent.
 
-This argument needs no classification of singular cubics, and makes no claim that every cubic has a Hesse presentation. Density is enough to determine a polynomial.
-
-We next identify enough symmetries of the pencil to count its possible invariant polynomials. Fix a primitive cube root \(\zeta\), and put
+Here is a rational computation of the decomposition. The matrix
 \[
-d=3(\zeta^2-\zeta),\qquad d^2=-27,
-\qquad
-A=\begin{pmatrix}\zeta&0\\0&1\end{pmatrix},\qquad
-B=\frac1d\begin{pmatrix}3&1\\18&-3\end{pmatrix}.
-\tag{A3}
+K_d=\sum_I \Delta_I\Omega_I:H_d\to H_d
 \]
-These matrices act on the column \((a,b)^t\). Both actions arise from determinant-one substitutions on \((x,y,z)\). For \(A\), choose \(\rho^3=\zeta\) and substitute
-\(\rho\operatorname{diag}(\zeta^{-1},1,1)(x,y,z)^t\). Its determinant is one, and it sends \(aF+bQ\) to \(\zeta aF+bQ\).
+is positive semidefinite, and its kernel is the harmonic space. If its characteristic polynomial is \(t^s h(t)\), \(h(0)\ne0\), put \(P_0=h(K_d)/h(0)\). As before, this is the harmonic projector; if \(K_d=0\), take \(P_0=I\). Choose a rational polynomial \(q(t)\) such that \(q(0)=0\) and \(tq(t)\equiv1\pmod{h(t)}\); the Euclidean algorithm gives an inverse of \(t\) modulo \(h\), and adding a multiple of \(h\) arranges \(q(0)=0\). Put \(K_d^+=q(K_d)\). On nonzero eigenspaces it is the inverse of \(K_d\), and on its kernel it is zero. Therefore
+[]{#equation-P19}
 
-For \(B\), let
 \[
-M=\begin{pmatrix}
-1&1&1\\1&\zeta&\zeta^2\\1&\zeta^2&\zeta
+F=P_0F+\sum_I\Delta_I F_I,\qquad
+F_I=\Omega_I K_d^+F.
+\tag{P19}
+\]
+Every \(F_I\) has degree \(d-r\). Reapply (P19) to each of them. Degree decreases at every step, so the procedure terminates in products of minors times harmonic coefficients. It uses only rational matrices and rational inverses.
+
+It remains to justify the claimed polars of \(r-1\) rows. The exterior proof of Capelli's identity works unchanged when the number \(n\) of coordinate columns exceeds the number \(r\) of rows: extract \(e_1\cdots e_r\) from (P7), retaining all coordinate subsets. It gives the rectangular identity
+[]{#equation-P20}
+
+\[
+\operatorname{cdet}(D_{ij}+(r-j)\delta_{ij})_{1\leq i,j\leq r}
+=\sum_{|I|=r}\Delta_I\Omega_I.
+\tag{P20}
+\]
+The harmonic space is stable under row substitutions. Indeed, row multiplication transforms each differential determinant by its determinant character, so its zero condition is preserved. Split it into simple row modules by Lemma 3.1. In each summand choose a maximal row weight \(F\), as in Lemma 3.2. Write that weight as \((\lambda_1,\ldots,\lambda_r)\). In the column determinant on the left of (P20), every nonidentity permutation term kills \(F\): take its largest moved column \(j\). Its selected row is less than \(j\), so the factor \(D_{\sigma(j),j}\) is a raising operator; all factors to its right are diagonal and act by scalars. The identity term acts by
+\[
+\prod_{j=1}^r(\lambda_j+r-j).
+\]
+The right side kills a harmonic \(F\), so this product is zero. The first \(r-1\) factors are positive integers; characteristic zero makes them nonzero. Hence \(\lambda_r=0\), and \(F\) is independent of its last row. Its orbit generates the summand. Thus every harmonic polynomial is a sum of polars of polynomials on \(r-1\) rows.
+
+The coefficient extraction can be made explicit by the \(P,W,T^{-1}\) construction of Theorem 8.1 on the same degree space. All of its operators are polynomials in the \(D_{ij}\), or inverses of invertible such matrices, so they preserve the harmonic subspace. Its extracted primary coefficients are therefore harmonic; the argument with (P20) makes each independent of row \(r\). This supplies the promised finite rational coefficients.
+
+When \(r=n\), there is only one minor \(\Delta\). Multiplication by it is injective in the polynomial ring. Equation (P18) then gives a unique harmonic coefficient and a unique quotient, at every degree step, proving uniqueness of (P17). The proof by Fischer positivity establishes rational operator identities; those identities descend unchanged to any characteristic-zero field. \(\square\)
+
+Noether's *On series expansion in form theory* (1920), the addendum to Part III of her 1916 paper, explicitly corrects the earlier use of
+\(\Omega(\Delta\psi)=c_1\psi+c_2\Delta\Omega\psi\)
+as a general identity. It is valid for binary rows but not for arbitrary dimension. Equations (P18)–(P20) supply the necessary general projection and the quotient separately, so this proof does not make that assumption. In dimension two, (P17) specializes to the explicitly normalized binary series in Section 7.
+
+## 9. Symbols that stand for coefficients {#section-9}
+
+The expression \(f=a_x^d\) in classical invariant theory is **symbolic**. It does not assert that a general form is a power of a linear form. Introduce a row of independent symbol variables \(a=(a_1,\ldots,a_n)\), and write \(a_x=\sum a_rx_r\). The linear **umbral evaluation** for this letter sends
+\[
+a^\alpha\longmapsto A_\alpha\quad (|\alpha|=d),
+\]
+where
+\(f=\sum_{|\alpha|=d}(d!/\alpha!)A_\alpha x^\alpha\).
+Then \(U(a_x^d)=f\).
+
+For several distinct letters of degree \(d\), apply this rule to each letter and multiply their images. Thus, for binary forms,
+[]{#equation-B22}
+
+\[
+U(a_1^{d-r}a_2^r b_1^{d-s}b_2^s)=A_rA_s.
+\tag{B22}
+\]
+For a system of forms, assign each letter to one of the forms and use that form's degree and coefficients. The map is defined on the subspace having exactly the assigned degree in each letter. It is linear, and it respects products that use disjoint sets of letters. It is generally not multiplicative on arbitrary symbolic polynomials involving the same letter.
+
+Use the determinants
+\[
+[ab]=a_1b_2-a_2b_1,\qquad
+[abc]=\det\begin{pmatrix}a_1&a_2&a_3\\b_1&b_2&b_3\\c_1&c_2&c_3\end{pmatrix}
+\]
+in dimensions two and three, respectively. The \(n\)-dimensional bracket has \(n\) covector rows.
+
+[]{#theorem-9-1}
+
+**Theorem 9.1 (equivariant evaluation).** Umbral evaluation intertwines changes of coordinates. A product of brackets and factors \(a_x\), having the assigned degree in each letter, evaluates to a covariant. Its determinant weight is the number of brackets, counted with multiplicity.
+
+**Proof.** A change \(g\) acts on every letter by \(a\mapsto ag^{-1}\). For one letter the identity
+\[
+U_f((ag^{-1}x)^d)=f(g^{-1}x)
+\]
+follows by expanding the power. Comparing the coefficients of \(x^\alpha\) proves the intertwining identity on the basis of degree-\(d\) symbol monomials. Tensoring these identities proves it for several letters, because their evaluations multiply. Each bracket scales by \(\det(g)^{-1}\), while \((ag^{-1})\cdot(gx)=a_x\). Apply the intertwining identity to the bracket product. This gives (B1) with the stated weight. \(\square\)
+
+In particular the normalized Hessian has the symbolic expression
+[]{#equation-B23}
+
+\[
+(f,f)_2=U\bigl([ab]^2a_x^{d-2}b_x^{d-2}\bigr).
+\tag{B23}
+\]
+For a direct proof, apply \(\Omega^2\) to \(a_x^db_X^d\). It gives
+\(d^2(d-1)^2 [ab]^2a_x^{d-2}b_X^{d-2}\);
+the factorial factor in (B3) cancels that coefficient. Evaluation and differentiation commute, and then \(X=x\) gives (B23).
+
+Symbolic descriptions are not unique. For four binary letters, expansion of the \(2\times2\) determinants gives
+[]{#equation-B24}
+
+\[
+[ab][cd]-[ac][bd]+[ad][bc]=0.
+\tag{B24}
+\]
+For example, the coefficient of \(a_1b_2c_1d_2\) in the first two terms is \(1-1\), and the same cancellation, after permuting the letters and indices, cancels every monomial.
+
+The converse to Theorem 9.1 is also useful: every polynomial covariant is a linear combination of these evaluations. Its input is the mixed first fundamental theorem, Theorem 6.2, proved in Section 6 above. To see how the input applies, polarize a degree-\(\delta\) polynomial in the coefficients into \(\delta\) separate coefficient slots. In each slot replace a degree-\(d\) form by \(a_x^d\), using a new letter. Powers span the space of forms: expanding \((t_1x_1+\cdots+t_nx_n)^d\) and comparing the coefficients of the \(t_r\) proves this, since the multinomial coefficients are nonzero. The polarized covariant therefore becomes an invariant polynomial in covector letters and the vector \(x\). The mixed first fundamental theorem writes that polynomial in covector determinants and pairings \(a_x\); a determinant of vector slots is zero when all those slots are the single repeated vector \(x\). Keep the specified multidegree in the letters, then evaluate and restitute the coefficient slots. This recovers the original covariant. In dimension two, the same conclusion follows directly from the vector theorem by identifying \(x\) with the covector \((-y,x)\).
+
+The determinant identity (B24) is proved here. Theorem 4.2 above proves that the Plücker shuffle relations generate the full relation ideal over every commutative coefficient ring; Corollary 4.3 gives integral vector invariants.
+
+## 10. Orthogonal vectors and quadratic ground forms {#section-10}
+
+### Orthogonal invariants in dimension two
+
+Over \(\mathbb C\), write a vector as \((x_i,y_i)\), and put \(u_i=x_i+iy_i,\ v_i=x_i-iy_i\). The special orthogonal group acts by
+\(u_i\mapsto tu_i,\ v_i\mapsto t^{-1}v_i\).
+Indeed these substitutions preserve \(x_i^2+y_i^2=u_iv_i\), and every determinant-one isometry has this form in the isotropic basis. A reflection interchanges \(u_i,v_i\), and these two components give the whole orthogonal group.
+
+Torus-invariant monomials have equal total \(u\)- and \(v\)-degrees, so they are products of \(u_iv_j\). Put
+\[
+q_{ij}=u_iv_j+v_iu_j,\qquad r_{ij}=u_iv_j-v_iu_j.
+\]
+The torus ring is generated by the \(q_{ij},r_{ij}\), since \(2\) is invertible. The reflection fixes the \(q\)'s and negates the \(r\)'s. Averaging a polynomial expression with its reflected expression leaves only monomials with an even number of \(r\)-factors. Expansion gives
+\[
+r_{ij}r_{kl}=q_{il}q_{jk}-q_{ik}q_{jl}.
+\]
+Pairing up those factors expresses every invariant in the \(q\)'s. Since
+\(q_{ij}=2(x_ix_j+y_iy_j)\), the orthogonal invariant ring is generated by the pairwise inner products.
+
+### Binary quadratics retain orientation
+
+For quadratics
+\[
+f_i=a_ix^2+2b_ixy+c_iy^2
+\]
+define
+[]{#equation-P15}
+
+\[
+h_i=a_ic_i-b_i^2,\quad
+M_{ij}=a_ic_j+c_ia_j-2b_ib_j,\quad
+\tau_{ijk}=\det\begin{pmatrix}
+a_i&b_i&c_i\\a_j&b_j&c_j\\a_k&b_k&c_k
 \end{pmatrix}.
+\tag{P15}
 \]
-Its determinant is \(d\). Direct multiplication gives
+The first two are the discriminants and their polarizations:
+the coefficient of \(t\) in \(h(f_i+tf_j)\) is \(M_{ij}\).
+The determinant is also special-linear invariant. In fact the determinant of the coefficient representation \(\operatorname{Sym}^2(g^{-1})\) is \(\det(g)^{-3}\). One can check it on diagonal matrices, where its three eigenvalues multiply to that expression, and then on every matrix by polynomial density.
+
+[]{#theorem-10-1}
+
+**Theorem 10.1 (joint quadratic invariants).** In characteristic zero, the invariants of any number of binary quadratics are generated by the \(h_i,M_{ij},\tau_{ijk}\). For two quadratics the three generators \(h_1,h_2,M_{12}\) suffice.
+
+**Proof.** Polarize any invariant in the coefficients into separate quadratic slots. The symbolic completeness proved by Theorem 6.2 and umbral evaluation expresses it as a sum of bracket monomials with degree two in each symbol letter. Such a monomial is a graph: its vertices are letters, its bracket factors are edges, and every vertex has degree two. A loop is zero. Every remaining component is a cycle, with a doubled edge allowed as a cycle of length two.
+
+For a symbol column \(a\), let
 \[
-F(Mx)=3F(x)+18Q(x),\qquad Q(Mx)=F(x)-3Q(x).
+J=\begin{pmatrix}0&1\\-1&0\end{pmatrix},\qquad
+N_a=aa^{\mathsf t}J.
 \]
-Choose \(\sigma^3=d^{-1}\). Substitution by \(\sigma M\) has determinant one and induces exactly \(B\). Consequently, restriction of an invariant of ternary cubics is invariant under the group \(\Gamma=\langle A,B\rangle\).
-
-**Lemma 4.4 (the finite pencil group).** The group \(\Gamma\) has 24 elements, and
+The product of brackets around a cycle is
 \[
-\sum_{m\geq0}\dim\bigl(\mathbb C[a,b]^\Gamma_m\bigr)t^m
-=\frac1{(1-t^4)(1-t^6)}.
-\tag{A4}
+[a_1a_2]\cdots [a_ra_1]
+=\operatorname{tr}(N_{a_1}\cdots N_{a_r}).
 \]
-
-**Proof.** Put \(C=ABA^{-1}\) and \(D=A^2BA^{-2}\). Multiplying the displayed two-by-two matrices, using \(1+\zeta+\zeta^2=0\), gives
+This follows by multiplying the rank-one matrices: every intervening scalar is \(a_i^{\mathsf t}Ja_{i+1}\), and the trace supplies the last bracket. Umbral evaluation in a quadratic slot gives the traceless matrix
 \[
-A^3=I,\qquad B^2=C^2=D^2=-I,\qquad
-BC=D=-CB,
+N(f_i)=\begin{pmatrix}-b_i&a_i\\-c_i&b_i\end{pmatrix}.
 \]
-and conjugation by \(A\) cycles \(B,C,D\). In particular
-\(\{I,-I,\pm B,\pm C,\pm D\}\) is a quaternion subgroup of eight distinct matrices. The three cosets obtained by multiplying it by \(I,A,A^2\) form a group containing both generators. They are distinct because their determinants are respectively \(1,\zeta,\zeta^2\). This proves the order 24 and gives every element without an appeal to a group classification.
+Thus the cycle evaluates to the trace of a word in those matrices, with a possible sign when an edge orientation is reversed.
 
-The same multiplication gives this entire trace and determinant list:
+For any traceless \(2\times2\) matrices \(A,B\), direct multiplication gives
+[]{#equation-P16}
 
-| Number of matrices | Trace | Determinant |
-|---:|---|---|
-| 1 | \(2\) | \(1\) |
-| 1 | \(-2\) | \(1\) |
-| 6 | \(0\) | \(1\) |
-| 4 | \(1+\zeta\) | \(\zeta\) |
-| 4 | \(-1-\zeta\) | \(\zeta\) |
-| 4 | \(\zeta\) | \(\zeta^2\) |
-| 4 | \(-\zeta\) | \(\zeta^2\) |
-
-For a two-by-two matrix the Molien denominator is
-\(1-\operatorname{tr}(g)t+\det(g)t^2\). Averaging over \(g\) or \(g^{-1}\) gives the same sum, so the convention for the induced function action does not change it. Pairing the last four rows and using \(\zeta+\zeta^2=-1\) gives
 \[
-\frac1{24}\left(
-\frac1{(1-t)^2}+\frac1{(1+t)^2}+\frac6{1+t^2}
-+\frac{4(2+t)}{(1-t)(1+t+t^2)}
-+\frac{4(2-t)}{(1+t)(1-t+t^2)}\right).
+AB+BA=\operatorname{tr}(AB)I.
+\tag{P16}
 \]
-Multiplication by \((1-t^4)(1-t^6)\) reduces the parenthesis to 24; this is (A4). Molien's formula is an identity of formal power series, so this calculation determines every degree. \(\square\)
+We claim that all word traces are polynomials in traces of lengths two and three. For a word of length \(r\geq4\), exchanging adjacent letters using (P16) changes its trace to the negative trace of the exchanged word plus a product of a length-two trace and a length-\((r-2)\) trace. Repeating adjacent exchanges expresses its trace, modulo sums of such shorter products, as an alternating multilinear function of its \(r\) matrix arguments: antisymmetrize over all \(r!\) permutations and divide by \(r!\). The alternating part is zero, because the vector space of traceless \(2\times2\) matrices has dimension three and an alternating \(r\)-linear function on that space is zero for \(r>3\). This proves the claim by induction, with length-one traces zero.
 
-The restrictions of our two global invariants can now be calculated. Their normalizations are
+Multiplication gives
+\(\operatorname{tr}(N(f_i)N(f_j))=-M_{ij}\), including \(M_{ii}=2h_i\).
+Equation (P16) makes the length-three trace alternating, so it is a scalar multiple of the determinant of the three coefficient rows. On the rows \((1,0,0),(0,1,0),(0,0,1)\), the trace is \(-1\); hence it is \(-\tau_{ijk}\). Consequently every cycle evaluation is in the algebra generated by (P15). Products of cycles and restitution prove generation for the original invariant. With only two quadratic kinds, every alternating triple has repeated rows and is zero, leaving the three stated generators. \(\square\)
+
+The triple determinant is necessary as soon as there are three quadratics. The two ordered triples
 \[
-\begin{split}
-S(f_{a,b})&=\frac{b^4-216a^3b}{54},\\
-T(f_{a,b})&=\frac4{27}
-\bigl(b^6+540a^3b^3-5832a^6\bigr).
-\end{split}
-\tag{A5}
+(x^2,\,2xy,\,y^2),\qquad(y^2,\,2xy,\,x^2)
 \]
-Here is a small way to check all constants. Invariance under \(A\) and degree four leave only \(a^3b,b^4\) in the first restriction. In the product of four determinants in (A1), the coefficient of the monomial using each of the three coordinates of each row once is 24. The coefficient using a pure cube in each of three rows and the product of coordinates in the remaining row, summed over the row choices, is \(-24\). Since \(c_{111}=b/6\) and \(c_{300}=c_{030}=c_{003}=a\) on the pencil, these give \(24(b/6)^4-24a^3(b/6)\), the first formula. Both coefficients follow by expanding the determinants as signed sums of their six permutations; the symbolic construction specifies the calculation completely.
+have identical self-discriminants and all pairwise \(M_{ij}\), but their \(\tau_{123}\) are \(1\) and \(-1\). Thus a polynomial in the pairwise data cannot equal \(\tau_{123}\). The coefficient reflection \((a,b,c)\mapsto(c,b,a)\) preserves the bilinear discriminant form and reverses orientation. Special-linear substitutions on the binary variables preserve that orientation.
 
-For the second formula, the Hessian matrix has diagonal entries \(6ax,6ay,6az\) and off-diagonal entries \(bz,by,bx\). Its determinant is
+
+## Exercises {#exercises}
+
+[]{#exercise-1}
+
+**Exercise 1 — The row Lie algebra.** Verify (P3) by applying both sides to a coordinate function, then explain why this suffices.
+
+[Solution](#solution-1).
+
+[]{#exercise-2}
+
+**Exercise 2 — Capelli on determinant powers.** Check (P8) on \(\Delta^s\), where \(\Delta=x_{11}x_{22}-x_{12}x_{21}\) and \(s\geq1\).
+
+[Solution](#solution-2).
+
+[]{#exercise-3}
+
+**Exercise 3 — Two quadratic kinds.** Prove that the invariants of two binary quadratics are generated by their discriminants and polarized discriminant.
+
+[Solution](#solution-3).
+
+[]{#exercise-4}
+
+**Exercise 4 — A direct binary vector proof.** Prove bracket generation for binary vectors without Capelli, and organize the argument as induction in the number of rows.
+
+[Solution](#solution-4).
+
+[]{#exercise-5}
+
+**Exercise 5 — More quadratic kinds and the missing generator.** Determine whether Weyl's theorem reduces an arbitrary number of binary quadratics to two quadratics. Give the correct bound and generating patterns.
+
+[Solution](#solution-5).
+
+[]{#exercise-6}
+
+**Exercise 6 — Two quartic bracket expressions.** Evaluate \([ab]^4\) and \([ab]^2 [ac]^2 [bc]^2\) for letters assigned to the same quartic.
+
+[Solution](#solution-6).
+
+## Solutions {#solutions}
+
+### Solution 1
+
+We have \(D_{ij}x_{ra}=\delta_{jr}x_{ia}\), so
 \[
-H_{f_{a,b}}=-6ab^2F+(216a^3+2b^3)Q.
+[D_{ij},D_{kl}]x_{ra}
+=\delta_{lr}\delta_{jk}x_{ia}
+-\delta_{jr}\delta_{li}x_{ka}.
 \]
-Differentiate the first formula in the parameter direction
-\((-6ab^2,216a^3+2b^3)\). This gives exactly the second formula of (A5). Finally their parameter Jacobian is
+This equals \((\delta_{jk}D_{il}-\delta_{li}D_{kj})x_{ra}\). The commutator of two derivations is a derivation, as expansion of the two product rules shows. A derivation on a polynomial ring is determined by its values on its coordinate generators, proving the identity.
+
+[Exercise 1](#exercise-1).
+
+### Solution 2
+
+Each row Euler operator gives \(D_{ii}\Delta^s=s\Delta^s\), and \(D_{12}\Delta^s=0\): replacing row two by row one in the determinant gives zero. Thus the left side is \(s(s+1)\Delta^s\). For the right side, differentiate:
 \[
-\det\frac{\partial(S(f_{a,b}),T(f_{a,b}))}{\partial(a,b)}
-=-\frac{256}{9}a^2(b^3+27a^3)^2,
-\tag{A6}
+\partial_{11}\partial_{22}\Delta^s
+=s\Delta^{s-1}+s(s-1)x_{11}x_{22}\Delta^{s-2},
 \]
-which is nonzero as a polynomial. Thus these two restrictions are algebraically independent. For completeness, in characteristic zero a polynomial relation of least positive degree would, on differentiation and inversion of this nonzero Jacobian over \(\mathbb C(a,b)\), give two relations of smaller degree. Its two partial derivatives must therefore be zero polynomials, making it constant, a contradiction.
-
-**Theorem 4.5 (Aronhold's generators).** The invariant ring of a ternary cubic is
 \[
-\mathbb C[\operatorname{Sym}^3(\mathbb C^3)^*]^{\operatorname{SL}_3}
-=\mathbb C[S,T],\qquad \deg S=4,\quad\deg T=6.
-\tag{A7}
+\partial_{12}\partial_{21}\Delta^s
+=-s\Delta^{s-1}+s(s-1)x_{12}x_{21}\Delta^{s-2}.
 \]
-There is no algebraic relation between the two generators.
+Their difference is
+\(s(s+1)\Delta^{s-1}\). Multiplication by \(\Delta\) agrees with the left side. For \(s=1\) the terms multiplied by \(s(s-1)\) are zero and the derivative difference is \(2\). This verifies the assigned test functions; Theorem 2.1 proves the operator equality on every polynomial.
 
-**Proof.** Algebraic independence makes the subalgebra of \(\mathbb C[a,b]^\Gamma\) generated by the two restrictions a polynomial algebra, with series
-\(1/((1-t^4)(1-t^6))\). Lemma 4.4 gives exactly that series for the whole invariant ring of the pencil. The inclusion is graded, and each degree is finite-dimensional. Equality of its dimensions in every degree therefore proves equality of the two algebras.
+[Exercise 2](#exercise-2).
 
-Now let \(P\) be any invariant of ternary cubics. Its restriction is a \(\Gamma\)-invariant, hence a polynomial \(q(S(f_{a,b}),T(f_{a,b}))\). Both \(P\) and \(q(S,T)\) are global invariants with the same restriction. Lemma 4.3 makes them equal. Independence of the restrictions also rules out a global relation. \(\square\)
+### Solution 3
 
-In particular, \(S(F)=0,T(F)=-864\), whereas
-\(S(xyz)=1/54,T(xyz)=4/27\). A cubic with zero Hessian need not be recognized by a smooth normal form; the polynomial theorem applies to all coefficient values, including singular and zero cubics. Its nullcone is exactly \(V(S,T)\).
+Theorem 10.1 expresses every invariant as a polynomial in \(h_1,h_2,M_{12}\) and triple determinants. A triple drawn from two kinds repeats a coefficient row, so its determinant is zero. The remaining three are invariant by (P15), proving equality. They are also algebraically independent: on \(f_1=2bxy\), their values are
+\(-b^2,\ \alpha\gamma-\beta^2,\ -2b\beta\).
+When \(b\ne0\), these three quantities can be prescribed freely on a dense open set over the algebraic closure, by choosing \(b,\beta\) and then \(\alpha,\gamma\). A polynomial relation therefore vanishes identically.
 
-The construction and completeness statement are due to Aronhold. The Hesse pencil and its finite symmetry group belong to the classical geometry surveyed by Artebani and Dolgachev in [The Hesse pencil of plane cubic curves](https://arxiv.org/abs/math/0611590). The proof here gives the explicit substitutions, finite group, generating invariants and all-degree dimension comparison, rather than requiring their proofs as an external input.
+[Exercise 3](#exercise-3).
 
-The same theorem holds over any field of characteristic zero. Indeed the constructions have rational coefficients. In a fixed coefficient degree, invariance is the common kernel of the six rational matrices induced by \(x_j\partial/\partial x_i\), \(i\ne j\). Annihilation implies invariance under their unipotent subgroups by their finite exponential series, and these subgroups generate the special linear group by elementary matrix operations. Taking a kernel of these finite matrices commutes with extension of the ground field. The monomials \(S^iT^j\) form a basis of the kernel over \(\mathbb C\) by (A7); rational linear independence and rank then make them a basis over every characteristic-zero field. This descent does not assume that the entire field embeds into \(\mathbb C\).
+### Solution 4
 
+For one row, special-linear transitivity on nonzero vectors gives only constants. For two rows, the determinant-orbit argument gives \(k [[12]]\). For \(m>2\), apply the row-maximal-weight proof in Section 3 with \(n=2\): any simple row-substitution component of the invariant space contains a vector killed by \(D_{ij}\), \(i<j\); the equations \(D_{1j}F=D_{2j}F=0\) and invertibility of the first two rows force independence of every later row. Its orbit generates that component from a polynomial in \([12]\). A row translate of \([12]\) is a linear combination of brackets \([ij]\), so each component, and then the entire invariant space, is in their algebra. This proves the induction step for every new row at once, using the two-row base case. It uses complete reducibility and row derivatives, with no Capelli identity. The determinant proof in Section 4 is its \(n\)-dimensional version.
 
-## 5. Equations for the nullcone give module finiteness
+[Exercise 4](#exercise-4).
 
-Define the **nullcone**
+### Solution 5
+
+The coefficient representation has dimension three, so the bound is three. The triples displayed after Theorem 10.1 give a counterexample to generation solely by self- and pairwise discriminants: all those values agree, while \(\tau_{123}\) changes sign. Theorem 10.1 gives the generating patterns are \(h_i,M_{ij},\tau_{ijk}\). These are precisely the polarizations of the corresponding invariants on three copies. The pair and triple generators have coefficient degrees two and three, respectively. The copy bound is three, the dimension of the coefficient representation.
+
+[Exercise 5](#exercise-5).
+
+### Solution 6
+
+Distinguish the symbol letters from the coefficient names \(a,b,c,d,e\). The first expansion gives
 \[
-\mathcal N=\{w\in W:b(w)=0\text{ for every }b\in B_+\}.
+U([ab]^4)=
+\sum_{r=0}^4(-1)^r\binom4r A_rA_{4-r}
+=2ae-8bd+6c^2=2i.
 \]
-Theorem 4.1 makes this an algebraic set defined by finitely many equations.
-
-**Theorem 5.1 (Hilbert's nullcone finiteness theorem).** Suppose homogeneous positive-degree invariants \(q_1,\ldots,q_r\) have common zero set \(\mathcal N\) in \(W\). Then \(B\) is a finite module over \(\mathbb C[q_1,\ldots,q_r]\).
-
-**Proof.** Choose homogeneous algebra generators \(b_1,\ldots,b_s\) for \(B\). Each \(b_i\) vanishes on the common zero set of the \(q_j\). The Nullstellensatz gives an integer \(N_i>0\) and an expression
+The second evaluation is an invariant of coefficient degree three. Since the quartic invariant ring is \(k [i,j]\), it is a scalar multiple of \(j\). To determine the scalar, use \(f=6x^2y^2\), so only \(A_2=1\) is nonzero and \(j=-1\). The coefficient of
+\(a_1^2a_2^2b_1^2b_2^2c_1^2c_2^2\)
+in the bracket product is
 \[
-b_i^{N_i}=\sum_j a_{ij}q_j\quad(a_{ij}\in A).
+\sum_{r=0}^2(-1)^r\binom2r^3=1-8+1=-6.
 \]
-Applying \(\rho\) makes the coefficients invariant, so
-\(b_i^{N_i}\in(q_1,\ldots,q_r)B\).
-Thus \(B/(q_1,\ldots,q_r)B\) is spanned by the finitely many monomials
-\(\prod_i b_i^{e_i}\), \(0\leq e_i<N_i\).
-Choose homogeneous lifts \(u_1,\ldots,u_t\) of a homogeneous vector-space basis of that quotient.
+To obtain this sum, select the second-index exponents \(r,2-r,r\) in the three brackets \([ab]^2,[ac]^2,[bc]^2\); these are exactly the choices giving degree two in each coordinate of each letter. Hence
+\(U([ab]^2 [ac]^2 [bc]^2)=6j\).
 
-For a homogeneous \(b\in B_d\), subtract a complex linear combination of the \(u_i\) of degree \(d\) to obtain an element of \((q_1,\ldots,q_r)B\). Write that remainder as \(\sum_jq_jc_j\), choosing \(c_j\) of degree \(d-\deg q_j<d\). Induction on degree expresses every \(c_j\), and hence \(b\), in the \(\mathbb C[q_1,\ldots,q_r]\)-module generated by the \(u_i\). This proves module finiteness. \(\square\)
+[Exercise 6](#exercise-6).
 
-This is stronger than the assertion that some finite generating set exists: any homogeneous invariant equations cutting out the nullcone give an integral, finite subalgebra. It does not assert that the \(q_j\) are algebraically independent.
 
-## 6. The nullcone of binary forms
+## Further reading
 
-For a binary \(d\)-ic, the root formulation has a complete elementary proof. We need first a fact about symmetric root expressions.
-
-**Lemma 6.1 (descending a root expression).** Let
-\[
-f(x,y)=\prod_{\nu=1}^d(u_\nu x+v_\nu y)
-=\sum_{r=0}^d c_rx^{d-r}y^r.
-\]
-A polynomial in the \(u_\nu,v_\nu\) that is symmetric in the \(d\) pairs and homogeneous of degree \(q\) in each pair is a unique polynomial, homogeneous of degree \(q\), in \(c_0,\ldots,c_d\). This assertion and its proof hold with coefficients in any commutative ring, including \(\mathbb Z\).
-
-**Proof.** Set all \(u_\nu=1\). The resulting polynomial \(P(v_1,\ldots,v_d)\) is symmetric and has degree at most \(q\) in each \(v_\nu\). Use the usual leading-monomial proof of the fundamental theorem of symmetric polynomials, with lexicographic order \(v_1>\cdots>v_d\). A leading monomial has exponents
-\(\alpha_1\geq\cdots\geq\alpha_d\), since exchanging a larger later exponent with an earlier smaller one would give a larger monomial. Subtract its coefficient times
-\[
-e_1^{\alpha_1-\alpha_2}e_2^{\alpha_2-\alpha_3}
-\cdots e_d^{\alpha_d}.
-\]
-This product has the chosen leading monomial with coefficient one. It uses \(\alpha_1\leq q\) elementary-symmetric factors, and has degree at most \(q\) in each variable. The subtraction therefore stays within the finite set of possible monomials of individual degree at most \(q\), and strictly lowers the leading monomial. It terminates without division by any integer or coefficient.
-
-For \(u_\nu\ne0\), put \(z_\nu=v_\nu/u_\nu\). Homogeneity gives the original polynomial as
-\((\prod u_\nu)^qP(z_1,\ldots,z_d)\).
-Here \(c_0=\prod u_\nu\) and \(c_r=c_0e_r(z)\). A term using \(h\leq q\) elementary-symmetric factors becomes their corresponding product of \(c_r\)'s times \(c_0^{q-h}\). This is a homogeneous coefficient polynomial of degree \(q\). The equality in the localization where the \(u_\nu\) are inverted is a polynomial equality before localization: multiplication by a monomial in polynomial variables is injective over any coefficient ring.
-
-For uniqueness, distinct products of the elementary symmetric functions have distinct leading monomials, given by their successive cumulative exponents, and leading coefficient one. They are therefore linearly independent over any coefficient ring. A homogeneous relation of degree \(q\) in the \(c_r\)'s, evaluated at every \(u_\nu=1\), becomes a relation between these products in \(c_1=e_1,\ldots,c_d=e_d\); the power of \(c_0\) in each term was fixed by total degree. Every coefficient is zero. Different coefficient degrees give different degrees in each root pair, so the entire coefficient-to-root substitution is injective as well. \(\square\)
-
-**Theorem 6.2 (binary nullcone).** A binary form belongs to the nullcone for \(\operatorname{SL}_2(\mathbb C)\) if and only if it has a root of multiplicity strictly greater than \(d/2\). The zero form belongs to the nullcone.
-
-**Proof.** If a nonzero form has such a root, change coordinates so its repeated factor is \(x^m\), \(m>d/2\). Under inverse substitution by \(\operatorname{diag}(t^{-1},t)\), every monomial \(x^ry^{d-r}\) occurring in it scales by \(t^{2r-d}\), with \(r\geq m\). Thus the transformed coefficient vector tends to zero as \(t\to0\). Every homogeneous positive-degree invariant is constant along this transformation and continuous at zero, so its value on the form is zero.
-
-Conversely, factor a nonzero form into \(d\) nonzero linear factors, and assume no root line occurs more than \(d/2\) times. Make two copies of each factor index, and arrange the \(2d\) copies so that indices with the same root line form consecutive blocks. Every block has length at most \(d\). Pair position \(r\) with position \(r+d\), for \(1\leq r\leq d\). Two paired positions cannot belong to the same block, so the bracket of their root covectors is nonzero.
-
-The product \(M\) of these \(d\) brackets is therefore nonzero at this tuple of root covectors. Each original factor index occurs twice, so \(M\) has degree two in each root pair. Consider
-\[
-\prod_{\sigma\in S_d}(T-\sigma M)
-=T^{d!}+\sum_{j=1}^{d!}Q_jT^{d!-j}.
-\tag{4}
-\]
-Each \(Q_j\) is symmetric in the root pairs, has degree \(2j\) in each pair, and is special-linear invariant, since every bracket is. Lemma 6.1 writes it as a coefficient polynomial \(I_j(f)\), homogeneous of positive degree \(2j\). That coefficient polynomial is invariant: the intertwining equality follows on every factored form, and every binary form factors over \(\mathbb C\), so it holds on every coefficient vector.
-
-At least one \(Q_j\) is nonzero at the chosen tuple. Otherwise (4) would specialize to \(T^{d!}\), whose only root is zero, contradicting the nonzero root \(M\). Hence some positive-degree invariant \(I_j\) is nonzero at \(f\), and \(f\notin\mathcal N\). \(\square\)
-
-For cubics the threshold is two: the nullcone is the double-root locus, equivalently \(\Delta=0\). For quartics it is three. In the first lesson the quartic invariant ring is \(\mathbb C[i,j]\), so the equations \(i=j=0\) cut out precisely the triple-root locus. A double-root quartic need not lie in the nullcone: \(x^2y^2\) has \(c=1/6\) and \(i=1/12\ne0\).
-
-The strict inequality matters for every even degree. A form with two equally multiple roots is on the discriminant locus but has a nonzero invariant.
-
-![A binary sextic with root multiplicities three, two and one. Two copies of each of its six factor slots are placed in twelve positions. Pairing each of the first six positions with the position six later joins different root lines and gives the nonzero product of brackets 14 squared, 25 squared and 36 squared.](figures/root-matching.png)
-
-This is the matching step of Theorem 6.2 for \(d=6\) and three distinct root lines \(A,B,C\) of multiplicities \(3,2,1\). Each factor slot occurs twice; every paired bracket joins different root lines. The depicted nonzero product still needs the symmetric-polynomial step (4) to become a coefficient invariant. Editable diagram.
-
-## 7. Cayley's determinant differential operator
-
-Let \(X=(x_{ij})\), \(\Delta_X=\det X\), and
-\[
-\Omega_X=\det(\partial_{x_{ij}})
-=\sum_{\sigma\in S_n}\operatorname{sgn}(\sigma)
-\prod_{i=1}^n\partial_{x_{i,\sigma(i)}}.
-\]
-
-**Theorem 7.1 (Cayley's identity).** For every positive integer \(s\),
-\[
-\Omega_X\Delta_X^s
-=s(s+1)\cdots(s+n-1)\Delta_X^{s-1}.
-\tag{5}
-\]
-
-**Proof.** The chain rule for left and right matrix multiplication shows that \(\Omega_X\Delta_X^s\) transforms, on either side, with determinant exponent \(s-1\). On invertible matrices the action is transitive, so the result is a scalar times \(\Delta_X^{s-1}\); polynomial density makes this true on all matrices. Evaluate the scalar at \(X=I\).
-
-For a fixed permutation \(\sigma\), the derivative
-\(\prod_i\partial_{x_{i,\sigma(i)}}\Delta_X^s\) at \(I\)
-is the coefficient of \(\prod_i t_{i,\sigma(i)}\) in
-\(\det(I+T)^s\). In formal power series,
-\[
-\det(I+T)^s
-=\exp\left(s\sum_{r\geq1}\frac{(-1)^{r-1}}r
-\operatorname{tr}(T^r)\right).
-\]
-To obtain that square-free monomial, each term in a trace must trace one cycle of \(\sigma\): every selected entry has its prescribed outgoing and incoming index, so a closed path cannot leave its cycle. A cycle of length \(r\) occurs \(r\) times in \(\operatorname{tr}(T^r)\), canceling the denominator \(r\). It contributes \(s(-1)^{r-1}\). The exponential joins disjoint cycles, with its factorial canceling their orderings. The coefficient is therefore
-\(\operatorname{sgn}(\sigma)s^{c(\sigma)}\), where \(c(\sigma)\) counts cycles, including fixed points.
-
-Summing with the signs in \(\Omega_X\) gives \(\sum_\sigma s^{c(\sigma)}\). This sum equals \(s(s+1)\cdots(s+n-1)\): when inserting the last letter into a permutation of \(n-1\) letters, it either forms a singleton, giving a factor \(s\), or is inserted after one of the \(n-1\) existing letters in a cycle, preserving the number of cycles. The recurrence starts with the value \(s\) for \(n=1\). This proves (5). \(\square\)
-
-There is an algebraic form of compact averaging. For a homogeneous matrix polynomial \(P(X)\) of degree \(rn\), put
-\[
-L(P)=\frac{(\Omega_X^rP)(0)}{c_r},\qquad
-c_r=\prod_{s=1}^r s(s+1)\cdots(s+n-1);
-\quad c_0=1.
-\tag{6}
-\]
-Put \(L(P)=0\) on homogeneous degrees not divisible by \(n\), and extend linearly.
-
-**Proposition 7.2 (the Omega projection).** \(L\) descends to a bi-invariant linear functional on
-\(\mathbb C[G]=\mathbb C[x_{ij}]/(\Delta_X-1)\),
-with \(L(1)=1\). Applying \(L\) to the matrix coefficients of the action on \(A\) gives the Reynolds operator of Theorem 3.1.
-
-**Proof.** The determinant chain rule makes \(L\) invariant under left and right multiplication by \(G\). By (1), the left-invariant polynomials of degree \(rn\) are exactly the scalar multiples of \(\Delta_X^r\); degrees not divisible by \(n\) have none. Complete reducibility from Theorem 2.3 therefore implies that an invariant functional on each homogeneous piece is determined by its value on this single invariant vector, or is zero when no such vector exists. Cayley's identity gives \(L(\Delta_X^r)=1\).
-
-For homogeneous \(P\) of degree \(rn\), the two functionals \(P\mapsto L(P)\) and \(P\mapsto L(\Delta_XP)\) are invariant and both take the value one on \(\Delta_X^r\). Hence they coincide by that uniqueness. For other degrees both are zero. Thus \(L((\Delta_X-1)P)=0\) for every polynomial \(P\), proving descent.
-
-For \(F\in A\), its translate \(gF\) is a polynomial in the entries of \(g\) with coefficients in a finite-dimensional part of \(A\). Choose any representative \(P(X)\) for those matrix coefficients in the quotient coordinate ring and apply \(L\) coefficientwise. Descent makes the answer independent of that choice. Bi-invariance makes the resulting map equivariant with invariant image. Since \(L(1)=1\), it is the identity on invariants and hence a projection. It preserves the degree in \(W\). Uniqueness in Theorem 3.1 identifies it with \(\rho\). \(\square\)
-
-For \(n=1\), these formulas are evaluation at \(X=1\), as they should be for the trivial group.
-
-## 8. Decomposing a matrix product
-
-Noether's papers *On the invariant theory of forms in several variables* replace a collection of determinant expressions by a matrix product that retains entire exterior-power rows. Here is one of the decomposition identities in modern notation, with its signs and its reduction step.
-
-Let \(\alpha_1,\ldots,\alpha_\rho,\beta_1,\ldots,\beta_\sigma\) be covectors on \(\mathbb C^n\), and let \(y_1,\ldots,y_{\rho+\sigma}\) be vectors, where \(\rho+\sigma\leq n\). Define the matrix product by
-\[
-\langle\alpha_1\wedge\cdots\wedge\alpha_\rho,\,
-y_1\wedge\cdots\wedge y_\rho\rangle
-=\det(\alpha_i(y_j))_{1\leq i,j\leq\rho}.
-\]
-It depends on the exterior-power rows, not on the individual factors chosen to represent them.
-
-**Proposition 8.1 (decomposition identity).** Put \(q=\alpha_1\wedge\cdots\wedge\alpha_\rho\) and \(a=\beta_1\wedge\cdots\wedge\beta_\sigma\). Then
-\[
-\langle q\wedge a,y_1\wedge\cdots\wedge y_{\rho+\sigma}\rangle
-=\sum_{\substack{I\subset\{1,\ldots,\rho+\sigma\}\\|I|=\rho}}
-(-1)^{\sum_{i\in I}i-\rho(\rho+1)/2}
-\langle q,y_I\rangle\langle a,y_{I^c}\rangle.
-\tag{7}
-\]
-The factors within \(y_I,y_{I^c}\) are in increasing index order.
-
-**Proof.** Form the \((\rho+\sigma)\)-square pairing matrix with its \(\alpha\)-rows first and its \(\beta\)-rows last. Expand its determinant along the first \(\rho\) rows. Choosing their columns \(I=\{i_1<\cdots<i_\rho\}\) leaves columns \(I^c\) for the other rows. The column shuffle has sign
-\((-1)^{\sum_j(i_j-j)}\), the displayed exponent. The two resulting minors are the two pairings on the right. This proves (7). Since both factors are exterior pairings, the formula also proves that the apparent dependence on the individual vectors enters only through the exterior product on the left. \(\square\)
-
-This is Noether's 1911 paper, Section 5, equation (32). Her exponent adds rather than subtracts \(\rho(\rho+1)/2\); the difference is the even integer \(\rho(\rho+1)\), so the signs agree. Her 1910 announcement describes why retaining the exterior-power rows makes the symbolic representation explicit.
-
-The case \(\rho=1,\sigma=r-1\) is also a useful reduction formula:
-\[
-\langle\alpha\wedge b,y_1\wedge\cdots\wedge y_r\rangle
-=\sum_{j=1}^r(-1)^{j-1}
-\alpha(y_j)\langle b,y_1\wedge\cdots\widehat{y_j}\cdots\wedge y_r\rangle.
-\tag{8}
-\]
-It is the first-row Laplace expansion, corresponding to the product identity of Section 3, equation (16) of the same paper. It replaces a pairing involving \(r\) rows by products involving one and \(r-1\) rows. Iterating reduces it to products of ordinary scalar pairings, with the alternating signs preserving the exterior row.
-
-For example, in dimension three it gives the entire reduction
-\[
-\begin{split}
-[\alpha\beta\gamma]\,[y_1y_2y_3]
-={}&\alpha(y_1)\bigl(\beta(y_2)\gamma(y_3)-\beta(y_3)\gamma(y_2)\bigr)\\
-&-\alpha(y_2)\bigl(\beta(y_1)\gamma(y_3)-\beta(y_3)\gamma(y_1)\bigr)\\
-&+\alpha(y_3)\bigl(\beta(y_1)\gamma(y_2)-\beta(y_2)\gamma(y_1)\bigr).
-\end{split}
-\tag{9}
-\]
-The left side is the determinant of the pairing matrix by multiplicativity of determinants; (8) gives exactly the right side. Every term is an invariant. If its covector rows are symbolic letters assigned to forms, umbral evaluation preserves the equality by linearity and gives a relation among actual concomitants. This is a concrete reduction inside invariant expressions, with no non-invariant coefficient introduced.
-
-## Exercises and solutions
-
-**Exercise 1 — The determinant character.** Show that a bracket of \(n\) vector columns is special-linear invariant and changes by \(\det g\) under \(v_i\mapsto gv_i\).
-
-**Solution.** The new column matrix is \(g(v_{i_1}\ \cdots\ v_{i_n})\). Multiplicativity of the determinant gives
-\([gv_{i_1}\cdots gv_{i_n}]=\det(g)[v_{i_1}\cdots v_{i_n}]\).
-On \(\operatorname{SL}_n\) the factor is one. Under the induced action on polynomial functions, \(gF(v)=F(g^{-1}v)\), the character is its inverse. Keeping these two assertions separate avoids a sign change in determinant weights.
-
-**Exercise 2 — Density from unit quaternions.** Prove the density of \(\operatorname{SU}(2)\) directly from its quaternion parametrization.
-
-**Solution.** Every element is
-\[
-\begin{pmatrix}
-u+iv&s+it\\-s+it&u-iv
-\end{pmatrix},
-\qquad u,v,s,t\in\mathbb R,\quad u^2+v^2+s^2+t^2=1.
-\]
-To check the parametrization, a unitary determinant-one matrix has second row equal to the negative conjugate-swapped first row, and the norm condition gives the sphere equation; the converse follows by multiplication.
-
-Near the identity use real coordinates \(v,s,t\), with
-\(u=(1-v^2-s^2-t^2)^{1/2}\) and the positive root. The same formula is holomorphic for complex \(v,s,t\) near zero, using the square root with value one. Its derivative gives the three complex-independent matrices
-\[
-\begin{pmatrix}i&0\\0&-i\end{pmatrix},\quad
-\begin{pmatrix}0&1\\-1&0\end{pmatrix},\quad
-\begin{pmatrix}0&i\\i&0\end{pmatrix},
-\]
-a basis of \(\mathfrak{sl}_2(\mathbb C)\). Thus it parametrizes a complex open neighbourhood of the identity. A polynomial vanishing on the real unit sphere vanishes on the real coordinate box here; the coordinatewise identity theorem makes it vanish on that complex neighbourhood. Connectedness, proved in Lemma 2.2 by elementary matrices, makes it vanish on all of \(\operatorname{SL}_2(\mathbb C)\).
-
-**Exercise 3 — Averaging a linear-form representation.** Compute \(\rho\) on \(\mathbb C[x,y]_2\) for the standard special-linear action, and determine it in every positive degree.
-
-**Solution.** Transitivity on nonzero vectors shows that an invariant polynomial on \(\mathbb C^2\) is constant: it has the same value on the punctured plane, a dense set. Hence the invariant subspace in every positive homogeneous degree is zero. A Reynolds operator projects onto that subspace, so
-\(\rho(ax^2+bxy+cy^2)=0\), and likewise in every positive degree. On constants it is the identity. In particular \(\rho(x^2)\) is not obtained by keeping only a torus-fixed monomial; being fixed by the whole group is the condition.
-
-**Exercise 4 — Finite generation and normality.** Deduce that \(B\) is a Noetherian normal domain. Explain why finite generation alone does not prove normality, using \(\mathbb C[t^2,t^3]\).
-
-**Solution.** Theorem 4.1 makes \(B\) a quotient of a finite polynomial ring, hence Noetherian by the Hilbert basis theorem. It is a domain because \(A\) is, and the monic-equation argument of Corollary 4.2 proves it is integrally closed in its fraction field. For \(R=\mathbb C[t^2,t^3]\), the element \(t=t^3/t^2\) belongs to \(\operatorname{Frac}R\), and satisfies the monic polynomial \(Z^2-t^2\in R[Z]\). But \(t\notin R\): every nonconstant monomial in its generators has degree at least two. Thus \(R\) is finite type and a domain but is not normal.
-
-**Exercise 5 — The cubic nullcone.** Determine the nullcone of binary cubics and identify its defining invariant.
-
-**Solution.** Theorem 6.2 gives root multiplicity \(>3/2\), hence at least two, for every nonzero cubic in the nullcone. The zero cubic is also there. The first lesson proves that the invariant ring is \(\mathbb C[\Delta]\), with
-\(\Delta=(2/27)[12]^2[13]^2[23]^2\).
-Its zero set is exactly the repeated-root locus, including zero, so \(\mathcal N=V(\Delta)\). Alternatively, a double-root cubic can be moved to one divisible by \(x^2\), and the diagonal one-parameter substitution in Theorem 6.2 sends it to zero; a three-distinct-root cubic has nonzero \(\Delta\).
-
-## Sources and further reading
-
-The full Noether papers are supplied below in German and in the maintained English edition. The explicit invariant computations, compact averaging, Hesse-pencil proof and determinant arguments in the modern lesson are independently written. Noether’s 1910 announcement and 1911 paper explain the matrix and decomposition programme; Hilbert’s 1893 paper, Section 4, is the original source for the nullcone finiteness argument. Different normalizations of the Aronhold invariants rescale the formulas in (A5).
+Noether’s 1916 reduction paper and 1920 addendum treat repeated kinds and determinant differential identities. Her1919 paper, Section 3, treats integral binary brackets. Kraft and Procesi, [Classical Invariant Theory: A Primer](https://dmi.unibas.ch/fileadmin/user_upload/dmi/Personen/Kraft_Hanspeter/Classical_Invariant_Theory.pdf), Sections 7.1–7.4, provides another account of polarization and vector invariants.

@@ -5787,21 +5787,21 @@ HolIII Theorem 4.1.1, printed p. 906 (PDF page 94), starts with a holonomic fini
 
 with the latter map injective and $\mathscr E^\infty$-linear; $L$ is a finite D-type system. This statement alone is neither a map from the actual finite module into a finite-pole coefficient space nor a proof of its faithfulness. The further regularity argument in V.1.1–V.1.4 is essential. The finite and infinite operator rings in this target map are distinct.
 
-The following inputs remain unproved in this leaf. Their source locators identify material to prove, and do not license using their assertions.
+The realization and regularity inputs are as follows. Each result is used only with its complete programme proof.
 
-1. **Finite generic-position ordinary realization.** Under the supplied actual finite order-zero lattice and finite principal fibre of G.1, [§5.29, G.1–G.5](#5-29-actual-finite-generation-over-the-coordinate-commuting-ring) proves finite generation over the ring commuting with the $x_i$; [§5.30, F.1–F.7](#5-30-actual-polynomial-flatness-and-reconstruction-after-finite-realization) proves actual polynomial flatness, whole-stalk reconstruction and polynomial-submodule stability; and [§5.31, L.1–L.6](#5-31-a-bounded-actual-generic-position-complex-with-polynomial-operator-matrices) proves a bounded free resolution over the actual finite-order microlocal rings with polynomial matrices on one base neighbourhood. The actual bounded complex is not claimed exact over its polynomial coefficient ring. The equality of a characteristic support defined through an infinite-order extension with the actual principal support remains a separate prerequisite if that convention is used. The infinite-order base change remains open. The commuting ring is distinct from the full order-zero ring bearing the same letter in earlier dummy leaves. No ordinary $h=1$ specialization supplies those remaining inputs. For every coherent actual holonomic germ, §5.32, J.1–J.3 constructs that actual lattice and proves the finite principal fibre after the contact reduction; the actual finite-order support convention is explicit. Section 5.33, K.1–K.3 supplies a convergent ordinary negative-order Volterra kernel complex, with the endpoint relation stated in K.2.
+1. **Finite generic-position ordinary realization.** Under the supplied actual finite order-zero lattice and finite principal fibre of G.1, [§5.29, G.1–G.5](#5-29-actual-finite-generation-over-the-coordinate-commuting-ring) proves finite generation over the ring commuting with the $x_i$; [§5.30, F.1–F.7](#5-30-actual-polynomial-flatness-and-reconstruction-after-finite-realization) proves actual polynomial flatness, whole-stalk reconstruction and polynomial-submodule stability; and [§5.31, L.1–L.6](#5-31-a-bounded-actual-generic-position-complex-with-polynomial-operator-matrices) proves a bounded free resolution over the actual finite-order microlocal rings with polynomial matrices on one base neighbourhood. The actual bounded complex is not claimed exact over its polynomial coefficient ring. The equality of a characteristic support defined through an infinite-order extension with the actual principal support remains a separate prerequisite if that convention is used. Section5.86, EV.A--EV.F uses the actual special-ring reconstruction of ISR.3 for the whole infinite extension. The commuting ring is distinct from the full order-zero ring bearing the same letter in earlier dummy leaves. No ordinary $h=1$ specialization supplies those remaining inputs. For every coherent actual holonomic germ, §5.32, J.1–J.3 constructs that actual lattice and proves the finite principal fibre after the contact reduction; the actual finite-order support convention is explicit. Section 5.33, K.1–K.3 supplies a convergent ordinary negative-order Volterra kernel complex, with the endpoint relation stated in K.2.
 
 2. **Sectorial complex-analytic operator action and relative vanishing.** HolIII IV.4.4.1 imports Kashiwara–Schapira, *Micro-hyperbolic systems*, Theorem 4.5.1. That theorem is freely available, but its proof reduces to its own Theorem 4.1.1 and Corollary 3.2.5, which require the convergent complex-domain kernel action and division estimates. HolIII weakens its condition (c3) to exactness on $\Omega_1\setminus\Omega_0$. The exact weakened statement, the cone conditions, and every cohomological shift still require a complete proof. A smooth real-symbol propagation or Egorov argument cannot replace the complex factorial-growth action.
 
-3. **Continuation on the entire hypersurface complement.** Section5.82, CF.A--CF.H proves multivalued holomorphic continuation on one common neighbourhood for every prescribed finite list of actual holonomic function solutions, including every characteristic branch. Section5.83, FD.A--FD.F proves finite dimensionality of the entire directional solution space and vanishing of positive Ext. Section5.85, MC.A--MC.G proves actual finite E-linear solution monodromy and a common finite-determination ideal for the chosen generator functions and all their branches. Coherent D-type realization with full infinite-order evaluation linearity requires further arguments.
+3. **Continuation on the entire hypersurface complement.** Section5.82, CF.A--CF.H proves multivalued holomorphic continuation on one common neighbourhood for every prescribed finite list of actual holonomic function solutions, including every characteristic branch. Section5.83, FD.A--FD.F proves finite dimensionality of the entire directional solution space and vanishing of positive Ext. Section5.85, MC.A--MC.G proves actual finite E-linear solution monodromy and a common finite-determination ideal for the chosen generator functions and all their branches. Section5.86, EV.A--EV.F proves continuation of every infinite-extension section, a stable finite function algebra, and a faithful full infinite-order tensor-unit realization along the original hypersurface.
 
-4. **Separation of sections at singular support.** IV.4.6.1 and IV.4.6.2 assert finite dimensionality and injectivity of evaluation against sectorial solutions on $M^\infty$. Section5.84, SE.A--SE.F proves separation for every section of the whole infinite extension, including singular germs and all coefficient tails. The proof uses actual normal-form identity, finite-dimensional cap Hom, injective evaluation-target restriction and purity on a fixed analytic exceptional set. Section5.85, MC.A--MC.G proves actual solution monodromy and common finite function determination. Coherent D-type realization with full infinite-order evaluation linearity requires further arguments.
+4. **Separation of sections at singular support.** IV.4.6.1 and IV.4.6.2 assert finite dimensionality and injectivity of evaluation against sectorial solutions on $M^\infty$. Section5.84, SE.A--SE.F proves separation for every section of the whole infinite extension, including singular germs and all coefficient tails. The proof uses actual normal-form identity, finite-dimensional cap Hom, injective evaluation-target restriction and purity on a fixed analytic exceptional set. Section5.85, MC.A--MC.G proves actual solution monodromy and common finite function determination. Section5.86, EV.A--EV.F proves continuation of every infinite-extension section, a stable finite function algebra, and a faithful full infinite-order tensor-unit realization along the original hypersurface.
 
-5. **Infinite-order linearity and faithful tensor maps.** IV.4.7.1 explicitly treats $\mathscr E^\infty$-linearity as a substantive step. It uses III.4.9 to enlarge a finite-codimensional monodromy ideal under the full $\mathscr A^\infty$-action, and III.5.5 for the $\mathscr E^\infty\otimes_{\mathscr A^\infty}$ comparison. The finite-order isomorphism in Q.6–Q.7 and the actual positive-degree completion prove neither this kernel action nor infinite-order flatness. They cannot justify the tensor-submodule inclusion at the end of IV.4.7 by analogy.
+5. **Infinite-order linearity and faithful tensor maps.** IV.4.7.1 explicitly treats $\mathscr E^\infty$-linearity as a substantive step. It uses III.4.9 to enlarge a finite-codimensional monodromy ideal under the full $\mathscr A^\infty$-action, and III.5.5 for the $\mathscr E^\infty\otimes_{\mathscr A^\infty}$ comparison. The finite-order isomorphism in Q.6–Q.7 and the actual positive-degree completion prove neither this kernel action nor infinite-order flatness. Section5.86, EV.A--EV.F supplies the full infinite-order tensor-unit injection using an actual normal-parameter module and finite primitive witnesses, without a mixed-ring flatness premise.
 
-6. **Passage to faithful finite poles for a regular module.** HolIII V.1.1 uses the embedding above and the regular-singular-to-Nilsson implication at generic divisors, then extension to the whole finite D-type system. V.1.2–V.1.4 recover a finite $\mathscr D$-module and an actual finite-pole injection. Its generic regularity test, finite generation at the base point, and extension on a common neighbourhood must all be proved with the exact ordinary/microlocal comparison. The coefficient lattice of §5.27 starts after this passage; using it to assume the passage would be circular.
+6. **Passage to faithful finite poles for a regular module.** HolIII V.1.1 uses the embedding above and the regular-singular-to-Nilsson implication at generic divisors, then extension to the whole finite D-type system. V.1.2–V.1.4 recover a finite $\mathscr D$-module and an actual finite-pole injection. Section5.87, RF.A--RF.I proves the generic regularity test, finite-pole quotient injection, entire-stalk ordinary finite generation, actual finite and ordinary-infinite reconstruction, and extension on one common neighbourhood with the whole-fibre support bound. The coefficient lattice of §5.27 starts after this passage; using it to assume the passage would be circular.
 
-The intrinsic microlocal order comparison and characteristic-operator stability in §5.27.12 remain subsequent obligations even after these six inputs are closed. C.1 and the arbitrary proper/support-proper analytic theorem remain open. The present substantive conclusion is Q.2–Q.7, not Q.20 or the finite D-type embedding.
+The intrinsic microlocal order comparison and characteristic-operator stability in §5.27.12 remain subsequent obligations even after these six inputs are closed. C.1 and the arbitrary proper/support-proper analytic theorem remain open. Section5.86, EV.A--EV.F proves Q.20 and the finite D-type tensor realization along the original projected hypersurface; Section5.87, RF.A--RF.I proves finite-pole recovery and both actual reconstructions for regular modules.
 
 #### Q.9. Illustration and reproducibility
 
@@ -5820,7 +5820,7 @@ Free human source context: M. Kashiwara and T. Kawai, *On the holonomic systems 
 
 ![Whole-germ generic position and actual factorial-growth contact quantization](assets/quadratic-contact-shear.png)
 
-*The plotted real slice is the projection of (Q.21), for $|s|\le0.4$ and $C=1$. The entire complex-germ reduction is proved in Q.2–Q.3, and the actual convergent symbol isomorphism in Q.4–Q.7. The dashed finite D-type arrow remains open as specified in Q.8. Free human source: [Kashiwara–Kawai, author-hosted HolIII](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), I.6 and IV.1–IV.7.*
+*The plotted real slice is the projection of (Q.21), for $|s|\le0.4$ and $C=1$. The entire complex-germ reduction is proved in Q.2–Q.3, and the actual convergent symbol isomorphism in Q.4–Q.7. Section5.86, EV.A--EV.F proves the tensor-unit realization denoted by the dashed finite D-type arrow; Section5.87, RF.A--RF.I proves the regular-module finite-pole passage in Q.8. Free human source: [Kashiwara–Kawai, author-hosted HolIII](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), I.6 and IV.1–IV.7.*
 
 
 ### 5.29. Actual finite generation over the coordinate-commuting ring
@@ -45490,6 +45490,2592 @@ figure PNG.
 
 Free source:
 [Kashiwara–Kawai, Holonomic systems III, III.3.4 and IV.4.6–4.7](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf).
+
+
+### 5.86. A faithful D-type realization of the whole infinite extension
+
+Let \(M\) be a coherent actual holonomic microlocal module in
+generic position at \(p_0=(0;dt)\), and put
+\[
+\begin{gathered}
+E=\mathscr E_{p_0},\qquad B=\mathscr E^\infty_{p_0},\\
+R=\mathcal D^\infty_{X,0},\\
+N=B\otimes_E M .
+\end{gathered}
+\tag{EV.1}
+\]
+The action of \(R\) on \(N\) uses the actual inclusions
+\(R\subset T\subset B\), where \(T\) is the chosen-fibration
+special ring of ISF.1–ISF.5. Its ordinary part and its map to
+the full microlocal ring are those actual kernel maps.
+The hypersurface \(S\) is the ordinary projection of the whole
+characteristic support. Keep the actual directional module \(\mathcal C\)
+of §5.82, CF.A.
+Write
+\[
+\begin{gathered}
+V=\operatorname{Hom}_E(M,\mathcal C),\\
+q=\dim_{\mathbf C}V .
+\end{gathered}
+\tag{EV.2}
+\]
+Its finite dimension and its whole-module interpretation are
+§5.83, FD.1.
+
+**Theorem EV.1.** There are a finite D-type module \(L\) along exactly
+\(S\), an embedded trivial connection \(\mathcal O_X^q\), and a coherent
+holonomic finite-operator quotient
+\[
+\begin{gathered}
+K=L/\mathcal O_X^q,\\
+\operatorname{Hom}_{\mathcal D_X}(\mathcal O_X,K)_0=0 .
+\end{gathered}
+\tag{EV.3}
+\]
+There is an actual \(R\)-linear injection \(e:N\to K^\infty_0\), where
+\(K^\infty=R\otimes_{\mathcal D_X}K\), such that
+\[
+\begin{gathered}
+\Psi:N\longrightarrow B\otimes_R K^\infty_0\\
+\simeq B\otimes_{\mathcal D_{X,0}}K_0,\\
+\Psi(s)=1\otimes e(s)
+\end{gathered}
+\tag{EV.4}
+\]
+is \(B\)-linear and injective. These are stalk maps of the actual
+ordinary algebraic tensors. No finite-pole conclusion for \(M\) is
+included in this assertion.
+
+#### EV.A. Continuation of arbitrary infinite-extension sections
+
+Choose the finitely many spanning ordinary fibrations \(F_j\) of
+CF.C, with vertical vectors
+\[
+v_0,\ v_0-\lambda e_1,\ldots,v_0-\lambda e_n .
+\tag{EV.5}
+\]
+They keep the time coordinate and its directional tangent condition.
+The actual finite, infinite and real coordinate maps are
+§5.56, BCT.5.3.
+The entire transported module has a finite principal fibre in each
+fibration, by CF.C. Thus the full Späth generation theorem
+§5.49, ISR.2
+applies in each of them.
+
+For any \(s\in N\), it gives a finite expression
+\[
+\begin{gathered}
+s=\sum_i a_{j,i}u_{j,i},\\
+a_{j,i}\in A_j^\infty .
+\end{gathered}
+\tag{EV.6}
+\]
+The generators \(u_{j,i}\) belong to the actual finite module in that
+fibration. The time-only ring \(A_j^\infty\) is contained in its actual
+special ring by ISF.9. Each expression is obtained in its own
+coordinates; it is not obtained by transporting a finite spatial degree.
+
+Fix finitely many such sections and finitely many functionals in \(V\).
+CF.1 gives common full-complement continuations for their finitely many
+generator values. Apply every \(a_{j,i}\) by its full ordinary head and
+joint Volterra kernel. The arbitrary-input construction
+§5.85, MC.C
+produces holomorphic functions on the covers of
+\[
+\begin{gathered}
+U_j\setminus(S\cup D_j),\\
+D_j=F_j^{-1}(H_j).
+\end{gathered}
+\tag{EV.7}
+\]
+All normal domains are chosen before the spatial epsilon; long lifted
+contours cost their finite length. Both infinite coefficient tails and
+all spatial indices are therefore retained.
+
+On a common strict negative cone these functions represent the same
+class \(\Phi^\infty(s)\). Their differences extend as ordinary
+holomorphic germs by CF.8. Subtract these finitely many germs on a
+common smaller ordinary ball. The functions then have exactly the same
+initial scalar germ.
+
+The bad cylinders have intersection of codimension at least two by
+CF.13 and CF.F. That proof depends only on the spanning vertical
+directions: a common hypersurface component would be tangent to all
+of them at a regular point. The all-branch path argument of CF.F now
+applies to EV.7. Its convex-ball detours arrange each overlap path
+outside all cylinders, so the next fibration continues the branch
+which has actually arrived there. CF.G then removes the remaining
+codimension-two set: its small complement balls are connected and
+simply connected, and the fixed-circle Cauchy extension identifies
+the continued holomorphic functions. These arguments use no equation
+for the resulting scalar function.
+
+Consequently every prescribed finite list of values
+\(\Phi^\infty(s)\), with \(s\) in the whole \(N\), has full multivalued
+holomorphic representatives on one ordinary \(U\setminus S\).
+The neighbourhood may depend on that finite list.
+
+#### EV.B. A stable finite function algebra
+
+Fix a product \(U_0\) carrying the basis-generator functions of MC.1
+and its actual representation \(\rho_0\) on \(V\). Use a cofinal system
+of smaller root-containing products \(U\), with the same reduced
+Weierstrass degree \(m\). Base points and their comparison paths lie
+in the fixed negative cone. Write
+\[
+\begin{gathered}
+\Gamma_U=\pi_1(U\setminus S),\\
+\rho_U:\Gamma_U\longrightarrow\operatorname{GL}(V).
+\end{gathered}
+\tag{EV.8}
+\]
+Here \(\rho_U\) is the pullback of \(\rho_0\).
+
+Every inclusion of two such products induces a surjective group map.
+Indeed MC.A shows that the larger group is generated by the meridians
+in any one generic fibre. Choose that fibre sufficiently close to zero
+that all punctures lie in the smaller time disc. The same meridians
+then lie in the smaller product. Its own negative anchor paths and
+the larger anchor paths differ by a homotopy in the common convex
+negative cone. Thus their images are precisely a generating set of
+the larger group. An isomorphism of the groups is unnecessary.
+
+For \(s\in N\), choose a full-complement representative \(f_s\) of
+EV.A on a common such \(U\), and use the original fibration expression
+\(s=\sum_i a_i u_i\) in EV.6. The relation
+\[
+\sum_i a_i[f_i]-[f_s]=0\quad\text{in }\mathcal C
+\tag{EV.9}
+\]
+is a finite relation between globally continued inputs with special
+coefficients. MC.E applies to this exact relation, including the
+coefficient \(-1\) of \(f_s\). For every \(\gamma\in\Gamma_U\) it gives
+\[
+\begin{gathered}
+{}[T_\gamma f_s]\\
+=\sum_i a_i[T_\gamma f_i]\\
+=(\rho_U(\gamma)\Phi)^\infty(s).
+\end{gathered}
+\tag{EV.10}
+\]
+The last equality uses actual extension adjunction and ISR.2, not
+continuation of an infinite normal-order sum.
+
+Put
+\[
+\begin{gathered}
+A_U=\mathbf C[\Gamma_U],\\
+c_U=\ker(A_U\to\operatorname{End}_{\mathbf C}V),\\
+a_U=I_Uc_U ,
+\end{gathered}
+\tag{EV.11}
+\]
+where \(I_U\) is the augmentation ideal. The proof MC.G applies with
+EV.10. Each \(c f_s\), for \(c\in c_U\), is a globally continued
+ordinary holomorphic germ at zero. MC.B makes all its continuations
+unchanged. Hence \(a_U\) annihilates \(f_s\) as a function, on every
+branch, and
+\[
+\dim_{\mathbf C}A_U/a_U\le 1+mq^2 .
+\tag{EV.12}
+\]
+This ideal works for the whole finite list of sections and functionals.
+
+There is one stabilized algebra for all further germs. For
+\(U'\subset U\), the surjection \(h:A_{U'}\to A_U\) satisfies
+\[
+\begin{gathered}
+c_{U'}=h^{-1}(c_U),\\
+h(I_{U'})=I_U,\\
+h(a_{U'})=a_U .
+\end{gathered}
+\tag{EV.13}
+\]
+It therefore gives a surjective algebra map
+\[
+A_{U'}/a_{U'}\longrightarrow A_U/a_U .
+\tag{EV.14}
+\]
+The finite dimensions are nondecreasing under shrinking and are
+bounded by EV.12. Choose \(U_*\) at which their maximum is attained.
+Every map EV.14 to this product, from a smaller admissible product,
+is an isomorphism: it is surjective between spaces of the same
+dimension. In particular \(a_{U'}\) is the inverse image of \(a_{U_*}\).
+
+Thus
+\[
+A_*=A_{U_*}/a_{U_*}
+\tag{EV.15}
+\]
+controls every value of every whole infinite-extension section,
+on its own sufficiently small representative domain. This proves
+stability of finite algebra quotients; it makes no assertion that
+the underlying fundamental groups stabilize.
+
+#### EV.C. The finite D-type quotient and its directional injection
+
+Let \(a_*=a_{U_*}\). The cyclic dual construction PD.39–PD.44 and
+the prescribed-complement theorem
+§5.79, FB.D–FB.E
+give an actual finite D-type module \(L_*\) along \(S\).
+Its ordinary infinite extension is, by the actual all-parameter map
+FB.39,
+\[
+\begin{gathered}
+R\otimes_{\mathcal D_X}L_*
+\simeq\mathscr F_{a_*},\\
+\operatorname{rank}(L_*|_{X\setminus S})
+=\dim_{\mathbf C}A_* .
+\end{gathered}
+\tag{EV.16}
+\]
+Here \(\mathscr F_{a_*}\) consists of all jointly holomorphic branch
+functions of that type, as germs on the fixed restricted covers.
+EV.14 identifies this space with the corresponding local function
+spaces on all further products.
+Explicitly, if a small-complement loop maps to the identity in
+\(\Gamma_{U_*}\), its difference from \(1\) lies in \(a_U\).
+Every function of type \(a_U\) is invariant under that kernel,
+so descends from the small universal cover to the restriction of
+the fixed cover. The surjective group map makes this restricted
+cover connected. Conversely, pullback of a function of type
+\(a_*\) is annihilated by \(a_U\), since these ideals are exact
+inverse images. The descents are holomorphic in the ordinary
+covering charts.
+
+Since \(a_*\subset I_{U_*}\), augmentation gives a nonzero invariant
+functional on \(A_*\). Its invariant functional space has dimension
+one:
+\[
+A_*/I_{U_*}A_*\simeq\mathbf C .
+\tag{EV.17}
+\]
+Every horizontal germ in \(L_*\) restricts to an invariant vector
+on a smaller complement. Its group surjects onto
+\(\Gamma_{U_*}\), so this is the same one-dimensional invariant
+space. A meromorphic section vanishing on that complement is
+zero. Thus the horizontal germs of \(L_*\) are exactly the
+constant multiples of this unit.
+The corresponding horizontal section is the scalar function \(1\).
+It embeds the trivial connection \(\mathcal O_X\) in \(L_*\).
+Here is its finite-module extension. Apply FB.D also to the
+trivial local system. Its normalized lattice is
+\(\mathcal O_X\): this is the residue-zero logarithmic lattice on
+the normalized locus, and the reflexive extension DT.E identifies
+it everywhere. DT.21 therefore identifies that finite D-type
+module with \(\mathcal O_X(*S)\).
+The invariant local-system map extends uniquely to
+\(\mathcal O_X(*S)\to L_*\) by DT.E.
+Restrict to \(\mathcal O_X\).
+The resulting map is injective, since its restriction off \(S\)
+is injective and an ordinary holomorphic function vanishing on
+that dense open is zero. Under FB.39 its map is precisely
+the ordinary scalar-function inclusion.
+
+Set \(K_*=L_*/\mathcal O_X\). It is coherent holonomic. It has no
+horizontal germ. To see this directly, lift a horizontal germ of
+\(K_*\) to \(l\in L_*\). In coordinates \(z_1,\ldots,z_{n+1}\),
+write \(\partial_i l=b_i\in\mathcal O_X\).
+Commuting derivatives gives \(\partial_i b_j=\partial_j b_i\).
+The holomorphic function
+\[
+h(z)=\int_0^1\sum_i z_i b_i(\lambda z)\,d\lambda
+\tag{EV.18}
+\]
+has \(\partial_i h=b_i\): differentiate the integrand and use the
+closedness identity to obtain the derivative of
+\(\lambda b_i(\lambda z)\). Thus \(l-h\) is horizontal in \(L_*\).
+EV.17 makes it a constant multiple of the embedded unit, so its
+quotient germ is zero.
+
+Ordinary right flatness of \(R\) over \(\mathcal D_X\), proved in
+§5.47, MF.6–MF.7,
+and the empty-divisor case of SI give
+\[
+K_*^\infty\simeq\mathscr F_{a_*}/\mathcal O_X .
+\tag{EV.19}
+\]
+Every function on the right gives an actual directional class by
+the anchored lift on the convex complements of CF.A and FD.C.
+This defines an \(R\)-linear map
+\[
+j:K_*^\infty\longrightarrow\mathcal C .
+\tag{EV.20}
+\]
+Its ordinary infinite action is the actual action: FB.39 and ISF
+use the same every-epsilon holomorphic heads on each larger
+Cauchy product.
+
+The map is injective. A class in its kernel has a branch agreeing
+near zero with an ordinary holomorphic germ. MC.B fixes this
+globally continued error under all meridians, and hence under
+the whole complement group. Apply it on the universal cover
+of a smaller representative product. Surjectivity to the fixed
+group accounts for every branch of its restricted cover.
+It is the same ordinary germ on
+every branch of a smaller representative domain, so is zero
+in EV.19.
+
+For each \(\Phi\in V\), EV.A–EV.15 therefore define a unique map
+\[
+\begin{gathered}
+e_\Phi:N\longrightarrow K_*^\infty,\\
+j e_\Phi=\Phi^\infty .
+\end{gathered}
+\tag{EV.21}
+\]
+Uniqueness also proves its linearity and its \(R\)-linearity:
+apply the injective \(j\), use the actual \(R\)-action, and use
+the \(B\)-linearity of \(\Phi^\infty\). This does not yet assert
+linearity of the tensor-unit map over \(B\).
+
+#### EV.D. The actual normal-parameter module
+
+One independent parameter \(u\) suffices. Let \(X'\) have
+coordinates \((u,s,x)\), let \(p'_0=(0;0,ds)\), and use finite
+and full rings \(E',B'\) there. The original rings embed by
+operators independent of \(u,D_u\). Put
+\[
+\begin{gathered}
+H=E'/E'D_u,\\
+M^{[u]}=H\otimes_E M,\\
+N^{[u]}=B'\otimes_{E'}M^{[u]} .
+\end{gathered}
+\tag{EV.22}
+\]
+These are actual algebraic quotients and tensors.
+
+Here is the normal form needed for the first quotient. In the
+chart \(\tau_s\ne0\), use \(\eta=\nu_u/\tau_s\).
+For every homogeneous coefficient \(p_k(u,s,x,\xi/\tau_s,\eta)\),
+Taylor division gives
+\[
+\begin{gathered}
+p_k(\eta)-p_k(0)=\eta q_k(\eta),\\
+q_k(\eta)=\int_0^1
+                  \partial_\eta p_k(\lambda\eta)\,d\lambda .
+\end{gathered}
+\tag{EV.23}
+\]
+Choose a larger covariable disc before all indices.
+Cauchy's formula bounds \(q_k\) by the old coefficient norm
+times its fixed inverse margin. Multiplying by \(\tau_s^{-1}\)
+shifts the homogeneous order by one. A fixed exponential
+enlargement absorbs the resulting negative factorial ratio;
+for the positive every-epsilon head choose the input epsilon
+smaller first. The same fixed-margin argument bounds every
+prescribed further derivative. Thus the coefficient sums give
+an actual operator \(Q\), in the finite class for a finite
+upper order and in the full class otherwise, with
+\[
+P=P|_{\nu_u=0}+QD_u .
+\tag{EV.24}
+\]
+Right multiplication by \(D_u\) is exactly multiplication by
+\(\nu_u\) on these symbols. The remainder is unique.
+For several parameters repeat this division in their ordered
+covariables.
+
+A finite presentation of \(M\), together with \(D_u\) on its
+generators, is a finite presentation of EV.22 over \(E'\).
+Finite-ring coherence makes \(M^{[u]}\) coherent. Its actual
+finite-module support is contained in
+\[
+\operatorname{supp}M\times\{(u;\nu_u=0)\}.
+\tag{EV.25}
+\]
+Use the actual finite support convention of
+§5.32, J.1–J.2.
+If \(\nu_u\ne0\), \(D_u\) is an actual elliptic unit, so its
+relations kill every generator. If \(\nu_u=0\) and the old
+cotangent point is outside \(\operatorname{supp}M\), the old
+finite presentation has zero cokernel. Its finitely many
+unit rows express all generators in its relation rows.
+Their actual coefficient identities, extended independently
+of \(u,\nu_u\), express every new generator as zero too.
+This proves the stated containment without a scalar-flatness
+or a principal base-change assertion.
+The reverse support containment follows from EV.24.
+At any fixed \(u=a\), evaluation of its remainder is a right
+\(E\)-linear map \(H\to E\), split by constant operators.
+Right \(E\)-linearity holds because an old operator differentiates
+only \(s,x\), and its coefficients are independent of \(u\).
+Tensor these two maps with \(M\). Wherever \(M\) is nonzero,
+the resulting split copy is nonzero in the new stalk.
+Thus the reduced support is exactly the product in EV.25.
+The set in EV.25 is Lagrangian of the new base dimension.
+Thus \(M^{[u]}\) is holonomic, with the zero object allowed.
+Its fibre over the new origin is contained in the one ray
+through \(p'_0\), so it is in generic position.
+
+The map \(N\to N^{[u]}\), sending a finite tensor
+\(b\otimes m\) to the same operator and generator, respects
+every \(E\)-balance relation. Its image is killed by \(D_u\).
+No injectivity of a parameter tensor is required below.
+
+Its whole directional Hom is canonically \(V\). Pullback of
+representatives gives one direction. Conversely, the images
+of the original generators under a functional for \(M^{[u]}\)
+satisfy \(D_u f=0\) in the new directional module.
+Choose a common convex representative domain from CF.A;
+its isotropic future majorant is preserved by \(u\mapsto\lambda u\),
+for \(0\le\lambda\le1\).
+The derivative \(\partial_u f\) is an ordinary holomorphic germ.
+Subtract its holomorphic \(u\)-primitive based at zero.
+The resulting representative is independent of \(u\).
+Restriction to \(u=0\) then gives the original directional class.
+The old finite relations hold there, and pullback restores all
+classes. The universal property of \(H\otimes_E M\) verifies
+the two inverse Hom maps. For several parameters use the
+closed-form radial primitive EV.18.
+
+The actual actions agree under these maps. Symbols independent
+of the parameter act by their original full kernels, and
+the removed \(D_u\)-terms act by zero on constant representatives.
+The finite quotient EV.24 and the common Cauchy estimates verify
+this with all tails retained.
+
+The characteristic projection in EV.25 is exactly
+the product of the parameter disc with \(S\).
+Apply EV.A–EV.B to this actual module, restricting functions
+to the complement of that product. Its group is \(\Gamma_U\),
+by contraction of the parameter disc, and its Hom representation
+is \(\rho_U\). The same stabilized algebra \(A_*\) therefore
+applies, with no new dimension bound or stabilization choice.
+
+The all-parameter comparison FB.39, followed by the ordinary
+exact quotient by the trivial connection, gives an injective
+map of the parameter version of \(K_*^\infty\) into its
+directional module. Hence EV.21 has a canonical parameter
+version
+\[
+e_\Phi^{[u]}:N^{[u]}\longrightarrow K_*^{\infty,[u]} .
+\tag{EV.26}
+\]
+It is linear over the full ordinary
+\(D^\infty_{u,s,x}\), by the same injective-action argument.
+On the embedded \(N\) it is the constant-parameter pullback
+of \(e_\Phi\). These statements concern actual ordinary tensors:
+the inverse in FB.39 has the finite row witnesses PD.35–PD.36.
+The finite parameter quotient is exact as well. In ST.13 its
+transfer is \(\mathcal O_{X'}\otimes_{\mathcal O_X}\mathcal D_X\);
+the coefficient projection is flat by the completion proof of
+GL06, Lemma3.0c.1.
+Explicitly, let \(A_0=\mathcal O_{X,0}\), and localize
+\(A_0[u]\) at its origin maximal ideal. This is flat over \(A_0\).
+Its Noetherian completion and that of \(\mathcal O_{X',0}\)
+are the same formal power-series ring. Flatness of the first
+completion and faithful flatness of the second are the
+Noetherian completion theorem
+Completion, Theorems3.1–3.2.
+A kernel after tensor with \(\mathcal O_{X',0}\) would survive
+its faithful completion, where flatness over \(A_0\) makes it
+zero. This proves the stated coefficient flatness.
+Thus its tensor sends \(L_*/\mathcal O_X\) to
+\(L_*^{[u]}/\mathcal O_{X'}\). The ordinary infinite extension
+is exact by MF.6–MF.7 in the new dimension. This gives precisely
+the target in EV.26.
+
+#### EV.E. A finite tensor witness from the normal primitive
+
+Use the exact special quotient and external transfer of
+§5.71, ST.A–ST.D.
+Thus
+\[
+\begin{gathered}
+T=\widetilde{\mathscr E}^{\,\infty}_{X,0},\\
+A=D^\infty_{u,s,x},\\
+C_{\mathrm{tr}}=A/AD_u,\\
+J=T/R\\
+\simeq C_{\mathrm{tr}}/D_sC_{\mathrm{tr}} .
+\end{gathered}
+\tag{EV.27}
+\]
+Here \(C_{\mathrm{tr}}\) is the transfer quotient, distinct
+from the directional function module \(\mathcal C\).
+All variables \(u,s\) remain independent.
+
+For the finite module \(K_*\), ST.13–ST.15 identifies
+\[
+C_{\mathrm{tr}}\otimes_R K_*^\infty
+       \simeq K_*^{\infty,[u]} .
+\tag{EV.28}
+\]
+There is also a direct map
+\[
+\begin{gathered}
+\kappa:C_{\mathrm{tr}}\otimes_R N\longrightarrow N^{[u]},\\
+c\otimes s\longmapsto c\,s^{[u]} .
+\end{gathered}
+\tag{EV.29}
+\]
+It is well defined: \(D_u s^{[u]}=0\), so \(AD_u\) acts
+by zero, and the right \(R\)-balance is the literal operator
+action. It commutes with \(D_s\).
+
+Take any element \(v\) of the source of EV.29. It is one
+finite sum of elementary tensors. Since \(\tau_s(p'_0)=1\),
+the actual operator \(D_s^{-1}\) exists in \(B'\). Form
+\[
+w=e_\Phi^{[u]}(D_s^{-1}\kappa(v)).
+\tag{EV.30}
+\]
+This is an actual element of the right side of EV.28.
+Using EV.26 and \(D_sD_s^{-1}=1\) gives the exact module
+identity
+\[
+D_sw=(C_{\mathrm{tr}}\otimes e_\Phi)(v).
+\tag{EV.31}
+\]
+The equality uses the constant-parameter compatibility of
+EV.26 on each of the finitely many entries of \(v\).
+It is not an equality only after applying a function map.
+
+ST.12 and EV.31 imply \(J\otimes_R e_\Phi=0\).
+The equivalent finite tensor criterion ST.16–ST.19 now gives
+\[
+\begin{gathered}
+\operatorname{im}(T\otimes_R e_\Phi)\\
+\subseteq
+\operatorname{im}(K_*^\infty\to T\otimes_R K_*^\infty).
+\end{gathered}
+\tag{EV.32}
+\]
+Specifically, EV.30 supplies the primitive in ST.18.
+Represent it by the finite ordinary row supplied by FB.39.
+Its equality EV.31 is a finite sum of tensor balancing
+relations. Lift their finitely many coefficient factors
+through ST.8, project to \(J\), and balance the remaining
+ordinary factors into \(K_*^\infty\), exactly as in ST.19.
+This produces a finite elementary-tensor equality for every
+input in EV.32. No infinite sum of elementary tensors,
+completed tensor, or closure of a relation space is involved.
+
+#### EV.F. The full infinite-order linearity and faithfulness
+
+For \(P\in T\) and \(s\in N\), EV.32 gives \(k\in K_*^\infty\)
+with
+\[
+\begin{gathered}
+P\otimes e_\Phi(s)=1\otimes k\\
+\text{in }T\otimes_R K_*^\infty .
+\end{gathered}
+\tag{EV.33}
+\]
+Apply the balanced map to the actual directional module,
+\[
+\begin{gathered}
+T\otimes_R K_*^\infty\longrightarrow\mathcal C,\\
+P\otimes k\longmapsto Pj(k).
+\end{gathered}
+\tag{EV.34}
+\]
+Its right balance is precisely the \(R\)-linearity of \(j\).
+The left side of EV.33 becomes
+\(P\Phi^\infty(s)=\Phi^\infty(Ps)=j(e_\Phi(Ps))\).
+The right side is \(j(k)\). Injectivity of \(j\) therefore
+identifies \(k=e_\Phi(Ps)\). Consequently
+\[
+\begin{gathered}
+s\longmapsto1\otimes e_\Phi(s)\\
+N\longrightarrow T\otimes_R K_*^\infty
+\end{gathered}
+\tag{EV.35}
+\]
+is \(T\)-linear.
+
+The actual special balancing ISR.3, equations ISR.8–ISR.10, gives
+\[
+B\otimes_TN\xrightarrow{\;\sim\;}N .
+\tag{EV.36}
+\]
+For completeness, its earlier polynomial-coefficient tensor
+is \(B\otimes_{R_{\mathrm{pol}}^\infty}N\).
+The two inverse multiplication maps are ISR.4–ISR.7, and
+\(R_{\mathrm{pol}}^\infty\subset T\) by ISF.9.
+Quotient by the additional \(T\)-balance relations.
+The inverse \(s\mapsto1\otimes s\) is \(B\)-linear before that
+quotient, hence after it.
+Multiplication and this map are inverse on every elementary
+tensor. This proves EV.36 without an extension-flatness assertion.
+
+Tensor EV.35 on the left by \(B\) over \(T\), then use EV.36
+and finite tensor reassociation. The result
+\[
+\begin{gathered}
+\Psi_\Phi(s)=1\otimes e_\Phi(s)\\
+\text{in }B\otimes_R K_*^\infty
+\end{gathered}
+\tag{EV.37}
+\]
+is \(B\)-linear.
+
+Choose a basis \(\Phi_1,\ldots,\Phi_q\) of \(V\), and take
+\[
+\begin{gathered}
+L=L_*^{\,q},\\
+K=K_*^{\,q},\\
+e=(e_{\Phi_1},\ldots,e_{\Phi_q}) .
+\end{gathered}
+\tag{EV.38}
+\]
+The full \(B\)-action on \(\mathcal C\) gives a balanced contraction
+\[
+B\otimes_R K^\infty\longrightarrow\mathcal C^q .
+\tag{EV.39}
+\]
+Its composite with \(\Psi=(\Psi_{\Phi_a})_a\) is exactly
+\((\Phi_a^\infty)_a\).
+This latter map is injective on the whole \(N\), including
+its singular sections, by
+§5.84, SE.1.
+Thus both \(\Psi\) and \(e\) are injective.
+The finite reassociation
+\[
+\begin{gathered}
+B\otimes_R(R\otimes_{\mathcal D_X}K)\\
+\simeq B\otimes_{\mathcal D_X}K,\\
+b\otimes(r\otimes k)\\
+\longmapsto br\otimes k
+\end{gathered}
+\tag{EV.40}
+\]
+has inverse \(b\otimes k\mapsto b\otimes(1\otimes k)\).
+Both balance identities hold on each generator.
+This proves every assertion of EV.1.
+If \(q=0\), SE.1 gives \(N=0\), and the zero target proves
+the theorem.
+
+The theorem retains the original projected hypersurface,
+the entire infinite extension and the actual finite D-type
+quotient. Its finite-pole and intrinsic microlocal order
+properties require the further regularity hypotheses and
+arguments stated in Q.8.
+
+![The stabilized finite algebra, actual parameter primitive and faithful full tensor map](assets/actual-infinite-evaluation.png)
+
+**Figure EV.1.** Panel A is
+the exact quotient-algebra argument
+EV.13–EV.15. The group arrow
+is surjective; the finite algebra
+arrow becomes an isomorphism at
+the maximum dimension.
+Panel B keeps \(u\) and \(s\)
+independent. The normal covector
+is \(\nu_u=0,\tau_s=1\).
+Its primitive identity EV.31 is
+an equality in the actual ordinary
+parameter tensor module.
+Panel C is the commuting evaluation
+diagram EV.37–EV.39. Its right
+arrow is the full \(B\)-action
+through the directional injection.
+The reconstruction in EV.36 uses
+the actual special ring \(T\).
+These are algebraic diagrams with
+no geometric scale.
+
+Figure SVG ·
+exact diagram data ·
+reproducible figure source ·
+figure PNG.
+
+Free source:
+[Kashiwara–Kawai, Holonomic systems III, IV.4.1 and IV.4.7](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf).
+
+
+### 5.87. Faithful finite-pole realization of regular actual modules
+
+Work over a complex manifold \(X\) of dimension \(n\ge1\).
+Let \(M\) be a coherent actual holonomic microlocal module,
+regular on a dense smooth open of every reduced characteristic
+component, and in generic position at \(p=(0;dt)\).
+Here regularity means that on that open there is a coherent
+finite order-zero lattice stable under all order-one operators
+whose principal symbol vanishes on the smooth characteristic
+Lagrangian. DP.R identifies this premise with Euler and
+tangential stability in a standard smooth conormal chart.
+An everywhere-stable lattice is not a premise.
+
+Put
+\[
+\begin{gathered}
+D=\mathcal D_{X,0},\quad E=\mathcal E_{X,p},\\
+R=D^\infty_{X,0},\quad B=\mathcal E^\infty_{X,p},\\
+N=B\otimes_E M_p,\\
+S=\pi(\operatorname{supp}M).
+\end{gathered}
+\tag{RF.1}
+\]
+All tensors are ordinary algebraic tensors.
+For the zero module every assertion holds with zero targets;
+hence assume the module nonzero in the proof.
+The support is the actual finite-module support of J.1–J.2.
+Choose its closed conical representative \(\Lambda\) on a
+sufficiently small base as in CF.C.
+
+**Theorem RF.T.** The stalk \(M_p\), with its actual ordinary
+operator action, is finite over \(D\). There are a finite
+D-type module \(L\) along exactly \(S\), an embedded
+trivial connection \(\mathcal O_X^q\), and a coherent
+holonomic quotient
+\[
+\begin{gathered}
+K=L/\mathcal O_X^q,\\
+\operatorname{Hom}_{\mathcal D_X}(\mathcal O_X,K)_0=0,\\
+e':M_p\hookrightarrow K_0 .
+\end{gathered}
+\tag{RF.2}
+\]
+The last map is \(D\)-linear. The actual tensor-unit map
+to \(E\otimes_D K_0\) is \(E\)-linear and injective,
+and multiplication gives
+\[
+\begin{gathered}
+E\otimes_D M_p\xrightarrow{\sim}M_p,\\
+R\otimes_D M_p\xrightarrow{\sim}N .
+\end{gathered}
+\tag{RF.3}
+\]
+There is a coherent holonomic ordinary module \(F\) on
+one base neighbourhood, with regular finite
+microlocalization and \(F_0\simeq M_p\), such that
+\[
+\begin{gathered}
+\mathcal E_X\otimes_{\pi^{-1}\mathcal D_X}\pi^{-1}F\\
+\simeq M\quad\text{near }p,\\
+\operatorname{Char}(F)\subseteq\Lambda\cup T_X^*X .
+\end{gathered}
+\tag{RF.4}
+\]
+In particular its finite microlocalization at every
+other nonzero ray over \(0\) is zero. The quotient
+in RF.2 and the original projected hypersurface are
+retained; all finite-source sections are included.
+
+The exact earlier proofs used below are
+actual normal completion, §§5.22.1–5.22.2,
+commutative coefficient flatness, F.3,
+ordinary operator coherence and analytic coefficient flatness, GL06 Lemmas3.0c.1–3.0c.3,
+actual operator coherence, §5.24,
+the microlocal and ordinary matching-ring faithful units, FEP.7,
+ordinary infinite right flatness, MF.6–MF.7,
+whole infinite generation, ISR.2,
+actual finite Euler division, AM.A,
+its full function action, AM.C,
+the finite Euler normal form, DP.R,
+whole point-coordinate transport, §5.56,
+the normalized finite D-type lattice and its finite-kernel extension, DT.E,
+finite cyclic duals and actual ordinary reconstruction, PD.35–PD.44,
+the all-parameter function comparison, FB.39,
+actual finite projection and directional classes, CF.A–CF.C,
+and the entire infinite D-type tensor realization, EV.1.
+The finite analytic dimension bound is proved by
+successive local equations, AG-CA Theorem3.2
+and the finite local-parametrization argument in CF.C.
+
+#### RF.A. Finite microlocalization and characteristic support
+
+Let \(D=\mathcal D_{X,q}\), \(E=\mathcal E_p\),
+where \(p\ne0\) lies above \(q\). Choose a linear time coordinate
+with \(\tau(p)\ne0\), normalize its ray, and put
+\[
+\begin{gathered}
+H=\mathcal O_{X,q},\\
+T=\mathcal O_{X\times\mathbf C_z,(q,z(p))},\\
+h=\tau^{-1}.
+\end{gathered}
+\tag{RF.5}
+\]
+Write \(E_0\) for the actual order-zero ring. Its normal element,
+actual coefficient shifts, Noetherianity, exact normal
+Artin--Rees completion, tensor identity and zero detection are
+the complete earlier proofs §§5.21, 5.22.1--5.22.2.
+In particular
+\[
+\begin{gathered}
+\widehat E_0=\varprojlim E_0/(h^r)\\
+=\prod_{n\ge0}T h^n,\\
+\widehat E=\widehat E_0[h^{-1}].
+\end{gathered}
+\tag{RF.6}
+\]
+These formal coefficients are individual holomorphic germs.
+No common coefficient domain or factorial estimate is
+asserted for an arbitrary element of \(\widehat E\).
+The product has finitely many contributions in every
+homogeneous order, so the ordinary \(D\)-map and multiplication
+are well defined.
+
+##### RF.A.1. Exact faithful formalization of finite actual E-modules
+
+For a finite \(E\)-module \(V\), let \(V_0\subset V\) be the
+\(E_0\)-span of finitely many \(E\)-generators. It is finite,
+\(E V_0=V\), and \(h\) acts injectively on it.
+For an exact sequence of finite \(E\)-modules, take \(V_0\)
+in its middle term, intersect with the first term and take
+the image in the last term. Noetherianity of \(E_0\) makes
+the intersection finite. These three lattices generate the
+three \(E\)-modules: multiply a finite localized expression
+by a large enough left power of \(h\), using normality.
+All three lattices embed in their respective modules, so
+all are \(h\)-torsion free.
+
+Exact completion §5.22.2 followed by exact normal localization
+gives an exact sequence over \(\widehat E\).
+Its terms are canonically
+\(\widehat E\otimes_E V\), by the finite tensor
+reassociation and localization identities. Thus
+\[
+\begin{gathered}
+\widehat E\otimes_E-\\
+\text{is exact on finite actual}\\
+E\text{-modules}.
+\end{gathered}
+\tag{RF.7}
+\]
+It is faithful. A nonzero \(V_0\) has nonzero completion
+by the actual normal Nakayama/zero-detection proof.
+That completion is still \(h\)-torsion free:
+apply exact completion to the injective left-linear map
+\({}^{\sigma^{-1}}V_0\to V_0,\ v\mapsto hv\).
+Here \(a\) acts on the twisted source by \(\sigma^{-1}(a)\);
+then \(h\sigma^{-1}(a)v=ahv\).
+Localizing a nonzero \(h\)-torsion-free module cannot kill
+it. Hence \(\widehat E\otimes_E V\ne0\).
+This argument uses actual faithful completion only at
+order zero, where \(h\) is in the Jacobson radical; it does
+not put a unit \(h\) in the radical of \(E\).
+
+##### RF.A.2. Formal graded flatness over D
+
+The increasing order filtrations have
+\[
+\begin{gathered}
+\operatorname{gr}D=H[\tau,\xi],\\
+\operatorname{gr}\widehat E=T[\tau,\tau^{-1}],\\
+\xi_i\longmapsto\tau z_i .
+\end{gathered}
+\tag{RF.8}
+\]
+The graded target is flat over the graded source.
+First invert \(\tau\), giving \(H[z,\tau,\tau^{-1}]\).
+Then extend \(H[z]\to T\). This coefficient extension
+is flat by the complete completion argument F.3
+(equivalently GL06 Lemma3.0c.1); a translation of \(z(p)\)
+reduces to its zero-coordinate proof. Laurent extension
+and the two tensor reassociations give precisely RF.8.
+
+Every finite \(D\)-module has a strict filtered free
+resolution with finite shifted free terms.
+Start with finitely many generators and their quotient
+order filtration. For its kernel, the induced associated
+graded module is a submodule of a finite graded free
+module over the Noetherian \(H[\tau,\xi]\).
+Lift a finite homogeneous generating list of that kernel
+to actual relation rows. Leading-order cancellation
+terminates, because ordinary differential-operator order
+in each shifted free term is bounded below. It makes
+this new map strict onto the whole kernel. Repeat.
+This proves the needed resolution directly; an infinite
+resolution is allowed, since every degree and every
+cycle uses only adjacent finite free terms.
+
+Tensor that resolution with \(\widehat E\).
+Its graded complex is the tensor of the original
+graded free resolution with RF.8 and is exact in
+positive degrees.
+For a cycle \(v\) of order \(m\), solve its leading
+homogeneous equation by that graded exactness.
+Lift the solution to a row of homogeneous formal
+operators of order \(m\), subtract its boundary, and
+repeat at orders \(m-1,m-2,\ldots\).
+The sum of the correcting rows belongs to the finite
+shifted free formal term: it has a finite upper order,
+and every one of its homogeneous coefficients is a
+finite sum of holomorphic germs. Coefficientwise
+continuity gives its boundary exactly \(v\).
+Consequently the formal tensor complex is exact in
+positive degrees.
+
+##### RF.A.3. Descent to actual operators
+
+Tensor the same ordinary free resolution with actual \(E\).
+Every term is finite free over the left Noetherian
+actual \(E\), so its cycles, boundaries and homology
+are finite actual \(E\)-modules.
+RF.7 commutes with their kernels and images.
+Its homology is the formal tensor homology just proved
+zero. Faithfulness in RF.A.1 therefore makes the actual
+homology zero. In particular tensoring an injection
+of finite \(D\)-modules with \(E\) is injective:
+\[
+E\text{ is right flat over }D .
+\tag{RF.9}
+\]
+For arbitrary modules the same conclusion follows
+by finite witnesses. If a finite tensor from \(U\subset V\)
+dies in \(E\otimes_DV\), its vanishing is a finite sum
+of elementary additivity and balancing relations.
+All entries lie in a finite \(D\)-submodule \(V_1\).
+The intersection \(U\cap V_1\) is finite, since \(D\)
+is left Noetherian. Finite-module exactness makes
+the tensor zero already in \(E\otimes_D(U\cap V_1)\),
+and hence in \(E\otimes_DU\).
+
+No formal correcting series has been declared convergent.
+The actual conclusion follows because its actual finite
+homology module has zero faithful formalization.
+The actual factorial-growth inverses and Noetherian
+arguments establishing that faithfulness are §5.20--5.22,
+applied on their stated common domains.
+This proves finite microlocalization flatness, not
+flatness of \(E^\infty\) over \(D^\infty\).
+
+##### RF.A.4. Exact characteristic support
+
+For a finite coherent ordinary \(D\)-module \(F\),
+the induced formal quotient filtration is strict.
+To check this at its presentation map, suppose a
+boundary has order at most \(m\) but its chosen
+preimage has order \(l>m\). The leading preimage
+lies in the kernel of the graded differential.
+Graded exactness supplies a leading second-boundary
+which can be subtracted without changing the
+boundary and which lowers that preimage's order.
+After finitely many reductions its order is at
+most \(m\). Thus
+\[
+\begin{gathered}
+\operatorname{gr}(\widehat E\otimes_D F)\\
+\simeq T[\tau,\tau^{-1}]\\
+\otimes_{H[\tau,\xi]}\operatorname{gr}F .
+\end{gathered}
+\tag{RF.10}
+\]
+The formal quotient filtration is separated and
+complete in decreasing order on a finite generating
+lattice. Indeed the order-zero formal ring is
+Noetherian and all its finite modules are complete
+and separated by §5.22.2. Thus the formal tensor is
+zero exactly when RF.10 is zero.
+
+After inverting \(\tau\), a graded module is its
+degree-zero slice extended by \(\tau^{\pm1}\).
+This slice is a finite \(H[z]\)-module.
+The map from \(H[z]\) localized at \((\mathfrak m_q,
+z-z(p))\) to \(T\) is faithfully flat by F.3.
+Consequently RF.10 is nonzero exactly at the
+ordinary projective characteristic point \([p]\).
+Faithfulness of RF.7 identifies that nonvanishing
+with nonvanishing of \(E\otimes_DF\).
+Hence, at every nonzero covector,
+\[
+\begin{gathered}
+\operatorname{supp}\bigl(\mathcal E_X
+\otimes_{\pi^{-1}\mathcal D_X}\pi^{-1}F\bigr)\\
+=\operatorname{Char}(F)\setminus T_X^*X .
+\end{gathered}
+\tag{RF.11}
+\]
+Coherence of this actual \(E\)-module follows from
+the finite ordinary presentation and actual operator
+coherence §5.24. Coordinate translations and a
+linear choice of nonzero \(\tau\) cover all such
+points. Stalk exactness gives the sheaf assertion.
+
+#### RF.B. Inhomogeneous Euler classes and resonances
+
+Use a standard smooth conormal chart with coordinates \(t,x\), and the
+actual directional quotient of CF.A. Let \(A\) be a constant complex
+\(r\)-square matrix. Suppose a column of classes \([f]\) satisfies
+\[
+\begin{gathered}
+(\theta I-A)[f]=0,\\
+D_{x_i}[f]=0,\qquad \theta=tD_t .
+\end{gathered}
+\tag{RF.12}
+\]
+Choose representatives on one cofinal isotropic future-convex complement.
+There are ordinary holomorphic germs \(b_i=D_{x_i}f\).
+They satisfy \(\partial_i b_j=\partial_j b_i\).
+The ordinary germ
+\[
+\begin{gathered}
+h(t,x)\\
+=\int_0^1\sum_i x_i b_i(t,\lambda x)\,d\lambda
+\end{gathered}
+\tag{RF.13}
+\]
+has \(D_{x_i}h=b_i\). Indeed differentiation and the closedness
+identity make the integrand the derivative of
+\(\lambda b_i(t,\lambda x)\). The spatial contraction preserves
+the representative domain, so \(f-h=F(t)\) there. On restriction
+to \(x=0\), RF.12 says
+\[
+\begin{gathered}
+(\theta I-A)F=g(t),\\
+g\in\mathcal O_{\Delta}^{\,r}.
+\end{gathered}
+\tag{RF.14}
+\]
+
+Write \(g=\sum_{n\ge0}g_nt^n\). If \(nI-A\) is invertible, set
+\(c_n=(nI-A)^{-1}g_n\). For \(n>2\|A\|\), geometric inversion
+gives \(\|(nI-A)^{-1}\|\le2/n\).
+Thus all these terms form a convergent ordinary holomorphic series
+on any smaller disc. There are only finitely many excluded
+nonnegative integers.
+
+On the generalized eigenspace with \(A=nI+J\), \(J^\ell=0\),
+the excluded term has the particular solution
+\[
+t^n\sum_{k=0}^{\ell-1}
+       \frac{(\log t)^{k+1}}{(k+1)!}J^kg_n .
+\tag{RF.15}
+\]
+Applying \(\theta I-A\) differentiates the polynomial in \(\log t\)
+and subtracts its product by \(J\); all terms cancel except \(g_n\).
+On the other generalized eigenspaces the ordinary inverse applies.
+The elementary primary decomposition and the nilpotent blocks are
+the complete finite matrix arguments in AM.C, not an additional
+classification premise.
+
+Subtracting this particular solution from \(F\) leaves the homogeneous
+solution \(e^{A\log t}c\). Its derivative after multiplication by
+\(e^{-A\log t}\) is zero, so \(c\) is constant on the connected lifted
+sector. On a block \(A=\lambda I+J\),
+\[
+\begin{gathered}
+e^{A\log t}c\\
+=t^\lambda\sum_{k=0}^{\ell-1}
+\frac{(\log t)^k}{k!}J^kc .
+\end{gathered}
+\tag{RF.16}
+\]
+Every class in RF.12 therefore has a representative which is a finite
+Nilsson sum, plus an ordinary holomorphic germ. This includes integer
+resonances and classes represented by inhomogeneous holomorphic errors.
+It does not discard such errors by presuming a homogeneous scalar
+equation for the original representative.
+
+#### RF.C. Finite-order rows and every negative coefficient
+
+The actual Euler division AM.A reduces a finite-order row to
+\[
+\begin{gathered}
+R(x,D_t)=\sum_{j\le m}r_j(x)D_t^j,\\
+|r_{-n}|_K\le MC^n n!
+\end{gathered}
+\tag{RF.17}
+\]
+on one smaller tangential product. The upper bound \(m\) is finite.
+DP.7.5 explicitly checks that division of a finite-order input retains
+finite upper order; no full positive head enters RF.17.
+
+For a noninteger exponent, AM.22 gives
+\[
+\begin{gathered}
+D_t^{-n}t^\lambda\\
+=\frac{t^{\lambda+n}}
+{(\lambda+1)\cdots(\lambda+n)}\\
+\text{modulo ordinary}\\
+\text{holomorphic germs}.
+\end{gathered}
+\tag{RF.18}
+\]
+There are constants \(C_\lambda,K_\lambda,a_\lambda\) such that
+the reciprocal denominator is bounded by
+\(C_\lambda K_\lambda^n(n+1)^{a_\lambda}/n!\).
+Split the product after \(2|\lambda|+2\); the initial nonzero factors
+cost a fixed constant, and each remaining factor has modulus at
+least half its index. A polynomial factor also absorbs any fixed
+shift in the factorial index.
+
+Here is one explicit treatment of every log power and integer
+resonance, without a special-function normalization. Fix the
+input exponent \(\lambda_0\), and put
+\[
+\begin{gathered}
+a(\lambda)=\\
+\begin{cases}
+\lambda-\lambda_0,&\lambda_0\in-\mathbf Z_{>0},\\
+1,&\text{otherwise},
+\end{cases}\\
+Q_n(\lambda,t)=
+\frac{a(\lambda)t^{\lambda+n}}
+{\prod_{s=1}^{n}(\lambda+s)} .
+\end{gathered}
+\tag{RF.19}
+\]
+Choose one small exponent disc about \(\lambda_0\) containing
+no other negative integer. Every \(Q_n\) is analytic in that
+disc: the only possible denominator zero there is canceled by
+\(a\), and it occurs at most once. Also \(D_tQ_n=Q_{n-1}\).
+If \(a=1\), its Taylor coefficient of degree \(\ell\) at
+\(\lambda_0\) starts with
+\(t^{\lambda_0}(\log t)^\ell/\ell!\) at \(n=0\).
+If \(a=\lambda-\lambda_0\), use degree \(\ell+1\) instead.
+Thus these coefficients are exact iterated primitives of every
+input power/log monomial, up to the displayed fixed factor.
+
+On the exponent-disc boundary, all finite initial denominator
+factors have one positive lower bound; every sufficiently late
+factor has modulus at least half its index. Uniformly in \(n\),
+\(a(\lambda)/\prod_{s=1}^{n}(\lambda+s)\) is consequently
+bounded by \(M K^n/n!\), enlarging \(M,K\) for the finitely
+many early \(n\). The Cauchy formula in \(\lambda\) gives the
+same bound, times a fixed radius factor, for every one of the
+finitely many Taylor coefficients used above. Factoring
+\(t^{\lambda_0+n}\) shows each primitive is a polynomial in
+\(\log t\) of uniformly bounded degree with these coefficient
+bounds. In the negative-integer case its degree may increase
+by one upon crossing exponent zero; it does not keep increasing.
+The finitely many primitives before this crossing are included.
+
+Multiplying by RF.17 cancels \(n!\). After choosing one radius with
+\(CK|t|<1/2\), the resulting coefficient series is normally convergent:
+\[
+\sum_{n\ge0}(CK|t|)^n<\infty .
+\tag{RF.20}
+\]
+It is a holomorphic coefficient at zero after a single fixed
+power of \(t\) has been removed. The finitely many nonnegative
+derivatives \(j\le m\) have the same property. Thus the result
+is a finite power/log expression with meromorphic coefficients.
+
+These are the actual directional actions, not only formal
+primitive symbols. The exact anchor corrections are AM.23b and
+the Taylor coefficients of RF.19. At a negative anchor \(a_0\),
+their \(n\)-th primitive values satisfy
+\(M_{a_0}K^n|a_0|^n/n!\), with \(M_{a_0}\) allowed to depend
+on that anchor. AM.23b therefore bounds their anchor
+polynomial by
+\(M_{a_0}(K|a_0|+r+|a_0|)^n/n!\).
+Their gauges converge on the full time disc after the same
+single radius choice as AM.23c. Fixed further
+derivatives use one larger Cauchy product. In particular all
+negative-order coefficients and tangential indices remain present.
+
+Together with DP.R, this supplies the smooth generic calculation
+for an actual module with a finite Euler/tangentially stable
+order-zero lattice. Applying DP.R here uses precisely its proved
+stable-lattice premise. It does not infer that premise for every
+point of an arbitrary generically regular module.
+
+#### RF.D. Propagating a scalar finite pole bound
+
+Let \(S\) be a reduced hypersurface germ in a smooth complex
+manifold. Let \(g\) be holomorphic on its complement. Suppose on a
+nonempty smooth open of each irreducible component of \(S\),
+\(g\) is meromorphic with a finite pole bound. Then \(g\) is a
+meromorphic germ with poles only on \(S\).
+
+Here is a uniform-bound proof. For one irreducible component
+choose a reduced monic Weierstrass equation
+\(p(t,x)\), with all roots in an inner time disc. Outside its
+discriminant the roots form an unramified finite cover of a
+connected base complement. This cover is connected. Otherwise
+the elementary symmetric functions in the roots of one
+monodromy orbit give a nontrivial monic factor of \(p\).
+They are holomorphic off the discriminant and bounded by the
+fixed root radius. A fixed transverse Cauchy circle extends
+each coefficient across the discriminant; this is the same
+bounded removable-singularity construction as MC.D/DT.E.
+The resulting factorization of the irreducible germ is impossible.
+The base complement is path connected by the complex-line
+detours proved in MC.A and SE.A.
+
+Near an unramified root use \(v=t-a(x)\). The negative Laurent
+coefficients of \(g\) in \(v\) are holomorphic in \(x\), by their
+fixed-circle integrals. If the pole order is at most \(N\) on
+one nonempty open in this chart, every coefficient below
+\(-N\) vanishes identically by the holomorphic identity theorem.
+Along a path on the connected root cover, finitely many
+overlapping such charts propagate the SAME \(N\).
+Changing \(v\) by a holomorphic unit preserves that bound.
+Thus the bound holds on every unramified smooth sheet.
+
+Repeat this argument for the finitely many irreducible
+components, avoiding their pairwise intersections. Choose a
+single exponent \(N\) at least all the resulting bounds. If
+\(f\) is a reduced equation for their union, \(f^Ng\) extends
+holomorphically across all unramified sheets.
+The remaining subset of \(S\) consists of the discriminant
+critical loci, component intersections and singular loci.
+Each has ambient codimension at least two; the rank and
+Weierstrass dimension proofs are the ones in CF.C and DT.E.
+The fixed-circle Hartogs proof DT.E extends \(f^Ng\) across
+this subset. Hence \(g\in\mathcal O_X(*S)\).
+In dimension one there is no such exceptional subset, and
+the finitely many punctures give the assertion directly.
+
+The use of bounded removal for a scalar holomorphic function
+across a hypersurface is elementary as well: choose a
+transverse line, use the uniform bound to kill its negative
+Laurent coefficients, and use the same fixed-circle integral
+in the other variables. Repeat on the smooth hypersurface
+locus, then apply DT.E at its codimension-two singular locus.
+
+#### RF.E. The test in a fixed finite D-type target
+
+For the already constructed finite D-type \(L\) of EV.1,
+its normalized reflexive lattice \(L_\Sigma\) exists by
+DT.E, with \(L_\Sigma(*S)=L\).
+This use of Section5.27 concerns the ALREADY finite
+meromorphic target \(L\), not the source \(M\); it does not
+assume the sought source finite-pole realization.
+
+Let \(v\in L^\infty\), interpreted by FB.39 as a holomorphic
+bundle section on \(X\setminus S\). Suppose it belongs to
+the finite meromorphic bundle on a nonempty smooth open of
+every local component of \(S\).
+Choose a finite presentation of \(L_\Sigma^*\).
+Dualizing and using reflexivity identifies \(L_\Sigma\)
+with the kernel of a finite holomorphic matrix
+\(\mathcal O^b\to\mathcal O^a\).
+On \(X\setminus S\), evaluation of \(v\) against the finite
+dual generators gives \(b\) scalar holomorphic functions.
+They have finite poles on the stipulated generic opens.
+By RF.D all \(b\) functions are meromorphic with poles on \(S\).
+Take one power \(f^N\) clearing their denominators.
+The finite kernel equations hold off \(S\), so hold
+everywhere by density. Therefore \(f^Nv\in L_\Sigma\)
+and \(v\in L\). No assertion about the support of
+an arbitrary infinite quotient is needed for this test.
+
+#### RF.F. The projective conormal-fibre exclusion
+
+First establish this local fact. If a holomorphic ambient one-form
+\(\alpha\) vanishes on the smooth locus of a reduced analytic germ
+\(A\), then its pullback vanishes on a dense smooth open of any
+irreducible analytic subgerm \(W\subset A\).
+It suffices to take one component of \(A\) containing \(W\).
+Write \(d=\dim A\), \(k=\dim W\); the case \(k=d\) follows by density.
+At a generic smooth point of \(W\), choose a finite linear
+Noether normalization of \(A\) whose restriction has rank \(k\)
+on \(W\). These are simultaneously open conditions on the
+linear projection: its kernel must avoid the tangent cone of
+\(A\), and one \(k\)-minor on \(T W\) must be nonzero.
+The finite projection construction is the earlier analytic
+local-parametrization theorem used in CF.C.
+
+Use \(w\in\mathbf C^k\) on the image of \(W\), and transverse
+coordinates \(y\in\mathbf C^{d-k}\) on the normalized base.
+After shrinking about this generic point and subtracting the
+holomorphic graph of that image, it is \(y=0\).
+The finite projection's discriminant and the image of
+\(A_{\rm sing}\) are proper analytic subsets of the base.
+For the latter assertion a finite map preserves dimension;
+\(\dim A_{\rm sing}<d\). Choose a nonzero holomorphic germ
+vanishing on their union. Choose a constant vector \(c\)
+whose substitution \(y=\epsilon c\) makes this germ nonzero
+as a germ in \((w,\epsilon)\). This is possible by taking
+the first nonzero transverse homogeneous coefficient and
+avoiding its zero polynomial in \(c\); if the germ does not
+vanish identically on \(y=0\), no transverse condition is
+needed. On a further dense \(w\)-open its substitution is
+\(\epsilon^a h(w,\epsilon)\), with \(h(w,0)\ne0\).
+After shrinking there, its only zero is \(\epsilon=0\).
+
+The resulting finite family over \(B_w\times\Delta_\epsilon\)
+is therefore unramified and lies in \(A_{\rm reg}\) for
+\(\epsilon\ne0\). The point on the chosen local branch of
+\(W\) lies on a component dominating this family.
+Indeed the base family is cut out by \(d-k-1\) equations
+in the \(d\)-dimensional normalization base. Their
+pullbacks cut the pure \(d\)-dimensional \(A\). Iterating
+the local one-equation dimension bound makes the cut
+germ at that point have dimension at least \(k+1\).
+Thus at least one component through that point has
+dimension at least \(k+1\). A finite map preserves dimension, while its image
+is in the irreducible \((k+1)\)-dimensional base family.
+Properness and the analytic proper-subset dimension
+drop make this component's image the entire family.
+Its punctured sheets consequently limit to the chosen
+central point. This dimension argument is essential:
+no flatness of the arbitrary finite normalization map
+has been presumed.
+
+The punctured product has fundamental group \(\mathbf Z\):
+contract the convex \(w\)-disc and use the elementary
+logarithm cover of the punctured time disc. The sheet
+permutation has finite order \(N\). Pulling back by
+\(\epsilon=z^N\) trivializes that finite covering.
+Each sheet's ambient coordinate functions are bounded
+holomorphic functions on \(B_w\times\Delta_z^*\), because
+the original finite map is proper over a smaller product.
+Their negative Laurent coefficients vanish by boundedness;
+fixed-circle integration extends them jointly across \(z=0\).
+Choose the sheet limiting to \(W\). It gives a holomorphic map
+\[
+\begin{gathered}
+\mu:B_w\times\Delta_z\longrightarrow A,\\
+\mu(w,0)\in W,\\
+\mu(w,z)\in A_{\rm reg}\quad(z\ne0).
+\end{gathered}
+\tag{RF.21}
+\]
+On \(z=0\) the \(w\)-projection is the identity. The pullback
+\(\mu^*\alpha\) is a holomorphic one-form zero for \(z\ne0\);
+each coefficient is zero everywhere by the identity theorem.
+Its restriction to \(z=0\) proves the local fact.
+
+Now let \(X\) have dimension \(n\), let \(\Lambda\) be a closed
+homogeneous Lagrangian germ off the zero section, and suppose
+\[
+\Lambda\cap\pi^{-1}(q)=\mathbf C^*p .
+\tag{RF.22}
+\]
+Its projectivization \(A=\mathbf P\Lambda\) is a closed Legendrian
+germ, and its base projection is proper with a one-point fibre.
+Choose one projective affine chart containing \([p]\).
+The closed part of \(A\) outside this chart has proper
+closed image avoiding \(q\). Shrink the base to avoid
+that image. The entire \(A\) now lies in the affine
+chart, and its fibre at \(q\) is the isolated point
+\([p]\). The dimension-zero fibre case of CF.C's
+finite preparation proof makes this projection finite
+on a smaller base. No unproved assertion about an
+infinite-coefficient support is used. Put \(Y=\pi(A)\).
+
+For any irreducible analytic germ \(Z\subset Y\) through \(q\),
+some irreducible component \(W\) of \(A\times_X Z\) maps
+finitely onto \(Z\). Indeed its finitely many proper
+component images cover the irreducible \(Z\), so one is
+all of \(Z\). On a dense smooth open this map has rank
+\(\dim Z\), by separability of its finite coordinate
+equations in characteristic zero.
+
+On each cotangent projective chart the tautological contact
+form is a holomorphic one-form, up to a nowhere zero line
+factor. Its pullback vanishes on \(A_{\rm reg}\).
+For the conical lift this follows from
+\(\theta=\iota_{\mathcal R}\omega\): the radial field
+\(\mathcal R\) is tangent to the homogeneous Lagrangian,
+and its symplectic form restricts to zero.
+RF.21 therefore makes this contact form vanish on the
+dense smooth open of \(W\) as well. At its points of
+full projection rank, the corresponding covector
+annihilates \(T Z\). Hence
+\[
+W\subset\mathbf P\overline{T^*_{Z_{\rm reg}}X}.
+\tag{RF.23}
+\]
+Both sides are closed after taking the conormal closure;
+the containment follows from the dense-open containment.
+Properness of \(W\to Z\) gives a point of \(W\) over \(q\);
+RF.22 says it is \([p]\). Consequently every such conormal
+closure contains \([p]\) in its fibre over \(q\).
+
+Finally let \(\Lambda'\) be another closed homogeneous
+Lagrangian, with \(\pi(\Lambda')\subset Y\), and suppose
+\(p\notin\Lambda'\). If it had a nonzero point over \(q\),
+one projective irreducible component would have proper
+image an irreducible germ \(Z\subset Y\) through \(q\).
+On the dense open where this component and \(Z\) are
+smooth and projection has maximal rank, the same
+tautological-form argument places it in
+\(\mathbf P T^*_{Z_{\rm reg}}X\). Both irreducible
+varieties have dimension \(n-1\): the fibre dimension
+of the conormal is \(n-\dim Z-1\).
+The earlier analytic proper-subset dimension drop
+therefore identifies the component with the full
+projective conormal closure. RF.23 makes it contain
+\([p]\), a contradiction. Thus
+\[
+\Lambda'\cap\pi^{-1}(q)=\varnothing .
+\tag{RF.24}
+\]
+
+#### RF.G. The whole finite source in the finite quotient
+
+Assume \(M\) is regular in the original microlocal sense:
+on a dense smooth open of each reduced characteristic
+component it has a coherent order-zero lattice stable
+under the order-one principal-vanishing operators.
+This gives DP.34 in a standard smooth conormal chart.
+No everywhere-stable lattice or intrinsic-order theorem
+is assumed.
+
+Apply EV.1, retaining \(S=\pi(\operatorname{supp}M)\),
+\[
+\begin{gathered}
+K=L/\mathcal O_X^q,\\
+e:B\otimes_EM\hookrightarrow K^\infty_0,\\
+\Psi(s)=1\otimes e(s).
+\end{gathered}
+\tag{RF.25}
+\]
+The latter is an injective \(B\)-linear map into
+\(B\otimes_DK_0\).
+Fix \(u\in M_p\). The matching-ring faithful unit FEP
+identifies it with its image in \(B\otimes_E M_p\).
+Ordinary right flatness MF.6--MF.7 and the equality
+\(\mathcal O^\infty=\mathcal O\) let us lift \(e(u)\)
+to \(v\in L^\infty_0\).
+
+There is a common cotangent neighbourhood on which the
+tensor map needed for this fixed calculation is defined.
+Choose a finite actual \(E\)-presentation of \(M\).
+Its scalar extension is a finite \(B\)-presentation.
+Represent the finitely many values of \(\Psi\) and its
+finitely many relation equalities on one neighbourhood.
+Each equality is a finite algebraic tensor equality:
+its additivity and balancing witnesses have only finitely
+many section entries. Shrink once to represent all
+witnesses and identities. This defines a \(B\)-linear
+sheaf map there, without a coherence assumption on its
+target. Represent \(u\) as a finite row in the chosen
+generators and represent its equality with \(1\otimes e(u)\)
+on a further common neighbourhood.
+
+The projective characteristic support can be kept
+proper and finite over a smaller base and within this
+neighbourhood, by CF.C's finite normal-coordinate
+preparation at the isolated central projective fibre.
+Thus each component of the original \(S\) still has a
+nonempty smooth open whose whole conormal lies in the
+neighbourhood and in the regular-lattice locus of \(M\).
+At a smooth projected point, the characteristic covector
+annihilates the tangent to \(S\), by the tautological-form
+calculation in RF.F. Since \(S\) is a hypersurface it is
+the unique conormal ray. Remove the component crossings
+and the proper rank/discriminant exceptional loci.
+
+At such a point \(a\), choose any local branch observation
+of the finite cyclic-dual function model of \(L^\infty\).
+It sends a section to its scalar holomorphic branch.
+Modulo ordinary holomorphic functions it is \(D_a\)-linear.
+It kills the embedded \(\mathcal O^q\), so gives a map
+\(K_a\to\mathcal C_{p_a}\). The actual full \(B_{p_a}\)
+action on \(\mathcal C_{p_a}\) extends it by the balanced
+rule
+\[
+\begin{gathered}
+B_{p_a}\otimes_{D_a}K_a
+\longrightarrow\mathcal C_{p_a},\\
+b\otimes k\longmapsto b[k].
+\end{gathered}
+\tag{RF.26}
+\]
+Compose with the spread map RF.25 and restrict to finite
+\(M_{p_a}\). This is an actual \(E_{p_a}\)-linear
+directional functional. Its value on \(u\) is the
+directional class of the observed branch of \(v\).
+
+An ordinary chart making \(S=\{t=0\}\) transports the
+finite stable lattice and the actual directional actions
+by the point-coordinate kernel maps of §5.56.
+DP.R identifies the whole finite module with a constant
+Euler model. RF.B–RF.C prove that every finite section's
+image under RF.26 is a finite power/log expression,
+modulo an ordinary holomorphic germ. Therefore the
+observed branch of \(v\) has moderate power growth near
+this smooth divisor point, uniformly on smaller
+tangential compacts and closed angular intervals.
+This is asserted for all finite-order input sections,
+not only the Euler basis.
+
+Only finitely many branch observations are needed:
+in PD.39--PD.44 the cyclic-dual model is the dual of
+one finite quotient algebra \(A_*\). Choose finitely
+many group words whose images span \(A_*\).
+Their scalar observations are the coordinates of
+the corresponding equivariant \(A_*^*\)-valued
+holomorphic function. Every other observation is
+a constant linear combination of these.
+Apply the preceding local calculation to this finite
+list, including the \(q\) target copies.
+
+On a smooth-divisor product, the fixed finite D-type
+target has the normalized logarithmic frame already
+proved in §5.27.11 and DT.E. Its change from the
+horizontal frame is a holomorphic invertible gauge
+times \(t^C\), with \(C\) a constant finite matrix.
+Both \(t^C\) and \(t^{-C}\) have fixed power/log
+growth on closed angular intervals: on a generalized
+block expand the nilpotent exponential as in RF.16.
+Thus the single-valued holomorphic coefficients of
+\(v\) in this logarithmic frame have a uniform
+bound \(M|t|^{-N}\). A finite angular cover of one
+circle supplies one bound on that circle; the
+finite observations and their monodromy transition
+matrices supply the same conclusion across its seam.
+The coefficient Laurent integral makes all powers
+below \(-N\) zero, by letting the circle radius
+tend to zero. Hence these coefficients are
+meromorphic at the smooth divisor point.
+
+This proves the hypothesis of RF.E for a nonempty
+smooth open of every original \(S\)-component.
+The scalar propagation and reflexive finite-kernel
+argument RF.D–RF.E give \(v\in L_0\), and consequently
+\[
+e(M_p)\subset K_0.
+\tag{RF.27}
+\]
+The restriction
+\(e':M_p\hookrightarrow K_0\) is \(D\)-linear and
+injective. This source is therefore finite over
+the left Noetherian ordinary \(D\): it is a
+submodule of the finite \(K_0\).
+The argument proves this for every element of
+the entire finite \(E\)-stalk, including singular
+sections, including a selected generator list.
+
+#### RF.H. Finite reconstruction and the whole characteristic fibre
+
+For the \(D\)-linear injection \(e'\), define
+\[
+\begin{gathered}
+\phi:M_p\longrightarrow E_p\otimes_DK_0,\\
+u\longmapsto1\otimes e'(u).
+\end{gathered}
+\tag{RF.28}
+\]
+It is \(E_p\)-linear. Indeed the matching-ring unit
+of \(E_p\otimes_D K_0\) into its \(B_p/E_p\)
+scalar extension is injective by FEP for arbitrary
+modules. That scalar extension is \(B_p\otimes_DK_0\).
+There RF.28 agrees with the \(B_p\)-linear \(\Psi\).
+For every \(P\in E_p\), the difference
+\(\phi(Pu)-P\phi(u)\) has zero image under this
+injective unit, and is zero already in the finite
+tensor target. No mixed infinite-order flatness
+is used to prove this finite linearity.
+
+Let
+\[
+\begin{gathered}
+\mu:E_p\otimes_D M_p
+\longrightarrow M_p,\\
+P\otimes u\longmapsto Pu .
+\end{gathered}
+\tag{RF.29}
+\]
+It is surjective. Its composite with \(\phi\)
+is \(E_p\otimes_D e'\), since both maps are
+\(E_p\)-linear and agree on \(1\otimes u\).
+RF.9 makes that latter map injective.
+Therefore \(\mu\) is injective as well:
+\[
+E_p\otimes_D M_p\simeq M_p.
+\tag{RF.30}
+\]
+Here ordinary finiteness of \(M_p\) was proved
+in RF.G before finite flatness is applied.
+
+Choose a finite \(D\)-generator list of
+\(e'(M_p)\subset K_0\), and represent its elements
+as actual sections of \(K\) on a common base
+neighbourhood. Their \(D_X\)-span is a coherent
+ordinary submodule \(F\subset K\), by ordinary
+operator coherence. It has \(F_0=e'(M_p)\);
+ordinary submodule holonomicity gives that
+\(F\) is holonomic. The isomorphism RF.30
+extends to
+\[
+\begin{gathered}
+\mathcal E_X\otimes_{\pi^{-1}\mathcal D_X}\pi^{-1}F\\
+\simeq M\\
+\text{on a neighbourhood of }p.
+\end{gathered}
+\tag{RF.31}
+\]
+To verify the spread, represent the finitely many
+generator images, relation equalities and inverse
+identities on one neighbourhood. Both modules are
+coherent over the actual finite \(E\); their finite
+kernel and cokernel vanish as germs, hence vanish
+on a smaller neighbourhood. This does not
+assert an isomorphism merely from equal ranks.
+
+Let \(\Lambda\) denote the closed conical
+characteristic representative used in RF.F, with
+isolated projective fibre \([p]\).
+Since \(F\subset K\), its ordinary characteristic
+set \(W\) is contained in
+the zero section together with \(\pi^{-1}S\).
+RF.11 and RF.31 identify \(W\) with \(\Lambda\)
+near \(p\). Every nonzero irreducible
+characteristic component is Lagrangian.
+The projective components containing \([p]\)
+therefore agree with the corresponding components
+of \(\mathbf P\Lambda\): they agree on a
+nonempty open, and these are closed irreducible
+analytic varieties of the same dimension.
+Every remaining component avoids \([p]\).
+Its base image is contained in \(S\), so RF.24
+shows it has no point at all over \(0\).
+There are only finitely many components near the
+compact central projective fibre. Their proper
+projective images are closed and avoid \(0\);
+shrink the base to exclude them. Consequently
+\[
+\begin{gathered}
+\operatorname{Char}(F)
+\subseteq\Lambda\cup T_X^*X\\
+\text{over that base}\\
+\text{neighbourhood}.
+\end{gathered}
+\tag{RF.32}
+\]
+In particular
+\[
+\begin{gathered}
+E_{p'}\otimes_D M_p=0,\\
+p'\in\pi^{-1}(0),\\
+p'\notin\mathbf C^*p\cup T_X^*X .
+\end{gathered}
+\tag{RF.33}
+\]
+This is an assertion about the entire finite
+ordinary module \(F_0\), not one source section.
+
+On every nonzero characteristic component,
+RF.31 transports the generic stable lattice
+of \(M\) to that of the finite microlocalization
+of \(F\). After RF.32 every such component
+lies in this neighbourhood. Thus \(F\) has
+regular singularities in the same generic
+microlocal sense. This is not an assumed
+everywhere-stable lattice or a claim of full C1.
+The maps RF.27 and RF.30--RF.33 give the
+finite ordinary realization and faithful finite-pole
+quotient injection on the stated neighbourhood.
+
+#### RF.I. The ordinary infinite extension
+
+There is a further useful comparison at the
+fixed origin. Put \(R=D^\infty_0\) and
+\(N=B_p\otimes_{E_p}M_p\).
+The natural map
+\[
+\mu_R:R\otimes_D M_p\longrightarrow N
+\tag{RF.34}
+\]
+is injective: its composite with \(e\) is
+\(R\otimes_D e'\), which is injective by
+ordinary right flatness MF.6--MF.7.
+
+It is surjective as well. ISR.2 writes any
+section of \(N\) as a finite sum
+\(\sum_i a_i u_i\), with \(u_i\in M_p\) and
+\(a_i\) in the actual time-only \(A^\infty\).
+Split each coefficient into its ordinary
+nonnegative-order head and its negative tail.
+The first is in \(R\), by the every-epsilon
+ordinary head bound of ISF. The second has
+finite upper order \(-1\) and the actual
+negative factorial bound, so is in \(E_p\).
+It acts on \(M_p\) itself. Hence every term
+lies in the \(R\)-span of \(M_p\), proving
+\[
+\begin{gathered}
+D^\infty_0\otimes_{D_0}M_p\\
+\simeq E^\infty_p\otimes_{E_p}M_p.
+\end{gathered}
+\tag{RF.35}
+\]
+This uses all tails, finite algebraic tensors
+and the already proved ordinary injection.
+It is not a proof that \(B\otimes_R N=N\)
+for an arbitrary \(B\)-module, and is not
+mixed-ring flatness.
+
+The theorem gives finite poles and both actual finite and
+ordinary-infinite reconstruction for a regular generic-position
+module. Intrinsic microlocal order, characteristic-operator
+stability, half-order comparisons, C1, initial generators on
+general analytic spaces and arbitrary analytic proper/support-proper
+regularity require their further arguments.
+
+![Actual finite flatness, a full negative-order Nilsson example and the finite tensor reconstruction](assets/regular-finite-pole.png)
+
+**Figure RF.1.** Panel A is the formal and actual argument of
+RF.A, equations RF.7–RF.9; no formal series is identified
+with an actual operator merely by its coefficients.
+Panel B is a positive real sample of the complex
+multivalued input with exponent \(2/5\). For the indicated
+finite-upper-order operator, the power-series coefficient
+is \(a_n=n!/\prod_{s=1}^n(s+2/5)\), so
+\(0<a_n\le1\). Consequently its sum through index \(N\)
+has omitted tail at most \(t^{2/5}t^{N+1}/(1-t)\)
+for \(0<t<1\). The plotted 200-term sum uses
+\(N=199\) and \(0<t\le3/4\); the dashed curve is
+the proved upper bound \(t^{2/5}/(1-t)\).
+Every negative operator coefficient is included in the
+analytic argument RF.C; the finite sum is the displayed
+numerical sample. Panel C is the exact commuting
+triangle RF.28–RF.30. Its upper arrow is injective by
+finite microlocalization flatness, and multiplication
+is surjective, hence an isomorphism. Panels A and C
+are algebraic diagrams with no geometric scale.
+
+Figure SVG ·
+exact diagram and sample data ·
+reproducible source ·
+figure PNG.
+
+Free source:
+[Kashiwara–Kawai, Holonomic systems III, II.3.5 and V.1.1–V.1.4](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf).
+
+
+### 5.88. Indicial orders and ordinary finiteness of every order-zero submodule
+
+Let \(X\) be a complex manifold of dimension \(n\ge1\).
+Use the actual finite-order microlocal ring \(\mathcal E_X\),
+its usual order filtration, and left modules. Write
+\(E_j=\mathcal E_X(j)\); thus \(E_0\) is the order-zero
+ring and \(E_{-1}\) is its ideal of negative-order operators.
+All symbols below are normal symbols in the convention
+\(\sigma([D_{x_i},x_j])=\delta_{ij}\).
+
+Let \(M\) be coherent and holonomic, and suppose that on
+a dense smooth open of each reduced characteristic component
+it has a coherent \(E_0\)-lattice stable under all first-order
+operators whose principal symbols vanish on that component.
+The word lattice means a submodule generating \(M\) over
+\(\mathcal E_X\). There is no lattice premise at the singular
+points of the characteristic variety.
+
+**Theorem IO.T.** Suppose that \(M\) is in generic position
+at \(p\in T^*X\setminus T_X^*X\). For every coherent
+\(E_0\)-submodule \(M_0\subset M\), the entire stalk
+\(M_{0,p}\) is a finite \(\mathcal O_{X,\pi(p)}\)-module.
+The submodule need not generate \(M\) or be stable under
+first-order characteristic operators.
+
+The proof also constructs indicial orders on the smooth
+regular characteristic locus. They are invariant under
+ordinary holomorphic changes of base coordinates, and
+an elliptic operator of usual order \(a\in\mathbf Z\)
+adds \(a\) to these orders. In a smooth hypersurface
+conormal chart the indicial generator is
+\[
+\Theta=-tD_t-\frac12 .
+\tag{IO.1}
+\]
+The half in this formula is part of the calculation.
+
+The actual symbol product and commutator are proved in
+§5.19;
+the negative-order inverses and Jacobson property in
+§5.20;
+Noetherianity and normal Artin--Rees in
+§§5.21–5.22;
+and common-neighbourhood coherence in
+§5.24.
+The generating lattice and its exact analytic support are
+J.1–J.2.
+We use the actual Bernstein inequality
+EC.D,
+the smooth Euler form
+DP.7,
+and its full finite-order power/logarithm action
+RF.B–RF.C.
+The ordinary-coordinate symbol transformation is the finite-order
+part of BCT.1–BCT.5.
+The finite target, its normalized coefficient lattice, and
+the scalar pole propagation are respectively
+RF.T,
+DT.E,
+and RF.D–RF.E.
+These links identify earlier proofs, with the same actual
+rings and hypotheses.
+
+#### IO.A. A canonical first-order residue
+
+First let \(\Lambda\) be a smooth conic Lagrangian.
+Let \(E_\Lambda\) be the subring generated by \(E_0\)
+and the first-order operators with principal symbol zero
+on \(\Lambda\). Work in a projective covector chart
+\(\tau\ne0\), and put \(h=D_t^{-1}\).
+The order ideal \(E_{-1}=hE_0=E_0h\) is independent
+of the choice of this elliptic negative-order generator.
+
+Choose finitely many homogeneous degree-one functions \(f_i\)
+generating the ideal of \(\Lambda\), after multiplication
+of degree-zero ideal generators by \(\tau\).
+Choose actual operators \(P_i\) of order one with these
+principal symbols. The ring \(E_\Lambda\) is generated
+by \(E_0\) and these finitely many \(P_i\).
+Indeed the principal symbol of any other permitted
+first-order operator is a sum of the \(f_i\) with
+degree-zero coefficients; subtract the corresponding
+operator sum to leave order zero.
+
+Set
+\[
+J_\Lambda=E_{-1}E_\Lambda .
+\tag{IO.2}
+\]
+This is a two-sided ideal: the symbol product gives
+\([P_i,E_{-1}]\subset E_{-1}\), and \(E_0\) preserves
+\(E_{-1}\) on both sides. If \(L\) is an
+\(E_\Lambda\)-stable \(E_0\)-module, then
+\[
+J_\Lambda L=E_{-1}L=hL .
+\tag{IO.3}
+\]
+Equality here uses \(1\in E_\Lambda\).
+
+For an operator \(P\) of order at most one, write its
+first two homogeneous symbols as \(p_1,p_0\), allowing
+\(p_1=0\), and define
+\[
+s(P)=p_0-\frac12\sum_i
+             \partial_{x_i}\partial_{\xi_i}p_1 .
+\tag{IO.4}
+\]
+Let \(H_f=\sum_i(f_{\xi_i}\partial_{x_i}
+-f_{x_i}\partial_{\xi_i})\). The normal product,
+retained through its first two orders, gives
+\[
+\begin{gathered}
+s(AB)=a_m s(B)+s(A)b_\ell\\
+\hspace{12mm}+\tfrac12\{a_m,b_\ell\},\\
+s([P,Q])\\
+=H_{p_1}s(Q)-H_{q_1}s(P).
+\end{gathered}
+\tag{IO.5}
+\]
+In the first line \(s(A)\) and \(s(B)\) mean the
+corresponding subprincipal symbols of orders \(m\)
+and \(\ell\). To check the second identity directly,
+expand \(PQ-QP\) to order zero. The terms with two
+symbol derivatives are
+\(\frac12\sum_{ij}
+(p_{\xi_i\xi_j}q_{x_ix_j}
+-q_{\xi_i\xi_j}p_{x_ix_j})\).
+For \(\Delta=\sum_i\partial_{x_i}\partial_{\xi_i}\),
+the product rule gives
+\[
+\begin{gathered}
+\Delta\{p,q\}-\{\Delta p,q\}
+-\{p,\Delta q\}\\
+=\sum_{ij}\bigl(
+p_{\xi_i\xi_j}q_{x_ix_j}
+-p_{x_ix_j}q_{\xi_i\xi_j}\bigr).
+\end{gathered}
+\tag{IO.6}
+\]
+Subtracting half of this identity proves IO.5.
+The first identity follows by the same expansion of
+the product to order \(m+\ell-1\).
+
+The conormal identification furnished by the symplectic
+form sends the class of a function in
+\(I_\Lambda/I_\Lambda^2\) to its Hamiltonian field on
+\(\Lambda\). It is an isomorphism because \(\Lambda\)
+is Lagrangian: its kernel consists of functions whose
+full ambient differential vanishes at points of
+\(\Lambda\), and the two
+bundles have the same rank. Let
+\(\chi=\sum_i\xi_i\partial_{\xi_i}\) be the radial field.
+It is tangent to \(\Lambda\) and homogeneous of degree
+zero. Expressing it in the fields \(H_{f_i}|_\Lambda\)
+and extending their degree-zero coefficients gives
+a degree-one function \(q_1\in I_\Lambda\) with
+\(H_{q_1}|_\Lambda=\chi\).
+Quantize \(q_1\) and give it order-zero symbol
+\(\frac12\Delta q_1\). This produces an actual
+first-order operator \(\Theta\) with
+\[
+\begin{gathered}
+q_1|_\Lambda=0,\qquad
+H_{q_1}|_\Lambda=\chi,\\
+s(\Theta)|_\Lambda=0 .
+\end{gathered}
+\tag{IO.7}
+\]
+Only finitely many homogeneous symbol terms are needed.
+
+We shall need the following first-order kernel calculation.
+If \(P\) has order at most one and
+\[
+H_{p_1}|_\Lambda=0,\qquad s(P)|_\Lambda=0,
+\tag{IO.8}
+\]
+then \(P\in J_\Lambda\).
+Indeed \(p_1\in I_\Lambda^2\). In our chart it is a
+finite sum \(h\,a_{ij}f_if_j\), with \(a_{ij}\)
+homogeneous of degree zero, where \(h\) in a symbol
+denotes \(\tau^{-1}\). Lift this to a finite operator
+sum \(Q=\sum h A_{ij}P_iP_j\), which lies in
+\(J_\Lambda\). IO.5 and the Lagrangian identity
+\(\{I_\Lambda,I_\Lambda\}\subset I_\Lambda\)
+give \(s(Q)|_\Lambda=0\): every product term has a
+factor \(f_i\) or \(f_j\), or their vanishing bracket.
+Thus \(P-Q\) is of order zero with principal symbol
+zero on \(\Lambda\). Express that symbol as a
+sum of \(h\,a_i f_i\); subtract \(\sum h A_iP_i\).
+The remainder has order at most minus one.
+All these terms belong to \(J_\Lambda\), as required.
+
+Two choices in IO.7 therefore differ by \(J_\Lambda\).
+For each \(P_i\), IO.5 gives
+\[
+\begin{gathered}
+H_{\sigma_1([\Theta,P_i])}|_\Lambda
+=[\chi,H_{f_i}|_\Lambda]=0,\\
+s([\Theta,P_i])|_\Lambda=0 .
+\end{gathered}
+\tag{IO.9}
+\]
+The first equality uses the degree-zero homogeneity of
+\(H_{f_i}\); the second uses that \(s(P_i)\) has degree
+zero, while \(s(\Theta)\) restricts to zero.
+IO.8 applies. Also \([\Theta,A]\), for \(A\in E_0\),
+has order zero with principal symbol
+\(\chi(\sigma_0 A)|_\Lambda=0\), hence lies in
+\(J_\Lambda\). Consequently \(\Theta\) acts centrally
+on the residue \(L/hL\) of every stable lattice \(L\).
+
+#### IO.B. Coordinates, shifts and the indicial polynomial
+
+The residue operator is invariant under ordinary base
+coordinates. Here is the chain-rule verification.
+Put \(y=F(x)\), \(G=\det F'(x)\), and
+\(\xi=F'(x)^T\eta\). For first-order normal symbols,
+the first two terms of the coordinate substitution are
+\[
+\begin{gathered}
+p'_1(y,\eta)=p_1(x,F'^T\eta),\\
+p'_0=p_0\\
++\tfrac12
+\sum_{ijk}p_{1,\xi_i\xi_j}
+F_{k,x_ix_j}\eta_k .
+\end{gathered}
+\tag{IO.10}
+\]
+The terms without a prime on the right are evaluated
+at the transformed point. They follow by expanding
+the coordinate action on a test exponential through
+one degree below its principal degree. Terms with
+one second derivative of \(F\) give precisely the
+displayed Hessian sum; higher derivatives contribute
+only lower orders. This is also the first two terms
+of the full coordinate formula in BCT.5.
+Applying the chain rule once more gives
+\[
+\begin{gathered}
+\sum_k\partial_{y_k}\partial_{\eta_k}p'_1\\
+=\Delta p_1+H_{p_1}\log G\\
+\hspace{10mm}+
+\sum_{ijk}p_{1,\xi_i\xi_j}
+F_{k,x_ix_j}\eta_k,\\
+s_y(P)\\
+=s_x(P)-\tfrac12H_{p_1}\log G .
+\end{gathered}
+\tag{IO.11}
+\]
+For IO.7 the last derivative restricts to
+\(\chi\log G=0\), since \(G\) is a base function.
+Thus the transformed operator again satisfies IO.7,
+and the first-order kernel calculation proves equality
+of the two residue actions.
+
+If \(P\) is scalar elliptic of usual order
+\(a\in\mathbf Z\), conjugation by \(P\) preserves
+\(E_\Lambda\) and \(J_\Lambda\). For a first-order
+characteristic generator its conjugate has the same
+principal symbol; conjugation preserves the usual
+filtration and its inverse gives equality of these
+rings and ideals. Moreover
+\[
+\begin{gathered}
+P^{-1}\Theta P=\Theta+a\\
+\pmod{J_\Lambda}.
+\end{gathered}
+\tag{IO.12}
+\]
+Indeed \(P^{-1}[\Theta,P]\) is of order zero and
+has principal symbol \(H_{q_1}p_a/p_a=a\) on
+\(\Lambda\), by homogeneity; subtracting \(a\)
+leaves an element of \(J_\Lambda\).
+
+Let \(L\) now be a coherent \(E_0\)-module stable under
+\(E_\Lambda\), contained in a coherent actual \(E\)-module.
+The quotient \(V=L/hL\) is finite over the holomorphic
+functions on \(\mathbf P\Lambda\). In fact the
+principal-symbol quotient \(E_0/E_{-1}\) is the
+holomorphic function ring on the projective chart.
+An order-zero symbol vanishing on \(\Lambda\) lifts
+to \(\sum h A_iP_i\) modulo \(E_{-1}\), so it acts
+as zero on \(V\). This proves the asserted factorization
+through \(\mathcal O_{\mathbf P\Lambda}\).
+
+The fields \(H_{f_i}|_\Lambda\) span \(T\Lambda\).
+Their projections therefore span the tangent bundle
+of \(\mathbf P\Lambda\). The actions of the \(P_i\)
+on \(V\), and local holomorphic combinations of them,
+provide a connection in every coordinate direction:
+the commutator with a degree-zero scalar is its
+directional derivative. The connection need not be
+integrable for the following argument.
+
+Here is a proof that \(V\) is locally free. Present
+it as a cokernel of a finite holomorphic matrix \(C\).
+Lift one connection to the finite free module of
+generators. Its preservation of the kernel gives
+matrices \(A_i,B_i\) with
+\[
+\partial_i C+A_iC=CB_i .
+\tag{IO.13}
+\]
+Differentiate each minor of \(C\). Row and column
+replacement in IO.13 expresses its derivative in the
+same ideal of minors. Every Fitting ideal is therefore
+stable under all coordinate derivatives. A nonzero
+such ideal in a holomorphic local ring is the whole
+ring: take a nonzero Taylor coefficient of least
+total degree and differentiate that many times to
+obtain a unit. Thus each Fitting ideal is either zero
+or the whole ring. Let \(r\) be the rank of \(C\) over the
+fraction field. If \(r>0\), its nonzero ideal of
+\(r\)-minors is the whole ring, so some such
+minor is a unit. All \((r+1)\)-minors are zero.
+Finite row and column elimination about the unit
+minor reduces \(C\) to an identity block and
+a zero block: the entries of the remaining
+Schur complement are these vanishing larger
+minors divided by the unit minor.
+Its cokernel is free. If \(r=0\), all entries
+of \(C\) vanish and the conclusion is immediate.
+The unit minor persists on a neighbourhood,
+proving local freeness.
+
+By IO.9 the action of \(\Theta\) on \(V\) is linear
+over the holomorphic scalars and commutes with these
+connections. In a local frame, its matrix \(T\)
+satisfies
+\[
+\partial_iT+[A_i,T]=0 .
+\tag{IO.14}
+\]
+Along a coordinate segment solve \(U'=-A_iU\),
+\(U(0)=I\). Successive integrals converge on a small
+disc, bounded by the exponential majorant
+\(\sum (C|z|)^k/k!\); the equation for the inverse
+gives invertibility. Differentiation shows
+\(U^{-1}TU\) constant. Coordinate paths consequently
+conjugate all the matrices on a connected patch.
+Their monic minimal polynomial is one constant
+polynomial, denoted \(b_L(z)\). On a connected
+regular characteristic component the polynomials
+agree on overlaps and hence are constant there.
+For \(L=0\) put \(b_L=1\).
+
+Every local section \(u\) of \(M\) on this regular
+locus has a coherent cyclic stable lattice
+\[
+L(u)=E_\Lambda u .
+\tag{IO.15}
+\]
+To see this, choose a stable generating lattice \(L_*\).
+Localization by the normal element \(h\) puts \(u\)
+in some \(h^{-k}L_*\). This shift is still stable:
+conjugating a first-order generator by \(h^k\)
+changes it only by an order-zero term.
+Noetherianity makes \(E_\Lambda u\) finite over \(E_0\).
+Choose finite generators, express them as finite words
+on \(u\), and express their products by the finitely
+many \(P_i\) in those generators. All these finite
+identities hold on one smaller neighbourhood.
+Their \(E_0\)-span is a coherent stable sheaf there
+by §5.24, proving IO.15 as a sheaf assertion.
+
+Define \(\operatorname{ord}u\) to be the root set
+of \(b_{L(u)}\), and define the order set of zero
+to be empty. A nonzero cyclic lattice has nonzero
+residue by the negative-order Jacobson property and
+Nakayama, so its order set is nonempty.
+It follows from IO.12 that
+\[
+\operatorname{ord}(Pu)
+=\operatorname{ord}(u)+a .
+\tag{IO.16}
+\]
+Indeed \(L(Pu)=P L(u)\) and
+\(E_{-1}P L(u)=P E_{-1}L(u)\); pulling the residue
+action back by \(P\) gives \(T+a\).
+This also checks the direction of conjugation in IO.12.
+
+For the standard conormal
+\(\Lambda=\{t=0,\xi_x=0,\tau\ne0\}\),
+take \(q_1=-t\tau\). Its Hamiltonian restricts to
+\(\tau\partial_\tau\), and \(\Delta q_1=-1\).
+IO.4–IO.7 give IO.1. Thus on a power/logarithm term,
+\[
+\begin{gathered}
+\Theta\bigl(t^\lambda(\log t)^k\bigr)\\
+=(-\lambda-\tfrac12)
+       t^\lambda(\log t)^k\\
+\hspace{13mm}-k\,t^\lambda(\log t)^{k-1}.
+\end{gathered}
+\tag{IO.17}
+\]
+In particular \(D_t^{-1}\Theta D_t=\Theta+1\).
+The square root of
+\(\Omega_\Lambda\otimes\pi^*\Omega_X^{-1}\)
+has radial weight \(1/2\) in this chart: in
+coordinates \((x,\tau)\) the top form contains
+one factor \(d\tau\). This explains geometrically
+the same half appearing in the subprincipal
+calculation, without requiring a global choice of
+that square root.
+
+#### IO.C. Comparing lattices without changing the upper bound
+
+Let \(L'\subset L\) be two finite stable \(E_0\)-modules
+on the smooth regular locus. Normal Artin--Rees supplies
+an integer \(N\ge0\) such that
+\[
+L'\cap h^{N+1}L\subset hL'.
+\tag{IO.18}
+\]
+Filter \(L'/hL'\) by the finite decreasing filtration
+\[
+\begin{gathered}
+F^j=\frac{L'\cap h^jL+hL'}{hL'},\\
+0\le j\le N+1 .
+\end{gathered}
+\tag{IO.19}
+\]
+It begins with the whole residue and ends with zero.
+Each successive quotient is a subquotient of
+\(h^jL/h^{j+1}L\): first map the intersection into
+this latter quotient, and then divide its image by
+the image of its intersection with \(hL'\).
+This is a subquotient statement and uses no map
+from \(L'/hL'\) to \(L/h^{N+1}L\).
+
+IO.12 with \(P=h^j\) identifies the action of
+\(\Theta\) on \(h^jL/h^{j+1}L\) with that on
+\(L/hL\) minus \(j\). All the filtrations are
+\(\Theta\)-stable. Multiplying the annihilators
+of their successive quotients gives
+\[
+b_{L'}(z)\ \mid\
+             \prod_{j=0}^{N}b_L(z+j).
+\tag{IO.20}
+\]
+Consequently the largest real part of any root
+cannot increase on passing to a stable submodule.
+If finitely many stable lattices are added, the
+residue of their sum is a quotient of the direct
+sum of their residues. Its root set is contained
+in the union of their root sets.
+
+If \(u_1,\ldots,u_s\) generate an \(E_0\)-submodule
+and \(u=\sum_j A_ju_j\), with \(A_j\in E_0\), then
+\(L(u)\subset\sum_j L(u_j)\). Therefore
+\[
+\begin{gathered}
+\max\operatorname{Re}\operatorname{ord}u\\
+\le\max_j\max\operatorname{Re}\operatorname{ord}u_j .
+\end{gathered}
+\tag{IO.21}
+\]
+with zero generators omitted. This is a bound for
+every order-zero coefficient, irrespective of its
+analytic norm or the size of its representative
+neighbourhood.
+
+#### IO.D. One bound on every smaller representative
+
+We justify using IO.21 simultaneously on arbitrarily
+small neighbourhoods of the original point.
+First the failure of regularity on the smooth
+characteristic locus is analytic. Choose the
+generating coherent lattice \(G\) of J.1 on one
+projective neighbourhood, and finite first-order
+generators \(P_i\) for \(E_\Lambda\).
+Here the reduced characteristic ideal is coherent
+even where \(\Lambda\) is singular, so such
+generators exist on this neighbourhood.
+Let \(G_k\) be the \(E_0\)-span of the words of
+length at most \(k\) in the \(P_i\), applied to
+finite generators of \(G\).
+Every \(G_k\) is coherent on this same neighbourhood:
+there are finitely many words, their images lie
+in a finite shift \(h^{-k}G\), and §5.24 gives
+coherent images and kernels.
+The commutators \([P_i,E_0]\subset E_0\) give
+\[
+G_{k+1}=G_k+\sum_i E_0P_iG_k .
+\tag{IO.22}
+\]
+
+The quotient \(G_{k+1}/G_k\) is coherent over \(E_0\).
+Its support is analytic: reduction modulo \(h\)
+is a finite module over the holomorphic principal
+symbol ring, and Nakayama detects its nonzero
+stalks. Denote this closed analytic set by \(Y_k\).
+They decrease. If one quotient vanishes on an open
+set, IO.22 makes the lattice stable there, so all
+subsequent quotients vanish there too.
+
+A decreasing sequence of these analytic sets is
+stationary on a neighbourhood of the point.
+For completeness, take finitely many local
+irreducible representatives of \(Y_0\).
+For each representative either every subsequent
+germ contains it, or some finite index fails to
+contain it. In the first case the identity theorem
+extends each containment over that fixed connected
+irreducible representative. In the second case,
+at its first failing index, the intersection has
+strictly smaller dimension. There are finitely
+many representatives, so take the largest of these
+finitely many indices and shrink once.
+Repeat on the finitely many lower dimensional
+components. Dimension decreases each time; the
+process ends, including the zero-dimensional case.
+This proves stationarity on one common neighbourhood.
+
+Call the stationary set \(Y\). Outside \(Y\)
+one of the \(G_k\) is a finite stable lattice
+generating \(M\). Conversely a stable generating
+lattice contains \(G\) after a finite shift;
+all the \(G_k\) lie in that stable finite shift,
+and Noetherianity forces their ascending chain
+to stabilize at the stalk. Thus on the smooth
+characteristic locus \(Y\) is exactly the
+failure set of the stable-lattice condition.
+Our generic regularity premise makes it a
+proper analytic subset of each component.
+
+Shrink so that each projective irreducible
+characteristic germ has one irreducible
+representative. Remove \(Y\), the singular sets,
+and the intersections of distinct components.
+On each component the resulting smooth open
+\(U_\alpha\) is connected.
+Here is the local analytic reason for connectedness.
+A finite Noether normalization and a separating
+primitive holomorphic function identify a dense
+open with the sheets of one irreducible monic
+polynomial over the base, away from its discriminant.
+The finite image of each additional proper analytic
+excluded set may be put in an additional base
+hypersurface. If the remaining cover were
+disconnected, one monodromy orbit of its roots
+would give a proper monic factor. Its coefficients
+are bounded elementary symmetric functions of
+the bounded roots. The bounded holomorphic
+extension proof used in RF.D extends them
+across the base hypersurface, giving a proper
+factor over the base germ. This contradicts
+irreducibility of the primitive polynomial.
+The dense remaining cover is connected, and
+adding its limit points within the smooth
+complement preserves connectedness.
+Finite normalization and the finite-image
+statement are the same convergent preparation
+arguments used in CF.C and RF.D.
+
+Choose generators \(u_1,\ldots,u_s\) of the
+given \(M_0\) on this fixed neighbourhood.
+IO.B makes each cyclic indicial polynomial
+constant on each \(U_\alpha\), including
+the possibility that the cyclic module is zero.
+There are finitely many polynomials, hence
+an integer \(m\ge0\) strictly above the real
+parts of all their roots. IO.21 proves
+\[
+\operatorname{Re}\beta<m
+\quad
+\bigl(\beta\in\operatorname{ord}u\bigr)
+\tag{IO.23}
+\]
+on every \(U_\alpha\), for every local section
+\(u\) of \(M_0\). In particular the bound applies
+on the intersection with the representative
+of any germ at \(p\).
+
+If all these cyclic modules vanish, \(EM_0\)
+is a coherent \(E\)-submodule of \(M\) whose
+support is contained in a proper analytic
+subset of every Lagrangian component.
+Every such subset has dimension less than \(n\).
+EC.D forbids any nonzero coherent module
+with that support, so \(M_0=0\).
+For zero-dimensional projective components the
+same argument has no positive-dimensional
+connectedness step: the generic regular locus
+is the component itself.
+
+#### IO.E. From the indicial bound to a uniform pole bound
+
+At a generic point of a characteristic component,
+the projective projection is finite in generic
+position. Its generic rank is \(n-1\), so over
+a dense smooth part of its image \(S_\alpha\)
+that component is the conormal of a smooth
+hypersurface. The Lagrangian tangent calculation
+and equality of dimensions prove this, as in RF.F.
+Choose ordinary base coordinates with that
+hypersurface \(t=0\). IO.B preserves the
+indicial action in these coordinates.
+
+Consider an actual \(E\)-linear functional from
+the source to directional function classes, as
+constructed in RF.G, and let \([v]\) be the image
+of \(u\). DP.7 and RF.B–RF.C show that this is
+a finite Nilsson class: on a branch it is a
+finite sum of powers and logarithms with
+convergent holomorphic coefficients, modulo an
+ordinary holomorphic germ. Integer resonances,
+nilpotent logarithms and the entire negative
+operator tail are retained in those proofs.
+The map on cyclic stable modules and then on
+their residues is surjective:
+\[
+\begin{gathered}
+E_\Lambda u\longrightarrow E_\Lambda[v],\\
+E_\Lambda u/hE_\Lambda u\\
+\twoheadrightarrow\\
+E_\Lambda[v]/hE_\Lambda[v].
+\end{gathered}
+\tag{IO.24}
+\]
+
+We spell out the exponent information supplied by
+this residue. Combine exponent classes modulo
+integers and remove all ordinary holomorphic
+terms. Expand the remaining holomorphic
+coefficients in nonnegative powers of \(t\).
+If the class is nonzero, let \(\rho\) be the
+smallest real part of its first nonzero
+exponents. There are only finitely many
+initial exponent classes and logarithmic
+degrees, so this minimum exists.
+
+Neither an order-zero operator nor a
+characteristic first-order generator lowers
+this minimum. For order zero, commute each
+holomorphic coefficient to its right and
+apply the RF.C normal remainder to the
+constant power/logarithm terms. Its upper
+\(D_t\)-order is at most zero. Each negative
+power is a primitive and raises the exponent
+by its positive integer index.
+At a negative-integer resonance it can
+increase the logarithmic degree by one;
+it still raises that exponent. The factorial
+bounds in RF.C make the full series converge
+normally on a smaller disc, so the assertion
+holds for the entire operator.
+For order one, subtract order-zero multiples
+of \(tD_t,D_{x_i}\); the remainder is of
+order zero. These displayed generators
+also preserve the lower exponent bound.
+All finite words therefore preserve it.
+The primitive \(h=D_t^{-1}\) raises it by
+at least one, modulo ordinary holomorphic terms.
+
+Take the coefficients at the exponents with
+real part \(\rho\) in the identity
+\(b_{L(u)}(\Theta)[v]\in hE_\Lambda[v]\).
+The right side has no such coefficient.
+The left side is a sum of distinct powers
+times polynomials in \(\log t\). These are
+linearly independent: after setting \(t=e^z\)
+they are exponential polynomials, and
+successive applications of the operators
+\(\partial_z-\lambda\) isolate each
+exponent and logarithmic coefficient.
+IO.17 then shows that for at least one
+leading exponent \(\mu\)
+\[
+\begin{gathered}
+b_{L(u)}(-\mu-\tfrac12)=0,\\
+\operatorname{Re}\mu=\rho .
+\end{gathered}
+\tag{IO.25}
+\]
+More explicitly, the coefficient of the highest
+logarithmic power for any nonzero leading
+exponent is multiplied by
+\(b_{L(u)}(-\mu-\tfrac12)\).
+One can restrict to a nonempty parameter
+open where it is nonzero. The identity
+there suffices, since the polynomial is
+constant on \(U_\alpha\).
+By IO.23 every observed branch therefore
+has all its nonordinary exponents satisfying
+\[
+\operatorname{Re}\mu\ge -m-\tfrac12 .
+\tag{IO.26}
+\]
+The weaker closed inequality is convenient;
+the strict inequality also follows from
+our choice of \(m\). A zero class contributes
+only its holomorphic ambiguity, which obeys
+the same growth bound because \(m\ge0\).
+
+Use the finite target from RF.T:
+\[
+\begin{gathered}
+e':M_p\hookrightarrow K_0,\\
+K=L/\mathcal O_X^q,\\
+L_\Sigma(*S)=L,\\
+0\le\operatorname{Re}\lambda<1 .
+\end{gathered}
+\tag{IO.27}
+\]
+Here \(S=\pi(\operatorname{supp}M)\) is the
+original reduced hypersurface; \(L_\Sigma\)
+is the coherent normalized reflexive
+coefficient lattice of DT.E. The embedded
+trivial connection satisfies
+\(\mathcal O_X^q\subset L_\Sigma\):
+the normalized lattice of the trivial
+connection is \(\mathcal O_X^q\), and the
+normalized-map extension proved in DT.E
+sends it into \(L_\Sigma\).
+
+For \(u\in M_{0,p}\), choose a finite meromorphic
+lift \(w\in L_0\) of \(e'u\).
+RF.G realizes the finitely many required
+branch observations of this lift as the
+functionals in IO.24. A finite group-word
+basis of the cyclic dual spans every
+additional observation, so all branches
+obey IO.26. On a full punctured normal
+disc they grow at worst as
+\(|t|^{-m-1/2}\) times a fixed power
+of \(|\log|t||+1\); constants and logarithmic
+degrees may depend on \(u\).
+
+In a normalized logarithmic frame of \(L_\Sigma\)
+on this smooth part, the inverse power/logarithm
+matrix grows at worst as
+\(|t|^{-1}\) times a logarithmic power.
+This follows directly from its finite
+Jordan matrices and the strip in IO.27.
+The scalar, single-valued coefficients of
+\(w\) consequently grow at worst as
+\(|t|^{-m-3/2}\) times a logarithmic power.
+For the one integer
+\[
+N=m+2
+\tag{IO.28}
+\]
+their products with \(t^N\) are bounded and
+tend to zero. The Laurent coefficient formula
+on shrinking circles kills all negative
+coefficients of these products. Hence
+\(t^Nw\in L_\Sigma\) near a nonempty smooth
+open of every relevant component of \(S\).
+At a component with zero source cyclic
+module the observed lift is holomorphic
+modulo the trivial target, and the same
+conclusion holds.
+
+Let \(f\) be a reduced local equation for
+the entire \(S\). At its generic smooth
+points \(f/t\) is a unit, so the same
+integer \(N\) gives generic membership
+\(f^Nw\in L_\Sigma\).
+This membership propagates with the same
+integer. Indeed realize the reflexive
+lattice as a kernel of a finite
+holomorphic matrix, by the finite
+presentation of its dual used in RF.E.
+The coordinates of \(f^Nw\) are
+meromorphic. They have no pole on a
+nonempty open of each irreducible
+divisor component, by what was just
+proved. The connected finite-cover
+Laurent argument RF.D propagates the
+zero pole order, and its codimension-two
+Cauchy argument extends the coordinates
+everywhere. Their kernel identities hold
+by the identity theorem. Thus
+\[
+f^Nw\in L_{\Sigma,0}
+\tag{IO.29}
+\]
+on its whole germ, including singular
+and intersecting components.
+This step uses the finite meromorphic
+target already supplied by RF.T.
+
+Different lifts differ by
+\(\mathcal O_{X,0}^q\), contained in
+\(f^{-N}L_{\Sigma,0}\).
+The integer in IO.28 is independent of
+\(u\) and of the domain of its
+order-zero coefficients. We have proved
+an inclusion of entire ordinary modules
+\[
+e'(M_{0,p})\subset
+f^{-N}L_{\Sigma,0}/\mathcal O_{X,0}^q .
+\tag{IO.30}
+\]
+The module on the right is finite over
+the Noetherian ring \(\mathcal O_{X,0}\).
+The injection \(e'\) is ordinary
+\(\mathcal D_{X,0}\)-linear, hence
+\(\mathcal O_{X,0}\)-linear.
+Every submodule of that finite
+ordinary coefficient module is finite.
+This proves IO.T.
+
+#### IO.F. Examples and scope
+
+For \(\lambda\notin\mathbf Z_{\ge0}\)
+the nonzero class of \(t^\lambda\)
+has order \(-\lambda-\frac12\).
+For a logarithmic block the same
+eigenvalue has the nilpotent action
+shown in IO.17. Differentiation
+adds one to its indicial order;
+one primitive subtracts one.
+For example \(t^{-1}\) has order
+\(1/2\), while its primitive
+\(\log t\) has order \(-1/2\).
+These computations retain the
+resonant logarithm.
+
+The theorem concerns every coherent
+order-zero submodule at a
+generic-position point. The proof
+constructs orders on the smooth
+regular locus and the one-way
+exponent bound needed for ordinary
+finiteness. An intrinsic coherent
+cutoff across singular characteristic
+strata, the converse cutoff
+membership criterion, its full
+contact and half-density
+compatibility, and the everywhere
+characteristic-operator condition
+require further arguments.
+
+![Indicial half-order, Artin–Rees spectral shifts and the finite ordinary coefficient target](assets/indicial-order-zero.png)
+
+**Figure IO.1.** Panel A is the resonant calculation IO.17:
+one primitive sends \(t^{-1}\) to \(\log t\) and
+subtracts one from its indicial order. Panel B
+is the finite subquotient filtration IO.18–IO.20;
+its layers have the old roots shifted by nonpositive
+integers. Panel C is the inclusion of entire
+modules IO.30 with the common integer IO.28.
+The panels are exact algebraic diagrams with no
+geometric scale.
+
+Figure SVG ·
+exact diagram data ·
+reproducible source ·
+figure PNG.
+
+Free source:
+[Kashiwara–Kawai, Holonomic systems III, I.5 and V.1.5](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf).
 
 
 ## 6. What monodromy misses in the irregular world

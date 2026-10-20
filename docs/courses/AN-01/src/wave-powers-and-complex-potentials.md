@@ -272,6 +272,183 @@ The time first derivatives cancel, as do the spatial first derivatives. The rema
 
 Multiplication by a nowhere-zero smooth function preserves support: multiplication cannot enlarge support, and the inverse multiplier proves the reverse inclusion. Every other forward inverse becomes an inverse of \(\Box-a\) after multiplication by \(e^{-\ell}\), so Theorem 2.1 proves uniqueness. This includes \(a=0\) and imposes no boundedness condition on the exponential. \(\square\)
 
+## Time slices and the full smooth Cauchy problem
+
+The flat Fourier–Laplace and Volterra arguments below use the programme proof of AN-03, *Causal kernels, initial data, and short-time geometry*, Sections 2, 2.1 and 4. The half-space convolution argument uses *The wave Cauchy problem and Kirchhoff's formula*, Theorem 1. Here the inputs are the already constructed \(R_\lambda\) and the proved convolution rules above. The normalization remains \(E_k=R_{k+1}\); the AN-03 convention for its index \(k\) is \(k!R_{k+1}\).
+
+For Fourier inversion we use the supplied [Schwartz and Fourier foundations](../prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.md), F1–F5, with transform \(e^{-ix\cdot\xi}\). All sphere integrals use the surface measure of the angular foundation.
+
+**Lemma 4.1 (compact spatial slices).** Fix \(c>0\), put
+\[
+ P_c=c^{-2}\partial_t^2-\Delta_x,\qquad
+ C_c=\{(t,x):t\ge0,\ |x|\le ct\},\qquad
+ K_c(t,x)=cE_0(ct,x).
+ \tag{T1}
+\]
+Then \(P_cK_c=\delta_{(0,0)}\). On \(t\ge0\), \(K_c\) is a smooth one-sided family of compactly supported spatial distributions, with
+\[
+ \begin{split}
+ \operatorname{supp}K_c(t)&\subset\{|x|\le ct\},\\
+ K_c^{(2j)}(0)&=0,\\
+ K_c^{(2j+1)}(0)&=c^{2j+2}\Delta_x^j\delta_0\quad(j\ge0).
+ \end{split}
+ \tag{T2}
+\]
+Every fixed time derivative has a common finite spatial test-order bound on a bounded time interval. The family is smooth in the strong topology of \(\mathcal E'\), not just pointwise on individual tests. Its extension by zero to negative time is exactly the spacetime distribution in (T1).
+
+**Proof of the Fourier identification.** We first retain the full transform computation for the existing family. For real \(s>0\), its initial integrable range in (1.2) gives
+\[
+ \mathcal F_x\mathcal L_t R_\lambda(s,\xi)
+          =(s^2+|\xi|^2)^{-\lambda}.
+ \tag{T3}
+\]
+At \(\xi=0\), polar integration, (4.0a)–(4.0b) of U027 and the gamma integral give \(s^{-2\lambda}\): the spatial integral leaves
+\(2^{1-2\lambda}\sqrt\pi/[\Gamma(\lambda)\Gamma(\lambda+1/2)]\),
+and duplication identifies it with \(1/\Gamma(2\lambda)\).
+To include frequency, replace \(-i\xi\) temporarily by a real \(\eta\) with \(|\eta|<s\). Rotate \(\eta\) to the first axis. In the \((t,x_1)\) plane put
+\[
+ t=a u+b v,\qquad x_1=b u+a v,\qquad
+ a=\frac{s}{\sqrt{s^2-|\eta|^2}},\quad
+ b=\frac{|\eta|}{\sqrt{s^2-|\eta|^2}} .
+ \tag{T4}
+\]
+This change has determinant one, preserves \(t^2-|x|^2\) and the forward cone, and changes \(st-\eta\cdot x\) into \(\sqrt{s^2-|\eta|^2}\,u\). The cone is preserved because \(a>|b|\), and its inverse has the same property. The integral is therefore \((s^2-\eta\cdot\eta)^{-\lambda}\).
+
+For complex \(\eta=A+iB\) with \(|A|<s\),
+\[
+ \operatorname{Re}(s^2-\eta\cdot\eta)
+                 =s^2-|A|^2+|B|^2>0.
+ \tag{T5}
+\]
+This fixes the right-half-plane logarithm. On each compact subset of this tube, the integrand and every fixed parameter derivative have an integrable bound by the original cone power times a polynomial in \(t\) and \(e^{-\epsilon t}\). Near zero the initial positive power margins and their logarithmic estimates are the ones in U027. Dominated difference quotients prove holomorphy. Successive one-variable identity theorems on product disks, followed along a finite chain covering any compact path in this convex tube, extend the real identity to \(\eta=-i\xi\). This proves (T3).
+
+For a complex time parameter \(p=s+i\sigma\), \(s>0\), \(p^2+|\xi|^2\) avoids the nonpositive real axis: if its imaginary part \(2s\sigma\) is zero, then \(\sigma=0\) and it is positive. The same exponential bounds and one-variable identity theorem extend (T3) to \(p\). Consequently
+\[
+ \mathcal F_{t,x}(e^{-st}R_\lambda)(\sigma,\xi)
+       =\big((s+i\sigma)^2+|\xi|^2\big)^{-\lambda}.
+ \tag{T6}
+\]
+Here damping is defined on tempered distributions by replacing \(e^{-st}\) outside \(t\ge-1\) by \(\theta(t)e^{-st}\), where \(\theta=0\) for \(t\le-2\). This function and all its derivatives are bounded, so the full product rule makes it a Schwartz multiplier. It agrees with the exponential near the cone; different choices have identical action on \(R_\lambda\).
+
+The continuation \(R_\lambda=\Box^N R_{\lambda+N}\) retains (T6), since on cone-supported distributions
+\[
+ e^{-st}\Box T=((\partial_t+s)^2-\Delta_x)(e^{-st}T).
+ \tag{T7}
+\]
+Thus Fourier differentiation contributes precisely the polynomial in (T6). All parameter continuations are justified on a compact parameter set by one choice of \(N\) and the existing uniform Schwartz bounds. We use (T6) at \(\lambda=1\).
+
+Set \(S(t,\omega)=\sin(t\omega)/\omega\), with \(S(t,0)=t\). Two integrations by parts in its differential equation give
+\[
+ \int_0^\infty e^{-pt}S(t,\omega)\,dt
+                =(p^2+\omega^2)^{-1}\qquad(\operatorname{Re}p>0).
+ \tag{T8}
+\]
+Indeed \(S(0,\omega)=0\), \(S_t(0,\omega)=1\), \(S_{tt}=-\omega^2S\); the exponential removes the infinite endpoint. For real \(t,\omega\),
+\[
+ S(t,\omega)=t\int_0^1\cos(rt\omega)\,dr .
+ \tag{T9}
+\]
+All time derivatives on \(|t|\le T\) have bounds \(C_{j,T}(1+|\omega|)^j\). Inverse spatial Fourier pairing with a Schwartz test is consequently absolutely convergent, and differentiation of every fixed order is justified by a common integrable envelope. This defines a smooth distribution-valued family \(k(t)\) on the whole real line. Its causal extension, obtained by integrating those pairings over \(t\ge0\), is tempered; the bound \(|S|\le t\) suffices.
+
+Damping this causal extension gives the transform in (T6) at \(\lambda=1\), by (T8) and absolute integration against Schwartz tests. Full spacetime Fourier injectivity identifies it with \(R_1=E_0\), including time zero. No term supported on that plane has been omitted. The transform of \(k(t)\) is therefore \(S(t,|\xi|)\). Its initial even derivatives vanish, and its derivative of order \(2j+1\) has transform \((-1)^j|\xi|^{2j}\), the transform of \(\Delta^j\delta_0\).
+
+**Proof of the support and topology assertions.** The spacetime support of \(E_0\) is \(C_+\). If a spatial test is supported outside the ball of radius \(t_0>0\), the joint distribution pairs to zero against its product with every time test in a small interval around \(t_0\). Continuity of the scalar pairing with \(k(t)\) forces that pairing to vanish there: a continuous nonzero scalar value would have a small test of matching phase with nonzero integral. Localizing the spatial test proves \(\operatorname{supp}k(t_0)\subset\{|x|\le t_0\}\). The assertion at zero follows from the computed trace. The same argument on an open interval disjoint from the cone proves this support bound for each time derivative as well.
+
+On \(0\le t\le T\), all supports lie in a fixed ball. Choose a compact smooth cutoff equal to one on a larger ball. Pairing with any smooth function equals pairing with this cutoff times that function. Repeated integration by parts in the latter's Fourier transform bounds it by \(C_M(1+|\xi|)^{-M}\) times finitely many derivatives on the cutoff support. Choose \(M>n+j\). Together with (T9) this gives a common finite-order bound for \(k^{(j)}(t)\), uniform in \(t\), and dominated differentiation. Taylor's formula with the next two time derivatives makes its difference-quotient remainder tend to zero uniformly on every bounded set of smooth functions. This is precisely strong \(\mathcal E'\) smoothness, also one-sided at zero.
+
+Finally \(K_c(t)=c k(ct)\), so its time derivative of order \(j\) is \(c^{j+1}k^{(j)}(ct)\). The linear distributional chain rule and \(\delta(ct)=c^{-1}\delta(t)\) give (T1)–(T2) with all speed factors. \(\square\)
+
+**Lemma 4.2 (uniqueness on a time half-space).** For every distribution \(g\) supported in \(H=\{t\ge0\}\), there is exactly one distribution \(u\) supported in \(H\) with \(P_cu=g\), namely \(u=K_c*g\). In particular \(K_c\) is the only half-space-supported fundamental solution.
+
+**Proof.** Addition is proper on \(C_c\times H\). If \((a,b)+(s,y)\) lies in a compact set, then \(a,s\ge0\) and their bounded sum bounds both times. The cone bound \(|b|\le ca\) bounds \(b\), and the bounded spatial sum bounds \(y\). The contributing set is closed and bounded, hence compact. U021's properly supported convolution therefore exists, and its support stays in \(H\). Derivative transfer gives \(P_c(K_c*g)=g\). For any half-space-supported \(u\) the same properness gives
+\[
+ u=(P_cK_c)*u=K_c*(P_cu).
+ \tag{T10}
+\]
+This proves uniqueness without any condition at spatial infinity. Reflection \(t\mapsto-t\), whose absolute determinant is one, proves the backward version. \(\square\)
+
+**Theorem 4.3 (smooth data and forcing).** Let \(u_0,u_1\in C^\infty(\mathbb R^n)\) and \(f\in C^\infty(H)\), where all derivatives have continuous one-sided boundary values. Then the unique smooth solution on \(H\) of
+\[
+ P_cu=f,\qquad u(0)=u_0,\qquad \partial_tu(0)=u_1
+ \tag{T11}
+\]
+is
+\[
+ \begin{split}
+ u(t)&=c^{-2}K_c'(t)*u_0+c^{-2}K_c(t)*u_1\\
+     &\quad+\int_0^t K_c(t-s)*f(s)\,ds .
+ \end{split}
+ \tag{T12}
+\]
+These convolutions are spatial. Compact support or growth assumptions on the data are unnecessary.
+
+**Proof of smoothness.** For \(0\le t\le T\) and \(x\) in a compact set \(B\), every spatial pairing in (T12) uses data in the fixed compact set \(B+\overline B(0,cT)\). Insert a cutoff on a larger compact neighborhood. The finite-order estimates and strong smoothness of Lemma 4.1, with the smooth dependence of translated data on \(s,x\), permit differentiation of each pairing of every fixed order, uniformly on this compact parameter set. This can also be checked directly by the product difference quotient: the distribution difference is uniformly controlled on bounded smooth tests, and the test difference converges in every required finite norm. For the integral, write \(s=tr\), \(0\le r\le1\). Its smooth tested integrand on the fixed compact parameter domain proves smoothness through \(t=0\) by dominated differentiation. The argument only uses one-sided derivatives of \(f\).
+
+For its forcing term \(v\), differentiation with the original integration endpoints gives
+\[
+ \begin{split}
+ v'(t)&=\int_0^t K_c'(t-s)*f(s)\,ds,\\
+ v''(t)&=c^2f(t)+\int_0^t K_c''(t-s)*f(s)\,ds .
+ \end{split}
+ \tag{T13}
+\]
+The first boundary term is zero because \(K_c(0)=0\); the second is \(c^2f(t)\) because \(K_c'(0)=c^2\delta\). For \(t\ge0\) the smooth family satisfies \(K_c''=c^2\Delta K_c\): it holds for \(t>0\) by the source equation and extends to zero by continuity. Thus \(P_cv=f\), and the two data terms in (T12) solve the homogeneous equation. Equations (T2) give \(u(0)=u_0\), \(u'(0)=u_1\), since \(K_c''(0)=0\), \(v(0)=v'(0)=0\).
+
+For uniqueness let \(w\) be the difference of two solutions, with zero forcing and initial traces, and extend it by zero to \(t<0\). Two integrations by parts in time, against a compact spacetime test, give in general
+\[
+ P_c(\boldsymbol1_Hw)
+   =\boldsymbol1_H P_cw
+       +c^{-2}\delta(t)w_t(0,x)
+       +c^{-2}\delta'(t)w(0,x).
+ \tag{T14}
+\]
+Each boundary coefficient occurs once. Spatial derivatives have no boundary term on a time plane. In the present case the right side is zero, and Lemma 4.2 forces the zero extension to vanish. The same argument proves uniqueness already among \(C^2(H)\) solutions. \(\square\)
+
+## Reading a spatial slice of the cone
+
+The earlier cone formula and Lemma 4.1 give, for \(t>0\),
+\[
+ K_c(t,x)=\frac c2\pi^{(1-n)/2}
+                   \chi_+^{(1-n)/2}(c^2t^2-|x|^2).
+ \tag{T15}
+\]
+This spatial composition is legitimate. Near its zero sphere the argument is a submersion; near its only critical point \(x=0\) the argument is positive and the scalar distribution is smooth. These two definitions agree on their overlap by the ordinary submersion construction. Integrating against a time test recovers the existing spacetime formula in positive time, so continuity of the slices identifies it with \(K_c(t)\).
+
+For \(n=1,2\) this directly yields the integrable formulas
+\[
+ \begin{split}
+ \langle K_c(t),\psi\rangle
+   &=\frac c2\int_{|x|<ct}\psi(x)\,dx &&(n=1),\\
+ \langle K_c(t),\psi\rangle
+   &=\frac c{2\pi}\int_{|x|<ct}
+         \frac{\psi(x)}{\sqrt{c^2t^2-|x|^2}}\,dx &&(n=2).
+ \end{split}
+ \tag{T16}
+\]
+For \(n=2m+1\), \(m\ge1\), define near \(r=ct>0\)
+\[
+ \widetilde\psi(r)=r^{n-2}\int_{S^{n-1}}\psi(r\omega)\,d\omega .
+\]
+Polar integration and \(z=c^2t^2-r^2\) give a factor \(1/2\); the scalar factor is \(\delta^{(m-1)}(z)\). Its distributional sign cancels the sign from differentiating \(c^2t^2-z\). Hence
+\[
+ \langle K_c(t),\psi\rangle
+   =\frac{c}{4\pi^m}
+       \left(\frac{d}{da}\right)^{m-1}
+          \widetilde\psi(\sqrt a)\Big|_{a=c^2t^2}.
+ \tag{T17}
+\]
+Only a neighborhood of the positive radius is differentiated; no singular substitution at \(r=0\) is involved. In particular for \(n=3\),
+\[
+ (K_c(t)*g)(x)
+       =\frac{c^2t}{4\pi}\int_{S^2}g(x+ct\omega)\,d\omega.
+ \tag{T18}
+\]
+Reflection of the sphere changes the convolution's minus displacement to plus. For odd \(n>1\) only the sphere is sampled; in two dimensions the disk interior also contributes. The initial traces in (T2) govern the common limit as that sphere or disk collapses.
+
+![The compact portion of a backward cone that determines a wave at a fixed event.](../figures/wave-cauchy-domain.png)
+
+*A one-dimensional spatial section with \(c=2\), observation time \(t=1\) and observation point \(x=0\). At intermediate time \(s\), forcing is paired only in \(|y|\le2(1-s)\); initial data are paired in \([-2,2]\). Theorem 4.3 and Solution 10 prove the support statement in every dimension. The shaded triangle describes a possible dependence region; it does not assert that an odd-dimensional wave kernel has an interior density. [Reproducible figure source](../figures/wave-cauchy-domain.py).*
+
 ## Exercises
 
 **Exercise 1 (basic: an oscillating interior).** In two spatial dimensions find the forward fundamental solution of \(\Box+4\) and determine its exact support.
@@ -293,6 +470,12 @@ with support in \(t\ge\sqrt{x_1^2/4+x_2^2/9}\). Include its point-source Jacobia
 **Exercise 7 (advanced: convolution of wave powers).** For integers \(p,q\ge0\), prove \(E_p*E_q=E_{p+q+1}\). In one spatial dimension compute \(E_0*E_0\) directly in characteristic coordinates.
 
 **Exercise 8 (advanced: a third massive power).** In two spatial dimensions compute the unique forward inverse of \((\Box-a)^3\) in terms of \(\mathcal C\), and verify its normalization at \(a=0\).
+
+**Exercise 9 (basic: spatially constant forcing).** Take \(u_0=u_1=0\) and \(f(t,x)=h(t)\), with \(h\) smooth on the closed half-line. Evaluate (T12) and check both initial traces and the equation.
+
+**Exercise 10 (intermediate: a local domain of dependence).** Suppose two data triples agree on a neighborhood of \(\{|y-x_*|\le cT\}\) at time zero and on a relative neighborhood in \(H\) of \(\{0\le s\le T,\ |y-x_*|\le c(T-s)\}\) for their forcing. Prove that their solutions agree at \((T,x_*)\). Explain why a neighborhood, rather than equality on a singular supporting surface alone, is appropriate for a distributional kernel.
+
+**Exercise 11 (advanced: every initial jet).** Express all time derivatives of the solution at zero recursively in \(u_0,u_1\) and the boundary derivatives of \(f\). Compute the first four derivatives after \(u_0\), keeping every power of \(c\). Relate the homogeneous recursion to (T2).
 
 ## Complete solutions
 
@@ -423,8 +606,47 @@ G_{0,2}=\frac{\boldsymbol1_{C_+}q^{3/2}}{48\pi}=R_3.
 \]
 Indeed \(\Gamma(3)=2\), \(\Gamma(5/2)=3\sqrt\pi/4\), and (1.2) gives the same coefficient. This is the inverse with point-source coefficient one.
 
-## Free sources and exact proof dependencies
+**Solution 9.** Pairing \(K_c(t)\) with the constant one is legitimate by compact support. Its mass \(M(t)\) satisfies \(M''(t)=c^2\langle\Delta K_c(t),1\rangle=0\); use one cutoff equal to one near all supports on each bounded time interval to justify that pairing. Equations (T2) give \(M(0)=0\), \(M'(0)=c^2\). Thus \(M(t)=c^2t\), and
+\[
+ u(t,x)=c^2\int_0^t(t-s)h(s)\,ds .
+ \tag{T19}
+\]
+The first derivative is \(c^2\int_0^t h(s)\,ds\); the second is \(c^2h(t)\). The spatial Laplacian is zero and both initial traces vanish. For \(h=1\), \(u=c^2t^2/2\); removing the factor \(c^2\) would fail the normalization of \(P_c\).
+
+**Solution 10.** Apply (T12) to the differences of the data. The supports of \(K_c(T)\) and \(K_c'(T)\) lie in \(\overline B(0,cT)\), so their pairings with the translated initial differences vanish. For each \(s\in[0,T]\), the support of \(K_c(T-s)\) lies in \(\overline B(0,c(T-s))\). The translated forcing difference vanishes on a neighborhood of this support, so the pairing is zero. Integrating gives zero forcing contribution. Compactness of the closed backward cone permits the common neighborhoods and seminorm bounds used in the proof of (T12). A distribution can differentiate a test in the normal direction: a delta derivative pairs nontrivially with a function that vanishes on its supporting surface but has nonzero normal derivative there. Vanishing in a neighborhood kills every such derivative, which is the support argument actually used.
+
+**Solution 11.** Put \(g_j=\partial_t^ju(0)\) and \(f_j=\partial_t^jf(0)\). Smoothness through the boundary and the equation give
+\[
+ g_0=u_0,\quad g_1=u_1,\qquad
+ g_{j+2}=c^2(\Delta g_j+f_j)\quad(j\ge0).
+ \tag{T20}
+\]
+In particular
+\[
+ \begin{split}
+ g_1&=u_1,\\
+ g_2&=c^2\Delta u_0+c^2f_0,\\
+ g_3&=c^2\Delta u_1+c^2f_1,\\
+ g_4&=c^4\Delta^2u_0+c^4\Delta f_0+c^2f_2 .
+ \end{split}
+ \tag{T21}
+\]
+Induction gives the full formulas
+\[
+ \begin{split}
+ g_{2m}&=c^{2m}\Delta^mu_0+
+     \sum_{r=0}^{m-1}c^{2(m-r)}\Delta^{m-1-r}f_{2r},\\
+ g_{2m+1}&=c^{2m}\Delta^mu_1+
+     \sum_{r=0}^{m-1}c^{2(m-r)}\Delta^{m-1-r}f_{2r+1},
+ \end{split}
+ \tag{T22}
+\]
+where an empty sum is zero. Substituting either expression into (T20) shifts the previous terms by one Laplacian and adds the last forcing term, proving the induction. When \(f=0\), differentiating the two initial-data terms in (T12) and using (T2) gives exactly the first term in each line. These are smooth boundary jets; no convergence of a Taylor series of arbitrary smooth data is asserted.
+
+## Sources and exact proof dependencies
 
 - Christian Bär, Nicolas Ginoux and Frank Pfäffle, *Wave Equations on Lorentzian Manifolds and Quantization*, freely accessible author version, [arXiv:0806.1036](https://arxiv.org/abs/0806.1036), §1.2, Lemma 1.2.2 and Proposition 1.2.4, printed pp.10–17. Their parameter \(\alpha\) is \(2\lambda\) here, and their dimension is spacetime dimension \(n+1\). U027 Lemma 4.0 supplies the complete programme proof, including the scalar identities for which the source refers elsewhere.
 - [U027](causal-point-sources-and-characteristic-cones.md), Lemma 4.0 and formulas (4.0a)–(4.0h), proves the global family, all constants, origin delta and linear substitution. [U022](causal-integration-of-complex-order.md), §1, formulas (1.3)–(1.6), and Theorems 2.1–2.2, proves the scalar causal family and Beta input. [U021](convolution-as-addition-of-supports.md), Theorems 1.1, 3.1–3.2 and Corollary 3.4, proves the used convolution and continuity statements.
-- The nonvertex cone coordinates, exact supports, uniform potential series, all parameter derivatives, resolvent and higher-power identities, exponential conjugation and all eight solutions are proved here. No external citation replaces these proofs.
+- The nonvertex cone coordinates, exact supports, uniform potential series, all parameter derivatives, resolvent and higher-power identities, exponential conjugation and all eleven solutions are proved here. No external citation replaces these proofs.
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I*, second edition, §6.2, Theorems 6.2.3–6.2.4 and formulas (6.2.7)–(6.2.9), for the causal wave kernel and smooth Cauchy problem.
+- Programme proof contributions in Lemmas 4.1–4.2: AN-03 course-writing task and OpenAI Codex, *Causal kernels, initial data, and short-time geometry*, Sections 2, 2.1 and 4 (CC0); GPT-6.1 Sol (OpenAI), *The wave Cauchy problem and Kirchhoff’s formula*, Theorem 1 (CC0). The needed arguments and exact earlier proof inputs are supplied above.

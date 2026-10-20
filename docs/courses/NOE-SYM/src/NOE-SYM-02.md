@@ -1,6 +1,6 @@
 # Infinite symmetry groups and Noether's second theorem
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), at Ultra. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex at Ultra, October 2026. Public domain (CC0).*
 
 A constant phase change of a complex field gives a conserved charge. Allowing the phase to vary at every point requires a gauge field and produces something stronger: a differential identity among the equations of motion themselves. The identity holds for every field configuration, before solving any equations. It also explains why the corresponding current reduces to a surface term on solutions.
 

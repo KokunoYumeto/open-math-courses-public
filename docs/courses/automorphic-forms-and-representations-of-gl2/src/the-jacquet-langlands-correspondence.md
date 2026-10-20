@@ -2,7 +2,7 @@
 
 *Written by GPT-6.1 Sol (OpenAI), October 2026. Public domain (CC0).*
 
-A quaternion division algebra has fewer conjugacy classes than a matrix algebra, but it retains exactly the regular elliptic ones. Its representations therefore offer a compact setting in which to study part of the spectrum of \(\mathrm{GL}_2\). We prove the local Jacquet–Langlands correspondence over every nonarchimedean local field and over \(\mathbb R\), with its elliptic character sign, twisted factors, formal degrees and smooth transfer. We then prove the global quaternion correspondence over \(\mathbb Q\) by a trace comparison, including quotient volumes, singular and continuous terms, residual characters and multiplicities. The calculations at levels eleven and thirty-seven connect the correspondence to explicit weight-two eigenforms. Section 6 states the distinct higher-degree extensions and their remaining proof scope.
+A quaternion division algebra has fewer conjugacy classes than a matrix algebra, but it retains exactly the regular elliptic ones. Its representations therefore offer a compact setting in which to study part of the spectrum of \(\mathrm{GL}_2\). We prove the local Jacquet–Langlands correspondence over every nonarchimedean local field and over \(\mathbb R\), with its elliptic character sign, twisted factors, formal degrees and smooth transfer. We then prove the global quaternion correspondence over \(\mathbb Q\) by a trace comparison, including quotient volumes, singular and continuous terms, residual characters and multiplicities. The calculations at levels eleven and thirty-seven connect the correspondence to explicit weight-two eigenforms. Section 6 develops higher-degree local arguments, constructs global inner forms, and proves finite cuspidal and inner spectra with absolute regular-elliptic trace identities over the rational function field. It also proves global division-group compactness in both characteristics and inner spectral discreteness over every global function field. The general local and global transfers retain the further hypotheses stated there.
 
 We use Lesson 17 for quaternion groups and Brandt operators, Lesson 18 for their trace formula, and Lesson 15 for multiplicity one. A discrete series means an irreducible **unitary** representation square-integrable modulo the centre. Removing the unitary condition requires the term *essentially discrete series*: a character twist of a discrete series. At a finite place the discrete series of \(\mathrm{GL}_2\) are unitary Steinberg twists and unitary supercuspidals. At a real place they are the discrete series described in Lesson 11.
 
@@ -13450,6 +13450,1240 @@ It cannot occur in \(C^{(k)}\). Each of its layers is a product of a suffix of \
 </figure>
 
 
+### 6.57. Finite cuspidal spaces and spectral traces over the rational function field
+
+Let \(K=\mathbb F_q(t)\), \(R=\mathbb F_q[t]\), \(u=t^{-1}\), and let \(\infty\) be the rational place with completion \(\mathbb F_q((u))\). Write \(\mathbb A=\mathbb A_K\), \(G=\mathrm{GL}_n\), \(Z=\mathbb G_m\), and \(\mathcal K=\prod_vG(\mathcal O_v)\). Fix a smooth unitary character \(\Omega:K^\times\backslash\mathbb A^\times\to\mathbb C^\times\). The character is part of the hypotheses. Put
+\[
+ \begin{gathered}
+ J(D)=\prod_vJ_v(m_v),\qquad D=\sum_vm_v[v],\qquad
+ e=\deg D=m_\infty+\sum_{v\ne\infty}m_v\deg v,\\
+ J_v(0)=G(\mathcal O_v),\qquad
+ J_v(m)=1+\mathfrak p_v^mM_n(\mathcal O_v)\quad(m\ge1).
+ \end{gathered}
+\tag{6.898}
+\]
+Only finitely many \(m_v\) are nonzero. In particular \(J(D)\) is normal in \(\mathcal K\). A smooth automorphic function with central character \(\Omega\) satisfies \(F(\gamma zg)=\Omega(z)F(g)\). It is **cuspidal** when its integral over \(N(K)\backslash N(\mathbb A)\) is zero at every \(g\), for every proper parabolic radical \(N\). We give these unipotent quotients probability measure below.
+
+**Lemma 6.376 — additive approximation with its exact threshold.** Let \(P=\prod_{v\ne\infty}P_v^{m_v}\in R\) be monic, where \(P_v\) is the monic polynomial of the finite place \(v\), and put \(d=\deg P\). For an integer \(\delta\), let
+\[
+ L_\delta=\prod_{v\ne\infty}\mathfrak p_v^{m_v}\mathcal O_v
+              \ \times\ u^{m_\infty-\delta}\mathcal O_\infty.
+ \qquad
+ \mathbb A=K+L_\delta\ \Longleftrightarrow\ \delta\ge e-1.
+\tag{6.899}
+\]
+Moreover
+\[
+ U=\prod_{v\ne\infty}\mathcal O_v\times u\mathcal O_\infty,
+ \qquad \mathbb A=K\oplus U
+\tag{6.900}
+\]
+as additive groups. The compact open group \(U\) is closed under multiplication, although it does not contain the identity of \(\mathbb A\).
+
+**Proof.** At a finite place every principal part is represented by \(A_v/P_v^k\), with \(\deg A_v<k\deg P_v\): reduce \(P_v^kz_v\) modulo \(P_v^k\), using \(R/P_v^k=\mathcal O_v/\mathfrak p_v^k\). Subtract the sum of these finitely many proper rational fractions. The finite components are now integral. The Chinese remainder construction supplies a polynomial \(p\), \(\deg p<d\), with their prescribed residues modulo the \(P_v^{m_v}\). Explicitly, coprimality gives inverses of \(P/P_v^{m_v}\) modulo \(P_v^{m_v}\) by the Euclidean algorithm; multiply each residue by this inverse and by \(P/P_v^{m_v}\), sum, and reduce modulo \(P\). Subtract \(p\). The remaining finite components lie in their required ideals.
+
+Divide the polynomial part of the remaining infinity component by \(P\), and subtract the multiple of \(P\) so obtained. This preserves the finite conditions. The infinity remainder belongs to \(u^{1-d}\mathcal O_\infty\). If \(d=0\), division by \(P=1\) removes the whole polynomial part and leaves \(u\mathcal O_\infty\). Thus the construction works precisely when the allowed infinity lattice contains this remainder lattice, namely when \(m_\infty-\delta\le1-d\).
+
+For failure at \(\delta=e-2\), take all finite components zero and the infinity component \(t^{d-1}\), interpreted as \(u\) if \(d=0\). Any rational function satisfying the finite conditions must be a polynomial divisible by \(P\). For \(d>0\), subtracting a nonzero such polynomial introduces a term of degree at least \(d\); subtracting zero leaves the term of degree \(d-1\). Neither remainder lies in \(u^{2-d}\mathcal O_\infty\). For \(d=0\), a polynomial cannot cancel the coefficient of \(u\) modulo \(u^2\mathcal O_\infty\). Smaller \(\delta\) allow still smaller lattices, so also fail. Finally the construction with all \(m_v=0\) gives (6.900). An element of \(K\) integral at every finite place is a polynomial; if it also belongs to \(u\mathcal O_\infty\), it is zero. Closure of \(U\) under products is coordinatewise. \(\square\)
+
+**Proposition 6.377 — adelic diagonal representatives by polynomial row reduction.** Every \(g\in G(\mathbb A)\) has a decomposition \(g=\gamma a(\boldsymbol d)k\), where \(\gamma\in G(K)\), \(k\in\mathcal K\), and \(a(\boldsymbol d)\) is the identity at the finite places and \(\operatorname{diag}(t^{d_1},\ldots,t^{d_n})\) at infinity. The sorted integers \(d_1\ge\cdots\ge d_n\) are unique. Modulo the additional action of \(Z(\mathbb A)\), they are unique up to a common integer shift, and we normalize \(d_n=0\).
+
+**Proof: the finite lattices.** The module
+\[
+ L=K^n\cap\prod_{v\ne\infty}g_v\mathcal O_v^n
+\tag{6.901}
+\]
+is a full \(R\)-lattice. Indeed some nonzero polynomial \(Q\) clears all the finitely many nonintegral lattices and their inverses, giving \(QR^n\subset L\subset Q^{-1}R^n\). Every submodule of \(R^n\) is free of rank at most \(n\): project onto the first coordinate, whose image is a principal ideal; lift its generator, split off that generator, and apply induction to the kernel in \(R^{n-1}\). This proves finite generation as well. The two inclusions show that the rank here is \(n\).
+
+Its completion at each finite \(v\) is exactly \(g_v\mathcal O_v^n\). To check the nontrivial inclusion, multiply a desired local vector by \(Q\). Prescribe a sufficiently accurate polynomial congruence for that vector at \(v\), and prescribe sufficiently deep zero congruences at the other primes dividing \(Q\). The Chinese remainder construction in Lemma 6.376 gives a polynomial vector with these congruences. Dividing by \(Q\) gives an element of \(L\) arbitrarily close to the local vector. The completion of the lattice spanned by any \(R\)-basis of \(L\) is closed, so density gives equality. If \(h\) has this basis as its columns, then \(h^{-1}g_v\in G(\mathcal O_v)\) at every finite place. Absorb those matrices on the right. It remains to reduce the infinity matrix.
+
+**Proof: termination of row reduction.** For a nonzero Laurent row \(z\), write \(\ell(z)\) for its largest \(t\)-degree. Begin with the rows \(z_i\) of the infinity matrix and allow unimodular polynomial row operations. At every stage
+\[
+ \sum_i\ell(z_i)\ \ge\ \deg_t\det(g_\infty).
+\tag{6.902}
+\]
+The determinant is unchanged up to a nonzero constant. Let \(\ell_i=\ell(z_i)\). If the leading residues of \(t^{-\ell_i}z_i\) in \(\mathbb F_q^n\) are dependent, choose a nonzero dependence \(\sum c_i\overline{t^{-\ell_i}z_i}=0\). Select an index \(i\) of largest \(\ell_i\) among its nonzero coefficients and normalize \(c_i=1\). Replace
+\[
+ z_i\ \longmapsto\ z_i+\sum_{j\ne i,\ c_j\ne0}
+                  c_jt^{\ell_i-\ell_j}z_j.
+\tag{6.903}
+\]
+All powers are nonnegative. This is a unimodular polynomial operation, it strictly lowers \(\ell_i\), and it changes no other row. The integer sum in (6.902) therefore forces termination. At termination the normalized leading rows are independent. Thus \(\operatorname{diag}(t^{-\ell_i})Ag_\infty\in G(\mathcal O_\infty)\) for the accumulated \(A\in G(R)\). This gives the asserted diagonal form. These polynomial operations preserve all finite integral components; a permutation sorts the degrees.
+
+**Proof: uniqueness and the centre.** For an infinity matrix define the finite integer
+\[
+ h_g(m)=\dim_{\mathbb F_q}\{p\in R^n:\deg_t(pg)\le m\}.
+ \quad
+ h_{a(\boldsymbol d)}(m)=\sum_i\max(0,m-d_i+1).
+\tag{6.904}
+\]
+Finiteness follows by bounding the degrees of \(p=(pg)g^{-1}\). The function is invariant under left \(G(R)\) and right \(G(\mathcal O_\infty)\). Its first difference is \(\#\{i:d_i\le m\}\), so recovers every degree. An equivalence between two finite-identity adelic representatives must have its rational left matrix and its inverse integral at every finite place, hence in \(G(R)\). This proves the global uniqueness too. For a central idele, multiply by the inverse of the rational function \(\prod_{v\ne\infty}P_v^{\operatorname{ord}_v(z_v)}\). All its finite coordinates are now units; its infinity coordinate is a power of \(t\) times a unit. It therefore shifts every \(d_i\) by the same integer, and every such shift occurs. \(\square\)
+
+For example, over every \(\mathbb F_q\), the matrix
+\[
+ \begin{pmatrix}t^2&t\\t&1+u\end{pmatrix},\qquad
+ z_1-tz_2=(0,-1),\qquad \det=t,
+\tag{6.905}
+\]
+has sorted profile \((1,0)\). The original sum of row degrees is \(3\); after this one operation it is \(1\), and the normalized leading rows are independent. This calculation also holds in characteristic two.
+
+<figure class="rational-row-reduction-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="300" viewBox="0 0 744 300" role="img" aria-labelledby="rational-row-title rational-row-desc">
+<title id="rational-row-title">Polynomial row cancellation and the determinant bound</title>
+<desc id="rational-row-desc">For the matrix with rows t squared, t and t, one plus u, both normalized leading rows equal one, zero. Replacing the first row by the first row minus t times the second leaves zero, minus one. The row degrees change from two and one to zero and one. Their sum reaches the determinant degree one. The new leading rows are independent, giving sorted degrees one and zero.</desc>
+<rect x="1" y="1" width="742" height="298" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<g fill="#17354d" font-family="sans-serif" font-size="18" text-anchor="middle"><text x="372" y="38">g∞ = ((t², t), (t, 1+u)); u = t⁻¹; det g∞ = t</text><text x="372" y="84">row degrees (2,1); normalized leading rows (1,0), (1,0)</text><text x="372" y="133">z₁ ← z₁ − t z₂ = (0,−1)</text><text x="372" y="181">row degrees (0,1); leading rows (0,−1), (1,0)</text><text x="372" y="230">sum 3 → 1 = degree of the determinant</text><text x="372" y="274">independent leading rows ⇒ sorted profile (1,0)</text></g>
+<rect x="24" y="105" width="696" height="48" rx="8" fill="none" stroke="#7395ae"/>
+</svg>
+<figcaption>Figure 61. Equations (6.902)–(6.905) give a terminating polynomial algorithm and this exact example. The determinant supplies a lower bound at every step. For the related vector-bundle splitting statement, see Lecture 24, Theorem 24.1, in the free MIT algebraic geometry notes; the row argument here is independent of sheaf cohomology.</figcaption>
+</figure>
+
+**Theorem 6.378 — a uniform support bound for cusp forms of fixed level.** Suppose \(n\ge2\). A \(J(D)\)-fixed cusp form can be nonzero at \(\gamma z a(\boldsymbol d)k\), with \(d_n=0\), only if
+\[
+ 0\le d_h-d_{h+1}\le e-2\quad(1\le h<n).
+\tag{6.906}
+\]
+Consequently the space is zero if \(e\le1\). If \(e\ge2\), it is supported on at most \((e-1)^{n-1}[\mathcal K:J(D)]\) right level cosets modulo \(G(K)Z(\mathbb A)\), and
+\[
+ \dim C_{\mathrm{cusp}}(J(D),\Omega)
+       \le(e-1)^{n-1}[\mathcal K:J(D)].
+\tag{6.907}
+\]
+Every such form is square-integrable modulo the centre.
+
+**Proof.** Fix an adjacent gap \(\delta=d_h-d_{h+1}\ge e-1\), and let \(N_h\) be the upper rectangular radical of type \((h,n-h)\). It is an additive group of \(h(n-h)\) entries. For a cross-block entry \((i,j)\), its allowed lattice in \(N_h(\mathbb A)\cap aJ(D)a^{-1}\) is \(\mathfrak p_v^{m_v}\mathcal O_v\) at finite \(v\), and \(u^{m_\infty-(d_i-d_j)}\mathcal O_\infty\) at infinity. Since \(d_i-d_j\ge\delta\), this contains the entry lattice \(L_\delta\). Lemma 6.376, entry by entry, gives
+\[
+ N_h(\mathbb A)=N_h(K)\bigl(N_h(\mathbb A)\cap aJ(D)a^{-1}\bigr).
+\tag{6.908}
+\]
+Write \(n=\eta a j a^{-1}\) accordingly. Normality of \(J(D)\) in \(\mathcal K\) gives \(F(nak)=F(\eta ajk)=F(ak)\). The constant term, whose quotient measure is one, is therefore \(F(ak)\). Cuspidality forces this value to be zero. This proves (6.906), including the zero assertion when \(e\le1\).
+
+For \(e\ge2\), the \(n-1\) successive gaps each have \(e-1\) choices and determine the normalized profile. Proposition 6.377 and a set of representatives for \(\mathcal K/J(D)\) give the stated finite set of possible cosets. Values at its representatives determine the form; stabilizers and \(\Omega\) can impose additional zero conditions. This proves an upper bound, without asserting that these values can be chosen freely. Each coset is the image of a compact open set and has finite quotient Haar measure, as established explicitly below. Thus finite support gives square-integrability. \(\square\)
+
+For \(m\ge1\), the index in (6.907) is explicitly determined by
+\[
+ [G(\mathcal O_v):J_v(m)]
+  =\prod_{i=0}^{n-1}(Q_v^n-Q_v^i)\,Q_v^{n^2(m-1)},
+ \qquad Q_v=q^{\deg v}.
+\tag{6.909}
+\]
+Reduction modulo \(\mathfrak p_v\) counts independent columns, giving the product. Each invertible residue matrix has \(Q_v^{n^2(m-1)}\) lifts modulo \(\mathfrak p_v^m\), all invertible. This proves the formula. At depth zero the index is one. Every compact open subgroup of \(G(\mathbb A)\) contains a \(J(D)\), so finiteness follows at any compact open level. When \(n=1\), the whole space with the specified central character is the single line \(F(g)=c\Omega(g)\); its level-fixed dimension is one or zero according as \(\Omega\) is trivial on that level or not.
+
+<figure class="rational-cusp-support-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="330" viewBox="0 0 744 330" role="img" aria-labelledby="rational-support-title rational-support-desc">
+<title id="rational-support-title">The finite support profiles in rank three and degree three</title>
+<desc id="rational-support-desc">For n equals three and e equals three, both adjacent gaps can only be zero or one. The four gap pairs zero zero, one zero, zero one, one one give the normalized profiles zero zero zero, one zero zero, one one zero, two one zero. Any gap at least two makes a maximal constant term equal the value of the form, hence that value is zero. The four profiles are possible support positions, not four representations.</desc>
+<rect x="1" y="1" width="742" height="328" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<g fill="#17354d" font-family="sans-serif" font-size="18" text-anchor="middle"><text x="372" y="36">n = 3, e = 3; each adjacent gap is 0 or 1</text><text x="190" y="86">gap pair (0,0) → (0,0,0)</text><text x="554" y="86">gap pair (1,0) → (1,0,0)</text><text x="190" y="137">gap pair (0,1) → (1,1,0)</text><text x="554" y="137">gap pair (1,1) → (2,1,0)</text><text x="372" y="201">a gap δ ≥ e−1 = 2 gives N(𝔸) = N(K)(N(𝔸) ∩ aJa⁻¹)</text><text x="372" y="244">constant term = F(ak); cuspidality forces F(ak) = 0</text><text x="372" y="300">four possible support profiles; dimension ≤ 4[𝒦:J]</text></g>
+<path d="M24 166 H720" stroke="#7395ae"/>
+</svg>
+<figcaption>Figure 62. The profiles are the four solutions of (6.906) with n=3 and e=3. Equations (6.899) and (6.908) explain the vanishing beyond this set. These are bounds on support and dimension, not assertions that every profile occurs or that there are four cuspidal constituents.</figcaption>
+</figure>
+
+**Theorem 6.379 — a closed admissible cuspidal Hilbert space.** The right regular representation on
+\(H_\Omega=L^2(G(K)Z(\mathbb A)\backslash G(\mathbb A),\Omega)\)
+has a closed invariant cuspidal subspace \(H_{\mathrm{cusp},\Omega}\). Its smooth vectors are precisely the smooth square-integrable functions satisfying the constant-term definition above. Its fixed space at every compact open level is finite-dimensional; at \(J(D)\) it satisfies Theorem 6.378.
+
+**Proof: the quotient and its measure.** Write \(\overline G=G(\mathbb A)/Z(\mathbb A)\) and \(\overline\Gamma=G(K)/Z(K)\), embedded in \(\overline G\). The latter is discrete. Indeed its adjoint action on the full matrix algebra \(M_n\) has rational entries; a neighbourhood of the identity in which every entry of \(\operatorname{Ad}(\gamma)-1\) belongs to \(U\) forces all those entries to be zero by (6.900). A matrix commuting with every matrix unit is scalar, in every characteristic. Thus this neighbourhood contains only the identity of \(\overline\Gamma\). A subgroup with isolated identity is closed: choose a neighbourhood \(V\) with \(V^{-1}V\) containing no other subgroup element; each translate of \(V\) contains at most one such element, so any point of the closure is that element. In particular its intersection with a compact set is finite.
+
+Haar measure on \(\overline G\), with counting measure on \(\overline\Gamma\), gives a locally finite measure on \(X=\overline\Gamma\backslash\overline G\): cover compact sets by finitely many small charts whose distinct rational translates are disjoint, and use Haar measure on each chart. The factors \(\Omega(z)\) define unitary transition functions for sections over this quotient. They are consistent because \(\Omega\) is trivial on \(K^\times\); their absolute values are one. This constructs the indicated Hilbert norm without requiring finite total volume of \(X\). For a compact set \(B\subset\overline G\), the unfolding of these charts gives
+\[
+ \int_B|\Phi(g)|^2\,dg
+ \le M_B\|\Phi\|_{H_\Omega}^2,
+ \qquad M_B=\max(1,\#(\overline\Gamma\cap BB^{-1})).
+\tag{6.910}
+\]
+To see the bound on multiplicity, if \(\gamma_0g,\gamma g\in B\), then \(\gamma\gamma_0^{-1}\in BB^{-1}\). The norm of the section is independent of the chosen lift.
+
+**Proof: bounded constant terms on compact sets.** Give the additive group at each finite place measure \(\mathcal O_v=1\), and at infinity measure \(u\mathcal O_\infty=1\). Then \(U\) has measure one. For a standard parabolic radical \(N\), let \(N_U\) consist of the upper unitriangular block matrices with each allowed entry in \(U\). It is a compact open subgroup: multiplication and the finite inverse formula use only sums and products in \(U\). Successively reduce the entries by (6.900), in order of increasing root height, by left rational elementary matrices. This proves
+\[
+ N(\mathbb A)=N(K)N_U,\qquad N(K)\cap N_U=\{1\}.
+\tag{6.911}
+\]
+The root-coordinate changes are triangular with diagonal one. Product additive measure is consequently both left and right Haar measure on \(N(\mathbb A)\), and \(N_U\) has measure one. Thus (6.911) identifies the left quotient with a compact fundamental domain of probability measure. Quotient integration is right invariant: translation preserves Haar measure, and a compact translated domain can be partitioned among finitely many rational translates of \(N_U\). This also proves left \(N(\mathbb A)\)-invariance of the constant term as a function of \(g\).
+
+For \(\Phi\in H_\Omega\) define \(C_P\Phi(g)=\int_{N_U}\Phi(ng)\,dn\), as a locally square-integrable section. Cauchy–Schwarz, change of variable by left translation, and (6.910) give, for compact \(C\subset\overline G\),
+\[
+ \int_C|C_P\Phi(g)|^2\,dg
+ \le\int_{N_UC}|\Phi(h)|^2\,dh
+ \le M_{N_UC}\|\Phi\|_{H_\Omega}^2.
+\tag{6.912}
+\]
+In the first inequality, each integral over \(nC\) is bounded by the integral over \(N_UC\), and the averaging measure has mass one. In particular these maps are well-defined on Hilbert equivalence classes and continuous into \(L^2\) on every compact set. Take the intersection of their kernels over a compact exhaustion and over the standard proper parabolics. Rational conjugacy covers the other parabolics, because \(\Phi\) is rationally invariant. This intersection is closed. Constant terms commute with right translations, so it is invariant.
+
+**Proof: smooth vectors and fixed spaces.** Compactly supported locally constant sections on the small quotient charts are dense in \(H_\Omega\). Smoothness of \(\Omega\) allows the charts to be chosen with locally constant unitary frames. Translation is strongly continuous there, by continuity of Haar measure and compact approximation, and hence on all of \(H_\Omega\) by density and isometry. Averages over shrinking compact open groups converge strongly to the identity and preserve the closed cusp space. Its smooth vectors are therefore dense. A level-fixed Hilbert vector has a representative given by a constant value in a compatible frame on each open level coset. Its constant terms are right level invariant too. Their almost-everywhere vanishing, established by (6.912), is pointwise vanishing for these locally constant representatives. Theorem 6.378 applies to them and makes their fixed spaces finite-dimensional. Conversely each smooth cuspidal function is at some level, so that theorem gives its square-integrability. This proves all assertions, as well as the finite coset masses used in Theorem 6.378. \(\square\)
+
+**Lemma 6.380 — atomicity from finite compact fixed spaces.** A strongly continuous unitary representation \(H\) of a second-countable totally disconnected locally compact group, with \(\dim H^J<\infty\) for every compact open \(J\), is an orthogonal Hilbert sum of irreducible admissible unitary representations, each occurring with finite multiplicity. If \(H\) is separable, the sum is countable.
+
+**Proof.** A nonzero \(H\) has a nonzero compact fixed space \(E=e_JH\), by strong convergence of compact averaging. Choose a simple submodule \(L\) of this finite-dimensional space under the image of the corner algebra \(e_J\mathcal H(G)e_J\); a nonzero invariant subspace of smallest dimension supplies one. Put \(V=\mathcal H(G)L\). Then \(e_JV=L\). For a nonzero invariant submodule \(M\subset V\), either \(e_JM=L\) or \(e_JM=0\). The first alternative implies \(V\subset M\). In the second, for \(m\in M\), \(\ell\in L\) and \(a\in\mathcal H(G)\), adjointness gives \(\langle m,a\ell\rangle=\langle e_Ja^*m,\ell\rangle=0\). This makes \(M\) orthogonal to \(V\), hence zero, a contradiction. Thus \(V\) is simple.
+
+Let \(W=\overline V\). For every compact open \(J'\), the image \(e_{J'}V\) is finite-dimensional and closed, so \(W^{J'}=V^{J'}\). In particular \(W\) has exactly \(V\) as its smooth vectors. A nonzero closed invariant subspace of \(W\) has a nonzero compact fixed vector and therefore meets \(V\); simplicity makes it contain \(V\) and hence \(W\). Thus \(W\) is irreducible. Its orthogonal complement is invariant. A maximal orthogonal family of such subspaces exhausts \(H\), for a nonzero complement would give another one by this same construction. Separability gives countability. Finally a nonzero fixed vector in one irreducible makes every copy contribute at least one dimension to the same finite \(H^J\); the multiplicity is finite. This is the finite-corner Hilbert argument also used in Lesson 15, Lemma 4.12, with its hypotheses verified here for every \(n\). \(\square\)
+
+**Theorem 6.381 — restricted local factors and a finite cuspidal spectral trace.** The space \(H_{\mathrm{cusp},\Omega}\) has a countable discrete decomposition with finite multiplicities \(m(\Pi)\). Each constituent has smooth module \(\Pi=\bigotimes'_v\Pi_v\), with uniquely determined irreducible admissible unitarizable local factors. Let \(f=\prod_vf_v\) be smooth, compact modulo the centre, inverse-\(\Omega\)-covariant, and bi-\(J(D)\)-invariant. Outside a finite set take the central-covariant normalized maximal compact indicator. Then
+\[
+ \operatorname{Tr}R_{\mathrm{cusp}}(f)
+    =\sum_{\Pi^{J(D)}\ne0}m(\Pi)\prod_v\operatorname{Tr}\Pi_v(f_v).
+\tag{6.913}
+\]
+This is a finite sum of actual finite-rank operator traces.
+
+**Proof: the factors.** The quotient is second countable and its locally constant compactly supported sections have a countable dense set, by taking rational complex values on a countable chart basis. Thus its Hilbert space is separable. Theorems 6.379 and Lemma 6.380 give the discrete decomposition. For a simple constituent's smooth module, apply the algebraic local-unit factorization of Lesson 12, Theorem 4.1 to \(\mathcal H_v\otimes\mathcal H^{\,v}\). Its finite product corners are finite-dimensional by Theorem 6.379, exactly the hypothesis of that theorem. This extracts unique local simple admissible modules.
+
+For \(G(K_v)=\mathrm{GL}_n(K_v)\), transpose reverses convolution and preserves every \(\mathcal K_v\)-double coset, by the local elementary-divisor decomposition proved in Lemma 6.23. Hence the spherical Hecke algebra is commutative: transpose fixes each bi-compact function and reverses its products. Its nonzero simple finite-dimensional fixed module has an eigenline, which simplicity makes the whole module. Therefore \(\dim\Pi_v^{\mathcal K_v}=1\) whenever it is nonzero. A nonzero adelic smooth vector is fixed by \(\mathcal K_v\) outside a finite set \(S_0\); the binary tensor decompositions imply this nonzero local fixed line there.
+
+Here is the compatibility for infinitely many factors. For finite \(S\supset S_0\), put \(V_S=V^{\mathcal K^S}\). The tail compact average is an actual operator on every smooth vector. In the corner \(P^S\mathcal H(G)P^S\), the tail spherical algebras act by their scalar characters, as seen in each binary local decomposition. A nonzero \(\mathcal H_S\)-submodule of \(V_S\) generates \(V\) globally by simplicity; applying \(P^S\) gives all of \(V_S\) using \(\mathcal H_S\) alone. Thus \(V_S\) is simple. Finite-product factorization identifies it with \(\bigotimes_{v\in S}\Pi_v\). For a nested countable exhaustion of the places, the actual inclusion of one stage into the next lands in the fixed lines at the new places. Those lines have dimension one; admissible Schur's lemma makes the stage identification unique up to scalar. Rescale each successive identification to agree with insertion of chosen nonzero spherical vectors. Their compatible union is the asserted restricted tensor product, since every vector lies at some stage. This is the construction of Lesson 12 with the rank-\(n\) spherical-line hypothesis just proved. Fixing a nonzero complementary tensor in the global Hilbert norm gives an invariant positive form on each local factor. Its completion retains the same finite compact fixed spaces, by the closure argument in Lemma 6.380, and is irreducible.
+
+**Proof: the trace and its measures.** The natural map identifies \(\overline G\) with the restricted product of \(G(K_v)/Z(K_v)\), relative to the images \(\overline{\mathcal K}_v\): choose compact representatives at almost every place to prove surjectivity, and its kernel is exactly \(Z(\mathbb A)\). The same product compact neighbourhoods give the quotient topology. Use the product local quotient Haar measures, normalized by \(\operatorname{vol}(\overline{\mathcal K}_v)=1\). In the integrated action \(R(f)=\int_{\overline G}f(g)R(g)\,dg\), the inverse central covariance of \(f\) cancels that of \(R\), and \(\|R(f)\|\le\|f\|_1\).
+
+Bi-level invariance gives \(R_{\mathrm{cusp}}(f)=e_JR_{\mathrm{cusp}}(f)e_J\). The middle operator acts on the finite-dimensional space \(H_{\mathrm{cusp},\Omega}^{J}\) and is zero on its orthogonal complement. Only finitely many summands of the Hilbert decomposition have nonzero \(J\)-fixed vectors, since each uses at least one dimension of that space. In one summand, compact averaging on the algebraic tensor product gives the tensor product of local fixed spaces; completing introduces none. The ordinary finite matrix trace of \(\prod_v\Pi_v(f_v)\) is therefore the product of local traces. All but finitely many factors are projections onto the spherical line and have trace one. The central-covariant compact indicator is well-defined at these places because \(\Omega_v\) is trivial on central units there. This proves (6.913) with the stated measures. \(\square\)
+
+**Theorem 6.382 — a finite diagonal trace for a strongly cuspidal test.** In addition to the hypotheses of Theorem 6.381, suppose one local factor satisfies
+\[
+ \int_{N(K_{v_*})}f_{v_*}(xny)\,dn=0
+ \quad\text{for every proper radical }N\text{ and all }x,y.
+\tag{6.914}
+\]
+Then \(R(f)\) on all of \(H_\Omega\) is zero on the orthogonal complement of the cusp space and has finite rank. Define
+\[
+ K_f(x,y)=\sum_{\gamma\in Z(K)\backslash G(K)}f(x^{-1}\gamma y).
+\tag{6.915}
+\]
+The sum is locally finite. Let \(T_D\) be any finite set of compatible level cosets containing the support allowed by Theorem 6.378, and let \(\overline J\) be the image of \(J(D)\) in \(\overline G\). With \(\Gamma_x=\overline\Gamma\cap x\overline Jx^{-1}\), put \(w_x=\operatorname{vol}(\overline J)/\#\Gamma_x\). Then
+\[
+ \operatorname{Tr}R(f)=\sum_{x\in T_D}w_xK_f(x,x).
+\tag{6.916}
+\]
+Both sides are finite, and equal the cuspidal spectral trace in (6.913). A compatible coset means that the central-character transition at its arithmetic stabilizer is trivial, so sections on it can have a nonzero value.
+
+**Proof: the image is cuspidal.** If \(F=C_P\Phi\), then \(F\) is left \(N(\mathbb A)\)-invariant by (6.911). Unimodularity of \(N(\mathbb A)\) and \(\overline G\) gives quotient Haar integration, so
+\[
+ R(f)F(g)=\int_{N(\mathbb A)\backslash\overline G}
+ F(x)\left(\int_{N(\mathbb A)}f(g^{-1}nx)\,dn\right)dx.
+\tag{6.917}
+\]
+This formula is read in central-character frames; their phases cancel in its integrand. Its absolute integrability follows before disintegration: \(f\) restricts the original \(x\)-integration to a compact set, and \(F\) is locally square-integrable by (6.912). Each inner fibre is compact. At almost all places \(g_v,x_v\in\mathcal K_v\), and the compact indicator restricts the unipotent entry to \(N(\mathcal O_v)\). Indeed, if a unipotent matrix is a central multiple of a compact matrix, its determinant forces that central multiple to have valuation zero, and the unipotent matrix is integral. Thus the inner integral factors into finitely many local integrals and tail factors one. The factor at \(v_*\) is zero by (6.914). Constant terms commute with right convolution; hence \(C_PR(f)\Phi=R(f)C_P\Phi=0\). One may first use smooth compactly supported sections and then use (6.912), bounded convolution, and density to obtain the assertion for all Hilbert vectors.
+
+The closed cusp space and its orthogonal complement are invariant under the group and hence under \(R(f)\). Since the image lies in the cusp space, the complement is killed. Bi-level invariance and Theorem 6.379 give finite rank. The adjoint test \(f^*(g)=\overline{f(g^{-1})}\) satisfies (6.914) too: invert the unipotent variable and interchange the two translates. Its image has the same finite support bound.
+
+**Proof: the kernel and its weights.** On compact sets of \(x,y\), only finitely many rational classes meet \(x\operatorname{supp}(f)y^{-1}\) in \(\overline G\), by the discreteness proved in Theorem 6.379. This proves local finiteness of (6.915). Unfolding on compactly supported quotient sections identifies its integral operator with \(R(f)\); the bounded integrated action extends the identity. The kernel is constant in compatible frames on each pair of level cosets. At a coset with incompatible stabilizer, the transformation rule multiplies a row or column by a nontrivial scalar while fixing it; that row or column is zero.
+
+At a compatible coset its measure is \(w_x\): the compact set \(x\overline J\) covers its image with multiplicity \(\#\Gamma_x\), by quotient integration. In the orthonormal basis whose vector has value \(w_x^{-1/2}\) on that coset, the matrix entry is \(\sqrt{w_xw_y}\,K_f(x,y)\). The range of \(R(f)\), and that of its adjoint, are supported on \(T_D\), by Theorem 6.378. Thus every row and column of this matrix outside \(T_D\) is zero. Local constancy turns this operator assertion into the same assertion for the kernel itself. Taking the finite matrix trace gives (6.916). Notice that the compact volume is \(\operatorname{vol}(\overline J)\), with the central quotient measure; replacing it by an unadjusted volume in \(G(\mathbb A)\) would change the formula. \(\square\)
+
+Equation (6.916) is a finite diagonal identity after summing the rational classes in (6.915). It does not assert absolute convergence of a rearrangement of the individual rational summands into conjugacy classes. Values outside \(T_D\) can be zero through cancellation. Such a rearrangement requires a separate absolute orbital-integral argument.
+
+<figure class="rational-finite-trace-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="330" viewBox="0 0 744 330" role="img" aria-labelledby="rational-trace-title rational-trace-desc">
+<title id="rational-trace-title">The finite level matrix and its two trace expressions</title>
+<desc id="rational-trace-desc">A strongly cuspidal local factor makes the global operator vanish on the noncuspidal orthogonal complement. The range and adjoint range have support in a finite set T D. On compatible level cosets the orthonormal matrix entry is square root w x w y times K f x y. Its diagonal sum is the finite spectral sum over cuspidal constituents with nonzero fixed vectors. A nonzero value then permits extraction with prescribed local discrete-series tests.</desc>
+<rect x="1" y="1" width="742" height="328" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<g fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle"><text x="372" y="36">strong translated unipotent periods vanish at one place</text><text x="372" y="80">R(f)HΩ ⊂ Hcusp,Ω; the orthogonal complement is killed</text><text x="372" y="129">range R(f) and range R(f)* have support in the finite set T_D</text><text x="372" y="176">matrix entry: √(w_x w_y) K_f(x,y); w_x = vol(J̄)/#Γ_x</text><text x="372" y="225">Σ_x w_x K_f(x,x) = Tr R(f) = Σ_Π m(Π) ∏_v Tr Π_v(f_v)</text><text x="372" y="276">a nonzero value + local DS tests ⇒ a constituent with those factors</text><text x="372" y="309">constructing that nonzero value is a separate hypothesis</text></g>
+<path d="M24 198 H720" stroke="#7395ae"/>
+</svg>
+<figcaption>Figure 63. The two finite traces are (6.913) and (6.916). The weight and orthonormal matrix entry are proved in Theorem 6.382. Condition (6.914) is stronger than trace vanishing on proper induction. The final implication is Corollary 6.383; no nonzero trace is assumed merely from a nonzero Poincaré function.</figcaption>
+</figure>
+
+**Corollary 6.383 — exact local extraction from a nonzero trace.** Fix a finite set \(S\) of places and unitary discrete-series representations \(\pi_v\) of \(G(K_v)\) with central characters \(\Omega_v\). At these places choose the actual compact discrete tests of Theorem 6.374. Suppose the other factors give a test satisfying Theorem 6.382, and suppose its diagonal sum (6.916) is nonzero. Then an irreducible cuspidal automorphic constituent \(\Pi\) exists with \(\Pi_v\simeq\pi_v\) for every \(v\in S\).
+
+**Proof.** The actual discrete Hilbert decomposition, local tensor factors, and finite spectral sum are Theorem 6.381. Every such cuspidal constituent has generic local factors by Corollary 6.277, whose hypotheses include precisely this actual restricted tensor realization. Theorem 6.374 therefore makes its local test trace at \(v\in S\) equal to \(1\) if \(\Pi_v\simeq\pi_v\), and \(0\) otherwise, including non-tempered generic factors. A nonzero finite sum in (6.913) has a nonzero summand, and that summand has all the required local factors. \(\square\)
+
+The corollary assumes a nonzero trace and a compatible global central character. Theorem 6.404 constructs the auxiliary and trace for a given compatible global character and coprime-degree prescribed places; Theorem 6.401 also constructs the global character for one prescribed component. In particular a nonzero cuspidal Poincaré function from Lemma 6.278 alone does not imply that the operator formed with these discrete tests has nonzero trace. The present subsection concerns \(\mathbb F_q(t)\). Section 6.58 gives a nonzero trace construction over that field with explicit local hypotheses. Spectral finiteness and the required global comparisons for arbitrary global fields have separate arguments.
+
+
+### 6.58. A nonzero elliptic trace and prescribed discrete-series components
+
+Keep \(K=\mathbb F_q(t)\), \(G=\mathrm{GL}_n\), \(n\ge2\), and the given smooth unitary idele-class character \(\Omega\). Write \(\overline G=G(\mathbb A)/Z(\mathbb A)\). Local quotient Haar measures give the image of \(G(\mathcal O_v)\) volume one. A local test has inverse central covariance \(b(zg)=\Omega_v(z)^{-1}b(g)\). We call it **strongly cuspidal** if
+\[
+ \int_{N(K_v)}b(xny)\,dn=0
+ \quad\text{for every proper parabolic radical }N
+                    \text{ and every }x,y\in G(K_v).
+\tag{6.918}
+\]
+The theorem below constructs the nonzero trace needed in Corollary 6.383, under explicit hypotheses on the places and on one strongly cuspidal auxiliary test.
+
+**Lemma 6.384 — a constant-field torus and its compact global quotient.** Put \(E=\mathbb F_{q^n}(t)\) and \(T=\operatorname{Res}_{E/K}\mathbb G_m\), embedded in \(G\) by multiplication on \(E\). At a place of degree \(d\),
+\[
+ E\otimes_KK_v\simeq\prod_{i=1}^{g}E_{v,i},
+ \qquad g=\gcd(n,d),\qquad
+ [E_{v,i}:K_v]=n/g,
+\tag{6.919}
+\]
+with every factor unramified. The quotient
+\[
+ [\overline T]=T(K)Z(\mathbb A)\backslash T(\mathbb A)
+       =E^\times\mathbb A_K^\times\backslash\mathbb A_E^\times
+\tag{6.920}
+\]
+is compact, and its Haar volume \(V_T\) is finite and positive.
+
+**Proof.** The roots of \(X^{q^n}-X\) in an algebraic closure form a field of \(q^n\) elements: addition, multiplication and nonzero inversion preserve this set, and the derivative is \(-1\). Its multiplicative group is cyclic. Indeed a finite abelian subgroup of a field's multiplicative group has an element of order equal to its exponent: combine elements of maximal prime-power orders. If that exponent is \(m\), every group element is a root of \(X^m-1\), so the group has at most \(m\) elements and that element generates it. Choose a generator \(\theta\); its order \(q^n-1\) excludes every proper subfield, so its degree over \(\mathbb F_q\) is \(n\).
+
+The completion \(K_v\) has constant coefficient field \(\mathbb F_{q^d}\). For completeness, a residue element lifts uniquely to a root of \(X^{q^d}-X\): starting with a lift \(a\), replace it repeatedly by \(a^{q^d}\). The error is raised to the \(q^d\)-th power each time, so converges to zero. Two such lifts differing by positive valuation must coincide. Successive uniformizer digits then identify \(K_v\) with \(\mathbb F_{q^d}((\varpi_v))\). Frobenius to the power \(d\) permutes the \(n\) conjugates of \(\theta\) in \(g\) cycles of length \(n/g\). Factoring its separable polynomial by these cycles and adjoining the same constant roots proves (6.919).
+
+For an \(E\)-idele, multiply by the inverse of the rational function formed from the finite monic prime polynomials in \(\mathbb F_{q^n}[t]\), raised to its finite valuations. All finite components now have valuation zero. Remove the remaining infinity valuation by a \(K\)-idele supported at infinity, a power of \(t\). The quotient in (6.920) is therefore the image of the compact group \(\prod_\lambda\mathcal O_{E,\lambda}^\times\).
+
+It is Hausdorff. The image of \(T(\mathbb A)\) in \(\overline G\) is closed, since \(T(\mathbb A)\) is closed and contains \(Z(\mathbb A)\). Its intersection with the closed discrete subgroup \(G(K)/Z(K)\) of Theorem 6.379 is \(E^\times/K^\times\): a rational matrix in this torus commutes with multiplication by \(\theta\), whose rational centralizer is \(E^\times\). Thus the denominator in (6.920) is closed. A nonempty compact quotient group has finite positive Haar volume with the quotient measure. \(\square\)
+
+**Lemma 6.385 — an affine constant spectrum has no scalar symmetry.** Let \(h\in K\) be nonzero and nonconstant and put \(\gamma=1+h\theta\), acting on \(E\). It is invertible, separable regular, and generates \(E\). If
+\[
+ P_\gamma(X)=X^n+c_1X^{n-1}+\cdots+c_n,\qquad
+ I_\gamma=\{j\in\{1,\ldots,n\}:c_j\ne0\},
+\tag{6.921}
+\]
+then \(\gcd I_\gamma=1\). No nonidentity scalar over an algebraic closure preserves its spectrum. If a polynomial with coefficients in \(K\) is locally obtained by multiplying its roots by \(z\in K_v^\times\), then \(z\in K^\times\). The centralizer of the projective class of \(\gamma\), globally or locally, is exactly \(T/Z\).
+
+**Proof.** The element is nonzero in the field \(E\), and \(\theta=(\gamma-1)/h\). Its distinct roots are \(1+h\theta^{q^i}\). Put \(s=1/h\), transcendental over the algebraic closure of the constant field. Up to a common factor, these roots are \(s+a\) for distinct constants \(a\). Suppose a scalar \(z\ne1\) permutes them. Choose \(s+b\) mapped to \(s+a\), with \(a\ne b\), and let \(s+a\) be mapped to \(s+d\). Then
+\[
+ z=\frac{s+a}{s+b},\qquad (s+a)^2=(s+b)(s+d),
+ \qquad 2a=b+d,\quad a^2=bd.
+\tag{6.922}
+\]
+These equalities imply \((a-b)^2=0\), a contradiction in every characteristic.
+
+The index \(n\) belongs to \(I_\gamma\), since \(c_n\ne0\). If the characteristic divided all indices in \(I_\gamma\), every nonzero power of \(X\) in the polynomial would have that divisor, contradicting separability. Any other prime dividing all those indices would give a nontrivial root of unity that preserves the root set, contradicting (6.922). Hence their gcd is one. Choose integers \(a_j\) with \(\sum_{j\in I_\gamma}ja_j=1\). If the scaled polynomial has coefficients \(d_j\in K\), then
+\[
+ z^j=d_j/c_j\quad(j\in I_\gamma),\qquad
+ z=\prod_{j\in I_\gamma}(d_j/c_j)^{a_j}\in K^\times.
+\tag{6.923}
+\]
+Finally a projective centralizer could only conjugate \(\gamma\) to a scalar multiple having this same polynomial. Its scalar has \(z^j=1\) for all \(j\in I_\gamma\), hence is one by (6.923). The ordinary centralizer is \(E^\times\), and locally \((E\otimes_KK_v)^\times\), by the cyclic multiplication representation. Dividing by scalars proves the assertion. \(\square\)
+
+This argument includes a vanishing trace. Over \(\mathbb F_3\), take \(\theta^3-\theta-1=0\). Its polynomial has no \(\mathbb F_3\)-root and is irreducible. Then
+\[
+ P_{1+h\theta}(X)=X^3-h^2X+(-1+h^2-h^3),
+ \qquad I_{1+h\theta}=\{2,3\}.
+\tag{6.924}
+\]
+The constant coefficient is nonzero because \(h\) is nonconstant. If \(z^2,z^3\in K\), then \(z=z^3/z^2\in K\). In characteristic two, \(\theta^2+\theta+1=0\) instead gives \(X^2+hX+(1+h+h^2)\), with indices \(1,2\).
+
+<figure class="elliptic-scalar-separation-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="330" viewBox="0 0 744 330" role="img" aria-labelledby="elliptic-scalar-title elliptic-scalar-desc">
+<title id="elliptic-scalar-title">Scalar separation when the trace is zero</title>
+<desc id="elliptic-scalar-desc">Over F three, theta has polynomial X cubed minus X minus one, and gamma equals one plus h theta for a nonconstant rational h. Gamma has polynomial X cubed minus h squared X minus one plus h squared minus h cubed. Its trace is zero. The two nonzero coefficient indices are two and three. Local scalar proportionality therefore determines z squared and z cubed in K, and their quotient determines z in K. The general proof uses greatest common divisor one of all nonzero coefficient indices.</desc>
+<rect x="1" y="1" width="742" height="328" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<g fill="#17354d" font-family="sans-serif" font-size="18" text-anchor="middle"><text x="372" y="37">K = 𝔽₃(t); θ³ − θ − 1 = 0; γ = 1+hθ</text><text x="372" y="85">P<tspan baseline-shift="sub" font-size="13">γ</tspan>(X) = X³ − h²X + (−1+h²−h³)</text><text x="372" y="132">trace γ = 0; nonzero coefficient indices are 2 and 3</text><text x="372" y="186">a local proportionality scalar has z² ∈ K and z³ ∈ K</text><text x="372" y="233">z = z³/z² ∈ K; gcd(2,3) = 1</text><text x="372" y="290">no division by the rank; no extra scalar-permutation stabilizer</text></g>
+<rect x="24" y="158" width="696" height="94" rx="8" fill="none" stroke="#7395ae"/>
+</svg>
+<figcaption>Figure 64. Equation (6.924) is a separable degree-three example in characteristic three. Lemma 6.385 proves the scalar conclusion by all nonzero coefficient indices. Equation (6.922) excludes scalar symmetry over the algebraic closure; this determines the exact stabilizer used in the global unfolding.</figcaption>
+</figure>
+
+**Lemma 6.386 — nonzero near-identity orbitals of the local tests.** Let \(F\) be a nonarchimedean local field of positive characteristic, and use maximal-compact torus measure. On a sufficiently small elliptic regular neighbourhood of the identity with unramified degree-\(n\) centralizer, the compact discrete test of Theorem 6.374 satisfies
+\[
+ O_\gamma(f_\pi)=(-1)^{n-1}\frac{d_\pi}{d_{\mathrm{St}_n}}\ne0.
+\tag{6.925}
+\]
+If \(b\) satisfies (6.918) and \(b(1)\ne0\), then on such a sufficiently small neighbourhood,
+\[
+ O_\gamma(b)=\frac{(-1)^{n-1}}{d_{\mathrm{St}_n}}b(1)\ne0.
+\tag{6.926}
+\]
+
+**Proof.** Multiply the test by the indicator of \(v_F(\det g)=0\). This is a compact comparison test: on a compact set modulo the centre the determinant valuation bounds all central valuations, and the central units are compact. It agrees with the original test at the identity and on every conjugacy class sufficiently near the identity. The compact discrete test has identity value \(d_\pi\) and all other unipotent orbitals zero, by Theorem 6.120. The group germ formula of Corollary 6.95 and the zero-orbit germ of Theorem 6.135 give (6.925), as in Corollary 6.136.
+
+For \(b\), this annulus cut preserves (6.918), since the determinant of \(xny\) is independent of \(n\). Corollary 6.142 consequently makes every nonidentity unipotent orbital zero. The sole remaining germ coefficient is the identity value \(b(1)\). Theorem 6.135 gives (6.926). The ramification index of the specified torus is one, so its compact normalization and its elliptic quotient-volume-one normalization coincide. In both assertions one neighbourhood suffices for a finite collection of tests. These annulus cuts serve only to prove the orbital formulas; the original central-covariant factors are retained in the global test. \(\square\)
+
+**Lemma 6.387 — positive local orbital cuts and the unramified tail.** Let \(\gamma\) be as in Lemma 6.385. At any place \(v\), for the specified \(\Omega_v\), there is a smooth compact-mod-centre local test \(b_v\), supported arbitrarily close to the class of \(\gamma\) modulo the centre, with \(O_\gamma(b_v)>0\). It is bi-invariant under a sufficiently small compact open group. At almost every place the inverse-central-covariant maximal compact indicator has orbital integral one at \(\gamma\), with the present measures.
+
+**Proof: the local cut.** Choose a small compact open subgroup \(U\subset G(K_v)\), with \(\Omega_v\) trivial on \(Z(K_v)\cap U\), and define
+\[
+ b_v(z\gamma u)=\Omega_v(z)^{-1}\quad(z\in Z(K_v),\ u\in U),
+ \qquad b_v=0\text{ off }Z(K_v)\gamma U.
+\tag{6.927}
+\]
+The definition is consistent: two such expressions have their scalar quotient in \(Z\cap U\). It is smooth and compact modulo the centre, and is bi-invariant under any sufficiently small compact open subgroup of \(U\cap\gamma U\gamma^{-1}\).
+
+If a conjugate lies in this support, write \(x^{-1}\gamma x=z\gamma u\). Comparing its nonzero characteristic coefficients yields
+\[
+ z^j=\frac{c_j(\gamma)}{c_j(\gamma u)}\quad(j\in I_\gamma),
+ \qquad z=\prod_{j\in I_\gamma}
+       \left(\frac{c_j(\gamma)}{c_j(\gamma u)}\right)^{a_j}.
+\tag{6.928}
+\]
+For small \(U\) the denominators are nonzero and the ratios are arbitrarily near one. Thus \(z\) lies in the open kernel of \(\Omega_v\), after shrinking \(U\). The value in (6.927) is then one at every conjugate in its support. A neighbourhood of the identity in the conjugator quotient maps into \(\gamma U\), so its orbital integral is positive. It is finite by the compact orbital measure of Theorem 6.139 and Corollary 6.140: a fixed determinant-valuation cut is compact and agrees on this orbit. Equivalently Lemma 6.144 gives a compact set of supporting conjugators modulo the centralizer.
+
+**Proof: the tail value.** Except at finitely many places, \(\Omega_v\) is unramified, \(h\) is a unit, and \(\gamma\) has unit determinant and unit discriminant. Here \(A_v=\mathcal O_v[\gamma]=\mathcal O_v[\theta]\) is the full unramified etale order in \(E\otimes_KK_v\). The constant-field factorization and successive uniformizer digits in Lemma 6.384 identify it with the product of the integral rings of the unramified factors in (6.919). If \(x^{-1}\gamma x\in G(\mathcal O_v)\), the lattice \(x\mathcal O_v^n\) is \(A_v\)-stable. Invertibility of the determinant also puts \(\gamma^{-1}\) in \(A_v\) by its characteristic equation. Each factor lattice is a rank-one module over an unramified discrete valuation ring, hence a fractional ideal, by taking an element of least valuation. The centralizer acts transitively on all these lattices.
+
+Consequently the supporting conjugators form \(T(K_v)G(\mathcal O_v)\). The same conclusion holds if the conjugate is only a central multiple of a compact matrix: its unit determinant forces the scalar valuation to be zero. The test is one on all these conjugates, since the central character is trivial on units. Compact quotient integration gives
+\[
+ O_\gamma(1_{ZG(\mathcal O_v),\Omega_v^{-1}})
+ =\frac{\operatorname{vol}(G(\mathcal O_v))}
+         {\operatorname{vol}(T(K_v)\cap G(\mathcal O_v))}=1.
+\tag{6.929}
+\]
+Here the second compact group is \(A_v^\times\), both volumes are one, and the same ratio holds after dividing both groups by their common centre. \(\square\)
+
+**Lemma 6.388 — finitely many projective rational classes and one-place separation.** Let \(C_v\subset G(K_v)\) be compact, with \(C_v=G(\mathcal O_v)\) almost everywhere. Only finitely many rational regular semisimple conjugacy classes modulo \(K^\times\) have a conjugate in \(Z(K_v)C_v\) at every place. If one of them is the class of \(\gamma\) from Lemma 6.385, the others can all be excluded by a sufficiently small coefficient neighbourhood of that class at any one chosen place.
+
+**Proof: global finiteness.** If \(\eta\in G(K)\) meets these supports, write a local conjugate as \(a_vb_v\), with \(a_v\) scalar and \(b_v\in C_v\). The integers \(v(\det b_v)\) lie in fixed bounded intervals and are zero almost everywhere. At each finite place choose the integer \(r_v=v(a_v)\). Only finitely many are nonzero, since \(v(\det\eta)=nr_v+v(\det b_v)\). Put
+\[
+ z=\prod_{v\ne\infty}P_v^{r_v}\in K^\times,
+ \qquad\eta'=z^{-1}\eta.
+\tag{6.930}
+\]
+At all finite places the new scalar factor is a unit. Every coefficient of \(P_{\eta'}\) therefore has a fixed finite-place pole bound, determined only by the compact \(C_v\). Its determinant valuations at the finite places are bounded as well and zero outside a fixed finite set. The product formula
+\[
+ v_\infty(\det\eta')=-\sum_{v\ne\infty}(\deg v)v(\det\eta')
+\tag{6.931}
+\]
+thus bounds its infinity determinant valuation. Since this valuation is \(nv_\infty(a'_\infty)+v_\infty(\det b_\infty)\), the infinity scalar valuation is bounded. Compactness of \(C_\infty\) now bounds all its characteristic coefficients there too.
+
+There are only finitely many rational functions with these pole bounds: multiply by a fixed finite prime-polynomial denominator; the infinity bound then bounds the degree of the resulting polynomial over \(\mathbb F_q\). Thus there are only finitely many possible characteristic polynomials of \(\eta'\). A regular semisimple rational matrix is determined up to conjugacy by this polynomial. To check the assertion, its etale algebra is a product of fields, each occurring once on \(K^n\); choose a nonzero vector in each field factor and sum them. This is a cyclic vector, and its successive images give the companion matrix. This proves finiteness modulo rational scalars.
+
+**Proof: separation.** If another rational polynomial were locally proportional to \(P_\gamma\), equation (6.923) would make the proportionality scalar rational. It would then belong to the same class, a contradiction. Each excluded local proportionality set is closed near \(P_\gamma\) in the space of monic polynomials with nonzero constant coefficient. In fact, along a convergent sequence of such polynomials, the determinant coefficient bounds the valuation of their scaling parameter. These parameters lie in a compact annulus; a convergent subsequence would give the prohibited limiting proportionality. A small neighbourhood avoids the finitely many closed sets. Characteristic coefficients are conjugation invariant, so restricting the local support to this neighbourhood excludes the other classes everywhere on their orbits. \(\square\)
+
+<figure class="elliptic-projective-finiteness-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="330" viewBox="0 0 744 330" role="img" aria-labelledby="projective-finite-title projective-finite-desc">
+<title id="projective-finite-title">Rational scalar normalization gives finitely many polynomials</title>
+<desc id="projective-finite-desc">A local conjugate of eta belongs to a scalar times a fixed compact set at every place. A rational product of prime polynomials removes the finite scalar valuations. The remaining finite coefficient poles and determinant valuations are bounded. The product formula bounds the infinity determinant valuation, hence the infinity scalar valuation and all remaining coefficient poles. Multiplication by a fixed denominator leaves polynomials of bounded degree over a finite field. Only finitely many projective rational characteristic polynomials remain, and a local coefficient neighbourhood separates the chosen scalar-free gamma.</desc>
+<rect x="1" y="1" width="742" height="328" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<g fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle"><text x="372" y="34">local conjugate η = aᵥbᵥ; bᵥ in fixed compact Cᵥ</text><text x="372" y="80">z = ∏ Pᵥ<tspan baseline-shift="super" font-size="12">v(aᵥ)</tspan><tspan baseline-shift="baseline" font-size="17">; η′ = z⁻¹η has finite scalar valuations zero</tspan></text><text x="372" y="127">finite coefficient poles and finite determinant valuations are bounded</text><text x="372" y="174">product formula ⇒ infinity determinant and scalar valuations bounded</text><text x="372" y="220">fixed denominator + infinity bound ⇒ bounded polynomial degree</text><text x="372" y="266">finite coefficient field ⇒ finitely many projective rational classes</text><text x="372" y="309">one small local neighbourhood isolates the scalar-free class of γ</text></g>
+</svg>
+<figcaption>Figure 65. Equations (6.930)–(6.931) give the central normalization in Lemma 6.388. The local compact sets may depend on the test, but the bounds are uniform over all rational classes meeting those supports. Scalar separation is supplied by (6.923).</figcaption>
+</figure>
+
+**Lemma 6.389 — absolute unfolding of one elliptic rational class.** Let \(\gamma=1+h\theta\) as above, and let \(f=\prod_vf_v\) be a smooth compact-mod-centre inverse-\(\Omega\) test, with the usual compact indicators almost everywhere. Suppose every rational projective class meeting its support is conjugate to \(\gamma\). Use Haar measure on \(T(K_v)/Z(K_v)\) giving the image of its integral units volume one. Then its diagonal kernel is absolutely integrable and
+\[
+ \int_{G(K)Z(\mathbb A)\backslash G(\mathbb A)}K_f(x,x)\,dx
+      =V_T\prod_v O_\gamma(f_v).
+\tag{6.932}
+\]
+The corresponding integral with the absolute value of each rational summand is finite.
+
+**Proof.** Put \(\overline\Gamma=G(K)/Z(K)\) and \(\overline T=T(\mathbb A)/Z(\mathbb A)\). Lemma 6.385 identifies the exact rational stabilizer of the projective class with \(\overline\Gamma_\gamma=T(K)/Z(K)\). There is no extra finite scalar-permutation factor. The rational kernel on the diagonal is therefore the sum over \(\overline\Gamma_\gamma\backslash\overline\Gamma\). Apply Tonelli to the nonnegative summands before making any assertion about convergence. Quotient Haar unfolding and then quotient integration through \(\overline T\) give
+\[
+ \begin{aligned}
+ &\int_{\overline\Gamma\backslash\overline G}
+    \sum_{\delta\in\overline\Gamma_\gamma\backslash\overline\Gamma}
+       |f(x^{-1}\delta^{-1}\gamma\delta x)|\,dx\\
+ &\hspace{8mm}=\int_{\overline\Gamma_\gamma\backslash\overline G}
+                        |f(x^{-1}\gamma x)|\,dx
+   =V_T\int_{\overline T\backslash\overline G}
+                        |f(x^{-1}\gamma x)|\,dx.
+ \end{aligned}
+\tag{6.933}
+\]
+These equalities of nonnegative integrals hold even before finiteness. The second uses left \(\overline T\)-invariance of the integrand and the compact quotient (6.920).
+
+The last quotient is the restricted product of the local \(T(K_v)\backslash G(K_v)\), relative to the images of the maximal compact groups. Choose compact local representatives almost everywhere to prove surjectivity. If two adelic representatives have the same local cosets, their local torus quotients are integral at almost every place, so constitute a torus adele; this proves injectivity. At the good places of Lemma 6.387 the supporting conjugators are precisely \(T(K_v)G(\mathcal O_v)\), and their quotient has volume one. On product compact charts local quotient integration therefore gives the product quotient measure. Exhausting the finitely many remaining local quotients and applying Tonelli yields
+\[
+ \int_{\overline T\backslash\overline G}|f(x^{-1}\gamma x)|\,dx
+          =\prod_v\int_{T(K_v)\backslash G(K_v)}
+                                    |f_v(x_v^{-1}\gamma x_v)|\,dx_v<\infty.
+\tag{6.934}
+\]
+Each exceptional local integral is finite by compact regular orbital convergence; every tail factor is one by (6.929). Lemma 6.384 makes \(V_T\) finite. Thus (6.933) proves the required absolute summability. Removing the absolute values is now justified by Fubini and gives (6.932). Rational scalar choices in the kernel cause no phase: \(\Omega\) is trivial on \(K^\times\). \(\square\)
+
+**Theorem 6.390 — prescribed discrete-series factors from a nonzero elliptic trace.** Let \(S\) be a finite set of places such that \(\gcd(n,\deg v)=1\) for every \(v\in S\), and prescribe unitary discrete series \(\pi_v\) with central character \(\Omega_v\). Suppose a place \(w\notin S\), also of degree coprime to \(n\), admits a test \(b_w\) satisfying (6.918) with \(b_w(1)\ne0\). Then there is an irreducible cuspidal automorphic constituent \(\Pi\) of central character \(\Omega\) with \(\Pi_v\simeq\pi_v\) at every \(v\in S\). More precisely one can construct a test \(f\) with the prescribed discrete tests at \(S\), the given factor \(b_w\), and
+\[
+ 0\ne\operatorname{Tr}R(f)=V_T\prod_vO_\gamma(f_v)
+        =\sum_\Pi m(\Pi)\prod_v\operatorname{Tr}\Pi_v(f_v).
+\tag{6.935}
+\]
+
+**Proof: a common global elliptic element.** Use the constant field extension of Lemma 6.384. It is a field at all places of \(S\cup\{w\}\). Choose a nonzero nonconstant \(h\in K\) arbitrarily small at those places. Explicitly, let \(P\) be the product of the finite primes in this set, and choose a monic prime \(Q\) outside it. There are infinitely many such primes: a prime divisor of one plus the product of any finite list lies outside that list. The function \(P^A/Q^B\), with \(A\) large and \(B\deg Q-A\deg P\) sufficiently large, has all required finite zeros and an arbitrarily large infinity zero. It is nonconstant and nonzero. Thus \(\gamma=1+h\theta\) is as close to the identity as needed at these finitely many places. Lemma 6.386 gives nonzero orbitals at all of them.
+
+Choose an additional finite place \(w_2\notin S\cup\{w\}\), of degree coprime to \(n\). Such a place exists without an approximation theorem: take a prime integer \(\ell>n\), larger than all finitely excluded degrees. In \(\mathbb F_{q^\ell}\), every element outside \(\mathbb F_q\) has Frobenius orbit length \(\ell\), so there are \((q^\ell-q)/\ell>0\) monic irreducible polynomials of that degree. Take any corresponding place. Here \(\gamma\) is again elliptic.
+
+**Proof: local factors and one global class.** At \(w_2\), use Lemma 6.387 with support in the elliptic regular locus. This is an open condition in this instance: under \(X=1+hY\), the characteristic polynomial of \(\gamma\), divided by \(h^n\), reduces to the irreducible residue polynomial of \(\theta\). Sufficiently small perturbations retain this reduction and remain irreducible and separable. Central multiples preserve this property. At the other finitely many bad places use the positive cuts of Lemma 6.387; include all ramified-character places and the exceptions to its tail calculation. At every remaining place use the central-covariant maximal compact indicator. The initial product of \(\gamma\)-orbitals is nonzero.
+
+Compact representatives of these supports exist: on a projective matrix chart with one specified entry nonzero, divide every entry by that entry. Refining a compact support into finitely many compact open pieces in these charts gives compact lifts. These representatives satisfy Lemma 6.388. The \(w_2\)-condition makes every contributing rational matrix separable regular elliptic: its characteristic polynomial is irreducible over \(K_{w_2}\), hence over \(K\). Only finitely many projective rational classes can meet the initial supports. Shrink the cut at \(w_2\) inside the coefficient neighbourhood separating \(\gamma\) from all the others, as in Lemma 6.388. Formula (6.928) keeps its \(\gamma\)-orbital positive. No factor at \(S\cup\{w\}\) changes, and shrinking introduces no new class. Exactly one projective rational class can now contribute anywhere to the diagonal kernel.
+
+**Proof: the actual trace and extraction.** The product \(f\) is bi-\(J(D)\) for some principal level. Its \(w\)-factor satisfies (6.918), so Theorem 6.382 identifies its actual finite-rank operator trace with the diagonal kernel integral. Lemma 6.389 proves absolute unfolding for this test and gives the first equality in (6.935). Every factor is nonzero, and \(V_T>0\), so the trace is nonzero. The finite spectral identity is Theorem 6.381. Local genericity and the generic discrete-test identity of Theorem 6.374 now give the claimed constituent by Corollary 6.383. \(\square\)
+
+<figure class="elliptic-nonzero-unfolding-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="360" viewBox="0 0 744 360" role="img" aria-labelledby="elliptic-unfold-title elliptic-unfold-desc">
+<title id="elliptic-unfold-title">One rational class gives an absolutely unfolded nonzero trace</title>
+<desc id="elliptic-unfold-desc">The prescribed discrete tests and the strong auxiliary test have nonzero orbitals at one global gamma from the constant field extension. Positive local cuts give the other factors, and a small elliptic cut at w two leaves exactly one rational projective class. Tonelli unfolds its absolute rational sum into the finite positive compact torus volume times the product of local absolute orbitals. Each exceptional factor is finite and all tail factors are one. Removing absolute values then gives the nonzero trace and the finite cuspidal spectral extraction.</desc>
+<rect x="1" y="1" width="742" height="358" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<g fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle"><text x="372" y="34">E = 𝔽<tspan baseline-shift="sub" font-size="13">qⁿ</tspan><tspan baseline-shift="baseline" font-size="17">(t); γ = 1+hθ; every required local orbital is nonzero</tspan></text><text x="372" y="79">a small elliptic cut at w₂ leaves one rational projective class</text><text x="372" y="126">Tonelli: absolute rational sum = V<tspan baseline-shift="sub" font-size="12">T</tspan> × absolute global orbital</text><text x="372" y="173">0 &lt; V<tspan baseline-shift="sub" font-size="12">T</tspan> &lt; ∞; finitely many finite local factors; all tail factors 1</text><text x="372" y="223">absolute unfolding ⇒ Tr R(f) = V<tspan baseline-shift="sub" font-size="12">T</tspan> ∏ O<tspan baseline-shift="sub" font-size="12">γ</tspan><tspan baseline-shift="baseline" font-size="17">(fᵥ)</tspan> ≠ 0</text><text x="372" y="272">strong w-factor ⇒ finite cuspidal trace = finite spectral sum</text><text x="372" y="323">generic discrete tests at S ⇒ an actual Π with Πᵥ ≅ πᵥ</text></g>
+<path d="M24 195 H720" stroke="#7395ae"/>
+</svg>
+<figcaption>Figure 66. Equations (6.933)–(6.935) give the convergence, orbital product and spectral extraction in that order. The torus stabilizer is exact by Lemma 6.385. Theorem 6.390 assumes a compatible global central character, place degrees coprime to n, and the strong auxiliary test; the figure retains these hypotheses.</figcaption>
+</figure>
+
+**Corollary 6.391 — a given cuspidal local auxiliary supplies the strong test.** In Theorem 6.390 it suffices to have a unitary irreducible admissible cuspidal representation \(\rho_w\) of \(G(K_w)\) with central character \(\Omega_w\). For a nonzero smooth vector \(v\), one may take
+\[
+ b_w(g)=\overline{\langle\rho_w(g)v,v\rangle},
+ \qquad b_w(1)=\|v\|^2>0.
+\tag{6.936}
+\]
+
+**Proof.** Theorem 6.24 makes this coefficient compact modulo the centre, and it is smooth and inverse-\(\Omega_w\)-covariant. Its restriction to any translated unipotent group is compactly supported, because that unipotent group embeds properly in the group modulo the centre, as in Theorem 6.278. Its proper Jacquet modules vanish. In the coinvariant quotient, every smooth coefficient vector can consequently be written as a finite sum \(\sum_i(\rho(n_i)-1)v_i\). Integrate the resulting coefficients over the unipotent group. Each coefficient is compactly supported there, and translating its variable by \(n_i\) preserves Haar measure, so the two terms have equal integrals and their difference is zero. Left and right translates merely change the two vectors. Complex conjugation preserves the zero. This proves (6.918) and (6.936); Theorem 6.390 applies. \(\square\)
+
+Theorem 6.398 constructs a local cuspidal auxiliary with every prescribed smooth unitary central character. Lemma 6.400 and Proposition 6.402 give explicit global character constructions for one prescribed component, and Theorem 6.404 applies to a given compatible global character. Its coprime-degree restriction ensures that the one constant extension is elliptic at every prescribed and auxiliary place. For a single local field of positive characteristic its residue field can be the base constant field and its chosen place can have degree one. Theorems 6.401 and 6.403 give one-place globalization and prescribed Steinberg auxiliaries with the constructed character. Arbitrary place degrees, general global fields and the full representation transfers require further arguments. For a related global construction, see Badulescu, Section 5, in the free NUMDAM edition listed below.
+
+
+### 6.59. Regular congruence characters and actual cuspidal auxiliaries
+
+Let \(F\) be any nonarchimedean local field, with ring \(\mathcal O\), uniformizer \(\varpi\), and residue field \(k=\mathbb F_q\). In this subsection both characteristics are allowed. Fix \(n\ge2\) and put
+\[
+ G=\mathrm{GL}_n(F),\quad K_0=\mathrm{GL}_n(\mathcal O),\quad
+ K_m=1+\varpi^mM_n(\mathcal O)\ (m\ge1),\quad H=Z(F)K_0.
+\tag{6.937}
+\]
+Fix a congruence depth \(d\ge1\). We first construct a cuspidal representation from a residue-matrix character. Theorem 6.398 then matches any prescribed smooth unitary central character by choosing the finite central action before taking a character root.
+
+**Lemma 6.392 — a finite regular congruence type.** Choose \(B\in M_n(k)\) with irreducible degree-\(n\) characteristic polynomial and a nontrivial additive character \(\psi:k\to\mathbb C^\times\). The formula
+\[
+ \chi_B(1+\varpi^d X)=\psi(\operatorname{tr}(B\overline X))
+\tag{6.938}
+\]
+defines a character of \(K_d/K_{d+1}\). There is an irreducible unitary representation \(\tau\) of \(K_0/K_{d+1}\) whose restriction to \(K_d\) consists of the characters \(\chi_C\) for conjugates \(C\) of \(B\), with possible multiplicities. Any character \(\kappa\) of a finite scalar subgroup \(C_0\subset\mathcal O^\times\) with \(C_0\cap K_d=\{1\}\) can be prescribed as its central action. If \(F\) has positive characteristic and \(d=1\), \(\tau\) can be constructed with any specified character on the constant central subgroup \(k^\times\), and with
+\[
+ \dim\tau=\frac{|\mathrm{GL}_n(k)|}{q^n-1}
+       =q^{n(n-1)/2}\prod_{j=1}^{n-1}(q^j-1).
+\tag{6.939}
+\]
+
+**Proof: existence in either characteristic.** Multiplication modulo \(K_{d+1}\) adds the residue matrices, since \(2d\ge d+1\). Thus \(K_d/K_{d+1}\simeq(M_n(k),+)\) and (6.938) is a character. The matrix trace pairing is nondegenerate in every characteristic: \(\operatorname{tr}(CE_{ji})=C_{ij}\). Consequently the characters \(\chi_C\) are distinct as \(C\) varies. Indeed multiplication by a nonzero field element is surjective, so \(\psi(cx)=1\) for all \(x\) forces \(c=0\).
+
+Extend \(\chi_B\) to \(C_0K_d\) by \(ck\mapsto\kappa(c)\chi_B(k)\), or take \(C_0=\{1\}\). This is consistent because the intersection is trivial and \(C_0\) is central. It factors through \(C_0K_d/K_{d+1}\). Take a nonzero irreducible constituent of its induction to the finite group \(K_0/K_{d+1}\). Such constituents exist by averaging an inner product over the finite group and taking invariant orthogonal complements. The inducing space is nonzero: a function supported on the inducing subgroup and having value one at its identity is explicit. Finite Fourier idempotents split the restriction to the normal abelian subgroup \(K_d/K_{d+1}\). Conjugation permutes them through \(\mathrm{GL}_n(k)\). The induced space has precisely the conjugate characters of \(\chi_B\); its irreducible constituent must have a single nonempty orbit of them. Central elements of \(C_0\) act as \(\kappa\) on the whole induced space, so also on that constituent. A suitable \(B\) exists by Lemma 6.384, using multiplication by a degree-\(n\) element. This proves the assertions.
+
+**Proof: an explicit equal-characteristic type at depth one.** Now take \(d=1\). The coefficient field construction in Lemma 6.384 gives
+\[
+ K_0/K_2\simeq M_n(k)\rtimes\mathrm{GL}_n(k).
+\tag{6.940}
+\]
+Here a matrix factors as \((1+\varpi X)g\) with \(g\) constant. The stabilizer of \(\chi_B\) in \(\mathrm{GL}_n(k)\) is \(C=k[B]^\times\simeq\mathbb F_{q^n}^\times\): a commuting matrix is determined by its value on a cyclic vector and is a polynomial in \(B\). This group is cyclic. Any character of its scalar subgroup \(k^\times\) extends to it: if a generator has order \(N=q^n-1\), choose its complex \(N\)-th-root value to have the prescribed value on the generator's \(N/(q-1)\)-th power. Let \(\zeta\) be an extension of \(\kappa\). On \(M_n(k)\rtimes C\), the formula \((X,c)\mapsto\psi(\operatorname{tr}(BX))\zeta(c)\) is a character, since \(C\) centralizes \(B\).
+
+Induce that character to the group (6.940). Its restriction to \(M_n(k)\) has one line for every conjugate of \(B\), with no repetitions. Fourier projection isolates any one of these lines in a nonzero invariant submodule; the constant group acts transitively on all the lines. Thus the induced module is irreducible. Its dimension is the index \(|\mathrm{GL}_n(k)|/(q^n-1)\), and its constant scalar action is \(\kappa\). Counting independent columns gives \(|\mathrm{GL}_n(k)|=q^{n(n-1)/2}\prod_{j=1}^n(q^j-1)\), proving (6.939). No assertion about the remaining central units has been used. \(\square\)
+
+**Lemma 6.393 — intertwining is contained in \(H\).** Let \(\tau\) be any type from Lemma 6.392. If an element \(g\in G\) intertwines \(\tau\) with its conjugate on \(K_0\cap gK_0g^{-1}\), then \(g\in H\). More generally, no element outside \(H\) intertwines two \(K_d\)-character orbits of the indicated irreducible matrices.
+
+**Proof.** By the Cartan decomposition proved in Lemma 6.23, absorb the two \(K_0\)-factors into the two matrix-character orbits. Remove a common central power of \(\varpi\). The remaining element is
+\[
+ a=\operatorname{diag}(\varpi^{a_1},\ldots,\varpi^{a_n}),
+ \qquad a_1\ge\cdots\ge a_n=0.
+\tag{6.941}
+\]
+If it is noncentral, choose \(h\) with \(a_h>a_{h+1}\). For \(i\le h<j\) and \(x\in\mathcal O\),
+\[
+ \ell_{ji}(x)=1+\varpi^d xE_{ji}\in K_d\cap aK_da^{-1},\qquad
+ a^{-1}\ell_{ji}(x)a
+       =1+\varpi^{d+a_i-a_j}xE_{ji}\in K_{d+1}.
+\tag{6.942}
+\]
+Equality of the restrictions of \(\chi_{C_1}\) and \(\chi_{C_2}\circ\operatorname{Ad}(a^{-1})\) would therefore imply \(\psi(x(C_1)_{ij})=1\) for all residue \(x\). Every upper-right cross-block entry of \(C_1\) would be zero. Then \(C_1\) would preserve the proper subspace spanned by the last \(n-h\) coordinate vectors. Its irreducible characteristic polynomial excludes that possibility: \(k[C_1]\) is a degree-\(n\) field and \(k^n\) is its one-dimensional module.
+
+For an intertwiner of the finite-dimensional types, restrict it to \(K_d\cap gK_dg^{-1}\). Both representations there are sums of the restricted characters from Lemma 6.392. A nonzero intertwiner between two sums of one-dimensional characters requires equality of some pair of those characters; projection onto the source and target character spaces proves this directly. Equation (6.942) excludes every such pair outside \(H\). \(\square\)
+
+<figure class="regular-congruence-intertwining-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="330" viewBox="0 0 744 330" role="img" aria-labelledby="regular-type-title regular-type-desc">
+<title id="regular-type-title">A lower root detects an irreducible residue matrix</title>
+<desc id="regular-type-desc">Over F three, the multiplication matrix B has rows zero zero one, one zero one, zero one zero. Its characteristic polynomial is X cubed minus X minus one and its trace is zero. A positive Cartan gap makes the lower root one plus pi x E three one conjugate into K two. The original character evaluates it using B one three equal one, so is nontrivial. In general equality of all lower-root characters would force a zero upper-right block and an invariant proper coordinate subspace, contradicting irreducibility.</desc>
+<rect x="1" y="1" width="742" height="328" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<g fill="#17354d" font-family="sans-serif" font-size="18" text-anchor="middle"><text x="372" y="35">k = 𝔽₃; P<tspan baseline-shift="sub" font-size="12">B</tspan>(X) = X³ − X − 1; trace(B) = 0</text><text x="245" y="84">B =</text><text x="325" y="70">0</text><text x="365" y="70">0</text><text x="405" y="70">1</text><text x="325" y="96">1</text><text x="365" y="96">0</text><text x="405" y="96">1</text><text x="325" y="122">0</text><text x="365" y="122">1</text><text x="405" y="122">0</text><text x="372" y="167">a⁻¹(1+ϖxE₃₁)a ∈ K₂ when a₁−a₃ ≥ 1</text><text x="372" y="211">χ<tspan baseline-shift="sub" font-size="12">B</tspan>(1+ϖxE₃₁) = ψ(xB₁₃) = ψ(x), nontrivial</text><text x="372" y="259">intertwining would force an upper-right zero block</text><text x="372" y="306">a proper invariant subspace contradicts irreducibility of its characteristic polynomial</text></g>
+<path d="M303 49 H293 V135 H303 M427 49 H437 V135 H427" fill="none" stroke="#7395ae" stroke-width="2"/>
+</svg>
+<figcaption>Figure 67. Equations (6.938) and (6.942) give the character and root calculation; the displayed example has depth d=1. The matrix B is the companion multiplication matrix for the irreducible characteristic-three cubic. For any conjugate residue matrix the nonzero cross-block entry may be different; Lemma 6.393 uses the entire rectangle. No nonzero-trace hypothesis is needed.</figcaption>
+</figure>
+
+**Proposition 6.394 — a unitary compact induction with finite fixed spaces.** Let \(\omega_\tau\) be the scalar character of \(\mathcal O^\times\) on \(\tau\). Choose a smooth unitary extension \(\eta:F^\times\to\mathbb C^\times\), by assigning a unit-modulus value to \(\varpi\). Define
+\[
+ \tau_H(zk)=\eta(z)\tau(k),\qquad
+ V=\mathrm{c\!-!Ind}_{H}^{G}\tau_H.
+\tag{6.943}
+\]
+This is a nonzero unitary smooth module with central character \(\eta\). Its Hilbert completion \(\mathscr H\) has no additional smooth vectors. In particular it is admissible, with
+\[
+ \begin{gathered}
+ V^{K_m}=0\ (m\le d),\qquad V^{K_{d+1}}\simeq\tau,\\
+ \dim V^{K_m}\le(\dim\tau)(m-d)^{n-1}[K_0:K_m]
+                    \quad(m\ge d+1).
+ \end{gathered}
+\tag{6.944}
+\]
+
+**Proof: the space and norm.** Finite-dimensional Schur's lemma gives \(\omega_\tau\): an eigenspace of any central operator is invariant, so that operator is scalar. Since \(F^\times=\varpi^{\mathbb Z}\mathcal O^\times\), the extension \(\eta\) exists as stated. The definition of \(\tau_H\) is consistent on the intersection \(Z\cap K_0=\mathcal O^\times\). Realize \(V\) as functions satisfying \(f(hg)=\tau_H(h)f(g)\), with support on finitely many left \(H\)-cosets, acted on by right translation. A function supported on \(H\), with value \(v\ne0\) at the identity, proves nonvanishing. The norm
+\[
+ \|f\|^2=\sum_{x\in H\backslash G}\|f(x)\|_\tau^2
+\tag{6.945}
+\]
+is independent of the representatives, since \(\tau_H\) is unitary. Right translation permutes the cosets and preserves this norm. Finite-coset functions are smooth: intersect the finitely many conjugates of the open kernels fixing their fibre values. Their completion is the corresponding square-summable fibre space; unitarity and density make the action strongly continuous.
+
+**Proof: the fixed-space bound.** A \(K_m\)-fixed function on \(HgK_m\) has its value in \(\tau_H^{H\cap gK_mg^{-1}}\). After left \(H\) and central reduction write \(g=ak\), with \(a\) as in (6.941) and \(k\in K_0\). Normality of \(K_m\) in \(K_0\) removes \(k\) from this intersection. If a gap \(a_h-a_{h+1}\ge m-d\), every lower rectangle element \(\ell_{ji}(x)\), \(i\le h<j\), belongs to \(H\cap aK_ma^{-1}\), since
+\[
+                 d+a_i-a_j\ge m.
+\tag{6.946}
+\]
+Decompose a fixed fibre vector by the \(K_d/K_{d+1}\) Fourier idempotents. They commute with these rectangle elements, so each nonzero component would have a character \(\chi_C\) trivial on the rectangle. As in (6.942), this forces a proper invariant subspace for \(C\), impossible. Thus for \(m\ge d+1\) each adjacent gap belongs to \(\{0,\ldots,m-d-1\}\). There are \((m-d)^{n-1}\) normalized profiles and at most \([K_0:K_m]\) choices of \(k\) for each. Each fibre has dimension at most \(\dim\tau\). For \(m\le d\) any cut satisfies (6.946), so no profile contributes. For \(m=d+1\) only the zero profile remains: its support is \(H\), and its fibre is exactly \(\tau\), since \(K_{d+1}\) acts trivially. This proves (6.944).
+
+The same fibre argument applies to every Hilbert fixed function, excluding all but these finitely many cosets. It is therefore a finite-coset function. Hence \(\mathscr H^{K_m}=V^{K_m}\), and every smooth Hilbert vector lies in \(V\). Every compact open subgroup contains some \(K_m\), proving admissibility at all levels. \(\square\)
+
+**Theorem 6.395 — irreducibility and compact coefficients.** The module \(V\) and its unitary completion \(\mathscr H\) in Proposition 6.394 are irreducible. Every coefficient of two smooth vectors is compactly supported modulo \(Z\).
+
+**Proof.** A \(G\)-endomorphism \(A\) of \(V\) is determined by its action on the \(H\)-type supported on \(H\), which generates \(V\) by translates. Evaluation at \(g\) of this action gives a linear map between the two fibre spaces intertwining \(\tau_H\) and its conjugate on their subgroup intersection. Lemma 6.393 makes that map zero outside \(H\). The image of the generating type is thus supported on \(H\), where its value is an \(H\)-endomorphism of \(\tau_H\), hence a scalar. It follows that
+\[
+                         \operatorname{End}_G(V)=\mathbb C.
+\tag{6.947}
+\]
+To pass from this algebraic assertion to irreducibility, let \(Q\) be the orthogonal projection onto a closed invariant subspace of \(\mathscr H\). It commutes with the unitary group action and preserves every compact fixed space. Proposition 6.394 therefore makes it preserve \(V\). Equation (6.947) makes it a scalar projection, zero or one. Thus \(\mathscr H\) is irreducible. If \(M\subset V\) is a nonzero smooth submodule, its Hilbert closure is all of \(\mathscr H\). For any compact open \(J\), averaging sends \(M\) into \(M\): the average is a finite sum on each smooth vector. The subspace \(e_JM\) is dense in the finite-dimensional \(\mathscr H^J=V^J\), hence equals it. Taking all \(J\) gives \(M=V\).
+
+Finally, if two finite-coset functions have supports represented by finite sets \(S_1,S_2\), their coefficient at \(g\) can be nonzero only if \(xg\in Hy\) for some \(x\in S_2,y\in S_1\). Its support is contained in the finite union \(\bigcup_{x,y}x^{-1}Hy\), compact modulo the centre because \(H/Z\) is compact. Proposition 6.394 identifies these finite-coset vectors with all smooth vectors, proving the last assertion. \(\square\)
+
+**Theorem 6.396 — cuspidal existence in every rank and both characteristics.** The representation just constructed is cuspidal. It therefore gives an actual strongly cuspidal compact-mod-centre test with positive identity value. With \(\operatorname{vol}(K_0Z/Z)=1\), its formal degree is
+\[
+                              d_\rho=\dim\tau.
+\tag{6.948}
+\]
+The representation retains the prescribed action on any separated finite central subgroup \(C_0\). In positive characteristic at depth one this includes any character of the constant scalars \(k^\times\), as in Lemma 6.392.
+
+**Proof.** The complete compactness criterion, Theorem 6.24, applies after the actual unitarity, irreducibility, admissibility and compact coefficients just proved, and gives zero for all proper Jacquet modules. The stable-image proof is also direct. If a proper Jacquet module were nonzero, Lemma 6.22 would give a principal level whose compressed contracting operator \(T_a\) has nonzero stable image. Lemma 6.23 gives \(T_{a^r}=T_a^r\). All its matrix entries on the finite fixed space eventually vanish by compact coefficient support, since \(a^r\) escapes modulo the centre. A finite basis would make \(T_a^r=0\) for all sufficiently large \(r\), contradicting that stable image. Thus there is no assumption of cuspidal existence in this construction. Corollary 6.391 now gives the strong coefficient test with positive identity value.
+
+For the formal degree choose a unit fibre vector and the induced function supported on \(H\). Its norm is one by (6.945); its coefficient is supported on \(H\) and equals the corresponding \(\tau\)-coefficient there. Averaging its rank-one operator over \(K_0\) gives a scalar operator on the irreducible \(\tau\), with trace one, hence scalar \(1/\dim\tau\). Therefore the squared coefficient integral over \(H/Z\) is \(1/\dim\tau\). Passing from \(K_0\) to this quotient does not change that integral: the absolute squared coefficient is constant on its central-unit fibres, and both compact measures have mass one. The actual Schur coefficient formula of Section 6.5 yields (6.948). \(\square\)
+
+<figure class="regular-type-unitary-closure-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="330" viewBox="0 0 744 330" role="img" aria-labelledby="regular-closure-title regular-closure-desc">
+<title id="regular-closure-title">Finite fixed spaces close the irreducibility argument</title>
+<desc id="regular-closure-desc">The nonintertwining calculation makes the compact induction endomorphism algebra scalar. The explicit Cartan bound shows that every compact fixed space in the Hilbert completion is already in the smooth induction. A closed invariant Hilbert projection thus restricts to a scalar smooth endomorphism and is zero or one. Averaging a dense smooth submodule onto finite fixed spaces then proves smooth irreducibility. Compact coefficients and the stable Jacquet criterion prove cuspidality. In the rank-two F two example, the K one fixed space is zero and the K two fixed space has dimension two.</desc>
+<rect x="1" y="1" width="742" height="328" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<g fill="#17354d" font-family="sans-serif" font-size="18" text-anchor="middle"><text x="372" y="36">intertwining outside ZK₀ is zero ⇒ End<tspan baseline-shift="sub" font-size="12">G</tspan>(V) = ℂ</text><text x="372" y="83">bounded Cartan gaps ⇒ ℋ^J = V^J is finite-dimensional</text><text x="372" y="130">a closed invariant Hilbert projection preserves V</text><text x="372" y="177">scalar projection ⇒ unitary irreducibility</text><text x="372" y="224">finite compact averages ⇒ smooth irreducibility</text><text x="372" y="269">compact coefficients + stable Jacquet map ⇒ cuspidality</text><text x="372" y="312">n=2, q=2 example: dim V^K₁=0; dim V^K₂=2; dρ=2</text></g>
+</svg>
+<figcaption>Figure 68. Propositions and Theorems 6.394–6.396 prove the implications in order. The fixed-space bound (6.944) is needed to pass from smooth endomorphisms to Hilbert projections. Solution 7.47 gives the exact two-dimensional residue type and its formal degree; equation (6.948) is the general formula.</figcaption>
+</figure>
+
+**Lemma 6.397 — the exact obstruction to a smooth character root.** A smooth unitary character \(\theta:F^\times\to\mathbb C^\times\) has a smooth unitary \(n\)-th root if and only if
+\[
+ \theta|_{\mu_n(F)}=1,\qquad
+ \mu_n(F)=\{z\in F^\times:z^n=1\}.
+\tag{6.949}
+\]
+
+**Proof.** Necessity follows from \(\beta(z)^n=\beta(z^n)=1\). For sufficiency put \(U=\mathcal O^\times\). The continuous power map on this compact group induces a homeomorphism \(U/\mu_n(F)\to U^n\), since it is a continuous bijection from a compact space to a Hausdorff space. Therefore
+\[
+                       a(u^n)=\theta(u)
+\tag{6.950}
+\]
+is a well-defined continuous character of the closed subgroup \(U^n\). Its image is finite, since \(\theta\) has an open kernel on the compact group \(U\). Its kernel is consequently relatively open. Choose a principal subgroup \(U_N=1+\varpi^N\mathcal O\) such that
+\[
+ U_N\cap U^n\subset\ker a,\qquad
+ a:\ U^nU_N/U_N\longrightarrow\mathbb C^\times.
+\tag{6.951}
+\]
+The group on the left is a subgroup of the finite abelian group \(U/U_N\).
+
+Every unitary character of a subgroup of a finite abelian group extends to that group. To prove this, adjoin an element \(x\) whose order modulo the subgroup is \(r\). Choose a unitary \(r\)-th root of the existing value at \(x^r\), and assign it to \(x\). The relation \(x^r\) makes the definition consistent; commutativity makes it multiplicative. Repeating finitely many times proves the assertion. Extend (6.951) in this way and inflate to a smooth unitary character \(\beta_U\) of \(U\). Then \(\beta_U(u)^n=a(u^n)=\theta(u)\). Finally choose \(\beta(\varpi)\) to be any unitary \(n\)-th root of \(\theta(\varpi)\) and use \(F^\times=\varpi^{\mathbb Z}U\). This extends \(\beta_U\) and proves the lemma in both characteristics. \(\square\)
+
+**Theorem 6.398 — a cuspidal auxiliary with any prescribed central character.** For every smooth unitary \(\eta:F^\times\to\mathbb C^\times\), there exists an irreducible admissible unitary cuspidal representation \(\rho_\eta\) of \(\mathrm{GL}_n(F)\) with central character exactly \(\eta\). Its nonzero diagonal coefficient supplies a strongly cuspidal inverse-central-covariant test. There is no restriction on the field characteristic or on its residue characteristic dividing \(n\).
+
+**Proof.** The group \(C_0=\mu_n(F)\) is finite, since it is a set of roots of a degree-\(n\) polynomial, and all its elements are units. Choose \(d\ge1\) large enough to separate its finitely many nonidentity elements from the identity:
+\[
+ C_0\cap(1+\varpi^d\mathcal O)=\{1\},\qquad
+                          \kappa=\eta|_{C_0}.
+\tag{6.952}
+\]
+Lemma 6.392 constructs the corresponding finite type with this central \(C_0\)-action. Theorems 6.395–6.396 give its actual cuspidal compact induction \(\rho\), whose central character \(\omega\) agrees with \(\eta\) on \(C_0\). Thus \(\eta/\omega\) satisfies Lemma 6.397. Choose \(\beta\) there and put
+\[
+ \beta^n=\eta/\omega,\qquad
+ \rho_\eta=\rho\otimes(\beta\circ\det),\qquad
+                         \omega_{\rho_\eta}=\eta.
+\tag{6.953}
+\]
+This is a unitary character twist, so preserves irreducibility. Its smooth vector space is the same: intersect any open stabilizer with the open kernel of \(\beta\circ\det\). Fixed spaces are finite by the same intersection argument. Its Jacquet modules are the original zero modules with a twist, since the determinant is one on every radical. Thus it is admissible and cuspidal. Corollary 6.391 gives the claimed test. The absolute values of its coefficients, and hence its formal degree, are unchanged by the twist.
+
+In positive characteristic one may alternatively use depth one and prescribe \(\kappa=\eta|_{k^\times}\) in the explicit type (6.939). All finite-order units are constant: if \(x\ne0\) has positive valuation and \(m\) is prime to the characteristic \(p\), then the first term of \((1+x)^m-1\) has valuation \(v(x)\); raising it to a \(p\)-power cannot make it zero. Thus principal units have no nonidentity torsion, and \(\mu_n(F)\subset k^\times\). The same root argument therefore applies to this explicit type as well. \(\square\)
+
+<figure class="regular-central-root-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="330" viewBox="0 0 744 330" role="img" aria-labelledby="regular-root-title regular-root-desc">
+<title id="regular-root-title">Central torsion is matched before taking a character root</title>
+<desc id="regular-root-desc">The ratio eta over omega has a smooth nth root exactly when it is trivial on the local nth roots of unity. A sufficiently deep finite congruence type first matches eta on that finite central subgroup. A finite abelian character extension then supplies the root and a determinant twist gives exact centre eta. In F two Laurent series with n two, the units modulo U three form the cyclic group of order four generated by one plus u. Assigning i to that generator gives a character whose square takes value minus one there. In Q two the finite subgroup plus or minus one must first be matched.</desc>
+<rect x="1" y="1" width="742" height="328" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<g fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle"><text x="372" y="36">finite C₀ = μₙ(F); choose depth d with C₀ ∩ K<tspan baseline-shift="sub" font-size="12">d</tspan> = {1}</text><text x="372" y="82">prescribe the C₀-action in τ ⇒ ω agrees with η on C₀</text><text x="372" y="128">θ = η/ω is trivial on μₙ(F) ⇒ a smooth unitary β with βⁿ = θ</text><text x="372" y="175">ρ ⊗ (β ∘ det) has central character exactly η</text><text x="372" y="226">𝔽₂((u)), n=2: U₁/U₃ = C₄; β(1+u)=i</text><text x="372" y="268">β²(1+u)=−1; β²(1+u²)=1</text><text x="372" y="311">ℚ₂, n=2: first prescribe the action on μ₂={1,−1}</text></g>
+</svg>
+<figcaption>Figure 69. The obstruction and finite extension are Lemma 6.397; Theorem 6.398 enforces it before twisting. The characteristic-two example uses a ramified unit character, with its complete calculation in Solution 7.47. An unramified twist alone cannot change a central unit character.</figcaption>
+</figure>
+
+For the related finite-ring regular representations and trace-character parametrization, see Stasinski–Stevens, Section 3, in the free preprint listed below. The finite types, intertwining, fixed spaces, irreducibility, cuspidality and character extension used in this subsection have their proofs above.
+
+
+### 6.60. An explicit global character and one-place globalization
+
+Return to \(K=\mathbb F_q(t)\), with the rational places \(0\) and \(\infty\), and \(u=t^{-1}\) at infinity. The auxiliary representation and the global central character in the following theorems are constructed together. The prescribed local component at \(0\) is fixed throughout.
+
+**Lemma 6.399 — the idele-class group in explicit coordinates.** Put \(\mathcal U=\prod_v\mathcal O_v^\times\), and let \(\epsilon_\infty\) be the idele with component \(u\) at infinity and one elsewhere. For an idele \(x\), define
+\[
+ \begin{gathered}
+ r_x=\prod_{v\ne\infty}P_v^{v(x_v)},\qquad
+ d(x)=\sum_v(\deg v)v(x_v),\\
+ \mathbf u_x=xr_x^{-1}\epsilon_\infty^{-d(x)}\in\mathcal U.
+ \end{gathered}
+\tag{6.954}
+\]
+The degree and unit coordinates give an isomorphism of topological groups
+\[
+ K^\times\backslash\mathbb A_K^\times
+       \simeq\mathbb Z\times(\mathcal U/\mathbb F_q^\times),
+ \qquad [x]\longmapsto(d(x),[\mathbf u_x]).
+\tag{6.955}
+\]
+
+**Proof.** Only finitely many finite valuations are nonzero, so the product is a rational function. Its infinity valuation is \(-\sum_{v\ne\infty}(\deg v)v(x_v)\). Thus division by \(r_x\) makes every finite component a unit and leaves infinity valuation \(d(x)\); division by \(\epsilon_\infty^{d(x)}\) makes that one a unit too. A rational function \(f\) equals a constant times its monic finite prime-polynomial product. The same degree computation proves \(d(f)=0\) and shows that multiplying \(x\) by \(f\) changes \(\mathbf u_x\) only by a common constant. This proves that the map is well defined and a homomorphism.
+
+Conversely \((m,[\mathbf v])\) is represented by \(\epsilon_\infty^m\mathbf v\). If this is rational, its finite valuations are zero, so the rational function is a constant times a polynomial unit, hence a constant; its infinity valuation then gives \(m=0\), and its units are the same constant. This proves injectivity as well as surjectivity. For topology, the finite valuations and degree are locally constant. On each fixed valuation chart all operations in (6.954) are continuous. The inverse is induced by the continuous map \((m,\mathbf v)\mapsto\epsilon_\infty^m\mathbf v\). Passing to the constant quotient proves (6.955). \(\square\)
+
+**Lemma 6.400 — matching one local character and the units of an auxiliary.** Let \(\chi_0:K_0^\times\to\mathbb C^\times\) be smooth unitary, where here \(K_0=\mathbb F_q((t))\) denotes the field at \(0\). Let \(\xi_\infty\) be any smooth unitary character of \(\mathcal O_\infty^\times\). There exists a smooth unitary idele-class character \(\Omega\) with
+\[
+ \Omega_0=\chi_0,\qquad
+ \Omega_\infty|_{\mathcal O_\infty^\times}=\xi_\infty,
+ \qquad\Omega_\infty(u)=\chi_0(t).
+\tag{6.956}
+\]
+It is unramified at all finite places except possibly \(0\) and \(1\).
+
+**Proof.** Put \(\xi_0=\chi_0|_{\mathcal O_0^\times}\), and at the rational place \(1\), defined by \(t-1\), let \(\xi_1\) be the residue character whose restriction to \(\mathbb F_q^\times\) is \((\xi_0\xi_\infty)^{-1}\). This is simply a character of that residue field's multiplicative group; no extension to a larger residue field is needed. The product of these three unit characters is trivial on the diagonal constants. With \(\lambda=\chi_0(t)\), define
+\[
+ \Omega(x)=\lambda^{d(x)}
+       \xi_0((\mathbf u_x)_0)
+       \xi_1((\mathbf u_x)_1)
+       \xi_\infty((\mathbf u_x)_\infty).
+\tag{6.957}
+\]
+Lemma 6.399 makes this a well-defined idele-class character. It is unitary and smooth: the unit characters have open kernels, only three factors occur, and the degree is discrete.
+
+An idele given by a local unit at \(0\) has degree zero and \(r_x=1\), so (6.957) restricts to \(\chi_0\) on those units. For the idele \(t_0\), with component \(t\) only at \(0\), its degree is one and \(r_{t_0}=t\). The normalized units at \(0\) and infinity are one; at \(1\) the unit is \(t^{-1}\), whose residue is one. Hence
+\[
+        \Omega_0(t)=\lambda=\chi_0(t),\qquad
+        \Omega_\infty(u)=\lambda.
+\tag{6.958}
+\]
+The first equality and the unit equality determine \(\Omega_0\) on the entire local field. At infinity, (6.957) restricts on units to \(\xi_\infty\), and the idele \(\epsilon_\infty\) has degree one and normalized units one. This proves (6.956). The remaining finite unit restrictions are trivial. \(\square\)
+
+**Theorem 6.401 — one-place discrete-series globalization in positive characteristic.** Every unitary discrete series \(\pi_0\) of \(\mathrm{GL}_n(\mathbb F_q((t)))\), \(n\ge2\), is the local component at \(0\) of an irreducible cuspidal automorphic constituent over \(\mathbb F_q(t)\). Its global unitary central character can be chosen as part of the construction. Extra ramification at other finite places is allowed.
+
+**Proof.** Let \(\chi_0\) be the central character of \(\pi_0\). Theorem 6.396 constructs an actual unitary irreducible admissible cuspidal representation \(\rho_\infty\) over \(\mathbb F_q((u))\). Denote its central character by \(\omega_\infty\), and apply Lemma 6.400 with its unit restriction as \(\xi_\infty\). This constructs a global \(\Omega\) agreeing with \(\chi_0\) at \(0\).
+
+Choose an unramified unitary local character \(\alpha\) at infinity with
+\[
+                 \alpha(u)^n=\frac{\Omega_\infty(u)}{\omega_\infty(u)}.
+\tag{6.959}
+\]
+Such a character exists by choosing any unit-modulus complex \(n\)-th root of the displayed phase as its value on \(u\), and taking its value on units to be one. Then
+\[
+             \rho'_\infty=\rho_\infty\otimes(\alpha\circ\det)
+\tag{6.960}
+\]
+has central character exactly \(\Omega_\infty\). It retains unitarity and irreducibility; its fixed spaces and compact coefficient support are unchanged at sufficiently small principal levels, and its proper Jacquet modules are the same zero modules with a character twist. Thus it is an actual cuspidal auxiliary. Its diagonal coefficient supplies the strong test by Corollary 6.391.
+
+Apply Theorem 6.390 with \(S=\{0\}\), auxiliary place infinity, and this given global character \(\Omega\). Both places have degree one, hence coprime to \(n\). That theorem constructs a nonzero actual trace and a cuspidal constituent \(\Pi\) with \(\Pi_0\simeq\pi_0\). Every existence input in this application has now been constructed. \(\square\)
+
+For any nonarchimedean local field of positive characteristic, its residue field lifts by the root and uniformizer-digit argument in Lemma 6.384, identifying the field with \(\mathbb F_q((\varpi))\). The theorem therefore applies to every such local field after choosing these base constants. For \(n=1\), Lemma 6.400 itself gives the prescribed local character; its one-dimensional automorphic space has no proper constant terms. Neither assertion prescribes an arbitrary previously fixed global central character.
+
+**Proposition 6.402 — a character unramified at every other finite place.** In Theorem 6.401 one can construct \(\Omega\) and its actual cuspidal auxiliary so that
+\[
+ \Omega_0=\chi_0,\qquad
+ \Omega_v|_{\mathcal O_v^\times}=1
+                     \quad(v\ne0,\infty).
+\tag{6.961}
+\]
+
+**Proof.** In the explicit equal-characteristic construction of Lemma 6.392 at infinity, choose the constant central character
+\[
+                 \kappa=(\chi_0|_{\mathbb F_q^\times})^{-1}.
+\tag{6.962}
+\]
+The resulting \(\rho_\infty\) has unit character \(\xi_\infty\) whose constant restriction is \(\kappa\). Thus \(\xi_0\xi_\infty\) is already trivial on diagonal constants. In (6.957) take \(\xi_1=1\), leaving
+\[
+ \Omega(x)=\chi_0(t)^{d(x)}
+       \xi_0((\mathbf u_x)_0)\xi_\infty((\mathbf u_x)_\infty).
+\tag{6.963}
+\]
+The same unit and uniformizer computations prove \(\Omega_0=\chi_0\). Every other finite unit character is trivial, proving (6.961). Finally the unramified twist (6.959) matches the infinity uniformizer phase while retaining its unit character and all cuspidal properties. This constructs the required auxiliary for this \(\Omega\). It makes no assertion about arbitrary preassigned characters on principal central units. \(\square\)
+
+**Theorem 6.403 — prescribed Steinberg factors at finitely many auxiliary places.** Let \(\pi_0\) be as in Theorem 6.401. Let \(A\) be any finite set of finite places different from \(0\), with \(\gcd(n,\deg v)=1\) for each \(v\in A\). There are a global unitary central character \(\Omega\), unramified at all finite places except possibly \(0\), unramified unitary characters \(\beta_v\) at \(v\in A\), and an irreducible cuspidal automorphic constituent \(\Pi\) such that
+\[
+ \begin{gathered}
+ \Pi_0\simeq\pi_0,\qquad
+ \Pi_v\simeq\mathrm{St}_n\otimes(\beta_v\circ\det)\quad(v\in A),\\
+ \beta_v^n=\Omega_v,\qquad\omega_\Pi=\Omega.
+ \end{gathered}
+\tag{6.964}
+\]
+
+**Proof.** Construct \(\Omega\) and the actual infinity auxiliary by Proposition 6.402. For each \(v\in A\), choose \(\beta_v\) trivial on units, with \(\beta_v(\varpi_v)\) any complex unitary \(n\)-th root of \(\Omega_v(\varpi_v)\). Its \(n\)-th power equals \(\Omega_v\) on both units and the uniformizer, hence on the whole field. The centred Steinberg construction of Theorem 6.367 gives the actual unitary discrete series in (6.964); its central character is \(\beta_v^n\). Apply Theorem 6.390 with prescribed set \(\{0\}\cup A\) and auxiliary place infinity. All its degree and character hypotheses hold, and the actual strongly cuspidal test is supplied by the constructed \(\rho'_\infty\). The resulting nonzero trace gives \(\Pi\) and (6.964). \(\square\)
+
+<figure class="regular-global-character-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="360" viewBox="0 0 744 360" role="img" aria-labelledby="regular-global-title regular-global-desc">
+<title id="regular-global-title">The central character and cuspidal auxiliary are constructed together</title>
+<desc id="regular-global-desc">The prescribed local central character chi zero determines the inverse constant character kappa for the actual regular congruence type at infinity. Its cuspidal compact induction has unit character xi infinity. Explicit idele normalization combines chi zero and xi infinity into a global Omega matching chi zero at zero and unramified at all other finite places. An unramified twist at infinity matches its remaining uniformizer phase. At the finite places in A, only unramified nth roots are needed for the Steinberg twists. The nonzero trace theorem then produces the desired global constituent with pi zero and those Steinberg factors.</desc>
+<rect x="1" y="1" width="742" height="358" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<g fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle"><text x="372" y="35">prescribed χ₀ on 𝔽<tspan baseline-shift="sub" font-size="12">q</tspan>((t))× ⇒ κ = (χ₀ on 𝔽q×)⁻¹</text><text x="372" y="81">finite regular type with constant character κ ⇒ actual cusp ρ∞</text><text x="372" y="127">idele coordinates ⇒ Ω₀ = χ₀; Ωᵥ unramified for finite v≠0</text><text x="372" y="173">an unramified α at ∞ matches the remaining uniformizer phase</text><text x="372" y="221">at v ∈ A choose unramified βᵥ with βᵥⁿ = Ωᵥ</text><text x="372" y="269">the nonzero trace theorem applies with S = {0} ∪ A, w = ∞</text><text x="372" y="322">actual Π₀ ≅ π₀ and Πᵥ ≅ Stₙ ⊗ (βᵥ ∘ det), v ∈ A</text></g>
+<path d="M24 196 H720" stroke="#7395ae"/>
+</svg>
+<figcaption>Figure 70. Equations (6.959)–(6.964) give the character matching and prescribed factors. Both Ω and the cusp auxiliary are constructed; only the given π₀ is fixed in advance. The places in A have degrees coprime to n. The roots used are unramified character phases, so no divisibility assertion about ramified unit characters is required.</figcaption>
+</figure>
+
+**Theorem 6.404 — a given global character and prescribed coprime-degree components.** Let \(\Omega\) be any given smooth unitary idele-class character of \(\mathbb F_q(t)\). Let \(S\) be finite with \(\gcd(n,\deg v)=1\) for every \(v\in S\), and let \(\pi_v\) be unitary discrete series with central character \(\Omega_v\). There exists an irreducible cuspidal automorphic constituent \(\Pi\) with
+\[
+                  \omega_\Pi=\Omega,\qquad
+                  \Pi_v\simeq\pi_v\quad(v\in S).
+\tag{6.965}
+\]
+
+**Proof.** Choose a place \(w\notin S\) of degree coprime to \(n\), for example a prime degree larger than \(n\) and all excluded degrees, using the finite-field count in Theorem 6.390. Apply Theorem 6.398 to the actual field \(K_w\) and the character \(\eta=\Omega_w\). This constructs a unitary irreducible admissible cuspidal representation of exactly that central character. Its diagonal coefficient is the required strongly cuspidal test with positive identity value by Corollary 6.391. All hypotheses of Theorem 6.390 now hold for the given \(\Omega\) and prescribed set \(S\); its actual nonzero trace produces (6.965). \(\square\)
+
+Theorems 6.401, 6.403 and 6.404 allow further ramification from the nonzero-trace construction; they do not assert that the resulting constituent is unramified at every place outside the prescribed set. Arbitrary place degrees and general global fields have separate arguments. Tuples without a compatible global central character are not supplied with one by Theorem 6.404. The general split/inner trace comparison, its outside-place finite fibre, individual integral representation transfer and the full number-field and function-field correspondences require their own arguments.
+
+
+### 6.61. Adelic lattices, compact division quotients and finite inner traces
+
+Let \(K\) be a global field, with adèle ring \(\mathbb A_K\). At a finite place put \(|\varpi_v|_v=q_v^{-1}\); at a real place use the ordinary absolute value, and at a complex place its square. For an idèle \(a\), write \(\|a\|_K=\prod_v|a_v|_v\). A superscript \(1\) denotes the kernel of this norm. The additive lattice theorem needed below, for every global field and every finite power, is Lemma 6.274.
+
+**Lemma 6.405 — normalized Jacobians and bounded residue fields.** Multiplication by \(a_v\) on \(K_v\) scales additive Haar measure by \(|a_v|_v\). A linear automorphism of \(K_v^m\) scales it by \(|\det A|_v\). Consequently
+\[
+ \|a\|_K=1\quad(a\in K^\times),\qquad
+ \|z\|_E=\|z\|_K^{[E:K]}
+ \quad(z\in\mathbb A_K^\times)
+\tag{6.966}
+\]
+for every finite separable extension \(E/K\), where the second norm uses the scalar embedding. For every real \(R\), only finitely many finite places of \(K\) have \(q_v\le R\).
+
+**Proof.** At a finite place a unit preserves the valuation ring and a uniformizer carries it to an additive subgroup of index \(q_v\). This gives the first assertion for every power of the uniformizer, and hence every nonzero scalar. Elementary row operations, diagonal scalings and permutations give the matrix assertion. At archimedean places the real Jacobian gives the same assertion; a complex linear determinant has real absolute determinant equal to its squared modulus. Finite products compute the adelic Jacobian, since an adelic automorphism preserves the integral lattices outside finitely many places.
+
+Multiplication by \(a\in K^\times\) preserves both the discrete additive subgroup \(K\) and its counting measure. It induces an automorphism of the compact additive quotient in Lemma 6.274, so preserves its probability Haar measure. Quotient integration therefore makes its adelic additive Jacobian one. The preceding local computation proves the first formula in (6.966).
+
+Here are also the local degree details in the second formula. For a finite separable extension \(L/F\) of nonarchimedean local fields, \(\mathcal O_L\) is a full free \(\mathcal O_F\)-lattice of rank \([L:F]\). Indeed scale a basis and its trace-dual basis to make their elements integral. For integral \(x\), the coordinates \(\operatorname{Tr}(xc_i)\) are integral: the trace of an integral element is integral, and an element of \(F\) integral over \(\mathcal O_F\) has nonnegative valuation, as its monic equation shows. Thus \(\mathcal O_L\) lies between two full lattices. Elementary divisors over the discrete valuation ring prove the assertion. If \(e=v_L(\varpi_F)\) and the residue degree is \(f\), comparing the index of \(\varpi_F\mathcal O_L\) in two ways gives
+\(q_F^{[L:F]}=q_L^e=q_F^{ef}\). Thus \([L:F]=ef\), and \(|z|_L=|z|_F^{[L:F]}\) for \(z\in F^\times\). The analogous real and complex identities follow directly from the specified exponents. The local factorization and adelic basis map in (6.603) give \(\sum_{w\mid v}[E_w:K_v]=[E:K]\); multiplying the local identities proves (6.966).
+
+For the finiteness assertion, use the rational subfield and the finite separable extension supplied in the proof of Lemma 6.274. There are finitely many rational primes \(p\le R\), and finitely many monic polynomials over a fixed finite field whose residue cardinality is at most \(R\). Include the rational function field's place at infinity. A place above any one of these has residue cardinality at least that of the base place; there are at most the extension degree many places above it, by the finite local tensor factorization in (6.603). This proves the assertion in both characteristics. \(\square\)
+
+**Lemma 6.406 — a lattice intersection with fixed difference set.** Let \(V\) be a finite-dimensional \(K\)-vector space. Give \(V(\mathbb A_K)\) additive Haar measure, and let \(c_V>0\) be the covolume of \(V(K)\). Choose a compact product neighbourhood \(B\) of zero with \(\operatorname{vol}(B)>c_V\), and put \(C=B-B\). Every adelic linear automorphism \(g\) with additive Jacobian one satisfies
+\[
+                 V(K)\cap gC\ne\{0\}.
+\tag{6.967}
+\]
+The finite factors of \(B\) can be additive lattices, equal to a fixed integral lattice outside a finite set. At archimedean places they can be boxes.
+
+**Proof.** A basis identifies the additive quotient with a finite power of the compact quotient in Lemma 6.274. It therefore has finite positive covolume. Such a \(B\) exists: enlarge one finite local lattice in a function field, or one archimedean box in a number field. Normalize quotient measure to have total mass \(c_V\). Tonelli's theorem and additive quotient integration give
+\[
+ \int_{V(K)\backslash V(\mathbb A_K)}
+       \sum_{\ell\in V(K)}1_{gB}(x+\ell)\,dx
+       =\operatorname{vol}(gB)>c_V.
+\tag{6.968}
+\]
+The integer-valued sum must exceed one somewhere. Two distinct points of \(gB\) then differ by a nonzero lattice point in \(g(B-B)\). This proves (6.967). At finite places a difference of two points of an additive lattice is in the same lattice; the difference of two archimedean boxes is a fixed bounded box. \(\square\)
+
+<figure class="adelic-compactness-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="330" viewBox="0 0 744 330" role="img" aria-labelledby="adelic-overlap-title adelic-overlap-desc">
+<title id="adelic-overlap-title">A lattice point from two points in the same additive quotient fibre</title><desc id="adelic-overlap-desc">The boxes are schematic. The set gB has volume greater than the additive lattice covolume. Its projection to the compact additive quotient has a fibre with at least two points. Their nonzero difference e lies in g(B minus B). In a division algebra e is invertible.</desc>
+<rect x="1" y="1" width="742" height="328" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<text x="372" y="34" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">vol(gB) = vol(B) > lattice covolume</text><rect x="48" y="66" width="250" height="106" rx="9" fill="#deedf5" stroke="#7395ae"/><rect x="446" y="66" width="250" height="106" rx="9" fill="#e5f0df" stroke="#7395ae"/><text x="173" y="99" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">two points in gB</text><text x="173" y="139" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">x₁ ≠ x₂</text><text x="571" y="99" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">one quotient point</text><text x="571" y="139" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">x₁ + V(K) = x₂ + V(K)</text><path d="M305 119 H436 M424 111 L436 119 L424 127" fill="none" stroke="#355a7a" stroke-width="2"/><text x="372" y="216" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">0 ≠ e = x₁ − x₂ ∈ V(K) ∩ g(B − B)</text><text x="372" y="259" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">division algebra: c = g⁻¹e is invertible and bounded</text><text x="372" y="301" fill="#17354d" font-family="sans-serif" font-size="16" text-anchor="middle">g = e c⁻¹ gives a compact set of quotient representatives</text>
+</svg>
+<figcaption>Figure 71. The quotient-fibre argument is (6.967)–(6.968); the division-algebra consequence is (6.976). The boxes depict sets schematically, not a chosen fundamental domain. For the adelic lattice method, see Brian Conrad, <a href="https://virtualmath1.stanford.edu/~conrad/248APage/handouts/compactidele.pdf">A compactness theorem for the idele group, Section 2</a>. The required argument is proved in Lemma 6.406.</figcaption>
+</figure>
+
+**Lemma 6.407 — compactness of bounded elements with norm one.** Let \(A\) be a central simple \(K\)-algebra of degree \(n\), and put
+\[
+ G_A=A(\mathbb A_K)^\times,\qquad
+ \nu(g)=\prod_v|\operatorname{nrd}(g_v)|_v.
+\tag{6.969}
+\]
+For every compact additive product box \(C\subset A(\mathbb A_K)\), the set \(C\cap G_A^1\) is contained in a compact subset of \(G_A\), with its group topology. The corresponding assertion holds for \(C\subset\mathbb A_E\) and norm-one idèles of any global field \(E\).
+
+**Proof: integral coordinates.** Fix a \(K\)-basis containing one. Outside a finite set \(S\), its integral span \(\Lambda_v\) is an order: clear the denominators of the finitely many multiplication constants. Enlarge \(S\) to make the reduced-norm polynomial and the reduced adjugate polynomial integral in this basis. The latter is obtained from the reduced characteristic equation and satisfies
+\[
+ x x^\sharp=x^\sharp x=\operatorname{nrd}(x)1,
+ \qquad x^{-1}=x^\sharp/\operatorname{nrd}(x).
+\tag{6.970}
+\]
+These identities follow after a splitting extension from the matrix adjugate identities, and descend as polynomial identities. Hence
+\(U_v=\{x\in\Lambda_v:\operatorname{nrd}(x)\in\mathcal O_v^\times\}\)
+is exactly the unit group of \(\Lambda_v\). It is a compact open subgroup of \(A_v^\times\). The restricted product with these \(U_v\) is the adelic unit group: the polynomial inverse formula shows that an additive adèle with invertible components and unit reduced norm outside finitely many places has an adelic inverse. This also identifies its topology with that induced by \(x\mapsto(x,x^{-1})\) in the product of two additive adelic spaces. Any compact additive set is contained in a product box equal to \(\Lambda_v\) outside finitely many places, by the defining restricted-product open cover and a finite subcover.
+
+**Proof: bounds on the norm.** Enlarge \(S\) so that \(C_v=\Lambda_v\) outside \(S\). Polynomial continuity on the compact factors gives integers \(m_v\ge0\), supported on the finite places in \(S\), and positive archimedean bounds \(M_v\), such that, for \(x\in C\cap G_A\),
+\[
+ v(\operatorname{nrd}x_v)\ge-m_v,\qquad
+ |\operatorname{nrd}x_v|_v\le M_v\ (v\mid\infty).
+\tag{6.971}
+\]
+Set \(M=\prod_{v\in S,\,v\nmid\infty}q_v^{m_v}
+\prod_{v\mid\infty}\max(1,M_v)\), so \(M\ge1\). If \(\nu(x)=1\), writing \(a_v=v(\operatorname{nrd}x_v)\) gives
+\[
+ \prod_{a_v>0}q_v^{a_v}
+   =\left(\prod_{v\mid\infty}|\operatorname{nrd}x_v|_v\right)
+      \prod_{a_v<0}q_v^{-a_v}\le M.
+\tag{6.972}
+\]
+Thus a positive valuation can occur only at one of the finitely many places with \(q_v\le M\), and its exponent is at most \(\log M/\log q_v\). Negative valuations are already confined and bounded by (6.971). There are only finitely many possible finite valuation vectors. At an archimedean place, the norm-one equation and all other upper bounds give a positive lower bound for \(|\operatorname{nrd}x_v|_v\) as well.
+
+For each possible finite valuation vector, restrict the finitely many exceptional compact factors of \(C\) to their indicated nonzero norm shells, and the archimedean factors to the indicated closed annuli for the reduced norm. These are closed subsets of compact sets and avoid the zero-norm locus. The inverse polynomial (6.970) is continuous there, so they are compact in the local group topology. At every other place the factor is \(U_v\). Their product is compact in the restricted-product group topology. A finite union contains \(C\cap G_A^1\), as asserted. For idèles use exactly the same argument with the polynomial \(x\) on the one-dimensional algebra over \(E\). All compactness assertions here concern invertible elements with bounded inverses at the exceptional places. \(\square\)
+
+<figure class="adelic-compactness-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="330" viewBox="0 0 744 330" role="img" aria-labelledby="adelic-norm-bounds-title adelic-norm-bounds-desc">
+<title id="adelic-norm-bounds-title">The reduced norm confines all exceptional places</title><desc id="adelic-norm-bounds-desc">A fixed additive box bounds every negative finite reduced-norm valuation and every archimedean norm above. Norm one bounds the product of all positive finite valuations by M. Thus positive valuation places have residue cardinality at most M and bounded exponents. The inverse polynomial makes the remaining local sets compact in the group topology.</desc>
+<rect x="1" y="1" width="742" height="328" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<text x="372" y="38" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">fixed additive box C</text><text x="372" y="88" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">finite: aᵥ ≥ −mᵥ; archimedean: |nrd(xᵥ)|ᵥ ≤ Mᵥ</text><text x="372" y="138" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">ν(x) = 1  ⇒  ∏(aᵥ > 0) qᵥ<tspan baseline-shift="super" font-size="12">aᵥ</tspan> ≤ M</text><text x="372" y="189" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">positive valuations: qᵥ ≤ M and aᵥ ≤ log(M)/log(qᵥ)</text><text x="372" y="239" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">finitely many valuation vectors + compact norm shells</text><text x="372" y="288" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">outside these places: integral x and unit norm ⇒ integral x⁻¹</text>
+</svg>
+<figcaption>Figure 72. Lemmas 6.405 and 6.407 prove the finite-place bound and compactness in the group topology. The inverse is the polynomial quotient (6.970), and the exact product bound is (6.972). Solution 7.48 gives all seven valuation vectors for a function-field box and all eight pieces for a rational box.</figcaption>
+</figure>
+
+**Theorem 6.408 — compact norm-one idèle classes.** For every global field \(E\),
+\[
+                       E^\times\backslash\mathbb A_E^{\times,1}
+                       \quad\text{is compact Hausdorff}.
+\tag{6.973}
+\]
+
+**Proof.** Apply Lemma 6.406 to the one-dimensional vector space over \(E\). If \(\|a\|_E=1\), multiplication by \(a\) has additive Jacobian one, by Lemma 6.405. Thus \(0\ne e\in E\cap aC\). The idèle \(b=a^{-1}e\) lies in \(C\) and has norm one, by (6.966). It lies in a fixed compact group subset by Lemma 6.407. Since \(a=e b^{-1}\), its inverse compact subset supplies representatives for all classes in (6.973). The subgroup \(E^\times\) is closed discrete in the idèles: use additive discreteness of \(E\) near the element one and continuity of the inclusion into \(\mathbb A_E\). Hence the quotient is Hausdorff. \(\square\)
+
+**Theorem 6.409 — compact global elliptic tori modulo scalars.** If \(E/K\) is finite separable of degree \(n\), then
+\[
+              E^\times\mathbb A_K^\times\backslash\mathbb A_E^\times
+              \quad\text{is compact Hausdorff}.
+\tag{6.974}
+\]
+Every nonzero Haar normalization on this quotient has positive finite total volume.
+
+**Proof: scalar reduction.** For a number field, \(\|\cdot\|_K\) maps the idèles onto \(\mathbb R_{>0}\): choose a positive scalar at one archimedean place and use its real or squared complex exponent. Formula (6.966) then permits scalar multiplication to make any \(E\)-idèle have norm one. Theorem 6.408 provides compact representatives.
+
+For a function field choose a common finite constant subfield \(\mathbb F_Q\), and write \(\deg_E a=-\log_Q\|a\|_E\). All these degrees are integers. A \(K\)-idèle which is a uniformizer at one place \(v_0\) has image of degree \(h=n[\kappa(v_0):\mathbb F_Q]>0\) in \(E\). Scalar multiplication therefore reduces the degree to one of \(0,\ldots,h-1\). For each residue that occurs, choose one \(E\)-idèle \(\delta_r\) of that degree. Dividing by \(\delta_r\) leaves norm one. The finitely many \(\delta_r\)-translates of the compact representatives in Theorem 6.408 map onto (6.974). No degree-one place is required.
+
+**Proof: separation and volume.** Embed \(E\) in \(M_n(K)\) by multiplication. Its adelic units form a closed subgroup of \(\mathrm{GL}_n(\mathbb A_K)\), since the multiplication subspace is defined by linear equations, and it contains the scalar centre. In \(\mathrm{GL}_n(\mathbb A_K)/\mathbb A_K^\times\), the rational subgroup \(\mathrm{GL}_n(K)/K^\times\) is closed discrete: its adjoint matrix on \(M_n\) has rational entries; additive discreteness in Lemma 6.274 forces every sufficiently small rational adjoint matrix to be the identity. Commuting with every matrix unit forces a matrix to be scalar. This is the full-matrix argument of Theorem 6.379 over the present \(K\). Its intersection with the closed adelic torus is exactly \(E^\times/K^\times\), because the multiplication subspace has a rational basis. Thus the rational subgroup of the scalar-quotient torus is closed, proving Hausdorffness of (6.974). Its quotient Haar measure is locally positive and finite on compact sets. Compactness gives finite total volume, and a nonempty open chart gives positive volume. \(\square\)
+
+**Theorem 6.410 — compact adelic quotients of a global division algebra.** Let \(D\) be a central division algebra of degree \(n\) over a global field \(K\), and let \(G=D(\mathbb A_K)^\times\). Then
+\[
+          D^\times\backslash G^1\quad\text{and}\quad
+          D^\times\mathbb A_K^\times\backslash G
+          \quad\text{are compact Hausdorff}.
+\tag{6.975}
+\]
+Here the first superscript \(1\) refers to the product of normalized reduced norms, not the equation \(\operatorname{nrd}=1\) at every place. The local algebras \(D\otimes_KK_v\) may be matrix algebras.
+
+**Proof.** Left multiplication by \(g_v\) on the \(n^2\)-dimensional algebra has determinant \(\operatorname{nrd}(g_v)^n\). After a splitting extension this is left multiplication on \(M_n\), acting by \(g_v\) on each of its \(n\) columns; the determinant identity descends. Hence its adelic additive Jacobian is \(\nu(g)^n\). For \(g\in G^1\), apply Lemma 6.406 to the vector space \(D\) to obtain
+\[
+ 0\ne e\in D\cap gC,\qquad c=g^{-1}e\in C\cap G^1,
+ \qquad g=e c^{-1}.
+\tag{6.976}
+\]
+The middle membership uses division over \(K\): every nonzero rational \(e\) is invertible. Moreover \(\nu(e)=1\), since its reduced norm is a nonzero element of \(K\) and satisfies (6.966). Lemma 6.407, intersected with the closed norm-one subgroup and then inverted, puts the inverses of the \(c\)'s in a fixed compact subset of \(G^1\). This proves compactness of the first quotient. Rational additive discreteness near one makes \(D^\times\) closed discrete in \(G^1\), so that quotient is Hausdorff.
+
+For the second quotient, a scalar idèle has \(\nu(z)=\|z\|_K^n\). In a number field it can therefore remove any positive norm. In a function field its reduced-norm degree can be shifted by the positive integer \(n\deg_K(v_0)\). Choose one actual \(g_r\in G\) for each residual degree that occurs. After scalar adjustment, \(g g_r^{-1}\) has norm one, so (6.976) makes the corresponding classes lie in finitely many compact right translates. This proves compactness. For Hausdorffness use the adjoint action on the full algebra \(D\). Its kernel on \(D^\times\) is exactly \(K^\times\), by the definition of the centre, and its rational matrix entries are additively discrete. Thus \(D^\times/K^\times\) is closed discrete in \(G/\mathbb A_K^\times\), as in Theorem 6.409. \(\square\)
+
+<figure class="adelic-compactness-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="330" viewBox="0 0 744 330" role="img" aria-labelledby="adelic-scalar-reduction-title adelic-scalar-reduction-desc">
+<title id="adelic-scalar-reduction-title">Removing the norm by scalar ideles</title><desc id="adelic-scalar-reduction-desc">For number fields the scalar norm has continuous image of all positive reals, so every class has a norm-one representative. For function fields a scalar at a chosen place shifts degree by h equal to n times that place degree. Only occurring residues are chosen and each is reduced to norm one by a fixed actual representative. No degree-one place is assumed.</desc>
+<rect x="1" y="1" width="742" height="328" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<text x="372" y="37" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">scalar z: ν(z) = ‖z‖<tspan baseline-shift="sub" font-size="12">K</tspan>ⁿ</text><text x="372" y="86" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">number field: choose ν(z) = ν(g)⁻¹</text><text x="372" y="128" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">function field: h = n deg(v₀) > 0</text><text x="372" y="171" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">deg(gz) = r with 0 ≤ r < h; keep only residues that occur</text><text x="372" y="215" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">choose actual gᵣ of degree r; then (gz)gᵣ⁻¹ has norm one</text><text x="372" y="262" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">finitely many compact translates represent the scalar quotient</text><text x="372" y="305" fill="#17354d" font-family="sans-serif" font-size="16" text-anchor="middle">the same reduction applies to the field torus E/K</text>
+</svg>
+<figcaption>Figure 73. Theorems 6.409–6.410 reduce the scalar quotient to compact norm-one quotients. The integer h uses any chosen place. Representatives are selected only for degrees that actually occur; the proof does not assert that all residues occur.</figcaption>
+</figure>
+
+**Theorem 6.411 — finite-level inner spectrum over a function field.** Suppose \(K\) is a global function field, \(D\) is as in Theorem 6.410, and \(\Omega\) is a smooth unitary idèle-class character. The right regular representation on
+\[
+ H_{D,\Omega}=L^2(D^\times\mathbb A_K^\times\backslash G,\Omega)
+\tag{6.977}
+\]
+is admissible and is a countable orthogonal Hilbert sum of irreducible admissible unitary representations, with finite multiplicities.
+
+**Proof.** Local multiplicative measure is \(|\operatorname{nrd}x|_v^{-n}dx\). The left and right additive Jacobians are both \(|\operatorname{nrd}g|_v^n\), so this measure is bi-invariant. Product measures make \(G\) unimodular. Its central quotient is unimodular too. The closed discrete rational subgroup in Theorem 6.410 therefore gives quotient Haar measure; compactness makes its total volume finite and positive. The character defines unitary transition functions, consistently because \(\Omega\) is trivial on \(K^\times\).
+
+Let \(J\subset G\) be compact open, with central intersection in \(\ker\Omega\); if this condition fails, its fixed space is zero. The level cosets are open in the compact quotient (6.975), so there are finitely many. A fixed section has one complex value on each compatible coset; incompatible arithmetic stabilizers force its value to be zero. Thus \(H_{D,\Omega}^J\) is finite-dimensional. Compactly supported locally constant sections on small quotient charts are dense, their translations are strongly continuous, and compact averages converge strongly to the identity, by the chart and Haar arguments in Theorem 6.379. The Hilbert space is separable because these groups have countable bases. Lemma 6.380 now proves exactly the stated decomposition and multiplicities. This assertion concerns the actual global representation; it does not assume a local tensor decomposition or a multiplicity-one theorem. \(\square\)
+
+**Theorem 6.412 — the finite inner kernel trace.** Under Theorem 6.411, let \(f\) be smooth, compact modulo the centre, inverse-\(\Omega\)-covariant and bi-\(J\)-invariant. Put \(\overline G=G/\mathbb A_K^\times\), \(\Gamma=D^\times/K^\times\), and
+\[
+ K_f(x,y)=\sum_{\gamma\in\Gamma}f(x^{-1}\gamma y),\qquad
+ w_x=\frac{\operatorname{vol}(\overline J)}
+               {\#(\Gamma\cap x\overline Jx^{-1})}.
+\tag{6.978}
+\]
+For a set \(T_J\) of compatible level-coset representatives,
+\[
+ \operatorname{Tr}R(f)
+   =\sum_{x\in T_J}w_xK_f(x,x)
+   =\sum_{\Pi^J\ne0}m(\Pi)\operatorname{Tr}\Pi(f).
+\tag{6.979}
+\]
+Both sums are finite.
+
+**Proof.** Every compact subset of the quotient has compact lifts: around each point choose a relatively compact group neighbourhood and cover the compact quotient by finitely many of their images. Let \(C_0\subset\overline G\) be their compact union. On \(C_0\times C_0\), a nonzero kernel summand requires
+\(\gamma\in\Gamma\cap C_0\operatorname{supp}(f)C_0^{-1}\), a finite set by rational discreteness. Thus the kernel is uniformly a finite sum there. Unfolding quotient charts identifies its operator with right convolution. Both the range and adjoint range are in the finite-dimensional fixed space from Theorem 6.411. The compatible level-coset basis has normalized values \(w_x^{-1/2}\), so its matrix entry is \(\sqrt{w_xw_y}K_f(x,y)\). This proves the first equality by its finite matrix trace. Incompatible rows and columns vanish by their nontrivial stabilizer phase. The Hilbert decomposition in Theorem 6.411 proves the last equality; only finitely many constituents have a nonzero fixed vector. \(\square\)
+
+**Proposition 6.413 — absolute elliptic unfolding and the scalar stabilizer.** Let \(K\) be either kind of global field and \(D\) a global central division algebra. Let \(f\) be continuous, compact modulo the centre and inverse-\(\Omega\)-covariant. Assume its support at one place consists of separable regular elements. Then the absolute diagonal kernel is integrable, only finitely many projective rational conjugacy classes contribute, and
+\[
+ \int_{\Gamma\backslash\overline G}K_f(x,x)\,dx
+   =\sum_{[\gamma]}\frac{V_{E_\gamma}}{e_\gamma}
+           \int_{\mathbb A_{E_\gamma}^\times\backslash G}
+                       f(x^{-1}\gamma x)\,d\dot x,
+\tag{6.980}
+\]
+where \(E_\gamma=K[\gamma]\) is a separable field of degree \(n\),
+\[
+ V_E=\operatorname{vol}(E^\times\mathbb A_K^\times
+                             \backslash\mathbb A_E^\times),\qquad
+ e_\gamma=[\Gamma_{\bar\gamma}:E_\gamma^\times/K^\times].
+\tag{6.981}
+\]
+All orbital integrals in (6.980) are absolute, and \(e_\gamma\) is a finite positive integer. The quotient measures use the same Haar measure on each torus in both factors. Over a function field, for the tests of Theorem 6.412, the left side equals its finite spectral trace.
+
+**Proof: absolute integration.** The compact lift \(C_0\) from Theorem 6.412 exists in both characteristics. The finite intersection argument there bounds uniformly, on \(C_0\), the sum of the absolute values of all diagonal summands. Their individual absolute values are unaffected by scalar frames. The quotient has finite volume, so this absolute kernel is integrable. Every contributing projective conjugacy class has a representative in that finite intersection: move a witnessing quotient point into \(C_0\) by a rational translate. Thus only finitely many classes contribute. Tonelli now permits their absolute regrouping.
+
+**Proof: centralizers and the finite factor.** Local separable regularity implies that the global reduced characteristic polynomial has degree \(n\), is separable and equals the minimal polynomial. Indeed a nonzero polynomial relation over \(K\) remains one locally; the local minimal degree is \(n\). The algebra \(K[\gamma]\) is a field because it is a finite-dimensional commutative subalgebra of the division algebra. Its ordinary centralizer in \(D\) is exactly this field: after a separable splitting extension a regular matrix has diagonal centralizer of dimension \(n\), and the linear commuting equations descend; the contained field already has that dimension.
+
+An element of the projective rational stabilizer satisfies \(h^{-1}\gamma h=z\gamma\) for \(z\in K^\times\). Reduced norms give \(z^n=1\). The map to such scalars has kernel \(E_\gamma^\times/K^\times\), and its image has at most \(n\) elements, including when the characteristic divides \(n\). Thus its index is exactly the finite integer \(e_\gamma\). Rational scalar phases are one, since \(\Omega(z)=1\). Unfolding a projective conjugacy class first gives integration over \(\Gamma_{\bar\gamma}\backslash\overline G\). Replacing its discrete subgroup by \(E_\gamma^\times/K^\times\) multiplies that integral by \(e_\gamma\); this accounts for the division in (6.980).
+
+Finally disintegrate by the ordinary adelic torus \(\mathbb A_{E_\gamma}^\times/\mathbb A_K^\times\). The conjugation integrand is constant on its left cosets. Its rational quotient has positive finite volume \(V_{E_\gamma}\), by Theorem 6.409. Tonelli applied first to the absolute value proves the absolute orbital integral and then the stated equality. These are quotient integrations of the fixed Haar measures, so their product has the indicated normalization. Theorem 6.412 gives the final trace assertion in positive characteristic. \(\square\)
+
+<figure class="adelic-compactness-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="330" viewBox="0 0 744 330" role="img" aria-labelledby="adelic-inner-trace-title adelic-inner-trace-desc">
+<title id="adelic-inner-trace-title">The finite inner trace and its elliptic unfolding</title><desc id="adelic-inner-trace-desc">For a global division algebra over a function field the compact quotient has finitely many compatible level cosets. Its normalized finite matrix has entries square root of w x w y times the kernel. Its trace equals the finite spectral trace. When one factor has separable regular support it also equals an absolute finite elliptic sum with the projective stabilizer factor e gamma.</desc>
+<rect x="1" y="1" width="742" height="328" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<text x="372" y="37" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">compact quotient + open level J ⇒ finitely many compatible cosets</text><text x="372" y="86" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">wₓ = vol(J̄)/|Γₓ|;  matrix entry = √(wₓ wᵧ) K<tspan baseline-shift="sub" font-size="12">f</tspan>(x,y)</text><text x="372" y="136" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">Tr R(f) = ∑ₓ wₓ K<tspan baseline-shift="sub" font-size="12">f</tspan>(x,x) = ∑<tspan baseline-shift="sub" font-size="12">Π</tspan> m(Π) Tr Π(f)</text><text x="372" y="186" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">separable regular support ⇒ absolute finite elliptic unfolding</text><text x="372" y="235" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">geometric term = (V<tspan baseline-shift="sub" font-size="12">E</tspan> / e<tspan baseline-shift="sub" font-size="12">γ</tspan>) · orbital integral</text><text x="372" y="286" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">Hamilton quaternions: γ = i, conjugation by j gives eᵢ = 2</text>
+</svg>
+<figcaption>Figure 74. The finite-level assertions and spectral equality are Theorems 6.411–6.412 for global function fields. Proposition 6.413 proves the absolute geometric equality in both global characteristics. Equations (6.980)–(6.981) retain the rational projective stabilizer; Solution 7.48 computes its factor one-half for a quaternion element.</figcaption>
+</figure>
+
+The compactness statements apply to a division algebra over the global field; they allow its local completions to be matrix algebras over division algebras. The finite spectral trace proved here is for global function fields. Theorem 6.421 gives the inner local tensor factors and Theorem 6.424 gives a finite split elliptic trace for genuine regular-support tests. Matching the split and inner traces, obtaining a finite outside-place spectral fibre without assuming a common level, and proving individual representation-transfer integrality require additional arguments. Formula (6.980) retains the finite projective stabilizer factor; it is one only when the rational scalar symmetry group is trivial.
+
+
+### 6.62. Constant cyclic algebras with prescribed local inner forms
+
+Put \(K=\mathbb F_q(t)\), \(n\ge2\), and \(L=\mathbb F_{q^n}(t)\). Let \(\sigma\) act on constants by \(x\mapsto x^q\) and fix \(t\). Frobenius always means arithmetic Frobenius. We first make explicit the algebra and its local calculations, including the places at which the constant tensor algebra is a product.
+
+**Lemma 6.414 — the cyclic algebra and its norm splitting.** Let \(E/F\) be a cyclic Galois étale algebra of dimension \(n\), with generator \(\sigma\), and \(a\in F^\times\). The relations
+\[
+ C(E,\sigma,a)=\bigoplus_{j=0}^{n-1}Eu^j,
+ \qquad ux=\sigma(x)u,\quad u^n=a
+\tag{6.982}
+\]
+define a central simple algebra of degree \(n\). It is split if and only if \(a=N_{E/F}(b)\) for some \(b\in E^\times\). Replacing \(u\) by \(b^{-1}u\) replaces its parameter by \(a/N_{E/F}(b)\).
+
+**Proof.** Multiply basis terms by applying the indicated automorphism and introducing a factor \(a\) at a carry in the exponent. Associativity follows because the number of carries in a sum of three exponents is independent of the parentheses and \(\sigma(a)=a\). Over a separable closure the étale algebra has \(n\) primitive idempotents, permuted in one cycle by \(\sigma\). Represent them as diagonal matrix units, and represent \(u\) by the cyclic shift with wrap coefficient \(a\), oriented so that \(u e_i u^{-1}=\sigma(e_i)\). The diagonal units and this invertible shift generate every matrix unit. The resulting map is an isomorphism onto \(M_n\), since both dimensions are \(n^2\). A nonzero two-sided ideal would become a nonzero ideal in this matrix algebra and hence the whole algebra. Dimensions descend, proving simplicity. The commuting equations for the centre likewise descend its dimension one. Thus the centre is \(F\).
+
+The étale norm equals \(\prod_{j=0}^{n-1}\sigma^j(b)\): after the same separable extension both expressions are the product of the \(n\) coordinates. If this norm is \(a\), multiplication by \(E\) and the operator \(T(y)=b\sigma(y)\) on the \(F\)-space \(E\) satisfy (6.982). The nonzero homomorphism from the simple algebra to \(\operatorname{End}_F(E)\) is injective and, by dimension, an isomorphism.
+
+Conversely suppose the algebra acts as all endomorphisms of an \(n\)-dimensional \(F\)-space \(W\). Each field factor of \(E\) acts on a nonzero summand of \(W\), since the embedding is faithful. Each summand has dimension at least the degree of that field. The sum of these degrees is \(n\), so all summands have rank one over their field. Hence \(W\simeq E\) as an \(E\)-module. In this identification \(u\) is an invertible \(\sigma\)-semilinear map, necessarily \(b\sigma\) with \(b\in E^\times\). Its \(n\)-th power is multiplication by \(N(b)\), proving necessity. The parameter-change formula follows by multiplying \(b^{-1}u\) repeatedly. \(\square\)
+
+**Lemma 6.415 — constant local factors and matrix corners.** At a place \(v\) of \(K\) of degree \(m\), put \(g=\gcd(n,m)\), \(N=n/g\). Then
+\[
+ L\otimes_KK_v\simeq\prod_{i=0}^{g-1}E_i,
+ \qquad [E_i:K_v]=N,
+\tag{6.983}
+\]
+where each \(E_i\) is unramified. The automorphism \(\sigma\) cycles the factors, \(\tau=\sigma^g\) generates the automorphisms of one factor, and its local arithmetic Frobenius is
+\[
+                  F_v=\sigma^m=\tau^{m/g}.
+\tag{6.984}
+\]
+For every local parameter \(a\in K_v^\times\),
+\[
+ C(L\otimes K_v,\sigma,a)\simeq
+ M_g\bigl(C(E_0,\tau,a)\bigr).
+\tag{6.985}
+\]
+
+**Proof.** The \(n\) embeddings of \(\mathbb F_{q^n}\) are labelled by \(\mathbb Z/n\mathbb Z\). Frobenius of \(\mathbb F_{q^m}\) advances the label by \(m\). Its \(g\) orbits each have length \(N\), proving the finite-field tensor decomposition and the indicated Frobenius. The coefficient-field construction and Laurent expansions in Lemma 6.384 extend it to the unramified local fields in (6.983).
+
+Let \(e\) be the primitive idempotent of one factor, and write \(B\) for the left side of (6.985). The elements
+\[
+            E_{ij}=u^i e u^{-j}\qquad(0\le i,j<g)
+\tag{6.986}
+\]
+are matrix units. In fact \(e u^{k-j}e=0\) unless \(k=j\), for the distinct factors are orthogonal, and their diagonal sum is one. The corner \(eBe\) is spanned by \(eEu^{gj}\), \(0\le j<N\). In it \(u^g e\) acts by \(\tau\) and has \(N\)-th power \(ae\). Its dimension is \(N^2\), so it is exactly \(C(E_0,\tau,a)\). The maps \(b\mapsto(E_{0i}bE_{j0})_{ij}\) and \((b_{ij})\mapsto\sum E_{i0}b_{ij}E_{0j}\) give the matrix-algebra isomorphism. The idempotents come from an étale field tensor algebra; no division by \(g\) or semisimplicity of a cyclic group algebra is required. \(\square\)
+
+<figure class="cyclic-global-trace-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="330" viewBox="0 0 744 330" role="img" aria-labelledby="constant-etale-corner-title constant-etale-corner-desc">
+<title id="constant-etale-corner-title">Two constant factors and a degree-three corner</title><desc id="constant-etale-corner-desc">In the degree-six algebra at a degree-two place, Frobenius on the six embeddings advances by two. Even and odd labels are its two orbits. Sigma advances by one and exchanges the factors. The corner has degree three and the full cyclic algebra is a two by two matrix algebra over it.</desc>
+<rect x="1" y="1" width="742" height="328" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<text x="372" y="35" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">n = 6, m = 2: g = 2 constant factors, each of degree N = 3</text><rect x="72" y="77" width="60" height="54" rx="8" fill="#deedf5" stroke="#7395ae"/><text x="102" y="111" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">0</text><rect x="180" y="77" width="60" height="54" rx="8" fill="#e5f0df" stroke="#7395ae"/><text x="210" y="111" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">1</text><rect x="288" y="77" width="60" height="54" rx="8" fill="#deedf5" stroke="#7395ae"/><text x="318" y="111" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">2</text><rect x="396" y="77" width="60" height="54" rx="8" fill="#e5f0df" stroke="#7395ae"/><text x="426" y="111" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">3</text><rect x="504" y="77" width="60" height="54" rx="8" fill="#deedf5" stroke="#7395ae"/><text x="534" y="111" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">4</text><rect x="612" y="77" width="60" height="54" rx="8" fill="#e5f0df" stroke="#7395ae"/><text x="642" y="111" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">5</text><text x="372" y="168" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">Fᵥ = σ² preserves {0,2,4} and {1,3,5}; σ exchanges them</text><text x="372" y="212" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">e₀ + e₁ = 1;  Eᵢⱼ = uⁱ e₀ u⁻ʲ are matrix units</text><text x="372" y="255" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">Bᵥ ≅ M₂(C);  C = (E₀, σ², A) has degree three</text><text x="372" y="301" fill="#17354d" font-family="sans-serif" font-size="16" text-anchor="middle">the idempotents are valid even in characteristic two</text>
+</svg>
+<figcaption>Figure 75. Lemma 6.415 proves the constant tensor decomposition and the explicit matrix units (6.986). The six numbered positions are the six geometric constant embeddings, with arithmetic Frobenius orbits shown by colour. The field factors and the corner are computed in Solution 7.49(b).</figcaption>
+</figure>
+
+**Lemma 6.416 — unit norms in every residue characteristic.** If \(E/F\) is an unramified extension of nonarchimedean local fields, its unit norm is onto \(\mathcal O_F^\times\). The same holds for the product algebra in (6.983). No restriction on the residue characteristic dividing the extension degree is needed.
+
+**Proof.** Write \(Q\) for the residue cardinality of \(F\) and \(s=[E:F]\). The multiplicative group of a finite field is cyclic. To check the elementary fact used here, the exponent \(d\) of a finite subgroup of a field's multiplicative group has at most \(d\) roots, while every subgroup element is a root of \(X^d-1\). Combining elements of maximal prime-power orders gives an element of order \(d\); hence \(d\) equals the group order. The residue norm has exponent \((Q^s-1)/(Q-1)\), so its image has order \(Q-1\). Thus any target unit can first be matched modulo the maximal ideal.
+
+Use the same uniformizer \(\pi\) in the unramified extension. For \(h\ge1\), multiplication of the conjugate factors gives
+\[
+ N_{E/F}(1+\pi^h b)
+       \equiv1+\pi^h\operatorname{Tr}_{\kappa_E/\kappa_F}(\bar b)
+                             \pmod{\pi^{h+1}}.
+\tag{6.987}
+\]
+The residue trace is onto. Its polynomial \(X+X^Q+\cdots+X^{Q^{s-1}}\) is nonzero and has degree less than \(Q^s\); it cannot vanish at every element of \(\mathbb F_{Q^s}\). Its nonzero \(\mathbb F_Q\)-linear image is therefore all of \(\mathbb F_Q\). This remains true when the trace of one is zero. Choose a correction using (6.987) at each successive depth. The product of these corrections converges in \(\mathcal O_E^\times\), and continuity of the norm makes its norm exactly the target unit. For the product algebra choose a unit with the required field norm in one factor and one in the others. Its étale norm is the required unit. \(\square\)
+
+**Proposition 6.417 — the constant cyclic invariant with its sign.** With (6.983), let \(b=v(a)\). In the arithmetic normalization of Lemma 6.1,
+\[
+ \operatorname{inv}_v C(L\otimes K_v,\sigma,a)
+                      =\frac{mb}{n}\pmod{\mathbb Z},\qquad
+ \operatorname{ind}_v=\frac{n}{\gcd(n,mb)}.
+\tag{6.988}
+\]
+In particular a unit parameter gives a split algebra at every place, including those with \(g>1\).
+
+**Proof.** Lemma 6.416 removes the unit part of the parameter. Use the degree-\(N\) corner in (6.985). Here is the normalization calculation in the cyclic cochains. The carry cocycle for \(w^N=\pi^b\), with generator \(\tau\), has valuation \(b\) at a carry. It is the boundary of the rational lift of the character
+\(\chi(\tau)=b/N\) of the cyclic group into \(\mathbb Q/\mathbb Z\). Evaluation at arithmetic Frobenius gives its invariant. This is precisely the valuation/carry proof in Proposition 24.1 of Brauer groups of local and global fields, used in Lemma 6.1. By (6.984) that evaluation is
+\[
+            \chi(F_v)=\frac{m}{g}\frac{b}{N}=\frac{mb}{n}.
+\tag{6.989}
+\]
+In particular the factor is \(m\), with this sign, rather than a choice of geometric Frobenius. Passing from a corner to its matrix algebra leaves its Brauer invariant unchanged.
+
+For completeness, the denominator of this fraction is its division degree by Lemma 6.1. The ingredient there is an actual division representative: if \(c/d\) is reduced, the algebra of the unramified degree-\(d\) extension with parameter \(\pi^c\) has valuation \(\min_j(dv(x_j)+cj)\). The minimum is unique modulo \(d\), and the minimal product term cannot cancel, proving division. The injective unramified invariant and uniqueness of the division representative identify the corner with the corresponding matrix algebra. This proves the index in (6.988). A unit parameter also splits directly by Lemmas 6.414 and 6.416. \(\square\)
+
+**Theorem 6.418 — one prescribed inner form, a division place and split infinity.** Let \(D_0\) be a central division algebra of degree \(d\) over \(\mathbb F_q((t))\), and let \(n=rd\ge2\). There is an explicitly constructed central division algebra \(B\) of degree \(n\) over \(K\) with
+\[
+ B_0\simeq M_r(D_0),\qquad B_1\text{ division of degree }n,
+ \qquad B_\infty\simeq M_n(K_\infty).
+\tag{6.990}
+\]
+At most one other finite place is nonsplit; it has degree coprime to \(n\).
+
+**Proof.** Write the invariant of \(D_0\) as \(a/d\), with \(0<a<d\) coprime to \(d\), or \(a=0,d=1\). Choose a prime integer \(\ell>n\) and a monic irreducible \(P\in\mathbb F_q[t]\) of degree \(\ell\). The finite-field irreducible count proved in Theorem 6.390 gives such a polynomial. In particular it differs from \(t,t-1\). Choose \(0\le k<n\) with
+\[
+ \ell k\equiv-ar-1\pmod n,
+ \quad A(t)=t^{ar}(t-1)P(t)^k,
+ \quad B=C(L,\sigma,A(t)).
+\tag{6.991}
+\]
+The algebra is central simple of degree \(n\) by Lemma 6.414. At zero its invariant is \(ar/n=a/d\), so Lemma 6.1 and the equal degree give \(B_0\simeq M_r(D_0)\). At one its parameter has valuation one and the constant local extension is a field of degree \(n\). Remove the unit part by Lemma 6.416. The same minimum valuation \(\min_j(nv(x_j)+j)\) proves directly that \(B_1\) is division. Consequently the global algebra has no zero divisors: a nonzero rational zero divisor and its nonzero annihilator would remain nonzero after this scalar extension. Finite-dimensionality then makes \(B\) division.
+
+At \(P\) the invariant is \(\ell k/n\). At every other finite place the parameter is a unit, so the algebra splits by Lemma 6.416, even when the constant tensor has several factors. At infinity its valuation is \(-ar-1-\ell k\), a multiple of \(n\). The constant local extension has degree \(n\), so a power of the base uniformizer has this norm; Lemma 6.416 supplies the remaining unit norm. Lemma 6.414 proves splitting there. These facts establish all the assertions without a global Brauer existence theorem. \(\square\)
+
+**Theorem 6.419 — finitely many prescribed coprime-degree inner forms.** Let \(S\) be a finite set of finite places of \(K\), each of degree \(m_v\) coprime to \(n\). At each prescribe a degree-\(n\) central simple \(K_v\)-algebra \(A_v\). A global degree-\(n\) central division algebra realizes all these completions, is split at infinity, and is split outside \(S\) and at most two further finite places of degrees coprime to \(n\).
+
+**Proof.** Write \(\alpha_v=\operatorname{inv}_v(A_v)\in\tfrac1n\mathbb Z/\mathbb Z\), and choose \(0\le b_v<n\) with \(m_vb_v\equiv n\alpha_v\pmod n\). Choose two fresh finite places \(w,z\) of distinct prime degrees \(\ell_w,\ell_z>n\), beyond the degrees occurring in \(S\); their existence is again the irreducible count. Choose residues \(b_w,b_z\) modulo \(n\) with
+\[
+ \ell_wb_w\equiv1\pmod n,\qquad
+ \ell_zb_z\equiv-\sum_{v\in S}m_vb_v-\ell_wb_w\pmod n.
+\tag{6.992}
+\]
+Take representatives from \(0,\ldots,n-1\), and set
+\[
+       A(t)=\left(\prod_{v\in S}P_v(t)^{b_v}\right)
+                       P_w(t)^{b_w}P_z(t)^{b_z}.
+\tag{6.993}
+\]
+The invariant formula (6.988) gives the prescribed local classes and degrees, hence the prescribed algebras by Lemma 6.1. At \(w\), \(b_w\) is coprime to \(n\); the unique-minimum valuation proves that its local algebra, and therefore the global algebra, is division. The degree of \(A(t)\) is a multiple of \(n\), so infinity splits by the same norm construction as in Theorem 6.418. All other finite parameters are units. This proves the claim, including the possibility \(b_z=0\). \(\square\)
+
+<figure class="cyclic-global-trace-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="330" viewBox="0 0 744 330" role="img" aria-labelledby="cyclic-degree-six-places-title cyclic-degree-six-places-desc">
+<title id="cyclic-degree-six-places-title">The four local computations of the degree-six example</title><desc id="cyclic-degree-six-places-desc">The explicit polynomial parameter has valuations three, one, four and minus twenty-four at zero, one, the degree-five prime and infinity. Degree times valuation divided by six gives invariants one-half, one-sixth, one-third and zero. The local matrix sizes are three, one, two and six. The valuation-one completion forces global division.</desc>
+<rect x="1" y="1" width="742" height="328" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<text x="372" y="33" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">A = t³(t + 1)(t⁵ + t² + 1)⁴ over 𝔽₂(t)</text><rect x="12" y="59" width="156" height="178" rx="9" fill="#deedf5" stroke="#7395ae"/><text x="90" y="88" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">0</text><text x="90" y="123" fill="#17354d" font-family="sans-serif" font-size="16" text-anchor="middle">v(A) = 3</text><text x="90" y="160" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">inv = 1/2</text><text x="90" y="204" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">M₃(D₂)</text><rect x="200" y="59" width="156" height="178" rx="9" fill="#e5f0df" stroke="#7395ae"/><text x="278" y="88" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">1</text><text x="278" y="123" fill="#17354d" font-family="sans-serif" font-size="16" text-anchor="middle">v(A) = 1</text><text x="278" y="160" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">inv = 1/6</text><text x="278" y="204" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">D₆</text><rect x="388" y="59" width="156" height="178" rx="9" fill="#deedf5" stroke="#7395ae"/><text x="466" y="88" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">P: degree 5</text><text x="466" y="123" fill="#17354d" font-family="sans-serif" font-size="16" text-anchor="middle">v(A) = 4</text><text x="466" y="160" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">inv = 1/3</text><text x="466" y="204" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">M₂(D₃)</text><rect x="576" y="59" width="156" height="178" rx="9" fill="#deedf5" stroke="#7395ae"/><text x="654" y="88" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">∞</text><text x="654" y="123" fill="#17354d" font-family="sans-serif" font-size="16" text-anchor="middle">v(A) = −24</text><text x="654" y="160" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">inv = 0</text><text x="654" y="204" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">M₆</text><text x="372" y="274" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">invariant = deg(v) · v(A) / 6;  deg A = 24 ≡ 0 mod 6</text><text x="372" y="310" fill="#17354d" font-family="sans-serif" font-size="15" text-anchor="middle">Dⱼ denotes a division algebra of degree j; place 1 forces global division</text>
+</svg>
+<figcaption>Figure 76. Theorem 6.418 and Solution 7.49 give the actual cyclic algebra, polynomial expansion and every nonsplit completion. The invariant normalization is (6.988)–(6.989), with arithmetic Frobenius. For the local invariant construction see Romyar Sharifi, <a href="https://math.ucla.edu/~sharifi/notes/algnum-ch09.html">Algebraic Number Theory, Section 9.1</a>; the normalization and constructions used here are proved in Section 6.62.</figcaption>
+</figure>
+
+**Corollary 6.420 — the product of the local elliptic signs.** For either construction let \(B_v\simeq M_{r_v}(D_v)\), with \(\deg B=n\). Then
+\[
+                   \prod_v(-1)^{n-r_v}=1.
+\tag{6.994}
+\]
+
+**Proof.** Outside the indicated finite places the algebra is split, so the sign is one. If \(n\) is odd, every \(r_v\) divides \(n\), hence is odd and every exponent is even. If \(n\) is even, every exceptional degree \(m_v\) is odd. Formula (6.988) gives \(r_v=\gcd(n,m_vb_v)\), whose parity is that of \(b_v\). The total exponent modulo two is therefore \(\sum b_v\). It equals \(\sum m_vb_v=\deg A\) modulo two, which is zero because \(n\mid\deg A\). Infinity is split. This proves (6.994). It is a sign calculation for the constructed algebra, not a representation-transfer assertion. \(\square\)
+
+
+### 6.63. Inner local factors and a finite elliptic split trace
+
+The algebras of Section 6.62 are split outside an explicit finite set. This permits the local tensor argument and all unramified orbital tails to be made explicit. Write \(G=A^\times\) for the indicated ambient central simple algebra \(A\). An elliptic rational element below means one whose reduced characteristic polynomial is irreducible and separable of degree \(n\).
+
+**Theorem 6.421 — restricted local factors of the actual inner spectrum.** Let \(B\) be a global central division algebra over a function field. In particular \(B\) may be either algebra constructed above. Every constituent of \(H_{B,\Omega}\) in Theorem 6.411 has a uniquely determined smooth restricted tensor product
+\[
+                       \Pi=\bigotimes_v'\Pi_v,
+\tag{6.995}
+\]
+where each factor is irreducible, admissible and unitarizable, with central character \(\Omega_v\). Almost all have a one-dimensional maximal-compact fixed space. For a factorizable smooth compact-mod-centre bi-level test with normalized compact tail,
+\[
+ \operatorname{Tr}R(f)=
+       \sum_{\Pi^J\ne0}m(\Pi)\prod_v\operatorname{Tr}\Pi_v(f_v),
+\tag{6.996}
+\]
+a finite sum with tail factors one.
+
+**Proof: finite splitting support.** Every central simple algebra over either kind of global field is split outside finitely many places. Here is the factor-system argument, also proved at the start of Section 4 of Brauer groups of local and global fields. The algebraic crossed-product theorems cited and proved in that programme lesson's Noether prerequisites give a finite Galois splitting field and a finite list of nonzero factor-system values. Omit the finitely many places ramified in the field and those where any of these values is not a unit. Finiteness of the former set follows by clearing the coefficients and the nonzero discriminant of a separable defining polynomial, then lifting its coprime residual factors as in the order argument below. At a remaining place its decomposition group is cyclic unramified, and the localized cocycle takes values in its units. The cyclic resolution identifies its degree-two unit cohomology with the fixed units modulo unit norms. This group is zero by Lemma 6.416. Thus the local Brauer class is zero, and its degree identifies the algebra with the split matrix algebra. This argument uses no global sum or existence theorem.
+
+**Proof: local factors.** Theorem 6.411 supplies an actual admissible discrete Hilbert representation. Its irreducible smooth constituents have finite-dimensional product Hecke corners. Apply the algebraic local-unit factorization in Lesson 12, Theorem 4.1 to one local Hecke algebra and its complement. This gives the unique local simple admissible factors; its hypotheses are precisely the finite corners already proved here.
+
+Here is the infinite compatibility argument. A nonzero smooth vector is fixed by maximal compacts outside a finite set \(S_0\) containing all nonsplit places. At a split place transpose preserves every maximal-compact double coset by the Cartan decomposition of Lemma 6.23 and reverses convolution. Hence its spherical Hecke algebra is commutative. A nonzero simple finite-dimensional spherical module has an eigenline, which simplicity makes the whole module. Thus the local compact fixed line is one-dimensional.
+
+For finite \(S\supset S_0\), write \(V_S=V^{\mathcal K^S}\). The tail Hecke algebras act on it by these scalar characters. It is a simple module for the \(S\)-algebra: if a submodule is nonzero, its global Hecke span is \(V\); averaging that span back to \(V_S\), the tail factors reduce to their scalars, so the original submodule is all of \(V_S\). Finite local-unit factorization identifies it with \(\bigotimes_{v\in S}\Pi_v\). For \(S\subset S'\), the embedding is tensoring with the one-dimensional \(\prod_{v\in S'-S}\mathcal K_v\)-fixed line. Choose coherent nonzero vectors in these lines, starting with one pure tensor at \(S_0\); uniqueness of the finite factorizations permits compatible normalizations on every finite enlargement. The union of the \(V_S\) is every smooth vector, proving (6.995) and its uniqueness. This is the finite-stage construction in Theorem 6.381 with its inner hypotheses supplied by Theorems 6.411 and 6.418–6.419.
+
+Fix nonzero vectors in the other factors of a pure tensor. Restriction of its actual invariant Hilbert norm gives a positive invariant Hermitian form on \(\Pi_v\); a nonzero local vector gives a nonzero pure tensor. Thus the local factors are unitarizable. Their admissibility ensures that their Hilbert completions add no smooth vectors, by finite-dimensional compact averaging. Local scalar elements act by \(\Omega_v\), as they do in the original global representation. Finally, on a product fixed space the test operator is the tensor product of its local finite matrices and the identity on each tail line. Its trace is their product. The finite Hilbert sum at that level is Theorem 6.412, proving (6.996). \(\square\)
+
+<figure class="cyclic-global-trace-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="330" viewBox="0 0 744 330" role="img" aria-labelledby="inner-restricted-factors-title inner-restricted-factors-desc">
+<title id="inner-restricted-factors-title">The coherent finite stages of an inner constituent</title><desc id="inner-restricted-factors-desc">An actual irreducible inner automorphic constituent has finite product Hecke corners. Local factorization identifies its finite-stage fixed spaces with finite tensor products. Enlarging the finite set tensors with the new local factor and embeds the old stage by its compact fixed line. The union is the smooth restricted tensor product; every local norm is inherited from the actual global Hilbert norm.</desc>
+<rect x="1" y="1" width="742" height="328" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<text x="372" y="35" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">actual compact inner spectrum + finite product Hecke corners</text><text x="372" y="85" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">V<tspan baseline-shift="sub" font-size="12">S</tspan> = V<tspan baseline-shift="super" font-size="12">𝒦 outside S</tspan> ≅ ⊗(v ∈ S) Πᵥ</text><text x="372" y="135" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">S ⊂ S′: embed by the chosen compact fixed lines at S′ − S</text><text x="372" y="184" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">⋃ V<tspan baseline-shift="sub" font-size="12">S</tspan> = Π = restricted tensor product of the Πᵥ</text><text x="372" y="232" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">almost all Bᵥ = Mₙ(Kᵥ): transpose makes spherical fixed lines one-dimensional</text><text x="372" y="279" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">Tr R(f) = finite sum of m(Π) times the products of local traces</text><text x="372" y="311" fill="#17354d" font-family="sans-serif" font-size="15" text-anchor="middle">local invariant positive norms are restricted from the global Hilbert norm</text>
+</svg>
+<figcaption>Figure 77. Theorem 6.421 supplies the actual local factors, coherent embeddings, unitarity and finite trace (6.996). Its finite-corner input is Theorem 6.411 and Lesson 12, Theorem 4.1. This is a decomposition of the given inner spectrum; it does not assert an identification with split constituents.</figcaption>
+</figure>
+
+**Lemma 6.422 — unramified étale orders and the tail orbital.** Let \(\gamma\) be an elliptic rational element of a central simple algebra over a global field, and put \(E=K[\gamma]\). At almost every finite place, a split local identification can be chosen such that
+\[
+ \mathcal O_v[\gamma]=\prod_{w\mid v}\mathcal O_{E_w},\qquad
+ \gamma\in\mathrm{GL}_n(\mathcal O_v).
+\tag{6.997}
+\]
+The \(\gamma\)-stable full lattices form one orbit of \(E_v^\times\). Give \(T_v/Z_v\) Haar measure with the image of \(\prod\mathcal O_{E_w}^\times\) of volume one. The normalized inverse-central-character compact indicator then has
+\[
+                             O_\gamma(f_v)=1
+\tag{6.998}
+\]
+at all these places, provided the character is unramified there.
+
+**Proof: the order.** The finite-support argument in Theorem 6.421 applies in both global characteristics. First fix the integral reference compacts. A rational basis containing one spans an order \(\Lambda_v\) outside finitely many places, by clearing multiplication denominators. The reduced trace pairing is nondegenerate: after splitting, its matrix-unit dual bases prove this in every characteristic. Omit also the denominators and zeros of its basis Gram determinant. The resulting order is its own trace dual. At a split place it is a full matrix order. To see this directly, in a split representation take the stable lattice \(M=\Lambda_v\mathcal O_v^n\). It is full and bounded, since the order has finitely many lattice generators and contains one. Then \(\Lambda_v\subset\operatorname{End}_{\mathcal O_v}(M)\). Every element of the latter order pairs integrally with \(\Lambda_v\), since a product of two lattice endomorphisms has integral trace. Self-duality forces the reverse inclusion. A valuation-ring basis of \(M\) therefore identifies \(\Lambda_v\) with \(M_n(\mathcal O_v)\). Its units give the adelic reference maximal compacts outside this finite set.
+
+The monic reduced polynomial \(P\) of \(\gamma\) has rational coefficients, nonzero constant coefficient and nonzero discriminant. Omit the finitely many places where \(\gamma\) or \(\gamma^{-1}\) is not in the reference order, any remaining coefficient denominators, the zeros of the constant and discriminant, and the nonsplit places. Thus \(\gamma\in\mathcal K_v\), and modulo the maximal ideal \(P\) is a product of distinct irreducible polynomials. Its local minimal polynomial is still \(P\), since it has \(n\) distinct eigenvalues after splitting. Hence \(\mathcal O_v[\gamma]\simeq\mathcal O_v[X]/(P)\).
+
+These coprime factors lift to monic factors over \(\mathcal O_v\): at each step the error of a proposed factorization is corrected modulo the next uniformizer power by the Bezout identity for the relatively prime residual factors. The corrections converge, and their monicity fixes the degrees. Their quotient rings split as a product by the lifted Bezout identity. Each irreducible residual factor of degree \(s\) gives an unramified extension with that residue field. Its powers \(1,\theta,\ldots,\theta^{s-1}\) are an integral basis: subtract the residue expansion of an integral element in this basis, divide the remainder by the uniformizer, and repeat. Completeness makes all resulting coefficients integral. Thus the quotient order is its full valuation ring, proving (6.997).
+
+**Proof: lattices and the measure.** If a full lattice is stable under \(\gamma\), it is stable under \(\mathcal O_v[\gamma]\). Its idempotents split it into full rank-one modules in each \(E_w\). Each such module is a fractional ideal of its valuation ring, hence a uniformizer power times that ring: take an element of least valuation and divide all other elements by it. Therefore \(E_v^\times\) is transitive on these lattices.
+
+The ordinary centralizer of \(\gamma\) is \(T_v=E_v^\times\). The support of the local orbital integral is the single double coset \(T_v\mathcal K_v\). Indeed a conjugate in \(Z_v\mathcal K_v\) has determinant of valuation zero, so its scalar has valuation zero and the conjugate is in \(\mathcal K_v\). Such conjugates correspond exactly to the stable lattices just classified. The intersection of the images of \(T_v\) and \(\mathcal K_v\) in the scalar quotient is the image of its integral units. Quotient measure gives the image of \(\mathcal K_v\) in \(T_v\backslash G_v\) volume \(\operatorname{vol}(\overline{\mathcal K}_v)\). The normalized test has the reciprocal value there; its unramified central phase is one on units. Their product is (6.998). This uses the unit-image torus measure, without replacing it by a full compact-torus normalization. \(\square\)
+
+**Proposition 6.423 — the absolute global orbital product.** In Lemma 6.422, fix a smooth unitary idèle-class character \(\Omega\), and let \(f=\prod_v f_v\) be an inverse-\(\Omega\)-covariant compact-mod-centre factorizable test with normalized compact tail. Suppose all local factors are smooth at the nonarchimedean places and continuous compact-mod-centre at archimedean places. For a function field there are no latter places. For the following formula assume each exceptional local orbital integral is absolute; this is automatic for smooth compact-mod-centre tests over function fields by Lemma 6.144. With the restricted-product quotient Haar measures,
+\[
+ \int_{\mathbb A_E^\times\backslash G(\mathbb A_K)}
+                         f(x^{-1}\gamma x)\,d\dot x
+                       =\prod_v O_\gamma(f_v),
+\tag{6.999}
+\]
+and both the integral and the product of absolute orbitals are finite. All but finitely many factors are one.
+
+**Proof.** Enlarge a finite set \(S\) until Lemma 6.422 applies to every place outside it, the character is unramified there, and every test is its normalized compact indicator there. The proof of that lemma gives more than an orbital value: its support in the local homogeneous space is exactly the compact image of \(\mathcal K_v\). With the test and quotient Haar normalizations, the integral on that image is one, also for the absolute value.
+
+We spell out the restricted-product step. Both the group and the torus modulo scalar idèles are the restricted products of their local scalar quotients with the integral-unit images as compact subgroups. A tuple of local scalar cosets in these subgroups almost everywhere has integral-unit lifts there, giving an adelic lift. If an adelic tuple is scalar in every component, its scalar is a unit almost everywhere, since its image and inverse are integral there; it is consequently a scalar idèle. These two assertions prove the quotient identification, including its topology, on the usual product neighbourhoods.
+
+In the homogeneous quotient, all outside-\(S\) components that contribute therefore have representatives in \(\mathcal K_v\). Their product is a compact fibre, with quotient probability measure after the test normalization. On cylinder functions quotient Haar disintegration is the product of the finitely many exceptional quotient measures and these compact measures: verify it by integrating first in the torus and then in the group. Such cylinders determine the measure; increasing finite product cylinders and Tonelli give the same assertion for nonnegative functions. Apply it first to \(\prod|f_v(x_v^{-1}\gamma x_v)|\). Its integral is the finite product of the exceptional absolute orbitals, so is finite. Absolute integration then gives (6.999).
+
+For the asserted nonarchimedean automatic condition, \(\gamma\) is regular semisimple and hence has a closed ordinary orbit. On a compact projective support its reduced norm fixes the allowed central valuations in a bounded range. The quotient conjugator bound (6.329) of Lemma 6.144 makes the contributing centralizer quotient compact. A smooth test is bounded there and quotient Haar is finite on compact sets. This proves the required absolute local orbital, including when \(E_v\) is a product. No arbitrary archimedean convergence assertion is being inferred from it. \(\square\)
+
+**Theorem 6.424 — a finite regular-elliptic split trace.** Let \(K=\mathbb F_q(t)\), \(G=\mathrm{GL}_n\), and \(\Omega\) a smooth unitary idèle-class character. Let \(f=\prod_vf_v\) be smooth, compact modulo the centre and inverse-\(\Omega\)-covariant, with normalized compact tail. Suppose one factor has support in the separable regular elliptic set and one factor satisfies the strong translated-unipotent vanishing (6.914). They may be at different places. Then
+\[
+ \sum_\Pi m(\Pi)\prod_v\operatorname{Tr}\Pi_v(f_v)
+   =\sum_{[\gamma]}\frac{V_{E_\gamma}}{e_\gamma}
+                                     \prod_vO_\gamma(f_v).
+\tag{6.1000}
+\]
+The left sum is over actual cuspidal constituents with fixed vectors at the test's level. The right sum is over the projective rational conjugacy classes meeting its support, with \(E_\gamma=K[\gamma]\), \(V_E\) and \(e_\gamma\) as in (6.981). Both sums are finite, and regrouping the diagonal rational kernel is absolute.
+
+**Proof: the geometric sum.** A rational element meeting the supports is separable regular elliptic: a proper rational factor of its characteristic polynomial would remain a factor at the elliptic place. Lemma 6.388 gives only finitely many such projective rational classes. Its finiteness part uses the compact support bounds and rational prime-polynomial scalar normalization, not the special scalar-free affine spectrum in its separation part. Each centralizer is the degree-\(n\) field \(E_\gamma\). Theorem 6.409 gives \(0<V_{E_\gamma}<\infty\).
+
+The rational projective stabilizer maps to \(\{z\in K^\times:z^n=1\}\), with kernel \(E_\gamma^\times/K^\times\), exactly as in Proposition 6.413. Its index is \(e_\gamma\). For each class apply Tonelli before assuming convergence. The ordinary field torus disintegration gives
+\[
+ \int_{\Gamma\backslash\overline G}
+   \sum_{\delta\in\Gamma_{\bar\gamma}\backslash\Gamma}
+       |f(x^{-1}\delta^{-1}\gamma\delta x)|\,dx
+    =\frac{V_{E_\gamma}}{e_\gamma}
+       \prod_vO_\gamma(|f_v|)<\infty,
+\tag{6.1001}
+\]
+where Proposition 6.423 proves the final absolute product. The rational scalar phase is one, because \(\Omega\) is trivial on \(K^\times\). Summing over the finite set of classes proves the absolute diagonal integral. Removing absolute values proves its geometric expression in (6.1000).
+
+**Proof: the spectral trace.** Choose a principal level fixing the test on both sides. The strong factor and Theorem 6.382 make the operator zero on the noncuspidal orthogonal complement, with both its range and adjoint range in a finite cuspidal fixed space. Its kernel is zero outside the corresponding finite set of compatible level rows and columns. Consequently its integral over the whole quotient equals the finite weighted diagonal trace (6.916). The actual restricted cuspidal spectral expression is Theorem 6.381. Substituting the geometric expression just proved gives (6.1000). \(\square\)
+
+<figure class="cyclic-global-trace-diagram" style="margin:1.2rem 0;overflow-x:auto">
+<svg xmlns="http://www.w3.org/2000/svg" width="744" height="330" viewBox="0 0 744 330" role="img" aria-labelledby="finite-elliptic-split-trace-title finite-elliptic-split-trace-desc">
+<title id="finite-elliptic-split-trace-title">Absolute finite elliptic geometry and the split spectral trace</title><desc id="finite-elliptic-split-trace-desc">One genuinely elliptic regular support factor restricts the rational summands to elliptic regular classes. Compact coefficient bounds give finitely many projective classes. Every field-torus quotient has finite volume; local stable-lattice calculations give tail orbital one. Tonelli gives the finite absolute geometric sum with its projective stabilizer factor. A strong translated-unipotent factor identifies its kernel integral with the actual finite cuspidal spectral trace.</desc>
+<rect x="1" y="1" width="742" height="328" rx="12" fill="#f6f9fc" stroke="#b6c9d9"/>
+<text x="372" y="35" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">genuine elliptic regular support at one place</text><text x="372" y="82" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">compact coefficient bounds ⇒ finitely many projective rational classes</text><text x="372" y="129" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">each E = K[γ]: 0 < V<tspan baseline-shift="sub" font-size="12">E</tspan> < ∞; good local orbital = 1</text><text x="372" y="176" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">absolute class integral = (V<tspan baseline-shift="sub" font-size="12">E</tspan>/e<tspan baseline-shift="sub" font-size="12">γ</tspan>) · product of local absolute orbitals</text><text x="372" y="224" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">strong translated periods vanish ⇒ actual finite cuspidal kernel trace</text><text x="372" y="270" fill="#17354d" font-family="sans-serif" font-size="17" text-anchor="middle">finite spectral sum = finite elliptic geometric sum, with e<tspan baseline-shift="sub" font-size="12">γ</tspan> retained</text><text x="372" y="311" fill="#17354d" font-family="sans-serif" font-size="16" text-anchor="middle">a trace-only discrete test need not have this regular support</text>
+</svg>
+<figcaption>Figure 78. Lemma 6.422 proves the exact tail; Proposition 6.423 proves its absolute product. Theorem 6.424 combines these with the finite projective polynomial bound (6.930)–(6.931) and torus compactness (6.974). The two sides of (6.1000) are finite under the stated support and strong-factor hypotheses.</figcaption>
+</figure>
+
+Theorem 6.424 concerns tests with genuine regular elliptic support at a place. A compact discrete-series test that merely has zero traces on proper inductions need not have that support. Inserting a regular cut can change its traces and lose its isolation property. The formula therefore supplies this finite elliptic trace identity; the general split/inner comparison, the outside-place spectral fibre and individual representation-transfer integrality require their own arguments. The explicit global algebras and the inner local tensor decomposition above do not assert those remaining conclusions.
+
+
 ## 7. Exercises with complete solutions
 
 **Exercise 7.1 — an unramified quadratic field.** Let \(K/\mathbb Q_p\) be the unramified quadratic extension. Choose \(\xi\in\mathcal O_K^\times\) whose residue generates \(\mathbb F_{p^2}/\mathbb F_p\). Write explicitly the matching matrix and quaternion class, and their centralizers.
@@ -13642,6 +14876,21 @@ It cannot occur in \(C^{(k)}\). Each of its layers is a product of a suffix of \
 5. Explain the exact uses of local genericity, the discrete series' own compact test, and generic uniqueness in Theorems 6.373–6.374. Explain which additional assertions are still needed to derive an exact global prescribed-discrete-series globalization or an individual integral Jacquet–Langlands representation transfer.
 
 6. Apply Corollary 6.375 to the linked intervals \([0,2]\), \([1,3]\). Give the derivative index and its distinguishing irreducible quotient. Prove reducibility of the three-factor product with intervals \([0,1],[4,4],[1,2]\), using actual unlinked exchanges to make a linked pair adjacent.
+
+
+**Exercise 7.45 — rational-function support and the weighted trace.** Over \(K=\mathbb F_q(t)\), put depth one at \(0\) and \(\infty\) and depth zero elsewhere. For \(n=2,q=2\), compute the normalized profiles permitted by cuspidality and the resulting dimension bound. For \(n=3,e=3\), list all permitted profiles. Check the reduction of (6.905) in characteristic two. For an abstract two-coset compatible kernel, take \(\operatorname{vol}(\overline J)=1\), arithmetic stabilizer orders \(2,3\), and kernel matrix \(\bigl(\begin{smallmatrix}4&6\\6&9\end{smallmatrix}\bigr)\). Compute its orthonormal matrix, rank, trace and nonzero eigenvalue. Explain exactly which additional hypotheses allow a nonzero trace to prescribe local discrete-series factors, and whether either dimension bound asserts existence of a cusp form.
+
+
+**Exercise 7.46 — a zero-trace class in characteristic three.** Let \(K=\mathbb F_3(t)\), \(n=3\), \(\theta^3-\theta-1=0\), and \(h=(t/(t^2+1))^M\), \(M\ge1\). Compute the characteristic polynomial of \(\gamma=1+h\theta\) and its nonzero coefficient indices. Show that \(\gamma\) approaches the identity at \(0\) and \(\infty\) as \(M\) increases, and that \(t^2+1\) gives an available elliptic separating place. Recover a local proportionality scalar using its two nonzero coefficient ratios. What is the constant-extension factorization at a place of degree three? Finally take the prescribed representation at \(0\) to be \(\mathrm{St}_3\), and suppose the given strong auxiliary test at \(\infty\) has identity value \(2\). Compute their near-identity orbital product and express the resulting nonzero global trace using the torus volume and the other positive orbital factors. State which inputs this calculation assumes.
+
+
+**Exercise 7.47 — a characteristic-two auxiliary and its central character.** Over \(F=\mathbb F_2((\varpi))\), take \(B=\bigl(\begin{smallmatrix}0&1\\1&1\end{smallmatrix}\bigr)\) and \(S=\bigl(\begin{smallmatrix}0&1\\1&0\end{smallmatrix}\bigr)\). Construct explicitly the depth-one two-dimensional type of Lemma 6.392 by making its constant \(B\)-action trivial. Prove its irreducibility. Compute the \(K_1\)- and \(K_2\)-fixed dimensions of its compact induction, its formal degree, and its ratio to the Steinberg degree. Find its central unit character. Over \(\mathbb F_2((u))\), use the group \((1+u\mathbb F_2[[u]])/(1+u^3\mathbb F_2[[u]])\) to give a determinant twist with trivial central unit character. Why is the corresponding torsion check different over \(\mathbb Q_2\)? Finally take trivial global central character over \(\mathbb F_2(t)\), prescribe \(\mathrm{St}_2\) at \(0\) and \(1\), and use a unit-vector coefficient of this trivial-centre auxiliary at infinity. Compute the orbital product near the common constant-field elliptic class and its nonzero trace, leaving the torus volume and other positive orbital factors explicit. Does this assert an automorphic representation unramified at every other place?
+
+
+**Exercise 7.48 — bounded norm-one sets and a projective stabilizer.** (a) In \(\mathbb A_{\mathbb F_2(t)}\), let \(C_v=\mathcal O_v\) at finite places and \(C_\infty=u^{-2}\mathbb F_2[[u]]\), with \(u=t^{-1}\). List all valuation vectors of norm-one idèles in \(C\). (b) Do the same for \([-4,4]\times\prod_p\mathbb Z_p\subset\mathbb A_{\mathbb Q}\), including the real component. (c) Replace the one-dimensional function-field algebra in (a) by \(M_2\), take the analogous matrix box with \(u^{-M}\) at infinity, and let \(g_\infty=\operatorname{diag}(u^R,u^{-R})\), \(g_v=I\) at finite places. For \(R>M\ge0\), determine the rank of every nonzero rational matrix in \(gC\). Explain the division hypothesis in Theorem 6.410. (d) In the rational Hamilton quaternion algebra, compute \(e_i\) in (6.981). Compute also the additive Jacobian of left multiplication by \(\operatorname{diag}(2,3)\) on \(M_2(\mathbb A_{\mathbb Q})\) at the real place.
+
+
+**Exercise 7.49 — an explicit degree-six global algebra in characteristic two.** (a) Prove that \(P=t^5+t^2+1\) is irreducible over \(\mathbb F_2\). Use Theorem 6.418 with \(n=6,r=3,d=2,a=1\) to write \(A(t)\) and compute every nonsplit local invariant, matrix size and the infinity completion. (b) At a place of degree two, describe the constant tensor algebra and the corner (6.985). (c) Let \(\theta\in\mathbb F_4\subset\mathbb F_{64}\) satisfy \(\theta^2+\theta+1=0\). Compute its absolute trace, the polynomial \(N_{\mathbb F_{64}/\mathbb F_2}(1+\theta X)\), and the first correction to the infinity unit in (a). Explain why a scalar sixth-root argument would be insufficient. (d) Compute the local elliptic sign product. At a good place where a regular polynomial factors into distinct residual degrees two and four, describe all stable lattices and their normalized orbital contribution.
 
 
 **Solution 7.1.** Let \(\sigma\) be the nontrivial automorphism, \(t=\xi+\sigma\xi\), and \(n=\xi\sigma\xi\). The reduction of \(T^2-tT+n\) is irreducible and separable, so its lift is irreducible over \(\mathbb Q_p\). In the cyclic model
@@ -14356,7 +15605,7 @@ This is a noncentral rational class retained by the first congruence and exclude
                      \qquad\det(a)=-3,\qquad a\ne0.
 \tag{7.51}
 \]
-The trivial representation gives \(1-1=0\), and the sign representation gives \((-1)-(-1)=0\). Thus all irreducible traces vanish although the standard operator is nonzero. A pseudo-coefficient specifies traces. It need not annihilate every unwanted local representation as an operator, so a nonzero projection of a Poincaré function need not have the desired local component by that argument alone. One needs an actual spectral constituent and a justified trace isolation or local operator projection. Global genericity is Theorem 6.276 and the local generic trace identity is Theorem 6.374. Exact discrete-series globalization still requires a global spectral-existence argument.
+The trivial representation gives \(1-1=0\), and the sign representation gives \((-1)-(-1)=0\). Thus all irreducible traces vanish although the standard operator is nonzero. A pseudo-coefficient specifies traces. It need not annihilate every unwanted local representation as an operator, so a nonzero projection of a Poincaré function need not have the desired local component by that argument alone. One needs an actual spectral constituent and a justified trace isolation or local operator projection. Global genericity is Theorem 6.276 and the local generic trace identity is Theorem 6.374. Over the rational function field, Theorems 6.379–6.382 provide the actual cuspidal spectrum and finite trace identities. Theorem 6.390 constructs that nonzero trace when the prescribed and strong auxiliary places have degrees coprime to the rank. Theorem 6.398 constructs an auxiliary with every required local unitary central character, and Theorem 6.404 gives globalization for a given compatible global character and coprime-degree prescribed places. General global fields require their own spectral arguments.
 
 
 **Solution 7.32.**
@@ -15142,17 +16391,190 @@ The first is the trace on a proper irreducible induction. By contrast the adjace
 
 5. Discrete-series genericity puts \(\pi\) in the class governed by exact generic cuspidal data. Generic uniqueness identifies every generic module with the irreducible product constructed from the canonical unlinked interval family. If that family has several factors, the representation itself is a proper induction. Its own-test traces would be both zero and one if it were a discrete series, so a discrete series has only one factor. Its unitary centre then centres the segment and gives the classification. For any other generic \(\tau\) of that same unitary central character, several factors give zero trace by proper induction, and one factor is a unitary discrete series, where Corollary 6.117 gives the Kronecker delta.
 
-These are local finite-rank trace identities. An exact global realization still requires an actual cuspidal spectral constituent and the relevant global trace identity, outside-place isolation and finite spectral fibre. A nonzero cuspidal Poincaré function alone is not that extraction. Individual Jacquet–Langlands representation transfer also requires an integral representation construction or the missing integrality and positivity of its character coefficients; real norm-one rows alone do not give it. No global spectral or individual representation-existence assertion follows solely from (6.896).
+These are local finite-rank trace identities. Over the rational function field, Theorems 6.379–6.382 give an actual discrete cuspidal spectrum and finite trace identity. Theorem 6.404 supplies the strong auxiliary and gives exact prescribed components for a given global character and coprime-degree places. The general global comparison requires outside-place isolation and its finite spectral fibre. A nonzero cuspidal Poincaré function alone is not that extraction. Individual Jacquet–Langlands representation transfer also requires an integral representation construction or the missing integrality and positivity of its character coefficients; real norm-one rows alone do not give it. No global spectral or individual representation-existence assertion follows solely from (6.896).
 
 
 6. The first product has total rank \(6r\), and its derivative of index \(3r\) has quotient \(S[0,2]\). Its unique generic irreducible is \(S[0,3]\times S[1,2]\). In the same derivative of that product, every nonempty suffix of the first segment contains exponent three; if it is removed, the other factor has no exponent zero. Thus the datum \([0,2]\) occurs only in the derivative of the original product, which is consequently reducible. For the three-factor example, \([0,1]\) and \([4,4]\) are unlinked, so their two ordered products are actually isomorphic. Exchange them inside the full induction. The intervals \([0,1]\) and \([1,2]\) are then consecutive and linked. Their nonzero proper submodule and quotient remain nonzero under exact induction with the \([4,4]\) factor. The original three-factor product is reducible as well. \(\square\)
+
+
+**Solution 7.45.** The divisor degree is \(e=2\). Equation (6.906) permits only the gap zero, hence only the normalized profile \((0,0)\). Each depth-one local index is \(|\mathrm{GL}_2(\mathbb F_2)|=(4-1)(4-2)=6\). Consequently
+\[
+ \dim C_{\mathrm{cusp}}(J(D),\Omega)\le1\cdot6^2=36.
+\tag{7.130}
+\]
+For \(n=3,e=3\), the pairs of gaps \((0,0),(1,0),(0,1),(1,1)\) give respectively \((0,0,0),(1,0,0),(1,1,0),(2,1,0)\), with upper bound \(4[\mathcal K:J(D)]\). These are support profiles. Relations from rational stabilizers, the central character and all constant terms can lower the dimension, including to zero. Neither upper bound proves occurrence.
+
+In characteristic two, subtraction in (6.905) is addition, and \(t+t(1+u)=1\); the reduced first row is \((0,1)\). The second row has degree one and normalized leading residue \((1,0)\), whereas the first has degree zero and leading residue \((0,1)\). They are independent. The determinant is still \(t\), so the sorted degrees are \((1,0)\).
+
+The weights of the abstract cosets are \(w_1=1/2,w_2=1/3\). In the orthonormal basis, Theorem 6.382 gives
+\[
+ A=\begin{pmatrix}2&\sqrt6\\\sqrt6&3\end{pmatrix},
+ \quad \det A=0,\quad\operatorname{Tr}A=5,
+ \quad A^2=5A.
+\tag{7.131}
+\]
+It has rank one, eigenvalues \(0,5\), and trace \(\tfrac12\cdot4+\tfrac13\cdot9=5\). This is a finite weighted-kernel model, without an assertion that this particular matrix comes from an automorphic test. For an actual factorable test, one needs a given compatible global \(\Omega\), compact inverse-central-covariant bi-level factors, a factor satisfying the strong translated-period condition (6.914), and the discrete tests of Theorem 6.374 at the prescribed places. A nonzero value of its actual trace then gives the desired factors by Corollary 6.383. The nonzero value itself must be proved for that test; it does not follow from the abstract matrix or from (7.130).
+
+
+**Solution 7.46.** The polynomial \(X^3-X-1\) takes the value \(2\) at each element of \(\mathbb F_3\), so is irreducible. Substituting \(X=1+hY\) gives
+\[
+ h^3\left(\left(\frac{X-1}{h}\right)^3
+        -\frac{X-1}{h}-1\right)
+   =X^3-h^2X+(-1+h^2-h^3).
+\tag{7.132}
+\]
+It has nonzero coefficient indices \(2,3\), although its trace is zero. The derivative is \(-h^2\ne0\), so it is separable. Its constant coefficient is nonzero since a nonconstant rational \(h\) is transcendental over the constants.
+
+At \(0\), \(h\) has valuation \(M\). At infinity its numerator and denominator degrees give the same valuation \(M\). Hence \(\gamma\to1\) at both places. The polynomial \(t^2+1\) has no \(\mathbb F_3\)-root, so determines a degree-two place outside them. Since \(\gcd(3,2)=1\), its constant-extension completion is an unramified field of degree three, and \(\gamma\) is elliptic there. The pole of \(h\) at that place does not obstruct the positive local cut of Lemma 6.387.
+
+If the scaled characteristic coefficients are \(d_2,d_3\), put \(r_2=d_2/c_2\) and \(r_3=d_3/c_3\). Then
+\[
+ z^2=r_2,\qquad z^3=r_3,\qquad z=r_3/r_2\in K^\times.
+\tag{7.133}
+\]
+For the conjugate-in-a-cut calculation (6.928) the ratios have the opposite orientation, as that formula specifies. At a place of degree three the tensor algebra has three degree-one factors by (6.919). The chosen constant-field element is then split, so this place does not meet the coprime-degree hypothesis for prescribed discrete-series orbital nonvanishing.
+
+With maximal compact volume one, the formal-degree formula of Section 6.22 gives
+\[
+ d_{\mathrm{St}_3}=\frac{(3-1)(3^2-1)}3=\frac{16}3,
+ \qquad O_\gamma(f_{\mathrm{St}_3})=1,\qquad
+ O_\gamma(b_\infty)=\frac2{16/3}=\frac38
+\tag{7.134}
+\]
+for sufficiently large \(M\). Let \(C>0\) be the finite product of the other positive cut-orbitals; every tail factor is one. After the single-class separation of Theorem 6.390, the actual trace is
+\[
+                 \operatorname{Tr}R(f)=\frac38 V_T C>0.
+\tag{7.135}
+\]
+No numerical value of \(V_T\) or \(C\) has been assumed. This calculation requires a given compatible global \(\Omega\), the stated actual strongly cuspidal auxiliary test, and the specified local factors and sufficiently small separating cut. It does not construct that auxiliary or assert a cuspidal representation unramified at every other place. Corollary 6.383 applies to this actual nonzero trace and gives the prescribed Steinberg component at \(0\).
+
+
+**Solution 7.47.** Over \(\mathbb F_2\),
+\[
+ B^2=\begin{pmatrix}1&1\\1&0\end{pmatrix},\quad
+ B^3=1,\quad S^2=1,\quad SBS=B^2.
+\tag{7.136}
+\]
+The matrices \(B,S\) generate \(\mathrm{GL}_2(\mathbb F_2)\): the six elements \(1,B,B^2,S,SB,SB^2\) are distinct, and the group has \((4-1)(4-2)=6\) elements. Its centralizer of \(B\) is \(\langle B\rangle\), and the two matrices in its conjugacy orbit are \(B,B^2\).
+
+Write \(\varepsilon\) for the image of \(\varpi\) modulo \(\varpi^2\). On the semidirect product \(M_2(\mathbb F_2)\rtimes\mathrm{GL}_2(\mathbb F_2)\), define
+\[
+ \begin{gathered}
+ \tau(1+\varepsilon X)=
+  \operatorname{diag}\bigl((-1)^{\operatorname{tr}(BX)},
+                         (-1)^{\operatorname{tr}(B^2X)}\bigr),\\
+ \tau(B)=I_2,\qquad
+ \tau(S)=\begin{pmatrix}0&1\\1&0\end{pmatrix}.
+ \end{gathered}
+\tag{7.137}
+\]
+Conjugation by \(B\) fixes both matrix characters, and conjugation by \(S\) interchanges them. Thus these formulas respect the semidirect product and the relations (7.136). The two characters are distinct by the nondegenerate matrix trace pairing. Fourier projection separates their two coordinate lines; \(\tau(S)\) interchanges them. Any nonzero invariant subspace therefore contains both lines, proving irreducibility and unitarity.
+
+Extend its central character by value one on \(\varpi\), and let \(\rho\) be the compact induction of Proposition 6.394. With depth \(d=1\), equations (6.944) and (6.948) give
+\[
+ \dim\rho^{K_1}=0,\qquad \dim\rho^{K_2}=2,
+ \qquad d_\rho=2,\qquad
+ d_{\mathrm{St}_2}=\frac{2-1}{2}=\frac12,
+ \qquad\frac{d_\rho}{d_{\mathrm{St}_2}}=4.
+\tag{7.138}
+\]
+Since \(\operatorname{tr}B=\operatorname{tr}B^2=1\), the central character on \(1+\varpi a+\varpi^2\mathcal O\) is \((-1)^a\). An unramified twist cannot change this unit value.
+
+At infinity set \(U_i=1+u^i\mathbb F_2[[u]]\). The group \(U_1/U_3\) is cyclic of order four, generated by \(g=1+u\):
+\[
+ g^2=1+u^2,\quad g^3=1+u+u^2,\quad g^4=1\pmod{u^3},
+ \qquad\beta(g)=i,\quad\beta^2=\omega_\rho\text{ on }\mathcal O_\infty^\times.
+\tag{7.139}
+\]
+Indeed \(\beta^2\) is minus one on \(g,g^3\), and one on \(1,g^2\), exactly the coefficient-of-\(u\) character just computed. Choose \(\beta(u)=1\). Then \(\rho_1=\rho\otimes(\beta\circ\det)\) has trivial central character, since \(\omega_\rho\beta^2=\omega_\rho^2=1\), and formal degree two. Here \(\mu_2(\mathbb F_2((u)))=\{1\}\). Over \(\mathbb Q_2\) it is \(\{1,-1\}\); a square character must be trivial at \(-1\). Taking depth \(d=2\) separates \(-1\) from \(1+4\mathbb Z_2\), and Lemma 6.392 permits its prescribed central action before Lemma 6.397 is applied. There is no assumption that a random central-character ratio already has that property.
+
+For the global example choose \(\Omega=1\), the given \(\mathrm{St}_2\) at the two rational places \(0,1\), and \(\rho_1\) at infinity as an actual strong-test auxiliary. All three degrees are one and coprime to two. Theorem 6.390 applies directly. The two discrete-test orbitals are \(-1\) by (6.925), and a unit-vector coefficient of \(\rho_1\), of identity value one, has orbital \(-1/d_{\mathrm{St}_2}=-2\) by (6.926). Thus, after the separating cut, with \(C>0\) the finite product of the other positive cut-orbitals,
+\[
+           \operatorname{Tr}R(f)=V_T(-1)(-1)(-2)C=-2V_TC\ne0.
+\tag{7.140}
+\]
+The tail orbitals are all one. Positivity of those cut-orbitals is not positivity of their integrated operators, so the negative trace causes no contradiction. The actual finite spectral sum gives a cuspidal constituent with the two prescribed Steinberg factors and trivial central character. The construction allows additional ramification; it makes no unramified-everywhere-else assertion.
+
+
+**Solution 7.48.** (a) Write \(k=-v_\infty(b)\). Finite integrality and norm one give
+\[
+ 0\le k\le2,\qquad
+       \sum_{v\ne\infty}\deg(v)v(b_v)=k.
+\tag{7.141}
+\]
+For \(k=0\) all finite valuations are zero. For \(k=1\), precisely one of \(t,t+1\) has valuation one. For \(k=2\), the finite positive divisor is one of
+\[
+ 2[t],\quad[t]+[t+1],\quad2[t+1],\quad[t^2+t+1].
+\tag{7.142}
+\]
+The only monic irreducible quadratic over \(\mathbb F_2\) is \(t^2+t+1\), since the other monic quadratics have a root. These are all seven valuation vectors, with infinity valuation \(-k\). Each gives a translate of \(\prod_v\mathcal O_v^\times\). Their union is compact in the idèle topology. The argument uses degree over \(\mathbb F_2\), so the quadratic place contributes two in (7.141).
+
+(b) Finite valuations are nonnegative, and
+\[
+     |b_\infty|=\prod_pp^{v_p(b_p)}\in\{1,2,3,4\}.
+\tag{7.143}
+\]
+The corresponding finite valuations are the prime factorizations of these four integers, and \(b_\infty\) is either sign of that integer. All other finite components are units. This gives eight compact pieces; neither a zero real component nor an arbitrarily small nonzero one is possible.
+
+(c) Finite integrality makes every rational entry a polynomial in \(t\). The first row of a matrix in \(gC\) has infinity valuation at least \(R-M>0\). A polynomial with positive infinity valuation is zero, so that row vanishes. Every nonzero such matrix consequently has rank one and is singular. Such matrices do exist: the matrix with only its lower-left entry equal to one lies in \(gC\). Although \(\det g_v=1\) everywhere, the lattice intersection in (6.967) supplies no invertible rational point here. For a division algebra every nonzero rational point is invertible, which is exactly the step used in (6.976).
+
+(d) Write \(i^2=j^2=-1\), \(ij=-ji\). The rational algebra is division because its norm is a sum of four rational squares, vanishing only at zero. The centralizer of \(i\) is \(\mathbb Q(i)\). Conjugation by \(j\) sends \(i\) to \(-i\), so both possible rational scalars \(z^2=1\) occur in the projective stabilizer. Therefore
+\[
+               e_i=2,\qquad
+        \frac{V_{\mathbb Q(i)}}{e_i}=\frac12V_{\mathbb Q(i)}.
+\tag{7.144}
+\]
+This factor is present even though the ordinary centralizer is a field. Finally left multiplication by \(\operatorname{diag}(2,3)\) scales each of two columns by determinant six; its real additive Jacobian on the four-dimensional matrix space is \(6^2=36\). It illustrates the exponent \(n\) on the reduced norm in Theorem 6.410. No archimedean finite-rank spectral assertion is inferred from this Jacobian. \(\square\)
+
+
+**Solution 7.49.** (a) Neither zero nor one is a root of \(P\). The only irreducible quadratic over \(\mathbb F_2\) is \(Q=t^2+t+1\); modulo it \(t^3=1\) and \(P\equiv1\). A reducible degree-five polynomial has a factor of degree at most two. Thus \(P\) is irreducible. The congruence is \(5k\equiv-4\pmod6\), so \(k=4\), and
+\[
+ A=t^3(t+1)P^4
+   =t^{24}+t^{23}+t^{12}+t^{11}+t^4+t^3.
+\tag{7.145}
+\]
+For \(B=(\mathbb F_{64}(t)/\mathbb F_2(t),\sigma,A)\), the nonzero invariants and their division indices are
+\[
+ \begin{array}{c|ccc}
+ v&0&1&P\\ \hline
+ \operatorname{inv}_v B&1/2&1/6&1/3\\
+ \operatorname{ind}_v B&2&6&3\\
+ r_v&3&1&2
+ \end{array}
+\tag{7.146}
+\]
+At \(P\), formula (6.988) gives \(5\cdot4/6=1/3\) modulo one. Infinity has valuation \(-24\), so is split of degree six; all other finite valuations of the parameter vanish and those completions split. The valuation-one completion at one proves that \(B\) is globally division. In particular its completion at zero is \(M_3\) of the local quaternion division algebra.
+
+(b) For degree two, \(g=2,N=3\). The tensor algebra has two unramified degree-three factors over \(K_v\), each with residue field \(\mathbb F_{64}\) over \(\mathbb F_4\). The automorphism \(\sigma\) exchanges the two factors, while \(\sigma^2\) is their arithmetic Frobenius. The cyclic algebra is \(M_2\) of its degree-three corner. Its parameter here is a unit, so the corner is split and the whole algebra is \(M_6(K_v)\). The two idempotents and (6.986) remain valid in characteristic two.
+
+(c) The six Frobenius conjugates of \(\theta\) alternate between \(\theta\) and \(\theta^2\). Therefore
+\[
+ \operatorname{Tr}_{64/2}(\theta)=3(\theta+\theta^2)=1,
+ \quad N(1+\theta X)=(1+X+X^2)^3
+                         =1+X+X^3+X^5+X^6.
+\tag{7.147}
+\]
+Although \(\operatorname{Tr}_{64/2}(1)=0\), the trace needed in (6.987) is onto. At infinity, with \(u=t^{-1}\),
+\[
+ A=u^{-24}(1+u)(1+u^{12}+u^{20}).
+\tag{7.148}
+\]
+The scalar \(u^{-4}\) has norm \(u^{-24}\). The correction \(1+\theta u\) has norm \(1+u\) modulo \(u^2\). At each higher depth, choose zero or \(\theta\) according to the next error coefficient and use (6.987). The infinite product converges to an exact norm for the remaining unit. A sixth power of a scalar principal unit is a square in characteristic two, so its Laurent expansion has no term of odd degree. It cannot equal the unit in (7.148), whose coefficient of \(u\) is one. The unramified norm construction supplies the required element.
+
+(d) The three nontrivial signs are \((-1)^3,-1,(-1)^4\), with product one. At the indicated good place the étale order is the product of two unramified valuation rings of degrees two and four. Its stable lattices, after identifying the representation with that étale algebra, are
+\[
+          \pi^a\mathcal O_{E_2}\oplus
+                         \pi^b\mathcal O_{E_4},\qquad a,b\in\mathbb Z.
+\tag{7.149}
+\]
+The torus is transitive on them. With integral-unit-image torus volume one and normalized compact test, their quotient contributes exactly one, not an infinite count of these pairs. This is the Haar quotient calculation (6.998). The example constructs the inner algebra and its trace inputs; the individual local representation transfer requires the further comparison and integrality arguments. \(\square\)
 
 
 ## 8. Proofs and prerequisites
 
 The class matching is fully proved in Theorem 1.1, the trivial/Steinberg character calculation in Proposition 2.2, the complete real local correspondence in Lemmas 2.3–2.4 and Theorem 2.5, and the all-prime dimension equality in Theorem 4.2. Lemma 2.6, Theorem 2.7 and Proposition 2.8 prove the finite-place regular character theorem, including compact split elements, in all characteristics. They include the exact tree complex, uniform fixed-tube trace stabilization, principal/special character formulas and finite elliptic compact-type sum. Section 2.4 proves finite-place smooth transfer, including the inseparable support needed in characteristic two, by the signed Euler test and the exact orbital-coordinate lift. Lemma 2.11 proves the full two-term scalar orbital germ and the negative scalar-value identity for every matching pair. Proposition 2.12 proves the paired formal degree for special representations. Lemma 2.13, Theorem 2.14 and Corollary 2.15 prove the whole depth-zero local bijection, its negative character identity on every regular elliptic class, paired formal degrees, and every determinant/norm twist of that family. The finite-tree character argument includes deep scalar-residue classes and all residue characteristics. Theorem 2.16 proves the full Schur constant for every irreducible admissible compact induction, Corollary 2.17 computes the division degree and reduces equality to an explicit dimension-volume identity, and Proposition 2.18 calculates the unramified and ramified inducing volumes in every characteristic. Theorem 2.30 proves the all-level bijection, character identity and paired type dimensions by the quaternion construction and elliptic orthogonality. Lemmas 2.19–2.21 and Theorem 2.22 prove real character integration across the singular set, the scalar-value identity for every matching pair, and real smooth/spectral transfer with common-support polynomially bounded wave tests. The Gaussian orbital example computes the scalar sign directly. Sections 2.8–2.10 supply the full finite representation construction, arbitrary-test character integration, Fourier comparison, elliptic orthogonality, all-level bijection, full factor and formal-degree equality, and every-pair spectral transfer. Sections 3.3–3.6 prove the full global quaternion correspondence over \(\mathbb Q\): equal paired volumes, absolute discrete traces, the truncated-kernel comparison, cancellation of the split/unipotent/continuous terms, the residual characters, and positive outside trace separation. The real proof includes the principal/complementary square-integrability exclusions, a trace-class regularization of the disk character and explicit paired formal degrees (2.23)–(2.24). Both level examples, the order calculation, the Brandt matrices and the exercise solutions include their computations. Sections 6.16–6.18 give the Schwartz trace calculus, explicit nilpotent and unipotent orbital measures, unipotent orbital continuity, compact-support germ expansions and scalar homogeneity. Exercises 7.6–7.7 compute division-matrix kernel flags and explain coincident homogeneity degrees. Section 6.19 gives the uniform Schwartz constant terms and polynomially weighted orbital reduction. Section 6.20 proves the exact elliptic radial sums, sharp Schwartz convergence and actual elliptic coefficient–character formula in division rank two. Exercise 7.8 computes a separable degree-four example in characteristic two with both torus normalizations. Section 6.21 proves the compact flag-kernel estimate, angular spherical bound, quantitative elliptic conjugator bound, every-rank elliptic convergence and coefficient formula, and polynomially weighted regular convergence. Exercise 7.9 distinguishes the angular estimate from a false pointwise bound. Section 6.22 proves a completed Schwartz resolution, higher-extension vanishing for tempered pairs with a discrete-series member, compact pseudo-coefficients, the cellular formal-degree formula and fixed-level finiteness of discrete series. Exercise 7.10 computes a lattice cut and a rank-two formal-degree quantum. Section 6.23 proves the finite-commutator identity for compact discrete tests, all their ordinary regular orbital values, a division-norm fixed-set contraction, explicit matching Euler tests in every degree, and the probability normalization of elliptic class measure. Exercise 7.11 computes fixed-interior signs and distinguishes regular orbital matching from scalar test values. Section 6.24 constructs the Iwahori sign discrete series by an explicit Schwartz projection, proves its irreducibility, admissibility and formal degree, computes the Euler test on this family and gives an absolute elliptic character moment bound. Exercise 7.12 computes a rank-three division example and its cyclic phases. Section 6.25 proves a bounded apartment contraction, the signed Euler cocenter identity and actual norm-character-family transfer in every degree; it computes the general zero-orbit germ, near-identity elliptic discrete characters and integral formal-degree ratios. Figure 5 shows the rank-two apartment averages and their Hecke coefficients. Exercise 7.13 checks an infinite primitive, both torus measures and the degree integrality obstruction. Section 6.26 classifies every primary fibre, constructs locally finite orbital measures and compact-test germs including inseparable elements, proves compact parabolic descent and gives finite germ expressions for elliptic discrete characters. Figure 6 and Exercise 7.14 compute the two inseparable primary types in dimension four. Section 6.27 proves a quotient conjugator bound for every closed orbit, identifies the exact nilpotent obstruction to the flag submersion, constructs actual character densities on the whole D-irreducible open set including inseparable elements, and extends Schwartz convergence and discrete-test vanishing to one-chain primary orbits. Its double-primary germ formula has one remaining coefficient. Figure 7 and Exercise 7.15 compute the inseparable quartic chamber, both coefficient-orbital measures and the necessity of the centralizer quotient. Section 6.28 counts all saturated quadratic lattices in odd division degree, proves the resulting absolute Schwartz orbitals for every linear or quadratic primary partition, computes the Euler orbital at every closed primary element, and gives the quadratic closed germ and finite elliptic character expansions for split \(\mathrm{GL}_4\). The dimension sum does not establish individual coefficient integrality or positivity; elliptic orthogonality is Theorem 6.271. Figure 8 and Exercise 7.16 give exact lattice counts, ramification factors and the convergent shell estimate. Section 6.29 proves all ordinary orbital Schwartz bounds in division rank two by an exact tree displacement and weighted shell count, and proper-flag bounds and discrete-test vanishing in rank three. It constructs compact conjugacy representatives for bounded reduced polynomials, proves the finite-extension index and embedding rules including inseparable fields, and evaluates primary germs at multiplicity at most two and throughout rank three. Its elliptic character extension criterion gives finite complex character expansions and finite elliptic \(L^2\) norms in every division rank at most three, every inner form of degrees four and six, and the further split degrees specified there. Figure 9 and Exercise 7.17 compute an inseparable quaternion fixed tree, its sharp positive convergence threshold and an explicit primary polynomial limit. These statements leave individual character coefficients and general representation transfer as additional conclusions; elliptic orthogonality is Theorem 6.271. Section 6.30 constructs an integral involution model for ramified quadratic fields in even division degree under its specified odd-residue or inseparable characteristic-two hypotheses. It proves exact fixed-lattice descent, paired lattice normal forms and stabilizer masses over the noncommutative fixed division algebra, every-rank absolute Schwartz convergence, primary-partition vanishing and closed germs, and a singular Steinberg coefficient orbital. Figure 10 and Exercise 7.18 compute paired lengths and exact masses, with formal-degree and Haar factors in division degrees two and four. Section 6.31 proves the unramified quadratic lattice normal forms and exact orbit masses in every even division degree and both characteristics. Its partition and finite-series identities establish exhaustiveness in all ranks and indices. The resulting Schwartz bounds extend primary-partition traces and closed germs to these fields and give the singular unit Iwahori Steinberg orbital two. Figure 11 and Exercise 7.19 compute the two valuation colors and exact normalized-lattice counts. Section 6.32 proves the ramified quadratic recurrence, stable sums and intersections, exact coefficient descent and stabilizer masses without an involution hypothesis. It gives every linear or quadratic primary Schwartz trace and closed germ in every rank, division degree and field characteristic, including wild separable fields. Its elliptic extension criterion covers every inner form of degree eight and of twice a prime degree, with finite complex character expansions and their stated limits. Figure 12 and Exercise 7.20 compute a separable characteristic-two wild field, its rank-five masses and the mixed-characteristic Eisenstein recurrence. Section 6.33 proves the higher-degree Eisenstein recurrence, integral Moore-matrix descent, exact stable lattice sums and intersections, and the total normalized-lattice series for totally ramified fields whose degree divides the division degree. Its cubic examples give the two first-level orbit masses, a three-submodule obstruction to direct-sum classification, and two infinite families with exact stabilizers and Cartan heights. Their convergent contributions and the explicit index-two count distinguish these families from a full cubic orbital bound. Figure 13 and Exercise 7.21 compute the finite-field quotient, masses and root-height counterexample. Section 6.34 counts every normalized cyclic quotient in all totally ramified degrees dividing the division degree, proves their exact Cartan heights and restricted Schwartz bounds for every field generator, and classifies every cubic cyclic-quotient orbit with its exact mass. Its integral dual-module argument includes inseparable cubic fields. Figure 14 and Exercise 7.22 compute the intermediate cubic orbits and the complete index-two count. Quotients with several positive lengths remain outside that restricted convergence estimate. Section 6.35 proves normalized opposite-algebra lattice duality with exact orbit masses and conjugate Cartan lists, and the complete dual-cyclic Schwartz subseries in every totally ramified degree dividing the division degree. It gives the cubic dual families, both cyclic orientations and the count of every cubic elementary quotient type in either characteristic. Over the specified characteristic-two cubic field it proves an intermediate-intersection stabilizer explicitly and classifies every normalized lattice through index four by an independent exact total count. Figure 15 and Exercise 7.23 compute the dual masses and finite cubic configurations. The complete rank-three estimate is Section 6.37. Section 6.36 proves exact normalized power heights in every totally ramified degree dividing the division degree and an exact extreme-Cartan identity for every totally ramified cubic field. Its integral right-module dual gives complete cubic cyclic-quotient orbit classifications and masses in every division rank, including noncommutative centralizers. It describes the dual families, counts every rank-three elementary quotient type, and proves that each equal-positive-length type is one orbit with its full subseries bound. Figure 16 and Exercise 7.24 compute quaternionic-centralizer masses and a wild separable characteristic-three uniformizer whose conjugation is not periodic. The unequal-length estimates in division rank three are Section 6.37. Section 6.37 proves the full ordinary Schwartz orbital bound in division rank three for every generator of every totally ramified field embedded in the division algebra. Its incidence count gives the exact uniformizer height distribution in all such degrees and the exponential saving for arbitrary generators. It proves the primary-partition traces and zeros, closed character germ and singular Steinberg coefficient orbital for this family, including wild and inseparable extensions. Figure 17 and Exercise 7.25 compute interior height counts in degrees three and four. Section 6.38 treats fields with nontrivial residue extension. Section 6.38 constructs an integral coefficient order for every field embedded in the division algebra. Finite least-length colors, compact coefficient-primitive frames and an actual top-cyclic incidence bound prove ordinary Schwartz convergence, polynomial tails and traces for every such closed orbit in division rank three. The primary-module dichotomy and the proper-flag bounds then cover every ordinary orbital in division ranks at most three, in both characteristics. It gives the residue-degree factor in the closed Euler and singular Steinberg values, the closed character germ, and a mixed inseparable example. Figure 18 and Exercise 7.26 distinguish ambient refinement counts from coefficient-normalized counts. General higher-rank noncompact closed orbitals, arbitrary-test character integration, individual transfer coefficients and the full local and global representation correspondences remain separate obligations. Section 6.39 proves Schwartz traces and zeros for every proper-flag orbit in division rank four, and gives every rank-four primary closed compact germ without assuming closed-orbit Schwartz convergence there. It proves finite real elliptic character expansions for every division rank at most four, and reality in the earlier finite-expansion ranges. Polynomial sublevel estimates give quantitative elliptic discriminant tails and compact finite-level trace approximants to their Gram matrices. Its exact complementary trace limit and uniform fixed-space integrability criterion distinguish those results from full elliptic orthogonality. Figures 19–20 and Exercise 7.27 give an inseparable quartic, a rank-four Cartan limit and explicit concentration and character-coefficient examples. Corollary 6.272 proves vanishing of the stated trace limits. Higher-rank noncompact closed orbitals, individual coefficient integrality and the full local and global representation transfers require further arguments. Section 6.40 proves smooth transfer of every division-group test to every inner form of the same degree, using central-covariant polynomial profiles and the Euler function. In division ranks at most four it gives the inverse profile and a canonical linear cocenter isomorphism, elliptic discrete-character independence and uniqueness of any such discrete-series transfer candidate. Its exact finite trace duality proves positive-definite elliptic Gram matrices and exact separation of finite packets by regular-support tests. Figures 21–22 and Exercise 7.28 display the normalization, matrix identities and complementary trace limits. Orthogonality and the transfer-test trace identity are Theorem 6.271 and Corollary 6.272. Coefficient integrality, representation-transfer existence and the general global correspondences require additional arguments. Section 6.41 gives a finite principal Jacquet model with exact Haar factors and proves compatibility of normalized constant terms with algebraic projective traces. A cubical resolution along the proper Levi central flat cancels identical projective modules, proving every proper ordinary orbital of compact Euler–Poincaré tests zero in every division rank and both characteristics. It gives all closed primary compact germs, finite real elliptic character expansions, the inverse linear cocenter map, elliptic independence and finite regular-support trace separation in every rank. Figures 23–24 and Exercise 7.29 display the finite flag normalization, central-flat cancellation and an inseparable rank-six example. General closed Schwartz convergence, individual coefficient integrality and full local and global representation transfer require additional arguments. The complementary-trace limit is Corollary 6.272. Sections 6.42–6.43 construct very cuspidal Euler representatives by rational finite flag characters, including Frobenius and cyclic graded pieces. Their conjugation kernels define continuous Schwartz traces. A uniform discriminant estimate on conjugation overlaps proves the cutoff limit and the elliptic pairing, giving the cuspidal trace identity, elliptic discrete-series orthogonality and actual vanishing of complementary transfer traces in every rank and both characteristics. Figures 25–26 and Exercise 7.30 display the finite cycles, kernel comparison and exact normalizations. Individual coefficient integrality, representation existence and completeness, general noncompact closed Schwartz estimates, arbitrary-test character integration and the full global correspondences require further arguments. Section 6.44 proves global Whittaker injectivity for smooth cuspidal functions on GLn over number fields and function fields, with a function-field additive-duality proof and compact successive Fourier integrals. It extracts local Whittaker functionals from a given tensor realization and constructs nonzero compact cuspidal Poincaré functions using one translated-unipotent-zero component and one shrinking auxiliary place. Figures 27–28 and Exercise 7.31 give the Fourier steps, rational-support isolation, trace-dual constants and the distinction between trace and operator zeros. Section 6.45 gives explicit row-section Haar densities, the regular mirabolic Hilbert decomposition, preferred smooth evaluation and its sharp principal-level norm bound. The central regular representation restricts to a mirabolic regular multiplicity by a projective-row calculation. A discrete-series coefficient embedding therefore gives a nonzero Whittaker functional for every split degree in both field characteristics. Figures 29–30 and Exercise 7.32 display the exact measures, functional maps, projective masses and the positive zero Fourier fibre in finite models. Section 6.46 proves transpose symmetry in the compact cocenter, the contragredient identity and Whittaker multiplicity one for split general linear groups in every nonarchimedean field characteristic. Its twisted Bruhat quotients, compatible block-scalar representatives and finite involution filtration are explicit. Figures 31–32 and Exercise 7.33 give the matrices and algebraic kernels. Section 6.47 computes Whittaker coinvariants of every smooth parabolic induction by explicit block shuffles and compact averaging. It gives the unique generic occurrence in a given finite composition series. Frobenius adjunction and finite principal Jacquet coordinates give the actual induced-trace identity in every division rank, so compact Euler tests annihilate all proper induced traces, including non-tempered inductions. Figures 33–34 and Exercise 7.34 give the stabilizers, Haar factors and finite matrices. A rank-two principal series shows why the generic constituent of a reducible induction can nevertheless have nonzero trace. Section 6.48 proves additive detection by compact character projectors and detection of every nonzero mirabolic module by finitely many simple-root characters. The resulting integer bounds composition length. Every irreducible admissible cuspidal representation is generic and remains irreducible on the mirabolic subgroup. The exact character profiles of cuspidal induction count ordered partitions of its labelled blocks, giving finite length bounded by 1, 3, 13, 75 and 541 for one through five blocks, and exactly one generic occurrence. Figures 35–36 and Exercise 7.35 give the projector identities, ordered partitions and strict length-bound example. Sections 6.49–6.52 prove normalized functor identities, cuspidal embeddings, the geometric Jacquet filtration and factorial finite-length bounds for every division general-linear group in both characteristics. Cuspidal data determine the complete composition multiset of induction independently of block order. A nontrivial reducible two-block exchange gives two opposite nonsplit extensions and one-dimensional intertwining spaces. In the split group, each exact cuspidal multiset has one generic irreducible, occurring once in every ordering. Normalized unitary induction preserves its original smooth module and invariant smooth complements; pairwise inequivalent unitary cuspidals induce irreducibly, with unitary identifications between orders. Ordinary compact tests have actual Laurent-polynomial matrices on common fixed spaces. Figures 37–46 and Exercises 7.36–7.39 give the functors, projectors, two-flag cells, exchange maps, unitary norms, explicit Hecke matrices and division self-twists. Section 6.53 constructs the normalized mirabolic functors by compact Fourier projectors and proves their exact filtration, smooth-dual pairing and highest-derivative pairing. Its actual derivative modules have quotients indexed by subsets of the cuspidal labels. Their shifted support proves irreducibility whenever no two inducing cuspidals differ by the positive determinant character, including repeated isomorphic factors, and gives exact mirabolic length \(2^s-1\) under that hypothesis. Figures 47–49 and Exercise 7.40 display the modules, pairings and length counts. 
 
-Section 6.54 proves the two-orbit mirabolic restriction sequence and the positive and negative derivative product identities, with actual compact section maps, algebraic kernels and all quotient-Haar factors. An ordered induction with no later cuspidal equal to the positive determinant twist of an earlier one has no nonzero degenerate mirabolic submodule. Every generic irreducible admissible split representation therefore has a faithful Kirillov realization containing its essential compact simple socle. Mirabolic endomorphisms are scalar; Hom spaces between modules with the stated property have dimension at most one and every nonzero map is injective. Figures 50–52 and Exercise 7.41 give the orbits, normalization factors, exact rank-two and rank-three lengths and a finite-field counterexample to the noncompact support test. Section 6.55 proves the complete two-cuspidal reducibility criterion by invariant Hermitian forms on finite Hecke spaces and a Laurent-trace bound. Generic factors with no cross adjacency induce irreducibly. Disconnected exact cuspidal support therefore excludes a discrete series by its own compact test. Figures 53–55 and Exercise 7.42 give the signature argument, support graph, endpoint Gram matrices and exact trace margins. Section 6.56 constructs generic segments as actual intersections, computes every normalized Jacquet module and derivative, and proves square integrability by a coefficient criterion valid before unitarization. Unlinked segments induce irreducibly; the unique height-interval decomposition gives the generic factorization and full split discrete-series classification. Compact discrete tests isolate a discrete series among all generic irreducibles of its central character, including non-tempered representations. A derivative witness proves the converse linked-segment reducibility criterion. Figures 56–60 and Exercises 7.43–7.44 give the exact projections, chunks, norms, interval combinatorics and traces. Individual representation-transfer integrality and actual global spectral extraction require further arguments. Corollary 4.1 is deduced from the proved global theorem and earlier course results; the independent dimension calculation is not substituted for the theorem.
+Section 6.54 proves the two-orbit mirabolic restriction sequence and the positive and negative derivative product identities, with actual compact section maps, algebraic kernels and all quotient-Haar factors. An ordered induction with no later cuspidal equal to the positive determinant twist of an earlier one has no nonzero degenerate mirabolic submodule. Every generic irreducible admissible split representation therefore has a faithful Kirillov realization containing its essential compact simple socle. Mirabolic endomorphisms are scalar; Hom spaces between modules with the stated property have dimension at most one and every nonzero map is injective. Figures 50–52 and Exercise 7.41 give the orbits, normalization factors, exact rank-two and rank-three lengths and a finite-field counterexample to the noncompact support test. Section 6.55 proves the complete two-cuspidal reducibility criterion by invariant Hermitian forms on finite Hecke spaces and a Laurent-trace bound. Generic factors with no cross adjacency induce irreducibly. Disconnected exact cuspidal support therefore excludes a discrete series by its own compact test. Figures 53–55 and Exercise 7.42 give the signature argument, support graph, endpoint Gram matrices and exact trace margins. Section 6.56 constructs generic segments as actual intersections, computes every normalized Jacquet module and derivative, and proves square integrability by a coefficient criterion valid before unitarization. Unlinked segments induce irreducibly; the unique height-interval decomposition gives the generic factorization and full split discrete-series classification. Compact discrete tests isolate a discrete series among all generic irreducibles of its central character, including non-tempered representations. A derivative witness proves the converse linked-segment reducibility criterion. Figures 56–60 and Exercises 7.43–7.44 give the exact projections, chunks, norms, interval combinatorics and traces. Section 6.57 proves the exact additive threshold and polynomial row reduction over the rational function field. Its uniform cusp-support bound gives an admissible cuspidal Hilbert space, a discrete spectrum with restricted local factors, and a finite spectral trace. A strong local constant-term condition gives a finite weighted diagonal kernel trace. Corollary 6.383 extracts prescribed discrete-series factors when that trace is nonzero. Figures 61–63 and Exercise 7.45 give the reduction, support profiles and quotient weights. Section 6.58 uses a constant-field torus, scalar-free affine spectra and finite projective polynomial bounds to isolate one global elliptic class. Absolute unfolding gives a nonzero trace and prescribed discrete-series components under its given-character, strong-auxiliary and coprime-degree hypotheses. Figures 64–66 and Exercise 7.46 give the zero-trace characteristic-three example, scalar normalization and exact convergence argument. Sections 6.59–6.60 construct regular congruence types, prove their actual unitary and smooth irreducibility and cuspidality, and match every prescribed local unitary central character in both nonarchimedean field characteristics. The exact character-root obstruction is the action on local n-th roots of unity. Explicit idele-class coordinates construct a compatible global character for one prescribed positive-characteristic discrete series. Theorems 6.401–6.404 give its actual globalization, finite Steinberg auxiliaries, and given-character globalization at coprime-degree places. Figures 67–70 and Exercise 7.47 give residue matrices, fixed spaces, formal degrees, ramified character roots and a nonzero trace in characteristic two. Section 6.61 proves compact norm-one idele classes, every separable field-torus quotient modulo scalars, and adelic compactness for every global central division algebra, in both global characteristics. For function fields it proves admissible inner discrete spectrum and a finite kernel trace. Absolute finite elliptic unfolding retains the rational projective stabilizer factor. Figures 71–74 and Exercise 7.48 give the lattice intersection, norm bounds, scalar reduction, finite trace and quaternion symmetry factor. Sections 6.62–6.63 construct constant cyclic global division algebras with prescribed local inner forms at coprime-degree places, a division auxiliary and split infinity. They prove every local constant-tensor, unit-norm and invariant calculation, the product of elliptic signs, the actual inner restricted local factors, full unramified orbital tails and a finite absolute regular-elliptic split trace. Figures 75–78 and Exercise 7.49 give the degree-six characteristic-two algebra, its nonsplit completions, principal-unit norms, matrix corners and the trace hypotheses. Individual representation-transfer integrality, arbitrary place degrees and the split/inner comparisons require further arguments. Corollary 4.1 is deduced from the proved global theorem and earlier course results; the independent dimension calculation is not substituted for the theorem.
 
 The following references specify the prerequisites and related treatments:
 
@@ -15183,7 +16605,7 @@ The following references specify the prerequisites and related treatments:
 - J. Voight, *Quaternion Algebras*, GTM 288, 2021, Chapters 25 and 41; Corollary 13.4.5, Theorem 25.3.15, §§41.1–41.5. [Open-access book](https://jvoight.github.io/quat.html).
 - J. Arthur, “An introduction to the trace formula,” in *Harmonic Analysis, the Trace Formula, and Shimura Varieties*, Clay Mathematics Proceedings 4, 2005, §25. [Clay volume](https://www.claymath.org/wp-content/uploads/2022/03/cmip04c.pdf).
 - P. Deligne, “Formes modulaires et représentations de GL(2),” 1973, §3.2.8. [IAS author archive](https://publications.ias.edu/node/366). Its paired measures and character normalization agree with Section 2.
-- A. I. Badulescu, “Correspondance de Jacquet–Langlands pour les corps locaux de caractéristique non nulle,” *Annales scientifiques de l'École Normale Supérieure* **35** (2002), 695–747, introduction and Theorem 1.1. [Journal article](https://www.numdam.org/item/ASENS_2002_4_35_5_695_0/).
+- A. I. Badulescu, “Correspondance de Jacquet–Langlands pour les corps locaux de caractéristique non nulle,” *Annales scientifiques de l'École Normale Supérieure* **35** (2002), 695–747, introduction, Theorem 1.1 and Section 5. [Journal article](https://www.numdam.org/item/ASENS_2002_4_35_5_695_0/).
 - A. I. Badulescu and D. Renard, “Unitary dual of GL(n) at archimedean places and global Jacquet–Langlands correspondence,” *Compositio Mathematica* **146** (2010), 1111–1161. The theorem numbers here refer to the author preprint, §§16–19, especially Theorems 1.4 and 18.1. [Author preprint](https://arxiv.org/abs/0905.4143).
 - A. I. Badulescu and P. Roche, “Global Jacquet–Langlands correspondence for division algebras in characteristic p,” revised preprint, 2014, §§2.5 and 3.2–3.4. [Full text](https://arxiv.org/html/1302.5289v2).
 - A. Ichino and K. Prasanna, *Hodge classes and the Jacquet–Langlands correspondence*, introduction. Its geometric realizations use an already established automorphic correspondence. [Author preprint](https://arxiv.org/abs/1806.10563).
@@ -15225,3 +16647,16 @@ The following references specify the prerequisites and related treatments:
 
 
 - A. Aizenbud, D. Gourevitch, D. Kazhdan and E. Sayag, with an appendix by I. Glazer and Y. Hendel, *On Harish-Chandra’s integrability theorem in positive characteristic*, arXiv:2602.16389v1, §1.1 and Appendix B. [Free author preprint](https://arxiv.org/abs/2602.16389v1). Section 6.39 proves its own trace-excision estimates and states the additional uniformity condition explicitly.
+
+- MIT OpenCourseWare, *18.725 Algebraic Geometry I*, Fall 2015, Lecture 24, Theorem 24.1 and its proof. [Free university lecture notes](https://ocw.mit.edu/courses/18-725-algebraic-geometry-fall-2015/ec341c7a2524e5dba7c3e939f322613a_MIT18_725F15_notes.pdf). Proposition 6.377 gives the polynomial row-reduction proof used here.
+
+- Zhiwei Yun, *Rigidity method for automorphic forms over function fields*, Arizona Winter School lecture notes, 2022, Sections 1.1–1.2. [Free author notes](https://math.mit.edu/~zyun/Rigid_AWS_lectures12.11.2022.pdf). Section 1.2 describes the vector-bundle interpretation of general-linear adelic double cosets. The constant-term definition and finite-support and spectral arguments used here are proved in Section 6.57.
+
+
+- Alexander Stasinski and Shaun Stevens, *The regular representations of GL_N over finite local principal ideal rings*, arXiv:1611.04796v1, 15 November 2016, introduction and Section 3, especially equation (3.1) and its trace-character duality. [Free author preprint](https://arxiv.org/abs/1611.04796v1). Section 6.59 gives the finite types, all required intertwining and Hilbert arguments, and prescribed-centre construction used here.
+
+
+- Brian Conrad, *A compactness theorem for the idele group*, Math 248A lecture handout, Sections 2–3. [Free lecture notes](https://virtualmath1.stanford.edu/~conrad/248APage/handouts/compactidele.pdf).
+
+
+- Romyar Sharifi, *Algebraic Number Theory*, Chapter 9, Section 9.1, especially Definitions 9.1.2 and 9.1.14 and Proposition 9.1.10. [Free author lecture notes](https://math.ucla.edu/~sharifi/notes/algnum-ch09.html).

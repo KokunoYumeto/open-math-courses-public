@@ -6,6 +6,74 @@ A transformation can have many formulas without having many degrees of freedom. 
 
 We work over $\mathbb K=\mathbb R$ or $\mathbb C$, with analytic maps; over $\mathbb C$ this means holomorphic maps. The prerequisite courses are [Multivariable Calculus](https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-B50), [Complex Analysis](https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C50), and [Smooth Manifolds and Differential Geometry](https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-D50). The analytic facts actually used are stated, with verified proof locators, at the end. The parameter arguments use finite measurements of a family, so that no inverse-function theorem on an infinite-dimensional space is needed.
 
+## Analytic coordinate changes
+
+The basic coordinate construction is finite dimensional. Its analytic conclusion matters: a merely smooth inverse would not justify later Taylor-series arguments.
+
+The one-variable Cauchy formula and derivative estimates are proved in the programme's [Complex Analysis reader](https://github.com/KokunoYumeto/lebl-mathematics-family-id/releases/download/lebl-family-id.2026.08.31.terminology/Panduan_Mengolah_Analisis_Kompleks_Bahasa_Indonesia_v1.9.pdf#page=75), Jiří Lebl, *Guide to Cultivating Complex Analysis*, Indonesian programme edition, version 1.9: Theorem 3.2.15, pp. 75–76, and Theorems 3.3.4 and 3.3.8, pp. 81 and 86. Cauchy–Goursat and the primitive construction precede them in Sections 3.2.2–3.2.3. We use those results to prove the several-variable limit and coordinate statements below.
+
+**Lemma A.1 (holomorphic limits).** A sequence of holomorphic maps on an open subset of $\mathbb C^r$ that converges uniformly on every compact subset has a holomorphic limit.
+
+**Proof.** Work componentwise. Choose a closed coordinate polydisc contained in the domain, with centre $a$ and radii $\rho_j>0$. Put $\Gamma_j=\{\zeta_j:|\zeta_j-a_j|=\rho_j\}$. Repeated application of the one-variable Cauchy formula gives, for every member $H_n$ of the sequence,
+
+$$
+\begin{aligned}
+H_n(z)&=\frac{1}{(2\pi i)^r}\int_{\Gamma_1}\cdots\int_{\Gamma_r}\\
+&\quad\frac{H_n(\zeta)}{\prod_{j=1}^r(\zeta_j-z_j)}\,d\zeta_r\cdots d\zeta_1.
+\end{aligned}
+$$
+
+The distinguished boundary is compact, so uniform convergence passes this formula to the limit $H$. On every smaller polydisc expand each factor as
+$(\zeta_j-z_j)^{-1}=\sum_{\nu\ge0}(z_j-a_j)^\nu/(\zeta_j-a_j)^{\nu+1}$.
+The product series converges absolutely and uniformly there and on the integration boundary. Termwise integration therefore gives a jointly convergent power series for $H$, with coefficients bounded in modulus by
+$\|H\|_{\mathrm{boundary}}\prod_j\rho_j^{-\nu_j}$.
+Thus $H$ is holomorphic in the interior. Every domain point admits such a polydisc. $\square$
+
+**Theorem A (local analytic inverse).** Let $F:U\subset\mathbb K^r\to\mathbb K^r$ be analytic and let $\det DF(a_0)\ne0$. There are open neighbourhoods $V$ of $a_0$ and $W$ of $F(a_0)$ such that $F:V\to W$ is bijective with analytic inverse $G$. Moreover,
+$DG(F(a))=DF(a)^{-1}$.
+
+**Proof.** First let $\mathbb K=\mathbb C$. Translate the source and target and multiply the target by $DF(a_0)^{-1}$. We may assume $a_0=F(a_0)=0$ and $DF(0)=I$. Fix $0<q<1$ and choose a closed ball $\overline B_\rho$ contained in $U$ so small that
+
+$$
+\sup_{\overline B_\rho}\|I-DF(x)\|\le q.
+$$
+
+Integration along the segment from $x'$ to $x$ gives
+
+$$
+\|(x-F(x))-(x'-F(x'))\|\le q\|x-x'\|.
+$$
+
+For $\|y\|<(1-q)\rho$, the map
+$T_y(x)=x-F(x)+y$ sends $\overline B_\rho$ into itself and contracts distances by $q$. Starting with $x_0=0$, put $x_{n+1}=T_y(x_n)$. Then
+
+$$
+\begin{aligned}
+\|x_{n+1}-x_n\|&\le q^n\|y\|,\\
+\|x_m-x_n\|&\le\frac{q^n}{1-q}\|y\|\quad(m>n).
+\end{aligned}
+$$
+
+Completeness of the finite-dimensional ball supplies a limit $G(y)$, and continuity gives $T_y(G(y))=G(y)$, or $F(G(y))=y$. If two fixed points existed, their distance would be at most $q$ times itself, so they coincide. Also $\|G(y)\|\le\|y\|/(1-q)<\rho$. More generally, the segment estimate gives
+$\|F(x)-F(x')\|\ge(1-q)\|x-x'\|$, proving injectivity on the ball.
+
+Every iterate $x_n(y)$ is holomorphic on $W=B_{(1-q)\rho}$. The tail bound is uniform on compact subsets of this ball, so Lemma A.1 makes $G$ holomorphic. Taking
+$V=B_\rho\cap F^{-1}(W)$ gives an open neighbourhood of zero, and fixed-point existence and injectivity show that $F:V\to W$ is bijective with inverse $G$. Differentiating $F(G(y))=y$ proves the derivative formula.
+
+For real-analytic $F$, its convergent power series at $a_0$ extends it holomorphically to a complex neighbourhood, with real coefficients. Its derivative is still invertible over $\mathbb C$. Apply the complex construction on conjugation-invariant balls. Uniqueness gives $G(\overline y)=\overline{G(y)}$, so $G$ maps real inputs to real points. Restricting its convergent holomorphic series to real coordinates gives the real-analytic inverse. Undo the translations and linear normalization. $\square$
+
+If $q$ analytic functions have independent differentials at a point, select a nonzero $q$-minor of their derivative and adjoin the original coordinates outside those columns. The resulting square derivative is invertible, so Theorem A makes these functions the first $q$ coordinates of a chart. We will repeatedly use this explicit consequence.
+
+**Theorem B (constant rank and implicit coordinates).** Let $F:U\subset\mathbb K^r\to\mathbb K^m$ be analytic of constant rank $q$ near $a_0$. There are analytic source and target coordinates in which it is
+$(u,v)\mapsto(u,0)$, with $u\in\mathbb K^q$ and $v\in\mathbb K^{r-q}$. Its local image is a $q$-dimensional submanifold, its fibres have dimension $r-q$, and a submersion ($q=m$) has a local analytic section.
+
+If $H(a,b)$ is analytic with values in $\mathbb K^s$ and $D_bH$ is invertible at $(a_0,b_0)$, the equation $H(a,b)=H(a_0,b_0)$ has a unique nearby solution $b=B(a)$, analytic in $a$.
+
+**Proof.** For $q>0$, permute coordinates so that the first $q$ components of $F$ have an invertible minor in the first $q$ input coordinates. Take these components as $u$ and the remaining input coordinates as $v$. Theorem A makes $(u,v)$ a chart. In this chart the first $q$ rows of the derivative are $(I,0)$. Rank $q$ forces the $v$ derivatives of every other component to be zero. On a smaller coordinate box those components are functions $\Phi(u)$ only. The target coordinate change
+$(y',y'')\mapsto(y',y''-\Phi(y'))$, whose inverse adds $\Phi(y')$, gives the asserted normal form. For $q=0$, all derivatives vanish, so integration along coordinate segments makes $F$ locally constant, with the same normal form. The image, fibre and section statements follow directly; for a section hold $v$ fixed and undo the two coordinate charts.
+
+For the implicit statement, the map $(a,b)\mapsto(a,H(a,b))$ has an invertible block-triangular derivative. Theorem A gives its analytic inverse. Hold its last output equal to $H(a_0,b_0)$ and take the $b$ component of that inverse. This proves both the analytic solution and its local uniqueness. $\square$
+
 ## 1. Composition, identity, and domains
 
 Let $M$ be an analytic manifold. A local transformation is an analytic diffeomorphism between open subsets of $M$. Its inverse exists on its image. This does not say that the inverse belongs to a specified family.
@@ -275,7 +343,7 @@ Because $T'(0)\ne0$, these data recover $\beta=T(0)$, $\gamma=-T''(0)/(2T'(0))$,
 
 ## What this lesson assumes
 
-**Local analytic inverse theorem.** If $F:U\subset\mathbb K^r\to\mathbb K^r$ is analytic and $\det DF(a_0)\ne0$, there are open neighbourhoods $V$ of $a_0$ and $W$ of $F(a_0)$ such that $F:V\to W$ is bijective with analytic inverse. Its derivative at $F(a)$ is $DF(a)^{-1}$. In one complex variable, this is [Lebl, *Guide to Cultivating Complex Analysis*, Theorem 2.2.8, p. 36]. The underlying real $C^1$ theorem, including its contraction proof, is Theorem B.3.16, pp. 289–291; the contraction theorem is B.3.15, p. 288.
+**Local analytic inverse theorem.** Theorem A gives its complete analytic construction above. If $F:U\subset\mathbb K^r\to\mathbb K^r$ is analytic and $\det DF(a_0)\ne0$, there are open neighbourhoods $V$ of $a_0$ and $W$ of $F(a_0)$ such that $F:V\to W$ is bijective with analytic inverse. Its derivative at $F(a)$ is $DF(a)^{-1}$. In one complex variable, this is [Lebl, *Guide to Cultivating Complex Analysis*, Theorem 2.2.8, p. 36]. The underlying real $C^1$ theorem, including its contraction proof, is Theorem B.3.16, pp. 289–291; the contraction theorem is B.3.15, p. 288.
 
 Here is the analytic upgrade needed in several variables. For holomorphic $F$, the real determinant is $|\det DF|^2$ [Lebl, *Tasty Bits of Several Complex Variables*, Proposition 1.3.7, p. 27]. The real inverse theorem therefore gives a $C^1$ inverse. Its differential is the inverse of a complex-linear map and hence is complex-linear; the Cauchy–Riemann equations make the inverse holomorphic. This proves the inverse statement asked for in Exercise 1.3.6, p. 27, by the same route as Theorem 1.3.8 there. A real-analytic $F$ extends locally holomorphically by its convergent power series [Proposition 3.1.3, p. 87]. Its derivative at a real point remains invertible over $\mathbb C$. The holomorphic inverse commutes with conjugation by uniqueness, so its restriction to real points is real analytic. Thus a smooth inverse theorem alone is not the analytic justification.
 

@@ -1,6 +1,6 @@
 # Variational symmetries and Noether's first theorem
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), at Ultra. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex at Ultra, October 2026. Public domain (CC0).*
 
 Why should a symmetry produce a conserved quantity? A variation of an action has two parts: the equations of motion, multiplied by the variation, and a boundary term. If a symmetry changes the action only through its boundary, those two boundary terms differ by a current whose divergence vanishes on solutions. The useful statement is an identity before any equations are imposed.
 

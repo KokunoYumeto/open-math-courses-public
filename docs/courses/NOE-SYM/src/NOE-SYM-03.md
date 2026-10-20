@@ -1,6 +1,6 @@
 # The formal calculus of variations and differential invariants
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI), at Ultra. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex at Ultra, October 2026. Public domain (CC0).*
 
 A boundary term changes an action without changing its equations. An invariant action can therefore be studied through its Euler expressions, whose transformation law is more rigid than that of a chosen density. For a metric, the same principle of discarding coordinate choices leads to normal coordinates: its derivatives at a point can be replaced by curvature and its covariant derivatives.
 
@@ -527,7 +527,7 @@ Finally, every nonempty Zariski-open subset of the real equation jets meets both
 
 *Figure 6.1.* The exact functions $u_+=(x_1^2+x_2^2)/2$ and $u_-=(x_1^2-x_2^2)/2$ solve (6.10). Their Hessians have determinants $1$ and $-1$. Equation (6.11) preserves that sign under real transformations, although the rational invariant field on the quadratic-graph equation consists only of constants. The plotted contours are level sets of the displayed functions. Vector figure; figure source. Original computed illustration, CC0.
 
-This example identifies a real-versus-geometric-orbit qualification; it does not contradict differential generation of the rational invariant algebra, which here has no nonconstant generators. For the metric action, positive definiteness makes the remaining orthogonal group compact, and §5 proves the orbit-separation assertion actually needed in Theorem 6.1. The full general algebraic-pseudogroup theorem is stated with its hypotheses in Prolongation, differential invariants and the projective group (Lie’s theory of transformation groups), §4.2. Its general proof is not yet complete. Theorem 6.1 concerns metrics; Proposition 6.2 assumes a uniform horizontal span, and Example 6.3 establishes the rank-one action (6.16). Proposition 6.4 constructs a finite-level domain for horizontal rank in the stated regular jet-groupoid setting. Theorem 6.10 constructs the geometric quotient of one algebraic action, including its invariant field and regular functions.
+This example identifies a real-versus-geometric-orbit qualification; it does not contradict differential generation of the rational invariant algebra, which here has no nonconstant generators. For the metric action, positive definiteness makes the remaining orthogonal group compact, and §5 proves the orbit-separation assertion actually needed in Theorem 6.1. The general regular Cartan jet-action theorem is Theorem 4.45 of *Prolongation, differential invariants and the projective group*; Corollary 6.13 states its hypotheses and differential-generation conclusion here, including the single finite-level domain and geometric-orbit convention. Theorem 6.1 concerns metrics; Proposition 6.2 assumes a uniform horizontal span, and Example 6.3 establishes the rank-one action (6.16). Proposition 6.4 constructs a finite-level domain for horizontal rank in the stated regular jet-groupoid setting. Theorem 6.10 constructs the geometric quotient of one algebraic action, including its invariant field and regular functions.
 
 ### Derivatives when the horizontal invariant rank is smaller
 
@@ -876,6 +876,70 @@ On $U=\mathbb G_m$, the quotient is $q(x)=x^2$ with $Y=\mathbb G_m$. The algebra
 
 The order $r$ in this subsection is fixed. Its exceptional open can depend on $r$. These results do not select one finite-level domain that works simultaneously for all higher orbit symbols and quotients, and do not replace that uniform-domain requirement in the general Lie–Tresse theorem.
 
+### Differential generation on one invariant domain
+
+The fixed-level quotient in Theorem 6.10 and the horizontal quotient in Propositions 6.2–6.4 have different roles. A finite-order orbit quotient identifies invariant functions at that order. Horizontal differentiation produces higher-order invariants. The Lie–Tresse theorem relates them on one domain whose defining condition has finite order.
+
+Here is the regular differential-jet setting. Let $M$ be a smooth real manifold, or a complex manifold with holomorphic basic coefficients, and let $E^j\subset J^j(M,n)$ be an equation for $n$-dimensional submanifolds, with $E^0=M$. Assume the following.
+
+1. The determining jet groupoids $G^j$ are transitive, of finite defining order, and formally integrable. Their projections are smooth and onto, and above the defining order they are the ordinary prolongations of the regular determining equations. The fixed-point group at the defining order is algebraic.
+2. The equation is regular, of finite defining order, and formally integrable. Its projections are smooth and onto; its fixed-base fibres are nonsingular irreducible algebraic varieties, and its higher projections are affine bundles. Above the defining order its equations are the ordinary prolongations of its regular reduced ideal.
+3. The finite action maps $\sigma_j:G^j\times_M E^j\to E^j$ obey units, composition, inverses and truncation, act algebraically on fixed-base fibres, and satisfy the finite Cartan identity. Explicitly, a determining $(j+1)$-jet and an equation $(j+1)$-jet determine holonomic tangent planes at level $j$. Pair their vectors with equal basic source projections. The differential $d\sigma_j$ takes this paired plane to the holonomic plane of $\sigma_{j+1}$. This is the compatibility of the action with differentiation, with the determining jet re-expanded along its source.
+
+The exact finite-plane identity is equations (4.116)–(4.117), Section 4.22 of *Prolongation, differential invariants and the projective group*. Ordinary prolonged point actions satisfy it by the transformed-graph chain rule. The action may also be specified initially only on the equation, provided these finite identities hold. Real algebraic fibres are understood as their algebras of polynomial functions on the actual real sets. For an abstract real scheme, geometric integrality and geometric formal integrability are explicit assumptions instead. Orbit statements below refer to algebraically closed extension fields.
+
+**Corollary 6.13 (Lie–Tresse differential generation).** Under these hypotheses there are an integer $\ell$, a nonempty invariant fibrewise Zariski-open $U\subset E^\ell$, finitely many full invariants $f_1,\ldots,f_t$ of orders at most $\ell$, and commuting quotient invariant derivations $\nabla_1,\ldots,\nabla_s$, with $0\le s\le n$, having the following properties. Write $F_\ell$ for the invariant rational field through order $\ell$, and $\mathcal A_\ell$ for the finite-order invariants smooth in the basic coordinates, rational in fibre coordinates through order $\ell$, and polynomial in higher coordinates. In the complex case replace smooth basic coefficients by holomorphic ones. Then
+
+$$
+\begin{gathered}
+F_\ell=\mathbb K(f_1,\ldots,f_t),\\
+\mathcal A_\ell
+=F_\ell[\nabla^\alpha f_b:|\alpha|>0].
+\end{gathered}
+\tag{6.33}
+$$
+
+Here $\mathbb K=\mathbb R$ or $\mathbb C$, and $\nabla^\alpha=\nabla_1^{\alpha_1}\cdots\nabla_s^{\alpha_s}$. The selected generators and their iterated derivatives are regular on the corresponding complete inverse images of $U$. Every expression uses finitely many derivatives. Its coefficients may be rational in the low invariants; it introduces no denominator in a higher jet coordinate. The full rational invariant field is $\operatorname{Frac}\mathcal A_\ell$.
+
+The domain at every order $j\ge\ell$ is the complete inverse image of this same $U$. On a fixed basic-point fibre, selected iterated derivatives give flat geometric orbit quotients with targets
+
+$$
+\begin{gathered}
+Y_j=Y_\ell\times
+\prod_{i=\ell+1}^{j}\mathbb A^{d_i},\\
+d_i=\dim(g_i/\varpi_i).
+\end{gathered}
+\tag{6.34}
+$$
+
+Here $g_i$ is the equation symbol and $\varpi_i$ is the vertical part of the **full** prolonged orbit tangent, including contributions from lower determining jets. These quotients have full geometric orbit fibres and the invariant regular-function sheaf. Equality of the selected invariant values separates finite geometric orbits. Equality at all orders gives a compatible admissible formal arrow between infinite jets.
+
+*Proof.* We apply the earlier programme proofs at this specified base and coefficient class. The finite Cartan identity identifies the actual action maps with the restricted point-jet formulas: once the order-$j$ map is fixed, differentiation on the paired holonomic plane fixes the next plane; a preceding jet and its holonomic plane recover every next graph coordinate. This induction uses finite Taylor-polynomial representatives, without requiring a formal determining jet to converge to a transformation germ. Equality at geometric points identifies the reduced action morphisms, hence their stabilizer schemes and tangent kernels. Higher algebraicity follows by prolonging the polynomial determining equations with smooth basic coefficients. These are Lemma 4.44 and Theorem 4.45.
+
+The remaining finite constructions apply to these same action maps:
+
+| Construction and proof | Mathematical consequence |
+|---|---|
+| Finite observations: Theorem 4.24 | Monic elimination of the raw determining and tangency rows survives ordinary coefficient specialization; observation copies retain the normal commutators. |
+| Full orbit symbols: Theorem 4.28 | Actual full-symbol annihilators have one finite presentation; low-order stabilizer images and high action ranks are uniform on every higher extension. |
+| Quotient-symbol cohomology: Theorem 4.30 | Eventual Spencer vanishing holds after one coefficient localization, with specialization of kernels, images and homology proved. |
+| Equation coordinates: Theorem 4.32 | Every higher equation coordinate is polynomial in free higher coordinates with denominators confined to the same low-order ring. |
+| Differentials and descent: Theorems 4.35–4.36 | Invariant differentials span orbit annihilators on the regular domain; flat full-orbit maps give the invariant regular sheaf and rational field. |
+
+Only finitely many coefficient localizations enter these constructions. Their domains can be pulled to one finite order and intersected in an integral equation fibre. Full-isotropy saturation and transitive transport give one invariant domain. Theorem 4.28 proves its assertions at every higher extension, rather than only at a generic infinite jet. In particular it retains the lower-stabilizer contribution to $\varpi_i$.
+
+Choose $\ell$ above these bounds and the coefficient order of the horizontal quotient derivations, before choosing the order-$\ell$ field generators. The algebraic finite-level quotient supplies finitely many full generators $f_b$ of $F_\ell$; include the selected horizontal invariants. The quotient derivative construction is Theorem 4.21 and Corollary 4.22, with the same representative-independence mechanism as Proposition 6.2. It uses the horizontal space modulo its common invariant annihilator, so $s$ may be smaller than $n$, including zero.
+
+For clarity, the polynomial step uses more than symbol dimensions. The actual dual quotient-symbol module $(g_i/\varpi_i)^*$ is generated, in its high-degree tail, by the symbols of the $f_b$ and their tangent multiples. The common horizontal annihilator kills this tail. Monic division over the remaining $s$ derivative directions selects iterated derivatives $\nabla^\alpha f_b$ whose highest differentials are a basis at each higher order. All coefficient inverses occur through order $\ell$.
+
+In each actual highest equation fibre, those functions form a split affine surjection. Its level space is an irreducible affine space with homogeneous space $\varpi_i$. The inverse image of the lower stabilizer has this tangent image at every point. Its orbits therefore have the full dimension of the level space and are open in it. Two distinct such orbits would be disjoint nonempty opens in an irreducible space, which is impossible. Thus each entire level space is one full orbit. Successive flat affine projections and orbit descent give (6.34).
+
+Finally, the split affine coordinates give a unique polynomial expansion of any order-$j$ member of $\mathcal A_\ell$ in the selected new order-$j$ invariants. The coefficients belong to the preceding rational-low, polynomial-high algebra: a polynomial section computes them without a higher denominator. Applying a full group arrow fixes the new invariant coordinates. Uniqueness forces each coefficient to be invariant under the lower action, since each lower determining arrow lifts. Induction down to order $\ell$ proves (6.33). The complete split-coordinate, coefficient and induction argument is Theorem 4.38; Theorem 4.45 identifies all its hypotheses and actions here.
+
+For the formal orbit assertion, finite transporter sets are nonempty cosets of algebraic stabilizers. Their images at a fixed finite order form nested cosets of closed subgroup images. Dimensions and then the finite sets of components stabilize. The eventual transporter images have onto transitions, so successive choices give a compatible formal arrow. This is the last part of Theorem 4.38. It asserts neither convergence of that arrow nor separation of individual real-point orbits. $\square$
+
+The basic manifold is part of the coefficient hypothesis. If an intrinsic action has a specified regular finite presentation over $N=E^q$, Proposition 4.46 transports the conclusion with the exact cutoff shift $\ell\mapsto q+\ell$, with both coefficient classes relative to $N$. It does not identify that class with fibrewise rationality over an earlier basic manifold. The explicit distinction is Proposition 4.43.
+
 ## 7. Exercises
 
 **Exercise 7.1 (easy).** Verify (1.2) and show directly that its Euler expression is zero.
@@ -920,11 +984,11 @@ For the unit sphere the radial Jacobi field remains $te_r$, whereas a tangential
 
 ## Proof dependencies
 
-The first-variation identity, its divergence corollary and the fundamental lemma are supplied with proofs by Variational symmetries and Noether's first theorem. The point-prolongation rule is proved in Prolongation, differential invariants and the projective group (Lie’s theory of transformation groups). Section 6 proves differential generation on the explicitly specified metric rank domain, including its nonemptiness, and proves the real-orbit counterexample. Hilbert's basis theorem has the internal commutative-algebra provider identified beside the finiteness argument. The curvature reduction, orthogonal contraction theorem, Euler covariance and both curve variation calculations are proved here. Proposition 6.2 proves the horizontal-quotient derivative construction under its explicit all-order span assumption; Example 6.3 verifies that assumption and finite differential generation for the equation $u_y=0$ under (6.16). Proposition 6.4 proves finite detection of horizontal rank in the stated regular jet-groupoid setting, and Corollary 6.5 supplies the associated invariant derivations. Its constant-rank and submersion inputs are the linked differential-geometry proofs. Theorem 6.10 proves the fixed-level geometric quotient, including regular-function and rational-field descent; Corollary 6.12 transports this input over the smooth base. The needed elimination, reducedness and flatness arguments are proved in Lemmas 6.6–6.9 with exact earlier algebraic inputs. The general theorem is stated, but not yet proved, in the linked Lie transformation groups lesson.
+The first-variation identity, its divergence corollary and the fundamental lemma are supplied with proofs by Variational symmetries and Noether's first theorem. The point-prolongation rule is proved in Prolongation, differential invariants and the projective group (Lie’s theory of transformation groups). Section 6 proves differential generation on the explicitly specified metric rank domain, including its nonemptiness, and proves the real-orbit counterexample. Hilbert's basis theorem has the internal commutative-algebra provider identified beside the finiteness argument. The curvature reduction, orthogonal contraction theorem, Euler covariance and both curve variation calculations are proved here. Proposition 6.2 proves the horizontal-quotient derivative construction under its explicit all-order span assumption; Example 6.3 verifies that assumption and finite differential generation for the equation $u_y=0$ under (6.16). Proposition 6.4 proves finite detection of horizontal rank in the stated regular jet-groupoid setting, and Corollary 6.5 supplies the associated invariant derivations. Its constant-rank and submersion inputs are the linked differential-geometry proofs. Theorem 6.10 proves the fixed-level geometric quotient, including regular-function and rational-field descent; Corollary 6.12 transports this input over the smooth base. The needed elimination, reducedness and flatness arguments are proved in Lemmas 6.6–6.9 with exact earlier algebraic inputs. Corollary 6.13 applies the regular Cartan jet-action theorem at its specified base and coefficient class. Its common full-symbol domain, cohomology, actual affine quotient tower and polynomial induction are the linked proofs in Lie transformation groups, Theorems 4.24–4.45.
 
 ## References
 
 - Emmy Noether, *Invarianten beliebiger Differentialausdrücke*, Nachrichten der Gesellschaft der Wissenschaften zu Göttingen (1918), 37--44; *Formale Variationsrechnung und Differentialinvarianten*, Encyklopädie der mathematischen Wissenschaften II, 3 (1922), 68--71, §28, contributed by Noether; *Algebraische und Differentialinvarianten*, Jahresbericht der Deutschen Mathematiker-Vereinigung **32** (1923), 177--184. [English collected edition](https://github.com/KokunoYumeto/emmy-noether-en). These are Noether's works on reduction, variational construction and finiteness.
 - Geoffrey Compère, *Symmetries and conservation laws in Lagrangian gauge theories* (2007), Appendix A, Theorem 20 and the horizontal homotopy discussion. [Thesis](https://arxiv.org/abs/0708.3153).
-- Boris Kruglikov and Valentin Lychagin, [*Global Lie–Tresse theorem*, arXiv:1111.5480v3](https://arxiv.org/abs/1111.5480v3), revised 13 June 2015, Theorems 1–2 and §2.3 for the horizontal quotient. Further reading on the general algebraic-pseudogroup problem. Section 6 proves the metric generation result used in this lesson and states its precise scope.
+- Boris Kruglikov and Valentin Lychagin, [*Global Lie–Tresse theorem*, arXiv:1111.5480v3](https://arxiv.org/abs/1111.5480v3), revised 13 June 2015, Theorems 1–2 and §2.3 for the horizontal quotient. The general regular differential jet-action theorem is stated in Corollary 6.13 with exact programme proof links; Theorem 6.1 gives the explicit metric generators.
 - Hanspeter Kraft and Claudio Procesi, [*Classical Invariant Theory: A Primer*](https://dmi.unibas.ch/fileadmin/user_upload/dmi/Personen/Kraft_Hanspeter/Classical_Invariant_Theory.pdf), §10.2, on Weyl's orthogonal invariant theorem and polarization. Theorem 5.1 proves the contraction assertion by averaging.

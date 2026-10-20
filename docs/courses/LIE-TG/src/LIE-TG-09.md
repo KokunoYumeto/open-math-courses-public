@@ -174,7 +174,7 @@ The horizontal differential of another invariant has the unique expression $d_HF
 
 ### 4.2. The global assertion and its precise scope
 
-**Scope.** Theorem 4.38 proves finite differential generation for the induced point actions specified in Section 4.16. An action specified only on an equation requires its compatible-action comparison with the characteristic and determining rows. The source used here is Boris Kruglikov and Valentin Lychagin, [*Global Lie–Tresse theorem*, arXiv:1111.5480v3](https://arxiv.org/abs/1111.5480v3), revised 13 June 2015, §0.1–0.2, Theorems 1–2 and §3. Its setting is a Lie pseudogroup acting transitively on the point manifold, with algebraic finite-order isotropy actions, and an invariant, formally integrable, irreducible differential equation whose jet fibres are nonsingular algebraic varieties. Algebraicity is a condition on the fibre variables; it does not require the smooth base coordinates themselves to be algebraic.
+**Scope.** Theorem 4.45 proves global Lie–Tresse finite generation for a regular Cartan jet action in the stated transitive finite-order algebraic setting, including an action initially specified only on the equation. Proposition 4.46 gives the exact order and coefficient comparison for a specified intrinsic finite presentation. The base and its fibre-rational class are part of those hypotheses; Proposition 4.43 prevents their identification under an arbitrary change of base. The source used here is Boris Kruglikov and Valentin Lychagin, [*Global Lie–Tresse theorem*, arXiv:1111.5480v3](https://arxiv.org/abs/1111.5480v3), revised 13 June 2015, §0.1–0.2, Theorems 1–2 and §3. Its setting is a Lie pseudogroup acting transitively on the point manifold, with algebraic finite-order isotropy actions, and an invariant, formally integrable, irreducible differential equation whose jet fibres are nonsingular algebraic varieties. Algebraicity is a condition on the fibre variables; it does not require the smooth base coordinates themselves to be algebraic.
 
 The finite-generation assertion asks for one finite jet level $\ell$ and a proper invariant fibrewise algebraic exceptional set $S\subset E^\ell$. At every higher order the domain is restricted by the same condition: its projection to $E^\ell$ must avoid $S$. The function class is smooth in the base coordinates, rational in the fibre coordinates through order $\ell$, and polynomial in higher-order jet coordinates. Each function has finite jet order. The asserted generators are finitely many invariants $I_1,\ldots,I_t$ and finitely many invariant derivations $\nabla_1,\ldots,\nabla_s$ of this invariant algebra. Every invariant is to be a finite polynomial in the iterated derivatives $\nabla_{j_1}\cdots\nabla_{j_r}I_i$, with coefficients rational in the $I_i$. Thus generation is differential generation, not ordinary finite generation without derivatives. It also does not authorize denominators in arbitrary higher-order coordinates.
 
@@ -233,7 +233,7 @@ The source also asserts orbit separation. Its passage from complexified orbits t
 
 That counterexample does not disprove finite differential generation: its constant invariant field is already finitely generated. It also does not replace geometric orbits over an algebraic closure by real-point orbits. The explicit metric argument in NOE-SYM-03 and the local proofs in this lesson are retained with their own hypotheses.
 
-Theorem 4.19 constructs finite-level rational orbit quotients. Lemma 4.34 and Theorems 4.35–4.36 give transitive invariant extension, full invariant differential spanning and flat geometric descent. Theorems 4.21, 4.24, 4.28, 4.30 and 4.32 supply quotient horizontal derivations, mixed observations, the actual common domain/full-symbol presentation, uniform quotient-symbol cohomology and polynomial equation coordinates. Theorem 4.38 combines these results into finite differential generation, affine geometric quotient projections and finite/formal geometric orbit separation for the precise induced point-action setting of Section 4.16. The compatible action-only comparison is a separate hypothesis-to-action problem outside that point-action theorem.
+Theorem 4.19 constructs finite-level rational orbit quotients. Lemma 4.34 and Theorems 4.35–4.36 give transitive invariant extension, full invariant differential spanning and flat geometric descent. Theorems 4.21, 4.24, 4.28, 4.30 and 4.32 supply quotient horizontal derivations, mixed observations, the actual common domain/full-symbol presentation, uniform quotient-symbol cohomology and polynomial equation coordinates. Theorem 4.38 combines these results into finite differential generation, affine geometric quotient projections and finite/formal geometric orbit separation for the precise induced point-action setting of Section 4.16. Theorem 4.45 identifies the actual regular Cartan action morphisms, full stabilizer schemes and orbit symbols, and applies these results to that action on the same base. Proposition 4.46 gives the order shift and coefficient class of a specified intrinsic finite presentation.
 
 ### 4.6. Symbolic stabilization: generators are not a free basis
 
@@ -1495,7 +1495,7 @@ The distinction between ordinary coefficient specialization and differential spe
 
 ### 4.16. One domain for the full symbols of a point action
 
-We now consider the action induced by ambient point transformations. Let $G^j\subset D^j(M)$ be a transitive finite-order jet pseudogroup: $G^0=M\times M$, the adjacent projections are surjective smooth bundles, and above its defining order the equations are their ordinary prolongations. The fixed-point jet groups are algebraic. Let $E^j\subset J^j(M,n)$ be invariant, with smooth surjective projections, nonsingular irreducible algebraic fibres, and affine-bundle projections above its finite defining order. Above that order its levels are the ordinary prolongations of the regular reduced equation ideal. These are the hypotheses used below. An action specified only on an equation requires its own comparison with the characteristic and determining rows; no such comparison is inferred from fibrewise isotropy algebraicity alone.
+We now consider the action induced by ambient point transformations. Let $G^j\subset D^j(M)$ be a transitive finite-order jet pseudogroup: $G^0=M\times M$, the adjacent projections are surjective smooth bundles, and above its defining order the equations are their ordinary prolongations. The fixed-point jet groups are algebraic. Let $E^j\subset J^j(M,n)$ be invariant, with smooth surjective projections, nonsingular irreducible algebraic fibres, and affine-bundle projections above its finite defining order. Above that order its levels are the ordinary prolongations of the regular reduced equation ideal. These are the hypotheses used below. Theorem 4.45 derives the actual action and characteristic comparison for a regular Cartan jet action specified on the equation. Algebraicity alone, without differential compatibility, is insufficient.
 
 Over $\mathbb C$ the base is holomorphic and the algebraic fibres are integral. Over $\mathbb R$ the coordinate algebra of a fibre means its algebra of polynomial functions on the actual real algebraic set. This convention gives geometric integrality. Indeed, if $A$ is that algebra and the real set is irreducible, $A$ is a domain: a product vanishing everywhere expresses the set as a union of two algebraic closed subsets. In $\operatorname{Frac}A$, a root $f/g$ of $T^2+1$ would give $f^2+g^2=0$. At every real point both functions would vanish, so both are zero in $A$, contradicting $g\ne0$. Thus the monic quotient $A[T]/(T^2+1)$ embeds in the field $\operatorname{Frac}(A)[T]/(T^2+1)$ and is a domain. This quotient is $A\otimes_{\mathbb R}\mathbb C$. Its real points are Zariski dense because a complex polynomial vanishing there has both real and imaginary parts zero in $A$. If fibres are instead given as arbitrary real schemes, geometric integrality is an explicit hypothesis; a prime ideal such as $(x^2+y^2)$ must not be confused with the polynomial-function ideal $(x,y)$ of its real points.
 
@@ -2408,9 +2408,429 @@ All higher generators are algebraically independent over $B$, by these actual po
 
 *Figure 4.15.* The complete invariant-coordinate mechanism of Example 4.39. Both low inverses are retained. The determinant formula is proved for every order by (4.97), and the affine inverses give the polynomial quotient tower in (4.99). See Exercise 15 and Solution 15.
 
-Theorem 4.38 has the induced point-action hypotheses of Section 4.16. An action specified only on the equation requires its own compatible-action comparison with the characteristic and determining systems.
+Theorem 4.38 has the induced point-action hypotheses of Section 4.16. Theorem 4.45 proves the finite Cartan comparison that gives the Lie–Tresse conclusion for a regular differential jet action specified only on the equation. Proposition 4.46 treats its specified intrinsic finite presentations at their own base.
 
 *Section 4.20 and Figures 4.14–4.15: GPT-6.1 Sol (OpenAI). CC0 1.0.*
+
+### 4.21. Cartan actions and intrinsic coefficient classes
+
+An action given on an equation need not initially be described by an ambient prolongation formula. Its relation to the basic point coordinates determines which reconstruction argument applies. The base also determines the meaning of fibrewise rationality. Kruglikov–Lychagin discuss actions defined only on an equation in [*Global Lie–Tresse theorem*, §0.1](https://arxiv.org/abs/1111.5480v3), and distinguish intrinsic symmetries from extrinsic transformations in [*Invariants of pseudogroup actions*, concluding §4.2](https://arxiv.org/abs/math/0511711v2). The arguments below give the precise point-covering case and an intrinsic example with two different coefficient classes.
+
+**Theorem 4.40 (Cartan reconstruction over a point map).** Let $E^\infty$ be a regular formally integrable equation tower with smooth onto truncations and affine higher projections. Suppose a local or formal automorphism $A$ of its finite-order function algebra preserves the Cartan distribution and covers a fixed point diffeomorphism $g=(X,U)$ of $M$. Covering means the identities $A^*x'^i=X^i(x,u)$ and $A^*u'^a=U^a(x,u)$ on the equation. Then $A=g^{(\infty)}|_E$. Its action through order $j$ depends only on the ordinary $j$-jet of $g$ and the equation $j$-jet. The same conclusion holds for a compatible determining-jet action whose formal extensions have these properties.
+
+*Proof.* Write $D_i$ for the graph total derivatives. Since $A$ preserves their rank-$n$ span, on a target graph chart
+
+$$
+\begin{gathered}
+A_*D_j=\sum_i C^i_jD'_i,\\
+C^i_j=D_jX^i,\qquad\det C\ne0.
+\end{gathered}
+\tag{4.100}
+$$
+
+The second equality follows by evaluating the first on $x'^i$. Multiplying the first identity by the inverse matrix gives, for every finite-order target function $f$,
+
+$$
+\begin{gathered}
+A^*(D'_if)\\
+=\sum_j(C^{-1})^j_iD_j(A^*f),\\
+A^*u'^a_{\alpha+e_i}
+\\=\sum_j(C^{-1})^j_iD_j(A^*u'^a_\alpha).
+\end{gathered}
+\tag{4.101}
+$$
+
+Starting with $A^*u'^a=U^a$, this is exactly the transformed-graph chain rule. Induction determines every coordinate as the ordinary point prolongation. The identity holds in the equation algebra, so it requires no realization of a formal equation jet by an actual solution.
+
+The same induction proves the order bound. The first derivative uses first ordinary derivatives of $g$ and the graph slope. Differentiating an order-$j$ expression uses derivatives of $g$ and of the graph through order $j+1$; the inverse matrix in (4.101) has only the first-order graph transversality denominator. Thus the expression at order $j+1$ uses no higher data. The formal inverse parameter map of a transformed graph is also determined degree by degree by its finite jet: its invertible linear part solves for the next unknown coefficient. This verifies that the recurrence concerns actual graph jets.
+
+A geometric finite determining jet and a finite equation jet extend successively to compatible formal jets by the onto projections. Apply (4.101) to such extensions. The order-$j$ result is independent of every coefficient above $j$, so every extension gives the same finite action. Equality after a faithful field extension detects equality of these coordinate expressions. This proves the determining-jet assertion without a convergence claim.
+
+There is also a direct geometric uniqueness test. The plane $L(e_{j+1})\subset T_{e_j}E^j$ has a unique basis normalized by $dx^h(D_i)=\delta_i^h$. Evaluating $du^a_\alpha$ on that basis recovers $u^a_{\alpha+e_i}$, including all coordinates of order $j+1$. Hence $e_{j+1}\mapsto(e_j,L(e_{j+1}))$ is injective. Cartan preservation and the already determined order-$j$ map therefore force the next map too.
+
+For the infinitesimal dictionary, let a Cartan derivation $Z$ have basic components $\xi^i(x,u),\eta^a(x,u)$. Evaluating its horizontal bracket with $D_i$ on $x^j$ gives $[Z,D_i]=-(D_i\xi^j)D_j$. Put $\Phi^a_\alpha=Z(u^a_\alpha)$. Applying the bracket to $u^a_\alpha$ gives
+
+$$
+\begin{gathered}
+\begin{aligned}
+\Phi^a_{\alpha+e_i}
+&=D_i\Phi^a_\alpha\\
+&\quad-\sum_j u^a_{\alpha+e_j}D_i\xi^j,
+\end{aligned}\\
+Q^a=\eta^a-\sum_j u^a_j\xi^j,\\
+\begin{aligned}
+\Phi^a_\alpha&=D^\alpha Q^a\\
+&\quad+\sum_j u^a_{\alpha+e_j}\xi^j.
+\end{aligned}
+\end{gathered}
+\tag{4.102}
+$$
+
+The last formula starts with $\Phi^a_0=\eta^a$. Substitution in the first formula cancels the differentiated product $u^a_{\alpha+e_j}D_i\xi^j$ and proves the induction. Thus the characteristic observation has exactly the ordinary transformation order zero and graph order one used in Section 4.16. Theorems 4.28–4.38 apply to this point-covering equation-only action under their other hypotheses. $\square$
+
+The covering hypothesis is an identity of functions, not merely equality of the images of one basic point. An intrinsic symmetry can depend on derivative coordinates in its basic components and then fail that hypothesis.
+
+![A Cartan-preserving equation action that covers g has a commutative jet projection square. The next holonomic plane recovers the next jet, and the transformed-graph recurrence forces every coordinate. The intrinsic map x prime=x+s, u prime=u+s p, p prime=p on u_xx=0 preserves the scalar Cartan line but does not descend to (x,u).](../figures/intrinsic-cartan-reconstruction.svg)
+
+*Figure 4.16.* Theorem 4.40 and the scalar projection of Example 4.41. Brackets label graph derivatives of one dependent component. Plane injectivity proves reconstruction over a point map. The lower example distinguishes an intrinsic Cartan action from that hypothesis.
+
+**Example 4.41 (an intrinsic affine quotient tower).** We use $e^a=\sum_{m\ge0}a^m/m!$. Termwise differentiation gives $(e^a)'=e^a$, and the binomial formula in the product gives $e^{a+b}=e^ae^b$; in particular $e^ae^{-a}=1$. These identities also hold formally. On bounded real intervals the terms and their differentiated series have uniformly geometric tails after a sufficiently large index, justifying the analytic identities.
+
+Take two functions $u,w$ of $x$ and the equation $u_{xx}=0$. Set $p=u_x$, $z=w_x$, $b=u-px$, and $w_j=D_x^jw$. Its infinite tower has coordinates
+
+$$
+\begin{gathered}
+x,b,p,w,z,w_2,w_3,\ldots,\\
+Dx=1,\quad Db=Dp=0,\\
+Dw=z,\quad Dz=w_2,\\
+Dw_j=w_{j+1}.
+\end{gathered}
+\tag{4.103}
+$$
+
+Choose the basic point manifold $M'=E^1$ with coordinates $(x,b,p,w,z)$. The equation on $M'$ is $b_x=p_x=0$, $w_x=z$. Its order-$k$ fibre has free coordinates $w_2,\ldots,w_{k+1}$. Every adjacent projection is an affine-line projection and every lower jet extends by a free choice of the next derivative. This proves regularity, algebraic integral fibres and formal integrability in this presentation.
+
+Consider the five-parameter transformations
+
+$$
+\begin{gathered}
+x'=x+s,\quad b'=b+h,\\
+p'=p+a,\quad z'=e^az+c,\\
+w'=e^aw+cx+d.
+\end{gathered}
+\tag{4.104}
+$$
+
+Composition, first with parameters indexed 1 and then 2, has parameters
+
+$$
+\begin{gathered}
+s=s_1+s_2,\quad h=h_1+h_2,\\
+a=a_1+a_2,\\
+c=e^{a_2}c_1+c_2,\\
+d=e^{a_2}d_1+c_2s_1+d_2.
+\end{gathered}
+\tag{4.105}
+$$
+
+Direct substitution proves these identities. The identity parameters vanish, and the inverse parameters are $(-s,-a,-h,-e^{-a}c,e^{-a}(cs-d))$, in the order $(s,a,h,c,d)$. Every source and target point of $M'$ are related by exactly one transformation: solve successively for $s,h,a,c,d$. The action is therefore simply transitive.
+
+Its finite-order jet presentation is explicit. For a transformation with target functions $(X,B,P,W,Z)$, the first-order Lie equations are
+
+$$
+\begin{gathered}
+dX=dx,\quad dB=db,\\
+dP=dp,\\
+dZ=e^{P-p}dz,\\
+\begin{aligned}
+dW&=e^{P-p}dw\\
+&\quad+(Z-e^{P-p}z)dx.
+\end{aligned}
+\end{gathered}
+\tag{4.106}
+$$
+
+The first three equations make $X-x,B-b,P-p$ constants $s,h,a$. The next makes $Z-e^az$ a constant $c$; the last makes $W-e^aw-cx$ a constant $d$. They are precisely (4.104). Every source and target pair consequently has one admissible first jet. Differentiation uniquely determines every next jet, supplied by the same actual transformation. Thus the pseudogroup $H$ is of order one and formally integrable, with $H^k\cong M'\times M'$ for every $k\ge1$. All its fixed-point jet groups are trivial, hence algebraic, with algebraic actions on the equation fibres. Algebraicity here concerns fibres over $M'$; the basic coordinates are smooth coordinates.
+
+The transformations preserve the equation: $Dx'=1$, $Db'=Dp'=0$, $Dw'=z'$ and $Dz'=e^aw_2$. Thus
+
+$$
+\begin{gathered}
+H_*D=D,\\
+w'_j=e^aw_j\quad(j\ge2).
+\end{gathered}
+\tag{4.107}
+$$
+
+In the original coordinates their $u$ component is $u'=u+ax+sp+as+h$. For $s\ne0$ it depends on $p=u_x$ and has no projection to the original $(x,u,w)$ space. With $a=h=c=d=0$, the contact form $du-p\,dx$ pulls back to $du-p\,dx+s\,dp$, which is not in the span of $du-p\,dx$ and $dw-z\,dx$. This is a genuine intrinsic symmetry of the equation.
+
+Put
+
+$$
+\begin{gathered}
+I_j=e^{-p}w_j\quad(j\ge2),\\
+DI_j=I_{j+1}.
+\end{gathered}
+\tag{4.108}
+$$
+
+They are full invariants by (4.104) and (4.107). To see that they give all invariants, use the parameters
+
+$$
+\begin{gathered}
+s=-x,\quad h=-b,\\
+a=-p,\quad c=-e^{-p}z,\\
+d=e^{-p}(xz-w).
+\end{gathered}
+\tag{4.109}
+$$
+
+They move the basic point to zero and the higher derivatives to $I_2,I_3,\ldots$. Every orbit has exactly one such representative. Consequently the orbit maps, their invariant fields and adjacent quotient projections are
+
+$$
+\begin{gathered}
+q_k:S^k\longrightarrow\mathbb A^k,\\
+q_k=(I_2,\ldots,I_{k+1}),\\
+F_k=\mathbb R(I_2,\ldots,I_{k+1}),\\
+\mathbb A^{k+1}\longrightarrow\mathbb A^k.
+\end{gathered}
+\tag{4.110}
+$$
+
+On a fixed basic-point fibre the coordinate change $w_j\mapsto I_j$ is an invertible scalar multiplication. On the total analytic bundle, basic coordinates together with the $I_j$ give an explicit product coordinate system. Thus the fibres in (4.110) are full orbits. Equality at all orders also gives one actual parameter transformation between the infinite jets, by (4.109).
+
+An invariant rational in the jet fibre variables restricts at basic point zero to a rational function of the $I_j$, and normalization recovers it everywhere. For functions rational through $S^1$ and polynomial above it, both normalization and its inverse preserve polynomiality in all higher variables. Their coefficients $e^{\pm p}$ are allowed basic functions on $M'$. Hence the full algebra in this class is
+
+$$
+\begin{gathered}
+\mathcal A_1^H=\mathbb R(I_2)[I_3,I_4,\ldots]\\
+=\mathbb R(I_2)[D^mI_2:m\ge1].
+\end{gathered}
+\tag{4.111}
+$$
+
+This gives the complete invariant-generation and affine-orbit calculation directly. Fibrewise rationality relative to the original $(x,u,w)$ has a different meaning, which can be determined exactly.
+
+**Lemma 4.42 (a rational differential constant field).** If $F$ has characteristic zero, the constants of $\delta=\partial_p+t\partial_t$ in $F(p,t)$ are exactly $F$. In particular a nonzero rational function of $p$ cannot satisfy $y'=cy$ for a nonzero constant $c\in F$.
+
+*Proof.* Inject $F(p,t)$ into $F(p)((t))$: factor a denominator as $t^m$ times a polynomial with nonzero constant term and invert that factor by the formal geometric series. If $R=\sum_n a_n(p)t^n$ and $\delta R=0$, uniqueness of coefficients gives
+
+$$
+a'_n(p)+n a_n(p)=0.
+\tag{4.112}
+$$
+
+For $n\ne0$, write a nonzero $a_n=f/g$ with coprime polynomials. Then $f'g-fg'=-nfg$ is impossible: the degree on the left is at most $\deg f+\deg g-1$, while that on the right is $\deg f+\deg g$. The same argument proves the last assertion for any nonzero $c$. For $n=0$, $f'g=fg'$ and coprimality imply $f\mid f'$ and $g\mid g'$. Characteristic zero forces both to be constant. Thus $a_0\in F$ and all other coefficients vanish. This proves $R\in F$; the reverse inclusion is immediate. $\square$
+
+**Proposition 4.43 (the coefficient class depends on the base).** In Example 4.41, the full $H$-invariants of original order at most $j\ge2$ that are rational in the derivative coordinates over $(x,u,w)$ form the field
+
+$$
+\mathbb R(w_3/w_2,\ldots,w_j/w_2).
+\tag{4.113}
+$$
+
+For $j=2$ this means $\mathbb R$. These invariants do not separate orbits on any nonempty $H$-invariant domain that is fibrewise Zariski open in the original presentation. In particular the coefficient class in (4.111) does not automatically transfer to the original base.
+
+*Proof.* Restrict an invariant to $x=u=w=0$. It is rational in $p,z,w_2,\ldots,w_j$. The subgroup with $s=h=d=0$ preserves this locus and acts by
+
+$$
+\begin{gathered}
+p'=p+a,\\
+z'=e^az+c,\\
+w'_i=e^aw_i\quad(i\ge2).
+\end{gathered}
+\tag{4.114}
+$$
+
+Translation in $c$ removes dependence on $z$: the rational derivative $\partial_zf$ vanishes, and the coprime numerator–denominator argument in Lemma 4.42 gives its constant field. On $w_2\ne0$ use the independent rational coordinates $t=w_2$, $r_i=w_i/w_2$ for $3\le i\le j$. Differentiating invariance in $a$ gives $(\partial_p+t\partial_t)f=0$, with every $r_i$ fixed. Lemma 4.42 over $F=\mathbb R(r_3,\ldots,r_j)$ proves that the restricted function belongs to this field.
+
+Restriction loses no invariant information. For any jet choose $a=c=0$, $s=-x$, $h=-u+px$ and $d=-w$. These parameters send $x,u,w$ to zero and keep $p,z,w_i$ unchanged. Thus the original invariant equals the restricted function just found. Conversely all the ratios in (4.113) are invariant under the entire group, by (4.107). This proves the exact field equality, allowing arbitrary smooth dependence on the original basic coordinates before restriction.
+
+At $x=u=w=p=z=0$, take two jets with unequal nonzero $w_2$ and identical ratios $r_i$. Every rational invariant in (4.113) has equal values wherever defined, while $I_2=w_2$ differs. The orbit normalization proves they are inequivalent.
+
+This failure persists on every nonempty Zariski open of the fixed original fibre. Choose a principal open inside it and intersect with $w_2\ne0$. The invertible rational coordinate change to $(p,z,t,r_i)$ takes its nonzero defining polynomial to a nonzero rational expression. After clearing a power of $t$, choose real $p,z,r_i$ so the resulting polynomial in $t$ is not identically zero. Such a choice exists by induction on the number of variables over the infinite field $\mathbb R$. Only finitely many $t$ are excluded; two distinct allowed amplitudes have the same ratios and different $e^{-p}t$. Finally, any nonempty invariant fibrewise open has a nonempty open intersection with this fixed original fibre, since the preceding reset map moves every point into it. The failure therefore holds on the asserted invariant domains.
+
+By Lemma 4.42, $e^{-p}$ is not rational in the original derivative $p$: its nonzero rational expression would satisfy $y'=-y$. On $M'$ it is an ordinary analytic basic coefficient. The action also has no projection to the original basic manifold. Thus the two presentations do not have interchangeable algebraicity and coefficient hypotheses. This is an obstruction to automatic transfer, not a counterexample to Theorem 4.38 on its specified base. $\square$
+
+![In the intrinsic presentation M prime=E1, the invariant coordinates are I_j=exp(-p) w_j and D I_j=I_(j+1). In the original derivative-rational class the invariant field retains only ratios w_j/w_2. At p=z=0, the jets with (w_2,w_3)=(1,1) and (2,2) have the same ratio but different I_2 and lie in different H orbits.](../figures/intrinsic-coefficient-classes.svg)
+
+*Figure 4.17.* Example 4.41, Lemma 4.42 and Proposition 4.43. The two plotted points are exact original third-order jets, with the other basic coordinates zero. The ray records equality of $w_3/w_2$; it is not an $H$-orbit in that fixed slice. The intrinsic quotient distinguishes its amplitudes.
+
+Theorem 4.40 supplies the characteristic dictionary for a Cartan action covering a point map. Theorem 4.45 proves the corresponding actual finite-action identification and Lie–Tresse theorem from the finite Cartan identity. Proposition 4.46 treats specified intrinsic finite presentations. The regularity and coefficient hypotheses are part of those data; Proposition 4.43 prevents their transfer by an arbitrary change of base.
+
+*Section 4.21 and Figures 4.16–4.17: GPT-6.1 Sol (OpenAI). CC0 1.0.*
+
+### 4.22. Differential jet actions and finite intrinsic presentations
+
+The base and its jet groupoids are part of a finite-order differential action. We first give a precise finite Cartan identity for an action specified on the equation. It determines the actual action maps and permits application of the full Lie–Tresse proof without prescribing an ambient prolongation formula. Intrinsic applications retain the coefficient class of their specified finite presentation.
+
+**Lemma 4.44 (algebraicity above the defining order).** Let a transitive jet pseudogroup have smooth onto projections and be the ordinary formally integrable prolongation of its order-$r$ equations. If its fixed-point group at order $r$ is algebraic, then every higher fixed-point group is algebraic.
+
+*Proof.* Fix a point $o$. Choose local smooth sections $t(a)\in G^r(o,a)$ with $t(o)=\mathrm{id}$, holomorphic in the complex case. These exist by the bundle projection and the coordinate-minor construction of Lemma 4.34. For an $r$-jet $g:a\to b$, groupoid composition gives
+
+$$
+\begin{gathered}
+\kappa_{a,b}(g)=t(b)^{-1}g\,t(a),\\
+g\in G^r(a,b)\\
+\Longleftrightarrow\\
+\kappa_{a,b}(g)\in G^r(o,o).
+\end{gathered}
+\tag{4.115}
+$$
+
+Composition of finite jets is polynomial in Taylor coefficients. Their inverse is polynomial with the first-derivative determinant inverted: the inverse linear coefficient is the inverse matrix, and at each later degree the unknown coefficient is multiplied by that same matrix. Solving recursively proves the assertion in every degree. Thus $\kappa_{a,b}$ is an algebraic fibre isomorphism whose coefficients depend smoothly on $a,b$.
+
+Choose finitely many generators of the polynomial ideal of $G^r(o,o)$ in the differential-group coordinate algebra, using the earlier programme proof of the polynomial Noetherian theorem. The determinant localization is a quotient after adjoining one variable inverse to that determinant, so the same theorem applies. Pulling the generators back gives equations $F(a,b,g_r)=0$, polynomial in the jet entries with determinant denominators and smooth basic coefficients. They describe the whole groupoid, including all its components, by (4.115).
+
+Differentiate these equations ordinarily in the source, with $b=g(a)$. Differentiating a basic coefficient introduces its source and target derivatives and the first derivative of $g$; differentiating a jet entry raises its order by one. Only further powers of the same invertible determinant appear. Consequently the prolonged list through order $r+k$ is still a finite polynomial list in the jet entries through $r+k$, with smooth basic coefficients.
+
+This list describes the genuine prolongation. At a regular point, independent defining rows with an invertible Jacobian minor are normal coordinates. A smooth function vanishing on the equation is a sum of these normal coordinates times smooth functions: in coordinates $(v,z)$, write $f(v,z)-f(v,0)$ as the sum of $z_i\int_0^1\partial_{z_i}f(v,tz)\,dt$. The product rule therefore makes prolongation independent of that choice of generators. The regular-ideal argument of Lemma 4.26 and the given ordinary-prolongation hypothesis apply at each step. Fixing $a=b=o$ in the resulting rows leaves polynomial equations with constant coefficients in the differential group of order $r+k$. Hence its actual fixed-point subgroup is algebraic. The same argument works at every base point. No algebraicity of the smooth base is needed. $\square$
+
+For groups represented by polynomial functions on their actual real jet sets, geometric surjectivity of the complexified fixed-point group projections follows as well. The real image is onto and is Zariski dense in that target. The algebraic homomorphism image is closed by the image argument in Theorem 4.38, so it is the whole geometric target; the smoothness and translation argument of Theorem 4.35 gives tangent lifting. If abstract real schemes are supplied instead, geometric formal integrability is part of the specified data. Density of real points is not inferred for a scheme with extra nonreal components, nor is surjectivity inferred for a general variety map.
+
+A **regular Cartan jet action** on $E$ consists of maps $\sigma_j:G^j\times_M E^j\to E^j$ obeying units, composition, inverses and every truncation identity. Its order-zero map is the source-to-target point action, and its fixed-point fibre maps are algebraic regular actions. Its differential compatibility is the following finite identity.
+
+Write $s:G^j\to M$ for the basic source. An ordinary $(j+1)$-jet $g_{j+1}$ determines a holonomic $\dim M$ plane $L_G\subset T_{g_j}G^j$ on which $ds$ is an isomorphism. An equation jet $e_{j+1}$ determines $L_E\subset T_{e_j}E^j$. Pair $v\in L_E$ with the unique vector in $L_G$ whose basic source projection is $d\pi_{j,0}(v)$. The resulting plane is
+
+$$
+\begin{gathered}
+\Lambda(g_{j+1},e_{j+1})\\
+=\{(w,v):v\in L_E,\\
+w=(ds|_{L_G})^{-1}d\pi_{j,0}(v)\}.
+\end{gathered}
+\tag{4.116}
+$$
+
+The Cartan identity is
+
+$$
+\begin{gathered}
+d\sigma_j\bigl(\Lambda(g_{j+1},e_{j+1})\bigr)\\
+=L_E\bigl(\sigma_{j+1}(g_{j+1},e_{j+1})\bigr).
+\end{gathered}
+\tag{4.117}
+$$
+
+It is required at the actual admissible jets, including the geometric fibre points in the statement. The two holonomic planes are tangent by the ordinary-prolongation hypotheses. This is preservation of Cartan differentiation with the determining jet re-expanded along its source. It states compatibility of the action, rather than a formula for that action. For transformations of a differential equation, it is the usual Cartan-preservation identity; it also defines that compatibility for formal determining groupoids without assuming realization by germs.
+
+**Theorem 4.45 (Lie–Tresse for a regular differential jet action).** Let $G$ be transitive, finite order and formally integrable with smooth onto determining projections and algebraic fixed-point group at the defining order. Let $E^j\subset J^j(M,n)$, $E^0=M$, be a regular finite-order formally integrable equation with the nonsingular irreducible algebraic fibres, affine higher projections and geometric conventions of Section 4.16. Suppose $G$ has a regular Cartan jet action on $E$. No ambient prolongation formula for that action is assumed. Then there are a finite $L$, one nonempty invariant fibrewise Zariski-open $U\subset E^L$, finite full invariants $f_b$ of order at most $L$ and quotient invariant derivations $\nabla_1,\ldots,\nabla_r$, $0\le r\le n$, such that
+
+$$
+\begin{gathered}
+F_L=\mathbb K(f_1,\ldots,f_s),\\
+\mathcal A_L
+=F_L[\nabla^\alpha f_b:|\alpha|>0].
+\end{gathered}
+\tag{4.118}
+$$
+
+Here the class is rational through order $L$ and polynomial above it, relative to the given base $M$. The full rational invariant field is $\operatorname{Frac}\mathcal A_L$. On every complete higher inverse image of this same $U$, the actual full orbit symbols and their finite presentations, quotient-symbol cohomology, affine geometric quotient tower and finite/formal geometric orbit separation have the conclusions of Theorems 4.28–4.38.
+
+*Proof.* Lemma 4.44 gives the algebraic higher determining groups. We identify the finite action maps by induction. At order zero this is the specified point action. Suppose $\sigma_j$ equals the ordinary point action as a map on $G^j\times_M E^j$. Differentiate that equality on the plane (4.116). The transformed-graph chain rule gives
+
+$$
+\begin{gathered}
+d\sigma_j\bigl(\Lambda(g_{j+1},e_{j+1})\bigr)\\
+=L_J\bigl(g_{j+1}^{(j+1)}(e_{j+1})\bigr).
+\end{gathered}
+\tag{4.119}
+$$
+
+Here $L_J$ denotes the ambient holonomic plane; the ordinary candidate has not yet been shown to lie in the next equation level. The identity uses only finite jets: choose Taylor-polynomial representatives for the map and the graph and differentiate $j_j(g(N))=g^{(j)}(j_jN)$. The representatives need not solve either determining or equation system. Their specified holonomic planes are tangent at the jet in question, so the differential of the restricted action is the one computed by this chain rule.
+
+Equations (4.117) and (4.119) give equal ambient holonomic planes for the two candidate next jets. They also have the same preceding jet by truncation compatibility. The ambient plane injectivity proved in Theorem 4.40 makes the next jets equal, and hence places the ordinary candidate in the next equation level. Thus
+
+$$
+\begin{gathered}
+\sigma_j(g_j,e_j)=g_j^{(j)}(e_j)\\
+\text{for every }j.
+\end{gathered}
+\tag{4.120}
+$$
+
+The induction holds at every admissible geometric finite jet. It does not use a generic infinite jet or a convergence theorem. The action at level $j$ uses no ordinary determining jet above order $j$.
+
+At a fixed basic point these are equal action morphisms. First view both maps in the ambient jet space. They agree at all geometric points of $G_a^j\times E_a^j$, and the reduced product point test of Theorem 4.19 applies component by component. The equation fibre is nonsingular and geometrically integral, and the group is reduced and smooth in characteristic zero by Theorem 4.35. Thus the coordinate-ring maps agree and the ordinary map factors through the same reduced equation. Their stabilizer fibres are consequently equal as schemes. Their tangent kernels, determining-projection inverse images, full orbit tangents and vertical intersections are identical, with all lower determining-jet contributions retained. No lifting of an entire stabilizer has been inferred from a tangent-image equality.
+
+The point action preserves the actual reduced equation ideal too. A target defining function composed with it vanishes on every geometric source equation point by (4.120), since $\sigma_j$ takes values in $E^j$. The same reduced point test makes this pullback zero in the source coordinate algebra. Apply the inverse arrow as well. This verifies point invariance of the given equation; it was not an additional premise.
+
+All hypotheses of the complete point-action proof are now verified for this actual action. Its characteristic observations are exactly (4.102). Theorem 4.28 constructs the common invariant domain and the actual specialized full-symbol presentation with stable low-order stabilizer images; Theorem 4.30 gives quotient-symbol cohomology there; Theorem 4.32 supplies actual polynomial equation coordinates with low-order denominators. Theorem 4.21 and Corollary 4.22 apply to the same invariant field and Cartan distribution. Lemma 4.34 and Theorems 4.35–4.36 supply the transitive bridge, differential spanning and field-independent geometric descent.
+
+The construction of Theorem 4.38 therefore applies to these identified action morphisms. It chooses the finite bound before the invariant generators, transports one derivative basis over all higher extensions of one invariant open, proves the full affine orbit level spaces and flat quotient induction, and makes every lower polynomial coefficient a full invariant by uniqueness. Its transporter-image argument supplies a compatible formal arrow. This proves (4.118) and all the stated quotient and orbit conclusions. The real assertion keeps its geometric meaning. The base and coefficient class have stayed fixed throughout. $\square$
+
+![The finite Cartan plane in the product of determining and equation jet spaces maps to the next equation plane. Plane injectivity identifies the actual action with point prolongation at every finite order. This identifies full stabilizer schemes and orbit symbols, so the common invariant domain and full Lie-Tresse proof apply to the same action and coefficient class.](../figures/cartan-finite-jet-action.svg)
+
+*Figure 4.18.* Equations (4.116)–(4.120) in Theorem 4.45. Equality concerns actual finite action morphisms and full stabilizer schemes. The lower row records the one-domain conclusion, including every complete higher inverse image.
+
+**Proposition 4.46 (holonomic intrinsic presentation).** Let $E\subset J^\infty(M_0,n)$ be a regular formally integrable equation of finite defining order at most $q$, with $q\ge1$, and set $N=E^q$. Its holonomic realization is a first-order equation $S$ on $N$ with compatible isomorphisms
+
+$$
+\begin{gathered}
+\Psi_k:E^{q+k}\longrightarrow S^k,\\
+S^k\subset J^k(N,n),\\
+\partial_x^\beta v_\alpha=u_{\alpha+\beta},\\
+v_\alpha=u_\alpha|_N,\\
+|\alpha|\le q,\quad|\beta|\le k.
+\end{gathered}
+\tag{4.121}
+$$
+
+Suppose a specified intrinsic finite presentation gives a regular Cartan jet action on $S$ satisfying Theorem 4.45 at the base $N$. Then that theorem pulls back to $E$ with cutoff $q+L$, relative to this same base $N$. Intrinsic determining order $k$ acts through original equation order $q+k$. No preservation of the earlier $M_0$ coefficient class is asserted.
+
+*Proof.* Every multi-index $\gamma$ of length at most $q+k$ can be written $\alpha+\beta$ with $|\alpha|\le q$, $|\beta|\le k$, so (4.121) recovers every original coordinate. At level one its image has the lower holonomy equations and top symmetry equations
+
+$$
+\begin{gathered}
+\partial_i v_\alpha=v_{\alpha+e_i}
+\quad(|\alpha|<q),\\
+\partial_i v_\alpha=\partial_jv_\delta\\
+\text{if }|\alpha|=|\delta|=q,\\
+\alpha+e_i=\delta+e_j,
+\end{gathered}
+\tag{4.122}
+$$
+
+together with tangency to $E^q$. These define $S^1\cong E^{q+1}$ in the chart of planes transverse to the original $x$ coordinates.
+
+Differentiate the lower equations to replace a derivative of $v_\alpha$, $|\alpha|<q$, by the shifted-index entry until its derivative order is zero or $|\alpha|=q$. At top degree, differentiated symmetry equations identify two distributions of a fixed $\gamma$ between $\alpha$ and $\beta$ that exchange one $\alpha$ index with one $\beta$ index. Any two length-$q$ choices of $\alpha$ are connected by such exchanges: choose an index too large and one too small compared with the desired choice and move one copy. The sum of positive differences decreases, so the process terminates. Thus all the entries have the unique value $u_\gamma$. Conversely those values satisfy every differentiated identity. Tangency and its derivatives are exactly the original prolonged rows because $q$ is at least the defining order. Hence
+
+$$
+\begin{gathered}
+(S^1)^{(k-1)}=S^k,\\
+S^k=\Psi_k(E^{q+k})\quad(k\ge1).
+\end{gathered}
+\tag{4.123}
+$$
+
+Smoothness and onto affine higher projections transfer. On a fixed $N$ fibre the successive spaces are algebraic affine bundles: a rank minor of the linear highest-equation matrix solves for its dependent entries, and residual constraints vanish by onto projection. These affine-product charts show nonsingularity and irreducibility inductively. Two nonempty total opens project to intersecting base opens and meet in an irreducible affine fibre. Both total derivatives in (4.121) shift $\beta$ by $e_i$, so the Cartan distributions are identified.
+
+The coefficient comparison is exact. Choose intrinsic coordinates $(x,y)$ on $N$ with the same independent $x$. Each $v_\alpha$ is a smooth basic function of $(x,y)$. Repeated chain and product rules make its derivative of order $\beta$ polynomial in the $y$ graph derivatives through $|\beta|$, with coefficients on $N$. Conversely each $y$ is a smooth basic function of the finite $v_\alpha$; its repeated graph derivatives are polynomial in original coordinates through order $q+|\beta|$. Implicit algebraic coordinates require only an inverse Jacobian minor on $N$, a basic coefficient. No higher denominator is introduced in either direction. Therefore
+
+$$
+\begin{gathered}
+\text{rational through }S^L,\\
+\text{polynomial above }L\\
+\Longleftrightarrow\\
+\text{rational through }E^{q+L},\\
+\text{polynomial above }q+L,
+\end{gathered}
+\tag{4.124}
+$$
+
+with both classes relative to $N$. This is one fixed cutoff shift, not repeated enlargement of a bound.
+
+The specified action on $S$ has all the data of Theorem 4.45. Under $\Psi$, its finite action maps, full orbits and stabilizers correspond because (4.121) is an isomorphism commuting with projections. By Theorem 4.40, action on $S^k$ uses only the ordinary determining $k$-jet and acts through original order $q+k$. Pull back the invariant domain and the entire higher inverse-image tower of Theorem 4.45. The Cartan identification transports its derivations and (4.124) transports its complete invariant algebra. Symbol and cohomology assertions refer to this specified intrinsic jet presentation; no equality with a differently graded earlier Spencer complex is presumed. This proves the stated finite/formal geometric conclusions at cutoff $q+L$. $\square$
+
+**Example 4.47 (a higher-jet domain of a contact map).** A local symmetry descending to $E^q$ need not already give a regular action on every full higher fibre. For scalar curves put $p=u_x$ and consider
+
+$$
+\begin{gathered}
+X=p,\quad P=-x,\\
+U=u-px.
+\end{gathered}
+\tag{4.125}
+$$
+
+Its inverse is $x=-P$, $p=X$, $u=U-XP$. Moreover $dU-P\,dX=du-p\,dx$, so it is a contact map on the first-jet space. Writing $a=u_{xx}$ gives $D_xX=a$ and
+
+$$
+\begin{gathered}
+D_X=a^{-1}D_x,\\
+U_{XX}=-a^{-1},\\
+U_{XXX}=u_{xxx}/a^3.
+\end{gathered}
+\tag{4.126}
+$$
+
+These identities follow by applying $a^{-1}D_x$ first to $P=-x$ and then to $-a^{-1}$. At $a=0$, $D_xX=D_xU=0$ and $D_xP=-1$, so the transformed lifted curve is vertical over the original point plane and outside the original graph-jet chart. The contact plane has basis $\partial_x+p\partial_u,\partial_p$. Its lines form a projective line: the finite slopes are spanned by $\partial_x+p\partial_u+a\partial_p$, and the missing line is spanned by $\partial_p$. This supplies the projective completion and explains the higher-jet graph domain $a\ne0$. The map on $E^1$ alone therefore does not establish a regular action on the entire affine curvature fibre. Proposition 4.46 requires the actual regular finite-level presentation.
+
+![The holonomic isomorphism identifies original order q+k with intrinsic order k over the fixed base N=E^q. Its coordinate rule is derivative beta of v_alpha equals u_(alpha+beta). The two rational-low/polynomial-high classes have cutoffs L and q+L relative to the same N. A contact-map inset has curvature a mapped to minus one over a and explicitly excludes a=0 from its graph chart.](../figures/holonomic-intrinsic-presentation.svg)
+
+*Figure 4.19.* Proposition 4.46 and Example 4.47. The order and coefficient comparison uses the same basic manifold $N$ on both sides. The contact-map inset explains why a local higher-jet domain cannot be omitted from a finite-presentation hypothesis. See Exercise 17 and Solution 17.
+
+Theorem 4.45 proves the global Lie–Tresse conclusion for the specified regular Cartan jet action. The action may be given only on the equation; the finite Cartan identity determines its point-jet formulas. Proposition 4.46 treats intrinsic finite presentations at their own base. A finite differential substitution that lacks such finite-jet action data is a different object, and Proposition 4.43 prevents identification of coefficient classes under an arbitrary change of base.
+
+*Section 4.22 and Figures 4.18–4.19: GPT-6.1 Sol (OpenAI). CC0 1.0.*
 
 ## 5. Euclidean curvature
 
@@ -2605,6 +3025,10 @@ and its differentiated constraints prescribe $\beta_{xx}=A+xB$ and $\beta_{xu}=x
 3. Derive (4.97) by the binomial theorem and prove the determinant formula for every $h\ge0$. Show how the actual inverse affine maps prove the algebraic independence in (4.99).
 4. Explain why a sequence of finite transporter sets with every term nonempty needs a further argument to give a compatible formal arrow. Prove the surjectivity of the eventual image system used in Theorem 4.38. Why is descending subgroup stabilization justified by dimension and components rather than by a general descending-chain assertion for closed subsets?
 
+**Exercise 16 (intrinsic normalization and rationality).** Verify the composition law (4.105) and the inverse parameters in Example 4.41. Use (4.109) to prove that equality of every $I_j$ gives one parameter transformation between two infinite equation jets. Determine the full invariant field of original order two in the original fibre-rational class, and explain why $I_2$ is permitted in the intrinsic presentation but absent from that field. At $p=z=0$, compare $(w_2,w_3)=(1,1)$ and $(2,2)$.
+
+**Exercise 17 (finite Cartan compatibility and presentation order).** Explain why equality of infinitesimal orbit images alone would not prove the stabilizer-scheme assertion in Theorem 4.45, and identify the stronger equality used there. For $q=2$ and two independent variables, show that the two decompositions $\alpha=(2,0),\beta=(0,2)$ and $\alpha=(0,2),\beta=(2,0)$ of $\gamma=(2,2)$ are connected by the differentiated top symmetry relations. State the original cutoff corresponding to intrinsic cutoff $L=3$. For (4.125), verify the contact identity and the two curvature derivatives in (4.126), including their domains.
+
 ## 9. Solutions
 
 **Solution 1.** The recurrence gives $\phi_p=D_x(2u)-pD_xx=p$, and $\phi_q=D_xp-qD_xx=0$. Thus $\operatorname{pr}^{(2)}v=x\partial_x+2u\partial_u+p\partial_p$, with no $\partial_q$ term. Equivalently, the finite scaling sends $(x,u,p,q)$ to $(e^t x,e^{2t}u,e^tp,q)$.
@@ -2754,6 +3178,18 @@ Expand $v^h$ in the two tangent monomials. In its product with $t_xt_y$, reducin
 
 Nonempty finite-level transporter sets may have truncation maps that miss elements of a preceding set, so arbitrary independent choices need not be compatible. For fixed $k$, their images eventually stabilize to a nonempty $T'_k$. Given $x\in T'_k$, choose $j$ large enough for stabilization at both $k$ and $k+1$. Lift $x$ to $T_j$ and project to order $k+1$; this gives a preimage in $T'_{k+1}$. Thus the eventual system is onto and successive compatible choices exist. Subgroup image dimensions decrease only finitely often. At constant dimension, each later component is a component of the earlier group by the dimension-drop lemma, and only finitely many components are available. This proves stabilization. General closed subsets of a Noetherian space need not satisfy this descending-chain assertion; the equal-dimensional algebraic group structure is essential. $\square$
 
+**Solution 16.** Applying the second transformation to $w'=e^{a_1}w+c_1x+d_1$ gives $e^{a_1+a_2}w+(e^{a_2}c_1+c_2)x+e^{a_2}d_1+c_2s_1+d_2$; the other four coordinates give the additive parameters in (4.105). Setting the composite parameters to zero gives $s_2=-s_1$, $a_2=-a_1$, $h_2=-h_1$, $c_2=-e^{-a_1}c_1$ and $d_2=e^{-a_1}(c_1s_1-d_1)$. The reverse composite vanishes as well by substitution.
+
+Normalization (4.109) sends the basic point to zero and $w_j$ to $I_j$ at every order with the same five parameters. For two jets with equal $I_j$, first normalize the first and then apply the inverse normalization of the second. The group law gives one actual transformation carrying every coordinate of the first jet to the second; no separate choices at successive orders are required.
+
+At original order two there are no ratios $r_i$ with $i\ge3$. On the original basic fibre, translation removes $z$, and Lemma 4.42 makes every rational invariant of $(p,w_2)$ constant. Thus that invariant field is $\mathbb R$. The function $I_2=e^{-p}w_2$ is allowed when $p$ is a basic coordinate of $M'$. It is nonconstant and $H$-invariant, so the computed constant field excludes it from the original derivative-rational class. Finally, the two given jets have the same $w_3/w_2=1$ and distinct $I_2=1,2$. Their intrinsic quotient values differ, so they are inequivalent despite equality of every original third-order rational invariant.
+
+**Solution 17.** A tangent image contains no information about distinct group components or a stabilizer's scheme fibre. Theorem 4.45 proves equality of the actual action morphisms by the finite Cartan-plane induction and the reduced point test. A stabilizer is the fibre of that map, so its scheme and tangent kernel agree, including the full group components.
+
+Move one first-coordinate index from $\alpha$ to $\beta$ and one second-coordinate index in the opposite direction. The intermediate pair is $\alpha=(1,1),\beta=(1,1)$; one more exchange gives the desired pair. Each exchange is a derivative of a top symmetry equation in (4.122), and every pair has total multi-index $(2,2)$. The intrinsic cutoff $L=3$ corresponds to original order $q+L=5$, with both coefficient classes relative to $N=E^2$.
+
+For the contact map, $d(u-px)-(-x)\,dp=du-p\,dx$. Along a graph, $D_xp=a$, so $D_X=a^{-1}D_x$ is defined for $a\ne0$. Its application to $P=-x$ gives $-a^{-1}$; application once more gives $a^{-1}D_x(-a^{-1})=u_{xxx}/a^3$. The pole at $a=0$ is the absent graph direction, not a regular affine curvature coordinate. These formulas do not establish an action on the full affine fibre containing that point.
+
 ## References
 
 - Michael Kunzinger, [*Lie Transformation Groups*](https://www.mat.univie.ac.at/~mike/teaching/ss15/ltg.pdf), §§3.8–3.12; in particular the prolongation construction, Theorem 3.10.6, the heat-equation example 3.11.1, and the local-solvability qualification in §3.12.
@@ -2761,6 +3197,6 @@ Nonempty finite-level transporter sets may have truncation maps that miss elemen
 - Boris Kruglikov and Valentin Lychagin, [*Global Lie–Tresse theorem*](https://arxiv.org/abs/1111.5480v3), version 3, 13 June 2015, §§0.1–0.2 and 3. Section 4 above distinguishes the finite-generation assertion from the false individual-real-orbit separation inference.
 - Sophus Lie and Friedrich Engel, *Theorie der Transformationsgruppen*, Volume I, Chapters 26–27, for projective and linear homogeneous transformation groups; [English translation and modern presentation by Joël Merker](https://arxiv.org/abs/1003.3202v1). [Volume II, German original](https://archive.org/details/theotransformation02liesrich), for differential equations and contact transformations.
 
-The local first-integral count is infinitesimal and analytic. The global algebraic proof concerns the induced point actions and geometric conventions of Section 4.16. Theorem 4.19 supplies the finite quotient; Theorems 4.21 and 4.24 give quotient derivations and finite observations; Theorems 4.28–4.32 give the actual common domain, full symbols, cohomology and equation coordinates; Lemma 4.34 and Theorems 4.35–4.36 supply transitive extension and geometric descent. Theorem 4.38 proves finite differential generation, affine quotient projections and finite/formal orbit separation under those hypotheses, including deficient horizontal rank and disconnected isotropy. The compatible action-only extension is outside that stated point-action scope.
+The local first-integral count is infinitesimal and analytic. The global algebraic proof concerns the induced point actions and geometric conventions of Section 4.16. Theorem 4.19 supplies the finite quotient; Theorems 4.21 and 4.24 give quotient derivations and finite observations; Theorems 4.28–4.32 give the actual common domain, full symbols, cohomology and equation coordinates; Lemma 4.34 and Theorems 4.35–4.36 supply transitive extension and geometric descent. Theorem 4.38 proves finite differential generation, affine quotient projections and finite/formal orbit separation under those hypotheses, including deficient horizontal rank and disconnected isotropy. Theorem 4.45 proves the regular Cartan jet-action theorem without prescribing an ambient prolongation formula. Proposition 4.46 supplies the holonomic order and coefficient comparison for a specified intrinsic presentation. Example 4.47 distinguishes a local higher-jet domain from a regular finite-fibre action. All geometric, formal and real-orbit conventions remain as stated.
 
 **Mathematical dependencies:** statements, hypotheses and prerequisite references.

@@ -725,7 +725,7 @@ The exact Hom sequence of (C.3) and the full faithfulness of \(i_*\) now give th
 \tag{C.5}
 \]
 
-Its counit is the fibre inclusion \(i_*i^!K\to K\). Hence (C.3) gives precisely (2.3), with its adjunction maps. Applying it to \(i_*A\) gives \(i^!i_*A=A\). Thus \(i_*,j_!,Rj_*\) are fully faithful, and all the recollement identities follow. Exact restriction and extension by zero preserve finite constructible stalks on a finite refinement. [Lesson 1, M.4](constructible-complexes-on-algebraic-varieties.md#m-4-the-ordinary-direct-image-theorem), with the finite-ring comparison in [BV.1](constructible-complexes-on-algebraic-varieties.md#bv-1-coefficient-change-for-ordinary-and-proper-images), proves bounded constructibility of \(Rj_*\). Formula (C.3) then proves it for \(i^!\). This proves case 1 without a finite-projective-dimension assumption on the coefficient sheaves.
+Its counit is the fibre inclusion \(i_*i^!K\to K\). Hence (C.3) gives precisely (2.3), with its adjunction maps. Applying it to \(i_*A\) gives \(i^!i_*A=A\). Thus \(i_*,j_!,Rj_*\) are fully faithful, and all the recollement identities follow. Exact restriction and extension by zero preserve finite constructible stalks on a finite refinement. Lemma C.2 below proves bounded constructibility of \(Rj_*\) over \(R\) by combining [Lesson 1, M.4](constructible-complexes-on-algebraic-varieties.md#m-4-the-ordinary-direct-image-theorem) with the underlying-coefficient comparison of [BB.3](constructible-complexes-on-algebraic-varieties.md#bb-3-module-injectives-and-underlying-abelian-cohomology) and [BV.1](constructible-complexes-on-algebraic-varieties.md#bv-1-coefficient-change-for-ordinary-and-proper-images). Formula (C.3) then proves it for \(i^!\). This proves case 1 without a finite-projective-dimension assumption on the coefficient sheaves.
 
 For complete coefficients, [Lesson 1, BX.1–BX.2](constructible-complexes-on-algebraic-varieties.md#bx-1-lifting-a-closed-stratum-neighbourhood) proves (C.1)–(C.2) on the pro-étale site. Its proof uses lifted weakly contractible closed-stratum neighborhoods and their covers; it applies to ordinary \(O\)-module sheaves as well as to the completed coefficient-ring sheaves. In particular it proves exactness, the closed counit and joint conservativity of the open and closed restrictions on that site.
 
@@ -745,6 +745,52 @@ For the course's \(\overline{\mathbf Q}_\ell\)-coefficients, use finite-extensio
 
 because the underlying target is a finite direct sum of copies of \(L\). This also holds in every shift. Every morphism and every finite diagram in the filtered coefficient category is defined at one finite extension; an equality holds at some further extension. Cone triangles, their identities and the adjunction comparisons therefore pass to that category. This gives the same recollement for the finite-extension-model convention, including its actual localization maps. It asserts nothing about representations over an infinite coefficient field which do not admit such a model.
 
+### C.2. Detect constructibility after forgetting a finite coefficient action
+
+Let \(R\) be a finite commutative ring, let \(mR=0\), and put \(\Lambda=\mathbf Z/m\). Write \(U_X\) for restriction of coefficients from \(R\)-module sheaves to \(\Lambda\)-module sheaves on \(X_{\acute et}\). The zero ring gives only the zero sheaf, so assume \(R\ne0\).
+
+**Lemma C.2.** On a Noetherian scheme, an \(R\)-module sheaf \(F\) is constructible if and only if \(U_XF\) is constructible. Consequently
+\[
+K\in D^b_c(X_{\acute et},R)
+\quad\Longleftrightarrow\quad
+U_XK\in D^b_c(X_{\acute et},\Lambda).
+\tag{C.7}
+\]
+For a separated finite-type morphism \(f:X\to Y\) between schemes of finite type over \(k\), and \(K\in D^+(X_{\acute et},R)\), the natural comparison is
+\[
+U_YRf_{*,R}K
+\xrightarrow{\ \sim\ }
+Rf_{*,\Lambda}U_XK.
+\tag{C.8}
+\]
+If \(m\) is invertible in \(k\), these statements and Lesson 1, M.4 prove that \(Rf_{*,R}\) preserves bounded constructibility.
+
+**Proof.** A finitely generated module over the finite ring \(R\) is a finite set: a finite list of generators gives a surjection from a finite Cartesian power of \(R\). Thus an étale-local constant finite \(R\)-module has an étale-local constant finite underlying \(\Lambda\)-module. A finite stratification witnessing constructibility over \(R\) also witnesses it over \(\Lambda\).
+
+Conversely, fix a stratum on which \(U_XF\) is locally constant with finite fibre \(M\). At any geometric point, choose an étale neighborhood on which that underlying sheaf is the constant sheaf \(\underline M\). For \(r\in R\) and \(a\in M\), apply the given action of \(r\) to the constant section \(a\). Its image is a section of \(\underline M\), and hence is locally equal to one constant element. There are only finitely many pairs \((r,a)\). A common refinement of their neighborhoods therefore makes all these images constant at once. Concretely, take the finite fibre product of the chosen pointed étale neighborhoods and retain a neighborhood of the resulting point.
+
+The resulting tables \(r:a\mapsto ra\) define one \(R\)-module structure on \(M\). The addition, multiplication and unit identities hold because they hold for the original sheaf action; they may also be checked at the chosen geometric stalk. The trivialization \(\underline M\to F\) is now \(R\)-linear, since it intertwines every entry of the tables. Its inverse is \(R\)-linear as well. This proves local constancy as an \(R\)-module sheaf on the same stratum. The finite underlying set generates \(M\) over \(R\), so its fibres are finitely generated. The original finite stratification proves constructibility of \(F\).
+
+Restriction of coefficients preserves kernels, cokernels and exact sequences: it leaves the underlying sheaves and maps unchanged. Therefore
+\(H^q(U_XK)=U_XH^q(K)\). It also detects zero sheaves, so it detects cohomological bounds and quasi-isomorphisms. Applying the sheaf assertion to each cohomology sheaf proves (C.7).
+
+For (C.8), use the exact module-cohomology comparison proved in [Lesson 1, BB.3](constructible-complexes-on-algebraic-varieties.md#bb-3-module-injectives-and-underlying-abelian-cohomology). Its hypercover argument applies to both constant rings \(R\) and \(\Lambda\). In particular, if \(I\) is an injective \(R\)-module sheaf and \(V\to X\) is a quasi-compact étale object, then \(I|_V\) is still injective as an \(R\)-module sheaf and
+\[
+H^q(V,U_XI)=H^q(V,I)=0\qquad(q>0).
+\tag{C.9}
+\]
+Here the first group is derived in \(\Lambda\)-module sheaves and the second in \(R\)-module sheaves; both comparisons use the identical underlying section complex. In BB.3 the vanishing follows by applying \(\operatorname{Hom}_R(-,I)\) to the locally contracted augmented free-module complex of each hypercover. It does not require that \(U_XI\) be injective.
+
+For a quasi-compact étale test object \(W\to Y\), the scheme \(X_W\) is quasi-compact and quasi-separated and is étale over \(X\). The same argument gives (C.9) on \(X_W\). Sheafifying these section-cohomology calculations, as in BB.3, shows that \(U_XI\) is \(f_*\)-acyclic over \(\Lambda\). Choose a bounded-below injective \(R\)-module resolution \(K\to I^\bullet\). After applying \(U_X\), it is still a quasi-isomorphism and its terms are \(f_*\)-acyclic. The acyclic-resolution argument of BB.3 and T.4 thus computes both sides of (C.8) by the same complex:
+\[
+U_Y f_{*,R}I^\bullet
+=f_{*,\Lambda}U_XI^\bullet.
+\tag{C.10}
+\]
+This identifies the derived comparison induced by the degree-zero equality, including its coefficient action and connecting maps. It is not a comparison obtained by choosing isomorphisms between cohomology groups.
+
+Finally, for \(K\in D^b_c(X_{\acute et},R)\), (C.7) puts \(U_XK\) in the finite-\(\Lambda\) category to which Lesson 1, M.4 applies. That theorem makes the right side of (C.8) bounded constructible. A second application of (C.7) gives the assertion over \(R\). Neither flatness of \(R\) over \(\Lambda\), nor projectivity of the stalk modules over \(R\), is used. \(\square\)
+
 ## Proof dependencies
 
 Sections 1–6 give the two-point and punctured-plane models, the general gluing theorem, intermediate extension and the classification of simple objects, followed by the five worked exercises. Appendix A proves their categorical prerequisites from the triangle and t-structure axioms. Section 1 supplies the arrow injectives and homotopy argument. Appendix B supplies the actual classical sheaf category, localization, attaching complexes and morphism comparison used in Exercise 5.
@@ -760,3 +806,4 @@ BBD gives the categorical gluing, boundary and heart results of Sections 2, 3, 5
 - A. Beilinson, J. Bernstein and P. Deligne, with contributions by O. Gabber, [*Faisceaux pervers*](https://publications.ias.edu/sites/default/files/Faisceaux%20pervers.pdf), freely readable author-hosted IAS scan, §§1.3–1.4. The gluing theorem, intermediate-extension properties and simple-object classification are proved above; Appendix A supplies the categorical arguments used by those proofs.
 - Y. Laszlo and M. Olsson, [*Perverse t-structure on Artin stacks*](https://www.cmls.polytechnique.fr/perso/laszlo/articleweb/faisceaux-pervers.pdf), freely readable author preprint, §2. Used to check the abstract recollement hypotheses and their generality.
 - The Stacks Project contributors, [Injective resolutions, §13.18](https://stacks.math.columbia.edu/tag/013G), especially Lemmas 13.18.3–13.18.8, and [Cones and termwise split sequences, Lemma 13.9.14](https://stacks.math.columbia.edu/tag/014L). Section 1 and Appendix B give the resolutions, constructions and homotopies used here.
+- The Stacks Project contributors, [Cohomology of modules, §21.12](https://stacks.math.columbia.edu/tag/03FA), especially Lemma 21.12.4, and [Constructible sheaves on Noetherian schemes, §59.74](https://stacks.math.columbia.edu/tag/03RY), for module cohomology and finite-stratification constructibility.
