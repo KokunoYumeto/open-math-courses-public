@@ -13786,7 +13786,7 @@ The free primary comparison is [Barrett, *The derived category of the abelian ca
 
 - [Hatcher, Thom and Gysin] Allen Hatcher, *Algebraic Topology*, [author-hosted additional Chapter 4](https://pi.math.cornell.edu/~hatcher/AT/ATch4.4.pdf), §4.D, printed pp. 441–444. Appendix D proves the required integral finite-cover version and derives the actual maps of the sequence.
 
-- [Artin, plane curves] Michael Artin, *Notes for a Course in Algebraic Geometry*, [MIT author course draft](https://math.mit.edu/classes/18.721/notes/AGmanuscript.pdf), 26 January 2022, §§1.6–1.7, Theorem 8.2.11, and §9.2. Consulted for resultants, projection and the topology problem. Appendix E includes its own convergence, connectedness and ramification arguments.
+- [Artin, plane curves] Michael Artin, *Notes for a Course in Algebraic Geometry*, [MIT author course draft](https://math.mit.edu/classes/18.721/notes/AGmanuscript.pdf), 26 January 2022, §§1.6–1.7, Theorem 8.2.11, and §9.2. These sections treat resultants, projection and the topology problem. Appendix E includes its own convergence, connectedness and ramification arguments.
 
 - [Hatcher, cellular homology] Allen Hatcher, *Algebraic Topology*, [author-hosted Chapter 2](https://pi.math.cornell.edu/~hatcher/AT/ATch2.pdf), Lemma 2.34 and Theorem 2.35, printed pp. 137–140. The finite surface comparison used here is proved directly in E.4.
 

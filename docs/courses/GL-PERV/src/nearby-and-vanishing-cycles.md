@@ -259,7 +259,7 @@ It carries full continuous inertia and any residue-field descent. Vanishing cycl
 
 **Theorem 5.1 (cycle t-exactness under the geometric hypotheses below).** Under those hypotheses, normalized nearby and vanishing cycles preserve the two middle-perverse halves. Classically the scope is regular functions and the corresponding local holomorphic constructible setting. Arithmetically it is separated finite-type families over henselian traits with \(\ell\)-adic coefficients, \(\ell\ne p\). For the generic fibre's own dimension convention, nearby cycles use \(R\psi\) without the extra shift; for a total-space perverse object the normalization is (4.3).
 
-The classical deduction below uses Proposition F.1 for the descent comparison (4.4), and requires bounded constructibility of nearby cycles and perverse exactness of both extensions for the principal open complement. [Appendix G](#appendix-g-finite-nearby-complexes-and-the-resolution-reduction) computes nearby complexes in normal-crossing charts and gives the algebraic constructibility deduction under its stated resolution inputs. In the holomorphic case it requires the matching Stein-open result. The classical Artin/Stein statements from Lesson 5 are hypotheses of this deduction; their proofs are not included here. The argument is therefore a conditional proof at that generality. The disc equivalence and examples above have their direct earlier proof and do not acquire a new dependence on this general theorem.
+For a regular function on a separated finite-type complex variety with finite-dimensional algebraically constructible coefficients over a characteristic-zero field, all three inputs of the classical deduction are supplied here or in earlier lessons. Proposition F.1 proves the descent comparison (4.4). [Theorem G.4](#appendix-g-finite-nearby-complexes-and-the-resolution-reduction), with Appendices H–I, proves bounded constructibility. Affine morphisms, Theorem A.3, combined with its Section 2 dimension bounds, proves perverse exactness of both extensions for the principal affine open complement. Theorem 5.1 therefore holds at this algebraic scope. The unrestricted holomorphic setting retains its own constructibility and Stein-open hypotheses. The disc equivalence and examples above have their direct local proofs.
 
 **Classical deduction.** Let \(M\) be perverse on \(U\). If \(j_!M\) and \(Rj_*M\) are perverse, localization gives
 
@@ -274,7 +274,7 @@ Here is the finite decomposition used in this argument. A finite-length heart ob
 
 For any eigenvalue \(\lambda\), tensor \(M\) with the pullback of the rank-one local system on \(\mathbb C^*\) with monodromy \(\lambda^{-1}\). Tensoring with a local system is t-exact by the stalk and costalk tests. Its pullback to the universal cover is constant, so it tensors the nearby complex with that one-dimensional representation. The \(\lambda\)-part has become the eigenvalue-one part and therefore has no perverse degree other than minus one. This proves that all of \(C[-1]\) is perverse. Exact faithful scalar extension descends the conclusion to the original characteristic-zero field.
 
-For perverse \(K\) on \(X\), the first triangle in (4.7), together with \(i^*K\in{}^pD^{\le0}\), gives the upper bound on \(\Phi_fK\). The second, with \(i^!K\in{}^pD^{\ge0}\), gives its lower bound. Both functors preserve heart objects. Their exact triangles and the finite perverse truncation tower then prove both t-exactness inequalities and exactness on hearts. This proves the deduction under the stated geometric hypotheses. \(\square\)
+For perverse \(K\) on \(X\), the first triangle in (4.7), together with \(i^*K\in{}^pD^{\le0}\), gives the upper bound on \(\Phi_fK\). The second, with \(i^!K\in{}^pD^{\ge0}\), gives its lower bound. Both functors preserve heart objects. Their exact triangles and the finite perverse truncation tower then prove both t-exactness inequalities and exactness on hearts. This proves the algebraic assertion and the holomorphic deduction under its stated geometric hypotheses. \(\square\)
 
 We will also need to split a bounded cycle complex itself. If a polynomial in its monodromy vanishes on each ordinary cohomology sheaf, a sufficiently high power vanishes on the complex: successive ordinary truncations make each composite with zero cohomology maps pass through one fewer layer. Factor the resulting annihilator into relatively prime powers and use Bézout idempotents. These idempotents split in the bounded constructible category: the usual mapping telescope of an idempotent in the ambient derived sheaf category has, on cohomology, its image; those images are bounded constructible direct summands, so the telescope belongs to the same constructible subcategory. Uniqueness follows because a map intertwining a nilpotent and an invertible operator is zero after multiplying by a sufficiently high power. This gives the functorial unipotent/complement decomposition used below and in the arithmetic appendices, under their constructibility assumptions.
 
@@ -534,7 +534,7 @@ after the indicated base restrictions. On pointed neighborhoods, this is the Hoc
 
 Proceed by induction on \(n=\dim X_\eta\), starting with the empty generic fibre. On an affine chart, embed \(X\) into \(\mathbb A_S^a\) and apply a coordinate projection to \(S_t\). A generic component on which that coordinate is nonconstant has new generic dimension at most \(n-1\): adjoining the coordinate to the base field lowers its transcendence degree by one, and the further algebraic field extension to \(K_t\) preserves dimension. If the coordinate is algebraic over \(K\), a nonzero polynomial relation becomes an invertible scalar over the field containing the transcendental coordinate, so that component disappears. Thus induction applies to every resulting coordinate family, including when \(n=0\), when all these generic fibres are empty.
 
-Smooth base change and continuity identify the coordinate-generic restriction of \(R^q\psi_S F\) with the left side of (A.1). The right side is a subsheaf of a finite constructible sheaf by induction, and is therefore constructible by the finite-data observation. That observation now supplies constructible subsheaves
+Smooth base change and continuity identify the coordinate-generic restriction of \(R^q\psi_S F\) with the left side of (A.1). The right side is a subsheaf of a finite constructible sheaf by induction, and is therefore constructible by the finite-data observation. That observation supplies constructible subsheaves
 \(G_q\subset R^q\psi F\)
 whose quotients \(Q_q\) have only finite-support local sections.
 
@@ -1469,7 +1469,7 @@ The remaining comparison is precise. The module \(M_L\) depends dg-functorially 
 
 ### The dg-module adjunction for fixed proper support
 
-**Proposition B.1l (representing modules, with unit and counit).** For the fixed compactification and dg functor \(F=F_{p,j}:\mathcal C\to\mathcal D\) in B.1k, its ordinary adjunction has the following dg-module presentation. There are dg categories of homotopy-representable modules, quasi-equivalent to \(\mathcal C,\mathcal D\); induction gives the left functor on these categories, and a resolution graph gives the right functor as a dg roof. Their mapping complexes have the explicit quasi-isomorphisms below. Their unit and counit come from a strict adjunction on all dg modules, and their triangle homotopies can be exhibited on resolved objects. This supplies the fixed-model representing-module step left open in B.1k. It does not supply compactification-refinement, geometric base-change or coefficient-diagram comparisons.
+**Proposition B.1l (representing modules, with unit and counit).** For the fixed compactification and dg functor \(F=F_{p,j}:\mathcal C\to\mathcal D\) in B.1k, its ordinary adjunction has the following dg-module presentation. There are dg categories of homotopy-representable modules, quasi-equivalent to \(\mathcal C,\mathcal D\); induction gives the left functor on these categories, and a resolution graph gives the right functor as a dg roof. Their mapping complexes have the explicit quasi-isomorphisms below. Their unit and counit come from a strict adjunction on all dg modules, and their triangle homotopies can be exhibited on resolved objects. This is the fixed-model representing-module construction for B.1k. It does not supply compactification-refinement, geometric base-change or coefficient-diagram comparisons.
 
 We give the construction for a unital dg functor between dg categories over a commutative ring \(k\), using the universe convention of B.1k. For its application take \(k=\Lambda\), with the full ordinary unbounded scope of B.1e. Neither the complexes nor the dg Hom modules are required to be bounded or flat over \(k\).
 
@@ -1921,7 +1921,7 @@ The geometric composition arrays of Theorem 8.1 use the general proper–open sq
 
 ### All-length resolution folding and its higher components
 
-**Proposition B.1o (folding without discarding higher maps).** Every finite string of exact additive functors between the Grothendieck abelian categories used here admits a strictly unital higher folding map from its iterated resolution graph to the graph for the composite. Its first component is a Hom-complex quasi-isomorphism; its higher components are given by finite path sums. The complete bar identity holds, and every binary parenthesization gives exactly the same bar map after the canonical functor-composition identifications. Proper–open exchange preserves all these components. This supplies the arbitrary-string folding left open in B.1n. It does not identify that fixed-string construction with completed geometric base-change, compactification-choice or coefficient coherence.
+**Proposition B.1o (folding without discarding higher maps).** Every finite string of exact additive functors between the Grothendieck abelian categories used here admits a strictly unital higher folding map from its iterated resolution graph to the graph for the composite. Its first component is a Hom-complex quasi-isomorphism; its higher components are given by finite path sums. The complete bar identity holds, and every binary parenthesization gives exactly the same bar map after the canonical functor-composition identifications. Proper–open exchange preserves all these components. This is the arbitrary-string folding construction for B.1n. It does not identify that fixed-string construction with completed geometric base-change, compactification-choice or coefficient coherence.
 
 **The string model.** Let \(J_i:\mathcal A_{i-1}\to\mathcal A_i\), \(1\leq i\leq N\), be exact additive functors. Open extension and inverse image are examples; no assertion is made that they preserve K-injectives. An object of \(\mathcal R(J_N,\ldots,J_1)\) is
 \[
@@ -2658,7 +2658,7 @@ The first arrow is postcomposition by the replacement of \(H^*N\); the middle on
 
 For the geometric common span, this also stays in the intended homotopy-representable models. If \(Y\) is homotopy-representable on \(\mathcal I_Z\), B.1k gives a homotopy-representable replacement \(N\to F_g^*Y\) on \(\mathcal C_g\). Then \((\pi_g)_!N\) is homotopy-representable, and B.1k gives the same property for a replacement of \(F_f^*(\pi_g)_!N\). Equation (B.SM9), and the equivalence induced by \(\alpha\), imply that a replacement of \(\beta^*N\) is homotopy-representable. Restriction preserves the quasi-isomorphism to \(\beta^*F_g^*Y\). This checks the right mapping module for \(F_g\beta\); it does not assume that restriction along the nonequivalence \(\beta\) preserves all representables. Thus the comparison concerns the same geometric operations, not a substitute theory on unrelated modules.
 
-The construction now supplies the strict common span and both module mates needed by B.1r. Its comparison with the single-compactification output still passes through the higher exact-string fold of B.1o. That fold is not a strict dg functor, so it has **not** been inserted into the balanced induction formulas. A justified higher-functor module transport, with coherent units, counits and triangle comparisons across the geometric composition/base-change/refinement grids, remains required. Geometric nearby attaching maps, multiplicative descent, normalized coefficient transport and their geometric and coefficient prerequisites retain their full stated scopes. \(\square\)
+The construction gives the strict common span and both module mates needed by B.1r. Comparison with the single-compactification model uses the higher exact-string fold of B.1o. That fold is not a strict dg functor, so the balanced induction formulas cannot be applied directly to it. Higher-functor module transport requires coherent units, counits and triangle comparisons across the geometric composition, base-change and refinement grids. These fixed-span calculations do not establish geometric nearby attaching maps, multiplicative descent or normalized coefficient transport at their full stated geometric and coefficient scope. \(\square\)
 
 
 
@@ -3304,7 +3304,7 @@ The distinction between arbitrary \(A\) and the chosen \(P\) matters. Already fo
 
 Whole dg-indexed families are handled before evaluation over \(\mathcal J^{\mathrm{op}}\otimes\mathcal C\) and \(\mathcal J^{\mathrm{op}}\otimes\mathcal D\), with \(\mathcal J=Q\mathcal I\) and \(A\) h-projective over the product. The unit and counit are natural on that product category, and (B.ND6) gives h-projective evaluations. This is the same family convention as B.1w, so the overlap and the inclusions remain compatible there.
 
-Apply the construction to every strict functor in the geometric common span of (B.GC2)–(B.GC6) and to the strict folding roofs (B.SF7). Together with B.1w, this now supplies the complete list of fixed-input unit, counit and two-triangle target diagrams at the stated h-projective module scope. The next obligation is still the actual comparison of these target presentations along geometric refinements, compositions and base changes, preserving the proper-image isomorphisms and the higher fold cells. Neither general pullback preservation of h-projectivity nor global geometric coherence is inferred from the identity-fibre inclusion argument. Nearby attaching, normalized coefficient transport remain open. \(\square\)
+Apply the construction to every strict functor in the geometric common span of (B.GC2)–(B.GC6) and to the strict folding roofs (B.SF7). Together with B.1w, this gives the fixed-input unit, counit and two-triangle target diagrams at the stated h-projective module scope. Geometric refinements, compositions and base changes require comparisons of these target presentations that preserve the proper-image isomorphisms and higher fold cells. The identity-fibre inclusion argument proves neither general pullback preservation of h-projectivity nor global geometric coherence. It also does not construct nearby attaching maps or normalized coefficient transport. \(\square\)
 
 
 
@@ -4577,7 +4577,7 @@ The first line uses balanced right tensor order: compact support and then base c
 To identify the map, evaluate on a replacement string
 \(s:j_!e_XI\to B\), \(r:v^*B\to C\). The proper factor is
 \((h'_*r)\beta_{h,B}\) by (B.KC4), and the common open edge is
-\(r(v^*s)\theta^{-1}\) by (B.KC6)–(B.KC7). These are exactly (B.CB5)–(B.CB6). The length-one bar terms are the graph edge homotopies, with (B.KC11)'s signs. If a higher fold has first been replaced by its strict \(UQ\) roof, its higher coefficients are already the images of the free words; (B.KC10) does not discard them. In particular the second coefficient of (B.IA12) must remain when this cell is inserted into the composition square. The identical-word identities (B.GC12)–(B.GC13) specify those boundary comparisons; their joint global lift remains the next assembly obligation.
+\(r(v^*s)\theta^{-1}\) by (B.KC6)–(B.KC7). These are exactly (B.CB5)–(B.CB6). The length-one bar terms are the graph edge homotopies, with (B.KC11)'s signs. If a higher fold has first been replaced by its strict \(UQ\) roof, its higher coefficients are already the images of the free words; (B.KC10) does not discard them. In particular the second coefficient of (B.IA12) must remain when this cell is inserted into the composition square. The identical-word identities (B.GC12)–(B.GC13) specify those boundary comparisons; a joint global lift is an additional requirement.
 
 Now put \(L_0=T_{H_f}\), \(L_1=T_{H_{f'}}\), \(S=T_{P_u}\), \(V=T_{P_g}\) in the common models, and let \(\vartheta:L_1S\to VL_0\) be the inverse of (B.KC15). For a resolved \(r_0:P_0\to U_0N\), set \(e_0=\varepsilon_0L_0r_0\). The exact resolved mate equations are
 \[
@@ -5001,7 +5001,7 @@ The original bar comparisons, the nonzero nested \(K_2\), and the mixed-cube pai
 
 ### Join the two triangles over the whole refinement family
 
-**Proposition B.1ah (choose the two stages together).** In the strict normalized refinement system (B.NR1), the nested replacements, their actual units and counits, and both triangle witnesses can be chosen as maps of the **whole refinement/input diagram**. The right triangle has a second witness, and that witness compares the two triangle homotopies after the actual counit. The paired target (B.JT5) then varies by genuine target-diagram maps, including when the input module varies. This joins the previously separate providers (B.TD4), (B.IA6)–(B.IA13) and (B.NR13); it does not yet glue the entire geometric mixed-cube/master-bar presentation. All modules may be unbounded, over an arbitrary commutative coefficient ring.
+**Proposition B.1ah (choose the two stages together).** In the strict normalized refinement system (B.NR1), the nested replacements, their actual units and counits, and both triangle witnesses can be chosen as maps of the **whole refinement/input diagram**. The right triangle has a second witness, and that witness compares the two triangle homotopies after the actual counit. The paired target (B.JT5) then varies by genuine target-diagram maps, including when the input module varies. The comparison uses (B.TD4), (B.IA6)–(B.IA13) and (B.NR13). Gluing of the entire geometric mixed-cube/master-bar presentation is an additional assertion. All modules may be unbounded, over an arbitrary commutative coefficient ring.
 
 **Which category contains a natural homotopy?** Let \(I\) be the ordinary refinement category, let \(\mathcal T_A,\mathcal T_C\) be its transport categories for \(a_g,c_g\), and let \(\mathcal T_E\) be the constant-\(\mathcal E\) transport category. The equalities in (B.NR1) give strict dg functors
 \[
@@ -8056,7 +8056,7 @@ Their source and target components are identities and the displayed composite; t
 
 **Successive base change and the actual comparison roofs.** For two successive base changes, the targets in [B.1aj](#join-the-right-triangle-to-resolved-base-change) give the following route: the A-target comparison is the second left base-change map evaluated at the first transported initial resolution, and the C-target is the ordered double inverse image. [B.1ad](#join-the-geometric-kernels-in-right-module-variance) compares each ordered inverse-image transport with its direct-composite model by two actual maps into a common dual kernel. Applying the receiving left functor to the source-kernel roof gives a zigzag for the A-targets; the target-kernel roof gives cospans for the C-targets and counit endpoints. The endpoint maps exist on general modules, but their equivalence properties require the admitted resolved inputs. These are directed roofs, not chosen strictly natural inverses. The resolved vertical-pasting formula in [B.1ab](#transpose-the-actual-base-change-cells) retains both endpoint-witness terms. For the second-resolution targets, [B.1ay](#transport-the-seven-object-diagram-with-canonical-new-units) retains the span through the transported canonical unit rather than inverting the mate or its source lift. These individual routes do not identify independently prescribed geometric comparison cells on the whole parameter diagram: their common four faces and higher boundary must still be matched.
 
-**Scope of the remaining comparison.** This construction supplies the induced receiving diagram and its actual map to the transported old diagram. It uses the existing fixed-model faces, not a new proof of their existence. The whole-envelope method (B.CE10) may now resolve this supplied diagram without inverting any \(K_P\); after an index restriction, (B.CE11) still requires whole re-resolution. Comparing it with an independently prescribed new geometric diagram requires the actual maps of their intermediate targets and common boundaries. Changes in \(\sigma\) require the retained homotopies (B.ZT9)--(B.ZT10) and their common-cylinder realization, not a claim that objectwise comparisons are strictly natural. The original geometric transfer (B.GC13) retains every word coefficient. Those changing-parameter identifications, geometric nearby-cycle multiplicative descent, coefficient completion with derived inverse limits, strict-heart higher effacement are not established by the unit normalization. \(\square\)
+**Scope of the remaining comparison.** This construction supplies the induced receiving diagram and its actual map to the transported old diagram. It assumes the fixed-model faces. The whole-envelope method (B.CE10) resolves the resulting diagram without inverting any \(K_P\); after an index restriction, (B.CE11) still requires whole re-resolution. Comparing it with an independently prescribed new geometric diagram requires the actual maps of their intermediate targets and common boundaries. Changes in \(\sigma\) require the retained homotopies (B.ZT9)--(B.ZT10) and their common-cylinder realization, not a claim that objectwise comparisons are strictly natural. The original geometric transfer (B.GC13) retains every word coefficient. Those changing-parameter identifications, geometric nearby-cycle multiplicative descent, coefficient completion with derived inverse limits, strict-heart higher effacement are not established by the unit normalization. \(\square\)
 
 
 ### Compare successive base-change kernels and their resolved mates
@@ -9362,13 +9362,12 @@ The endpoint target terms \(-T(g_T)+T(g_B)\) are required. Applying the
 closed-record B.HT9 equation without them leaves a nonzero boundary term.
 
 This establishes the target and full-lift interface *given* B.RCmp1–3 on
-the actual common model. It removes a separate unexplained-target-primitive
-obligation; it does not supply or certify the still-unbound geometric
-\(J(f_H)\). Next bind that map, its endpoints and the corresponding mate pair
-through the existing KC/GC/MX and HN roofs, preserving the relative unit face,
-both inverse witnesses, signed bar coefficients, \(K_2\), and saved ordered
-\(\Omega\). Do not apply the fixed-degree \(\Omega\) formula to a nonclosed
-family without checking its own family differential.
+the actual common model. It does not construct the geometric
+\(J(f_H)\). That map, its endpoints and the corresponding mate pair require
+compatible representatives through the KC/GC/MX and HN roofs, preserving the relative unit face,
+both inverse witnesses, signed bar coefficients, \(K_2\), and the specified ordered
+\(\Omega\). Applying the fixed-degree \(\Omega\) formula to a nonclosed family additionally
+requires its family differential.
 
 This conditional comparison does not establish all-array coherence,
 nearby-cycle descent, coefficient completion or the existence of its geometric inputs.
@@ -9560,24 +9559,22 @@ The original fixed comparison is still valid as a separate route.
 
 #### 5. Geometric application and its additional hypotheses
 
-The supplied MX cube, KC signed bar roofs and HN nested folding remain
-the providers. These are the existing geometric inputs. B.CY11 already
-warns that a chosen inverse comparison does not supply arbitrary
-prescribed higher boundaries; the obstruction above makes that warning quantitative.
+The geometric inputs are the MX cube, KC signed bar roofs and HN nested
+folding. B.CY11 and the obstruction above show that an inverse comparison
+alone does not supply arbitrary prescribed higher boundaries.
 
-The next attachment must compute B.IW1 on the actual common geometric
-models, with their precise endpoint choices. There are two honest routes:
+Application of B.RCmp1 requires the actual common geometric models and
+their precise endpoint choices, together with either of the following:
 
-1. supply its full primitive with the old endpoint \(J_T,J_B\) retained; or
-2. construct a coherent whole-index inverse package, recording every
-   displacement of the old endpoint comparisons, and prove the actual
-   higher boundary for that package before propagating it to B.RCmp1.
+1. a full primitive of B.IW1 retaining the endpoint \(J_T,J_B\); or
+2. a coherent whole-index inverse package, its endpoint-comparison
+   displacements, and a proof of the corresponding higher boundary.
 
-B.IW2–5 supply an explicit part of the second route, not its completion.
-Do not assert that normalizing individual inverse packages alone proves
-\(\mathcal O^c=0\) or provides the missing geometric \(J_H\).
-Keep the signed bars, nested \(K_2\), original unit/counit/triangle witnesses
-and ordered \(\Omega\), and re-resolve after changed indices.
+B.IW2–5 give part of the second construction. Normalization of individual
+inverse packages does not imply \(\mathcal O^c=0\) or construct the geometric
+\(J_H\). Both alternatives retain the signed bars, nested \(K_2\), original
+unit/counit/triangle witnesses and ordered \(\Omega\). A changed parameter
+index requires a new resolution of the whole restricted diagram.
 
 The counterexample concerns the inference from pairwise choices; it does
 not compute the actual geometric obstruction or contradict a source theorem.
@@ -9732,17 +9729,17 @@ The inverse and witnesses must first be chosen on this whole index.
 For a new index, restrict the displayed diagram and then re-resolve
 as B.CE11 prescribes.
 
-The next attachment is specific: carry this roof through the original
-right-kernel dual/evaluation and factorized \(S,V\) comparisons used by
-B.OD11–19, compare it with the retained old endpoint routes, and keep
-the closed displacements \(C_T,C_B\) rather than assuming they are
-boundaries. Identify the resulting \(J_H\), or a primitive of the
-literal B.IW1 obstruction, on the same receiving seven-object diagram.
-Under those hypotheses the RCmp target and mate formulas apply.
+Application of the RCmp target and mate formulas requires transport of
+this roof through the original right-kernel dual/evaluation and factorized
+\(S,V\) comparisons of B.OD11–19. Its comparison with the fixed endpoint
+routes must retain the closed displacements \(C_T,C_B\); their exactness
+is an additional condition. The required datum is a geometric \(J_H\),
+or a primitive of the literal B.IW1 obstruction, on the same receiving
+seven-object diagram.
 
-B.MP7 alone does not prove that the old independently chosen
-\(J_T,J_B\) extend, that all changing arrays fit, or that the new
-degree-minus-five witness has been constructed.
+B.MP7 alone does not imply extension of the independently prescribed
+\(J_T,J_B\), compatibility over all changing arrays, or existence of
+the degree-minus-five witness.
 
 
 ### Dualize the mixed model with all graph witnesses
@@ -9947,29 +9944,27 @@ the actual graph product, not B.RD10 stripped of its differential term.
 If only the lower right edges have already been supplied, B.CE10 may
 lift the actual strict \(DR(c)\) boundary to the selected whole
 right-kernel resolutions; its base is given by B.RD5, not guessed.
-If an older full higher cell is prescribed, first verify its same base
-and boundary before comparing the zero-base difference. These alternatives
-do not assert that any independently stored cell has already been checked.
+A prescribed full higher cell can be compared through the zero-base
+difference only when its base and boundary agree with those of the
+displayed cell. This agreement is a separate hypothesis.
 
 #### 5. The remaining geometric identification
 
-The dual MX graph, signs, whole inverse span and transfer of a supplied
-old edge witness are now explicit. The unproved identification is more
-specific than “right-module variance”: identify the actual \(E_i,A_e\)
-for the retained factorized \(L S,V L_0\) endpoint routes on this one
-opposite parameter index, and retain their old endpoint comparison
-displacements. Then evaluate B.IW1 for those choices and construct its
-primitive before using B.RCmp1–11.
+The dual MX graph, its signs, the whole inverse span and transfer of a
+prescribed edge witness do not by themselves identify the geometric
+comparison. That identification requires the actual \(E_i,A_e\) for the
+factorized \(L S,V L_0\) endpoint routes on the same opposite parameter
+index, with their endpoint-comparison displacements. B.RCmp1–11 require
+a primitive of B.IW1 evaluated on those choices.
 
-Neither the new span nor its acyclic resolution kernels establish that
-the old closed endpoint displacement is exact. The IW counterexample
-continues to forbid that inference. A coherent replacement route and
-an original alternative route must remain distinguishable until their
-full comparison has been proved.
+Neither the span nor its acyclic resolution kernels imply exactness of
+the fixed closed endpoint displacement, as the IW counterexample shows.
+A coherent replacement route and an independently prescribed alternative
+route can be identified only through their full comparison.
 
-These constructions do not yet give the actual geometric \(J_H\), the
-degree-minus-five triangle comparison, all-array coherence, nearby
-cycle descent or coefficient completion.
+The actual geometric \(J_H\), the degree-minus-five triangle comparison,
+all-array coherence, nearby-cycle descent and coefficient completion
+remain additional proof obligations.
 
 
 ### Construct the inertia quotient and its exact invariants
@@ -10981,13 +10976,13 @@ Horizontal boundary components are included: their exponent \(m_i\) is zero, whi
 
 ### G.4. The algebraic reduction and its geometric inputs
 
-The required resolution input has two parts: a projective smooth resolution of a reduced affine complex variety, unchanged over its smooth locus; and principalization of an ideal on a smooth variety by projective smooth blow-ups, unchanged outside its zero set. Their programme statements and proofs are Principalization and resolution, Corollary 3.3 and Theorem 4.8. The order-reduction, maximal-contact and blow-up arguments supporting those results are required geometric inputs. [Appendix H](#appendix-h-blow-up-charts-projectivity-and-boundary-factors) proves the Rees-chart, projectivity and boundary-factor calculations used in this reduction. The following deduction specifies how they enter nearby cycles; a local normal-crossing computation alone would not supply them.
+The geometric input has two parts: a projective smooth resolution of a reduced irreducible affine complex variety, unchanged over its smooth locus; and principalization of an ideal on its smooth modification by smooth blow-ups, unchanged outside its zero set. [Theorem I.1](#i-4-the-required-projective-modifications) proves these assertions using the fixed-dimensional order-reduction and maximal-contact construction. [Appendix H](#appendix-h-blow-up-charts-projectivity-and-boundary-factors) supplies the Rees-chart, projectivity and boundary-factor calculations. The following proof combines those geometric results with the actual proper comparison and the local normal-crossing model.
 
-**Proposition G.4 (reduction to the stated resolution inputs).** Assume those two resolution results. Then \(R\psi_f\) sends bounded algebraically constructible complexes on \(X\setminus f^{-1}(0)\) to bounded algebraically constructible complexes on \(f^{-1}(0)\), for every regular function on a separated complex variety of finite type. Consequently the actual specialization cone has the same property. No condition on the finite-rank monodromy representations is needed.
+**Theorem G.4 (algebraic constructibility).** \(R\psi_f\) sends bounded algebraically constructible complexes on \(X\setminus f^{-1}(0)\) to bounded algebraically constructible complexes on \(f^{-1}(0)\), for every regular function on a separated complex variety of finite type. Consequently the actual specialization cone has the same property. No condition on the finite-rank monodromy representations is needed.
 
 **Proof.** This assertion is local on \(X\). Open restriction commutes with the defining derived direct image by restriction of injective resolutions. Choose a finite affine open cover. Finite algebraic stratifications on the members combine by a common refinement and their membership conditions, and the maximum of finitely many amplitude bounds is finite. It is therefore enough to work with affine \(X\).
 
-First let \(a:S\to U=X\setminus f^{-1}(0)\) be a smooth locally closed stratum with a local system \(L\), and put \(Y=\overline S\subset X\). Because \(S\) is locally closed in \(X\), it is dense open in \(Y\); its smoothness makes it part of the smooth locus of \(Y\). The resolution input supplies a projective \(Y_1\to Y\), with \(Y_1\) smooth and an isomorphism over \(S\). On \(Y_1\), let \(J\) be the ideal of the inverse image of \(Y\setminus S\). Principalize \(J\cdot(f)\). This ideal is nonzero on every component: each component meets the dense inverse image of \(S\), where both factors are units. The resulting projective map
+First let \(a:S\to U=X\setminus f^{-1}(0)\) be a smooth locally closed stratum with a local system \(L\), and put \(Y=\overline S\subset X\). We may take \(S\) connected: its finitely many components give a finite direct sum of the same generators. A connected smooth variety is irreducible, as proved in I.4, so \(Y\) is irreducible. Because \(S\) is locally closed in \(X\), it is dense open in \(Y\); its smoothness makes it part of the smooth locus of \(Y\). The resolution input supplies a projective \(Y_1\to Y\), with \(Y_1\) smooth and an isomorphism over \(S\). On \(Y_1\), let \(J\) be the ideal of the inverse image of \(Y\setminus S\). Principalize \(J\cdot(f)\). This ideal is nonzero on every component: each component meets the dense inverse image of \(S\), where both factors are units. The resulting projective map
 
 \[
 \pi:\widetilde Y\longrightarrow Y\hookrightarrow X
@@ -11019,11 +11014,11 @@ Its cone is bounded constructible by the ordinary-image theorem of Lesson 1, K.8
 
 Finally, ordinary restriction to the zero fibre is bounded constructible by Lesson 1, K.8. Taking the cone of its actual specialization map to nearby cycles preserves that category. This proves the vanishing-cycle assertion. \(\square\)
 
-The hypotheses of G.4 concern algebraic resolution in characteristic zero. An unrestricted holomorphic analogue requires its analytic resolution or analytic specialization inputs. Neither G.4 nor the bound (G.8) proves the affine/Stein perverse vanishing theorem of Lesson 5, nor an arithmetic nearby-cycle finiteness theorem over a trait.
+The proof of G.4 uses algebraic resolution in characteristic zero. An unrestricted holomorphic analogue requires its analytic resolution or analytic specialization inputs. Neither G.4 nor the bound (G.8) proves the affine/Stein perverse vanishing theorem of Lesson 5, nor an arithmetic nearby-cycle finiteness theorem over a trait.
 
 ## Appendix H. Blow-up charts, projectivity and boundary factors
 
-The geometric reduction in G.4 uses blow-ups of finite-type ideals on smooth complex varieties. The following arguments give the chart, properness and boundary-ideal properties of those maps. They do not assert termination of the order-reduction construction; that is the separate theorem used in G.4.
+The geometric reduction in G.4 uses blow-ups of finite-type ideals on smooth complex varieties. The following arguments give the chart, properness and boundary-ideal properties of those maps. The finite order-reduction and gluing argument is given in Appendix I.
 
 ### H.1. The chart and strict-transform algebras
 
@@ -11125,9 +11120,112 @@ At the generic point of each retained strict boundary component the blow-up is a
 
 The first factor is an ideal: if \(b\) is the order of \(M\) along the centre, its exceptional exponent is \(b+e-m\ge0\) by admissibility, and its other exponents are the nonnegative strict-boundary exponents. It is therefore precisely the new boundary monomial, and \(N'\) is precisely the residual ideal. This proves the transform rule without an additional local factoriality input.
 
+## Appendix I. Resolution for the algebraic nearby-cycle argument
+
+The reduction in G.4 needs a smooth modification of an affine variety and a normal-crossing boundary on that modification. We construct these maps over \(\mathbb C\). At each inductive stage the smooth ambient schemes have one fixed dimension, and the changes of charts are étale. A finite disjoint union of charts is treated as one scheme by the order-reduction construction. Its centres are not obtained by aligning independently shortened sequences on its components.
+
+### I.1. Coordinates and descent from completion
+
+Let \(p\) be a closed point of a smooth complex variety of dimension \(n\). Functions \(x_1,\ldots,x_n\) vanishing at \(p\), whose differentials form a basis at \(p\), define an étale map to \(\mathbb A^n\) on a neighbourhood of \(p\). Here is the presentation argument. In a standard smooth presentation with variables \(u_1,\ldots,u_{n+c}\) and relations \(F_1,\ldots,F_c\), the rows \(dF_j\) span the conormal space. The rows \(dx_i\) give a basis of its quotient. Consequently the square matrix with rows \(dF_j,dx_i\) has nonzero determinant at \(p\). Over the target ring \(\mathbb C[t_1,\ldots,t_n]\), the equations are \(F_j=0\) and \(x_i-t_i=0\). Inverting that determinant gives a square Jacobian presentation. Across a square-zero ideal, multiplication by its inverse corrects the equation errors uniquely; iteration gives the formally étale lifting property. Finite presentation makes the morphism étale. The standard presentations used here are proved in Formally smooth, unramified and étale ring maps, Sections 4–5.
+
+The completed local ring is \(\mathbb C[[x_1,\ldots,x_n]]\). Indeed, the parameters generate each successive quotient of the maximal-ideal filtration, giving a surjection from this power-series ring to the completion. The associated graded ring of a regular local ring is the polynomial ring on the parameter classes, so the least nonzero homogeneous term of a putative kernel element cannot vanish. This proves injectivity. The associated-graded assertion and preservation of regularity under completion are proved in Regular local rings, Sections 1–3 and Completion, Sections 3–4. An invertible change of the linear parameter terms induces an isomorphism of completions: solve for the inverse one homogeneous degree at a time and take the limit.
+
+We will use three further properties with their actual algebraic proofs. Étale morphisms are flat and open, and their diagonals are open immersions; [Lesson 1, AW.1](constructible-complexes-on-algebraic-varieties.md#aw-1-the-algebra-used-at-one-point) proves these from monic neighbourhoods, free-module localization, the characteristic polynomial of multiplication, and the idempotent diagonal ideal. Coordinate derivations pull back to the derivations dual to the pulled-back coordinate differentials. The product rule then shows that derivative ideals commute with étale pullback. Finite coherent-module equalities descend from a completed local ring: completion is faithfully flat by the cited completion lesson, so a quotient that becomes zero was already zero at the point. A finite list of generators then makes it zero on a neighbourhood. Finally, compatible finite ideals on an open cover glue to a coherent ideal, by the module and closed-immersion constructions in Affine schemes, Sections 2–3 and Schemes, gluing and immersions, Sections 2–3.
+
+### I.2. Comparing local choices without changing the centres
+
+For an ideal \(J\) of maximal order \(w>0\), write \(D^aJ\) for the ideal generated by derivatives of order at most \(a\), and \(B=D^{w-1}J\). A maximal-contact hypersurface has a smooth local equation in \(B\). Its strict transforms contain every admissible centre and the successive order-\(w\) loci, by the derivative-transform inclusion and Hypersurfaces of maximal contact, Theorem 2.3. Suppose that \(J\) satisfies
+
+\[
+B\,DJ\subseteq J.
+\tag{I.1}
+\]
+
+At a closed point of the order-\(w\) locus, two maximal-contact equations \(h,h'\) can be completed to parameter systems \((h,x_2,\ldots,x_n)\) and \((h',x_2,\ldots,x_n)\) with the same remaining parameters. If both hypersurfaces are transverse to a prescribed normal-crossing boundary, include its local equations among those remaining parameters. To choose the rest, the nonvanishing of each of the two basis determinants is an open condition on a matrix of coefficients. Their product is a nonzero polynomial, so over the infinite field \(\mathbb C\) there is a simultaneous choice.
+
+In the completion, the substitution \(h'\mapsto h\), \(x_i\mapsto x_i\) preserves \(J\). To verify this, (I.1) implies \(B^aD^aJ\subseteq J\) for every \(a\): differentiate a product of \(a\) elements of \(B\) and an element of \(D^aJ\), and apply (I.1) and induction to its product-rule terms. Taylor expansion of a substitution whose parameter differences belong to \(B\) therefore sends \(J\) into \(J\). The Taylor sums converge in the maximal-ideal topology; ideals of the Noetherian complete local ring are closed, by the exactness and separatedness statements of the completion lesson. If \(\sigma(J)\subseteq J\), the ascending chain \(J\subseteq\sigma^{-1}J\subseteq\cdots\) stabilizes, so applying a power of \(\sigma\) gives equality. Moreover \(f-\sigma(f)\in B\) for every formal function \(f\), by the same Taylor expansion.
+
+This substitution is realized by an algebraic neighbourhood. Let \(x=(h,x_2,\ldots,x_n)\), \(x'=(h',x_2,\ldots,x_n)\), and form
+
+\[
+V=X\mathbin{\times_{\mathbb A^n}}X,
+\qquad x\text{ on the first factor},\quad x'\text{ on the second}.
+\tag{I.2}
+\]
+
+Both projections \(v,v':V\to X\) are étale near \((p,p)\). Their completed maps are isomorphisms, and their composite is the substitution above. Equality of the completed pullback ideals descends by I.1. The boundary equations and \(v^*h=v'^*h'\) agree already on \(V\). The ideal generated by \(v^*f-v'^*f\), for a finite list of local algebra generators, is contained in \(v^*B\) after completion and hence on a smaller neighbourhood. Thus, there,
+
+\[
+v^*J=v'^*J,
+\qquad v|_{V(v^*B)}=v'|_{V(v^*B)}.
+\tag{I.3}
+\]
+
+The images of these neighbourhoods are open. They cover every closed point of the order-\(w\) locus, hence the entire locus: a nonempty closed subset of a finite-type complex scheme has a closed point. Quasi-compactness gives finitely many neighbourhoods, whose disjoint union has both projection images containing that locus.
+
+Here is why these comparisons determine the actual sequence, rather than just its final space. Suppose two order-\(w\) sequences become the same sequence under \(v\) and \(v'\). Let \(B_i\) be the controlled transform of \((B,1)\). The derivative-transform inclusion puts every common centre inside \(V(B_i)\). Inductively assume that the preceding centres agree and that the two lifted maps agree on \(V(B_i)\). Their images of the common next centre are equal; the centre is smooth and reduced, and both maps cover it. Thus the next centres are the same closed subscheme.
+
+The agreement persists after that blow-up. In adapted coordinates the centre is \((z_1,\ldots,z_c)\). Write the differences between the two pulled-back coordinates as \(b_l\in B_i\). On a common blow-up chart with exceptional equation \(g=v^*z_k\), write \(b_l=g b'_l\), where \(b'_l\in B_{i+1}\). Along \(V(B_{i+1})\), \(1-b'_k\) is a unit and \(v'^*z_k=g(1-b'_k)\), so the second map uses the same chart. For \(y_l=z_l/z_k\), \(l\le c\), \(l\ne k\), the difference is
+
+\[
+v^*y_l-v'^*y_l
+=\frac{b'_l-b'_k v^*y_l}{1-b'_k}\in B_{i+1}.
+\tag{I.4}
+\]
+
+For the remaining coordinates it is \(g b'_l\in B_{i+1}\). On the exceptional fibre the base point and the fibre coordinates consequently agree. Near that common image the coordinate differences generate the diagonal ideal, since the coordinate map is étale and its diagonal is open. This proves equality of the maps on \(V(B_{i+1})\). Induction proves equality of every centre. Surjectivity over the original cosupport means that none of these centres disappears under either comparison. This is the centre calculation of Uniqueness of maximal contact, Theorem 4.1.
+
+For open gluing, choose finitely many charts \(U_\alpha\) carrying a maximal-contact hypersurface and run the local construction on \(U'=\coprod_\alpha U_\alpha\). On \(U''=U'\times_XU'\), the two projections onto \(U'\) are surjective local isomorphisms. Functoriality gives the same sequence on \(U''\), with no deleted step under either projection. At each index the centre ideals agree on the overlaps and glue by I.1. Blow up the glued ideal; H.1 identifies its flat pullbacks with the prescribed chart blow-ups. The transformed ideals and boundary divisors agree too. Induction through the finite sequence gives the global sequence. A common refinement proves independence of the chosen cover. This argument uses synchronized indices on the surjective cover, as in Blow-up sequences, Theorem 5.1.
+
+### I.3. Finite order reduction in a fixed dimension
+
+We use the order of a nonzero ideal in a regular local ring and an ordered normal-crossing boundary. A marked transform with marking \(m\) is \(\mathcal O(mF)\pi^*J\), where the centre has order at least \(m\); the marking stays fixed. H.1 proves the smooth chart and boundary properties, and H.3 proves the monomial/residual factorization and its transform rule. The Taylor criterion, upper semicontinuity of order, and preservation of the maximum under a blow-up of that maximum are proved in Smooth blow-ups and transforms, Sections 2 and 4. These make the maximal order finite and the order loci closed.
+
+The induction is simultaneous: marked order reduction in dimensions below \(n\) gives ordinary order reduction at the maximum in dimension \(n\); the latter gives marked order reduction in dimension \(n\). Dimension zero starts with the unit ideal. All schemes compared by the functoriality used in this induction have the same dimension. In particular, inverse images of hypersurfaces under the étale comparisons have dimension \(n-1\).
+
+For the ordinary step, Tuning of ideals, Corollary 2.2 replaces \((J,m)\) by a derivative-generated ideal \((W,w)\) with the same admissible sequences and end cosupports. It satisfies (I.1) and the inequalities \((D^aW)^w\subseteq W^{w-a}\), \(0\le a<w\). The weighted-product proof there establishes these assertions for the initial tuned ideal; they need not persist under every transform. Logarithmic derivatives and going up, Theorem 4.1 instead proves that a sequence for its restriction to a smooth hypersurface lifts, with the same marking, to the ambient scheme. Its derivative-transform formula supplies the needed assertion along the entire sequence.
+
+Apply this first to each old boundary member. Remove its components contained in the order-\(w\) locus by a Cartier blow-up; locally \(W\) is their equation to power \(w\), so its controlled transform becomes the unit ideal there. On the remaining boundary member the restriction is nonzero on every component. Lower-dimensional marked reduction, followed by going up, makes the cosupport disjoint from its strict transform. There are finitely many old members. Their treatment leaves the strict transform of any initial maximal-contact hypersurface transverse to the new boundary near the remaining cosupport: each new centre lies in that hypersurface and is adapted to the previous boundary, so the coordinate charts of H.1 preserve this transversality. Old members are absent near that cosupport.
+
+Retune the resulting ideal there and apply the same hypersurface procedure with this strict maximal-contact hypersurface as the distinguished boundary member. At the end, its strict transform is disjoint from the cosupport. Maximal contact also forces it to contain the cosupport for as long as the maximum stays \(m\). Thus the order drops below \(m\). I.2 makes this finite sequence independent of the choice of hypersurface and glues it over the ambient scheme. The full construction, including extension of its centres from the neighbourhood of the closed cosupport, is Order reduction for ideals, Lemma 2.1 and Theorem 3.1. Each lower-dimensional invocation terminates by induction; the boundary loop is finite.
+
+For a marked ideal \((J,m)\), write \(J=MN\) as in H.3. While \(\max\operatorname{ord}N=e\ge m\), use ordinary order reduction at \(e\). H.3 shows that its ordinary transforms are precisely the residual parts of the marked transforms of \(J\). Each round strictly lowers the nonnegative integer \(e\). Next, for \(t=m-1,\ldots,1\), apply ordinary order reduction with marking \(mt\) to
+
+\[
+K_t=N^m+J^t.
+\tag{I.5}
+\]
+
+At the start of that round, \(\operatorname{ord}N\le t\) on the order-\(m\) locus of \(J\). Outside it, \(\operatorname{ord}J<m\); hence \(\max\operatorname{ord}K_t\le mt\) everywhere. Its maximum locus is the intersection of the order-\(t\) locus of \(N\) and the order-\(m\) locus of \(J\). The transform formula H.3 identifies the transforms of (I.5) with the same expression in the new ideals. Thus this round lowers the order of \(N\) below \(t\) on the cosupport of \(J\). After finitely many rounds, \(N\) is a unit near that cosupport, so the remaining ideal is monomial.
+
+For that last case, process intersections of \(r=1,\ldots,n\) boundary components. When all smaller intersections have exponent sum less than \(m\), choose the largest sum \(\mu\ge m\) on an \(r\)-fold intersection and the least boundary index tuple attaining it. Blow up the disjoint union of all intersections with that tuple and sum. The new exceptional exponent is \(\mu-m\). A new \(r\)-fold intersection containing it has sum less than \(\mu\), since its other \(r-1\) exponents have sum less than \(m\). Smaller intersections keep sum less than \(m\): split the old \(r\) centre components into the ones retained at the new point and the ones omitted; the new sum plus \(m\) is a sum of two old intersection sums, each involving fewer than \(r\) components. Both are less than \(m\). The explicit split and chart calculation are given in Order reduction for marked ideals, Theorem 2.1, Step 3. Thus the pair consisting of \(\mu\) and the number of tuples attaining it decreases lexicographically. It is a pair of nonnegative integers, so each phase terminates. This completes the dimension induction.
+
+The procedure just described is defined on disconnected equidimensional schemes using the maxima and ordered boundary data on the whole scheme. Under an étale map the orders, boundary exponents and restriction problems pull back unchanged. A round at a larger maximum that misses the image pulls back to empty centres and changes none of the data on the image. The remaining rounds therefore occur in the same order. The same argument applies to the maximum exponent sum and its least tuple. Inserting empty boundary members changes no component or comparison of nonempty index tuples, so it changes no centre. These observations prove the étale compatibility used in I.2 throughout the induction; they do not require an assertion about aligning sequences in different dimensions.
+
+### I.4. The required projective modifications
+
+**Theorem I.1.** A reduced irreducible affine complex variety \(Y\) has a projective morphism \(Y_1\to Y\) with \(Y_1\) smooth, which is an isomorphism over \(Y^{\mathrm{sm}}\). If \(V\) is a smooth variety projective over an affine complex variety and \(J\) is a coherent ideal nonzero on every component, a finite sequence of smooth blow-ups makes its total transform invertible with normal-crossing support and is an isomorphism over \(V\setminus V(J)\). The final variety is still projective over the affine base. These morphisms are proper for the classical topology.
+
+**Proof.** On each equidimensional open-and-closed part of \(V\), apply I.3 with marking one and initially empty boundary. There are finitely many such parts; concatenate their finite sequences, extending each centre by the empty set on the other parts. This constructs the required modification without a functoriality assertion for this concatenation. At the end the controlled transform is the unit ideal. If the exceptional divisors at the successive steps are \(F_{i+1}\), pulling the identities \(\pi_i^*J_i=\mathcal O(-F_{i+1})J_{i+1}\) to the last variety gives
+
+\[
+\Pi^*J=\mathcal O\left(-\sum_i\Pi_{r,i+1}^*F_{i+1}\right).
+\tag{I.6}
+\]
+
+Its support is contained in the normal-crossing total boundary. Every centre lies over \(V(J)\), since the ideal and all its transforms are the unit ideal outside that inverse image. H.2 supplies a projective embedding over the affine base for the finite composite. It also proves classical properness by compactness of complex projective space. This proves the second assertion.
+
+For the first, embed \(Y\) in \(P=\mathbb A^N\), increasing \(N\) by one if necessary so that \(Y\) contains no component of \(P\). Its smooth locus is nonempty and dense. Indeed, the fraction field of its affine domain has a separating transcendence basis in characteristic zero; a finite list of generators and the nonzero derivative of a primitive-element equation give a smooth presentation after localization. This is the separating-normalization argument of [Lesson 1, M.1](constructible-complexes-on-algebraic-varieties.md#m-1-preparations-fields-smooth-open-subsets-and-bounds), together with the Jacobian presentation in I.1. The Jacobian minors also make the smooth locus open.
+
+Run marking-one principalization on the ideal of \(Y\) in \(P\). Over \(P^0=P\setminus\operatorname{Sing}Y\), the ideal is that of the smooth closed subscheme \(Y^{\mathrm{sm}}\). The construction for the ideal of a smooth subscheme of constant codimension consists of its single blow-up. To see this directly, choose adapted coordinates \(S=V(z_1,\ldots,z_c)\). In the smooth subspace \(V(z_2,\ldots,z_c)\), the ideal of \(S\) is the principal ideal \((z_1)\). Its maximal-contact hypersurface is \(S\), and the Cartier step in I.3 makes its marking-one transform a unit after one blow-up. Moving up the chain of coordinate hypersurfaces preserves this sequence: for an ideal containing a hypersurface equation, its maximum is one, tuning leaves it unchanged, the old-boundary step is empty, and the maximal-contact step is exactly the pushed-forward marked sequence on that hypersurface. The chain has the same length on every chart of this constant-codimension embedding. Run the construction on their disjoint union and descend the single common centre as in I.2. Thus the global sequence is the single blow-up of \(S\).
+
+Étale compatibility now shows that exactly one centre of the sequence on \(P\) meets the inverse image of \(P^0\); call its index \(j\). Earlier centres lie over \(\operatorname{Sing}Y\). Just before the \(j\)-th blow-up, the strict transform \(Y_j\) is the reduced closure of the copy of \(Y^{\mathrm{sm}}\), and that copy is an open subset of the smooth centre \(Z_j\). A smooth connected component is irreducible: regular local rings are domains, so distinct irreducible components cannot meet, and the finitely many components are open and closed. Hence this closure is a union of smooth components of \(Z_j\). H.1 proves that the strict transform is reduced, so equality of these closed sets is equality of reduced closed subschemes. In particular \(Y_j\) is smooth. The map \(Y_j\to Y\) is an isomorphism over \(Y^{\mathrm{sm}}\). H.2 gives its projective embedding over the affine \(Y\), and classical properness. Taking \(Y_1=Y_j\) proves the assertion. This is the distinguished-centre construction of Principalization and resolution, Proposition 4.3, with only the fixed-dimensional comparisons above. \(\square\)
+
+For G.4, take each smooth stratum connected. There are finitely many connected components, and finite direct sums commute with all the direct-image and nearby-cycle constructions in that argument. Its closure \(Y\) is then irreducible, so Theorem I.1 supplies \(Y_1\to Y\). Apply its second assertion to the boundary ideal times \((f)\) on \(Y_1\). This gives exactly the map (G.10), with normal-crossing complement and the projectivity needed in (G.11). Thus both geometric inputs to G.4 hold at its stated algebraic scope.
+
 ## Geometric hypotheses and references
 
-The disc equivalence uses the actual attaching and mapping-complex proofs in the earlier gluing lesson, Appendix B, and its intermediate-extension characterization. The classical general-function statements use Proposition F.1 for deck-cover descent and Appendix F.2–F.4 for the enhanced attaching and mapping-complex comparison on a closed fibre of any dimension. They also require bounded nearby-cycle constructibility and the affine/Stein-open input of Lesson 5, at the sheaf and coefficient scopes stated in the deductions. The analytic ordinary/microlocal comparison is not proved here. The trait appendices require finite-presentation continuity, proper and smooth base change, the torsion affine bound, ordinary purity and duality, constructible finiteness, and normalized adic reduction and rationalization. Appendix E deduces the equality of the geometric localization and continuous-inertia trace pairings, including the negative Kummer boundary and its cancelling fibre-coordinate sign. Its proof still requires the exact ordinary enhanced localization, tensor and exceptional adjunctions, compactification, multiplicative continuous descent, divisor-oriented purity and normalized adic realization at the stated geometric scope. Full torsion sliced-topos duality is additional to the field-coefficient cone argument and is not supplied by its finite logarithms. The Riemann–Hilbert interpretation requires its own complete earlier provider. The general statements depending on these inputs are conditional at the scopes specified above.
+The disc equivalence uses the actual attaching and mapping-complex proofs in the earlier gluing lesson, Appendix B, and its intermediate-extension characterization. The classical general-function statements use Proposition F.1 for deck-cover descent and Appendix F.2–F.4 for the enhanced attaching and mapping-complex comparison on a closed fibre of any dimension. For regular functions on complex varieties with finite-dimensional algebraically constructible characteristic-zero field coefficients, G.4 and Lesson 5, Theorem A.3, supply bounded constructibility and the affine-open bound. The unrestricted holomorphic setting still requires its own constructibility and Stein-open input; its general ordinary/microlocal comparison is not proved here. The trait appendices require finite-presentation continuity, proper and smooth base change, the torsion affine bound, ordinary purity and duality, constructible finiteness, and normalized adic reduction and rationalization. Appendix E deduces the equality of the geometric localization and continuous-inertia trace pairings, including the negative Kummer boundary and its cancelling fibre-coordinate sign. Its proof still requires the exact ordinary enhanced localization, tensor and exceptional adjunctions, compactification, multiplicative continuous descent, divisor-oriented purity and normalized adic realization at the stated geometric scope. Full torsion sliced-topos duality is additional to the field-coefficient cone argument and is not supplied by its finite logarithms. The Riemann–Hilbert interpretation requires its own complete earlier provider. The general statements depending on these inputs are conditional at the scopes specified above.
 
 Reich uses the sign \(1-t\); this lesson uses \(T-1\) in the variation and maximal-extension formulas. Constructibility of nearby cycles is a separate theorem. Section 5 uses bounded truncations and the splitting of idempotents in the ambient derived sheaf category, without assuming constructible injective resolutions.
 

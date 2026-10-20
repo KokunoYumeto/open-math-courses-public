@@ -376,7 +376,9 @@ For original measurable spaces \((X,\mathcal A)\), \((Y,\mathcal B)\), define \(
 \]
 For fixed \(x\), the class of \(E\) with \(E_x\in\mathcal B\) is a sigma-algebra: sections commute with complements and countable unions. It contains the generating rectangles, so it contains \(\mathcal A\otimes\mathcal B\). The same proof gives \(E^y\in\mathcal A\) for every \(y\). These are statements at every point, before taking any completion. If \(h\) is product-measurable, the sections of every inverse-image ray are the inverse-image rays of \(h_x,h^y\). Consequently all its sections are measurable, including nonnegative functions with infinite values.
 
-## Editorial clarification of the scalar convexity step
+<a id="editorial-clarification-of-the-scalar-convexity-step"></a>
+
+## Scalar convexity
 
 The use of convexity in Section 15.2 follows from the scalar calculus already included here. For \(p>1\), the derivative of \(f(t)=t^p\) on \((0,\infty)\) is \(pt^{p-1}\), an increasing function. For \(0<a<c<b\), the fundamental theorem bounds the two secants by
 
@@ -386,4 +388,4 @@ The use of convexity in Section 15.2 follows from the scalar calculus already in
 \]
 
 Multiplying by the positive denominators and rearranging gives
-\(f(c)\le [(b-c)f(a)+(c-a)f(b)]/(b-a)\). The cases \(c=a,b\) are equalities; the case \(a=0\) follows by letting positive \(a\) decrease to zero, using the continuity of \(t^p\) there. That continuity follows from \(t^p=\exp(p\log t)\) and the exponential and logarithm limits proved in the scalar foundations. At the midpoint this gives \((a+b)^p\le2^{p-1}(a^p+b^p)\), the precise inequality used in Section 15.2. This paragraph is a new editorial proof; the selected original paragraphs above are unchanged.
+\(f(c)\le [(b-c)f(a)+(c-a)f(b)]/(b-a)\). The cases \(c=a,b\) are equalities; the case \(a=0\) follows by letting positive \(a\) decrease to zero, using the continuity of \(t^p\) there. That continuity follows from \(t^p=\exp(p\log t)\) and the exponential and logarithm limits proved in the scalar foundations. At the midpoint this gives \((a+b)^p\le2^{p-1}(a^p+b^p)\), the precise inequality used in Section 15.2. The scalar-convexity argument is an original AN-01 contribution under CC0 1.0.

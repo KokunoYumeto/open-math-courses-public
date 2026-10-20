@@ -1,4 +1,4 @@
-"""Full-section source/target preparation and finite models, not a completed lesson."""
+"""Finite algebraic models for positive complex Fourier integral operators."""
 import argparse,hashlib,json,datetime,math
 from pathlib import Path
 import sympy as s
@@ -55,7 +55,7 @@ xx=s.symbols('xx',real=True);nrm=s.integrate(s.exp(-xx*xx),(xx,-s.oo,s.oo))
 assert nrm==s.sqrt(s.pi)
 goodnorm=s.sqrt(s.pi)/(2*s.pi)**s.Rational(3,2)
 growth=[{'scale':v,'evaluation_growth':math.sqrt(v)} for v in [1,4,16,64]]
-checks.append({'name':'Gaussian bounded model versus concentrating evaluation','passed':True,'scope':'Exact Gaussian squared norm sqrt(pi) and multiplication-tensor-rank-one norm sqrt(pi)/(2pi)^(3/2); removed input damping gives evaluation growth sqrt(t) on normalized packets. Kernel identities and L2 obstruction are to be proved in the teaching lesson.','bounded_norm':str(goodnorm),'concentrating_samples':growth})
+checks.append({'name':'Gaussian bounded model versus concentrating evaluation','passed':True,'scope':'Exact Gaussian squared norm sqrt(pi) and multiplication-tensor-rank-one norm sqrt(pi)/(2pi)^(3/2); removed input damping gives evaluation growth sqrt(t) on normalized packets. These finite calculations do not establish general kernel identities or L2 continuity.','bounded_norm':str(goodnorm),'concentrating_samples':growth})
 u,k,fr=s.symbols('u k fr',positive=True);zz=s.symbols('zz',real=True)
 psi=s.I*k*fr*zz**2/2
 lhs=s.expand(abs(s.diff(psi,zz))**2/fr+fr*abs(s.diff(psi,fr))**2)

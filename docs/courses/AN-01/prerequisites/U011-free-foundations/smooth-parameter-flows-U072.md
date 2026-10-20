@@ -4,13 +4,13 @@
 
 The [scalar calculus and topology foundation](metric-foundation-bridges.md), §§12–13, supplies finite-dimensional completeness, compactness, all finite-coordinate derivative rules, the oriented Riemann integral, exponential and uniform limits. The [finite algebra foundation](stable-prerequisite-bridges.md), §§10.1–10.6, supplies matrix operations, finite norm bounds and the injective/surjective equivalence. All arguments below retain the original norms and two-sided time interval.
 
-**Receiving detail: operator completeness.** If $X$ is the complete continuous-path space proved in §17.1 and $T_m:X\to X$ is Cauchy in operator norm, then $T_mw$ is Cauchy for each $w\in X$. Define $Tw=\lim_mT_mw$. Linearity passes to the limit. Boundedness of the sequence gives $\|Tw\|\le(\sup_m\|T_m\|)\|w\|$, and its uniform Cauchy bound gives
+**Operator completeness.** If $X$ is the complete continuous-path space proved in §17.1 and $T_m:X\to X$ is Cauchy in operator norm, then $T_mw$ is Cauchy for each $w\in X$. Define $Tw=\lim_mT_mw$. Linearity passes to the limit. Boundedness of the sequence gives $\|Tw\|\le(\sup_m\|T_m\|)\|w\|$, and its uniform Cauchy bound gives
 
 $$
 \|T-T_m\|\le\sup_{l\ge m}\|T_l-T_m\|\to0.
 $$
 
-This proves the operator completeness used for the series in §17.2. This added detail is an AN-01 CC0 contribution to the selected AN-03 component.
+This proves the operator completeness used for the series in §17.2. The operator-completeness proof is an original AN-01 contribution under CC0 1.0.
 
 ### 17.1. The original integral equation and its complete local solution
 

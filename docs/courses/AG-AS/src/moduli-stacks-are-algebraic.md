@@ -392,7 +392,7 @@ A compatible family of isomorphisms gives a unique homomorphism of the algebraiz
 
 ## 10. Precisely imported inputs and scope
 
-The proofs above construct Hom, Isom, both coherent-stack algebraicity results and the Quot, Hilbert and Picard consequences. The following list specifies their cohomological and algebraic inputs. The supporting reference list contains 848 entries with included arguments or exact programme-proof bindings; that accounting is not an assertion that every recursive dependency is proved here. The [global boundary quotient assertion](#native-perfect-lemma-pseudo-coherent) is false, as shown by a locally cyclic sheaf with no global sections on the affine plane. The raw topological-fibre bound holds for every separated Noetherian algebraic space and every integer bound $d\geq1$. The cases $d\geq2$ and $d=1$ follow from the proper-model and norm arguments, respectively. In particular every such space with a raw-size-one affine étale presentation is affine, including targets with arbitrary singular curve components. The same vanishing conclusion holds after any affine base change of an integral separated Noetherian curve with a descended affine étale presentation. A partial-involution presentation satisfying the inverse-extension condition in its image ring has affine target, including non-injective localisations. The reduction uses the schematic closure of the overlap and a finite closed cover. Every raw-size-one atlas whose geometric fibres have at most two points has the closed partial-involution normal form below, with an exact arbitrary-module obstruction. The normalized cohomology complex identifies first cohomology on the original target as the additive quotient of the localized module by chart sections and invariant sections, in every characteristic. Every nonzero obstruction in this quadratic class already occurs in a finite-type quasi-coherent subsheaf, so the universal module test is equivalent to its finite-generation test. For every raw bound, the universal vanishing question is equivalent to its structure-sheaf test over the same entire class of spaces, using split square-zero thickenings that preserve the atlas fibres. On a principal quadratic overlap, tensor powers of one invertible sheaf give an exhaustive test for all quasi-coherent first cohomology; field overlaps are automatically principal and have the exact invariant-field density test. Every field-overlap target has equivalent affineness to a quotient with a completely integrally closed Goldman chart. Its rank-one valuation representation gives an exact density test over a pointwise compact normalized family. In the principal quadratic normal form, a reciprocal cofinal parameter in the Jacobson radical forces affineness in every characteristic. For proper field-overlap charts this parameter condition is also necessary. The whole normalized rank-one valuation family can fail Zariski quasi-compactness even for an eligible completely integrally closed chart with affine target. Any counterexample in the whole quadratic field-overlap class would yield one with a countable completely integrally closed Goldman chart and overlap field finitely generated over its prime field, preserving a nonzero scalar witness and the closed mixed graph. Its whole normalized rank-one family is compact metrizable for pointwise convergence. The graph gives a finite norm-one positivity cover; a single uniformly positive parameter is not constructed in general. The full bound for arbitrary quasi-compact separated non-Noetherian algebraic spaces remains unproved in this treatment. The [general Kiehl relative image theorem](#native-perfect-lemma-flat-proper-pseudo-coherent-direct-image-general) follows by finite derived descent. The [general DG derived-Hom lift](#native-dga-lemma-existence-of-derived) is proved by localized Yoneda modules. Named projective and curve scheme results retain their programme sources.
+The proofs above construct Hom, Isom, both coherent-stack algebraicity results and the Quot, Hilbert and Picard consequences. The following list specifies their cohomological and algebraic inputs. The supporting reference list contains 848 entries with included arguments or exact programme-proof bindings; that accounting is not an assertion that every recursive dependency is proved here. The [global boundary quotient assertion](#native-perfect-lemma-pseudo-coherent) is false, as shown by a locally cyclic sheaf with no global sections on the affine plane. The raw topological-fibre bound holds for every separated Noetherian algebraic space and every integer bound $d\geq1$. The cases $d\geq2$ and $d=1$ follow from the proper-model and norm arguments, respectively. In particular every such space with a raw-size-one affine étale presentation is affine, including targets with arbitrary singular curve components. The same vanishing conclusion holds after any affine base change of an integral separated Noetherian curve with a descended affine étale presentation. A partial-involution presentation satisfying the inverse-extension condition in its image ring has affine target, including non-injective localisations. The reduction uses the schematic closure of the overlap and a finite closed cover. Every raw-size-one atlas whose geometric fibres have at most two points has the closed partial-involution normal form below, with an exact arbitrary-module obstruction. The normalized cohomology complex identifies first cohomology on the original target as the additive quotient of the localized module by chart sections and invariant sections, in every characteristic. Every nonzero obstruction in this quadratic class already occurs in a finite-type quasi-coherent subsheaf, so the universal module test is equivalent to its finite-generation test. For every raw bound, the universal vanishing question is equivalent to its structure-sheaf test over the same entire class of spaces, using split square-zero thickenings that preserve the atlas fibres. On a principal quadratic overlap, tensor powers of one invertible sheaf give an exhaustive test for all quasi-coherent first cohomology; field overlaps are automatically principal and have the exact invariant-field density test. Every field-overlap target has equivalent affineness to a quotient with a completely integrally closed Goldman chart. Its rank-one valuation representation gives an exact density test over a pointwise compact normalized family. In the principal quadratic normal form, a reciprocal cofinal parameter in the Jacobson radical forces affineness in every characteristic. For proper field-overlap charts this parameter condition is also necessary. The whole normalized rank-one valuation family can fail Zariski quasi-compactness even for an eligible completely integrally closed chart with affine target. Any counterexample in the whole quadratic field-overlap class would yield one with a countable completely integrally closed Goldman chart and overlap field finitely generated over its prime field, preserving a nonzero scalar witness and the closed mixed graph. Its whole normalized rank-one family is compact metrizable for pointwise convergence. The graph gives a finite norm-one positivity cover; a single uniformly positive parameter is not constructed in general. In the whole quadratic field-overlap class, the target is affine when the overlap field is algebraic over a global field, and also for fields algebraic over a finite field. This includes arbitrary algebraic extensions and original localization kernels. In characteristic zero any field-overlap counterexample therefore requires positive transcendence degree over the rationals; in characteristic $p$ it requires transcendence degree at least two over $\mathbf F_p$. In a general completely integrally closed field chart, affineness is also equivalent to a specified directional idempotent in the joint-norm completion. Existence of this idempotent from the graph condition is not proved. The joint completion is finite etale of rank two over the completed fixed field. Affineness of a proper completely integrally closed quadratic field chart is equivalent to its chart projection being an open surjection, or to equality of its chart and fixed-field completions. If the completed fixed ring has a topologically nilpotent unit, closed image suffices by an explicit open mapping argument. Nonaffineness is also equivalent to a positive normalized functional annihilating all conjugation-difference value functions. Universal openness, closed image and exclusion of these functionals are not proved. The completed fixed ring has a topologically nilpotent unit exactly when the joint completion is nondiscrete. For countable overlap fields, affineness is equivalent to surjectivity, or closed image, of the chart projection, without a separate Tate-unit hypothesis. The finitely generated field restriction makes this an exhaustive closed-image test for the entire quadratic field-overlap class; universal closed image is not established. A split finite-etale example shows that uniform nonarchimedean Banach norms, a closed isometric base, a topologically nilpotent unit and the exact two-projection norm identity do not force closed image, even with a quadratic field base-change presentation. The example has no dense subfield and does not refute the actual dense-field criterion. The whole proper valuation family of a Goldman chart is patch compact, and the two graph-separated families have no common nontrivial coarsening. In an eligible affine CIC Gauss chart, an explicit sequence has a rank-one pointwise limit and a different rank-two patch limit. This overring need not be completely integrally closed. An irrational-weight member has no least positive value, so the whole family admits no common uniformizer; this does not rule out another polynomial uniformity condition. Polynomial uniformity is not automatic even on the exact countable finitely generated field class: an explicit non-Noetherian CIC valuation chart with $K=\mathbf Q(z)$, $z$ transcendental over $\mathbf Q_5$ and $K$ dense in $\mathbf C_5$, has the closed mixed graph and affine target. Its completions are $A=B=\mathbf C_5$ and $T=\mathbf C_5\times\mathbf C_5$, with a split projection of closed image, whereas every polynomial violates the necessary uniformity bounds by root approximation. This refutes universal polynomial uniformity, not the original vanishing assertion. A further eligible affine chart in $\mathbf Q(u)$ contains infinitely many distinct valuations with algebraically closed completion, so removing finitely many valuations cannot restore that polynomial condition in general. The full bound for arbitrary quasi-compact separated non-Noetherian algebraic spaces remains unproved in this treatment. The [general Kiehl relative image theorem](#native-perfect-lemma-flat-proper-pseudo-coherent-direct-image-general) follows by finite derived descent. The [general DG derived-Hom lift](#native-dga-lemma-existence-of-derived) is proved by localized Yoneda modules. Named projective and curve scheme results retain their programme sources.
 
 - **Limits and modules.** On quasi-compact quasi-separated algebraic spaces, finite-presentation data descend along affine limits, quasi-coherent modules are filtered colimits of finitely presented ones, and relative flatness and proper support eventually descend. The particular support statement is [Stacks, Tag 08K2]. These results permit Noetherian models over finitely generated $\mathbf Z$-algebras.
 - **Perfect approximation and proper-support comparison.** For bounded-above coherent $E$ on a Noetherian space and any $m$, a perfect $P\to E$ is an isomorphism above $m$ and a surjection at $m$ [Stacks, Tags 08HI, 08HJ, 08HP]. For a quasi-separated locally finite type map to a Noetherian base, a perfect $P$ and bounded coherent $G$ that is base-flat and properly supported give perfect $Rf_*R\mathcal Hom(P,G)$, with arbitrary derived base change [Stacks, Tags 0DKK, 08JQ]. Section 5.1 gives the low-Ext application [Tag 08JR].
@@ -16062,6 +16062,1121 @@ arbitrary raw bound also remain outside this reduction.
 ![A nonzero quadratic field-overlap witness is retained over a finitely generated field, with the exact graph identity and a compact metrizable valuation test](../figures/raw-fibre-finitely-generated-field-reduction.png)
 
 *The diagram assumes a nonaffine datum and follows its scalar witness through (FG1)--(FG5). All coefficients of the finite graph identity and their conjugates enter $K_0$, so $R_0\sigma(R_0)=K_0$ remains exact. The inclusions $R_0\subset R$ and $C_0\subset C$ preserve the same nonzero class representative $b$ and exponent $n$. The normalized family for the countable field is compact metrizable for pointwise convergence by (FG6). Formula (FG7) supplies a finite positivity cover, while a single uniformly positive norm-one parameter is still required for the affineness criterion. The editable figure is [raw-fibre-finitely-generated-field-reduction.svg](../figures/raw-fibre-finitely-generated-field-reduction.svg).*
+
+**Affineness over algebraic extensions of global fields**
+
+In the entire separated quadratic field-overlap class (QN1)--(QN9),
+the target is affine if its overlap field $K$ satisfies either
+$$
+ \operatorname{char}K=0,\quad K/\mathbf Q\text{ algebraic},
+ \qquad\text{or}\qquad
+ \operatorname{char}K=p>0,\quad
+                 \operatorname{trdeg}_{\mathbf F_p}K\leq1.
+                                                               \tag{GF1}
+$$
+In particular this includes arbitrary algebraic extensions of global
+number and function fields. There is no Noetherian hypothesis on the
+original chart, no restriction on its localization kernel, and no
+invertibility assumption on $2$. Every positive quasi-coherent
+cohomology group on this target is zero.
+
+**Normalization over the prime one-dimensional base.**
+We first justify the finite normalization facts needed here.
+Let $E$ be a number field. Its integral closure $D$ of $\mathbf Z$
+is finite over $\mathbf Z$. More generally, if $E$ is a finite
+extension of $\mathbf F_p(t)$, its integral closure $D$ of
+$\mathbf F_p[t]$ is finite over that polynomial ring, including
+when the field extension is inseparable.
+
+For the separable case write $A=\mathbf Z$ or $\mathbf F_p[t]$,
+$F=\operatorname{Frac}A$, and choose an integral primitive element
+$\theta$ for $E/F$. Multiplying a primitive element by a common
+denominator of its minimal-polynomial coefficients makes it integral.
+If $d=[E:F]$, then $M=A[\theta]$ is free with basis
+$1,\theta,\ldots,\theta^{d-1}$. The matrix of its trace pairing
+has nonzero determinant: after extending to a splitting field it is
+the product of a Vandermonde matrix and its transpose, and the
+conjugates of $\theta$ are distinct. Every integral $x\in E$ has
+$\operatorname{Tr}(x\theta^j)\in A$: those traces are sums of
+integral conjugates and belong to $F$, while the PID $A$ is normal.
+Writing these conditions in the displayed basis and using the inverse
+trace matrix gives
+$$
+                         D\subset \Delta^{-1}M
+                         \quad(0\ne\Delta\in A).              \tag{GF2}
+$$
+The right side is a finite $A$-module. Since $A$ is Noetherian,
+its submodule $D$ is finite as well.
+
+For a possibly inseparable function-field extension, let $E_s$
+be its maximal separable subextension over $F=\mathbf F_p(t)$.
+There is one $p$-power $q$ with $E^q\subset E_s$: write the
+minimal polynomial of each of finitely many field generators as
+a separable polynomial in a $p$-power, and take a common power.
+The elements separable over $F$ form a field, so this also bounds
+the powers of all elements of $E$. If $D_s$ is the normalization
+in $E_s$, the preceding trace argument makes $D_s$ finite over
+$A$. Every $x\in D$ has $x^q\in D_s$, so, in an algebraic
+closure,
+$$
+                            D\subset D_s^{1/q}.
+$$
+The ring $D_s$ is a finitely generated $\mathbf F_p$-algebra.
+Adjoining the unique $q$-th roots of a finite algebra-generating
+set gives $D_s^{1/q}$, which is finite over $D_s$: each root
+satisfies a monic polynomial of degree $q$. Thus $D_s^{1/q}$
+is finite over $A$, and its $A$-submodule $D$ is finite.
+
+In both cases $D$ is normal, Noetherian, one-dimensional, and
+has fraction field $E$. For the fraction-field assertion, multiply
+any element of $E$ by a nonzero element of $A$ clearing the
+denominators in its monic equation over $F$; the product is
+integral over $A$. Integral extensions preserve dimension, giving
+dimension one here.
+
+We also recall a direct local argument for the DVR property of
+$D$. In a one-dimensional Noetherian normal local domain
+$(H,\mathfrak m)$, choose $0\ne x\in\mathfrak m$ and the least
+$j\geq1$ with $\mathfrak m^j\subset(x)$. If $j=1$ the maximal
+ideal is already principal. Otherwise choose
+$y\in\mathfrak m^{j-1}\setminus(x)$ and put $z=y/x$.
+Then $z\notin H$ but $z\mathfrak m\subset H$.
+If $z\mathfrak m\subset\mathfrak m$, the determinant trick
+on the finite faithful module $\mathfrak m$ makes $z$ integral,
+contradicting normality. Hence $zu$ is a unit for some
+$u\in\mathfrak m$, and for every $w\in\mathfrak m$,
+$w=u(zw)/(zu)$, proving $\mathfrak m=(u)$.
+Every nonzero element has finite $u$-order: otherwise the
+ascending principal ideals generated by $h/u^n$ stabilize and
+force $u$ to be a unit. Thus every nonzero element is a power
+of $u$ times a unit, and $H$ is a DVR.
+
+**A completely integrally closed Goldman chart in a global field.**
+Suppose $E$ is a global field and $R\subset E=R[1/a]$ is
+a proper completely integrally closed domain. In characteristic
+zero use the ring $D$ just constructed for $E/\mathbf Q$.
+In characteristic $p$, the element $a$ is transcendental over
+$\mathbf F_p$: an algebraic nonzero $a$ lies in a finite field,
+so its inverse is a power of $a$ in $R$, contradicting
+$R[1/a]=E\ne R$. Use the ring $D$ just constructed for the
+finite extension $E/\mathbf F_p(a)$. Normality of $R$ and
+containment of the prime base put $D\subset R$.
+
+Every nontrivial valuation ring $V$ of $E$ containing $R$
+is a localization $D_{\mathfrak p}$ at a nonzero prime of $D$.
+Indeed its centre $\mathfrak p$ on $D$ is nonzero, since
+otherwise $V$ would invert every nonzero element of $D$ and
+equal $E$. It contains the DVR $D_{\mathfrak p}$. An overring
+of a DVR in its fraction field is either that DVR or the field:
+inverting its uniformizer gives the field, and every element
+outside the DVR has negative uniformizer order. The field
+case is excluded.
+
+There are only finitely many such $\mathfrak p$ for which
+$a$ has positive value. Write $a=b/c$ with nonzero $b,c\in D$;
+positive value requires $b\in\mathfrak p$. A nonzero element
+of a one-dimensional Noetherian domain lies in finitely many
+prime ideals: all such primes are maximal and minimal over its
+principal ideal. By (CI6), therefore,
+$$
+                    R=\bigcap_{\mathfrak p\in P}D_{\mathfrak p}
+                    =D_{D\setminus\bigcup_{\mathfrak p\in P}\mathfrak p}
+                   \quad\text{for a finite nonempty }P.        \tag{GF3}
+$$
+For the localization equality, if $x$ lies in every displayed
+local ring, the nonzero denominator ideal
+$I=\{d\in D:dx\in D\}$ is contained in none of those primes.
+Chinese remainders for the finite collection of distinct maximal
+ideals supply an element of $I$ outside their union: combine
+one element of $I\setminus\mathfrak p$ for each $\mathfrak p$
+with the corresponding residue selectors. This is an allowable
+denominator for $x$. The other inclusion is immediate.
+Consequently $R$ is a semilocal Noetherian Dedekind domain.
+
+**Proof of (GF1), including infinite algebraic extensions.**
+If the target in (GF1) were nonaffine, (FG1)--(FG5) would
+give a nonzero scalar cohomology witness on a new eligible
+target $X_0$, with proper completely integrally closed Goldman
+chart $R_0$ and overlap field $K_0$ finitely generated over
+its prime field. In characteristic zero $K_0$ is a number
+field. In characteristic $p$ it is either finite or a global
+function field. The finite-field case is impossible for a
+proper Goldman chart: every subring of a finite field is a
+field, so $R_0[1/a]=K_0$ would give $R_0=K_0$.
+
+In either remaining case (GF3) makes $R_0$ Noetherian.
+Its etale atlas makes $X_0$ Noetherian, since local
+Noetherianity is etale local and the target is quasi-compact.
+The full Noetherian raw-fibre theorem established by the
+proper-model and curve-norm arguments applies to $X_0$ with
+raw bound one. It makes $X_0$ affine, contradicting its
+preserved nonzero class in (FG5). This proves (GF1).
+The original chart and overlap field have not been assumed
+Noetherian or finite over a global field.
+
+Thus any counterexample in the entire quadratic field-overlap
+class would restrict to a finitely generated overlap field
+of transcendence degree at least one over $\mathbf Q$, or
+at least two over $\mathbf F_p$. This conclusion concerns the
+field-overlap class; non-field overlaps and larger geometric
+degrees are not resolved by (GF1).
+
+The normalization and DVR facts are also recorded in The Stacks
+Project, Tags 032L, 030K, 0BIL and 00PD:
+[Primary source](https://stacks.math.columbia.edu/tag/032L);
+[Primary source](https://stacks.math.columbia.edu/tag/030K);
+[Primary source](https://stacks.math.columbia.edu/tag/0BIL);
+[Primary source](https://stacks.math.columbia.edu/tag/00PD).
+
+**The directional idempotent in a joint completion**
+
+Use a proper completely integrally closed Goldman datum
+$K=R[1/a]$, $R\sigma(R)=K$, and let $S$ be the entire
+normalized rank-one family, with $v(a)=1$. Define, for $x\in K$,
+$$
+ |x|_S=\sup_{v\in S}2^{-v(x)},\qquad
+ \|x\|=\max\{|x|_S,|\sigma(x)|_S\},
+$$
+where $v(0)=+\infty$. Coordinate bounds from (CI7) make the
+suprema finite. Nonarchimedean valuation inequalities give a
+nonarchimedean submultiplicative norm. It is power-multiplicative:
+$\|x^m\|=\|x\|^m$ for positive integers $m$. The involution
+is isometric. Let $T$ be the separated metric completion of this
+normed ring; $\sigma$ extends isometrically to $T$.
+
+Each multiplicative seminorm $2^{-v(x)}$ and $2^{-v(\sigma(x))}$
+extends continuously to $T$. The joint norm is still the supremum
+of this family there. Indeed, approximate an element by $K$;
+the seminorm errors are uniformly bounded by the joint-norm error,
+and the original supremum identity passes to the limit. The
+one-sided seminorm $|\cdot|_S$ also extends by the same uniform
+argument. The completion is not assumed to be a field.
+
+Within this exact datum the following assertions are equivalent:
+$$
+ \begin{split}
+ &X_R\text{ is affine};\\
+ &\exists q\in K^\times:\quad \sigma(q)=q^{-1},\quad
+                      \inf_{v\in S}v(q)>0;\\
+ &\exists e\in T:\quad e^2=e,\quad\sigma(e)=1-e,
+                                    \quad |e|_S=0.
+ \end{split}                                                   \tag{JC1}
+$$
+The first equivalence is (JR5) and the positive-gauge calculation
+following (FG7).
+
+To construct the idempotent from such a $q$, put
+$h_m=q^m/(1+q^m)$. If $\epsilon=\inf_S v(q)>0$, then
+$v(h_m)\geq m\epsilon$ for all $v\in S$, and
+$$
+                       \sigma(h_m)=1-h_m.
+$$
+The denominator is nonzero because $v(q^m)>0$. For $m,l\geq1$,
+both $|h_m-h_l|_S$ and $|\sigma(h_m-h_l)|_S$ are at most
+$2^{-\min(m,l)\epsilon}$. Thus the sequence is Cauchy for
+the joint norm, not merely for the chart norm. Its limit $e$
+satisfies $|e|_S=0$ and $\sigma(e)=1-e$.
+At every extended valuation in $S$, the value of $e$ under the
+associated multiplicative seminorm is zero, and the value of
+$\sigma(e)$ is one. Hence $e^2-e$ vanishes under the entire
+joint norming family, and is zero. This also shows $e\ne0,1$.
+
+Conversely, suppose such an $e$ exists. Choose $h\in K$ with
+$\|h-e\|<2^{-N}$ for some integer $N\geq1$. Then
+$|h|_v<2^{-N}$ and
+$|\sigma(h)-1|_v<2^{-N}$ for every $v\in S$, since
+$|e|_S=0$ and $\sigma(e)=1-e$. Thus
+$v(h)>N$ and $v(\sigma(h))=0$ for all $v\in S$.
+In particular $h$ and $\sigma(h)$ are nonzero, and
+$q=h/\sigma(h)$ has $\sigma(q)=q^{-1}$ and
+$\inf_S v(q)\geq N>0$. This gives the second condition.
+
+The directional requirement $|e|_S=0$ cannot be replaced here
+by the bare existence of a nontrivial idempotent: such an
+idempotent could partition the valuation family differently.
+Nor is every nontrivial Banach-ring completion a field.
+The remaining implication is exactly that the full algebraic
+graph condition forces a directional idempotent in this joint
+completion. No such implication has been proved. In particular,
+one must not assume that the whole Gelfand spectrum is just
+$S\amalg\sigma(S)$, or use a Goursat argument as though the
+two completion projections had been proved surjective.
+The scalar field restriction (FG1)--(FG7) remains available,
+but neither it nor (JC1) resolves non-field overlaps, larger
+geometric degrees, or the full original raw bound.
+
+![Global-field vanishing from finite normalization and the exact directional-idempotent criterion in a joint completion](../figures/raw-fibre-global-fields-and-completion.png)
+
+*Under (GF1), a hypothetical witness restricts to a global field by (FG1)--(FG5). Formula (GF2), with the inseparable root-ring bound where needed, puts a finite Dedekind normalization inside the restricted chart. Only finitely many valuations can be positive on $a$, so (GF3) gives a Noetherian localization. The three-prime diagram represents one possible finite set, and the proof allows any finite nonempty set. The Noetherian raw-one theorem contradicts the witness. In arbitrary fields, the lower panel represents (JC1): the iterates $q^m/(1+q^m)$ converge jointly to a directional idempotent, and a field approximation to that idempotent gives a reciprocal positive parameter. Existence of that idempotent under the general graph condition is an additional implication. The editable figure is [raw-fibre-global-fields-and-completion.svg](../figures/raw-fibre-global-fields-and-completion.svg).*
+
+**Finite etale completion and the open projection criterion**
+
+Let $R\subset K=R[1/a]$ be a proper completely integrally closed
+Goldman chart in the quadratic field-overlap class, with
+$R\sigma(R)=K$. Use its whole normalized rank-one family $S$,
+the chart norm $|x|_S=\sup_{v\in S}2^{-v(x)}$, and the joint norm
+$\|x\|=\max\{|x|_S,|\sigma(x)|_S\}$ of (JC1).
+Write $C=K^\sigma$, let $A$ be the completion of $C$ for the
+restricted norm, let $B$ be the chart completion of $K$, and let
+$T$ be its joint completion. These are Banach rings; they need
+not be fields. For $c\in C$ the two norms agree, so $A$ embeds
+isometrically as a closed subring of both $B$ and $T$.
+
+Choose $\theta\ne\sigma(\theta)$ in $K$. The extension $K/C$ is
+separable quadratic, with basis $1,\theta$. If $x=u+v\theta$,
+then
+$$
+ v=\frac{x-\sigma(x)}{\theta-\sigma(\theta)},\qquad u=x-v\theta.
+$$
+Put $d=\|(\theta-\sigma(\theta))^{-1}\|$ and $b=\|\theta\|$.
+The nonarchimedean inequalities give
+$$
+ \|v\|\leq d\|x\|,\quad
+ \|u\|\leq\max\{1,bd\}\|x\|,\quad
+ \|x\|\leq\max\{1,b\}\max\{\|u\|,\|v\|\}.                 \tag{FE1}
+$$
+Thus a joint-Cauchy sequence has Cauchy coefficients in $C$,
+and conversely coefficient Cauchy sequences are joint-Cauchy.
+Completing the two inverse coefficient maps proves
+$$
+                 T\simeq A\oplus A\theta
+                    \simeq A\otimes_C K.                     \tag{FE2}
+$$
+The multiplication table has coefficients in $C$, so this is
+an algebra isomorphism. Consequently $T$ is finite etale of
+rank two over $A$. Its involution is the base-changed field
+involution and $T^\sigma=A$: in the displayed basis, a fixed
+element has $v(\theta-\sigma(\theta))=0$, and that difference
+is a unit after base change. No division by the integer two
+is used.
+
+The chart norm is dominated by the joint norm, giving a continuous
+$A$-algebra map $\pi:T\to B$. Its image contains the dense field
+$K$. For all $t\in T$, uniform extension of the original norming
+family gives
+$$
+       \|t\|=\max\{|\pi(t)|_B,|\pi(\sigma(t))|_B\}.           \tag{FE3}
+$$
+The coefficient isomorphism (FE2) does not assert that $\pi$ is
+onto. Here an *open surjection* means a surjective map
+which maps open sets to open sets, or equivalently gives $B$
+the quotient topology.
+
+For this datum the following conditions are equivalent:
+$$
+ \begin{split}
+ &X_R\text{ is affine};\\
+ &A\longrightarrow B\text{ is onto};\\
+ &\pi:T\longrightarrow B\text{ is an open surjection};\\
+ &(\pi,\pi\sigma):T\longrightarrow B\times B
+                  \text{ is an isometric algebra isomorphism}.
+ \end{split}                                                   \tag{FE4}
+$$
+In the last condition the product has the maximum norm and
+$\sigma$ exchanges its two factors.
+
+First suppose $X_R$ is affine. By (JC1) there is an idempotent
+$e\in T$ with $\sigma(e)=1-e$ and $|e|_S=0$. On $(1-e)T$
+the second term in (FE3) is zero, so $\pi$ is an isometry there.
+Its image contains $K$, since $\pi((1-e)x)=x$ for $x\in K$.
+That image is complete and hence closed in $B$, so it is all
+of $B$. The conjugate summand $eT$ maps isometrically onto the
+other copy of $B$. This proves the last condition, and hence
+the open-surjection condition. The fixed subring of the product
+is its diagonal, so $A\to B$ is also an isometric isomorphism.
+
+Conversely, if $A\to B$ is onto, $C$ is dense in $B$. Thus for
+every $x\in K$ and integer $n\geq1$ there is $c\in C$ with
+$|x-c|_S<2^{-n}$. The representation of $R$ in (CI6)--(CI7)
+then gives $x-c\in a^nR$. The exact density criterion (PW6)
+implies affineness. It remains to prove that an open surjection
+$\pi$ forces the same conclusion.
+
+Put $J=\ker\pi$. Both $J$ and $\sigma(J)$ are closed, and
+(FE3) gives $J\cap\sigma(J)=0$. Suppose their sum is a proper
+ideal. Its closure is still proper: otherwise an element of
+the ideal is within joint norm less than one of $1$, and its
+geometric-series inverse would make the ideal the unit ideal.
+Let
+$$
+                     Q=T/\overline{J+\sigma(J)}.
+$$
+This is a nonzero Banach ring for the quotient norm. A quotient
+by a closed additive subgroup is complete here: successive
+quotient approximations can be lifted with summably decreasing
+errors, and their corrected lifts form a Cauchy sequence.
+Submultiplicativity passes to the quotient by taking infima of
+lift norms.
+
+The quotient map $q:T\to Q$ factors through both $\pi$ and
+$\pi\sigma$. Openness of these surjections makes the two
+factor maps $j_1,j_2:B\to Q$ continuous. Their restrictions to
+$K$ satisfy $j_1(x)=q(x)$ and $j_2(x)=q(\sigma(x))$.
+The image of $R$ in $Q$ is bounded. Indeed, $|r|_B\leq1$ for
+$r\in R$, and $|a^Nr|_B\leq2^{-N}$. By continuity of $j_1$,
+choose one $N$ such that $\|j_1(a^Nr)\|_Q\leq1$ for every
+$r\in R$. Then
+$$
+              \|q(r)\|_Q\leq\|q(a^{-N})\|_Q=:M_1.
+$$
+Applying the same argument to $j_2$ bounds every $q(\sigma(r))$
+by one constant $M_2$. Every element of $R\sigma(R)=K$ is a
+finite sum of products $r_i\sigma(s_i)$ with $r_i,s_i\in R$;
+the nonarchimedean triangle inequality consequently gives
+$$
+                    \|q(x)\|_Q\leq M_1M_2\quad(x\in K).
+                                                               \tag{FE5}
+$$
+On the other hand $q(a^n)=j_1(a^n)\to0$. Since (FE5) bounds
+$q(a^{-n})$ independently of $n$, the equality
+$1=q(a^n)q(a^{-n})$ contradicts $Q\ne0$. Thus
+$J+\sigma(J)=T$. The Chinese remainder theorem and (FE3) now
+give the isometric isomorphism in (FE4). The preimage of
+$(0,1)$ is precisely a directional idempotent of (JC1), proving
+affineness. This argument needs neither a common spectral
+valuation nor an identification of the whole Gelfand spectrum.
+
+There is a useful sufficient hypothesis for openness. If $A$
+contains a topologically nilpotent unit $c$, then
+$$
+             X_R\text{ is affine}\quad\Longleftrightarrow\quad
+                          \pi(T)\text{ is closed in }B.        \tag{FE6}
+$$
+Here $c$ may be replaced by a positive power so that $\|c\|<1$.
+Closed image is onto because the image is dense. The following
+open mapping argument applies to this surjection. Set
+$D=\{t\in T:\|t\|\leq1\}$. Since $T=\bigcup_{n\geq0}c^{-n}D$,
+Baire's theorem in the complete metric group $B$ shows that
+some $\overline{\pi(c^{-n}D)}$ has nonempty interior.
+These sets are additive subgroups. Multiplication by the unit
+$c^n$ is a homeomorphism, so $\overline{\pi(D)}$ contains an
+open additive ball $E$ about zero.
+For $b\in E$, successively choose $t_i\in D$ and $b_i\in E$
+with $b_0=b$ and $b_i-\pi(t_i)=cb_{i+1}$. This is possible
+because $cE$ is an open neighborhood of zero and $E\subset
+\overline{\pi(D)}$. The series $\sum_{i\geq0}c^it_i$ converges
+in $D$, and its image is $b$, because $c^{n+1}b_{n+1}\to0$.
+Thus $E\subset\pi(D)$. The same argument for balls of any
+positive radius proves that $\pi$ is open. Formula (FE4) proves
+(FE6). The converse in (FE6) also follows from (FE4).
+
+Neither closed image nor a topologically nilpotent unit in the
+completed fixed ring is automatic in the conclusions (FE1)--(FE3).
+Finite generation alone is not a closed-image theorem for Banach
+modules. For example, multiplication by $t$ on
+$C([0,1],\mathbf R)$ has nonclosed image:
+$t/(\sqrt t+1/n)$ converges uniformly to $\sqrt t$, which is
+not $t$ times a continuous function. This example concerns
+general real Banach modules; it is not a nonarchimedean
+finite-etale counterexample or a raw-fibre counterexample.
+For the Banach-ring conventions and finite-projective module
+norms, see K. S. Kedlaya and R. Liu, *Relative p-adic Hodge
+theory: Foundations*, Section 2.2, especially Definitions 2.2.1
+and 2.2.10, Remark 2.2.11 and Lemma 2.2.12:
+[Primary source](https://arxiv.org/abs/1301.0792).
+
+**An ordered-functional alternative to affineness**
+
+For $x\in K^\times$ put $f_x(v)=v(x)-v(\sigma(x))$ on $S$,
+and let $L$ be their real linear span in $C(S,\mathbf R)$.
+There is the following exact alternative:
+$$
+ \begin{split}
+ &\exists q\in K^\times:\quad \sigma(q)=q^{-1},\quad
+                                      \inf_S v(q)>0;\quad\text{or}\\
+ &\exists\Lambda:C(S,\mathbf R)\to\mathbf R\text{ real linear}:\quad
+   \Lambda(1)=1,\quad\Lambda(g)\geq0\ (g\geq0),\quad
+                                  \Lambda(f_x)=0\ (x\ne0).
+ \end{split}                                                   \tag{PS1}
+$$
+Exactly one occurs. The functional, when it exists, is continuous
+with norm one. By (JR5) and (FG7), its existence is equivalent
+to nonaffineness of this particular target; it is not itself
+a construction of a nonaffine target.
+
+The first condition holds exactly when $L$ contains a strictly
+positive function. In one direction $f_q=2v(q)$, an identity
+of real-valued functions in every characteristic. In the other,
+a positive finite real combination has positive minimum by
+compactness of $S$. Approximate its finitely many coefficients
+by rational numbers closely enough to preserve this minimum,
+using boundedness of the $f_x$, and clear one positive common
+denominator. The integer combination is the value function of
+$$
+                    q=\prod_j(x_j/\sigma(x_j))^{m_j}.
+$$
+Negative exponents are allowed. This $q$ is nonzero, reciprocal,
+and uniformly positive.
+
+If $L$ has no strictly positive member, then $L\cap\mathbf R1=0$.
+On $M=L+\mathbf R1$ define $\lambda(l+c1)=c$. It is positive:
+$l+c1\geq0$ with $c<0$ would make $l\geq-c>0$.
+To extend a positive normalized functional from any subspace
+$M$ containing constants to $M+\mathbf Rg$, put
+$$
+ A_g=\sup_{m\in M,\ m\leq g}\lambda(m),\qquad
+ B_g=\inf_{n\in M,\ n\geq g}\lambda(n).
+$$
+Constants give finite bounds, and positivity gives $A_g\leq B_g$.
+Choose $c\in[A_g,B_g]$ and set
+$\lambda(m+tg)=\lambda(m)+tc$.
+If $t>0$ and $m+tg\geq0$, use $g\geq-m/t$ and the lower bound
+on $c$; if $t<0$, use $g\leq-m/t$ and the upper bound.
+The extension is positive. Unions on chains and Zorn's lemma
+extend it to all continuous real functions. The inequalities
+$-\|g\|_\infty1\leq g\leq\|g\|_\infty1$ imply
+$|\Lambda(g)|\leq\|g\|_\infty$. Since $\Lambda(1)=1$, its norm
+is exactly one. Conversely a uniformly positive reciprocal $q$
+would give $0=\Lambda(f_q)\geq2\epsilon>0$, excluding such a
+functional and proving the alternative.
+
+The graph condition excludes evaluation at one $v\in S$ as
+this functional: $f_x(v)=0$ for every $x$ would make the
+valuation ring contain both $R$ and $\sigma(R)$, and hence $K$,
+contrary to $v(a)=1$. Positivity alone does not exclude all
+functionals. In particular it does not preserve pointwise
+minima. On a two-point space, the averaging functional gives
+zero on $(1,-1)$ and $(-1,1)$, and gives $-1$ on their pointwise
+minimum. This numerical example supplies no field datum.
+
+The open-surjection condition (FE4), or exclusion of every
+functional in (PS1), is therefore an exact affineness criterion
+for the quadratic field-overlap datum. Universal validity under
+the algebraic graph hypothesis remains unproved here. The full
+raw topological-fibre assertion also includes non-field overlaps,
+higher geometric degrees and every integer raw bound.
+
+![The exact open-projection criterion, bounded common-quotient contradiction and positive-functional alternative](../figures/raw-fibre-strict-completion-and-states.png)
+
+*Formulas (FE1)--(FE3) identify the joint completion as a finite etale algebra of rank two over the completed fixed field. If the dense chart projection is an open surjection, both chart maps factor continuously through the putative common quotient. The uniformizer bounds the images of $R$ and $\sigma(R)$; the graph identity bounds the entire field, contradicting $a^n\to0$ and bounded $a^{-n}$. Thus (FE4) gives the directional idempotent and affineness. Formula (FE6) supplies openness from closed image when the completed fixed ring has a topologically nilpotent unit. The lower panel gives the exact alternative (PS1); it does not construct a nonaffine datum. The editable figure is [raw-fibre-strict-completion-and-states.svg](../figures/raw-fibre-strict-completion-and-states.svg).*
+
+**Closed image alone in the countable field reduction**
+
+Keep the precise FE datum. The following preliminary equivalence
+does not require countability:
+$$
+ A\text{ has a topologically nilpotent unit}
+           \quad\Longleftrightarrow\quad T\text{ is nondiscrete}.
+                                                               \tag{FE7}
+$$
+One implication follows from the isometric inclusion $A\subset T$:
+positive powers of a topologically nilpotent unit are nonzero and
+converge to zero. Conversely, if the norm topology on the dense
+field $K\subset T$ were discrete, $K$ would already be complete
+and its completion $T$ would be discrete. Thus nondiscrete $T$
+contains $x\in K^\times$ with $\|x\|<1$. The element
+$c=x\sigma(x)\in C^\times$ has
+$\|c\|\leq\|x\|^2<1$. Its inverse is also in $C$, so it is an
+actual topologically nilpotent unit of $A$, proving (FE7).
+
+Now assume $K$ is countable. Then
+$$
+ X_R\text{ affine}\quad\Longleftrightarrow\quad
+ \pi:T\to B\text{ onto}\quad\Longleftrightarrow\quad
+                              \pi(T)\text{ closed in }B.       \tag{FE8}
+$$
+Affineness implies onto by (FE4); density makes closed image
+equivalent to onto. If onto held with $T$ discrete, then $T=K$
+and $B$ would be countable. But $B$ is a nonzero complete metric
+group with no isolated points: $a$ remains a unit and the nonzero
+elements $a^n$ tend to zero in its chart norm. Its singletons are
+closed nowhere dense subsets, so countability contradicts Baire's
+theorem. Hence surjectivity forces $T$ nondiscrete. Formula (FE7)
+supplies the topologically nilpotent unit in $A$, and the full
+open mapping proof in (FE6) makes the surjection open. Formula
+(FE4) proves affineness and establishes (FE8).
+
+By the witness-preserving reduction (FG1)--(FG5), universal
+affineness in the whole quadratic field-overlap class is therefore
+equivalent to closed image of these projections for every proper
+countable CIC datum over a field finitely generated over its prime
+field. Indeed any nonaffine field-overlap target has such a
+restricted nonaffine witness, while (FE8) would make it affine if
+its projection had closed image. Conversely universal affineness
+implies closed image for each such datum by (FE4).
+
+The countable closed-image criterion requires no separate Tate-unit
+hypothesis. Neither universal closed image nor an eligible
+nonaffine datum is a conclusion of (FE7)--(FE8). Non-field overlaps
+and larger raw bounds also lie outside these conclusions. No
+identification of the full spectrum or general finite-module
+closed-image theorem is assumed.
+
+![The countable closed-image criterion and the Baire argument excluding a discrete joint completion](../figures/raw-fibre-countable-closed-projection.png)
+
+*For countable $K$, a surjective chart projection cannot have discrete $T$: density would give $T=K$ and make $B$ a countable complete metric group, whereas its nonzero powers $a^n$ tend to zero. Baire gives the contradiction. In nondiscrete $T$, a small nonzero $x\in K$ gives the invariant topologically nilpotent unit $x\sigma(x)\in C$. Formulas (FE6) and (FE4) then prove (FE8). The exact restriction (FG1)--(FG5) makes this countable closed-image test exhaustive for the quadratic field-overlap class. Closed image for every such datum remains an additional assertion. The editable figure is [raw-fibre-countable-closed-projection.svg](../figures/raw-fibre-countable-closed-projection.svg).*
+
+**A finite etale dense image need not be closed**
+
+The finite-etale, uniform and closed-base conditions alone do not
+make the projection in (FE1)--(FE3) a closed-image map. Here is an
+explicit nonarchimedean example. It does not have the dense
+quadratic field required in the field-overlap datum.
+
+Let $k=\mathbf F_3((s))$ with $|s|=r=1/2$, and put
+$$
+ A=k\langle z\rangle
+   =\left\{\sum_{n\geq0}a_nz^n:\ |a_n|\to0\right\},\qquad
+ |f|_1=\sup_n|a_n|,
+$$
+$$
+ A_r=k\langle z/s\rangle
+   =\left\{\sum_{n\geq0}a_nz^n:\ |a_n|r^n\to0\right\},\qquad
+ |f|_r=\sup_n|a_n|r^n.
+$$
+The coefficientwise identity $\iota:A\to A_r$ is an injective
+contractive homomorphism with dense image, since it contains the
+polynomials. Both displayed norms are multiplicative. For $A$,
+rescale two nonzero series to have norm one. Their reductions
+are nonzero polynomials over $\mathbf F_3$, whose product is
+nonzero, proving multiplicativity. For $A_r$ substitute $z=sw$
+and use the same argument. Completeness follows by coordinatewise
+limits and uniformly small tails. Thus both are uniform Banach
+algebras over the nonarchimedean field $k$.
+
+The image of $\iota$ is not closed. The polynomials
+$f_N=\sum_{n=0}^Nz^n$ converge in $A_r$ to
+$f=\sum_{n\geq0}z^n$, since $|f-f_N|_r=r^{N+1}$. The series
+$f$ is not in $A$, because its coefficients do not tend to zero.
+The coefficientwise description and injectivity show that no
+different element of $A$ has image $f$.
+
+Now set
+$$
+               T=A\times A,\qquad B=A\times A_r,\qquad
+               \pi(a,b)=(a,\iota(b)),\qquad\sigma(a,b)=(b,a).
+                                                               \tag{NC1}
+$$
+Use the maximum norms on the products. The diagonal embeds $A$
+isometrically and closed in both rings, since
+$\max\{|a|_1,|\iota(a)|_r\}=|a|_1$. The $A$-algebra $T$ is
+finite etale of rank two, its involution is isometric, and its
+fixed ring is the diagonal $A$. The map $\pi$ is injective and
+has dense, nonclosed image: $(0,f_N)$ tends to $(0,f)$ in $B$,
+and the latter is not in the image. Moreover it has exactly
+the two-projection norm identity
+$$
+       |t|_T=\max\{|\pi(t)|_B,|\pi(\sigma(t))|_B\}
+                        \quad(t\in T),                        \tag{NC2}
+$$
+because $|\iota(a)|_r\leq|a|_1$ for every $a\in A$.
+The scalar $s$ is a topologically nilpotent unit in all three
+rings. Even this additional condition does not make a dense
+map onto; the open mapping argument (FE6) requires surjectivity.
+
+The inverse topology on the image is strictly finer than its
+subspace topology in $B$. Explicitly, with $m_n=\lfloor n/2\rfloor$,
+put $t_n=(0,s^{-m_n}z^n)$. Then
+$$
+ |\pi(t_n)|_B=r^{n-m_n}\longrightarrow0,\qquad
+ |t_n|_T=|\pi(\sigma(t_n))|_B=r^{-m_n}\longrightarrow\infty.
+                                                               \tag{NC3}
+$$
+Thus the induced involution on the dense image does not extend
+continuously to $B$. The two projection kernels in $T$ are
+both zero, so no comaximal-kernel assertion is justified here.
+
+This finite etale algebra can even be obtained by base change
+of a separable quadratic field extension. Let
+$C_0=\mathbf F_3((s^2))\subset k$. Splitting each Laurent series
+into its even and odd powers gives $k=C_0\oplus C_0s$. The polynomial
+$X^2-s^2$ is irreducible over $C_0$, since the $s^2$-adic
+valuation of $s^2$ is odd and the valuation of a square is
+even. Its two roots in $A$ differ by the unit $2s$, so
+$$
+                       A\otimes_{C_0}k\simeq A\times A.
+                                                               \tag{NC4}
+$$
+The nontrivial field automorphism acts as the displayed exchange.
+The field $k$ and the fixed field $C_0$ in this description are
+not dense in $T$ and $A$, respectively.
+
+In fact $A$ contains no dense subfield at all. If $|g-z|_1<1$,
+then $|g|_1=1$ and its reduction is $z$. If $g$ had inverse
+$h\in A$, multiplicativity would give $|h|_1=1$, and reduction
+would give $z\overline h=1$ in $\mathbf F_3[z]$, an impossibility.
+Thus the open unit ball about $z$ contains no units. Every
+nonzero element of any subfield of $A$ is a unit of $A$, and
+zero is not in that ball; no subfield can be dense. A dense
+subfield of $T$ would map injectively under its first projection
+to a dense subfield of $A$, so none exists there either.
+
+Consequently (NC1)--(NC4) refute a closed-image theorem based
+only on finite etaleness, a closed isometric base, uniform
+Banach norms, a topologically nilpotent unit, and the norm
+identity (NC2), even with the quadratic field base-change form.
+They do not refute closed image under the full dense-field and
+Goldman-chart hypotheses of (FE8). They supply no eligible
+algebraic-space datum and no counterexample to the original
+raw topological-fibre cohomology assertion.
+
+![The coefficient-weight mechanism and exact finite-etale counterexample to a general closed-image inference](../figures/raw-fibre-nonarchimedean-closed-image-counterexample.png)
+
+*The two coefficient plots show $|a_n|=1$ and $|a_n|r^n=2^{-n}$ for $0\leq n\leq7$, with the stated formulas valid for every $n$. The series $\sum z^n$ therefore lies in $A_r$ and not in $A$. This gives the missing limit $(0,\sum z^n)$ for the dense finite-etale projection (NC1). Formula (NC2) is the exact two-projection norm identity; (NC3) exhibits its unbounded inverse topology. Formula (NC4) gives a quadratic field base-change description. The reduction argument shows that no dense field exists in this example, so it cannot refute the dense-field criterion (FE8) or the raw-fibre cohomology assertion. The editable figure is [raw-fibre-nonarchimedean-closed-image-counterexample.svg](../figures/raw-fibre-nonarchimedean-closed-image-counterexample.svg).*
+
+**Higher-rank patch limits of an eligible Gauss family**
+
+For a proper Goldman domain $R\subset K=R[1/a]$, let
+$$
+ \mathcal V_R=\{V\subsetneq K: V\text{ is a valuation ring of }K,
+                                      \ R\subset V\}.       \tag{RZ1}
+$$
+This is compact for the patch topology. Indeed, identify subsets of $K$
+with points of $\{0,1\}^K$. The conditions of being a subring, containing
+$1$, and containing $x$ or $x^{-1}$ for every $x\ne0$ are closed: every
+violation involves only finitely many coordinates. Thus valuation rings,
+including $K$, form a closed subspace of a compact product. Requiring
+membership of every element of $R$ is closed. Among those valuation
+rings, being proper is exactly the clopen condition $a^{-1}\notin V$:
+if $a^{-1}\in V$, then $K=R[1/a]\subset V$. This proves (RZ1).
+The patch topology here is precisely the subspace topology from these
+membership coordinates.
+
+If $R\sigma(R)=K$, no proper valuation ring contains both chart rings.
+More strongly, a valuation containing $R$ and a valuation containing
+$\sigma(R)$ have no common nontrivial coarsening: such a coarsening
+would contain the ring generated by them, hence $K$.
+These facts establish compactness and independence across the two full
+families. They do not establish an approximation theorem's additional
+uniformity hypothesis.
+
+Here is an explicit higher-rank point that the compactification cannot
+discard. Take $K=\mathbf Q(u)$, $\sigma(u)=u^{-1}$, and, for
+$1\leq\lambda\leq2$, the Gauss valuation
+$$
+ v_\lambda\Bigl(\sum_i b_i u^i\Bigr)
+       =\min_i\{v_2(b_i)+i\lambda\},\qquad
+ v_\lambda(P/Q)=v_\lambda(P)-v_\lambda(Q).
+$$
+These are valuations: the initial forms of two nonzero polynomials in
+the associated graded polynomial ring have nonzero product. Set
+$$
+                  R=\bigcap_{1\leq\lambda\leq2}V_{v_\lambda}.
+$$
+This is a proper completely integrally closed Goldman domain, with
+$R[1/2]=K$. Properness follows from $v_\lambda(1/2)=-1$.
+For each rational function its displayed value is a bounded continuous
+piecewise-linear function of $\lambda$, so a power of $2$ brings it
+into $R$. To check complete integral closure directly, if $c x^n\in R$
+for every $n$ with fixed $c\ne0$, then
+$v_\lambda(c)+n v_\lambda(x)\geq0$ for every $n$ and every $\lambda$;
+the real-valued inequality forces $v_\lambda(x)\geq0$.
+
+The full graph condition holds. One has $u/2\in R$ and
+$1/(2u)\in\sigma(R)$; their product is $1/4$. Consequently the
+generated ring contains $1/2$ and then $R[1/2]=K$. Moreover $q=u$ is
+reciprocal and $\inf_\lambda v_\lambda(q)=1>0$. Thus the reciprocal
+gauge criterion (JR5) makes this an
+affine target. None of the following is a cohomology counterexample.
+
+Put $t=u/2$. The valuation $v_1$ is the $2$-adic Gauss valuation on
+$\mathbf Q(t)$, with value group $\mathbf Z$ and residue field
+$\mathbf F_2(\overline t)$. Compose it with the $\overline t$-adic
+valuation of that residue field. Explicitly,
+$$
+ w(f)=\left(m,\operatorname{ord}_{\overline t}
+                       \overline{2^{-m}f}\right),\quad
+ m=v_1(f),\qquad
+       w:K^\times\longrightarrow\mathbf Z\oplus\mathbf Z_{\rm lex}.
+                                                               \tag{RZ2}
+$$
+The formula is multiplicative. For addition, unequal first coordinates
+give the smaller first coordinate; equal first coordinates either
+cancel to larger first coordinate or reduce to the usual residue
+valuation inequality. Thus it is a valuation. Both $(1,0)=w(2)$ and
+$(0,1)=w(t)$ occur, so its value group is all of the displayed
+lexicographically ordered group.
+
+To prove $R\subset V_w$ and identify the limit exactly, write
+$f=P(t)/Q(t)$ with polynomials over $\mathbf Q$. Let $m_P$ be the
+minimum coefficient valuation of $P$, and let $i_P$ be the least
+exponent whose coefficient has that valuation. Define $m_Q,i_Q$
+likewise. For all sufficiently small $\epsilon>0$, the finite lists
+of polynomial terms give
+$$
+ v_{1+\epsilon}(f)
+       =(m_P-m_Q)+(i_P-i_Q)\epsilon
+       =v_1(f)+\operatorname{ord}_{\overline t}
+                    \overline{2^{-v_1(f)}f}\,\epsilon.        \tag{RZ3}
+$$
+Terms with larger coefficient valuation cannot minimize for sufficiently
+small $\epsilon$; among terms with minimal coefficient valuation, the
+least exponent minimizes. This proves the formula for both polynomials
+and their quotient.
+
+If $f\in R$, its first coordinate $v_1(f)$ is nonnegative. If that
+coordinate is zero, nonnegativity in (RZ3) for small positive
+$\epsilon$ forces the second coordinate to be nonnegative. Hence
+$R\subset V_w$. The containment does not assert that $R$ is local
+or that it is not Pruefer.
+
+For each fixed $f\ne0$, (RZ3) also says that, for all sufficiently
+small positive $\epsilon$,
+$$
+          f\in V_{v_{1+\epsilon}} \Longleftrightarrow\quad
+                                                        f\in V_w.
+                                                               \tag{RZ4}
+$$
+If the first coordinate is nonzero its sign eventually dominates; if
+it is zero the second coordinate decides, including exact zero.
+Apply this to any finite list of elements to obtain convergence in
+all patch membership coordinates. In particular
+$V_{v_{1+1/n}}\to V_w$ in the patch topology, whereas the real-valued
+functions $v_{1+1/n}$ converge pointwise to $v_1$. The two limiting
+rings differ: $t^{-1}\in V_{v_1}$ and $t^{-1}\notin V_w$.
+
+The ring $V_w$ has rank two and is not completely integrally closed.
+The element $t^{-1}$ is excluded, while
+$w(2t^{-n})=(1,-n)>0$ for every $n\geq0$. Thus $2$ bounds all of
+its powers in $V_w$. This does not contradict complete integral
+closure of $R$: that property was not asserted for all its overrings.
+
+There is also no common uniformizer for the whole family in (RZ1).
+It already contains $v_{\sqrt2}$, whose value group is
+$\mathbf Z+\sqrt2\mathbf Z$. Pigeonhole approximation of the
+fractional parts of $j\sqrt2$ gives nonzero group elements
+arbitrarily close to zero, so that group has no least positive
+element. This disproves the common-uniformizer shortcut. It does
+not disprove a different polynomial uniformity condition or an
+approximation conclusion; the target in this example is affine.
+
+For comparison, N. Shell, *Independence*, Topology Proceedings
+26 (2001--2002), 779--790, Section 2, Theorem 1,
+[Primary source](https://topology.nipissingu.ca/tp/reprints/v26/tp26222.pdf),
+treats independence
+of two ring topologies. Its additive criterion is $U+V=K$ for all
+neighborhoods, a stronger assertion than merely generating $K$ by
+finite sums of products from two chart rings. The examples in its
+Example 2 involving the ideal topology of $\mathbf Z$ do not give
+the present field topology: inversion at $1$ is not continuous for
+that topology. For the target neighborhood $\mathbf Z$ at zero,
+every source neighborhood contains some $n\mathbf Z$, whereas
+$(1+n)^{-1}-1=-n/(1+n)\notin\mathbf Z$. Thus those examples cannot
+be inserted as eligible chart counterexamples.
+
+The compactification (RZ1) and explicit limits (RZ2)--(RZ4) establish
+neither polynomial uniformity for every chart nor the original raw
+bound. A block approximation theorem retains its uniformity hypothesis
+on the full relevant families. See S. Anscombe, P. Dittmann and A. Fehm,
+*Approximation theorems for spaces of localities*,
+Theorem 4.6 and Assumption 3.1 in the 2019 preprint,
+[Primary source](https://arxiv.org/abs/1901.02632).
+
+![The rank-one pointwise limit and rank-two patch limit of the same eligible Gauss family](../figures/raw-fibre-higher-rank-patch-limit.png)
+
+*For each fixed rational function, the exact local formula $v_{1+\epsilon}(f)=m+d\epsilon$ gives the two limits (RZ2)--(RZ4). The real values tend to $m=v_1(f)$, while eventual membership is decided by the lexicographic sign of $(m,d)$. Thus $t^{-1}$ belongs to the pointwise limiting ring and is excluded from the patch limiting ring. The full proper family is compact by (RZ1), but its irrational-weight member excludes a common uniformizer. The explicit reciprocal parameter $q=u$ still gives an affine target. The editable figure is [raw-fibre-higher-rank-patch-limit.svg](../figures/raw-fibre-higher-rank-patch-limit.svg).*
+
+**Polynomial uniformity is not automatic for the field charts**
+
+Even within the countable finitely generated field class of (FG1)--(FG5),
+the full valuation families need not satisfy the polynomial uniformity
+condition of Anscombe--Dittmann--Fehm. The following construction has
+a proper completely integrally closed Goldman chart, the exact closed
+mixed graph and an affine target. Its chart projection is a split open
+surjection, although no polynomial satisfies that uniformity condition.
+Thus uniformity is not a necessary intermediate conclusion for the
+vanishing assertion.
+
+**Finite-dimensional norms and the conjugate-distance lemma.**
+We first give the needed valued-field arguments. In this paragraph all
+absolute values are multiplicative and nonarchimedean. If $F$ is complete,
+every norm on a finite-dimensional $F$-vector space is equivalent to the
+maximum norm in any basis. Here a vector norm is homogeneous under the
+given absolute value on $F$.
+For the lower bound argue by induction on the dimension. The span $W$
+of the first $n-1$ basis vectors is complete by induction and hence closed
+in the normed space. For the last vector $e_n\notin W$ one has
+$d=\inf_{w\in W}\|e_n-w\|>0$. Consequently, for $x=w+ae_n$,
+$$
+ |a|d\leq\|x\|,\qquad
+ \|w\|\leq\max\{1,\|e_n\|/d\}\|x\|.                  \tag{UV1}
+$$
+The induction hypothesis bounds the other coordinates. The upper bound
+follows directly from the triangle inequality and the norms of the
+basis vectors. This proves the equivalence and also completeness of
+every finite-dimensional normed space over $F$.
+
+In particular a finite extension of $F$, equipped with an extending
+absolute value, is complete. Any two such absolute values coincide:
+norm equivalence gives $|x|_1\leq M|x|_2$, and applying this to $x^j$
+and taking $j$th roots gives $|x|_1\leq|x|_2$; reverse the roles.
+Thus embeddings of a finite extension into a valued overfield which
+fix $F$ preserve absolute value.
+
+Fix $F=\mathbf Q_5$ and a valued algebraic closure $\overline F$.
+For $b\in\overline F\setminus F$ put
+$$
+ \delta(b)=\min\{|b-b'|:b'\ne b\text{ is an }F\text{-conjugate of }b\}>0.
+$$
+Suppose $E$ is any complete valued subfield of a valued overfield,
+$F\subset E$, $y\in E$, and $|b-y|<\delta(b)$. For any $E$-conjugate
+$b'$ of $b$, uniqueness of the absolute value on the finite extension
+gives $|b'-y|=|b-y|$. If $b'\ne b$, ultrametricity would give
+$|b-b'|\leq|b-y|<\delta(b)$, a contradiction. In characteristic zero
+the minimal polynomial over $E$ is separable, so having only one
+conjugate implies
+$$
+                         b\in E.                            \tag{UV2}
+$$
+The overfield need only contain the finite splitting field in this
+argument. In the applications below it is $\overline F$ or its
+algebraically closed completion.
+
+**A countable cofinal algebraic tower.**
+Here are details avoiding an assumption about countably many local
+extensions. The following elementary Newton argument applies over
+every complete nonarchimedean field. If $g\in\mathcal O_F[X]$,
+$x_0\in\mathcal O_F$ and
+$|g(x_0)|<|g'(x_0)|^2$, put $D=|g'(x_0)|>0$. Newton's correction
+$h_0=-g(x_0)/g'(x_0)$ has $|h_0|<D\leq1$. Taylor expansion has
+integral coefficients, so $|g(x_0+h_0)|\leq|h_0|^2$ and
+$|g'(x_0+h_0)|=D$. Repeating gives
+$|h_{j+1}|\leq|h_j|^2/D$. The corrections tend to zero at least
+as $D(|h_0|/D)^{2^j}$; their sum converges. Its limit $b$ satisfies
+$$
+                    g(b)=0,\qquad
+              |b-x_0|\leq|g(x_0)|/D.                       \tag{UV3}
+$$
+The same proof applies to the valuation ring of any complete finite
+extension of $F$.
+
+Given $\alpha\in\overline F$, first multiply it by a power of $5$
+to make it integral; the generated field is unchanged. Its monic
+minimal polynomial $f$ has coefficients in $\mathbf Z_5$: all its
+conjugates have the same absolute value at most one, and its
+coefficients are their elementary symmetric functions. The derivative
+$f'(\alpha)$ is nonzero. Approximate the finitely many coefficients
+of $f$ by integers to obtain a monic $g\in\mathbf Z[X]$ sufficiently
+close to $f$. Then $g'(\alpha)$ has absolute value $|f'(\alpha)|$,
+and $|g(\alpha)|$ is as small as desired. Formula (UV3), in the
+complete field $F(\alpha)$, gives a root $\beta\in F(\alpha)$ of $g$
+with $|\beta-\alpha|<\delta(\alpha)$ if $\alpha\notin F$.
+The field $F(\beta)$ is complete by (UV1), and (UV2) gives
+$\alpha\in F(\beta)$. If $\alpha\in F$, no approximation is needed
+for the field inclusion. Therefore every finite subextension of
+$\overline F/F$ lies in the splitting field over $F$ of some monic
+integer polynomial.
+
+Enumerate those polynomials, with $X^2-5$ first, and let $L_n$ be the
+compositum of the splitting fields of the first $n$. These are finite
+Galois extensions, $L_1\ne F$, and
+$$
+                   \bigcup_n L_n=\overline F.                \tag{UV4}
+$$
+Their degrees are unbounded. Indeed the list includes $X^m-5$ for
+every $m$. In a finite extension of degree $d$ the field norm and
+isometry of its conjugate embeddings give
+$v_5(x)=v_5(N(x))/d\in d^{-1}\mathbf Z$. Such a field cannot contain
+elements of value $1/m$ for every $m$.
+
+Write $\mathbf C_5$ for the completion of $\overline F$. Its
+multiplicative absolute value extends and makes it a field: inverses
+of a Cauchy sequence with nonzero limit are Cauchy, since its absolute
+values are eventually the fixed absolute value of its limit.
+We will also need algebraic closedness, which can be seen directly.
+For a monic $h\in\mathbf C_5[X]$ of degree $d$, approximate its
+coefficients by monic polynomials $h_n\in\overline F[X]$, with
+successive coefficient errors $\epsilon_n\leq5^{-n}$. Their coefficients
+have one common absolute bound $M\geq1$. Every root has absolute
+value at most $M$, since otherwise the leading term strictly dominates
+all other terms. Given a root
+$c_n$ of $h_n$, evaluation of $h_{n+1}-h_n$ gives
+$|h_{n+1}(c_n)|\leq\epsilon_n M^{d-1}$. Since $h_{n+1}$ splits,
+one of its roots $c_{n+1}$ has
+$|c_n-c_{n+1}|\leq M\epsilon_n^{1/d}$. Thus the selected roots
+form a Cauchy sequence by the ultrametric inequality; coefficient
+convergence on the bounded roots makes its limit a root of $h$. Repeating after
+division by the resulting linear factor proves algebraic closedness.
+
+**One transcendental generator near one.**
+Choose a primitive generator $\gamma_n$ for each finite Galois
+extension $L_n/F$. Such a generator exists by avoiding the finitely
+many proper fixed $F$-subspaces of its nonidentity automorphisms:
+a vector space over the infinite field $F$ is not the union of
+finitely many proper linear subspaces. Set $b_0=1$. At step $n$, choose
+$$
+                     b_n=b_{n-1}+5^{N_n}\gamma_n
+$$
+primitive for $L_n/F$ and with sufficiently small increment. Such
+choices exist for arbitrarily large $N_n$: for any nonidentity
+$\tau\in\operatorname{Gal}(L_n/F)$, the equation
+$\tau(b_{n-1})-b_{n-1}+5^{N_n}(\tau(\gamma_n)-\gamma_n)=0$
+excludes at most one integer $N_n$. Avoiding the finitely many
+excluded integers makes the stabilizer trivial, hence the generator
+primitive.
+
+Choose $|b_1-1|<1/5$. With $\delta_j=\delta(b_j)$, require, for
+$n\geq2$,
+$$
+ |b_n-b_{n-1}|<\min\{5^{-n},\delta_1/5,\ldots,\delta_{n-1}/5\}.
+                                                               \tag{UV5}
+$$
+These finitely many positive strict bounds are possible at each step.
+The sequence is Cauchy. Its limit $z\in\mathbf C_5$ satisfies
+$|z-1|<1$ and $|z-b_n|\leq\delta_n/5<\delta_n$ for every $n$.
+The closure $E$ of $F(z)$ in $\mathbf C_5$ is a complete valued
+field. Formula (UV2) puts every $b_n$ in $E$, so (UV4) and density
+give $E=\mathbf C_5$. The element $z$ cannot be algebraic over $F$:
+then $F(z)$ would already be complete and finite, contrary to its
+containing all the $L_n$ of unbounded degree. Finally, approximation
+of the finitely many coefficients in each rational expression by
+elements of $\mathbf Q$ gives
+$$
+ z\text{ transcendental over }\mathbf Q_5,\quad |z-1|_5<1,
+              \qquad\overline{\mathbf Q(z)}=\mathbf C_5.     \tag{UV6}
+$$
+The closures here are for the actual $5$-adic absolute value, not
+for an arbitrary supremum norm on a field.
+
+**The eligible chart and its completions.**
+Put $K=\mathbf Q(z)$, $\sigma(z)=-z$, $C=\mathbf Q(z^2)$, and
+let $R$ be the valuation ring for the restricted $5$-adic absolute
+value. This is a proper rank-one valuation ring. For any $x\in K$,
+a power of $5$ brings it into $R$, and the inequalities
+$v(c)+jv(x)\geq0$ for all $j$ force $v(x)\geq0$. Thus $R$ is CIC
+and $R[1/5]=K$. The nontrivial involution has fixed field exactly
+$C$: the rational-function field has basis $1,z$ over $\mathbf Q(z^2)$,
+and $\sigma$ fixes its first basis vector and negates the second.
+
+The element
+$$
+                    q=(z-1)/(z+1)
+$$
+has positive value, because $|z-1|_5<1$ and $|z+1|_5=1$ at the
+odd prime $5$. It satisfies $\sigma(q)=q^{-1}$. Positivity in
+rank one gives $R[1/q]=K$. Since $q^{-1}\in\sigma(R)$, the
+generated ring $R\sigma(R)$ is all of $K$. Therefore the data give
+the exact separated quadratic field-overlap target of (QN1)--(QN9).
+The reciprocal gauge criterion (JR5) makes this target affine.
+The field $K$ is countable and finitely generated of transcendence
+degree one over $\mathbf Q$, as required in the FG class.
+
+This chart is non-Noetherian. The value group of $\mathbf C_5$ is
+$\mathbf Q$: a nonzero limit has the same value as sufficiently close
+algebraic approximants, and the roots of $X^m-5$ supply every rational
+value. Density gives the same value group on $K$. A finite list of
+nonzero elements of the maximal ideal has a least positive value,
+whereas $K$ has an element of smaller positive value. Hence that
+maximal ideal is not finitely generated. In particular the valuation
+has no uniformizer.
+
+Its chart completion is $B=\mathbf C_5$ by (UV6). The closure $A$
+of $C$ in $B$ is also $\mathbf C_5$. Indeed it is a complete field;
+apply (UV3) to $X^2-z^2$ at $1$, in $A$. The derivative is $2$,
+a unit, and $|1-z^2|_5<1$. It gives a root in $A$ near $1$.
+Of the two roots $z,-z$ only $z$ is near $1$, so $z\in A$.
+Density of $K$ now gives $A=B$. Formula (FE2), or the two distinct
+roots of $X^2-z^2$ over $\mathbf C_5$, then gives
+$$
+                A=B=\mathbf C_5,\qquad
+                T\simeq\mathbf C_5\times\mathbf C_5.         \tag{UV7}
+$$
+Under (FE3) this is the maximum-norm product; the chart projection
+is a coordinate projection and the involution exchanges coordinates.
+In particular the image is closed and the projection is an open
+surjection. No failure of closed image or of the original cohomology
+assertion occurs.
+
+**Failure of polynomial uniformity.**
+For precision the condition in question asks for $t\in K^\times$
+and $f\in K[X]$ of degree $d\geq2$ such that, for each valuation
+in the relevant families, among other requirements,
+$$
+ \begin{split}
+  &x\in\mathcal O_v\quad\Longrightarrow\quad
+                              f(x)\notin t\mathfrak m_v,\\
+  &x\notin\mathcal O_v\quad\Longrightarrow\quad
+                         f(x)/x^d\notin t\mathfrak m_v.
+ \end{split}                                                   \tag{UV8}
+$$
+These are necessary parts of Assumption 3.1(ii)--(iii) of
+Anscombe--Dittmann--Fehm.
+
+Given any such $f$, choose a root $b\in\mathbf C_5$. If $b=0$,
+test the first requirement at zero. If $0<|b|_5\leq1$, density
+of $K$ gives $x_j\in K$ tending to $b$, eventually integral;
+$f(x_j)\to0$, so eventually $v(f(x_j))>v(t)$, contrary to the
+first requirement. If $|b|_5>1$, the $x_j$ eventually have the
+fixed absolute value $|b|_5>1$ and
+$f(x_j)/x_j^d\to0$, contrary to the second requirement. A zero
+evaluation is already in $t\mathfrak m_v$ and is also a contradiction.
+Thus no $f,t$ work even for this one valuation, and hence none work
+on a family containing it. The whole proper valuation family of
+$R$ is just this valuation ring. Indeed, an overring containing
+$x\notin R$ contains every $y\in K$: for sufficiently large $n$,
+$v(y/x^n)=v(y)-nv(x)\geq0$, so $y\in x^nR$. Thus any strictly
+larger overring is $K$ itself.
+
+Consequently polynomial uniformity fails even for eligible affine
+charts with overlap field finitely generated over the prime field,
+actual dense fields, and the split projection with closed image (UV7). A proof
+of the raw-fibre bound cannot require this condition for every chart.
+
+**Infinitely many exceptional valuations in one eligible chart.**
+The obstruction is not universally removed by discarding finitely
+many valuations. Use the same $z$ as in (UV6), but now take the
+abstract field $K'=\mathbf Q(u)$ and involution $\tau(u)=u^{-1}$.
+Define rank-one valuations by the injective evaluations
+$$
+ w_n(f)=\frac1n v_5(f(5^nz)),\qquad
+ w_\infty(f)=\operatorname{ord}_{u=0}(f),\qquad n\geq1.
+                                                               \tag{UV9}
+$$
+All have $w(u)=1$. They are distinct valuation rings: if $n<m$,
+$5^n/u$ has value zero at $w_n$ and negative value $n/m-1$ at
+$w_m$. Also $1/5$ belongs to the ring of $w_\infty$ and not
+to the ring of any $w_n$.
+
+For each fixed $f\ne0$, write $f=u^m g(u)/h(u)$ with
+$g,h\in\mathbf Q[u]$ and $g(0)h(0)\ne0$. Since $5^nz\to0$,
+the nonzero constant terms of $g,h$ dominate their other terms
+for large $n$. Hence, with $c_f=v_5(g(0))-v_5(h(0))$,
+$$
+                w_n(f)=m+c_f/n\longrightarrow m=w_\infty(f)
+                    \quad\text{for sufficiently large }n.   \tag{UV10}
+$$
+In particular the listed normalized family is compact for pointwise
+convergence and every value function is bounded on it. Set
+$D=V_{w_\infty}\cap\bigcap_{n\geq1}V_{w_n}$.
+The all-powers inequality makes $D$ CIC. Boundedness for each
+$f$ and $w(u)=1$ give $D[1/u]=K'$, while $1/u\notin D$, so
+$D$ is proper. Its reciprocal cofinal element $u$ gives
+$D\tau(D)=K'$ and an affine eligible target, again by (JR5).
+
+For each $n$, the field $\mathbf Q(5^nz)$ equals $\mathbf Q(z)$.
+Thus the completion for $w_n$ is the algebraically closed field
+$\mathbf C_5$, with its absolute value raised to $1/n$.
+The two root-approximation arguments for (UV8) apply unchanged
+to every $w_n$. Each belongs to the whole proper valuation family
+of $D$. After removal of any finite number of valuation rings,
+infinitely many of these distinct rings remain, so no polynomial
+can satisfy (U) on the remaining family. The listed pointwise
+family is not being identified with the whole proper valuation
+family, and no patch-compactness assertion about that listed
+subfamily is needed.
+
+Therefore a finite-exception approximation theorem cannot be applied
+universally here merely by declaring the valuations that fail (U)
+exceptional. Its hypotheses on the infinite families still need to
+hold. This example also has affine target and refutes no approximation
+theorem with its actual hypotheses.
+This example refutes a proposed intermediate claim, not the vanishing
+assertion. Universal closed image in the full FE datum remains
+unproved, as do the general non-field overlaps and larger raw bounds.
+
+For the exact uniformity condition and finite-exception versions see
+S. Anscombe, P. Dittmann and A. Fehm, *Approximation theorems
+for spaces of localities*, 2019 preprint, Assumption 3.1 and Section 6,
+[Primary source](https://arxiv.org/abs/1901.02632).
+For related topological generation results see V. Alexandru,
+N. Popescu and A. Zaharescu, *The generating degree of
+$\mathbf C_p$*, Canadian Mathematical Bulletin 44 (2001), 3--11,
+Theorem 1 and Section 3,
+[Primary source](https://doi.org/10.4153/CMB-2001-001-1).
+
+![The dense field construction, split projection and exact root-approximation obstruction to polynomial uniformity](../figures/raw-fibre-polynomial-uniformity-obstruction.png)
+
+*The finite Galois tower (UV4) and strict primitive-generator bounds (UV5) produce the transcendental $z$ and actual dense field in (UV6). The positive reciprocal parameter $q=(z-1)/(z+1)$ gives the closed mixed graph and affine target. Formula (UV7) identifies the actual chart and fixed completions with $\mathbf C_5$ and the joint completion with their product. For every polynomial, root approximation contradicts one of the necessary bounds (UV8), in the two displayed absolute-value cases. The further family (UV9)--(UV10) gives an eligible affine chart with infinitely many distinct valuations having algebraically closed completion, so finite deletion cannot restore the polynomial condition on its whole proper family. Neither construction is a counterexample to vanishing. The editable figure is [raw-fibre-polynomial-uniformity-obstruction.svg](../figures/raw-fibre-polynomial-uniformity-obstruction.svg).*
 
 #### Lemma. Finite cohomological dimension from an étale atlas
 

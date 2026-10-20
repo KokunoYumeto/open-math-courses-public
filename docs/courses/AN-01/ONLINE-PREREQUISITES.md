@@ -34,3 +34,7 @@ Each result used by a lesson has its proof locally or in an exact supplied earli
 - [Contour calculus and the Gaussian branch](prerequisites/U011-free-foundations/AN04-contour-calculus-U130.html): complete selected AN-04 mathematical arguments and their earlier proof links.
 
 - [Gaussian reduction near a complex critical graph](prerequisites/U011-free-foundations/AN04-complex-contours-U130.html): complete selected AN-04 mathematical arguments and their earlier proof links.
+
+- [Flow inverses and continuation on their actual domains](prerequisites/U011-free-foundations/flow-inverses-and-continuation-U134.html): complete selected programme arguments and their earlier proof links.
+
+- [Smooth quadratic coordinates and their Jacobian](prerequisites/U011-free-foundations/AN04-parameter-morse-U134.html): complete selected programme arguments and their earlier proof links.

@@ -93,7 +93,7 @@ for j in range(8):
  lower=[v for v in allterms if v!=leading]
  assert all(l<j and 1-k-l-q==-j for k,l,q in lower)
  terms.append({'degree':-j,'leading':list(leading),'lower_terms':[list(v) for v in lower]})
-checks.append({'name':'Full recursive commutator order budget','passed':True,'scope':'All k,l,|alpha| triples through j=7, exact homogeneous degree and strictly lower Q-index after the leading Hamilton term is removed. Infinite-order remainder/summation proof remains a written obligation.','enumeration':terms})
+checks.append({'name':'Full recursive commutator order budget','passed':True,'scope':'All k,l,|alpha| triples through j=7, exact homogeneous degree and strictly lower Q-index after the leading Hamilton term is removed. These finite calculations do not establish infinite-order remainder estimates or symbol summation.','enumeration':terms})
 
 t,x=s.symbols('t x',real=True);freq=s.symbols('freq',positive=True)
 N=s.Matrix([[0,1],[0,0]]);A=freq*N;F=s.eye(2)-t*A

@@ -21,3 +21,5 @@ The supplied parameter-slice reading contains the complete Section18.6 of *Detec
 The AN-04 disk-comparison reading is original programme exposition under CC0 1.0 Universal; its attribution accompanies the text.
 
 The AN-04 matrix, contour and Gaussian readings accompanying Virtual critical points and explicit coefficients are original programme exposition under CC0 1.0 Universal; their attributions accompany each reading.
+
+The flow-continuation and parameter-Morse readings accompanying Cubic collisions and uniform amplitudes are original AN-03 and AN-04 programme exposition under CC0 1.0 Universal; their attributions accompany each reading.

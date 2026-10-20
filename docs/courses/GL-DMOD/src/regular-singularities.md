@@ -28499,6 +28499,1832 @@ Full PNG · SVG · Exact data · Drawing source
 Free primary context for the classical hyperplane form: [Harold P. Boas, *Math 685 Notes: Topics in Several Complex Variables*, 2005, revised 2010](https://haroldpboas.gitlab.io/courses/685-2005c/notes.pdf), Sections1.3 and1.5. The matrix family, support margins, bounds, finite faces and collar used here are proved above and in the exact earlier programme proofs linked above.
 
 
+### 5.66. Affine Spencer reduction and free source directions
+
+The exact earlier programme support prerequisites are §§5.34, 5.47, 5.59, 5.60, 5.64, 5.65. The algebraic functor, coherence, solution and trace prerequisites are in Adjunctions, base change and the projection formula, The de Rham functor, and The Riemann–Hilbert correspondence, with the theorem and chain-formula locators given below.
+
+All differential operators in this argument are algebraic. Put \(N=d+1\ge1\). Use the programme's left-module direct image, density side change and relative Spencer complex, with the last relative form in degree zero. The exact prerequisites are the adjunctions lesson, Theorems 2.1, 3.4 and 4.7; regular-singularities, Theorem 5.17; the Riemann–Hilbert lesson, Theorems 1.18–1.23 and its signed closed-normal calculation; and the de Rham lesson's closed normal Spencer calculation. The support and coefficient conventions are OCM.2–OCM.4 and HI.1. The vanishing assertion used below is proved in *A free source direction and derivative-torsion cones*.
+
+#### AS.0. The actual proper algebraic convolution
+
+Let the endpoint variables be \((t,x),(t',x')\), and the middle variables \((s,y)\), with \(x,x',y\in\mathbb A^d\). Set
+\[
+\begin{gathered}
+u=(t,x),\quad w=t'-t,\\
+z=x'-x,\\
+f=s-t-x^{\mathsf T}y,\\
+g=t'-s+(x')^{\mathsf T}y,\\
+F=f+g=w+z^{\mathsf T}y .
+\end{gathered}
+\tag{AS.1}
+\]
+Write \(\delta_h=\mathcal O[h^{-1}]/\mathcal O\), with distinguished class \([h^{-1}]\), for a smooth hypersurface \(h=0\). This is a left differential-operator module: derivatives act on its displayed rational representatives. In particular
+\[
+ D_h^r[h^{-1}]=(-1)^r r![h^{-r-1}].
+ \tag{AS.2}
+\]
+Its closed normal presentation and regular holonomicity are the earlier closed-embedding calculation.
+
+On the affine triple product the pair \((f,g)\) consists of two independent coordinates. Indeed
+\[
+\begin{gathered}
+(u,z,y,f,g)\longmapsto\\
+\begin{cases}
+x'=x+z,\\
+s=t+x^{\mathsf T}y+f,\\
+t'=t+f+g-z^{\mathsf T}y .
+\end{cases}
+\end{gathered}
+\tag{AS.3}
+\]
+is a polynomial coordinate inverse. Thus the derived structure-sheaf tensor of the two pulled-back incidence modules is concentrated in degree zero:
+\[
+ \delta_f\otimes_{\mathcal O}^{L}\delta_g
+ =\mathcal H^2_{\{f=g=0\}}(\mathcal O).
+ \tag{AS.4}
+\]
+Here is also a flat-complex verification. Resolve each \(\delta_h\) by \([\mathcal O\to\mathcal O[h^{-1}]]\) in degrees \(-1,0\). In the coordinates AS.3 their tensor is the two-variable coordinate localization cube. Successive one-variable Laurent principal parts show that its only cohomology is in degree zero and is the quotient
+\(\mathcal O[(fg)^{-1}]/(\mathcal O[f^{-1}]+\mathcal O[g^{-1}])\).
+Each principal part is a finite sum in its negative coordinate powers, with coefficients regular in the remaining coordinates. This also identifies the ordered normal generator. The same calculation is the coordinate closed-transfer presentation of the right side of AS.4.
+
+There is an actual proper realization of its direct image. Compactify the common middle affine space to \(\mathbb P^N\). On each incidence pair extend the closed hypersurface module by the ordinary algebraic open direct image across the middle hyperplane at infinity. Call the two extensions \(\widetilde M_+\) and \(\widetilde M_-\). Pull them to the triple product with projective middle factor and put
+\[
+\begin{gathered}
+p:\mathbb A^N\times\mathbb P^N\times\mathbb A^N\\
+\longrightarrow\mathbb A^N\times\mathbb A^N,\\
+Q=p_+(\widetilde M_+
+          \otimes_{\mathcal O}^{L}\widetilde M_-).
+\end{gathered}
+\tag{AS.5}
+\]
+The smooth inverse images here are the unshifted transfer pullbacks. Equivalently they are the programme's extraordinary inverse images shifted by the negative relative dimension.
+
+Both extensions, their smooth pullbacks and their derived structure tensor are bounded regular holonomic. This is precisely algebraic open direct stability, inverse stability and structure tensor stability in the stated prerequisites. Theorem 3.4 applies to the displayed proper projection, so \(Q\) is bounded coherent. Regular stability makes it regular holonomic.
+
+This is also the affine incidence direct image, with its actual maps. The common middle open is the complement of one Cartier hyperplane. On an affine chart, its ordinary operator direct image is ordinary coefficient localization. This localization is flat, and the two localized factors have their common localization parameter invertible. Their tensor is consequently the localization of their affine tensor; applying localization once or twice gives the same complex. These chart identities glue. The actual direct-image composition therefore identifies AS.5 with the affine middle direct image of AS.4. This argument uses proper coherence for AS.5, rather than assuming coherence for a general nonproper analytic direct image.
+
+#### AS.1. Elimination of the first normal coordinate
+
+The change from the ordered normal coordinates \((f,g)\) to \((f,F=f+g)\) has determinant \(+1\). The closed normal transfer and its ordered determinant contraction identify their normal generators with coefficient \(+1\). One can check that coefficient by the two-coordinate residue: integrating first in the positive \(f\)-circle and then in the positive \(F\)-circle gives the same iterated normal residue as the ordered \((f,g)\) generator. This is a comparison of localization cubes on their common complement cover; it does not declare \(1/(fF)\) to be a function on the single open \(fg\ne0\).
+
+The closed \(f\)-normal relative Spencer complex is
+\[
+ \mathbb C[D_f]\,e_f
+ \xrightarrow{D_f}
+ \mathbb C[D_f]\,e_f\,df ,
+ \tag{AS.6}
+\]
+in degrees \(-1,0\), with the remaining coefficients carried along. The map is injective and its cokernel is generated by \(e_f\,df\). Its operator residue sends that generator to \(1\), by the earlier closed trace normalization. Thus the closed normal elimination is an actual quasi-isomorphism, without a residual shift.
+
+The sign can be verified in the total relative complex, without an implicit interchange of two shifted complexes. Write a form with \(df\) first as \(D_f^k e_f\,df\wedge dy_I\), carrying the other coefficient along. Send it to zero for \(k>0\), and to \(dy_I\) for \(k=0\); send every form without \(df\) to zero. The source differential has the total shift sign \((-1)^{d+1}\). On a form containing \(df\), the relative \(y\)-differential crosses that first factor and therefore has sign \((-1)^d\), exactly the target shift sign. The \(f\)-derivative has zero residue. This proves the chain identity with coefficient \(+1\) on the ordered top form. The inclusion \(dy_I\mapsto e_f\,df\wedge dy_I\) is a chain section. A homotopy sends \(D_f^k e_f\,df\wedge dy_I\), for \(k>0\), to \((-1)^{d+1}D_f^{k-1}e_f\,dy_I\), and is zero on the other terms. Expansion gives \(dH+Hd=1-i\,\operatorname{res}_f\); the two \(y\)-terms cancel. Thus every relative degree and both shift signs are included.
+
+The remaining module is \(\delta_F\) on the endpoint-times-\(y\) space. Put
+\[
+\begin{gathered}
+\tau=D_w,\qquad e=[F^{-1}],\\
+\gamma=[e\,dy_1\wedge\cdots\wedge dy_d],\\
+\gamma\in H^0Q .
+\end{gathered}
+\tag{AS.7}
+\]
+For \(d=0\), the empty exterior product is one. The entire complex \(Q\) is the relative \(y\)-Spencer complex of \(\delta_F\), in degrees \([-d,0]\). Its coefficient normal form is
+\[
+ R=\mathbb C[u,z,y,\tau]\,e .
+ \tag{AS.8}
+\]
+To justify this normal form, use \(F\) and the other coordinates as polynomial coordinates before projecting. Every finite normal principal part is a finite polynomial in \(D_F\) applied to \(1/F\), with the factorials and signs of AS.2. Replacing \(F\) by \(w+z^{\mathsf T}y\) gives AS.8.
+
+Derivatives of the original endpoint variables differ from their expressions at fixed \(f\) by a coefficient times the eliminated \(f\)-derivative. That term has zero \(f\)-residue by the preceding explicit chain map. Thus the endpoint action after elimination is the action in the displayed \(F\)-coordinates, with its full horizontal derivatives retained.
+
+The endpoint and relative actions in this form are
+\[
+\begin{gathered}
+D_w=\tau,\quad w=-z^{\mathsf T}y-\partial_\tau,\\
+D_{z_j}=\partial_{z_j}+y_j\tau,\\
+D_{u_i}=\partial_{u_i},\\
+T_j=D_{y_j}^{\rm rel}=\partial_{y_j}+z_j\tau .
+\end{gathered}
+\tag{AS.9}
+\]
+For example \(D_{y_j}(1/F)=z_jD_w(1/F)\). The term
+\(-\partial_\tau\) follows from \([D_w,w]=1\). Direct commutator expansion shows that the endpoint actions commute with all \(T_j\), and that the \(T_j\)'s commute with one another. Thus the complex and its endpoint action have been specified, including their differential signs: on relative forms it is
+\[
+\begin{gathered}
+d_{\rm rel}=\sum_{j=1}^d dy_j\wedge T_j,\\
+\text{shifted by }[d].
+\end{gathered}
+\tag{AS.10}
+\]
+The shift multiplies the unshifted differential by \((-1)^d\). Multiplying relative exterior degree \(k\) by \((-1)^{d(k-d)}\) identifies it with the displayed unshifted Koszul differential, with coefficient one in the top column \(k=d\). Hence neither its top quotient nor the ordered top class AS.7 changes.
+
+#### AS.2. Polynomial Ore localization and the whole Spencer complex
+
+Let \(A\) be the global polynomial Weyl algebra of the endpoint affine space. In this paragraph localization means localization of global \(A\)-modules at the powers of \(\tau\). It is not the assertion that these powers form an Ore set in every ring of rational or holomorphic coefficient germs.
+
+For \(P\in A\), \(\operatorname{ad}(\tau)\) is differentiation of its polynomial \(w\)-coefficients and is locally nilpotent. The finite identity
+\[
+\begin{gathered}
+\tau^nP\\
+=\sum_k\binom nk
+       \operatorname{ad}(\tau)^k(P)\tau^{n-k}.
+\end{gathered}
+\tag{AS.11}
+\]
+and its right-handed version prove both Ore conditions. The Weyl algebra is a domain: the leading symbol of a product in its polynomial order filtration is the product of its nonzero polynomial leading symbols. Hence this denominator set has no zero divisors. As a right \(A\)-module the localization is the filtered union of the copies \(\tau^{-n}A\); each is free of rank one. Equivalently its transition maps, on copies of \(A\), are left multiplication by \(\tau\). Filtered colimits of exact vector-space/module sequences are exact. The localization is therefore right flat, and
+\[
+\begin{gathered}
+A[\tau^{-1}]\otimes_A M=0\\
+\Longleftrightarrow\\
+\forall m\in M\ \exists k\ge0:\\
+\tau^k m=0 .
+\end{gathered}
+\tag{AS.12}
+\]
+The equivalence follows directly from equality of fractions in this torsion-free denominator system.
+
+After localization replace AS.8 by
+\[
+ R_\tau=\mathbb C[u,z,y,\tau,\tau^{-1}]\,e .
+ \tag{AS.13}
+\]
+The operator
+\[
+\begin{gathered}
+L=\tau^{-1}\sum_j\partial_{z_j}\partial_{y_j},\\
+C=\exp L .
+\end{gathered}
+\tag{AS.14}
+\]
+is an actual finite sum on every polynomial in \(y\). Its inverse is \(\exp(-L)\); multiplication of these finite sums gives the identity by the binomial formula in each \(y\)-degree. No infinite analytic series or asymptotic argument is used. Since
+\[
+\begin{gathered}
+{}[L,z_j\tau]=\partial_{y_j},\\
+{}[L,\partial_{y_j}]=0 .
+\end{gathered}
+\tag{AS.15}
+\]
+we have
+\[
+ C^{-1}T_j C=z_j\tau .
+ \tag{AS.16}
+\]
+Apply \(C\) to each coefficient of every relative exterior degree. This is an isomorphism of the entire localized Spencer complex with the Koszul complex for \(z_1\tau,\ldots,z_d\tau\).
+
+These form a regular sequence. Successively quotienting by its first terms leaves the polynomial ring in the unremoved \(z\)'s, \(u,y\), and the invertible variable \(\tau\); the next \(z_j\tau\) is not a zero divisor. The elementary induction on the two-term multiplication complexes therefore gives
+\[
+\begin{gathered}
+H^k(Q[\tau^{-1}])=0\quad(k\ne0),\\
+H^0(Q[\tau^{-1}])\\
+=\mathbb C[u,y,\tau,\tau^{-1}]\,\gamma .
+\end{gathered}
+\tag{AS.17}
+\]
+The induction proves exactness in all lower degrees, not just the top quotient. For \(d=0\), this statement is the identity of the empty Koszul complex.
+
+#### AS.3. Every endpoint action and the exact diagonal map
+
+Conjugation by \(C^{-1}\), followed by the top quotient in AS.17, gives
+\[
+\begin{gathered}
+z_j=-\tau^{-1}\partial_{y_j},\\
+D_{z_j}=y_j\tau,\quad D_w=\tau,\\
+w=-\partial_\tau\\
++\tau^{-1}\left(\sum_j y_j\partial_{y_j}+d\right),\\
+u_i=u_i,\quad D_{u_i}=\partial_{u_i}.
+\end{gathered}
+\tag{AS.18}
+\]
+Here are checks of the two less immediate formulas. First
+\(C^{-1}z_jC=z_j-\tau^{-1}\partial_{y_j}\) and
+\(C^{-1}(\partial_{z_j}+y_j\tau)C=y_j\tau\).
+For the time coordinate put \(E_z=\sum z_j\partial_{z_j}\) and
+\(E_y=\sum y_j\partial_{y_j}\). Then
+\[
+\begin{gathered}
+{}[L,w]\\
+=-\tau^{-1}(E_z+E_y+d)\\
+-\tau^{-1}L,\\
+{}[L,[L,w]]\\
+=-2\tau^{-1}L,\\
+{}[L,[L,[L,w]]]=0,\\
+C^{-1}wC=-z^{\mathsf T}y-\partial_\tau\\
++\tau^{-1}(E_z+E_y+d).
+\end{gathered}
+\tag{AS.19}
+\]
+The terms with a left factor \(z_j\) vanish in the top quotient. This gives AS.18, including the constant \(+d\).
+
+Let
+\[
+\begin{gathered}
+\Delta_{\rm alg}=A/J_\Delta,\\
+J_\Delta=Aw+\sum_jAz_j\\
++\sum_iAD_{u_i}.
+\end{gathered}
+\tag{AS.20}
+\]
+be the diagonal closed-transfer module, with generator \(e_\Delta\). Its normal form after localization is
+\(\mathbb C[u,\tau,\tau^{-1},\nu_1,\ldots,\nu_d]e_\Delta\),
+where \(\nu_j=D_{z_j}\), \(w=-\partial_\tau\), and
+\(z_j=-\partial_{\nu_j}\). The map
+\[
+ I\bigl(y^\alpha\tau^m\gamma\bigr)
+ =\tau^{m-|\alpha|-d}\nu^\alpha e_\Delta
+ \tag{AS.21}
+\]
+is a bijection of vector spaces and commutes with **every** endpoint generator. For instance the two \(w\)-actions both multiply the displayed monomial by
+\(|\alpha|+d-m\) and lower its \(\tau\)-power by one. The \(z_j\)-actions both give
+\(-\alpha_j\tau^{m-|\alpha|-d}\nu^{\alpha-e_j}e_\Delta\).
+The \(D_{z_j}\)-actions raise both \(m\) and \(|\alpha|\) by one. The remaining actions are immediate from AS.18. Thus AS.21 is an actual localized Weyl-module isomorphism.
+
+There is also a diagonal map before localization. In \(H^0Q\), relative derivatives give
+\[
+\begin{gathered}
+z_j\tau\gamma=0,\\
+(1+z_jy_j\tau)\gamma=0 .
+\end{gathered}
+\tag{AS.22}
+\]
+The second relation means the relative derivative of \(y_je\), and the first that of \(e\). For \(d\ge1\), the class
+\[
+ a=\tau^d\gamma
+ \tag{AS.23}
+\]
+is killed by every \(z_j\). Also
+\[
+\begin{gathered}
+w\tau^d\gamma=-z^{\mathsf T}y\,\tau^d\gamma\\
+-d\tau^{d-1}\gamma=0,\\
+D_{u_i}a=0 .
+\end{gathered}
+\tag{AS.24}
+\]
+The first equality uses AS.9 and the Weyl commutator; summing the second relation in AS.22, multiplied by \(\tau^{d-1}\), proves its last zero. When \(d=0\), \(F=w\), \(Q=\Delta_{\rm alg}\) in degree zero, and \(a=\gamma\) satisfies the same relations without a negative power. Therefore
+\[
+\begin{gathered}
+j:\Delta_{\rm alg}\longrightarrow H^0Q,\\
+j(e_\Delta)=a .
+\end{gathered}
+\tag{AS.25}
+\]
+is a well-defined global differential-operator map in every dimension. Under AS.21 its localization is the identity on the distinguished diagonal generator. In particular \(a\ne0\).
+
+The full endpoint relation \(D_u a=0\) is part of AS.25. It is the sum of the original endpoint derivatives at fixed normal difference, and not a relation omitting the simultaneous endpoint action.
+
+An expression containing a middle variable \(y_j\) in this top quotient denotes the class of that displayed representative. Multiplication by \(y_j\) alone is not asserted to be an induced action on the quotient: it does not commute with \(T_j\). All endpoint operators used in AS.18 and AS.25 do commute with the relative differential.
+
+#### AS.4. The opposite pole and the algebraic factorial
+
+Retain the ordered relative density \(ds\wedge dy_1\wedge\cdots\wedge dy_d\); the surviving input density is held as an additional ordered coefficient block. The raw forward/opposite pair has poles \(f^{-1}\) and \(g^{-N}\). At fixed \(f,u,z,y\), \(D_{t'}=D_g=D_w\). Equation AS.2 and the determinant-one normal change in AS.1 give the exact convolution class
+\[
+\begin{gathered}
+h=\\
+\left[\frac{ds\wedge dy_1\wedge\cdots\wedge dy_d}
+                    {f\,g^{d+1}}\right],\\
+h\in H^0Q,\\
+h=\frac{(-1)^d}{d!}\tau^d\gamma\\
+=\frac{(-1)^d}{d!}\,j(e_\Delta).
+\end{gathered}
+\tag{AS.26}
+\]
+The first bracket denotes the ordered normal-localization/Spencer class, rather than an integral of a function through its poles. The \(f\)-normal operator residue is \(+1\) by AS.6. No factor \(2\pi i\) is inserted into this operator residue. Thus the algebraically normalized class is
+\[
+ (-1)^d d!\,h=a .
+ \tag{AS.27}
+\]
+This is an algebraic normalization in the explicit source roof AS.28–AS.29 below. The conversion of its solution frame and source counit to a prescribed microlocal convolution counit still has its own orientation and period factors.
+
+
+
+#### A free source direction and derivative-torsion cones
+
+The relative support complex and its signs are OCM.2–OCM.4. The product homotopy comparison for pulled-back bounded coefficients is HI.1. All assertions below are local in the base and in a nonzero cotangent chart.
+
+##### FD.0. Product internal Hom
+
+Let \(p:T\times I\to T\) be projection from an open real interval. For bounded complexes \(\mathcal A,\mathcal B\) on \(T\), the actual pullback/evaluation map is an isomorphism
+\[
+\begin{gathered}
+p^{-1}R\mathcal Hom(\mathcal A,\mathcal B)\\
+\longrightarrow\\
+R\mathcal Hom(p^{-1}\mathcal A,p^{-1}\mathcal B).
+\end{gathered}
+\tag{FD.1}
+\]
+To prove this, work on every product \(W\times J\), with \(J\) an open subinterval. Derived adjunction and HI.1 identify the right side's derived sections with
+\[
+\begin{gathered}
+R\operatorname{Hom}_{W\times J}
+       (p^{-1}\mathcal A,p^{-1}\mathcal B)\\
+=R\operatorname{Hom}_{W}
+       (\mathcal A,Rp_*p^{-1}\mathcal B)\\
+=R\operatorname{Hom}_{W}(\mathcal A,\mathcal B).
+\end{gathered}
+\tag{FD.2}
+\]
+The left side has exactly these sections by the same product projection comparison. The map FD.1 is this identity: the adjoint of pulled-back evaluation is evaluation after the unit \(\mathcal B\to Rp_*p^{-1}\mathcal B\).
+
+The internal Hom can be unbounded above. It is bounded below, since its first input is bounded above and its second is bounded below. HI.1 extends to bounded-below inputs by good truncation: the cone of \(\tau_{\le n}K\to K\) is in \(D^{\ge n+1}\), and a right derived direct image is left t-exact. Thus every fixed degree is already determined by a bounded truncation. The same argument applies to derived sections on \(W\). It justifies the preceding use of product comparison without a bounded-Ext or finite-rank assumption on the target. Product rectangles are a basis. Passing to stalks in all degrees proves FD.1.
+
+Successively applying FD.1 handles several real free coordinates. In particular a complex independent of one complex coordinate is independent of each of its two real coordinates in the derived internal Hom calculation.
+
+##### FD.1. One free source direction
+
+Suppose \(M=\mathbb R_r\times B\) locally and
+\(\mathcal A=\operatorname{pr}_B^{-1}\mathcal A_0\), with \(\mathcal A_0\) bounded. If the real covector \(p\) does not annihilate the free vector \(\partial_r\), then, for every bounded complex \(\mathcal F\),
+\[
+ \mu\operatorname{hom}(\mathcal A,\mathcal F)_p=0.
+ \tag{FD.3}
+\]
+This includes a complex manifold with a free real direction in a complex coordinate. The microlocal projection shift is the real dimension of \(M\); it has no effect on a vanishing assertion.
+
+Here is the full relative-support argument. In the pair \((u,v)\), the first coefficient is pulled back from \(u\), and the source is pulled back from the \(B\)-coordinates of \(v\). By FD.1,
+\[
+\begin{gathered}
+R\mathcal Hom(q_2^{-1}\mathcal A,q_1^{-1}\mathcal F)\\
+\text{is pulled back independently}\\
+\text{of }v_r .
+\end{gathered}
+\tag{FD.4}
+\]
+Fix the central covector. Choose its sign and rescale the free vector so that the real polar functional is negative on that vector. Split the normal space as its line plus the central polar hyperplane. In coordinates \((a,b)\) for this split, the central positive polar functional is \(a\), while the \(a\)-line is the free source direction. The \(b\)-coordinates depend only on the quotient by that line. The coefficient FD.4 consequently remains independent of \(a\), even after this linear shear.
+
+For a finite set of support representatives, strict polar separation and the compact unit normal-cone argument of IG.1 give a common later support
+\[
+\begin{gathered}
+G_\eta=\{(a,b):a\le-\eta|b|\},\\
+\eta>0,\\
+D=U\times(-R,R)\times B_\rho,\\
+H=D\cap(U\times G_\eta).
+\end{gathered}
+\tag{FD.5}
+\]
+Indeed every vector in the finitely many original normal cones has a uniformly negative central polar coordinate. Its ratio \((-a)/|b|\), where the denominator is nonzero, is bounded below by a positive number. Choose smaller \(\eta\), then shrink the actual pair domain. Failure of actual containment would give a normalized limiting normal-cone vector violating that bound. The coordinate change preserves the diagonal and the free direction.
+
+The cone in FD.5 has a strict polar margin:
+\[
+\begin{gathered}
+-a\ge\frac{\eta}{\sqrt{1+\eta^2}}|(a,b)|,\\
+(a,b)\in G_\eta\setminus0 .
+\end{gathered}
+\tag{FD.6}
+\]
+A covector perturbation of norm less than half this positive constant retains half the margin, in these fixed coordinates. Thus one support is admissible on an actual open covector neighbourhood.
+
+Fix \(c=R/2\). Keeping \(u,b\) fixed, the homotopy
+\[
+\begin{gathered}
+h_s(u,a,b)\\
+=(u,(1-s)a+sc,b),\\
+0\le s\le1 .
+\end{gathered}
+\tag{FD.7}
+\]
+stays in \(D\). It also stays in \(D\setminus H\) when it starts there: both endpoints satisfy \(a>-\eta|b|\), and that fibre is an interval. The common section \(a=c\) belongs to both opens.
+
+Resolve the pulled-back coefficient of FD.4 by the real de Rham resolution tensored with that coefficient, exactly as in OCM.8. Homotopy FD.7 gives \(K_A,K_B\) on the whole domain and its complement, with
+\[
+\begin{gathered}
+dK+Kd=j\varepsilon-1,\\
+\varepsilon j=1,\\
+\operatorname{res}K_A=K_B\operatorname{res},\\
+\operatorname{res}j_A=j_B,\\
+\varepsilon_B\operatorname{res}=\varepsilon_A .
+\end{gathered}
+\tag{FD.8}
+\]
+For bounded-below coefficients apply this in each finite degree range. Only a bounded truncation of the coefficient enters a fixed range of the nonnegative de Rham resolution, so the same finite argument suffices. Scalar integration along compact paths is legitimate with arbitrary sheaf coefficients by OCM.2's finite local tensor expressions; there is no integration of an unspecified infinite-dimensional coefficient space.
+
+For the relative differential \(d(a,b)=(da,\operatorname{res}a-db)\), define
+\[
+\begin{gathered}
+T(a,b)=\\
+\left(\begin{gathered}
+j_A\varepsilon_Bb-K_Aa,\\
+K_Bb
+\end{gathered}\right).
+\end{gathered}
+\tag{FD.9}
+\]
+Expanding FD.8 gives \(dT+Td=1\), with exactly the signs of OCM.11. It contracts the entire relative complex, including its complement entry. It does not extend a complement section across its support.
+
+R.6–R.7 transfers every finite cycle, relation and primitive to the injective support model on a common later domain. Exact filtered colimits then prove FD.3. The margin FD.6 proves sheaf vanishing on a covector neighbourhood, rather than only at one covector.
+
+For a complex free coordinate \(w\), a nonzero complex \(dw\)-component gives a real free vector on which the real polar functional is nonzero. Therefore
+\[
+\begin{gathered}
+\mathcal A=\mathbb C_{\mathbb C_w}\boxtimes\mathcal A_0\\
+\Longrightarrow\\
+\mu\operatorname{hom}(\mathcal A,\mathcal F)_p=0\\
+\text{if }p(D_w)\ne0 .
+\end{gathered}
+\tag{FD.10}
+\]
+
+##### FD.2. Polynomial derivative torsion is an actual free factor
+
+Let \(A=A_B\otimes_\mathbb C A_1\) be a polynomial Weyl algebra, with \(A_1=\mathbb C\langle w,\tau\rangle/([\tau,w]-1)\). Let \(M\) be a finitely generated left \(A\)-module, and suppose its polynomial Ore localization at \(\tau\) is zero. By AS.12, \(\tau\) acts locally nilpotently on every vector of \(M\). Put \(K=\ker(\tau:M\to M)\). Define, on each vector, the finite sum
+\[
+ \Pi(m)=\sum_{k\ge0}\frac{(-w)^k}{k!}\tau^k m .
+ \tag{FD.11}
+\]
+The Weyl identity
+\(\tau w^k=w^k\tau+kw^{k-1}\)
+makes consecutive terms cancel, so \(\tau\Pi(m)=0\). Also \(\Pi(k)=k\) on \(K\). The exact finite Taylor identity is
+\[
+ m=\sum_{j\ge0}\frac{w^j}{j!}\Pi(\tau^jm).
+ \tag{FD.12}
+\]
+For the coefficient of \(w^n\tau^n m\) in the right side, the finite binomial sum is
+\(\sum_{j=0}^n(-1)^{n-j}/(j!(n-j)!)\), equal to one for \(n=0\) and zero otherwise. This proves FD.12 without a completion.
+
+Multiplication induces an isomorphism
+\[
+ \mathbb C[w]\otimes_\mathbb C K\xrightarrow{\sim}M .
+ \tag{FD.13}
+\]
+Surjectivity is FD.12. For injectivity, apply \(\Pi\tau^r\) to a finite relation \(\sum_{j=0}^r w^j k_j=0\). Its top coefficient gives \(r!k_r=0\). Descending on \(r\) gives every \(k_j=0\). The \(A_B\)-action commutes with \(w,\tau,\Pi\), so FD.13 is an \(A\)-module map; \(\tau\) becomes ordinary differentiation on the polynomial factor.
+
+Moreover \(K\) is finitely generated over \(A_B\). Choose finitely many \(A\)-generators \(m_i\) of \(M\). Their Taylor coefficients \(\Pi\tau^j m_i\), with \(j\) below the respective nilpotence bounds, form a finite set. If \(K'\) is their \(A_B\)-span, then \(\mathbb C[w]\otimes K'\) is an \(A\)-submodule containing all \(m_i\); it is \(M\). The injectivity in FD.13 shows \(K'=K\). The polynomial Weyl algebra \(A_B\) is Noetherian by its good symbol filtration and polynomial Noetherianity, as proved in the differential-operator lesson, so this finite module is coherent.
+
+Sheafifying on the affine space gives the genuine external product
+\[
+ M^\sim=\mathcal O_{\mathbb A^1_w}\boxtimes K^\sim .
+ \tag{FD.14}
+\]
+No local nilpotence assertion is made after multiplication by arbitrary rational or analytic coefficient germs. The global polynomial Taylor calculation is what produces this external product.
+
+If \(M^\sim\) is regular holonomic, \(K^\sim\) is regular holonomic. For the embedding \(i:B\to\mathbb A^1_w\times B\) at \(w=0\), the unshifted transfer inverse of FD.14 is exactly \(K^\sim\), by the transfer tensor with its locally free polynomial factor. In the programme's extraordinary convention this is \(i^!M^\sim[1]\). Algebraic regular inverse stability and shift stability therefore apply. The unshifted solution complex is
+\[
+\begin{gathered}
+\operatorname{Sol}(M^\sim)\\
+=\mathbb C_{\mathbb C_w}\boxtimes
+                    \operatorname{Sol}(K^\sim).
+\end{gathered}
+\tag{FD.15}
+\]
+This map can be checked directly by the one-variable connection Spencer resolution, whose holomorphic derivative complex has kernel the constants and zero higher local cohomology, tensored with a finite operator resolution in the other coordinates. Equivalently it is the actual solution exterior comparison in the Riemann–Hilbert lesson. There is no relative dimension shift in unshifted solutions of this free connection factor.
+
+Combining FD.10 and FD.15 proves
+\[
+\begin{gathered}
+\mu\operatorname{hom}(\operatorname{Sol}M,\mathcal F)_p=0\\
+\text{for }p(D_w)\ne0 .
+\end{gathered}
+\tag{FD.16}
+\]
+for every bounded target \(\mathcal F\). A bounded complex whose coherent cohomology modules have zero polynomial \(\tau\)-localization has the same property: its finitely many truncation triangles, the contravariant solution functor and exactness of microlocal Hom in its source give the assertion. This proves the precise vanishing for both actual comparison cones AS.28, with no appeal to whole-real scalar-change flatness or to general analytic proper-image regularity.
+
+
+
+#### AS.5. The two comparison cones
+
+The finite global-module assertion used here follows from the coherent-generator lemma in the adjunctions lesson. A coherent operator module on an affine space has a coherent structure-sheaf subsheaf generating it. That subsheaf is generated by finitely many global sections, by the affine module–sheaf correspondence. These same sections generate the operator module over its global polynomial Weyl algebra. Exact affine sections on quasi-coherent structure-sheaf modules compute both kernels and cohomology. This applies to every coherent cohomology sheaf of \(Q\).
+
+Let \(\pi:Q\to H^0Q\) be the actual truncation map. The complex \(Q\) is in degrees \([-d,0]\), so this is the usual canonical map to its degree-zero cohomology object. The algebraic proper-coherence argument above makes all its cohomology modules finitely generated over \(A\). AS.17 and exactness of Ore localization show that every cohomology module of \(\operatorname{Cone}(\pi)\) is killed by localization. The same is true for the kernel and cokernel of AS.25, by AS.21. Hence both comparison cones have bounded coherent cohomology with locally nilpotent global \(\tau\)-action:
+\[
+\begin{gathered}
+Q\xrightarrow{\pi}H^0Q\xleftarrow{j}\Delta_{\rm alg},\\
+H^k\operatorname{Cone}(\pi)[\tau^{-1}]=0,\\
+H^k\operatorname{Cone}(j)[\tau^{-1}]=0 .
+\end{gathered}
+\tag{AS.28}
+\]
+The derivative-torsion lemma FD.2 proves, without a microlocal proper-image theorem, that each such module is a polynomial free time factor tensored with a coherent module on the other coordinates. Its unshifted analytic solution complex is therefore pulled back independently of \(w\). The free-source-direction theorem then annihilates the microlocal Hom from that solution complex at every covector with nonzero \(dw\)-component, for every bounded target complex.
+
+Write \(\operatorname{Sol}M=R\mathcal Hom_{\mathcal D^{an}}(M^{an},\mathcal O)\), unshifted. Finite truncation triangles for the two cones in AS.28 give isomorphisms
+\[
+\begin{gathered}
+\mu\operatorname{hom}(\operatorname{Sol}Q,\mathcal F)_p\\
+\Big\downarrow\\
+\mu\operatorname{hom}(\operatorname{Sol}H^0Q,\mathcal F)_p\\
+\Big\uparrow\\
+\mu\operatorname{hom}(\operatorname{Sol}\Delta_{\rm alg},\mathcal F)_p,\\
+p(D_w)\ne0 .
+\end{gathered}
+\tag{AS.29}
+\]
+These maps are induced by the two actual maps AS.28, with their contravariance accounted for twice. They are not chosen identifications of ranks. The closed normal Spencer calculation identifies
+\(\operatorname{Sol}\Delta_{\rm alg}=\mathbb C_\Delta[-N]\)
+in its specified ordered normal solution frame.
+
+#### AS.6. Evaluation in this exact roof
+
+A global degree-zero relative Spencer cocycle representing \(h\) gives a map \(b:\mathcal D_{\rm end}\to Q\) in the operator derived category. It exists directly in the affine relative Spencer model; the source global Weyl module is free of rank one. Its composite with \(\pi\) is the section \(h\) of \(H^0Q\). Write \(b_\Delta:\mathcal D_{\rm end}\to\Delta_{\rm alg}\) for \(1\mapsto e_\Delta\). The equality of actual module sections in AS.26 is
+\[
+ \pi b=\frac{(-1)^d}{d!}\,j b_\Delta .
+ \tag{AS.30}
+\]
+Applying the contravariant solution functor gives equality of the corresponding ordinary evaluation maps. Applying the natural map from ordinary derived Hom to its microlocal Hom and using AS.29 preserves that equality. Consequently, under the precise roof AS.29, the ordinary convolution class \(h\) evaluates to
+\[
+\begin{gathered}
+\operatorname{ev}(h)\\
+=\frac{(-1)^d}{d!}\operatorname{ev}(e_\Delta).
+\end{gathered}
+\tag{AS.31}
+\]
+This includes the entire target coefficient complex: it is functoriality of the actual morphism AS.30, and not a comparison on a selected normal component.
+
+In AS.31, \(\operatorname{ev}\) denotes ordinary solution evaluation followed by its natural microlocal Hom map and transport through AS.29. The right-hand class is the raw ordered diagonal evaluation, with no normalized period factor inserted.
+
+AS.31 concerns the ordinary algebraic direct-image section and the source roof AS.28. The canonical microlocal composition comparison and intrinsic diagonal-unit normalization are proved in §5.67, using the specialization, exterior-product and proper-trace maps and the ordered normal period. Neither identity follows from AS.17 or AS.25 alone. The localization and source-roof statements above do not require faithful flatness of the whole real kernel ring.
+
+#### AS.7. The opposite order and its separate spatial sign
+
+Use endpoints \((s,y),(s',y')\), middle variables \((t,x)\), and put
+\[
+\begin{gathered}
+u'=(s,y),\quad w'=s'-s,\\
+z'=y'-y,\quad Y=-x,\\
+a=t-s-y^{\mathsf T}Y,\\
+b=s'-t+(y')^{\mathsf T}Y,\\
+a+b=w'+(z')^{\mathsf T}Y .
+\end{gathered}
+\tag{AS.32}
+\]
+The polynomial reflection \(x=-Y\) extends to the projective middle compactification. Consequently every properness, coherence, normal-form and torsion-cone assertion above applies to this order as well. Let \(\tau'=D_{w'}\), and let \(\gamma'\) be AS.7 with the normal sum in AS.32 and the ordered \(Y\)-density. There is an actual map
+\[
+\begin{gathered}
+j':\Delta'_{\rm alg}\longrightarrow H^0Q',\\
+j'(e_{\Delta'})=(\tau')^d\gamma' .
+\end{gathered}
+\tag{AS.33}
+\]
+Both maps of its analogue of AS.28 have the vanishing comparison cones FD.16 on \(p(D_{w'})\ne0\).
+
+The raw poles in this order are \(a^{-d-1}b^{-1}\): the high pole is now on the first normal coordinate. At fixed \(b\), changing the first coordinate to \((a,F'=a+b)\) replaces its derivative by \(D_a^{\rm new}+D_{F'}\). These commute. In their \(d\)-th power, every term with a positive \(D_a^{\rm new}\)-power has zero first-normal residue by AS.6. Only \(D_{F'}^d\) remains. Equation AS.2 therefore gives the same factor \((-1)^d/d!\) before the spatial reflection.
+
+Write \(\eta_x=dt\wedge dx_1\wedge\cdots\wedge dx_d\) and \(\eta_Y=dt\wedge dY_1\wedge\cdots\wedge dY_d\) for the two ordered middle densities. Their relation is
+\[
+\eta_x=(-1)^d\eta_Y .
+\tag{AS.34}
+\]
+Thus, with that actual density, the opposite raw class is
+\[
+\begin{gathered}
+h'=\\
+\left[\frac{dt\wedge dx_1\wedge\cdots\wedge dx_d}
+                       {a^{d+1}b}\right],\\
+h'\in H^0Q',\\
+h'=\frac{1}{d!}(\tau')^d\gamma'
+\\
+=\frac1{d!}j'(e_{\Delta'}).
+\end{gathered}
+\tag{AS.35}
+\]
+In this formula the surviving input density remains in its original ordered block. The only coordinate reflection used is the displayed middle spatial block. The sign in AS.34 is independent of the positive first-normal operator residue. The opposite source roof therefore identifies its ordinary evaluation with \(1/d!\) times its own raw ordered diagonal evaluation. These two explicit algebraic factors do not silently fix the separate microlocal source-counit and normalized-period conversions described after AS.31.
+
+
+
+![The finite conjugation of the entire Spencer complex, its exact diagonal class and the free source interval contraction](assets/affine-spencer-and-free-direction.png)
+
+*Figure AS–FD.1. Panel A shows AS.14–AS.21, with every relative degree and the exact moment map. Panel B shows AS.22–AS.27 and AS.32–AS.35 before and after polynomial Ore localization; each factor is the algebraic pole/Spencer factor. Panel C is the real two-dimensional slice \(\eta=1\), \(R=2\), \(c=1\), \(b=1/2\) of FD.5–FD.9. The purple point starts at \(a=-1/4\) in the complement and remains in it; the red point starts at \(a=-3/2\) in the whole domain and is allowed to leave the support. Both paths end on the same section. Coefficients are fixed in the free direction. FD.9 contracts the full relative cone, rather than the closed support alone.*
+
+Full PNG · SVG · Exact data · Drawing source
+
+
+### 5.67. Projective incidence evaluations and real contact transport
+
+The exact earlier support, coefficient, incidence and source prerequisites are §5.28, §5.34, §5.35, §5.43, §5.49, §5.56, §5.57, §5.58, §5.59, §5.60, §5.61, §5.62, §5.63, §5.64, §5.65. The algebraic finite-resolution, proper functor and signed evaluation proofs are in Holonomic D-modules and duality, Adjunctions, base change and the projection formula, The de Rham functor, and The Riemann–Hilbert correspondence. The affine Spencer reduction and free-direction proofs AS–FD supply the two algebraic source roofs used below.
+
+#### Polynomial Ore descent and the two incidence source roofs
+
+The algebra is the global polynomial Weyl algebra \(A\) on the affine endpoint space of AS.1. Thus \(u\in\mathbb A^N\), \(w\in\mathbb A^1\), \(z\in\mathbb A^d\), \(N=d+1\), and \(\tau=D_w\). Write \(A_\tau=A[\tau^{-1}]\) for the polynomial Ore localization proved in AS.11–AS.12. All complexes in this argument have bounded finitely generated \(A\)-cohomology. Finite operator-projective resolutions and their uniform finite length are the earlier holonomic-duality lesson, Lemma 3.0, and the adjunctions lesson, Lemma 4.6. Regularity is imposed only where the algebraic Riemann–Hilbert equivalence is used.
+
+Here the global finite-projective version of that local resolution proof is needed. Let \(m\) be the dimension of the affine endpoint space. Its order symbol ring is the polynomial ring in \(2m\) variables. The global projective-dimension argument in the proof of Lemma 3.0 gives bound \(2m\) for finite symbol modules. Take \(2m\) successive strict filtered free presentations of a finite Weyl module. The terminal symbol syzygy is graded projective. Formula (3.3a) of that proof identifies it with \(S\otimes_B E\), where \(B\) is the polynomial base-coordinate ring and \(E\) is a finite graded projective \(B\)-module, in finitely many degrees. Lift \(E_k\) to the corresponding filtration term of the terminal operator syzygy; \(B\)-projectivity gives each lift. The resulting map \(A\otimes_B E\) to that syzygy has symbol isomorphism. Lowering finite filtration degree proves that it is an isomorphism. Since \(E\) is a summand of a finite free \(B\)-module, \(A\otimes_B E\) is a finite projective \(A\)-module. Thus the global resolution has finite projective terms and length at most \(2m\), with no assertion of global freeness. Bounded coherent complexes have bounded finite projective representatives: resolve their finitely many cohomology modules, represent each finite truncation's attaching map by a map from a bounded projective complex, and take its finite cone. The ordinary lifting homotopy for projectives proves that each cone represents that truncation.
+
+##### OD.1. The derivative-torsion vanishing needs no regularity hypothesis
+
+For every finitely generated \(A\)-module \(M\) with \(M_\tau=0\), the polynomial Taylor calculation FD.11–FD.14 gives
+\[
+\begin{gathered}
+M=\mathbb C[w]\otimes K,\\
+ K=\ker D_w,
+\end{gathered}
+\tag{OD.1}
+\]
+with \(K\) finitely generated over the polynomial Weyl algebra on \((u,z)\). This part of FD.2 does not use regularity or holonomicity.
+
+The unshifted analytic solution comparison also holds without either hypothesis:
+\[
+ \operatorname{Sol}M
+ =\mathbb C_{\mathbb C_w}\boxtimes\operatorname{Sol}K.
+ \tag{OD.2}
+\]
+To verify it, take a bounded finite operator-projective resolution of \(K\), and the two-term connection resolution of \(\mathcal O_{\mathbb A^1}\) in the \(w\)-direction. Their exterior tensor resolves OD.1. After analytic Hom into \(\mathcal O\), the \(w\)-column is the holomorphic derivative complex. Its kernel consists of functions constant in \(w\), and its cokernel sheaf is zero: on a product polydisc integrate the convergent power series term by term in \(w\). This primitive commutes with every differential in the other resolution, since those entries involve only the other variables. The resulting finite double-complex contraction gives OD.2, including all its differential maps. Finite resolutions make both solution complexes bounded. No regular-holonomic exterior comparison is needed for this argument.
+
+Let
+\[
+\begin{gathered}
+\mathcal T_p(M)\\
+=\mu\operatorname{hom}(\operatorname{Sol}M,\mathcal O)_p,\\
+p(D_w)\ne0.
+\end{gathered}
+\tag{OD.3}
+\]
+A fixed ordered density coefficient may be tensored with the target. Sol is contravariant and microlocal Hom is contravariant in its first input, so \(\mathcal T_p\) is covariant and exact on triangles. FD.3, applied to OD.2, proves
+\[
+\begin{gathered}
+M_\tau=0\\
+\Longrightarrow\quad\mathcal T_p(M)=0.
+\end{gathered}
+\tag{OD.4}
+\]
+For a bounded complex, use its finite cohomological truncation triangles and exactness of polynomial Ore localization. Thus OD.4 holds for every bounded coherent derivative-torsion complex, including nonholonomic ones.
+
+##### OD.2. Finite coherent lattices realize localized derived maps
+
+We prove the precise descent statement used below. If a triangulated functor on bounded coherent \(A\)-complexes kills all complexes with zero \(\tau\)-localization, it assigns equal maps to two finite derived roofs whenever those roofs become equal after localization. Every map between localized bounded coherent \(A\)-complexes is represented by such a coherent roof.
+
+Use bounded finite projective resolutions \(P,Q\) of the two input complexes. Their localizations are still bounded projective complexes, by right flatness of \(A_\tau\). A derived map between them is therefore a chain map
+\[
+ f:P_\tau\longrightarrow Q_\tau
+ \tag{OD.5}
+\]
+up to chain homotopy. Regard \(P,Q\) as subcomplexes of their localizations; each projective term is a summand of a finite free module and has no denominator torsion. Put
+\[
+ P_f^i=\{v\in P^i:f_i(v)\in Q^i\}.
+ \tag{OD.6}
+\]
+It is an \(A\)-submodule of the finite module \(P^i\), hence is finite by Noetherianity. Since \(f\) is a chain map, its differential preserves these submodules. Every \(v\in P^i\) has some \(\tau^k f_i(v)\in Q^i\). Also \(f_i(\tau^k v)=\tau^k f_i(v)\), so \((P_f)_\tau=P_\tau\). Thus
+\[
+ P\longleftarrow P_f\longrightarrow Q
+ \tag{OD.7}
+\]
+is the required bounded coherent roof, with derivative-torsion comparison cone.
+
+Suppose \(f_0-f_1=dH+Hd\) after localization. Intersect the finitely many lattice conditions in OD.6 and, in degree \(i\), impose also
+\[
+\begin{gathered}
+H_i(v)\in Q^{i-1},\\
+H_{i+1}(d_iv)\in Q^i.
+\end{gathered}
+\tag{OD.8}
+\]
+The resulting lattice is finite. It is a subcomplex: the first condition on \(d_iv\) is the second condition on \(v\), and the next condition is zero since \(d^2=0\). It still has the full localization, because the finite list of values on \(v\) and \(d_iv\) can be cleared by one further power of \(\tau\). On this subcomplex, \(H\) is an actual \(A\)-linear homotopy. Consequently a localized zero map becomes an actual zero map after one coherent roof whose comparison cone is derivative torsion.
+
+Common intersections handle any finite list of maps, homotopies and roof comparisons. These intersections remain finite and have the same localization, by the preceding denominator argument. This proves composition independence and the asserted descent. It is a finite-lattice proof; it does not require one denominator bound for all vectors of a module.
+
+In particular OD.3 descends to the full image of bounded coherent complexes in the localized derived category:
+\[
+\begin{gathered}
+\overline{\mathcal T}_p:\\
+D^b_{\mathrm{coh}}(A_\tau)\big|_{\mathrm{image}}\\
+\longrightarrow D(\mathbb C).
+\end{gathered}
+\tag{OD.9}
+\]
+The notation restricts to objects coming from \(A\); essential surjectivity onto all localized objects is not needed.
+
+##### OD.3. The diagonal endomorphisms in this localization
+
+The localized diagonal module has the exact normal form AS.20–AS.21:
+\[
+\begin{gathered}
+(\Delta_{\rm alg})_\tau\\
+=\mathbb C[u,\tau,\tau^{-1},\\
+ \nu_1,\ldots,\nu_d]e_\Delta.
+\end{gathered}
+\tag{OD.10}
+\]
+Here \(z_j=-\partial_{\nu_j}\), \(w=-\partial_\tau\), and \(D_{u_i}=\partial_{u_i}\). An \(A_\tau\)-endomorphism is determined by the image \(v\) of \(e_\Delta\). The defining relations force successively
+\[
+\begin{gathered}
+\partial_{\nu_j}v=0,\quad\partial_\tau v=0,\\
+\partial_{u_i}v=0.
+\end{gathered}
+\tag{OD.11}
+\]
+A polynomial in \(\nu,u\) and Laurent polynomial in \(\tau\) satisfying these equations is a complex constant. Conversely each constant defines an endomorphism. Therefore
+\[
+\begin{gathered}
+\operatorname{End}_{A_\tau}((\Delta_{\rm alg})_\tau)=\mathbb C,\\
+\operatorname{Aut}_{A_\tau}((\Delta_{\rm alg})_\tau)=\mathbb C^\times.
+\end{gathered}
+\tag{OD.12}
+\]
+Degree-zero derived endomorphisms of a module in degree zero are its ordinary module endomorphisms, as follows by taking a projective resolution and the degree-zero Hom cohomology. Hence OD.12 is also the degree-zero derived assertion.
+
+This is a theorem about this explicitly described polynomial-localized diagonal module. It is not a centralizer assertion about the whole real kernel ring.
+
+##### OD.4. The projective boundary source has an actual free time factor
+
+Let the middle projective coordinates be
+\([\lambda:s_h:y_h]\in\mathbb P^N\). On affine endpoint charts the two closed incidence equations are
+\[
+\begin{gathered}
+ s_h-t\lambda-x^{\mathsf T}y_h=0,\\
+ t'\lambda-s_h+(x')^{\mathsf T}y_h=0 .
+\end{gathered}
+\tag{OD.13}
+\]
+Let \(\overline W\) be their common zero set, \(j\) its part with \(\lambda\ne0\), and \(i\) its part at \(\lambda=0\). The ordinary sheaf localization triangle is
+\[
+\begin{gathered}
+j_!\mathbb C_{W_{\rm aff}}\longrightarrow\mathbb C_{\overline W}\\
+\longrightarrow i_*\mathbb C_{W_\infty}\longrightarrow.
+\end{gathered}
+\tag{OD.14}
+\]
+The notation \(j,i\) includes the corresponding inclusions into the common projective-middle ambient space.
+
+At \(\lambda=0\) both equations are independent of \(t,t'\). Consequently
+\[
+ W_\infty
+ =\mathbb A^1_t\times\mathbb A^1_{t'}
+          \times W_{\infty,\rm sp}.
+ \tag{OD.15}
+\]
+The projection of the last factor to \((x,x')\) is proper. Proper-support base change and the actual exterior proper map, proved in the classical sheaf provider and RH Lemma 1.21, identify the pushforward of its constant complex with
+\(\mathbb C_{\mathbb C_t\times\mathbb C_{t'}}\boxtimes
+ Rp_{\rm sp*}\mathbb C_{W_{\infty,\rm sp}}\).
+This is the ordinary exterior map of sections with proper support. No assertion about direct image commuting with microlocalization is used.
+
+The linear change \((t,t')\mapsto(t,w=t'-t)\) makes this source independent of \(w\). The full algebraic RH equivalence and its actual exterior comparison identify its operator preimage with a free \(\mathcal O_{\mathbb A^1_w}\)-factor, with the appropriate common complex shift. Its global polynomial derivative action is locally nilpotent. Thus the operator comparison cone supplied by OD.14 is zero after polynomial \(\tau\)-localization. Equivalently, FD.3 already proves that its solution-source microlocal Hom vanishes on \(p(D_w)\ne0\).
+
+##### OD.5. Constant-source cones in the projective inverse roofs
+
+The actual source roofs SN.5–SN.8 have locally constant finite cone cohomology on the entire affine endpoint pair. Those computations used the full affine and projective compact-fibre calculations of LI and SN, including the positive normal boundary map. On \(\mathbb C^{2N}\), a finite local system is constant: parallel transport along the straight radial contraction identifies it with its fibre, and homotopy invariance makes that transport independent of a path.
+
+A bounded complex with such cohomology splits into a finite complex of constant vector spaces in the derived category. To justify the splitting rather than assume it, the derived Hom between two finite constant sheaves is the constant matrix complex's global cohomology. The radial de Rham contraction computes \(H^k(\mathbb C^{2N};\mathbb C)=0\) for \(k>0\). The successive extension obstructions in the finite truncation triangles therefore vanish. This proves the claimed finite splitting.
+
+Under algebraic RH, a shifted finite constant source is the solution complex of a shifted finite direct sum of the trivial connection. Such a connection has locally nilpotent global \(D_w\)-action. Full faithfulness then gives the same conclusion for the operator preimage of each SN comparison cone. Hence every map of those operator source roofs becomes invertible after polynomial \(\tau\)-localization.
+
+The proper solution comparison for AS.5 identifies its source with
+\(Rp_!j_!\mathbb C_{W_{\rm aff}}[N-2]\). Shift OD.14 by \(N-2\), use OD.4, and then the SN roofs shifted by \(-N\). Algebraic RH therefore gives an actual bounded coherent operator roof between \(Q\) and \(\Delta_{\rm alg}\), all of whose comparison cones vanish after localization. This roof is distinct from the explicit AS.28 roof, but both become isomorphisms to the same localized diagonal module.
+
+Combining them, their ratio is an invertible degree-zero endomorphism of that module. By OD.12 it is one nonzero complex constant. OD.2 then proves that, after applying the actual solution/microlocal-Hom evaluation functor, the two source comparisons differ by precisely that same constant. This conclusion does not use faithful flatness of the whole real scalar extension.
+
+#### The projective boundary and the proper incidence covector correspondence
+
+Use \(N=d+1\), the affine endpoint and middle coordinates of AS.1, and the input antipodal convention of OCM.3. The free-source-direction vanishing FD.3 is valid for every bounded target complex. Complex covectors are paired bilinearly, with the real polar functional obtained by taking the real part.
+
+##### PC.1. Boundary vanishing in an actual free direction
+
+Write the projective middle point as \([\lambda:s_h:y_h]\). The affine middle is \(\lambda\ne0\). At a point of the first incidence at infinity, \(y_h\ne0\): if both \(\lambda\) and \(y_h\) vanished, its equation would force \(s_h=0\), which is not a projective point. Choose a coordinate chart \(y_{h,j}=1\). The remaining \(y_h\)-coordinates, \(\lambda\), \(s_h\), \(t\) and \(x\) are ordinary holomorphic coordinates there. Put
+\[
+ r=s_h-t\lambda-x^{\mathsf T}y_h .
+ \tag{PC.1}
+\]
+Replacing \(s_h\) by \(r\) is an invertible holomorphic coordinate change with derivative one in \(s_h\).
+
+The closed incidence constant complex, its affine extension by zero, and the open incidence-complement constant complex are, respectively, the corresponding complexes for
+\[
+\begin{gathered}
+\{r=0\},\\
+\{r=0,\ \lambda\ne0\},\quad\{r\ne0\}.
+\end{gathered}
+\tag{PC.2}
+\]
+They are pulled back independently of \(t\) in these coordinates. The same holds for the ordinary derived direct extension of the complement: its defining open inclusion is a product in \(t\). On product rectangles, product projection and open direct image commute by the product coefficient homotopy HI.1, applied to the open rectangle and its finite restriction complex. Thus the ordinary derived extension is again pulled back from the other coordinates.
+
+The free coordinate vector, in the original chart, is
+\[
+ V_t=\partial_t+\lambda\partial_{s_h}.
+ \tag{PC.3}
+\]
+It annihilates \(r\) and fixes the other new coordinates. At \(\lambda=0\) it is exactly \(\partial_t\). Therefore FD.3 proves vanishing of microlocal Hom from each of these source complexes, with any common shift, at every boundary covector whose endpoint \(dt\)-component is nonzero. This is vanishing on an actual covector neighbourhood: the condition that a covector does not annihilate \(V_t\) is open.
+
+For the opposite incidence use
+\[
+\begin{gathered}
+r'=s_h-t'\lambda-(x')^{\mathsf T}y_h,\\
+V_{t'}=\partial_{t'}+\lambda\partial_{s_h}.
+\end{gathered}
+\tag{PC.4}
+\]
+Its equation is \(-r'=0\). The same coordinate argument proves the opposite boundary assertion at nonzero \(dt'\)-component. These are statements about the actual source complexes and their full coefficient Hom complexes, not a choice of a contour representative.
+
+##### PC.2. The affine conormal graph, with both antipodal signs
+
+In the affine chart let
+\[
+ f=s-t-x^{\mathsf T}y .
+ \tag{PC.5}
+\]
+At a nonzero conormal covector, write its scalar as \(\alpha\). The ordinary covector on the pair \((X,Y)\) is
+\[
+ \alpha\,df
+ =(-\alpha,-\alpha y;\ \alpha,-\alpha x).
+ \tag{PC.6}
+\]
+Applying the input antipodal map to the last block gives the correspondence
+\[
+\begin{gathered}
+(t,x;\tau,\xi)\longleftrightarrow(s,y;\sigma,\eta),\\
+\tau=-\alpha,\quad\xi=\tau y,\\
+\sigma=\tau,\quad\eta=-\tau x,\\
+s=t+x^{\mathsf T}y.
+\end{gathered}
+\tag{PC.7}
+\]
+On the open time-covector chart this is the single holomorphic graph
+\[
+\begin{gathered}
+\chi(t,x;\tau,\xi)\\
+=\bigl(t+x^{\mathsf T}(\xi/\tau),\ \xi/\tau;\\
+\tau,-\tau x\bigr),\quad\tau\ne0.
+\end{gathered}
+\tag{PC.8}
+\]
+Its inverse is
+\[
+\begin{gathered}
+x=-\eta/\sigma,\\
+t=s+\eta^{\mathsf T}y/\sigma.
+\end{gathered}
+\tag{PC.9}
+\]
+The one-form calculation retains the sign:
+\[
+\begin{gathered}
+\sigma\,ds+\eta^{\mathsf T}dy\\
+=\tau\,dt+\xi^{\mathsf T}dx.
+\end{gathered}
+\tag{PC.10}
+\]
+Indeed \(ds=dt+x^{\mathsf T}dy+y^{\mathsf T}dx\), and the two terms containing \(x^{\mathsf T}dy\) cancel. Thus these are the actual homogeneous symplectic correspondence and its inverse.
+
+For completeness, the microlocal Hom sources used here have no additional affine covectors. Off the closed incidence, the source is locally constant or zero, so OCM.A applies. On it, any covector not proportional to \(df\) detects a complex tangent vector to \(f=0\). In straight coordinates that vector is a free source direction, and FD.3 applies. The same argument covers the open and ordinary-derived-open source extensions, since they depend only on the one straight normal coordinate. This proves their affine support containment in the conormal graph for every bounded target coefficient.
+
+##### PC.3. Composition and properness over compact cotangent sets
+
+For the second incidence in the forward product put
+\[
+ g=t'-s+(x')^{\mathsf T}y .
+ \tag{PC.11}
+\]
+Its conormal, in the order \((s,y;t',x')\), is
+\[
+ \beta\,dg=(-\beta,\beta x';\ \beta,\beta y).
+ \tag{PC.12}
+\]
+The common middle blocks in PC.6 and PC.12 must add to zero; this is exactly the input antipodal matching. Consequently
+\[
+\begin{gathered}
+\alpha-\beta=0,\\
+-\alpha x+\beta x'=0.
+\end{gathered}
+\tag{PC.13}
+\]
+On \(\tau=-\alpha\ne0\), these imply \(x'=x\). The two incidence equations then give \(t'=t\). The remaining endpoint covectors are the opposite pair
+\[
+ (-\alpha,-\alpha y;\ \alpha,\alpha y).
+ \tag{PC.14}
+\]
+Thus the endpoint correspondence is the conormal diagonal, with the same positive identity map on the output cotangent coordinates.
+
+The middle point and both its covector blocks are determined uniquely by
+\[
+\begin{gathered}
+y=\xi/\tau,\quad\alpha=-\tau,\\
+s=t+x^{\mathsf T}(\xi/\tau).
+\end{gathered}
+\tag{PC.15}
+\]
+Let \(K\) be a compact set in the endpoint cotangent chart \(\tau\ne0\). The continuous function \(|\tau|\) has a positive lower bound on \(K\). The endpoint base coordinates and all endpoint covector coordinates have finite upper bounds there. PC.15 therefore bounds \(y,s,\alpha\) and the middle spatial covectors \(\alpha x\). It also bounds all other middle coordinates. The relation is closed in this chart: it is the graph of these continuous formulas over the closed diagonal conditions PC.13–PC.14. Its inverse image over \(K\) is hence a closed subset of a compact finite-dimensional box, and is compact.
+
+There are no boundary points with the required nonzero endpoint time component, by PC.1. Nor can a compact endpoint cotangent set acquire an escaping sequence of middle covectors near infinity: the affine formula \(y=\xi/\tau\) stays bounded, so its projective middle point remains in a compact subset of the affine chart, and the preceding covector bounds apply. This verifies properness of the full selected cotangent support intersection, including the possible boundary limit.
+
+For a prescribed finite middle-coordinate neighbourhood, first choose a smaller cotangent neighbourhood of the central endpoint point. Continuity of PC.15 then places the whole matching middle point and covector in a relatively compact subneighbourhood. This is the actual local support condition for composing the two incidence germs.
+
+The reverse order is obtained from the inverse graph PC.9. The same argument, using \(\sigma\ne0\), proves its properness and diagonal endpoint correspondence. These proofs concern the source microlocal Hom support, so they do not presume that the explicit RC contour family already represents the canonical composition.
+
+#### Ordinary proper evaluation for the incidence convolution
+
+Use unshifted solutions
+\[
+\begin{gathered}
+S_Z(M)\\
+=R\mathcal Hom_{\mathcal D_Z^{an}}(M^{an},\mathcal O_{Z^{an}}).
+\end{gathered}
+\tag{PE.1}
+\]
+This differs from the normalized solution functor of the de Rham lesson by the shift \([-\dim Z]\). Write \(F_Z=\operatorname{DR}_Z\), \(\mathbb D_Z\) for operator duality, and \(s_Z:F_Z\mathbb D_ZM\to S_Z(M)[\dim Z]\) for the actual finite-projective/right-Spencer map (1.vad) of the Riemann–Hilbert lesson. Its connection-frame coefficient is not silently replaced by an identity.
+
+Let \(B=X\times Z\), \(T=X\times Y\times Z\), with all three factors of dimension \(N\), and let \(p:T\to B\) be projection. In the proper realization of AS.5, \(Y=\mathbb P^N\). The two incidence operator modules and their affine open-direct extensions are regular holonomic; their pulled-back derived structure tensor is denoted \(M\), and \(Q=p_+M\). The dimensions are
+\[
+\begin{gathered}
+\dim T=3N,\quad\dim B=2N,\\
+\dim T-\dim B=N.
+\end{gathered}
+\tag{PE.2}
+\]
+
+##### PE.1. The actual solution-source comparison
+
+The unshifted smooth transfer pullback is the programme's extraordinary inverse shifted by the negative relative dimension. Apply actual operator duality, the actual inverse comparisons of RH1.20, and the actual right-Spencer solution maps. They give
+\[
+ S_T(q_{ij}^+M_{ij})
+ \simeq q_{ij}^{-1}S_{ij}(M_{ij}).
+ \tag{PE.3}
+\]
+The raw structure tensor is the extraordinary tensor shifted by \(\dim T\), by RH1.vv. Dualizing it gives the ordinary tensor of the two duals shifted by \(-\dim T\). RH1.vx, with its actual tensor-Hom evaluations, and the two unshifted solution shifts therefore identify
+\[
+\begin{gathered}
+S_T(M)\\
+\simeq q_{12}^{-1}L_{12}\otimes q_{23}^{-1}L_{23},\\
+ L_{ij}=S_{ij}(M_{ij}).
+\end{gathered}
+\tag{PE.4}
+\]
+The two copies of \(-\dim T\) are precisely the two unshifted solution shifts on the right. The tensor suspension signs are the maps RH1.vb and V.14; both sides use those maps. This is not a choice of flat connection frames.
+
+For the proper projection, the inverse of the following sequence defines the operator-normalized solution comparison:
+\[
+\begin{gathered}
+S_B(Q)\\
+\xleftarrow{s_B}F_B\mathbb D_B(p_+M)[-2N]\\
+\xleftarrow{\rho_p}F_Bp_+(\mathbb D_TM)[-2N]\\
+\xrightarrow{\eta_p}Rp_*F_T(\mathbb D_TM)[-2N]\\
+\xrightarrow{s_T}Rp_*S_T(M)[N].
+\end{gathered}
+\tag{PE.5}
+\]
+Here the arrow labelled \(\rho_p\) means the actual proper-duality isomorphism in the displayed direction, inside \(F_B\); \(\eta_p\) is the actual proper de Rham comparison. Each is invertible by the earlier programme theorems. Properness changes \(Rp_*\) to \(Rp_!\). Combining PE.4–PE.5 gives
+\[
+\begin{gathered}
+\theta_{\rm op}:\\
+Rp_!(L_{12}\otimes L_{23})[N]\\
+\xrightarrow{\sim}S_B(Q).
+\end{gathered}
+\tag{PE.6}
+\]
+For the actual affine incidence extensions,
+\[
+ L_{12}\otimes L_{23}
+       =j_!\mathbb C_{W_{\rm aff}}[-2].
+ \tag{PE.7}
+\]
+Indeed ordinary operator open direct image has unshifted solution open extension by zero, by RH1.20; the two pullbacks have the same affine middle open. Tensor over \(\mathbb C\) is exact and sends the two closed incidence constant sheaves to the constant sheaf of their intersection. Therefore PE.6 is the source comparison used in OD.5, with total shift \(N-2\).
+
+##### PE.2. Evaluation and the two trace normalizations
+
+Let \(m_{12}\), \(m_{23}\) be actual operator sections, with the ordered middle density included in \(m_{12}\), and the surviving input density included in \(m_{23}\). Their relative top-Spencer section determines
+\[
+ b:\mathcal D_B\longrightarrow Q .
+ \tag{PE.8}
+\]
+The ordinary solution evaluations are the solution maps of the corresponding operator section maps. They may be derived ordinary sheaf morphisms, rather than maps between degree-zero sheaves. In particular the closed incidence source is \(\mathbb C_S[-1]\).
+
+The raw proper holomorphic trace is the current/form trace of V.11. Its sign in unshifted antiholomorphic degree \(q\) is
+\[
+ \operatorname{Tr}_q
+ =(-1)^{N(q-N)} I_q .
+ \tag{PE.9}
+\]
+Use the unshifted coefficient cup first and shift the intermediate trace block afterwards, as in V.13–V.14. The operator-normalized trace is
+\[
+ q_N\operatorname{Tr},
+ \qquad q_N=(2\pi i)^{-N}.
+ \tag{PE.10}
+\]
+The normalization follows from the actual proper residue calculation RH1.vl: the positive ordered period is \((2\pi i)^N\), and \(q_T(2\pi i)^N=q_B\). It includes the normal determinant and Cech/form signs in RH1.vf–vg. No sign is inserted after this trace is fixed.
+
+With PE.6, the ordinary evaluation square is
+\[
+\begin{gathered}
+E=\operatorname{ev}_{m_{12}}\otimes\operatorname{ev}_{m_{23}},\\
+\operatorname{ev}_b\,\theta_{\rm op}\\
+=(q_N\operatorname{Tr})\,Rp_!(E)[N],\\
+Rp_!(L_{12}\otimes L_{23})[N]\\
+\longrightarrow\Omega_Z.
+\end{gathered}
+\tag{PE.11}
+\]
+Densities here are the relative density lines on their stated pair spaces, pulled back to the triple product. The surviving \(\Omega_Z\)-block stays in its prescribed order. Thus PE.11 does not integrate a differential form in a different coefficient convention.
+
+Here is why this is an equation of actual maps. Before taking any inverse in PE.5, the proper-duality map is finite operator evaluation followed by its operator trace. The de Rham and solution maps are the coefficient restriction, relative/right Spencer augmentation, density cancellation and finite-projective evaluation. RH1.vb gives their homogeneous evaluation sign; RH1.vad gives the right-Spencer map with coefficient \(+1\) on its top column. RH1.vk, proved on these maps, says that this evaluation followed by the proper operator trace equals the sheaf evaluation followed by its positive proper trace. Its projective calculation identifies the latter with PE.10 by RH1.vl. RH1.vu-a and RH1.vaa preserve the actual exterior, structure-tensor and evaluation maps, so inserting the two individual section evaluations gives exactly the map \(Rp_!(E)[N]\) of PE.11. Naturality of the finite evaluation gives the map \(\operatorname{ev}_b\), Sol of PE.8.
+
+This argument uses the whole-complex equality proved in RH1.vl-a–b, with finite induced approximations and its uniform degree bound. It is not an inference of equality on a bounded complex from equality on its cohomology modules. The maps from the free operator module in PE.8 are legitimate: the chain evaluation formula is defined on coherent projective/induced terms before regular-holonomic invertibility is asserted. Regularity is used to invert the comparison maps for \(M,Q\), not to regard the free operator module as holonomic.
+
+If the raw trace is used in PE.11, multiply only its source comparison by the reciprocal trace scalar:
+\[
+ \theta_{\rm raw}=(2\pi i)^N\theta_{\rm op}.
+ \tag{PE.12}
+\]
+Linearity of the actual trace and equality PE.11 then give
+\[
+ \begin{gathered}
+ \operatorname{ev}_b\,\theta_{\rm raw}\\
+ =\operatorname{Tr}\,
+ Rp_!(\operatorname{ev}_{m_{12}}\\
+                  \otimes\operatorname{ev}_{m_{23}})[N].
+ \end{gathered}
+ \tag{PE.13}
+\]
+The map \(\theta_{\rm raw}\) is still an isomorphism. This statement fixes its normalization without declaring it to be an identity in flat endpoint frames.
+
+All maps in PE.5–PE.13 are ordinary derived sheaf or operator maps on the proper compactification. Applying the natural ordinary-Hom-to-microlocal-Hom map preserves their equality. A further compatibility assertion is required to identify that image with the product of the two already microlocalized classes. That assertion concerns the actual exterior, middle-diagonal and proper microlocal maps. It is separate from the ordinary evaluation square proved here.
+
+#### Finite globalization of the incidence pole sections
+
+Let \(N=d+1\), with the affine coordinates and ordered densities of AS.1. Compactify the middle \((s,y)\)-space to \(\mathbb P^N\), with homogeneous coordinates \([\lambda:s_h:y_h]\). The endpoint coordinates remain affine. Let
+\[
+\begin{gathered}
+ F_h=s_h-t\lambda-x^{\mathsf T}y_h,\\
+ G_h=t'\lambda-s_h+(x')^{\mathsf T}y_h .
+\end{gathered}
+\tag{GP.1}
+\]
+Their zero sets are the two closed projective incidence hypersurfaces. Both are smooth. At any projective incidence point the vector \((\lambda,y_h)\) is nonzero, since its vanishing would force \(s_h=0\). Hence the gradient in the corresponding affine endpoint variables is nonzero.
+
+##### GP.1. The exact global meromorphic forms
+
+Use the ordered homogeneous coordinate vector \(Z=(\lambda,s_h,y_{h,1},\ldots,y_{h,d})\) and the homogeneous \(N\)-form
+\[
+\begin{gathered}
+\Omega_{\rm hom}\\
+=\sum_{j=0}^{N}(-1)^jZ_j\,\\
+{}\cdot dZ_0\wedge\cdots\widehat{dZ_j}\cdots\wedge dZ_N.
+\end{gathered}
+\tag{GP.2}
+\]
+It has homogeneous weight \(N+1\) and its contraction with the Euler vector field is zero. Dividing by \(F_h^{N+1}\) therefore gives an actual meromorphic top form on the projective middle space. It has poles only on \(F_h=0\), and its restriction to \(\lambda=1\) is
+\[
+ \begin{gathered}
+ \frac{\Omega_{\rm hom}}{F_h^{N+1}}
+ \bigg|_{\lambda=1}\\
+ {}=
+ \frac{ds\wedge dy_1\wedge\cdots\wedge dy_d}
+      {(s-t-x^{\mathsf T}y)^{N+1}} .
+ \end{gathered}
+ \tag{GP.3}
+\]
+To check descent directly, replace the homogeneous representative \(Z\) by \(cZ\). The numerator and denominator both acquire \(c^{N+1}\). A derivative of a variable scaling factor contributes an Euler contraction and is zero. On \(\lambda=1\) only the \(j=0\) term survives, with coefficient \(+1\). This proves both gluing and the ordered affine sign.
+
+Write \(\eta_Y=ds\wedge dy_1\wedge\cdots\wedge dy_d\). At fixed actual middle coordinates,
+\[
+ D_t^N\left(\frac{\eta_Y}{f}\right)
+       =N!\frac{\eta_Y}{f^{N+1}} .
+ \tag{GP.4}
+\]
+Here \(D_tf=-1\), so all \(N\) signs are positive. The section
+\[
+ m_{+,N}
+   =N!\left[\frac{\Omega_{\rm hom}}{F_h^{N+1}}\right]
+ \tag{GP.5}
+\]
+is consequently a genuine global section of the **closed** incidence module, with its ordered relative density. It needs no open-direct extension across the middle hyperplane at infinity. The bracket denotes the local-cohomology/closed-transfer class. All its normal pole orders are finite.
+
+The opposite section already globalizes without differentiation:
+\[
+\begin{gathered}
+m_-=\left[\frac{\lambda^N}{G_h^N}\right]\eta_{X'},\\
+\eta_{X'}=dt'\wedge dx'_1\wedge\cdots\wedge dx'_d.
+\end{gathered}
+\tag{GP.6}
+\]
+The coefficient is a homogeneous rational function of degree zero, with poles only on \(G_h=0\). Its affine restriction is precisely \(\eta_{X'}/g^N\). Thus its zero or vanishing order along \(\lambda=0\) is not replaced by a pole there.
+
+These are statements about global sections of the closed operator modules and their density lines. Through ordinary solution evaluation they give ordinary derived sheaf morphisms from the two closed incidence solution complexes to the respective holomorphic density sheaves. Their microlocal images are the finite differential-operator images of the actual pole classes.
+
+##### GP.2. Transversality for the common middle diagonal
+
+Before identifying the two middle points, take the product of the two smooth closed incidence hypersurfaces on the four-factor space. The common middle diagonal is a smooth embedding of complex codimension \(N\). Its intersection with that product is the common incidence zero set in the three-factor space.
+
+The two incidence equations have independent differentials on that intersection. If
+\[
+ a\,dF_h+b\,dG_h=0,
+ \tag{GP.7}
+\]
+differentiate in the first endpoint \((t,x)\). It gives \(a(\lambda,y_h)=0\), hence \(a=0\). Differentiation in the other endpoint then gives \(b=0\). This proof also applies at \(\lambda=0\). Thus the common middle diagonal is transverse to the smooth closed source support everywhere.
+
+The local coorientation comparison can be made in simultaneous coordinates. Let \(h\in\mathbb C^N\) be the difference of the two middle coordinate vectors in a projective chart. Transversality just proved permits coordinates consisting of \(h\), the two incidence normal equations, and tangent coordinates; the derivative matrix has full rank. The elementary holomorphic inverse-coordinate construction used in HI and FIM supplies the corresponding chart. In these coordinates the closed source constant complex is independent of \(h\), and the middle diagonal is \(h=0\). Therefore the actual fundamental-class map
+\[
+ j^{-1}A\longrightarrow
+       \operatorname{or}_h[2N]\otimes j^!A
+ \tag{GP.8}
+\]
+is the positive normal Thom isomorphism. It has coefficient \(+1\) when the real \(h\)-coordinates have their complex orientation: the two-term real relative-normal complexes are exactly HI.11–HI.15, with trace one. Their tensor normal comparison retains every degree; the real shift is \(2N\), not \(N\). It is not a product of two currents with the same singular middle variable.
+
+For the two unshifted incidence solution sources, \(A\) here is their exterior product, with its common shift \([-2]\). That shift passes unchanged through GP.8.
+
+##### GP.3. The global and affine operator convolution sections
+
+Let \(\overline Q\) be the proper convolution of the two closed projective incidence modules. There is a natural operator map
+\[
+ \overline Q\longrightarrow Q ,
+ \tag{GP.9}
+\]
+obtained by ordinary localization across the common middle hyperplane and the actual direct-image composition. Its solution map is the affine/projective source map OD.14 after the source comparison PE.6. The comparison cone has zero polynomial \(\tau\)-localization, by OD.4.
+
+Let \(h_N\) be the actual relative top-Spencer section of \(\overline Q\) obtained by convolving GP.5 and GP.6. Under GP.9 its image is
+\[
+ h_N\longmapsto D_t^N h .
+ \tag{GP.10}
+\]
+Indeed differentiation in this endpoint commutes with the proper operator direct image and acts on the first factor; it has zero action on the second factor at fixed original endpoint and middle coordinates. This is a finite differential identity of the displayed section maps, not an exchange with an infinite series or a nonproper contour.
+
+In the affine AS coordinates, the original first endpoint derivative is
+\[
+ D_t=D_{u_t}-D_w .
+ \tag{GP.11}
+\]
+The class \(h\) is killed by \(D_{u_t}\), by AS.24–AS.26. Since this derivative commutes with \(\tau=D_w\), GP.10 gives, after the AS diagonal identification,
+\[
+ D_t^N h=(-\tau)^N h .
+ \tag{GP.12}
+\]
+Thus the globalized product section is the same nonzero scalar diagonal class as AS, multiplied by the invertible finite operator \(D_t^N\) on the selected time-covector chart.
+
+On that chart the actual finite microdifferential operator \(D_t\) is invertible. The construction and the injective finite-operator action were proved in the ordinary symbol/current interface and FIM. The microlocal class of the original pole therefore satisfies the literal action identity
+\[
+ a=D_t^{-N}a_N ,
+ \tag{GP.13}
+\]
+where \(a_N\) is the image of the global ordinary evaluation of GP.5. This equality uses the actual inverse operator, not a formal symbol or a scalar-change flatness claim.
+
+Accordingly the ordinary-to-microlocal composition comparison can first be proved for the globally closed, transverse sources of GP.5–GP.8. The original finite-affine pole class is then recovered by GP.13 and the already proved action/composition compatibility. The opposite spatial sign and the dimension-correct opposite pole remain those of AS.32–AS.35.
+
+##### GP.4. Globalization for the reverse product
+
+For endpoints \((s,y),(s',y')\) and middle \((t,x)\), use homogeneous middle coordinates \([\lambda:t_h:x_h]\). Set
+\[
+\begin{gathered}
+A_h=t_h-s\lambda+y^{\mathsf T}x_h,\\
+B_h=s'\lambda-t_h-(y')^{\mathsf T}x_h .
+\end{gathered}
+\tag{GP.14}
+\]
+The first raw class has pole \(g^{-N}\) and the middle input density \(\eta_X\). One endpoint derivative suffices:
+\[
+D_s\left(\frac{\eta_X}{g^N}\right)
+=N\frac{\eta_X}{g^{N+1}} .
+\tag{GP.15}
+\]
+It globalizes to \(N[\Omega_{\rm hom}'/A_h^{N+1}]\), with the homogeneous form defined in GP.2 in the ordered coordinates \((\lambda,t_h,x_h)\). The second raw class globalizes without differentiation to
+\[
+\left[\frac{\lambda}{B_h}\right]\eta_{Y'} .
+\tag{GP.16}
+\]
+Both are global sections of the two closed projective incidence modules. The same endpoint-gradient proof as GP.7 proves transversality of their common middle diagonal, including infinity.
+
+The reverse proper convolution of these global sections maps, in the affine model, to \(D_s h'\). Here \(D_s=D_{u'_s}-D_{w'}\) and \(D_{u'_s}h'=0\), so the image is \(-\tau'h'\). Since \(D_s\) is an actual finite microdifferential unit on the selected reverse chart,
+\[
+b=D_s^{-1}b_1,\qquad b_1=D_sb .
+\tag{GP.17}
+\]
+Thus the reverse canonical product can also be computed with global closed ordinary evaluations first, then recovered by an actual inverse finite operator. The globalizing constants are exactly \(N!\) in GP.5 and \(N\) in GP.15.
+
+#### Ordinary evaluations and the canonical microlocal composition
+
+The coefficient convention is OCM.4. If \(M\) is a complex manifold of dimension \(m\), write
+\[
+\begin{gathered}
+\mathcal H_M(F,G)\\
+=R\mathcal Hom(q_2^{-1}F,\\
+q_1^{-1}G[2m]).
+\end{gathered}
+\tag{MC.1}
+\]
+All supports, restrictions and complement complexes are the actual ones of OCM.2–OCM.3 and R.6–R.7. The following comparison concerns ordinary derived morphisms with the closed transverse sources constructed in GP. It does not assert a general microlocal proper-image isomorphism.
+
+##### MC.1. The ordinary map and its diagonal-supported representative
+
+Closed adjunction for the diagonal \(i:M\hookrightarrow M\times M\) gives
+\[
+\begin{gathered}
+i^!\mathcal H_M(F,G)\\
+=R\mathcal Hom(F,i^!q_1^!G)\\
+=R\mathcal Hom(F,G).
+\end{gathered}
+\tag{MC.2}
+\]
+The last equality is transitivity of extraordinary inverse image for \(q_1i=\mathrm{id}\), with its actual orientation map. Thus a derived ordinary map \(a:F\to G\) has a specified diagonal-supported class
+\[
+\begin{gathered}
+i_*R\mathcal Hom(F,G)\\
+=R\Gamma_\Delta\mathcal H_M(F,G).
+\end{gathered}
+\tag{MC.3}
+\]
+Enlarge the diagonal support to an admitted support and take the filtered germ. Denote the resulting microlocal class by \(\alpha(a)\). The definition includes the positive normal orientation and the projection shift \(2m\).
+
+If a source or target map is inserted into this construction, its evaluation square commutes before any support enlargement: it is ordinary Hom functoriality and closed adjunction. Restriction and support-enlargement maps preserve that square. This proves the naturality used below for the actual source roofs.
+
+For exterior products, the two disjoint diagonal normal blocks give the diagonal of the product. The ordinary tensor-Hom map on homogeneous cochains is
+\[
+\begin{gathered}
+(\phi\otimes\psi)(v\otimes w)\\
+=(-1)^{|\psi||v|}\phi(v)\otimes\psi(w).
+\end{gathered}
+\tag{MC.4}
+\]
+Its differential identity is the usual cancellation of the two cross terms. The two real normal dimensions are even, so their orientation blocks have positive interchange. The cohomological shifts still use V.14. Therefore the exterior product of the two classes MC.3 is precisely the diagonal-supported class of the exterior ordinary map. In the support model, this remains true after applying the full tensor-to-cube map V.16; its signs are exactly the signs of MC.4, with complement degrees placed before antiholomorphic degrees. No complement entry is omitted.
+
+##### MC.2. Restriction through a transverse closed source
+
+Let \(j:T\hookrightarrow M\) be a holomorphic embedding of complex codimension \(c\). Suppose a smooth closed source support \(S\subset M\) is transverse to \(T\), and take \(F=\mathbb C_S[k]\). Suppose also that a target map \(j^{-1}G\to G_T\) is specified. Then the inverse-image part of the canonical microlocal composition carries the ordinary class of \(a:F\to G\) to the ordinary class of the restricted map
+\[
+ j^{-1}F\xrightarrow{j^{-1}a}
+      j^{-1}G\longrightarrow G_T .
+ \tag{MC.5}
+\]
+Here the source Gysin map is used in its specified transverse direction:
+\[
+ j^{-1}F\xrightarrow{\sim}
+       \operatorname{or}_j[2c]\otimes j^!F .
+ \tag{MC.6}
+\]
+
+We give the local support verification, including the real shift. Choose simultaneous coordinates \((r,h,v)\), with \(S=\{r=0\}\) and \(T=\{h=0\}\). They exist by transversality. The source is constant in \(h\). Apply the closed-source Hom calculation of HI.19 in each complex \(r\)-normal coordinate. It is the finite tensor of its two-real-coordinate Thom complexes, so it removes twice the complex codimension of \(S\). On each cofinal round support the remaining tangent-normal comparison is exactly HI.A, with all its collapsed fibres and complement maps.
+
+More explicitly, if \(s\) is the complex codimension of \(S\), the second-variable source-normal contraction contributes \([-2s]\), and the remaining second-variable tangent-normal contraction contributes \([-2(m-s)]\). Their sum cancels the projection shift \([2m]\) in MC.1. The \(s\)-normal calculation is obtained by tensoring HI.19's one-complex-normal comparison \(s\) times. On a cofinal product of round supports each map is its actual two-real-normal Thom map; a round support inside the product and a product inside the preceding round support give the same germ by HI.A and R.6. Tensoring their contractions uses the ordinary total-degree sign, so the mixed differential terms cancel. This proves the comparison for every finite codimension, including the diagonal source of codimension \(N\).
+
+The normal block \(h\) has real dimension \(2c\). In the ambient calculation it contributes its trace-one tangent-normal Thom class, while in the restricted calculation it is absent. Its shift \([-2c]\) cancels the difference between the two projection shifts in MC.1. The source map MC.6 inserts exactly that same positive class. Both orders consequently send its trace-one class to \(1\). The calculation fixes the sign: it is a real complex-oriented block of dimension \(2c\), and its interchange with every other real normal block is even. The common source shift \([k]\) is carried by both routes.
+
+The target restriction acts on the first coefficient variable. The normal Thom maps act in the second source-normal variables with the first variable fixed. Hence they commute with the specified target map. For holomorphic density targets, this is literal restriction of holomorphic coefficient functions and of their relative top-form blocks. Terms in a lift with insufficient vertical holomorphic degree have zero later fibre trace, by V.4.
+
+This is an equality on the entire relative complex. On each whole-domain or complement entry use the same normal map. The tensor normal comparisons commute with restriction. Their finite complement-cover augmentations are the maps V.15–V.16 and DLG.3, and their inverse comparisons carry the specified HI/R.6 homotopies. Thus the equality survives finite common refinements and support enlargement; it is not an assertion made only for a supported-current component.
+
+For GP.2, the source is the exterior product of the two closed incidence constant complexes, the embedding is the common middle diagonal, and \(c=N\). Equation GP.8 is precisely MC.6. The target map is the holomorphic restriction and ordered density product.
+
+##### MC.3. Proper projection and ordinary adjunction
+
+Let \(p:T\to B\) be the proper smooth projection used in PE. The proper microlocal-Hom map, followed by any fixed coefficient trace, carries the ordinary class of \(a:F\to p^!G\) to the ordinary class of its actual adjoint
+\[
+ \epsilon_p\,Rp_!(a):Rp_!F\longrightarrow G .
+ \tag{MC.7}
+\]
+The statement concerns the map, not invertibility of a general proper microlocal comparison.
+
+Here is its closed-diagonal calculation. Put \(a_B:B\times T\to B\), \(b_T:B\times T\to T\), and let \(i_p:T\hookrightarrow B\times T\) be the graph. Then
+\[
+\begin{gathered}
+ \mathcal H_p
+ =R\mathcal Hom(b_T^{-1}F,a_B^!G),\\
+ i_p^!\mathcal H_p
+ =R\mathcal Hom(F,p^!G).
+\end{gathered}
+\tag{MC.8}
+\]
+A diagonal-supported class on \(T\times T\) is sent to this graph-supported class by the map \((p,\mathrm{id}_T)\). On these closed supports this is exactly transitivity of extraordinary inverse images:
+the diagonal followed by this map is the graph, and both pull the coefficient back to \(p^!G\). Thus the coefficient remains the same Hom cochain. Pushing the graph to \(B\) and taking its actual proper adjoint gives MC.7, by the sheaf proper-support Hom adjunction already proved in the classical provider.
+
+The source unit in that statement is explicit. Put \(f=(p,\mathrm{id}_T)\), \(A=b_T^{-1}F\), and \(B'=a_B^!G\). Proper Hom adjunction sends \(Rf_*R\mathcal Hom(f^{-1}A,f^!B')\) to \(R\mathcal Hom(Rf_!f^{-1}A,B')\). Precompose with the ordinary inverse/direct unit \(A\to Rf_*f^{-1}A=Rf_!f^{-1}A\). On the diagonal-supported class the first fibre point equals the second; this unit evaluates as the constant \(1\), and the positive normal orientation counit has trace \(1\). Their composition is the same Hom cochain in MC.8, by the adjunction triangle identity. Thus an additional fibre-cohomology factor is not left in the graph-supported calculation.
+
+The dimension check is explicit. If \(r=\dim_{\mathbb R}T-\dim_{\mathbb R}B=2N\), the source diagonal has codimension \(\dim_{\mathbb R}T\); the graph has codimension \(\dim_{\mathbb R}B\). Their difference is \(r\), exactly the orientation shift in \(p^!G=p^{-1}G[r]\). The normal middle-difference block is contracted by its trace-one orientation counit. This is the closed-normal trace of HI.11–HI.15, not a multiplication of two copies of a delta current.
+
+To pass this calculation to the actual support germs, use the same support-enlargement maps on the diagonal and graph models. The required normal properness has a direct local estimate. Write the two matched normal vectors as \(n_{12}=(a,b)\), \(n_{23}=(b,c)\), and matched raw polar covectors as \(\rho_{12}=(\xi,-\eta)\), \(\rho_{23}=(\eta,\zeta)\). After one finite common refinement their strict margins give
+\[
+\begin{gathered}
+-\Re\langle\rho_{12},n_{12}\rangle\ge\delta|n_{12}|,\\
+-\Re\langle\rho_{23},n_{23}\rangle\ge\delta|n_{23}|,\\
+\delta>0.
+\end{gathered}
+\tag{MC.9}
+\]
+Adding cancels the middle pairing:
+\[
+\begin{gathered}
+-\Re(\langle\xi,a\rangle+\langle\zeta,c\rangle)\\
+\ge\delta\bigl(|(a,b)|+|(b,c)|\bigr).
+\end{gathered}
+\tag{MC.10}
+\]
+It bounds the middle normal variable by the endpoint polar length and gives a strict endpoint polar margin. Uniformly smaller margins persist on a covector neighbourhood. The cofinal-cone and actual-containment argument IG.1 therefore supplies admitted source and target supports on a common smaller actual domain. In simultaneous local coordinates the projection is linear. Changing those ordinary coordinates contributes a remainder bounded by \(A|n|^2\) on a compact enlargement, by Taylor's integral formula. Shrink \(|n|\) so that the resulting polar error is at most \(\delta|n|/4\). This leaves a positive margin. There are finitely many charts on the compact middle support, so take their least positive margin and radius. These are ordinary coordinate comparisons of BCT.1–BCT.3; no covariable-dependent coordinate change is used. For the selected incidence cotangent support, PC.3 also gives its precise compact affine neighbourhood.
+
+This estimate permits the graph trace on every coefficient in the finite relative-support diagram. On compact endpoints, choose one finite partition of the compact middle manifold and one normal collar for the bounded middle-normal family. R.7 supplies controlled excision and zero extension there. Every derivative-of-collar term remains in its full relative complement entry. The two closed-support adjunction routes already agree by MC.8. Naturality of restriction, sections with support and proper counits gives the same commutative square after each support enlargement. R.6–R.7 and DLG.14–DLG.17 transfer its finite homotopies to the actual full cones. Passing to their exact filtered colimit proves MC.7 for the ordinary microlocal images.
+
+If the coefficient trace is holomorphic, take its actual adjoint \(\Omega_Y[N]\to p^!\mathcal O_B\). Inserting it into MC.7 is exactly the raw holomorphic trace V.11. Thus this proof includes its cohomological degree lowering and its declared coefficient sign.
+
+##### MC.4. The closed incidence evaluation comparison
+
+To state the shifts explicitly, view the ordinary maps \(L_{12}\to\Omega_Y\) and \(L_{23}\to\Omega_Z\) as maps \(L_{12}[N]\to\Omega_Y[N]\) and \(L_{23}[N]\to\Omega_Z[N]\). The canonical product then has source \((L_{12}\circ L_{23})[2N]\) and target \(\Omega_Z[N]\). Cancelling the common shift \([N]\) identifies its Hom complex with that from \((L_{12}\circ L_{23})[N]\) to \(\Omega_Z\), exactly the source and target of PE.13. The tensor identifications used in this cancellation are V.14.
+
+There are two source operations in this statement, and their identification is an actual map. For \(F_1,F_2\) on the two pair spaces put
+\[
+\begin{gathered}
+\mathcal F=F_1\boxtimes F_2,\\
+F_1\circ F_2=Rp_!j^{-1}\mathcal F,\\
+F_1*F_2\\
+=Rp_*(\omega_Y\otimes j^!\mathcal F),\\
+\omega_Y=\mathbb C_Y[2N].
+\end{gathered}
+\tag{MC.11}
+\]
+The ordinary-to-extraordinary inverse-image fundamental class, followed by the proper-support-to-direct map, is the map \(\circ\to *\). The canonical microlocal Hom composition takes its source argument in the \(*\) operation. In the present case GP.8 identifies the first map with the trace-one Thom isomorphism, and \(p\) is proper. Thus \(\circ\to *\) is invertible here, with its actual orientation. We use that map, rather than silently replacing \(*\) by \(\circ\). With \(F_i=L_i[N]\), its source is exactly the shifted ordinary convolution just displayed. The diagonal/source comparisons in MC.1–MC.3 commute with this fundamental-class map because their local normal contraction is MC.6 itself.
+
+Take the two global ordinary sections GP.5 and GP.6. Apply MC.1 to their exterior evaluation maps, MC.2 to the common middle diagonal, and MC.3 to the proper middle projection. The resulting equality is
+\[
+ \begin{gathered}
+ \alpha(a_N)\circ_\mu\alpha(b)\\
+ {}=
+ \alpha\!\bigl(
+ \operatorname{Tr}\,
+ Rp_!(\operatorname{ev}_{m_{+,N}}\\
+          \otimes\operatorname{ev}_{m_-})[N]\bigr),
+ \end{gathered}
+ \tag{MC.12}
+\]
+with the ordinary source convolution and its actual source maps understood. PE.13 identifies the right side with the ordinary evaluation of \(h_N\), using \(\theta_{\rm raw}\). Transversality is GP.2; properness of the selected cotangent support is PC.3. Every map is natural in the actual algebraic-RH/source roofs.
+
+The operation here is the canonical one used by the programme. For two diagonal kernel sources, the same construction has disjoint ordinary normal factors, the middle diagonal's positive normal comparison, and the ordered proper trace. Its full relative entries are the DLG.3 cube, the V.16 tensor signs and the V.11 trace. V.13 cancels the between-kernel coefficient parity, and V.17 gives the already fixed single-normal-class calibration. Hence its specialization is exactly the existing whole canonical ring product and unit, with no second product normalization. For a kernel and an incidence input, the same normal comparison is FIM.5's action map.
+
+This also identifies the coefficient objects, not merely their dimensions. Apply the codimension-\(N\) calculation in MC.2 to the diagonal source. Its second-normal Thom contraction gives the relative diagonal holomorphic support complex; its tangent-normal contraction removes the remaining second-variable block. The ordered input density survives unchanged. Shifting its source by \([-N]\) consequently gives the degree-\(N\) diagonal group defining the source real operator ring. The support-forgetting and finite-refinement maps are precisely those used in that definition. The unit is the positive normal class UC.7, by the trace-one contraction and V.17. Thus no additional source-Hom or scalar-extension equivalence is a premise of the diagonal specialization.
+
+The argument retains finite three-factor diagrams: exterior tensor evaluation is associative with MC.4; the two middle diagonal normal contractions compose by the same trace-one closed counits; and the proper traces compose by Fubini with V.12–V.14. The full eight-entry cube and its common proper collar are DLG.5. Thus MC.12 is compatible with the three-factor associator and the coherent source inverse counits.
+
+Finally GP.13 recovers the original incidence class by the actual finite inverse \(D_t^{-N}\). FIM.5 and the complete DLG action commute with this operator and with the canonical product. Applying that inverse to MC.12 proves the comparison for the original forward pole as well. For the reverse order, apply the same closed-source proof to the ordinary global sections GP.15–GP.16, then use GP.17. Its ordered spatial reflection is AS.34, and is retained separately. These are finite operator cancellations after the actual product has been constructed.
+
+Related source operations and microlocal composition are discussed in Kashiwara–Schapira, [Microlocal Euler classes and Hochschild homology, arXiv:1203.4869v4](https://arxiv.org/abs/1203.4869v4), §3. The normal-support and ordinary-adjunction formalism is treated in their [Microlocal study of sheaves](https://www.numdam.org/item/AST_1985__128__1_0/), §§5.5 and 11.1. The comparisons needed here have the closed transverse sources, specified proper support and complete proofs above. The general proper microlocal comparison is not asserted.
+
+#### Intrinsic normalization from the ordinary-to-microlocal comparison
+
+Use the actual inverse projective open-incidence kernels
+\[
+ K=A[N],\qquad L=B[N],
+ \tag{IN.1}
+\]
+where LI and SN define \(A=j_!\mathbb C_\Omega\) and \(B=Rj_*\mathbb C_{\Omega^{\rm op}}\). Their ordinary convolutions are the two diagonal kernels. All source maps below are the actual source maps, with their shifts and input antipodal operation. The classes \(a,b\) are the lifts of the forward and opposite pole evaluations through OCM/SN and the affine/projective boundary comparison OD.14. The forward pole is \(f^{-1}\); the opposite pole is \(g^{-N}\), with the prescribed ordered input densities.
+
+Use the ordinary-to-microlocal comparison MC.1–MC.4, including its actual source fundamental class, every complement entry and the proper trace. GP.5–GP.8 and GP.15–GP.16 supply the global closed transverse sections to which that proof applies. Its finite inverse-derivative cancellations are GP.13 and GP.17. The proper cotangent support condition is PC.3, and the trace and tensor suspensions are V.11–V.14.
+
+**Theorem.** On the chart with nonzero time covector, the forward simple-pole incidence class has a two-sided inverse for the canonical microlocal composition. The inverse is a nonzero complex scalar multiple of the opposite pole of order \(N\), with its prescribed input density. The source counits can be chosen coherently, and the scalar is characterized intrinsically by either actual product.
+
+##### IN.1. Coherent inverse source counits
+
+Fix the first actual inverse-kernel isomorphism
+\(\epsilon_X:K\circ L\to\mathbb C_{\Delta_X}\).
+There is a unique second isomorphism \(\epsilon_Y:L\circ K\to\mathbb C_{\Delta_Y}\) satisfying
+\[
+ K\circ\epsilon_Y=\epsilon_X\circ K
+ \tag{IN.2}
+\]
+under the actual convolution associator.
+
+Here is an elementary construction, which does not presume that two independently selected inverse-object isomorphisms already satisfy a triangle identity. Convolution on the left by \(K\) is an equivalence on the corresponding kernel category, since convolution by \(L\) is an inverse up to the two already proved ordinary diagonal isomorphisms. Its full faithfulness follows by applying those isomorphisms to the ordinary Hom maps; the resulting two composites are identities after the associator. Apply that full faithfulness to the isomorphism \(\epsilon_X\circ K\) from \(K\circ L\circ K\) to \(K\). Its unique preimage is \(\epsilon_Y\). An equivalence reflects isomorphisms, so \(\epsilon_Y\) is invertible. Equation IN.2 is its defining equality, and gives the two triangle identities with the inverse unit \(\epsilon_Y^{-1}\).
+
+Thus the source inverse data are coherent without an unrecorded scalar adjustment between two arbitrary choices of diagonal maps. The classical convolution associator is the actual proper-support base-change/projection map proved in LI; it acts on every bounded attaching map.
+
+The second coherent counit may differ from the initial LI counit. Their ratio is a degree-zero automorphism of the constant diagonal source, hence a nonzero complex scalar: internal Hom of the rank-one constant sheaf is constant, and its global degree-zero sections on the connected diagonal are \(\mathbb C\). It therefore remains a legitimate ordinary source map for the scalar comparison OD.5. Fix these coherent counits throughout.
+
+##### IN.2. Each product belongs to the constant unit line
+
+First use the global sections \(a_N,b\). MC.4 and PE.13 identify their canonical product with ordinary evaluation of \(h_N\), using \(\theta_{\rm raw}\). The affine/projective source comparison OD.14 and the SN source roofs lift, under algebraic RH, to coherent operator roofs. Every comparison cone has zero polynomial \(\tau\)-localization, by OD.4–OD.5.
+
+Compare this operator roof with AS.28. After localization both identify \(Q_\tau\) with the same diagonal module. Their ratio belongs to
+\(\operatorname{Aut}_{A_\tau}((\Delta_{\rm alg})_\tau)\),
+which is \(\mathbb C^\times\) by OD.12. OD.2 transports that exact scalar equality through the actual solution/microlocal-Hom functor; it applies to all bounded coherent lattices appearing in the comparison, by OD.1.
+
+In the AS roof, the section is exactly
+\[
+ h=\frac{(-1)^d}{d!}j(e_\Delta).
+ \tag{IN.3}
+\]
+The raw ordered diagonal evaluation of \(e_\Delta\) is a nonzero constant multiple of the normalized diagonal unit. Indeed RH1.vf–vg computes it as the ordered iterated normal Cech/Cauchy class with its finite Koszul determinant coefficient. V.17 gives the conversion of the ordered holomorphic coefficient block, and UC.1–UC.3 computes its positive period. Every frame factor is a fixed sign and every period factor is a power of \(2\pi i\); the result is nonzero and independent of the base point and conormal phase. This uses the exact earlier normal-class calculation, rather than inferring nonvanishing from a dimension count.
+
+Consequently there is one uniquely determined \(\lambda_X\in\mathbb C^\times\) such that
+\[
+ a\circ_\mu b=\lambda_X\,1_X .
+ \tag{IN.4}
+\]
+This is a constant scalar statement in the finite polynomial-localized diagonal image. It does not assert that an arbitrary element centralizing coordinates in the whole real ring is constant.
+
+Here is the cancellation that relates this conclusion to the globalized calculation. In the AS roof GP.10–GP.12 send \(h_N\) to \(D_t^N h\), so that the proved globalized product is \(\lambda_X D_t^N1_X\). The same \(D_t^N\) acts on \(a\circ_\mu b\) by the actual action/composition square FIM.5 and MC.4. It is invertible on the selected chart. Apply its actual inverse to obtain IN.4. This is an equality of microlocal classes; a formal cancellation of symbols is not used.
+
+For the reverse order use the global sections \(b_1,a\), AS.32–AS.35 and the corresponding operator source roofs. Its raw algebraic factor is \(1/d!\), after the separate \((-1)^d\) spatial reflection. GP.17 identifies the globalized convolution section with \(D_sh'\). The preceding proof gives a nonzero constant multiple of \(D_s1_Y\); its actual inverse cancels by the reverse FIM action square. Thus
+\[
+ b\circ_\mu a=\lambda_Y\,1_Y,
+ \qquad\lambda_Y\in\mathbb C^\times .
+ \tag{IN.5}
+\]
+All factors used to prove nonvanishing have been retained: the two nonzero algebraic factorial factors, the invertible operator source-roof comparisons, and the nonzero ordered diagonal evaluation. No numerical value for a raw analytic source-frame coefficient is assumed.
+
+##### IN.3. The same intrinsic normalization gives both inverses
+
+The canonical products have degree zero in the shifted source-kernel conventions of IN.1. MC.4, the actual source associator and IN.2 therefore give
+\[
+ (a\circ_\mu b)\circ_\mu a
+ =a\circ_\mu(b\circ_\mu a).
+ \tag{IN.6}
+\]
+All three factors lie on their matching conormal graphs. PC.3 makes the finite three-factor support proper after shrinking the selected chart. The full eight-entry support cube, its common collar and the repeated trace have the associativity signs V.12–V.14 and DLG.5.
+
+The class \(a\) is nonzero: HI.C proves nonvanishing of its actual pole at every nonzero conormal phase, and the OCM/source comparison maps are isomorphisms there. Combining IN.4–IN.6 thus yields
+\[
+\begin{gathered}
+(\lambda_X-\lambda_Y)a=0,\\
+\lambda_X=\lambda_Y=:\lambda.
+\end{gathered}
+\tag{IN.7}
+\]
+The equality is over the field \(\mathbb C\). Define
+\[
+ b_{\rm inv}=\lambda^{-1}b .
+ \tag{IN.8}
+\]
+Then
+\[
+\begin{gathered}
+a\circ_\mu b_{\rm inv}=1_X,\\
+b_{\rm inv}\circ_\mu a=1_Y.
+\end{gathered}
+\tag{IN.9}
+\]
+This is an intrinsic normalization: \(\lambda\) is the unique coefficient of the actual constructed product in the unit line proved in IN.2. It can equivalently be extracted as the constant symbol of that product's finite diagonal operator. Its definition is independent of a linear functional or a choice of raw normal solution frame.
+
+The scalar normalization commutes with both operator actions. Hence all complete finite-\(E\) and whole-\(B\) input identities BI and OI retain their exact maps.
+
+The relation to the balanced algebraic evaluations must retain this scalar. For the original pole embeddings, OI.11–OI.12 are the specified algebraic evaluations sending their two raw basis tensors to \(1\). In the canonical microlocal composition those same raw embedded tensors have value \(\lambda1\), by IN.4–IN.7. Balancing and the complete BI/OI action identities therefore identify the canonical pairings with \(\lambda\) times the embedded algebraic evaluations on every tensor, including whole-\(B\) coefficients. Embedding the opposite basis by \(b_{\rm inv}\) makes the pairings exactly those evaluations. This does not change \(\mathcal L_0\), its dimension-correct inverse, or any all-index convergence bound. The two raw algebraic basis evaluations were not assumed to be the already normalized canonical analytic products.
+
+#### Legendre transport on the entire real operator ring
+
+Let \(C_X=\mathcal E_X^{\mathbb R}\) be the source-defined real operator sheaf, \(B_X=\mathcal E_X^\infty\) the projectivized infinite-order sheaf, and \(E_X=\mathcal E_X\) the finite-order sheaf. Use the actual coefficient, support, density, product and unit conventions of DLG and UC. The incidence contact map on the nonzero-time chart is
+\[
+\begin{gathered}
+\chi(t,x;\tau,\xi)\\
+=\bigl(t+x^{\mathsf T}\xi/\tau,\ \xi/\tau;\\
+\tau,-\tau x\bigr).
+\end{gathered}
+\tag{WT.1}
+\]
+It is the graph calculated in PC.2 with the input antipodal convention. Its inverse and its exact preservation of the tautological one-form are PC.9–PC.10. All stalk statements below are made after shrinking to actual corresponding chart neighbourhoods.
+
+##### WT.1. Conjugation by the actual inverse incidence classes
+
+Let \(a\) be the forward pole class and \(b_{\rm inv}\) its intrinsic normalized inverse from IN.8–IN.9. For \(p\) in the chart and \(q=\chi(p)\), define
+\[
+\begin{gathered}
+ \Phi_p:C_{Y,q}\longrightarrow C_{X,p},\\
+ \Phi_p(Q)=a\circ_\mu Q\circ_\mu b_{\rm inv},\\
+ \Psi_q:C_{X,p}\longrightarrow C_{Y,q},\\
+ \Psi_q(P)=b_{\rm inv}\circ_\mu P\circ_\mu a .
+\end{gathered}
+\tag{WT.2}
+\]
+Every \(P,Q\) here is an arbitrary real operator germ, with its full relative representative.
+
+We first justify the operations on those whole germs. The source supports of \(a,b_{\rm inv}\) at nonzero covectors are the two inverse graphs, by PC.1–PC.3. A diagonal real operator has diagonal cotangent support by its defining supported-kernel construction. Thus each matching middle covector in WT.2 is uniquely determined by its endpoint. PC.3 bounds that middle base point and covector on compact endpoint sets. For a finite collection of representatives and equality witnesses, shrink the endpoint chart once so that all matching points lie in one relatively compact middle chart. The strict polar estimate MC.9–MC.10 gives admitted normal supports; its Taylor-margin argument gives the same statement in actual coordinates. R.7 then gives one proper collar inside the finitely many actual coefficient domains. Use the complete relative cubes of DLG.3–DLG.5 on that collar, with every complement entry retained.
+
+Consequently the finite composition maps and their homotopies exist on actual domains. Different representatives, refinements or collars give equal germs by R.6–R.7 and DLG.14–DLG.17. This proves that WT.2 is defined on the entire source real stalk. No symbol expansion for an arbitrary element of \(C\) is a premise. The same finite construction commutes with restriction, so the maps are maps of sheaves on the corresponding charts.
+
+Associativity is the full-cube identity in MC.4 and DLG.5, with the coherent source counits IN.2. The middle inverse product is IN.9. Hence, for arbitrary \(Q_1,Q_2\),
+\[
+\begin{gathered}
+\Phi(Q_1)\Phi(Q_2)\\
+=aQ_1(b_{\rm inv}a)Q_2b_{\rm inv}\\
+=a(Q_1Q_2)b_{\rm inv}\\
+=\Phi(Q_1Q_2),\\
+\Phi(1_Y)=ab_{\rm inv}=1_X.
+\end{gathered}
+\tag{WT.3}
+\]
+The same calculation gives
+\[
+\begin{gathered}
+\Psi\Phi(Q)\\
+=(b_{\rm inv}a)Q(b_{\rm inv}a)=Q,\\
+\Phi\Psi(P)\\
+=(ab_{\rm inv})P(ab_{\rm inv})=P.
+\end{gathered}
+\tag{WT.4}
+\]
+In each finite identity choose the common support and collar before taking the products, as in the preceding paragraph. Thus these are identities of the actual germ operations. They prove mutually inverse unital ring isomorphisms on the whole \(C\) sheaves.
+
+##### WT.2. The complete finite and infinite input maps
+
+The actual whole-\(B\) incidence relation BI is
+\[
+\begin{gathered}
+aQ=\mathcal L_0(Q)a,\\
+Q\in B_Y.
+\end{gathered}
+\tag{WT.5}
+\]
+Its proof uses the entire input, both tails and one common coefficient domain; it is not restricted to polynomial generators. Multiplying by \(b_{\rm inv}\) and using IN.9 gives
+\[
+\begin{gathered}
+ \Phi|_{B_Y}=\mathcal L_0,\\
+ \Psi|_{B_X}=\mathcal L_0^{-1}=J\mathcal L_d .
+\end{gathered}
+\tag{WT.6}
+\]
+Their finite-order restrictions are the same maps on \(E\). This retains the ordered dimension correction of LN.30 and OI, as well as every positive-head and negative-tail estimate. The scalar used in \(b_{\rm inv}\) cancels from WT.5.
+
+The result does not adjoin a fractional normal power to \(C\). The complex family \(\mathcal H_a,\mathcal L_a\) of LN.26–LN.30 remains the entire coefficient-defined \(E/B\) family proved there. WT.2 uses the actual simple-pole incidence class and its normalized opposite.
+
+##### WT.3. Every symmetric quadratic contact shear
+
+For a complex symmetric matrix \(H\), the ordinary time change and its contact lift on \(Y\) are
+\[
+\begin{gathered}
+F_H(s,y)\\
+=(s+y^{\mathsf T}Hy/2,y),\\
+\widehat F_H(s,y;\sigma,\eta)\\
+=\bigl(s+y^{\mathsf T}Hy/2,y;\\
+\sigma,\eta-\sigma Hy\bigr).
+\end{gathered}
+\tag{WT.7}
+\]
+BCT proves the whole \(C\)-ring map \(\Theta_H\) for this ordinary base biholomorphism, with its actual density and support maps. Its inverse is \(\Theta_{-H}\), and its entire \(E/B\) restrictions are LI.13 and LN.31. Define the whole real-ring map
+\[
+ \mathscr T_H=\Phi\,\Theta_H\,\Phi^{-1}.
+\tag{WT.8}
+\]
+The stalk of the last inverse is taken at the transformed endpoint: explicitly \((\mathscr T_H)_p=\Phi_p(\Theta_H)_{\chi(p)}\Phi^{-1}_{\kappa_H(p)}\). Its contact map is
+\[
+\begin{gathered}
+\kappa_H=\chi^{-1}\widehat F_H\chi,\\
+\kappa_H(t,x;\tau,\xi)\\
+=\bigl(t-z^{\mathsf T}Hz/2,\ x+Hz;\\
+\tau,\xi\bigr),\quad z=\xi/\tau.
+\end{gathered}
+\tag{WT.9}
+\]
+To check the coordinates, the first Legendre image has \(s=t+x^{\mathsf T}z\), \(y=z\), and \(\eta/\sigma=-x\). The time change replaces its time by \(t+x^{\mathsf T}z+z^{\mathsf T}Hz/2\) and that last covector ratio by \(-x-Hz\). The inverse Legendre map then gives exactly WT.9. In particular it preserves \(\tau\,dt+\xi^{\mathsf T}dx\).
+
+There is no rank assumption on \(H\). The inverse time change exists with matrix \(-H\), even when \(H\) is degenerate. Conjugation therefore proves
+\[
+\begin{gathered}
+\mathscr T_H^{-1}=\mathscr T_{-H},\\
+\mathscr T_H\mathscr T_K=\mathscr T_{H+K}\\
+(H,K\text{ symmetric}).
+\end{gathered}
+\tag{WT.10}
+\]
+Products here have their corresponding transformed stalks. On the complete finite and infinite operator sheaves, WT.6 and LN.31 at parameter \(a=0\) give
+\[
+ \mathscr T_H|_{E/B}=T_H .
+\tag{WT.11}
+\]
+Thus the covariable-dependent quadratic shear has a whole real-ring transport extending its already proved full coefficient maps.
+
+##### WT.4. Actual module transport and the balanced comparison
+
+A ring isomorphism transports all modules by restriction of scalars along its inverse. For a \(C_Y\)-module \(V\), write \({}_{\Phi}V\) for the same abelian group with \(c\in C_X\) acting by \(\Phi^{-1}(c)\). The functors for \(\Phi,\Psi\) are inverse on all modules and all module morphisms, by WT.4. They are exact because the underlying abelian groups and maps are unchanged. A finite presentation, together with its matrix and relations, transports to a finite presentation under these ring isomorphisms.
+
+The square of actual inclusions \(B\subset C\) commutes by WT.6. For every \(B_Y\)-module \(M\) it gives the specified balanced map
+\[
+\begin{gathered}
+ C_X\otimes_{B_X}{}_{\mathcal L_0}M\\
+ \xrightarrow{\ \sim\ }
+ {}_{\Phi}\bigl(C_Y\otimes_{B_Y}M\bigr),\\
+ c\otimes m\longmapsto\Phi^{-1}(c)\otimes m .
+\end{gathered}
+\tag{WT.12}
+\]
+Indeed the images of \(cb\otimes m\) and \(c\otimes\mathcal L_0^{-1}(b)m\) agree, because \(\Phi^{-1}(b)=\mathcal L_0^{-1}(b)\) in \(C_Y\). The inverse sends \(r\otimes m\) to \(\Phi(r)\otimes m\). The formula intertwines the \(C_X\)-actions by multiplication and is natural in every actual module map.
+
+The same statement holds for derived tensor products. Take a free resolution of \(M\); the ring isomorphism \(\mathcal L_0\) transports it to a free resolution, and WT.12 is a termwise chain isomorphism, with its inverse termwise as displayed. This proof imposes no flatness, faithful-extension or holonomicity premise on \(C\) over \(B\). Those scalar-extension properties and an embedding or regularization of an arbitrary holonomic module require separate arguments.
+
+![The globalized ordinary evaluation square, an exact shear slice, and intrinsic whole-ring transport](assets/incidence-evaluation-and-real-transport.png)
+
+*Figure MC–WT.1. Panel A is GP.4–GP.13, PE.13 and MC.1–MC.4: the horizontal ordinary trace and the vertical normal-support maps form the actual evaluation square. The source fundamental class has real shift \(2N\); the coefficient trace lowers degree by \(N\). Panel B is the fixed-covector real base slice \(d=1\), \(H=2\), \(\tau=1\), \(\xi=1/2\) of WT.9, so \(x'=x+1\) and \(t'=t-1/4\). It is a slice of the full map, not its entire phase space. Panel C states IN.4–IN.9 and WT.2–WT.12. The scalar is the unique actual product coefficient; its normalization is IN.7–IN.9. Exact graph properness is PC.3, and every relative-complement entry and equality homotopy is retained in MC.2–MC.4. Related constructions appear in the two Kashiwara–Schapira works linked in MC.4.*
+
+Full PNG · SVG · Exact data · Drawing source
+
+
+### 5.68. Convergent normal connections with nilpotent head
+
+Put \(h=D_t^{-1}\), \(E=\mathscr E_p\), \(B=\mathscr E^\infty_p\) and \(C=\mathscr E^{\mathbb R}_p\) at the normalized covector \(p=(t,x;\tau,\xi)=(0,0;1,0)\). The coefficient matrices in this section depend only on \(h\). Their convergence at \(h=0\) is an additional hypothesis, stronger than the factorial bounds for a general actual finite-order symbol.
+
+Let \(r\ge1\), and let \(T(h)\) be an \(r\)-by-\(r\) matrix of convergent power series, with nilpotent constant term \(N=T(0)\). Define the entire left \(E\)-module \(M_T\) by generators \(u_1,\ldots,u_r\) and the finite relations
+\[
+\begin{gathered}
+t u_j=\sum_{k=1}^r T_{kj}(h)u_k,\\
+D_{x_i}u_j=0.
+\end{gathered}
+\tag{CN.1}
+\]
+Convergent power series in \(h\) are actual finite-order symbols: a Cauchy bound on a smaller convergence circle is exponential in the coefficient index, hence satisfies the negative factorial bound of §5.19. All tensor products below are ordinary algebraic tensor products.
+
+**Theorem CN.1.** There is a finite constant complex matrix \(A\) and an actual \(B\)-linear isomorphism
+\[
+\begin{gathered}
+B\otimes_E N_A
+\ \xrightarrow{\ \sim\ }\ B\otimes_E M_T,\\
+N_A=\\
+E^r\big/\bigl((tD_tI-A)e,\ D_{x_i}e\bigr).
+\end{gathered}
+\tag{CN.2}
+\]
+Its inverse also has actual full-coefficient entries. The natural comparison
+\[
+B\otimes_E M_T\longrightarrow C\otimes_E M_T
+\tag{CN.3}
+\]
+is injective, and finitely many \(B\)-linear maps to the whole real-ring halfspace module separate its source. The theorem does not assert convergence for the generally divergent Gevrey matrices of §5.55, DP.4.
+
+#### CN.1. The normal equation and its monodromy
+
+For the analytic construction only, use an ordinary complex variable \(\zeta\). Choose \(R>1\) such that \(T(1/\zeta)\) is holomorphic for \(|\zeta|>R\). On the universal covering of that annulus solve
+\[
+Y'(\zeta)=T(1/\zeta)Y(\zeta).
+\tag{CN.4}
+\]
+Here is the existence and continuation argument. On a closed disc strictly inside the annulus the coefficient matrix has a bound \(L\). Successive integrals along the straight segment, starting with \(Y(\zeta_0)=I\), have norms at most \(L^k|\zeta-\zeta_0|^k/k!\). They converge normally, differentiate to CN.4, and give its unique solution: iteration of the integral equation for the difference of two solutions bounds it by the same factorial denominator times an initial uniform bound, tending to zero. Solving \(Z'=-ZT(1/\zeta)\) with \(Z(\zeta_0)=I\) and differentiating \(ZY\) gives \(ZY=I\); the square matrices are therefore inverse at every point. A path covered by finitely many such discs gives continuation with an invertible endpoint value. Uniqueness on overlaps and subdivision of a path homotopy into finitely many small disc rectangles show independence under homotopy with fixed endpoints. This constructs \(Y\) on the universal cover without a finite-distance blowup.
+
+Write \(w=\log\zeta\) there. The deck transformation has
+\[
+\begin{gathered}
+Y(w+2\pi i)=Y(w)M,\\
+M\in\operatorname{GL}_r(\mathbf C).
+\end{gathered}
+\tag{CN.5}
+\]
+Indeed both sides solve the same periodic equation in \(w\), so \(Y(w)^{-1}Y(w+2\pi i)\) has derivative zero.
+
+There is a constant matrix \(H\) with \(\exp(2\pi iH)=M\). To construct it, use the finite primary decomposition proved in §5.53, AM.C–AM.D. On a block \(M=\mu I+K\), with \(\mu\ne0\) and \(K^r=0\), choose \(\lambda\) with \(\exp(2\pi i\lambda)=\mu\), and set
+\[
+\begin{gathered}
+H=\lambda I+\frac{1}{2\pi i}L_\mu,\\
+L_\mu=
+\sum_{a=1}^{r-1}\frac{(-1)^{a+1}}{a}(K/\mu)^a.
+\end{gathered}
+\tag{CN.6}
+\]
+The elementary scalar choice is \(2\pi i\lambda=\log|\mu|+i\arg\mu\). Prove the logarithm identity first in the formal power-series ring \(\mathbf C[[z]]\): coefficient differentiation gives \((\log(1+z))'=(1+z)^{-1}\); hence the derivative of \(\exp(\log(1+z))/(1+z)\) is zero and its constant term is one. Reduce this identity modulo \(z^r\) and substitute \(z=K/\mu\). All terms of degree at least \(r\) vanish. The scalar exponential factor gives the claimed identity on each block. In particular \(H\) commutes with \(M\).
+
+Consequently
+\[
+\begin{gathered}
+V(w)=Y(w)e^{-wH},\\
+W(w)=e^{wH}Y(w)^{-1}
+\end{gathered}
+\tag{CN.7}
+\]
+are periodic and descend to mutually inverse holomorphic matrices on \(|\zeta|>R\). They satisfy
+\[
+\begin{gathered}
+V'=T(1/\zeta)V-\zeta^{-1}VH,\\
+W'=\\
+-WT(1/\zeta)+\zeta^{-1}HW.
+\end{gathered}
+\tag{CN.8}
+\]
+No estimate at \(\zeta=0\), and no regular-singular assertion there, is needed.
+
+#### CN.2. Nilpotence gives subexponential growth of both inverse matrices
+
+Take a constant Jordan basis for \(N\); the finite nilpotent-basis construction is the one in AM.C–AM.D. Let \(\ell\) be its largest block length, and put \(\kappa=\max(2,\ell)\), \(\alpha=1-1/\kappa<1\). In a block choose vectors with \(Nv_j=v_{j-1}\), and, for real \(s\ge1\), let
+\[
+D_s v_j=s^{-j/\kappa}v_j.
+\tag{CN.9}
+\]
+Thus \(D_s^{-1}ND_s=s^{-1/\kappa}N\). The norm of \(D_s\) is at most one in the Euclidean norm of this basis, and that of \(D_s^{-1}\) is at most \(s^{(\ell-1)/\kappa}\). Since the convergent matrix has \(T(1/\zeta)-N=O(|\zeta|^{-1})\), these inequalities imply, uniformly in the argument of \(\zeta\),
+\[
+\begin{gathered}
+\|D_s^{-1}T(1/(se^{i\theta}))D_s\|\\
+\le K s^{-1/\kappa},\\
+\|D_s^{-1}D_s'\|
+\le(\ell-1)/(\kappa s).
+\end{gathered}
+\tag{CN.10}
+\]
+The remainder estimate uses
+\((\ell-1)/\kappa-1\le-1/\kappa\). All constants are fixed for \(s\ge R_1>R\).
+
+On a lift with \(0\le\theta\le2\pi\), put \(Z(s,\theta)=D_s^{-1}Y(se^{i\theta})\). Radial differentiation gives
+\[
+\begin{gathered}
+\partial_s Z=\mathcal A(s,\theta)Z,\\
+\mathcal A=\\
+e^{i\theta}D_s^{-1}T(1/(se^{i\theta}))D_s\\
+{}-D_s^{-1}D_s'.
+\end{gathered}
+\tag{CN.11}
+\]
+Its inverse satisfies \(\partial_s Z^{-1}=-Z^{-1}\mathcal A\). Both initial matrices on the compact lifted radius-\(R_1\) circle have finite bounds. Iterating their radial integral equations gives the bound \(\exp(\int_{R_1}^s\|\mathcal A(v,\theta)\|\,dv)\): the \(k\)-fold ordered integral is at most the \(k\)-th power of this integral divided by \(k!\). CN.10 therefore bounds both matrices by \(K_1\exp(K_2s^\alpha)\), uniformly over that entire lifted circle and all larger radii.
+
+Multiplication by \(D_s^{\pm1}\) contributes only fixed powers of \(s\). Also
+\(\|e^{\pm wH}\|\le\exp(\|H\||w|)\le K_3s^{\|H\|}\) on this lift. By CN.7 there are fixed \(b,K_4,K_5\) such that
+\[
+\begin{gathered}
+\|V(\zeta)\|+\|W(\zeta)\|\\
+\le K_4|\zeta|^b e^{K_5|\zeta|^\alpha},\\
+|\zeta|\ge R_1.
+\end{gathered}
+\tag{CN.12}
+\]
+These are bounds for the single-valued matrices at every argument, not just sectorial estimates. For every \(\delta>0\), the function
+\(b\log s+K_5s^\alpha-\delta s\) is bounded above: after division by \(s\), its first two terms tend to zero. Enlarging a finite constant on the remaining compact interval proves
+\[
+\begin{gathered}
+\|V(\zeta)\|+\|W(\zeta)\|\\
+\le K_\delta e^{\delta|\zeta|},\\
+|\zeta|\ge R_1.
+\end{gathered}
+\tag{CN.13}
+\]
+
+#### CN.3. The complete Laurent coefficients are actual infinite-order symbols
+
+For either matrix write its Laurent expansion as \(F(\zeta)=\sum_{j\in\mathbf Z}F_j\zeta^j\). The coefficients are
+\[
+\begin{gathered}
+F_j=\\
+\frac{1}{2\pi i}\int_{|\zeta|=s}
+F(\zeta)\zeta^{-j-1}\,d\zeta,\\
+s>R.
+\end{gathered}
+\tag{CN.14}
+\]
+Here is a direct Laurent argument. Parameterize the circle by \(\zeta=se^{i\theta}\). The \(s\)-derivative of its coefficient integrand is \(1/(is)\) times the \(\theta\)-derivative of that integrand, so integration over a period proves independence of \(s\). On a fixed circle these are precisely its Fourier coefficients, divided by \(s^j\). Twice integrating by parts bounds those Fourier coefficients by a constant times \((1+|j|)^{-2}\), so their series converges absolutely and uniformly. It equals the function: for a continuous periodic difference with every Fourier coefficient zero, convolution with each Fejér kernel is zero. These kernels are the normalized functions \(m^{-1}|\sum_{k=0}^{m-1}e^{ik\theta}|^2\). Their integrals are one, they are nonnegative, and their mass outside any fixed neighbourhood of zero tends to zero by the geometric-sum formula. Uniform continuity then makes their convolution tend uniformly to the difference, which must therefore vanish. Finally choose a smaller and a larger circle around any compact intermediate annulus. The two coefficient bounds from CN.14 make its positive and negative tails geometric there, including any fixed derivatives. This proves absolute normal Laurent convergence without a formal summation assertion.
+
+On a fixed circle \(s=R_1\), CN.14 bounds the negative coefficients by \(\|F_{-n}\|\le K R_1^n\). For \(j\ge1\), use CN.13 and choose \(s=j/\delta\), whenever this exceeds \(R_1\). Then
+\[
+\begin{gathered}
+\|F_j\|\le K_\delta(e\delta/j)^j\\
+\le K_\delta(e\delta)^j/j!.
+\end{gathered}
+\tag{CN.15}
+\]
+The last inequality uses \(j!\le j^j\). Given any \(\epsilon>0\), take \(\delta=\epsilon/e\) and enlarge the prefactor for the finitely many remaining \(j\), including \(j=0\). Thus the same whole coefficient sequence has
+\[
+\begin{gathered}
+\|F_j\|\le K_\epsilon\epsilon^j/j!,\\
+j\ge0,\quad\text{every }\epsilon>0,\\
+\|F_{-n}\|\le K R_1^n n!,\\
+n\ge1.
+\end{gathered}
+\tag{CN.16}
+\]
+These are precisely the complete positive and negative bounds of §5.45, AN.4 and IM.1. The negative bound here is stronger than required. The coefficients are constant in \(t,x,z\), so they have a single common coefficient domain. Every fixed derivative preserves these bounds: differentiation in \(\zeta\) shifts the index by a fixed integer and multiplies by a fixed polynomial in it; use a smaller positive epsilon to absorb that polynomial, and increase one negative exponential constant. Derivatives in the other variables vanish. Hence \(V(\tau)\) and \(W(\tau)\) are actual matrices over \(B\).
+
+For these coefficient matrices the normal operator product is ordinary Laurent convolution: the right coefficient has no base-variable derivatives. The convolution is absolutely convergent at every fixed output degree, because both Laurent series converge absolutely on any one circle \(s>R\). Its coefficient equals the coefficient of the analytic matrix product. Since \(VW=WV=I\) there, they are two-sided inverse matrices in the actual infinite-order ring. CN.8 likewise holds as an actual coefficient identity. In particular
+\[
+\begin{gathered}
+{}[t,V(\tau)]=-V'(\tau),\\
+[D_{x_i},V(\tau)]=0.
+\end{gathered}
+\tag{CN.17}
+\]
+The sign follows by writing \(V\circ t=Vt+V'\) and \(t\circ V=tV\) in the normal product.
+
+#### CN.4. Exact presentation maps and the real-module injection
+
+In \(B\otimes_E M_T\) define
+\[
+e_j=\sum_k V_{kj}(\tau)u_k.
+\tag{CN.18}
+\]
+The finite relations CN.1, CN.8 and CN.17 give
+\[
+\begin{gathered}
+t e_j=\sum_k hH_{kj}e_k,\\
+D_{x_i}e_j=0,\\
+tD_t e_j=\sum_k(H-I)_{kj}e_k.
+\end{gathered}
+\tag{CN.19}
+\]
+For the last line use \(tD_t=D_tt-I\), retaining the minus identity. Consequently CN.18 gives the map CN.2 with
+\[
+A=(H-I)^{\mathsf T}.
+\tag{CN.20}
+\]
+The transpose is forced by the generator-column convention.
+
+Conversely, in \(B\otimes_E N_A\) set \(u_j=\sum_k W_{kj}(\tau)e_k\). The second equation of CN.8 gives
+\(hHW-W'=WT\). Therefore these \(u_j\) satisfy exactly CN.1, including every tangential relation. They give a map in the opposite direction. Their two composites are the identity by \(VW=WV=I\). This proves the isomorphism using finite maps between the actual full presentations. No freeness of \(B\otimes_E M_T\) over a coefficient subring is presumed.
+
+Tensoring the isomorphism with \(C\) over \(B\) preserves both inverse identities, without a flatness hypothesis. The explicit balanced identification is
+\[
+\begin{gathered}
+C\otimes_B(B\otimes_E M_T)\\
+\longrightarrow C\otimes_E M_T,\\
+c\otimes(b\otimes m)\\
+\longmapsto cb\otimes m.
+\end{gathered}
+\tag{CN.21}
+\]
+Its inverse is \(c\otimes m\mapsto c\otimes(1\otimes m)\); additivity and the two balancing relations verify both composites. The same construction applies to \(N_A\) and commutes with their comparison units.
+
+The Euler comparison is injective by the complete proof §5.53, AM.29. In the resulting square the two horizontal gauge maps are isomorphisms and the Euler vertical map is injective. Hence the vertical map CN.3 is injective. The actual finite separating maps of §5.54, EE.21–EE.27, transported by CN.2, give its finite halfspace detectors. This argument does not assert faithful flatness of \(C\) over \(B\).
+
+The same conclusion is preserved by the actual ordinary coordinate maps of §5.56, BCT.9, and by the Legendre and symmetric quadratic contact maps of §5.67, WT.12. In each case the explicit balanced tensor isomorphism transports this comparison square. This assertion uses those proved ring maps on their stated stalks.
+
+#### CN.5. An irregular second-order example and the limits of the hypotheses
+
+Let
+\[
+\begin{gathered}
+P=t^2D_t+1,\\
+N=\begin{pmatrix}0&0\\1&0\end{pmatrix},\\
+T(h)=
+\begin{pmatrix}0&-h\\1&2h\end{pmatrix}.
+\end{gathered}
+\tag{CN.22}
+\]
+The quotient \(E/(EP+\sum_i ED_{x_i})\) is precisely CN.1 for this \(T\). Indeed put \(u_0=u\), \(u_1=tu\). Since \(D_tt^2=t^2D_t+2t\), the equation \(Pu=0\) is equivalent to
+\[
+t^2u=h(2t-1)u.
+\tag{CN.23}
+\]
+This is exactly \(tu_0=u_1\), \(tu_1=-hu_0+2hu_1\). Conversely these two equations imply CN.23 and hence \(Pu=0\). Tangential derivatives commute with \(t\), so both presentations have the same tangential relations. The maps on these generators are inverse finite \(E\)-linear maps.
+
+Here \(N^2=0\), so one can take \(\kappa=2\) in the proof and obtain the concrete bound \(s^b\exp(K\sqrt s)\) in CN.12. The ordinary scalar equation \(Pf=0\) has the solution \(f(t)=e^{1/t}\) on \(t\ne0\), as direct differentiation verifies. It has no finite-pole growth bound on a positive real ray: for any integer \(m\ge0\), its exponential series contains the positive term \(t^{-m-1}/(m+1)!\), so \(t^m e^{1/t}\to+\infty\). CN.2 still gives an actual infinite-order Euler isomorphism and CN.3 is injective. No finite-order Euler gauge is asserted for this example.
+
+Nilpotence cannot simply be omitted from the growth argument. In rank one the equation \(Y'=cY\), \(c\ne0\), has \(Y=a e^{c\zeta}\). Removing a scalar constant monodromy logarithm only multiplies it by \(\zeta^{-H}\). Along the ray \(c\zeta>0\), its growth exceeds \(K_\delta e^{\delta|\zeta|}\) whenever \(0<\delta<|c|\), regardless of that fixed power. It cannot satisfy CN.13 or CN.16: the positive bound in CN.16 sums to \(K_\epsilon e^{\epsilon|\zeta|}\), and its exponentially bounded negative part is bounded on every sufficiently large exterior circle. At the original stalk \(t=0\), the corresponding finite relation \(t-c\) is elliptic and its module is zero; it is outside the nilpotent-head hypothesis.
+
+Convergence of \(T(h)\) is also essential to this particular construction. The series \(\sum_{n\ge0}n!h^n\) satisfies the actual negative factorial bound, but has radius of convergence zero since the ratio of successive terms at any nonzero \(h\) eventually exceeds one. If it were the negative Laurent part of a function holomorphic on an exterior annulus, CN.14 on one fixed circle would give \(n!\le K R_1^n\), which is false: the last \(\lfloor n/2\rfloor\) factors of \(n!\) are at least \((n/2)^{\lfloor n/2\rfloor}\). Thus arbitrary Gevrey matrices require a further argument. The theorem above concerns all ranks in its specified convergent normal class.
+
+![Normal equation, complete coefficient bounds and balanced module comparison](assets/convergent-normal-regularization.png)
+
+*Figure CN.1. The upper diagram gives the actual maps CN.7–CN.20; \(w=\log\zeta\), \(e^{2\pi iH}=M\), and \(A=(H-I)^{\mathsf T}\). The lower square is the natural comparison of CN.21, with its two inverse gauge maps. The growth estimate is CN.12–CN.16; for CN.22 its exponent is exactly \(1/2\). This is a diagram of proved maps and bounds, with no numerical solution sample. Editable drawing source, exact diagram data, PNG and SVG accompany it. Free source context: Kashiwara–Kawai, [Holonomic systems III](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), IV.1 and IV.6–IV.7, for the general embedding problem. CN.1–CN.5 prove the stated convergent-class result and its actual comparison maps here.*
+
+
 ## 6. What monodromy misses in the irregular world
 
 Consider $\partial_t e=t^{-2}e$. A horizontal coefficient is $e^{1/t}$; its ordinary monodromy is trivial. The trivial connection also has trivial monodromy, but (1.5) proves these meromorphic connections are not isomorphic. For $t=r e^{i\theta}$,

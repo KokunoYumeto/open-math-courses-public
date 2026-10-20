@@ -906,7 +906,7 @@ Appendix D proves that this property computes derived global and compactly suppo
 
 ## Appendix D. Derived sections of the chain sheaf
 
-We now prove the derived-section assertion left open in C.7. The coefficients are the field \(\Lambda\). The spaces in this appendix are locally compact and metrizable, admit a countable compact exhaustion, and have a uniform finite compact cohomological dimension on their open subsets: for some \(N\),
+This appendix proves the derived-section assertion of C.7. The coefficients are the field \(\Lambda\). The spaces in this appendix are locally compact and metrizable, admit a countable compact exhaustion, and have a uniform finite compact cohomological dimension on their open subsets: for some \(N\),
 
 \[
 H_c^a(V,F)=0\quad(a>N)

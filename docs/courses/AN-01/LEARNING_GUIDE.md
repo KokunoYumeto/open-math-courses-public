@@ -163,6 +163,18 @@ The lesson numbers identify stable files. Within a route, follow the linked prer
 
 - **How does curvature control lattice counts?** [*Curvature, two boundary points and lattice counts*](src/curvature-two-boundary-points-and-lattice-counts.md) computes the two normal phases of a convex body, proves a smooth Fourier summation identity and balances the two smoothing errors.
 
+- **How does a boundary change stationary phase?** [*Half-space phases and the Fresnel transition*](src/half-space-phases-and-the-fresnel-transition.md) proves the three local boundary regimes, their complete coefficients and remainders, and the Fresnel transition between an exterior and an interior critical point.
+
+- **Which powers survive a degenerate critical point?** [*Finite-order phases and missing powers*](src/finite-order-phases-and-missing-powers.md) derives every finite-order coefficient with its exact remainder, identifies the missing powers, and gives the two canonical Airy profiles through a cubic collision.
+
+- **How do two critical points merge?** [*Cubic collisions and uniform amplitudes*](src/cubic-collisions-and-uniform-amplitudes.md) constructs smooth polynomial coordinates, expands every compact amplitude in two Airy profiles, and treats one cubic direction together with transverse quadratic directions.
+
+- **When does cancellation define a distribution?** [*Complex phases and oscillatory distributions*](src/complex-phases-and-oscillatory-distributions.md) constructs complex-phase distributions across the full symbol range, proves smoothness off projected stationary directions, and determines the wave kernel and both causal halves.
+
+- **How do differences measure fractional smoothness?** [*Fractional energy and sharp Fourier embeddings*](src/fractional-energy-and-sharp-fourier-embeddings.md) proves the exact difference-norm identity, its two limiting constants, compact Hölder inclusions and the sharp weighted Fourier thresholds.
+
+- **Which derivative estimates survive a rough symbol?** [*Annular multipliers and elliptic endpoints*](src/annular-multipliers-and-elliptic-endpoints.md) proves the averaged multiplier theorem, Hölder bounds and interior elliptic estimates, and constructs continuous forcing with unbounded highest derivatives.
+
 Every available lesson contains its own graded problems and complete solutions. The course scope describes the lessons collected in this reader.
 
 ## Sources and contributions
