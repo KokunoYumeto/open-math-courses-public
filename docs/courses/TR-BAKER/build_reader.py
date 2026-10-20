@@ -25,6 +25,16 @@ def digest(path):
     return hashlib.sha256(path.read_bytes()).hexdigest().upper()
 
 
+def validate_metadata(metadata):
+    """Keep the course catalogue limited to reader information and attribution."""
+    if 'status' in metadata or any('status' in u for u in metadata['units']):
+        raise ValueError('Course status belongs outside publication metadata')
+    for unit in metadata['units']:
+        for scope in unit.get('authorship_scope', {}).values():
+            if re.search(r'(?i)self[- ]check|review pending|author review', scope):
+                raise ValueError('Review commentary belongs outside publication metadata')
+
+
 def current_pdf(unit):
     """Expose a compiled edition only when its source and bytes are current."""
     edition = unit.get('compiled_pdf')
@@ -184,6 +194,7 @@ def source_archive(destination):
     repository = docs.parent
     members = []
     metadata = json.loads((COURSE / 'course.json').read_text(encoding='utf-8'))
+    validate_metadata(metadata)
     allowed = json.loads((COURSE / 'source-package-files.json').read_text(encoding='utf-8'))['members']
     if len(allowed) != len(set(allowed)):
         raise ValueError('Duplicate source-package member')
@@ -233,6 +244,7 @@ def main():
     parser.add_argument('--archive', type=Path)
     args = parser.parse_args()
     metadata = json.loads((COURSE / 'course.json').read_text(encoding='utf-8'))
+    validate_metadata(metadata)
     units = metadata['units']
     if args.tex:
         for unit in units:
