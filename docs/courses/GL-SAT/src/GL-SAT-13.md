@@ -3984,7 +3984,7 @@ The underlying formal complex is the one-dimensional space in degree one. The or
 
 ### C.24. Descending composition formality through coefficient fields
 
-The following coefficient argument is independent of a Betti–étale comparison. Its conclusion supplies descent of the enhanced *composition* model. A comparison of the actual geometric mapping diagrams and descent of their complete symmetric monoidal structure are still required for the complex theorem. We do not claim either merely from the lemmas here.
+The following coefficient argument is independent of a Betti–étale comparison. Its conclusion supplies descent of the enhanced *composition* model. The actual geometric mapping diagrams are compared in C.27–C.29. Their complete rational symmetric monoidal comparison is [Theorem C.80.1.1](#c801-the-rational-represented-tensor-comparison). The lemmas here concern the enhanced composition model.
 
 The elementary algebraic inputs are proved in the earlier programme: The Nullstellensatz and Jacobson rings, Theorems 2.1–2.2, Formally smooth, unramified and étale ring maps, Theorems 1.2 and 4.1, and Krull dimension and Noether normalization, Lemmas 1.3 and 4.1 and Theorem 4.2.
 
@@ -4608,7 +4608,7 @@ Keep the trait \(S\) of C.26 and the pinned integral group. For \(n\geq1\), let
  U_n=\{x_i-x_j\text{ is invertible for all }i\ne j\}\subset B_n.
  \tag{C.28.1}
 \]
-An ordered moving generator is the proper endpoint image of a chain whose \(i\)-th step is an induced root-word resolution at the section \(u=x_i\). Each step retains its finite flag reduction and every wall in its word. The moving-endpoint and finite-frame constructions are those of Fusion and the commutativity constraint, Sections 1–2, using its full monic completion and the all-ring gluing theorem of Beauville–Laszlo gluing and the moduli interpretation, Sections 1–3 and Theorem 8.1. They work over \(S\): their equations, splitting, monic operator resolution and detecting-line conditions are integral. We prove the geometric and coefficient comparisons required for these actual moving generators; symmetric fusion will require a further diagram argument.
+An ordered moving generator is the proper endpoint image of a chain whose \(i\)-th step is an induced root-word resolution at the section \(u=x_i\). Each step retains its finite flag reduction and every wall in its word. The moving-endpoint and finite-frame constructions are those of Fusion and the commutativity constraint, Sections 1–2, using its full monic completion and the all-ring gluing theorem of Beauville–Laszlo gluing and the moduli interpretation, Sections 1–3 and Theorem 8.1. They work over \(S\): their equations, splitting, monic operator resolution and detecting-line conditions are integral. We prove the geometric and coefficient comparisons required for these actual moving generators; the full symmetric fusion diagram is [C.29](#c29-actual-complex-fusion-and-its-coherent-symmetric-enhancement).
 
 #### C.28.1. Compact constants for diagonal arrangements
 
@@ -4875,7 +4875,7 @@ This theorem concerns the loop-equivariant category on the complex Grassmannian.
        \bigl(\operatorname{Sym}_L(\mathfrak h_L[-2])\bigr)
  \tag{C.29.5}
 \]
-with the transported enhanced symmetric structure. In particular this gives the complex-coefficient statement after choosing an embedding \(E\hookrightarrow\mathbf C\). Descent to characteristic-zero fields admitting no such \(E\)-embedding is a further requirement.
+with the transported enhanced symmetric structure. In particular this gives the complex-coefficient statement after choosing an embedding \(E\hookrightarrow\mathbf C\). Descent to characteristic-zero fields admitting no such \(E\)-embedding is [Corollary C.80.2.1](#c802-arbitrary-characteristic-zero-coefficients).
 
 **Proof.** On two induced generators, every finite group-nerve level mapping object is the shifted coefficient dual of the compact pair model of C.26–C.27. That model is a finite perfect \(E\)-complex. Its coefficient extension is its actual compact \(L\)-model, by the finite affine/projective-line and localization construction. Finite perfect dual commutes with \(E\to L\), and evaluation and trace give the same mapping map. Thus generator mapping objects compare at each level.
 
@@ -4893,7 +4893,7 @@ Choose the argument of \(w\), of small modulus \(r\), so \(aw^m=-|a|r^m\). The r
 \(|p(z_0+w)/c|\le1-|a|r^m+Cr^{m+1}<1\).
 This contradicts minimality. Thus every nonconstant polynomial has a root; division and induction split it. The compact-disc minimum used here follows directly from sequential compactness in \(\mathbf R^2\): a minimizing sequence has a convergent subsequence and continuity gives its limit value.
 
-Finally order the extensions of the rational-function embedding to intermediate algebraic subfields of \(E\). Unions of chains remain embeddings. A maximal one has domain all of \(E\), since otherwise an omitted algebraic element has a minimal polynomial whose transported polynomial has a root in \(\mathbf C\); quotienting by that irreducible polynomial extends the embedding. This proves the asserted abstract embedding and the complex-coefficient consequence. It supplies no descent to, for example, \(\overline{\mathbf Q}\), which cannot contain \(\mathbf Q_\ell\) since it is countable. The complete characteristic-zero tensor descent remains to be proved. ∎
+Finally order the extensions of the rational-function embedding to intermediate algebraic subfields of \(E\). Unions of chains remain embeddings. A maximal one has domain all of \(E\), since otherwise an omitted algebraic element has a minimal polynomial whose transported polynomial has a root in \(\mathbf C\); quotienting by that irreducible polynomial extends the embedding. This proves the asserted abstract embedding and the complex-coefficient consequence. It supplies no descent to, for example, \(\overline{\mathbf Q}\), which cannot contain \(\mathbf Q_\ell\) since it is countable. The rational tensor descent and its extension to arbitrary characteristic-zero fields are [Theorem C.80.1.1 and Corollary C.80.2.1](#c801-the-rational-represented-tensor-comparison). ∎
 
 ![The original ordered comparison retains geometric convolution; strict moving extension identifies the geometric permutation components, while the entire arithmetic diagram supplies enhanced coherence; diagonal normalizations retain their supported maps](assets/coherent-complex-fusion.png)
 
@@ -5953,7 +5953,7 @@ For two solutions \(g,h\), substitute (C.37.11) for \(g\), then for \(h\). On th
  \qquad a_j=h_jg_j^{-1}.
  \tag{C.37.12}
 \]
-The converse substitution shows that such a target stabilizer sends solutions to solutions. Composition and inverse preserve (C.37.12) by that same finite-domain calculation. If a complete selected presentation has a solution, its reduced solution variety is thus a torsor under the closed unitriangular stabilizer, as in C.30.3. This is a verified equation-domain statement for the maps actually retained; constructing all convolution-module grafting and cross-arity maps and their complete extension-field solution remains necessary before applying it to finish tensor descent. ∎
+The converse substitution shows that such a target stabilizer sends solutions to solutions. Composition and inverse preserve (C.37.12) by that same finite-domain calculation. If a complete selected presentation has a solution, its reduced solution variety is thus a torsor under the closed unitriangular stabilizer, as in C.30.3. This is a verified equation-domain statement for the maps actually retained; the full native product, graft and calibrated extension-field solution for rational descent are Theorems 77–79 of Rational forest coordinates. ∎
 
 #### C.37.4. The shared parameter and the smallest cross window
 
@@ -6479,7 +6479,7 @@ The old minimal graph was transferred from the genuine dg graph of C.38.1–C.38
 
 These comparisons identify the old cobar with the original nested functor graph and its represented modules. Composing with \(\Omega Q\) recovers all those modules and their grafting along the new quasi-equivalent cores. The cores on the new side are exactly \(\Omega(C^{\otimes n_i})\) and \(\Omega C\), so every arity now has the designated common tensor-bar input. Graph recovery is C.33.2's complete represented-module evaluation.
 
-Finally all formulas keep endpoints, string grades and the existing intermediate labels of each word. Choose the finite tuple pools and necessary image summands as in C.38.3, without closing the new output pool under arbitrary tensor products. Full-corner restriction gives the same path words, maps \(f_i\), Taylor substitutions and cut formulas. Their increasing union is the entire prescribed countable nested graph. This verifies the restriction assertion. The complete geometric unit, permutation and comparisons of different flattened strings, with their higher substitution identities, remain additional marks before the full tensor descent conclusion. ∎
+Finally all formulas keep endpoints, string grades and the existing intermediate labels of each word. Choose the finite tuple pools and necessary image summands as in C.38.3, without closing the new output pool under arbitrary tensor products. Full-corner restriction gives the same path words, maps \(f_i\), Taylor substitutions and cut formulas. Their increasing union is the entire prescribed countable nested graph. This verifies the restriction assertion. The full native unit, permutation and comparisons between different graph layouts, with every higher substitution identity used for coefficient descent, are retained in Theorems 78–79 of Rational forest coordinates. ∎
 
 #### C.40.3. One common-core group on the whole path graph
 
@@ -7075,7 +7075,7 @@ For the inverse, first factor out the given invertible core and bare central lea
 
 Every cotensor, map, cut and operation uses its existing endpoint and intermediate labels. Full finite corners therefore restrict the same formulas. In positive common cores, the initial module maps preserve degree and endpoints, while their homotopies have degree minus one. They preserve, respectively lower, the height weight of C.40.2. Each original grafting term has degree one with the same endpoints. The finite sums in (C.43.11) have the same degree and endpoint bounds. This verifies the retained window assertion.
 
-The theorem supplies a transfer preserving prescribed products and a genuine comparison when its full raw comparison is supplied. The complete native cross-arity/unit comparison and its arithmetic point in the whole marked presentation remain additional required constructions before rational strong monoidal descent. ∎
+The theorem supplies a transfer preserving prescribed products and a genuine comparison when its full raw comparison is supplied. The complete native cross-arity/unit comparison and calibrated extension-field point for rational strong monoidal descent are Theorems 78–79 of Rational forest coordinates. ∎
 
 #### C.43.4. Scalar index action and an actual higher graph projection
 
@@ -20828,6 +20828,139 @@ not imply the fixed-product equation of Proposition C.79.3.1. \(\square\)
 
 Propositions C.79.1.1–C.79.3.1 prove the positive state tower, the full native projection lift and transport of fixed rational marks. Exercises C.79.4.1–C.79.4.3 compute the nonprimitive unit, a nonzero positive path and a shuffle-covariance counterexample. Editable SVG source.
 
+### C.80. Rational native coefficient descent
+
+The full tree presentation, its actual native product and graft comparisons,
+and the rational coefficient descent are developed in
+Rational forest coordinates with units and nullary operations.
+Its Theorems 77–79
+use the rational geometric collection and fixed cohomological target of
+[C.48.1](#c481-fix-the-rational-cohomological-target), including their actual tensor objects and universal classes.
+
+#### C.80.1. The rational represented tensor comparison
+
+Let \(\mathcal G_{\mathbf Q}\) be the rational spherical generator enhancement
+of C.27 and C.48, with finite IC sums as objects and with its specified
+ordered convolution functors \(F_n^G\). Let \(\mathcal H_{\mathbf Q}\) be
+its graded cohomology category with zero differential, the fixed rational
+decomposition maps and the cohomological tensor functors \(F_n^H\).
+Put
+\[
+ P_G(\mathbf x;y)=\operatorname{RHom}_{\mathcal G_{\mathbf Q}}(F_n^G\mathbf x,y),
+ \qquad
+ P_H(\mathbf x;y)=\operatorname{Hom}_{\mathcal H_{\mathbf Q}}(F_n^H\mathbf x,y).
+ \tag{C.80.1}
+\]
+The arity-zero representing object is \(IC_0\). Its entire mapping
+complex, including positive-degree maps, belongs to this collection.
+
+**Theorem C.80.1.1.** There is a normalized full tree comparison
+\[
+ F_{\mathbf Q}:P_G\longrightarrow P_H
+ \tag{C.80.2}
+\]
+whose first map is a quasi-isomorphism on every represented profile and
+induces the fixed cohomology identity. It represents an enhanced strong
+monoidal equivalence between the finite coherent perfect envelopes of
+\(\mathcal G_{\mathbf Q}\) and \(\mathcal H_{\mathbf Q}\).
+For the specified symmetric input diagram, this equivalence is strong
+symmetric monoidal. Its tensor and unit classes are the actual
+cohomological ones.
+
+**Proof.** The actual rational collection and all-profile leading
+calibration are Proposition 8 of the linked chapter. Its Theorem 9
+identifies the full represented fan modules, on every original input
+and output word, and Theorem 17 retains their entire calibrated
+comparison. The native unary differential, binary graft and normalized
+three-vertex source package are Theorems 10–12; the prescribed
+two-vertex coefficient comparison is Theorem 13.
+
+Theorems 71–76 retain the complete original execution indices,
+source changes, both endpoint maps, joint graft inputs and all labelled
+source and painted faces. Theorem 77 supplies one strict boundary row
+with its entire old comparison. The augmentation there acts only on
+the additional finite geometric parameter. Original bars, proper
+identity-valued parameters and ordinary identity outputs remain.
+
+Theorem 78 extends through its exact represented-restriction kernel
+and evaluates every complete fundamental chain. For a tree with
+\(q\) vertices, the source and coefficient values have degrees
+\(2-q\) and \(1-q\), respectively. Full matrix products and genuine
+grafts precede primitive recovery. Stokes' equation gives the entire
+coderivation and comparison equations, including all source unary
+terms and all simultaneous target-block products. This constructs the
+native source over \(\mathbf Q\) and one calibrated full comparison
+over \(E\), with the source/comparison bounds \(3/2\) and the full
+fan packages fixed.
+
+Theorem 79 then gives (C.80.2). Explicitly, rational minimal transfer
+gives \(I:M\to P_G\), \(J:P_G\to M\), with \(JI=1\).
+The entire field map \(g_E=\Phi I_E\) has first component \(1_H\).
+The compatible full unipotent windows of Theorems 1–3 give
+\(g_{\mathbf Q}:M\to P_H\), and
+\(F_{\mathbf Q}=g_{\mathbf Q}J\). These windows bound every
+connected-subtree boundary arity and retain nullaries and identity
+outputs. The field point remains related to this rational comparison
+by the full target automorphism
+\(a=g_E(g_{\mathbf Q}\otimes E)^{-1}\) and the comparison prism of
+Theorem 79. No rationality of its individual chosen higher coefficients
+is required.
+
+The full represented recovery theorem, Theorem 4, applies to this
+whole comparison. For every tuple its tensor constraint is represented
+by the image of \(1_{F_n^G\mathbf x}\). All higher tree components
+give its naturality, substitution and unit coherence. At the empty
+tuple this is the actual identity of \(IC_0\). The first mapping map
+is a quasi-isomorphism and the generator labels agree, so the unary
+functor is a quasi-equivalence. C.23.5 and C.27 extend it, with its
+tensor constraints, to finite cones and coherent retracts. The fixed
+permutation equations give the stated symmetric compatibility.
+This proves the theorem. \(\square\)
+
+#### C.80.2. Arbitrary characteristic-zero coefficients
+
+**Corollary C.80.2.1.** For every characteristic-zero field \(L\),
+the actual finite-support \(L\)-coefficient spherical generator
+envelope has the strong cohomological tensor comparison obtained
+from (C.80.2) by coefficient extension and coherent idempotent
+completion. It induces the identity on its fixed graded collection.
+The symmetric compatibility holds for the specified symmetric diagram.
+
+**Proof.** The prime-field inclusion gives \(\mathbf Q\to L\).
+The comparison of actual mapping objects with coefficient extension
+uses the finite pair models of C.26–C.27. At each group-nerve level
+they are finite perfect rational complexes. Their duals, evaluation
+and trace therefore commute with field extension. The uniform lower
+bound \(L_0\) of C.26.3 is independent of the nerve level. In total
+degree \(d\), levels greater than \(d+1-L_0\) contribute neither
+the relevant terms nor their incoming differential. Thus the
+finite-window totalization proof in C.29.4 compares the entire
+mapping objects after \(\mathbf Q\to L\). It does not commute
+tensor product with an unrestricted infinite product.
+
+The ordinary and exceptional IC boundary tests in C.27 are the same
+finite restriction complexes. Exact field extension preserves them
+and their rank-one open coefficient, so it sends each rational IC
+generator to the actual \(L\)-coefficient IC generator. Lesson 11,
+Theorem 8.3, proves semisimplicity over this original
+characteristic-zero field: every spherical perverse object is a
+finite sum of those generators with finite-dimensional
+\(L\)-coefficients. Finite perverse truncations give every bounded
+finite-support object. Consequently the coherent perfect envelope
+after extension is the actual one, not just a fully faithful
+subcategory of it.
+
+The same finite pair and finite-window argument applies to the
+ordered wall kernels and the moving configurations of C.27–C.29.
+It compares their actual proper and tensor operations. Their IC
+strict extension tests identify the actual geometric fusion
+components. Extend the entire rational functor and its constraints
+in (C.80.2) through these coefficient functors. Exact extension
+preserves all full tree equations, every finite cone and every
+specified coherent retract. The resulting comparison is therefore
+strong monoidal on the actual \(L\)-envelope, with the stated unit
+and symmetric compatibility. \(\square\)
+
 ## 11. Scope and free reading
 
 Sections 2–7 establish the unit self-Ext formula,the invariant-polynomial classifying-space ring,the torus tensor model over characteristic-zero fields,the Koszul endomorphism and generated-category calculations,and the distinction between compact and bounded objects. The examples and exercises retain the specified shifts,coefficient fields and support conditions.
@@ -20836,7 +20969,7 @@ Appendix A develops stabilizer cohomology,equivariant Ext purity,minimal-model t
 
 Appendix C.30–C.79 develops the relative descent and coherence tools:directed finite coalgebra windows,common tensor cores,full nested functor graphs,bar-cobar and module contractions,formal unit/execution indices,parameter faces and shuffle domains. Relative represented-action recovery keeps the prescribed pure-state functors and their exact core powers. Whole one-cross restrictions have explicit homotopies to chosen product lifts. Coherent parameter families retain all higher components when normalizing selected product edges. Commuting ordered cut projections identify the actual sums and intersections of product-shuffle domains. On the stated chain submodels,a finite perturbation contracts the full relative Taylor kernel and permits closed comparisons and compatible homotopy primitives to extend globally. Compatible product actions extend by finite curvature correction,and ordered output-root induction gives module models with their prescribed product restrictions. The native central tensor retains every unit output and identity strand;an actual finest-domain comparison extends to transport the entire path differential. The exact common projection square and full represented evaluation construct that finest comparison for the specified native rootwise product families,retaining both actions and all higher source components. The full projection-square homotopy retains four correction terms,and one actual finest primitive suffices to normalize all prescribed compatible ordered cuts. The reverse path projection lifts entire coherent families with exact projection-compatible edges;its canonical return formula retains the original raw comparisons and their kernel homotopies. Full bar-unit mapping restriction preserves the entire transformation cohomology and records the prescribed square for one specified native product family. Relative restriction retains genuine full faces when the corresponding relative transformation class is supplied. A supplied compatible entire common path lifts to native modules with the original first family fixed;its identity-cone correction retains assigned faces and every higher generator. Global locally forward finite root indices support one fixed-profile product normalization whose finite-corner and full-face restrictions agree on their intersections. The full joint-execution grafting domain has its original bar map; complete product shuffles lie in it exactly under the outer-final/inner-initial prerequisite condition. Entire coherent diagrams in a specified dg category admit explicit full-string transport and strictly associative staged model contraction, retaining their path comparisons. Typed kernel cotensors preserve their intermediate frontier cores, and the actual canonical-state projection has an acyclic full Nat kernel for relative coherent operator lifting. Canonical cobar sources admit an actual dg retraction to strict operator objects, and full marked postcomposition carries entire higher model-change diagrams. Actual dg model bridges retain geometric object representatives and give relative fixed-outer-type native operator diagrams without requiring source augmentations. Full marked evaluation gives entire associative horizontal substitution, retaining the mixed cochain homotopy and nonlinear model-change terms. A full-differential relative contraction preserves the complete split source image and yields exact unit comparisons for transport across changing intermediate types. The actual native joint diagram has normalized formal units, retains every positive index label, and carries its supplied full comparison through the model bridges. Normalized unital cobar models retain actual scalar constants and give strict dg operator objects with exact composition and full unit naturality. Their full transformation restriction has an exact section, a contracted kernel and an entire projected horizontal comparison. Full tensor-parameter categories and relative coherent cube extensions retain prescribed compatible boundaries and all original unary and unit data. Their actual binary tensor projection has a finite kernel contraction, and the full shuffle gives a common unital tensor input with the exact counit square. Finite ordered families share exact regrouping and multishuffle squares, with one contraction compatible with all ordered tensor cuts. Entire projected evaluation is preserved under composition, yielding compatible strictly unital native sequential operator cubes with their full parameter restrictions. Full tensor-unit mapping restriction retains all transformation classes and primitives, and its exact tensor squares lift supplied native external comparisons. Positive native input towers and whole projection lifts retain the original native higher cells; fixed rational product and graft marks have their separate covariance equations.
 
-A full strong monoidal descent to arbitrary characteristic-zero coefficients additionally requires the transferred profile-changing joint-execution and external grafting data,with every higher covariance equation on its complete compatible domain. The fixed-profile restriction result does not identify those domains with independent root products. The quantum/loop-rotation,renormalized,singular-support and Ran/factorization equivalences of Section 8 require arguments beyond the results established here.
+Appendix C.80 and its linked chapter establish the full native source and painted-cell evaluations, the calibrated rational strong monoidal comparison and its extension to arbitrary characteristic-zero coefficient fields. Their shared inputs retain the entire profile-changing execution and external grafting diagrams, all unary and nullary data and every simultaneous target partition. The quantum/loop-rotation,renormalized,singular-support and Ran/factorization equivalences of Section 8 require arguments beyond the results established here.
 
 Free further reading:
 
