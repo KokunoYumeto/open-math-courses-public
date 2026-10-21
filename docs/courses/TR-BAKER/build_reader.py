@@ -50,7 +50,9 @@ def current_pdf(unit):
 
 def bind_figures(tex):
     """Keep an authored Figure paragraph with its image, including mathematics."""
-    pattern = re.compile(r'\\begin\{figure\}\n[\s\S]*?\\end\{figure\}\n\s*\\emph\{')
+    pattern = re.compile(
+        r'\\begin\{figure\}\n(?:(?!\\end\{figure\})[\s\S])*'
+        r'\\end\{figure\}\n\s*\\emph\{')
     position = 0
     parts = []
     for match in pattern.finditer(tex):
@@ -120,6 +122,8 @@ def write_tex(unit, pandoc):
             raise ValueError('Multiple tags in one aligned/gathered environment')
         return re.sub(r'\s*\\tag\{[^}]+\}', '', inner) + ' \\tag{' + tags[0] + '}'
     tex = re.sub(r'\\begin\{(aligned|gathered)\}[\s\S]*?\\end\{\1\}', move_tag, tex)
+    if '\\mathscr' in tex:
+        tex = tex.replace('\\begin{document}', '\\usepackage{mathrsfs}\n\\begin{document}', 1)
     tex = tex.replace('\\begin{document}', '\\providecommand{\\Eta}{\\mathrm{H}}\n\\begin{document}', 1)
     if unit['internal_id'] == 'TR-BAKER-07':
         # Column widths for the tables in Lesson 7.
@@ -140,7 +144,7 @@ def slug(text):
     return re.sub(r'[^a-z0-9]+', '-', text).strip('-')
 
 
-def render_unit(unit, template, number, total, units):
+def render_unit(unit, template, number, total, units, *, write=True):
     uid = unit['internal_id']
     source = COURSE / unit['source']
     text = source.read_text(encoding='utf-8')
@@ -176,16 +180,23 @@ def render_unit(unit, template, number, total, units):
     direct = '<p class="small source-link">' + ' · '.join(downloads) + '</p>'
     document = re.sub(r'(<article class="lesson">).*?(</article>)',
                       lambda m: m.group(1) + '\n' + body + '\n' + m.group(2), template, count=1, flags=re.S)
+    document = re.sub(r'<p class="lesson-status">.*?</p>\s*', '', document, flags=re.S)
     document = re.sub(r'<title>.*?</title>', '<title>' + html.escape(unit['title']) + ' · Linear forms in logarithms and their applications</title>', document, count=1)
     document = re.sub(r'(<link rel="canonical" href=")[^"]*',
-                      r'\1https://kokunoyumeto.github.io/open-math-courses/courses/TR-BAKER/' + uid + '.html', document, count=1)
+                      r'\1https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-BAKER/' + uid + '.html', document, count=1)
+    document = re.sub(r'https://github\.com/KokunoYumeto/open-math-courses(?:-public)*(?=/|["#?]|$)',
+                      'https://github.com/KokunoYumeto/open-math-courses-public', document)
     document = re.sub(r'Lesson \d+ of \d+', f'Lesson {number} of {total}', document)
     previous = '<span></span>' if number == 1 else '<a rel="prev" href="' + units[number - 2]['internal_id'] + '.html">← ' + html.escape(units[number - 2]['title']) + '</a>'
     following = '<span></span>' if number == total else '<span class="pager-next"><a rel="next" href="' + units[number]['internal_id'] + '.html">' + html.escape(units[number]['title']) + ' →</a></span>'
     pager = '<nav class="pager" aria-label="Lessons">' + previous + '<a href="./">Course contents</a>' + following + '</nav>'
     document = re.sub(r'<nav class="pager".*?</nav>', lambda m: pager, document, count=1, flags=re.S)
     document = re.sub(r'<p class="small source-link">.*?</p>', lambda m: direct, document, count=1, flags=re.S)
-    (COURSE / (uid + '.html')).write_text(document, encoding='utf-8', newline='\n')
+    document = document.replace('<span class="unlinked">Course sources</span>',
+                                '<a href="../../downloads/TR-BAKER-source.zip">Course sources</a>')
+    if write:
+        (COURSE / (uid + '.html')).write_text(document, encoding='utf-8', newline='\n')
+    return document
 
 
 def source_archive(destination):
