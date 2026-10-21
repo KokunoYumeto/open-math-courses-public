@@ -1436,7 +1436,7 @@ Nilpotence kills the central component of a Higgs field as well as its invariant
 
 The constant object belongs to it. A general object of the full de Rham automorphic category need not: on the Picard variety of a positive-genus curve, a skyscraper D-module has the entire cotangent fibre as characteristic variety.
 
-**Regularity theorem — not yet proved.** Under our characteristic-zero curve and group assumptions, (3.1) equals its subcategory obtained from ind-regular holonomic D-modules on affine charts, followed by descent. In particular its objects are locally ind-holonomic with regular singularities. The exact source is [AGKRRV, Corollary 16.5.6](https://arxiv.org/abs/2010.01906), headed “The regular singularity property”; [GLC I, §4.2.1 and its footnote](https://arxiv.org/abs/2405.03599) states the equality and the chartwise meaning of ind-completion. The spectral-projector construction and its geometric image and generation hypotheses remain necessary for a proof of this theorem. Sections 3.16–3.19 prove finite chart-point detection and the conditional generation argument. Sections 3.20–3.22 verify the nilpotent chart dimension hypothesis and its full unbounded detection consequence; regularity still requires the spectral construction.
+**Regularity theorem — not yet proved.** Under our characteristic-zero curve and group assumptions, (3.1) equals its subcategory obtained from ind-regular holonomic D-modules on affine charts, followed by descent. In particular its objects are locally ind-holonomic with regular singularities. The exact source is [AGKRRV, Corollary 16.5.6](https://arxiv.org/abs/2010.01906), headed “The regular singularity property”; [GLC I, §4.2.1 and its footnote](https://arxiv.org/abs/2405.03599) states the equality and the chartwise meaning of ind-completion. For this independently supported category, GFP.55–GFP.56 gives regularity once Hecke-lisse membership is known. The converse from independent nilpotent support and its supported generation remain necessary for the full theorem. Sections 3.16–3.19 prove finite chart-point detection and the conditional generation argument. Sections 3.20–3.22 verify the nilpotent chart dimension hypothesis and its full unbounded detection consequence; regularity of every independently nilpotent-supported object still requires that support converse.
 
 The word “ind” matters. An infinite direct sum of regular connections is an allowed object, with no finite-rank assertion. On an unbounded stack, one must also distinguish global compactness, chartwise constructibility, and coherent or holonomic cohomology. The explicit counterexample in §5 prevents identifying these notions.
 
@@ -2535,7 +2535,7 @@ For \(g=u^\lambda\), differentiation on the faithful weight spaces gives \(g^{-1
 \]
 Only the constant coefficient contributes to the residue. The factor \(dx\) is essential: the scalar coefficient is being written in the chosen coordinate on the curve. Equivalently the pairing of the Higgs value with \(d\lambda\) is a member of \(T_x^*X\). Formal coordinate change preserves residues of one-forms: for \(v=f(u)\) of order one, the residue of \(f^n f' du\) is zero for \(n\ne-1\), since it is an exact derivative, and is one for \(n=-1\), since \(f'/f=u^{-1}+\) a regular series. These checks prove the one-form assertion on Laurent series by their finite principal parts. The discrepancy in (HC.21) compares the intrinsic crystal splitting with the chosen coordinate splitting; declaring the latter curve component zero refers to that choice. For the cocharacter point in (HC.22), a parameter change \(v=u a(u)\), with \(a(0)\ne0\), changes \(u^\lambda\) by the arc factor \(a(u)^\lambda\), annihilated by (HC.17). Moreover the constant Higgs coefficient transforms reciprocally to the base differential: if \(y=f(x)\), then \(A_y(0)dy=A_x(0)dx\). This proves directly that the cocharacter formula (HC.22) is the intrinsic pairing with the Higgs value, including nonlinear coordinate changes.
 
-Equations (HC.8), (HC.11) and (HC.22) are the local algebraic ingredients for testing a nonnilpotent Higgs value: the Levi normalization puts the series in the centralizer Lie algebra, its central cocharacter gives the loop point, and the constant pairing is nonzero. The normalized series commutes with this cocharacter. Identifying adjoint and coadjoint bundles by \(B\) therefore gives the same regular Higgs series on both disc torsors at \(u^\lambda\); it satisfies (HC.18), so the covector really belongs to the local cotangent model (HC.17). The normalizing frame has value one, and hence leaves the constant Higgs value unchanged. For (HC.13) the curve term is exactly \(6\,dx\). We have not yet proved that this covector survives a proper bounded Hecke pushforward. Section 3.26 proves the bounded affine-Springer isolation in both directions. Sections 3.27–3.29 prove global cotangent compatibility, the global compatible-Higgs fibre and the moving relation. Sections 3.30–3.32 prove the bounded intersection-complex fibre at its open orbit and actual source-covector membership. The full Hecke/spectral action and its regularity identification remain required. Nor do these local computations construct the spectral projector or prove regular singularities. Those are the remaining geometric steps in §9.
+Equations (HC.8), (HC.11) and (HC.22) are the local algebraic ingredients for testing a nonnilpotent Higgs value: the Levi normalization puts the series in the centralizer Lie algebra, its central cocharacter gives the loop point, and the constant pairing is nonzero. The normalized series commutes with this cocharacter. Identifying adjoint and coadjoint bundles by \(B\) therefore gives the same regular Higgs series on both disc torsors at \(u^\lambda\); it satisfies (HC.18), so the covector really belongs to the local cotangent model (HC.17). The normalizing frame has value one, and hence leaves the constant Higgs value unchanged. For (HC.13) the curve term is exactly \(6\,dx\). Over the complex numbers and for regular Ind inputs, §§3.553–3.563 give actual proper survival and the cohomological Hecke criterion. Section 3.26 proves the bounded affine-Springer isolation in both directions. Sections 3.27–3.29 prove global cotangent compatibility, the global compatible-Higgs fibre and the moving relation. Sections 3.30–3.32 prove the bounded intersection-complex fibre at its open orbit and actual source-covector membership. The local computations alone imply neither independent nilpotent regularity nor a projector-image equality. Full supported factorization and original-field conclusions retain the requirements of §9.
 
 ![The compatible Jordan components select a Levi and a cocharacter; formal correction removes off-Levi coefficients; crystal minus coordinate transport gives the positive residue, with an exact SL3 example.](figures/formal-hecke-covectors.svg)
 
@@ -2618,7 +2618,7 @@ This proves scheme isolation, including the absence of infinitesimal thickening 
 
 The maximal ideal \(\mathfrak q\) of our local ring has \(\mathfrak q/\mathfrak q^2=0\) by (AS.6). Write a finite vector of ideal generators as \(v=Cv\), with every entry of \(C\) in \(\mathfrak q\). The determinant of \(I-C\) has residue one, hence is a unit; its adjugate identity forces \(v=0\). This is the needed Nakayama argument, and proves that the local ring is the residue field \(k\). To see that an open neighborhood is actually this point, choose an affine neighborhood with ring \(B\) and maximal ideal \(p\). Each of its finitely many ideal generators becomes zero in \(B_p=k\), so a product \(f\notin p\) of their annihilating denominators kills \(p\). Thus \(pB_f=0\) and \(B_f=B_f/pB_f=k\). This is the required open reduced singleton. \(\square\)
 
-In particular every nonreduced coefficient test into this open neighborhood is the constant section. Replacing \(\lambda\) by \(-\lambda\) preserves its centralizer and the adjoint invertibility hypothesis. The same proof therefore isolates the inverse modification in the opposite Schubert bound, the closure of \(\mathcal O_{-\lambda}\). Its positive-weight roots are the opposite ones. The theorem concerns these bounded Springer schemes near the specified modifications. Sections 3.27–3.29 prove global cotangent compatibility and transfer this isolation to the global compatible-Higgs fibre. Sections 3.30–3.32 put the corresponding covector in the actual bounded intersection-complex source support. Survival under proper Hecke direct image, in its applicable regular holonomic context, still has to be proved before the isolation gives an automorphic support conclusion. It also gives no spectral projector or regularity conclusion by itself. Free further reading for this geometric step is [AGKRRV, §§20.7–20.8](https://arxiv.org/abs/2010.01906v2).
+In particular every nonreduced coefficient test into this open neighborhood is the constant section. Replacing \(\lambda\) by \(-\lambda\) preserves its centralizer and the adjoint invertibility hypothesis. The same proof therefore isolates the inverse modification in the opposite Schubert bound, the closure of \(\mathcal O_{-\lambda}\). Its positive-weight roots are the opposite ones. The theorem concerns these bounded Springer schemes near the specified modifications. Sections 3.27–3.29 prove global cotangent compatibility and transfer this isolation to the global compatible-Higgs fibre. Sections 3.30–3.32 put the corresponding covector in the actual bounded intersection-complex source support. For complex regular Ind inputs, §§3.553–3.563 transfer the selected-point isolation through the actual proper image and prove the cohomological Hecke criterion. Isolation by itself gives no spectral projector or independent regularity conclusion. Free further reading for this geometric step is [AGKRRV, §§20.7–20.8](https://arxiv.org/abs/2010.01906v2).
 
 ![The finite principal parts of the arc-orbit tangent are killed by the formal adjoint inverse; zero tangent gives an open reduced Springer point, with six exact SL3 coefficients and a torus infinitesimal direction outside the bound.](figures/affine-springer-tangent-isolation.svg)
 
@@ -2786,7 +2786,7 @@ This cocharacter covector is intrinsic by the parameter-change calculation follo
 \]
 The assertion is conditional on a nonnilpotent global input value; it does not assume that every curve admits such a value.
 
-The actual Satake object must still be shown to contain the required local covector in its singular support, and an isolated canonical-relation point must still be shown to survive the proper Hecke direct image. Neither follows merely from (HG.16). The full spectral action, projector image and regularity argument remain to be proved. Free further reading for the global cotangent diagram and the compatible crystal splittings is [Gaitsgory–Kazhdan–Rozenblyum–Varshavsky, Appendix B.6.5–B.6.8](https://arxiv.org/abs/1908.05420v5).
+Sections 3.30–3.32 put the required local covector in the actual Satake source support. For complex regular Ind inputs, §§3.553–3.563 prove its proper survival and the cohomological Hecke criterion. Neither conclusion follows merely from (HG.16). Independent nilpotent regularity and equality of the projector image with all independently nilpotent-supported objects retain their separate requirements. Sections 3.597–3.610 prove regularity and nilpotent support for every object in the actual restricted projector image. Free further reading for the global cotangent diagram and the compatible crystal splittings is [Gaitsgory–Kazhdan–Rozenblyum–Varshavsky, Appendix B.6.5–B.6.8](https://arxiv.org/abs/1908.05420v5).
 
 ![The fixed-point gluing tangent maps to b minus a1 plus a2; the global residue theorem supplies the compatibility identity. Compatible Higgs fields glue uniquely on all coefficient tests. At the normalized central cocharacter the moving curve covector is nonzero, and both bounded global compatible fibres are isolated reduced points.](figures/global-hecke-cotangent.svg)
 
@@ -2968,7 +2968,7 @@ Here \(F_S\) is the pullback of \(F\) from the bundle chart, together with the c
 
 On the product (BK.11), the local modification coordinate is the orbit point. The parameter coordinates consist of the input frame and the moving curve coordinate; the chosen \(\theta\) has zero coordinate-horizontal component. Its pairing with every orbit tangent is zero by \(\eta\in\operatorname{Ann}(L_1+L_2)\). Hence \(r^*\theta=0\) on this smooth open stratum. Frame changes give arc-gauge directions, which are annihilated by the same condition. Thus the left side of (BK.13) becomes the pullback input covector with zero orbit component. Smooth transfer puts its input part in \(\operatorname{SS}_\infty(F_S)\), and (BK.12) puts the resulting pair in the actual source support. In any ambient finite presentation, (BK.5) and (BK.9) retain the normal covectors, giving the same intrinsic conclusion. ∎
 
-For the nonnilpotent value treated in §§3.23–3.29, the curve component is the nonzero value \(B(C,d\lambda)dx\); the two bounded compatible-Higgs fibres are isolated by (AS.6) and (HG.9). These are source-support and geometric-fibre statements. Covector survival under proper direct image additionally requires a lower-bound theorem in an applicable sheaf category. The lower-bound theorem in the free reading below is stated for regular holonomic sheaves; its stronger support-only extension to arbitrary D-modules is conjectural. The ordinary Hecke-lisse extension to arbitrary D-modules uses the field-extension argument of §17.8 of that reading. The full spectral action, its projector and the resulting nilpotent-regularity identification remain among the proof obligations in §9.
+For the nonnilpotent value treated in §§3.23–3.29, the curve component is the nonzero value \(B(C,d\lambda)dx\); the two bounded compatible-Higgs fibres are isolated by (AS.6) and (HG.9). These are source-support and geometric-fibre statements. Sections 3.547–3.552 give actual complex regular Ind input membership, and §§3.553–3.563 combine it with proper detection to prove the cohomological Hecke criterion. The stronger support-only extension to arbitrary D-modules requires the separate regularity, supported-generation and spectral arguments. No full categorical Hecke-lisse equality is concluded from this local calculation.
 
 ![The constant orbit module contains every normal covector; nilpotent stage tangents and the SL3 trace pairing remain visible.](figures/bounded-hecke-kernel-conormal.svg)
 
@@ -3134,7 +3134,7 @@ This proves a formal lower-bound principle with explicit inputs. To conclude tha
 
 The usual generic-point proof uses a component \(D\) in (IS.5) of the target's dimension and its image closure \(C_2\). At a generic point of \(C_2\), a finite nonempty cotangent fibre and exclusion of other components give the source isolation. Formula (IS.3) supplies the target test at the smooth generic point. Formula (IS.11) then supplies the lower bound once the detection and base-change inputs apply. Field-extension compatibility and characteristic-component dimension assertions are additional inputs to that generic-point reduction; they are not proved by the symmetric-form calculation.
 
-For the bounded Hecke correspondence, §§3.26–3.32 establish actual source membership and the isolated compatible-Higgs fibre in both directions. The bounded characteristic-support comparison is AIC.8; §§3.487–3.493 give the full unbounded isolated-cycle retract for ind-regular inputs under a fixed common characteristic-cone bound. The general proper-image argument still requires the applicable proper-cycle comparison, its actual geometric common-bound hypotheses and generic-point field-extension comparison. The stronger support-only assertion for all D-modules remains conjectural. The ordinary Hecke-lisse equality for all D-modules follows through the separate spectral field-extension argument. Equations UID.14 and RSE.38 give the spectral idempotent and its full Hecke-lisse image; their equality with nilpotent singular support and original-field ind-regularity require the stated geometric arguments.
+For the bounded Hecke correspondence, §§3.26–3.32 establish actual source membership and the isolated compatible-Higgs fibre in both directions. The bounded characteristic-support comparison is AIC.8; §§3.499–3.502 give the full unbounded isolated-cycle retract for ind-regular inputs under componentwise isolation. Sections 3.517–3.523 give nonvanishing from an actual finite characteristic witness, including critical differentials and nonisolated invisible strata. Sections 3.503–3.504 give arbitrary characteristic-zero field extension of the independent full cohomological support condition. Sections 3.527–3.533 prove the actual proper-cycle comparison and nonzero point-image retract over complex smooth separated finite-type schemes. Under the regular Ind and hypotheses of an isolated compatible point for every finite cohomology submodule, §§3.537–3.543 give original-complex proper-image detection through an actual universal quadratic family. Sections 3.547–3.552 provide the actual complex regular Ind Hecke input, and §§3.553–3.563 bind its exact kernel, compatible points and proper maps to the cohomological Hecke criterion. Independent nilpotent regularity and generation of the full independently supported category retain their requirements. The stronger support-only assertion for all D-modules is not asserted here. Sections 3.597–3.610 prove original-field generation and regularity of the full Hecke-lisse image. Equality with all independently nilpotent-supported objects is not a consequence of the regular-input criterion. Equations UID.14 and RSE.38 give the spectral idempotent and its full Hecke-lisse image; GFP.55–GFP.56 give original-field ind-regularity and containment in nilpotent support. GZR.33 supplies the converse from all independently nilpotent-supported objects over the complex numbers.
 
 Free further reading for this mechanism is [Arinkin–Gaitsgory–Kazhdan–Raskin–Rozenblyum–Varshavsky, Appendix H, especially H.1–H.4](https://arxiv.org/abs/2010.01906v2). The isolated controlled-Morse theorem is in [Massey, A Little Microlocal Morse Theory, Theorem 1.1](https://arxiv.org/abs/math/0006185v2). These are reading sources, not proofs of the remaining premises. The programme's isolated holomorphic test, exact geometric imports and Nearby and vanishing cycles, §5 retain the controlled-Morse and general t-exactness prerequisites explicitly.
 
@@ -3329,7 +3329,7 @@ Here is the precise formal implication needed later. Suppose a presentable stabl
 \]
 The first equality is the stated projector adjunction and the second is the stated chart-test adjunction. A mapping complex from \(K\) to a \(K\)-complex is that complex itself. The detector theorem now implies \(UF=0\); conservativity gives \(F=0\). This proves the implication under exactly its displayed hypotheses. It supplies no missing geometric left adjoint, no base-change equivalence for \(\mathcal A\), and no projector construction.
 
-The field-extension orthogonality argument appears in [Arinkin–Gaitsgory–Kazhdan–Raskin–Rozenblyum–Varshavsky, *The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), §20.9. The residue-field and affine point computations above give complete proofs of their chart-level ingredients. The complex restricted spectral action and idempotent image are given in §§3.227–3.228. The nilpotent regularity criterion still requires its geometric support/image and original-field regularity statements, the relevant field-extension equivalence and the actual global point or chart-test adjunction. The general isolated-cycle comparison of §§3.33–3.35 remains a separate requirement. In particular this point-detector argument adds no stronger support-only conjecture to the ordinary all-D-module Hecke-lisse statement.
+The field-extension orthogonality argument appears in [Arinkin–Gaitsgory–Kazhdan–Raskin–Rozenblyum–Varshavsky, *The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), §20.9. The residue-field and affine point computations above give complete proofs of their chart-level ingredients. The complex restricted spectral action and idempotent image are given in §§3.227–3.228. Sections 3.597–3.610 give the actual enhanced field-extension and point adjunction, original-field Hecke-lisse regularity and nilpotent-support containment. The converse from independent nilpotent support remains separate. The general isolated-cycle comparison of §§3.33–3.35 remains a separate requirement. In particular this point-detector argument adds no stronger support-only conjecture to the ordinary all-D-module Hecke-lisse statement.
 
 ![A detecting generic prime becomes a closed rational point after scalar extension; finite normal Koszul complexes detect unbounded D-modules; the global stack adjunction remains explicit.](figures/field-extension-point-detectors.svg)
 
@@ -3482,7 +3482,7 @@ The Weyl commutator is the identity. Moving derivatives to the right and then us
 
 But forget the \(K\)-action and regard it as a \(D_k\)-module. The map \(D_k\to M_a\), \(P\mapsto Pe\), sends its PBW expression \(\sum_j f_j(t)\partial^j\) to \(\sum_j f_j(t)a^je\). It is injective by transcendence of \(a\), and its image \(k[t,a]e\) is stable under both operators. This is an actual coherent submodule isomorphic to the free \(D_k\)-module, whose characteristic variety is all of \(T^*\mathbb A^1_k\). Therefore the underlying object fails the zero-support convention of §3.12. Whenever the fixed-zero-support category has the continuous presentable inclusion required in (KF.13), \(M_a\) cannot be in its scalar-extended image. Its zero characteristic variety over \(K\) does not repair the original-field support failure.
 
-For the nilpotent spectral category, proving its actual continuous inclusion, enhanced projected point generators and their field-extension comparison is still required. The full-category theorem (KF.9) and compact comparison (KF.11) do not establish essential surjectivity for that subcategory. The distinction is also present in [Arinkin–Gaitsgory–Kazhdan–Raskin–Rozenblyum–Varshavsky, *The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), §20.9. The complete explicit module duality above can be compared with the free author chapter [Gaitsgory–Rozenblyum, *Some higher algebra*](https://people.mpim-bonn.mpg.de/gaitsgde/Book/HA.pdf), §8.6. These references accompany the proofs; the enhanced spectral action/projector, its regular image, global point adjunction and general microlocal comparison remain not yet proved here.
+The actual regular Hecke-lisse inclusion, enhanced compact point generators and their geometric field-extension comparison are GFP.5–GFP.54. The full-category theorem (KF.9) and compact comparison (KF.11) alone do not establish essential surjectivity for that subcategory. The distinction is also present in [Arinkin–Gaitsgory–Kazhdan–Raskin–Rozenblyum–Varshavsky, *The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), §20.9. The complete explicit module duality above can be compared with the free author chapter [Gaitsgory–Rozenblyum, *Some higher algebra*](https://people.mpim-bonn.mpg.de/gaitsgde/Book/HA.pdf), §8.6. These references accompany the proofs; RSE.37–RSE.38 and GFP.25–GFP.56 give the actual restricted projector, global point adjunction and regular Hecke-lisse image. The general supported microlocal comparison and the converse from all independent nilpotent support remain separate.
 
 ![Module-category duality carries infinite descent limits through field extension, while an individual vector-space product and a fixed support category retain different comparison requirements.](figures/categorical-field-extension.svg)
 
@@ -5567,7 +5567,7 @@ The balancing map (EP.5) supplies, with tensor-compatible higher relations,
  \tag{RA.23}
 \]
 
-Thus (RA.20) is an actual universal enhanced Ran Hecke category. Its second factor is \(\mathcal R\) with its regular action. To obtain the geometric spectral category one must still construct its continuous symmetric monoidal coefficient functor to the appropriate local-systems category and prove the required base-change and image comparisons. Neither (RA.20) nor its free induction is asserted to be an idempotent Beilinson projector. Nilpotent regularity, the projector's singular-support image, the independent microlocal support comparison and derived tempered Satake remain unproved here. The full action of §§3.63–3.66 has complex geometric ground field; its extension to arbitrary characteristic-zero geometric ground fields also remains required.
+Thus (RA.20) is an actual universal enhanced Ran Hecke category. Its second factor is \(\mathcal R\) with its regular action. The subsequent coefficient and restricted localization constructions give the actual restricted spectral category in RSE.37–RSE.38. Neither (RA.20) nor its free induction alone is asserted to be an idempotent Beilinson projector. GFP.55–GFP.56 prove regularity and nilpotent-support containment of the restricted projector image. GZR.33 gives independent nilpotent ind-regularity and equality with the full supported projector image over the complex numbers. The full supported microlocal comparison and derived tempered Satake retain their requirements. The full action of §§3.63–3.66 has complex geometric ground field; its extension to arbitrary characteristic-zero geometric ground fields also remains required.
 
 The finite-set description and the Hecke family formula also appear in [Arinkin, Gaitsgory, Kazhdan, Raskin, Rozenblyum and Varshavsky, *The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*, free preprint v2](https://arxiv.org/abs/2010.01906v2), §§11.1 and 15.1.
 
@@ -7242,7 +7242,7 @@ The finite-type ordinary \(Q\) is quasi-compact. An affine morphism is quasi-com
 \]
 For the amplitude, the cotangent triangle adjoins the degree-zero module from \(Q\) to the two generator degrees of (DCA.13). Thus \(W\) is a quasi-smooth derived scheme. The actual spectral prestack has this finite derived atlas and its already proved affine diagonal (CSD.21).
 
-This proves the required derived connection-atlas input. Global quasicoherent compact generation, the exterior tensor equivalence, the continuous fully faithful localization right adjoint, and the ordinary projector's nilpotent image and regularity still require their global categorical proofs. The construction here compares the complex spectral prestack already defined in (SPC.3); it does not by itself extend that spectral action to other geometric ground fields or prove the tempered and microlocal comparisons.
+This proves the required derived connection-atlas input. Sections 3.84–3.95 give the global quasicoherent comparisons and ordinary spectral projector. GFP.55–GFP.56 concern the restricted projector; a nilpotent-image or regularity assertion for another projector requires the corresponding comparison of their actual coefficients and functors. The construction here compares the complex spectral prestack already defined in (SPC.3); it does not by itself extend that spectral action to other geometric ground fields or prove the tempered and microlocal comparisons.
 
 ![The full proper cohomology complex supplies the two degrees of the derived connection equations; the complete Postnikov comparison identifies the bounded frame scheme; its connection scheme gives the actual spectral quotient atlas.](figures/derived-connection-atlas.svg)
 
@@ -8120,7 +8120,7 @@ If the tower were effective in \(\mathscr I_{\mathbf P^1}\), mapping out of its 
 \]
 There is one component, the zero derivation, because \(H^{-1}(A)=0\). Its first loop group is \(\mathfrak h\delta\); the higher positive groups vanish. On a generator \(\lambda\in\mathfrak h^\vee[1]\), the loop represented by \(a\in\mathfrak h\) is the actual closed coefficient \(\lambda(a)\delta\,dt\) in \(A\otimes\mathbf C[t,dt]\). Its degree is minus one and it vanishes at both endpoints. The polynomial interval contraction identifies its class with \(\lambda(a)\delta\), so these are all the loops. This is the full coefficient homotopy missing from an ordinary-heart point calculation.
 
-Free further reading is the AGKRRV preprint [*The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), §1.5 and the projective-line example in “Ind-constructible sheaves on schemes,” under “Categorical \(K(\pi,1)\)'s,” for the definition and the completion phenomenon. The full applicable arguments here are (RSC.1)–(RSC.33), with the complete checked solutions (RSC.34)–(RSC.38). The general-curve restricted spectral prestack, its localization and Hecke action, the genuine nilpotent Beilinson projector, its singular-support image and chartwise ind-regularity, and the geometric ground-field, tempered and microlocal arguments still require their own complete proofs.
+Free further reading is the AGKRRV preprint [*The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), §1.5 and the projective-line example in “Ind-constructible sheaves on schemes,” under “Categorical \(K(\pi,1)\)'s,” for the definition and the completion phenomenon. The full applicable arguments here are (RSC.1)–(RSC.33), with the complete checked solutions (RSC.34)–(RSC.38). RBC.22–RBC.25 give the general-curve effective framed presentation, and RSE.37–RSE.38 give its full restricted Hecke-lisse image. GFP.55–GFP.56 prove original-complex full-image regularity and nilpotent-support containment. GZR.33 gives equality with all independent nilpotent support over the complex numbers. The other geometric ground fields and the tempered and full supported microlocal comparisons retain their separate requirements.
 
 ### 3.104. The general-curve restricted tensor functor
 
@@ -8334,7 +8334,7 @@ Indeed an endomorphism is invertible exactly when its degree-zero cohomology mat
 \]
 It is a closed degree-zero matrix in the polynomial two-parameter de Rham path algebra, with inverse \(I_2-C\delta\,du\wedge dv\). Restriction to every boundary edge kills one of the displayed differentials and gives the identity. The two successive relative interval integrations identify its class with \(C\delta\); their one-variable contraction is the one used in Solution 3.CA. These are all its second loops. They are the actual frame homotopies, distinct from the first-loop coefficient-point homotopies in (RSC.38).
 
-The construction and comparisons proved here are (RSP.1)–(RSP.12), with the full coefficient example (RSP.13) and complete solutions (RSP.14)–(RSP.19). Framed restricted ind-affine representability, its concrete geometric charts, the actual restricted diagonal and localization, the restricted Hecke action and the genuine nilpotent Beilinson projector remain to be proved. Its singular-support image and chartwise original-field ind-regularity, all requested geometric ground fields and the remaining tempered and microlocal interfaces retain their full original scope. The free AGKRRV preprint, [*The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), in “The prestack” and “Convergence,” gives the defining convergence and deformation framework; the finite-window, complete-module descent and full frame arguments above supply the claims used here.
+The construction and comparisons proved here are (RSP.1)–(RSP.12), with the full coefficient example (RSP.13) and complete solutions (RSP.14)–(RSP.19). RBC.22–RBC.25 give the framed derived ind-affine presentation; the subsequent diagonal and localization constructions lead to RSE.37–RSE.38 and NTR.16. GFP.55–GFP.56 give the full original-complex restricted projector image and its chartwise regularity and nilpotent-support containment. Equality with every independently nilpotent-supported object, the other geometric ground fields and the tempered and supported microlocal comparisons retain their stated requirements. The free AGKRRV preprint, [*The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), in “The prestack” and “Convergence,” gives the defining convergence and deformation framework; the finite-window, complete-module descent and full frame arguments above supply the claims used here.
 
 ### 3.112. Ordinary framed points and their actual coefficient coalgebra
 
@@ -8533,7 +8533,7 @@ Its underlying mapping complex is \(A[-1]\). It has one component and precisely
 \]
 For a generator \(v\) of degree \(-1\), the nonzero loop \(v\mapsto\delta\,dt\) in the polynomial interval de Rham algebra has the required degree and vanishes at both endpoints. Integration gives \(\delta\). This detects every loop: in the relative interval complex a degree-zero polynomial vanishes at both endpoints, and a one-form is its differential exactly when its integral is zero, by taking its polynomial primitive. This is the full interval contraction already used in Solution 3.CA.
 
-Consequently the terminal derived affine extending that ordinary point has different values on this \(A\) from the genuine derived framed prestack. The construction (SCI.1)–(SCI.18) supplies finite ordinary coefficient charts and closed transitions, with arbitrary ordinary nilpotents retained; it does not establish the full DG ind-affine presentation. A DG presentation additionally requires infinitesimal lifting and coherent deformation arguments, compact cotangent bounds, effective derived charts and the convergence comparison with (RSP.5). Restricted localization and the Hecke action, the nilpotent Beilinson projector with its singular-support image and original-field ind-regularity, and their extensions to arbitrary geometric ground fields are not consequences of the ordinary presentation.
+Consequently the terminal derived affine extending that ordinary point has different values on this \(A\) from the genuine derived framed prestack. The construction (SCI.1)–(SCI.18) supplies finite ordinary coefficient charts and closed transitions, with arbitrary ordinary nilpotents retained; it does not establish the full DG ind-affine presentation. A DG presentation additionally requires infinitesimal lifting and coherent deformation arguments, compact cotangent bounds, effective derived charts and the convergence comparison with (RSP.5). Restricted localization, the Hecke action and their full restricted projector are constructed subsequently; GFP.55–GFP.56 give original-complex full-image regularity and nilpotent-support containment. These are not consequences of the ordinary presentation alone. Equality with all independent nilpotent support and the other geometric ground fields retain their requirements.
 
 For the ordinary coefficient framework, see AGKRRV, [*The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), “Proof of ind-representability” and “Proof in the case of algebraic groups.” Equations (SCI.1)–(SCI.10) give the coefficient equations, closed transitions and ordinary-base descent; (SCI.11)–(SCI.20) describe the rank-one, matrix and derived examples.
 
@@ -8800,7 +8800,7 @@ Its total degree is \(-2r+(2r-1)=-1\), it is closed, and restriction to every bo
 
 On a representation of weight \(m\in\mathbf Z\), \(u\) acts by \(m\alpha\), where \(\alpha\) is the odd scalar coefficient of the point or path. Its square is zero, so localization at \(v=u^2\) vanishes. This holds on every displayed higher representative and every coherent coefficient simplex. Thus the ind-target comparison retains all the infinitely many higher point groups; no bound on the negative cohomology of \(A\) has been introduced.
 
-Effective derived ind-affine charts additionally require a compact connective cotangent calculation and effectivity beyond these comparisons. Restricted localization and Hecke action, the nilpotent projector with its support image and original-field ind-regularity, and geometric ground-field extensions remain additional mathematical assertions.
+Effective derived ind-affine charts additionally require a compact connective cotangent calculation and effectivity beyond these comparisons. RSE.37–RSE.38 and NTR.16 give the subsequent restricted projector and Hecke-lisse image; GFP.55–GFP.56 give its original-complex ind-regularity and nilpotent-support containment. GZR.33 gives equality with all independent nilpotent support over the complex numbers. Extension to the other geometric ground fields retains its requirements. This uses more than the infinitesimal comparison above.
 
 The deformation framework is discussed in AGKRRV, [*The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), “Establishing deformation theory” and “Calculating the (co)tangent spaces.” The scalar square (DRD.12), finite projective gluing (DRD.14), stable-image lifting (DRD.7) and full Postnikov comparison supply the arguments used above.
 
@@ -9076,7 +9076,7 @@ For \(i=0\) the first line denotes the additive set of components; positive homo
 \]
 Its coefficient degree is minus one; the tangent generator has degree one, so its total degree is zero, as required for a point in the shifted mapping complex. Iterated relative interval integration recovers \(z^r\) in each case. The additive correction construction of §3.129 converts these cochains into actual coherent split lifts. Every degree in (DCT.24) is thus retained on the full unbounded coefficient algebra.
 
-The compact connective cotangent module and infinitesimal comparisons do not alone construct effective derived ind-affine stages. That representability assertion additionally requires such stages and an identification of their whole convergent point functor. Restricted localization and Hecke action, the nilpotent projector with its support image and original-field ind-regularity, and the stated ground-field extensions remain additional mathematical assertions.
+The compact connective cotangent module and infinitesimal comparisons do not alone construct effective derived ind-affine stages. That representability assertion additionally requires such stages and an identification of their whole convergent point functor. RSE.37–RSE.38 and NTR.16 give the subsequent restricted projector and Hecke-lisse image; GFP.55–GFP.56 give its original-complex ind-regularity and nilpotent-support containment. GZR.33 gives equality with all independent nilpotent support over the complex numbers. Extension to the other geometric ground fields retains its requirements. This uses more than the compact cotangent calculation above.
 
 For the tensor-coinvariant formulation, see AGKRRV, [*The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), “Calculating the (co)tangent spaces.” The actual arguments here are the proper finite model (DCT.2), full square-zero linearization (DCT.4)–(DCT.7), nilpotent comparison (DRD.8) and finite duality (DCT.8)–(DCT.13).
 
@@ -9469,7 +9469,7 @@ They commute exactly with (RBC.15). Relative to these origins each fibre is \(\O
 \]
 The sign follows from \(|s|=-1\). This kills every homotopy group and every difference of components after the same two steps, in all infinitely many coefficient degrees. The fibre colimit is a point, exactly as (RBC.17) requires. This example uses homotopy nilpotence rather than replacing the coefficient model by a strictly truncated algebra.
 
-The framed derived ind-affine presentation and actual full frame quotient are (RBC.22)–(RBC.23), with finite-type derived stages as in (RBC.24)–(RBC.25). Restricted spectral localization and the Hecke action, the nilpotent projector with its singular-support image and original-field ind-regularity, and geometric ground-field extensions remain additional mathematical assertions.
+The framed derived ind-affine presentation and actual full frame quotient are (RBC.22)–(RBC.23), with finite-type derived stages as in (RBC.24)–(RBC.25). RSE.37–RSE.38 and NTR.16 give the subsequent restricted projector and Hecke-lisse image; GFP.55–GFP.56 give its original-complex ind-regularity and nilpotent-support containment. GZR.33 gives equality with all independent nilpotent support over the complex numbers. Extension to the other geometric ground fields retains its requirements. This uses more than the framed presentation above.
 
 For the ind-representability framework see AGKRRV, [*The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), “Proof of ind-representability.” The effective derived presentation here uses the finite Betti construction, the SCI closed coordinate maps and the explicit Koszul and coherent filtered arguments (RBC.14)–(RBC.22).
 
@@ -10575,7 +10575,7 @@ There is an actual right adjoint, constructed without a continuity assumption:
 \]
 Testing compact source objects and contracting the enriched Yoneda bar gives its mapping-space adjunction; arbitrary source objects follow from their compact free-module bars. If this right adjoint preserved colimits, that adjunction would make \(\mathsf L_{\mathrm r}\) carry each compact object to a compact object. Its value on the compact Ran unit is the noncompact unit (SUL.41), a contradiction. Thus the right adjoint is not continuous in this example. This does not contradict the relative tensor equivalence (SUL.30), which asserts a different functor and was proved by its actual algebra-module bars.
 
-The restricted global exterior comparison, categorical dual and relative tensor multiplication above are over the complex numbers. A geometric spectral projector with its compatible Hecke action, nilpotent singular-support image and original-field regularity still requires its further geometric arguments; other geometric ground fields require their stated comparisons. For the relative tensor formulation see AGKRRV, [*The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), “Tensor products over representations versus quasicoherent sheaves.”
+The restricted global exterior comparison, categorical dual and relative tensor multiplication above are over the complex numbers. RSE.37–RSE.38 and NTR.16 give the compatible restricted geometric projector. GFP.55–GFP.56 prove its original-complex full-image regularity and nilpotent-support containment. GZR.33 gives equality with all independent nilpotent support over the complex numbers. The other geometric ground fields retain their separate requirements. For the relative tensor formulation see AGKRRV, [*The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), “Tensor products over representations versus quasicoherent sheaves.”
 
 ### 3.180. Supported perfect objects and their tensor duals
 
@@ -10898,7 +10898,7 @@ Apply the unital action's composition comparison to the multiplication (UID.11).
 \]
 Its associativity is the non-unital algebra associativity already proved. On \(\mathcal M_L\) every term \(\Phi^L(T)\) is the geometric transfer-kernel action (RA.13)–(RA.17); the continuous coend therefore realizes this endofunctor on all unbounded twisted D-modules. The operator Morita equivalence of (RA.17) transports it to the corresponding untwisted category with the same comparisons.
 
-Idempotence alone does not identify its image with the nilpotent singular-support subcategory, give a fully faithful spectral-subcategory functor, or prove original-field ind-regularity. Those require the corresponding image and regularity arguments. No unit or counit natural transformation for this endofunctor is inferred from (UID.15).
+Idempotence alone does not identify its image with the nilpotent singular-support subcategory, give a fully faithful spectral-subcategory functor, or prove original-field ind-regularity. The corresponding actual Hecke-lisse image and regularity arguments are RSE.37–RSE.38 and GFP.55–GFP.56. GZR.33 gives equality with all independently nilpotent-supported objects over the complex numbers. No unit or counit natural transformation for this endofunctor is inferred from (UID.15).
 
 ![The continuous transpose, universal restricted idempotent and its full geometric Hecke realization](figures/universal-restricted-idempotent.svg)
 
@@ -10991,7 +10991,7 @@ The element \(f\) is not in \(F\). A rational square has an even order at \(t=-1
 \]
 The two evaluation maps have inverse idempotents \((1+x/f)/2\) and \((1-x/f)/2\), which proves this decomposition directly. The inclusion \(E\hookrightarrow K\) remains injective after tensoring over the field \(F\); choose a vector-space basis extending one of the subspace to verify that exactness. Hence the displayed element is also nonzero in \(K\otimes_FK\). The natural map from \(\widehat B\otimes_B\widehat B\) to this tensor sends \(f\otimes1-1\otimes f\) to that nonzero element. It was therefore nonzero already before localization, while multiplication in (UID.22) kills it. This proves the claimed failure. At every finite \(t\)-adic truncation, \(f\) becomes a polynomial from \(B\), so the corresponding tensor difference is zero. Finite-jet comparisons would not detect this nonzero full tensor kernel. Replacing continuous sections by ordinary sections changes the actual object and can destroy its tensor idempotence.
 
-The constructions above give the universal restricted spectral idempotent and its full geometric Hecke realization over the complex numbers. The spectral-subcategory comparison, nilpotent singular-support image, original-field regularity and the other geometric ground fields require their further arguments. The corresponding abstract eigen-object and universal-projector framework is discussed in AGKRRV, [*The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), “Spectral projector and Hecke eigen-objects.”
+The constructions above give the universal restricted spectral idempotent and its full geometric Hecke realization over the complex numbers. RSE.37–RSE.38 give the spectral-subcategory comparison and full Hecke-lisse image; GFP.55–GFP.56 prove its original-field regularity and nilpotent-support containment. GZR.33 gives equality with all independently nilpotent-supported objects over the complex numbers in every genus. The other geometric ground fields retain their requirements. The corresponding abstract eigen-object and universal-projector framework is discussed in AGKRRV, [*The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), “Spectral projector and Hecke eigen-objects.”
 
 ### 3.194. A local vanishing test for perfect modules
 
@@ -11662,7 +11662,7 @@ There is a precise conditional consequence. If \(L_{\mathscr I}\) is an equivale
  \end{gathered}
  \tag{HLA.30}
 \]
-The equivalence hypothesis is a separate spectral comparison theorem. Equations (HLA.23)–(HLA.29) construct its actual source and comparison map; they do not establish that hypothesis. Identifying the Hecke-lisse category with nilpotent singular support, and proving original-field ind-regularity, also require their geometric support arguments. For the lisse-subcategory and spectral-decomposition framework, see [*The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), the subsection *Complements: de Rham and Betti spectral actions*.
+The equivalence hypothesis is a separate spectral comparison theorem. Equations (HLA.23)–(HLA.29) construct its actual source and comparison map; they do not establish that hypothesis. GFP.55–GFP.56 prove original-field ind-regularity and nilpotent-support containment of the full Hecke-lisse category. GZR.31–GZR.33 give the independent nilpotent converse over the complex numbers in every genus. For the lisse-subcategory and spectral-decomposition framework, see [*The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2), the subsection *Complements: de Rham and Betti spectral actions*.
 
 ![The full ind-connection embedding has a continuous coreflector. Its independent coordinate projections commute and identify their full intersection. The Hecke-lisse category is a presentable simultaneous kernel and carries coherent lisse-valued Hecke operations. Duality transposes the connection tensor to the correct coefficient coalgebra; its actual Ran colimit acts on that category and maps to the restricted spectral category. The projective-line diagonal shows why transposed maps need not preserve compact objects, and a two-factor category separates idempotence from full faithfulness.](figures/hecke-lisse-action.svg)
 
@@ -12147,7 +12147,7 @@ All coefficient actions and Hecke comparisons here are those of the full unbound
                 \operatorname{EssIm}(\Pi)=\mathcal M^{\mathrm{Hl}}.
  \tag{RSE.38}
 \]
-This is equality with the full Hecke-lisse category. Identification with the category of nilpotent singular support, original-field ind-regularity and extension to other geometric ground fields require separate geometric support and regularity arguments, including the cycle-detection and field-extension premises in §§3.33–3.38. A natural identity on the image has been constructed; no unit, counit or adjunction for the nonunital algebra \(p_{\mathrm r}\) is inferred from idempotence alone.
+This is equality with the full Hecke-lisse category. Original-complex full-image ind-regularity and nilpotent-support containment are GFP.55–GFP.56. GZR.33 identifies all independent nilpotent support over the complex numbers in every genus. The other geometric ground fields retain their separate requirements. A natural identity on the image has been constructed; no unit, counit or adjunction for the nonunital algebra \(p_{\mathrm r}\) is inferred from idempotence alone.
 
 ![The framed Betti comparison, supported restriction and Hecke-lisse image](figures/restricted-spectral-equivalence.svg)
 
@@ -12374,7 +12374,7 @@ Transport the action through \(L_{\mathscr I}\). Equations (NTR.14)–(NTR.15), 
                        \qquad\operatorname{EssIm}(\Pi)=\mathcal N.
  \tag{NTR.16}
 \]
-This proves the geometric action comparison with its full proper-curve normalization. The singular-support identification and original-field ind-regularity still require their separate geometric arguments.
+This proves the geometric action comparison with its full proper-curve normalization. GFP.55–GFP.56 give original-field ind-regularity and nilpotent-support containment. GZR.33 gives this identification over the complex numbers in every genus.
 
 ![The unshifted coreflector, shifted tensor transpose and their curve-coordinate comparisons](figures/curve-transpose-normalization.svg)
 
@@ -12745,7 +12745,7 @@ The full category \(\operatorname{Rep}(H)^{\otimes I}\otimes\mathscr I^{\otimes 
  \tag{CDK.25}
 \]
 
-Preservation on regular inputs does not imply that the image of \(\Pi\) on all operator modules is regular. Identifying its whole image with the original-field ind-regular nilpotent category still requires the enhanced nilpotent generators, their field-extension comparison and the applicable support criterion. None of (CDK.23)–(CDK.25) identifies a singular-support condition with regularity.
+Preservation on regular inputs does not imply that the image of \(\Pi\) on all operator modules is regular. GFP.5–GFP.56 supply the enhanced generators, actual field-point comparison and support criterion giving regularity and nilpotent-support containment of its full original-complex image. GZR.33 gives this equality over the complex numbers in every genus. None of (CDK.23)–(CDK.25) identifies a singular-support condition with regularity.
 
 ![Finite-point kernel reconstruction and preservation along finite Hecke strata](figures/ran-regular-kernel-colimit.svg)
 
@@ -13038,7 +13038,7 @@ Finally (CDK.25) applies to the intrinsic regular point object:
                             \Pi(\delta_y^!)\in\mathcal M_{\mathrm{reg}}.
  \tag{SPT.25}
 \]
-This does not assert compactness of its projected image or that these projected points generate the full image. That requires the separate enhanced nilpotent adjunction and generator construction, the support criterion and the geometric-field comparison.
+This does not assert compactness of its projected image or that these projected points generate the full image. The enhanced stage point adjunctions, compact generators and actual field comparisons are GFP.5–GFP.54; they do not assert compactness of an unenhanced projector point solely from the present adjunction.
 
 ![The free point on the stabilizer gerbe and its intrinsic extension to the bundle stack](figures/intrinsic-stack-point-adjunction.svg)
 
@@ -13426,7 +13426,7 @@ The SPT deltas are compact and regular. Thus the \(P_E\delta_{y_i}^!\) are compa
                              \mathcal N\subset\mathcal M_{\mathrm{reg}}.
  \tag{ESG.35}
 \]
-The dimension-bounded nilpotent indicator theorem of §§3.16–3.22 can supply this detection only after its singular-support hypotheses are verified for \(\mathcal N\). The actual Hecke-lisse/nilpotent support criterion and its geometric-field comparison remain required for an unconditional full-image regularity theorem.
+The dimension-bounded nilpotent indicator theorem of §§3.16–3.22 can supply this detection only after its singular-support hypotheses are verified for \(\mathcal N\). The actual enhanced geometric field-point comparison in GFP.17–GFP.54 gives the unconditional original-complex full-image regularity theorem GFP.55–GFP.56. Its converse from all independent nilpotent support is GZR.33 over the complex numbers in every genus.
 
 ![Enhanced base change, actual Koszul-stage adjoints and the conditional point-generator implication](figures/enhanced-spectral-stage-comparison.svg)
 
@@ -14021,7 +14021,7 @@ If one bounded test has nonzero point coefficient, it remains nonzero in this re
           i^!\Phi_g^{\mathrm{reg}}F\ne0.
  \tag{IAC.29}
 \]
-This supplies the full unbounded splitting and detection deductions of IS.7–IS.8 at this algebraic cycle scope. The bounded support identity AIC.8 and the fixed-cone argument of §§3.487–3.493 give the characteristic-to-cycle implication for every ind-regular input whose finite cohomology subobjects satisfy the stated common characteristic bound. The reduced Hecke cotangent geometry must supply that common transverse bound in its actual application.
+This supplies the full unbounded splitting and detection deductions of IS.7–IS.8 at this algebraic cycle scope. The bounded support identity AIC.8 and §§3.499–3.502 give the characteristic-to-cycle implication for every ind-regular input satisfying componentwise isolation. Sections 3.517–3.523 give nonvanishing from any finite actual characteristic witness, including zero covectors and degenerate Hessians, without a critical-point condition on invisible strata. The neighbourhood may depend on the finite cohomology subobject. Sections 3.527–3.533 prove the actual proper-cycle and point-image comparison over complex smooth separated finite-type schemes. Sections 3.537–3.543 give original-complex proper detection through universal quadratic parameters under componentwise isolation of the selected compatible point. HRI and RHC give its regular-input Hecke application. GFP.55 makes that input condition available throughout the full original-complex Hecke-lisse category. GZR.33 supplies chartwise ind-regularity for every independently nilpotent-supported object over the complex numbers in every genus.
 
 ### 3.298. Smooth normalization and the scope of descent
 
@@ -14255,7 +14255,7 @@ The differential-operator characteristic support is a further input. The equalit
                               =\operatorname{Char}(A).
  \tag{MCM.20}
 \]
-The equality MCM.20 is proved by the analytic density/duality calculation SDR.22–SDR.24 and the algebraic comparison AIC.8. Sections 3.487–3.493 use membership in \(\operatorname{Char}(A)\) to give the nonzero full unbounded cycle retract under the fixed characteristic-cone hypotheses, for actual ind-regular inputs. The applicable general proper-image comparison, full nilpotent regularity and special enhanced geometric-field generation retain their separate requirements.
+The equality MCM.20 is proved by the analytic density/duality calculation SDR.22–SDR.24 and the algebraic comparison AIC.8. Sections 3.499–3.502 use membership in \(\operatorname{Char}(A)\) to give the nonzero full unbounded cycle retract for actual ind-regular inputs under componentwise isolation, allowing different neighbourhoods for different finite pieces. Sections 3.517–3.523 require only actual characteristic isolation for that finite witness; zero covectors, singular conormals, degenerate Hessians and nonisolated invisible critical loci are included. Sections 3.503–3.504 prove the actual characteristic-support and full unbounded cohomological-support comparison under arbitrary characteristic-zero field extension. Sections 3.527–3.533 prove the actual proper regular Ind-cycle comparison over complex smooth separated finite-type schemes. Regular cycles over new geometric fields, full nilpotent regularity and enhanced geometric-field generation retain their separate requirements. Sections 3.537–3.543 give original-complex proper detection with componentwise isolation of the selected compatible point by an actual universal quadratic family.
 
 ![A transverse conormal slice, the microlocal coefficient test, the algebraic isolated carrier and the actual unbounded point retract](figures/generic-microlocal-coefficient-test.svg)
 
@@ -18075,7 +18075,7 @@ The connection is flat because it is a differential-module action. The complete 
 
 The result is a support theorem for every coherent holonomic analytic differential module, with no regularity assumption and with all its singular characteristic points retained by density and closedness. For bounded holonomic complexes and the intrinsic density-normalized de Rham comparison, see §§3.451–3.459. Arbitrary nonholonomic systems and unbounded stack limits require their respective additional arguments.
 
-In particular the nilpotent Riemann–Hilbert and projector arguments still require their precise de Rham/solution convention, the regular algebraic chart comparison, its ind-extension, and the relevant global stack and coefficient-field statements. A finite-dimensional analytic support identity alone is not a full Hecke-lisse image or original-field regularity theorem.
+In particular the nilpotent Riemann–Hilbert and projector arguments use their precise de Rham/solution convention, the regular algebraic chart comparison, its ind-extension, and the relevant global stack and coefficient-field statements. A finite-dimensional analytic support identity alone is not a full Hecke-lisse image or original-field regularity theorem.
 
 ![A finite contact chain transports a pure coefficient test to a positive-rank Euler model and transfers its nonzero solution test back to the characteristic point](figures/holonomic-transported-support-test.svg)
 
@@ -19650,6 +19650,7655 @@ The specialization map is that diagonal because the source disc is connected and
 
 Outside zero the cover is étale, so the bounded coefficient is lisse and its characteristic set is zero-section there. AIC.8 bounds its full characteristic set by the zero section together with the vertical fibre at zero. The fixed cone is therefore valid for every finite submodule in every degree of \(Q\). The nonzero cycle coefficient supplies the nonzero point part. The actual cotangent-fibre equation is \(az^{a-1}\eta=0\); at \(\eta\ne0\) its local length is \(a-1\), as in IS.13. That multiplicity agrees with \(\dim W_a\). Both infinite tails and the cyclic monodromy survive the calculation.
 
+### 3.499. Isolation separately for each coherent piece
+
+Let \(U\) be smooth affine of dimension \(d\) over \(\mathbf C\), \(E\in\mathscr R_\infty(U)\), \(x\in U(\mathbf C)\), and \(h\in\mathcal O(U)\), with \(h(x)=0\) and \(dh_x\ne0\). Put \(p=(x,dh_x)\). Impose the following condition:
+
+\[
+ \begin{gathered}
+ \text{For every }m\in\mathbf Z\text{ and finite }A\subset H^mE,\\
+ \operatorname{graph}(dh)\cap\operatorname{Char}(A)^{\mathrm{an}}
+ \text{ lies over }\{x\}\\
+ \text{on some analytic neighbourhood }W_A\text{ of }x.
+ \end{gathered}
+ \tag{CIC.1}
+\]
+
+The neighbourhood may depend on \(A\) and \(m\). There need be no common closed holonomic cone or common analytic neighbourhood. Let \(B=\Phi_h^{\mathrm{reg}}E\), with closed transfer of its zero-fibre output to \(U\) understood, and \(i:\{x\}\hookrightarrow U\). Then the actual point comparison is an equivalence, and there are natural maps
+
+\[
+ \begin{gathered}
+ \theta_B:i^!B\xrightarrow{\sim}i^*B,\\
+ i_*i^!B\xrightarrow{u_E}B\xrightarrow{r_E}i_*i^!B,
+ \qquad r_Eu_E=1.
+ \end{gathered}
+ \tag{CIC.2}
+\]
+
+No cohomological boundedness is imposed. A smooth transverse characteristic witness will give nonvanishing in §3.502. The componentwise isolation framework also appears in [Arinkin–Gaitsgory–Kazhdan–Raskin–Rozenblyum–Varshavsky, Appendix H.3](https://arxiv.org/abs/2010.01906v2); the actual ind-regular functors and their proof here use the adjunctions and finite-amplitude bounds IAC.16–IAC.29.
+
+### 3.500. The isolation class in the operator heart
+
+By IAC.6, the affine embedding of the regular ind-category is fully faithful and t-exact. Its heart modules are filtered unions of coherent regular holonomic subobjects. The operator ring is Noetherian, and regular holonomicity is a Serre property. Thus
+
+\[
+ H^mE=\operatorname*{colim}_{A\subset H^mE,\ A\ \mathrm{finite}}A.
+ \tag{CIC.3}
+\]
+
+The finite pieces are directed by finite sums. The isolation property for their characteristic sets is preserved under subobjects, quotients and finite extensions, by the exact-sequence characteristic-support identity. For a quotient of a possibly infinite heart module, lift finitely many generators of a finite submodule. They lie in a finite submodule upstairs, and its image contains the proposed finite quotient piece. Explicitly,
+
+\[
+ L\twoheadrightarrow L'',\quad C\subset L''\text{ finite}
+ \quad\Longrightarrow\quad
+ C\subset\operatorname{im}(A\to L'')\text{ for some finite }A\subset L.
+ \tag{CIC.4}
+\]
+
+For an extension, a finite submodule in the middle intersects the first module in a finite submodule and has finite image in the last, by Noetherianity. The union of their characteristic sets is its characteristic set; intersect the two isolation neighbourhoods. This proves that the heart modules satisfying CIC.1 form a Serre class. It follows from the cohomology exact sequence that
+
+\[
+ \mathscr I_{h,x}:=
+ \{E\in\mathscr R_\infty(U):\text{all }H^mE\text{ satisfy CIC.1}\}
+ \quad\text{is stable and closed under truncations}.
+ \tag{CIC.5}
+\]
+
+In particular all natural maps in CIC.2 are maps on this full stable subcategory. No compact-generation assertion for this subcategory is required.
+
+### 3.501. Admissible cycle hearts and the full unbounded retract
+
+Every finite \(A\subset H^mE\) is regular holonomic. The exact support identity AIC.8 and the bounded cycle support bound MCM.10 give
+
+\[
+ \operatorname{supp}
+ \Phi_h\operatorname{DR}_d(A^{\mathrm{an}})\cap W_A
+       \subset\{x\}.
+ \tag{CIC.6}
+\]
+
+The bounded cycle \(B_A=\Phi_{h,0}^{\mathrm{reg}}A\), transferred to \(U\), is a regular holonomic heart object. MCM.13 identifies its closed analytic carrier with the analytification of its reduced algebraic carrier. If \(x\) lies in that carrier, the isolated analytic germ and faithful contraction give \(I=\mathfrak m_x\) in the algebraic local ring, exactly as in FCR.9. Killing the finitely many maximal-ideal generators by one denominator makes \(\{x\}\) an open and closed component of this carrier. Consequently
+
+\[
+ B_A=i_*V_A\oplus B'_A,\qquad
+ V_A\in\operatorname{Vect}^{\heartsuit},\qquad
+ x\notin\operatorname{supp}B'_A.
+ \tag{CIC.7}
+\]
+
+When the carrier avoids \(x\), set \(V_A=0\). Point/away mapping complexes vanish in both directions, so these splittings are natural in all maps between finite pieces, even when their neighbourhoods differ.
+
+The actual ind-cycle functor is continuous and t-exact. Hence \(H^mB\) is the filtered union of the \(B_A\), with inclusions. Both regular point adjoints are continuous by IAC.16. Their comparison is the identity on every bounded point part and zero on every away part. Therefore
+
+\[
+ i^!H^mB\xrightarrow{\sim}i^*H^mB
+       \simeq\operatorname*{colim}_{A\subset H^mE}V_A
+       \quad\text{in degree zero}.
+ \tag{CIC.8}
+\]
+
+For a fixed output degree \(m\), the uniform amplitudes \(i^!\in[0,2d]\) and \(i^*\in[-3d,d]\) cut the input to the finite window
+
+\[
+ \begin{gathered}
+ L\le m-2d-2,\qquad H\ge m+3d+2,\\
+ H^m(TB)=H^0T(H^mB),\quad T=i^!,i^*.
+ \end{gathered}
+ \tag{CIC.9}
+\]
+
+Indeed the low tail has output in degrees at most \(m-3\), and the high tail in degrees at least \(m+3\). On the intervening finite Postnikov window, CIC.8 makes each heart contribution pure in its own degree, so its finite filtration collapses. These are the actual truncation comparisons, as in FCR.14–FCR.16. Thus \(\theta_B\) is an isomorphism on all cohomologies. With the actual left unit \(\eta_B\) and right counit \(\varepsilon_B\), put
+
+\[
+ \begin{gathered}
+ u_E=\varepsilon_B,\qquad r_E=i_*(\theta_B^{-1})\eta_B,\\
+ \eta_B\varepsilon_B=i_*\theta_B,\qquad
+ r_Eu_E=1,\qquad B\simeq i_*i^!B\oplus\operatorname{cofib}(u_E).
+ \end{gathered}
+ \tag{CIC.10}
+\]
+
+Naturality of the left unit on the fully faithful point image proves the middle identity. This proves CIC.2 on the full unbounded category \(\mathscr I_{h,x}\), with the specified maps. No common neighbourhood for the whole filtered union or ambient inverse-limit comparison has been used.
+
+### 3.502. A nonzero witness and the precise geometric scope
+
+For nonvanishing, suppose a finite \(A_0\subset H^{m_0}E\) has the following properties:
+
+\[
+ \begin{gathered}
+ p\in\operatorname{Char}(A_0)^{\mathrm{an}},\\
+ \operatorname{Char}(A_0)^{\mathrm{an}}
+ \text{ has a smooth conic Lagrangian germ at }p,\\
+ \text{with constant projection rank, and}\\
+ T_p\operatorname{Char}(A_0)^{\mathrm{an}}
+       \cap T_p\operatorname{graph}(dh)=0.
+ \end{gathered}
+ \tag{CIC.11}
+\]
+
+Only this witness needs the smooth transverse coefficient calculation. The conormal endpoint comparison MCM.3–MCM.9 gives a nonzero bounded normalized cycle coefficient in degree zero. The injection \(A_0\hookrightarrow H^{m_0}E\) remains injective after the heart-exact cycle functor, and \(H^0i^!\) is left exact because it is point Hom on the operator heart. Thus
+
+\[
+ 0\ne H^0i^!B_{A_0}\hookrightarrow H^0i^!H^{m_0}B
+       =H^{m_0}i^!B.
+ \tag{CIC.12}
+\]
+
+The general direct-image lower-bound argument must construct one actual test for which the isolation condition holds for every finite piece. A generic point of the target characteristic image, viewed as a rational point over an algebraic closure of its function field, is the geometric construction in Appendix H.4 of the free reading above. That construction additionally needs the corresponding regular algebraic cycle and point functors over the new field, their proper-image comparison, and the actual global Hecke presentations. The scalar-support calculation below addresses support and subobjects; it does not supply those cycle functors or nilpotent regularity.
+
+### 3.503. Characteristic support under an arbitrary field extension
+
+For this and the next section, let \(k\) be any field of characteristic zero, \(K/k\) any extension, and \(U=\operatorname{Spec}R\) smooth affine of finite type over \(k\). Put \(D=\Gamma(U,\mathcal D_{U/k})\), \(R_K=R\otimes_kK\), and \(D_K=\Gamma(U_K,\mathcal D_{U_K/K})\). The actual coefficient-and-derivative map gives
+
+\[
+ D\otimes_kK\xrightarrow{\sim}D_K,\qquad
+ \operatorname{gr}D_K=(\operatorname{gr}D)\otimes_kK.
+ \tag{CIC.13}
+\]
+
+Here is the filtered verification, including infinite \(K\). On an étale coordinate chart, the PBW bases have the same derivative monomials, with the coefficients extended from \(R\) to \(R_K\). The chain rule identifies their restrictions and the actual operator map. The map is an isomorphism on every associated graded order, hence on each filtered order by induction in its short exact sequence, and on the union of the orders. These local maps agree on overlaps. The quasi-coherent affine sheaf/module description makes their global sections commute with the field extension. This is the construction FE.9 and its following scalar-extension calculation.
+
+Let \(M\) be any coherent \(D\)-module with a good filtration \(F\), and set \(M_K=M\otimes_kK\). Flatness of the field extension and the PBW comparison give a good filtration
+
+\[
+ F_jM_K=F_jM\otimes_kK,\qquad
+ \operatorname{gr}_F(M_K)=\operatorname{gr}_F(M)\otimes_kK.
+ \tag{CIC.14}
+\]
+
+To check the full support equality, put \(S=\operatorname{gr}D\), \(S_K=S\otimes_kK\), and \(N=\operatorname{gr}_F M\). For every \(q\in\operatorname{Spec}S_K\) lying over \(a\in\operatorname{Spec}S\),
+
+\[
+ (N\otimes_kK)_q=0\quad\Longleftrightarrow\quad N_a=0.
+ \tag{CIC.15}
+\]
+
+The forward implication follows by finite Nakayama. If \(N_a\ne0\), then \(N_a/aN_a\ne0\), and its extension from the residue field \(\kappa(a)\) to \(\kappa(q)\) is nonzero. It is exactly the residue of \(N_a\otimes_{S_a}(S_K)_q\). The reverse implication is localization of the zero module. Equivalently the map \(S_a\to(S_K)_q\) is flat and local, hence faithfully flat. This verifies the equality at every cotangent prime, not just at base closed points. Consequently
+
+\[
+ \operatorname{Char}_{K}(M_K)
+       =\operatorname{Char}_{k}(M)\times_{\operatorname{Spec}k}
+                    \operatorname{Spec}K
+ \quad\text{as closed support sets}.
+ \tag{CIC.16}
+\]
+
+The graded module in CIC.14 retains its nonreduced annihilator and every symbol multiplicity. CIC.16 concerns its support set and makes no identification of reduced and nonreduced schemes.
+
+### 3.504. Every finite subobject after extension and all unbounded degrees
+
+Let \(Q\) be an arbitrary unbounded \(D\)-module complex. Its actual scalar extension is \(Q_K=Q\otimes_kK\). It can also be computed by \(D_K\otimes_D^{\mathbf L}Q\). Indeed \(D_K=D\otimes_kK\) is free as a right \(D\)-module after choosing a \(k\)-basis of \(K\), so ordinary extension already computes the derived functor. Hence
+
+\[
+ H^m(Q_K)=H^mQ\otimes_kK\quad(m\in\mathbf Z),\qquad
+ Q_K=0\Longleftrightarrow Q=0.
+ \tag{CIC.17}
+\]
+
+The affine rings \(D,D_K\) are Noetherian over these fields. Their symbol rings are the symmetric algebras of the finite projective tangent modules, hence are Noetherian. Lifting finitely many homogeneous generators of an ideal of leading symbols, and subtracting them to reduce the order, proves the ascending-chain condition for operator ideals. The same good-filtration argument gives coherence for finite modules. Every heart module is the filtered union of its finite \(D\)-submodules, and field extension preserves their inclusions. A finite \(D_K\)-submodule \(C\subset H^m(Q_K)\) has finitely many generators. Each generator uses finitely many tensors from that union. A common finite original submodule \(A\subset H^mQ\) contains them all after extension, so
+
+\[
+ C\subset A_K\subset H^m(Q_K)
+ \quad\text{for some finite }A\subset H^mQ,\qquad
+ \operatorname{Char}_K(C)\subset\operatorname{Char}_K(A_K).
+ \tag{CIC.18}
+\]
+
+The last inclusion is exact-sequence characteristic support over the Noetherian ring \(D_K\). It does not assert that every new submodule descends individually to \(k\).
+
+Let \(\Lambda\subset T^*U\) be any closed algebraic conic set and \(\Lambda_K\) its inverse image on \(T^*U_K\). Define \(\mathcal D_\Lambda(U)\) by the independent condition NCS.10 on every finite submodule of every cohomology. Equations CIC.16 and CIC.18 prove preservation of that condition. They also prove reflection. For any finite \(A\subset H^mQ\), flatness gives \(A_K\subset H^m(Q_K)\). If the new condition holds, CIC.16 puts its original characteristic set in \(\Lambda\): every prime outside \(\Lambda\) has a prime above it after the faithfully flat field extension, and CIC.15 detects a nonzero symbol module there. Thus
+
+\[
+ Q\in\mathcal D_\Lambda(U)
+       \quad\Longleftrightarrow\quad
+ Q_K\in\mathcal D_{\Lambda_K}(U_K).
+ \tag{CIC.19}
+\]
+
+This is an assertion about the scalar extension of \(Q\), not essential surjectivity onto all supported objects over \(K\). Along \(k\subset K\subset L\), actual tensor associativity gives
+
+\[
+ (Q_K)_L\simeq Q_L,\qquad
+ (A_K)_L\simeq A_L,\qquad
+ \operatorname{gr}\bigl((A_K)_L\bigr)
+       =(\operatorname{gr}A)\otimes_kL.
+ \tag{CIC.20}
+\]
+
+These are the specified coefficient and operator maps, so all successive support comparisons agree. No boundedness, regularity, choice of a complex embedding, or interchange of an infinite Postnikov tower is needed.
+
+![Different coherent pieces have different isolation neighbourhoods, while their actual point retracts agree; arbitrary field extension preserves all coherent characteristic supports.](figures/componentwise-cycle-field-support.svg)
+
+**Figure 3.63.** The first panel shows the finite-piece isolation mechanism CIC.1–CIC.10. The middle panel depicts the exact accumulating-point example of Solution 3.GJ: each finite set has an isolation neighbourhood, but the entire sequence has none. The bottom panel records the scalar-support calculation CIC.14–CIC.19, including every new finite submodule in a base-extended original piece. The support arrows are categorical or set-theoretic maps; the point coordinates are the stated exact rational sequence.
+
+### 3.505. Accumulating point modules with both infinite tails
+
+**Exercise 3.GJ.** On \(U=\mathbf A^1_t\), write \(\delta_b=D/D(t-b)\), and put
+
+\[
+ b_j=\frac1{j+1}\ (j\ge1),\qquad
+ L=\delta_0\oplus\bigoplus_{j\ge1}\delta_{b_j},\qquad
+ E=\bigoplus_{n\in\mathbf Z}L[2n].
+ \tag{CIC.21}
+\]
+
+For \(h=t\) and \(x=0\), prove CIC.1, show that neither a common analytic neighbourhood nor a closed characteristic bound of dimension at most one exists, and compute the full cycle.
+
+**Solution 3.GJ.** Finite sums of point modules and shifts give the actual regular ind-presentation. Every finite submodule in every cohomological degree lies in a finite sum of those deltas. Its characteristic set is contained in finitely many vertical fibres. The graph of \(dt\) meets each fibre over its one base point. A neighbourhood of zero can remove the finitely many nonzero points for each piece. This proves CIC.1, and \(\delta_0\) is the smooth transverse witness.
+
+The sequence \(b_j\) tends to zero, so no one analytic neighbourhood removes every away point. For a common algebraic bound, suppose \(P(t,\zeta)\) vanishes on every vertical fibre at the \(b_j\). Expanding gives
+
+\[
+ P(t,\zeta)=\sum_{r=0}^N p_r(t)\zeta^r,\qquad
+ p_r(b_j)=0\ \text{for all }j
+       \quad\Longrightarrow\quad p_r=0\ \text{for all }r.
+ \tag{CIC.22}
+\]
+
+Each coefficient polynomial has infinitely many distinct roots. Thus the vertical fibres have Zariski-dense union in the two-dimensional \(T^*\mathbf A^1\), so no closed cone of dimension at most one contains them.
+
+The normalized cycle of \(\delta_0\) is the identity, since the nearby restriction is zero. For \(b_j\ne0\), the bounded cycle of \(\delta_{b_j}\) at the zero fibre vanishes on a disc avoiding its support. Continuity of the specified ind-cycle gives
+
+\[
+ \begin{gathered}
+ \Phi_t^{\mathrm{reg}}E
+       =\bigoplus_{n\in\mathbf Z}\delta_0[2n],\\
+ i^!\Phi_t^{\mathrm{reg}}E
+       =\bigoplus_{n\in\mathbf Z}\mathbf C[2n].
+ \end{gathered}
+ \tag{CIC.23}
+\]
+
+The point retract is the whole cycle, with
+
+\[
+ H^m i^!\Phi_t^{\mathrm{reg}}E=
+ \begin{cases}\mathbf C,&m\text{ even},\\0,&m\text{ odd}.\end{cases}
+ \tag{CIC.24}
+\]
+
+This calculation is in the actual regular ind-category; it makes no identification with ordinary cycles on every unbounded classical sheaf at an accumulation point.
+
+### 3.506. A nonisolated carrier has no such point retraction
+
+**Exercise 3.GK.** Let \(U=\mathbf A^2_{s,t}\), \(h=t\), \(x=(0,0)\), and \(M=\mathcal O_{\mathbf A^1_s}\boxtimes\delta_{0,t}\), in degree zero. Compute \(B=\Phi_t^{\mathrm{reg}}M\), both point functors, and their comparison. Decide whether the right-adjunction counit \(i_*i^!B\to B\) splits.
+
+**Solution 3.GK.** The good product filtration gives
+
+\[
+ \begin{gathered}
+ \operatorname{Char}(M)=\{t=0,\ \eta_s=0\},\\
+ \operatorname{graph}(dt)\cap\operatorname{Char}(M)
+       =\{(s,0;0,1):s\in\mathbf C\},\qquad B=M.
+ \end{gathered}
+ \tag{CIC.25}
+\]
+
+The cycle is the identity because \(M\) is supported on the zero fibre. The displayed intersection is a whole line, so CIC.1 fails at \(x\).
+
+The point Hom is computed by the finite cochain Koszul complex for multiplication by \(s,t\). Right PBW writes \(M=\mathbf C[s,u]\), where \(u\) denotes the normal derivative vectors, with \(t=-\partial_u\). Multiplication by \(t\) is surjective and has kernel \(\mathbf C[s]\). The remaining cochain multiplication by \(s\) is injective with cokernel \(\mathbf C\) in degree one. Thus \(i^!M=\mathbf C[-1]\). Bounded regular duality fixes \(M\), since the flat line connection and point delta are self-dual, and the actual ordinary/extraordinary duality comparison gives
+
+\[
+ i^!B=\mathbf C[-1],\qquad
+ i^*B=\mathbf C[1],\qquad
+ \theta_B=0.
+ \tag{CIC.26}
+\]
+
+The last equality holds because the degree-zero mapping group from \(\mathbf C[-1]\) to \(\mathbf C[1]\) is zero in complexes of vector spaces. Moreover the left point adjunction gives
+
+\[
+ \operatorname{Hom}(B,i_*\mathbf C[-1])
+       =\operatorname{Hom}(\mathbf C[1],\mathbf C[-1])=0.
+ \tag{CIC.27}
+\]
+
+The right counit is nonzero: its right adjoint is the identity on \(i^!B\). Every possible degree-zero retraction is zero by CIC.27, so this counit cannot split. Holonomicity and regularity alone do not give isolated-cycle purity or the point retract.
+
+### 3.507. A ramified image of the accumulating family
+
+**Exercise 3.GL.** Let \(f:\mathbf A^1_s\to\mathbf A^1_t\) be \(t=s^a\), \(a\ge2\), and take the family \(E\) of CIC.21 on the \(s\)-line. Compute its actual regular direct image and the target cycle for \(h=t\). Determine whether ramification multiplies the point coefficient by \(a\).
+
+**Solution 3.GL.** For each point \(b\), composition of proper point transfer gives, with the coefficient retained,
+
+\[
+ f_*\delta_b=(f\circ i_b)_*\mathbf C
+       =\delta_{b^a}.
+ \tag{CIC.28}
+\]
+
+The proper regular ind-functor is the continuous extension of this bounded transfer. Hence
+
+\[
+ \begin{gathered}
+ f_*^{\mathrm{reg}}E
+  =\bigoplus_{n\in\mathbf Z}
+       \left(\delta_0\oplus\bigoplus_{j\ge1}\delta_{b_j^a}\right)[2n],\\
+ \Phi_t^{\mathrm{reg}}f_*^{\mathrm{reg}}E
+       =\bigoplus_{n\in\mathbf Z}\delta_0[2n].
+ \end{gathered}
+ \tag{CIC.29}
+\]
+
+The positive rational numbers \(b_j^a\) are distinct and tend to zero. The target therefore satisfies componentwise isolation with a transverse point witness, while again admitting no common neighbourhood or closed holonomic cone. Its point coefficient is one copy in every even degree. Although
+
+\[
+ \begin{gathered}
+ f^{-1}(0)=\operatorname{Spec}\mathbf C[s]/(s^a),
+ \qquad \operatorname{length}f^{-1}(0)=a,\\
+ i_0^!\Phi_t^{\mathrm{reg}}f_*\delta_0=\mathbf C.
+ \end{gathered}
+ \tag{CIC.30}
+\]
+
+the coefficient of a point input is one. Scheme-fibre length alone does not count this direct-image coefficient. For a flat line input the separate cycle calculation FCR.29 gives rank \(a-1\); its input and specialization map are different. The present calculation uses actual point-transfer composition and continuity. It does not apply the nonzero-differential test CIC.1 to the critical source function \(s^a\) at zero.
+
+### 3.508. The cycle comparison at a critical differential
+
+Let \(U\) be smooth affine of dimension \(d\) over \(\mathbf C\), let \(h\in\mathcal O(U)\), and put \(Y=h^{-1}(0)\). The normalized convention remains
+
+\[
+ \Phi_hF=\operatorname{Fib}(F|_Y\longrightarrow\psi_hF).
+ \tag{ICR.1}
+\]
+
+The differential of \(h\) is allowed to vanish. On \(U^{\mathrm{an}}\), write \(H=\{\operatorname{Re}h\geq0\}\) and \(A=\{\operatorname{Re}h<0\}\). For coefficients in a field \(k\), the positive-real-support comparison identifies the actual functors, naturally in every bounded complex-constructible complex:
+
+\[
+ (\Phi_hF)_y\simeq(R\Gamma_HF)_y,\qquad y\in Y.
+ \tag{ICR.2}
+\]
+
+Here is the map and the reason it remains valid at a critical point. With the covering \(e^{2\pi iw}\), choose the negative-sector lift \(1/4<\operatorname{Re}w<3/4\). Extension by zero of that sheet gives \(k_A\to L_h\), where \(L_h\) is the proper-support sum of the covering sheets. The trace square gives
+
+\[
+ [k_A\longrightarrow k_U]\longrightarrow
+ [L_h\longrightarrow k_U],
+ \qquad
+ \Phi_hF\longrightarrow(R\Gamma_HF)|_Y .
+ \tag{ICR.3}
+\]
+
+Both coefficient complexes have degrees \(-1,0\). On the two fibre triangles the middle map is the identity of \(F|_Y\); the other map restricts the entire lifted punctured neighbourhood to the selected negative strip. The cofinal-ball and restriction proof uses the local curve direct image on arbitrarily small ball–target-disc intersections. Off the central value that image is locally constant. On the contractible covering halfplane and the selected half-strip, whole-complex evaluation commutes with restriction and is invertible. The resulting stalk colimit proves that ICR.3 is invertible. Neither a regular zero fibre nor \(dh_y\ne0\) enters this argument. The chosen strip retains the covering convention and its deck transport.
+
+The defining neighbourhood criterion for microsupport now gives the closed carrier bound
+
+\[
+ \operatorname{supp}\Phi_hF
+ \subset\{y\in Y:(y,dh_y)\in\operatorname{SS}(F)\}.
+ \tag{ICR.4}
+\]
+
+Indeed, if \((y,dh_y)\) is outside microsupport, choose a cotangent neighbourhood disjoint from that closed set. Continuity of the section \(dh\) gives a base neighbourhood on which the section stays in the chosen open set. All the corresponding supported tests vanish there by the defining criterion, so ICR.2 vanishes on that whole neighbourhood. This proves the bound for closed support. The same reasoning applies to a zero covector; no limiting argument through nonzero covectors is needed.
+
+### 3.509. Componentwise isolation without a nonzero first jet
+
+Let \(E\in\mathscr R_\infty(U)\), \(h(x)=0\), and impose CIC.1 on every finite \(A\subset H^mE\), for every \(m\). There is no condition on \(dh_x\). Set \(B=\Phi_h^{\mathrm{reg}}E\), with the closed transfer of the zero-fibre output to \(U\), and \(i:\{x\}\hookrightarrow U\). Then
+
+\[
+ \begin{gathered}
+ \theta_B:i^!B\xrightarrow{\sim}i^*B,\\
+ i_*i^!B\xrightarrow{\varepsilon_B}B
+ \xrightarrow{i_*\theta_B^{-1}\eta_B}i_*i^!B,
+ \\
+ (i_*\theta_B^{-1}\eta_B)\varepsilon_B=1 .
+ \end{gathered}
+ \tag{ICR.5}
+\]
+
+To prove this, apply AIC.8 and ICR.4 to the finite regular module \(A\). Its bounded cycle has analytic carrier isolated at \(x\) or avoiding \(x\). The reduced algebraic-carrier argument MCM.13 and CIC.7 therefore gives its natural point/away decomposition \(B_A=i_*V_A\oplus B'_A\), with \(V_A\) in degree zero. The Serre argument CIC.3–CIC.5 did not use a nonzero differential: it uses exact characteristic sets, finite lifts through quotients, and finite intersections and images in extensions. It applies unchanged.
+
+The actual algebraic regular cycle is t-exact, including for a critical function, by IAC.26. Its continuous ind-extension and both continuous point adjoints give
+
+\[
+ i^!H^mB\simeq i^*H^mB
+ \simeq\operatorname*{colim}_{A\subset H^mE}V_A
+ \quad\text{in degree zero}.
+ \tag{ICR.6}
+\]
+
+Different finite pieces may have different isolation neighbourhoods. Naturality follows from the vanishing of point/away mapping complexes in both directions. The amplitudes \(i^!\in[0,2d]\), \(i^*\in[-3d,d]\) reduce each output degree to the finite Postnikov window CIC.9. All its heart contributions are pure in their corresponding degrees, so the actual comparison is invertible in every degree. Finally \(\eta_B\varepsilon_B=i_*\theta_B\) by the adjunction identities, giving ICR.5. This proves the assertion for both infinite cohomological tails. It does not yet assert that \(i^!B\) is nonzero.
+
+### 3.510. An isolated stratified critical cluster and its maps
+
+For nonvanishing, first work with a bounded finite-rank perverse \(K\)-sheaf \(P\), for any field \(K\), on a complex manifold \(M\) near \(x\). Fix a locally finite connected complex Whitney \((a,b)\) stratification adapted to \(P\); only finitely many strata occur in a sufficiently small chart. Suppose \(h(x)=0\) and
+
+\[
+ h|_S\text{ has no critical point in }S\setminus\{x\}
+ \quad\text{for every original local stratum }S.
+ \tag{ICR.7}
+\]
+
+The stratum through \(x\) can have positive dimension. Both \(dh_x=0\) and a degenerate tangential Hessian are allowed. Condition ICR.7 concerns all the original strata, including those with zero generic normal object.
+
+Retain \(C_S=\overline{T^*_SM}\), \(p=(x,dh_x)\), and \(\Sigma=\bigcup_SC_S\). Whitney \((a)\) implies that a member of a limiting conormal over a stratum annihilates its tangent space. Thus ICR.7 implies that \(\Sigma\cap\operatorname{graph}(dh)\) lies over \(x\) after shrinking. The original-pair proof IH0–IH9 and whole-cluster proof IH10–IH21 give
+
+\[
+ \begin{aligned}
+ M_h(P)_x &:=(R\Gamma_{\{\operatorname{Re}h\geq0\}}P)_x\\
+ &\simeq\operatorname{Fib}\bigl(
+ R\Gamma(C;P)\longrightarrow R\Gamma(L;P)\bigr),
+ \end{aligned}
+ \tag{ICR.8}
+\]
+
+on an original sufficiently small closed ball \(C\) and regular Milnor fibre \(L\). These are comparisons of the actual restriction arrows.
+
+For clarity, retain the entire perturbed cluster, rather than a perturbed stalk at \(x\). A generic small linear perturbation \(h_\alpha=h-\alpha z\) has finitely many stratified Morse points converging to \(x\), with distinct critical values. Choose a regular \(v\) avoiding those values and their finitely many perpendicular bisectors. For \(b=|h_\alpha-v|^2\), let \(B_0\subset\cdots\subset B_N\) cross those critical levels successively. The controlled top restriction \(R\Gamma(C;P)\to R\Gamma(B_N;P)\) and the bottom-fibre comparison are invertible. The reverse exit filtration IH20–IH21 is
+
+\[
+ \begin{gathered}
+ F_r=\operatorname{Fib}\bigl(R\Gamma(B_N;P)
+             \longrightarrow R\Gamma(B_{N-r};P)\bigr),\\
+ F_0=0,\quad F_N\simeq M_h(P)_x,\qquad
+ F_{r-1}\longrightarrow F_r\longrightarrow Q_{N-r+1}
+             \xrightarrow{+1}.
+ \end{gathered}
+ \tag{ICR.9}
+\]
+
+Here \(Q_j=\operatorname{Fib}(R\Gamma(B_j;P)\to R\Gamma(B_{j-1};P))\). The triangle is the fibre-of-composite triangle for the two restriction maps through \(B_{N-r+1}\). It does not reverse cohomology arrows or choose a splitting. At a Morse point on \(S\), the real index of \(b|_S\) is \(\dim_{\mathbf C}S\), giving
+
+\[
+ Q_j\simeq N_S(P)[-\dim_{\mathbf C}S]=:\mu_S(P).
+ \tag{ICR.10}
+\]
+
+The normal coefficients, complex orientation lines and continuation paths are those of the actual local pair. Connected generic conormal continuation identifies the isomorphism classes needed here; a global trivialization of their monodromy is not assumed.
+
+### 3.511. Positive integer multiplicity and visible nonvanishing
+
+The normal-Morse degree proof PD1–PD6 makes every \(\mu_S(P)\) a finite-dimensional vector space in degree zero. Apply the cohomology sequence to ICR.9. Induction begins with zero and gives
+
+\[
+ F_r\in D^{[0,0]}(K),\qquad
+ 0\longrightarrow H^0F_{r-1}\longrightarrow H^0F_r
+ \longrightarrow H^0Q_{N-r+1}\longrightarrow0.
+ \tag{ICR.11}
+\]
+
+Let \(n_S\) be the local intersection integer of the original complex conormal cycle \(C_S\) with \(\operatorname{graph}(dh)\) at \(p\), summing its local branches. Set \(n_S=0\) if \(p\notin C_S\). The finite analytic and intersection proof IH10–IH14, IHA1–IHA3 identifies this integer with the number of perturbed Morse points on \(S\). In particular
+
+\[
+ \begin{gathered}
+ n_S\in\mathbf Z_{\geq0},\qquad p\in C_S
+ \ \Longrightarrow\ n_S>0,\\
+ \dim_KH^0M_h(P)_x
+       =\sum_S n_S\dim_K\mu_S(P).
+ \end{gathered}
+ \tag{ICR.12}
+\]
+
+The positivity has a concrete geometric reason. On each pure-\(\dim M\) conormal branch through \(p\), the map \((z,\xi)\mapsto dh_z-\xi\) has isolated zero fibre. A small compact source cut makes it proper; its compact affine analytic fibres are finite. The finite analytic-image dimension theorem makes each retained branch dominate the parameter ball. A generic small parameter therefore has at least one point on each branch. Avoiding the finite-image discriminant puts these points in the smooth transverse conormal locus, where the complex orientation gives sign \(+1\). Homotopy of the original Thom evaluation through the compact cut proves that their count is the original intersection integer. The analytic/Samuel argument applies to non-Cohen–Macaulay conormals; their intersection integer is not in general a raw quotient length.
+
+The visible-conormal theorem NG1–NG9, with the real-part identification of complex cotangents, gives
+
+\[
+ \begin{gathered}
+ \operatorname{SS}(P)=\bigcup_{\mu_S(P)\ne0}C_S,\\
+ p\in\operatorname{SS}(P)\Longrightarrow M_h(P)_x\ne0.
+ \end{gathered}
+ \tag{ICR.13}
+\]
+
+Indeed one visible \(C_S\) contains \(p\); its term in ICR.12 is strictly positive, and all other terms are nonnegative. This includes singular conormal points and zero covectors. The equality is an integer dimension calculation before passing to the field \(K\), so positive characteristic causes no reduction of the intersection integer modulo the characteristic. The free scholarly antecedent is [Massey, *A Little Microlocal Morse Theory*, version 2, Theorem 1.1](https://arxiv.org/abs/math/0006185v2); the original-pair, cluster and coefficient proofs used above are the programme arguments just linked.
+
+### 3.512. One isolated witness detects the full ind-object
+
+Return to ICR.5 over \(\mathbf C\). Suppose there exist \(m_0\) and a finite \(A_0\subset H^{m_0}E\) with
+
+\[
+ p\in\operatorname{Char}(A_0)^{\mathrm{an}},
+ \qquad
+ P_0=\operatorname{DR}_d(A_0^{\mathrm{an}})
+ \text{ has an adapted stratification satisfying ICR.7}.
+ \tag{ICR.14}
+\]
+
+Then \(P_0\) is perverse and AIC.8 identifies its microsupport with that characteristic set. Equations ICR.2 and ICR.13 imply that the point coefficient \(V_{A_0}\) of its bounded regular cycle is nonzero. Heart-exactness of the actual regular cycle sends \(A_0\hookrightarrow H^{m_0}E\) to a monomorphism. The functor \(H^0i^!\), being point Hom on the operator heart, is left exact. Together with ICR.6 and the finite-amplitude comparison, this gives
+
+\[
+ 0\ne V_{A_0}\hookrightarrow
+ H^0i^!\Phi_h^{\mathrm{reg}}H^{m_0}E
+   =H^{m_0}i^!\Phi_h^{\mathrm{reg}}E .
+ \tag{ICR.15}
+\]
+
+Thus ICR.5 is a nonzero retract. No smoothness of the characteristic germ, constant projection rank, transverse graph or nondegenerate Hessian is required in ICR.14. The stated isolation on all strata is required for this nonvanishing argument. The other finite cohomology pieces need only their separate characteristic isolation CIC.1.
+
+For a positive-rank flat connection on a smooth carrier \(S\), this test reduces to an isolated critical point of \(h|_S\); the single smooth stratum of \(S\) suffices. Closed transfer retains the actual support test, since its sections are the sections on \(S\) with the pulled-back support. Its local system \(V_S[\dim S]\) has \(\mu_S=V_S\). Therefore
+
+\[
+ \dim_{\mathbf C}V_{A_0}
+   =\operatorname{rank}(V_S)\,
+     I_{(x,0)}\bigl(T^*_SS,\operatorname{graph}(d(h|_S))\bigr)>0.
+ \tag{ICR.16}
+\]
+
+Every exact functor preserves the specified retract. Applying this to a proper direct image and then identifying cycles requires the actual proper-cycle comparison for that map, with its coefficient and field hypotheses. Characteristic support under arbitrary field extension in CIC.13–CIC.20 does not alone construct regular cycle functors over that field. These local statements do not establish the global nilpotent regularity or supported-generation assertions.
+
+### 3.513. A nonreduced cotangent fibre and a zero source covector
+
+Let \(f:\mathbf A^1_z\to\mathbf A^1_t\), \(t=z^a\), \(a\geq2\), and take the source zero section. Over \((t,\eta)=(0,1)\), the compatible-cotangent fibre is
+
+\[
+ \operatorname{Spec}
+ \frac{\mathbf C[z]}{(z^a,az^{a-1})}
+   =\operatorname{Spec}\frac{\mathbf C[z]}{(z^{a-1})},
+ \qquad \xi=df_z^t(1)=az^{a-1}.
+ \tag{ICR.17}
+\]
+
+Its underlying space is a point. Its length is \(a-1\); for \(a\geq3\) its tangent space has dimension one. In particular reduced-point isolation does not imply the zero-tangent hypothesis of RTM.2. A target function \(g(t)=t\) has nonzero differential, while \(h=g\circ f=z^a\) has \(dh_0=0\) and degenerate Hessian for \(a\geq3\).
+
+For constant perverse input \(V[1]\) on a small source disc, a small nonzero fibre consists of \(a\) points. The central unit is the actual diagonal, so
+
+\[
+ (\Phi_{z^a}V[1])_0
+   \simeq V\otimes
+        \bigl(\mathbf C^a/\mathbf C(1,\ldots,1)\bigr)
+       \quad\text{in degree zero}.
+ \tag{ICR.18}
+\]
+
+The contractible-disc and covered-fibre calculation is RTM.20 and FCR.27. Its monodromy is the cyclic permutation on that quotient. This has rank \((a-1)\dim V\), agreeing with ICR.12 and the isolated gradient intersection. Scheme length \(a-1\) is appropriate here because the smooth zero-section gradient equations form the finite complete intersection; it is not a universal identification for singular conormals. The source support condition is isolated despite the zero covector, so ICR.5 also applies to the corresponding ind-regular module with both infinite shift tails.
+
+### 3.514. An exact quartic cluster
+
+**Exercise 3.GM.** For \(0\leq s\leq1\), consider
+
+\[
+ g_s(z)=\frac{z^4}{4}-\frac{s z}{64},\qquad |z|\leq1.
+ \tag{ICR.19}
+\]
+
+Find every critical point and critical value for \(s>0\). Give a common boundary exclusion for a target disc of radius \(1/5\). At \(s=1\), take \(v=-(1+i)/16\); give explicit increasing regular levels for \(|g_1-v|^2\) crossing all three critical values. Identify the actual filtration and cycle rank for \(V[1]\) at the unperturbed zero-source-covector test.
+
+**Solution 3.GM.** If \(\zeta_j^3=1\), then
+
+\[
+ p_j(s)=\frac{s^{1/3}\zeta_j}{4},\qquad
+ c_j(s)=-\frac{3s^{4/3}\zeta_j}{1024},\qquad
+ g_s''(p_j)=3p_j^2\ne0 .
+ \tag{ICR.20}
+\]
+
+These are all the zeros of \(g_s'=z^3-s/64\). On the boundary,
+
+\[
+ |g_s(z)|\geq\frac14-\frac1{64}
+       =\frac{15}{64}>\frac15.
+ \tag{ICR.21}
+\]
+
+All critical values lie in that target disc and all three points converge to zero. At \(s=1\), their squared distances from \(v\), in increasing order, are
+
+\[
+ \ell_0=\frac{7817}{1048576},\qquad
+ \ell_-=\frac{8393-192\sqrt3}{1048576},\qquad
+ \ell_+=\frac{8393+192\sqrt3}{1048576}.
+ \tag{ICR.22}
+\]
+
+The middle value is from \(\zeta=(-1+i\sqrt3)/2\), the last from its conjugate. The choices
+
+\[
+ \begin{gathered}
+ a_0=\frac1{256},\quad
+ a_1=\frac{1975}{262144},\quad
+ a_2=\frac{2075}{262144},\quad
+ a_3=\frac{49}{4096},\\
+ a_0<\ell_0<a_1<\ell_-<a_2<\ell_+<a_3
+ \end{gathered}
+ \tag{ICR.23}
+\]
+
+follow by direct substitution and \(1<\sqrt3<2\). Put \(\eta=1/64\) and \(R=7/64\). One has \(\eta<|v|/4\), \(R>|v|+\eta\), \(R+|v|<1/5\), and \(a_3=R^2\); these follow from \(|v|=\sqrt2/16\), for example by squaring the positive bounds. The bottom disc contains no critical value: \(\sqrt{a_0}=1/16<|v|-3/1024\). Each critical value is at distance at most \(3/1024<\eta\) from zero. Thus these levels enclose the whole cluster in the common boundary-controlled target range.
+
+The endpoints of the pair comparison can also be checked directly here. All bottom and top boundary levels are regular for every \(s\), and their preimages miss \(|z|=1\) by ICR.21. On that circle the outward radial derivative of \(|g_s-v|^2\) is at least \(2[1/4-1/256-(1/64+|v|)(65/64)]>0\). Outside the top sublevel the real gradient has no zero: its only zeros are over \(g_s=v\) or at the three complex critical points, all inside. The decreasing-gradient flow, normalized by its derivative of the level, therefore stays inside the disc and reaches the top sublevel in finite time on every compact band. This gives the top restriction equivalence for constant coefficients. The bottom disc is free of branch values and its preimage is a finite trivial covering, so evaluation on its central fibre is an equivalence. Along \(s\), the same regular compact boundary families admit the controlled time lifts of IH15; they identify the actual whole pair at \(s=0\) and \(s=1\). This verifies the chosen finite perturbation, rather than only an unspecified smaller perturbation.
+
+For the sets \(B_j=\{|z|\leq1,\ |g_1(z)-v|^2\leq a_j\}\), retain the top and bottom pair comparisons of ICR.8–ICR.9. They give
+
+\[
+ \begin{gathered}
+ F_r=R\Gamma(B_3,B_{3-r};V[1]),\qquad
+ F_0=0,\quad F_3\simeq(\Phi_{z^4/4}V[1])_0,\\
+ 0\longrightarrow H^0F_{r-1}\longrightarrow H^0F_r
+       \longrightarrow V_r\longrightarrow0,\qquad
+ V_r\simeq V,\quad r=1,2,3 .
+ \end{gathered}
+ \tag{ICR.24}
+\]
+
+The three copies retain their orientation and continuation data. Hence the cycle rank is \(3\dim V\). No preferred splitting of these sequences or preferred global basis is implied. Independently, the original gradient ideal is \((z^3)\), of length three, and the original four-point fibre gives ICR.18 with \(a=4\). These calculations check the unperturbed object rather than replacing it by one perturbed stalk.
+
+![Quartic critical cluster, its exact critical values, and the actual reverse exit filtration](figures/isolated-critical-cycle-retract.svg)
+
+Figure 3.64. The left panel uses \(4p_j=\zeta_j\); the middle uses \(1024c_j=-3\zeta_j\). Both are exact complex-coordinate diagrams at \(s=1\), with different explicitly stated scales. The right panel records the ordered real levels of ICR.22–ICR.23; its heights show order only. The lower panel gives the restriction-fibre filtration ICR.24. Those arrows are maps of complexes, not paths between the drawn critical points. Proofs: ICR.19–ICR.24.
+
+### 3.515. A nonzero ambient covector with a degenerate tangential test
+
+**Exercise 3.GN.** In \(U=\mathbf A^2_{s,t}\), let \(j:S=\{t=0\}\hookrightarrow U\), \(A=j_+\mathcal O_S\), and \(h=t+s^a\), \(a\geq3\). Determine the full local conormal intersection, the normalized cycle and the full unbounded point retract for \(E=\bigoplus_{n\in\mathbf Z}A[2n]\). Explain why nonzero \(dh_0\) does not make the tangential test Morse.
+
+**Solution 3.GN.** With cotangent coordinates \((\sigma,\tau)\),
+
+\[
+ \begin{gathered}
+ \operatorname{Char}(A)=\{t=0,\ \sigma=0\},\qquad
+ dh=(a s^{a-1},1),\\
+ \mathcal O_{\operatorname{Char}(A)\cap\operatorname{graph}(dh),p}
+      =\frac{\mathbf C\{s\}}{(s^{a-1})}.
+ \end{gathered}
+ \tag{ICR.25}
+\]
+
+Here \(p=(0,0;0,1)\). The graph meets the smooth conormal only at \(p\) locally, but the scheme length is \(a-1\) and the tangential Hessian is zero. The local Riemann–Hilbert image is \(j_*\mathbf C_S[1]\). Sections with the support \(\{\operatorname{Re}h\geq0\}\) are exactly the sections on \(S\) with support \(\{\operatorname{Re}s^a\geq0\}\). ICR.2 and ICR.18 therefore identify
+
+\[
+ \begin{gathered}
+ \Phi_h^{\mathrm{reg}}A\simeq
+ i_*\bigl(\mathbf C^a/\mathbf C_{\mathrm{diag}}\bigr),\\
+ i^!\Phi_h^{\mathrm{reg}}E\simeq
+ \bigoplus_{n\in\mathbf Z}
+       \bigl(\mathbf C^a/\mathbf C_{\mathrm{diag}}\bigr)[2n].
+ \end{gathered}
+ \tag{ICR.26}
+\]
+
+The calculation is local at zero; globally the cycle is also supported there. The indicated isomorphism uses the actual diagonal and retains its cyclic monodromy. Every finite cohomology piece has the same isolated characteristic test, and continuity carries the bounded computation to the displayed sum. Its odd cohomology vanishes and each even cohomology has dimension \(a-1\). The maps of ICR.5 are the actual point adjunction maps. The ambient nonzero normal component \(dt\) does not alter the degenerate tangential germ \(s^a\).
+
+### 3.516. Separated powers and both infinite tails
+
+**Exercise 3.GO.** On \(\mathbf A^r\), \(r\geq1\), let \(a_i\geq2\), \(h=\sum_{i=1}^r z_i^{a_i}\), and take a constant rank-\(q\) connection, \(q\geq1\). Compute the rank and degree of the normalized cycle at zero, and its point retract for the sum of all even shifts. Use an isolated perturbation rather than a tensor-product theorem for Milnor fibres.
+
+**Solution 3.GO.** The only critical point is zero. The gradient ideal and a basis for its local quotient are
+
+\[
+ J_h=(a_1z_1^{a_1-1},\ldots,a_rz_r^{a_r-1}),\qquad
+ z_1^{b_1}\cdots z_r^{b_r},\quad 0\leq b_i<a_i-1 .
+ \tag{ICR.27}
+\]
+
+For a generic small linear perturbation \(h-\sum\alpha_i z_i\), the independent equations \(a_i z_i^{a_i-1}=\alpha_i\) have exactly
+
+\[
+ \mu=\prod_{i=1}^r(a_i-1)
+ \tag{ICR.28}
+\]
+
+solutions in the whole critical cluster. Every diagonal Hessian entry is nonzero at those solutions, including the entries with \(a_i=2\). The values can be made distinct by the parameter discriminant argument IH13. Thus ICR.9 has \(\mu\) quotients, each equal to the rank-\(q\) coefficient in degree zero, and
+
+\[
+ (\Phi_h\mathbf C^q[r])_0\in D^{[0,0]}(\mathbf C),
+ \qquad
+ \dim H^0(\Phi_h\mathbf C^q[r])_0=q\mu .
+ \tag{ICR.29}
+\]
+
+The monomial basis in ICR.27 gives the same complete-intersection multiplicity. The filtration retains the actual restriction arrows and proves the degree assertion without a Thom–Sebastiani formula or a chosen splitting. If \(A=\mathcal O_{\mathbf A^r}^{\oplus q}\) and \(E=\bigoplus_{n\in\mathbf Z}A[2n]\), the characteristic set is the zero section and its intersection with \(\operatorname{graph}(dh)\) is isolated. Write \(V_h=(\Phi_h\mathbf C^q[r])_0\). Continuity and ICR.5 give
+
+\[
+ \begin{gathered}
+ i^!\Phi_h^{\mathrm{reg}}E\simeq
+       \bigoplus_{n\in\mathbf Z}V_h[2n],\\
+ \dim H^{2m}i^!\Phi_h^{\mathrm{reg}}E=q\mu,\quad
+ H^{2m+1}i^!\Phi_h^{\mathrm{reg}}E=0 .
+ \end{gathered}
+ \tag{ICR.30}
+\]
+
+Each cohomology module of \(E\) is finite regular holonomic, so every required finite-subobject isolation condition follows from the zero-section bound. The resulting nonzero retract handles a zero source covector and arbitrarily degenerate powers while retaining both infinite cohomological tails.
+
+### 3.517. Isolation in the actual characteristic set
+
+Let \(M\) be a complex manifold, \(K\) any field, and \(P\) a finite-rank complex-constructible perverse \(K\)-sheaf near \(x\). Fix its original locally finite connected complex Whitney strata. Write \(\Sigma_P\) for its complex microsupport, using the real-part identification with real cotangents. Let \(h(x)=0\) and suppose, after shrinking,
+
+\[
+ \operatorname{graph}(dh)\cap\Sigma_P\subset\{p\},
+ \qquad p=(x,dh_x).
+ \tag{CIS.1}
+\]
+
+Then the normalized supported test
+
+\[
+ M_h(P)_x=(R\Gamma_{\{\operatorname{Re}h\geq0\}}P)_x
+       \simeq(\Phi_hP)_x
+ \tag{CIS.2}
+\]
+
+is in ordinary degree zero. It is nonzero if and only if \(p\in\Sigma_P\). Zero covectors, singular conormals and degenerate Hessians are allowed. There is no critical-point condition on invisible original strata.
+
+Here and below \(\Phi_h\) means the fibre convention ICR.1. The critical-support supplement uses an unshifted cone; its supported object \(M_h\) is that cone shifted by \([-1]\), hence is precisely CIS.2. The actual coefficient map is ICR.2–ICR.3.
+
+For an original visible stratum \(S\), retain its normal object and the local intersection integer
+
+\[
+ \begin{gathered}
+ \mu_S(P)=N_S(P)[-\dim_{\mathbf C}S],\\
+ n_S=I_p\bigl(C_S,\operatorname{graph}(dh)\bigr),
+ \qquad C_S=\overline{T^*_SM}.
+ \end{gathered}
+ \tag{CIS.3}
+\]
+
+If \(p\notin C_S\), put \(n_S=0\). Only visible labels enter this definition; their intersections are isolated by CIS.1. The proof below gives the integer equality
+
+\[
+ \dim_K H^0M_h(P)_x
+       =\sum_{S\ {\rm visible}}n_S\dim_K\mu_S(P).
+ \tag{CIS.4}
+\]
+
+Each nonempty local intersection contributes a positive integer. We prove this using the original boundary, pair and restriction maps. The scholarly antecedent is [Massey, *A Little Microlocal Morse Theory*, version 2, §5](https://arxiv.org/abs/math/0006185v2).
+
+### 3.518. A radial boundary controlled by visible conormals
+
+Work in a coordinate ball \(B_R\) centered at \(x=0\), meeting finitely many original strata. For each visible \(S\) on which \(h\) is nonconstant, take the actual relative-conormal closure
+
+\[
+ \begin{gathered}
+ S^\circ=\{z\in S:h(z)\ne0,\ d(h|_S)_z\ne0\},\\
+ D_S=\overline{\{(z,\xi):z\in S^\circ,
+             \xi|_{\ker d(h|_S)_z}=0\}},\qquad
+ D_S^0=D_S\cap\pi^{-1}(h=0).
+ \end{gathered}
+ \tag{CIS.5}
+\]
+
+The relative-conormal proof RC0–RC2 makes \(D_S^0\) closed analytic, complex conic and isotropic, including all its singular and zero pieces. Its mechanism is useful here. On the dense relative-conormal bundle the canonical form satisfies \(\alpha=\lambda\,d(h\pi)\), with a meromorphic multiplier. On a finite normalization, near a generic divisor of \(h\pi=0\), one has
+
+\[
+ \nu^*(h\pi)=t^a,\qquad
+ \nu^*\alpha=a\lambda t^{a-1}\,dt .
+ \tag{CIS.6}
+\]
+
+The form on the left is holomorphic, so it kills every tangent to that divisor even when \(\lambda\) has a pole. Finite generic tangent lifting and singular-piece pullback give isotropy on the entire zero fibre. This uses no normal-crossing assumption on \(h\).
+
+For \(z\in h^{-1}(0)\), approximate a covector of \(C_S\) by conormals over the dense \(S^\circ\). Adding a fixed complex multiple of \(dh\) before taking the limit proves
+
+\[
+ (\Sigma_P)_z+\mathbf C\,dh_z\subset(\Lambda_0)_z,
+ \qquad
+ \Lambda_0=\bigcup_{S\ {\rm visible},\,h|_S\ {\rm nonconstant}}D_S^0
+             \ \cup\ T_x^*M
+ \tag{CIS.7}
+\]
+
+where the last fibre is included only if the original point stratum \(\{x\}\) is visible. A visible positive-dimensional stratum on which \(h=0\) would give graph points away from \(x\), contradicting CIS.1. Nonzero constant strata do not approach \(x\). Thus these are all relevant cases. The cone \(\Lambda_0\) is closed isotropic with closed base in \(B_R\).
+
+Put \(\rho=|z|^2\). The characteristic-values proof CV0–CV5 applies to
+
+\[
+ \varphi=\frac{\rho}{R^2-\rho},\qquad
+ d\varphi=\frac{R^2}{(R^2-\rho)^2}\,d\rho .
+ \tag{CIS.8}
+\]
+
+This exhaustion is proper on the actual closed base of \(\Lambda_0\). Its characteristic values are closed and locally finite, so an entire sufficiently small positive interval contains none. Positive conicity then gives, for every sufficiently small \(r>0\),
+
+\[
+ J^{-1}(d\rho_z)\notin(\Lambda_0)_z
+ \quad\text{if }|z|=r,\ h(z)=0 .
+ \tag{CIS.9}
+\]
+
+Here \(J\) is the real-part cotangent map. Over the closed support of \(P\), write \(u=\operatorname{Re}h\), \(v=\operatorname{Im}h\). On that zero-level sphere the three rows \(du,dv,d\rho\) are independent. Adjoining any unit covector of \(\operatorname{SS}(P)\) preserves independence: a relation with nonzero radial coefficient violates CIS.7–CIS.9; one with zero radial coefficient puts a nonzero complex multiple of \(dh\) in \(\Sigma_P\), violating CIS.1. A zero differential away from \(x\) is excluded because the zero covector belongs to microsupport over its closed base.
+
+Compactness of the zero-level sphere and its unit microsupport covectors gives a positive uniform row margin. If the unit-covector set is empty, the three-row argument still applies; if the sphere misses the support, a whole value neighbourhood misses it. Consequently the margin extends to \(|h|\leq2\eta\) on that sphere and to sufficiently small \(C^1\) perturbations, for some \(\eta>0\). At the fixed sides \(v=\pm\eta\), graph exclusion and compactness give the corresponding value-row margin. These are the simultaneous boundary bounds RB0–RB3. No radius or boundary hypothesis on an invisible stratum has been introduced.
+
+### 3.519. The original supported test as a relative compact band
+
+Fix such a closed ball \(C\), take \(0<\epsilon<\eta\) sufficiently small, and put
+
+\[
+ X=C\cap\{|v|\leq\eta\},\qquad
+ B_\pm=X\cap\{u\leq\pm\epsilon\}.
+ \tag{CIS.10}
+\]
+
+Retain the ordinary closed restriction of \(P\) to \(X\), extended to the ambient manifold. Its proper height map is \(u\), since \(X\) is compact. Near the band, the [signed closed-face estimate](../../sheaf-proof-readings/SH02-microsupport-operations.html#SH02-MO-BOUNDARY) adds only the inward normal rays of the active faces: \(-d\rho\) at the radial face, \(-dv\) at \(v=\eta\), and \(+dv\) at \(v=-\eta\). CIS.9 and its uniform margin exclude cancellation with \(du\) on those faces and their corners. In the interior the only possible graph point is \(x\).
+
+Apply the [between-level and local-jump proof MO31–MO36](../../sheaf-proof-readings/SH02-microsupport-operations.html#SH02-MO-MORSE) on this band. Proper base change and support localization identify the jump at height zero with the supported complex on the compact zero-height fibre. Every stalk except the one at \(x\) is zero by the preceding microsupport exclusions. Its sections are therefore that one stalk. The actual endpoint restrictions give
+
+\[
+ \operatorname{Fib}\bigl(R\Gamma(B_+;P)
+                \longrightarrow R\Gamma(B_-;P)\bigr)
+       \simeq M_h(P)_x .
+ \tag{CIS.11}
+\]
+
+This is a relative band comparison. The cohomology below the band is retained and need not vanish. The point \(x\) is interior to all artificial faces, so its support test is the original one. The proof does not flow the coefficient sheaf along critical invisible strata or identify the full ball with a sublevel.
+
+### 3.520. Proper parameter continuation of the pair map
+
+Let \(\ell(z)=a\cdot z\), with \(a\) a sufficiently small constant complex covector, and \(h_s=h+s\ell\). Work on an open interval \(I=(-\tau,1+\tau)\), \(\tau>0\), choosing \(a\) small enough for the uniform margins throughout \(I\). Keep \(X\) and \(v=\operatorname{Im}h\) fixed, and set
+
+\[
+ E^\pm=\{(z,s)\in X\times I:
+              \operatorname{Re}h_s(z)\leq\pm\epsilon\}.
+ \tag{CIS.12}
+\]
+
+Take the ordinary closed restrictions of the pulled-back coefficient to these sets, extended into \(M\times I\). Their projection \(\pi_I\) is proper on support: over a compact time set the support is closed in \(C\) times that set. Away from a moving height face each coefficient is empty or the fixed product, whose covectors have zero time component by the exact submersion formula MO10.
+
+Near a moving face, \(|h|\) is small. The face estimate is valid there with all fixed active faces and the additional inward ray \(-d_{z,s}(\operatorname{Re}h_s)\). A nonzero pure time covector would require cancellation of its spatial part against a microsupport covector and the active radial and side rows. The simultaneous margins exclude exactly those cancellations. Hence the proper-image estimate MO8 gives
+
+\[
+ \begin{gathered}
+ G^\pm=R\pi_{I,*}\bigl((\operatorname{pr}_M^{-1}P)_{E^\pm}\bigr),\\
+ \operatorname{SS}(G^\pm)\subset T_I^*I .
+ \end{gathered}
+ \tag{CIS.13}
+\]
+
+There is no estimate at an artificial time endpoint, because \(I\) is open. A possibly characteristic distant fixed face is also harmless: away from a moving face the sheaf is the fixed product. Only the neighbourhoods just described require the face estimate.
+
+Whole-complex interval descent makes \(G^\pm\), their actual restriction morphism and its fibre constant derived objects on \(I\). Proper base change identifies their fibres with the section complexes of the two endpoint pairs. For the relative fibre \(G\), the resulting maps are
+
+\[
+ G|_{s=0}\ \xleftarrow{\ \sim\ }\ R\Gamma(I;G)\
+                 \xrightarrow{\ \sim\ }\ G|_{s=1}.
+ \tag{CIS.14}
+\]
+
+They form the endpoint square of the actual pair restrictions and are natural in \(P\). This is the compact-band continuation IV1–IV2. It transports the whole pair fibre, without identifying the original test with a perturbed stalk at \(x\).
+
+### 3.521. The finite visible cluster and its integer counts
+
+For a local irreducible branch \(\Lambda\) of a visible \(C_S\) through \(p\), consider
+
+\[
+ H_\Lambda(z,\xi)=\xi-dh_z:\Lambda\longrightarrow\mathbf C^m,
+ \qquad m=\dim_{\mathbf C}M .
+ \tag{CIS.15}
+\]
+
+CIS.1 makes its zero fibre isolated. A small compact cotangent cut makes this map proper over a small parameter ball. Its fibres are compact affine analytic sets, hence finite. The branch is pure of dimension \(m\); the finite image dimension theorem makes it dominate that ball. Remove the source singular, original-boundary, nongeneric-normal and rank-drop subsets. Their finite images are proper analytic subsets. Choose \(a\) arbitrarily small outside their finite union. Compactness excludes all other visible graph points: their covectors are \(dh_z+a\), so neither a distant base point nor an unbounded covector can escape the chosen traps.
+
+The graph of \(d(h+\ell)\) now meets the actual visible conormals at finitely many smooth transverse points. Each is a Morse point on its original stratum with its allowed generic normal direction. The finite analytic and Thom-count proof IH10–IH14, IHA1–IHA3 applies separately to these isolated visible branches and gives
+
+\[
+ n_S=\#\{\text{perturbed points on }S\}
+       \in\mathbf Z_{\geq0},\qquad
+ p\in C_S\Longrightarrow n_S>0 .
+ \tag{CIS.16}
+\]
+
+The original complex fundamental cycle and its Thom evaluation are retained throughout the compact perturbation; every transverse complex sign is \(+1\). No raw quotient-length formula for a singular conormal is required. The calculation does not apply an isolated-fibre theorem to an invisible conormal whose original zero fibre may be positive dimensional.
+
+At a retained point \(z\) on a stratum \(S_z\), the real height \(\operatorname{Re}(h+\ell)\) has tangential index \(\dim_{\mathbf C}S_z\). The original normal/tangential comparison and its orientation data give
+
+\[
+ Q_z(P)\simeq N_{S_z}(P)[-\dim_{\mathbf C}S_z]
+                  =\mu_{S_z}(P).
+ \tag{CIS.17}
+\]
+
+The paths and orientation lines belong to that actual comparison. The dimension calculation needs its isomorphism class, not a global trivialization of a normal local system.
+
+### 3.522. Zero invisible jumps and the finite restriction filtration
+
+Use the proper real height \(\operatorname{Re}(h+\ell)\) on the same \(X\). Its actual microsupport graph in the band is the finite set just constructed. An original invisible stratum can still have nonisolated critical loci. At every such point outside that finite graph intersection, the actual supported test is zero by the definition of microsupport. MO31 consequently identifies the actual between-level restrictions there.
+
+List the distinct exceptional real heights in the band and choose regular cuts between them. Equal real critical values are grouped together. Write
+
+\[
+ D_0\subset D_1\subset\cdots\subset D_N,\qquad
+ F_r=\operatorname{Fib}\bigl(R\Gamma(D_N;P)
+                  \longrightarrow R\Gamma(D_{N-r};P)\bigr).
+ \tag{CIS.18}
+\]
+
+The first and last section complexes are identified with the perturbed lower and upper band endpoints by the actual regular restrictions. Proper support localization at an exceptional height gives the direct sum of its point tests: the supported sheaf on that compact level fibre has zero stalks everywhere else. Thus the fibre-of-composite triangles give
+
+\[
+ \begin{gathered}
+ F_0=0,\quad F_N\simeq M_h(P)_x,\\
+ F_{r-1}\longrightarrow F_r
+ \longrightarrow\!\!\bigoplus_{z\ {\rm at\ level}\ N-r+1}\!\!Q_z(P)
+          \xrightarrow{+1}.
+ \end{gathered}
+ \tag{CIS.19}
+\]
+
+The endpoint comparison is CIS.14 followed by CIS.11. The normal-degree proof PD1–PD6 puts every quotient in degree zero. The long exact sequences are therefore
+
+\[
+ \begin{gathered}
+ F_r\in D^{[0,0]}(K),\\
+ 0\longrightarrow H^0F_{r-1}\longrightarrow H^0F_r
+ \longrightarrow\!\!\bigoplus_{z\ {\rm at\ level}\ N-r+1}\!\!
+                         \mu_{S_z}(P)\longrightarrow0 .
+ \end{gathered}
+ \tag{CIS.20}
+\]
+
+Taking integer dimensions and using CIS.16 proves CIS.4. By the visible-conormal formula NG19, \(p\in\Sigma_P\) lies in at least one visible \(C_S\), so one summand is strictly positive. If the graph intersection is empty, ICR.4 gives zero. The zero-dimensional case is the direct point calculation. This proves CIS.1–CIS.4 over every field, without an index trace or reduction of an integer modulo the characteristic.
+
+There is also a bounded-complex version. Let \(F\) be bounded finite-rank complex constructible with the same graph isolation. The identity PD7 gives \(\operatorname{SS}({}^pH^jF)\subset\operatorname{SS}(F)\). The single supported functor \(T_h(F)=(R\Gamma_{\{\operatorname{Re}h\geq0\}}F)_x\) sends all these perverse cohomology objects to degree zero by the theorem. Applying it to the finite perverse truncation triangles gives actual ordinary truncation triangles, hence
+
+\[
+ \begin{gathered}
+ H^jT_h(F)\simeq T_h({}^pH^jF),\\
+ p\in\operatorname{SS}(F)\Longrightarrow T_h(F)\ne0 .
+ \end{gathered}
+ \tag{CIS.21}
+\]
+
+The implication uses PD7 to choose one perverse cohomology with a visible conormal through \(p\). No splitting of \(F\) into its perverse cohomology was assumed.
+
+### 3.523. Full unbounded regular cycles detect a finite characteristic witness
+
+Let \(U\) be smooth affine over \(\mathbf C\), \(E\in\mathscr R_\infty(U)\), \(h\in\mathcal O(U)\), \(h(x)=0\), and assume componentwise characteristic isolation CIC.1. Put \(B=\Phi_h^{\mathrm{reg}}E\). Equations ICR.5–ICR.6 already supply the actual comparison and maps
+
+\[
+ \begin{gathered}
+ \theta_B:i^!B\xrightarrow{\sim}i^*B,\\
+ i_*V\xrightarrow{u}B\xrightarrow{r}i_*V,\qquad
+ V=i^!B,\quad ru=1 .
+ \end{gathered}
+ \tag{CIS.22}
+\]
+
+Suppose some finite \(A_0\subset H^{m_0}E\) has \(p\in\operatorname{Char}(A_0)^{\mathrm{an}}\). Its perverse Riemann–Hilbert image has precisely that microsupport by AIC.8. The bounded result above makes its cycle coefficient \(V_{A_0}\) nonzero under the characteristic isolation alone. The exact regular cycle preserves the inclusion in the heart. Left exactness of \(H^0i^!\) and the actual finite-amplitude comparison give
+
+\[
+ 0\ne V_{A_0}\hookrightarrow
+ H^0i^!\Phi_h^{\mathrm{reg}}H^{m_0}E
+       =H^{m_0}i^!\Phi_h^{\mathrm{reg}}E .
+ \tag{CIS.23}
+\]
+
+Thus CIS.22 is a nonzero retract with both infinite cohomological tails allowed. No common holonomic cone, common neighbourhood, transverse Hessian, smooth characteristic germ or isolated-critical condition on invisible strata is needed. Regular ind-membership and the componentwise characteristic isolation are still hypotheses.
+
+For any specified exact functor \(T\), the same actual maps satisfy
+
+\[
+ T(r)T(u)=1_{T(i_*V)}.
+ \tag{CIS.24}
+\]
+
+Nonvanishing after applying \(T\) requires \(T(i_*V)\ne0\). Sections 3.527–3.533 prove the actual proper-cycle comparison and nonzero point-image retract for the coefficient \(V\) and proper maps of complex smooth separated finite-type schemes on the full regular Ind category. The regular cycle functors and comparisons over a generic geometric field, the applicable stack presentations, global nilpotent regularity and the full supported-generation statements retain their separate requirements.
+
+### 3.524. An invisible critical line that persists under perturbation
+
+**Exercise 3.GP.** On \(M=\mathbf C^3\), use the two Whitney strata \(S\) and \(M\setminus S\), where
+
+\[
+ \begin{gathered}
+ S=\{(it,t,0):t\in\mathbf C\},\qquad P=K_M[3],\\
+ h=u^2+v^2+w^2,\quad h_\lambda=h-\lambda w .
+ \end{gathered}
+ \tag{CIS.25}
+\]
+
+Compute the actual characteristic test and the declared stratified critical locus. Show that for \(\lambda\ne0\) the invisible critical line persists, although the visible perturbation has only one point. Compute the original normalized cycle.
+
+**Solution 3.GP.** The actual microsupport of \(P\) is the zero section. The original graph meets it only at the origin. The full perturbed differential gives
+
+\[
+ \begin{gathered}
+ dh_\lambda=(2u,2v,2w-\lambda),\\
+ z_\lambda=(0,0,\lambda/2),\qquad
+ h_\lambda(z_\lambda)=-\lambda^2/4 .
+ \end{gathered}
+ \tag{CIS.26}
+\]
+
+The Hessian is \(2I_3\), and \(z_\lambda\notin S\). The line \(S\) is invisible because the coefficient extends as a constant sheaf across it; its normal linear submersion has identical central and nearby coefficient, so its normal object is zero. Nevertheless
+
+\[
+ h|_S=h_\lambda|_S=0,\qquad
+ (\Phi_{h_\lambda}P)_z=0\quad(z\in S,\ \lambda\ne0).
+ \tag{CIS.27}
+\]
+
+For the second assertion \(dh_\lambda\ne0\) on \(S\), since its \(w\)-component is \(-\lambda\). A holomorphic submersion with constant coefficient has the invertible central-to-nearby unit in local product coordinates. Thus every point of \(S\) is a critical point of the declared restricted function, while none contributes an actual test.
+
+The finite visible cluster has one point in the open stratum and one real tangential index \(3\). Its coefficient \(K[3]\) becomes \(K\) in degree zero. CIS.19 therefore gives
+
+\[
+ (\Phi_hK_M[3])_0\simeq K,\qquad
+ F_0=0,\quad F_1\simeq K
+ \quad\text{in degree zero}.
+ \tag{CIS.28}
+\]
+
+This agrees with ICR.29 for three squares, but retains the specified two-stratum partition throughout. The lower band cohomology has not been declared zero; \(F_0\) is the zero *relative fibre*.
+
+The numerical perturbation in Figure 3.65 has explicit admissible bands. Take \(C=\{|z|\leq1\}\), \(\epsilon=1/64\), \(\eta=1/16\), \(I=(-1,2)\), and \(h_s=h-sw/8\). Write \(c=s/8\) and \(V=\operatorname{Im}h\), so \(|c|<1/4\). On a moving height face one has \(|h|\leq21/64\). On the radial sphere, a relation \(d\rho=A\,d\operatorname{Re}h_s+B\,dV\) would have \(\sqrt{A^2+B^2}\leq8/7\): the norm of the right side is at least \((2-|c|)\sqrt{A^2+B^2}\), while \(|d\rho|=2\). Pair its complex-covector identity with \(z\). The resulting inequality is \(2\leq(8/7)(2\cdot21/64+1/4)=29/28\), a contradiction. A dependence of the two value rows forces the complex coordinates \(u=v=0\) and \(w=c/[2(1+iB)]\) for a real \(B\); then \(|V|<1/64\), so it misses the side faces \(|V|=1/16\). The only interior real-height critical point is \(z=(0,0,c/2)\), with value \(-c^2/4>-1/64\). Thus neither moving endpoint is critical, and every required face exclusion holds on the open interval \(I\). This verifies the chosen finite perturbation and its actual endpoint square.
+
+![A persistent invisible critical line, the actual visible cotangent intersection, and the original relative-band maps](figures/characteristic-isolated-cycles.svg)
+
+Figure 3.65. For \(\lambda=1/8\), the left panel is the real coordinate section \((u,v,w)=(ib,b,c)\), \(b,c\in\mathbf R\). The horizontal line is the section of the invisible complex line; the marked point is the full ambient critical point \((0,0,1/16)\). Critical points of a restricted drawing plane are not being identified with ambient critical points. The middle panel is the actual cotangent section \(u=v=0\), \(w\in\mathbf R\), \(\xi_u=\xi_v=0\), \(\xi_w\in\mathbf R\): the zero section meets \(\xi_w=2w-1/8\) at \(w=1/16\). The lower panel gives the compact-pair continuation and the single relative jump. Proofs: CIS.12–CIS.20 and CIS.25–CIS.28.
+
+### 3.525. Two conormal branches at a zero covector
+
+**Exercise 3.GQ.** In \(U=\mathbf A^2_{u,v}\), let \(j_u\) and \(j_v\) be the closed inclusions of its two coordinate axes. For \(r,s\geq1\), take
+
+\[
+ \begin{gathered}
+ A=(j_u)_+\mathcal O_{\mathbf A^1}^{\oplus r}
+       \oplus(j_v)_+\mathcal O_{\mathbf A^1}^{\oplus s},
+ \\
+ h=u^a+v^b,\quad a,b\geq2 .
+ \end{gathered}
+ \tag{CIS.29}
+\]
+
+Compute the normalized cycle at the singular meeting point of its characteristic components, and the point coefficient for \(\bigoplus_{n\in\mathbf Z}A[2n]\).
+
+**Solution 3.GQ.** In cotangent coordinates \((\alpha,\beta)\), the characteristic set is the union \(\{v=0,\alpha=0\}\cup\{u=0,\beta=0\}\). The graph of \(dh\) meets it only at \(p=(0,0;0,0)\). On the two smooth conormal branches the local gradient quotients are respectively \(\mathbf C\{u\}/(u^{a-1})\) and \(\mathbf C\{v\}/(v^{b-1})\). Thus
+
+\[
+ n_u=a-1,\quad n_v=b-1,\qquad
+ \dim V_A=r(a-1)+s(b-1).
+ \tag{CIS.30}
+\]
+
+The point stratum is invisible: a generic linear test restricts to submersions on both axes, and its two normal objects are zero. Closed-transfer support sections reduce the two actual tests to \(u^a\) and \(v^b\). The covered-fibre diagonal calculation ICR.18 identifies, with its cyclic monodromies,
+
+\[
+ \begin{aligned}
+ V_A={}&
+ \bigl(\mathbf C^r\otimes(\mathbf C^a/\mathbf C_{\rm diag})\bigr)\\
+ &\oplus
+ \bigl(\mathbf C^s\otimes(\mathbf C^b/\mathbf C_{\rm diag})\bigr)
+ \quad\text{in degree zero}.
+ \end{aligned}
+ \tag{CIS.31}
+\]
+
+The ambient characteristic germ is singular at \(p\). Each local branch count has nevertheless been taken separately, with positive sign, and the invisible point contributes nothing. Every finite cohomology piece of \(E=\bigoplus_{n\in\mathbf Z}A[2n]\) has the same isolated characteristic bound. Continuity of the actual regular cycles and both point adjoints gives
+
+\[
+ \begin{gathered}
+ i^!\Phi_h^{\mathrm{reg}}E\simeq
+       \bigoplus_{n\in\mathbf Z}V_A[2n],\\
+ \dim H^{2m}i^!\Phi_h^{\mathrm{reg}}E=r(a-1)+s(b-1),\\
+ H^{2m+1}i^!\Phi_h^{\mathrm{reg}}E=0 .
+ \end{gathered}
+ \tag{CIS.32}
+\]
+
+The maps are those of CIS.22; the calculation retains both infinite tails.
+
+### 3.526. A degenerate visible point beside a nonisolated invisible locus
+
+**Exercise 3.GR.** Keep the line \(S\) from CIS.25 and \(P=K_{\mathbf C^3}[3]\), but let \(a\geq3\) and
+
+\[
+ h=u^2+v^2+w^a,\qquad
+ h_\lambda=h-\lambda w,\quad \lambda\ne0 .
+ \tag{CIS.33}
+\]
+
+Compute the complete visible cluster, its normalized cycle rank, and the full even-shift point coefficient over \(\mathbf C\).
+
+**Solution 3.GR.** The actual microsupport is again the zero section and its original graph intersection is just the origin, with degenerate Hessian. Let \(w_j\) range over all roots of \(a w^{a-1}=\lambda\). There are \(a-1\) distinct nonzero roots. The full critical equations, values and Hessians are
+
+\[
+ \begin{gathered}
+ z_j=(0,0,w_j),\qquad
+ h_\lambda(z_j)=-\frac{a-1}{a}\lambda w_j,\\
+ \operatorname{Hess}_{z_j}h_\lambda
+      =\operatorname{diag}(2,2,a(a-1)w_j^{a-2}) .
+ \end{gathered}
+ \tag{CIS.34}
+\]
+
+All points lie outside \(S\), all are Morse, and all converge to zero as \(\lambda\to0\). Their values are distinct. On \(S\) the perturbed function is still identically zero, while its ambient \(w\)-derivative is \(-\lambda\); hence the entire invisible critical line has zero actual tests, as in CIS.27.
+
+The original zero-section intersection ideal is \((2u,2v,aw^{a-1})\), with quotient basis \(1,w,\ldots,w^{a-2}\). The visible cluster has \(a-1\) degree-zero quotients \(K\). The actual compact-band filtration gives
+
+\[
+ V_h=(\Phi_hK_{\mathbf C^3}[3])_0\in D^{[0,0]}(K),
+ \qquad \dim_KV_h=a-1 .
+ \tag{CIS.35}
+\]
+
+Equal real critical heights, if any, are grouped as finite direct sums; no choice of real ordering changes the integer dimension. A chosen global basis or trivial monodromy is not inferred from this filtration.
+
+Over \(\mathbf C\), let \(E=\bigoplus_{n\in\mathbf Z}\mathcal O_{\mathbf A^3}[2n]\). Each cohomology is regular with zero characteristic section, so componentwise isolation holds. The actual continuous ind-cycle and CIS.22 yield
+
+\[
+ \begin{gathered}
+ i^!\Phi_h^{\mathrm{reg}}E\simeq
+       \bigoplus_{n\in\mathbf Z}V_h[2n],\\
+ \dim H^{2m}i^!\Phi_h^{\mathrm{reg}}E=a-1,\qquad
+ H^{2m+1}i^!\Phi_h^{\mathrm{reg}}E=0 .
+ \end{gathered}
+ \tag{CIS.36}
+\]
+
+This nonzero retract uses actual characteristic isolation while the declared invisible critical locus remains positive dimensional. Its coefficient agrees with ICR.29 for exponents \(2,2,a\), without changing the original strata or substituting a single perturbed stalk for the original test.
+
+### 3.527. Ambient regular cycles and proper algebraic maps
+
+Let \(f:X\to Y\) be a proper morphism of smooth separated finite-type complex varieties. Work componentwise if their dimensions differ. Let \(g:Y\to\mathbf A^1\) be regular, put \(h=gf\), and write \(i_X:X_0=h^{-1}(0)\hookrightarrow X\) and \(i_Y:Y_0=g^{-1}(0)\hookrightarrow Y\). The zero fibres may be singular. Put
+\[
+ \mathscr R_0(X)=D^b_{\mathrm{rh}}(\mathcal D_X),\qquad
+ \mathscr R_\infty(X)=\operatorname{Ind}\mathscr R_0(X),\qquad
+ j_X:\mathscr R_\infty(X)\longrightarrow D_{\mathrm{qc}}(\mathcal D_X).
+ \tag{PIC.1}
+\]
+Here the bounded category has its full derived mapping complexes, and \(j_X\) extends the actual inclusion. The same notation applies to \(Y\). Denote the normalized cycle followed by closed extension into its smooth ambient variety by \(C_h^X\). On bounded inputs its specified comparison is
+\[
+ \rho_{h,A}:\operatorname{DR}_X C_{h,0}^X A
+       \xrightarrow{\sim}i_{X,*}\Phi_h\operatorname{DR}_X A,
+ \qquad C_h^X=\operatorname{Ind}(C_{h,0}^X).
+ \tag{PIC.2}
+\]
+This is the construction IAC.26, using bounded regular Riemann–Hilbert and closed support. It assigns no smooth differential-operator sheaf to a singular zero fibre. The bounded algebraic cycle theorem, its exact normalization and the closed-support comparisons were proved in §3.297 and its linked programme lessons.
+
+The proper bounded direct image preserves \(\mathscr R_0\) by the algebraic four-map theorem, Theorem 5.17. Thus the following exact functor exists:
+\[
+ f_+^{\mathrm{reg}}=\operatorname{Ind}(f_{+,0}):
+          \mathscr R_\infty(X)\longrightarrow\mathscr R_\infty(Y).
+ \tag{PIC.3}
+\]
+We identify it with the actual ambient pushforward and construct its cycle comparison. Regular ind-membership remains an input. Neither an arbitrary geometric ground field nor a general algebraic stack is included in the statement.
+
+### 3.528. A finite model for actual unbounded direct image
+
+Use right modules temporarily. The forward transfer and its chain-rule action are
+\[
+ T_f=\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}\mathcal D_Y,\qquad
+ f_+^r M=Rf_{\mathrm{sh},*}
+                 (M\otimes_{\mathcal D_X}^{L}T_f).
+ \tag{PIC.4}
+\]
+PBW makes \(T_f\) locally free over \(\mathcal O_X\). The absolute transfer Spencer proof, Lemma 3.3, resolves it by
+\[
+ S_f^{-r}=\mathcal D_X\otimes_{\mathcal O_X}
+            \bigwedge^rT_X\otimes_{\mathcal O_X}T_f,
+             \qquad 0\le r\le d_X.
+ \tag{PIC.5}
+\]
+Its differential has the ordered operator-action, coefficient-action and bracket terms. Its square is zero by the representation and Jacobi identities; the symbol complex is the polynomial Koszul resolution. These prove its augmentation is a quasi-isomorphism. Each term is left \(\mathcal D_X\)-flat because its tensor functor is tensor over \(\mathcal O_X\) with an \(\mathcal O_X\)-flat module. The differential and augmentation retain the right \(f^{-1}\mathcal D_Y\)-action. Consequently this bounded flat complex computes the transfer tensor of every unbounded \(M\). No bounded resolution of \(M\) is required.
+
+Fix an affine open \(V\subset Y\). Cover \(f^{-1}V\) by \(c+1\) affine opens \(U_0,\ldots,U_c\). Separatedness makes their intersections affine. For a representative complex of quasicoherent right modules the actual local model is
+\[
+ \operatorname{Tot}\left[
+ \bigoplus_{i_0<\cdots<i_q}
+ \Gamma\!\left(U_{i_0\cdots i_q},
+       M^\bullet\otimes_{\mathcal D_X}S_f^{-r}\right)
+                  \right]_{0\le q\le c,\;0\le r\le d_X}.
+ \tag{PIC.6}
+\]
+The total degree is the coefficient degree plus \(q-r\), with the Koszul signs. Each coefficient term is quasicoherent over \(\mathcal O_X\); the Spencer differential need not be \(\mathcal O_X\)-linear. It commutes with restriction and with the target right action, which is what the displayed complex needs.
+
+Here is why this computes derived pushforward for both infinite tails. The augmented ordered Čech resolution is exact on stalks, by the contracting simplex of cover members containing that stalk. Its nonaugmented terms are direct images from affine intersections. Their sections are acyclic for a quasicoherent coefficient, by the earlier affine cohomology proof. This resolution has length \(c\). Dimension shifting along it gives cohomological dimension at most \(c\) on these coefficients. Resolving the coefficients for sheaf direct image and comparing the two augmented double complexes therefore gives the Čech comparison. Both auxiliary directions have bounded length. In every fixed total degree a finite band of coefficient degrees occurs; truncating beyond that band gives the bounded comparison, and enlarging the band does not change it. This proves the comparison for the unbounded complex, without a product totalization or an interchange of two infinite limits.
+
+The model sends an acyclic coefficient complex to an acyclic complex: tensor in (PIC.5), affine sections and finite sums are exact, and the two finite filtrations detect acyclicity. It is thus independent of the representative. Refinement of the affine cover preserves its augmentation, so these local models glue to (PIC.4). On a fixed \(V\) they also prove
+\[
+ f_+^r(D^{[a,b]})\subset D^{[a-d_X,b+c]},\qquad
+ f_+^r\!\left(\bigoplus_\alpha M_\alpha\right)
+          \simeq\bigoplus_\alpha f_+^rM_\alpha.
+ \tag{PIC.7}
+\]
+The sum identity follows term by term: flat tensor and affine quasicoherent sections commute with direct sums. Exactness and preservation of sums give preservation of all colimits in the stable derived categories. Side change by \(\omega_X\) and \(\omega_Y^{-1}\) is exact and continuous, so the same continuity holds for the actual left-module \(f_+\). Properness was not used in this continuity argument; it is used for the bounded regular target and for cycle comparison.
+
+### 3.529. The scheme embedding and its comparison map
+
+The affine perfectness proof IAC.1–IAC.5 extends to a finite separated scheme cover as follows. A bounded coherent operator complex restricts to a finite projective operator complex on every affine intersection. For a bounded regular \(A\), the mapping complex on \(X\) is the finite ordered Čech totalization of the local derived mapping complexes
+\[
+ R\operatorname{Hom}_{\mathcal D_X}(A,M)
+ \simeq
+ \operatorname{Tot}_{q=0}^{c}
+   \bigoplus_{i_0<\cdots<i_q}
+ R\operatorname{Hom}_{\mathcal D(U_{i_0\cdots i_q})}
+                   (A|_{U_{i_0\cdots i_q}},M|_{U_{i_0\cdots i_q}}).
+ \tag{PIC.8}
+\]
+To verify descent here, resolve the source locally by its finite projective complexes and resolve the target for sheaf Hom. The finite ordered cover resolves the resulting sheaf Hom complex; its affine pieces are computed by those projectives. The comparisons are the restriction maps of derived Hom and hence agree on refinements. The same finite-band argument as in (PIC.6) handles an unbounded target. Finitely many intersections give a finite maximum source resolution length. Each local mapping functor commutes with filtered colimits, and those colimits commute with the finite totalization. Hence \(A\) is compact in the actual ambient category.
+
+For filtered presentations the ambient mapping complexes are therefore
+\[
+ R\operatorname{Hom}\left(j_X\operatorname*{colim}_i A_i,
+                          j_X\operatorname*{colim}_k B_k\right)
+   \simeq \lim_i\operatorname*{colim}_k
+                       R\operatorname{Hom}(A_i,B_k).
+ \tag{PIC.9}
+\]
+This is the defining Ind mapping formula, so \(j_X\) is fully faithful. This proof uses a finite affine scheme cover. It supplies no compactness assertion for bounded objects on \(B\mathbb G_m\) or an arbitrary stack.
+
+The two continuous functors out of \(\mathscr R_\infty(X)\) that restrict to \(f_{+,0}\) now have their specified comparison
+\[
+ \gamma_f:j_Y f_+^{\mathrm{reg}}
+                      \xrightarrow{\sim}f_+j_X.
+ \tag{PIC.10}
+\]
+For \(E=\operatorname*{colim}_i A_i\), it is the colimit of the identical bounded comparisons \(j_Yf_{+,0}A_i=f_+A_i\). This proves invertibility. Naturality and independence of the presentation follow from the Ind universal property on exact functors and their mapping spaces. Thus (PIC.10) compares the actual module functor, including its action and higher maps.
+
+### 3.530. The actual bounded proper comparison on coefficients
+
+For bounded constructible complex coefficients, Proper pushforwards of nearby and vanishing cycles, equations (2)–(10), proves the normalized comparison. Its mechanism is useful here. For an ambient covering coefficient \(B\) one has
+\[
+ Rf_*R\mathcal Hom(f^{-1}B,F)
+             \simeq R\mathcal Hom(B,Rf_*F).
+ \tag{PIC.11}
+\]
+Indeed testing against \(E\), inverse/direct adjunction followed by tensor–Hom adjunction gives the same Hom from \(f^{-1}(E\otimes^L B)\) to \(F\) on both sides. Yoneda gives (PIC.11), naturally in both variables and under restriction.
+
+If \(F\) is carried by a closed set proper over the target, the same is true after this internal Hom: its restriction off that carrier has zero second argument. Thus forgetting proper support is an isomorphism before and after zero-fibre restriction. Proper-support base change, followed by that support-forgetting map, is the actual ordinary comparison
+\[
+ i_Y^{-1}Rf_*R\mathcal Hom(f^{-1}B,F)
+       \xrightarrow{\sim}
+ Rf_{0,*}i_X^{-1}R\mathcal Hom(f^{-1}B,F).
+ \tag{PIC.12}
+\]
+The support-forgetting square commutes because both arrows restrict the same properly supported section. Applying the covering coefficient, its cone coefficient and the constant coefficients gives nearby cycles, normalized vanishing cycles and the two restriction terms. The earlier covering cohomological bound puts these particular Hom objects in the bounded category even though the covering coefficient has infinite rank.
+
+After closed extension into the ambient varieties, the resulting map is
+\[
+ b_{f,g,F}:
+ i_{Y,*}\Phi_g Rf_*F
+            \xrightarrow{\sim}Rf_*i_{X,*}\Phi_hF.
+ \tag{PIC.13}
+\]
+The identity \(i_Yf_0=fi_X\) supplies the target's type. Neither zero fibre must be smooth. Naturality in every covering-coefficient map proves the comparison commutes with the central restriction map, canonical map, variation and deck monodromy. In the nearby and vanishing terms this includes
+\[
+ \mathrm{var}\,\mathrm{can}=1-M_\psi,\qquad
+ \mathrm{can}\,\mathrm{var}=1-M_\Phi.
+ \tag{PIC.14}
+\]
+Both normalized triangles use the same source shift; no dimension shift is added by (PIC.13). The sheaf proper comparison is also stated in [Massey, Notes on Perverse Sheaves and Vanishing Cycles, §3](https://arxiv.org/pdf/math/9908107v13#page=35). The coefficient and support argument above identifies the maps used here.
+
+### 3.531. A specified bounded D-module transformation
+
+The earlier proper de Rham theorem, Theorem 3.3, supplies
+\[
+ \kappa_{f,A}:\operatorname{DR}_Y f_{+,0}A
+                       \xrightarrow{\sim}Rf_*\operatorname{DR}_X A.
+ \tag{PIC.15}
+\]
+Its proof applies to every bounded coherent operator complex. Proper-support comparison on all quasicoherent Spencer coefficients retains the horizontal operator action. The closed graph normal Koszul complex cancels its normal determinant and normal degree; horizontal and vertical Spencer totalization has shift \(d_X+d_Y\). These are the actual coefficient and density maps of that proof.
+
+For \(A\in\mathscr R_0(X)\), all the terms in the following composite are defined and all arrows are equivalences:
+\[
+ \begin{aligned}
+ \operatorname{DR}_Y C_{g,0}^Y f_{+,0}A
+ &\xrightarrow{\rho_g} i_{Y,*}\Phi_g\operatorname{DR}_Y f_{+,0}A\\
+ &\xrightarrow{\Phi_g\kappa_{f,A}}
+                         i_{Y,*}\Phi_g Rf_*\operatorname{DR}_X A\\
+ &\xrightarrow{b_{f,g,\operatorname{DR}A}}
+                         Rf_*i_{X,*}\Phi_h\operatorname{DR}_X A\\
+ &\xrightarrow{Rf_*\rho_{h,A}^{-1}}
+                         Rf_*\operatorname{DR}_X C_{h,0}^X A\\
+ &\xrightarrow{\kappa_{f,C_{h,0}^XA}^{-1}}
+                         \operatorname{DR}_Y f_{+,0}C_{h,0}^X A .
+ \end{aligned}
+ \tag{PIC.16}
+\]
+In the second arrow the closed extension \(i_{Y,*}\) is understood. Full faithfulness of bounded regular Riemann–Hilbert lifts this specified natural composite to
+\[
+ \beta_{f,g,0}:C_{g,0}^Y f_{+,0}
+                         \xrightarrow{\sim}f_{+,0}C_{h,0}^X.
+ \tag{PIC.17}
+\]
+Full faithfulness here is on mapping complexes. Equivalently, conjugation by the bounded equivalence identifies the two functor categories and their natural-transformation spaces. Thus the lift retains naturality and its higher coherences.
+
+The nearby analogue uses the same five arrows. The ordinary and exceptional restriction analogues use the constant coefficient arrows in (PIC.12). Their diagrams with (PIC.17) commute: (PIC.13) is natural in these coefficient arrows; \(\rho\) transports these very arrows by definition; and \(\kappa\) is natural in its input. Consequently the actual unit, canonical, variation and monodromy squares, and both identities (PIC.14), hold on the D-module side.
+
+For composable proper maps \(X\xrightarrow fY\xrightarrow kZ\), these comparisons satisfy
+\[
+ \beta_{kf,g,0}
+   =(k_+\beta_{f,gk,0})\circ(\beta_{k,g,0}f_+),
+ \tag{PIC.18}
+\]
+where the standard direct-image associators are included. Here is a map-level check. The sheaf coefficient adjunction for \(kf\) is the composite of the two adjunctions: both send a test morphism to its same tensor–Hom adjoint. The proper-support base-change squares compose by restriction of the same sections. For \(\kappa\), resolve successive transfers and totalize their Spencer complexes in the order \(X,Y,Z\). Both parenthesizations send an elementary ordered wedge to the same total wedge, with the same permutation sign; the intermediate density and its inverse contract. The comparison from algebraic to analytic coefficient germs and proper direct image commutes with these augmentations. Hence the two maps from the common resolved complex agree. The normal graph contractions retain their ordered evaluation, so there is no freely chosen scalar at a closed point. These checks prove composition compatibility of \(\kappa\), and hence (PIC.18) after (PIC.16). A third map uses the same associative tensor totalization, giving the higher composition coherence.
+
+### 3.532. Ind extension and actual point images
+
+An exact natural equivalence between functors on small stable categories extends to a continuous equivalence on their Ind categories: on every filtered presentation it is the colimit of its bounded equivalences. The universal property gives its naturality, composition and all specified commutative diagrams. Applying this to (PIC.17) yields
+\[
+ \beta_{f,g}:C_g^Y f_+^{\mathrm{reg}}
+                      \xrightarrow{\sim}f_+^{\mathrm{reg}}C_h^X
+             \quad\text{on all }\mathscr R_\infty(X).
+ \tag{PIC.19}
+\]
+There is no cohomological bound on the input. The nearby, restriction and coefficient maps extend at the same time, so (PIC.14) and (PIC.18) continue to hold. By (PIC.10), the direct images in this equation are actual ambient D-module direct images. The cycle functors have the regular Ind meaning (PIC.2); no assertion about cycles of all unbounded classical sheaves is required.
+
+Let \(x\in X(\mathbf C)\), \(y=f(x)\), and let \(a_x,a_y\) denote the point inclusions. Transfer composition gives the bounded comparison, and then its continuous extension,
+\[
+ f_+^{\mathrm{reg}}(a_{x,+}V)\xrightarrow{\sim}a_{y,+}V,
+                      \qquad V\in D(\mathbf C).
+ \tag{PIC.20}
+\]
+For the bounded comparison one can use forward transfers on right modules: the chain-rule tensor identifies the two transfers with \(T_{a_y}\); the coefficient is carried by one point, so sheaf pushforward is exact there. Side change cancels the intermediate density. This is the point case of the ordered transfer associativity used in (PIC.18). Finite point complexes generate \(D(\mathbf C)\) by filtered colimits, and all three functors are continuous, proving (PIC.20) for every \(V\).
+
+The point functor is fully faithful on this entire category. The affine Koszul calculation gives
+\[
+ a_y^!a_{y,+}V\simeq V,\qquad
+                    V\ne0\ \Longrightarrow\ a_{y,+}V\ne0.
+ \tag{PIC.21}
+\]
+It extends from finite complexes by its continuous finite-amplitude right adjoint, as in IAC.16–IAC.18. A neighbourhood of \(y\) suffices for this calculation, and closed extension makes it global. In particular no fibre-length multiplier occurs in (PIC.20), even for a ramified finite map.
+
+If \(u:a_{x,+}V\to B\) and \(r:B\to a_{x,+}V\) satisfy \(ru=1\), the actual maps
+\[
+ a_{y,+}V\xrightarrow{\,f_+u\,}f_+B
+                  \xrightarrow{\,f_+r\,}a_{y,+}V
+                  \quad\text{have composite }1.
+ \tag{PIC.22}
+\]
+The point-composition comparisons in (PIC.20) are included in these arrows. Thus the point image of a nonzero coefficient survives proper direct image.
+
+### 3.533. Nonzero characteristic-isolated cycles after proper image
+
+Suppose \(E\in\mathscr R_\infty(X)\) and \(C_h^XE\) has the point retract
+\[
+ a_{x,+}V\xrightarrow{u}C_h^XE
+                 \xrightarrow{r}a_{x,+}V,\qquad ru=1,\qquad V\ne0.
+ \tag{PIC.23}
+\]
+A sufficient case is the affine characteristic-isolation theorem CIS.22–CIS.23: for every finite coherent submodule of every \(H^mE\), the graph of \(dh\) meets its actual characteristic set only at \((x,dh_x)\) on its own neighbourhood, and one such submodule contains that covector in its actual characteristic set. Zero covectors, singular conormal branches, degenerate tests, different neighbourhoods and both infinite tails are allowed. On a general \(X\), (PIC.23) is the stated premise; a local test must provide its actual global retract before this conclusion is applied.
+
+Combining (PIC.19), (PIC.20) and the given unit/counit retract gives the specified maps
+\[
+ \begin{aligned}
+ U&=\beta_{f,g,E}^{-1}\,f_+u:
+              a_{y,+}V\longrightarrow C_g^Y f_+E,\\
+ R&=f_+r\,\beta_{f,g,E}:
+              C_g^Y f_+E\longrightarrow a_{y,+}V,\\
+ RU&=1 .
+ \end{aligned}
+ \tag{PIC.24}
+\]
+All functors and coefficients in this formula are the full unbounded ones. The identity follows by cancelling the actual inverse comparisons and then using \(ru=1\). Equation (PIC.21) proves
+\[
+                       C_g^Y f_+E\ne0.
+ \tag{PIC.25}
+\]
+The target point need not be the only target cycle component. The conclusion is its actual nonzero retract. This theorem proves the proper comparison and point-image step over \(\mathbf C\) for the stated scheme and regular Ind inputs. Sections 3.537–3.543 construct the product-section retract for universal quadratic parameters and prove original-complex proper detection with componentwise isolation of the selected compatible point. Regular cycle categories over other geometric fields, general relative sections, independent nilpotent regularity and the full supported-generation/projector-image equalities retain their additional requirements.
+
+### 3.534. Exercise and solution: a ramified tower and both tails
+
+**Exercise 3.GS.** For positive integers \(a,b\ge2\), take \(f_a(z)=z^a\), \(f_b(t)=t^b\), and coordinate \(s\) on the final affine line. Compute the normalized \(s\)-cycles of their composite pushforward on a rank-\(r\) trivial connection, including monodromy and an input unbounded in both directions.
+
+**Solution 3.GS.** The composite is \(q(z)=z^{ab}\). The covered fibre has \(ab\) points. The central comparison is the diagonal, so the actual normalized cycle coefficient is
+\[
+ V_{ab,r}=\mathbf C^r\otimes
+       \left(\mathbf C^{ab}/\mathbf C_{\mathrm{diag}}\right),
+                  \qquad \dim V_{ab,r}=r(ab-1).
+ \tag{PIC.26}
+\]
+This is the actual diagonal calculation ICR.18, including the perverse input \(\mathbf C[1]\). One positive circuit of \(s\) cyclically permutes the \(ab\) roots; its quotient action is the cycle monodromy. Proper comparison and point composition give
+\[
+ C_s(f_b)_+(f_a)_+\mathcal O_{\mathbf A^1}^{\,r}
+          \simeq a_{0,+}V_{ab,r}.
+ \tag{PIC.27}
+\]
+Both stages are finite and proper. Equation (PIC.18) identifies this map with the comparison for \(q\), including the cyclic action. At the intermediate stage the relevant function is \(t^b\) on the actual module \((f_a)_+\mathcal O^r\); replacing that module by a constant connection would discard its ramification. Consequently the rank is not obtained by multiplying the two separate constant-input cycle ranks.
+
+For the input with both tails, continuity gives
+\[
+ E=\bigoplus_{n\in\mathbf Z}\mathcal O_{\mathbf A^1}^{\,r}[2n],
+ \qquad
+ C_s q_+E\simeq
+        a_{0,+}\bigoplus_{n\in\mathbf Z}V_{ab,r}[2n].
+ \tag{PIC.28}
+\]
+Every even coefficient cohomology has dimension \(r(ab-1)\), and every odd one is zero. This is an actual coproduct in the regular Ind category. Point composition has coefficient one; the cycle rank \(ab-1\) arose from the covered-fibre diagonal.
+
+![The proper cycle comparison, its nonzero point retract, and the ramified tower](figures/proper-ind-cycle-comparison.svg)
+
+Figure 3.66. The upper square is the actual comparison PIC.19, with the source point coefficient and its target image joined by PIC.20. Both vertical retract composites are identities, by PIC.24. The lower diagram specializes to \(z\mapsto z^2\mapsto z^6\): the six-root permutation representation modulo its diagonal has dimension five, whereas a single point image retains its coefficient with multiplicity one. The drawing represents maps of complexes and a finite covering fibre. It does not identify that fibre's length with a point-image coefficient. Proofs: PIC.16–PIC.28.
+
+### 3.535. Exercise and solution: a proper map with two output degrees
+
+**Exercise 3.GT.** Let \(\pi:\mathbf P^1\times\mathbf A^1_t\to\mathbf A^1_t\), \(g=t^a\), \(a\ge2\). Compute \(\pi_+\mathcal O\) and its normalized \(g\)-cycles. Explain why the comparison needs no t-exactness of \(\pi_+\).
+
+**Solution 3.GT.** The algebraic de Rham cohomology of \(\mathbf P^1\) is computed by its two affine charts. Their function Čech quotient vanishes because every Laurent polynomial is a sum of a polynomial in \(z\) and a polynomial in \(z^{-1}\). Global one-forms vanish. In the one-form Čech quotient the allowed chart forms have exponents at least zero or at most minus two; exactly the class \(dz/z\) remains. Derivatives of Laurent polynomials have zero \(z^{-1}\) coefficient. Constants give the remaining degree-zero class. Hence
+\[
+ R\Gamma(\mathbf P^1,\Omega_{\mathbf P^1}^{\bullet})
+       \simeq \mathbf C\oplus\mathbf C[-2].
+ \tag{PIC.29}
+\]
+The actual maps are the constant section and the Čech cocycle \(dz/z\); they give the displayed equivalence by the computation just made. The relative de Rham direct image has the normalization shift \([1]\). Its target connection is constant because these representatives are independent of \(t\). Therefore
+\[
+ \pi_+\mathcal O_{\mathbf P^1\times\mathbf A^1}
+       \simeq\mathcal O_{\mathbf A^1}[1]\oplus
+                         \mathcal O_{\mathbf A^1}[-1].
+ \tag{PIC.30}
+\]
+Put \(V_a=\mathbf C^a/\mathbf C_{\mathrm{diag}}\), with its cyclic monodromy. Exactness of normalized cycles on the bounded regular category and (PIC.30) give
+\[
+ C_{t^a}\pi_+\mathcal O
+       \simeq a_{0,+}(V_a[1]\oplus V_a[-1]).
+ \tag{PIC.31}
+\]
+One can also start upstairs. For the closed inclusion \(j:\mathbf P^1\times\{0\}\hookrightarrow\mathbf P^1\times\mathbf A^1\), the product covering and its diagonal identify
+\[
+ C_{t^a}^{\mathbf P^1\times\mathbf A^1}\mathcal O
+       \simeq j_+\mathcal O_{\mathbf P^1}\otimes V_a,\qquad
+ \pi_+j_+\mathcal O_{\mathbf P^1}
+       \simeq a_{0,+}(\mathbf C[1]\oplus\mathbf C[-1]).
+ \tag{PIC.32}
+\]
+Indeed the product coefficient is \(\mathbf C_{\mathbf P^1}[1]\) tensored with the same diagonal quotient; (PIC.29) computes its proper image. These maps are those of (PIC.16). The source cycle is supported on the entire curve, so a point-isolation premise has not been used. The two output degrees show directly why proper direct image was not assumed t-exact. Replacing the input by its coproduct of shifts \([4n]\), \(n\in\mathbf Z\), gives both infinite tails by (PIC.19) and continuity, with the same two shifted coefficient summands for each \(n\).
+
+### 3.536. Exercise and solution: the necessary properness hypothesis
+
+**Exercise 3.GU.** Let \(j:\mathbf G_m\hookrightarrow\mathbf A^1_t\), and use \(g=t\). Compare cycles before and after direct image of the trivial connection.
+
+**Solution 3.GU.** The source function has empty zero fibre, so
+\[
+ C_{t|_{\mathbf G_m}}\mathcal O_{\mathbf G_m}=0,\qquad
+ j_+\mathcal O_{\mathbf G_m}
+                   =\mathcal O_{\mathbf A^1}(*0).
+ \tag{PIC.33}
+\]
+On the target take \(P=\operatorname{DR}(\mathcal O(*0))\). Its stalk is the meromorphic de Rham complex, shifted by \([1]\). The kernel of differentiation is the constants, and its cokernel is generated by \(dt/t\): termwise Laurent integration removes every other term and preserves convergence; only finitely many negative powers occur. On the punctured disc this complex is \(\mathbf C[1]\) by the local primitive. The central map sends the constant to the same constant on the covered fibre. Thus the actual central restriction and nearby map are
+\[
+ i_0^*P\simeq\mathbf C[1]\oplus\mathbf C,\qquad
+ \psi_tP\simeq\mathbf C[1],\qquad
+ i_0^*P\longrightarrow\psi_tP
+                  \text{ induces the identity in degree }-1.
+ \tag{PIC.34}
+\]
+The other component maps to zero: there is no degree-zero cohomology in the target, and finite vector complexes have no higher extensions. The normalized vanishing cycle is the fibre of this central map. It is therefore \(\mathbf C\) in degree zero. By bounded regular Riemann–Hilbert,
+\[
+ C_t j_+\mathcal O_{\mathbf G_m}\simeq a_{0,+}\mathbf C\ne0,
+             \qquad j_+C_{t|_{\mathbf G_m}}\mathcal O_{\mathbf G_m}=0.
+ \tag{PIC.35}
+\]
+This does not contradict the continuity calculation PIC.4–PIC.7, which did not require properness. The map \(j\) is not proper on the source support. Its missing limit point is precisely where the nonzero target cycle occurs. The proper-support base-change step (PIC.12) is unavailable.
+
+The distinction also persists for arbitrary coefficients built by coproducts:
+\[
+ E=\bigoplus_{n\in\mathbf Z}\mathcal O_{\mathbf G_m}[2n],
+ \qquad
+ C_t j_+E\simeq
+      a_{0,+}\bigoplus_{n\in\mathbf Z}\mathbf C[2n],
+ \qquad j_+C_{t|_{\mathbf G_m}}E=0.
+ \tag{PIC.36}
+\]
+All functors here have their regular Ind meaning and the actual ambient direct images. The example separates continuity, which holds, from proper cycle comparison, whose geometric hypothesis fails.
+
+### 3.537. A universal quadratic test over the original complex field
+
+Dimension estimates are componentwise on the smooth schemes. For the section calculation use the pure-dimensional component containing the chosen source point; the finitely many other open-and-closed components are direct summands.
+
+Let \(f:X\to Y\) be proper, with \(X\) smooth separated of finite type over \(\mathbf C\) and \(Y\) smooth affine. Fix \(y\in Y(\mathbf C)\) and \(0\ne\eta\in T_y^*Y\). Choose a closed embedding \(\iota:Y\hookrightarrow\mathbf A^N\), put \(v_i(z)=\iota_i(z)-\iota_i(y)\), and choose constants \(\xi_i\) such that \(\sum_i\xi_i\,dv_i|_y=\eta\). Such constants exist because a closed immersion surjects on cotangent spaces. On \(Q=\mathbf A^N_q\) define
+\[
+ \begin{gathered}
+ g(q,z)=\sum_{i=1}^N\xi_i v_i(z)
+                  +\frac12\sum_{i=1}^Nq_i v_i(z)^2,\\
+ h=g\circ f_Q,\qquad f_Q=\mathrm{id}_Q\times f.
+ \end{gathered}
+ \tag{UQD.1}
+\]
+The parameter derivatives give
+\[
+ \partial_{q_i}g=\frac12v_i^2,\qquad
+ \bigl(d_Qg=0\bigr)\Longleftrightarrow z=y,\qquad
+ g(q,y)=0,\quad d_Yg|_{(q,y)}=\eta.
+ \tag{UQD.2}
+\]
+These are identities and equivalences of complex point sets. The equations \(v_i^2=0\) can retain nilpotents as scheme equations; no reducedness or tangent-space assertion follows from the middle equivalence.
+
+The full differential of \(g\) never vanishes. Away from \(y\), one \(v_i\) is nonzero because \(\iota\) is a closed embedding, so one parameter derivative is nonzero. At \(y\), its \(Y\)-component is \(\eta\ne0\). Thus
+\[
+                g:Q\times Y\longrightarrow\mathbf A^1
+                  \quad\text{is a submersion}.
+ \tag{UQD.3}
+\]
+The source function \(h\) may have a positive-dimensional critical locus and zero differential along it. All coordinates and parameters above remain over \(\mathbf C\).
+
+### 3.538. The actual characteristic graph of the family
+
+For a coherent regular holonomic module \(A\) on \(X\), set \(A_Q=\mathcal O_Q\boxtimes A\), with its trivial connection in the parameter directions. A product good filtration gives
+\[
+ \operatorname{Char}(A_Q)
+                =0_{T^*Q}\times\operatorname{Char}(A).
+ \tag{UQD.4}
+\]
+Indeed filter by \(\mathcal O_Q\boxtimes F_kA\). Parameter derivatives preserve filtration degree, so their positive symbols kill the associated graded; the remaining associated graded is the flat product of \(\operatorname{gr}A\). Faithful flatness over the field preserves exactly its support. This proves the stated equality, including zero covectors.
+
+Define the compatible point set
+\[
+ Z_A(y,\eta)=
+ \{x\in f^{-1}(y):(x,df_x^t\eta)\in\operatorname{Char}(A)\}.
+ \tag{UQD.5}
+\]
+It is closed: the cotangent pullback of the fixed covector is algebraic on \(f^{-1}(y)\), and the characteristic variety is closed. For the actual full differential on \(Q\times X\), (UQD.2) and (UQD.4) give
+\[
+ \{(q,x):((q,x),dh_{q,x})\in\operatorname{Char}(A_Q)\}
+                         =Q\times Z_A(y,\eta)\subset h^{-1}(0).
+ \tag{UQD.6}
+\]
+To check both inclusions, the parameter component of a covector in (UQD.4) must be zero. The parameter derivatives of \(h\) force \(f(x)=y\). At those points the \(X\)-component is exactly \(df_x^t\eta\), independently of \(q\). Conversely each compatible covector satisfies all these equations. There is no requirement that \(df_x^t\eta\) be nonzero, that the compatible scheme be reduced, or that the vertical Hessian be invertible.
+
+### 3.539. From characteristic membership to the closed cycle carrier
+
+We use the bounded complex-field statement Holomorphic critical support and graph covectors, HC0–HC2. With normalized cycles, its conclusion on a fixed zero level is
+\[
+ \begin{gathered}
+ \operatorname{Supp}(\Phi_u F)
+   =\{z\in u^{-1}(0):(z,du_z)\in\Sigma_F\},\\
+ F\text{ bounded finite-rank complex-constructible}.
+ \end{gathered}
+ \tag{UQD.7}
+\]
+Here \(\Sigma_F\) is complex microsupport, and support means the closure of the nonzero-stalk locus. It is not an assertion that every stalk on this closed set is nonzero.
+
+The complete programme proof matters for this use. The half-plane comparison HP0–HP2 identifies the actual specialization unit by restricting one negative strip of the logarithmic cover. The reverse implication prepares every actual characteristic component by GS0–GS4: projective conormal compactification retains whole fibres, the normal slice retains visible original normal objects, and the sliced actual graph intersection is isolated. The relative-conormal radial bound and the compact-band maps RB/IV then give a nonzero pure perverse contribution. The actual normal-slice comparison HN9, proved by cofinal compact normal packets and their unit square, returns it to the ambient cycle. Closed support contains the dense nonzero locus on that characteristic component. This proves (UQD.7), including positive-dimensional components and zero differentials. Its geometric antecedent also appears in [Massey, A Little Microlocal Morse Theory, Corollary 4.15](https://arxiv.org/pdf/math/0006185v2#page=14).
+
+Apply the bounded regular comparison AIC.8 and the specified ambient cycle comparison PIC.2. Restriction and faithful bounded regular Riemann–Hilbert show that a module and its de Rham complex vanish on exactly the same open subsets; their closed carriers agree. The coherent module \(C_h A_Q\) consequently has the exact closed carrier
+\[
+               \operatorname{Supp}(C_h A_Q)
+                              =Q\times Z_A(y,\eta).
+ \tag{UQD.8}
+\]
+The normalizing shift changes no support. Fix \(x_0\in f^{-1}(y)\). Suppose \(x_0\) is absent from \(Z_A\) or is an isolated point of its reduced carrier. In the latter case \(\{x_0\}\) is open and closed in \(Z_A\): remove the finitely many irreducible components not containing \(x_0\); every component through an isolated point is that point. Thus \(Z_A\setminus\{x_0\}\) is closed in \(X\), even when it has positive dimension. For \(a:Q\times\{x_0\}\hookrightarrow Q\times X\), bounded disjoint closed support and Kashiwara's equivalence, Theorem 3.1 give
+\[
+ C_h A_Q\simeq a_+V_A\oplus B_A,\qquad
+ \operatorname{Supp}(B_A)\cap a(Q)=\varnothing,
+ \qquad V_A=a^!C_h A_Q.
+ \tag{UQD.9}
+\]
+If \(x_0\notin Z_A\), put \(V_A=0\). If \(x_0\in Z_A\), (UQD.8) says that the section part has support all of \(Q\), and in particular \(V_A\ne0\). Normalized cycles and closed extension are t-exact on bounded regular modules, so \(V_A\) is a regular holonomic module on \(Q\), in degree zero.
+
+The decomposition is natural even when two modules have different closed away carriers. Every derived map from a section part to an away part, or in the opposite direction, is zero by disjoint closed support. Thus all coefficient maps preserve the specified section part. In particular its natural comparison is
+\[
+                     \theta_{C_h A_Q}:a^!C_h A_Q
+                                  \xrightarrow{\sim}a^*C_h A_Q.
+ \tag{UQD.10}
+\]
+This identity uses the actual two closed adjunctions. It is the identity on \(a_+V_A\); both inverse functors vanish on \(B_A\).
+
+### 3.540. Closed-section adjunctions with both infinite tails
+
+Put \(D=\dim(Q\times X)\), \(e=\dim Q\), and \(c=\dim X=D-e\). On the actual regular Ind categories the closed section has continuous adjunctions
+\[
+ a^*\dashv a_+\dashv a^!,\qquad
+ a^*a_+\simeq1,\quad a^!a_+\simeq1.
+ \tag{UQD.11}
+\]
+On bounded regular inputs these are the full closed-support adjunctions of Riemann–Hilbert and the ordered transfer calculation. All functors take bounded regular objects to bounded regular objects. Ind extends their units, counits and triangle identities; hence (UQD.11) holds on full mapping complexes. PIC.8–PIC.10 identify their direct images with the actual ambient module direct images.
+
+The comparison \(\theta_B\) means \(a^*\) of the right counit \(a_+a^!B\to B\), preceded by the inverse of \(a^*a_+\simeq1\). The Ind t-structure has filtered bounded truncations, and ordinary module truncations commute with these filtered colimits. Thus the actual scheme embedding is t-exact as well as fully faithful.
+
+Their amplitudes are uniformly finite. The backward transfer in normal coordinates is the quotient by the \(c\) commuting normal functions, with the inverse normal density. Its left-free Koszul resolution has length \(c\): PBW reduces exactness to that regular sequence in the structure-sheaf polynomial algebra. Hom computes the actual \(a^!\) in degrees \(0,\ldots,c\), retaining the right tangential operator action. The normal density contracts in the ordered closed-adjunction map. The earlier coherent-duality bounds on the two varieties also give a safe ordinary-inverse bound:
+\[
+ a^!:D^{[p,q]}\longrightarrow D^{[p,q+c]},\qquad
+ a^*:D^{[p,q]}\longrightarrow
+                   D^{[p-D-c-e,\;q+D+e]}.
+ \tag{UQD.12}
+\]
+For the second bound apply \(\mathbb D_{Q}\,a^!\,\mathbb D_{Q\times X}\) on bounded inputs. The first dual has safe heart range \([-D,D]\), and the last dual on \(Q\) has range \([-e,e]\); reversing the intermediate range gives precisely the displayed safe interval. Filtered Ind truncations extend these fixed bounds to arbitrary inputs. No dual of an infinite complex is taken.
+
+Let \(B\) be arbitrary unbounded such that every \(H^mB\) is a filtered union of bounded heart objects having (UQD.9). Continuity gives pure degree-zero, identical section inverse images on those heart objects and their unions. The finite-amplitude window argument then proves
+\[
+ H^m(a^!B)\simeq a^!H^mB,\quad
+ H^m(a^*B)\simeq a^*H^mB,\qquad
+                         \theta_B:a^!B\xrightarrow{\sim}a^*B.
+ \tag{UQD.13}
+\]
+Explicitly, choose the lower input cutoff below the desired output degree minus both upper amplitude bounds minus two, and the upper cutoff above that degree minus both lower bounds plus two. The omitted tails vanish in that output degree and its neighbours. The finite Postnikov filtration of the window has only the degree-zero heart row for each inverse functor. It identifies the cohomology of the actual comparison with (UQD.10). The actual ambient embedding PIC.9 is t-exact and fully faithful, so its conservative module cohomology detects that \(\theta_B\) is an equivalence.
+
+Write \(\varepsilon\) for the right-adjunction counit and \(\upsilon\) for the left-adjunction unit. The actual maps
+\[
+ \begin{gathered}
+ V=a^!B,\qquad u=\varepsilon_B:a_+V\to B,\\
+ r=a_+(\theta_B^{-1})\upsilon_B:B\to a_+V,\qquad ru=1.
+ \end{gathered}
+ \tag{UQD.14}
+\]
+give the full unbounded section retract. Naturality of the left unit identifies \(\upsilon_B\varepsilon_B\) with \(a_+\theta_B\), since that unit is the identity on the fully faithful image of \(a_+\). This proves the identity of maps, not only a decomposition of cohomology.
+
+### 3.541. Componentwise isolation of one compatible point
+
+Take \(E\in\mathscr R_\infty(X)\) and fix \(x_0\in f^{-1}(y)\). Each \(H^mE\) is a filtered union of coherent regular holonomic heart subobjects: use filtered bounded presentations and their t-exact truncations, take images, and use the Noetherian Serre property of the regular heart. Suppose that, for every such finite subobject in every degree,
+\[
+ A\subset H^mE\quad\Longrightarrow\quad
+ x_0\notin Z_A(y,\eta)\ \text{or }x_0
+                      \text{ is isolated in }Z_A(y,\eta).
+ \tag{UQD.15}
+\]
+The closed sets and the isolating neighbourhoods may depend on \(A\) and \(m\). The same \(x_0\) is used throughout. Other components of \(Z_A\) may be positive dimensional. Suppose also that one finite \(A_0\subset H^{m_0}E\) satisfies
+\[
+              (x_0,df_{x_0}^t\eta)\in\operatorname{Char}(A_0).
+ \tag{UQD.16}
+\]
+Use \(E_Q=\mathcal O_Q\boxtimes E\). This is the normalized smooth inverse image, with no shift on the operator-module heart. Flatness and continuity give \(H^mE_Q=\operatorname*{colim}_A A_Q\). Consequently the actual continuous, t-exact normalized cycle functor has
+\[
+ H^m C_h E_Q=\operatorname*{colim}_{A\subset H^mE} C_h A_Q.
+ \tag{UQD.17}
+\]
+Every term has the natural section decomposition (UQD.9) at the fixed \(x_0\), although its away carrier can vary. Equations (UQD.13)–(UQD.14) therefore give a section retract of \(C_hE_Q\). It is nonzero. Indeed (UQD.16) and (UQD.8) give \(V_{A_0}\ne0\); t-exactness of cycles preserves the inclusion from \(A_{0,Q}\), and \(H^0a^!\) is left exact because it is the heart of the right adjoint to the t-exact \(a_+\). Thus
+\[
+ 0\ne V_{A_0}\hookrightarrow H^{m_0}a^!C_hE_Q,
+                      \qquad a^!C_hE_Q\ne0.
+ \tag{UQD.18}
+\]
+This uses a bounded finite witness inside a genuinely unbounded object. Neither a common neighbourhood nor an exchange with an infinite product has entered the proof.
+
+### 3.542. Proper image of the section and a target characteristic witness
+
+Let \(b:Q\times\{y\}\hookrightarrow Q\times Y\). The restriction of \(f_Q\) to the selected section is the isomorphism \((q,x_0)\mapsto(q,y)\). Actual transfer composition, first on bounded regular inputs and then by Ind, gives
+\[
+                 (f_Q)_+a_+V\simeq b_+V.
+ \tag{UQD.19}
+\]
+This retains the coefficient, including all its parameter-direction operator action. The intermediate density cancels; there is no fibre-length multiplier. Since \(b_+\) is fully faithful, \(V\ne0\) implies \(b_+V\ne0\).
+
+PIC.19 and the actual product comparison give
+\[
+ \begin{gathered}
+ C_g(f_Q)_+E_Q\xrightarrow{\sim}(f_Q)_+C_hE_Q,\\
+ (f_Q)_+(\mathcal O_Q\boxtimes E)
+                   \xrightarrow{\sim}\mathcal O_Q\boxtimes f_+E.
+ \end{gathered}
+ \tag{UQD.20}
+\]
+For the second map the bounded product proof is Adjunctions, base change and the projection formula, equation (2.4): graph transfer extends by the product, the relative Spencer differential acts in the original directions, and finite affine Čech totalizations commute with the exterior coefficient tensor and its signs. Both functors are continuous by PIC.4–PIC.10, so the specified comparison extends to all Ind inputs.
+
+Apply these exact functors to \(u,r\) in (UQD.14), inserting the inverse first comparison in (UQD.20) and (UQD.19). The resulting maps satisfy
+\[
+ \begin{gathered}
+ b_+V\longrightarrow
+ C_g(\mathcal O_Q\boxtimes f_+E)
+       \longrightarrow b_+V,\\
+ \text{composite }1,\qquad
+ C_g(\mathcal O_Q\boxtimes f_+E)\ne0.
+ \end{gathered}
+ \tag{UQD.21}
+\]
+They are the actual functor images and adjunction maps. The coefficient triangles and monodromy are retained by PIC.16–PIC.19.
+
+Suppose instead that the single covector \((y,\eta)\) belongs to the characteristic variety of no finite coherent submodule of any cohomology module of \(f_+E\). Apply (UQD.4)–(UQD.8) to each such \(F\) on the target, using the identity map of \(Y\). The actual graph carrier for \(g\) is empty, so \(C_g(\mathcal O_Q\boxtimes F)=0\). These \(F\) form the filtered unions of the target cohomology modules. T-exactness, continuity and conservative cohomology imply
+\[
+ \begin{gathered}
+ (y,\eta)\notin\operatorname{Char}(F)
+   \text{ for every finite }F\subset H^n(f_+E),\ n\in\mathbf Z\\
+        \quad\Longrightarrow\quad
+                C_g(\mathcal O_Q\boxtimes f_+E)=0.
+ \end{gathered}
+ \tag{UQD.22}
+\]
+This contradicts (UQD.21). Thus some finite \(F_0\subset H^{n_0}(f_+E)\) has \((y,\eta)\in\operatorname{Char}(F_0)\). This is an actual finite target witness, rather than membership only in the closure of a union. No common cotangent neighbourhood for all target submodules was used.
+
+In particular \(f_+E\) cannot be cohomologically lisse, meaning that all its finite cohomology submodules have characteristic support in the zero section: \(\eta\ne0\) excludes the witness from that section. The finite zero-section criterion of §3.446 identifies those finite zero-support modules with flat connections.
+
+### 3.543. The contrapositive and its geometric hypotheses
+
+The result can be applied one covector at a time:
+\[
+ \begin{gathered}
+  E\in\mathscr R_\infty(X),\quad \eta\ne0,\quad f(x_0)=y,\\
+  x_0\text{ absent or isolated in every }Z_A(y,\eta),\\
+  (y,\eta)\notin\operatorname{Char}(F)
+  \text{ for every finite }F\subset H^n(f_+E),\ n\in\mathbf Z\\
+ \Longrightarrow\quad
+  (x_0,df_{x_0}^t\eta)\notin\operatorname{Char}(A)
+  \text{ for all }A\subset H^mE,\ m\in\mathbf Z.
+ \end{gathered}
+ \tag{UQD.23}
+\]
+A sufficient way to obtain the isolation hypothesis is a closed conic bound \(\Lambda\) with
+\[
+ \begin{gathered}
+ \operatorname{Char}(A)\subset\Lambda\text{ for all finite }A,\\
+ x_0\text{ absent or isolated in }
+       \{x\in f^{-1}(y):(x,df_x^t\eta)\in\Lambda\}.
+ \end{gathered}
+ \tag{UQD.24}
+\]
+Each \(Z_A\) is a closed subset of that compatible set, so it either avoids \(x_0\) or retains its isolated point. Componentwise finite compatible fibres imply this hypothesis at every selected point, but the theorem needs only the one isolated point. More generally the target may have its finite characteristic sets in a cone \(\Gamma\) avoiding \((y,\eta)\). For a product target \(Y=B\times C\), the relative lissity bound \(\Gamma=T^*B\times0_{T^*C}\) avoids every covector with nonzero \(C\)-component. The proof requires no zero-covector condition on its \(B\)-component.
+
+In a Hecke application these are the actual compatible cotangent fibres, with the correspondence's signs and chart maps; the finite compatible-Higgs calculations in §§3.26–3.32 address that geometric input. The theorem above supplies the complex scheme proper-image detection step for regular Ind inputs, including a target characteristic bound only in the moving curve directions. It does not infer regular ind-membership from the independent nilpotent support condition, supply a smooth presentation of every required stack correspondence, or prove equality of the nilpotent and spectral-projector images. Those remain separate assertions. No category of cycles over a new geometric field is used in this argument.
+
+### 3.544. Exercise and solution: cubic and higher ramification in a family
+
+**Exercise 3.GV.** Take \(f(z)=z^a\), \(a\ge2\), \(y=0\), \(\eta=dt\), and a rank-\(r\) trivial connection on the source line. Compute the universal family and its normalized cycles, including both infinite cohomological tails.
+
+**Solution 3.GV.** Here \(Q=\mathbf A^1_q\), and
+\[
+ \begin{gathered}
+ g(q,t)=t+\frac q2t^2,\qquad
+ h(q,z)=z^a+\frac q2z^{2a},\\
+ d_Qh=\frac12z^{2a},\quad
+ d_zh=az^{a-1}(1+qz^a).
+ \end{gathered}
+ \tag{UQD.25}
+\]
+The full source critical set is \(Q\times\{0\}\), and \(dh=0\) all along it. The target function is a submersion: \(d_qg=t^2/2\), and at \(t=0\), \(d_tg=1\). Near any point of the source section choose the unique analytic root with value one and put
+\[
+ u=z(1+qz^a/2)^{1/a},\qquad h=u^a,\qquad
+ V_{a,r}=\mathbf C^r\otimes
+             (\mathbf C^a/\mathbf C_{\mathrm{diag}}).
+ \tag{UQD.26}
+\]
+The derivative \(du/dz\) at the section is one, so the inverse-function proof gives genuine local coordinates preserving \(q\). These root germs agree on overlaps by their fixed value at the section. The actual covered-fibre diagonal therefore identifies the section coefficient with the constant regular connection \(\mathcal O_Q\otimes V_{a,r}\). Its value monodromy is the cyclic permutation of the \(a\) roots on the diagonal quotient. Parameter transport is trivial by those matching germs. Full bounded regular Riemann–Hilbert identifies this algebraic parameter connection with the trivial one.
+
+Proper comparison and the section's isomorphic image give
+\[
+ C_g\!\left(\mathcal O_Q\boxtimes f_+\mathcal O^r\right)
+       \simeq b_+(\mathcal O_Q\otimes V_{a,r}),\qquad
+                    \operatorname{rank}V_{a,r}=r(a-1).
+ \tag{UQD.27}
+\]
+The target module \(f_+\mathcal O^r\) is consequently not cohomologically lisse, although \(g\) itself is a submersion. For both tails, exact continuity gives
+\[
+ \begin{gathered}
+ E=\bigoplus_{n\in\mathbf Z}\mathcal O^r[2n],\\
+ C_g(\mathcal O_Q\boxtimes f_+E)
+     \simeq b_+\bigoplus_{n\in\mathbf Z}
+                   (\mathcal O_Q\otimes V_{a,r})[2n].
+ \end{gathered}
+ \tag{UQD.28}
+\]
+Every even coefficient cohomology has rank \(r(a-1)\); every odd one is zero. The positive-dimensional source section, rather than an isolated point in the total space, is essential to the actual maps.
+
+![The universal quadratic family for cubic ramification and its actual section coefficient](figures/universal-quadratic-cycle-detection.svg)
+
+Figure 3.67. The upper panels are real coordinate sections of the complex \((q,z)\) and \((q,t)\) spaces. For \(f(z)=z^3\), the entire complex section \(z=0\) has \(dh=0\), while \(dg|_{t=0}=dt\ne0\). The map of sections preserves \(q\). The lower normal fibre uses \(q=0\) and \(h=1/64\), whose three roots are \(\zeta^j/4\), \(\zeta=e^{2\pi i/3}\). Its central diagonal has a two-dimensional quotient, transported as a connection along the complex parameter line. The actual target module is \(f_+\mathcal O\); its nonzero family cycles show its failure of lissity. Proofs: UQD.1–UQD.6 and UQD.25–UQD.28.
+
+### 3.545. Exercise and solution: two sections and unequal cycle ranks
+
+**Exercise 3.GW.** Use \(f(z)=z^2(z-1)^3\), \(y=0\), \(\eta=dt\), and the trivial connection. Compute the two section coefficients in the universal family and explain the role of compatible-fibre multiplicities.
+
+**Solution 3.GW.** The derivative and the universal family are
+\[
+ f'(z)=z(z-1)^2(5z-2),\qquad
+ h(q,z)=f(z)+\frac q2f(z)^2,\qquad
+ Z_{\mathcal O}(0,dt)=\{0,1\}.
+ \tag{UQD.29}
+\]
+At zero, \(f=z^2u_0\) with \(u_0(0)=-1\). At one, \(f=(z-1)^3u_1\) with \(u_1(1)=1\). On the two disjoint normal neighbourhoods the chosen analytic roots give coordinates of orders two and three. Incorporating the additional unit \(1+qf/2\) as in (UQD.26) preserves these orders. Consequently the actual two section coefficients are
+\[
+ \begin{gathered}
+ \mathcal O_Q\otimes V_2,\qquad
+ \mathcal O_Q\otimes V_3,\\
+ V_k=\mathbf C^k/\mathbf C_{\mathrm{diag}},\qquad
+                    \dim V_2=1,\quad\dim V_3=2.
+ \end{gathered}
+ \tag{UQD.30}
+\]
+Monodromy is the two-cycle quotient on the first and the three-cycle quotient on the second. Proper direct image is their direct sum:
+\[
+ C_g(\mathcal O_Q\boxtimes f_+\mathcal O)
+       \simeq b_+\bigl(\mathcal O_Q\otimes(V_2\oplus V_3)\bigr),
+                       \qquad \operatorname{rank}=3.
+ \tag{UQD.31}
+\]
+The compatible equation \(f'=0\) on the chosen fibre has lengths one and two at these points. Their reduced carrier has two points. Neither count changes the coefficient-one section-image comparison; the cycle ranks come from the two actual diagonal quotients. The third critical point \(z=2/5\) is excluded by the full parameter derivative:
+\[
+ f(2/5)=-\frac{108}{3125}\ne0,\qquad
+              \partial_qh(q,2/5)=\frac12f(2/5)^2\ne0.
+ \tag{UQD.32}
+\]
+Thus a vertical critical point of \(f\) outside the selected target fibre contributes no full-family critical graph point, for any \(q\).
+
+### 3.546. Exercise and solution: isolation and other positive-dimensional components
+
+**Exercise 3.GX.** Produce a nonzero regular holonomic module on a proper curve whose direct image to a point is zero, and compare its compatible fibre for a constant map to the affine line.
+
+**Solution 3.GX.** On \(\mathbf G_m\) take the rank-one connection with horizontal monodromy \(-1\), represented by the equation
+\[
+ (z\partial_z+\tfrac12)e=0,\qquad
+ j:\mathbf G_m\hookrightarrow\mathbf P^1,\qquad
+                         M=j_+\mathcal E.
+ \tag{UQD.33}
+\]
+It has regular logarithmic singularities at zero and infinity and is nonzero. Locally its meromorphic de Rham operator is \(z\partial_z-\tfrac12\); on a Laurent series it multiplies the \(z^n\) coefficient by \(n-\tfrac12\). All these scalars are invertible, and division preserves convergence. At infinity the residue changes sign and remains nonintegral. Hence its de Rham stalks at both missing endpoints are zero; on \(\mathbf G_m\) its de Rham complex is the monodromy-\(-1\) local system \(L[1]\). This is also \(Rj_*L[1]\), since the punctured-disc cellular differential is \(-2\), an isomorphism.
+
+The deformation retraction of \(\mathbf C^*\) to the circle and its one-vertex, one-edge local-system complex give
+\[
+ R\Gamma(\mathbf G_m,L)\simeq
+                  [\,\mathbf C\xrightarrow{-2}\mathbf C\,]=0,
+ \qquad R\Gamma(\mathbf P^1,\operatorname{DR}M)=0.
+ \tag{UQD.34}
+\]
+Let \(f:\mathbf P^1\to\mathbf A^1_t\) be constant at zero. The proper de Rham comparison and full faithfulness imply
+\[
+                  M\ne0,\qquad f_+M=0.
+ \tag{UQD.35}
+\]
+For \(\eta=dt\ne0\), every pulled covector is zero. The zero covector belongs to the characteristic variety over every point of the support, which is the whole proper curve. Thus
+\[
+ \begin{gathered}
+ Z_M(0,dt)=\mathbf P^1,\qquad h=g\circ f_Q=0,\\
+ C_h(\mathcal O_Q\boxtimes M)
+                   =\mathcal O_Q\boxtimes M,\\
+ (f_Q)_+C_h(\mathcal O_Q\boxtimes M)=0.
+ \end{gathered}
+ \tag{UQD.36}
+\]
+The source cycle is carried by an entire proper curve over each parameter. Its nonzero cohomology coefficient can disappear under proper integration; there is no isolated product-section retract of the kind proved above.
+
+The theorem nevertheless allows positive-dimensional components elsewhere. Take the disjoint union of the power map in Exercise 3.GV and this constant curve map, with input \(\mathcal O_{\mathbf A^1}\oplus M\). At the selected covector its compatible carrier is \(\{0\}\sqcup\mathbf P^1\); the source point on the affine-line component is isolated. The proper image is \(f_{a,+}\mathcal O_{\mathbf A^1}\oplus0\), and the nonzero section coefficient \(V_a\) survives. Cancellation on the other component cannot remove its actual retract. Thus isolation of the selected point is essential, whereas finiteness of the entire compatible fibre is unnecessary.
+
+### 3.547. Continuous operations on regular Ind objects
+
+Work over \(\mathbf C\). For a smooth separated finite-type scheme \(M\), put
+\[
+ \mathscr R_0(M)=D^b_{\mathrm{rh}}(\mathcal D_M),
+ \qquad
+ \mathscr R_\infty(M)=\operatorname{Ind}\mathscr R_0(M)
+       \subset D_{\mathrm{qc}}(\mathcal D_M).
+ \tag{HRI.1}
+\]
+The embedding is the actual full embedding of §§3.527–3.529. Its proof uses finite operator resolutions and a finite affine Čech complex, so its mapping-complex comparison includes both unbounded tails. The image is stable and closed under colimits. Throughout this section, regular Ind membership means membership in this image; regularity of individual cohomology modules alone is not substituted for it.
+
+If \(f:M\to N\) is a map of such smooth schemes, the actual inverse transfer gives
+\[
+ f^!K
+ =\mathcal D_{M\to N}
+       \otimes^L_{f^{-1}\mathcal D_N}f^{-1}K
+       [\dim M-\dim N],
+ \qquad
+ f^!(\operatorname{colim}_iK_i)
+       \simeq\operatorname{colim}_i f^!K_i .
+ \tag{HRI.2}
+\]
+The transfer, chain-rule action and composition maps are proved in [Inverse images, §§1–2](../../GL-DMOD/inverse-images.html#1-the-chain-rule-and-the-transfer-bimodule). Derived tensor and sheaf inverse image preserve colimits; the actual quasicoherent comparison is checked on the finite affine covers. The bounded four-map theorem [Regular singularities, Theorem 5.17](../../GL-DMOD/regular-singularities.html#the-full-theorem-and-singular-divisor-reconstruction) makes \(f^!\) preserve \(\mathscr R_0\). Thus HRI.2 preserves \(\mathscr R_\infty\). The actual direct image is continuous by PIC.4–PIC.10 and preserves bounded regular objects by the same theorem, so it too preserves regular Ind objects, without a properness hypothesis.
+
+External products and the extraordinary tensor are separately continuous, and
+\[
+ \begin{aligned}
+ (\operatorname{colim}_i A_i)\boxtimes
+       (\operatorname{colim}_j B_j)
+   &\simeq\operatorname{colim}_{i,j}(A_i\boxtimes B_j),\\
+ A\otimes^! B&=\Delta_M^!(A\boxtimes B).
+ \end{aligned}
+ \tag{HRI.3}
+\]
+The coefficient external tensor is over the field; its operator actions are the two commuting actions. Diagonal inverse transfer gives the second formula, including its dimension shift. [Regular singularities, Theorem 5.18](../../GL-DMOD/regular-singularities.html#external-product-and-both-tensor-operations) proves bounded regularity of these operations. Applying HRI.2 and the first formula to bounded presentations proves regular Ind preservation. No assertion is made that tensoring an arbitrary irregular input with a regular kernel makes it regular.
+
+### 3.548. Closed base support and finite Zariski locality
+
+Let \(Z\subset M\) be a closed algebraic subset and \(j:M-Z\hookrightarrow M\). Write \(\mathscr R_0(M)_Z\) for bounded regular objects whose restrictions to the complement are zero. Define the actual localization functor
+\[
+ \Gamma_ZK=\operatorname{Fib}(K\longrightarrow j_+j^!K).
+ \tag{HRI.4}
+\]
+On an affine chart, finitely many equations \(f_1,\ldots,f_r\) for \(Z\) give the finite alternating localization complex on the opens \(D(f_i)\). Its coefficient localizations have the differentiated operator action. This computes HRI.4 and commutes with colimits on arbitrary module complexes: its Čech direction has fixed finite length. Finite affine covers give the global assertion. The usual localization triangle is therefore the actual triangle
+\[
+ \Gamma_ZK\longrightarrow K\longrightarrow j_+j^!K,
+ \qquad j^!\Gamma_ZK=0.
+ \tag{HRI.5}
+\]
+These finite localization maps and the closed normal equivalence are proved in [Kashiwara's equivalence and singular spaces](../../GL-DMOD/kashiwaras-equivalence-and-singular-spaces.html). On a bounded regular input, HRI.5 and the bounded four-map theorem make \(\Gamma_ZK\) bounded regular and supported on \(Z\). Continuity now gives
+\[
+ \operatorname{Ind}\mathscr R_0(M)_Z
+ \ \simeq\
+ \{K\in\mathscr R_\infty(M):j^!K=0\}.
+ \tag{HRI.6}
+\]
+Here the left side has its actual full embedding in \(D_{\mathrm{qc}}(\mathcal D_M)\). To prove essential surjectivity, present \(K\) by bounded regular \(K_i\). Then \(\Gamma_ZK=\operatorname{colim}_i\Gamma_ZK_i\) belongs to that left side, and HRI.5 identifies it with \(K\). The reverse inclusion follows by restriction. Nilpotent thickenings of \(Z\) leave this localization functor unchanged.
+
+Regular Ind membership is local for a finite Zariski cover. Indeed choose a finite affine cover \(M=\bigcup_{i=1}^r U_i\), and suppose \(K|_{U_i}\in\mathscr R_\infty(U_i)\). All finite intersections \(U_I\) are affine because \(M\) is separated. Their inclusions \(j_I:U_I\hookrightarrow M\) are affine: intersection with every affine target open is affine. For these inclusions direct image is the exact quasicoherent open pushforward with its actual operator action. Consequently
+\[
+ K\simeq\operatorname{Tot}
+ \left[
+ \bigoplus_i(j_i)_+K|_{U_i}\longrightarrow
+ \bigoplus_{i<j}(j_{ij})_+K|_{U_i\cap U_j}
+ \longrightarrow\cdots
+ \right].
+ \tag{HRI.7}
+\]
+Locally on a member \(U_i\), inserting its index contracts the augmented restriction complex, with the alternating signs. This proves HRI.7 on module complexes. The Čech direction has length at most \(r-1\), so the same contraction and totalization work for arbitrary positive and negative cohomological tails. Each term is regular Ind by HRI.2 and direct-image continuity; finite totalizations remain in the stable image HRI.1.
+
+This is a statement about unrestricted regular Ind objects and closed base support. Neither open direct image nor \(\Gamma_Z\) is asserted to preserve a prescribed nilpotent cotangent cone. HRI.6 does not replace the microlocal factorization condition AIC.17.
+
+### 3.549. Inverse image on an embedded singular scheme
+
+Let \(U\hookrightarrow M\) be a closed finite-type scheme, possibly singular or nonreduced, and let \(a:U\to V\), where \(M,V\) are smooth separated finite-type schemes. The graph
+\[
+ \Gamma_a\hookrightarrow P=M\times V,
+ \qquad
+ \pi:P\to M,\quad p:P\to V
+ \tag{HRI.8}
+\]
+is closed. The projection from \(\Gamma_a\) to \(U\) is an isomorphism. In the supported ambient category the actual extraordinary inverse image is represented on \(M\) by
+\[
+ \mathsf T_M(a,K)
+       =\pi_+\Gamma_{\Gamma_a}(p^!K).
+ \tag{HRI.9}
+\]
+The closed-support functor is HRI.4. Projection from the graph support is the actual exact supported equivalence given by the projection proof of [Kashiwara's equivalence, Theorem 5.1](../../GL-DMOD/kashiwaras-equivalence-and-singular-spaces.html#5-a-singular-variety-and-two-ambient-varieties). For this first projection only \(U\to M\) must be closed; its second coordinate may be the arbitrary map \(a\). Local coordinate lifts give the inverse smooth-graph equivalence, as checked below. The projection retains its normal-density evaluation map.
+
+Here is a check of the graph formula and its independence. If \(U\) is smooth, its graph inclusion \(b:U\hookrightarrow P\) is smooth on its source, and closed localization and inverse composition give
+\[
+ \Gamma_{\Gamma_a}p^!K
+       \simeq b_+b^!p^!K=b_+a^!K,
+ \qquad
+ \mathsf T_M(a,K)\simeq i_+a^!K .
+ \tag{HRI.10}
+\]
+Thus the shifts and normal determinant are those of the actual inverse transfer, not an ordinary tensor on a singular coordinate ring.
+
+For an additional smooth ambient factor \(\mathbf A^s\), lift the coordinates of its embedding of \(U\) locally through \(\mathcal O_M\to\mathcal O_U\). Their graph \(c\) is a section of the added smooth projection \(q\). For an object \(L\) on the old \(M\times V\), nested closed localization and inverse composition give
+\[
+ \Gamma_{\Gamma_{\mathrm{joint}}}q^!L
+       =c_+\Gamma_{\Gamma_a}(c^!q^!L)
+       \simeq c_+\Gamma_{\Gamma_a}L,
+ \qquad q_+c_+=\mathrm{id}.
+ \tag{HRI.11}
+\]
+The notation identifies the old graph support with its image in this smooth section. This proves compatibility with the projection comparison, including its unit and counit. If the added factor is a general smooth affine scheme, embed it in affine space. Localization on the joint closed support factors through that smooth closed inclusion, and inverse composition gives the same comparison. Shrinking affine neighbourhoods in both factors and using the intrinsic projection functor glue the comparisons; this is the actual gluing argument in Theorem 5.1. Triple products give the composition maps, and fourfold associativity gives their cocycle. Double graphs check inverse-image composition by the same nested-localization and smooth-section calculation. In particular HRI.9 is the extraordinary pullback used in the smooth-chart definition of D-modules, also for singular \(U\).
+
+Every operation in HRI.9 is continuous and preserves bounded regular objects. HRI.2 handles \(p^!\) and \(\pi_+\); HRI.4 handles closed localization. It follows that \(a^!\) carries regular Ind inputs to supported regular Ind objects on \(U\), in every smooth ambient presentation. This proves the statement on the actual unbounded functor by its finite localization and transfer models.
+
+### 3.550. Zariski lifts of a family to a bundle atlas
+
+Put \(Y=\operatorname{Bun}_G(X)\), with \(X\) a smooth projective connected complex curve and \(G\) connected reductive. Fix the faithful closed representation \(G\hookrightarrow GL_n\) constructed in [The moduli stack of bundles, §1.3](the-moduli-stack-of-bundles.md). For a map \(r:T\to Y\) from a finite-type scheme, let \(E\) be the associated vector bundle on \(X\times T\).
+
+Fix the very ample line \(A\) of that lesson. On the open locus \(T_{d,m}\) where \(E\) has fibre degree \(d\), \(E(m)\) is generated by its sections and its positive fibre cohomology vanishes, the preceding lesson proves
+\[
+ W_m=\pi_{T*}E(m)\text{ finite locally free},
+ \qquad
+ W_m\otimes_{\mathcal O_T}\mathcal O_{T'}
+       \simeq\pi_{T'*}E_{T'}(m).
+ \tag{HRI.12}
+\]
+Its proof is BA.1–BA.2: a two-term affine Čech complex has a finite projective replacement, cancellation removes its positive terms, and the cancellation survives every base tensor. Hence no reducedness assumption on \(T'\) is needed.
+
+The framed Quot chart and its reduction scheme give a smooth scheme map \(q_m:\mathscr S_m\to Y\) with
+\[
+ \mathscr S_m\times_Y T_{d,m}
+      \simeq\operatorname{Fr}(W_m)
+          \longrightarrow T_{d,m}.
+ \tag{HRI.13}
+\]
+These are the full cartesian functors BA.7 and BA.17–BA.18, proved in [The moduli stack of bundles, §§1.2–1.5](the-moduli-stack-of-bundles.md). A basis of sections gives its evaluation quotient, and the original \(G\)-bundle supplies the reduction. An automorphism preserving that quotient is the identity. Thus HRI.13 retains the specified bundle and all arrows.
+
+The right side is the frame torsor of a finite locally free module. On every Zariski open where \(W_m\) has a basis it has a section. The inverse map of HRI.13 therefore gives
+\[
+ r|_{T_i}\simeq q_i a_i,\qquad
+ a_i:T_i\to V_i,\quad
+ q_i:V_i\to Y\text{ smooth},\quad V_i\text{ smooth affine}.
+ \tag{HRI.14}
+\]
+To obtain \(V_i\), take an affine open of \(\mathscr S_m\) and restrict the inverse image of that open in \(T_i\). The scheme \(\mathscr S_m\) is smooth over \(\mathbf C\), because its map to the smooth stack \(Y\) is smooth; smoothness of \(Y\) is proved in §2.2 of the preceding lesson. Serre generation and vanishing make the loci \(T_{d,m}\) cover \(T\). Quasicompactness then selects a finite collection of affine \(T_i\). Thus
+\[
+ T=\bigcup_{i=1}^s T_i
+ \quad\text{has the finite Zariski lifts HRI.14}.
+ \tag{HRI.15}
+\]
+No Zariski triviality of a \(G\)-torsor or a finite arc-frame torsor was used. The trivialized torsors in HRI.13 are the ordinary \(GL_{\operatorname{rk}W_m}\) frame torsors.
+
+### 3.551. Regular Ind inputs on singular Hecke sources
+
+Let \(F\in D(Y)\) satisfy the actual chartwise regular Ind condition: \(q^!F\in\mathscr R_\infty(V)\) on every smooth finite-type affine chart \(q:V\to Y\). Let \(r:T\to Y\) be a finite-type scheme map, and suppose \(T\hookrightarrow M\) is a smooth separated finite-type ambient embedding. On \(T\), the notation \(\mathscr R_\infty(T)\) means the supported ambient regular Ind category of HRI.6, with its canonical graph comparisons. Then its actual inverse image, represented on \(M\), satisfies
+\[
+ i_+r^!F\in\mathscr R_\infty(M),
+ \qquad
+ \operatorname{Supp}(i_+r^!F)\subset i(T).
+ \tag{HRI.16}
+\]
+Here \(i_+\) denotes the supported ambient realization when \(T\) is singular; the smooth closed-embedding theorem is not applied directly to a singular \(T\).
+
+For the proof take the finite Zariski lifts HRI.14–HRI.15. On \(T_i\), inverse composition identifies \(r^!F\) with \(a_i^!q_i^!F\), with the specified bundle isomorphism of HRI.14. The actual graph model HRI.9 makes this a regular Ind object on an ambient neighbourhood of \(T_i\). Choose ambient opens whose intersections with \(T\) are these \(T_i\), and refine them by finitely many affine opens. Add the complement \(M-T\), where the object is zero. HRI.7 proves global regular Ind membership. The object already has its canonical inverse-image gluing maps; no new infinite Čech descent or boundedness of \(F\) is assumed.
+
+For a bounded regular kernel \(K\) on \(T\) and any integer \(s\), one consequently has
+\[
+ \mathcal N_{r,K,s}(F)=r^!F\otimes^!K[s]
+      \in\mathscr R_\infty(T).
+ \tag{HRI.17}
+\]
+To check the tensor in ambient terms, for two objects represented on \(M\) use
+\[
+ A\otimes^! B=\Delta_M^!(A\boxtimes B)
+       \in D(\mathcal D_M)_{i(T)}.
+ \tag{HRI.18}
+\]
+Its support is contained in the intersection of the two base supports. HRI.3 preserves regular Ind membership, and the graph comparisons HRI.11 show independence of the ambient embedding. All determinant lines and shifts are those of the inverse transfer. This is the extraordinary tensor, not a derived tensor over \(\mathcal O_T\).
+
+In particular let \(T\to B\times C\) be a bounded Hecke base change, with its projective finite-frame presentation and smooth projective-bundle ambient, as in [Fusion, §2](../../GL-SAT/GL-SAT-08.html#2-the-proper-moving-chain). Write \(i:T\hookrightarrow M\) for this embedding and \(f:M\to B\times C\) for the proper projective-bundle projection. Let \(r\) be the other-bundle map. Its bounded intersection-complex kernel is regular: it is the middle extension of the constant regular connection on the smooth open relative-position stratum. Bounded open images and their subquotients are regular by the four-map theorem and its Serre property. Smooth frame pullback commutes with this middle-extension characterization, so this global intersection complex agrees with the descended Satake kernel, with the prescribed normalization shift. Applying HRI.17 and actual proper direct image gives
+\[
+ i_+\mathcal N_{r,K,s}(F)\in\mathscr R_\infty(M),
+ \qquad
+ f_+i_+\mathcal N_{r,K,s}(F)
+           \in\mathscr R_\infty(B\times C).
+ \tag{HRI.19}
+\]
+For completeness, the bounded smooth middle-extension comparison just used follows from the strict boundary tests in [Intermediate extensions and intersection complexes, §1](../../GL-PERV/src/intermediate-extensions-and-intersection-complexes.md). On a boundary stratum of dimension \(c\), they are the ordinary stalk bound \(\leq-c-1\) and costalk bound \(\geq-c+1\). A smooth pullback of relative dimension \(d\), normalized as \(q^*[d]\) on sheaves, changes the stratum dimension to \(c+d\) and subtracts \(d\) from both bounds. The actual stalk and costalk comparisons are checked in local smooth product coordinates; extraordinary pullback there is ordinary pullback shifted by \(2d\), with its complex orientation. Both strict bounds and the specified open restriction are consequently preserved. Uniqueness of middle extension gives its actual comparison, and uniqueness also gives the cocycle. The bounded RH comparison transports these maps to the operator modules. Only the bounded kernel is being descended in this argument.
+
+The proper-detection theorem UQD.1–UQD.24 therefore applies to this actual input once its source characteristic witness and the selected-point compatible-set isolation are bound to the same correspondence. This establishes its regular Ind input premise over \(\mathbf C\). It does not establish independent nilpotent regularity, the full supported-generation criterion, or the projector image for arbitrary inputs.
+
+![Finite Zariski sections of the high-twist frame atlas give actual inverse images through a closed graph and its support projector. Finite Čech totalization restores the ambient regular Ind object.](figures/regular-ind-hecke-input.svg)
+
+*Figure 3.68.* HRI.12–HRI.15 provide the frame-atlas lift. HRI.8–HRI.11 identify the actual graph inverse image, and HRI.4–HRI.7 preserve closed base support and both cohomological tails. HRI.17–HRI.19 give the regular kernel-weighted Hecke input. The graph construction retains the nilpotent source scheme while its supported category depends on its closed base support. The bottom row applies closed-support localization, followed by projection.
+
+### 3.552. Three inverse-image and frame calculations
+
+**Exercise 3.GY.** For \(i:\{0\}\hookrightarrow\mathbf A^1_z\), compute \(i^!\mathcal O_{\mathbf A^1}\), its ambient closed-support realization, and both operations on \(\bigoplus_{n\in\mathbf Z}\mathcal O_{\mathbf A^1}[2n]\).
+
+**Solution 3.GY.** The ordinary derived coefficient pullback of the free connection is \(\mathbf C\). The inverse-image shift is \(0-1=-1\), so
+\[
+ i^!\mathcal O_{\mathbf A^1}=\mathbf C[-1],
+ \qquad
+ \Gamma_{\{0\}}\mathcal O_{\mathbf A^1}
+      \simeq\bigl(\mathbf C[z,z^{-1}]/\mathbf C[z]\bigr)[-1]
+      \simeq\delta_0[-1].
+ \tag{HRI.20}
+\]
+The localization inclusion has zero kernel and the displayed quotient, so its fibre has exactly that shift. The quotient is the point module: \(z\) kills \(z^{-1}\), its successive derivatives are \((-1)^r r!z^{-r-1}\), and these span all negative powers. The normal module basis therefore gives the isomorphism with \(\delta_0\). Continuity yields
+\[
+ i^!\!\left(\bigoplus_{n\in\mathbf Z}\mathcal O[2n]\right)
+       =\bigoplus_{n\in\mathbf Z}\mathbf C[2n-1],
+ \qquad
+ \Gamma_{\{0\}}\!\left(\bigoplus_{n\in\mathbf Z}\mathcal O[2n]\right)
+       =\bigoplus_{n\in\mathbf Z}\delta_0[2n-1].
+ \tag{HRI.21}
+\]
+Both tails occur. No lower-truncation limit was changed into a filtered colimit.
+
+**Exercise 3.GZ.** Let \(U=\operatorname{Spec}\mathbf C[s]/(s^2)\subset\mathbf A^1_s\), and let \(a:U\to\mathbf A^1_t\) send \(t\) to \(s\). Compute HRI.9 for the free connection. Compare it with replacing \(U\) by its reduced point.
+
+**Solution 3.GZ.** In \(P=\mathbf A^2_{s,t}\) the graph has ideal
+\[
+ I_{\Gamma_a}=(s^2,t-s),\qquad
+ \sqrt{I_{\Gamma_a}}=(s,t),\qquad
+ p^!\mathcal O_{\mathbf A^1_t}=\mathcal O_P[1].
+ \tag{HRI.22}
+\]
+The two coordinate localizations compute \(\Gamma_{\{(0,0)\}}\mathcal O_P\) in degree two. Its coefficient quotient has basis \(s^{-r-1}t^{-q-1}\), \(r,q\ge0\), with the normal derivative action. It is \(\delta_{(0,0)}[-2]\). Closed-support localization depends on the radical of the ideal, since the complements and the finite localization refinements are the same. Proper point-image composition, or the normal transfer augmentation, gives \(\pi_+\delta_{(0,0)}=\delta_0\), with coefficient one. Therefore
+\[
+ \mathsf T_{\mathbf A^1_s}(a,\mathcal O_{\mathbf A^1_t})
+     \simeq \pi_+\delta_{(0,0)}[-1]
+     \simeq\delta_0[-1].
+ \tag{HRI.23}
+\]
+The reduced graph gives the same result. This does not identify the classical cotangent of the square-zero scheme, generated by \(ds\) at its point, with the zero cotangent of its reduced point. It identifies their actual supported inverse-image objects. Applying the calculation to all shifts in HRI.21 gives the corresponding two-tail result on \(U\).
+
+**Exercise 3.HA.** Take \(X=T=\mathbf P^1\), \(G=\mathbf G_m\), and the family \(P=\operatorname{pr}_T^*\mathcal O_T(1)\) on \(X\times T\). Identify HRI.13 with \(m=0\). Explain why local sections suffice despite the absence of a global frame.
+
+**Solution 3.HA.** The family has degree zero along \(X\). Its section line is \(\pi_{T*}P=\mathcal O_T(1)\), with no positive fibre cohomology; evaluation generates \(P\). The rank-one degree-zero framed quotient of \(\mathcal O_X\) is its identity quotient: on every fibre a surjection between degree-zero line bundles is an isomorphism, and the fibrewise kernel and cokernel vanish by Nakayama. Thus the atlas chart is a point and its pullback is \(\mathcal O_T(1)^\times\). The two usual affine opens of \(\mathbf P^1\) have frames with their usual coordinate transition. There is no global frame: a global section of \(\mathcal O(1)\) is a homogeneous linear form \(aX+bY\), and a nonzero such form vanishes at \([-b:a]\).
+
+For an explicit input let \(F=\bigoplus_{n\in\mathbf Z}\omega_Y[2n]\), where \(Y=\operatorname{Bun}_{\mathbf G_m}(X)\) and \(\omega_Y\) is the extraordinary tensor unit. Smooth inverse image takes that unit to the unit. Hence \(F\) satisfies the chartwise regular Ind condition. With \(r:T\to Y\) the displayed family, inverse composition gives
+\[
+ r^!F=\bigoplus_{n\in\mathbf Z}\omega_T[2n]
+      =\bigoplus_{n\in\mathbf Z}\mathcal O_{\mathbf P^1}[2n+1]
+           \in\mathscr R_\infty(\mathbf P^1).
+ \tag{HRI.24}
+\]
+For the structure map \(t:\mathbf P^1\to\operatorname{Spec}\mathbf C\), HRI.2 gives \(t^!\mathbf C=\mathcal O_{\mathbf P^1}[1]\); this is the extraordinary tensor unit by inverse-image composition. Thus the last shift is exact. The finite two-open Čech complex HRI.7 proves membership from the two local lifts. No compactness of \(\omega_Y\) on the bundle stack, and no global section of its frame pullback, is required.
+
+### 3.553. The cohomological Hecke criterion for regular Ind inputs
+
+Let \(Y=\operatorname{Bun}_G(X)\), where \(X\) is a smooth projective
+connected complex curve and \(G\) is connected reductive. An input \(F\)
+is assumed to satisfy the chartwise regular Ind condition of HRI.16.
+On a smooth chart \(A\to Y\), use the independent support convention
+\[
+ \operatorname{SS}_\infty(F_A)
+   =\bigcup_{\substack{m\in\mathbf Z\\
+                 L\subset H^mF_A\ {\rm coherent}}}
+                     \operatorname{Char}(L).
+ \tag{RHC.1}
+\]
+There is no closure of this union. Fixed normalization shifts do not
+change it. Write \(\mathcal N_A\) for the cotangent pullback of the
+global nilpotent cone, as in NU.4. On an affine bundle chart \(B\) and
+an affine curve coordinate \(C\), put
+\[
+ \Gamma_{\mathrm{rel},B,C}=T^*B\times 0_C,\qquad
+ \Gamma_{\mathrm{nil},B,C}=\mathcal N_B\times 0_C.
+ \tag{RHC.2}
+\]
+Here \(0_C\) is the zero section in \(T^*C\).
+
+For the actual one-point functors SH.16, the following are equivalent:
+\[
+ \begin{aligned}
+ &\operatorname{SS}_\infty(F_A)\subset\mathcal N_A
+                  &&\text{on every smooth affine bundle chart};\\
+ &\operatorname{SS}_\infty
+      \bigl((\mathrm H_{V_\nu}F)|_{B\times C}\bigr)
+               \subset\Gamma_{\mathrm{rel},B,C}
+                  &&\text{for every dominant label }\nu
+                                      \text{ and every }B,C.
+ \end{aligned}
+ \tag{RHC.3}
+\]
+The first condition implies the stronger bound
+\(\Gamma_{\mathrm{nil},B,C}\) in the second line. The same assertions
+hold for the RA.2 normalized families and the SH.19 half-twist transport.
+These are cohomological characteristic conditions on regular Ind inputs.
+They do not identify a cohomologically supported object with an Ind of
+bounded supported objects; AIC.17 remains a separate condition.
+
+### 3.554. Finite witnesses on the identity self-nerve
+
+We first verify that the chart covectors in RHC.1 are genuine stack
+cotangents. For a smooth map \(u:W\to A\) of relative dimension \(r\),
+the flat normalized inverse transfer and finite-generator argument of
+NS.7 and NU.3 give
+\[
+ u^\natural=u^![-r],\qquad
+ \operatorname{SS}_\infty(u^\natural K)
+       =du^t\bigl(W\times_A\operatorname{SS}_\infty(K)\bigr).
+ \tag{RHC.4}
+\]
+For clarity, a finite coherent submodule of a pulled-back cohomology
+module has finitely many generators. On affine charts each generator
+is a finite sum of input sections times coefficient functions. The
+operator span of the finitely many input sections is coherent and its
+flat pullback contains those generators. The chain rule makes that
+pullback stable under every source operator. The induced good filtration
+gives the upper containment. Pulling a finite input submodule back
+injectively and applying NS.7 gives the reverse containment. Thus this
+is equality of actual unions, including both infinite tails.
+
+Let \(q:A\to Y\) be a smooth affine chart, and form
+\(W=A\times_Y A\), with projections \(p_1,p_2\) and identity section
+\(\delta:A\to W\). The affine diagonal makes \(W\) affine; it is smooth
+over \(\mathbf C\). The actual descent comparison identifies
+\(p_1^\natural F_A\) with \(p_2^\natural F_A\). If
+\(\alpha\in\operatorname{Char}(L)_a\) is a finite witness, RHC.4 and
+finite-generator containment provide a finite coherent second witness
+and a covector \(\beta\) at the same point \(a\), with
+\[
+ dp_1^t\alpha=dp_2^t\beta
+       \quad\text{at }\delta(a),\qquad
+ d\delta^t dp_1^t=d\delta^t dp_2^t=\mathrm{id},
+ \qquad \beta=\alpha.
+ \tag{RHC.5}
+\]
+If \(v\in T_aA\) induces the zero bundle deformation, an isomorphism
+from that deformation to the constant one, reducing to the identity,
+gives a tangent of \(W\) at \(\delta(a)\) whose projections are \(v,0\).
+Evaluating RHC.5 on it gives \(\alpha(v)=0\). Smooth lifting makes
+\(T_aA\to H^1(X,\operatorname{ad}P)\) surjective. The residue-duality
+calculation HG.2–HG.3 therefore identifies a unique global Higgs covector:
+\[
+ \alpha=dq_a^t\xi,\qquad
+ \xi\in H^1(X,\operatorname{ad}P)^*
+       =H^0(X,\operatorname{ad}^*P\otimes\omega_X).
+ \tag{RHC.6}
+\]
+This argument concerns each finite witness; it requires neither a
+group-stable choice of that witness nor a common finite support cone.
+
+The same common-chart argument proves the smooth-stack version of
+RHC.4. For a smooth scheme map \(r:H\to Y\), at a point \(h\),
+\[
+ \bigl(\operatorname{SS}_\infty(r^!F)\bigr)_h
+       =dr_h^t\bigl(\operatorname{SS}_\infty(F)_{r(h)}\bigr).
+ \tag{RHC.7}
+\]
+Indeed \(H\times_Y A\) has two smooth projections. RHC.4 transfers
+finite witnesses both ways, and RHC.6 identifies the input chart
+covector with its unique stack covector. Equality after the first
+smooth projection reflects equality on \(H\). For \(Y\times C\) the
+argument leaves the curve covector unchanged.
+
+### 3.555. The exact projective Hecke input
+
+Keep the orientation \(\alpha:P_2|_{X-x}\to P_1|_{X-x}\) of HG.1.
+For a dominant relative-position label \(\nu\), the source over a fixed
+output is described by the inverse Schubert bound:
+\[
+ \mu=-w_0\nu,\qquad
+ Z_\mu\longrightarrow B\times C,\qquad
+ i:Z_\mu\hookrightarrow M,\quad
+ \pi:M\longrightarrow B\times C\text{ proper and smooth}.
+ \tag{RHC.8}
+\]
+Here \(M\) is a smooth projective bundle. The actual endpoint
+construction and its all-coefficient projectivity are SH.13–SH.14.
+One can see the finite descent directly. In a faithful representation
+choose a lattice bound \(u^NO^n\subset L\subset u^{-N}O^n\).
+For \(m\ge2N\), an element \(1+u^mA(u)\), and its inverse, preserve
+every such lattice. The congruence kernel consequently fixes the entire
+bound on all coefficient rings. Its finite Plücker representation
+descends through the output frame torsor to a projective bundle, in
+which the associated closed Schubert support is \(Z_\mu\).
+Beauville–Laszlo gluing identifies this scheme, its arrows and its
+other-bundle map \(r:Z_\mu\to Y\) with the actual bounded correspondence.
+The open relative-position stratum is smooth.
+
+Let \(d=\dim Y\), take pure-dimensional bundle charts \(U,B\) of
+dimensions \(a,b\), and write \(e=b+1=\dim(B\times C)\). The kernel
+specified by SH.15 has the exact normalizations
+\[
+ K_U=IC_{\mathcal H_U}[a],\qquad
+ K_{Z_\mu}=IC_{Z_\mu}[b],\qquad
+ \widehat K_{Z_\mu}=IC_{Z_\mu}[b+1].
+ \tag{RHC.9}
+\]
+In the input frame diagram SH.15 is the pullback of
+\(\omega_U\boxtimes\mathcal F_{1,D}\). Its open coefficient is the
+constant orbit connection times the constant curve connection, while
+\(\omega_U=\mathcal O_U[a]\). The two smooth frame maps have the
+same relative dimension, so their shifts cancel and give the first
+identity. On the common input/output chart the two shifts are
+\[
+ a+(b-d)=b+(a-d).
+ \tag{RHC.10}
+\]
+Smooth middle-extension uniqueness, proved in HRI.19, extends the
+specified open comparison, including its normal-density evaluation,
+and gives the second identity. RA.2 gives the third. For the unit
+label these are precisely \(F_B\boxtimes\mathcal O_C\) and
+\(F_B\boxtimes\omega_C\), as required by SH.18 and RA.3.
+There is no orbit-dimension shift left over.
+
+The actual SH.14 base-change and SH.17 tensor maps now identify
+\[
+ q_{B,C}^!\mathrm H_{V_\nu}(F)
+   \simeq\pi_+i_+\mathcal E_\nu,\qquad
+ \mathcal E_\nu=r^!F\otimes^!IC_{Z_\mu}[b],\qquad
+ i_+\mathcal E_\nu\in\mathscr R_\infty(M).
+ \tag{RHC.11}
+\]
+The last assertion is HRI.16–HRI.19. For the normalized family replace
+\([b]\) by \([b+1]\). All these functors act on the actual unbounded
+objects. A smooth nonproper atlas of \(Z_\mu\) is not used as the source
+of the proper direct image.
+
+### 3.556. Orbit annihilators for the coefficient kernel
+
+At a finite jet level, the bounded spherical IC is strongly equivariant
+for the smooth finite jet group \(G_m\). We record why its characteristic
+covectors annihilate the orbit tangents. On a smooth affine
+representation space, take finite operator generators of a coherent
+strong module and enclose them in a finite-dimensional rational
+subrepresentation \(V\), by the finite coaction argument of NU.7.
+The good filtration \(F_k=\mathcal D_{\le k}V\) is invariant. The strong
+infinitesimal identity says that each orbit vector field acts by the
+rational infinitesimal action, so it preserves \(F_k\). Hence
+\[
+ \sigma(\zeta)F_k\subset F_k,\qquad
+ \operatorname{symbol}(\sigma(\zeta))\,\operatorname{gr}F=0
+       \quad(\zeta\in\operatorname{Lie}G_m).
+ \tag{RHC.12}
+\]
+This also proves the assertion on a projective Plücker ambient.
+Pull to its line-frame open in the affine representation, apply open
+direct image to that affine representation, and take its finitely
+many coherent cohomology modules. These retain their rational action
+and strong identity, by the finite transfer and localization models.
+Apply the affine filtration argument and restrict back. The smooth
+formula NS.7 reflects the orbit-annihilator assertion on the projective
+ambient. Thus every stratum, including a boundary orbit, is included.
+In a curve coordinate the one-point coefficient is external with
+\(\mathcal O_C\), so its curve covector is zero.
+
+On the actual input frame diagram the source is the smooth pullback
+specified in SH.17:
+\[
+ p^!\bigl(F_U\boxtimes IC_{\mathrm{bd}}\boxtimes\mathcal O_C\bigr)
+       \quad\text{with its specified fixed shifts}.
+ \tag{RHC.13}
+\]
+The finite-generator proof of BK.8–BK.9 works with any coherent kernel:
+finitely many coefficients in the input module lie in a coherent input
+submodule. The product good filtration over the field gives exact
+external characteristic support. Consequently every finite source
+cohomology submodule, after smooth frame comparison, has
+\[
+ \begin{aligned}
+ \operatorname{Char}(A_{\mathrm{fr}})
+   &\subset d\widetilde p^{\,t}
+       \left(\widetilde T_{\mathrm{fr}}
+          \times_{U\times P\times C}\Xi\right),\\
+ \Xi&=\operatorname{Char}(L_U)\times
+             \operatorname{Char}(IC_{\mathrm{bd}})\times0_C .
+ \end{aligned}
+ \tag{RHC.14}
+\]
+locally, for an actual finite \(L_U\subset H^mF_U\).
+Here \(P\) is the smooth Plücker ambient and \(\widetilde p\) a local
+smooth ambient lift of the frame map. The next section verifies the
+fixed-covector comparison for these lifts.
+The kernel component in this formula annihilates the tangent of the
+relative-position orbit at that point. Coherent submodules need not
+themselves be equivariant: their induced filtrations give containment
+in the enclosing product module.
+
+### 3.557. Fixed covector tests through the smooth frame diagrams
+
+We spell out the presentation issue in RHC.14. Let a bounded regular
+module \(A\) on a possibly singular \(Z\) be represented on a smooth
+ambient, and let \(f:Z\to B\times C\). Fix \(y,\eta\ne0\).
+Use the universal family \(g_{y,\eta}\) of UQD.1–UQD.7. On any local
+smooth ambient extension \(\widetilde f\), its exact carrier is
+\[
+ \begin{aligned}
+ \operatorname{Supp}
+ C_{g\circ(\mathrm{id}_Q\times\widetilde f)}
+       (\mathcal O_Q\boxtimes A)&=Q\times Z_A(y,\eta),\\
+ Z_A(y,\eta)&=\{z:f(z)=y,\
+           d\widetilde f_z^t\eta\in\operatorname{Char}(A)\}.
+ \end{aligned}
+ \tag{RHC.15}
+\]
+The bounded RH comparison and proper closed-extension comparison
+identify the left side with the vanishing cycles of the intrinsic
+sheaf on \(Z\), for the restriction of the same function. Thus the
+point set on the right is independent of that ambient extension.
+This uses closed supports of cycles, not nonzero stalks at every point.
+
+For a smooth source cover \(v:Z'\to Z\), normalized inverse image
+commutes with these bounded cycles. Indeed smooth local presentations
+are étale over a product with affine space; analytically they are
+local products. On such a product the punctured cover, the central
+unit and its cone are the external products of the original maps
+with the constant oriented factor. This proves the comparison with
+its actual maps. Smooth maps are open, so closure of the nonzero-stalk
+locus pulls back to the closure of its inverse image. Consequently
+\[
+ Z_{v^\natural A}(y,\eta)=v^{-1}Z_A(y,\eta).
+ \tag{RHC.16}
+\]
+No arbitrary nonproper nearby-cycle base change is used.
+
+A smooth source map and a map to a smooth target admit the ambient
+lifts needed to use this observation with RHC.14. Locally present the
+smooth source map as étale over a projection and lift its finitely
+many equations to the ambient. For the target, choose étale coordinates,
+lift their functions, and form the étale fibre product with the target
+coordinate chart. The given map on the closed source defines the
+required section there; removing the other closed-source sheets gives
+an étale ambient neighbourhood on which it extends. NS.7 now applies
+to the lifted smooth map. The graph comparisons HRI.11 and RHC.15
+identify this with the original test. This construction does not
+identify unequal classical cotangent spaces of singular stages.
+
+Apply it to the common input/output charts and their finite frames.
+A compatible covector of a finite source piece therefore has, on
+the tangent of its relative-position stratum, the input component
+from RHC.14; the kernel and curve components vanish on that stratum.
+RHC.6 descends the input component to a global Higgs covector.
+If the target covector is the pullback of \((\xi_2,\xi_x)\), the result is
+\[
+ \begin{gathered}
+ p_2^*\xi_2+s^*\xi_x=p_1^*\xi_1
+                  \quad\text{on the moving orbit stratum},\\
+ A_2=\alpha^*A_1\text{ on }X-x,\qquad
+ \xi_x=\operatorname{Res}_{u=0}B(A_2,g^{-1}g')\,dx .
+ \end{gathered}
+ \tag{RHC.17}
+\]
+Here both fields are regular on their bundles. To verify the second
+line, use the complete fixed-point gluing complex HG.4. The stratum
+tangent is exactly the kernel of
+\((a_1,a_2,b)\mapsto b-a_1+a_2\bmod(L_1+L_2)\):
+the local orbit tangent is the image of \(L_1+L_2\), by the all-ring
+finite orbit calculation. The map onto \(W/(L_1+L_2)\) is surjective.
+The difference of the two bundle functionals vanishes on its kernel,
+so factors through that quotient. Evaluation on \((0,w,0)\) and
+\((w,0,0)\) identifies the factor with the two Laurent expansions.
+They coincide and annihilate both lattices. HG.8–HG.9 gives their
+unique compatible global fields. Evaluating the moving direction
+is exactly the positive-sign discrepancy HG.13. Added smooth chart
+directions are annihilated, so the equality descends from the common
+frame chart to this actual gluing groupoid.
+
+### 3.558. The moving residue of a nilpotent compatible field
+
+This calculation is at complex geometric points. Suppose \(A_1,A_2\)
+are compatible regular Higgs fields and \(A_2\) is nilpotent. By the
+Cartan decomposition proved in [Orbits and Schubert varieties, §1](../../GL-SAT/GL-SAT-04.html),
+write
+\[
+ \begin{gathered}
+ g=k_1u^\lambda k_2,\qquad k_1,k_2\in G[[u]],\\
+ D=\operatorname{Ad}_{k_2}A_2,\qquad
+ \operatorname{Ad}_{u^\lambda}D
+                =\operatorname{Ad}_{k_1^{-1}}A_1\in\mathfrak g[[u]].
+ \end{gathered}
+ \tag{RHC.18}
+\]
+Differentiating this product, invariance of \(B\) moves the first arc
+derivative to the regular field on the right. The last arc derivative
+is paired with the regular \(A_2\). Both residues vanish. The middle
+term therefore gives
+\[
+ \operatorname{Res}B(A_2,g^{-1}g')
+       =\operatorname{Res}B(D,d\lambda/u)
+       =B(D(0),d\lambda).
+ \tag{RHC.19}
+\]
+For a root of negative \(\lambda\)-weight, regularity of
+\(\operatorname{Ad}_{u^\lambda}D\) forces its constant coefficient to
+vanish. Hence, with \(M_\lambda=C_G(\lambda)\),
+\[
+ D(0)\in\mathfrak p_\lambda
+      =\bigoplus_{n\ge0}\mathfrak g_n,\qquad
+ D_0=\lim_{s\to0}\operatorname{Ad}_{\lambda(s)}D(0)
+         \in\mathfrak m_\lambda .
+ \tag{RHC.20}
+\]
+The limit remains nilpotent, since the nilpotent cone is closed and
+conjugation invariant. The compatible Jordan decomposition of §3.23
+identifies this Levi element as nilpotent in the Levi, with zero
+central semisimple part. Thus \(D_0\in[\mathfrak m_\lambda,\mathfrak m_\lambda]\).
+Weight orthogonality and invariance of \(B\) give
+\[
+ B(D(0),d\lambda)=B(D_0,d\lambda)=0:
+ \quad B([a,b],d\lambda)=B(a,[b,d\lambda])=0 .
+ \tag{RHC.21}
+\]
+This includes central cocharacters and torus factors. The invariant
+transport HG.10–HG.11 then proves, for every compatible point in
+RHC.17,
+\[
+ \xi_1\in\mathcal N
+      \quad\Longrightarrow\quad
+       \xi_2\in\mathcal N,\qquad \xi_x=0.
+ \tag{RHC.22}
+\]
+The statement concerns the reduced geometric characteristic supports
+in RHC.1. It is not a residue-vanishing identity on all nonreduced
+coefficient schemes; Exercise 3.HC exhibits that distinction.
+
+### 3.559. Proper upper bounds with both cohomological tails
+
+Let \(\pi:M\to B\times C\) be proper with \(M\) smooth, and \(A\)
+bounded regular. If its compatible set at \(y,\eta\ne0\) is empty,
+RHC.15 gives zero source family cycles. The actual PIC.19 comparison
+and the product comparison give
+\[
+ C_g(\mathcal O_Q\boxtimes\pi_+A)
+       \simeq(\mathrm{id}_Q\times\pi)_+
+             C_h(\mathcal O_Q\boxtimes A)=0.
+ \tag{RHC.23}
+\]
+Normalized cycles are exact on regular holonomic hearts. Applying
+cohomology, HC and the target universal-family identity therefore yield
+\[
+ Z_A(y,\eta)=\varnothing
+     \quad\Longrightarrow\quad
+ \eta\notin\operatorname{Char}H^j(\pi_+A)_y
+                      \quad\text{for every }j.
+ \tag{RHC.24}
+\]
+This upper implication does not require isolated source points.
+
+Here is the passage to an arbitrary \(E\in\mathscr R_\infty(M)\).
+The finite Spencer–Čech model PIC.4–PIC.10 gives an interval \([a,b]\)
+for the cohomology of \(\pi_+\) on heart objects, independent of the
+input. For a chosen output degree \(n\), truncation triangles give
+\[
+ H^n\pi_+E
+    \simeq H^n\pi_+
+       \bigl(\tau^{\le n-a+1}\tau^{\ge n-b-1}E\bigr).
+ \tag{RHC.25}
+\]
+The lower discarded part maps into degrees at most \(n-2\), and the
+upper discarded part into degrees at least \(n+2\); this proves the
+comparison, without taking an infinite truncation limit.
+Each cohomology module of this finite window is a filtered union of
+global coherent regular submodules. Continuity and exact filtered
+colimits give
+\[
+ H^j\pi_+H^mE
+       =\operatorname{colim}_{A\subset H^mE\ {\rm coherent}}
+                        H^j\pi_+A.
+ \tag{RHC.26}
+\]
+The condition that every finite submodule have characteristic support
+in a fixed closed cone \(\Gamma\) is Serre and survives filtered
+colimits, by NU.2–NU.4. Apply that rule to RHC.26 and then to the
+finite Postnikov triangles of the window. Thus an upper target cone
+valid for every finite source cohomology piece is valid in every
+degree of \(\pi_+E\). No full supported Ind factorization is used.
+
+We will also use the pointwise version. For a fixed covector \(\eta\),
+the condition that every finite submodule avoid \(\eta\) is Serre:
+characteristic support in a finite exact sequence is the union of the
+subobject and quotient supports. It survives filtered colimits because
+each finite submodule of the colimit is contained in a finite coherent
+image from a stage. The same finite window argument therefore excludes
+\(\eta\) from the full output whenever RHC.24 excludes it for every
+finite source piece. No common target neighbourhood of \(\eta\) is
+required.
+
+### 3.560. Nilpotent regular inputs satisfy the curve bound
+
+Assume the first line of RHC.3. The output of RHC.11 is regular Ind
+on every target chart by HRI.19, and is the restriction of the actual
+stack Hecke object. RHC.6, applied to \(Y\times C\), makes every
+finite target characteristic witness horizontal in the bundle-chart
+directions. Suppose such a witness lies outside
+\(\Gamma_{\mathrm{nil},B,C}\). It represents a genuine nonzero target
+covector \(\eta=(\xi_2,\xi_x)\).
+
+For every finite \(A\subset H^m(i_+\mathcal E_\nu)\), RHC.14–RHC.17
+would make a compatible point give an actual input Higgs covector in
+\(\operatorname{SS}_\infty(F)\). It is nilpotent by hypothesis, so
+RHC.22 forces \(\xi_2\) nilpotent and \(\xi_x=0\). Therefore
+\[
+ \eta\notin\Gamma_{\mathrm{nil},B,C}
+       \quad\Longrightarrow\quad Z_A(y,\eta)=\varnothing
+                 \quad\text{for every finite source piece }A .
+ \tag{RHC.27}
+\]
+The pointwise form of RHC.24–RHC.26 excludes the chosen finite target
+witness; the individual finite source pieces need not descend to
+objects on the target stack. Testing closed
+finite characteristic supports at complex points is sufficient by
+the programme Nullstellensatz AIC.9. Consequently
+\[
+ \operatorname{SS}_\infty
+        \bigl(q_{B,C}^!\mathrm H_{V_\nu}(F)\bigr)
+             \subset\mathcal N_B\times0_C .
+ \tag{RHC.28}
+\]
+The argument includes every boundary orbit of the kernel. The actual
+curve-normalized family has the same support, since it differs by
+one cohomological shift.
+
+### 3.561. A nonnilpotent witness and the selected compatible point
+
+Conversely suppose the first line of RHC.3 fails. A finite coherent
+characteristic difference from \(\mathcal N_A\) has a complex point.
+RHC.6 gives its global Higgs field. A nonzero invariant section has
+a point where it is nonzero, again by the affine Nullstellensatz.
+Choose such an \(x\). The centralizer construction and formal
+normalization HG.14–HG.16 provide
+\[
+ A_1(0)=C,\qquad
+ g_0=u^\lambda,\qquad
+ B(C,d\lambda)\ne0,\qquad
+ \xi_x=B(C,d\lambda)\,dx .
+ \tag{RHC.29}
+\]
+Let \(\nu\) be the dominant representative of \(\lambda\) and
+\(\mu=-w_0\nu\) that of \(-\lambda\). The actual functor is
+\(\mathrm H_{V_\nu}\), while its fixed-output source is \(Z_\mu\).
+HG.8 glues the compatible output field \(\xi_2\). Choose an affine
+output chart with a lift of that bundle and put
+\[
+ y=(b,x),\qquad
+ \eta=(dq_B^t\xi_2,\xi_x)\in T_y^*(B\times C),\qquad
+ \xi_x\ne0 .
+ \tag{RHC.30}
+\]
+
+On the open relative-position stratum, the kernel is the constant
+connection with its exact shift RHC.9. RHC.7 and BK.13 give actual
+membership of the pulled target covector. In an ambient open whose
+intersection with \(Z_\mu\) is this smooth stratum, NS.8 retains all
+normal covectors. HRI.6 and finite-generator containment then give
+a global finite coherent source witness:
+\[
+ A_0\subset H^{m_0}(i_+\mathcal E_\nu),\qquad
+ d\pi_{z_0}^t\eta\in\operatorname{Char}(A_0).
+ \tag{RHC.31}
+\]
+Indeed the ambient cohomology is the union of global coherent regular
+images. A finite local set of generators lies in one such image;
+its characteristic containment transfers the witness. There is no
+closure of an infinite union in this step.
+
+For any finite \(A\subset H^m(i_+\mathcal E_\nu)\), restrict its
+compatible set near \(z_0\) to this open stratum. RHC.17 places it
+in the actual fixed-output compatible-Higgs fibre. HG.9 identifies
+that fibre, with its specified output identification and no extra
+automorphisms, with the Springer fibre for \(A_2\) in the inverse
+bound. In the normalized frames the two disc fields are the same
+Levi series; HG.16 therefore makes \(u^{-\lambda}\) an open reduced
+point there.
+Thus
+\[
+ z_0\notin Z_A(y,\eta)
+       \quad\text{or}\quad
+ z_0\text{ is isolated in }Z_A(y,\eta)
+                   \quad\text{for every finite }A .
+ \tag{RHC.32}
+\]
+Other components may be positive dimensional. The assertion is
+isolation of the selected point, not finiteness of the entire fibre.
+
+### 3.562. Detection in the actual Hecke output
+
+All hypotheses of UQD.1–UQD.24 now hold for the actual proper ambient
+map and input in RHC.11: HRI gives regular Ind membership, RHC.31 is
+a finite source witness, and RHC.32 gives the selected-point condition.
+The universal quadratic parameter family and its actual full unbounded
+section retract therefore give
+\[
+ L_0\subset H^{n_0}
+       \bigl(q_{B,C}^!\mathrm H_{V_\nu}(F)\bigr)
+       \text{ coherent},\qquad
+ \eta\in\operatorname{Char}(L_0)_y .
+ \tag{RHC.33}
+\]
+This is an actual finite target witness. It has nonzero curve component
+by RHC.30, so it contradicts the second line of RHC.3. We conclude
+\[
+ \left[
+   \operatorname{SS}_\infty
+      \bigl(q_{B,C}^!\mathrm H_{V_\nu}(F)\bigr)
+       \subset T^*B\times0_C\text{ for all }\nu,B,C
+ \right]
+       \Longrightarrow \operatorname{SS}_\infty(F)\subset\mathcal N .
+ \tag{RHC.34}
+\]
+Combined with RHC.28 this proves the promised equivalence, with its
+stronger upper implication:
+\[
+ \begin{gathered}
+ \operatorname{SS}_\infty(F)\subset\mathcal N
+       \quad\Longleftrightarrow\\
+ \text{all one-point IC Hecke outputs satisfy}\\
+ \text{the cohomological curve bound}.
+ \end{gathered}
+ \tag{RHC.35}
+\]
+All genera and bundle components are included. The nonnilpotent
+construction is invoked only when such an actual witness exists.
+
+### 3.563. Categorical Hecke-lissity and half twists
+
+The full Hecke-lisse condition HLA.13 implies the curve bound used
+above. Its curve category is the image of the ind-connection embedding.
+On a scheme chart, an external product with a finite connection has
+zero curve covector by its good filtration. The same holds for its
+Ind extension and for the full tensor-category image: NU.2–NU.4 make
+the cohomological curve condition stable under triangles and colimits.
+Thus a regular Ind object in the actual Hecke-lisse subcategory has
+nilpotent cohomological singular support.
+
+For the established half root \(L\), SH.19 is the actual conjugation
+\[
+ \mathrm H^{\,L}_{V_\nu}
+       =\mathcal T_{Y\times X}^{-1}
+                       \mathrm H_{V_\nu}\mathcal T_Y .
+ \tag{RHC.36}
+\]
+The two intermediate lines cancel through the specified Morita
+evaluation maps RH.17. On charts their operator changes have order
+zero, so principal symbols and the support tests are unchanged.
+The target line is pulled from \(Y\), leaving the curve direction
+unchanged. Regular Ind membership is transported with the same
+Morita equivalence. Therefore RHC.28–RHC.35 hold in that convention
+with their actual maps and all normalization shifts retained.
+
+For objects with no lower bound on a genus-zero curve, the converse from
+the cohomological curve condition to full categorical Hecke-lissity requires
+an additional argument. Nor does this theorem prove independent
+nilpotent regularity, AIC.17 on both tails, or the nilpotent image of a
+projector on arbitrary inputs. Those require their own arguments.
+Free further reading for the geometric Hecke comparison is
+[Arinkin–Gaitsgory–Kazhdan–Raskin–Rozenblyum–Varshavsky, §§14.2 and 20.4–20.8](https://arxiv.org/abs/2010.01906v2).
+The arguments above supply the proofs used here.
+
+![The identity self-nerve forces a finite chart covector to be horizontal. The proper Hecke input has exact IC shifts and an isolated compatible point. The affine addition model displays the detected curve covector.](figures/regular-hecke-characteristic-criterion.svg)
+
+*Figure 3.69.* The self-nerve identities are RHC.5–RHC.7. The actual
+kernel and proper map are RHC.8–RHC.11; selected-point survival is
+RHC.29–RHC.33. The lower panel is the exact addition model RHC.40–RHC.42,
+with conormal vector \((1,1)\). The geometric nilpotent residue
+calculation is RHC.18–RHC.22 and its nonreduced limit is Exercise 3.HC.
+
+### 3.564. Three characteristic and residue calculations
+
+**Exercise 3.HB.** Let \(G=GL_4\), use the trace pairing, and set
+\[
+ C=\operatorname{diag}(2,2,-2,-2)+E_{12}+E_{34},\qquad
+ \lambda=(1,1,-1,-1).
+ \tag{RHC.37}
+\]
+For \(A(u)=Cq(u)\,du\), \(q(0)=1\), compute the complementary adjoint
+inverse, the tangent equations at \(u^\lambda\), and the moving residue.
+
+**Solution 3.HB.** Write \(N_+=N_-= \begin{pmatrix}0&1\\0&0\end{pmatrix}\)
+on the two blocks. On a cross-block \(2\)-by-\(2\) matrix \(T\), the
+adjoint block is \(4I+D\), where \(D(T)=N_+T-TN_-\).
+The commuting left and right nilpotent operations square to zero,
+so \(D^3=0\). Its exact formal inverse and residue are
+\[
+ \begin{aligned}
+ \bigl(q(u)(4I+D)\bigr)^{-1}
+    &=q(u)^{-1}\bigl(\tfrac14 I-\tfrac1{16}D+\tfrac1{64}D^2\bigr),\\
+ \operatorname{Res}B(A,g^{-1}g')
+    &=\operatorname{tr}(C\,d\lambda)=8 .
+ \end{aligned}
+ \tag{RHC.38}
+\]
+There are four cross-block root spaces of weight two. Their eight
+tangent coefficients are the matrices \(u^{-2}T_2+u^{-1}T_1\).
+The highest negative coefficient first kills \(T_2\) by the invertible
+constant block; the next then kills \(T_1\). The finite local-ring
+argument AS.6 gives the open reduced point. For the inverse orbit
+the constant block is \(-4I+D'\), with inverse
+\(-I/4-D'/16-(D')^2/64\), and the reversed moving residue is \(-8\).
+This local field occurs, for example, for a trivial bundle and
+\(C\omega\) when a chosen global one-form \(\omega\) is nonzero at
+the chosen point. The example assumes such a form; it does not
+assert its existence in genus zero.
+
+**Exercise 3.HC.** For \(G=GL_2\), let \(g=\operatorname{diag}(u^m,1)\),
+\(m\ge1\), and let \(A_2=\begin{pmatrix}a&b\\c&-a\end{pmatrix}du\)
+over \(\mathbf C[[u]]\). Suppose \(A_2\) is nilpotent and both
+\(A_2,\operatorname{Ad}_gA_2\) are regular. Compute the residue.
+Then repeat over \(\mathbf C[\varepsilon]/(\varepsilon^2)\) for
+\(a=\varepsilon,b=1,c=0\).
+
+**Solution 3.HC.** Regularity requires \(c\in u^m\mathbf C[[u]]\).
+Nilpotence is \(a^2+bc=0\), hence \(a(0)^2=0\) and \(a(0)=0\)
+over the field. Therefore
+\[
+ \begin{aligned}
+ \operatorname{Res}\operatorname{tr}(A_2g^{-1}g')
+       &=m\,a(0)=0
+                         &&\text{over }\mathbf C,\\
+ A_{2,\varepsilon}
+       &=\begin{pmatrix}\varepsilon&1\\0&-\varepsilon\end{pmatrix}du,\\
+ \operatorname{Res}\operatorname{tr}(A_{2,\varepsilon}g^{-1}g')
+       &=m\varepsilon\ne0
+                         &&\text{over }\mathbf C[\varepsilon]/(\varepsilon^2).
+ \end{aligned}
+ \tag{RHC.39}
+\]
+In the second line both the trace and determinant are zero and the
+conjugate field is regular, with upper-right entry \(u^m\).
+Thus even the invariant nilpotent equations do not give a
+scheme-theoretic residue-zero identity here. RHC.22 uses geometric
+points of characteristic support, for which the first line is exact.
+
+**Exercise 3.HD.** Consider the affine addition model
+\(a:\mathbf A^2_{z,t}\to\mathbf A^1_x\), \(a(z,t)=z+t\), with target
+bundle chart \(\mathbf A^1_z\) and curve coordinate \(t\). Take the
+proper output map to be the identity and the input
+\(\bigoplus_{n\in\mathbf Z}\delta_0[2n]\). Compute both kernel
+normalizations and their curve covectors.
+
+**Solution 3.HD.** Put \(u=z+t,v=t\). Smooth inverse transfer adds
+\([1]\). For the ordinary normalization \(b=1\), the kernel is
+\(IC_{\mathbf A^2}[1]=\mathcal O_{\mathbf A^2}[1]\), and extraordinary
+tensor subtracts \([2]\). Thus
+\[
+ \mathcal E=\bigoplus_{n\in\mathbf Z}\delta_{\{z+t=0\}}[2n],
+ \qquad
+ \widehat{\mathcal E}
+          =\bigoplus_{n\in\mathbf Z}\delta_{\{z+t=0\}}[2n+1].
+ \tag{RHC.40}
+\]
+The point-normal presentation in these coordinates is
+\[
+ \begin{aligned}
+ \delta_{\{z+t=0\}}
+       &=\mathcal D_{\mathbf A^2}/
+          \bigl(\mathcal D_{\mathbf A^2}(z+t)
+                     +\mathcal D_{\mathbf A^2}(\partial_t-\partial_z)\bigr),\\
+ \operatorname{Char}&=\{z+t=0,\ \xi_t=\xi_z\}.
+ \end{aligned}
+ \tag{RHC.41}
+\]
+Indeed \(\partial_v=\partial_t-\partial_z\) at fixed \(u\), and
+the associated graded module has the free normal symbol \(\xi_u\).
+The identity output map retains every coefficient. In every even
+degree the first object has cohomology this line module, and in
+every odd degree the second does; the other parities vanish.
+At each point of the line it contains the actual covector
+\[
+ dz+dt,\qquad
+ \operatorname{Supp}(\delta_{\{z+t=0\}})=\{z+t=0\},\qquad
+ \xi_t=1\ne0 .
+ \tag{RHC.42}
+\]
+Both objects therefore fail the relative cohomological curve bound.
+This is an exact scheme model of the characteristic mechanism, not
+an identification of an affine line with a global bundle stack.
+
+### 3.565. External connection factors in regular complexes bounded below
+
+Let \(B\) be a smooth affine complex scheme and \(X\) a connected smooth
+projective complex curve. Write
+\[
+ \begin{gathered}
+ \mathscr R_B=\operatorname{Ind}D^b_{\mathrm{rh}}(B),\qquad
+ \mathscr I_X=\operatorname{Ind}\mathscr L_X,\\
+ J_B:\mathscr R_B\otimes\mathscr I_X
+                         \longrightarrow\operatorname{Dmod}(B\times X).
+ \end{gathered}
+ \tag{EFC.1}
+\]
+The full bounded connection category \(\mathscr L_X\) and its actual
+operator embedding are RSC.1–RSC.3. In left-module coordinates \(J_B\)
+is ordinary exterior product. Density side change and the fixed curve
+shift give the embedding of HLA.13. Shifting an entire curve coefficient
+does not change its essential image.
+
+For every \(K\in\mathscr R_\infty(B\times X)\) bounded below, we will prove
+\[
+ \operatorname{SS}_\infty(K)\subset T^*B\times0_X
+      \quad\Longleftrightarrow\quad K\in\operatorname{im}J_B .
+ \tag{EFC.2}
+\]
+Bounded below means \(H^mK=0\) for all sufficiently negative \(m\);
+the remaining cohomology modules may be arbitrary ind-regular modules.
+A simple coherent
+regular module satisfying this support bound has the more precise form
+\[
+ \begin{gathered}
+ N\simeq M_B\boxtimes E_X,\\
+ M_B\text{ simple regular holonomic},\qquad
+ E_X\text{ an irreducible finite connection}.
+ \end{gathered}
+ \tag{EFC.3}
+\]
+The assertion includes modules on singular closed supports. We first
+prove their product geometry and the specified comparison maps.
+
+### 3.566. Conic Lagrangians with no curve covectors
+
+Let \(\Lambda\) be an irreducible component of the characteristic variety
+of a coherent holonomic module on a smooth variety \(V\). The componentwise
+involutivity and dimension proof in [Good filtrations and the characteristic
+variety, §7](../../GL-DMOD/good-filtrations-and-the-characteristic-variety.html)
+makes \(\Lambda\) Lagrangian on its smooth locus.
+Let \(Z\) be its projection to \(V\), with reduced structure. This
+projection is closed: conicity puts \((v,0)\) in \(\Lambda\) for every
+point over \(v\), so its image is its intersection with the zero section.
+It is irreducible.
+
+At a general smooth point of \(\Lambda\), the projection has image
+\(T_zZ\). Indeed in characteristic zero the differential of a dominant
+map has generic rank equal to the dimension of its image: take a
+separating transcendence basis of the image's function field, whose
+independent differentials remain independent in the source. Remove
+the closed rank-drop locus and the singular loci.
+For the radial tangent \(e=\sum\xi_i\partial_{\xi_i}\), conicity and
+the Lagrangian condition give
+\[
+ \theta=\sum_i\xi_i\,dv_i,\qquad
+ \omega=\sum_i dv_i\wedge d\xi_i,\qquad
+ \theta(w)=-\omega(e,w)=0\quad(w\in T\Lambda).
+ \tag{EFC.4}
+\]
+Consequently the general covector annihilates \(T_zZ\).
+Both \(\Lambda\) and the closure of the conormal of \(Z_{\mathrm{sm}}\)
+are irreducible of dimension \(\dim V\). The containment just proved
+therefore gives
+\[
+                 \Lambda=\overline{T^*_{Z_{\mathrm{sm}}}V}.
+ \tag{EFC.5}
+\]
+
+Now set \(V=B\times X\) and suppose \(\Lambda\subset T^*B\times0_X\).
+At a general smooth point of \(Z\), EFC.5 says that every conormal
+annihilates the curve tangent, so that tangent is contained in \(TZ\).
+The projection \(Z\to B\) thus has a one-dimensional generic tangent
+kernel. Its fibres have dimension at most one. Generic rank in
+characteristic zero gives
+\[
+ W=\operatorname{pr}_B(Z),\qquad
+ \dim Z=\dim W+1,\qquad Z=W\times X .
+ \tag{EFC.6}
+\]
+Here \(W\) is closed because \(X\) is proper. The last equality follows
+because \(Z\) is closed in the irreducible variety \(W\times X\) and
+has its dimension. We conclude, for finitely many closed \(W_i\subset B\),
+\[
+ \operatorname{Char}(N)
+    =\bigcup_i\left(\overline{T^*_{(W_i)_{\mathrm{sm}}}B}\times0_X\right).
+ \tag{EFC.7}
+\]
+Thus the finite bound on the \(B\)-cotangents follows from the module's
+own components; no fixed stratification for all ind-pieces is assumed.
+
+### 3.567. Splitting an irreducible coefficient on a product open
+
+Assume \(N\) is simple. The simple-object theorem in [Intermediate
+extensions and intersection complexes, §2](../../GL-PERV/intermediate-extensions-and-intersection-complexes.html)
+and the actual RH comparison identify its irreducible support as
+\(W\times X\). Remove from \(W_{\mathrm{sm}}\) the proper \(W_i\)'s of
+EFC.7. On the resulting smooth connected dense open \(U\), Kashiwara's
+normal formula NS.8 removes precisely the normal conormal factor.
+The remaining characteristic variety is the zero section of \(U\times X\).
+The zero-characteristic calculation of §3.1 makes the restricted module
+a finite connection \(V\) there.
+
+Its local system is irreducible. A nonzero proper connection subobject
+on this open would, by the heart adjunction for the open immersion,
+give a nonzero image in \(N\) whose restriction is that proper subobject.
+Simplicity of \(N\) forbids it. Fix base points. Paths and their homotopies
+in a product are pairs of paths and homotopies, so
+\[
+ \pi_1(U\times X)=\Gamma_U\times\Gamma_X,\qquad
+ \rho_U(\gamma)\rho_X(\delta)=\rho_X(\delta)\rho_U(\gamma).
+ \tag{EFC.8}
+\]
+These actions are on the finite-dimensional fibre of \(V\).
+
+Choose a nonzero irreducible \(\Gamma_X\)-submodule \(L\) of least
+positive dimension. The \(\Gamma_U\)-translates of \(L\) are isomorphic
+irreducible \(\Gamma_X\)-modules. Their sum is nonzero and invariant
+under both groups, hence is the whole fibre. Finitely many translates
+suffice. A finite sum of simple submodules is semisimple: add one at
+a time, using that its intersection with the preceding sum is either
+zero or the entire simple module. Thus the fibre is \(L\)-isotypic.
+An endomorphism of \(L\) is scalar, since over \(\mathbf C\) it has an
+eigenvalue and its corresponding nonzero kernel is invariant.
+Evaluation therefore gives an isomorphism
+\[
+ U_0=\operatorname{Hom}_{\Gamma_X}(L,V_{(u,x)}),\qquad
+ U_0\otimes L\xrightarrow{\ \mathrm{ev}\ }V_{(u,x)} .
+ \tag{EFC.9}
+\]
+The first group acts on \(U_0\), the second on \(L\); evaluation
+intertwines both. A proper invariant subspace of \(U_0\) would give
+a proper product-invariant subspace of \(V_{(u,x)}\), so \(U_0\) is
+irreducible. The proved finite connection/local-system equivalence
+now turns this specified evaluation into
+\[
+                       E_U\boxtimes E_X\xrightarrow{\sim}V .
+ \tag{EFC.10}
+\]
+The two connections are regular: they are the restrictions of the
+regular connection \(V\) to the two smooth slices. \(E_X\) is a
+connection on all of \(X\), not a connection with a deleted point.
+
+### 3.568. The actual middle-extension comparison
+
+Let \(j:U\hookrightarrow B\) denote the locally closed inclusion and put
+\[
+ M_B=j_{!*}E_U,\qquad
+ j_{!*}E_U=\operatorname{im}
+       \bigl(H^0j_!E_U\longrightarrow H^0j_+E_U\bigr).
+ \tag{EFC.11}
+\]
+This is an image in the operator heart. Its regularity and comparison
+with the sheaf intermediate extension are [The Riemann–Hilbert
+correspondence, equations (1.ui)–(1.uk)](../../GL-DMOD/the-riemann-hilbert-correspondence.html).
+They apply to singular \(W\) and retain the chosen identification on \(U\).
+
+We verify that \(M_B\boxtimes E_X\) is the required extension of EFC.10.
+Use a finite boundary stratification in \(B\) for \(M_B\). On a boundary
+stratum \(S\) of dimension \(s\), the strict stalk and costalk bounds
+for its perverse realization \(P_B\) are
+\[
+ \begin{aligned}
+ i_S^*P_B&\in D^{\le-s-1},\qquad
+ i_S^!P_B\in D^{\ge-s+1},\\
+ i_{S\times X}^*(P_B\boxtimes L_X[1])
+          &\in D^{\le-s-2},\\
+ i_{S\times X}^!(P_B\boxtimes L_X[1])
+          &\in D^{\ge-s}.
+ \end{aligned}
+ \tag{EFC.12}
+\]
+The second line follows by the exact exterior tensor with the local
+system \(L_X\) and the indicated shift. These are precisely the strict
+bounds for a stratum of dimension \(s+1\). They exclude all boundary
+subobjects and quotients. The same assertion on the open is perversity
+of a local system shifted by its support dimension.
+
+The RH exterior comparison uses its actual evaluation and transfer maps.
+Consequently \(M_B\boxtimes E_X\) is a regular operator heart object
+with the prescribed open restriction and no boundary subquotient.
+The unique middle-extension comparison extends EFC.10:
+\[
+                       M_B\boxtimes E_X\xrightarrow{\sim}N .
+ \tag{EFC.13}
+\]
+The same no-boundary-subquotient characterization proves uniqueness
+over the given open map. It retains the coefficient's monodromy and
+the normal-density comparison; it is not only an isomorphism of
+characteristic sets. This proves EFC.3.
+
+### 3.569. Full faithfulness and all finite extensions
+
+The functor \(J_B\) in EFC.1 is fully faithful and continuous.
+Here is a direct mapping-complex verification. The affine operator
+identity and rectangular descent used in RN.9 give
+\[
+ \operatorname{Dmod}(B)\otimes\operatorname{Dmod}(X)
+                 \simeq\operatorname{Dmod}(B\times X).
+ \tag{EFC.14}
+\]
+The proof of RN.9 also applies when its first factor is affine:
+that module category is dualizable, while the proper curve category
+is compactly generated by RN.4. Tensor therefore passes through the
+two descent diagrams. On every affine rectangle the two sets of
+vector fields commute and PBW identifies the full operator rings.
+
+More explicitly, bounded coherent \(M,M'\) on \(B\) and bounded
+connection complexes \(E,E'\) on \(X\) have
+\[
+ \begin{aligned}
+ &\operatorname{RHom}_{B\times X}(M\boxtimes E,M'\boxtimes E')\\
+ &\hspace{1em}\simeq
+       \operatorname{RHom}_B(M,M')
+                   \otimes_{\mathbf C}\operatorname{RHom}_X(E,E').
+ \end{aligned}
+ \tag{EFC.15}
+\]
+Take their finite local projective operator resolutions as in RN.4,
+and the finite ordered affine Čech mapping diagrams of that proof.
+On a rectangle the tensor–Hom map is the usual finite-projective
+evaluation. The two bounded resolution directions and the finite
+Čech directions totalize to both sides of EFC.15, with the same
+Koszul signs and composition evaluations. This is the displayed map.
+It does not require internal operator Hom to be quasi-coherent.
+
+The sources are compact in their ind-categories and their exterior
+products are bounded coherent, hence compact in the full operator
+category, again by RN.4's finite local mapping proof. The full
+multi-object free bar therefore extends EFC.15 to \(J_B\), proving
+full faithfulness on arbitrary objects. The image is stable, closed
+under colimits and closed under retracts.
+
+Every coherent regular module with the curve bound has a finite
+composition series, by [Holonomic D-modules and duality, Theorem
+2.2](../../GL-DMOD/holonomic-d-modules-and-duality.html).
+Characteristic support is the union in an exact sequence, so each
+simple factor satisfies the same bound and has EFC.13's form.
+Each extension triangle lifts through the full \(J_B\), including
+its actual extension morphism. Induction on length gives
+\[
+ N\text{ coherent regular},\quad
+ \operatorname{Char}(N)\subset T^*B\times0_X
+                          \quad\Longrightarrow\quad N\in\operatorname{im}J_B .
+ \tag{EFC.16}
+\]
+No semisimplicity of \(N\) or of a finite connection is required.
+
+### 3.570. Ind-regular objects bounded below and their actual maps
+
+Let \(K\) satisfy the left side of EFC.2. By HRI.6 each \(H^mK\)
+is a filtered union of global coherent regular submodules. Each has
+the curve bound and so belongs to the image by EFC.16. Full faithfulness
+lifts the entire filtered diagram, including its paths and compositions.
+Continuity then gives
+\[
+ H^mK=\operatorname*{colim}_{N\subset H^mK\ \mathrm{coherent}}N
+                       \in\operatorname{im}J_B .
+ \tag{EFC.17}
+\]
+First suppose \(K\) is bounded in both directions. Its finitely many
+Postnikov triangles also lift through this full stable image. This
+constructs a preimage with an actual comparison to \(K\).
+
+For a general \(K\) bounded below, each \(\tau^{\le n}K\) is bounded
+in both directions and has the same finite support conditions.
+Its actual truncation maps form the direct system
+\(\tau^{\le n}K\to\tau^{\le n+1}K\to K\). The colimit of this system
+is \(K\): in each cohomological degree its modules are eventually
+constant with value \(H^mK\), and filtered colimits are exact.
+Cohomology detects zero in the actual operator category, so the
+resulting colimit comparison is an isomorphism. Full faithfulness
+lifts all these maps and continuity gives a preimage of \(K\).
+This proves the forward implication of EFC.2 for objects bounded below.
+
+For the reverse implication, exterior products of bounded regular
+objects and finite connections have zero curve covectors by the
+product good filtration. Their source compact generators generate
+the tensor category by the full free bar. The independent support
+condition is stable under triangles, retracts and all colimits by
+NU.2–NU.4. Thus, even without boundedness,
+\[
+        \operatorname{im}J_B
+        \subset\{K:\operatorname{SS}_\infty(K)\subset T^*B\times0_X\}.
+ \tag{EFC.18}
+\]
+This completes EFC.2. Every morphism between the resulting factors
+is the unique lift of its ambient operator morphism.
+
+### 3.571. Relative operator coherence on a curve coordinate
+
+There is a useful additional consequence for each finite witness.
+Let \(C\subset X\) be affine with an étale coordinate \(t\), and write
+\[
+ A=\mathcal O(C),\qquad R=D(B)\otimes A,\qquad
+ S=D(B\times C)=R\langle\partial_t\rangle .
+ \tag{EFC.19}
+\]
+The commutation rule is \([\partial_t,a]=\partial_t(a)\); the
+\(B\)-operators commute with \(\partial_t\). With \(B\)-order on \(R\)
+and total order on \(S\), PBW gives
+\[
+       \operatorname{gr}R=\mathcal O(T^*B)\otimes A,\qquad
+       \operatorname{gr}S=(\operatorname{gr}R)[\xi_t].
+ \tag{EFC.20}
+\]
+Both graded rings are noetherian. The leading-symbol induction also
+makes \(R\) left noetherian: an ascending chain of left ideals has a
+stabilizing chain of graded ideals; equality of leading symbols
+then gives equality of the original ideals by descending order.
+
+For a coherent \(S\)-module \(N\) with zero curve characteristic
+covectors, a good filtration has
+\[
+ (\operatorname{gr}N)_{\xi_t}=0,\qquad
+ \xi_t^k\operatorname{gr}N=0\text{ for some }k,\qquad
+ \operatorname{gr}N\text{ finite over }\operatorname{gr}R .
+ \tag{EFC.21}
+\]
+The first statement follows from the support bound. A finite generating
+set gives a common annihilating power. Adjoin its first \(k\) powers
+of \(\xi_t\) to a finite homogeneous generating set to prove the last
+statement. Lift a finite homogeneous \(\operatorname{gr}R\)-generating
+set. Subtracting a lift of any leading symbol lowers the order and
+terminates at the filtration's lower bound. These lifts generate \(N\)
+over \(R\). Noetherianity consequently proves
+\[
+                    N\text{ coherent over }D(B)\otimes A.
+ \tag{EFC.22}
+\]
+This is relative operator coherence. It does not assert finite rank
+over \(A\), and does not assert that the chosen filtration is preserved
+by \(\partial_t\).
+
+### 3.572. The actual curve connection gives flatness
+
+The module in EFC.22 is \(A\)-flat. To prove this, localize at a closed
+point \(c\) of \(C\). Central localization leaves \(R_c\) noetherian,
+and \(N_c\) is finite over it. The ring \(A_c\) is a DVR, with
+uniformizer \(u=t-t(c)\) and \(\partial_tu=1\). The connection extends
+to this localization by the quotient rule.
+
+The \(u\)-power-torsion part \(T\subset N_c\) is an \(R_c\)-submodule.
+It is finite. If it is nonzero, let \(h\ge1\) be the least exponent
+with \(u^hT=0\). Differentiating a torsion equation shows
+\[
+ u^j n=0\quad\Longrightarrow\quad
+             u^{j+1}\partial_t n=-j u^j n=0 ,
+ \qquad \partial_tT\subset T.
+ \tag{EFC.23}
+\]
+For any \(n\in T\), differentiation now gives
+\[
+        0=\partial_t(u^hn)
+          =h u^{h-1}n+u^h\partial_tn=h u^{h-1}n .
+ \tag{EFC.24}
+\]
+Since \(h\) is invertible in characteristic zero, this contradicts
+minimality. Thus \(N_c\) is torsion free over the DVR \(A_c\).
+A torsion-free module over a DVR is a filtered union of its finite
+torsion-free, hence free, submodules. Exactness of filtered colimits
+and tensor proves their union flat. Flatness is local on \(A\), so
+\[
+ \begin{gathered}
+ N\text{ is }A\text{-flat},\\
+ H^mK\text{ is }A\text{-flat if all its finite pieces have the curve bound}.
+ \end{gathered}
+ \tag{EFC.25}
+\]
+The second statement follows by their exact filtered union. It applies
+to both infinite cohomological tails. Its conclusion is flatness, not
+membership of an arbitrary unbounded \(K\) in the image of \(J_B\).
+
+### 3.573. Descent of the bounded factors to bundle stacks
+
+Let \(Y=\operatorname{Bun}_G(X)\), and use the full smooth affine chart
+diagram defining its operator category. Let \(\mathcal M_{\mathrm{reg}}\)
+be the chartwise regular Ind subcategory of HRI.16. The finite
+inverse-transfer comparisons there preserve these subcategories and
+their actual descent maps. Hence
+\[
+ \mathcal M_{\mathrm{reg}}
+       =\lim_{A\to Y}\mathscr R_A,\qquad
+ \mathcal M_{\mathrm{reg}}\otimes\mathscr I_X
+       \simeq\lim_{A\to Y}(\mathscr R_A\otimes\mathscr I_X).
+ \tag{EFC.26}
+\]
+The second equality uses dualizability of \(\mathscr I_X\), proved by
+its compact full generator model and HLA.17–HLA.18. Tensor with a
+dualizable category has both adjoints given by tensor with its dual,
+so preserves these limits.
+
+Suppose \(K\) on \(Y\times X\) is chartwise regular Ind, every
+\(K|_{A\times X}\) is bounded below, and every finite characteristic witness
+has zero \(X\)-covector. EFC.2 supplies preimages on all charts.
+The functors \(J_A\) are full; all transition comparisons and every
+higher descent path therefore lift uniquely over the given ambient
+ones. Their spaces of lifts are contractible. EFC.26 supplies the
+actual global preimage:
+\[
+ \begin{gathered}
+        K\in\operatorname{im}J_Y,\\
+        J_Y:\mathcal M_{\mathrm{reg}}\otimes\mathscr I_X
+                       \longrightarrow\operatorname{Dmod}(Y\times X).
+ \end{gathered}
+ \tag{EFC.27}
+\]
+The comparison maps agree with those on each chart, not just on
+their characteristic sets. The shifts in extraordinary chart inverse
+images are retained; they do not change either essential image.
+
+Inclusion in the full automorphic category gives in particular
+\[
+                           K\in\mathcal M\otimes\mathscr I_X.
+ \tag{EFC.28}
+\]
+Tensoring the full inclusion by the dualizable \(\mathscr I_X\)
+preserves full faithfulness, so this uses exactly the curve coefficient
+category of HLA.13.
+
+### 3.574. The categorical criterion for regular inputs locally bounded below
+
+Assume \(F\in\mathcal M_{\mathrm{reg}}\) and that every smooth affine
+bundle-chart restriction of \(F\) is cohomologically bounded below.
+For each fixed label \(\nu\) and output chart \(B\), its actual
+Hecke output is bounded below on \(B\times X\).
+Here the finite projective source \(Z_\mu\), \(\mu=-w_0\nu\), matters.
+HRI.14–HRI.19 gives a finite Zariski cover with lifts into input bundle
+charts. On each member the graph inverse transfer is computed by
+finite normal-localization and Spencer directions. The bounded IC
+tensor has finite amplitude on a smooth ambient: its derived
+coefficient tensor has finite flat length there. Finally PIC.4–PIC.10
+uses finite Spencer and finite Čech directions for proper output.
+Thus each fixed finite diagram has lower bounds
+\[
+ \begin{gathered}
+ H^jF_{U_i}=0\ (j<a_i),\\
+ H^j\bigl((\mathrm H_{V_\nu}F)|_{B\times X}\bigr)=0
+                                      \ (j<c_\nu).
+ \end{gathered}
+ \tag{EFC.29}
+\]
+One obtains the second lower bound by adding the finite lower operation
+bounds on each input-cover member and taking their minimum.
+A finite affine coordinate cover of \(X\) makes the same conclusion
+global over \(B\times X\). No uniform bound over all labels or all
+bundle charts is asserted.
+
+For a nilpotent \(F\), RHC.28 supplies the stronger output bound
+\(\mathcal N_B\times0_X\). HRI supplies regular Ind membership.
+EFC.27–EFC.28 and EFC.29 therefore give the full HLA.13 condition.
+Conversely that condition implies the cohomological curve bound
+by RHC.36 and hence nilpotent support by RHC.34. We have proved,
+under the stated local lower boundedness and regular Ind hypotheses,
+\[
+ \begin{gathered}
+ F\in\mathcal M^{\mathrm{Hl}}
+       \quad\Longleftrightarrow\quad
+               \operatorname{SS}_\infty(F)\subset\mathcal N,\\
+ \operatorname{SS}_\infty\bigl((\mathrm H_{V_\nu}F)|_{B\times X}\bigr)
+                                  \subset\mathcal N_B\times0_X .
+ \end{gathered}
+ \tag{EFC.30}
+\]
+The second line is the upper assertion for a nilpotent input.
+Every genus, bundle component and connected reductive group is
+included. Fixed curve normalization and the actual SH.19 Morita
+conjugation preserve this assertion:
+\[
+ \widehat{\mathrm H}_{V_\nu}F=(\mathrm H_{V_\nu}F)[1],
+ \qquad
+ \mathrm H^L_{V_\nu}
+       =\mathcal T_{Y\times X}^{-1}\mathrm H_{V_\nu}\mathcal T_Y .
+ \tag{EFC.31}
+\]
+The first shift is RA.2; the second uses RH.17's specified intermediate
+line evaluations. Their principal symbols leave the curve direction
+unchanged, and their full functor maps give the same lifted factors.
+
+### 3.575. The generated class and the remaining unbounded comparison
+
+Let \(\mathcal T\) be the smallest full stable colimit-closed subcategory
+of \(\mathcal M\) containing all chartwise regular Ind objects locally bounded below,
+with nilpotent cohomological support. Then
+\[
+ \begin{gathered}
+             \mathcal T\subset
+                  \mathcal M^{\mathrm{Hl}}\cap\mathcal M_{\mathrm{reg}},\\
+        \operatorname{SS}_\infty(\mathcal T)\subset\mathcal N .
+ \end{gathered}
+ \tag{EFC.32}
+\]
+For the Hecke condition this follows from EFC.30 and the full
+colimit-closed kernel description HLA.13. Regular Ind membership
+is closed under colimits and triangles on charts. The nilpotent
+cohomological support condition has the same property by NU.2–NU.4.
+Thus EFC.32 includes constructions unbounded in both directions,
+provided their stated colimit presentation is given.
+
+It is a separate assertion that every cohomologically nilpotent
+regular Ind object belongs to this generated class:
+\[
+ \{F\in\mathcal M_{\mathrm{reg}}:
+                  \operatorname{SS}_\infty(F)\subset\mathcal N\}
+                           \ \subset\ \mathcal T .
+ \tag{EFC.33}
+\]
+The proof of EFC.2 uses finite Postnikov towers followed by a direct
+colimit of truncations bounded in both directions. For an object with
+no lower bound, those same upper truncations need not be bounded
+in both directions. This does not prove EFC.33 by
+passing to an inverse limit. Likewise the coefficient categories
+\[
+                   \mathscr I_X
+              \longrightarrow\mathscr Q_X
+                   =\lim_n\mathscr I_X^{\ge-n}
+ \tag{EFC.34}
+\]
+retain their distinction from RSC.1. No equality is substituted
+for this map. AIC.17's full supported factorization, independent
+nilpotent regularity and equality with all independently nilpotent-supported
+objects retain their requirements. GFP.55–GFP.56 give original-field enhanced
+generation and regular nilpotent landing for arbitrary projector inputs.
+
+Free further reading for external products with characteristic
+constraints is [Arinkin–Gaitsgory–Kazhdan–Raskin–Rozenblyum–Varshavsky,
+Appendices E.7–E.9 and F.9](https://arxiv.org/abs/2010.01906v2).
+The conormal, representation, middle-extension, finite-extension
+and descent arguments used here are given above.
+
+![Product characteristic components, the actual middle-extension factor, and a commuting four-dimensional coefficient square.](figures/external-connection-factors.svg)
+
+*Figure 3.70.* The product components are EFC.4–EFC.7, the evaluation
+and middle-extension map are EFC.9–EFC.13, and their full mapping
+comparison is EFC.15. The cross is the real coordinate section of the
+complex characteristic variety in EFC.40. The coefficient square
+records the two commuting nilpotent parts of EFC.35–EFC.37. Relative
+curve flatness is EFC.23–EFC.25. The two-tail example EFC.41 is given
+by an actual exterior-product object, with no inference of EFC.33.
+
+### 3.576. Three external-factor calculations
+
+**Exercise 3.HE.** Let \(B=\mathbf G_m\) and let \(X\) be an elliptic
+curve. A rank-two coefficient on \(B\) has monodromy \(I+N\),
+\(N=\begin{pmatrix}0&1\\0&0\end{pmatrix}\). A coefficient on \(X\)
+has monodromies \(I+N,I\) on its two generators. Compute the two
+nontrivial monodromies on their exterior product, in the ordered basis
+\(e_{11},e_{12},e_{21},e_{22}\), including their mixed coefficient.
+
+**Solution 3.HE.** The elliptic relation is a commutator, so the indicated
+matrices define its local system. The finite regular connection exists
+by the proved finite connection/local-system equivalence. This does
+not assert that its underlying bundle is trivial. The exterior
+monodromies are
+\[
+ \begin{gathered}
+ A=I+P,\quad P=E_{13}+E_{24},\\
+ B_1=I+Q,\quad Q=E_{12}+E_{34},\quad B_2=I .
+ \end{gathered}
+ \tag{EFC.35}
+\]
+Direct multiplication gives
+\[
+ P^2=Q^2=0,\qquad PQ=QP=E_{14},\qquad
+ AB_1=B_1A=I+P+Q+E_{14}.
+ \tag{EFC.36}
+\]
+Thus the corner coefficient is nonzero. In particular the product
+of the two inverse unipotent monodromies is
+\[
+                  A^{-1}B_1^{-1}=I-P-Q+E_{14}.
+ \tag{EFC.37}
+\]
+The common evaluation is the tensor-basis map. Both rank-two factors
+are nonsplit, and their tensor is not claimed to be irreducible.
+EFC.16 includes their extensions with these actual mixed coefficients.
+
+**Exercise 3.HF.** Take \(B=\mathbf A^1_z\) and
+\(M=D_B/D_B(z\partial_z-\tfrac12)\). Let \(E\) be an irreducible finite
+connection on \(X\). Compute a basis and the characteristic variety of
+\(M\boxtimes E\), and check the boundary factor.
+
+**Solution 3.HF.** The module is the regular Kummer connection extended
+across zero:
+\[
+ M=\mathbf C[z,z^{-1}]e,\qquad
+ v_n=z^ne,\qquad
+ z v_n=v_{n+1},\quad
+ \partial_zv_n=(n+\tfrac12)v_{n-1}\quad(n\in\mathbf Z).
+ \tag{EFC.38}
+\]
+These relations give a map from the cyclic presentation. Ordered Weyl
+monomials reduce to these vectors, while their Laurent realizations
+are linearly independent, proving the presentation. Every nonzero
+finite sum yields one weight vector by polynomial interpolation in
+\(z\partial_z\). The nonzero coefficients \(n+\tfrac12\), together
+with multiplication by \(z\), reach every \(v_n\). Hence \(M\) is
+simple and is its own middle extension from \(\mathbf G_m\).
+The logarithmic connection has residues \(\tfrac12\) and
+\(-\tfrac12\) at zero and infinity, so it is regular.
+
+For the order filtration, multiplication by the single defining
+operator is strict, since the symbol ring is a domain and its leading
+symbol is \(z\xi_z\). Therefore
+\[
+                 \operatorname{gr}M
+                    =\mathbf C[z,\xi_z]/(z\xi_z).
+ \tag{EFC.39}
+\]
+The product filtration with the connection gives
+\[
+ \operatorname{Char}(M\boxtimes E)
+        =\bigl(\{\,\xi_z=0\,\}\cup\{\,z=0\,\}\bigr)\times0_X .
+ \tag{EFC.40}
+\]
+Both the zero section and the boundary conormal occur. The extension
+is \(J_B(M,E)\), so that boundary component does not obstruct an actual
+external connection factor.
+
+**Exercise 3.HG.** On \(B=\mathbf A^1_z\), compute the relative operator
+generators and the curve rank for
+\[
+ \begin{aligned}
+ N&=\delta_{z=0}\boxtimes E,\\
+ K&=\bigoplus_{n\in\mathbf Z}N[2n]\\
+  &=J_B\left(\bigoplus_{n\in\mathbf Z}\delta_{z=0}[2n],E\right).
+ \end{aligned}
+ \tag{EFC.41}
+\]
+Here \(E\) is any nonzero finite connection on \(X\).
+
+**Solution 3.HG.** On a curve coordinate \(C\) with a bundle frame for
+\(E\), the Weyl normal basis gives
+\[
+ \begin{aligned}
+ N|_{B\times C}&=\bigoplus_{r\ge0}E_C\,\partial_z^r,\\
+ \operatorname{Char}(N)&=
+       \{z=0,\ \xi_z\ \mathrm{arbitrary}\}\times0_X .
+ \end{aligned}
+ \tag{EFC.42}
+\]
+A finite basis of \(E_C\) generates over \(D(B)\otimes\mathcal O(C)\);
+all normal derivatives are supplied by \(D(B)\). As a curve module
+it is free of infinite rank. The fibrewise normal basis proves its
+independence and agrees with EFC.25's flatness. In every even
+cohomological degree \(K\) has this module, and in odd degrees it
+has zero cohomology. Continuity of \(J_B\) proves the actual equality
+in EFC.41, including both infinite tails. It is this exhibited
+exterior-product presentation that proves membership in its image.
+
+### 3.577. Actual operator Postnikov limits on affine charts
+
+Let \(T\) be a smooth separated complex scheme of finite type. All
+operator complexes have quasi-coherent underlying structure modules.
+We first prove effectivity of compatible lower-truncation towers:
+\[
+ \begin{gathered}
+ K_n\in\operatorname{Dmod}(T)^{\ge-n},\qquad
+ K_n\simeq\tau^{\ge-n}K_{n+1}
+ \quad\Longrightarrow\\
+ K=\lim_nK_n,\quad \tau^{\ge-n}K\simeq K_n .
+ \end{gathered}
+ \tag{PAC.1}
+\]
+The specified transition maps and all their paths are retained.
+For an affine \(T\), the full category is \(\operatorname{Mod}_{D(T)}\),
+as in KF.8. Its module products are exact. The actual homotopy limit
+of a tower is
+\[
+ \lim_nK_n=
+ \operatorname{Fib}\left(
+    \prod_nK_n\xrightarrow{\,1-\mathrm{shift}\,}\prod_nK_n\right).
+ \tag{PAC.2}
+\]
+An inverse sequence is freely generated by its adjacent arrows.
+A cone is a family of maps to its terms with paths identifying
+the adjacent composites; composing those paths supplies the higher
+compatibilities. Its mapping-space limit is therefore the
+homotopy equalizer of identity and shift on the product. In a
+stable category that equalizer is the fibre of their difference,
+which proves PAC.2 with the original maps.
+Here shift uses the original transition \(K_{n+1}\to K_n\).
+Exact products identify the cohomology of either product with the
+product of the cohomology modules. The long exact sequence gives
+\[
+ \begin{gathered}
+ 0\longrightarrow
+ \operatorname{coker}\left(1-\mathrm{shift}:
+       \prod_nH^{q-1}K_n\to\prod_nH^{q-1}K_n\right)
+ \longrightarrow H^q(\lim_nK_n)\\
+ \longrightarrow
+ \ker\left(1-\mathrm{shift}:
+       \prod_nH^qK_n\to\prod_nH^qK_n\right)
+ \longrightarrow0 .
+ \end{gathered}
+ \tag{PAC.3}
+\]
+Each cohomology sequence is eventually a sequence of isomorphisms.
+For such a sequence \(A_{n+1}\xrightarrow{f_n}A_n\), solve
+\(a_n-f_na_{n+1}=b_n\) by choosing \(a_N=0\) on an isomorphism tail,
+recursing forward with \(f_n^{-1}\), and then backward through the
+finitely many earlier terms. Thus the cokernel in PAC.3 is zero.
+Its kernel is the stable value. This proves PAC.1 on affines.
+The same calculation recovers every actual module from its truncations.
+It proves a natural comparison, without changing the tower to an
+unrelated sequence of representatives.
+
+### 3.578. Flat restriction and effective operator descent
+
+For an affine open immersion \(V\hookrightarrow U\), inverse transfer
+has relative dimension zero. Its underlying module operation is flat
+coefficient localization and exact affine sections. This is the
+normalized inverse-transfer calculation of NS.7 and RN.1.
+Consequently restriction is t-exact on all module complexes.
+For a tower as in PAC.1 the natural comparison is an isomorphism:
+\[
+       (\lim_nK_n)|_V\xrightarrow{\sim}\lim_n(K_n|_V).
+ \tag{PAC.4}
+\]
+Indeed PAC.3 computes the cohomology of both limits as their stable
+cohomology values. Exact restriction takes that stable value to the
+stable value of the restricted sequence. The comparison induces
+precisely that identity. This proof does not say that restriction
+preserves arbitrary products.
+
+Choose a finite affine cover of \(T\). All finite intersections are
+affine by separatedness. The actual full descent equivalence is
+[D-modules on stacks, ind-schemes and the de Rham prestack,
+§§1–2](../../GL-DMOD/stacks-ind-schemes-and-the-de-rham-prestack.html),
+with the same operator and transfer maps as KF.8–KF.9.
+Take the affine limit of the tower on each intersection. PAC.4
+identifies their restrictions; functoriality of limits carries all
+the original overlap paths and higher compatibilities. These objects
+glue to an actual \(K\) on \(T\).
+
+For an arbitrary test object \(A\), mapping descent and the universal
+property of limits give
+\[
+ \begin{aligned}
+ \operatorname{Map}_T(A,K)
+   &\simeq\lim_{\check C(U)}
+           \lim_n\operatorname{Map}_{U_H}(A|_{U_H},K_n|_{U_H})\\
+   &\simeq\lim_n\operatorname{Map}_T(A,K_n).
+ \end{aligned}
+ \tag{PAC.5}
+\]
+Limits over two indexing categories commute because both classify
+the same compatible cones. Thus the glued object is the global
+limit. Truncations and cohomology are tested on these exact open
+restrictions, so the affine comparison gives globally
+\[
+ \operatorname{Dmod}(T)
+       \xrightarrow{\sim}
+           \lim_n\operatorname{Dmod}(T)^{\ge-n}.
+ \tag{PAC.6}
+\]
+This is effectivity and the full mapping-space statement. No
+interchange of localization with an arbitrary product was used.
+
+### 3.579. Realizing the completed curve category
+
+Fix the smooth projective connected complex curve \(X\). Retain the
+full categories \(\mathscr I_X,\mathscr Q_X\) of RSC.1. In this
+construction use its t-exact left-module embedding
+\(i_X:\mathscr I_X\to D_X=\operatorname{Dmod}(X)\), which sends a
+degree-zero connection to that connection in degree zero.
+It is the RSC normalization by density side change and \([-1]\).
+The strong \(!\)-tensor embedding of HLA is
+\(i_!(E)=i_X(E)[1]\); in particular \(i_!(\mathbf1)=\omega_X\).
+We will retain this difference when returning to the actual Hecke
+coefficient and contraction maps.
+Its bounded-below image consists exactly of operator objects whose
+cohomology modules are ind-connections:
+\[
+ \begin{gathered}
+ \operatorname{im}(i_X)\cap D_X^{\ge-a}\\
+   =\{K\in D_X^{\ge-a}:
+          H^mK\in\operatorname{Ind}\operatorname{Conn}_{\mathrm f}(X)
+                                      \text{ for every }m\}.
+ \end{gathered}
+ \tag{PAC.7}
+\]
+To see the reverse containment, each displayed heart object is a
+filtered union of finite connections and belongs to the image.
+Full faithfulness lifts every attaching map in a finite Postnikov
+tower. The direct colimit of the intelligent upper truncations
+then recovers any bounded-below \(K\): cohomology in each degree is
+eventually constant, filtered colimits are exact, and cohomology
+detects zero. Continuity of \(i_X\) supplies that colimit. This
+argument also proves actual regular Ind membership for such a \(K\);
+it does not assume it. The forward containment is RSC.1–RSC.3.
+
+Apply PAC.6 to a compatible tower from \(\mathscr Q_X\). It supplies
+an actual operator realization
+\[
+ j_X:\mathscr Q_X=\lim_n\mathscr I_X^{\ge-n}
+                  \longrightarrow D_X,\qquad
+ j_X(\{E_n\})=\lim_n i_X(E_n).
+ \tag{PAC.8}
+\]
+Its image is exactly
+\[
+ \operatorname{im}j_X=
+ \{K\in D_X:
+       H^mK\in\operatorname{Ind}\operatorname{Conn}_{\mathrm f}(X)
+                                          \text{ for every }m\}.
+ \tag{PAC.9}
+\]
+Every object on the right has its actual lower truncations in
+PAC.7's image, and PAC.6 recovers it with those comparison maps.
+
+### 3.580. Full maps, continuity and dualizable coefficients
+
+For two effective towers with limits \(A,B\), mapping into the target
+limit and using the truncation adjunction gives
+\[
+ \begin{aligned}
+ \operatorname{Map}_{D_X}(A,B)
+   &\simeq\lim_n\operatorname{Map}_{D_X}
+                  (\tau^{\ge-n}A,\tau^{\ge-n}B)\\
+   &\simeq\lim_n\operatorname{Map}_{\mathscr I_X}(A_n,B_n).
+ \end{aligned}
+ \tag{PAC.10}
+\]
+Here a target in \(D_X^{\ge-n}\) receives maps uniquely through the
+source truncation \(\tau^{\ge-n}A\). These are mapping spaces; repeat
+the statement after every target shift to retain the entire stable
+mapping complex. The last limit is exactly the compatible mapping
+space in the category defining \(\mathscr Q_X\). Thus \(j_X\) is full.
+It is t-exact by PAC.6.
+
+The ind-connection heart is Serre: for finite pieces the induced good
+filtration makes subquotients zero-characteristic connections, as in
+§3.1, and finite generators enclose the kernel and quotient pieces
+in finite connections. Its filtered unions are exact. The condition
+in PAC.9 therefore survives triangles, arbitrary sums and their
+stable colimit constructions, by the argument of NU.2–NU.4.
+Consequently the realization is continuous:
+\[
+       j_X(\operatorname{colim}_\alpha E_\alpha)
+                       \simeq\operatorname{colim}_\alpha j_X(E_\alpha).
+ \tag{PAC.11}
+\]
+This assertion concerns colimits; PAC.4's qualification about
+arbitrary products remains necessary.
+
+The category \(\mathscr Q_X\) is dualizable as a linear presentable
+category. RSC.11–RSC.14 proves it equals the compactly generated
+\(\mathscr I_X\) when \(g(X)>0\). RSC.19–RSC.26 gives the full module
+category \(\operatorname{Mod}_B\) in genus zero, with its free compact
+generator. The compact-module duality of SUL.22 applies in both cases:
+\[
+ \mathscr Q_X\text{ is dualizable},\qquad
+ \mathscr Q_X=\mathscr I_X\ (g(X)>0),\qquad
+ \mathscr Q_{\mathbf P^1}\simeq
+       \operatorname{Mod}_{T_{\mathbf C}(\mathbf C[1])}.
+ \tag{PAC.12}
+\]
+The last algebra is associative, with one degree-minus-one generator;
+its square is not declared zero.
+
+### 3.581. The exact affine coefficient functor
+
+Let \(B_0\) be a smooth affine scheme, put \(R=D(B_0)\), and reserve
+\(B\) for the loop algebra in PAC.12 only when needed. The rectangular
+operator identity and descent of EFC.14 give
+\[
+ \begin{aligned}
+ \operatorname{Dmod}(B_0\times X)
+              &\simeq R\text{-}\operatorname{Mod}(D_X),\\
+ \operatorname{Dmod}(B_0)\otimes\mathscr Q_X
+              &\simeq R\text{-}\operatorname{Mod}(\mathscr Q_X).
+ \end{aligned}
+ \tag{PAC.13}
+\]
+The second equality is the free associative action bar: a left
+\(R\)-action, its associative relations and higher homotopies are
+exactly an internal module. Its augmented free resolution contracts
+by the unit insertion. The same bar gives the tensor-category
+universal property, exactly as in RSC.27. No commutativity of \(R\)
+or symmetric tensor over \(R\) is required.
+
+The forgetful functor on the first module category has the concrete
+description
+\[
+ \mathsf U_{B_0}K=
+      (\operatorname{pr}_X)_*
+           \operatorname{oblv}_{B_0\text{-}\mathcal D}(K).
+ \tag{PAC.14}
+\]
+Only the \(B_0\)-direction differential action is forgotten. Ordinary
+affine pushforward of the underlying quasi-coherent module is exact,
+continuous and conservative, and retains the commuting \(D_X\)-action.
+The recovered \(R\)-action includes both functions and derivatives
+in the \(B_0\)-direction. On an exterior product this is
+\[
+ \mathsf U_{B_0}(M\boxtimes E)
+       =\Gamma(B_0,\operatorname{oblv}_{\mathcal D}M)
+                                     \otimes_{\mathbf C}E.
+ \tag{PAC.15}
+\]
+The sections are underlying affine sections. De Rham integration
+would instead use its relative Spencer differential and its shift.
+Thus the actual functor just defined satisfies
+\[
+ H^m(\mathsf U_{B_0}K)=\mathsf U_{B_0}(H^mK),\qquad
+ \mathsf U_{B_0}\operatorname{colim}K_\alpha
+                 \simeq\operatorname{colim}\mathsf U_{B_0}K_\alpha .
+ \tag{PAC.16}
+\]
+These identities hold on arbitrary unbounded objects.
+
+### 3.582. Finite pieces determine the completed coefficient
+
+Assume \(K\in\mathscr R_\infty(B_0\times X)\) and
+\[
+              \operatorname{SS}_\infty(K)\subset T^*B_0\times0_X .
+ \tag{PAC.17}
+\]
+No cohomological bound is imposed. For each coherent regular
+\(N\subset H^mK\), EFC.16 supplies an actual external-category
+preimage. The continuous bilinear functor
+\((M,E)\mapsto\Gamma(B_0,\operatorname{oblv}M)\otimes E\)
+from \(\mathscr R_{B_0}\times\mathscr I_X\) to \(\mathscr I_X\)
+has, after \(i_X\), precisely PAC.15's comparison to
+\(\mathsf U_{B_0}J_{B_0}\). It agrees on exterior generators and
+extends through their full free bar with the original maps.
+It follows that \(\mathsf U_{B_0}N\in\operatorname{im}i_X\).
+Exactness of \(\mathsf U_{B_0}\) puts it in degree zero, so it is
+an ind-connection.
+
+Now use the actual global coherent unions of HRI.6:
+\[
+ \begin{aligned}
+ H^m(\mathsf U_{B_0}K)
+    &=\operatorname*{colim}_{N\subset H^mK\ \mathrm{coherent}}
+                                     \mathsf U_{B_0}N\\
+    &\in\operatorname{Ind}\operatorname{Conn}_{\mathrm f}(X).
+ \end{aligned}
+ \tag{PAC.18}
+\]
+This is a statement about each degree separately and allows both
+infinite tails. PAC.9 consequently gives a completed coefficient
+with an actual comparison
+\[
+                   j_X(Q)\xrightarrow{\sim}\mathsf U_{B_0}K,
+                  \qquad Q\in\mathscr Q_X .
+ \tag{PAC.19}
+\]
+No common finite piece or common conormal cone was chosen for
+the different degrees.
+
+### 3.583. Retaining the original noncommutative action
+
+Keep the original \(R\)-action on \(\mathsf U_{B_0}K\).
+All its free action-bar terms lift through \(j_X\), since
+\[
+ j_X(R^{\otimes n}\otimes Q)
+                  \simeq R^{\otimes n}\otimes j_X(Q).
+ \tag{PAC.20}
+\]
+Here \(R\) is an ordinary complex vector space. Its tensor operation
+is a colimit of finite sums of copies, and PAC.11 gives the stated
+comparison. Multiplication, unit and action faces of the bar have
+their original maps after \(j_X\). Full faithfulness lifts every
+one of these maps and their relations, with contractible spaces
+of lifts. The unit insertion contracts the augmented free
+resolution after the conservative \(j_X\), hence before it as well.
+We obtain the actual module lift
+\[
+ \widetilde K\in R\text{-}\operatorname{Mod}(\mathscr Q_X),
+ \qquad
+ R\text{-}\operatorname{Mod}(j_X)(\widetilde K)\xrightarrow{\sim}K .
+ \tag{PAC.21}
+\]
+The comparison preserves the original \(R\)-action, not merely its
+underlying curve object. Using PAC.13 proves
+\[
+ \begin{gathered}
+ K\in\operatorname{im}J^{\mathscr Q}_{B_0},\\
+ J^{\mathscr Q}_{B_0}:
+     \operatorname{Dmod}(B_0)\otimes\mathscr Q_X
+              \longrightarrow\operatorname{Dmod}(B_0\times X).
+ \end{gathered}
+ \tag{PAC.22}
+\]
+This functor is full because \(R\text{-}\operatorname{Mod}(j_X)\)
+is full: its underlying mapping complexes and the equalities of
+action maps are computed in the full \(j_X\). The assertion does
+not require that the first tensor factor be \(\mathscr R_{B_0}\).
+
+### 3.584. Descent of the completed coefficients
+
+Let \(Y=\operatorname{Bun}_G(X)\) and
+\(\mathcal M=\operatorname{Dmod}(Y)\). On its full smooth affine
+chart diagram, PAC.12 gives
+\[
+ \mathcal M\otimes\mathscr Q_X
+          \simeq
+          \lim_{A\to Y}\bigl(\operatorname{Dmod}(A)\otimes\mathscr Q_X\bigr).
+ \tag{PAC.23}
+\]
+Tensor with a dualizable category has both adjoints given by
+tensor with its dual, so preserves this limit. Inverse transfer
+on the \(A\)-factor commutes with the curve exterior factor:
+on affine rectangles the two operator directions commute, and
+the graph and relative Spencer maps act in their original
+directions. Their full derived bars retain this comparison for
+arbitrary curve complexes, together with its composition and
+unit paths. The extraordinary chart shifts remain the same.
+
+Suppose \(K\) on \(Y\times X\) is chartwise regular Ind and every
+finite witness has zero curve covector. PAC.22 gives factors
+on all affine bundle charts. Their full functors uniquely lift
+the actual transition maps and all higher descent paths. PAC.23
+therefore supplies the actual global factor:
+\[
+ \begin{gathered}
+ K\in\operatorname{im}J_Y^{\mathscr Q},\\
+ J_Y^{\mathscr Q}:\mathcal M\otimes\mathscr Q_X
+                          \longrightarrow\operatorname{Dmod}(Y\times X).
+ \end{gathered}
+ \tag{PAC.24}
+\]
+No bound on either cohomological tail is needed. For positive genus,
+PAC.12 identifies precisely the original coefficient category, so
+\[
+          K\in\mathcal M\otimes\mathscr I_X
+                                  \qquad(g(X)>0).
+ \tag{PAC.25}
+\]
+The ind-connection comparisons in positive genus will also retain
+the existing multi-coordinate Hecke maps.
+More explicitly, if \(K=J_Y^{0}(Z_0)\) uses the t-exact curve
+embedding above, the same object has the actual \(i_!\)-coefficient
+lift \(Z_0[-1]\), since \(J_Y^{!}(Z_0[-1])=K\).
+For the RA.2 family \(K[1]\), its \(i_!\)-lift is \(Z_0\) itself.
+These equalities use the given shift comparisons and retain the
+original open coefficients and units.
+
+### 3.585. The unbounded regular-input criterion in positive genus
+
+Assume now \(g(X)>0\), and let \(F\in\mathcal M_{\mathrm{reg}}\)
+be arbitrary. Independent nilpotent support is still the union
+of actual finite characteristic witnesses, without closure.
+HRI.16–HRI.19 puts every actual Hecke output in the regular Ind
+category on every target chart. RHC.28 gives
+\[
+ \begin{gathered}
+ \operatorname{SS}_\infty(F)\subset\mathcal N
+   \quad\Longrightarrow\\
+ \operatorname{SS}_\infty
+       \bigl((\mathrm H_{V_\nu}F)|_{B_0\times X}\bigr)
+                              \subset\mathcal N_{B_0}\times0_X .
+ \end{gathered}
+ \tag{PAC.26}
+\]
+PAC.25 therefore gives the full HLA.13 condition. Conversely that
+condition implies the cohomological curve bound by RHC.36 and hence
+nilpotent support by RHC.34. Thus
+\[
+ \begin{gathered}
+ F\in\mathcal M_{\mathrm{reg}},\quad g(X)>0:\\
+ F\in\mathcal M^{\mathrm{Hl}}
+       \quad\Longleftrightarrow\quad
+              \operatorname{SS}_\infty(F)\subset\mathcal N .
+ \end{gathered}
+ \tag{PAC.27}
+\]
+Both infinite cohomological tails are included. No assertion that
+every cohomologically nilpotent object is regular has been made.
+For the specified half root, SH.19 gives the actual transport
+\[
+ \mathrm H^L_{V_\nu}
+       =\mathcal T_{Y\times X}^{-1}\mathrm H_{V_\nu}\mathcal T_Y .
+ \tag{PAC.28}
+\]
+Its intermediate line evaluations are RH.17, and the line is pulled
+from the bundle factor. Principal symbols and the curve direction
+are unchanged. RA.2's fixed curve shift also leaves the full
+coefficient image unchanged. These specified comparisons transport
+PAC.26–PAC.27 to those conventions.
+
+### 3.586. Regular nilpotent coefficients and the full Ran parameters
+
+Write \(\mathcal C\) for the full chartwise regular Ind subcategory
+with nilpotent cohomological support. Under the positive-genus
+hypothesis, PAC.27 identifies it with
+\(\mathcal M_{\mathrm{reg}}\cap\mathcal M^{\mathrm{Hl}}\).
+It is presentable by the full-kernel construction of §3.208, applied
+inside the presentable \(\mathcal M_{\mathrm{reg}}\) of EFC.26.
+Restrict HLA.13's small family of continuous obstruction functors
+to that category. Choose an uncountable regular \(\kappa\) for its
+small generator presentation, all target presentations and the
+cell bounds of the images of those generators. Then the functors
+preserve \(\kappa\)-compact objects. The proof of HLA.11–HLA.12
+uses those objects and works at this cardinal: a
+\(\kappa\)-compact approximation mapping to a kernel object can
+be enlarged along a countable chain until all its obstruction
+transitions are null. The chain colimit is still
+\(\kappa\)-compact and is in the kernel. Amalgamating fewer than
+\(\kappa\) such approximations and repeating that construction
+supplies the coherent cones, so the factorization category is
+\(\kappa\)-filtered. The full small-relations bar identifies the
+kernel with the corresponding Ind-completion. It is therefore
+presentable, with its full inclusion preserving ambient colimits;
+compact generation at the original cardinal is not assumed.
+Its cohomological support condition is also stable under triangles
+and colimits directly by NU.2–NU.4.
+
+Let \(Z\) be the actual \(i_!\)-coefficient lift for the chosen
+Hecke-family convention, as specified after PAC.25, and put
+\(N=J_Y^{!}(Z)\). For \(F\in\mathcal C\) and compact
+\(E\in\mathscr I_X\), the HLA.17 contraction and its operator
+normalization are
+\[
+ \begin{aligned}
+ C_E(Z)&=(\operatorname{Id}_{\mathcal M}\otimes\Gamma_{\mathscr I})
+                          (E^\vee\otimes Z),\\
+ \mathcal P_E(N)&=p_{Y,+}
+          \bigl(\operatorname{pr}_X^!i_!(E^\vee)\otimes^!N\bigr),\\
+ C_E(Z)&\simeq\mathcal P_E(N)[-2].
+ \end{aligned}
+ \tag{PAC.29}
+\]
+Here \(p_Y:Y\times X\to Y\) is the actual proper curve projection
+on the output object \(N\). NTR.1–NTR.6 proves the displayed
+comparison with its Spencer evaluation map and the shift \([-2]\).
+Its unit test is \(p_{X,+}\omega_X=\Gamma_{\mathscr I}(\mathbf1)[2]\).
+Thus the t-exact curve embedding and the strong \(!\)-tensor
+embedding have not been substituted for one another.
+For finite connections, the tensor is flat in the
+curve direction and has zero curve symbol. Its source is regular
+Ind, and proper integration preserves this property by HRI and PIC.
+If a target covector lies outside \(\mathcal N_{B_0}\), its pullback
+under the projection is \((\eta,0_X)\). PAC.26 makes the compatible
+set of every finite source piece empty. The general proper upper
+argument RHC.23–RHC.26, with its fixed output window, therefore
+gives
+\[
+                         C_E(Z)\in\mathcal C .
+ \tag{PAC.30}
+\]
+Finite cones, shifts and retracts prove this for all compact \(E\).
+To extend the conclusion, write \(P=E^\vee\). Duality permutes
+the compact objects. The functor
+\(P\mapsto(\operatorname{Id}_{\mathcal M}\otimes\Gamma_{\mathscr I})(P\otimes Z)\)
+is continuous in \(P\). Expressing any \(P\in\mathscr I_X\) as a
+colimit of compact objects and using the colimit closure of
+\(\mathcal C\) puts every value of this functor in \(\mathcal C\).
+
+The self-duality HLA.17–HLA.18 identifies
+\(\mathcal M\otimes\mathscr I_X\) with continuous functors
+\(\mathscr I_X\to\mathcal M\). All values in PAC.30 and the full
+inclusion of \(\mathcal C\) give precisely a continuous functor
+with values in \(\mathcal C\). Consequently
+\[
+ \begin{gathered}
+ \mathrm H_{V_\nu}(\mathcal C)\subset\mathcal C\otimes\mathscr I_X,\\
+ \Phi_\psi(\vec V,N;F)\in\mathcal C
+       \quad(F\in\mathcal C,\ N\in\operatorname{Dmod}(X^J)).
+ \end{gathered}
+ \tag{PAC.31}
+\]
+For several coordinates, HLA.14–HLA.16 retains the actual exchange,
+collision and unit maps; compact coefficient contractions can be
+performed successively. An arbitrary full parameter \(N\) contracts
+the independent curve factors to a complex of vector spaces.
+It need not be regular: this operation leaves the first
+\(\mathcal C\)-factor unchanged and uses its colimit closure.
+Every comparison map and higher relation uniquely lifts through
+the full inclusion. Thus the existing full unital Ran action
+restricts to \(\mathcal C\), with its actual parameter functors.
+
+### 3.587. The projective line and the precise remaining scope
+
+The completed coefficient conclusion PAC.24 holds in genus zero,
+but it gives \(\mathscr Q_X\). For \(X=\mathbf P^1\), RSC.19–RSC.26
+gives the exact distinction
+\[
+ \begin{gathered}
+ B=T_{\mathbf C}(\mathbf C[1]),\quad |u|=-1,\quad v=u^2,\\
+ \mathscr Q_X=\operatorname{Mod}_B,\\
+ \mathscr I_X=\{M:B[v^{-1}]\otimes_B^{\mathbf L}M=0\}.
+ \end{gathered}
+ \tag{PAC.32}
+\]
+The degree-minus-one generator is associative, with \(u^2\ne0\).
+In particular
+\[
+ L=B[v^{-1}]\ne0,\qquad
+ \operatorname{RHom}_B(\mathbf C,L)=0,\qquad
+ L\notin\mathscr I_X .
+ \tag{PAC.33}
+\]
+The actual operator realization supplied by PAC.8 does not remove
+this distinction. A genus-zero Hecke-specific torsion argument
+is required for the unrestricted ind-connection image; the
+local lower-bounded result EFC.30 continues to apply in every genus.
+
+The independent regularity and generation statement
+\[
+ \{F:\operatorname{SS}_\infty(F)\subset\mathcal N\}
+                                  \ \subset\ \mathcal M_{\mathrm{reg}}
+ \tag{PAC.34}
+\]
+is separate even in positive genus. It is not inferred from PAC.27,
+whose regular-input hypothesis is explicit. AIC.17's full supported
+factorization, equality with all independently nilpotent-supported objects
+and derived tempered Satake retain their requirements. GFP.55–GFP.56 give
+original-field enhanced generation and regular nilpotent landing on arbitrary inputs. Free further reading for completions and curve
+coefficients is [Arinkin–Gaitsgory–Kazhdan–Raskin–Rozenblyum–Varshavsky,
+Appendices E.1–E.2 and E.9](https://arxiv.org/abs/2010.01906v2).
+The actual operator effectivity, affine action lift and comparison
+arguments used here are proved above.
+
+![Actual operator truncation limits, the exact affine coefficient action, and the distinction between positive-genus and projective-line coefficient categories.](figures/postnikov-affine-curve-coefficients.svg)
+
+*Figure 3.71.* The tower and flat restriction comparisons are
+PAC.1–PAC.6. The affine coefficient retains both \(z\) and
+\(\partial_z\), as in PAC.13–PAC.22 and Exercise 3.HI. The
+positive-genus conclusion is PAC.25–PAC.31; the projective-line
+localized coefficient is PAC.32–PAC.33 and Exercise 3.HJ.
+The drawn tower is the exact finite-prefix example of Exercise 3.HH,
+not an assumption that arbitrary products commute with localization.
+
+### 3.588. Three calculations with towers and coefficient actions
+
+**Exercise 3.HH.** On \(\mathbf A^1_z\), let
+\(\delta=D/Dz\), and compare a Postnikov tower of its shifts with
+the ordinary product of copies of \(\delta\). Does localization
+at \(z\ne0\) preserve that product?
+
+**Solution 3.HH.** The tower with its projection transitions is
+\[
+ \begin{gathered}
+ K_n=\bigoplus_{j=0}^n\delta[j],\qquad
+ \tau^{\ge-n}K_{n+1}=K_n,\\
+ \lim_nK_n=\bigoplus_{j\ge0}\delta[j].
+ \end{gathered}
+ \tag{PAC.35}
+\]
+Its differential is zero and there is one copy in each degree
+\(0,-1,-2,\ldots\). The degreewise product computing its limit has
+exactly that one copy in each degree, which proves the last equality.
+All terms and its limit restrict to zero on \(z\ne0\).
+
+By contrast, in \(P=\prod_{j\ge0}\delta\), in degree zero, take
+\(a=(\partial_z^j\delta)_{j\ge0}\). The Weyl relation gives
+\[
+ z^r\partial_z^j\delta=
+ \begin{cases}
+ (-1)^r\,\dfrac{j!}{(j-r)!}\,\partial_z^{j-r}\delta,&j\ge r,\\
+ 0,&j<r.
+ \end{cases}
+ \tag{PAC.36}
+\]
+For every \(r\), its \(j=r\) component is nonzero, so no power
+of \(z\) kills \(a\). Localization of the underlying coefficient
+module therefore leaves \(a/1\ne0\), while every individual
+\(\delta\) localizes to zero:
+\[
+                  P[z^{-1}]\ne0,\qquad
+                    \prod_{j\ge0}(\delta[z^{-1}])=0 .
+ \tag{PAC.37}
+\]
+This is an actual affine operator-module example. It explains
+why PAC.4 proves the tower comparison from stable cohomology.
+
+**Exercise 3.HI.** For \(B_0=\mathbf A^1_z\) and a finite connection
+\(E\) on \(X\), compute both the coefficient functor and de Rham
+integration on \(K=\mathcal O_{B_0}\boxtimes E\).
+
+**Solution 3.HI.** The exact coefficient functor is
+\[
+ \begin{gathered}
+ \mathsf U_{B_0}K=\mathbf C[z]\otimes E,\\
+ z(z^n)=z^{n+1},\quad
+ \partial_z(z^n)=n z^{n-1},\quad [\partial_z,z]=1 .
+ \end{gathered}
+ \tag{PAC.38}
+\]
+The commutator follows by subtracting \(n z^n\) from
+\((n+1)z^n\). De Rham integration uses instead the actual
+relative Spencer complex:
+\[
+  (\operatorname{pr}_X)_+K
+    =\bigl[\mathbf C[z]\xrightarrow{\partial_z}
+                  \mathbf C[z]\,dz\bigr][1]\otimes E
+    \simeq E[1].
+ \tag{PAC.39}
+\]
+Here the bracket before shifting has degrees zero and one.
+Its kernel is the constants; it is surjective since
+\(z^n dz\) has the primitive \(z^{n+1}/(n+1)\).
+The full coefficient action in PAC.38, with its infinite basis,
+is what is lifted by PAC.21.
+
+**Exercise 3.HJ.** In the projective-line coefficient algebra of
+PAC.32, verify that \(L=B[v^{-1}]\) is nonzero but invisible to
+Hom from the unit. Give an actual contracting homotopy.
+
+**Solution 3.HJ.** The word basis and inverse are
+\[
+ L=\bigoplus_{j\in\mathbf Z}\mathbf C u^j,\qquad
+ |u^j|=-j,\qquad d=0,\qquad
+ u^{-1}=u v^{-1}.
+ \tag{PAC.40}
+\]
+The constant word is nonzero. The actual finite semifree unit
+resolution RSC.20 is
+\[
+ \begin{gathered}
+ Q=B\oplus B\tau,\qquad |\tau|=-2,\qquad d\tau=u,\\
+ d(b\tau)=(-1)^{|b|}bu,\qquad
+ Q\longrightarrow\mathbf C .
+ \end{gathered}
+ \tag{PAC.41}
+\]
+Its second summand maps injectively onto the positive-word ideal,
+so its only cohomology is the constant word. A homogeneous
+\(B\)-linear Hom cochain of degree \(k\) is determined by
+\(a=f(1)\in L^k\) and \(b=f(\tau)\in L^{k-2}\), using
+\(f(cm)=(-1)^{k|c|}cf(m)\). The Hom differential
+\(df=-(-1)^kf\,d_Q\) consequently gives
+\[
+ \begin{gathered}
+ d(a,b)=(0,-u a),\qquad h(a,b)=(-u^{-1}b,0),\\
+ dh+hd=\mathrm{id}.
+ \end{gathered}
+ \tag{PAC.42}
+\]
+Indeed \(dh(a,b)=(0,b)\) and \(hd(a,b)=(a,0)\).
+This is a contraction in every degree, with the original
+resolution signs. Thus the derived Hom is zero while \(L\ne0\).
+The word localization is nonzero on \(L\), so it is outside the
+ind-connection subcategory in PAC.32. No regular Ind assertion
+about an arbitrary completed coefficient is needed for this
+distinction.
+
+### 3.589. The restricted spectral action on regular nilpotent objects
+
+Work over \(\mathbf C\), assume \(g(X)>0\), and retain every connected
+reductive group and bundle component. Put
+\[
+ \begin{gathered}
+ \mathcal M=\operatorname{Dmod}(\operatorname{Bun}_G(X)),\qquad
+ \mathcal N=\mathcal M^{\mathrm{Hl}},\\
+ \mathcal C=\{F\in\mathcal M_{\mathrm{reg}}:
+                  \operatorname{SS}_\infty(F)\subset\operatorname{Nilp}_G\}.
+ \end{gathered}
+ \tag{ERP.1}
+\]
+All categories and mapping complexes are full and unbounded.
+PAC.27 identifies \(\mathcal C=\mathcal M_{\mathrm{reg}}\cap\mathcal N\).
+PAC.31 proves that this presentable full subcategory is closed under
+the actual full Ran action. Its inclusion preserves colimits.
+
+Write \(\mathcal A=\operatorname{QCoh}(\mathcal Z_H^{\mathrm{restr}}(X))\),
+and use the actual functors of UID.2–UID.6:
+\[
+ \mathsf D:\mathcal A\longrightarrow\mathcal R,\qquad
+ L\mathsf D\xrightarrow{\theta}\operatorname{Id}_{\mathcal A},\qquad
+ r\otimes\mathsf D(a)\simeq\mathsf D(L(r)\otimes a).
+ \tag{ERP.2}
+\]
+These are continuous functors with the specified module comparisons.
+In particular every \(a\), including a noncompact one, has the given
+Ran lift. The spectral action \(\Psi\) of RSE.36 and NTR.14–NTR.15
+satisfies, with its actual natural maps,
+\[
+ \Psi(a,c)\simeq
+ \Psi(L\mathsf D(a),c)\simeq
+                  \Phi(\mathsf D(a),c)\in\mathcal C .
+ \tag{ERP.3}
+\]
+The last membership is PAC.31. Thus the action takes its values in
+the full subcategory \(\mathcal C\). Full faithfulness lifts the
+multiplication, unit and every higher relation from \(\mathcal N\).
+Continuity follows because its colimits are ambient colimits. We obtain
+\[
+ \Psi_{\mathcal C}:\mathcal A\otimes\mathcal C\longrightarrow\mathcal C,
+ \qquad
+ j:\mathcal C\hookrightarrow\mathcal N
+                  \text{ is a continuous unital }\mathcal A\text{-module functor}.
+ \tag{ERP.4}
+\]
+The unit here is the existing action unit. This argument does not
+declare \(\mathsf D\) strong unital monoidal: \(\mathsf D(\mathbf1)=p\)
+has the nonunital structure of UID.7–UID.11.
+
+### 3.590. Full enhanced stages with regular nilpotent underlying objects
+
+Let \(K_E\) and \(\mathcal T_E=\operatorname{QCoh}(Z_E)\) be the actual
+finite equivariant Koszul stages of ESG.18–ESG.24. Distinguish the
+algebra \(K_E\in\mathcal A\) from the enhanced induction functor \(P_E\).
+The full module bar gives
+\[
+ \begin{aligned}
+ \mathcal C_E&=\mathcal C\otimes_{\mathcal A}\mathcal T_E
+                    \simeq\operatorname{Mod}_{K_E}(\mathcal C),\\
+ \mathcal N_E&=\mathcal N\otimes_{\mathcal A}\mathcal T_E
+                    \simeq\operatorname{Mod}_{K_E}(\mathcal N).
+ \end{aligned}
+ \tag{ERP.5}
+\]
+To see the comparison and its exact image, start with an actual
+\(K_E\)-module in \(\mathcal N\) whose underlying object is in
+\(\mathcal C\). All its free action terms \(K_E^{\otimes n}\star c\)
+belong to \(\mathcal C\) by ERP.4. Full faithfulness lifts the
+action, multiplication and unit faces, and all their coherent paths.
+The augmented free resolution has its original unit insertion as
+contracting extra degeneracy. Its realization in \(\mathcal C\)
+therefore maps to the original module with its original action.
+The same full mapping-space comparison lifts module maps. Consequently
+\[
+ \mathcal C_E\hookrightarrow\mathcal N_E\text{ is full},\qquad
+ F\in\mathcal C_E
+       \Longleftrightarrow J_E^{\mathcal N}F\in\mathcal C .
+ \tag{ERP.6}
+\]
+These are object and mapping statements; cohomological membership
+alone does not replace the action lift.
+
+Tensor the actual \(\mathcal A\)-linear adjunctions ESG.22–ESG.24 by
+\(\mathcal C\). Their units, counits and triangles descend in the
+same relative bar. Thus
+\[
+ \operatorname{Id}_{\mathcal C}\otimes f_E^*
+       \dashv J_E^{\mathcal C}
+       \dashv\operatorname{Id}_{\mathcal C}\otimes f_E^!,
+ \qquad J_E^{\mathcal C}=\text{the actual module forgetful functor}.
+ \tag{ERP.7}
+\]
+The rightmost functor is continuous: ESG.23 expresses it by finite
+perfect dual tensor, with its determinant factor and shifts retained.
+The forgetful functor is continuous and conservative. The adjunction
+therefore proves
+\[
+             J_E^{\mathcal C}(\mathcal C_E^c)\subset\mathcal C^c .
+ \tag{ERP.8}
+\]
+Indeed mapping from such an image is mapping from its compact source
+into the continuous right adjoint. The same assertion for
+\(\mathcal N_E\to\mathcal N\) is ESG.25.
+
+### 3.591. Actual regular point objects in the enhanced stages
+
+For a complex bundle point \(y\), retain SPT.21–SPT.24's intrinsic
+object, point normalization and fibre line:
+\[
+ \delta_y^!\in\mathcal M^c\cap\mathcal M_{\mathrm{reg}},\qquad
+ \operatorname{RHom}_{\mathcal M}(\delta_y^!,m)\simeq y^!m .
+ \tag{ERP.9}
+\]
+This is the adjunction on the full target, including unbounded
+objects and stabilizer directions. For every \(m\in\mathcal M_{\mathrm{reg}}\),
+ESG.33 makes \(T_E m=J_EP_E m\) regular. Its specified factorization
+through \(\mathcal N\), and the necessary RHC.34–RHC.36 criterion,
+give
+\[
+                        T_E(\mathcal M_{\mathrm{reg}})\subset\mathcal C .
+ \tag{ERP.10}
+\]
+No regularity of an arbitrary nilpotent object was used.
+
+Under ESG.13 and ESG.26 the enhanced \(P_E m\) has underlying object
+\(T_E m\). ERP.6 therefore supplies its unique full lift to
+\(\mathcal C_E\). For the point object write it as
+\[
+ Q_{E,y}\in\mathcal C_E,\qquad
+ Q_{E,y}\mapsto P_E\delta_y^!\in\mathcal N_E,\qquad
+ jJ_E^{\mathcal C}Q_{E,y}=J_E^{\mathcal N}P_E\delta_y^!.
+ \tag{ERP.11}
+\]
+The last equality is in \(\mathcal N\); its inclusion in \(\mathcal M\)
+is exactly \(T_E\delta_y^!\). The action maps are the given module
+maps, rather than a new module structure on the same cohomology.
+
+The point object is compact in the full enhanced stage, by ESG.29
+and continuity of \(J_E\). The inclusion in ERP.6 is full and
+preserves colimits, so it remains compact in the smaller stage:
+\[
+ Q_{E,y}\in\mathcal C_E^c,\qquad
+                  P_E\delta_y^!\in\mathcal N_E^c .
+ \tag{ERP.12}
+\]
+Here compactness is tested by the whole mapping complex.
+
+### 3.592. Point generators of the regular nilpotent category
+
+Choose the chart-point detectors NC.4–NC.7 on each bounded open
+of the cofinal exhaustion, and let \(\{y_i\}\) be their composite
+bundle points. Smooth inverse-image composition identifies each
+chart test with \(y_i^!\), up to its stated relative shift and an
+invertible fibre line. These factors preserve vanishing. Thus
+\[
+       c\in\mathcal C,\qquad
+       y_i^!c=0\text{ for every }i\quad\Longrightarrow\quad c=0 .
+ \tag{ERP.13}
+\]
+The proof of NC.7 applies to arbitrary cohomological degrees: its
+normal Koszul complex has finitely many columns, and on the chosen
+stratum all cohomology modules and their relevant quotients are
+flat connections. No point-conservativity assertion on the full
+\(\mathcal N\) is being made.
+
+For \(F\in\mathcal C_E\), the full inclusion and enhanced adjunction give
+\[
+ \operatorname{RHom}_{\mathcal C_E}(Q_{E,y_i},F)
+       \simeq y_i^!\bigl(\iota jJ_E^{\mathcal C}F\bigr),
+       \qquad \iota:\mathcal N\hookrightarrow\mathcal M .
+ \tag{ERP.14}
+\]
+If these complexes vanish, ERP.13 makes the underlying object zero.
+Conservativity of the actual module forgetful functor makes \(F=0\).
+Together with ERP.12 this proves
+\[
+                    \mathcal C_E=\operatorname{Loc}\{Q_{E,y_i}:i\}.
+ \tag{ERP.15}
+\]
+For completeness, a set of compact objects with this zero test
+generates by its full small-DG-module bar. The bar evaluation has
+cone right-orthogonal to every object in the set; its compact Hom
+tests are enriched Yoneda contractions. The zero test kills that
+cone. This proves generation of objects and full mapping complexes.
+
+The actual stage pushforwards jointly generate every unital
+\(\mathcal A\)-module, by ESG.27–ESG.28: express the supported
+spectral unit by its compact generator bars, then act on the module.
+Apply this to \(\mathcal C\), using ERP.15 and continuity. We obtain
+\[
+ \begin{gathered}
+   G_{E,i}=J_E^{\mathcal C}Q_{E,y_i}\in\mathcal C^c,\\
+   \mathcal C=\operatorname{Loc}\{G_{E,i}:E,i\}.
+ \end{gathered}
+ \tag{ERP.16}
+\]
+Their compactness is ERP.8. The same objects are compact in
+\(\mathcal N\), since their enhanced lifts are compact there and
+ESG.25 preserves compact objects.
+
+### 3.593. The continuous spectral-linear right adjoint
+
+Every compact object of \(\mathcal C\) is a retract of a finite
+cell object on the generators ERP.16. Indeed the full free bar
+and its finite-dimensional coefficient subcomplexes give a filtered
+system of finite cell approximations. A compact identity factors
+through one approximation. Finite sums, cones and retracts of their
+images are compact in \(\mathcal N\). Hence
+\[
+                         j(\mathcal C^c)\subset\mathcal N^c .
+ \tag{ERP.17}
+\]
+Choose a small full DG model of \(\mathcal C^c\). Define
+\[
+ r(n)=\int^{c\in\mathcal C^c}
+                c\otimes_{\mathbf C}\operatorname{RHom}_{\mathcal N}(jc,n).
+ \tag{ERP.18}
+\]
+This is the entire enriched coend with its composition and identity
+faces. For a compact test \(d\), moving its Hom through that bar
+and contracting the representable gives
+\(\operatorname{RHom}_{\mathcal C}(d,rn)
+ =\operatorname{RHom}_{\mathcal N}(jd,n)\).
+Both sides carry source colimits to limits, so the comparison extends
+to every source in \(\mathcal C\). Its evaluation is the counit.
+Yoneda gives the unit and its triangles. Thus
+\[
+             j\dashv r,\qquad rj\simeq\operatorname{Id}_{\mathcal C},
+                    \qquad r\text{ is continuous}.
+ \tag{ERP.19}
+\]
+Continuity follows directly in ERP.18 from ERP.17. This is an
+adjunction for the full regular nilpotent inclusion into
+\(\mathcal N\); it is not an adjunction inferred for \(\Pi\).
+
+The right adjoint is also \(\mathcal A\)-linear. For a dualizable
+coefficient \(a\), its adjunction mate is an equivalence, since for
+every \(c\) the two Hom tests are
+\[
+ \begin{aligned}
+ \operatorname{RHom}_{\mathcal C}(c,r(a\star n))
+   &\simeq\operatorname{RHom}_{\mathcal N}(j(a^\vee\star c),n)\\
+   &\simeq\operatorname{RHom}_{\mathcal C}(c,a\star r(n)).
+ \end{aligned}
+ \tag{ERP.20}
+\]
+SDU.1–SDU.3 proves that the compact generators of \(\mathcal A\)
+are dualizable even though its unit need not be compact.
+All coefficients are colimits of those generators. Continuity of
+both sides extends the mate to all \(a\). Its unit, associativity
+and higher comparisons are the same adjunction mates of the
+\(\mathcal A\)-linear inclusion. Their diagrams commute before
+taking mates and therefore afterwards, with their triangle maps.
+This proves full module linearity.
+
+### 3.594. Full coefficient extension and the remaining geometric test
+
+Let \(\mathcal T\) be any presentable \(\mathcal A\)-module category.
+Tensor the entire continuous \(\mathcal A\)-linear adjunction ERP.19
+over \(\mathcal A\) by \(\mathcal T\). Its units, counits and
+triangle maps descend through the balanced bar. The unit remains
+an equivalence, so
+\[
+ j_{\mathcal T}:\mathcal C\otimes_{\mathcal A}\mathcal T
+          \hookrightarrow\mathcal N\otimes_{\mathcal A}\mathcal T,
+ \quad j_{\mathcal T}\dashv r_{\mathcal T},\quad
+ r_{\mathcal T}j_{\mathcal T}\simeq\operatorname{Id}.
+ \tag{ERP.21}
+\]
+In particular the inclusion is full, and its right adjoint is
+continuous. Its actual orthogonal localization is
+\[
+ \begin{gathered}
+ \ell_{\mathcal T}F
+      =\operatorname{Cofib}(j_{\mathcal T}r_{\mathcal T}F\longrightarrow F),\\
+ \operatorname{im}\ell_{\mathcal T}
+      =(\operatorname{im}j_{\mathcal T})^\perp,\qquad
+ \ker\ell_{\mathcal T}=\operatorname{im}j_{\mathcal T}.
+ \end{gathered}
+ \tag{ERP.22}
+\]
+Applying \(r_{\mathcal T}\) to the triangle gives zero on its last
+term by the adjunction triangle. Equivalently all maps from the
+full image to that term vanish. For an orthogonal target, mapping
+the triangle into it identifies maps from \(\ell_{\mathcal T}F\)
+with maps from \(F\). This proves the localization adjunction,
+its unit and its image and kernel statements.
+
+These comparisons persist under abstract scalar extension. If
+\(K/\mathbf C\) is any field and
+\(\mathcal V_K=\mathcal V\otimes_{\mathbf C}\operatorname{Vect}_K\), then
+\[
+ \begin{gathered}
+ (\mathcal C\otimes_{\mathcal A}\mathcal T)_K
+       \simeq\mathcal C_K\otimes_{\mathcal A_K}\mathcal T_K,\\
+ (j_{\mathcal T},r_{\mathcal T},\ell_{\mathcal T})_K
+       =(j_{\mathcal T_K},r_{\mathcal T_K},\ell_{\mathcal T_K}).
+ \end{gathered}
+ \tag{ERP.23}
+\]
+Associative scalar tensor and the full balanced bar prove the first
+comparison: its terms, faces and realizations are the same after
+extension. Tensoring the actual triangle proves the second.
+In particular a right-orthogonal object remains right-orthogonal
+to the extended image. This does not identify \(\mathcal C_K\)
+with every regular nilpotent object on the geometrically extended
+curve.
+
+Here is a precise sufficient geometric assertion for equality with
+the full Hecke-lisse category. For every original stage \(E\) and
+field extension \(K/\mathbf C\), require actual geometric
+realizations of the extended enhanced category and its point
+adjunction, compatible with \(P_E,J_E\) and operator scalar
+extension. Require, for every \(K\)-rational bundle point \(y\),
+\[
+          P_{E,K}\delta_y^!
+                    \in\operatorname{im}(\mathcal C_E)_K .
+ \tag{ERP.24}
+\]
+This is a condition on all the new geometric points, not merely
+base changes of the original detectors.
+
+Under these additional hypotheses take \(F\in\mathcal N_E\)
+right-orthogonal to \(\mathcal C_E\). ERP.23 and the point adjunction
+make every \(y^!J_{E,K}F_K\) vanish. A nonzero underlying object has
+a nonzero smooth affine chart restriction. FE.1–FE.12 chooses a
+residue-field extension and a closed rational chart point with
+nonzero derived fibre. Composition of inverse images identifies
+this with the corresponding bundle-point test; the required
+geometric point adjunction retains its stabilizer and shift.
+This contradicts the vanishing. Thus \(J_EF=0\), and its conservativity
+gives \(F=0\). ERP.22 then gives equality of the stages.
+Their actual forgetful images generate \(\mathcal N\) by ESG.28,
+so the additional hypotheses imply
+\[
+        \mathcal C_E=\mathcal N_E\text{ for all }E
+                         \quad\Longrightarrow\quad \mathcal C=\mathcal N .
+ \tag{ERP.25}
+\]
+The actual geometric point adjunction and operator comparisons are
+GFP.25–GFP.44; GFP.49–GFP.52 prove the membership in ERP.24. Equality
+with the independently defined category of all nilpotent
+cohomological support also retains its separate arbitrary-input
+and supported-generation requirements. The genus-zero torsion
+problem of PAC.32–PAC.34 is unchanged. The field-extension strategy
+is discussed in [Arinkin–Gaitsgory–Kazhdan–Raskin–Rozenblyum–Varshavsky,
+§20.9](https://arxiv.org/abs/2010.01906v2); the adjunction,
+generator, linearity and coefficient-extension arguments used
+above are proved here.
+
+![The actual Ran lift, regular nilpotent enhanced point generators, continuous spectral-linear right adjoint and the additional geometric point test.](figures/enhanced-regular-point-stages.svg)
+
+*Figure 3.72.* The action comparison is ERP.2–ERP.4. Full module
+lifts and compact point generators are ERP.5–ERP.17. The adjunction
+and full coefficient extension are ERP.18–ERP.23. The dashed
+arrow is the proved change of field in Exercise 3.HL. The brown
+final statement gives the geometric membership ERP.24 and its proof
+GFP.49–GFP.52; abstract scalar extension alone does not supply it.
+
+### 3.595. Exercise and solution: a nonformal thickened stage
+
+**Exercise 3.HK.** Let \(R=\mathbf C[t]\), let
+\(\mathcal C\subset D(R)\) be the full category with \(t\)-power-torsion
+cohomology, and put \(A_2=R/(t^2)\), \(k=R/(t)\).
+Compute the continuous right adjoint of the inclusion. Compute
+\(A_2\otimes_R^{\mathbf L}k\) as an actual \(A_2\)-module complex,
+and decide whether it is the direct sum of its cohomology modules.
+
+**Solution 3.HK.** Flat localization and its fibre give
+\[
+ r_R(F)=\operatorname{Fib}(F\longrightarrow F[t^{-1}]),\qquad
+ r_R(R)=(R[t^{-1}]/R)[-1].
+ \tag{ERP.26}
+\]
+The localization of the fibre is zero. If a complex \(c\) has
+torsion cohomology, then its localization is zero. Conversely
+flat localization tests this condition on all cohomology modules.
+Restriction of scalars identifies maps into a localized module
+with maps from the localized source. Thus maps from \(c\) into
+\(F[t^{-1}]\) vanish in every degree, and its fibre represents
+exactly maps from \(c\) into \(F\). This proves the adjunction.
+The formula is continuous, since localization and finite stable
+limits preserve colimits.
+
+The fractions \(t^{-n}R/R\) are \(R/(t^n)\), with transition
+multiplication by \(t\). Therefore
+\[
+ R[t^{-1}]/R=\operatorname*{colim}_{n\ge1}R/(t^n),\qquad
+                    \mathcal C=\operatorname{Loc}\{k\}.
+ \tag{ERP.27}
+\]
+Each quotient has a finite filtration by \(k\). Tensor the fibre
+formula for \(R\) with an arbitrary free-module bar for \(F\).
+It identifies \(r_R(F)=r_R(R)\otimes_R^{\mathbf L}F\), so its image
+lies in \(\operatorname{Loc}\{k\}\). On a torsion complex it is the
+identity, proving the equality. The two-term free resolution of
+\(k\) proves its compactness in \(D(R)\), hence in \(\mathcal C\).
+
+Every \(A_2\)-module is already supported at \(t=0\), so the full
+action-bar comparison identifies
+\(\operatorname{Mod}_{A_2}(\mathcal C)=D(A_2)\).
+The same resolution gives the actual enhanced object
+\[
+ A_2\otimes_R^{\mathbf L}k=[A_2\xrightarrow{\,t\,}A_2],
+ \quad\text{degrees }-1,0,\qquad H^{-1}=k,\quad H^0=k .
+ \tag{ERP.28}
+\]
+Its differential is nonzero. This finite free \(A_2\)-complex is
+compact. It is not isomorphic in \(D(A_2)\) to \(k[1]\oplus k\).
+Indeed the free resolution
+\[
+ \cdots\xrightarrow{t}A_2\xrightarrow{t}A_2
+       \xrightarrow{t}A_2\longrightarrow k,\qquad
+              \operatorname{Ext}_{A_2}^n(k,k)=k\quad(n\ge0)
+ \tag{ERP.29}
+\]
+is exact before its augmentation because
+\(\ker(t:A_2\to A_2)=tA_2=\operatorname{im}t\).
+Applying Hom into \(k\) gives zero differentials and the displayed
+Ext groups. A compact \(A_2\)-module is a retract of a finite free
+cell complex, by the same finite-bar argument as ERP.17. Its Hom
+into degree-zero \(k\) is bounded, so \(k\) is not compact.
+If ERP.28 split as the indicated cohomology sum, its retract \(k\)
+would be compact, a contradiction. Retaining the enhanced module
+and its actual differential is essential.
+
+### 3.596. Exercise and solution: two normal directions and a new field point
+
+**Exercise 3.HL.** On \(\mathbf A^2_{x,y}\), put
+\[
+ \begin{gathered}
+ V=\mathbf C^2,\quad
+ J=\begin{pmatrix}0&1\\0&0\end{pmatrix},\quad
+ M=\bigoplus_{m\in\mathbf Z}(\mathbf C(x)[y]\otimes V)[2m],\\
+ \partial_x f=\frac{\partial f}{\partial x},\qquad
+ \partial_y f=\frac{\partial f}{\partial y}+yJf .
+ \end{gathered}
+ \tag{ERP.30}
+\]
+Verify the operator relations. Compare all original closed-point
+tests with the test at \((u,0)\) after \(K=\mathbf C(u)\), where
+\(u\) is transcendental and the operators kill \(K\).
+
+**Solution 3.HL.** The extra matrix term commutes with multiplication
+by \(y\), so the two coordinate Weyl commutators are identities.
+The cross commutators vanish: \(J\) is constant and \(yJ\) is
+independent of \(x\). These actions therefore define a left
+operator module on every summand.
+
+For \((a,b)\in\mathbf C^2\), the point Hom is the cochain Koszul
+complex on \(x-a,y-b\). Multiplication by \(x-a\) is invertible.
+With \(e_x,e_y\) the cochain basis its actual contraction is
+\[
+ d=(x-a)e_x\wedge+(y-b)e_y\wedge,\qquad
+ h=(x-a)^{-1}\iota_{e_x},\qquad dh+hd=1 .
+ \tag{ERP.31}
+\]
+The identity follows from
+\(e_x\wedge\iota_{e_x}+\iota_{e_x}e_x\wedge=1\)
+and anticommutation with \(e_y\wedge\).
+All original closed-point tests thus vanish.
+
+Write \(S=\mathbf C[x]\setminus\{0\}\). After field extension the
+coefficient ring is \(S^{-1}K[x,y]\). Evaluation at \(x=u,y=0\)
+survives localization since every \(s(u)\) is nonzero.
+The sequence \(x-u,y\) is regular: its first term is nonzero in
+this domain, and its quotient is \(K[y]\), where the second term
+is injective. The finite cochain Koszul complex consequently gives
+\[
+ \begin{gathered}
+ \Delta_{(u,0)}
+     =D_{\mathbf A^2_K}/\bigl(D_{\mathbf A^2_K}(x-u)+D_{\mathbf A^2_K}y\bigr),\\
+ \operatorname{RHom}(\Delta_{(u,0)},M_K)
+            \simeq\bigoplus_{m\in\mathbf Z}K^2[\,2m-2\,]\ne0 .
+ \end{gathered}
+ \tag{ERP.32}
+\]
+The ordered coordinates \(x-u,y\) fix the normal determinant factor.
+The point resolution has only three cochain degrees, \(0,1,2\),
+so it commutes with this direct sum on both infinite tails.
+Its differential uses the two coordinate multiplications, not
+the connection coefficient \(yJ\). There is one copy of \(K^2\)
+in every even cohomological degree and none in odd degrees.
+This exact example explains why ERP.24 requires the new
+geometric points as well as the original ones.
+
+### 3.597. The regular Hecke-lisse intersection in every genus
+
+Let \(X/\mathbf C\) be a smooth projective connected curve, and let \(G\)
+be connected reductive. Every genus and bundle component is allowed.
+Use the full unbounded categories
+\[
+ \mathcal M=\operatorname{Dmod}(\operatorname{Bun}_G(X)),\qquad
+ \mathcal N=\mathcal M^{\mathrm{Hl}},\qquad
+ \mathcal D=\mathcal M_{\mathrm{reg}}\cap\mathcal N .
+ \tag{GFP.1}
+\]
+The inclusion of \(\mathcal D\) preserves colimits. It is presentable:
+restrict HLA.13's small continuous obstruction family to the
+presentable \(\mathcal M_{\mathrm{reg}}\). Choose an uncountable regular
+cardinal for its generator presentation, all target presentations and
+the cell bounds of the images. These obstruction functors preserve
+compactness at that cardinal. The countable null-transition
+construction in §3.586 then gives a generating filtered system of
+kernel objects and its full small-relations bar. This proves
+presentability of this intersection without a support converse.
+
+For \(d\in\mathcal D\), every Hecke output is regular Ind by
+HRI.16–HRI.19 and CDK.23. Since \(d\) is already Hecke-lisse, its actual
+curve coefficient is an object \(Z\in\mathcal M\otimes\mathscr I_X\).
+For compact \(E\in\mathscr I_X\), the actual coefficient test is
+\[
+ \begin{aligned}
+ C_E(Z)&=(\operatorname{Id}\otimes\Gamma_{\mathscr I})(E^\vee\otimes Z),\\
+ C_E(Z)&\simeq
+ p_{Y,+}\bigl(\operatorname{pr}_X^!i_!(E^\vee)\otimes^!J_Y^!(Z)\bigr)[-2],
+       \qquad Y=\operatorname{Bun}_G(X).
+ \end{aligned}
+ \tag{GFP.2}
+\]
+These are PAC.29's actual maps and NTR.1–NTR.6's Spencer normalization.
+The chosen Hecke convention retains the coefficient shift after
+PAC.25; its unit test is \(p_{X,+}\omega_X=\Gamma_{\mathscr I}(\mathbf1)[2]\).
+Finite connection tensor and proper curve integration make this
+test regular Ind. It belongs to \(\mathcal N\) by HLA.16, since the
+same proper integral is a full Ran parameter action, up to the
+displayed fixed shift. Thus every compact test lies in \(\mathcal D\).
+Reindex by \(P=E^\vee\); duality permutes the compact objects.
+The continuous pairing in \(P\), colimit closure and HLA.17–HLA.18
+give
+\[
+       Z\in\mathcal D\otimes\mathscr I_X,\qquad
+       \Phi_\psi(\vec V,N;d)\in\mathcal D
+       \quad(N\in\operatorname{Dmod}(X^J)).
+ \tag{GFP.3}
+\]
+For several coordinates use the actual HLA.14–HLA.16 exchange,
+collision and unit maps and successive compact tests. An arbitrary
+full operator parameter contracts only the independent connection
+factors; it leaves \(\mathcal D\) as the first factor. Fullness lifts
+all comparison maps. This proves the full unital Ran action on
+\(\mathcal D\).
+
+The continuous Ran section of UID.2–UID.6 and the normalized
+RSE.36/NTR.14 comparison give
+\[
+ \Psi(a,d)\simeq\Phi(\mathsf D(a),d),\quad L\mathsf D(a)\simeq a,
+ \qquad
+ \mathcal D\text{ is a unital }\mathcal A\text{-module},
+ \quad \mathcal A=\operatorname{QCoh}(\mathcal Z_H^{\mathrm{restr}}(X)).
+ \tag{GFP.4}
+\]
+Its unit and higher maps are inherited from \(\mathcal N\).
+No equality of \(\mathscr Q_X\) and \(\mathscr I_X\) is used.
+
+### 3.598. Enhanced generators and the actual orthogonal triangle
+
+Use the original finite equivariant Koszul stages \(K_E\) and
+\(\mathcal T_E\) of ESG.18–ESG.24. The full action-bar argument
+ERP.5–ERP.8, applied to GFP.4, gives
+\[
+ \mathcal D_E=\operatorname{Mod}_{K_E}(\mathcal D)
+       \simeq\mathcal D\otimes_{\mathcal A}\mathcal T_E
+       \hookrightarrow
+       \mathcal N_E=\mathcal N\otimes_{\mathcal A}\mathcal T_E .
+ \tag{GFP.5}
+\]
+This inclusion is full and preserves colimits. Its image consists
+exactly of modules whose actual underlying object is in \(\mathcal D\).
+The two finite-stage adjunctions retain the actual perfect dual,
+determinant factor and shifts. The module forgetful functor is
+conservative and has a continuous right adjoint.
+
+ESG.33 makes \(T_E m=J_EP_E m\) regular for every regular input;
+ESG.17 puts it in \(\mathcal N\). Hence the intrinsic SPT compact
+points have actual enhanced lifts in \(\mathcal D_E\).
+RHC.34–RHC.36 gives independent nilpotent support for every object
+of \(\mathcal D\). The fixed NC.4–NC.7 point family therefore detects it.
+The enhanced adjunction identifies all Hom tests from the lifted
+points with those point fibres. Conservativity of the forgetful
+functor proves
+\[
+ \begin{gathered}
+ Q_{E,i}=P_E\delta_{y_i}^!\in\mathcal D_E^c\cap\mathcal N_E^c,\\
+ \mathcal D_E=\operatorname{Loc}\{Q_{E,i}\},\qquad
+ \mathcal D=\operatorname{Loc}\{J_E^{\mathcal D}Q_{E,i}:E,i\}.
+ \end{gathered}
+ \tag{GFP.6}
+\]
+The first compactness follows from the full enhanced adjunction and
+continuity of \(J_E\); restriction through the full continuous
+inclusion preserves it. The last generators are compact both in
+\(\mathcal D\) and in \(\mathcal N\), by the finite-stage continuous
+right adjoints. These are exactly the ERP.12–ERP.17 arguments;
+here the independent support implication is needed only on
+\(\mathcal D\), where regularity is part of its definition.
+
+The full compact coend and its actual evaluation give
+\[
+ j:\mathcal D\hookrightarrow\mathcal N,\quad j\dashv r,\qquad
+ r(n)=\int^{d\in\mathcal D^c}
+        d\otimes\operatorname{RHom}_{\mathcal N}(jd,n),
+ \quad rj\simeq\operatorname{Id}.
+ \tag{GFP.7}
+\]
+Compactness of the images in \(\mathcal N\) makes \(r\) continuous.
+For a dualizable coefficient, its adjunction mate is the dual
+evaluation comparison of ERP.20. SDU.1–SDU.3's dualizable compact
+generators and continuity extend that mate to every coefficient,
+with its full module coherences. Thus \(r\) is \(\mathcal A\)-linear.
+Tensoring the entire adjunction with a coefficient module and a
+field extension retains the unit, counit and triangles. In particular
+\[
+ \begin{gathered}
+ \mathcal D_{E,K}\hookrightarrow\mathcal N_{E,K}
+                  \text{ is full},\\
+ j_{E,K}r_{E,K}F\longrightarrow F\longrightarrow\ell_{E,K}F,\qquad
+ \operatorname{im}\ell_{E,K}=(\operatorname{im}j_{E,K})^\perp ,
+ \quad K/\mathbf C .
+ \end{gathered}
+ \tag{GFP.8}
+\]
+All three functors are continuous, and the last object is the
+actual cofiber of the counit. This uses ERP.21–ERP.23's balanced
+bar proof, not an adjunction assigned to the nonunital idempotent.
+
+### 3.599. Characteristic support under arbitrary field extension
+
+Let \(U/k\) be smooth affine of finite type in characteristic zero,
+and let \(K/k\) be any field extension. KF.8 is the actual identity
+\[
+ D(U_K)=D(U)\otimes_kK,\qquad
+ H^m(M\otimes_kK)=H^m(M)\otimes_kK .
+ \tag{GFP.9}
+\]
+A good filtration on a coherent module extends to a good filtration.
+Exact field tensor preserves its pieces, quotients and associated
+graded module. Thus its characteristic support is the extended
+closed support. Containment in an extended closed cone is reflected
+as well: localization of the symbol module at a complementary
+principal open commutes with field tensor, and a nonzero localization
+stays nonzero under faithful extension.
+
+The coherent submodules of an extended cohomology module need not
+be free extensions of old submodules. The required statement is
+instead
+\[
+ \begin{gathered}
+ A\subset H^m(M_K)\text{ coherent}
+       \quad\Longrightarrow\quad
+       A\subset B\otimes_kK\subset H^m(M_K),\\
+       B\subset H^m(M)\text{ coherent over }D(U).
+ \end{gathered}
+ \tag{GFP.10}
+\]
+Choose finitely many generators of \(A\). Each is a finite
+\(K\)-linear combination of old cohomology vectors. Their finitely
+many old vectors generate a coherent \(D(U)\)-submodule \(B\),
+by operator Noetherianity. Its exact scalar extension contains
+the chosen generators and hence \(A\). The characteristic
+Serre submodule rule puts \(\operatorname{Ch}(A)\) inside
+\(\operatorname{Ch}(B)_K\). Conversely an old coherent submodule
+remains an actual submodule after faithful field tensor.
+Consequently, for every closed conical \(\Lambda\),
+\[
+       \operatorname{SS}_\infty(M)\subset\Lambda
+       \quad\Longleftrightarrow\quad
+       \operatorname{SS}_\infty(M_K)\subset\Lambda_K .
+ \tag{GFP.11}
+\]
+This proves both directions on arbitrary unbounded complexes.
+
+There is also a statement for an arbitrary internal \(K\)-module
+whose underlying object is supported over \(k\). Its finite
+\(D(U_K)\)-submodule generators lie in a finite old submodule \(B\);
+the internal \(K\)-action gives the same quotient from \(B\otimes K\).
+Apply this on all bundle charts. The global nilpotent equations
+and their chart pullbacks extend by the same invariant-polynomial
+equations for the Higgs field, including its central part. Hence
+\[
+       c\in\mathcal D_K=\operatorname{Mod}_K(\mathcal D)
+          \quad\Longrightarrow\quad
+       \operatorname{SS}_\infty(c)\subset\operatorname{Nilp}_{G,K}
+       \text{ on the actual }Y_K .
+ \tag{GFP.12}
+\]
+Smooth transfer, its relative shifts and the half-line comparisons
+are the actual KF.8–KF.9 comparisons. No assertion that a new
+coherent submodule itself descends has entered the proof.
+
+### 3.600. The original fixed detectors over the new field
+
+The finite FD.2 stratification of each original nilpotent chart
+remains smooth with its closed filtration and conormal fibre bounds
+after \(K/\mathbf C\). Its connected strata stay connected.
+Here is a direct proof of this last assertion in the needed scope.
+For a finite affine cover, flat field tensor commutes with the
+kernel computing global sections, giving
+\[
+                 \Gamma(S_K,\mathcal O)=\Gamma(S,\mathcal O)\otimes_{\mathbf C}K .
+ \tag{GFP.13}
+\]
+Suppose a nontrivial idempotent existed on the right. Its finitely
+many coefficient functions, their products and the unit span a
+finite-dimensional complex vector space. The equation \(e^2=e\)
+is a finite polynomial system for its \(K\)-valued coefficients.
+Choose a nonzero coordinate of \(e\) and of \(e-1\) and adjoin
+their inverses. This finite-type complex algebra has a \(K\)-point,
+so is nonzero; the weak Nullstellensatz gives a complex point.
+That point supplies a nontrivial idempotent on \(S\), contradicting
+connectedness. Thus
+\[
+              S\text{ connected over }\mathbf C
+                       \quad\Longrightarrow\quad S_K\text{ connected}.
+ \tag{GFP.14}
+\]
+The argument needs no finite generation of the entire section algebra.
+
+FD.6–FD.12 is an algebraic characteristic-zero proof. On the selected
+stratum, every coherent zero-symbol submodule and the relevant
+quotients are finite flat connections. Their unions are flat.
+The normal point Koszul resolution has only finitely many columns,
+so its cohomology computation is valid in every degree. The same
+original point on the connected extended stratum detects it.
+The finite closed filtration and supported Kashiwara comparison
+therefore give
+\[
+ \operatorname{SS}_\infty(M)\subset\operatorname{Nilp}_{G,K},\qquad
+       (y_i)_K^!M=0\ \forall i
+                         \quad\Longrightarrow\quad M=0 .
+ \tag{GFP.15}
+\]
+Use NC.4–NC.7's finite chart family on each bounded open and then its
+cofinal exhaustion. Composition of inverse images retains the
+relative shift and invertible fibre line in every chart-point test.
+The cone of a supported morphism is supported, so the same proof gives
+\[
+ \begin{gathered}
+ ((y_i)_K^!f\text{ are all equivalences})
+       \quad\Longleftrightarrow\quad f\text{ is an equivalence},\\
+       f\text{ a morphism in the nilpotent-supported category}.
+ \end{gathered}
+ \tag{GFP.16}
+\]
+These are tests on this fixed support, not tests on arbitrary
+operator objects.
+
+### 3.601. The exact supported image in an extended enhanced stage
+
+The original enhanced adjunction and the original point object
+extend with all their maps. Compactness of the point makes its
+Hom functor continuous, and its free internal field-module bar
+identifies this extension with the actual inverse-transfer point
+test. For every \(F\in\mathcal N_{E,K}\),
+\[
+ \operatorname{RHom}_{\mathcal N_{E,K}}
+          ((P_E\delta_{y_i}^!)_K,F)
+                    \simeq (y_i)_K^!J_{E,K}F .
+ \tag{GFP.17}
+\]
+Only extensions of the original points occur in this formula.
+New point adjunctions will be constructed below.
+
+Suppose the actual \(J_{E,K}F\) has nilpotent cohomological support.
+In GFP.8 the first term has that support by GFP.12; the middle
+term has it by hypothesis. The support Serre rule and triangles
+give
+\[
+       \operatorname{SS}_\infty(J_{E,K}\ell_{E,K}F)
+                                      \subset\operatorname{Nilp}_{G,K}.
+ \tag{GFP.18}
+\]
+Orthogonality of the last term makes all GFP.17 tests vanish.
+GFP.15 kills its underlying object. The actual \(K_E\)-module
+forgetful functor \(J_{E,K}^{\mathcal N}\) is conservative, so
+\[
+                        \ell_{E,K}F=0,\qquad F\in\mathcal D_{E,K}.
+ \tag{GFP.19}
+\]
+The converse is GFP.12. We have proved the full essential-image criterion
+\[
+ F\in\mathcal D_{E,K}
+   \quad\Longleftrightarrow\quad
+ \operatorname{SS}_\infty(J_{E,K}F)\subset\operatorname{Nilp}_{G,K},
+       \qquad F\in\mathcal N_{E,K}.
+ \tag{GFP.20}
+\]
+This theorem has no regular-input assumption over \(K\).
+It concerns the scalar-extended original enhanced stage, and
+uses the actual counit triangle and all cohomological degrees.
+
+### 3.602. Countable fields and perfect stabilizer cochains
+
+Every countable characteristic-zero field embeds in \(\mathbf C\).
+To see this, choose a transcendence basis, which is at most countable.
+Recursively choose algebraically independent complex numbers:
+the algebraic closure of the field generated by the preceding
+countable set is countable, whereas \(\mathbf C\) is uncountable.
+Map the basis to these numbers. Enumerate the remaining algebraic
+generators and extend the embedding successively by roots in the
+algebraically closed complex field. Thus
+\[
+                k_0\text{ countable, }\operatorname{char}k_0=0
+                              \quad\Longrightarrow\quad k_0\hookrightarrow\mathbf C .
+ \tag{GFP.21}
+\]
+The chosen embedding need not agree with another realization
+of a common countable subfield.
+
+Let \(A/k_0\) be smooth affine of finite type. Its actual de Rham
+form complex commutes with field extension, since affine sections,
+forms and their differential do. After a complex embedding SPT.7
+makes its cohomology bounded finite dimensional. Exact faithful
+field tensor reflects that statement. Consequently
+\[
+ C_A=R\operatorname{Hom}_{\operatorname{Dmod}(A)}(\omega_A,\omega_A)
+       \text{ is perfect over }k_0,\qquad B_A=C_A^\vee .
+ \tag{GFP.22}
+\]
+The normalization is the same Spencer normalization as SPT.7.
+For any further field \(L/k_0\), a finite perfect representative gives
+\[
+          C_{A_L}=C_A\otimes_{k_0}L,\qquad
+          B_{A_L}\simeq B_A\otimes_{k_0}L .
+ \tag{GFP.23}
+\]
+This is derived perfect duality; it does not tensor a raw infinite
+linear dual of the form complex.
+
+The finite Spencer Hom calculation, group multiplication, identity
+and inversion retain the complete Hopf maps. SPT.8–SPT.13's full
+action and groupoid mapping bars therefore apply over \(k_0\).
+Their extra-unit contraction gives the actual equivalence and free point
+\[
+ \operatorname{Dmod}(BA)=\operatorname{Mod}_{B_A},\quad
+ q^!=\operatorname{oblv},\qquad q_!k_0=B_A,\quad q_!\dashv q^! .
+ \tag{GFP.24}
+\]
+All limits in the mapping bar remain their full totalizations.
+The Hopf inversion identity supplies invertible groupoid transports.
+Both tensor duality and the contracted free-module bar commute
+with the field extensions in GFP.23.
+
+### 3.603. Intrinsic point adjunctions over the countable model
+
+Let the curve, group and a rational bundle point be defined over a
+countable characteristic-zero field \(k_0\). Use a bounded framed
+quotient \(U=[Z/H_0]\) containing the point, where \(H_0\) is a
+product of general linear groups. A frame exists over the field.
+The stabilizer \(A\) is smooth: SPT.1–SPT.3's formal-group proof
+uses only characteristic zero. Its smooth orbit is locally closed
+by the same orbit and Jacobian argument after an algebraic closure,
+followed by faithful descent. Thus
+\[
+        y:\operatorname{pt}\xrightarrow{q}BA
+                    \xrightarrow{i}U\xrightarrow{j}Y
+ \tag{GFP.25}
+\]
+has the actual locally closed residual-gerbe factorization.
+The group point object is GFP.24.
+
+On a smooth target chart extend this coefficient by finite normal
+transfer and by coherent duality for the open part:
+\[
+        (j_0)_!F=\mathbb D_T(j_0)_*\mathbb D_{T_0}F .
+ \tag{GFP.26}
+\]
+Here ordinary open direct image is its finite affine Čech
+localization complex. These models commute with field extension.
+After a complex embedding they are the SPT.17–SPT.24 bounded
+regular objects. Bounded coherence descends: cohomology commutes
+with faithful field tensor, and finitely many generators after
+extension are finite sums of old vectors. Those vectors generate
+before extension, since the quotient tensors to zero.
+Operator Noetherianity supplies coherence of the relations.
+Boundedness is reflected degree by degree.
+
+The finite filtered resolution of
+[Holonomic D-modules and duality, Lemma 3.0](../../GL-DMOD/holonomic-d-modules-and-duality.html#finite-local-operator-resolutions)
+uses the regular symbol ring and works in characteristic zero.
+It makes every bounded coherent coefficient locally a finite
+operator-projective complex. Coherent duals therefore commute
+with field extension. Biduality, the ordinary open adjunction
+and the finite normal adjunction give SPT.18–SPT.19 on coherent
+targets. The full compact generator bar extends the same maps
+to every unbounded target.
+
+The canonical smooth-base-change mates are isomorphisms after
+the complex embedding, by the SPT comparison. Their cones vanish
+before extension by faithfulness. Their higher compositions are
+the same adjunction-mate identities. Strong operator descent
+therefore glues the point object and its full adjunction:
+\[
+ \delta_{y,k_0}^!=j_!i_!q_!k_0,\qquad
+ \operatorname{RHom}_{Y}(\delta_{y,k_0}^!,M)\simeq y^!M
+                         \quad(M\text{ arbitrary}).
+ \tag{GFP.27}
+\]
+This descent takes the limit of compatible mapping complexes;
+no individual infinite mapping product is tensored with a field.
+The represented inverse image is continuous on charts, so this
+point object is compact. The perfect group dual, finite normal
+transfer, finite open Čech model and coherent dual all extend.
+Thus, for every \(L/k_0\),
+\[
+       (\delta_{y,k_0}^!)_L\simeq\delta_{y_L,L}^!,
+       \qquad
+       \operatorname{RHom}(\delta_{y_L,L}^!,M_L)\simeq y_L^!M_L .
+ \tag{GFP.28}
+\]
+Two models represent the same point functor and are identified,
+with all their maps, by enriched Yoneda. The same construction
+applies to the specified half twist with its actual fibre line.
+
+### 3.604. Actual enhanced operator extension
+
+For the finite quotient stage \(Z_E=[\operatorname{Spec}K_E/H]\),
+the affine Hopf nerve and its full module categories commute
+with categorical field extension. Apply KF.3 and KF.7 to their
+coordinate algebras and compatible maps. Hence
+\[
+       \operatorname{QCoh}(Z_E)\otimes\operatorname{Vect}_L
+                        \simeq\operatorname{QCoh}((Z_E)_L).
+ \tag{GFP.29}
+\]
+The same PBW, transfer and strong smooth-descent argument is KF.8–KF.9
+for \(\mathcal M\). The finite-set Ran diagram uses these actual
+operator transfers and the Hopf coefficient categories. Its
+colimit commutes with categorical scalar extension. KG.19–KG.23
+is a characteristic-zero construction; its finite duality maps
+and regular algebra therefore extend with their adjunction maps.
+
+The quotient stage unit is compact. To check this over a model
+field, its Hom is rational reductive invariants of the underlying
+module. Exactness descends from a complex embedding: a lift of
+an invariant vector uses finitely many vectors, whose coactions
+give a finite linear system over the original field; a complex
+solution gives a solution there by Gaussian elimination.
+The common countable model also retains the normalized rational
+Reynolds integral: its values on the countable Hopf basis are
+countably many coefficients. Its two invariance identities and
+normalization are coefficientwise identities over that field.
+Inserting it in the full rational cobar gives the actual
+GSL.5–GSL.6 contraction, including unbounded complexes.
+Invariants commute with direct sums, so this is the continuous
+full functor. Compactness and the internal field-module
+bar then identify
+\[
+       (\Gamma_{Z_E})_L
+           =\Gamma_{(Z_E)_L},\qquad
+       \Gamma_{Z_E}=\operatorname{RHom}(\mathbf1,-).
+ \tag{GFP.30}
+\]
+On free scalar extensions this is compact Hom commuting with
+field tensor. The split free bar gives it on all objects.
+
+Let \(f:\mathcal R\to\mathcal T_E\) be the actual coefficient functor.
+The enhanced algebra, free module functor and integration are
+\[
+ \begin{gathered}
+ K_f=(\operatorname{Id}_{\mathcal R}\otimes f)R_{\mathcal R},\qquad
+ P_f=F_{K_f}(-\boxtimes\mathbf1),\\
+ J_f=(\operatorname{Id}_{\mathcal M}\otimes\Gamma_{Z_E})
+                                      \operatorname{oblv}_{K_f}.
+ \end{gathered}
+ \tag{GFP.31}
+\]
+Full algebra-action bars and GFP.29–GFP.30 give their actual
+geometric extensions, including units, counits, action maps and
+every derived transformation. In particular the point adjunctions
+and operator composite are
+\[
+ \begin{gathered}
+ \operatorname{RHom}(P_{f,L}\delta_y^!,F)\simeq y^!J_{f,L}F,\\
+ (J_fP_f)_L=J_{f,L}P_{f,L}.
+ \end{gathered}
+ \tag{GFP.32}
+\]
+For the original stage, ESG.13 and ESG.26 identify this with
+the scalar-extended \(\mathcal N_E\) and its conservative actual
+module forgetful functor. This statement does not identify every
+local system over \(L\) with a scalar extension of an old one.
+
+### 3.605. Compact universal coefficients on the finite stage
+
+For a finite representation \(V\), let \(\mathcal E_E(V)\) be the
+actual stage coefficient of BLI.16. The finite CW model of
+RBC.1–RBC.5 identifies it with a \(\mathcal T_E\)-valued local system.
+Its stalk at the chosen point is the tautological finite bundle
+\[
+        \mathcal E_E(V)|_x=K_E\otimes V\in\mathcal T_E^c .
+ \tag{GFP.33}
+\]
+Compactness is ESG.18–ESG.24: its Hom is rational invariants of
+the finite-representation dual tensored with the underlying module.
+All stalks are equivalent compact objects.
+
+A local system with compact stalks on a finite CW complex is compact
+in the full functor category. Attach its finitely many cells.
+Functors on a cell pushout form a pullback of functor categories;
+the mapping complex is the corresponding finite fibre of the
+mapping complexes on the old skeleton, the cell and its sphere.
+On a contractible cell it is Hom from a compact stalk.
+Induct on dimension for the attaching spheres and then on the
+number of cells. Finite fibres commute with colimits of complexes.
+Thus
+\[
+ \operatorname{Map}(\mathcal E_E(V),\operatorname{colim}F_\alpha)
+       \simeq\operatorname{colim}\operatorname{Map}(\mathcal E_E(V),F_\alpha)
+               \quad\text{in }\operatorname{Fun}(K_{\mathrm{CW}},\mathcal T_E).
+ \tag{GFP.34}
+\]
+The compactly generated \(\mathcal T_E\) is categorically dualizable.
+Tensor by it preserves the local-system category limit, and
+RBC.4's full continuous embedding remains full after this tensor.
+Consequently \(\mathcal E_E(V)\) is compact in
+\(\mathcal T_E\otimes\mathscr I_X\).
+The full finite-cell bar then gives
+\[
+       \mathcal E_E(V)\in
+       \operatorname{Thick}\{t_a\boxtimes L_b:
+               t_a\in\mathcal T_E^c,\ L_b\in\mathscr L_X\}.
+ \tag{GFP.35}
+\]
+Only finitely many of these objects occur for a fixed \(V\).
+Here \(\mathscr L_X\) is the actual bounded finite-connection
+operator category, not a set of monodromy isomorphism classes.
+
+Retain an actual finite-cell retract presentation \(\mathcal P_V\)
+and the entire equivalence to the coefficient. In full resolved
+DG models this includes closed maps and homotopies
+\[
+ u:\mathcal P_V\rightleftarrows\mathcal E_E(V):v,\qquad
+       dh_0=vu-\operatorname{id},\qquad
+       dh_1=uv-\operatorname{id}.
+ \tag{GFP.36}
+\]
+For a split retract retain its idempotent and splitting maps as
+well. Its finite free bar is a countable model for the splitting.
+This keeps the coefficient and its specified maps, including
+the normalized finite-projective fibre.
+
+### 3.606. A countable model retaining the entire coherent functor
+
+Choose split forms of \(G\) and \(H\) over a characteristic-zero
+prime-field model and their given complex identifications.
+The compact representation category has a countable skeleton:
+finite graded sums of the highest-weight irreducibles. Its
+matrix Hom spaces have finite bases in each relevant degree.
+There are countably many labels, finite tuples and coherence cells.
+Choose GFP.35–GFP.36 for each representation in this skeleton.
+Then there is a countable subfield
+\[
+ \begin{gathered}
+ k_0\subset\mathbf C,\quad
+ \text{with models of }X,G,H,K_E,\mathcal E_E\\
+ \text{and every specified tensor and action comparison}.
+ \end{gathered}
+ \tag{GFP.37}
+\]
+Here is the full countability argument. Compact stage objects have
+finite perfect equivariant models over the finite-cell framed
+algebra, by SDU.1–SDU.3 and ESG.18–ESG.24. Each bounded finite
+connection has a finite affine cover with finite bundle and
+connection matrices. Affine coordinate and operator algebras
+have countable algebraic bases. Their free module resolutions,
+Čech models and rational group action bars have countably many
+cells. A chosen map or higher homotopy is a column-finite
+countable matrix on those models, or a sequence of these matrices
+in the countable bar directions. It uses at most countably many
+complex coefficients. Compositions are finite on each column
+or finite bar word.
+
+Retain the maps, their inverses and all higher cells, at every
+finite arity. Each fixed column identity is a finite equation of
+the form
+\[
+      \sum_{\nu=1}^{r}\epsilon_\nu
+               a_{\nu,1}\cdots a_{\nu,s_\nu}=0,
+                   \qquad \epsilon_\nu\in\{1,-1\},
+ \tag{GFP.38}
+\]
+with the actual graded signs; differential terms are included.
+Take the field generated by all coefficients of this countable
+collection of data. A field generated by countably many elements
+over \(\mathbf Q\) is countable. The equations hold there because
+its inclusion into \(\mathbf C\) is injective. Explicit inverse
+and homotopy witnesses retain equivalences, rather than only
+cohomological identifications.
+
+This also covers finite-cell retracts and transformations:
+include their splitting maps, homotopies and all their coherent
+relations before taking the coefficient field. A finite perfect
+module or map descends by its finite projective matrices and
+their idempotent equations. The countable union here retains the
+whole infinite coherent diagram. The finite-object statement is
+also recorded in [the Stacks Project, Lemma 0BC7](https://stacks.math.columbia.edu/tag/0BC7).
+
+For any embedding \(\sigma:k_0\hookrightarrow\mathbf C\), the
+connection models remain bounded finite connections on the
+conjugate projective curve. The finite external presentations and
+all their retained comparisons give the actual coherent functor
+\[
+       \mathcal E_\sigma:
+        \operatorname{Rep}(H_\sigma)
+                      \longrightarrow\mathcal T_\sigma\otimes\mathscr I_{X_\sigma}.
+ \tag{GFP.39}
+\]
+Its tensor, unit and higher maps are the specified extended maps.
+Their full inclusions are faithful on transformation complexes,
+so the maps lift uniquely with their relations.
+The remaining representation objects and maps are supplied by
+the continuous full representation bar. Arbitrary scalar
+matrices are obtained by scalar extension, not by independent
+choices of their images.
+
+For the original embedding, these data recover \(\mathcal E_E\)
+with its full scalar action. The normalized coefficient evaluation
+and finite-set folds therefore give
+\[
+       f_0:\mathcal R_{X_0}\longrightarrow\mathcal T_0,\qquad
+       (f_0)_{\mathbf C}=f_E,\qquad (f_0)_L
+               \text{ is its actual extended coefficient functor}.
+ \tag{GFP.40}
+\]
+The construction uses the proper diagonal pairing and NTR's
+transpose, including the empty-coordinate unit. At the level
+of full categories, the comparison is GFP.29–GFP.32 and the split
+field-module bar. No claim that tensoring an individual infinite
+product of vector spaces preserves that product is used.
+
+### 3.607. The conjugate kernels are the actual IC kernels
+
+The source action also has a common countable model. There are
+countably many dominant labels and finite fusion strings.
+The bundle charts can be chosen from the finite framed Quot
+atlases indexed by integer degree and section bounds in §1.15.
+There are countably many such bounds and bundle components.
+Choose a finite affine cover at each bound; their nerves and
+finite-labelled correspondences are a countable family.
+Further chart comparisons are the actual transfer base changes.
+For each finite IC coefficient retain its smooth ambient,
+constant open-stratum normalization and algebraic
+intermediate-extension construction. On an open ambient \(T_0\)
+containing its smooth support stratum, let \(v\) be the closed
+stratum inclusion and \(j_0:T_0\hookrightarrow T\). The operator
+middle extension is
+\[
+ \operatorname{IC}_Z=
+       \operatorname{im}\bigl(
+          H^0(j_0)_!v_+\mathcal O_U
+                       \longrightarrow H^0(j_0)_*v_+\mathcal O_U\bigr),
+ \tag{GFP.41}
+\]
+with the given dimension and density convention. This formula
+is made in the supported smooth ambient.
+
+The closed transfer and ordinary open Čech functor are defined
+over the coefficient field. Their bounded coherence descends
+from the original complex realization as in GFP.26. Coherent
+duality is computed locally by the finite operator resolutions,
+so it commutes with field extension. Flat extension is exact on
+cohomology modules and images. Thus
+\[
+       ((j_0)_!F)_L=(j_{0,L})_!(F_L),\qquad
+       (\operatorname{im}\alpha)_L=\operatorname{im}(\alpha_L)
+ \tag{GFP.42}
+\]
+for these actual coherent coefficients and their canonical maps.
+The comparison includes the adjunction units and counits.
+
+After any complex embedding, GFP.41 is therefore the ordinary
+complex operator middle extension of the same normalized
+constant connection. The strict intermediate-extension
+characterization identifies it with the genuine IC object:
+\[
+                        (\operatorname{IC}_Z)_\sigma
+                                     =\operatorname{IC}_{Z_\sigma}.
+ \tag{GFP.43}
+\]
+This can also be checked in the full coherent target category:
+the two middle extensions inject into the same ordinary direct
+image and are the image of the same extraordinary-to-ordinary
+map. Their restrictions are the fixed constant coefficient,
+and their kernels and cokernels have no boundary subquotients.
+No assumption that an arbitrary holonomic object is regular is
+used. This specific coefficient is the regular middle extension.
+
+Include all finite kernel maps, inverse comparisons and higher
+fusion strings in the countable matrix collection of GFP.38.
+They remain coherent maps on the same actual geometric
+correspondences under every embedding. For the conjugate
+complex realization their unintegrated Hecke transforms have
+the normalized IC kernels GFP.43. Their source group labels
+and all integer shifts are unchanged. The half-root is its
+modeled line with the given square and fibre evaluations.
+The full regular algebra and action bars consequently give
+\[
+ \begin{gathered}
+       (T_0)_L=J_{f_0,L}P_{f_0,L},\qquad
+       (T_0)_{\mathbf C}=T_E,\\
+       (T_0)_\sigma
+            \text{ acts through the genuine}\\
+            \text{conjugate IC Hecke transforms}.
+ \end{gathered}
+ \tag{GFP.44}
+\]
+This is a comparison of the constructed maps and coherent bars,
+not a choice of unrelated isomorphisms on their cohomology.
+
+### 3.608. A compact-unit restricted coefficient operator
+
+Let \(\mathcal T\) be a compactly generated complex symmetric
+monoidal coefficient category with compact unit and an actual
+continuous strong tensor coefficient functor
+\(\operatorname{Rep}(H)\to\mathcal T\otimes\mathscr I_X\).
+Use its normalized Ran coefficient functor \(f\).
+The full kernel presentation and its actual transition maps are
+\[
+ K_f=(\operatorname{Id}\otimes f)R_{\mathcal R}
+      =\operatorname*{colim}_{\psi\in\Xi}
+                        (j_\psi\otimes\operatorname{Id}_{\mathcal T})B_{\psi,f}.
+ \tag{GFP.45}
+\]
+This is CDK.9–CDK.14 with the given coefficient functor.
+The representation kernel is the full finite-representation
+coend; the curve kernel is \(\Delta_*\omega\).
+The proper diagonal duality triangle recovers the coefficient
+itself, with NTR's actual curve-coordinate shifts.
+
+Ordinary \(\Gamma_{\mathcal T}=\operatorname{RHom}(\mathbf1,-)\)
+is continuous here by compactness of the unit. It passes through
+the entire kernel colimit, including the action faces, and gives
+\[
+ \overline B_{\psi,f}
+       \in\operatorname{Rep}(H)^{\otimes I}\otimes\mathscr I_X^{\otimes J},
+ \qquad
+ J_fP_f(m)=\operatorname*{colim}_{\psi}
+                              \Phi_\psi(\overline B_{\psi,f};m).
+ \tag{GFP.46}
+\]
+These are the actual coefficient contractions of CDK.12–CDK.16.
+Finite representation and bounded finite-connection generators
+preserve chartwise regular inputs by CDK.17–CDK.24. Their full
+generator bars and the outer colimit preserve that property.
+Hence
+\[
+                         J_fP_f(\mathcal M_{\mathrm{reg}})
+                                           \subset\mathcal M_{\mathrm{reg}} .
+ \tag{GFP.47}
+\]
+This proof needs neither an affine map to the restricted stack
+nor a particular Koszul presentation of \(\mathcal T\).
+
+The full enhanced algebra-action comparison BLI.19–BLI.21 gives
+the unintegrated Hecke coefficient in
+\(\mathcal M\otimes\mathcal T\otimes\mathscr I_X\).
+Continuous \(\Gamma_{\mathcal T}\) retains that coefficient.
+Thus every regular input satisfies
+\[
+       J_fP_f(m)\in\mathcal M^{\mathrm{Hl}},\qquad
+       \operatorname{SS}_\infty(J_fP_f(m))\subset\operatorname{Nilp}_G
+                         \quad(m\in\mathcal M_{\mathrm{reg}}).
+ \tag{GFP.48}
+\]
+The last implication is the necessary RHC.34–RHC.36 criterion
+on the now regular output. This proves the statement in every
+genus and for every compact-unit coefficient category with
+the displayed restricted functor and actual IC action.
+
+### 3.609. The new geometric point belongs to the extended original stage
+
+Let \(K/\mathbf C\) be arbitrary and let \(y\in Y_K(K)\).
+The bundle point has finite algebraic torsor data on a finite
+cover of the projective curve. Adjoin its finitely many new
+coordinates and the required constants to the countable model
+of GFP.37. The resulting subfield of \(K\) is still countable:
+\[
+       k_0\subset k_1\subset K,\qquad
+       y=y_0\otimes_{k_1}K,\qquad
+       \sigma:k_1\hookrightarrow\mathbf C .
+ \tag{GFP.49}
+\]
+GFP.21 supplies the last embedding. It need not fix the original
+complex realization of \(k_0\), and no embedding of all of \(K\)
+into \(\mathbf C\) is required.
+
+Construct the point object over \(k_1\) by GFP.25–GFP.28 and the
+actual stage operator by GFP.31 and GFP.40–GFP.44.
+Under \(\sigma\), the input is a genuine regular compact complex
+bundle point. GFP.39 retains the whole restricted coefficient
+functor, and GFP.43 retains the genuine IC kernels.
+GFP.47–GFP.48 therefore give
+\[
+       T_\sigma\delta_{y_\sigma}^!\in\mathcal M_{\sigma,\mathrm{reg}},
+       \qquad
+       \operatorname{SS}_\infty(T_\sigma\delta_{y_\sigma}^!)
+                                      \subset\operatorname{Nilp}_{G_\sigma}.
+ \tag{GFP.50}
+\]
+No regularity-descent assertion over \(K\) is needed.
+
+GFP.11 reflects this characteristic-support containment to the
+countable model and preserves it to \(K\). The actual point and
+operator comparisons identify the resulting object exactly:
+\[
+       (T_0\delta_{y_0}^!)_K
+                =J_{E,K}P_{E,K}\delta_y^!,\qquad
+       \operatorname{SS}_\infty(J_{E,K}P_{E,K}\delta_y^!)
+                                      \subset\operatorname{Nilp}_{G,K}.
+ \tag{GFP.51}
+\]
+This argument is degreewise valid on arbitrary cohomological tails:
+field tensor is exact, and every finite witness is handled by
+GFP.10–GFP.11.
+
+Apply the exact supported-image criterion GFP.20 inside the
+original extended enhanced stage. It proves
+\[
+                       P_{E,K}\delta_y^!\in\mathcal D_{E,K}
+                  \qquad\text{for every }K/\mathbf C,\ y\in Y_K(K).
+ \tag{GFP.52}
+\]
+This is membership in the scalar extension of the original
+regular Hecke-lisse stage. It does not replace that category by
+an unproved category of all newly defined regular objects over \(K\).
+
+### 3.610. The full original-complex Hecke-lisse image is regular
+
+Take \(F\in\mathcal N_E\) right-orthogonal to \(\mathcal D_E\).
+The actual continuous right-adjoint triangle of GFP.8 gives
+\[
+                  F_K\in(\mathcal D_{E,K})^\perp
+                            \qquad\text{for every }K/\mathbf C .
+ \tag{GFP.53}
+\]
+For every new rational bundle point GFP.52 and the actual enhanced
+point adjunction yield
+\[
+       0=\operatorname{RHom}(P_{E,K}\delta_y^!,F_K)
+                                      \simeq y^!J_{E,K}F_K .
+ \tag{GFP.54}
+\]
+If \(J_EF\ne0\), choose a nonzero smooth affine chart restriction.
+FE.1–FE.12 detects its underlying nonzero complex at a closed
+rational point after a residue-field extension. Composition of
+inverse images identifies this with the corresponding bundle
+point test in GFP.54, retaining its relative shift, fibre line
+and stabilizer. The contradiction gives \(J_EF=0\).
+Conservativity gives \(F=0\).
+
+The orthogonal localization has zero image, so GFP.8 gives
+equality of the full stages. Their actual forgetful images
+jointly generate by ESG.28. Consequently, in every genus,
+\[
+             \mathcal D_E=\mathcal N_E\text{ for every }E,
+             \qquad
+             \mathcal M^{\mathrm{Hl}}
+                   =\mathcal M_{\mathrm{reg}}\cap\mathcal M^{\mathrm{Hl}} .
+ \tag{GFP.55}
+\]
+This is an original-field theorem on all unbounded objects.
+The generators GFP.6 are compact generators of the full
+Hecke-lisse category.
+
+RSE.37–RSE.38 and NTR.16 identify the actual restricted Beilinson
+functor's full image with that category. RHC's necessary support
+implication now applies to every image object. Thus
+\[
+ \begin{gathered}
+ \operatorname{EssIm}\Pi_{\mathrm r}=\mathcal M^{\mathrm{Hl}}
+                         \subset\mathcal M_{\mathrm{reg}},\\
+ \operatorname{SS}_\infty(\Pi_{\mathrm r}m)\subset\operatorname{Nilp}_G
+                               \qquad(m\in\mathcal M).
+ \end{gathered}
+ \tag{GFP.56}
+\]
+The input has no regularity, holonomicity or cohomological bound.
+No unit, counit or adjunction for the nonunital Ran algebra is
+inferred from this image theorem.
+
+Equality with the independently defined category of *all*
+nilpotent cohomological support remains a separate converse.
+GFP.56 alone does not prove regularity of every such object,
+the unrestricted genus-zero cohomological converse, or AIC.17's
+full supported factorization. The completed projective-line
+coefficient remains distinct from the ind-connection category.
+Derived tempered Satake retains its separate requirements.
+For the field-point strategy see
+[Arinkin–Gaitsgory–Kazhdan–Raskin–Rozenblyum–Varshavsky, §20.9](https://arxiv.org/abs/2010.01906v2).
+The operator, point, support, common-model and orthogonality
+arguments used here are given above.
+
+![Two complex realizations of a countable coefficient model, actual field-point support and the full original-field Hecke-lisse regular image.](figures/geometric-field-point-completion.svg)
+
+*Figure 3.73.* The countable fields and their embeddings are
+GFP.21 and GFP.37–GFP.49. The auxiliary complex realization is
+used for GFP.50; faithful support reflection and extension give
+GFP.51–GFP.52. The actual orthogonal triangle and all-field
+point adjunction give GFP.53–GFP.56. The final inclusion is
+into independent nilpotent support; its converse is a separate
+statement.
+
+### 3.611. Exercise and solution: a conjugate algebraic connection
+
+**Exercise 3.HM.** Let \(E\) be the projective curve and differential
+\[
+        Y^2Z=X^3-XZ^2,\qquad
+        x=X/Z,\ y=Y/Z,\qquad \omega=\frac{dx}{2y}.
+ \tag{GFP.57}
+\]
+Check smoothness and regularity of \(\omega\), including infinity.
+For transcendental \(\alpha\in\mathbf C\), construct a countable
+field model of \(d+\alpha\omega\) and compute its conjugate under
+\(\alpha\mapsto2\alpha\).
+
+**Solution 3.HM.** In the affine part, the possible branch points
+have \(y=0\) and \(x=0,1,-1\). There \(3x^2-1\ne0\), and
+\(\omega=dy/(3x^2-1)\) is regular. Away from them \(y\) is invertible.
+The same derivatives prove affine smoothness. The unique point
+at infinity is \([0:1:0]\), where the derivative of the equation
+with respect to \(Z\) is nonzero.
+
+On \(Y=1\) put \(u=X/Y,v=Z/Y\). Direct differentiation gives
+\[
+      v=u^3-uv^2,\qquad
+      (1+2uv)\,dv=(3u^2-v^2)\,du,\qquad
+                       \omega=-\frac{du}{1+2uv}.
+ \tag{GFP.58}
+\]
+The denominator is a unit at \((0,0)\), so the differential is
+regular and nonzero there. For the last equality substitute
+\(x=u/v,y=1/v\) into \(dx/(2y)\) and use \(u^3=v+uv^2\).
+
+Over the countable field \(k_0=\mathbf Q(\alpha)\), the trivial
+line has the algebraic connection
+\[
+       \nabla_\alpha(f e)=(df+\alpha\omega f)e,\qquad
+       \sigma(\alpha)=2\alpha,\qquad
+                         \nabla_{\alpha,\sigma}=d+2\alpha\omega .
+ \tag{GFP.59}
+\]
+Transcendence makes this field embedding well defined. The curve
+and differential are defined over \(\mathbf Q\), so they are
+unchanged. On a smooth curve every two-form is zero; hence the
+curvature vanishes. The degree-zero good filtration of this
+finite line bundle has no positive symbol action:
+\[
+             \nabla_\alpha^2=0,\qquad
+             \operatorname{Ch}(\mathcal O_E,\nabla_\alpha)=0_E,
+             \qquad
+             \operatorname{Ch}(\mathcal O_E,\nabla_{\alpha,\sigma})=0_E .
+ \tag{GFP.60}
+\]
+The conjugation concerns algebraic coefficient matrices.
+It makes no assertion about applying \(\sigma\) to analytic
+periods or exponentials of those periods.
+
+### 3.612. Exercise and solution: a new submodule inside an old finite extension
+
+**Exercise 3.HN.** On the affine line let
+\[
+      \delta=D/Dz,\quad M=\delta\oplus\delta,\quad
+      K=\mathbf C(u),\qquad
+      A=\{(m,um):m\in\delta_K\}\subset M_K .
+ \tag{GFP.61}
+\]
+Show that \(A\) is a coherent new-field operator submodule which
+does not descend as a submodule of \(M\). Compute its characteristic
+support and relate it to GFP.10.
+
+**Solution 3.HN.** Both component actions commute with multiplication
+by \(u\). Thus the graph is an actual submodule isomorphic to
+\(\delta_K\), and the multiplicity-space projector is
+\[
+           e(u)=\begin{pmatrix}1&0\\u&0\end{pmatrix},
+           \qquad e(u)^2=e(u),\qquad \operatorname{im}e(u)=K(1,u).
+ \tag{GFP.62}
+\]
+In the normal basis \(z\partial^j\delta=-j\partial^{j-1}\delta\).
+Every submodule of \(\delta^2\) is
+\(\mathbf C[\partial]\otimes W\) for a subspace \(W\subset\mathbf C^2\).
+Indeed the operator \(-\partial z\) acts on the finitely many
+degrees of any vector by the distinct integers \(j\).
+Polynomial interpolation extracts each homogeneous component;
+applying \(z^j\) extracts its constant coefficient. These
+coefficients lie in \(W=\ker z\) of the submodule, and \(\partial\)
+recovers all their normal monomials. In particular descent of \(A\)
+would require
+\[
+       W\otimes_{\mathbf C}K=K(1,u),\qquad
+       W=\mathbf C(a,b),\quad a\ne0,\qquad u=b/a\in\mathbf C ,
+ \tag{GFP.63}
+\]
+contradicting transcendence.
+
+The extended old finite module \(M_K\) nonetheless contains \(A\).
+Its order filtration restricts to the usual filtration on
+\(\delta_K\), giving
+\[
+          \operatorname{gr}A=K[\xi],\quad z=0,\qquad
+          \operatorname{Ch}(A)=T^*_{\{0\}}\mathbf A^1_K
+                             =\operatorname{Ch}(M)_K .
+ \tag{GFP.64}
+\]
+Thus support control requires containment in an extended finite
+old module, as GFP.10 proves. Descent of the new submodule itself
+is unnecessary. The cone in this example is the indicated
+cotangent fibre, not a claim about the global nilpotent cone
+of a bundle stack.
+
+### 3.613. Holonomic coefficients with no curve covectors
+
+Let \(X/\mathbf C\) be a smooth projective connected curve, of any
+genus, and let \(B\) be smooth affine of finite type. Use left operator
+modules and ordinary exterior products. Write
+\[
+ \begin{gathered}
+ \mathscr H_B=\operatorname{Ind}
+                 \bigl(D^b_{\mathrm{hol}}(\mathcal D_B)\bigr),\\
+ \mathscr I_X=\operatorname{Ind}(\mathscr L_X),\qquad
+ \mathscr Q_X=\lim_n\mathscr I_X^{\ge-n}.
+ \end{gathered}
+ \tag{HCF.1}
+\]
+Here the bounded holonomic category is the full subcategory of
+bounded operator complexes with holonomic cohomology. This notation
+does not identify it with an abstract bounded derived category of
+its heart. The curve categories and the full realization of
+\(\mathscr Q_X\) are those of RSC.1 and PAC.8–PAC.12.
+
+For a simple holonomic module there is a precise factorization:
+\[
+ \begin{gathered}
+ N\text{ simple holonomic},\quad
+ \operatorname{Char}(N)\subset T^*B\times0_X\\
+ \Longrightarrow\quad N\simeq M_B\boxtimes L,\\
+ M_B\text{ simple holonomic},\quad
+ L\text{ an irreducible finite connection on all of }X .
+ \end{gathered}
+ \tag{HCF.2}
+\]
+Regularity of \(M_B\) is not a premise or a conclusion.
+We will also prove the actual external-category membership
+\[
+ \begin{gathered}
+ K\text{ bounded below},\quad
+ H^mK\text{ ind-holonomic},\quad
+ \operatorname{SS}_\infty(K)\subset T^*B\times0_X\\
+ \Longrightarrow\quad
+ K\in\operatorname{im}\bigl(\mathscr H_B\otimes\mathscr I_X
+                 \longrightarrow\operatorname{Dmod}(B\times X)\bigr).
+ \end{gathered}
+ \tag{HCF.3}
+\]
+Ind-holonomic means that every coherent submodule is holonomic.
+For objects with this cohomological condition and both infinite
+tails, the corresponding exact criterion is
+\[
+ \begin{gathered}
+ \operatorname{SS}_\infty(K)\subset T^*B\times0_X\\
+ \Longleftrightarrow\quad
+ K\in\operatorname{im}\bigl(\operatorname{Dmod}(B)\otimes\mathscr Q_X
+                 \longrightarrow\operatorname{Dmod}(B\times X)\bigr).
+ \end{gathered}
+ \tag{HCF.4}
+\]
+The proof will retain the full operator action and all maps, not
+only the cohomology modules.
+
+### 3.614. Proper horizontal Hom has a finite connection on the base
+
+Let \(U\) be smooth connected and let \(V\) be a finite connection on
+\(U\times X\). No condition is imposed at a compactification of \(U\).
+For a finite connection \(L\) on \(X\), put
+\[
+ \begin{gathered}
+ W=p_X^*L^\vee\otimes V,\qquad
+ C_L(V)=Rp_{U,*}\operatorname{DR}_{X}(W),\\
+ \operatorname{DR}_{X}(W)=
+          [\,W\xrightarrow{\nabla_X}W\otimes p_X^*\Omega_X^1\,],
+              \qquad\text{degrees }0,1 .
+ \end{gathered}
+ \tag{HCF.5}
+\]
+This is the ordinary relative de Rham complex. With the direct-image
+normalization of [Direct images and the relative de Rham complex,
+§6](../../GL-DMOD/direct-images-and-the-relative-de-rham-complex.html#6-relative-cohomology-acquires-the-gauss-manin-connection),
+its degree-zero cohomology is
+\[
+ M_L(V)=H^0C_L(V)=H^{-1}p_{U,+}W .
+ \tag{HCF.6}
+\]
+In particular it is not degree zero of the shifted operator direct
+image.
+
+Each term of HCF.5 is coherent over the structure sheaf. Properness
+of \(p_U\), and [Coherence of higher direct images under proper
+morphisms, Theorem 4.1](../../AG-QC/proper-morphisms-and-coherent-direct-images.html#4-a-projective-modification-supplies-the-witness),
+make the finitely many terms of its hypercohomology spectral
+sequence coherent on \(U\). A finite affine cover of \(X\) gives a
+bounded Čech–de Rham totalization, so there are only finitely many
+possible total degrees. It follows that every \(H^qC_L(V)\) is
+coherent.
+
+The product gives a specified horizontal action of base vector
+fields. For a base field \(\xi\) and a curve field \(\eta\),
+integrability gives
+\[
+ [\nabla_\xi,\nabla_\eta]=0,\qquad
+ \nabla_\xi(a s)=\xi(a)s+a\nabla_\xi(s).
+ \tag{HCF.7}
+\]
+Thus the base action commutes with the relative differential and
+the Čech maps, and induces an integrable connection on every
+cohomology module. The Taylor and coherent-connection argument
+of §3.1 makes a coherent module with this connection locally free.
+Consequently
+\[
+                 H^qC_L(V)\in\operatorname{Conn}_{\mathrm f}(U)
+                 \quad\text{for every }q.
+ \tag{HCF.8}
+\]
+This proof uses proper coherent image and the actual connection
+operators; it uses no regularity assertion for \(V\) along \(U\).
+
+### 3.615. Fibre comparison and the actual evaluation map
+
+Work on an affine open \(\operatorname{Spec}A\subset U\), and take a
+finite affine cover of the separated curve \(X\). All finite
+intersections are affine. Sections of the terms of HCF.5 on these
+products are flat over \(A\): their coordinate rings are flat
+over \(A\), and the coefficient bundles are finite projective on
+each affine product. Therefore the bounded total complex \(C\)
+is a complex of flat \(A\)-modules and has the termwise comparison
+\[
+ C\otimes_A^L A'
+       \simeq C\otimes_A A'
+       \simeq C_L(V)_{A'}
+                   \quad\text{for every }A\text{-algebra }A'.
+ \tag{HCF.9}
+\]
+The last complex is the actual relative Čech–de Rham complex
+of the pulled-back bundle. Its relative connection is defined
+after any such change of base.
+
+After shrinking the base, the finitely many modules \(H^qC\)
+are finite projective, by HCF.8. Choose cycle lifts of their
+projective generators. Projectivity lifts the identity of
+\(H^qC\) to an \(A\)-linear map into the cycles, and hence gives
+a quasi-isomorphism
+\[
+           \bigoplus_q H^qC[-q]\longrightarrow C .
+ \tag{HCF.10}
+\]
+Only finitely many terms occur. Both sides are K-flat: the first
+is a bounded projective complex, the second a bounded flat
+complex. Tensoring the comparison therefore computes derived
+tensor. Taking its cohomology proves base change for each
+\(H^qC\). In particular, for every complex point \(u\),
+\[
+ M_L(V)_u
+       \simeq H^0_{\mathrm{dR}}(X,L^\vee\otimes V_u)
+       =\operatorname{Hom}_{\mathcal D_X}(L,V_u).
+ \tag{HCF.11}
+\]
+The final equality follows directly from the degree-zero cocycle
+condition: it is a global horizontal section of the Hom bundle.
+The auxiliary \(A\)-linear splitting HCF.10 is used only for
+base change. No splitting compatible with the base connection
+is asserted.
+
+A section of \(M_L(V)\) is a relative horizontal map from \(L\).
+Evaluating such sections gives
+\[
+             \mathrm{ev}:p_U^*M_L(V)\otimes p_X^*L
+                                      \longrightarrow V .
+ \tag{HCF.12}
+\]
+The Leibniz connection on Hom makes this map compatible with the
+base derivatives. Relative horizontality makes it compatible
+with the curve derivatives. It is thus a map of the actual
+connections on \(U\times X\). Formula HCF.11 identifies each fibre
+with the usual evaluation of horizontal maps.
+
+### 3.616. Splitting a simple algebraic connection
+
+Assume now that \(V\ne0\) is simple as an algebraic connection on
+\(U\times X\). Choose a complex point \(u_0\). Finite connections
+on \(X\) form an abelian category: submodules and quotients of a
+finite bundle are coherent, and the connection theorem makes
+them locally free. A proper nonzero subquotient has strictly
+smaller positive rank. Hence \(V_{u_0}\) contains a simple finite
+connection \(L\).
+
+Its endomorphisms are finite dimensional, since
+\[
+ \operatorname{End}_{\mathcal D_X}(L)
+       \subset H^0(X,L^\vee\otimes L),
+       \qquad \dim_{\mathbf C}H^0(X,L^\vee\otimes L)<\infty .
+ \tag{HCF.13}
+\]
+Finiteness is proper coherent cohomology. A nonzero endomorphism
+of a simple object is invertible. Each element of this finite
+division algebra has a complex eigenvalue under left
+multiplication; subtracting that scalar cannot be invertible.
+It must be zero. Thus
+\[
+                     \operatorname{End}_{\mathcal D_X}(L)=\mathbf C .
+ \tag{HCF.14}
+\]
+For any finite connection \(E\) on \(X\), evaluation
+\[
+ \operatorname{Hom}_{\mathcal D_X}(L,E)\otimes L\longrightarrow E
+                          \quad\text{is injective}.
+ \tag{HCF.15}
+\]
+Indeed a finite direct sum of copies of a simple object is
+semisimple. One elementary proof is induction on the number
+of summands: a simple subobject has a nonzero projection to one
+summand, which splits it; quotient by it and continue.
+If the evaluation from a basis of Hom had nonzero kernel,
+that kernel would contain a copy of \(L\). Its component maps
+would be scalars by HCF.14, giving a nonzero linear relation
+among that basis. This is impossible.
+
+Apply HCF.15 to every \(V_u\). HCF.11 shows that HCF.12 is
+injective on all fibres. A map of finite vector bundles with
+injective fibres is locally a split injection: an appropriate
+maximal minor is a unit near each point. Thus its image is a
+subbundle with connection. It is nonzero at \(u_0\), so it is
+a nonzero subconnection of the simple \(V\). Therefore
+\[
+                  M_L(V)\boxtimes L\xrightarrow{\sim}V .
+ \tag{HCF.16}
+\]
+Any nonzero proper subconnection of \(M_L(V)\) would give one
+of \(V\); hence \(M_L(V)\) is simple. The splitting is the
+specified evaluation map, rather than an identification
+obtained from topological monodromy.
+
+### 3.617. The product open of a simple holonomic module
+
+Let \(N\) satisfy the hypotheses of HCF.2. Componentwise
+involutivity, generic rank and conic isotropy give EFC.4–EFC.7.
+Their proof applies to every holonomic module: it uses the
+Lagrangian property, not regular singularities. Thus
+\[
+ \operatorname{Char}(N)=
+       \bigcup_i\bigl(\overline{T^*_{(W_i)_{\mathrm{sm}}}B}\times0_X\bigr).
+ \tag{HCF.17}
+\]
+By [Preservation of holonomicity and minimal extensions,
+Theorem 5.1](../../GL-DMOD/preservation-of-holonomicity-and-minimal-extensions.html#5-classification-and-the-affine-line-examples),
+the support of a simple holonomic module is irreducible.
+Here it is \(W\times X\), for one closed irreducible \(W\subset B\).
+Remove the singular locus of \(W\) and its intersections with
+the proper \(W_i\)'s. On a nonempty smooth connected open \(U\)
+of \(W\), supported Kashiwara removes the normal conormal factor.
+The remaining module has zero characteristic variety, so
+\[
+           N|_{U\times X}=V,\qquad
+           V\text{ a nonzero finite connection on }U\times X .
+ \tag{HCF.18}
+\]
+Restriction here includes Kashiwara's inverse on the smooth
+support, with its actual normal line and shift.
+
+The connection \(V\) is simple. Restriction of a simple
+holonomic module to a nonempty open in its support remains
+simple: a proper nonzero subobject would give, by the heart
+shriek adjunction, a nonzero map to the original simple module.
+That map is surjective; restriction would make the proper
+subobject surject onto the whole restriction. This contradiction,
+and exact supported Kashiwara, prove the assertion.
+HCF.16 now gives
+\[
+          V\simeq E_U\boxtimes L,\qquad
+          E_U=M_L(V)\text{ simple finite on }U .
+ \tag{HCF.19}
+\]
+For \(j:U\hookrightarrow B\) put
+\[
+                         M_B=j_{!*}E_U .
+ \tag{HCF.20}
+\]
+The arbitrary holonomic minimal-extension theorem, not a
+regular Riemann–Hilbert comparison, defines this module.
+
+### 3.618. Middle extension commutes with the finite curve factor
+
+Let \(g=j\times\operatorname{id}_X\). The actual comparisons are
+\[
+ \begin{aligned}
+ (j_*E_U)\boxtimes L&\simeq g_*(E_U\boxtimes L),\\
+ (j_!E_U)\boxtimes L&\simeq g_!(E_U\boxtimes L).
+ \end{aligned}
+ \tag{HCF.21}
+\]
+To prove the first, factor the locally closed map into a closed
+embedding and an open immersion. Closed transfer is the finite
+normal operator formula and commutes with the independent
+finite connection. Open transfer is the ordinary finite affine
+Čech localization complex. On each product chart its sections
+and localizations commute with the exterior factor; these
+identities respect both sets of derivatives and all Čech maps.
+This proves the first comparison with its specified restriction.
+
+For the second comparison use
+\[
+ \mathbb D_{B\times X}(A\boxtimes L)
+                   \simeq\mathbb D_B(A)\boxtimes L^\vee,
+                 \qquad A\in D^b_{\mathrm{hol}}(B).
+ \tag{HCF.22}
+\]
+Here the finite local operator-projective resolution of \(A\)
+and the finite Spencer resolution of \(L\) compute the dual.
+On a product chart their tensor–Hom evaluation is the tensor
+of the two finite dual evaluations. The Koszul signs are those
+of the total tensor complex. Side change uses
+\(\omega_{B\times X}=\omega_B\boxtimes\omega_X\);
+the dimension shifts add. The connection Spencer calculation
+cancels the curve dimension shift and gives \(L^\vee\).
+The finite chart mapping diagrams glue these evaluations.
+This proves HCF.22 and its compatibility with the actual
+evaluation maps. Duality applied to the first HCF.21 comparison
+now proves the second.
+
+Under HCF.21, the extraordinary-to-ordinary map is
+\[
+       (j_!E_U\longrightarrow j_*E_U)\boxtimes\operatorname{id}_L .
+ \tag{HCF.23}
+\]
+Both are the adjunction map whose restriction is the identity;
+the transfer evaluation comparisons retain that adjunction.
+Exterior tensor with a finite locally free connection is exact.
+It therefore commutes with the heart image defining minimal
+extension, and gives
+\[
+        g_{!*}(E_U\boxtimes L)
+                  \simeq (j_{!*}E_U)\boxtimes L
+                  \xrightarrow{\sim}N .
+ \tag{HCF.24}
+\]
+For the last map, the simple \(N\) has no boundary submodule
+or quotient relative to its nonzero restriction. The uniqueness
+part of the same minimal-extension theorem extends HCF.19.
+This proves HCF.2, including singular closed supports.
+
+### 3.619. Full external categories and finite extensions
+
+The exterior functor and its actual mapping comparison are
+\[
+ \begin{gathered}
+ J^{\mathrm{hol}}_B:\mathscr H_B\otimes\mathscr I_X
+                          \longrightarrow\operatorname{Dmod}(B\times X),\\
+ \operatorname{RHom}(A\boxtimes L,A'\boxtimes L')
+       \simeq\operatorname{RHom}_B(A,A')
+                         \otimes\operatorname{RHom}_X(L,L').
+ \end{gathered}
+ \tag{HCF.25}
+\]
+Use bounded coherent holonomic \(A,A'\) and bounded finite
+connection complexes \(L,L'\) first. The finite local operator
+resolutions and ordered finite Čech mapping diagrams of
+EFC.14–EFC.15 give precisely this map; that calculation did not
+use regularity of its first factor. These objects are compact
+in their ind-categories. Their products are bounded coherent
+operator objects, compact in the target by RN.4.
+The full multi-object free bar extends the mapping comparison
+to arbitrary objects. Thus
+\[
+ \begin{gathered}
+ J^{\mathrm{hol}}_B\text{ is full and continuous};\\
+ \text{its stable image is closed under retracts}.
+ \end{gathered}
+ \tag{HCF.26}
+\]
+Every coherent holonomic \(N\) has finite length. Characteristic
+support is a Serre condition, so every simple factor of a module
+with zero curve covectors satisfies HCF.2. Its finite extension
+triangles, with their actual extension morphisms, lift through
+the full stable image. Therefore
+\[
+ \begin{gathered}
+ N\text{ coherent holonomic},\quad
+ \operatorname{Char}(N)\subset T^*B\times0_X\\
+                         \Longrightarrow N\in\operatorname{im}J^{\mathrm{hol}}_B .
+ \end{gathered}
+ \tag{HCF.27}
+\]
+An arbitrary quasi-coherent operator module on \(B\times X\)
+is the filtered union of its coherent operator submodules.
+The HRI.6 proof uses coherent structure-sheaf submodules
+containing finitely many prescribed vectors and their operator
+spans; local operator Noetherianity makes these spans coherent.
+That proof imposes no regularity condition. For ind-holonomic
+cohomology every such finite span is holonomic.
+Apply HCF.27 to these spans, then continuity to their entire
+filtered diagram. Finite Postnikov triangles handle bounded
+complexes. If \(K\) is only bounded below, its upper truncations
+give the actual comparison
+\[
+        \operatorname*{colim}_{n}\tau^{\le n}K
+                           \xrightarrow{\sim}K
+                           \in\operatorname{im}J^{\mathrm{hol}}_B .
+ \tag{HCF.28}
+\]
+It is an equivalence because each cohomology module is eventually
+constant and filtered colimits are exact. Fullness lifts all
+truncation maps. This proves HCF.3 in every genus.
+
+### 3.620. Both infinite tails and the original affine operator action
+
+Let \(K\) now have arbitrary unbounded ind-holonomic cohomology
+and zero curve covectors. Put \(R=D(B)\) and use the exact
+coefficient functor of PAC.14:
+\[
+ \mathsf U_BK=p_{X,*}\operatorname{oblv}_{B\text{-}\mathcal D}K,
+ \qquad H^m\mathsf U_BK=\mathsf U_BH^mK .
+ \tag{HCF.29}
+\]
+These are ordinary affine sections, retaining the commuting
+curve action; they are not de Rham integration over \(B\).
+For each finite holonomic submodule \(N\subset H^mK\),
+HCF.27 supplies a preimage. The continuous bilinear map
+\((A,L)\mapsto\Gamma(B,\operatorname{oblv}A)\otimes L\)
+has, after \(i_X\), exactly the functor \(\mathsf U_BJ_B\).
+The full free bar extends its exterior-generator comparison.
+Thus \(\mathsf U_BN\) lies in the image of \(i_X\), in degree zero.
+Its cohomology is an ind-connection by PAC.9. Taking the
+actual coherent unions gives
+\[
+ H^m(\mathsf U_BK)\in\operatorname{Ind}\operatorname{Conn}_{\mathrm f}(X),
+ \qquad j_X(Q)\xrightarrow{\sim}\mathsf U_BK,\quad Q\in\mathscr Q_X .
+ \tag{HCF.30}
+\]
+No lower bound was used: PAC.9 is precisely the full completed
+coefficient criterion on both tails.
+
+Retain the entire original left \(R\)-action on \(\mathsf U_BK\).
+Continuity of \(j_X\) gives
+\[
+          j_X(R^{\otimes n}\otimes Q)
+                         =R^{\otimes n}\otimes j_X(Q).
+ \tag{HCF.31}
+\]
+Its full faithfulness lifts every action face, multiplication,
+unit and higher homotopy of the free \(R\)-module bar. Unit
+insertion contracts the augmentation after \(j_X\), hence
+before this conservative functor as well. PAC.13 identifies
+the resulting module with an actual exterior-category object:
+\[
+ \widetilde K\in\operatorname{Dmod}(B)\otimes\mathscr Q_X,\qquad
+                      J_B^{\mathscr Q}\widetilde K\xrightarrow{\sim}K .
+ \tag{HCF.32}
+\]
+Both functions and derivatives in \(R\) are retained. This proves
+the forward implication of HCF.4 with all original maps.
+
+### 3.621. The reverse implication and chart descent
+
+The functor \(J_B^{\mathscr Q}\) is fully faithful:
+it is \(R\)-internal modules in the full \(j_X\), by PAC.13
+and PAC.21–PAC.22. Its comparison identifies its exact
+essential image by forgetting only the base operator action:
+\[
+ K\in\operatorname{im}J_B^{\mathscr Q}
+                 \Longleftrightarrow
+ \mathsf U_BK\in\operatorname{im}j_X .
+ \tag{HCF.33}
+\]
+Every ind-connection on \(X\) has zero characteristic covectors.
+Its restriction to an affine curve chart is flat over the
+curve ring. Hence the underlying module of every
+\(H^m(\mathsf U_BK)\) is a union of finite connections.
+For a coherent submodule \(N\subset H^mK\), finitely many
+operator generators on a curve chart are contained in such
+a finite curve connection after applying \(\mathsf U_B\).
+The original \(R\)-action can produce more vectors, but it
+commutes with the curve operators. Their \(D_X\)-spans stay
+finite connections. The good-filtration argument of
+EFC.19–EFC.24, equivalently its relative finite-generator
+criterion, gives
+\[
+             \operatorname{Char}(N)\subset T^*B\times0_X .
+ \tag{HCF.34}
+\]
+Here is also the direct symbol argument. Choose finitely many
+generators of \(N\) over \(D(B)\otimes D(C)\). Place all of
+them in one finite \(D(C)\)-connection submodule \(E\) of the
+underlying curve module. Commutation defines a map
+from \(D(B)\otimes_{\mathbf C}E\) into \(H^mK|_{B\times C}\).
+Its image \(P\) is coherent and contains \(N|_{B\times C}\),
+since it contains the chosen operator generators. The
+product good filtration on the induced module has support
+in \(T^*B\times0_C\). Its quotient \(P\) and then the
+submodule \(N|_{B\times C}\) have that support by the
+characteristic Serre rule. The finite connection \(E\)
+need not itself be contained in \(N\).
+Localization in the \(B\)-coordinates and
+the finite curve cover give HCF.34. Taking all finite
+cohomology submodules proves the reverse HCF.4 implication.
+
+For a smooth bundle chart or one of the bounded quotient
+presentations of §1.15 the same condition can be tested on
+an affine cover. Smooth inverse transfer retains
+ind-holonomic cohomology and the zero curve covectors,
+with its fixed line and shift. The chartwise lifts HCF.32
+have unique compatible transition maps by fullness.
+Since \(\mathscr Q_X\) is dualizable by PAC.12, tensor by it
+commutes with the actual strong-descent limits. Therefore
+\[
+ \begin{gathered}
+ J_Y^{\mathscr Q}:\operatorname{Dmod}(Y)\otimes\mathscr Q_X
+                         \hookrightarrow\operatorname{Dmod}(Y\times X)
+                      \text{ is full},\\
+ K\text{ chartwise ind-holonomic},\quad
+ \operatorname{SS}_\infty(K)\subset T^*Y\times0_X
+                     \Longleftrightarrow K\in\operatorname{im}J_Y^{\mathscr Q}.
+ \end{gathered}
+ \tag{HCF.35}
+\]
+The equivalence is asserted within the indicated
+ind-holonomic class. It includes \(Y=\operatorname{Bun}_G(X)\)
+using the same normalized smooth chart convention as PAC.23.
+On arbitrary coefficient objects there is no assertion that
+the first factor is holonomic.
+
+Both affine action lifting and descent retain the actual
+operator object:
+\[
+ J_Y^{\mathscr Q}\widetilde K\simeq K,\qquad
+ \operatorname{Map}(\widetilde K,\widetilde K')
+                         \simeq\operatorname{Map}(K,K').
+ \tag{HCF.36}
+\]
+The comparison does not tensor an individual infinite product
+of mapping complexes with a field or with a coefficient category.
+
+### 3.622. Genus and the remaining Hecke support converse
+
+For positive genus PAC.12 identifies completed coefficients
+with ind-connections. HCF.4 and HCF.35 therefore give, on
+both cohomological tails,
+\[
+ \begin{gathered}
+ g(X)>0,\quad K\text{ chartwise ind-holonomic}:\\
+ \operatorname{SS}_\infty(K)\subset T^*Y\times0_X
+       \Longleftrightarrow
+ K\in\operatorname{im}
+       \bigl(\operatorname{Dmod}(Y)\otimes\mathscr I_X
+                    \longrightarrow\operatorname{Dmod}(Y\times X)\bigr).
+ \end{gathered}
+ \tag{HCF.37}
+\]
+In every genus HCF.3 supplies the ind-connection conclusion
+for objects bounded below on each relevant chart.
+For the unrestricted projective-line coefficient, keep the
+actual loop action:
+\[
+ B_{\mathrm{loop}}=T_{\mathbf C}(\mathbf C[1]),\quad |u|=-1,
+ \qquad v=u^2,\quad |v|=-2,\qquad
+ \mathscr Q_{\mathbf P^1}=\operatorname{Mod}_{B_{\mathrm{loop}}}.
+ \tag{HCF.38}
+\]
+Its ind-connection subcategory is the \(v\)-torsion subcategory
+PAC.32, not the whole completed category. Accordingly
+\[
+ \begin{gathered}
+ K\in\operatorname{im}J_B^{\mathscr I}
+        \Longleftrightarrow
+        Q\in\operatorname{Loc}_{\mathscr Q_{\mathbf P^1}}(\mathbf C),\\
+                    Q\text{ the actual coefficient of HCF.30}.
+ \end{gathered}
+ \tag{HCF.39}
+\]
+To justify the backward implication, the full \(R\)-action
+lifts through the full continuous inclusion of this
+subcategory, with the same split bar HCF.31. The forward
+implication follows by applying ordinary affine sections
+to the exterior generators and their full bar.
+
+These results remove the regular-input assumption from the
+holonomic curve-parameter factorization. They do not
+themselves identify every independently nilpotent-supported
+bundle object with the Hecke-lisse category:
+\[
+ \begin{gathered}
+ \{F:\operatorname{SS}_\infty(F)\subset\operatorname{Nilp}_G\}
+                     \ \subset\ \mathcal M^{\mathrm{Hl}}
+                \\
+                \text{remains a separate assertion}.
+ \end{gathered}
+ \tag{HCF.40}
+\]
+Its application requires the actual Hecke kernel support
+transport on the full input class, and in genus zero the
+restricted coefficient condition. GFP.55–GFP.56 gives the
+reverse containment and regularity on the actual image.
+AIC.17's full supported factorization, the other geometric
+ground fields and derived tempered Satake retain their
+separate requirements.
+
+Free further reading for parameter tensor products is
+[Arinkin–Gaitsgory–Kazhdan–Raskin–Rozenblyum–Varshavsky,
+Appendix E.9](https://arxiv.org/abs/2010.01906v2).
+The proper horizontal-Hom evaluation, algebraic
+middle-extension comparison and full completed action
+arguments used here are proved above.
+
+![Proper horizontal Hom and evaluation split simple holonomic coefficients, while full action bars retain the completed coefficient on both tails.](figures/holonomic-curve-factors.svg)
+
+*Figure 3.74.* HCF.5–HCF.16 give the proper horizontal
+Hom bundle and its actual evaluation for a simple connection.
+HCF.17–HCF.28 extend it across singular supports and through
+finite extensions and upper truncations. HCF.29–HCF.36
+retain the full affine action on both tails. HCF.37–HCF.39
+state the genus-dependent coefficient conclusions.
+
+### 3.623. Exercise and solution: an irregular base factor
+
+**Exercise 3.HO.** Let \(X\) and its nonzero regular
+differential \(\omega\) be the elliptic curve in GFP.57–GFP.58.
+For \(\alpha\in\mathbf C\), take the finite line connection
+\(L_\alpha=(\mathcal O_X,d+\alpha\omega)\), and put
+\[
+ M=(\mathcal O_{\mathbf A^1_z},d+3z^2\,dz),\qquad
+                         V=M\boxtimes L_\alpha .
+ \tag{HCF.41}
+\]
+Compute \(M_{L_\alpha}(V)\), its evaluation, and the connection
+at infinity of the base. Explain why HCF.2 does not assert
+regular singularities of its base factor.
+
+**Solution 3.HO.** A rank-one finite connection on a connected
+smooth variety is simple: a coherent subconnection and its
+quotient are locally free; their ranks add to one, so a
+nonzero subconnection is the whole one. The tensor
+\(L_\alpha^\vee\otimes L_\alpha\) is the specified trivial
+connection. The curve is proper connected and smooth, so
+its global regular functions form a finite reduced complex
+algebra with no nontrivial idempotents. Such an algebra is a
+finite product of finite field extensions of \(\mathbf C\);
+connectedness leaves one factor and algebraic closedness
+makes it \(\mathbf C\). Consequently
+\[
+ \begin{gathered}
+ H^0_{\mathrm{dR}}(X,L_\alpha^\vee\otimes L_\alpha)=\mathbf C,\\
+ M_{L_\alpha}(V)=M,\qquad
+                         \mathrm{ev}=\operatorname{id}_{M\boxtimes L_\alpha}.
+ \end{gathered}
+ \tag{HCF.42}
+\]
+The equalities use the canonical evaluation pairing of the
+line with its dual. They commute with the base derivative,
+including the term \(3z^2\).
+
+In the coordinate \(w=z^{-1}\) at infinity,
+\[
+                   3z^2\,dz=-3w^{-4}\,dw .
+ \tag{HCF.43}
+\]
+For a meromorphic line gauge \(f=w^m h(w)\), with \(h\)
+a holomorphic unit, \(d\log f=m\,dw/w+d\log h\) has at most
+a simple pole. It cannot cancel the order-four term.
+Thus no logarithmic lattice exists there; the base line
+has an irregular singularity at infinity. On
+\(\mathbf A^1\times X\) it is nevertheless a finite
+connection and has
+\[
+              \operatorname{Char}(V)=0_{\mathbf A^1\times X}
+                         \subset T^*\mathbf A^1\times0_X .
+ \tag{HCF.44}
+\]
+The degree-zero bundle filtration proves this support
+identity. The example concerns a product chart, not the
+global nilpotent cone of a bundle stack.
+
+### 3.624. Exercise and solution: why simplicity matters for evaluation
+
+**Exercise 3.HP.** On the same elliptic curve set
+\[
+ E=\mathcal O_Xe_1\oplus\mathcal O_Xe_2,\qquad
+       \nabla e_1=0,\quad \nabla e_2=\omega e_1,\qquad
+       V=M\boxtimes E ,
+ \tag{HCF.45}
+\]
+where \(M\) is the line in HCF.41. Take \(L=\mathcal O_X\).
+Compute its horizontal Hom bundle and evaluation. Determine
+whether the curve extension splits.
+
+**Solution 3.HP.** The connection is flat because
+\(\Omega_X^2=0\). Every global section of \(E\) has constant
+coefficients. If \(N e_2=e_1\) and \(N e_1=0\), the
+horizontal equation is \(\omega N(ae_1+be_2)=0\), so
+\[
+ N=\begin{pmatrix}0&1\\0&0\end{pmatrix},\quad N^2=0,\qquad
+ H^0_{\mathrm{dR}}(X,E)=\ker N=\mathbf C e_1 .
+ \tag{HCF.46}
+\]
+The nonzero differential \(\omega\) forces \(b=0\).
+It follows from the actual relative Hom complex that
+\[
+ M_{\mathcal O_X}(V)=M,\qquad
+ \mathrm{ev}:M\boxtimes\mathcal O_X\longrightarrow M\boxtimes E,
+                       \quad m\longmapsto m e_1 .
+ \tag{HCF.47}
+\]
+This is a nonzero injection with quotient
+\(M\boxtimes\mathcal O_X\); it is not an isomorphism.
+A splitting of the curve quotient would send its constant
+unit to \(e_2+f e_1\), for a global regular \(f\).
+Such an \(f\) is constant, and
+\[
+ \begin{gathered}
+       \nabla(e_2+f e_1)=\omega e_1\ne0,\\
+       0\longrightarrow\mathcal O_Xe_1\longrightarrow E
+          \longrightarrow\mathcal O_X\longrightarrow0
+                       \text{ is nonsplit}.
+ \end{gathered}
+ \tag{HCF.48}
+\]
+Thus evaluation detects the isotypic subconnection of a
+general finite connection. Simplicity of \(V\), used in
+HCF.16, is exactly what makes that subconnection the whole
+object. The nonsplit extension and its actual connection
+matrix remain in the finite-extension argument HCF.27.
+
+### 3.625. Nilpotent inputs and the actual bounded Hecke kernel
+
+Let \(X/\mathbf C\) be a smooth projective connected curve, let
+\(G\) be connected reductive, and put \(Y=\operatorname{Bun}_G(X)\).
+Use the normalized half-twisted category of §§1.10–2.8. Define
+\[
+ \mathscr S_Y=
+ \{F\in\operatorname{Dmod}_{1/2}(Y):
+               \operatorname{SS}_\infty(F)\subset\mathcal N_Y\}.
+ \tag{NHT.1}
+\]
+Here support means the union of the characteristic varieties of actual
+coherent submodules of every chart cohomology, as in NU.1–NU.4.
+There is no boundedness or regularity condition in this definition.
+
+We prove the following upper bound for every finite spherical coefficient
+\(V\), in every genus:
+\[
+ F\in\mathscr S_Y
+ \quad\Longrightarrow\quad
+ \operatorname{SS}_\infty(\mathsf H_VF)
+                  \subset\mathcal N_Y\times0_X .
+ \tag{NHT.2}
+\]
+The Hecke functor has its normalization SH.15–SH.17, including the
+curve shift and the density lines. Those fixed shifts do not change
+characteristic sets. In positive genus, NHT.2 and HCF.35–HCF.40 will
+identify \(\mathscr S_Y\) with the full Hecke-lisse category and hence
+with the restricted projector image. The unrestricted genus-zero
+ind-connection condition retains its separate requirement.
+
+For clarity, use the actual proper presentation of RHC.8–RHC.11.
+On a smooth finite-type target chart \(B\to Y\), and a curve coordinate
+open \(C\subset X\), the bounded relative-position source \(Z\)
+has a closed embedding into a smooth projective-bundle ambient \(M\):
+\[
+ Z\xrightarrow{i}M\xrightarrow{\pi}B\times C,\qquad
+ \pi\text{ proper},\qquad
+ (\mathsf H_VF)|_{B\times C}=\pi_+E .
+ \tag{NHT.3}
+\]
+The object \(E\) is the supported ambient realization of the actual
+inverse-image and bounded spherical IC kernel on \(Z\). The inverse
+bound \(-w_0\nu\), finite-jet Plücker construction and canonical
+kernel comparisons are those proved in RHC.8–RHC.11 and SH.13–SH.17.
+Only \(\pi\) is used for proper direct image. A smooth frame cover of
+\(Z\) will be used to inspect covectors; it is never used as a proper
+map.
+
+### 3.626. A characteristic covector under a change of ambient space
+
+We need only a statement about restrictions to tangent vectors, not a
+cotangent bundle of a singular scheme. Let \(Z\) be closed in two
+smooth varieties \(M_1,M_2\), with embeddings \(e_1,e_2\). Represent
+one coherent supported operator module by \(A_1,A_2\). On the joint
+ambient it is represented by \(A_{12}\). The exact equivalences and
+their actual comparison maps are proved in
+[*Kashiwara's equivalence and singular spaces*, §5](../../GL-DMOD/src/kashiwaras-equivalence-and-singular-spaces.md).
+
+First restrict to affine neighbourhoods in both ambients and embed
+each smooth affine ambient as a closed subvariety of an affine
+space. The closed normal formula NS.8 says that pushing to this
+larger ambient takes the characteristic variety to the full
+inverse image under cotangent restriction. Thus a given covector
+lifts to a characteristic covector upstairs; a characteristic
+covector upstairs restricts to one downstairs. Their values on
+the tangent to \(Z\) are unchanged. It suffices, therefore, to
+prove the assertion after these enlargements, and we denote the
+two affine spaces again by \(M_1,M_2\).
+
+Now extend \(e_2\) to \(f:M_1\to M_2\) and \(e_1\) to
+\(g:M_2\to M_1\): lift each coordinate function through the
+surjection from the ambient polynomial ring to the coordinate
+ring of the closed \(Z\). Both extensions exist on these
+same affine spaces. No inverse relation between \(f\) and
+\(g\) on the ambients is required.
+
+Kashiwara equivalence for the smooth graphs, together with its
+projection inverse, identifies the joint object as
+\[
+ A_{12}\simeq(\Gamma_f)_+A_1
+                 \simeq(\Gamma_g)_+A_2 ,
+ \tag{NHT.4}
+\]
+where the second graph is ordered in \(M_1\times M_2\).
+This does not apply a smooth-embedding theorem to the possibly
+singular \(Z\). The closed normal formula NS.8, in graph coordinates,
+therefore gives both exact characteristic formulas
+\[
+ \begin{aligned}
+ (\beta_1,\beta_2)\in\operatorname{Ch}(A_{12})
+ &\Longleftrightarrow
+       \beta_1+df^t\beta_2\in\operatorname{Ch}(A_1),\\
+ &\Longleftrightarrow
+       dg^t\beta_1+\beta_2\in\operatorname{Ch}(A_2).
+ \end{aligned}
+ \tag{NHT.5}
+\]
+Indeed, the symbol of a tangent operator to the graph is the
+corresponding displayed sum; every normal symbol is free. This is
+exactly the local normal-derivative description of graph direct
+image, with no holonomicity or regularity hypothesis.
+
+In particular, if \(\beta_1\in\operatorname{Ch}(A_1)\) at \(z\), then
+\((\beta_1,0)\) lies in the joint characteristic variety. Thus
+\[
+ \beta_2=dg^t\beta_1\in\operatorname{Ch}(A_2),\qquad
+ \beta_2(de_2v)=\beta_1(de_1v)\quad(v\in T_zS)
+ \tag{NHT.6}
+\]
+for every smooth locally closed stratum \(S\subset Z\) through \(z\).
+The last equality is the derivative of \(g e_2=e_1\) on \(S\).
+The transferred covector can depend on the extensions; its
+restriction to this tangent does not. Restricting back from
+the enlarged affine ambients by NS.8 proves the assertion in
+the original ambients as well. We do not identify the different
+ambient conormal directions.
+
+### 3.627. Smooth frame covers and finite coherent witnesses
+
+Let \(v:Z'\to Z\) be a smooth source cover. Locally it is étale over
+a projection \(Z\times\mathbb A^r\to Z\). Lift that presentation to
+the chosen ambient. Normalized smooth inverse image is exact on
+hearts; NS.7 sends an ambient characteristic covector \(\beta\)
+to \((\beta,0)\) in this product presentation:
+\[
+ \operatorname{Ch}(v^\natural A)
+       =d\widetilde v^{\,t}
+          \bigl(M'\times_M\operatorname{Ch}(A)\bigr).
+ \tag{NHT.7}
+\]
+Changing from this ambient to the common Hecke frame ambient uses
+NHT.4–NHT.6. Hence a given covector survives that change with the
+same values on the lifted relative-position stratum. The exact
+equivalence preserves a coherent submodule and its inclusion into
+the ambient cohomology. This proves the covector comparison needed
+for upper bounds through the singular source.
+
+In the common frame the actual kernel object is the smooth pullback
+of
+\[
+ F_U\boxtimes IC_{\mathrm{bd}}\boxtimes\mathcal O_C
+                  \quad\text{with the fixed SH.17 shifts}.
+ \tag{NHT.8}
+\]
+The frame map is smooth over the singular Schubert support, so its
+normalized inverse image is exact. The bounded IC complex has only
+finitely many coherent cohomology modules. Over \(\mathbf C\),
+the cohomology of the external product is the finite direct sum
+of the corresponding external cohomology modules in each degree.
+This follows by taking complexes of vector spaces: split their
+cycles and boundaries as vector spaces, so acyclic summands
+contract, and tensor the resulting complexes. It asserts the
+cohomology formula, not a splitting of operator-module complexes.
+
+Consequently a finite coherent submodule of a cohomology module
+in NHT.8 has all its generators in a finite sum of actual modules
+\[
+ L_U\boxtimes H^j(IC_{\mathrm{bd}})\boxtimes\mathcal O_C,
+       \qquad L_U\subset H^iF_U\text{ coherent}.
+ \tag{NHT.9}
+\]
+For each generator write finitely many external tensors and collect
+their input coefficients. Their operator span is a coherent
+submodule of the actual input cohomology. Taking the sum of these
+spans handles all generators. The smooth-pullback version follows
+by expressing finitely many pulled-back sections in finitely many
+downstairs sections, as in BK.8–BK.9 and NU.3. Thus NHT.9 remains
+valid after the frame comparison. No regularity of \(L_U\) has
+been used.
+
+Product good filtrations and the coherent submodule support rule
+now enclose the covector by an actual input characteristic
+covector and an IC characteristic covector:
+\[
+ \operatorname{Ch}(A_{\mathrm{fr}})
+ \subset
+ d\widetilde p^{\,t}
+ \left(\bigcup_{i,j}
+    \operatorname{Ch}(L_U)\times
+    \operatorname{Ch}(H^jIC_{\mathrm{bd}})\times0_C\right).
+ \tag{NHT.10}
+\]
+The union here is finite locally for the selected coherent witness.
+
+### 3.628. From stratum tangents to compatible global Higgs fields
+
+Strong finite-jet equivariance of the spherical IC implies that its
+characteristic covectors annihilate orbit tangents, including the
+boundary orbits. Here is the symbol argument, RHC.12. Enclose finite
+generators of a strong equivariant module in a finite-dimensional
+rational representation \(W\), and filter by
+\(\mathcal D_{\le k}W\). Each orbit vector field preserves this
+filtration because its operator action equals its rational
+infinitesimal action. Its principal symbol therefore kills the
+associated graded module. On a projective ambient use its
+line-frame open and the smooth formula to reflect the same
+annihilator statement. Coherent submodules use containment in
+this enclosing equivariant module; they need not be equivariant.
+
+Suppose \(\pi^t(\xi_2,\xi_x)\) is a characteristic covector of a
+coherent \(A\subset H^mE\) in NHT.3. Apply NHT.7 and NHT.6 to
+move it to the common frame. On the relative-position stratum,
+NHT.10 and the preceding annihilator argument give
+\[
+ p_2^*\xi_2+s^*\xi_x=p_1^*\xi_1 .
+ \tag{NHT.11}
+\]
+The input covector is supplied by an actual coherent submodule
+of input cohomology in NHT.9. The identity self-nerve argument
+RHC.4–RHC.7 says that such a characteristic covector annihilates
+the infinitesimal chart-fibre directions. Indeed normalized smooth
+descent identifies the two pullbacks; varying the identity arrow
+while holding one endpoint fixed forces annihilation of these
+directions by NS.7. The smooth chart's tangent surjects onto
+bundle deformations, so \(\xi_1\) is the pullback of a global
+Higgs covector. Its nilpotence follows from \(F\in\mathscr S_Y\).
+This argument is an operator and smooth-descent argument and has
+no regularity premise.
+
+We recall why NHT.11 gives compatible fields, including at a
+boundary orbit. In the notation HG.1–HG.5 put
+\[
+ W=\mathfrak g((u)),\quad V=\Gamma(X-x,\operatorname{ad}P),\quad
+ L_2=\mathfrak g[[u]],\quad L_1=\operatorname{Ad}_{g^{-1}}L_2 .
+ \tag{NHT.12}
+\]
+The fixed-point gluing tangent is the quotient of
+\(W^2\oplus V\) by the arrows HG.4. The tangent to the selected
+relative-position orbit is the kernel of the surjection
+\[
+ (a_1,a_2,b)\longmapsto b-a_1+a_2
+                                  \pmod{L_1+L_2}.
+ \tag{NHT.13}
+\]
+This is the tangent to that actual orbit, not to the entire
+singular Schubert closure. A functional vanishing on the kernel
+factors through this quotient. Evaluation on \((w,0,0)\) and
+\((0,w,0)\), using the perfect Laurent residue pairing HG.3,
+identifies that factor with the two Laurent expansions. They
+coincide and annihilate both lattices. HG.8–HG.9 therefore gives
+regular global Higgs fields \(A_1,A_2\), compatible away from \(x\).
+The moving-coordinate computation HG.13 gives the remaining
+component with its positive sign:
+\[
+ A_2=\alpha^*A_1\text{ on }X-x,\qquad
+ \xi_x=\operatorname{Res}_{u=0}
+                    B(A_2,g^{-1}g')\,dx .
+ \tag{NHT.14}
+\]
+All extra smooth frame directions are annihilated, so these
+equalities descend to the original correspondence.
+
+### 3.629. The nilpotent residue and the source characteristic bound
+
+The following is a statement at complex geometric points, as
+appropriate for reduced characteristic sets. Write a Cartan
+decomposition and transport the regular field:
+\[
+ g=k_1u^\lambda k_2,\qquad D=\operatorname{Ad}_{k_2}A_2,\qquad
+       \operatorname{Ad}_{u^\lambda}D\in\mathfrak g[[u]] .
+ \tag{NHT.15}
+\]
+The two arc derivative terms pair with regular fields and have
+zero residue. Invariance of \(B\) leaves
+\[
+ \operatorname{Res}B(A_2,g^{-1}g')
+             =B(D(0),d\lambda).
+ \tag{NHT.16}
+\]
+Negative \(\lambda\)-weight coefficients of \(D(0)\) vanish by
+the regularity in NHT.15. Thus \(D(0)\in\mathfrak p_\lambda\).
+The weight-zero limit \(D_0\) is nilpotent in the Levi:
+nilpotence is closed under the cocharacter limit, and compatible
+Jordan decomposition has zero central semisimple part. Since
+\(d\lambda\) is central in that Levi, invariance gives
+\[
+ B(D(0),d\lambda)=B(D_0,d\lambda)=0 .
+ \tag{NHT.17}
+\]
+This is the full reductive argument RHC.18–RHC.22; it includes
+the central torus. Compatible Higgs fields have the same invariant
+polynomials by HG.10–HG.11. Hence input nilpotence implies output
+nilpotence, while NHT.17 makes the moving covector zero.
+
+For every coherent \(A\subset H^mE\) we have therefore proved
+\[
+ \{(z,\eta):d\pi_z^t\eta\in\operatorname{Ch}(A)\}
+                  \subset \pi^{-1}(\Gamma),\qquad
+ \Gamma=\mathcal N_B\times0_C\subset T^*(B\times C).
+ \tag{NHT.18}
+\]
+The zero covector is allowed throughout. In particular this
+argument is an upper bound; it does not use a nonvanishing
+cycle detector or an isolated compatible point. Reduced
+nilpotence in NHT.17 is not a vanishing assertion over arbitrary
+nonreduced coefficient rings.
+
+### 3.630. Proper direct image for arbitrary coherent pieces
+
+The proper characteristic theorem NS.1–NS.6 applies to every
+bounded coherent operator complex on smooth ambient schemes.
+There is no regularity hypothesis in that theorem. To recall
+its mechanism, a good input filtration gives the Spencer
+symbol equations
+\[
+ \xi_M-d\pi^t\xi_{B\times C}=0 .
+ \tag{NHT.19}
+\]
+Their Koszul complex resolves the transfer symbol relation.
+The relation projects properly to \(T^*(B\times C)\), being
+the base change of the proper map \(\pi\). Proper coherent
+direct image and the finite Spencer–Čech complex give coherent
+graded output. The Noetherian stabilization and separated
+filtration argument of NS.2–NS.6 give a genuine good filtration,
+including filtration torsion. Its support satisfies
+\[
+ \operatorname{Ch}H^j(\pi_+A)
+ \subset
+ \{\eta:\exists z,\ d\pi_z^t\eta\in\operatorname{Ch}(A)\}
+ \subset\Gamma .
+ \tag{NHT.20}
+\]
+For a bounded coherent complex use its finite cohomological
+filtration and the characteristic Serre rule. Thus NHT.18
+controls proper direct images of all finite coherent pieces,
+including irregular pieces.
+
+There is an interval \([a,b]\), independent of the input, such that
+\[
+ H^j(\pi_+M)=0\quad(j\notin[a,b])
+                \quad\text{for every heart module }M .
+ \tag{NHT.21}
+\]
+The finite Spencer length gives the lower bound and a finite
+affine Čech cover gives the upper bound. The same complexes
+compute arbitrary modules and commute with colimits.
+The full unbounded assertion, including the canonical truncation
+comparisons, is SH.14 and
+[*Adjunctions, base change and the projection formula*, Theorem 3.4](../../GL-DMOD/src/adjunctions-base-change-and-the-projection-formula.md).
+These are finite operator models, so NHT.21 applies to the actual
+functor on both cohomological tails.
+
+### 3.631. A finite window for each output degree
+
+Fix \(n\), and set
+\[
+ l=n-b-1,\qquad u=n-a+1,\qquad
+             E_{[l,u]}=\tau^{\le u}\tau^{\ge l}E .
+ \tag{NHT.22}
+\]
+There is a natural zigzag, not an arbitrary choice of a splitting,
+\[
+ E\longrightarrow\tau^{\ge l}E
+                      \longleftarrow E_{[l,u]} .
+ \tag{NHT.23}
+\]
+The discarded lower tail is in degrees at most \(l-1=n-b-2\);
+its direct image is in degrees at most \(n-2\). The discarded
+upper tail is in degrees at least \(u+1=n-a+2\); its image is
+in degrees at least \(n+2\). The two truncation triangles
+therefore make both arrows in NHT.23 isomorphisms after
+\(H^n\pi_+\):
+\[
+ H^n\pi_+E\simeq H^n\pi_+E_{[l,u]} .
+ \tag{NHT.24}
+\]
+There is no interchange of an inverse Postnikov limit with
+proper direct image in this step.
+
+Each cohomology module in the finite window is a filtered union
+of actual coherent submodules. The characteristic condition
+\(\operatorname{SS}\subset\Gamma\) is Serre and stable under
+filtered colimits, by NU.2. Continuity of \(\pi_+\) and
+NHT.20 therefore give this condition for its direct image.
+The finite Postnikov filtration of \(E_{[l,u]}\) gives the
+same condition for every cohomology of its image. NHT.24,
+for each \(n\), proves
+\[
+ \operatorname{SS}_\infty(\pi_+E)\subset\Gamma .
+ \tag{NHT.25}
+\]
+The proof is local on \(B\times X\), and normalized smooth
+pullback preserves and reflects the characteristic tests
+NU.3–NU.4. The actual proper-kernel chart comparisons
+SH.14–SH.17 consequently glue NHT.25 to NHT.2 on \(Y\times X\).
+
+### 3.632. Completed curve coefficients and all higher action maps
+
+NC.1–NC.3 give \(\dim\mathcal N_B\le\dim B\).
+Thus the characteristic bound just proved has dimension at most
+\(\dim B+1\). Bernstein's inequality implies that every
+nonzero coherent submodule of every output cohomology is
+holonomic. In symbols,
+\[
+ (\mathsf H_VF)|_{B\times X}
+       \text{ has ind-holonomic cohomology and }
+ \operatorname{SS}_\infty\subset T^*B\times0_X .
+ \tag{NHT.26}
+\]
+The algebraic factorization HCF.29–HCF.40 therefore applies,
+with no premise of regularity in \(B\). It gives the actual
+completed coefficient lift
+\[
+ \mathsf H_VF\in
+     \operatorname{Dmod}_{1/2}(Y)\otimes\mathcal Q_X .
+ \tag{NHT.27}
+\]
+This notation means membership in the full realized category.
+On an affine chart the lift carries the full
+\(\mathcal D(B)\)-action: ordinary affine sections over \(B\),
+followed by the full completed curve embedding, lift both
+functions and derivatives and every action-bar face. Full
+mapping descent then gives the global object with the specified
+kernel maps, rather than an object with merely isomorphic
+cohomology groups.
+
+The argument also retains spectator parameters. If a smooth
+parameter space \(T\) has zero characteristic covectors on the
+input, the same frame calculation has that extra zero factor.
+The correspondence is the identity in \(T\); its cotangent
+equations preserve this factor. Thus
+\[
+ \mathcal N_Y\times0_T
+       \longmapsto\mathcal N_Y\times0_T\times0_X .
+ \tag{NHT.28}
+\]
+Iterating proves the corresponding estimate for disjoint
+modifications at every finite set of points. On the
+factorization diagonals the actual kernel identifications are
+those of SH.16–SH.17. Because the realized coefficient
+embeddings are full, every original composition, fusion map,
+unit and higher homotopy between objects in their image lifts
+uniquely as a point of the corresponding mapping space.
+One may apply the completed coefficient criterion successively
+to the curve coordinates, retaining the other variables and
+their full operator actions. This gives
+\[
+ \mathsf H_{V_1,\ldots,V_r}F\in
+       \operatorname{Dmod}_{1/2}(Y)\otimes\mathcal Q_X^{\otimes r}.
+ \tag{NHT.29}
+\]
+Extension from finite coefficients and their finite complexes to
+the continuous action uses the same compact coefficient
+generators and action bars as SH.17. This does not assert a
+new unital monoidal structure on the Ran transpose.
+
+### 3.633. Positive genus: the full supported projector image
+
+Suppose now that \(g(X)>0\). PAC.19–PAC.28 identify the
+completed curve category with the actual ind-category of finite
+connections:
+\[
+             \mathcal Q_X=\mathcal I_X .
+ \tag{NHT.30}
+\]
+Substitute this equality into NHT.27–NHT.29, with all the
+action maps just specified. This is the full Hecke-lisse
+condition, not just a condition on finite cohomology objects.
+Consequently
+\[
+       \mathscr S_Y\subset\mathcal N_{\mathrm{Hl}}(Y).
+ \tag{NHT.31}
+\]
+The reverse containment is GFP.55–GFP.56: every object of the
+full original-complex Hecke-lisse category is chartwise
+ind-regular and has independent nilpotent support. Combining
+these actual inclusions gives
+\[
+ \mathscr S_Y=\mathcal N_{\mathrm{Hl}}(Y)
+      =\operatorname{EssIm}(\Pi_{\mathrm{res}}),\qquad
+ \mathscr S_Y\subset\mathscr R_\infty(Y)
+                   \quad(g(X)>0).
+ \tag{NHT.32}
+\]
+Here \(\Pi_{\mathrm{res}}\) is the normalized restricted
+projector of RSE.37–RSE.38 and NTR.16. Its given natural
+identity on the full Hecke-lisse image is therefore a natural
+identity on the independently defined category \(\mathscr S_Y\).
+This identifies its full image on arbitrary input objects and
+proves independent nilpotent ind-regularity over \(\mathbf C\)
+in every positive genus, with both cohomological tails.
+No finite-rank, compactness or boundedness assumption is imposed.
+
+In genus zero NHT.2 and NHT.27–NHT.29 still hold. But the
+completed category and the ind-connection category differ:
+\[
+ \mathcal Q_{\mathbf P^1}\simeq
+        \operatorname{Mod}_{T_{\mathbf C}(\mathbf C[1])},
+ \qquad
+ \mathcal I_{\mathbf P^1}
+       =\{u^2\text{-torsion objects}\}\subset\mathcal Q_{\mathbf P^1},
+       \qquad |u|=-1 .
+ \tag{NHT.33}
+\]
+GZR.24–GZR.32 supply the actual torsion and restricted-action
+argument giving the unrestricted genus-zero inclusion. NHT.2
+alone is the characteristic upper bound. The supported compact factorization condition
+AIC.17 for chartwise supported ind-categories also remains a
+separate assertion: NHT.32 identifies the full global supported
+category, not an unproved replacement of each chart by such an
+ind-completion. Other geometric ground fields and derived
+tempered Satake retain their stated requirements.
+
+![Graph comparison, proper support transport and the positive-genus image](figures/nilpotent-hecke-upper-transport.svg)
+
+*Figure 3.75. NHT.5–NHT.7 transfer a characteristic covector
+through graphs while preserving its restriction to the actual
+stratum tangent. NHT.18–NHT.25 apply proper characteristic
+transport in a finite cohomological window. NHT.27–NHT.33
+separate the all-genus completed coefficient bound from the
+positive-genus full supported-image equality.*
+
+### 3.634. Two explicit ambient and cohomological calculations
+
+**Exercise 3.HQ.** Let \(Z\) be the cusp
+\(y^2=x^3\) in \(M_1=\mathbb A^2_{x,y}\). Embed it in
+\(M_2=\mathbb A^3_{x,y,z}\) by \(z=x^2\). Use the extensions
+\[
+ f(x,y)=(x,y,x^2),\qquad g(x,y,z)=(x,y),\qquad
+ df^t(a,b,c)=(a+2xc,b).
+ \tag{NHT.34}
+\]
+At \(t\ne0\) on its smooth stratum \((x,y)=(t^2,t^3)\),
+transfer an arbitrary characteristic covector \((p,q)\)
+of \(A_1\) by NHT.6, and compute its tangent pairing in
+both ambients. Describe the full graph relation and explain
+why the same comparison at the cusp does not identify the
+ambient cotangent spaces.
+
+**Solution 3.HQ.** The joint object lies on the graph of \(f\).
+Its characteristic relation is
+\[
+ (\xi_x,\xi_y;\,a,b,c)\in\operatorname{Ch}(A_{12})
+ \quad\Longleftrightarrow\quad
+ (\xi_x+a+2xc,\xi_y+b)\in\operatorname{Ch}(A_1).
+ \tag{NHT.35}
+\]
+Taking the second covector zero and using the opposite graph
+transfers \((p,q)\) to \((p,q,0)\in\operatorname{Ch}(A_2)\).
+The stratum tangent and its image are
+\[
+ (2t,3t^2),\qquad (2t,3t^2,4t^3).
+ \tag{NHT.36}
+\]
+Both pairings are \(2tp+3t^2q\). More generally the graph
+direct-image formula for \(A_2=f_+A_1\) reads
+\[
+ (a,b,c)\in\operatorname{Ch}(A_2)
+             \quad\Longleftrightarrow\quad
+ (a+2xc,b)\in\operatorname{Ch}(A_1).
+ \tag{NHT.37}
+\]
+This also shows the different normal directions explicitly:
+\((-2xc,0,c)\) is conormal to the smooth graph \(f(M_1)\).
+At the cusp the point stratum has zero tangent, so restriction
+to that stratum gives no identification between the
+two- and three-dimensional ambient cotangent spaces. The
+covector transfer remains a valid characteristic implication.
+
+**Exercise 3.HR.** A continuous operator functor has heart
+amplitude \([-3,2]\). Determine a finite input window
+sufficient for output degree \(5\), including the natural
+zigzag and the degrees of the discarded output tails.
+Then test the reduced-point qualification in NHT.17 using
+\(G=GL_3\), \(B(A,B)=\operatorname{tr}(AB)\),
+\[
+ \lambda(s)=\operatorname{diag}(s^4,s,s^{-2}),\qquad
+ D=E_{12}+E_{23}.
+ \tag{NHT.38}
+\]
+Finally work over \(R=\mathbf C[\varepsilon]/(\varepsilon^2)\)
+with \(D_\varepsilon=\operatorname{diag}(\varepsilon,0,-\varepsilon)\).
+Does matrix nilpotence over \(R\) force the same residue
+vanishing as over complex geometric points?
+
+**Solution 3.HR.** NHT.22 gives \(l=2,u=9\), so the natural
+comparison is
+\[
+ E\longrightarrow\tau^{\ge2}E
+       \longleftarrow\tau^{\le9}\tau^{\ge2}E,\qquad
+ H^5TE\simeq H^5T(\tau^{\le9}\tau^{\ge2}E).
+ \tag{NHT.39}
+\]
+The lower discarded tail has degrees at most \(1\), hence its
+image has degrees at most \(3\). The upper discarded tail
+has degrees at least \(10\), hence its image has degrees
+at least \(7\). Thus neither can affect the adjacent degrees
+needed for \(H^5\) in the two truncation triangles.
+
+Both roots in \(D\) have weight \(3\), so
+\[
+ \operatorname{Ad}_{u^\lambda}D
+             =u^3(E_{12}+E_{23}),\qquad D^3=0,\qquad
+ \operatorname{tr}(D\,d\lambda)=0.
+ \tag{NHT.40}
+\]
+This is a nonzero nilpotent example with a regular transported
+field and zero moving residue. Its Levi limit \(D_0\) is zero.
+Over the dual numbers, however, the diagonal field commutes
+with \(u^\lambda\) and has square zero, while
+\[
+ D_\varepsilon^2=0,\qquad
+ \operatorname{tr}(D_\varepsilon\,d\lambda)
+             =6\varepsilon\ne0\quad\text{in }R.
+ \tag{NHT.41}
+\]
+It specializes to zero at every complex point. Thus the
+geometric characteristic-set implication proved above is
+compatible with this nonreduced counterexample. It cannot
+be promoted to a residue identity on all coefficient schemes.
+
+### 3.635. The projective-line coefficient problem
+
+Work over \(\mathbf C\), with \(X=\mathbf P^1\), a point \(x\),
+\(G\) connected reductive, \(H=\check G\), and
+\(Y=\operatorname{Bun}_G(X)\). Retain the full categories
+\(\mathcal M=\operatorname{Dmod}_{1/2}(Y)\) and
+\(\mathscr S_Y=\operatorname{Dmod}_{\mathcal N}(Y)\) of NHT.1.
+Put \(\mathfrak h=\operatorname{Lie}H\) and \(d=\dim H\).
+The coefficient algebra and its two distinct categories are
+\[
+ \begin{gathered}
+ B_\Omega=T_{\mathbf C}(\mathbf C[1]),\quad |u|=-1,\quad
+ \Delta u=u\otimes1+1\otimes u,\\
+ v=u^2,\qquad
+ \mathcal Q=\operatorname{Mod}_{B_\Omega},\quad
+ \mathcal I=\{v\text{-torsion modules}\}\subset\mathcal Q .
+ \end{gathered}
+ \tag{GZR.1}
+\]
+These are the complete Hopf tensor and localization constructions
+RSC.19–RSC.27. In particular \(u^2\) is not zero in the algebra.
+We shall prove the actual ind-connection condition for Hecke
+outputs without asserting \(\mathcal I=\mathcal Q\).
+
+Use the strong \(!\)-tensor normalization
+\(j_!(E)=j_X(E)[1]\), so \(j_!(\mathbf1)=\omega_X\), as in
+PAC.7–PAC.12. The normalized fibre is
+\[
+ \varepsilon_x(E)=i_x^!j_!(E),\qquad
+ \varepsilon_x:\mathcal Q\longrightarrow\operatorname{Vect}.
+ \tag{GZR.2}
+\]
+It is the forgetful functor for \(B_\Omega\)-modules.
+For bounded-below objects this is the connection fibre
+comparison RSC.22 and RSP.2. For arbitrary objects the finite
+noncharacteristic graph calculation NCS.13–NCS.17 computes
+each cohomology from the same fibre. The effective lower
+truncation tower PAC.6–PAC.10 then gives the displayed
+comparison with all its action maps. Thus it is exact,
+continuous, conservative and symmetric monoidal. There is
+no extra curve shift in GZR.2.
+
+The all-genus estimate NHT.2 applies to every \(F\in\mathscr S_Y\).
+The fibre embedding is noncharacteristic for
+\(\mathcal N_Y\times0_X\). NCS.8–NCS.17, applied on charts
+and descended with the fixed half twist, consequently gives
+\[
+       \mathsf H_{V,x}F
+       :=(\operatorname{Id}\otimes i_x^!)\mathsf H_VF
+                     \in\mathscr S_Y .
+ \tag{GZR.3}
+\]
+This statement includes both infinite cohomological tails.
+
+### 3.636. A presentable envelope for one supported input
+
+Fix one arbitrary \(F\in\mathscr S_Y\). Choose a small skeleton
+of finite-dimensional \(H\)-representations, including their
+duals and the unit. Let \(\mathcal W_F\) be the set of finite
+fixed-point Hecke words
+\[
+ \mathcal W_F=
+ \{\mathsf H_{V_r,x}\cdots\mathsf H_{V_1,x}F:r\ge0\}.
+ \tag{GZR.4}
+\]
+The empty word is \(F\). The full stable colimit closure
+inside \(\mathcal M\) is denoted
+\[
+       \mathcal C_F=\operatorname{Loc}_{\mathcal M}(\mathcal W_F).
+ \tag{GZR.5}
+\]
+It is presentable, with its full continuous inclusion into
+\(\mathcal M\). Here is the size argument, with no assertion
+of ordinary compactness. The module model for \(\mathcal M\)
+from §1.15 and KF.9 permits one to choose an uncountable
+regular \(\kappa\) such that every word in this set is
+\(\kappa\)-compact. Close these objects under stable colimits
+of size less than \(\kappa\) and retracts, obtaining a small
+full \(\mathcal K_F\subset\mathcal M^\kappa\).
+
+The full \(\operatorname{Ind}_\kappa\) construction in
+HLA.1–HLA.3 maps fully faithfully to \(\mathcal M\):
+maps out of an object of \(\mathcal K_F\) commute with the
+specified filtered colimits, and maps out of their colimits
+are the corresponding limits of those full mapping complexes.
+Its image is closed under colimits of size less than
+\(\kappa\) and under \(\kappa\)-filtered colimits. Every
+small colimit is a \(\kappa\)-filtered colimit of its
+subdiagrams with fewer than \(\kappa\) cells, so the image
+is colimit closed. Conversely all its objects are built
+from the words by these colimits. Hence
+\[
+             \mathcal C_F\simeq\operatorname{Ind}_\kappa(\mathcal K_F).
+ \tag{GZR.6}
+\]
+The choice of \(\kappa\) is only a size choice. It does
+not give a presentation by bounded coherent supported
+objects, and does not assume AIC.17.
+
+Each fixed-point Hecke functor is continuous. It sends
+the generating words to words, and therefore
+\[
+       \mathsf H_{V,x}(\mathcal C_F)\subset\mathcal C_F,
+       \qquad \mathcal C_F\subset\mathscr S_Y .
+ \tag{GZR.7}
+\]
+The second inclusion follows from GZR.3 and the stable
+colimit closure NU.1–NU.4. The same assertion for derived
+representation coefficients follows by their full
+finite-representation bars.
+
+### 3.637. Lifting the entire loop action into this envelope
+
+For any presentable linear category \(\mathcal C\), the
+augmented free-action bar gives
+\[
+ \mathcal C\otimes\mathcal Q
+       \simeq B_\Omega\text{-}\operatorname{Mod}(\mathcal C).
+ \tag{GZR.8}
+\]
+An internal module is its object, operator action, unit,
+all associativity maps and higher homotopies. The extra
+unit degeneracy contracts the augmented bar. This proves
+GZR.8 on all objects and full mapping complexes, as in
+RSC.27 and PAC.13.
+
+If \(\mathcal C\hookrightarrow\mathcal M\) is full and
+continuous, the induced internal-module inclusion is full
+and its image is characterized by the underlying object:
+\[
+ K\in B_\Omega\text{-}\operatorname{Mod}(\mathcal C)
+ \quad\Longleftrightarrow\quad
+ \operatorname{oblv}K\in\mathcal C .
+ \tag{GZR.9}
+\]
+For the reverse implication lift every action-bar map
+through the full inclusion. The same full mapping spaces
+lift its equations and higher homotopies. The resulting
+augmentation realizes in \(\mathcal C\), since the
+inclusion preserves colimits. This proves the criterion
+without assuming that \(\mathcal C\) is dualizable.
+
+NHT.27 gives an actual \(\mathcal Q\)-coefficient lift of
+\(\mathsf H_V\). Shift its t-exact \(j_X\)-lift by
+\([-1]\) to use the strong \(!\)-tensor realization
+\(j_!\) of GZR.2; the realized Hecke object is unchanged.
+For \(r\) parameters use the corresponding total shift
+\([-r]\). With this normalization its underlying object on
+\(\mathcal C_F\) is precisely \(\mathsf H_{V,x}\).
+GZR.7–GZR.9 therefore yield a continuous lift
+\[
+ \widehat{\mathsf H}^{\,F}_V:
+           \mathcal C_F\longrightarrow\mathcal C_F\otimes\mathcal Q .
+ \tag{GZR.10}
+\]
+For a finite set of points, use internal modules over
+\(B_\Omega^{\otimes r}\). Evaluation at \((x,\ldots,x)\)
+is the fixed-point word with the actual collision
+identifications. The same argument gives
+\[
+ \widehat{\mathsf H}^{\,F}_{V_1,\ldots,V_r}:
+       \mathcal C_F\longrightarrow\mathcal C_F\otimes\mathcal Q^{\otimes r}.
+ \tag{GZR.11}
+\]
+All the original Hecke comparisons lift through these full
+inclusions. This includes composition, fusion, empty and
+unused coordinates, and their higher relations. It does
+not replace the operator action by its cohomology action.
+
+### 3.638. The full completed-coefficient Ran action
+
+The category \(\mathcal Q=\operatorname{Mod}_{B_\Omega}\)
+is dualizable by its free compact generator, PAC.12.
+Transpose its continuous Hopf tensor multiplication
+using its actual categorical dual:
+\[
+       \delta_{\mathcal Q}=m_{\mathcal Q}^{\vee}:
+       \mathcal Q^\vee\longrightarrow
+                        \mathcal Q^\vee\otimes\mathcal Q^\vee .
+ \tag{GZR.12}
+\]
+Its counit is the transpose of the tensor unit. No
+self-duality by ordinary global sections is imposed.
+Use the full finite-point relations of HLA.23, with
+coefficient category \(\mathcal Q^\vee\), to form
+\[
+ \mathcal R_{\mathcal Q}
+    =\operatorname*{colim}_{\psi:I\to J}
+           \operatorname{Rep}(H)^{\otimes I}
+                        \otimes(\mathcal Q^\vee)^{\otimes J}.
+ \tag{GZR.13}
+\]
+The transition maps use representation multiplication and
+the iterated transposed tensor, with the counit at unused
+coordinates. The small-relations construction HLA.1–HLA.3
+retains all stage objects and complete coherent strings;
+it does not require these transitions to preserve compact
+objects. Disjoint union gives its continuous symmetric
+tensor and its unit.
+
+Pair the lifts GZR.11 with the full dual coefficients:
+\[
+ (\vec V,P;M)\longmapsto
+ (\operatorname{Id}\otimes\operatorname{ev})
+        \bigl(\widehat{\mathsf H}^{\,F}_{\psi}(\vec V;M)\otimes P\bigr).
+ \tag{GZR.14}
+\]
+Moving a collision through this evaluation is exactly
+GZR.12. The actual kernel comparison supplies every
+composition of collisions. Thus the proof of
+HLA.25–HLA.27 applies to these stages and gives a
+continuous unital action
+\[
+        \mathcal R_{\mathcal Q}\otimes\mathcal C_F
+                              \longrightarrow\mathcal C_F .
+ \tag{GZR.15}
+\]
+Its coefficients under duality are exactly GZR.10–GZR.11.
+The empty stage gives the unit; no unital monoidal
+structure on a tensor transpose is asserted.
+
+### 3.639. Framing the universal completed coefficient
+
+The same transposition proves the full tensor universal
+property: for a presentable symmetric monoidal target
+\(\mathcal T\), continuous strong symmetric monoidal
+functors from \(\mathcal R_{\mathcal Q}\) are precisely
+the tensor functors
+\[
+       \operatorname{Rep}(H)\longrightarrow\mathcal T\otimes\mathcal Q.
+ \tag{GZR.16}
+\]
+Transpose the one-point functor; its tensor and unit maps
+give the collision and empty-stage relations. Conversely
+evaluate the full stage diagram. Evaluation–coevaluation
+cancellation identifies both composites and all
+transformation spaces. This is the argument of §3.223
+with the specified coefficient dual.
+
+Evaluation by \(\varepsilon_x\) defines the base-point
+functor from \(\operatorname{Rep}(H)\). Let \(S_x\) be
+its regular frame algebra, the image of \(\mathcal O(H)\).
+The Hopf-module framing calculation RSE.15–RSE.18 gives
+\[
+        \mathcal R_{\mathcal Q}^{\mathrm{fr}}
+          =\operatorname{Mod}_{S_x}(\mathcal R_{\mathcal Q}).
+ \tag{GZR.17}
+\]
+A tensor functor from this category is exactly GZR.16
+with a chosen trivialization of its underlying fibre
+as \(V\mapsto\underline V\otimes\mathbf1_{\mathcal T}\).
+The free regular-module bar proves this on the entire
+space of frames and their higher maps.
+
+Set
+\[
+ D_{\mathcal T}=\operatorname{RHom}_{\mathcal T}
+                 (\mathbf1_{\mathcal T},\mathbf1_{\mathcal T}),
+       \qquad A_0=\operatorname{Sym}_{\mathbf C}(\mathfrak h^\vee[1]).
+ \tag{GZR.18}
+\]
+The first is a commutative DG algebra, with the coherent
+commutativity of tensoring endomorphisms of the unit.
+The second has \(d\) odd degree-minus-one generators.
+We compute the framed functor category over arbitrary
+\(D_{\mathcal T}\), including unbounded negative degrees.
+
+### 3.640. The full odd tensor-derivation calculation
+
+Under GZR.8 a framed functor in GZR.16 is a
+\(B_\Omega\)-action on each
+\(\underline V\otimes\mathbf1_{\mathcal T}\).
+The generator is closed, of degree minus one.
+Its primitive coproduct is exactly the tensor derivation
+rule; naturality means it preserves all representation
+intertwiners. The complete reconstruction RSC.28 can
+be applied to this entire derivation complex.
+
+Explicitly extend the operator to the regular
+coefficient algebra by its finite rational
+subrepresentations. It obeys the graded Leibniz rule
+and commutes with the regular right coaction. Evaluation
+at the identity determines the invariant derivation by
+its value on the augmentation cotangent
+\(\mathfrak m/\mathfrak m^2=\mathfrak h^\vee\).
+On every representation this gives
+\[
+       u_V=d\rho_V(\alpha),\qquad
+       \alpha\in Z^{-1}(\mathfrak h\otimes D_{\mathcal T}).
+ \tag{GZR.19}
+\]
+Conversely these formulas have the tensor derivation
+rule and preserve every intertwiner, so reconstruct the
+same operator. This argument works with every shifted
+coefficient module. The square-zero test
+\(1+\epsilon u\), together with the regular Hopf
+identities, identifies its full derivation complex
+and mapping homotopies, not just its closed vertices.
+
+There is no relation \(u^2=0\) to impose. The free graded
+Lie algebra on an odd generator has that generator and
+its even bracket square; graded Jacobi makes the square
+central. Its enveloping algebra is precisely \(B_\Omega\).
+The free-action bar therefore retains all powers of
+the generator and their entire coherent mapping
+resolution. The calculation gives
+\[
+ \operatorname{Fun}^{L,\otimes}
+       (\mathcal R_{\mathcal Q}^{\mathrm{fr}},\mathcal T)
+       \simeq
+       \operatorname{Map}_{\operatorname{CAlg}}(A_0,D_{\mathcal T}).
+ \tag{GZR.20}
+\]
+For a connective commutative DG algebra \(A\), the full
+free-module bar identifies tensor functors
+\(\operatorname{Mod}_A\to\mathcal T\) with algebra maps
+\(A\to D_{\mathcal T}\), by taking the unit to the unit.
+This is RSE.19 and includes all transformations.
+Comparing with GZR.20 and using its actual universal
+coefficient yields
+\[
+      L_{\mathcal Q}^{\mathrm{fr}}:
+      \mathcal R_{\mathcal Q}^{\mathrm{fr}}
+                      \xrightarrow{\ \sim\ }\operatorname{Mod}_{A_0}.
+ \tag{GZR.21}
+\]
+To check that this is an equivalence of categories,
+take \(\mathcal T=\mathcal R_{\mathcal Q}^{\mathrm{fr}}\)
+in the functor-space comparison to produce an inverse,
+then take \(\mathcal T=\operatorname{Mod}_{A_0}\) and use
+full faithfulness to identify the other composite.
+Thus this is not a test only on scalar affine targets.
+
+### 3.641. The finite exterior algebra forces actual curve torsion
+
+Choose a basis \(e_1,\ldots,e_d\) of \(\mathfrak h\) with
+dual odd coordinates \(\xi_1,\ldots,\xi_d\). Then
+\[
+ A_0=\Lambda(\xi_1,\ldots,\xi_d),\qquad
+ |\xi_i|=-1,\quad d\xi_i=0,\quad
+ \alpha_{\mathrm{univ}}=\sum_i e_i\xi_i .
+ \tag{GZR.22}
+\]
+In particular \(H^0(A_0)=\mathbf C\) and its underlying
+complex has degrees \([-d,0]\). The universal framed
+coefficient of a finite representation \(V\) is the
+actual internal module
+\[
+       E_V^{\mathrm{fr}}=A_0\otimes V,\qquad
+       u=d\rho_V(\alpha_{\mathrm{univ}}).
+ \tag{GZR.23}
+\]
+Its full action is the free \(B_\Omega\)-action bar on
+that operator. Every coefficient of the \(r\)-th
+power of this matrix is a product of \(r\) of the
+\(\xi_i\)'s. Consequently, with
+\(m=\lfloor d/2\rfloor+1\),
+\[
+         u^{d+1}=0,\qquad v^m=u^{2m}=0
+                  \quad\text{on }E_V^{\mathrm{fr}} .
+ \tag{GZR.24}
+\]
+The even power is a \(B_\Omega\)-linear map, since
+\(v\) is graded central. Its displayed nullhomotopy
+is the zero polynomial matrix. All tensor and
+intertwiner comparisons retain it.
+
+This is also direct membership in
+\(\operatorname{Mod}_{A_0}\otimes\mathcal I\), with
+the entire scalar action. Indeed the cofiber
+\(B_\Omega/(v^m)\) has a finite word filtration with
+augmentation-module layers. Its scalar extension
+has the same filtration. The localization fibre
+argument RSC.23, applied to the commuting \(A_0\)
+and \(B_\Omega\) actions, says
+\[
+ \operatorname{Mod}_{A_0}\otimes\mathcal I
+      =\ker\!\left[
+      \operatorname{Mod}_{A_0\otimes B_\Omega}
+        \longrightarrow
+      \operatorname{Mod}_{A_0\otimes B_\Omega[v^{-1}]}
+              \right].
+ \tag{GZR.25}
+\]
+The tensor of the localization triangle is exact
+on every unbounded module. GZR.24 makes its
+localized term zero. This proof does not bound
+the eventual automorphic input or replace its
+Postnikov tower by a direct colimit.
+
+### 3.642. Full frame descent and the genuine restricted target
+
+Changing the frame sends \(\alpha\) to its adjoint
+transform. In regular matrix coordinates this is the
+same conjugation as the original tensor frame
+change: apply the regular coaction to GZR.19.
+Iterating gives the same maps over
+\(\mathcal O(H)^{\otimes s}\); coproduct, counit
+and antipode give every face, degeneracy and
+inverse comparison. Thus GZR.21 is equivariant
+for the full algebraic frame nerve.
+
+The conservative Hopf descent RSE.15–RSE.18,
+applied to this equivariant framed equivalence,
+gives the actual unframed tensor equivalence
+\[
+ L_{\mathcal Q}:\mathcal R_{\mathcal Q}
+   \xrightarrow{\ \sim\ }
+   \operatorname{QCoh}([\,\operatorname{Spec}A_0/H\,])
+   =:\mathcal A .
+ \tag{GZR.26}
+\]
+The last stack is exactly the projective-line
+restricted stack RSC.29. In particular this
+argument has not substituted the completed
+coefficient category for the restricted spectral
+stack. It computed their universal tensor
+coefficient comparison.
+
+The universal coefficients in GZR.23 descend
+with their full tensor maps and frame nerve.
+Since \(\mathcal I\) is dualizable and its
+embedding is full, the same limit descent
+retains the ind-connection coefficient and
+every map. Hence
+\[
+         E_V\in\mathcal A\otimes\mathcal I
+                  \subset\mathcal A\otimes\mathcal Q .
+ \tag{GZR.27}
+\]
+This is the actual universal coefficient BLI.16:
+framing both constructions gives the identical
+operator GZR.23 and the same regular coaction.
+Conservative full frame descent identifies their
+whole functors. The polynomial zero in GZR.24
+is equivariant, so descends as well.
+
+For a finite set \(J\), the universal coefficient
+is its external tensor product with the prescribed
+representation multiplications at collisions.
+The full comparison is therefore
+\[
+       E_{\vec V}\in\mathcal A\otimes\mathcal I^{\otimes J},
+       \qquad v_j^mE_{\vec V}=0\quad(j\in J).
+ \tag{GZR.28}
+\]
+The maps of GZR.26 carry precisely these
+coefficients, their frames and all collision
+and unused-coordinate maps. This follows from
+the representing calculation GZR.16–GZR.21,
+not from equality of field-valued points.
+
+### 3.643. The actual Hecke action has ind-connection coefficients
+
+Transport the full action GZR.15 along GZR.26.
+We obtain a continuous unital action
+\[
+          \mathcal A\otimes\mathcal C_F
+                                \longrightarrow\mathcal C_F .
+ \tag{GZR.29}
+\]
+Its universal coefficient action is exactly the
+original completed Hecke action: this is how
+GZR.26 was defined on each full finite-point
+stage. With \(\mathrm{act}\) denoting GZR.29,
+\[
+ \widehat{\mathsf H}^{\,F}_V(M)
+       \simeq(\mathrm{act}\otimes\operatorname{Id})
+                         (E_V\otimes M).
+ \tag{GZR.30}
+\]
+The equality is in \(\mathcal C_F\otimes\mathcal Q\)
+and includes every original Hecke comparison.
+GZR.27 consequently refines it to the actual
+full subcategory \(\mathcal C_F\otimes\mathcal I\).
+Apply its continuous inclusion into \(\mathcal M\)
+and the normalized geometric realization:
+\[
+          \mathsf H_VF\in\mathcal M\otimes\mathcal I .
+ \tag{GZR.31}
+\]
+The same argument with GZR.28 proves the statement
+for every finite set, with all its original
+action maps and higher relations. No compactness,
+boundedness or input regularity has been assumed.
+
+The universal polynomial nullhomotopy gives more
+than individual local nilpotence. In the lifted
+completed coefficient of each Hecke operation,
+\[
+       v_j^m\widehat{\mathsf H}^{\,F}_{\vec V}=0,\qquad
+       m=\lfloor\dim H/2\rfloor+1 .
+ \tag{GZR.32}
+\]
+This is a specified natural nullhomotopy of the
+even central action. It is inherited from
+GZR.24 under the actual module action, and
+persists for arbitrary unbounded \(M\in\mathcal C_F\).
+It is not obtained by imposing a degree bound
+on \(M\). The existence of this refinement for
+every \(F\in\mathscr S_Y\) proves the unrestricted
+genus-zero Hecke-lisse inclusion.
+
+### 3.644. The full complex nilpotent projector image in every genus
+
+For genus zero, GZR.31 supplies
+\(\mathscr S_Y\subset\mathcal N_{\mathrm{Hl}}(Y)\).
+For positive genus the inclusion is NHT.31.
+In every genus GFP.55–GFP.56 give the reverse
+inclusion and chartwise ind-regularity. Thus,
+over the original complex coefficient field,
+\[
+ \operatorname{Dmod}_{1/2,\mathcal N}(\operatorname{Bun}_G)
+     =\mathcal N_{\mathrm{Hl}}(\operatorname{Bun}_G)
+     =\operatorname{EssIm}(\Pi_{\mathrm{res}})
+     \subset\mathscr R_\infty(\operatorname{Bun}_G).
+ \tag{GZR.33}
+\]
+This holds for every connected reductive \(G\),
+every genus and every bundle component, with
+both infinite cohomological tails. The full
+restricted projector and its original normalization
+are those of RSE.37–RSE.38 and NTR.16. In
+particular its given natural identity on the
+full Hecke-lisse category becomes
+\[
+       \Pi_{\mathrm{res}}|_{\operatorname{Dmod}_{1/2,\mathcal N}}
+                      \simeq\operatorname{Id}.
+ \tag{GZR.34}
+\]
+The assertion is equality with the independently
+defined cohomological support category NU.1–NU.4.
+It is not only an equality on bounded objects.
+
+The envelope argument deliberately uses a set
+of arbitrary supported Hecke words. It proves
+neither ordinary compactness of those words
+nor the chartwise supported compact factorization
+criterion AIC.17. The supported ind-Riemann–Hilbert
+identification requiring that criterion retains
+its hypothesis. Other geometric ground fields,
+derived tempered Satake and the stated additional
+categorical foundations also retain their
+requirements.
+
+![The arbitrary-input envelope, universal odd matrix and restricted Hecke action](figures/genus-zero-restricted-coefficients.svg)
+
+*Figure 3.76. GZR.4–GZR.11 use a fixed-point-Hecke-invariant
+presentable envelope for each arbitrary supported input.
+The full frame algebra and its universal odd operator
+are GZR.18–GZR.24. The finite exterior coefficient
+gives an actual equivariant central-power nullhomotopy,
+and GZR.26–GZR.34 transport the complete action to the
+restricted target and identify the full supported image.*
+
+Free further reading for the completed-to-ind
+coefficient refinement is AGKRRV,
+[*The stack of local systems with restricted variation and geometric Langlands theory with nilpotent singular support*](https://arxiv.org/abs/2010.01906v2),
+§14.3, especially Remark 14.3.9. The arguments above
+use the explicit projective-line tensor derivation
+and its actual categorical frame comparison.
+
+### 3.645. A nonzero square in the universal \(SL_2\) coefficient
+
+**Exercise 3.HS.** For \(H=SL_2\) and its standard
+representation, use odd exterior variables
+\(a,b,c\), each of degree minus one, and write
+\[
+ A_0=\Lambda(a,b,c),\qquad
+ U=\begin{pmatrix}a&b\\c&-a\end{pmatrix}.
+ \tag{GZR.35}
+\]
+View \(U\) as the degree-minus-one operator on
+the free rank-two \(A_0\)-module, with coefficients
+on the left and the graded \(A_0\)-linearity
+rule. Compute \(U^2,U^3,U^4\). Determine the
+least positive power of \(v=u^2\) that is
+zero in this universal coefficient.
+
+**Solution 3.HS.** Exterior anticommutation gives
+\[
+ U^2=
+   \begin{pmatrix}bc&2ab\\-2ac&-bc\end{pmatrix}\ne0 .
+ \tag{GZR.36}
+\]
+For example the upper-right entry is
+\(ab-ba=2ab\). Multiplying once more,
+\(bca=abc\) and \(acb=-abc\), so
+\[
+                U^3=3abc\,I_2,\qquad U^4=0 .
+ \tag{GZR.37}
+\]
+The last equality holds because every resulting
+monomial repeats an odd generator. Thus
+\[
+        v\ne0,\qquad v^2=0
+              \quad\text{on this universal module}.
+ \tag{GZR.38}
+\]
+For \(d=3\), the exponent \(m=2\) in GZR.24
+is attained. Replacing the associative loop
+algebra by an odd graded-commutative algebra
+would incorrectly erase the nonzero matrix
+GZR.36.
+
+### 3.646. Unbounded scalar coefficients and the localization test
+
+**Exercise 3.HT.** For \(H=\mathbf G_m\), let
+\(r\ne0\) be an integer weight. Use the connective
+DG algebra and its unbounded module
+\[
+ A=\Lambda(\xi)\otimes\mathbf C[z],\quad
+ |\xi|=-1,\quad |z|=-2,\quad d=0,\qquad
+ M=A[t,t^{-1}],\quad |t|=2 .
+ \tag{GZR.39}
+\]
+The scalar map from the universal framed
+algebra sends its odd generator to \(\xi\).
+Compute the coefficient action of \(u\) on
+the weight-\(r\) pullback tensored with \(M\).
+Show directly that it is an ind-connection
+coefficient despite the two infinite tails
+of \(M\). Compare the Laurent word module
+\(B_\Omega[v^{-1}]\).
+
+**Solution 3.HT.** The weight derivative is
+multiplication by \(r\), so the full
+coefficient operator and its central square are
+\[
+                u(m)=r\xi m,\qquad v(m)=0 .
+ \tag{GZR.40}
+\]
+The graded rule is respected:
+\(\xi a=(-1)^{|a|}a\xi\). All degrees of the
+input are retained. Localization is the
+telescope of multiplication by \(v\).
+Since its maps are zero on this module, its
+cohomology localization vanishes; equivalently
+the cone of \(1-\mathrm{shift}\) on the
+direct sum of the zero-transition system
+is acyclic. Thus
+\[
+        B_\Omega[v^{-1}]\otimes_{B_\Omega}^{L}M=0,
+                           \qquad M\in\mathcal I .
+ \tag{GZR.41}
+\]
+This calculation uses the universal odd
+exterior relation, not a lower degree bound
+on \(M\).
+
+On the other hand the free Laurent word
+module has invertible central action and
+a nonzero constant word:
+\[
+ L=B_\Omega[v^{-1}]\ne0,\qquad
+ B_\Omega[v^{-1}]\otimes_{B_\Omega}^{L}L\simeq L,\qquad
+                              L\notin\mathcal I .
+ \tag{GZR.42}
+\]
+It is an object of the completed category
+\(\mathcal Q\). The genus-zero Hecke theorem
+does not identify it with an ind-connection;
+it proves that independently supported
+inputs have the actual universal coefficient
+refinement GZR.30–GZR.32.
+
 ## 4. Betti, constructible, and tempered categories
 
 Now suppose \(k=\mathbb C\), and choose a coefficient field \(E\) of characteristic zero. The **large Betti** category consists of complexes of \(E\)-sheaves on the analytic stack, with no finite-dimensional stalk requirement. Its automorphic subcategory is
@@ -19948,7 +27597,7 @@ The geometric comparisons have the following scope.
 
 2. **Normalized global half root.** Sections 2.2–2.8 construct the line and its square map over every ordinary coefficient ring, with cutoff composition, all base changes and normalization at the trivial bundle. Point modification gives the determinant comparison, and the constant central adjoint summand gives the connected reductive case. The scalar choice and its parity change are (PF.13) and (PF.30). Hecke, Levi and Whittaker compatibility of chosen normalizations are further assertions. The curve, reductive-group and local-algebra inputs retain their specified recursive foundational hypotheses.
 
-3. **Nilpotent regularity.** This requires a restricted spectral action and a Beilinson projector whose image is the singular-support category and is chartwise ind-regular holonomic. The condition \(\operatorname{SS}(M)\subset \operatorname{Nilp}\) and the flat-connection calculation do not imply regular singularities for a general nilpotent covector. An irregular rank-one connection on an affine line has zero characteristic variety, so zero characteristic variety on a nonproper chart is insufficient. For the torus on the proper Picard variety, its nilpotent cone is zero, coherent zero-support modules are flat vector bundles by the Taylor argument, and the proper Picard variety is a compactification with empty boundary. General descent and the nonabelian regularity assertion are additional requirements.
+3. **Nilpotent regularity.** This requires a restricted spectral action and a Beilinson projector whose image is the singular-support category and is chartwise ind-regular holonomic. The condition \(\operatorname{SS}(M)\subset \operatorname{Nilp}\) and the flat-connection calculation do not imply regular singularities for a general nilpotent covector. An irregular rank-one connection on an affine line has zero characteristic variety, so zero characteristic variety on a nonproper chart is insufficient. For the torus on the proper Picard variety, its nilpotent cone is zero, coherent zero-support modules are flat vector bundles by the Taylor argument, and the proper Picard variety is a compactification with empty boundary. GZR.33 proves full nonabelian nilpotent ind-regularity over the complex numbers in every genus. The stated further descent and supported factorization assertions retain their requirements.
 
 4. **Support estimates and suitable opens.** Sections 3.2–3.15 give the proper support estimate, weighted contraction, local parabolic implication, duality and whole boundary inverse image, finite HN-boundary assembly, coherent approximation in the strong quotient heart, both full cohomological amplitude bounds, the unbounded finite-window passage and extension over cofinal cuts. Both extensions preserve nilpotent support in every connected reductive case, genus and component; arbitrary opens can add conormal directions, as Exercise 3.C shows. Sections 3.16–3.22 give finite point detection on the full unbounded category under the stated conical dimension bound, half-twisted chart descent, compact generation under the specified continuous conservative adjunction, ind-holonomic chart cohomology and finite-family detection on each bounded open. Sections 3.23–3.29 give the coefficient-ring Hecke and formal Levi statements, signed curve covector, bounded affine-Springer isolation in both directions, the distinction between reduced and nonreduced Grassmannian bounds, global Hecke cotangent and compatible-Higgs fibres, and the signed moving relation with invariant equations on nonreduced tests.
 
@@ -19956,7 +27605,7 @@ The geometric comparisons have the following scope.
 
 6. **Riemann–Hilbert generality.** Sections 3.55–3.58 give the full chartwise ind-regular equivalence, stack descent and normalized global half-twist transport over complex coefficients, using the complete earlier algebraic regular-holonomic theorem and its actual inverse-image comparisons. There is no global boundedness or compactness assumption. Identifying the independently defined nilpotent singular-support subcategories requires its further microlocal comparison and ind-extension.
 
-7. **Full and restricted spectral coefficients.** The full de Rham quotient, quasicoherent localization and ordinary spectral projector of §§3.84–3.95 concern the full spectral target. Sections 3.96–3.135 construct the completed lisse target, its finite-lisse ind-image, the actual restricted tensor functor, full frame quotient, nilpotent lifts, infinitesimal cohesiveness and compact connective framed cotangent module. Sections 3.136–3.150 give its effective framed derived ind-affine presentation on every connective DG algebra, with closed finite-presentation quasi-smooth stages and their full higher paths. Restricted localization, the compatible Hecke action, the nilpotent Beilinson projector and its support image and original-field regularity are further geometric assertions. Geometric ground-field extensions also require their stated comparisons.
+7. **Full and restricted spectral coefficients.** The full de Rham quotient, quasicoherent localization and ordinary spectral projector of §§3.84–3.95 concern the full spectral target. Sections 3.96–3.135 construct the completed lisse target, its finite-lisse ind-image, the actual restricted tensor functor, full frame quotient, nilpotent lifts, infinitesimal cohesiveness and compact connective framed cotangent module. Sections 3.136–3.150 give its effective framed derived ind-affine presentation on every connective DG algebra, with closed finite-presentation quasi-smooth stages and their full higher paths. RSE.37–RSE.38 and NTR.16 give restricted localization, its compatible Hecke action and the full restricted projector image. GFP.55–GFP.56 prove original-complex full-image regularity and nilpotent-support containment in every genus. NHT.2 gives the all-genus upper support bound, and GZR.33 gives the full independently supported projector image and its original-complex ind-regularity in every genus. Chartwise supported compact factorization AIC.17 and the other geometric ground fields retain their separate requirements.
 
 The additional source locators for the rank-one constructions are Arinkin–Gaitsgory §11.2, the remark “The case of a torus”, and Ben-Zvi–Nadler §§4.2–4.3. Their conjectural formulations specify the category constructions used there; the hypotheses and comparisons above specify the assertions made here.
 

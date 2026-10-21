@@ -4,7 +4,7 @@
 
 The modular return of an automorphism records when a power first becomes inner times modular. Its implementing phase must be untwisted before it becomes a root of unity. We compare automorphisms by retaining two commuting maps on the semifinite coefficient algebra: the restricted automorphism and the generator of the discrete decomposition. Their characteristic data are explicit, and the group-action comparison theorem then gives an actual normal outer conjugacy.
 
-This lesson uses the Powers-factor identification, UNI02–04, normal crossed-product transport, AC07, and characteristic-class comparison, NCA07. The exact additional inputs are the discrete-decomposition and generalized-trace theorems [DDP, Sections 2–7](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/OA-FLOW/src/OA-FLOW-DDP.md), the semifinite automorphism results [TS, Theorem 4.2 and Proposition 5.1](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/trace-scaling-on-the-hyperfinite-semifinite-factor.md), the module coordinate [CSM, Sections 4–6](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/central-sequences-and-the-module-circle.md), and the central-triviality and return-time results [CTP, Sections 1–4](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/central-triviality-and-modular-powers.md). We verify all the hypotheses needed to apply NCA07 at the semifinite factor; its scope is not enlarged to an unspecified factor class.
+This lesson uses the Powers-factor identification, UNI02–04, normal crossed-product transport, AC07, and characteristic-class comparison, NCA07. The exact additional inputs are the discrete-decomposition and generalized-trace theorems [DDP, Sections 2–7](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/OA-FLOW/src/OA-FLOW-DDP.md), the semifinite automorphism results [TS, Theorem 4.2 and Proposition 5.1](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/trace-scaling-on-the-hyperfinite-semifinite-factor.md), the module coordinate [CSM, Sections 4–6](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/central-sequences-and-the-module-circle.md), and the central-triviality and return-time results [CTP, Sections 1–4](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/central-triviality-and-modular-powers.md). We verify all the hypotheses needed to apply NCA07 at the semifinite factor; its scope is not enlarged to an unspecified factor class.
 
 ## The classification statement and its labels
 
@@ -334,7 +334,7 @@ Its conclusion is again (4.3). The same calculation (5.1)–(5.5) reconstructs a
 
 ## Realizing the labels on the specified factor
 
-For finite \(p\), choose \(0\le s<L\), \(ps=qL\), \(0\le t<T\), and \(\delta^p=1\). The exact finite-model construction in [Finite outer period and obstruction, Theorem 4.2](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/finite-outer-period-and-obstruction.md) gives \(a_\delta\in\operatorname{Aut}R\) and \(v\in R\) with
+For finite \(p\), choose \(0\le s<L\), \(ps=qL\), \(0\le t<T\), and \(\delta^p=1\). The exact finite-model construction in [Finite outer period and obstruction, Theorem 4.2](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/finite-outer-period-and-obstruction.md) gives \(a_\delta\in\operatorname{Aut}R\) and \(v\in R\) with
 
 \[
  p_o(a_\delta)=p,\qquad
@@ -342,7 +342,7 @@ For finite \(p\), choose \(0\le s<L\), \(ps=qL\), \(0\le t<T\), and \(\delta^p=1
  \tag{7.1}
 \]
 
-The finite-factor central-triviality theorem, also used in [CTP, Theorem 6.1](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/central-triviality-and-modular-powers.md#6-realizing-every-compatible-finite-set-of-data), makes its asymptotic period \(p\). Let \(b_r\) be the coherent trace-scaling flow on \(R_\infty\), with \(\tau b_r=e^{-r}\tau\), supplied by CSM Lemma 5.1. On \(Q'=R\overline\otimes R_\infty\), set
+The finite-factor central-triviality theorem, also used in [CTP, Theorem 6.1](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/central-triviality-and-modular-powers.md#6-realizing-every-compatible-finite-set-of-data), makes its asymptotic period \(p\). Let \(b_r\) be the coherent trace-scaling flow on \(R_\infty\), with \(\tau b_r=e^{-r}\tau\), supplied by CSM Lemma 5.1. On \(Q'=R\overline\otimes R_\infty\), set
 
 \[
  \theta'=\mathrm{id}_R\otimes b_L,\qquad

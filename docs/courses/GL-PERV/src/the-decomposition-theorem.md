@@ -287,9 +287,9 @@ H^0(B\cap V,\mathcal H^iA|_{B\cap V})
 \quad\text{surjective}.
 \tag{5.5}
 \]
-The neighborhood input is simultaneous stabilization, on sufficiently small such balls, of the finitely many constructible section groups involved. One must also identify cohomology on the small ball with the stalk before inverting that comparison to define the displayed map. These are the constructible-neighborhood statements in BBD, 6.2.9; lesson 1's normal-neighborhood arguments address their geometry. A proof of the full small-ball cohomology and stalk comparisons at these hypotheses is still required for this argument.
+Proposition 5.1 below proves simultaneous stabilization on sufficiently small balls for the finitely many constructible complexes and locally closed coefficient systems involved. It identifies the actual section-to-stalk map as an isomorphism, so its inverse defines the displayed map together with proper base change and restriction. The argument uses the Whitney cones and constructible interval comparisons of Lesson 1.
 
-Given this input, apply the preceding IC argument on \(B\). A contributing bottom sheaf is \(j_*L\). Its stalk at \(y\) is the colimit of \(H^0(B'\cap U,L)\) over shrinking neighborhoods. Stabilization identifies that stalk with the corresponding sections on the chosen \(B\). Since \(U\subset V\), the direct-image identity identifies those sections with the target for this summand in (5.5). All remaining summands have zero target. Their sum gives the surjection, and proper base change supplies its source. On a punctured disc the target is \(\ker(T-1)\); it need not be the entire nearby fibre group.
+Using Proposition 5.1, apply the preceding IC argument on \(B\). A contributing bottom sheaf is \(j_*L\). Its stalk at \(y\) is the colimit of \(H^0(B'\cap U,L)\) over shrinking neighborhoods. Stabilization identifies that stalk with the corresponding sections on the chosen \(B\). Since \(U\subset V\), the direct-image identity identifies those sections with the target for this summand in (5.5). All remaining summands have zero target. Their sum gives the surjection, and proper base change supplies its source. On a punctured disc the target is \(\ker(T-1)\); it need not be the entire nearby fibre group.
 
 ### The perverse Leray filtration
 
@@ -299,6 +299,111 @@ E_2^{a,b}=H^a(Y,{}^pH^b(Rf_*K))\Longrightarrow H^{a+b}(X,K).
 \tag{5.6}
 \]
 The truncation filtration is canonical, whereas a splitting of it inherits the choice of a derived decomposition. This is the perverse Leray sequence. For a smooth proper family over a smooth base of dimension \(b\), the ordinary direct-image sheaves are local systems; shifting those sheaves by \([b]\) makes them perverse. The two index systems then translate into one another and give ordinary Leray degeneration. With singular fibres, replacing the perverse terms in (5.6) by ordinary cohomology sheaves is not justified by this argument.
+
+### 5.1. Small balls, stalks and the local invariant-cycle map
+
+We work in the classical topology of a complex algebraic variety \(Y\), with coefficients in a field \(k\). Fix \(y\in Y\), a local closed embedding in a complex manifold, and coordinates centered at \(y\). Write
+\[
+\rho(z)=\|z\|^2,\qquad B_r=Y\cap\{\rho<r\}.
+\tag{5.7}
+\]
+Thus \(r\) is a squared radius. All balls below have closure inside the chosen coordinate neighborhood.
+
+**Proposition 5.1 (simultaneous constructible stabilization).** Let \(E_1,\ldots,E_u\) be a finite collection of bounded algebraically constructible complexes on \(Y\). Also let \(j_b:W_b\hookrightarrow Y\) be finitely many locally closed algebraic inclusions, with bounded algebraically constructible complexes \(G_b\) on \(W_b\). There is \(\epsilon>0\) such that, for every \(0<r'<r<\epsilon\), the actual restriction maps
+\[
+\begin{aligned}
+R\Gamma(B_r,E_a)&\longrightarrow R\Gamma(B_{r'},E_a),\\
+R\Gamma(B_r\cap W_b,G_b)&\longrightarrow
+R\Gamma(B_{r'}\cap W_b,G_b)
+\end{aligned}
+\tag{5.8}
+\]
+are isomorphisms. The actual maps to the neighborhood germs consequently give
+\[
+\begin{aligned}
+\gamma_{r,a}:R\Gamma(B_r,E_a)&\xrightarrow{\sim}(E_a)_y,\\
+R\Gamma(B_r\cap W_b,G_b)&\xrightarrow{\sim}(Rj_{b*}G_b)_y.
+\end{aligned}
+\tag{5.9}
+\]
+These comparisons are natural in the complexes, commute with restriction in \(r\), and hold in all cohomological degrees for one common \(\epsilon\).
+
+**Proof.** Choose one finite algebraic Whitney stratification compatible with \(\{y\}\), all the \(W_b\), and all the cohomology sheaves of the indicated complexes. There are finitely many such sheaves and constructible markings. The [finite refinement and relative extension construction in Lesson 1, K.6](constructible-complexes-on-algebraic-varieties.md#k-6-finite-compatible-whitney-refinements) supplies this stratification. In particular \(y\) is a point stratum. Strata whose closures miss \(y\) can be removed from a small coordinate neighborhood.
+
+The function \(\rho\) is submersive on each remaining stratum off \(y\), after shrinking. Indeed a sequence of radial critical points approaching \(y\) would have unit radial secants perpendicular to the corresponding tangent spaces. A convergent subsequence of those unit vectors and tangent spaces would give a nonzero vector perpendicular to the limiting tangent space. Whitney (b), using the fixed lower point \(y\), puts the same vector in that space, a contradiction.
+
+On every compact interval of positive radii, the inverse image under \(\rho\) is a closed subset of a compact annulus in the coordinate chart. Thus
+\[
+\rho:B_\epsilon\setminus\{y\}\longrightarrow(0,\epsilon)
+\tag{5.10}
+\]
+is a proper stratified submersion. The [controlled flows of Lesson 1, I.3–I.6](constructible-complexes-on-algebraic-varieties.md#i-6-proper-stratified-submersions-and-normal-cones) identify it with \(L\times(0,\epsilon)\), preserving \(\rho\), where \(L=Y\cap\{\rho=\epsilon/2\}\) is compact. The lift of a finite radial segment exists for its entire length because it stays in the compact inverse image of that segment. Its reverse flow is its inverse. At radius zero, compactness identifies all limiting points with \(y\). This extends the product to a stratum-preserving homeomorphism
+\[
+B_\epsilon\simeq c_{<\epsilon}L,
+\tag{5.11}
+\]
+with cone coordinate \(\rho\). This is a product for the fixed stratification, including all the markings \(W_b\). When \(y\) is isolated, the link is empty and the assertions reduce to sections on a point.
+
+For \(0<r'<r<\epsilon\), choose \(0<\lambda<r'/r\). In cone coordinates the map \(q:B_r\to B_{r'}\) multiplies the radial coordinate by \(\lambda\) and fixes \(y\). It is joined to the identity by
+\[
+H_t(\ell,v)=(\ell,(1-t+t\lambda)v),\qquad H_t(y)=y,
+\quad 0\le t\le1.
+\tag{5.12}
+\]
+Each positive-radius track remains in a single original stratum; the vertex track is constant. This homotopy also preserves \(B_{r'}\) and every \(W_b\). It therefore restricts to the corresponding homotopy on each \(B_r\cap W_b\).
+
+For precision, the constructible homotopy comparison used here concerns the entire coefficient complex. If \(H:T\times[0,1]\to Y\) has its tracks in single strata and \(E\) is constructible, set \(\mathcal E=H^*E\). For the proper interval projection \(\operatorname{pr}:T\times[0,1]\to T\), proper base change identifies the counit's stalk with
+\[
+R\Gamma([0,1],\mathcal E|_{\{t\}\times[0,1]})
+\longrightarrow\mathcal E_{(t,\tau)}.
+\tag{5.13}
+\]
+The fiber cohomology sheaves are local systems on a contractible interval. They are constant and have no positive cohomology, by the earlier path-transport and singular-prism calculation. Applying the finitely many truncation triangles to the bounded fiber complex proves that (5.13) is an isomorphism. Thus the counit is an isomorphism, and its endpoint restrictions compare the actual pullbacks by \(H_0,H_1\). The proof and its compatibility with the adjunction maps on sections are in [Lesson 1, J.1](constructible-complexes-on-algebraic-varieties.md#j-1-the-coefficient-comparison-along-an-interval).
+
+Apply this comparison to (5.12). Pullback by \(q\), followed by the endpoint comparison of coefficients, is inverse to restriction from \(B_r\) to \(B_{r'}\). One composite is the identity by the homotopy on \(B_r\); the other is the identity by its restriction to \(B_{r'}\). The same argument on each marked locally closed subset proves the second line of (5.8). Only positive radial scalings were used: the homotopy does not carry points across the vertex stratum. All comparisons come from actual restriction and adjunction maps, so they are natural.
+
+It remains to identify their stable values with the asserted stalks. Use a single bounded-below injective resolution \(I_a\) of \(E_a\), as constructed in [Lesson 1, B.1](constructible-complexes-on-algebraic-varieties.md#b-1-complexes-resolutions-and-triangle-signs). The balls are cofinal among neighborhoods of \(y\). Term by term,
+\[
+\varinjlim_{r\downarrow0}\Gamma(B_r,I_a)=(I_a)_y.
+\tag{5.14}
+\]
+Filtered colimits of vector spaces and stalks are exact, so cohomology commutes with this colimit and the right side represents \((E_a)_y\). Every transition in the system is already a quasi-isomorphism by (5.8). The map from any one sufficiently small term to the colimit is consequently a quasi-isomorphism, proving the first line of (5.9).
+
+For \(G_b\), choose one injective resolution \(J_b\) on \(W_b\). The direct image \(j_{b*}J_b\) computes \(Rj_{b*}G_b\); inverse image is exact, so its right adjoint \(j_{b*}\) preserves injectives. By the definition of direct image,
+\(\Gamma(B_r,j_{b*}J_b)=\Gamma(B_r\cap W_b,J_b)\).
+The same colimit argument proves the second line of (5.9). This argument does not assume nonproper base change or constructibility of \(Rj_{b*}G_b\). The common stratification and the common cone were fixed before choosing any radius or degree, proving the simultaneous assertion. \(\square\)
+
+**The map in local invariant cycles.** Apply Proposition 5.1 to \(A=Rf_*K\), the finitely many shifted IC summands in a decomposition (3.2), and the local systems on their chosen smooth opens. Include \(V\), these supports, and these opens among the markings. The [proper-base-change evaluation of Lesson 1, H.2](constructible-complexes-on-algebraic-varieties.md#h-2-derived-fibers-bounds-and-arbitrary-proper-support-base-change) and \(\gamma_r\) give the canonical identification
+\[
+R\Gamma(B_r,A)\xrightarrow{\gamma_r}A_y
+\ \simeq\ R\Gamma(X_y,K|_{X_y}).
+\tag{5.15}
+\]
+The source-to-target map of (5.5) is therefore
+\[
+H^i(X_y,K|_{X_y})
+\xrightarrow{\gamma_r^{-1}}H^i(B_r,A)
+\longrightarrow H^0(B_r\cap V,\mathcal H^iA|_V),
+\tag{5.16}
+\]
+where the first arrow includes the proper-base-change identification in (5.15). The second arrow is canonical: apply \(R\Gamma\) to \(A\to\tau^{\ge i}A\), take degree \(i\), and then restrict to \(B_r\cap V\). Since \(\tau^{\ge i}A\) has no lower cohomology, its degree-\(i\) section group is \(H^0(B_r,\mathcal H^iA)\).
+
+We verify surjectivity on each IC summand. Let the summand be \(\operatorname{IC}_Z(L)[-n]\), where \(s=\dim Z\). Its degree-\(i\) restriction to \(V\) is a direct summand of a local system, hence locally constant. If \(i-n\ne-s\), it vanishes on the smooth dense part of its support, by the normalization of IC, and is zero on \(V\). This last deduction uses actual density: the smooth dense open of a complex algebraic support is dense in its usual topology by the algebraic arc argument in [Lesson 1, K.3](constructible-complexes-on-algebraic-varieties.md#k-3-the-complex-algebraic-arc-lemma); a nonzero locally constant stalk would instead remain nonzero in a neighborhood.
+
+For a contributing summand choose its smooth defining open \(U\) inside \(V\cap Z\). Formula (5.3), from the [successive ordinary truncations of Lesson 4](intermediate-extensions-and-intersection-complexes.md#deligne-s-successive-truncations), gives
+\[
+\begin{aligned}
+H^i(B_r,\operatorname{IC}_Z(L)[-n])
+ &=H^0(B_r\cap U,L),\\
+H^0(B_r\cap V,\mathcal H^i(\operatorname{IC}_Z(L)[-n]))
+ &=H^0(B_r\cap U,L).
+\end{aligned}
+\tag{5.17}
+\]
+In the first line \(i=n-s\) is the lowest possible ordinary degree, so there are no lower sheaf-cohomology contributions. In the second line the bottom sheaf is the ordinary direct image of \(L\). The map in (5.16) is the identity between these two descriptions, because both arise from restriction and the same bottom-degree truncation. Summands whose support misses \(V\) have zero target. Adding the summands proves (5.5).
+
+The restrictions of (5.15) for nested small balls commute, so (5.16) is independent of the sufficiently small radius after the canonical target identifications. Equivalently, after proper base change it is the stalk of the ordinary sheaf restriction map
+\(\mathcal H^iA\to j_*j^*\mathcal H^iA\), with \(j:V\hookrightarrow Y\). The decomposition proves its surjectivity; it does not define the map. On a punctured disc, path transport identifies its target with \(\ker(T-1)\). Proposition 5.1 establishes the classical neighborhood comparison independently of a decomposition theorem; the surjectivity conclusion uses the decomposition at its stated coefficient and geometric hypotheses.
 
 ## 6. Exceptional fibres and a vanishing loop
 
@@ -392,11 +497,11 @@ Every other possible point term would add a stalk dimension. Unshifted, the term
 
 The finite-data classical/étale and specialization comparisons, including their stable lattices and compatibility with Chern maps, remain unproved inputs in §3. The rational IC-source version used in the resolution calculations is the version stated in de Cataldo–Migliorini, Theorem 1.6.1; its full coefficient passage must also be supplied. Lesson 7's ordinary weight, mixed-operation, curve-conductor and generic-local-acyclicity foundations, together with the exact normalized adic operations, remain prerequisites of §§3–4. The divisor class identity, smooth trace, finite and proper base change, and their coefficient comparisons are required at the precise coefficient versions used. The abstract splitting proof is conditional on these geometric and coefficient inputs.
 
-The small-ball comparisons specified before (5.5) are inputs to that argument. The plumbing calculation in §6 uses the smooth-flow, plane-curve, normalization and sheaf–singular comparisons in Lesson 1, with their geometric hypotheses. The broader semisimple-source theorem stated in §3 is not proved here at its full generality. The finite-data comparison and coefficient passages above are likewise necessary for the geometric applications of the categorical splitting theorem.
+Proposition 5.1 proves the classical small-ball and stalk comparisons used in (5.5), simultaneously for the finite family of coefficient complexes. Its application to invariant-cycle surjectivity uses the specified decomposition theorem. The plumbing calculation in §6 uses the smooth-flow, plane-curve, normalization and sheaf–singular comparisons in Lesson 1, with their geometric hypotheses. The broader semisimple-source theorem stated in §3 is not proved here at its full generality. The finite-data comparison and coefficient passages above are likewise necessary for the geometric applications of the categorical splitting theorem.
 
 ## References
 
-- A. Beilinson, J. Bernstein and P. Deligne, with results of O. Gabber, *Faisceaux pervers*, Astérisque **100** (1982): 5.3.8, 5.4.4–5.4.5, 5.4.10–5.4.15, 6.1 and 6.2.4–6.2.10. [Free original volume](https://www.numdam.org/item/AST_1982__100__1_0/).
+- A. Beilinson, J. Bernstein and P. Deligne, with results of O. Gabber, *Faisceaux pervers*, Astérisque **100** (1982): 5.3.8, 5.4.4–5.4.5, 5.4.10–5.4.15, 6.1 and 6.2.4–6.2.10. [Free author-hosted text](https://publications.ias.edu/sites/default/files/Faisceaux%20pervers.pdf).
 - P. Deligne, *Théorème de Lefschetz et critères de dégénérescence de suites spectrales*, Publications Mathématiques de l'IHÉS **35** (1968), 107–126: Proposition 1.2, Theorem 1.5 and Remark 1.8. [Free original article](https://www.numdam.org/item/PMIHES_1968__35__107_0/).
 - M. A. de Cataldo and L. Migliorini, *The decomposition theorem, perverse sheaves and the topology of algebraic maps*: Theorem 1.6.1, Remark 1.6.2 and §3. [Free author preprint](https://arxiv.org/abs/0712.0349).
 - P. Deligne, [*Décompositions dans la catégorie dérivée*](https://publications.ias.edu/sites/default/files/68_Decompositionsdans.pdf), 1994: §1 and 2.4–2.5. Free author-hosted text.

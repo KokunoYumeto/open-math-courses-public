@@ -1,6 +1,6 @@
 # Groups with operators
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).*
 
 A representation is a group together with additional operations that its homomorphisms must respect. For a module those operations are scalar multiplications. For a vector space with a linear transformation, they include that transformation. Keeping the operations visible lets us distinguish two questions: which simple factors occur in a filtration, and which indecomposable pieces occur in a direct sum? The first has a group-theoretic answer. The second requires a stronger argument about endomorphisms.
 
@@ -308,6 +308,6 @@ The direct-product theorem for nonabelian operator groups is stated with its cha
 ## References
 
 - **[MIT]** *Noncommutative Algebra*, MIT OpenCourseWare, Spring 2023, instructor Roman Bezrukavnikov. Lectures 1–4 treat semisimplicity, length and Krull–Schmidt. [Course notes](https://ocw.mit.edu/courses/18-706-noncommutative-algebra-spring-2023/resources/mit18_706_s23_full_lec_pdf/).
-- **[Voight]** John Voight, *Quaternion Algebras*, Graduate Texts in Mathematics 288, Springer, 2021, §7.2. [Author's book page](https://jvoight.github.io/quat.html).
-- **[Stacks]** The [Stacks Project](https://stacks.math.columbia.edu/), Tags [00IU](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#section-length) and [00IX](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#lemma-length-independent), linked to the companion AI Integrated Stacks Project edition. That edition contains AI-proposed corrections and additions and is not reviewed by the Stacks Project's maintainers.
-- **[Noether]** Emmy Noether, *Hyperkomplexe Größen und Darstellungstheorie*, written up by B. L. van der Waerden, *Mathematische Zeitschrift* **30** (1929), 641–692, §§1–5; especially §4, note 11 for direct-product uniqueness. Also *Hyperkomplexe Größen und Darstellungstheorie in arithmetischer Auffassung*, proceedings of the Bologna International Congress of Mathematicians, **2** (1928), 71–73.
+- **[Voight]** John Voight, [*Quaternion Algebras*, author-maintained free edition](https://jvoight.github.io/quat.html), §7.2. [Author's book page](https://jvoight.github.io/quat.html).
+- **[Stacks]** The [Stacks Project](https://stacks.math.columbia.edu/), Tags [00IU](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#section-length) and [00IX](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#lemma-length-independent), linked to the companion AI Integrated Stacks Project edition. The linked AI Integrated Stacks Project is a separately maintained AI edition of the Stacks Project.
+- **[Noether]** Emmy Noether, [*Hyperkomplexe Größen und Darstellungstheorie*, free English edition](https://github.com/KokunoYumeto/emmy-noether-en), written up by B. L. van der Waerden, *Mathematische Zeitschrift* **30** (1929), 641–692, §§1–5; especially §4, note 11 for direct-product uniqueness. Also *Hyperkomplexe Größen und Darstellungstheorie in arithmetischer Auffassung*, proceedings of the Bologna International Congress of Mathematicians, **2** (1928), 71–73. The [original Bologna proceedings](https://www.mathunion.org/fileadmin/ICM/Proceedings/ICM1928.2/ICM1928.2.ocr.pdf) are freely accessible.

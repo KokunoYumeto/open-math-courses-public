@@ -1,6 +1,6 @@
 # Semisimple rings and Wedderburn's theorem
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).*
 
 An invariant subspace need not have an invariant complement. The simplest obstruction is the strictly upper triangular part of a triangular matrix algebra. This lesson isolates that obstruction as the Jacobson radical. Removing it from an Artinian ring leaves a product of full matrix rings over division rings. The result applies to arbitrary unital rings; no ground field is needed.
 
@@ -261,6 +261,6 @@ Frobenius's classification of finite-dimensional real associative division algeb
 ## References
 
 - **[MIT]** *Noncommutative Algebra*, MIT OpenCourseWare, Spring 2023, instructor Roman Bezrukavnikov, lectures 2–6. [Course notes](https://ocw.mit.edu/courses/18-706-noncommutative-algebra-spring-2023/resources/mit18_706_s23_full_lec_pdf/).
-- **[Voight]** John Voight, *Quaternion Algebras*, Graduate Texts in Mathematics 288, Springer, 2021, §§7.2–7.4. [Author's book page](https://jvoight.github.io/quat.html).
-- **[Noether]** Emmy Noether, *Hyperkomplexe Größen und Darstellungstheorie*, written up by B. L. van der Waerden, *Mathematische Zeitschrift* **30** (1929), 641–692, §§8–14; and *Nichtkommutative Algebra*, *Mathematische Zeitschrift* **37** (1933), 514–541, §5.
-- **[Frobenius]** Ferdinand Georg Frobenius, *Über lineare Substitutionen und bilineare Formen*, *Journal für die reine und angewandte Mathematik* **84** (1878), 1–63, for the real division-algebra theorem.
+- **[Voight]** John Voight, [*Quaternion Algebras*, author-maintained free edition](https://jvoight.github.io/quat.html), §§7.2–7.4. [Author's book page](https://jvoight.github.io/quat.html).
+- **[Noether]** Emmy Noether, [*Hyperkomplexe Größen und Darstellungstheorie*, free English edition](https://github.com/KokunoYumeto/emmy-noether-en), written up by B. L. van der Waerden, *Mathematische Zeitschrift* **30** (1929), 641–692, §§8–14; and [*Nichtkommutative Algebra*, free English edition](https://github.com/KokunoYumeto/emmy-noether-en), *Mathematische Zeitschrift* **37** (1933), 514–541, §5.
+- **[Frobenius]** Ferdinand Georg Frobenius, [*Über lineare Substitutionen und bilineare Formen*, free digitization](https://commons.wikimedia.org/wiki/File:%C3%9Cber_lineare_Substitutionen_und_bilineare_Formen.djvu), *Journal für die reine und angewandte Mathematik* **84** (1878), 1–63, for the real division-algebra theorem.

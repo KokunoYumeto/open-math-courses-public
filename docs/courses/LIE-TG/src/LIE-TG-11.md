@@ -2,7 +2,7 @@
 
 *GPT-6.1 Sol (OpenAI). Original exposition and English translations: CC0 1.0; quoted German originals are public domain.*
 
-Finite-dimensionality places a strong restriction on local motions of a line. In a complex plane, orbit rank and invariant curve foliations lead to the generic local classification proved below. The intransitive actions carry functional parameters described by projective curve germs. Transitive imprimitive actions carry spectral parameters and a resonant polynomial extension. Their full point-equivalence relations are part of the classification. The isotropy filtration explains the three primitive plane forms and their distinction from the imprimitive actions. The homogeneous linear plane classification under linear conjugacy and its projective-line images are proved in Section 8, including their distinct parameter relations and the role of the fixed origin.
+Finite-dimensionality places a strong restriction on local motions of a line. In a complex plane, orbit rank and invariant curve foliations lead to the generic local classification proved below. The intransitive actions carry functional parameters described by projective curve germs. Transitive imprimitive actions carry spectral parameters and a resonant polynomial extension. Their full point-equivalence relations are part of the classification. The isotropy filtration explains the three primitive plane forms and their distinction from the imprimitive actions. The homogeneous linear plane classification under linear conjugacy and its projective-line images are proved in Section 8, including their distinct parameter relations and the role of the fixed origin. Sections 8.3–8.4 prove the complete projective-plane classification, ordinary projective parameter equivalence and every duality pairing. Section 8.5 proves the complete homogeneous linear three-variable classification, including scalar kernels, every character lift and all full-normalizer parameter equivalences.
 
 We use analytic germs at a specified regular point, holomorphic germs in the complex case. A Lie algebra consists of vector fields independent over the constant field, with bracket $[X,Y]=XY-YX$. Equivalence means pushforward by a local analytic diffeomorphism. Transitivity and invariant foliations have the local meanings established in Transitivity and primitivity. The projective fields come from Prolongation, differential invariants and the projective group.
 
@@ -840,7 +840,7 @@ On a projective line the full algebra is the three-dimensional algebra in Sectio
 
 For linear homogeneous plane groups, the origin is fixed. Hence their actions at the origin fall outside the regular transitive classification above. Their coefficient matrices form subalgebras of $\mathfrak{gl}_2$. Over $\mathbb C$, Lemma 3.1 shows that an irreducible such subalgebra is $\mathfrak{sl}_2$ or $\mathfrak{gl}_2$. Reducible subalgebras can be made upper triangular. Theorem 8.2 proves the full normal-form catalogue, including every reducible case and its exact parameter equivalence, corresponding to [Chapter 2, §5, pp. 18–28].
 
-The full plane projective algebra is $\mathfrak{sl}_3$. Its proper subalgebras include primitive affine and special affine actions, many imprimitive polynomial entries in Section 7, and intransitive stabilizer actions. Chapter 5, §§20–28, pp. 78–109, classifies its subgroups using changes restricted to projective coordinates and projective duality. An invariant line in the projective plane is different from an invariant foliation on a two-dimensional affine chart. For example, the affine group preserves the line at infinity but is primitive on its affine open orbit. Chapter 6, §§29–31, pp. 109–121, treats linear homogeneous groups in three variables; their relation to projective plane actions is projectivization, whose kernel consists of scalar matrices. These two additional catalogues are cited with their scope, not proved or replaced by the table for unrestricted local equivalence.
+The full plane projective algebra is $\mathfrak{sl}_3$. Its proper subalgebras include primitive affine and special affine actions, many imprimitive polynomial entries in Section 7, and intransitive stabilizer actions. Chapter 5, §§20–28, pp. 78–109, classifies its subgroups using changes restricted to projective coordinates and projective duality. An invariant line in the projective plane is different from an invariant foliation on a two-dimensional affine chart. For example, the affine group preserves the line at infinity but is primitive on its affine open orbit. Chapter 6, §§29–31, pp. 109–121, treats linear homogeneous groups in three variables; their relation to projective plane actions is projectivization, whose kernel consists of scalar matrices. The projective-plane catalogue and all duality pairings are proved in Theorem 8.9 and Corollary 8.10. Theorem 8.13 proves the complete linear-three-variable catalogue and all scalar-character lift identifications.
 
 ### 8.1. The complete homogeneous linear plane catalogue
 
@@ -1081,6 +1081,600 @@ Thus duality sends $s$ to $-s$ and can exchange distinct linear-conjugacy classe
 
 The homogeneous linear catalogue is Lie–Engel III, Chapter 2, Section 5, Theorem 3, pp. 26–27, with its derivation on pp. 18–26 and invariant-line description on p. 28. The first projective-line catalogue is Chapter 2, Section 4, Theorem 2, p. 17. The matrix proofs above include the zero and full algebras and specify every parameter identification.
 
+### 8.3. Projective plane actions and invariant flags
+
+We now restrict equivalence to projective coordinates on $\mathbb P(V)$, where $V=\mathbb C^3$. A projective Lie algebra is a subalgebra of $\mathfrak{pgl}(V)$, identified with $\mathfrak{sl}(V)$ by the traceless representative. Matrix brackets are ordinary commutators; their coefficient fields have the opposite bracket as in (8.2). In the chart $[x:y:1]$, put
+
+$$
+\begin{aligned}
+p&=\partial_x,\quad q=\partial_y,\\
+A&=x\partial_x,\quad B=y\partial_y,\\
+R&=x\partial_y,\quad S=y\partial_x,\\
+E&=p+R,\\
+D(a,c)&=aA+cB.
+\end{aligned}
+\tag{8.15}
+$$
+
+For a matrix $M$, write $\overline M=M-\operatorname{tr}(M)I/3$. The fields $p,q,R,S,A,B$ correspond respectively to $E_{13},E_{23},E_{21},E_{12},\overline E_{11},\overline E_{22}$. In general a block matrix gives
+
+$$
+\begin{aligned}
+M&=\begin{pmatrix}L&b\\r&d\end{pmatrix},\\
+X_M(z)&=b+(L-dI)z\\
+&\qquad-(rz)z,\\
+z&=(x,y)^T.
+\end{aligned}
+\tag{8.16}
+$$
+
+Indeed, differentiate the quotient of the first two homogeneous coordinates by the last. Its kernel consists exactly of scalar matrices: vanishing quadratic, constant and linear terms successively give $r=0$, $b=0$, $L=dI$. Thus a projective point is an invariant matrix line, and a projective line is an invariant matrix plane.
+
+The following earlier programme results will be used at their stated hypotheses: preservation of Jordan decomposition, Theorem 5.1; maximal toral centralizers, Theorem 2.1, reduced one-dimensional root spaces, Proposition 3.2; and [the finite-dimensional irreducible $\mathfrak{sl}_2$ modules, Theorem 2.1](../RT-LIE/RT-LIE-05.html#section-2). These are finite-dimensional complex results. Semisimple means that there is no nonzero solvable ideal, as in Cartan's criterion, Section 3. Lie's triangularization theorem is proved in Lesson 7, Section 5.
+
+**Lemma 8.6 (irreducible three-dimensional matrix actions).** A complex matrix Lie subalgebra of $\mathfrak{sl}_3$ with no proper nonzero invariant subspace is either $\mathfrak{sl}_3$ or a conjugate of the irreducible three-dimensional $\mathfrak{sl}_2$ representation. In the second case its projective action is the full infinitesimal stabilizer of a nonsingular conic.
+
+**Proof.** Let $\mathfrak h$ be the matrix algebra and $\mathfrak r$ any solvable ideal. Triangularize $\mathfrak r$ by Lie's theorem. Its simultaneous eigencharacters belong to the finite list of diagonal functionals in such a triangular basis. To see this directly, a common eigenvector's last nonzero coordinate identifies its eigencharacter with the corresponding diagonal functional. Choose one character $\lambda$ having a nonzero common eigenspace $W_\lambda$.
+
+For $X\in\mathfrak h$, conjugation by $e^{tX}$ preserves $\mathfrak r$: the exponential of $t\operatorname{ad}X$ preserves that ideal, and the matrix exponential identity gives the conjugation. The vector $e^{tX}v$, for $v\in W_\lambda$, is a common eigenvector of character $\lambda\circ e^{-t\operatorname{ad}X}$. This character depends holomorphically on $t$ and belongs to the finite list. It is therefore constant near zero. Hence $e^{tX}W_\lambda\subset W_\lambda$, and differentiation shows that $W_\lambda$ is $\mathfrak h$-invariant. Irreducibility gives $W_\lambda=V$. Every element of $\mathfrak r$ is scalar on $V$; tracelessness makes it zero. Thus every solvable ideal is zero and $\mathfrak h$ is semisimple.
+
+Choose a maximal toral subalgebra $\mathfrak t$ of $\mathfrak h$. It is nonzero, by the earlier root-decomposition theorem. Its elements act semisimply on $V$ by preservation of Jordan decomposition. They commute, so simultaneous diagonalization puts $\mathfrak t$ inside the two-dimensional traceless diagonal algebra. Its dimension is one or two.
+
+If its dimension is two, it is the whole traceless diagonal algebra. Stability of $\mathfrak h$ under its adjoint action, with polynomial simultaneous eigenprojections, makes $\mathfrak h$ a sum of this diagonal algebra and some matrix-unit lines $\mathbb C E_{ij}$, $i\ne j$. Draw an arrow $j\to i$ for each included $E_{ij}$. A proper nonempty vertex set closed under outgoing arrows would span an invariant coordinate subspace. If the directed graph were not strongly connected, a sink among its strongly connected components would give such a set: collapse those components and follow arrows in the resulting finite acyclic graph to a sink. Thus the graph is strongly connected. A simple directed path on three vertices has length at most two, and
+
+$$
+[E_{ij},E_{jk}]=E_{ik}\quad(i,j,k\text{ distinct}).
+$$
+
+Closure under brackets therefore supplies every off-diagonal matrix unit. Together with the diagonals they give $\mathfrak{sl}_3$.
+
+If $\dim\mathfrak t=1$, all roots are proportional. Reducedness and the one-dimensional root-space theorem give exactly the two roots $\alpha,-\alpha$, and hence $\dim\mathfrak h=3$. The normalized root triple identifies it with $\mathfrak{sl}_2$. Its irreducible module $V$ is the unique module of highest weight two, by the earlier rank-one classification. In its weight basis the generators are
+
+$$
+\begin{aligned}
+h&=\operatorname{diag}(2,0,-2),\\
+e&=2E_{12}+2E_{23},\\
+f&=E_{21}+E_{32}.
+\end{aligned}
+\tag{8.17}
+$$
+
+Direct differentiation shows that they preserve $v_1^2-2v_0v_2$. This quadratic form is nondegenerate. Conversely its traceless infinitesimal stabilizer has dimension three: if $Q$ is its invertible symmetric matrix, the equation $M^TQ+QM=0$ identifies $QM$ with an arbitrary skew-symmetric matrix, of dimension three. Such $M$ has trace zero, since it is similar to $-M^T$. Thus the displayed algebra is the full conic stabilizer. Every nondegenerate complex symmetric form is congruent to this one: choose a vector of nonzero square, split off its orthogonal line, and continue; nondegeneracy persists on the orthogonal complement, and square roots normalize the three nonzero diagonal entries. The rank-one module uniqueness consequently gives one conjugacy class. $\square$
+
+The two remaining reductions use affine matrices and a complete invariant flag.
+
+**Lemma 8.7 (nonsolvable reducible actions).** Up to projective conjugacy, every nonsolvable proper reducible subalgebra of $\mathfrak{sl}_3$ is one of the following six algebras:
+
+$$
+\begin{aligned}
+\mathcal A_6&=\langle p,q,A,B,R,S\rangle,\\
+\mathcal A_5&=\langle p,q,R,S,A-B\rangle,\\
+\mathcal L_4&=\langle A,B,R,S\rangle,\\
+\mathcal L_3&=\langle R,S,A-B\rangle,\\
+&\mathcal A_6^\vee,\quad\mathcal A_5^\vee.
+\end{aligned}
+\tag{8.18}
+$$
+
+Here $\vee$ denotes projective contragredient duality. Explicit representatives are
+
+$$
+\begin{aligned}
+\mathcal A_6^\vee
+&=\langle p,q,R,A,B,\\
+&\qquad x^2p+xyq\rangle,\\
+\mathcal A_5^\vee
+&=\langle p,q,R,2A+B,\\
+&\qquad x^2p+xyq\rangle.
+\end{aligned}
+$$
+
+The last two types in (8.18) are distinct from the first two; $\mathcal L_4$ and $\mathcal L_3$ are self-dual.
+
+**Proof.** A proper invariant subspace has dimension one or two. Duality interchanges these dimensions, so first suppose that a projective line is invariant and choose it as the line at infinity. Formula (8.16) becomes an affine field $z\mapsto Lz+b$. Projection onto $L$ gives a matrix algebra $\mathfrak k\subset\mathfrak{gl}_2$; its kernel is a translation space $W\subset\mathbb C^2$ invariant under $\mathfrak k$.
+
+If $\mathfrak k$ were solvable, the whole affine algebra would be solvable: its derived series eventually lies in the abelian translation kernel, and the next derived term is zero. Theorem 8.2 therefore gives $\mathfrak k=\mathfrak{sl}_2$ or $\mathfrak{gl}_2$, since all its other rows are solvable by their displayed brackets. Their standard action is irreducible, so $W=0$ or $\mathbb C^2$. For the full kernel subtract translations from every lift; the result is $\mathcal A_5$ or $\mathcal A_6$.
+
+For $W=0$, the algebra is a graph $L\mapsto(L,\beta(L))$. Its bracket condition is
+
+$$
+\beta([L,K])=L\beta(K)-K\beta(L).
+\tag{8.19}
+$$
+
+For $\mathfrak{gl}_2$, use $K=I$ to obtain $\beta(L)=L\beta(I)$. For $\mathfrak{sl}_2$, use the matrices $H,N,F$ of (8.1). Writing $\beta(H)=(a,b)^T$, their three bracket relations give
+
+$$
+\begin{aligned}
+\beta(N)&=(-b,0)^T,\\
+\beta(F)&=(0,a)^T.
+\end{aligned}
+$$
+
+These follow by comparing the two coordinates in $2\beta(N)=H\beta(N)-N\beta(H)$ and $-2\beta(F)=H\beta(F)-F\beta(H)$; the third relation is then satisfied. Thus $\beta(L)=Lv$ with $v=(a,-b)^T$. A translation of the origin removes the graph, giving $\mathcal L_4$ or $\mathcal L_3$.
+
+The full affine algebras have an invariant projective line and no invariant projective point. Indeed their translations have common kernel and total image the two-plane at infinity, on which the $\mathfrak{sl}_2$ part has no invariant line. Their duals have an invariant point and no invariant projective line, so these types differ. The linear block algebras preserve both an isolated point and a complementary projective line. On the standard two-dimensional block the skew form $\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)$ identifies the standard and contragredient $\mathfrak{sl}_2$ actions. The scalar block direction in $\mathfrak{gl}_2$ changes sign as a subspace, so both linear block algebras are self-dual. Their dimensions distinguish the remaining rows. $\square$
+
+For solvable algebras Lie's theorem supplies a complete invariant flag. Choose its projective line at infinity and its point there as the vertical direction. The whole flag stabilizer is
+
+$$
+\mathfrak b=\langle p,q,R,A,B\rangle.
+\tag{8.20}
+$$
+
+Its invertible affine coordinate changes have the form $X=\lambda x+\mu$, $Y=\nu y+\sigma x+\tau$, with $\lambda\nu\ne0$. The only nonzero brackets, apart from reversed ones, are
+
+$$
+\begin{aligned}
+[p,R]&=q,&[A,p]&=-p,\\
+[A,R]&=R,&[B,q]&=-q,\\
+[B,R]&=-R.
+\end{aligned}
+\tag{8.21}
+$$
+
+**Lemma 8.8 (all subalgebras of a flag stabilizer).** Every subalgebra of $\mathfrak b$ of dimension at least two is conjugate, by a flag-preserving coordinate change, to a span in the following table. Parameters denoted $c$ range over $\mathbb C$. The table is a covering list before identifications under arbitrary projective coordinates.
+
+| Image on the $x$-line | Vertical kernel | Possible span |
+|---|---|---|
+| $0$ | — | $\langle q,R\rangle$, $\langle q,B\rangle$, $\langle R,B\rangle$, $\langle q,R,B\rangle$ |
+| $\langle p\rangle$ | $\langle q,R,B\rangle$ | $\langle q,R,B,p\rangle$ |
+| $\langle A\rangle$ | $\langle q,R,B\rangle$ | $\langle q,R,B,A\rangle$ |
+| $\langle p\rangle$ | $\langle q,R\rangle$ | $\langle q,R,p\rangle$, $\langle q,R,p+B\rangle$ |
+| $\langle A\rangle$ | $\langle q,R\rangle$ | $\langle q,R,A+cB\rangle$ |
+| $\langle p\rangle$ or $\langle A\rangle$ | $\langle q,B\rangle$ | $\langle q,B,p\rangle$, $\langle q,B,A\rangle$ |
+| $\langle A\rangle$ | $\langle R,B\rangle$ | $\langle R,B,A\rangle$ |
+| $\langle p\rangle$ | $\langle q\rangle$ | $\langle q,p+B\rangle$, $\langle q,p+R\rangle$, $\langle q,p\rangle$ |
+| $\langle A\rangle$ | $\langle q\rangle$ | $\langle q,A+cB\rangle$, $\langle q,A+R+B\rangle$ |
+| $\langle A\rangle$ | $\langle R\rangle$ | $\langle R,A+cB\rangle$, $\langle R,A+q\rangle$ |
+| $\langle p\rangle$ or $\langle A\rangle$ | $\langle B\rangle$ | $\langle B,p\rangle$, $\langle B,A\rangle$ |
+| $\langle p,A\rangle$ | $\langle q,R,B\rangle$ | $\mathfrak b$ |
+| $\langle p,A\rangle$ | $\langle q,R\rangle$ | $\langle q,R,p,A+cB\rangle$ |
+| $\langle p,A\rangle$ | $\langle q,B\rangle$ | $\langle q,B,p,A\rangle$ |
+| $\langle p,A\rangle$ | $\langle q\rangle$ | $\langle q,E,A+2B\rangle$, $\langle q,p,A+cB\rangle$, $\langle q,p,A+R+B\rangle$ |
+| $\langle p,A\rangle$ | $\langle B\rangle$ | $\langle B,p,A\rangle$ |
+| $\langle p,A\rangle$ | $0$ | $\langle p,A+cB\rangle$, $\langle p,A+q\rangle$, $\langle E,A+2B\rangle$ |
+
+**Proof: the kernel.** Project onto the affine $x$-line algebra $\langle p,A\rangle$. Its image has dimension zero, one or two. A nonzero one-dimensional image is conjugate under an affine change of $x$ to $\langle p\rangle$ or $\langle A\rangle$: its coefficient is $\alpha x+\beta$, and translation removes $\beta$ if $\alpha\ne0$. The kernel is a subalgebra of $\mathfrak k=\langle q,R,B\rangle$.
+
+A kernel line has generator $(ax+by+c)q$. If $b\ne0$, a shear and translation of $y$ make it $B$; if $b=0,a\ne0$, an affine change of $x$ makes it $R$; otherwise it is $q$. A two-dimensional kernel contained in $\langle q,R\rangle$ is that whole plane. Any other two-dimensional kernel meets that translation plane in a line $\langle f(x)q\rangle$, and has another generator $B+g(x)q$, with $f,g$ affine. The change $Y=y+g(x)$ makes the latter $B$. A nonzero constant $f$ gives $\langle q,B\rangle$; a nonconstant $f$ gives $\langle R,B\rangle$ after an affine change of $x$. Thus the kernels are exactly zero, those three lines, those three planes and $\mathfrak k$.
+
+The kernel and quotient normalizations are compatible. The only kernel normalization that needs a translation of $x$ makes the root $a$ of a nonconstant $f$ equal to zero. For a lift $u(x)p+(\gamma x+\delta y+\varepsilon)q$ normalizing the line $\langle f q\rangle$, its bracket coefficient at $x=a$ is $u(a)f'(a)$. It must vanish, so every quotient field fixes $a$. The same line is the characteristic derived algebra of $\langle f q,B+gq\rangle$, so the conclusion holds for that plane too. Consequently these kernels allow only a dilation quotient about their root; they allow neither a translation quotient nor the full affine quotient. All the other kernel changes preserve $x$ or merely rescale it after the image has been normalized.
+
+**Proof: one-dimensional image.** Write its lift as
+
+$$
+\begin{gathered}
+T+\gamma R+\delta B+\varepsilon q,\\
+T=p\text{ or }A.
+\end{gathered}
+\tag{8.22}
+$$
+
+For the full kernel subtract the last three terms. For $\langle q,R\rangle$ subtract the $R,q$ terms, leaving $T+\delta B$. If $T=p$, its nonzero $\delta$ values normalize to one by scaling $x$ and the generator; if $T=A$, $\delta=c$ is retained.
+
+For kernel $\langle q,B\rangle$, subtract those components. Bracketing the remaining $\gamma R$ with $B$ forces $\gamma=0$. For $\langle R,B\rangle$, subtract those components; the bracket with $B$ forces the remaining $q$ coefficient to be zero, and $[p,R]=q$ excludes $T=p$. These give all two-dimensional-kernel rows.
+
+For kernel $\langle q\rangle$, discard $\varepsilon q$. If $T=p$, a shear $Y=y+tx$ changes $\gamma$ to $\gamma-\delta t$ modulo $q$. For $\delta\ne0$ remove $\gamma$ and normalize $\delta$ to one, obtaining $p+B$. If $\delta=0$, the nonzero $\gamma$ values normalize to one, giving $p+R$, or else give $p$. If $T=A$, the same shear changes $\gamma$ to $\gamma+(1-\delta)t$. It removes $\gamma$ except at $\delta=1$, where zero and nonzero coefficients give respectively $A+B$ and $A+R+B$.
+
+For kernel $\langle R\rangle$, subtract its component. The term $[p,R]=q$ excludes $T=p$. The lift is $A+\delta B+\varepsilon q$. A constant translation of $y$ removes $\varepsilon$ if $\delta\ne0$. If $\delta=0$, its zero and nonzero values give $A$ and $A+q$. For kernel $\langle B\rangle$, its normalizer condition forces both $\gamma$ and $\varepsilon$ to vanish. The zero-kernel case has dimension one and belongs to the one-dimensional catalogue below.
+
+**Proof: two-dimensional image.** Take lifts $P$ of $p$ and $H$ of $A$. They must preserve the kernel and satisfy $[H,P]+P$ in that kernel. The inverse image of the quotient's translation line has already been classified, so use its normalized lift $P$ from the preceding rows.
+
+For kernel $\mathfrak k$, subtract the kernel components to obtain all of $\mathfrak b$. For $\langle q,R\rangle$, $P=p+tB$ has $t=0$ or $1$. The $B$ coefficient of $[H,P]+P$ is $t$, forcing $t=0$. Subtracting kernel terms from $H$ leaves $H=A+cB$, as in the table. For $\langle q,B\rangle$, its normalizer already gives $P=p$, $H=A$. Kernel $\langle R,B\rangle$ admits no lift of $p$.
+
+For kernel $\langle q\rangle$, the possibilities for $P$ are $p+B$, $p+R$, $p$. The $B$ coefficient excludes $p+B$. With $P=p+\gamma R$ and $H=A+\gamma'R+cB+\varepsilon'q$, the $R$ coefficient of $[H,P]+P$ is $(2-c)\gamma$. If $\gamma\ne0$, normalize it to one; then $c=2$, and a shear removes $\gamma'$, giving $\langle q,E,A+2B\rangle$. If $\gamma=0$, the shear changes $\gamma'$ by $(1-c)t$. Its zero or nonzero resonant value at $c=1$ gives the last two forms in that kernel row.
+
+Kernel $\langle R\rangle$ again admits no lift of $p$. For kernel $\langle B\rangle$, the normalizer gives $P=p$, $H=A$, yielding its displayed span.
+
+Finally let the kernel be zero. Now $[H,P]=-P$ exactly. The same $B$-coefficient argument excludes $P=p+B$. If $P=p$, its bracket forces $H=A+cB+\varepsilon q$. A translation of $y$ removes $\varepsilon$ for $c\ne0$; at $c=0$ its nonzero value normalizes to one. If $P=p+R$, the bracket forces $H=A+2B+\varepsilon q$, and a translation removes $\varepsilon$. These are precisely the final three forms. All kernel/image possibilities have been treated, and (8.21) verifies closure of every listed span. $\square$
+
+![The complete projective-plane reduction: irreducible matrix actions, six nonsolvable reducible actions, and every solvable algebra inside a complete flag stabilizer.](../figures/projective-plane-reduction.svg)
+
+*Figure 8.3.* The case division of Lemmas 8.6–8.8. The matrix representation on $\mathbb C^3$ distinguishes projective points and projective lines by invariant subspaces of dimensions one and two. In the solvable branch, the affine $x$-line image and every kernel in $\langle q,R,B\rangle$ lead to the covering table of Lemma 8.8. Theorem 8.9 then gives the full projective identifications, including coordinate changes that move the original flag.
+
+### 8.4. The complete projective-plane catalogue
+
+For homogeneous parameters $[a:c]\in\mathbb P^1(\mathbb C)$ define
+
+$$
+\begin{aligned}
+\mathcal F_4(a,c)&=\langle p,q,R,D(a,c)\rangle,\\
+\mathcal T_3(a,c)&=\langle p,q,D(a,c)\rangle,\\
+\mathcal W_3(a,c)&=\langle q,R,D(a,c)\rangle,\\
+\mathcal K_2(a,c)&=\langle q,D(a,c)\rangle.
+\end{aligned}
+\tag{8.23}
+$$
+
+In the table below $\mathcal A_i$ and $\mathcal L_i$ are (8.18), and
+
+$$
+\begin{aligned}
+\mathcal C_3
+&=\langle p+xq,\ xp+2yq,\\
+&\qquad (x^2-y)p+xyq\rangle,\\
+\mathcal Z_3&=\langle q,R,p+B\rangle,\\
+\mathcal Z_3'&=\langle p,q,A+R+B\rangle,\\
+\mathcal J_2&=\langle q,E\rangle,\\
+\mathcal J_3&=\langle q,E,A+2B\rangle,\\
+\mathcal V_2&=\langle E,A+2B\rangle.
+\end{aligned}
+\tag{8.24}
+$$
+
+**Theorem 8.9 (projective-plane classification).** Every complex Lie subalgebra of $\mathfrak{pgl}_3$ is projectively conjugate to a type in this table. The displayed types are mutually inequivalent except for the parameter relations stated. These are the complete relations under ordinary projective coordinate changes.
+
+| Dimension | Algebras | Complete parameter relation |
+|---|---|---|
+| $0$ | $0$ | — |
+| $1$ | $\langle A+cB\rangle$, $c\ne0,1$ | the six values in (8.25) |
+| $1$ | $\langle p+B\rangle$, $\langle E\rangle$, $\langle B\rangle$, $\langle q\rangle$ | — |
+| $2$ | $\mathcal K_2(a,c)$ | equality of $[a:c]$ |
+| $2$ | $\langle q,p+B\rangle$, $\langle q,A+R+B\rangle$, $\mathcal V_2$ | — |
+| $2$ | $\langle p,q\rangle$, $\langle q,R\rangle$, $\mathcal J_2$, $\langle A,B\rangle$ | — |
+| $3$ | $\mathcal T_3(a,c)$ | $[a:c]\sim[c:a]$ |
+| $3$ | $\mathcal W_3(a,c)$ | $[a:c]\sim[a:a-c]$ |
+| $3$ | $\mathcal Z_3$, $\mathcal Z_3'$, $\mathcal J_3$, $\langle p,q,R\rangle$, $\langle q,A,B\rangle$ | — |
+| $3$ | $\mathcal L_3$, $\mathcal C_3$ | — |
+| $4$ | $\mathcal F_4(a,c)$ | equality of $[a:c]$ |
+| $4$ | $\langle p,q,A,B\rangle$, $\langle q,R,A,B\rangle$, $\mathcal L_4$ | — |
+| $5$ | $\mathfrak b$, $\mathcal A_5$, $\mathcal A_5^\vee$ | — |
+| $6$ | $\mathcal A_6$, $\mathcal A_6^\vee$ | — |
+| $8$ | $\mathfrak{pgl}_3$ | — |
+
+The six parameter values for the one-dimensional distinct-eigenvalue family are
+
+$$
+\begin{gathered}
+c,\quad c^{-1},\quad1-c,\quad(1-c)^{-1},\\
+\frac{c-1}{c},\quad\frac{c}{c-1}.
+\end{gathered}
+\tag{8.25}
+$$
+
+Coincident values in this list give smaller orbits. The parameters in (8.23) include zero coordinates; only $(a,c)=(0,0)$ is excluded. In particular $\mathcal K_2(1,0)=\langle q,A\rangle$ is abelian, and its other members are nonabelian.
+
+**Proof: the one-dimensional cases.** A projective generator is a nonscalar matrix modulo addition of scalars and nonzero rescaling. The polynomial Jordan decomposition of the earlier programme separates its generalized eigenspaces. On a space of dimension at most three, its nilpotent blocks are obtained directly from chains: if $N^2v\ne0$, then $N^2v,Nv,v$ are independent; if $N^2=0\ne N$, choose $v$ with $Nv\ne0$ and complete that two-vector chain by a kernel vector. These assertions follow by applying $N^2$ and then $N$ to a putative dependence. Thus the possible block patterns are $1+1+1$, $2+1$, or $3$.
+
+For three distinct eigenvalues, subtract one and divide by the difference of a second to make them $0,1,c$. Choosing the ordered pair used for this normalization gives exactly (8.25). Conversely a conjugacy can only permute the three eigenspaces, and the generator can only be rescaled and shifted by a scalar, proving necessity. Repeated eigenvalues with zero nilpotent part give $\langle B\rangle$. A nonzero size-two Jordan block with a distinct third eigenvalue gives $\langle p+B\rangle$, after normalizing that eigenvalue difference and scaling along the chain. If there is only one eigenvalue, subtract it: the nonzero possibilities are a size-three nilpotent chain, represented by $E$, or a size-two chain, represented by $q$. Their Jordan patterns distinguish them and the preceding cases.
+
+**Proof: exhaustiveness in higher dimensions.** An irreducible matrix algebra is covered by Lemma 8.6. Its conic case is $\mathcal C_3$: the three fields in (8.24) preserve $y-x^2/2=0$, and their matrices form an irreducible $\mathfrak{sl}_2$, with normalized triple $E,-2F,2H$ for $H=\overline{\operatorname{diag}(1,2,0)}$, $F=-E_{31}-E_{12}$. An invariant line for the diagonal $H$ would be an axis; the two chain matrices exclude all three axes. The conic stabilizer calculation of Lemma 8.6 proves equality with the full stabilizer. Nonsolvable reducible cases are precisely Lemma 8.7.
+
+A solvable algebra preserves a flag and is therefore covered by Lemma 8.8. The following explicit reductions put every entry of that covering table into the theorem's rows. They also record the projective coordinate changes needed when a flag change goes beyond affine coordinates. Let $\sigma$ exchange $x,y$, and let $\tau$ exchange the first and last homogeneous coordinates, so
+
+$$
+\begin{aligned}
+\sigma(x,y)&=(y,x),\\
+\tau(x,y)&=(1/x,y/x).
+\end{aligned}
+\tag{8.26}
+$$
+
+For a diagonal field and the four translation/shear fields their pushforwards are
+
+$$
+\begin{aligned}
+\sigma_*p&=q,\quad\sigma_*q=p,\\
+\sigma_*D(a,c)&=D(c,a),\\
+\tau_*q&=R,\quad\tau_*R=q,\\
+\tau_*D(a,c)&=D(-a,c-a).
+\end{aligned}
+\tag{8.27}
+$$
+
+Here the symbols on the right are in the new coordinates. These identities follow by differentiating (8.26); the chart for $\tau$ has $x\ne0$, while its homogeneous matrix is a globally invertible projective transformation.
+
+The vertical plane $\langle q,B\rangle$ is $\mathcal K_2(0,1)$; $\tau$ carries $\langle R,B\rangle$ to it. The planes $\langle R,A+cB\rangle$ become $\mathcal K_2(-1,c-1)$. The planes $\langle B,p\rangle$ become $\mathcal K_2(1,0)$ under $\sigma$, and $\langle p,A+cB\rangle$ become $\mathcal K_2(c,1)$. Also $\sigma$ carries $\langle p,A+q\rangle$ to $\langle q,p+B\rangle$. For $\langle R,A+q\rangle$, apply $\tau$ to get $\langle q,-A-B+R\rangle$; reversing the sign of $y$ then gives $\langle q,A+B+R\rangle$. The remaining two-dimensional entries are already in the theorem.
+
+The vertical three-dimensional algebra is $\mathcal W_3(0,1)$. The span $\langle q,B,p\rangle$ is $\mathcal T_3(0,1)$. The span $\langle R,B,A\rangle$ becomes $\langle q,A,B\rangle$ under $\tau$, while $\langle B,p,A\rangle$ becomes that same algebra under $\sigma$. All other three-dimensional entries are the displayed families or exceptional rows. In dimension four, $\langle q,R,B,p\rangle=\mathcal F_4(0,1)$; the remaining full-kernel and two-dimensional-image entries are exactly the two diagonal-plus-translation rows and $\mathcal F_4(1,c)$. Dimension five gives $\mathfrak b$. Thus nothing from Lemma 8.8 is omitted.
+
+**Proof: exact parameter relations.** For a traceless matrix algebra let $\mathcal N$ denote its set of nilpotent matrices. Conjugation preserves this set, its ranks, and, when it is a subspace, its common kernel and total image. All these data refer to the unique traceless representatives, so they are intrinsic to a projective algebra.
+
+In $\mathcal K_2(a,c)$, $\mathcal N=\mathbb C E_{23}$. A matrix outside that line has the nonzero projective diagonal weights $(a,c,0)$ up to common scaling and common addition, and cannot be nilpotent. The nilpotent line fixes the complete flag
+
+$$
+\begin{aligned}
+L&=\operatorname{im}E_{23}=\mathbb C e_2,\\
+P&=\ker E_{23}=\langle e_1,e_2\rangle,\\
+L&\subset P.
+\end{aligned}
+\tag{8.28}
+$$
+
+The three ordered one-dimensional flag factors have weights $c,a,0$. A matrix conjugacy preserving that flag preserves the ordered diagonal values; a change of generator rescales them together, while taking projective representatives discards only a common addition. Their two differences give exactly $[a:c]$. Thus no parameter identification occurs, including its abelian point $c=0$.
+
+In $\mathcal F_4(a,c)$, the nilpotent set is the full three-dimensional algebra $\mathfrak n=\langle p,q,R\rangle$. Its common kernel is $\mathbb C e_2$ and its total image is $\langle e_1,e_2\rangle$, giving the same intrinsic flag. Any conjugacy is flag-preserving, so the same ordered-weight argument gives equality of $[a:c]$ and no other relation.
+
+In $\mathcal T_3(a,c)$, the nilpotent set is the translation plane $U=\langle E_{13},E_{23}\rangle$. Its common kernel and total image are the plane $L=\langle e_1,e_2\rangle$. Hence every conjugacy preserves $L$, and in its affine chart has an invertible linear part $P$ and a translation. On $L$ relative to $V/L$ the generator acts by $\operatorname{diag}(a,c)$. Translations do not change that operator, while $P$ conjugates it. Theorem 8.2 for a semisimple matrix line therefore gives exactly $[a:c]\sim[c:a]$. The basis exchange realizes this relation.
+
+For $\mathcal W_3(a,c)$, the nilpotent plane is $U'=\langle E_{23},E_{21}\rangle$, with common kernel and total image the line $\mathbb C e_2$. The quotient $V/\mathbb C e_2$ has the two eigenweights $a,0$ relative to weight $c$ on the line. Its unordered relative weight pair is $[a-c:-c]$. Exchanging it gives precisely $[a:c]\sim[a:a-c]$. Equivalently, $\tau$ realizes that relation by (8.27). The same two-dimensional matrix-line criterion proves necessity, including repeated and zero relative weights. This proves every family relation.
+
+**Proof: separation of all other rows.** Solvability separates the flag algebras from Lemmas 8.6–8.7. Those lemmas already distinguish their nonsolvable types by dimension, invariant subspaces and irreducibility. It remains to separate solvable rows of the same dimension.
+
+In dimension four, the two diagonal-plus-translation algebras have nilpotent planes $U$ and $U'$ with the different common-kernel dimensions just computed. Their nilpotent sets have dimension two, whereas that of $\mathcal F_4$ has dimension three.
+
+In dimension three, $\langle q,A,B\rangle$ has a one-dimensional nilpotent set. The algebra $\mathfrak n$ consists entirely of nilpotent matrices. The other solvable rows have two-dimensional nilpotent planes. For $\mathcal J_3$ that plane contains a rank-two nilpotent matrix $E$; in the other four rows every nonzero element of that plane has rank one. The common-kernel dimensions separate the $U$ rows $\mathcal T_3,\mathcal Z_3'$ from the $U'$ rows $\mathcal W_3,\mathcal Z_3$. Finally each family has a semisimple matrix outside its nilpotent plane, namely $\overline{\operatorname{diag}(a,c,0)}$. Neither exceptional $\mathcal Z$ algebra does. For $\mathcal Z_3$, an outside generator can be rescaled to
+
+$$
+\overline{\begin{pmatrix}
+0&0&1\\b&1&a\\0&0&0
+\end{pmatrix}}.
+\tag{8.29}
+$$
+
+Before removing its trace, its zero eigenvalue has multiplicity two but a one-dimensional eigenspace: the equations are $v_3=0$, $bv_1+v_2=0$. It is not semisimple for any $a,b$. Duality gives the same conclusion for $\mathcal Z_3'$, as also follows by transposing. This distinguishes every three-dimensional row.
+
+In dimension two, $\langle A,B\rangle$ has no nonzero nilpotent matrix. The three entirely nilpotent planes are $U$, $U'$ and $\mathcal J_2$; their common-kernel dimensions and the presence of a rank-two matrix distinguish them. All other rows have a nilpotent line. In $\mathcal V_2$ its generator has rank two; in the remaining rows it has rank one. The family $\mathcal K_2$ has a semisimple matrix outside that line. The two mixed exceptional rows have none, by the size-two Jordan block calculation in (8.29) and its dual, now with only one available kernel coefficient.
+
+To distinguish those two mixed rows from one another, take the span of all nilpotent Jordan parts of their matrices. For $\langle q,p+B\rangle$ it is $U$, whereas for $\langle q,A+R+B\rangle$ it is $U'$. For the first assertion, after rescaling an outside matrix, its untraced representative is $\operatorname{diag}(0,1,0)+E_{13}+tE_{23}$. The $E_{23}$ term joins different eigenvalues and is removed by conjugation with $I+tE_{23}$; it commutes with $E_{13}$. Its nilpotent Jordan part is consequently $E_{13}$. Kernel matrices contribute $E_{23}$. The second assertion follows by the explicit duality below. Their different total-image dimensions are conjugacy invariants.
+
+The one-dimensional Jordan patterns have already been separated. Dimensions separate all remaining possibilities. Closure follows from (8.21), the standard $\mathfrak{sl}_2$ brackets in the nonsolvable cases, and (8.16) for the full projective algebra. This completes existence, exhaustiveness and uniqueness. $\square$
+
+**Corollary 8.10 (duality of every projective type).** Ordinary projective conjugacy in Theorem 8.9 can be supplemented by duality using the following table. It is not necessary to change any of its ordinary-conjugacy parameter relations.
+
+| Type | Dual type |
+|---|---|
+| $\mathcal A_6$, $\mathcal A_5$ | $\mathcal A_6^\vee$, $\mathcal A_5^\vee$ |
+| $\langle p,q,A,B\rangle$ | $\langle q,R,A,B\rangle$ |
+| $\mathcal F_4(a,c)$ | $\mathcal F_4(c-a,c)$ |
+| $\mathcal T_3(a,c)$ | $\mathcal W_3(c-a,c)$ |
+| $\mathcal Z_3$ | $\mathcal Z_3'$ |
+| $\mathcal K_2(a,c)$ | $\mathcal K_2(c-a,c)$ |
+| $\langle q,p+B\rangle$ | $\langle q,A+R+B\rangle$ |
+| $\langle p,q\rangle$ | $\langle q,R\rangle$ |
+
+The table is read in both directions. Every type not in a paired row is self-dual, including every one-dimensional type, $\mathcal C_3$, $\mathcal L_3$, $\mathcal L_4$, $\mathfrak b$, $\mathfrak n$, $\mathcal J_2$, $\mathcal J_3$, $\mathcal V_2$, $\langle q,A,B\rangle$ and $\langle A,B\rangle$. A parameter type can coincide with its displayed dual when its ordinary parameter criterion says so.
+
+**Proof.** A polarity with symmetric invertible matrix
+
+$$
+Q=\begin{pmatrix}-1&0&0\\0&0&1\\0&1&0\end{pmatrix}
+$$
+
+acts on matrices by $\delta(M)=-Q^{-1}M^TQ$. This is a Lie automorphism, since transposition reverses products and the minus sign reverses that bracket reversal. It preserves tracelessness. In point/line coordinates its incidence is $y+y_1-xx_1=0$. Matrix multiplication gives
+
+$$
+\begin{gathered}
+\delta(p)=R,\quad\delta(R)=p,\\
+\delta(q)=-q,\quad\delta(A)=-A,\\
+\delta(B)=A+B,\\
+\delta(D(a,c))=D(c-a,c).
+\end{gathered}
+\tag{8.30}
+$$
+
+Substitute these identities into each flag-model span to obtain every displayed pairing and each stated self-duality. They give $\delta(E)=E$ and $\delta(A+2B)=A+2B$, so the regular-nilpotent rows are self-dual. Lemma 8.7 treats the nonsolvable block types, and the nonsingular conic identifies its point and dual-plane actions. For one-dimensional types a matrix is similar to its transpose: transpose each Jordan chain and reverse its basis, then combine the blocks. Multiplication by $-1$ changes no matrix line. Thus contragredient duality yields an ordinarily conjugate line in every case. This proves the complete assertion. $\square$
+
+![Nilpotent matrices determine the intrinsic projective flag: ordered weights for a nilpotent line, unordered quotient weights for the two dual nilpotent planes, and the separate parameter action of projective polarity.](../figures/projective-flags-and-duality.svg)
+
+*Figure 8.4.* The parameter mechanism and exceptional cases in Theorem 8.9. The rank-one matrix line $\mathbb C E_{23}$ fixes the ordered flag $L\subset P\subset V$; the two nilpotent planes $U$ and $U'$ instead determine an invariant plane or point and allow exactly the indicated exchange of two relative weights. The regular nilpotent chain $E^2=E_{23}$ distinguishes the other nilpotent rows. The polarity matrix is exactly the matrix in (8.30); it acts on the parameter pair by $[a:c]\mapsto[c-a:c]$. Corollary 8.10 and Solutions 11–12 give the resulting dual pairs and self-dual parameters.
+
+The normal forms correspond to Lie–Engel III, Chapter 5, Section 27, pp. 106–107. The full chapter, pp. 78–109, distinguishes ordinary projective equivalence from its dual pairings. Theorem 8.9 gives ordinary equivalence first, and (8.30) then gives the additional duality operation.
+
+### 8.5. All homogeneous linear actions on three variables
+
+Let $I=I_3$ and let $\pi(M)=M-\operatorname{tr}(M)I/3$. In this subsection the symbols $p,q,A,B,R,S,E,D(a,c)$ and all the algebras in Theorem 8.9 mean their unique traceless coefficient matrices from (8.16). Thus
+
+$$
+\begin{aligned}
+p&=E_{13},\quad q=E_{23},\\
+R&=E_{21},\\
+A&=\overline E_{11},\quad B=\overline E_{22},\\
+E&=p+R,\\
+E^2&=q,\quad E^3=0.
+\end{aligned}
+\tag{8.31}
+$$
+
+Their scalar shifts are actual matrices in $\mathfrak{gl}_3$, and their fields on $\mathbb C^3$ are homogeneous linear fields. Conjugacy means $\mathfrak h\mapsto P\mathfrak hP^{-1}$ with $P\in\operatorname{GL}_3(\mathbb C)$.
+
+**Proposition 8.11 (scalar kernels and character graphs).** Every matrix Lie algebra $\mathfrak h\subset\mathfrak{gl}_3$ has a traceless image $\mathfrak k=\pi(\mathfrak h)\subset\mathfrak{sl}_3$ and exactly one of the forms
+
+$$
+\begin{gathered}
+\mathfrak h^+(\mathfrak k)=\mathfrak k\oplus\mathbb C I,\\
+\mathfrak h(\mathfrak k,\chi)=s_\chi(\mathfrak k),\\
+s_\chi(X)=X+\chi(X)I,\\
+X\in\mathfrak k,\quad\chi\in\mathfrak k^*,\\
+\chi([\mathfrak k,\mathfrak k])=0.
+\end{gathered}
+\tag{8.32}
+$$
+
+The first form has scalar intersection $\mathbb C I$, and the second has scalar intersection zero. Two first-form algebras are conjugate exactly when their $\mathfrak k$'s are conjugate. Two graph algebras are conjugate exactly when some $P$ satisfies
+
+$$
+\begin{aligned}
+P\mathfrak kP^{-1}&=\mathfrak k',\\
+\chi'(PXP^{-1})&=\chi(X)\quad(X\in\mathfrak k).
+\end{aligned}
+\tag{8.33}
+$$
+
+**Proof.** The scalar intersection is a subspace of the one-dimensional space $\mathbb C I$, so it is zero or that whole line. In the latter case subtract the scalar part of every element of $\mathfrak h$ to obtain $\mathfrak k\subset\mathfrak h$, proving the direct sum. In the former case $\pi|_{\mathfrak h}$ is a linear isomorphism onto $\mathfrak k$. Its inverse has the unique form $X\mapsto X+\chi(X)I$ with $\chi$ linear. The bracket of two such lifts is $[X,Y]$, since scalar matrices commute. It belongs to the graph precisely when $\chi([X,Y])=0$. This proves both necessity and sufficiency of the character condition.
+
+Conjugation fixes $I$, preserves trace, and commutes with $\pi$. It therefore preserves the two scalar-intersection alternatives. For graphs its formula is
+$P(X+\chi(X)I)P^{-1}=PXP^{-1}+\chi(X)I$, which proves (8.33). The direct-sum assertion follows by the same computation. $\square$
+
+A functional satisfying the displayed commutator condition is called a **character**. We next solve its conjugacy problem for every $\mathfrak k$ from Theorem 8.9. One-dimensional matrix algebras admit a shorter direct description first.
+
+**Lemma 8.12 (all matrix lines).** Up to linear conjugacy, every nonzero one-dimensional subalgebra of $\mathfrak{gl}_3$ has one of the following generators, with exactly the indicated parameter identifications.
+
+| Generator | Parameters and exact equivalence |
+|---|---|
+| $\operatorname{diag}(\lambda_1,\lambda_2,\lambda_3)$ | $[\lambda_1:\lambda_2:\lambda_3]\in\mathbb P^2$, modulo permutation of all three coordinates |
+| $J_2(\lambda)\oplus(\mu)$ | $(\lambda,\mu)\in\mathbb C^2$, modulo common nonzero rescaling; the origin is included as a separate orbit |
+| $J_3(0)$ or $J_3(1)$ | two distinct types |
+
+Here $J_m(\lambda)$ is the size-$m$ Jordan block with eigenvalue $\lambda$ and ones on its superdiagonal. The scalar line is the point $[1:1:1]$ of the first row. Eigenvalue multiplicities are retained in that row. In the second row the size-two block and the singleton distinguish the order of $\lambda,\mu$.
+
+**Proof.** The generalized-eigenspace and chain argument in the one-dimensional part of Theorem 8.9 gives these three block patterns for every matrix. A conjugacy of matrix lines conjugates a nonzero generator to a nonzero scalar multiple of a target generator. Thus it rescales every eigenvalue together and preserves the sizes of the associated Jordan blocks. Conversely a common rescaling of all eigenvalues is realized by rescaling the generator; diagonal changes along each chain restore its superdiagonal entries to one. For a size-three block there is only its eigenvalue: its zero and nonzero values give $J_3(0)$ and $J_3(1)$. A nonzero eigenvalue cannot become zero. In the size-two-plus-singleton pattern, the zero pair gives a nonzero nilpotent matrix and hence is a valid additional orbit. Diagonalizability and the largest Jordan block separate the three rows. This proves every identification. $\square$
+
+For the character tables below, a value not listed is zero on the displayed generators of the relevant projective algebra. Put
+
+$$
+\begin{aligned}
+\mathfrak n&=\langle p,q,R\rangle,\\
+U&=\langle p,q\rangle,\\
+U'&=\langle q,R\rangle,\\
+G&=p+B,\\
+G'&=A+R+B,\\
+H&=A+2B,\quad C=A+B.
+\end{aligned}
+\tag{8.34}
+$$
+
+The subspace $\mathcal J_2$ is $\langle E,q\rangle$, with $q=E^2$. In a table entry $\epsilon$ or $\eta$ denotes independently either zero or one.
+
+**Theorem 8.13 (complete three-variable linear catalogue).** The direct scalar extensions $\mathfrak h^+(\mathfrak k)$, for all ordinary projective types and parameters in Theorem 8.9, together with the graph algebras below, give every subalgebra of $\mathfrak{gl}_3$ up to linear conjugacy. Their complete equivalence relations are those in the following tables. Distinct projective types remain distinct. The two scalar-intersection alternatives remain distinct.
+
+For $\dim\mathfrak k=0$, the graph is the zero algebra and the scalar extension is $\mathbb C I$. For $\dim\mathfrak k=1$, use Lemma 8.12 for the graph algebras, omitting its scalar point $[1:1:1]$, which has already occurred over the zero image. The scalar extensions over one-dimensional $\mathfrak k$ are governed by the projective equivalences of Theorem 8.9.
+
+The character data for all projective images of dimension at least two are as follows.
+
+| Traceless image $\mathfrak k$ | Character values | Complete equivalence |
+|---|---|---|
+| $\mathfrak{sl}_3$, $\mathcal C_3$, $\mathcal L_3$, $\mathcal A_5$, $\mathcal A_5^\vee$ | $\chi=0$ | one graph over each type |
+| $\mathcal A_6$, $\mathcal L_4$ | $\chi(C)=t$ | $t\in\mathbb C$ is exact |
+| $\mathcal A_6^\vee$ | $\chi(B)=t$; zero on its derived algebra | $t\in\mathbb C$ is exact |
+| $\mathfrak b$, $\langle q,A,B\rangle$ | $\chi(A)=\alpha$, $\chi(B)=\beta$ | $(\alpha,\beta)$ exact |
+| $\langle p,q,A,B\rangle$ | $\chi(A)=\alpha$, $\chi(B)=\beta$ | $(\alpha,\beta)\sim(\beta,\alpha)$ |
+| $\langle q,R,A,B\rangle$ | $\chi(A)=\alpha$, $\chi(B)=\beta$ | $(\alpha,\beta)\sim(-\alpha-\beta,\beta)$ |
+| $\langle A,B\rangle$ | $\chi(A)=\alpha$, $\chi(B)=\beta$ | permutation of $(\alpha,\beta,-\alpha-\beta)$ |
+| $\mathcal Z_3$, $\langle q,G\rangle$ | $\chi(G)=t$ | $t$ exact |
+| $\mathcal Z_3'$, $\langle q,G'\rangle$ | $\chi(G')=t$ | $t$ exact |
+| $\mathcal J_3$, $\mathcal V_2$ | $\chi(H)=t$ | $t$ exact |
+| $\mathfrak n$ | $\chi(p)=\epsilon$, $\chi(R)=\eta$ | four distinct binary pairs |
+| $U$ | $(\chi(p),\chi(q))=(0,0)$ or $(1,0)$ | two types |
+| $U'$ | $(\chi(q),\chi(R))=(0,0)$ or $(1,0)$ | two types |
+| $\mathcal J_2$ | $(\chi(E),\chi(q))=(0,0),(1,0),(0,1)$ | three types |
+
+In the rows for $\mathcal A_6$ and $\mathcal L_4$, the character vanishes on the $\mathfrak{sl}_2$ part, so $\chi(A)=\chi(B)=t/2$. In the dual $\mathcal A_6^\vee$ row, its derived algebra is $\mathcal A_5^\vee=\langle p,q,R,2A+B,x^2p+xyq\rangle$ in coefficient-field notation. Thus $\chi(B)=t$ means $\chi(A)=-t/2$.
+
+For the four parameter families use a joint homogeneous triple $[a:c:t]$ with $(a,c)\ne(0,0)$ and $\chi(D(a,c))=t$. The same common rescaling applies to all three entries. The following table gives every additional possible character value and every further identification.
+
+| Traceless family | Additional character | Exact joint parameter relation |
+|---|---|---|
+| $\mathcal F_4(a,c)$ | $\chi(p)=\epsilon$ if $a=0$; $\chi(R)=\epsilon$ if $c=a$; none otherwise | equality of $[a:c:t]$ and of the available $\epsilon$ |
+| $\mathcal T_3(a,c)$ | $\chi(p)=\epsilon$ if $a=0$; $\chi(q)=\epsilon$ if $c=0$; none otherwise | $[a:c:t]\sim[c:a:t]$, with $\epsilon$ carried to the exchanged zero-weight direction |
+| $\mathcal W_3(a,c)$ | $\chi(q)=\epsilon$ if $c=0$; $\chi(R)=\epsilon$ if $c=a$; none otherwise | $[a:c:t]\sim[a:a-c:-t]$, with $\epsilon$ carried to the exchanged zero-weight direction |
+| $\mathcal K_2(a,c)$ | $\chi(q)=\epsilon$ if $c=0$; none otherwise | equality of $[a:c:t]$ and of the available $\epsilon$ |
+
+The two exceptional conditions in any row cannot hold simultaneously because $(a,c)\ne(0,0)$. Every displayed graph is obtained by replacing a basis matrix $X$ by $X+\chi(X)I$. Thus the tables specify actual matrix spans, including their exceptional scalar shifts.
+
+**Proof: the character spaces.** Proposition 8.11 reduces the problem to a character on every traceless projective model. The perfect models in the first row have no nonzero characters. For $\mathfrak{sl}_2$ and $\mathfrak{sl}_3$ this follows from the displayed Chevalley and matrix-unit brackets. The affine special linear algebras are perfect as well: their $\mathfrak{sl}_2$ commutators give the linear part, and brackets with that part give every translation. Duality is a Lie automorphism and preserves perfectness. In $\mathcal A_6$, its dual and $\mathcal L_4$, the derived algebra has codimension one and the listed $C$ or $B$ supplies a complement.
+
+For the flag models, calculate with ordinary matrix brackets. The nonzero weights needed for the families are
+
+$$
+\begin{aligned}
+[D(a,c),p]&=a p,\\
+[D(a,c),q]&=c q,\\
+[D(a,c),R]&=(c-a)R,\\
+[p,R]&=-q.
+\end{aligned}
+\tag{8.35}
+$$
+
+In $\mathcal F_4$, the last bracket always kills $\chi(q)$; the other brackets permit $\chi(p)$ exactly at $a=0$ and $\chi(R)$ exactly at $c=a$. In $\mathcal T_3$, the first two weights give precisely its zero-weight alternatives. In $\mathcal W_3$, use the second and third weights; in $\mathcal K_2$, use the second. The remaining diagonal-plus-nilpotent algebras have their displayed nilpotent space as derived algebra, so their characters are exactly the listed functionals on $A,B$.
+
+For $\mathcal Z_3$ and $\langle q,G\rangle$, the equations $[G,q]=q$, $[G,R]=R-q$ give the listed derived spaces and free value on $G$. Their dual equations give the rows with $G'$. The regular-nilpotent relations are
+
+$$
+\begin{gathered}
+[H,E]=E,\quad[H,q]=2q,\\
+[E,q]=0.
+\end{gathered}
+\tag{8.36}
+$$
+
+They give the character on $H$ in $\mathcal J_3$ and $\mathcal V_2$. The Heisenberg commutator is $\mathbb C q$, while the three nilpotent planes are abelian. Thus every character has been included before any conjugacy normalization.
+
+**Proof: ordered flags and boundary characters.** For $\mathfrak b$, $\mathcal F_4$, $\langle q,A,B\rangle$ and $\mathcal K_2$, the intrinsic nilpotent set determines the complete flag (8.28), as proved in Theorem 8.9. Consequently every conjugating matrix between two models preserves that ordered flag and its ordered diagonal entries. On the two diagonal generators of $\mathfrak b$ or $\langle q,A,B\rangle$ this gives the exact character pair $(\alpha,\beta)$; any added terms lie in the derived nilpotent space and have character zero.
+
+For $\mathcal F_4$ and $\mathcal K_2$, equality of the diagonal-image line forces the same homogeneous pair $[a:c]$. Rescaling the chosen generator rescales $t$ with $a,c$, giving the joint triple. For a fixed nonzero diagonal $D(a,c)$, an actual normalizing conjugacy preserves it modulo nilpotent terms and cannot rescale its ordered diagonal entries.
+
+At a zero-weight boundary a surviving nilpotent character cannot add a shift to $t$. This can be checked by triangular multiplication in the flag-ordered basis $(e_2,e_1,e_3)$. The diagonal of $D$ before trace removal is $(c,a,0)$. At $a=0$ the last two entries agree, so conjugation by an upper triangular matrix cannot create an entry in their intervening $p$ position from this diagonal matrix. At $c=a$ the first two entries agree and the same assertion holds for the $R$ position. All other new nilpotent entries are derived terms. In $\mathcal K_2$ at $c=0$, $D$ commutes with $q$; a nonzero $q$ addition would give a nontrivial Jordan block and could not be conjugate to the semisimple $D$. Thus $t$ is unchanged by every normalizer component in each case.
+
+Diagonal conjugation rescales each available zero-weight root matrix by an arbitrary nonzero number while fixing $D$. It changes a surviving character to zero or to one according as it vanishes or not. These two alternatives cannot be identified, since every conjugacy preserves the corresponding zero-weight line modulo the character-annihilated derived space. This proves the full $\mathcal F_4$ and $\mathcal K_2$ relations and their boundary values.
+
+**Proof: the two nilpotent planes and their diagonal families.** The nilpotent plane $U$ has common kernel and total image the plane at infinity. Its normalizer consists of block upper triangular matrices preserving that plane, with an arbitrary invertible $2\times2$ action on it. Its conjugation on $U=\operatorname{Hom}(V/L,L)$ realizes every invertible linear change of the two translation generators, up to a common invertible factor from $V/L$. Thus zero and nonzero covectors give exactly the two $U$ rows. The point-stabilizing normalizer of $U'$ gives every invertible change on $\operatorname{Hom}(V/L',L')$ in the same way, proving its two rows.
+
+In $\langle p,q,A,B\rangle$, the action on the plane relative to its quotient is the full diagonal algebra. A normalizing $2\times2$ matrix permutes its two common eigenlines: choose one diagonal element with distinct eigenvalues to see that it must be a product of a diagonal matrix and an exchange. The exchange $\sigma$ gives exactly $(\alpha,\beta)\mapsto(\beta,\alpha)$. Translations add only derived terms. For $\langle q,R,A,B\rangle$, the corresponding quotient-plane exchange is $\tau$, whose action from (8.27) is
+
+$$
+A\longmapsto-A-B,\qquad B\longmapsto B.
+\tag{8.37}
+$$
+
+Transporting a character by the inverse exchange gives $(\alpha,\beta)\mapsto(-\alpha-\beta,\beta)$. This proves both two-generator character-pair relations, including their disconnected normalizer components.
+
+In $\mathcal T_3(a,c)$, the same normalizer acts on the relative diagonal line. Its only eigenweight identification is the exchange $a,c$, as in Theorem 8.9. It sends $D(a,c)$ to $D(c,a)$, so it leaves $t$ in the third position of the joint homogeneous triple. Conjugating by an affine translation adds a multiple of $a p$ and $c q$, both killed by every character. At a zero weight, diagonal changes normalize the remaining covector on that eigenline to zero or one; the exchange carries it to the other zero-weight eigenline. For equal nonzero weights there is no surviving translation character, so the larger normalizer introduces no additional parameter action.
+
+For $\mathcal W_3(a,c)$ use the quotient relative weights $a-c,-c$ from Theorem 8.9. Their exchange is realized by $\tau$ and sends $D(a,c)$ to $-D(a,a-c)$. Because conjugation fixes the scalar matrix, rescaling this last generator by $-1$ also changes $t$ to $-t$. Thus the joint transformation is precisely $[a:c:t]\mapsto[a:a-c:-t]$. The exchange interchanges $q,R$ and hence their available boundary character; arbitrary nonzero diagonal factors normalize that character to zero or one. The quotient's translation terms are multiplied by the two relative weights, so are killed by the same character condition. This proves necessity and sufficiency of every family relation.
+
+**Proof: the full diagonal plane.** A matrix normalizing $\langle A,B\rangle$ permutes its three simultaneous eigenlines, by the same distinct-eigenvalue argument. Conversely every such permutation is realized by a permutation matrix. The exchanges $\sigma$ and $\tau$ act on the character pair by
+
+$$
+\begin{gathered}
+(\alpha,\beta)\mapsto(\beta,\alpha),\\
+(\alpha,\beta)\mapsto(-\alpha-\beta,\beta).
+\end{gathered}
+\tag{8.38}
+$$
+
+They generate all permutations of $(\alpha,\beta,-\alpha-\beta)$. Diagonal matrices act trivially. This gives exactly the stated relation, with no further rescaling of the character triple.
+
+**Proof: the Heisenberg and regular nilpotent cases.** For $\mathfrak n$, its common kernel and total image determine the complete flag. A normalizing matrix preserves that flag. Modulo $[\mathfrak n,\mathfrak n]=\mathbb C q$, conjugation independently rescales the $p$ and $R$ root lines, without mixing them: these are the two successive off-diagonal positions of the ordered flag. Every pair of nonzero rescaling factors is realized by a diagonal matrix. Hence the vanishing or nonvanishing of the two character coordinates gives exactly the four binary pairs.
+
+For $\mathcal J_2=\langle E,q\rangle$, a normalizer must send the rank-two nilpotent $E$ to $aE+bq$ with $a\ne0$. Since $E^2=q$, it must send $q$ to $a^2q$. Every pair $(a,b)$ occurs. In the chain basis $(e_2,e_1,e_3)$ the matrix $E$ is $E_{12}+E_{23}$ and $q=E_{13}$; conjugation first by $I+sE_{12}$ and then by $\operatorname{diag}(a^2,a,1)$ gives $aE+s a^2q$. Set $s=b/a^2$.
+
+If $(u,v)=(\chi(E),\chi(q))$, character transport therefore gives
+
+$$
+\begin{aligned}
+v'&=v/a^2,\\
+u'&=u/a-bv/a^3.
+\end{aligned}
+\tag{8.39}
+$$
+
+For $v\ne0$, choose $a^2=v$ and $b=u$, obtaining $(u',v')=(0,1)$. If $v=0,u\ne0$, choose $a=u$ to obtain $(1,0)$. Otherwise the character is zero. Vanishing of $v$, and then of $u$, is invariant under (8.39), so these three types are distinct. In particular every value of $u$ is removable when $v\ne0$; this follows from the actual conjugation, not from a free change of the two generators.
+
+For $\mathcal V_2$, its nilpotent line is generated by a rank-two matrix; for $\mathcal J_3$, its nilpotent plane contains such a matrix. Their common kernel and total image fix the complete chain flag. The ordered diagonal entries of $H$ are distinct, and a normalizer must preserve them. Thus it sends $H$ to $H$ plus derived terms, and leaves $\chi(H)=t$ unchanged. These conclusions include every normalizer component.
+
+**Proof: the mixed and nonsolvable cases.** In $\mathcal Z_3$ and $\langle q,G\rangle$, the generator $G$ has the repeated eigenvalue $-1/3$ and simple eigenvalue $2/3$. Any $G$ plus its nilpotent kernel terms has those same eigenvalues and multiplicities. If a conjugacy sends it to $\lambda G$ plus kernel terms, its simple eigenvalue forces $\lambda=1$. Hence its character value is exact. The dual $G'$ has repeated eigenvalue $1/3$ and simple eigenvalue $-2/3$, giving the same conclusion for the two dual rows.
+
+The affine algebras $\mathcal A_6$ have a unique invariant projective line. A different invariant matrix plane would meet the first in an invariant line for their standard $\mathfrak{sl}_2$, which is impossible. Their normalizers therefore preserve the affine chart and conjugate the linear part by a $2\times2$ matrix. Trace of that linear part is unchanged, so the complementary class of $C$ in the abelianization is fixed. The dual statement fixes the complementary class of $B$ in $\mathcal A_6^\vee$. In $\mathcal L_4$, the two-dimensional irreducible block and its complementary one-dimensional block are intrinsic; a normalizer preserves both and fixes $C$. This proves the exact free character in all three rows. The perfect rows were already settled by their zero character.
+
+All possible images in Theorem 8.9 and all their characters have now been treated. The scalar-extension branch follows directly from Proposition 8.11, and the one-dimensional graph branch from Lemma 8.12. Equation (8.33) proves that the computed normalizer actions are both necessary and sufficient for conjugacy; there are no identifications between different projective types or between the two scalar-intersection alternatives. This completes the catalogue. $\square$
+
+![Every homogeneous three-variable linear algebra is a direct scalar extension or a character graph over its traceless projective image, with complete full-normalizer parameter relations.](../figures/scalar-lifts-catalogue.svg)
+
+*Figure 8.5.* Proposition 8.11 and Theorem 8.13. The projection $\pi:\mathfrak{gl}_3\to\mathfrak{sl}_3$ has kernel $\mathbb C I$. A scalar-containing algebra is the full inverse image of its traceless image; a zero-scalar-intersection algebra is the graph of a character annihilating the commutator. The four joint parameter triples and their zero-weight character alternatives are exactly the second table of Theorem 8.13. The scalar/character construction is treated in Lie–Engel III, §29, pp. 110–115.
+
+**Example 8.14 (a discrete normalizer changes a scalar parameter).** For $\mathcal T_3(1,-1)$, the exchange of the first two homogeneous coordinates sends $D(1,-1)$ to its negative. Thus the two graph algebras with character values $t$ and $-t$ on $D(1,-1)$ are conjugate. This is exactly the joint relation $[1:-1:t]\sim[-1:1:t]=[1:-1:-t]$. Generic exactness of a scalar parameter would miss this identification.
+
+For the abelian nilpotent plane $\langle E,q\rangle$, the concrete graph $\langle q+I,E+uI\rangle$ is conjugate to $\langle q+I,E\rangle$ for every $u$. Indeed $[R,E]=q$ and $[R,q]=0$, so $P=I+uR$ satisfies
+
+$$
+\begin{gathered}
+P(E+uI)P^{-1}\\
+=E+u(q+I),\\
+P(q+I)P^{-1}=q+I.
+\end{gathered}
+\tag{8.40}
+$$
+
+Their spans agree with the target. The three distinct character types over this plane are therefore the three in Theorem 8.13.
+
+![The full normalizer of the regular nilpotent plane has exactly three character orbits, distinguished by their nilpotent sets; the diagonal-family example also displays its disconnected sign action.](../figures/nilpotent-character-orbits.svg)
+
+*Figure 8.6.* The chain $e_3\mapsto e_1\mapsto e_2\mapsto0$ gives $E^2=q$ and the exact normalizer action (8.39). Its three character orbits have respectively an entirely nilpotent plane, a rank-one nilpotent line and a rank-two nilpotent line, as proved in Solution 13. Equation (8.40) is the displayed shear removing every residual $u$ when the character on $q$ is one. The last panel illustrates the disconnected exchange in Example 8.14. Lie–Engel III, §29, pp. 112–116, describes character spaces and the need to include the full normalizer.
+
+The homogeneous linear classification is Lie–Engel III, Chapter 6, §§29–31, pp. 109–121, with the matrix table in §30, pp. 116–119. Proposition 8.11 supplies the scalar/character construction, and Theorem 8.13 computes the full normalizer actions and their exceptional parameter orbits explicitly. The classification concerns complex matrix algebras and connected local linear subgroup germs through the subgroup correspondence, Theorem 2.1.
+
 ## 9. Exercises
 
 **Exercise 1 (introductory).** Compute all brackets among $\partial_x,x\partial_x,x^2\partial_x$ and identify a Chevalley basis for $\mathfrak{sl}_2$.
@@ -1102,6 +1696,14 @@ The homogeneous linear catalogue is Lie–Engel III, Chapter 2, Section 5, Theor
 9. Use Theorem 8.2 to compare $L_{[2:1]}$ with $L_{[1:2]}$, and $\mathcal B_{[1:1]}$ with $\mathcal B_{[1:-1]}$. Give an explicit conjugacy for the equivalent pair and a directly computed invariant for the inequivalent pair. Determine the projective image of all four algebras.
 
 10. Let $A=\operatorname{diag}(2,1)$ and let $\Phi(x,y)=(x+y^2,y)$. Compute $\Phi_*X_A$ in coordinates $(X,Y)=\Phi(x,y)$ and its coefficient derivative at zero. Does this coordinate change preserve homogeneous linearity? Then compute the contragredient of $\mathcal B_{[1:2]}$ up to a basis exchange. Decide whether that contragredient algebra is linearly conjugate to the original, and compare their projective images.
+
+11. Decide whether the projective matrix lines generated by $A+2B$ and $A-B$ are equivalent. Give an explicit projective coordinate change and a generator rescaling. Then compare the two-dimensional algebras $\mathcal K_2(1,3)$ and $\mathcal K_2(2,3)$ under ordinary projective equivalence and under duality.
+
+12. Let $E=p+xq$. Compute the matrix representing it in the chart $[x:y:1]$, its square and cube, and the nilpotent set of $\langle E,A+2B\rangle$. Explain why this algebra is inequivalent to every $\mathcal K_2(a,c)$. Finally determine exactly which parameter values in $\mathcal F_4(a,c)$ are self-dual under ordinary projective conjugacy.
+
+13. Set $E=E_{13}+E_{21}$ and $q=E^2=E_{23}$. Determine the nilpotent set of the graph algebra $\langle E+uI,q+vI\rangle$. Use it to distinguish the three character normal forms over $\mathcal J_2$. When $v=1$, give an explicit conjugating matrix that removes $u$.
+
+14. For $\mathfrak h_t=\langle p,q,D(1,-1)+tI\rangle$, determine all $s,t\in\mathbb C$ for which $\mathfrak h_s$ and $\mathfrak h_t$ are conjugate. Then compare the character graphs over $\langle A,B\rangle$ with pairs $(\alpha,\beta)=(1,2)$ and $(1,-3)$. Give an explicit permutation matrix for each equivalence that you assert.
 
 ## 10. Solutions
 
@@ -1160,11 +1762,60 @@ $$
 
 The parameters $[1:2]$ and $[1:-2]$ differ in $\mathbb P^1$, so Theorem 8.2 proves that the two planes are not linearly conjugate. Both have projective image $\langle H,N\rangle$, because the first parameter is nonzero. The discarded scalar weight is precisely what distinguishes these linear lifts.
 
+**Solution 11.** The coordinate change $\tau(x,y)=(1/x,y/x)$ is induced by exchanging the first and last homogeneous coordinates. Formula (8.27) gives $\tau_*(A+2B)=-A+B$. Rescaling this generator by $-1$ gives $A-B$, so the matrix lines are projectively equivalent. This realizes the parameter change $2\mapsto1-2=-1$ in (8.25).
+
+For $\mathcal K_2$, its nilpotent matrix line determines the intrinsic incident flag (8.28). The ordered weights on its three successive factors give an exact homogeneous pair $[a:c]$. Since $[1:3]\ne[2:3]$, Theorem 8.9 proves that these two algebras are not ordinarily projectively conjugate. The explicit polarity (8.30), however, gives $\mathcal K_2(1,3)^\vee\sim\mathcal K_2(3-1,3)=\mathcal K_2(2,3)$. They form a dual pair of distinct projective types.
+
+**Solution 12.** The matrix is $J=E_{13}+E_{21}$. Its chain is $e_3\mapsto e_1\mapsto e_2\mapsto0$, so $J^2=E_{23}$ and $J^3=0$. In particular $J$ has rank two. The traceless representative of $A+2B$ is $H=\operatorname{diag}(0,1,-1)$. In the ordered basis $e_2,e_1,e_3$, $sJ+tH$ is triangular with diagonal entries $t,0,-t$. It is nilpotent exactly when $t=0$. Thus its nilpotent set is the rank-two line $\mathbb C J$. Every $\mathcal K_2(a,c)$ instead has the rank-one nilpotent line $\mathbb C E_{23}$. Rank is preserved by matrix conjugation, proving inequivalence.
+
+Corollary 8.10 gives the dual of $\mathcal F_4(a,c)$ as $\mathcal F_4(c-a,c)$. Its ordinary parameter relation is equality, so self-duality is equivalent to
+
+$$
+\begin{aligned}
+[a:c]&=[c-a:c],\\
+0&=c(2a-c).
+\end{aligned}
+$$
+
+The determinant of the two parameter vectors gives the second equation. As $(a,c)\ne(0,0)$, its solutions are exactly $[1:0]$ and $[1:2]$. These are genuine self-dual projective types, while every other parameter is paired with a distinct type.
+
+**Solution 13.** The matrix $rE+s q$ is nilpotent, since $E^3=0$ and $q=E^2$. Thus the eigenvalues of
+
+$$
+r(E+uI)+s(q+vI)
+$$
+
+are all $ru+sv$. It is nilpotent exactly when $ru+sv=0$. For $(u,v)=(0,0)$ the whole two-dimensional algebra is nilpotent. For $(1,0)$ its nilpotent set is the line $\mathbb C q$, whose nonzero matrices have rank one. For $(0,1)$ it is the line $\mathbb C E$, whose nonzero matrices have rank two. Dimension of the nilpotent set and its ranks are preserved by conjugacy, so the three types are distinct.
+
+If $v=1$, use $P=I+uE_{21}$. Its inverse is $I-uE_{21}$. The identities $[E_{21},E]=q$ and $[E_{21},q]=0$ give (8.40), so its conjugated span is $\langle E,q+I\rangle$. This removes every $u$ without identifying either of the other two nilpotent-set types.
+
+**Solution 14.** The joint parameter criterion gives
+
+$$
+[1:-1:t]\sim[-1:1:t]=[1:-1:-t].
+$$
+
+Consequently $\mathfrak h_s\sim\mathfrak h_t$ if and only if $s=t$ or $s=-t$. For the nontrivial exchange use
+
+$$
+P=\begin{pmatrix}0&1&0\\1&0&0\\0&0&1\end{pmatrix}.
+$$
+
+It exchanges $p,q$ and sends $D(1,-1)$ to its negative. The scalar matrix is fixed, so rescaling the last generator by $-1$ gives the graph with parameter $-t$. Necessity follows from the complete two-eigenline normalizer calculation in Theorem 8.13. For instance $t=2$ is equivalent to $t=-2$ and is inequivalent to $t=3$.
+
+For the diagonal-plane graphs, the triples are $(1,2,-3)$ and $(1,-3,2)$. They differ by exchanging the second and third entries. The matrix
+
+$$
+Q=\begin{pmatrix}1&0&0\\0&0&1\\0&1&0\end{pmatrix}
+$$
+
+fixes $A$ and sends $B$ to $-A-B$. If the initial character has $\chi(A)=1$, $\chi(B)=2$, its transported character has value $1$ on $A$ and value $\chi(-A-B)=-3$ on $B$. This realizes exactly the claimed graph equivalence. The computation uses the permutation action on the character triple, rather than an arbitrary change of its numerical scale.
+
 ## What this lesson does not prove
 
 The generic holomorphic point-action classification is proved in Theorems 1.1, 6.1, 7.6 and 7.14, with complete parameter identifications in Propositions 7.7 and Theorem 7.15. Proposition 7.16 gives the invariant curve foliations and their tangent multiplicities. These statements concern generic regular points and arbitrary local holomorphic point coordinates. The historical normal-form table is Lie–Engel III, Chapter 4, Section 18, Theorem 6, pp. 71–73.
 
-Theorem 8.2 proves the full homogeneous linear plane catalogue under linear conjugacy, and Corollaries 8.3–8.4 give the projective-line images and fixed-origin equivalence. The classifications of projective plane subgroups and of linear groups in three variables are cited at the exact chapter locators in Section 8. We do not give the classification at singular base points or the additional real primitive plane forms. Compact-uniform holomorphicity and analytic coordinate changes are proved in Transformation groups and their parameters, Lemma A.1 and Theorem A. Analytic flows and straightening are proved in One-parameter groups, Lemma 1.1 and Theorem 3.1. The one-variable Cauchy formula has its exact preceding programme proof linked in Lesson 1.
+Theorem 8.2 proves the full homogeneous linear plane catalogue under linear conjugacy, and Corollaries 8.3–8.4 give the projective-line images and fixed-origin equivalence. Theorem 8.9 proves the full projective-plane catalogue and ordinary projective parameter relations, and Corollary 8.10 gives every duality pairing. Theorem 8.13 proves the full homogeneous linear three-variable classification and every scalar-character lift parameter relation. We do not give the classification at singular base points or the additional real primitive plane forms. Compact-uniform holomorphicity and analytic coordinate changes are proved in Transformation groups and their parameters, Lemma A.1 and Theorem A. Analytic flows and straightening are proved in One-parameter groups, Lemma 1.1 and Theorem 3.1. The one-variable Cauchy formula has its exact preceding programme proof linked in Lesson 1.
 
 ## References
 

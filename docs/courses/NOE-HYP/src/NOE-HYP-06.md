@@ -1,6 +1,6 @@
 # Hilbert 90 in Noether's form and Galois descent
 
-*Written by GPT-6.1 Sol and GPT-6 Astra (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the contributing AIs. Public domain (CC0).*
+*Written by GPT-6.1 Sol and GPT-6 Astra (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).*
 
 A cocycle describes how a chosen basis fails to agree with its Galois conjugates. Hilbert 90 says that for vector spaces this discrepancy can always be removed by a change of basis. Noether's proof interprets the scalar discrepancy as an automorphism of a crossed-product algebra and removes it by inner conjugation. We prove both the direct and the algebraic statements, and descend vector spaces without assuming finite dimension.
 
@@ -215,7 +215,7 @@ The hat means omission. Every pair of omitted indices occurs twice with opposite
 (\sigma m)(h)=m(\sigma^{-1}h).
 \]
 
-**Proof of Theorem 4.0.** First suppose that \(K\) is infinite. The determinant argument in [Local reciprocity and norm groups, §2, “A normal basis, with its proof”](https://kokunoyumeto.github.io/open-math-courses-public/courses/NT-CFT/local-reciprocity-and-norm-groups.html#2-a-normal-basis-with-its-proof) applies to every finite Galois extension of an infinite field. Its field-theoretic part uses independence of the automorphisms, an invertible change of variables in a polynomial ring, and nonvanishing of a nonzero polynomial at some point over the infinite base. Applying all automorphisms to a relation among the chosen conjugates then gives an invertible linear system. These steps precede the integral scaling and use no valuation, completeness or residue-field hypothesis.
+**Proof of Theorem 4.0.** First suppose that \(K\) is infinite. The determinant argument in [Local reciprocity and norm groups, §2, “A normal basis, with its proof”](../../NT-CFT/src/local-reciprocity-and-norm-groups.md#2-a-normal-basis-with-its-proof) applies to every finite Galois extension of an infinite field. Its field-theoretic part uses independence of the automorphisms, an invertible change of variables in a polynomial ring, and nonvanishing of a nonzero polynomial at some point over the infinite base. Applying all automorphisms to a relation among the chosen conjugates then gives an invertible linear system. These steps precede the integral scaling and use no valuation, completeness or residue-field hypothesis.
 
 For a finite base we prove the required linear-algebra fact first. Let \(V\) be a nonzero finite-dimensional \(K\)-vector space and \(T:V\to V\) a \(K\)-linear endomorphism. Its **minimal polynomial** \(m_T\) is the monic polynomial of least degree annihilating \(T\). If
 \[
@@ -301,7 +301,7 @@ Expanding \(ds\psi+sd\psi\), the term omitting the first entry \(1\) in \(sd\psi
 
 Theorem 4.0 supplies the normal basis used in this higher-degree proof. The contracting map itself is displayed, so no vanishing result for an induced module is left implicit. In degree zero, the invariants are \(L^G=K\); they do not vanish.
 
-An alternative proof of Theorem 4.1 is given in [Constructible complexes on algebraic varieties, Appendix R.3, equation (R.5)](https://kokunoyumeto.github.io/open-math-courses-public/courses/GL-PERV/constructible-complexes-on-algebraic-varieties.html#r-3-additive-contraction-and-the-sylow-test). It constructs a contracting homotopy directly from an element of trace one, for any finite Galois extension and in every positive degree. That proof includes finite base fields and characteristic dividing the group order; it does not require a normal basis. Theorem 4.0 also supplies the normal basis used by the first proof and Exercise 6.4.
+An alternative proof of Theorem 4.1 is given in [Constructible complexes on algebraic varieties, Appendix R.3, equation (R.5)](../../GL-PERV/src/constructible-complexes-on-algebraic-varieties.md#r-3-additive-contraction-and-the-sylow-test). It constructs a contracting homotopy directly from an element of trace one, for any finite Galois extension and in every positive degree. That proof includes finite base fields and characteristic dividing the group order; it does not require a normal basis. Theorem 4.0 also supplies the normal basis used by the first proof and Exercise 6.4.
 
 ## 5. Three concrete calculations
 
@@ -420,7 +420,7 @@ which gives the required \(b_\sigma=v/\sigma(v)\). Nothing in the proof requires
 
 ## Sources and further reading
 
-- **[Noether, work 41]** Emmy Noether, *Der Hauptgeschlechtssatz für relativ-galoissche Zahlkörper*, Mathematische Annalen **108** (1933), 411–419, introduction and §1, “Hauptgeschlechtssatz im Minimalen.” Her introduction credits Speiser's 1919 formulation, and §1 gives the crossed-product argument. The [English collected edition](https://github.com/KokunoYumeto/emmy-noether-en) provides a companion reading text. Section 3 translates the argument into the left-action convention used throughout this course.
+- **[Noether, work 41]** Emmy Noether, [*Der Hauptgeschlechtssatz für relativ-galoissche Zahlkörper*, free English edition](https://github.com/KokunoYumeto/emmy-noether-en), Mathematische Annalen **108** (1933), 411–419, introduction and §1, “Hauptgeschlechtssatz im Minimalen.” Her introduction credits Speiser's 1919 formulation, and §1 gives the crossed-product argument. The [English collected edition](https://github.com/KokunoYumeto/emmy-noether-en) provides a companion reading text. Section 3 translates the argument into the left-action convention used throughout this course.
 - **[Milne FT]** J. S. Milne, *Fields and Galois Theory*, chapter 5: independence of characters, the normal basis theorem (Theorem 5.18), and Hilbert's Theorem 90. The [author's notes](https://www.jmilne.org/math/CourseNotes/FT.pdf), version 5.10 (September 2022), Theorem 5.18, pp. 68–70, discuss the infinite-field and cyclic arguments. Theorem 4.0 supplies the cyclic-vector argument explicitly and uses Frobenius for finite fields.
 - **[Milne CFT]** J. S. Milne, [*Class Field Theory*](https://www.jmilne.org/math/CourseNotes/CFT.pdf), course notes, Chapter II, for Galois descent and Hilbert's Theorem 90, including the profinite form over a separable closure.
 
@@ -430,8 +430,8 @@ For a field \(K\), let \(G_K=\operatorname{Gal}(K^{\mathrm{sep}}/K)\). With cont
 H^1_{\mathrm{cont}}(G_K,(K^{\mathrm{sep}})^\times)=1.
 \]
 
-This statement is imported from [Milne CFT, Chapter II]. The planned lesson AG-ET-08, *Galois cohomology*, owns its profinite proof; it is an optional further path, rather than an additional hypothesis for any finite-extension theorem above. The planned NOE-RAT-02 uses descent for the no-name lemma. The next lesson, *The principal genus theorem*, returns to Noether's §2 and distinguishes its arithmetic hypotheses from the field-independent theorem proved here.
+The finite-quotient reduction is proved in [Galois cohomology and the étale cohomology of a field, Proposition 3.1 and Theorem 4.1](../../ag-etale-cohomology/src/galois-cohomology-and-the-etale-cohomology-of-a-field.md#4-hilbert-90-kummer-and-artin-schreier). A continuous cocycle has finite image; an open normal subgroup can be chosen both to fix its values and to make the cochain constant on cosets. It is then a cocycle for a finite Galois extension, and Theorem 1.1 supplies its coboundary. This proves the displayed continuous assertion. Descent also supplies the vector-space argument in the no-name lemma for rational invariants. The next lesson, *The principal genus theorem*, returns to Noether's §2 and distinguishes its arithmetic hypotheses from the field-independent theorem proved here.
 
 ## What this lesson does not prove
 
-Theorem 4.0 proves the normal basis theorem over both infinite and finite base fields. Finite-field structure and the usual finite Galois theory are prerequisites. The continuous multiplicative statement over a separable closure is stated with its source, without duplicating its profinite proof. All five finite-extension assertions in the programme, descent of subspaces, quotients and algebras, the three examples, and the five exercise solutions are proved above. The number-field principal genus theorem requires the additional arithmetic inputs specified in the next lesson.
+Theorem 4.0 proves the normal basis theorem over both infinite and finite base fields. Finite-field structure and the usual finite Galois theory are prerequisites. The continuous multiplicative statement over a separable closure follows from the stated finite-quotient argument and Theorem 1.1, with its full topological reduction linked above. All five finite-extension assertions in the programme, descent of subspaces, quotients and algebras, the three examples, and the five exercise solutions are proved above. The number-field principal genus theorem requires the additional arithmetic inputs specified in the next lesson.

@@ -4,7 +4,7 @@ A small square-zero partial isometry occupies only part of an algebra. To fill t
 
 The resulting assembly theorem applies to arbitrary standard forms under an explicit hypothesis in every corner. For a countably decomposable type III factor, that hypothesis follows from approximate modular intertwining in the whole factor. Full support then gives a lower bound on the initial functional mass, allowing both squared and unsquared relative error estimates.
 
-We use the standard-form axioms, positive representatives of normal functionals, strong suprema of bounded increasing nets, and the complete square-zero extraction argument. The type III application also uses the earlier programme proof of equivalence of infinite projections in a countably decomposable factor: [Projections and types, Proposition 15.2(4)](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/foundations-of-von-neumann-algebras/src/projections-and-types-of-von-neumann-algebras.md).
+We use the standard-form axioms, positive representatives of normal functionals, strong suprema of bounded increasing nets, and the complete square-zero extraction argument. The type III application also uses the earlier programme proof of equivalence of infinite projections in a countably decomposable factor: [Projections and types, Proposition 15.2(4)](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/foundations-of-von-neumann-algebras/src/projections-and-types-of-von-neumann-algebras.md).
 
 ## 1. Removing off-diagonal vector components
 

@@ -8,7 +8,7 @@ from matplotlib.patches import FancyBboxPatch, FancyArrowPatch
 ROOT=Path(__file__).resolve().parent
 OUT=ROOT
 OUT.mkdir(parents=True,exist_ok=True)
-plt.rcParams.update({"font.family":"DejaVu Sans","mathtext.fontset":"dejavusans","svg.fonttype":"path"})
+plt.rcParams.update({"svg.hashsalt": "actual-lattice-cutoff-20261020","font.family":"DejaVu Sans","mathtext.fontset":"dejavusans","svg.fonttype":"path"})
 fig,ax=plt.subplots(figsize=(16,11.5),dpi=150)
 fig.patch.set_facecolor("#f8fafc")
 ax.set(xlim=(0,16),ylim=(0,11.5))
@@ -27,9 +27,9 @@ def arrow(start,end,label=None):
                 fontsize=11,ha="center",va="bottom",color="#28587a")
 ax.text(0.25,11.18,"Actual descent from a supplied Euler-stable lattice",fontsize=23,
         weight="bold",color="#16334e",va="top")
-ax.text(0.25,10.63,r"$M$ coherent over $\mathcal{D}_X$; $L\subset\Phi(M)$ coherent, generating; $tL\subset hL$",
+ax.text(0.25,10.72,r"$M$ coherent over $\mathcal{D}_X$; $L\subset\Phi(M)$ coherent, generating; $tL\subset hL$",
         fontsize=17,color="#16334e",va="top")
-ax.text(0.25,10.28,r"$J$ is an actual submodule of a finite free module; $N\subset T$ are finite actual modules; the Artin–Rees formula has $r\geq c$.",
+ax.text(0.25,10.23,r"$J$ is an actual submodule of a finite free module; $N\subset T$ are finite actual modules; the Artin–Rees formula has $r\geq c$.",
         fontsize=12,color="#4d6071",va="bottom")
 box(0.25,7.90,7.15,2.23,"1  Actual coefficients and division  ·  §§5.19–5.21",[
     r"One common domain: $|p_n|\leq AC^n n!$.",
@@ -65,7 +65,7 @@ box(0.25,1.40,15.25,2.59,"5  Faithful recovery is actual sheaf equality  ·  §5
 ],"#e9effa")
 arrow((4.10,4.49),(4.10,4.13))
 arrow((11.90,4.49),(11.90,4.13))
-ax.text(0.35,1.04,"Separate open construction: the intrinsic strict cutoff across all singular characteristic strata.",
+ax.text(0.35,1.04,"The intrinsic strict cutoff across all singular strata is proved in Section5.89.",
         fontsize=15,weight="bold",color="#7b4027",va="top")
 ax.text(0.35,0.58,"No initial global generator, half-order theorem, or full analytic proper regularity is inferred.",
         fontsize=13.5,color="#7b4027",va="top")
@@ -73,6 +73,6 @@ ax.text(0.35,0.17,"Full proofs: GL-DMOD-13 §§5.19–5.26. Human context: Schap
         fontsize=10.5,color="#4d6071",va="top")
 fig.subplots_adjust(left=0,right=1,bottom=0,top=1)
 for ext in ("png","svg"):
-    fig.savefig(OUT/f"actual-convergent-lattice-descent.{ext}",dpi=150)
+    fig.savefig(OUT/f"actual-convergent-lattice-descent.{ext}",dpi=150,metadata={"Date":None}if ext=="svg"else None)
 plt.close(fig)
 print(OUT/"actual-convergent-lattice-descent.png")

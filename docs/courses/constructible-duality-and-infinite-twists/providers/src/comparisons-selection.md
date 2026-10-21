@@ -4,7 +4,7 @@
 
 This selection retains the complete natural-comparison arguments used by the duality lesson. The geometric stability of weak constructibility, the small-ball theorem, finite constructible duality and the bounded sheaf-operation results remain their stated prerequisite contracts. A locally constant twist may have infinite modules; finite evaluation is used for the untwisted constructible objects.
 
-[Complete original source](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/providers/src/weak-constructibility-under-sheaf-operations.md) · [Editable proof selection](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/providers/src/comparisons-selection.md) · [Reuse terms](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/LICENSE.txt) · Provenance
+[Complete original source](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/providers/src/weak-constructibility-under-sheaf-operations.md) · [Editable proof selection](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/providers/src/comparisons-selection.md) · [Reuse terms](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/constructible-duality-and-infinite-twists/LICENSE.txt) · Provenance
 
 ## Coefficients, bounds and the geometric criterion
 

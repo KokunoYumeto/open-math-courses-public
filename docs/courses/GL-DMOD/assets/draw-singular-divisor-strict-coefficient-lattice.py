@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import FancyBboxPatch
 
 BASE = Path(__file__).resolve().parent
-plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 12})
+plt.rcParams.update({"font.family": "DejaVu Sans", "font.size": 12, "svg.hashsalt": "strict-lattice-cutoff-20261020"})
 fig = plt.figure(figsize=(17, 11.8), facecolor="#f7f9fc")
 grid = fig.add_gridspec(3, 3, height_ratios=[1.25, 1.3, .60],
                        left=.045, right=.975, top=.86, bottom=.07,
@@ -107,7 +107,7 @@ ax.text(.04, -.035, "All Jordan blocks are included.\nThe assertion holds at eve
         color=ink, fontsize=11)
 
 ax = fig.add_subplot(grid[2, :])
-panel(ax, "The general characteristic cutoff is still an open step (§5.27.12)")
+panel(ax, "Coherent characteristic cutoffs across singular strata (§5.89)")
 box(ax, .01, .15, .96, .55,
     "Arbitrary regular holonomic microlocal module\n"+
     "→ actual contact / finite D-type realization → coefficient lattice above\n"+
@@ -115,9 +115,9 @@ box(ax, .01, .15, .96, .55,
     face="#fff0df", fontsize=13)
 
 fig.text(.045, .031,
-         "Proof locators: GL-DMOD-13, §§5.27.4–5.27.11; open obligations §5.27.12.  "
+         "Proof locators: GL-DMOD-13, §§5.27.4–5.27.11, 5.28, 5.87, 5.89.  "
          "Human context: Kashiwara–Kawai, Holonomic Systems III (1981), §§1–2, 5.1.6.",
          fontsize=10, color=ink)
 fig.savefig(BASE / "singular-divisor-strict-coefficient-lattice.png", dpi=160, facecolor=fig.get_facecolor())
-fig.savefig(BASE / "singular-divisor-strict-coefficient-lattice.svg", facecolor=fig.get_facecolor())
+fig.savefig(BASE / "singular-divisor-strict-coefficient-lattice.svg", facecolor=fig.get_facecolor(), metadata={"Date": None})
 print("Rendered singular-divisor-strict-coefficient-lattice.png and .svg")

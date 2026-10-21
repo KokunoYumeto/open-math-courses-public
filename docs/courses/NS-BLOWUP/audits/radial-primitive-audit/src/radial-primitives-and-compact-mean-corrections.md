@@ -8,7 +8,7 @@ This construction constructs the required operator in the original physical vari
 
 Section R2 compares the distinct coefficient \(\Lambda_g^{i_0}Q^{d_r}/2\) with the physical radial coefficient \(\Lambda_g^{i_0}Q^{d_r/2}\) and proves their different inverse estimates. Section R7 derives the positive scalar potential from the curl convention. The original formulas are on pages 90 and 93.
 
-Fourier coefficients and all Fourier estimates used here are derived in R5. The original \(q,\eta\) coordinate calculation is proved in [N6.1, S1](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/NS-BLOWUP/src/summing-the-correction-fields.md).
+Fourier coefficients and all Fourier estimates used here are derived in R5. The original \(q,\eta\) coordinate calculation is proved in [N6.1, S1](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/NS-BLOWUP/src/summing-the-correction-fields.md).
 
 ## R1. The physical map and every scale factor
 

@@ -1,41 +1,18 @@
 <!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Groups with operators · Hypercomplex systems and representations</title>
-<meta name="description" content="A lesson of the course Hypercomplex systems and representations. Draft, written by AI; English only for now.">
-<meta name="color-scheme" content="light dark">
-<link rel="canonical" href="https://kokunoyumeto.github.io/open-math-courses-public/courses/NOE-HYP/NOE-HYP-01.html">
-<link rel="stylesheet" href="../../assets/site.css">
+<meta name="description" content="Mathematical definitions, proofs, examples and exercises.">
+<link rel="stylesheet" href="../../assets/site.css"><link rel="stylesheet" href="reader.css">
 <script>window.MathJax={tex:{inlineMath:[['$','$'],['\\(','\\)']],displayMath:[['$$','$$'],['\\[','\\]']],processEscapes:true,macros:{Eta:'\\mathrm{H}'}},options:{ignoreHtmlClass:'no-math',processHtmlClass:'math'}};</script>
-<script id="MathJax-script" defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script>
-<link rel="stylesheet" href="reader.css">
-</head>
-<body class="no-math">
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="site-header"><div class="header-inner">
-<a class="brand" href="../../">Open Mathematics Courses</a>
-<nav class="primary-nav" aria-label="Main">
-<a href="../../#catalogue">Courses</a>
-<span class="unlinked">Licensing</span>
-<a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/">Core courses <span class="nav-note">Program Matematika Indonesia</span></a>
-</nav>
-<p class="lang-note">English only for now</p>
-</div></header>
-<main id="main">
-<nav class="crumbs" aria-label="Breadcrumb"><a href="../../">All courses</a> <span aria-hidden="true">›</span> <a href="./">Hypercomplex systems and representations</a> <span aria-hidden="true">›</span> <span>Lesson 1 of 3</span></nav>
-<aside class="notice" aria-label="About this lesson">
-<p>Authorship and checks are stated at the start of the lesson.</p>
-<p class="small">English only for now</p>
-</aside>
-<article class="lesson">
-<h1 id="groups-with-operators">Groups with operators</h1>
-<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head>
+<body class="no-math"><a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header"><div class="header-inner"><a class="brand" href="index.html">Hypercomplex systems and representations</a></div></header>
+<main id="main"><article class="lesson"><h1 id="groups-with-operators">Groups with operators</h1>
+<p><em>Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).</em></p>
 <p>A representation is a group together with additional operations that its homomorphisms must respect. For a module those operations are scalar multiplications. For a vector space with a linear transformation, they include that transformation. Keeping the operations visible lets us distinguish two questions: which simple factors occur in a filtration, and which indecomposable pieces occur in a direct sum? The first has a group-theoretic answer. The second requires a stronger argument about endomorphisms.</p>
 <p>This lesson assumes the group operations, normal subgroups and cosets taught in <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C30">Abstract Algebra I</a>, rings and fields from <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-C40">Abstract Algebra II</a>, and vector spaces and linear maps from <a href="https://kokunoyumeto.github.io/program-matematika-indonesia/en/#course-B40">Linear Algebra</a>. A left module is an abelian group with a unital distributive ring action; we explain how that action enters the proofs. Basic references are [Noether], [MIT] and [Voight]. The module-length terminology agrees with [Stacks, Tags 00IU and 00IX].</p>
 <h2 id="1-operations-that-must-survive-a-quotient">1. Operations that must survive a quotient</h2>
-<p>An <strong>operator group</strong> is a group <span class="math" data-tex="\(G\)">\(G\)</span> together with a set <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> and, for each <span class="math" data-tex="\(\omega\in\Omega\)">\(\omega\in\Omega\)</span>, a specified endomorphism <span class="math" data-tex="\(g\mapsto\omega(g)\)">\(g\mapsto\omega(g)\)</span>. We do not require <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> itself to be a group or ring. A subgroup <span class="math" data-tex="\(H\)">\(H\)</span> is <strong>admissible</strong> if <span class="math" data-tex="\(\omega(H)\subseteq H\)">\(\omega(H)\subseteq H\)</span> for every operator. A homomorphism <span class="math" data-tex="\(f:G\to G&#x27;\)">\(f:G\to G&#x27;\)</span> respects the operators if</p>
+<p>An <strong>operator group</strong> is a group <span class="math" data-tex="\(G\)">\(G\)</span> together with a set <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> and, for each <span class="math" data-tex="\(\omega\in\Omega\)">\(\omega\in\Omega\)</span>, a specified endomorphism <span class="math" data-tex="\(g\mapsto\omega(g)\)">\(g\mapsto\omega(g)\)</span>. We do not require <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span> itself to be a group or ring. A subgroup <span class="math" data-tex="\(H\)">\(H\)</span> is <strong>admissible</strong> if <span class="math" data-tex="\(\omega(H)\subseteq H\)">\(\omega(H)\subseteq H\)</span> for every operator. A homomorphism <span class="math" data-tex="\(f:G\to G'\)">\(f:G\to G'\)</span> respects the operators if</p>
 <span class="math math-display" data-tex="\[
 f(\omega(g))=\omega(f(g)).
 \]">\[
@@ -47,23 +24,23 @@ f(\omega(g))=\omega(f(g)).
 <h3 id="theorem-1-1-quotients-and-the-isomorphism-theorems">Theorem 1.1. Quotients and the isomorphism theorems</h3>
 <p>The following statements hold for operator groups and homomorphisms respecting the operators.</p>
 <ol>
-<li>A homomorphism <span class="math" data-tex="\(f:G\to G&#x27;\)">\(f:G\to G&#x27;\)</span> induces an isomorphism <span class="math" data-tex="\(G/\ker f\simeq\operatorname{im}f\)">\(G/\ker f\simeq\operatorname{im}f\)</span>.</li>
-<li>If <span class="math" data-tex="\(N\triangleleft G\)">\(N\triangleleft G\)</span> and <span class="math" data-tex="\(H\leq G\)">\(H\leq G\)</span> are admissible, then <span class="math" data-tex="\(HN\)">\(HN\)</span> is admissible, <span class="math" data-tex="\(H\cap N\triangleleft H\)">\(H\cap N\triangleleft H\)</span>, and
-<span class="math math-display" data-tex="\[
+<li>A homomorphism <span class="math" data-tex="\(f:G\to G'\)">\(f:G\to G'\)</span> induces an isomorphism <span class="math" data-tex="\(G/\ker f\simeq\operatorname{im}f\)">\(G/\ker f\simeq\operatorname{im}f\)</span>.</li>
+<li>If <span class="math" data-tex="\(N\triangleleft G\)">\(N\triangleleft G\)</span> and <span class="math" data-tex="\(H\leq G\)">\(H\leq G\)</span> are admissible, then <span class="math" data-tex="\(HN\)">\(HN\)</span> is admissible, <span class="math" data-tex="\(H\cap N\triangleleft H\)">\(H\cap N\triangleleft H\)</span>, and<span class="math math-display" data-tex="\[
 H/(H\cap N)\simeq HN/N.
 \]">\[
 H/(H\cap N)\simeq HN/N.
-\]</span></li>
-<li>For admissible normal subgroups <span class="math" data-tex="\(N\subseteq K\)">\(N\subseteq K\)</span> of <span class="math" data-tex="\(G\)">\(G\)</span>,
-<span class="math math-display" data-tex="\[
+\]</span>
+</li>
+<li>For admissible normal subgroups <span class="math" data-tex="\(N\subseteq K\)">\(N\subseteq K\)</span> of <span class="math" data-tex="\(G\)">\(G\)</span>,<span class="math math-display" data-tex="\[
 (G/N)/(K/N)\simeq G/K.
 \]">\[
 (G/N)/(K/N)\simeq G/K.
-\]</span></li>
+\]</span>
+</li>
 <li>Subgroups of <span class="math" data-tex="\(G/N\)">\(G/N\)</span> correspond to subgroups of <span class="math" data-tex="\(G\)">\(G\)</span> containing <span class="math" data-tex="\(N\)">\(N\)</span>. The correspondence preserves admissibility and normality.</li>
 </ol>
 <p><strong>Proof.</strong> For (1), send <span class="math" data-tex="\(g\ker f\)">\(g\ker f\)</span> to <span class="math" data-tex="\(f(g)\)">\(f(g)\)</span>. Equality of images is equivalent to membership of <span class="math" data-tex="\(h^{-1}g\)">\(h^{-1}g\)</span> in the kernel, so the map is well defined and injective; it is surjective onto the stated image. The displayed operator identity makes it an operator isomorphism.</p>
-<p>For (2), normality of <span class="math" data-tex="\(N\)">\(N\)</span> makes <span class="math" data-tex="\(HN\)">\(HN\)</span> a subgroup: <span class="math" data-tex="\((hn)(h&#x27;n&#x27;)=hh&#x27;(h&#x27;^{-1}nh&#x27;)n&#x27;\)">\((hn)(h&#x27;n&#x27;)=hh&#x27;(h&#x27;^{-1}nh&#x27;)n&#x27;\)</span>. Applying an operator to a product in <span class="math" data-tex="\(HN\)">\(HN\)</span> keeps it in <span class="math" data-tex="\(HN\)">\(HN\)</span>. Conjugating an element of <span class="math" data-tex="\(H\cap N\)">\(H\cap N\)</span> by an element of <span class="math" data-tex="\(H\)">\(H\)</span> keeps it in both subgroups. Restrict the quotient map <span class="math" data-tex="\(G\to G/N\)">\(G\to G/N\)</span> to <span class="math" data-tex="\(H\)">\(H\)</span>. Its image is <span class="math" data-tex="\(HN/N\)">\(HN/N\)</span>, and its kernel is <span class="math" data-tex="\(H\cap N\)">\(H\cap N\)</span>; (1) gives the result.</p>
+<p>For (2), normality of <span class="math" data-tex="\(N\)">\(N\)</span> makes <span class="math" data-tex="\(HN\)">\(HN\)</span> a subgroup: <span class="math" data-tex="\((hn)(h'n')=hh'(h'^{-1}nh')n'\)">\((hn)(h'n')=hh'(h'^{-1}nh')n'\)</span>. Applying an operator to a product in <span class="math" data-tex="\(HN\)">\(HN\)</span> keeps it in <span class="math" data-tex="\(HN\)">\(HN\)</span>. Conjugating an element of <span class="math" data-tex="\(H\cap N\)">\(H\cap N\)</span> by an element of <span class="math" data-tex="\(H\)">\(H\)</span> keeps it in both subgroups. Restrict the quotient map <span class="math" data-tex="\(G\to G/N\)">\(G\to G/N\)</span> to <span class="math" data-tex="\(H\)">\(H\)</span>. Its image is <span class="math" data-tex="\(HN/N\)">\(HN/N\)</span>, and its kernel is <span class="math" data-tex="\(H\cap N\)">\(H\cap N\)</span>; (1) gives the result.</p>
 <p>For (3), the map <span class="math" data-tex="\(gN\mapsto gK\)">\(gN\mapsto gK\)</span> is surjective, respects operators, and has kernel <span class="math" data-tex="\(K/N\)">\(K/N\)</span>. Apply (1). For (4), the inverse operations are image and inverse image under the quotient map. If <span class="math" data-tex="\(H\)">\(H\)</span> contains <span class="math" data-tex="\(N\)">\(N\)</span>, then the inverse image of its image is <span class="math" data-tex="\(H\)">\(H\)</span>. If <span class="math" data-tex="\(U\leq G/N\)">\(U\leq G/N\)</span>, surjectivity makes the image of its inverse image equal <span class="math" data-tex="\(U\)">\(U\)</span>. Applying operators or conjugations before or after the quotient map proves the two preservation assertions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
 <h2 id="2-refining-two-filtrations-at-once">2. Refining two filtrations at once</h2>
 <p>A <strong>subnormal admissible series</strong> is a finite chain</p>
@@ -76,30 +53,30 @@ G=G_0\supseteq G_1\supseteq\cdots\supseteq G_r=1,
 \]</span>
 <p>whose terms are admissible. Each term need only be normal in its predecessor. A refinement inserts more terms. Two series are <strong>equivalent</strong> if their lists of nontrivial factors can be matched by operator isomorphisms. A <strong>composition series</strong> has nontrivial simple factors: a factor has no proper nontrivial admissible normal subgroup.</p>
 <h3 id="lemma-2-1-the-butterfly-lemma">Lemma 2.1. The butterfly lemma</h3>
-<p>Let <span class="math" data-tex="\(A&#x27;\triangleleft A\)">\(A&#x27;\triangleleft A\)</span> and <span class="math" data-tex="\(B&#x27;\triangleleft B\)">\(B&#x27;\triangleleft B\)</span> be admissible subgroups of an operator group. Then the following quotients are defined and operator-isomorphic:</p>
+<p>Let <span class="math" data-tex="\(A'\triangleleft A\)">\(A'\triangleleft A\)</span> and <span class="math" data-tex="\(B'\triangleleft B\)">\(B'\triangleleft B\)</span> be admissible subgroups of an operator group. Then the following quotients are defined and operator-isomorphic:</p>
 <span class="math math-display" data-tex="\[
-\frac{A&#x27;(A\cap B)}{A&#x27;(A\cap B&#x27;)}
+\frac{A'(A\cap B)}{A'(A\cap B')}
 \simeq
-\frac{B&#x27;(A\cap B)}{B&#x27;(A&#x27;\cap B)}.
+\frac{B'(A\cap B)}{B'(A'\cap B)}.
 \]">\[
-\frac{A&#x27;(A\cap B)}{A&#x27;(A\cap B&#x27;)}
+\frac{A'(A\cap B)}{A'(A\cap B')}
 \simeq
-\frac{B&#x27;(A\cap B)}{B&#x27;(A&#x27;\cap B)}.
+\frac{B'(A\cap B)}{B'(A'\cap B)}.
 \]</span>
-<p><strong>Proof.</strong> Put <span class="math" data-tex="\(H=A\cap B\)">\(H=A\cap B\)</span>. Both <span class="math" data-tex="\(A&#x27;\cap B\)">\(A&#x27;\cap B\)</span> and <span class="math" data-tex="\(A\cap B&#x27;\)">\(A\cap B&#x27;\)</span> are normal admissible subgroups of <span class="math" data-tex="\(H\)">\(H\)</span>, so</p>
+<p><strong>Proof.</strong> Put <span class="math" data-tex="\(H=A\cap B\)">\(H=A\cap B\)</span>. Both <span class="math" data-tex="\(A'\cap B\)">\(A'\cap B\)</span> and <span class="math" data-tex="\(A\cap B'\)">\(A\cap B'\)</span> are normal admissible subgroups of <span class="math" data-tex="\(H\)">\(H\)</span>, so</p>
 <span class="math math-display" data-tex="\[
-K=(A&#x27;\cap B)(A\cap B&#x27;)
+K=(A'\cap B)(A\cap B')
 \]">\[
-K=(A&#x27;\cap B)(A\cap B&#x27;)
+K=(A'\cap B)(A\cap B')
 \]</span>
-<p>is a normal admissible subgroup of <span class="math" data-tex="\(H\)">\(H\)</span>. Consider <span class="math" data-tex="\(A&#x27;H/A&#x27;\)">\(A&#x27;H/A&#x27;\)</span>. By Theorem 1.1 this is <span class="math" data-tex="\(H/(A&#x27;\cap H)\)">\(H/(A&#x27;\cap H)\)</span>. The image of the normal subgroup <span class="math" data-tex="\(A\cap B&#x27;\)">\(A\cap B&#x27;\)</span> in this quotient is normal. Its inverse image in <span class="math" data-tex="\(A&#x27;H\)">\(A&#x27;H\)</span> is <span class="math" data-tex="\(A&#x27;(A\cap B&#x27;)\)">\(A&#x27;(A\cap B&#x27;)\)</span>, proving that the first denominator is normal in the first numerator.</p>
+<p>is a normal admissible subgroup of <span class="math" data-tex="\(H\)">\(H\)</span>. Consider <span class="math" data-tex="\(A'H/A'\)">\(A'H/A'\)</span>. By Theorem 1.1 this is <span class="math" data-tex="\(H/(A'\cap H)\)">\(H/(A'\cap H)\)</span>. The image of the normal subgroup <span class="math" data-tex="\(A\cap B'\)">\(A\cap B'\)</span> in this quotient is normal. Its inverse image in <span class="math" data-tex="\(A'H\)">\(A'H\)</span> is <span class="math" data-tex="\(A'(A\cap B')\)">\(A'(A\cap B')\)</span>, proving that the first denominator is normal in the first numerator.</p>
 <p>The surjection from <span class="math" data-tex="\(H\)">\(H\)</span> to that first quotient has kernel</p>
 <span class="math math-display" data-tex="\[
-H\cap A&#x27;(A\cap B&#x27;)=(H\cap A&#x27;)(A\cap B&#x27;)=K.
+H\cap A'(A\cap B')=(H\cap A')(A\cap B')=K.
 \]">\[
-H\cap A&#x27;(A\cap B&#x27;)=(H\cap A&#x27;)(A\cap B&#x27;)=K.
+H\cap A'(A\cap B')=(H\cap A')(A\cap B')=K.
 \]</span>
-<p>For the middle equality, write an element of the left side as <span class="math" data-tex="\(a&#x27;c\)">\(a&#x27;c\)</span>, with <span class="math" data-tex="\(c\in A\cap B&#x27;\subseteq H\)">\(c\in A\cap B&#x27;\subseteq H\)</span>; then <span class="math" data-tex="\(a&#x27;=(a&#x27;c)c^{-1}\in H\cap A&#x27;\)">\(a&#x27;=(a&#x27;c)c^{-1}\in H\cap A&#x27;\)</span>. The reverse containment follows directly. Thus the first quotient is <span class="math" data-tex="\(H/K\)">\(H/K\)</span>. Exchanging the two pairs proves that the second quotient is also <span class="math" data-tex="\(H/K\)">\(H/K\)</span>, with the same operators. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the middle equality, write an element of the left side as <span class="math" data-tex="\(a'c\)">\(a'c\)</span>, with <span class="math" data-tex="\(c\in A\cap B'\subseteq H\)">\(c\in A\cap B'\subseteq H\)</span>; then <span class="math" data-tex="\(a'=(a'c)c^{-1}\in H\cap A'\)">\(a'=(a'c)c^{-1}\in H\cap A'\)</span>. The reverse containment follows directly. Thus the first quotient is <span class="math" data-tex="\(H/K\)">\(H/K\)</span>. Exchanging the two pairs proves that the second quotient is also <span class="math" data-tex="\(H/K\)">\(H/K\)</span>, with the same operators. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
 <h3 id="theorem-2-2-schreier-refinement-and-jordan-hölder">Theorem 2.2. Schreier refinement and Jordan–Hölder</h3>
 <p>Any two finite subnormal admissible series have equivalent refinements. Consequently, if an operator group has a composition series, any two of its composition series have the same length and the same factors up to order and operator isomorphism.</p>
 <p><strong>Proof.</strong> Write the two series as <span class="math" data-tex="\((G_i)_{i=0}^r\)">\((G_i)_{i=0}^r\)</span> and <span class="math" data-tex="\((H_j)_{j=0}^s\)">\((H_j)_{j=0}^s\)</span>. Between <span class="math" data-tex="\(G_i\)">\(G_i\)</span> and <span class="math" data-tex="\(G_{i+1}\)">\(G_{i+1}\)</span>, insert</p>
@@ -214,7 +191,7 @@ M=\bigoplus_{[S]} M_S,
 <h3 id="exercise-5-1-easy-the-operators-on-a-quotient">Exercise 5.1. Easy: the operators on a quotient</h3>
 <p>Let <span class="math" data-tex="\(H,N\)">\(H,N\)</span> be as in Theorem 1.1(2). Construct the isomorphism explicitly, and verify that it respects each operator. Then take <span class="math" data-tex="\(G=\mathbb Z\)">\(G=\mathbb Z\)</span>, <span class="math" data-tex="\(H=4\mathbb Z\)">\(H=4\mathbb Z\)</span> and <span class="math" data-tex="\(N=6\mathbb Z\)">\(N=6\mathbb Z\)</span>, with the integer scalar operators, and compute both quotients.</p>
 <h3 id="exercise-5-2-medium-a-butterfly-with-numbers">Exercise 5.2. Medium: a butterfly with numbers</h3>
-<p>Prove the intersection identity used in Lemma 2.1 without assuming commutativity. Then take <span class="math" data-tex="\(A=2\mathbb Z\)">\(A=2\mathbb Z\)</span>, <span class="math" data-tex="\(A&#x27;=6\mathbb Z\)">\(A&#x27;=6\mathbb Z\)</span>, <span class="math" data-tex="\(B=3\mathbb Z\)">\(B=3\mathbb Z\)</span>, <span class="math" data-tex="\(B&#x27;=12\mathbb Z\)">\(B&#x27;=12\mathbb Z\)</span>. Compute the two butterfly quotients and their common description.</p>
+<p>Prove the intersection identity used in Lemma 2.1 without assuming commutativity. Then take <span class="math" data-tex="\(A=2\mathbb Z\)">\(A=2\mathbb Z\)</span>, <span class="math" data-tex="\(A'=6\mathbb Z\)">\(A'=6\mathbb Z\)</span>, <span class="math" data-tex="\(B=3\mathbb Z\)">\(B=3\mathbb Z\)</span>, <span class="math" data-tex="\(B'=12\mathbb Z\)">\(B'=12\mathbb Z\)</span>. Compute the two butterfly quotients and their common description.</p>
 <h3 id="exercise-5-3-medium-why-a-local-ring-appears">Exercise 5.3. Medium: why a local ring appears</h3>
 <p>For an indecomposable finite-length module <span class="math" data-tex="\(M\)">\(M\)</span>, prove that the sum of two noninvertible endomorphisms cannot be invertible. Apply this to <span class="math" data-tex="\(M=k[t]/(t^3)\)">\(M=k[t]/(t^3)\)</span>: calculate its endomorphism ring, its nonunits and the inverses of its units.</p>
 <h3 id="exercise-5-4-medium-two-different-eigenvalue-blocks">Exercise 5.4. Medium: two different eigenvalue blocks</h3>
@@ -237,8 +214,8 @@ I\oplus J\simeq R\oplus R.
 <h3 id="solution-5-1">Solution 5.1</h3>
 <p>Send <span class="math" data-tex="\(h(H\cap N)\)">\(h(H\cap N)\)</span> to <span class="math" data-tex="\(hN\)">\(hN\)</span>. Changing <span class="math" data-tex="\(h\)">\(h\)</span> by an element of <span class="math" data-tex="\(H\cap N\)">\(H\cap N\)</span> keeps its image unchanged. The kernel is trivial, and every element <span class="math" data-tex="\(hnN\)">\(hnN\)</span> has image represented by <span class="math" data-tex="\(h\)">\(h\)</span>, so the map is bijective. Applying <span class="math" data-tex="\(\omega\)">\(\omega\)</span> to either representative gives <span class="math" data-tex="\(\omega(h)N\)">\(\omega(h)N\)</span>, proving operator compatibility. Here <span class="math" data-tex="\(H+N=2\mathbb Z\)">\(H+N=2\mathbb Z\)</span> and <span class="math" data-tex="\(H\cap N=12\mathbb Z\)">\(H\cap N=12\mathbb Z\)</span>. The two quotients are <span class="math" data-tex="\(4\mathbb Z/12\mathbb Z\)">\(4\mathbb Z/12\mathbb Z\)</span> and <span class="math" data-tex="\(2\mathbb Z/6\mathbb Z\)">\(2\mathbb Z/6\mathbb Z\)</span>, both cyclic of order three. The map sends the class of <span class="math" data-tex="\(4\)">\(4\)</span> to the class of <span class="math" data-tex="\(4\)">\(4\)</span>, which generates the latter quotient.</p>
 <h3 id="solution-5-2">Solution 5.2</h3>
-<p>If <span class="math" data-tex="\(C\leq H\)">\(C\leq H\)</span>, an element <span class="math" data-tex="\(x\in H\cap A&#x27;C\)">\(x\in H\cap A&#x27;C\)</span> has a representation <span class="math" data-tex="\(x=a&#x27;c\)">\(x=a&#x27;c\)</span>. Since <span class="math" data-tex="\(c\in H\)">\(c\in H\)</span>, also <span class="math" data-tex="\(a&#x27;=xc^{-1}\in H\cap A&#x27;\)">\(a&#x27;=xc^{-1}\in H\cap A&#x27;\)</span>. Therefore <span class="math" data-tex="\(H\cap A&#x27;C\subseteq(H\cap A&#x27;)C\)">\(H\cap A&#x27;C\subseteq(H\cap A&#x27;)C\)</span>. Every element of the right side belongs to <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(A&#x27;C\)">\(A&#x27;C\)</span>, proving equality without commutativity. Use <span class="math" data-tex="\(C=A\cap B&#x27;\)">\(C=A\cap B&#x27;\)</span> to obtain the kernel in the butterfly proof. The normality argument and the two quotient maps in that proof then establish the whole lemma.</p>
-<p>In the numerical example, <span class="math" data-tex="\(A\cap B=6\mathbb Z\)">\(A\cap B=6\mathbb Z\)</span>, <span class="math" data-tex="\(A\cap B&#x27;=12\mathbb Z\)">\(A\cap B&#x27;=12\mathbb Z\)</span>, and <span class="math" data-tex="\(A&#x27;\cap B=6\mathbb Z\)">\(A&#x27;\cap B=6\mathbb Z\)</span>. The first quotient is</p>
+<p>If <span class="math" data-tex="\(C\leq H\)">\(C\leq H\)</span>, an element <span class="math" data-tex="\(x\in H\cap A'C\)">\(x\in H\cap A'C\)</span> has a representation <span class="math" data-tex="\(x=a'c\)">\(x=a'c\)</span>. Since <span class="math" data-tex="\(c\in H\)">\(c\in H\)</span>, also <span class="math" data-tex="\(a'=xc^{-1}\in H\cap A'\)">\(a'=xc^{-1}\in H\cap A'\)</span>. Therefore <span class="math" data-tex="\(H\cap A'C\subseteq(H\cap A')C\)">\(H\cap A'C\subseteq(H\cap A')C\)</span>. Every element of the right side belongs to <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(A'C\)">\(A'C\)</span>, proving equality without commutativity. Use <span class="math" data-tex="\(C=A\cap B'\)">\(C=A\cap B'\)</span> to obtain the kernel in the butterfly proof. The normality argument and the two quotient maps in that proof then establish the whole lemma.</p>
+<p>In the numerical example, <span class="math" data-tex="\(A\cap B=6\mathbb Z\)">\(A\cap B=6\mathbb Z\)</span>, <span class="math" data-tex="\(A\cap B'=12\mathbb Z\)">\(A\cap B'=12\mathbb Z\)</span>, and <span class="math" data-tex="\(A'\cap B=6\mathbb Z\)">\(A'\cap B=6\mathbb Z\)</span>. The first quotient is</p>
 <span class="math math-display" data-tex="\[
 (6\mathbb Z+6\mathbb Z)/(6\mathbb Z+12\mathbb Z)=0,
 \]">\[
@@ -266,19 +243,10 @@ c^{-1}-dc^{-2}t+(d^2c^{-3}-ec^{-2})t^2.
 <h2 id="references">References</h2>
 <ul>
 <li><strong>[MIT]</strong> <em>Noncommutative Algebra</em>, MIT OpenCourseWare, Spring 2023, instructor Roman Bezrukavnikov. Lectures 1–4 treat semisimplicity, length and Krull–Schmidt. <a href="https://ocw.mit.edu/courses/18-706-noncommutative-algebra-spring-2023/resources/mit18_706_s23_full_lec_pdf/">Course notes</a>.</li>
-<li><strong>[Voight]</strong> John Voight, <em>Quaternion Algebras</em>, Graduate Texts in Mathematics 288, Springer, 2021, §7.2. <a href="https://jvoight.github.io/quat.html">Author's book page</a>.</li>
-<li><strong>[Stacks]</strong> The <a href="https://stacks.math.columbia.edu/">Stacks Project</a>, Tags <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#section-length">00IU</a> and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#lemma-length-independent">00IX</a>, linked to the companion AI Integrated Stacks Project edition. That edition contains AI-proposed corrections and additions and is not reviewed by the Stacks Project's maintainers.</li>
-<li><strong>[Noether]</strong> Emmy Noether, <em>Hyperkomplexe Größen und Darstellungstheorie</em>, written up by B. L. van der Waerden, <em>Mathematische Zeitschrift</em> <strong>30</strong> (1929), 641–692, §§1–5; especially §4, note 11 for direct-product uniqueness. Also <em>Hyperkomplexe Größen und Darstellungstheorie in arithmetischer Auffassung</em>, proceedings of the Bologna International Congress of Mathematicians, <strong>2</strong> (1928), 71–73.</li>
-</ul>
-
-</article>
-
-<nav class="pager" aria-label="Lessons"><span></span><a href="./">Course contents</a><span class="pager-next"><a rel="next" href="NOE-HYP-02.html">Semisimple rings and Wedderburn&#x27;s theorem →</a></span></nav>
-<p class="small source-link"><a href="src/NOE-HYP-01.md" download>Editable Markdown source of this lesson</a></p>
-</main>
-<footer class="site-footer">
-<p>No copyright is claimed in original content on this site. It is dedicated under <span class="unlinked">CC0 1.0</span>. Original text CC0 1.0 unless the lesson states other terms.</p>
-<nav aria-label="Elsewhere"><a href="https://github.com/KokunoYumeto/open-math-courses-public-public/tree/main/docs/courses/NOE-HYP">Repository</a></nav>
-</footer>
-</body>
-</html>
+<li><strong>[Voight]</strong> John Voight, <a href="https://jvoight.github.io/quat.html"><em>Quaternion Algebras</em>, author-maintained free edition</a>, §7.2. <a href="https://jvoight.github.io/quat.html">Author's book page</a>.</li>
+<li><strong>[Stacks]</strong> The <a href="https://stacks.math.columbia.edu/">Stacks Project</a>, Tags <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#section-length">00IU</a> and <a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/algebra.html#lemma-length-independent">00IX</a>, linked to the companion AI Integrated Stacks Project edition. The linked AI Integrated Stacks Project is a separately maintained AI edition of the Stacks Project.</li>
+<li><strong>[Noether]</strong> Emmy Noether, <a href="https://github.com/KokunoYumeto/emmy-noether-en"><em>Hyperkomplexe Größen und Darstellungstheorie</em>, free English edition</a>, written up by B. L. van der Waerden, <em>Mathematische Zeitschrift</em> <strong>30</strong> (1929), 641–692, §§1–5; especially §4, note 11 for direct-product uniqueness. Also <em>Hyperkomplexe Größen und Darstellungstheorie in arithmetischer Auffassung</em>, proceedings of the Bologna International Congress of Mathematicians, <strong>2</strong> (1928), 71–73. The <a href="https://www.mathunion.org/fileadmin/ICM/Proceedings/ICM1928.2/ICM1928.2.ocr.pdf">original Bologna proceedings</a> are freely accessible.</li>
+</ul></article>
+<nav class="pager" aria-label="Lessons"><span></span><a href="index.html">Course contents</a><a href="NOE-HYP-02.html">Next lesson</a></nav>
+<p class="small"><a href="src/NOE-HYP-01.md" download>Editable mathematical source</a></p></main>
+<footer class="site-footer"><p>Original mathematical exposition: <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>. Linked works retain their own rights.</p></footer></body></html>

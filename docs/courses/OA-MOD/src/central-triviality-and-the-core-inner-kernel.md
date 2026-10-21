@@ -32,7 +32,7 @@ We prove
 
 Section 9 gives the equivalent formula in every faithful normal state chart.
 
-Normal isomorphisms transport centralizing sequences and bounded strong-star convergence. Inner automorphisms are centrally trivial: predual centrality implies strong-star commutation with each fixed operator. The cancellation estimate proving that implication is in [Section 3 of Trace scaling on the hyperfinite semifinite factor](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/trace-scaling-on-the-hyperfinite-semifinite-factor.md#3-what-type-i-amplification-preserves). Thus central triviality is unchanged by inner perturbation and normal conjugacy.
+Normal isomorphisms transport centralizing sequences and bounded strong-star convergence. Inner automorphisms are centrally trivial: predual centrality implies strong-star commutation with each fixed operator. The cancellation estimate proving that implication is in [Section 3 of Trace scaling on the hyperfinite semifinite factor](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/trace-scaling-on-the-hyperfinite-semifinite-factor.md#3-what-type-i-amplification-preserves). Thus central triviality is unchanged by inner perturbation and normal conjugacy.
 
 Fix \(\alpha\in\operatorname{Ct}(M)\). The dominant-weight comparison and canonical-extension calculation in EDD02–03 do not use the module hypothesis until they assert that the core center is fixed. They give an inner perturbation \(\alpha_0\) preserving a faithful dominant weight \(\varphi\), and a normal automorphism
 
@@ -57,7 +57,7 @@ The algebra \(P\) is type \(\mathrm{II}_\infty\), and its center flow is properl
 
 ## Central tests descend from the core
 
-Type-I amplification preserves central triviality. The full matrix proof is [Trace scaling, Proposition 3.1](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/trace-scaling-on-the-hyperfinite-semifinite-factor.md#3-what-type-i-amplification-preserves). Its scope is every separable-predual algebra. Briefly, for a bounded centralizing sequence \(X_n\) in \(M\bar\otimes B(\ell^2)\), the \((1,1)\) coefficient \(y_n\) is centralizing in \(M\). Commutators with the fixed matrix units show
+Type-I amplification preserves central triviality. The full matrix proof is [Trace scaling, Proposition 3.1](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/trace-scaling-on-the-hyperfinite-semifinite-factor.md#3-what-type-i-amplification-preserves). Its scope is every separable-predual algebra. Briefly, for a bounded centralizing sequence \(X_n\) in \(M\bar\otimes B(\ell^2)\), the \((1,1)\) coefficient \(y_n\) is centralizing in \(M\). Commutators with the fixed matrix units show
 
 \[
 X_n-y_n\otimes1\longrightarrow0
@@ -154,7 +154,7 @@ c|_C=\mathrm{id},\qquad c\delta_s=\delta_s c,\qquad
 
 On \(P\rtimes_\delta\mathbb R\), the extension of \(\delta_{-t_0}\) fixing the real implementers is \(\operatorname{Ad}(\Lambda_{-t_0})\). Thus \(\widehat c\) is an inner perturbation of \(\widehat b\), and is centrally trivial.
 
-We need the return construction with this multiplier retained. The actual maps and their equivariance are proved in EDD04–07, from the [return-system proof](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/OA-FLOW/src/OA-FLOW-SR.md#sr-cover) and [whole-trace proof](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/OA-FLOW/src/OA-FLOW-ZDC.md#zdc-1). Here is the modification at every trace step.
+We need the return construction with this multiplier retained. The actual maps and their equivariance are proved in EDD04–07, from the [return-system proof](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/OA-FLOW/src/OA-FLOW-SR.md#sr-cover) and [whole-trace proof](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/OA-FLOW/src/OA-FLOW-ZDC.md#zdc-1). Here is the modification at every trace step.
 
 Lift \(c\) as \(\mathrm{id}\otimes c\) to \(\ell^\infty(\mathbb Z)\bar\otimes P\). It fixes all central hitting projections and the specified real coordinate, commutes with the lifted real action and the deck shift, and multiplies the counting trace by \(k\). Under the normal onto product map, commuting with real translations and fixing their coordinate identifies it as \(\mathrm{id}_{L^\infty(\mathbb R)}\otimes a_D\). The trace is \(e^{-s}ds\otimes\kappa\). Testing on \(g(s)\otimes x\), with \(g\ge0\) bounded and \(\int e^{-s}g(s)\,ds=1\), gives
 
@@ -202,7 +202,7 @@ a_{Tx}\rho_x=\rho_x a_x.
 
 The normal inverse, full algebra realization and canonical implementation in MAI02 justify these fields. Countable tests and their \(T\)-saturation give one invariant conull set for all integer compositions.
 
-Two earlier factor results are used here. [Trace scaling, Theorem 4.2](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/trace-scaling-on-the-hyperfinite-semifinite-factor.md#4-centrally-trivial-automorphisms-of-the-semifinite-factor) proves \(\operatorname{Ct}(Q)=\operatorname{Inn}(Q)\). [Relative character eigenunitaries, Theorem 4.1](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/relative-character-eigenunitaries.md#4-choosing-a-row-without-changing-its-coordinate) supplies a unitary eigenvector in \(Q_\omega\) for a character trivial on the centrally trivial kernel. The strong-stability hypothesis holds for \(Q\): interleaving the tracial matrix sites gives \(R\bar\otimes R\cong R\), and the \(B(\ell^2)\) leg is unchanged.
+Two earlier factor results are used here. [Trace scaling, Theorem 4.2](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/trace-scaling-on-the-hyperfinite-semifinite-factor.md#4-centrally-trivial-automorphisms-of-the-semifinite-factor) proves \(\operatorname{Ct}(Q)=\operatorname{Inn}(Q)\). [Relative character eigenunitaries, Theorem 4.1](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/relative-character-eigenunitaries.md#4-choosing-a-row-without-changing-its-coordinate) supplies a unitary eigenvector in \(Q_\omega\) for a character trivial on the centrally trivial kernel. The strong-stability hypothesis holds for \(Q\): interleaving the tracial matrix sites gives \(R\bar\otimes R\cong R\), and the \(B(\ell^2)\) leg is unchanged.
 
 It follows that if \(\zeta\notin\operatorname{Ct}(Q)\), there is a phase in the countable set
 
@@ -400,7 +400,7 @@ An inner canonical extension restricts to a core-normalizer automorphism, so all
 
 ## Every faithful-state chart and the asymptotic period
 
-Fix any faithful normal state \(\chi\) on \(M\). In its core chart let \(\delta\) denote the dual flow and \(C=Z(\widetilde M)\). The full fixed-point, relative-commutant and central-cocycle realization proofs are [Sections 1–4 of Core fixed points and central cocycles](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/foundations/core-fixed-points-and-central-cocycles.md#1-recovering-the-coefficient-algebra-from-dual-fixed-points). They establish
+Fix any faithful normal state \(\chi\) on \(M\). In its core chart let \(\delta\) denote the dual flow and \(C=Z(\widetilde M)\). The full fixed-point, relative-commutant and central-cocycle realization proofs are [Sections 1–4 of Core fixed points and central cocycles](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/foundations/core-fixed-points-and-central-cocycles.md#1-recovering-the-coefficient-algebra-from-dual-fixed-points). They establish
 
 \[
 \widetilde M^\delta=M,\qquad M'\cap\widetilde M=C,

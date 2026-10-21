@@ -22,7 +22,7 @@ Write
 
 The normalization in (CFR.1) is \(\sqrt2\) times the normalized seminorm used in the sequence-algebra prerequisite. Both describe the same bounded strong* topology.
 
-We use the complete construction in [Central sequence algebras and exact lifts, Sections 1–4](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/OA-APPROX/src/central-sequence-algebras-and-exact-lifts.md#2-the-sequence-algebra-and-its-trace). Its definitions are
+We use the complete construction in [Central sequence algebras and exact lifts, Sections 1–4](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/OA-APPROX/src/central-sequence-algebras-and-exact-lifts.md#2-the-sequence-algebra-and-its-trace). Its definitions are
 
 \[
 \begin{aligned}

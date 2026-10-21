@@ -2386,7 +2386,7 @@ The diagram records the actual twist (5.8p) and surjections (5.8w)–(5.8y). Its
 
 **Theorem 5.9.** Let \(f:X\to Y\) be a locally projective holomorphic map of complex manifolds, \(y_0\in Y\), and \(M\) a coherent analytic operator module. Suppose that on a neighbourhood of the compact fibre a coherent holomorphic submodule \(L\subset M\) generates \(M\) under \(\mathcal D_X\). Then, near \(y_0\), the actual derived direct image \(f_+M\) has bounded coherent operator cohomology. Every closed or singular support is allowed; holonomicity of \(M\) is unnecessary. The statement also holds for bounded complexes whose cohomology modules each have such a generator near the fibre. The proof applies to right modules and transfers to the programme's left-module conventions by the exact density equivalence.
 
-The initial coherent generator is an explicit hypothesis. Its construction for every analytic regular holonomic module remains part of the full proper-regularity argument. We first prove ordinary coherent holomorphic images in every projective dimension, then construct a finite operator resolution and check the actual target action and every output degree.
+The initial coherent generator is an explicit hypothesis. Section5.90, GG.A–GG.G constructs it near every compact set for every analytic regular holonomic module. We first prove ordinary coherent holomorphic images in every projective dimension, then construct a finite operator resolution and check the actual target action and every output degree.
 
 Freely accessible support reading: [Schapira, An Introduction to Sheaves on Grothendieck Topologies](https://webusers.imj-prg.fr/~pierre.schapira/LectNotes/SHV.pdf), Sections 4.2–4.4 and 5.1. The exact earlier programme proofs are linked below; the operator and finite-cone arguments are proved here.
 
@@ -3063,7 +3063,7 @@ Together with (5.12e), this proves every actual cohomology image holonomic. The 
 
 Theorem 5.11 proves (5.12x), including components of the restricted characteristic set contained wholly in singular characteristic strata. Its finite-branch restriction lemma and countable constant-rank proof provide the required dimension bound.
 
-The initial coherent global generator for every analytic regular holonomic module, regularity of the image and arbitrary proper maps, including nonprojective and support-proper maps, retain their separate proof obligations.
+Section5.90, GG.A–GG.G proves the coherent ordinary generator near every compact set and over proper-support target neighbourhoods. Regularity of the arbitrary analytic proper image requires its further argument.
 
 ![The two actual central specializations and the subquotient producing the output characteristic support](assets/projective-filtered-characteristic-proof.png)
 
@@ -5236,11 +5236,11 @@ belongs to \(L(k)\): \(P_i\) commutes with \(h\), and \(P_ih^{-a_i}\) has microl
 
 The finite shifted generating expression (5.26e) proves local goodness and the ordinary filtration compatibility. Exhaustion follows either from Theorem 5.23.3 with faithfulness, or directly from the actual lattice property: a germ \(u_0\otimes m\) is a finite sum of finite-order microlocal operators applied to lattice germs, so lies in \(L(k)\) for one common finite bound \(k\). This is exactly membership in (5.26a). Boundedness below and finite graded generation are also immediate from (5.26e). \(\square\)
 
-The proof above gives the actual identity \(L=\sum_i\mathcal A_{\rm gv}h^{a_i}(u_0\otimes m_i)\) on one neighbourhood and every actual ordinary piece \(B_kM=\sum_i\mathcal D_{\le k-a_i}m_i\) there. Thus the former completion and descent obligations have been proved for a supplied coherent generating Euler-stable lattice. The intrinsic strict real-order cutoff through every singular characteristic stratum, often denoted \(N_{<0}\), remains a separate construction. We have not produced such a lattice for every analytic regular holonomic module, an initial coherent global generator, a half-order theorem, or the full arbitrary proper/support-proper analytic regularity theorem. The algebraic four-map theorem above retains its full stated scope.
+The proof above gives the actual identity \(L=\sum_i\mathcal A_{\rm gv}h^{a_i}(u_0\otimes m_i)\) on one neighbourhood and every actual ordinary piece \(B_kM=\sum_i\mathcal D_{\le k-a_i}m_i\) there. This proves actual descent for a supplied coherent generating Euler-stable lattice. The intrinsic strict real-order cutoff through every singular characteristic stratum, often denoted \(N_{<0}\), is constructed in Section5.89, CK.A–CK.K. Section5.90, GG.A–GG.G proves the initial coherent ordinary generator near every compact set. The full arbitrary analytic proper/support-proper regularity theorem requires its further argument. The algebraic four-map theorem above retains its full stated scope.
 
 ![Actual bounded division, exact completion and faithful recovery of a supplied Euler-stable lattice](assets/actual-convergent-lattice-descent.png)
 
-*Figure. The actual norm and finite-head division in §§5.20–5.21 give convergent coefficients and finite actual relations. §§5.22 and 5.24 supply exact faithful stalk completion and fixed neighbourhood kernels. The two actual bounds in §5.25 identify the formal localized lattice. The finite-node Euler projections in §5.23 are applied after the common grading shift makes the degrees nonnegative; they give homogeneous generators. The two vanishing coherent quotients in §5.26 recover actual sheaf equality and every ordinary order piece. The canonical cutoff remains a separate requirement. All arrows are proved in the displayed sections. Human context: Schapira, the freely accessible article cited in §5.19, and Kashiwara–Kawai, [Holonomic systems III](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), Appendix A.8, printed pp. 966–968; no external descent assertion is used as a proof. The reproducible original drawing source supplies the CC0 illustration.*
+*Figure. The actual norm and finite-head division in §§5.20–5.21 give convergent coefficients and finite actual relations. §§5.22 and 5.24 supply exact faithful stalk completion and fixed neighbourhood kernels. The two actual bounds in §5.25 identify the formal localized lattice. The finite-node Euler projections in §5.23 are applied after the common grading shift makes the degrees nonnegative; they give homogeneous generators. The two vanishing coherent quotients in §5.26 recover actual sheaf equality and every ordinary order piece. The canonical cutoff and its everywhere characteristic stability are proved in Section5.89, CK.A–CK.K. All arrows are proved in the displayed sections. Human context: Schapira, the freely accessible article cited in §5.19, and Kashiwara–Kawai, [Holonomic systems III](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), Appendix A.8, printed pp. 966–968; no external descent assertion is used as a proof. The reproducible original drawing source supplies the CC0 illustration.*
 
 ### 5.27. An actual coherent strict coefficient lattice on a singular divisor
 
@@ -5516,24 +5516,24 @@ This assertion is restricted to submodules and actual supported classes. Arbitra
 
 §5.27.9 has already proved stability at **each singular point**, with no smoothness or generic-stratum qualification. Thus every finite composition of holomorphic multiplication and logarithmic covariant derivatives preserves $\mathscr L_\Sigma$. This assertion concerns the actual logarithmic differential-operator algebra for the divisor. Identifying it with the relevant generators of a microlocal $\mathscr E_\Lambda$-algebra is an additional step, not a change of notation.
 
-#### 5.27.12. The remaining characteristic cutoff and proper-image obligations
+#### 5.27.12. Characteristic cutoffs and proper images
 
-Theorem 5.27 constructs the coefficient lattice under the analytic divisorial hypotheses of §5.27.1, at every point of a reduced analytic hypersurface. Its initial finite coefficient lattice in §5.27.3 is an actual local $\mathcal O_X$-lattice in a supplied finite meromorphic connection. An initial global analytic generator for an arbitrary regular holonomic module remains unconstructed here.
+Theorem 5.27 constructs the coefficient lattice under the analytic divisorial hypotheses of §5.27.1, at every point of a reduced analytic hypersurface. Its initial finite coefficient lattice in §5.27.3 is an actual local $\mathcal O_X$-lattice in a supplied finite meromorphic connection. Section5.90, GG.A–GG.G constructs the initial ordinary generator on a neighbourhood of every compact set.
 
-To obtain the characteristic cutoff across singular characteristic strata, the following proofs remain necessary:
+The characteristic cutoff across singular strata uses the following mathematical comparisons, proved in Sections5.28,5.87 and5.89:
 
-1. Construct a local generic-position/contact realization, with a convergent quantized contact transformation where needed, and a faithful finite D-type realization over a hypersurface. A realization only on generic characteristic strata does not supply the module at all points.
-2. Construct actual finite-pole meromorphic coefficient sections satisfying §5.27.1, and prove their analytic divisorial regularity from the given regular holonomic hypothesis.
-3. Prove the exact microlocal order-membership correspondence, including the half-order shift and every sign, that identifies the strict characteristic cutoff with this coefficient lattice. No half-order cutoff formula is proved in this lesson.
-4. Transfer the coefficient saturation to the adjacent characteristic quotient $h^{-1}L_0/L_0$ and prove preservation by every generator of the actual characteristic microdifferential-operator algebra. Logarithmic coefficient stability in §5.27.11 does not furnish this identification.
+1. The actual generic-position contact map of Section5.28 and the faithful finite D-type realization of Section5.87 retain the entire module on a common neighbourhood.
+2. Section5.87 supplies the finite meromorphic target and generic divisorial regularity needed by §5.27.1.
+3. Section5.89, CK.A–CK.K proves the exact source/function cutoff correspondence, including every resonant logarithm and the half-order sign.
+4. CK.J transfers the coefficient saturation to the adjacent characteristic quotient $h^{-1}L_0/L_0$ and CK.K proves preservation by every generator of the characteristic operator algebra.
 
-The construction of that cutoff (C1), full analytic regularity under arbitrary proper or support-proper direct image, and the nonprojective cases remain open obligations of the programme. The supplied-lattice descent proved in §§5.19–5.26 and the coefficient theorem above supply their stated inputs without asserting those remaining conclusions.
+Section5.89, CK.A–CK.K constructs coherent characteristic cutoffs at every real bound and the everywhere stable generating lattice. Section5.90, GG.A–GG.G supplies the initial analytic generators near compact sets. The full arbitrary analytic proper/support-proper direct-image theorem requires its further argument.
 
-The figure shows the exact real slice $Y:\ y(y^2-x^3)=0$ in $\mathbf C^2$. Its residue shift, finite double dual, height-one membership, saturation and logarithmic stability have their full proofs in §§5.27.4–5.27.11. The curve picture illustrates singularities and component intersections; the theorem applies in arbitrary complex dimension. The final panel records the remaining realization and order obligations.
+The figure shows the exact real slice $Y:\ y(y^2-x^3)=0$ in $\mathbf C^2$. Its residue shift, finite double dual, height-one membership, saturation and logarithmic stability have their full proofs in §§5.27.4–5.27.11. The curve picture illustrates singularities and component intersections; the theorem applies in arbitrary complex dimension. The final panel identifies the realization and order comparisons in Sections5.28,5.87 and5.89.
 
 ![Finite normalized divisorial lattices and their coherent strict coefficient lattice](assets/singular-divisor-strict-coefficient-lattice.png)
 
-The reproducible drawing source retains the exact coordinates, shift signs and hypotheses. Human context is Kashiwara–Kawai, *Holonomic Systems III* (1981), §§1–2 and Theorem 5.1.6, [freely available](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf). The complete coefficient proof above and the earlier linked analytic proofs establish the statements here; the human reference does not replace the outstanding realization, order or proper-image arguments.
+The reproducible drawing source retains the exact coordinates, shift signs and hypotheses. Human context is Kashiwara–Kawai, *Holonomic Systems III* (1981), §§1–2 and Theorem 5.1.6, [freely available](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf). The complete coefficient proof above and the earlier linked analytic proofs establish the statements here; the reference accompanies the complete programme proofs; the arbitrary analytic proper-image theorem requires its further argument.
 
 
 ### 5.28. Convergent contact quantization and whole-germ generic position
@@ -5801,7 +5801,7 @@ The realization and regularity inputs are as follows. Each result is used only w
 
 6. **Passage to faithful finite poles for a regular module.** HolIII V.1.1 uses the embedding above and the regular-singular-to-Nilsson implication at generic divisors, then extension to the whole finite D-type system. V.1.2–V.1.4 recover a finite $\mathscr D$-module and an actual finite-pole injection. Section5.87, RF.A--RF.I proves the generic regularity test, finite-pole quotient injection, entire-stalk ordinary finite generation, actual finite and ordinary-infinite reconstruction, and extension on one common neighbourhood with the whole-fibre support bound. The coefficient lattice of §5.27 starts after this passage; using it to assume the passage would be circular.
 
-The intrinsic microlocal order comparison and characteristic-operator stability in §5.27.12 remain subsequent obligations even after these six inputs are closed. C.1 and the arbitrary proper/support-proper analytic theorem remain open. Section5.86, EV.A--EV.F proves Q.20 and the finite D-type tensor realization along the original projected hypersurface; Section5.87, RF.A--RF.I proves finite-pole recovery and both actual reconstructions for regular modules.
+Section5.89, CK.A–CK.K proves the source/function order criterion, coherent singular cutoffs and everywhere characteristic stability. The arbitrary analytic proper/support-proper theorem requires its further argument. Section5.86, EV.A--EV.F proves Q.20 and the finite D-type tensor realization along the original projected hypersurface; Section5.87, RF.A--RF.I proves finite-pole recovery and both actual reconstructions for regular modules.
 
 #### Q.9. Illustration and reproducibility
 
@@ -5995,7 +5995,7 @@ For every coherent actual holonomic microlocal germ, [§5.32, J.1–J.3](#5-32-c
 
 G.1 alone does not give a bounded finite free resolution over $A$ or its polynomial differential extension $R$. The finite-order comparison is proved in [§5.30, F.1–F.7](#5-30-actual-polynomial-flatness-and-reconstruction-after-finite-realization), and [§5.31, L.1–L.6](#5-31-a-bounded-actual-generic-position-complex-with-polynomial-operator-matrices) constructs a bounded free resolution over the actual microlocal rings, with polynomial matrices and one base neighbourhood, under the same supplied-lattice and finite-principal-fibre premise. Infinite-order base change, a convergent sectorial operator action, relative solution vanishing, continuation and separation at singular support, faithful finite D-type injection, ordinary finite-pole recovery and microlocal order comparison remain the obligations in Q.8. Earlier positive-degree completion is a different functor.
 
-C.1 and arbitrary proper/support-proper analytic regularity remain open. Free human context: Kashiwara–Kawai, [HolIII](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), III.5.5. Its statement is not used as the proof of G.1. The full argument above proves the stated finite-stalk theorem.
+The characteristic-stable lattice is proved in Section5.89, CK.A–CK.K. Arbitrary analytic proper/support-proper regularity requires its further argument. Free human context: Kashiwara–Kawai, [HolIII](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf), III.5.5. Its statement is not used as the proof of G.1. The full argument above proves the stated finite-stalk theorem.
 
 #### G.7. Exact illustration and a noncommutative division check
 
@@ -6512,7 +6512,7 @@ The precise actual premise of §5.29, G.1 has now been established for this arbi
 
 J.1 constructs a finite order-zero lattice. It does not make that lattice stable under the characteristic-vanishing order-one subalgebra, and it makes no assertion about the canonical order cutoff. Q.7 transports a regular invariant lattice wherever the actual definition supplies one; this is separate from the general lattice existence above.
 
-For an arbitrary actual regular holonomic module, the remaining C1 input is still substantial: the infinite-order comparison, convergent sectorial kernel action and relative vanishing, continuation and separation at singular support, infinite-order linearity, faithful finite D-type embedding, regular finite-pole recovery and intrinsic microlocal order correspondence remain unproved. The coefficient-lattice theorem in §5.27 starts after that faithful finite-pole realization and cannot be used to assume it.
+The full actual infinite comparison, continuation and separation are proved in Sections5.43–5.86. Section5.87 proves the faithful regular finite-pole realization, and Section5.89, CK.A–CK.K proves coherent source cutoffs and characteristic stability. These results supply the finite target to which the coefficient theorem §5.27 applies.
 
 ![The finite lattice construction and exact reduced-support comparison](assets/actual-lattice-support-interface.png)
 
@@ -6637,7 +6637,7 @@ The common-domain convergent kernels above supply the negative-order integral ma
 
 One finite algebraic observation may reduce that later proof's flatness requirements. Off the actual support, the bounded free $E$-complex in §5.31 is acyclic. A bounded acyclic complex of projective modules is split contractible: beginning at its lowest nonzero degree, split the surjection onto that projective term; its kernel is a direct summand of the next projective term, hence projective, and repeat finitely. The chosen splittings give a contracting homotopy. Any ring extension preserves that homotopy after tensoring. Thus, once the actual ring-to-kernel-stalk map is proved, that particular bounded complex remains acyclic off support after extension without requiring a general flatness theorem. This observation neither proves the ring map nor proves extension-faithfulness or the infinite-order comparison on $M$ itself.
 
-The faithful finite D-type embedding, regular finite-pole passage, microlocal order comparison, C1 and arbitrary proper analytic regularity remain open.
+Sections5.86–5.87 prove the faithful D-type and regular finite-pole realizations; Section5.89, CK.A–CK.K proves the exact cutoff and everywhere characteristic stability. Arbitrary analytic proper regularity requires its further argument.
 
 ![The oriented parameter triangle and exact negative-order kernels](assets/negative-polynomial-kernels.png)
 
@@ -8276,7 +8276,7 @@ The exact equality for every finite spatial polynomial follows from U.1–U.4. T
 
 For unrestricted directional input, the chosen thick cone also changes the spatial input geometry. The finite-spatial-current argument of W.7 cannot be reused as an unbounded sum of spatial delta derivatives. A common-domain Cauchy contour on the thick cone, the explicit smooth-input relative augmentation and a full-output collar primitive remain necessary. The full-ring comparison must prove those estimates and the nested composition domains on a single neighbourhood before its action is accepted.
 
-Every original infinite-order, propagation, module-separation, finite D-type, finite-pole, intrinsic-order, C1 and arbitrary analytic proper-regularity obligation remains required.
+The full infinite comparison, propagation, separation and finite D-type results are proved in Sections5.43–5.87; Section5.89, CK.A–CK.K proves the intrinsic source cutoff. Arbitrary analytic proper regularity requires its further argument.
 
 ![Temporal and spatial sections of the precise thick cone](assets/thick-cone-sections.png)
 
@@ -10833,7 +10833,7 @@ The complex is contractible, so its endomorphism ring in \(D(\mathbf C)\) is zer
 
 The statement proved here is the genuine all-degree canonical \(R\)-module-derived supported object for the full thick cone and round/support geometry stated above, with its cup/cube/excision/trace comparison, all signs, analytic concentration and arbitrary finite-projective contraction transfer. §5.41, CP.1–CP.6 and §5.39, NL.1–NL.7 supply its full actual \(E\)-symbol-germ finite realizations.
 
-Infinite-order extension/flatness, extension-faithfulness, propagation, module separation, finite D-type embeddings, finite-pole recovery, intrinsic-order comparison, full C1, and arbitrary analytic proper-image regularity remain unfinished. The broader geometric representation-theoretic, affine, critical and factorization arguments are separate from this result.
+Sections5.44–5.89 prove the full infinite extension and flatness, faithfulness, propagation, section separation, finite D-type realization, finite poles and coherent characteristic cutoffs. Arbitrary analytic proper-image regularity requires its further argument. The broader geometric representation-theoretic, affine, critical and factorization arguments are separate from this result.
 
 ![Exact module-lift and contraction mechanism](assets/derived-action-module-lift.png)
 
@@ -13025,7 +13025,7 @@ The right panel displays IM.16 on the standard support \(T'_i\), with the actual
 Editable SVG · Exact data · Figure source
 
 
-This proves the full coefficient/geometric-kernel ring, its canonical mixed product, unit, associativity, nonlinear coordinate compatibility and ordinary zero-section restriction. A particular all-degree module-derived application still requires the exact cone-open, round-domain, common-collar and output-support hypotheses of §5.43. Section 5.47 proves the full arbitrary finite-matrix relation theorem and right flatness for all algebraic left modules, including the genuine ordinary zero-section restriction. Section 5.48 proves extension faithfulness and unit injectivity for every algebraic left module and sheaf in the full geometric and genuine ordinary zero-section rings. Section 5.49, ISD.1–ISD.5, ISF.1–ISF.5 and ISR.1–ISR.7 proves full infinite Späth sum division, the distinct special fibration class and both balanced reconstruction maps for the whole singular-inclusive germ, including off-ray vanishing and the explicit full contact shear. Other ordinary and mixed scalar changes remain open. Moving-sector propagation, purity, arbitrary-section separation, special action and monodromy stability, full infinite-order D-type linearity and faithful D-type embedding remain separate. Finite poles, intrinsic and half order, full C1 and characteristic cutoff, initial generators and arbitrary analytic proper regularity also remain required. Generalized and nonactual central characters, other regular complex characters, singular and parabolic blocks, full IC/Hecke/KL, GL14/GL16, stack/ind/restricted local systems, affine/critical/factorization and every other unresolved mathematical assertion retain their full scope.
+This proves the full coefficient/geometric-kernel ring, its canonical mixed product, unit, associativity, nonlinear coordinate compatibility and ordinary zero-section restriction. A particular all-degree module-derived application still requires the exact cone-open, round-domain, common-collar and output-support hypotheses of §5.43. Section 5.47 proves the full arbitrary finite-matrix relation theorem and right flatness for all algebraic left modules, including the genuine ordinary zero-section restriction. Section 5.48 proves extension faithfulness and unit injectivity for every algebraic left module and sheaf in the full geometric and genuine ordinary zero-section rings. Section 5.49, ISD.1–ISD.5, ISF.1–ISF.5 and ISR.1–ISR.7 proves full infinite Späth sum division, the distinct special fibration class and both balanced reconstruction maps for the whole singular-inclusive germ, including off-ray vanishing and the explicit full contact shear. Other ordinary and mixed scalar changes remain open. Sections5.50–5.86 prove moving-sector propagation, purity, arbitrary-section separation, the special action and monodromy stability, full infinite-order D-type linearity and the faithful D-type embedding. Sections5.87–5.89 prove finite poles, intrinsic orders, the half-order criterion and coherent characteristic-stable cutoffs. Section5.90, GG.A–GG.G proves initial ordinary generators near compact sets. Arbitrary analytic proper regularity requires its further argument. The kernel-ring statement has no representation-theoretic assertion about generalized or nonactual central characters, other regular complex characters, singular or parabolic blocks, IC/Hecke/KL, stack or ind-scheme categories, restricted local systems, or affine, critical and factorization categories.
 
 
 ### 5.46. Finite infinite-order diagrams on actual derived support modules
@@ -13206,7 +13206,7 @@ H\phi=(-1)^k\phi h,\\ dH+Hd=1.
 
 Expanding gives cancellation of \(d_Q\phi h\) with signs \((-1)^k+(-1)^{k+1}\), leaving \(\phi(hd_P+d_Ph)=\phi\). Restrict these formulas through the split idempotents. All sums in the projective direction are finite even if the support resolution is unbounded above. The exact finite-column filtration of DL.8 proves that these projective tensor/Hom complexes compute the corresponding derived models. The contraction therefore transfers in the actual module-derived category with all degree, idempotent and map identities intact.
 
-This proves finite full-infinite-order instantiation under the checked geometric hypotheses. [Section 5.47](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring) proves the full finite-matrix relation criterion and genuine microlocal/ordinary all-module right flatness; [Section 5.48](#5-48-proper-ideals-and-faithful-extension-to-the-full-infinite-order-ring) proves proper-ideal detection, arbitrary-module unit injectivity and faithful exact extension. Section 5.49 supplies complete full infinite Späth sum division and balanced reconstruction, the actual special fibration source class and the explicit full contact transport. Other ordinary/mixed scalar changes, propagation/purity/separation, D-type/C1/half-order/initial generators, analytic proper regularity and every other unresolved programme obligation require their own complete proofs.
+This proves finite full-infinite-order instantiation under the checked geometric hypotheses. [Section 5.47](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring) proves the full finite-matrix relation criterion and genuine microlocal/ordinary all-module right flatness; [Section 5.48](#5-48-proper-ideals-and-faithful-extension-to-the-full-infinite-order-ring) proves proper-ideal detection, arbitrary-module unit injectivity and faithful exact extension. Section 5.49 supplies complete full infinite Späth sum division and balanced reconstruction, the actual special fibration source class and the explicit full contact transport. Sections5.50–5.89 prove the specified scalar comparisons, propagation, purity, separation, D-type realization and coherent characteristic cutoffs; Section5.90, GG.A–GG.G proves the initial ordinary generators near compact sets. The arbitrary analytic proper-image theorem requires its further argument.
 
 ![One actual round-domain margin and the strict module-derived mechanism](assets/full-infinite-derived-instantiation.png)
 
@@ -13567,7 +13567,7 @@ Equality here is first the actual coefficient equality (MF.9), and the proved in
 
 The constructed relation coefficients need not be canonical under a coordinate change. Their existence and the kernel equality are intrinsic: the proved nonlinear coordinate-overlap ring maps transport the finite identity and its finite \(A\)-relation rows on a common overlap. At the zero section MF.6 supplies the actual polynomial version rather than extending a punctured-chart quotient across a singular face.
 
-The theorem here is the finite-matrix relation criterion and its right-flatness consequence for the actual full geometric \(E^\infty/E\), together with the actual \(D^\infty/D\) zero-section right-flatness just proved. It does not establish proper-ideal detection, extension-faithfulness and arbitrary-module unit injectivity, flatness of \(E^R/E\), the special fibration-dependent class, mixed \(E^\infty/D^\infty\) scalar change, infinite Späth division or balanced reconstruction, moving-sector propagation, purity, singular-inclusive separation, finite D-type/C1, half-order/contact transport, the initial analytic generator, arbitrary analytic proper regularity, or the original full GL/BB/KL programme. All those broader obligations remain explicitly active. Finite module-derived instantiation has its separate geometric proof in Section 5.46; the flatness proof here neither uses it as a premise nor proves its other geometric statements.
+The theorem here is the finite-matrix relation criterion and its right-flatness consequence for the actual full geometric \(E^\infty/E\), together with the actual \(D^\infty/D\) zero-section right-flatness just proved. It does not establish proper-ideal detection, extension-faithfulness and arbitrary-module unit injectivity, flatness of \(E^R/E\), the special fibration-dependent class, mixed \(E^\infty/D^\infty\) scalar change, infinite Späth division or balanced reconstruction, moving-sector propagation, purity, singular-inclusive separation, finite D-type/C1, half-order/contact transport, the initial analytic generator or arbitrary analytic proper regularity. Section5.90, GG.A–GG.G supplies the initial generator near compact sets. The arbitrary analytic proper-image theorem requires its further argument. Finite module-derived instantiation has its separate geometric proof in Section 5.46; the flatness proof here neither uses it as a premise nor proves its other geometric statements.
 
 #### MF.9. Decisive calibrations
 
@@ -14076,7 +14076,7 @@ Choose phase-cone spatial slopes \(B_i>A_i\). Use the proved finite phase grid \
 
 The auxiliary coefficient quotient \(\mathcal P\) depends on coordinates and standard heads. Its existence proves an intrinsic nonvanishing statement: proved nonlinear coordinate ring maps transport the finite ideal identity and unit to every overlap. No canonical coordinate-independent module projection is needed. Ordinary compatibility is supplied directly in FEP.6.
 
-The precise proved scope is proper-left-ideal detection in the full geometric \(E^\infty/E\) and ordinary \(D^\infty/D\) stalks, with all-domain/growth/support controls. Unit injectivity and faithful exact extension for arbitrary algebraic modules and sheaves follow using the complete earlier right-flatness theorem identified in FEP.7. The other scalar changes, \(E^R\), the special fibration class, coordinate-commuting \(A^\infty\), mixed \(E^\infty/D^\infty\) flatness, infinite Späth division/balanced reconstruction, propagation, purity, singular-inclusive separation, D-type/C1, half-order/contact transport, initial analytic generator, arbitrary analytic proper regularity and the original GL/BB/KL scope require separate proofs. No such theorem is implied by this coefficient quotient. Section 5.49 separately proves the special fibration class, full infinite Späth sum division and algebraic balanced reconstruction, with the explicit full contact shear; the other listed obligations remain open.
+The precise proved scope is proper-left-ideal detection in the full geometric \(E^\infty/E\) and ordinary \(D^\infty/D\) stalks, with all-domain/growth/support controls. Unit injectivity and faithful exact extension for arbitrary algebraic modules and sheaves follow using the complete earlier right-flatness theorem identified in FEP.7. The other scalar changes, \(E^R\), the special fibration class, coordinate-commuting \(A^\infty\), mixed \(E^\infty/D^\infty\) flatness, infinite Späth division/balanced reconstruction, propagation, purity, singular-inclusive separation, D-type/C1, half-order/contact transport and arbitrary analytic proper regularity require their matching arguments. Section5.90, GG.A–GG.G proves the initial ordinary generators near compact sets. No such theorem is implied by this coefficient quotient. Section 5.49 separately proves the special fibration class, full infinite Späth sum division and algebraic balanced reconstruction, with the explicit full contact shear; the other listed obligations remain open.
 
 #### FEP.10. A decisive joint-domain calibration
 
@@ -14876,7 +14876,7 @@ The figures below show exact stated real slices and algebraic diagrams of these 
 
 The proof establishes full infinite sum division and both algebraic balanced reconstruction maps, the distinct special fibration class used by the middle tensor, every growth/domain/spatial/tail estimate, whole-germ singular and branch scope, off-ray vanishing and full contact transport. The full infinite coefficient class is used throughout.
 
-The following remain separate: other scalar changes (including mixed \(E^\infty/D^\infty\), real-conic \(E^R\) and their module injections), moving-sector propagation and continuation, infinite section purity/separation, finite-dimensional solution families and monodromy enlargement, D-type/finite-pole reconstruction, intrinsic order comparison, C1, half-order/contact conventions beyond the explicit shear, initial analytic generators, arbitrary analytic proper/support-proper regularity, and all remaining original GL/BB/KL scope.
+The following remain separate: other scalar changes (including mixed \(E^\infty/D^\infty\), real-conic \(E^R\) and their module injections), moving-sector propagation and continuation, infinite section purity/separation, finite-dimensional solution families and monodromy enlargement, D-type/finite-pole reconstruction, intrinsic order comparison, C1, half-order/contact conventions beyond the explicit shear, arbitrary analytic proper/support-proper regularity. Section5.90, GG.A–GG.G supplies the initial ordinary generators near compact sets.
 
 The complete lowering argument is included here. It controls the actual Spath quotient inverses; its coefficient maps are bounded complex linear and every shrinking is fixed before all homogeneous indices. The exact earlier coefficient-norm premise is [§5.47, MFA.1–MFA.4](#5-47-arbitrary-finite-matrices-and-right-flatness-of-the-full-infinite-order-ring).
 
@@ -47184,12 +47184,7 @@ It is not a proof that \(B\otimes_R N=N\)
 for an arbitrary \(B\)-module, and is not
 mixed-ring flatness.
 
-The theorem gives finite poles and both actual finite and
-ordinary-infinite reconstruction for a regular generic-position
-module. Intrinsic microlocal order, characteristic-operator
-stability, half-order comparisons, C1, initial generators on
-general analytic spaces and arbitrary analytic proper/support-proper
-regularity require their further arguments.
+The theorem gives finite poles and both actual finite and ordinary-infinite reconstruction for a regular generic-position module. Section5.89, CK.A–CK.K proves intrinsic orders, the half-order criterion and coherent characteristic-stable cutoffs; Section5.90, GG.A–GG.G proves the initial analytic generators near compact sets. Arbitrary analytic proper/support-proper regularity requires its further argument.
 
 ![Actual finite flatness, a full negative-order Nilsson example and the finite tensor reconstruction](assets/regular-finite-pole.png)
 
@@ -48078,6 +48073,12867 @@ Free source:
 [Kashiwara–Kawai, Holonomic systems III, I.5 and V.1.5](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf).
 
 
+### 5.89. Coherent indicial cutoffs and everywhere characteristic stability
+
+#### CK.A. The generic order cutoff
+
+Let \(M\) be a coherent actual holonomic \(E_X\)-module with generic
+regular stable lattices on every reduced characteristic component.
+Write \(\Lambda=\operatorname{supp}M\), \(n=\dim X\), \(E_0=E_X(0)\),
+\(E_{-1}=E_X(-1)\). On the dense smooth regular locus let orders be
+the root sets of the radial residue constructed in IO.A--IO.B.
+
+For \(c\in\mathbf R\), define \(M_c\) by the generic condition that
+every order of the section has real part at most \(c\), on the
+smooth regular part of every characteristic component met by its
+domain. This definition only uses points where the residue is
+already constructed. Its independence of smaller dense regular
+opens follows from IO.B and IO.D constant cyclic polynomials.
+
+**Theorem CK.T.** For every real number \(c\),
+\[
+\begin{gathered}
+M_c\text{ is coherent}\\
+\text{over }E_0,\\
+E M_c=M,\\
+E_\Lambda M_c=M_c,
+\end{gathered}
+\tag{CK.1}
+\]
+and
+\[
+\begin{gathered}
+\mathcal H^0_Z(M/M_c)=0\\
+\text{if }\operatorname{codim}_{T^*X}Z\ge n+1.
+\end{gathered}
+\tag{CK.2}
+\]
+Consequently \(M\) has an everywhere coherent generating
+characteristic-stable lattice. For every homogeneous involutive
+\(V\supset\Lambda\), the ring \(E_V\) is a subring of \(E_\Lambda\),
+so that same lattice proves regularity along \(V\).
+
+The actual rings, normal completion and coherence are the earlier
+proofs §§5.19–5.24.
+The radial residue, its ordinary-coordinate invariance, cyclic
+minimal polynomials, normal Artin--Rees comparison and connected
+regular locus are IO.A–IO.D.
+Whole-germ generic position and its actual quadratic quantization
+are Q.1–Q.7.
+The coherent generating lattice and principal support are
+J.1–J.2.
+We use EC.D's actual Bernstein inequality,
+the actual Euler normal form DP.7,
+and the full negative power/logarithm action
+RF.B–RF.C.
+The ordinary realization, finite microlocalization flatness,
+exact support and whole characteristic fibre are the proofs
+RF.T and RF.A–RF.I.
+The finite meromorphic coefficient theorem, with generic divisorial
+regularity and the reflexive normalized lattice, is
+§5.27.1–§5.27.11.
+Its extension by scalar Cauchy integrals and finite dual presentations
+is DT.E.
+The pole propagation argument is RF.D–RF.E.
+Finite holomorphic matrix kernels are proved by
+Oka coherence, Lemma2.2 and Theorem2.1;
+the finite presentation argument of §5.27.1 gives their module
+kernel and image consequences. All these are exact earlier
+programme proofs.
+
+The transformations used below are ordinary base-coordinate changes,
+the actual quadratic quantizations for generic position, and
+the explicit scalar order-shifting automorphism CK.D.
+Their order, subprincipal and half-order effects are computed there.
+
+#### CK.B. Smooth spectral cutoffs and their exact saturation
+
+On a smooth regular Lagrangian let \(L\) be finite over \(E_0\),
+stable under \(E_\Lambda\), and generating \(M\). Put
+\(h=D_t^{-1}\), \(V=L/hL\), and let \(b_L\) be the constant minimal
+polynomial of \(\Theta\) on \(V\).
+IO.C gives the precise action on each layer:
+\[
+\begin{gathered}
+\Theta\text{ on }h^jL/h^{j+1}L\\
+\text{has polynomial }b_L(z+j).
+\end{gathered}
+\tag{CK.3}
+\]
+This also holds for negative \(j\), by IO.12.
+
+**Saturation lemma.** If a polynomial \(a(z)\) is coprime to
+every \(b_L(z-k)\), \(k=1,2,\ldots\), and \(a(\Theta)u\in L\),
+then \(u\in L\). Indeed \(u\in h^{-k}L\) for some \(k\).
+For \(k>0\), both \(a(\Theta)u\) and
+\(b_L(\Theta-k)u\) belong to \(h^{-(k-1)}L\).
+Bézout for these two scalar polynomials puts \(u\) there too.
+Induct downward through the finite \(k\).
+
+**Elementary lowering.** Let \(\lambda\) be a root and write
+\(b_L(z)=(z-\lambda)^a d(z)\), \(d(\lambda)\ne0\).
+The generalized eigenspace projection \(V\to V_\lambda\) is
+a polynomial in \(\Theta\), by Bézout. Let
+\[
+K=\ker(L\longrightarrow V_\lambda).
+\tag{CK.4}
+\]
+Then \(hL\subset K\subset L\); it is finite over \(E_0\),
+stable, and generating. There is an exact sequence
+\[
+\begin{gathered}
+0\longrightarrow hL/hK\\
+\longrightarrow K/hK\\
+\longrightarrow K/hL\longrightarrow0.
+\end{gathered}
+\tag{CK.5}
+\]
+The last term is \(V_{\ne\lambda}\).
+Multiplication by \(h\) identifies the first with \(L/K\)
+and shifts the \(\Theta\)-action by minus one:
+the error in IO.12 lies in \(h^2L\subset hK\).
+Hence
+\[
+b_K(z)\mid d(z)(z-\lambda+1)^a .
+\tag{CK.6}
+\]
+This keeps every nilpotent multiplicity and allows nontrivial
+extensions between the two displayed terms.
+
+Let \(Z\subset\mathbf C\) be downward closed under subtraction
+of nonnegative integers, and meet every integer orbit in a
+nonempty proper initial segment. An example is
+\(Z=\{\operatorname{Re}z\le c\}\).
+Start with \(h^{-k}L\) for a sufficiently large integer \(k\)
+so that every root \(\beta\) satisfies \(\beta+1\notin Z\).
+Choose \(N\ge0\) with \(\beta-N\in Z\) for all its finitely many roots.
+Repeatedly apply CK.4 to each root outside \(Z\).
+CK.6 removes that root and moves its contribution down by one.
+After the finitely many roots outside \(Z\) at this stage have
+been treated, every remaining root satisfies
+\(\beta-(N-1)\in Z\), while still \(\beta+1\notin Z\).
+To verify the first assertion, each new root is one less than
+a treated root, and every untreated surviving root was in \(Z\).
+If a moved root coincides with an already treated one, it still
+has this asserted lower shift from the initial stage.
+The second assertion follows from downward closure: a root
+just entering \(Z\) has its successor outside \(Z\).
+Induction on \(N\) yields a finite stable generating lattice \(L_Z\) with
+\[
+\begin{gathered}
+\beta\in Z,\qquad\beta+1\notin Z\\
+(\beta\text{ a root of }b_{L_Z}).
+\end{gathered}
+\tag{CK.7}
+\]
+
+Its section orders lie in \(Z\), by IO.C.
+Conversely suppose \(\operatorname{ord}u\subset Z\).
+Let \(a=b_{E_\Lambda u}\).
+For a sufficiently large \(\ell\), the layer polynomials give
+\[
+\begin{gathered}
+\left(\prod_{j=0}^{\ell-1}a(\Theta+j)\right)u\\
+\in h^\ell E_\Lambda u\subset L_Z .
+\end{gathered}
+\tag{CK.8}
+\]
+The last inclusion follows by placing the finite cyclic lattice
+inside some \(h^{-k}L_Z\) and taking \(\ell\ge k\).
+Every root of the polynomial in parentheses is in \(Z\).
+Every root of \(b_{L_Z}(z-k)\), \(k\ge1\), is outside \(Z\),
+because its predecessor by \(k-1\) is already outside \(Z\).
+The saturation lemma proves \(u\in L_Z\). Thus
+\[
+L_Z=\{u:\operatorname{ord}u\subset Z\}.
+\tag{CK.9}
+\]
+This proves the entire smooth cutoff criterion, including
+coherence, generation and stability. It also proves the
+top-strip characterization CK.7 for any supplied finite
+stable generating lattice with that root condition.
+
+#### CK.C. The exact strict-Nilsson comparison in a conormal chart
+
+Take \(\Lambda=\{t=\xi_x=0,\tau\ne0\}\).
+The radial generator is \(\Theta=-tD_t-\tfrac12\).
+For a directional class \(v\) that is a finite Nilsson sum,
+IO.E's proof works for any real upper order bound \(c\):
+if every source order is at most \(c\), then every nonordinary
+leading exponent \(\mu\) of any E-linear observation satisfies
+\[
+\operatorname{Re}\mu\ge-c-\tfrac12 .
+\tag{CK.10}
+\]
+The same proof uses the highest logarithmic coefficient in
+the residue polynomial identity, with all negative operator
+terms converging as in RF.C. For \(c=-1/2\), the exponent
+bound is precisely nonnegative real part.
+
+For the converse we construct a coherent target lattice. Fix finitely
+many normalized exponents \(\lambda\) in \(0\le\operatorname{Re}\lambda<1\)
+and logarithmic degrees \(0\le k\le r_\lambda\).
+In a finite direct sum of directional function modules let \(T\)
+be the holomorphic coefficient span of all
+\(t^\lambda(\log t)^k\), omitting the ordinary holomorphic
+term \((\lambda,k)=(0,0)\).
+It is finite over \(\mathcal O_{t,x}\), hence over \(E_0\),
+once its actual order-zero stability is proved.
+
+Distinct exponent classes modulo integers, and distinct logarithmic
+degrees within them, are independent over meromorphic coefficients:
+after analytic continuation around \(t=0\), apply successively the
+generalized eigenspace polynomials of monodromy, then finite
+differences in \(\log t\). The last coefficient must vanish;
+descend in logarithmic degree. For the zero exponent, apply these differences to an actual
+holomorphic representative of a putative zero class; its
+monodromy difference is zero as a function. This also
+kills the coefficient of the first logarithm.
+The sole ordinary holomorphic class is the omitted term. Thus the displayed scalar generators
+form a finite free holomorphic module in the function quotient.
+
+The full RF.C negative-tail estimate proves \(E_0T\subset T\):
+the normal remainder of an order-zero operator has upper
+\(D_t\)-order zero. Every negative term is a primitive.
+For normalized \(\lambda\), its denominators \(\lambda+s\),
+\(s\ge1\), never vanish, so no additional logarithmic degree
+appears. Holomorphic coefficient composition preserves order zero.
+All negative terms converge normally, with the same finite list
+of powers and logs and convergent holomorphic coefficients.
+The operators \(tD_t,D_{x_i}\) preserve \(T\), so it is
+\(E_\Lambda\)-stable.
+To justify actual \(E_0\)-coherence, including its neighbourhood
+relations, use the standard coherent stable lattice in the
+actual finite Euler module. For a noninteger \(\lambda\),
+one Jordan block of size \(r+1\) is evaluated on
+\(t^\lambda(\log t)^k/k!\), \(0\le k\le r\).
+For \(\lambda=0\), use the size-\(r\) zero Euler block
+evaluated on \((\log t)^k/k!\), \(1\le k\le r\);
+the last derivative is ordinary holomorphic and is zero
+in the directional quotient.
+These evaluation maps are injective on the actual finite
+Euler modules. Indeed AM.A/DP.7 gives unique normal rows
+with coefficients in the tangential variables and finite
+upper \(D_t\)-order. For noninteger \(\lambda\), at each
+integer shift the falling-factorial (or primitive)
+coefficient is nonzero, and the logarithmic matrix is
+triangular with that nonzero diagonal.
+For the zero block, a positive derivative of order \(j\)
+of \((\log t)^k\) has leading term
+\[
+\begin{gathered}
+k(-1)^{j-1}(j-1)!\\
+{}\cdot t^{-j}(\log t)^{k-1}.
+\end{gathered}
+\tag{CK.11}
+\]
+Its distinct \(k\)'s give degrees \(0,\ldots,r-1\).
+An \(n\)-fold primitive has exponent \(n\) and top
+logarithmic degree \(k\), with nonzero coefficient \(1/n!\).
+Normal convergence of every negative tail makes these
+holomorphic coefficient series; independence of their
+Taylor and logarithmic coefficients kills every row
+when the evaluated class is zero.
+Thus the maps are actual injections on a common neighbourhood.
+The \(E_0\)-span of the Euler generator family is a coherent
+stable generating lattice. Its coherence follows by putting
+the finite family in one finite shift of J.1's lattice
+and applying Section5.24. Its stability follows directly from
+\([tD_t,E_0],[D_{x_i},E_0]\subset E_0\) and the constant
+Euler/tangential generator relations. Thus no classification
+assumption is needed to supply this lattice.
+Its cyclic \(E_\Lambda\)-closure is the same lattice.
+Its image equals \(T\):
+stability gives containment in \(T\), and ordinary
+coefficients and powers of \(tD_t-\lambda\) give all
+the displayed generators. This proves coherence of \(T\)
+without assuming coherence of an arbitrary kernel
+with target the infinite directional module.
+
+Moreover
+\[
+hT=tT.
+\tag{CK.12}
+\]
+The primitive formulas give the forward inclusion.
+For the reverse, \(D_t(tT)\subset T\) and the actual inverse
+identity \(hD_t=1\) holds in the directional module.
+The order-zero connection terms do not change this identity.
+On \(T/hT=T/tT\), the eigenvalues of \(\Theta\) are
+\(-\lambda-\tfrac12\), with the full logarithmic nilpotents.
+They have real part at most \(-1/2\).
+
+Suppose a finite tuple of E-linear directional observations
+is injective on the source and takes \(u\) to strict Nilsson
+classes with these exponents. Their \(E_\Lambda\)-cyclic
+image is a stable coherent \(E_0\)-submodule of \(T\).
+IO.C then bounds every source order by \(-1/2\).
+This proves the converse of CK.10 for a faithful finite tuple.
+
+For a meromorphic regular connection \(A\) in a smooth divisor
+chart, its normalized constant logarithmic model has exponent
+matrix \(C\), \(0\le\operatorname{Re}\operatorname{spec}C<1\).
+It is generated as a D-module by \(t^{-1}\) times its normalized
+frame: successive derivatives have invertible leading matrices
+\(C-kI\) for \(k\ge1\), generating all poles.
+There is consequently a natural surjection from the
+constant Euler module \(N_{C-I}\) to its finite
+microlocalization. The flat dual observations below,
+composed with this surjection, are injective by their
+normal rows. This proves that the surjection is also
+injective, and hence identifies the entire actual
+microlocalization with \(N_{C-I}\).
+Inhomogeneous holomorphic Euler errors
+are removable, because \(nI-(C-I)\) is invertible for \(n\ge0\);
+RF.B's convergent Taylor estimate applies. A flat dual
+basis gives homogeneous power/logarithm observations.
+They are jointly injective on that microlocalization.
+For a noninteger eigenvalue the normal-row argument above applies.
+For the eigenvalue \(-1\), a positive derivative of order \(j\)
+has leading logarithmic coefficient
+\((-1)^j j!t^{-j-1}\), which is nonzero.
+An \(n\)-fold primitive, \(n\ge1\), of
+\(t^{-1}(\log t)^k\) has exponent \(n-1\) and highest
+logarithmic term
+\[
+\frac{t^{n-1}(\log t)^{k+1}}
+     {(k+1)(n-1)!}.
+\tag{CK.13}
+\]
+The normal coefficients are determined successively by
+these distinct exponent and triangular logarithmic
+coefficients, with actual convergence from RF.C.
+A flat dual basis separates different Jordan blocks.
+These observations are exactly the full flat dual
+basis of the meromorphic connection.
+
+If \(F\subset A\) is any coherent D-submodule, actual E/D flatness
+injects \(E\otimes_DF\) into \(E\otimes_DA\).
+Thus those flat dual observations are faithful on its source.
+For \(w\in F\), the normalized coefficient lattice criterion is
+therefore
+\[
+\begin{gathered}
+w\in A_\Sigma\\
+\Longleftrightarrow\\
+\operatorname{Re}\operatorname{ord}(1\otimes w)\le-\tfrac12
+\end{gathered}
+\tag{CK.14}
+\]
+on the smooth conormal.
+For the forward direction use \(T\) and IO.C.
+For the reverse, a negative pole of the coefficient vector in
+the normalized frame supplies a nonzero leading vector
+polynomial in \(\log t\), with real exponent less than zero.
+At least one flat dual component detects it, contradicting CK.10.
+Ordinary holomorphic ambiguities cannot cancel a negative real
+exponent. This handles every nilpotent and resonant block.
+
+#### CK.D. Actual contact and scalar-order changes used in the reduction
+
+For the quadratic quantization of Section5.28 put
+\[
+\begin{gathered}
+Q=\tfrac12 D_x^T C D_xD_t^{-1},\\
+C=C^T.
+\end{gathered}
+\tag{CK.15}
+\]
+Its degree-one symbol is independent of the base variables
+and its subprincipal symbol is zero.
+The actual common-domain quantization there is
+\(\gamma_s=\exp(s\,\mathrm{ad}Q)\). Let \(F_s\) be the
+Hamiltonian flow of \(H_q\); normal symbols transform by
+pullback along \(F_s\), so their zero sets transform to
+\(F_{-s}\Lambda\). Differentiate the
+convergent coefficient formula on compact parameter discs;
+the actual bounds justify this differentiation.
+The first two symbol equations from IO.5 are
+\[
+\begin{gathered}
+\frac{d}{ds}p_s=\{q,p_s\},\\
+\frac{d}{ds}s(P_s)=H_qs(P_s).
+\end{gathered}
+\tag{CK.16}
+\]
+If \(P_0=\Theta_\Lambda\), the first Hamiltonian restricts
+to the transported radial field on \(F_{-s}\Lambda\),
+because \(H_q\) commutes with the radial field.
+The second symbol vanishes on the transported Lagrangian.
+IO.A's first-order kernel assertion therefore identifies
+the transported radial generator modulo \(J_{F_{-s}\Lambda}\).
+The quantization preserves \(E_0,E_{-1}\) and sends the
+characteristic subring and its ideal to those of the image.
+It preserves the cyclic residue polynomial exactly.
+Ordinary-coordinate invariance was proved in IO.B.
+Consequently the actual transformations used for whole-germ
+generic position preserve the cutoff and its half-order sign.
+
+For a scalar \(s\in\mathbf C\), define an actual automorphism
+in a \(\tau\ne0\) chart by its full normal symbol:
+\[
+\begin{gathered}
+\Phi_s(a)\\
+=\sum_{k\ge0}\binom{-s}{k}
+       (\partial_t^k a)\tau^{-k}.
+\end{gathered}
+\tag{CK.17}
+\]
+This is a definition by actual symbols; a noninteger
+\(D_t^s\) is not asserted to be an element of \(E\).
+The notation \(D_t^{-s}aD_t^s\) is only a mnemonic.
+
+To prove actuality, bound the coefficient of input order
+\(m-j\) by \(MC^j j!\) on one common domain, including
+the finitely many nonnegative orders after changing \(M,C\).
+Cauchy bounds its \(k\)-th time derivative by
+\(MC^j j!k!\delta^{-k}\) on a smaller fixed domain.
+The product formula
+\[
+\begin{gathered}
+\left|\binom{-s}{k}\right|\\
+\le C_s(k+1)^{|s-1|+1}
+\end{gathered}
+\tag{CK.18}
+\]
+follows by bounding the factors \(|1+(s-1)/\ell|\)
+by \(\exp(|s-1|/\ell)\), absorbing initial factors.
+At output order \(m-n\) there are exactly the finite
+terms \(j+k=n\). Since \(j!k!\le n!\), their sum is
+bounded by \(M'C'^n n!\). The same estimates on every
+smaller domain give the actual derivative bounds.
+Thus CK.17 has finite upper order and one negative
+factorial bound on a common domain.
+
+At each homogeneous order all the composition identities
+are finite coefficient identities. Binomial convolution
+and the normal Leibniz product give
+\[
+\begin{gathered}
+\Phi_s\Phi_r=\Phi_{s+r},\\
+\Phi_s(ab)=\Phi_s(a)\Phi_s(b).
+\end{gathered}
+\tag{CK.19}
+\]
+One may verify the product identity first for an indeterminate
+integer \(s\): it is conjugation by the ordinary invertible
+integer power of \(D_t\); at any fixed output order both
+sides are polynomial in \(s\), hence the identity holds
+for every complex \(s\). CK.18 makes both resulting
+symbols actual. The inverse is \(\Phi_{-s}\).
+
+It preserves the principal symbol, every usual order,
+\(E_0,E_{-1},E_\Lambda,J_\Lambda\).
+For a radial first-order generator,
+\(\partial_t q_1|_\Lambda=-\tau\), so
+\[
+\begin{gathered}
+\Phi_s(\Theta)=\Theta+s\\
+\pmod{J_\Lambda}.
+\end{gathered}
+\tag{CK.20}
+\]
+Pulling the module action back by \(\Phi_s\) adds \(s\)
+to every indicial order. It changes no characteristic
+support or generic stable-lattice property.
+
+On one small neighbourhood, all section orders lie in
+\(B+\mathbf Z\) for a finite set \(B\).
+Choose finitely many E-generators, take their stable cyclic
+lattices on each connected dense regular component, and
+use their constant polynomials. Every section is in a
+finite shift of their sum; IO.C proves the assertion.
+It applies to every coherent E-quotient as well, by
+using the image of the same stable generating lattice.
+
+For a requested \(c\), choose \(\epsilon>0\) so that
+\((c,c+\epsilon]\) contains no real part from \(B+\mathbf Z\).
+Then \(M_c=M_{c+\epsilon}\), and the real scalar
+\(s=-\tfrac12-c-\epsilon\) reduces the desired cutoff
+to \(-1/2\), with no spectrum real part in
+\(\tfrac12+\mathbf Z\).
+This finite spectral gap also excludes every half-integer
+order of a hypersurface-supported module in the next step.
+
+#### CK.E. Ordinary modules supported on a smooth hypersurface
+
+For a D-module on which \(t\) is locally nilpotent, put
+\[
+\Pi u=\sum_{k\ge0}\frac{D_t^kt^ku}{k!}.
+\tag{CK.21}
+\]
+The sum is finite for each section. The identity
+\(tD_t^k=D_t^kt-kD_t^{k-1}\) gives \(t\Pi=0\)
+by telescoping. Direct substitution gives the finite
+unique normal decomposition
+\[
+u=\sum_{j\ge0}\frac{(-1)^j}{j!}
+                 D_t^j\Pi(t^ju).
+\tag{CK.22}
+\]
+Uniqueness follows by applying the largest possible power
+of \(t\) and then descending. The tangential operators
+commute with \(t,D_t,\Pi\).
+Finite D-generators, with their finite \(t\)-nilpotence
+orders, therefore give finitely many generators of
+\(\ker t\) over the tangential D-ring.
+The ordered normal filtration identifies its characteristic
+set with the tangential part of the original set:
+normal \(D_t\) is a free polynomial variable in CK.22.
+If the original characteristic lies in the conormal
+of \(t=0\), the tangential characteristic is the zero
+section. A local good filtration then makes \(\ker t\)
+finite over the tangential holomorphic ring.
+Its connection is locally free by the differential
+Fitting-ideal argument IO.B. A horizontal frame exists
+by convergent coordinate ODEs and their flat compatibility.
+Thus locally the module is a finite direct sum of the
+normal delta module, tensored with a flat tangential bundle.
+
+For its normal generator \(\delta\),
+\[
+\begin{gathered}
+t\delta=0,\qquad tD_t\delta=-\delta,\\
+\Theta\delta=\tfrac12\delta.
+\end{gathered}
+\tag{CK.23}
+\]
+All section orders of its finite microlocalization lie
+in \(\tfrac12+\mathbf Z\), by IO.C and integer shifts.
+If this microlocalization is nonzero, some section has
+nonempty order set by the actual Jacobson/Nakayama proof.
+
+#### CK.F. A lower-dimensional ordinary vanishing argument
+
+Suppose \(F\) is coherent over D, its characteristic is
+contained in \(\Lambda\cup T_X^*X\), and \(\mathbf P\Lambda\to S\)
+is finite near the origin, as in RF.T. Let \(G\) be a coherent
+D-subquotient of \(F\), supported on \(S\), whose finite
+microlocalization vanishes over a dense smooth part of
+every component of \(S\).
+Its remaining nonzero characteristic support has dimension
+at most \(n-1\): over \(S_{\rm sing}\) this follows from
+the finite projective projection, and any other excluded
+proper analytic subset is treated by the same dimension bound.
+RF.A identifies that support with the actual finite E-support.
+EC.D makes each such finite E-module zero. Thus
+\(\operatorname{Char}G\subset T_X^*X\).
+
+A local good filtration of \(G\) then has associated graded
+annihilated by a sufficiently large power of the cotangent
+variables: use its finite presentation and the analytic
+radical theorem. It is finite over the holomorphic ring,
+and has only finitely many nonzero graded degrees.
+Lifting those finitely many generators proves \(G\)
+finite over the holomorphic ring. Its D-action is a
+connection, hence its differential Fitting ideals make
+it locally free. A locally free module supported on the
+proper hypersurface \(S\) is zero.
+This proves \(G=0\) without assuming a general proper-image
+theorem or a source cutoff purity assertion.
+
+#### CK.G. The faithful ordinary module in a finite meromorphic target
+
+After CK.D's reductions assume generic position, cutoff
+\(-1/2\), and no generic section order with real part
+in \(\tfrac12+\mathbf Z\).
+RF.T supplies \(F\) on one base neighbourhood with
+\[
+\begin{gathered}
+F_0=M_p,\\
+E\otimes_DF=M\text{ near }p,\\
+\operatorname{Char}F\subset\Lambda\cup T_X^*X,
+\end{gathered}
+\tag{CK.24}
+\]
+and \(F\subset K=L/\mathcal O_X^q\), with \(L\) the
+finite D-type target along the original \(S\).
+
+First \(F\) has no S-torsion. Any putative torsion section
+generates one coherent cyclic D-submodule \(G\subset F\)
+supported on \(S\); derivative commutators preserve
+finite \(f\)-torsion for individual sections.
+At a generic smooth point of \(S\), CK.E shows its
+microlocalization has half-integer orders.
+It is an E-submodule of \(M\), whose orders all belong
+to the disjoint set \(B+s+\mathbf Z\). Hence it vanishes
+there, and CK.F's argument makes the entire \(G\) zero.
+This excludes every torsion section without assuming
+coherence of an infinite torsion union.
+
+Take the finite meromorphic quotient connection
+\[
+A=L/\mathcal O_X(*S)^q.
+\tag{CK.25}
+\]
+This notation is a quotient over the meromorphic
+coefficient ring; no D-coherence of this quotient
+is needed here. A finite presentation is obtained
+by localizing the finite coefficient lattice of \(L\)
+and the finite map from the trivial bundle.
+Away from \(S\) that map is a constant-rank flat
+injection. The quotient is a finite meromorphic
+connection and is generically regular on every
+component: in a normalized logarithmic chart a
+quotient of the finite monodromy representation
+has its constant logarithmic model.
+Section5.27 therefore supplies the coherent
+reflexive normalized lattice \(A_\Sigma\), with
+\(A_\Sigma(*S)=A\). Its hypotheses are coherence
+over \(\mathcal O(*S)\) and generic divisorial
+regularity, not assumed D-coherence.
+
+The kernel of \(F\to A\) is S-torsion: a lift
+in \(L\) lies in \(\mathcal O(*S)^q\), and a
+finite power of \(f\) puts it in \(\mathcal O^q\).
+Thus \(F\subset A\) by the preceding paragraph.
+
+#### CK.H. Coherence of the ordinary intersection
+
+Set \(H=F\cap A_\Sigma\). This is an ordinary holomorphic
+coefficient subsheaf; its coherence needs a neighbourhood
+argument, not just finite generation of each stalk.
+
+We first prove that an ascending chain of coherent submodules
+of a coherent holomorphic module stabilizes locally.
+At a point its stalk stabilizes, by Noetherianity.
+Let \(H_N\) be the stabilized term and put \(Q=A_\Sigma/H_N\).
+A finite prime filtration of \(Q_0\) spreads on a smaller
+neighbourhood to a filtration with factors
+\(\mathcal O_{Z_i}\), where each \(Z_i\) is a reduced
+irreducible representative through the point.
+Here is the algebra and spread: choose a maximal
+annihilator of a nonzero element; it is prime, since
+a product in it and a factor outside it would otherwise
+give a strictly larger annihilator. Quotient by that
+cyclic prime factor and repeat. The ascending sequence
+of submodules stops by Noetherianity.
+There are finitely many generators, relations and
+exactness identities, so coherence spreads the finite
+filtration; choose irreducible representatives of the
+prime germs and shrink to remove extra components.
+
+Any coherent submodule \(B\subset Q\) with \(B_0=0\)
+is zero on this same neighbourhood. Intersect it with
+the finite filtration. The successive image is a
+coherent ideal in \(\mathcal O_{Z_i}\), zero near the
+original point. A nonzero such ideal has support all
+the irreducible \(Z_i\): its analytic support contains
+a nonempty open, hence all of \(Z_i\) by the identity
+theorem. That would contain the original point.
+Thus every image is zero, and \(B=0\).
+Apply this to every later chain term modulo \(H_N\).
+This proves local stationarity on one common neighbourhood.
+
+Choose a good D-filtration \(F_k\) of \(F\) on one
+fixed base neighbourhood, from finitely many D-generators.
+Every \(F_k\) is coherent holomorphic.
+All their pole bounds hold on this same neighbourhood.
+In fact, put the finitely many initial D-generators in
+\(f^{-a}A_\Sigma\) and the derivatives of the finitely many
+generators of \(A_\Sigma\) in \(f^{-b}A_\Sigma\).
+Both statements have finite witnesses and hence hold
+on one neighbourhood. Leibniz then gives
+\[
+F_k\subset f^{-a-(b+1)k}A_\Sigma
+\tag{CK.26}
+\]
+there, with no new shrink depending on \(k\).
+Clearing that bound places both
+\(F_k\) and \(A_\Sigma\) inside one finite
+holomorphic lattice in \(A\), so
+\(F_k\cap A_\Sigma\) is coherent holomorphic, by the
+finite kernel theorem. These intersections ascend
+and their union is \(H\).
+The proved local stationarity makes \(H\) coherent.
+
+By CK.14 and the scalar/reflexive extension RF.D--RF.E,
+\[
+\begin{gathered}
+H_0=\\
+\left\{\begin{gathered}
+u\in M_p:\\
+\operatorname{Re}\operatorname{ord}u\le-1/2\\
+\text{on every generic}\\
+\text{regular component}
+\end{gathered}\right\}.
+\end{gathered}
+\tag{CK.27}
+\]
+For this germ comparison use the finite prepared
+projective projection: every sufficiently small
+neighbourhood of \(p\) contains the entire
+characteristic representative over a smaller base.
+RF.T identifies \(F_0\) with the whole \(M_p\).
+Membership in \(A_\Sigma\) is the generic strict
+Nilsson criterion on each component and propagates
+across singularities with the same zero pole order.
+Thus CK.27 is for all source germs, not just
+sections represented on one fixed generic chart.
+
+#### CK.I. A coherent generating candidate and its smooth identification
+
+Let \(L'=E_0H\subset M\). It is coherent over \(E_0\):
+finite ordinary generators have images in one finite
+shift of J.1's coherent lattice, and Section5.24
+gives their coherent image. IO.C shows CK.27 is
+stable under \(E_0\), so
+\[
+L'_p=H_0=(M_{-1/2})_p .
+\tag{CK.28}
+\]
+
+On the smooth divisor chart, \(H\) is stable under
+\(tD_t,D_{x_i}\), since both \(F\) and \(A_\Sigma\)
+are. Thus \(L'\) is stable under the whole local
+\(E_\Lambda\), by DP.7's generator proof.
+Let \(b(\theta)\) be the characteristic polynomial
+of the constant normalized residue matrix \(C\).
+It satisfies
+\[
+D_t b(tD_t) A_\Sigma\subset A_\Sigma .
+\tag{CK.29}
+\]
+Indeed \(b(tD_t)\) kills the residue modulo \(t\);
+then \(D_t(tA_\Sigma)\subset A_\Sigma\).
+Both operators preserve \(F\), so CK.29 also holds
+with \(H\). Consequently
+\[
+b(-\Theta-\tfrac12)L'\subset hL'.
+\tag{CK.30}
+\]
+To pass from generators to \(E_0H\), commute
+the polynomial in \(\Theta\) past an \(E_0\)
+coefficient; IO.A puts its commutator in
+\(J_\Lambda\), which acts into \(hL'\).
+The roots in CK.30 satisfy
+\[
+-\tfrac32<\operatorname{Re}\beta\le-\tfrac12 .
+\tag{CK.31}
+\]
+The previously selected spectral gap excludes the boundary.
+
+We must also prove generation. \(DH\) is coherent over D.
+The quotient \(F/DH\) is supported on \(S\): multiply
+each of the finitely many ordinary D-generators
+of \(F\) by a sufficient power of \(f\) to put it
+in the finite lattice \(A_\Sigma\), hence in \(H\).
+At generic smooth points, the finite E-quotient
+of \(M\) has no half-integer order, by CK.D's quotient
+spectral observation. CK.E shows its supported
+ordinary module must have such orders if nonzero.
+It vanishes generically, so CK.F's lower-dimensional
+argument gives \(F/DH=0\).
+Therefore \(EL'=M\).
+
+Now CK.31 and the smooth top-strip characterization
+CK.7--CK.9 give
+\[
+\begin{gathered}
+L'=M_{-1/2}\\
+\text{away from}\\
+W=\Lambda\cap\pi^{-1}(S_{\rm sing}).
+\end{gathered}
+\tag{CK.32}
+\]
+This includes any points where initial smooth regularity
+was unknown: the lattice \(L'\) has just supplied
+smooth characteristic stability there.
+For the comparison of generic definitions, its
+generating quotient argument is independent of
+that newly proved regularity.
+
+Every section of \(L'\) obeys the generic cutoff
+on all characteristic components, by CK.14 and
+IO.C. Thus \(L'\subset M_{-1/2}\) everywhere.
+
+#### CK.J. The single adjacent quotient and extension across W
+
+The quotient
+\[
+Q=h^{-1}L'/L'
+\tag{CK.33}
+\]
+is coherent over \(E_0\) and is killed by \(h\).
+It is a finite holomorphic principal-symbol module,
+supported on \(\Lambda\).
+At \(p\), a germ of \(Q\) supported on \(W\)
+lifts to \(u\in h^{-1}L'\) whose restriction
+off \(W\) is in \(L'\). It therefore satisfies
+the generic cutoff condition. CK.28 gives
+\(u\in L'_p\). Hence
+\[
+\mathcal H^0_W(Q)_p=0.
+\tag{CK.34}
+\]
+This supported submodule is coherent holomorphic.
+Indeed for finitely generated ideal \(I_W\)
+the annihilators \(\ker I_W^k\) form an ascending
+chain of coherent submodules of the finite
+principal-symbol module, so CK.H's local stationarity
+applies. Thus CK.34 holds on one neighbourhood.
+
+Multiplication by \(h^{-k+1}\) identifies, up to
+the normal coefficient automorphism,
+\[
+h^{-k}L'/h^{-k+1}L'\quad\text{with }Q.
+\tag{CK.35}
+\]
+That automorphism is the identity on the principal
+symbol ring and hence preserves \(W\).
+All these quotient sheaves consequently have
+no W-supported sections on the same neighbourhood,
+with no additional shrink depending on \(k\).
+Finite extensions preserve absence of supported
+sections. Since \(EL'=M\), every section of
+\(M/L'\) lies locally in one finite negative
+shift. Hence
+\[
+\mathcal H^0_W(M/L')=0.
+\tag{CK.36}
+\]
+By CK.32 the subquotient \(M_{-1/2}/L'\) is
+supported on \(W\); by CK.36 it is zero.
+This proves \(M_{-1/2}=L'\) as sheaves near \(p\),
+and in particular actual \(E_0\)-coherence at
+every singular characteristic point.
+
+#### CK.K. Every characteristic operator and supported-section purity
+
+Undo CK.D's actual transformations. They preserve the
+usual order-zero and characteristic rings, with the
+explicit scalar shift accounted for. This proves
+coherence of the original \(M_c\) for every real \(c\).
+On the dense regular locus it generates \(M\);
+the coherent E-quotient away from that locus has
+support in a proper subset of every Lagrangian
+component and is zero by EC.D. Equivalently the
+generation in CK.I already transports back.
+
+For a characteristic first-order operator \(P\),
+\(Pu\in E_\Lambda u\) on every dense smooth regular
+component, so IO.C proves its orders have no larger
+real parts than those of \(u\). The generic definition
+therefore makes \(M_c\) stable under \(P\) everywhere.
+This proves CK.1, and the inclusion \(E_V\subset E_\Lambda\)
+gives full regularity along every involutive \(V\)
+containing the support.
+
+Finally let a germ of \(M/M_c\) be supported on \(Z\)
+of ambient codimension at least \(n+1\).
+Lift it locally to \(u\in M\).
+Each Lagrangian component has dimension \(n\), so its
+dense smooth regular locus has a nonempty open
+outside \(Z\). There the orders of \(u\) satisfy the
+cutoff. IO.B--IO.D constant cyclic polynomials on
+each connected dense regular representative extend
+the same bound throughout it. The generic definition
+puts \(u\) in \(M_c\), proving CK.2.
+The assertion concerns sections of the quotient by the canonical cutoff lattice.
+
+
+The theorem proves coherent source cutoffs across every singular characteristic stratum and the everywhere characteristic-stable generating lattice. Section5.90, GG.A–GG.G proves initial coherent ordinary generators near every compact set. Arbitrary analytic proper/support-proper regularity requires its further argument.
+
+![Spectral lowering, the strict half-order boundary and the adjacent quotient across singular strata](assets/canonical-cutoff-C1.png)
+
+**Figure CK.1.** Panel A gives two exact spectral examples at
+\(c=-1/2\): the roots \(-1/5\) and \(7/10\) move to
+\(-6/5\) and \(-13/10\) in the top strip. Each step
+is the elementary lowering of CK.B, with its full nilpotent
+multiplicity. Panel B shows the power/logarithm example
+\(t^{2/5}(\log t)^2\), whose indicial eigenvalue is
+\(-9/10\), at the boundary criterion of CK.C.
+Panel C is CK.J's single adjacent quotient: absence of
+sections supported on \(W\) propagates to every negative
+shift on one neighbourhood and identifies the coherent
+candidate with the intrinsic cutoff. The panels are
+algebraic diagrams with no geometric scale.
+
+Figure SVG ·
+exact diagram data ·
+reproducible source ·
+figure PNG.
+
+Free source:
+[Kashiwara–Kawai, Holonomic systems III, I.5, II.3.7–II.3.8 and V.1.6–V.1.7](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf).
+
+
+### 5.90. Analytic good filtrations from the dummy-variable cutoff
+
+#### GG.A. The global filtration and the compact-neighbourhood generator
+
+Let \(X\) be a complex manifold of dimension \(d\), and let \(M\)
+be a coherent analytic left \(\mathcal D_X\)-module. In this
+section regular holonomicity means holonomicity together with
+generic regular stable lattices for its actual finite
+microlocalization on every nonzero characteristic component.
+The zero module is allowed.
+
+Set \(Y=\mathbf C_t\times X\), \(i(x)=(0,x)\), and
+\[
+\begin{gathered}
+\Omega=\{\tau\ne0\}\subset T^*Y,\\
+h=D_t^{-1},\\ j_0(x)=(0,x;1,0),\\
+N=\mathcal E_Y\otimes_{\mathcal D_Y}i_+M .
+\end{gathered}
+\tag{GG.1}
+\]
+The last line is restricted to \(\Omega\), and the ordinary
+sheaves there are pulled back by \(\pi\).
+The normal line of \(i\) is trivialized by \(t\). Thus the
+left-module transfer has the global normal generator
+\(u_0=1\bmod\mathcal E_Yt\), and \(N\) is exactly
+\(\Phi(M)\) of §5.25.3.
+The ordinary embedding is \(m\mapsto u_0\otimes m\).
+
+**Theorem GG.T.** If \(M\) is regular holonomic, \(N\) is an actual
+regular holonomic \(\mathcal E_Y\)-module on \(\Omega\). Fix any
+real number \(c\), and let \(L=N_c\) be the intrinsic cutoff of
+CK.T.
+Then
+\[
+\begin{gathered}
+L\text{ is coherent over }\mathcal E_Y(0),\\
+\mathcal E_YL=N,\qquad tL\subset hL .
+\end{gathered}
+\tag{GG.2}
+\]
+The subsheaves of the actual ordinary module
+\[
+\begin{gathered}
+m\in B_kM\\
+\Longleftrightarrow h^k(u_0\otimes m)\in j_0^{-1}L,\\
+k\in\mathbf Z,
+\end{gathered}
+\tag{GG.3}
+\]
+are globally defined coherent \(\mathcal O_X\)-modules and form
+an exhaustive, locally bounded-below, locally good order
+filtration. Every point has one neighbourhood on which a finite
+list \(m_\nu\) and integer shifts \(a_\nu\) give, simultaneously
+for all integers \(k\),
+\[
+\begin{gathered}
+B_kM=\sum_\nu\mathcal D_{X,\le k-a_\nu}m_\nu,\\
+\mathcal D_{X,\le b}=0\quad(b<0).
+\end{gathered}
+\tag{GG.4}
+\]
+For every compact subset \(K\subset X\), there are one open
+neighbourhood \(U\) of \(K\) and an integer \(q\) such that
+\[
+\begin{gathered}
+G=B_qM|_U,\\
+G\text{ is coherent over }\mathcal O_U,\\
+\mathcal D_UG=M|_U,\\
+B_{q+r}M|_U=\mathcal D_{U,\le r}G\\
+(r\ge0).
+\end{gathered}
+\tag{GG.5}
+\]
+Thus the initial coherent generator exists on a neighbourhood
+of every compact set. The integer \(q\) may depend on that
+compact set.
+
+We use actual finite operators throughout. Their coherent
+kernels and the faithful dummy completion are
+§§5.19–5.24.
+The actual ambient comparison, ordinary injection and lattice
+bounds are §5.25.
+The complete actual descent statement is
+Proposition5.26.1.
+Finite microlocalization is right flat, coherent, and has exact
+characteristic support by
+RF.A.1–RF.A.4.
+The residue and ordinary-coordinate calculation are
+IO.A–IO.B.
+Finite actual generating lattices are
+J.1.
+The analytic radical theorem and the dimension and empty-interior
+properties of proper analytic subsets are proved in
+Analytic germs, Theorems5.1,5.4 and Proposition5.5.
+The horizontal-frame construction is
+GL02, Lemma4.1.
+These earlier proofs supply the indicated inputs.
+
+#### GG.B. The ordinary normal transfer and its exact characteristic set
+
+Work first on an ordinary coordinate neighbourhood with any
+local good filtration \(F_aM\), zero for sufficiently negative
+\(a\). This local filtration follows from a finite ordinary
+operator presentation; it is not a global generator hypothesis.
+The normal derivative description of closed direct image is
+\[
+\begin{gathered}
+i_+M=\bigoplus_{j\ge0}D_t^j(u_0\otimes M),\\
+tD_t^j(u_0\otimes m)\\
+=-jD_t^{j-1}(u_0\otimes m).
+\end{gathered}
+\tag{GG.6}
+\]
+Every displayed sum is finite. To verify the presentation,
+start with a finite \(\mathcal D_X\)-presentation of \(M\), extend
+its relation matrix by the same tangential operators on \(Y\),
+and impose \(t(u_0\otimes m_\nu)=0\) on its generators.
+Move \(t\) to the right by \([D_t,t]=1\) and move tangential
+operators through \(D_t\). The remaining rows are precisely
+finite sums in (GG.6), with their original relation rows
+coefficient by coefficient. A holomorphic coefficient on \(Y\)
+acts on a row with largest normal derivative \(j\) through its
+Taylor polynomial in \(t\) of degree \(j\); the remainder kills
+that row. Consequently the normal form is valid for arbitrary
+holomorphic coefficients, and its inverse respects their action.
+It proves the finite presentation, coherence, and exactness of
+this normal transfer.
+
+Put
+\[
+\begin{gathered}
+F_ai_+M\\
+=\bigoplus_{j\ge0}D_t^j(u_0\otimes F_{a-j}M).
+\end{gathered}
+\tag{GG.7}
+\]
+For each fixed \(a\) this is a finite sum of coherent
+holomorphic modules. Taylor expansion just used and the
+ordinary order compatibility of \(F\) prove that it is a
+filtered \(\mathcal D_Y\)-module. A finite homogeneous
+generating list for \(\operatorname{gr}_FM\), with the same
+shifts, generates its normal extension, giving
+\[
+\begin{gathered}
+\operatorname{gr}_Fi_+M\\
+\simeq i_*(\operatorname{gr}_FM)[\tau],\qquad t=0,\\
+\operatorname{Char}(i_+M)\\
+=\bigl\{(0,x;\tau,\xi):\\
+(x,\xi)\in\operatorname{Char}M\bigr\}.
+\end{gathered}
+\tag{GG.8}
+\]
+The first identity is coefficientwise in normal PBW rows;
+in particular it is an equality of the actual associated
+graded presentation. Thus this filtration is good.
+Each component in the second identity has dimension \(d+1\)
+when \(M\) is holonomic.
+
+RF.A.3–RF.A.4 applied on \(Y\) now give coherence and
+\[
+\begin{gathered}
+\Lambda'=\operatorname{supp}N\\
+=\bigl\{(0,x;\tau,\xi)\in\Omega:\\
+(x,\xi)\in\operatorname{Char}M\bigr\}.
+\end{gathered}
+\tag{GG.9}
+\]
+Hence \(N\) is holonomic. Tensor reassociation of the finite
+transfer presentation gives the actual identification
+\[
+N=(\mathcal E_Y/\mathcal E_Yt)\otimes_{\mathcal D_X}M.
+\tag{GG.10}
+\]
+Along \(j_0(X)\), §5.25.3 proves the injection of \(M\) into
+this module using exact faithful completion and the
+\(h\)-torsion-free ambient module. Thus the embedding used
+in (GG.3) retains every ordinary section.
+
+#### GG.C. Regularity on every lifted component
+
+First suppose \(\xi\ne0\). The projection from \(t=0\) to
+\(T^*X\) then meets the ordinary finite microlocalization
+\(M^\mu=\mathcal E_X\otimes_{\mathcal D_X}M\).
+In a chart with \(\xi_\ell\ne0\), a tangential actual symbol
+on \(X\), independent of \(t,\tau\), defines an actual symbol
+on \(Y\). Homogeneous order is unchanged. Indeed the ratio
+\(\tau/\xi_\ell\) stays bounded on a smaller product chart,
+and the original common coefficient domain and factorial
+bound remain a common domain and factorial bound there.
+More explicitly, the source term
+\(\xi_\ell^{-n}p_n(x,\xi/\xi_\ell)\) becomes a
+\(\tau^{-n}\)-term whose coefficient is multiplied by
+\((\tau/\xi_\ell)^n\). If that ratio is bounded by \(R\),
+the bound \(AC^n n!\) becomes \(A(CR)^n n!\).
+The normal symbol multiplication has no additional
+derivatives for these \(t,\tau\)-independent symbols.
+
+Accordingly \(\mathcal E_Y/\mathcal E_Yt\) has a right
+\(\mathcal E_X\)-action on this chart: the tangential
+operators commute with \(t\). Tensor associativity gives
+\[
+\begin{gathered}
+N\simeq(\mathcal E_Y/\mathcal E_Yt)
+\otimes_{\mathcal E_X}M^\mu .
+\end{gathered}
+\tag{GG.11}
+\]
+This identity requires only the right action and tensor
+reassociation.
+
+Take a smooth generic regular point of a nonzero
+characteristic component \(\Lambda\) of \(M^\mu\).
+Let \(A\subset M^\mu\) be a coherent generating
+\(\mathcal E_X(0)\)-lattice stable under
+\(\mathcal E_{X,\Lambda}\). Define \(A'\) as the image in
+(GG.11) of
+\[
+\begin{gathered}
+(\mathcal E_Y(0)/\mathcal E_Y(0)t)
+\otimes_{\mathcal E_X(0)}A .
+\end{gathered}
+\tag{GG.12}
+\]
+A finite generating list for \(A\) gives a finite
+\(\mathcal E_Y(0)\)-generating list for \(A'\).
+By J.1 and a finite order shift, its finitely many
+generators lie in one coherent order-zero ambient
+lattice in \(N\). The coherent submodule theorem
+therefore makes their span \(A'\) coherent. Since
+\(\mathcal E_XA=M^\mu\), (GG.11) gives
+\(\mathcal E_YA'=N\) here.
+
+We verify characteristic stability directly. On this
+smooth locus choose finitely many homogeneous degree-one
+equations \(g_\alpha(x,\xi)\) for \(\Lambda\), and
+tangential first-order lifts \(H_\alpha\). Such equations
+are obtained in the chart \(\xi_\ell\ne0\) by multiplying
+local degree-zero defining equations by \(\xi_\ell\).
+Let \(P\) have order at most one on \(Y\), with degree-one
+symbol vanishing on \(p^{-1}\Lambda=\{t=0,(x,\xi)\in\Lambda\}\).
+The smooth defining-coordinate Taylor formula gives
+\[
+\begin{gathered}
+\sigma_1(P)=f\,t+\sum_\alpha b_\alpha g_\alpha,\\
+\deg f=1,\\ \deg b_\alpha=0.
+\end{gathered}
+\tag{GG.13}
+\]
+Lift \(f,b_\alpha\) to actual \(F,B_\alpha\) of the indicated
+orders. The finite sum \(P-Ft-\sum_\alpha B_\alpha H_\alpha\)
+has order zero. Acting on \(u_0\otimes a\), its \(Ft\)-term
+is zero, and its other terms lie in \(A'\) by stability of
+\(A\). Put \(v=u_0\otimes a\). For any order-zero \(Q\),
+\[
+\begin{gathered}
+P Qv=Q Pv+[P,Q]v,
+\end{gathered}
+\tag{GG.14}
+\]
+and \([P,Q]\) has order at most zero by §5.19's actual
+symbol product. Therefore \(P A'\subset A'\).
+This proves regularity on the dense lifted part of every
+component with generic \(\xi\ne0\).
+
+The original zero section requires a separate argument.
+If \(T_X^*X\) is a characteristic component, choose a
+generic point of it outside its intersections with the
+other characteristic components. Locally there are
+finitely many components; distinct \(d\)-dimensional
+components have proper intersections. The characteristic
+set is a cone. A nonzero covector over a nearby point
+can be scaled into any fixed neighbourhood of the zero
+covector, and its limit lies in the same closed conical
+component. Hence, after shrinking an ordinary neighbourhood
+\(W\) of the chosen point,
+\[
+\operatorname{Char}(M|_W)\subset T_W^*W .
+\tag{GG.15}
+\]
+No characteristic component over that neighbourhood can
+be discarded in this deduction.
+
+Here is the ordinary consequence of (GG.15). In a finite
+homogeneous good presentation the radical of the
+annihilator of the associated graded module contains
+every cotangent variable. The analytic radical theorem
+therefore puts a power of each variable in that
+annihilator. One may first obtain this at the analytic
+germ at the zero covector: clearing its denominator and
+taking the homogeneous component of the indicated degree
+leaves its invertible degree-zero coefficient. This gives
+the same relation over the polynomial symbol ring.
+There are finitely many such identities, so they hold on
+one ordinary neighbourhood. A sufficiently large power
+of the whole cotangent ideal then kills the associated
+graded module. It has finitely many generators and
+therefore only finitely many nonzero degrees. Lifting
+them makes \(M|_W\) coherent over \(\mathcal O_W\).
+
+Its operator action is an integrable connection. The
+Fitting-ideal calculation in IO.B shows that it is
+locally free: differentiating the presentation minors
+preserves their ideals, and a nonzero differential
+ideal in a holomorphic local ring contains a unit.
+The unit-minor row reduction there proves local
+freeness. GL02 Lemma4.1 now gives a horizontal frame
+\(e_1,\ldots,e_r\). In this frame the lifted module has
+presentation
+\[
+\begin{gathered}
+\mathcal J=\mathcal E_Yt\\
+{}+\sum_{\ell=1}^d\mathcal E_YD_{x_\ell},\\
+N|_W\simeq(\mathcal E_Y/\mathcal J)^r,\\
+t(u_0\otimes e_\nu)=0,\\
+D_{x_\ell}(u_0\otimes e_\nu)=0 .
+\end{gathered}
+\tag{GG.16}
+\]
+The order-zero span of these \(r\) generators is coherent
+by the same J.1 ambient argument and generates.
+Its characteristic set is
+\(\{t=0,\xi=0,\tau\ne0\}\).
+For every first-order operator whose principal symbol
+vanishes on this conormal, (GG.13) holds with the defining
+equations \(\xi_1,\ldots,\xi_d\). The \(Ft\)-term and all
+tangential \(D_{x_\ell}\)-terms kill the generators.
+The commutator calculation (GG.14) again proves stability.
+Thus this entire lifted zero-section component is
+generically regular as well.
+
+Every irreducible component of (GG.9) is covered by one
+of these two cases. \(N\) has the generic regularity
+required by CK.T on the whole dummy chart, including
+near \(j_0(X)\).
+
+#### GG.D. The intrinsic lattice lowers the normal coordinate
+
+Apply CK.T to \(N\). Its cutoff \(L=N_c\) is coherent,
+generates \(N\), and is stable under every first-order
+operator with principal symbol zero on \(\Lambda'\).
+Since \(\Lambda'\subset\{t=0\}\), the actual operator
+\(D_tt\) is such an operator:
+\[
+\begin{gathered}
+D_tt=tD_t+1,\\
+\sigma_1(D_tt)=\tau t,\\
+D_tt\,L\subset L,\\
+tL=hD_tt\,L\subset hL.
+\end{gathered}
+\tag{GG.17}
+\]
+The identity in the last line is an identity of finite
+actual operators. It includes the order-zero \(+1\).
+
+The construction is global on \(\Omega\). The closed
+embedding, the coordinate \(t\), and the normal
+trivialization are global. On overlaps in \(X\), (GG.10)
+is the same intrinsic transfer module, and the residue
+is invariant under ordinary coordinate changes by IO.B.
+The generic root condition defining \(N_c\) therefore
+agrees on overlaps. CK.T supplies coherence through every
+singular characteristic stratum, so these local cutoffs
+are the restrictions of one \(L\).
+
+The filtration (GG.3) is consequently a filtration of
+globally defined subsheaves of \(M\). It depends on the
+fixed real bound \(c\); it uses no local choice of an
+initial ordinary generator.
+
+#### GG.E. All actual ordinary pieces on one neighbourhood
+
+We give the exact application of §§5.23–5.26. At any
+\(x\), choose a local ordinary good filtration and its
+actual coherent ambient lattice \(V\) from §5.25. The
+two finite actual denominator bounds give
+\[
+h^C V\subset L\subset h^{-B}V
+\tag{GG.18}
+\]
+near \(j_0(x)\), for some nonnegative \(B,C\). Exact
+faithful completion realizes its middle term in
+\(h^{-B}\prod_a h^a F_aM\). By (GG.17) the preserving
+operator \(D_tt=tD_t+1\) acts there as
+\[
+\begin{gathered}
+(tD_t+1)(h^a(u_0\otimes m))\\
+=a h^a(u_0\otimes m).
+\end{gathered}
+\tag{GG.19}
+\]
+The bounds imply equality after finite \(h\)-localization.
+The closed-submodule and finite-node Euler projections
+of §5.23 therefore give finitely many homogeneous
+generators \(h^{a_\nu}(u_0\otimes m_\nu)\) of that
+completed lattice, with actual ordinary germs \(m_\nu\).
+
+Represent these finitely many germs on one ordinary
+neighbourhood. Their actual order-zero span \(L'\)
+and \(L\) lie in one coherent shifted ambient \(V\).
+Their completions have the same image: the Ore
+calculation of §5.23.4 reduces every formal
+\(t\)-coefficient to its homogeneous ordinary action.
+Exact completion makes both coherent quotients
+\[
+\begin{gathered}
+(L+L')/L,\\ (L+L')/L',
+\end{gathered}
+\tag{GG.20}
+\]
+have zero completion. Faithfulness makes their stalks
+zero, and finite local generation makes both sheaves
+zero on one neighbourhood. Thus \(L=L'\) as actual
+sheaves there, as in Proposition5.26.1.
+
+Shrink the ordinary neighbourhood only once so that
+its \(j_0\)-image lies there. At every point of it the
+coefficientwise degree-\(k\) calculation of §5.26
+identifies (GG.3) with (GG.4), for every \(k\).
+The right side is coherent for each \(k\): put its
+finite operator images in one local ordinary coherent
+order piece and use the coherent kernel/image theorem.
+The integer bounding that piece may depend on \(k\);
+the neighbourhood and the finite list \(m_\nu,a_\nu\)
+do not. This proves coherence of all the actual
+intersections on a common neighbourhood.
+
+The finite list in (GG.4) proves the order-filtration
+relations and the local lower bound. The lattice
+generation in (GG.2) proves exhaustion, since a finite
+operator expression has one finite upper order.
+These are sheaf statements at every ordinary point,
+so the globally defined \(B_kM\) are coherent and
+locally good on \(X\).
+
+#### GG.F. A uniform generator near a compact set or proper support
+
+Cover \(K\) by finitely many of the neighbourhoods in
+GG.E, with finite generating lists and shifts
+\(a_{\nu,\alpha}\). Let \(U\) be their union, and choose
+an integer \(q\) not smaller than every such shift.
+On the \(\alpha\)-th neighbourhood all its generators
+belong to \(B_qM\), so
+\[
+\mathcal D_U(B_qM|_U)=M|_U .
+\tag{GG.21}
+\]
+Moreover, for every \(r\ge0\), ordinary coordinate
+operators and PBW give
+\[
+\begin{gathered}
+\mathcal D_{\le r}\mathcal D_{\le q-a_{\nu,\alpha}}\\
+=\mathcal D_{\le q+r-a_{\nu,\alpha}},\\
+B_{q+r}M|_U\\
+=\mathcal D_{U,\le r}(B_qM|_U).
+\end{gathered}
+\tag{GG.22}
+\]
+The first equality follows by splitting each ordered
+derivative monomial of order at most the sum into
+two monomials with the indicated bounds; its
+holomorphic coefficient can be placed in the first
+factor. Both bounds on the first line are
+nonnegative. Thus it applies to every summand of
+(GG.4). The finitely many local lower bounds also
+give one lower bound on \(U\). This proves (GG.5).
+
+In particular the filtration with negative pieces
+zero and nonnegative pieces \(\mathcal D_{U,\le r}G\)
+is an exhaustive good filtration generated in degree
+zero by one coherent holomorphic subsheaf \(G\).
+The same \(q\) can be chosen for any finite list of
+regular holonomic modules by taking the maximum of
+the finitely many shift bounds.
+
+**Corollary GG.P.** Let \(f:X\to Z\) be a holomorphic
+map of complex manifolds and let \(M\) be regular holonomic with closed
+support \(S\). If \(f|_S\) is proper, every \(z\in Z\)
+has an open neighbourhood \(V_z\) on whose inverse
+image \(M\) has a coherent holomorphic generator
+and a global good filtration generated by it.
+
+Indeed \(K=S\cap f^{-1}(z)\) is compact. Apply
+(GG.5) on \(U\). Proper maps of locally compact
+Hausdorff spaces are closed: for a point outside
+the image of a closed set, choose a neighbourhood
+with compact closure. The inverse image of that
+closure is compact; its intersection with the
+closed set is compact and has closed image.
+Remove that image inside the neighbourhood.
+Apply this to \(S\setminus U\)
+and shrink \(V_z\) to avoid its image. Then
+\[
+S\cap f^{-1}(V_z)\subset U.
+\tag{GG.23}
+\]
+The globally defined coherent sheaf \(B_qM\)
+restricts to \(G\) on \(U\) and is zero off \(S\).
+Thus its restriction to \(f^{-1}(V_z)\) generates
+\(M\) there. Formula (GG.22) holds on \(U\) and
+holds trivially off \(S\), proving the asserted
+global good filtration on that inverse image.
+For a bounded complex, the same construction
+supplies such generators for its finitely many
+regular holonomic cohomology modules.
+
+This corollary supplies the initial-generator
+hypothesis in the actual locally projective
+operator-image coherence and characteristic
+comparison of
+§§5.9–5.12.
+Their remaining hypotheses and conclusions apply
+as stated. A proof of regularity of the full
+arbitrary proper analytic direct image requires
+the additional direct-image argument.
+
+#### GG.G. Normal signs and an exact local example
+
+Let \(M=\mathcal O_X\) with its trivial connection.
+Its lift is the rank-one conormal module in
+(GG.16). Put \(\delta=u_0\otimes1\).
+The exact normal signs, valid for every integer
+\(a\), are
+\[
+\begin{gathered}
+t\delta=0,\\ tD_t\delta=-\delta,\\
+th^a\delta=a h^{a+1}\delta,\\
+(tD_t+1)h^a\delta=a h^a\delta .
+\end{gathered}
+\tag{GG.24}
+\]
+For \(a\ge0\) use \([t,h]=h^2\); for negative
+\(a\) use \([t,D_t^j]=-jD_t^{j-1}\).
+With IO.B's radial operator
+\(\Theta=-tD_t-\tfrac12\), this gives
+\[
+\Theta(h^a\delta)=(\tfrac12-a)h^a\delta .
+\tag{GG.25}
+\]
+CK.B's smooth top-strip description therefore
+identifies the cutoff at \(c=0\) with
+\(L=\mathcal E_Y(0)h\delta\). The generating
+residue has eigenvalue \(-1/2\) in \((-1,0]\).
+Along \(j_0\), completion of this lattice consists
+of the series with degrees at least one and
+holomorphic coefficients. The exact actual
+intersection result of GG.E yields
+\[
+\begin{gathered}
+B_k\mathcal O_X=0\quad(k<1),\\
+B_k\mathcal O_X=\mathcal O_X\quad(k\ge1).
+\end{gathered}
+\tag{GG.26}
+\]
+The shift records the delta half-order. Replacing
+\(D_tt\) by \(tD_t\) in the Euler projection would
+give the wrong degree even in this example.
+
+**Exercise.** For this flat example and any real
+\(c\), determine the first nonzero ordinary
+filtration piece.
+
+**Solution.** The least allowed integral \(a\)
+satisfies \(1/2-a\le c\), so it is
+\[
+a_0=\lceil\tfrac12-c\rceil .
+\tag{GG.27}
+\]
+The smooth cutoff is
+\(\mathcal E_Y(0)h^{a_0}\delta\).
+Its formal homogeneous degrees start at \(a_0\);
+GG.E gives zero pieces below \(a_0\) and
+\(\mathcal O_X\) at and above it. In particular
+the endpoint at an integral value is included.
+
+![The lifted characteristic set, the exact Euler identity and ordinary generators near a compact set](assets/initial-analytic-generators.png)
+
+**Figure GG.1.** The first panel separates the dense
+nonzero-covector part from the original zero-section
+component. GG.C proves regularity in both cases.
+The second panel is the actual operator identity
+(GG.17) with its \(+1\). The third panel shows
+the finite shifted presentations (GG.4), from
+which taking the maximum of the shifts gives
+the coherent generator in (GG.5). These are
+algebraic diagrams, with no geometric scale.
+
+Figure SVG ·
+exact diagram data ·
+reproducible source ·
+figure PNG.
+
+Free source:
+[Kashiwara–Kawai, Holonomic systems III, Lemma5.1.9,
+Sublemma5.1.10, Corollary5.1.11 and AppendixA.8](https://www.kurims.kyoto-u.ac.jp/~kenkyubu/kashiwara/HolIII.pdf).
+
+
+### 5.91. Finite cokernels of relative nuclear perturbations
+
+Restrictions between analytic neighbourhoods enter proper-image
+finiteness through their small infinite tails. The coefficient
+algebra must be retained in the finite-rank argument: finiteness
+over that algebra is stronger than a bound on any one fibre.
+The theorem below keeps the full algebra and permits
+non-Hausdorff algebraic quotients.
+
+#### NP.A. The coefficient algebra and the finiteness statement
+
+Let \(B\) be a nonzero unital complex Banach algebra. Its norm is
+submultiplicative. A Fréchet left \(B\)-module is a complete
+Hausdorff locally convex complex vector space with a countable
+seminorm topology and a jointly continuous unital left
+\(B\)-action. The scalar action of \(\mathbf C\) agrees with
+the action through the centre of \(B\). The algebra \(B\)
+need not be commutative.
+
+A continuous \(B\)-linear map \(u:E\to F\) is **\(B\)-nuclear**
+if it has a representation
+\[
+\begin{gathered}
+u(x)=\sum_{j\ge1}\lambda_j\xi_j(x)y_j,\\
+\sum_j|\lambda_j|<\infty,\\
+\xi_j:E\longrightarrow B,\\
+\xi_j\text{ continuous and }B\text{-linear},
+\end{gathered}
+\tag{NP.1}
+\]
+where the \(\xi_j\) are equicontinuous and \((y_j)\) is
+bounded in \(F\). Equicontinuity here means that one
+continuous seminorm \(p\) on \(E\), after a fixed rescaling,
+satisfies
+\[
+\begin{gathered}
+\|\xi_j(x)\|_B\le p(x)\\
+(j\ge1,\ x\in E).
+\end{gathered}
+\tag{NP.2}
+\]
+Boundedness means boundedness for every continuous
+seminorm on \(F\).
+
+The map \(u\) is **\(B\)-subnuclear** if there is a Fréchet
+left \(B\)-module \(G\) and a continuous \(B\)-linear
+surjection \(p_G:G\to E\) such that \(u p_G\) is
+\(B\)-nuclear.
+
+**Theorem NP.T.** Let \(E,F\) be Fréchet left \(B\)-modules,
+let \(f:E\to F\) be continuous, \(B\)-linear and surjective,
+and let \(u:E\to F\) be \(B\)-subnuclear. Then
+\[
+\begin{gathered}
+\operatorname{Coker}_{B}(f-u)\\
+\text{is finitely generated}\\
+\text{over }B.
+\end{gathered}
+\tag{NP.3}
+\]
+The cokernel in this statement is the algebraic quotient.
+Neither a closed range nor a Hausdorff quotient is asserted.
+NP.G gives a rank-one example where the quotient is not
+Hausdorff.
+For the zero coefficient algebra every unital module is zero,
+so the finite-cokernel assertion holds there as well.
+
+We first prove all the completeness, lifting and finite-rank
+steps used in the theorem. NP.H supplies explicit relative
+nuclear restrictions between multivariable analytic
+power-series modules. These are coefficient-space
+statements; no proper-image theorem is a premise.
+
+#### NP.B. Convergent relative series
+
+For every continuous seminorm \(q\) on a Fréchet \(B\)-module
+\(F\), joint continuity of the action gives a continuous
+seminorm \(q'\) on \(F\) such that
+\[
+q(by)\le\|b\|_B q'(y).
+\tag{NP.4}
+\]
+Indeed continuity at \((0,0)\) gives a product of
+neighbourhoods on which \(q(by)<1\). The neighbourhood
+in \(B\) contains a norm ball; the other contains a
+finite intersection of seminorm balls. Take their
+rescaled maximum and then scale the two variables
+separately. If that maximum is zero, scale its argument
+by arbitrarily large positive constants to obtain the
+same inequality.
+
+For a bounded sequence \((y_j)\), put
+\(M_q=\sup_jq'(y_j)<\infty\). The tails in (NP.1) satisfy
+\[
+\begin{gathered}
+q\!\left(\sum_{j=m}^n\lambda_j\xi_j(x)y_j\right)\\
+\le M_q p(x)\sum_{j=m}^n|\lambda_j|.
+\end{gathered}
+\tag{NP.5}
+\]
+They are Cauchy for every seminorm, so completeness gives
+a limit. The same estimate proves continuity of the
+resulting map. Passing to the limit in the finite sums
+proves \(B\)-linearity.
+
+Composition before or after a \(B\)-nuclear map by a
+continuous \(B\)-linear map preserves nuclearity.
+For precomposition, compose the \(\xi_j\) and pull back
+the one seminorm in (NP.2). For postcomposition, map
+the bounded sequence \((y_j)\); its image is bounded.
+Finite sums and finite block matrices of nuclear maps
+are nuclear: concatenate their finitely many summable
+coefficient sequences, use the maximum of the finitely
+many controlling seminorms and the finite union of
+their bounded sequences.
+
+We will also use a normalization with \(y_j\to0\).
+There are numbers \(c_j\ge1\), tending to infinity,
+such that
+\[
+\sum_j c_j|\lambda_j|<\infty.
+\tag{NP.6}
+\]
+To construct them, choose strictly increasing integers
+\(N_k\) so that the tail starting at \(N_k\) has sum
+at most \(2^{-2k}\), and put \(c_j=2^k\) on
+\([N_k,N_{k+1})\); handle the finite initial segment
+with \(c_j=1\). The weighted sum of the later blocks
+is bounded by \(\sum_k2^{-k}\).
+Replace \(\lambda_j,y_j\) by
+\(c_j\lambda_j,c_j^{-1}y_j\). Formula (NP.1) is
+unchanged, its coefficients remain summable, and
+the boundedness of \((y_j)\) proves that the new
+\(y_j\) tend to zero for every seminorm.
+
+#### NP.C. Open surjections and null-sequence lifting
+
+We give the needed open-mapping argument.
+Increasing seminorms \(p_k\) defining a Fréchet
+topology give the complete translation-invariant metric
+\[
+\begin{gathered}
+d(x,y)=\sum_{k\ge1}2^{-k}\\
+{}\cdot\min\{1,p_k(x-y)\}.
+\end{gathered}
+\tag{NP.7}
+\]
+A sequence is Cauchy for this metric exactly when it is
+Cauchy for every \(p_k\); its limit exists by
+completeness of the locally convex space.
+
+A complete metric space cannot be a countable union
+of closed sets with empty interior. Otherwise choose
+successive nonempty closed balls, each contained in
+the interior of its predecessor, avoiding the next
+closed set, and with radii tending to zero at least
+as fast as \(2^{-k}\). Their centres form a Cauchy
+sequence. Its limit belongs to every ball and
+therefore to none of the alleged covering sets,
+a contradiction.
+
+Let \(f:E\to F\) be a continuous linear surjection
+between Fréchet spaces. If \(V\) is an absolutely
+convex neighbourhood of zero in \(E\), its positive
+integer dilates cover \(E\). Thus the closures of
+the images \(f(nV)\) cover \(F\). The complete-metric
+argument gives interior to one of these closures.
+Taking differences puts a neighbourhood of zero
+in the closure of \(f(2nV)\). Rescaling shows that
+\(\overline{f(V)}\) contains a neighbourhood of zero.
+
+We remove the closure. Given a neighbourhood \(U\)
+of zero, choose \(m,\varepsilon>0\) so that
+\(\{p_m<\varepsilon\}\subset U\), and set, for
+\(n\ge0\),
+\[
+\begin{gathered}
+V_n=\bigl\{x:\\
+p_{m+n}(x)<\varepsilon 2^{-n-2}\bigr\}.
+\end{gathered}
+\tag{NP.8}
+\]
+Every series with \(x_n\in V_n\) is Cauchy in each
+seminorm, and its sum has \(p_m\)-value at most
+\(\varepsilon/2<\varepsilon\), hence belongs to \(U\).
+Choose open neighbourhoods \(W_n\) of zero in \(F\)
+such that
+\[
+\begin{gathered}
+W_n\subset\overline{f(V_n)},\\
+W_n\subset\bigl\{y:\\
+q_j(y)<2^{-n}\ (1\le j\le n)\bigr\},
+\end{gathered}
+\tag{NP.9}
+\]
+where the \(q_j\) define the topology of \(F\).
+For \(y_0\in W_0\), density gives \(x_n\in V_n\)
+recursively with
+\[
+\begin{gathered}
+y_{n+1}=y_n-f(x_n),\\
+y_{n+1}\in W_{n+1}.
+\end{gathered}
+\tag{NP.10}
+\]
+The sum \(x=\sum_nx_n\) lies in \(U\), while
+\(y_n\to0\) and continuity give \(f(x)=y_0\).
+Thus \(W_0\subset f(U)\), proving that \(f\) is open.
+
+**Null-sequence lifting.** If \(y_j\to0\) in \(F\),
+there are \(x_j\to0\) in \(E\) with \(f(x_j)=y_j\).
+Choose a decreasing neighbourhood basis \(U_k\)
+of zero in \(E\). Openness and convergence give
+strictly increasing integers \(J_k\ge k\) such that
+\(y_j\in f(U_k)\) for all \(j\ge J_k\).
+For \(J_k\le j<J_{k+1}\), choose a preimage
+\(x_j\in U_k\); choose arbitrary preimages for the
+finite initial segment. These preimages tend to zero.
+No linear or continuous right inverse has been used.
+
+#### NP.D. One Banach module in place of a Fréchet module
+
+Let
+\[
+\begin{gathered}
+\ell^1(B)=\bigl\{(b_j):\\
+\sum_j\|b_j\|_B<\infty\bigr\},\\
+\|(b_j)\|_1=\sum_j\|b_j\|_B .
+\end{gathered}
+\tag{NP.11}
+\]
+It is a Banach left \(B\)-module with componentwise
+action. To check completeness, a Cauchy sequence has
+a limit in every coordinate. Bounds on each finite
+partial sum pass to these limits. Taking their
+supremum gives a summable limiting row, and the
+Cauchy tail bound proves convergence in \(\ell^1\).
+The module inequality follows by summing the
+submultiplicative inequality in \(B\).
+
+Suppose \(v:S\to S\) is \(B\)-nuclear and \(S\) is
+Fréchet. Using its representation (NP.1), define
+\[
+\begin{gathered}
+\alpha:S\longrightarrow\ell^1(B),\\
+\alpha(x)=(\lambda_j\xi_j(x))_j,\\
+\beta:\ell^1(B)\longrightarrow S,\\
+\beta((b_j))=\sum_j b_jy_j .
+\end{gathered}
+\tag{NP.12}
+\]
+The map \(\alpha\) is continuous by (NP.2).
+Inequality (NP.4) and boundedness give
+\(q(\beta(b))\le M_q\|b\|_1\) for each \(q\);
+completeness gives the series in \(S\).
+Thus \(\beta\) is continuous. Both maps are
+\(B\)-linear, and
+\[
+\begin{gathered}
+v=\beta\alpha,\\ w:=\alpha\beta,\\
+w\in\operatorname{End}_B(\ell^1(B)).
+\end{gathered}
+\tag{NP.13}
+\]
+The map \(w\) is \(B\)-nuclear. If \(e_j\) is the
+row with \(1_B\) in coordinate \(j\) and zero
+elsewhere, then
+\[
+w(b)=\sum_j\lambda_j
+(\xi_j\beta)(b)e_j .
+\tag{NP.14}
+\]
+The \(e_j\) have uniformly bounded norm. Continuity
+of \(\beta\) for the single seminorm \(p\) in
+(NP.2) gives one constant controlling the norms
+of every \(\xi_j\beta\).
+
+There are algebraic inverse isomorphisms
+\[
+\begin{gathered}
+S/(1-v)S\\
+\xrightarrow{\ \bar\alpha\ }
+\ell^1(B)/(1-w)\ell^1(B),\\
+\bar\beta\bar\alpha=1,\qquad
+\bar\alpha\bar\beta=1 .
+\end{gathered}
+\tag{NP.15}
+\]
+Indeed \(\alpha(1-v)=(1-w)\alpha\) and
+\(\beta(1-w)=(1-v)\beta\), so the induced maps
+are well defined. Their composites are \(v\)
+and \(w\), which equal the identity in the
+respective quotients. No closure is taken in
+either quotient.
+
+#### NP.E. The finite head and the invertible tail
+
+First let \(S\) be a Banach \(B\)-module. Joint
+continuity gives an action bound
+\(\|bx\|\le C\|b\|_B\|x\|\).
+In a nuclear representation the \(\xi_j\) have
+uniformly bounded operator norms and the \(y_j\)
+uniformly bounded norms. Consequently
+\[
+\begin{gathered}
+v=v_{\le N}+v_{>N},\\
+K_\xi=\sup_j\|\xi_j\|,\\ K_y=\sup_j\|y_j\|,\\
+\|v_{>N}\|\\
+\le C K_\xi K_y\sum_{j>N}|\lambda_j|.
+\end{gathered}
+\tag{NP.16}
+\]
+Choose \(N\) so that this last bound is less
+than one. The operator
+\[
+\begin{gathered}
+A=1-v_{>N},\\
+A^{-1}=\sum_{k\ge0}v_{>N}^{\,k}
+\end{gathered}
+\tag{NP.17}
+\]
+is a continuous \(B\)-linear automorphism.
+The series converges in operator norm by the
+geometric bound. A norm-Cauchy sequence of
+bounded operators has a pointwise limit on
+the complete space \(S\), with the same
+uniform bounds, and that limit is bounded
+and linear. Thus the series defines an
+operator; multiplying its finite partial
+sums by \(1-v_{>N}\) and letting the final
+power tend to zero proves both inverse
+identities.
+
+For any \(x\in S\), write \(x=Az\). Then
+\[
+x=(1-v)z+v_{\le N}z .
+\tag{NP.18}
+\]
+The second term belongs to
+\(\sum_{j=1}^N B y_j\). Hence the classes
+of \(y_1,\ldots,y_N\) generate the
+algebraic cokernel of \(1-v\).
+
+For a Fréchet \(S\), apply this Banach result
+to \(w\) on \(\ell^1(B)\) from NP.D.
+Formula (NP.14) supplies its nuclear
+representation; its finite head has range
+in the span of finitely many \(e_j\).
+The isomorphism \(\bar\beta\) in (NP.15)
+sends their classes to the classes of
+the corresponding \(y_j\). We have proved
+\[
+\begin{gathered}
+v:S\to S\text{ is }B\text{-nuclear}\\
+\Longrightarrow S/(1-v)S\\
+\text{is finite over }B .
+\end{gathered}
+\tag{NP.19}
+\]
+Here and below “finite over \(B\)” means
+finitely generated as an algebraic module.
+
+#### NP.F. Proof for a surjection and a subnuclear perturbation
+
+First assume that \(u:E\to F\) is \(B\)-nuclear.
+Normalize its representation as in NP.B
+so that \(y_j\to0\). NP.C lifts this sequence
+through \(f\) to a sequence \(x_j\to0\) in \(E\).
+In particular \((x_j)\) is bounded. The
+convergent relative series
+\[
+v(x)=\sum_j\lambda_j\xi_j(x)x_j
+\tag{NP.20}
+\]
+is \(B\)-nuclear by NP.B. Continuity gives
+\[
+\begin{gathered}
+fv=u,\\ f-u=f(1-v).
+\end{gathered}
+\tag{NP.21}
+\]
+Since \(f\) is onto, it induces a surjection
+\[
+\begin{gathered}
+E/(1-v)E\\
+\twoheadrightarrow F/(f-u)E .
+\end{gathered}
+\tag{NP.22}
+\]
+Its source is finite over \(B\) by NP.E;
+the images of a finite generating list
+generate its target.
+
+For a \(B\)-subnuclear \(u\), choose
+\(p_G:G\to E\) as in NP.A. Then \(fp_G\)
+is surjective and \(up_G\) is nuclear.
+The result just proved applies to their
+difference, while
+\[
+\begin{gathered}
+\operatorname{im}((f-u)p_G)\\
+=\operatorname{im}(f-u),\\
+\operatorname{Coker}(fp_G-up_G)\\
+=\operatorname{Coker}(f-u).
+\end{gathered}
+\tag{NP.23}
+\]
+This proves NP.T.
+
+Subnuclear maps admit the finite-diagram
+operations used in this argument. For a
+continuous map \(a:E'\to E\) and a
+subnuclear presentation \(p_G:G\to E\),
+form the closed submodule
+\[
+\begin{gathered}
+G'=\bigl\{(x',g)\in E'\times G:\\
+a(x')=p_G(g)\bigr\},\\
+p':G'\longrightarrow E',\\
+p'(x',g)=x'.
+\end{gathered}
+\tag{NP.24}
+\]
+It is Fréchet because it is the kernel
+of a continuous map into the Hausdorff
+space \(E\); completeness follows by
+taking the limit in its defining equality.
+The map \(p'\) is onto. The composite
+\((ua)p'\) is \(up_G\) composed with
+the projection to \(G\), and is nuclear
+by NP.B. Thus precomposition preserves
+subnuclearity. Postcomposition does so
+by the same nuclear composition rule.
+For a finite sum, take the fibre product
+over the common domain of the finitely
+many surjective presentations. It is
+again a closed Fréchet submodule with
+surjective projection. The lifted maps
+are nuclear and their finite sum is
+nuclear. Finite block matrices follow
+by precomposing with the component
+projections and postcomposing with the
+component inclusions, then adding the
+finitely many entries.
+
+#### NP.G. A finite cokernel need not be Hausdorff
+
+Take
+\[
+\begin{gathered}
+B=C([0,1],\mathbf C),\\
+E=F=B,\qquad f=1,\\
+s(x)=x,\\ u(b)=(1-s)b .
+\end{gathered}
+\tag{NP.25}
+\]
+Use the supremum norm and pointwise
+multiplication. The map \(u\) is
+\(B\)-nuclear with a single term:
+\(\lambda_1=1\), \(\xi_1=\operatorname{id}_B\) as
+the identity map of \(B\), and
+\(y_1=1-s\).
+Its perturbed map \(f-u\) is multiplication
+by \(s\). The algebraic cokernel \(B/sB\)
+is cyclic, generated by the class of one.
+
+The ideal \(sB\) is not closed. Indeed
+\[
+g_n(x)=\frac{x}{\sqrt{x+1/n}}\in sB
+\tag{NP.26}
+\]
+converges uniformly to \(\sqrt{x}\).
+For \(x\le1/n\) the difference is at most
+\(1/\sqrt n\). For \(x\ge1/n\), rationalizing
+the difference bounds it by
+\(1/(2n\sqrt x)\le1/(2\sqrt n)\).
+Thus the uniform difference tends to zero.
+But \(\sqrt{x}\notin sB\), since the
+necessary quotient \(1/\sqrt{x}\) on
+\(x>0\) has no continuous extension
+to zero. The zero class of the quotient
+therefore is not closed. This is exactly
+why NP.T asserts algebraic finite
+generation without a Hausdorff conclusion.
+
+#### NP.H. Actual power-series restrictions and their finite tails
+
+For a positive polyradius
+\(R=(R_1,\ldots,R_n)\), define
+\[
+\begin{gathered}
+W_R(B)=\\
+\biggl\{\sum_{\alpha\in\mathbf N^n}b_\alpha z^\alpha:\\
+\sum_\alpha\|b_\alpha\|_B R^\alpha<\infty\biggr\},\\
+\|b\|_R=\sum_\alpha\|b_\alpha\|_B R^\alpha .
+\end{gathered}
+\tag{NP.27}
+\]
+It is a Banach left \(B\)-module: rescaling
+each coordinate by \(R^\alpha\) identifies
+its normed coefficient space with
+\(\ell^1(\mathbf N^n,B)\), whose completeness
+was proved in NP.D. The series converges
+absolutely and uniformly on the closed
+polydisc of polyradius \(R\). On every
+smaller polydisc its derivatives converge
+normally, because a fixed derivative
+costs a polynomial in \(\alpha\), absorbed
+by the strict geometric radius margin.
+Thus these are actual analytic series.
+
+Let \(0<r_i<R_i\) for all \(i\).
+For the restriction
+\(\rho_{R,r}:W_R(B)\to W_r(B)\), put
+\[
+\begin{gathered}
+\lambda_\alpha=(r/R)^\alpha,\\
+\xi_\alpha(b)=R^\alpha b_\alpha,\\
+y_\alpha(z)=r^{-\alpha}z^\alpha1_B .
+\end{gathered}
+\tag{NP.28}
+\]
+These are \(B\)-linear coefficient maps
+with norm at most one and a bounded
+sequence of target monomials. Coordinate
+by coordinate,
+\[
+\begin{gathered}
+\rho_{R,r}(b)\\
+=\sum_\alpha\lambda_\alpha\xi_\alpha(b)y_\alpha,\\
+\sum_\alpha|\lambda_\alpha|\\
+=\prod_{i=1}^n(1-r_i/R_i)^{-1}.
+\end{gathered}
+\tag{NP.29}
+\]
+Hence the restriction is \(B\)-nuclear.
+For \(n=0\) there is one coefficient
+and the statement is the identity
+map on the rank-one module \(B\).
+
+The finite head can use the box
+\(0\le\alpha_i\le N\). With
+\(a_i=r_i/R_i\), its remaining
+coefficient weight is exactly
+\[
+\begin{gathered}
+T_N=\prod_i(1-a_i)^{-1}\\
+{}-\prod_i\frac{1-a_i^{N+1}}{1-a_i}.
+\end{gathered}
+\tag{NP.30}
+\]
+It tends to zero by the finite product
+formula. This supplies the explicit
+small tail used in NP.E after continuous
+finite-matrix precomposition and
+postcomposition; the finitely many
+operator bounds multiply \(T_N\).
+
+For the connection with ordinary
+holomorphic charts, take \(B\) to be
+the Banach algebra of scalar functions
+continuous on a closed base polydisc
+and holomorphic in its interior.
+A uniform limit stays holomorphic
+by the scalar Cauchy integral formula
+on interior coordinate circles, so
+this is a Banach algebra.
+If a scalar function is holomorphic
+on a neighbourhood of a larger product
+of that closed base polydisc and a
+closed fibre polydisc of radius \(R'\),
+its fibre Taylor coefficients belong
+to \(B\). Cauchy's coefficient bound
+gives, for \(R_i<R'_i\),
+\[
+\begin{gathered}
+\|b_\alpha\|_B\le M(R')^{-\alpha},\\
+\sum_\alpha\|b_\alpha\|_B R^\alpha\\
+\le M\prod_i(1-R_i/R'_i)^{-1}.
+\end{gathered}
+\tag{NP.31}
+\]
+Thus a reserved Cauchy margin places
+the actual holomorphic function in
+the power-series module (NP.27).
+The coefficient estimate is the
+ordinary multivariable Cauchy estimate
+proved in
+Holomorphic functions, Theorems1.2 and2.1;
+it is applied uniformly on the compact
+closed base polydisc.
+
+For example, suppose \(p:G\to E\) is
+a continuous \(B\)-linear surjection,
+\(G\) is a finite sum of \(W_R(B)\),
+and \(q\) is a continuous \(B\)-linear
+map from the corresponding finite
+sum of \(W_r(B)\) to \(F\).
+Any map \(u:E\to F\) satisfying
+\(up=q\rho_{R,r}\) is subnuclear:
+the restriction is nuclear by
+(NP.28)–(NP.29), and postcomposition
+preserves that property. The same
+conclusion holds with a continuous
+finite matrix before the restriction.
+NP.T therefore applies to every
+surjection perturbed by such an
+induced finite-diagram restriction.
+
+**Exercise.** If \(v\) is a nuclear
+endomorphism of a Banach \(B\)-module,
+why do the original head vectors
+\(y_1,\ldots,y_N\), rather than
+only their images under \(A^{-1}\),
+generate the cokernel?
+
+**Solution.** For arbitrary \(x\),
+take \(z=A^{-1}x\) in (NP.18).
+Its class is the class of
+\(\sum_{j\le N}\lambda_j\xi_j(z)y_j\).
+Those coefficients belong to \(B\),
+so the stated original head
+vectors generate.
+
+For an application to analytic Čech complexes, the perturbation
+map into the cycle module must itself satisfy the nuclear or
+subnuclear hypothesis. A displayed nuclear expansion in an
+ambient term supplies that hypothesis for the cycle module
+only after its coefficient maps and vectors have been
+constructed there. The compatible analytic coefficient
+base changes are separate hypotheses of such an application.
+
+#### NP.I. A diagonal model and a multivariable tail
+
+On \(\ell^1(B)\), consider the actual bounded operator
+\[
+\begin{gathered}
+v(b_1,b_2,b_3,\ldots)\\
+=(b_1,\tfrac12b_2,\tfrac14b_3,\ldots).
+\end{gathered}
+\tag{NP.32}
+\]
+It is \(B\)-nuclear: use the coordinate maps,
+the unit rows \(e_j\), and the summable weights
+\(\lambda_j=2^{1-j}\). Its tail after the first
+two coordinates has operator norm \(1/4\).
+The sum of the tail weights is \(1/2\), so
+the finite-head criterion in NP.E also applies
+using its summable bound.
+
+The range of \(1-v\) consists exactly of the
+rows whose first coordinate is zero. For the
+reverse inclusion, divide coordinate \(j\ge2\)
+by \(1-2^{1-j}\); these denominators are at
+least \(1/2\), so the resulting row remains
+in \(\ell^1(B)\). Hence projection onto the
+first coordinate gives the algebraic isomorphism
+\[
+\ell^1(B)/(1-v)\ell^1(B)\simeq B.
+\tag{NP.33}
+\]
+The finite-head proof supplies two generators;
+the explicit diagonal calculation shows that
+only the first is necessary.
+
+For the two-variable analytic restriction,
+take \(R=(2,3)\), \(r=(1,1)\). Formula (NP.29)
+has total coefficient weight \(3\). Its head
+with \(0\le\alpha_1,\alpha_2\le2\) has weight
+\[
+\begin{gathered}
+(1+\tfrac12+\tfrac14)(1+\tfrac13+\tfrac19)\\
+=\tfrac{91}{36},\\
+T_2=3-\tfrac{91}{36}=\tfrac{17}{36}.
+\end{gathered}
+\tag{NP.34}
+\]
+Both fibre radii enter the product. A
+one-variable tail bound would lose the
+second coefficient direction.
+
+![Relative nuclear factorization, a diagonal finite cokernel and the exact two-variable restriction tail](assets/nuclear-perturbation.png)
+
+**Figure NP.1.** Panel A is the pair of maps
+in (NP.12) and their inverse algebraic
+cokernel maps (NP.15). Panel B is the
+diagonal example (NP.32)–(NP.33), with its
+exact tail norm and its actual cokernel.
+Panel C is the two-variable coefficient
+weight in (NP.34). These are algebraic
+diagrams, with no geometric scale.
+
+Figure SVG ·
+exact diagram data ·
+reproducible source ·
+figure PNG.
+
+Free source:
+[Demailly, Complex Analytic and Differential Geometry,
+ChapterIX, §5, Theorem5.42 and Lemma5.43,
+author's freely accessible manuscript](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf).
+
+
+### 5.92. Nuclear tensor exactness and closed coefficient targets
+
+A cycle space is a closed subspace of a term of a complex.
+Its topology matters when a restriction map is expressed by a
+convergent nuclear series. This section proves the tensor and
+closed-target statements with that topology retained.
+
+All vector spaces are complex. All tensor products without a
+coefficient subscript are over \(\mathbf C\). A Fréchet space
+has its complete Hausdorff countable seminorm topology.
+We use the complete open mapping proof in
+NP.C
+and the absolutely convergent series and Banach factorization
+in NP.B--NP.D.
+The scalar holomorphic input is the
+polydisc Cauchy and Taylor proof.
+
+#### NT.A. Separation and complete quotients
+
+We first give the separation argument used below. If \(p\) is
+a real sublinear function and a real linear functional \(l\)
+on a subspace satisfies \(l\le p\), it extends to the whole
+space with the same bound. Indeed, to add a vector \(x\), its
+value \(c\) can be chosen in the interval
+\[
+\begin{gathered}
+\sup_{m}\{l(m)-p(m-x)\}\le c,\\
+c\le\inf_{m}\{p(m+x)-l(m)\}.
+\end{gathered}
+\tag{NT.1}
+\]
+The interval is nonempty: for \(m,n\) in the old subspace,
+\(l(m)+l(n)\le p(m+n)\), while
+\(p(m+n)\le p(m-x)+p(n+x)\).
+The inequalities in NT.1 imply domination on every
+\(m+tx\), by positive rescaling when \(t>0\) and negative
+rescaling when \(t<0\). The unions of chains of dominated
+extensions are dominated extensions. The maximal-element
+principle therefore gives an extension to the whole space.
+
+For a complex linear \(l\) satisfying \(|l|\le p\), apply
+this argument to its real part, with \(p\) a seminorm.
+If \(a\) is the real extension, set
+\(L(x)=a(x)-i a(ix)\). Then \(L\) is complex linear,
+extends \(l\), and is dominated by \(p\): choose a unit scalar
+\(\theta\) with \(\theta L(x)=|L(x)|\), and use
+\(|L(x)|=a(\theta x)\le p(x)\).
+In particular,
+\[
+p(x)=\sup_{\substack{L\text{ complex linear}\\ |L|\le p}}|L(x)|.
+\tag{NT.2}
+\]
+For \(p(x)>0\), the functional \(cx\mapsto c p(x)\) on
+the line through \(x\) supplies the lower bound; the case
+\(p(x)=0\) is immediate. This proves both norm recovery and
+the extension of a functional bounded by a restricted
+seminorm on a subspace.
+
+Here are the completeness details for quotients. If \(S\)
+is a closed subspace of a Fréchet space \(E\), with increasing
+defining seminorms \(p_j\), give \(E/S\) the seminorms
+\[
+\bar p_j([x])=\inf_{s\in S}p_j(x-s).
+\tag{NT.3}
+\]
+Their open balls are the images of the corresponding open
+balls in \(E\); hence this is the quotient topology. It is
+Hausdorff because \(S\) is closed. Given a Cauchy sequence
+of classes, choose a subsequence \(u_j\) with
+\(\bar p_j(u_{j+1}-u_j)<2^{-j}\), and representatives
+\(v_j\) of these differences with \(p_j(v_j)<2^{-j}\).
+The series \(\sum_j v_j\) converges in every seminorm and
+therefore in \(E\). Its class, added to \(u_1\), is the
+limit of the subsequence. The original Cauchy sequence has
+the same limit. Thus \(E/S\) is Fréchet. The metric
+\(\sum_j2^{-j}\min(1,\bar p_j(u-v))\) expresses this
+completeness in the countable seminorm topology.
+Closed subspaces are complete by taking their limits in
+\(E\).
+
+Write \(E_p\) for the Banach completion of \(E/\ker p\).
+The completion of \(S/\ker(p|_S)\) identifies isometrically
+with the closure \(S_p\) of its image in \(E_p\).
+Distance to \(S\) and distance to \(S_p\) are equal.
+Consequently
+\[
+(E/S)_{\bar p}=E_p/S_p.
+\tag{NT.4}
+\]
+Indeed the map is isometric on the dense image of \(E/S\),
+and the right side is complete by the preceding series
+argument with one norm.
+
+#### NT.B. The two tensor topologies
+
+For continuous seminorms \(p,q\) on \(E,F\), define on their
+algebraic tensor product
+\[
+\begin{gathered}
+(p\otimes_\pi q)(t)\\
+ =\inf\sum_{\nu=1}^N p(x_\nu)q(y_\nu),\\
+(p\otimes_\varepsilon q)(t)\\
+ =\sup_{\substack{|l|\le p\\ |m|\le q}}
+       |(l\otimes m)(t)|.
+\end{gathered}
+\tag{NT.5}
+\]
+The infimum runs over all finite representations
+\(t=\sum_{\nu=1}^N x_\nu\otimes y_\nu\).
+The first seminorm is projective; the second is injective.
+Both are seminorms by combining finite representations or
+using the supremum, and
+\(p\otimes_\varepsilon q\le p\otimes_\pi q\).
+Their Hausdorff completions are denoted
+\(E\widehat\otimes_\pi F\) and
+\(E\widehat\otimes_\varepsilon F\).
+For Fréchet factors they are Fréchet, since paired increasing
+seminorms are cofinal and their metric completion is complete.
+
+These topologies are Hausdorff already on \(E\otimes F\).
+To see this, continuous functionals separate points by NT.2.
+Their restrictions span the full dual of any finite-dimensional
+subspace: otherwise a nonzero vector in that subspace would
+annihilate every restriction, contradicting separation.
+For a nonzero finite tensor, use such coordinate functionals
+on the spans of its factors to obtain a nonzero
+\((l\otimes m)(t)\).
+
+Continuous linear maps in both factors give continuous maps
+of either completed tensor product. This follows directly
+from NT.5: pull back the bounding seminorms and their
+dominated functionals. The projective topology has the
+following universal property. A jointly continuous bilinear
+map \(b:E\times F\to G\), with \(G\) complete, extends
+uniquely to \(E\widehat\otimes_\pi F\). For every seminorm
+\(r\) on \(G\), continuity and rescaling give
+\(r(b(x,y))\le C p(x)q(y)\); summing a finite
+representation gives the required bound, and completeness
+extends the map. Conversely the tensor map
+\((x,y)\mapsto x\otimes y\) is jointly continuous by NT.5.
+The same reasoning identifies continuous multilinear maps
+and proves associativity and symmetry of completed
+projective tensor products: the maps on elementary tensors
+and their inverse parenthesizations are bounded for each
+product seminorm, and agree on a dense subspace.
+
+The Banach completion for \(p\otimes_\pi q\) is
+\(E_p\widehat\otimes_\pi F_q\). One can first divide out
+the zero seminorm factors. Bounded bilinear forms on the
+resulting normed factors extend uniquely to their Banach
+completions, with the same bound, by successive norm limits.
+NT.2, applied to the projective normed tensor space,
+recovers its norm from these forms. Its norm therefore
+agrees with the projective norm after completing the factors;
+finite tensors in the dense factors are dense in the latter
+space by NT.5.
+
+Two facts about closed embeddings and quotients will be
+needed. First, if \(S\subset E\) has the subspace topology,
+NT.2 extends every functional bounded by \(p|_S\) to one
+bounded by \(p\) on \(E\). Thus
+\[
+\begin{gathered}
+(p|_S\otimes_\varepsilon q)(t)
+ =(p\otimes_\varepsilon q)(t),\\
+t\in S\otimes F.
+\end{gathered}
+\tag{NT.6}
+\]
+If \(S,E,F\) are Fréchet and \(S\) is closed, completion
+gives a topological embedding for \(\widehat\otimes_\varepsilon\)
+with closed image. The image is closed because a convergent
+sequence in it is Cauchy in the identical source seminorms
+and the source is complete.
+
+Second, for \(Q=E/S\), the algebraic quotient
+\((E\otimes F)/(S\otimes F)\) is \(Q\otimes F\).
+For example, write a finite tensor using linearly independent
+second factors; its image is zero exactly when every first
+coefficient belongs to \(S\). Moreover the quotient
+seminorm of \(p\otimes_\pi q\) is
+\(\bar p\otimes_\pi q\). One inequality follows by mapping a
+representation to \(Q\). For the other, lift the finitely
+many first coefficients of a representation in \(Q\otimes F\),
+with \(p(x_\nu)\) arbitrarily close to
+\(\bar p([x_\nu])\). This makes its cost arbitrarily close
+to the quotient cost, also when a coefficient has zero
+quotient seminorm.
+
+Let \(T\) be the closure of \(S\otimes F\) in
+\(E\widehat\otimes_\pi F\). Taking the infimum over this
+closure gives the same quotient seminorm as taking it over
+\(S\otimes F\), by continuity. NT.A makes the quotient by
+\(T\) complete. Its dense subspace \(Q\otimes F\) has
+exactly the preceding projective topology, so uniqueness
+of completion gives
+\[
+\begin{gathered}
+(E\widehat\otimes_\pi F)/T
+ \simeq Q\widehat\otimes_\pi F,\\
+u:E\widehat\otimes_\pi F\longrightarrow
+           Q\widehat\otimes_\pi F,\\
+\ker u=T.
+\end{gathered}
+\tag{NT.7}
+\]
+In particular the last map is onto and open. No nuclearity
+is needed in NT.7; the kernel is a closure at this stage.
+
+#### NT.C. Nuclear maps, Hilbert factors and closed targets
+
+A scalar nuclear map \(v:E\to F\) between Fréchet spaces
+means a series
+\[
+\begin{gathered}
+v(x)=\sum_j\lambda_j l_j(x)y_j,\\
+\sum_j|\lambda_j|<\infty,\\
+|l_j(x)|\le p(x),\\
+\sup_j q(y_j)<\infty.
+\end{gathered}
+\tag{NT.8}
+\]
+Here \(q\) ranges over all continuous target seminorms.
+This is NP.1 for scalar coefficients. NP.B proves convergence,
+continuity and stability under continuous precomposition and
+postcomposition. NP.D factors it through \(\ell^1\).
+Conversely, a norm-convergent nuclear representation on
+Banach spaces has this form after absorbing the functional
+and vector norms into \(\lambda_j\).
+No identification of a tensor space with a space of
+operators is required here.
+
+A Banach nuclear map also factors through a Hilbert space.
+Normalize its representation with
+\(\|l_j\|,\|y_j\|\le1\), put
+\(a_j=|\lambda_j|^{1/2}\), and write
+\(\lambda_j=\theta_j a_j^2\), with \(|\theta_j|\le1\).
+The maps
+\[
+\begin{gathered}
+u(x)=(a_j l_j(x))_j\in\ell^2,\\
+w(c)=\sum_j\theta_j a_j c_j y_j,\\
+v=wu,\\
+\|u\|,\|w\|\le\Big(\sum_j|\lambda_j|\Big)^{1/2}
+\end{gathered}
+\tag{NT.9}
+\]
+are bounded by the sum of squares and Cauchy--Schwarz.
+For completeness, the latter inequality follows by
+minimizing the nonnegative quadratic
+\(\sum|a_j-tb_j|^2\) first for finite sequences and then
+taking limits. The same finite partial-sum bounds show
+that a Cauchy sequence in \(\ell^2\) has coordinatewise
+limits with square-summable norm and converges in norm.
+Thus the intermediate space in NT.9 is complete.
+
+Every closed subspace \(H_1\) of a Hilbert space has a
+norm-one orthogonal projection (norm zero for the zero
+subspace). To prove this, minimize \(\|x-h\|\) over \(h\in H_1\).
+The parallelogram identity makes a minimizing sequence
+Cauchy, so it has a minimizer. Varying the minimizer by
+each real and imaginary multiple of a vector in \(H_1\)
+shows orthogonality. Uniqueness, linearity and the norm
+bound follow by the orthogonal decomposition.
+
+**Binuclear lemma.** If \(f:E\to F\) and \(g:F\to G\)
+are Banach nuclear maps and \(gf(E)\subset T\) for a
+closed subspace \(T\subset G\), then \(gf:E\to T\)
+is nuclear. If \(gf\) vanishes on a closed subspace
+\(S\subset E\), its induced map \(E/S\to G\) is nuclear.
+
+For the first assertion factor \(g=wu\) through a Hilbert
+space \(H\), put \(H_1=w^{-1}(T)\), and insert its orthogonal
+projection \(P\):
+\[
+gf=w|_{H_1}\,Puf:E\longrightarrow T.
+\tag{NT.10}
+\]
+Here \(uf(E)\subset H_1\), and \(Puf\) is nuclear because
+\(f\) is nuclear. For the second assertion factor \(f=wu\)
+through \(H\), put \(H_1=\overline{u(S)}\), and let \(P\)
+project to \(H_1^\perp\). Then \(gw\) vanishes on \(H_1\),
+so \(gf=gwPu\). The map \(Pu\) vanishes on \(S\), and
+its induced map \(E/S\to H_1^\perp\) is bounded by the
+quotient norm. Postcompose it with \(gw|_{H_1^\perp}\),
+which is nuclear by nuclearity of \(g\). This proves the
+second assertion. Both uses require two nuclear arrows;
+no assertion about a single arbitrary Banach nuclear
+arrow into a closed subspace is being made.
+
+#### NT.D. Nuclear Fréchet spaces and their subquotients
+
+A Fréchet space \(E\) is **nuclear** if it has increasing
+defining seminorms \(p_j\) such that every canonical map
+\[
+\begin{gathered}
+E_{p_{j+1}}\longrightarrow E_{p_j}\\
+\text{is Banach nuclear.}
+\end{gathered}
+\tag{NT.11}
+\]
+Passing to a cofinal subsequence retains this property,
+since compositions with bounded maps retain nuclearity.
+The space itself is the inverse limit of its Banach
+completions. In fact, for compatible \(z_j\in E_{p_j}\)
+choose \(x_j\in E\) approximating \(z_j\) in \(p_j\)
+within \(1/j\). For each fixed \(k\), their images in
+\(E_{p_k}\) converge to \(z_k\). They are Cauchy in
+every defining seminorm; completeness supplies the
+unique element of \(E\) with these images.
+
+If \(E\) is nuclear, every continuous map from \(E\)
+to a Banach space is nuclear: it factors through one
+\(E_{p_j}\), and inserting \(E_{p_{j+1}}\) gives a
+nuclear arrow. It follows that for a Fréchet target \(F\),
+\[
+\begin{gathered}
+v:E\to F\text{ is nuclear}\\
+\Longleftrightarrow\
+v=w u,\\
+E\xrightarrow{u}M\xrightarrow{w}F,\\
+M\text{ Banach},\\
+u,w\text{ continuous}.
+\end{gathered}
+\tag{NT.12}
+\]
+The forward implication is NP.D; the reverse implication
+is the preceding observation followed by continuous
+postcomposition.
+
+Closed subspaces and Hausdorff quotients of nuclear
+Fréchet spaces are nuclear. Indeed, with \(S_j\subset E_{p_j}\)
+as in NT.A, the map
+\(S_{j+2}\to E_{p_{j+1}}\to E_{p_j}\) is the composite
+of two nuclear maps (restrict the first to \(S_{j+2}\)).
+Its image lies in \(S_j\). NT.C makes
+\(S_{j+2}\to S_j\) nuclear. Similarly the binuclear map
+\[
+\begin{gathered}
+E_{p_{j+2}}\longrightarrow E_{p_{j+1}}\\
+\longrightarrow E_{p_j}/S_j
+\end{gathered}
+\tag{NT.13}
+\]
+vanishes on \(S_{j+2}\); NT.C and NT.4 make the induced
+map between the corresponding quotient completions
+nuclear. The even-indexed seminorms now satisfy NT.11
+on both \(S\) and \(E/S\).
+
+A countable product of nuclear Fréchet spaces is nuclear.
+For factors \(E^k\) with seminorms \(p_j^k\), use
+\[
+q_j((x_k))=\max_{k\le j}p_j^k(x_k).
+\tag{NT.14}
+\]
+Its Banach completion is the finite product of the indicated
+Banach completions. The connecting map is the finite sum
+of their nuclear connecting maps, composed with coordinate
+projections and inclusions; the extra coordinate maps to
+zero. Finite sums are nuclear by concatenating their
+absolutely summable representations. Countable inverse
+limits with continuous bonding maps are closed subspaces
+of these products, since the compatibility equations are
+closed. They too are nuclear.
+
+Here is the precise closed-target consequence used later.
+If \(E\) is nuclear and \(v:E\to F\) is nuclear, then
+\(v:E\to T\) is nuclear whenever \(T\subset F\) is closed
+and contains its image. Also \(v:E/S\to F\) is nuclear
+if \(S\subset\ker v\) is closed. To prove these assertions,
+factor \(v=wu:E\to M\to F\) through a Banach space.
+In the first case use the Banach subspace \(w^{-1}(T)\).
+In the second use \(M/\overline{u(S)}\). The induced
+maps are continuous for the subspace or quotient
+topologies. Both \(E\) and \(E/S\) are nuclear, so NT.12
+applies. These are scalar nuclear assertions.
+
+#### NT.E. Equality of the tensor topologies
+
+Let \(a:E_P\to E_p\) be a nuclear Banach connecting map,
+with a representation
+\(a=\sum_j\lambda_j l_j\otimes x_j\) and
+\(\|l_j\|,\|x_j\|\le1\). For a finite tensor \(t\),
+NT.2 gives
+\[
+\begin{gathered}
+q((l_j\otimes1)t)\\
+ =\sup_{|m|\le q}|(l_j\otimes m)(t)|\\
+\le (P\otimes_\varepsilon q)(t).
+\end{gathered}
+\tag{NT.15}
+\]
+The series for \((a\otimes1)t\) consequently converges
+in \(E_p\widehat\otimes_\pi F_q\), with bound
+\[
+\begin{gathered}
+(p\otimes_\pi q)(t)\\
+ \le\Big(\sum_j|\lambda_j|\Big)
+          (P\otimes_\varepsilon q)(t).
+\end{gathered}
+\tag{NT.16}
+\]
+To check that its sum is the image of \(t\), expand each
+of the finitely many first factors of \(t\) by the nuclear
+series for \(a\). The equality holds in the Banach
+projective completion, whose norm on these finite
+tensors is the original seminorm by NT.B.
+
+If \(E\) is nuclear, each \(p=p_j\) has such a
+\(P=p_{j+1}\). NT.16 and the reverse elementary
+inequality from NT.5 prove equality of the projective
+and injective locally convex topologies. Thus, if either
+factor is nuclear,
+\[
+E\widehat\otimes_\pi F
+ \simeq E\widehat\otimes_\varepsilon F.
+\tag{NT.17}
+\]
+We then write \(\widehat\otimes\) without a decoration.
+This proof uses series and seminorm bounds; it assumes
+no injectivity theorem for a map from tensors to operators.
+
+If both factors are nuclear, their completed tensor
+product is nuclear. On Banach completions, the tensor
+of two nuclear maps has the double representation
+\[
+\begin{gathered}
+(a\otimes b)(t)\\ =
+ \sum_{j,k}\lambda_j\mu_k u_{jk}(t),\\
+u_{jk}(t)=c_{jk}(t)(x_j\otimes y_k),\\
+c_{jk}(t)=(l_j\otimes m_k)(t),\\
+\sum_{j,k}|\lambda_j\mu_k|
+\\ =\Big(\sum_j|\lambda_j|\Big)
+  \Big(\sum_k|\mu_k|\Big).
+\end{gathered}
+\tag{NT.18}
+\]
+The functionals have norm at most one for the projective
+norm, as do the elementary target vectors. Absolute
+convergence proves the formula first on finite tensors
+and then on the completion. Applying it to paired
+defining seminorms proves NT.11 for the tensor product.
+
+#### NT.F. Strict tensor exactness
+
+**Theorem NT.T.** Let
+\(0\to E_1\to E_2\to E_3\to0\) be an exact sequence
+of Fréchet spaces and continuous maps. If \(E_2\)
+or \(F\) is nuclear, then
+\[
+\begin{gathered}
+0\longrightarrow E_1\widehat\otimes F
+ \longrightarrow E_2\widehat\otimes F\\
+\longrightarrow E_3\widehat\otimes F
+ \longrightarrow0
+\end{gathered}
+\tag{NT.19}
+\]
+is exact, its first map is a closed topological embedding,
+and its last map is an open surjection.
+
+By NP.C, \(E_1\) has exactly the closed subspace topology
+of the kernel in \(E_2\), and \(E_3\) is its topological
+quotient. If \(E_2\) is nuclear, so are its subspace
+\(E_1\) and quotient \(E_3\), by NT.D. If \(F\) is
+nuclear, every tensor here has a nuclear factor directly.
+Thus NT.17 applies to every term of NT.19.
+NT.6 makes its first map a closed embedding. NT.7 says
+that the last map is an open surjection whose kernel is
+the closure of \(E_1\otimes F\). The closed image of the
+first map is precisely that closure, since its algebraic
+tensors are dense in its complete source. This proves
+all assertions.
+
+The tensor product with a nuclear factor commutes with
+countable products of Fréchet spaces, whenever either
+that fixed factor is nuclear or every product factor is
+nuclear. For the injective topology, a defining seminorm
+on a product involves only finitely many coordinates.
+For a finite product with its maximum seminorm, its dual
+unit ball consists of coordinate functionals whose norms
+have sum at most one: restriction gives these functionals;
+the reverse bound and equality follow by choosing each
+coordinate vector almost maximizing its functional,
+with phases chosen to align. NT.5 then makes the
+injective tensor seminorm the maximum of the coordinate
+tensor seminorms. Finite-coordinate tensors are dense
+in the product of completed tensors, by approximating
+each of the finitely many relevant coordinates.
+Completion therefore gives
+\[
+E\widehat\otimes\prod_k F_k
+ \simeq\prod_k(E\widehat\otimes F_k).
+\tag{NT.20}
+\]
+NT.D makes the product nuclear in the second alternative;
+NT.17 translates the preceding injective proof into the
+stated tensor notation.
+
+#### NT.G. Analytic coefficient spaces
+
+On a polydisc \(D_R\subset\mathbf C^n\), let \(A_r\)
+be the Banach space of holomorphic functions on \(D_r\)
+continuous on \(\overline D_r\), with its supremum norm.
+Here \(0<r_i<R_i\) in every coordinate. These spaces are
+complete: a uniformly Cauchy sequence has a continuous
+limit on the closed polydisc, and the Cauchy integral
+formula on every smaller polydisc makes its limit
+holomorphic inside.
+
+The completion of \(\mathcal O(D_R)\) for the
+\(\overline D_r\) supremum seminorm is \(A_r\).
+For density, replace \(g(z)\in A_r\) by \(g(sz)\) with
+\(s<1\) tending to one. Uniform continuity on the closed
+polydisc gives uniform convergence; the Taylor series
+of \(g(sz)\) converges uniformly there and its polynomials
+belong to \(\mathcal O(D_R)\).
+
+For \(r_i<s_i<R_i\), the Cauchy coefficient bound gives
+the Banach nuclear restriction
+\[
+\begin{gathered}
+A_s\longrightarrow A_r,\\
+g\longmapsto\sum_\alpha\lambda_\alpha\xi_\alpha(g)y_\alpha,\\
+\lambda_\alpha=(r/s)^\alpha,\\
+\xi_\alpha(g)=s^\alpha a_\alpha(g),\\
+y_\alpha=r^{-\alpha}z^\alpha,\\
+|\xi_\alpha(g)|\le\|g\|_{A_s},\\
+\|y_\alpha\|_{A_r}=1,\\
+\sum_\alpha(r/s)^\alpha\\
+ =\prod_{i=1}^n(1-r_i/s_i)^{-1}.
+\end{gathered}
+\tag{NT.21}
+\]
+For coefficients on the boundary of \(D_s\), first apply
+Cauchy on strictly smaller radii and then let the radii
+increase to \(s\). A sequence of closed polydiscs exhausting
+\(D_R\) and NT.21 prove that \(\mathcal O(D_R)\), with
+its compact-open topology, is nuclear.
+
+For every open \(U\subset\mathbf C^n\),
+\(\mathcal O(U)\) is likewise nuclear Fréchet.
+Completeness for its countable compact-open seminorms
+follows from the same local Cauchy argument; a countable
+compact exhaustion is obtained from rational boxes with
+closures in \(U\). Cover \(U\) by countably many relatively
+compact polydiscs \(D_j\). Restriction identifies
+\(\mathcal O(U)\) with the closed subspace given by
+\[
+\begin{gathered}
+(g_j)\in\prod_j\mathcal O(D_j),\\
+g_j|_{D_j\cap D_k}=g_k|_{D_j\cap D_k}.
+\end{gathered}
+\tag{NT.22}
+\]
+These equations hold for every pair \(j,k\).
+They are closed because restriction to each
+overlap is continuous into the Hausdorff compact-open
+space on that overlap. Compatible functions glue
+pointwise, and are holomorphic locally on the cover.
+The subspace topology is the compact-open topology:
+each compact subset of \(U\) has a finite cover by
+smaller compact subsets contained in the \(D_j\).
+NT.D now proves the assertion.
+
+We also need a nuclear map between whole Fréchet
+coefficient algebras. If \(D_r\Subset D_R\), choose
+vectors of radii \(r<s<t<R\). The restriction
+\(\rho:\mathcal O(D_R)\to\mathcal O(D_r)\) has the
+scalar nuclear representation
+\[
+\begin{gathered}
+\rho(g)=\sum_\alpha\lambda_\alpha\xi_\alpha(g)y_\alpha,\\
+\lambda_\alpha=(s/t)^\alpha,\\
+\xi_\alpha(g)=t^\alpha a_\alpha(g),\\
+y_\alpha=s^{-\alpha}z^\alpha.
+\end{gathered}
+\tag{NT.23}
+\]
+The functionals are bounded by the single compact
+seminorm \(\sup_{\overline D_t}|g|\). The target
+monomials form a bounded family for every compact
+seminorm on \(D_r\); in fact their suprema on the
+whole \(D_r\) are at most one. The weights sum to
+\(\prod_i(1-s_i/t_i)^{-1}\). Thus this is nuclear
+as a map of Fréchet spaces, not only separately for
+each target seminorm.
+
+#### NT.H. Closed cycles and cohomology
+
+Let \(C^\bullet\) be a complex of nuclear Fréchet spaces
+with continuous differentials. Suppose every image is
+closed, or equivalently every cohomology quotient is
+Hausdorff. Equivalence holds because
+\(Z^q=\ker d^q\) is closed and
+\(B^q=\operatorname{im}d^{q-1}\subset Z^q\):
+being closed in this closed subspace is the same as
+being closed in \(C^q\).
+The spaces \(Z^q,B^q,H^q\) are nuclear Fréchet by NT.D.
+The exact sequences
+\[
+\begin{gathered}
+0\to Z^q\to C^q\\
+\to B^{q+1}\to0,\\
+0\to B^q\to Z^q\to H^q\to0
+\end{gathered}
+\tag{NT.24}
+\]
+are strict by NP.C. For any Fréchet space \(V\),
+NT.T applied to both sequences shows that the cycles
+and boundaries of \(V\widehat\otimes C^\bullet\) are
+the embedded spaces \(V\widehat\otimes Z^q\) and
+\(V\widehat\otimes B^q\). In particular its images
+are closed, and
+\[
+H^q(V\widehat\otimes C^\bullet)
+ \simeq V\widehat\otimes H^q(C^\bullet)
+\tag{NT.25}
+\]
+topologically. To check the cycle assertion explicitly,
+factor \(d^q\) as the surjection onto \(B^{q+1}\)
+followed by its closed inclusion into \(C^{q+1}\);
+both maps retain exactly these properties after tensoring.
+Then use the second sequence of NT.24 for the quotient.
+No boundedness of the complex or passage to a fibre is
+needed for this degreewise assertion.
+
+#### NT.I. Relative nuclearity into a closed coefficient target
+
+Let \(A,B\) be commutative unital nuclear Fréchet
+algebras, with jointly continuous multiplication, and
+let \(\rho:A\to B\) be a continuous unital homomorphism.
+Modules have jointly continuous unital actions.
+For nuclear Fréchet \(A\)-modules \(E,F\), define
+their balanced tensor by the actual cokernel
+\[
+\begin{gathered}
+E\widehat\otimes_A F
+ =(E\widehat\otimes F)/\operatorname{im}d,\\
+d:E\widehat\otimes A\widehat\otimes F\\
+       \longrightarrow E\widehat\otimes F,\\
+d(x\otimes a\otimes y)\\
+ =ax\otimes y-x\otimes ay.
+\end{gathered}
+\tag{NT.26}
+\]
+The quotient may be non-Hausdorff: no closure is inserted
+in its definition. If it is Hausdorff, \(\operatorname{im}d\)
+is closed, and NT.A and NT.D make it nuclear Fréchet.
+All actions and maps in NT.26 extend by the projective
+universal property and associativity in NT.B.
+
+For a Fréchet algebra \(A\), an \(A\)-nuclear map
+means a series as in NP.1, now with continuous
+\(A\)-linear \(\xi_j:E\to A\). Equicontinuity means
+that for every seminorm \(p\) on \(A\) there is a
+seminorm \(q\) on \(E\), independent of \(j\), with
+\(p(\xi_j(x))\le q(x)\). The target vectors are bounded
+and the scalar weights are absolutely summable.
+Joint continuity of the action gives, for each target
+seminorm \(r\), a bound
+\(r(ay)\le C p(a)q(y)\). This proves convergence and
+continuity of the series and stability under continuous
+module maps by exactly the seminorm summation in NP.B.
+Here **\(A\)-subnuclear** means that precomposition
+with a continuous \(A\)-linear surjection from a
+nuclear Fréchet \(A\)-module makes the map \(A\)-nuclear.
+The requirement that this auxiliary module be nuclear
+is part of the definition in this paragraph.
+
+**Closed-target base-change theorem NT.CB.**
+Let \(E,F\) be nuclear Fréchet \(A\)-modules,
+\(F_1\subset F\) a closed \(A\)-submodule, and
+\(f:E\to F\) an \(A\)-subnuclear map whose image lies
+in \(F_1\). Denote the induced map by \(f_1:E\to F_1\).
+Assume the following precise coefficient hypotheses:
+\(\rho:A\to B\) is scalar nuclear;
+\(E_B=B\widehat\otimes_A E\) and
+\(F_B=B\widehat\otimes_A F\) are Hausdorff; and
+the natural map
+\[
+\begin{gathered}
+T=B\widehat\otimes_A F_1
+ \longrightarrow F_B\\
+\text{is a closed embedding.}
+\end{gathered}
+\tag{NT.27}
+\]
+Then \(1_B\widehat\otimes_A f_1:E_B\to T\)
+is \(B\)-subnuclear, with a nuclear Fréchet auxiliary
+module. In particular NT.CB applies to a cycle
+submodule when NT.27 has been proved for that module.
+
+First suppose \(f\) itself is \(A\)-nuclear.
+Write
+\[
+\begin{gathered}
+f(x)=\sum_j\lambda_j\xi_j(x)y_j,\\
+\rho(a)=\sum_k\mu_k\eta_k(a)b_k.
+\end{gathered}
+\tag{NT.28}
+\]
+The second line is a scalar nuclear representation.
+The natural map \(h_F:E\to F_B\), \(x\mapsto[1\otimes f(x)]\),
+has the representation
+\[
+\begin{gathered}
+h_F(x)=\sum_{j,k}\lambda_j\mu_k v_{jk}(x),\\
+v_{jk}(x)=c_{jk}(x)[b_k\otimes y_j],\\
+c_{jk}(x)=(\eta_k\circ\xi_j)(x).
+\end{gathered}
+\tag{NT.29}
+\]
+Indeed the balancing relation replaces
+\([1\otimes\xi_j(x)y_j]\) by
+\([\rho(\xi_j(x))\otimes y_j]\).
+The double weights are summable. The composed
+functionals are equicontinuous: the \(\eta_k\) have one
+seminorm bound on \(A\), and the \(\xi_j\) have a uniform
+bound for that seminorm. The target vectors are bounded,
+since the tensor map and quotient map are continuous
+and the two factor families are bounded. Absolute
+seminorm convergence justifies the substitutions and
+the double sum. Thus \(h_F\) is scalar nuclear.
+
+The map \(h:E\to T\), \(x\mapsto[1\otimes f_1(x)]\),
+is continuous. Under NT.27 its composition with the
+closed embedding is \(h_F\). NT.D therefore makes
+\(h\) scalar nuclear. For a subnuclear \(f\), take its
+specified nuclear auxiliary module \(G\) and surjection
+\(p:G\to E\). The same argument makes \(hp:G\to T\)
+scalar nuclear. It vanishes on the closed kernel of
+\(p\); NT.D descends its nuclearity to \(G/\ker p\),
+which is topologically \(E\) by NP.C. This proves the
+same scalar nuclear assertion for \(h\).
+
+Finally write \(h(x)=\sum_j\lambda_j l_j(x)t_j\).
+On \(P=B\widehat\otimes E\), the maps
+\[
+\begin{gathered}
+\zeta_j(b\otimes x)=b\,l_j(x)\in B,\\
+k(b\otimes x)=b\,h(x)\\
+ =\sum_j\lambda_j\zeta_j(b\otimes x)t_j
+\end{gathered}
+\tag{NT.30}
+\]
+are \(B\)-linear. If \(|l_j|\le p\), then for every
+seminorm \(q\) on \(B\),
+\(q(\zeta_j(z))\le(q\otimes_\pi p)(z)\), first
+on finite tensors and then on the completion.
+Thus the \(\zeta_j\) are equicontinuous into \(B\);
+NT.30 makes \(k:P\to T\) \(B\)-nuclear.
+The natural map \(P\to E_B\) is a continuous
+\(B\)-linear surjection by the definition of the
+balanced quotient. It is a map between nuclear Fréchet
+spaces by the Hausdorff assumption. On elementary
+tensors, and hence by continuity on \(P\),
+\[
+\begin{gathered}
+f_B=1_B\widehat\otimes_A f_1,\\
+p:P\to E_B,\qquad k=f_Bp.
+\end{gathered}
+\tag{NT.31}
+\]
+This is the required \(B\)-subnuclear presentation.
+
+The coefficient hypothesis NT.27 is essential to this
+argument. Scalar tensor exactness NT.T concerns
+\(\widehat\otimes_{\mathbf C}\); it does not assert
+exactness of an arbitrary balanced tensor
+\(\widehat\otimes_A\). For geometric applications,
+closed-target coefficient exactness and the required
+analytic restriction identifications must be proved
+for the modules in question.
+
+#### NT.J. A strict coefficient example
+
+For a nuclear Fréchet \(A\)-module \(M\),
+\(A\widehat\otimes_A M\simeq M\), with its actual
+topology. The action has section \(m\mapsto1\otimes m\).
+The continuous map \(a\otimes m\mapsto1\otimes a\otimes m\)
+to \(A\widehat\otimes A\widehat\otimes M\) has
+boundary \(a\otimes m-1\otimes am\) under NT.26.
+Thus the kernel of the action is exactly the image of
+the relation map, on completed tensors as well.
+For a coefficient homomorphism \(A\to B\), the same
+calculation with
+\(b\otimes a\mapsto b\otimes a\otimes1\) proves
+\[
+B\widehat\otimes_A A^m\simeq B^m.
+\tag{NT.32}
+\]
+In this calculation the boundary is
+\(b\rho(a)\otimes1-b\otimes a\), so its negative is
+the identity minus the section followed by the action.
+
+Take \(A=\mathcal O(D_R)\), \(B=\mathcal O(D_r)\),
+and \(\rho\) restriction, with \(D_r\Subset D_R\).
+These are nuclear algebras by NT.G, their multiplication
+is jointly continuous by the supremum seminorm bounds,
+and \(\rho\) is scalar nuclear by NT.23.
+Let \(L:\mathbf C^m\to\mathbf C^n\) be a constant
+linear map. Choosing a basis of its kernel and extending
+it to a basis of \(\mathbf C^m\) splits its kernel over
+both \(A\) and \(B\). Therefore
+\[
+\begin{gathered}
+F_1=\ker(L:A^m\to A^n),\\
+F_1\simeq A^{\dim\ker L},\\
+B\widehat\otimes_A F_1\\
+ =\ker(L:B^m\to B^n)
+\end{gathered}
+\tag{NT.33}
+\]
+as closed subspaces with their exact topologies.
+This verifies NT.27, including its closedness, in this
+example. Any \(A\)-linear matrix map from \(A^s\) to
+\(A^m\) with image in \(F_1\) is \(A\)-nuclear:
+use its finitely many coordinate functionals and column
+vectors in NT.28. NT.CB then applies to its restriction
+into the displayed actual kernel over \(B\).
+
+![Scalar nuclear tensor exactness, closed-target coefficient descent, and the nested radii in the analytic restriction.](assets/nuclear-tensor-closed-target.png)
+
+The upper panel depicts NT.19: the left image is closed
+and equals the full kernel. The middle panel depicts
+NT.27--NT.31: the coefficient target \(T\) has its closed
+subspace topology, and the nuclear presentation is made
+on \(P=B\widehat\otimes E\). The lower panel records
+the strict inequalities \(r<s<t<R\) used in NT.23;
+the concentric circles depict the one-coordinate example
+\((r,s,t,R)=(1,2,3,4)\).
+They do not depict general fibres or characteristic
+supports.
+
+The freely accessible source is
+[Demailly's author manuscript, Chapter IX, §5](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf),
+especially the tensor constructions, binuclear lemma,
+nuclear exactness and closed-target coefficient argument
+on printed pages 429--435 and 443--444.
+
+
+### 5.93. Coefficient transversality and analytic tensor products
+
+Tensoring over a coefficient algebra requires more than
+scalar nuclear exactness. The bar complex records the
+additional obstruction. Its vanishing, together with a
+Hausdorff degree-zero quotient, controls closed cycle
+spaces and changes of analytic coefficients.
+
+Throughout, \(A\) is a commutative unital nuclear Fréchet
+algebra with jointly continuous multiplication. Its
+modules are nuclear Fréchet spaces with jointly continuous
+unital actions; all module maps are continuous and linear
+over the stated algebra. Scalar completed tensors have
+the topology proved in
+NT.E--NT.F.
+Balanced tensors are the actual cokernels of NT.26,
+with no closure added to their defining relation images.
+Their homology quotients may be non-Hausdorff.
+
+We use the proved
+Fréchet subquotient and nuclear stability statements,
+the open mapping theorem NP.C,
+and the closed-target theorem NT.CB.
+The analytic example uses the
+holomorphic coefficient spaces of NT.G
+and the polydisc Cauchy and Taylor proof.
+
+#### CT.A. Nuclearly free modules and the augmented bar resolution
+
+A nuclearly free module means \(A\widehat\otimes V\),
+where \(V\) is a nuclear Fréchet vector space and \(A\)
+acts on its first factor. Its balanced tensor with a
+module \(E\) has the topological identification
+\[
+\begin{gathered}
+E\widehat\otimes_A(A\widehat\otimes V)
+ \simeq E\widehat\otimes V,\\
+[x\otimes(a\otimes v)]\longmapsto ax\otimes v.
+\end{gathered}
+\tag{CT.1}
+\]
+Here is the actual relation calculation on completed
+tensors. The action map \(\mu:E\widehat\otimes A
+\widehat\otimes V\to E\widehat\otimes V\) has the
+continuous section \(s(x\otimes v)=x\otimes1\otimes v\).
+Insert a further unit after \(a\) by
+\(r(x\otimes a\otimes v)=x\otimes a\otimes1\otimes v\).
+For the relation map \(d\) of the balanced tensor,
+\(dr=s\mu-1\). Also \(\mu d=0\). These identities hold
+on elementary tensors and extend by continuity and
+density. They show that \(\ker\mu=\operatorname{im}d\)
+exactly. This kernel is closed, and the displayed
+section makes CT.1 a topological isomorphism.
+In particular its balanced quotient is Hausdorff.
+
+For a module \(F\), put
+\[
+\begin{gathered}
+L_{-1}(F)=F,\\
+L_q(F)=A^{\widehat\otimes(q+1)}
+             \widehat\otimes F,\\
+q\ge0.
+\end{gathered}
+\tag{CT.2}
+\]
+The \(A\)-action is on the first factor. A finite
+elementary tensor is written \((a_0,\ldots,a_q;y)\).
+There are \(q+1\) face maps from \(L_q\) to \(L_{q-1}\):
+for \(i<q\) multiply \(a_i\) and \(a_{i+1}\);
+for \(i=q\) replace the last \(A\)-factor and \(y\)
+by \(a_qy\). When \(q=0\), this is the augmentation
+\(d_0(a_0;y)=a_0y\). For \(q\ge1\), define
+\[
+d_q=\sum_{i=0}^q(-1)^i\partial_i.
+\tag{CT.3}
+\]
+Multiplication and action are jointly continuous, so
+the projective tensor universal property extends each
+face map to the completed tensors. Associativity of
+multiplication and action gives
+\(\partial_i\partial_j=\partial_{j-1}\partial_i\)
+when \(i<j\). In the double sum for \(d_{q-1}d_q\),
+the term indexed by \(i<j\) cancels the term with
+the same composite indexed by \(j-1,i\), whose sign
+is opposite. Thus \(d_{q-1}d_q=0\), including the
+augmentation.
+
+Define \(h_{-1}(y)=(1;y)\) and let \(h_q\) insert
+\(1\) as the first factor for \(q\ge0\). Directly,
+the first face of \(h_q\) is the identity and every
+other face is \(h_{q-1}\) followed by the preceding
+face. With their alternating signs this gives
+\[
+\begin{gathered}
+d_{q+1}h_q+h_{q-1}d_q=1
+       \quad\\
+q\ge0,\qquad
+d_0h_{-1}=1_F.
+\end{gathered}
+\tag{CT.4}
+\]
+These are continuous scalar linear homotopies;
+\(h_q\) need not be \(A\)-linear.
+They prove exactness of the entire augmented resolution.
+The image of each \(d_{q+1}\) is the closed kernel of
+\(d_q\), and \(d_{q+1}h_q\) is a continuous projection
+onto that kernel: it equals the identity there and
+has image there. Thus the resolution is split as a
+complex of vector spaces with their topologies.
+Every \(L_q\) is nuclearly free and nuclear by NT.E.
+
+#### CT.B. Completed Tor and its symmetry
+
+Tensor CT.2 over \(A\) with \(E\). By CT.1 the terms
+are the nuclear Fréchet spaces
+\[
+C_q(E,F)=E\widehat\otimes
+          A^{\widehat\otimes q}\widehat\otimes F.
+\tag{CT.5}
+\]
+Use \([x|a_1|\cdots|a_q|y]\) for an elementary tensor.
+For \(q\ge1\), face zero acts by \(a_1\) on \(x\),
+faces \(1,\ldots,q-1\) multiply adjacent \(A\)-factors,
+and face \(q\) acts by \(a_q\) on \(y\).
+Their alternating sum is the differential.
+For example
+\[
+\begin{gathered}
+d_1[x|a|y]\\
+ =ax\otimes y-x\otimes ay,\\
+d_2[x|a|b|y]\\
+ =[ax|b|y]-[x|ab|y]\\
+{}+[x|a|by].
+\end{gathered}
+\tag{CT.6}
+\]
+This is the differential induced from CT.3 under CT.1,
+so its square is zero. Define
+\[
+\begin{gathered}
+\widehat{\operatorname{Tor}}^A_q(E,F)
+\\ =\ker d_q/\operatorname{im}d_{q+1},\\
+d_0:C_0(E,F)\to0.
+\end{gathered}
+\tag{CT.7}
+\]
+The quotients in positive degree are taken as vector
+spaces with their quotient topology, without inserting
+closures. In degree zero this definition gives exactly
+\(E\widehat\otimes_A F\), topologically as well as
+algebraically, by CT.6 and NT.26.
+
+Reversal of the factors is the continuous isomorphism
+\[
+\begin{gathered}
+R_q[x|a_1|\cdots|a_q|y]\\
+ =[y|a_q|\cdots|a_1|x].
+\end{gathered}
+\tag{CT.8}
+\]
+Commutativity of \(A\) identifies its face \(i\)
+with face \(q-i\) on the reversed tensor. Hence
+\(dR_q=(-1)^qR_{q-1}d\). With
+\[
+S_q=(-1)^{q(q+1)/2}R_q
+\tag{CT.9}
+\]
+we have \(dS_q=S_{q-1}d\), because the ratio of
+successive signs is \((-1)^q\).
+Reversal twice gives the identity, including its
+scalar signs. It follows that
+\(\widehat{\operatorname{Tor}}^A_q(E,F)\) and
+\(\widehat{\operatorname{Tor}}^A_q(F,E)\) are naturally
+isomorphic with their quotient topologies.
+
+If \(E=A\widehat\otimes V\) is nuclearly free,
+CT.1 identifies \(E\widehat\otimes_A L_\bullet(F)\)
+with \(V\widehat\otimes L_\bullet(F)\).
+Tensor the scalar homotopy CT.4 with \(1_V\);
+all maps remain continuous. Thus
+\[
+\widehat{\operatorname{Tor}}^A_q(E,F)=0
+ \quad(q\ge1)
+\tag{CT.10}
+\]
+in this case, and also when \(F\) is nuclearly free
+by CT.8--9. The degree-zero balanced tensor is then
+Hausdorff by CT.1.
+
+#### CT.C. The exact sequence and its topology
+
+For an exact sequence of nuclear Fréchet modules
+\(0\to E_1\to E_2\to E_3\to0\), scalar tensor exactness
+NT.T applied to CT.5 gives a short exact sequence
+of complexes \(C_\bullet(E_i,F)\), strict in each
+degree. Its homology has the algebraic exact sequence
+\[
+\begin{gathered}
+\cdots\to T_q(E_1)\to T_q(E_2)\\
+\to T_q(E_3)\\
+\xrightarrow{\delta}T_{q-1}(E_1)\to\cdots,\\
+T_0(E_1)\to T_0(E_2)\\
+\to T_0(E_3)\to0,
+\end{gathered}
+\tag{CT.11}
+\]
+where \(T_q(E_i)=\widehat{\operatorname{Tor}}^A_q(E_i,F)\).
+
+We give the cycle argument for every assertion of
+exactness. Lift a cycle \(z_3\) in degree \(q\) to
+\(z_2\) in the middle complex. Its boundary is the
+image of a unique \(z_1\) in degree \(q-1\) of the
+first complex. This \(z_1\) is a cycle, since its
+image has boundary zero and the first inclusion is
+injective. Define \(\delta[z_3]=[z_1]\).
+A different lift changes \(z_1\) by a boundary.
+Changing \(z_3\) by a boundary allows a lift in
+degree \(q+1\), and again changes the result by a
+boundary. The map is therefore well defined,
+linear and natural.
+
+At the middle homology, a cycle whose image is a
+boundary can be adjusted by the boundary of a lift
+of that primitive. The adjusted cycle lies in the
+first complex. At the third homology, \(\delta[z_3]=0\)
+means that the boundary of its lift is a boundary in
+the first complex; subtract its primitive to obtain a
+cycle lift in the middle complex. At the next first
+homology, a cycle becoming a boundary in the middle
+complex is the boundary of an element whose projection
+is a cycle in the third complex; its connecting image
+is the given class. These three verifications prove
+exactness throughout CT.11. In degree zero every
+element is a cycle, so the last map is onto.
+No closedness of an arbitrary homology denominator
+is used. Symmetry gives the same sequence in the
+second module variable.
+
+In particular balanced tensoring is algebraically
+right exact in this category. This statement uses
+actual cokernels. When all relevant quotients are
+Hausdorff, the maps in a short exact resulting
+sequence are strict by NP.C.
+
+#### CT.D. Any nuclearly free resolution computes the groups
+
+Let \(L_\bullet\to F\) now be any exact augmented
+resolution by nuclearly free modules, with continuous
+maps. It need not admit a scalar splitting.
+Put \(B_{-1}=F\) and
+\(B_q=\ker(L_q\to L_{q-1})\) for \(q\ge0\),
+where \(L_0\to L_{-1}\) is the augmentation.
+Exactness makes these the preceding images, and
+they are closed nuclear Fréchet submodules. Thus
+\[
+\begin{gathered}
+0\to B_q\to L_q\\
+\to B_{q-1}\to0
+\end{gathered}
+\tag{CT.12}
+\]
+is strict. Use CT.11 in the second variable and
+the vanishing CT.10. For \(j>1\) it gives
+\[
+\begin{gathered}
+\widehat{\operatorname{Tor}}^A_j(E,B_{q-1})
+\\ \simeq
+\widehat{\operatorname{Tor}}^A_{j-1}(E,B_q),\\
+\widehat{\operatorname{Tor}}^A_1(E,B_{q-1})\\
+ \simeq \ker(K_q\to G_q).
+\end{gathered}
+\tag{CT.13}
+\]
+Here \(G_q=E\widehat\otimes_A L_q\) and
+\(K_q=E\widehat\otimes_A B_q\).
+The first identification is the connecting map;
+the second is its injection followed by exactness.
+They are natural algebraic identifications.
+
+To identify the homology directly, use these abbreviations.
+Right exactness gives an onto map \(G_q\to K_{q-1}\)
+whose kernel is the image of \(K_q\to G_q\).
+Also \(G_{q+1}\to K_q\) is onto. The differential of
+\(G_\bullet\) factors through
+\(G_q\to K_{q-1}\to G_{q-1}\).
+It follows, by taking the preimage of the last
+kernel and dividing by the first kernel, that
+\[
+\begin{gathered}
+H_q(G_\bullet)\\
+ \simeq\ker(K_{q-1}\to G_{q-1}),\\
+q\ge1.
+\end{gathered}
+\tag{CT.14}
+\]
+Successively apply the first line of CT.13, starting
+at \(B_{-1}=F\), and then its second line with
+index \(q-1\). This identifies CT.14 with
+\(\widehat{\operatorname{Tor}}^A_q(E,F)\).
+For \(q=1\) the second line alone does so.
+For \(q=0\), right exactness gives the actual
+cokernel \(E\widehat\otimes_A F\).
+
+This degree-zero identification is topological:
+the scalar map
+\(E\widehat\otimes L_0\to E\widehat\otimes F\)
+is an open surjection by NT.T. Composing it with
+the balanced quotient gives an open surjection onto
+\(E\widehat\otimes_A F\). Its factor through
+\(G_0\) is still onto and open, because the preceding
+balanced quotient map is onto. CT.14 in degree zero
+identifies its kernel with the image of \(G_1\).
+The quotient topology is therefore exactly the
+homology quotient topology. This does not require
+the degree-zero quotient to be Hausdorff.
+In positive degrees we use the algebraic
+identifications just proved and make no additional
+topological assertion about non-Hausdorff homology.
+
+#### CT.E. Transverse coefficients and actual closed kernels
+
+Call \(E\) and \(F\) **transverse over \(A\)** when
+\[
+\begin{gathered}
+E\widehat\otimes_A F\text{ is Hausdorff},\\
+\widehat{\operatorname{Tor}}^A_q(E,F)=0
+       \quad(q\ge1).
+\end{gathered}
+\tag{CT.15}
+\]
+The condition is symmetric by CT.B. Nuclearly free
+modules are transverse to every module.
+Finite sums of transverse modules remain transverse:
+CT.5 is the finite direct sum of the individual
+complexes, so its kernels, images and homology are
+their finite direct sums, including degree zero
+and its topology.
+
+**Kernel theorem.** If CT.12 is replaced by an exact
+sequence \(0\to E_1\to E_2\to E_3\to0\), and
+\(E_2,E_3\) are transverse to \(F\), then \(E_1\)
+is transverse to \(F\), and
+\[
+\begin{gathered}
+0\to E_1\widehat\otimes_A F
+ \to E_2\widehat\otimes_A F\\
+ \to E_3\widehat\otimes_A F\to0
+\end{gathered}
+\tag{CT.16}
+\]
+is strict. The positive Tor vanishing follows at
+every index from CT.11. Its degree-zero segment
+makes the first arrow injective, with image the
+kernel of the second arrow, and the last arrow
+onto. A continuous injection into a Hausdorff
+space makes its domain Hausdorff: two distinct
+points have distinct images and disjoint inverse
+images of separating neighbourhoods. Thus the
+first balanced quotient is Hausdorff and hence
+nuclear Fréchet by NT.A and NT.D. Its image is
+closed because it is a kernel with Hausdorff
+target. NP.C now makes the injection a
+topological embedding onto that kernel, and
+makes the final surjection open.
+
+This gives the coefficient embedding needed in NT.CB.
+Let \(\rho:A\to B\) be a scalar nuclear homomorphism
+of commutative unital nuclear Fréchet algebras.
+Let \(F_1\subset F\) be closed, put \(Q=F/F_1\),
+and suppose \(B\) is transverse over \(A\) to
+\(E,F,Q\). Then
+\[
+\begin{gathered}
+0\to B\widehat\otimes_A F_1
+ \to B\widehat\otimes_A F\\
+ \to B\widehat\otimes_A Q\to0
+\end{gathered}
+\tag{CT.17}
+\]
+is strict by CT.16. In particular NT.27 holds
+with its actual closed subspace topology, and
+\(E_B,F_B\) are Hausdorff. If an \(A\)-subnuclear
+map \(f:E\to F\), with a nuclear auxiliary module,
+has image in \(F_1\), NT.CB therefore proves that
+\[
+\begin{gathered}
+B\widehat\otimes_A E
+ \longrightarrow B\widehat\otimes_A F_1
+\\ \text{is }B\text{-subnuclear}.
+\end{gathered}
+\tag{CT.18}
+\]
+This is a statement into the closed target itself.
+The transversality assumptions in CT.17 are the
+coefficient conditions that supply its topology.
+
+#### CT.F. Successive changes of coefficients
+
+Let \(A\to B\to D\) be continuous unital homomorphisms
+of commutative nuclear Fréchet algebras. If \(B\)
+is transverse to \(E\) over \(A\), then
+\[
+\begin{gathered}
+\widehat{\operatorname{Tor}}^B_q
+ (D,B\widehat\otimes_A E)
+\\ \simeq\widehat{\operatorname{Tor}}^A_q(D,E).
+\end{gathered}
+\tag{CT.19}
+\]
+To prove this, take the standard resolution
+\(L_q=A\widehat\otimes V_q\) of \(E\).
+After tensoring with \(B\), CT.1 gives the terms
+\(B\widehat\otimes V_q\).
+Its positive homology vanishes by transversality,
+and its degree-zero cokernel is
+\(E_B=B\widehat\otimes_A E\).
+This is Hausdorff, so the augmented complex is
+an actual exact resolution of \(E_B\) by
+nuclearly free \(B\)-modules.
+
+Use CT.D for this resolution and for the original
+resolution over \(A\). In both cases the complex
+computing the groups in CT.19 is exactly
+\(D\widehat\otimes V_\bullet\), with the same
+differentials. This proves CT.19 in positive
+degrees algebraically. In degree zero both
+objects have the topology of the quotient of
+\(D\widehat\otimes V_0\) by the same image
+of \(D\widehat\otimes V_1\), by the last
+paragraph of CT.D. Hence the degree-zero
+identification is topological even before
+assuming it Hausdorff. On elementary tensors
+it is the canonical coefficient map
+\[
+\begin{gathered}
+{}[d\otimes[b\otimes x]]\\
+ \longmapsto[d\,\rho_{BD}(b)\otimes x].
+\end{gathered}
+\tag{CT.20}
+\]
+Thus, if \(D\) is also transverse to \(E\)
+over \(A\), it is transverse to \(E_B\)
+over \(B\). No general flatness of \(B\)
+or \(D\) over \(A\) is assumed.
+
+#### CT.G. Bounded complexes and cycle spaces
+
+Let \(K^\bullet\) be a complex of nuclear Fréchet
+\(A\)-modules, zero in degrees \(q>N\).
+Let \(M\) be transverse to every term, and
+suppose \(H^q(K^\bullet)=0\) for \(q\ge k\).
+These are algebraic cohomology vanishings;
+no initial Hausdorff assumption on lower
+cohomology is required.
+
+Put \(Z^q=\ker d^q\). For \(q\ge k-1\),
+exactness at the next degree gives
+\[
+\begin{gathered}
+0\to Z^q\to K^q\\
+\to Z^{q+1}\to0.
+\end{gathered}
+\tag{CT.21}
+\]
+These are sequences of nuclear Fréchet modules:
+the cycle spaces are closed kernels. Starting
+with \(Z^{N+1}=0\), descend through CT.21.
+The kernel theorem CT.E makes \(M\) transverse
+to \(Z^q\) for every \(q\ge k-1\), and
+makes every tensor of CT.21 strict.
+Consequently
+\[
+\begin{gathered}
+Z^q(M\widehat\otimes_A K^\bullet)
+\\ =M\widehat\otimes_A Z^q,\\
+B^q(M\widehat\otimes_A K^\bullet)
+\\ =M\widehat\otimes_A Z^q,\\
+q\ge k.
+\end{gathered}
+\tag{CT.22}
+\]
+For the first equality, factor the differential
+through \(Z^{q+1}\). Its inclusion into \(K^{q+1}\)
+remains injective because it is the first arrow
+of the tensored sequence at \(q+1\). At the
+last zero term the assertion is immediate.
+For the second equality use the onto map to
+\(Z^q\) at \(q-1\). This proves that the
+tensored complex is acyclic in degrees \(q\ge k\).
+It also proves all the closed cycle embeddings
+displayed in CT.22.
+
+Here is the precise statement for comparison maps.
+Let \(f:K^\bullet\to J^\bullet\) be a continuous
+chain map, with both complexes bounded above
+and with \(M\) transverse to all their terms.
+Define
+\[
+\begin{gathered}
+C(f)^q=K^q\oplus J^{q-1},\\
+D^q(x,y)\\
+ =(d_K^q x,\ f^q x-d_J^{q-1}y).
+\end{gathered}
+\tag{CT.23}
+\]
+The mixed term of \(D^{q+1}D^q\) is
+\(f^{q+1}d_K^q x-d_J^q f^q x=0\);
+the two square terms vanish as well. Thus
+this is a complex. Its inclusion of
+\(J[-1]\), whose differential is \(-d_J\),
+and projection to \(K\) give a short exact
+sequence of complexes. Lift a cycle \(x\)
+by \((x,0)\); its boundary is \((0,f(x))\).
+The same lifting proof as CT.C, with degrees
+reversed, gives the connecting map
+\(+H^q(f)\). Its exact sequence shows
+\[
+\begin{gathered}
+H^q(C(f))=0\\
+\Longleftrightarrow\
+H^q(f)\text{ injective and}\\
+H^{q-1}(f)\text{ surjective}.
+\end{gathered}
+\tag{CT.24}
+\]
+Indeed the adjacent exact segment starts with
+\(H^{q-1}(K)\to H^{q-1}(J)\), passes through
+\(H^q(C(f))\), and ends with \(H^q(K)\to H^q(J)\);
+exactness gives both implications.
+
+If \(H^q(f)\) is an isomorphism for \(q\ge k\)
+and a surjection for \(q=k-1\), then CT.24
+makes \(C(f)\) acyclic in degrees \(q\ge k\).
+Its terms are finite sums of transverse modules.
+Apply CT.21--22, and note that finite sums and
+the differential CT.23 commute with balanced
+tensoring. CT.24 applied to the tensor comparison
+then gives
+\[
+\begin{gathered}
+H^q(1_M\widehat\otimes_A f)
+\\ \text{is an isomorphism},\\
+q\ge k,\\
+H^{k-1}(1_M\widehat\otimes_A f)
+\\ \text{is surjective}.
+\end{gathered}
+\tag{CT.25}
+\]
+This includes the degree adjacent to the
+comparison range and the sign of its
+connecting map.
+
+#### CT.H. Faithful evaluations and arbitrary kernels
+
+We next establish the scalar analytic product
+identifications without requiring a closed image
+for a gluing differential. Let \(U,V\) be complete
+Fréchet spaces. Every continuous \(l:U\to\mathbf C\)
+gives a continuous evaluation
+\(l\widehat\otimes1:U\widehat\otimes_\varepsilon V\to V\).
+If \(|l|\le Cp\), NT.2 and NT.5 give
+\[
+\begin{gathered}
+q((l\otimes1)t)\\
+ \le C(p\otimes_\varepsilon q)(t).
+\end{gathered}
+\tag{CT.26}
+\]
+The map extends by completeness. These evaluations
+separate tensors in the completion. In fact, for
+each pair \(p,q\), the injective seminorm is the
+supremum of all scalar evaluations with
+\(|l|\le p, |m|\le q\). This equality passes to
+the completion because a Cauchy sequence for
+that seminorm converges uniformly on these
+two families of functionals. If every
+\((l\widehat\otimes1)t\) is zero, every defining
+seminorm of \(t\) is therefore zero.
+
+It follows that a continuous injective map
+\(a:V\to W\) between Fréchet spaces remains
+injective after \(U\widehat\otimes_\varepsilon-\).
+Indeed a tensor in the kernel has all its
+evaluations in \(\ker a=0\); the preceding
+separation proves it zero. This does not
+assert a topological embedding for an
+arbitrary injective \(a\).
+
+If \(U\) is nuclear and \(a:V\to W\) is
+any continuous map, put \(S=\ker a\).
+NT.T gives the strict sequence
+\[
+\begin{gathered}
+0\to U\widehat\otimes S
+ \to U\widehat\otimes V\\
+ \to U\widehat\otimes(V/S)\to0.
+\end{gathered}
+\tag{CT.27}
+\]
+The induced \(V/S\to W\) is continuous and
+injective. NT.17 and the preceding evaluation
+argument make its tensor with \(U\) injective.
+Hence
+\[
+\ker(1_U\widehat\otimes a)
+ =U\widehat\otimes\ker a
+\tag{CT.28}
+\]
+with its closed subspace topology. No
+closedness of \(\operatorname{im}a\) is needed.
+
+#### CT.I. Holomorphic products on arbitrary open sets
+
+Let \(U\subset\mathbf C^n\) and
+\(V\subset\mathbf C^m\) be open. Then the
+pointwise product map induces a topological
+isomorphism
+\[
+\begin{gathered}
+\mathcal O(U)\widehat\otimes\mathcal O(V)\\
+ \simeq\mathcal O(U\times V).
+\end{gathered}
+\tag{CT.29}
+\]
+All spaces have their compact-open topologies
+and are nuclear Fréchet by NT.G.
+
+First take \(V=D\) to be a polydisc about zero,
+of radii \(R\). For a finite sum
+\(h(z,w)=\sum_\nu f_\nu(z)g_\nu(w)\),
+compact \(K\subset U\), and
+\(\overline D_r\Subset D\), the injective
+seminorm is exactly
+\[
+(p_K\otimes_\varepsilon p_r)(h)
+ =\sup_{K\times\overline D_r}|h|.
+\tag{CT.30}
+\]
+Point evaluations give the inequality from
+right to left. Conversely, apply a functional
+\(l\) bounded by \(p_K\) to the \(z\)-variable.
+For each fixed \(w\), the resulting function
+\(\sum_\nu l(f_\nu)g_\nu(w)\) has absolute
+value at most the right side. Applying a
+functional bounded by \(p_r\) proves the
+other inequality, using precisely NT.5.
+The argument works for any compact \(K\),
+without a representation of functionals by
+measures.
+
+Every \(g\in\mathcal O(U\times D)\) has a
+Taylor expansion in \(w\), with coefficients
+\(a_\alpha\in\mathcal O(U)\). Cauchy's formula
+on an intermediate polydisc gives, uniformly
+for \(z\in K\) and \(w\in\overline D_r\),
+\[
+\begin{gathered}
+g(z,w)=\sum_{\alpha\in\mathbf N^m}
+                  a_\alpha(z)w^\alpha,\\
+\sup_K|a_\alpha|
+ \le M_{K,s}s^{-\alpha},\\
+r<s<R,\\
+M_{K,s}=\sup_{K\times\overline D_s}|g|.
+\end{gathered}
+\tag{CT.31}
+\]
+The coefficient integrals are holomorphic in
+\(z\): on each smaller \(z\)-polydisc, Cauchy's
+formula in \(z\) and uniform convergence allow
+the parameter integrals to be interchanged;
+the resulting Cauchy formula gives their
+local holomorphic Taylor series. The bound
+in CT.31 makes the series uniformly
+absolutely convergent on the stated compact
+product. Its rectangular polynomial partial
+sums in \(w\) are finite tensors. Compact
+products of this form are cofinal among
+compact subsets of \(U\times D\).
+CT.30, density and completeness prove CT.29
+when the second open set is a polydisc,
+also after translating its centre.
+
+For general \(V\), take a countable polydisc
+cover \((D_j)\). In every nonempty
+\(D_j\cap D_k\), choose a countable dense
+set of points \(w_{jk\ell}\). Set
+\[
+\begin{gathered}
+P=\prod_j\mathcal O(D_j),\\
+Q=\prod_{j,k,\ell}\mathbf C,\\
+a((g_j))_{jk\ell}
+\\ =g_j(w_{jk\ell})-g_k(w_{jk\ell}).
+\end{gathered}
+\tag{CT.32}
+\]
+The products are countable, and \(a\) is
+continuous. Equality on the chosen dense
+sets is equality on each overlap by
+continuity. The gluing and topology
+argument NT.22 therefore gives
+\(\mathcal O(V)=\ker a\), as a closed
+topological subspace of \(P\).
+
+Apply CT.28 with \(U\) there replaced
+by \(\mathcal O(U)\), and use NT.20
+to commute its tensor with the two
+countable products. The polydisc case
+already proved identifies the resulting
+kernel with the tuples
+\[
+\begin{gathered}
+(h_j)\in\prod_j\mathcal O(U\times D_j),\\
+h_j(z,w_{jk\ell})=h_k(z,w_{jk\ell}).
+\end{gathered}
+\tag{CT.33}
+\]
+For each fixed \(z\), density of the chosen
+points gives equality on the whole overlap.
+Thus these functions glue to a holomorphic
+function on \(U\times V\). Conversely every
+such function gives the tuple.
+The induced topology is exactly compact-open:
+cover a compact subset by finitely many
+compact subsets of \(U\times D_j\), as in
+NT.22. This proves CT.29 for all open sets.
+The proof neither requires a closed image
+of \(a\) nor a Stein hypothesis on \(U,V\).
+For empty open sets the function spaces
+are zero and the same formula holds.
+
+#### CT.J. A coefficient obstruction in every positive degree
+
+Let \(A=\mathbf C[\epsilon]/(\epsilon^2)\) with its
+finite-dimensional topology and let \(B=A/(\epsilon)\).
+Both are nuclear Fréchet algebras; any linear map
+between finite-dimensional normed spaces is a finite
+nuclear series by choosing coordinate functionals
+and basis vectors. The periodic augmented resolution
+\[
+\begin{gathered}
+\cdots\xrightarrow{\epsilon} A
+ \xrightarrow{\epsilon}A
+ \xrightarrow{\epsilon}A\\
+ \to B\to0
+\end{gathered}
+\tag{CT.34}
+\]
+is exact: the image and kernel of multiplication by
+\(\epsilon\) are both \(\mathbf C\epsilon\), and
+the augmentation has that same kernel.
+Its terms are nuclearly free. Tensoring with \(B\)
+over \(A\) makes every displayed multiplication
+map zero. CT.D gives
+\[
+\begin{gathered}
+\widehat{\operatorname{Tor}}^A_q(B,B)
+ \simeq B,\\
+q\ge0.
+\end{gathered}
+\tag{CT.35}
+\]
+For \(I=\epsilon A\subset A\), the sequence
+\(0\to I\to A\to B\to0\) is strict, but
+\[
+\begin{gathered}
+B\widehat\otimes_A I\simeq B,\\
+B\widehat\otimes_A A\simeq B,\\
+B\widehat\otimes_A(I\hookrightarrow A)=0.
+\end{gathered}
+\tag{CT.36}
+\]
+Indeed \(I\simeq B\) as an \(A\)-module,
+and \(1\otimes\epsilon=\epsilon\cdot1\otimes1=0\)
+in \(B\widehat\otimes_A A\).
+Thus a closed submodule need not stay embedded
+under a coefficient change, even though the
+algebras and all scalar tensor spaces are nuclear.
+The nonzero group CT.35 is exactly the obstruction
+to the injective arrow in CT.16. This is a
+finite-dimensional calculation, so every quotient
+topology in this example is Hausdorff.
+
+The same example illustrates the target distinction.
+Multiplication by \(\epsilon\) is an \(A\)-nuclear
+map \(A\to A\) with image in \(I\), and the quotient
+map \(A\to B\) is scalar nuclear. The balanced
+target \(B\widehat\otimes_A I\) is nevertheless
+sent to zero in \(B\widehat\otimes_A A\).
+An ambient coefficient calculation therefore
+cannot identify that closed target; CT.17
+requires its transversality premises.
+
+![The split bar resolution, the signed comparison complex, and the dual-number obstruction to coefficient exactness.](assets/coefficient-transversality.png)
+
+The first panel records the homotopy identity CT.4.
+The second records the mixed-term cancellation in
+CT.23 and the degree range CT.25. The third records
+CT.35--36: its zero arrow has a nonzero domain,
+whereas every positive Tor group is \(B\).
+These are algebraic diagrams; no geometric scale
+or representation of a proper fibre is intended.
+
+Free source:
+[Demailly's author manuscript, Chapter IX, §5.C](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf),
+printed pages 439--442, for nuclear coefficient
+resolutions and transversality. The signed
+complex and all connecting maps used here are
+defined and proved in CT.C and CT.G.
+
+
+### 5.94. Weighted Dolbeault solvability and holomorphic approximation
+
+A strictly plurisubharmonic exhaustion supplies both a
+complete metric and weights that separate two compact
+sublevel sets. The complete metric permits integration
+by parts without a boundary condition. The weights
+then give a weak solution estimate, vanishing for the
+structure sheaf, and approximation of holomorphic
+functions with all their derivatives.
+
+Here \(\Omega\) is an open subset of \(\mathbb C^n\),
+\(n\ge1\), with a smooth nonnegative proper strictly
+plurisubharmonic function \(\psi\). Proper means that
+every set \(\{\psi\le c\}\) is compact in \(\Omega\).
+No regularity of its boundary is assumed. All Hilbert
+inner products are linear in the first variable.
+
+The measure operations used below are proved in the
+earlier programme: monotone and dominated convergence,
+product integration and linear changes of variables,
+Hölder and convolution estimates,
+[\(L^p\) completeness and smooth density](../elliptic-boundary-reduction/banach-foundation-bridges.html#completeness-and-compact-smooth-density),
+scaled mollifiers,
+weak derivatives and local approximation,
+and polar integration.
+We also use Hilbert projection and Riesz representation,
+Hahn–Banach, NT.A,
+the polydisc Cauchy and Taylor proof,
+and the explicit programme proofs of
+distributional holomorphic regularity, R.3
+and acyclicity of smooth-module sheaves, R.5.
+
+#### WD.A. A complete metric with controlled cutoffs
+
+Put
+\[
+\begin{gathered}
+F(t)=t+t^2,\\
+\omega=i\partial\bar\partial F(\psi),\\
+\omega=(1+2\psi)i\partial\bar\partial\psi
+       \\
+       {}+2i\partial\psi\wedge\bar\partial\psi .
+\end{gathered}
+\tag{WD.1}
+\]
+Strict plurisubharmonicity makes this a positive
+Kähler form. Our convention is
+\(\omega=i\sum g_{j\bar k}dz_j\wedge d\bar z_k\);
+the associated real metric is \(2\operatorname{Re}g\).
+The rank-one inequality in WD.1 gives
+\[
+\begin{gathered}
+|\partial\psi|_g^2\le\tfrac12,\\
+|d\psi|_\omega^2=2|\partial\psi|_g^2\le1 .
+\end{gathered}
+\tag{WD.2}
+\]
+Indeed, for a positive matrix \(g\), evaluate
+\(g\ge2aa^*\) on \(g^{-1}a\). If
+\(c=a^*g^{-1}a\), the result is \(c\ge2c^2\);
+as \(c\ge0\), it follows that \(c\le1/2\).
+This is precisely WD.2.
+
+Along every piecewise smooth path the change in
+\(\psi\) is bounded by its metric length. A metric
+Cauchy sequence therefore has bounded \(\psi\). It
+lies in a compact sublevel set, has a convergent
+subsequence there, and converges in the metric,
+because the smooth positive metric and Euclidean
+metric are locally equivalent. Thus \(\omega\) is
+complete. This argument works on each connected
+component; bounded sublevels meet only finitely many
+components.
+
+Choose a real smooth function \(\eta\), equal to one
+on \((-\infty,1]\), zero on \([2,\infty)\), with
+\(0\le\eta\le1\), and set
+\[
+\chi_R=\eta(\psi/R),\qquad R\ge1 .
+\tag{WD.3}
+\]
+These functions have compact support, converge
+pointwise to one, and satisfy
+\(|d\chi_R|_\omega\le\|\eta'\|_\infty/R\).
+Such a smooth \(\eta\) is obtained by integrating
+and normalizing a nonnegative smooth bump on
+\((1,2)\); smooth bumps and locally finite
+partitions are constructed in R.5.
+
+#### WD.B. Maximal operators and their common graph core
+
+Let \(\varphi\) be a smooth real function. Write
+\(H_q=L^2_{n,q}(\Omega,\omega,e^{-\varphi})\) for
+the Hilbert space of measurable \((n,q)\)-forms
+with norm
+\[
+\|u\|_\varphi^2
+ =\int_\Omega |u|_\omega^2 e^{-\varphi}
+                       \frac{\omega^n}{n!}.
+\tag{WD.4}
+\]
+These spaces are complete: in a measurable
+orthonormal frame they are finite sums of scalar
+\(L^2\) spaces, whose completeness was proved at
+the linked earlier result. Equivalently one may
+use a countable coordinate partition. Positive
+smooth weights and bundle metrics are boundedly
+equivalent to Euclidean ones on each compact.
+
+The maximal operator \(D''=\bar\partial\) has domain
+the forms \(u\in H_q\) whose distributional derivative
+belongs to \(H_{q+1}\). It is closed: an \(L^2\)
+limit and an \(L^2\) derivative limit satisfy the
+same test-form identities, by Cauchy–Schwarz on
+each compact. Compactly supported smooth forms
+are dense by the earlier mollifier proof, so this
+domain is dense. Distributional derivatives
+commute, hence \(D''D''=0\), with the full domain
+assertion that \(D''u\) belongs to the next domain
+and has derivative zero.
+
+Let \(P\) denote the formal weighted adjoint of
+\(D''\), defined by integration by parts on compact
+test forms. Its maximal distributional domain is
+defined in the same way. We prove
+\[
+\begin{gathered}
+C_c^\infty(\Omega,\Lambda^{n,q}),\\
+\text{dense in}\\
+\operatorname{Dom}D''\cap\operatorname{Dom}P,\\
+\text{with norm}\\
+\|u\|_\varphi+\|D''u\|_\varphi\\
+{}+\|Pu\|_\varphi .
+\end{gathered}
+\tag{WD.5}
+\]
+The same assertion holds with either operator
+alone. First multiply by WD.3. The commutators
+are exterior multiplication by
+\(\bar\partial\chi_R\), and its negative adjoint
+contraction, respectively. Exterior multiplication
+by a covector and its contraction have operator
+norm at most the covector norm: choose a unitary
+basis with that covector in its first direction.
+Consequently each commutator norm is bounded by
+\(\|d\chi_R\|_\infty\|u\|_\varphi\).
+Dominated convergence for the three original
+terms and WD.3 show convergence in the joint
+graph norm. It remains to smooth a compactly
+supported form.
+
+Take a finite smooth partition on a neighbourhood
+of its support. Each piece has support strictly
+inside a coordinate box, so may be extended by
+zero before convolution. All operators in such
+a box are matrix first-order operators with smooth
+coefficients. For a scalar summand \(a\partial_j\),
+integration by parts gives the exact commutator
+\[
+\begin{aligned}
+&a(x)\partial_j(u*\rho_\epsilon)(x)\\
+&\quad-((a\partial_j u)*\rho_\epsilon)(x)\\
+&=\int(a(x)-a(y))u(y)\\
+&\qquad\cdot(\partial_j\rho_\epsilon)(x-y)\,dy\\
+&\quad+\int(\partial_j a)(y)\\
+&\qquad\cdot\rho_\epsilon(x-y)u(y)\,dy .
+\end{aligned}
+\tag{WD.6}
+\]
+On a fixed slightly larger box the coefficients
+are Lipschitz. The first kernel is bounded by
+a constant times
+\(|x-y||\partial_j\rho_\epsilon(x-y)|\);
+its integral is independent of \(\epsilon\).
+The second kernel has bounded integral as well.
+Young's inequality thus bounds WD.6 uniformly
+on \(L^2\). For smooth \(u\) the commutator tends
+to zero in \(L^2\), since both differentiated
+convolutions tend to \(a\partial_j u\).
+Smooth \(L^2\) density and the uniform bound
+give the same conclusion for every \(u\in L^2\).
+Zeroth-order commutators tend to zero by uniform
+continuity of the coefficient on that box and
+the convolution bound. Apply this argument to
+all coefficients of \(D''\) and \(P\). The
+convolution of each distributional derivative
+converges to its \(L^2\) value, so the smoothed
+partition pieces converge in both graph norms.
+Their finite sum proves WD.5. Supports remain
+inside the coordinate boxes for small
+\(\epsilon\); no boundary extension is applied
+to a piece touching its box boundary.
+
+The Hilbert adjoint \((D'')^*\) is precisely
+the maximal operator \(P\). One inclusion follows
+by testing the Hilbert adjoint against compact
+smooth forms. Conversely, if \(Pu\in L^2\),
+the compact integration-by-parts identity
+extends to every vector in \(\operatorname{Dom}D''\)
+using its single-operator graph core. This is
+the defining adjoint identity. In particular
+WD.5 applies to the actual Hilbert adjoint,
+not merely to a formal expression.
+
+#### WD.C. The weighted Kähler estimate
+
+On the trivial holomorphic line bundle with metric
+\(e^{-\varphi}\), define
+\[
+\begin{gathered}
+D'=\partial-\partial\varphi\wedge,\\
+D''=\bar\partial,\\
+L=\omega\wedge,\qquad\Lambda=L^* .
+\end{gathered}
+\tag{WD.7}
+\]
+We establish the needed Kähler identities directly.
+At any chosen point take holomorphic coordinates
+with \(g\) the identity and its first derivatives
+zero. To construct them, first use a complex
+linear change to make \(g\) the identity. The
+Kähler equations give
+\(\partial_\ell g_{j\bar k}=\partial_jg_{\ell\bar k}\).
+A holomorphic quadratic coordinate change with
+these symmetric coefficients cancels the
+holomorphic first derivatives; their conjugates
+cancel the antiholomorphic ones. A holomorphic
+change of line frame cancels the first derivatives
+of \(\varphi\): in the new frame its weight is
+\(\varphi-2\operatorname{Re}h\), and the linear
+holomorphic function \(h\) can have any specified
+holomorphic first derivatives. Thus the connection,
+volume and metric first-order terms all vanish
+at this point.
+
+Let \(e_j\) and \(\bar e_j\) denote exterior
+multiplication by \(dz_j\) and \(d\bar z_j\);
+let \(\iota_j,\bar\iota_j\) be their adjoints.
+The only nonzero anticommutators of exterior
+and contraction operators are
+\(\iota_je_k+e_k\iota_j=\delta_{jk}\) and
+\(\bar\iota_j\bar e_k+\bar e_k\bar\iota_j=\delta_{jk}\).
+All mixed ones vanish. Therefore
+\[
+\begin{gathered}
+L=i\sum_j e_j\bar e_j,\\
+\Lambda=-i\sum_j\bar\iota_j\iota_j,\\
+{}[\Lambda,\bar e_k]=i\iota_k,\\
+{}[\Lambda,e_k]=-i\bar\iota_k .
+\end{gathered}
+\tag{WD.8}
+\]
+For example, moving \(\iota_j\) past
+\(\bar e_k\) changes sign, and moving
+\(\bar\iota_j\) past \(\bar e_k\) leaves the
+term \(\delta_{jk}\iota_j\); this gives the
+first commutator. Moving \(\iota_j\) past
+\(e_k\) gives the second. At the normal point,
+the formal adjoints of
+\(\sum e_j\partial_j\) and
+\(\sum\bar e_j\partial_{\bar j}\) are
+\(-\sum\iota_j\partial_{\bar j}\) and
+\(-\sum\bar\iota_j\partial_j\).
+WD.8 hence proves the global first-order identities
+\[
+\begin{gathered}
+{}[\Lambda,D'']=-i(D')^*,\\
+{}[\Lambda,D']=i(D'')^* .
+\end{gathered}
+\tag{WD.9}
+\]
+They are frame-invariant identities, and their
+coefficients and first-order terms have been
+checked at an arbitrary point.
+
+Write \(\{A,B\}=AB+BA\) when both operators
+have odd degree. Direct differentiation of
+WD.7 gives
+\(\{D',D''\}=\partial\bar\partial\varphi\wedge\).
+Expanding all four products verifies
+\[
+\begin{gathered}
+\{D'',[\,\Lambda,D'\,]\}\\
+=[\,\Lambda,\{D',D''\}\,]\\
+       {}+\{D',[\,D'',\Lambda\,]\},\\
+\Delta''=\Delta'
+       +[\,i\partial\bar\partial\varphi\wedge,\Lambda\,],\\
+\Delta'=\{D',(D')^*\},\\
+\Delta''=\{D'',(D'')^*\}.
+\end{gathered}
+\tag{WD.10}
+\]
+For the second line, multiply the first by
+\(-i\), then use WD.9. The second term becomes
+\(\Delta'\); the first becomes the displayed
+curvature commutator with the indicated order
+and sign.
+
+Suppose now
+\[
+i\partial\bar\partial\varphi\ge\omega .
+\tag{WD.11}
+\]
+Diagonalize this Hermitian form relative to
+\(\omega\) at the point, with eigenvalues
+\(\lambda_j\ge1\). The finite-dimensional
+diagonalization used here follows by maximizing
+the real quadratic form on the unit sphere:
+differentiation in every tangent direction
+gives a unit eigenvector; its orthogonal
+complement is invariant by Hermitian symmetry,
+so induction gives an orthonormal eigenbasis.
+For one exterior pair,
+the commutator
+\([i\lambda_je_j\bar e_j,-i\bar\iota_j\iota_j]\)
+acts on
+\(1,dz_j,d\bar z_j,dz_j\wedge d\bar z_j\)
+by \(-\lambda_j,0,0,\lambda_j\), respectively.
+Thus on
+\(dz_1\wedge\cdots\wedge dz_n\wedge d\bar z_J\)
+it acts by \(\sum_{j\in J}\lambda_j\).
+For an \((n,q)\)-form this is at least \(q\).
+Compact integration by parts in WD.10 now yields
+\[
+\begin{gathered}
+\|D''u\|_\varphi^2+\|(D'')^*u\|_\varphi^2\\
+\ge q\|u\|_\varphi^2 .
+\end{gathered}
+\tag{WD.12}
+\]
+Indeed \(D'u=0\) in holomorphic top degree, and
+the remaining contribution
+\(\|(D')^*u\|_\varphi^2\) is nonnegative.
+WD.5 passes WD.12 to every vector in the joint
+maximal domain. This passage uses only the lower
+bound \(q\|u\|^2\); it requires no boundedness of
+the full curvature operator.
+
+#### WD.D. The weak solution theorem
+
+For \(1\le q\le n\), let
+\[
+\begin{gathered}
+T=D'':H_{q-1}\longrightarrow H_q,\\
+S=D'':H_q\longrightarrow H_{q+1},
+\end{gathered}
+\tag{WD.13}
+\]
+with maximal domains; set \(H_{n+1}=0\) and
+let \(S\) have full domain when \(q=n\).
+Under WD.11, every \(g\in H_q\) with \(Sg=0\)
+has a solution \(f\in\operatorname{Dom}T\) satisfying
+\[
+\begin{gathered}
+Tf=g,\\
+\|f\|_\varphi^2\le q^{-1}\|g\|_\varphi^2 .
+\end{gathered}
+\tag{WD.14}
+\]
+
+Here are the domain and functional-analytic details.
+The kernel \(K=\ker S\) is closed, and
+\(\operatorname{im}T\subset K\) by the full
+distributional square-zero assertion in WD.B.
+For \(v\in\operatorname{Dom}T^*\), use Hilbert
+projection to write \(v=v_1+v_2\), with
+\(v_1\in K\) and \(v_2\in K^\perp\).
+Since \(v_2\perp\operatorname{im}T\), the
+adjoint definition gives \(v_2\in\operatorname{Dom}T^*\)
+and \(T^*v_2=0\). Hence
+\(v_1\in\operatorname{Dom}T^*\cap\operatorname{Dom}S\),
+and \(T^*v_1=T^*v\). Applying WD.12 to \(v_1\)
+gives
+\[
+\begin{gathered}
+|\langle v,g\rangle|=|\langle v_1,g\rangle|\\
+ \le q^{-1/2}\|g\|_\varphi\|T^*v\|_\varphi .
+\end{gathered}
+\tag{WD.15}
+\]
+The linear functional
+\(T^*v\mapsto\langle v,g\rangle\) on
+\(\operatorname{im}T^*\) is therefore well-defined
+and bounded. Hahn–Banach extends it to \(H_{q-1}\)
+with the same bound. Riesz representation gives
+\(f\in H_{q-1}\) such that
+\(\langle T^*v,f\rangle=\langle v,g\rangle\)
+for every \(v\in\operatorname{Dom}T^*\), and
+the norm bound in WD.14 holds. In particular
+the identity against compact smooth \(v\)
+states precisely \(D''f=g\) distributionally.
+This identifies \(f\) in the maximal domain
+of \(T\) and proves WD.14.
+
+Projection of \(f\) off the closed space \(\ker T\)
+retains its derivative and decreases its norm.
+The resulting solution is unique among solutions
+orthogonal to \(\ker T\): the difference of any
+two is in that kernel. No smoothness in positive
+form degree is asserted by this weak solution
+argument.
+
+#### WD.E. Arbitrary locally square-integrable data
+
+Every distributionally closed locally \(L^2\)
+\((n,q)\)-form \(g\), \(1\le q\le n\), has a
+locally \(L^2\) primitive on \(\Omega\).
+To see this with an actual admissible weight,
+keep the metric WD.1 and let
+\[
+\begin{gathered}
+A_j=\{j\le\psi\le j+1\},\\
+M_j=\int_{A_j}
+                    |g|_\omega^2\,\frac{\omega^n}{n!},\\
+b_j=\log\!\bigl(2^j(1+M_j)\bigr),\\
+j\ge0 .
+\end{gathered}
+\tag{WD.16}
+\]
+Each integral is finite because its region is
+compact. Overlaps of these regions cause no
+problem: they only increase the following
+upper bound. Construct a smooth convex
+nondecreasing \(\kappa\), zero on
+\((-\infty,0]\), positive at one, by
+\[
+\begin{gathered}
+\kappa(t)=\int_0^t(t-s)e^{-1/s}\,ds\\
+(t>0),\\
+\kappa(t)=0\qquad(t\le0).
+\end{gathered}
+\tag{WD.17}
+\]
+Smoothness at zero follows because every
+derivative of \(e^{-1/t}\) is a polynomial
+in \(1/t\) times \(e^{-1/t}\), and each
+of these tends to zero. Its first derivative
+is nonnegative, and its second derivative
+is \(e^{-1/t}\) for \(t>0\).
+Choose \(a_j\ge0\) inductively so that
+\[
+\begin{gathered}
+\chi(t)=\\
+\sum_{j=0}^{\infty}a_j\kappa(t-j+1),\\
+\chi(j)\ge b_j .
+\end{gathered}
+\tag{WD.18}
+\]
+At integer \(j\), the newly available summand
+has value \(a_j\kappa(1)>0\) if \(a_j>0\);
+all future summands vanish there. Thus such
+coefficients exist. On every bounded interval
+only finitely many summands are nonzero,
+including after differentiation. The sum is
+smooth, convex and nondecreasing.
+
+Set \(\varphi=F(\psi)+\chi(\psi)\).
+The chain rule and nonnegative first and
+second derivatives of \(\chi\) imply WD.11.
+Also \(\varphi\ge\chi(\psi)\), so
+\[
+\begin{gathered}
+\|g\|_\varphi^2
+ \le\sum_{j\ge0}M_j e^{-\chi(j)}\\
+ \le\sum_{j\ge0}2^{-j}<\infty .
+\end{gathered}
+\tag{WD.19}
+\]
+WD.14 gives a globally weighted \(L^2\)
+primitive, which is locally \(L^2\) since
+the weight and metric are smooth and positive.
+Multiplication or division by the nowhere
+zero holomorphic form
+\(dz_1\wedge\cdots\wedge dz_n\) transfers
+the assertion to \((0,q)\)-forms, with the
+fixed sign \((-1)^n\) if this top form is
+written before the antiholomorphic factors.
+Explicitly,
+\(\bar\partial(\zeta\wedge u)=(-1)^n
+\zeta\wedge\bar\partial u\) for
+\(\zeta=dz_1\wedge\cdots\wedge dz_n\).
+Thus solving for \((-1)^n\zeta\wedge g\)
+and dividing its primitive by \(\zeta\)
+solves \(\bar\partial u=g\).
+
+#### WD.F. Scalar holomorphic vanishing
+
+On every open subset of \(\Omega\), let
+\(\mathcal A^q\) be the sheaf of locally
+\(L^2\) \((0,q)\)-forms whose distributional
+\(\bar\partial\) is locally \(L^2\).
+For \(q=n\) the derivative is zero.
+These are sheaves because membership and
+the weak identities are local and locally
+square-integrable forms glue uniquely up
+to almost-everywhere equality. They form
+a complex, since the distributional square
+is zero. Its degree-zero kernel is
+\(\mathcal O_\Omega\), by R.3: a
+distribution killed by every
+\(\partial/\partial\bar z_j\) is an
+ordinary holomorphic function. Conversely,
+holomorphic functions are locally \(L^2\)
+and have zero derivative.
+
+Near any point use a coordinate ball whose
+closure lies in the given open set. That
+ball has a nonnegative proper strictly
+plurisubharmonic exhaustion, for example
+\((r^2-|z-z_0|^2)^{-1}\). WD.E on this ball
+gives a locally \(L^2\) primitive of every
+closed form of positive degree. The
+primitive itself lies in the graph sheaf,
+because its derivative is the given
+locally \(L^2\) form. Hence the sequence
+\[
+\begin{gathered}
+0\longrightarrow\mathcal O_\Omega
+\longrightarrow\mathcal A^0,\\
+\mathcal A^0\xrightarrow{\bar\partial}\mathcal A^1
+\longrightarrow\cdots,\\
+\cdots
+\xrightarrow{\bar\partial}\mathcal A^n
+\longrightarrow0 .
+\end{gathered}
+\tag{WD.20}
+\]
+is exact as a sequence of sheaves.
+
+Each \(\mathcal A^q\) is a module over smooth
+functions. Indeed, for smooth \(a\) the weak
+Leibniz rule gives
+\(\bar\partial(au)=\bar\partial a\wedge u
++a\bar\partial u\), and both terms are
+locally \(L^2\). The differential need not
+be linear over this smooth-function ring;
+acyclicity concerns the individual sheaves.
+The full injective-resolution and
+partition-of-unity proof R.5 applies to
+each \(\mathcal A^q\), so each is acyclic
+for ordinary global sections.
+
+For completeness, an acyclic resolution
+such as WD.20 computes the cohomology of
+its initial sheaf. Put \(Z^0=\mathcal O_\Omega\)
+and \(Z^{j+1}=\operatorname{im}
+(\mathcal A^j\to\mathcal A^{j+1})\), with
+\(Z^{n+1}=0\). The short exact sequences
+\(0\to Z^j\to\mathcal A^j\to Z^{j+1}\to0\)
+give the usual long exact cohomology
+sequence as follows. Use the functorial
+injective resolution \(I^r=GQ^r\) constructed
+in R.5. Both \(G\) and \(Q\) there are
+exact, so a short exact sequence gives
+a short exact sequence in every resolution
+degree. It splits in that degree because
+its first term is injective. Applying
+global sections therefore gives a short
+exact sequence of complexes of vector
+spaces. For a cocycle in the quotient
+complex, lift it to the middle complex.
+Its differential has a unique preimage
+in the first complex, and that preimage
+is a cocycle. Different lifts change it
+by a boundary. This defines the connecting
+map. Its kernel consists of the classes
+whose lifts can be corrected to cocycles;
+the kernel of the middle-to-quotient map
+consists of classes that can be corrected
+by a lifted boundary into the first
+complex; and a class of the first complex
+that becomes a boundary in the middle
+is obtained by the connecting construction
+from the image of that primitive. These
+three statements prove exactness at
+every position.
+
+Acyclicity of
+\(\mathcal A^j\) identifies positive
+cohomology in adjacent degrees, and
+identifies the degree-one group with the
+cokernel of the section map. Iterating
+these identities gives exactly the
+cohomology of the section complex in
+WD.20; after the last term all higher
+groups vanish. This is also the elementary
+dimension-shifting proof of the
+acyclic-resolution assertion.
+
+Finally WD.E solves every globally closed
+positive-degree section of that complex.
+Consequently
+\[
+\begin{gathered}
+H^q(\Omega,\mathcal O_\Omega)=0,\\
+q\ge1 .
+\end{gathered}
+\tag{WD.21}
+\]
+The same proof works for any fixed finite
+direct sum of the structure sheaf, by
+solving each component. WD.21 is the
+structure-sheaf assertion; extension to an
+arbitrary coherent sheaf requires additional
+coherent-section arguments.
+
+#### WD.G. Holomorphic \(L^2\) bounds for every jet
+
+Let \(D_R\) be a polydisc with coordinate
+radii \(R_1,\ldots,R_n>0\), centred at zero.
+If \(h(z)=\sum_\alpha c_\alpha z^\alpha\)
+is holomorphic there, then
+\[
+\begin{gathered}
+A_\alpha(R)=\prod_{j=1}^n
+        \frac{\pi R_j^{2\alpha_j+2}}{\alpha_j+1},\\
+\int_{D_R}|h|^2\,dV\\
+ =\sum_{\alpha\in\mathbb N^n}|c_\alpha|^2 A_\alpha(R).
+\end{gathered}
+\tag{WD.22}
+\]
+To prove it, first integrate on a smaller
+closed polydisc. The Cauchy–Taylor proof
+gives a uniformly absolutely convergent
+series there. Finite polynomial partial
+sums converge uniformly, so their squared
+absolute values converge in integral.
+Polar integration and Fubini show that
+different monomials are orthogonal:
+the angular integral of
+\(e^{i(\alpha_j-\beta_j)\theta_j}\)
+is zero unless \(\alpha_j=\beta_j\);
+the radial integral is
+\(R_j^{2\alpha_j+2}/(2\alpha_j+2)\).
+Combining it with \(2\pi\) gives WD.22
+at smaller radii. Increase those radii
+to \(R_j\); monotone convergence on
+both sides proves WD.22, allowing
+infinite values.
+
+In particular,
+\[
+\begin{gathered}
+C_\alpha(R)=\alpha!\\
+\quad\cdot\prod_{j=1}^n
+    \left(\frac{\alpha_j+1}
+      {\pi R_j^{2\alpha_j+2}}\right)^{1/2},\\
+|\partial^\alpha h(0)|\\
+ \le C_\alpha(R)\|h\|_{L^2(D_R)} .
+\end{gathered}
+\tag{WD.23}
+\]
+If \(K\Subset V\) and \(h\) is holomorphic
+on \(V\), choose a fixed positive
+polydisc radius so that the translated
+polydisc about every point of \(K\)
+is contained in a relatively compact
+open subset \(V_0\) of \(V\). Applying
+WD.23 at each such centre gives
+\[
+\begin{gathered}
+\sup_K|\partial^\alpha h|\\
+ \le C_{K,V_0,\alpha}\|h\|_{L^2(V_0)} .
+\end{gathered}
+\tag{WD.24}
+\]
+Replacing Euclidean measure and norm
+on \(\overline{V_0}\) by any smooth
+positive weighted bundle norm changes
+only the constant. In particular this
+applies to \(h\zeta\) with the metric
+and weights used above. There is no
+assertion that a general positive-degree
+weak solution has these holomorphic
+estimates.
+
+#### WD.H. Approximation across an exhaustion gap
+
+Let \(U\subset\Omega\) be open. Assume that
+for each compact \(K\subset U\) there is
+a nonnegative smooth proper strictly
+plurisubharmonic function \(\psi\) on
+\(\Omega\) and numbers \(b_0<b\) such that
+\[
+\begin{gathered}
+K\subset\{\psi<b_0\},\\
+\{\psi<b_0\}\Subset\{\psi<b\},\\
+\{\psi<b\}\Subset U .
+\end{gathered}
+\tag{WD.25}
+\]
+The notation \(\Subset\) means that the
+closure of the set on the left is
+compact and contained in the set on
+the right. Under this exact hypothesis
+the restriction
+\(\mathcal O(\Omega)\to\mathcal O(U)\)
+has dense image for uniform convergence
+on compact sets, and approximation
+holds simultaneously for every
+holomorphic derivative.
+
+Fix such \(K,\psi,b_0,b\), and
+\(h\in\mathcal O(U)\).
+
+We may assume that the closed outer sublevel is compactly
+contained in the given open set. Indeed, decrease the outer
+level to any value strictly between the two original levels;
+its closed sublevel lies in the original open outer sublevel.
+Keep the notation for this decreased level.
+
+Choose a real
+smooth compactly supported function
+\(\eta\) in \(U\), equal to one on a
+neighbourhood of \(\{\psi\le b\}\).
+Its extension by zero is smooth on
+\(\Omega\). With
+\(\zeta=dz_1\wedge\cdots\wedge dz_n\),
+set
+\[
+g=\bar\partial(\eta h\zeta).
+\tag{WD.26}
+\]
+This is a smooth compactly supported
+closed \((n,1)\)-form. Its support lies
+in \(\{\psi>b\}\), since the derivative
+of \(\eta\) is zero near the whole
+closed sublevel \(\{\psi\le b\}\).
+
+Use the function WD.17 to put
+\[
+\begin{gathered}
+\theta(t)=\frac{\kappa(t-b_0)}{\kappa(b-b_0)},\\
+\varphi_\nu=F(\psi)+\nu\theta(\psi),
+\\
+\nu\ge0,\\
+\omega=i\partial\bar\partial F(\psi).
+\end{gathered}
+\tag{WD.27}
+\]
+The denominator is positive.
+The function \(\theta\) is smooth,
+convex and nondecreasing, zero for
+\(t\le b_0\), and at least one for
+\(t\ge b\). Thus WD.11 holds for
+every \(\nu\), with one fixed complete
+metric. Since \(g\) is compactly
+supported, \(C=\|g\|_{F(\psi)}^2\)
+is finite, and
+\[
+\|g\|_{\varphi_\nu}^2\le Ce^{-\nu}.
+\tag{WD.28}
+\]
+WD.D supplies an \((n,0)\)-form \(u_\nu\)
+with
+\[
+\begin{gathered}
+\bar\partial u_\nu=g,\\
+\|u_\nu\|_{\varphi_\nu}^2\le Ce^{-\nu}.
+\end{gathered}
+\tag{WD.29}
+\]
+The global form
+\(\eta h\zeta-u_\nu\) is
+distributionally closed. Its coefficient
+is therefore a holomorphic function
+\(H_\nu\in\mathcal O(\Omega)\), by R.3.
+On \(\{\psi<b_0\}\), the form \(u_\nu\)
+is holomorphic and
+\((H_\nu-h)\zeta=-u_\nu\).
+Choose \(V_0\) with
+\(K\subset V_0\Subset\{\psi<b_0\}\).
+There the weights \(\varphi_\nu\)
+all equal \(F(\psi)\), so WD.29
+and WD.24 give, for every multi-index,
+\[
+\begin{gathered}
+\sup_K|\partial^\alpha(H_\nu-h)|\\
+ \le C_{K,\alpha}e^{-\nu/2}.
+\end{gathered}
+\tag{WD.30}
+\]
+All constants on the right are
+independent of \(\nu\).
+
+To obtain a single approximating
+sequence on \(U\), choose an increasing
+compact exhaustion \(K_j\) of \(U\)
+whose interiors cover \(U\). Such sets
+are obtained, for example, from
+Euclidean bounds and a positive
+distance from the closed complement.
+Apply the preceding construction to
+\(K_j\), and choose its parameter
+\(\nu_j\) large enough that the
+error is at most \(1/j\) for all
+\(|\alpha|\le j\) on \(K_j\).
+There are only finitely many such
+indices. Every compact subset of \(U\)
+is contained in some \(K_j\), and
+each fixed derivative is eventually
+among these indices. Thus the
+resulting global holomorphic functions
+converge to \(h\), with all derivatives,
+uniformly on every compact subset
+of \(U\). This proves the claimed
+density without a boundary regularity
+or a smoothness assertion for
+positive-degree weak solutions.
+
+#### WD.I. A concrete exhaustion and the estimate mechanism
+
+For \(\Omega=\mathbb C\) and
+\(\psi(z)=|z|^2\), the metric is
+\[
+\omega=i(1+4|z|^2)\,dz\wedge d\bar z .
+\tag{WD.31}
+\]
+Take \(K=\{|z|\le1/2\}\),
+\(b_0=1\), \(b=9/4\), and
+\(U=\{|z|<5/2\}\).
+A cutoff may be one on
+\(\{|z|\le7/4\}\) and zero on
+\(\{|z|\ge2\}\).
+Its derivative is supported beyond
+the radius \(3/2\) sublevel, where
+the weight penalty is at least
+\(\nu\). On the unit disc the
+penalty is zero. WD.28–WD.30
+therefore apply to every holomorphic
+function on \(U\), with the indicated
+compact \(K\).
+
+![Concentric sublevels for the concrete one-variable example, and the weighted solution estimate leading to holomorphic jet approximation.](assets/weighted-dbar.png)
+
+*The left panel uses the exact radii in WD.I;
+the cutoff derivative is confined to the
+shaded annulus. The right panel shows the
+three implications proved in WD.D and WD.H.
+The disc example illustrates the exhaustion
+gap; the proofs WD.A–WD.H apply in every
+dimension under their stated hypotheses.*
+
+The weighted identity and complete-manifold
+solution method can also be found in
+[Demailly's freely available manuscript,
+Chapters VII.1 and VIII.3–VIII.5](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf).
+The proof above includes the common graph
+core, the operator domains, the Hilbert
+solution argument, scalar cohomology
+vanishing and the holomorphic approximation
+estimate.
+
+
+### 5.95. Coherent analytic sections and support-proper cohomology
+
+Coherent sections carry a natural nuclear Fréchet
+topology, even on a singular or nonreduced analytic
+space. Locally this topology is an actual quotient
+of holomorphic coefficient spaces. Finite jets detect
+its closed relations and make the local quotient
+topologies compatible. A finite cohomology bound
+supplies the local vanishing needed for these
+quotients and a uniform upper bound near a proper
+fibre.
+
+All analytic spaces here are Hausdorff and second
+countable, locally given by a coherent ideal in an
+open subset of a finite-dimensional complex affine
+space. Nilpotent elements of the defining ideal
+quotient are retained. Sheaf cohomology is derived
+ordinary global-section cohomology. A sheaf without
+a specified ring means a sheaf of complex vector
+spaces.
+These analytic spaces are locally compact:
+in a chart, intersect the closed analytic model
+with a small closed Euclidean ball inside
+the ambient open set.
+
+We use the complete earlier programme proofs of
+weighted scalar vanishing, WD.F,
+holomorphic jet estimates, WD.G,
+the injective construction, R.5,
+open mapping, NP.C,
+nuclear subquotients, products and scalar closed-target descent, NT.D,
+and nuclear holomorphic restrictions, NT.G.
+The local analytic algebra inputs are
+Oka coherence, Theorem 2.1,
+Noetherian analytic local rings, Lemma 2.1,
+and Krull intersection, Theorem 6.1.
+The volume calculation in the first argument uses
+the proved product integration and linear Jacobian
+formula.
+
+#### SC.A. Covers with a finite multiplicity bound
+
+Let \(V\subset\mathbb R^m\) be open, \(m\ge1\),
+and let \(\mathcal U\) be any open cover of \(V\).
+The empty open set has zero section cohomology,
+so assume \(V\) is nonempty.
+Its members are open in \(\mathbb R^m\).
+For an empty complement use distance \(+\infty\).
+Put
+\[
+\begin{gathered}
+E_U=\mathbb R^m\setminus U,\\
+d_U(x)=\operatorname{dist}(x,E_U),\\
+u(x)=\sup_{U\in\mathcal U}\min\{1,d_U(x)\},\\
+\delta(x)=u(x)/100,\qquad x\in V .
+\end{gathered}
+\tag{SC.1}
+\]
+For a nonempty closed set the triangle inequality
+gives \(d(x,E)\le|x-y|+d(y,E)\).
+Exchanging the two points proves that distance
+is Lipschitz with constant one. Truncation by
+one preserves that bound; an empty complement
+gives the constant function one.
+The supremum of functions with Lipschitz constant
+one has that same constant: compare each value
+at two points and then take suprema in both
+directions. Thus \(u\) is continuous, positive
+on \(V\), and at most one. The function \(\delta\)
+has Lipschitz constant \(1/100\). For each \(x\)
+some member \(U_x\) satisfies
+\[
+\overline B(x,50\delta(x))\subset U_x .
+\tag{SC.2}
+\]
+Indeed its distance value may be chosen strictly
+larger than \(u(x)/2\). Also
+\(\delta(x)\le\operatorname{dist}(x,\mathbb R^m\setminus V)/100\).
+
+Choose a maximal pairwise disjoint family of balls
+\(B(x_j,\delta_j/10)\), where
+\(\delta_j=\delta(x_j)\). Such a family exists
+by taking unions of chains of disjoint families.
+It is countable because each of its disjoint
+nonempty balls contains a distinct rational point.
+Set \(V_j=B(x_j,\delta_j)\).
+These larger balls cover \(V\). For the small
+ball about an arbitrary \(x\) must meet a selected
+small ball, by maximality. The Lipschitz constant,
+bounded also by one, then gives
+\[
+\begin{gathered}
+|x-x_j|<(\delta(x)+\delta_j)/10,\\
+\delta(x)\le(11/9)\delta_j,\\
+|x-x_j|<(2/9)\delta_j<\delta_j .
+\end{gathered}
+\tag{SC.3}
+\]
+The second inequality follows by moving the
+\(\delta(x)/10\) term to the other side of
+\(\delta(x)-\delta_j\le|x-x_j|\).
+Every \(\overline V_j\) lies in the member \(U_{x_j}\)
+of SC.2, so this is a shrinking refinement.
+
+The family is locally finite. Fix \(y\in V\)
+and consider the larger balls meeting
+\(B(y,\delta(y)/10)\). Their centres satisfy
+\[
+|x_j-y|<\delta_j+\delta(y)/10 .
+\tag{SC.4}
+\]
+The Lipschitz bound implies
+\(\delta(y)/2<\delta_j<2\delta(y)\).
+Consequently their disjoint small balls have
+radii larger than \(\delta(y)/20\), and all
+lie in \(B(y,4\delta(y))\). Only finitely
+many such disjoint balls fit there. To justify
+this last assertion and the next bound, the
+volume of a ball of radius \(r\) is
+\(c_mr^m\), with \(0<c_m<\infty\): the unit
+ball contains and is contained in boxes of
+positive finite volume, and the linear
+Jacobian formula gives the scaling. Add
+the volumes of any finite subfamily of
+disjoint balls. This bounds its cardinality
+uniformly, and hence bounds the entire
+family's cardinality.
+
+If \(y\in V_j\), the sharper comparison is
+\[
+\begin{gathered}
+\frac{\delta(y)}{1+1/100}<\delta_j,\\
+\delta_j<\frac{\delta(y)}{1-1/100}.
+\end{gathered}
+\tag{SC.5}
+\]
+The associated disjoint small balls lie
+in the ball about \(y\) of radius
+\((11/10)\delta(y)/(1-1/100)\).
+Their radii exceed
+\(\delta(y)/(10(1+1/100))\).
+The volume comparison therefore bounds
+the number of indices with \(y\in V_j\) by
+\[
+\left(\frac{1111}{99}\right)^m<12^m .
+\tag{SC.6}
+\]
+In particular the multiplicity is at most
+\(D_m=12^m\). This deliberately nonoptimal
+integer is a uniform finite bound.
+
+The same cover is a star refinement of
+\(\mathcal U\). If \(V_k\cap V_j\ne\varnothing\),
+the Lipschitz estimate at their centres gives
+\(\delta_k/\delta_j<101/99\). Every point
+of \(V_k\) is consequently at distance less
+than \((1+2\cdot101/99)\delta_j<4\delta_j\)
+from \(x_j\). Thus
+\[
+\begin{gathered}
+\bigcup_{V_k\cap V_j\ne\varnothing}V_k
+ \subset B(x_j,4\delta_j),\\
+B(x_j,4\delta_j)\subset U_{x_j}.
+\end{gathered}
+\tag{SC.7}
+\]
+Applying the construction to an intersection
+cover makes it subordinate to several prescribed
+covers at once. We have proved, for every open
+cover, a countable locally finite shrinking
+star refinement of multiplicity at most \(D_m\).
+
+#### SC.B. Čech cochains and derived sections
+
+For a cover \(\mathcal U=(U_i)\), use alternating
+Čech cochains
+\[
+\begin{gathered}
+I=(i_0,\ldots,i_p),\\
+U_I=U_{i_0}\cap\cdots\cap U_{i_p},\\
+C^p(\mathcal U,F)
+ =\prod_{i_0<\cdots<i_p}F(U_I),\\
+p\ge0 .
+\end{gathered}
+\tag{SC.8}
+\]
+Extend a cochain antisymmetrically to all ordered
+tuples, with repeated indices giving zero.
+The differential is given below; deleting one
+entry keeps the order of the others.
+\[
+\begin{gathered}
+I=(i_0,\ldots,i_{p+1}),\\
+(\partial c)_I
+ =\sum_{r=0}^{p+1}(-1)^r
+    c_{I\setminus i_r}\big|_{U_I}.
+\end{gathered}
+\tag{SC.9}
+\]
+Every pair of omitted indices occurs twice in
+\(\partial^2\), with opposite signs, so its
+square is zero.
+
+We record the comparison with derived sections
+in full. For an open inclusion \(j:W\hookrightarrow V\),
+extension by zero \(j_!\) has stalk \(F_x\) on
+\(W\) and zero off \(W\); its sections are
+sections on the intersection that vanish near
+the complement. This description proves both
+its exactness, by stalks, and the adjunction
+\(\operatorname{Hom}(j_!F,G)=
+\operatorname{Hom}(F,G|_W)\).
+Restriction to an open set therefore sends
+injective sheaves to injective sheaves.
+
+There is an augmented complex of sheaves
+\[
+\begin{gathered}
+\cdots\longrightarrow
+\bigoplus_{i_0<i_1}j_{i_0i_1!}\mathbb C
+\\
+\longrightarrow
+\bigoplus_i j_{i!}\mathbb C
+\\
+\longrightarrow\mathbb C_V\longrightarrow0 .
+\end{gathered}
+\tag{SC.10}
+\]
+Its arrows are the signed inclusions omitting
+one index. At a point \(x\), it is the
+augmented simplicial chain complex of the
+set of indices whose opens contain \(x\).
+Choose one such index and insert it at the
+front of a chain, interpreting tuples
+alternatingly. The two composites with
+the boundary add to the identity: terms
+omitting an old index cancel in pairs,
+and the term omitting the inserted index
+is the original chain. This also gives
+the augmentation identity in degree zero.
+Hence SC.10 is exact at every stalk.
+
+Applying \(\operatorname{Hom}(-,I)\) for an
+injective sheaf \(I\) preserves exactness
+and gives the augmented Čech complex of
+sections of \(I\). Here a morphism
+\(\mathbb C_W\to I|_W\) is determined by the
+image of the constant section one, so the
+adjunction gives exactly \(I(W)\), including
+disconnected \(W\). Thus
+\[
+\begin{gathered}
+H^p(C^\bullet(\mathcal U,I))=0,\\
+p>0,\\
+H^0(C^\bullet(\mathcal U,I))=I(V).
+\end{gathered}
+\tag{SC.11}
+\]
+
+Take an injective resolution \(F\to I^\bullet\);
+the explicit construction in R.5 supplies one.
+The double complex
+\[
+\begin{gathered}
+B^{p,q}=C^p(\mathcal U,I^q),\\
+d_{\mathrm{tot}}=\partial+(-1)^p d_I
+\end{gathered}
+\tag{SC.12}
+\]
+has square-zero differential, because restriction
+commutes with \(d_I\). Only finitely many
+bidegrees occur in any fixed total degree.
+Its total cohomology is \(H^\bullet(V,F)\).
+Indeed, for a total cocycle first eliminate its
+largest Čech-degree component by SC.11.
+That component is a horizontal cocycle;
+when its degree is positive it is a horizontal
+boundary. Subtract a total boundary with that
+primitive. The replacement has smaller
+Čech degree and larger resolution degree.
+After finitely many steps only Čech degree
+zero remains, where the horizontal kernel
+is exactly \(\Gamma(V,I^\bullet)\).
+The same elimination on a total primitive
+shows that two resulting global cocycles
+are cohomologous exactly when the original
+total cocycles are. This proves the
+cohomology identification, including
+injectivity as well as surjectivity.
+
+We need one local refinement assertion. Suppose
+\(q>0\) and \(z\in C^p(\mathcal U,I^q)\)
+satisfies \(d_Iz=0\). After a refinement,
+\(z\) has a primitive for \(d_I\) as a
+Čech cochain. First take a countable
+locally finite shrinking refinement
+\((W_j)\) with
+\(\overline W_j\subset U_{\sigma(j)}\).
+At a point \(x\), only finitely many
+\(\overline W_j\) contain \(x\).
+There is a neighbourhood meeting no
+other \(W_j\): start with one meeting
+only finitely many, then avoid the
+finitely many closures not containing
+\(x\). For every tuple of the remaining
+indices, the corresponding component
+of \(z\) is defined near \(x\), since
+all \(U_{\sigma(j)}\) contain \(x\).
+Exactness of \(I^\bullet\) in positive
+degree gives a primitive near \(x\).
+There are finitely many such tuples,
+so choose one neighbourhood \(N_x\)
+on which all these primitives exist.
+
+Take a star refinement of \((N_x)\)
+which also refines \((W_j)\), using
+SC.A. For an intersecting tuple of
+its opens, their union lies in some
+\(N_x\). Every old \(W_j\) labelling
+that tuple meets \(N_x\), so belongs
+to the finite list just considered.
+Restrict its chosen primitive to
+the tuple intersection. Make these
+choices for increasing tuples and
+extend alternatingly. They form
+a cochain primitive of the refined
+\(z\), as claimed. No compatibility
+between different tuples is required
+for a primitive in the resolution
+direction.
+
+It follows that every derived
+cohomology class is represented by
+an ordinary Čech cocycle after
+refinement. To see all signs, start
+with a total cocycle of degree \(k\).
+Its component \((0,k)\) is vertically
+closed. If \(k>0\), apply the preceding
+assertion, choose a vertical primitive
+and subtract its total differential.
+Then the first component has been
+eliminated. At component
+\((p,k-p)\), which is now vertically
+closed, use the primitive multiplied
+by \((-1)^p\) to cancel it.
+Proceed while \(k-p>0\).
+Only \((k,0)\) remains. Its vertical
+kernel is \(C^k(\mathcal U,F)\), and
+its horizontal differential is zero.
+For injectivity, start with a total
+primitive of an ordinary Čech cocycle.
+Apply the same elimination to the
+positive-resolution-degree components
+of that primitive. Each is vertically
+closed because its total differential
+has only resolution degree zero.
+After refinement the primitive lies
+in \(C^{k-1}(\mathcal U,F)\).
+Thus a class becomes zero precisely
+when its Čech representative becomes
+a boundary after refinement.
+In degree zero this assertion is
+the sheaf gluing axiom directly.
+
+Refinement choices cause no ambiguity.
+For two refinement maps \(\alpha,\beta\)
+from a cover \(\mathcal V\) to
+\(\mathcal U\), set, on a degree-\(p\)
+cochain with \(p>0\),
+\[
+\begin{gathered}
+J=(j_0,\ldots,j_{p-1}),\\
+a_r=(\alpha j_0,\ldots,\alpha j_r),\\
+b_r=(\beta j_r,\ldots,\beta j_{p-1}),\\
+(hc)_J=\sum_{r=0}^{p-1}(-1)^r
+ c_{a_rb_r}\big|_{V_J}.
+\end{gathered}
+\tag{SC.13}
+\]
+Here \(V_J\) is the intersection
+of the opens labelled by \(J\);
+the two lists in \(c_{a_rb_r}\)
+are concatenated in the indicated
+order.
+Omitting any index away from the
+change between the two lists cancels
+with the corresponding term of
+\(h\partial\). At the change the
+adjacent terms cancel telescopically;
+the two remaining endpoint lists
+are the all-\(\beta\) list and the
+negative all-\(\alpha\) list.
+Consequently
+\[
+\partial h+h\partial=\beta^*-\alpha^* .
+\tag{SC.14}
+\]
+In degree zero this is just the
+difference of the two restrictions,
+obtained from \(h\partial\).
+Any two covers have a common
+refinement by intersecting them and
+using SC.A. We have therefore proved
+the canonical comparison
+\[
+\begin{gathered}
+H^k(V,F)\\
+ \simeq\underset{\mathcal U}{\operatorname{colim}}\,
+       H^k(C^\bullet(\mathcal U,F)).
+\end{gathered}
+\tag{SC.15}
+\]
+
+If every finite nonempty intersection
+of a fixed cover is acyclic for \(F\),
+no refinement is needed in the vertical
+elimination: restriction of the injective
+resolution computes cohomology there,
+and each closed positive-degree
+component has a section primitive.
+Thus that fixed Čech complex already
+computes \(H^\bullet(V,F)\). This is
+the acyclic-cover assertion, with its
+comparison proved by SC.12.
+
+#### SC.C. Finite cohomological dimension
+
+Let \(D_m=12^m\) as in SC.A. A cover
+of multiplicity at most \(D_m\) has
+no nonempty intersection of \(D_m+1\)
+distinct members, so its alternating
+Čech groups vanish in degrees at
+least \(D_m\). Such covers are cofinal
+by SC.A. Applying SC.15 gives
+\[
+\begin{gathered}
+H^k(V,F)=0,\\
+k\ge D_m .
+\end{gathered}
+\tag{SC.16}
+\]
+for every sheaf \(F\) on every open
+\(V\subset\mathbb R^m\).
+For \(m=0\), an open subset of
+\(\mathbb R^0\) is empty or a point;
+sections are exact, and the same
+statement holds with \(D_0=1\).
+
+For a closed inclusion \(i:A\hookrightarrow V\),
+direct image has stalk \(F_x\) on
+\(A\) and zero off \(A\), so it is
+exact. The inverse-image functor
+is exact by its stalk description.
+Its adjunction with \(i_*\) implies
+that \(i_*\) preserves injectives.
+Since \(\Gamma(V,i_*F)=\Gamma(A,F)\),
+injective resolutions give
+\[
+H^k(A,F)=H^k(V,i_*F).
+\tag{SC.17}
+\]
+The bound SC.16 holds on \(A\) as
+well. It holds also on any open
+subset of \(A\), because that subset
+is closed in a suitable open subset
+of \(V\). No analytic structure or
+smoothness of the closed subset
+is needed for this conclusion.
+
+#### SC.D. Coherent algebra and finite free prefixes
+
+We make explicit the module algebra
+used with Oka's theorem. A coherent
+module is locally finitely generated,
+and the kernel of each map from a
+finite free module to it is locally
+finitely generated.
+
+First, a finite-type submodule of
+a coherent module is coherent:
+the relation sheaf of any finite
+list is unchanged when the list
+is regarded in the larger module.
+Second, a direct sum of two coherent
+modules is coherent. Given a map
+from a finite free module to the
+sum, first impose the relations
+in the second summand. Choose
+finitely many generators of that
+kernel near the point. Their
+images in the first summand have
+a finite-type relation sheaf.
+The images of those relations
+generate the kernel of the
+original map. This proves the
+assertion and, by induction, the
+coherence of every finite free
+module over a coherent ring sheaf.
+
+A finite presentation over a coherent
+ring sheaf defines a coherent module.
+Indeed, write the presentation as
+\[
+\mathcal A^a\xrightarrow{P}\mathcal A^b
+ \longrightarrow F\longrightarrow0 .
+\tag{SC.18}
+\]
+Locally lift any map
+\(\mathcal A^q\to F\) to a matrix
+\(Q:\mathcal A^q\to\mathcal A^b\).
+There are only finitely many columns,
+so one common neighbourhood suffices.
+The kernel of \((Q,-P)\) in
+\(\mathcal A^{q+a}\) is finite type
+by coherence of \(\mathcal A^b\).
+Its image under projection to
+\(\mathcal A^q\) is exactly the
+relation sheaf of the original
+map to \(F\). Thus that relation
+sheaf is finite type.
+Conversely, a coherent module has
+a finite presentation by choosing
+generators and then generators
+of their relation sheaf.
+
+For a map of coherent modules,
+its image is finite type and hence
+coherent as a submodule of its
+coherent target. Its kernel is
+finite type by pulling back along
+a finite free presentation of
+the source: the kernel of the
+composite free-to-target map is
+finite type and maps onto the
+desired kernel. That kernel is
+therefore a finite-type submodule
+of the coherent source. The cokernel
+has a finite presentation: add
+lifted generators of the image to
+the relations in a presentation
+of the target. It too is coherent.
+These arguments prove all coherence
+stability statements used below.
+
+Let \(A\subset W\subset\mathbb C^N\)
+be an analytic patch, with ideal
+sheaf \(J\), and let \(S\) be coherent
+over \(\mathcal O_A=\mathcal O_W/J\).
+The ambient module \(i_*S\) is coherent
+over \(\mathcal O_W\). Near a point,
+choose a presentation of \(S\) by
+finite free \(\mathcal O_A\)-modules.
+Lift its finite matrix to holomorphic
+functions on an ambient neighbourhood,
+and choose finitely many generators
+\(g_1,\ldots,g_t\) of \(J\) there.
+If the presentation has \(b\) target
+generators, an ambient presentation
+matrix is
+\[
+\bigl(\widetilde P,\ g_1I_b,\ldots,g_tI_b\bigr).
+\tag{SC.19}
+\]
+Its cokernel is the prescribed
+presentation modulo \(J\) on \(A\).
+Off \(A\), one \(g_j\) is a unit
+at each point, so that cokernel
+is zero. This proves the assertion
+as a statement about the actual
+sheaf. Oka's theorem and SC.18
+give coherence. The ideal \(J\)
+has not been replaced by its
+radical.
+
+For any integer \(L\ge1\), coherence
+now supplies a neighbourhood of
+the chosen point and a finite free
+prefix with \(L\) free terms:
+\[
+\begin{gathered}
+P_{L-1}\longrightarrow\cdots
+\longrightarrow P_0\\
+\longrightarrow i_*S\longrightarrow0,\\
+P_j=\mathcal O^{p_j}.
+\end{gathered}
+\tag{SC.20}
+\]
+Choose a finite generating list,
+then a finite list for its coherent
+kernel, and repeat \(L\) times,
+shrinking the neighbourhood at
+each step. The final neighbourhood
+is common to this finite list
+of sheaf maps. If \(Z_{-1}=i_*S\)
+and \(Z_j=\ker(P_j\to Z_{j-1})\),
+the precise exact sequences are
+\[
+\begin{gathered}
+0\longrightarrow Z_j\longrightarrow P_j\\
+\longrightarrow Z_{j-1}\longrightarrow0,\\
+0\le j<L .
+\end{gathered}
+\tag{SC.21}
+\]
+The last kernel is retained;
+no terminating free resolution
+or bound on projective dimension
+is assumed.
+
+#### SC.E. Local coherent vanishing and actual section quotients
+
+In SC.D take \(L=D_{2N}=12^{2N}\),
+and let \(V\) be any open subset
+of the resulting ambient neighbourhood
+with a smooth nonnegative proper
+strictly plurisubharmonic exhaustion.
+For \(N=0\), use an open point and
+the exactness of sections directly.
+Write \(U=A\cap V\).
+Every \(P_j|_V\) is a finite direct
+sum of \(\mathcal O_V\), so WD.F
+gives its vanishing in every
+positive cohomology degree.
+The long exact sequences of SC.21
+therefore give, for \(q\ge1\),
+\[
+\begin{gathered}
+H^q(U,S)=H^q(V,Z_{-1}),\\
+H^q(V,Z_{-1})\\
+ \simeq H^{q+1}(V,Z_0)\\
+ \simeq\cdots\\
+ \simeq H^{q+L}(V,Z_{L-1})=0 .
+\end{gathered}
+\tag{SC.22}
+\]
+The first equality is SC.17.
+The last degree is at least \(L\),
+so SC.16 proves its vanishing.
+The same dimension shifting,
+starting with \(Z_0\), gives
+\[
+\begin{gathered}
+H^1(V,Z_0)\\
+ \simeq H^L(V,Z_{L-1})=0 .
+\end{gathered}
+\tag{SC.23}
+\]
+For \(L=1\) this is the direct
+bound \(H^1(V,Z_0)=0\).
+Consequently the free presentation
+is also surjective on sections:
+\[
+\begin{gathered}
+0\longrightarrow Z_0(V)
+\longrightarrow\mathcal O(V)^{p_0}
+\\
+\longrightarrow S(U)\longrightarrow0 .
+\end{gathered}
+\tag{SC.24}
+\]
+This is an exact sequence of actual
+vector spaces, with its full
+relation space, before any topology
+is put on the last term.
+
+Every point has arbitrarily small
+patches of this form: choose a
+polydisc compactly contained in
+the common ambient neighbourhood.
+The sum of
+\((r_j^2-|z_j-a_j|^2)^{-1}\)
+is a nonnegative smooth proper
+strictly plurisubharmonic exhaustion
+of that polydisc. Its positivity
+follows by differentiating each
+one-variable term, and properness
+follows because approaching its
+boundary makes one summand tend
+to infinity. Thus SC.22 applies
+at every point, with all singular
+and nonreduced coefficient data.
+
+#### SC.F. Finite jets and closed analytic relation spaces
+
+Let \(x\) be a point of an analytic
+space and \(\mathfrak m_x\) the
+maximal ideal of its local ring.
+For a coherent module \(S\), put
+\[
+\begin{gathered}
+J_x^r(S)=S_x/\mathfrak m_x^rS_x,\\
+r\ge1 .
+\end{gathered}
+\tag{SC.25}
+\]
+This is a finite-dimensional complex
+vector space. In an ambient chart
+the maximal ideal is generated
+by the coordinate differences.
+Taylor expansion modulo their
+\(r\)-th power is spanned by
+the finitely many monomials of
+total degree less than \(r\).
+Their products with a finite
+generating list of \(S_x\)
+span the displayed quotient.
+
+The analytic local ring is a quotient
+of the Noetherian holomorphic local
+ring. It is Noetherian: take the
+preimage of an ideal and descend
+a finite generating list.
+Krull intersection applies because
+the analytic local ring is Noetherian
+and \(S_x\) is finite. It gives
+\[
+\bigcap_{r\ge1}\mathfrak m_x^rS_x=0 .
+\tag{SC.26}
+\]
+The earlier proof includes Artin–Rees
+and the determinant argument, so
+SC.26 applies also to quotient
+modules and to nonreduced local
+rings. Hence a section is zero
+exactly when its image in every
+\(J_x^r(S)\), at every point,
+is zero.
+
+On a patch in SC.24, each map
+from \(\mathcal O(V)^{p_0}\) to
+\(J_x^r(S)\) is continuous for
+uniform convergence on compact
+sets. In fact the map factors
+through the finite Taylor jets
+of its holomorphic coefficient
+functions at the ambient point.
+Those jets depend continuously
+on the coefficients by WD.G,
+or directly by the polydisc
+Cauchy formula. Multiplication
+by the fixed generator germs,
+followed by the finite-dimensional
+quotient, is a fixed linear map
+between finite-dimensional spaces.
+SC.26 therefore identifies
+\[
+\begin{gathered}
+e_x^r:\mathcal O(V)^{p_0}
+                     \longrightarrow J_x^r(S),\\
+Z_0(V)=\bigcap_{x\in U,\ r\ge1}\ker e_x^r .
+\end{gathered}
+\tag{SC.27}
+\]
+This is a closed subspace. The
+intersection may have uncountably
+many conditions; each kernel is
+closed, and arbitrary intersections
+of closed sets are closed.
+
+Give \(S(U)\) the quotient topology
+in SC.24. The source is nuclear
+Fréchet by NT.G. The relation
+space is closed by SC.27, so
+NT.D makes this actual quotient
+a Hausdorff nuclear Fréchet space.
+Every section-to-jet map
+\[
+j_x^r:S(U)\longrightarrow J_x^r(S)
+\tag{SC.28}
+\]
+is continuous, by the quotient
+definition and the preceding
+coefficient calculation.
+
+#### SC.G. The topology on sections of any coherent sheaf
+
+Let \(U\) be any open subset of
+an analytic space \(X\), and let
+\(S\) be coherent. Choose a countable
+cover \((U_i)\) by patches of SC.24.
+Such a subcover exists because
+second countability implies the
+countable-subcover property: for
+each basis member contained in
+a cover member, select one such
+member. Set \(E_i=S(U_i)\), with
+the quotient topology of SC.F.
+
+Inside the nuclear Fréchet product
+\(\prod_iE_i\), impose the equations
+\[
+\begin{gathered}
+j_x^r(s_i)=j_x^r(s_j),\\
+x\in U_i\cap U_j,\qquad r\ge1 .
+\end{gathered}
+\tag{SC.29}
+\]
+Each equation is closed by SC.28.
+By SC.26 it means equality of
+the two germs. Equality of all
+germs means equality of sections
+on the overlap, by the sheaf
+axiom. Thus the solution space
+is exactly the compatible-tuple
+space, canonically \(S(U)\).
+It is closed in a countable
+nuclear Fréchet product. NT.D
+therefore supplies a Hausdorff
+nuclear Fréchet topology on
+the full space of sections.
+All global section-to-jet maps
+are continuous: select any
+patch of the cover containing
+the point and use its coordinate
+projection and SC.28.
+
+This topology is independent of
+every presentation, ambient chart
+and cover. Indeed, for two choices
+the graph of the identity consists
+of pairs whose jets agree at all
+points and all orders. It is closed
+in the product of the two Fréchet
+spaces, and SC.26 shows that it is
+exactly the identity graph.
+The closed graph argument here
+is a consequence of NP.C:
+a closed graph is Fréchet;
+its projection onto the source
+is a continuous linear bijection;
+open mapping makes the inverse
+continuous; projection onto the
+target then gives continuity
+of the map. Apply this in both
+directions. In particular, on
+a patch of SC.24 the global
+construction agrees with its
+original quotient topology.
+
+Every restriction and every
+coherent sheaf morphism induces
+a continuous map on sections.
+For a morphism \(S\to T\) over
+an open subset, the maps on
+finite jets are linear maps
+\[
+J_x^r(S)\longrightarrow J_x^r(T),
+\tag{SC.30}
+\]
+because the morphism preserves
+the powers of \(\mathfrak m_x\).
+The graph of the section map
+is specified by equality with
+these finite-jet images. It is
+closed by SC.28–SC.29, and
+SC.26 makes these equations
+sufficient. The same closed
+graph argument proves continuity.
+Restriction is the case of
+the identity sheaf morphism
+with a smaller open domain.
+
+If \(T\subset S\) is a coherent
+subsheaf, the quotient is coherent
+by SC.D. The space \(T(U)\) is
+the kernel of the continuous map
+\(S(U)\to(S/T)(U)\), hence is
+closed in \(S(U)\). Its own
+topology agrees with the induced
+topology by open mapping onto
+that closed image. We have proved
+the strict left-exact section
+sequence
+\[
+\begin{gathered}
+0\longrightarrow T(U)
+\longrightarrow S(U)\\
+\longrightarrow(S/T)(U).
+\end{gathered}
+\tag{SC.31}
+\]
+Surjectivity of the last arrow
+requires its cohomological
+hypothesis. On the patches
+of SC.24 it has already been
+proved for the displayed free
+presentation. No global vanishing
+for arbitrary coherent sheaves
+on a general open set is inferred.
+
+#### SC.H. Relatively compact restrictions are nuclear
+
+Suppose \(V\Subset U\) are open
+in \(X\), meaning that
+\(\overline V\) is compact and
+contained in \(U\). Then
+\[
+\begin{gathered}
+S(U)\longrightarrow S(V),\\
+\text{a scalar nuclear map.}
+\end{gathered}
+\tag{SC.32}
+\]
+To prove this, first take nested
+concentric polydiscs \(W'\Subset W\) inside
+one common SC.D ambient neighbourhood.
+Let \(U_0=A\cap W\) and
+\(U_0'=A\cap W'\).
+The same finite presentation gives
+surjective quotient maps from
+\(\mathcal O(W)^p\) and
+\(\mathcal O(W')^p\) onto
+\(S(U_0)\) and \(S(U_0')\).
+The holomorphic restriction between
+these finite free coefficient
+spaces is nuclear by NT.G.
+Postcompose with the target
+quotient map. It vanishes on
+the closed source relation space.
+The scalar closed-quotient
+conclusion of NT.D therefore
+gives a nuclear induced map
+\(S(U_0)\to S(U_0')\).
+Both the coefficient source
+and its Hausdorff quotient
+are nuclear, as required
+in that conclusion.
+
+Choose finitely many such pairs
+\(U_i'\Subset U_i\Subset U\)
+whose smaller members cover
+\(\overline V\).
+Restriction from \(S(U)\) to
+\(\prod_iS(U_i)\) is continuous
+by SC.G. The following map is
+nuclear, by the local assertion
+and its continuous postcomposition:
+\[
+\begin{gathered}
+\prod_iS(U_i)\\
+\longrightarrow
+\prod_iS(U_i'\cap V).
+\end{gathered}
+\tag{SC.33}
+\]
+Finite sums of nuclear maps
+are nuclear by concatenating
+their absolutely summable
+representations. The composite
+from \(S(U)\) has image in
+the compatible tuples on the
+finite cover \((U_i'\cap V)\)
+of \(V\).
+
+That compatible-tuple space is
+closed in the displayed product:
+use the continuous restriction
+maps to pairwise overlaps and
+take the kernels of their
+differences. Its topology is
+the canonical topology on
+\(S(V)\). For both are nuclear
+Fréchet spaces, their bijective
+restriction map is continuous,
+and open mapping makes its
+inverse continuous. NT.D's
+scalar closed-target conclusion
+now makes the composite nuclear
+as a map into this actual
+closed space \(S(V)\).
+Its domain \(S(U)\) is nuclear
+by SC.G. This proves SC.32.
+Only scalar nuclear descent
+has been used here; a balanced
+coefficient tensor requires
+its separate transversality
+argument.
+
+#### SC.I. A finite-cover cohomology bound
+
+Let \(Z\) have a finite open
+cover of \(r\) members.
+Suppose every nonempty finite
+intersection has sheaf cohomology
+zero in degrees at least \(B\),
+for the restricted sheaf in
+question. Then
+\[
+\begin{gathered}
+H^k(Z,F)=0,\\
+k\ge r+B-1 .
+\end{gathered}
+\tag{SC.34}
+\]
+Use the injective double complex
+SC.12 for this finite cover.
+Its Čech columns have degrees
+zero through \(r-1\).
+For a total cocycle of degree
+\(k\ge r+B-1\), the component
+of Čech degree zero is vertically
+closed and has resolution degree
+at least \(B\). It has a section
+primitive on each cover member.
+Subtract its signed total
+differential. At Čech degree
+\(p\), the remaining component
+is vertically closed, of degree
+\(k-p\ge B\), so has a primitive
+on every tuple intersection.
+Multiply that primitive by
+\((-1)^p\) and subtract its
+total differential. After
+\(r\) steps every component
+has been removed. This is
+a total boundary, and SC.12
+proves SC.34.
+
+#### SC.J. Uniform bounds near every proper-support fibre
+
+Let \(f:X\to Y\) be an analytic
+map and let \(C\subset X\) be
+closed with \(f|_C\) proper.
+For every \(y\in Y\), there
+are a neighbourhood \(T\) and
+an integer \(M\) such that,
+for every sheaf \(F\) supported
+in \(C\) and every open
+\(W\subset T\),
+\[
+\begin{gathered}
+H^k(f^{-1}W,F)=0,\\
+k\ge M .
+\end{gathered}
+\tag{SC.35}
+\]
+The integer and neighbourhood
+depend on the chosen fibre
+and its finite chart cover,
+and work for all such sheaves.
+
+Cover the compact fibre \(C_y\)
+by finitely many analytic chart
+opens \(U_1,\ldots,U_r\), with
+\(U_i\) a closed analytic model
+in an open subset of
+\(\mathbb C^{N_i}\).
+The part \(C\setminus\bigcup_iU_i\)
+is closed in \(C\), and its
+proper image is closed in \(Y\).
+Here proper maps are closed
+because \(Y\) is locally compact
+Hausdorff: intersect with a
+compact neighbourhood of a
+point outside the image;
+the inverse image is compact,
+and the image of its closed
+part is compact and closed.
+Its complement inside the
+neighbourhood avoids the
+whole closed part's image.
+Shrink \(T\) to avoid that
+image. Then
+\[
+C\cap f^{-1}T\subset\bigcup_{i=1}^r U_i .
+\tag{SC.36}
+\]
+If \(C_y\) is empty, the same
+argument makes \(C\cap f^{-1}T\)
+empty, and SC.35 is immediate.
+
+For the nonempty case put
+\[
+\begin{gathered}
+B=\max_i12^{2N_i},\\
+M=r+B-1 .
+\end{gathered}
+\tag{SC.37}
+\]
+For every open \(W\subset T\),
+cover \(C\cap f^{-1}W\) by
+its intersections with the
+\(U_i\). Any multiple
+intersection is open in one
+closed subset of an ambient
+open subset of
+\(\mathbb R^{2N_i}\).
+SC.C gives its cohomology
+vanishing in degrees at
+least \(12^{2N_i}\), hence
+at least \(B\), for every
+sheaf on that intersection.
+SC.I gives vanishing in
+degrees at least \(M\).
+
+A sheaf supported in the
+closed set \(C\cap f^{-1}W\)
+is the direct image of its
+restriction to that closed
+set: the natural adjunction
+map is an isomorphism on
+all stalks, including the
+zero stalks outside the
+support. SC.17 now gives
+SC.35 on \(f^{-1}W\).
+The closed support need
+not be reduced, smooth
+or itself given an analytic
+structure for this
+cohomology argument.
+
+The derived direct image
+therefore satisfies
+\[
+R^k f_*F|_T=0\qquad(k\ge M).
+\tag{SC.38}
+\]
+In fact its stalk at any
+point is the filtered
+colimit of
+\(H^k(f^{-1}W,F)\) over
+neighbourhoods of that
+point. To verify this,
+compute with an injective
+resolution. A stalk is
+the filtered colimit of
+the section complexes.
+Filtered colimits of vector
+spaces commute with their
+cohomology: a represented
+cocycle becomes a cocycle
+at a sufficiently late
+stage, and a represented
+boundary has its primitive
+at a sufficiently late
+stage. These two
+representative checks give
+both directions of the
+cohomology comparison.
+SC.35 makes every indicated
+cohomology group zero.
+
+The same conclusion holds
+in the category of modules
+over a sheaf of complex
+algebras. Forgetting that
+module structure sends
+injectives to injective
+complex-vector sheaves:
+its left adjoint is tensor
+with the algebra over
+\(\mathbb C\), which is
+exact on stalks. Thus
+the preceding cohomology
+bound computes the
+underlying vector sheaves
+of those derived sections
+as well.
+
+For a bounded complex
+with cohomology supported
+in \(C\) and concentrated
+in degrees \([a,b]\),
+the resulting upper
+bound is
+\[
+\begin{gathered}
+\mathcal H^k(Rf_*K)|_T=0,\\
+k<a\quad\text{or}\\
+k>b+M-1 .
+\end{gathered}
+\tag{SC.39}
+\]
+For one sheaf this is
+SC.38 and the nonnegative
+degrees of its injective
+resolution. For a finite
+cohomology interval,
+successively separate the
+top cohomology sheaf by
+the canonical truncation
+triangle. The long exact
+cohomology sequence gives
+the claimed bound by
+induction. Truncation
+can be constructed on
+the complex by replacing
+the terminal term by
+the kernel or cokernel
+of its differential;
+the corresponding
+quotient has just the
+single top cohomology
+sheaf. Thus only the
+finite list of cohomology
+sheaves enters the
+induction. The lower
+bound also follows from
+a bounded-below injective
+resolution starting in
+degree \(a\).
+
+#### SC.K. Proper supports and the two section functors
+
+For a sheaf \(F\) supported
+in \(C\), the natural
+comparison is an isomorphism
+\[
+Rf_!F\simeq Rf_*F .
+\tag{SC.40}
+\]
+Use the closed inclusion
+\(i:C\hookrightarrow X\).
+An injective resolution on
+\(C\), followed by the
+exact injective-preserving
+functor \(i_*\), resolves
+\(F\) by injectives on
+\(X\) supported in \(C\).
+For any open \(W\subset Y\),
+every section of one of
+these terms over \(f^{-1}W\)
+has support closed in
+\(C\cap f^{-1}W\).
+Its map to \(W\) is proper,
+being a closed part of
+the proper map \(C\to Y\).
+Thus \(f_!\) and \(f_*\)
+are identical on this
+resolution, including
+their natural comparison
+map. This proves SC.40.
+For a bounded complex
+with cohomology supported
+in \(C\), the same
+isomorphism follows by
+the finite truncation
+induction just used in
+SC.J. Hence SC.39
+also holds for \(Rf_!\).
+
+SC.39 bounds derived sections
+of coefficient sheaves.
+For an operator direct image,
+the transfer tensor contributes
+an additional homological
+amplitude. The total amplitude
+depends on that tensor as
+well as on the section bound.
+
+![A planar pair of cover balls with their disjoint small balls, and the quotient, gluing and proper-support bounds.](assets/coherent-section-topology.png)
+
+*The left panel measures lengths in units of
+the first cover radius. The normalized
+radii are \(1\) and \(101/100\),
+their centres have distance \(3/2\),
+and the disjoint small balls have
+one tenth those radii. The circle of
+radius \(4\) shows the star margin
+in SC.7 in the first ball's units.
+The margin \(50\) in SC.2 is outside
+the drawn scale. This pair illustrates
+the estimates; SC.A proves the
+countable cover and multiplicity
+bound in every dimension. The right
+panel records the actual quotients,
+closed compatibility space and
+cohomology bound proved in
+SC.E–SC.K.*
+
+The local coherent vanishing
+and section-topology method
+are discussed in
+[Demailly's free author manuscript,
+Chapter IX, §4.B–§4.C](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf).
+SC.A–SC.C give the finite
+cohomology bound used here;
+SC.D–SC.H give the actual
+coherent section spaces,
+their closed relations and
+nuclear restrictions;
+SC.I–SC.K give the
+support-proper upper bound.
+
+
+### 5.96. Compact maps and cohomology of inverse limits
+
+The cohomology of a complex of Fréchet spaces carries its quotient
+topology, which can fail to be Hausdorff. Compact restrictions and
+dense approximation have different consequences for this topology.
+We prove the finite-dimensionality and inverse-limit statements
+with the actual spaces of cycles and boundaries retained.
+
+All vector spaces are complex. A Fréchet space is Hausdorff,
+locally convex, complete and defined by countably many seminorms.
+We use the complete open mapping argument in
+NP.C
+and the separation and complete-quotient argument in
+NT.A.
+For the sheaf application we use the full
+derived/Čech comparison, SC.B
+and the
+coherent-section topology, SC.G.
+
+#### ML.A. Quotient topologies and finite codimension
+
+Let a complex and its cohomology be
+\[
+\begin{gathered}
+d^q:E^q\longrightarrow E^{q+1},\\
+d^{q+1}d^q=0,\\
+Z^q(E)=\ker d^q,\\
+B^q(E)=d^{q-1}E^{q-1},\\
+H^q(E)=Z^q(E)/B^q(E).
+\end{gathered}
+\tag{ML.1}
+\]
+The differentials are continuous, so the cycle spaces are closed
+Fréchet subspaces. Give cohomology its actual quotient topology;
+do not close the boundary space in this definition. A quotient map
+of topological vector spaces is open: the preimage of the image
+of an open set is the union of its translates by the kernel.
+The quotient is Hausdorff exactly when its kernel is closed.
+Indeed, a closed kernel makes distinct cosets separable by
+translates of sufficiently small zero neighbourhoods; conversely
+the inverse image of the closed zero coset is the kernel.
+
+A finite-dimensional subspace of a Fréchet space is closed. To see
+this directly, fix an independent basis and suppose a sequence in
+its span converges in the ambient space. If its coefficient
+vectors were unbounded, division by their Euclidean norms and
+passage to a convergent subsequence on the unit sphere would
+give a nonzero coefficient vector representing zero. This
+contradicts independence. The coefficient vectors are therefore
+bounded, a subsequence converges, and its limit represents the
+ambient limit. Since Fréchet spaces are metrizable, this proves
+closedness. The same argument gives the usual topology on that
+finite-dimensional span.
+
+**Finite-codimension lemma.** If a continuous linear map
+\[
+\begin{gathered}
+t:P\longrightarrow Q,\\
+\dim_{\mathbf C}Q/t(P)<\infty
+\end{gathered}
+\tag{ML.2}
+\]
+has Fréchet domain and target, then its image is closed.
+Choose a finite-dimensional algebraic complement \(S\) to the
+image. The continuous map
+\[
+\begin{gathered}
+a:P\oplus S\longrightarrow Q,\\
+a(x,s)=t(x)+s
+\end{gathered}
+\tag{ML.3}
+\]
+is surjective and is open by NP.C. Projection onto \(S\) vanishes
+on its kernel, because \(S\cap t(P)=0\). It descends through this
+open quotient to a continuous map \(Q\to S\). Its kernel is
+exactly \(t(P)\), proving the lemma. Consequently the quotient in
+ML.2 is Hausdorff with its ordinary finite-dimensional topology.
+This argument uses finite dimension over the scalar field; it
+does not assert that every finite module over a Banach algebra
+has a closed image.
+
+#### ML.B. Compact perturbations of surjections
+
+A continuous linear map is **compact** here if it maps some
+zero neighbourhood to a relatively compact set. A map merely
+sending bounded sets to relatively compact sets is not being
+assumed compact in this definition.
+
+**Compact perturbation theorem.** Let \(P,Q\) be Fréchet spaces,
+let \(g:P\to Q\) be a continuous linear surjection, and let
+\(h:P\to Q\) be compact. Then
+\[
+\begin{gathered}
+f=g+h,\\
+f(P)\text{ is closed in }Q,\\
+\dim_{\mathbf C}Q/f(P)<\infty.
+\end{gathered}
+\tag{ML.4}
+\]
+Choose an open absolutely convex zero neighbourhood \(U\) of
+\(P\) such that
+\[
+K=\overline{h(U)}
+\tag{ML.5}
+\]
+is compact. Its image \(V=g(U)\) is open by NP.C. Compactness
+gives finitely many elements of \(K\) such that
+\[
+K\subset\bigcup_{j=1}^s(b_j+\tfrac12 V).
+\tag{ML.6}
+\]
+Let \(S\) be their finite-dimensional span. Quotient the target
+by \(S\), a closed subspace by ML.A. The target quotient is
+Fréchet by NT.A, and the quotient of \(g\) is still an open
+surjection. The closure of the quotient of \(h(U)\) is the
+image of \(K\): the image is compact and hence closed, and
+every point in it is a limit of images of points in \(h(U)\).
+In the quotient, ML.6 gives
+\[
+K\subset\tfrac12 g(U).
+\tag{ML.7}
+\]
+For the next argument use the quotient target and the same
+letters. We will prove that \(f\) is surjective there.
+
+Fix a decreasing absolutely convex open zero-neighbourhood
+basis in \(P\) satisfying
+\[
+U_{p+1}\subset\tfrac12 U_p,\qquad p\ge1.
+\tag{ML.8}
+\]
+For fixed \(p\), the increasing open sets
+\[
+g(2^N U_p\cap\tfrac12 U),\qquad N\ge0,
+\tag{ML.9}
+\]
+cover \(K\). Indeed, ML.7 supplies a lift in
+\(\tfrac12 U\), and the absorbing neighbourhood \(U_p\)
+contains that lift after multiplication by a sufficiently
+small power of two. A finite subcover and monotonicity
+give an integer \(N(p)\) with
+\[
+K\subset g(2^{N(p)}U_p\cap\tfrac12 U).
+\tag{ML.10}
+\]
+Increase these integers so that they are strictly increasing.
+
+For \(y_0\in g(U)\), choose \(x_0\in U\) with
+\(g x_0=y_0\), and set \(y_1=-h x_0\). Inductively choose
+\[
+\begin{gathered}
+g x_n=y_n,\\
+x_n\in2^{-n}U,\\
+y_{n+1}=y_n-fx_n,\\
+y_{n+1}=-h x_n\in2^{-n}K.
+\end{gathered}
+\tag{ML.11}
+\]
+These choices are possible because ML.7 gives
+\(2^{1-n}K\subset g(2^{-n}U)\). For indices in a block,
+ML.10 permits the additional choice
+\[
+\begin{gathered}
+N(p)<n\le N(p+1),\\
+x_n\in2^{N(p)+1-n}U_p,\\
+x_n\in2^{-n}U.
+\end{gathered}
+\tag{ML.12}
+\]
+For the finitely many initial indices no additional condition
+is needed. Any partial sum inside the \(p\)-th block belongs
+to \(2U_p\), because the sum of its displayed coefficients
+is at most two. The sum of all block tails starting at
+block \(p\), including an incomplete first or last block,
+belongs to \(4U_p\) by ML.8 and absolute convexity.
+These sets tend to zero. Thus
+\[
+x=\sum_{n\ge0}x_n
+\tag{ML.13}
+\]
+exists by completeness. Since the compact set \(K\) is bounded,
+ML.11 gives \(y_n\to0\). Telescoping ML.11 and continuity
+show \(fx=y_0\). The image of \(f\) therefore contains the
+open neighbourhood \(g(U)\) and, being a linear subspace,
+is the whole quotient target.
+
+Before taking that target quotient, the conclusion is
+\[
+Q=f(P)+S.
+\tag{ML.14}
+\]
+The scalar cokernel is finite dimensional. ML.A gives its
+Hausdorff property and closedness of \(f(P)\), proving ML.4.
+No finite-rank approximation of the compact map was required.
+
+Compactness in this proof passes to a closed target subspace.
+More precisely, if a compact map takes its values in a closed
+subspace, the compact closure of the image of the chosen
+neighbourhood is still contained in that subspace and is compact
+for its induced topology. This is a statement about the
+neighbourhood definition of compactness.
+
+#### ML.C. Finite and Hausdorff cohomology
+
+Let \(E^\bullet,F^\bullet\) be Fréchet complexes, and let
+\(\rho^\bullet:E^\bullet\to F^\bullet\) be a continuous chain
+map. Suppose in one degree that
+\[
+\begin{gathered}
+\rho^q:E^q\longrightarrow F^q,\\
+\rho^q\text{ is compact},\\
+H^q(\rho):H^q(E)\\
+\longrightarrow H^q(F),\\
+H^q(\rho)\text{ is surjective}.
+\end{gathered}
+\tag{ML.15}
+\]
+Then \(H^q(F)\), with the topology in ML.1, is finite dimensional
+and Hausdorff. Define maps between actual Fréchet spaces by
+\[
+\begin{gathered}
+P=Z^q(E)\oplus F^{q-1},\\
+Q=Z^q(F),\\
+g(x,y)=\rho^q x+d_F^{q-1}y,\\
+h(x,y)=-\rho^q x,\\
+(g+h)(x,y)=d_F^{q-1}y.
+\end{gathered}
+\tag{ML.16}
+\]
+Surjectivity on cohomology says exactly that \(g\) is
+surjective. The map \(h\) is compact into the closed cycle
+target by the final paragraph of ML.B. ML.4 therefore gives
+a closed finite-codimensional boundary space in \(Q\).
+This proves the claim without first assuming closed boundaries.
+
+There is also a useful topological statement without compactness:
+every surjective \(H^q(\rho)\) is open. Indeed \(g\) in ML.16
+is an open map by NP.C. If \(O\) is an open set in \(H^q(E)\),
+let \(\widetilde O\) be its open inverse image in \(Z^q(E)\).
+Then
+\[
+g(\widetilde O\times F^{q-1})
+\tag{ML.17}
+\]
+is the inverse image of \(H^q(\rho)(O)\) in \(Z^q(F)\).
+It is open, so the image in cohomology is open. The induced
+cohomology map is continuous by the definition of the two
+quotient topologies. Consequently a bijective induced map is
+a homeomorphism even when its cohomology spaces are not
+Hausdorff.
+
+#### ML.D. Metrics for a tower of complexes
+
+Consider a tower of Fréchet complexes with continuous chain maps
+\[
+\begin{gathered}
+r_n:E_{n+1}^\bullet\longrightarrow E_n^\bullet,\\
+n\ge0,\qquad r_{nn}=1,\\
+r_{nk}=r_k\cdots r_{n-1},\\
+k<n,\\
+E^\bullet=\varprojlim_n E_n^\bullet.
+\end{gathered}
+\tag{ML.18}
+\]
+For the inverse limit take compatible elements in the
+countable product in each degree. Compatibility is a closed
+condition, so each limit term is a Fréchet space. Products
+are complete because a Cauchy sequence converges in every
+coordinate, and the product topology makes these coordinate
+limits its limit. Closed subspaces inherit completeness.
+The differentials on the limit act coordinatewise.
+
+Throughout ML.D–ML.G assume that
+\[
+\begin{gathered}
+r_n:E_{n+1}^j\longrightarrow E_n^j\\
+\text{has dense image}\\
+\text{for every }n,j.
+\end{gathered}
+\tag{ML.19}
+\]
+There is no assumption that the maps on terms or cycles are
+surjective.
+
+Here are explicit metrics used to control the limit
+constructions. A countable defining family of continuous
+seminorms gives a complete translation-invariant metric by
+summing their truncations with positive summable weights.
+For example
+\[
+\begin{gathered}
+a_m(v)=\min\{1,p_m(v)\},\\
+a(v)=\sum_{m\ge1}2^{-m}a_m(v),\\
+\alpha(x,y)=a(x-y).
+\end{gathered}
+\tag{ML.20}
+\]
+The triangle inequality follows from subadditivity of the
+seminorms and of truncation at one. This metric defines the
+seminorm topology. A Cauchy sequence for it is Cauchy for
+each seminorm, and completeness of the Fréchet space gives
+a limit to which the sequence also converges in the metric.
+
+Fix a degree \(q\). Choose such metrics \(\alpha_n\) in degree
+\(q\) and \(\beta_n\) in degree \(q-1\). In the next display,
+a metric with one argument means distance to zero, all maxima
+over \(k\) range from zero to \(n\), and a maximum of functions
+is pointwise. Put
+\[
+\begin{gathered}
+a_n(u)=\max_k\alpha_k(r_{nk}u),\\
+b_n^0(v)=\max_k\beta_k(r_{nk}v),\\
+b_n^1(v)=a_n(d_nv),\\
+b_n=\max\{b_n^0,b_n^1\},\\
+A_n(x,x')=a_n(x-x'),\\
+B_n(y,y')=b_n(y-y').
+\end{gathered}
+\tag{ML.21}
+\]
+Both are complete metrics with the original topologies:
+they contain the original \(k=n\) metric, and add only finitely
+many continuous terms. A sequence Cauchy for either metric
+has an original limit, and continuity gives convergence for
+the additional terms. The chain maps imply
+\[
+\begin{gathered}
+A_k(r_{nk}x,0)\le A_n(x,0),\\
+B_k(r_{nk}y,0)\le B_n(y,0),\\
+A_n(d_ny,0)\le B_n(y,0).
+\end{gathered}
+\tag{ML.22}
+\]
+Thus all errors measured at a later stage control the earlier
+stages, including errors after taking a differential.
+
+The same finite-maximum construction in a single degree
+shows that each projection
+\[
+\varprojlim_n E_n^j\longrightarrow E_N^j
+\tag{ML.23}
+\]
+has dense image. To prove this, start with an element at
+stage \(N\), and use ML.19 to choose successive lifts whose
+images differ from the preceding choice by less than
+\(\varepsilon2^{-n-1}\) in the metric at stage \(n\).
+At each fixed earlier stage, the successive images are Cauchy.
+Their limits are compatible by continuity and have image at
+stage \(N\) at distance less than \(\varepsilon2^{-N}\)
+from the chosen element. The finite-maximum metric includes
+every prescribed finite set of earlier neighbourhood
+conditions. This proves density for the entire Fréchet topology.
+
+#### ML.E. Lifting compatible cohomology classes
+
+There is a natural linear map
+\[
+\begin{gathered}
+\Theta^q:H^q(E^\bullet)\\
+\longrightarrow\varprojlim_n H^q(E_n^\bullet),
+\end{gathered}
+\tag{ML.24}
+\]
+where the limit on the right consists of compatible algebraic
+cohomology classes. Under ML.19 it is surjective, without any
+closed-boundary assumption.
+
+Take a compatible family of classes \(c_n\). Choose a cycle
+\(x_0\) representing \(c_0\). Having chosen a representative
+\(x_n\), choose any representative \(\widetilde x_{n+1}\)
+of \(c_{n+1}\). Compatibility gives
+\[
+\begin{gathered}
+r_n\widetilde x_{n+1}-x_n=d_n v_n,\\
+v_n\in E_n^{q-1}.
+\end{gathered}
+\tag{ML.25}
+\]
+By ML.19 choose \(w_{n+1}\in E_{n+1}^{q-1}\) so close
+to \(v_n\) after restriction that, on defining
+\[
+\begin{gathered}
+x_{n+1}=\widetilde x_{n+1}-d_{n+1}w_{n+1},\\
+y_n=v_n-r_nw_{n+1},\\
+r_nx_{n+1}-x_n=d_ny_n,
+\end{gathered}
+\tag{ML.26}
+\]
+we have
+\[
+B_n(y_n,0)<2^{-n-1}.
+\tag{ML.27}
+\]
+The class of \(x_{n+1}\) is still \(c_{n+1}\).
+For each fixed \(k\), ML.22 and ML.27 show that the sequences
+of restricted representatives and the series of restricted
+primitives converge. Explicitly set
+\[
+\begin{gathered}
+Y_k=\sum_{n\ge k}r_{nk}y_n,\\
+Y_k\in E_k^{q-1},\\
+\xi_k=x_k+d_kY_k,\\
+\xi_k=\lim_{n\to\infty}r_{nk}x_n.
+\end{gathered}
+\tag{ML.28}
+\]
+The metric tail estimates prove that the partial sums are
+Cauchy; completeness gives the sums. Taking the differential
+of their limits is legitimate by continuity. The last equality
+is the telescoping identity from ML.26. Each \(\xi_k\) is a
+cycle representing \(c_k\), and continuity of restriction
+gives
+\[
+r_k\xi_{k+1}=\xi_k.
+\tag{ML.29}
+\]
+The family is a cycle in the inverse limit and proves
+surjectivity of ML.24. The series of primitives in ML.28 is
+essential: convergence of the representatives alone would
+only place their differences in the closure of the boundaries.
+
+If every transition on degree-\(q\) cohomology is surjective,
+any class at stage zero extends recursively to a compatible
+family. Hence the map
+\[
+H^q(E^\bullet)\longrightarrow H^q(E_0^\bullet)
+\tag{ML.30}
+\]
+is surjective under that additional assumption.
+
+#### ML.F. Density, primitives and injectivity
+
+First we prove a density assertion that respects actual
+quotient cohomology. Let \(s:P^\bullet\to Q^\bullet\) be a
+continuous chain map of Fréchet complexes. If
+\[
+\begin{gathered}
+s^{q-1}:P^{q-1}\\
+\longrightarrow Q^{q-1},\\
+H^q(s):H^q(P)\\
+\longrightarrow H^q(Q),\\
+\text{both have dense image},
+\end{gathered}
+\tag{ML.31}
+\]
+then \(s^q:Z^q(P)\to Z^q(Q)\) has dense image.
+Indeed, for \(z\in Z^q(Q)\) and any small cycle
+neighbourhood, density on the quotient supplies a cycle
+\(a\in Z^q(P)\) and \(b\in Q^{q-1}\) for which
+\[
+z-s^q a-d_Qb
+\tag{ML.32}
+\]
+is as small as prescribed in the cycle topology. This follows
+because the quotient image of every open cycle neighbourhood
+is open. Approximate \(b\) by \(s^{q-1}v\). Continuity of
+the differential then makes the cycle
+\[
+s^q(a+d_Pv)
+\tag{ML.33}
+\]
+arbitrarily close to \(z\). No separation property of the
+cohomology quotient was used.
+
+Suppose every \(H^q(r_n)\) has dense image. Applying ML.31
+shows that the maps on degree-\(q\) cycle spaces have dense
+image. These are closed Fréchet spaces. The construction for
+ML.23 applied to their tower proves
+\[
+\begin{gathered}
+Z^q(E^\bullet)\longrightarrow Z^q(E_N^\bullet)\\
+\text{has dense image}
+\end{gathered}
+\tag{ML.34}
+\]
+for every \(N\). The induced cohomology projection also has
+dense image, by continuity of the open quotient map.
+
+For injectivity of ML.24 assume instead that every
+\[
+\begin{gathered}
+H^{q-1}(r_n):H^{q-1}(E_{n+1})\\
+\longrightarrow H^{q-1}(E_n)\\
+\text{has dense image}.
+\end{gathered}
+\tag{ML.35}
+\]
+Apply ML.31 one degree lower, using ML.19 in degree
+\(q-2\). The transitions on \(Z^{q-1}\) have dense image.
+Let a cycle \(\xi\) in the limit map to zero at every stage.
+Choose a primitive \(y_0\) for \(\xi_0\). Given a primitive
+\(y_n\), choose any primitive \(\widetilde y_{n+1}\)
+for \(\xi_{n+1}\). Their discrepancy
+\[
+\begin{gathered}
+z_n=r_n\widetilde y_{n+1}-y_n,\\
+z_n\in Z^{q-1}(E_n)
+\end{gathered}
+\tag{ML.36}
+\]
+can be approximated by \(r_n w_{n+1}\), where
+\(w_{n+1}\in Z^{q-1}(E_{n+1})\). Make the approximation
+so that, after replacing the primitive by
+\[
+\begin{gathered}
+y_{n+1}=\widetilde y_{n+1}-w_{n+1},\\
+e_n=r_ny_{n+1}-y_n,\\
+B_n(e_n,0)<2^{-n-1},
+\end{gathered}
+\tag{ML.37}
+\]
+the displayed estimate holds. Taking limits at every earlier
+stage as in ML.28 gives a compatible family \(y\). Every
+approximate primitive still has differential \(\xi_n\), so
+continuity gives
+\[
+dy=\xi.
+\tag{ML.38}
+\]
+Thus \(\Theta^q\) is injective, and together with ML.E it is
+an algebraic isomorphism under ML.35.
+
+If, in addition, every \(H^q(r_n)\) is injective, then the
+map ML.30 is injective. A class zero at stage zero is zero at
+every stage by those injective transition maps; ML.38 then
+shows it was zero in the limit. No topological isomorphism
+with a limit of non-Hausdorff quotient spaces is asserted
+merely from these algebraic conclusions.
+
+#### ML.G. A common approximation source
+
+Let \(P^\bullet\) be another Fréchet complex and let
+\(\varphi^\bullet:P^\bullet\to E^\bullet\) be a continuous
+chain map. Write \(\varphi_n\) for its composite with
+the \(n\)-th projection. Suppose for every \(n\) that
+\[
+\begin{gathered}
+\varphi_n^{q-1}:P^{q-1}\longrightarrow E_n^{q-1},\\
+H^q(\varphi_n):H^q(P)\\
+\longrightarrow H^q(E_n),\\
+\text{both have dense image}.
+\end{gathered}
+\tag{ML.39}
+\]
+Then
+\[
+\begin{gathered}
+H^q(\varphi):H^q(P)\\
+\longrightarrow H^q(E^\bullet)\\
+\text{has dense image}.
+\end{gathered}
+\tag{ML.40}
+\]
+ML.31 shows that \(\varphi_n(Z^q(P))\) is dense in
+\(Z^q(E_n)\). For a limit cycle \(\xi\), choose cycles
+\(a_n\in Z^q(P)\) with
+\[
+A_n(\varphi_n a_n,\xi_n)<2^{-n}.
+\tag{ML.41}
+\]
+ML.22 implies that the images \(\varphi a_n\) converge to
+\(\xi\) in every coordinate and hence in the limit topology.
+Cycle density implies cohomology density, proving ML.40.
+
+One sufficient hypothesis for the first line of ML.39 is
+density of \(P^{q-1}\to E^{q-1}\) itself. Its composite
+with a projection is then dense in the projection image,
+and ML.23 makes that image dense in \(E_n^{q-1}\).
+This explains precisely how an approximation source for
+the entire tower can be used.
+
+#### ML.H. Exhaustions and a vanishing criterion
+
+Here is a sheaf formulation with the cover conditions explicit.
+Let \(X_0\subset X_1\subset\cdots\) be open subsets with
+union \(X\), and let \(\mathscr S\) be a sheaf of complex
+vector spaces. Suppose a single countable cover
+\(\mathcal W=(W_i)_{i\in I}\) of \(X\) has increasing
+subfamilies indexed by
+\[
+\begin{gathered}
+I_0\subset I_1\subset\cdots,\\
+\bigcup_n I_n=I,
+\end{gathered}
+\tag{ML.42}
+\]
+each of which is a cover of \(X_n\) by sets contained in \(X_n\).
+Suppose every nonempty finite intersection in this cover is
+\(\mathscr S\)-acyclic in positive degrees. Suppose its
+section spaces on those intersections are Fréchet and the
+restriction maps are continuous. For a coherent analytic
+sheaf, SC.G supplies these section topologies and continuity;
+acyclicity is a separate hypothesis here.
+
+For an increasing tuple \(J\), let \(W_J\) be the intersection
+of its members. Let \(\mathcal I_n^{p+1}\) and
+\(\mathcal I^{p+1}\) denote the increasing tuples of length
+\(p+1\) in \(I_n\) and \(I\), respectively. Take alternating
+Čech complexes with their product topologies:
+\[
+\begin{gathered}
+C_n^p=\prod_{J\in\mathcal I_n^{p+1}}\mathscr S(W_J),\\
+C^p=\prod_{J\in\mathcal I^{p+1}}\mathscr S(W_J).
+\end{gathered}
+\tag{ML.43}
+\]
+An empty intersection contributes the zero space. The
+differential in any target coordinate is a finite sum of
+continuous restrictions, hence is continuous. Transition
+maps are coordinate projections, so they are surjective:
+extend an arbitrary cochain by zero on the additional tuples.
+This extension need not commute with the differential and
+is used only to prove surjectivity on terms.
+
+Every finite tuple of indices appears in some \(I_n\).
+Consequently compatible cochains are exactly all cochains:
+\[
+C^\bullet=\varprojlim_n C_n^\bullet
+\tag{ML.44}
+\]
+as topological complexes. The topology agrees because every
+finite coordinate condition occurs at some stage. SC.B
+identifies their cohomology with derived sheaf cohomology
+on \(X\) and \(X_n\), and identifies the induced maps with
+ordinary restriction. In degree zero this is just the
+sheaf gluing isomorphism. Give these cohomology groups the
+quotient topologies of these particular complexes.
+
+Assume now that
+\[
+\begin{gathered}
+H^q(X_n,\mathscr S)=0,\\
+q\ge1,\quad n\ge0,\\
+\mathscr S(X_{n+1})\longrightarrow\mathscr S(X_n)\\
+\text{has dense image}.
+\end{gathered}
+\tag{ML.45}
+\]
+For the second line the section topology must agree with the
+degree-zero cycle topology of ML.43. In the coherent analytic
+case this follows from SC.G: the compatible-section subspace
+of the product of local sections is the canonical section
+space. The topological isomorphism in degree zero can also
+be seen from continuity of the section restrictions, a closed
+compatibility subspace, and NP.C.
+
+ML.E and ML.F now prove
+\[
+\begin{gathered}
+H^q(X,\mathscr S)=0\\
+(q\ge1).
+\end{gathered}
+\tag{ML.46}
+\]
+In degree one, the preceding cohomology is the section
+space and its transition density is the second line of
+ML.45. In every higher degree, the preceding cohomology
+groups vanish, so their transition maps have dense image.
+Thus ML.24 is injective and has zero target in every
+positive degree, proving ML.46.
+
+The density clause cannot be dropped merely because all
+positive cohomology groups at the individual stages vanish.
+The proof of ML.38 needs approximation of differences of
+primitives in the preceding cycle spaces; ML.J gives an
+explicit tower for which this density fails and the limit
+has nonzero positive cohomology.
+
+#### ML.I. Compact restrictions in a Čech model
+
+Let two countable acyclic covers of a space carry the
+Fréchet section topologies above. Suppose a refinement
+chain map between their Čech complexes has a compact map
+in degree \(q\), and induces a surjection on \(H^q\).
+SC.B identifies its cohomology map with the corresponding
+sheaf-cohomology map. ML.C proves that the target group is
+finite dimensional and Hausdorff in its actual Čech quotient
+topology. If the induced map is bijective, ML.C also identifies
+the two topologies.
+
+For a finite cover, a sufficient compactness condition is
+that each cochain restriction factors through a relatively
+compact restriction of coherent analytic sections as in
+SC.H.
+Such a restriction is scalar nuclear and hence compact:
+in a nuclear representation, choose an absolutely convex
+neighbourhood on which all coefficient functionals have
+absolute value at most one. For each seminorm in the target,
+boundedness of the coefficient vectors and summability of
+the scalar weights bound the tail uniformly. Set
+\(t_j(x)=\ell_j(x)y_j\); then
+\[
+\begin{gathered}
+T_N(x)=\sum_{j>N}\lambda_jt_j(x),\\
+M_p=\sup_jp(y_j),\\
+s_N=\sum_{j>N}|\lambda_j|,\\
+\sup_{x\in U}p(T_N(x))
+\le M_p s_N.
+\end{gathered}
+\tag{ML.47}
+\]
+The finite head ranges in a bounded finite-dimensional
+set. For any target zero neighbourhood, finitely many
+seminorm conditions and ML.47 make a tail smaller than
+half that neighbourhood; a finite cover of the head gives
+a finite cover of the full image. The image is therefore
+totally bounded. Its closure in the complete metric target
+is compact: successively choose subsequences in finite
+covers of diameters tending to zero; the diagonal sequence
+is Cauchy and hence converges. Finite sums, finite products,
+and continuous pre- or postcomposition preserve compactness
+by this same neighbourhood definition.
+
+This supplies the topological implication when the required
+acyclic covers and refinement have been constructed. It does
+not identify an arbitrary intersection of analytic charts
+with a single ambient polydisc, or infer coherent vanishing
+from scalar vanishing without a resolution.
+
+#### ML.J. A tower with vanishing stages and a nonzero limit
+
+Let \(\ell^2\) be the space of square-summable complex sequences
+indexed by nonnegative integers, with norm
+\[
+\|u\|_2^2=\sum_{j\ge0}|u_j|^2.
+\tag{ML.48}
+\]
+It is complete. A norm-Cauchy sequence has a limit in every
+coordinate. For any sufficiently late fixed term, pass to
+the coordinate limit in each finite partial sum of the
+squared distance to that term. Its supremum is at most
+the squared Cauchy bound. Thus the coordinate limit differs
+from that term by an \(\ell^2\) sequence with arbitrarily small
+norm, and belongs to \(\ell^2\) and is the norm limit.
+
+At stage \(n\), take the two-term complex in degrees zero
+and one
+\[
+\begin{gathered}
+E_n^0=\ell^2,\qquad E_n^1=\mathbf C^n,\\
+d_nu=(u_0,\ldots,u_{n-1}).
+\end{gathered}
+\tag{ML.49}
+\]
+The differential is continuous and surjective: append zeros
+to any finite row. All other terms are zero. Transition maps
+are the identity in degree zero and truncation of the last
+coordinate in degree one. They commute with the differentials
+and are surjective on all terms. Nevertheless
+\[
+\begin{gathered}
+H^1(E_n)=0,\\
+H^0(E_n)=\ker d_n,\\
+u\in\ker d_n\ \Longleftrightarrow\\
+u_j=0\quad(0\le j<n).
+\end{gathered}
+\tag{ML.50}
+\]
+The image of \(H^0(E_{n+1})\) in \(H^0(E_n)\) is the
+kernel of its \(n\)-th coordinate functional. That functional
+is continuous and surjective, as witnessed by the sequence
+with only coordinate \(n\) equal to one. Thus the image is
+a proper closed subspace and is not dense.
+
+The inverse limit complex is
+\[
+\begin{gathered}
+E^0=\ell^2,\qquad E^1=\mathbf C^{\mathbf N},\\
+du=(u_j)_{j\ge0},
+\end{gathered}
+\tag{ML.51}
+\]
+where the target has its product topology. Compatible
+finite rows are exactly all infinite rows; their finite
+coordinate conditions are precisely the product topology.
+The degree-zero identity tower gives the original norm
+topology. The displayed inclusion is continuous because
+each coordinate is bounded by the norm. Its cohomology is
+\[
+\begin{gathered}
+H^1(E)=\mathbf C^{\mathbf N}/\ell^2\ne0,\\
+[(1,1,1,\ldots)]\ne0.
+\end{gathered}
+\tag{ML.52}
+\]
+The all-ones row is not square summable, proving the second
+line and hence the first. Finite-support rows belong to
+\(\ell^2\) and can match every finite coordinate condition.
+The boundary space is therefore dense and proper in the
+target. The cohomology in ML.52 is non-Hausdorff. Its
+nonzero class maps to zero at every stage, exactly as allowed
+when the preceding-degree density hypothesis ML.35 fails.
+
+![Compact perturbation on cycle spaces and convergent primitive corrections.](assets/cohomology-inverse-limits.png)
+
+*The left panel gives the actual maps in ML.16 and their
+closed finite-codimensional image. The right panel gives
+ML.26–ML.29 and the first six terms of the error-bound
+envelope. Those terms sum to \(63/64\), with remaining
+envelope \(1/64\); no particular errors are asserted to
+attain these bounds. The reproducible drawing source
+and exact envelope data
+specify the diagram.*
+
+The compact-cohomology and inverse-limit arguments are also
+developed in
+[Demailly's free author manuscript, Chapter IX, §1.B–§1.C](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf).
+ML.A–ML.J give the quotient, finite-codimension, convergent
+primitive and cover arguments used here.
+
+
+### 5.97. Coherent vanishing and approximation on analytic exhaustions
+
+Let \(X\) be a Hausdorff second-countable analytic space, possibly
+singular or nonreduced. Suppose it has a smooth strictly
+plurisubharmonic exhaustion. For every coherent analytic sheaf
+on \(X\), we prove vanishing of positive cohomology, generation
+by global sections at every stalk, finite global generation
+near every compact subset, and approximation on the Runge
+opens specified below.
+
+The geometry first gives genuine ambient neighbourhoods and
+acyclic intersections. Compact cohomology and convergent
+inverse limits then supply the global passage. The coherent
+ideal and every coherent coefficient module retain their
+nonreduced structures throughout.
+
+We use the earlier proofs of
+coherent algebra and finite free prefixes, SC.D,
+local coherent vanishing and actual section quotients, SC.E,
+coherent section topology, SC.G,
+nuclear restrictions, SC.H,
+and derived/Čech comparison, SC.B.
+The functional-analytic inputs are the complete
+open mapping and null-sequence lifting proof, NP.C,
+compact-cohomology theorem, ML.C,
+and inverse-limit arguments, ML.D–ML.H.
+Holomorphic approximation uses the full weighted solution
+and jet argument in
+WD.H.
+The convolution integrals use the complete
+product-integration and linear-change-of-variables proof.
+
+#### CX.A. Strict positivity and changes of embedding
+
+A smooth real function on an analytic space means one which
+is locally the restriction of a smooth function in an ambient
+complex affine space. It is **strictly plurisubharmonic** if
+such extensions can be chosen with positive-definite Levi
+form. For an ambient smooth function the convention is
+\[
+\begin{gathered}
+L_\phi(z;v)=
+\sum_{a,b}\frac{\partial^2\phi}
+ {\partial z_a\,\partial\overline z_b}
+ v_a\overline v_b,\\
+L_\phi(z;v)>0\quad(v\ne0).
+\end{gathered}
+\tag{CX.1}
+\]
+These are conditions on real functions on the underlying
+space; they do not replace its structure sheaf by a reduced
+one. An **exhaustion** here is bounded below and has compact
+closed sublevel sets. A space with a smooth strictly
+plurisubharmonic exhaustion is called **strongly
+one-complete**.
+
+Strict positivity is independent of the chosen local
+embedding. Suppose two analytic charts for the same space
+are identified near a point. Their coordinate maps have
+holomorphic ambient lifts \(H,K\) in the two directions:
+each coordinate germ is an element of the local analytic
+quotient ring and therefore has a holomorphic representative.
+Shrink so that their composites are defined. If \(\phi\)
+is a strict ambient extension in the first chart, put in the
+second chart
+\[
+\begin{gathered}
+\phi'(z')=\phi(K(z'))\\
+              +|z'-H(K(z'))|^2.
+\end{gathered}
+\tag{CX.2}
+\]
+On the analytic space the second term is zero and the first
+has the required value. The holomorphic chain rule gives
+\[
+\begin{gathered}
+a=DK(z')v,\\
+b=v-DH(K(z'))a,\\
+P=L_\phi(K(z');a),\\
+L_{\phi'}(z';v)=P+|b|^2.
+\end{gathered}
+\tag{CX.3}
+\]
+If the first vector is nonzero the first term is positive.
+If it is zero, the second term is \(|v|^2\).
+Thus the extension is strict in either case. The same
+argument applies to a closed analytic subspace inside a
+chart of a larger analytic space: its own local strict
+extension can be transferred to that chart. All coordinate
+lifts are taken in the actual analytic quotient rings.
+
+Finite sums of strict functions are strict: transfer their
+finitely many local extensions into one common chart using
+CX.2 and add them. The chain rule also gives, for a smooth
+real function \(F\) of finitely many real variables,
+\[
+\begin{gathered}
+u_i=\partial\phi_i(v),\\
+L_{F(\phi)}(v)\\
+=\sum_i F_i(\phi)L_{\phi_i}(v)\\
+ +\sum_{i,j}F_{ij}(\phi)u_i\overline u_j.
+\end{gathered}
+\tag{CX.4}
+\]
+If \(F\) is convex and coordinatewise nondecreasing, its
+Hessian term is nonnegative. Indeed a real positive
+semidefinite matrix is also nonnegative on complex vectors
+by separating their real and imaginary parts. In particular,
+composition with a convex increasing function preserves
+strictness if its first derivative is positive.
+
+We will use uniform positive Levi margins on compact
+ambient sets. Continuity and compactness give these margins
+on the product with the unit sphere. The elementary
+finite-dimensional compactness fact follows by repeatedly
+bisecting bounded intervals in each real coordinate,
+retaining a half containing infinitely many terms.
+The resulting nested intervals have lengths tending to
+zero and yield a convergent subsequence, successively in
+all finitely many coordinates. A closed bounded set is
+therefore sequentially compact. Such a metric space is
+compact: failure of a finite net of some fixed radius
+would give a sequence of pairwise separated points.
+Also every open cover has a positive Lebesgue radius;
+otherwise choose points whose balls of radii tending
+to zero lie in no cover member, take a convergent
+subsequence, and use an open cover member at its limit
+to contradict that choice. A finite net of smaller radius
+then gives a finite subcover. This proves compactness
+in the Euclidean metric and the finite-dimensional
+compactness used for the Levi margins.
+
+#### CX.B. Nested chart balls and smooth maxima
+
+There is a compact exhaustion
+\[
+\begin{gathered}
+K_n\subset\operatorname{int}K_{n+1},\\
+X=\bigcup_n\operatorname{int}K_n.
+\end{gathered}
+\tag{CX.5}
+\]
+For completeness, small closed ambient balls inside an
+analytic chart intersect its closed analytic model in
+compact sets. Their smaller open balls form a basis of
+relatively compact neighbourhoods. Second countability
+selects a countable cover of this kind: for each member
+of a countable basis contained in one such neighbourhood,
+select one containing neighbourhood. Inductively cover
+the preceding compact set and the first finitely many
+chosen compact closures by finitely many relatively
+compact open neighbourhoods. Their compact closures give
+the next \(K_n\) and contain the preceding set in their
+interior. This proves CX.5.
+
+Set \(K_0=K_{-1}=\varnothing\) for the following
+annulus construction. If \(Y\) is closed, any prescribed family of chart
+neighbourhoods of its points has a refinement by nested
+chart balls
+\[
+\begin{gathered}
+V_i\Subset U_i,\\
+Y\subset\bigcup_i V_i,\\
+\overline U_i\text{ lies in}\\
+\text{a prescribed chart domain},
+\end{gathered}
+\tag{CX.6}
+\]
+with the \(U_i\) locally finite in \(X\).
+To construct it, cover each compact annulus
+\(Y\cap(K_n\setminus\operatorname{int}K_{n-1})\)
+by finitely many smaller chart balls. Choose their
+slightly larger closed balls inside
+\(\operatorname{int}K_{n+1}\setminus K_{n-2}\)
+and inside the prescribed domains, taking the first
+two excluded compact sets to be empty. This is possible
+because \(K_{n-2}\) is inside the interior of \(K_{n-1}\).
+Every compact subset meets only finitely many of these
+larger balls. Smaller concentric balls still cover each
+annulus, proving CX.6.
+
+There are smooth cutoffs \(\chi_i\) equal to one on
+\(V_i\), between zero and one, and zero near the boundary
+of \(U_i\). Take an ordinary radial ambient cutoff
+between the two ball radii and restrict it to the
+analytic model. Extending by zero outside the chart is
+smooth because its support is compactly contained there.
+One explicit smooth scalar bump is obtained from
+\[
+\begin{gathered}
+e(t)=
+\begin{cases}e^{-1/t},&t>0,\\0,&t\le0,\end{cases}\\
+s(t)=\frac{e(t)}{e(t)+e(1-t)}.
+\end{gathered}
+\tag{CX.7}
+\]
+Then \(s=0\) for \(t\le0\), \(s=1\) for \(t\ge1\).
+Its denominator never vanishes. All derivatives of
+\(e\) at zero vanish: each right derivative is an
+exponential times a polynomial in \(1/t\), and
+\(e^u\ge u^m/m!\) for every integer \(m\) makes this
+product tend to zero. This proves smoothness and
+justifies the cutoffs.
+
+For positive numbers \(\eta_i\), choose even nonnegative
+smooth functions of integral one supported in
+\((-\eta_i,\eta_i)\). They are rescalings of the bump
+\(e(1-t^2)\), divided by its positive finite integral.
+For a finite nonempty index set define
+\[
+\begin{gathered}
+m(t)=\max_i t_i,\\
+k_\eta(s)=\prod_i\kappa_{\eta_i}(s_i),\\
+M_\eta(t)\\
+=\int m(t+s)k_\eta(s)\,ds.
+\end{gathered}
+\tag{CX.8}
+\]
+The integral is an ordinary finite-dimensional integral
+with compact support. Moving derivatives to the smooth
+kernel after the change of variables \(u_i=t_i+s_i\)
+shows that this function is smooth: on any compact
+set of \(t\)'s, all differentiated integrands have
+common compact support and uniform integrable bounds,
+so their difference quotients converge under the
+integral. The product-integration argument in the
+earlier programme justifies these iterated integrals.
+
+Convexity and monotonicity follow by integrating the
+corresponding inequalities for the maximum. Evenness
+gives zero first moments, so
+\[
+\begin{gathered}
+\max_i t_i\le M_\eta(t),\\
+M_\eta(t)\le\max_i(t_i+\eta_i),\\
+M_\eta(t+c{\bf1})\\
+=M_\eta(t)+c,\\
+(M_\eta)_i\ge0,\\
+\sum_i(M_\eta)_i=1.
+\end{gathered}
+\tag{CX.9}
+\]
+For the lower bound integrate
+\(\max_j(t_j+s_j)\ge t_i+s_i\) for each \(i\).
+The upper bound is pointwise, and differentiation
+of translation covariance gives the final sum.
+There is an exact deletion rule:
+\[
+\begin{gathered}
+t_i+\eta_i<t_j-\eta_j\\
+\Longrightarrow\\
+M_\eta(t)\text{ ignores }t_i.
+\end{gathered}
+\tag{CX.10}
+\]
+That variable can never achieve the maximum for any
+point of the support of the kernel; its kernel factor
+then integrates to one. This proves consistency when
+an irrelevant variable is removed.
+
+By CX.4 and CX.9, the smooth maximum of finitely many
+strictly plurisubharmonic functions is strict. The
+weighted sum of their positive Levi forms has weights
+with sum one, and the Hessian term is nonnegative.
+If their Levi forms merely have a common lower bound
+\(-C|v|^2\), their smooth maximum has that lower bound
+as well.
+
+#### CX.C. Approximate extension from a closed analytic subspace
+
+Let \(Y\) be a closed analytic subspace of \(X\), let
+\(\psi\) be smooth and strictly plurisubharmonic on \(Y\),
+and let \(\delta>0\) be continuous on \(Y\). There is
+an open neighbourhood \(N\) of \(Y\) and a smooth
+strictly plurisubharmonic function \(\phi\) on \(N\)
+such that
+\[
+\psi\le\phi|_Y<\psi+\delta.
+\tag{CX.11}
+\]
+Choose the locally finite balls of CX.6 so that each
+has a strict ambient extension \(\phi_i\) of \(\psi\)
+on a neighbourhood of its closure. This uses CX.A
+to work in a chart of \(X\). Let \(\chi_i\) be the
+cutoff of CX.B. Choose positive constants so small that
+\[
+\begin{gathered}
+\rho_i=\phi_i+\varepsilon_i(2\chi_i-1),\\
+\rho_i\text{ is strict near }\overline U_i,\\
+0<\eta_i<\varepsilon_i/4,\\
+\varepsilon_i<
+\tfrac14\min_{Y\cap\overline U_i}\delta.
+\end{gathered}
+\tag{CX.12}
+\]
+The compact Levi margin and the bounded second
+derivatives of the cutoff permit the first choice.
+The final minimum is positive on the nonempty compact
+set in question. Balls disjoint from \(Y\) are unnecessary.
+
+Here is a precise neighbourhood on which to glue
+these functions. Extend each \(\rho_i\) continuously
+to a neighbourhood of \(\overline U_i\). On the boundary
+of \(U_i\), let \(B_i\) be the set where
+\[
+\rho_i+\eta_i\ge
+\sup_{j:\,x\in U_j}(\rho_j-\eta_j).
+\tag{CX.13}
+\]
+The supremum is lower semicontinuous: each term,
+extended by minus infinity outside its open domain,
+is lower semicontinuous. Thus \(B_i\) is closed in
+the compact boundary. The family of boundaries is
+locally finite, so the union of the \(B_i\) is closed.
+It misses \(Y\). In fact, at a point of
+\(Y\cap\partial U_i\), the cutoff \(\chi_i\) is zero,
+whereas some \(V_j\) contains that point and
+\(\chi_j=1\). Hence
+\[
+\begin{gathered}
+\rho_i+\eta_i=\psi-\varepsilon_i+\eta_i,\\
+\rho_j-\eta_j=\psi+\varepsilon_j-\eta_j,\\
+\rho_i+\eta_i<\rho_j-\eta_j.
+\end{gathered}
+\tag{CX.14}
+\]
+Remove the closed union of the \(B_i\) from
+\(\bigcup_iU_i\), and call the resulting neighbourhood
+\(N\). At a boundary point of any \(U_i\) in \(N\),
+an interior term strictly dominates the boundary
+term as in CX.10. The inequality persists locally.
+Only finitely many boundaries meet a sufficiently
+small neighbourhood. All their terms can therefore
+be deleted there, and the remaining finite smooth
+maximum defines
+\[
+\phi(x)=M_\eta\bigl((\rho_i(x))_{x\in U_i}\bigr).
+\tag{CX.15}
+\]
+The deletion rule proves that these expressions agree
+across all boundaries. They are smooth and strict
+by CX.B and the common-chart argument of CX.A.
+At a point of \(Y\), one of the terms is
+\(\psi+\varepsilon_j\). Every term plus its smoothing
+radius is less than \(\psi+\delta\), by CX.12.
+The two bounds in CX.9 give CX.11.
+
+#### CX.D. A logarithmic barrier with a controlled negative Levi part
+
+Write \(\mathscr J\) for the coherent ideal defining
+\(Y\) in \(X\). There is a function \(v\), defined
+near \(Y\), which is smooth and real on the complement
+of \(Y\), tends to minus infinity at \(Y\), and has
+locally uniformly bounded negative Levi part. More
+precisely, near every point, in a fixed ambient chart
+its smooth local representatives off \(Y\) satisfy
+\[
+L_v(z;w)\ge-C|w|^2
+\tag{CX.16}
+\]
+with one constant on a smaller neighbourhood, including
+when points of the complement approach \(Y\).
+
+Choose locally finite chart balls \(U_i\) with closures
+inside domains on which a finite tuple \(g_i\) generates
+the same ideal \(\mathscr J\). Lift the tuple to
+holomorphic functions in the ambient chart. Shrinking
+the balls first ensures that these lifts are defined
+on neighbourhoods of their closed balls. If their
+centres and radii are \(a_i,r_i\), put on \(U_i\setminus Y\)
+\[
+\begin{gathered}
+b_i(z)=\frac1{r_i^2-|z-a_i|^2},\\
+v_i=\log|g_i|^2-b_i.
+\end{gathered}
+\tag{CX.17}
+\]
+The tuple is nonzero outside \(Y\). Direct
+differentiation gives, for a holomorphic tuple \(g\)
+where it is nonzero,
+\[
+\begin{gathered}
+a=Dg(w),\\
+Q=|g|^2|a|^2-|\langle a,g\rangle|^2,\\
+L_{\log|g|^2}(w)=Q/|g|^4\ge0.
+\end{gathered}
+\tag{CX.18}
+\]
+The inequality is Cauchy–Schwarz, obtained by expanding
+the nonnegative squared norm of the component of
+\(Dg(w)\) perpendicular to \(g\).
+On compact subsets inside a chart ball, the smooth
+function \(b_i\) has bounded second derivatives.
+Thus each \(v_i\) has the required lower Levi bound
+there.
+
+Use a smooth maximum with all smoothing radii equal
+to one. A term approaching its chart boundary
+becomes irrelevant. To check this even at a point
+of \(Y\), select another ball \(U_j\) containing the
+boundary point in its interior. Since \(g_j\)
+generates \(\mathscr J\), locally
+\[
+\begin{gathered}
+g_i=A_{ij}g_j,\\
+|g_i|\le C_{ij}|g_j|
+\end{gathered}
+\tag{CX.19}
+\]
+for a finite holomorphic coefficient matrix, bounded
+on a smaller neighbourhood. Its entries are actual
+sections of \(\mathscr O_X\) and admit local ambient
+representatives. There
+\[
+\begin{gathered}
+c_{ij}=2\log C_{ij},\\
+v_i-v_j\le c_{ij}-b_i+b_j,\\
+c_{ij}-b_i+b_j\longrightarrow-\infty
+\end{gathered}
+\tag{CX.20}
+\]
+as the boundary of \(U_i\) is approached from within.
+The function \(b_j\) stays bounded there. At a boundary
+point outside \(Y\), the same conclusion follows
+directly from continuity and \(b_i\to+\infty\).
+CX.10 therefore deletes every boundary term locally.
+The resulting locally finite smooth maximum defines
+\(v\) smoothly off \(Y\).
+
+At a point of \(Y\), only finitely many chart closures
+meet a sufficiently small neighbourhood. Every
+corresponding tuple tends to zero there, while each
+\(b_i\) is nonnegative. The upper bound in CX.9
+therefore shows \(v\to-\infty\). For CX.16, discard
+the boundary terms using CX.20. The remaining terms
+are in the interiors of finitely many charts.
+Transfer their holomorphic coordinate functions and
+their ideal generators into one common ambient
+chart. Their barrier functions have smooth extensions
+with bounded second derivatives on a smaller
+neighbourhood. Formula CX.18 and the last assertion
+of CX.B give one uniform lower bound for their smooth
+maximum. This proves CX.16. Only smooth representatives
+off \(Y\) and this uniform bound are used below;
+no distributional extension across \(Y\) is required.
+
+#### CX.E. Complete neighbourhoods preserving exhaustion values
+
+Suppose now that \(\psi\) is a strict smooth exhaustion
+on \(Y\). By a common additive shift we can assume
+\(\psi\ge0\); restore that shift to the constructed
+exhaustion at the end.
+For every neighbourhood \(O\) of \(Y\) and every
+continuous positive \(\delta\) on \(Y\), there is
+a strongly one-complete open neighbourhood \(V\)
+inside \(O\), with a strict smooth exhaustion \(\Psi\)
+such that
+\[
+\psi\le\Psi|_Y<\psi+\delta.
+\tag{CX.21}
+\]
+Apply CX.C to obtain \(\phi\), and intersect its domain
+with the domain of the barrier in CX.D. Shrink also
+to \(\{\phi>-1\}\), which still contains \(Y\).
+
+First make \(\phi\) proper on a closed neighbourhood
+of \(Y\). Choose the compact exhaustion in CX.5
+large enough that
+\[
+\begin{gathered}
+Y\cap\{\phi\le n\}\subset\operatorname{int}K_n\\
+(n\ge1).
+\end{gathered}
+\tag{CX.22}
+\]
+These sets on \(Y\) are compact: they are closed in
+the compact set \(\{\psi\le n\}\), by CX.11.
+In the domain of \(\phi\), remove the closed sets
+\(\{\phi\le n\}\setminus\operatorname{int}K_n\).
+Their family is locally finite, since its \(n\)-th
+member lies outside \(\operatorname{int}K_n\).
+Their union misses \(Y\). Apply CX.6 once more,
+with all closed balls inside the resulting open
+neighbourhood, and let \(W_1\) be their union.
+Local finiteness implies that \(\overline W_1\)
+lies in that open neighbourhood. For each real \(c\),
+\[
+\overline W_1\cap\{\phi\le c\}
+\text{ is compact}.
+\tag{CX.23}
+\]
+It is closed and lies in one \(K_n\) with \(n>c\).
+All closures here are taken in \(X\).
+
+Choose an open \(W\) containing \(Y\) with
+\(\overline W\subset W_1\cap O\), using the same
+locally finite shrinking construction. Its boundary
+is disjoint from \(Y\). On each compact \(\phi\)-band
+in \(\overline W_1\), CX.16 and a finite collection
+of strict local extensions of \(\phi\) bound the
+negative Levi part of \(v\) by a fixed multiple
+of \(L_\phi\). On the intersection of that band
+with \(\partial W\), the finite continuous function
+\(v\) has a finite lower bound.
+
+There is consequently a smooth convex increasing
+function \(\chi\), with positive first derivative,
+so large that
+\[
+\begin{gathered}
+L_{v+\chi(\phi)}>0\quad\text{on }W_1\setminus Y,\\
+v+\chi(\phi)>0\quad\text{on }\partial W.
+\end{gathered}
+\tag{CX.24}
+\]
+Here is an explicit domination construction. Define
+the smooth convex function
+\[
+\begin{gathered}
+\kappa(t)=0\quad(t\le0),\\
+\kappa(t)=\int_0^t(t-s)e(s)\,ds\\
+(t>0).
+\end{gathered}
+\tag{CX.25}
+\]
+It is flat at zero by CX.7, with positive first
+derivative for positive arguments and
+\(\kappa''(t)=e^{-1/t}>0\) there. A function
+\[
+\begin{gathered}
+u_n(t)=a_n\kappa(t-n+1),\\
+R(t)=\sum_{n\ge0}u_n(t),\\
+\chi(t)=A+Bt+R(t).
+\end{gathered}
+\tag{CX.26}
+\]
+has a locally finite sum on \(t>-1\). Choose \(B>0\)
+and all \(a_n\ge0\). At \(t=n\), the \(n\)-th term
+has positive value and positive first derivative.
+Choose \(a_n\) successively to make both the value
+and first derivative at \(n\) exceed the required
+bounds for the band \(n\le\phi\le n+1\).
+The constant and slope handle the initial band
+\(-1<\phi\le0\), whose closed part in
+\(\overline W_1\) is compact by CX.23.
+Monotonicity then handles each whole band.
+Convexity and CX.4 give the Levi conclusion in
+CX.24; the value bounds give its boundary conclusion.
+
+Give \(v\) the value minus infinity on \(Y\), and put
+\[
+\begin{gathered}
+u=v+\chi(\phi),\\
+V=\{x\in W:u(x)<0\},\\
+\theta(t)=\kappa(-1/t-1),\\
+t<0,\\
+\Psi=\phi+\theta(u)\quad\text{on }V.
+\end{gathered}
+\tag{CX.27}
+\]
+The function \(-1/t\) has positive first and second
+derivatives for \(t<0\). Thus \(\theta\) is convex,
+nondecreasing, zero for \(t\le-1\), and tends to
+positive infinity as \(t\) tends to zero from below.
+The last assertion follows, for example, by bounding
+\(\kappa''\) below by \(e^{-1}\) for arguments at
+least one and integrating twice. Define the value
+of \(\theta\) at minus infinity to be zero.
+Since \(v\to-\infty\), the term \(\theta(u)\)
+is identically zero on a neighbourhood of every
+point of \(Y\). Thus \(\Psi\) is smooth there
+and equals \(\phi\); elsewhere it is smooth and
+strict by CX.4, CX.24 and the strict \(\phi\) term.
+The set \(V\) is an open neighbourhood of \(Y\).
+
+It remains to prove exhaustion. No point of
+\(\partial W\) is in \(\overline V\), because
+\(u>0\) there and \(u\) is continuous off \(Y\).
+If a sequence in \(V\) has bounded \(\Psi\),
+then \(\theta\ge0\) bounds \(\phi\) above.
+CX.23 gives a convergent subsequence in
+\(\overline W_1\). Its limit lies in \(W\).
+A limit point in \(Y\) lies in \(V\).
+At any other limit point, \(u\le0\).
+Equality would force \(\theta(u)\to+\infty\),
+contradicting the bound and \(\phi>-1\).
+Thus the limit again lies in \(V\).
+Closed sublevels of \(\Psi\) are therefore compact,
+and \(\Psi>-1\). Its equality to \(\phi\) near
+\(Y\) proves CX.21.
+
+#### CX.F. Intersections and compatible ambient sublevels
+
+Finite intersections of strongly one-complete opens
+are strongly one-complete. Add a constant to make each
+chosen strict exhaustion nonnegative, restrict them
+to the intersection, and add them. The sum is strict
+by CX.A. Its closed sublevel lies in the intersection
+of finitely many compact closed sublevels. Within
+that compact intersection it is closed, so it is
+compact. This proves the assertion, including
+intersections not represented by a single ambient
+polydisc.
+
+An open subset \(U'\) of a strongly one-complete
+space \(U\) is **Runge complete in \(U\)** if, for
+every compact \(L\subset U'\), there is a smooth
+strict exhaustion \(\psi\) on \(U\) and a number \(b\)
+such that
+\[
+L\subset\{\psi<b\}\Subset U'.
+\tag{CX.28}
+\]
+Every sublevel of a strict exhaustion has this
+property: move its level slightly down above the
+maximum on the given compact. Its own strict
+exhaustion is \(1/(b-\psi)\), after restricting
+to that sublevel.
+
+Suppose \(A\) is closed analytic in an ambient
+open \(\Omega\), \(U\) is open in \(A\), and
+the exhaustion \(\psi\) in CX.28 is given on
+\(U\). Choose an open \(\Omega'\subset\Omega\)
+with \(A\cap\Omega'=U\); this is precisely
+the relative openness of \(U\). Now \(U\) is
+a closed analytic subspace of \(\Omega'\).
+For any positive constant \(\varepsilon\), CX.E
+gives an ambient neighbourhood \(V\subset\Omega'\)
+and strict exhaustion \(\Psi\) with
+\[
+\begin{gathered}
+A\cap V=U,\\
+\psi\le\Psi|_U<\psi+\varepsilon.
+\end{gathered}
+\tag{CX.29}
+\]
+In particular \(V\) is a neighbourhood of \(U\),
+with that exact intersection with \(A\).
+It is not required to contain points of \(A\setminus U\).
+
+Choose \(\varepsilon\) and levels so that
+\[
+\sup_L\psi+\varepsilon<a<b'<b.
+\tag{CX.30}
+\]
+Then
+\[
+\begin{gathered}
+L\subset A\cap V_a,\\
+A\cap\overline V_{b'}\Subset U',\\
+V_t=\{\Psi<t\}.
+\end{gathered}
+\tag{CX.31}
+\]
+Indeed \(\Psi|_U\ge\psi\) makes the second set
+a compact subset of \(\{\psi<b\}\Subset U'\);
+compactness also follows from exhaustion on \(V\).
+This proves a compatible ambient Runge construction
+with all neighbourhoods and domains specified.
+
+#### CX.G. Coherent vanishing and approximation inside a chart
+
+Fix a coherent analytic sheaf \(\mathscr S\). Throughout CX.G–CX.O, write
+\(\Gamma(T)=\mathscr S(T)\) and
+\(H^q(T)=H^q(T,\mathscr S)\).
+A **distinguished patch** will mean a closed analytic
+model \(A\subset\Omega\subset\mathbf C^N\) on which
+the ambient coherent module \(i_*\mathscr S\)
+has the finite free prefix of SC.D–SC.E, of length
+\[
+L=12^{2N}.
+\tag{CX.32}
+\]
+All maps and its last coherent kernel are defined
+on the same \(\Omega\). SC.D supplies such a patch
+around every point, after shrinking once. No finite
+projective dimension or local freeness of \(\mathscr S\)
+is assumed.
+
+If \(U\subset A\) is strongly one-complete, CX.E–CX.F
+produce an ambient strongly one-complete neighbourhood
+\(V\subset\Omega\) with \(A\cap V=U\). Restrict the
+whole prefix to \(V\) and apply SC.E. The result is
+\[
+\begin{gathered}
+H^q(U)=0\quad(q\ge1),\\
+\mathscr O(V)^{p_0}\longrightarrow
+             \Gamma(U)\longrightarrow0.
+\end{gathered}
+\tag{CX.33}
+\]
+Here \(H^q\) means derived sheaf cohomology. The
+ambient closed inclusion gives the same cohomology
+by SC.C–SC.E. The section map in CX.33 is an
+actual surjection. It is continuous for the
+canonical section topologies by SC.G, and is
+therefore open by NP.C. The closed-inclusion
+identification has the same topology: its graph
+is closed because all finite jets agree, and SC.G
+and NP.C give the resulting Fréchet isomorphism.
+The entire defining ideal of \(A\), including
+nilpotents, is present in this prefix and quotient.
+
+There is a countable basis of strongly one-complete
+distinguished chart balls. The radial function
+\[
+\frac1{r^2-|z-a|^2}
+\tag{CX.34}
+\]
+is a strict exhaustion on a ball, and remains one
+on its closed analytic model. Its closed sublevels
+are closed subsets of smaller compact balls.
+Choose these balls arbitrarily small inside
+distinguished patches. For each member of a
+countable topological basis, a countable selection
+covers that member; the union of these selections
+is the required countable basis.
+Every finite intersection of its members is
+strongly one-complete by CX.F and lies in one
+distinguished patch. CX.33 therefore proves
+acyclicity of all these intersections.
+
+**Local coherent approximation.** If \(U\subset A\)
+is strongly one-complete and \(U'\subset U\)
+is Runge complete in \(U\), then
+\[
+\begin{gathered}
+\Gamma(U)\longrightarrow\Gamma(U')\\
+\text{has dense image}.
+\end{gathered}
+\tag{CX.35}
+\]
+To prove density in the actual section topology,
+fix \(h\in\Gamma(U')\) and a zero neighbourhood
+there. By SC.G, take a countable cover of \(U'\)
+by relatively compact local section domains.
+A prescribed zero neighbourhood contains the
+conditions imposed by finitely many neighbourhoods
+in these section spaces. Let \(L\) be the union
+of the closures of those finitely many domains.
+It is a compact subset of \(U'\).
+
+Use CX.28–CX.31 for that \(L\), retaining the
+same distinguished ambient prefix. In particular,
+choose \(a<b'<b\) as there. The restriction of
+\(h\) to \(A\cap V_{b'}\) lifts, by CX.33, to
+a tuple in \(\mathscr O(V_{b'})^{p_0}\).
+This use of CX.33 is legitimate because
+\(V_{b'}\) has the strict exhaustion
+\(1/(b'-\Psi)\) and is inside the fixed prefix
+domain. The full holomorphic approximation
+theorem WD.H supplies tuples in
+\(\mathscr O(V)^{p_0}\) converging to this lift
+on every compact subset of \(V_a\), with all
+holomorphic derivatives.
+
+The exhaustion gap required in WD.H is explicit:
+choose two more levels strictly between \(a\)
+and \(b'\). The closed sublevel at the larger
+of them is compactly contained in \(V_{b'}\),
+where the lifted tuple is defined. The cutoff
+and its outer closed sublevel therefore have
+their required common domain.
+
+The continuous quotient and restriction maps
+in SC.G send these tuples to sections of
+\(\Gamma(U)\) whose restrictions converge
+to \(h\) on \(\Gamma(A\cap V_a)\).
+Each of the finitely many section domains
+chosen above lies in \(A\cap V_a\).
+Continuity of restriction makes their prescribed
+errors as small as desired. This proves CX.35.
+Since the target is metrizable, density also
+permits approximation of any fixed section
+by a sequence: choose successively a countable
+zero-neighbourhood basis.
+
+#### CX.H. The topology and exact sequence of cohomology
+
+On any open set choose a countable cover from the
+acyclic basis in CX.G. Its alternating Čech
+complex is a complex of Fréchet spaces, with
+continuous differential and the actual quotient
+topology on cohomology. SC.B identifies this
+cohomology with derived sheaf cohomology.
+Degree-zero cycles have precisely the SC.G
+section topology: restriction gives a continuous
+bijection from the section space to the closed
+compatible subspace of the product, and NP.C
+makes it a homeomorphism.
+This topology is independent of the chosen
+acyclic basis cover. A common countable basic
+refinement has acyclic intersections. Its
+refinement cochain maps are continuous, since
+each target coordinate is a restriction of
+one source coordinate, with the alternating
+sign and repeated-index zero convention.
+They induce the natural cohomology isomorphisms
+by SC.B. ML.C makes these bijective induced
+maps homeomorphisms, even before cohomology
+is known to be Hausdorff. The same argument
+shows that restriction to any open subset
+induces a continuous cohomology map.
+
+Let \(G,U\) be strongly one-complete opens,
+write \(W=G\cap U\), and suppose \(V=G\cup U\).
+There is the Mayer–Vietoris sequence
+\[
+\begin{gathered}
+\cdots\longrightarrow H^q(V)\\
+\longrightarrow H^q(G)\oplus H^q(U)\\
+\longrightarrow H^q(W)\\
+\xrightarrow{\ \partial\ }H^{q+1}(V)\\
+\longrightarrow\cdots.
+\end{gathered}
+\tag{CX.36}
+\]
+The difference map is the restriction from \(U\)
+minus the restriction from \(G\).
+Algebraically, take an injective resolution and
+apply the two-open augmented sheaf chain in
+SC.B. Its stalk contraction and injectivity
+give an exact sequence on sections in every
+resolution degree, which gives CX.36.
+
+Here is the full complex argument for that
+last implication. For a short exact sequence
+of complexes, lift a cycle in the quotient
+complex to the middle complex. Its differential
+is the image of a unique cycle in the first
+complex; take that class as the connecting
+class. Changing the lift changes it by a
+boundary, and lifting a primitive in the
+quotient shows that its boundary class has
+zero connecting class. If the connecting
+class is zero, subtract the corresponding
+element of the first complex from the chosen
+lift to make the lift a cycle. This proves
+exactness at the quotient cohomology.
+If a cycle from the first complex becomes
+a boundary in the middle, the image of its
+primitive is a quotient cycle whose connecting
+class is the original one. This proves
+exactness at the first cohomology. Finally,
+if a middle cycle maps to a quotient boundary,
+subtract the differential of a lift of its
+primitive; what remains is a cycle from the
+first complex. This proves exactness at the
+middle cohomology. These arguments in every
+degree give the entire sequence and its
+naturality.
+
+All connecting maps in CX.36 are continuous
+for the topology just defined. To prove this,
+choose one countable basic cover \(T_i\) of
+\(V\). Every intersection \(T_I\), and its
+intersections with \(G,U,W\), is strongly
+one-complete and lies in the distinguished
+patch of one of its members. They are all
+acyclic by CX.33. The algebraic sequence
+on the two-open cover of \(T_I\), together
+with \(H^1(T_I)=0\), gives the
+surjection on the right of the following sequence,
+where \(P_I=\Gamma(T_I\cap G)\oplus\Gamma(T_I\cap U)\):
+\[
+\begin{gathered}
+0\longrightarrow\Gamma(T_I)\\
+\longrightarrow P_I\\
+\longrightarrow\Gamma(T_I\cap W)
+\longrightarrow0.
+\end{gathered}
+\tag{CX.37}
+\]
+Take products over all increasing tuples.
+The resulting short exact sequence of
+Čech complexes has continuous maps between
+Fréchet spaces, and is onto in each degree:
+choose a preimage in every coordinate.
+All its three cohomologies are the ones
+in CX.36 by SC.B.
+
+More generally, write such a short exact
+sequence as \(0\to A\overset{i}\to B
+\overset{p}\to C\to0\).
+For complexes, \(H^q\) here means ordinary
+complex cohomology.
+The map \(i\) is a homeomorphism onto
+the closed kernel of \(p\), by NP.C.
+For each \(q\), the space
+\[
+\begin{gathered}
+R\subset Z^q(C)\oplus B^q,\\
+R=\{(z,b):p(b)=z\}.
+\end{gathered}
+\tag{CX.38}
+\]
+is closed and Fréchet. Here \(B^q\) denotes the degree-\(q\)
+term of the middle complex. The projection of
+\(R\) onto
+\(Z^q(C)\) is onto and hence open by NP.C.
+The map
+\[
+\begin{gathered}
+(z,b)\longmapsto[i^{-1}(db)]\\
+\text{in }H^{q+1}(A).
+\end{gathered}
+\tag{CX.39}
+\]
+is continuous and constant on the fibres
+of that projection. It therefore descends
+continuously to cycles in \(C\), and then
+through their open quotient to \(H^q(C)\).
+This is precisely the connecting map.
+No continuous linear choice of preimages
+and no closed-boundary assumption has been
+used.
+
+#### CX.I. Finite bumps of a strict exhaustion
+
+Let \(\psi\ge0\) be a smooth strict exhaustion
+on \(X\), and write
+\[
+X_t=\{x:\psi(x)<t\}.
+\tag{CX.40}
+\]
+Fix \(c<d\). The closed band
+\(\{c\le\psi\le d\}\) is compact.
+Cover it by finitely many distinguished
+chart balls \(A_j\), with closures in their
+chart and prefix domains. There are
+nonnegative smooth functions of compact
+support in these balls such that
+\[
+\begin{gathered}
+0\le\sum_{j<s}\theta_j\le1,\\
+\sum_{j<s}\theta_j=1\\
+\text{near the closed band}.
+\end{gathered}
+\tag{CX.41}
+\]
+For an explicit construction, choose finitely
+many chart cutoffs \(\beta_j\) whose smaller
+balls cover the band. Their sum is positive
+on a neighbourhood of the band, and has a
+positive minimum on the band. Choose a
+smooth scalar cutoff \(\zeta\), zero near
+zero and one above a smaller positive
+threshold. Set
+\(\theta_j=\zeta(\sum\beta_k)\beta_j/
+\sum\beta_k\), with value zero where the
+denominator is zero. CX.7 makes these
+smooth, with the stated supports and sum.
+
+There is one \(\varepsilon_0>0\) such that
+all partial perturbations
+\[
+\begin{gathered}
+\Theta_j=\sum_{k<j}\theta_k,\\
+\psi_j=\psi-\varepsilon\Theta_j,\\
+0\le j\le s,\quad0<\varepsilon\le\varepsilon_0,
+\end{gathered}
+\tag{CX.42}
+\]
+are strict smooth exhaustions. Their
+interpolations adding any fraction of the
+next \(\theta_j\) are strict as well.
+To verify this uniformly, cover the compact
+union of the supports by finitely many
+charts carrying a strict extension of
+\(\psi\). The finitely many cutoff functions
+have smooth local extensions with bounded
+second derivatives on smaller compact
+charts. The minimum positive Levi margin
+of \(\psi\) dominates their total perturbation
+when \(\varepsilon_0\) is sufficiently small.
+Outside those supports the function is
+unchanged. The bound
+\(|\psi_j-\psi|\le\varepsilon_0\)
+proves exhaustion and a common lower bound.
+
+For any \(t\in[c,d)\) and
+\(0<\varepsilon\le\min(\varepsilon_0,d-t)\),
+put
+\[
+\begin{gathered}
+G_j=\{\psi_j<t\},\\
+U_j=G_{j+1}\cap A_j,\\
+W_j=G_j\cap A_j.
+\end{gathered}
+\tag{CX.43}
+\]
+Then
+\[
+\begin{gathered}
+G_0=X_t,\qquad G_s=X_{t+\varepsilon},\\
+G_{j+1}=G_j\cup U_j,\\
+G_j\cap U_j=W_j.
+\end{gathered}
+\tag{CX.44}
+\]
+The only change at step \(j\) is supported
+inside \(A_j\), proving the second line.
+For the first line, if
+\(t\le\psi<t+\varepsilon\), the sum in
+CX.41 is one. If \(\psi\ge t+\varepsilon\),
+the inequality that sum is at most one
+keeps the point outside \(G_s\); points
+with \(\psi<t\) stay inside. This proves
+the exact equality, including its boundary.
+
+The sets \(G_j\) are strongly one-complete
+sublevels of global strict exhaustions.
+The sets \(U_j,W_j\) have explicit strict
+exhaustions on \(U_j,W_j\), respectively, in the chart ball of radius
+\(r_j\) and centre \(a_j\):
+\[
+\begin{gathered}
+b_j=\frac1{r_j^2-|z-a_j|^2},\\
+\varphi_j=\frac1{t-\psi_{j+1}}+b_j,\\
+\widetilde\varphi_j=\frac1{t-\psi_j}+b_j.
+\end{gathered}
+\tag{CX.45}
+\]
+Each summand is strict by CX.4. The
+denominators force divergence when either
+defining boundary is approached. The
+closed chart balls and global sublevels
+are compact, so bounded sublevels of these
+functions are compact within their domains.
+
+Moreover \(W_j\) is Runge complete in \(U_j\).
+For a compact \(L\subset W_j\), choose
+\[
+\sup_L\psi_j<b<t.
+\tag{CX.46}
+\]
+On \(U_j\), the function
+\[
+\psi_j+\eta\varphi_j,\qquad\eta>0,
+\tag{CX.47}
+\]
+is strict and exhausting. Strictness is
+the sum of strict functions, and exhaustion
+follows from a lower bound for \(\psi_j\)
+and properness of \(\varphi_j\).
+For sufficiently small \(\eta\), its
+sublevel at \(b\) contains \(L\).
+Its closed sublevel is compact in \(U_j\)
+and lies in \(\{\psi_j\le b\}\subset W_j\),
+because \(\varphi_j>0\).
+This is exactly CX.28.
+
+Finally partition \([c,d]\) into finitely
+many intervals of length at most
+\(\varepsilon_0\), and perform these
+constructions at each left endpoint.
+The same original band and cutoffs work
+at every step; each block starts with
+the original \(\psi\) and its new threshold.
+CX.44 identifies successive endpoints.
+We obtain a finite chain of these bumps
+from \(X_c\) to \(X_d\).
+
+#### CX.J. Hausdorff finiteness before using density
+
+Local acyclicity CX.33 and CX.36 first
+give, for every one of the bumps,
+\[
+H^q(G_{j+1})\longrightarrow
+H^q(G_j)
+\tag{CX.48}
+\]
+surjective for \(q\ge1\) and bijective
+for \(q\ge2\). Both \(U_j\) and \(W_j\)
+are acyclic; the only preceding term
+that can obstruct injectivity in degree
+one is the connecting map from
+\(\Gamma(W_j)\).
+In particular the finite chain gives
+surjections
+\[
+\begin{gathered}
+H^q(X_d)\longrightarrow H^q(X_c)\\
+(q\ge1).
+\end{gathered}
+\tag{CX.49}
+\]
+No density or separation assertion has
+entered this conclusion.
+
+Choose finitely many nested distinguished
+chart balls
+\[
+P_i'\Subset P_i\subset X_d
+\tag{CX.50}
+\]
+whose smaller balls cover \(\overline X_c\).
+Their existence follows from compactness
+of that closure in \(X_d\). Include the
+larger \(P_i\) in a countable basic
+acyclic cover of \(X_d\). The finite
+sets \(P_i'\cap X_c\) form an acyclic
+cover of \(X_c\): all their intersections
+are strongly one-complete by CX.F and
+lie in a distinguished patch.
+The refinement map on Čech complexes
+has in each degree only finitely many
+target coordinates. Each nonzero coordinate
+is a restriction of coherent sections
+from an intersection of larger balls
+to a relatively compact intersection
+of the smaller ones with \(X_c\).
+The target closure is compact and lies
+inside every relevant larger ball.
+
+SC.H makes every such restriction scalar
+nuclear. It is compact by the uniform
+tail proof ML.I. Precomposing with a
+coordinate projection and taking finitely
+many components preserves compactness,
+again by ML.I. Thus the refinement is
+a compact chain map in every degree.
+It induces CX.49 by SC.B. ML.C proves
+\[
+\begin{gathered}
+H^q(X_c)\\
+\text{is finite dimensional}\\
+\text{and Hausdorff}\quad(q\ge1).
+\end{gathered}
+\tag{CX.51}
+\]
+The statement holds for every sublevel
+of every smooth strict exhaustion.
+In particular it applies to every \(G_j\)
+in CX.43 by using its own global
+perturbed exhaustion. This argument
+establishes separation before separation
+is used to take limits in cohomology.
+
+#### CX.K. Injectivity and approximation across a bump
+
+The connecting map
+\[
+\partial:\Gamma(W_j)\longrightarrow
+                H^1(G_{j+1})
+\tag{CX.52}
+\]
+is continuous by CX.H. Its target is
+Hausdorff by CX.J. Its restriction to
+the image of \(\Gamma(U_j)\) is
+zero by exactness. That image is dense
+by CX.35, since \(W_j\) is Runge
+complete in \(U_j\), both inside
+the same distinguished patch \(A_j\).
+Continuity into the Hausdorff target
+therefore forces CX.52 to vanish
+identically. CX.36 now proves that
+CX.48 is bijective also in degree one.
+It is a homeomorphism by ML.C.
+
+In degree zero, exactness gives the
+continuous surjection of Fréchet spaces
+\[
+\begin{gathered}
+\Gamma(G_j)\oplus\Gamma(U_j)\\
+  \longrightarrow\Gamma(W_j),\\
+(g,u)\longmapsto u|_{W_j}-g|_{W_j}.
+\end{gathered}
+\tag{CX.53}
+\]
+It is open by NP.C. For fixed
+\(g\in\Gamma(G_j)\), choose
+\(u_\nu\in\Gamma(U_j)\) with
+\[
+w_\nu=u_\nu|_{W_j}-g|_{W_j}\longrightarrow0.
+\tag{CX.54}
+\]
+Null-sequence lifting in NP.C gives
+\((g_\nu',u_\nu')\to0\) mapped to
+\(w_\nu\) by CX.53. Thus
+\[
+g-g_\nu'\quad\text{and}\quad u_\nu-u_\nu'
+\tag{CX.55}
+\]
+agree on \(W_j\) and glue to a section
+on \(G_{j+1}\). Its restriction to
+\(G_j\) tends to \(g\).
+This proves dense restriction on sections
+across each bump. Finite composition
+preserves density. If the image of
+a map \(f\) is dense in an intermediate
+Fréchet space and \(g\) is continuous,
+approximate each intermediate point
+by a sequence from that image.
+Its image under \(g\) converges to
+the image of the point. Thus the
+closure of the composite image
+contains the image of \(g\), and
+is the whole target whenever that
+image is dense.
+We have proved, for every \(c<d\),
+\[
+\begin{gathered}
+H^q(X_d)\simeq H^q(X_c),\\
+q\ge1,\\
+\Gamma(X_d)\longrightarrow\Gamma(X_c)\\
+\text{has dense image}.
+\end{gathered}
+\tag{CX.56}
+\]
+
+#### CX.L. Global coherent vanishing and Runge approximation
+
+Choose \(c\) below the lower bound of
+\(\psi\), so \(X_c\) is empty.
+CX.56 gives
+\[
+\begin{gathered}
+H^q(X_d)=0\\
+(q\ge1,\ d\in\mathbf R).
+\end{gathered}
+\tag{CX.57}
+\]
+To pass to \(X\), take the countable
+basic acyclic cover of CX.G and let
+its \(n\)-th subfamily consist of the
+members whose closures lie in \(X_n\).
+It covers \(X_n\): around any point
+one can choose a relatively compact
+neighbourhood in \(X_n\), then a basic
+member inside it. Its closure is
+still in that neighbourhood's compact
+closure inside \(X_n\).
+Every basic member appears at a finite
+stage, because its closure is compact
+and \(\psi\) is continuous.
+The subfamilies are increasing.
+
+All finite intersections are acyclic
+by CX.G. Their section spaces have
+the canonical Fréchet topology SC.G.
+CX.57 gives vanishing at every stage,
+and CX.56 gives dense section
+restrictions. The exact Čech
+exhaustion criterion ML.H therefore
+proves the full coherent vanishing
+theorem
+\[
+H^q(X)=0\qquad(q\ge1).
+\tag{CX.58}
+\]
+The convergent primitive argument in
+ML.F, not merely convergence of
+cocycles, is what makes this passage
+valid for actual cohomology.
+
+ML.F in degree zero also shows that
+\[
+\begin{gathered}
+\Gamma(X)\longrightarrow\Gamma(X_c)\\
+\text{has dense image}
+\end{gathered}
+\tag{CX.59}
+\]
+for every sublevel. To see the stated
+level directly, choose the exhaustion
+subfamilies starting with that level
+and then increasing by integers.
+Their term maps are surjective
+coordinate projections, and their
+degree-zero cohomology maps are dense
+by CX.56. The density conclusion
+ML.34 is precisely CX.59.
+
+More generally, if an open \(U\subset X\)
+is Runge complete in \(X\) in the
+sense of CX.28, then
+\[
+\begin{gathered}
+\Gamma(X)\longrightarrow\Gamma(U)\\
+\text{has dense image}.
+\end{gathered}
+\tag{CX.60}
+\]
+For a desired section and zero
+neighbourhood in \(\Gamma(U)\),
+choose the finite collection of
+relatively compact local section
+domains controlling that neighbourhood,
+as in the proof of CX.35. Their
+compact closures form \(L\).
+The Runge condition chooses an
+exhaustion, and a sublevel compactly
+contained in \(U\), containing \(L\).
+Use CX.59 for that exhaustion and
+that sublevel. Continuous restriction
+to the finitely many local domains
+gives the prescribed approximation.
+This proves CX.60 in the canonical
+topology, for arbitrary coherent
+coefficients.
+
+#### CX.M. Global generation at stalks and near compact sets
+
+Fix \(x\in X\), and let \(\mathscr I_x\)
+be the ideal sheaf of functions
+vanishing at \(x\). It is coherent.
+Near \(x\), ambient coordinate
+differences generate its stalk and
+its ideal sheaf: a holomorphic
+function vanishing at the point
+has the identity
+\[
+\begin{gathered}
+F_t=a+t(z-a),\\
+h_j(z)=\int_0^1\partial_j f(F_t)\,dt,\\
+q_j(z)=(z_j-a_j)h_j(z),\\
+f(z)-f(a)=\sum_jq_j(z).
+\end{gathered}
+\tag{CX.61}
+\]
+on a sufficiently small convex
+ambient neighbourhood. The integrals
+are holomorphic, as follows by
+differentiation under their compact
+parameter integral. This proves
+generation before passing to the
+analytic quotient ring.
+At a nearby point distinct from
+\(x\), one coordinate difference
+is a unit on a smaller neighbourhood.
+Thus the generated ideal has
+exactly the claimed point ideal
+stalks; away from \(x\) it is
+\(\mathscr O_X\).
+The coherent module algebra SC.D
+now proves coherence of that finite
+image. It also proves coherence of
+\(\mathscr I_x\mathscr S\).
+
+The quotient
+\(\mathscr S/\mathscr I_x\mathscr S\)
+is the finite-dimensional skyscraper
+with fibre
+\[
+\mathscr S_x/\mathfrak m_x\mathscr S_x.
+\tag{CX.62}
+\]
+Finiteness follows by applying the
+finite stalk generating list of
+\(\mathscr S\) modulo the maximal
+ideal. Theorem CX.58 applied to
+\(\mathscr I_x\mathscr S\) makes
+the section map onto CX.62.
+Lift a finite vector-space generating
+list to global sections of
+\(\mathscr S\). Their germs generate
+\(\mathscr S_x\).
+
+Here is the entire local-ring step.
+The quotient \(M\) of that finite
+stalk module by the lifted germs
+is finite and satisfies
+\(M=\mathfrak m_x M\).
+For finite generators \(m_i\), write
+\[
+\begin{gathered}
+m_i=\sum_j a_{ij}m_j,\\
+a_{ij}\in\mathfrak m_x,\\
+\det(1-A)m_i=0.
+\end{gathered}
+\tag{CX.63}
+\]
+The second identity follows by
+multiplying the matrix equation by
+the adjugate. Its determinant belongs
+to \(1+\mathfrak m_x\), so is a unit
+in the local ring. Hence all \(m_i\)
+vanish and \(M=0\).
+
+The coherent cokernel of the map
+from the finite free sheaf defined
+by these global sections has zero
+stalk at \(x\). A finite local
+generating list of that cokernel
+then vanishes on one common
+neighbourhood, so the cokernel
+vanishes there. Consequently
+\[
+\begin{gathered}
+\mathscr O_X^{r_x}\longrightarrow\mathscr S\\
+\text{is onto near }x
+\end{gathered}
+\tag{CX.64}
+\]
+for a tuple of global sections.
+For a compact subset choose finitely
+many of these neighbourhoods and
+take the union of their finite
+global section lists. They generate
+on an open neighbourhood of the
+compact set. This proves global
+generation at every stalk and finite
+generation near every compact;
+it does not assert a single finite
+list on a general noncompact \(X\).
+
+#### CX.N. Discrete interpolation and holomorphic convexity
+
+If \(Z\subset X\) is closed and
+discrete, its point ideal sheaf is
+coherent by the same local argument:
+each point has a neighbourhood
+meeting at most one point of \(Z\),
+and off \(Z\) the ideal is the whole
+structure sheaf. Its quotient has
+one copy of \(\mathbf C\) at each
+point of \(Z\). On the discrete
+closed set its sections are
+arbitrary collections of scalars.
+CX.58 therefore gives
+\[
+\begin{gathered}
+\mathscr O_X(X)\longrightarrow
+\prod_{z\in Z}\mathbf C\\
+\text{surjective}.
+\end{gathered}
+\tag{CX.65}
+\]
+This includes separation of two
+distinct points by global holomorphic
+functions.
+
+For a compact \(K\subset X\), define
+its holomorphic hull by
+\[
+\begin{gathered}
+\mathcal H=\mathscr O_X(X),\\
+M_f=\sup_K|f|,\\
+A_f=\{x:|f(x)|\le M_f\},\\
+\widehat K=\bigcap_f A_f.
+\end{gathered}
+\tag{CX.66}
+\]
+The intersection is over \(f\in\mathcal H\).
+It is closed as an intersection
+of closed sets. If it were
+noncompact, use CX.5 to select
+distinct points in it escaping
+every compact set: inductively
+choose the next point outside a
+larger compact exhaustion member
+containing the preceding points.
+The resulting set \(Z\) is closed
+and discrete, because each compact
+set meets only finitely many terms.
+By CX.65 choose \(f\) with its
+values on that sequence equal to
+the positive integers. This
+contradicts the finite bound
+\(\sup_K|f|\) required by CX.66.
+Thus every holomorphic hull of
+a compact set is compact.
+
+The theorem concerns every analytic
+space with the stated strict smooth
+exhaustion and every coherent sheaf
+on it. No smoothness of the space,
+reducedness, coefficient flatness,
+or global finite free resolution
+has been assumed.
+
+#### CX.O. A normal section of the smooth maximum
+
+In \(\mathbf C^2\), with coordinates
+\((z,w)\), the two functions
+\[
+\begin{gathered}
+a=|z|^2+|w|^2,\\
+b=\tfrac12\operatorname{Re}w,\\
+\phi_\pm=a\pm b,\\
+\eta_+=\eta_-=\tfrac15
+\end{gathered}
+\tag{CX.67}
+\]
+have identity Levi matrix and agree
+on the analytic subspace \(Y=\{w=0\}\).
+Their smooth maximum from CX.8 has
+identity as a lower Levi bound:
+CX.9 gives total derivative weight
+one, and the Hessian contribution
+in CX.4 is nonnegative.
+On the real normal section
+\(z=0,\ w=t\in\mathbf R\), put
+\(m(t)=M_\eta(\phi_+(0,t),\phi_-(0,t))\).
+The exact bounds and deletion rule are
+\[
+\begin{gathered}
+t^2+\tfrac12|t|\le m(t)\\
+\le t^2+\tfrac12|t|+\tfrac15,\\
+|t|>\tfrac25\ \Longrightarrow\\
+m(t)=t^2+\tfrac12|t|.
+\end{gathered}
+\tag{CX.68}
+\]
+The last implication follows because
+the difference of the two inputs
+has absolute value \(|t|\), exceeding
+the sum of their smoothing radii.
+With only one active variable, the
+even kernel makes its smooth
+maximum equal to that variable.
+
+![A real normal section of the smooth maximum and the order of the coherent vanishing argument.](assets/coherent-cartan.png)
+
+*The left panel is the real normal
+section specified in CX.67. The
+shaded envelope and the deletion
+thresholds are the exact bounds
+CX.68. The smooth curve is evaluated
+by the stated finite quadrature of
+CX.8; this numerical evaluation is
+an illustration, while CX.A–CX.C
+prove positivity and locality.
+The right panel records the actual
+implications CX.G–CX.M, including
+the Hausdorff conclusion before
+the density argument. The
+drawing source
+and constants and quadrature data
+specify the figure.*
+
+#### CX.P. Coherent cohomology on an arbitrary compact analytic space
+
+The local arguments also give the
+compact finiteness theorem without
+a global strict exhaustion. Let
+\(Z\) be any compact Hausdorff
+analytic space and \(\mathscr T\)
+any coherent analytic sheaf on it.
+Compactness gives second countability:
+finitely many analytic charts cover
+\(Z\), and each has a countable basis.
+Choose finitely many pairs of
+nested distinguished chart balls
+\(P_i'\Subset P_i\) such that the
+smaller balls cover \(Z\).
+Both families are finite acyclic
+covers by CX.F–CX.G; all their
+finite intersections are acyclic
+for the same reason.
+
+The refinement cochain map from
+the larger cover to the smaller
+one has compact maps in every
+degree. Each target intersection
+is relatively compact in the
+corresponding source intersection;
+SC.H and ML.I make its section
+restriction compact. There are
+only finitely many coordinates.
+SC.B identifies the induced map
+with the identity on sheaf
+cohomology. ML.C therefore proves
+\[
+\begin{gathered}
+H^q(Z,\mathscr T)\\
+\text{is finite dimensional}\\
+\text{and Hausdorff}\quad(q\ge0).
+\end{gathered}
+\tag{CX.69}
+\]
+In degree zero this includes the
+ordinary section topology SC.G,
+by CX.H.
+The proof applies to singular
+and nonreduced \(Z\) and arbitrary
+coherent \(\mathscr T\).
+
+The exhaustion, neighbourhood and
+bump method is also developed in
+[Demailly's free author manuscript, Chapter IX, §2 and §4](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf).
+The arguments CX.A–CX.P include the
+ambient construction, coherent
+quotients, exact-sequence topology
+and convergent global passage used
+here.
+
+
+### 5.98. Coherent products and analytic coefficient restriction
+
+All analytic spaces in this section are Hausdorff and
+second countable; their structure sheaves may have
+nilpotents. Section spaces carry the canonical nuclear
+Fréchet topology of
+SC.G.
+Scalar completed tensor products use
+NT.E--NT.F.
+Balanced tensors and completed Tor mean the actual
+quotients and bar homology of
+CT.A--CT.D;
+their defining relation images are not replaced by closures.
+
+The analytic hypotheses below use a smooth strictly
+plurisubharmonic exhaustion, in the precise sense of
+CX.A.
+We use the complete coherent vanishing and generation
+proofs
+CX.L
+and
+CX.M.
+The coherent algebra and finite local presentations are
+those proved in
+SC.D.
+
+#### AT.A. Analytic products and coherent exterior products
+
+In local models
+\[
+\begin{gathered}
+A\subset D\subset\mathbf C^n,\\
+B\subset D'\subset\mathbf C^m,\\
+\mathcal O_A=\mathcal O_D/\mathcal J,\\
+\mathcal O_B=\mathcal O_{D'}/\mathcal K,
+\end{gathered}
+\tag{AT.1}
+\]
+the analytic product is the closed model in \(D\times D'\)
+with ideal generated by \(\mathcal J(z)\) and
+\(\mathcal K(w)\). These are the entire ideals, including
+their nilpotent information. To check compatibility,
+a holomorphic map into this model is a pair of coordinate
+maps into \(D,D'\) that kills the respective ideals.
+This is exactly a pair of maps into \(A,B\).
+Holomorphic coordinate changes in either factor therefore
+induce inverse coordinate changes of the product models,
+and these agree on every triple overlap by this same
+pair-of-maps property. They glue to the product space.
+The underlying topology is the product topology:
+this is so in each local model, and the model products
+form an open cover. Products of countable bases give a
+countable base; distinct points are separated in at
+least one Hausdorff factor.
+
+For coherent sheaves \(\mathcal F,\mathcal G\) on \(X,Y\),
+respectively, define
+\[
+\begin{gathered}
+\mathcal F\boxtimes\mathcal G
+=p_X^*\mathcal F
+ \otimes_{\mathcal O_{X\times Y}}p_Y^*\mathcal G.
+\end{gathered}
+\tag{AT.2}
+\]
+Here pullback means the inverse-image sheaf tensored
+with the structure sheaf of the product. If presentations
+in the two ambient charts have matrices \(M,N\) and
+numbers of generators \(p,q\), the corresponding
+presentation of the closed pushforward of AT.2 has
+generators \(e_a\otimes f_b\) and relations
+\[
+\begin{gathered}
+M(z)e\otimes f,\\
+e\otimes N(w)f,\\
+\mathcal J(z)(e\otimes f),\\
+\mathcal K(w)(e\otimes f).
+\end{gathered}
+\tag{AT.3}
+\]
+One can include the ideal relations in \(M,N\) from
+the start by presenting the closed pushforwards.
+This is a finite presentation locally, so SC.D proves
+coherence. The presentation is independent of the
+chosen generators because its maps to any module
+are precisely the bilinear maps subject to the
+stated relations.
+
+This also proves right exactness of the exterior
+product in each variable. Indeed, replacing a
+module by a cokernel adds exactly the images of its
+defining relations to AT.3. No exactness assertion
+about the kernel of an arbitrary pullback is involved.
+For a closed inclusion \(j:B\hookrightarrow D'\),
+the same presentation gives
+\[
+\begin{gathered}
+\mathcal F\boxtimes j_*\mathcal G\\
+\simeq(1_X\times j)_*
+       (\mathcal F\boxtimes\mathcal G).
+\end{gathered}
+\tag{AT.4}
+\]
+Its underlying sheaf is supported on \(X\times B\);
+the quotient structure and all its relations are
+the same on both sides.
+
+There is a canonical jointly continuous section product.
+To check continuity locally, choose distinguished
+chart patches on which the closed pushforwards have
+the finite ambient presentations of SC.D. Their section
+maps from finite tuples of ambient holomorphic functions
+are open surjections by SC.E and the open mapping
+theorem NP.C. Multiplying two such tuples in separate
+variables is continuous for the compact-open seminorms.
+Its composite with the coherent target section map is
+continuous by SC.G and descends to the required
+bilinear product. A product of two open surjections
+is open: images of basic product neighbourhoods are
+product neighbourhoods. Thus the descended bilinear
+map is jointly continuous. On arbitrary opens the
+same conclusion follows by restriction to these
+patches, since SC.G gives the closed compatible-product
+topology. A compact subset of a product has a finite
+cover by smaller chart rectangles; hence the same
+local argument controls every target seminorm.
+The completed projective tensor universal property
+and completeness now give a continuous map
+\[
+\begin{gathered}
+\Phi_{X,Y}:
+\mathcal F(X)\widehat\otimes\mathcal G(Y)\\
+\longrightarrow
+(\mathcal F\boxtimes\mathcal G)(X\times Y),\\
+s\otimes t\longmapsto p_X^*s\otimes p_Y^*t.
+\end{gathered}
+\tag{AT.5}
+\]
+The defining formula proves naturality for coherent
+maps and open restrictions on elementary tensors;
+continuity and density extend each equality to
+the completions.
+
+#### AT.B. Complete product domains
+
+If \(X,Y\) are strongly one-complete, choose their
+strict smooth exhaustions \(\psi_X,\psi_Y\) nonnegative.
+Then
+\[
+\Psi(x,y)=\psi_X(x)+\psi_Y(y)
+\tag{AT.6}
+\]
+is a strict smooth exhaustion on \(X\times Y\).
+In a product ambient chart its Levi form is the sum
+of the two positive definite forms, on the two
+coordinate components of a tangent vector. It is
+therefore positive on every nonzero ambient vector.
+A closed sublevel of AT.6 is a closed subset of the
+product of the two compact closed sublevels at that
+same level. That product is compact: replace an open
+cover locally by product rectangles. For each fixed
+point of the first factor, finitely many rectangles
+cover its compact vertical fibre. Intersect their
+first-factor neighbourhoods; over that intersection
+the same finite rectangles cover every fibre.
+Finitely many such intersections cover the compact
+first factor, giving a finite subcover of the product.
+Thus AT.6 is proper and
+bounded below. This proves the product assertion
+with the full analytic structures.
+
+Polydiscs have the explicit strict exhaustion
+\(\sum_j(R_j^2-|z_j-a_j|^2)^{-1}\).
+Each summand has positive Levi coefficient
+\((R_j^2+|z_j-a_j|^2)/(R_j^2-|z_j-a_j|^2)^3\)
+in its own coordinate. Its closed sublevels stay
+inside a smaller closed polydisc, and are compact
+by the finite-dimensional compactness proof CX.A.
+Restriction to a closed analytic model retains
+strictness in ambient charts and compactness of
+closed sublevels. Thus those closed polydisc models
+are strongly one-complete as well.
+
+In particular CX.L applies to every coherent sheaf
+on such a product. If
+\(0\to\mathcal R\to\mathcal E\to\mathcal Q\to0\)
+is an exact sequence of coherent sheaves there,
+its sequence of sections is exact because
+\(H^1(\mathcal R)=0\). Its maps are continuous by
+SC.G. Its kernel is closed, and its surjection is
+open by NP.C. We shall use this strict section
+exactness on products and on polydiscs.
+
+#### AT.C. The section product in distinguished patches
+
+We prove that AT.5 is a topological isomorphism.
+First let \(A\) be a distinguished closed model
+in a polydisc \(D\), and let \(D'\) be a polydisc.
+The ambient presentation of its coherent sheaf
+has a right exact sequence
+\[
+\mathcal O_D^{p_1}\longrightarrow
+\mathcal O_D^{p_0}\longrightarrow i_*\mathcal F
+\longrightarrow0.
+\tag{AT.7}
+\]
+The kernel and image sheaves are coherent.
+Coherent vanishing on \(D\), or directly SC.E for
+this prefix, gives the actual right exact section
+sequence. In particular the first image is the
+closed kernel of the last surjection.
+Scalar strict tensor exactness NT.F therefore
+gives the right exact sequence
+\[
+\begin{gathered}
+\mathcal O(D)^{p_1}\widehat\otimes\mathcal O(D')\\
+\longrightarrow
+\mathcal O(D)^{p_0}\widehat\otimes\mathcal O(D')\\
+\longrightarrow
+\mathcal F(A)\widehat\otimes\mathcal O(D')
+\longrightarrow0.
+\end{gathered}
+\tag{AT.8}
+\]
+For completeness, factor the first arrow of the
+section sequence through its closed image.
+Tensor the resulting short exact sequence and
+the open surjection onto that image. Their
+composite has precisely the kernel claimed in
+AT.8. Thus no strictness of a nonclosed image
+has been assumed.
+
+Right exactness in AT.A pulls AT.7 to \(D\times D'\).
+This product is strongly one-complete by AT.B.
+Taking sections gives the second right exact row
+with terms
+\[
+\begin{gathered}
+\mathcal O(D\times D')^{p_1},\\
+\mathcal O(D\times D')^{p_0},\\
+(\mathcal F\boxtimes\mathcal O_{D'})(A\times D').
+\end{gathered}
+\tag{AT.9}
+\]
+The scalar product isomorphism CT.I identifies the
+first two terms of AT.8 with those of AT.9,
+including their maps: both maps are multiplication
+by the matrix in AT.7. Their actual cokernels,
+with quotient topologies, are therefore identical.
+Using AT.4 proves
+\[
+\begin{gathered}
+\mathcal F(A)\widehat\otimes\mathcal O(D')\\
+\simeq
+(\mathcal F\boxtimes\mathcal O_{D'})(A\times D').
+\end{gathered}
+\tag{AT.10}
+\]
+
+Now let \(B\subset D'\) also be a distinguished
+closed model, with presentation
+\[
+\begin{gathered}
+\mathcal O_{D'}^{q_1}\longrightarrow
+\mathcal O_{D'}^{q_0}\\
+\longrightarrow j_*\mathcal G
+\longrightarrow0.
+\end{gathered}
+\tag{AT.11}
+\]
+Tensor its strict section cokernel with the
+nuclear space \(\mathcal F(A)\).
+By the same factor-through-image argument as
+in AT.8, the result is a right exact row ending
+in \(\mathcal F(A)\widehat\otimes\mathcal G(B)\).
+Exterior product of AT.11 with \(\mathcal F\)
+gives a right exact coherent sequence on
+\(A\times D'\). This product is strongly
+one-complete, since its factors are closed
+polydisc models. Taking sections is again right
+exact. Its first two terms agree topologically
+with those of the tensor row by AT.10.
+Taking the same cokernel and using AT.4 gives
+\[
+\begin{gathered}
+\Phi_{A,B}:\\
+\mathcal F(A)\widehat\otimes\mathcal G(B)\\
+\simeq(\mathcal F\boxtimes\mathcal G)(A\times B).
+\end{gathered}
+\tag{AT.12}
+\]
+This is the map AT.5, as its formula on elementary
+tensors shows. Every step used the actual coherent
+presentations; the factors need not be smooth,
+reduced or locally free.
+
+#### AT.D. Gluing the product isomorphism
+
+Every coherent sheaf has a countable cover by
+the distinguished patches just used: start
+with the local prefixes in SC.D, shrink their
+ambient domains to polydiscs, and use second
+countability. For a cover \((V_i)\) of \(Y\),
+choose a countable cover
+\((T_{ij\ell})_\ell\) of every nonempty
+\(V_i\cap V_j\) by further distinguished patches.
+These patches use the restricted sheaf
+\(\mathcal G\); their presentations may be
+different from those on \(V_i\).
+Set
+\[
+\begin{gathered}
+P=\prod_i\mathcal G(V_i),\\
+Q=\prod_{i,j,\ell}\mathcal G(T_{ij\ell}),\\
+a((t_i))_{ij\ell}\\
+=t_j|_{T_{ij\ell}}-t_i|_{T_{ij\ell}}.
+\end{gathered}
+\tag{AT.13}
+\]
+Both products are countable nuclear Fréchet
+spaces. The map \(a\) is continuous. The sheaf
+axiom gives
+\(\mathcal G(Y)=\ker a\); its topology is the
+closed compatible-product topology SC.G.
+One may also identify it by the continuous
+bijection onto that closed kernel and NP.C.
+
+Fix a distinguished \(A\subset X\).
+By CT.H, tensor with the nuclear space
+\(\mathcal F(A)\) preserves this kernel even
+if the image of \(a\) is not closed.
+It commutes with the countable products by
+NT.20, proved in NT.F. Consequently
+\[
+\begin{gathered}
+P_A=\prod_i
+ \mathcal F(A)\widehat\otimes\mathcal G(V_i),\\
+Q_A=\prod_{i,j,\ell}
+ \mathcal F(A)\widehat\otimes\mathcal G(T_{ij\ell}),\\
+\mathcal F(A)\widehat\otimes\mathcal G(Y)\\
+\simeq\ker(P_A\to Q_A).
+\end{gathered}
+\tag{AT.14}
+\]
+Use AT.12 on each product factor. Naturality of
+AT.5 makes the resulting map precisely the
+difference of restrictions of the exterior
+product sheaf. Equality on all
+\(A\times T_{ij\ell}\) is equality on
+\(A\times(V_i\cap V_j)\), since those rectangles
+cover that overlap. Thus the kernel is
+\((\mathcal F\boxtimes\mathcal G)(A\times Y)\),
+with its SC.G topology.
+
+Next cover arbitrary \(X\) by distinguished
+patches \(A_i\), and cover each \(A_i\cap A_j\)
+by countably many further distinguished patches.
+Apply exactly the kernel construction AT.13
+to \(\mathcal F\). Tensor it with
+\(\mathcal G(Y)\), use CT.H and NT.20, and use
+the case \(A\times Y\) just proved in each
+factor. The kernel is the sections of the
+exterior product on \(X\times Y\).
+We obtain the natural topological isomorphism
+\[
+\begin{gathered}
+\mathcal F(X)\widehat\otimes\mathcal G(Y)\\
+\simeq
+(\mathcal F\boxtimes\mathcal G)(X\times Y).
+\end{gathered}
+\tag{AT.15}
+\]
+The empty-space cases are zero on both sides.
+No finite global presentation on an overlap
+was needed: only its further distinguished
+cover entered AT.13.
+
+For the structure sheaves this includes
+\[
+\begin{gathered}
+\mathcal O(X)\widehat\otimes\mathcal O(Y)\\
+\simeq\mathcal O(X\times Y)
+\end{gathered}
+\tag{AT.16}
+\]
+on arbitrary analytic spaces under the stated
+topological hypotheses. This is an isomorphism
+of topological algebras: multiplication agrees
+on elementary tensors, then on the completion
+by joint continuity.
+The same local open-quotient proof in AT.A,
+with multiplication in one chart, proves
+joint continuity of every coherent section
+module action. Thus all coefficient modules
+used below meet the action hypothesis in CT.
+
+#### AT.E. One product domain for an entire free resolution
+
+Let \(X,Y\) be strongly one-complete and let
+\(\mathcal H\) be coherent on \(X\times Y\).
+Let \(U\Subset X\), \(V\Subset Y\) be strongly
+one-complete open subsets. The set
+\[
+K=\overline U\times\overline V
+\tag{AT.17}
+\]
+is compact in \(X\times Y\).
+We construct a resolution on the same
+\(U\times V\) in every degree.
+
+Apply CX.M to \(\mathcal H\) and \(K\).
+Finitely many sections defined on all
+\(X\times Y\) give a map
+\(\mathcal L_0=\mathcal O_{X\times Y}^{r_0}
+\to\mathcal H\) that is onto near \(K\).
+Its global kernel \(\mathcal S_0\) is coherent
+by SC.D, although the map need not be onto
+on all \(X\times Y\). Apply CX.M to
+\(\mathcal S_0\) and the same \(K\). This
+gives \(\mathcal L_1\to\mathcal S_0\) onto
+near \(K\); compose with its inclusion in
+\(\mathcal L_0\). Repeat with each global
+coherent kernel. With
+\(\mathcal S_{-1}=\mathcal H\), each step is
+\[
+\begin{gathered}
+\mathcal L_q=\mathcal O_{X\times Y}^{r_q},\\
+\mathcal L_q\longrightarrow\mathcal S_{q-1},\\
+\mathcal S_q
+=\ker(\mathcal L_q\to\mathcal S_{q-1}).
+\end{gathered}
+\tag{AT.18}
+\]
+Each \(r_q\) is finite and each kernel is
+coherent on the whole product. Consecutive
+differentials compose to zero because the
+intermediate map lands in the preceding
+kernel. Every surjectivity neighbourhood
+contains \(K\), so every map is onto on
+\(U\times V\). The resulting sequence
+\[
+\begin{gathered}
+\cdots\longrightarrow\mathcal L_1
+\longrightarrow\mathcal L_0\\
+\longrightarrow\mathcal H\longrightarrow0
+\end{gathered}
+\tag{AT.19}
+\]
+is therefore exact on that fixed domain
+in all degrees. There is no need to take
+an open intersection of infinitely many
+different neighbourhoods.
+
+Let \(U'\subset U\) be any strongly
+one-complete open subset. Restriction to
+\(U'\times V\) preserves exactness at each
+stalk. The products \(U\times V\) and
+\(U'\times V\) are strongly one-complete
+by AT.B. Apply CX.L to each coherent
+kernel in AT.19. The augmented complexes
+of sections on both products are exact.
+Their maps are continuous and all images
+are closed kernels, including the
+augmentation kernel. NP.C gives strict
+short exact sequences at every syzygy.
+
+In particular AT.19 supplies an actual
+nuclearly free resolution over the algebra
+\[
+A=\mathcal O(U).
+\tag{AT.20}
+\]
+Indeed AT.16 identifies its terms with
+\[
+\begin{gathered}
+\mathcal L_q(U\times V)\\
+\simeq A\widehat\otimes\mathcal O(V)^{r_q}.
+\end{gathered}
+\tag{AT.21}
+\]
+The coefficient spaces are nuclear by
+SC.G, and multiplication is continuous
+by AT.D. Finite rank in AT.21 concerns
+each individual degree; no uniform bound
+on all the \(r_q\) is asserted.
+
+#### AT.F. Coherent coefficient restriction and its topology
+
+Put
+\[
+\begin{gathered}
+B=\mathcal O(U'),\\
+E=\mathcal H(U\times V),\\
+E'=\mathcal H(U'\times V).
+\end{gathered}
+\tag{AT.22}
+\]
+There is a continuous \(A\)-algebra map
+\(A\to B\) by restriction. CT.1 and AT.16
+give in every degree
+\[
+\begin{gathered}
+B\widehat\otimes_A\mathcal L_q(U\times V)\\
+\simeq\mathcal L_q(U'\times V).
+\end{gathered}
+\tag{AT.23}
+\]
+This identification respects the
+differentials and augmentation:
+on elementary tensors a holomorphic
+matrix coefficient is restricted in the
+first variable and then multiplied.
+These are exactly the restricted matrices
+of AT.19. Density and continuity prove
+the same identities on completed tensors.
+CT.D, applied to the actual resolution
+AT.21, and the exactness on \(U'\times V\)
+therefore prove
+\[
+\begin{gathered}
+\widehat{\operatorname{Tor}}^A_q(B,E)=0
+\quad(q\ge1),\\
+B\widehat\otimes_A E\simeq E',\\
+[b\otimes s]\longmapsto b\,s|_{U'\times V}.
+\end{gathered}
+\tag{AT.24}
+\]
+The degree-zero isomorphism is topological,
+by the degree-zero cokernel proof in CT.D.
+Its target has the intrinsic SC.G topology
+and is Hausdorff. Thus \(B,E\) are transverse
+over \(A\) in the full sense CT.15, with
+the actual balanced relation quotient.
+Neither local freeness of \(\mathcal H\)
+nor flatness over the first factor was
+assumed.
+
+All restriction comparisons in AT.24
+are canonical. If \(U''\subset U'\) is
+strongly one-complete, apply the same
+resolution AT.19 on \(U''\times V\).
+Its degreewise formula identifies both
+successive coefficient restriction and
+direct restriction with the same section
+complex. Equivalently CT.F gives
+\[
+\begin{gathered}
+\mathcal O(U'')\widehat\otimes_B E'\\
+\simeq \mathcal H(U''\times V),
+\end{gathered}
+\tag{AT.25}
+\]
+because both \(B\) and \(\mathcal O(U'')\)
+are transverse to \(E\) over \(A\) by
+AT.24. The isomorphism sends
+\([c\otimes[b\otimes s]]\) to
+\(c\,b|_{U''}\,s|_{U''\times V}\).
+This proves compatibility with each
+arbitrary smaller strongly one-complete
+base, not merely with a sequence of radii.
+The same formula proves commutation with
+restriction to a smaller strongly
+one-complete subset of \(V\); apply AT.24
+there and compare on elementary tensors.
+
+#### AT.G. Coherent kernels and actual cycle embeddings
+
+For an exact coherent sequence on \(X\times Y\),
+\[
+\begin{gathered}
+0\to\mathcal H_1\to\mathcal H_2\\
+\to\mathcal H_3\to0,
+\end{gathered}
+\tag{AT.26}
+\]
+set \(E_i=\mathcal H_i(U\times V)\).
+CX.L gives a strict short exact sequence
+of these section modules. AT.24 makes
+each \(E_i\) transverse to \(B\).
+The kernel theorem CT.E gives
+\[
+\begin{gathered}
+0\to B\widehat\otimes_A E_1
+\to B\widehat\otimes_A E_2\\
+\to B\widehat\otimes_A E_3\to0
+\end{gathered}
+\tag{AT.27}
+\]
+strictly. AT.24 identifies it, arrow by
+arrow, with AT.26 on \(U'\times V\).
+This supplies a closed embedding into the
+actual smaller-base section module.
+
+There is also a useful statement for
+complexes whose terms come from different
+product charts. Let \(C^\bullet\) be
+bounded above, with continuous
+\(A\)-linear differentials. Suppose each
+term is a finite sum of modules of the
+form AT.22, possibly for different
+strongly one-complete relatively compact
+fibre domains and different coherent
+sheaves on their stated outer products.
+Include finite free \(A\)-modules if
+needed. Suppose the same \(U'\) meets
+the AT.24 hypotheses for every summand.
+Then \(B\) is transverse to every term,
+by AT.24 and finite direct sums CT.E.
+
+If \(H^q(C^\bullet)=0\) for \(q\ge k\),
+the actual cycle modules \(Z^q=\ker d^q\)
+are transverse to \(B\) for \(q\ge k-1\).
+More precisely CT.G proves the strict
+sequences
+\[
+\begin{gathered}
+0\to B\widehat\otimes_A Z^q
+\to B\widehat\otimes_A C^q\\
+\to B\widehat\otimes_A Z^{q+1}\to0,\\
+q\ge k-1.
+\end{gathered}
+\tag{AT.28}
+\]
+The first arrow has its actual closed
+subspace topology. Starting at the last
+zero degree and applying CT.E downwards
+to
+\(0\to Z^q\to C^q\to Z^{q+1}\to0\)
+proves every transversality premise in
+this statement. In degrees \(q\ge k\)
+the middle differential has kernel
+\[
+\begin{gathered}
+Z^q(B\widehat\otimes_A C^\bullet)
+=B\widehat\otimes_A Z^q,
+\end{gathered}
+\tag{AT.29}
+\]
+and this is its preceding boundary
+module, by the surjection in AT.28
+at \(q-1\). Thus the base-changed complex
+is acyclic in those degrees.
+The stated range of exactness is a
+hypothesis on the original complex;
+termwise nuclearity alone does not
+provide it.
+
+For comparison maps between such
+bounded-above complexes, CT.23--CT.25
+apply with their signed complex
+\(C(f)^q=C^q\oplus D^{q-1}\).
+An isomorphism in degrees \(q\ge k\)
+and a surjection at \(k-1\) retains
+exactly that range after coefficient
+restriction. This supplies both the
+actual cycle embedding and its adjacent
+comparison degree whenever that
+comparison range has been proved.
+
+#### AT.H. Relative nuclearity into the closed target
+
+Let \(S\Subset X\) and
+\(W'\Subset W\Subset Y\) be strongly
+one-complete opens in strongly
+one-complete \(X,Y\), and let
+\(\mathcal H\) be coherent on \(X\times Y\).
+Set \(A=\mathcal O(S)\).
+The coherent restriction
+\[
+\begin{gathered}
+\mathcal H(S\times W)\\
+\longrightarrow\mathcal H(S\times W')
+\end{gathered}
+\tag{AT.30}
+\]
+is \(A\)-subnuclear with a nuclear
+auxiliary module in the sense NT.I.
+
+Here is a complete factorization.
+AT.18 supplies a finite free map onto
+\(\mathcal H\) on \(S\times W\), and
+CX.L makes the corresponding section
+map an open surjection. Its source is
+\(A\widehat\otimes\mathcal O(W)^r\).
+The scalar restriction
+\(\mathcal O(W)\to\mathcal O(W')\)
+is nuclear by SC.H. For a nuclear
+series
+\[
+u(v)=\sum_j\lambda_j\,\xi_j(v)y_j
+\tag{AT.31}
+\]
+therefore, the map \(1_A\widehat\otimes u\)
+has the \(A\)-nuclear series with
+coefficient maps \(1_A\widehat\otimes\xi_j\)
+and target vectors \(1\otimes y_j\).
+These coefficient maps are equicontinuous:
+if \(|\xi_j(v)|\le p(v)\), then for each
+continuous seminorm \(a\) of \(A\),
+\[
+a((1_A\widehat\otimes\xi_j)t)
+\le(a\widehat\otimes_\pi p)(t).
+\tag{AT.32}
+\]
+This holds for finite tensors by the
+projective seminorm infimum, and then
+for completions by continuity. The target
+vectors are bounded for every tensor
+seminorm, and \(\sum_j|\lambda_j|<\infty\).
+The series converges by the same
+seminorm estimate. Finite sums preserve
+this representation. Composition with
+the smaller-domain coherent section
+map gives the factorization
+\[
+\begin{gathered}
+p:A\widehat\otimes\mathcal O(W)^r\\
+\twoheadrightarrow\mathcal H(S\times W),\\
+A\widehat\otimes\mathcal O(W)^r\\
+\longrightarrow
+A\widehat\otimes\mathcal O(W')^r\\
+\longrightarrow\mathcal H(S\times W').
+\end{gathered}
+\tag{AT.33}
+\]
+The second line is \(A\)-nuclear and
+equals AT.30 composed with the first
+line. Its auxiliary space is nuclear.
+This proves the asserted subnuclearity.
+
+Suppose now that a closed coherent
+subsheaf \(\mathcal T\subset\mathcal H\)
+on the same outer product contains
+the image of a continuous \(A\)-subnuclear
+section map
+\[
+\begin{gathered}
+E=\mathcal H_0(S\times W),\\
+F=\mathcal H(S\times W'),\\
+f:E\to F.
+\end{gathered}
+\tag{AT.34}
+\]
+Assume \(\mathcal H_0\) is coherent on
+the outer product and that the auxiliary
+module for \(f\) is nuclear.
+Let \(T=\mathcal T(S\times W')\).
+Coherent vanishing identifies \(F/T\)
+topologically with the sections of
+\(\mathcal H/\mathcal T\), by the open
+mapping theorem and the exact section
+sequence. For every strongly one-complete
+\(S'\Subset S\), the restriction
+\(A\to B=\mathcal O(S')\) is scalar
+nuclear by SC.H. AT.24 makes \(B\)
+transverse to \(E,F,F/T\).
+CT.17 supplies the closed embedding,
+and the closed-target theorem CT.18
+therefore gives the \(B\)-subnuclear map
+\[
+\begin{gathered}
+B\widehat\otimes_A E
+\longrightarrow B\widehat\otimes_A T\\
+\simeq\mathcal T(S'\times W').
+\end{gathered}
+\tag{AT.35}
+\]
+This conclusion is into the submodule
+itself, with its canonical section
+topology.
+
+For a cycle target in AT.28 the same
+conclusion holds in its stated exact
+range, provided the source is transverse
+and the original map is \(A\)-subnuclear
+with nuclear auxiliary module. Indeed
+the quotient \(C^q/Z^q\) is
+topologically \(Z^{q+1}\), by exactness
+and NP.C, and all three required
+transversality statements follow from
+AT.28. CT.18 then applies. For a cycle
+outside that range those premises
+must be established separately.
+
+#### AT.I. A nonflat thickened coefficient module
+
+Take discs \(U\Subset X\subset\mathbf C_z\)
+and \(V\Subset Y\subset\mathbf C_w\),
+with \(U,X\) centred at zero. For an
+integer \(m\ge1\), put
+\[
+\mathcal H=\mathcal O_{X\times Y}/(z^m).
+\tag{AT.36}
+\]
+It is coherent by its one-relation
+presentation. Taylor division in \(z\)
+gives the topological identification
+\[
+\begin{gathered}
+E=\mathcal H(U\times V)\\
+\simeq\bigoplus_{j=0}^{m-1}\mathcal O(V)e_j,\\
+e_j=[z^j],\\
+ze_j=e_{j+1}\ (j<m-1),\\
+ze_{m-1}=0.
+\end{gathered}
+\tag{AT.37}
+\]
+For an actual holomorphic representative
+the coefficient of \(e_j\) is
+\(\partial_z^j f(0,w)/j!\).
+Its remainder is holomorphic and divisible
+by \(z^m\), by the convergent Taylor series.
+CX.L lifts every quotient section to a
+holomorphic representative. The coefficient
+maps are continuous by Cauchy's estimates;
+the inverse is the finite polynomial sum.
+They annihilate precisely the ideal
+sections, so AT.37 has the intrinsic
+quotient topology SC.G.
+
+As a module over \(A=\mathcal O(U)\),
+\(E\) is not algebraically flat.
+Multiplication by \(z^m\) is injective
+on \(A\): a holomorphic function with
+zero product is zero away from zero
+and hence zero everywhere by continuity.
+Tensoring this injection algebraically
+with \(E\) gives the zero map on the
+nonzero module \(E\), because \(z^mE=0\).
+That violates the injectivity required
+of a flat module.
+
+Nevertheless for every disc \(U'\subset U\),
+AT.24 proves all positive completed
+Tor groups vanish for \(B=\mathcal O(U')\).
+The actual coefficient quotient is
+\[
+\begin{gathered}
+B\widehat\otimes_A E\\
+\simeq
+\begin{cases}
+\mathcal O(V)^m,&0\in U',\\
+0,&0\notin U'.
+\end{cases}
+\end{gathered}
+\tag{AT.38}
+\]
+If \(0\in U'\), Taylor division gives
+the same finite jet module as AT.37.
+If \(0\notin U'\), the function \(z^m\)
+is an invertible holomorphic function
+on \(U'\), so the quotient sheaf is zero.
+Thus the vanishing and Hausdorff
+identification of AT.24 cover nonflat
+coefficients and retain every nilpotent
+layer of the thickening.
+
+![A common-domain coherent resolution, its actual coefficient restriction, and the nilpotent three-jet module.](assets/analytic-coefficient-transversality.png)
+
+The left panel records AT.18--AT.24 on the
+same product domain in every degree.
+The right panel gives the exact
+\(m=3\) action in AT.37 and the two
+restriction cases AT.38. It is an
+algebraic module diagram; the nilpotent
+layers are basis vectors, not separate
+points of the analytic support.
+The drawing source
+and exact matrix data
+specify the diagram.
+
+The product, coherent restriction and
+relative nuclearity statements are also
+developed in
+[Demailly's free author manuscript, Chapter IX, §5.B--§5.D](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf).
+AT.A--AT.I give the local presentations,
+gluing kernels, common-domain resolution,
+balanced quotient topology and closed-target
+premises used here.
+
+
+### 5.99. Finite free models and proper analytic coherent images
+
+Let \(f:X\to Y\) be a proper holomorphic map of
+Hausdorff second-countable complex analytic spaces.
+For every coherent \(\mathcal O_X\)-module \(\mathcal S\),
+we prove that every \(R^qf_*\mathcal S\) is coherent.
+Neither the spaces nor the coefficient module are
+required to be smooth, reduced or flat over the base.
+The same conclusion holds when \(f\) is proper on
+the closed support of \(\mathcal S\).
+
+The proof constructs a coefficient complex with finite free terms
+and compares it with actual coherent Čech sections on
+every smaller base domain. We use the complete
+Banach-coefficient perturbation proof NP.D--NP.F,
+the open mapping and null-lift theorem NP.C,
+scalar tensor products NT.B--NT.F,
+the bar resolution and actual balanced quotients CT.A--CT.D,
+and the closed-kernel and comparison theorems CT.E--CT.G.
+The analytic section and restriction inputs are
+AT.A--AT.I,
+with coherent vanishing CX.L,
+coherent algebra SC.D,
+and the full Čech/derived-section comparison SC.B.
+
+#### GI.A. Nuclear coefficient scales
+
+Let \(A\) be a commutative unital nuclear Fréchet algebra.
+Suppose its topology is given by increasing continuous
+submultiplicative seminorms \(p_r\), \(0<r<1\), such that
+the Banach connecting map
+\[
+\begin{gathered}
+P_s\longrightarrow P_r,\qquad r<s,\\
+P_r=\widehat{A/\ker p_r}
+\end{gathered}
+\tag{GI.1}
+\]
+is scalar nuclear. Here \(P_r\) has the completed
+\(p_r\)-norm. Define \(A_t\), for \(0<t<1\), as the
+Hausdorff completion of \(A\) for the seminorms
+\(p_r\), \(r<t\), and set \(A_1=A\).
+Increasing sequences of radii tending to \(t\)
+are cofinal, so these completions are Fréchet.
+Multiplication extends by the submultiplicative
+estimates. The Banach completion of \(A_t\) for
+its \(p_r\)-seminorm is \(P_r\): both contain
+the same dense image of \(A\), with the same norm.
+Thus GI.1 and the defining nuclear-space criterion
+NT.11 prove that every \(A_t\) is nuclear.
+
+There are continuous algebra maps
+\[
+\begin{gathered}
+A_t\longrightarrow P_v
+\longrightarrow P_u\longrightarrow A_s,\\
+0<s\le u<v<t\le1.
+\end{gathered}
+\tag{GI.2}
+\]
+The first map is defined by the \(p_v\)-seminorm.
+The last exists because every \(p_r\), \(r<s\),
+is bounded by \(p_u\); completeness extends
+the map from \(A\) to \(P_u\).
+The middle map is nuclear by hypothesis.
+Composing its nuclear series with the two
+continuous maps proves that \(A_t\to A_s\)
+is scalar nuclear whenever \(s<t\).
+The same seminorm argument gives
+\[
+P_t\longrightarrow A_t.
+\tag{GI.3}
+\]
+No injectivity of this map is required.
+All compositions agree on the dense image
+of \(A\), hence agree everywhere.
+The zero-algebra case has only zero unital
+modules and causes no exception to the conclusions.
+
+A nuclear Fréchet \(A\)-module \(E\) will be called
+fully transverse when \(A_t\) is transverse to
+it, in the exact sense CT.15, for every \(t<1\).
+Write
+\[
+E_t=A_t\widehat\otimes_A E.
+\tag{GI.4}
+\]
+This is then a Hausdorff nuclear Fréchet module.
+CT.F identifies \(A_s\widehat\otimes_{A_t}E_t\)
+with \(E_s\) for \(s<t\). In particular \(E_t\)
+is fully transverse for the rescaled family
+\(p_{\lambda t}\), \(0<\lambda<1\).
+
+For the analytic application take \(A=\mathcal O(D)\),
+where \(D=D(a,R)\) is a polydisc, and take \(p_r\)
+to be the supremum on \(\overline{D(a,rR)}\).
+The Taylor and nuclear restriction proof NT.G
+gives GI.1. It also gives
+\[
+A_t=\mathcal O(D(a,tR)).
+\tag{GI.5}
+\]
+Indeed the completion topology is compact-open
+on that smaller polydisc, and Taylor polynomials
+from \(A\) are dense there.
+
+#### GI.B. A free balanced quotient over a Banach algebra
+
+We shall use one calculation with a coefficient
+algebra that need not be nuclear. Let \(R\to C\)
+be a continuous homomorphism of commutative unital
+Fréchet algebras, let \(M\) be Fréchet, and use
+completed projective scalar tensors throughout
+this paragraph. Define the balanced quotient
+by the actual image of its relation map.
+Then
+\[
+\begin{gathered}
+C\widehat\otimes_R(R\widehat\otimes_\pi M)
+\simeq C\widehat\otimes_\pi M,\\
+[c\otimes(b\otimes m)]\longmapsto c\rho(b)\otimes m.
+\end{gathered}
+\tag{GI.6}
+\]
+Here is the full relation argument. On the
+unbalanced space put
+\[
+\begin{gathered}
+\mu(c\otimes b\otimes m)\\
+=c\rho(b)\otimes m,\\
+s(c\otimes m)=c\otimes1\otimes m,\\
+r(c\otimes b\otimes m)\\
+=c\otimes b\otimes1\otimes m.
+\end{gathered}
+\tag{GI.7}
+\]
+All maps are continuous by the projective
+multilinear universal property. With
+\[
+\begin{gathered}
+d(c\otimes b\otimes b'\otimes m)\\
+=c\rho(b)\otimes b'\otimes m\\
+-c\otimes bb'\otimes m
+\end{gathered}
+\tag{GI.8}
+\]
+one has \(\mu d=0\), \(\mu s=1\) and
+\(dr=s\mu-1\). Verification on elementary
+tensors gives these identities; density
+extends them. Hence \(\ker\mu=\operatorname{im}d\)
+exactly. This kernel is closed and the
+section \(s\) identifies its quotient
+topologically with the right side of GI.6.
+Nuclearity of \(R\) was not used.
+
+If \(Q:H\oplus R^b\to H\) is a continuous
+surjective \(R\)-linear map of Fréchet modules,
+then
+\[
+\begin{gathered}
+(C\widehat\otimes_R H)\oplus C^b
+\\
+\longrightarrow C\widehat\otimes_R H\\
+\quad\text{is onto}.
+\end{gathered}
+\tag{GI.9}
+\]
+To see this, first apply \(C\widehat\otimes_\pi-\)
+to \(Q\). It is onto by the open-surjection
+statement NT.7, which has no nuclearity
+hypothesis. Compose with the balanced
+quotient on the target. The resulting onto
+map kills the balanced relations on its
+source because \(Q\) is \(R\)-linear.
+It therefore factors onto through its
+actual balanced quotient. Finite direct
+sums commute with this quotient, and
+GI.6 with a finite-dimensional \(M\)
+identifies the second summand with \(C^b\).
+This proves GI.9 without tensoring an
+algebraic cokernel that might be non-Hausdorff.
+
+#### GI.C. Relative subnuclear maps under restriction
+
+An \(A\)-nuclear series and an \(A\)-subnuclear
+map have the meaning NT.I, with a nuclear
+auxiliary module for a subnuclear map.
+The seminorm convergence proof NP.B works
+for a Fréchet algebra as well: for each
+target seminorm, joint continuity of the
+action bounds it by one coefficient
+seminorm times one module seminorm.
+Equicontinuity controls the former on
+all series coefficient maps, and boundedness
+controls the latter on all target vectors.
+The summable scalar weights then give
+absolute convergence in every seminorm.
+
+Precomposition preserves subnuclearity.
+Explicitly, for a presentation \(p: M\twoheadrightarrow E\)
+and a continuous module map \(a:E'\to E\), use
+\[
+\begin{gathered}
+M'\subset E'\oplus M,\\
+(x,m)\in M'\\
+\Longleftrightarrow a(x)=p(m),\\
+M'\twoheadrightarrow E',\\
+(x,m)\longmapsto x.
+\end{gathered}
+\tag{GI.10}
+\]
+The equality defines a closed submodule;
+it is nuclear Fréchet when \(E',M\) are.
+The projection is onto and hence open
+by NP.C. The lifted composite is the
+original nuclear map composed with
+the projection to \(M\), so remains
+nuclear. Postcomposition preserves its
+series directly. Finite sums use a
+finite fibre product of the surjective
+presentations and concatenate the series.
+This also proves the finite-block
+matrix version.
+
+For a presentation of \(u:E\to F\), replace
+the auxiliary module \(M\) by the nuclearly
+free module \(A\widehat\otimes M\). Its
+action map to \(M\) is onto, with scalar
+section \(m\mapsto1\otimes m\). We obtain
+\[
+\begin{gathered}
+Q=A\widehat\otimes M\twoheadrightarrow E,\\
+uQ\text{ is }A\text{-nuclear}.
+\end{gathered}
+\tag{GI.11}
+\]
+Here and subsequently a letter denoting
+a surjection may also denote its map.
+
+If \(E,F\) are transverse to a nuclear
+coefficient algebra \(B\), the induced
+\(u_B:E_B\to F_B\) is \(B\)-subnuclear.
+Indeed \(Q_B=B\widehat\otimes M\) is
+nuclear and still maps onto \(E_B\)
+by CT.C. For a coefficient map
+\(\xi_j:Q\to A\), put
+\(\ell_j(m)=\xi_j(1\otimes m)\).
+After the coefficient change its
+extension on \(Q_B\) is
+\[
+b\otimes m\longmapsto b\,\rho(\ell_j(m)).
+\tag{GI.12}
+\]
+For each target seminorm in \(B\),
+joint continuity of multiplication,
+continuity of \(\rho\), and the original
+equicontinuity bound give a uniform
+projective tensor seminorm bound on
+all maps GI.12. The images in \(F_B\)
+of the bounded series vectors remain
+bounded. The same summable weights
+therefore give a \(B\)-nuclear series
+for \(u_BQ_B\). This proves the assertion.
+In particular every radius restriction
+of a subnuclear map between fully
+transverse modules remains subnuclear.
+Identity on a finite free coefficient
+module is nuclear: use its finitely
+many coordinate maps and basis vectors.
+
+#### GI.D. Finite coefficient cokernels after radius decrease
+
+**Perturbation theorem.** Let \(E,F\) be fully
+transverse nuclear \(A\)-modules, let
+\(g: E\twoheadrightarrow F\) be continuous
+and \(A\)-linear, and let \(u:E\to F\)
+be \(A\)-subnuclear with nuclear auxiliary
+module. For every \(t<1\),
+\[
+\begin{gathered}
+\operatorname{Coker}(g_t-u_t)\\
+\text{ is finite over }A_t.
+\end{gathered}
+\tag{GI.13}
+\]
+“Finite” means algebraically finitely
+generated; the cokernel is not assumed
+Hausdorff.
+
+Use GI.11 to replace the source by
+\(Q=A\widehat\otimes M\), so the
+perturbation is nuclear. Its coefficient
+restriction still maps onto \(E_t\)
+by CT.C; composing with this onto map
+does not change the image of \(g_t-u_t\).
+It is therefore enough to treat the
+nuclear perturbation with this free source.
+Normalize its nuclear series so that
+the target vectors tend to zero.
+The weighted-block construction NP.6
+does this while keeping the scalar
+weights summable; it only rescales
+the bounded vectors and works for
+the present Fréchet coefficient algebra.
+Lift those null vectors through
+\(gQ:Q\twoheadrightarrow F\) by NP.C.
+The lifted vectors \(x_j\) tend to
+zero in \(Q\). The series
+\[
+\begin{gathered}
+v(x)=\sum_j\lambda_j\xi_j(x)x_j,\\
+(gQ)v=uQ,\\
+(g-u)Q=(gQ)(1-v)
+\end{gathered}
+\tag{GI.14}
+\]
+defines an \(A\)-nuclear endomorphism
+of \(Q\). Thus finite generation of
+\(Q_t/(1-v_t)Q_t\) suffices: the
+surjection \((gQ)_t\) maps that
+quotient onto the cokernel in GI.13.
+
+Pass first to the Banach coefficient
+algebra \(P_t\) of GI.1. Set
+\[
+Q_P=P_t\widehat\otimes_\pi M.
+\tag{GI.15}
+\]
+For \(\ell_j(m)=\xi_j(1\otimes m)\),
+equicontinuity gives one continuous
+seminorm \(q\) on \(M\) with
+\[
+\begin{gathered}
+\|\ell_j(m)\|_{P_t}\le q(m)\\
+\quad\text{for every }j.
+\end{gathered}
+\tag{GI.16}
+\]
+The coefficient maps
+\(b\otimes m\mapsto b\,\ell_j(m)\)
+extend equicontinuously to \(Q_P\):
+their norm is bounded by the
+projective seminorm \(\|\cdot\|_{P_t}\otimes_\pi q\).
+The images of the \(x_j\) in \(Q_P\)
+are bounded. Hence GI.14 extends
+to a \(P_t\)-nuclear endomorphism \(v_P\).
+Its restriction agrees with \(v\)
+on \(A\otimes M\).
+
+NP.19, including its Fréchet-module
+proof, gives finitely many vectors
+\(w_1,\ldots,w_b\) in \(Q_P\) for which
+\[
+\begin{gathered}
+Q_P\oplus P_t^b\twoheadrightarrow Q_P,\\
+(x,c)\longmapsto\\
+(1-v_P)x+\sum_{j=1}^b c_jw_j
+\end{gathered}
+\tag{GI.17}
+\]
+is onto. It is continuous and hence
+open by NP.C. Use GI.9 with
+\(R=P_t\) and \(C=A_t\), and GI.6
+to identify both free balanced
+products with \(Q_t=A_t\widehat\otimes M\).
+We obtain the onto map
+\[
+\begin{gathered}
+Q_t\oplus A_t^b\twoheadrightarrow Q_t,\\
+(x,c)\longmapsto\\
+(1-v_t)x+\sum_jc_jw'_j .
+\end{gathered}
+\tag{GI.18}
+\]
+The endomorphism here is \(v_t\):
+both its constructions agree on
+elementary tensors from \(A\otimes M\).
+Those tensors have dense image in
+\(A_t\widehat\otimes M\), by the
+definition of \(A_t\) and the
+projective seminorm estimates.
+Continuity proves equality everywhere.
+GI.18 proves the required finite
+generation and hence GI.13.
+Every step took a quotient by its
+actual image; no separation of the
+perturbation cokernel was imposed.
+
+#### GI.E. Cycles at the boundary of an exact range
+
+Let \(C^\bullet\) be a bounded-above
+complex of fully transverse nuclear
+modules, with \(H^j(C)=0\) for \(j>q\).
+All cycles \(Z^j=\ker d^j\) are
+closed nuclear Fréchet submodules.
+Descending from the last zero term,
+CT.E gives full transversality of
+\(Z^j\) for \(j\ge q\) from
+\[
+\begin{gathered}
+0\to Z^j\to C^j\\
+\to Z^{j+1}\to0,\\
+j\ge q.
+\end{gathered}
+\tag{GI.19}
+\]
+These sequences are exact since
+the next cohomology group vanishes.
+For every smaller coefficient radius
+they remain strict by CT.E.
+The inclusion of the tensor of
+\(Z^{q+1}\) into that of \(C^{q+1}\)
+is therefore a closed embedding.
+Factor the outgoing differential at
+degree \(q\) through this inclusion.
+The exact sequence at \(q\) then proves
+\[
+(Z^q(C))_s=Z^q(C_s)
+\tag{GI.20}
+\]
+with the actual closed subspace
+topology. The same argument applies
+at every higher degree. This includes
+the boundary degree \(q\), although
+acyclicity was assumed only above it.
+
+A quasi-isomorphism between bounded-above
+complexes of fully transverse modules
+remains a quasi-isomorphism at every
+smaller radius. Its signed comparison
+complex CT.23 is bounded above,
+termwise transverse, and acyclic in
+all degrees. Apply CT.G at each
+integer cutoff; the tensored comparison
+complex is acyclic in all degrees.
+CT.24 gives the asserted isomorphisms.
+This argument does not assume
+Hausdorff lower cohomology.
+
+#### GI.F. Finite top-degree cohomology
+
+Let \(f^\bullet:E^\bullet\to F^\bullet\)
+be a quasi-isomorphism of bounded-above
+complexes of fully transverse nuclear
+modules. Suppose every \(f^j\) is
+subnuclear with nuclear auxiliary
+module. If both complexes are acyclic
+in degrees greater than \(q\), then
+for every \(s<1\),
+\[
+\begin{gathered}
+H^q(E_s)\simeq H^q(F_s)\\
+\text{ is finite over }A_s .
+\end{gathered}
+\tag{GI.21}
+\]
+
+Choose an intermediate radius \(s<r<1\).
+By GI.E the cycle modules \(Z^q(E)\),
+\(Z^q(F)\) and \(Z^{q+1}(F)\) are
+fully transverse, and
+\[
+F^q/Z^q(F)\simeq Z^{q+1}(F)
+\tag{GI.22}
+\]
+topologically, by NP.C and exactness
+at the next degree. Restrict \(f^q\)
+to the closed source \(Z^q(E)\).
+GI.10 proves that this map into
+\(F^q\) is still subnuclear with
+nuclear auxiliary module.
+Its image lies in \(Z^q(F)\).
+The scalar nuclear coefficient map
+\(A\to A_r\) and the transversality
+of the source, target and quotient
+GI.22 supply exactly CT.17--CT.18.
+Thus after this first decrease it
+is subnuclear into the actual target
+\(Z^q(F_r)\); GI.20 identifies both
+cycle tensors used here.
+
+GI.E also preserves the cohomology
+isomorphism. Consequently
+\[
+\begin{gathered}
+\Delta:F_r^{q-1}\oplus Z^q(E_r)\\
+\twoheadrightarrow Z^q(F_r),\\
+\Delta(a,b)=d_Fa+f_rb
+\end{gathered}
+\tag{GI.23}
+\]
+is onto: subtract from any target
+cycle the image of a cycle representing
+its cohomology class, then lift the
+remaining boundary. Its terms are
+fully transverse modules over \(A_r\).
+The summand \(u(a,b)=f_rb\) is
+subnuclear into the stated closed
+target. Apply GI.13 over the rescaled
+coefficient algebra \(A_r\), decreasing
+from \(r\) to \(s\). The difference
+\(\Delta_s-u_s\) is \(d_F\oplus0\).
+Its cokernel is
+\(Z^q(F_s)/d_F(F_s^{q-1})\), by GI.20
+and the canonical coefficient composition
+CT.F. This is precisely \(H^q(F_s)\).
+It proves GI.21 with both strict
+radius inequalities and all closed-target
+premises supplied.
+
+#### GI.G. A finite free model in every degree
+
+**Finite-model theorem.** Under the hypotheses
+on \(f^\bullet\) in GI.F, for every
+\(0<t<1\) there are finite integers
+\(b_j\), a bounded-above complex
+\[
+\begin{gathered}
+L^j=A_t^{b_j},\\
+h^\bullet:L^\bullet\to E_t^\bullet,
+\end{gathered}
+\tag{GI.24}
+\]
+and a continuous coefficient-linear
+quasi-isomorphism \(h^\bullet\).
+There may be infinitely many nonzero
+degrees to the left; each degree
+has finite rank.
+
+Choose \(N\) above which both initial
+complexes vanish, and put
+\[
+\begin{gathered}
+t_j=t+(1-t)2^{\,j-N-1},\\
+j\le N.
+\end{gathered}
+\tag{GI.25}
+\]
+Then \(t<t_j<1\) and \(t_j<t_{j+1}\)
+for \(j<N\), and the
+radii decrease to \(t\) towards the
+left. GI.21 makes \(H^N(E_{t_N})\)
+finite. Choose cycle representatives
+of finitely many generators and use
+them as columns of
+\(h^N:A_{t_N}^{b_N}\to Z^N(E_{t_N})\).
+With this single term \(L^N\), the
+signed comparison complex
+\[
+\begin{gathered}
+M^j=L^j\oplus E^{j-1},\\
+D(x,y)=(d_Lx,hx-d_Ey)
+\end{gathered}
+\tag{GI.26}
+\]
+is acyclic in every degree greater
+than \(N\), including \(N+1\).
+Indeed its cohomology at \(N+1\)
+is the cokernel of the chosen
+surjection onto \(H^N(E)\);
+higher terms vanish.
+
+Suppose terms and maps have been
+constructed in degrees at least \(q\),
+over their respective larger radii,
+and restrict them to \(A_{t_q}\).
+Let \(L_{\ge q}\) denote this truncated
+complex. Form
+\[
+\begin{gathered}
+M=C(h_{\ge q}),\\
+P=C(f_{t_q}h_{\ge q}),\\
+\Psi^j(x,y)=(x,f_{t_q}^{j-1}y).
+\end{gathered}
+\tag{GI.27}
+\]
+The chain condition for \(\Psi\) is
+the equality \(f d_E=d_F f\), with
+the signs of GI.26. It is termwise
+subnuclear: the first component is
+identity on a finite free module
+and the second is subnuclear by GI.C.
+
+The map \(\Psi\) is a quasi-isomorphism.
+Here is a direct proof using the
+exact cone sequences CT.C and CT.23.
+Given a class in \(H^j(P)\), its
+projection to \(H^j(L_{\ge q})\)
+is killed by \(H^j(fh)\).
+Since \(H(f)\) is an isomorphism,
+it is killed by \(H^j(h)\), so it
+lifts to \(H^j(M)\). Subtract the
+image of that lift. The remainder
+comes from \(H^{j-1}(F)\), which
+comes from \(H^{j-1}(E)\) under
+the isomorphism \(H(f)\).
+Adding its cone image gives the
+desired lift. For injectivity,
+a class of \(H^j(M)\) with zero
+image has zero projection to
+\(H^j(L_{\ge q})\). It comes from
+a class \(e\) in \(H^{j-1}(E)\).
+Its \(f\)-image is in the image
+of \(H^{j-1}(fh)\), by exactness
+for \(P\). Injectivity of \(H(f)\)
+makes \(e\) an \(h\)-image, whose
+cone image is zero. This proves
+both implications without a
+separation assertion about cohomology.
+
+The induction hypothesis makes
+\(M\) acyclic above \(q\), hence
+so is \(P\). Their terms are
+fully transverse. Apply GI.21
+to \(\Psi\) at radius \(t_{q-1}\).
+Choose cycle representatives of
+finitely many generators of
+\(H^q(M_{t_{q-1}})\):
+\[
+\begin{gathered}
+(a_\nu,e_\nu)\in
+L^q_{t_{q-1}}\oplus E^{q-1}_{t_{q-1}},\\
+d_La_\nu=0,\qquad
+h a_\nu=d_Ee_\nu .
+\end{gathered}
+\tag{GI.28}
+\]
+Introduce a finite free \(L^{q-1}\).
+Its differential columns are \(a_\nu\);
+the columns of \(h^{q-1}\) are
+\(+e_\nu\). The two equations in
+GI.28 say precisely that the
+new differential squares to zero
+and that \(h\) is a chain map.
+In the new comparison complex
+these pairs are the boundaries
+of the new basis vectors.
+They kill \(H^q(M)\). Higher
+terms and the boundaries entering
+higher degrees are unchanged.
+Thus the new comparison complex
+is acyclic above \(q-1\), the
+required next invariant.
+
+Perform this induction for every
+integer \(q\le N\), then restrict
+all terms and matrices to \(A_t\).
+At each finite stage GI.E preserves
+the invariant under that restriction.
+For any fixed degree \(j\), choose
+a stage \(q<j\). The final comparison
+complex agrees with that stage
+in degrees \(j-1,j,j+1\); hence its
+degree-\(j\) cohomology is zero.
+It is therefore acyclic in all
+degrees. CT.24 proves that the
+final \(h\) is a quasi-isomorphism.
+This proves GI.24 on one coefficient
+domain in all degrees.
+
+#### GI.H. Closed graphs of every chart overlap
+
+Return to the proper map in the
+opening statement. Fix \(y_0\in Y\).
+Choose a local embedding of a
+neighbourhood of \(y_0\) as a
+closed analytic subspace of an
+ambient open set \(W\subset\mathbf C^n\).
+Take concentric polydiscs
+\[
+\begin{gathered}
+y_0\in D\Subset D_0\Subset W,\\
+K=f^{-1}(Y\cap\overline D).
+\end{gathered}
+\tag{GI.29}
+\]
+The set \(Y\cap\overline D\) is
+compact, and properness makes
+\(K\) compact. Work in
+\(f^{-1}(Y\cap D_0)\).
+Choose finitely many source chart
+opens \(U_\alpha^0\), each a
+closed analytic model
+\[
+i_\alpha:U_\alpha^0\hookrightarrow
+\Omega_\alpha^0
+\tag{GI.30}
+\]
+in an ambient polydisc, and nested
+concentric smaller polydiscs
+\(\Omega'_\alpha\Subset\Omega_\alpha
+\Subset\Omega_\alpha^0\), such that
+both corresponding smaller source
+opens cover \(K\).
+For existence, choose such a
+triple around every point of \(K\)
+with its smallest source open
+containing the point, then select
+a finite subcover. Initial chart
+balls can be chosen inside
+\(f^{-1}(Y\cap D_0)\), since it
+is open in \(X\).
+
+For an increasing nonempty index
+tuple \(I\), put
+\[
+\begin{gathered}
+T_I=\bigcap_{\alpha\in I}U_\alpha^0,\\
+\Omega_I^0=\prod_{\alpha\in I}\Omega_\alpha^0,\\
+j_I:T_I\longrightarrow D_0\times\Omega_I^0,\\
+x\longmapsto(f(x),(i_\alpha(x))_{\alpha\in I}).
+\end{gathered}
+\tag{GI.31}
+\]
+This is a closed analytic embedding,
+with the full structure of \(T_I\).
+For closedness first take the product
+of the closed chart models.
+The tuples representing the same
+point of \(X\) form the inverse image
+of its closed diagonal, since \(X\)
+is Hausdorff. Adding the base
+coordinate is the graph of the
+continuous map \(f\), also closed
+in the product with the Hausdorff
+space \(D_0\).
+For the analytic structure, near
+an image point use one chart
+coordinate as the independent one.
+The other chart coordinates and
+the base coordinates have actual
+holomorphic ambient representatives
+after shrinking. Impose their
+differences from these representatives,
+together with the entire defining
+ideal of the independent chart.
+The resulting local quotient is
+exactly \(\mathcal O_{T_I}\).
+The kernels of the canonical
+restriction maps to this sheaf
+agree on overlaps, so these ideals
+glue. Off the closed image the
+ideal is the whole structure sheaf.
+Their local finite presentations
+and coherence follow from SC.D.
+This proves the assertion without
+passing to a reduced diagonal.
+
+The sheaf
+\[
+\mathcal S_I=(j_I)_*(\mathcal S|_{T_I})
+\tag{GI.32}
+\]
+is coherent on the whole
+\(D_0\times\Omega_I^0\), by the
+closed-embedding coherent algebra
+in SC.D. Its finite local presentation
+is obtained by adding the graph
+ideal relations to a presentation
+of \(\mathcal S\).
+
+Let \(\Omega_I=\prod_{\alpha\in I}\Omega_\alpha\)
+and similarly define \(\Omega'_I\).
+For every strongly one-complete
+open \(V\subset D\) the actual
+chart intersection over \(V\) is
+the closed analytic model
+\[
+\begin{gathered}
+T_I\cap f^{-1}(V)
+\cap\bigcap_{\alpha\in I}i_\alpha^{-1}(\Omega_\alpha)\\
+\simeq j_I(T_I)\cap(V\times\Omega_I).
+\end{gathered}
+\tag{GI.33}
+\]
+Both ambient factors are strongly
+one-complete; the product is so
+by AT.B. A closed analytic model
+inherits the strict ambient
+exhaustion and compact closed
+sublevels. Hence this intersection
+is strongly one-complete, and
+CX.L makes every coherent sheaf
+on it acyclic in positive degrees.
+The same statements hold for
+the primed polydiscs.
+
+#### GI.I. The actual finite Čech comparison
+
+Denote the finite source opens
+from \(\Omega_\alpha,\Omega'_\alpha\)
+by \(U_\alpha,U'_\alpha\), respectively,
+and their number by \(a\).
+They cover \(f^{-1}(Y\cap D)\),
+since they cover \(K\).
+With \(A=\mathcal O(D)\), define
+the finite alternating Čech complexes
+\[
+\begin{gathered}
+E^q=\prod_{|I|=q+1}\mathcal S_I(D\times\Omega_I),\\
+F^q=\prod_{|I|=q+1}\mathcal S_I(D\times\Omega'_I),\\
+0\le q\le a-1.
+\end{gathered}
+\tag{GI.34}
+\]
+Their terms in other degrees are
+zero. Closed pushforward identifies
+these sections with the actual
+sections of \(\mathcal S\) on the
+respective intersections. This is
+also a topological identification:
+the maps are continuous for SC.G,
+and the resulting continuous
+bijection of nuclear Fréchet
+section spaces is an isomorphism
+by NP.C.
+
+The differential on an increasing
+tuple \(I=(i_0,\ldots,i_{q+1})\) is
+\[
+(dc)_I=\sum_{\nu=0}^{q+1}
+(-1)^\nu c_{I\setminus i_\nu}|_{U_I}.
+\tag{GI.35}
+\]
+Each double deletion occurs twice
+with opposite sign, so \(d^2=0\).
+The maps are continuous and
+\(A\)-linear section restrictions.
+Restriction from each unprimed
+intersection to its primed one
+defines a chain map \(E\to F\):
+both orders in GI.35 are the
+same restriction with the same
+alternating sign.
+
+AT.24 makes every term fully
+transverse over \(A\), with
+\[
+\begin{gathered}
+\mathcal O(V)\widehat\otimes_A E^\bullet
+\simeq E^\bullet(V),\\
+\mathcal O(V)\widehat\otimes_A F^\bullet
+\simeq F^\bullet(V)
+\end{gathered}
+\tag{GI.36}
+\]
+for every strongly one-complete
+\(V\subset D\). The complexes
+on the right are exactly the same
+Čech complexes restricted over \(V\).
+The coefficient isomorphisms
+respect GI.35 by the naturality
+proved in AT.F; on elementary
+tensors both maps are ordinary
+section restriction and multiplication
+by the base function.
+Fibre restriction AT.30 makes each
+component \(E^q\to F^q\)
+\(A\)-subnuclear with nuclear
+auxiliary module. Finite products
+preserve this property by GI.C.
+
+All finite intersections in both
+covers are acyclic by GI.33.
+SC.B therefore gives
+\[
+\begin{gathered}
+H^q(E^\bullet(V))\\
+\simeq H^q(f^{-1}(Y\cap V),\mathcal S),\\
+H^q(F^\bullet(V))\\
+\simeq H^q(f^{-1}(Y\cap V),\mathcal S).
+\end{gathered}
+\tag{GI.37}
+\]
+The nested-cover restriction induces
+the identity of this derived-section
+cohomology, by the refinement
+comparison in SC.B. In particular
+\(E\to F\) is a quasi-isomorphism
+of bounded-above fully transverse
+complexes with termwise subnuclear
+maps. Every premise of GI.G has
+now been verified on the actual
+source sections.
+
+#### GI.J. Sheafification of the finite model
+
+Choose \(0<t<1\) and apply GI.G.
+Let \(D_t=D(y_0,tR)\), where \(R\)
+is the polyradius of \(D\).
+Sheafify its finite free terms
+and holomorphic differential
+matrices to a complex
+\[
+\mathcal L^q=\mathcal O_{D_t}^{b_q}.
+\tag{GI.38}
+\]
+The matrices square to zero
+because their product is zero
+as a matrix of sections on \(D_t\).
+For a strongly one-complete
+\(V\subset D_t\), the columns
+of \(h\), restricted to \(V\),
+define a natural chain map
+\[
+\mathcal L^\bullet(V)\longrightarrow E^\bullet(V).
+\tag{GI.39}
+\]
+The coefficient module \(\mathcal O(V)\)
+is transverse to every \(E_t^q\)
+by AT.24 and coefficient composition
+CT.F. It is transverse to each
+finite free \(L^q\) by CT.1--CT.10.
+Apply CT.G to the acyclic bounded-above
+comparison complex of \(h\), at
+every cutoff as in GI.E. It proves
+that GI.39 is a quasi-isomorphism.
+Thus for every such \(V\),
+\[
+\begin{gathered}
+H^q(\mathcal L^\bullet(V))\\
+\simeq H^q(f^{-1}(Y\cap V),\mathcal S),
+\end{gathered}
+\tag{GI.40}
+\]
+naturally for all smaller such opens.
+
+We spell out the stalk passage.
+Polydiscs around any point of \(D_t\)
+form a strongly one-complete
+neighbourhood basis. A germ in the
+kernel of a differential can be
+represented on a neighbourhood
+where that differential is zero.
+Equality of two germs or a boundary
+identity likewise holds on a smaller
+neighbourhood. Hence
+\[
+\begin{gathered}
+\mathcal H^q(\mathcal L)_y
+=\varinjlim_{V\ni y}
+H^q(\mathcal L^\bullet(V)).
+\end{gathered}
+\tag{GI.41}
+\]
+This uses only the three adjacent
+complex degrees; a left bound is
+unnecessary.
+For the right side of GI.40 take
+an injective resolution of \(\mathcal S\).
+Its direct-image section complex
+on \(V\) is its section complex
+on \(f^{-1}(Y\cap V)\).
+It computes the indicated sheaf
+cohomology by the injective
+derived-section argument SC.B.
+Taking germs commutes with its
+cohomology by the same representative,
+kernel and boundary reasoning.
+Writing \(j:Y\cap D_t\hookrightarrow D_t\),
+we obtain
+\[
+\mathcal H^q(\mathcal L)
+\simeq j_*R^qf_*\mathcal S
+\quad\text{on }D_t.
+\tag{GI.42}
+\]
+Closed pushforward \(j_*\) is exact:
+at a point of the closed subspace
+its stalk is the original stalk,
+and off it a neighbourhood misses
+the subspace. Thus it commutes
+with cohomology of the direct-image
+resolution, justifying its placement
+in GI.42. The natural section maps
+in GI.39--GI.40 give the displayed
+sheaf isomorphism, not merely an
+unrelated isomorphism of stalk dimensions.
+
+Every \(\mathcal H^q(\mathcal L)\)
+is coherent by SC.D: it is the
+quotient of the kernel of a map
+between finite free sheaves by
+the coherent image of the preceding
+finite free sheaf. This remains
+true for the bounded-above complex
+with no left bound.
+
+The full defining ideal of \(Y\)
+annihilates the right side of GI.42.
+Its pullback along \(f\) is zero
+in \(\mathcal O_X\), so it acts
+as zero on the section resolution
+and its cohomology. A coherent
+ambient module \(P\) annihilated
+by that ideal is coherent over
+\(\mathcal O_Y\): locally choose
+finite ambient generators. The
+kernel of their map from
+\(\mathcal O_{D_t}^b\) is coherent
+and contains the ideal times
+\(\mathcal O_{D_t}^b\). Its finite
+local generators, reduced modulo
+that ideal, generate the kernel
+over \(\mathcal O_Y\). This is a
+finite presentation, and SC.D
+gives coherence on the analytic
+quotient. Therefore every
+\(R^qf_*\mathcal S\) is coherent
+near \(y_0\), and hence on \(Y\).
+This proves the general analytic
+proper coherent-image theorem.
+
+#### GI.K. Proper support and cohomological bounds
+
+Let \(f:X\to Y\) now be any
+holomorphic map and suppose it
+is proper on the closed support
+of the coherent module \(\mathcal S\).
+Its annihilator \(\mathcal J\)
+is coherent. Locally, if
+\(s_1,\ldots,s_b\) generate
+\(\mathcal S\), it is the kernel
+of \(a\mapsto(as_1,\ldots,as_b)\);
+SC.D proves coherence and these
+kernels give the same intrinsic
+ideal on overlaps.
+Give \(Z=V(\mathcal J)\) its
+entire quotient analytic structure.
+Its underlying set is precisely
+the support: a zero stalk gives
+the unit annihilator locally,
+whereas a nonzero stalk has no
+unit in its annihilator.
+The module \(\mathcal S\) is the
+closed pushforward of a coherent
+\(\mathcal O_Z\)-module \(\mathcal S_Z\),
+by the same finite-presentation
+argument as at the end of GI.J.
+The restricted map \(f_Z:Z\to Y\)
+is proper by hypothesis. Exact
+closed pushforward and its
+derived-section identification
+SC.B--SC.C give
+\[
+Rf_*\mathcal S\simeq R(f_Z)_*\mathcal S_Z.
+\tag{GI.43}
+\]
+GI.J therefore proves coherent
+higher images also for proper
+support.
+
+For a bounded complex \(K\) with
+coherent cohomology supported on
+a closed set proper over \(Y\),
+successive finite cohomological
+truncations express \(Rf_*K\)
+by finitely many triangles with
+terms \(Rf_*\mathcal H^j(K)[-j]\).
+GI.43 makes all their cohomology
+sheaves coherent; kernels, images
+and extensions remain coherent
+by SC.D and the exact cohomology
+sequences. The uniform support-proper
+ordinary section bound
+SC.J--SC.K
+supplies a target neighbourhood and
+one integer \(M\) on which
+\[
+\begin{gathered}
+\mathcal H^j(K)=0\\
+j\notin[a,b]\\
+\Longrightarrow
+\mathcal H^n(Rf_*K)=0\\
+n<a\text{ or }n>b+M-1.
+\end{gathered}
+\tag{GI.44}
+\]
+Thus the direct image has coherent
+cohomology and is bounded on a
+neighbourhood of every target point.
+These are local bounds on \(Y\).
+If the integers \(M\) can be chosen
+uniformly, GI.44 gives global
+boundedness. In particular this
+holds when \(Y\) is compact:
+choose finitely many of the target
+neighbourhoods, with bounds \(M_i\),
+and use \(M=\max_i M_i\).
+Every degree outside that single
+range vanishes on the finite cover
+and hence on all of \(Y\).
+The natural proper-support
+comparison \(Rf_!K\simeq Rf_*K\)
+is the one proved in SC.K.
+It is \(\mathcal O_Y\)-linear:
+the defining comparison of sections
+commutes with multiplication by
+each pulled-back base function,
+and the same is true of the
+resolution maps and truncations.
+Consequently the coherent-image
+and boundedness statements apply
+to that proper-support functor as well.
+
+![Decreasing coefficient radii, signed cone columns, and the actual graph and Čech construction of coherent proper images.](assets/general-analytic-coherent-images.png)
+
+The left panel records GI.25--GI.28
+for \(t=1/3\) and \(N=2\), with
+the displayed exact sample radii.
+The right panel gives the maps
+GI.31--GI.42; its boxes denote
+analytic spaces, coefficient
+complexes or sheaves as labelled.
+It is a diagram of the proof,
+not a metric picture of a fibre.
+The drawing source
+and exact radius and sign data
+specify the diagram.
+
+The nuclear coefficient method
+and its application to proper
+coherent images are also developed
+in [Demailly's free author manuscript,
+Chapter IX, §5.D--§5.E](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf).
+GI.A--GI.K give the coefficient
+quotient, closed-cycle, finite
+model, overlap and stalk arguments
+used here.
+
+
+### 5.100. Induced analytic modules and proper operator coherence
+
+Let \(f:X\to Y\) be a holomorphic map of Hausdorff second-countable complex manifolds, with \(\dim_{\mathbf C}X=n\). Fix a closed subset \(S\subset X\) such that \(f|_S\) is proper. A right operator module will have a **coherent ordinary generator near the fibres** if, for every \(y\in Y\), there is an open neighbourhood \(V\) and a coherent right \(\mathcal O_{f^{-1}V}\)-submodule \(F\subset M|_{f^{-1}V}\) such that \(F\mathcal D_{f^{-1}V}=M|_{f^{-1}V}\).
+
+We prove that every coherent right \(\mathcal D_X\)-module supported in \(S\) with this generator property has bounded coherent proper direct image. The property holds for regular holonomic modules by GG.P, after the exact density side change. More generally the theorem applies to any supplied global good filtration near each proper fibre. The finite-dimensional hypothesis on \(X\) gives a single amplitude bound, independent of the number of charts covering a fibre.
+
+The ordinary coherent-image theorem used here is the full GI.J–GI.K, including nonreduced coefficient support and nonflat coefficients. Analytic operator coherence, uniform filtered images and relations are Theorem3.0c and Lemma3.0c.4. We also use the actual proper filtered-coefficient comparison, Lemma3.1b, and the complete finite c-soft resolution, D8–D10. The sheaf results allow arbitrary complex coefficients.
+
+#### AP.A. Coherent coefficients induce actual good modules
+
+Let \(F\) be any coherent right \(\mathcal O_X\)-module. Define
+\[
+\begin{gathered}
+I(F)=F\otimes_{\mathcal O_X}\mathcal D_X,\\
+G_pI(F)=F\otimes_{\mathcal O_X}\mathcal D_{X,\le p},\\
+p\ge0,\\
+G_pI(F)=0\quad(p<0).
+\end{gathered}
+\tag{AP.1}
+\]
+The tensor uses the left ordinary action on the operator factor; the resulting module uses its right operator action. The order inclusions are split as left ordinary modules in local PBW coordinates. Consequently every indicated tensor is a subsheaf of \(I(F)\), even when \(F\) is not flat. PBW gives exact sequences of right ordinary modules
+\[
+\begin{gathered}
+0\to G_{p-1}I(F)\to G_pI(F)\\
+\to F\otimes_{\mathcal O_X}\operatorname{Sym}^pT_X\to0.
+\end{gathered}
+\tag{AP.2}
+\]
+Right multiplication by a function differs from its multiplication on the coefficient by a term of lower operator order. Thus the last term has exactly the displayed ordinary action. Each is coherent by SC.D, and induction in AP.2 proves coherence of every actual right ordinary piece. This argument does not identify right multiplication with left coefficient multiplication before passing to the symbol.
+
+A finite local ordinary presentation of \(F\), tensored with the left ordinary-flat sheaf \(\mathcal D_X\), presents \(I(F)\) by finite free right operator modules. Operator coherence therefore makes it coherent. Its symbol is
+\[
+\operatorname{gr}_GI(F)
+=F\otimes_{\mathcal O_X}\operatorname{Sym}T_X.
+\tag{AP.3}
+\]
+It is locally finitely generated by degree zero, so AP.1 is a global good filtration. In PBW coordinates the underlying coefficient sheaf is the sheaf direct sum of copies of \(F\), with one copy for each derivative monomial. In particular
+\[
+\operatorname{supp}I(F)=\operatorname{supp}F.
+\tag{AP.4}
+\]
+The zero-order inclusion exhibits a copy of every nonzero coefficient stalk; conversely a zero coefficient stalk kills all summands. These statements concern actual finite-order operators.
+
+#### AP.B. Derived cancellation for nonflat coefficients
+
+Put
+\[
+\begin{gathered}
+T=\mathcal D_{X\to Y}\\
+=\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}\mathcal D_Y.
+\end{gathered}
+\tag{AP.5}
+\]
+The chain-rule construction gives its commuting left \(\mathcal D_X\)- and right \(f^{-1}\mathcal D_Y\)-actions. In target coordinates, left ordinary PBW identifies it with a direct sum of copies of \(\mathcal O_X\). Hence it is flat as a left \(\mathcal O_X\)-module.
+
+For clarity, an ordinary flat resolution \(P^\bullet\to F\) exists without a global vector-bundle hypothesis. For every local section on an open \(U\), use the corresponding map from the open extension by zero of \(\mathcal O_U\) to \(F\). The direct sum of these maps is surjective on stalks. Each source is ordinary-flat, since its stalk is either \(\mathcal O_{X,x}\) or zero. Repeat on its kernel. This constructs a resolution in nonpositive degrees by ordinary-flat sheaves.
+
+The complex \(P^\bullet\otimes\mathcal D_X\) resolves \(I(F)\), because \(\mathcal D_X\) is left ordinary-flat. Its terms are right operator-flat: for any left operator module \(N\), the balancing maps give
+\[
+\begin{gathered}
+(P^j\otimes_{\mathcal O_X}\mathcal D_X)
+\otimes_{\mathcal D_X}N\\
+\simeq P^j\otimes_{\mathcal O_X}N,
+\end{gathered}
+\tag{AP.6}
+\]
+and the right side preserves exact sequences. Tensoring this resolution with \(T\) gives \(P^\bullet\otimes_{\mathcal O_X}T\). Its only cohomology is the ordinary tensor in degree zero, by the ordinary-flatness of \(T\). Thus the actual natural reassociation isomorphism is
+\[
+\begin{gathered}
+I(F)\otimes^L_{\mathcal D_X}T
+\simeq F\otimes_{\mathcal O_X}T\\
+=F\otimes_{f^{-1}\mathcal O_Y}f^{-1}\mathcal D_Y.
+\end{gathered}
+\tag{AP.7}
+\]
+All maps retain the right target-operator action. This proves vanishing of every positive transfer Tor of this induced source. It makes no flatness assertion about the transfer as a left operator module.
+
+#### AP.C. Finite order and the proper filtered union
+
+Suppose \(\operatorname{supp}F\subset S\). Write \(D_p=\mathcal D_{Y,\le p}\). The finite-order projection map is
+\[
+\begin{gathered}
+Rf_*F\otimes_{\mathcal O_Y}D_p\\
+\longrightarrow Rf_*\bigl(
+F\otimes_{f^{-1}\mathcal O_Y}f^{-1}D_p\bigr).
+\end{gathered}
+\tag{AP.8}
+\]
+It is an isomorphism. Indeed, on a target coordinate open, \(D_p\) is finite free for its left ordinary action. In that basis AP.8 is the identity between the same finite direct sum of \(Rf_*F\). A change of basis is a finite matrix of holomorphic functions; multiplication by their pullbacks gives the same matrix on the source. Thus these identifications glue to the canonical projection map. They are compatible with the order inclusions.
+
+For this passage to the union it is essential to use proper support. Lemma3.1b applies to the filtered system
+\[
+\begin{gathered}
+B_p=F\otimes_{f^{-1}\mathcal O_Y}f^{-1}D_p,\\
+\operatorname{supp}B_p\subset S.
+\end{gathered}
+\tag{AP.9}
+\]
+It proves, for every \(q\),
+\[
+\begin{gathered}
+\underset{p}{\operatorname{colim}}R^qf_*B_p\\
+\simeq R^qf_*\bigl(\underset{p}{\operatorname{colim}}B_p\bigr).
+\end{gathered}
+\tag{AP.10}
+\]
+Here is the content of its proof that matters for this system. A section of a filtered colimit on a compact set is represented at one stage: finitely many local representatives, and finitely many compact overlaps, admit one common later index witnessing their agreement. The compact-neighbourhood gluing argument then glues them. Equality of two such representatives is witnessed at one later stage by the same finite-cover argument. Filtered colimits of c-soft sheaves are therefore c-soft. Take the functorial flabby resolution formed by products of stalks and successive cokernels for the diagram \(B_p\). Its termwise colimit is an exact resolution, has c-soft terms, and is proper-image acyclic. Proper underived image commutes with this colimit by the compact-fibre section formula. The two derived computations give AP.10. On the fixed closed support one uses its proper restricted map; closed pushforward is exact. These are sheaf statements, rather than statements about all sections on an arbitrary noncompact inverse image.
+
+Taking the colimit of AP.8 and using AP.10 gives the natural derived isomorphism
+\[
+\begin{gathered}
+Rf_*F\otimes_{\mathcal O_Y}\mathcal D_Y\\
+\xrightarrow{\sim}Rf_*(F\otimes_{\mathcal O_X}T).
+\end{gathered}
+\tag{AP.11}
+\]
+One may represent all derived terms by bounded-below functorial resolutions in the preceding argument. Exact filtered colimits commute with their cohomology in each degree, so AP.10 proves that the resulting derived map is a quasi-isomorphism. The left ordinary-flatness of \(\mathcal D_Y\) also identifies its cohomology with \((R^qf_*F)\otimes\mathcal D_Y\).
+
+We check the right action before using AP.11 as an operator identity. Right multiplication by an operator of order \(r\) defines a left ordinary-linear map \(D_p\to D_{p+r}\). AP.8 is natural for these maps. In coordinates, multiplication by a target derivative raises the corresponding PBW exponent, and multiplication by a target holomorphic function is the finite formula
+\[
+\begin{gathered}
+\partial^\alpha a\\
+=\sum_{\beta\le\alpha}
+\binom\alpha\beta(\partial^\beta a)
+\partial^{\alpha-\beta}.
+\end{gathered}
+\tag{AP.12}
+\]
+Its source coefficients are the pullbacks of precisely those derivatives. The finite-order maps, their derived comparisons and their filtered colimit therefore commute with both kinds of multiplication. Functions and coordinate derivatives generate all finite-order operators, so AP.11 is right \(\mathcal D_Y\)-linear.
+
+Define the right direct image by
+\[
+f_+N=Rf_*\bigl(N\otimes^L_{\mathcal D_X}T\bigr)
+\tag{AP.13}
+\]
+on objects supported in \(S\). The proper-support comparison identifies the star and shriek sheaf images here. Combining AP.7 and AP.11 proves
+\[
+\begin{gathered}
+f_+I(F)\\
+\simeq Rf_*F\otimes_{\mathcal O_Y}\mathcal D_Y,\\
+\mathcal H^q(f_+I(F))\\
+\simeq I_Y(R^qf_*F).
+\end{gathered}
+\tag{AP.14}
+\]
+GI.J–GI.K makes every coefficient on the last line coherent. AP.A consequently proves that every induced-term image cohomology is a coherent right operator module with its actual good induced filtration.
+
+#### AP.D. A uniform bound for the actual functor
+
+The bound is independent of the induced calculation. The augmented absolute Spencer resolution of \(T\) has terms
+\[
+\begin{gathered}
+Q^{-r}=\mathcal D_X\otimes_{\mathcal O_X}E_r,\\
+E_r=\bigwedge^rT_X\otimes_{\mathcal O_X}T,\\
+0\le r\le n,
+\end{gathered}
+\tag{AP.15}
+\]
+and augmentation \(P\otimes t\mapsto Pt\). Its differential and signs are the complete Spencer differential of §5.9, finite transfer bounds: the alternating terms are \(P\xi_a\otimes t-P\otimes\xi_at\), together with the alternating Lie-bracket terms. The chain-rule action makes them right target-operator linear. Filter the first operator factor by order plus wedge degree. The associated graded augmented complex is the polynomial Koszul resolution in the source cotangent variables, with coefficient \(T\). Its exactness and the terminating leading-symbol reduction are proved in that section. Every term is left operator-flat, since \(\bigwedge^rT_X\otimes T\) is ordinary-flat. Thus AP.15 computes the actual transfer tensor of any right operator module \(N\), with amplitude \([-n,0]\).
+
+The real manifold underlying \(X\) has dimension \(2n\). The earlier finite c-soft resolution D8–D10, followed by its proper-image acyclicity F6, proves
+\[
+R^qf_!A=0\qquad(q>2n)
+\tag{AP.16}
+\]
+for every complex sheaf \(A\). In particular this uses one integer on the whole manifold; it is not a maximum taken over infinitely many unrelated local fibre covers. The result also applies on every open inverse image with the same integer. For sheaves supported in \(S\), the proper-support comparison gives the same bound for \(Rf_*\).
+
+These bounds apply to the functor with its operator action. Forgetting a sheaf of \(f^{-1}\mathcal D_Y\)-modules to complex sheaves preserves injectives: its left adjoint is tensor with \(f^{-1}\mathcal D_Y\) over the constant complex sheaf, and is exact on stalks. Hence the underlying sheaf of the derived operator image is its ordinary sheaf-derived image. The proper-support comparison is operator-linear, since the section inclusion and all resolution maps commute with the target action. Applying AP.16 to AP.15 therefore yields, for every \(N\) supported in \(S\),
+\[
+f_+N\in D^{[-n,\,2n]}(\mathcal D_Y^{\mathrm{op}}).
+\tag{AP.17}
+\]
+For a bounded input with cohomology in \([a,b]\), its finite cohomology truncation triangles give the uniform interval
+\[
+f_+K\in D^{[a-n,\,b+2n]}(\mathcal D_Y^{\mathrm{op}}).
+\tag{AP.18}
+\]
+Neither coherence of an output nor a regularity theorem is used to obtain these bounds. In particular the local-only qualification of GI.K for general analytic spaces has not been replaced by an unproved global bound: the fixed smooth dimension supplies the independent uniform bound AP.16.
+
+#### AP.E. Supported induced segments near a fibre
+
+Assume the generator property in the opening paragraph and fix \(y\). After restricting to its neighbourhood, let \(F_0\subset M\) be the given coherent ordinary generator. Its action gives
+\[
+I(F_0)\twoheadrightarrow M.
+\tag{AP.19}
+\]
+The source is coherent with the global good filtration AP.1, and its support lies in \(S\). The kernel \(N_1\) is coherent by operator coherence and has the induced global good filtration.
+
+We recall the exact filtered-submodule argument, which also applies to these nonfree coefficients. For a coherent submodule \(H\) of any good filtered coherent module \(B\), locally choose a strict filtered epimorphism from a finite shifted free operator module \(L\) to \(B\). Lift finite homogeneous symbol generators and lower order to obtain this epimorphism and its strictness. The inverse image \(H'\subset L\) is coherent. Lemma3.0c.4 gives it a good induced filtration on one neighbourhood for every degree. Strictness identifies
+\[
+\begin{gathered}
+H\cap G_pB\\
+=\operatorname{im}(H'\cap G_pL\to G_pB).
+\end{gathered}
+\tag{AP.20}
+\]
+Both ordinary sheaves in this image map are coherent. Their image is coherent by SC.D. The associated graded image is a quotient of the finite graded module of \(H'\), and is therefore finite. This proves goodness of the induced filtration on \(H\), including coherence of all its actual ordinary pieces on the same neighbourhood. It is the general filtered-submodule proof already given in §5.9; local freeness of \(B\) is unnecessary.
+
+At every point of the compact set \(S\cap f^{-1}(y)\), finite local operator generators of \(N_1\) belong to some induced degree. Membership in that degree holds on a neighbourhood, by the definition of the subsheaf. A finite subcover and the maximum of its degree bounds give one integer \(p\) such that \(G_pN_1\) generates on a neighbourhood \(U\) of this compact set. Properness on \(S\) supplies a smaller target neighbourhood \(V\) with
+\[
+S\cap f^{-1}(V)\subset U.
+\tag{AP.21}
+\]
+Indeed \(f|_S\) is closed and the image of the closed set \(S\setminus U\) misses \(y\); remove that image. The globally defined coherent sheaf \(G_pN_1\), restricted to \(f^{-1}V\), generates \(N_1\) everywhere: it does so on \(U\), and both sheaves vanish off \(S\).
+
+Set \(F_1=G_pN_1\) there and use \(I(F_1)\twoheadrightarrow N_1\). AP.A and AP.20 apply to its kernel. Repeating any specified finite number of times constructs, after only finitely many target shrinkings,
+\[
+\begin{gathered}
+0\longrightarrow L\longrightarrow I(F_s)\longrightarrow\cdots\\
+\longrightarrow I(F_0)\longrightarrow M\longrightarrow0.
+\end{gathered}
+\tag{AP.22}
+\]
+Every \(F_j\) is ordinary coherent and supported in the same \(S\). Every syzygy is operator-coherent and is supported there as well. These are actual action maps, not merely symbol maps. Their differentials need not be induced by ordinary coefficient maps \(F_j\to F_{j-1}\).
+
+A global good filtration in the opening hypothesis supplies its coherent ordinary generator by the same compact-degree argument. Thus the stated alternate hypothesis is sufficient. GG.P supplies it for each regular holonomic cohomology module, and density conversion supplies the right-module version.
+
+#### AP.F. Removing the finite resolution tail
+
+Put \(A_j=I(F_j)\). Take
+\[
+\begin{gathered}
+s=3n+1,\\
+C=[A_s\to\cdots\to A_0],\\
+\text{in degrees }[-s,0].
+\end{gathered}
+\tag{AP.23}
+\]
+The augmentation in AP.22 has
+\[
+\begin{gathered}
+\operatorname{Cone}(C\to M)\\
+\simeq L[s+1].
+\end{gathered}
+\tag{AP.24}
+\]
+This follows directly on cohomology: \(C\) has only the additional kernel \(L\) in degree \(-s\); in the cone it is in degree \(-s-1\). All other augmented degrees are exact. The image functor is triangulated. Its independent bound AP.17 gives
+\[
+\begin{gathered}
+f_+L[s+1]\in\\
+D^{[-n-s-1,\,2n-s-1]}\\
+=D^{[-4n-2,\,-n-2]}.
+\end{gathered}
+\tag{AP.25}
+\]
+For every \(q\ge-n\), both cone degrees \(q-1\) and \(q\) vanish. The long exact sequence gives the natural right-operator isomorphism
+\[
+\begin{gathered}
+\mathcal H^q(f_+C)\xrightarrow{\sim}\mathcal H^q(f_+M),\\
+q\ge-n.
+\end{gathered}
+\tag{AP.26}
+\]
+AP.17 kills the remaining degrees \(q<-n\) of the actual output. Thus AP.26 covers every possibly nonzero output degree; no convergence of an infinite resolution is being assumed.
+
+Each \(f_+I(F_j)\) has coherent cohomology by AP.14. It is bounded by AP.17. The finitely many brutal filtration triangles of \(C\) express \(f_+C\) as finitely many cones of shifts of these objects. Kernels, cokernels and finite extensions of coherent analytic operator modules are coherent by Theorem3.0c. The long exact sequences of those triangles therefore prove coherence of every \(\mathcal H^q(f_+C)\). Formula AP.26 proves the same for the actual output. The target neighbourhoods cover \(Y\), so this is coherence on all of \(Y\). AP.17 already gives a single global finite amplitude. We have proved
+\[
+f_+M\in D^b_{\mathrm{coh}}(\mathcal D_Y^{\mathrm{op}})
+\tag{AP.27}
+\]
+for every module in the stated generator and proper-support scope, for an arbitrary holomorphic map.
+
+For a bounded complex whose coherent cohomology modules have that property, use its finite cohomology truncation triangles. Each attached cohomology module has coherent image by AP.27; the long exact sequences preserve coherence. Their degree intervals give AP.18. There is no need for a global induced resolution of an entire complex, or an intersection of infinitely many shrinking target neighbourhoods.
+
+#### AP.G. Left modules and regular holonomic inputs
+
+For a coherent left module \(M\), density side change gives the right module \(\omega_X\otimes_{\mathcal O_X}M\). Its generator property follows from the one for \(M\): in a local volume frame the transpose of a vector field is minus that vector field minus its holomorphic divergence. This order-one identity and induction on order show that the density-twisted coherent ordinary generator generates on the other side. Tensoring by the density line and its inverse is exact. Thus the left direct image is
+\[
+\begin{gathered}
+f_*^{\mathcal D}M\simeq\\
+\omega_Y^{-1}\otimes_{\mathcal O_Y}
+f_+(\omega_X\otimes_{\mathcal O_X}M),\\
+f_*^{\mathcal D}K\in
+D^{[a-n,\,b+2n]}_{\mathrm{coh}}(\mathcal D_Y)
+\end{gathered}
+\tag{AP.28}
+\]
+when the cohomology of \(K\) lies in \([a,b]\) and satisfies the generator hypothesis. The formula has the programme's transfer normalization; side change adds no cohomological shift.
+
+In particular let \(K\) have regular holonomic cohomology and closed support proper over \(Y\). GG.P supplies the generator on a neighbourhood of every target fibre for each of its finitely many cohomology modules. A finite intersection of these target neighbourhoods suffices at each point. All hypotheses above therefore hold. This proves bounded coherent analytic operator image for every such \(K\), on every support allowed here, with no projectivity or coefficient-flatness assumption.
+
+#### AP.H. A nonflat supported coefficient and all its layers
+
+Let \(X=\mathbf C_z\), let \(f:X\to\{*\}\), and take, for any integer \(m\ge1\),
+\[
+\begin{gathered}
+F=\mathcal O_X/(z^m),\\
+I(F)=\mathcal D_X/z^m\mathcal D_X.
+\end{gathered}
+\tag{AP.29}
+\]
+Its closed support is the single point, so the support restriction of \(f\) is proper. It is not ordinary-flat: in the tensor of the injection \(\mathcal O_X\xrightarrow{z}\mathcal O_X\) with \(F\), the nonzero class of \(z^{m-1}\) is killed. AP.2 retains every layer of this nonflat coefficient in each derivative degree.
+
+Writing \(e_j\) for the class of \(z^j\), with \(e_m=0\), the exact right actions are
+\[
+\begin{gathered}
+(e_j\otimes\partial^k)\partial=e_j\otimes\partial^{k+1},\\
+(e_j\otimes\partial^k)z\\
+=e_{j+1}\otimes\partial^k+k e_j\otimes\partial^{k-1}.
+\end{gathered}
+\tag{AP.30}
+\]
+The second summand is zero when \(k=0\). These formulas follow from \(\partial^kz=z\partial^k+k\partial^{k-1}\); they verify explicitly the lower-order term used in AP.2.
+
+Here \(T=\mathcal O_X\). Apply AP.7, or tensor the ordinary flat resolution \(0\to\mathcal O_X\xrightarrow{z^m}\mathcal O_X\to F\to0\) with the ordinary-flat \(T\), to get
+\[
+I(F)\otimes^L_{\mathcal D_X}\mathcal O_X\simeq F.
+\tag{AP.31}
+\]
+Closed pushforward from the point is exact. Its sections are the full vector space of nilpotent jets, and its higher cohomology is zero. Therefore
+\[
+\begin{gathered}
+f_+I(F)\simeq\mathbf C[z]/(z^m),\\
+\text{in degree }0,\\
+\dim_{\mathbf C}\mathcal H^0(f_+I(F))=m.
+\end{gathered}
+\tag{AP.32}
+\]
+This example retains all \(m\) layers. The induced cancellation is compatible with nonflat coefficients and with a nonreduced ordinary support structure.
+
+**Exercise.** For \(n=1\), compute the source and cone degree intervals in AP.23–AP.25. Check directly that they separate every possibly nonzero output degree, including the lower endpoint.
+
+**Solution.** Here \(s=4\), the finite induced complex lies in \([-4,0]\), and AP.17 gives the actual output interval \([-1,2]\). The shifted kernel image in AP.25 lies in \([-6,-3]\). For \(q=-1\), its two relevant degrees are \(-2,-1\), both outside that interval. Increasing \(q\) keeps both outside it. AP.26 therefore includes the lower endpoint and every larger output degree. These are sufficient bounds; AP.32 has its actual cohomology only in degree zero.
+
+![Actual induced transfer and proper image, supported finite resolution and degree separation](assets/actual-induced-analytic-proper.png)
+
+The upper panel gives the actual maps AP.7 and AP.11 and the supported exact segment AP.22. The lower left plots the exact sufficient intervals in the exercise, with their actual integer endpoints; the dotted line is degree \(-2\), which lies strictly above the cone interval. The lower right is AP.32 for \(m=3\); its three boxes represent nilpotent coefficient basis layers at one support point. Drawing source, SVG and exact interval and layer data specify the diagram.
+
+The induced-module route to proper coherence is also developed in [Schapira's freely accessible D-module notes, Theorem2.5.4, pp.43–45](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/lectnotes/Dmod.pdf). AP.A–AP.H supply the nonflat induced terms, actual right-action comparison, supported finite segment and uniform degree separation used here; the ordinary analytic coherence input is proved in GI.A–GI.K.
+
+
+### 5.101. General analytic characteristic transport
+
+Let \(f: X\to Y\) be a holomorphic map of Hausdorff second-countable complex manifolds, of fixed dimensions \(n\) and \(m\). Let \(S\subset X\) be closed and proper over \(Y\). Suppose the coherent right \(\mathcal D_X\)-module \(M\) is supported in \(S\) and has a coherent ordinary generator on the whole inverse image of a neighbourhood of each target point, as defined in AP.E. This includes every regular holonomic module by GG.P.
+
+The cotangent correspondence is
+\[
+\begin{gathered}
+W=X\times_YT^*Y,\\
+u: W\to X,\\
+v: W\to T^*Y,\\
+\rho: W\to T^*X,\\
+\rho(x,\eta)=(x,(df_x)^*\eta).
+\end{gathered}
+\tag{GP.1}
+\]
+We prove the actual characteristic containment
+\[
+\begin{gathered}
+\operatorname{Ch}\mathcal H^b(f_+M)\\
+\subset v\bigl(\rho^{-1}\operatorname{Ch}M\bigr)
+\end{gathered}
+\tag{GP.2}
+\]
+in every degree. The proof constructs good filtrations of the actual output, retains derived Rees torsion until both specializations have been computed, and includes all singular pieces of the source characteristic support. If \(M\) is holonomic, every output cohomology module is holonomic. The same conclusions hold for bounded complexes with the stated cohomology hypotheses, and for left modules under density side change.
+
+The complete ordinary analytic coherent-image input is GI.A–GI.K. The actual unfiltered operator image and its uniform amplitude are AP.A–AP.G. The analytic polynomial-extension and uniform operator arguments are Theorem3.0c. The finite graded Rees coherence proof and the signed Rees Spencer resolution are the full arguments in §5.12; their ring and resolution statements do not require a projective map. The new proper cotangent comparison uses the analytic parameter theorem below.
+
+#### GP.A. Adding analytic parameters is flat
+
+For any complex manifold \(D\) and polydisc \(B\), the projection \(D\times B\to D\) is ordinary-flat. Work at a point and translate it to the origin. Put
+\[
+\begin{gathered}
+H=\mathbf C\{y\},\\
+K=\mathbf C\{y,z\},\\
+P=H[z]_{(y,z)},\\
+\widehat P=\widehat K=\mathbf C[[y,z]].
+\end{gathered}
+\tag{GP.3}
+\]
+The Noetherianity, regular local presentations and the exact faithfully flat completion theorem are the earlier analytic local algebra proof and commutative completion, Theorem3.2. The equality of completions follows by finite Taylor quotients. The ring \(P\) is flat over \(H\), because polynomial extension and localization are flat: polynomials are free as coefficient modules, and localization preserves an injection by the fraction criterion. Its completion is flat over \(P\), hence over \(H\). Completion of \(K\) is faithfully flat over \(K\). For an \(H\)-module injection, a kernel after tensoring with \(K\) would remain nonzero after tensoring with \(\widehat K\), contradicting its flatness over \(H\). Thus \(K\) is flat over \(H\), for arbitrary modules. This proves the projection statement at every stalk, including nonzero parameter points by translation. The same conclusion holds for any analytic space: a local model has ring \(H/J\), its product model has ring \(K/JK\), and the latter is flat over \(H/J\) by base change of the proved flat map. Tensoring an injection of quotient-ring modules with it is exactly tensoring that injection over \(H\) with \(K\). This retains the full nonreduced ideal and needs no reducedness assumption.
+
+We shall also use exact analytic extension from polynomial fibre variables on a manifold. The proof at an arbitrary fibre point is the same completion descent: localize the coefficient polynomial ring at that point and compare its completion with the convergent local ring. The argument just recalled from Theorem3.0c proves exactness on arbitrary modules. Write
+\[
+\begin{gathered}
+S_Y=\operatorname{Sym}T_Y,\\
+\pi_Y: T^*Y\to Y,\\
+C_Y=\pi_Y^{-1}S_Y,\\
+\mathfrak a_Y(N)\\
+=\mathcal O_{T^*Y}\otimes_{C_Y}\pi_Y^{-1}N.
+\end{gathered}
+\tag{GP.4}
+\]
+The analogous notation will be used on \(X\). These are exact coefficient-extension functors; no assertion that a general holomorphic map is flat is involved.
+
+#### GP.B. Proper images and independent analytic parameters
+
+Let \(g: Z\to D\) be any holomorphic map of Hausdorff second-countable analytic spaces, with \(D\) a manifold, and let \(F\) be coherent with closed support proper over \(D\). For a polydisc \(B\), let \(p: Z\times B\to Z\), \(\beta: D\times B\to D\), and \(g_B=g\times1\). Then the canonical comparison is
+\[
+\beta^*Rg_*F\xrightarrow{\sim}R(g_B)_*p^*F.
+\tag{GP.5}
+\]
+The assertion is local on \(D\times B\); a neighbourhood of any chosen target point suffices. We prove the actual comparison, not merely an equality of fibre dimensions.
+
+First replace the source by the closed analytic support defined by the full annihilator of \(F\). This is the reduction of GI.K, which retains all nilpotents. Its restricted map is proper, closed pushforward is exact, and products with \(B\) preserve that reduction. We may therefore use the finite graph covers and actual coherent Čech models of GI.H–GI.J for \(g\) itself near a given target point. On a polydisc \(D_0\) they give bounded Čech complexes \(E\to E'\) and, on a smaller concentric \(D_t\), a finite-rank free model \(L\to E_t\) in every degree. This model is bounded above, with no left boundedness required. On every smaller polydisc \(V\subset D_t\), the map
+\[
+L(V)\longrightarrow E(V)
+\tag{GP.6}
+\]
+is a quasi-isomorphism of nuclear Fréchet complexes. These are the actual complexes of sections and restriction maps in GI.I–GI.J.
+
+Every nonempty chart intersection over \(V\) is a closed analytic graph in a strongly one-complete product. Its product with any smaller polydisc \(B'\subset B\) has the same property, by AT.B. Coherent acyclicity follows from CX.L. The full coherent exterior-product section theorem AT.A–AT.D identifies the Čech terms on these products with
+\[
+E(V)\widehat\otimes_{\mathbf C}\mathcal O(B').
+\tag{GP.7}
+\]
+All restriction differentials agree under that identity. The same assertion holds for \(L(V)\), whose free terms become \(\mathcal O(V\times B')^{b_j}\).
+
+Completed scalar tensoring in GP.7 preserves the quasi-isomorphism GP.6. Indeed its bounded-above signed cone is acyclic, each cycle is a closed nuclear Fréchet subspace, and each short cycle sequence is strict by the open-mapping theorem. The exact nuclear tensor theorem NT.F preserves those sequences. The tensor cone is therefore acyclic in every degree. Only adjacent degrees enter this argument; it takes no inverse limit over the left tail.
+
+Sheafify the finite free terms of \(L\) on \(D_t\), obtaining the complex \(\mathcal L\) of GI.J. On the rectangle basis \(V\times B'\), the tensor maps just constructed give
+\[
+\beta^*\mathcal L\longrightarrow R(g_B)_*p^*F
+\tag{GP.8}
+\]
+as a quasi-isomorphism. More explicitly, its columns are the restricted Čech cycle representatives of the original map \(L\to E_t\), tensored with holomorphic parameter functions. Finite Čech/derived-section comparison and the natural stalk passage of GI.J identify its cohomology with the indicated higher images. A section in a kernel, or a boundary equality, is represented on one smaller rectangle, so stalks commute with these cohomologies even for the left-unbounded free complex.
+
+On the other hand \(\beta\) is flat by GP.A. Hence \(\beta^*\mathcal L\) has cohomology \(\beta^*\mathcal H^q(\mathcal L)\), and GI.J identifies the latter with \(\beta^*R^qg_*F\). The resulting isomorphism is GP.5 itself: the natural comparison is defined by pulling a coefficient section to the product and multiplying by the parameter function. Its composite with \(\mathcal L\to Rg_*F\) is exactly the column map in GP.8. Equivalently its adjoint is the pulled-back counit to \(F\); tensor reassociation gives the same coefficient multiplication. Thus the proof identifies the canonical map and its naturality in \(F\), restrictions and coefficient maps. The local comparisons agree on overlaps and prove GP.5 everywhere. Bounded coherent complexes follow from finite cohomology truncation triangles.
+
+#### GP.C. The analytic cotangent candidate
+
+Return to \(f\) and choose an actual global good filtration \(F_\bullet M\) on the inverse image of a sufficiently small target neighbourhood. A coherent ordinary generator supplies it: give its induced module the filtration AP.1, use the good induced kernel of AP.20, and take the quotient filtration on \(M\). Its actual pieces are coherent and its graded module is finite. Write
+\[
+\begin{gathered}
+G=\mathfrak a_X(\operatorname{gr}_FM),\\
+\mathcal K=Rv_*L\rho^*G.
+\end{gathered}
+\tag{GP.9}
+\]
+This is a bounded coherent complex. Here are the amplitude and support details, including at critical points of \(f\).
+
+In source and target coordinates, put \(a_{ij}=\partial f_j/\partial x_i\). The symbol-transfer module is
+\[
+\begin{gathered}
+B_f=\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}S_Y,\\
+\xi_i\cdot b=\Bigl(\sum_j a_{ij}\eta_j\Bigr)b.
+\end{gathered}
+\tag{GP.10}
+\]
+Over the ring \(S_X\otimes_{\mathcal O_X}B_f\), its Koszul resolution uses the \(n\) elements \(\xi_i-\sum_j a_{ij}\eta_j\). These form a regular sequence: the polynomial change of variables replacing \(\xi_i\) by those differences is invertible, and successive polynomial variables are injective with quotient deleting that variable. The same two-term cone induction as the earlier Spencer/Koszul proof gives exactness. Its terms are flat over \(S_X\), because \(B_f\) is free over \(\mathcal O_X\). It follows that symbol transfer has amplitude \([-n,0]\), without a non-characteristic or submersion assumption.
+
+Analytically, consider \(T^*X\times_YT^*Y\). Its projection to \(T^*X\) is locally the addition of \(m\) independent parameters, so it is flat by GP.A. The graph of \(\rho\) in this space is the closed embedding defined by the same \(n\) differences. Analytic extension of the polynomial Koszul resolution therefore computes \(L\rho^*G\). Its terms and cohomology are coherent, and
+\[
+\begin{gathered}
+L\rho^*G\in D^{[-n,0]}_{\mathrm{coh}}(\mathcal O_W),\\
+\operatorname{supp}L\rho^*G
+\subset \rho^{-1}\operatorname{Ch}M.
+\end{gathered}
+\tag{GP.11}
+\]
+The support assertion follows by restricting to an open where \(G=0\).
+
+The map \(v\) is proper on the closed set \(u^{-1}S=S\times_YT^*Y\): it is a base change of the proper map \(S\to Y\). The cohomology in GP.11 is supported there. GI.K gives coherent higher images. The real dimension of the manifold \(W\) is \(2(n+m)\), so the earlier uniform all-sheaf bound used in AP.D supplies a single upper image bound. Consequently
+\[
+\begin{gathered}
+\mathcal K\in D^{[-n,\,2(n+m)]}_{\mathrm{coh}}(\mathcal O_{T^*Y}),\\
+\operatorname{supp}\mathcal K
+\subset v(\rho^{-1}\operatorname{Ch}M).
+\end{gathered}
+\tag{GP.12}
+\]
+For the latter statement, the set on the right is closed by properness on that inverse image. Over its complement the entire source coefficient complex vanishes. These are sufficient bounds, not a claim of optimal amplitude.
+
+#### GP.D. Strict finite segments with coherent coefficients
+
+The actual graded Rees rings and module are
+\[
+\begin{gathered}
+\mathscr R_X=\\
+\bigoplus_{p\ge0}\mathcal D_{X,\le p}h^p,\\
+\mathscr M=\bigoplus_{p\in\mathbf Z}F_pM\,h^p,\\
+\vartheta_\xi=h\xi,\\
+\deg h=\deg\vartheta_\xi=1.
+\end{gathered}
+\tag{GP.13}
+\]
+The finite graded Rees coherence theorem proved in §5.12 applies to these analytic sheaves. Its auxiliary filtration is least power of \(h\), with commutative associated graded \(\mathcal O_X[h,\xi]\). At fixed internal degree, raising that least power terminates. The proof keeps both the internal and auxiliary shifts in the replacement finite free modules, uses uniform homogeneous polynomial kernels in \(n+1\) variables, and then presents finite graded kernels, images and extensions on one neighbourhood. Thus every fixed degree piece is ordinary coherent. We use that full uniform theorem, rather than stalk Noetherianity as a substitute for neighbourhood coherence.
+
+A finite strict induced segment can be constructed without projective twists or free ordinary coefficients. On a neighbourhood of the compact set \(S\cap f^{-1}(y)\), finitely many local good presentations give a common lower filtration bound and finitely many degrees \(a\) generating the symbol module. Proper closedness shrinks the target so these assertions hold on the entire inverse image. For each such degree take the whole coherent sheaf \(F_aM\), with its actual map to \(M\). Give \(I(F_aM)\) generator degree \(a\). The direct sum of these finitely many maps is strict and surjective: its symbol map is onto, and lifting the leading symbol and lowering degree terminates at the common lower bound.
+
+Its kernel has the induced global good filtration by AP.20. Repeat for that kernel a specified finite number of times, shrinking the target finitely many times. With shifts defined by \(V(-a)_p=V_{p-a}\), this gives
+\[
+\begin{gathered}
+0\to N\to A_s\to\cdots\\
+\to A_0\to M\to0,\\
+A_i=\bigoplus_a I(F_{i,a}),\\
+\text{with generator degree }a,\\
+\mathscr A_i=\\
+\bigoplus_a F_{i,a}\otimes_{\mathcal O_X}\mathscr R_X(-a).
+\end{gathered}
+\tag{GP.14}
+\]
+Every \(F_{i,a}\) is ordinary coherent and supported in \(S\). Every differential is strict for the indicated filtrations. Therefore Rees formation and symbol formation both give exact sequences. The kernel \(N\) has its induced good filtration as well. No infinite set of target shrinkings has been intersected.
+
+#### GP.E. Actual Rees transfer and its bounds
+
+Define the forward Rees transfer by
+\[
+\begin{gathered}
+\mathscr T=\\
+\mathcal O_X[h]\otimes_{f^{-1}\mathcal O_Y[h]}f^{-1}\mathscr R_Y.
+\end{gathered}
+\tag{GP.15}
+\]
+For a source vector field \(\xi\), its left action in target coordinates is
+\[
+\begin{gathered}
+\vartheta_\xi(a\otimes Q)\\
+=h\xi(a)\otimes Q\\
+{}+\sum_j a\,\xi(f_j)\otimes\vartheta_{y_j}Q.
+\end{gathered}
+\tag{GP.16}
+\]
+Balancing and the bracket identities follow by the chain rule, exactly as for the ordinary transfer, now with \([\vartheta_\xi,a]=h\xi(a)\) and \([\vartheta_\xi,\vartheta_\zeta]=h\vartheta_{[\xi,\zeta]}\). The intrinsic expression uses \(df\), so these formulas glue across coordinates. They commute with the right target Rees action. Target PBW makes \(\mathscr T\) free over \(\mathcal O_X[h]\).
+
+Put \(A_X=\mathcal O_X[h]\). The absolute Rees Spencer resolution has length \(n\), with cochain degree \(-r\) term
+\[
+\begin{gathered}
+E_r=A_X\otimes_{\mathcal O_X}\bigwedge^rT_X,\\
+\mathscr R_X\otimes_{A_X}E_r(-r)\otimes_{A_X}\mathscr T.
+\end{gathered}
+\tag{GP.17}
+\]
+Its action-difference differential and \(h\)-multiplied bracket terms are the exact signed formulas proved in §5.12. The relations just checked make that proof apply to GP.16 for this arbitrary map. Every term is left Rees-flat, because its ordinary-polynomial coefficient is flat. The leading first-factor operator-order differential is the Koszul differential in \(n\) independent source variables. Its exactness and terminating order reduction prove the augmented resolution exact. The proof needs no vertical-coordinate splitting of \(f\).
+
+Set
+\[
+\mathcal C=Rf_*\bigl(\mathscr M\otimes^L_{\mathscr R_X}\mathscr T\bigr).
+\tag{GP.18}
+\]
+The Spencer bound and the uniform real-manifold image bound give amplitude \([-n,2n]\) for any Rees module supported in \(S\). These are bounds in the graded category: evaluation at an internal degree preserves injectives because its left adjoint is the free graded Rees module in that degree tensored over \(\mathbf C\), which is exact. Forgetting the grading is also compatible with proper image, by the compact-fibre coproduct and c-soft acyclicity proof already used in §5.12 and AP.C. Thus every homogeneous target action and every ordinary specialization is retained.
+
+For a nonflat ordinary coefficient \(F\), an ordinary-flat resolution of \(F\), induced to \(\mathscr R_X\), is a right Rees-flat resolution. Both \(\mathscr R_X\) and \(\mathscr T\) are left ordinary-flat. The cancellation proof of AP.B therefore gives
+\[
+\begin{gathered}
+(F\otimes_{\mathcal O_X}\mathscr R_X)
+\otimes^L_{\mathscr R_X}\mathscr T\\
+\simeq F\otimes_{\mathcal O_X}\mathscr T.
+\end{gathered}
+\tag{GP.19}
+\]
+Finite-order coefficient projection and the proper filtered-union proof of AP.C identify its image with \(Rf_*F\otimes_{\mathcal O_Y}\mathscr R_Y\). In each internal degree there are only finitely many target PBW monomials. The comparison commutes with all right actions, including the finite product rule
+\[
+\begin{gathered}
+\vartheta^\alpha b\\
+=\sum_{\beta\le\alpha}\binom\alpha\beta
+h^{|\beta|}(\partial^\beta b)\vartheta^{\alpha-\beta}.
+\end{gathered}
+\tag{GP.20}
+\]
+Thus the image of each summand in GP.14 has coherent graded Rees cohomology, by GI and finite ordinary presentation of \(R^qf_*F_{i,a}\).
+
+Choose
+\[
+s=3n+2m+2.
+\tag{GP.21}
+\]
+Let \(A=[A_s\to\cdots\to A_0]\), in degrees \([-s,0]\). The strict Rees augmentation has cone \(\mathscr N[s+1]\). Its image lies in
+\[
+\begin{gathered}
+{}[\ell_R,u_R],\\
+\ell_R=-n-s-1\\
+=-4n-2m-3,\\
+u_R=2n-s-1\\
+=-n-2m-3.
+\end{gathered}
+\tag{GP.22}
+\]
+Both adjacent cone degrees vanish in every possible output degree of \(\mathcal C\). The finite segment therefore computes those degrees. Finitely many cones of its induced-term images, and the coherent graded category, prove that every \(H^b\mathcal C\) is a coherent graded Rees module. This does not presume strictness of an image filtration.
+
+#### GP.F. Both central specializations
+
+Write \(\mathbf C_c=\mathbf C[h]/(h-c)\) for evaluation at a complex number \(c\). The input \(\mathscr M\subset M[h,h^{-1}]\) is torsion-free over \(\mathbf C[h]\), hence flat, by the complete PID/torsion-free argument of §5.12. Tensor GP.17 with it. Locally the resulting terms are direct sums of copies of \(\mathscr M\) with finite tangent factors, so they remain flat over \(\mathbf C[h]\). This bounded complex computes derived specialization by its ordinary specialization. At \(h=1\) it is the actual ordinary Spencer transfer complex. At zero it is the symbol Koszul transfer complex of GP.10. Derived image commutes with either specialization, because the two-term free resolution of \(\mathbf C[h]/(h-c)\) expresses it as a finite cone of \(h-c\). Consequently
+\[
+\begin{gathered}
+\mathcal C\otimes^L_{\mathbf C[h]}\mathbf C_1\simeq f_+M,\\
+\mathcal C_0:=\mathcal C\otimes^L_{\mathbf C[h]}\mathbf C_0\\
+\simeq Rf_*\bigl(\operatorname{gr}_FM\otimes^L_{S_X}B_f\bigr).
+\end{gathered}
+\tag{GP.23}
+\]
+The first comparison retains the full right operator action, and the second the full target symbol action. At one the internal grading is forgotten; at zero it is retained. The sufficient interval for \(\mathcal C_0\) is \([-n-1,2n]\).
+
+#### GP.G. The actual analytic cotangent comparison
+
+There is a natural coefficient comparison
+\[
+\mathfrak a_Y(\mathcal C_0)\longrightarrow\mathcal K.
+\tag{GP.24}
+\]
+It is obtained by pulling a polynomial-coefficient image section to the cotangent parameter space and multiplying by its analytic coefficient, then applying the image adjunction. The same map on resolutions gives the derived comparison. Exact analytic extension, the graph Koszul model of GP.C and tensor reassociation identify its source coefficient complex with the analytic cotangent pullback on the right. This construction is natural in the source symbol complex.
+
+For each induced symbol term in GP.14, derived symbol transfer is ordinary transfer, since \(B_f\) is ordinary-flat and the same induced ordinary-flat resolution applies. Analytically, its coefficient is simply \(u^*F_{i,a}\): the projection \(u\) is flat by GP.A. On a coordinate open in \(Y\), the cotangent bundle is a product with a polydisc locally in its fibre coordinates. The parameter theorem GP.5 gives precisely
+\[
+\begin{gathered}
+\mathfrak a_Y(Rf_*F_{i,a}\otimes S_Y)\\
+\xrightarrow{\sim}Rv_*u^*F_{i,a}.
+\end{gathered}
+\tag{GP.25}
+\]
+This is the map GP.24 on that term, including its internal shift. Naturality makes it commute with the symbol differentials of the finite segment. Those differentials may contain fibre variables and need not arise from maps between the ordinary coefficient sheaves; it is the functorial comparison, rather than an independently chosen contraction, that gives commutation. Finite totalization proves GP.24 for the finite segment.
+
+The finite segment computes the entire comparison. On the Rees side, specialize the image cone GP.22 at zero. Its upper bound stays \(2n-s-1\), and its lower bound can decrease by one. Analytic extension is exact. On the cotangent side the strict symbol cone is \(\operatorname{gr}N[s+1]\). GP.11 and the real dimension of \(W\) put its image in
+\[
+\begin{gathered}
+{}[\ell_R,u_A],\\
+u_A=2(n+m)-s-1\\
+=-n-3.
+\end{gathered}
+\tag{GP.26}
+\]
+The Rees-side upper bound is no larger. Thus both cone degrees \(q-1,q\) vanish for every \(q\ge-n-1\). The finite comparison therefore gives an isomorphism in that entire range. Below it both full objects already vanish: the left has the interval following GP.23, and the right has GP.12. We have proved the actual derived isomorphism
+\[
+\mathfrak a_Y(\mathcal C_0)\xrightarrow{\sim}Rv_*L\rho^*G.
+\tag{GP.27}
+\]
+No unrestricted analytic base-change theorem or infinite-width resolution is hidden in this comparison.
+
+#### GP.H. Torsion and the actual output filtration
+
+Put \(H_b=\mathcal H^b\mathcal C\). It is coherent graded Rees by GP.E. Multiplication by \(h-1\) is injective on any graded module considered as an ungraded module: the lowest nonzero homogeneous component of a finite sum contributes its negative and cannot cancel. The two-term specialization sequence in GP.23 therefore gives
+\[
+\begin{gathered}
+\mathcal H^b(f_+M)\\
+=H_b/(h-1)H_b.
+\end{gathered}
+\tag{GP.28}
+\]
+Keep the \(h\)-power torsion until this point. Let \(T_b\) be the union of the kernels of powers of \(h\) on \(H_b\). It is coherent and locally killed by one power. Indeed at a stalk the graded ascending-chain condition gives a power \(h^N\) killing all torsion. The coherent quotient by \(\ker h^N\) has zero \(h\)-kernel at that stalk. Its coherent \(h\)-kernel therefore vanishes on one smaller neighbourhood, so the quotient is \(h\)-torsion-free there. This proves the same bound \(N\) on that neighbourhood, without intersecting infinitely many opens.
+
+Write \(\overline H_b=H_b/T_b\). Torsion specializes to zero at one, since \(h\) is invertible there, so its specialization is still GP.28. Every homogeneous piece of \(\overline H_b\) embeds in that specialization. If a nonzero homogeneous element were \((h-1)a\), the lowest degree of \(a\) would be the degree of that element; injectivity of \(h\) then makes the highest component of \(ha\) a nonzero higher-degree term, a contradiction. Let \(F'_p\) be the image of degree \(p\). Multiplication by \(h\) makes these pieces increasing. Raising finitely many homogeneous representatives to their largest degree proves exhaustion. Coherence of every piece and a local lower bound follow from a finite graded presentation. Finite homogeneous Rees generation proves that this is an actual good order filtration of the actual output, with
+\[
+\begin{gathered}
+\mathscr R_{F'}\mathcal H^b(f_+M)\\
+=\overline H_b,\\
+\operatorname{gr}_{F'}\mathcal H^b(f_+M)\\
+=\overline H_b/h\overline H_b.
+\end{gathered}
+\tag{GP.29}
+\]
+The zero-specialization sequence gives an injection of \(H_b/hH_b\) into \(\mathcal H^b\mathcal C_0\); its cokernel is the \(h\)-kernel of \(H_{b+1}\), with its internal shift. The map onto \(\overline H_b/h\overline H_b\) is surjective. Exact analytic extension and GP.27 therefore make the actual output symbol sheaf a quotient of a submodule of \(\mathcal H^b\mathcal K\). Its support is contained in GP.12, proving GP.2. No equality with the entire cotangent candidate, or torsion-free image before taking this quotient, has been asserted.
+
+These constructions are local on the target but apply to every target point. Characteristic support is independent of the chosen local good filtration by the finite Rees-lattice proof in the earlier characteristic-variety lesson; that proof uses finite good generation and Noetherian symbols, which hold at the analytic stalks here. Thus the containments glue to the intrinsic statement GP.2 on all of \(T^*Y\).
+
+#### GP.I. Singular-inclusive isotropic transport
+
+Let \(\Lambda\subset T^*X\) be a closed reduced conic analytic Lagrangian set whose base support is contained in \(S\). Put
+\[
+A=\rho^{-1}\Lambda,\qquad B=v(A),
+\tag{GP.30}
+\]
+with reduced analytic structures. The set \(A\) is closed analytic and proper over \(T^*Y\), being closed in \(u^{-1}S\). Its coherent structure sheaf has coherent direct image by GI.K. The support of that image is exactly \(B\): outside the closed image it is zero, while at an image point the unit cannot have zero direct-image germ, since its restriction would then vanish on an inverse image containing a point of the nonempty fibre. Coherent support is analytic by a finite presentation. Consequently \(B\) is closed analytic; scaling of \(\eta\) makes it conic.
+
+The exact singular restriction lemma Lemma5.11.1 says that an ambient holomorphic form vanishing on the regular locus of a reduced analytic set also vanishes on the regular locus of every locally closed analytic subset, even one wholly inside its singular locus. Its proof uses the finite ramified transverse family, bounded holomorphic removal and dimension drop; it assumes no stratification or resolution. It has the following map version. If \(q: T\to\Lambda\) is holomorphic with \(T\) smooth, then \(q^*\theta_X=0\), where \(\theta_X\) is the tautological one-form. Indeed conicity and Lagrangianity give \(\theta_X=\iota_Ed\theta_X=0\) on \(\Lambda_{\rm reg}\). On each maximum-rank open of \(q\), the constant-rank theorem identifies its local image with a smooth locally closed analytic subset of \(\Lambda\). Lemma5.11.1 makes the form zero there. The pullback is holomorphic and vanishes on these dense maximum-rank opens in every connected source chart, hence vanishes everywhere. The rank-zero case is automatic for a one-form.
+
+The intrinsic cotangent identity for the general correspondence is
+\[
+\rho^*\theta_X=v^*\theta_Y.
+\tag{GP.31}
+\]
+At \((x,\eta)\), both sides evaluate a tangent vector as \(\eta(df_x(du(\cdot)))\). This proves the identity for all tangent directions and fixes its sign. Apply the map version to \(\rho\) on every smooth locally closed analytic piece of \(A\). It follows that \(v^*\theta_Y\) vanishes on every such piece, including pieces mapped wholly into \(\Lambda_{\rm sing}\).
+
+The complete countable smooth/rank-cover argument of §5.11 applies to \(v: A\to B\). Its hypotheses are exactly a second-countable analytic source, an analytic image and the form vanishing just proved; its rank argument has no projectivity hypothesis. To state its essential steps: local finite parametrization gives dense smooth opens with lower-dimensional analytic complements. Recursing through dimension drop and a countable chart cover gives countably many smooth locally closed pieces. Apply the same recursion to maximum-rank minors so the map has constant rank on each piece. If all ranks over a smooth target component of dimension \(r\) were below \(r\), compact exhaustions of the rank charts would cover a target ball by countably many closed nowhere-dense images. The nested-ball proof of Baire in that section rules this out. Some piece therefore has full rank, and the differential surjects onto a target open. Form vanishing then forces \(\theta_Y=0\) there. If it were nonzero anywhere in the smooth target patch, repeat over the open where a coefficient is nonzero; no full-rank piece could exist there, giving the same contradiction. Thus it vanishes throughout every smooth component patch.
+
+Taking its exterior derivative makes every such component generically isotropic. In the \(2m\)-dimensional symplectic tangent space, an isotropic subspace has dimension at most \(m\), because it is contained in its symplectic orthogonal and their dimensions sum to \(2m\). Therefore
+\[
+\dim v(\rho^{-1}\Lambda)\le m.
+\tag{GP.32}
+\]
+Every singular source piece was included in the form and rank arguments. Dimension-zero and empty sets cause no exception.
+
+#### GP.J. Holonomicity, complexes and density conversion
+
+The earlier analytic Gabber and componentwise Bernstein argument in §5.12 proves that the reduced characteristic set of a holonomic analytic module is pure conic Lagrangian. Its proof applies the full Noetherian rational-symbol Gabber theorem to analytic PBW stalks, then uses exact homogeneous analytic extension, radical detection and the analytic Nullstellensatz. No map theorem enters that source statement. The same componentwise Bernstein bound applies to any nonzero coherent target module.
+
+For holonomic \(M\), use \(\Lambda=\operatorname{Ch}M\) in GP.32. Formula GP.2 bounds every output characteristic dimension by \(m\). AP supplies coherence and global boundedness; the analytic componentwise Bernstein inequality gives the opposite dimension inequality for any nonzero component. Hence every output cohomology module is holonomic, with the zero module included.
+
+For a bounded complex, its finite cohomology truncation triangles attach its cohomology modules in their original degrees. Their generator hypotheses hold on a common smaller target neighbourhood by a finite intersection. The image triangles and the exact-sequence characteristic-support theorem put each output characteristic support in the union of the corresponding module images. AP gives the uniform amplitude on the whole target. This proves bounded holonomic image and characteristic containment for every such bounded complex, without assuming a filtration on an arbitrary complex representative.
+
+The density equivalences of AP.G convert right input and output to the programme's left-module direct image. Tensoring by the density line is exact and changes the local action only by transpose and its order-zero divergence term. It leaves reduced characteristic support unchanged. Thus GP.2 and holonomicity hold in those conventions, with the same degree bounds. GG.P supplies every required generator for regular holonomic inputs; this conclusion establishes holonomicity of their full arbitrary proper-support analytic images, while preservation of regularity is a further mathematical statement.
+
+#### GP.K. A critical finite map
+
+Let \(f:\mathbf C_x\to\mathbf C_y\) be \(y=x^e\), with \(e\ge1\). It is proper: the inverse image of a compact set is closed and bounded by \(|x|^e=|y|\), hence compact by the finite-dimensional compactness proof in CX.A. A fibre has at most \(e\) points, since each distinct root removes a linear factor from its degree-e defining polynomial. Take the zero-section source Lagrangian. The correspondence gives
+\[
+\begin{gathered}
+y=x^e,\qquad \xi=e x^{e-1}\eta,\\
+A=\{(x,\eta):e x^{e-1}\eta=0\}.
+\end{gathered}
+\tag{GP.33}
+\]
+For \(e=1\), its image is exactly the zero section. For \(e>1\), it is the union of the zero section and the full cotangent fibre over the critical value:
+\[
+\begin{gathered}
+B=\{\eta=0\}\cup\{y=0\}\\
+{}\subset T^*\mathbf C_y.
+\end{gathered}
+\tag{GP.34}
+\]
+Indeed \(x\ne0\) forces \(\eta=0\), and every complex \(y\) has an \(e\)-th root: if \(y=r e^{i\theta}\ne0\), take \(x=r^{1/e}e^{i\theta/e}\), and take zero for the root of zero. At \(x=0\) every \(\eta\) occurs. Both components have complex dimension one. The actual one-form identity is \(\xi\,dx=\eta\,dy=e x^{e-1}\eta\,dx\), which is zero on both source components, including the critical one. The inequality predicts a possible critical-value component; it does not assert that every candidate component occurs in every operator image.
+
+**Exercise.** For \(n=m=1\), compute the two upper bounds on the finite comparison cones in GP.22 and GP.26, and check the lowest possible comparison degree.
+
+**Solution.** Formula GP.21 gives \(s=7\). The Rees image cone has interval \([-9,-6]\); zero specialization may lower its first endpoint to \(-10\) and leaves its upper endpoint \(-6\). The analytic cone has interval \([-9,-4]\). The lowest comparison degree is \(q=-2\), whose two cone degrees are \(-3,-2\). Both lie strictly above both upper endpoints. This proves the claimed separation at the endpoint; all larger degrees are separated as well. These sufficient bounds are not a claim that any cone cohomology in those intervals is nonzero.
+
+![Derived Rees specializations, the actual symbol subquotient and the cotangent image of a critical map](assets/general-analytic-characteristic.png)
+
+The upper left diagram records GP.23 and GP.27. Its dashed connections indicate the actual filtration and the subquotient relation GP.29; they do not assert a map from the whole cotangent candidate onto the output symbol. The right panel is the exact real coordinate section of GP.34 for \(e=2\), with \(\operatorname{Im}y=\operatorname{Im}\eta=0\). The zero section and critical cotangent fibre are distinct complex one-dimensional components; their displayed real axes are a section of those components. Drawing source, SVG and exact map and interval data specify the diagram.
+
+The analytic proper characteristic theorem is also stated in [Schapira's freely accessible D-module notes, Theorem2.5.4](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/lectnotes/Dmod.pdf). GP.A–GP.K give the parameter comparison, actual finite Rees and cotangent comparison, torsion quotient and singular-inclusive isotropic argument used here. Every ordinary coherent-image and functional-analytic input is proved in the exact earlier programme lessons cited above.
+
+
+### 5.102. Analytic de Rham transport with nonflat coefficients
+
+Let \(f: X\to Y\) be a holomorphic map of Hausdorff second-countable complex manifolds of fixed dimensions \(n\) and \(m\). Use right operator modules first. Put
+\[
+\begin{gathered}
+T_f=\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}\mathcal D_Y,\\
+f_+M=Rf_*(M\otimes^L_{\mathcal D_X}T_f),\\
+\operatorname{DR}^{\rm r}_X(M)=M\otimes^L_{\mathcal D_X}\mathcal O_X.
+\end{gathered}
+\tag{DRP.1}
+\]
+The left source action on \(T_f\) is the actual chain-rule action of AP.B. There is a canonical natural isomorphism
+\[
+\begin{gathered}
+\eta_f:\operatorname{DR}^{\rm r}_Y(f_+M)\\
+\xrightarrow{\sim}Rf_*\operatorname{DR}^{\rm r}_X(M)
+\end{gathered}
+\tag{DRP.2}
+\]
+for every bounded complex of right operator modules. Coherence, regularity and flatness over the source or target structure sheaf are not hypotheses for this comparison. When the support is proper and the cohomology modules have the near-fibre generator of AP.E, AP.A–AP.G supplies bounded coherent operator images. GP.A–GP.J additionally supplies characteristic containment and holonomicity for holonomic inputs. The de Rham comparison itself will be proved without using either regularity of the output or an analytic Riemann–Hilbert equivalence.
+
+#### DRP.A. The finite target Spencer complex
+
+On a target coordinate open, with commuting vector fields \(e_j=\partial_{y_j}\), write \(e_J=e_{j_1}\wedge\cdots\wedge e_{j_r}\). Resolve the left module \(\mathcal O_Y\) by
+\[
+\begin{gathered}
+P_Y^{-r}=\\
+\mathcal D_Y\otimes_{\mathcal O_Y}\bigwedge^rT_Y,\\
+0\le r\le m,\\
+b_i=(-1)^{i-1}Q\partial_{y_{j_i}},\\
+d(Q\otimes e_J)\\
+=\sum_{i=1}^r b_i\otimes e_{J\setminus j_i}.
+\end{gathered}
+\tag{DRP.3}
+\]
+The augmentation is \(Q\mapsto Q(1)\). Each term is finite free as a left \(\mathcal D_Y\)-module. In arbitrary vector fields the bracket terms have exactly the signs of the earlier absolute Spencer proof, AP.D; the intrinsic formula makes this an augmented complex independent of coordinates.
+
+Here is a split exactness argument over the ordinary structure sheaf, needed when the map is nonflat. Left-coefficient PBW identifies the underlying complex in DRP.3 with the polynomial Koszul complex
+\[
+\begin{gathered}
+\mathcal O_Y[t_1,\ldots,t_m]\otimes\bigwedge^r\mathbf C^m,\\
+d=\sum_j t_j\iota_j.
+\end{gathered}
+\tag{DRP.4}
+\]
+On polynomial degree \(k\) and exterior degree \(r\), define
+\[
+\begin{gathered}
+H=\frac{1}{k+r}\sum_j\partial_{t_j}\varepsilon_j,\\
+k+r>0,
+\end{gathered}
+\tag{DRP.5}
+\]
+where \(\varepsilon_j\) is exterior multiplication by \(e_j\), and \(\iota_j\) contracts its dual. Set \(H=0\) on the constant term of exterior degree zero. Contraction and exterior multiplication satisfy
+\[
+\iota_i\varepsilon_j+\varepsilon_j\iota_i=\delta_{ij}.
+\tag{DRP.6}
+\]
+Expanding the two compositions, the cross terms cancel and their sum before division is
+\[
+\sum_jt_j\partial_{t_j}+\sum_j\varepsilon_j\iota_j.
+\tag{DRP.7}
+\]
+It acts by \(k+r\). Thus \(dH+Hd=1-ip\), where \(p\) takes the constant term and \(i\) includes it. These operators are \(\mathcal O_Y\)-linear. They use finite polynomials only. In particular this resolution remains exact after tensoring with any ordinary coefficient module. The contraction is used to establish ordinary split exactness; no operator-linear contraction is needed.
+
+#### DRP.B. Cancellation of the target Spencer factor
+
+The target resolution is bounded and left operator-flat. It therefore computes the actual derived tensor
+\[
+\begin{gathered}
+T_f\otimes^L_{f^{-1}\mathcal D_Y}f^{-1}\mathcal O_Y\\
+=T_f\otimes_{f^{-1}\mathcal D_Y}f^{-1}P_Y.
+\end{gathered}
+\tag{DRP.8}
+\]
+In source and target coordinates its underlying ordinary complex is DRP.4 with coefficients in \(\mathcal O_X\). Indeed the finite term in degree \(-r\) is
+\[
+\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}P_Y^{-r},
+\tag{DRP.9}
+\]
+and its differential is right multiplication by the constant target derivatives. The split contraction DRP.5 tensors to these terms. This proves exactness in negative degrees for an arbitrary holomorphic \(f\), including its critical and nonflat points.
+
+The augmentation of DRP.8 is the evaluation map
+\[
+\begin{gathered}
+(a\otimes Q)\otimes g\\
+\longmapsto a\,f^*(Qg),\\
+T_f\otimes^L_{f^{-1}\mathcal D_Y}f^{-1}\mathcal O_Y\\
+\xrightarrow{\sim}\mathcal O_X.
+\end{gathered}
+\tag{DRP.10}
+\]
+Balancing over the target operator ring is precisely composition of the operators applied to \(g\). The map is left \(\mathcal D_X\)-linear: apply the source chain-rule action on \(T_f\), and the two terms are the derivative of \(a\) and the chain-rule derivative of \(f^*(Qg)\). Their sum is the usual derivative of the product. Holomorphic functions and vector fields generate the source ring, so this verifies its entire action. The evaluation map is intrinsic. The local exactness just established proves the displayed isomorphism on the whole source, with the left source action retained. It has no dimension shift.
+
+#### DRP.C. A finite perfect projection comparison
+
+Let \(A\) be a sheaf of complex algebras on \(Y\), let \(L\) be a bounded complex of right \(f^{-1}A\)-modules on \(X\), and let \(P\) be a left \(A\)-complex locally represented by a bounded complex of finite free modules. There is a natural map
+\[
+\begin{gathered}
+(Rf_*L)\otimes_A^LP\\
+\longrightarrow Rf_*V,\\
+V=L\otimes^L_{f^{-1}A}f^{-1}P.
+\end{gathered}
+\tag{DRP.11}
+\]
+It is an isomorphism. Its adjoint is tensor reassociation followed by the counit \(f^{-1}Rf_*L\to L\). The inverse-image functor on complex sheaves is exact, so this defines the derived map by flat resolutions and the pushforward adjunction.
+
+To prove the assertion, work on an open where the finite free complex for \(P\) is fixed. For a single term \(A^b\) in any degree, the map is the identity identification with \(b\) copies of \(Rf_*L\), with that degree shift. A finite direct sum is also a finite product; pushforward and its derived functor preserve these products. Filter the bounded free complex by its finite degree truncations. The comparison is natural in their differentials and respects their triangles. The cone of each comparison is zero by induction, because in a morphism of triangles two isomorphisms imply the third by the two long exact cohomology sequences. This proves DRP.11. The local maps are restrictions of the same counit construction and glue. The proof works for noncommutative rings and needs no ordinary flatness of \(f\), no properness and no commutation with infinite sums.
+
+When \(A=\mathcal D_Y\) and \(P=\mathcal O_Y\), DRP.A provides exactly this finite perfect presentation. All derived pushforwards can be computed in sheaves of complex vector spaces while retaining their operator action. The forgetful functor from right \(f^{-1}A\)-modules to complex sheaves preserves injectives: its left adjoint is the free right module obtained by tensoring with \(f^{-1}A\) over \(\mathbf C\), which is exact on stalks. Thus its injective resolutions are also acyclic for the underlying pushforward. This justifies the comparison in the same derived category on both sides.
+
+#### DRP.D. The actual analytic comparison
+
+Apply DRP.11 to
+\[
+\begin{gathered}
+L=M\otimes^L_{\mathcal D_X}T_f,\\
+P=\mathcal O_Y.
+\end{gathered}
+\tag{DRP.12}
+\]
+Derived tensor reassociation and DRP.10 give
+\[
+\begin{gathered}
+\operatorname{DR}^{\rm r}_Y(f_+M)\\
+\simeq Rf_*V\\
+\simeq Rf_*\operatorname{DR}^{\rm r}_X(M).
+\end{gathered}
+\tag{DRP.13}
+\]
+These are the maps in DRP.2. Reassociation may be checked without assuming a transfer flatness that fails for a general map. Resolve \(M\) by a right operator-flat complex and use the bounded target free resolution DRP.3. The latter computes tensoring on the target side. Its tensor with \(T_f\) has the quasi-isomorphic augmentation DRP.10. Tensoring that augmentation with the flat source resolution preserves it. This is the stated reassociation and cancellation, including all differentials. The same calculation is available with bounded-above flat resolutions; only the finite target Spencer direction is totalized in the comparison.
+
+The actual source transfer Spencer complex has length \(n\), by AP.D. The bound for ordinary direct image on arbitrary complex sheaves is \(2n\), by the complete ordinary-cohomology proof, B1–B3. That proof first lifts ordinary sections through a quotient with c-soft kernel by compatible compact-exhaustion corrections. It then applies the finite c-soft resolution of length \(2n\) on every open subset of \(X\). Each stalk of \(R^qf_*A\) is the filtered colimit of \(H^q(f^{-1}V,A)\), which vanishes for \(q>2n\). Thus this is an ordinary-image bound even without proper support. These bounds put \(L\) and \(f_+M\) in bounded derived categories for bounded \(M\), without coherence or properness assumptions. They also apply to the finite complexes just used. Hence no convergence of an unbounded totalization is being assumed in DRP.13. The maps commute with morphisms of complexes and target open restriction because their counit, action and augmentation do. Identity maps give the identity derived coefficient comparison.
+
+#### DRP.E. Density conversion and the normalization sign
+
+For a left complex \(N\) on \(X\), put \(M=\omega_X\otimes_{\mathcal O_X}N\) with its right action. Its left-module direct image is the density conversion of \(f_+M\), as in AP.G. Write
+\[
+\begin{gathered}
+\operatorname{DR}_X(N)\\
+= (\Omega_X^\bullet\otimes_{\mathcal O_X}N)[n].
+\end{gathered}
+\tag{DRP.14}
+\]
+Forms precede coefficient degrees in the totalization. Its unshifted differential is the connection differential on forms and \((-1)^k d_N\) on a form of degree \(k\); the shift multiplies the total differential by \((-1)^n\).
+
+Here is an explicit signed identification with \(\operatorname{DR}^{\rm r}_X(M)\). In a source coordinate chart put \(\omega=dx_1\wedge\cdots\wedge dx_n\). For \(u\in N^a\) and \(w=v_1\wedge\cdots\wedge v_r\), write \(\iota_w=\iota_{v_r}\cdots\iota_{v_1}\). Send
+\[
+\begin{gathered}
+(\omega\otimes u)\otimes w\\
+\longmapsto (-1)^\sigma(\iota_w\omega)\otimes u,\\
+\sigma=ar+nr\\
+{}+r(r+1)/2.
+\end{gathered}
+\tag{DRP.15}
+\]
+Both sides have degree \(a-r\). Determinant contraction makes the map independent of the coordinate frame; its scalar sign depends only on the displayed degrees.
+
+We check the differentials in a constant coordinate frame, which suffices locally. The right action on \(\omega\otimes u\) is \(-\omega\otimes\nabla_vu\). Put \(u_i=-\nabla_{v_i}u\) and \(\epsilon_i=(-1)^{i-1}\), and let \(w_i\) omit \(v_i\) from \(w\), in its original order. The source tensor Spencer differential in exterior degree \(r\) therefore has the coefficients
+\[
+(-1)^a\sum_{i=1}^r\epsilon_i u_i\otimes w_i.
+\tag{DRP.16}
+\]
+The exterior-contraction identity is
+\[
+\begin{gathered}
+\alpha\wedge\iota_w\omega=(-1)^{r-1}\\
+{}\cdot\sum_{i=1}^r(-1)^{i-1}\alpha(v_i)\iota_{w_i}\omega.
+\end{gathered}
+\tag{DRP.17}
+\]
+It follows by moving exterior multiplication through the \(r\) contractions and using that \(\alpha\wedge\omega=0\). If \(c_r=(-1)^{nr+r(r+1)/2}\), then
+\[
+c_r=(-1)^{n+r}c_{r-1}.
+\tag{DRP.18}
+\]
+The connection part of the shifted forms differential applied to DRP.15 has coefficient
+\[
+\begin{gathered}
+(-1)^{ar+n+r-1}c_r\\
+=-(-1)^{ar}c_{r-1}.
+\end{gathered}
+\tag{DRP.19}
+\]
+This equals DRP.16 after applying DRP.15 in exterior degree \(r-1\). For the coefficient differential, its forms degree is \(n-r\), so the shifted totalization gives sign \((-1)^r\). The two coefficient-degree signs agree because
+\[
+\begin{gathered}
+(-1)^{(a+1)r}\\
+=(-1)^r(-1)^{ar}.
+\end{gathered}
+\tag{DRP.20}
+\]
+This proves the full complex identification, including the shifts, for arbitrary bounded left coefficient complexes. The intrinsic Spencer formula and determinant contraction glue the calculation. It is the analytic version of the normalization in de Rham Proposition1.1.
+
+Converting DRP.2 on both sides gives the normalized left-module comparison
+\[
+\begin{gathered}
+\operatorname{DR}_Y(f_+N)\\
+\xrightarrow{\sim}Rf_*\operatorname{DR}_X(N).
+\end{gathered}
+\tag{DRP.21}
+\]
+There is no additional relative-dimension shift in DRP.21. Source and target dimensions already enter their density and de Rham normalizations.
+
+#### DRP.F. Proper support and every bounded attaching map
+
+Suppose the cohomology of \(N\) is coherent, supported in one closed set proper over \(Y\), and has the generator hypothesis in AP.E. Then its operator image in DRP.21 is bounded coherent by AP. Its characteristic estimate and holonomicity, when the input is holonomic, are GP.2 and GP.J. If the input is regular holonomic, GG.P supplies the generator premise. These are the full proper-support scopes of those earlier proofs.
+
+The comparison DRP.21 is defined on the original complex through its actual derived tensor and pushforward. It therefore retains every attaching morphism and every map between complexes. Applying cohomology truncation triangles is another way to verify its isomorphism property on bounded inputs: it does not replace the constructed map by separately chosen isomorphisms on the cohomology modules. Preservation of regularity, constructibility for arbitrary holonomic analytic modules, full analytic Riemann–Hilbert and compatibility with its duality evaluations require their respective proofs.
+
+#### DRP.G. Compact complex manifolds and finite local systems
+
+Let \(X\) be any compact complex manifold of dimension \(n\), and let \(L\) be a finite-rank complex local system. The ordinary bundle
+\[
+E=\mathcal O_X\otimes_{\mathbf C_X}L
+\tag{DRP.22}
+\]
+has constant transition matrices in locally constant frames. Differentiating only its holomorphic coefficient defines a flat connection, and its horizontal sections are precisely \(L\). It is coherent and locally free. The right module \(\omega_X\otimes E\) is its own coherent ordinary generator, so AP applies to the map \(a:X\to\mathrm{pt}\). The holomorphic Poincaré contraction of de Rham Proposition1.2 identifies \(\operatorname{DR}_X(E)=L[n]\). DRP.21 gives
+\[
+\begin{gathered}
+a_+E\simeq R\Gamma(X,L)[n],\\
+H^q(a_+E)\\
+=H^{q+n}(X,L).
+\end{gathered}
+\tag{DRP.23}
+\]
+The coherent target ring is \(\mathcal D_{\mathrm{pt}}=\mathbf C\), so AP proves that every one of these groups is finite-dimensional. The fixed real-manifold bound also gives \(H^j(X,L)=0\) for \(j>2n\), and negative sheaf cohomology is zero. Thus the normalized complex in DRP.23 has degrees only in \([-n,n]\). This consequence includes compact nonprojective complex manifolds; its argument uses the proved analytic coherent-image theorem rather than an algebraic model.
+
+**Exercise.** Compute DRP.15 for a module in degree zero when \(n=1\), and for the exterior degrees \(0,1,2\) when \(n=2\). Check the source tensor differential against the shifted de Rham differential.
+
+**Solution.** For \(n=1\), the signs in degrees \(r=0,1\) are \(+,+\). The right action is \(-\nabla_{\partial_x}\), and the shift \([1]\) also changes the forms differential to its negative. For \(n=2\), the signs are \(+,-,-\). In exterior degree two the element \((dx_1\wedge dx_2\otimes u)\otimes(\partial_1\wedge\partial_2)\) maps to \(-u\). Its boundary maps to \(-dx_1\otimes\nabla_1u-dx_2\otimes\nabla_2u\), which is the de Rham differential of \(-u\). In exterior degree one, \(\partial_1\) contracts the volume form to \(dx_2\), whereas \(\partial_2\) contracts it to \(-dx_1\); the sign in DRP.15 gives the same top-form boundary. The coefficient-degree sign in DRP.20 supplies the calculation for complexes in any original degree.
+
+![Finite target Spencer cancellation, the actual de Rham comparison and its density signs](assets/analytic-de-rham-transport.png)
+
+The left panel records the canonical maps DRP.10–DRP.13. The right panel gives the exact signs and form degrees of DRP.15 for coefficient degree zero and dimension two. Drawing source, SVG and degree and sign data specify the figure. Its finite sign samples illustrate the general identities DRP.18–DRP.20.
+
+The finite Spencer construction and operator projection framework occur in [Schapira's freely accessible notes, §§1.4 and2.5](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/lectnotes/Dmod.pdf). DRP.A–DRP.G give the split nonflat cancellation, finite perfect comparison and signed density calculation used here; the exact earlier programme proofs cited above supply the other inputs.
+
+
+### 5.103. Compact-support duality for coherent analytic complexes
+
+Let \(X\) be a Hausdorff second-countable complex manifold of fixed dimension \(n\), and put \(\omega_X=\Omega_X^n\). For an ordinary coherent complex define
+\[
+\begin{gathered}
+\mathbb S_XF\\
+=R\mathcal Hom_{\mathcal O_X}(F,\omega_X)[n].
+\end{gathered}
+\tag{SDC.1}
+\]
+For every bounded complex with coherent cohomology supported in a compact subset of \(X\), evaluation and integration give an isomorphism
+\[
+\begin{gathered}
+R\Gamma_c(X,\mathbb S_XF)\\
+\xrightarrow{\sim}\\
+R\operatorname{Hom}_{\mathbf C}(R\Gamma(X,F),\mathbf C).
+\end{gathered}
+\tag{SDC.2}
+\]
+Both sides have finite-dimensional cohomology. In particular the induced pairing between \(H^j(X,F)\) and \(H_c^{-j}(X,\mathbb S_XF)\) is perfect. The support may be singular or nonreduced. No global resolution by holomorphic vector bundles is a hypothesis.
+
+The exact earlier inputs are the actual smooth and distributional Dolbeault resolutions, R.1–R.8, coherent Cartan vanishing, CX.L, coherent section topology, SC.G–SC.I, and compact coherent-image finiteness, GI.K. The extension theorem for bounded functionals is proved in NT.A; the open-mapping and finite-codimension arguments are NP.C and ML.A. The finite c-soft resolutions apply to arbitrary complex sheaves, with the uniform bound \(2n\).
+
+#### SDC.A. The density and its trace
+
+Give \(X\) its complex orientation. Resolve \(\omega_X\) by smooth or distributional Dolbeault forms. In coordinates the full exterior realization is antiholomorphic-first, as in R.2: a coefficient with antiholomorphic multiindex \(I\) represents \(d\bar z_I\wedge dz_1\wedge\cdots\wedge dz_n\). The resolution computes compact cohomology because its terms are c-soft. This is proved in R.5, rather than inferred merely from local exactness.
+
+After the shift \([n]\), a Dolbeault form of antiholomorphic degree \(q\) has cochain degree \(q-n\), and the differential is \((-1)^n\bar\partial\). The trace is
+\[
+\begin{gathered}
+\operatorname{tr}_X:R\Gamma_c(X,\omega_X[n])\\
+\longrightarrow\mathbf C,\\
+u\longmapsto(2\pi i)^{-n}\int_Xu,\\
+q=n,
+\end{gathered}
+\tag{SDC.3}
+\]
+and is zero in other degrees. The integral of a compactly supported \(\bar\partial\)-boundary of type \((n,n)\) is zero. On a coordinate box, the integral of each compact derivative is zero by the one-real-variable fundamental theorem. A finite smooth partition on the compact support, constructed in R.5, reduces the manifold assertion to these boxes; the cutoff derivatives cancel because their sum is zero. The same assertion for currents is their defining distributional integration by parts. Thus SDC.3 is a chain map with the indicated shifted differential. Coordinate changes preserve it: their real Jacobian is the positive quantity \(|\det(\partial z'/\partial z)|^2\), and differential forms transform by the same determinant rule. Extension by zero from an open subset preserves the integral. The evaluation on complexes and its derived tensor–Hom signs are the explicit evaluation calculation; the same local formula applies over the sheaf ring \(\mathcal O_X\). Evaluation followed by this trace defines the map SDC.2 before any assertion that it is invertible.
+
+In dimension zero a compact support is a finite subset of a discrete manifold. Coherent stalks are finite-dimensional complex vector spaces. SDC.2 is then the ordinary finite direct-sum duality. In the remaining proof assume \(n>0\).
+
+#### SDC.B. A compact Cauchy contraction on a polydisc
+
+Let \(P\subset\mathbf C^n\) be a polydisc centred at zero. A form or current used here has compact support in a smaller closed product \(K\Subset P\). Choose separate radial cutoffs \(\chi_j\), equal to one on a neighbourhood of the \(j\)-th projection of \(K\), with compact support in the \(j\)-th disc. Their derivatives are supported in annuli separated from that projection. Write
+\[
+\begin{gathered}
+E(z)=\frac1{\pi z},\\
+T_ju=E*_ju.
+\end{gathered}
+\tag{SDC.4}
+\]
+Extend by zero only in the integrated coordinate. The input has compact support there. The distributional identity \(\bar\partial E=\delta\), its normalization and the partial convolution with arbitrary distributional parameters are proved in R.2. They give
+\[
+\begin{gathered}
+\bar\partial_jT_ju=u,\\
+T_j\bar\partial_ju=u.
+\end{gathered}
+\tag{SDC.5}
+\]
+The second equality uses the compact support of the input: integration by parts moves its derivative to the convolution kernel. These equalities concern the whole integrated complex line.
+
+Let \(\varepsilon_j\) multiply by \(d\bar z_j\), and let \(\iota_j\) contract that coordinate. On forms with the chosen input support put
+\[
+\begin{gathered}
+h_j=\chi_jT_j\iota_j,\\
+p_j=-\varepsilon_j(\bar\partial_j\chi_j)T_j\iota_j.
+\end{gathered}
+\tag{SDC.6}
+\]
+All outputs have compact support in a fixed larger product still contained in \(P\). To verify the homotopy, write a form as \(a+\varepsilon_jb\), with neither coefficient containing \(d\bar z_j\). In degree zero for that coordinate, \(h_j\bar\partial_j a=\chi_ja=a\). On its degree-one part,
+\[
+\begin{gathered}
+\bar\partial_j(\chi_jT_jb)\\
+=b+(\bar\partial_j\chi_j)T_jb.
+\end{gathered}
+\tag{SDC.7}
+\]
+The other coordinate differentials cancel by their exterior anticommutation and commute with the partial kernels. Hence
+\[
+\bar\partial h_j+h_j\bar\partial=1-p_j.
+\tag{SDC.8}
+\]
+The maps \(p_j\) commute with \(\bar\partial\) and with one another on these inputs. Operations in another coordinate leave the required \(j\)-th input support unchanged. Thus all successive uses of SDC.8 are valid with the original cutoffs. Telescoping gives
+\[
+\begin{gathered}
+H=h_1+p_1h_2+\cdots\\
+{}+p_1\cdots p_{n-1}h_n,\\
+\Pi=p_1\cdots p_n,\\
+\bar\partial H+H\bar\partial=1-\Pi.
+\end{gathered}
+\tag{SDC.9}
+\]
+This is a compact-support homotopy. The cutoffs are chosen for the given compact input; no assertion that one fixed cutoff works for every compact subset is needed.
+
+The operator \(\Pi\) kills every form of degree less than \(n\), since each surviving component must contain every \(d\bar z_j\). In top degree its coefficient is
+\[
+\begin{gathered}
+(-1)^n\Bigl(\prod_j\bar\partial_j\chi_j\Bigr)\\
+{}\cdot T_1\cdots T_nu.
+\end{gathered}
+\tag{SDC.10}
+\]
+On that product of annuli, each kernel variable is separated from the corresponding input support. The full transposed kernel is therefore a smooth compact test near the input support, depending holomorphically on every output variable before multiplying by the cutoffs. It follows, even for a current input, that \(\Pi u\) is a smooth compactly supported top form. Fixed derivatives are obtained by differentiating this separated test. This is the same distributional parameter argument as R.2–R.3, with all integrated variables separated from the support.
+
+#### SDC.C. Scalar compact duality, including surjectivity
+
+For a smooth compact top form define a continuous functional on \(\mathcal O(P)\) by
+\[
+\Phi_u(g)=(2\pi i)^{-n}\int_Pg\,u.
+\tag{SDC.11}
+\]
+Its continuity follows from a supremum norm on the compact support. If \(u\) is a boundary, integration by parts and \(\bar\partial g=0\) make this functional zero.
+
+Conversely suppose it is zero. In particular all the moments against the monomials \(\zeta^\alpha\) vanish. On the product of cutoff annuli, the kernel of the full Cauchy transform expands as
+\[
+\begin{gathered}
+\prod_{j=1}^n\frac1{z_j-\zeta_j}\\
+=\sum_{\alpha\in\mathbf N^n}\zeta^\alpha z^{-\alpha-\mathbf1}.
+\end{gathered}
+\tag{SDC.12}
+\]
+The series and every fixed input derivative converge uniformly near the compact input support, because each ratio \(|\zeta_j/z_j|\) is strictly below one there. Its moments therefore show \(T_1\cdots T_nu=0\) on those annuli. Formula SDC.10 gives \(\Pi u=0\), and SDC.9 supplies a compact smooth primitive. For a closed form of degree below \(n\), the same primitive exists immediately because \(\Pi\) is zero in that degree.
+
+Every continuous functional \(\ell\) on \(\mathcal O(P)\) occurs in SDC.11. Its continuity bounds it by a constant times a supremum on one smaller closed polydisc \(K\). NT.A extends it to a functional on smooth functions with that same supremum bound. This extension is a compactly supported distribution; no measure-representation theorem is required. Regard \((2\pi i)^n\) times this extension as a top-degree current \(u\). Its normalized pairing with a holomorphic function is \(\ell\). Apply SDC.9 to this current. The result \(\Pi u\) is smooth and compact by SDC.10. The difference \(u-\Pi u=\bar\partial Hu\) pairs to zero with every holomorphic function by distributional integration by parts. Thus \(\Phi_{\Pi u}=\ell\).
+
+We have proved the actual vector-space identities
+\[
+\begin{gathered}
+H_c^q(P,\omega_P)=0,\\
+q\ne n,\\
+H_c^n(P,\omega_P)\\
+\xrightarrow{\sim}\mathcal O(P)',
+\end{gathered}
+\tag{SDC.13}
+\]
+where the prime means continuous linear functionals for the compact-open Fréchet topology. Degrees greater than \(n\) vanish from the finite Dolbeault resolution. Only this continuous dual, as a vector space with its actual functional maps, is needed below. No assertion about an unproved inductive-limit tensor topology is involved.
+
+The identification is natural for open inclusions between polydiscs: extension of a compact form by zero is adjoint to restriction of a holomorphic function, by their identical integral. It is also natural for holomorphic multiplication and finite matrices of holomorphic coefficients.
+
+#### SDC.D. Coherent coefficients on an adapted polydisc
+
+Every coherent ordinary sheaf on a complex \(n\)-manifold has a finite free resolution on a neighbourhood of each point. Here are the exact prerequisites and the neighbourhood passage. The convergent local ring is regular of dimension \(n\), by Theorem3.0c, analytic local algebra. The regular-local finite resolution theorem gives a finite free stalk resolution of length at most \(n\). Its finitely many generators, matrices and relations extend on one neighbourhood. Coherence makes the kernels and cokernels of that finite complex coherent; since its augmented homology vanishes at the chosen stalk, it vanishes on a smaller neighbourhood. This gives a genuine finite free sheaf resolution there. It does not assert a global holomorphic bundle resolution on \(X\).
+
+Choose a smaller polydisc \(U\) in that neighbourhood and write the resolution as \(P^\bullet\to F|_U\), in degrees \([-n,0]\). Its finitely many coherent kernels have no higher cohomology on \(U\), by CX.L. Taking sections is therefore exact. All its maps are continuous for the coherent Fréchet section topology SC.G–SC.I. Their images are the closed kernels of the following maps. The map onto \(\Gamma(U,F)\) is also strict by NP.C. Thus the continuous dual of this finite section resolution is exact except for \(\Gamma(U,F)'\) in degree zero. Explicitly, a functional on a closed subspace extends by NT.A; a functional that annihilates a kernel descends continuously through the open quotient and then extends from the closed image. These two operations prove the asserted exactness.
+
+Compute \(\mathbb S_UF\) by the finite complex \(\mathcal Hom(P^\bullet,\omega_U)[n]\), and use its Dolbeault resolutions for compact sections. Formula SDC.13 on each finite free term identifies its compact cohomology with the continuous dual of the corresponding section term. Holomorphic coefficient matrices transpose under their evaluation-integral pairing. The signs can be checked term by term. If \(P^{-a}\) is the source term, the differential of \(\mathcal Hom(P,\omega)[n]\) on its dual has coefficient \((-1)^{n+a+1}\), whereas the differential of the continuous section dual has coefficient \((-1)^{a+1}\). After compact Dolbeault cohomology, the local pairing on this term includes the factor
+\[
+(-1)^{na}.
+\tag{SDC.14}
+\]
+It is the Koszul sign for moving a coefficient of degree \(-a\) past the top Dolbeault degree \(n\) before evaluation. The two differential coefficients agree because the extra factor in the next term is \((-1)^{n(a+1)}\): multiplying it by \((-1)^{n+a+1}\) gives \((-1)^{na+a+1}\). This checks the actual Hom, shift and evaluation signs. Finite totalization therefore gives
+\[
+\begin{gathered}
+H_c^a(U,\mathbb S_UF)=0,\\
+a\ne0,\\
+H_c^0(U,\mathbb S_UF)\\
+\xrightarrow{\sim}\Gamma(U,F)'.
+\end{gathered}
+\tag{SDC.15}
+\]
+This is the map from actual evaluation and SDC.3. Its construction is independent of the chosen free resolution: comparison maps between free resolutions commute with evaluation, and the usual lifting of a map through a surjection gives their comparison homotopies. Each lift is made in a free term; taking sections of the required coherent kernel surjection is exact by CX.L on the polydisc. Subtracting its boundary leaves a cycle and allows the next lift. Only finitely many terms occur. The same evaluation description proves that SDC.15 commutes with restriction, its transposed compact extension by zero, and coefficient maps. In particular the maps for two different adapted polydiscs agree under these operations.
+
+#### SDC.E. A countable basis resolution
+
+For a coherent sheaf \(F\) on \(X\), choose a countable basis \(\mathcal B\) of coordinate polydiscs on which the preceding finite free resolutions exist. This is possible by second countability: first take a countable cover by such resolution neighbourhoods and then rational smaller polydiscs in their charts. Two basis neighbourhoods containing a point have a smaller basis neighbourhood in their intersection.
+
+For an open \(U\), let \(\mathbf C_U\) mean the constant sheaf on \(U\), extended by zero to \(X\). Form the augmented complex
+\[
+\begin{gathered}
+B^{-p}=\bigoplus_{U_0\subsetneq\cdots\subsetneq U_p}\mathbf C_{U_0},\\
+p\ge0,\qquad B^0\longrightarrow\mathbf C_X.
+\end{gathered}
+\tag{SDC.16}
+\]
+Its differential is the alternating sum of deletions. Deleting \(U_0\) uses \(\mathbf C_{U_0}\to\mathbf C_{U_1}\); the other deletions keep the same coefficient. The face identities give \(d^2=0\). The augmentation is exact. At a stalk, a cycle involves finitely many chains of basis neighbourhoods of that point. Choose one smaller neighbourhood contained in all their vertices and insert it at the beginning. Its cone boundary gives that cycle as a boundary; a repeated vertex is treated as zero in the normalized complex. The same cone proves exactness in augmentation degree zero.
+
+The complex
+\[
+\begin{gathered}
+E^p=\\
+\prod_{U_0\subsetneq\cdots\subsetneq U_p}\Gamma(U_0,F),\\
+d_E^p=(-1)^{p+1}(d_B^{-p-1})^*
+\end{gathered}
+\tag{SDC.17}
+\]
+computes \(R\Gamma(X,F)\). To verify this, apply the global complex \(\operatorname{Hom}_{\mathbf C_X}(B,I)\) to an injective complex resolving \(F\). Exactness of the augmented basis resolution and injectivity give the ordinary global section complex in one direction. In the other direction the terms compute \(R\Gamma(U_0,F)\), which has no positive cohomology by CX.L. It therefore gives SDC.17. The double complex is in the first quadrant, so each total degree has only finitely many complex-direction entries. There is no infinite diagonal convergence assumption.
+
+Each product in SDC.17 is countable and is a Fréchet space. The section spaces and their restriction maps have the topology proved in SC.G–SC.I; countable products are complete with the product seminorms. Every differential is continuous, since each output component is a finite alternating sum of restrictions.
+
+#### SDC.F. Compact sections of the dual basis resolution
+
+We give the compact-section argument, including the boundedness needed for the unbounded basis direction. A bounded complex of complex sheaves on \(X\) has a bounded c-soft representative. For clarity, the functor
+\[
+G(A)=\prod_{x\in X}i_{x*}A_x
+\tag{SDC.18}
+\]
+is exact and injective-valued over \(\mathbf C\), as proved in R.5: maps into a point stalk extend by extending a vector-space basis, and products preserve injectivity. Its natural germ map is injective. The successive quotient construction gives a functorial Godement resolution. Its \(2n\)-th cycle is c-soft by D9–D10 of the earlier uniform-manifold proof. Truncate there. Applying these functorial finite resolutions termwise to a bounded complex and totalizing gives the asserted bounded c-soft representative.
+
+For a coherent sheaf \(F\), local finite free resolutions put \(\mathbb S_XF\) in cohomology degrees \([-n,0]\). Take a bounded underlying sheaf representative in those degrees and apply the preceding construction. We obtain a bounded c-soft complex \(Q\) representing it, with terms only in \([-n,2n]\). Its restriction to every open is still c-soft. Thus \(\Gamma_c(U,Q)\) computes \(R\Gamma_c(U,\mathbb S_XF)\).
+
+Tensor SDC.16 with \(Q\) over \(\mathbf C\) and augment to \(Q\). Exactness is stalkwise, since complex vector-space tensoring is exact. The terms are sums of open extensions of c-soft restrictions, hence are c-soft by the earlier compact-extension proof. Taking compact sections preserves this quasi-isomorphism even though the basis direction is unbounded to the left. Indeed, in an exact complex of c-soft sheaves, write its cycles as \(Z^a\). For \(q>0\), the short cycle sequences and c-soft acyclicity give
+\[
+\begin{gathered}
+H_c^q(X,Z^a)\\
+\simeq H_c^{q+1}(X,Z^{a-1})\\
+\simeq H_c^{q+2n}(X,Z^{a-2n})\\
+=0.
+\end{gathered}
+\tag{SDC.19}
+\]
+The last equality is the uniform bound for every complex sheaf. Thus every cycle is compact-section acyclic, and the short cycle sequences remain exact on compact sections. Apply this to the augmented cone. It proves
+\[
+\begin{gathered}
+\Gamma_c(X,B\otimes Q)\\
+\xrightarrow{\sim}\Gamma_c(X,Q).
+\end{gathered}
+\tag{SDC.20}
+\]
+There are only finitely many \(Q\)-degrees on each diagonal of this tensor totalization.
+
+Compact sections of a sheaf coproduct involve only finitely many summands: a finite cover of their compact support supplies one finite index set. Consequently the basis terms on the left of SDC.20 are
+\[
+\bigoplus_{U_0\subsetneq\cdots\subsetneq U_p}\Gamma_c(U_0,Q).
+\tag{SDC.21}
+\]
+By SDC.15, each column has cohomology only in degree zero, where it is \(\Gamma(U_0,F)'\). These identifications commute with every face map. Functorial good truncations of the column complexes give natural quasi-isomorphisms to those degree-zero spaces. They remain quasi-isomorphisms after totalization: the vertical degrees are bounded in one fixed interval, so a finite filtration checks every total cohomology degree. Thus \(R\Gamma_c(X,\mathbb S_XF)\) is computed by the complex with degree \(-p\) term
+\[
+\bigoplus_{U_0\subsetneq\cdots\subsetneq U_p}\Gamma(U_0,F)',
+\tag{SDC.22}
+\]
+and the alternating extension-by-zero face maps.
+
+#### SDC.G. The continuous dual and its sign
+
+A continuous functional on a countable product of locally convex spaces depends on only finitely many factors. A bounding basic seminorm involves a finite set of coordinates; the functional vanishes when those coordinates vanish. Hence the direct sum in SDC.22 is exactly the continuous dual of the product \(E^p\).
+
+Use the cochain-dual convention
+\[
+\begin{gathered}
+(E^\vee)^q=(E^{-q})',\\
+d_{E^\vee}^q=(-1)^{q+1}(d_E^{-q-1})'.
+\end{gathered}
+\tag{SDC.23}
+\]
+At degree \(-p\), SDC.17 makes this differential the negative of the extension face differential in SDC.22. Multiplication by \((-1)^p\) therefore identifies \(E^\vee\) with that compact basis complex: its two boundary coefficients agree because
+\[
+(-1)^{p-1}(-1)=(-1)^p.
+\tag{SDC.24}
+\]
+This sign is also the evaluation sign. To evaluate a degree-\(p\) element of \(\operatorname{Hom}(B,F)\) on a degree-\(-p\) basis element, exchanging their order contributes \((-1)^{p(-p)}=(-1)^p\). The local identification in SDC.15 is evaluation followed by the same normalized integral. Thus the resulting comparison with \(E^\vee\) is precisely the canonical evaluation-trace map, rather than an independently chosen isomorphism. Its naturality under the basis augmentations also proves independence of the chosen countable basis.
+
+#### SDC.H. Finite cohomology and the ordinary derived dual
+
+Assume now that \(F\) has compact support. GI.K, applied to the point map and the full coherent analytic support, proves that every \(H^j(X,F)\) is finite-dimensional; the real-manifold bound makes their range bounded. This finiteness theorem was proved without coherent duality.
+
+The cycle spaces of the Fréchet complex \(E\) are closed. Each boundary has finite codimension in the next cycle space, so ML.A makes it closed as well. The topology on cohomology is its usual finite-dimensional topology. The continuous dual complex consequently has cohomology
+\[
+H^{-j}(E^\vee)\xrightarrow{\sim}H^j(E)^*.
+\tag{SDC.25}
+\]
+Here is the full functional argument. A continuous functional on a cycle space which kills its boundaries extends to the ambient term by NT.A. It then represents a dual cocycle. Conversely a functional on a term which vanishes on its cycle space descends through the open Fréchet quotient onto the closed image of its differential. It extends from that closed image to the following term by NT.A, and hence is a dual boundary, with the sign in SDC.23. These two assertions give exactly SDC.25. Every functional on the finite-dimensional cohomology space is continuous, so no algebraic functional is lost.
+
+The inclusion of continuous functionals into all algebraic functionals therefore induces a quasi-isomorphism from \(E^\vee\) to the ordinary vector-space dual complex. Over \(\mathbf C\), that latter complex computes \(R\operatorname{Hom}_{\mathbf C}(R\Gamma(X,F),\mathbf C)\): linear functionals extend from any vector subspace by a basis extension, so the scalar dual functor is exact. Combining this with SDC.20–SDC.24 proves SDC.2 for every coherent sheaf with compact support, including its actual map and all natural coefficient morphisms.
+
+#### SDC.I. Bounded complexes and the coherent cohomology bound
+
+The map SDC.2 is defined for the original derived object by evaluation and trace. Both its functors take cohomology truncation triangles to triangles, with the contravariant reversal on the dual side. A bounded complex has finitely many such triangles. Applying the sheaf result to its coherent cohomology modules and using two out of three proves SDC.2 on the entire bounded coherent complex. This verifies an already constructed natural map, and retains every attaching morphism; no global coherent-term or vector-bundle representative has been assumed. A finite union of the compact cohomology supports is still compact.
+
+The dual complex has coherent cohomology by local finite free resolutions, and has the same compact support. Compact and ordinary derived sections agree on such an object by the earlier proper-support comparison. Thus the theorem also gives ordinary compact-support Serre duality. For a sheaf in degree zero it implies the sharper coherent bound
+\[
+\begin{gathered}
+H^j(X,F)=0,\quad j>n,\\
+H^a(X,\mathbb S_XF)=0,\\
+a\notin[-n,0].
+\end{gathered}
+\tag{SDC.26}
+\]
+Indeed \(\mathbb S_XF\) has cohomology sheaves only in \([-n,0]\), so its compact hypercohomology is zero below \(-n\). SDC.2 gives the first assertion. Its perfect pairings and the fact that ordinary sheaf cohomology of \(F\) is zero in negative degrees give the second. Finiteness of all groups follows from the theorem and GI.K, not from an assumption that a Dolbeault range is closed.
+
+#### SDC.J. A nonreduced point and its residue pairing
+
+On \(\mathbf C_z\), let \(F=\mathcal O/(z^d)\), with \(d\ge1\). Its two-term free resolution and SDC.1 give
+\[
+\begin{gathered}
+0\to\mathcal O\xrightarrow{z^d}\mathcal O\\
+\to F\to0,\\
+\mathbb S_{\mathbf C}F\simeq\omega_{\mathbf C}/z^d\omega_{\mathbf C}
+\end{gathered}
+\tag{SDC.27}
+\]
+in degree zero. With the usual Hom differential and shift, the dual free complex is \([\omega\xrightarrow{z^d}\omega]\) in degrees \(-1,0\). Choose a cutoff \(\chi=1\) near zero. A class represented by \(b(z)\,dz\) has the compact Dolbeault representative with components
+\[
+\begin{gathered}
+\gamma^{0,0}=\chi b\,dz,\\
+\gamma^{-1,1}=-\frac{b}{z^d}\bar\partial\chi\wedge dz.
+\end{gathered}
+\tag{SDC.28}
+\]
+The second component is smooth because the cutoff derivative is away from zero. The coherent differential of that component cancels the Dolbeault differential of the first. Its remaining differential is zero. Evaluation on a polynomial representative \(a(z)\) and SDC.3 give
+\[
+\begin{gathered}
+\langle a,b\,dz\rangle\\
+=\operatorname{Res}_{z=0}\frac{a(z)b(z)}{z^d}\,dz\\
+=\operatorname{coeff}_{z^{d-1}}(ab).
+\end{gathered}
+\tag{SDC.29}
+\]
+The sign follows directly from Stokes on the cutoff annulus: its inner boundary is clockwise, so the integral of \(\bar\partial\chi\,ab/z^d\wedge dz\) is minus the positive small-circle integral. The minus in SDC.28 cancels it. The positive circle integral of \(z^k dz\) is zero unless \(k=-1\), when it is \(2\pi i\), by its parametrization. This proves the last equality and its normalization.
+
+For the bases \(1,z,\ldots,z^{d-1}\) and \(dz,z\,dz,\ldots,z^{d-1}dz\), the matrix is
+\[
+\begin{gathered}
+\langle z^i,z^jdz\rangle\\
+=\begin{cases}1&i+j=d-1,\\0&i+j\ne d-1.\end{cases}
+\end{gathered}
+\tag{SDC.30}
+\]
+It is invertible because reversing the basis order makes it the identity. All \(d\) nilpotent coefficient layers are retained.
+
+**Exercise.** For \(X=\mathbf P^1\) and \(F=\mathcal O_X\), determine \(\mathbb S_XF\) and the degree of its global sections complex.
+
+**Solution.** The canonical bundle is \(\mathcal O(-2)\), by the derivative of the coordinate transition \(w=1/z\). Thus \(\mathbb S_XF=\mathcal O(-2)[1]\). The earlier projective-line coefficient calculation in §5.8 gives \(H^0(\mathcal O)=\mathbf C\), \(H^1(\mathcal O)=0\), \(H^0(\mathcal O(-2))=0\) and \(H^1(\mathcal O(-2))=\mathbf C\). Consequently
+\[
+R\Gamma(\mathbf P^1,\mathbb S_X\mathcal O_X)\simeq\mathbf C[0].
+\tag{SDC.31}
+\]
+The canonical line and the shift both enter this equality.
+
+![Compact Cauchy support collar, oriented residue trace and the complete four-layer nilpotent pairing](assets/compact-coherent-serre.png)
+
+The left panel is one integrated complex coordinate of the product construction in SDC.B–SDC.C; its exact radii and smooth cutoff specify the compact input and the separated derivative annulus. The inner boundary is clockwise. The right panel is the exact matrix of SDC.30 for \(d=4\). It illustrates the coherent, nonreduced pairing; the general coherent-complex theorem is SDC.2. Drawing source, SVG and cutoff, matrix and sign data specify both panels.
+
+The classical integral pairing for holomorphic vector bundles on compact complex manifolds is described in [Demailly's freely accessible manuscript, ChapterVI, §7](https://www-fourier.univ-grenoble-alpes.fr/~demailly/manuscripts/agbook.pdf). SDC.A–SDC.J prove the compact-support coherent-complex statement here through the explicit Cauchy contraction, continuous functionals, basis resolution and evaluation signs. Relative proper analytic coherent duality and proper operator duality require their further comparisons.
+
+
+### 5.104. Proper coherent analytic duality and its current trace
+
+Let \(f:X\to Y\) be holomorphic between Hausdorff second-countable complex manifolds of fixed dimensions \(n\) and \(m\). Let \(F\) be a bounded ordinary coherent analytic complex whose cohomology sheaves have support in one closed subset \(S\subset X\), with \(f|_S\) proper. Put
+\[
+\begin{gathered}
+D_XF\\
+=R\mathcal Hom_{\mathcal O_X}(F,\omega_X)[n],\\
+D_YA\\
+=R\mathcal Hom_{\mathcal O_Y}(A,\omega_Y)[m].
+\end{gathered}
+\tag{RCD.1}
+\]
+There is a canonical evaluation-trace isomorphism
+\[
+\begin{gathered}
+\alpha_f(F):Rf_*D_XF\\
+\xrightarrow{\sim}D_Y(Rf_*F).
+\end{gathered}
+\tag{RCD.2}
+\]
+The map includes singular and nonreduced supports, arbitrary critical points and every bounded-complex attaching morphism. Neither flatness of \(f\) nor a global bundle resolution of \(F\) is a hypothesis.
+
+The exact inputs are compact-support coherent evaluation duality, SDC.A–SDC.J, ordinary coherent proper images, GI.K, finite perfect projection, DRP.C, and the full current Dolbeault resolution, R.1–R.5. The supported sheaf constructions, their c-soft acyclicity and their composition are proved in the earlier proper-image fibre argument and composition argument. Tensor–Hom signs use the explicit evaluation calculation.
+
+#### RCD.A. Current pushforward with proper support
+
+Set \(r=n-m\); it may be negative. A degree-\(k\) current on the real \(2n\)-manifold \(X\) is a continuous functional on compact test forms of complementary degree. Use the differential convention
+\[
+(du)(\eta)=(-1)^{k+1}u(d\eta).
+\tag{RCD.3}
+\]
+Suppose its support is proper over an open subset of \(Y\). For a compact test form \(\eta\) there, define
+\[
+(f_*u)(\eta)=u(\chi f^*\eta),
+\tag{RCD.4}
+\]
+where \(\chi\) is a compact smooth cutoff equal to one near the intersection of the current support with \(f^{-1}\operatorname{supp}\eta\). That intersection is compact by properness of the support. Two such cutoffs have difference zero near it, so RCD.4 is independent of the cutoff. On any fixed compact test support, one cutoff works on a neighbourhood of that support. The usual test seminorm estimates for smooth pullback and multiplication prove continuity. The construction commutes with restriction to smaller target opens.
+
+The resulting current has degree \(k-2r\). Since \(2r\) is even, the two differential signs in RCD.3 agree. Pullback commutes with \(d\); the terms involving \(d\chi\) vanish near the relevant current support. Hence
+\[
+df_*u=f_*du.
+\tag{RCD.5}
+\]
+This proof works for an arbitrary smooth map between these oriented manifolds; it does not require a submersion or a fibre-volume form.
+
+For a holomorphic map, pullback preserves complex type. A current of type \((n,q)\) therefore pushes to type \((m,q-r)\). Indeed the latter pairs with tests of type \((0,m-q+r)=(0,n-q)\), exactly the type required before pullback. It is zero if that type is outside the possible degrees. Formula RCD.5 then gives the same commutation for \(\bar\partial\). For a holomorphic coefficient \(h\) on the target,
+\[
+f_*((f^*h)u)=h f_*u.
+\tag{RCD.6}
+\]
+Thus these are maps of target ordinary structure-sheaf modules.
+
+The current Dolbeault resolution of \(\omega_X\) has terms of type \((n,q)\), with \(0\le q\le n\). Its terms are c-soft: they are modules over smooth functions, and a smooth cutoff equal to one near a given compact set extends its neighbourhood section with compact support. Their restrictions to every open have the same property. The exact earlier proper-image fibre proof makes these terms \(f_!\)-acyclic. Consequently applying \(f_!\) to this finite resolution computes the supported derived image.
+
+This calculation agrees with the derived image in ordinary module sheaves. Here is the relevant comparison. An injective ordinary module sheaf is flabby: for an open inclusion \(j:U\hookrightarrow X\), the monomorphism \(j_!\mathcal O_U\to\mathcal O_X\) and injectivity extend any map into it, so sections over \(U\) lift to sections over \(X\). A section along a compact set extends to a neighbourhood by the earlier finite compact-germ gluing argument. Flabbiness then extends it globally, proving c-softness. Thus underlying complex sheaves of injective module sheaves are \(f_!\)-acyclic by the same fibre argument. An injective-resolution comparison identifies the underlying derived supported image with the complex-sheaf calculation. In particular the current calculation defines the stated ordinary-module derived map.
+
+#### RCD.B. The density shift and the trace
+
+In the shifted current resolution of \(\omega_X[n]\), an antiholomorphic degree-\(q\) term has cochain degree \(q-n\) and differential \((-1)^n\bar\partial\). Its image on the target has degree \((q-r)-m=q-n\). Define
+\[
+\begin{gathered}
+\tau_f^q(u)=\\
+(-1)^{r(q-n)}(2\pi i)^{-r}f_*u.
+\end{gathered}
+\tag{RCD.7}
+\]
+This gives a chain map
+\[
+\begin{gathered}
+\tau_f:Rf_!(\omega_X[n])\\
+\longrightarrow\omega_Y[m].
+\end{gathered}
+\tag{RCD.8}
+\]
+To verify the differential, the scalar in RCD.7 changes by \((-1)^r\) when \(q\) increases by one. Therefore
+\[
+(-1)^n(-1)^r=(-1)^m,
+\tag{RCD.9}
+\]
+which is exactly the target shift sign. The current Dolbeault inclusion identifies its target resolution with \(\omega_Y[m]\). The pushforward construction is intrinsic, so the map is independent of coordinates and cutoffs.
+
+The trace for a map to a point is SDC.3: only \(q=n\) survives, its sign is one, and its scalar is \((2\pi i)^{-n}\). The trace of the identity is the identity. The construction also composes with its full signs. If \(g:Y\to Z\) has relative dimension \(s=m-\dim Z\), its input degree after the first pushforward is \(q-r\), and
+\[
+\begin{gathered}
+r(q-n)\\
+{}+s(q-r-m)\\
+=(r+s)(q-n).
+\end{gathered}
+\tag{RCD.10}
+\]
+The powers of \(2\pi i\) multiply, and the two current pushforwards compose by their definition on tests. With the supported derived-composition identification this proves
+\[
+\tau_{gf}=\tau_g\circ Rg_!\tau_f.
+\tag{RCD.11}
+\]
+
+We shall use the following compact trace identity. A compact current on \(X\) pushes to a compact current on \(Y\). On its top degree the sign in RCD.7 is one. Testing the pushed current against a cutoff equal to one near its compact support gives the same integral as on \(X\). The normalization is
+\[
+\begin{gathered}
+(2\pi i)^{-m}(2\pi i)^{-r}\\
+=(2\pi i)^{-n}.
+\end{gathered}
+\tag{RCD.12}
+\]
+Thus, under compact supported composition,
+\[
+\operatorname{tr}_Y\circ R\Gamma_c(\tau_f)=\operatorname{tr}_X.
+\tag{RCD.13}
+\]
+This equality concerns the actual current maps and normalized integrals.
+
+#### RCD.C. Constructing the coefficient comparison
+
+The local coherent dual \(D_XF\) is bounded coherent and vanishes off \(S\). Indeed an ordinary coherent sheaf has a finite free resolution on a neighbourhood of every point, by the exact local regular-ring and resolution proofs in SDC.D; its length is at most \(n\). Bounded-complex truncations then give a uniform bounded range for its dual. This argument is local and makes no global bundle-resolution assertion.
+
+Put
+\[
+\begin{gathered}
+A=Rf_*F,\\
+B=Rf_*D_XF.
+\end{gathered}
+\tag{RCD.14}
+\]
+Both are bounded coherent by GI.K and the fixed-dimensional uniform image bound. For every complex whose cohomology support is contained in \(S\), the natural map from supported to ordinary image is an isomorphism: restriction to the full closed proper support gives the proper-support comparison. We use that canonical identification, including for the coefficient tensor product below.
+
+The ordinary derived cup map, evaluation and RCD.8 give a pairing
+\[
+\begin{gathered}
+B\otimes^L A\\
+\longrightarrow Rf_*(D_XF\otimes^L F)\\
+\simeq Rf_!(D_XF\otimes^L F)\\
+\longrightarrow Rf_!(\omega_X[n])\\
+\xrightarrow{\tau_f}\omega_Y[m].
+\end{gathered}
+\tag{RCD.15}
+\]
+Its tensor–Hom adjoint is \(\alpha_f(F)\) in RCD.2. In particular this map is defined before proving it invertible. It is contravariantly natural in \(F\), because every arrow in RCD.15 is. Truncation triangles are retained by the derived construction.
+
+#### RCD.D. Testing with the full target Koszul complex
+
+Fix \(y\in Y\) and restrict to a coordinate polydisc \(V\) centred there; replace \(X\) by \(f^{-1}V\). Let \(P=k_y\) on \(V\), regarded as a coherent sheaf. Its actual finite free resolution is the Koszul complex on the coordinate functions \(t_1,\ldots,t_m\), in degrees \([-m,0]\). This resolves the residue sheaf because successive coordinate quotients are convergent power-series rings and multiplication by the next coordinate is injective. The usual one-coordinate exact complex, tensored successively with these injective multiplications, proves exactness inductively. In dimension zero it is just the residue sheaf in degree zero.
+
+Write
+\[
+\begin{gathered}
+P^\vee\\
+=R\mathcal Hom_{\mathcal O_V}(P,\mathcal O_V),\\
+Q=Lf^*P.
+\end{gathered}
+\tag{RCD.16}
+\]
+The pullback is the same full finite Koszul complex with differentials \(f^*t_j\) on \(X\). Its terms remain finite free even when those pulled functions are zero divisors or all zero. We never replace it by the underived fibre. The complex
+\[
+E=F\otimes^L Q
+\tag{RCD.17}
+\]
+is bounded coherent. Its cohomology support is contained in \(S\cap f^{-1}(y)\), which is compact by properness of \(f|_S\). The complex \(A\otimes^L P\) is likewise bounded coherent with compact support at \(y\).
+
+Finite perfect projection gives the actual isomorphism
+\[
+\begin{gathered}
+\pi_P:A\otimes^L P\\
+\xrightarrow{\sim}Rf_*(F\otimes^L Q).
+\end{gathered}
+\tag{RCD.18}
+\]
+DRP.C proves this directly on a bounded finite free target complex, using finite totalizations and the coefficient matrices of its differentials. Here that complex is precisely the target Koszul resolution. Thus RCD.18 has no flatness or unproved underived base-change premise. The same argument applies to \(P^\vee\).
+
+Finite tensor–Hom evaluation also gives
+\[
+\begin{gathered}
+D_XE\\
+\simeq D_XF\otimes^L Lf^*P^\vee,\\
+D_Y(A\otimes^L P)\\
+\simeq D_YA\otimes^L P^\vee.
+\end{gathered}
+\tag{RCD.19}
+\]
+These identities can be checked on the finite Koszul terms. For homogeneous local dual elements \(\alpha,\lambda\) and coefficient elements \(v,u\), the first pairing is
+\[
+\begin{gathered}
+(\alpha\otimes\lambda)(v\otimes u)\\
+=(-1)^{|\lambda||v|}\alpha(v)\lambda(u).
+\end{gathered}
+\tag{RCD.20}
+\]
+The sign moves \(\lambda\) past \(v\). Applying the Leibniz rule to both sides proves compatibility with their Hom differentials. The same formula gives the target identity. Finite free summands, shifts and finite cones establish the identities for the entire Koszul complex; the derived evaluation calculation ensures independence of the chosen local representatives.
+
+#### RCD.E. The compact pairing proves the comparison on every point test
+
+Apply the derived global Hom functor from \(P\) to RCD.2 over \(V\). Before asserting invertibility, its source is canonically
+\[
+\begin{gathered}
+R\operatorname{Hom}_{\mathcal O_V}(P,B)\\
+\simeq R\Gamma(V,B\otimes^L P^\vee)\\
+\simeq R\Gamma\bigl(X,\\
+D_XF\otimes^L Lf^*P^\vee\bigr)\\
+\simeq R\Gamma(X,D_XE)\\
+\simeq R\operatorname{Hom}_{\mathbf C}\\
+\bigl(R\Gamma(X,E),\mathbf C\bigr).
+\end{gathered}
+\tag{RCD.21}
+\]
+The second step is finite perfect projection. The third is RCD.19. The last is the actual compact-support duality SDC.2, since \(E\) has compact support; ordinary and compact sections of its dual agree. No coherent duality relative to \(f\) is used in this calculation.
+
+Its target is canonically
+\[
+\begin{gathered}
+R\operatorname{Hom}_{\mathcal O_V}(P,D_YA)\\
+\simeq R\Gamma\bigl(V,\\
+D_Y(A\otimes^L P)\bigr)\\
+\simeq R\operatorname{Hom}_{\mathbf C}\\
+\bigl(R\Gamma(V,A\otimes^L P),\mathbf C\bigr).
+\end{gathered}
+\tag{RCD.22}
+\]
+Here the last step is SDC.2 on \(V\), applied to the compactly supported coherent complex \(A\otimes^L P\). RCD.18 identifies its ordinary sections with \(R\Gamma(X,E)\).
+
+Under RCD.21 and RCD.22, the map induced by \(\alpha_f(F)\) is exactly the scalar dual of the sections map RCD.18. We verify that assertion at the level of the pairings defining the maps. Tensoring RCD.15 with the finite Koszul dual evaluates an element \(b\otimes\lambda\) on \(a\otimes u\) as the evaluation of \(b\) on \(a\), multiplied by \(\lambda(u)\) and the sign \((-1)^{|\lambda||a|}\). This is the same interchange sign as RCD.20. The finite perfect projection is defined by pullback, the counit and reassociation, so this evaluation becomes the identical coefficient evaluation on \(X\). Finally the two compact integrations agree by RCD.13. Every operation is a chain map, and the Koszul direction is finite, so the verification retains all its differentials. It proves commutation for the derived maps themselves, not just an equality of dimensions or a pairing on an underived fibre. Consequently
+\[
+\begin{gathered}
+R\operatorname{Hom}_{\mathcal O_V}(k_y,\alpha_f(F))\\
+\hbox{is an isomorphism}.
+\end{gathered}
+\tag{RCD.23}
+\]
+
+#### RCD.F. Coherent point tests detect the cone
+
+Let \(C\) be the cone of \(\alpha_f(F)\). It is bounded coherent, by RCD.14 and local finite coherent duality. Formula RCD.23 says its derived Hom from \(k_y\) is zero for every \(y\). The sheaf derived Hom from \(k_y\) has support at that point. Global sections of a sheaf supported at one closed point equal its stalk and are exact: a section on a neighbourhood glues with zero on the complement, and all compatibility conditions are automatic. A finite cohomology truncation therefore identifies the derived global Hom with its stalk. Thus its vanishing implies
+\[
+\begin{gathered}
+R\operatorname{Hom}_{\mathcal O_{Y,y}}(k_y,C_y)\\
+=0.
+\end{gathered}
+\tag{RCD.24}
+\]
+
+For completeness, here is the full finite Koszul duality used in this test. Write \(K^{-a}=\bigwedge^a L\), where \(L\) has the coordinate basis and \(d_K=\iota_t\). For a complementary wedge \(v\in\bigwedge^{m-a}L\) and a determinant functional \(\epsilon\), define \(J_a(v\otimes\epsilon)(u)=\epsilon(u\wedge v)\). If \(u'\) has wedge degree \(a+1\), contraction of the zero wedge \(u'\wedge v\) gives \(\iota_tu'\wedge v=(-1)^a u'\wedge\iota_tv\). The Hom differential in degree \(a\) is \((-1)^{a+1}\) times precomposition with \(\iota_t\). Hence \(d_{K^\vee}J_a=-J_{a+1}\iota_t\). The degree-\(a\) map \((-1)^{(m+1)a}J_a\) consequently intertwines this with the shifted differential \((-1)^m\iota_t\) on \(K[-m]\). Each complementary-wedge pairing is nondegenerate. We have proved an isomorphism of the full finite free complexes, not merely their cohomology. Tensoring it with \(C_y\) gives
+\[
+\begin{gathered}
+R\operatorname{Hom}_{\mathcal O_{Y,y}}(k_y,C_y)\\
+\simeq\bigl((C_y\otimes^L k_y)\\
+{}\otimes\det(T_yY)\bigr)[-m].
+\end{gathered}
+\tag{RCD.25}
+\]
+The determinant factor is the dual of the coordinate cotangent determinant. Moving the shift from the Koszul factor to the total tensor complex multiplies an original coefficient of degree \(b\) by \((-1)^{mb}\); the Leibniz rule checks this final shift sign as well.
+
+It follows that \(C_y\otimes^L k_y=0\). If \(C_y\ne0\), let \(j\) be its highest nonzero cohomology degree. Derived tensor is right t-exact; the truncation below \(j\) therefore gives
+\[
+\begin{gathered}
+H^j(C_y\otimes^L k_y)\\
+=H^j(C_y)\otimes k_y.
+\end{gathered}
+\tag{RCD.26}
+\]
+The right side is nonzero by Nakayama. Here is the elementary finite-module argument: if a finitely generated local module \(M\) satisfies \(M=\mathfrak mM\), express each member of a finite generating list as an \(\mathfrak m\)-linear combination of that list. The adjugate of its matrix \(I-A\) shows that \(\det(I-A)M=0\). This determinant is one modulo \(\mathfrak m\), hence a unit, so \(M=0\). Apply the contrapositive to the nonzero finite module \(H^j(C_y)\). This contradicts the derived-fibre vanishing. Therefore \(C_y=0\) for every point. RCD.2 is an isomorphism.
+
+#### RCD.G. Naturality, composition and the scope of the theorem
+
+The proof applies to the original bounded coherent complex throughout. Its duals, the finite target Koszul tensor, supported images and evaluation are derived constructions. There is no replacement of the original complex by the direct sum of its cohomology sheaves. In particular all connecting maps and every nilpotent coefficient layer are retained.
+
+For composable maps whose indicated support remains proper, the two evaluation-trace comparisons agree. The supported cup maps compose by their counits; the reassociation and evaluation signs are those in RCD.20. Their traces agree by RCD.11. Taking the tensor–Hom adjoint therefore proves the equality of the corresponding comparison morphisms. Identity maps have identity comparison. Restriction to target opens commutes with all constructions.
+
+For a map to a point the theorem is exactly SDC.2 with its canonical density and degree. For a closed point in a complex \(m\)-manifold, RCD.7 sends its scalar current to \((2\pi i)^m\) times the point current of type \((m,m)\). Its compact integral against \((2\pi i)^{-m}\) is one. This gives the same normalized residue and shift as the nonreduced-point calculation SDC.J.
+
+RCD.2 is ordinary coherent analytic duality. A proper differential-operator duality comparison still requires its transfer bimodules, the actual nonflat induced coefficient terms and their uniform truncation argument. Proper-image regularity and the full analytic Riemann–Hilbert equivalence also require their corresponding arguments.
+
+![Current trace degrees and the two compact coherent Koszul point tests](assets/relative-coherent-duality.png)
+
+The upper row gives the exact type, degree, shift sign and normalization of RCD.7. The lower square is RCD.21–RCD.23: both vertical arrows are compact-support duality, and the bottom arrow is the scalar dual of the actual finite perfect projection. The full target Koszul complex retains every nonflat fibre degree. RCD.24–RCD.26 then detect the cone. Drawing source, SVG and degree and composition data specify the diagram. Finite data illustrate the general identities RCD.9–RCD.12.
+
+
+### 5.105. Analytic operator traces and the natural dual comparison
+
+Let \(f:X\to Y\) be holomorphic between Hausdorff second-countable complex manifolds of fixed dimensions \(n\) and \(m\), and put \(r=n-m\). Use right operator modules. Write
+\[
+\begin{gathered}
+T_f=\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}\mathcal D_Y,\\
+f_!^{\mathcal D}M=Rf_!(M\otimes^L_{\mathcal D_X}T_f).
+\end{gathered}
+\tag{OT.1}
+\]
+The source action is the full chain-rule action. The supported operator trace is a natural map
+\[
+\begin{gathered}
+t_f:f_!^{\mathcal D}(\omega_X[n])\\
+\longrightarrow\omega_Y[m].
+\end{gathered}
+\tag{OT.2}
+\]
+We construct it from currents and finite Spencer complexes, together with a trace having two target operator actions. The latter defines the natural comparison
+\[
+\begin{gathered}
+\beta_f(M):f_+\mathbb D_X^{\rm r}M\\
+\longrightarrow\mathbb D_Y^{\rm r}(f_+M).
+\end{gathered}
+\tag{OT.3}
+\]
+Here \(f_+\) uses ordinary derived image. For OT.3 assume that \(M\) is bounded coherent with cohomology support in a closed subset \(S\) proper over \(Y\), and that \(f_+M\) is bounded coherent. The proper coherence theorem AP supplies the last condition when the cohomology modules have coherent ordinary generators near the fibres, including all regular holonomic inputs. The construction is natural for every operator morphism and for all bounded-complex attaching maps. No invertibility assertion is included in OT.3.
+
+The precise other prerequisites are density side change, the finite right Spencer resolution, Proposition1.1, analytic local operator resolutions, the complete current resolutions R, and proper-support current pushforward, RCD.A. We use the proved c-soft proper-image calculation, coproduct compatibility, and derived evaluation and currying.
+
+#### OT.A. The dualizing kernel and both actions
+
+Put
+\[
+\mathscr K_X=\omega_X\otimes_{\mathcal O_X}\mathcal D_X.
+\tag{OT.4}
+\]
+It has two commuting right operator actions. Label them \(1\) and \(2\). The first is ordinary right multiplication on the operator factor. For a holomorphic function \(h\) and vector field \(v\), the second is
+\[
+\begin{gathered}
+(\nu\otimes P)\cdot_1Q=\nu\otimes PQ,\\
+(\nu\otimes P)\cdot_2h=h\nu\otimes P,\\
+(\nu\otimes P)\cdot_2v\\
+=-\mathcal L_v\nu\otimes P-\nu\otimes vP.
+\end{gathered}
+\tag{OT.5}
+\]
+The second is exactly density side change of the left regular operator action. The Lie derivative Leibniz identity verifies its balancing over \(\mathcal O_X\). Composition on the left commutes with multiplication on the right, so the two actions commute, including when \(Q\) has nonconstant coefficients. Operator relations on functions and vector fields prove the formulas for all finite-order operators.
+
+There is a canonical involution \(J_X\) interchanging these actions. In a nonvanishing volume frame \(\nu\), let \(P^{t,\nu}\) be the formal transpose determined by
+\[
+\begin{gathered}
+h^{t,\nu}=h,\\
+v^{t,\nu}=-v-\operatorname{div}_\nu(v),\\
+(PQ)^{t,\nu}=Q^{t,\nu}P^{t,\nu}.
+\end{gathered}
+\tag{OT.6}
+\]
+The function–field and field–field operator relations are preserved by this anti-map: the first is the ordinary product rule, and the second is the identity \(\operatorname{div}_\nu[v,w]=v(\operatorname{div}_\nu w)-w(\operatorname{div}_\nu v)\). That identity follows by applying \([\mathcal L_v,\mathcal L_w]=\mathcal L_{[v,w]}\) to \(\nu\). Thus OT.6 defines the anti-map on the operator ring. Its square is the identity on functions and vector fields, hence on every operator. Set
+\[
+J_X(\nu\otimes P)=\nu\otimes P^{t,\nu}.
+\tag{OT.7}
+\]
+If \(\nu'=h\nu\), with \(h\) invertible, then \(P^{t,\nu'}=h^{-1}P^{t,\nu}h\). This follows first for the generators from the divergence formula and then for products. It makes OT.7 agree in the two frames. Directly on the same generators, OT.5 gives
+\[
+\begin{gathered}
+J_X(k\cdot_1Q)=J_X(k)\cdot_2Q,\\
+J_X(k\cdot_2Q)=J_X(k)\cdot_1Q,\\
+J_X^2=1.
+\end{gathered}
+\tag{OT.8}
+\]
+This is a map exchanging two actions, not an ordinary module map that keeps their labels.
+
+The right dual is consequently
+\[
+\begin{gathered}
+\mathbb D_X^{\rm r}M\\
+=R\mathcal Hom_{\mathcal D_X^{\rm op},1}
+ (M,\mathscr K_X)[n],
+\end{gathered}
+\tag{OT.9}
+\]
+with its remaining right action \(2\). This is precisely the usual left operator Hom followed by density side change. The analytic local resolution theorem makes it bounded coherent; for a module in degree zero its degrees lie in \([-n,0]\).
+
+#### OT.B. Transfer of the second action
+
+The sheaf
+\[
+L_f=\omega_X\otimes_{\mathcal O_X}T_f
+\tag{OT.10}
+\]
+has its density right source action and its commuting ordinary right target action. Explicitly the source field action is \((\nu\otimes t)v=-\mathcal L_v\nu\otimes t-\nu\otimes vt\), where the last \(v\) is the chain-rule left action on \(T_f\). There is a canonical isomorphism
+\[
+\begin{gathered}
+\Psi_f:\mathscr K_X\otimes_{\mathcal D_X,2}T_f\\
+\xrightarrow{\sim}L_f,\\
+(\nu\otimes P)\otimes t
+\longmapsto(\nu\otimes t)P.
+\end{gathered}
+\tag{OT.11}
+\]
+The last action on the right is the density right source action. To check balancing for a field \(v\), the image of \(((\nu\otimes P)\cdot_2v)\otimes t\) is
+\[
+\begin{gathered}
+-\bigl(\mathcal L_v\nu\otimes t\bigr)P\\
+{}-\bigl((\nu\otimes t)v\bigr)P\\
+=(\nu\otimes vt)P.
+\end{gathered}
+\tag{OT.12}
+\]
+It is the image of \((\nu\otimes P)\otimes vt\). Function balancing is immediate from OT.5. The formula respects action \(1\) as the right source action on \(L_f\), and respects the right target action.
+
+In a volume frame, \(\mathscr K_X\) is free of rank one for action \(2\): applying an operator to \(\nu\otimes1\) gives its transpose, and transposition is bijective. Formula OT.11 therefore has inverse determined by the same generator. It also proves that the displayed tensor is its derived tensor; no flatness of the holomorphic map is involved.
+
+For bounded coherent \(M\), finite-projective evaluation gives a canonical isomorphism
+\[
+\begin{gathered}
+\delta_f:
+\mathbb D_X^{\rm r}M\otimes^L_{\mathcal D_X,2}T_f\\
+\xrightarrow{\sim}
+R\mathcal Hom_{\mathcal D_X^{\rm op}}
+ (M,L_f)[n].
+\end{gathered}
+\tag{OT.13}
+\]
+On a finite projective source resolution this is the usual Hom–tensor map followed by OT.11. Each Hom term is a finite direct summand of copies of \(\mathscr K_X\); it is flat for action \(2\), and the termwise comparison is an isomorphism. Finite totalization proves the assertion. Local finite resolutions exist with a uniform length bound; their comparison maps and homotopies commute with the original evaluation, so the local comparisons glue. For a homogeneous tensor \(\varphi\otimes t\) and coefficient \(a\), the Hom–tensor map uses \((-1)^{|t||a|}\varphi(a)\otimes t\). This records the original complex degree; it is not replaced by a degree-zero convention.
+
+#### OT.C. A Spencer resolution with flat connection coefficients
+
+Here is the finite resolution needed for the trace. Let \(V\) be a left operator module flat over the ordinary structure sheaf. Its density side change \(\omega_X\otimes V\) has the right Spencer resolution
+\[
+\begin{gathered}
+S_X(V)^{p-n}\\
+=\Omega_X^p\otimes_{\mathcal O_X}V\\
+{}\otimes_{\mathcal O_X}\mathcal D_X,\\
+0\le p\le n.
+\end{gathered}
+\tag{OT.14}
+\]
+Its differential is \((-1)^n\) times the exterior covariant differential for the tensor of the two left connections. Write \(w=v\otimes P\). In coordinates that covariant differential is
+\[
+\begin{gathered}
+d_\nabla(\alpha\otimes w)\\
+=d\alpha\otimes w\\
+{}+\sum_j dx_j\wedge\alpha\otimes\nabla_jw,\\
+\nabla_j(v\otimes P)\\
+=(\partial_jv)\otimes P+v\otimes\partial_jP.
+\end{gathered}
+\tag{OT.15}
+\]
+Its square is zero by the commuting flat connections. The product rule makes it balanced over ordinary coefficients. Its augmentation is the right action on the top density: \(\nu\otimes v\otimes P\mapsto(\nu\otimes v)P\). The field formula in OT.10 makes the augmented differential zero.
+
+For exactness, filter only the last operator factor by order, shifting the filtration in degree \(p\) by \(p\). The connection of \(V\) does not raise this order. The leading differential is exterior multiplication by \(\sum_jdx_j\xi_j\) on the polynomial coefficient module \(V[\xi_1,\ldots,\xi_n]\). Each new variable acts injectively on any such polynomial module, with quotient the polynomial module in the remaining variables. Successive two-term Koszul cones give exactness outside the top augmented degree. Lowering finite operator order then proves exactness of the original augmented complex. Each term in OT.14 is right operator-flat because \(V\) is ordinary-flat: tensoring it over the right operator factor is the exact ordinary tensor with \(\Omega_X^p\otimes V\). Thus it computes actual derived tensors.
+
+For \(V=\mathcal O_X\), it is the right density resolution. For \(V=T_f\), it resolves \(L_f\). The chain-rule connection is flat and left ordinary PBW makes \(T_f\) locally free, possibly of infinite rank, over \(\mathcal O_X\). Both uses therefore satisfy the proved flatness premise.
+
+#### OT.D. The full current complex and the supported trace
+
+Resolve each form coefficient in OT.14 by its distributional Dolbeault resolution. Tensoring with the ordinary-flat PBW coefficient modules preserves that resolution. Use the full exterior realization of currents; write \(\mathcal C_X^{p,q}\) for currents of type \((p,q)\). For the density resolution, tensor with \(T_f\) and shift by \([n]\). The resulting model for \(\omega_X[n]\otimes^L_{\mathcal D_X}T_f\) has terms
+\[
+\begin{gathered}
+\mathcal C_X^{p,q}
+ \otimes_{f^{-1}\mathcal O_Y}f^{-1}\mathcal D_Y,\\
+\text{in degree }p+q-2n.
+\end{gathered}
+\tag{OT.16}
+\]
+Its full differential, including the target operator connection, is
+\[
+\begin{gathered}
+D_f(u\otimes P)\\
+=du\otimes P\\
+{}+\sum_j f^*dy_j\wedge u\otimes\partial_{y_j}P.
+\end{gathered}
+\tag{OT.17}
+\]
+The two shifts by \(n\) explain the even shift \([2n]\), so the current differential here has no extra shift sign. In holomorphic-first form coordinates the vertical Dolbeault sign is exactly the sign obtained by moving its differential past the holomorphic degree; equivalently it is the ordinary full exterior differential in OT.17. This also fixes the signs in every original bidegree.
+
+The residue normalization can be fixed within these same complexes. Let \(Z\) have dimension \(d\). On the ordinary current resolution of \(\omega_Z[d]\), the differential is \((-1)^d\bar\partial\). The full Spencer–current complex instead has the ordinary full exterior differential. Its augmentation to that shifted density resolution is zero on \(p<d\), and on its top holomorphic column is
+\[
+\begin{gathered}
+A_Z^q(u\otimes P)\\
+=\begin{cases}
+(-1)^{dq}uP,&p=d,\\
+0,&p\ne d.
+\end{cases}
+\end{gathered}
+\tag{OT.18}
+\]
+Here \(uP\) is the density right action on currents. The horizontal augmented differential is zero by the same right-action product rule as OT.15, now on currents. The vertical chain identity is exactly \((-1)^{d(q+1)}=(-1)^d(-1)^{dq}\). For each fixed current degree, the finite-order polynomial Koszul argument in OT.C proves horizontal exactness with arbitrary current coefficients; it does not require those coefficients to be ordinary-flat. Thus OT.18 is a quasi-isomorphism. Its degree-zero current part is the original positive holomorphic Spencer augmentation. This also specifies the current comparison without choosing an inverse to an unspecified zigzag.
+
+The corresponding ordinary density edge into the top Spencer column is
+\[
+ i_Z^q(u)=(-1)^{dq}u\otimes1.
+\tag{OT.19}
+\]
+The same vertical identity proves it is a chain map of ordinary coefficient complexes. Its current-degree-zero map is the positive inclusion of top holomorphic forms. If \(u\) has source type \((n,q)\), pushforward has target type \((m,q-r)\). The two edge factors are therefore \((-1)^{nq}\) and \((-1)^{m(q-r)}\). To agree with the exact shifted coherent trace RCD.7, the raw full-current coefficient must be
+\[
+\begin{gathered}
+\kappa_r=(-1)^r(2\pi i)^{-r},\\
+(-1)^{r+nq+m(q-r)}\\
+=(-1)^{r(q-n)}.
+\end{gathered}
+\tag{OT.20}
+\]
+Indeed the exponents differ by \(r(r+1)+2mq\), an even integer. Thus the ordinary density edge followed by the full-current trace and the target augmentation is precisely RCD's normalized coherent trace. The argument works also for negative \(r\).
+
+These terms are c-soft. In target PBW coordinates they are sheaf coproducts of current sheaves. Compact sections of a coproduct involve only finitely many summands, and the earlier compact-extension proof gives c-softness. The same is true on every open. The proved c-soft fibre calculation therefore computes \(Rf_!\) on this finite double complex.
+
+RCD.A defines current pushforward with proper support. It changes the bidegree to \((p-r,q-r)\): a complementary target test has type \((m-(p-r),m-(q-r))=(n-p,n-q)\), exactly the complementary source type, and holomorphic pullback preserves it. Hence the target total degree is still \(p+q-2n\). Define on OT.16
+\[
+\begin{gathered}
+u\otimes P\\
+\longmapsto\kappa_r f_*u\otimes P.
+\end{gathered}
+\tag{OT.21}
+\]
+This is balanced over the target ordinary structure sheaf and right target operator-linear. Locally a proper support has compact fibres. A section of the sheaf coproduct has a common finite PBW set near such a fibre by a finite cover of that compact set; properness of its support permits shrinking the target open so that the same finite set suffices near its support. Equivalently, this is the proved commutation of supported image with coproducts. Thus OT.21 lands in actual finite-order operators rather than a product or completion.
+
+Pushforward commutes with \(d\). It also satisfies \(f_*(f^*dy_j\wedge u)=dy_j\wedge f_*u\): this follows directly by testing on a compact form, with no sign since the real dimension difference is \(2r\). These two identities prove compatibility with OT.17. The target complex, with shift \([2m]\), is the current model of \(\omega_Y[m]\), with the explicit augmentation OT.18. Composing with that augmentation defines OT.2. It proves right operator-linearity for arbitrary finite operators, not just for functions.
+
+For the identity map, OT.21 is the identity. For a map to a point, only the top current type \((n,n)\) contributes. The raw current map is \((-1)^n(2\pi i)^{-n}\int_X\); its source edge OT.19 contributes the same sign \((-1)^n\), so the resulting coherent period is \((2\pi i)^{-n}\int_X\). In one variable the compact cutoff representative of a simple pole has clockwise inner boundary; Stokes gives its positive residue after this normalization, exactly as in SDC.J. The trace therefore has the prescribed residue normalization.
+
+#### OT.E. Two target factors and the transposed kernel trace
+
+Take two copies \(T_1,T_2\) of \(T_f\), and set
+\[
+E_f=L_f\otimes^L_{\mathcal D_X}T_2.
+\tag{OT.22}
+\]
+Its two right target actions come respectively from \(T_1\) in \(L_f\) and from \(T_2\). Apply OT.14 with \(V=T_1\), tensor with \(T_2\), shift by \([n]\), and use the same current resolution. Put \(\mathcal A=f^{-1}\mathcal D_Y\) and \(\mathcal R=f^{-1}\mathcal O_Y\). The terms of \(E_f[n]\) are
+\[
+\begin{gathered}
+\mathcal C_X^{p,q}\\
+{}\otimes_{\mathcal R}
+ (\mathcal A\otimes_{\mathcal R}\mathcal A),\\
+\text{in degree }p+q-2n.
+\end{gathered}
+\tag{OT.23}
+\]
+The balanced tensor in parentheses uses left ordinary coefficients in both operator factors. Write \(w=P_1\otimes P_2\). Its covariant differential is
+\[
+\begin{gathered}
+D_f(u\otimes w)\\
+=du\otimes w\\
+{}+\sum_j f^*dy_j\wedge u\otimes\Delta_jw,\\
+\Delta_j(P_1\otimes P_2)\\
+=\partial_{y_j}P_1\otimes P_2\\
+{}+P_1\otimes\partial_{y_j}P_2.
+\end{gathered}
+\tag{OT.24}
+\]
+Moving a holomorphic coefficient between the two factors gives its derivative once on either side, so this formula respects their ordinary balancing. Left composition in either factor commutes with its ordinary right target action. The two right actions therefore commute with this entire differential.
+
+The same normalized current pushforward defines a chain map to OT.23 on \(Y\). For \(f=\operatorname{id}_Y\), the complex resolves
+\[
+E_{\operatorname{id}_Y}\simeq\mathscr K_Y.
+\tag{OT.25}
+\]
+Indeed tensoring \(L_{\operatorname{id}_Y}=\omega_Y\otimes\mathcal D_Y\) with the left regular transfer identifies \((\nu\otimes P_1)\otimes P_2\) with \((\nu\otimes P_1)P_2\), where the last action is density side change. Under this identification, the first target action is action \(1\) of OT.5, and the second is action \(2\). This is precisely the augmentation of the finite coefficient Spencer resolution, so includes its full differential and shift. In current degree \(q\), this augmentation includes the factor \((-1)^{mq}\) of OT.18; its right action on the second operator factor is the density side-change action on the entire coefficient \(u\otimes P_1\). The same horizontal and vertical calculations prove this augmented current comparison.
+
+For the dual comparison, the second target factor is the input action, while the first is the output action. Append the involution \(J_Y\) to put those labels in the order of OT.9. We obtain
+\[
+\begin{gathered}
+\epsilon_f:Rf_!(E_f[n])\\
+\longrightarrow\mathscr K_Y[m],\\
+T_2\text{ acts by }1,\\
+T_1\text{ acts by }2.
+\end{gathered}
+\tag{OT.26}
+\]
+Every chain map before the final involution preserves the two existing right actions. OT.8 exchanges them at that last step. All tensor balancing, density divergence and positive-order operator terms are therefore retained.
+
+#### OT.F. The actual natural dual comparison
+
+Put \(C_M=M\otimes^L_{\mathcal D_X}T_2\), and put \(H_M=R\mathcal Hom_{\mathcal D_X^{\rm op}}(M,L_f)\). Tensoring a homogeneous map with the identity of a transfer resolution gives the natural map
+\[
+\begin{gathered}
+H_M\longrightarrow\\
+R\mathcal Hom_{f^{-1}\mathcal D_Y^{\rm op},2}\\
+(C_M,E_f).
+\end{gathered}
+\tag{OT.27}
+\]
+On homogeneous cochains it sends \(\varphi\) to the map \(a\otimes t\mapsto\varphi(a)\otimes t\); the Leibniz rule verifies its Hom differential. This is a map with the remaining right action \(1\) from \(T_1\). Resolutions, their comparison maps and homotopies give the same derived map, by the proved tensor–Hom construction. It is natural for every operator morphism of \(M\).
+
+Apply supported image to OT.27. The derived evaluation and cup map over \(\mathbf C\), followed by currying in the second operator action, gives
+\[
+\begin{gathered}
+Rf_!H_M[n]\\
+\longrightarrow
+R\mathcal Hom_{\mathcal D_Y^{\rm op},2}\\
+\bigl(Rf_!C_M,Rf_!(E_f[n])\bigr)\\
+\xrightarrow{\epsilon_f}
+R\mathcal Hom_{\mathcal D_Y^{\rm op},1}\\
+\bigl(Rf_!C_M,\mathscr K_Y\bigr)[m].
+\end{gathered}
+\tag{OT.28}
+\]
+The two Hom subscripts before and after the last arrow record exactly the exchanged labels in OT.26. One may construct the first arrow by evaluating the two supported inputs into \(Rf_!E_f\); no balancing that identifies its two ordinary function actions is made. Those actions on a differential-operator kernel need not be equal. For the derived cup map, use the finite functorial c-soft models from the earlier proper-image proof. Tensoring complex sheaves over \(\mathbf C\) is exact on stalks, so these replacements preserve the source tensor. The underived supported cup maps their sections into the supported sections of that tensor, followed by its natural map to derived supported image. This construction does not require the tensor itself to be c-soft. Functorial models retain all the commuting operator actions; the usual derived comparison maps give the same evaluation. Evaluation is linear in the input target operator action and in the independent output action, so currying gives the displayed morphism of right output modules.
+
+Use OT.13 for its source. The complexes \(H_M\) and \(C_M\) vanish off \(S\), so their supported and ordinary images agree. The target of OT.28 is OT.9 on \(f_+M\), with the output action in its correct label. This defines OT.3. All maps were constructed from the full complexes, so contravariant naturality, homotopies and every finite truncation triangle are respected. For \(f=\operatorname{id}\), OT.11 induces the kernel flip and OT.26 contributes the same flip once more. OT.8 makes their composite the identity; hence \(\beta_{\operatorname{id}}\) is the identity comparison.
+
+#### OT.G. A uniform finite reduction for invertibility
+
+The construction allows a precise finite reduction. Suppose the following additional mathematical assertion holds for the comparison just constructed: \(\beta_f(I_X(F))\) is an isomorphism for every ordinary coherent \(F\) supported in \(S\), where \(I_X(F)=F\otimes_{\mathcal O_X}\mathcal D_X\). Then OT.3 is an isomorphism for every coherent module in the proper-support, near-fibre generator scope of AP, and for every bounded complex whose cohomology modules have that property. Here is a finite proof of that implication.
+
+Fix one target fibre and use AP.E to construct a finite induced segment
+\[
+\begin{gathered}
+C=[I_X(F_s)\to\cdots\\
+{}\to I_X(F_0)],\\
+\operatorname{Cone}(C\to M)\\
+\simeq L[s+1].
+\end{gathered}
+\tag{OT.29}
+\]
+The \(F_j\) are ordinary coherent supported in \(S\). The kernel \(L\) is coherent and has the same finite near-fibre generator construction. Only finitely many target shrinkings are involved for a fixed \(s\). AP proves coherent images for all these modules. The two natural comparison functors take the finite term filtration of \(C\) to triangles. The additional induced assertion therefore makes \(\beta_f(C)\) an isomorphism, including every operator differential in this complex.
+
+For a coherent source module \(N\), analytic local operator resolutions give \(\mathbb D_X^{\rm r}N\in D^{[-n,0]}\). The independent AP amplitude is \(f_+:D^{[a,b]}\to D^{[a-n,b+2n]}\). Consequently
+\[
+\begin{gathered}
+f_+\mathbb D_X^{\rm r}M\in D^{[-2n,2n]},\\
+\mathbb D_Y^{\rm r}f_+M\in D^{[-2n-m,n]}.
+\end{gathered}
+\tag{OT.30}
+\]
+The second bound uses AP coherence of \(f_+M\), then the target analytic dual bound. Both objects for \(M\) vanish outside \([-2n-m,2n]\).
+
+Dualizing the triangle in OT.29 makes its first term \(\mathbb D_X^{\rm r}L[-s-1]\). After image, this first term has no cohomology below \(s+1-2n\). The first term of the corresponding target-dual triangle is \(\mathbb D_Y^{\rm r}(f_+L[s+1])\); it has no cohomology below \(s+1-2n-m\). Choose
+\[
+s=4n+m+2.
+\tag{OT.31}
+\]
+The two lower bounds are then \(2n+m+3\) and \(2n+3\). For every \(q\le2n\), both degree \(q\) and degree \(q+1\) of these first terms vanish. The long exact sequences show that the maps from the two functors on \(M\) to their values on \(C\) are isomorphisms throughout the full interval \([-2n-m,2n]\). Naturality of OT.3 makes a commutative comparison square. Its other three sides are isomorphisms there, so \(\beta_f(M)\) is too. OT.30 kills all remaining degrees. This also proves coherence of the source image from its finite comparison, without presupposing a separate generator theorem for the dual module.
+
+The argument is local on the target and covers it. For bounded complexes, finite cohomology truncation triangles apply to the originally constructed natural comparison and retain all attaching maps. Thus the stated implication is proved without convergence of an infinite induced resolution.
+
+The extra induced-coefficient assertion in OT.G remains a separate assertion: the natural trace and finite reduction alone do not prove it. In particular they do not prove general analytic proper duality, proper-image regularity or the full analytic Riemann–Hilbert equivalence. The full current trace construction is also described in [Schapira's freely accessible notes, §2.6](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/lectnotes/Dmod.pdf); the two-action kernel, transposition, derived maps and bounds used here are given explicitly above.
+
+![Full current trace degrees, the two target operator actions and the exact finite tail interval](assets/analytic-operator-trace.png)
+
+The first row is the complete Spencer–current trace OT.16–OT.21. The middle row tracks the kernel input and output through the actual transposition OT.26. The last panel is the exact interval example \(n=2,m=1\) of the general reduction OT.29–OT.31; the two first triangle terms start strictly beyond both required adjacent degrees. The induced-coefficient invertibility premise remains explicit. Drawing source, SVG and current-degree, transpose and interval data specify all panels. The finite data illustrate the general arguments; they are not substitutes for those arguments.
+
+
+### 5.106. Induced coefficients and proper operator duality
+
+Let \(f:X\to Y\) be holomorphic between Hausdorff second-countable complex manifolds of fixed dimensions \(n\) and \(m\). Fix a closed subset \(S\subset X\) such that \(f|_S\) is proper. Use right operator modules, and write
+\[
+\begin{gathered}
+I_Z(F)=F\otimes_{\mathcal O_Z}\mathcal D_Z,\\
+D_ZF\\
+=R\mathcal Hom_{\mathcal O_Z}(F,\omega_Z)[\dim Z].
+\end{gathered}
+\tag{ID.1}
+\]
+The tensor defining induction uses the left ordinary action on the operator factor. The operator dual \(\mathbb D_Z^{\rm r}\) and the comparison \(\beta_f\) are exactly OT.3 and OT.9. The induced image is the actual AP.B–AP.C comparison, including its finite-order union and right action.
+
+We prove that \(\beta_f\) is an isomorphism on every induced ordinary coherent coefficient complex supported in \(S\). It follows that it is an isomorphism on every bounded coherent operator complex whose cohomology modules have coherent ordinary generators near each fibre. In particular this includes every regular holonomic bounded complex with the indicated proper support. The generator condition is the exact one in AP; it is not an assumption that every analytic coherent operator module has a global good filtration.
+
+The additional inputs are the complete ordinary coherent comparison RCD, finite ordinary perfection SDC.D, the two-action kernel OT.A–OT.B, and the current trace OT.D–OT.F. These are proved prerequisites.
+
+#### ID.A. The induced dual with both ordinary actions
+
+Put \(d=\dim Z\) and \(\mathscr K_Z=\omega_Z\otimes_{\mathcal O_Z}\mathcal D_Z\), with the two right actions of OT.5. Its intrinsic involution \(J_Z\) exchanges actions \(1\) and \(2\). There is a canonical isomorphism
+\[
+\begin{gathered}
+\lambda_Z(F):I_Z(D_ZF)\\
+\xrightarrow{\sim}\mathbb D_Z^{\rm r}I_Z(F).
+\end{gathered}
+\tag{ID.2}
+\]
+Here \(F\) may be any bounded ordinary coherent complex, including a nonflat one. To prove this and specify the map, use the induction–restriction adjunction in the input action:
+\[
+\begin{gathered}
+R\mathcal Hom_{\mathcal D_Z^{\rm op},1}
+ (I_Z(F),\mathscr K_Z)\\
+\simeq R\mathcal Hom_{\mathcal O_Z,1}(F,\mathscr K_Z).
+\end{gathered}
+\tag{ID.3}
+\]
+The subscript on the last Hom uses right multiplication by functions in the operator factor. On a neighbourhood where \(F\) has a finite ordinary free representative \(P^\bullet\), tensoring that representative with the left ordinary-flat operator sheaf gives a finite right operator-free representative of \(I_Z(F)\). Evaluation at \(p\otimes1\) proves ID.3 term by term. Finite totalization proves it for the complex. Ordinary perfection is local, so no global bundle representative is asserted.
+
+Apply \(J_Z\) to the values of the Hom on the right. Its input ordinary action becomes action \(2\), which is multiplication on the density coefficient. Its remaining output action becomes the regular action \(1\). Consequently finite ordinary perfection gives
+\[
+\begin{gathered}
+R\mathcal Hom_{\mathcal O_Z,1}(F,\mathscr K_Z)\\
+\xrightarrow{J_Z}
+R\mathcal Hom_{\mathcal O_Z,2}(F,\mathscr K_Z)\\
+\simeq R\mathcal Hom_{\mathcal O_Z}(F,\omega_Z)
+ \otimes_{\mathcal O_Z}\mathcal D_Z.
+\end{gathered}
+\tag{ID.4}
+\]
+The last Hom–tensor map is an isomorphism on each finite free term, hence on its finite totalization. In particular it does not commute an infinite product with a tensor. Shift by \([d]\) and invert ID.4 to obtain ID.2.
+
+Explicitly, for a homogeneous ordinary dual map \(g\) on \(P^\bullet\), its value is
+\[
+\begin{gathered}
+\lambda_Z(g\otimes Q)(p\otimes R)\\
+=J_Z\bigl(g(p)\otimes Q\bigr)\cdot_1R.
+\end{gathered}
+\tag{ID.5}
+\]
+The operators have cochain degree zero. The usual complex Hom evaluation is used for \(g(p)\), retaining its original degree. The equality \(g(ph)=g(p)h\), followed by the exchange of the two function actions under \(J_Z\), verifies input ordinary balancing. Extending by \(R\) proves input operator linearity. The exchange identity OT.8 proves that regular right multiplication by \(Q\) on the source becomes the output action \(2\) of the operator dual. Thus this is an isomorphism of right operator complexes.
+
+All three maps in ID.3–ID.4 are their natural evaluation or adjunction maps. Comparison morphisms between finite free representatives and their homotopies commute with them. The local isomorphisms therefore specify a global derived isomorphism, natural for ordinary coefficient maps and bounded-complex attaching maps. The intrinsic formula for \(J_Z\) proves independence of the volume frame. If \(\nu'=h\nu\), the formal transpose is \(Q^{t,\nu'}=h^{-1}Q^{t,\nu}h\); the derivatives in this conjugation are retained. Neither moving a function through an operator nor dropping the divergence is used.
+
+#### ID.B. Identifying the actual comparison on induced inputs
+
+Let \(F\) be bounded ordinary coherent with support in \(S\), and set
+\[
+\begin{gathered}
+A=Rf_*F,\\
+B=Rf_*D_XF.
+\end{gathered}
+\tag{ID.6}
+\]
+RCD proves that these are bounded ordinary coherent. The actual AP induced-image isomorphism, extended through the finite cohomology truncations of a bounded coefficient complex, is
+\[
+\begin{gathered}
+\theta_f(F):I_Y(A)\\
+\xrightarrow{\sim}f_+I_X(F).
+\end{gathered}
+\tag{ID.7}
+\]
+This extension is the same derived projection map as AP.11, not a choice of a decomposition into cohomology sheaves. AP.7 computes transfer on an ordinary-flat representative, AP.8 computes each finite order, and compact proper-support colimits prove the union. Thus ID.7 retains all attaching maps. Apply it also to \(D_XF\).
+
+Define the two identifications
+\[
+\begin{gathered}
+\chi_L:f_+\mathbb D_X^{\rm r}I_X(F)\\
+\xrightarrow{(f_+\lambda_X)^{-1}}
+ f_+I_X(D_XF)\\
+\xrightarrow{\theta_f(D_XF)^{-1}}I_Y(B),\\[2pt]
+\chi_R:\mathbb D_Y^{\rm r}(f_+I_X(F))\\
+\xrightarrow{\mathbb D_Y^{\rm r}\theta_f(F)}
+ \mathbb D_Y^{\rm r}I_Y(A)\\
+\xrightarrow{\lambda_Y(A)^{-1}}I_Y(D_YA).
+\end{gathered}
+\tag{ID.8}
+\]
+The precise identity is
+\[
+\begin{gathered}
+\chi_R\,\beta_f(I_X(F))\,\chi_L^{-1}\\
+=I_Y\bigl(\alpha_f(F)\bigr),
+\end{gathered}
+\tag{ID.9}
+\]
+where \(\alpha_f\) is the evaluation-trace map RCD.15. We prove the identity for the maps themselves.
+
+First examine source evaluation on finite ordinary free representatives. A zero-order coefficient of the source is represented by an ordinary dual map \(g\) and the first transfer coefficient \(t_1\). In ID.5 the dual value contains \(J_X\). The transfer map \(\Psi_f\) of OT.11 satisfies
+\[
+\begin{gathered}
+\Psi_f\bigl(J_X(\nu\otimes Q)\otimes t_1\bigr)\\
+=\nu\otimes Qt_1.
+\end{gathered}
+\tag{ID.10}
+\]
+Indeed \(J_X(\nu\otimes Q)=(\nu\otimes1)\cdot_2Q\), and OT.11 is balanced for that action. Thus after source transfer the corresponding map on an induced input is
+\[
+\begin{gathered}
+p\otimes R\\
+\longmapsto\bigl(g(p)\otimes t_1\bigr)\cdot_{\mathcal D_X}R.
+\end{gathered}
+\tag{ID.11}
+\]
+The last action is the density source action on \(L_f\). In particular evaluation after cancelling the second induced transfer at \(p\otimes t_2\) is exactly the class of
+\[
+\bigl(g(p)\otimes t_1\bigr)\otimes t_2
+ \quad\hbox{in }E_f[n].
+\tag{ID.12}
+\]
+This is the evaluation used in OT.27, with the original complex Hom degrees. It has no residual source transpose.
+
+Next evaluate the supported derived cup on the zero-order coefficients of the two induced target objects. Under ID.7 these are the zero-order inclusions of \(A\) and \(B\) into their actual PBW coefficient complexes. Their operator factors in ID.12 are both \(1\). The density-current edge of OT.19 has factor \((-1)^{nq}\) on an evaluated current \(u\) of type \((n,q)\). The full two-target current trace then multiplies its pushforward by
+\[
+\begin{gathered}
+\kappa_r=(-1)^r(2\pi i)^{-r},\\
+r=n-m.
+\end{gathered}
+\tag{ID.13}
+\]
+On the target, before its final transpose, the augmentation of OT.25 contributes \((-1)^{m(q-r)}\). Thus the resulting evaluated density is
+\[
+\begin{gathered}
+(-1)^{nq}\kappa_r(-1)^{m(q-r)}f_*u\\
+=(-1)^{r(q-n)}(2\pi i)^{-r}f_*u\\
+=\tau_f^q(u).
+\end{gathered}
+\tag{ID.14}
+\]
+The parity calculation is OT.20. If the target type is outside its possible range, both current maps are zero, so the identity still applies.
+
+The involution here also acts on the current density resolution. This extension can be described without multiplying distributions together. In a holomorphic volume frame, write one distributional coefficient as \(a\) and one finite holomorphic operator as \(P\). Transpose the expression \(aP\) as \(P^{t,\nu}a\), then expand it with the finite Leibniz rule. This uses derivatives of that single distribution and multiplication only by holomorphic functions. For an operator of order \(k\), all resulting operators have order at most \(k\), so the extension preserves the actual finite PBW union. The product rule proves that it exchanges the same two actions. Applying it twice gives the identity: in each positive derivative order the intervening coefficient is an alternating binomial sum, zero by expanding \((1-1)^j\); the zero-order coefficient is unchanged. Holomorphic derivatives and coefficients commute with the distributional Dolbeault differential. Thus this is an involutive chain map on the full density current resolution. The same volume conjugation as OT.7 makes it intrinsic.
+
+The operator trace ends with \(J_Y\). Target identification by \(\lambda_Y^{-1}\) applies that same involution to the evaluated kernel value. These two involutions cancel by \(J_Y^2=1\). With both operator factors initially \(1\), the remaining operator coefficient is exactly \(1\). Hence this zero-order evaluation is ordinary coefficient evaluation followed by \(\tau_f\), the pairing RCD.15.
+
+Here are the complex and resolution details of this verification. In a finite ordinary free representative, write a homogeneous ordinary dual coefficient as \(\varphi\otimes u\), with \(\varphi\) in the dual free complex and \(u\) in the shifted density resolution. Evaluating on a coefficient \(p\) has sign \((-1)^{|u||p|}\). It moves the density coefficient past \(p\); the Leibniz rule gives exactly the complex Hom differential. Both sides of ID.14 retain that same sign: the density degree is \(q-n\) on the source and \((q-r)-m=q-n\) on the target. All operator factors in this verification have degree zero. Consequently neither the shifts nor an original coefficient differential introduces an unrecorded interchange sign. For coefficients resolved by ordinary-flat complexes, use the same tensor–Hom evaluation maps; the local finite perfect representative proves their comparison is an isomorphism.
+
+The derived cup in this argument is the functorial supported cup used in OT.28 and RCD.15. Coefficient evaluation is a morphism of derived tensors; it is not a multiplication of arbitrary distributional currents. On a finite free representative it can, for example, be computed with a smooth Dolbeault representative in the evaluated coefficient factor and a current representative in the density factor. Multiplication is then by smooth forms. Its comparison with the supported c-soft construction follows by their maps from the same ordinary evaluation and the c-soft acyclicity proved earlier. All equalities above concern those natural maps before taking the supported image, followed by the same current pushforward. They therefore pass through the supported cup and its counits. Changing a local finite free representative commutes with evaluation, transfer, \(J_X\), and the two density edges. Their comparison maps and homotopies give the identical derived pairing. This proves the verification globally without requiring a bundle resolution on the inverse image of an entire target open. The comparison diagrams are formed from the globally defined evaluation, adjunction, and Hom–tensor maps before their quasi-isomorphisms are inverted. The displayed balancing identities are identities of those chain maps on ordinary-flat and functorial supported representatives; local finite perfection is used to establish their invertibility. Thus the global equality follows from this natural diagram, rather than from an inference that local equality alone detects an arbitrary global derived morphism.
+
+Finally, this zero-order calculation determines the entire right-operator map. Induction–restriction adjunction says that a morphism out of \(I_Y(B)\) is determined by its restriction to \(B\otimes1\); the derived assertion is checked on an ordinary-flat representative, as in ID.3. For its value in \(I_Y(D_YA)\), ID.4 and the same adjunction identify evaluation against \(A\otimes1\) with the ordinary Hom having values in \(\omega_Y\otimes\mathcal D_Y\). Ordinary perfection of \(A\) makes that Hom–tensor identification exact. The preceding calculation gives the coefficient \(\alpha_f(F)\otimes1\) in that Hom. It detects the whole operator-valued Hom, rather than only its symbol or a scalar quotient. Right operator linearity supplies all other input and output operators. At every finite order these assertions are identities of finite PBW matrices, including the lower-order derivatives of a holomorphic coefficient; AP.12 gives those matrices. Proper-support colimits pass their compatible identities to the actual operator union. No product completion occurs. This proves ID.9.
+
+#### ID.C. Invertibility and the finite operator segment
+
+RCD.2 proves that \(\alpha_f(F)\) is an isomorphism for every bounded ordinary coherent \(F\) supported in \(S\). Induction is exact, since the operator sheaf is left ordinary-flat. Formulas ID.8–ID.9 therefore prove
+\[
+\begin{gathered}
+\beta_f(I_X(F))\\
+\text{is an isomorphism}.
+\end{gathered}
+\tag{ID.15}
+\]
+In particular this supplies the premise for ordinary coherent sheaves in OT.G. That argument applies to the same comparison \(\beta_f\), which OT.F constructed naturally for all operator morphisms. There is no requirement that an operator differential between two induced terms come from an ordinary coefficient map.
+
+For precision, let \(M\) be one coherent right operator module supported in \(S\), with a coherent ordinary generator near every proper fibre. AP.E gives, after finitely many target shrinkings, an induced segment \(C\to M\) whose cone is \(L[s+1]\). Choose
+\[
+\begin{gathered}
+s=4n+m+2,\\
+\mathcal I=[-2n-m,2n].
+\end{gathered}
+\tag{ID.16}
+\]
+Each term of \(C\) satisfies ID.15. The finite term filtration and operator naturality of \(\beta_f\) make \(\beta_f(C)\) an isomorphism, including all of its operator attaching maps. OT.30 puts both actual comparison objects for \(M\) inside \(\mathcal I\). The first terms in the two dualized triangles have lower cohomology bounds
+\[
+\begin{gathered}
+s+1-2n=2n+m+3,\\
+s+1-2n-m=2n+3.
+\end{gathered}
+\tag{ID.17}
+\]
+Thus their degrees \(q\) and \(q+1\) both vanish for every \(q\in\mathcal I\). The two long exact sequences identify the comparison on \(M\) with the comparison on \(C\) in that whole interval. Naturality gives the commutative square. Its other three sides are isomorphisms, so \(\beta_f(M)\) is an isomorphism there; the independent bounds kill all other degrees. This is a finite argument. It does not assert convergence of an infinite induced resolution or assume the desired image coherence for the dual object. The resulting comparison proves that coherence from its target.
+
+The target neighbourhoods cover \(Y\). For any bounded coherent operator complex \(K\) whose cohomology modules have the same generator and support property, apply its finite cohomology truncation triangles to the original natural map. Induction on their number proves
+\[
+\begin{gathered}
+f_+\mathbb D_X^{\rm r}K\\
+\xrightarrow[\beta_f(K)]{\sim}
+\mathbb D_Y^{\rm r}(f_+K).
+\end{gathered}
+\tag{ID.18}
+\]
+AP gives bounded coherent \(f_+K\); the target dual is bounded coherent by analytic local operator resolutions. Consequently the source in ID.18 is bounded coherent as well. All connecting maps of \(K\) are retained. GG supplies the generator property for all regular holonomic cohomology modules; no projectivity or flatness of \(f\) is used.
+
+#### ID.D. Nilpotent coefficient layers and the scope of the comparison
+
+For \(X=\mathbf C_z\), \(Y=\{*\}\), and \(F=\mathcal O_X/(z^\ell)\) with \(\ell\ge1\), AP.H gives
+\[
+\begin{gathered}
+f_+I_X(F)=\mathbf C[z]/(z^\ell),\\
+\mathbb D_X^{\rm r}I_X(F)\simeq I_X(D_XF).
+\end{gathered}
+\tag{ID.19}
+\]
+The finite ordinary resolution is multiplication by \(z^\ell\) on two copies of \(\mathcal O_X\). Its ordinary dual has its only cohomology in the shifted degree zero and identifies with \(F\,dz\). The complete residue pairing is the SDC.J pairing:
+\[
+\begin{gathered}
+\langle z^i dz,z^j\rangle\\
+=\operatorname{Res}_{z=0}\frac{z^{i+j}dz}{z^\ell}\\
+=\begin{cases}1,&i+j=\ell-1,\\0,&i+j\ne\ell-1,\end{cases}\\
+0\le i,j<\ell.
+\end{gathered}
+\tag{ID.20}
+\]
+The matrix is antidiagonal with all antidiagonal entries equal to one, hence has nonzero determinant \((-1)^{\ell(\ell-1)/2}\). This checks nondegeneracy on every nilpotent layer. Here the source edge has sign \(-1\), the raw operator trace has sign \(-1\), and the target augmentation has sign \(1\); their product is positive. ID.9 says that ID.18 gives precisely this residue pairing.
+
+Formula ID.18 is proper operator duality in the stated near-fibre generator scope, including every regular holonomic bounded input with proper support. It identifies the already defined evaluation-trace comparison. It does not by itself prove preservation of regularity, constructibility, the analytic Riemann–Hilbert equivalence, or the full composition and adjunction identities for operator direct images. Those assertions require their corresponding proofs. The analytic operator trace and induced approach also appear in [Schapira's freely accessible notes, §2.6](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/lectnotes/Dmod.pdf); the exact density, two-action, coefficient and finite-segment arguments used here are given above.
+
+![The induced duality comparison square, its density calibration and all nilpotent residue layers](assets/induced-operator-duality.png)
+
+The square is ID.8–ID.9, with both vertical arrows the displayed canonical identifications. Its top arrow is induced ordinary coherent duality. The middle row shows the complete density sign calculation ID.14. The last panel is ID.20 for four nilpotent layers, with rows indexed by the dual monomials and columns by the original monomials. Each entry is the actual residue. Drawing source, SVG and exact sign and residue data specify these panels. The data illustrate the proofs given above.
+
+
+### 5.107. Composition of analytic operator images and duality traces
+
+Let \(X\xrightarrow fY\xrightarrow gZ\) be holomorphic maps of Hausdorff second-countable complex manifolds of fixed dimensions \(n,m,k\). Put \(r=n-m\) and \(s=m-k\). Use right operator modules and write
+\[
+\begin{gathered}
+T_f=\mathcal O_X\otimes_{f^{-1}\mathcal O_Y}f^{-1}\mathcal D_Y,\\
+f_!^{\mathcal D}M=Rf_!(M\otimes^L_{\mathcal D_X}T_f).
+\end{gathered}
+\tag{CP.1}
+\]
+The left source action on a transfer is its full chain-rule action. There are canonical associative isomorphisms on bounded operator complexes
+\[
+\begin{gathered}
+g_!^{\mathcal D}f_!^{\mathcal D}M\\
+\xrightarrow{\sim}(gf)_!^{\mathcal D}M.
+\end{gathered}
+\tag{CP.2}
+\]
+We prove these for analytic supported image, together with composition of the normalized operator trace, composition of its two-action kernel trace, and compatibility of the canonical dual comparison. No flatness, submersion or projectivity is a hypothesis.
+
+The exact prerequisites are derived transfer composition, inverse images Theorem2.1, the finite left transfer Spencer resolution and amplitude, AP.D, proper-support coproduct compatibility, supported derived composition, the finite c-soft resolution and uniform dimension bound, and the actual operator trace and natural comparison, OT.A–OT.G. The induced comparison and proper duality in the generator scope are ID.A–ID.D. Complex Hom evaluation and currying use the explicit derived evaluation calculation.
+
+#### CP.A. Supported projection for the whole transfer
+
+Let \(N\) be a bounded complex of right \(f^{-1}\mathcal D_Y\)-modules on \(X\). There is a natural comparison
+\[
+\begin{gathered}
+Rf_!N\otimes^L_{\mathcal D_Y}T_g\\
+\longrightarrow Rf_!\bigl(N\otimes^L_{f^{-1}\mathcal D_Y}f^{-1}T_g\bigr).
+\end{gathered}
+\tag{CP.3}
+\]
+It is an isomorphism. Here is a finite calculation, including the infinite PBW coefficient union.
+
+The finite left Spencer resolution of \(T_g\) has terms
+\[
+\begin{gathered}
+Q^{-j}=\mathcal D_Y\otimes_{\mathcal O_Y}E_j,\\
+E_j=\bigwedge^jT_Y\otimes_{\mathcal O_Y}T_g,\\
+0\le j\le m.
+\end{gathered}
+\tag{CP.4}
+\]
+AP.D proves its exactness, full differential and left operator-flatness. On a coordinate open of \(Y\) mapping into a coordinate open of \(Z\), left ordinary PBW makes \(T_g\) a sheaf coproduct of copies of \(\mathcal O_Y\). Thus each \(E_j\) is a sheaf coproduct of finite free ordinary modules. The termwise projection map for CP.4 is therefore the finite-free projection map followed by the exact coproduct comparison for \(Rf_!\). The earlier c-soft proof establishes that comparison for arbitrary coefficient sheaves. On bounded complexes the finite functorial c-soft resolution, with length bounded by the real dimension \(2n\), gives the same comparison on finite total complexes. No section statement on an arbitrary noncompact inverse image is substituted for this sheaf calculation.
+
+Tensoring with \(Q^{-j}\) over the regular operator factor is exactly ordinary tensor with \(E_j\). This computes both sides of CP.3. All Spencer differentials commute with the projection map, because it is defined from the coefficient tensor map and the supported-image counit. Their terms involving the connection of \(T_g\) and the Lie brackets are retained. The same naturality applies to right multiplication by a target operator. On PBW pieces its functions act by the complete Leibniz matrix AP.12 and its derivatives raise the corresponding exponent; these are finite maps between finite-order pieces. The compatible coproduct comparison retains them on the whole union. Consequently CP.3 is a right \(g^{-1}\mathcal D_Z\)-linear isomorphism. Local finite-coordinate calculations identify this globally defined comparison with an isomorphism, so the isomorphism is independent of charts.
+
+There is no hypothesis that \(T_g\) is flat over \(\mathcal D_Y\). The finite operator-flat resolution CP.4 is what computes its derived tensor. Its ordinary-flat coefficient modules explain the coproduct projection calculation.
+
+The derived transfer identity is
+\[
+\begin{gathered}
+T_f\otimes^L_{f^{-1}\mathcal D_Y}f^{-1}T_g\\
+\xrightarrow{\sim}T_{gf}.
+\end{gathered}
+\tag{CP.5}
+\]
+Its exact proof in the inverse-images prerequisite cancels the regular middle operator factor. The remaining ordinary derived tensor has no positive Tor, because \(f^{-1}T_g\) is ordinary-flat over \(f^{-1}\mathcal O_Y\). The two chain-rule terms give \(d(gf)\), and right multiplication is unchanged. This proof is valid in holomorphic coordinates, including a nonflat \(\mathcal O_X\) over \(f^{-1}\mathcal O_Y\).
+
+Apply CP.3 to \(N=M\otimes^L_{\mathcal D_X}T_f\), use CP.5, and then use supported sheaf composition. This proves CP.2. The complexes remain bounded: the source transfer has amplitude \([-n,0]\), the next has amplitude \([-m,0]\), and the two supported sheaf images have the proved bounds \(2n\) and \(2m\). No coherence premise is needed for these bounds or for CP.2.
+
+The isomorphism is associative for three maps. Before inversion, the projection comparisons and transfer comparisons are induced by the same reassociation, coefficient tensor map and supported counits. On flat representatives, both parenthesizations send the same homogeneous simple tensor to the same ordered tensor. All transfers themselves have degree zero. For their resolutions, reassociation retains the Koszul signs, and \((a+b)c=ac+bc\) identifies the two interchange signs. The supported-image counits compose by the proved sheaf composition argument. This proves the actual associativity diagram, including arbitrary coefficient differentials.
+
+#### CP.B. Ordinary images and the support hypotheses
+
+Suppose \(S\subset X\) is closed and \((gf)|_S\) is proper. Then \(f|_S\) is proper. Indeed, for compact \(K\subset Y\), its inverse image in \(S\) is a closed subset of the compact set
+\[
+S\cap(gf)^{-1}(g(K)).
+\tag{CP.6}
+\]
+Here \(g(K)\) is compact. A proper map of these locally compact Hausdorff spaces is closed: near a target point take a compact neighbourhood; the image of the inverse image of that neighbourhood intersected with any closed source set is compact, hence closed, and determines the image on the neighbourhood's interior. Therefore \(f(S)\) is closed. For compact \(L\subset Z\),
+\[
+\begin{gathered}
+f(S)\cap g^{-1}(L)\\
+=f\bigl(S\cap(gf)^{-1}(L)\bigr).
+\end{gathered}
+\tag{CP.7}
+\]
+is compact. Thus \(g|_{f(S)}\) is proper as well.
+
+For a complex whose cohomology support is in \(S\), restriction to its closed proper support identifies supported and ordinary sheaf image, as proved in OT.F. The transfer tensor does not enlarge this support. The cohomology support of its image is in the closed set \(f(S)\), by restriction to the complement. Consequently CP.2 gives the canonical ordinary operator comparison
+\[
+g_+f_+M\xrightarrow{\sim}(gf)_+M.
+\tag{CP.8}
+\]
+It holds for every bounded operator complex with the stated support; no image coherence has been used.
+
+#### CP.C. One common current model for the trace
+
+For a complex manifold \(W\) of dimension \(d\), let \(\mathcal C_W^{p,q}\) denote full distributional currents. The one-factor Spencer–current resolution of \(\omega_W[d]\) has terms
+\[
+\begin{gathered}
+\mathcal P_W^{p,q}
+=\mathcal C_W^{p,q}\otimes_{\mathcal O_W}\mathcal D_W,\\
+\deg=p+q-2d.
+\end{gathered}
+\tag{CP.9}
+\]
+Its differential is the full exterior current differential plus the left regular operator connection. Its augmentation to the shifted density current resolution is
+\[
+\begin{gathered}
+A_W^q(u\otimes P)\\
+=\begin{cases}(-1)^{dq}uP,&p=d,\\0,&p\ne d.\end{cases}
+\end{gathered}
+\tag{CP.10}
+\]
+These are precisely OT.16–OT.19 for the identity. Their differential, horizontal finite-order Koszul exactness and vertical sign prove the augmented quasi-isomorphism. No flatness of a current coefficient is required for that Koszul argument.
+
+For a transfer whose source is \(W\), the terms of CP.9 are acyclic for its derived tensor. More generally, for any ordinary coefficient sheaf \(H\) and any left operator module \(V\) which is ordinary-flat, the ordinary-flat resolution argument AP.B gives
+\[
+\begin{gathered}
+(H\otimes_{\mathcal O_W}\mathcal D_W)
+ \otimes^L_{\mathcal D_W}V\\
+\simeq H\otimes_{\mathcal O_W}V.
+\end{gathered}
+\tag{CP.11}
+\]
+That proof uses a flat resolution of \(H\); its ordinary tensor with \(V\) is exact because \(V\) is ordinary-flat. It does not require \(H\) coherent or flat. Thus transferring CP.9 computes the actual derived transfer of \(\omega_W[d]\).
+
+For \(f\), the transferred terms are
+\[
+\begin{gathered}
+\mathcal C_X^{p,q}\otimes_{f^{-1}\mathcal O_Y}f^{-1}\mathcal D_Y,\\
+\deg=p+q-2n.
+\end{gathered}
+\tag{CP.12}
+\]
+They are c-soft sheaf coproducts of current sheaves. Applying \(f_!\) computes their derived supported image. Current pushforward defines the unaugmented chain map \(F_f^{(1)}\) from that image to \(\mathcal P_Y\):
+\[
+\begin{gathered}
+u\otimes P\longmapsto\kappa_r f_*u\otimes P,\\
+\kappa_r=(-1)^r(2\pi i)^{-r}.
+\end{gathered}
+\tag{CP.13}
+\]
+The source current type becomes \((p-r,q-r)\), and
+\[
+\begin{gathered}
+(p-r)+(q-r)-2m\\
+=p+q-2n.
+\end{gathered}
+\tag{CP.14}
+\]
+Pushforward commutes with \(d\) and with wedging a pulled-back target one-form, as proved on compact tests in OT.D. These identities include the whole target operator connection. They prove the chain-map identity and right operator linearity of CP.13.
+
+There is a direct c-soft computation after the first supported image as well. For a current section with proper support over an open neighbourhood of a compact target set, the part of its support over that compact set is compact. Choose a compact smooth cutoff on the source, equal to one near that part and with support over the given target neighbourhood. Multiplying the current by this cutoff and extending by zero gives a compactly supported source current. Properness of the original section's support permits shrinking the target neighbourhood so that it agrees with the original section there. Thus \(f_!\mathcal C_X^{p,q}\) is c-soft on \(Y\). The same argument applies to a finite PBW set of coefficients, and compact-germ gluing supplies the sheaf section statement. This proves c-softness of the coproduct coefficient terms used below; it does not assert softness of arbitrary underived direct images.
+
+Apply the transfer for \(g\) to CP.13. Write \(\mathcal A=(gf)^{-1}\mathcal D_Z\) and \(\mathcal R=(gf)^{-1}\mathcal O_Z\). By CP.11 and proper-support coproduct compatibility, its source terms become
+\[
+\begin{gathered}
+f_!\mathcal C_X^{p,q}\otimes_{\mathcal O_Y}T_g\\
+\simeq f_!\bigl(\mathcal C_X^{p,q}\otimes_{\mathcal R}\mathcal A\bigr).
+\end{gathered}
+\tag{CP.15}
+\]
+These are coproducts of the c-soft sheaves just considered. Their next supported image therefore computes the derived image. The target terms are the corresponding current model for \(g\). Under these identifications, the map is still \(\kappa_r f_*\) on currents and the identity on the final operator factor. The transfer identity CP.5 supplies the full composite chain-rule differential.
+
+At this unaugmented level, the two current pushes compose on compact tests. Their constants satisfy
+\[
+\begin{gathered}
+\kappa_s\kappa_r\\
+=(-1)^{r+s}(2\pi i)^{-(r+s)}\\
+=\kappa_{r+s}.
+\end{gathered}
+\tag{CP.16}
+\]
+The two maps therefore agree with \(F_{gf}^{(1)}\) as chain maps on the common model, including every original bidegree and operator factor.
+
+The operator trace \(t_f\) is represented by \(A_YF_f^{(1)}\). In computing \(t_g\), use CP.9 as the resolution of its density input. Its defining roof precomposes \(A_ZF_g^{(1)}\) with the inverse of the derived transfer of \(A_Y\). In the composite with the transferred \(t_f\), that inverse cancels the transferred \(A_Y\). Thus the equality just proved gives
+\[
+\begin{gathered}
+t_{gf}
+=t_g\circ g_!^{\mathcal D}(t_f),\\
+t_f:f_!^{\mathcal D}(\omega_X[n])\to\omega_Y[m].
+\end{gathered}
+\tag{CP.17}
+\]
+This is cancellation of a specified quasi-isomorphism in the derived category. It does not choose the ordinary density edge as an operator-linear inverse. That edge need not be operator-linear. Its sign, and the target augmentation sign, are already included in \(A_Y\); neither is discarded.
+
+#### CP.D. A common model with two independent right actions
+
+Write \(\mathscr K_W=\omega_W\otimes_{\mathcal O_W}\mathcal D_W\), with its regular action \(1\) and density-adjoint action \(2\). A two-factor current model \(\mathcal Q_W\) for \(\mathscr K_W[d]\) has terms
+\[
+\begin{gathered}
+\mathcal Q_W^{p,q}=\mathcal C_W^{p,q}\\
+{}\otimes_{\mathcal O_W}(\mathcal D_W\otimes_{\mathcal O_W}\mathcal D_W),\\
+\deg=p+q-2d.
+\end{gathered}
+\tag{CP.18}
+\]
+Both ordinary tensors in parentheses use left coefficient multiplication. Its two right operator actions are regular right multiplication in the two separate factors. They commute, but their right function actions are not identified. The differential is the full current differential together with the diagonal left connection
+\[
+\begin{gathered}
+\Delta_j(P_1\otimes P_2)\\
+=\partial_jP_1\otimes P_2
+ +P_1\otimes\partial_jP_2.
+\end{gathered}
+\tag{CP.19}
+\]
+The finite Leibniz rule proves ordinary balancing, exactly as in OT.24.
+
+Its augmentation is zero for \(p\ne d\). For \(p=d\), it is
+\[
+\begin{gathered}
+B_W^q(u\otimes P_1\otimes P_2)\\
+=(-1)^{dq}J_W(v),\\
+v=(u\otimes P_1)\cdot_2P_2.
+\end{gathered}
+\tag{CP.20}
+\]
+The action inside \(J_W\) is density side change on the entire first coefficient. The current extension of \(J_W\), with all distributional derivatives and no product of distributions, is proved in ID.B. Formula CP.20 is the augmentation OT.25 followed by that involution. Its horizontal and vertical chain identities and exactness are therefore precisely the proved ones in OT.C–OT.E. It is a quasi-isomorphism. The first regular operator factor of CP.18 becomes action \(2\) on its target; the second becomes action \(1\). These labels are part of the augmentation.
+
+This also identifies the model with the canonical kernel itself, rather than an unspecified automorphism of it. At holomorphic current degree zero in a volume frame,
+\[
+\begin{gathered}
+B_W^0(\nu\otimes P_1\otimes P_2)\\
+=\nu\otimes P_1^{t,\nu}P_2.
+\end{gathered}
+\tag{CP.21}
+\]
+This is exactly regular action \(1\) by \(P_2\) and adjoint action \(2\) by \(P_1\) on \(\nu\otimes1\). It is the canonical cancellation when both transfers are identities. In particular the identity kernel trace has identity normalization.
+
+Transfer the first regular factor of \(\mathcal Q_X\) by \(T_1=T_f\), and the second by \(T_2=T_f\). These are the output and input transfers respectively. The transferred current model represents
+\[
+\begin{gathered}
+\mathscr K_X[n]\otimes^L_{\mathcal D_X,2}T_1
+ \otimes^L_{\mathcal D_X,1}T_2\\
+\simeq E_f[n],
+\end{gathered}
+\tag{CP.22}
+\]
+where the last identification is OT.11. To justify termwise computation, apply CP.11 to one regular factor, with the other factor in its coefficient module. After the first tensor, reorder the two left ordinary coefficient factors; the term is induced in the remaining regular operator factor. Apply CP.11 again. Both transfers are ordinary-flat by PBW. Thus all terms are acyclic for this successive derived tensor, even though the current coefficient need not be ordinary-flat. There is no unproved flatness over the operator ring or over a tensor product of two operator rings.
+
+The resulting terms, with \(\mathcal B=f^{-1}\mathcal D_Y\) and \(\mathcal R_f=f^{-1}\mathcal O_Y\), are
+\[
+\begin{gathered}
+\mathcal C_X^{p,q}\otimes_{\mathcal R_f}
+ (\mathcal B\otimes_{\mathcal R_f}\mathcal B),\\
+\deg=p+q-2n.
+\end{gathered}
+\tag{CP.23}
+\]
+Their diagonal connection is OT.24. The positive holomorphic augmentation CP.21, together with OT.11, agrees with the Spencer resolution of \(E_f[n]\) used in OT.E. Hence these are the same canonical kernel and maps.
+
+The unaugmented map \(F_f^{(2)}\) pushes its current coefficient by \(\kappa_r f_*\), preserving the two operator factors. It is a chain map by the two pushforward identities in CP.C and the diagonal connection CP.19. The actual kernel trace is
+\[
+\begin{gathered}
+\epsilon_f=B_YF_f^{(2)}:\\
+Rf_!(E_f[n])\to\mathscr K_Y[m].
+\end{gathered}
+\tag{CP.24}
+\]
+Its input factor \(T_2\) acts by \(1\) and its output factor \(T_1\) acts by \(2\), exactly as in OT.26.
+
+For a bounded complex \(H\) with these two commuting right source actions, denote their parallel transfer and supported image by
+\[
+\begin{gathered}
+U_f(H)\\
+=Rf_!\left(\begin{gathered}
+H\otimes^L_{\mathcal D_X,2}T_1\\
+{}\otimes^L_{\mathcal D_X,1}T_2
+\end{gathered}\right).
+\end{gathered}
+\tag{CP.25}
+\]
+The two copies of the target actions remain separately labelled. Apply CP.3 to the two transfers, using two finite left Spencer directions. Their finite totalization proves
+\[
+U_gU_f(H)\xrightarrow{\sim}U_{gf}(H).
+\tag{CP.26}
+\]
+Each projection is linear in the other untouched action. This proves the claim without identifying its two function actions. Reassociation of the two resolution directions has its usual Koszul sign; the common transferred current model CP.23 computes it with degree-zero transfers after the acyclicity just proved.
+
+Now compute \(U_g(\epsilon_f)\) on that model. The coproduct and c-soft arguments of CP.C apply to two PBW indices. After transferring both regular target factors, its map is \(\kappa_r f_*\) on the current and the identity on the two final \(\mathcal D_Z\) factors. The composite unaugmented map is therefore exactly \(F_{gf}^{(2)}\), by CP.16. The middle map \(U_g(B_Y)\) cancels its derived inverse in the roof defining \(\epsilon_g\). This cancels the entire augmentation, including its \((-1)^{mq}\) and its \(J_Y\), with all two-action labels. We obtain
+\[
+\begin{gathered}
+\epsilon_{gf}
+=\epsilon_g\circ U_g(\epsilon_f),\\
+U_{gf}(\mathscr K_X[n])\to\mathscr K_Z[k].
+\end{gathered}
+\tag{CP.27}
+\]
+This proves the full two-action kernel-trace identity. Equality of the raw constants alone would not have supplied this cancellation; the specified common model does.
+
+#### CP.E. Compatibility of the canonical dual comparison
+
+Assume \(M\) is bounded coherent, its cohomology support lies in a closed \(S\) proper over \(Z\) under \(gf\), and both \(f_+M\) and \((gf)_+M\) are bounded coherent. By CP.8 the latter also identifies \(g_+f_+M\). Thus all three canonical OT comparisons in the following equality are defined:
+\[
+\begin{gathered}
+\beta_{gf}(M)\\
+=\beta_g(f_+M)\circ g_+(\beta_f(M)).
+\end{gathered}
+\tag{CP.28}
+\]
+The source and target use CP.8 and its dual. We verify equality of the derived morphisms, including attaching maps.
+
+The defining construction OT.13 and OT.27–OT.28 consists of Hom–tensor comparison, evaluation, supported cup, the two-action kernel trace, and currying. Hom–tensor is an isomorphism on a finite projective representative of a coherent source; local finite operator perfection proves its canonical derived form. Each uncurried evaluation sends a homogeneous map and transferred input to its value, tensored with the independent output and input transfers. Applying a further transfer reassociates these same factors. The comparison for the composite and the successive comparisons therefore have identical evaluation maps before the final kernel trace.
+
+For clarity, their interchange signs can be checked before any transfer resolutions are contracted. Let the input coefficient have degree \(b\), the first output transfer degree \(a\), the next output transfer degree \(c\), and the first input transfer degree \(e\). Moving the input coefficient past the two output factors and then placing the two transfers of the first map together gives
+\[
+(-1)^{(a+c)b+ce}.
+\tag{CP.29}
+\]
+The successive construction gives \((-1)^{ab}(-1)^{cb}(-1)^{ce}\), the same sign. These are total cochain degrees, including shifts; untouched factors retain their order. This is precisely the tensor–Hom sign OT.13 and the reassociation sign in CP.26. The ordinary operator factors themselves have degree zero, but the calculation also covers every resolution degree. The Leibniz identity for homogeneous evaluation then gives the same full complex differential on both paths.
+
+Supported cups compose by their counits and the supported-image comparison already used in CP.2. Their natural chain diagrams commute before quasi-isomorphisms are inverted. Consequently, after the identical evaluations, the successive uncurried pairing uses \(\epsilon_gU_g(\epsilon_f)\), whereas the composite pairing uses \(\epsilon_{gf}\). They agree by CP.27. Currying gives CP.28. This argument is an identity of the original evaluation constructions. It does not infer equality of arbitrary derived morphisms merely from agreement on cohomology, on induced objects, or on the endpoints of triangles. Changing flat or projective representatives commutes with these same evaluation and counit diagrams, so the global identity retains all homotopies and every bounded-complex attaching morphism.
+
+There is a useful consequence without assuming regularity of an intermediate image. Let \(M\) have regular holonomic cohomology and the support above. GG and AP, followed by ID.18, apply to \(f\) and \(gf\): their proper fibre supports give coherent ordinary generators for the original input. They prove bounded coherent images and invertibility of \(\beta_f(M)\) and \(\beta_{gf}(M)\). CP.8 makes \(g_+f_+M\) bounded coherent. OT constructs \(\beta_g(f_+M)\) using that coherence, without a generator premise for its construction. Formula CP.28 and the two known isomorphisms prove
+\[
+\begin{gathered}
+\beta_g(f_+M)\\
+\text{is an isomorphism}.
+\end{gathered}
+\tag{CP.30}
+\]
+No regularity or good filtration of \(f_+M\) was used to obtain this consequence. Proper-image regularity remains its own assertion.
+
+#### CP.F. A nonflat intermediate coefficient and a normalization check
+
+Take \(f:\{0\}\hookrightarrow\mathbf C\) and \(g:\mathbf C\to\{*\}\). The composite is the identity on a point. The ordinary coefficient of \(T_f\) is the residue module at zero, which is not flat over \(\mathcal O_{\mathbf C}\): tensoring multiplication by \(z\) kills its nonzero scalar class. CP.5 still applies, because the second transfer \(T_g=\mathcal O_{\mathbf C}\) is ordinary-flat. Thus this example includes the nonflat first-map coefficient.
+
+Here \(r=-1\), \(s=1\), and
+\[
+\begin{gathered}
+\kappa_{-1}=-2\pi i,\\
+\kappa_1=-(2\pi i)^{-1},\\
+\kappa_1\kappa_{-1}=1=\kappa_0.
+\end{gathered}
+\tag{CP.31}
+\]
+The point current pushes to the current of type \((1,1)\) on the line and integrates back to one. The intermediate density augmentation has sign \(-1\); its inverse carries the same sign, so they cancel in CP.17. The full two-action augmentation and its transpose cancel in CP.27. Hence the composite is the identity trace in both models, consistent with the exact residue normalization ID.20. This is an illustration of the general model calculation, not a replacement for it.
+
+We have proved analytic supported and support-proper ordinary image composition, one- and two-action trace composition, and compatibility of the canonical duality comparison. The proofs apply to the full transfers and actual PBW coefficient unions, including nonflat coefficients and negative relative dimensions. The operator adjunction units and counits, preservation of regularity and the full analytic Riemann–Hilbert equivalence require their corresponding arguments. Analytic transfer and trace constructions also appear in [Schapira's freely accessible notes, §§2.4 and 2.6](https://perso.imj-prg.fr/pierre-schapira/wp-content/uploads/schapira-pub/lectnotes/Dmod.pdf); the exact supported projection, current augmentations, action labels and comparison identities used here are proved above.
+
+
+![The common two-action current model, exact augmentation cancellation and composite trace degrees](assets/operator-duality-composition.png)
+
+The upper rows show the same ordered output and input transfers through the intermediate current resolution. The middle augmentation is the complete map CP.20, including its density sign and intrinsic transpose; its derived inverse cancels it in CP.27. The lower panel is the nonflat point–line–point example CP.31. Drawing source, SVG and exact degree, constant and cochain-sign data specify these panels. Finite samples illustrate the general chain-map arguments.
+
+
 ## 6. What monodromy misses in the irregular world
 
 Consider $\partial_t e=t^{-2}e$. A horizontal coefficient is $e^{1/t}$; its ordinary monodromy is trivial. The trivial connection also has trivial monodromy, but (1.5) proves these meromorphic connections are not isomorphic. For $t=r e^{i\theta}$,
@@ -48124,13 +60980,13 @@ For any prescribed invertible $T$, its generalized eigenblocks and the finite ni
 
 ## What this lesson does not prove
 
-Theorem 5.27 constructs an actual coherent reflexive strict coefficient lattice for a finite meromorphic connection on a reduced analytic divisor, under the analytic transverse-disc hypotheses on every local divisor component. It proves normalization at all smooth points, strict membership, saturation and logarithmic stability at all singular points, and the support statement for coherent submodules and actual classes. Arbitrary subquotients are excluded by the explicit counterexample. The full characteristic cutoff, initial global analytic generator, half-order correspondence and arbitrary analytic proper-image theorem remain obligations in §5.27.12.
+Theorem 5.27 constructs an actual coherent reflexive strict coefficient lattice for a finite meromorphic connection on a reduced analytic divisor, under the analytic transverse-disc hypotheses on every local divisor component. It proves normalization at all smooth points, strict membership, saturation and logarithmic stability at all singular points, and the support statement for coherent submodules and actual classes. Arbitrary subquotients are excluded by the explicit counterexample. Section5.89, CK.A–CK.K proves the full characteristic cutoff and exact half-order correspondence. Section5.90, GG.A–GG.G proves initial coherent analytic generators near every compact set. The arbitrary analytic proper-image theorem requires its further argument.
 
-The theorems and propositions in §§5.19–5.26 prove the actual factorial-growth symbol construction, bounded division and units, finite stalk Noetherianity, exact faithful finite-module completion at the dummy zero section, fixed neighbourhood coherent kernels, the general bounded Rees ambient comparison, and actual descent for a supplied coherent generating lattice satisfying \(tL\subset hL\). The canonical strict cutoff across singular characteristic strata, the initial global analytic generator, any half-order theorem, and full analytic arbitrary proper/support-proper regularity remain separate obligations.
+The theorems and propositions in §§5.19–5.26 prove the actual factorial-growth symbol construction, bounded division and units, finite stalk Noetherianity, exact faithful finite-module completion at the dummy zero section, fixed neighbourhood coherent kernels, the general bounded Rees ambient comparison, and actual descent for a supplied coherent generating lattice satisfying \(tL\subset hL\). Section5.89, CK.A–CK.K proves the canonical cutoffs across singular strata and their half-order criterion. Section5.90, GG.A–GG.G supplies initial coherent ordinary generators near every compact set. Full arbitrary analytic proper/support-proper regularity requires its further argument.
 
 Theorem 3.3 proves Fuchs's criterion in every order for formal and convergent coefficients. Theorems 5.0 and 5.1 prove canonical logarithmic extensions, the full global algebraic connection/local-system correspondence, the algebraic curve and divisorial tests, and compactification independence. The proper compactification and GAGA inputs have exact earlier programme proofs; the coherent-extension, transverse-family, meromorphic-comparison and logarithmic-jet steps are proved here.
 
-Theorem 5.2 proves the connection/regular-holonomic identification, including presentations on a dense open and the Serre closure of curve-regular connections. Theorem 5.3 proves analytic regularity of every normalized SNC meromorphic bundle with its exact good filtration and characteristic cycle. Theorem 5.4 proves the natural logarithmic and meromorphic de Rham comparisons by convergent Laurent homotopies, fine resolutions and exact cubical periods. Theorem 5.5 proves the full global algebraic de Rham comparison for every curve-regular algebraic connection, including nonproper and non-quasi-projective varieties, by the finite pole-layer and complex-linear GAGA arguments. Theorem 5.6 proves full generic Gauss–Manin regularity on every smooth algebraic base, with arbitrary curve base change, all coefficients and all fibre multiplicities in the curve lattice. Theorem 5.7 proves duality preservation for every regular holonomic module and bounded complex, with every support allowed. Theorem 5.8 proves relative analytic twist generation in every projective dimension for arbitrary coherent sheaves near a projective fibre; Lemma 5.8.2 also proves coherent higher images for projective-line projections. Theorem 5.9 and Lemma 5.9.1 prove locally projective coherent analytic images, with the initial coherent-generator hypothesis explicit for operator modules. Theorem 5.10 proves coherence, boundedness and analytic transported support of the cotangent candidate. Theorems 5.11–5.12 prove the singular-inclusive isotropic dimension bound and the actual output-filtration comparison, hence analytic projective holonomicity with the initial coherent-generator or global good-filtration hypothesis. Constructing that initial generator for every analytic regular holonomic module remains required. Theorem 5.13 proves the algebraic regular-holonomic SNC extension on every proper SNC pair and every open restriction, all boundary simple factors, and all algebraic curve pullbacks of these meromorphic modules. Theorems 5.14–5.17 prove full algebraic four-map regularity and the bounded-complex criterion using all smooth curve maps or only smooth locally closed curve immersions, including every singular support and every smooth separated finite-type ambient variety. Full analytic proper direct-image regularity remains required. Theorem 5.18 proves external-product and both tensor/dual tensor operations using the now-proved four-map and curve criterion. Full analytic proper regularity and the initial global analytic generator remain distinct obligations.
+Theorem 5.2 proves the connection/regular-holonomic identification, including presentations on a dense open and the Serre closure of curve-regular connections. Theorem 5.3 proves analytic regularity of every normalized SNC meromorphic bundle with its exact good filtration and characteristic cycle. Theorem 5.4 proves the natural logarithmic and meromorphic de Rham comparisons by convergent Laurent homotopies, fine resolutions and exact cubical periods. Theorem 5.5 proves the full global algebraic de Rham comparison for every curve-regular algebraic connection, including nonproper and non-quasi-projective varieties, by the finite pole-layer and complex-linear GAGA arguments. Theorem 5.6 proves full generic Gauss–Manin regularity on every smooth algebraic base, with arbitrary curve base change, all coefficients and all fibre multiplicities in the curve lattice. Theorem 5.7 proves duality preservation for every regular holonomic module and bounded complex, with every support allowed. Theorem 5.8 proves relative analytic twist generation in every projective dimension for arbitrary coherent sheaves near a projective fibre; Lemma 5.8.2 also proves coherent higher images for projective-line projections. Theorem 5.9 and Lemma 5.9.1 prove locally projective coherent analytic images, with the initial coherent-generator hypothesis explicit for operator modules. Theorem 5.10 proves coherence, boundedness and analytic transported support of the cotangent candidate. Theorems 5.11–5.12 prove the singular-inclusive isotropic dimension bound and the actual output-filtration comparison, hence analytic projective holonomicity with the initial coherent-generator or global good-filtration hypothesis. Section5.90, GG.A–GG.G proves that initial generator near every compact set. Theorem 5.13 proves the algebraic regular-holonomic SNC extension on every proper SNC pair and every open restriction, all boundary simple factors, and all algebraic curve pullbacks of these meromorphic modules. Theorems 5.14–5.17 prove full algebraic four-map regularity and the bounded-complex criterion using all smooth curve maps or only smooth locally closed curve immersions, including every singular support and every smooth separated finite-type ambient variety. Full analytic proper direct-image regularity remains required. Theorem 5.18 proves external-product and both tensor/dual tensor operations using the now-proved four-map and curve criterion. Section5.90, GG.A–GG.G proves the initial analytic generators and proper-support neighbourhood statement. Full arbitrary analytic proper regularity requires its further argument.
 
 The Stokes description, the irregular Riemann–Hilbert problem and the wild Betti construction are cited perspectives. We prove no formal exponential decomposition, sectorial summation or irregular correspondence theorem. The earlier analytic flat-frame and Cauchy proofs are linked above. The product-growth estimate, removable-pole arguments and category gluing used here have explicit proofs in the lesson.
 

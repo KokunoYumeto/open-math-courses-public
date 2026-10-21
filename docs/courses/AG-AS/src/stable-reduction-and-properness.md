@@ -271,7 +271,7 @@ This is the full stable-model uniqueness assertion [Stacks, Tag 0E97]. A generic
 
 No completeness, henselianity, excellence, or residue-field perfection is required. The field extension is part of the conclusion. For a smooth proper curve, the hypothesis on global functions implies geometric connectedness: flat field base change gives \(H^0(C_{\overline K},\mathcal O)=\overline K\), so there are no nontrivial idempotents and no decomposition into components.
 
-The proof uses the curve semistable construction in [*Néron models*, the seventh lesson of *Group schemes and abelian varieties*](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AG-GS/src/neron-models.md), Lemma 8.18 and the proof of Theorem 8.19. That theorem is about abelian varieties; its proof contains the precise curve construction needed here. We spell out how its Picard-torsion and numerical-genus estimates force a nodal curve, then prove stabilization and simultaneous gluing over \(A\).
+The proof uses the curve semistable construction in [*Néron models*, the seventh lesson of *Group schemes and abelian varieties*](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/AG-GS/src/neron-models.md), Lemma 8.18 and the proof of Theorem 8.19. That theorem is about abelian varieties; its proof contains the precise curve construction needed here. We spell out how its Picard-torsion and numerical-genus estimates force a nodal curve, then prove stabilization and simultaneous gluing over \(A\).
 
 The earlier curve construction uses a minimal regular model, its numerical intersection type, the prime-to-characteristic Picard bound, and the two genus inequalities with their equality cases. These are the exact regular-model and numerical foundations retained by that existing Néron-models lesson. They include arbitrary discrete valuation rings and imperfect residue fields. Its Lemma 8.18 supplies the long weighted-chain and fork cases omitted in the native numerical estimate. The regular-model, numerical-classification, Picard and formal-functions results are assumed foundations of that proof. The argument below is relative to those precise prerequisites.
 
@@ -1155,7 +1155,7 @@ The ordinary external inputs, with their uses and hypotheses, are:
 
 Sources include the Stacks Project locators listed above and Deligne–Mumford, *The irreducibility of the space of curves of given genus*, introduction, Corollary (2.7) and §3.
 
-The seven graph drawings have retained vector sources and an [original Python drawing source](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AG-AS/figures/ag_as_10_figures.py). Their data record checks arithmetic genus and the canonical degree at every vertex. They depict weighted dual graphs; distances and drawn edge shapes have no metric meaning.
+The seven graph drawings have retained vector sources and an [original Python drawing source](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/AG-AS/figures/ag_as_10_figures.py). Their data record checks arithmetic genus and the canonical degree at every vertex. They depict weighted dual graphs; distances and drawn edge shapes have no metric meaning.
 
 ## References
 

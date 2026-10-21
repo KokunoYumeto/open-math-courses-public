@@ -33,8 +33,8 @@ We use the following earlier programme proofs at their stated hypotheses.
 | Input | Exact use |
 | --- | --- |
 | Relation weights, Sections 1–3, and Measurable corners, Section 1 | The faithful normal relation state, diagonal expectation, maximal abelian diagonal, and full modular multiplier \(\delta^{it}\). |
-| [Discrete decomposition, Section 2](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/OA-FLOW/src/OA-FLOW-DDP.md#dd-existence) | For a type \(\mathrm{III}_\lambda\) factor, \(T=2\pi/\lvert\log\lambda\rvert\) is an inner modular period for every faithful weight. |
-| [Converting an inner period, PW1–PW3](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/OA-FLOW/src/OA-FLOW-PW.md#pw-1) | A bounded positive density in the center of the old centralizer produces an actual period, retaining finite mass. |
+| [Discrete decomposition, Section 2](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/OA-FLOW/src/OA-FLOW-DDP.md#dd-existence) | For a type \(\mathrm{III}_\lambda\) factor, \(T=2\pi/\lvert\log\lambda\rvert\) is an inner modular period for every faithful weight. |
+| [Converting an inner period, PW1–PW3](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/OA-FLOW/src/OA-FLOW-PW.md#pw-1) | A bounded positive density in the center of the old centralizer produces an actual period, retaining finite mass. |
 | Exact degrees, Proposition 4.1, and Homogeneous matching, Section 3 | Ergodicity of the degree-one relation and onto maps of a specified constant derivative. |
 | Generating weighted arrays, Sections 1–6, and Address maps, Section 6 | Exact relative realization, refinement, both generating exhaustions, and the conull Borel inverse. |
 

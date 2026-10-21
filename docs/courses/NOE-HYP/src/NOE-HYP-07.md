@@ -1,6 +1,6 @@
 # The principal genus theorem
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).*
 
 For a quadratic field, genus characters record congruence information about ideal classes. The principal genus theorem says exactly how much information they lose: its kernel consists of squares. For a general Galois extension, Noether replaces one ideal class by a family of classes and its multiplication defects. The arithmetic condition on those defects is local splitting of a crossed-product algebra. We prove her reduction with that condition intact.
 
@@ -8,26 +8,26 @@ Take first [Hilbert 90 in Noether's form and Galois descent](NOE-HYP-06.md), [Di
 
 Throughout, \(L/K\) is a finite Galois extension of number fields, \(G=\operatorname{Gal}(L/K)\), and group actions are on the left. Let \(I_L\) be the multiplicative group of nonzero fractional ideals, \(P_L\) its principal-ideal subgroup, and \(\operatorname{Cl}(L)=I_L/P_L\) its ordinary class group. At real places, positivity will enter local norm conditions explicitly. We do not silently replace an ordinary class group by a narrow one. In an imaginary quadratic field they coincide.
 
-## 1. The arithmetic inputs
+## 1. Arithmetic theorems and their proof order
 
-Two global statements are imported, with their scope specified.
+The algebraic prerequisites are [Central simple algebras and the Brauer group](NOE-HYP-04.md) and [Crossed products and factor systems](NOE-HYP-05.md). The arithmetic results below are proved in the class-field-theory lessons named here, after those algebraic prerequisites and before their use in this lesson. Their proofs do not use the principal-genus argument developed below.
 
-**Hasse norm theorem.** If \(L/K\) is cyclic and \(a\in K^\times\), then \(a\) is a global field norm if and only if it is a norm from \(L_w/K_v\) at every place \(v\) of \(K\), for one, equivalently every, \(w\mid v\). See [Milne CFT, Chapter VIII, Theorem 3.1]. Norms from the product \(L\otimes_K K_v\) give the same subgroup: its isomorphic factors have identical norm subgroups. Cyclicity is essential.
+**Hasse norm theorem.** Let \(L/K\) be a finite cyclic extension of number fields. An element \(a\in K^\times\) is a field norm if and only if it is a norm from \(L_w/K_v\) at every place \(v\), for one, equivalently every, \(w\mid v\). The proof is [The norm index bound and Hasse's norm theorem, Theorem 15.3](../../NT-CFT/src/the-norm-index-bound-and-hasses-norm-theorem.md#8-hasse-s-norm-theorem-and-conics): the cyclic idèle-class norm-index calculation makes the field-norm quotient inject into the idèle-norm quotient. A family of local norm preimages is an idèle after choosing units outside finitely many places. Norms from the factors of \(L\otimes_KK_v\) have the same image, so the formulation using one completion agrees with the product formulation.
 
-**Brauer–Hasse–Noether local–global splitting theorem.** For a central simple \(K\)-algebra \(A\),
+**Brauer–Hasse–Noether splitting theorem.** For every central simple \(K\)-algebra \(A\),
 
 \[
 A\text{ splits over }K
 \quad\Longleftrightarrow\quad
-A\otimes_K K_v\text{ splits for every place }v.
+A\otimes_KK_v\text{ splits for every place }v.
 \tag{1}
 \]
 
-Equivalently, \(\operatorname{Br}(K)\to\bigoplus_v\operatorname{Br}(K_v)\) is injective. See [Milne CFT, Chapter VIII, Theorem 4.2]. The original joint paper is [Brauer–Hasse–Noether, 1932]. We import injectivity, not the complete classification by local invariants or global cyclicity.
+The general injectivity proof is [Brauer groups of local and global fields, section 4](../../NT-CFT/src/brauer-groups-of-local-and-global-fields.md#general-injectivity-from-the-cyclic-norm-theorem). It first treats cyclic relative classes by the norm theorem, then a normal subgroup of index \(p\) in a \(p\)-group, and finally Sylow restriction and corestriction. Thus it does not assume that a global division algebra has a cyclic maximal subfield. Its restriction–corestriction identities are proved in section 1 of that lesson. Splitting over \(K\) plainly implies splitting after completion, which supplies the other implication of (1).
 
-The finite crossed-product classification and the splitting criterion for cyclic algebras were proved in [lesson 5](NOE-HYP-05.md). Consequently (1) implies the cyclic Hasse norm theorem by applying it to \((L/K,\sigma,a)\). We state the norm theorem separately because section 3 uses its element formulation. Noether's general reduction in section 4 uses (1) directly.
+For the quadratic examples we use [Quadratic fields: ideal classes and binary quadratic forms](../../NT-ANT/src/quadratic-fields-ideal-classes-and-binary-quadratic-forms.md): Theorem 10.1 identifies proper form classes with oriented ideal classes, and Theorem 10.2 proves positive-definite reduction with its boundary signs. Its Theorem 10.6 identifies the genus characters, including the dyadic cases. Only the description of these characters is needed here; the independent two-torsion argument below proves their kernel. In the real quadratic case that provider uses narrow classes; our quadratic fields are imaginary, where narrow and ordinary classes agree. The provider's class-field input is the narrow Hilbert class field of [Hilbert and ring class fields, Theorem 19.1, section 1](../../NT-CFT/src/hilbert-and-ring-class-fields-and-quadratic-prime-forms.md#1-the-ordinary-and-narrow-hilbert-class-fields), obtained from ray-class existence, rather than the later genus calculation that uses quadratic forms.
 
-For the quadratic argument, the given genus-character description is recalled below. We import Dirichlet's theorem that each invertible residue class contains a prime (proved in Dirichlet's theorem on primes in arithmetic progressions), only to show that the genus characters have no additional relations. Quadratic reciprocity and the splitting of primes in quadratic fields are also arithmetic inputs. The correspondence of ideals with forms and reduction of positive definite forms are imported; they are due to Dedekind and to Lagrange and Gauss. They also give the finiteness needed here: the reduction bound below leaves only finitely many forms for a fixed negative discriminant. We use these statements without assuming the principal genus theorem.
+Quadratic reciprocity and both supplementary laws are proved in [Cyclotomic fields, Theorem 12.5](../../NT-ANT/src/cyclotomic-fields.md#a-gauss-sum-and-quadratic-reciprocity). Dirichlet's theorem on primes in an invertible residue class is proved in [Dirichlet's theorem on primes in arithmetic progressions](../../NT-DIRL/src/NT-DIRL-02.md). These statements supply respectively the prime-discriminant character conventions and the independence of those characters. Reduction gives finiteness of the imaginary quadratic class group, since \(3A^2\le |D|\) leaves only finitely many reduced forms. None of this assumes the kernel assertion proved next.
 
 ## 2. The imaginary quadratic principal genus
 
@@ -168,7 +168,7 @@ for some \(\beta\in L^\times\), \(\mathfrak b\in I_L\). Conversely (6) supplies 
 v\bigl(N\mathfrak a\bigr)=f\sum_{w\mid v}w(\mathfrak a),
 \]
 
-so \(v(\alpha)\) is divisible by \(f\). In an unramified local extension every unit is a norm, as proved in Lemma 4.1 below, and a ground-field uniformizer has norm its \(f\)-th power. Hence \(\alpha\) is a local norm at this place too. At an unramified infinite place the local extension is trivial; the only nontrivial infinite case is already among the imposed real-to-complex conditions. Thus \(\alpha\) is a local norm everywhere. The imported cyclic Hasse norm theorem gives \(\beta\in L^\times\) with \(N(\beta)=\alpha\).
+so \(v(\alpha)\) is divisible by \(f\). In an unramified local extension every unit is a norm, as proved in Lemma 4.1 below, and a ground-field uniformizer has norm its \(f\)-th power. Hence \(\alpha\) is a local norm at this place too. At an unramified infinite place the local extension is trivial; the only nontrivial infinite case is already among the imposed real-to-complex conditions. Thus \(\alpha\) is a local norm everywhere. The cyclic Hasse norm theorem of section 1 gives \(\beta\in L^\times\) with \(N(\beta)=\alpha\).
 
 Put \(\mathfrak d=\mathfrak a/(\beta)\); then its ideal norm is \(1\), and
 
@@ -180,28 +180,85 @@ This identity follows prime by prime from extension of the ideal norm: the produ
 
 The generator qualification matters: replacing \(\alpha\) by an arbitrary unit multiple need not preserve each norm-residue condition. On classes, the principal genus defined by this condition is exactly \((1-\sigma)\operatorname{Cl}(L)\). Indeed the condition is unchanged when \(\mathfrak a\) is multiplied by a principal ideal, because its norm generator is multiplied by a global norm. Theorem 3.2 proves both inclusions. For an imaginary quadratic extension of \(\mathbb Q\), conjugation acts by inversion, so \((1-\sigma)\operatorname{Cl}(L)=\operatorname{Cl}(L)^2\), agreeing with section 2.
 
-### The ray-class refinement, stated separately
+### Congruences and the cyclic ray principal genus
 
-A ray class group \(\operatorname{Cl}_{\mathfrak M}(L)\) uses ideals prime to a modulus \(\mathfrak M\), with principal generators congruent to \(1\) at its finite part and positive at its designated real places. The modulus cannot be chosen arbitrarily on the upper field while retaining the norm assertion.
-
-Here is the conductor-normalized refinement, imported from [Terada, introduction, p.141, and §1, equation (11), p.143]. Let \(\mathfrak f\) be the conductor of the cyclic extension and let its **genus modulus** \(\mathfrak F\) have finite part determined by
+A ray class group \(\operatorname{Cl}_{\mathfrak M}(L)\) uses fractional ideals prime to its finite modulus, modulo principal ideals with a generator congruent to \(1\) at that modulus and positive at any designated real places. We use a finite integral ground modulus \(\mathfrak m\). Let \(\mathfrak f\) be the conductor of \(L/K\), with each real place becoming complex in its infinite part. Define the finite **genus modulus** by
 
 \[
-\mathfrak f\mathcal O_L=\mathfrak D_{L/K}\mathfrak F,
+\mathfrak f_f\mathcal O_L=\mathfrak D_{L/K}\mathfrak F,
+\qquad
+\mathfrak M=(\mathfrak m\mathcal O_L)\mathfrak F.
+\tag{R1}
 \]
 
-where \(\mathfrak D_{L/K}\) is the relative different. For a finite integral ground-field modulus \(\mathfrak m\), put \(\mathfrak M=(\mathfrak m\mathcal O_L)\mathfrak F\). With ideals chosen prime to the moduli, the theorem states
+Here \(\mathfrak D_{L/K}\) is the different. The upper modulus in (R1) is finite; the required real-place signs occur in the ground conductor. We first prove the local norm assertion explaining this normalization.
+
+**Lemma 3.3 (norms beyond the conductor).** Let \(E/F\) be a finite cyclic extension of nonarchimedean local fields, with ramification index \(e\), different exponent \(d\) in \(E\), and conductor exponent \(c\) in \(F\). Put \(r_0=ec-d\). For every integer \(m\ge0\),
 
 \[
-N\mathfrak a=(\alpha),\quad\alpha\equiv1\pmod{\mathfrak m\mathfrak f}
+N_{E/F}U_E^{r_0+em}=U_F^{c+m},
+\qquad
+U^0=\mathcal O^\times,\quad U^j=1+\mathfrak p^j\ (j>0).
+\tag{R2}
+\]
+
+**Proof.** For an unramified extension, \(c=d=0\) and \(e=1\). Residue norms are onto. The successive trace corrections in Lemma 4.1, starting at any positive level \(m\), prove (R2), including \(m=0\).
+
+Suppose the extension is ramified. Use the upper and lower numbering of [Herbrand's function and the upper numbering, Theorem 3.1 and the tower formula](../../NT-LOC/src/NT-LOC-10.md), and the conductor and Hasse–Arf theorem of [Abelian ramification, conductors and Hasse–Arf, Proposition 10.4 and Corollary 10.3](../../NT-CFT/src/abelian-ramification-conductors-and-hasse-arf.md). If \(t\) is the last lower break, those results give
+
+\[
+c-1=\varphi(t),\qquad
+d=ec-t-1,\qquad
+r_0=t+1.
+\tag{R3}
+\]
+
+For the middle identity, integrate the ramification filtration: \(e\varphi(t)=\int_0^t|G_x|\,dx\), while the different formula gives \(d=(e-1)+\int_0^t(|G_x|-1)\,dx\). Thus \(d=e(\varphi(t)+1)-t-1\). In particular the genus exponent is positive at every ramified prime.
+
+We prove the equality of compact unit subgroups in (R2) by testing finite characters. Norms of \(U_E^r\) are open. The nondegenerate trace pairing gives \(z\in E\) of trace one, so write \(N(1+Tz)=1+T+\sum_{i\ge2}b_iT^i\). Choose an integer \(h\ge1\) such that \(eh+v_E(z)\ge r\) and \(v_F(b_i)+(i-1)h\ge1\) for every nonzero \(b_i\). For \(a\in\mathfrak p_F^h\), the substitution \(T\mapsto a-\sum_{i\ge2}b_iT^i\) preserves \(\mathfrak p_F^h\) and increases the valuation of the difference of two arguments by at least one: factor each \(T^i-S^i\) by \(T-S\). Iteration is Cauchy and converges by completeness to a solution of \(N(1+Tz)=1+a\). The first inequality puts \(1+Tz\) in \(U_E^r\), so the norm image contains a principal-unit neighborhood. The image is compact by compactness of \(U_E^r\), hence closed.
+
+Let \(\chi\) be any continuous finite-order character of \(F^\times\). Local reciprocity and its norm compatibility are proved in [Explicit local reciprocity and the existence theorem](../../NT-CFT/src/explicit-local-reciprocity-and-existence.md). Let \(T/F\) be the abelian extension through which \(\chi\) factors, put \(B=\operatorname{Gal}(TE/F)\), and \(H=\operatorname{Gal}(TE/E)\). Set \(s=c+m\), \(r=r_0+em\), and
+
+\[
+v=s-1+1/e.
+\]
+
+Above the last break \(\psi_{E/F}\) is affine of slope \(e\). Equations (R3) give \(\psi_{E/F}(v)=r\). The subgroup and tower formulas give
+
+\[
+H^r=B^v\cap H.
+\]
+
+Since \(v>c-1\), the image of \(B^v\) in \(\operatorname{Gal}(E/F)\) is trivial; hence \(B^v\subset H\). As \(TE/F\) is abelian, all its upper jumps are integers. Since \(s-1<v\le s\), one has \(B^v=B^s\). Unit reciprocity identifies the images of \(U_E^r\) and \(U_F^s\) with \(H^r\) and \(B^s\), respectively. Norm compatibility consequently proves
+
+\[
+\chi(NU_E^r)=1\quad\Longleftrightarrow\quad\chi(U_F^s)=1.
+\]
+
+These character tests determine the subgroups. Indeed both lie in \(U_F\) and contain an open principal-unit subgroup. The quotient by a common such subgroup is finite abelian, and its characters separate every subgroup. One can extend a character of this finite unit quotient to \(F^\times=\pi^{\mathbb Z}\times U_F\) by assigning value one to \(\pi\). Characters separate a finite abelian quotient because decomposition into cyclic groups supplies a character nontrivial on any prescribed nonzero element. This proves (R2). \(\square\)
+
+**Theorem 3.4 (cyclic ray principal genus).** Let \(L/K\) be cyclic with generator \(\sigma\), and choose fractional ideals \(\mathfrak a\) prime to \(\mathfrak M\). Then
+
+\[
+N\mathfrak a=(\alpha),\quad
+\alpha\equiv1\pmod{\mathfrak m\mathfrak f}
 \quad\Longleftrightarrow\quad
 \mathfrak a=(\beta)\,\mathfrak b/\sigma(\mathfrak b),\quad
-\beta\equiv1\pmod{\mathfrak M}.
+\beta\equiv1\pmod{\mathfrak M},
+\tag{R4}
 \]
 
-The conductor's infinite part requires positivity at each real place becoming complex. Thus the ray classes satisfying the left condition form \((1-\sigma)\operatorname{Cl}_{\mathfrak M}(L)\). This is a separate arithmetic theorem, rather than a deduction of all ray congruences from (6).
+with \(\mathfrak b\) also prime to \(\mathfrak M\). On the left, congruence includes positivity at each real place becoming complex. Thus the kernel of the norm map from \(\operatorname{Cl}_{\mathfrak M}(L)\) to \(\operatorname{Cl}_{\mathfrak m\mathfrak f}(K)\) is \((1-\sigma)\operatorname{Cl}_{\mathfrak M}(L)\).
 
-The conductor factor cannot be discarded. For \(L=\mathbb Q(\sqrt{-5})\), taking both moduli trivial would make every ideal norm a principal ideal of \(\mathbb Q\); the proposed norm condition would include both classes. But \((1-\sigma)\operatorname{Cl}(L)=1\). The abbreviated unrestricted-modulus statement in [Lemmermeyer, Theorem 2, p.23](https://arxiv.org/pdf/math/0207306) therefore needs its conductor normalization restored. The conductor formulation above retains it explicitly.
+**Proof.** At a finite modulus prime \(v\), the exponent of \(\mathfrak M\) at \(w\mid v\) is \(e(m_v+c_v)-d_w\). Lemma 3.3 gives a local preimage of \(\alpha\) congruent to \(1\) at precisely this level. At a ramified real place, positivity gives a complex norm. At every other place the ideal-norm valuation and Lemma 4.1 make \(\alpha\) a local norm as in Theorem 3.2. Hasse's theorem therefore supplies \(\beta_0\in L^\times\) with \(N\beta_0=\alpha\).
+
+We may arrange the required local congruences without changing this norm. At each finite modulus place choose a vector \(z_v\in(L\otimes_KK_v)^\times\) of product norm \(\alpha\), congruent to one in all its factors: choose the local preimage just constructed in one factor and one in the others. Then \(z_v/\beta_0\) has product norm one. Hilbert 90 for this cyclic product algebra writes it as \(b_v/\sigma(b_v)\). To see this product version explicitly, list the factors around the \(\sigma\)-orbit. Choose the first coordinate of \(b_v\), determine the succeeding coordinates by the prescribed ratios, and use the norm-one condition after one full orbit to obtain the norm-one equation for the stabilizer on the first coordinate. Scalar Hilbert 90 for that cyclic stabilizer solves this last equation.
+
+Weak approximation chooses \(b\in L^\times\) sufficiently close to every coordinate of these finitely many \(b_v\). Inversion and multiplication are continuous, so \(\beta=\beta_0b/\sigma(b)\) then has \(\beta\equiv1\pmod{\mathfrak M}\) and still \(N\beta=\alpha\). Weak approximation is proved in [Absolute values, valuations and Ostrowski's theorem, Theorem 5.2](../../NT-LOC/src/NT-LOC-01.md#5-approximating-several-targets-at-once). Its statement with field-valued targets extends to targets in the completions by density in the defining completion.
+
+Now \(\mathfrak d=\mathfrak a/(\beta)\) is prime to \(\mathfrak M\) and has ideal norm one. The cyclic cocycle construction in Theorem 3.2 and Artin's sum in Lemma 3.1 give \(\mathfrak d=\mathfrak b/\sigma(\mathfrak b)\). Every ideal in that sum has valuation zero at the modulus primes, so its sum does too; hence \(\mathfrak b\) is prime to \(\mathfrak M\). This proves the forward implication. Conversely, the ideal norm of the right side of (R4) is \((N\beta)\). Formula (R2) puts each local norm in \(U_v^{m_v+c_v}\), and complex norms are positive. Their product therefore gives exactly the ground ray condition. The same calculation makes the norm map on ray classes well-defined and proves the stated kernel. \(\square\)
+
+The modulus relation is the one in Terada's formulation of Hasse's cyclic theorem. Omitting the conductor changes the assertion: for \(L=\mathbb Q(\sqrt{-5})\), trivial upper and lower moduli would make every ideal norm principal in \(\mathbb Q\), whereas \((1-\sigma)\operatorname{Cl}(L)=1\) and \(\operatorname{Cl}(L)\) has two elements. This is a mathematical distinction between the two norm conditions.
 
 ### A cyclic cubic calculation
 
@@ -258,7 +315,7 @@ e(h,k)=a(h,k)\,\frac{c_{hk}}{c_h h(c_k)}
 
 has valuation zero. It is a unit-valued 2-cocycle, cohomologous to the restricted \(a\). If necessary normalize the cochain at the identity; since \((\mathfrak c_1)=\mathcal O_E\), this only changes units. The group \(H\) is cyclic. In its crossed-product algebra, choose \(u=u_h\) for a generator \(h\), and replace all basis units by \(1,u,\ldots,u^{f-1}\). Their scalar rescalings are products of unit factors \(e\), so \(u^f=t\) is a unit of \(F\). Lemma 4.1 makes \(t\) a norm from \(E\); the cyclic splitting criterion of lesson 5 then makes this local crossed product split. Lemma 4.2 makes \(A(a)\otimes F\) split too.
 
-At an unramified infinite place, the local coefficient extension is trivial, so (7) gives splitting. The remaining places split by hypothesis. The imported local–global theorem (1) now makes \(A(a)\) split over \(K\). Lesson 5's relative crossed-product classification says precisely that its cocycle is a coboundary, \(a(\sigma,\tau)=d_\sigma\sigma(d_\tau)/d_{\sigma\tau}\). \(\square\)
+At an unramified infinite place, the local coefficient extension is trivial, so (7) gives splitting. The remaining places split by hypothesis. The local–global theorem (1) now makes \(A(a)\) split over \(K\). Lesson 5's relative crossed-product classification says precisely that its cocycle is a coboundary, \(a(\sigma,\tau)=d_\sigma\sigma(d_\tau)/d_{\sigma\tau}\). \(\square\)
 
 The generators in (8) must be a field-valued factor system. Arbitrarily choosing generators of its principal ideals does not guarantee the field cocycle identity: their associativity defect might be a nontrivial unit. This is one reason to retain Noether's refined definition.
 
@@ -338,7 +395,7 @@ a(\sigma,\tau)=\frac{j_\sigma\sigma(j_\tau)}{j_{\sigma\tau}}
 \in L^\times.
 \]
 
-Associativity, or cancellation of the three cochain factors, makes \(a\) a normalized field-valued 2-cocycle. At a chosen completion \(w\), restriction to \(H=G_w\) writes \(a|_H\) as the coboundary of \(j_h(w)\in L_w^\times\). Therefore its local crossed product splits. Lemma 4.2 says that \(A(a)\) splits at every completion of \(K\). The imported theorem (1) makes it split globally, and lesson 5 gives \(a=\delta d\) for a field-valued cochain \(d_\sigma\).
+Associativity, or cancellation of the three cochain factors, makes \(a\) a normalized field-valued 2-cocycle. At a chosen completion \(w\), restriction to \(H=G_w\) writes \(a|_H\) as the coboundary of \(j_h(w)\in L_w^\times\). Therefore its local crossed product splits. Lemma 4.2 says that \(A(a)\) splits at every completion of \(K\). The local–global theorem (1) makes it split globally, and lesson 5 gives \(a=\delta d\) for a field-valued cochain \(d_\sigma\).
 
 The idèles \(e_\sigma=j_\sigma/d_\sigma\) now satisfy \(\delta e=1\). Lemma 5.1 gives \(e_\sigma=b/\sigma(b)\) for an idèle \(b\). Quotienting by \(L^\times\) removes the \(d_\sigma\), so \(c_\sigma=[b]/\sigma([b])\) in \(C_L\). Every cocycle is a coboundary. \(\square\)
 
@@ -356,6 +413,66 @@ It does **not** say that \(H^1(G,\operatorname{Cl}(L))\) always vanishes. For \(
 
 Noether's 1933 paper formulates Theorem 4.4 through ideals, factor systems and operator cosets. Theorem 5.2 is the later idèle-class reading, with the explicit comparison just given. Her 1932 ICM lecture, work 39 §§4–5, already explains why splitting algebras supplies the invariant generalization of cyclic norm statements.
 
+### Biquadratic norms and the obstruction group
+
+For a finite Galois extension write
+
+\[
+\mathcal K(L/K)=
+\frac{K^\times\cap N_{L/K}J_L}{N_{L/K}L^\times}.
+\]
+
+The numerator consists exactly of elements which are norms at every completion. Local preimages may be chosen to be units outside finitely many places by Lemma 4.1, so the local condition gives an actual idèle, not merely an unrestricted product.
+
+**Theorem 5.3 (biquadratic norm obstruction).** If \(G\simeq C_2\times C_2\), then \(\mathcal K(L/K)\simeq C_2\) when every decomposition group is cyclic, and \(\mathcal K(L/K)=1\) when some decomposition group is \(G\).
+
+**Proof.** Use the complete-resolution Tate groups and their exact sequences constructed in [Brauer groups of local and global fields, “Complete resolutions and fundamental classes”](../../NT-CFT/src/brauer-groups-of-local-and-global-fields.md#3-tate-cohomology-and-the-fundamental-class). Applied to \(1\to L^\times\to J_L\to C_L\to1\), exactness gives
+
+\[
+\mathcal K(L/K)\simeq
+\operatorname{coker}\!\left(
+\widehat H^{-1}(G,J_L)\longrightarrow\widehat H^{-1}(G,C_L)\right).
+\tag{B1}
+\]
+
+Indeed the next map is \(K^\times/N_GL^\times\to J_K/N_GJ_L\), whose kernel is the displayed norm obstruction. The coefficient norm on \(L^\times\) is the field norm, and fixed idèles are precisely \(J_K\).
+
+Theorem 24.6 of that preceding arithmetic lesson gives
+
+\[
+\widehat H^{-1}(G,C_L)\simeq
+\widehat H^{-3}(G,\mathbb Z)=H_2(G,\mathbb Z).
+\tag{B2}
+\]
+
+At a place \(v\), Proposition 24.3 similarly identifies \(\widehat H^{-1}(G_w,L_w^\times)\) with \(H_2(G_w,\mathbb Z)\). Its subsection on local-to-global compatibility proves compatibility of the local and global fundamental classes under insertion of a local component. Shapiro and the projection formula therefore make the map in (B1) the sum of the homomorphisms
+
+\[
+H_2(G_w,\mathbb Z)\longrightarrow H_2(G,\mathbb Z)
+\tag{B3}
+\]
+
+induced by subgroup inclusion. The idèle restricted product causes no additional term. At unramified places the decomposition group is cyclic and the unit module is Tate-acyclic: degree zero is the unit-norm calculation, degree minus one follows by Hilbert 90 and rescaling a primitive by a ground-field uniformizer, and cyclic periodicity supplies every degree. Finite chains and cochain relations thus belong to one finite chart; Shapiro on that chart gives the direct sum of the local groups. These are the unit-tail and finite-chart arguments of [Idèles in extensions and their cohomology](../../NT-CFT/src/ideles-in-extensions-and-their-cohomology.md), applied to the same complete resolution.
+
+It remains to compute the small integral homology groups; no obstruction criterion is assumed. The cyclic periodic resolution has alternate maps \(g-1\) and \(1+g+\cdots+g^{n-1}\). Tensoring with the trivial \(\mathbb Z\)-module makes these maps \(0\) and multiplication by \(n\). In degree two its kernel is zero, so \(H_2(C_n,\mathbb Z)=0\).
+
+For \(G=C_2\times C_2\), tensor the two cyclic free resolutions over \(\mathbb Z\) and take the total differential \(d(x\otimes y)=dx\otimes y+(-1)^{\deg x}x\otimes dy\). This is a free \(\mathbb Z[G]\)-resolution: as complexes of abelian groups, each augmented cyclic resolution splits and contracts onto \(\mathbb Z\). Contracting its positive-degree part in the tensor complex leaves the other resolution, which is exact in positive degrees. After tensoring with the trivial module, the groups in degrees one and two are \(\mathbb Z^2\) and \(\mathbb Z^3\), indexed by bidegrees. The degree-two boundary is
+
+\[
+(a,b,c)\longmapsto(2a,2c).
+\]
+
+Its kernel is the middle \((1,1)\)-summand. The degree-three boundaries from bidegrees \((2,1)\) and \((1,2)\) have middle coordinates \(2\) and \(-2\); the other two bidegrees give zero. Hence
+
+\[
+H_2(C_2\times C_2,\mathbb Z)=\mathbb Z/2\mathbb Z.
+\tag{B4}
+\]
+
+If all decomposition groups are cyclic, every source of (B3) is zero, and (B1)–(B4) give \(\mathcal K(L/K)\simeq C_2\). If some decomposition group is \(G\), its map in (B3) is the identity. The cokernel is then zero. These exhaust the subgroups of \(C_2\times C_2\), proving both assertions. \(\square\)
+
+In particular, when the obstruction is \(C_2\), a locally norm element outside the global norm subgroup exists. The argument proves that existence; it determines the obstruction group without choosing a numerical representative. The norm theorem for cyclic extensions and the splitting theorem for general crossed products retain exactly their stated scopes.
+
 ## 6. Exercises
 
 **Exercise 6.1 (easy).** Enumerate the reduced primitive positive definite forms of discriminant \(-20\), compute their genus characters, and identify the principal genus.
@@ -364,7 +481,7 @@ Noether's 1933 paper formulates Theorem 4.4 through ideals, factor systems and o
 
 **Exercise 6.3 (medium).** Verify the cyclic principal genus theorem for \(\mathbb Q(\sqrt{-5})/\mathbb Q\), using its class group of order two. Check explicitly that the nonprincipal prime class above \(2\) fails the norm-residue condition on its norm generator.
 
-**Exercise 6.4 (medium).** Hasse's biquadratic example is \(L=\mathbb Q(\sqrt{-3},\sqrt{13})\). The following standard biquadratic obstruction criterion is given: the Hasse norm principle fails for a biquadratic extension of number fields exactly when every decomposition group is cyclic [Rome, Lemma 2.1 and its proof]. Verify that this criterion applies to \(L/\mathbb Q\). Explain why this refutes a norm theorem for all abelian extensions and why it does not refute Theorem 4.4.
+**Exercise 6.4 (medium).** Hasse's biquadratic example is \(L=\mathbb Q(\sqrt{-3},\sqrt{13})\). Use Theorem 5.3: the norm-obstruction group is nontrivial exactly when every decomposition group is cyclic. Verify that this criterion applies to \(L/\mathbb Q\). Explain why this refutes a norm theorem for all abelian extensions and why it does not refute Theorem 4.4.
 
 **Exercise 6.5 (hard).** Express Noether's argument in cohomological language using \(1\to P_L\to I_L\to\operatorname{Cl}(L)\to1\). Define the connecting map on representatives, prove its injectivity, and identify the precise local subgroup whose intersection with its image vanishes. Compare the idèle-class connecting map.
 
@@ -380,7 +497,7 @@ Take \(\mathfrak p=(2,1+\sqrt{-5})\). Its norm is \(2\), and \(\mathfrak p^2=(2)
 
 **Solution 6.4.** The square classes of \(-3\) and \(13\) are independent, so the Galois group is \((\mathbb Z/2)^2\), abelian and noncyclic. The three quadratic subfields have discriminants \(-3\), \(13\), and \(-39\); only \(3\) and \(13\) ramify. At \(3\), \(13\equiv1\pmod3\), so \(3\) splits in \(\mathbb Q(\sqrt{13})\). The decomposition group in \(L\) is consequently contained in the order-two subgroup fixing that subfield. At \(13\), \(-3\equiv10\equiv6^2\pmod{13}\), so \(13\) splits in \(\mathbb Q(\sqrt{-3})\), and its decomposition group likewise has order at most two. All other finite places are unramified, with cyclic decomposition group generated by Frobenius. At the real place the completion is \(\mathbb C\), with an order-two decomposition group. Thus every decomposition group is cyclic.
 
-The stated biquadratic criterion gives failure of the Hasse norm principle: there exists \(a\in\mathbb Q^\times\) which is a norm at every completion but is not \(N_{L/\mathbb Q}(x)\) for any \(x\in L^\times\). This last existence is the imported obstruction theorem, not an element whose non-norm property we have proved independently. It disproves the proposed extension of the cyclic Hasse norm theorem to all abelian groups. It leaves (1) intact: for a noncyclic extension an element norm condition is not the splitting condition for one cyclic algebra with that extension as its cyclic coefficient field. Noether imposes actual local splitting of a field-valued factor system; Lemma 4.3 and (1) still apply to every Galois group.
+Theorem 5.3 gives failure of the Hasse norm principle: there exists \(a\in\mathbb Q^\times\) which is a norm at every completion but is not \(N_{L/\mathbb Q}(x)\) for any \(x\in L^\times\). The existence follows from the proved nonzero cokernel (B1), whose order is two; no particular numerical element is needed for this existence assertion. It disproves the proposed extension of the cyclic Hasse norm theorem to all abelian groups. It leaves (1) intact: for a noncyclic extension an element norm condition is not the splitting condition for one cyclic algebra with that extension as its cyclic coefficient field. Noether imposes actual local splitting of a field-valued factor system; Lemma 4.3 and (1) still apply to every Galois group.
 
 **Solution 6.5.** Represent a class cocycle \(c_\sigma\) by ideals \(\mathfrak c_\sigma\), with \(\mathfrak c_1=\mathcal O_L\). Its defect (4) is a principal-ideal-valued 2-cocycle. If representatives change to \((x_\sigma)\mathfrak c_\sigma\), the defect changes by \(\delta((x_\sigma))\); thus its class in \(H^2(G,P_L)\) is independent of the representatives. Changing the class cocycle by a class coboundary also preserves this class: lift that coboundary to \(\mathfrak b/\sigma(\mathfrak b)\), whose defect is \(1\). These verifications define the connecting map
 
@@ -400,18 +517,16 @@ For the idèle sequence the representatives are \(j_\sigma\), and their defects 
 
 ## Sources and further reading
 
-- **[Noether, work 41]** Emmy Noether, *Der Hauptgeschlechtssatz für relativ-galoissche Zahlkörper*, Mathematische Annalen **108** (1933), 411–419, especially §2.1 for the refined class division, §2.2 for the three forms, and §2.3 for the two lemmas and their combination. The [English collected edition](https://github.com/KokunoYumeto/emmy-noether-en) provides a companion text. Section 4 independently writes the reduction in the left-action convention of this course.
-- **[Noether, work 39]** Emmy Noether, *Hyperkomplexe Systeme in ihren Beziehungen zur kommutativen Algebra und zur Zahlentheorie*, Verhandlungen des Internationalen Mathematiker-Kongresses Zürich **1** (1932), 189–194, §§4–5. The lecture explains cyclic norms and the invariant splitting-algebra formulation.
-- **[Brauer–Hasse–Noether, 1932]** Richard Brauer, Helmut Hasse and Emmy Noether, *Beweis eines Hauptsatzes in der Theorie der Algebren*, Journal für die reine und angewandte Mathematik **167** (1932), 399–404. The local–global input (1) is used in the modern form of [Milne CFT, Chapter VIII, Theorem 4.2].
-- **[Milne CFT]** J. S. Milne, [*Class Field Theory*](https://www.jmilne.org/math/CourseNotes/CFT.pdf), course notes, Chapter VIII: Theorem 3.1 (the Hasse norm theorem for cyclic extensions; it does not extend to arbitrary abelian extensions) and Theorem 4.2 (the local–global exact sequence of Brauer groups). The global theorems are stated as inputs; their consequences here have complete proofs.
-- **[Rome]** Nick Rome, *The Hasse Norm Principle for Biquadratic Extensions*, Lemma 2.1 and its proof, pp.3–4 of [arXiv:1707.00412v2](https://arxiv.org/pdf/1707.00412). The given obstruction criterion in Exercise 6.4 is imported; the decomposition groups of Hasse's example are checked in its solution.
-- **[Terada]** Fumiyuki Terada, *On the principal genus theorem concerning the abelian extensions*, Tohoku Mathematical Journal, Second Series **4** (1952), 141–152: the introduction, p.141, states Hasse's cyclic ray theorem; §1, equation (11), p.143, specifies its conductor and genus modulus. The [original article](https://www.jstage.jst.go.jp/article/tmj1949/4/2/4_2_141/_pdf) fixes the modulus conventions used in section 3.
+- **[Noether, work 41]** Emmy Noether, [*Der Hauptgeschlechtssatz für relativ-galoissche Zahlkörper*, free English edition](https://github.com/KokunoYumeto/emmy-noether-en), Mathematische Annalen **108** (1933), 411–419, especially §2.1 for the refined class division, §2.2 for the three forms, and §2.3 for the two lemmas and their combination. The [English collected edition](https://github.com/KokunoYumeto/emmy-noether-en) provides a companion text. Section 4 independently writes the reduction in the left-action convention of this course.
+- **[Noether, work 39]** Emmy Noether, [*Hyperkomplexe Systeme in ihren Beziehungen zur kommutativen Algebra und zur Zahlentheorie*, free original proceedings](https://www.mathunion.org/fileadmin/ICM/Proceedings/ICM1932.1/ICM1932.1.ocr.pdf), Verhandlungen des Internationalen Mathematiker-Kongresses Zürich **1** (1932), 189–194, §§4–5. The lecture explains cyclic norms and the invariant splitting-algebra formulation.
+- **[Brauer–Hasse–Noether, 1932]** Richard Brauer, Helmut Hasse and Emmy Noether, [*Beweis eines Hauptsatzes in der Theorie der Algebren*, free English collected edition](https://github.com/KokunoYumeto/emmy-noether-en), Journal für die reine und angewandte Mathematik **167** (1932), 399–404. The local–global input (1) is used in the modern form of [Milne CFT, Chapter VIII, Theorem 4.2].
+- **[Milne CFT]** J. S. Milne, [*Class Field Theory*](https://www.jmilne.org/math/CourseNotes/CFT.pdf), course notes, Chapter VIII: Theorem 3.1 (the Hasse norm theorem for cyclic extensions; it does not extend to arbitrary abelian extensions) and Theorem 4.2 (the local–global exact sequence of Brauer groups). The preceding programme lessons linked in section 1 prove these global theorems; their applications here retain the cyclic and local hypotheses.
+- **[Rome]** Nick Rome, *The Hasse Norm Principle for Biquadratic Extensions*, Lemma 2.1 and its proof, pp.3–4 of [arXiv:1707.00412v2](https://arxiv.org/pdf/1707.00412). Theorem 5.3 supplies the norm-obstruction proof used in Exercise 6.4; its solution computes the decomposition groups of the indicated field.
+- **[Terada]** Fumiyuki Terada, *On the principal genus theorem concerning the abelian extensions*, Tohoku Mathematical Journal, Second Series **4** (1952), 141–152: the introduction, p.141, gives Hasse's cyclic ray formulation; §1, equation (11), p.143, specifies its conductor and genus modulus. Theorem 3.4 proves the ray assertion in the conventions used here. The [original article](https://www.jstage.jst.go.jp/article/tmj1949/4/2/4_2_141/_pdf) fixes the modulus conventions used in section 3.
 - **[Lemmermeyer]** Franz Lemmermeyer, *The Development of the Principal Genus Theorem*, [arXiv:math/0207306](https://arxiv.org/pdf/math/0207306), p.23. Section 3 explains the conductor qualification needed when using its abbreviated ray-class statement.
 
-The further path for the global inputs and their full arithmetic proofs is *Class field theory*. The lesson *Quadratic fields: ideal classes and binary quadratic forms* will supply the wider ideal–form background. This course has completed its passage from operator groups and semisimple representations to the arithmetic meaning of crossed-product factor systems.
+The arithmetic proofs and the quadratic-form background are the programme readings linked in section 1. Crossed-product factor systems connect the representation theory developed here to these norm and ideal-class calculations.
 
-## What this lesson does not prove
+## Scope and prerequisites
 
-The global Hasse norm theorem and Brauer–Hasse–Noether splitting theorem are imported with exact locators, as are Dirichlet's theorem, quadratic reciprocity and prime splitting, the genus-character characterization, form reduction and the ideal–form correspondence. The conductor-normalized ray refinement, including its different–conductor modulus relation, and the biquadratic obstruction criterion are stated with sources. Their general proofs belong to the relevant number-theory and class-field-theory courses.
-
-The imaginary quadratic principal-genus assertion, its character independence and two-torsion bound, the displayed examples, the cyclic ideal reduction, Noether's exact refined theorem, the conditional idèle-class reduction, and all five exercise solutions are proved here. We neither assume nor assert a Hasse norm theorem for arbitrary abelian extensions. The refinement of factor systems, the requirement that generators actually form a field cocycle, and the infinite-place conditions remain part of the statements.
+The arithmetic proofs used here are the precisely linked cyclic norm, Brauer local–global, quadratic-form, reciprocity, local ramification and class-formation results of the preceding programme. Section 1 specifies the acyclic route from the algebra of lessons 4–5 through arithmetic to this lesson. The imaginary quadratic character kernel, cyclic ideal and ray assertions, local norm calculation beyond the conductor, Noether's refined ideal-class theorem, idèle reductions and biquadratic obstruction are proved here from those inputs, with all five exercise solutions. Ordinary and narrow groups, finite and infinite places, and cyclic and arbitrary finite Galois extensions keep their distinct conditions throughout.

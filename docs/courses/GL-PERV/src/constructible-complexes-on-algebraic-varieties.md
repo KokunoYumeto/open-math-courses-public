@@ -3000,6 +3000,51 @@ For finiteness and duality, see the author edition of [SGA \(4\frac12\), *Théor
 
 First, ordinary higher images have a finite bound before their constructibility is known. On an affine target and an affine source of dimension at most \(d\), the support estimate of the cohomological-dimension companion, Theorem 6.2, gives \(R^qf_*F=0\) for \(q>d\), for every torsion sheaf \(F\). Cover a general separated source by \(r\) affine opens. All multiple intersections are affine, of dimension at most \(d\). The finite Čech-to-derived-image spectral sequence therefore gives the sufficient bound \(d+r-1\). Finite affine covering of the target gives a uniform bound. This is a bound on the relative functor, so it does not assume that \(k\) has finite Galois cohomological dimension. The same companion proves filtered-colimit continuity and, over a separably closed field, absolute torsion cohomological dimension at most \(2d\). Every spectral sequence below consequently has a finite contributing range when the input is bounded.
 
+**Finite-cover bound (M.1a).** Let \(f:X\to Y\), and let \(X_1,\ldots,X_r\) be a finite open cover, with \(r\geq1\). For a nonempty increasing tuple \(J=(i_0,\ldots,i_p)\), put \(X_J=\bigcap_{i\in J}X_i\), let \(v_J:X_J\to X\) be the inclusion, and put \(f_J=fv_J\). Suppose, for the coefficient category in question, every \(f_J\) has higher-image bound \(D\geq0\). Then
+\[
+R^nf_*F=0\quad(n>D+r-1)
+\tag{M.FC1}
+\]
+for every sheaf \(F\) in that category. More generally, if \(H^qK=0\) outside \([a,b]\), then
+\[
+H^n(Rf_*K)=0\quad(n<a\text{ or }n>b+D+r-1).
+\tag{M.FC2}
+\]
+
+Here is a construction of the comparison and its bound. Work first with abelian étale sheaves or with \(\Lambda\)-module sheaves. Choose an injective resolution \(F\to I^\bullet\), zero in negative degrees. For \(0\leq p<r\), set
+\[
+C^{p,q}=
+\bigoplus_{i_0<\cdots<i_p}
+v_{J*}(I^q|_{X_J}),\qquad
+(\delta c)_{i_0\ldots i_{p+1}}
+=\sum_{\nu=0}^{p+1}(-1)^\nu
+c_{i_0\ldots\widehat{i_\nu}\ldots i_{p+1}}|_{X_J}.
+\tag{M.FC3}
+\]
+An empty intersection contributes zero. The horizontal and vertical maps commute, so the total differential on \(C^{p,q}\) is \(\delta+(-1)^p d_I\); its square is zero. The augmentation \(I^q\to C^{0,q}\) is restriction.
+
+Every augmented horizontal row is exact. On an étale test object mapping into \(X_t\), treat a tuple of indices as alternating, with value zero when an index repeats. Define \(hc\) by inserting \(t\) as the first index. This is a map on sections there because intersection with \(X_t\) changes none of that test object's sections. In \(\delta h+h\delta\), deleting the inserted index leaves \(c\); deletion of each other index occurs twice with opposite signs. Thus \(\delta h+h\delta=1\), including the augmented degree, where \(hc=c_t\). These test objects cover \(X\), proving exactness as sheaves.
+
+The augmentation
+\[
+I^\bullet\longrightarrow\operatorname{Tot}C^{\bullet,\bullet}
+\tag{M.FC4}
+\]
+is a quasi-isomorphism. To see this directly, include the augmented column in the total complex. In a total cocycle take its component of smallest vertical degree. Its horizontal differential is zero, so row exactness lets us subtract a total boundary removing it. The new component has vertical degree one greater and horizontal degree one less. There are only \(r+1\) augmented columns. At the last column the augmentation is injective, so the remaining component is zero. This proves the augmented total is acyclic.
+
+The terms of \(\operatorname{Tot}C\) are injective. Indeed restriction \(v_J^*\) has the exact left adjoint \(v_{J!}\), and \(v_{J*}\) has the exact left adjoint \(v_J^*\). Applying either adjunction to a monomorphism proves that these right adjoints preserve injectives. The open adjunction and extension construction are proved in BB.3: restriction keeps the geometric stalk, and extension by zero keeps it on the open and gives zero outside. Thus both functors are exact. BB.3 also supplies enough module injectives; iterating embeddings and cokernels gives the bounded-below resolution used here. Finite sums of injectives are injective by applying Hom componentwise. Consequently (M.FC4) is a comparison of injective resolutions, and applying \(f_*\) computes the actual \(Rf_*F\) by
+\[
+T^{p,q}=\bigoplus_{|J|=p+1}f_{J*}(I^q|_{X_J}).
+\tag{M.FC5}
+\]
+The comparison comes from restriction maps and the chosen resolution; it is not an identification chosen separately on cohomology.
+
+Filter this total complex by columns numbered at least \(p\). Its successive quotient is the \(p\)-th column placed in total degrees \(p+q\). The restriction \(I^\bullet|_{X_J}\) is an injective resolution of \(F|_{X_J}\), so that quotient has cohomology \(\bigoplus_{|J|=p+1}R^qf_{J*}(F|_{X_J})\) in degree \(p+q\). It vanishes above \(D+p\). Starting with the last column, the long exact sequences of these finitely many filtered subcomplexes give the upper bound \(D+r-1\), proving (M.FC1). There is no negative cohomology. The finite ordinary truncation tower of \(K\) has successive terms \(H^q(K)[-q]\), each with image in degrees \([q,q+D+r-1]\). The triangle cohomology sequences give (M.FC2).
+
+For the geometric application, make \(Y\) affine and cover its inverse image by \(r\) affine opens. Separatedness over \(k\) makes their intersections affine: a twofold intersection is the inverse image of the closed diagonal in the product of the two affine opens, and further intersections follow by induction. Each \(f_J\) is therefore affine. Theorem 6.2 of the cohomological-dimension companion gives \(D=d\), where \(d\) bounds the dimensions of these opens. In a finite module category the underlying-cohomology comparison of BB.3 gives the same bound. Restriction to an open in \(Y\) commutes with this derived image: sections agree before deriving, and restriction to the inverse-image open preserves injectives by the adjunction just proved. A finite affine cover of \(Y\) therefore gives one bound by taking the maximum of its finitely many \(d+r-1\). The empty source has zero image. No bound on the Galois cohomological dimension of \(k\) enters this relative calculation.
+
+For the sheaf form of the cover construction and its cohomological comparison, see the Stacks Project, [§20.24](https://stacks.math.columbia.edu/tag/02FR) and [§59.19](https://stacks.math.columbia.edu/tag/03OU).
+
 One detail in that affine-bound proof is useful here. Its boundary calculation, [Theorem 5.1, Interlude A](course:ag-etale-cohomology/cohomological-dimension-and-the-kunneth-formula#5-the-affine-vanishing-theorem), uses a local domain \(R\) containing a separably closed field \(L\), and \(0\ne f\in\mathfrak m_R\). The element \(f\) is transcendental over \(L\): a nonzero algebraic element has its inverse in \(L[f]\), contradicting membership in the maximal ideal. Moreover \(R[1/f]\) contains the whole rational function field \(L(f)\). For every nonzero polynomial write \(P(T)=T^r(c+TQ(T))\), with \(c\ne0\). Then \(c+fQ(f)\) is a unit in the local ring, and \(P(f)\) becomes a unit after inverting \(f\). This supplies every denominator of \(L(f)\). The strict-local finite models have fraction fields of the dimension stated there, so the smaller-dimensional affine induction applies to their finitely generated \(L(f)\)-subalgebras. The support-drop proof in Theorem 6.2 then uses those affine bounds and continuity, not ordinary geometric-fibre cohomology for a nonproper map.
 
 Let \(k_s\) be a separable closure of \(k\). The morphism \(\operatorname{Spec}k_s\to\operatorname{Spec}k\) is an affine inverse limit of finite étale morphisms. Étale localization and the continuity argument AL.4 identify pullback of \(Rf_*F\) with the corresponding direct image over \(k_s\). The extension from \(k_s\) to an algebraic closure is purely inseparable; étale topological invariance identifies the two sites and their direct-image functors. These pullbacks are conservative. Constructibility descends along this surjective quasi-compact change of base by the finite-presentation detection lemma in the extension-by-zero companion. Thus it suffices to prove ordinary finiteness over algebraically closed fields, simultaneously in all characteristics prime to \(n\).

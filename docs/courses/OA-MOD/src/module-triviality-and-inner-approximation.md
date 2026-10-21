@@ -40,7 +40,7 @@ a\theta=\theta a,\qquad a|_{Z(N)}=\mathrm{id},\qquad
 
 Here \(N\) is semifinite of type \(\mathrm{II}_\infty\), with separable predual, and \(\tau\) is a specified faithful normal semifinite trace. Its center is a standard probability algebra \(L^\infty(X,\mu)\). The action of \(\theta\) on the center is \(f\mapsto f\circ T^{-1}\), where \(T\) is an aperiodic ergodic nonsingular transformation with nonatomic base. These properties follow from the return construction in EDD04–06, including its coarse-type identification.
 
-We use the full field and trace identifications in FWC01–04, the nonsingular towers and finite exhaustion in AFM03, normal functional representations in CP04–06, and canonical implementations in CL01. The general nonfactor asymptotic-centralizer construction is the [quotient proof in Section 3 of Trace scaling on the hyperfinite semifinite factor](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/trace-scaling-on-the-hyperfinite-semifinite-factor.md#3-what-type-i-amplification-preserves). Its quotient automorphism need not preserve the auxiliary trace. Sections 7–9 below retain this distinction.
+We use the full field and trace identifications in FWC01–04, the nonsingular towers and finite exhaustion in AFM03, normal functional representations in CP04–06, and canonical implementations in CL01. The general nonfactor asymptotic-centralizer construction is the [quotient proof in Section 3 of Trace scaling on the hyperfinite semifinite factor](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/trace-scaling-on-the-hyperfinite-semifinite-factor.md#3-what-type-i-amplification-preserves). Its quotient automorphism need not preserve the auxiliary trace. Sections 7–9 below retain this distinction.
 
 ## The whole coefficient field and its automorphisms
 
@@ -78,7 +78,7 @@ Each \(a_b\) preserves \(\tau_Q\). An automorphism of the semifinite factor \(Q\
 \int_A c(b)\,d\mu(b)=\mu(A).
 \]
 
-Thus \(c=1\) almost everywhere. The trace-preserving approximation proof [Proposition 5.1 of Trace scaling](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/trace-scaling-on-the-hyperfinite-semifinite-factor.md#5-straightening-a-trace-preserving-automorphism) now gives
+Thus \(c=1\) almost everywhere. The trace-preserving approximation proof [Proposition 5.1 of Trace scaling](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/outer-conjugacy-and-afd-classification/src/trace-scaling-on-the-hyperfinite-semifinite-factor.md#5-straightening-a-trace-preserving-automorphism) now gives
 
 \[
 a_b\in\overline{\operatorname{Inn}(Q)}.

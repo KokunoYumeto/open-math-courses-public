@@ -13,8 +13,11 @@ We use analytic graphs $u:\mathbb K^n\to\mathbb K^m$ and local point diffeomorph
 Two graphs have the same $k$-jet at $x$ when their derivatives through order $k$ agree there. Write coordinates on $J^k(\mathbb K^n,\mathbb K^m)$ as
 
 $$
-(x^i,u^\alpha_J),\qquad |J|\le k,\quad
-1\le i\le n,\quad1\le\alpha\le m.
+\begin{aligned}
+&(x^i,u^\alpha_J), |J|\le k,
+1\le i\le n,\\
+&1\le\alpha\le m.
+\end{aligned}
 $$
 
 Here $J$ is an unordered multi-index, including the empty index $u^\alpha_\varnothing=u^\alpha$. Mixed derivatives are symmetric, so each multi-index occurs once. The dimension is
@@ -45,12 +48,29 @@ $$
 Where $\det A\ne0$, the transformed submanifold is again a graph over $\widetilde x$. Its derivatives are calculated using
 
 $$
-\widetilde D_j=(A^{-1})^i_jD_i,\qquad
-\widetilde u^\alpha_j=(A^{-1})^i_jD_iU^\alpha.
-\tag{1.3}
+\begin{aligned}
+&\widetilde D_j=(A^{-1})^i_jD_i,\\
+&\widetilde u^\alpha_j=(A^{-1})^i_jD_iU^\alpha.
+\end{aligned}\tag{1.3}
 $$
 
 Repeating (1.3) determines all transformed derivatives through order $k$. At each step, the result depends only on the original derivatives through that order, so it is independent of the realizing graph. This defines the **prolonged transformation** on $J^k$. Transforming a graph in two steps gives the same jet as transforming it by the composite; therefore prolongation preserves the transformation law. Its domain includes the graph-transversality condition $\det A\ne0$.
+
+Prolongation also preserves the bracket. Let $\Phi_t$ and $\Psi_s$ be the local flows of point fields $v,w$, and work on a common graph chart for sufficiently small $t,s$. On a finite-order function, their pullbacks have first terms $1+tv$ and $1+sw$. Multiplying these four pullbacks gives
+
+$$
+\Phi_t^*\Psi_s^*\Phi_{-t}^*\Psi_{-s}^*
+=1+ts[v,w]+O(t^2s,ts^2).
+$$
+
+Indeed, the pure $t$ and $s$ terms cancel, and the mixed term is $vw-wv$; terms of degree at least two in either parameter cannot contribute to that coefficient. The same calculation on the jet chart gives the mixed term $[\operatorname{pr}^{(k)}v,\operatorname{pr}^{(k)}w]$. By the composition law just proved, its four jet transformations are the prolongation of the same point commutator. The finite chain rule (1.3), or its first variation in Theorem 2.1, makes their mixed coefficient $\operatorname{pr}^{(k)}[v,w]$. Equality of these coefficients on every jet coordinate proves
+
+$$
+[\operatorname{pr}^{(k)}v,\operatorname{pr}^{(k)}w]
+=\operatorname{pr}^{(k)}[v,w].
+\tag{1.4}
+$$
+
 
 ## 2. The prolongation formula
 
@@ -64,21 +84,21 @@ $$
 The generator of its prolonged flow has the form
 
 $$
-\operatorname{pr}^{(k)}v=
-\sum_i\xi^i\partial_{x^i}
-+\sum_{\alpha,\,|J|\le k}\phi^\alpha_J\partial_{u^\alpha_J},
-\qquad \phi^\alpha_\varnothing=\phi^\alpha.
-\tag{2.1}
+\begin{aligned}
+&\operatorname{pr}^{(k)}v=
+\sum_i\xi^i\partial_{x^i}\\
+&+\sum_{\alpha,\,|J|\le k}\phi^\alpha_J\partial_{u^\alpha_J}, \phi^\alpha_\varnothing=\phi^\alpha.
+\end{aligned}\tag{2.1}
 $$
 
 **Theorem 2.1 (prolongation).** Set $Q^\alpha=\phi^\alpha-\sum_i\xi^iu^\alpha_i$. Then
 
 $$
-\phi^\alpha_{J,i}
-=D_i\phi^\alpha_J-\sum_j u^\alpha_{J,j}D_i\xi^j,
-\qquad
-\phi^\alpha_J=D_JQ^\alpha+\sum_i\xi^iu^\alpha_{J,i}.
-\tag{2.2}
+\begin{aligned}
+&\phi^\alpha_{J,i}
+=D_i\phi^\alpha_J-\sum_j u^\alpha_{J,j}D_i\xi^j,\\
+&\phi^\alpha_J=D_JQ^\alpha+\sum_i\xi^iu^\alpha_{J,i}.
+\end{aligned}\tag{2.2}
 $$
 
 In particular, the apparent order-$|J|+1$ derivatives in the second formula cancel.
@@ -95,10 +115,10 @@ At the empty index, the characteristic formula is $Q^\alpha+\xi^iu^\alpha_i=\phi
 
 $$
 \begin{aligned}
-\phi^\alpha_{J,i}
-&=D_iD_JQ^\alpha+
-\sum_j(D_i\xi^j)u^\alpha_{J,j}
-+\sum_j\xi^ju^\alpha_{J,j,i}
+&\phi^\alpha_{J,i}
+=D_iD_JQ^\alpha+
+\sum_j(D_i\xi^j)u^\alpha_{J,j}\\
+&+\sum_j\xi^ju^\alpha_{J,j,i}
 -\sum_j u^\alpha_{J,j}D_i\xi^j\\
 &=D_{J,i}Q^\alpha+\sum_j\xi^ju^\alpha_{J,i,j}.
 \end{aligned}
@@ -109,10 +129,10 @@ Commutation of total derivatives and symmetry of jet indices complete the induct
 The compact notation is
 
 $$
-\operatorname{pr}v=\operatorname{pr}v_Q+\sum_i\xi^iD_i,
-\qquad
-\operatorname{pr}v_Q=\sum_{\alpha,J}D_JQ^\alpha\partial_{u^\alpha_J}.
-\tag{2.3}
+\begin{aligned}
+&\operatorname{pr}v=\operatorname{pr}v_Q+\sum_i\xi^iD_i,\\
+&\operatorname{pr}v_Q=\sum_{\alpha,J}D_JQ^\alpha\partial_{u^\alpha_J}.
+\end{aligned}\tag{2.3}
 $$
 
 These are identities on the infinite jet space, or on functions of finite order with one extra jet level available. The two terms on the right need not separately be vector fields on $J^k$; their sum has the cancellation just proved. This qualification avoids treating a top-order total derivative as an intrinsic vector field on a finite jet space.
@@ -134,23 +154,27 @@ for each equation and each infinitesimal generator.
 
 Preservation of $E$ implies that transformed solution graphs are still solutions, whenever they remain graphs. If “symmetry” means only preservation of actual solutions, necessity of (3.1) additionally requires that every equation jet being tested be locally realized by a solution. A maximal-rank system alone does not guarantee this realization for an arbitrary PDE system. The theorem above concerns the entire jet submanifold and is the precise geometric version proved here.
 
-For singular defining equations, tangency can fail to be sufficient. For example $\Delta=u^2$ has zero derivative on $u=0$, so $v=\partial_u$ satisfies $v\Delta=0$ there, but its translations do not preserve $u=0$. Necessity survives for a preserved zero set. The sketch's statement reversing this implication is corrected accordingly.
+For singular defining equations, tangency can fail to be sufficient. For example $\Delta=u^2$ has zero derivative on $u=0$, so $v=\partial_u$ satisfies $v\Delta=0$ there, but its translations do not preserve $u=0$. Necessity survives for a preserved zero set.
 
 **Example 3.2: heat scaling and a boost.** For $\Delta=u_t-u_{xx}$, take $v=x\partial_x+2t\partial_t$. Formula (2.2) gives $\phi_t=-2u_t$ and $\phi_{xx}=-2u_{xx}$, hence $\operatorname{pr}v(\Delta)=-2\Delta$.
 
 For $w=2t\partial_x-xu\partial_u$, the same recurrence gives
 
 $$
-\phi_t=-xu_t-2u_x,\qquad
-\phi_x=-u-xu_x,\qquad
-\phi_{xx}=-2u_x-xu_{xx}.
+\begin{aligned}
+&\phi_t=-xu_t-2u_x,
+\phi_x=-u-xu_x,\\
+&\phi_{xx}=-2u_x-xu_{xx}.
+\end{aligned}
 $$
 
 Thus $\operatorname{pr}w(\Delta)=-x\Delta$. Both are symmetries. Their finite transformations are
 
 $$
-(x,t,u)\mapsto(e^\varepsilon x,e^{2\varepsilon}t,u),\qquad
-(x,t,u)\mapsto(x+2\varepsilon t,t,e^{-\varepsilon x-\varepsilon^2t}u).
+\begin{aligned}
+&(x,t,u)\mapsto(e^\varepsilon x,e^{2\varepsilon}t,u),\\
+&(x,t,u)\mapsto(x+2\varepsilon t,t,e^{-\varepsilon x-\varepsilon^2t}u).
+\end{aligned}
 $$
 
 The boost consequently sends a solution $f$ to $e^{-\varepsilon x+\varepsilon^2t}f(x-2\varepsilon t,t)$. The differing signs of the two exponential expressions come from expressing the transformed graph in its new independent variables.
@@ -185,9 +209,10 @@ Theorem 4.1 and formula (4.1) do not prove this assertion. In particular, the ma
 **Proposition 4.2 (finite generators of a fixed-level invariant field).** Let $k$ be a field of characteristic zero, let $X$ be an integral finite-type $k$-variety, and let $F$ be a subfield with $k\subseteq F\subseteq K=k(X)$. Then there are algebraically independent elements $t_1,\ldots,t_d\in F$ over $k$ and an element $w\in F$ such that
 
 $$
-F=k(t_1,\ldots,t_d,w),\qquad
-[F:k(t_1,\ldots,t_d)]<\infty.
-\tag{4.2}
+\begin{aligned}
+&F=k(t_1,\ldots,t_d,w),\\
+&{}[F:k(t_1,\ldots,t_d)]<\infty.
+\end{aligned}\tag{4.2}
 $$
 
 In particular, this applies to the field of rational invariants of an algebraic isotropy action on an integral finite-order equation fibre $X=E^\ell_a$, over $k=\mathbb R$ or $\mathbb C$. In this application $F$ means invariance under the full action, as an identity of rational functions, not merely annihilation by its infinitesimal generators.
@@ -211,9 +236,11 @@ $$
 the invariant subring satisfies
 
 $$
-\bigl(K[z_1,\ldots,z_r]\bigr)^\Gamma
-=K^\Gamma[z_1,\ldots,z_r].
-\tag{4.3}
+\begin{aligned}
+&\bigl(K[z_1,\ldots,z_r]\bigr)^\Gamma
+=K^\Gamma[z_1,\ldots,\\
+&z_r].
+\end{aligned}\tag{4.3}
 $$
 
 **Proof.** The evaluation homomorphism $\operatorname{ev}:K[T_1,\ldots,T_r]\to L$, $T_i\mapsto z_i$, is injective by algebraic independence. Consequently a polynomial $P=\sum_{\alpha\in A}h_\alpha z^\alpha$, for a finite set $A\subset\mathbb N^r$, has unique coefficients in $K$. If $P$ is fixed by $\Gamma$, applying any $g_L$ and subtracting gives
@@ -266,16 +293,20 @@ $$
 We regard an element of $S^j(T^*)\otimes_F V$ as a symmetric $j$-linear map $T^j\to V$. For $v\in T$ define the $F$-linear insertion map
 
 $$
-c_v:S^{j+1}(T^*)\otimes_F V\longrightarrow S^j(T^*)\otimes_F V,
-\qquad
-(c_vp)(v_1,\ldots,v_j)=p(v,v_1,\ldots,v_j).
+\begin{aligned}
+&c_v:S^{j+1}(T^*)\otimes_F V\longrightarrow S^j(T^*)\otimes_F V,\\
+&(c_vp)(v_1,\ldots,v_j)=p(v,v_1,\ldots,v_j).
+\end{aligned}
 $$
 
 Assume $c_v(g_{j+1})\subseteq g_j$ for all $j$ and all $v\in T$. Define the first prolongation by
 
 $$
-g_j^{(1)}=
-\{p\in S^{j+1}(T^*)\otimes_F V:c_vp\in g_j\text{ for every }v\in T\}.
+\begin{aligned}
+&g_j^{(1)}=
+\{p\in S^{j+1}(T^*)\otimes_F V:\\
+&c_vp\in g_j\text{ for every }v\in T\}.
+\end{aligned}
 $$
 
 Then some integer $q\geq0$ satisfies $g_{j+1}=g_j^{(1)}$ for every $j\geq q$. No freeness of the graded dual module is assumed.
@@ -327,9 +358,9 @@ $$
 
 This is exactly $g_{j+1}=g_j^{(1)}$. If $V=0$, the same proof reduces to zero spaces. The proof uses finite generation of the **relation submodule** $I$, not a claimed free basis of $P/I$. $\square$
 
-**What remains for the global theorem.** At one fixed infinite jet, once its completed orbit symbols satisfy the contraction hypothesis, Lemma 4.5 supplies eventual equality. It does not give a common $q$ or one finite-level open set for every infinite jet above it. The remaining argument must prove the contraction property uniformly, then control specialization of the finite relation presentation over that same finite-level open set, with no new exceptional higher-jet denominators. The descending chain of closures of total images used earlier in §2.2 is not by itself an argument identifying every individual fibre image. Those fibrewise comparisons must be supplied. The full uniform statement and its downstream horizontal-rank and affine-orbit-bundle uses remain assigned obligations; the lemma does not replace them with a pointwise claim.
+**Uniformity for the global theorem.** At one fixed infinite jet, once its completed orbit symbols satisfy the contraction hypothesis, Lemma 4.5 supplies eventual equality. It does not give a common $q$ or one finite-level open set for every infinite jet above it. Uniform contraction and exact specialization over one finite-level invariant open are proved in Theorem 4.28. Theorem 4.30 supplies the quotient-symbol cohomology, and Theorem 4.38 proves the affine quotient and polynomial generation assertions. The descending chain of closures of total images in §2.2 of Kruglikov–Lychagin does not by itself identify every individual fibre image; Example 4.6 exhibits the distinction. Lemma 4.5 is a pointwise statement and does not replace these uniform arguments.
 
-The author's [erratum to the 2016 paper](https://serre.mat-stat.uit.no/ansatte/boris/corr/Erratum-SM2016.pdf) corrects an invariant derivation and the revisited example in §§3.5 and 4.5. It does not amend the module argument in §2.2. Those example corrections must accompany any future use of that example; none of its formulas is imported here.
+The author's [erratum to the 2016 paper](https://serre.mat-stat.uit.no/ansatte/boris/corr/Erratum-SM2016.pdf) corrects an invariant derivation and the revisited example in §§3.5 and 4.5. It does not amend the module argument in §2.2.
 
 
 
@@ -348,8 +379,11 @@ $$
 with coordinates $(x_2,\ldots,x_k)$ and $(v_0,\ldots,v_{k-1})$, respectively. Thus $E^1$ is a point. Let $\pi_{k+1,k}:E^{k+1}\to E^k$ forget $x_{k+1}$, and let $\rho_{k+1,k}:J^{k+1}\to J^k$ forget $v_k$. The former is an affine-line bundle and the latter is a surjective $F$-linear map. Define the algebraic vector subbundle
 
 $$
-S^k=\left\{(x,v)\in E^k\times J^k:
-v_{i-1}=x_{i+1}v_i\quad(1\leq i\leq k-1)\right\}.
+\begin{aligned}
+&S^k=\bigl\{(x,v)\in E^k\times J^k:
+v_{i-1}\\
+&=x_{i+1}v_i(1\leq i\leq k-1)\bigr\}.
+\end{aligned}
 $$
 
 It is a trivial line bundle. Indeed, set $s=v_{k-1}$ and recover its coordinates by
@@ -390,9 +424,11 @@ Fix any integer $\ell\geq1$ and any nonempty Zariski-open $U\subset E^\ell$. The
 Lift this point to $y=(x_2,\ldots,x_\ell,0)\in E^{\ell+1}$. Then
 
 $$
-\pi_{\ell+1,\ell}(y)=x\in U,\qquad
-\psi_\ell(S^\ell_x)=F,\qquad
-\psi_{\ell+1}(S^{\ell+1}_y)=\{0\}.
+\begin{aligned}
+&\pi_{\ell+1,\ell}(y)=x\in U,
+\psi_\ell(S^\ell_x)=F,\\
+&\psi_{\ell+1}(S^{\ell+1}_y)=\{0\}.
+\end{aligned}
 $$
 
 In particular the vector $1$ in the lower image has no preimage in this higher fibre. Hence **no** such finite-level open set makes all the individual images equal at subsequent levels. Along any one infinite coordinate sequence they do stabilize: either every coordinate is nonzero, or the image becomes zero when its first zero coordinate appears. That first zero can occur beyond any prescribed finite level. Pointwise eventual stabilization therefore does not imply the required uniform assertion. $\square$
@@ -410,17 +446,20 @@ The fixed-system argument in Lemma 4.5 does extend uniformly when one relation m
 **Lemma 4.7 (one bound for the specializations of a single relation module).** Let $R$ be a commutative Noetherian $\mathbb Q$-algebra, and let $T,V$ be finite free $R$-modules. Set
 
 $$
-A=\operatorname{Sym}_R T,\qquad V^\vee=\operatorname{Hom}_R(V,R),\qquad
-P=A\otimes_R V^\vee.
+\begin{aligned}
+&A=\operatorname{Sym}_R T, V^\vee=\operatorname{Hom}_R(V,R),\\
+&P=A\otimes_R V^\vee.
+\end{aligned}
 $$
 
 Let $I=\bigoplus_{j\geq0}I_j\subseteq P$ be a graded $A$-submodule. For every unital homomorphism $\alpha:R\to K$ into a field, write $T_K=T\otimes_RK$, $V_K=V\otimes_RK$ and define
 
 $$
-J_j(\alpha)=\operatorname{im}\bigl(I_j\otimes_RK\longrightarrow P_j\otimes_RK\bigr),
-\qquad
-h_j(\alpha)=J_j(\alpha)^\perp
+\begin{aligned}
+&J_j(\alpha)=\operatorname{im}\bigl(I_j\otimes_RK\longrightarrow P_j\otimes_RK\bigr),\\
+&h_j(\alpha)=J_j(\alpha)^\perp
 \subseteq S^j(T_K^*)\otimes_K V_K.
+\end{aligned}
 $$
 
 The map defining $J_j$ is induced by the inclusion $I_j\hookrightarrow P_j$; it is not asserted to be injective after tensoring. The annihilator uses the evaluation pairing of Lemma 4.5. Its coefficient field has characteristic zero because $\alpha$ is unital and $R$ is a $\mathbb Q$-algebra. There is an integer $q\geq0$, independent of $\alpha$ and $K$, such that
@@ -452,20 +491,20 @@ Taking annihilators in the displayed finite-dimensional pairing gives, for $p\in
 
 $$
 \begin{aligned}
-p\in h_{j+1}(\alpha)
-&\Longleftrightarrow \langle T_KJ_j(\alpha),p\rangle=0\\
+&p\in h_{j+1}(\alpha)
+\Longleftrightarrow \langle T_KJ_j(\alpha),p\rangle=0\\
 &\Longleftrightarrow \langle J_j(\alpha),c_vp\rangle=0
-\quad\text{for every }v\in T_K\\
+\text{for every }v\in T_K\\
 &\Longleftrightarrow c_vp\in h_j(\alpha)
-\quad\text{for every }v\in T_K.
+\text{for every }v\in T_K.
 \end{aligned}
 $$
 
 This is the required prolongation equality, with the same $q$ for every field specialization. Zero-rank $T$ or $V$ causes no exception; if $R$ is the zero ring, there are no unital maps to a field and the quantified assertion is vacuous. $\square$
 
-**Hypothesis for the orbit-symbol application.** To use Lemma 4.7 for Lie–Tresse, one must construct such a relation module over an actual finite-level base and prove that the annihilator of every relevant higher-jet orbit symbol is exactly $J_j(\alpha)$ at every point under consideration. Existence of a relation module at each separate infinite jet does not do this. Neither may one replace the image in the definition of $J_j$ by a kernel after specialization without proof. For example, multiplication by $t$ on $\mathbb Q[t]$ has zero kernel; at the specialization $t=0$ its induced map $\mathbb Q\to\mathbb Q$ is zero and has kernel $\mathbb Q$. Thus specialization of a kernel is not in general the kernel of the specialized map.
+**Orbit-symbol application.** To use Lemma 4.7 for Lie–Tresse, one must construct such a relation module over an actual finite-level base and prove that the annihilator of every relevant higher-jet orbit symbol is exactly $J_j(\alpha)$ at every point under consideration. Existence of a relation module at each separate infinite jet does not do this. Neither may one replace the image in the definition of $J_j$ by a kernel after specialization without proof. For example, multiplication by $t$ on $\mathbb Q[t]$ has zero kernel; at the specialization $t=0$ its induced map $\mathbb Q\to\mathbb Q$ is zero and has kernel $\mathbb Q$. Thus specialization of a kernel is not in general the kernel of the specialized map.
 
-The orbit-symbol application requires both a common finite-level invariant domain and an actual specialization comparison for the full symbol annihilators. Lemma 4.7 supplies the algebraic bound after that comparison. In the point-action setting of Section 4.16, Theorem 4.28 constructs the domain and the full relation presentation, including the required first-derivative stabilizer-image equality. Theorem 4.30 supplies the quotient-symbol cohomology argument. The full general finite-generation theorem additionally requires affine quotient and polynomial induction arguments.
+The orbit-symbol application requires both a common finite-level invariant domain and an actual specialization comparison for the full symbol annihilators. Lemma 4.7 supplies the algebraic bound after that comparison. In the point-action setting of Section 4.16, Theorem 4.28 constructs the domain and the full relation presentation, including the required first-derivative stabilizer-image equality. Theorem 4.30 supplies the quotient-symbol cohomology argument. Theorem 4.38 proves the affine quotient and polynomial induction arguments, and Theorem 4.45 identifies the actual regular differential jet action to which they apply.
 
 *Figure 4.2 and Sections 4.7–4.8: GPT-6 Astra (OpenAI). CC0 1.0.*
 
@@ -476,16 +515,19 @@ Example 4.6 concerned an algebraic tower, without asserting that it was a pseudo
 **Example 4.8 (translations and common scalings).** Work over a field $F$ equal to $\mathbb R$ or $\mathbb C$. On the affine plane $M=\mathbb A^2_F$, with coordinates $(x,u)$, consider the algebraic group
 
 $$
-G=F^\times\ltimes F^2,\qquad
-g_{\lambda,b,c}(x,u)=(\lambda x+b,\lambda u+c).
+\begin{aligned}
+&G=F^\times\ltimes F^2,\\
+&g_{\lambda,b,c}(x,u)=(\lambda x+b,\lambda u+c).
+\end{aligned}
 $$
 
 The multiplication and inverse, obtained by composing these maps, are
 
 $$
-(\lambda,b,c)(\mu,d,e)=(\lambda\mu,\lambda d+b,\lambda e+c),
-\qquad
-(\lambda,b,c)^{-1}=(\lambda^{-1},-\lambda^{-1}b,-\lambda^{-1}c).
+\begin{aligned}
+&(\lambda,b,c)(\mu,d,e)=(\lambda\mu,\lambda d+b,\lambda e+c),\\
+&(\lambda,b,c)^{-1}=(\lambda^{-1},-\lambda^{-1}b,-\lambda^{-1}c).
+\end{aligned}
 $$
 
 Thus this is an algebraic action by invertible maps. Translations send any point of $M$ to any other point, so it is transitive. Local restrictions, allowing separate parameters on separate connected components, form a pseudogroup: compositions and inverses have the displayed form locally, and maps that agree on overlaps glue. In transformed coordinates $(X,U)$ its first-order defining equations are
@@ -499,9 +541,11 @@ These equations give exactly the stated local maps on connected coordinate neigh
 Use the invariant chart of curve jets that are graphs $u=f(x)$. Set $u_j=f^{(j)}(x)$ and
 
 $$
-E^k=\mathbb A^2_F\times\mathbb A^k_F
-=\{(x,u,u_1,\ldots,u_k)\},\qquad
-\pi_{k,k-1}:E^k\longrightarrow E^{k-1}.
+\begin{aligned}
+&E^k=\mathbb A^2_F\times\mathbb A^k_F
+=\{(x,u,u_1,\ldots,u_k)\},\\
+&\pi_{k,k-1}:E^k\longrightarrow E^{k-1}.
+\end{aligned}
 $$
 
 The map $\pi_{k,k-1}$ forgets $u_k$ and is an affine-line bundle. There are no differential equations on the graph, so every finite graph jet extends, and each fiber over a base point is an irreducible affine space. The action preserves this chart because $dX/dx=\lambda\ne0$. The transformed graph has $U(X)=\lambda f((X-b)/\lambda)+c$. Repeated differentiation gives, for every $j\ge1$,
@@ -517,8 +561,10 @@ X_{a,b,c}=(ax+b)\partial_x+(au+c)\partial_u,
 $$
 
 $$
-X_{a,b,c}^{(k)}=(ax+b)\partial_x+(au+c)\partial_u
-+\sum_{j=2}^k(1-j)a u_j\partial_{u_j}.
+\begin{aligned}
+&X_{a,b,c}^{(k)}=(ax+b)\partial_x+(au+c)\partial_u\\
+&+\sum_{j=2}^k(1-j)a u_j\partial_{u_j}.
+\end{aligned}
 $$
 
 The missing $j=1$ summand is zero, not an omitted constraint: slopes are unchanged by common scaling.
@@ -532,11 +578,14 @@ $$
 A field fixes $p$ precisely when $b=-ax_0$ and $c=-au_0$. Its derivative at $p$ is $a\,\mathrm{id}_{T_pM}$, which preserves every line and therefore fixes this first jet. For a higher jet $z_k$ above that first jet, its infinitesimal stabilizer and the derivative map are exactly
 
 $$
-\operatorname{st}(z_k)
-=\{a\in F:(j-1)a u_j=0\text{ for }2\le j\le k\},
-\qquad
+\begin{aligned}
+&\operatorname{st}(z_k)
+=\{a\in F:(j-1)a u_j=0\text{ for }2\\
+&\le j\le k\},
 \psi_{k,z_k}:\operatorname{st}(z_k)\longrightarrow
-\operatorname{End}_F(\tau),\quad a\longmapsto a\,\mathrm{id}_\tau.
+\operatorname{End}_F(\tau),\\
+&a\longmapsto a\,\mathrm{id}_\tau.
+\end{aligned}
 $$
 
 Here the scalar description of the stabilizer uses the uniquely determined $b,c$ above, and $\psi_{k,z_k}$ is an $F$-linear map. Since $F$ has characteristic zero, for $k\ge2$ this stabilizer is $F$ when $u_2=\cdots=u_k=0$, and is zero otherwise. At order one it is always $F$.
@@ -569,9 +618,10 @@ In particular $\varpi_k=\ker(d\pi_{k,k-1}|_{\Delta_k})=0$ for $k\ge3$, and $\var
 *Proof.* The transformation rule $u'_2=\lambda^{-1}u_2$ proves invariance, and a parabola supplies a point of $U^2$. The stabilizer formula proves its vanishing at every higher lift. Subtracting the translation components from the scaling generator gives the following concrete spanning set for the orbit tangent space:
 
 $$
-\Delta_k(z_k)=\operatorname{span}_F\{\partial_x,\partial_u,V_k\},
-\qquad
-V_k=\sum_{j=2}^k(1-j)u_j\partial_{u_j}.
+\begin{aligned}
+&\Delta_k(z_k)=\operatorname{span}_F\{\partial_x,\partial_u,V_k\},\\
+&V_k=\sum_{j=2}^k(1-j)u_j\partial_{u_j}.
+\end{aligned}
 $$
 
 The first two vectors are independent base-coordinate vectors. Above $U^2$ the $\partial_{u_2}$ coefficient of $V_k$ is $-u_2\ne0$, so the third vector is independent of them. Projection carries the three displayed vectors to the corresponding three vectors at order $k-1$. For $k\ge3$ these are bases on both sides, proving the claimed isomorphism and zero kernel. At orders zero and one the orbit tangent spaces are spanned by the two translations; hence $\varpi_1=0$, while $\varpi_2=F V_2$ above $U^2$. For $k=2$ the asserted inclusion has zero left side, and for every $k\ge3$ both sides are zero. This proves all orders on one specified finite-level domain. $\square$
@@ -622,9 +672,11 @@ Indeed the first variation at fixed transformed abscissa is $\beta-\alpha h'$. D
 Consequently the stabilizer of a graph jet is given by
 
 $$
-\alpha_0=\beta_0=0,\qquad
-\beta_j=\sum_{i=1}^j {j\choose i}\alpha_i u_{j-i+1}
-\quad(1\le j\le k).
+\begin{aligned}
+&\alpha_0=\beta_0=0,
+\beta_j=\sum_{i=1}^j {j\choose i}\alpha_i u_{j-i+1}\\
+&(1\le j\le k).
+\end{aligned}
 $$
 
 The $k$ numbers $\alpha_1,\ldots,\alpha_k$ are arbitrary. These equations exhibit a rank-$k$ vector bundle over the whole graph-jet chart. The tangent line is spanned by $\partial_x+u_1\partial_u$; the derivative of $X$ sends this vector to $\alpha_1(\partial_x+u_1\partial_u)$. Its derivative image is therefore the whole scalar endomorphism line at every jet and every order $k\ge1$. A stabilizer at order $k$ lifts to any prescribed next graph jet by choosing $\alpha_{k+1}$ and then the required $\beta_{k+1}$. Both the full stabilizer projection and its derivative image thus lift, not merely at generic jets.
@@ -632,25 +684,32 @@ The $k$ numbers $\alpha_1,\ldots,\alpha_k$ are arbitrary. These equations exhibi
 Now fix the flat graph $N=\{u=0\}$ at the origin and an integer $k\ge4$. Consider
 
 $$
-X_*=x^2\partial_x+x^k\partial_u,\qquad
-X_0=x^k\partial_u,\qquad
-Z=X_*-X_0=x^2\partial_x,\qquad
+\begin{aligned}
+&X_*=x^2\partial_x+x^k\partial_u,
+X_0=x^k\partial_u,\\
+&Z=X_*-X_0=x^2\partial_x,
 Y=\partial_x+x\partial_u.
+\end{aligned}
 $$
 
 These are genuine infinitesimal transformations, not just arbitrary formal fields. The flows of $X_0,Y,Z$ are respectively
 
 $$
-(x,u)\mapsto(x,u+t x^k),\qquad
-(x,u)\mapsto(x+t,u+t x+t^2/2),\qquad
-(x,u)\mapsto\left(\frac{x}{1-tx},u\right).
+\begin{aligned}
+&(x,u)\mapsto(x,u+t x^k),\\
+&(x,u)\mapsto(x+t,u+t x+t^2/2),\\
+&(x,u)\mapsto\bigl(\frac{x}{1-tx},u\bigr).
+\end{aligned}
 $$
 
 For $X_*$ the flow is
 
 $$
-(x,u)\mapsto\left(\frac{x}{1-tx},\;
-u+\frac{x^{k-1}}{k-1}\bigl((1-tx)^{1-k}-1\bigr)\right).
+\begin{aligned}
+&(x,u)\mapsto\bigl(\frac{x}{1-tx},\;
+u+\frac{x^{k-1}}{k-1}\bigl((1\\
+&-tx)^{1-k}-1\bigr)\bigr).
+\end{aligned}
 $$
 
 On a neighborhood where $1-tx\ne0$, differentiation in $t$ verifies the displayed generating fields, and parameter $-t$ supplies each inverse. All these maps have the required triangular form. Both $X_*$ and $X_0$ have zero ordinary first jet at the origin. Their prolongations vanish at the flat $(k-1)$-jet, and their common value at its $k$-jet is
@@ -662,15 +721,19 @@ $$
 The difference $Z$ stabilizes every flat graph jet: its base coefficient vanishes at the origin and all its vertical prolonged coefficients vanish there. Also $Y(0)=\partial_x\in T_0N$. Nevertheless, direct differentiation of the vector-field coefficients gives
 
 $$
-[Y,X_0]=k x^{k-1}\partial_u,\qquad
-[Y,X_*]=2x\partial_x+(k x^{k-1}-x^2)\partial_u.
+\begin{aligned}
+&{}[Y,X_0]=k x^{k-1}\partial_u,\\
+&{}[Y,X_*]=2x\partial_x+(k x^{k-1}-x^2)\partial_u.
+\end{aligned}
 $$
 
 At the flat $(k-1)$-jet the respective prolonged values are
 
 $$
-[Y,X_0]^{(k-1)}=k!\,\partial_{u_{k-1}},\qquad
-[Y,X_*]^{(k-1)}=k!\,\partial_{u_{k-1}}-2\partial_{u_2}.
+\begin{aligned}
+&{}[Y,X_0]^{(k-1)}=k!\,\partial_{u_{k-1}},\\
+&{}[Y,X_*]^{(k-1)}=k!\,\partial_{u_{k-1}}-2\partial_{u_2}.
+\end{aligned}
 $$
 
 Because $k\ge4$, the second term survives projection to order $k-2$. Thus the second vector is not in the orbit symbol $\varpi_{k-1}$, even though the original $q_k$ is in $\varpi_k$ and the stated first-derivative normalization holds. In particular the bracket value is not determined by the class modulo the order-$k$ stabilizer. The difference of the two bracket values is exactly $[Y,Z]^{(k-1)}=-2\partial_{u_2}$.
@@ -684,18 +747,22 @@ This does **not** show that no good representative exists: $X_0$ is one. Nor doe
 **Lemma 4.11 (the exact obstruction to a pure transformation-symbol representative).** Let $L_k,L_{k-1}$ be finite-dimensional spaces of admissible infinitesimal transformation jets at a fixed base point, with surjective truncation $p:L_k\to L_{k-1}$. Suppose their action maps at compatible equation jets are
 
 $$
-A_k:L_k\to T_{z_k}E^k,\qquad
-A_{k-1}:L_{k-1}\to T_{z_{k-1}}E^{k-1},
-\qquad d\pi\circ A_k=A_{k-1}\circ p.
+\begin{aligned}
+&A_k:L_k\to T_{z_k}E^k,\\
+&A_{k-1}:L_{k-1}\to T_{z_{k-1}}E^{k-1},\\
+&d\pi\circ A_k=A_{k-1}\circ p.
+\end{aligned}
 $$
 
 Define $S_i=\ker A_i$, $\Delta_i=\operatorname{im}A_i$, $g_k=\ker p$, and $\varpi_k=\ker(d\pi|_{\Delta_k})$. Then there is a natural exact sequence of $F$-vector spaces
 
 $$
-0\longrightarrow A_k(g_k)\longrightarrow\varpi_k
-\xrightarrow{\,\omega_k\,}S_{k-1}/p(S_k)\longrightarrow0,
-\qquad
+\begin{aligned}
+&0\longrightarrow A_k(g_k)\longrightarrow\varpi_k
+\xrightarrow{\,\omega_k\,}S_{k-1}/p(S_k)\\
+&\longrightarrow0,
 \omega_k(A_kv)=[p(v)].
+\end{aligned}
 $$
 
 *Proof.* Compatibility implies $p(S_k)\subset S_{k-1}$ and $A_k(g_k)\subset\varpi_k$. If $A_kv\in\varpi_k$, then $A_{k-1}p(v)=0$, so the displayed class exists. Two choices for $v$ differ by an element of $S_k$, and hence give the same class. This proves well-definedness and linearity. Every $s\in S_{k-1}$ has a lift $v\in L_k$ because $p$ is onto; compatibility then puts $A_kv$ in $\varpi_k$, proving surjectivity of $\omega_k$. Finally $[p(v)]=0$ means $p(v)=p(w)$ for some $w\in S_k$. Then $v-w\in g_k$ and $A_k(v-w)=A_kv$. Conversely a vector represented in $g_k$ maps to zero. This proves exactness at every term. $\square$
@@ -705,8 +772,11 @@ In particular, every orbit symbol has a representative whose entire ordinary $(k
 **Lemma 4.12 (a sufficient normalization, with all its hypotheses).** Let $k\ge2$. Suppose an admissible infinitesimal field $X$ has zero ordinary $(k-1)$-jet at $a$, and its prolonged value at a submanifold $k$-jet $z_k$ is $q_k$. Let $Y$ be another admissible infinitesimal field, with $Y(a)=\xi\in\tau=T_aN$, and assume the admissible fields are closed under Lie brackets. Using symmetric multilinear derivative tensors, define
 
 $$
-(\iota_\xi q_k)(v_1,\ldots,v_{k-1})
-=q_k(\xi,v_1,\ldots,v_{k-1}),\qquad v_i\in\tau.
+\begin{aligned}
+&(\iota_\xi q_k)(v_1,\ldots,v_{k-1})
+=q_k(\xi,v_1,\ldots,\\
+&v_{k-1}), v_i\in\tau.
+\end{aligned}
 $$
 
 Then $[Y,X]$ has zero ordinary $(k-2)$-jet and
@@ -883,11 +953,12 @@ The cancellation also holds away from the flat graph. Retain the lower coefficie
 
 $$
 \begin{aligned}
-(\mathcal D_xs)^x_1&=-2,\\
-(\mathcal D_xs)^u_j&=-2j u_j\quad(1\leq j<k-1),\\
-(\mathcal D_xs)^u_{k-1}&=-2(k-1)u_{k-1}-Q.
-\end{aligned}
-\tag{4.25}
+&(\mathcal D_xs)^x_1=-2,\\
+&(\mathcal D_xs)^u_j=-2j u_j\\
+&(1\leq j<k-1),\\
+&(\mathcal D_xs)^u_{k-1}=-2(k-1)u_{k-1}\\
+&-Q.
+\end{aligned}\tag{4.25}
 $$
 
 The prolonged coefficient formula in Example 4.10 subtracts $-2j u_j$ at each positive order. Thus every coefficient below order $k-1$ cancels, and the last one is $-Q$. This is an identity on the entire graph chart. The same computation works for $k=2$, when the middle range is empty.
@@ -1007,11 +1078,13 @@ Finally apply Lemma 4.7 to the relation submodule $J\subset\operatorname{Sym}_{R
 
 $$
 \begin{gathered}
-H_1(\tau)=\begin{cases}
+H_1(\tau)=\\
+\begin{cases}
 S^1\tau^*\otimes\nu,&1+p^2\ne0,\\
 0,&1+p^2=0,
 \end{cases}\\
-H_j(\tau)=0\quad(j\ge2).
+H_j(\tau)=0\\
+(j\ge2).
 \end{gathered}
 \tag{4.31}
 $$
@@ -1057,12 +1130,12 @@ The same construction is defined over $\mathbb R$ for a geometrically integral r
 **Monic elimination with parameters.** Let $R$ be a finite-type integral $k$-algebra, $K=\operatorname{Frac}R$, and $J\subset R[g_1,\ldots,g_s,y_1,\ldots,y_m]$ a finitely generated ideal. There is a nonzero $f\in R$ such that elimination of the $g$ variables commutes with every field map $a:R_f\to L$:
 
 $$
-\begin{gathered}
-J(a)=\operatorname{im}(J_f\otimes_{R_f}L\to L[g,y]),\\
-J(a)\cap L[y]=L[y]B_y(a),\\
-J_f\cap R_f[y]=R_f[y]B_y.
-\end{gathered}
-\tag{4.33}
+\begin{aligned}
+&J(a)=\operatorname{im}(J_f\otimes_{R_f}L\to L[g,\\
+&y]),\\
+&J(a)\cap L[y]=L[y]B_y(a),\\
+&J_f\cap R_f[y]=R_f[y]B_y.
+\end{aligned}\tag{4.33}
 $$
 
 Here $B_y$ specializes to the reduced Gröbner basis of the eliminated ideal for one fixed monomial order on $y$.
@@ -2060,11 +2133,42 @@ Here $\Delta$ is the actual infinitesimal orbit image. Every orbit is smooth and
 
 Each $f_j$ is separably algebraic over $k(h_1,\ldots,h_d)$, and each $h_i$ is rational in the $f_j$. Differentiating these equations with the quotient rule gives both containments of their differential spans. Thus the generic rank of $df_j$ is $d$. The Jacobian presentation and cotangent identification in AG-CA-16, Theorem 5.1 and equation (13) turn this into the actual matrix rank on a smooth affine chart. All larger minors vanish, and some $d$-minor is nonzero. There is therefore a nonempty rank-$d$ open. Its full regular rank locus is invariant, since group isomorphisms transport these invariant differentials by invertible cotangent maps.
 
-By AG-MO-11, Theorem 4.1, a nonempty target open has fibres of dimension $m-d$, in every component. Its inverse image consists of full orbits. We justify the tangent dimension rather than defining it to equal the orbit dimension.
-
 For any orbit, restrict its orbit map to an irreducible group component with dense image in an orbit component $O_0$. The inclusion of function fields $k(O_0)\hookrightarrow k(G_0)$ has characteristic zero. Extend a transcendence basis as above. Its differential independence shows that the generic rank of that map is $\dim O_0$; dimension equals transcendence degree by AG-CA-09, Theorem 4.2. Left translation on $G$, followed by the action isomorphism on $X$, intertwines the orbit differential with its differential at the identity. All those ranks are equal. Translates of the group components give orbit components of the same dimension. Thus every orbit differential has rank $\dim O$, and its image is precisely $\Delta$.
 
-Every $df_j$ annihilates $\Delta$, by differentiating invariance. On the intersection of the two nonempty opens just constructed, their span has dimension $d$ and $\dim\Delta=m-d$. Finite-dimensional duality gives (4.77). The intersection is nonempty because $X$ is integral; all its conditions can be taken on their invariant loci.
+**The geometric generic fibre.** We compute the generic orbit dimension directly from the quotient already constructed. Put $F=k(Y)$ and $K=k(X)$. The generic fibre $U_\eta$ is an integral finite-type $F$-variety with function field $K$. Let
+
+$$
+r=\operatorname{trdeg}_F K=m-d.
+$$
+
+Choose an algebraic closure $\Omega$ of $K$, retaining the inclusions $k\subset F\subset K\subset\Omega$, and put $Z=U_\eta\times_F\Omega$. We claim $\dim Z=r$, without assuming that $Z$ is integral or reduced. Cover $U_\eta$ by finitely many nonempty affine opens with coordinate domains $B$. Each has fraction field $K$. By AG-CA-09, Corollary 3.2 and Theorem 4.2, it has a finite inclusion
+
+$$
+F[t_1,\ldots,t_r]\hookrightarrow B.
+$$
+
+Tensoring with the field $\Omega$ preserves this inclusion: choose an $F$-basis of a subspace and extend it to one of the containing vector space. The same finite module generators remain generators after tensoring, so
+
+$$
+\Omega[t_1,\ldots,t_r]\hookrightarrow B\otimes_F\Omega
+$$
+
+is still finite and integral. The chain-lifting and incomparability proof in AG-CA-05, Theorem 5.1 gives dimension $r$ for this algebra, including its possible nilpotents and multiple components. Thus every open in this finite affine cover of $Z$ has dimension $r$. Any finite specialization chain lies in an affine open containing its most special point, because opens contain all generalizations of their points. Hence $\dim Z=r$.
+
+The generic point of $U$ gives a point $x_\Omega\in Z(\Omega)$ through $K\hookrightarrow\Omega$. Theorem 4.19, applied to this algebraically closed extension and the target point $F\hookrightarrow\Omega$, says that every $\Omega$-point of $Z$ belongs to the single full orbit $O=G_\Omega x_\Omega$. This identifies its reduced locally closed variety with $Z_{\mathrm{red}}$. Indeed, the point test of Theorem 4.19 makes $O$ dense in $Z_{\mathrm{red}}$, and $O$ is open in its closure. A nonempty closed complement would have an $\Omega$-point by that same point test, contradicting the full-orbit assertion. Therefore
+
+$$
+\dim O=\dim Z=r.
+$$
+
+The orbit-map rank calculation above gives $\operatorname{rank}\Delta(x_\Omega)=r$. This point comes from the generic point of $X$, so its action matrix is the generic action matrix extended from $K$ to $\Omega$. A matrix rank is unchanged under a field extension, by its minors. Thus the generic orbit rank on $X$ is $r$. All larger minors vanish identically, and some $r$-minor is nonzero. The full rank-$r$ locus is consequently a nonempty invariant open. Intersect it with the invariant regular rank-$d$ locus of the $df_j$. On that nonempty intersection,
+
+$$
+\dim\operatorname{span}\{df_j\}=d,
+\qquad \dim\Delta=m-d.
+$$
+
+Since every $df_j$ annihilates $\Delta$, finite-dimensional duality proves (4.77).
 
 **Smooth orbits and actual stabilizers.** Here are local algebra details for the remaining assertions. An integral finite-type characteristic-zero variety has a nonempty open with a triangular separable presentation. Choose a transcendence basis $t$ and a finite algebraic generating tower $\alpha_i$ of its function field. Their monic minimal polynomials $P_i$ have coefficients rational in $t$ and preceding $\alpha$'s. Invert the finitely many coefficient denominators and $P_i'(\alpha_i)$. Successive monic quotients embed in their fraction fields, since the polynomials are irreducible there, so the resulting algebra $C$ is a domain in that function field. It and the original coordinate algebra have isomorphic nonempty opens: express each finite generating list as fractions in the other and invert the two finite denominator lists. The localized rings then coincide inside the function field.
 
@@ -2073,6 +2177,12 @@ The triangular Jacobian has unit diagonal in the dependent variables. Its smooth
 For a reduced variety with several components first remove the other components from an open of one component and use this construction. Apply it to the reduced locally closed orbit, whose local closedness was proved in Theorem 4.19. Translate one smooth point to any other orbit point; the action is an isomorphism. Thus the entire orbit is smooth. Applying the same construction and translation to the group gives unit-minor presentations at every group point as well.
 
 The orbit map $G\to O$ has surjective differential everywhere by the rank calculation. In the local presentations, append the pulled-back independent orbit parameters to the defining group equations. Their combined Jacobian has a unit minor: eliminate the dependent group variables first, and the remaining block is the surjective orbit differential. Given a square-zero lift with prescribed target, lift the unselected variables and correct the selected ones by the inverse matrix times the negative error vector. Taylor expansion again kills all errors. The dependent target variables agree by uniqueness of their unit-derivative lifts. For a fixed target point, its dependent equations factor by their fixed values with unit cofactors on the chosen neighbourhood, so fixing these independent parameters gives the actual fibre equations. Hence that fibre is smooth and its tangent space is the differential kernel. In particular this proves the assertion for the stabilizer scheme; a reduced orbit has not been substituted for a possibly thickened fibre. Smooth determining-jet projections preserve the same lifting property under inverse image, and differentiation gives the claimed inverse-image kernel. $\square$
+
+![Finite normalization computes the dimension r of the geometric generic fibre, including its possible nilpotents and multiple components. The full orbit quotient identifies its reduction with one orbit. Separability and translation identify the generic orbit rank, and the invariant regular rank loci give the orbit annihilator.](../figures/generic-fibre-orbit-rank.svg)
+
+*Figure 4.12a.* The generic-fibre argument in Theorem 4.35. Here $F=k(Y)$, $K=k(X)$, $m=\operatorname{trdeg}_kK$, $d=\operatorname{trdeg}_kF$ and $r=m-d$. The field $\Omega$ is an algebraic closure of $K$, and $x_\Omega$ is induced by the generic point of $X$. Equality with the orbit concerns the reduced fibre; no assertion of reducedness or integrality after extension is needed. The normalization and integral-dimension proofs are at the exact earlier programme links in the argument. Noether normalization is also treated in the [Stacks Project, Lemma 10.115.4, Tag 00OW](https://stacks.math.columbia.edu/tag/00OW).
+
+*Figure 4.12a: GPT-6.1 Sol (OpenAI). CC0 1.0.*
 
 **Theorem 4.36 (flat geometric descent).** Let $p:X\to Y$ be a surjective invariant morphism of integral finite-type varieties over an algebraically closed characteristic-zero field. Suppose its geometric fibres are full orbits of an algebraic group acting regularly on $X$. Then its invariant field is $k(Y)=k(X)^G$, and after restriction to one nonempty target open, $p$ is flat and open and satisfies
 
@@ -2832,14 +2942,137 @@ Theorem 4.45 proves the global Lie–Tresse conclusion for the specified regular
 
 *Section 4.22 and Figures 4.18–4.19: GPT-6.1 Sol (OpenAI). CC0 1.0.*
 
+### 4.23. Contact prolongations and their domains
+
+The graph domain of a specified contact map is already determined at second order. This gives the general form of the scalar domain in Example 4.47 and Figure 4.19. The shared invariant domain for the specified regular actions of Theorem 4.45 is supplied by Theorem 4.28.
+
+**Proposition 4.48 (one second-order domain for a contact map).** Let $n\ge1$, let $\mathbb K=\mathbb R$ or $\mathbb C$, and let
+
+$$
+\begin{gathered}
+\Phi(x,u,p)=(X,U,P),\\
+\Phi^*\bigl(dU-\sum_jP_jdX^j\bigr)\\
+=\mu\bigl(du-\sum_ip_i dx^i\bigr),\\
+\mu\ne0
+\end{gathered}\tag{4.127}
+$$
+
+be a smooth, respectively holomorphic, local diffeomorphism on a first-jet chart. On a second jet with symmetric Hessian $H=(u_{ij})$, put
+
+$$
+\begin{aligned}
+&A^j{}_i=D_iX^j
+=X^j_{x^i}+p_iX^j_u\\
+&+\sum_lu_{li}X^j_{p_l},
+D_\Phi=\det A.
+\end{aligned}\tag{4.128}
+$$
+
+For every first jet in the domain of $\Phi$, the polynomial $D_\Phi$ in the symmetric Hessian entries is not identically zero. For every $k\ge2$, $\Phi$ has a unique graph-jet prolongation on the full inverse image in $J^k$ of
+
+$$
+\mathcal U_\Phi^2=\{D_\Phi\ne0\}\subset J^2.
+\tag{4.129}
+$$
+
+It is smooth, respectively holomorphic. Its transformed derivatives of order at most $k$ are rational in the input jet coordinates of orders $2,\ldots,k$, with coefficients smooth, respectively holomorphic, on the first-jet chart. Their only higher-coordinate denominators are powers of the same $D_\Phi$. These prolongations respect truncation, composition on composable graph domains, and inverses. At order $k$ they are also characterized by preservation of the Pfaffian system (4.134) among maps with the specified first-jet part $\Phi$ on (4.129).
+
+**Proof.** Write $\theta=du-\sum_i p_i dx^i$. At a fixed first jet, identify $\ker\theta$ with pairs $(\dot x,\dot p)\in\mathbb K^n\oplus(\mathbb K^n)^*$, setting $\dot u=p_i\dot x^i$. Its form $d\theta=\sum_i dx^i\wedge dp_i$ is nondegenerate. The vertical space $V=\{\dot x=0\}$ and every symmetric graph
+
+$$
+L_H=\{(v,Hv):v\in\mathbb K^n\}
+$$
+
+are Lagrangian: the form vanishes on them and their dimension is half the ambient dimension. Differentiating (4.127) and restricting to $\ker\theta$ gives $\Phi^*d\theta'=\mu d\theta$. Thus $d\Phi$ induces an invertible conformal symplectic map of the contact hyperplanes. The inverse image $W=(d\Phi)^{-1}(V')$ of the target vertical space is consequently Lagrangian. The matrix $A$ is exactly the target $X$-projection of $d\Phi$ on $L_H$. Hence
+
+$$
+\begin{gathered}
+D_\Phi(H)\ne0\\
+\Longleftrightarrow L_H\cap W=0.
+\end{gathered}\tag{4.130}
+$$
+
+Here is an explicit common-transversality argument. Let $E$ be the $x$-projection of $W$, of dimension $d$, and choose an $x$-basis with $E=\operatorname{span}(e_1,\ldots,e_d)$; use the dual $p$-basis $f_1,\ldots,f_n$. Isotropy implies
+
+$$
+W\cap V=E^\perp=\operatorname{span}(f_{d+1},\ldots,f_n).
+$$
+
+Indeed, containment follows by pairing a vertical vector of $W$ with all of $W$, and both sides have dimension $n-d$ by the kernel dimension of the projection. Subtracting vectors of this intersection, choose the remaining basis vectors of $W$ as
+
+$$
+e_i+\sum_{j\le d}S_{ji}f_j\qquad(1\le i\le d).
+$$
+
+Their mutual pairings show $S_{ij}=S_{ji}$. Choose $H$ with upper-left block $S+I_d$ and all other blocks zero. If $(v,Hv)$ belongs to $W$, then $v\in E$ and its first $d$ vertical coordinates must equal $Sv$; they also equal $(S+I_d)v$. Thus $v=0$. This also covers $d=0$, where $W=V$. Equation (4.130) proves that $D_\Phi$ is nonzero for at least one symmetric $H$ at every first jet. Its entries in (4.128) are affine in $H$, so it is a polynomial in those entries.
+
+On (4.129), define
+
+$$
+\begin{aligned}
+&\widetilde D_j=(A^{-1})^i{}_jD_i,
+\widetilde u_j=P_j,\\
+&\widetilde u_{j,J}=\widetilde D_JP_j.
+\end{aligned}\tag{4.131}
+$$
+
+For order two the formula is the symmetric matrix
+
+$$
+\begin{aligned}
+&\widetilde H=BA^{-1}, B_{ji}=D_iP_j.
+\end{aligned}\tag{4.132}
+$$
+
+Its symmetry also follows directly from the contact calculation: $d\Phi(L_H)$ is isotropic, and, because $A$ is invertible, it is the graph of $BA^{-1}$. The graph is isotropic precisely when this matrix is symmetric.
+
+For completeness these recurrences define finite jets without any assumption about convergence of a formal series. Realize an input finite jet by a Taylor polynomial graph. The Taylor expansion of its transformed $X$ has invertible linear term $A$. Its finite inverse is constructed degree by degree: after degrees below $r$ have been found, the unknown degree-$r$ inverse term occurs multiplied by $A$, so the degree-$r$ equation has exactly one solution. Apply this finite substitution to the Taylor expansion of $U$. Along the input graph, (4.127) gives $dU=P_jdX^j$, so its first transformed derivatives are exactly $P_j$. Differentiation then gives (4.131). The derivative of order $r\ge2$ uses input derivatives only through order $r$: this follows inductively because $P_j$ has order one, each total derivative raises order by at most one, and $A^{-1}$ has order two. Thus arbitrary choices of higher Taylor terms do not affect the constructed output jet. The resulting mixed derivatives are symmetric because they are coefficients of that single finite Taylor graph.
+
+Every entry of $A^{-1}$ is a cofactor divided by $D_\Phi$. At order two, $B$ and the cofactors are polynomials in $H$ with smooth or holomorphic first-jet coefficients. Total differentiation of such a coefficient introduces only further polynomial jet factors, and
+
+$$
+D_i(D_\Phi^{-r})=-rD_\Phi^{-r-1}D_iD_\Phi.
+$$
+
+Induction in (4.131) therefore proves the asserted coefficient class and denominator control at every order. In particular, a nonzero value of $D_\Phi$ at the second jet suffices for every higher jet above it.
+
+Finite Taylor substitution is associative and its inverse with invertible linear term is unique by the same degree argument. Consequently the prolongations respect truncation, composition and inversion. At second order the ordinary matrix chain rule is
+
+$$
+\begin{aligned}
+&A_{\Psi\circ\Phi}
+=(A_\Psi\circ\Phi^{(2)})A_\Phi,\\
+&D_{\Psi\circ\Phi}
+=(D_\Psi\circ\Phi^{(2)})D_\Phi
+\end{aligned}\tag{4.133}
+$$
+
+on composable graph domains. For the inverse map this gives $D_{\Phi^{-1}}\circ\Phi^{(2)}=D_\Phi^{-1}$. Thus the inverse prolongation is defined on the image of every stated domain, and is a genuine inverse of its finite-jet map. This also proves that the constructed smooth or holomorphic maps are local diffeomorphisms. Uniqueness follows from the finite Taylor construction, since every input finite jet has such a polynomial representative.
+
+Finally, set $u_\varnothing=u$ and $u_i=p_i$. The finite contact Pfaffian system is
+
+$$
+\begin{gathered}
+\theta_J=\\
+du_J-\sum_i u_{J,i}dx^i=0,\\
+|J|\le k-1.
+\end{gathered}\tag{4.134}
+$$
+
+Its common kernel is spanned by the truncated total derivatives and the vertical vectors of order $k$: solving the equations for the components along $\partial_{u_J}$ gives exactly that span. The pullbacks of the target forms vanish on every truncated total derivative by (4.131), including the order-zero equation by (4.127). They also vanish on every order-$k$ vertical vector: $X$ and $U$ have order one, and each transformed $u_J$ with $1\le|J|\le k-1$ has order at most $|J|$. Thus these pullbacks belong to the span of the forms in (4.134). The inverse map proves equality of the spans, hence preservation of the Pfaffian system.
+
+Conversely, take a map with first-jet part $\Phi$ preserving this system. Evaluate its pulled-back form for $u'_J$ on each truncated total derivative. Starting with $u'_j=P_j$, the equations determine the next transformed derivative coefficients by multiplication with $A^{-1}$. Repeating for $|J|=1,\ldots,k-1$ gives precisely (4.131) and forces the dependence on only the corresponding input orders. For $k=2$ this already determines the entire Hessian. Hence there is no additional choice of any higher component, which proves the stated Pfaffian characterization. $\square$
+
+
 ## 5. Euclidean curvature
 
 For a graph $y=f(x)$, write $p=f'$, $q=f''$, $r=f'''$. Its oriented tangent is $(1,p)$ and its speed is $\sqrt{1+p^2}$. In the real graph chart with the orientation of increasing $x$, define
 
 $$
-\kappa=\frac{q}{(1+p^2)^{3/2}},\qquad
-D_s=\frac1{\sqrt{1+p^2}}D_x.
-\tag{5.1}
+\begin{aligned}
+&\kappa=\frac{q}{(1+p^2)^{3/2}},\\
+&D_s=\frac1{\sqrt{1+p^2}}D_x.
+\end{aligned}\tag{5.1}
 $$
 
 Translation leaves derivatives unchanged. A rotation preserves speed and the determinant of the tangent and its derivative; for a parametrized curve $\gamma$, their ratio $\det(\gamma',\gamma'')/|\gamma'|^3$ is unchanged. This proves invariance of signed curvature and arclength differentiation under $\operatorname{SE}(2)$. In a graph chart, restrict to nearby transformations for which the new increasing independent coordinate agrees with the chosen orientation. A distant rotation that reverses that coordinate requires a change of graph orientation.
@@ -2915,8 +3148,10 @@ $$
 acts in an affine chart with coefficient field
 
 $$
-\xi_A(x)=b+(B-dI)x-(c\cdot x)x.
-\tag{7.1}
+\begin{aligned}
+&\xi_A(x)=b+(B-dI)x-(c\\
+&\cdot x)x.
+\end{aligned}\tag{7.1}
 $$
 
 This follows by differentiating the ratio of the first $n$ homogeneous coordinates to the last one for $I+tA$.
@@ -2924,10 +3159,11 @@ This follows by differentiating the ratio of the first $n$ homogeneous coordinat
 **Theorem 7.1.** The projective infinitesimal fields form a Lie algebra of dimension $n(n+2)$, spanned by
 
 $$
-P_i=\partial_{x_i},\qquad
-L_{ij}=x_j\partial_{x_i},\qquad
-Q_i=x_iE,\quad E=\sum_jx_j\partial_{x_j}.
-\tag{7.2}
+\begin{aligned}
+&P_i=\partial_{x_i},
+L_{ij}=x_j\partial_{x_i},\\
+&Q_i=x_iE, E=\sum_jx_j\partial_{x_j}.
+\end{aligned}\tag{7.2}
 $$
 
 With bracket $XY-YX$, the isomorphism from $\mathfrak{sl}_{n+1}$ is $A\mapsto-\xi_A$.
@@ -2939,11 +3175,12 @@ The kernel of (7.1) is also zero on trace-zero matrices. Its polynomial coeffici
 For example,
 
 $$
-[P_i,L_{kj}]=\delta_{ij}P_k,\quad
-[L_{ij},L_{k\ell}]=\delta_{i\ell}L_{kj}-\delta_{kj}L_{i\ell},
-\qquad
-[P_i,Q_j]=\delta_{ij}E+L_{ij},\quad
-[L_{ij},Q_k]=\delta_{ik}Q_j,\quad[Q_i,Q_j]=0.
+\begin{aligned}
+&{}[P_i,L_{kj}]=\delta_{ij}P_k,\\
+&{}[L_{ij},L_{k\ell}]=\delta_{i\ell}L_{kj}-\delta_{kj}L_{i\ell},\\
+&{}[P_i,Q_j]=\delta_{ij}E+L_{ij},\\
+&{}[L_{ij},Q_k]=\delta_{ik}Q_j,[Q_i,Q_j]=0.
+\end{aligned}
 $$
 
 In the plane the eight fields are $\partial_x,\partial_y,x\partial_x,y\partial_x,x\partial_y,y\partial_y,xE,yE$.
@@ -2953,6 +3190,86 @@ The full isotropy at the affine origin is spanned by the linear and quadratic fi
 Full translation subgroups associated to affine charts are conjugate. To see this precisely, let the hyperplane at infinity be $\ker\ell$ in homogeneous space. Its translations are represented by $I+v\ell$ with $v\in\ker\ell$; multiplication adds $v$ because $(v\ell)(w\ell)=0$. Conjugation by an invertible matrix $C$ gives $I+(Cv)(\ell C^{-1})$, the translation group for $C(\ker\ell)$. The projective group is transitive on hyperplanes. This establishes conjugacy for these translation groups, rather than for every abelian projective subgroup.
 
 The same statement holds for translation subgroups of any fixed dimension $m\le n$. Within an affine chart, such a subgroup translates by a vector subspace $V$ of dimension $m$. Choose a basis of $V$, extend it to a basis of $\mathbb K^n$, and do the same for another $m$-dimensional subspace $W$. The linear map carrying the first basis to the second conjugates the two translation groups. Combining this with the preceding change of affine chart proves the projective conjugacy of all the stated $m$-dimensional translation subgroups. The value of $m$ must agree.
+
+**Proposition 7.2 (duality and quadratic subgroups).** Let $n\ge1$ and $\mathbb K=\mathbb R$ or $\mathbb C$. On the projective Lie algebra of Theorem 7.1 the linear map
+
+$$
+\begin{aligned}
+&\mathcal D(P_i)=Q_i,
+\mathcal D(L_{ij})=-L_{ji},\\
+&\mathcal D(Q_i)=P_i
+\end{aligned}\tag{7.3}
+$$
+
+is an involutive Lie algebra automorphism. For an $m$-dimensional vector subspace $A\subseteq\mathbb K^n$, the local transformations
+
+$$
+\begin{aligned}
+&F_a(x)=\frac{x}{1-a^tx}, a\in A,\\
+&1-a^tx\ne0
+\end{aligned}\tag{7.4}
+$$
+
+form an $m$-parameter group, generated by $q_a=(a^tx)E$. Any two such groups with the same $m$ are conjugate by an invertible linear coordinate change. If $n\ge2$, no local point diffeomorphism realizes (7.3) for the full projective algebra. If $n=1$, the change $y=-1/x$ realizes it on a punctured chart.
+
+**Proof.** The fields in (7.2) are independent by Theorem 7.1, so (7.3) defines a linear involution. It preserves all the displayed brackets. For example, $E=\sum_iL_{ii}$ gives $\mathcal D(E)=-E$, and
+
+$$
+\begin{aligned}
+[\mathcal D(P_i),\mathcal D(Q_j)]
+&=[Q_i,P_j]=-\delta_{ij}E-L_{ji}\\
+&=\mathcal D(\delta_{ij}E+L_{ij}),\\
+[\mathcal D(L_{ij}),\mathcal D(L_{k\ell})]
+&=\delta_{jk}L_{\ell i}-\delta_{\ell i}L_{jk}\\
+&=\mathcal D(\delta_{i\ell}L_{kj}-\delta_{kj}L_{i\ell}).
+\end{aligned}
+$$
+
+For the other nonzero bracket types, direct substitution gives
+
+$$
+\begin{aligned}
+[\mathcal D(P_i),\mathcal D(L_{kj})]
+&=[Q_i,-L_{jk}]=\delta_{ij}Q_k,\\
+[\mathcal D(L_{ij}),\mathcal D(Q_k)]
+&=[-L_{ji},P_k]=\delta_{ik}P_j.
+\end{aligned}
+$$
+
+These are the images of $[P_i,L_{kj}]$ and $[L_{ij},Q_k]$ respectively. The $P$–$P$ and $Q$–$Q$ brackets are zero on both sides. Bilinearity and antisymmetry now cover every pair of fields.
+
+Substitution into (7.4) proves, wherever the compositions are defined,
+
+$$
+\begin{aligned}
+&F_a\circ F_b=F_{a+b}, F_0=\mathrm{id},\\
+&F_a^{-1}=F_{-a}.
+\end{aligned}\tag{7.5}
+$$
+
+The derivative at $t=0$ of $F_{ta}(x)$ is $(a^tx)x$, so its generator is $q_a$. Distinct parameters give distinct local transformations: equality on a nonempty open set implies $(a-b)^tx=0$ there, and a linear polynomial vanishing on such a set is zero. To see the last assertion without an identity theorem, choose an interior point and vary each coordinate by a sufficiently small amount; subtraction forces every coefficient to vanish. Thus the parameter count is exactly $m$.
+
+For $y=Cx$ with $C\in\operatorname{GL}_n(\mathbb K)$, direct substitution gives
+
+$$
+C\circ F_a\circ C^{-1}=F_{C^{-t}a}.
+\tag{7.6}
+$$
+
+Given two $m$-dimensional subspaces, choose bases, extend them to bases of $\mathbb K^n$, and take the invertible linear map carrying the first extended basis to the second. It has the form $C^{-t}$ for some $C$, proving conjugacy for the entire local groups, including $m=0$.
+
+The evaluations of $P_1,\ldots,P_n$ span the whole tangent space at every point. The evaluations of $Q_1,\ldots,Q_n$ all lie in the line through the vector $x$, and vanish at $x=0$. A local diffeomorphism preserves the dimension of this evaluated span, since its differential is invertible. For $n\ge2$ it therefore cannot carry every $P_i$ to $Q_i$. For $n=1$, differentiation of $y=-1/x$ instead gives
+
+$$
+\begin{aligned}
+&\partial_x\longmapsto y^2\partial_y,
+x\partial_x\longmapsto-y\partial_y,\\
+&x^2\partial_x\longmapsto\partial_y.
+\end{aligned}
+$$
+
+The map is its own inverse on its punctured domains and hence realizes all of (7.3). $\square$
+
 
 ## 8. Exercises
 
@@ -3029,6 +3346,23 @@ and its differentiated constraints prescribe $\beta_{xx}=A+xB$ and $\beta_{xu}=x
 
 **Exercise 17 (finite Cartan compatibility and presentation order).** Explain why equality of infinitesimal orbit images alone would not prove the stabilizer-scheme assertion in Theorem 4.45, and identify the stronger equality used there. For $q=2$ and two independent variables, show that the two decompositions $\alpha=(2,0),\beta=(0,2)$ and $\alpha=(0,2),\beta=(2,0)$ of $\gamma=(2,2)$ are connected by the differentiated top symmetry relations. State the original cutoff corresponding to intrinsic cutoff $L=3$. For (4.125), verify the contact identity and the two curvature derivatives in (4.126), including their domains.
 
+**Exercise 18 (quadratic subgroup geometry).** For (7.4), compute the Jacobian determinant, the common fixed-point set of $\{F_a:a\in A\}$ and the local orbit and stabilizer dimensions at every point. Include $A=0$. Verify the answers directly from the finite maps as well as from their infinitesimal fields.
+
+
+**Exercise 19 (partial Legendre transformation).** Fix $0\le r\le n$ and split the coordinates into $I=\{1,\ldots,r\}$ and its complement $J$. Set
+
+$$
+\begin{aligned}
+&X_I=p_I, P_I=-x_I,
+X_J=x_J,\\
+&P_J=p_J,
+U=u-\sum_{i\in I}x^ip_i.
+\end{aligned}
+$$
+
+Verify the contact identity. For a Hessian $H=\begin{pmatrix}B&C\\C^t&G\end{pmatrix}$ in this splitting, determine the graph domain, transformed Hessian and inverse finite map. Explain exactly which higher-coordinate denominators can occur under repeated prolongation, including $r=0$ and $r=n$.
+
+
 ## 9. Solutions
 
 **Solution 1.** The recurrence gives $\phi_p=D_x(2u)-pD_xx=p$, and $\phi_q=D_xp-qD_xx=0$. Thus $\operatorname{pr}^{(2)}v=x\partial_x+2u\partial_u+p\partial_p$, with no $\partial_q$ term. Equivalently, the finite scaling sends $(x,u,p,q)$ to $(e^t x,e^{2t}u,e^tp,q)$.
@@ -3036,15 +3370,20 @@ and its differentiated constraints prescribe $\beta_{xx}=A+xB$ and $\beta_{xu}=x
 **Solution 2.** Let $v=\xi(x,u)\partial_x+\phi(x,u)\partial_u$. Its first prolonged coefficient is $\phi_x+(\phi_u-\xi_x)p-\xi_up^2$. Applying the recurrence once more and setting $q=0$ gives
 
 $$
-\phi_{xx}+(2\phi_{xu}-\xi_{xx})p
-+(\phi_{uu}-2\xi_{xu})p^2-\xi_{uu}p^3=0.
+\begin{aligned}
+&\phi_{xx}+(2\phi_{xu}-\xi_{xx})p
++(\phi_{uu}-2\xi_{xu})p^2\\
+&-\xi_{uu}p^3=0.
+\end{aligned}
 $$
 
 Every slope $p$ is realized by a straight-line solution, so the four coefficients vanish. From $\xi_{uu}=0$ and $\phi_{xx}=0$, write $\xi=A(x)u+B(x)$ and $\phi=C(u)x+D(u)$. The second coefficient gives $2C'(u)=A''(x)u+B''(x)$, so $A''=a$, $B''=b$ are constants and $C(u)=au^2/4+bu/2+c$. The third coefficient then reads $(a/2)x+D''(u)=2ax+2a_1$, where $A'(x)=ax+a_1$. Hence $a=0$ and $D''=2a_1$. Integrating yields, with eight independent constants,
 
 $$
-\xi=a_0+b_1x+c_0u+d_0x^2+e_0xu,\qquad
-\phi=f_0+g_0x+h_0u+d_0xu+e_0u^2.
+\begin{aligned}
+&\xi=a_0+b_1x+c_0u+d_0x^2+e_0xu,\\
+&\phi=f_0+g_0x+h_0u+d_0xu+e_0u^2.
+\end{aligned}
 $$
 
 Conversely these coefficients satisfy all four equations, so every such field is a symmetry. Their span is precisely the eight fields of the plane in (7.2). Projective transformations send lines to lines, and on the graph-transverse chart this agrees with the determining calculation. Discrete point symmetries are not additional infinitesimal dimensions.
@@ -3052,8 +3391,11 @@ Conversely these coefficients satisfy all four equations, so every such field is
 **Solution 3.** Put $a=f''/f'$ as a function of its argument and $b=y''/y'$. Then $L_{f\circ y}=a(y)y'+b$. Its derivative minus half its square is
 
 $$
-\big(a'(y)-\tfrac12a(y)^2\big)(y')^2
-+a(y)y''-a(y)y'b+b'-\tfrac12b^2.
+\begin{aligned}
+&\big(a'(y)-\tfrac12a(y)^2\big)(y')^2
++a(y)y''\\
+&-a(y)y'b+b'-\tfrac12b^2.
+\end{aligned}
 $$
 
 The two mixed terms cancel, leaving $S(f)(y)(y')^2+S(y)$. For Möbius $f$, $a=-2c/(cy+d)$ and $a'=2c^2/(cy+d)^2$, so $S(f)=0$. This proves invariance. The group acts only on $y$ and its derivatives; $x$ is fixed and is an independent invariant. On $y'\ne0$, $\partial S/\partial y'''=1/y'$, so $x$ and $S$ are functionally independent. The normalization in (6.3) proves completeness.
@@ -3062,17 +3404,22 @@ The two mixed terms cancel, leaving $S(f)(y)(y')^2+S(y)$. For Möbius $f$, $a=-2
 
 **Solution 5.** The inverse of $D_iX^j=\delta_i^j+tD_i\xi^j+O(t^2)$ changes differentiation to $\widetilde D_i=D_i-t(D_i\xi^j)D_j+O(t^2)$. Applying this to $u_J^\alpha+t\phi_J^\alpha$ gives the recurrence. For the empty index, $\phi^\alpha=Q^\alpha+\xi^iu_i^\alpha$. Assuming the characteristic expression at $J$, differentiate it, subtract $u_{J,j}^\alpha D_i\xi^j$, and cancel the two terms containing $D_i\xi^j$. Commutation of total derivatives gives the formula at $J,i$. The term $-\xi^iu_{J,i}^\alpha$ from differentiating the characteristic cancels its explicit positive counterpart, so the coefficient has order at most $|J|$. The inverse transversality matrix is what accounts for the subtraction in the recurrence; omitting it would differentiate at the old independent coordinates and would not be a prolongation of transformed graphs.
 
-**Solution 6.** Write the Spencer difference as $c$. Its value components and its $x$ derivative of the second component are
+**Solution 6.** Write the order-one Spencer difference as $c$. Denote the four free second-jet coordinates by $a_{20}=\alpha_{xx}$, $a_{11}=\alpha_{xu}$, $a_{02}=\alpha_{uu}$ and $b_{02}=\beta_{uu}$. These are coordinates of the given jet section; they are not assumed to be derivatives of $A,B,C,D,E$. The six order-one jet components of $c$ are
 
 $$
 \begin{aligned}
 c^\alpha_0&=H(A)-B-pC,\\
+c^\alpha_x&=H(B)-a_{20}-pa_{11},\\
+c^\alpha_u&=H(C)-a_{11}-pa_{02},\\
 c^\beta_0&=H(D)-xA-pE,\\
-c^\beta_x&=H(xA)-(A+xB)-pxC.
+c^\beta_x&=H(xA)-(A+xB)-pxC,\\
+c^\beta_u&=H(E)-xC-pb_{02}.
 \end{aligned}
 $$
 
-Since $H(x)=1$, the last expression equals $x(H(A)-B-pC)=xc^\alpha_0$. This is exactly the original linear constraint on the order-one jet $c$. No identities such as $\partial_xA=B$ were used. The term $A$ in $\beta_{xx}$ is essential: it arises by differentiating the variable coefficient $x$ of the constraint and cancels the same term from $H(xA)$. Thus checking only the highest derivative terms would miss the required cancellation.
+For each component this subtracts the contraction of its next ordinary jet with $(1,p)$ from $H$ applied to its coefficient function. In particular, the last row uses the prescribed coordinate $\beta_{xu}=xC$, not a derivative of the function $E$.
+
+Since $H(x)=1$, the fifth row equals $x(H(A)-B-pC)=xc^\alpha_0$. This is exactly the original linear constraint on the order-one jet $c$. No identities such as $\partial_xA=B$ were used. The term $A$ in $\beta_{xx}$ is essential: it arises by differentiating the variable coefficient $x$ of the constraint and cancels the same term from $H(xA)$. Thus checking only the highest derivative terms would miss the required cancellation. The other five components are subject to no further row in this order-one system.
 
 **Solution 7.** Over $\mathbb Q(a)$, use the monic list $z-t/a,t^2$, with $z$ larger than every power of $t$. Their $S$-polynomial is $-t^3/a$, which reduces to zero by $t^2$. Thus the elimination ideal is $(t^2)$. Invert $f=a$. The same two monic polynomials generate $I$ over $R_a[t,z]$, and the same reduction works after every map $R_a\to L$. Equivalently, substituting $z=t/a$ identifies the quotient with $L[t]/(t^2)$, so the kernel of $L[t]$ is exactly $(t^2)$. At $a=0$ the specialized ideal is $(t)$, and its intersection with $L[t]$ is $(t)$. The degree-one relation at that fibre is absent from the generic intersection. Inverting $a$ is what makes the claimed specialization statement correct.
 
@@ -3190,6 +3537,76 @@ Move one first-coordinate index from $\alpha$ to $\beta$ and one second-coordina
 
 For the contact map, $d(u-px)-(-x)\,dp=du-p\,dx$. Along a graph, $D_xp=a$, so $D_X=a^{-1}D_x$ is defined for $a\ne0$. Its application to $P=-x$ gives $-a^{-1}$; application once more gives $a^{-1}D_x(-a^{-1})=u_{xxx}/a^3$. The pole at $a=0$ is the absent graph direction, not a regular affine curvature coordinate. These formulas do not establish an action on the full affine fibre containing that point.
 
+**Solution 18.** Put $s=a^tx$. Differentiation gives
+
+$$
+\begin{aligned}
+&dF_a=(1-s)^{-1}\bigl(I+\frac{xa^t}{1-s}\bigr),\\
+&\det dF_a=(1-s)^{-(n+1)}.
+\end{aligned}
+$$
+
+Indeed, expansion by columns proves $\det(I+uv^t)=1+v^tu$: terms using two added columns vanish because those columns are proportional to $u$, and the terms using one added column sum to $\sum_i v_i u_i$. Apply this with $u=x/(1-s)$ and $v=a$. The determinant is nonzero on exactly the stated domain, in agreement with the inverse $F_{-a}$.
+
+The common fixed-point set is
+
+$$
+A^\perp=\{x\in\mathbb K^n:a^tx=0\text{ for every }a\in A\}.
+$$
+
+For $x\ne0$, the equality $F_a(x)=x$ is equivalent to $a^tx=0$; the origin satisfies the same condition and is fixed. A basis of $A$ extends to a basis of $\mathbb K^n$, so these are $m$ independent linear equations and the fixed-point set has dimension $n-m$.
+
+At a fixed point the orbit dimension is zero and the stabilizer is all of $A$, of dimension $m$. At any other point, $a\mapsto a^tx$ is a nonzero linear functional on $A$. Its kernel, the exact finite stabilizer, has dimension $m-1$. The orbit lies in the line through $x$; choosing $a_0\in A$ with $a_0^tx\ne0$, the curve
+
+$$
+F_{ta_0}(x)=\frac{x}{1-t\,a_0^tx}
+$$
+
+has a nonzero derivative at zero and parametrizes an open part of that line. Thus the local orbit dimension is one. The infinitesimal values $q_a(x)=(a^tx)x$ have exactly these ranks and kernels. If $m=0$, every point is fixed and the nonfixed case is absent. $\square$
+
+
+**Solution 19.** Direct differentiation gives
+
+$$
+dU-P_i dX^i=du-p_i dx^i.
+$$
+
+The finite inverse is
+
+$$
+\begin{aligned}
+&x_I=-P_I, p_I=X_I,
+x_J=X_J,\\
+&p_J=P_J,
+u=U-\sum_{i\in I}X^iP_i.
+\end{aligned}
+$$
+
+Substituting either set of expressions into the other gives the identity, so this is a contact local diffeomorphism on the entire first-jet chart. On a second jet,
+
+$$
+dX_I=B\,dx_I+C\,dx_J,\qquad dX_J=dx_J.
+$$
+
+Its horizontal determinant is $\det B$, and the graph domain is precisely $\det B\ne0$. There,
+
+$$
+dx_I=B^{-1}dX_I-B^{-1}C\,dX_J.
+$$
+
+The identities $dP_I=-dx_I$ and $dP_J=C^t dx_I+G\,dx_J$ give
+
+$$
+\widetilde H=
+\begin{pmatrix}
+-B^{-1}&B^{-1}C\\
+C^tB^{-1}&G-C^tB^{-1}C
+\end{pmatrix}.
+$$
+
+It is symmetric, as required. Every entry of $B^{-1}$ has denominator $\det B$. Proposition 4.48 shows that at every higher order only powers of this same determinant occur, with no new higher-coordinate denominator. For $r=n$ the formula reduces to $\widetilde H=-H^{-1}$. For $r=0$ the transformation is the identity: the empty block has determinant one, and the remaining block is $\widetilde H=G=H$. For the scalar case $n=r=1$, this gives $U_{XX}=-1/u_{xx}$ on exactly $u_{xx}\ne0$, as in Example 4.47. $\square$
+
+
 ## References
 
 - Michael Kunzinger, [*Lie Transformation Groups*](https://www.mat.univie.ac.at/~mike/teaching/ss15/ltg.pdf), §§3.8–3.12; in particular the prolongation construction, Theorem 3.10.6, the heat-equation example 3.11.1, and the local-solvability qualification in §3.12.
@@ -3200,3 +3617,3539 @@ For the contact map, $d(u-px)-(-x)\,dp=du-p\,dx$. Along a graph, $D_xp=a$, so $D
 The local first-integral count is infinitesimal and analytic. The global algebraic proof concerns the induced point actions and geometric conventions of Section 4.16. Theorem 4.19 supplies the finite quotient; Theorems 4.21 and 4.24 give quotient derivations and finite observations; Theorems 4.28–4.32 give the actual common domain, full symbols, cohomology and equation coordinates; Lemma 4.34 and Theorems 4.35–4.36 supply transitive extension and geometric descent. Theorem 4.38 proves finite differential generation, affine quotient projections and finite/formal orbit separation under those hypotheses, including deficient horizontal rank and disconnected isotropy. Theorem 4.45 proves the regular Cartan jet-action theorem without prescribing an ambient prolongation formula. Proposition 4.46 supplies the holonomic order and coefficient comparison for a specified intrinsic presentation. Example 4.47 distinguishes a local higher-jet domain from a regular finite-fibre action. All geometric, formal and real-orbit conventions remain as stated.
 
 **Mathematical dependencies:** statements, hypotheses and prerequisite references.
+
+## Historical reading: prolongation and differential invariants
+
+Sophus Lie and Friedrich Engel, *Theorie der Transformationsgruppen*, Volume I (1888), complete Chapter 25 introduction and §§127–129, printed pp. 522–540. [German original](https://archive.org/details/theotransformation01liesrich).
+
+The German original is in the public domain. The transcription and independently written English translation are dedicated to CC0.
+
+The modern prolongation formula is proved in [Theorem 2.1](#2-the-prolongation-formula), its bracket identity in [Section 1](#1-jets-and-transformed-graphs), and the regular equation-invariance criterion in [Theorem 3.1](#3-equations-as-jet-submanifolds).
+
+### German text: Chapter 25 introduction and §§127–129
+
+**Kapitel 25. Differentialinvarianten.**
+
+Wir denken uns in $n$ Veränderlichen eine Transformation vorgelegt:
+
+$$
+y_i=f_i(x_1\cdots x_n)\qquad(i=1\cdots n)
+\tag{1}
+$$
+
+und denken uns diese Transformation auf ein System von $n-q$ unabhängigen Gleichungen:
+
+$$
+\begin{aligned}
+&\Omega_k(x_1\cdots x_n)=0\\
+&(k=1\cdots n-q)
+\end{aligned}\tag{2}
+$$
+
+in den $x$ ausgeführt; wir erhalten auf diese Weise ein neues Gleichungensystem:
+
+$$
+\begin{aligned}
+&\overline{\Omega}_k(y_1\cdots y_n)=0\\
+&(k=1\cdots n-q)
+\end{aligned}\tag{2'}
+$$
+
+in den $y$.
+
+Nun lassen sich vermöge der Gleichungen (2) $n-q$ von den Veränderlichen $x_1\cdots x_n$ als Functionen der $q$ übrigen darstellen und diese $n-q$ besitzen natürlich gewisse Differentialquotienten: $p_1,p_2\cdots$ nach den $q$ übrigen. Andererseits lassen sich vermöge der Gleichungen (2') $n-q$ von den Veränderlichen $y_1\cdots y_n$ als Functionen der $q$ übrigen darstellen und diese $n-q$ besitzen ihrerseits gewisse Differentialquotienten: $p_1',p_2'\cdots$ nach den $q$ übrigen.
+
+Zwischen den beiden so definirten Reihen von Differentialquotienten besteht ein gewisser Zusammenhang, welcher im Wesentlichen von der Form der $n-q$ Relationen (2) unabhängig ist. Wir werden im Verlaufe des Kapitels diesen bekannten Zusammenhang ausführlich auseinandersetzen und erinnern hier nur daran, dass sich die $p'$ erster bis $m$-ter Ordnung als Functionen von $x_1\cdots x_n$ und den $p$ erster bis $m$-ter Ordnung darstellen lassen, während die $p$ als Functionen von $x_1'\cdots x_n'$ und den $p'$ ausgedrückt werden können. Hieraus geht hervor, dass man aus der Transformation (1) eine neue Transformation herleiten kann, welche ausser den $x$ auch die Differentialquotienten von der ersten bis zur $m$-ten Ordnung transformirt. Wir wollen sagen, dass *diese neue Transformation durch Erweiterung der Transformation* (1) *erhalten wird*.
+
+Augenscheinlich kann die Erweiterung der Transformation (1) in sehr mannigfacher Weise geschehen, da es ganz dem Belieben überlassen ist, wie viele und welche von den Veränderlichen $x_1\cdots x_n$ man als Functionen der übrigen ansehen will. Man kann sogar die Zahl der Möglichkeiten noch vergrössern, indem man Hülfsveränderliche: $t_1,t_2\cdots$ hinzunimmt, welche von der Transformation (1) gar nicht transformirt werden, wenn man also zu den Gleichungen der Transformation (1) die identische Transformation in den Hülfsveränderlichen: $t_1,t_2\cdots$ hinzufügt.
+
+Ist eine $r$-gliedrige Gruppe vorgelegt, so können wir alle ihre $\infty^r$ Transformationen erweitern und erhalten so $\infty^r$ erweiterte Transformationen; diese letztern bilden, wie wir sehen werden, ihrerseits eine $r$-gliedrige Gruppe, welche mit der ursprünglichen Gruppe gleichzusammengesetzt ist.
+
+**§127.**
+
+Wir betrachten zunächst eine besonders einfache Art der Erweiterung.
+
+In der Transformation:
+
+$$
+y_i=f_i(x_1\cdots x_n)\qquad(i=1\cdots n)
+\tag{1}
+$$
+
+betrachten wir die Veränderlichen $x_1\cdots x_n$ als Functionen einer Hülfsveränderlichen $t$, welche von der Transformation (1) gar nicht transformirt wird. Offenbar sind dann auch $y_1\cdots y_n$ als Functionen von $t$ aufzufassen; setzen wir daher:
+
+$$
+\frac{dx_i}{dt}=x_i^{(1)},\qquad\frac{dy_i}{dt}=y_i^{(1)},
+$$
+
+so ergiebt sich aus (1) durch Differentiation nach $t$:
+
+$$
+\begin{aligned}
+&y_i^{(1)}=\sum_{1}^{n}{}_\nu\,
+\frac{\partial f_i}{\partial x_\nu}x_\nu^{(1)}\\
+&(i=1\cdots n).
+\end{aligned}\tag{3}
+$$
+
+Nehmen wir (1) und (3) zusammen, so erhalten wir eine Transformation in den $2n$ Veränderlichen $x_i$ und $x_i^{(1)}$.
+
+Die Transformation (1), (3) ist in gewissem Sinne die einfachste Transformation, welche man aus (1) durch Erweiterung ableiten kann.
+
+Wenden wir die eben beschriebene specielle Erweiterung auf alle $\infty^r$ Transformationen der $r$-gliedrigen Gruppe: $X_1f\cdots X_rf$, oder:
+
+$$
+\begin{aligned}
+&y_i=f_i(x_1\cdots x_n,a_1\cdots a_r)\\
+&(i=1\cdots n)
+\end{aligned}\tag{4}
+$$
+
+an, so erhalten wir $\infty^r$ erweiterte Transformationen, welche offenbar die Form haben:
+
+$$
+\begin{aligned}
+&y_i=f_i(x_1\cdots x_n,a_1\cdots a_r),\\
+&y_i^{(1)}=\sum_{1}^{n}{}_\nu\,
+\frac{\partial f_i(x,a)}{\partial x_\nu}x_\nu^{(1)}\\
+&(i=1\cdots n).
+\end{aligned}\tag{5}
+$$
+
+Es lässt sich leicht nachweisen, dass die Gleichungen (5) eine $r$-gliedrige Gruppe in den $2n$ Veränderlichen $x_i$, $x_i^{(1)}$ darstellen.
+
+In der That, die Gleichungen:
+
+$$
+\begin{aligned}
+&y_i=f_i(x_1\cdots x_n,a_1\cdots a_r)
+\text{und}\\
+&z_i=f_i(y_1\cdots y_n,b_1\cdots b_r)
+\end{aligned}
+$$
+
+haben nach Voraussetzung zur Folge:
+
+$$
+z_i=f_i(x_1\cdots x_n,c_1\cdots c_r),
+$$
+
+wo die $c$ nur von den $a$ und den $b$ abhängen. Mithin ergiebt sich aus:
+
+$$
+\begin{aligned}
+&y_i^{(1)}=\sum_{1}^{n}{}_\nu\,
+\frac{\partial f_i(x,a)}{\partial x_\nu}x_\nu^{(1)}
+\text{und}\\
+&z_j^{(1)}=\sum_{1}^{n}{}_i\,
+\frac{\partial f_j(y,b)}{\partial y_i}y_i^{(1)}
+\end{aligned}
+$$
+
+durch Elimination der $y_i^{(1)}$:
+
+$$
+\begin{aligned}
+&z_j^{(1)}
+=\sum_{i\nu}^{1\cdots n}
+\frac{\partial f_j(y,b)}{\partial y_i}
+\frac{\partial f_i(x,a)}{\partial x_\nu}x_\nu^{(1)}\\
+&=\sum_{1}^{n}{}_\nu\,
+\frac{\partial f_j(y,b)}{\partial x_\nu}x_\nu^{(1)}\\
+&=\sum_{1}^{n}{}_\nu\,
+\frac{\partial f_j(x,c)}{\partial x_\nu}x_\nu^{(1)},
+\end{aligned}
+$$
+
+womit der angekündigte Nachweis geführt ist.
+
+Aus dem Gesagten geht überdies hervor, dass die neue Gruppe dieselbe Parametergruppe besitzt, wie die ursprüngliche Gruppe:
+
+$$
+y_i=f_i(x_1\cdots x_n,a_1\cdots a_r).
+$$
+
+Die neue Gruppe:
+
+$$
+\begin{aligned}
+&y_k=f_k(x,a),\\
+&y_k^{(1)}=\sum_{1}^{n}{}_i\,
+\frac{\partial f_k}{\partial x_i}x_i^{(1)}\\
+&(k=1\cdots n),
+\end{aligned}\tag{5}
+$$
+
+welche ein erstes Beispiel einer *erweiterten Gruppe* darbietet, hat einen sehr einfachen begrifflichen Sinn.
+
+Deutet man nämlich $x_1\cdots x_n$ als gewöhnliche Punktcoordinaten eines $n$-fach ausgedehnten Raumes, so kann man die $2n$ Grössen: $x_1\cdots x_n$, $x_1^{(1)}\cdots x_n^{(1)}$ als Bestimmungsstücke einer durch den Punkt $x_1\cdots x_n$ gehenden Richtung auffassen, mithin als Bestimmungsstücke eines *Linienelements*; dabei sind $x_1^{(1)}\cdots x_n^{(1)}$ homogene Coordinaten in dem Gebiete der $\infty^{n-1}$ Richtungen, welche durch den Punkt $x_1\cdots x_n$ gehen.
+
+*Die neue Gruppe* (5) *in den* $x$, $x^{(1)}$ *giebt an, in welcher Weise die Linienelemente des Raumes* $x_1\cdots x_n$ *von der ursprünglichen Gruppe:* $y_i=f_i(x,a)$ *unter einander vertauscht werden*.
+
+Da die Gruppe: $y_i=f_i(x,a)$ von den $r$ unabhängigen infinitesimalen Transformationen: $X_1f\cdots X_rf$ erzeugt ist, so lauten ihre endlichen Gleichungen in kanonischer Form:
+
+$$
+y_k=x_k+\sum_{1}^{r}{}_j\,e_j\xi_{jk}+\cdots
+\qquad(k=1\cdots n).
+$$
+
+Legen wir diese Form der Gruppe: $y_i=f_i(x,a)$ zu Grunde, um die erweiterte Gruppe (5) zu bilden, so erhalten die Gleichungen dieser letzteren die Gestalt:
+
+$$
+\begin{aligned}
+&y_k=x_k+\sum_{1}^{r}{}_j\,e_j\xi_{jk}+\cdots,\\
+&y_k^{(1)}=x_k^{(1)}+\sum_{1}^{r}{}_j\,e_j\xi_{jk}^{(1)}+\cdots\\
+&(k=1\cdots n),
+\end{aligned}\tag{6}
+$$
+
+wo zur Abkürzung gesetzt ist:
+
+$$
+\sum_{1}^{n}{}_i\,
+\frac{\partial\xi_{jk}}{\partial x_i}x_i^{(1)}
+=\xi_{jk}^{(1)}.
+$$
+
+Wir erkennen hieraus sofort, dass die erweiterte Gruppe die identische Transformation enthält, zugleich aber kommen wir auf die Vermuthung, dass sie von den $r$ unabhängigen infinitesimalen Transformationen:
+
+$$
+\begin{aligned}
+&X_k^{(1)}f=
+\sum_{1}^{n}{}_i\,\xi_{ki}\frac{\partial f}{\partial x_i}
++\sum_{1}^{n}{}_i\,\xi_{ki}^{(1)}
+\frac{\partial f}{\partial x_i^{(1)}}\\
+&(k=1\cdots r)
+\end{aligned}
+$$
+
+erzeugt ist. Die Richtigkeit dieser Vermuthung lässt sich folgendermassen beweisen:
+
+Die $n$ Functionen: $y_i=f_i(x,a)$ befriedigen nach Theorem 3, S. 33 Differentialgleichungen von der Form:
+
+$$
+\begin{aligned}
+&\frac{\partial y_i}{\partial a_k}
+=\sum_{1}^{r}{}_j\,\psi_{jk}(a_1\cdots a_r)\\
+&\cdot
+\xi_{ji}(y_1\cdots y_n)\\
+&(i=1\cdots n;\ k=1\cdots r).
+\end{aligned}\tag{7}
+$$
+
+Differentiiren wir diese Gleichungen nach $t$ und berücksichtigen wir, dass die $a$ von $t$ unabhängig sind, so ergiebt sich:
+
+$$
+\begin{aligned}
+&\frac{\partial y_i^{(1)}}{\partial a_k}\\
+&=\sum_{1}^{r}{}_j\,\psi_{jk}(a)
+\sum_{1}^{n}{}_\nu\,
+\frac{\partial\xi_{ji}(y)}{\partial y_\nu}y_\nu^{(1)}\\
+&(i=1\cdots n,\ k=1\cdots r).
+\end{aligned}\tag{8}
+$$
+
+Sind nun $a_1^0\cdots a_r^0$ die Parameter der identischen Transformation in der Gruppe: $y_i=f_i(x,a)$, so verschwindet die Determinante: $\sum\pm\psi_{11}(a)\cdots\psi_{rr}(a)$ für: $a_1=a_1^0$, $\cdots$, $a_r=a_r^0$ nicht; aber $a_1^0\cdots a_r^0$ sind auch die Parameter der identischen Transformation der erweiterten Gruppe (5); folglich können wir aus den Gleichungen (7) und (8) in der bekannten Weise (vgl. Kap. 4, S. 69 ff.) schliessen, dass die erweiterte Gruppe wirklich von den $r$ unabhängigen infinitesimalen Transformationen $X_k^{(1)}f$ erzeugt ist. Wir bezeichnen die $X_k^{(1)}f$ als *erweiterte infinitesimale Transformationen*.
+
+Als die unabhängigen infinitesimalen Transformationen einer $r$-gliedrigen Gruppe befriedigen die $X_k^{(1)}f$ paarweise Relationen von der Form:
+
+$$
+X_k^{(1)}X_j^{(1)}f-X_j^{(1)}X_k^{(1)}f
+=\sum_{1}^{r}{}_s\,c_{kjs}'X_s^{(1)}f.
+$$
+
+Hier müssen rechts und links die Coefficienten der $\frac{\partial f}{\partial x_i}$ übereinstimmen, es muss also sein: $X_kX_jf-X_jX_kf=\sum^s c_{kjs}'X_sf$, folglich wird:
+
+$$
+\sum_{1}^{r}{}_s\,(c_{kjs}'-c_{kjs})X_sf=0,
+$$
+
+oder wegen der Unabhängigkeit von $X_1f\cdots X_rf$:
+
+$$
+c_{kjs}'=c_{kjs}\qquad(k,j,s=1\cdots r).
+$$
+
+Somit ist die erweiterte Gruppe (5) mit der ursprünglichen Gruppe holoedrisch isomorph, was damit stimmt, dass beide Gruppen nach S. 525 dieselbe Parametergruppe besitzen. —
+
+Wir geben noch einen zweiten direkten Beweis des eben gefundenen Resultats.
+
+Sind $X_kf$ und $X_jf$ *beliebige* infinitesimale Transformationen und werden die zugehörigen erweiterten infinitesimalen Transformationen wie früher mit $X_k^{(1)}f$ und $X_j^{(1)}f$ bezeichnet, so ergiebt sich:
+
+$$
+\begin{aligned}
+&X_k^{(1)}X_j^{(1)}f-X_j^{(1)}X_k^{(1)}f
+=X_kX_jf\\
+&-X_jX_kf\\
+&+\sum_{\pi i\nu}^{1\cdots n}
+\bigl\{\xi_{ki}\frac{\partial^2\xi_{j\pi}}{\partial x_i\partial x_\nu}\\
+&-\xi_{ji}\frac{\partial^2\xi_{k\pi}}{\partial x_i\partial x_\nu}\bigr\}
+x_\nu^{(1)}\frac{\partial f}{\partial x_\pi^{(1)}}\\
+&+\sum_{\pi i\nu}^{1\cdots n}
+\bigl\{\frac{\partial\xi_{ki}}{\partial x_\nu}
+\frac{\partial\xi_{j\pi}}{\partial x_i}\\
+&-\frac{\partial\xi_{ji}}{\partial x_\nu}
+\frac{\partial\xi_{k\pi}}{\partial x_i}\bigr\}
+x_\nu^{(1)}\frac{\partial f}{\partial x_\pi^{(1)}},
+\end{aligned}
+$$
+
+oder:
+
+$$
+\left\{\begin{aligned}
+&X_k^{(1)}X_j^{(1)}f-X_j^{(1)}X_k^{(1)}f\\
+&=\sum_{\pi i}^{1\cdots n}
+\bigl\{\xi_{ki}\frac{\partial\xi_{j\pi}}{\partial x_i}\\
+&-\xi_{ji}\frac{\partial\xi_{k\pi}}{\partial x_i}\bigr\}
+\frac{\partial f}{\partial x_\pi}\\
+&+\sum_{\pi i}^{1\cdots n}\frac{d}{dt}
+\bigl\{\xi_{ki}\frac{\partial\xi_{j\pi}}{\partial x_i}\\
+&-\xi_{ji}\frac{\partial\xi_{k\pi}}{\partial x_i}\bigr\}
+\frac{\partial f}{\partial x_\pi^{(1)}}.
+\end{aligned}\right.\tag{9}
+$$
+
+Nehmen wir nun insbesondere an, dass die $X_kf$ infinitesimale Transformationen einer $r$-gliedrigen Gruppe sind und dass dabei:
+
+$$
+X_kX_jf-X_jX_kf=\sum_{1}^{r}{}_s\,c_{kjs}X_sf
+$$
+
+ist, so folgt:
+
+$$
+\begin{aligned}
+&X_k^{(1)}X_j^{(1)}f-X_j^{(1)}X_k^{(1)}f\\
+&=\sum_{1}^{r}{}_s\,c_{kjs}\sum_{1}^{n}{}_\pi\,
+\xi_{s\pi}\frac{\partial f}{\partial x_\pi}\\
+&+\sum_{1}^{r}{}_s\,c_{kjs}\sum_{1}^{n}{}_\pi\,
+\frac{d}{dt}\xi_{s\pi}\cdot\frac{\partial f}{\partial x_\pi}\\
+&=\sum_{1}^{r}{}_s\,c_{kjs}X_s^{(1)}f,
+\end{aligned}
+$$
+
+was zu beweisen war. [F1]
+
+Von besonderem Interesse in der eben durchgeführten Rechnung ist die allgemeine Formel (9), welche sich in Worten aussprechen lässt wie folgt:
+
+**Satz 1.** *Bildet man zu zwei beliebigen infinitesimalen Transformationen:*
+
+$$
+X_1f=\sum_{1}^{n}{}_i\,\xi_{1i}\frac{\partial f}{\partial x_i},
+\qquad
+X_2f=\sum_{1}^{n}{}_i\,\xi_{2i}\frac{\partial f}{\partial x_i}
+$$
+
+*die erweiterten infinitesimalen Transformationen:*
+
+$$
+\begin{aligned}
+&X_k^{(1)}f=
+\sum_{1}^{n}{}_i\,\xi_{ki}\frac{\partial f}{\partial x_i}
++\sum_{1}^{n}{}_i\,\xi_{ki}^{(1)}
+\frac{\partial f}{\partial x_i^{(1)}}\\
+&(k=1,2),
+\end{aligned}
+$$
+
+*so ist* $X_1^{(1)}X_2^{(1)}f-X_2^{(1)}X_1^{(1)}f$ *die zu* $X_1X_2f-X_2X_1f$ *gehörige erweiterte infinitesimale Transformation*.
+
+**§128.**
+
+Wir fragen jetzt, wie sich entscheiden lässt, ob die *Gleichung:*
+
+$$
+\sum_{1}^{n}{}_\nu\,U_\nu(x_1\cdots x_n)\cdot x_\nu^{(1)}=0
+$$
+
+jede endliche Transformation der erweiterten eingliedrigen Gruppe:
+
+$$
+X^{(1)}f=\sum_{1}^{n}{}_i\,\xi_i\frac{\partial f}{\partial x_i}
++\sum_{i\nu}^{1\cdots n}
+\frac{\partial\xi_i}{\partial x_\nu}x_\nu^{(1)}
+\frac{\partial f}{\partial x_i^{(1)}}
+$$
+
+gestattet.
+
+Nach Kap. 7, S. 112 thut sie es dann und nur dann, wenn $X^{(1)}(\sum U_\nu x_\nu^{(1)})$ vermöge $\sum U_\nu x_\nu^{(1)}=0$ verschwindet. Durch Ausrechnung findet man:
+
+$$
+\begin{aligned}
+&X^{(1)}\bigl(\sum_{1}^{n}{}_\nu\,U_\nu x_\nu^{(1)}\bigr)
+=\sum_{1}^{n}{}_\nu\,XU_\nu\cdot x_\nu^{(1)}\\
+&+\sum_{1}^{n}{}_\nu\,U_\nu\sum_{1}^{n}{}_i\,
+\frac{\partial\xi_\nu}{\partial x_i}x_i^{(1)},
+\end{aligned}
+$$
+
+also einen Ausdruck, welcher in den $x_i^{(1)}$ linear ist. *Mithin gestattet die Gleichung:* $\sum U_\nu x_\nu^{(1)}=0$ *dann und nur dann die eingliedrige Gruppe* $X^{(1)}f$, *wenn eine Relation von der Form:*
+
+$$
+X^{(1)}\left(\sum_{1}^{n}{}_\nu\,U_\nu x_\nu^{(1)}\right)
+=\rho\sum_{1}^{n}{}_\nu\,U_\nu x_\nu^{(1)}
+$$
+
+*besteht, unter* $\rho$ *eine Function von* $x_1\cdots x_n$ *allein verstanden*.
+
+Nebenbei mag bemerkt werden, dass der Ausdruck $\sum U_\nu x_\nu^{(1)}$ stets dann aber auch nur dann bei jeder endlichen Transformation der erweiterten Gruppe $X^{(1)}f$ invariant bleibt, wenn der Ausdruck: $X^{(1)}(\sum U_\nu x_\nu^{(1)})$ identisch verschwindet.
+
+Endlich wird ein System von $m$ Gleichungen:
+
+$$
+\begin{aligned}
+&\sum_{1}^{n}{}_i\,U_{ki}(x_1\cdots x_n)\cdot x_i^{(1)}=0\\
+&(k=1\cdots m)
+\end{aligned}\tag{10}
+$$
+
+dann und nur dann alle Transformationen der erweiterten Gruppe $X^{(1)}f$ gestatten, wenn jeder Ausdruck: $X^{(1)}(\sum U_{ki}x_i^{(1)})$ vermöge des Systems verschwindet, wenn also Relationen von der Form:
+
+$$
+\begin{aligned}
+&X^{(1)}\bigl(\sum_{1}^{n}{}_i\,U_{ki}x_i^{(1)}\bigr)\\
+&=\sum_{1}^{m}{}_j\,\rho_{kj}\sum_{1}^{n}{}_i\,U_{ji}x_i^{(1)}
+(k=1\cdots m)
+\end{aligned}
+$$
+
+bestehen, wo die $\rho_{kj}$ Functionen von den $x$ allein bedeuten.
+
+Verbinden wir den Satz 5 des Kapitels 7, S. 118 mit dem oben bewiesenen Satze 1 (S. 527), so ergiebt sich offenbar der
+
+**Satz 2.** *Gestattet ein Gleichungssystem von der Form:*
+
+$$
+\begin{aligned}
+&\sum_{1}^{n}{}_i\,U_{ki}(x_1\cdots x_n)\cdot x_i^{(1)}=0\\
+&(k=1\cdots m)
+\end{aligned}\tag{10}
+$$
+
+*die beiden eingliedrigen Gruppen:* $X_1^{(1)}f$ *und* $X_2^{(1)}f$, *welche bezüglich aus* $X_1f$ *und* $X_2f$ *durch die oben definirte besondere Erweiterung hergeleitet sind, so gestattet es zu gleicher Zeit die eingliedrige Gruppe:* $X_1^{(1)}X_2^{(1)}f-X_2^{(1)}X_1^{(1)}f$, *welche aus der Gruppe:* $X_1X_2f-X_2X_1f$ *durch Erweiterung hergeleitet ist*.
+
+Wir haben den vorstehenden Satz erhalten, indem wir den Satz 5 des Kapitels 7 auf den besonderen Fall eines Gleichungssystems von der Form (10) anwendeten. Es muss aber erwähnt werden, dass unser jetziger Satz sich weit leichter beweisen lässt, als der allgemeine Satz 5 des Kapitels 7. Man kann nämlich ohne Schwierigkeit durch Rechnung sich überzeugen, dass ein Gleichungssystem (10), welches $X_1^{(1)}f$ und $X_2^{(1)}f$ gestattet, auch $X_1^{(1)}X_2^{(1)}f-X_2^{(1)}X_1^{(1)}f$ zulässt.
+
+Eine Gleichung von der Form:
+
+$$
+\sum_{1}^{n}{}_i\,U_i(x_1\cdots x_n)\cdot dx_i=0
+$$
+
+nennen wir eine *Pfaffsche Gleichung*, ihre linke Seite bezeichnen wir als einen *Pfaffschen Ausdruck*.
+
+Aus den bisherigen Entwickelungen des gegenwärtigen Kapitels ergeben sich wichtige Sätze über Systeme von Pfaffschen Gleichungen:
+
+$$
+\begin{aligned}
+&\sum_{1}^{n}{}_i\,U_{ki}(x_1\cdots x_n)\cdot dx_i=0\\
+&(k=1\cdots m).
+\end{aligned}\tag{10'}
+$$
+
+Die Ausführung der Transformation: $y_i=f_i(x_1\cdots x_n)$ auf den Differentialausdruck: $\sum^i U_{ki}(x_1\cdots x_n)dx_i$ geschieht offenbar in der Weise, dass man die $2n$ Grössen $x_1\cdots x_n$, $dx_1\cdots dx_n$ durch die erweiterte Transformation:
+
+$$
+\begin{aligned}
+&y_i=f_i(x_1\cdots x_n),
+dy_i=\sum_{1}^{n}{}_\nu\,
+\frac{\partial f_i}{\partial x_\nu}dx_\nu\\
+&(i=1\cdots n)
+\end{aligned}
+$$
+
+transformirt. Hieraus folgt, dass das System der Pfaffschen Gleichungen:
+
+$$
+\begin{aligned}
+&\sum_{1}^{n}{}_i\,U_{ki}(x_1\cdots x_n)\cdot dx_i=0\\
+&(k=1\cdots m)
+\end{aligned}\tag{10'}
+$$
+
+dann und nur dann bei einer eingliedrigen Gruppe $Xf$ invariant bleibt, wenn das Gleichungensystem:
+
+$$
+\sum_{1}^{n}{}_i\,U_{ki}(x_1\cdots x_n)\cdot x_i^{(1)}=0
+\qquad(k=1\cdots m)
+$$
+
+die erweiterte eingliedrige Gruppe:
+
+$$
+X^{(1)}f=\sum_{1}^{n}{}_i\,\xi_i\frac{\partial f}{\partial x_i}
++\sum_{1}^{n}{}_i\,\xi_i^{(1)}
+\frac{\partial f}{\partial x_i^{(1)}}
+$$
+
+gestattet, wenn also $m$ Relationen von der Form:
+
+$$
+\begin{aligned}
+&\sum_{1}^{n}{}_i\,XU_{ki}\cdot x_i^{(1)}\\
+&+\sum_{1}^{n}{}_i\,U_{ki}\sum_{1}^{n}{}_\nu\,
+\frac{\partial\xi_i}{\partial x_\nu}x_\nu^{(1)}\\
+&=\sum_{1}^{m}{}_j\,\rho_{kj}(x)
+\sum_{1}^{n}{}_i\,U_{ji}x_i^{(1)}\\
+&(k=1\cdots m)
+\end{aligned}
+$$
+
+bestehen oder, was auf dasselbe hinauskommt, $m$ Relationen von der Form:
+
+$$
+\begin{aligned}
+&\sum_{1}^{n}{}_i\,XU_{ki}\cdot dx_i
++\sum_{1}^{n}{}_i\,U_{ki}d(Xx_i)\\
+&=\sum_{1}^{m}{}_j\,\rho_{kj}(x)\sum_{1}^{n}{}_i\,U_{ji}dx_i\\
+&(k=1\cdots m).
+\end{aligned}
+$$
+
+Führen wir daher die abgekürzte Schreibweise ein:
+
+$$
+\begin{aligned}
+&\sum_{1}^{n}{}_i\,XU_{ki}\cdot dx_i
++\sum_{1}^{n}{}_i\,U_{ki}d(Xx_i)\\
+&=X\bigl(\sum_{1}^{n}{}_i\,U_{ki}dx_i\bigr),
+\end{aligned}
+$$
+
+so erhalten wir den
+
+**Satz 3.** *Soll das System der* $m$ *Pfaffschen Gleichungen:*
+
+$$
+\begin{aligned}
+&\sum_{1}^{n}{}_i\,U_{ki}(x_1\cdots x_n)\cdot dx_i=0\\
+&(k=1\cdots m)
+\end{aligned}\tag{10'}
+$$
+
+*alle Transformationen:* $y_i=x_i+\varepsilon Xx_i+\cdots$ *der eingliedrigen Gruppe* $Xf$ *gestatten, sollen also für jeden Werth von* $\varepsilon$ *Relationen von der Form:*
+
+$$
+\begin{aligned}
+&\sum_{1}^{n}{}_i\,U_{ki}(y_1\cdots y_n)\cdot dy_i\\
+&=\sum_{1}^{m}{}_j\,\omega_{kj}(x_1\cdots x_n,\varepsilon)
+\sum_{1}^{n}{}_i\,U_{ji}(x)dx_i\\
+&(k=1\cdots m)
+\end{aligned}
+$$
+
+*bestehen, so ist nothwendig und hinreichend, dass die* $m$ *Ausdrücke* $X(\sum U_{ki}dx_i)$ *sich in der Form:*
+
+$$
+\begin{aligned}
+&X\bigl(\sum_{1}^{n}{}_i\,U_{ki}dx_i\bigr)\\
+&=\sum_{1}^{m}{}_j\,\rho_{kj}(x)\sum_{1}^{n}{}_i\,U_{ji}dx_i
+(k=1\cdots m)
+\end{aligned}
+$$
+
+*darstellen lassen*.
+
+Führen wir endlich die Redeweise ein: *das System der Pfaffschen Gleichungen* (10') *gestattet die infinitesimale Transformation* $Xf$, *wenn* $m$ *Relationen von der Form:*
+
+$$
+X\left(\sum_{1}^{n}{}_i\,U_{ki}dx_i\right)
+=\sum_{1}^{m}{}_j\,\rho_{kj}(x)\sum_{1}^{n}{}_i\,U_{ji}dx_i
+$$
+
+*bestehen*, so können wir den letzten Satz auch folgendermassen aussprechen:
+
+*Das System der* $m$ *Pfaffschen Gleichungen* (10') *gestattet dann und nur dann alle Transformationen der eingliedrigen Gruppe* $Xf$, *wenn es die infinitesimale Transformation* $Xf$ *gestattet*.
+
+Ausserdem geht aus Satz 2 ohne Weiteres hervor:
+
+**Theorem 93.** *Gestattet ein System von* $m$ *Pfaffschen Gleichungen:*
+
+$$
+\sum_{1}^{n}{}_i\,U_{ki}(x_1\cdots x_n)\cdot dx_i=0
+\qquad(k=1\cdots m)
+$$
+
+*die beiden eingliedrigen Gruppen:* $X_1f$ *und* $X_2f$, *so gestattet es gleichzeitig auch die eingliedrige Gruppe:* $X_1X_2f-X_2X_1f$.
+
+Zu bemerken ist noch, dass der Pfaffsche *Ausdruck:* $\sum^i U_i(x_1\cdots x_n)dx_i$ dann und nur dann bei jeder Transformation der eingliedrigen Gruppe $Xf$ invariant bleibt, wenn der Ausdruck: $X(\sum U_i dx_i)$ identisch verschwindet.
+
+Wir sind früher (S. 53 f.) übereingekommen, dass wir an Stelle von $\xi_i$ zuweilen auch $\frac{\delta x_i}{\delta t}$ schreiben wollen und an Stelle von $Xf$ auch $\frac{\delta f}{\delta t}$. In ähnlicher Weise wollen wir an Stelle von $X(\sum U_i dx_i)$ auch wohl schreiben: $\frac{\delta}{\delta t}\sum U_i dx_i$; wir haben dann die Gleichung:
+
+$$
+\begin{aligned}
+&\delta\bigl(\sum_{1}^{n}{}_i\,U_i dx_i\bigr)
+=\sum_{1}^{n}{}_i\,\delta U_i\cdot dx_i\\
+&+\sum_{1}^{n}{}_i\,U_i d\delta x_i,
+\end{aligned}
+$$
+
+welche in derselben Bedeutung in der Variationsrechnung vorkommt.
+
+**§129.**
+
+Die Sätze des vorigen Paragraphen reichen vollkommen aus, um die Theorie der Erweiterung einer Gruppe durch Hinzufügung von Differentialquotienten in voller Allgemeinheit abzuleiten. Wir wollen jedoch erst einen besonderen Fall betrachten, ehe wir die Behandlung des allgemeinen Falles in Angriff nehmen. Dabei knüpfen wir an bekannte geometrische Begriffe des dreifach ausgedehnten Raumes an.
+
+Unter $x,y,z$ mögen gewöhnliche Punktcoordinaten des dreifach ausgedehnten Raumes verstanden werden und es sei ferner:
+
+$$
+x'=\Xi(x,y,z),\quad y'=\mathrm{Η},\quad z'=\mathrm{Ζ}
+\tag{11}
+$$
+
+eine Transformation dieses Raumes.
+
+Bei der Transformation (11) werden alle Punkte $x,y,z$ transformirt, das heisst in neue Lagen: $x',y',z'$ übergeführt. Gleichzeitig nehmen auch alle Flächen neue Lagen an: jede Fläche: $\chi(x,y,z)=0$ geht in eine neue Fläche: $\psi(x',y',z')=0$ über, deren Gleichung durch Elimination von $x,y,z$ aus den Gleichungen (11) der Transformation in Verbindung mit $\chi=0$ erhalten wird.
+
+In der Natur der Sache liegt es, dass die Transformation (11) solche Flächen, die einander berühren, wenigstens im Allgemeinen in Flächen überführt, welche in derselben Beziehung stehen. Bezeichnen wir daher mit dem Ausdruck *Flächenelement den Inbegriff eines auf einer Fläche gelegenen Punktes* $x,y,z$ *und der hindurchgehenden Tangentialebene:*
+
+$$
+\begin{aligned}
+&z_1-z=p(x_1-x)+q(y_1-y)\\
+&\bigl(p=\frac{\partial z}{\partial x},
+q=\frac{\partial z}{\partial y}\bigr),
+\end{aligned}
+$$
+
+so können wir sagen, dass unsere Transformation (11) jedes Flächenelement $x,y,z,p,q$ in ein neues Flächenelement $x',y',z',p',q'$ verwandelt. Mit andern Worten, es müssen gewisse Gleichungen:
+
+$$
+\begin{aligned}
+&p'=\Pi(x,y,z,p,q),\\
+&q'=\mathrm{Κ}(x,y,z,p,q)
+\end{aligned}\tag{12}
+$$
+
+bestehen, welche wir weiter unten wirklich aufstellen werden. Die Gleichungen (11) und (12) zusammengenommen stellen eine Transformation dar, welche aus der Transformation (11) durch Erweiterung entstanden ist.
+
+Setzen wir nunmehr voraus, dass $\infty^r$ Transformationen:
+
+$$
+\begin{aligned}
+&x'=\Xi(x,y,z,a_1\cdots a_r),\\
+&y'=\mathrm{Η}, z'=\mathrm{Ζ}
+\end{aligned}\tag{13}
+$$
+
+vorgelegt sind, welche eine $r$-gliedrige Gruppe von Punkttransformationen des Raumes darstellen und denken wir uns zu jeder dieser $\infty^r$ Transformationen die eben definirte erweiterte Transformation aufgestellt. Wir behaupten, dass die $\infty^r$ erweiterten Transformationen:
+
+$$
+\left\{\begin{aligned}
+&x'=\Xi(x,y,z,a_1\cdots a_r),\\
+&y'=\mathrm{Η}, z'=\mathrm{Ζ},\\
+&p'=\Pi(x,y,z,p,q,a_1\cdots a_r),\\
+&q'=\mathrm{Κ},
+\end{aligned}\right.\tag{14}
+$$
+
+welche wir auf diese Weise erhalten, eine $r$-gliedrige Gruppe in den Veränderlichen $x,y,z,p,q$ bilden.
+
+Zum Beweise fassen wir die $\infty^r$ Transformationen (13) als Operationen auf und bemerken, dass diese Operationen sowohl die Punkte $x,y,z$ als die Flächenelemente $x,y,z,p,q$ unter einander vertauschen. Als Vertauschungen der Punkte angesehen bilden diese Operationen eine Gruppe, folglich müssen sie auch als Vertauschungen der Flächenelemente aufgefasst eine Gruppe bilden, das aber findet eben darin seinen analytischen Ausdruck, dass die Gleichungen (14) eine Gruppe darstellen.
+
+Die bisherigen Ueberlegungen werden wir näher *präcisiren*, indem wir sie rein analytisch entwickeln.
+
+Es sei
+
+$$
+\begin{aligned}
+&x'=\Xi(x,y,z), y'=\mathrm{Η}(x,y,z),\\
+&z'=\mathrm{Ζ}(x,y,z)
+\end{aligned}\tag{11}
+$$
+
+eine Transformation zwischen den Veränderlichen $x,y,z$ und $x',y',z'$. Denken wir uns $z$ als eine beliebig gewählte Function: $z=\varphi(x,y)$ von $x$ und $y$, so existiren partielle Differentialquotienten erster Ordnung von $z$ nach $x$ und $y$; dieselben sind definirt durch die Gleichung:
+
+$$
+dz-pdx-qdy=0.
+$$
+
+Andererseits aber verwandelt unsere Transformation jedes Abhängigkeitsverhältniss: $z=\varphi(x,y)$ zwischen $x,y,z$ in ein eben solches zwischen $x',y',z'$, welches im Allgemeinen die Form: $z'=\overline\varphi(x',y')$ erhalten kann; daher hat auch $z'$ zwei partielle Differentialquotienten $p'$ und $q'$, welche ihrerseits der Bedingung:
+
+$$
+dz'-p'dx'-q'dy'=0
+$$
+
+genügen.
+
+Setzen wir in der eben geschriebenen Gleichung an Stelle von $z',x',y'$ ihre Werthe $\mathrm{Ζ},\Xi,\mathrm{Η}$ ein und ordnen wir das Resultat nach $dz,dx,dy$, so kommt:
+
+$$
+\begin{aligned}
+&\bigl(\frac{\partial\mathrm{Ζ}}{\partial z}
+-p'\frac{\partial\Xi}{\partial z}
+-q'\frac{\partial\mathrm{Η}}{\partial z}\bigr)dz
++\bigl(\frac{\partial\mathrm{Ζ}}{\partial x}\\
+&-p'\frac{\partial\Xi}{\partial x}
+-q'\frac{\partial\mathrm{Η}}{\partial x}\bigr)dx\\
+&+\bigl(\frac{\partial\mathrm{Ζ}}{\partial y}
+-p'\frac{\partial\Xi}{\partial y}
+-q'\frac{\partial\mathrm{Η}}{\partial y}\bigr)dy=0
+\end{aligned}
+$$
+
+oder wegen: $dz=pdx+qdy$:
+
+$$
+\left\{\begin{aligned}
+&\bigl\{\frac{\partial\mathrm{Ζ}}{\partial x}
+-p'\frac{\partial\Xi}{\partial x}
+-q'\frac{\partial\mathrm{Η}}{\partial x}\\
+&+p\bigl(\frac{\partial\mathrm{Ζ}}{\partial z}
+-p'\frac{\partial\Xi}{\partial z}
+-q'\frac{\partial\mathrm{Η}}{\partial z}\bigr)\bigr\}dx\\
+&+\bigl\{\frac{\partial\mathrm{Ζ}}{\partial y}
+-p'\frac{\partial\Xi}{\partial y}
+-q'\frac{\partial\mathrm{Η}}{\partial y}\\
+&+q\bigl(\frac{\partial\mathrm{Ζ}}{\partial z}
+-p'\frac{\partial\Xi}{\partial z}
+-q'\frac{\partial\mathrm{Η}}{\partial z}\bigr)\bigr\}dy\\
+&=0.
+\end{aligned}\right.\tag{15}
+$$
+
+In der Gleichung (15) müssen die beiden Faktoren von $dx$ und $dy$ für sich verschwinden, weil $dx$ und $dy$ nicht durch eine Relation verknüpft sind. Wir erhalten daher die beiden Gleichungen:
+
+$$
+\left\{\begin{aligned}
+&p'\bigl(\frac{\partial\Xi}{\partial x}
++p\frac{\partial\Xi}{\partial z}\bigr)
++q'\bigl(\frac{\partial\mathrm{Η}}{\partial x}\\
+&+p\frac{\partial\mathrm{Η}}{\partial z}\bigr)
+=\frac{\partial\mathrm{Ζ}}{\partial x}
++p\frac{\partial\mathrm{Ζ}}{\partial z},\\
+&p'\bigl(\frac{\partial\Xi}{\partial y}
++q\frac{\partial\Xi}{\partial z}\bigr)
++q'\bigl(\frac{\partial\mathrm{Η}}{\partial y}\\
+&+q\frac{\partial\mathrm{Η}}{\partial z}\bigr)
+=\frac{\partial\mathrm{Ζ}}{\partial y}
++q\frac{\partial\mathrm{Ζ}}{\partial z}.
+\end{aligned}\right.\tag{16}
+$$
+
+Dieselben lassen sich nach $p'$ und $q'$ auflösen. Verschwände nämlich die Determinante:
+
+$$
+\begin{vmatrix}
+\dfrac{\partial\Xi}{\partial x}+p\dfrac{\partial\Xi}{\partial z}
+&\dfrac{\partial\Xi}{\partial y}+q\dfrac{\partial\Xi}{\partial z}\\
+\dfrac{\partial\mathrm{Η}}{\partial x}
++p\dfrac{\partial\mathrm{Η}}{\partial z}
+&\dfrac{\partial\mathrm{Η}}{\partial y}
++q\dfrac{\partial\mathrm{Η}}{\partial z}
+\end{vmatrix}
+\tag{17}
+$$
+
+für jede beliebige Function $z$ von $x$ und $y$, so müsste sie an und für sich identisch verschwinden, das heisst, für jeden Werth der Veränderlichen $x,y,z,p,q$. Letzteres kann offenbar nur dann eintreten, wenn alle zweireihigen Determinanten der Matrix
+
+$$
+\begin{vmatrix}
+\dfrac{\partial\Xi}{\partial x}&
+\dfrac{\partial\Xi}{\partial y}&
+\dfrac{\partial\Xi}{\partial z}\\
+\dfrac{\partial\mathrm{Η}}{\partial x}&
+\dfrac{\partial\mathrm{Η}}{\partial y}&
+\dfrac{\partial\mathrm{Η}}{\partial z}
+\end{vmatrix}
+$$
+
+identisch verschwinden, wenn also $\Xi$ und $\mathrm{Η}$ keine unabhängigen Functionen von $x,y,z$ sind. Das aber ist von vornherein ausgeschlossen.
+
+Wir sehen also, dass die Gleichungen (16) im Allgemeinen nach $p'$ und $q'$ auflösbar sind, welche Function von $x$ und $y$ auch das $z$ sein mag, und dass die Auflösung nur dann nicht möglich ist, wenn die Function $z=\varphi(x,y)$ die partielle Differentialgleichung befriedigt, welche durch Nullsetzung der Determinante (17) entsteht. Indem wir die Auflösung der Gleichungen (16) wirklich ausführen, erhalten wir für $p'$ und $q'$ ganz bestimmte Functionen von: $x,y,z,p,q$:
+
+$$
+p'=\Pi(x,y,z,p,q),\qquad q'=\mathrm{Κ}(x,y,z,p,q).
+$$
+
+*Diese Bestimmung ist allgemein gültig, da wir über die Function* $z=\varphi(x,y)$ *besondere Voraussetzungen nicht gemacht haben*.
+
+Alles das ist übrigens längst bekannt.
+
+Die Gleichung (15) zeigt, dass es möglich ist, eine Grösse $\mathfrak a$ derart zu bestimmen, dass die Relation:
+
+$$
+\begin{aligned}
+&d\mathrm{Ζ}-p'd\Xi-q'd\mathrm{Η}
+=\mathfrak a(dz\\
+&-pdx-qdy)
+\end{aligned}\tag{18}
+$$
+
+in $dx,dy,dz$ identisch besteht. Entwickelt man nämlich (18) nach $dx,dy,dz$, so erhält man zunächst durch Vergleichung der Faktoren von $dz$ auf beiden Seiten:
+
+$$
+\mathfrak a=\frac{\partial\mathrm{Ζ}}{\partial z}
+-p'\frac{\partial\Xi}{\partial z}
+-q'\frac{\partial\mathrm{Η}}{\partial z};
+$$
+
+setzt man aber diesen Werth in die Gleichung (18) ein, so verwandelt sich dieselbe in (15).
+
+Die Gleichung (18) ihrerseits hat einen sehr einfachen Sinn, *sie sagt aus, dass die erweiterte Transformation:*
+
+$$
+x'=\Xi,\quad y'=\mathrm{Η},\quad z'=\mathrm{Ζ},\quad
+p'=\Pi,\quad q'=\mathrm{Κ}
+$$
+
+*die Pfaffsche Gleichung:* $dz-pdx-qdy=0$ *invariant lässt*. [F2]
+
+Für das Folgende ist es sehr wichtig zu bemerken, dass die erweiterte Transformation: $x'=\Xi,\cdots q'=\mathrm{Κ}$ durch diese Eigenschaft vollkommen definirt ist. Mit andern Worten: kennt man $\Xi,\mathrm{Η},\mathrm{Ζ}$, so sind $\Pi$ und $\mathrm{Κ}$ durch die Forderung, dass die Transformation: $x'=\Xi,\cdots q'=\mathrm{Κ}$ die Pfaffsche Gleichung: $dz-pdx-qdy=0$ invariant lassen soll, eindeutig bestimmt.
+
+Nunmehr gehen wir wieder zur Betrachtung einer $r$-gliedrigen Gruppe:
+
+$$
+\begin{aligned}
+&x'=\Xi(x,y,z,a_1\cdots a_r),\\
+&y'=\mathrm{Η}, z'=\mathrm{Ζ}
+\end{aligned}\tag{19}
+$$
+
+über und denken uns jede der $\infty^r$ Transformationen dieser Gruppe in der vorhin angegebenen Weise durch Hinzufügung der Gleichungen:
+
+$$
+\begin{aligned}
+&p'=\Pi(x,y,z,p,q,a_1\cdots a_r),\\
+&q'=\mathrm{Κ}
+\end{aligned}\tag{20}
+$$
+
+erweitert. Dass dann die Gleichungen (19) und (20) zusammengenommen eine $r$-gliedrige Gruppe darstellen, wissen wir schon (vgl. S. 532), wir wollen es aber jetzt auch analytisch beweisen.
+
+Werden die Gleichungen:
+
+$$
+x''=\Xi(x',y',z',b_1\cdots b_r),\quad
+y''=\mathrm{Η},\quad z''=\mathrm{Ζ}
+$$
+
+mit (19) verbunden, so erhält man in bekannter Weise:
+
+$$
+x''=\Xi(x,y,z,c_1\cdots c_r),\quad
+y''=\mathrm{Η},\quad z''=\mathrm{Ζ},
+$$
+
+wo die $c$ nur von den $a$ und $b$ abhängen. Andererseits ergeben aber die beiden Gleichungen
+
+$$
+\begin{gathered}
+dz'-p'dx'-q'dy'=\mathfrak a(dz-pdx-qdy)\\
+dz''-p''dx''-q''dy''=\mathfrak a'(dz'-p'dx'-q'dy')
+\end{gathered}
+$$
+
+die analoge Gleichung
+
+$$
+dz''-p''dx''-q''dy''=\mathfrak a\mathfrak a'(dz-pdx-qdy),
+$$
+
+welche nach der oben gemachten Bemerkung zeigt, dass $p''$ und $q''$ gerade so von $x,y,z,p,q$ und den $c$ abhängen, wie $p'$ und $q'$ von $x,y,z,p,q$ und den $a$. Wir haben somit den
+
+**Satz 4.** *Stellen die Gleichungen*
+
+$$
+\begin{aligned}
+&x'=\Xi(x,y,z,a_1\cdots a_r),\\
+&y'=\mathrm{Η}, z'=\mathrm{Ζ}
+\end{aligned}\tag{19}
+$$
+
+*eine* $r$*-gliedrige Gruppe dar und bestimmt man die Functionen* $\Pi(x,y,z,a_1\cdots a_r)$, $\mathrm{Κ}(x,y,z,a_1\cdots a_r)$ *derart, dass die erweiterten Transformationsgleichungen:*
+
+$$
+\begin{aligned}
+&x'=\Xi, y'=\mathrm{Η}, z'=\mathrm{Ζ},
+p'=\Pi,\\
+&q'=\mathrm{Κ}
+\end{aligned}\tag{21}
+$$
+
+*die Pfaffsche Gleichung:* $dz-pdx-qdy=0$ *invariant lassen, dass also eine Relation von der Form:*
+
+$$
+\begin{aligned}
+&dz'-p'dx'-q'dy'
+=\mathfrak a(x,y,z,p,q,\\
+&a_1\cdots a_r)\cdot(dz-pdx-qdy)
+\end{aligned}
+$$
+
+*besteht, so stellen diese Transformationsgleichungen ebenfalls eine* $r$*-gliedrige Gruppe dar und zwar eine Gruppe, welche mit der ursprünglichen Gruppe die Parametergruppe gemein hat*.
+
+Wir behaupten nun: Ist die $r$-gliedrige Gruppe (19) von $r$ unabhängigen infinitesimalen Transformationen erzeugt — und das setzen wir natürlich wie sonst immer auch hier voraus —, so gilt dasselbe zugleich von der erweiterten Gruppe (21).
+
+Wir werden diese Behauptung zunächst für den einfachen Fall: $r=1$ beweisen. Es sei also $r=1$ und die Gruppe (19) sei von der infinitesimalen Transformation
+
+$$
+Xf=\xi\frac{\partial f}{\partial x}
++\eta\frac{\partial f}{\partial y}
++\zeta\frac{\partial f}{\partial z}
+$$
+
+erzeugt. Um nachzuweisen, dass auch die erweiterte Gruppe von einer infinitesimalen Transformation erzeugt ist, brauchen wir blos zu zeigen, dass aus $Xf$ eine erweiterte infinitesimale Transformation
+
+$$
+X^{(1)}f=\xi\frac{\partial f}{\partial x}
++\eta\frac{\partial f}{\partial y}
++\zeta\frac{\partial f}{\partial z}
++\pi\frac{\partial f}{\partial p}
++\varkappa\frac{\partial f}{\partial q}
+$$
+
+hergeleitet werden kann, welche die Pfaffsche Gleichung:
+
+$$
+dz-pdx-qdy=0
+\tag{22}
+$$
+
+invariant lässt. Ist das gezeigt, so ist klar, dass die von $X^{(1)}f$ erzeugte eingliedrige Gruppe in den Veränderlichen $x,y,z,p,q$ mit der eingliedrigen Gruppe (21) identisch ist, sie lässt ja die Pfaffsche Gleichung (22) invariant und entsteht durch Erweiterung der Gruppe $Xf$, welche nach Voraussetzung eben die Gruppe (19) ist.
+
+Nach S. 531 lässt die infinitesimale Transformation $X^{(1)}f$ dann und nur dann die Pfaffsche Gleichung (22) invariant, wenn $\pi$ und $\varkappa$ eine Gleichung von der Form:
+
+$$
+\begin{aligned}
+&d\zeta-pd\xi-qd\eta-\pi dx-\varkappa dy
+=\mathfrak b(dz\\
+&-pdx-qdy)
+\end{aligned}
+$$
+
+befriedigen, unter $\mathfrak b$ eine Function von $x,y,z,p,q$ verstanden. Diese Gleichung zerlegt sich in die drei:
+
+$$
+\begin{aligned}
+\mathfrak b&=\frac{\partial\zeta}{\partial z}
+-p\frac{\partial\xi}{\partial z}
+-q\frac{\partial\eta}{\partial z}\\
+\pi&=\frac{\partial\zeta}{\partial x}
+-p\frac{\partial\xi}{\partial x}
+-q\frac{\partial\eta}{\partial x}+\mathfrak bp\\
+\varkappa&=\frac{\partial\zeta}{\partial y}
+-p\frac{\partial\xi}{\partial y}
+-q\frac{\partial\eta}{\partial y}+\mathfrak bq,
+\end{aligned}
+$$
+
+also ergeben sich für $\pi$ und $\varkappa$ die vollständig bestimmten Werthe:
+
+$$
+\begin{aligned}
+&\pi=\frac{d\zeta}{dx}-p\frac{d\xi}{dx}-q\frac{d\eta}{dx},\\
+&\varkappa=\frac{d\zeta}{dy}-p\frac{d\xi}{dy}-q\frac{d\eta}{dy},
+\end{aligned}
+$$
+
+wo der Abkürzung wegen gesetzt ist:
+
+$$
+\begin{aligned}
+&\frac{\partial\Phi(x,y,z)}{\partial x}
++p\frac{\partial\Phi(x,y,z)}{\partial z}=\frac{d\Phi}{dx},\\
+&\frac{\partial\Phi(x,y,z)}{\partial y}
++q\frac{\partial\Phi(x,y,z)}{\partial z}=\frac{d\Phi}{dy}.
+\end{aligned}
+$$
+
+Hiermit ist die Existenz der infinitesimalen Transformation $X^{(1)}f$ bewiesen und damit zugleich die Richtigkeit der oben aufgestellten Behauptung für $r=1$.
+
+Nunmehr sei $r$ beliebig. Ist dann $e_1X_1f+\cdots+e_rX_rf$ irgend eine infinitesimale Transformation der Gruppe (19), so gehört offenbar diejenige eingliedrige Gruppe, welche von der erweiterten infinitesimalen Transformation: $e_1X_1^{(1)}f+\cdots+e_rX_r^{(1)}f$ erzeugt wird, der Gruppe (21) an, denn die betreffende eingliedrige Gruppe entsteht ja durch Erweiterung der eingliedrigen Gruppe: $e_1X_1f+\cdots+e_rX_rf$. Hieraus geht hervor, dass die Gruppe (21) die $\infty^{r-1}$ eingliedrigen Gruppen: $e_1X_1^{(1)}f+\cdots+e_rX_r^{(1)}f$ enthält, dass sie also von den $r$ unabhängigen infinitesimalen Transformationen: $X_1^{(1)}f\cdots X_r^{(1)}f$ erzeugt ist.
+
+Selbstverständlich erfüllen die $X_k^{(1)}f$ paarweise Relationen der Form:
+
+$$
+X_i^{(1)}X_k^{(1)}f-X_k^{(1)}X_i^{(1)}f
+=\sum_{1}^{r}{}_s\,c_{iks}'X_s^{(1)}f;
+$$
+
+wir werden das durch Ausrechnung verificiren, und so überdies erkennen, dass die $c_{iks}'$ hier dieselben Werthe haben wie die $c_{iks}$ in den Relationen:
+
+$$
+X_iX_kf-X_kX_if=\sum_{1}^{r}{}_s\,c_{iks}X_sf.
+$$
+
+Die Pfaffsche Gleichung: $dz-pdx-qdy=0$ gestattet nach Theor. 93, S. 531 zugleich mit den beiden infinitesimalen Transformationen: $X_i^{(1)}f$ und $X_k^{(1)}f$ auch die folgende: $X_i^{(1)}X_k^{(1)}f-X_k^{(1)}X_i^{(1)}f$, welche augenscheinlich die Form hat:
+
+$$
+\begin{aligned}
+&X_i^{(1)}X_k^{(1)}f-X_k^{(1)}X_i^{(1)}f
+=X_iX_kf\\
+&-X_kX_if
++\alpha\frac{\partial f}{\partial p}
++\beta\frac{\partial f}{\partial q}.
+\end{aligned}
+$$
+
+Hieraus ergiebt sich, dass die infinitesimale Transformation: $X_i^{(1)}X_k^{(1)}f-X_k^{(1)}X_i^{(1)}f$ durch Erweiterung von
+
+$$
+X_iX_kf-X_kX_if=\sum_{1}^{r}{}_s\,c_{iks}X_sf
+$$
+
+erhalten wird, dass also die Relationen:
+
+$$
+X_i^{(1)}X_k^{(1)}f-X_k^{(1)}X_i^{(1)}f
+=\sum_{1}^{r}{}_s\,c_{iks}X_s^{(1)}f
+$$
+
+bestehen.
+
+Wir ersehen hieraus noch, dass die erweiterte Gruppe (21) mit der Gruppe (19) holoedrisch isomorph ist, was damit stimmt, dass beide Gruppen dieselbe Parametergruppe besitzen (Satz 4, S. 535).
+
+Die Gruppe:
+
+$$
+\begin{aligned}
+&x'=\Xi(x,y,z,a_1\cdots a_r),\\
+&y'=\mathrm{Η}, z'=\mathrm{Ζ}
+\end{aligned}\tag{19}
+$$
+
+kann noch mehr erweitert werden, nämlich dadurch, dass man auch Differentialquotienten von höherer als der ersten Ordnung mitnimmt. Wir wollen hier nur noch auf die Erweiterung durch Hinzunahme der Differentialquotienten zweiter Ordnung eingehen.
+
+Da $z$ als Function von $x$ und $y$ betrachtet wird, haben wir neben $p$ und $q$ auch die drei Differentialquotienten zweiter Ordnung:
+
+$$
+\frac{\partial^2z}{\partial x^2}=r,\quad
+\frac{\partial^2z}{\partial x\partial y}=s,\quad
+\frac{\partial^2z}{\partial y^2}=t
+$$
+
+zu berücksichtigen.
+
+Bei den Transformationen unserer Gruppe hängen $x',y',z'$ in bekannter Weise von $x,y,z$ ab und nach dem Früheren ebenso $p',q'$ von $x,y,z,p,q$. Wie jetzt gezeigt werden soll, lassen sich auch $r',s',t'$ als Functionen von $x,y,z,p,q,r,s,t$ darstellen:
+
+$$
+\begin{aligned}
+&r'=\mathrm{Ρ}(x,y,z,p,q,r,s,t;a_1\cdots a_r),\\
+&s'=\Sigma, t'=\mathrm{Τ}.
+\end{aligned}
+$$
+
+Die Grössen $r',s',t'$ sind definirt durch:
+
+$$
+\begin{aligned}
+&dp'-r'dx'-s'dy'=0,\\
+&dq'-s'dx'-t'dy'=0.
+\end{aligned}
+$$
+
+Werden hierin die $dx',dy',dp',dq'$ nach $dx,dy,dz,dp,dq$ entwickelt und dann für $dz,dp,dq$ ihre Werthe aus
+
+$$
+\begin{aligned}
+&dz-pdx-qdy=0,\\
+&dp-rdx-sdy=0,\\
+&dq-sdx-tdy=0
+\end{aligned}
+$$
+
+eingesetzt, so ergeben sich zwei Gleichungen von der Form: $Adx+Bdy=0$, deren Coefficienten neben $x',y',z'$ und ihren Differentialquotienten nach $x,y,z$ auch noch $p',q',r',s',t',p,q,r,s,t$ enthalten. Da $dx$ und $dy$ von einander unabhängig sind, müssen $A$ und $B$ beide Male einzeln verschwinden und so finden wir vier Gleichungen:
+
+$$
+\begin{aligned}
+&r'\bigl(\frac{\partial\Xi}{\partial x}
++p\frac{\partial\Xi}{\partial z}\bigr)
++s'\bigl(\frac{\partial\mathrm{Η}}{\partial x}
++p\frac{\partial\mathrm{Η}}{\partial z}\bigr)\\
+&=\frac{\partial\Pi}{\partial x}
++p\frac{\partial\Pi}{\partial z}
++r\frac{\partial\Pi}{\partial p}
++s\frac{\partial\Pi}{\partial q}\\
+&r'\bigl(\frac{\partial\Xi}{\partial y}
++q\frac{\partial\Xi}{\partial z}\bigr)
++s'\bigl(\frac{\partial\mathrm{Η}}{\partial y}
++q\frac{\partial\mathrm{Η}}{\partial z}\bigr)\\
+&=\frac{\partial\Pi}{\partial y}
++q\frac{\partial\Pi}{\partial z}
++s\frac{\partial\Pi}{\partial p}
++t\frac{\partial\Pi}{\partial q}
+\end{aligned}
+$$
+
+u. s. w.
+
+Von diesen Gleichungen sind die beiden ersten nach $r'$ und $s'$ auflösbar, die beiden letzten nach $s'$ und $t'$, geradeso wie die Gleichungen (16) nach $p'$ und $q'$ auflösbar waren. Es fragt sich nur noch, ob die beiden Werthe, welche wir auf diese Weise für $s'$ finden, mit einander übereinstimmen. Das aber ist bekanntlich der Fall, sonst bekämen wir ja eine nicht identische Relation zwischen $x,y,z,p,q,r,s,t$, welche bei der Substitution: $z=\varphi(x,y)$ identisch befriedigt sein müsste, und das ist unmöglich, da $\varphi$ gar keiner Beschränkung unterworfen ist.
+
+Aehnlich wie früher erkennen wir auch hier, dass die Grössen $r',s',t'$ dadurch eindeutig als Functionen von $x,y,z,p,q,r,s,t$ definirt sind, dass Gleichungen von der Form:
+
+$$
+\begin{aligned}
+&dp'-r'dx'-s'dy'
+=\alpha_1(dz-pdx\\
+&-qdy)+\beta_1(dp-rdx-sdy)\\
+&+\gamma_1(dq-sdx-tdy)\\
+&dq'-s'dx'-t'dy'
+=\alpha_2(dz-pdx\\
+&-qdy)+\beta_2(dp-rdx-sdy)\\
+&+\gamma_2(dq-sdx-tdy)
+\end{aligned}
+$$
+
+identisch in $dp,dq,dz,dy,dx$ bestehen. Erinnern wir uns dazu der früheren Identität:
+
+$$
+dz'-p'dx'-q'dy'=\mathfrak a(dz-pdx-qdy),
+$$
+
+welche $p'$ und $q'$ bestimmte, so können wir sagen, dass bei gegebenen $\Xi,\mathrm{Η},\mathrm{Ζ}$ die Transformationsgleichungen:
+
+$$
+\begin{aligned}
+&x'=\Xi(x,y,z,a_1\cdots a_r),\cdots
+t'\\
+&=\mathrm{Τ}(x,y,z,p,q,r,s,t,\\
+&a_1\cdots a_r)
+\end{aligned}\tag{23}
+$$
+
+durch die Forderung, dass sie das System von Pfaffschen Gleichungen:
+
+$$
+\begin{aligned}
+&dz-pdx-qdy=0,\\
+&dp-rdx-sdy=0,\\
+&dq-sdx-tdy=0
+\end{aligned}\tag{24}
+$$
+
+invariant lassen sollen, vollständig und eindeutig definirt sind.
+
+Hieraus erhellt, dass durch die Aufeinanderfolge zweier Transformationen (23) wieder eine Transformation entsteht, welche das System (24) invariant lässt. Nach Voraussetzung haben aber die Gleichungen:
+
+$$
+\begin{gathered}
+x'=\Xi(x,y,z,a_1\cdots a_r),\quad
+y'=\mathrm{Η},\quad z'=\mathrm{Ζ}\\
+x''=\Xi(x',y',z',b_1\cdots b_r),\quad
+y''=\mathrm{Η},\quad z''=\mathrm{Ζ}
+\end{gathered}
+$$
+
+zur Folge:
+
+$$
+\begin{aligned}
+&x''=\Xi(x,y,z,c_1\cdots c_r),\\
+&y''=\mathrm{Η}, z''=\mathrm{Ζ},
+\end{aligned}\tag{19'}
+$$
+
+wo die $c$ nur von den $a$ und $b$ abhängen. Mithin ergeben die beiden Transformationen:
+
+$$
+\begin{aligned}
+&x'=\Xi(x,y,z,a_1\cdots a_r),\\
+&\cdots
+t'=\mathrm{Τ}(x,y,z,p,q,r,s,t,a_1\cdots a_r)\\
+&x''=\Xi(x',y',z',b_1\cdots b_r),\cdots
+t''\\
+&=\mathrm{Τ}(x',y',z',p',q',r',s',t',b_1\cdots b_r)
+\end{aligned}
+$$
+
+nach einander ausgeführt eine Transformation, welche aus (19') durch dieselbe Erweiterung hervorgeht, durch welche (23) aus
+
+$$
+\begin{aligned}
+&x'=\Xi(x,y,z,a_1\cdots a_r),\\
+&y'=\mathrm{Η}, z'=\mathrm{Ζ}
+\end{aligned}\tag{19}
+$$
+
+entstanden ist, eine Transformation also, welche ebenfalls der Schaar (23) angehört. Die Transformationen (23) bilden demnach eine $r$-gliedrige Gruppe.
+
+Wir werden uns direkt überzeugen, dass die Gruppe (23) von $r$ unabhängigen infinitesimalen Transformationen erzeugt ist.
+
+Setzen wir wiederum zunächst voraus, dass $r=1$ und dass die Gruppe (19) von der infinitesimalen Transformation $Xf$ erzeugt ist. Dann brauchen wir offenbar nur zu beweisen, dass es eine erweiterte infinitesimale Transformation:
+
+$$
+\begin{aligned}
+&X^{(2)}f=Xf+\pi\frac{\partial f}{\partial p}
++\varkappa\frac{\partial f}{\partial q}
++\rho\frac{\partial f}{\partial r}\\
+&+\sigma\frac{\partial f}{\partial s}
++\tau\frac{\partial f}{\partial t}
+\end{aligned}
+$$
+
+giebt, welche das System der Pfaffschen Gleichungen (24) invariant lässt. Das aber hat keine Schwierigkeit; für $\pi$ und $\varkappa$ finden wir dieselben Werthe wie früher, für $\rho,\sigma,\tau$ ergeben sich in ähnlicher Weise Ausdrücke, die linear und homogen von den $\xi,\eta,\zeta$ und ihren Differentialquotienten erster und zweiter Ordnung abhängen.
+
+Wir finden auch hier zunächst vier Gleichungen für $\rho,\sigma,\tau$; es lässt sich aber leicht nachweisen, dass diese Gleichungen mit einander verträglich sind. Wir verschieben die Durchführung dieses Nachweises auf die Betrachtung des allgemeinen Falles, wo sich derselbe übersichtlicher gestaltet.
+
+Aus der Existenz von $X^{(2)}f$ folgt natürlich, dass die Gruppe (23) im Falle $r=1$ eben von $X^{(2)}f$ erzeugt ist.
+
+In gleicher Weise erkennt man, dass bei beliebigem $r$ die Gruppe (23) von den $r$ infinitesimalen Transformationen: $X_1^{(2)}f\cdots X_r^{(2)}f$ erzeugt ist, welche durch Erweiterung der infinitesimalen Transformationen: $X_1f\cdots X_rf$ der Gruppe (19) erhalten werden. Damit ist zugleich bewiesen, dass Relationen von der Form:
+
+$$
+X_i^{(2)}X_k^{(2)}f-X_k^{(2)}X_i^{(2)}f
+=\sum_{1}^{r}{}_s\,c_{iks}''X_s^{(2)}f
+$$
+
+bestehen.
+
+Es lässt sich leicht einsehen, dass $c_{iks}''=c_{iks}$ ist. In der That, das System der Pfaffschen Gleichungen (24) gestattet mit $X_i^{(2)}f$ und $X_k^{(2)}f$ zugleich auch die infinitesimale Transformation: $X_i^{(2)}X_k^{(2)}f-X_k^{(2)}X_i^{(2)}f=(X_i^{(2)}X_k^{(2)})$, diese ist aber offenbar von der Form:
+
+$$
+\begin{aligned}
+&(X_i^{(2)}X_k^{(2)})=(X_iX_k)
++\alpha\frac{\partial f}{\partial p}
++\beta\frac{\partial f}{\partial q}\\
+&+\lambda\frac{\partial f}{\partial r}
++\mu\frac{\partial f}{\partial s}
++\nu\frac{\partial f}{\partial t},
+\end{aligned}
+$$
+
+also entsteht sie aus der Transformation:
+
+$$
+(X_iX_k)=\sum_{1}^{r}{}_s\,c_{iks}X_sf
+$$
+
+durch Erweiterung und lässt sich folgendermassen darstellen:
+
+$$
+(X_i^{(2)}X_k^{(2)})
+=\sum_{1}^{r}{}_s\,c_{iks}X_s^{(2)}f.
+$$
+
+Hierin liegt, dass die erweiterte Gruppe (23) mit der ursprünglichen Gruppe (19) gleichzusammengesetzt ist.
+
+#### Original footnotes: prolongation
+
+**F1 · p. 527, after the second bracket proof.** Die vorstehenden analytischen Entwickelungen haben grosse Aehnlichkeit mit gewissen Entwickelungen des Kapitels 20 (vgl. S. 370 f.). Der innere Grund dieses Zusammenhangs liegt darin, dass die Grössen $\xi$ auf S. 370 nichts anderes sind, als gewisse Differentialquotienten: $\frac{\partial y}{\partial t}$ von den $y$ nach $t$.
+
+**F2 · p. 534, after the contact-equation interpretation.** Lie, [Göttinger Nachr. 1872](https://gdz.sub.uni-goettingen.de/id/PPN252457072_1872), S. 480, [Verhandl. d. G. d. W. zu Christiania 1873](https://archive.org/details/forhandlingerivi1872chri); [Math. Ann. Bd. VIII](https://gdz.sub.uni-goettingen.de/dms/load/toc/?PPN=PPN235181684_0008).
+
+### English translation: Chapter 25 introduction and §§127–129
+
+**Chapter 25. Differential invariants.**
+
+Suppose we are given a transformation in $n$ variables,
+
+$$
+y_i=f_i(x_1\cdots x_n)\qquad(i=1\cdots n)
+\tag{1}
+$$
+
+and suppose this transformation is carried out on a system of $n-q$ independent equations
+
+$$
+\begin{aligned}
+&\Omega_k(x_1\cdots x_n)=0\\
+&(k=1\cdots n-q)
+\end{aligned}\tag{2}
+$$
+
+in the $x$. In this way we obtain a new system of equations
+
+$$
+\begin{aligned}
+&\overline{\Omega}_k(y_1\cdots y_n)=0\\
+&(k=1\cdots n-q)
+\end{aligned}\tag{2'}
+$$
+
+in the $y$.
+
+By equations (2), $n-q$ of the variables $x_1\cdots x_n$ can now be represented as functions of the remaining $q$, and these $n-q$ naturally have certain derivatives $p_1,p_2\cdots$ with respect to the remaining $q$. On the other hand, by equations (2'), $n-q$ of the variables $y_1\cdots y_n$ can be represented as functions of the remaining $q$, and these $n-q$ in turn have certain derivatives $p_1',p_2'\cdots$ with respect to the remaining $q$.
+
+There is a certain relation between the two sequences of derivatives defined in this way, a relation essentially independent of the form of the $n-q$ relations (2). We shall explain this familiar relation in detail in the course of the chapter. Here we recall only that the $p'$ of orders one through $m$ can be represented as functions of $x_1\cdots x_n$ and the $p$ of orders one through $m$, whereas the $p$ can be expressed as functions of $x_1'\cdots x_n'$ and the $p'$. It follows that a new transformation can be derived from transformation (1), transforming not only the $x$ but also the derivatives of orders one through $m$. We shall say that *this new transformation is obtained by prolonging transformation* (1).
+
+Plainly, transformation (1) can be prolonged in many different ways, since the number and choice of variables among $x_1\cdots x_n$ to be regarded as functions of the others are entirely at our discretion. The number of possibilities can even be increased by adjoining auxiliary variables $t_1,t_2\cdots$ that are not transformed at all by transformation (1), thus adjoining to the equations of transformation (1) the identity transformation in the auxiliary variables $t_1,t_2\cdots$.
+
+If an $r$-parameter group is given, we can prolong all its $\infty^r$ transformations and thereby obtain $\infty^r$ prolonged transformations. As we shall see, these in turn form an $r$-parameter group of the same composition as the original group.
+
+**§127.**
+
+We first consider a particularly simple kind of prolongation.
+
+In the transformation
+
+$$
+y_i=f_i(x_1\cdots x_n)\qquad(i=1\cdots n)
+\tag{1}
+$$
+
+we regard the variables $x_1\cdots x_n$ as functions of an auxiliary variable $t$ that is not transformed at all by transformation (1). The $y_1\cdots y_n$ must then plainly also be regarded as functions of $t$. Thus, putting
+
+$$
+\frac{dx_i}{dt}=x_i^{(1)},\qquad\frac{dy_i}{dt}=y_i^{(1)},
+$$
+
+and differentiating (1) with respect to $t$, we obtain
+
+$$
+\begin{aligned}
+&y_i^{(1)}=\sum_{1}^{n}{}_\nu\,
+\frac{\partial f_i}{\partial x_\nu}x_\nu^{(1)}\\
+&(i=1\cdots n).
+\end{aligned}\tag{3}
+$$
+
+Taking (1) and (3) together gives a transformation in the $2n$ variables $x_i$ and $x_i^{(1)}$.
+
+Transformation (1), (3) is, in a certain sense, the simplest transformation that can be derived from (1) by prolongation.
+
+If we apply the particular prolongation just described to all $\infty^r$ transformations of the $r$-parameter group $X_1f\cdots X_rf$, or
+
+$$
+\begin{aligned}
+&y_i=f_i(x_1\cdots x_n,a_1\cdots a_r)\\
+&(i=1\cdots n)
+\end{aligned}\tag{4}
+$$
+
+we obtain $\infty^r$ prolonged transformations, plainly having the form
+
+$$
+\begin{aligned}
+&y_i=f_i(x_1\cdots x_n,a_1\cdots a_r),\\
+&y_i^{(1)}=\sum_{1}^{n}{}_\nu\,
+\frac{\partial f_i(x,a)}{\partial x_\nu}x_\nu^{(1)}\\
+&(i=1\cdots n).
+\end{aligned}\tag{5}
+$$
+
+It is easy to show that equations (5) represent an $r$-parameter group in the $2n$ variables $x_i$, $x_i^{(1)}$.
+
+Indeed, by assumption the equations
+
+$$
+\begin{aligned}
+&y_i=f_i(x_1\cdots x_n,a_1\cdots a_r)
+\text{und}\\
+&z_i=f_i(y_1\cdots y_n,b_1\cdots b_r)
+\end{aligned}
+$$
+
+imply
+
+$$
+z_i=f_i(x_1\cdots x_n,c_1\cdots c_r),
+$$
+
+where the $c$ depend only on the $a$ and the $b$. Consequently, eliminating the $y_i^{(1)}$ from
+
+$$
+\begin{aligned}
+&y_i^{(1)}=\sum_{1}^{n}{}_\nu\,
+\frac{\partial f_i(x,a)}{\partial x_\nu}x_\nu^{(1)}
+\text{und}\\
+&z_j^{(1)}=\sum_{1}^{n}{}_i\,
+\frac{\partial f_j(y,b)}{\partial y_i}y_i^{(1)}
+\end{aligned}
+$$
+
+gives
+
+$$
+\begin{aligned}
+&z_j^{(1)}
+=\sum_{i\nu}^{1\cdots n}
+\frac{\partial f_j(y,b)}{\partial y_i}
+\frac{\partial f_i(x,a)}{\partial x_\nu}x_\nu^{(1)}\\
+&=\sum_{1}^{n}{}_\nu\,
+\frac{\partial f_j(y,b)}{\partial x_\nu}x_\nu^{(1)}\\
+&=\sum_{1}^{n}{}_\nu\,
+\frac{\partial f_j(x,c)}{\partial x_\nu}x_\nu^{(1)},
+\end{aligned}
+$$
+
+which establishes the promised result.
+
+What has been said also shows that the new group has the same parameter group as the original group
+
+$$
+y_i=f_i(x_1\cdots x_n,a_1\cdots a_r).
+$$
+
+The new group
+
+$$
+\begin{aligned}
+&y_k=f_k(x,a),\\
+&y_k^{(1)}=\sum_{1}^{n}{}_i\,
+\frac{\partial f_k}{\partial x_i}x_i^{(1)}\\
+&(k=1\cdots n),
+\end{aligned}\tag{5}
+$$
+
+which supplies a first example of a *prolonged group*, has a very simple conceptual meaning.
+
+If $x_1\cdots x_n$ are interpreted as ordinary point coordinates of an $n$-dimensional space, the $2n$ quantities $x_1\cdots x_n$, $x_1^{(1)}\cdots x_n^{(1)}$ can be regarded as data specifying a direction through the point $x_1\cdots x_n$, hence as data specifying a *line element*. Here $x_1^{(1)}\cdots x_n^{(1)}$ are homogeneous coordinates in the domain of $\infty^{n-1}$ directions through the point $x_1\cdots x_n$.
+
+*The new group* (5) *in the* $x$, $x^{(1)}$ *specifies how the original group* $y_i=f_i(x,a)$ *permutes the line elements of the space* $x_1\cdots x_n$.
+
+Since the group $y_i=f_i(x,a)$ is generated by the $r$ independent infinitesimal transformations $X_1f\cdots X_rf$, its finite equations in canonical form are
+
+$$
+y_k=x_k+\sum_{1}^{r}{}_j\,e_j\xi_{jk}+\cdots
+\qquad(k=1\cdots n).
+$$
+
+If we use this form of the group $y_i=f_i(x,a)$ to construct the prolonged group (5), the equations of the latter take the form
+
+$$
+\begin{aligned}
+&y_k=x_k+\sum_{1}^{r}{}_j\,e_j\xi_{jk}+\cdots,\\
+&y_k^{(1)}=x_k^{(1)}+\sum_{1}^{r}{}_j\,e_j\xi_{jk}^{(1)}+\cdots\\
+&(k=1\cdots n),
+\end{aligned}\tag{6}
+$$
+
+where, for brevity, we have put
+
+$$
+\sum_{1}^{n}{}_i\,
+\frac{\partial\xi_{jk}}{\partial x_i}x_i^{(1)}
+=\xi_{jk}^{(1)}.
+$$
+
+We see at once that the prolonged group contains the identity transformation. At the same time, we are led to conjecture that it is generated by the $r$ independent infinitesimal transformations
+
+$$
+\begin{aligned}
+&X_k^{(1)}f=
+\sum_{1}^{n}{}_i\,\xi_{ki}\frac{\partial f}{\partial x_i}
++\sum_{1}^{n}{}_i\,\xi_{ki}^{(1)}
+\frac{\partial f}{\partial x_i^{(1)}}\\
+&(k=1\cdots r)
+\end{aligned}
+$$
+
+The correctness of this conjecture can be proved as follows.
+
+By Theorem 3, p. 33, the $n$ functions $y_i=f_i(x,a)$ satisfy differential equations of the form
+
+$$
+\begin{aligned}
+&\frac{\partial y_i}{\partial a_k}
+=\sum_{1}^{r}{}_j\,\psi_{jk}(a_1\cdots a_r)\\
+&\cdot
+\xi_{ji}(y_1\cdots y_n)\\
+&(i=1\cdots n;\ k=1\cdots r).
+\end{aligned}\tag{7}
+$$
+
+Differentiating these equations with respect to $t$ and taking account of the independence of the $a$ from $t$, we obtain
+
+$$
+\begin{aligned}
+&\frac{\partial y_i^{(1)}}{\partial a_k}\\
+&=\sum_{1}^{r}{}_j\,\psi_{jk}(a)
+\sum_{1}^{n}{}_\nu\,
+\frac{\partial\xi_{ji}(y)}{\partial y_\nu}y_\nu^{(1)}\\
+&(i=1\cdots n,\ k=1\cdots r).
+\end{aligned}\tag{8}
+$$
+
+Now let $a_1^0\cdots a_r^0$ be the parameters of the identity transformation in the group $y_i=f_i(x,a)$. The determinant $\sum\pm\psi_{11}(a)\cdots\psi_{rr}(a)$ does not vanish for $a_1=a_1^0$, $\cdots$, $a_r=a_r^0$. But $a_1^0\cdots a_r^0$ are also the parameters of the identity transformation of the prolonged group (5). Thus equations (7) and (8) allow us to conclude in the familiar way (compare Chapter 4, p. 69 ff.) that the prolonged group is indeed generated by the $r$ independent infinitesimal transformations $X_k^{(1)}f$. We call the $X_k^{(1)}f$ *prolonged infinitesimal transformations*.
+
+As the independent infinitesimal transformations of an $r$-parameter group, the $X_k^{(1)}f$ satisfy pairwise relations of the form
+
+$$
+X_k^{(1)}X_j^{(1)}f-X_j^{(1)}X_k^{(1)}f
+=\sum_{1}^{r}{}_s\,c_{kjs}'X_s^{(1)}f.
+$$
+
+The coefficients of $\frac{\partial f}{\partial x_i}$ must agree on the two sides. We must therefore have $X_kX_jf-X_jX_kf=\sum^s c_{kjs}'X_sf$, and consequently
+
+$$
+\sum_{1}^{r}{}_s\,(c_{kjs}'-c_{kjs})X_sf=0,
+$$
+
+or, by the independence of $X_1f\cdots X_rf$,
+
+$$
+c_{kjs}'=c_{kjs}\qquad(k,j,s=1\cdots r).
+$$
+
+Thus the prolonged group (5) is holoedrically isomorphic to the original group, in agreement with the fact that, by p. 525, the two groups have the same parameter group. —
+
+We give a second direct proof of the result just obtained.
+
+Let $X_kf$ and $X_jf$ be *arbitrary* infinitesimal transformations, and denote the corresponding prolonged infinitesimal transformations, as before, by $X_k^{(1)}f$ and $X_j^{(1)}f$. Then
+
+$$
+\begin{aligned}
+&X_k^{(1)}X_j^{(1)}f-X_j^{(1)}X_k^{(1)}f
+=X_kX_jf\\
+&-X_jX_kf\\
+&+\sum_{\pi i\nu}^{1\cdots n}
+\bigl\{\xi_{ki}\frac{\partial^2\xi_{j\pi}}{\partial x_i\partial x_\nu}\\
+&-\xi_{ji}\frac{\partial^2\xi_{k\pi}}{\partial x_i\partial x_\nu}\bigr\}
+x_\nu^{(1)}\frac{\partial f}{\partial x_\pi^{(1)}}\\
+&+\sum_{\pi i\nu}^{1\cdots n}
+\bigl\{\frac{\partial\xi_{ki}}{\partial x_\nu}
+\frac{\partial\xi_{j\pi}}{\partial x_i}\\
+&-\frac{\partial\xi_{ji}}{\partial x_\nu}
+\frac{\partial\xi_{k\pi}}{\partial x_i}\bigr\}
+x_\nu^{(1)}\frac{\partial f}{\partial x_\pi^{(1)}},
+\end{aligned}
+$$
+
+or
+
+$$
+\left\{\begin{aligned}
+&X_k^{(1)}X_j^{(1)}f-X_j^{(1)}X_k^{(1)}f\\
+&=\sum_{\pi i}^{1\cdots n}
+\bigl\{\xi_{ki}\frac{\partial\xi_{j\pi}}{\partial x_i}\\
+&-\xi_{ji}\frac{\partial\xi_{k\pi}}{\partial x_i}\bigr\}
+\frac{\partial f}{\partial x_\pi}\\
+&+\sum_{\pi i}^{1\cdots n}\frac{d}{dt}
+\bigl\{\xi_{ki}\frac{\partial\xi_{j\pi}}{\partial x_i}\\
+&-\xi_{ji}\frac{\partial\xi_{k\pi}}{\partial x_i}\bigr\}
+\frac{\partial f}{\partial x_\pi^{(1)}}.
+\end{aligned}\right.\tag{9}
+$$
+
+Suppose now, in particular, that the $X_kf$ are infinitesimal transformations of an $r$-parameter group and that
+
+$$
+X_kX_jf-X_jX_kf=\sum_{1}^{r}{}_s\,c_{kjs}X_sf
+$$
+
+Then
+
+$$
+\begin{aligned}
+&X_k^{(1)}X_j^{(1)}f-X_j^{(1)}X_k^{(1)}f\\
+&=\sum_{1}^{r}{}_s\,c_{kjs}\sum_{1}^{n}{}_\pi\,
+\xi_{s\pi}\frac{\partial f}{\partial x_\pi}\\
+&+\sum_{1}^{r}{}_s\,c_{kjs}\sum_{1}^{n}{}_\pi\,
+\frac{d}{dt}\xi_{s\pi}\cdot\frac{\partial f}{\partial x_\pi}\\
+&=\sum_{1}^{r}{}_s\,c_{kjs}X_s^{(1)}f,
+\end{aligned}
+$$
+
+which was to be proved. [F1]
+
+Of particular interest in the calculation just carried out is the general formula (9), which can be stated in words as follows.
+
+**Proposition 1.** *If to two arbitrary infinitesimal transformations*
+
+$$
+X_1f=\sum_{1}^{n}{}_i\,\xi_{1i}\frac{\partial f}{\partial x_i},
+\qquad
+X_2f=\sum_{1}^{n}{}_i\,\xi_{2i}\frac{\partial f}{\partial x_i}
+$$
+
+*we form the prolonged infinitesimal transformations*
+
+$$
+\begin{aligned}
+&X_k^{(1)}f=
+\sum_{1}^{n}{}_i\,\xi_{ki}\frac{\partial f}{\partial x_i}
++\sum_{1}^{n}{}_i\,\xi_{ki}^{(1)}
+\frac{\partial f}{\partial x_i^{(1)}}\\
+&(k=1,2),
+\end{aligned}
+$$
+
+*then* $X_1^{(1)}X_2^{(1)}f-X_2^{(1)}X_1^{(1)}f$ *is the prolonged infinitesimal transformation belonging to* $X_1X_2f-X_2X_1f$.
+
+**§128.**
+
+We now ask how to decide whether the *equation*
+
+$$
+\sum_{1}^{n}{}_\nu\,U_\nu(x_1\cdots x_n)\cdot x_\nu^{(1)}=0
+$$
+
+admits every finite transformation of the prolonged one-parameter group
+
+$$
+X^{(1)}f=\sum_{1}^{n}{}_i\,\xi_i\frac{\partial f}{\partial x_i}
++\sum_{i\nu}^{1\cdots n}
+\frac{\partial\xi_i}{\partial x_\nu}x_\nu^{(1)}
+\frac{\partial f}{\partial x_i^{(1)}}
+$$
+
+By Chapter 7, p. 112, it does so if and only if $X^{(1)}(\sum U_\nu x_\nu^{(1)})$ vanishes by virtue of $\sum U_\nu x_\nu^{(1)}=0$. Calculation gives
+
+$$
+\begin{aligned}
+&X^{(1)}\bigl(\sum_{1}^{n}{}_\nu\,U_\nu x_\nu^{(1)}\bigr)
+=\sum_{1}^{n}{}_\nu\,XU_\nu\cdot x_\nu^{(1)}\\
+&+\sum_{1}^{n}{}_\nu\,U_\nu\sum_{1}^{n}{}_i\,
+\frac{\partial\xi_\nu}{\partial x_i}x_i^{(1)},
+\end{aligned}
+$$
+
+an expression linear in the $x_i^{(1)}$. *Consequently, the equation* $\sum U_\nu x_\nu^{(1)}=0$ *admits the one-parameter group* $X^{(1)}f$ *if and only if there is a relation of the form*
+
+$$
+X^{(1)}\left(\sum_{1}^{n}{}_\nu\,U_\nu x_\nu^{(1)}\right)
+=\rho\sum_{1}^{n}{}_\nu\,U_\nu x_\nu^{(1)}
+$$
+
+*where* $\rho$ *is understood to be a function of* $x_1\cdots x_n$ *alone*.
+
+It may be noted in passing that the expression $\sum U_\nu x_\nu^{(1)}$ remains invariant under every finite transformation of the prolonged group $X^{(1)}f$ if and only if the expression $X^{(1)}(\sum U_\nu x_\nu^{(1)})$ vanishes identically.
+
+Finally, a system of $m$ equations
+
+$$
+\begin{aligned}
+&\sum_{1}^{n}{}_i\,U_{ki}(x_1\cdots x_n)\cdot x_i^{(1)}=0\\
+&(k=1\cdots m)
+\end{aligned}\tag{10}
+$$
+
+admits all transformations of the prolonged group $X^{(1)}f$ if and only if each expression $X^{(1)}(\sum U_{ki}x_i^{(1)})$ vanishes by virtue of the system, hence if there are relations of the form
+
+$$
+\begin{aligned}
+&X^{(1)}\bigl(\sum_{1}^{n}{}_i\,U_{ki}x_i^{(1)}\bigr)\\
+&=\sum_{1}^{m}{}_j\,\rho_{kj}\sum_{1}^{n}{}_i\,U_{ji}x_i^{(1)}
+(k=1\cdots m)
+\end{aligned}
+$$
+
+where the $\rho_{kj}$ denote functions of the $x$ alone.
+
+Combining Proposition 5 of Chapter 7, p. 118, with Proposition 1 proved above (p. 527) plainly gives
+
+**Proposition 2.** *If a system of equations of the form*
+
+$$
+\begin{aligned}
+&\sum_{1}^{n}{}_i\,U_{ki}(x_1\cdots x_n)\cdot x_i^{(1)}=0\\
+&(k=1\cdots m)
+\end{aligned}\tag{10}
+$$
+
+*admits the two one-parameter groups* $X_1^{(1)}f$ *and* $X_2^{(1)}f$, *derived respectively from* $X_1f$ *and* $X_2f$ *by the particular prolongation defined above, it also admits the one-parameter group* $X_1^{(1)}X_2^{(1)}f-X_2^{(1)}X_1^{(1)}f$, *derived by prolongation from the group* $X_1X_2f-X_2X_1f$.
+
+We obtained the preceding proposition by applying Proposition 5 of Chapter 7 to the particular case of a system of equations of the form (10). It must be mentioned, however, that our present proposition is much easier to prove than the general Proposition 5 of Chapter 7. Indeed, calculation readily shows that a system (10) admitting $X_1^{(1)}f$ and $X_2^{(1)}f$ also allows $X_1^{(1)}X_2^{(1)}f-X_2^{(1)}X_1^{(1)}f$.
+
+An equation of the form
+
+$$
+\sum_{1}^{n}{}_i\,U_i(x_1\cdots x_n)\cdot dx_i=0
+$$
+
+is called a *Pfaffian equation*, and its left side a *Pfaffian expression*.
+
+The developments of the present chapter so far yield important propositions about systems of Pfaffian equations
+
+$$
+\begin{aligned}
+&\sum_{1}^{n}{}_i\,U_{ki}(x_1\cdots x_n)\cdot dx_i=0\\
+&(k=1\cdots m).
+\end{aligned}\tag{10'}
+$$
+
+Carrying out the transformation $y_i=f_i(x_1\cdots x_n)$ on the differential expression $\sum^i U_{ki}(x_1\cdots x_n)dx_i$ plainly means transforming the $2n$ quantities $x_1\cdots x_n$, $dx_1\cdots dx_n$ by the prolonged transformation
+
+$$
+\begin{aligned}
+&y_i=f_i(x_1\cdots x_n),
+dy_i=\sum_{1}^{n}{}_\nu\,
+\frac{\partial f_i}{\partial x_\nu}dx_\nu\\
+&(i=1\cdots n)
+\end{aligned}
+$$
+
+It follows that the system of Pfaffian equations
+
+$$
+\begin{aligned}
+&\sum_{1}^{n}{}_i\,U_{ki}(x_1\cdots x_n)\cdot dx_i=0\\
+&(k=1\cdots m)
+\end{aligned}\tag{10'}
+$$
+
+remains invariant under a one-parameter group $Xf$ if and only if the system of equations
+
+$$
+\sum_{1}^{n}{}_i\,U_{ki}(x_1\cdots x_n)\cdot x_i^{(1)}=0
+\qquad(k=1\cdots m)
+$$
+
+admits the prolonged one-parameter group
+
+$$
+X^{(1)}f=\sum_{1}^{n}{}_i\,\xi_i\frac{\partial f}{\partial x_i}
++\sum_{1}^{n}{}_i\,\xi_i^{(1)}
+\frac{\partial f}{\partial x_i^{(1)}}
+$$
+
+Thus there must be $m$ relations of the form
+
+$$
+\begin{aligned}
+&\sum_{1}^{n}{}_i\,XU_{ki}\cdot x_i^{(1)}\\
+&+\sum_{1}^{n}{}_i\,U_{ki}\sum_{1}^{n}{}_\nu\,
+\frac{\partial\xi_i}{\partial x_\nu}x_\nu^{(1)}\\
+&=\sum_{1}^{m}{}_j\,\rho_{kj}(x)
+\sum_{1}^{n}{}_i\,U_{ji}x_i^{(1)}\\
+&(k=1\cdots m)
+\end{aligned}
+$$
+
+or, equivalently, $m$ relations of the form
+
+$$
+\begin{aligned}
+&\sum_{1}^{n}{}_i\,XU_{ki}\cdot dx_i
++\sum_{1}^{n}{}_i\,U_{ki}d(Xx_i)\\
+&=\sum_{1}^{m}{}_j\,\rho_{kj}(x)\sum_{1}^{n}{}_i\,U_{ji}dx_i\\
+&(k=1\cdots m).
+\end{aligned}
+$$
+
+If we therefore introduce the abbreviated notation
+
+$$
+\begin{aligned}
+&\sum_{1}^{n}{}_i\,XU_{ki}\cdot dx_i
++\sum_{1}^{n}{}_i\,U_{ki}d(Xx_i)\\
+&=X\bigl(\sum_{1}^{n}{}_i\,U_{ki}dx_i\bigr),
+\end{aligned}
+$$
+
+we obtain
+
+**Proposition 3.** *For the system of* $m$ *Pfaffian equations*
+
+$$
+\begin{aligned}
+&\sum_{1}^{n}{}_i\,U_{ki}(x_1\cdots x_n)\cdot dx_i=0\\
+&(k=1\cdots m)
+\end{aligned}\tag{10'}
+$$
+
+*to admit all transformations* $y_i=x_i+\varepsilon Xx_i+\cdots$ *of the one-parameter group* $Xf$, *that is, for relations of the form*
+
+$$
+\begin{aligned}
+&\sum_{1}^{n}{}_i\,U_{ki}(y_1\cdots y_n)\cdot dy_i\\
+&=\sum_{1}^{m}{}_j\,\omega_{kj}(x_1\cdots x_n,\varepsilon)
+\sum_{1}^{n}{}_i\,U_{ji}(x)dx_i\\
+&(k=1\cdots m)
+\end{aligned}
+$$
+
+*to hold for every value of* $\varepsilon$, *it is necessary and sufficient that the* $m$ *expressions* $X(\sum U_{ki}dx_i)$ *can be represented in the form*
+
+$$
+\begin{aligned}
+&X\bigl(\sum_{1}^{n}{}_i\,U_{ki}dx_i\bigr)\\
+&=\sum_{1}^{m}{}_j\,\rho_{kj}(x)\sum_{1}^{n}{}_i\,U_{ji}dx_i
+(k=1\cdots m)
+\end{aligned}
+$$
+
+Finally, introduce the terminology: *the system of Pfaffian equations* (10') *admits the infinitesimal transformation* $Xf$ *when* $m$ *relations of the form*
+
+$$
+X\left(\sum_{1}^{n}{}_i\,U_{ki}dx_i\right)
+=\sum_{1}^{m}{}_j\,\rho_{kj}(x)\sum_{1}^{n}{}_i\,U_{ji}dx_i
+$$
+
+*hold*. We can then also state the last proposition as follows.
+
+*The system of* $m$ *Pfaffian equations* (10') *admits all transformations of the one-parameter group* $Xf$ *if and only if it admits the infinitesimal transformation* $Xf$.
+
+Moreover, Proposition 2 immediately gives
+
+**Theorem 93.** *If a system of* $m$ *Pfaffian equations*
+
+$$
+\sum_{1}^{n}{}_i\,U_{ki}(x_1\cdots x_n)\cdot dx_i=0
+\qquad(k=1\cdots m)
+$$
+
+*admits the two one-parameter groups* $X_1f$ *and* $X_2f$, *it also admits the one-parameter group* $X_1X_2f-X_2X_1f$.
+
+It should also be noted that the Pfaffian *expression* $\sum^i U_i(x_1\cdots x_n)dx_i$ remains invariant under every transformation of the one-parameter group $Xf$ if and only if the expression $X(\sum U_i dx_i)$ vanishes identically.
+
+Earlier (p. 53 f.) we agreed that we would sometimes write $\frac{\delta x_i}{\delta t}$ in place of $\xi_i$, and $\frac{\delta f}{\delta t}$ in place of $Xf$. Similarly, we shall also write $\frac{\delta}{\delta t}\sum U_i dx_i$ in place of $X(\sum U_i dx_i)$. We then have the equation
+
+$$
+\begin{aligned}
+&\delta\bigl(\sum_{1}^{n}{}_i\,U_i dx_i\bigr)
+=\sum_{1}^{n}{}_i\,\delta U_i\cdot dx_i\\
+&+\sum_{1}^{n}{}_i\,U_i d\delta x_i,
+\end{aligned}
+$$
+
+which occurs with the same meaning in the calculus of variations.
+
+**§129.**
+
+The propositions of the preceding section are fully sufficient to derive the theory of prolonging a group by adjoining derivatives in complete generality. We shall nevertheless first consider a particular case before taking up the general case. We connect this with familiar geometric concepts of three-dimensional space.
+
+Let $x,y,z$ be ordinary point coordinates of three-dimensional space, and let
+
+$$
+x'=\Xi(x,y,z),\quad y'=\mathrm{Η},\quad z'=\mathrm{Ζ}
+\tag{11}
+$$
+
+be a transformation of this space.
+
+Transformation (11) transforms all points $x,y,z$, that is, carries them to new positions $x',y',z'$. At the same time all surfaces take new positions: each surface $\chi(x,y,z)=0$ passes to a new surface $\psi(x',y',z')=0$, whose equation is obtained by eliminating $x,y,z$ from the transformation equations (11) together with $\chi=0$.
+
+It is inherent in the matter that transformation (11) carries surfaces touching one another, at least in general, into surfaces standing in the same relation. Thus, if by *surface element* we mean *a point* $x,y,z$ *on a surface together with the tangent plane through it,*
+
+$$
+\begin{aligned}
+&z_1-z=p(x_1-x)+q(y_1-y)\\
+&\bigl(p=\frac{\partial z}{\partial x},
+q=\frac{\partial z}{\partial y}\bigr),
+\end{aligned}
+$$
+
+we can say that our transformation (11) changes each surface element $x,y,z,p,q$ into a new surface element $x',y',z',p',q'$. In other words, certain equations
+
+$$
+\begin{aligned}
+&p'=\Pi(x,y,z,p,q),\\
+&q'=\mathrm{Κ}(x,y,z,p,q)
+\end{aligned}\tag{12}
+$$
+
+must hold; we shall actually set them up below. Equations (11) and (12) together represent a transformation obtained by prolonging transformation (11).
+
+Suppose now that $\infty^r$ transformations
+
+$$
+\begin{aligned}
+&x'=\Xi(x,y,z,a_1\cdots a_r),\\
+&y'=\mathrm{Η}, z'=\mathrm{Ζ}
+\end{aligned}\tag{13}
+$$
+
+are given, representing an $r$-parameter group of point transformations of space, and suppose the prolonged transformation just defined has been formed for each of these $\infty^r$ transformations. We claim that the $\infty^r$ prolonged transformations
+
+$$
+\left\{\begin{aligned}
+&x'=\Xi(x,y,z,a_1\cdots a_r),\\
+&y'=\mathrm{Η}, z'=\mathrm{Ζ},\\
+&p'=\Pi(x,y,z,p,q,a_1\cdots a_r),\\
+&q'=\mathrm{Κ},
+\end{aligned}\right.\tag{14}
+$$
+
+obtained in this way form an $r$-parameter group in the variables $x,y,z,p,q$.
+
+For the proof, regard the $\infty^r$ transformations (13) as operations and note that these operations permute both the points $x,y,z$ and the surface elements $x,y,z,p,q$. Regarded as permutations of points, these operations form a group. They must therefore also form a group when regarded as permutations of surface elements. The analytic expression of this is precisely that equations (14) represent a group.
+
+We shall make the preceding considerations more *precise* by developing them in purely analytic terms.
+
+Let
+
+$$
+\begin{aligned}
+&x'=\Xi(x,y,z), y'=\mathrm{Η}(x,y,z),\\
+&z'=\mathrm{Ζ}(x,y,z)
+\end{aligned}\tag{11}
+$$
+
+be a transformation between the variables $x,y,z$ and $x',y',z'$. Suppose $z$ is an arbitrarily chosen function $z=\varphi(x,y)$ of $x$ and $y$. There are then first partial derivatives of $z$ with respect to $x$ and $y$, defined by the equation
+
+$$
+dz-pdx-qdy=0.
+$$
+
+On the other hand, our transformation changes each dependence $z=\varphi(x,y)$ among $x,y,z$ into such a dependence among $x',y',z'$, which in general can be given the form $z'=\overline\varphi(x',y')$. Thus $z'$ also has two partial derivatives $p'$ and $q'$, satisfying in turn the condition
+
+$$
+dz'-p'dx'-q'dy'=0
+$$
+
+If in this last equation we substitute for $z',x',y'$ their values $\mathrm{Ζ},\Xi,\mathrm{Η}$ and arrange the result according to $dz,dx,dy$, we obtain
+
+$$
+\begin{aligned}
+&\bigl(\frac{\partial\mathrm{Ζ}}{\partial z}
+-p'\frac{\partial\Xi}{\partial z}
+-q'\frac{\partial\mathrm{Η}}{\partial z}\bigr)dz
++\bigl(\frac{\partial\mathrm{Ζ}}{\partial x}\\
+&-p'\frac{\partial\Xi}{\partial x}
+-q'\frac{\partial\mathrm{Η}}{\partial x}\bigr)dx\\
+&+\bigl(\frac{\partial\mathrm{Ζ}}{\partial y}
+-p'\frac{\partial\Xi}{\partial y}
+-q'\frac{\partial\mathrm{Η}}{\partial y}\bigr)dy=0
+\end{aligned}
+$$
+
+or, because $dz=pdx+qdy$,
+
+$$
+\left\{\begin{aligned}
+&\bigl\{\frac{\partial\mathrm{Ζ}}{\partial x}
+-p'\frac{\partial\Xi}{\partial x}
+-q'\frac{\partial\mathrm{Η}}{\partial x}\\
+&+p\bigl(\frac{\partial\mathrm{Ζ}}{\partial z}
+-p'\frac{\partial\Xi}{\partial z}
+-q'\frac{\partial\mathrm{Η}}{\partial z}\bigr)\bigr\}dx\\
+&+\bigl\{\frac{\partial\mathrm{Ζ}}{\partial y}
+-p'\frac{\partial\Xi}{\partial y}
+-q'\frac{\partial\mathrm{Η}}{\partial y}\\
+&+q\bigl(\frac{\partial\mathrm{Ζ}}{\partial z}
+-p'\frac{\partial\Xi}{\partial z}
+-q'\frac{\partial\mathrm{Η}}{\partial z}\bigr)\bigr\}dy\\
+&=0.
+\end{aligned}\right.\tag{15}
+$$
+
+In equation (15), the two factors of $dx$ and $dy$ must vanish separately, since $dx$ and $dy$ are not connected by a relation. We therefore obtain the two equations
+
+$$
+\left\{\begin{aligned}
+&p'\bigl(\frac{\partial\Xi}{\partial x}
++p\frac{\partial\Xi}{\partial z}\bigr)
++q'\bigl(\frac{\partial\mathrm{Η}}{\partial x}\\
+&+p\frac{\partial\mathrm{Η}}{\partial z}\bigr)
+=\frac{\partial\mathrm{Ζ}}{\partial x}
++p\frac{\partial\mathrm{Ζ}}{\partial z},\\
+&p'\bigl(\frac{\partial\Xi}{\partial y}
++q\frac{\partial\Xi}{\partial z}\bigr)
++q'\bigl(\frac{\partial\mathrm{Η}}{\partial y}\\
+&+q\frac{\partial\mathrm{Η}}{\partial z}\bigr)
+=\frac{\partial\mathrm{Ζ}}{\partial y}
++q\frac{\partial\mathrm{Ζ}}{\partial z}.
+\end{aligned}\right.\tag{16}
+$$
+
+These can be solved for $p'$ and $q'$. For suppose the determinant
+
+$$
+\begin{vmatrix}
+\dfrac{\partial\Xi}{\partial x}+p\dfrac{\partial\Xi}{\partial z}
+&\dfrac{\partial\Xi}{\partial y}+q\dfrac{\partial\Xi}{\partial z}\\
+\dfrac{\partial\mathrm{Η}}{\partial x}
++p\dfrac{\partial\mathrm{Η}}{\partial z}
+&\dfrac{\partial\mathrm{Η}}{\partial y}
++q\dfrac{\partial\mathrm{Η}}{\partial z}
+\end{vmatrix}
+\tag{17}
+$$
+
+vanished for every arbitrary function $z$ of $x$ and $y$. It would then have to vanish identically in itself, that is, for every value of the variables $x,y,z,p,q$. This can plainly happen only if all two-rowed determinants of the matrix
+
+$$
+\begin{vmatrix}
+\dfrac{\partial\Xi}{\partial x}&
+\dfrac{\partial\Xi}{\partial y}&
+\dfrac{\partial\Xi}{\partial z}\\
+\dfrac{\partial\mathrm{Η}}{\partial x}&
+\dfrac{\partial\mathrm{Η}}{\partial y}&
+\dfrac{\partial\mathrm{Η}}{\partial z}
+\end{vmatrix}
+$$
+
+vanish identically, hence if $\Xi$ and $\mathrm{Η}$ are not independent functions of $x,y,z$. But this is excluded from the outset.
+
+We see, then, that equations (16) can in general be solved for $p'$ and $q'$, whatever function of $x$ and $y$ the $z$ may be. Solving is impossible only when the function $z=\varphi(x,y)$ satisfies the partial differential equation obtained by setting determinant (17) equal to zero. Actually solving equations (16) gives quite definite functions of $x,y,z,p,q$ for $p'$ and $q'$:
+
+$$
+p'=\Pi(x,y,z,p,q),\qquad q'=\mathrm{Κ}(x,y,z,p,q).
+$$
+
+*This determination is generally valid, since we made no particular assumptions about the function* $z=\varphi(x,y)$.
+
+All this has, incidentally, long been known.
+
+Equation (15) shows that it is possible to determine a quantity $\mathfrak a$ so that the relation
+
+$$
+\begin{aligned}
+&d\mathrm{Ζ}-p'd\Xi-q'd\mathrm{Η}
+=\mathfrak a(dz\\
+&-pdx-qdy)
+\end{aligned}\tag{18}
+$$
+
+holds identically in $dx,dy,dz$. Indeed, expanding (18) according to $dx,dy,dz$ and comparing the factors of $dz$ on the two sides first gives
+
+$$
+\mathfrak a=\frac{\partial\mathrm{Ζ}}{\partial z}
+-p'\frac{\partial\Xi}{\partial z}
+-q'\frac{\partial\mathrm{Η}}{\partial z};
+$$
+
+Substituting this value into equation (18) changes it into (15).
+
+Equation (18) itself has a very simple meaning: *it says that the prolonged transformation*
+
+$$
+x'=\Xi,\quad y'=\mathrm{Η},\quad z'=\mathrm{Ζ},\quad
+p'=\Pi,\quad q'=\mathrm{Κ}
+$$
+
+*leaves the Pfaffian equation* $dz-pdx-qdy=0$ *invariant*. [F2]
+
+For what follows, it is very important to note that the prolonged transformation $x'=\Xi,\cdots q'=\mathrm{Κ}$ is completely defined by this property. In other words, when $\Xi,\mathrm{Η},\mathrm{Ζ}$ are known, $\Pi$ and $\mathrm{Κ}$ are uniquely determined by requiring that the transformation $x'=\Xi,\cdots q'=\mathrm{Κ}$ leave the Pfaffian equation $dz-pdx-qdy=0$ invariant.
+
+We now return to considering an $r$-parameter group
+
+$$
+\begin{aligned}
+&x'=\Xi(x,y,z,a_1\cdots a_r),\\
+&y'=\mathrm{Η}, z'=\mathrm{Ζ}
+\end{aligned}\tag{19}
+$$
+
+and suppose that each of its $\infty^r$ transformations is prolonged in the manner given above by adjoining the equations
+
+$$
+\begin{aligned}
+&p'=\Pi(x,y,z,p,q,a_1\cdots a_r),\\
+&q'=\mathrm{Κ}
+\end{aligned}\tag{20}
+$$
+
+We already know (compare p. 532) that equations (19) and (20) together then represent an $r$-parameter group, but we shall now also prove this analytically.
+
+Combining the equations
+
+$$
+x''=\Xi(x',y',z',b_1\cdots b_r),\quad
+y''=\mathrm{Η},\quad z''=\mathrm{Ζ}
+$$
+
+with (19) gives, in the familiar way,
+
+$$
+x''=\Xi(x,y,z,c_1\cdots c_r),\quad
+y''=\mathrm{Η},\quad z''=\mathrm{Ζ},
+$$
+
+where the $c$ depend only on the $a$ and $b$. On the other hand, the two equations
+
+$$
+\begin{gathered}
+dz'-p'dx'-q'dy'=\mathfrak a(dz-pdx-qdy)\\
+dz''-p''dx''-q''dy''=\mathfrak a'(dz'-p'dx'-q'dy')
+\end{gathered}
+$$
+
+give the analogous equation
+
+$$
+dz''-p''dx''-q''dy''=\mathfrak a\mathfrak a'(dz-pdx-qdy),
+$$
+
+which, by the observation made above, shows that $p''$ and $q''$ depend on $x,y,z,p,q$ and the $c$ in precisely the same way as $p'$ and $q'$ depend on $x,y,z,p,q$ and the $a$. We therefore have
+
+**Proposition 4.** *If the equations*
+
+$$
+\begin{aligned}
+&x'=\Xi(x,y,z,a_1\cdots a_r),\\
+&y'=\mathrm{Η}, z'=\mathrm{Ζ}
+\end{aligned}\tag{19}
+$$
+
+*represent an* $r$*-parameter group, and the functions* $\Pi(x,y,z,a_1\cdots a_r)$, $\mathrm{Κ}(x,y,z,a_1\cdots a_r)$ *are determined so that the prolonged transformation equations*
+
+$$
+\begin{aligned}
+&x'=\Xi, y'=\mathrm{Η}, z'=\mathrm{Ζ},
+p'=\Pi,\\
+&q'=\mathrm{Κ}
+\end{aligned}\tag{21}
+$$
+
+*leave the Pfaffian equation* $dz-pdx-qdy=0$ *invariant, so that a relation of the form*
+
+$$
+\begin{aligned}
+&dz'-p'dx'-q'dy'
+=\mathfrak a(x,y,z,p,q,\\
+&a_1\cdots a_r)\cdot(dz-pdx-qdy)
+\end{aligned}
+$$
+
+*holds, these transformation equations also represent an* $r$*-parameter group, one having the same parameter group as the original group*.
+
+We now claim that if the $r$-parameter group (19) is generated by $r$ independent infinitesimal transformations—and here, as always, we naturally assume this—then the same holds for the prolonged group (21).
+
+We shall first prove this claim in the simple case $r=1$. Thus let $r=1$, and suppose group (19) is generated by the infinitesimal transformation
+
+$$
+Xf=\xi\frac{\partial f}{\partial x}
++\eta\frac{\partial f}{\partial y}
++\zeta\frac{\partial f}{\partial z}
+$$
+
+To show that the prolonged group is also generated by an infinitesimal transformation, we need only show that from $Xf$ we can derive a prolonged infinitesimal transformation
+
+$$
+X^{(1)}f=\xi\frac{\partial f}{\partial x}
++\eta\frac{\partial f}{\partial y}
++\zeta\frac{\partial f}{\partial z}
++\pi\frac{\partial f}{\partial p}
++\varkappa\frac{\partial f}{\partial q}
+$$
+
+leaving the Pfaffian equation
+
+$$
+dz-pdx-qdy=0
+\tag{22}
+$$
+
+invariant. Once this is shown, it is clear that the one-parameter group generated by $X^{(1)}f$ in the variables $x,y,z,p,q$ is identical with the one-parameter group (21): it leaves the Pfaffian equation (22) invariant and arises by prolonging the group $Xf$, which by assumption is precisely group (19).
+
+By p. 531, the infinitesimal transformation $X^{(1)}f$ leaves the Pfaffian equation (22) invariant if and only if $\pi$ and $\varkappa$ satisfy an equation of the form
+
+$$
+\begin{aligned}
+&d\zeta-pd\xi-qd\eta-\pi dx-\varkappa dy
+=\mathfrak b(dz\\
+&-pdx-qdy)
+\end{aligned}
+$$
+
+where $\mathfrak b$ is understood to be a function of $x,y,z,p,q$. This equation separates into the three equations
+
+$$
+\begin{aligned}
+\mathfrak b&=\frac{\partial\zeta}{\partial z}
+-p\frac{\partial\xi}{\partial z}
+-q\frac{\partial\eta}{\partial z}\\
+\pi&=\frac{\partial\zeta}{\partial x}
+-p\frac{\partial\xi}{\partial x}
+-q\frac{\partial\eta}{\partial x}+\mathfrak bp\\
+\varkappa&=\frac{\partial\zeta}{\partial y}
+-p\frac{\partial\xi}{\partial y}
+-q\frac{\partial\eta}{\partial y}+\mathfrak bq,
+\end{aligned}
+$$
+
+Thus we obtain the completely determined values of $\pi$ and $\varkappa$:
+
+$$
+\begin{aligned}
+&\pi=\frac{d\zeta}{dx}-p\frac{d\xi}{dx}-q\frac{d\eta}{dx},\\
+&\varkappa=\frac{d\zeta}{dy}-p\frac{d\xi}{dy}-q\frac{d\eta}{dy},
+\end{aligned}
+$$
+
+where, for brevity, we have put
+
+$$
+\begin{aligned}
+&\frac{\partial\Phi(x,y,z)}{\partial x}
++p\frac{\partial\Phi(x,y,z)}{\partial z}=\frac{d\Phi}{dx},\\
+&\frac{\partial\Phi(x,y,z)}{\partial y}
++q\frac{\partial\Phi(x,y,z)}{\partial z}=\frac{d\Phi}{dy}.
+\end{aligned}
+$$
+
+This proves the existence of the infinitesimal transformation $X^{(1)}f$ and, at the same time, the correctness of the claim made above for $r=1$.
+
+Now let $r$ be arbitrary. If $e_1X_1f+\cdots+e_rX_rf$ is any infinitesimal transformation of group (19), the one-parameter group generated by the prolonged infinitesimal transformation $e_1X_1^{(1)}f+\cdots+e_rX_r^{(1)}f$ plainly belongs to group (21), since that one-parameter group arises by prolonging the one-parameter group $e_1X_1f+\cdots+e_rX_rf$. It follows that group (21) contains the $\infty^{r-1}$ one-parameter groups $e_1X_1^{(1)}f+\cdots+e_rX_r^{(1)}f$, and hence is generated by the $r$ independent infinitesimal transformations $X_1^{(1)}f\cdots X_r^{(1)}f$.
+
+Of course, the $X_k^{(1)}f$ satisfy pairwise relations of the form
+
+$$
+X_i^{(1)}X_k^{(1)}f-X_k^{(1)}X_i^{(1)}f
+=\sum_{1}^{r}{}_s\,c_{iks}'X_s^{(1)}f;
+$$
+
+We shall verify this by calculation and thereby also see that the $c_{iks}'$ here have the same values as the $c_{iks}$ in the relations
+
+$$
+X_iX_kf-X_kX_if=\sum_{1}^{r}{}_s\,c_{iks}X_sf.
+$$
+
+By Theorem 93, p. 531, the Pfaffian equation $dz-pdx-qdy=0$ admits, along with the two infinitesimal transformations $X_i^{(1)}f$ and $X_k^{(1)}f$, the transformation $X_i^{(1)}X_k^{(1)}f-X_k^{(1)}X_i^{(1)}f$, which plainly has the form
+
+$$
+\begin{aligned}
+&X_i^{(1)}X_k^{(1)}f-X_k^{(1)}X_i^{(1)}f
+=X_iX_kf\\
+&-X_kX_if
++\alpha\frac{\partial f}{\partial p}
++\beta\frac{\partial f}{\partial q}.
+\end{aligned}
+$$
+
+It follows that the infinitesimal transformation $X_i^{(1)}X_k^{(1)}f-X_k^{(1)}X_i^{(1)}f$ is obtained by prolonging
+
+$$
+X_iX_kf-X_kX_if=\sum_{1}^{r}{}_s\,c_{iks}X_sf
+$$
+
+and hence that the relations
+
+$$
+X_i^{(1)}X_k^{(1)}f-X_k^{(1)}X_i^{(1)}f
+=\sum_{1}^{r}{}_s\,c_{iks}X_s^{(1)}f
+$$
+
+hold.
+
+We also see from this that the prolonged group (21) is holoedrically isomorphic to group (19), in agreement with the fact that the two groups have the same parameter group (Proposition 4, p. 535).
+
+The group
+
+$$
+\begin{aligned}
+&x'=\Xi(x,y,z,a_1\cdots a_r),\\
+&y'=\mathrm{Η}, z'=\mathrm{Ζ}
+\end{aligned}\tag{19}
+$$
+
+can be prolonged further, namely by including derivatives of order higher than the first. Here we shall consider only prolongation by adjoining the second derivatives.
+
+Since $z$ is regarded as a function of $x$ and $y$, besides $p$ and $q$ we must also consider the three second derivatives
+
+$$
+\frac{\partial^2z}{\partial x^2}=r,\quad
+\frac{\partial^2z}{\partial x\partial y}=s,\quad
+\frac{\partial^2z}{\partial y^2}=t
+$$
+
+Under the transformations of our group, $x',y',z'$ depend in the familiar way on $x,y,z$, and, by what precedes, $p',q'$ likewise depend on $x,y,z,p,q$. As will now be shown, $r',s',t'$ can also be represented as functions of $x,y,z,p,q,r,s,t$:
+
+$$
+\begin{aligned}
+&r'=\mathrm{Ρ}(x,y,z,p,q,r,s,t;a_1\cdots a_r),\\
+&s'=\Sigma, t'=\mathrm{Τ}.
+\end{aligned}
+$$
+
+The quantities $r',s',t'$ are defined by
+
+$$
+\begin{aligned}
+&dp'-r'dx'-s'dy'=0,\\
+&dq'-s'dx'-t'dy'=0.
+\end{aligned}
+$$
+
+Expand $dx',dy',dp',dq'$ here in terms of $dx,dy,dz,dp,dq$ and then substitute for $dz,dp,dq$ their values from
+
+$$
+\begin{aligned}
+&dz-pdx-qdy=0,\\
+&dp-rdx-sdy=0,\\
+&dq-sdx-tdy=0
+\end{aligned}
+$$
+
+This gives two equations of the form $Adx+Bdy=0$, whose coefficients contain, besides $x',y',z'$ and their derivatives with respect to $x,y,z$, also $p',q',r',s',t',p,q,r,s,t$. Since $dx$ and $dy$ are independent, $A$ and $B$ must vanish separately in both cases, and we find four equations:
+
+$$
+\begin{aligned}
+&r'\bigl(\frac{\partial\Xi}{\partial x}
++p\frac{\partial\Xi}{\partial z}\bigr)
++s'\bigl(\frac{\partial\mathrm{Η}}{\partial x}
++p\frac{\partial\mathrm{Η}}{\partial z}\bigr)\\
+&=\frac{\partial\Pi}{\partial x}
++p\frac{\partial\Pi}{\partial z}
++r\frac{\partial\Pi}{\partial p}
++s\frac{\partial\Pi}{\partial q}\\
+&r'\bigl(\frac{\partial\Xi}{\partial y}
++q\frac{\partial\Xi}{\partial z}\bigr)
++s'\bigl(\frac{\partial\mathrm{Η}}{\partial y}
++q\frac{\partial\mathrm{Η}}{\partial z}\bigr)\\
+&=\frac{\partial\Pi}{\partial y}
++q\frac{\partial\Pi}{\partial z}
++s\frac{\partial\Pi}{\partial p}
++t\frac{\partial\Pi}{\partial q}
+\end{aligned}
+$$
+
+and so on.
+
+Of these equations, the first two can be solved for $r'$ and $s'$, and the last two for $s'$ and $t'$, just as equations (16) could be solved for $p'$ and $q'$. It remains only to ask whether the two values of $s'$ found in this way agree. As is known, they do: otherwise we would obtain a nonidentical relation among $x,y,z,p,q,r,s,t$ that would have to be satisfied identically under the substitution $z=\varphi(x,y)$. This is impossible, since $\varphi$ is subject to no restriction.
+
+As before, we also recognize here that the quantities $r',s',t'$ are uniquely defined as functions of $x,y,z,p,q,r,s,t$ by the requirement that equations of the form
+
+$$
+\begin{aligned}
+&dp'-r'dx'-s'dy'
+=\alpha_1(dz-pdx\\
+&-qdy)+\beta_1(dp-rdx-sdy)\\
+&+\gamma_1(dq-sdx-tdy)\\
+&dq'-s'dx'-t'dy'
+=\alpha_2(dz-pdx\\
+&-qdy)+\beta_2(dp-rdx-sdy)\\
+&+\gamma_2(dq-sdx-tdy)
+\end{aligned}
+$$
+
+hold identically in $dp,dq,dz,dy,dx$. Recalling also the earlier identity
+
+$$
+dz'-p'dx'-q'dy'=\mathfrak a(dz-pdx-qdy),
+$$
+
+that determined $p'$ and $q'$, we can say that, for given $\Xi,\mathrm{Η},\mathrm{Ζ}$, the transformation equations
+
+$$
+\begin{aligned}
+&x'=\Xi(x,y,z,a_1\cdots a_r),\cdots
+t'\\
+&=\mathrm{Τ}(x,y,z,p,q,r,s,t,\\
+&a_1\cdots a_r)
+\end{aligned}\tag{23}
+$$
+
+are completely and uniquely defined by requiring that they leave the system of Pfaffian equations
+
+$$
+\begin{aligned}
+&dz-pdx-qdy=0,\\
+&dp-rdx-sdy=0,\\
+&dq-sdx-tdy=0
+\end{aligned}\tag{24}
+$$
+
+invariant.
+
+It follows that carrying out two transformations (23) in succession again produces a transformation leaving system (24) invariant. But by assumption the equations
+
+$$
+\begin{gathered}
+x'=\Xi(x,y,z,a_1\cdots a_r),\quad
+y'=\mathrm{Η},\quad z'=\mathrm{Ζ}\\
+x''=\Xi(x',y',z',b_1\cdots b_r),\quad
+y''=\mathrm{Η},\quad z''=\mathrm{Ζ}
+\end{gathered}
+$$
+
+imply
+
+$$
+\begin{aligned}
+&x''=\Xi(x,y,z,c_1\cdots c_r),\\
+&y''=\mathrm{Η}, z''=\mathrm{Ζ},
+\end{aligned}\tag{19'}
+$$
+
+where the $c$ depend only on the $a$ and $b$. Consequently, the two transformations
+
+$$
+\begin{aligned}
+&x'=\Xi(x,y,z,a_1\cdots a_r),\\
+&\cdots
+t'=\mathrm{Τ}(x,y,z,p,q,r,s,t,a_1\cdots a_r)\\
+&x''=\Xi(x',y',z',b_1\cdots b_r),\cdots
+t''\\
+&=\mathrm{Τ}(x',y',z',p',q',r',s',t',b_1\cdots b_r)
+\end{aligned}
+$$
+
+carried out successively give a transformation derived from (19') by the same prolongation by which (23) arose from
+
+$$
+\begin{aligned}
+&x'=\Xi(x,y,z,a_1\cdots a_r),\\
+&y'=\mathrm{Η}, z'=\mathrm{Ζ}
+\end{aligned}\tag{19}
+$$
+
+Thus this transformation also belongs to the family (23). The transformations (23) therefore form an $r$-parameter group.
+
+We shall verify directly that group (23) is generated by $r$ independent infinitesimal transformations.
+
+Again first suppose that $r=1$ and that group (19) is generated by the infinitesimal transformation $Xf$. Plainly, we need only prove that there is a prolonged infinitesimal transformation
+
+$$
+\begin{aligned}
+&X^{(2)}f=Xf+\pi\frac{\partial f}{\partial p}
++\varkappa\frac{\partial f}{\partial q}
++\rho\frac{\partial f}{\partial r}\\
+&+\sigma\frac{\partial f}{\partial s}
++\tau\frac{\partial f}{\partial t}
+\end{aligned}
+$$
+
+leaving the system of Pfaffian equations (24) invariant. This presents no difficulty: for $\pi$ and $\varkappa$ we find the same values as before, while for $\rho,\sigma,\tau$ we similarly obtain expressions depending linearly and homogeneously on $\xi,\eta,\zeta$ and their first and second derivatives.
+
+Here, too, we first find four equations for $\rho,\sigma,\tau$, but it is easy to show that these equations are compatible. We defer carrying out this proof until we consider the general case, where it takes a clearer form.
+
+The existence of $X^{(2)}f$ naturally implies that, when $r=1$, group (23) is generated precisely by $X^{(2)}f$.
+
+In the same way, for arbitrary $r$, group (23) is generated by the $r$ infinitesimal transformations $X_1^{(2)}f\cdots X_r^{(2)}f$, obtained by prolonging the infinitesimal transformations $X_1f\cdots X_rf$ of group (19). This also proves that relations of the form
+
+$$
+X_i^{(2)}X_k^{(2)}f-X_k^{(2)}X_i^{(2)}f
+=\sum_{1}^{r}{}_s\,c_{iks}''X_s^{(2)}f
+$$
+
+hold.
+
+It is easy to see that $c_{iks}''=c_{iks}$. Indeed, together with $X_i^{(2)}f$ and $X_k^{(2)}f$, the system of Pfaffian equations (24) also admits the infinitesimal transformation $X_i^{(2)}X_k^{(2)}f-X_k^{(2)}X_i^{(2)}f=(X_i^{(2)}X_k^{(2)})$. This is plainly of the form
+
+$$
+\begin{aligned}
+&(X_i^{(2)}X_k^{(2)})=(X_iX_k)
++\alpha\frac{\partial f}{\partial p}
++\beta\frac{\partial f}{\partial q}\\
+&+\lambda\frac{\partial f}{\partial r}
++\mu\frac{\partial f}{\partial s}
++\nu\frac{\partial f}{\partial t},
+\end{aligned}
+$$
+
+It therefore arises by prolongation from the transformation
+
+$$
+(X_iX_k)=\sum_{1}^{r}{}_s\,c_{iks}X_sf
+$$
+
+and can be represented as follows:
+
+$$
+(X_i^{(2)}X_k^{(2)})
+=\sum_{1}^{r}{}_s\,c_{iks}X_s^{(2)}f.
+$$
+
+This means that the prolonged group (23) has the same composition as the original group (19).
+
+#### Translated original footnotes: prolongation
+
+**F1 · p. 527, after the second bracket proof.** The preceding analytic developments closely resemble certain developments of Chapter 20 (compare p. 370 f.). The underlying reason for this relation is that the quantities $\xi$ on p. 370 are nothing other than certain derivatives $\frac{\partial y}{\partial t}$ of the $y$ with respect to $t$.
+
+**F2 · p. 534, after the contact-equation interpretation.** Lie, [Göttinger Nachr. 1872](https://gdz.sub.uni-goettingen.de/id/PPN252457072_1872), p. 480, [Verhandl. d. G. d. W. zu Christiania 1873](https://archive.org/details/forhandlingerivi1872chri); [Math. Ann. Vol. VIII](https://gdz.sub.uni-goettingen.de/dms/load/toc/?PPN=PPN235181684_0008).
+
+## Historical reading: the general projective group
+
+Sophus Lie and Friedrich Engel, *Theorie der Transformationsgruppen*, Volume I (1888), complete Chapter 26 introduction and §§134–135, printed pp. 554–560. [German original](https://archive.org/details/theotransformation01liesrich).
+
+The German original is in the public domain. The transcription and independently written English translation are dedicated to CC0.
+
+The modern projective Lie algebra and translation-subgroup conjugacy are proved in [Theorem 7.1](#7-the-projective-algebra-in-any-dimension). Proposition 7.2 in the same section proves the duality automorphism and the conjugacy of the quadratic subgroups, with their exact dimension hypotheses.
+
+### German text: Chapter 26 introduction and §§134–135
+
+**Kapitel 26.**
+
+**Die allgemeine projective Gruppe.**
+
+Die Gleichungen:
+
+$$
+\begin{aligned}
+x_\nu'&=\frac{\begin{gathered}a_{1\nu}x_1+\cdots\\
++a_{n\nu}x_n+a_{n+1,\nu}\end{gathered}}
+{\begin{gathered}a_{1,n+1}x_1+\cdots\\
++a_{n,n+1}x_n+a_{n+1,n+1}\end{gathered}}\\
+&(\nu=1\cdots n)
+\end{aligned}\tag{1}
+$$
+
+bestimmen, wie man sich leicht überzeugt, eine Gruppe, die sogenannte *allgemeine projective Gruppe* der Mannigfaltigkeit $x_1\cdots x_n$. Wir wollen diese wichtige Gruppe, welche auch die Gruppe aller *Collineationen* des Raumes $x_1\cdots x_n$ heisst, in dem gegenwärtigen Kapitel etwas näher untersuchen, indem wir unsere Aufmerksamkeit insbesondere auf ihre Untergruppen richten.
+
+**§134.**
+
+Die $(n+1)^2$ Parameter $a$ sind nicht alle wesentlich, es treten ja blos ihre Verhältnisse auf; einer der Parameter, am besten $a_{n+1,n+1}$ kann daher gleich $1$ gesetzt werden. Die Werthe der Parameter sind der Beschränkung unterworfen, dass die Substitutionsdeterminante $\sum\pm a_{11}\cdots a_{n+1,n+1}$ nicht gleich Null sein darf; denn gleichzeitig mit derselben würde auch die Functionaldeterminante: $\sum\pm\frac{\partial x_1'}{\partial x_1}\cdots\frac{\partial x_n'}{\partial x_n}$ verschwinden.
+
+Die identische Transformation ist in unserer Gruppe enthalten, sie gehört zu den Parameterwerthen:
+
+$$
+\begin{aligned}
+&a_{\nu\nu}=1, a_{\mu\nu}=0\\
+&(\mu,\nu=1\cdots n+1,\ \mu\ne\nu),
+\end{aligned}
+$$
+
+für welche sich ja $x_i'=x_i$ ergiebt. In Folge dessen erhält man infinitesimale Transformationen der Gruppe, indem man den $a_{\mu\nu}$ die Werthe
+
+$$
+a_{\nu\nu}=1+\omega_{\nu\nu},\quad
+a_{n+1,n+1}=1,\quad a_{\mu\nu}=\omega_{\mu\nu}
+$$
+
+ertheilt und dabei die $\omega$ infinitesimale Grössen bedeuten lässt. So findet man:
+
+$$
+\begin{aligned}
+&x_\nu'=\bigl(x_\nu+\sum_1^n{}^\mu\omega_{\mu\nu}x_\mu+\omega_{n+1,\nu}\bigr)
+\bigl(1\\
+&-\sum_1^n{}^\mu\omega_{\mu,n+1}x_\mu+\cdots\bigr)
+\end{aligned}
+$$
+
+oder bei Weglassung der Grössen von zweiter und höherer Ordnung:
+
+$$
+\begin{aligned}
+&x_\nu'-x_\nu=\sum_1^n{}^\mu\omega_{\mu\nu}x_\mu
++\omega_{n+1,\nu}\\
+&-x_\nu\sum_1^n{}^\mu\omega_{\mu,n+1}x_\mu.
+\end{aligned}
+$$
+
+Setzt man hierin alle $\omega_{\mu\nu}$ mit Ausnahme eines einzigen gleich Null, so erkennt man nach und nach, dass unsere Gruppe die $n(n+2)$ unabhängigen infinitesimalen Transformationen:
+
+$$
+\begin{aligned}
+&\frac{\partial f}{\partial x_i},
+x_i\frac{\partial f}{\partial x_k},
+x_i\sum_1^n{}^j x_j\frac{\partial f}{\partial x_j}\\
+&(i,k=1\cdots n)
+\end{aligned}\tag{2}
+$$
+
+enthält.
+
+*Die allgemeine projective Gruppe des $n$-fach ausgedehnten Raumes $x_1\cdots x_n$ enthält daher $n(n+2)$ wesentliche Parameter und ist von infinitesimalen Transformationen erzeugt. Die analytischen Ausdrücke der letzteren verhalten sich für jeden Punkt des Raumes regulär.*
+
+*Für $\frac{\partial f}{\partial x_i}$ werden wir von jetzt ab in der Regel $p_i$ schreiben.* Ausserdem wollen wir in diesem Kapitel der Bequemlichkeit wegen die Abkürzungen:
+
+$$
+x_i p_k=T_{ik},\quad x_i\sum_1^n{}^k x_kp_k=P_i
+$$
+
+einführen. Endlich wollen wir noch festsetzen, dass $\varepsilon_{ik}$ jedesmal Null bedeuten soll, wenn $i$ und $k$ von einander verschieden sind, während dagegen $\varepsilon_{ii}$ den Werth $1$ haben soll; eine Festsetzung, die wir gelegentlich schon früher gemacht haben. Auf Grund derselben können wir die Relationen, welche sich durch Combination der infinitesimalen Transformationen $p_i$, $T_{ik}$, $P_i$ ergeben, folgendermassen schreiben:
+
+$$
+\begin{aligned}
+&(p_i p_k)=0,(P_iP_k)=0,\\
+&(p_iP_k)=T_{ki}+\varepsilon_{ik}\sum_1^n{}^\nu T_{\nu\nu},\\
+&(p_iT_{k\nu})=\varepsilon_{ik}p_\nu,
+(P_iT_{k\nu})=-\varepsilon_{i\nu}P_k,\\
+&(T_{ik}T_{\mu\nu})=\varepsilon_{k\mu}T_{i\nu}
+-\varepsilon_{\nu i}T_{\mu k}.
+\end{aligned}
+$$
+
+Man überzeugt sich leicht, dass diese Relationen ungeändert bleiben, wenn man darin nach dem Schema:
+
+$$
+\begin{gathered}
+p_i,\quad T_{ik},\quad P_i\\
+P_i,\quad-T_{ki},\quad p_i
+\end{gathered}
+\tag{3}
+$$
+
+die $p_i$, $T_{ik}$ und $P_i$ bezüglich durch die unter ihnen stehenden Ausdrücke ersetzt. *In dieser Weise lässt sich also die allgemeine projective Gruppe holoedrisch isomorph auf sich selbst beziehen.*
+
+Man könnte vermuthen, dass es eine Transformation: $x_i'=\Phi_i(x_1\cdots x_n)$ giebt, welche die infinitesimalen Transformationen:
+
+$$
+p_i,\quad x_i p_k,\quad x_i\sum_1^n{}^k x_kp_k
+$$
+
+in bezüglich:
+
+$$
+x_i'\sum_1^n{}^k x_k'p_k',\quad-x_k'p_i',\quad p_i'
+$$
+
+überführt. Eine solche Transformation giebt es aber nicht, aus dem einfachen Grunde, weil die $n$ infinitesimalen Transformationen $p_1\cdots p_n$ eine $n$-gliedrige *transitive* Gruppe erzeugen, während: $x_1'\sum x_k'p_k'\cdots x_n'\sum x_k'p_k'$ eine $n$-gliedrige *intransitive* Gruppe erzeugen.
+
+Erst im nächsten Abschnitte werden wir die volle Bedeutung jener wichtigen Eigenschaft der projectiven Gruppe einsehen lernen, wenn der Begriff der Berührungstransformation und insbesondere der Dualität eingeführt werden wird.
+
+Die allgemeine infinitesimale Transformation:
+
+$$
+\sum_1^n{}^i a_i p_i+\sum_{i,k}^{1\cdots n}b_{ik}T_{ik}
++\sum_1^n{}^i c_iP_i
+$$
+
+unserer Gruppe ist nach Potenzen von $x_1\cdots x_n$ entwickelt und enthält offenbar nur Glieder von nullter, erster und zweiter Ordnung in den $x$. Man erkennt leicht, dass die Gruppe $n$ unabhängige infinitesimale Transformationen von nullter Ordnung in den $x$ enthält, aus denen sich keine infinitesimale Transformation von erster oder zweiter Ordnung in den $x$ linear ableiten lässt. Zum Beispiel sind $p_1\cdots p_n$ $n$ solche infinitesimale Transformationen. Daraus folgt, *dass die allgemeine projective Gruppe transitiv ist.*
+
+Ferner giebt es $n^2$ infinitesimale Transformationen von erster Ordnung in den $x_i$, zum Beispiel alle $x_ip_k=T_{ik}$, aus welchen sich keine von zweiter Ordnung linear ableiten lässt. Endlich ergeben sich noch $n$ Transformationen von zweiter Ordnung in den $x$:
+
+$$
+x_i\sum_1^n{}^k x_kp_k=P_i.
+$$
+
+In Uebereinstimmung mit dem Satze 9 des Kap. 15, S. 264 sind die $P_i$ paarweise vertauschbar und ausserdem erzeugen die $T_{ik}$ mit den $P_i$ zusammen eine Untergruppe, in welcher die Gruppe der $P_i$ als invariante Untergruppe enthalten ist.
+
+Wie man sieht und wie auch aus unserer obigen Bemerkung über das Verhältniss zwischen den $p_i$ und $P_i$ folgt, sind auch die $p_i$ paarweise vertauschbar und erzeugen mit den $T_{ik}$ zusammen eine Untergruppe, in welcher die Gruppe der $p_i$ invariant ist.
+
+**§135.**
+
+Für die wichtigsten Untergruppen der allgemeinen projectiven Gruppe empfiehlt es sich besondere Namen zu benutzen. Lässt man in dem allgemeinen Ausdruck (1) einer projectiven Transformation den Nenner sich auf $1$ reduciren, so erhält man eine *lineare* Transformation:
+
+$$
+\begin{aligned}
+&x_\nu'=a_{1\nu}x_1+\cdots+a_{n\nu}x_n+a_{n+1,\nu}\\
+&(\nu=1\cdots n);
+\end{aligned}
+$$
+
+alle Transformationen von dieser Form bilden die sogenannte *allgemeine lineare* Gruppe. Die infinitesimalen Transformationen derselben haben wir schon am Schlusse des vorigen Paragraphen angegeben; sie lassen sich alle aus den folgenden $n(n+1)$:
+
+$$
+p_i,\quad x_ip_k\qquad(i,k=1\cdots n)
+$$
+
+linear ableiten.
+
+Deutet man $x_1\cdots x_n$ als Coordinaten in einem $n$-fach ausgedehnten Raume $R_n$ und überträgt die Ausdrucksweisen aus dem gewöhnlichen Raume, so kann man sagen, dass die allgemeine lineare Gruppe aus allen projectiven Transformationen besteht, welche die unendlich ferne $(n-1)$-fach ausgedehnte ebene Mannigfaltigkeit oder kurz die *unendlich ferne ebene $M_{n-1}$* invariant lassen.
+
+Erinnert man sich daran, dass bei Ausführung zweier endlicher linearer Transformationen nach einander die Substitutionsdeterminanten: $\sum\pm a_{11}\cdots a_{nn}$ sich multipliciren, so erkennt man ohne Weiteres, dass der Inbegriff aller linearen Transformationen, deren Determinante: $\sum\pm a_{11}\cdots a_{nn}$ gleich $1$ ist, in der allgemeinen linearen Gruppe eine Untergruppe bildet und zwar eine invariante Untergruppe, welche wir die *specielle lineare Gruppe* nennen wollen. Man findet leicht, dass als die $n(n+1)-1$ unabhängigen infinitesimalen Transformationen derselben die folgenden gewählt werden können:
+
+$$
+p_i,\quad x_ip_k,\quad x_ip_i-x_kp_k\qquad(i\gtrless k).
+$$
+
+Beschränkt man sich unter allen linearen Transformationen auf die in den $x$ homogenen, so erhält man die *allgemeine lineare homogene Gruppe*:
+
+$$
+x_\nu'=a_{1\nu}x_1+\cdots+a_{n\nu}x_n
+\qquad(\nu=1\cdots n),
+$$
+
+deren infinitesimale Transformationen sämmtlich die Form: $\sum b_{ik}x_ip_k$ besitzen und sich daher aus den $n^2$ Transformationen $x_ip_k$ linear ableiten lassen. Auch diese Gruppe enthält offenbar eine invariante Untergruppe, die *specielle lineare homogene*, für welche: $\sum\pm a_{11}\cdots a_{nn}$ den Werth $1$ hat. Die $n^2-1$ infinitesimalen Transformationen dieser letzteren sind:
+
+$$
+x_ip_k,\quad x_ip_i-x_kp_k\qquad(i\gtrless k);
+$$
+
+die allgemeine infinitesimale Transformation der betreffenden Gruppe hat daher die Form: $\sum_{ik}a_{ik}x_ip_k$, wo die $n^2$ willkürlichen Constanten $a_{ik}$ nur der Bedingung $\sum a_{ii}=0$ unterworfen sind.
+
+Da der Ausdruck: $(x_ip_k,\sum x_jp_j)$ immer verschwindet, so liegt es auf der Hand, dass die beiden letztgenannten Gruppen *systatisch* und folglich *imprimitiv* sind. In der That, setzt man:
+
+$$
+\frac{x_i}{x_n}=y_i,\quad\frac{x_i'}{x_n'}=y_i'
+\qquad(i=1\cdots n-1)
+$$
+
+so bekommt man:
+
+$$
+\begin{aligned}
+y_\nu'&=\frac{\begin{gathered}a_{1\nu}y_1+\cdots\\
++a_{n-1,\nu}y_{n-1}+a_{n\nu}\end{gathered}}
+{\begin{gathered}a_{1,n-1}y_1+\cdots\\
++a_{n-1,n-1}y_{n-1}+a_{n,n-1}\end{gathered}}\\
+&(\nu=1\cdots n-1).
+\end{aligned}
+$$
+
+Hieraus geht überdies hervor, dass in beiden Fällen die $y$ durch die $(n^2-1)$-gliedrige allgemeine projective Gruppe der $(n-1)$-fach ausgedehnten Mannigfaltigkeit $y_1\cdots y_{n-1}$ transformirt werden. Mit dieser Gruppe ist daher sowohl die allgemeine als die specielle lineare homogene Gruppe einer $n$-fach ausgedehnten Mannigfaltigkeit isomorph, doch ist der Isomorphismus natürlich nur für die specielle lineare homogene Gruppe holoedrisch, da dieselbe $n^2-1$ Parameter enthält.
+
+**Theorem 96.** *Die specielle lineare homogene Gruppe:*
+
+$$
+x_ip_k,\quad x_ip_i-x_kp_k\qquad(i\gtrless k=1\cdots n)
+$$
+
+*in den Veränderlichen $x_1\cdots x_n$ ist imprimitiv und holoedrisch isomorph mit der allgemeinen projectiven Gruppe einer $(n-1)$-fach ausgedehnten Mannigfaltigkeit.*
+
+Die formell einfachsten infinitesimalen Transformationen der allgemeinen projectiven Gruppe sind $p_1\cdots p_n$; dieselben erzeugen, wie schon bemerkt, an und für sich eine Gruppe: die Gruppe aller *Translationen*:
+
+$$
+x_i'=x_i+a_i\qquad(i=1\cdots n),
+$$
+
+die offenbar einfach transitiv ist.
+
+Ueberhaupt erzeugen beliebige $m$ infinitesimale Translationen, etwa $p_1\cdots p_m$, stets eine $m$-gliedrige Gruppe. Für alle diese Gruppen gilt:
+
+**Satz 1.** *Alle $m$-gliedrigen Gruppen von Translationen sind innerhalb der allgemeinen projectiven, ja sogar schon innerhalb der allgemeinen linearen Gruppe mit einander gleichberechtigt.*
+
+Die $m$ unabhängigen infinitesimalen Transformationen einer solchen Gruppe haben nämlich immer die Form:
+
+$$
+\sum_1^n{}^\nu b_{\mu\nu}p_\nu\qquad(\mu=1\cdots m),
+$$
+
+wo nicht alle $m$-reihigen Determinanten der $b_{\mu\nu}$ verschwinden.
+
+Wir können aber sehr leicht zeigen, dass vermittelst einer linearen Transformation neue Veränderliche $x_1'\cdots x_n'$ eingeführt werden können, für welche:
+
+$$
+p_\mu'=\sum_1^n{}^\nu b_{\mu\nu}p_\nu
+\qquad(\mu=1\cdots m)
+$$
+
+wird. Es ist ja $p_\mu'=p_1\frac{\partial x_1}{\partial x_\mu'}+\cdots+p_n\frac{\partial x_n}{\partial x_\mu'}$; mithin brauchen wir nur zu setzen:
+
+$$
+\frac{\partial x_\nu}{\partial x_\mu'}=b_{\mu\nu}
+\qquad(\nu=1\cdots n,\ \mu=1\cdots m),
+$$
+
+während die $\frac{\partial x_\nu}{\partial x_{m+1}'}\cdots\frac{\partial x_\nu}{\partial x_n'}$ beliebig bleiben. Wir können diesen letzteren solche Werthe ertheilen, dass die Gleichungen:
+
+$$
+x_\nu=\sum_1^m{}^\mu b_{\mu\nu}x_\mu'
++\sum_{m+1}^n{}^\pi c_{\pi\nu}x_\pi'
+\qquad(\nu=1\cdots n)
+$$
+
+eine Transformation bestimmen, und diese führt dann die vorgelegte Gruppe von Translationen in die Gruppe $p_1'\cdots p_m'$ über. Hieraus folgt unser Satz unmittelbar.
+
+Einen zweiten Beweis desselben Satzes wollen wir wenigstens andeuten. Wie schon oben bemerkt, lässt die allgemeine lineare Gruppe die unendlich ferne ebene $M_{n-1}$ invariant, und zwar ist sie sogar die allgemeinste projective Gruppe von dieser Beschaffenheit. Nun ist jede infinitesimale Translation nach einem unendlich fernen Punkt gerichtet und durch diesen vollständig bestimmt; *jede $m$-gliedrige Gruppe von Translationen lässt sich daher durch eine $m$-fach ausgedehnte unendlich ferne ebene Mannigfaltigkeit $M_m$ darstellen.* Aber zwei unendlich ferne ebene $M_m$ können stets durch eine lineare Transformation, welche ja die unendlich ferne Ebene invariant lässt, in einander übergeführt werden. Folglich sind alle $m$-gliedrigen Gruppen von Translationen innerhalb der allgemeinen linearen und ebenso innerhalb der allgemeinen projectiven Gruppe mit einander gleichberechtigt.
+
+Das früher angegebene Entsprechen, welches zwischen den $p_i$ und den $P_i$ stattfindet, liefert, wie wir sogleich zeigen, den
+
+**Satz 2.** *Alle $m$-gliedrigen Gruppen, deren infinitesimale Transformationen die Form $\sum e_iP_i$ besitzen, sind innerhalb der allgemeinen projectiven Gruppe gleichberechtigt.*
+
+Beim Beweise gehen wir davon aus, dass zwei Untergruppen dann innerhalb einer Gruppe $G_r$ gleichberechtigt sind, wenn die eine vermittelst einer Transformation der adjungirten Gruppe von $G_r$ in die andere übergeführt werden kann; die Untergruppen haben wir uns dabei als ebene Mannigfaltigkeiten in dem Raume $e_1\cdots e_r$ zu denken, welcher bei der adjungirten Gruppe transformirt wird (vgl. Kap. 16, S. 280). Schreiben wir jetzt die Transformationen der projectiven Gruppe einmal in der Reihenfolge $p_i$, $T_{ik}$, $P_i$ und dann in der Reihenfolge $P_i$, $-T_{ki}$, $p_i$, so erhalten wir beide Male identisch dieselbe adjungirte Gruppe. Da aber zwei $m$-gliedrige Gruppen von Translationen stets durch die adjungirte Gruppe in einander übergeführt werden können, muss dies auch stets mit zwei solchen $m$-gliedrigen Gruppen der Fall sein, deren infinitesimale Transformationen sich aus den $P_i$ linear ableiten lassen. Ja es ergiebt sich sogar, dass zwei $m$-gliedrige Gruppen dieser Art schon in der Gruppe $P_i$, $T_{ik}$ mit einander gleichberechtigt sind. Damit ist unser Satz bewiesen.
+
+### English translation: Chapter 26 introduction and §§134–135
+
+**Chapter 26.**
+
+**The general projective group.**
+
+The equations
+
+$$
+\begin{aligned}
+x_\nu'&=\frac{\begin{gathered}a_{1\nu}x_1+\cdots\\
++a_{n\nu}x_n+a_{n+1,\nu}\end{gathered}}
+{\begin{gathered}a_{1,n+1}x_1+\cdots\\
++a_{n,n+1}x_n+a_{n+1,n+1}\end{gathered}}\\
+&(\nu=1\cdots n)
+\end{aligned}\tag{1}
+$$
+
+determine, as is easily verified, a group, the so-called *general projective group* of the manifold $x_1\cdots x_n$. In the present chapter we shall examine this important group, also called the group of all *collineations* of the space $x_1\cdots x_n$, in somewhat greater detail, directing our attention especially to its subgroups.
+
+**§134.**
+
+The $(n+1)^2$ parameters $a$ are not all essential, since only their ratios occur; one of the parameters, preferably $a_{n+1,n+1}$, can therefore be set equal to $1$. The values of the parameters are subject to the restriction that the substitution determinant $\sum\pm a_{11}\cdots a_{n+1,n+1}$ must not be zero; for the functional determinant $\sum\pm\frac{\partial x_1'}{\partial x_1}\cdots\frac{\partial x_n'}{\partial x_n}$ would vanish at the same time.
+
+Our group contains the identity transformation; it belongs to the parameter values
+
+$$
+\begin{aligned}
+&a_{\nu\nu}=1, a_{\mu\nu}=0\\
+&(\mu,\nu=1\cdots n+1,\ \mu\ne\nu),
+\end{aligned}
+$$
+
+for which we indeed obtain $x_i'=x_i$. Consequently, infinitesimal transformations of the group are obtained by assigning to the $a_{\mu\nu}$ the values
+
+$$
+a_{\nu\nu}=1+\omega_{\nu\nu},\quad
+a_{n+1,n+1}=1,\quad a_{\mu\nu}=\omega_{\mu\nu}
+$$
+
+and letting the $\omega$ denote infinitesimal quantities. We thus find
+
+$$
+\begin{aligned}
+&x_\nu'=\bigl(x_\nu+\sum_1^n{}^\mu\omega_{\mu\nu}x_\mu+\omega_{n+1,\nu}\bigr)
+\bigl(1\\
+&-\sum_1^n{}^\mu\omega_{\mu,n+1}x_\mu+\cdots\bigr)
+\end{aligned}
+$$
+
+or, on omitting quantities of second and higher order,
+
+$$
+\begin{aligned}
+&x_\nu'-x_\nu=\sum_1^n{}^\mu\omega_{\mu\nu}x_\mu
++\omega_{n+1,\nu}\\
+&-x_\nu\sum_1^n{}^\mu\omega_{\mu,n+1}x_\mu.
+\end{aligned}
+$$
+
+Setting all the $\omega_{\mu\nu}$ but one equal to zero, we successively see that our group contains the $n(n+2)$ independent infinitesimal transformations
+
+$$
+\begin{aligned}
+&\frac{\partial f}{\partial x_i},
+x_i\frac{\partial f}{\partial x_k},
+x_i\sum_1^n{}^j x_j\frac{\partial f}{\partial x_j}\\
+&(i,k=1\cdots n)
+\end{aligned}\tag{2}
+$$
+
+*The general projective group of the $n$-dimensional space $x_1\cdots x_n$ therefore contains $n(n+2)$ essential parameters and is generated by infinitesimal transformations. The analytic expressions of the latter are regular at every point of the space.*
+
+*From now on we shall usually write $p_i$ for $\frac{\partial f}{\partial x_i}$.* For convenience, we shall also introduce in this chapter the abbreviations
+
+$$
+x_i p_k=T_{ik},\quad x_i\sum_1^n{}^k x_kp_k=P_i
+$$
+
+Finally, we stipulate that $\varepsilon_{ik}$ shall always mean zero when $i$ and $k$ differ, whereas $\varepsilon_{ii}$ shall have the value $1$; a convention we have already used occasionally. With it, the relations resulting from combining the infinitesimal transformations $p_i$, $T_{ik}$, $P_i$ can be written as follows:
+
+$$
+\begin{aligned}
+&(p_i p_k)=0,(P_iP_k)=0,\\
+&(p_iP_k)=T_{ki}+\varepsilon_{ik}\sum_1^n{}^\nu T_{\nu\nu},\\
+&(p_iT_{k\nu})=\varepsilon_{ik}p_\nu,
+(P_iT_{k\nu})=-\varepsilon_{i\nu}P_k,\\
+&(T_{ik}T_{\mu\nu})=\varepsilon_{k\mu}T_{i\nu}
+-\varepsilon_{\nu i}T_{\mu k}.
+\end{aligned}
+$$
+
+It is easily verified that these relations remain unchanged when, according to the scheme
+
+$$
+\begin{gathered}
+p_i,\quad T_{ik},\quad P_i\\
+P_i,\quad-T_{ki},\quad p_i
+\end{gathered}
+\tag{3}
+$$
+
+we replace $p_i$, $T_{ik}$ and $P_i$, respectively, by the expressions beneath them. *In this way the general projective group can therefore be put into holoedric isomorphism with itself.*
+
+One might conjecture that there is a transformation $x_i'=\Phi_i(x_1\cdots x_n)$ carrying the infinitesimal transformations
+
+$$
+p_i,\quad x_i p_k,\quad x_i\sum_1^n{}^k x_kp_k
+$$
+
+respectively into
+
+$$
+x_i'\sum_1^n{}^k x_k'p_k',\quad-x_k'p_i',\quad p_i'
+$$
+
+There is, however, no such transformation, for the simple reason that the $n$ infinitesimal transformations $p_1\cdots p_n$ generate an $n$-parameter *transitive* group, whereas $x_1'\sum x_k'p_k'\cdots x_n'\sum x_k'p_k'$ generate an $n$-parameter *intransitive* group.
+
+Only in the next part shall we come to understand the full significance of this important property of the projective group, when the concept of a contact transformation, and especially that of duality, is introduced.
+
+The general infinitesimal transformation of our group,
+
+$$
+\sum_1^n{}^i a_i p_i+\sum_{i,k}^{1\cdots n}b_{ik}T_{ik}
++\sum_1^n{}^i c_iP_i
+$$
+
+is expanded in powers of $x_1\cdots x_n$ and plainly contains only terms of order zero, one and two in the $x$. It is easily seen that the group contains $n$ independent infinitesimal transformations of order zero in the $x$, from which no infinitesimal transformation of first or second order in the $x$ can be obtained by linear combination. For example, $p_1\cdots p_n$ are $n$ such infinitesimal transformations. It follows *that the general projective group is transitive.*
+
+Furthermore, there are $n^2$ infinitesimal transformations of first order in the $x_i$, for example all $x_ip_k=T_{ik}$, from which none of second order can be obtained by linear combination. Finally, there are another $n$ transformations of second order in the $x$:
+
+$$
+x_i\sum_1^n{}^k x_kp_k=P_i.
+$$
+
+In agreement with Proposition 9 of Chapter 15, p. 264, the $P_i$ commute pairwise, and the $T_{ik}$ together with the $P_i$ generate a subgroup containing the group of the $P_i$ as an invariant subgroup.
+
+As is apparent, and also follows from our earlier observation on the relation between the $p_i$ and the $P_i$, the $p_i$ likewise commute pairwise and, together with the $T_{ik}$, generate a subgroup in which the group of the $p_i$ is invariant.
+
+**§135.**
+
+It is convenient to use special names for the most important subgroups of the general projective group. If the denominator in the general expression (1) for a projective transformation is reduced to $1$, one obtains a *linear* transformation:
+
+$$
+\begin{aligned}
+&x_\nu'=a_{1\nu}x_1+\cdots+a_{n\nu}x_n+a_{n+1,\nu}\\
+&(\nu=1\cdots n);
+\end{aligned}
+$$
+
+All transformations of this form constitute the so-called *general linear* group. We already gave its infinitesimal transformations at the end of the preceding paragraph; all of them are linear combinations of the following $n(n+1)$:
+
+$$
+p_i,\quad x_ip_k\qquad(i,k=1\cdots n)
+$$
+
+Interpreting $x_1\cdots x_n$ as coordinates in an $n$-dimensional space $R_n$ and transferring the terminology of ordinary space, we may say that the general linear group consists of all projective transformations leaving invariant the infinitely distant $(n-1)$-dimensional plane manifold, or, briefly, the *plane $M_{n-1}$ at infinity*.
+
+Recalling that the substitution determinants $\sum\pm a_{11}\cdots a_{nn}$ multiply when two finite linear transformations are performed in succession, we see at once that the collection of all linear transformations whose determinant $\sum\pm a_{11}\cdots a_{nn}$ equals $1$ forms a subgroup of the general linear group, indeed an invariant subgroup, which we shall call the *special linear group*. It is easily found that its $n(n+1)-1$ independent infinitesimal transformations may be chosen as follows:
+
+$$
+p_i,\quad x_ip_k,\quad x_ip_i-x_kp_k\qquad(i\gtrless k).
+$$
+
+Restricting all linear transformations to those homogeneous in the $x$ gives the *general linear homogeneous group*:
+
+$$
+x_\nu'=a_{1\nu}x_1+\cdots+a_{n\nu}x_n
+\qquad(\nu=1\cdots n),
+$$
+
+Its infinitesimal transformations all have the form $\sum b_{ik}x_ip_k$ and hence are linear combinations of the $n^2$ transformations $x_ip_k$. This group too plainly contains an invariant subgroup, the *special linear homogeneous* group, for which $\sum\pm a_{11}\cdots a_{nn}$ has the value $1$. The $n^2-1$ infinitesimal transformations of the latter are
+
+$$
+x_ip_k,\quad x_ip_i-x_kp_k\qquad(i\gtrless k);
+$$
+
+The general infinitesimal transformation of the group in question therefore has the form $\sum_{ik}a_{ik}x_ip_k$, where the $n^2$ arbitrary constants $a_{ik}$ are subject only to the condition $\sum a_{ii}=0$.
+
+Since the expression $(x_ip_k,\sum x_jp_j)$ always vanishes, it is evident that the two last-mentioned groups are *systatic* and consequently *imprimitive*. Indeed, setting
+
+$$
+\frac{x_i}{x_n}=y_i,\quad\frac{x_i'}{x_n'}=y_i'
+\qquad(i=1\cdots n-1)
+$$
+
+gives
+
+$$
+\begin{aligned}
+y_\nu'&=\frac{\begin{gathered}a_{1\nu}y_1+\cdots\\
++a_{n-1,\nu}y_{n-1}+a_{n\nu}\end{gathered}}
+{\begin{gathered}a_{1,n-1}y_1+\cdots\\
++a_{n-1,n-1}y_{n-1}+a_{n,n-1}\end{gathered}}\\
+&(\nu=1\cdots n-1).
+\end{aligned}
+$$
+
+This also shows that in both cases the $y$ are transformed by the $(n^2-1)$-parameter general projective group of the $(n-1)$-dimensional manifold $y_1\cdots y_{n-1}$. Thus both the general and the special linear homogeneous group of an $n$-dimensional manifold are isomorphic to this group, although the isomorphism is naturally holoedric only for the special linear homogeneous group, since it contains $n^2-1$ parameters.
+
+**Theorem 96.** *The special linear homogeneous group*
+
+$$
+x_ip_k,\quad x_ip_i-x_kp_k\qquad(i\gtrless k=1\cdots n)
+$$
+
+*in the variables $x_1\cdots x_n$ is imprimitive and holoedrically isomorphic to the general projective group of an $(n-1)$-dimensional manifold.*
+
+The formally simplest infinitesimal transformations of the general projective group are $p_1\cdots p_n$; as already observed, they generate a group by themselves: the group of all *translations*,
+
+$$
+x_i'=x_i+a_i\qquad(i=1\cdots n),
+$$
+
+which is plainly simply transitive.
+
+In general, any $m$ infinitesimal translations, say $p_1\cdots p_m$, always generate an $m$-parameter group. For all these groups the following holds:
+
+**Proposition 1.** *All $m$-parameter groups of translations are equivalent to one another within the general projective group, indeed already within the general linear group.*
+
+The $m$ independent infinitesimal transformations of such a group always have the form
+
+$$
+\sum_1^n{}^\nu b_{\mu\nu}p_\nu\qquad(\mu=1\cdots m),
+$$
+
+where the $m$-rowed determinants of the $b_{\mu\nu}$ do not all vanish.
+
+We can, however, very easily show that a linear transformation introduces new variables $x_1'\cdots x_n'$ for which
+
+$$
+p_\mu'=\sum_1^n{}^\nu b_{\mu\nu}p_\nu
+\qquad(\mu=1\cdots m)
+$$
+
+Indeed, $p_\mu'=p_1\frac{\partial x_1}{\partial x_\mu'}+\cdots+p_n\frac{\partial x_n}{\partial x_\mu'}$; thus we need only set
+
+$$
+\frac{\partial x_\nu}{\partial x_\mu'}=b_{\mu\nu}
+\qquad(\nu=1\cdots n,\ \mu=1\cdots m),
+$$
+
+while the $\frac{\partial x_\nu}{\partial x_{m+1}'}\cdots\frac{\partial x_\nu}{\partial x_n'}$ remain arbitrary. We can assign the latter such values that the equations
+
+$$
+x_\nu=\sum_1^m{}^\mu b_{\mu\nu}x_\mu'
++\sum_{m+1}^n{}^\pi c_{\pi\nu}x_\pi'
+\qquad(\nu=1\cdots n)
+$$
+
+determine a transformation. It then carries the given group of translations into the group $p_1'\cdots p_m'$. Our proposition follows immediately.
+
+We shall at least outline a second proof of the same proposition. As already observed, the general linear group leaves the plane $M_{n-1}$ at infinity invariant; it is, moreover, the most general projective group with this property. Now every infinitesimal translation is directed towards a point at infinity and is completely determined by it; *every $m$-parameter group of translations can therefore be represented by an $m$-dimensional plane manifold $M_m$ at infinity.* But two planes $M_m$ at infinity can always be carried into one another by a linear transformation, which leaves the plane at infinity invariant. Consequently, all $m$-parameter groups of translations are equivalent to one another within the general linear group and likewise within the general projective group.
+
+The correspondence previously given between the $p_i$ and the $P_i$ yields, as we shall now show,
+
+**Proposition 2.** *All $m$-parameter groups whose infinitesimal transformations have the form $\sum e_iP_i$ are equivalent within the general projective group.*
+
+In the proof we start from the fact that two subgroups are equivalent within a group $G_r$ if one can be carried into the other by a transformation of the adjoint group of $G_r$. Here the subgroups are to be regarded as plane manifolds in the space $e_1\cdots e_r$ transformed by the adjoint group (compare Chapter 16, p. 280). If we now write the transformations of the projective group first in the order $p_i$, $T_{ik}$, $P_i$ and then in the order $P_i$, $-T_{ki}$, $p_i$, we obtain identically the same adjoint group in both cases. Since two $m$-parameter groups of translations can always be carried into one another by the adjoint group, the same must always hold for two $m$-parameter groups whose infinitesimal transformations are linear combinations of the $P_i$. Indeed, two $m$-parameter groups of this kind are equivalent to one another already within the group $P_i$, $T_{ik}$. This proves our proposition.
+
+## Historical reading: contact transformations and higher derivatives
+
+Sophus Lie and Friedrich Engel, *Theorie der Transformationsgruppen*, Volume II (1890), complete Chapter 22 introduction and §95, printed pp. 378–383. [German original](https://archive.org/details/theotransformation02liesrich).
+
+The German original is in the public domain. The transcription and independently written English translation are dedicated to CC0.
+
+The modern contact-jet construction and its precise domains are proved in [Proposition 4.48](#4-23-contact-prolongations-and-their-domains). Exercise 19 and Solution 19 give the full partial Legendre example; the scalar case also appears in Example 4.47 and Figure 4.19.
+
+### German text: Chapter 22 introduction and §95
+
+**Kapitel 22.**
+
+**Erweiterung der Berührungstransformationen und der Gruppen von solchen. Differentialinvarianten derartiger Gruppen.**
+
+Bei einer Berührungstransformation:
+
+$$
+\begin{aligned}
+&z'=Z(z,x,p),\\
+&x_i'=X_i(z,x,p),\\
+&p_i'=P_i(z,x,p)
+(i=1\cdots n)
+\end{aligned}\tag{1}
+$$
+
+des Raumes $z$, $x_1\cdots x_n$ geht nach S. 156 f. jede Element-$M_n$ dieses Raumes wieder in eine Element-$M_n$ über. Dabei zeigen aber, wie in Kapitel 6, §§42, 43 auseinandergesetzt worden ist, die verschiedenen Element-$M_n$ ein verschiedenes Verhalten. Hat man nämlich eine Element-$M_n$, aus deren Gleichungen gerade $m>1$ unabhängige Relationen zwischen $z$, $x_1\cdots x_n$ allein folgen, so erhält man bei Ausführung einer Berührungstransformation (1) im Allgemeinen keine Element-$M_n$, deren analytischer Ausdruck gerade $m$ unabhängige Relationen zwischen $z'$, $x_1'\cdots x_n'$ allein liefert. Hat man dagegen eine Element-$M_n$, für welche die vorhin definirte Zahl $m$ gerade gleich $1$ ist, also eine Element-$M_n$ von der besonderen Form:
+
+$$
+\begin{aligned}
+&z-F(x_1\cdots x_n)=0,\\
+&p_1-\frac{\partial F}{\partial x_1}=0,\cdots\\
+&p_n-\frac{\partial F}{\partial x_n}=0,
+\end{aligned}\tag{2}
+$$
+
+so verwandelt sich dieselbe bei der Berührungstransformation (1) im Allgemeinen in eine Element-$M_n$, aus deren Gleichungen blos eine Relation zwischen $z'$, $x_1'\cdots x_n'$ allein hervorgeht.
+
+*Die Element-$M_n$ von der Form (2) sind also die einzigen des Raumes $z$, $x_1\cdots x_n$, welche sich bei Ausführung einer Berührungstransformation (1) im Allgemeinen in Element-$M_n$ von der analogen Form:*
+
+$$
+\begin{aligned}
+&z'-\Phi(x_1'\cdots x_n')=0,\\
+&p_1'-\frac{\partial\Phi}{\partial x_1'}=0,\cdots\\
+&p_n'-\frac{\partial\Phi}{\partial x_n'}=0
+\end{aligned}\tag{2'}
+$$
+
+*verwandeln.* In Kapitel 6, S. 161 f. haben wir überdies gesehen, dass die Element-$M_n$ (2) bei der Berührungstransformation (1) dann und nur dann nicht in eine Element-$M_n$ von der Form (2') übergeht, wenn die Function $F(x_1\cdots x_n)$ eine gewisse partielle Differentialgleichung befriedigt. Mit Benutzung der Bezeichnungen:
+
+$$
+\frac{\partial z}{\partial x_i}=p_i,\quad
+\frac{\partial^2z}{\partial x_i\partial x_\nu}=p_{i\nu}
+\qquad(i,\nu=1\cdots n)
+$$
+
+und der Abkürzungen:
+
+$$
+\begin{aligned}
+&\frac{\partial X_i}{\partial x_\nu}
++p_i\frac{\partial X_i}{\partial z}
++\sum_1^n{}^j p_{j\nu}\frac{\partial X_i}{\partial p_j}
+=\frac{dX_i}{dx_\nu}\\
+&(i,\nu=1\cdots n)
+\end{aligned}
+$$
+
+lässt sich diese Differentialgleichung folgendermassen schreiben
+
+$$
+D=\begin{vmatrix}
+\dfrac{dX_1}{dx_1}&\cdot&\dfrac{dX_n}{dx_1}\\
+\cdot&\cdot&\cdot\\
+\dfrac{dX_1}{dx_n}&\cdot&\dfrac{dX_n}{dx_n}
+\end{vmatrix}=0.
+\tag{3}
+$$
+
+Sie ist (vgl. S. 164) im Allgemeinen von der zweiten Ordnung, von der ersten nur dann, wenn $X_1\cdots X_n$ sämmtlich von $p_1\cdots p_n$ frei sind; in diesem Falle ist aber zugleich $Z$ von den $p$ frei, und die Berührungstransformation (1) ist nichts anderes als eine erweiterte Punkttransformation des Raumes $z$, $x_1\cdots x_n$. Wir erinnern schliesslich noch daran, dass die Determinante $D$ niemals identisch verschwindet.
+
+Betrachtet man daher in den Gleichungen (1) das $z$ als eine beliebige Function von $x_1\cdots x_n$, indem man nur solche Functionen ausschliesst, welche der Differentialgleichung: $D=0$ genügen, und betrachtet man $p_1\cdots p_n$ als die partiellen Differentialquotienten erster Ordnung von $z$ nach $x_1\cdots x_n$, so definiren die Gleichungen (1) das $z'$ als Function von $x_1'\cdots x_n'$, und $p_1'\cdots p_n'$ werden die partiellen Differentialquotienten erster Ordnung von $z'$ nach $x_1'\cdots x_n'$. Unsere Berührungstransformation bestimmt die $p_i'$ als Functionen von $z$, $x_1\cdots x_n$, $p_1\cdots p_n$.
+
+Offenbar liegt es nahe, zu vermuthen, dass die partiellen Differentialquotienten $m$-ter Ordnung von $z'$ nach $x_1'\cdots x_n'$ auch für $m>1$ durch $z$, $x_1\cdots x_n$ und durch die partiellen Differentialquotienten erster bis $m$-ter Ordnung des $z$ nach $x_1\cdots x_n$ ausgedrückt werden können. Wir werden jetzt nachweisen, dass diese Vermuthung der Wahrheit entspricht.
+
+**§95.**
+
+Die partiellen Differentialquotienten zweiter Ordnung:
+
+$$
+\begin{aligned}
+&\frac{\partial^2z}{\partial x_i\partial x_\nu}=p_{i\nu},
+\frac{\partial^2z'}{\partial x_i'\partial x_\nu'}=p_{i\nu}'\\
+&(i,\nu=1\cdots n)
+\end{aligned}
+$$
+
+sind bezüglich durch die Gleichungen:
+
+$$
+dp_i=\sum_1^n{}^\nu p_{i\nu}dx_\nu
+\qquad(i=1\cdots n)
+\tag{4}
+$$
+
+und:
+
+$$
+dp_i'=\sum_1^n{}^\nu p_{i\nu}'dx_\nu'
+\qquad(i=1\cdots n)
+\tag{4'}
+$$
+
+definirt. Setzen wir in (4') die aus (1) folgenden Werthe von $p_1'\cdots p_n'$, $x_1'\cdots x_n'$ ein, so ergiebt sich:
+
+$$
+dP_i=\sum_1^n{}^\nu p_{i\nu}'dX_\nu
+\qquad(i=1\cdots n),
+$$
+
+ausführlicher geschrieben:
+
+$$
+\begin{aligned}
+&\frac{\partial P_i}{\partial z}dz
++\sum_1^n{}^j\frac{\partial P_i}{\partial x_j}dx_j
++\sum_1^n{}^j\frac{\partial P_i}{\partial p_j}dp_j\\
+&=\\
+&=\sum_1^n{}^\nu p_{i\nu}'
+\bigl\{\frac{\partial X_\nu}{\partial z}dz
++\sum_1^n{}^j\frac{\partial X_\nu}{\partial x_j}dx_j\\
+&+\sum_1^n{}^j\frac{\partial X_\nu}{\partial p_j}dp_j\bigr\}.
+\end{aligned}
+$$
+
+Werden hierin $dz$, $dp_1\cdots dp_n$ vermöge der Gleichungen:
+
+$$
+dz-p_1dx_1-\cdots-p_ndx_n=0
+$$
+
+und (4) durch $dx_1\cdots dx_n$ ausgedrückt, so entstehen $n$ Gleichungen von der Form:
+
+$$
+\sum_1^n{}^\nu U_{i\nu}dx_\nu=0\qquad(i=1\cdots n),
+$$
+
+deren jede wiederum in $n$ verschiedene Gleichungen zerfällt, denn $dx_1\cdots dx_n$ sind ja vollkommen willkürlich. Wir bekommen also zur Bestimmung der $p_{i\varkappa}'$ die folgenden $n^2$ Gleichungen:
+
+$$
+\begin{aligned}
+&\frac{\partial P_i}{\partial x_j}
++p_j\frac{\partial P_i}{\partial z}
++\sum_1^n{}^\varkappa p_{\varkappa j}\frac{\partial P_i}{\partial p_\varkappa}\\
+&=\sum_1^n{}^\nu p_{i\nu}'
+\bigl\{\frac{\partial X_\nu}{\partial x_j}
++p_j\frac{\partial X_\nu}{\partial z}\\
+&+\sum_1^n{}^\varkappa p_{\varkappa j}\frac{\partial X_\nu}{\partial p_\varkappa}\bigr\}
+(i,j=1\cdots n),
+\end{aligned}
+$$
+
+welche sich mit Benutzung der auf S. 378 angewendeten Abkürzungen folgendermassen schreiben lassen:
+
+$$
+\begin{aligned}
+&\frac{dP_i}{dx_j}=\sum_1^n{}^\nu p_{i\nu}'\frac{dX_\nu}{dx_j}\\
+&(i,j=1\cdots n).
+\end{aligned}\tag{5}
+$$
+
+Da die Determinante $D$ nicht identisch verschwindet, lassen sich diese Gleichungen augenscheinlich nach den $n^2$ Grössen $p_{i\varkappa}'$ auflösen. Scheinbar ergeben sich dabei für $p_{i\nu}'$ und $p_{\nu i}'$ zwei verschiedene Werthe, sobald $i$ von $\nu$ verschieden ist, aber auch nur scheinbar. Es muss ja $p_{i\nu}'$ gleich $p_{\nu i}'$ sein und diese Gleichheit muss identisch stattfinden, andernfalls bestände ja eine Gleichung zwischen den $z$, $x_i$, $p_i$, $p_{i\nu}$ und das ist ausgeschlossen, weil wir $z$ als eine beliebige Function von $x_1\cdots x_n$ betrachten.
+
+Hiermit ist nachgewiesen, dass sich vermöge der Gleichungen (1) einer Berührungstransformation die $p_{i\nu}'$ als Functionen der $z$, $x_i$, $p_i$, $p_{i\nu}$ darstellen lassen:
+
+$$
+\begin{aligned}
+&p_{i\nu}'=P_{i\nu}(z,x_1\cdots x_n,p_1\cdots p_n,\\
+&p_{11}\cdots p_{nn})
+(i,\nu=1\cdots n).
+\end{aligned}
+$$
+
+Hierbei ist $P_{i\nu}=P_{\nu i}$. *Verhalten sich die Functionen $Z$, $X_1\cdots X_n$, $P_1\cdots P_n$ in der Umgebung von $z^0$, $x_1^0\cdots x_n^0$, $p_1^0\cdots p_n^0$ regulär und verschwindet die Determinante $D$ für das Werthsystem: $z^0$, $x_i^0$, $p_i^0$, $p_{i\nu}^0$ nicht, so verhalten sich offenbar auch die $P_{i\nu}$ in der Umgebung von: $z^0$, $x_i^0$, $p_i^0$, $p_{i\nu}^0$ regulär.*
+
+Jede Berührungstransformation (1) transformirt demnach ausser den $z$, $x$, $p$ auch noch die partiellen Differentialquotienten zweiter Ordnung von $z$ und zwar durch die *erweiterte* Transformation:
+
+$$
+\begin{aligned}
+&z'=Z, x_i'=X_i, p_i'=P_i,\\
+&p_{i\nu}'=P_{i\nu}
+(i,\nu=1\cdots n).
+\end{aligned}\tag{6}
+$$
+
+Diese erweiterte Transformation kann auch definirt werden als diejenige Transformation in den Veränderlichen $z$, $x_i$, $p_i$, $p_{i\nu}$, welche die Form:
+
+$$
+\begin{aligned}
+&z'=Z, x_i'=X_i, p_i'=P_i,\\
+&p_{i\nu}'=\Pi_{i\nu}
+(i,\nu=1\cdots n)
+\end{aligned}\tag{7}
+$$
+
+besitzt und welche das System der Pfaffschen Gleichungen:
+
+$$
+\begin{aligned}
+&dz-\sum_1^n{}^\nu p_\nu dx_\nu=0,\\
+&dp_i-\sum_1^n{}^\nu p_{i\nu}dx_\nu=0\\
+&(i=1\cdots n)
+\end{aligned}\tag{8}
+$$
+
+invariant lässt. Soll nämlich die Transformation (7) das System (8) invariant lassen, so müssen ausser der bekannten Identität:
+
+$$
+\begin{aligned}
+&dZ-\sum_1^n{}^\nu P_\nu dX_\nu
+=\varrho(z,x,p)\cdot\bigl(dz\\
+&-\sum_1^n{}^\nu p_\nu dx_\nu\bigr)
+\end{aligned}
+$$
+
+auch noch $n$ Identitäten von der Form:
+
+$$
+\begin{aligned}
+&dP_i-\sum_1^n{}^\nu\Pi_{i\nu}dX_\nu
+=\sigma_i\cdot\bigl(dz\\
+&-\sum_1^n{}^\nu p_\nu dx_\nu\bigr)+\\
+&+\sum_1^n{}^j\tau_{ij}
+\bigl(dp_j-\sum_1^n{}^\nu p_{j\nu}dx_\nu\bigr)\\
+&(i=1\cdots n)
+\end{aligned}
+$$
+
+bestehen; aus diesen Bedingungen ergeben sich zunächst eindeutig bestimmte Werthe für die $\sigma_i$ und $\tau_{ij}$ und sodann erhält man für die $\Pi_{i\nu}$ eine Reihe von Gleichungen, welche zeigen, dass jedes $\Pi_{i\nu}=P_{i\nu}$ ist.
+
+Ebenso wie die Differentialquotienten zweiter Ordnung von $z$ werden auch diejenigen dritter Ordnung bei der Berührungstransformation (1) transformirt. Setzt man:
+
+$$
+\frac{\partial^3z}{\partial x_i\partial x_\mu\partial x_\nu}=p_{i\mu\nu},
+$$
+
+so ist:
+
+$$
+dP_{i\mu}=\sum_1^n{}^\nu p_{i\mu\nu}'dX_\nu
+\qquad(i,\mu=1\cdots n).
+$$
+
+Entwickelt man diese Gleichung unter Berücksichtigung der Relationen (8) und zerlegt sie dann wegen der Willkürlichkeit von $dx_1\cdots dx_n$ in je $n$ Gleichungen, so findet man:
+
+$$
+\begin{aligned}
+&\frac{\partial P_{i\mu}}{\partial x_\tau}
++p_\tau\frac{\partial P_{i\mu}}{\partial z}
++\cdots+p_{nn\tau}\frac{\partial P_{i\mu}}{\partial p_{nn}}\\
+&=\sum_1^n{}^\nu p_{i\mu\nu}'\frac{dX_\nu}{dx_\tau}
+(i,\mu,\tau=1\cdots n),
+\end{aligned}
+$$
+
+woraus sich, weil $D$ nicht verschwindet, alle $p_{i\mu\nu}'$ als Functionen von den $z$, $x_i$, $p_i$, $p_{i\nu}$, $p_{i\mu\nu}$ bestimmen lassen. Dass die scheinbar verschiedenen Werthe, welche man so für $p_{i\mu\nu}'$, $p_{i\nu\mu}'$ u. s. w. erhält, mit einander identisch sein müssen, ist klar; denn sonst beständen zwischen den $z$, $x_i$, $p_i$, $p_{i\nu}$, $p_{i\mu\nu}$ Relationen, was unmöglich der Fall sein kann, so lange $z$ eine beliebige Function von $x_1\cdots x_n$ ist. Findet man: $p_{i\nu\mu}'=P_{i\nu\mu}$, so ist:
+
+$$
+\begin{aligned}
+&z'=Z, x_i'=X_i, p_i'=P_i,\\
+&p_{i\nu}'=P_{i\nu}, p_{i\mu\nu}'=P_{i\mu\nu}\\
+&(i,\mu,\nu=1\cdots n)
+\end{aligned}\tag{9}
+$$
+
+diejenige Transformation, welche angiebt, wie die dritten Differentialquotienten von $z$ bei (1) transformirt werden. Diese erweiterte Transformation (9) ist offenbar dadurch vollständig definirt, dass sie das System der Pfaffschen Gleichungen:
+
+$$
+\left\{\begin{aligned}
+&dz-\sum_1^n{}^\tau p_\tau dx_\tau=0,\\
+&dp_i-\sum_1^n{}^\tau p_{i\tau}dx_\tau=0\\
+&dp_{i\nu}-\sum_1^n{}^\tau p_{i\nu\tau}dx_\tau=0\\
+&(i,\nu=1\cdots n)
+\end{aligned}\right.\tag{10}
+$$
+
+invariant lässt.
+
+In dieser Weise fortfahrend, kann man bis zu Differentialquotienten von beliebiger Ordnung gelangen und findet immer, dass die Differentialquotienten $m$-ter Ordnung von $z'$ sich durch $z$, $x_1\cdots x_n$ und die Differentialquotienten erster bis $m$-ter Ordnung von $z$ ausdrücken lassen. Man erhält dabei eine Anzahl von erweiterten Transformationen, deren jede dadurch charakterisirt ist, dass sie ein gewisses System von Pfaffschen Gleichungen invariant lässt. *Die Gleichungen dieser erweiterten Transformationen verhalten sich für jedes Werthsystem: $z^0$, $x_i^0$, $p_i^0$, $p_{i\nu}^0$ regulär, welches $D$ nicht zum Verschwinden bringt.*
+
+Demnach gilt das
+
+**Theorem 61.** *Jede Berührungstransformation:*
+
+$$
+\begin{aligned}
+&z'=Z(z,x,p),\\
+&x_i'=X_i(z,x,p),\\
+&p_i'=P_i(z,x,p)
+(i=1\cdots n)
+\end{aligned}\tag{1}
+$$
+
+*des Raumes $z$, $x_1\cdots x_n$ transformirt ausser den ersten Differentialquotienten $p_1\cdots p_n$ des $z$ nach den $x$ auch alle Differentialquotienten höherer Ordnung von $z$. Berücksichtigt man alle Differentialquotienten von $z$ bis zu einer bestimmten Ordnung, so erhält man aus (1) eine erweiterte Transformation, welche dadurch definirt ist, dass sie ein gewisses System von Pfaffschen Gleichungen invariant lässt.*
+
+### English translation: Chapter 22 introduction and §95
+
+**Chapter 22.**
+
+**Prolongation of contact transformations and of groups of such transformations. Differential invariants of such groups.**
+
+Under a contact transformation
+
+$$
+\begin{aligned}
+&z'=Z(z,x,p),\\
+&x_i'=X_i(z,x,p),\\
+&p_i'=P_i(z,x,p)
+(i=1\cdots n)
+\end{aligned}\tag{1}
+$$
+
+of the space $z$, $x_1\cdots x_n$, every element-$M_n$ of this space passes, by p. 156 f., into another element-$M_n$. As explained in Chapter 6, §§42, 43, however, different element-$M_n$ behave differently. If an element-$M_n$ has equations yielding exactly $m>1$ independent relations among $z$, $x_1\cdots x_n$ alone, then performing a contact transformation (1) generally does not give an element-$M_n$ whose analytic expression yields exactly $m$ independent relations among $z'$, $x_1'\cdots x_n'$ alone. If, on the other hand, an element-$M_n$ has the number $m$ defined above equal to $1$, hence is an element-$M_n$ of the particular form
+
+$$
+\begin{aligned}
+&z-F(x_1\cdots x_n)=0,\\
+&p_1-\frac{\partial F}{\partial x_1}=0,\cdots\\
+&p_n-\frac{\partial F}{\partial x_n}=0,
+\end{aligned}\tag{2}
+$$
+
+then the contact transformation (1) generally changes it into an element-$M_n$ whose equations yield just one relation among $z'$, $x_1'\cdots x_n'$ alone.
+
+*Thus the element-$M_n$ of the form (2) are the only ones in the space $z$, $x_1\cdots x_n$ that generally change into element-$M_n$ of the analogous form*
+
+$$
+\begin{aligned}
+&z'-\Phi(x_1'\cdots x_n')=0,\\
+&p_1'-\frac{\partial\Phi}{\partial x_1'}=0,\cdots\\
+&p_n'-\frac{\partial\Phi}{\partial x_n'}=0
+\end{aligned}\tag{2'}
+$$
+
+*under a contact transformation (1).*
+
+In Chapter 6, p. 161 f., we also saw that the element-$M_n$ (2) fails to pass under the contact transformation (1) into an element-$M_n$ of the form (2') if and only if the function $F(x_1\cdots x_n)$ satisfies a certain partial differential equation. Using the notation
+
+$$
+\frac{\partial z}{\partial x_i}=p_i,\quad
+\frac{\partial^2z}{\partial x_i\partial x_\nu}=p_{i\nu}
+\qquad(i,\nu=1\cdots n)
+$$
+
+and the abbreviations
+
+$$
+\begin{aligned}
+&\frac{\partial X_i}{\partial x_\nu}
++p_i\frac{\partial X_i}{\partial z}
++\sum_1^n{}^j p_{j\nu}\frac{\partial X_i}{\partial p_j}
+=\frac{dX_i}{dx_\nu}\\
+&(i,\nu=1\cdots n)
+\end{aligned}
+$$
+
+this differential equation can be written as follows:
+
+$$
+D=\begin{vmatrix}
+\dfrac{dX_1}{dx_1}&\cdot&\dfrac{dX_n}{dx_1}\\
+\cdot&\cdot&\cdot\\
+\dfrac{dX_1}{dx_n}&\cdot&\dfrac{dX_n}{dx_n}
+\end{vmatrix}=0.
+\tag{3}
+$$
+
+It is generally of second order (compare p. 164), and of first order only when $X_1\cdots X_n$ are all independent of $p_1\cdots p_n$. In this case, however, $Z$ is also independent of the $p$, and the contact transformation (1) is simply a prolonged point transformation of the space $z$, $x_1\cdots x_n$. Finally, we recall that the determinant $D$ never vanishes identically.
+
+If, therefore, in equations (1) we regard $z$ as an arbitrary function of $x_1\cdots x_n$, excluding only functions satisfying the differential equation $D=0$, and regard $p_1\cdots p_n$ as the first partial derivatives of $z$ with respect to $x_1\cdots x_n$, then equations (1) define $z'$ as a function of $x_1'\cdots x_n'$, and $p_1'\cdots p_n'$ become the first partial derivatives of $z'$ with respect to $x_1'\cdots x_n'$. Our contact transformation determines the $p_i'$ as functions of $z$, $x_1\cdots x_n$, $p_1\cdots p_n$.
+
+It is natural to conjecture that the partial derivatives of order $m$ of $z'$ with respect to $x_1'\cdots x_n'$, also for $m>1$, can be expressed in terms of $z$, $x_1\cdots x_n$ and the partial derivatives of $z$ of orders one through $m$ with respect to $x_1\cdots x_n$. We shall now prove this conjecture.
+
+**§95.**
+
+The second partial derivatives
+
+$$
+\begin{aligned}
+&\frac{\partial^2z}{\partial x_i\partial x_\nu}=p_{i\nu},
+\frac{\partial^2z'}{\partial x_i'\partial x_\nu'}=p_{i\nu}'\\
+&(i,\nu=1\cdots n)
+\end{aligned}
+$$
+
+are defined, respectively, by the equations
+
+$$
+dp_i=\sum_1^n{}^\nu p_{i\nu}dx_\nu
+\qquad(i=1\cdots n)
+\tag{4}
+$$
+
+and
+
+$$
+dp_i'=\sum_1^n{}^\nu p_{i\nu}'dx_\nu'
+\qquad(i=1\cdots n)
+\tag{4'}
+$$
+
+Substituting in (4') the values of $p_1'\cdots p_n'$, $x_1'\cdots x_n'$ that follow from (1), we obtain
+
+$$
+dP_i=\sum_1^n{}^\nu p_{i\nu}'dX_\nu
+\qquad(i=1\cdots n),
+$$
+
+or, written out in detail,
+
+$$
+\begin{aligned}
+&\frac{\partial P_i}{\partial z}dz
++\sum_1^n{}^j\frac{\partial P_i}{\partial x_j}dx_j
++\sum_1^n{}^j\frac{\partial P_i}{\partial p_j}dp_j\\
+&=\\
+&=\sum_1^n{}^\nu p_{i\nu}'
+\bigl\{\frac{\partial X_\nu}{\partial z}dz
++\sum_1^n{}^j\frac{\partial X_\nu}{\partial x_j}dx_j\\
+&+\sum_1^n{}^j\frac{\partial X_\nu}{\partial p_j}dp_j\bigr\}.
+\end{aligned}
+$$
+
+If here $dz$, $dp_1\cdots dp_n$ are expressed in terms of $dx_1\cdots dx_n$ by means of the equation
+
+$$
+dz-p_1dx_1-\cdots-p_ndx_n=0
+$$
+
+and (4), there result $n$ equations of the form
+
+$$
+\sum_1^n{}^\nu U_{i\nu}dx_\nu=0\qquad(i=1\cdots n),
+$$
+
+Each of these splits again into $n$ different equations, since $dx_1\cdots dx_n$ are entirely arbitrary. Thus, to determine the $p_{i\varkappa}'$, we obtain the following $n^2$ equations:
+
+$$
+\begin{aligned}
+&\frac{\partial P_i}{\partial x_j}
++p_j\frac{\partial P_i}{\partial z}
++\sum_1^n{}^\varkappa p_{\varkappa j}\frac{\partial P_i}{\partial p_\varkappa}\\
+&=\sum_1^n{}^\nu p_{i\nu}'
+\bigl\{\frac{\partial X_\nu}{\partial x_j}
++p_j\frac{\partial X_\nu}{\partial z}\\
+&+\sum_1^n{}^\varkappa p_{\varkappa j}\frac{\partial X_\nu}{\partial p_\varkappa}\bigr\}
+(i,j=1\cdots n),
+\end{aligned}
+$$
+
+Using the abbreviations employed on p. 378, these can be written as follows:
+
+$$
+\begin{aligned}
+&\frac{dP_i}{dx_j}=\sum_1^n{}^\nu p_{i\nu}'\frac{dX_\nu}{dx_j}\\
+&(i,j=1\cdots n).
+\end{aligned}\tag{5}
+$$
+
+Since the determinant $D$ does not vanish identically, these equations can plainly be solved for the $n^2$ quantities $p_{i\varkappa}'$. This seems to give two different values for $p_{i\nu}'$ and $p_{\nu i}'$ whenever $i$ differs from $\nu$, but only apparently so. Indeed, $p_{i\nu}'$ must equal $p_{\nu i}'$, and this equality must hold identically; otherwise there would be an equation among the $z$, $x_i$, $p_i$, $p_{i\nu}$, which is excluded because we regard $z$ as an arbitrary function of $x_1\cdots x_n$.
+
+We have thus proved that, by virtue of equations (1) of a contact transformation, the $p_{i\nu}'$ can be represented as functions of the $z$, $x_i$, $p_i$, $p_{i\nu}$:
+
+$$
+\begin{aligned}
+&p_{i\nu}'=P_{i\nu}(z,x_1\cdots x_n,p_1\cdots p_n,\\
+&p_{11}\cdots p_{nn})
+(i,\nu=1\cdots n).
+\end{aligned}
+$$
+
+Here $P_{i\nu}=P_{\nu i}$. *If the functions $Z$, $X_1\cdots X_n$, $P_1\cdots P_n$ are regular near $z^0$, $x_1^0\cdots x_n^0$, $p_1^0\cdots p_n^0$, and the determinant $D$ does not vanish at the system of values $z^0$, $x_i^0$, $p_i^0$, $p_{i\nu}^0$, then the $P_{i\nu}$ are plainly also regular near $z^0$, $x_i^0$, $p_i^0$, $p_{i\nu}^0$.*
+
+Every contact transformation (1) therefore transforms, besides the $z$, $x$, $p$, the second partial derivatives of $z$, namely by the *prolonged* transformation
+
+$$
+\begin{aligned}
+&z'=Z, x_i'=X_i, p_i'=P_i,\\
+&p_{i\nu}'=P_{i\nu}
+(i,\nu=1\cdots n).
+\end{aligned}\tag{6}
+$$
+
+This prolonged transformation can also be defined as the transformation in the variables $z$, $x_i$, $p_i$, $p_{i\nu}$ that has the form
+
+$$
+\begin{aligned}
+&z'=Z, x_i'=X_i, p_i'=P_i,\\
+&p_{i\nu}'=\Pi_{i\nu}
+(i,\nu=1\cdots n)
+\end{aligned}\tag{7}
+$$
+
+and leaves invariant the system of Pfaffian equations
+
+$$
+\begin{aligned}
+&dz-\sum_1^n{}^\nu p_\nu dx_\nu=0,\\
+&dp_i-\sum_1^n{}^\nu p_{i\nu}dx_\nu=0\\
+&(i=1\cdots n)
+\end{aligned}\tag{8}
+$$
+
+For transformation (7) to leave system (8) invariant, there must hold, besides the known identity
+
+$$
+\begin{aligned}
+&dZ-\sum_1^n{}^\nu P_\nu dX_\nu
+=\varrho(z,x,p)\cdot\bigl(dz\\
+&-\sum_1^n{}^\nu p_\nu dx_\nu\bigr)
+\end{aligned}
+$$
+
+another $n$ identities of the form
+
+$$
+\begin{aligned}
+&dP_i-\sum_1^n{}^\nu\Pi_{i\nu}dX_\nu
+=\sigma_i\cdot\bigl(dz\\
+&-\sum_1^n{}^\nu p_\nu dx_\nu\bigr)+\\
+&+\sum_1^n{}^j\tau_{ij}
+\bigl(dp_j-\sum_1^n{}^\nu p_{j\nu}dx_\nu\bigr)\\
+&(i=1\cdots n)
+\end{aligned}
+$$
+
+These conditions first give uniquely determined values for the $\sigma_i$ and $\tau_{ij}$; one then obtains a series of equations for the $\Pi_{i\nu}$ showing that every $\Pi_{i\nu}=P_{i\nu}$.
+
+Just as the second derivatives of $z$ are transformed by the contact transformation (1), so are the third derivatives. Putting
+
+$$
+\frac{\partial^3z}{\partial x_i\partial x_\mu\partial x_\nu}=p_{i\mu\nu},
+$$
+
+we have
+
+$$
+dP_{i\mu}=\sum_1^n{}^\nu p_{i\mu\nu}'dX_\nu
+\qquad(i,\mu=1\cdots n).
+$$
+
+Expanding this equation with due account of relations (8), and then splitting it into $n$ equations because $dx_1\cdots dx_n$ are arbitrary, gives
+
+$$
+\begin{aligned}
+&\frac{\partial P_{i\mu}}{\partial x_\tau}
++p_\tau\frac{\partial P_{i\mu}}{\partial z}
++\cdots+p_{nn\tau}\frac{\partial P_{i\mu}}{\partial p_{nn}}\\
+&=\sum_1^n{}^\nu p_{i\mu\nu}'\frac{dX_\nu}{dx_\tau}
+(i,\mu,\tau=1\cdots n),
+\end{aligned}
+$$
+
+Since $D$ does not vanish, these determine all the $p_{i\mu\nu}'$ as functions of the $z$, $x_i$, $p_i$, $p_{i\nu}$, $p_{i\mu\nu}$. It is clear that the apparently different values thus obtained for $p_{i\mu\nu}'$, $p_{i\nu\mu}'$ and so forth must be identical; otherwise there would be relations among the $z$, $x_i$, $p_i$, $p_{i\nu}$, $p_{i\mu\nu}$, which is impossible as long as $z$ is an arbitrary function of $x_1\cdots x_n$. If we find $p_{i\nu\mu}'=P_{i\nu\mu}$, then
+
+$$
+\begin{aligned}
+&z'=Z, x_i'=X_i, p_i'=P_i,\\
+&p_{i\nu}'=P_{i\nu}, p_{i\mu\nu}'=P_{i\mu\nu}\\
+&(i,\mu,\nu=1\cdots n)
+\end{aligned}\tag{9}
+$$
+
+is the transformation specifying how the third derivatives of $z$ are transformed under (1). This prolonged transformation (9) is plainly completely defined by leaving invariant the system of Pfaffian equations
+
+$$
+\left\{\begin{aligned}
+&dz-\sum_1^n{}^\tau p_\tau dx_\tau=0,\\
+&dp_i-\sum_1^n{}^\tau p_{i\tau}dx_\tau=0\\
+&dp_{i\nu}-\sum_1^n{}^\tau p_{i\nu\tau}dx_\tau=0\\
+&(i,\nu=1\cdots n)
+\end{aligned}\right.\tag{10}
+$$
+
+Continuing in this way, one can reach derivatives of arbitrary order, and always finds that the derivatives of order $m$ of $z'$ can be expressed in terms of $z$, $x_1\cdots x_n$ and the derivatives of $z$ of orders one through $m$. One thereby obtains a number of prolonged transformations, each characterized by leaving a certain system of Pfaffian equations invariant. *The equations of these prolonged transformations are regular at every system of values $z^0$, $x_i^0$, $p_i^0$, $p_{i\nu}^0$ for which $D$ does not vanish.*
+
+We therefore have
+
+**Theorem 61.** *Every contact transformation*
+
+$$
+\begin{aligned}
+&z'=Z(z,x,p),\\
+&x_i'=X_i(z,x,p),\\
+&p_i'=P_i(z,x,p)
+(i=1\cdots n)
+\end{aligned}\tag{1}
+$$
+
+*of the space $z$, $x_1\cdots x_n$ transforms, besides the first derivatives $p_1\cdots p_n$ of $z$ with respect to the $x$, all higher derivatives of $z$ as well. Taking account of all derivatives of $z$ up to a specified order, one obtains from (1) a prolonged transformation defined by leaving invariant a certain system of Pfaffian equations.*

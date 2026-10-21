@@ -14382,9 +14382,352 @@ At level \(R'_n\), WG3 constructs the entire multidegree-zero rigidified Picard 
 
 To apply PC2 one still needs an algebraic torus extension over the complete valuation ring, including the required algebraization of its proper formal quotient and extension, and an actual analytic homomorphism from its generic group to the generic Jacobian. The homomorphism must have the specified period kernel, lift every point after finite extension and be a local homeomorphism on every relevant finite field extension. The monodromy and dual-model pairing require their own identified geometric comparison. WG's finite-level exact sequence and formal identity chart do not by themselves assert those analytic properties.
 
+### 2AS. Algebraization with a compatible ample line
+
+Let \(R\) be a complete Noetherian discrete valuation ring, with uniformizer \(\pi\), residue field \(k\), and \(R_n=R/(\pi^{n+1})\). A compatible system consists of specified restriction isomorphisms, satisfying their cocycles; it is more than a sequence of isomorphism classes. Consider proper flat finitely presented schemes \(X_n/R_n\), with
+\[
+ X_{n+1}\times_{R_{n+1}}R_n\simeq X_n,
+ \qquad L_{n+1}|_{X_n}\simeq L_n,
+ \tag{AZ1}
+\]
+where each \(L_n\) is invertible. Assume that some positive power of \(L_0\) is very ample. This is the ample-line hypothesis used throughout this section.
+
+The conclusions concern these specified systems. In particular, applying them to WG7 requires an actual compatible line system on \(B_n\) having this special-fibre property. Properness of the \(B_n\) alone does not supply that system. General ideal-adic algebraization is treated in [Stacks, Theorem 30.28.4](https://stacks.math.columbia.edu/tag/089A). The flat discrete-valuation case, its group operations, and its torus extension are proved below using the earlier projective cohomology and finite-locally-free algebraization arguments.
+
+#### 2AS.1. A single projective space for every finite level
+
+**AZ1.** There are integers \(d>0\), \(h>0\), and compatible closed immersions \(X_n\hookrightarrow\mathbf P^{h-1}_{R_n}\) whose hyperplane lines are \(L_n^d\), unless every \(X_n\) is empty. The empty system has the empty algebraization.
+
+*Proof.* A very ample power gives an embedding of \(X_0\) in a projective space. Taking a further power is the Veronese closed immersion: on \(D_+(Z_i^q)\) its degree-\(q\) monomial ratios include \(Z_j/Z_i\), via \(Z_jZ_i^{q-1}/Z_i^q\); these recover the affine coordinates and their equations. Thus all positive powers of a very ample line are very ample. Lesson 3, §0.C.0.7–§0.C.0.8 (PF7–PF8), applied to this embedding, lets us choose \(d\) so that \(L_0^d\) is very ample and \(H^1(X_0,L_0^d)=0\).
+
+Flatness identifies every last \(\pi\)-layer of \(L_n^d\) with \(L_0^d\). For \(n\geq1\) there is consequently an exact sequence on the common underlying space
+\[
+ 0\longrightarrow L_0^d
+ \xrightarrow{\ \pi^n\ }L_n^d
+ \longrightarrow L_{n-1}^d\longrightarrow0.
+ \tag{AZ2}
+\]
+The first arrow means the induced map from the quotient modulo \(\pi\), not multiplication on an arbitrarily chosen lift. Its injectivity follows by tensoring the exact coefficient sequence with the flat sheaf \(L_n^d\). The cohomology sequence proves that restriction on sections is surjective. It also proves \(H^1(X_n,L_n^d)=0\) by induction, since the two neighbouring \(H^1\)'s vanish.
+
+Choose a basis of \(H^0(X_0,L_0^d)\), of size \(h\), and lift it successively along these surjections. The resulting sections generate \(L_n^d\): the cokernel of evaluation reduces to zero modulo \(\pi\), and iteration of \(\mathcal F=\pi\mathcal F\) gives \(\mathcal F=0\) because \(\pi^{n+1}=0\). The projective-coordinate construction of Lesson 3, PF4, gives compatible maps \(f_n:X_n\to\mathbf P^{h-1}_{R_n}\). There is no change of projective dimension with \(n\). In fact (AZ2) gives length \(h(n+1)\) for \(M_n=H^0(X_n,L_n^d)\). The multiplication map \(L_n^d\to\pi L_n^d\) has kernel the last layer \(L_0^d\); its vanishing \(H^1\) makes \(M_n\to H^0(\pi L_n^d)\) surjective. Hence the kernel of restriction \(M_n\to H^0(L_0^d)\) is exactly \(\pi M_n\). Our sections are a basis modulo \(\pi\). Finite Nakayama makes \(R_n^h\to M_n\) surjective, and equality of lengths makes its kernel zero. Hence these are compatible free bases as well.
+
+Here is a direct closed-immersion check. The inverse image \(U_{i,n}\) of a standard projective affine has special fibre \(U_{i,0}\), a closed affine subscheme of that affine because \(f_0\) is a closed immersion. WG1 makes \(U_{i,n}\) affine. Write the associated coordinate map as \(A_n\to D_n\). It is surjective modulo \(\pi\), and therefore \(D_n=\operatorname{im}(A_n)+\pi D_n\). Substitution into this equality \(n+1\) times gives \(D_n=\operatorname{im}(A_n)\). Thus \(f_n\) is a closed immersion on each target affine. These affines cover the target, so \(f_n\) is a closed immersion. The maps commute with restriction by their specified coordinate sections, giving cartesian restrictions of these embeddings. \(\square\)
+
+#### 2AS.2. Finitely many equations over the complete ring
+
+**AZ2.** The system (AZ1) is the restriction of a projective finitely presented \(R\)-scheme \(X\) and an invertible sheaf \(L\), with specified compatible isomorphisms to \(X_n,L_n\). Some power of \(L\) is very ample over \(R\).
+
+*Proof.* Suppose first that \(X_0\) is nonempty, and use AZ1. Let \(\mathcal I_n\) be its ideal in \(P_n=\mathbf P^{h-1}_{R_n}\). The sequence
+\[
+ 0\longrightarrow\mathcal I_n\longrightarrow\mathcal O_{P_n}
+ \longrightarrow\mathcal O_{X_n}\longrightarrow0
+ \tag{AZ3}
+\]
+has coefficient-flat middle and right terms. Its left term is coefficient-flat too: tensoring with a short exact coefficient sequence and comparing kernels proves preservation of injections, since the other two terms preserve that sequence. Tensoring (AZ3) with \(R_{n-1}\) also identifies \(\mathcal I_n\otimes R_{n-1}\) with \(\mathcal I_{n-1}\). This uses flatness of \(\mathcal O_{X_n}\); it is not a general assertion about reduction of an ideal.
+
+Choose one \(e\geq0\) such that \(\mathcal I_0(e)\) is generated by finitely many sections and \(H^1(P_0,\mathcal I_0(e))=0\), using PF7–PF8. The flat layers of \(\mathcal I_n(e)\) give the analogue of (AZ2), so those chosen sections lift compatibly to all orders. Their cokernel is zero by the nilpotent argument in AZ1. They generate \(\mathcal I_n(e)\) for every \(n\).
+
+PF6 identifies sections of \(\mathcal O_{P_n}(e)\), with arbitrary coefficient base change, with homogeneous degree-\(e\) polynomials in \(h\) variables. Our finitely many compatible lifted sections of the ideals are therefore compatible finite coefficient lists. Completeness gives polynomials
+\[
+ F_1,\ldots,F_s\in R[Z_1,\ldots,Z_h]_e,\qquad
+ X=V(F_1,\ldots,F_s)\subset\mathbf P_R^{h-1},
+ \qquad X\times_R R_n\simeq X_n.
+ \tag{AZ4}
+\]
+The last equality is scheme-theoretic: the reductions of these polynomials generate the entire ideal sheaf, not only its radical. No unbounded list of equations has been algebraized.
+
+We prove flatness before applying NA4. At a point of the special fibre write \(Q=\mathcal O_{X,x}\). If \(\pi a=0\), flatness of \(Q/\pi^{n+1}Q\) over \(R_n\) implies
+\[
+ a\in\pi^n Q\quad\text{for every }n\geq1.
+ \tag{AZ5}
+\]
+Indeed on a flat \(R_n\)-module the annihilator of \(\pi\) is precisely its \(\pi^n\)-multiple submodule, by tensoring the corresponding exact sequence for \(R_n\). Krull intersection, Lesson 3 DFR3, applied to the finite module \(Q\) over its Noetherian local ring, makes (AZ5) imply \(a=0\). The coherent \(\pi\)-annihilator on \(X\) thus vanishes on the special fibre. Its support is closed and has closed image in \(\operatorname{Spec}R\), because \(X\) is projective and proper by PF3. A nonempty closed subset of \(\operatorname{Spec}R\) contains its closed point. The support is therefore empty. Multiplication by \(\pi\) is injective everywhere, so every local structure module is torsion-free over the DVR and flat by the principal-ideal criterion proved in NS1. Thus \(X/R\) is flat.
+
+Apply NA4 to the given line system on this supplied flat projective \(X\), obtaining \(L\). Both \(L^d\) and \(\mathcal O_X(1)\) restrict to \(L_n^d\), with compatible identifications. NA1 algebraizes these identifications and their inverses. Hence \(L^d\simeq\mathcal O_X(1)\), which is relatively very ample by (AZ4). If \(X_0\) is empty, all the nilpotent thickenings are empty, and the empty scheme and its unique line give the assertion. \(\square\)
+
+#### 2AS.3. Smoothness and connectedness of the algebraization
+
+**AZ3.** If \(X_0/k\) is smooth, then \(X/R\) in AZ2 is smooth. If moreover \(H^0(X_0,\mathcal O_{X_0})=k\), then
+\[
+ H^0(X\times_R\operatorname{Spec}A,\mathcal O)=A
+ \quad\text{for every }R\text{-algebra }A.
+ \tag{AZ6}
+\]
+Consequently, under both assumptions, all geometric fibres are connected.
+
+*Proof.* Around a special point use an affine projective chart \(P=R[u_1,\ldots,u_N]\), an ideal \(J\), and \(P/J\) for \(X\). Flatness proved in AZ2 makes \(J/\pi J\) the exact ideal of \(X_0\) in \(P/\pi P\). By SF1–SF2 of Lesson 3, or WG1's split conormal argument, smoothness of \(X_0\) supplies local generators \(\bar f_1,\ldots,\bar f_t\) for that special ideal and an invertible \(t\)-column Jacobian minor. Lift these to \(f_i\in J\) after lifting the relevant localization. At the point, the finite module \(J/(f_1,\ldots,f_t)\) is its own \(\pi\)-multiple. Local Nakayama kills it. A further principal localization kills its finite generators and makes the lifted Jacobian minor invertible. The neighbourhood is now an actual standard smooth chart
+\[
+ R[u_1,\ldots,u_N]_{a\Delta}/(f_1,\ldots,f_t).
+ \tag{AZ7}
+\]
+WG1 and Lesson 1 EA8–EA11 prove its square-zero lifting and flatness properties. Finitely many such neighbourhoods cover the special fibre. Their union has closed complement in proper \(X\), disjoint from the special fibre. The closed-image argument of AZ2 makes this complement empty. Thus \(X\) is smooth everywhere, including its generic fibre.
+
+For (AZ6), use the finite nonnegative free cohomology complex \(Q^\bullet\) for \(\mathcal O_X\) furnished by Lesson 3 FC10. Cancel every unit entry as in FC13. Since \(R\) is local, the remaining differential entries lie in \((\pi)\), so reduction of that complex has zero differentials. Its degree-zero term therefore has rank one, by the assumed \(H^0\) on \(X_0\). The unit section \(1\) is a degree-zero cycle whose reduction is a nonzero generator. Its coordinate in this rank-one free module is a unit. The outgoing differential must annihilate a unit multiple of its basis, so it is zero. There is no incoming term in negative degree. Tensoring with any \(A\) consequently has degree-zero cohomology \(A\), and FC10 identifies the unit map with this isomorphism. This proves (AZ6), without assuming the vanishing of \(H^1(X_0,\mathcal O)\).
+
+If a geometric fibre were disconnected, its two open-and-closed parts would give a nontrivial idempotent global function, by the sections \(0\) and \(1\). Equation (AZ6) over its algebraically closed residue field excludes that possibility. \(\square\)
+
+#### 2AS.4. Algebraizing maps and every group identity
+
+**AZ4.** Let \(X/R\) be flat projective, and let \(Y/R\) be projective. Restriction is a bijection between \(R\)-morphisms \(X\to Y\) and compatible \(R_n\)-morphisms \(X_n\to Y_n\). In particular the algebraization in AZ2 is unique up to the unique isomorphism inducing a specified isomorphism of systems.
+
+*Proof.* Fix a closed embedding \(Y\subset\mathbf P_R^N\). Compatible maps \(f_n\) pull its hyperplane line and coordinate sections back to a compatible system \(M_n\), \(s_{0,n},\ldots,s_{N,n}\) on \(X_n\). NA4 algebraizes \(M_n\) to an invertible \(M\); NA1 algebraizes each coordinate section as a map \(\mathcal O_X\to M\). The cokernel of their evaluation is coherent, and its support is closed, proper over \(R\), and disjoint from the special fibre. It vanishes by the closed-image argument. The sections therefore define \(f:X\to\mathbf P_R^N\).
+
+Choose homogeneous generators for the ideal sheaf of \(Y\); such a finite list is available by PF7, as in AZ2. A degree-\(q\) generator pulls back to a section of \(M^q\). This section is zero modulo every \(\pi^{n+1}\), since \(f_n\) lands in \(Y_n\). NA1 makes it zero on \(X\). The coordinate construction thus factors through \(Y\).
+
+If \(f,g:X\to Y\) have the same restrictions, the resulting compatible identifications of their pulled-back hyperplane lines algebraize, with their inverses, by NA1. Under that identification their coordinates agree by the same injectivity. The projective-coordinate maps are equal, so \(f=g\). This proves the bijection. To compare two schemes in AZ2, apply the bijection to the specified formal isomorphism and its inverse. The composites are identities by uniqueness. The empty case follows too: a proper scheme with empty special fibre is empty by its closed image. \(\square\)
+
+Apply AZ1–AZ4 to WG7's \(B_n\), **assuming a compatible line system \(L_n\) with \(L_0\) having a very ample power**. Finite products of the resulting projective flat \(B/R\) are projective and flat, by Segre and tensor flatness. AZ4 therefore algebraizes the multiplication, inverse, and unit maps of \(B_n\). Associativity is equality of maps from \(B^3\) to \(B\); commutativity is equality from \(B^2\); the unit and inverse identities are equalities from \(B\) or \(\operatorname{Spec}R\). Their restrictions are the actual identities at every finite level. Injectivity in AZ4 proves each one on the algebraization.
+
+WG7 gives smooth \(B_0=\prod_v\operatorname{Jac}(\widetilde C_v)\), with geometrically connected fibres and \(H^0(B_0,\mathcal O)=k\), as proved in NC5. AZ3 makes \(B/R\) smooth with geometrically connected fibres. It is projective and proper by AZ2. Thus it is an abelian scheme: a proper smooth commutative group scheme with geometrically connected fibres. No action-invariance or symmetry of the chosen \(L_n\) was needed to algebraize its group law.
+
+#### 2AS.5. The whole torus torsor as a graded algebra
+
+**AZ5.** Under the additional ample-line hypothesis just stated, WG7's whole formal extension is the completion of an actual exact sequence of smooth finitely presented commutative \(R\)-groups
+\[
+ 0\longrightarrow T_R\longrightarrow G
+ \xrightarrow{q}B\longrightarrow0,\qquad
+ T_R=\mathbf G_{m,R}^{\,r}.
+ \tag{AZ8}
+\]
+Exactness means an actual kernel and a locally trivial torus torsor, hence also exactness as fppf sheaves.
+
+*Proof of the underlying torsor.* Write \(M=\mathbb Z^r\) for the character group, with basis \(e_1,\ldots,e_r\). WG6 proves that \(q_n:G_n\to B_n\) is Zariski locally a product with \(T_n\). On such charts the coaction on functions splits into its Laurent weights. They glue to invertible sheaves
+\[
+ \mathcal A_{m,n}=(q_{n*}\mathcal O_{G_n})_m,\qquad
+ \mathcal A_{m,n}\otimes\mathcal A_{\ell,n}
+       \xrightarrow{\ \sim\ }\mathcal A_{m+\ell,n},
+ \qquad \mathcal A_{0,n}=\mathcal O_{B_n}.
+ \tag{AZ9}
+\]
+The multiplication maps are isomorphisms because they are Laurent-monomial multiplication on every product chart. This description also proves compatibility with restriction. In particular \(\mathcal A_{-m,n}\) is the dual of \(\mathcal A_{m,n}\).
+
+NA4 on the now projective flat \(B\) algebraizes the finitely many line systems \(E_{j,n}=\mathcal A_{e_j,n}\) to lines \(E_j\). For negative tensor powers use the duals, and set
+\[
+ E^m=\bigotimes_{j=1}^r E_j^{\,m_j},\qquad
+ \mathcal A=\bigoplus_{m\in\mathbb Z^r}E^m,\qquad
+ G=\operatorname{Spec}_B\mathcal A.
+ \tag{AZ10}
+\]
+Evaluation with the duals supplies multiplication; on a frame chart it is exactly the associative commutative Laurent algebra. These local algebras and their transition substitutions prove that (AZ10) is a quasi-coherent algebra, and that \(G\to B\) is a Zariski locally trivial \(T_R\)-torsor. On each of these charts (AZ9) identifies its reduction with \(G_n\), including the full special fibre. The identifications glue, by the specified weight multiplications. This uses only tensor identifications of the finitely many basis lines to identify all weights.
+
+With this functions convention \(G\) is the product of the nonzero-vector bundles of \(E_j^\vee\). Indeed if local frames satisfy \(a_{j,b}=h_{j,ab}a_{j,a}\), their corresponding weight functions satisfy \(z_{j,b}=h_{j,ab}z_{j,a}\), while the dual frames have reciprocal transition. A point is \(z_{j,a}a_{j,a}^\vee=z_{j,b}a_{j,b}^\vee\). This fixes the dual and the sign in (AZ10). Relative Laurent charts show finite presentation and smoothness. The affine morphism \(G\to B\) is separated: on an affine base chart its diagonal is the closed immersion given by the surjection \(D\otimes_C D\to D\). Composing with separated \(B/R\) proves separatedness over \(R\). These statements are not inferred merely from matching completions. \(\square\)
+
+#### 2AS.6. Multiplication on the nonproper group
+
+**AZ6.** The torsor in AZ5 has a unique extension group structure with its given torus action and quotient group, inducing the supplied extension structures on all \(G_n\).
+
+*Proof.* Let \(m_B:B^2\to B\) be the algebraized group multiplication. The formal multiplication is equivariant for \(T_n^2\to T_n\), \((t,t')\mapsto tt'\). Pullback of a weight-\(e_j\) function is consequently of weight \((e_j,e_j)\). In the local product charts it gives an isomorphism of lines, since the fibre map is a torus translation followed by multiplication. Thus its finite-level coordinate data are isomorphisms
+\[
+ \theta_{j,n}:m_{B_n}^*E_{j,n}
+       \xrightarrow{\ \sim\ }
+       p_1^*E_{j,n}\otimes p_2^*E_{j,n}.
+ \tag{AZ11}
+\]
+NA1 on the projective flat \(B^2\) algebraizes these isomorphisms and their inverses to \(\theta_j\). Tensoring them and their duals yields an algebra map
+\[
+ m_B^*\mathcal A\longrightarrow
+      p_1^*\mathcal A\otimes p_2^*\mathcal A
+      \quad\text{on }B^2.
+ \tag{AZ12}
+\]
+It defines \(\mu:G\times_R G\to G\) over \(m_B\), and its reductions are the given multiplications. Only the finitely many basis-weight maps were needed.
+
+Similarly the formal inverse supplies compatible isomorphisms
+\[
+ \iota_B^*E_j\longrightarrow E_j^{-1}
+ \quad\text{after completion},
+ \qquad 0_B^*E_j\longrightarrow R
+ \quad\text{after completion}.
+ \tag{AZ13}
+\]
+NA1 over \(B\) algebraizes the first maps and their inverses. Completeness of finite free \(R\)-modules algebraizes the second maps and their inverses, as in the rigidification part of NA4. They define an inverse map and an actual point \(e:\operatorname{Spec}R\to G\) over \(0_B\).
+
+We check the group laws over proper bases, rather than applying AZ4 to a nonproper source. On the basis weight \(e_j\), associativity of (AZ12) is equality of the two maps
+\[
+ (m_B\circ(m_B,1))^*E_j
+       \longrightarrow
+       p_1^*E_j\otimes p_2^*E_j\otimes p_3^*E_j
+       \quad\text{on }B^3.
+ \tag{AZ14}
+\]
+Associativity on \(B\) identifies the two source lines. The two maps restrict to the same map at every level, since they are the original group laws of \(G_n\); NA1 makes them equal. Tensor multiplication makes them equal on every weight and hence on the entire coordinate algebra. Thus \(\mu\) is associative.
+
+Commutativity is the same equality of line maps on \(B^2\), after interchanging the factors. The two unit identities are equalities of maps \(E_j\to E_j\) on \(B\), after inserting the trivialization at \(0_B\). The two inverse identities are equalities of maps \(0_B^*E_j\to E_j\otimes E_j^{-1}=\mathcal O_B\), with the appropriate pullbacks. NA1 proves each equality from the prescribed finite-level equality. This supplies all group axioms.
+
+The fibre \(q^{-1}(0_B)\) is a trivial \(T_R\)-torsor via its point \(e\). On that fibre (AZ11) is ordinary monomial multiplication: its possible unit coefficient is forced to be \(1\) by the unit identities. This identifies the actual group kernel with \(T_R\), including its original formal embedding. The map \(q\) is surjective and flat locally of finite presentation because it is locally the projection of a split torus product. A section exists Zariski locally, so (AZ8) is exact on fppf tests.
+
+For uniqueness, the multiplication is equivariant of the indicated weights and is determined by its maps (AZ11). The inverse and unit are determined by (AZ13). NA1 and completeness make these uniquely determined by their restrictions. This uniqueness is within torus extensions with their specified torus action and quotient; no formal-faithfulness assertion for arbitrary nonproper schemes is being made. \(\square\)
+
+#### 2AS.7. Morphisms, supplied actions and finite base change
+
+**AZ7.** Algebraization in AZ5–AZ6 is fully faithful for homomorphisms of the specified split-torus extensions. It respects finite complete-DVR base change and any finite semilinear actions already supplied on those formal extensions.
+
+*Proof.* First a homomorphism \(\mathbf G_m^r\to\mathbf G_m^{r'}\) over any \(R_n\) has an integer character matrix. To prove this, a group-like Laurent polynomial \(a=\sum_m a_m x^m\) satisfies \(\Delta a=a\otimes a\) and counit \(1\). Comparison of its finitely many Laurent coefficients gives
+\[
+ a_m^2=a_m,\qquad a_m a_\ell=0\ (m\ne\ell),
+       \qquad\sum_m a_m=1.
+ \tag{AZ15}
+\]
+Since \(R_n\) is local, an idempotent is \(0\) or \(1\): one of \(u,1-u\) is a unit and \(u(1-u)=0\). Exactly one coefficient is \(1\), and the polynomial is a monomial. Apply this to every target coordinate. Reduction preserves these monomials, so a compatible system has one fixed integer matrix \(A=(a_{ij})\), not a sequence of infinitesimal exponents.
+
+Consider compatible formal extension homomorphisms, including their torus map with this matrix, and let \(u_n:B_n\to B'_n\) be the induced quotient maps. AZ4 gives \(u:B\to B'\) and proves it is a group homomorphism. Equivariance gives finite-level isomorphisms of weight lines
+\[
+ u_n^*E'_{j,n}\xrightarrow{\ \sim\ }
+       \bigotimes_i E_{i,n}^{\,a_{ij}}.
+ \tag{AZ16}
+\]
+These are isomorphisms even if the matrix has nontrivial kernel: on trivial torsor charts the map on a fibre is its fixed torus homomorphism followed by multiplication by a unit, and (AZ16) is that unit coefficient. NA1 algebraizes the maps and their inverses on proper \(B\). They give the graded algebra map, hence an actual morphism \(G\to G'\). The homomorphism and unit identities are line-map identities on \(B^2\) and \(B\), detected by NA1 just as in AZ6. Conversely every such algebraic homomorphism restricts to this data, and uniqueness of \(u\), the matrix, and (AZ16) proves full faithfulness.
+
+A supplied semilinear action is viewed as isomorphisms from the appropriate base twists, with their actual specified cocycle. Those twists are again projective flat bases with the twisted line data. Apply the preceding construction to each formal action map. Its inverse algebraizes too. Composition and the action cocycle follow by full faithfulness. The ample line used to construct \(B\) need not itself have a linearization for this argument; the action is algebraized as a map after \(B\) exists.
+
+For a finite extension of complete DVRs \(R\to R'\), write \(\pi=u(\pi')^e\). The \(\pi\)- and \(\pi'\)-power filtrations on the finite \(R\)-module \(R'\) are cofinal. The completion of \(B\times_R R'\) and of its torus extension is therefore the system obtained by the base-change construction of WG8. Base change of \(L\) gives compatible ample data as well. The base-changed schemes are projective flat on their proper bases, so AZ4 and (AZ16) identify them uniquely with any construction from that specified base-changed system. These unique identifications compose correctly under successive finite extensions, by full faithfulness. \(\square\)
+
+#### 2AS.8. The remaining input for the nodal-model application
+
+**AZ8.** For an actual model supplied by GP8 and WG8, an actual compatible line system \(L_n\) on WG7's proper quotients \(B_n\), with a very ample power on \(B_0\), is sufficient to produce the integral algebraic extension (AZ8), with the supplied finite-base-change and action compatibilities.
+
+*Proof.* WG1–WG7 provide the compatible proper smooth flat quotients, the entire torus torsors and their operations. AZ1–AZ4 algebraize the quotient using the stated line system. AZ5–AZ6 algebraize its extension as an actual group and actual kernel. AZ7 supplies precisely the indicated compatibilities. \(\square\)
+
+This statement retains the compatible ample line as a hypothesis. A special theta line, or powers chosen separately at increasing orders, do not constitute that input. Constructing it for the nodal-model quotients is a further mathematical requirement. An integral algebraic extension also does not by itself supply a map from its analytic generic fibre to the original Jacobian, an exact discrete period kernel, finite-extension point lifting, or local covering. Those are the hypotheses needed for the subsequent period-cover arguments.
+
+### Exercise 2AS — projective equations and whole torus extensions (100 points)
+
+Use the hypotheses and the functions convention of §2AS.
+
+**(a) One equation at every order (20 points).** Put \(c_n=\sum_{j=0}^n\pi^j\in R_n\), and let
+\[
+ X_n=V(XY-c_nZ^2)\subset\mathbf P^2_{R_n},
+ \qquad L_n=\mathcal O_{X_n}(1).
+ \tag{AZX1}
+\]
+Construct the compatible projective algebraization and prove directly that it is flat and smooth, including in residue characteristic two. Identify affine charts covering it, prove compatibility of their equations, and verify the cohomological input for using the displayed coordinate sections at every level.
+
+**(b) Two hypotheses that cannot be omitted (15 points).** For \(n\geq1\) compare the annihilator of \(\pi\) on \(R_n\) and on \(Q=R/(\pi)\), viewed as an \(R_n\)-module. Locate the failure if the argument of (AZ5) is applied to \(Q\). Next take \(U=\operatorname{Spec}K\), where \(K=\operatorname{Frac}R\). Compute every \(U_n\), and exhibit two distinct maps \(\mathcal O_U\to\mathcal O_U\) having identical restrictions at all orders. Explain precisely why AZ4 does not assert faithfulness for this example.
+
+**(c) Duals and the multiplication coefficient (20 points).** On a base with an open cover, let a line \(E\) have frames \(a_b=h_{ab}a_a\). Glue local invertible coordinates by \(z_b=h_{ab}z_a\). Identify the represented punctured line bundle, including its dual. Suppose now that the base is a commutative group \(B\), and an isomorphism \(m_B^*E\to p_1^*E\otimes p_2^*E\) has coefficient \(c(x,y)\) in local frames. Write the actual formula for multiplication of fibre coordinates, its associativity equation, and its frame-change formula. With the origin frame normalized to have unit coordinate \(1\), give the unit and inverse conditions.
+
+**(d) Proper bases for operations (20 points).** Suppose the \(B_n\) in WG7 have the compatible ample line required by AZ1. Explain why algebraizing the group law of \(B\) uses projective \(B^2\) and \(B^3\), whereas algebraizing the group law of \(G\) uses line maps on these proper products. Give the two associativity maps on a basis line explicitly, including their common source. Also prove universal constancy of functions on \(B\) from the unit cycle in the finite complex, without setting \(H^1(B_0,\mathcal O)\) to zero.
+
+**(e) Characters over rings with nilpotents (15 points).** Prove that every group-like Laurent polynomial over \(R_n\) is a monomial. The argument must include residue characteristic two and arbitrary nilpotents in \(R_n\). Contrast this with the element
+\[
+ f=3x+4y\in(\mathbb Z/6\mathbb Z)[x^{\pm1},y^{\pm1}].
+ \tag{AZX2}
+\]
+Determine its counit and comultiplication, and explain the precise role of locality. Identify the integer matrix for the torus involution
+\[
+ \tau(t_1,t_2)=(t_1,t_1^2t_2^{-1}).
+ \tag{AZX3}
+\]
+
+**(f) Actions, ramification and the input still needed (10 points).** Suppose a compatible formal extension involution is supplied, with the torus restriction in (AZX3), and quotient involution \(\sigma_n\). State its two basis-line isomorphisms and explain why the algebraized map squares to the identity. For a finite complete-DVR extension with \(\pi=u(\pi')^e\), explain the cofinality argument. Finally distinguish the compatible ample-line input from a special theta line, and the algebraic extension from the analytic period cover.
+
+### Solution to Exercise 2AS
+
+**(a)** The element \(1-\pi\) is a unit of the local ring \(R\). Set \(c=(1-\pi)^{-1}\). The finite geometric-sum identity gives
+\[
+ (1-\pi)c_n=1-\pi^{n+1}\equiv1\pmod{\pi^{n+1}},
+ \qquad c\bmod\pi^{n+1}=c_n.
+ \tag{AZX4}
+\]
+Consequently \(X=V(XY-cZ^2)\subset\mathbf P_R^2\), with its hyperplane line, has exactly the stated reductions and their specified coordinates. Completeness also identifies \(c\) with the compatible infinite geometric sum; no division by \(\pi\) is used.
+
+The opens \(D_+(X)\) and \(D_+(Y)\) cover this projective scheme. Indeed a homogeneous prime containing both \(X,Y\) must contain \(cZ^2\), hence \(Z\), since \(c\) is a unit; it is not a projective point. Their coordinate rings are
+\[
+ R[v,u]/(u-cv^2)\simeq R[v],\qquad
+ R[v',u']/(u'-c(v')^2)\simeq R[v'].
+ \tag{AZX5}
+\]
+Here \(u=Y/X,\ v=Z/X\), and \(u'=X/Y,\ v'=Z/Y\). These polynomial rings are flat and smooth over \(R\); their square-zero lifting is obtained by lifting the one free coordinate. On their overlap \(u=cv^2\) is a unit, so \(v\) is a unit and \(v'=1/(cv)\). Conversely \(v=1/(cv')\); these are inverse substitutions. Reduction of each formula gives exactly the same chart and overlap formulas with \(c_n\). The argument works in characteristic two, because it eliminates the variable with coefficient \(1\); it does not require \(2\) invertible.
+
+Multiplication by \(F=XY-cZ^2\) is injective on the homogeneous polynomial ring, even over \(R_n\). Order monomials lexicographically with \(X\) first: the leading monomial is \(XY\), with unit coefficient. The leading term of \(Fh\) is nonzero for any nonzero polynomial \(h\). Localization preserves this injectivity. Thus on projective space there is the exact sequence
+\[
+ 0\longrightarrow\mathcal O_{\mathbf P^2}(-1)
+ \xrightarrow{\ F\ }\mathcal O_{\mathbf P^2}(1)
+ \longrightarrow\mathcal O_X(1)\longrightarrow0.
+ \tag{AZX6}
+\]
+The arbitrary-coefficient projective cohomology calculation PF6 gives zero \(H^0,H^1,H^2\) for \(\mathcal O(-1)\) on \(\mathbf P^2\), and zero positive cohomology for \(\mathcal O(1)\). Hence the coordinates \(X,Y,Z\) form a free basis for \(H^0(X_n,L_n)\), and \(H^1(X_n,L_n)=0\) at every level, as well as over \(R\). They give the displayed closed immersion, with \(d=1,h=3\).
+
+**(b)** In \(R_n\), multiplication by \(\pi\) has annihilator \((\pi^n)/(\pi^{n+1})\). The same equality holds on every flat \(R_n\)-module by tensoring the coefficient sequence. On \(Q=R/(\pi)\), however, multiplication by \(\pi\) is zero, so its annihilator is all of \(Q\), whereas \(\pi^nQ=0\) for \(n\geq1\). In particular \(1\) is an annihilated element outside \(\pi^nQ\). The inference from annihilation to (AZ5) fails exactly at flatness of the finite-level module; Krull intersection cannot repair that missing inference.
+
+Since \(\pi\) is invertible in \(K\), every ring \(K\otimes_R R_n\) is zero. Thus every \(U_n\) is empty. The zero and identity maps of the rank-one sheaf \(\mathcal O_U\) are distinct, but their restrictions to each empty \(U_n\) coincide. Likewise the constant scheme maps \(U\to\mathbf P_R^1\) with values \([1:0]\) and \([0:1]\) are distinct and have identical empty restrictions. Properness of the source is absent. Indeed \(U=D(\pi)\) has nonclosed image \(\{\eta\}\) in \(\operatorname{Spec}R\), and a nonempty closed support in \(U\) need not meet a special fibre. The proper finite-complex and closed-image arguments used in NA1 and AZ4 therefore have no application to \(U\).
+
+**(c)** If \(a_a^\vee\) is the dual frame, then \(a_b^\vee=h_{ab}^{-1}a_a^\vee\). The equality
+\[
+ z_a a_a^\vee=z_b a_b^\vee
+       \quad\Longleftrightarrow\quad z_b=h_{ab}z_a
+ \tag{AZX7}
+\]
+shows that the points are the nonzero vectors of \(E^\vee\). Its function algebra is \(\bigoplus_{m\in\mathbb Z}E^m\). The nonzero vectors of \(E\) would instead have the reciprocal coordinate transition. These signs are determined by evaluation, not by a choice of names for frames.
+
+Write the line isomorphism in the form \(a(x+y)\mapsto c(x,y)a(x)\otimes a(y)\). Pullback of the weight-one function gives
+\[
+ z(g*h)=c(x,y)z(g)z(h),
+ \qquad
+ c(x+y,w)c(x,y)=c(x,y+w)c(y,w).
+ \tag{AZX8}
+\]
+The second equality is obtained by evaluating \((g*h)*\ell\) and \(g*(h*\ell)\), respectively, and cancelling the invertible fibre coordinates. It is an equality of line maps on \(B^3\); its displayed form is valid wherever the indicated frames are chosen. If \(a'(x)=h(x)a(x)\), then
+\[
+ c'(x,y)=\frac{h(x+y)}{h(x)h(y)}c(x,y).
+ \tag{AZX9}
+\]
+This follows by substituting the new frames into the same line map. The unit coordinate \(1\) at \(0\) makes \(c(0,x)=c(x,0)=1\) in normalized compatible frames. The inverse over \(-x\) has coordinate
+\[
+ z(g^{-1})=\bigl(c(x,-x)z(g)\bigr)^{-1}.
+ \tag{AZX10}
+\]
+The other inverse identity requires \(c(-x,x)=c(x,-x)\). In a commutative extension it follows from symmetry. It also follows from the cocycle equation at \((x,-x,x)\), together with the two normalized unit conditions. Thus the formulas check both inverses, including their unit coefficients.
+
+**(d)** AZ1–AZ3 first supply a projective flat \(B/R\). Its products are projective by Segre and flat by tensoring flat modules. Therefore AZ4 gives actual maps \(m_B,\iota_B,0_B\) from the compatible finite-level maps. On \(B^3\), the two associative composites have the same restrictions; AZ4 identifies them. It likewise proves the other group identities.
+
+For \(G\), the available coordinate algebra has infinitely many weights but finitely many basis lines. Its maps are specified by those basis lines and their tensor inverses. Put \(s(x,y,w)=x+y+w\). The two maps of the basis line have common source \(s^*E_j\) and common target \(p_1^*E_j\otimes p_2^*E_j\otimes p_3^*E_j\). They are
+\[
+ (\theta_j\otimes1)\circ(m_B,1)^*\theta_j,
+ \qquad
+ (1\otimes\theta_j)\circ(1,m_B)^*\theta_j.
+ \tag{AZX11}
+\]
+Here the first remaining factor \(\theta_j\), respectively the second, is pulled back from the appropriate pair of projections; the tensor parentheses are identified by the free-frame associator. The source lines are identified using the already proved associativity of \(m_B\). NA1 on proper \(B^3\) detects equality from all restrictions. Every other weight is a tensor product or dual, so equality on these basis maps gives equality of algebra maps and of the two morphisms on \(G^3\). No properness of \(G^3\) is asserted or needed.
+
+For functions, take the bounded nonnegative free FC10 complex for \(\mathcal O_B\), and cancel its unit entries by FC13. The remaining differential is zero modulo \(\pi\). The special \(H^0=k\) makes its degree-zero free term rank one. The global unit cycle reduces to \(1\); its coordinate is a unit, forcing the outgoing differential to vanish. Degree-zero cohomology after every \(R\to A\) is now \(A\), by that actual complex and its natural unit. Positive terms can remain. In particular for a genus-one abelian special fibre \(H^1\) has dimension one; it was never set to zero.
+
+**(e)** A Laurent polynomial has finite support. Comparing coefficients of \(x^m y^\ell\) in \(\Delta f=f\otimes f\) gives orthogonal idempotent coefficients; the counit says their sum is \(1\). Over a local ring each idempotent is \(0\) or \(1\), because one of \(a,1-a\) is a unit and their product is zero. Orthogonality and the sum then give exactly one coefficient \(1\). This proves the monomial assertion even in the presence of nilpotents, with no division by the residue characteristic.
+
+In \(\mathbb Z/6\mathbb Z\), the coefficients \(3,4\) are nonzero orthogonal idempotents:
+\[
+ 3^2=3,\quad4^2=4,\quad3\cdot4=0,\quad3+4=1.
+ \tag{AZX12}
+\]
+Consequently the counit of \(3x+4y\) is \(1\) and
+\[
+ \Delta f=3(x\otimes x)+4(y\otimes y)=f\otimes f.
+ \tag{AZX13}
+\]
+It is a group-like unit, with inverse \(3x^{-1}+4y^{-1}\), but it is not one monomial with coefficient \(1\). The ring is the product of its two local factors, and its two factors select different monomials. Locality, rather than reducedness, is what excludes this possibility for \(R_n\).
+
+The columns of the character matrix give the images of the two target characters. In (AZX3) they are \((1,0)^t\) and \((2,-1)^t\), hence
+\[
+ A=\begin{pmatrix}1&2\\0&-1\end{pmatrix},\qquad A^2=I.
+ \tag{AZX14}
+\]
+Direct substitution gives \(\tau^2(t_1,t_2)=(t_1,t_2)\), over every coefficient ring and without extracting roots.
+
+**(f)** The supplied formal action must include compatible isomorphisms
+\[
+ \sigma_n^*E_{1,n}\simeq E_{1,n},\qquad
+ \sigma_n^*E_{2,n}\simeq E_{1,n}^2\otimes E_{2,n}^{-1},
+ \tag{AZX15}
+\]
+with its actual multiplication, unit, and involution identities. The torus matrix alone does not supply these data. AZ7 algebraizes the quotient map and these line maps. Their composite with themselves restricts to the identity at every level. Full faithfulness, expressed by NA1 on proper \(B\) for the lines and by AZ4 for the quotient, makes the composite the identity as an extension homomorphism.
+
+Since \(u\) is a unit, \((\pi^a)R'=((\pi')^{ea})\). For every \(b\) one may choose \(a\) with \(ea\geq b\); conversely every ideal \((\pi^a)R'\) contains a sufficiently high \((\pi')\)-power. Thus the two systems of ideals are cofinal and give the same adic completion. The compatible ample lines base change with the schemes, so the uniqueness of the projective-base and weight-line algebraizations identifies the resulting integral extensions.
+
+A line on \(B_0\) provides no specified lifts or restriction isomorphisms on the higher \(B_n\). A sequence of separately chosen powers also need not be the restriction of one compatible line. That compatible ample system remains the required input for AZ8's nodal-model application. After it is supplied, AZ8 produces the algebraic torus extension. It does not construct its analytic map to the original Jacobian or prove an exact discrete period kernel, finite-extension point lifting, or local covering. These require the further period-cover construction.
+
 **Theorem 2.4 (full local abelian compatibility; remaining geometric proof obligation).** For every abelian variety over a nonarchimedean local field of characteristic zero, its prime-to-residue-characteristic rational Tate modules have a common Galois-invariant Frobenius-semisimple Weil–Deligne class over \(\overline{\mathbf Q}\).
 
-The potentially good comparison is Lemma 2.3, with the good-model and torsion proofs GQ1–GQ5. For supplied integral period data, PM1–PM8 give the full inertia matrix, ramification normalization, finite equivariance, Frobenius-semisimple blocks and actual examples. From a genuine local-field period presentation, PC0–PC8 give the integral period lattice, nondegenerate rational valuation pairing, all torsion levels and transitions, compactness and supplied-map functoriality. FF1–FF8 prove all-integer finite flat multiplication, canonical subgroup closures and extension for finite étale models; FQ1–FQ6 and IS1–IS8 construct finite flat quotients, the full integral torus-by-abelian quotient sequence, good reduction under isogeny and transfer of genuine period presentations through arbitrary isogenies. DR1–DR8 construct divisor parameter schemes, full collision algebras and finite flat ordered and addition maps. JC1–JC9 construct pointed curve Picard components and Jacobians over arbitrary fields, their universal rigidified line bundles, full nonreduced families, field descent, high-degree projective-bundle Abel maps and tangent differentials. AL1–AL8 in §2L gives the Albanese property on full parameter schemes,finite-curve norm and pullback maps,their degree and composition identities,and the infinitesimal trace. CD1–CD8 in §2M constructs one smooth projective geometrically integral marked curve after a finite separable extension and a smooth surjective map from its Jacobian, with its full kernel and rational Tate sequence. NL1–NL8 in §2N constructs a curve test for the full normalized translation-line family, its finite ample kernel and a finite flat isogeny onto an abelian subvariety of a curve Jacobian, with descended line and saturated Tate image. NR1–NR8 in §2O proves the coherent degree-one dimension,constructs abelian complements over the original field and makes the dominating curve Jacobian an isogeny product with a factor isogenous to the given abelian variety,with full kernel degrees and rational Tate projectors. NC1–NC8 in §2P constructs split nodal curves and their full-family generalized Jacobians,with cycle-character torus,component-Jacobian quotient,normalization cohomology,full multiplication kernels,Tate sequence and finite actions. NQ1–NQ8 in §2Q constructs the identity formal Picard group of a supplied proper flat nodal family,with every square-zero line lift,unique formal coordinates,prime-to-characteristic torsion lifting and supplied family actions. The whole formal lift is constructed in WG, and the genus-at-least-two nodal model in GP8; the integral algebraic extension and initial analytic covering require additional constructions. NA1–NA8 in §2R proves finite locally free and line algebraization on a supplied flat projective model over a complete local base,and constructs a saturated special-fibre Tate submodule of the actual generic Jacobian when the model is normal and integral. GP7–GP8 supplies regular models and finite-extension nodal models in its characteristic-zero, perfect-residue-field, genus-at-least-two scope; WG supplies the whole formal extension; the integral algebraic extension and initial period covering remain separate constructions. NS1–NS8 in §2S constructs a flat projective closure of an embedded generic curve and resolves supplied algebraic nodal charts by intrinsic point blowups,with exceptional chains,supplied actions,cycle lattices and ramification. GP8 gives such finite-extension nodal charts in genus at least two over a characteristic-zero fraction field with perfect residue field. NE1–NE8 in §2T constructs actual algebraic étale node charts from completed split rational special-fibre nodes over a complete DVR,then applies the intrinsic resolution and lifts a generic rational point to a smooth section. It does not produce a nodal special fibre for an arbitrary curve. VP1–VP8 in §2U constructs the vertical Picard exact sequence,intersection matrix and finite numerical torsion obstruction on a supplied regular projective model,and proves prime-to-characteristic Picard specialization to its reduced fibre. The regular-model, minimalization and numerical inputs are GP7, EC and CN–MG with UB and RB, as assembled in GP8. RC1–RC8 in §2V proves the prime-to-characteristic Picard-torsion rank of any connected reduced proper curve over an algebraically closed field,with an exact conductor defect and multicross equality criterion. CN supplies the Gorenstein-to-nodal step, and MG, UB and RB supply the model inequalities used with GP7 in GP8. CN1–CN8 in §2W proves local Ext change of rings,completion comparison,Artin and canonical-module duality,and the Gorenstein type-one criterion. It proves that equality in the reduced-curve torsion bound forces the reduced fibre of a supplied regular model to be nodal. Applying NE to the model still requires the original fibre to be reduced. MG1–MG8 in §2X proves actual primitive-cycle constants and cohomology,Euler and genus formulas,the component-graph defect,and strict genus loss for a nonreduced primitive fibre under numerical minimality. It proves a conditional reduced nodal-fibre criterion once the actual generic torsion rank and numerical obstruction bound are supplied. Regular-model construction in the characteristic-zero, perfect-residue-field setting is GP7. UB1–UB8 in §2Y proves the uniform genus-dependent obstruction-rank bound for numerically minimal models with algebraically closed residue field,including all long path and fork cases. It chooses the prime before separable torsion splitting and proves nodality for a supplied numerically minimal model after that extension. GP7 supplies the characteristic-zero initial regular model over a perfect residue field. EC1–EC8 in §2Z constructs projective exceptional-curve contractions,proves the regular local ring and blowup description,and gives their Picard and numerical transformations. It constructs terminating numerical minimalization,with supplied finite actions,and then a nodal model from a supplied regular projective model after the UB torsion-splitting extension. The initial regular model is supplied by GP7 under its characteristic-zero and perfect-residue-field hypotheses. RB1–RB8 in §2AA constructs finite unramified residue lifts,geometric component splitting and minimalization over a finite base,and proves the perfect-residue-field passage to an actual finite split nodal model from a supplied regular model. This covers the finite residue fields of the local-field theorem. GP7 provides initial regular models for characteristic-zero fraction fields and perfect residue fields; WG supplies the whole formal extension, while the integral algebraic extension and initial analytic covering remain further requirements. TN1–TN8 in §2AB constructs a finite normal projective model of the smooth characteristic-zero generic curve by trace enclosures on the two projective-line charts. A finite group of base-field automorphisms extends to such a normal model through an invariant rational function. GP7 provides the regular model, retaining supplied finite semilinear actions, in the characteristic-zero and perfect-residue-field setting. BP1–BP8 in §2AC proves terminating ideal principalization by regular point blowups,with residue-degree-weighted colength decrease and finite actions. It dominates arbitrary proper modifications of a regular local surface,without an assumed projective embedding,and proves their first structure-sheaf cohomology vanishes when the modification is normal. These are regular-base statements; the terminating arithmetic normal-model resolution is supplied by GP3–GP7 under their stated hypotheses. FM1–FM8 in §2AD constructs finite-cover domination over regular modifications,including residue characteristics dividing the auxiliary Galois group order. It proves finite normalization for proper birational models and their localizations,an exceptional Cartier intersection obstruction,and injectivity of first cohomology into the punctured surface. HB1–HB8 in §2AE gives a uniform length bound for normal modifications of local finite covers in the complete-DVR setting with perfect residue field. HR1–HR8 in §2AF gives rational local models, normal maximal-ideal blowups and the full ideal-power and exceptional-curve cohomology. QD1–QD8 in §2AG gives finite point-blowup domination, full reflexive transforms and simultaneous rank-one principalization with supplied finite actions. DC1–DC8 in §2AH constructs dualizing modules on finite normal surface charts and the initial finite normal model, with finite-map evaluation, Cartier reduction, the type-one criterion and completion. PD1–PD10 in §2AI constructs projective canonical modules, the proper birational trace, Cartier curve duality, exceptional adjoint generation and a finite rational Gorenstein modification, with supplied finite actions. CA1–CA4 in §2AJ identifies the exceptional conics and gives a conormal-torsion termination bound along a supplied quotient arc whose generic localization is a discrete valuation ring. FA1–FA3 in §2AK constructs the complete quotient arc for a fixed exceptional coordinate and constant residue fields, compares the completed local rings and proves termination when the initial completion is normal. QB1–QB4 in §2AL proves the quadratic-ideal lemma over arbitrary residue fields and resolves the nonsquare exceptional-conic case under normal initial completion. SA1–SA3 in §2AM proves finite generation of complete arc images, regularization of a singular curve image by a normalization-length bound, and termination of a nonvertical fixed-coordinate tail over the original normal completion. DL1–DL5 in §2AN gives finite equivariant resolution for these rational Gorenstein points, including double exceptional lines and vertical tails through regular fibre curves, under a normal two-dimensional initial completion. AC1–AC6 in §2AO proves normal closed completions for normal projective relative curves over a complete DVR with characteristic-zero fraction field and algebraically closed residue field. GR1–GR7 in §2AP constructs regular projective models and extends supplied finite semilinear actions in that algebraically closed residue-field setting. GP1–GP8 in §2AQ constructs regular projective models over perfect residue fields, including finite fields, in the characteristic-zero fraction-field setting, and gives finite-extension reduced split nodal models for smooth geometrically integral curves of genus at least two. WG1–WG8 in §2AR constructs the whole formal Picard extension of a split nodal model, its uniquely lifted closed formal torus and proper smooth formal quotient, with explicit affine charts, Laurent defect correction, actual torsor relations, base change and supplied finite actions. A curve acquires a rational point after a finite separable extension. For an arbitrary abelian variety, GP8 supplies the genus-at-least-two curve model; WG supplies the whole formal extension; the remaining algebraization and analytic work must produce the integral algebraic extension and genuinely locally covering period maps, with finite point-lifting, kernel and compatible finite-action properties. Identification with a separately constructed dual-model pairing requires its own duality argument. Deligne’s freely accessible Example 8.10, printed p.571, states the full theorem without proving it and does not discharge these constructions. The theorem is retained in full generality; its full proof is not claimed complete.
+The potentially good comparison is Lemma 2.3, with the good-model and torsion proofs GQ1–GQ5. For supplied integral period data, PM1–PM8 give the full inertia matrix, ramification normalization, finite equivariance, Frobenius-semisimple blocks and actual examples. From a genuine local-field period presentation, PC0–PC8 give the integral period lattice, nondegenerate rational valuation pairing, all torsion levels and transitions, compactness and supplied-map functoriality. FF1–FF8 prove all-integer finite flat multiplication, canonical subgroup closures and extension for finite étale models; FQ1–FQ6 and IS1–IS8 construct finite flat quotients, the full integral torus-by-abelian quotient sequence, good reduction under isogeny and transfer of genuine period presentations through arbitrary isogenies. DR1–DR8 construct divisor parameter schemes, full collision algebras and finite flat ordered and addition maps. JC1–JC9 construct pointed curve Picard components and Jacobians over arbitrary fields, their universal rigidified line bundles, full nonreduced families, field descent, high-degree projective-bundle Abel maps and tangent differentials. AL1–AL8 in §2L gives the Albanese property on full parameter schemes,finite-curve norm and pullback maps,their degree and composition identities,and the infinitesimal trace. CD1–CD8 in §2M constructs one smooth projective geometrically integral marked curve after a finite separable extension and a smooth surjective map from its Jacobian, with its full kernel and rational Tate sequence. NL1–NL8 in §2N constructs a curve test for the full normalized translation-line family, its finite ample kernel and a finite flat isogeny onto an abelian subvariety of a curve Jacobian, with descended line and saturated Tate image. NR1–NR8 in §2O proves the coherent degree-one dimension,constructs abelian complements over the original field and makes the dominating curve Jacobian an isogeny product with a factor isogenous to the given abelian variety,with full kernel degrees and rational Tate projectors. NC1–NC8 in §2P constructs split nodal curves and their full-family generalized Jacobians,with cycle-character torus,component-Jacobian quotient,normalization cohomology,full multiplication kernels,Tate sequence and finite actions. NQ1–NQ8 in §2Q constructs the identity formal Picard group of a supplied proper flat nodal family,with every square-zero line lift,unique formal coordinates,prime-to-characteristic torsion lifting and supplied family actions. The whole formal lift is constructed in WG, and the genus-at-least-two nodal model in GP8; the integral algebraic extension and initial analytic covering require additional constructions. NA1–NA8 in §2R proves finite locally free and line algebraization on a supplied flat projective model over a complete local base,and constructs a saturated special-fibre Tate submodule of the actual generic Jacobian when the model is normal and integral. GP7–GP8 supplies regular models and finite-extension nodal models in its characteristic-zero, perfect-residue-field, genus-at-least-two scope; WG supplies the whole formal extension; the integral algebraic extension and initial period covering remain separate constructions. NS1–NS8 in §2S constructs a flat projective closure of an embedded generic curve and resolves supplied algebraic nodal charts by intrinsic point blowups,with exceptional chains,supplied actions,cycle lattices and ramification. GP8 gives such finite-extension nodal charts in genus at least two over a characteristic-zero fraction field with perfect residue field. NE1–NE8 in §2T constructs actual algebraic étale node charts from completed split rational special-fibre nodes over a complete DVR,then applies the intrinsic resolution and lifts a generic rational point to a smooth section. It does not produce a nodal special fibre for an arbitrary curve. VP1–VP8 in §2U constructs the vertical Picard exact sequence,intersection matrix and finite numerical torsion obstruction on a supplied regular projective model,and proves prime-to-characteristic Picard specialization to its reduced fibre. The regular-model, minimalization and numerical inputs are GP7, EC and CN–MG with UB and RB, as assembled in GP8. RC1–RC8 in §2V proves the prime-to-characteristic Picard-torsion rank of any connected reduced proper curve over an algebraically closed field,with an exact conductor defect and multicross equality criterion. CN supplies the Gorenstein-to-nodal step, and MG, UB and RB supply the model inequalities used with GP7 in GP8. CN1–CN8 in §2W proves local Ext change of rings,completion comparison,Artin and canonical-module duality,and the Gorenstein type-one criterion. It proves that equality in the reduced-curve torsion bound forces the reduced fibre of a supplied regular model to be nodal. Applying NE to the model still requires the original fibre to be reduced. MG1–MG8 in §2X proves actual primitive-cycle constants and cohomology,Euler and genus formulas,the component-graph defect,and strict genus loss for a nonreduced primitive fibre under numerical minimality. It proves a conditional reduced nodal-fibre criterion once the actual generic torsion rank and numerical obstruction bound are supplied. Regular-model construction in the characteristic-zero, perfect-residue-field setting is GP7. UB1–UB8 in §2Y proves the uniform genus-dependent obstruction-rank bound for numerically minimal models with algebraically closed residue field,including all long path and fork cases. It chooses the prime before separable torsion splitting and proves nodality for a supplied numerically minimal model after that extension. GP7 supplies the characteristic-zero initial regular model over a perfect residue field. EC1–EC8 in §2Z constructs projective exceptional-curve contractions,proves the regular local ring and blowup description,and gives their Picard and numerical transformations. It constructs terminating numerical minimalization,with supplied finite actions,and then a nodal model from a supplied regular projective model after the UB torsion-splitting extension. The initial regular model is supplied by GP7 under its characteristic-zero and perfect-residue-field hypotheses. RB1–RB8 in §2AA constructs finite unramified residue lifts,geometric component splitting and minimalization over a finite base,and proves the perfect-residue-field passage to an actual finite split nodal model from a supplied regular model. This covers the finite residue fields of the local-field theorem. GP7 provides initial regular models for characteristic-zero fraction fields and perfect residue fields; WG supplies the whole formal extension, while the integral algebraic extension and initial analytic covering remain further requirements. TN1–TN8 in §2AB constructs a finite normal projective model of the smooth characteristic-zero generic curve by trace enclosures on the two projective-line charts. A finite group of base-field automorphisms extends to such a normal model through an invariant rational function. GP7 provides the regular model, retaining supplied finite semilinear actions, in the characteristic-zero and perfect-residue-field setting. BP1–BP8 in §2AC proves terminating ideal principalization by regular point blowups,with residue-degree-weighted colength decrease and finite actions. It dominates arbitrary proper modifications of a regular local surface,without an assumed projective embedding,and proves their first structure-sheaf cohomology vanishes when the modification is normal. These are regular-base statements; the terminating arithmetic normal-model resolution is supplied by GP3–GP7 under their stated hypotheses. FM1–FM8 in §2AD constructs finite-cover domination over regular modifications,including residue characteristics dividing the auxiliary Galois group order. It proves finite normalization for proper birational models and their localizations,an exceptional Cartier intersection obstruction,and injectivity of first cohomology into the punctured surface. HB1–HB8 in §2AE gives a uniform length bound for normal modifications of local finite covers in the complete-DVR setting with perfect residue field. HR1–HR8 in §2AF gives rational local models, normal maximal-ideal blowups and the full ideal-power and exceptional-curve cohomology. QD1–QD8 in §2AG gives finite point-blowup domination, full reflexive transforms and simultaneous rank-one principalization with supplied finite actions. DC1–DC8 in §2AH constructs dualizing modules on finite normal surface charts and the initial finite normal model, with finite-map evaluation, Cartier reduction, the type-one criterion and completion. PD1–PD10 in §2AI constructs projective canonical modules, the proper birational trace, Cartier curve duality, exceptional adjoint generation and a finite rational Gorenstein modification, with supplied finite actions. CA1–CA4 in §2AJ identifies the exceptional conics and gives a conormal-torsion termination bound along a supplied quotient arc whose generic localization is a discrete valuation ring. FA1–FA3 in §2AK constructs the complete quotient arc for a fixed exceptional coordinate and constant residue fields, compares the completed local rings and proves termination when the initial completion is normal. QB1–QB4 in §2AL proves the quadratic-ideal lemma over arbitrary residue fields and resolves the nonsquare exceptional-conic case under normal initial completion. SA1–SA3 in §2AM proves finite generation of complete arc images, regularization of a singular curve image by a normalization-length bound, and termination of a nonvertical fixed-coordinate tail over the original normal completion. DL1–DL5 in §2AN gives finite equivariant resolution for these rational Gorenstein points, including double exceptional lines and vertical tails through regular fibre curves, under a normal two-dimensional initial completion. AC1–AC6 in §2AO proves normal closed completions for normal projective relative curves over a complete DVR with characteristic-zero fraction field and algebraically closed residue field. GR1–GR7 in §2AP constructs regular projective models and extends supplied finite semilinear actions in that algebraically closed residue-field setting. GP1–GP8 in §2AQ constructs regular projective models over perfect residue fields, including finite fields, in the characteristic-zero fraction-field setting, and gives finite-extension reduced split nodal models for smooth geometrically integral curves of genus at least two. WG1–WG8 in §2AR constructs the whole formal Picard extension of a split nodal model, its uniquely lifted closed formal torus and proper smooth formal quotient, with explicit affine charts, Laurent defect correction, actual torsor relations, base change and supplied finite actions. AZ1–AZ8 in §2AS proves projective and torus-extension algebraization when an actual compatible ample line is supplied on the proper formal quotient, including group operations, specified actions and finite base change. A curve acquires a rational point after a finite separable extension. For an arbitrary abelian variety, GP8 supplies the genus-at-least-two curve model; WG supplies the whole formal extension; the remaining algebraization and analytic work must produce the integral algebraic extension and genuinely locally covering period maps, with finite point-lifting, kernel and compatible finite-action properties. Identification with a separately constructed dual-model pairing requires its own duality argument. Deligne’s freely accessible Example 8.10, printed p.571, states the full theorem without proving it and does not discharge these constructions. The theorem is retained in full generality; its full proof is not claimed complete.
 
 For an elliptic curve the local classification gives every case without invoking the unproved higher-dimensional part. At good places use (6) and \(N=0\). At potentially good places use Lemma 2.3. At potentially multiplicative places use the Tate-curve proof and its quadratic descent in *Elliptic curves over local fields and their Weil–Deligne representations*, §§3–5: the common quadratic splitting character \(\eta_v\) and the common block are
 \[

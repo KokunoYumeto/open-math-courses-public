@@ -1,6 +1,6 @@
 # Representations, characters and the group determinant
 
-*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI) in Codex, Ultra setting, October 2026. Public domain (CC0).*
 
 Matrices are coordinates for modules. For a finite group in characteristic zero, the simple module types can be recognized by their traces, and the same types factor the determinant of the regular representation. This lesson connects those two calculations. At the end, a trace pairing tests semisimplicity for every finite-dimensional algebra in characteristic zero.
 
@@ -330,6 +330,6 @@ The theory of Schur indices and minimal splitting fields over non-algebraically-
 
 - **[Etingof et al.]** Pavel Etingof, Oleg Golberg, Sebastian Hensel, Tiankai Liu, Alex Schwendner, Dmitry Vaintrob and Elena Yudovina, *Introduction to Representation Theory*, 2011 revision, especially §§3.1–3.8. [arXiv:0901.0827](https://arxiv.org/abs/0901.0827).
 - **[MIT]** *Noncommutative Algebra*, MIT OpenCourseWare, Spring 2023, instructor Roman Bezrukavnikov, lectures 1–3. [Course notes](https://ocw.mit.edu/courses/18-706-noncommutative-algebra-spring-2023/resources/mit18_706_s23_full_lec_pdf/).
-- **[Noether]** Emmy Noether, *Hyperkomplexe Größen und Darstellungstheorie*, written up by B. L. van der Waerden, *Mathematische Zeitschrift* **30** (1929), 641–692, §§15–26, especially §25 for the discriminant viewpoint.
-- **[Frobenius]** Ferdinand Georg Frobenius, *Über die Darstellung der endlichen Gruppen durch lineare Substitutionen*, *Sitzungsberichte der Königlich Preussischen Akademie der Wissenschaften zu Berlin* (1897), 994–1015; and *Theorie der hyperkomplexen Größen*, the same proceedings (1903), 504–537.
-- **[Brauer–Noether]** Richard Brauer and Emmy Noether, *Über minimale Zerfällungskörper irreduzibler Darstellungen*, *Sitzungsberichte der Preussischen Akademie der Wissenschaften* (1927), 221–228.
+- **[Noether]** Emmy Noether, [*Hyperkomplexe Größen und Darstellungstheorie*, free English edition](https://github.com/KokunoYumeto/emmy-noether-en), written up by B. L. van der Waerden, *Mathematische Zeitschrift* **30** (1929), 641–692, §§15–26, especially §25 for the discriminant viewpoint.
+- **[Frobenius]** Ferdinand Georg Frobenius, [*Über die Darstellung der endlichen Gruppen durch lineare Substitutionen*](https://www.e-rara.ch/doi/10.3931/e-rara-18879), *Sitzungsberichte der Königlich Preussischen Akademie der Wissenschaften zu Berlin* (1897), 994–1015; free digitization, ETH-Bibliothek Zürich, Rar 1524.
+- **[Brauer–Noether]** Richard Brauer and Emmy Noether, [*Über minimale Zerfällungskörper irreduzibler Darstellungen*, free English edition](https://github.com/KokunoYumeto/emmy-noether-en), *Sitzungsberichte der Preussischen Akademie der Wissenschaften* (1927), 221–228.

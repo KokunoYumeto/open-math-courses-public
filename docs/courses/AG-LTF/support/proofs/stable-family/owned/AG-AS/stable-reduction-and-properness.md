@@ -865,7 +865,7 @@ The prerequisite inputs and proved comparisons, with their uses and hypotheses, 
 
 All eleven assigned tag scopes were read at the immutable AI Integrated Stacks Project revision recorded below. The original Deligne–Mumford introduction, Corollary (2.7) and all of §3 were checked in the primary paper, including visual verification of the corollary. The course's arguments and diagrams are independently authored; source texts are cited and are not included in its source package.
 
-The seven graph drawings have retained vector sources and an [original Python drawing source](https://github.com/KokunoYumeto/open-math-courses-public-public/blob/main/docs/courses/AG-AS/figures/ag_as_10_figures.py). Their data record checks arithmetic genus and the canonical degree at every vertex. They depict weighted dual graphs; distances and drawn edge shapes have no metric meaning.
+The seven graph drawings have retained vector sources and an [original Python drawing source](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/AG-AS/figures/ag_as_10_figures.py). Their data record checks arithmetic genus and the canonical degree at every vertex. They depict weighted dual graphs; distances and drawn edge shapes have no metric meaning.
 
 ## References
 
