@@ -11,7 +11,7 @@ import subprocess
 import sys
 import tempfile
 import unicodedata
-from urllib.parse import urlsplit
+from urllib.parse import urljoin, urlsplit
 import zipfile
 
 COURSE = Path(__file__).resolve().parent
@@ -101,7 +101,7 @@ def write_tex(unit, pandoc):
         if result.returncode:
             raise RuntimeError(result.stderr)
         tex = bind_figures(output_file.read_text(encoding='utf-8'))
-    # Released PDFs sit at the course root; Markdown links start in src/.
+    # A downloaded PDF must use web links rather than local-file launch actions.
     def pdf_link(match):
         href = match.group(1)
         parsed = urlsplit(href)
@@ -110,6 +110,7 @@ def write_tex(unit, pandoc):
         path = posixpath.normpath(posixpath.join('src', parsed.path))
         target = path + ('?' + parsed.query if parsed.query else '')
         target += ('#' + parsed.fragment if parsed.fragment else '')
+        target = urljoin('https://kokunoyumeto.github.io/open-math-courses-public/courses/TR-BAKER/', target)
         return '\\href{' + target + '}'
     tex = re.sub(r'\\href\{([^}]+)\}', pdf_link, tex)
     # amsmath requires the outer display, rather than aligned/gathered, to own a tag.
