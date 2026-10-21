@@ -19850,7 +19850,7 @@ a primitive relation supported on the preceding indices. The right
 panel records the exact p=2 example of Solution 91, including the
 common factor in all transferred coefficients. The displayed valuations
 are exact; the inequalities involving U are proved bounds.
-Reproducible figure and exact reduction checks.
+[Reproducible figure and exact reduction checks](../figure_sources/yu_rational_coefficient_refinement.py).
 Human-source target: Theorem 2.3 of
 [Bugeaud's free author paper](https://irma.math.unistra.fr/~bugeaud/travaux/StroblRev1.pdf).*
 
@@ -21440,6 +21440,411 @@ elements, while the product \(m\delta_L=9\) reduces its contribution
 to \(64/9<8\). Lemmas 10.244–10.245 prove the general transfer;
 Theorem 10.246 retains the original field constants.
 [Reproducible figure and exact arithmetic](../figure_sources/yu_two_adic_coefficient.py).*
+
+## A bound using only the largest coefficient
+
+The coefficient parameter in the second explicit estimate contains fixed
+field terms as well as logarithms of the integer coefficients. A local
+height estimate treats the small-coefficient range. In the complementary
+range, the coefficient itself is large enough to absorb every fixed term.
+An exact relation then removes a dependent base. Choosing a base of
+largest weight in that relation makes its coefficient cost fit inside
+the decrease in the height-product constant. The resulting bound uses
+the original field degree, for arbitrary nonzero algebraic bases.
+
+Write \(d=[K:\mathbb Q]\), \(e=e_{\mathfrak p}\),
+\(f=f_{\mathfrak p}\), \(t=f\log p\), and
+\(Q=16\mathrm e^2d^2\). The roman \(\mathrm e\) is the
+exponential constant. Set \(J=e+d/f\), \(A=58d\max\{1,\log d\}\).
+For \(n\ge1\), put
+\[
+\begin{aligned}
+x&=\log(2nd),\qquad y=\log(2d),\\
+\mathcal G_n&=(16\mathrm e d)^{2(n+1)}n^{5/2}x^2d^n
+                  \frac{p^d-1}{(\log p)^2},\\
+Z_n&=\frac{et\mathcal G_n}{2dJn}Q^{1-n}
+ =\frac{16^{n+3}\mathrm e^4ef}{2J}
+      n^{3/2}x^2d^{n+3}\frac{p^d-1}{\log p}.
+\end{aligned}
+\tag{10.1134}
+\]
+For \(n\ge2\), also put
+\[
+R_n=\frac{e\mathcal G_n}{\mathcal A_n}
+ =\frac{nd^nf^2}{e^{n-1}}
+   \frac{p^d-1}{p^f}\frac{x}{y},
+\]
+where \(\mathcal A_n\) is the original-field constant (10.1086).
+
+**Lemma 10.247 (the coefficient threshold).** For every such field,
+prime and integer \(n\ge2\),
+\[
+\begin{gathered}
+Z_n>2Q,\qquad R_n\ge nd,\\
+\log Z_n>\max\{n,\log(2A)\},\\
+(n+1)(7n+5+\log d)<2R_n\log Z_n,\\
+(n+1)t<R_n\log Z_n.
+\end{gathered}
+\tag{10.1135}
+\]
+
+**Proof.** The positive logarithm series
+\(\log2=2\sum_{j\ge0}1/((2j+1)3^{2j+1})\) gives
+\(11/16<\log2<3/4\). For the lower bound its first three terms
+sum to \(842/1215>11/16\). For the upper bound, replace every
+denominator \(2j+1\), \(j\ge1\), by three; the resulting sum
+is \(25/36<3/4\). In particular
+\(11/4<\log16<3\), and \(\log2>2/3\).
+
+Since \(p^d-1\ge d\log p\), the formula for \(Z_n\),
+\(ef\ge1\), \(J\le2d\), \(x\ge\log4>1\), and
+\((3/2)\log n\ge(3/2)\log2>1\) give
+\[
+\log Z_n>\frac{11n}{4}+\frac{47}{4}+(n+3)\log d.
+\tag{10.1136}
+\]
+This exceeds \(\log(2Q)=\log32+2+2\log d\), because
+\(\log32<15/4\). Thus \(Z_n>2Q\).
+It also exceeds n and \(\log(2A)\). For the latter, use
+\(\max\{1,\log d\}\le d\) and \(\log116<5\), so
+\(\log(2A)<5+2\log d\). The exponential series gives
+\(\mathrm e>8/3\), and \((8/3)^5>116\), proving the stated
+logarithmic comparison.
+
+Use \(ef\le d\) to bound the exact ratio in (10.1134):
+\[
+R_n\ge nd f^{n+1}\frac{p^d-1}{p^f}.
+\tag{10.1137}
+\]
+If \(d\ge2\) and \(f=1\), the last quotient is
+\(p^{d-1}-p^{-1}\ge3/2\), so \(R_n\ge3n\).
+If \(f\ge2\), that quotient is at least
+\(1-p^{-d}\ge3/4\), and again \(R_n\ge3n\).
+Both estimates also imply \(R_n\ge nd\).
+If \(d=1\), then \(e=f=1\), and the exact expression is
+\[
+R_n=n(1-p^{-1})\frac{\log(2n)}{\log2}\ge n.
+\tag{10.1138}
+\]
+It is at least \(2n\) for \(n\ge8\).
+
+Whenever \(d\ge2\) or \(n\ge8\), we therefore have
+\[
+\frac{(n+1)(7n+5+\log d)}{2R_n}
+\le\frac38(7n+5+\log d)<\log Z_n
+\]
+by (10.1136). In the remaining cases \(d=1\), \(2\le n\le7\),
+use \(R_n\ge n\). The required comparison with (10.1136)
+reduces to
+\[
+-3n^2+23n-10>0.
+\]
+This concave polynomial is at least the smaller of its endpoint values
+24 and 4 on \([2,7]\). The coefficient-parameter assertion follows.
+
+For the last assertion, if \(p=2\) or \(3\), then
+\(t<2d\) and \(R_n\ge nd\), so
+\((n+1)t/R_n<3<\log Z_n\).
+If \(p\ge5\), formulas (10.1137)–(10.1138) give
+\(R_n\ge8n/5\). Consequently
+\[
+\frac{(n+1)t}{R_n}\le\frac{15}{16}d\log p.
+\]
+For every \(l>0\), maximization of \(\log l-l/16\) gives
+\(\log l\le l/16+\log16-1<l/16+2\).
+The factor preceding \((p^d-1)/\log p\) in the formula for
+\(Z_n\) is greater than \(\mathrm e^4\). Also
+\(p^d-1\ge p^d/2\). Taking \(l=\log p\) yields
+\[
+\log Z_n>4+dl-\log2-\log l
+ >\frac{15}{16}dl.
+\]
+This proves the last assertion. \(\square\)
+
+**Lemma 10.248 (one base and the height floor).** For every \(n\ge1\),
+\[
+\mathcal G_nQ^{-n}>\frac{1000d}{\log p}.
+\tag{10.1139}
+\]
+If \(\beta\) is a local unit, \(h(\beta)\le Jw\),
+\(w\ge Q^{-1}\), \(B\ge\max\{3,|b|\}\), and
+\(\beta^b\ne1\), then
+\[
+v_p(\beta^b-1)<\mathcal G_1w\log B.
+\tag{10.1140}
+\]
+
+**Proof.** Exact cancellation gives
+\[
+\frac{\mathcal G_n}{Q\mathcal G_{n-1}}
+ =16d\left(\frac n{n-1}\right)^{5/2}
+       \left(\frac{\log(2nd)}{\log(2(n-1)d)}\right)^2
+ >16d\qquad(n\ge2).
+\tag{10.1141}
+\]
+At n=1, writing \(l=\log p\) and \(y=\log(2d)>2/3\),
+\[
+\frac{l\mathcal G_1}{Q}
+ =4096\mathrm e^2d^3y^2\frac{p^d-1}{l}
+ \ge4096\mathrm e^2d^4y^2>1000d.
+\]
+This and (10.1141) prove (10.1139).
+
+For n=1, the prefactor of \((p^d-1)/l\) in \(Z_1\) is at least
+\(16^4\mathrm e^4d^3y^2/4>2\). Consequently
+\(Z_1>2Q\): divide its lower bound, using \((p^d-1)/l\ge d\),
+by \(2Q\) to obtain \(512\mathrm e^2d^2y^2>1\).
+Also \(p^d-1\ge p/2\), so
+\(\log Z_1>l-\log l>l/2\). The last inequality follows by
+maximizing \(\log l-l/2\), whose maximum is \(\log2-1<0\).
+
+Put \(T=\mathcal G_1w\log B\). If \(B\le Z_1\log B\),
+the local height bound gives
+\[
+v_p(\beta^b-1)\le\frac d{et}(\log2+JBw)<T.
+\]
+Indeed the variable term is at most \(T/2\) by the definition of
+\(Z_1\), while \(T>1000d\log B/l\) makes the constant term
+less than \(T/2\).
+
+Otherwise \(\log B>\log Z_1>l/2\). Let g be the order of the
+residue of \(\beta\), so \(g\le p^f-1\). Theorem 10.21 yields
+\[
+v_p(\beta^b-1)
+ \le\frac{\log B}{l}
+    +\frac{dJg p}{f l(p-1)}w+\frac{d\log2}{et}.
+\]
+The first and third terms are each less than \(T/3\), by (10.1139).
+The middle term is at most \(4d^2(p^d-1)w/l\), since
+\(J\le2d/f\) and \(p/(p-1)\le2\). It too is less than \(T/3\),
+because \(\log B>l/2\) and
+\(16^4\mathrm e^4d^3y^2>24\). This proves (10.1140), including
+torsion bases allowed in Theorem 10.21. \(\square\)
+
+**Theorem 10.249 (the maximum-coefficient bound for local units).**
+Let \(\beta_1,\ldots,\beta_n\in K^*\) be local units, \(n\ge1\),
+with no independence assumption. Suppose
+\[
+h(\beta_i)\le Jw_i,\quad w_i\ge Q^{-1},\quad
+B\ge\max\{3,|b_1|,\ldots,|b_n|\},\quad
+Y=\prod_i\beta_i^{b_i}\ne1,\quad \Omega=\prod_iw_i.
+\]
+Then, with \(v_p(p)=1\),
+\[
+v_p(Y-1)<\mathcal G_n\Omega\log B.
+\tag{10.1142}
+\]
+
+**Proof.** We induct on n. Lemma 10.248 proves n=1.
+For every n, a torsion product has height zero, so
+\(v_p(Y-1)\le d\log2/(et)\); (10.1139) places this strictly
+below the target. Hence assume n at least two and Y nontorsion.
+Put \(w=\max_iw_i\). The local height inequality and
+the sum and power inequalities for height give
+\[
+v_p(Y-1)\le\frac d{et}
+  \left(\log2+B\sum_i h(\beta_i)\right)
+\le\frac d{et}(\log2+JnBw).
+\tag{10.1143}
+\]
+The inequality is immediate if the valuation is nonpositive; otherwise
+it follows from the local contribution to the height of
+\((Y-1)^{-1}\), just as in Theorem 10.21.
+
+Suppose first that \(B\le Z_n\log B\). Since
+\(\Omega\ge wQ^{1-n}\), the definition of \(Z_n\) gives
+\[
+\frac d{et}JnBw\le\frac12\mathcal G_n\Omega\log B.
+\]
+Moreover \(\Omega\ge Q^{-n}\) and \(Z_n>2Q\), so
+\[
+\frac{et}{2d}\mathcal G_n\Omega\log B
+\ge\frac{JnZ_n}{Q}\log B>\log2.
+\]
+The constant term in (10.1143) is strictly below the other half of the
+target. This proves (10.1142) in the first case.
+
+Now let \(B>Z_n\log B\). As \(B\ge3\), we have
+\(\log B>\log Z_n\).
+
+First suppose the bases are independent. Apply the padded-weight form
+of Theorem 10.223 supplied by Lemma 10.224,
+with weights \(Jw_i\). Renumber so a nonzero coefficient of minimum
+p-adic valuation is last. No coefficient or height bound changes.
+Use the same field unless \(p=2\) and \(\zeta_3\notin K\);
+in that case use \(K'=K(\zeta_3)\). Its degree is \(2d\), its
+local ramification index remains \(e\), its residue degree is at most
+\(2f\), and its prime-ideal valuation restricts to the original one,
+by Lemma 10.244.
+
+In either case Lemma 10.238 or 10.245 gives
+\(2C_2J^n<\mathcal A_n\). The coefficient parameter satisfies
+\[
+\mathsf h_2\le\max\left\{
+ \log(2BQ),\ (n+1)(7n+5+\log d),\ 2(n+1)t
+\right\}.
+\tag{10.1144}
+\]
+Indeed \(1/(d'W(d'))<1\), \(J\ge1\), and
+\(w_i\ge Q^{-1}\) give the first entry. Also
+\(\log B_\dagger\le\log B<\log(2BQ)\).
+In every row of (10.643), \(a_0^{(2)}<6\) and
+\(a_1^{(2)}<4\). Using \(d'\le2d\),
+\(\log(n+1)\le n\), and \(\log2<1\) gives the second entry.
+The residue-degree bound gives the third entry.
+
+Lemma 10.247 bounds the last two entries strictly by
+\(2R_n\log B\). For the first, \(B>Z_n>2Q\) implies
+\(\log(2BQ)<2\log B\le2R_n\log B\).
+Therefore
+\[
+v_p(Y-1)
+ <\frac{\mathcal A_n}{2e}\Omega\mathsf h_2
+ <\frac{\mathcal A_n}{e}R_n\Omega\log B
+ =\mathcal G_n\Omega\log B.
+\tag{10.1145}
+\]
+This proves the independent case.
+
+If the bases are dependent, choose a minimally dependent sublist C.
+Put \(u_i=Qw_i\ge1\), and choose \(x\in C\) maximizing \(u_x\)
+on C. There is an exact integer relation, supported on C,
+\[
+\prod_i\beta_i^{k_i}=1,\qquad k_x>0,\qquad
+|k_i|\le A u_x^{n-1}.
+\tag{10.1146}
+\]
+For a singleton torsion sublist, use its order, at most A by Lemma
+10.155. Otherwise put \(a=|C|-1\). The simultaneous bounds of
+Corollary 10.20, as calculated in the proof of Lemma 10.240, give
+\[
+|k_i|\le A\left(\frac{\mathrm e dJ}{Q}\right)^a
+          \prod_{j\in C\setminus\{i\}}u_j
+ \le A u_x^a\le A u_x^{n-1}.
+\]
+Every coefficient on a minimal circuit is nonzero; reversing their
+signs makes \(k_x>0\). The relation is exact, since Corollary 10.20
+has already removed the root of unity.
+
+Delete the x-th base by raising the original product to \(k_x\):
+\[
+Y^{k_x}=\prod_{i\ne x}\beta_i^{b_i'},\qquad
+b_i'=k_xb_i-k_ib_x,\qquad
+|b_i'|\le B':=2ABu_x^{n-1}.
+\tag{10.1147}
+\]
+Here \(B'\ge3\), and \(Y^{k_x}\ne1\) because Y is nontorsion.
+The field, e, f, Q and J are unchanged. Since
+\(\log B>\log Z_n>\max\{n,\log(2A)\}\), we have
+\[
+\frac{\log B'}{\log B}
+ =1+\frac{\log(2A)+(n-1)\log u_x}{\log B}
+ <2+\log u_x\le2u_x.
+\tag{10.1148}
+\]
+The last inequality follows from \(\log u\le u-1\) for \(u\ge1\).
+Induction and the integral geometric-sum factor therefore give
+\[
+\begin{aligned}
+v_p(Y-1)&\le v_p(Y^{k_x}-1)\\
+ &<\mathcal G_{n-1}\frac{\Omega}{w_x}\log B'
+ <2Q\mathcal G_{n-1}\Omega\log B
+ <\mathcal G_n\Omega\log B,
+\end{aligned}
+\]
+where (10.1141) supplies the last comparison. Each deletion reduces n,
+so the induction includes every dependence and torsion pattern.
+\(\square\)
+
+**Corollary 10.250 (arbitrary algebraic bases and the original degree).**
+Let \(K\) be any number field of degree d, \(\mathfrak p\) a prime
+above any rational prime p, and \(\alpha_1,\ldots,\alpha_n\in K^*\),
+\(n\ge1\). For integers \(b_i\), suppose
+\(\Xi=\prod_i\alpha_i^{b_i}\ne1\). If
+\[
+w_i\ge\max\{h(\alpha_i),(16\mathrm e^2d^2)^{-1}\},\qquad
+B\ge\max\{3,|b_1|,\ldots,|b_n|\},
+\]
+then
+\[
+v_p(\Xi-1)
+ <(16\mathrm e d)^{2(n+1)}n^{5/2}(\log(2nd))^2d^n
+       \frac{p^d-1}{(\log p)^2}
+       \left(\prod_iw_i\right)\log B.
+\tag{10.1149}
+\]
+The original bases may be dependent, torsion, or nonunits at
+\(\mathfrak p\); some coefficients may vanish.
+
+**Proof.** A nontrivial torsion product is handled by the height-zero
+argument in Theorem 10.249. Otherwise apply Lemma 10.237, putting
+\(v_i=\operatorname{ord}_{\mathfrak p}(\alpha_i)\) and
+\(\beta_i=\alpha_i^ep^{-v_i}\).
+If \(\sum_i b_iv_i\ne0\), the required valuation is nonpositive.
+If the sum is zero, the \(\beta_i\) are local units satisfying
+\(h(\beta_i)\le Jw_i\), and their product is \(\Xi^e\ne1\).
+Lemma 10.237 and Theorem 10.249 give
+\(v_p(\Xi-1)\le v_p(\Xi^e-1)<\mathcal G_n\Omega\log B\).
+All constants use the original field. \(\square\)
+
+The free [BIRS notes of Bugeaud, Theorem G](https://www.birs.ca/workshops/2012/12ss131/files/bugeaud_LFL.pdf)
+give this maximum-coefficient constant with \(p^d\) in place of
+\(p^d-1\). Here the bound \(B\ge3\) is explicit: a positive
+logarithmic coefficient factor is necessary even when every nonzero
+coefficient has absolute value one. Corollary 10.250 has the same
+height floor and requires no independence. Its proof uses the
+programme results above, with the second explicit constant of
+[Yu's freely accessible 2013 paper](https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6782-11511_2013_Article_106.pdf).
+
+**Example.** In \(K=\mathbb Q\) at \(p=5\), take bases 2 and 3,
+weights \(\log2,\log3\), and coefficients \(a,-b\).
+Independence follows by comparing prime exponents. With
+\(B=\max\{3,|a|,|b|\}\) and \(2^a3^{-b}\ne1\), the theorem gives
+\[
+v_5(2^a3^{-b}-1)
+ <(16\mathrm e)^6\,2^{5/2}(\log4)^2
+       \frac4{(\log5)^2}\log2\log3\log B.
+\tag{10.1150}
+\]
+For \((a,b)=(3,1)\), the argument of the valuation is \(5/3\),
+so the exact valuation is one.
+
+**Exercise.** Apply Corollary 10.250 over \(\mathbb Q\) at two to
+\((6,10)\) with coefficients \((1,-1)\), and then to
+\((6,10,15)\) with coefficients \((1,-1,1)\).
+Compute the normalized units and exact valuations. For the second list,
+exhibit the relation and the two-base product after deleting the
+normalized part of 15.
+
+**Solution.** Here \(d=e=f=1\). The normalized units in the first
+list are 3 and 5; the product is \(3/5\), giving
+\(v_2(3/5-1)=1\). In the second list the valuations are \((1,1,0)\)
+and the normalized units are \((3,5,15)\). Their exact relation is
+\(3^{-1}5^{-1}15=1\). Choosing weights
+\((\log6,\log10,\log15)\) makes the third weight largest.
+Formula (10.1147), with \(k=(-1,-1,1)\), replaces the coefficient
+vector by \((2,0)\). Both products equal 9, and
+\(v_2(9-1)=3\). In both cases take B=3; the original valuation sums
+vanish. The original bases include nonunits, the second normalized list
+is dependent, and the original field has no primitive cube root of
+unity. Lemmas 10.244–10.245 and Corollary 10.250 nevertheless retain
+\(d=1\) in the bound.
+
+![The coefficient threshold, independent estimates and exact dependent-base elimination](../figures/yu-maximum-coefficient.png)
+
+*Figure 10.75. The left panel samples the three quantities in Lemma
+10.247 for the rational field at two. Their inequalities for every rank,
+degree and prime are proved in the lemma. The right panel records the
+alternatives in Lemma 10.248 and Theorem 10.249. A dependent list loses
+one base while the increase in its logarithmic coefficient parameter
+is less than the decrease in the target constant. The displayed
+three-base example has exact valuation three. Corollary 10.250 returns
+to arbitrary original bases with the original field degree.
+[Reproducible figure and exact comparisons](../figure_sources/yu_maximum_coefficient.py).
+Human-source context: Theorem G of the
+[free BIRS notes](https://www.birs.ca/workshops/2012/12ss131/files/bugeaud_LFL.pdf)
+and Theorem I of
+[Yu's free 2013 paper](https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6782-11511_2013_Article_106.pdf).*
 
 ## 82. Exercises with solutions
 
