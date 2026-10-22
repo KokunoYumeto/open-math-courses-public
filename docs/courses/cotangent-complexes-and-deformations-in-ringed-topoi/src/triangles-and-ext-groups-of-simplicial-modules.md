@@ -1,6 +1,6 @@
 # Triangles and Ext groups of simplicial modules
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 Over a ring, Ext groups and their long exact sequences come from the shift functor and the distinguished triangles of the derived category of complexes. Over a simplicial ring \(A\) there are no complexes to shift. Their role is played by the suspension \(\sigma E\) of a simplicial module, its tensor product with the reduced chains of the simplicial circle. The suspension is fully faithful on \(D_\bullet(A)\), but it is not an equivalence: every suspension has \(\pi_0=0\). This lesson uses it to define the Ext groups of \(A\)-modules, the distinguished triangles of \(D_\bullet(A)\) and their long exact sequences, and it describes \(\operatorname{Ext}^1\) through extensions of simplicial modules. When \(A\) is a ring placed in every degree, normalization identifies all of this with the derived category of modules and its usual sign conventions. The cotangent complex is an object of \(D_\bullet\), and its transitivity triangles and the obstruction classes of deformation theory are triangles and Ext classes of this kind.
 

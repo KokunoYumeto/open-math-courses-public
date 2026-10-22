@@ -73,14 +73,14 @@ def page(title, body, nav):
 <title>'''+escape(title)+'''</title><style>'''+CSS+'''</style>
 <script>window.MathJax={tex:{inlineMath:[['\\\\(','\\\\)']],displayMath:[['\\\\[','\\\\]']],tags:'ams',tagSide:'right'},options:{enableMenu:false},chtml:{displayAlign:'center'},startup:{typeset:true}};</script>
 <script defer src="assets/mathjax/tex-chtml-full.js"></script></head>
-<body><main><p class="eyebrow">Vacuum hydrodynamics · GR-VAC</p>'''+nav+body+'''
-<footer>Lessons and diagrams written with GPT-6 Astra. Mathematical sources are cited in the lessons. <a href="README.md">Course contents and downloads</a>.</footer>
+<body><main><p class="eyebrow">Appendix to the forced Navier–Stokes blowup argument</p>'''+nav+body+'''
+<footer>Lessons and diagrams written with GPT-6 Astra. Mathematical sources are cited in the lessons. <a href="README.md">Appendix contents and downloads</a>.</footer>
 </main></body></html>'''
 
 def main():
     assert (ROOT/'assets/mathjax/tex-chtml-full.js').is_file(), 'The accompanying MathJax runtime is required.'
-    navigation = '<nav aria-label="Lessons"><ol>'+''.join('<li><a href="'+Path(l['source']).stem+'.html">'+escape(l['id']+': '+l['title'])+'</a></li>' for l in META['lessons'])+'</ol><p><a href="reader.html">Read both lessons</a> · <a href="https://github.com/KokunoYumeto/open-math-courses/blob/main/courses/GR-VAC/GR-VAC-reader-and-source.zip">Offline reader and sources</a></p></nav>'
-    cumulative = '<h1>'+escape(META['title'])+'</h1>'+navigation
+    navigation = '<nav aria-label="Appendix lessons"><p><a href="'+escape(META['parent_reader'],quote=True)+'">The forced Navier–Stokes blowup argument</a></p><ol>'+''.join('<li><a href="'+Path(l['source']).stem+'.html">'+escape(l.get('label',l['id'])+': '+l['title'])+'</a></li>' for l in META['lessons'])+'</ol><p><a href="reader.html">Read both appendix lessons</a> · <a href="https://github.com/KokunoYumeto/open-math-courses/blob/main/courses/GR-VAC/GR-VAC-reader-and-source.zip">Offline reader and sources</a></p></nav>'
+    cumulative = '<h1>'+escape(META['title'])+'</h1><p>'+escape(META['introduction'])+'</p>'+navigation
     stats = []
     for lesson in META['lessons']:
         p = ROOT/lesson['source']
@@ -91,6 +91,7 @@ def main():
         cumulative += '<section class="lesson" id="'+lesson['id']+'">'+combined+'</section>'
         stats.append({'id':lesson['id'], 'formulas':count, 'html':dest.name})
     (ROOT/'reader.html').write_text(page(META['title'], cumulative, ''), encoding='utf8')
+    (ROOT/'START-HERE.html').write_text('<!doctype html><html lang="en"><meta charset="utf-8"><title>'+escape(META['title'])+'</title><h1>'+escape(META['title'])+'</h1><p>'+escape(META['introduction'])+'</p><p><a href="reader.html">Read both appendix lessons and their ten solved exercises</a>.</p><p><a href="README.md">Contents, sources and rebuilding instructions</a>.</p></html>\n',encoding='utf8')
     print(json.dumps({'lessons':stats, 'formulas':sum(x['formulas'] for x in stats)}))
 
 if __name__ == '__main__':

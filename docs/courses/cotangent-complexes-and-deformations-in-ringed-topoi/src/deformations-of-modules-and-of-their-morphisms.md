@@ -1,6 +1,6 @@
 # Deformations of modules and of their morphisms
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 21 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 Let \(A\to B\to B_o\) be maps of rings of a topos, with \(B\to B_o\) surjective and its kernel \(I\) of square zero: \(B\) is an \(A\)-extension of \(B_o\) by \(I\), with class \(e(B)\colon L_{B_o/A}\to I[1]\). Given \(B_o\)-modules \(M_o\) and \(J\) and a map \(u_o\colon I\otimes_{B_o}M_o\to J\), we ask for a \(B\)-module \(M\) that is an extension of \(M_o\) by \(J\) on which \(I\) acts through \(u_o\). For \(J=I\otimes M_o\) and \(u_o\) the identity, with \(M_o\) flat, these are the flat deformations of \(M_o\) over \(B\). The lesson proves:
 

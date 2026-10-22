@@ -1,6 +1,6 @@
 # The stable ring of a ring and the Mac Lane resolution
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 21 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 The stabilization of the free abelian group functor, applied to a ring \(A\) of a topos, is a simplicial abelian sheaf \(\mathbb Z^{\mathrm{st}}(A)\) with homology \(A\) in degree \(0\) and none in degree \(1\) ([*Stable derived functors*](stable-derived-functors.md), Example 2.1). This lesson shows that it is a simplicial ring, flat over \(\mathbb Z\), and that its augmentation to \(A\) is a ring homomorphism. The ring structure comes from the spectrum \(A(1)^\times\) of [*Graded rings and the spectra of modules*](graded-rings-and-the-spectra-of-modules.md): the free abelian group functor turns its multiplication into the multiplication of a ring of type \(C_\bullet(S_1)\), and the double diagonal of [*Diagonal rings and adjunction formulas*](diagonal-rings-and-adjunction-formulas.md) turns that into \(\mathbb Z^{\mathrm{st}}(A)\). An \(A\)-module \(M\) gives a \(\mathbb Z^{\mathrm{st}}(A)\)-module \(\mathbb Z^{\mathrm{st}}(M)\).
 

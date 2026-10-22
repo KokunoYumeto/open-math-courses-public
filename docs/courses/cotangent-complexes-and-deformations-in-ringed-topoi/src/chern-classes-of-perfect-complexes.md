@@ -1,6 +1,6 @@
 # Chern classes of perfect complexes
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 22 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 For a map of rings \(A\to B\) of a topos, every perfect complex \(E\) of \(B\)-modules carries its Atiyah class \(\operatorname{at}(E)\colon E\to E\otimes^{\mathbf L}_BL_{B/A}[1]\), an endomorphism of \(E\) with coefficients in \(L_{B/A}[1]\). Its L-series and characteristic series, with the shift isomorphism \(LS^n(L_{B/A}[1])\cong L\Lambda^n(L_{B/A})[n]\), give classes
 \[

@@ -1,6 +1,6 @@
 # Ext groups of modules as cohomology of spectral nerves
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 21 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 Let \(A\) be a ring of a topos and \(G\), \(M\) two \(A\)-modules. The spectrum \(A(1)^\times\) of \(A\) is a graded monoid that acts on the spectrum \(G(1)^\times\) of \(G\) ([*Graded rings and the spectra of modules*](graded-rings-and-the-spectra-of-modules.md)), and the nerve of this action is a bisimplicial diagram whose values are products of copies of the sheaves of sets underlying \(A\) and \(G\). This lesson proves that \(\operatorname{Ext}^i_A(G,M)\) is the \(i\)-th cohomology group of the total topos of this nerve, with coefficients whose values are products of copies of \(M\). The ring and module structures enter only through the maps of the diagram.
 

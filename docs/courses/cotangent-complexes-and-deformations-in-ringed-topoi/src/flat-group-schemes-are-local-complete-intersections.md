@@ -1,6 +1,6 @@
 # Flat group schemes are local complete intersections
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 21 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A group scheme over a field need not be smooth: in characteristic \(p\) the kernel of the Frobenius endomorphism of the additive group is \(\operatorname{Spec}k[x]/(x^p)\). It is nevertheless always a local complete intersection. This lesson proves that a group scheme which is flat and locally of finite presentation over an arbitrary base scheme is syntomic, so that its cotangent complex is locally a two-term complex of finite free modules in degrees \(-1\) and \(0\). Over a field of characteristic \(p\) the proof removes Frobenius kernels one at a time. The first Frobenius kernel is a truncated polynomial algebra, the quotient by it needs one Frobenius kernel fewer to become smooth, and the quotient by a large enough Frobenius kernel is the reduced subgroup of a Frobenius twist, which is smooth. Over a general base the fibre criterion for syntomic morphisms finishes the proof. At the unit of a group scheme over a field, the cotangent complex measures the failure of smoothness: its cohomology in degree \(-1\) has dimension \(\dim\operatorname{Lie}(G)-\dim G\).
 

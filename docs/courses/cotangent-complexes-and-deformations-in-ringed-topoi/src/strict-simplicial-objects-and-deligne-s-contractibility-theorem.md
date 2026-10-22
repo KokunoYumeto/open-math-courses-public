@@ -1,6 +1,6 @@
 # Strict simplicial objects and Deligne's contractibility theorem
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A strict simplicial object has face operators but no degeneracies. Strict simplicial objects are indexed by the category \(\Delta'\) of nonempty finite ordinals and injective increasing maps. They appear in the cohomology of diagrams whenever a construction is functorial only for injections, for example for spectral diagrams and stable derived functors. Two facts about \(\Delta'\) are used there.
 

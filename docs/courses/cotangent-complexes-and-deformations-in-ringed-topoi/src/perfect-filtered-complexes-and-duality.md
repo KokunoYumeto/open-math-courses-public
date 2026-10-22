@@ -1,6 +1,6 @@
 # Perfect filtered complexes and duality
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 22 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A filtered complex of modules over a ringed topos is *filtered perfect* when its graded pieces are perfect complexes. This lesson shows that these are exactly the objects of the filtered derived category \(DF(A)\) that have a dual in the symmetric monoidal sense, and that the usual consequences of duality hold in the filtered setting:
 

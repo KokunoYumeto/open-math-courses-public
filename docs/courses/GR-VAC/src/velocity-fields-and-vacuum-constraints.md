@@ -4,6 +4,8 @@
 
 A velocity field specifies motion in three-dimensional space. Initial data for gravity consist of a spatial metric and a second fundamental form. This lesson constructs an explicit map from the first kind of data to the second and proves that the original velocity can be recovered exactly.
 
+This is Appendix A to the forced Navier–Stokes blowup argument. The encoding applies to its smooth compactly supported velocity at each time before blowup. Section 7 gives the exact strain readout and time-evolution residual, which specify what this connection says about a family of fluid snapshots. It does not identify that family with an Einstein spacetime evolution.
+
 The input is
 
 \[
@@ -34,7 +36,7 @@ Here \(K\) is the second fundamental form in the convention that zero-shift Eins
 
 The construction follows §§5–7 of [The gravitational identity carried by Navier–Stokes strain](https://github.com/KokunoYumeto/yang-mills-interacting-workbench/blob/0a320572884e6f6aaac0e6652fa45ce75ceaaec4/navier-stokes/continuations/20260919-vacuum-hydrodynamics/manuscripts/IDENTITY_AND_COMPLETION.md#5-a-compact-transverse-traceless-lift-of-the-complete-velocity). The conformal method is due to the mathematical-relativity literature; the general-dimensional formulas used here appear in Choquet-Bruhat, Isenberg and Pollack, [§2, equations for the conformal metric and second fundamental form](https://arxiv.org/abs/gr-qc/0610045v1). We derive the needed four-dimensional formulas and the existence result below.
 
-The required analysis is differentiation, integration, convolution, and the maximum principle at a maximum or minimum. Section 4 supplies the particular elliptic inverse and its regularity argument. The original fluid theorem and its construction can be read in the Navier–Stokes companion course.
+The required analysis is differentiation, integration, convolution, and the maximum principle at a maximum or minimum. Section 4 supplies the particular elliptic inverse and its regularity argument. The original fluid theorem and its construction can be read in the main Navier–Stokes blowup proof.
 
 ## 2. Parameters and the original coordinates
 

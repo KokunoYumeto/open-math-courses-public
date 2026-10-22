@@ -1,6 +1,6 @@
 # Homotopy sheaves and the free abelian Whitehead theorem
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A simplicial object of a topos can be studied through its homotopy sheaves, or through the complex of abelian sheaves obtained by taking free abelian groups in each degree and normalizing. This course passes constantly between the two: for instance, a quasi-isomorphism of simplicial objects must induce an isomorphism in cohomology. The basic comparison is Illusie's form of the Whitehead theorem: if \(f\) is an \(n\)-quasi-isomorphism of simplicial sheaves, then so is the map \(\mathbb Z^{(f)}\) of free abelian simplicial sheaves, provided the topos has enough points or \(f\) is a homomorphism of simplicial abelian groups.
 

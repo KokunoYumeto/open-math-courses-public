@@ -1,6 +1,6 @@
 # Nerves of induced and coinduced modules
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 Let \(X\) be a pseudo-category. Its décalage \(\operatorname{Dec}^1(X)\), which forgets the last face, maps to \(X\) by forgetting the last vertex and to \(X_0\) by the last vertex. Pull a module \(L\) on \(X_0\) back along the last vertex and push it down to \(X\). On the first total topos the result is the nerve of the coinduced module of \(L\), level by level. On the second total topos the direct image is a limit over the category of simplices of \(\Delta[n]\), and a cofinality argument shows that it is the second nerve of the coinduced module. Under an injectivity hypothesis the same holds for the derived direct image: the standard resolution turns the derived direct image at each level into a Roos complex over the simplices of \(\Delta[n]\), and a natural transformation between functors of the index categories gives a homotopy between Roos complexes. Dually, for two-sided pseudo-categories, the nerves of induced modules are the left adjoint images from the décalage that forgets the first face. These comparisons are the means by which the cohomology of equivariant modules is computed from the levels of \(X\).
 

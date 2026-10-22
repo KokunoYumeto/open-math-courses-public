@@ -1,6 +1,6 @@
 # Filtered internal Hom and the formulas of Cartan
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 22 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 Let \(A\) be a commutative ring of a topos \(T\). For filtered complexes \(L,M\) of \(A\)-modules, the sheaf of homomorphisms of degree \(n\) from \(L\) to \(M\) is filtered by the homomorphisms that raise the filtration index by at least \(p\). This lesson derives this filtered Hom on the filtered derived category \(DF(A)\), with no boundedness condition, and proves:
 

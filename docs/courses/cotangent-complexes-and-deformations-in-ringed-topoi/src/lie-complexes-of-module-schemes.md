@@ -1,6 +1,6 @@
 # Lie complexes of module schemes
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 21 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 Let \(A\) be a ring scheme over \(S\) and \(G\) an \(A\)-module scheme, flat and locally of finite presentation. The Lie complex of \(G\), a perfect complex with cohomology in degrees \(0\) and \(1\), carries an action of \(A\) through the endomorphisms of \(G\) given by multiplication by local sections of \(A\). This lesson shows that the action exists on the complex itself, not only on its cohomology: there is an object \({}_A\ell^\vee_G\) of the derived category of \(A\otimes^{\mathbf L}_{\mathbb Z}\mathcal O\), unique up to unique isomorphism, whose restriction of scalars to \(\mathcal O\) is the Lie complex. The derived tensor product appears because \(A\otimes^{\mathbf L}_{\mathbb Z}\mathcal O\to A\otimes_{\mathbb Z}\mathcal O\) is not a quasi-isomorphism when \(\operatorname{Tor}_1^{\mathbb Z}(A,\mathcal O)\neq0\) (Exercise 5.3).
 

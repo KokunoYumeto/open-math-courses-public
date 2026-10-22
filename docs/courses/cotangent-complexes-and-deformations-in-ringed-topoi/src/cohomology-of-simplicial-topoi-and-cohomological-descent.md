@@ -1,6 +1,6 @@
 # Cohomology of simplicial topoi and cohomological descent
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A simplicial topos is a topos fibred over the opposite of the category of finite ordinals. For such an index category, the cohomology of the total topos has a simpler description than for a general one: the derived direct image to a topos is computed by the cosimplicial object formed by the direct images of the levels themselves, with no products over strings of arrows. This gives a spectral sequence from the cohomology of the levels, and it applies to every fibred topos through an associated simplicial topos. Two applications follow. The décalage of a simplicial topos is cohomologically trivial over its augmentation. For a simplicial object \(X\) of a topos \(T\), the derived direct image of the inverse image of a complex \(E\) is \(R\underline{\operatorname{Hom}}(\mathbb Z(X),E)\); so a morphism of simplicial objects that induces a quasi-isomorphism of free abelian sheaves induces an isomorphism on cohomology. For hypercoverings this is cohomological descent, valid in every topos.
 

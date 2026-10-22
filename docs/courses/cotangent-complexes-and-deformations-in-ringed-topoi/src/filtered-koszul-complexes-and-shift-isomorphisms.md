@@ -1,6 +1,6 @@
 # Filtered Koszul complexes and the shift isomorphisms
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 22 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 The shift formulas \(LS^n(E[1])\cong L\Lambda^n(E)[n]\) and \(L\Lambda^n(E[1])\cong L\Gamma^n(E)[n]\) come from the Koszul complexes of the exact sequence \(0\to E\to C(E)\to E[1]\to0\) of the cone. This lesson filters the Koszul complexes and derives the shift formulas on the bounded above filtered and graded derived categories of a ringed topos. It proves:
 

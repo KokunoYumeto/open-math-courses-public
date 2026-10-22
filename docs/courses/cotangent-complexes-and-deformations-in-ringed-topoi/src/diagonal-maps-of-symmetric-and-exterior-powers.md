@@ -1,6 +1,6 @@
 # Diagonal maps of symmetric and exterior powers
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 22 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 For modules \(L\) and \(M\) over a commutative ring of a topos, multiplying elementary tensors factor by factor gives homomorphisms of algebras
 \[

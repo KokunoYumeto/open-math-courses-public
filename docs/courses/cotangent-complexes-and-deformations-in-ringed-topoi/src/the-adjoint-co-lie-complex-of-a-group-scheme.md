@@ -1,6 +1,6 @@
 # The adjoint co-Lie complex of a group scheme
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 21 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 Let \(G\) be a group scheme over \(S\), flat and locally of finite presentation. Conjugation makes \(G\) act on its co-Lie complex \(\ell_G\); on the module of invariant differential forms this is the coadjoint action. This lesson constructs \(\ell_G\) with this action, as an object of the derived category of the classifying topos of \(G\), and uses it to compute the cotangent complex of the nerve \(N(G)\) over \(S\). The construction is descent along a torsor over a simplicial scheme. The nerve \(P=N(G,G)\) of \(G\) acting on itself by left translations maps to \(N(G)\), and in each degree this map is a torsor under the opposite group \(G^{\mathrm o}\), acting by right translations. The first section extends descent along torsors, and the co-Lie complex and the Atiyah class of a torsor, from schemes to diagrams of schemes. The co-Lie complex of \(P\) over \(N(G)\) is the Zariski form of the adjoint co-Lie complex. The main theorem is a distinguished triangle
 \[

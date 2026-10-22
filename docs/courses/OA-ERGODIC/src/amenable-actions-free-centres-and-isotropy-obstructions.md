@@ -1,12 +1,12 @@
 # Amenable actions, free centres, and isotropy obstructions
 
-*Original course text, October 2026. Original expression and the native diagram are public domain (CC0).*
+*Original course text, October 2026. Original expression and the native diagrams are public domain (CC0).*
 
 ## Introduction
 
 Amenability gives finite approximations to the principal orbit relation. Freeness lets us use those approximations for an action on a field of factors: the two endpoints determine its group label. Faithfulness alone says that no group element acts trivially on the entire centre. A nonidentity element may still fix a positive part of the centre and act nontrivially inside its fibres.
 
-This distinction affects Takesaki III, Chapter XIII, §4, Exercise 1. Its printed hypothesis is faithful and ergodic; Exercises 2 and 3 instead say free and ergodic. We give an explicit counterexample to the localization and cocycle-conjugacy claims under Exercise 1's faithful hypothesis, prove the corrected free-centre assertion, and solve Exercises 2 and 3 at their stated scope. The source exercise block assumes separability or countability throughout.
+The printed exercises of Takesaki III, Chapter XIII, §4 distinguish two hypotheses. Exercise 1 assumes a faithful ergodic centre action; Exercises 2 and 3 assume a free ergodic centre action. Exercises 1(b) and 3 require \(\overline{\operatorname{Int}(N)}=\operatorname{Aut}(N)\), meaning density of inner automorphisms, rather than equality of the two groups. The source exercise block assumes separability or countability throughout. Theorem 2.3 gives a faithful-centre counterexample to Exercise 1. Theorem 2B.2 disproves the direct unitary-perturbation conclusion of Exercise 3 in the prescribed tensor coordinates under its dense-inner hypothesis. Theorems 3.1 and 3.2 distinguish the all-inner direct correction from dense-inner cocycle conjugacy. Theorem 4.1 proves Exercise 2 at nonsingular scope.
 
 The prerequisites are the complete countable-action localization in [Ancillary actions and unitary corrections](ancillary-actions-and-unitary-corrections.md#3-from-an-action-to-an-orbit-cocycle), its Borel inner-unitary section in Lemma 1.1, and the finite-stage lifting proof in [Compatible lifts and cohomology reduction](compatible-lifts-and-cohomology-reduction.md#3-removing-a-two-cocycle). [Invariant means on measured relations](invariant-means-on-measured-relations.md#6-increasing-finite-relations) proves the amenable principal relation theorem. The exact nonsingular array refinement and compatible matrix approximation are [Matching sets and nonsingular dyadic arrays](matching-sets-and-nonsingular-dyadic-arrays.md#5-exact-refinement-binary-coding-and-one-generator), Theorem 5.2 and Corollary 5.3. These results include their stated standard Borel and operator-theory prerequisites.
 
@@ -18,7 +18,7 @@ The three source exercises use the same amenable orbit relation, but ask for dif
 
 **Then remove the scalar defect over a free centre.** Countable localization gives \(D_g(y)\). Freeness makes the label of \((y,x)\) unique, so Proposition 1.1 turns these fields into \(b(y,x)\). The [Borel inner-unitary section](ancillary-actions-and-unitary-corrections.md#1-automorphisms-as-a-polish-group) chooses \(v(y,x)\), but these choices may have the scalar composition defect (3.2). The [compatible lifting theorem](compatible-lifts-and-cohomology-reduction.md#3-removing-a-two-cocycle) removes that defect by finite-class root transports which agree at every later stage. Its finite-stage proof assumes an exhaustion; it does not use the conclusion of the present exercise. The amenable-relation theorem supplies that exhaustion.
 
-The coherent implementers \(w\) yield a \(\beta\)-cocycle \(W\). Equation (3.5) checks that \(u_g=W_g^*\) is an \(\alpha\)-cocycle and makes \(\operatorname{Ad}(u_g)\alpha_g=\beta_g\). The order of the adjoints matters; Exercise 6.5 gives an explicit failure of the other order. This is the route for Exercise 5.3 and for the free-centre correction in Exercise 5.1. It uses neither nonatomicity nor ergodicity. Exercise 6.4 constructs the same coherent transports directly on a countable atomic orbit.
+The coherent implementers \(w\) yield a \(\beta\)-cocycle \(W\). Equation (3.5) checks that \(u_g=W_g^*\) is an \(\alpha\)-cocycle and makes \(\operatorname{Ad}(u_g)\alpha_g=\beta_g\). The order of the adjoints matters; Exercise 6.5 gives an explicit failure of the other order. Under the all-inner hypothesis, this is the direct correction used in Exercises 5.1 and 5.3. With only density of inner automorphisms, Theorem 3.2 also changes the fibre coordinates; Theorem 2B.2 shows why that extra automorphism can be necessary. It uses neither nonatomicity nor ergodicity. Exercise 6.4 constructs the same coherent transports directly on a countable atomic orbit.
 
 **Finally retain matrix transports and generate the diagonal.** Exercise 5.2 instead uses [exact nonsingular array refinement](matching-sets-and-nonsingular-dyadic-arrays.md#5-exact-refinement-binary-coding-and-one-generator). First the unitary \(J\) identifies the free crossed product with its principal relation algebra. Refine the arrays so that their transports retain the old maps and their cell partitions approximate a generating family of measurable sets. Equation (4.2) gives genuine increasing scalar matrix algebras, including their units and exact inclusions.
 
@@ -166,6 +166,207 @@ They must be equal as fields on a positive set, but their common scalar factor i
 
 *Figure 1. The upper panel shows the exact corner \(E=Y\times\{H\}\), of probability \(1/6\), in the faithful action of Lemma 2.1. The commuting stabilizers \(a,b\) have inner implementers \(P,Q\) with \(PQ=-QP\). Conjugation hides the sign, while the two unitary cocycle products in (2.10) expose it. The lower panels show the free-centre repair in Theorem 3.1 and the exact matrix inclusion in Theorem 4.1. The coset action is transitive but not free; the drawn corner is one of six cosets, not the whole diffuse base. Proof locators: Propositions 1.1 and 2.2, Theorem 2.3, equations (3.1)–(3.4) and (4.2). Human source: Takesaki III, Chapter XIII, §4, Exercises 1–3; the counterexample and diagram are original course work.*
 
+## 2A. A lifting criterion for the stabilizer action
+
+The original fibre action may fail to descend even when a unitary perturbation can remove it. For the induced actions used in Section 2, the distinction has an exact description.
+
+Let \(K\) be any countable group, let \(H\le K\), and give the countable set \(D=K/H\) a probability \(\omega\) with \(\omega(\{d\})>0\) for every \(d\). Keep the Bernoulli shift \((Y,\nu,S)\) of Lemma 2.1. On \(X=Y\times D\), with probability \(\nu\times\omega\), let \(\Gamma=\mathbb Z\times K\) act by (2.4). This action is nonsingular. Choose representatives \(r(d)\), with \(r(H)=e\), and define \(\kappa\) by (2.5).
+
+Let \(N\) be a factor with separable predual and let
+\[
+ \varphi:H\longrightarrow\operatorname{Int}(N)
+ \tag{2A.1}
+\]
+be a homomorphism. On \(M=L^\infty(X)\overline\otimes N\) define
+\[
+ \begin{aligned}
+ (\alpha_{(n,k)}m)(y,d)
+ &=\varphi\!\left(\kappa(k,k^{-1}d)\right)\\
+ &\qquad\bigl(m(S^{-n}y,k^{-1}d)\bigr).
+ \end{aligned}
+ \tag{2A.2}
+\]
+The countably valued fibre automorphisms and the nonsingular base changes make these normal automorphisms. The cocycle identity for \(\kappa\) proves the action law. Write \(\beta\) for the simple lifting of this same centre action.
+
+**Theorem 2A.1 (unitary lifting is the exact obstruction).** The following are equivalent:
+
+1. There are a unitary \(\alpha\)-cocycle \(u\) and a normal \(\theta\in\operatorname{Aut}(M)\) such that \(\theta\alpha^u_g\theta^{-1}=\beta_g\) for all \(g\in\Gamma\).
+2. The homomorphism \(\varphi\) has a genuine unitary lift: there is a homomorphism \(V:H\to\mathcal U(N)\) such that \(\operatorname{Ad}V_h=\varphi(h)\) for every \(h\in H\).
+
+If these conditions hold, one can take \(\theta=\operatorname{id}\). Amenability of \(K\) is not needed for the equivalence.
+
+*Proof of sufficiency.* Given \(V\), set, for \(g=(n,k)\),
+\[
+ W_g(y,d)=V_{\kappa(k,k^{-1}d)},\qquad
+ u_g=W_g^*.
+ \tag{2A.3}
+\]
+These are measurable unitary fields, since \(D\) and \(H\) are countable. The values are independent of \(y\). For \(g=(n,k)\) and \(g'=(m,l)\), the Schreier identity gives
+\[
+ \begin{aligned}
+ W_g\beta_g(W_{g'})(y,d)
+ &=V_{\kappa(k,k^{-1}d)}
+   V_{\kappa(l,l^{-1}k^{-1}d)}\\
+ &=V_{\kappa(kl,l^{-1}k^{-1}d)}
+ =W_{gg'}(y,d).
+ \end{aligned}
+ \tag{2A.4}
+\]
+Moreover \(\alpha_g=\operatorname{Ad}(W_g)\beta_g\). Consequently
+\[
+ \begin{aligned}
+ u_g\alpha_g(u_{g'})
+ &=\beta_g(W_{g'}^*)W_g^*\\
+ &=W_{gg'}^*=u_{gg'},
+ \qquad \alpha^u_g=\beta_g.
+ \end{aligned}
+ \tag{2A.5}
+\]
+Thus the required cocycle works without a base conjugacy.
+
+*Proof of necessity.* Suppose condition 1 holds, and put \(e=\mathbf1_{Y\times\{H\}}\). This central projection is nonzero because \(\omega(\{H\})>0\). Each \(h\in H\), regarded as \((0,h)\in\Gamma\), fixes this base corner; on it \(\alpha_h=\varphi(h)\) and \(\beta_h=\operatorname{id}\).
+
+Inner perturbation fixes the centre. The assumed conjugacy therefore makes \(\theta|_{L^\infty(X)}\) commute with every centre transformation. For a central \(f\) and \(h\in H\),
+\[
+ \theta(e)\beta_h(f)
+ =\theta\!\left(e\beta_h(\theta^{-1}f)\right)
+ =\theta(e)f.
+ \tag{2A.6}
+\]
+Test this identity on a countable separating Borel family on \(X\). It follows that \(h\) fixes almost every base point in the support of \(\theta(e)\). Hence the simple lifting \(\beta_h\) is the identity on \(\theta(e)M\). Conjugating back shows that \(\alpha^u_h\) is the identity on \(eM\).
+
+Choose measurable unitary representatives of the countably many \(u_h\)'s. On \(Y\times\{H\}\), the preceding identity and the cocycle law give
+\[
+ \begin{aligned}
+ \varphi(h)&=\operatorname{Ad}(u_h(y,H)^*),\\
+ u_{hh'}(y,H)
+ &=u_h(y,H)\varphi(h)(u_{h'}(y,H))\\
+ &=u_{h'}(y,H)u_h(y,H).
+ \end{aligned}
+ \tag{2A.7}
+\]
+All these equalities hold on one conull subset of \(Y\). To obtain the automorphism equality simultaneously, test a countable ultraweakly dense subset of the unit ball of \(N\), then use normality. Countability of \(H\) handles all products and all tests on the same set. Choose any \(y_0\) in it and put \(V_h=u_h(y_0,H)^*\). Taking adjoints in (2A.7) gives \(V_{hh'}=V_hV_{h'}\), and the first line gives \(\operatorname{Ad}V_h=\varphi(h)\). These are actual unitaries in \(N\). The point is chosen only after selecting representatives and removing their common exceptional set; no evaluation of an arbitrary measurable class at a prescribed point is used. This proves condition 2. \(\square\)
+
+**Corollary 2A.2 (the scalar multiplication defect).** Choose unitaries \(v_h\) implementing \(\varphi(h)\), with \(v_e=1\), and put
+\[
+ c(h,h')=v_hv_{h'}v_{hh'}^*\in\mathbb T1_N.
+ \tag{2A.8}
+\]
+The conditions of Theorem 2A.1 hold if and only if there are scalars \(\lambda_h\in\mathbb T\), with \(\lambda_e=1\), such that
+\[
+ \lambda_h\lambda_{h'}c(h,h')=\lambda_{hh'}1_N.
+ \tag{2A.9}
+\]
+
+*Proof.* The defect is scalar because its inner automorphism is the identity. Two unitaries implementing the same automorphism of a factor differ by a scalar. Thus any lift must be \(V_h=\lambda_hv_h\). Its homomorphism identity is precisely (2A.9), and that identity also makes this formula a lift. \(\square\)
+
+For the subgroup \(C_2\times C_2\) in Section 2, the anticommuting matrices \(P,Q\) cannot be the values of a representation of the commuting generators, even after scalar changes. The criterion recovers the obstruction of Theorem 2.3. For a cyclic group of order two, the assignment of its generator to \(P\) is already a genuine representation. Exercise 6.6 gives a faithful nonfree centre action of that kind. Its original fibre action fails descent, but its unitary perturbation is the simple lifting. Thus original descent and cocycle untwisting are different conditions.
+
+![A Schreier-induced action can be untwisted exactly when its stabilizer homomorphism has a genuine unitary lift](figures/stabilizer-unitary-lift.svg)
+
+*Figure 2. The equivalence is Theorem 2A.1, including arbitrary normal algebra conjugacy in the necessity direction. Corollary 2A.2 gives the scalar equation. The two examples use the same matrices \(P,Q\) as (2.1); the displayed positive example is Exercise 6.6, with the stated coset representatives and source/range convention. The criterion concerns these induced actions, not all fields of stabilizers. Source context: Takesaki III, XIII.4, Exercise 1, printed page 79.* [Full-size diagram](figures/stabilizer-unitary-lift.svg).
+
+## 2B. Dense inner automorphisms do not give a direct unitary correction
+
+The closure of \(\operatorname{Int}(N)\) in the printed hypotheses of source Exercises 1 and 3 is significant. The topology is pointwise norm convergence on the predual, as in Lemma 1.1 of the ancillary lesson. We construct a factor satisfying that density hypothesis and a free ergodic centre action whose fibre motion cannot be removed by a unitary perturbation in the prescribed tensor decomposition.
+
+**Lemma 2B.1 (a dense-inner factor with an outer shift).** Let \(\mathcal A\) be the unital algebraic union of the finite matrix tensor products on the integer coordinates, each supplied with normalized matrix trace. In its product-trace GNS representation put
+\[
+ \begin{aligned}
+ R&=\left(\bigotimes_{j\in\mathbb Z}
+       (M_2(\mathbb C),\operatorname{tr}_2)\right)'',\\
+ F_m&=\bigotimes_{j=-m}^{m}M_2(\mathbb C)
+       \subset R,\qquad m\ge0.
+ \end{aligned}
+ \tag{2B.1}
+\]
+Here the first line denotes the von Neumann closure in that GNS representation. Then \(R\) is an infinite-dimensional finite factor with separable predual and faithful normal tracial state \(\tau\). Every normal automorphism of \(R\) is a limit of inner automorphisms in the stated predual topology. Nevertheless the coordinate shift
+\[
+ \sigma(x^{(j)})=x^{(j+1)}
+ \quad(x\in M_2(\mathbb C))
+ \tag{2B.2}
+\]
+is a normal outer automorphism of \(R\).
+
+*Proof: trace, approximation and factoriality.* The algebraic product trace is positive and faithful on each finite matrix algebra, and is compatible with the unital inclusions. It therefore defines the GNS Hilbert space and its cyclic vector \(\Omega\). Right multiplication gives a commuting representation of the same algebra, also cyclic on \(\Omega\). Thus \(\Omega\) is separating for \(R\): if \(a\Omega=0\), commutation makes \(a\) vanish on the dense right-multiplication vectors. The vector state \(\tau\) is normal and faithful. The finite-level trace identity passes to \(R\) by bounded strong-star approximation, so \(\tau\) is tracial. Finite Pauli tensors span a countable dense family of vectors; the GNS space and the predual of \(R\) are separable.
+
+Partial trace on the complementary coordinates gives maps \(E_m:\mathcal A\to F_m\). They are positive, unital, norm contractive, trace preserving and \(F_m\)-bimodular. They extend normally to \(R\). For an explicit extension, choose matrix units \((e_{ij})\) in \(F_m=M_d(\mathbb C)\), where \(d=2^{2m+1}\), and use
+\[
+ E_m(x)=d\sum_{i,j=1}^{d}\tau(e_{ji}x)e_{ij}.
+ \tag{2B.3}
+\]
+This formula is normal and agrees with partial trace on \(\mathcal A\). Bounded strong approximation from the latter preserves positivity, its norm bound and its bimodule identities. On the GNS Hilbert space, \(E_m(x)\Omega\) is the orthogonal projection of \(x\Omega\) onto \(F_m\Omega\). These subspaces increase to a dense union. Hence
+\[
+ \|E_m(x)-x\|_2\longrightarrow0,
+ \qquad \|x\|_2=\tau(x^*x)^{1/2}.
+ \tag{2B.4}
+\]
+If \(z\in Z(R)\), bimodularity makes \(E_m(z)\) central in \(F_m\), and trace preservation gives \(E_m(z)=\tau(z)1\). Equation (2B.4) and faithfulness show \(z=\tau(z)1\). Thus \(R\) is a factor. Its faithful finite trace makes it finite. The unbounded sizes of its unital matrix subalgebras make it infinite dimensional.
+
+*Proof: every automorphism is approximated by inner ones.* First \(\tau\) is the only normal tracial state on \(R\). A normal tracial state restricts to the unique normalized trace on every \(F_m\), and the union of these algebras is ultraweakly dense. Consequently every normal automorphism \(\theta\) preserves \(\tau\).
+
+We use the finite-factor projection comparison argument explicitly. If projections \(p,q\) in a finite factor have equal trace, a maximal orthogonal family of partial isometries from subprojections of \(p\) to subprojections of \(q\) has a strong sum \(v\). Nonzero residual projections on both sides would give a nonzero element between those corners, whose polar part would extend the family. The corner is nonzero because the central support of any nonzero projection in a factor is one. If just one residual projection remained, equal finite traces and faithfulness would rule it out. Thus \(v^*v=p\) and \(vv^*=q\). Zorn's lemma supplies the maximal family; the sums exist since their initial projections and final projections are separately orthogonal.
+
+For fixed \(m\), take matrix units \((e_{ij})\) of \(F_m\) and put \(f_{ij}=\theta(e_{ij})\). The projections \(e_{11},f_{11}\) both have trace \(1/d\). Choose \(v\) with \(v^*v=e_{11}\), \(vv^*=f_{11}\), and set
+\[
+ u_m=\sum_{i=1}^{d}f_{i1}v e_{1i}.
+ \tag{2B.5}
+\]
+The matrix-unit identities give \(u_m^*u_m=u_mu_m^*=1\) and \(u_me_{ij}u_m^*=f_{ij}\). Thus \(\operatorname{Ad}u_m=\theta\) on the whole \(F_m\). For fixed \(x\in R\), fixed \(l\) and \(m\ge l\), trace preservation yields
+\[
+ \|u_mxu_m^*-\theta(x)\|_2
+ \le2\|x-E_l(x)\|_2.
+ \tag{2B.6}
+\]
+First choose \(l\) using (2B.4); then let \(m\) increase. This proves pointwise \(L^2\) convergence. The inverse automorphisms converge pointwise in \(L^2\) too, by applying the same identity to \(\theta^{-1}(x)\).
+
+For clarity, this is convergence in the required predual topology. The trace-preserving GNS unitaries \(U_m[x]=[u_mxu_m^*]\) converge strongly to \(U_\theta[x]=[\theta(x)]\), first on the dense algebra vectors and then everywhere. Their adjoints converge strongly as well, by the inverse calculation. Conjugation of a vector functional therefore converges in norm: its two vectors are acted on by \(U_m^*\), and both converge in Hilbert norm. Finite sums of restricted vector functionals are norm dense in the normal predual, since that predual is the quotient of the trace-class operators in this representation. Approximation by those finite sums proves \(\|\rho\circ\operatorname{Ad}u_m-\rho\circ\theta\|\to0\) for every \(\rho\in R_*\). This proves density for every automorphism, not only for the shift below.
+
+*Proof: the shift is outer.* Coordinate translation preserves the algebraic product trace, so its action on algebra vectors extends to a unitary fixing \(\Omega\). This implements a normal automorphism \(\sigma\) of \(R\). Let \(P_j\) denote the matrix \(P\) of (2.1) in coordinate \(j\). If \(\sigma=\operatorname{Ad}w\) for \(w\in\mathcal U(R)\), choose \(m\) so that \(a=E_m(w)\) satisfies \(\|w-a\|_2<1/4\). For \(j>m+1\), \(a\) commutes with \(P_j\), and hence
+\[
+ \begin{aligned}
+ \|\sigma(P_j)-P_j\|_2
+ &=\|[w,P_j]\|_2\\
+ &\le2\|w-a\|_2<\tfrac12.
+ \end{aligned}
+ \tag{2B.7}
+\]
+But distinct tensor coordinates have product trace, with \(\tau(P_j)=0\) and \(P_j^2=1\). Therefore
+\[
+ \|P_{j+1}-P_j\|_2^2=2.
+ \tag{2B.8}
+\]
+This contradicts (2B.2) and (2B.7). The shift is outer, completing all assertions. \(\square\)
+
+**Theorem 2B.2 (the direct perturbation conclusion under density is false).** There is a normal action of the countable amenable group \(\mathbb Z\) on \(M=A\overline\otimes R\) such that \(A\) is diffuse and separable, the centre action is free and ergodic, and
+\[
+ \overline{\operatorname{Int}(R)}=\operatorname{Aut}(R),
+ \tag{2B.9}
+\]
+but no unitary \(\alpha\)-cocycle \(u\) satisfies \(\alpha^u=\beta\) in this prescribed tensor decomposition.
+
+*Proof.* Use the Bernoulli probability base \(Y\) from Lemma 2.1, with \(A=L^\infty(Y,\nu)\), and set
+\[
+ (\alpha_n m)(y)=\sigma^n(m(S^{-n}y)),
+ \qquad n\in\mathbb Z.
+ \tag{2B.10}
+\]
+The fibre automorphisms are constant and normal, and the base shifts are normal, so this is a normal action. Its centre action is the Bernoulli shift, which is ergodic and diffuse by the cylinder arguments of Lemma 2.1. It is free on an invariant conull set. Indeed, for any nonzero \(n\), being fixed by \(S^n\) forces arbitrarily many independent fair coordinates in one residue class to agree. The probability is bounded by \(2^{1-k}\) when \(k\) of these coordinates are prescribed to agree, and therefore is zero. Remove the countable union of the periodic-point sets. The group \(\mathbb Z\) is amenable by its interval Følner sets, and Lemma 2B.1 gives separability and (2B.9).
+
+If a unitary correction existed, its generator would satisfy, for every constant \(x\in R\),
+\[
+ u_1(y)\sigma(x)u_1(y)^*=x
+ \quad\text{almost everywhere}.
+ \tag{2B.11}
+\]
+Choose a measurable unitary representative of \(u_1\). A countable ultraweakly dense subset of the unit ball of \(R\) makes the equalities hold on one conull set; normality extends them to all \(x\) at every point in that set. At any such point, (2B.11) makes \(\sigma\) an inner automorphism of \(R\), contrary to Lemma 2B.1. Even a single correcting unitary for the generator is impossible, so a correcting unitary cocycle is impossible. \(\square\)
+
+This addresses the literal direct-perturbation conclusion of source Exercise 3 in the fixed tensor decomposition. With a normal change of fibre coordinates as well, the dense-inner hypothesis gives the cocycle-conjugacy result of Theorem 3.2 below. The all-inner hypothesis in Theorem 3.1 gives the stronger direct correction. These two conclusions retain different hypotheses.
+
+![Dense inner automorphisms approximate every automorphism, but an outer tensor shift cannot be removed by a pointwise inner unitary correction](figures/dense-inner-outer-shift.svg)
+
+*Figure 3. Lemma 2B.1 constructs the finite factor and proves both global density of its inner automorphisms and outerness of the shift. The distant-coordinate estimate separates pointwise approximation from one exact internal implementer. Theorem 2B.2 combines this shift with a free ergodic Bernoulli centre action; a direct correction would implement the outer shift internally at almost every fibre. Source scope: Takesaki III, XIII.4, Exercises 1 and 3, printed page 79, with the closure on the inner automorphism group retained.* [Full-size diagram](figures/dense-inner-outer-shift.svg).
+
 ## 3. Removing every inner fibre action over a free centre
 
 **Theorem 3.1 (a correction with no base conjugacy).** Suppose \(T\) is free on a conull base and its principal relation is hyperfinite. If \(\operatorname{Aut}(N)=\operatorname{Int}(N)\), there is a unitary \(\alpha\)-cocycle \(u\) with
@@ -206,6 +407,34 @@ u_g\alpha_g(u_h)
 They form an \(\alpha\)-cocycle, and \(\operatorname{Ad}(u_g)\alpha_g=\beta_g\), proving (3.1). Amenability supplies hyperfiniteness by the relation lesson, without requiring invariant measure. \(\square\)
 
 Merely selecting \(v\) does not justify (3.5); its scalar defects may persist. Over the hyperfinite principal relation the compatible lifts remove them. In the nonfree example, the commuting loops at one unit cannot be replaced by transports between distinct units.
+
+**Theorem 3.2 (the dense-inner cocycle-conjugacy conclusion).** Keep the free-centre and hyperfinite hypotheses of Theorem 3.1, but suppose only
+\[
+ \overline{\operatorname{Int}(N)}=\operatorname{Aut}(N).
+\]
+There are a normal automorphism \(\Phi\) fixing \(A\) pointwise and a unitary \(\alpha\)-cocycle \(u\) such that
+\[
+ \Phi^{-1}\alpha^u_g\Phi=\beta_g
+ \quad(g\in\Gamma).
+ \tag{3.6}
+\]
+Theorem 2B.2 shows why the same hypotheses do not imply \(\alpha^u=\beta\) in the original fibre coordinates.
+
+*Proof.* The complete ancillary-action theorem, [Theorem 4.1 of Ancillary actions and unitary corrections](ancillary-actions-and-unitary-corrections.md#4-two-corrections-that-compose-exactly), supplies \(\Phi\) and a \(\beta\)-cocycle \(v\) such that
+\[
+ \Phi^{-1}\alpha_g\Phi=\operatorname{Ad}(v_g)\beta_g.
+\]
+Put \(u_g=\Phi(v_g^*)\). The same ordered multiplication as (3.5) gives
+\[
+ \begin{aligned}
+ u_g\alpha_g(u_h)
+ &=\Phi\!\left(v_g^*
+       (\Phi^{-1}\alpha_g\Phi)(v_h^*)\right)\\
+ &=\Phi\!\left(\beta_g(v_h^*)v_g^*\right)
+ =\Phi(v_{gh}^*)=u_{gh}.
+ \end{aligned}
+\]
+Thus \(u\) is an \(\alpha\)-cocycle. Conjugating \(\operatorname{Ad}(u_g)\alpha_g\) by \(\Phi^{-1}\) cancels \(v_g\), proving (3.6). The ancillary theorem's automorphism \(\Phi\) fixes the centre and has its explicitly stated standard-form and cohomology prerequisites. \(\square\)
 
 ## 4. Compatible finite-dimensional algebras in a crossed product
 
@@ -251,19 +480,27 @@ A finite-class relation alone yields a measurable matrix field over its transver
 
 Level 1 asks for a computation or a direct application. Level 2 asks for a proof using the lesson’s framework. Level 3 combines results or examines a hypothesis whose failure changes the conclusion.
 
-**Exercise 5.1 (source §4, Exercise 1: the faithful hypothesis).** *Level 3.* For a diffuse separable \(A\), factor \(N\), countable amenable \(\Gamma\), and a faithful ergodic centre action on \(A\overline\otimes N\), assess the claimed principal-relation localization and, when all fibre automorphisms are inner, cocycle conjugacy to the simple lifting. State and prove a sufficient correction.
+**Exercise 5.1 (source §4, Exercise 1: the faithful hypothesis).** *Level 3.* For a diffuse separable \(A\), factor \(N\), countable amenable \(\Gamma\), and a faithful ergodic centre action on \(A\overline\otimes N\), assess the claimed principal-relation localization and, under the printed dense-inner hypothesis, cocycle conjugacy to the simple lifting. State and prove a sufficient correction.
 
 *Solution.* Lemma 2.1 supplies a faithful ergodic action on diffuse \(A\), with \(\Gamma=\mathbb Z\times S_4\) amenable, and (2.6) supplies a normal action on its tensor product with \(M_2(\mathbb C)\). This factor has only inner automorphisms. Proposition 2.2 nevertheless refutes the localization assertion, since on the positive corner \(E\) the identity principal arrow would have to act both trivially and by \(\operatorname{Ad}P\). Theorem 2.3 refutes the asserted cocycle conjugacy even with arbitrary \(\theta\). Its proof allows \(\theta\) to move the centre and uses the commutation of its centre restriction to transfer the fixed corner before computing (2.10).
 
+For the stronger all-inner hypothesis \(\operatorname{Aut}(N)=\operatorname{Int}(N)\), the following direct correction holds.
+
 Replacing faithful by free makes localization well-defined by Proposition 1.1. Amenability gives the hyperfinite principal relation; Theorem 3.1 gives an \(\alpha\)-cocycle with \(\alpha^u=\beta\). Thus the corrected version of both parts holds, with \(\theta=\operatorname{id}\) in the all-inner case. The initial existence and amenability of the principal relation in part (a) remain valid without freeness. The freeness qualification in part (b) is an editorial conclusion of the descent argument above.
+
+Under the printed dense-inner hypothesis, a free centre gives cocycle conjugacy with the additional normal automorphism of Theorem 3.2. Theorem 2.3 still refutes the original faithful-centre assertion, because its matrix factor satisfies even the stronger all-inner hypothesis.
 
 **Exercise 5.2 (source §4, Exercise 2: finite matrix approximation).** *Level 2.* Obtain increasing finite-dimensional star subalgebras generating the crossed product of a free ergodic amenable action on a diffuse separable abelian algebra.
 
 *Solution.* Apply Theorem 4.1. Its unitary \(J\) identifies the regular crossed product with the principal relation algebra, using freeness to make every orbit coordinate unique. The amenability theorem supplies hyperfiniteness; exact refining arrays provide matrix units with inclusion (4.2). Their generating partitions recover all diagonal projections, and the restricted group maps converge strongly to every group generator. Pulling these matrix units back by \(J\) gives the requested subalgebras. This verifies the double-commutant equality, compatibility and finite dimensionality at nonsingular scope, including type III.
 
-**Exercise 5.3 (source §4, Exercise 3: direct unitary perturbation).** *Level 2.* Let \(N\) be a separable factor with \(\operatorname{Aut}(N)=\operatorname{Int}(N)\), let \(C\) be a separable abelian algebra, and let a countable discrete amenable group act on \(N\overline\otimes C\), freely and ergodically on \(C\). Produce a unitary cocycle making the perturbed action the simple centre lifting.
+**Exercise 5.3 (source §4, Exercise 3: direct unitary perturbation).** *Level 2.* Let \(N\) be a separable factor with \(\overline{\operatorname{Int}(N)}=\operatorname{Aut}(N)\), let \(C\) be a separable abelian algebra, and let a countable discrete amenable group act on \(N\overline\otimes C\), freely and ergodically on \(C\). Assess this direct conclusion in the prescribed tensor decomposition, and state a valid conclusion with its exact hypotheses.
 
-*Solution.* Use the spatial tensor flip to write the algebra as \(C\overline\otimes N\), and realize \(C\) on a standard sigma-finite base. No diffuseness is assumed here. The free centre action gives the principal-relation homomorphism \(b\); amenability gives its hyperfinite exhaustion. Theorem 3.1 selects implementing unitaries, removes their scalar composition defect by compatible finite transports, and defines \(u_g=W_g^*\). Equation (3.5) checks the \(\alpha\)-cocycle identity and (3.1) gives the desired perturbed action. Flip back to the original tensor order. Ergodicity is harmless and was not needed for this proof; atomic bases are included.
+*Solution.* **Literal dense-inner conclusion.** The factor and action in Theorem 2B.2 satisfy the printed separability, density, amenability, freeness and ergodicity hypotheses. A unitary perturbation to the simple lifting would already make its outer tensor shift inner at each fibre for the generator. Thus the direct conclusion in these prescribed tensor coordinates is false. The spatial tensor flip puts that counterexample in the source order \(N\overline\otimes C\) as well.
+
+**All-inner sufficient case.** Use the spatial tensor flip to write the algebra as \(C\overline\otimes N\), and realize \(C\) on a standard sigma-finite base. No diffuseness is assumed here. The free centre action gives the principal-relation homomorphism \(b\); amenability gives its hyperfinite exhaustion. Theorem 3.1 selects implementing unitaries, removes their scalar composition defect by compatible finite transports, and defines \(u_g=W_g^*\). Equation (3.5) checks the \(\alpha\)-cocycle identity and (3.1) gives the desired perturbed action. Flip back to the original tensor order. Ergodicity is harmless and was not needed for this proof; atomic bases are included.
+
+**Dense-inner cocycle conjugacy.** Theorem 3.2 gives a normal \(\Phi\) fixing the centre and an \(\alpha\)-cocycle \(u\) such that \(\Phi^{-1}\alpha^u_g\Phi=\beta_g\). It applies at the printed dense-inner scope, including atomic bases where permitted. Omitting \(\Phi\) requires additional information; Theorem 3.1 supplies a direct correction when every fibre automorphism is inner.
 
 ## 6. Further exercises with solutions
 
@@ -287,8 +524,48 @@ Replacing faithful by free makes localization well-defined by Proposition 1.1. A
 
 *Solution.* Taking adjoints gives \(W_{gh}^*=\beta_g(W_h^*)W_g^*\). The first expression in (3.5) is exactly this product, so \(W^*\) is an \(\alpha\)-cocycle. A \(\beta\)-cocycle would instead require \(W_g^*\beta_g(W_h^*)\). These factors need not commute. For an explicit failure, take the trivial base action of the free group on two generators and its unitary representation sending the generators to \(P\) and \(Q\); this \(W\) is a \(\beta\)-cocycle. For the product of the two generators, the required \(\beta\)-cocycle formula for \(W^*\) is \(PQ\), while the actual adjoint is \(QP=-PQ\). This example checks the algebraic orientation; it is not an amenable free-centre example.
 
+**Exercise 6.6 (faithful and nonfree with a unitary correction).** *Level 3.* Let \(K=S_3\), let \(h=(1\,2)\) and \(H=\{e,h\}\). Identify \(K/H\) with \(\{1,2,3\}\) by \(kH\mapsto k(3)\), and take
+\[
+ r(1)=(1\,3),\qquad r(2)=(2\,3),\qquad r(3)=e.
+\]
+Use uniform coset probability and the Bernoulli shift of Lemma 2.1. Put \(N=M_2(\mathbb C)\) and \(\varphi(h)=\operatorname{Ad}P\), with \(P\) from (2.1). Prove that the centre action of \(\mathbb Z\times S_3\) is faithful, ergodic and nonfree. Does the original fibre action descend? Produce its correcting cocycle. For \(c=(1\,2\,3)\), compute \(\kappa(c,d)\) and the range-coordinate values \(W_{(0,c)}(y,d)\), in the order \(d=1,2,3\). Permutations act on the left and products compose from right to left.
+
+*Solution.* A nonzero shift power acts nontrivially on the Bernoulli measure algebra. An element of \(S_3\) acting trivially on all three cosets lies in the core of \(H\). This core is trivial: the conjugacy class of \(h\) has three transpositions, while \(H\) contains just one. Hence the full centre action is faithful. Transitivity on the three cosets and shift ergodicity prove ergodicity, as in Lemma 2.1. The base is diffuse for the same unused-coordinate partition argument. But \(h\) fixes \(E=Y\times\{3\}\), of probability \(1/3\), so the action is not free.
+
+On this corner the fibre automorphism is \(\operatorname{Ad}P\ne\operatorname{id}\). Proposition 1.1 therefore excludes descent of the original action. Nevertheless \(V_e=1\), \(V_h=P\) is a representation of \(H\), since \(P^2=1\). Theorem 2A.1 supplies the correcting cocycle
+\[
+ u_{(n,k)}(y,d)=V_{\kappa(k,k^{-1}d)}^*.
+\]
+It satisfies \(\alpha^u=\beta\) with \(\theta=\operatorname{id}\). Thus freeness is sufficient for the general theorem in Section 3, but is not necessary for this particular action to be untwisted.
+
+The given representatives yield
+\[
+ \begin{array}{c|ccc}
+ d&1&2&3\\\hline
+ \kappa(c,d)&e&h&h\\
+ W_{(0,c)}(y,d)&P&1&P
+ \end{array}
+\]
+The second row is indexed by the source coset. For the last row substitute \(c^{-1}d\), whose values are \(3,1,2\), as required in (2A.3). In particular, the two rows cannot be identified entry by entry. Equation (2A.4) proves all cocycle products, including the relation \(c^3=e\); here its three matrix factors are a cyclic rearrangement of \(P,1,P\), with product one. The nonfree stabilizer creates no scalar obstruction because its implementing representation is genuine.
+
+**Exercise 6.7 (pointwise approximation is not one internal shift).** *Level 3.* In the factor of Lemma 2B.1, cyclically permute the coordinates \(-m,-m+1,\ldots,m\), sending \(j\) to \(j+1\) for \(-m\le j<m\) and \(m\) to \(-m\), and fix all other coordinates. Construct a unitary \(v_m\in F_m\) implementing this finite permutation. Prove that \(\operatorname{Ad}v_m\to\sigma\) in the predual topology. Show nevertheless that
+\[
+ \sup_{\|x\|\le1}
+ \|v_mxv_m^*-\sigma(x)\|_2\ge\sqrt2
+ \quad\text{for every }m.
+\]
+
+*Solution.* View \(F_m\) as the full operator algebra on \(\bigotimes_{j=-m}^{m}\mathbb C^2\). Permuting the tensor coordinates of elementary vectors gives a basis permutation unitary \(v_m\) in this very matrix algebra. Its conjugation carries the matrix algebra at \(j\) to the one at the specified permuted coordinate. Thus for any fixed finite tensor \(a\), \(v_mav_m^*=\sigma(a)\) once its support is contained in \([-m,m-1]\). The inverse permutations likewise agree eventually with \(\sigma^{-1}\) on every fixed finite tensor. Product-trace preservation, approximation (2B.4), and the GNS vector-functional argument in Lemma 2B.1 give predual convergence.
+
+For fixed \(m\), choose \(j>m+1\) and set \(x=P_j\). This is a unitary of norm one, and \(v_m\) commutes with it. Hence
+\[
+ \|v_mP_jv_m^*-\sigma(P_j)\|_2
+ =\|P_j-P_{j+1}\|_2=\sqrt2.
+\]
+This proves the lower bound. The test coordinate may depend on \(m\), so the bound is compatible with pointwise convergence at every fixed \(x\). It also explains why these approximations do not provide a single unitary implementing \(\sigma\).
+
 ## References and source context
 
-[Takesaki] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8). Chapter XIII, §4, Exercises 1–3 are on printed page 79. Exercise 1 says faithful; Exercises 2 and 3 say free. The preceding cohomology theorem is XIII.3.26, and the amenability theorem is XIII.4.10. Their complete course proofs and explicit prerequisites are linked above.
+[Takesaki] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8). Chapter XIII, §4, Exercises 1–3, printed page 79. Exercise 1 says faithful; Exercises 2 and 3 say free. The hypotheses in Exercises 1(b) and 3 are \(\overline{\operatorname{Int}(N)}=\operatorname{Aut}(N)\). The lifting antecedent is Corollary XIII.3.25, printed pages 47–48; the general cohomology reduction is Theorem XIII.3.26, printed page 48; the amenability theorem is XIII.4.10. The direct fixed-coordinate assertion and cocycle-conjugacy conclusion are distinguished in Sections 2B–3. The complete course lifting, refinement and amenability proofs used here are linked above.
 
 The chapter's closing notes place the orbit approach after Murray and von Neumann's crossed products, Dye's invariant-probability work and Krieger's nonsingular extensions. They connect Mackey's groupoid viewpoint with measured and topological groupoid theory, Cartan diagonals and geometry, and attribute the amenability characterization of AF measured principal groupoids to Connes, Feldman and Weiss. This is the source's historical context; the present exercise solutions prove neither the classification by flow of weights nor the general nonprincipal disintegration theory.

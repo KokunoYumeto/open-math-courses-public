@@ -1,6 +1,6 @@
 # Differential graded modules in a topos
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 21 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 The normalized complex of a simplicial ring \(R\) is a graded commutative differential graded ring \(NR\), concentrated in nonpositive degrees, and the normalized complex of an \(R\)-module is a differential graded \(NR\)-module. This lesson develops the derived categories of differential graded modules over a differential graded ring of a topos, with the features that hold when the ring is concentrated in nonpositive degrees: truncations, bounded derived categories that are full subcategories, truncated rings, resolutions that respect bounds, and bounds for derived Hom, derived internal Hom, derived tensor products and extension of scalars. Extension and restriction of scalars are functorial in the ring up to quasi-isomorphism. The derived functors on all differential graded modules come from the AI-integrated Stacks project, which constructs them with good and K-injective resolutions. The last section proves that normalization carries the derived tensor products and extensions of scalars of simplicial modules to those of differential graded modules.
 

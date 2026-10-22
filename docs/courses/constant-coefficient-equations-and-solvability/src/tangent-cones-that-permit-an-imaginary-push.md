@@ -4,7 +4,7 @@
 
 A characteristic polynomial may vanish at a real frequency, yet become nonzero when that frequency is pushed a little in a permitted imaginary direction. The permitted directions depend on the tangent polynomial at the frequency. This lesson explains their variation and proves that a compact family of such pushes can use one small parameter and one power bound.
 
-The complete proof follows the examples and solutions. Read [One-sided root bounds and Taylor order](../AN02-L193.html#4-the-zero-bound-forces-the-taylor-order), Theorem 4.1, [Real roots and their convex component](../AN02-L192.html#4-pass-to-multiple-roots-and-obtain-convexity), Theorem 4.1, and [Cauchy bounds and root counts](cauchy-bounds-and-root-counts.md), Lemma 1.1, Theorem 2.2 and Corollary 2.3. The argument below proves the tangent-order adapter and uses these available proofs for its root counts and cone geometry.
+The complete proof follows the examples and solutions. Read [One-sided root bounds and Taylor order](../AN02-L193.html#4-the-zero-bound-forces-the-taylor-order), Theorem 4.1, [Real roots and their convex component](../AN02-L192.html#4-pass-to-multiple-roots-and-obtain-convexity), Theorem 4.1, and [Cauchy bounds and root counts](../AN02-L045.html), Lemma 1.1, Theorem 2.2 and Corollary 2.3. The argument below proves the tangent-order adapter and uses these available proofs for its root counts and cone geometry.
 
 ## The object and its positive polar
 
@@ -483,11 +483,11 @@ Extend \(\chi E\) by zero outside its support. Since \(N\in\Gamma_\xi\) and each
 
 The local tube in Section 2 also controls a small holomorphic extension of a permitted field. At a characteristic center, choose a compact smaller cone containing \(N\), nearby field values, and finitely many other permitted testing directions, then thicken it by Section 1. Its positive functional supplies the norm estimate when imaginary directions are added. Specifically if \(y\) and \(V\) lie in such a fixed smaller angular cone and \(|V|\ge a>0\), then \(\ell(y+\varepsilon V)\ge b(|y|+\varepsilon a)\) while \(|\ell(z)|\le\|\ell\||z|\). Small errors relative to \(|y|+\varepsilon\) preserve that lower bound and the larger cone's angular margin. For the local holomorphic field extension the imaginary-direction error is \(O(\varepsilon|y|)\), so it is such a relative error after shrinking \(|y|,\varepsilon\). The real displacement is also \(O(\varepsilon|y|)\) and stays in the local real ball. Therefore (LC5) bounds its reciprocal by \(C(|y|+\varepsilon)^{-\mu}\) with the required fixed exponent. Degree-zero centers use (LC12). Distributional boundary limits, multiplication and restriction use the corresponding analytic wavefront theorems.
 
-## Exact examples, illustrations and learner checks
+## Examples and illustrations
 
-The learner above supplies four computed examples and eight exercises with full solutions totalling 100 points. The two reproducible figures depict exact tangent-component slices and an exact imaginary-deformation calculation; finite plots are explanatory checks and are not used as proofs of (LC5), (LC14) or (LC17).
+The four examples and eight exercises above include complete solutions. The two reproducible figures depict exact tangent-component slices and an exact imaginary-deformation calculation; finite plots are explanatory checks and are not used as proofs of (LC5), (LC14) or (LC17).
 
-## Human credit and retained proof obligations
+## References
 
 [Michael F. Atiyah, Raoul Bott and Lars Gårding, *Lacunas for hyperbolic differential operators with constant coefficients I* (1970)](https://projecteuclid.org/journalArticle/Download?urlid=10.1007%2FBF02394570), Lemma 5.1, Lemma 5.9 and Corollary 5.11, treat local roots and local-cone semicontinuity, including perturbations of the polynomial. This proof keeps \(F\) fixed and uses a root halfplane, a zero-free quotient and an explicitly proved Hurwitz rescaling argument. Their broader coefficient-perturbation statement is not used.
 

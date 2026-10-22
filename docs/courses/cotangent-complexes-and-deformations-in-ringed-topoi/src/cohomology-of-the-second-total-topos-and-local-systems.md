@@ -1,6 +1,6 @@
 # Cohomology of the second total topos and local systems
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 The second total topos of a fibred topos has transition maps in the other direction: an object is a family of sheaves on the levels with maps from each level to the inverse images of the later ones. Its direct images are equalizers involving base change maps, not limits of the direct images of the levels, and they do not commute with restriction to the levels. This lesson computes its cohomology under an explicit acyclicity hypothesis. The direct image factors through the simplicial topos of the fibred topos, which pulls each sheaf back from the last level of a string to the first. A standard resolution then identifies the derived direct image with that of the associated simplicial object. Cartesian objects of the two total topoi correspond, and for them the two cohomologies agree. The same method gives a base change criterion for direct images under morphisms that fix the index category.
 

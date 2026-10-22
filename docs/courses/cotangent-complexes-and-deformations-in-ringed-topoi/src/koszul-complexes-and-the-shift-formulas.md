@@ -1,6 +1,6 @@
 # Koszul complexes and the shift formulas
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 Shifting a complex by one degree turns symmetric powers into exterior powers and exterior powers into divided powers:
 \[

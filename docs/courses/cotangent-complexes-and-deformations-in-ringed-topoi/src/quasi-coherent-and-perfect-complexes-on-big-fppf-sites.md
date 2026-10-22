@@ -1,6 +1,6 @@
 # Quasi-coherent and perfect complexes on big fppf sites
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 21 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A scheme \(S\) has two natural topoi: the topos of sheaves on its Zariski site, where quasi-coherent sheaves and their cohomology live, and the big fppf topos of all schemes over \(S\), where group schemes act and torsors are locally trivial. Deformation problems for schemes with a group action are posed on the big topos and solved with cotangent complexes, which are made on the Zariski side. This lesson compares the two sides. Quasi-coherent sheaves are the same on both, with the same cohomology. A bounded complex with quasi-coherent cohomology on \(S\) has the same derived Hom groups after pullback to the big site, once the pullback is truncated from below. Complexes of perfect amplitude in \([a,b]\) on the big site all come from \(S\).
 

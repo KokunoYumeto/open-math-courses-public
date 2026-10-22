@@ -237,7 +237,171 @@ b\in L^1(Z(R),\tau)_+,\\
 \tag{68.16}
 \]
 
-The defect proved in (68.13) is \(\|\zeta-Q_\kappa P_0\zeta\|_1\). No estimate (68.16) has been inferred from it. Positive comparable transfer weights and bounded partition overlaps provide structural information; the remaining joint-density or compressed-mixing argument must still control localization under the tested ambient unitaries. General nonfactor rounding, [the actual tower comparisons in 65.14](finite-shifted-comparisons-without-coherence.md), and the other outstanding course targets remain in development.
+The defect proved in (68.13) is \(\|\zeta-Q_\kappa P_0\zeta\|_1\). No estimate (68.16) has been inferred from it. The unrestricted constant-multiplicity rounding assertion has the actual affine counterexample [BFQ.3–BFQ.4](general-tail-supports-and-controlled-tunnels.md#common-frames-central-profiles-and-the-order-of-tunnel-choices). Variable integer rounding and the unequal-support first local form retain their proved scopes. The finite-pair premise 65.14 has the separate [PG obstruction](finite-shifted-comparisons-without-coherence.md). The bare second local form still requires simultaneous physical commutator and compression control; the exact tail-profile identities below supply its central range at every prescribed finite depth.
+
+## The original cup and the joint center transfer
+
+The weighted map \(Q_\kappa\) is also an actual internal tail-center map. Its weight can be read from the original cup, with its original tracial normalization.
+
+Use the internal Jones tower of [17.14](generating-tunnels-and-classification.md#a-core-carries-its-own-ordinary-tunnel):
+
+\[
+\begin{gathered}
+L_0=M,\quad L_1=N,\\
+\mathcal C_j=R\cap L_j,\quad V_j=Z(\mathcal C_j),\\
+\mathcal C_0=R,\quad\mathcal C_1=S,\qquad
+D_j=V_j\vee V_{j+1}.
+\\ \text{(CT.1)}
+\end{gathered}
+\]
+
+Here \(L_j\) are the fixed original downward factors. Write \(c_j\in\mathcal C_j\) for their original cup: \(\mathcal C_j=\langle\mathcal C_{j+1},c_j\rangle\), with lower algebra \(\mathcal C_{j+2}\), \(E_{\mathcal C_{j+1}}(c_j)=d^{-1}1\), and \(c_jc_{j+1}c_j=d^{-1}c_j\). All algebras and traces are actual restrictions from the same tunnel.
+
+The full corner \(c_j\mathcal C_jc_j=\mathcal C_{j+2}c_j\) defines a normal center isomorphism
+
+\[
+\begin{gathered}
+\beta_j:V_j\longrightarrow V_{j+2},\qquad
+r c_j=\beta_j(r)c_j.
+\\ \text{(CT.2)}
+\end{gathered}
+\]
+
+Fullness and the whole corner are proved in 17.14; thus this definition retains every central summand. The cup belongs to a unital \(\mathrm{II}_1\) cup factor inside \(\mathcal C_j\). Trace uniqueness on that factor gives \(T_{\mathcal C_j}(c_j)=d^{-1}1\), by 51.2. Consequently
+
+\[
+\begin{gathered}
+\tau(r)=d\,\tau(rc_j)
+=d\,\tau(\beta_j(r)c_j)=\tau(\beta_j(r)).
+\\ \text{(CT.3)}
+\end{gathered}
+\]
+
+The last equality uses the original expectation onto \(\mathcal C_{j+1}\). Thus \(\beta_j\) preserves the inherited trace.
+
+**Theorem 68.6 — the cup has the transfer weight \(\kappa\).** Let \(\kappa_j\in D_j\) be the weight of 68.2 for the shifted common cup basis at stage \(j\); in particular \(\kappa_0=\kappa\). Then
+
+\[
+\begin{gathered}
+d\,E_{D_j}(c_j)=\kappa_j,\\
+E_{V_{j+1}}(\beta_j(r))
+=E_{V_{j+1}}(\kappa_jr),\qquad r\in V_j.
+\\ \text{(CT.4)}
+\end{gathered}
+\]
+
+**Proof.** It suffices to work at \(j=0\); the shifted common-factor construction in 52.1 gives the identical argument at every \(j\). Let \(K_2\subset K_1\subset K_0=K\) be the actual cup-factor triple, with cup \(c_0\), as in [11.5](tail-inclusions.md). Put \(F=K_1'\cap K\). For the common basis in 68.1 write \(G=\sum_i a_i^*a_i\), and let \(k_F\) be the normalized dual-trace density for \(K_1\subset K\).
+
+The finite matrix-trace calculation [82.1](finite-cup-densities-and-positive-cost.md#compare-the-actual-commutants) gives \(E_F(G)=d k_F\). The original cup expectation 63.5, applied to \(K_2\subset K_1\), and the adjacent dual-density identity 63.17 give
+
+\[
+\begin{gathered}
+E_F(c_0)=d^{-1}k_F,\qquad E_F(G)=d k_F.
+\\ \text{(CT.5)}
+\end{gathered}
+\]
+
+In the first equality the upper inclusion is \(K_1\subset K\). Thus its density is \(k_F\), rather than its inverse. These are finite cup-factor identities; no infinite reflected representation is used.
+
+The algebra \(D_0\) commutes with \(K_1\). The finite unitary averaging argument of [82.5](finite-cup-densities-and-positive-cost.md#reduce-to-a-finite-cup-density) applies to both \(c_0\) and \(G\): their finite \(K_1\)-unitary averages converge in norm to their \(F\)-expectations, while their \(D_0\)-expectations stay fixed. Hence
+
+\[
+\begin{gathered}
+dE_{D_0}(c_0)
+=E_{D_0}(k_F)
+=d^{-1}E_{D_0}(G)=\kappa.
+\\ \text{(CT.6)}
+\end{gathered}
+\]
+
+For \(s\in V_{j+1}\), trace preservation in CT.3 can also be applied directly under the cup. Since \(s\beta_j(r)\in\mathcal C_{j+1}\), the original expectation gives
+
+\[
+\begin{gathered}
+\tau(s\beta_j(r))
+=d\,\tau(s\beta_j(r)c_j)\\
+=d\,\tau(sr c_j)
+=\tau(s r\kappa_j).
+\\ \text{(CT.7)}
+\end{gathered}
+\]
+
+Pairing with every \(s\) proves the second identity in CT.4. \(\square\)
+
+**Theorem 68.7 — two neighboring centers retain their joint trace after two steps.** For every \(r\in V_j\) and \(s\in V_{j+1}\),
+
+\[
+\begin{gathered}
+\tau(\beta_j(r)\beta_{j+1}(s))=\tau(rs).
+\\ \text{(CT.8)}
+\end{gathered}
+\]
+
+Thus the product rule \(rs\mapsto\beta_j(r)\beta_{j+1}(s)\) extends to a normal trace-preserving *-isomorphism \(D_j\to D_{j+2}\). This assertion concerns the joint centers.
+
+**Proof.** All products below are bounded. First, \(\beta_j(r)\beta_{j+1}(s)\in\mathcal C_{j+2}\); expectation of \(c_{j+1}\) onto that algebra and CT.2 give the first line of the calculation. Next, \(\beta_j(r)s c_{j+1}\in\mathcal C_{j+1}\), so the expectation of \(c_j\) gives the second line:
+
+\[
+\begin{gathered}
+\tau(\beta_j(r)\beta_{j+1}(s))
+\\=d\,\tau(\beta_j(r)s c_{j+1})\\
+=d^2\tau(\beta_j(r)s c_{j+1}c_j)\\
+=d^2\tau(rs c_jc_{j+1})\\
+=d^2\tau(rs c_{j+1}c_jc_{j+1})\\
+=d\,\tau(rs c_{j+1})=\tau(rs).
+\\ \text{(CT.9)}
+\end{gathered}
+\]
+
+For the third equality, cycle \(c_j\) to the front and use \(c_j\beta_j(r)=rc_j\); also \(s\) commutes with \(c_{j+1}\). To insert the extra \(c_{j+1}\), use cyclicity, its projection property and its commutation with \(rs\). The next equality is the original Jones relation. Finally \(rs\) commutes with the unital cup factor \(K_{j+1}\subset\mathcal C_{j+1}\), and the functional \(x\mapsto\tau(rsx)\) on that factor is tracial. Trace uniqueness gives \(\tau(rs c_{j+1})=d^{-1}\tau(rs)\). Positivity followed by linearity justifies this for arbitrary \(r,s\).
+
+On the algebraic joint centers, CT.8 applied to products and adjoints makes the proposed map trace preserving and \(L^2\)-isometric. Faithfulness makes it well defined and injective. Applying the same identity to all even powers shows equality of operator norms, so it extends to the corresponding \(C^*\)-closures. The normal extension argument in 46.6 then applies: bounded strong approximations converge in \(L^2\), their images have the same norm bounds and \(L^2\) limits, and the inverse construction gives surjectivity onto \(D_{j+2}\). This proves a normal isomorphism of the actual von Neumann closures. \(\square\)
+
+**Corollary 68.8 — exact adjacent center kernels.** Put
+
+\[
+\begin{gathered}
+B_j=E_{V_j}|_{V_{j+1}},\qquad
+\mathsf T=Q_\kappa P_0:V_1\longrightarrow V_1.
+\\ \text{(CT.10)}
+\end{gathered}
+\]
+
+Then
+
+\[
+\begin{gathered}
+B_1\beta_0=Q_\kappa,\qquad B_0=P_0,\\
+B_{j+2}\beta_{j+1}=\beta_j B_j,\\
+B_1B_2\beta_1=\mathsf T.
+\\ \text{(CT.11)}
+\end{gathered}
+\]
+
+Moreover, for \(x\in\mathcal C_k\), \(k>i\),
+
+\[
+\begin{gathered}
+T_{\mathcal C_i}(x)\\
+=B_iB_{i+1}\cdots B_{k-1}(T_{\mathcal C_k}(x)).
+\\ \text{(CT.12)}
+\end{gathered}
+\]
+
+**Proof.** The first identity is CT.4. To prove the third, pair with every \(\beta_j(r)\in V_{j+2}\); CT.8 and CT.3 give equality of those pairings. The last identity follows by using the third at \(j=0\), followed by the first.
+
+For CT.12, a positive \(h\in V_i\) defines a normal trace \(x\mapsto\tau(hx)\) on \(\mathcal C_{i+1}\). Its factorization through \(T_{\mathcal C_{i+1}}\), from TE16, gives \(T_{\mathcal C_i}=E_{V_i}T_{\mathcal C_{i+1}}\) on \(\mathcal C_{i+1}\). Iterate this identity to \(k\), retaining all domains. \(\square\)
+
+These formulas determine the actual all-depth projection-profile ranges and their \(L^1\) stability in [TP.5–TP.6](general-tail-supports-and-controlled-tunnels.md#all-finite-depth-tail-profile-ranges). The maps are positive, unital and trace preserving. No self-adjointness of \(\mathsf T\), spatial automorphism of the ambient factors, or physical commutator estimate is assumed.
+
+**Exercise 68.7 — check the dual-density direction.** In the weighted cup model with \(p=1/5\), \(q=4/5\) and \(d=1/(pq)=25/4\), the atoms of \(F\) have trace weights \(p,q\), and \(k_F\) has eigenvalues \(q/p,p/q\). Find the two eigenvalues of \(E_F(c_0)\), and check its scalar trace.
+
+**Solution.** CT.5 gives eigenvalues \(q^2=16/25\) and \(p^2=1/25\). Their trace is \((1/5)(16/25)+(4/5)(1/25)=4/25=d^{-1}\). Using \(d^{-1}k_F^{-1}\) would instead give eigenvalues \(1/25,16/25\), with scalar trace \(13/25\), so it has the wrong cup normalization.
+
+**Exercise 68.8 — distinguish three maps.** Identify the domains and codomains of \(B_1\beta_0\), \(B_2\beta_1\) and \(B_1B_2\beta_1\).
+
+**Solution.** They are respectively \(Q_\kappa:V_0\to V_1\), \(\beta_0P_0:V_1\to V_2\), and \(Q_\kappa P_0:V_1\to V_1\). The second follows from CT.11 at \(j=0\). Replacing \(B_1\beta_0\) by the unweighted \(E_{V_1}|_{V_0}\) would discard the actual cup weight.
+
 
 ![An identity basis vector, both bounded central transitions and the weighted two-label example.](figures/core-central-transition-bounds.svg)
 
@@ -292,7 +456,7 @@ Let \(d=16/3\). Can seven orthogonal joint-center projections all have nonzero w
 
 In Example 68.2, set \(\zeta=(1,3)\) on the smaller center and \(\beta=P_0\zeta\). Compute the weighted stationarity defect and the joint distance to \(\beta\). Does Proposition 68.5 establish (68.16)?
 
-**Solution.** We have \(\beta=(2,2)\), and \(Q_\kappa\beta=(2,2)\), since \(Q_\kappa\) fixes constants. The smaller \(L^1\) defect is \((|1-2|+|3-2|)/2=1\). On all four joint pairs the larger density is \(2\), so the joint \(L^1\) distance is also \(1\); the total mass is \(c=2\). These quantities happen to agree in this example. Proposition 68.5 estimates only the stationarity defect in general. It provides no joint-distance bound from that defect and proves no arbitrarily small relative estimate (68.16). That implication remains open.
+**Solution.** We have \(\beta=(2,2)\), and \(Q_\kappa\beta=(2,2)\), since \(Q_\kappa\) fixes constants. The smaller \(L^1\) defect is \((|1-2|+|3-2|)/2=1\). On all four joint pairs the larger density is \(2\), so the joint \(L^1\) distance is also \(1\); the total mass is \(c=2\). These quantities happen to agree in this example. Proposition 68.5 estimates only the stationarity defect in general. It provides no joint-distance bound from that defect and proves no arbitrarily small relative estimate (68.16). That estimate does not follow from this proposition. The actual affine obstruction IRG.3 and BFQ.3 prevents unrestricted scalar-multiplicity rounding; the bare second local form retains its separate physical requirements.
 
 ---
 

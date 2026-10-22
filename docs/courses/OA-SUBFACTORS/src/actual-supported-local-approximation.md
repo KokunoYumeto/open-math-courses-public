@@ -471,6 +471,24 @@ Thus \(57.34\) is less than \(3\beta^2\tau(s)<\alpha^2\operatorname{Tr}(p)\). Th
 
 **Proof.** For any chosen finite unitary set and BF tolerance \(\eta>0\), Corollary 52.6 gives a rounded projection with central label \(z=1\) and with defect smaller than the bound \(53.20\) at \(\varepsilon=\eta\). Apply Theorem 53.5. Inspect its support choice, rather than weakening its result to an arbitrary nearly full projection: \(h_m=E_{B_m}(1)=1\), so \(f_m=1_{[1-\delta,1]}(h_m)=1\) and \(r_m=1\) at every stage. Lemma 53.4 normalizes the bounded row in this original common support; it does not remove any further projection. Thus the resulting \(f=z=1\) proves BF₁ for every finite set and every tolerance. Theorem 57.2 gives both local forms with the asserted exact support. Theorem 57.4 gives the relative Følner criterion for any selected core. This argument uses factoriality of \(S\); it does not prove the different source implication starting from factoriality of the larger \(R\). \(\square\)
 
+## Physical coefficients at a fixed tail stage
+
+The projection requirement in the second local form has an exact finite-moment formulation. For a positive contraction \(0\ne x\in N_l\cap S\), write \(a=\tau(x)\), and for a projection \(0\ne f\in B_l\) put
+
+\[
+\begin{gathered}
+\Phi_x(u)=a^{-1}fE_{A_l}(ux)f,\\
+D_x(u)=1-\frac{\|\Phi_x(u)\|_2^2}{\tau(f)}.
+\end{gathered}
+\]
+
+[TP.7–TP.9](general-tail-supports-and-controlled-tunnels.md#finite-physical-moments-in-a-tail-corner) gives a projection \(q\in N_l\cap S\) with the same full central trace and every prescribed finite coefficient, at this same \(l\). The projection \(qf\) has exactly the mass and supported central profile of \(xf\); its combined squared commutator and twice-compression error at \(u\) is \(2a\tau(f)D_x(u)\). Hence \(D_x(u)<\epsilon^2/2\) implies both required physical errors are below \(\epsilon\sqrt{\tau(qf)}\). No centrality of \(f\) in \(B_l\) is required.
+
+The support-distance condition for \(f\) and \(z\in Z(S)\) and any prescribed trace cap are retained. The unrestricted second local form still requires positive contractions with these small physical coefficient defects; prescribing their central profiles alone does not give that condition.
+
+The same selection preserves the full complementary residual. It does not preserve all individual coefficients of every positive partition: the explicit three-piece obstruction is [TP.10](general-tail-supports-and-controlled-tunnels.md#finite-physical-moments-in-a-tail-corner).
+
+
 ## Six exercises with complete solutions
 
 **Exercise 57.1 — the true relative scale (introductory).** If \(\tau(f)=3/5\), \(\tau(q)=1/20\), and a Gram error is below \(\delta\sqrt{\tau(q)}\), what is its tolerance relative to \(r=fq\)?

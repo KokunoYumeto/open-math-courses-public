@@ -1,6 +1,6 @@
 # Filtered derived categories
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 22 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A short exact sequence of complexes \(0\to L'\to L\to L''\to0\) determines a distinguished triangle, but a morphism of triangles need not come from a morphism of short exact sequences, and some invariants of an endomorphism, such as its trace, are not determined by the triangle alone. A finite filtration \(F^pL\) of a complex records such a flag. The *filtered derived category* keeps the flag while inverting the maps that are quasi-isomorphisms on every graded piece \(\operatorname{gr}^pL=F^pL/F^{p+1}L\). The lesson proves:
 

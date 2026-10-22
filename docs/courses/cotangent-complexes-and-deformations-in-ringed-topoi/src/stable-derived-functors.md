@@ -1,6 +1,6 @@
 # Stable derived functors
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 The left derived functor \(LF\) of a non-additive functor of modules, such as a symmetric power, is not additive and does not commute with shifts: \(LS^2(E[1])\) is \(L\Lambda^2(E)[2]\), not \(LS^2(E)[1]\). Its stabilization corrects both defects. The stable derived functor \(LF^{\mathrm{st}}\) is defined on all bounded above complexes, is additive, commutes with the shift and carries distinguished triangles to distinguished triangles. It is the exact functor that best approximates \(LF\) on highly connected complexes. Its homology groups are the stable homology groups of Dold and Puppe.
 

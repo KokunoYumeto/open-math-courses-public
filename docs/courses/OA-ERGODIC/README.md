@@ -1,6 +1,6 @@
 # Measured relations and operator algebras
 
-This course develops ergodic actions, measured orbit relations, Krieger algebras, diagonal normalizers, groupoid cocycles, isotropy, finite approximation and amenability. Its 57 lessons contain 501 graded exercises with complete solutions and 84 editable mathematical diagrams.
+This course develops ergodic actions, measured orbit relations, Krieger algebras, diagonal normalizers, groupoid cocycles, isotropy, finite approximation and amenability. Its 57 lessons contain 504 graded exercises with complete solutions and 86 editable mathematical diagrams.
 
 Start with [Orbits, stabilizers, and relation algebras](src/orbits-stabilizers-and-relation-algebras.md), then follow the [HTML reader](reader/index.html). The Markdown lessons can be read on GitHub. For the typeset offline edition, download this directory and open `reader/index.html`; bundled KaTeX styles and fonts require no JavaScript.
 
@@ -15,6 +15,8 @@ The reading guides connect the proofs, examples and exercises:
 - [Amenability](src/haar-averages-and-compact-translation-control.md#proof-dependencies-and-reading-order): discrete means, Haar averaging, closed subgroups and the stated classical structure inputs.
 - [Amenability exercises](src/amenable-actions-free-centres-and-isotropy-obstructions.md#three-routes-through-the-exercises): stabilizers, scalar composition defects and finite-dimensional crossed-product constructions.
 - [Random operators and isotropy](src/orbit-averaging-and-the-modular-weight-bridge.md#reading-from-transverse-kernels-to-random-operator-centralizers): transverse kernels, Haar product coordinates, averaged commutants, modular orbit averages and strict spectral centralizers.
+
+The [amenability exercises](src/amenable-actions-free-centres-and-isotropy-obstructions.md) distinguish faithful and free centre actions, density of inner automorphisms and exact innerness, direct unitary correction and normal changes of fibre coordinates. A Schreier-induced stabilizer criterion gives faithful nonfree actions with and without unitary corrections. A separable infinite matrix tensor factor has dense inner automorphisms and an outer shift; its product with a free ergodic centre action rules out the direct fixed-coordinate conclusion under density alone. The lesson gives the distinct dense-inner cocycle-conjugacy conclusion and retains the all-inner direct theorem.
 
 The [hidden-group lesson](src/principal-groupoids-with-hidden-group-factors.md) studies the precise limits of commuting-copy constructions. It includes complete generating examples with extra commutants, the infinite ambient-trace theorem, normal product-state and expectation obstructions, and the failure of the stabilized one-sided repair. Its general finite-factor theorem excludes a normal expectation from the full operator algebra in every normal unital representation of an infinite-dimensional finite factor, including nonseparable Hilbert spaces.
 

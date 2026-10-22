@@ -1,6 +1,6 @@
 # Multisimplicial objects and spectral diagrams
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A functor \(F\) between abelian categories that is not additive has derived functors that depend on the degree in which its argument is placed. Dold and Puppe showed that the groups \(H_{i+n}F(X[n])\) become independent of \(n\) once \(n>i\). The limit values are the stable homology groups of \(F\). Illusie collected the suspensions of all orders into a single object, a *spectral diagram*. This is a family of \(n\)-simplicial objects, one for each \(n\geq0\), connected by maps into their faces of degree one. The spectrum of an abelian group is the family of its iterated nerves. Applying a functor to a spectrum, killing the faces of degree zero and translating down gives a *large simplicial diagram*. Its derived colimit over the category of finite ordinals and injective maps is the stabilized functor.
 

@@ -1,6 +1,6 @@
 # Filtered and graded powers of complexes
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 22 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 Let \(A\) be a commutative ring of a topos \(T\), and let \(\mathbf T\) be one of the functors \(S\), \(\Lambda\), \(\Gamma\) of symmetric, exterior and divided powers. A filtration of an \(A\)-module \(L\) induces a filtration of every power \(\mathbf T^n(L)\): a product of \(n\) elements lies in filtration degree \(k\) when the degrees of its factors add up to at least \(k\). This lesson studies these filtrations and their derived versions:
 

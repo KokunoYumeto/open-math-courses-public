@@ -1,6 +1,6 @@
 # Weak complete intersections
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 22 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A homomorphism of rings \(A\to B\) of a topos is a *weak complete intersection* when its cotangent complex \(L_{B/A}\) has tor amplitude in \([-1,0]\): it is isomorphic in \(D(B)\) to a complex of flat \(B\)-modules in degrees \(-1\) and \(0\). Polynomial algebras, quotients by weakly regular ideals, and local complete intersection homomorphisms of rings and morphisms of schemes are weak complete intersections. The class is stable under composition, under cancellation of a factor whose cotangent complex is a flat module in degree \(0\), under faithfully flat descent, and under Tor-independent base change in a topos with enough points. If \(B\) is a quotient of an \(A\)-algebra \(P\) whose cotangent complex is a flat module of differentials, then \(B\) is a weak complete intersection over \(A\) exactly when the kernel \(I\) is weakly regular, and then \(L_{B/A}\) is the two-term complex \(I/I^2\to\Omega_{P/A}\otimes_PB\). The lesson proves:
 

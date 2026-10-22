@@ -1,6 +1,6 @@
 # Deformations of torsors
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 21 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 Let \(G\) be a group scheme over a scheme \(S\), flat and locally of finite presentation, \(X\to Y\) a torsor under \(G\) over an \(S\)-scheme \(Y\), and \(Y\to Y'\) a first-order thickening of \(S\)-schemes with quasi-coherent ideal \(J\). This lesson classifies the torsors under \(G\) over \(Y'\) that restrict to \(X\) over \(Y\). They are exactly the equivariant deformations of the morphism \(X\to Y\) over \(Y'\), so the deformation theory of the nerves applies, and through descent along the torsor its Ext groups become Ext groups on \(Y\) of the co-Lie complex \(\ell_{X/Y}\). There is an obstruction in \(\operatorname{Ext}^2(\ell_{X/Y},J)\); when it vanishes the deformations form a torsor under \(\operatorname{Ext}^1(\ell_{X/Y},J)\), with automorphism groups \(\operatorname{Ext}^0(\ell_{X/Y},J)\); and the obstruction is the product of the class of the thickening with the Atiyah class of the torsor. Since \(\ell_{X/Y}\) is perfect, these groups are cohomology groups of \(Y\) with coefficients in its dual: over an affine \(Y\) every torsor deforms, and for smooth \(G\) the coefficients are the Lie algebra of \(G\) twisted by the adjoint action.
 

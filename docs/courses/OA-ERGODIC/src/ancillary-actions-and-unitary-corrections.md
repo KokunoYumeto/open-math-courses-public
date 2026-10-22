@@ -8,7 +8,7 @@ An action on a field of factors moves the base points and applies an automorphis
 
 There are two steps. First reduce an automorphism cocycle to an inner automorphism cocycle. Then choose implementing unitaries that compose exactly. Arbitrary implementing unitaries can have scalar multiplication defects, so the second step cannot be omitted.
 
-Read [Compatible lifts and cohomology reduction](compatible-lifts-and-cohomology-reduction.md), especially Theorems 3.1 and 6.1, and [Normalizers, phases, and orbit cocycles](normalizers-phases-and-orbit-cocycles.md), Section 5. We use the general canonical implementation theorem for standard forms and its continuity statement, proved in the modular-theory course: an automorphism has a unique unitary implementer preserving the natural cone and commuting with the conjugation, and the strong topology on these implementers is the topology of pointwise norm convergence on the predual. General standard-form theory is used as a prerequisite; the field calculation below proves the particular decomposition needed here.
+Read [Compatible lifts and cohomology reduction](compatible-lifts-and-cohomology-reduction.md), especially Theorems 3.1 and 6.1, and [Normalizers, phases, and orbit cocycles](normalizers-phases-and-orbit-cocycles.md), Section 5. The one-to-one Borel-image theorem, Theorem 4.3(5), is used in Lemma 1.1. The standard-form prerequisites have explicit proofs: canonical implementation in the natural-cone form, comparison of arbitrary standard forms, and the precise predual topology of the implementers. These results give the unique unitary implementer preserving the natural cone and commuting with the conjugation, with strong topology equal to pointwise predual-norm convergence. They apply to the field standard form below as well as to a form constructed from a weight. Lemma 1.2 gives the separable realization and countable tests needed here. The field decomposition itself is proved in Section 2.
 
 Let \(N\) be a factor with separable predual. Choose its standard form \((N,H,J,P)\), with \(H\) separable. Let \((X,\mu)\) be a standard sigma-finite measure space, and put
 \[
@@ -41,6 +41,76 @@ Both directions follow from uniqueness of canonical implementation: a unitary in
 The group \(\mathcal U(N)\) is likewise Polish. Its map \(u\mapsto\operatorname{Ad}u\) into \(G\) is continuous: its canonical implementer is \(uJuJ\). Since \(N\) is a factor, two unitaries have the same inner automorphism precisely when they differ by a scalar in \(\mathbb T\).
 
 Enumerate the matrix coefficients of a unitary on a fixed countable orthonormal basis of \(H\). Multiply each unitary by the scalar that makes its first nonzero coefficient positive real. The normalized set \(S\) is Borel: it is the countable union of the conditions that all earlier coefficients vanish and the chosen coefficient is positive real. Every scalar orbit has exactly one representative in \(S\). The restriction of \(\operatorname{Ad}\) to \(S\) is therefore a Borel injection. The one-to-one Borel-image theorem makes its image \(H_0\) Borel and its inverse Borel. This inverse is the required \(s\); the identity unitary is normalized, so \(s(\mathrm{id})=1\). Normality follows from \(\theta\operatorname{Ad}(u)\theta^{-1}=\operatorname{Ad}(\theta(u))\). \(\square\)
+
+**Lemma 1.2 (separable standard forms and countable tests).** The separable predual hypothesis has the following consequences.
+
+1. The factor \(N\) has a faithful normal state whose GNS Hilbert space is separable. The natural-cone construction therefore gives a standard form on a separable Hilbert space.
+2. Let \((\rho_j)_{j\ge1}\) be norm dense in the unit ball of \(N_*\), and put
+\[
+ \begin{aligned}
+ d_0(\theta,\eta)
+ &=\sum_{j\ge1}2^{-j}
+       \|\rho_j\circ\theta-\rho_j\circ\eta\|,\\
+ d(\theta,\eta)
+ &=d_0(\theta,\eta)+d_0(\theta^{-1},\eta^{-1}).
+ \end{aligned}
+ \tag{1.3}
+\]
+Both metrics give the topology (1.1), and \(d\) is complete. Completeness is not asserted for \(d_0\).
+
+*Proof of the first assertion.* Choose a countable norm-dense family \((\psi_j)\) in the positive part of the unit ball of \(N_*\). These functionals separate the nonzero positive elements: approximate a positive normal functional which has a positive value on the given element. Thus
+\[
+ \psi=\sum_{j\ge1}2^{-j}\psi_j,
+ \qquad \phi=\psi/\psi(1)
+ \tag{1.4}
+\]
+is a faithful normal state. The series converges in predual norm, and \(\psi(1)>0\) because \(N\ne0\).
+
+The unit ball of \(N=(N_*)^*\) is compact and metrizable in its ultraweak topology. Choose a countable ultraweakly dense family \((a_j)\) in that ball. Its GNS vectors have dense linear span. To prove this, suppose a GNS vector \(\xi\) is orthogonal to every \(a_j\Omega_\phi\). The bounded functional
+\[
+ f_\xi(a)=\langle a\Omega_\phi,\xi\rangle
+ \tag{1.5}
+\]
+is normal. Indeed, approximate \(\xi\) in Hilbert norm by vectors \(b\Omega_\phi\). Their functionals \(a\mapsto\phi(b^*a)\) are normal, and their errors on the unit ball are at most the Hilbert-norm errors. Since the predual is norm closed, \(f_\xi\in N_*\). Ultraweak density now makes \(f_\xi\) vanish on all of \(N\), and cyclicity gives \(\xi=0\). Thus the GNS space is separable. Faithfulness and the natural-cone theorem give the stated standard form.
+
+*Proof of the topology and completeness assertions.* The series in (1.3) converge, since each summand's norm is at most two. They define metrics: if \(d_0(\theta,\eta)=0\), density and continuity give \(\rho\circ\theta=\rho\circ\eta\) for every normal functional, which implies \(\theta=\eta\). Symmetry and the triangle inequality hold term by term.
+
+Convergence for the countable tests implies convergence for every predual functional. After scaling to the unit ball, the estimate is
+\[
+ \begin{aligned}
+ \|\rho\circ\theta_i-\rho\circ\theta\|
+ &\le 2\|\rho-\rho_j\|\\
+ &\quad+\|\rho_j\circ\theta_i-\rho_j\circ\theta\|.
+ \end{aligned}
+ \tag{1.6}
+\]
+Conversely, convergence for every test gives convergence of the series by first cutting off its uniformly bounded tail. These arguments apply to nets as well as sequences. The inverse tests impose no extra convergence condition when the limit is already an automorphism, because
+\[
+ \begin{aligned}
+ \|\rho\circ\theta_i^{-1}-\rho\circ\theta^{-1}\|
+ &=\|\rho-\rho\circ\theta^{-1}\circ\theta_i\|\\
+ &\longrightarrow0.
+ \end{aligned}
+ \tag{1.7}
+\]
+Here composition on the right by \(\theta_i\) is a predual isometry, and (1.1) is applied to the fixed functional \(\rho\circ\theta^{-1}\). Thus both metrics give (1.1).
+
+For completeness, let \((\theta_n)\) be \(d\)-Cauchy, and write \(U_n\) for its canonical implementers in the separable standard form. Estimate (1.6), with two sequence indices, makes both predual actions Cauchy on every functional. For each positive normal functional \(\rho\), its unique cone representative \(\xi_\rho\) satisfies
+\[
+ \begin{aligned}
+ \|(U_n-U_m)\xi_\rho\|^2
+ &\le\|\rho\circ\theta_n^{-1}
+                  -\rho\circ\theta_m^{-1}\|,\\
+ \|(U_n^*-U_m^*)\xi_\rho\|^2
+ &\le\|\rho\circ\theta_n-\rho\circ\theta_m\|.
+ \end{aligned}
+ \tag{1.8}
+\]
+The cone spans the Hilbert space, so boundedness makes both operator sequences strongly Cauchy on every vector. Let their limits be \(V\) and \(W\). They are isometries and satisfy \(VW=WV=1\), by passing to the limit in the products \(U_nU_n^*=U_n^*U_n=1\). Consequently \(V\) is unitary and \(W=V^*\).
+
+The closed conditions in (1.2) give \(V\in\mathcal V\). Hence \(V=U_\theta\) for a normal automorphism \(\theta\). The standard-implementation homeomorphism gives predual convergence in both directions; cutting off the series tails gives \(d(\theta_n,\theta)\to0\). This proves completeness without assuming a limit automorphism at the start. \(\square\)
+
+The inner-unitary section of Lemma 1.1 is Borel for this topology. Its construction does not require a continuous section; Exercise 6.7 gives a concrete discontinuity.
 
 ## 2. Decomposing an automorphism over the centre
 
@@ -253,6 +323,28 @@ u_g^*\gamma_g(u_h^*)
 \]
 Thus \(u_{gh}^*=u_g^*\gamma_g(u_h^*)\). Also \(\operatorname{Ad}(u_g^*)\gamma_g=\beta_g\). The group composition order in both assertions agrees with (4.7).
 
+**Exercise 6.7 (a Borel phase choice can jump).** *Level 2.* Take \(N=M_2(\mathbb C)\) in its defining representation on \(\mathbb C^2\), order its matrix coefficients row by row, and normalize a unitary by making its first nonzero coefficient positive real, using the construction of Lemma 1.1. For real \(|t|<\pi/2\), put
+\[
+ v_t=\begin{pmatrix}
+       \sin t&\cos t\\
+       \cos t&-\sin t
+      \end{pmatrix},\qquad
+ Q=v_0.
+\]
+Show that \(\theta_t=\operatorname{Ad}v_t\) converges to \(\operatorname{Ad}Q\) in (1.1) as \(t\to0\), but the stated Borel section is discontinuous there. Explain why this does not affect the unitary fields used in Theorem 4.1.
+
+*Solution.* Matrix multiplication gives \(v_t^*=v_t\) and \(v_t^2=1\). Its entries vary continuously, hence \(\|v_t-Q\|\to0\). For every \(a\in M_2(\mathbb C)\),
+\[
+ \|v_tav_t^*-QaQ^*\|
+ \le2\|a\|\,\|v_t-Q\|.
+\]
+The same bound on the dual action gives (1.1). For \(t>0\) the first coefficient is positive, so the normalized representative is \(v_t\). For \(t<0\) it is negative, so the representative is \(-v_t\). At \(t=0\), the first coefficient vanishes and the next coefficient is \(1\), so the representative is \(Q\). Along negative \(t\to0\) the chosen representatives converge to \(-Q\ne Q\); continuity fails. Theorem 4.1 needs a Borel unitary field to define a decomposable multiplication operator, and the section remains Borel. No continuous dependence on the base is asserted. This example concerns this particular phase normalization; it does not by itself rule out every other local continuous choice.
+
 ## References
 
-[Takesaki] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8). Chapter XIII, Theorem 3.26, Proposition 3.34(i) and the countable discrete part of Corollary 3.35 supply the cohomology reduction and application developed here.
+[Takesaki] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8). Chapter XIII, Theorem 3.26, printed page 48; Proposition 3.34(i), printed page 55; and the countable discrete part of Corollary 3.35, printed page 56. The corollary assumes dense inner automorphisms and a free centre action; the current countable assertion also includes nonergodic hyperfinite relations and atomic bases.
+
+
+[Haagerup] Uffe Haagerup, “The standard form of von Neumann algebras,” *Mathematica Scandinavica* 37 (1975), 271–283. [Journal article and PDF](https://journals.msp.org/mscand/article/view/2067). Theorem 2.3, Lemma 2.10, Theorem 3.2 and Proposition 3.5 give standard-form comparison, cone representatives, canonical implementation and its predual topology, printed pages 276–281.
+
+[Standard-form proofs] The positive cone of a standard representation, canonical implementation; Recovering a representation from its positive cone, comparison and transport to arbitrary forms; Canonical L2 and standard implementations, CL-01; and Completeness of the automorphism group, completeness for the two-sided predual uniformity. Lemma 1.2 specializes the countable tests to a separable predual and proves the resulting metric complete.

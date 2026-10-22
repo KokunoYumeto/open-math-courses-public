@@ -1,6 +1,6 @@
 # Left derived functors of left adjoints on total topoi
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 Let \(u\colon X\to Y\) be a morphism of fibred topoi, with rings on the two total topoi and a ring map from the ring of \(X\) to the inverse image of the ring of \(Y\). The inverse image of sheaves, followed by restriction of scalars, sends modules on \(\operatorname{Top}(Y)\) to modules on \(\operatorname{Top}(X)\). When the inverse images of the levels have left adjoints, this functor has a left adjoint \(u_!\). It is explicit on the modules induced from the levels, and it is computed by presentations in general. Under an exactness condition on flat modules, \(u_!\) has a left derived functor on bounded above complexes. That functor is computed by the standard simplicial resolution of a complex of flat modules, and it is adjoint to the inverse image at the level of derived Hom complexes. For a constant fibred topos this gives the derived colimit over a small category, together with the adjunction between derived colimits and constant diagrams in its \(R\operatorname{Hom}\) form.
 

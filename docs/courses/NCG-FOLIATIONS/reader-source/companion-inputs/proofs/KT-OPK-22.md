@@ -1,9 +1,12 @@
 # Cuntz algebras
 
-*Public domain (CC0).*
+*GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+
+
+
 The Cuntz relations allow the identity to be decomposed into several projections, each equivalent to the identity. This makes the algebras very different from the finite algebras studied earlier. Their gauge-fixed algebra is nevertheless a familiar UHF algebra. We use that core, a full corner, Takai duality and the Pimsner–Voiculescu sequence to compute the K-groups, keeping track of the unit throughout.
 
-We use the [PV sequence](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/the-pimsner-voiculescu-exact-sequence.html#1-the-sequence-and-the-proof-inputs), the [UHF calculation](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-OPK/inductive-limits-and-the-k-theory-of-af-and-at-algebras.html), and the precise crossed-product inputs listed below. Write \(\mathcal K\) for the compact operators on a separable infinite-dimensional Hilbert space. Haar measure on \(\mathbb T\) has mass one.
+We use the PV sequence, the UHF calculation, and the precise crossed-product inputs listed below. Write \(\mathcal K\) for the compact operators on a separable infinite-dimensional Hilbert space. Haar measure on \(\mathbb T\) has mass one.
 
 ## 1. The universal relations
 
@@ -1519,6 +1522,7 @@ This lesson proves the core, gauge fullness, dual K-map, finite K-groups with th
 [Katsura 2003] T. Katsura, *On C*-algebras associated with C*-correspondences*, arXiv:math/0309088v3, Definitions 2.1 and 3.1, pp. 4–5, and Proposition 8.2, p. 17. [Author's preprint](https://arxiv.org/pdf/math/0309088v3). The complete required proof in Appendix C, pp. 24–28, is the comparison source for Theorem 6.3. That theorem writes out the difference-map construction, vacuum corners, rotation identities and both inverses, and treats degenerate left actions by forced unitization. Proposition 6.2 gives an independent scalar proof from the actual Fock extension.
 
 [KT-CP] [Takai duality, Lesson 8](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-CP/KT-CP-08.html#the-surviving-action-and-the-generator-formulas), Theorem 8.3 and Proposition 8.4; [Proper actions, free actions and the orbit space, Lesson 9](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-CP/KT-CP-09.html#averaging-corners-for-compact-groups), Theorem 9.6 and its K-theory prerequisites. The latter uses [Hilbert C*-modules and Morita equivalence, Lesson 14](https://kokunoyumeto.github.io/open-math-courses-public/courses/KT-CP/prerequisites/hilbert-c-star-modules-and-morita-equivalence/morita-invariance-of-k-theory-and-correspondence-maps.html), Corollary 2.2 and Theorem 5.1.
+
 
 
 [Abrams–Ánh–Pardo 2008] G. Abrams, P. N. Ánh and E. Pardo, *Isomorphisms between Leavitt algebras and their matrix rings*, Journal für die reine und angewandte Mathematik 624 (2008), 103–132, [author preprint, 22 February 2008, v2](https://arxiv.org/abs/math/0612552v2), §§1, 3–4 and Theorem 5.1. Theorem 5.1 above gives the full constructive C*-algebra argument; the orbit colors, entry counts, matrix-unit bridge and generator-surjectivity proof are all included.

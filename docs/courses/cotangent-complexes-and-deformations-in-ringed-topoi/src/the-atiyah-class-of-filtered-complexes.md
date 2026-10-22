@@ -1,6 +1,6 @@
 # The Atiyah class of filtered complexes
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 22 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 For a map of rings \(A\to B\) of a topos, the lesson on the Atiyah class attaches to a simplicial \(B\)-module \(M\) a morphism \(M\to L_{B/A}\otimes^{\mathbf L}_BM[1]\). Chern classes of perfect complexes need this class for complexes with cohomology in positive degrees, written as \(E\to E\otimes^{\mathbf L}_BL_{B/A}[1]\), and for filtered complexes, with the class of a filtered complex inducing the classes of its graded pieces. A filtered complex with filtration in \([0,n]\) is a chain \(F^nE\to\cdots\to F^0E\), that is, a module on the topos of chains of objects of \(T\); the Atiyah class of the chain, taken on that topos, is the filtered Atiyah class. The lesson proves:
 

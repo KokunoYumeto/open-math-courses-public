@@ -2,7 +2,7 @@
 
 An independent lesson series on the smooth-force, finite-time blowup construction in OpenAI’s *Finite Time Blowup for Navier–Stokes*. The theorem retains every positive viscosity, zero initial velocity, smooth compact space–time forcing, bounded kinetic energy, compact spatial support before time one, and the stated failure of global smooth continuation.
 
-The [cumulative typeset reader](reader.html) contains the twenty-three complete lessons below. The [offline reader and editable sources](NS-BLOWUP-reader-and-source.zip) include all twenty-three lessons, their SVG figures, editable diagram generators and bibliography, and the local mathematical typesetting runtime. The complete mathematical proof notes are included as well; cited original papers remain external references. The twenty-three lessons contain 115 fully solved exercises.
+The [cumulative typeset reader](reader.html) contains the twenty-three complete lessons below. The [offline reader and editable sources](NS-BLOWUP-reader-and-source.zip) include all twenty-three lessons, their SVG figures, editable diagram generators and bibliography, and the local mathematical typesetting runtime. The complete mathematical proof notes are included as well; cited original papers remain external references. The twenty-three main lessons contain 115 fully solved exercises. Two appendix lessons on Navier–Stokes connections to vacuum gravity add ten solved exercises and are included in the offline download.
 
 ## Lessons in this edition
 
@@ -45,8 +45,13 @@ The fluid foundations supply the preceding analysis. The lessons give precise so
 
 ## Sources and rights
 
-[SOURCES.json](SOURCES.json) gives the bibliography and mathematical source locators. The [radial phase and potential conventions](SOURCE_SCAN_CHECK.md) give the original expressions and their coordinate derivations. Diplomatic transcriptions preserve OpenAI’s text; the arguments and exercises here are separate mathematical exposition. Authored lesson text and figures are CC0. Original sources retain their attribution and rights; MathJax retains its included software and font licenses.
+[SOURCES.json](SOURCES.json) gives the bibliography and mathematical source locators. The [radial phase and potential conventions](SOURCE_SCAN_CHECK.md) give the original expressions and their coordinate derivations. Diplomatic transcriptions preserve OpenAI’s text; the arguments and exercises here are separate mathematical exposition. Authored text and figures in the twenty-three main lessons are CC0. The appendix source files retain their own attribution and notices. Original sources retain their attribution and rights; MathJax retains its included software and font licenses.
 
-## Vacuum hydrodynamics
+## Appendix: Navier–Stokes connections to vacuum gravity
 
-The [two vacuum-hydrodynamics companion lessons](../GR-VAC/README.md) construct exact gravitational constraint data with a velocity decoder and derive the linear gravitational shear response with its Navier–Stokes limit. Their ten solved exercises and complete arguments specify the domains of both connections.
+The first appendix constructs exact vacuum constraint data from a smooth compact incompressible velocity snapshot and recovers the velocity. It applies to the forced fluid construction before its singular time. The second derives a separate linear gravitational shear response with a Navier–Stokes limit and positive wave energy. These connections do not prove a gravitational singularity or a gravitational continuation through fluid blowup.
+
+- [Appendix A: Exact vacuum constraint data from a velocity field](appendices/vacuum-gravity/velocity-fields-and-vacuum-constraints.html).
+- [Appendix B: The gravitational shear response and its fluid limit](appendices/vacuum-gravity/gravitational-shear-and-the-fluid-limit.html).
+
+[Read both appendix lessons](appendices/vacuum-gravity/reader.html) or consult their [editable sources and bibliography](appendices/vacuum-gravity/README.md). Each appendix contains five fully solved exercises and a reproducible diagram. Both appendices are included in the course offline download.

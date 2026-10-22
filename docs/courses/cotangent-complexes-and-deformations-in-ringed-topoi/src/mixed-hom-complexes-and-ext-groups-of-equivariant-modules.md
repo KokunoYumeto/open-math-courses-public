@@ -1,6 +1,6 @@
 # Mixed Hom complexes and Ext groups of equivariant modules
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 The two nerves of an equivariant module use different vertices: the nerve places the module at the last vertex of each simplex, the second nerve at the first. A map from the second nerve of \(E\) to the nerve of \(F\) on the level of \(n\)-simplices therefore goes from the first vertex to the last, and these maps form a cosimplicial abelian group. This lesson shows that, under the conditions (I) and (E) of the lesson on cohomology of equivariant modules, its cochain complex computes all the Ext groups of \(E\) and \(F\) as equivariant modules. For a group acting on a point the result is the familiar description of \(\operatorname{Ext}\) over the group ring by cochains of the group with values in Hom groups. The construction rests on a mixed Hom functor, defined for every good fibred topos with values in functors on its index category, and on its compatibility with inverse and direct images.
 

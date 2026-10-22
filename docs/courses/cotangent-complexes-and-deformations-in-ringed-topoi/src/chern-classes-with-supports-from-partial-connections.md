@@ -1,6 +1,6 @@
 # Chern classes with supports from partial connections
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 22 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A module with a connection has vanishing Chern classes of positive degree in Hodge cohomology. A connection given only on an open subset \(U\), or only along a quotient of the differentials, still constrains the Chern classes: some Chern polynomials come from cohomology with supports in the complement \(Y\) of \(U\). This lesson constructs such classes for a module \(E\) of bounded perfect amplitude on a ringed space, equipped with a *partial connection* on \(U\), relative to a derivation \(\mathrm d\colon B\to\Omega\) into a locally free module of finite rank, for instance the universal derivation into the module of differentials. The construction takes place on a topos \(\operatorname{Top}^{\mathrm o}(i)\) whose objects are a sheaf on \(U\), a sheaf on the whole space and a map between them; its cohomology with coefficients \((0\to F)\) is the cohomology of \(F\) with supports in \(Y\). The lesson proves:
 

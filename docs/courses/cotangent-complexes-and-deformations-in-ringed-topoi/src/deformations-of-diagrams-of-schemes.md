@@ -1,6 +1,6 @@
 # Deformations of diagrams of schemes
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 21 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A diagram of schemes is a family of schemes indexed by a small category, with a morphism for every arrow. Commutative squares of schemes and simplicial schemes, such as the nerve of a group scheme acting on a scheme, are diagrams of this kind, and their first-order deformations are deformations of diagrams. A diagram has one ringed topos, the total topos of the Zariski topoi of its schemes, and a morphism of diagrams has a cotangent complex on it, made by the sheaf construction of the cotangent complex. This lesson shows that this complex governs the deformations of diagrams as the cotangent complex of a morphism of schemes governs those of schemes. Square-zero extensions of a diagram are classified by the first Ext group of the cotangent complex. Lifting a morphism of diagrams over a square-zero thickening of its target is obstructed by a class in the second Ext group, and this class is the product of the Kodaira–Spencer class with the class of the thickening. The point that makes the ringed-topos theorems apply is that the levels of an extension of ringed topoi by a termwise quasi-coherent ideal are schemes.
 

@@ -1,6 +1,6 @@
 # Derived tensor products of simplicial modules
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 The tensor product of modules over a simplicial ring \(A\) does not preserve quasi-isomorphisms: over \(A=\mathbb Z\), a free simplicial resolution of \(\mathbb Z/2\) tensored with \(\mathbb Z/2\) has the homology \(\operatorname{Tor}_*(\mathbb Z/2,\mathbb Z/2)\), which \(\mathbb Z/2\otimes\mathbb Z/2\) does not see. Its left derived functor \(E\otimes^\ell_AF\) on \(D_\bullet(A)\) is computed by replacing one factor by a module that is flat in every degree. Such replacements come from the standard free resolution, a bisimplicial module whose diagonal is the replacement. This lesson constructs the derived tensor product, proves that it is exact in each variable, and compares it with the derived tensor product of complexes when \(A\) is a ring placed in every degree. It then treats the derived extension of scalars along a map of simplicial rings, with its adjunction on Ext groups, and shows that a quasi-isomorphism of simplicial rings induces an equivalence of derived categories. The derived tensor product of simplicial algebras ends the lesson.
 

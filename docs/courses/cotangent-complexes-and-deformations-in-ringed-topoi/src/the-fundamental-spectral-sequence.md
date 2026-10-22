@@ -1,6 +1,6 @@
 # The fundamental spectral sequence
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 22 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 Let \(A\) be a ring of a topos and \(B\) an \(A\)-algebra whose multiplication \(B\otimes_AB\to B\) is an isomorphism, for example a quotient \(B=A/I\). The simplicial ring \(Q=P\otimes_AB\) built from the standard resolution \(P\) of \(B\) computes \(\operatorname{Tor}^A_\bullet(B,B)\). Its augmentation ideal \(J\) satisfies \(J/J^2=L_{B/A}\), the cotangent complex, and \(J^q/J^{q+1}=S^q_B(L_{B/A})\). Filtering \(Q\) by the powers of \(J\) gives the *fundamental spectral sequence*
 \[

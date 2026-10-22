@@ -1,13 +1,15 @@
-# Hydrodynamics of the vacuum: gravity, thermodynamics and fluids
+# Appendix: Navier–Stokes connections to vacuum gravity
 
-Two companion lessons develop exact mathematical connections between fluid data and vacuum gravity. The first constructs nonlinear gravitational initial data from a complete compactly supported incompressible velocity field and recovers the velocity with an explicit decoder. The second derives the linear gravitational shear response in a Rindler region, its Navier–Stokes limit, its positive wave energy, and the first nonlinear backreaction term.
+These two appendix lessons accompany the forced Navier–Stokes blowup argument. Their subject is the precise connection between fluid velocity data and vacuum gravity.
+
+Appendix A constructs nonlinear gravitational constraint data from a smooth compactly supported incompressible velocity field and recovers that velocity with an explicit decoder. It applies to the fluid construction's smooth snapshots before the singular time. Appendix B derives the linear gravitational shear response in a Rindler region, its Navier–Stokes limit, its positive wave energy, and the first nonlinear backreaction term. This second connection is a separate linear model, rather than a consequence of the blowup theorem.
 
 Each lesson contains complete arguments, a reproducible diagram and five exercises with full solutions. The cosmological constant, physical units, coordinate maps, boundary conditions and domains of the two constructions are specified separately.
 
 - [Read both lessons](reader.html).
 - Download the reader, editable sources and figures for offline use.
-- [Lesson V6a: Exact vacuum constraint data from a velocity field](velocity-fields-and-vacuum-constraints.html) · [editable source](src/velocity-fields-and-vacuum-constraints.md).
-- [Lesson V6b: The gravitational shear response and its fluid limit](gravitational-shear-and-the-fluid-limit.html) · [editable source](src/gravitational-shear-and-the-fluid-limit.md).
+- [Appendix A: Exact vacuum constraint data from a velocity field](velocity-fields-and-vacuum-constraints.html) · [editable source](src/velocity-fields-and-vacuum-constraints.md).
+- [Appendix B: The gravitational shear response and its fluid limit](gravitational-shear-and-the-fluid-limit.html) · [editable source](src/gravitational-shear-and-the-fluid-limit.md).
 
 The lessons supply the analysis and geometric calculations their proofs use. Familiarity with multivariable calculus, Fourier transforms and basic metric notation is helpful. The forced Navier–Stokes construction gives the related fluid theorem and its complete proof.
 

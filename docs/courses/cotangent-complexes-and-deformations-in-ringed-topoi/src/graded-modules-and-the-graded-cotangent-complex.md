@@ -1,6 +1,6 @@
 # Graded modules and the graded cotangent complex
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 21 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A graded ring \(A=\bigoplus_{n\geq0}A^n\) of a topos has graded modules, graded algebras and a graded cotangent complex \(L^{\mathrm{gr}}_{B/A}\): the cotangent complex computed with polynomial algebras on graded sheaves of generators, so that every term carries a grading. This lesson proves:
 

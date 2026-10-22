@@ -4,6 +4,8 @@
 
 A gravitational perturbation can have a fluid limit while retaining wave propagation at shorter scales. This lesson derives one such example from its metric. The calculation keeps the boundary source, the complete stress response, and the physical constants throughout.
 
+This is Appendix B to the forced Navier–Stokes blowup argument. It provides a related linear fluid/gravity connection. The shear model is derived from its own gravitational boundary problem; it is not a consequence of the nonlinear blowup theorem and does not describe a gravitational continuation of that singular solution.
+
 The background is five-dimensional flat vacuum spacetime in a Rindler region. Its cosmological constant is zero. The perturbation is first order in amplitude, with one spatial shear polarization; its frequency and wavenumber are arbitrary in the specified response problem. The construction of [exact nonlinear constraint data](velocity-fields-and-vacuum-constraints.md) uses a different background with \(\Lambda=-6/L^2\). Neither construction changes the other one's cosmological constant or identifies their time evolutions.
 
 We will prove the response formula, its hydrodynamic pole, and global finite-energy evolution in this linear sector. Fourier variables and the Bessel response are defined and calculated explicitly. Section 7 gives the existence and energy argument for the wave equation, including the relevant function spaces. The relationship to incompressible fluid motion can also be read alongside the Navier–Stokes course.

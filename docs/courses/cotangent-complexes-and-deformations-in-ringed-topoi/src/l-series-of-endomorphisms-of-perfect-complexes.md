@@ -1,6 +1,6 @@
 # L-series of endomorphisms of perfect complexes
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 22 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 For an endomorphism \(\varphi\) of a free module \(V\) of finite rank over a commutative ring, \(\det(1-t\varphi)=\sum_n(-1)^n\operatorname{Tr}(\Lambda^n\varphi)t^n\), and the series \(\sum_n\operatorname{Tr}(S^n\varphi)t^n\) is the inverse of \(\det(1-t\varphi)\). This lesson extends both series to an *endomorphism of a perfect complex \(E\) with coefficients in a complex \(M\)*, that is, a morphism \(f\colon E\to E\otimes^{\mathbf L}M\) of the derived category of a ringed topos, with \(M\) concentrated in degrees \(\leq0\). The coefficients are the traces of the morphisms \(\varphi^n\circ LS^n(f)\colon LS^nE\to\) \(LS^nE\otimes^{\mathbf L}LS^nM\), where \(\varphi^n\) are the diagonal maps. The lesson proves:
 

@@ -1,6 +1,6 @@
 # The co-Lie complex of a group scheme
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 21 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 The co-Lie complex of a group scheme \(G\) over \(S\), flat and locally of finite presentation, is the derived pullback of its cotangent complex along the unit section. It is a perfect complex on \(S\) with tor amplitude in \([-1,0]\). Its cohomology in degree \(0\) is the module of invariant differential forms, its cohomology in degree \(-1\) vanishes exactly when \(G\) is smooth, and its dual, the Lie complex, governs the deformations of \(G\). This lesson proves its basic properties: it is the co-Lie complex of \(G\) viewed as a torsor over \(S\), it depends contravariantly on \(G\) and commutes with base change, and an exact sequence of group schemes \(1\to G\to H\to K\to1\) gives a distinguished triangle \(\ell_K\to\ell_H\to\ell_G\to\ell_K[1]\). The triangle computes the co-Lie complexes of the groups of roots of unity and of Frobenius kernels.
 

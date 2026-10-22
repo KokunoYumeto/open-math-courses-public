@@ -1,6 +1,6 @@
 # Lie complexes of commutative group schemes
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 21 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 Let \(G\) be a group scheme over \(S\), flat and locally of finite presentation. Conjugation makes \(G\) act on its co-Lie complex \(\ell_G\), and this coadjoint action governs how the co-Lie complex of a \(G\)-torsor is twisted ([*The adjoint co-Lie complex of a group scheme*](the-adjoint-co-lie-complex-of-a-group-scheme.md)). When \(G\) is commutative the action is trivial in the strongest sense: the co-Lie complex of every \(G\)-torsor, over a scheme or over a diagram of schemes, is the pullback of \(\ell_G\), and the adjoint co-Lie complex is \(\ell_G\) with the trivial action. The proof is a shear argument. For a torsor over a diagram, the isomorphism \((g,x)\mapsto(gx,x)\) identifies the cotangent complex with a pullback of \(\ell_G\); when \(G\) is commutative, \(G\) acts on the nerve of the action as well, and the same argument on the nerve computes the descended co-Lie complex.
 

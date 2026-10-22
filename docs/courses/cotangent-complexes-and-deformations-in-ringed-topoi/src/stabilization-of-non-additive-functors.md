@@ -1,6 +1,6 @@
 # Stabilization of non-additive functors
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 Let \(F\) be a functor between abelian categories with \(F(0)=0\), and let \(X\) be a simplicial object. The homology of \(F\) applied to the \(n\)-fold suspension \(X[n]\) changes with \(n\), but it stabilizes. The suspension maps \(H_{i+n}F(X[n])\to H_{i+n+1}F(X[n+1])\) are isomorphisms as soon as \(n>i\). This is the suspension theorem of Dold and Puppe. Its proof decomposes the bar construction of \(X\) by cross-effects. The cross-effects of order two and higher are highly connected, so only the additive part of \(F\) is seen in low degrees.
 

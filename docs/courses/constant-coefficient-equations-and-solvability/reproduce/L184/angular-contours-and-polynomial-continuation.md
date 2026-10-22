@@ -2,11 +2,13 @@
 
 *Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
-Homogeneous polynomial equations connect three kinds of geometry: tangent cones in frequency space, complex contours that avoid the characteristic divisor, and affine cycles that control polynomial values of the causal inverse. This reading supplies the full authored analytic route from the tangent model to both oriented contour formulas and the all-powers polynomial continuation argument. It also proves the global exponential bound for the lower-order series and includes all the original solved exercises.
+Homogeneous polynomial equations connect three kinds of geometry: tangent cones in frequency space, complex contours that avoid the characteristic divisor, and affine cycles that control polynomial values of the causal inverse. This chapter develops both oriented contour formulas and the polynomial continuation of every principal-power inverse. It also proves a global exponential bound for lower order perturbations and provides exercises with complete solutions.
 
 Basic references are Atiyah, Bott and Gårding [A, B] for the hyperbolic contour and lacuna methods. The proof is supplied below at the explicit preceding inputs stated next. The complete all-integer parity-sensitive angular Fourier identity is proved in [Angular distributions and their full Fourier transforms](../../AN02-L185.html#4-the-angular-fourier-identity-on-the-whole-frequency-space), Theorem 4.1, with arbitrary angular distributions and the full frequency origin retained. The positive-polar analytic tube bound, analytic differential decrease and ordinary-wavefront inclusion are proved in Analytic directions of holomorphic boundary values. The homogeneous Euler bound and sphere-conormal exclusion are proved in Dilation equations and tangential analytic singularities, Theorem 4.1 and Corollary 4.2. General smooth and analytic wavefront operations are proved in Pulling back and combining analytic singularities, Sections 4–8. Gaussian packets and homogeneous Fourier directions, Theorem 8.1, proves exact ordinary and analytic Fourier-wavefront interchange away from both origins for arbitrary complex degree, finite Euler chains and arbitrary origin extensions. [Derivative sequences and microlocal regularity](../../AN02-L190.html#complete-proof), Sections 1–8, supplies the exact admissible derivative-sequence convention, bounded localization and base regularity, all analytic-map operation bounds, homogeneous Fourier interchange away from both origins, and the uniform class estimates needed for limits. Ordinary normal continuity and hypocontinuity retain their stated hypotheses; stronger class estimates require the stated uniform constants. The linked operation, Gaussian and derivative-sequence chapters supply all the stated regularity variants, with their exact support and uniformity hypotheses.
 
 ## Mathematical prerequisites
+
+Use \(D=-i\partial\) and the Fourier phase \(e^{-ix\cdot\xi}\). Let \(P=\sum_{j=0}^m P_j\), \(m\ge1\), be hyperbolic in the real direction \(N\ne0\), with \(P_j\) homogeneous of degree \(j\). Put \(F=P_m\), let \(\Gamma=\Gamma(F,N)\) be the open hyperbolicity component containing \(N\), and write \(C=\Gamma^*\). The star means the positive polar: \(C=\{x:x\cdot v\ge0\text{ for every }v\in\Gamma\}\).
 
 **Hyperbolicity and strength.** [Hyperbolicity and lower order terms](../../AN02-L038.html) gives all directions in the principal hyperbolicity cone, the full component-strength comparison and the shifted derivative estimate. [Multiple characteristics and allowed lower order terms](../../AN02-L039.html) gives multivariable derivative vanishing at each principal-line multiplicity, including the principal part itself.
 
@@ -14,7 +16,7 @@ Basic references are Atiyah, Bott and Gårding [A, B] for the hyperbolic contour
 
 **Causal inverses.** [Causal fundamental solutions and lower order expansions](../../AN02-L040.html) constructs the regular causal inverse, proves uniqueness in the full distributional halfspace class, and gives the causal lower-order expansion and its support cone. The scalar and Fourier conventions of that proof are retained.
 
-**Elementary complex analysis.** [Cauchy bounds, root counts and analytic extensions](../../src/cauchy-bounds-and-root-counts.md) supplies the one-variable Cauchy, Rouché, Hurwitz and compact-contour statements. Polynomial Taylor expansion, finite root counts and compactness are used below with their exact task-specific bounds. The complete preceding [Tangent cones that permit an imaginary push](../../AN02-L118.html) gives the local cone persistence, positive-polar closed graph and uniform power denominator bound, including the full-sphere extension of an equatorial field. That polynomial input is proved; it is not a remaining general microhyperbolicity premise.
+**Elementary complex analysis.** [Cauchy bounds, root counts and analytic extensions](../../AN02-L045.html) supplies the one-variable Cauchy, Rouché, Hurwitz and compact-contour statements. Polynomial Taylor expansion, finite root counts and compactness are used below with their exact task-specific bounds. The complete preceding [Tangent cones that permit an imaginary push](../../AN02-L118.html) gives the local cone persistence, positive-polar closed graph and uniform power denominator bound, including the full-sphere extension of an equatorial field. That polynomial input is proved; it is not a remaining general microhyperbolicity premise.
 
 **Holomorphic boundaries and their analytic directions.** The full cone distributional limit and uniform finite-test estimate are proved in [Holomorphic boundaries in convex cones](../../prerequisites/holomorphic-boundaries-in-convex-cones.html), Theorem 2.1. Analytic directions of holomorphic boundary values proves the additional analytic statements: Theorem 4.1 gives the positive-polar analytic wavefront bound at every locally uniform polynomial growth exponent; Corollary 2.3 gives analytic-coefficient differential decrease; and Theorem 3.1 gives ordinary-wavefront inclusion. The complete controlled-sequence estimates, including common support and uniform distributional order, are supplied there.
 
@@ -35,7 +37,7 @@ H_\zeta(\eta)=
 \]
 Thus \(0\le\mu\le m\), and \(H_\zeta\) is a nonzero homogeneous polynomial of degree \(\mu\).
 
-The multiplicity at zero of \(t\mapsto F(\zeta+tN)\) is exactly \(\mu\). If \(F(\zeta)\ne0\), both orders are zero. Otherwise \(\zeta\) is not proportional to \(N\), since \(F(N)\ne0\). Let the line multiplicity be \(\nu\). The multivariable Taylor order implies that all directional derivatives of orders below \(\mu\) vanish, so \(\nu\ge\mu\). the hyperbolicity and strength input's multiple-characteristic result with \(j=0\) makes every multivariable derivative of order below \(\nu\) vanish; hence \(\mu\ge\nu\). Equality follows, and
+The multiplicity at zero of \(t\mapsto F(\zeta+tN)\) is exactly \(\mu\). If \(F(\zeta)\ne0\), both orders are zero. Otherwise \(\zeta\) is not proportional to \(N\), since \(F(N)\ne0\). Let the line multiplicity be \(\nu\). The multivariable Taylor order implies that all directional derivatives of orders below \(\mu\) vanish, so \(\nu\ge\mu\). The result on [vanishing at multiple characteristics](../../AN02-L039.html#vanishing-at-multiple-characteristics) with \(j=0\) makes every multivariable derivative of order below \(\nu\) vanish; hence \(\mu\ge\nu\). Equality follows, and
 \[
 H_\zeta(N)=\partial_N^\mu F(\zeta)/\mu!\ne0.
 \tag{2}
@@ -51,7 +53,7 @@ F\bigl(\zeta+\varepsilon(\eta+zN)\bigr)
 \]
 converge in coefficients and locally uniformly in \(z\in\mathbb C\). Every polynomial before the limit has only real zeros in \(z\). The limit has degree \(\mu\) and nonzero leading coefficient (2). If it had a nonreal zero, a small disk around that zero disjoint from the real axis, with a zero-free boundary, would have a zero of the approximating polynomial by Rouché's theorem. This is impossible. Thus \(H_\zeta\) is homogeneous hyperbolic in \(N\).
 
-The same argument applies to every \(\theta\in\Gamma\). the hyperbolicity and strength input first makes \(F\) hyperbolic in \(\theta\). Its line multiplicity at \(\zeta\), compared to the multivariable order exactly as above, is again \(\mu\), and \(H_\zeta(\theta)\ne0\). The connected cone \(\Gamma\) is therefore contained in the component of \(\{H_\zeta\ne0\}\) containing \(N\):
+The same argument applies to every \(\theta\in\Gamma\). [Hyperbolicity and lower order terms](../../AN02-L038.html) first makes \(F\) hyperbolic in \(\theta\). Its line multiplicity at \(\zeta\), compared to the multivariable order exactly as above, is again \(\mu\), and \(H_\zeta(\theta)\ne0\). The connected cone \(\Gamma\) is therefore contained in the component of \(\{H_\zeta\ne0\}\) containing \(N\):
 \[
 \Gamma\subset\Gamma(H_\zeta,N),
 \qquad
@@ -84,7 +86,7 @@ Indeed homogeneity and the finite Taylor formula give for the component of degre
 \frac{\partial^\alpha P_j(\zeta)}{\alpha!}\eta^\alpha.
 \tag{7}
 \]
-the hyperbolicity and strength input's multiple-characteristic result, now with degree \(j=m-d\), says
+The result on [vanishing at multiple characteristics](../../AN02-L039.html#vanishing-at-multiple-characteristics), now with degree \(j=m-d\), says
 \(\partial^\alpha P_j(\zeta)=0\) whenever
 \(|\alpha|<\mu+j-m\). At a noncharacteristic \(\zeta\), the latter bound is nonpositive and needs no vanishing assertion. Thus all coefficients of negative powers of \(\varepsilon\) in (7) are zero; exponent zero gives exactly (5), and positive exponents tend to zero. This proves (6), including the endpoint degree-zero terms.
 
@@ -129,7 +131,7 @@ N\cdot x\ge b|x|\qquad(x\in C)
 \]
 for some \(b>0\). Thus \(E_\zeta\) is supported in a closed cone strictly positive in normal \(N\) away from zero.
 
-If \(\mu\ge1\), the causal inverse input's cone converse makes \(L_\zeta\) hyperbolic in \(N\). Its principal part is \(H_\zeta\). The canonical causal inverse of \(L_\zeta\) has support in \(C_\zeta\subset C\subset H_N\); \(E_\zeta\) is also supported in \(H_N\). the causal inverse input's arbitrary-distribution halfspace uniqueness identifies the two inverses. The minimal closed convex cone containing \(\operatorname{supp}E_\zeta\) is therefore exactly \(C_\zeta\). By (10), that cone is contained in the closed convex cone generated by \(D_\zeta\), as claimed.
+If \(\mu\ge1\), the [cone converse](../../AN02-L040.html#uniqueness-the-cone-converse-and-minimality) makes \(L_\zeta\) hyperbolic in \(N\). Its principal part is \(H_\zeta\). The canonical causal inverse of \(L_\zeta\) has support in \(C_\zeta\subset C\subset H_N\); \(E_\zeta\) is also supported in \(H_N\). [uniqueness for arbitrary halfspace-supported distributions](../../AN02-L040.html#uniqueness-the-cone-converse-and-minimality) identifies the two inverses. The minimal closed convex cone containing \(\operatorname{supp}E_\zeta\) is therefore exactly \(C_\zeta\). By (10), that cone is contained in the closed convex cone generated by \(D_\zeta\), as claimed.
 
 If \(\mu=0\), \(L_\zeta=F(\zeta)\ne0\) is scalar. Its only fundamental solution is \(F(\zeta)^{-1}\delta_0\). Hence \(0\in D_\zeta\), and \(C_\zeta=\{0\}\) is again contained in the generated cone. This handles noncharacteristic frequencies without imposing a positive tangent degree. In fact, for every \(\zeta\), the equation \(L_\zeta(D)E_\zeta=\delta_0\) forces \(0\in\operatorname{supp}E_\zeta\), since differentiation cannot enlarge support. Thus the origin lies in every \(D_\zeta\).
 
@@ -253,11 +255,11 @@ For the same actual causal inverse \(E\),
 \subset\{(x,\zeta):\zeta\ne0,\ x\in C_\zeta\}.
 \tag{30}
 \]
-Thus the upper bound applies to analytic singularities, while the lower wavefront-cone section supplies the ordinary wavefront lower bound. the lower wavefront-cone section and \(\operatorname{WF}\subset\operatorname{WF}_A\) give every nonzero covector at the origin for both notions.
+Thus the upper bound applies to analytic singularities, while the lower wavefront-cone section supplies the ordinary wavefront lower bound. The lower wavefront-cone section and \(\operatorname{WF}\subset\operatorname{WF}_A\) give every nonzero covector at the origin for both notions.
 
 Fix \(\zeta_0\ne0\) and \(x_0\notin C_{\zeta_0}\). By the polar definition there is \(v\in\Gamma(H_{\zeta_0},N)\) with \(x_0\cdot v<0\). At positive tangent degree, choose an open convex cone \(\Gamma_1\) containing \(N,v\), whose nonzero closure lies in that tangent cone. Take the conic hull of sufficiently small balls about \(N,v\): their normalized convex combinations form a compact set in the tangent cone and miss zero, since a positive-degree open convex cone cannot contain opposite vectors. Small balls retain the angular margin. At degree zero take \(\Gamma_1=\mathbb R^n\), using the uniform zero-free-region section's degree-zero argument.
 
-Apply the uniform zero-free-region section to \(\Gamma_1\). Choose a negative \(\tau<\tau'_0\), also below the causal inverse input's global full-polynomial barrier. Choose
+Apply the uniform zero-free-region section to \(\Gamma_1\). Choose a negative \(\tau<\tau'_0\), also below [Causal fundamental solutions and lower order expansions](../../AN02-L040.html)'s global full-polynomial barrier. Choose
 \[
 \theta=-\varepsilon v,\quad
 0<|\theta|<\min(\gamma/2,1/4),\quad
@@ -279,7 +281,7 @@ E_1(x)=(2\pi)^{-n}
 \,d\xi
 \tag{33}
 \]
-converges absolutely, locally uniformly in real \(x\), with integrand \(O((1+|\xi|)^{-2n})\). Acting distributionally by \((a-\Delta)^n\), first pairing with a compact test whose Fourier–Laplace transform decreases rapidly, cancels \(Q\). the causal inverse input's construction of the actual causal inverse gives
+converges absolutely, locally uniformly in real \(x\), with integrand \(O((1+|\xi|)^{-2n})\). Acting distributionally by \((a-\Delta)^n\), first pairing with a compact test whose Fourier–Laplace transform decreases rapidly, cancels \(Q\). The [regular causal-kernel construction](../../AN02-L040.html#construct-the-regular-causal-kernel) gives
 \[
 E=(a-\Delta)^nE_1.
 \tag{34}
@@ -450,7 +452,7 @@ Every first covector \(\lambda\) in (56) satisfies \(x\cdot\lambda=0\), using (5
 j:S^{n-1}\times\mathbb R^n\longrightarrow
 (\mathbb R^n\setminus0)\times\mathbb R^n
 \]
-consists of \((x,\xi;a x,0)\), \(a\ne0\). It cannot intersect (56), since \(x\cdot(ax)=a\ne0\). Therefore \(j^*A\) exists, with the exact operation-continuity contract in the angular Fourier and wavefront-operation inputs. Projection
+consists of \((x,\xi;a x,0)\), \(a\ne0\). It cannot intersect (56), since \(x\cdot(ax)=a\ne0\). Therefore \(j^*A\) exists, with the continuity hypotheses for the operations in the angular Fourier and wavefront-operation inputs. Projection
 \(\pi:S^{n-1}\times\mathbb R^n\to\mathbb R^n\) is proper on its support: the inverse image of a compact frequency set lies in the compact product with the sphere. Hence \(\pi_*j^*A\), with the standard sphere density \(dS\), is a well-defined distribution. This proves that (49) is a genuine distributional expression. Pairing it with a test in \(\xi\) agrees with the Radon test-pairing identity in the complete angular Fourier theorem, so it equals \(\widehat u\), with the constant in (49) unchanged.
 
 The proper projection rule permits a nonzero output covector \(y\) only if a covector in (56) restricts to zero in the sphere variable. Such a first covector is proportional to \(x\); orthogonality (50) forces it to be zero. The tensor-only term then has output covector zero, which is excluded. For \(\xi\ne0\), the \(\sigma_k\)-only term would require \(t\xi=0\), also impossible. The mixed term requires
@@ -471,7 +473,7 @@ Equations (51), positive homogeneity in the base point, and positive conicity in
 \{(\xi,y):\xi\ne0,\ y\ne0,\ (-y,\xi)\in\mathcal W(u)\}.
 \tag{59}
 \]
-For example, if \(t>0\), reflect \((x,-\xi)\) to \((-x,\xi)\), then dilate the base by \(t\); if \(t<0\), dilate \((x,\xi)\) by \(-t\). This verifies the signs in (59). the angular Fourier and wavefront-operation inputs's homogeneous Fourier interchange supplies the reverse implication away from both origins.
+For example, if \(t>0\), reflect \((x,-\xi)\) to \((-x,\xi)\), then dilate the base by \(t\); if \(t<0\), dilate \((x,\xi)\) by \(-t\). This verifies the signs in (59). The angular Fourier and wavefront-operation theorems' homogeneous Fourier interchange supplies the reverse implication away from both origins.
 
 Fix \(\xi_0\ne0\). To restrict \(A\) directly to \(S^{n-1}\times\{\xi_0\}\), its ambient conormal is \((a x,\nu)\), where \(\nu\) is arbitrary and a nonzero pair is required. Orthogonality again forces \(a=0\). A tensor-only covector cannot then be nonzero. A \(\sigma_k\)-only covector would have \(t\xi_0=0\), impossible. In the mixed case the only obstruction is
 \[
@@ -497,9 +499,9 @@ q=m-n-|\alpha|,\qquad
 W_F=\bigcup_{\xi\ne0}\Gamma(H_\xi,N)^*.
 \tag{62}
 \]
-The set \(W_F\) contains zero and lies in \(C=\Gamma(F,N)^*\), by the tangent-polynomial section. It is a closed cone. To prove closure, positive rescaling of \(\xi\) multiplies its tangent polynomial by a nonzero scalar, so its component and polar are unchanged. For a convergent sequence \(x_j\in W_F\), choose witnessing frequencies of unit length. A subsequence converges to a nonzero unit \(\xi\); the proved polynomial tangent-cone input's closed graph then puts the limit \(x\) in \(\Gamma(H_\xi,N)^*\). Conicity follows from each polar being a cone. No assertion that \(W_F\) is convex is needed.
+The set \(W_F\) contains zero and lies in \(C=\Gamma(F,N)^*\), by the tangent-polynomial section. It is a closed cone. To prove closure, positive rescaling of \(\xi\) multiplies its tangent polynomial by a nonzero scalar, so its component and polar are unchanged. For a convergent sequence \(x_j\in W_F\), choose witnessing frequencies of unit length. A subsequence converges to a nonzero unit \(\xi\); [Tangent cones that permit an imaginary push](../../AN02-L118.html)'s closed graph then puts the limit \(x\) in \(\Gamma(H_\xi,N)^*\). Conicity follows from each polar being a cone. No assertion that \(W_F\) is convex is needed.
 
-the causal inverse input gives the tempered homogeneous boundary value
+[Causal fundamental solutions and lower order expansions](../../AN02-L040.html) gives the tempered homogeneous boundary value
 \[
 \widehat E_\alpha(\xi)
 =\frac{\xi^\alpha}{F(\xi-i0N)},
@@ -568,7 +570,7 @@ If \(x\notin W_F\cup(-W_F)\), (67) excludes every obstruction to the pointwise s
 x\notin W_F\cup(-C)
 \tag{69}
 \]
-the right-hand side of (66) equals \(D^\alpha E_F(x)\) pointwise and analytically. This region is contained in the complement of \(W_F\cup(-W_F)\), because \(W_F\subset C\). the analytic upper-cone section separately shows that \(E_\alpha\) itself is analytic outside \(W_F\). The difference's symmetric singular bound and the individual kernel's sharper bound are distinguished.
+The right-hand side of (66) equals \(D^\alpha E_F(x)\) pointwise and analytically. This region is contained in the complement of \(W_F\cup(-W_F)\), because \(W_F\subset C\). The analytic upper-cone section separately shows that \(E_\alpha\) itself is analytic outside \(W_F\). The difference's symmetric singular bound and the individual kernel's sharper bound are distinguished.
 
 When \(n\) is even, the parenthesis in (64) vanishes on every real open set where \(F\ne0\); both boundary values there equal the same smooth \(1/F\). Thus its support lies in \(\{F=0\}\). If \(F\) has real coefficients and is of real principal type, its characteristic gradient is nonzero for \(\xi\ne0\), and
 \[
@@ -578,7 +580,7 @@ When \(n\) is even, the parenthesis in (64) vanishes on every real open set wher
 \quad(\xi\ne0).
 \tag{70}
 \]
-The nonzero directional derivative follows from the hyperbolicity and strength input's simple-root criterion. In a coordinate with \(F\) as one variable, the imaginary sign is that of \(\partial_NF\); the one-dimensional boundary jump \(1/(s-i0)-1/(s+i0)=2\pi i\delta(s)\) gives (70), with its exact sign. This is a smooth density on the characteristic hypersurface in the distributional coarea sense.
+The nonzero directional derivative follows from the [strict-hyperbolicity criterion](../../AN02-L039.html#strict-hyperbolicity). In a coordinate with \(F\) as one variable, the imaginary sign is that of \(\partial_NF\); the one-dimensional boundary jump \(1/(s-i0)-1/(s+i0)=2\pi i\delta(s)\) gives (70), with its exact sign. This is a smooth density on the characteristic hypersurface in the distributional coarea sense.
 
 For \(q<0\), (48) localizes the angular expression to the intersection
 \[
@@ -591,14 +593,14 @@ For \(x\) in (69) and real principal type, this intersection is transverse. On \
 
 Fix \(x\notin W_F\cup(-W_F)\). For every \(\xi\ne0\), the linear form \(v\mapsto x\cdot v\) takes both signs on \(\Gamma(H_\xi,N)\). Otherwise one of \(x,-x\) would belong to its polar. Choose two cone vectors with opposite signs and take their positive convex combination with zero \(x\)-pairing. This supplies a vector in the cone and in \(x^\perp\). At a degree-zero tangent point the cone is all of \(\mathbb R^n\), and zero is allowed; at positive tangent degree the selected vector cannot be zero.
 
-the proved polynomial tangent-cone input's local cone stability keeps a selected vector valid in a neighborhood of its direction. Equation (68) permits the same choice near the opposite direction. A finite even partition of unity on the sphere combines these choices, by convexity of each component, into a smooth even degree-zero field. It has the properties
+[Tangent cones that permit an imaginary push](../../AN02-L118.html)'s local cone stability keeps a selected vector valid in a neighborhood of its direction. Equation (68) permits the same choice near the opposite direction. A finite even partition of unity on the sphere combines these choices, by convexity of each component, into a smooth even degree-zero field. It has the properties
 \[
 x\cdot\Theta(\xi)=0,\qquad
 \Theta(t\xi)=\Theta(\xi)\ (t\ne0),\qquad
 \Theta(\xi)\in\Gamma(H_\xi,N).
 \tag{72}
 \]
-It can be made real analytic without losing these properties. Extend it smoothly and evenly to a bounded annulus, multiply by an even radial compact cutoff equal to one near the unit sphere, and convolve with a narrow Gaussian. This gives an even real analytic vector field uniformly close to the original on the sphere. The identity \(x\cdot\Theta=0\) is linear and is preserved exactly by extension and convolution. Restriction to the sphere followed by \(\xi\mapsto\xi/|\xi|\) restores degree zero and remains real analytic away from zero. There is a uniform permitted approximation error: each original sphere value has a ball inside its tangent cone, this ball remains valid in a neighborhood by the proved polynomial tangent-cone input, and a finite subcover gives a positive minimum radius. Thus sufficiently close approximation retains the strict cone membership in (72).
+It can be made real analytic without losing these properties. Extend it smoothly and evenly to a bounded annulus, multiply by an even radial compact cutoff equal to one near the unit sphere, and convolve with a narrow Gaussian. This gives an even real analytic vector field uniformly close to the original on the sphere. The identity \(x\cdot\Theta=0\) is linear and is preserved exactly by extension and convolution. Restriction to the sphere followed by \(\xi\mapsto\xi/|\xi|\) restores degree zero and remains real analytic away from zero. There is a uniform permitted approximation error: each original sphere value has a ball inside its tangent cone, this ball remains valid in a neighborhood by [Tangent cones that permit an imaginary push](../../AN02-L118.html), and a finite subcover gives a positive minimum radius. Thus sufficiently close approximation retains the strict cone membership in (72).
 
 For sufficiently small \(\varepsilon>0\), the two sphere deformations
 \[
@@ -606,9 +608,9 @@ c_\varepsilon^\pm(\xi)=\xi\pm i\varepsilon\Theta(\xi),
 \qquad |\xi|=1
 \tag{73}
 \]
-avoid \(F=0\). the proved polynomial tangent-cone input gives this uniformly on the compact sphere, with a bound \(c\varepsilon^M\) for some finite \(M\). At noncharacteristic points use the ordinary nonzero neighborhood instead. The two signs have the same zero-exclusion property: \(F\) is real after the hyperbolicity and strength input's scalar normalization, and conjugation interchanges them.
+avoid \(F=0\). [Tangent cones that permit an imaginary push](../../AN02-L118.html) gives this uniformly on the compact sphere, with a bound \(c\varepsilon^M\) for some finite \(M\). At noncharacteristic points use the ordinary nonzero neighborhood instead. The two signs have the same zero-exclusion property: \(F\) is real after the [real normalization of the principal part](../../AN02-L038.html#the-homogeneous-principal-part), and conjugation interchanges them.
 
-We need the exact variable-direction boundary value, including the topology required to multiply and restrict it. In a neighborhood of a characteristic \(\xi_*\), choose a smaller pointed cone \(G\) with closure in \(\Gamma(H_{\xi_*},N)\), containing \(N\), the neighboring values of \(\Theta\), and any finite further interior directions needed to test a wavefront exclusion. Narrow it in angle so that it has a uniformly positive linear functional on its nonzero unit section. the proved polynomial tangent-cone input supplies a zero-free tube with power bound. Write \(f(z)=1/F(z)\) there, and
+We need the exact variable-direction boundary value, including the topology required to multiply and restrict it. In a neighborhood of a characteristic \(\xi_*\), choose a smaller pointed cone \(G\) with closure in \(\Gamma(H_{\xi_*},N)\), containing \(N\), the neighboring values of \(\Theta\), and any finite further interior directions needed to test a wavefront exclusion. Narrow it in angle so that it has a uniformly positive linear functional on its nonzero unit section. [Tangent cones that permit an imaginary push](../../AN02-L118.html) supplies a zero-free tube with power bound. Write \(f(z)=1/F(z)\) there, and
 \[
 f_\varepsilon(z)=f(z-i\varepsilon\Theta(z))
 \tag{74}
@@ -622,7 +624,7 @@ using the local holomorphic extension of the real analytic field. For \(z=w-iy\)
 \]
 uniformly in \(\varepsilon\). On complex compact subsets with \(y\ne0\), \(f_\varepsilon\to f\) holomorphically.
 
-Apply the finite-test boundary formula(2.8) in the boundary and analytic-wavefront input's actual the holomorphic-boundary lesson proof to this uniformly bounded family, with imaginary direction \(-Y\), \(Y\in G\). Its remainder contains \(t^M f_\varepsilon(w-itY)\), bounded independently of \(\varepsilon\). At each \(t>0\) it converges to \(t^Mf(w-itY)\); dominated convergence therefore makes the boundary values converge in distributions. The boundary value of \(f_\varepsilon\) on the real base is the actual analytic function \(1/F(w-i\varepsilon\Theta(w))\). The limit agrees with \(1/F(w-i0N)\), since \(N\in G\) and the full-cone boundary limit in that written proof is independent of the approach inside the cone.
+Apply the finite-test boundary formula (2.8) in [Holomorphic boundaries in convex cones](../../prerequisites/holomorphic-boundaries-in-convex-cones.html#one-test-polynomial-handles-every-direction-of-approach) to this uniformly bounded family, with imaginary direction \(-Y\), \(Y\in G\). Its remainder contains \(t^M f_\varepsilon(w-itY)\), bounded independently of \(\varepsilon\). At each \(t>0\) it converges to \(t^Mf(w-itY)\); dominated convergence therefore makes the boundary values converge in distributions. The boundary value of \(f_\varepsilon\) on the real base is the actual analytic function \(1/F(w-i\varepsilon\Theta(w))\). The limit agrees with \(1/F(w-i0N)\), since \(N\in G\) and the full-cone boundary limit in that written proof is independent of the approach inside the cone.
 
 For precision, the convergence also holds in the fixed-wavefront topology needed by the angular Fourier and wavefront-operation inputs. For a compact smooth cutoff \(\phi\) and a closed test-frequency cone outside the negative polar of \(G\), choose \(Y\in-G\) with \(Y\cdot\eta\le-c|\eta|\) on a smaller test cone. Apply the same almost analytic formula to the compact test \(\phi(w)e^{-iw\cdot\eta}\), keeping the exponential holomorphic and extending only \(\phi\) to order \(\ell\). The top face has exponential decay; the remainder is bounded by
 \[
@@ -642,7 +644,7 @@ d\zeta_1\wedge\cdots\wedge\widehat{d\zeta_j}
 \wedge\cdots\wedge d\zeta_n
 \tag{77}
 \]
-be the Kronecker form. On the real unit sphere it is the usual oriented surface form. The sphere restriction is transverse to the homogeneous boundary wavefront set by (50). At fixed \(x\notin W_F\cup(-W_F)\), the multiplier \(\sigma_q(-x\cdot\xi)\) has no opposing covector with either rational boundary value, by (67). The convergence just proved, the angular Fourier and wavefront-operation inputs's continuous restriction and product, and the smooth convergence of the pulled-back numerator and form therefore permit both deformed sphere integrals to converge to (66). Their arguments satisfy \(x\cdot c_\varepsilon^\pm(\xi)=x\cdot\xi\), so the one-dimensional distribution in this operation retains its real argument exactly. These observations justify using \(\omega\) on the deformed contours, including when \(q<0\) and the factor is a delta derivative.
+be the Kronecker form. On the real unit sphere it is the usual oriented surface form. The sphere restriction is transverse to the homogeneous boundary wavefront set by (50). At fixed \(x\notin W_F\cup(-W_F)\), the multiplier \(\sigma_q(-x\cdot\xi)\) has no opposing covector with either rational boundary value, by (67). The convergence just proved, the angular Fourier and wavefront-operation theorems' continuous restriction and product, and the smooth convergence of the pulled-back numerator and form therefore permit both deformed sphere integrals to converge to (66). Their arguments satisfy \(x\cdot c_\varepsilon^\pm(\xi)=x\cdot\xi\), so the one-dimensional distribution in this operation retains its real argument exactly. These observations justify using \(\omega\) on the deformed contours, including when \(q<0\) and the factor is a delta derivative.
 
 ## 8. The two oriented contour formulas
 
@@ -713,11 +715,11 @@ D^\alpha E_F(x)=
 \tag{83}
 \]
 
-Here is the residue calculation, including its orientation. Rotate by an orientation-preserving orthogonal map to \(x=re_1\), \(r>0\), and use the local cylinder \(\xi=(t,y)\), \(|y|=1\), around the equator. Radial projection of this cylinder to the sphere preserves the angular integral of a homogeneous degree-\(-n\) density. The delta factor is supported at \(t=0\), so a cylinder neighborhood suffices. Put \(s(t)=\sqrt{1+t^2}\) and choose the sphere field locally by \(\Theta((t,y)/s(t))=\Theta(0,y)/s(t)\). Radially multiplying its deformed sphere by \(s(t)\) then gives exactly \((t,y)-i\varepsilon\Theta(0,y)\), with constant imaginary displacement in the \(t\) direction. The full scalar times Kronecker form in (66) has degree zero as an angular density, so this radial change introduces no extra factor. the proved polynomial tangent-cone input keeps the new sphere field allowed for small \(t\). It is real analytic on a neighborhood of the equator, which is all that the transverse deformation section's boundary-limit proof needs for this delta-supported integral. A smooth even cutoff can extend it elsewhere; no global analytic cutoff is asserted or needed. Its equatorial values, and hence the tube cycles (82), are unchanged.
+Here is the residue calculation, including its orientation. Rotate by an orientation-preserving orthogonal map to \(x=re_1\), \(r>0\), and use the local cylinder \(\xi=(t,y)\), \(|y|=1\), around the equator. Radial projection of this cylinder to the sphere preserves the angular integral of a homogeneous degree-\(-n\) density. The delta factor is supported at \(t=0\), so a cylinder neighborhood suffices. Put \(s(t)=\sqrt{1+t^2}\) and choose the sphere field locally by \(\Theta((t,y)/s(t))=\Theta(0,y)/s(t)\). Radially multiplying its deformed sphere by \(s(t)\) then gives exactly \((t,y)-i\varepsilon\Theta(0,y)\), with constant imaginary displacement in the \(t\) direction. The full scalar times Kronecker form in (66) has degree zero as an angular density, so this radial change introduces no extra factor. [Tangent cones that permit an imaginary push](../../AN02-L118.html) keeps the new sphere field allowed for small \(t\). It is real analytic on a neighborhood of the equator, which is all that the transverse deformation section's boundary-limit proof needs for this delta-supported integral. A smooth even cutoff can extend it elsewhere; no global analytic cutoff is asserted or needed. Its equatorial values, and hence the tube cycles (82), are unchanged.
 
 Write \(\omega'\) for the Kronecker form in the last \(n-1\) variables and \(b(\zeta)=\zeta^\alpha/F(\zeta)\). Since
 \(\sigma_q(-rt)=(-r)^{-k}r^{-1}\delta^{(k)}(t)\),
-the two signs of differentiation cancel. The deformed angular expression is therefore
+The two signs of differentiation cancel. The deformed angular expression is therefore
 \[
 J_\varepsilon=
 (2\pi)^{-n}\pi i^k r^{-k-1}
@@ -732,7 +734,7 @@ Cauchy's residue formula gives
 \(\oint z^{-k-1}b(rz,\beta)\,dz
 =2\pi i\,r^k\partial_t^kb(0,\beta)/k!\).
 The two minus signs from the form and the equatorial orientation cancel. Thus each tube integral is
-\(2\pi i^{-k}r^{-k-1}/k!\) times its corresponding standard-sphere derivative integral. Substituting in (84) expresses \(J_\varepsilon\) as the right side of (83), since \(q+1=-k\). The closed-form period argument in the next paragraph makes that expression independent of sufficiently small positive \(\varepsilon\). Its the transverse deformation section limit is the actual kernel derivative, proving (83) at each such \(\varepsilon\), rather than identifying a finite deformation with its boundary limit prematurely.
+\(2\pi i^{-k}r^{-k-1}/k!\) times its corresponding standard-sphere derivative integral. Substituting in (84) expresses \(J_\varepsilon\) as the right side of (83), since \(q+1=-k\). The closed-form period argument in the next paragraph makes that expression independent of sufficiently small positive \(\varepsilon\). Its boundary limit from the transverse deformation section is the actual kernel derivative, proving (83) at each such \(\varepsilon\), rather than identifying a finite deformation with its boundary limit prematurely.
 
 The integrand in (83) is closed by the same degree calculation as (80), on \(\{F\ne0,\ x\cdot\zeta\ne0\}\). Its period is unchanged by small changes of the circle radius and by allowed equatorial deformations; compare parameter intervals using a common sufficiently small circle. Equation (81) says that the centers of the tube cycles in (82) are exactly \(-\tfrac12\partial\widetilde\alpha_+\), including multiplicities. This proves both formulas and their relation, with no unrecorded orientation sign.
 
@@ -749,23 +751,23 @@ The condition needed below is that \(K^-\) from the oriented contour section bou
 
 ### The cycle does not depend on its allowed deformation
 
-For a fixed \(x\), take two allowed equatorial fields and interpolate them convexly. Each value stays in the open convex cone \(\Gamma(H_\xi,N)\), has zero \(x\)-pairing, and retains evenness. the proved polynomial tangent-cone input and compactness of the sphere times the interpolation interval give one small positive upper bound for the deformation parameter under which all resulting cycles avoid \(F=0\). The resulting cylinder in \(M_x\) has boundary equal to the difference of the two cycles. Changing between two sufficiently small positive parameters gives another such cylinder. Thus the homology class of \(K^-\), and whether it bounds \(T\), are independent of the allowed field and small parameter. Real analytic representatives can be used throughout; the interpolation of two such representatives is real analytic.
+For a fixed \(x\), take two allowed equatorial fields and interpolate them convexly. Each value stays in the open convex cone \(\Gamma(H_\xi,N)\), has zero \(x\)-pairing, and retains evenness. [Tangent cones that permit an imaginary push](../../AN02-L118.html) and compactness of the sphere times the interpolation interval give one small positive upper bound for the deformation parameter under which all resulting cycles avoid \(F=0\). The resulting cylinder in \(M_x\) has boundary equal to the difference of the two cycles. Changing between two sufficiently small positive parameters gives another such cylinder. Thus the homology class of \(K^-\), and whether it bounds \(T\), are independent of the allowed field and small parameter. Real analytic representatives can be used throughout; the interpolation of two such representatives is real analytic.
 
 The bounding-chain property persists near a point where it holds. Let \(x_0\) be such a point and choose orientation-preserving orthogonal maps \(L_x\), continuous for \(x\) near \(x_0\), taking \(x_0/|x_0|\) to \(x/|x|\), with \(L_{x_0}=I\). One explicit local choice is the rotation in the plane spanned by these two unit vectors, with identity on its orthogonal complement; its limit at coincident vectors is the identity. It takes \(H_{x_0}\) to \(H_x\) and the oriented \(K_{x_0}\) to \(K_x\).
 
-Transport the field by \(\Theta_x(\xi)=L_x\Theta_0(L_x^{-1}\xi)\). Compact local cone stability in the proved polynomial tangent-cone input makes it allowed for all \(x\) in a sufficiently small neighborhood. The chain \(T\) is compact and \(F\) has a positive minimum modulus on its support, so \(F(L_x\zeta)\ne0\) on that support when \(x\) is close enough to \(x_0\). Consequently \(L_xT\) bounds the transported allowed cycle in \(M_x\). Choice independence identifies it with any of the allowed cycles at that \(x\). This proves local persistence.
+Transport the field by \(\Theta_x(\xi)=L_x\Theta_0(L_x^{-1}\xi)\). Compact local cone stability in [Tangent cones that permit an imaginary push](../../AN02-L118.html) makes it allowed for all \(x\) in a sufficiently small neighborhood. The chain \(T\) is compact and \(F\) has a positive minimum modulus on its support, so \(F(L_x\zeta)\ne0\) on that support when \(x\) is close enough to \(x_0\). Consequently \(L_xT\) bounds the transported allowed cycle in \(M_x\). Choice independence identifies it with any of the allowed cycles at that \(x\). This proves local persistence.
 
 This argument proves openness of the set of points satisfying the condition. It does not, by itself, prove that its complement is open or that null homology is constant on an entire component: a compact bounding chain was available only at the starting point. The separate global topological implication is proved in [Equatorial cycles and the projective period test](../../AN02-L184.html#complete-proof). The component-wide mathematical consequence below has its own analytic proof and does not assume that implication.
 
 ### One bounding cycle gives homogeneous polynomials on the whole component
 
-Let \(V\) be the connected component of \(\mathbb R^n\setminus(W_F\cup(-C))\) containing \(x_0\). For every integer \(k\ge1\), let \(E_k\) be the causal inverse of \(F(D)^k\), with support in \(C\). The hyperbolicity component of \(F^k\) is the same as that of \(F\), since their nonzero sets are the same. At a direction \(\xi\), the tangent polynomial is \(H_\xi^k\). Its nonzero component and polar are also unchanged. Therefore \(W_{F^k}=W_F\). The cycle and its bounding chain can be chosen independently of \(k\). the analytic upper-cone section gives analyticity of \(E_k\) outside \(W_F\); the homogeneous representation section gives homogeneity of degree
+Let \(V\) be the connected component of \(\mathbb R^n\setminus(W_F\cup(-C))\) containing \(x_0\). For every integer \(k\ge1\), let \(E_k\) be the causal inverse of \(F(D)^k\), with support in \(C\). The hyperbolicity component of \(F^k\) is the same as that of \(F\), since their nonzero sets are the same. At a direction \(\xi\), the tangent polynomial is \(H_\xi^k\). Its nonzero component and polar are also unchanged. Therefore \(W_{F^k}=W_F\). The cycle and its bounding chain can be chosen independently of \(k\). The analytic upper-cone section gives analyticity of \(E_k\) outside \(W_F\); the homogeneous representation section gives homogeneity of degree
 \[
 d_k=mk-n.
 \tag{86}
 \]
 
-For each \(x\) in the neighborhood where a bounding chain exists, conjugation gives a chain bounding \(K^+\) as well. This uses the real scalar normalization of \(F\) from the hyperbolicity and strength input; its zero set is invariant under conjugation. Choose a small common circle \(|z|=\delta\) such that \(F(zx+\zeta)\ne0\) for every \(\zeta\) on these two compact chains. On their products with the circle, \(x\cdot(zx+\zeta)=z|x|^2\ne0\).
+For each \(x\) in the neighborhood where a bounding chain exists, conjugation gives a chain bounding \(K^+\) as well. This uses the real scalar normalization of \(F\) from [Hyperbolicity and lower order terms](../../AN02-L038.html); its zero set is invariant under conjugation. Choose a small common circle \(|z|=\delta\) such that \(F(zx+\zeta)\ne0\) for every \(\zeta\) on these two compact chains. On their products with the circle, \(x\cdot(zx+\zeta)=z|x|^2\ne0\).
 
 If \(|\alpha|>d_k\), the integrand in (83), with \(F\) replaced by \(F^k\), is a closed \((n-1)\)-form on this product region. The circle-first product orientation satisfies
 \(\partial(S^1\times T)=-S^1\times\partial T\).
@@ -794,7 +796,7 @@ Let \(P\) be any hyperbolic polynomial with principal part \(F\), and put
 R=F-P,\qquad \deg R\le m-1.
 \tag{89}
 \]
-the causal inverse input supplies the distributionally convergent causal expansion
+[Causal fundamental solutions and lower order expansions](../../AN02-L040.html) supplies the distributionally convergent causal expansion
 \[
 E_P=\sum_{j=0}^{\infty}R(D)^j E_{j+1}.
 \tag{90}
@@ -986,7 +988,7 @@ C_\zeta=
 \]
 Thus both wavefront fibers lie in this positive-time null ray, and the lower wavefront-cone section says that the closed convex cone generated by the ordinary fiber contains the whole ray. This forces at least one nonzero point on it: a subset of \(\{0\}\) generates no nonzero vector.
 
-The causal inverse of the homogeneous polynomial has degree \(2-n\), by the causal inverse input and uniqueness. Its ordinary wavefront fiber is invariant under every positive dilation of the base point. To check this directly in the Fourier definition, dilate a cutoff centered at \(x\) to one centered at \(\lambda x\). Changing variables in its distributional Fourier pairing multiplies the transform by a fixed scalar and replaces frequency by \(\lambda\) or \(\lambda^{-1}\) times frequency. Conic rapid decay is unchanged. Homogeneity identifies the two localized distributions up to that nonzero scalar, so exclusion at one point is equivalent to exclusion at its positive dilation. Since the fiber has a nonzero point on (45), it contains every positive point on that ray. the lower wavefront-cone section also includes zero.
+The causal inverse of the homogeneous polynomial has degree \(2-n\), by [Causal fundamental solutions and lower order expansions](../../AN02-L040.html) and uniqueness. Its ordinary wavefront fiber is invariant under every positive dilation of the base point. To check this directly in the Fourier definition, dilate a cutoff centered at \(x\) to one centered at \(\lambda x\). Changing variables in its distributional Fourier pairing multiplies the transform by a fixed scalar and replaces frequency by \(\lambda\) or \(\lambda^{-1}\) times frequency. Conic rapid decay is unchanged. Homogeneity identifies the two localized distributions up to that nonzero scalar, so exclusion at one point is equivalent to exclusion at its positive dilation. Since the fiber has a nonzero point on (45), it contains every positive point on that ray. The lower wavefront-cone section also includes zero.
 
 The ordinary fiber therefore equals \(C_\zeta\); inclusion of the ordinary wavefront set in the analytic one and the analytic upper-cone section's analytic upper bound show equality for the analytic fiber too. Consequently
 \[
@@ -1048,4 +1050,4 @@ Its support is the closed future cone, so causal uniqueness applies. On its inte
 
 [B] Michael Atiyah, Raoul Bott and Lars Gårding, *Lacunas for hyperbolic differential operators with constant coefficients, II*, Acta Mathematica **131** (1973), 145–206. [Primary article](https://archive.ymsc.tsinghua.edu.cn/pacm_download/117/6156-11511_2006_Article_BF02392039.pdf).
 
-These works credit the classical contour and lacuna methods. The complete authored receiving arguments above use the stated exact internal results and use the linked ordinary, analytic and derivative-sequence operation and interchange proofs, with all stated nonzero, proper-support and uniformity hypotheses. Original prose and solved exercises are CC0-1.0; the linked historical works retain their own rights and are not reproduced.
+These works credit the classical contour and lacuna methods. The arguments above use the stated exact internal results and use the linked ordinary, analytic and derivative-sequence operation and interchange proofs, with all stated nonzero, proper-support and uniformity hypotheses. Original prose and solved exercises are CC0-1.0; the linked historical works retain their own rights and are not reproduced.

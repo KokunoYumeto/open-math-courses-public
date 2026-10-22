@@ -1,6 +1,6 @@
 # Fibred topoi and their total topoi
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A diagram of topoi indexed by a small category, for example a morphism of ringed topoi, a diagram of schemes with their étale topoi, or a simplicial object of a topos, is organized as a topos fibred over the index category. Two categories are attached to it. In the *total topos* \(\operatorname{Top}(X)\), an object is a family of objects \(E_i\) with maps from the inverse images \(f^*E_j\) to \(E_i\). In the category \(\operatorname{Top}^{\mathrm o}(X)\), the maps go from \(E_i\) to \(f^*E_j\). Cosimplicial sheaves form a category of the first kind and simplicial sheaves one of the second, and the coefficient systems on a simplicial set are of both kinds. The cohomology of diagrams, and with it the deformation theory of diagrams of ringed topoi and of group schemes, takes place in these categories.
 

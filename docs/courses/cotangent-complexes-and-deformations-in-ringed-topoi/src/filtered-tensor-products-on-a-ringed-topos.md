@@ -1,6 +1,6 @@
 # Filtered tensor products on a ringed topos
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 22 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 Let \(A\) be a commutative ring of a topos \(T\). The tensor product of two filtered complexes of \(A\)-modules is filtered by the sums of the images of the products of filtration steps. This lesson derives that tensor product on the filtered derived category \(DF(A)\) of [*Filtered derived categories*](filtered-derived-categories.md), for complexes without any boundedness condition, and proves:
 

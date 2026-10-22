@@ -1,6 +1,6 @@
 # Connectivity of powers of simplicial ideals
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 22 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 Let \(R\) be a simplicial ring of a topos and \(J\) an ideal of \(R\) such that \(\pi_0(J)=0\) and every \(J_n\) is a weakly regular ideal of \(R_n\). Quillen's convergence theorem states that the powers \(J^m\) are \(m\)-connective: their homotopy vanishes in the degrees below \(m\). Apply it to the simplicial ring \(Q\) that computes \(\operatorname{Tor}^A_\bullet(B,B)\) for a quotient \(B=A/I\), with \(J\) the augmentation ideal: then \(\operatorname{Tor}^A_n(B,B)=\pi_n(Q/J^{n+1})\), so the filtration of \(\operatorname{Tor}\) by the powers of \(J\) is finite in each degree. The lesson proves:
 

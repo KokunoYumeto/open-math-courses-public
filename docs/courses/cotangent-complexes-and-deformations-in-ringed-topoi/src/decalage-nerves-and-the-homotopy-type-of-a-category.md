@@ -1,6 +1,6 @@
 # Décalage, nerves and the homotopy type of a category
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 The cohomology of diagrams, which governs the deformations of diagrams of ringed topoi and of group schemes, uses three simplicial constructions. The first is the décalage of a simplicial object, obtained by forgetting its last or its first face operator. It is homotopically trivial over its augmentation. The second is the nerve of a category, and more generally of a category object in a category with fibre products. Nerves are recognized by cartesian conditions on their décalages, and groupoids and monoid actions by further cartesian conditions. The third is Quillen's theorem that small categories and simplicial sets have the same homotopy theory.
 

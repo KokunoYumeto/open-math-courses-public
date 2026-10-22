@@ -1,6 +1,6 @@
 # The Atiyah class of a module
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 21 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 Let \(A\to B\) be a map of rings of a topos and \(M\) a \(B\)-module. The *Atiyah class* of \(M\) is a morphism
 \[

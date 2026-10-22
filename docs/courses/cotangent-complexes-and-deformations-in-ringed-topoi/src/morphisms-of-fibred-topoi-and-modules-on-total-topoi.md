@@ -1,6 +1,6 @@
 # Morphisms of fibred topoi and modules on total topoi
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A morphism of fibred topoi changes the index category and maps each level to a level. It induces inverse images on the total topoi, levelwise. Their right adjoints, the direct images, are limits over comma categories of the index categories. Global sections of the total topos are the limit of the global sections of the levels. A ring in a total topos is a compatible family of rings on the levels, and so are its modules. Tensor products are computed levelwise, and internal Homs are computed levelwise from a cartesian source. This lesson proves these facts. They are the formal basis of the cohomology of diagrams of ringed topoi.
 

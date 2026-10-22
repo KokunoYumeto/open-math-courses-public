@@ -1,6 +1,6 @@
 # Non-additive functors of complexes in a ringed topos
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 The cotangent complex is built with functors that are not additive: symmetric, exterior and divided powers, and free modules. Such a functor \(F\) cannot be applied term by term to a complex, since \(F(d)\circ F(d)=F(d\circ d)=F(0)\) need not vanish. Dold and Puppe extended non-additive functors to complexes concentrated in nonnegative homological degrees through the Dold–Kan correspondence. Illusie extended them to arbitrary complexes through simplicial–cosimplicial objects, and derived them on bounded-above complexes of modules over a ring of a topos.
 

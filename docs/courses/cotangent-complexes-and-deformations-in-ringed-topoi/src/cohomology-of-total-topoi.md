@@ -1,6 +1,6 @@
 # Cohomology of total topoi
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A sheaf on the total topos of a fibred topos is a family of sheaves on the levels, tied together by transition maps. Its cohomology is built from the cohomology of the levels. Restriction to all levels at once is a morphism of topoi from the product of the levels to the total topos. Its adjunction gives the standard resolutions, and it supplies enough sheaves that are acyclic on every level. A second resolution, indexed by the strings of composable arrows of the index category, identifies the derived direct image to a topos with an explicit complex: in degree \(n\), it is the product, over the strings of \(n\) arrows, of the direct images from the first level of the string. For the punctual topos, this is the classical complex computing the derived functors of an inverse limit. Three consequences follow: a spectral sequence from derived limits of the cohomology of the levels to the cohomology of the total topos; the cohomology of a total topos over a category with a final object is that of the final level; and derived direct images under a morphism of fibred topoi over a fixed index category are computed level by level.
 

@@ -235,6 +235,14 @@ The lesson numbers identify stable files. Within a route, follow the linked prer
 
 - **Compact factors and homogeneous Fourier transforms.** [*Compact factors and homogeneous equations*](src/compact-factors-and-homogeneous-equations.md#compact-distributions-acting-on-schwartz-functions) proves compact-factor convolution on tempered distributions and the exact coordinate laws, then treats homogeneity and smoothness away from the origin. [*Complex powers at a boundary*](src/complex-powers-at-a-boundary.md#the-damped-euler-integral-at-every-parameter) gives both ray orientations for the Euler integral and the full finite-part Fourier table. Six solved problems separate global and punctured hypotheses and determine the phases explicitly.
 
+- **Residues and elliptic point sources.** [*Annular multipliers and elliptic endpoints*](src/annular-multipliers-and-elliptic-endpoints.md#polynomial-logarithms-from-radial-residues) derives the exact logarithmic coefficient of every homogeneous elliptic fundamental solution, its obstruction to homogeneity and its full polynomial freedom. The smooth parametrix has an entire error term. Six worked problems compare anisotropic and complex kernels, odd dimensions, logarithmic length scales and cutoff choices.
+
+- **Analytic elliptic kernels.** [*Annular multipliers and elliptic endpoints*](src/annular-multipliers-and-elliptic-endpoints.md#complex-cones-and-analytic-kernels) constructs a holomorphic parametrix kernel on a conic neighborhood of the punctured real space. Its homogeneous remainder has analytic derivative bounds at every radius. Six solved problems examine contour signs, sharp complex-pole barriers, radial sources, disconnected cones and compact forcing.
+
+- **Polynomial zeros and smooth regularity.** [*Annular multipliers and elliptic endpoints*](src/annular-multipliers-and-elliptic-endpoints.md#polynomial-zeros-and-smooth-regularity) relates real-frequency derivatives to distance from complex zeros and gives the qualitative criterion for hypoellipticity. Six solved problems examine multiplicity, higher-order heat operators, exact nearest zeros, failure of analytic regularity and lower-order perturbations.
+
+- **Quadratic Fourier transforms.** [*Quadratic cones, point sources and vertex directions*](src/quadratic-cones-point-sources-and-vertex-directions.md#fourier-transforms-on-the-dual-quadratic-cone) proves both boundary transforms with their signature phases, principal values and dual-cone measures through the vertex. Six solved problems treat anisotropy, definite and split signatures, fundamental solutions and exact Gaussian mass.
+
 Every available lesson contains its own graded problems and complete solutions. The course scope describes the lessons collected in this reader.
 
 ## Sources and contributions

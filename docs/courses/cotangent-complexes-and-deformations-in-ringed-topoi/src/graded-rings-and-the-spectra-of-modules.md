@@ -1,6 +1,6 @@
 # Graded rings and the spectra of modules
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 21 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 An abelian sheaf \(G\) on a topos is determined by its spectrum, the family of its iterated nerves \(G\langle n\rangle\), as a spectral diagram of the topos ([*Multisimplicial objects and spectral diagrams*](multisimplicial-objects-and-spectral-diagrams.md), Section 3). The spectrum records the addition of \(G\) by the faces of the nerves, so it is an object of the topos itself, without additive structure. This lesson shows that bilinear maps, rings and modules are recorded in the same way. A bilinear map \(X\times Y\to Z\) of abelian sheaves is the same as a map of spectra \(X(1)\times Y(1)\to Z(1)\) of the type given by concatenation of coordinates. Hence a ring \(A\) gives a graded monoid \(A(1)^\times\), an \(A\)-module \(M\) gives a graded \(A(1)^\times\)-object \(M(1)^\times\), and \(M\mapsto M(1)^\times\) is fully faithful with an explicit essential image. Combined with [*Graded monoids and the nerves of their actions*](graded-monoids-and-the-nerves-of-their-actions.md), this describes \(A\)-modules by bisimplicial diagrams built from products of copies of \(A\) and \(M\).
 

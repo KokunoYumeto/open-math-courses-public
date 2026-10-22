@@ -292,9 +292,9 @@ u(t)=0\quad(t<0).
 \]
 Differentiation verifies the equation and the factor \(i\). Smooth \(f\) supported in the closed positive half-line is flat at zero. The relation \(u'=if-au\), differentiated recursively, makes every derivative of \(u\) zero there too. For \(a<0\), this solution may grow exponentially; the stated solution space permits that growth.
 
-**Exercise 4 (intermediate: why a logarithm is not enough).** Suppose a finite nonnegative semialgebraic function \(h(r)\) on a final interval is \(O(\log(1+r))\). Prove that it is bounded. Explain the role of polynomial algebra in the root-barrier proof.
+**Exercise 4 (intermediate: why a logarithm is not enough).** Suppose a finite nonnegative semialgebraic function \(h(r)\) on a final interval is \(O(\log(1+r))\). Prove that it is bounded on a sufficiently far final interval. Explain the role of polynomial algebra in the root-barrier proof.
 
-**Solution.** The Puiseux lemma makes \(h\) eventually zero or asymptotic to \(A r^\alpha\), with \(A>0\) and rational \(\alpha\). If it were unbounded, \(\alpha>0\), and \(r^\alpha/\log(1+r)\to\infty\), a contradiction. The abstract profile \(\log(1+r)\) itself is unbounded and obeys a logarithmic upper estimate. In our proof, the polynomial root equations and the quantified maximum make the root profile semialgebraic, which supplies the additional power law.
+**Solution.** The Puiseux lemma makes \(h\) eventually zero or asymptotic to \(A r^\alpha\), with \(A>0\) and rational \(\alpha\). If it were unbounded on every final interval, \(\alpha>0\), and \(r^\alpha/\log(1+r)\to\infty\), a contradiction. The abstract profile \(\log(1+r)\) itself is unbounded and obeys a logarithmic upper estimate. In our proof, the polynomial root equations and the quantified maximum make the root profile semialgebraic, which supplies the additional power law. Pointwise finiteness alone need not bound a function near a finite argument. The root profile in the theorem is also nondecreasing, so its tail bound bounds the whole nonnegative axis.
 
 **Exercise 5 (advanced: exact stabilization in a concrete geometry).** For the wave principal part and \(N=e_t\), calculate \(\delta\) and the radius in the local dependence statement. Show explicitly how it produces a smooth global solution from the compactly forced solutions.
 

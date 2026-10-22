@@ -1,6 +1,6 @@
 # Traces and cup products of perfect filtered complexes
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 22 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 For a perfect complex \(E\) on a ringed topos and a morphism \(f\colon E\otimes^{\mathbf L}K\to E\otimes^{\mathbf L}L\), the *trace* \(\operatorname{Tr}(f)\colon K\to L\) contracts the two copies of \(E\) through the duality between \(E\) and \(E^\vee\). This lesson defines the trace for perfect filtered complexes and proves its basic properties, including the one that motivates the filtered derived category:
 

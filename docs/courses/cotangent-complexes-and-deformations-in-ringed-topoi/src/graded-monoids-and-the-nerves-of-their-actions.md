@@ -1,6 +1,6 @@
 # Graded monoids and the nerves of their actions
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 21 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 The Ext groups of modules over a ring \(A\) of a topos can be computed as the cohomology of a simplicial topos whose simplices are built from the products \(A^p\times M^q\) of the underlying objects of \(A\) and of a module \(M\). Products see only the underlying objects, so the additive structure has to be recorded by maps between objects. The spectrum of an abelian group object, the family of its iterated nerves, does this ([*Multisimplicial objects and spectral diagrams*](multisimplicial-objects-and-spectral-diagrams.md), Section 3). The spectra of a ring and of a module are a graded monoid and a graded object with an action of it, graded over the monoidal category of finite ordinals.
 

@@ -1,6 +1,6 @@
 # Derived left adjoints on the second total topos and local inductive limits
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 This lesson continues the study of left adjoints of inverse images of modules on total topoi. For a diagram in a topos whose category of local sections is locally filtered, the left adjoint is Deligne's local inductive limit, which is exact. On the second total topos the left adjoint is a colimit over comma categories, and it is computed level by level for morphisms that fix the index category. Under exactness conditions on flat modules it has a left derived functor, adjoint to the inverse image on derived Hom complexes. Over the opposite of the category of finite ordinals, the derived colimit of a simplicial module is its associated chain complex. This gives the derived left adjoint for simplicial topoi and the triviality of the décalage, in a form dual to the décalage statement for cohomology.
 

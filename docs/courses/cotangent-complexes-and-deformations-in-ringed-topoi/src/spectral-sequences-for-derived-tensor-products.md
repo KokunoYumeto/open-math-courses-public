@@ -1,6 +1,6 @@
 # Spectral sequences for derived tensor products
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 The homology of a derived tensor product \(E\otimes^\ell_AF\) of modules over a simplicial ring \(A\) is computed by three spectral sequences. The first starts from the Tor groups of the modules \(E_p\) and \(F_p\) over the rings \(A_p\), degree by degree. The second, a Künneth spectral sequence, starts from Tor over the graded ring \(H_*(A)\) of the homology modules \(H_*(E)\) and \(H_*(F)\). The third starts from the derived tensor products of the homology modules of \(E\), regarded as modules over \(\pi_0(A)\); it comes from a filtration of \(E\) by submodules whose normalized complexes are the truncations of that of \(E\). This lesson constructs the three, together with the products on homology given by shuffle maps on which the Künneth spectral sequence rests. The second and third depend only on the quasi-isomorphism classes of \(E\) and \(F\) from their second page on. The first does not, as an example shows.
 

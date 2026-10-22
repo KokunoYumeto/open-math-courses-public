@@ -14441,6 +14441,359 @@ The first equality follows by pairing with \(z_i\). For the second marginal use 
 **Solution.** The field \(t=\theta T_C(q)+(1-\theta)T_C(q')\) lies in \([0,t_p]\). Lemma 56.1 gives a projection \(q''\le p\) with \(T_C(q'')=t\). TP.1 gives the desired profile, and trace preservation gives \(\tau(q'')=\theta\tau(q)+(1-\theta)\tau(q')\). All objects lie in the original \(C\).
 
 
+### All finite-depth tail-profile ranges
+
+The center maps of [68.6–68.8](core-central-transition-bounds.md#the-original-cup-and-the-joint-center-transfer) identify the profiles attainable at every prescribed finite depth of the same ordinary tunnel. Use its notation \(\mathcal C_j,V_j,\beta_j,B_j\). In the notation of TP.1,
+
+\[
+\begin{gathered}
+C_l=N_l\cap S=\mathcal C_{l+1},\\
+V_1=Z(S),\quad V_0=Z(R),\\
+\mathsf T=Q_\kappa P_0:V_1\longrightarrow V_1.
+\\ \text{(TP.15)}
+\end{gathered}
+\]
+
+Define trace-preserving center isomorphisms by following one parity:
+
+\[
+\begin{gathered}
+\rho_{2n}=\beta_{2n-1}\cdots\beta_3\beta_1,\\
+\rho_{2n+1}=\beta_{2n}\cdots\beta_2\beta_0,\\
+\rho_0=\mathrm{id},\quad F_{2n}=\mathsf T^n,\\
+F_{2n+1}=\mathsf T^n Q_\kappa.
+\\ \text{(TP.16)}
+\end{gathered}
+\]
+
+The even map has domain \(V_1\) and codomain \(V_{2n+1}\); the odd map has domain \(V_0\) and codomain \(V_{2n+2}\). Products are composed from right to left. Thus \(\rho_1=\beta_0\) and \(\rho_2=\beta_1\).
+
+**Theorem TP.5 — the complete finite-depth range.** For \(l\ge0\) and a projection \(p\in C_l\), put \(h_p=\rho_l^{-1}(T_{C_l}(p))\). Then
+
+\[
+\begin{gathered}
+\{T_S(q):q=q^*=q^2\in C_l,\ q\le p\}\\
+=\{F_l(h):0\le h\le h_p\}.
+\\ \text{(TP.17)}
+\end{gathered}
+\]
+
+The field \(h\) belongs to \(V_1\) at even \(l\), and to \(V_0\) at odd \(l\). Its realizing projection has \(\tau(q)=\tau(h)\). Every finite positive partition \(h_0+\cdots+h_m=h_p\) is realized by an orthogonal projection partition \(q_0+\cdots+q_m=p\) in that same \(C_l\), with \(T_S(q_i)=F_l(h_i)\). This includes the entire residual \(q_0\).
+
+In particular, the whole-unit ranges alternate as
+
+\[
+\begin{gathered}
+l=0:\ [0,1]_{Z(S)},\\
+l=1:\ Q_\kappa([0,1]_{Z(R)}),\\
+l=2:\ \mathsf T([0,1]_{Z(S)}),\\
+l=3:\ \mathsf T Q_\kappa([0,1]_{Z(R)}),\\
+l=4:\ \mathsf T^2([0,1]_{Z(S)}).
+\\ \text{(TP.18)}
+\end{gathered}
+\]
+
+**Proof.** Write \(L_{i,k}=B_i\cdots B_{k-1}\) for \(k>i\), and \(L_{i,i}=\mathrm{id}_{V_i}\). CT.12 gives \(T_S(q)=L_{1,l+1}(T_{C_l}(q))\). The kernel periodicity CT.11 gives
+
+\[
+\begin{gathered}
+L_{i+2,k+2}\beta_k=\beta_iL_{i,k}\quad(k\ge i),\\
+L_{1,2n+1}\rho_{2n}=\mathsf T^n,\qquad
+L_{1,2n+2}\rho_{2n+1}=\mathsf T^n Q_\kappa.
+\\ \text{(TP.19)}
+\end{gathered}
+\]
+
+The first identity is obtained by moving each \(\beta\) past one \(B\) using \(B_{j+2}\beta_{j+1}=\beta_j B_j\). For the even-depth identity, the case \(n=1\) is \(B_1B_2\beta_1=\mathsf T\). To induct, use \(\rho_{2n+2}=\beta_{2n+1}\rho_{2n}\), and move \(\beta_{2n+1}\) through \(L_{3,2n+3}\) by the first identity. This adds the factor \(B_1B_2\beta_1=\mathsf T\) on the left of the preceding even-depth expression.
+For the odd-depth identity, the case \(n=0\) is \(B_1\beta_0=Q_\kappa\); the same induction adds \(B_1B_2\beta_1=\mathsf T\) on the left.
+
+Therefore \(T_S(q)=F_l(\rho_l^{-1}T_{C_l}(q))\). Both inclusions in TP.17 follow from Lemma 56.1 inside \(C_l\), applied below \(p\). Trace preservation gives the scalar trace. The finite simultaneous prescription and full residual follow from TP.2, applied in \(C_l\) to the fields \(\rho_l(h_i)\). This proves the entire range, rather than only an inclusion. \(\square\)
+
+**Theorem TP.6 — almost stationary profiles at any prescribed finite depth.** Let \(0\ne\zeta\in L^1(Z(S),\tau)_+\), put \(c=\tau(\zeta)\), and set
+
+\[
+\begin{gathered}
+\delta=\frac{\|\zeta-\mathsf T\zeta\|_1}{c},\\
+\zeta_b=\min(\zeta,b1),\\
+e_b=\|\zeta-\zeta_b\|_1,\\
+m(l)=\lceil l/2\rceil,\qquad b>0.
+\\ \text{(TP.20)}
+\end{gathered}
+\]
+
+The positive, unital, trace-preserving maps here extend to \(L^1\) by TE18. For each finite \(l\ge0\) there is a nonzero projection \(q_{l,b}\in C_l\) with
+
+\[
+\begin{gathered}
+bT_S(q_{l,b})=\mathsf T^{m(l)}\zeta_b,\\
+\tau(q_{l,b})=\frac{\tau(\zeta_b)}b,\\
+\|bT_S(q_{l,b})-\zeta\|_1
+\le m(l)c\delta+e_b,\\
+\left\|\frac{T_S(q_{l,b})}{\tau(q_{l,b})}
+-\frac{\zeta}{c}\right\|_1\\
+\le m(l)\delta+\frac{2e_b}{c}.
+\\ \text{(TP.21)}
+\end{gathered}
+\]
+
+For bounded \(\zeta\) and \(b\ge\|\zeta\|_\infty\), \(e_b=0\) and \(\tau(q_{l,b})=c/b\). For general integrable \(\zeta\), \(e_b\to0\) and \(\tau(q_{l,b})\le c/b\) as \(b\to\infty\). Thus the physical trace can be arbitrarily small while the displayed profile estimate is retained.
+
+**Proof.** At even \(l=2n\), use TP.5 with \(p=1\) and \(h=\zeta_b/b\in[0,1]_{V_1}\). At odd \(l=2n+1\), use \(h=P_0(\zeta_b)/b\in[0,1]_{V_0}\). These choices give the first line of TP.21 and its scalar trace in both parities. The trace is positive because \(\zeta\ne0\) and \(b>0\).
+
+For every positive integer \(m\), \(L^1\) contraction gives the telescoping bound
+
+\[
+\begin{gathered}
+\|\mathsf T^m\zeta-\zeta\|_1
+\le\sum_{k=0}^{m-1}
+\|\mathsf T^k(\mathsf T\zeta-\zeta)\|_1
+\le mc\delta .
+\\ \text{(TP.22)}
+\end{gathered}
+\]
+
+For \(m=0\) the difference vanishes. Applying contraction also to \(\zeta-\zeta_b\) proves the second line of TP.21. Put \(a_b=\mathsf T^{m(l)}\zeta_b\) and \(c_b=\tau(\zeta_b)>0\). Since \(\tau(a_b)=c_b=c-e_b\),
+
+\[
+\begin{gathered}
+\left\|\frac{a_b}{c_b}-\frac{\zeta}{c}\right\|_1\\
+\le\frac{\|a_b-\zeta\|_1}{c}+\frac{e_b}{c}.
+\\ \text{(TP.23)}
+\end{gathered}
+\]
+
+This is the last estimate in TP.21. Monotone convergence gives \(e_b\to0\); the trace bound is immediate. \(\square\)
+
+Every finite depth and every ordinary prefix in these theorems are those of the fixed original tunnel. The projections may depend on \(l,b,\zeta\). No compatibility between projections at different depths is asserted.
+
+Proposition 68.5 supplies arbitrarily small stationarity defects for canonical finite-projection profiles under the original amenability hypothesis. TP.6 consequently controls their central profiles at any depth fixed in advance. It supplies no physical commutator or compression estimate for the realizing \(q_{l,b}\). If the depth is selected only after that canonical projection, the product \(m(l)\delta\) also requires control. These simultaneous requirements of 57.30 remain unresolved.
+
+![Original cup transfer, two-step joint-center transport and all finite-depth projection-profile ranges](figures/cup-center-transfer.svg)
+
+*Figure CT.1.* The first two panels are the exact original-cup identities CT.4 and CT.8. The last panel lists the successive whole-unit ranges TP.18 and the normalized stability bound TP.21. Boxes and arrows are schematic, with no metric or trace-area scale. Proofs: 68.6–68.8 and TP.5–TP.6. [Full-size figure](figures/cup-center-transfer.svg). [Reproducible figure source](figures/cup-center-transfer.py). Scholarly context: Sorin Popa, *Classification of amenable subfactors of type II*, Theorem 4.2.2, printed pp. 213–214; the actual internal Jones construction and finite dual-trace providers are 17.14, 63.1–63.4 and 82.1–82.5.
+
+**Exercise TP.4 — both parities at depth five.** For bounded \(\zeta\ne0\), choose \(b\ge\|\zeta\|_\infty\). State a realizing central field and the resulting profile at depths four and five.
+
+**Solution.** At depth four use \(h=\zeta/b\) in \(V_1\); TP.17 gives \(T_S(q_{4,b})=\mathsf T^2\zeta/b\). At depth five use \(h=P_0\zeta/b\) in \(V_0\); its profile is \(\mathsf T^2Q_\kappa P_0\zeta/b=\mathsf T^3\zeta/b\). Both scalar traces are \(c/b\). Their normalized profile errors are bounded by \(2\delta\) and \(3\delta\), respectively.
+
+**Exercise TP.5 — retain a prescribed residual at depth \(l\).** Suppose \(p\in C_l\) is fixed and positive central fields \(h_1,\ldots,h_m\) satisfy \(\sum_{i=1}^m h_i\le h_p\). Realize their profiles and give the exact remaining profile.
+
+**Solution.** Put \(h_0=h_p-\sum_{i=1}^m h_i\ge0\). TP.5 realizes the entire positive partition by orthogonal \(q_i\in C_l\), with sum \(p\). Hence the residual is the actual projection \(q_0=p-\sum_{i=1}^m q_i\), its profile is \(F_l(h_0)\), and its scalar trace is \(\tau(h_0)\). It stays at the same stage and leaves the prescribed ordinary prefix unchanged.
+
+
+### Finite physical moments in a tail corner
+
+The central trace and finitely many normal moments can be prescribed simultaneously by a projection. In the local approximation problem, the relevant moments are actual coefficients of the physical targets in the finite algebra \(A_l\). Their preservation gives an exact identity for the physical errors.
+
+**Theorem TP.7 — finite moments with a prescribed central trace.** Let \(C\) be a finite type II von Neumann algebra with a faithful normal finite trace and normalized center-valued trace \(T_C\). Let \(p\in C\) be a projection, \(0\le x\le p\), and let \(\varphi_1,\ldots,\varphi_m\) be normal complex-linear functionals on \(C\). There is a projection \(q\le p\) such that
+
+\[
+\begin{gathered}
+T_C(q)=T_C(x),\\
+\varphi_j(q)=\varphi_j(x)\quad(1\le j\le m).
+\\ \text{(TP.24)}
+\end{gathered}
+\]
+
+No separability or factoriality is assumed. The case \(m=0\) is the projection prescription of 56.1; here all the additional moments are retained.
+
+**Proof.** Replace each complex constraint by its real and imaginary parts. Let \(K\) be the set of selfadjoint \(y\in C\) with \(0\le y\le p\), \(T_C(y)=T_C(x)\), and the prescribed real moments. It is nonempty, convex and weak-star compact. Indeed, the order interval is a weak-star closed subset of the bounded dual ball, and the center trace and moment constraints are normal.
+
+For completeness, \(K\) has an extreme point. Order its nonempty weak-star closed faces by inclusion. Every decreasing chain has nonempty intersection by compactness, and the intersection is again a face. Zorn's lemma supplies a minimal closed face \(F\). If it contained two different elements, a real normal functional separating them would attain its maximum on a nonempty proper closed face of \(F\), which is also a face of \(K\). This contradicts minimality. Thus \(F\) is a singleton, giving an extreme point \(y\).
+
+Suppose \(y\) is not a projection. In the algebra \(pCp\), some
+\(e=1_{[\epsilon,1-\epsilon]}(y)\) is nonzero, for \(0<\epsilon<1/2\). The type II corner \(eCe\) contains a unital matrix algebra \(\operatorname{Mat}_n\), with unit \(e\), for arbitrarily large \(n\). To obtain it, apply 56.1 successively to prescribe \(n\) equivalent diagonal projections, each of center-valued trace \(T_C(e)/n\), and join them by matrix units.
+
+The traceless selfadjoint part of this matrix algebra has real dimension \(n^2-1\), and every element of it has \(C\)-center trace zero. The diagonal matrix units have equal center trace; cyclicity gives zero center trace for every off-diagonal matrix unit. Choose \(n^2-1>2m\). The real moment equations therefore have a nonzero solution \(h=h^*\) in this traceless space. Rescale it so that \(\|h\|\le\epsilon\). Then
+
+\[
+\begin{gathered}
+h=ehe,\quad h\ne0,\\
+T_C(h)=0,\quad \varphi_j(h)=0,\\
+0\le y+h\le p,\qquad 0\le y-h\le p,\\
+y=\tfrac12(y+h)+\tfrac12(y-h).
+\\ \text{(TP.25)}
+\end{gathered}
+\]
+
+The inequalities follow from \(\epsilon e\le eye\le(1-\epsilon)e\), with the unchanged positive contraction on \(p-e\). Hence \(y+h,y-h\in K\) are distinct, contradicting extremality. The extreme point is the required projection. This also covers \(p=0\). \(\square\)
+
+Return to one fixed ordinary tunnel of the original proper finite-index inclusion. Fix a stage \(l\), and put
+
+\[
+\begin{gathered}
+A=A_l=N_l'\cap M,\qquad B=B_l=N_l'\cap N,\\
+C=N_l\cap S,\\
+0\ne f=f^*=f^2\in B,\quad v=\tau(f).
+\\ \text{(TP.26)}
+\end{gathered}
+\]
+
+The algebra \(A\) is finite dimensional. The algebra \(C\) is type II, as proved before TP.1. Centrality of \(f\) in \(B\) is not required.
+
+For \(0\ne x\in C\), \(0\le x\le1\), write \(a=\tau(x)>0\). Define
+
+\[
+\begin{gathered}
+\Phi_x(y)=a^{-1}fE_A(yx)f\\
+=a^{-1}fE_A(x^{1/2}yx^{1/2})f,\quad y\in M.
+\\ \text{(TP.27)}
+\end{gathered}
+\]
+
+This is a normal completely positive map into \(fAf\), with \(\Phi_x(1)=f\), and it fixes \(fAf\). The factor trace identity for \(N_l\) and its commutant gives \(E_A(x)=a1\). The two expressions in TP.27 agree by pairing against \(A\) and using \([x,A]=0\). Thus all normalizations use the physical trace.
+
+**Proposition TP.8 — exact physical corner energy.** If \(q\in C\) is a nonzero projection, set \(a=\tau(q)\), \(s=qf\) and \(\mathcal D=sAs=q(fAf)\). Then \(\tau(s)=av\), and
+
+\[
+\begin{gathered}
+E_{\mathcal D}^{sMs}(X)=a^{-1}qE_A(X),\\
+X\in sMs,\\
+E_{\mathcal D}(sus)=q\Phi_q(u)\quad(u\in M).
+\\ \text{(TP.28)}
+\end{gathered}
+\]
+
+For every physical unitary \(u\in M\),
+
+\[
+\begin{gathered}
+\|[u,s]\|_2^2\\
++2\|sus-E_{\mathcal D}(sus)\|_2^2\\
+=2av-2a\|\Phi_q(u)\|_2^2.
+\\ \text{(TP.29)}
+\end{gathered}
+\]
+
+**Proof.** The factor trace identity gives
+\(\tau(qb)=a\tau(b)\) for \(b\in A\), hence \(\tau(qf)=av\) and \(\|qb\|_2^2=a\|b\|_2^2\). Multiplication by \(q\) is a faithful *-homomorphism on \(fAf\). The first formula of TP.28 is positive, unital on \(sMs\), fixes \(\mathcal D\), and is \(\mathcal D\)-bimodular. Pairing against \(qb\), \(b\in fAf\), proves trace preservation, exactly as in 57.24. For the second formula, \(E_A(quq)=E_A(uq)\): pair against \(A\), use cyclicity, \(q^2=q\), and \([q,A]=0\). The two \(f\)'s then give TP.27.
+
+For a unitary,
+\(\|[u,s]\|_2^2=2\tau(s)-2\|sus\|_2^2\).
+The tracial expectation is the orthogonal \(L^2\) projection onto \(\mathcal D\), so its squared approximation error is
+\(\|sus\|_2^2-\|E_{\mathcal D}(sus)\|_2^2\).
+Adding twice this error cancels \(\|sus\|_2^2\). Finally
+\(\|q\Phi_q(u)\|_2^2=a\|\Phi_q(u)\|_2^2\), proving TP.29. \(\square\)
+
+**Theorem TP.9 — projection selection without a physical coefficient loss.** Fix a projection \(p\in C\), a nonzero positive contraction \(0\le x\le p\), and a finite set \(U\subset\mathcal U(M)\). There is a projection \(q\in C\), \(q\le p\), such that
+
+\[
+\begin{gathered}
+T_C(q)=T_C(x),\\
+\tau(q)=\tau(x)=a,\\
+E_A(uq)=E_A(ux),\\
+\Phi_q(u)=\Phi_x(u)\quad(u\in U),\\
+T_S(qf)=T_S(xf),\quad \tau(qf)=av.
+\\ \text{(TP.30)}
+\end{gathered}
+\]
+
+In particular the same \(q\) preserves every prescribed physical coefficient simultaneously, the entire supported central profile, and the exact physical mass. The tunnel, its stage and every earlier Jones cup stay fixed.
+
+**Proof.** Choose a complex vector-space basis \(b_1,\ldots,b_d\) of \(A\). Apply TP.7 to \(x\) and all the finitely many normal functionals
+\(y\mapsto\tau(b_k^*uy)\) on \(C\), for \(u\in U\) and \(1\le k\le d\).
+Their preservation identifies \(E_A(uq)\) with \(E_A(ux)\) by the faithful trace pairing on the finite algebra \(A\). Equality of \(\Phi_q,\Phi_x\) follows from their common \(a\) and TP.27. The weighted trace identity of TP.1, applied linearly to \(x\), gives
+
+\[
+\begin{gathered}
+T_S(qf)=E_{Z(S)}(fT_C(q))\\
+=E_{Z(S)}(fT_C(x))=T_S(xf).
+\\ \text{(TP.31)}
+\end{gathered}
+\]
+
+Factor trace uniqueness gives the last scalar trace. \(\square\)
+
+For fixed \(t=T_C(x)\) and \(\tau(t)>0\), the joint tuple \((\Phi_x(u))_{u\in U}\) has the same compact convex range for projections and positive contractions below \(p\). Indeed, the positive contraction slice with center trace \(t\) is weak-star compact and convex; its finite-dimensional coefficient image is compact and convex, and TP.9 realizes every point by a projection. The small-defect restriction TP.32 is an additional restriction on that body.
+
+For these fixed data define the coefficient defect
+
+\[
+\begin{gathered}
+D_x(u)=1-\frac{\|\Phi_x(u)\|_2^2}{v},\\
+0\le D_x(u)\le1.
+\\ \text{(TP.32)}
+\end{gathered}
+\]
+
+Complete positivity and unitality in the \(f\)-corner give the displayed bounds. The projection in TP.9 satisfies the exact combined identity TP.29 with \(\Phi_x(u)\) on its right side. Put \(s=qf\) and \(\mathcal D=sAs\). Then
+
+\[
+\begin{gathered}
+\frac{\|[u,s]\|_2}{\sqrt{av}}\le\sqrt{2D_x(u)},\\
+\frac{\|sus-E_{\mathcal D}(sus)\|_2}{\sqrt{av}}
+\le\sqrt{D_x(u)}.
+\\ \text{(TP.33)}
+\end{gathered}
+\]
+
+Conversely, for \(x=q\), if the two normalized physical errors are \(c_u,e_u\), then
+
+\[
+\begin{gathered}
+D_q(u)=\tfrac12c_u^2+e_u^2.
+\\ \text{(TP.34)}
+\end{gathered}
+\]
+
+Thus, at the same stage, the projection requirement in the bare second local form can be replaced by a nonzero positive contraction with small \(D_x(u)\), with precisely the tolerance changes TP.33–TP.34. The support condition \(\|f-z\|_2<\epsilon\sqrt{\tau(f)}\), \(z\in Z(S)\), is unchanged. Any scalar trace cap on \(xf\) is retained exactly by \(qf\). The reduction from finite operator sets to finite unitary sets is the one proved in 57.2.
+
+This equivalence retains the full physical coefficients, rather than only a central profile. The unrestricted assertion still requires a positive contraction \(x\in C\) with the small coefficient defects and the required support \(f\). The central-profile formulas TP.5–TP.6 alone do not assert those coefficient inequalities.
+
+**Proposition TP.10 — three positive pieces can obstruct joint moment selection.** Even in a type II factor, a positive partition of one need not have an orthogonal projection partition with the same individual finite normal moments.
+
+**Proof.** Let \(C=\operatorname{Mat}_2\overline\otimes R_0\), where \(R_0\) is a \(\mathrm{II}_1\) factor. Write \(E=\mathrm{id}\otimes\tau_{R_0}\) for expectation onto the first matrix algebra. In \(\mathbb R^2\subset\mathbb C^2\), put
+
+\[
+\begin{gathered}
+v_1=(1,0),\qquad
+v_2=(-1/2,\sqrt3/2),\\
+v_3=(-1/2,-\sqrt3/2),\qquad P_i=v_iv_i^*,\\
+x_i=\tfrac23P_i\otimes1,\qquad \sum_{i=1}^3x_i=1.
+\\ \text{(TP.35)}
+\end{gathered}
+\]
+
+The identity follows by adding the displayed rank-one matrices. Each \(x_i\) has normalized scalar trace \(1/3\). Prescribing all first-matrix trace pairings is a finite family of normal moments, and forces \(E(q_i)=\tfrac23P_i\).
+
+If \(q_i\) is a projection with this expectation, faithfulness of the trace gives \(q_i\le P_i\otimes1\): the positive operator \(q_i(1-P_i\otimes1)q_i\) has trace zero. Hence \(q_i=P_i\otimes r_i\) for a projection \(r_i\in R_0\), with \(\tau_{R_0}(r_i)=2/3\). For \(i\ne j\), \(P_iP_j\ne0\), so \(q_iq_j=0\) would imply \(r_ir_j=0\). Orthogonality of all three would therefore give
+
+\[
+\begin{gathered}
+\sum_{i=1}^3r_i\le1,\qquad
+\tau_{R_0}\!\left(\sum_{i=1}^3r_i\right)=2>1,
+\\ \text{(TP.36)}
+\end{gathered}
+\]
+
+a contradiction. Each individual effect does have a projection with its moments: choose any \(r_i\) of trace \(2/3\). The obstruction is their orthogonality. \(\square\)
+
+This example can be placed in the index-four tensor tunnel, with \(C=N_l\cap S\) equal to its type II tail factor. Taking the three Pauli unitaries in the displayed matrix factor and the identity as the physical targets makes their \(A_l\)-coefficients precisely these matrix moments, by factor trace independence. Thus the obstruction also concerns the finite physical coefficients of TP.30.
+
+For one positive effect \(x\le p\), TP.7 preserves the full residual automatically: \(p-q\) has the center trace and all the moments of \(p-x\). The three-piece example shows why that residual cannot always be divided again with all individual moments retained. The central-profile partition theorems TP.2 and TP.5 prescribe central fields; they assert no such joint moment selection for an arbitrary noncommuting positive partition.
+
+![A fixed-stage positive contraction and a projection share all finite physical coefficients, central profile and exact combined energy](figures/tail-physical-moments.svg)
+
+*Figure TP.2.* The upper panel is the weak-star compact moment slice in TP.7; a fractional spectral band admits a nonzero traceless matrix perturbation, so an extreme point is a projection. The middle panel preserves the actual \(A_l\)-coefficients of every prescribed unitary at the same stage. The third panel is the exact identity TP.29 and its two error bounds TP.33. The last panel shows the three unit vectors defining the projections of TP.35; the required auxiliary traces in TP.36 make orthogonal moment selection impossible. Boxes are schematic, with no metric or trace-area scale. [Full-size figure](figures/tail-physical-moments.svg). [Reproducible figure source](figures/tail-physical-moments.py). Scholarly context: Sorin Popa, *Classification of amenable subfactors of type II*, Theorem 4.3.1, printed pp. 217–219; center-valued trace and projection prescription are TE16 and Lemma 56.1.
+
+**Exercise TP.6 — the type II hypothesis.** Show that TP.7 fails for \(C=\operatorname{Mat}_2(\mathbb C)\) if all matrix moments are prescribed for \(x=\tfrac12 1\).
+
+**Solution.** Prescribe the normalized trace and the three moments against the Pauli matrices \(X,Y,Z\). The four trace pairings determine every matrix. Thus the only matrix with those moments is \(x=\tfrac121\), which is not a projection. In the proof of TP.7, this finite type I algebra has no arbitrarily large matrix algebra in a fractional spectral corner.
+
+**Exercise TP.7 — simultaneous tolerance.** Suppose \(D_x(u)<\epsilon^2/2\) for every \(u\in U\). Give the two normalized errors of the projection selected in TP.9.
+
+**Solution.** TP.33 gives commutator error below \(\epsilon\), and compression error below \(\epsilon/\sqrt2\). The number of target unitaries introduces no additional error constant, because TP.30 preserves all of their coefficients at once.
+
+**Exercise TP.8 — the support trace.** If \(\tau(x)=2/7\), \(\tau(f)=3/5\), and \(\|\Phi_x(u)\|_2^2=9/20\), find \(\tau(qf)\), \(D_x(u)\), and the exact combined physical squared error.
+
+**Solution.** The mass is \(6/35\). The defect is \(1-(9/20)/(3/5)=1/4\). Equation TP.29 gives combined error \(2(6/35)(1/4)=3/35\). These values do not require \(f\) to be central in \(B_l\).
+
+
+**Exercise TP.9 — the full complement and three individual effects.** In TP.10, select \(q_1=P_1\otimes r_1\) with \(\tau_{R_0}(r_1)=2/3\). Find the matrix expectation of \(1-q_1\). Can it always be split into two orthogonal projections with expectations \(\tfrac23P_2,\tfrac23P_3\)?
+
+**Solution.** Its expectation is \(1-\tfrac23P_1=x_2+x_3\). The whole residual therefore has exactly the required total moments. A split with those two individual expectations would complete the forbidden three-projection partition, so it is impossible. Already two orthogonal auxiliary projections of trace \(2/3\) would have total trace \(4/3>1\).
+
+
 *Exposition by GPT-6.1 Sol (OpenAI). CC0-1.0.*
 
 ## The exact bias in the reflected modified-cup error

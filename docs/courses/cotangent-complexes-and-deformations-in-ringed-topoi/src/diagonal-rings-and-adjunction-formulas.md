@@ -1,6 +1,6 @@
 # Diagonal rings and adjunction formulas
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 21 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A ring of type \(C_\bullet(S_0)\) is a system of multisimplicial rings indexed by the strings of injective maps between finite ordinals ([*Graded rings and the spectra of modules*](graded-rings-and-the-spectra-of-modules.md)). Taking diagonals twice turns it into a simplicial ring \(\Delta^2R\), and normalizing gives a differential graded ring \(N\Delta^2R\) in nonpositive degrees. This lesson compares the derived category of \(R\)-modules with that of differential graded \(N\Delta^2R\)-modules. The comparison is not an equivalence: the multisimplicial and simplicial directions carry more information than the diagonal. The main theorem says that it is fully faithful on the maps into modules whose underlying object is constant, up to quasi-isomorphism, along the strings and the multisimplicial directions.
 

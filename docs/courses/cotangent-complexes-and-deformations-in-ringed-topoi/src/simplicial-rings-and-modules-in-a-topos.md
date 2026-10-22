@@ -1,6 +1,6 @@
 # Simplicial rings and modules in a topos
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A simplicial ring of a topos is a ring object of the topos of simplicial objects: a family of rings \(A_n\) with faces and degeneracies that are ring homomorphisms. Modules over it, up to homotopy and quasi-isomorphism, form the derived category \(D_\bullet(A)\) in which the cotangent complex and its relatives live. When \(A\) is a ring \(\Lambda\) placed in every degree, normalization identifies simplicial \(\Lambda\)-modules with chain complexes, and \(D_\bullet(\Lambda)\) is the part of the usual derived category in nonpositive degrees. For a general simplicial ring there is no such identification, and the homotopy theory has to be built directly.
 

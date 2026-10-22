@@ -1,0 +1,237 @@
+# Deforming a morphism together with its target
+
+*Written by Claude Opus 5.5 (Anthropic) on 22 October 2026. Self-checked by the writing AI. Public domain (CC0).*
+
+Let \(Z\) be a square-zero thickening of a ringed topos \(Z_o\) by a module \(K\), and let \(f_o\colon X_o\to Y_o\) and \(g_o\colon Y_o\to Z_o\) be morphisms of ringed topoi, with \(g_o\) flat. Suppose that \(X_o\) has a flat deformation \(X\) over \(Z\). When does \(Y_o\) have a flat deformation \(Y\) over \(Z\) to which \(f_o\) extends as a morphism \(X\to Y\) over \(Z\)? The problem is a deformation problem for the arrow topos \(X_oY_o\) of \(f_o\) over the arrow topos of \(X\to Z\), and the cotangent complex of that morphism of arrow topoi is \(L_{Y_o/Z_o}\) placed over \(Y_o\). So the answer lies in the relative Ext groups of the arrow topos. With \(h_o=g_of_o\), the lesson proves:
+
+- there is an obstruction in \(\operatorname{Ext}^2(Y_o/X_o;L_{Y_o/Z_o},g_o^*K)\); when it vanishes, the solutions form a torsor under \(\operatorname{Ext}^1(Y_o/X_o;L_{Y_o/Z_o},g_o^*K)\), and the automorphisms of a solution form the group of derivations of \(\mathcal O_{Y_o}\) over \(Z_o\) with values in \(g_o^*K\) whose pullback to \(X_o\) vanishes;
+- the same holds for thickenings of \(Y_o\) by any module \(J\) with prescribed maps, with the groups \(\operatorname{Ext}^i((0\leftarrow L_{Y_o/Z_o}),(I\leftarrow J))\) and their long exact sequence;
+- the obstruction is the product of the Kodaira–Spencer class of \(X_oY_o\to X_oZ_o\to S\) with the class of the thickening of the arrow topos of \(h_o\);
+- if \(Y_o\) alone has a flat deformation over \(Z\), the obstruction comes from \(\operatorname{Ext}^1(Lf_o^*L_{Y_o/Z_o},h_o^*K)\);
+- for locally ringed topoi the solutions are locally ringed, for schemes they are schemes, and closed immersions extend to closed immersions.
+
+**Prerequisites.** [*The arrow topos and relative Ext groups*](the-arrow-topos-and-relative-ext-groups.md) (Definition 1.1, Proposition 1.2, 1.3, Definitions 2.6 and 3.1, Propositions 2.8, 3.2, 4.1 and 4.2, Exercise 5.3); [*Deformations of diagrams of schemes*](deformations-of-diagrams-of-schemes.md) (the conormal truncation and the isomorphism (0.1) of its Conventions). From the programme lesson [*The cotangent complex*](course:AG-HP/the-cotangent-complex#10-morphisms-of-schemes): Theorem 2.2, the transitivity triangle and its naturality (Theorem 4.1), Theorem 6.1, Lemma 7.1, the classification of extensions and the obstruction theorem, [Theorems 10.3 and 10.4](course:AG-HP/the-cotangent-complex#global-lifting-over-a-thickened-base), and the sheaf construction of its Section 10, with its argument that square-zero thickenings of schemes by quasi-coherent ideals are schemes. From the AI-integrated Stacks project: flatness over a square-zero thickening [[Stacks, Tag 08M4](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/sites-modules.html#sites-modules-lemma-flat-over-thickening)]; K-flat resolutions [[Tag 06YS](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/sites-cohomology.html#sites-cohomology-lemma-K-flat-resolution)], bounded above flat complexes [[Tag 06YQ](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/sites-cohomology.html#sites-cohomology-lemma-bounded-flat-K-flat)], their pullbacks [[Tag 0G7E](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/sites-cohomology.html#sites-cohomology-lemma-pullback-K-flat)] and derived pullback [[Tag 06YY](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/sites-cohomology.html#sites-cohomology-lemma-derived-base-change)]; the cotangent complex of a morphism of ringed topoi [[Tag 08SU](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cotangent.html#cotangent-definition-cotangent-complex-morphism-ringed-topoi)] and its transitivity triangle [[Tag 08V1](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/cotangent.html#cotangent-lemma-triangle-ringed-topoi)]; Ext groups between bounded objects [[Tag 06XS](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/derived.html#derived-lemma-negative-exts)] and long exact Hom sequences [[Tag 0149](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/derived.html#derived-lemma-representable-homological)]; locally ringed sites and topoi and their morphisms [[Tags 04ES](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/sites-modules.html#sites-modules-lemma-locally-ringed), [04EU](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/sites-modules.html#sites-modules-definition-locally-ringed), [04H8](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/sites-modules.html#sites-modules-definition-locally-ringed-topos), [04HA](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/sites-modules.html#sites-modules-definition-morphism-locally-ringed-topoi)]; closed immersions of schemes [[Tag 01LD](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/schemes.html#schemes-lemma-characterize-closed-immersions)]; cohomology of quasi-coherent modules on affine schemes [[Tag 01XB](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/coherent.html#coherent-lemma-quasi-coherent-affine-cohomology-zero)].
+
+## Conventions
+
+Rings of a topos are commutative. For a morphism of ringed topoi \(\varphi\), \(\varphi^{-1}\) is the inverse image of sheaves, \(\varphi^*\) the inverse image of modules, \(L\varphi^*\) its derived functor [Tag 06YY] and \(\varphi^\sharp\) the ring map. The cotangent complex of a morphism of ringed topoi \(\varphi\colon P\to Q\) is \(L_{P/Q}=L_{\mathcal O_P/\varphi^{-1}\mathcal O_Q}\) [Tag 08SU], made by the sheaf construction of Section 10 of *The cotangent complex*. It is a bounded above complex of flat modules, hence K-flat [Tag 06YQ], so that \(L\psi^*L_{P/Q}=\psi^*L_{P/Q}\) for every morphism \(\psi\) into \(P\). Inverse images under morphisms of topoi are exact and preserve the polynomial constructions (Section 10 there): for a morphism of topoi \(\psi\), \(\psi^{-1}L_{B/A}=L_{\psi^{-1}B/\psi^{-1}A}\), compatibly with the functoriality maps and the transitivity triangles. The cotangent complex is concentrated in degrees \(\leq0\) with \(H^0(L_{B/A})=\Omega_{B/A}\) (Section 10 there).
+
+For \(P\in D^{\leq a}\) and \(Q\in D^{\geq b}\), \(\operatorname{Ext}^n(P,Q)=0\) for \(n<b-a\) and \(\operatorname{Ext}^{b-a}(P,Q)=\) \(\operatorname{Hom}(H^aP,H^bQ)\) [Tag 06XS]. For a distinguished triangle \(P_1\xrightarrow{p}P_2\to P_3\xrightarrow{w}P_1[1]\) and an object \(Q\), the sequence
+\[
+\begin{aligned}&\operatorname{Hom}(P_2,Q[1])\xrightarrow{\ p^*\ }\operatorname{Hom}(P_1,Q[1])\\&\quad\xrightarrow{\ \varphi\mapsto\varphi[1]\circ w\ }\operatorname{Hom}(P_3,Q[2])\end{aligned}
+\]
+is exact [Tag 0149, applied to the rotated triangle]; these are the connecting maps of the long exact sequences below, and the product of Ext classes is the composite of shifted morphisms. For a surjection \(\mathcal A'\to\mathcal A\) of rings of a topos whose kernel \(\mathcal N\) has square zero, \(L_{\mathcal A/\mathcal A'}\) lies in \(D^{\leq-1}\) with \(H^{-1}=\mathcal N\), and its *conormal truncation* \(t\colon L_{\mathcal A/\mathcal A'}\to\mathcal N[1]\) is the map inducing the identity on \(H^{-1}\); for \(P\in D^{\leq-1}(\mathcal A)\) and a ring map \(\mathcal A\to\mathcal B\), \(H^{-1}(P\otimes^{\mathbf L}_{\mathcal A}\mathcal B)=H^{-1}(P)\otimes_{\mathcal A}\mathcal B\) (Conventions of *Deformations of diagrams of schemes*, (0.1)).
+
+The arrow topos of a morphism of ringed topoi \(\varphi\colon P\to Q\) is written \(PQ\), ringed by \((\mathcal O_P\leftarrow\mathcal O_Q)\), with its restrictions \(i_P\), \(i_Q\) and its projection \(\pi\colon PQ\to Q\) (Definition 1.1 and Proposition 1.2 of *The arrow topos and relative Ext groups*).
+
+## 1. Extensions and the deformation problem
+
+**Definition 1.1.** Let \(q\colon Y_o\to Z\) be a morphism of ringed topoi and \(J\) an \(\mathcal O_{Y_o}\)-module. A *\(Z\)-extension of \(Y_o\) by \(J\)* is a ringed topos \(Y\) with the underlying topos of \(Y_o\), together with a surjection of rings \(j^\sharp\colon\mathcal O_Y\to\mathcal O_{Y_o}\) whose kernel has square zero and is identified with \(J\) as an \(\mathcal O_{Y_o}\)-module, and a ring map \(g^\sharp\colon q^{-1}\mathcal O_Z\to\mathcal O_Y\) with \(j^\sharp\circ g^\sharp=q^\sharp\). We write \(j\colon Y_o\to Y\) and \(g\colon Y\to Z\) for the morphisms of ringed topoi with these ring maps, whose underlying morphisms of topoi are the identity and that of \(q\); so \(g\circ j=q\). Thus a \(Z\)-extension of \(Y_o\) by \(J\) is a \(q^{-1}\mathcal O_Z\)-algebra extension of \(\mathcal O_{Y_o}\) by \(J\) in the sense of Theorem 10.3 of *The cotangent complex*. An *isomorphism* of \(Z\)-extensions of \(Y_o\) by \(J\) is a ring isomorphism of the structure sheaves compatible with the maps from \(q^{-1}\mathcal O_Z\), the maps to \(\mathcal O_{Y_o}\) and the identifications of the kernels with \(J\).
+
+Let \(k\colon Z_o\to Z\) be given by a surjection \(\mathcal O_Z\to\mathcal O_{Z_o}\) whose kernel \(K\) has square zero, and \(q=k\circ g_o\) for a morphism \(g_o\colon Y_o\to Z_o\). Then \(q^{-1}=g_o^{-1}\), and \(g^\sharp\) carries \(g_o^{-1}K\) into \(J\), its image in \(\mathcal O_{Y_o}\) being \(g_o^\sharp\) of the image of \(K\) in \(\mathcal O_{Z_o}\), which is zero. The \(\mathcal O_{Y_o}\)-linear extension of this map is denoted
+\[
+v_Y\colon g_o^*K\longrightarrow J.
+\]
+The extension \(Y\) is a *flat deformation of \(Y_o\) over \(Z\)* if \(g\) is flat, that is, \(\mathcal O_Y\) is a flat \(g_o^{-1}\mathcal O_Z\)-module, and \(v_Y\) is an isomorphism.
+
+**Lemma 1.2.** In Definition 1.1, suppose that \(g_o\) is flat. Then \(v_Y\) is an isomorphism if and only if \(g\) is flat and \(J\) is the ideal \((g_o^{-1}K)\mathcal O_Y\) generated by \(g_o^{-1}K\). In particular \(Y\) is a flat deformation of \(Y_o\) over \(Z\) if and only if \(g\) is flat and \(\mathcal O_Y/(g_o^{-1}K)\mathcal O_Y=\mathcal O_{Y_o}\).
+
+**Proof.** The ideal \((g_o^{-1}K)\mathcal O_Y\) lies in \(J\), and since \(J\cdot J=0\) it is the \(\mathcal O_{Y_o}\)-submodule of \(J\) generated by the image of \(g_o^{-1}K\), that is, the image of \(v_Y\). Apply [Tag 08M4] to the surjection \(\mathcal O'=g_o^{-1}\mathcal O_Z\to\mathcal O=g_o^{-1}\mathcal O_{Z_o}\), whose kernel \(g_o^{-1}K\) has square zero, and to \(\mathcal F'=\mathcal O_Y\): \(\mathcal O_Y\) is \(\mathcal O'\)-flat if and only if \(\mathcal F=\mathcal O_Y/(g_o^{-1}K)\mathcal O_Y\) is \(\mathcal O\)-flat and \(g_o^{-1}K\otimes_{\mathcal O}\mathcal F\to\mathcal O_Y\) is injective. If \(v_Y\) is an isomorphism, its image \(J\) equals \((g_o^{-1}K)\mathcal O_Y\), so \(\mathcal F=\mathcal O_{Y_o}\), which is \(\mathcal O\)-flat because \(g_o\) is flat, and \(g_o^{-1}K\otimes_{\mathcal O}\mathcal O_{Y_o}=g_o^*K\to\mathcal O_Y\) is \(v_Y\) followed by the inclusion of \(J\), which is injective; so \(g\) is flat. Conversely, if \(g\) is flat and \(J=(g_o^{-1}K)\mathcal O_Y\), then \(\mathcal F=\mathcal O_{Y_o}\), and the injectivity says that \(v_Y\) is injective; its image is \(J\). \(\square\)
+
+**1.3. The data.** Throughout, \(S\) is a ringed topos and \(Z\to S\) a morphism of ringed topoi; \(k\colon Z_o\to Z\) is given by a surjection \(\mathcal O_Z\to\mathcal O_{Z_o}\) whose kernel \(K\) has square zero, and \(Z_o\) maps to \(S\) through \(Z\). Further \(f_o\colon X_o\to Y_o\) and \(g_o\colon Y_o\to Z_o\) are morphisms of ringed topoi, \(h_o=g_o\circ f_o\), and \(X\) is a \(Z\)-extension of \(X_o\) by an \(\mathcal O_{X_o}\)-module \(I\) for \(k\circ h_o\), with \(i\colon X_o\to X\), \(h\colon X\to Z\) and
+\[
+w=v_X\colon h_o^*K\longrightarrow I.
+\]
+The *general problem* takes, in addition, an \(\mathcal O_{Y_o}\)-module \(J\) and maps
+\[
+\begin{gathered}v\colon g_o^*K\to J,\qquad u\colon f_o^*J\to I,\\ u\circ f_o^*(v)=w,\end{gathered}
+\]
+where \(f_o^*g_o^*K=h_o^*K\).
+
+**Definition 1.4.** A *solution* for \((J,v,u)\) is a \(Z\)-extension \((Y,j,g)\) of \(Y_o\) by \(J\) for \(k\circ g_o\) with \(v_Y=v\), together with a morphism of ringed topoi \(f\colon X\to Y\) whose underlying morphism of topoi is that of \(f_o\), such that \(f\circ i=j\circ f_o\), \(g\circ f=h\), and the map \(f_o^*J\to I\) induced by \(f^\sharp\) is \(u\). (Since \(f\circ i=j\circ f_o\), \(f^\sharp\) carries \(f_o^{-1}J\) into \(I\).) An *isomorphism* of solutions \((Y,f)\to(Y',f')\) is an isomorphism of \(Z\)-extensions \(\theta\colon Y\to Y'\) with \(\theta\circ f=f'\).
+
+If \(g_o\) is flat and \(X\) is a flat deformation of \(X_o\) over \(Z\), the *flat problem* asks for a flat deformation \(Y\) of \(Y_o\) over \(Z\) together with such an \(f\). These are the solutions for \((g_o^*K,\mathrm{id},w)\): the condition \(u\circ f_o^*(\mathrm{id})=w\) forces \(u=w\).
+
+## 2. The problem on the arrow topos
+
+**2.1. The rings.** Let \(T=X_oY_o\) be the arrow topos of \(f_o\), with \(\mathcal B=\mathcal O_T=(\mathcal O_{X_o}\leftarrow\mathcal O_{Y_o})\). The square \(g_o\circ f_o=h_o\circ\mathrm{id}\) gives the morphism \(\gamma=(\mathrm{id},g_o)\colon X_oY_o\to X_oZ_o\) of Proposition 4.1 of the arrow topos lesson, with \(\gamma^{-1}(E\leftarrow F)=\) \((E\leftarrow g_o^{-1}F)\). The morphisms \(i\) and \(k\) are the identity on topoi, so \(h\) has the underlying morphism of \(h_o\), and the arrow topos \(XZ\) of \(h\) has the underlying topos of \(X_oZ_o\), ringed by \((\mathcal O_X\leftarrow\mathcal O_Z)\). The surjection \((i^\sharp,k^\sharp)\colon\mathcal O_{XZ}\to\mathcal O_{X_oZ_o}\) has the kernel
+\[
+\mathcal N=(I\leftarrow K),
+\]
+of square zero, whose structure map, as an \(\mathcal O_{X_oZ_o}\)-module, is \(w\). Put
+\[
+\begin{aligned}\mathcal A'&=\gamma^{-1}\mathcal O_{XZ}=(\mathcal O_X\leftarrow g_o^{-1}\mathcal O_Z),\\ \mathcal A&=\gamma^{-1}\mathcal O_{X_oZ_o}\\&=(\mathcal O_{X_o}\leftarrow g_o^{-1}\mathcal O_{Z_o}).\end{aligned}
+\]
+These are rings of \(T\); \(\mathcal A'\to\mathcal A\) is surjective with kernel \(\gamma^{-1}\mathcal N=(I\leftarrow g_o^{-1}K)\) of square zero, \(\gamma^{-1}\) being exact, and \(\gamma^\sharp\colon\mathcal A\to\mathcal B\). For data \((J,v,u)\) as in 1.3, \(M=(I\xleftarrow{u}J)\) is a \(\mathcal B\)-module (1.3 of the arrow topos lesson), and the map
+\[
+c\colon\gamma^{-1}\mathcal N\longrightarrow M,
+\]
+which is the identity of \(I\) over \(X_o\) and \(g_o^{-1}K\to g_o^*K\xrightarrow{v}J\) over \(Y_o\), is \(\mathcal A\)-linear. It is compatible with the structure maps because both composites \(h_o^{-1}K\to I\) are \(w\) composed with \(h_o^{-1}K\to h_o^*K\), by \(u\circ f_o^*(v)=w\).
+
+**Proposition 2.2.** The solutions for \((J,v,u)\) and their isomorphisms correspond to the \(\mathcal A'\)-algebra extensions of \(\mathcal B\) by \(M\) whose structure map carries \(\gamma^{-1}\mathcal N\) into \(M\) by \(c\), in the sense of Theorem 10.4 of *The cotangent complex*, and their isomorphisms.
+
+**Proof.** A ring of \(T\) is a pair of rings \((E_X\leftarrow E_Y)\) with a ring map \(f_o^{-1}E_Y\to E_X\) (1.3 of the arrow topos lesson).
+
+Given a solution \((Y,f)\), put \(\mathcal E=(\mathcal O_X\leftarrow\mathcal O_Y)\) with the structure map \(f^\sharp\colon f_o^{-1}\mathcal O_Y\to\mathcal O_X\); this is a ring of \(T\) since \(f\) has the underlying morphism of \(f_o\). The pair \((\mathrm{id}_{\mathcal O_X},g^\sharp)\colon\mathcal A'\to\mathcal E\) is a ring map of \(T\) because \(f^\sharp\circ f_o^{-1}(g^\sharp)=h^\sharp\), which is \(g\circ f=h\); and \((i^\sharp,j^\sharp)\colon\mathcal E\to\mathcal B\) is one because \(f\circ i=j\circ f_o\). The second is surjective with kernel \((I\leftarrow J)\), whose structure map as a \(\mathcal B\)-module is the map \(f_o^*J\to I\) induced by \(f^\sharp\), that is \(u\); so the kernel is \(M\). The structure map carries \(\gamma^{-1}\mathcal N\) into \(M\) by the identity of \(I\) over \(X_o\) and by \(v_Y=v\) over \(Y_o\), that is by \(c\).
+
+Conversely, let \(\mathcal E=(E_X\xleftarrow{\phi}E_Y)\) be such an extension. Over \(X_o\), \(E_X\) is an extension of \(\mathcal O_{X_o}\) by \(I\) and an \(\mathcal O_X\)-algebra, and \(I\subseteq\mathcal O_X\) maps to \(I\subseteq E_X\) by the identity. The algebra map \(\mathcal O_X\to E_X\) is compatible with the surjections onto \(\mathcal O_{X_o}\), since \(\mathcal A'\to\mathcal A\to\mathcal B\) is \(i^\sharp\) over \(X_o\), and with the identity on \(I\). By the five lemma it is an isomorphism; we identify \(E_X=\mathcal O_X\). Over \(Y_o\), \(Y=(Y_o,E_Y)\), with \(E_Y\to\mathcal O_{Y_o}\) and \(g_o^{-1}\mathcal O_Z\to E_Y\), is a \(Z\)-extension of \(Y_o\) by \(J\), and \(v_Y=v\) because \(\mathcal E\) carries \(g_o^{-1}K\) into \(J\) by \(c\). The structure map \(\phi\colon f_o^{-1}E_Y\to E_X=\mathcal O_X\) is a ring map and defines \(f\colon X\to Y\) with the underlying morphism of \(f_o\). That \(\mathcal E\to\mathcal B\) is a map of rings of \(T\) says \(f\circ i=j\circ f_o\); that \(\mathcal A'\to\mathcal E\) is one says \(g\circ f=h\); and the map \(f_o^*J\to I\) induced by \(\phi\) is the structure map \(u\) of the kernel \(M\).
+
+The two constructions are inverse to each other. An isomorphism of solutions \(\theta\colon(Y,f)\to(Y',f')\) gives the isomorphism \((\mathrm{id}_{\mathcal O_X},\theta^\sharp)\colon\mathcal E'\to\mathcal E\) of extensions, which is a map of rings of \(T\) because \(\theta\circ f=f'\). Conversely, an isomorphism of extensions \(\mathcal E'\to\mathcal E\) is an \(\mathcal O_X\)-algebra map over \(X_o\), hence the identity under the identifications \(E'_X=\mathcal O_X=E_X\), and its component over \(Y_o\) is an isomorphism of solutions. \(\square\)
+
+**Lemma 2.3.** \(L_{X_oY_o/X_oZ_o}=L_{\mathcal B/\mathcal A}\), and the map \((0,\mathrm{id})\colon L_{\mathcal B/\mathcal A}\to(0\leftarrow L_{Y_o/Z_o})\) is an isomorphism of \(D(\mathcal B)\).
+
+**Proof.** The first equality is [Tag 08SU], since \(\gamma^{-1}\mathcal O_{X_oZ_o}=\mathcal A\). Inverse images commute with the construction of the cotangent complex, so \(i_X^{-1}L_{\mathcal B/\mathcal A}=L_{\mathcal O_{X_o}/\mathcal O_{X_o}}\) and \(i_Y^{-1}L_{\mathcal B/\mathcal A}=L_{\mathcal O_{Y_o}/g_o^{-1}\mathcal O_{Z_o}}=L_{Y_o/Z_o}\), in agreement with Proposition 4.2 of the arrow topos lesson. The first is acyclic, the cotangent complex of a polynomial algebra in no variables (Theorem 2.2 of *The cotangent complex*). Represent \(L_{\mathcal B/\mathcal A}\) by its complex \((L_X\leftarrow L_Y)\) of \(\mathcal B\)-modules. The pair \((0,\mathrm{id})\) is a map of complexes of \(\mathcal B\)-modules onto \((0\leftarrow L_Y)\), a quasi-isomorphism over \(X_o\), where \(L_X\) is acyclic, and the identity over \(Y_o\); cohomology sheaves are computed on the two levels. \(\square\)
+
+## 3. Obstructions, solutions and automorphisms
+
+**Theorem 3.1.** In 1.3, let \((J,v,u)\) be data for the general problem and put
+\[
+E^i(J)=\operatorname{Ext}^i_T\bigl((0\leftarrow L_{Y_o/Z_o}),(I\xleftarrow{u}J)\bigr).
+\]
+1. There is a class \(\omega(J,v,u)\in E^2(J)\) that vanishes if and only if a solution for \((J,v,u)\) exists.
+2. If \(\omega(J,v,u)=0\), the isomorphism classes of solutions form a torsor under \(E^1(J)\), and the automorphism group of each solution is isomorphic to \(E^0(J)\).
+3. There is a long exact sequence
+\[
+\begin{aligned}&\cdots\to\operatorname{Ext}^{i-1}(Lf_o^*L_{Y_o/Z_o},I)\\&\quad\to E^i(J)\\&\quad\to\operatorname{Ext}^i(L_{Y_o/Z_o},J)\\&\quad\to\operatorname{Ext}^i(Lf_o^*L_{Y_o/Z_o},I)\to\cdots,\end{aligned}
+\]
+whose second map is restriction to \(Y_o\) and whose third map sends \(b\) to the composite of \(Lf_o^*b\) with \(Lf_o^*J\to f_o^*J\xrightarrow{u}I\).
+
+Explicitly, let \(D=L_{\mathcal A/\mathcal A'}\otimes^{\mathbf L}_{\mathcal A}\mathcal B\in D^{\leq-1}(\mathcal B)\), with \(H^{-1}D=\mathcal B\otimes_{\mathcal A}\gamma^{-1}\mathcal N=\gamma^*\mathcal N\); let \(\tilde c\colon D\to M[1]\) be the map inducing on \(H^{-1}\) the \(\mathcal B\)-linear extension \(c_{\mathcal B}\colon\gamma^*\mathcal N\to M\) of \(c\) [Tag 06XS]; and let
+\[
+D\to L_{\mathcal B/\mathcal A'}\to L_{\mathcal B/\mathcal A}\xrightarrow{\ \delta\ }D[1]
+\]
+be the transitivity triangle of \(\mathcal A'\to\mathcal A\to\mathcal B\). Then \(\omega(J,v,u)=\tilde c[1]\circ\delta\), read in \(E^2(J)\) through Lemma 2.3.
+
+**Proof.** (1), (2) By Proposition 2.2 the solutions and their isomorphisms are the extensions of Theorem 10.4 of *The cotangent complex*, for the rings \(\mathcal A'\to\mathcal A\to\mathcal B\) of the topos \(T\), the module \(M\) and the map \(c\). That theorem gives an obstruction \(\partial c\in\operatorname{Ext}^2_{\mathcal B}(L_{\mathcal B/\mathcal A},M)\) whose vanishing is equivalent to existence, the torsor under \(\operatorname{Ext}^1_{\mathcal B}(L_{\mathcal B/\mathcal A},M)\) and the automorphisms \(\operatorname{Ext}^0_{\mathcal B}(L_{\mathcal B/\mathcal A},M)\). In its proof, \(\operatorname{Ext}^1(D,M)\) is identified with \(\operatorname{Hom}_{\mathcal A}(\gamma^{-1}\mathcal N,M)\) by composing \(D\to\gamma^*\mathcal N[1]\) with the \(\mathcal B\)-linear extension of a map; so \(c\) corresponds to \(\tilde c\). The connecting map \(\partial\) of the exact sequence (10.9) there is composition with \(\delta\), by the exact sequence of the Conventions; hence \(\partial c=\tilde c[1]\circ\delta\). Lemma 2.3 identifies the groups with \(E^i(J)\).
+
+(3) This is Proposition 2.8 (3) of the arrow topos lesson for \(L_{Y_o/Z_o}\in D^-(Y_o)\) and the module \(C=(I\xleftarrow{u}J)\), for which the map \(u_C\) of Definition 2.6 there is \(Lf_o^*J\to f_o^*J\xrightarrow{u}I\). \(\square\)
+
+**Theorem 3.2.** In 1.3, suppose that \(g_o\) is flat and that \(X\) is a flat deformation of \(X_o\) over \(Z\).
+
+1. The morphism \(h_o\) is flat, and the canonical map \(L\pi^*(g_o^*K)\to\pi^*(g_o^*K)\), where \(\pi^*(g_o^*K)=(h_o^*K\leftarrow g_o^*K)\), and the map \((w,\mathrm{id})\colon\pi^*(g_o^*K)\to M\), where \(M=(I\xleftarrow{w}g_o^*K)\), are isomorphisms. Hence
+\[
+\begin{aligned}&E^i(g_o^*K)\\&\quad\cong\operatorname{Ext}^i(Y_o/X_o;L_{Y_o/Z_o},g_o^*K).\end{aligned}
+\]
+2. There is a class \(\omega\in\operatorname{Ext}^2(Y_o/X_o;L_{Y_o/Z_o},g_o^*K)\) that vanishes if and only if the flat problem has a solution. If \(\omega=0\), the isomorphism classes of solutions form a torsor under \(\operatorname{Ext}^1(Y_o/X_o;L_{Y_o/Z_o},g_o^*K)\).
+3. The automorphism group of a solution is isomorphic to \(\operatorname{Ext}^0(Y_o/X_o;L_{Y_o/Z_o},g_o^*K)\), the kernel of
+\[
+\begin{aligned}&\operatorname{Hom}(\Omega_{Y_o/Z_o},g_o^*K)\\&\quad\to\operatorname{Hom}(f_o^*\Omega_{Y_o/Z_o},h_o^*K),\\&\quad\alpha\mapsto f_o^*\alpha,\end{aligned}
+\]
+that is, the group of derivations of \(\mathcal O_{Y_o}\) over \(g_o^{-1}\mathcal O_{Z_o}\) with values in \(g_o^*K\) whose pullback to \(X_o\) vanishes.
+
+**Proof.** (1) Since \(w\) is surjective, \((h_o^{-1}K)\mathcal O_X=I\), so \(\mathcal O_X/(h_o^{-1}K)\mathcal O_X=\mathcal O_{X_o}\); as \(h\) is flat, [Tag 08M4] shows that \(\mathcal O_{X_o}\) is flat over \(h_o^{-1}\mathcal O_{Z_o}\), that is, \(h_o\) is flat. Let \(P\to K\) be a quasi-isomorphism from a K-flat complex with flat terms [Tag 06YS]. As \(g_o\) is flat, \(g_o^*\) is exact, so \(g_o^*P\to g_o^*K\) is a quasi-isomorphism, and \(g_o^*P\) is K-flat with flat terms [Tag 0G7E]. Hence \(Lf_o^*(g_o^*K)=f_o^*g_o^*P=h_o^*P\) [Tag 06YY], and the canonical map \(Lf_o^*(g_o^*K)\to f_o^*g_o^*K\) is \(h_o^*P\to h_o^*K\), a quasi-isomorphism because \(h_o^*\) is exact. So \(L\pi^*(g_o^*K)=\) \((Lf_o^*g_o^*K\leftarrow g_o^*K)\to\pi^*(g_o^*K)\) is an isomorphism on both levels. The pair \((w,\mathrm{id})\) is a map of \(\mathcal B\)-modules, since \(w\circ\mathrm{id}=u\circ f_o^*(\mathrm{id})\) with \(u=w\), and an isomorphism, since \(w\) is. Definition 3.1 of the arrow topos lesson applies to \(L_{Y_o/Z_o}\in D^-(Y_o)\) and \(g_o^*K\), with \(Lf_o^*(g_o^*K)\cong h_o^*K\) bounded below, and gives the last isomorphism.
+
+(2) By Lemma 1.2 and Definition 1.4, the solutions of the flat problem are those for \((g_o^*K,\mathrm{id},w)\); apply Theorem 3.1 and (1).
+
+(3) By Theorem 3.1 (2) and (1), the automorphism group is \(\operatorname{Ext}^0(Y_o/X_o;L_{Y_o/Z_o},g_o^*K)\). In the long exact sequence of Proposition 3.2 of the arrow topos lesson,
+\[
+\begin{aligned}&\operatorname{Ext}^{-1}(Lf_o^*L_{Y_o/Z_o},h_o^*K)\\&\quad\to\operatorname{Ext}^0(Y_o/X_o;L_{Y_o/Z_o},g_o^*K)\\&\quad\to\operatorname{Ext}^0(L_{Y_o/Z_o},g_o^*K)\\&\quad\to\operatorname{Ext}^0(Lf_o^*L_{Y_o/Z_o},h_o^*K),\end{aligned}
+\]
+the last map is \(Lf_o^*\). The complexes \(L_{Y_o/Z_o}\) and \(Lf_o^*L_{Y_o/Z_o}\) lie in \(D^{\leq0}\), with \(H^0\) equal to \(\Omega_{Y_o/Z_o}\) and \(f_o^*\Omega_{Y_o/Z_o}\) by (0.1). By [Tag 06XS] the first group vanishes, the third is \(\operatorname{Hom}(\Omega_{Y_o/Z_o},g_o^*K)\), the fourth \(\operatorname{Hom}(f_o^*\Omega_{Y_o/Z_o},h_o^*K)\), and the last map is \(\alpha\mapsto f_o^*\alpha\). Finally \(\operatorname{Hom}(\Omega_{Y_o/Z_o},N)\) is the group of derivations of \(\mathcal O_{Y_o}\) over \(g_o^{-1}\mathcal O_{Z_o}\) into \(N\). \(\square\)
+
+## 4. The obstruction as a product
+
+Let \(\mathcal R_0\) be the inverse image of \(\mathcal O_S\) on \(X_oZ_o\), through \(X_oZ_o\xrightarrow{\pi}Z_o\to S\). The ring \(\mathcal O_{XZ}\) is an \(\mathcal R_0\)-algebra extension of \(\mathcal O_{X_oZ_o}\) by \(\mathcal N\), through \(XZ\xrightarrow{\pi}Z\to S\). Its class (Theorem 10.3 of *The cotangent complex*) is
+\[
+\begin{aligned}&e(i,k)=t\circ\psi\colon L_{X_oZ_o/S}\\&\quad\to L_{\mathcal O_{X_oZ_o}/\mathcal O_{XZ}}\to\mathcal N[1],\end{aligned}
+\]
+where \(\psi\) is the functoriality map and \(t\) the conormal truncation. Let
+\[
+\begin{aligned}&K(X_oY_o/X_oZ_o/S)\colon L_{X_oY_o/X_oZ_o}\\&\quad\longrightarrow L\gamma^*L_{X_oZ_o/S}[1]\end{aligned}
+\]
+be the *Kodaira–Spencer class*, the third map of the transitivity triangle of \(X_oY_o\xrightarrow{\gamma}X_oZ_o\to S\) [Tag 08V1].
+
+**Theorem 4.1.** In 1.3, for data \((J,v,u)\),
+\[
+\begin{aligned}&\omega(J,v,u)\\&\quad=\bigl(c_{\mathcal B}[1]\circ\tau[1]\circ L\gamma^*e(i,k)\bigr)[1]\\&\qquad\circ K(X_oY_o/X_oZ_o/S),\end{aligned}
+\]
+where \(\tau\colon L\gamma^*\mathcal N\to\gamma^*\mathcal N\) is the canonical map and \(c_{\mathcal B}\colon\gamma^*\mathcal N\to M\) the \(\mathcal B\)-linear extension of \(c\). In the flat problem \(\gamma^*\mathcal N=(I\xleftarrow{w}g_o^*K)=M\) and \(c_{\mathcal B}\) is the identity, so \(\omega\) is the product of \(K(X_oY_o/X_oZ_o/S)\) with the pullback of the class of the thickening \(XZ\) of \(X_oZ_o\).
+
+**Proof.** Let \(\mathcal R=\gamma^{-1}\mathcal R_0\), the inverse image of \(\mathcal O_S\) on \(T\). The ring maps \(\mathcal R\to\mathcal A'\to\mathcal A\to\mathcal B\) give a map of triples from \((\mathcal R,\mathcal A,\mathcal B)\) to \((\mathcal A',\mathcal A,\mathcal B)\), the identity on \(\mathcal A\) and \(\mathcal B\). Here \(L_{\mathcal A/\mathcal R}=\gamma^{-1}L_{X_oZ_o/S}\), so \(L_{\mathcal A/\mathcal R}\otimes^{\mathbf L}_{\mathcal A}\mathcal B=L\gamma^*L_{X_oZ_o/S}\), and \(L_{\mathcal B/\mathcal R}=L_{X_oY_o/S}\); so the transitivity triangle of the first triple is that of \(X_oY_o\to X_oZ_o\to S\), with third map \(K(X_oY_o/X_oZ_o/S)\). By the naturality of the transitivity triangle (Theorem 4.1 of *The cotangent complex*, in the sheaf form of its Section 10), it maps to the triangle of the second triple by \(\varphi\otimes1\), the functoriality map \(L_{\mathcal B/\mathcal R}\to L_{\mathcal B/\mathcal A'}\), the identity of \(L_{\mathcal B/\mathcal A}\) and \((\varphi\otimes1)[1]\), where \(\varphi\colon L_{\mathcal A/\mathcal R}\to L_{\mathcal A/\mathcal A'}\) is the functoriality map. Hence \(\delta=(\varphi\otimes1)[1]\circ K(X_oY_o/X_oZ_o/S)\), and by Theorem 3.1
+\[
+\begin{aligned}&\omega(J,v,u)\\&\quad=\bigl(\tilde c\circ(\varphi\otimes1)\bigr)[1]\\&\qquad\circ K(X_oY_o/X_oZ_o/S).\end{aligned}
+\]
+It remains to show \(\tilde c\circ(\varphi\otimes1)=c_{\mathcal B}[1]\circ\tau[1]\circ L\gamma^*e(i,k)\). Since \(\gamma^{-1}\) preserves the polynomial constructions and their functoriality, \(\gamma^{-1}\psi=\varphi\), so \(L\gamma^*(\psi)=\varphi\otimes1\), and \(L\gamma^*L_{\mathcal O_{X_oZ_o}/\mathcal O_{XZ}}=D\). Thus \(c_{\mathcal B}[1]\circ\tau[1]\circ L\gamma^*e(i,k)=\) \(c_{\mathcal B}[1]\circ\tau[1]\circ L\gamma^*(t)\circ(\varphi\otimes1)\). The maps \(\tilde c\) and \(c_{\mathcal B}[1]\circ\tau[1]\circ L\gamma^*(t)\) go from \(D\in D^{\leq-1}\) to \(M[1]\), so by [Tag 06XS] they are equal if they induce the same map on \(H^{-1}\). For \(\tilde c\) this is \(c_{\mathcal B}\) by definition; for the other it is \(c_{\mathcal B}\circ\gamma^*H^{-1}(t)=c_{\mathcal B}\), under the identification \(H^{-1}D=\gamma^*\mathcal N\) of (0.1). \(\square\)
+
+## 5. Deforming the target first
+
+Let \(\omega_Y\in\operatorname{Ext}^2(L_{Y_o/Z_o},g_o^*K)\) be the obstruction of Theorem 10.4 of *The cotangent complex* for the rings \(g_o^{-1}\mathcal O_Z\to g_o^{-1}\mathcal O_{Z_o}\to\mathcal O_{Y_o}\) of the topos of \(Y_o\), the module \(g_o^*K\) and the canonical map \(c_Y\colon g_o^{-1}K\to g_o^*K\).
+
+**Proposition 5.1.** Suppose that \(g_o\) is flat and that \(X\) is a flat deformation of \(X_o\) over \(Z\).
+
+1. \(\omega_Y=0\) if and only if \(Y_o\) has a flat deformation over \(Z\).
+2. The restriction map
+\[
+\begin{aligned}&\operatorname{Ext}^2(Y_o/X_o;L_{Y_o/Z_o},g_o^*K)\\&\quad\to\operatorname{Ext}^2(L_{Y_o/Z_o},g_o^*K)\end{aligned}
+\]
+of Proposition 3.2 of the arrow topos lesson carries \(\omega\) to \(\omega_Y\).
+3. If \(Y_o\) has a flat deformation over \(Z\), then \(\omega\) is the image under the connecting map of an element of \(\operatorname{Ext}^1(Lf_o^*L_{Y_o/Z_o},h_o^*K)\). The image of this connecting map is isomorphic to the cokernel of \(Lf_o^*\colon\operatorname{Ext}^1(L_{Y_o/Z_o},g_o^*K)\to\) \(\operatorname{Ext}^1(Lf_o^*L_{Y_o/Z_o},h_o^*K)\).
+
+**Proof.** (1) The \(g_o^{-1}\mathcal O_Z\)-algebra extensions of \(\mathcal O_{Y_o}\) by \(g_o^*K\) whose structure map carries \(g_o^{-1}K\) into \(g_o^*K\) by \(c_Y\) are the \(Z\)-extensions \(Y\) of \(Y_o\) by \(g_o^*K\) with \(v_Y=\mathrm{id}\); by Lemma 1.2 these are the flat deformations of \(Y_o\) over \(Z\). Theorem 10.4 of *The cotangent complex* says that one exists if and only if \(\omega_Y=0\).
+
+(2) The inverse image \(i_Y^{-1}\) is exact and carries the data \((\mathcal A',\mathcal A,\mathcal B,\gamma^{-1}\mathcal N,M,c)\) of the flat problem to \((g_o^{-1}\mathcal O_Z,g_o^{-1}\mathcal O_{Z_o},\mathcal O_{Y_o},g_o^{-1}K,g_o^*K,c_Y)\). It commutes with the polynomial constructions, so it carries \(D\), the transitivity triangle of \(\mathcal A'\to\mathcal A\to\mathcal B\) and \(\tilde c\) to the corresponding objects for the data over \(Y_o\). Restriction \(\operatorname{Ext}_T(P,Q)\to\operatorname{Ext}_{Y_o}(i_Y^*P,i_Y^*Q)\) is compatible with composition and shifts, so it carries \(\omega=\tilde c[1]\circ\delta\) to \(\tilde c_Y[1]\circ\delta_Y\), which is \(\omega_Y\) by the proof of Theorem 3.1 applied to the data over \(Y_o\). The isomorphisms of Lemma 2.3 and Theorem 3.2 (1) restrict to identities over \(Y_o\), so this restriction is the first map of Proposition 3.2 of the arrow topos lesson.
+
+(3) If \(\omega_Y=0\), exactness of the sequence of Proposition 3.2 there,
+\[
+\begin{aligned}&\operatorname{Ext}^1(L_{Y_o/Z_o},g_o^*K)\\&\quad\to\operatorname{Ext}^1(Lf_o^*L_{Y_o/Z_o},h_o^*K)\\&\quad\to\operatorname{Ext}^2(Y_o/X_o;L_{Y_o/Z_o},g_o^*K)\\&\quad\to\operatorname{Ext}^2(L_{Y_o/Z_o},g_o^*K),\end{aligned}
+\]
+places \(\omega\) in the image of the connecting map, which is isomorphic to the cokernel of the first map. \(\square\)
+
+## 6. Locally ringed topoi, schemes and closed immersions
+
+**Lemma 6.1.** Let \(E\to E_o\) be a surjection of rings of a topos whose kernel has square zero.
+
+1. A section of \(E\) over an object \(U\) is invertible if and only if its image in \(E_o\) is.
+2. \(E\) is a local ring, that is, the ringed topos it defines is locally ringed [Tags 04EU, 04H8], if and only if \(E_o\) is.
+
+**Proof.** (1) Let \(x\in E(U)\) have an invertible image with inverse \(\bar y\). Since \(E\to E_o\) is an epimorphism of sheaves, \(\bar y\) lifts on a covering \(U_\alpha\to U\) to \(y_\alpha\in E(U_\alpha)\). Then \(xy_\alpha=1+n_\alpha\) with \(n_\alpha\) in the kernel, \(n_\alpha^2=0\), so \(xy_\alpha(1-n_\alpha)=1\). Inverses are unique, so these local inverses agree on overlaps and glue to an inverse of \(x\). (2) Over an object where \(0=1\) in \(E_o\), \(1\) lies in the kernel of \(E\to E_o\), so \(1=1^2=0\) in \(E\); hence the subsheaves where \(0=1\) in \(E\) and in \(E_o\) coincide, and one is the initial sheaf if and only if the other is. For the condition of [Tag 04ES] (1): if \(E_o\) satisfies it, then for \(x\in E(U)\) there is a covering on which the image of \(x\) or of \(1-x\) is invertible, and by (1) so is \(x\) or \(1-x\). If \(E\) satisfies it, lift a section of \(E_o\) on a covering and apply the condition to the lifts. \(\square\)
+
+**Proposition 6.2.** In 1.3, let \((Y,f)\) be a solution for data \((J,v,u)\).
+
+1. If \(X_o\), \(Y_o\), \(Z_o\), \(X\) and \(Z\) are locally ringed and \(f_o\), \(g_o\) and \(k\) are morphisms of locally ringed topoi [Tag 04HA], then \(Y\) is locally ringed and \(f\), \(g\) and \(j\) are morphisms of locally ringed topoi.
+2. If the topoi in 1.3 are the Zariski topoi of schemes and the morphisms come from morphisms of schemes, and \(J\) is quasi-coherent, then \(Y\) is a scheme and \(f\) and \(g\) are morphisms of schemes. In the flat problem this holds when \(K\) is quasi-coherent.
+3. If \(f_o^\sharp\colon f_o^{-1}\mathcal O_{Y_o}\to\mathcal O_{X_o}\) and \(u\) are surjective, then so is \(f^\sharp\). In particular, in the flat problem for schemes, if \(f_o\) is a closed immersion, so is \(f\).
+
+**Proof.** (1) By Lemma 6.1 (2) for \(\mathcal O_Y\to\mathcal O_{Y_o}\), \(Y\) is locally ringed. By [Tag 04HA], a morphism of ringed topoi \(\varphi\colon P\to Q\) between locally ringed topoi is a morphism of locally ringed topoi when every section \(s\) of \(\varphi^{-1}\mathcal O_Q\) with \(\varphi^\sharp(s)\) invertible is invertible; \(\varphi^{-1}\) preserves units, commuting with finite limits. Let \(s\) be a section of \(f^{-1}\mathcal O_Y\) with \(f^\sharp(s)\) invertible. The image of \(f^\sharp(s)\) in \(\mathcal O_{X_o}\) is \(f_o^\sharp(\bar s)\), where \(\bar s\) is the image of \(s\) in \(f_o^{-1}\mathcal O_{Y_o}\), since \(f\circ i=j\circ f_o\). It is invertible, so \(\bar s\) is invertible, \(f_o\) being a morphism of locally ringed topoi, and \(s\) is invertible by Lemma 6.1 (1) for the surjection \(f^{-1}\mathcal O_Y\to f^{-1}\mathcal O_{Y_o}\), whose kernel \(f^{-1}J\) has square zero. The same argument with \(g\circ j=k\circ g_o\) and the surjection \(g_o^{-1}\mathcal O_Z\to g_o^{-1}\mathcal O_{Z_o}\) applies to \(g\), and Lemma 6.1 (1) itself to \(j\).
+
+(2) The ringed space \(Y\) is the underlying space of \(Y_o\) with a square-zero thickening \(\mathcal O_Y\) of \(\mathcal O_{Y_o}\) by the quasi-coherent ideal \(J\). The argument following Theorem 10.4 of *The cotangent complex* shows that such a ringed space is a scheme: it uses only the vanishing of \(H^1\) of quasi-coherent modules on affine schemes [Tag 01XB] and the description of principal opens. By (1), \(f\) and \(g\) are morphisms of locally ringed spaces, hence of schemes. In the flat problem \(J=g_o^*K\), which is quasi-coherent when \(K\) is.
+
+(3) The rows \(0\to f^{-1}J\to f^{-1}\mathcal O_Y\to f^{-1}\mathcal O_{Y_o}\to0\) and \(0\to I\to\mathcal O_X\to\mathcal O_{X_o}\to0\) are exact, \(f^{-1}\) being exact, and \(f^\sharp\) maps the first to the second. On the right it is \(f_o^\sharp\), surjective; on the left it is \(f^{-1}J\to f_o^*J\xrightarrow{u}I\), surjective because \(f_o^*J=\mathcal O_{X_o}\otimes_{f^{-1}\mathcal O_{Y_o}}f^{-1}J\) with \(\mathcal O_{X_o}\) a quotient of \(f^{-1}\mathcal O_{Y_o}\). By the snake lemma \(f^\sharp\) is surjective. In the flat problem \(u=w\) is an isomorphism. For schemes, \(f\) has the underlying map of \(f_o\), a homeomorphism onto a closed subset, and \(\mathcal O_Y\to f_*\mathcal O_X\) is surjective, \(f_*\) being exact for this closed embedding of spaces and \(\mathcal O_Y\to f_*f^{-1}\mathcal O_Y\) surjective; so \(f\) is a closed immersion [Tag 01LD]. \(\square\)
+
+## 7. Exercises
+
+**Exercise 7.1.** In the flat problem, let \(Y_o=X_o\) and \(f_o=\mathrm{id}\). Show that the flat problem has a solution, unique up to a unique isomorphism, namely \(Y=X\) and \(f=\mathrm{id}\).
+
+**Exercise 7.2.** Let \(k\) be a field, \(S=Z_o=\operatorname{Spec}k\), \(Z=\operatorname{Spec}k[\varepsilon]\) with \(\varepsilon^2=0\), \(Y_o=\operatorname{Spec}k[x,y]/(xy)\), \(X_o=\operatorname{Spec}k[x]\) embedded by \(y=0\), and \(X=\operatorname{Spec}k[x,\varepsilon]\); all on Zariski topoi.
+
+1. For \(a\in k\), let \(Y_a=\operatorname{Spec}R_a\) with \(R_a=k[x,y,\varepsilon]/(\varepsilon^2,xy-a\varepsilon)\). Show that \(Y_a\) is a flat deformation of \(Y_o\) over \(Z\), and that \(f_o\) extends to a morphism \(X\to Y_a\) over \(Z\) if and only if \(a=0\).
+2. Compute the groups \(\operatorname{Ext}^i(Y_o/X_o;L_{Y_o/k},\mathcal O_{Y_o})\) for \(i=0,1,2\) with Theorem 3.1 (3), using \(L_{Y_o/k}\cong[\mathcal O_{Y_o}e\to\mathcal O_{Y_o}dx\oplus\mathcal O_{Y_o}dy]\) in degrees \(-1,0\), \(e\mapsto y\,dx+x\,dy\).
+3. Show that the solutions \((Y_0,f_p)\), where \(f_p^\sharp\colon x\mapsto x+\varepsilon p(x)\), \(y\mapsto0\) for \(p\in k[x]\), fall into isomorphism classes indexed by \(p(0)\in k\), and that the automorphisms of each are the maps \(x\mapsto x\), \(y\mapsto y+\varepsilon\,y\,b(y)\) with \(b\in k[y]\). Compare with Theorem 3.2.
+
+**Exercise 7.3.** Show that Theorem 3.2 fails if the hypothesis that \(w\) is an isomorphism is dropped. Take \(k\) a field, \(S=Z=Z_o=\operatorname{Spec}k\) (so \(K=0\)), \(Y_o=X_o=\operatorname{Spec}k[t]/(t^2)\), \(f_o=\mathrm{id}\), and \(X=\operatorname{Spec}k[s]/(s^4)\) with \(i\) given by \(s\mapsto t\), so that \(I=(s^2)\). Show that \(h\) is flat, that the groups \(\operatorname{Ext}^i(Y_o/X_o;L_{Y_o/Z_o},g_o^*K)\) vanish, and that there is no solution. Which group of Theorem 3.1 contains the obstruction?
+
+## 8. Complete solutions
+
+**Solution 7.1.** Here \(h_o=g_o\), and \(X\) is a flat deformation of \(Y_o\) over \(Z\) whose kernel is identified with \(g_o^*K\) through \(w\); with \(f=\mathrm{id}_X\) it is a solution, \(u=w\). For \(f_o=\mathrm{id}\) the relative Ext groups vanish (Exercise 5.3 of the arrow topos lesson), so by Theorem 3.2 the solutions form a torsor under the zero group, that is, there is exactly one isomorphism class, and the automorphism group of a solution is trivial. So every solution is isomorphic to \((X,\mathrm{id})\) by a unique isomorphism.
+
+**Solution 7.2.** (1) With the lexicographic order \(x>y>\varepsilon\), the leading monomials \(\varepsilon^2\) and \(xy\) of the generators are coprime, so the generators form a Gröbner basis, and the monomials \(x^i\varepsilon^e\), \(y^j\varepsilon^e\) with \(e\in\{0,1\}\) form a \(k\)-basis of \(R_a\). Hence \(\varepsilon R_a\) has the basis \(\varepsilon x^i\), \(\varepsilon y^j\), and \(r\mapsto\varepsilon r\) is an isomorphism from \(k[x,y]/(xy)\) onto \(\varepsilon R_a\), which is the kernel \(J\) of \(R_a\to k[x,y]/(xy)\) because \(xy=a\varepsilon\). This map is \(v_{Y_a}\colon g_o^*K\to J\), with \(K=k\varepsilon\). By Lemma 1.2, \(Y_a\) is a flat deformation; \(g_o\) is flat over the field \(k\). A morphism \(X\to Y_a\) over \(Z\) extending \(f_o\) is a \(k[\varepsilon]\)-algebra map \(\phi\colon R_a\to k[x,\varepsilon]\) with \(\phi(x)=x+\varepsilon p(x)\) and \(\phi(y)=\varepsilon q(x)\). It must kill \(xy-a\varepsilon\):
+\[
+\begin{aligned}&(x+\varepsilon p)\,\varepsilon q-a\varepsilon\\&\quad=\varepsilon\bigl(xq(x)-a\bigr)=0,\end{aligned}
+\]
+so \(xq(x)=a\) in \(k[x]\), which forces \(a=0\) and \(q=0\). For \(a=0\) every \(p\in k[x]\) gives the extension \(f_p\).
+
+(2) For an affine scheme \(\operatorname{Spec}R\), a bounded complex \(L\) of finite free modules and a quasi-coherent module \(N\), \(R\operatorname{Hom}(L,N)\) is computed by \(\operatorname{Hom}^\bullet_R(L,N)\), the sheaf Hom complex having quasi-coherent terms without higher cohomology [Tag 01XB]. The complex \(L=L_{Y_o/k}\) is the cotangent complex of a hypersurface (Lemma 7.1 and Theorem 4.1 of *The cotangent complex*), and \(Lf_o^*L=f_o^*L\) is \([k[x]e\to k[x]dx\oplus k[x]dy]\), \(e\mapsto x\,dy\). With \(N\) in degree \(0\), \(\operatorname{Hom}^\bullet(L,N)\) is \(N^2\to N\), \((\alpha,\beta)\mapsto y\alpha+x\beta\), and \(\operatorname{Hom}^\bullet(f_o^*L,k[x])\) is \(k[x]^2\to k[x]\), \((\alpha,\beta)\mapsto x\beta\). In \(k[x,y]/(xy)\), whose elements are \(c+\sum_{i\geq1}a_ix^i+\sum_{j\geq1}b_jy^j\), the equation \(y\alpha+x\beta=0\) holds exactly for \(\alpha\in xk[x]\), \(\beta\in yk[y]\). Hence
+\[
+\begin{aligned}\operatorname{Ext}^0(L,\mathcal O_{Y_o})&=xk[x]\oplus yk[y],\\ \operatorname{Ext}^1(L,\mathcal O_{Y_o})&=k[x,y]/(x,y)=k,\\ \operatorname{Ext}^0(f_o^*L,\mathcal O_{X_o})&=k[x]\oplus0,\\ \operatorname{Ext}^1(f_o^*L,\mathcal O_{X_o})&=k[x]/(x)=k,\end{aligned}
+\]
+and \(\operatorname{Ext}^2\) of both vanish. The map \(Lf_o^*\) is restriction to \(y=0\): in degree \(0\) it sends \((xa(x),yb(y))\) to \((xa(x),0)\), with cokernel \(k[x]/xk[x]=k\) and kernel \(0\oplus yk[y]\); in degree \(1\) it sends the class of \(1\) to the class of \(1\), an isomorphism. Here \(g_o^*K=\mathcal O_{Y_o}\) and \(h_o^*K=\mathcal O_{X_o}\). The long exact sequence gives
+\[
+\begin{aligned}\operatorname{Ext}^0(Y_o/X_o;L,\mathcal O_{Y_o})&\cong yk[y],\\ \operatorname{Ext}^1(Y_o/X_o;L,\mathcal O_{Y_o})&\cong k,\\ \operatorname{Ext}^2(Y_o/X_o;L,\mathcal O_{Y_o})&=0.\end{aligned}
+\]
+(3) An isomorphism of solutions \(\theta\colon(Y_0,f_p)\to(Y_0,f_{p'})\) is given by an automorphism \(\theta^\sharp\) of \(R_0\) over \(k[\varepsilon]\) inducing the identity on \(k[x,y]/(xy)\) and on \(J\), so \(\theta^\sharp(x)=x+\varepsilon P\), \(\theta^\sharp(y)=y+\varepsilon Q\) with \(P,Q\in k[x,y]/(xy)\), and \(\theta^\sharp(xy)=\varepsilon(xQ+yP)\) must vanish: \(P\in xk[x]\) and \(Q\in yk[y]\), as in (2). The condition \(\theta\circ f_p=f_{p'}\) reads \(f_p^\sharp\circ\theta^\sharp=f_{p'}^\sharp\), and \(f_p^\sharp(\theta^\sharp(x))=x+\varepsilon(p+P(x,0))\), \(f_p^\sharp(\theta^\sharp(y))=\varepsilon f_p^\sharp(Q)=0\), as \(Q\in yk[y]\) and \(f_p^\sharp(y)=0\). So \((Y_0,f_p)\cong(Y_0,f_{p'})\) if and only if \(p'-p\in xk[x]\), that is \(p(0)=p'(0)\); and the automorphisms of \((Y_0,f_p)\) are the \(\theta\) with \(P=0\), that is \(y\mapsto y+\varepsilon\,yb(y)\). These match \(\operatorname{Ext}^1\cong k\) and \(\operatorname{Ext}^0\cong yk[y]\) of (2); \(\operatorname{Ext}^2=0\) matches the existence of solutions, and by (1) the smoothings \(Y_a\), \(a\neq0\), carry none.
+
+**Solution 7.3.** \(\mathcal O_X=k[s]/(s^4)\) is flat over the field \(k\), so \(h\) is flat, and \(I=(s^2)\) has square zero with \(\mathcal O_X/I=k[t]/(t^2)\); but \(h_o^*K=0\), so \(w\colon0\to I\) is not an isomorphism. As \(g_o^*K=0\), the relative Ext groups with coefficients in \(g_o^*K\) vanish. A flat deformation of \(Y_o\) over \(Z=Z_o\) has kernel \(g_o^*K=0\), so it is \(Y_o\), and a solution would be a morphism \(f\colon X\to Y_o\) with \(f\circ i=\mathrm{id}\), that is, a \(k\)-algebra map \(k[t]/(t^2)\to k[s]/(s^4)\) lifting the identity of \(k[t]/(t^2)\). It sends \(t\) to \(s+\alpha s^2+\beta s^3\), whose square \(s^2+2\alpha s^3\) is not \(0\). So there is no solution. In Theorem 3.1 the data are \((J,v,u)=(0,0,0)\), admissible since \(w=0\); the obstruction lies in \(E^2(0)=\operatorname{Ext}^2((0\leftarrow L),(I\leftarrow0))\), which by the long exact sequence is \(\operatorname{Ext}^1(Lf_o^*L_{Y_o/Z_o},I)\), the obstruction group for extending \(f_o\) to \(X\). It is not zero: \(L_{Y_o/k}=[\mathcal O_{Y_o}e\to\mathcal O_{Y_o}dt]\), \(e\mapsto2t\,dt\), and \(I\cong\mathcal O_{Y_o}\) through \(s^2\), so \(\operatorname{Ext}^1(L,I)=I/2tI\neq0\). The identification of \(E^i(J)\) with relative Ext groups in Theorem 3.2 (1) needs \(M\cong L\pi^*(g_o^*K)\), and here \(M=(I\leftarrow0)\) while \(L\pi^*(g_o^*K)=0\).
+
+## Sources
+
+The deformation of a morphism together with its target through the arrow topos, the general problem with arbitrary coefficients and the description of the obstruction as a product with the Kodaira–Spencer class are due to Illusie, in his work on the cotangent complex.

@@ -1,6 +1,6 @@
 # Deformations of module schemes
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 21 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 Let \(S\subseteq S'\) be a first-order thickening over a base \(T\), with a quasi-coherent ideal \(I\), and \(A\) a ring scheme over \(T\). An \(A\)-module scheme \(G\) over \(S\), flat and locally of finite presentation, is determined by its spectral nerve \(N(A,G)\), a diagram of products of copies of \(A\) and \(G\) over the diagram \(N(A,S)\) of products of copies of \(A\). A deformation of \(G\) to an \(A\)-module scheme over \(S'\) is the same as a deformation of the morphism \(N(A,G)\to N(A,S)\) over \(N(A,S')\): the conditions that characterize spectral nerves are isomorphisms and cartesian squares, and they survive deformation. The deformation theory of diagrams of schemes ([*Deformations of diagrams of schemes*](deformations-of-diagrams-of-schemes.md)) therefore gives an obstruction, a classification and automorphisms in Ext groups of the cotangent complex of the spectral nerve, and the Ext formula of [*Lie complexes of module schemes*](lie-complexes-of-module-schemes.md) turns these into Ext groups of \(A\)-modules:
 

@@ -1,6 +1,6 @@
 # Equivariant sheaves on simplicial topoi
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 Let \(X\) be a simplicial topos, for instance the slices \(T/N_n\) of a topos \(T\) over the nerve of a groupoid or of a category of \(T\). An *equivariant sheaf* on \(X\) is a sheaf \(L\) on \(X_0\) with a map from its inverse image along the source map \(X_1\to X_0\) to its inverse image along the target map, subject to a unit condition and a cocycle condition on \(X_2\). For a monoid acting on an object \(Y\) of a topos, equivariant sheaves are the objects over \(Y\) with a compatible action, and for an internal category they are its internal diagrams. This lesson studies the category \(BX\) of equivariant sheaves. Two fully faithful functors, the nerves, embed \(BX\) into the two total categories of \(X\), and their images are described by a décalage condition. When \(X\) satisfies a base change condition, called being a pseudo-category, the forgetful functor from \(BX\) to sheaves on \(X_0\) has a right adjoint, coinduction, and, when the inverse images have left adjoints, also a left adjoint, induction. It follows that the modules of \(BX\) form an abelian category with enough injectives, and that the induced sheaves generate \(BX\). These are the tools from which the cohomology of \(BX\) is computed by the cohomology of the levels of \(X\).
 

@@ -1,6 +1,6 @@
 # Derived colimits over a small category
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 A diagram \(X\colon I\to\mathcal A\) in an abelian category has a colimit, but the colimit functor is only right exact. Its left derived functor is computed by an explicit complex, the simplicial replacement of the diagram, whose \(n\)-th term is the sum of the values of \(X\) at the sources of the strings of \(n\) composable arrows of \(I\). This lesson constructs the derived colimit on bounded-above complexes, identifies it with the simplicial replacement, and proves its adjunction with the constant diagram. It then applies Deligne's contractibility theorem: over the category of finite ordinals and injective maps, a diagram that is eventually locally constant has no higher derived colimits, and its colimit is its value at any stage from which it is locally constant.
 

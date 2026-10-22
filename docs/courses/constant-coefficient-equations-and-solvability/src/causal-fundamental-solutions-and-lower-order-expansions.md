@@ -45,7 +45,7 @@ For distributions \(A,B\) supported respectively in such a cone and \(H_N\), app
 =\langle A\otimes B,\chi(a,z)\phi(a+z)\rangle.
 \tag{2}
 \]
-Here \(\chi\in C_c^\infty\) equals one near the compact part of \(\operatorname{supp}A\times\operatorname{supp}B\) over \(\operatorname{supp}\phi\). The imported theorem gives cutoff independence, distributional continuity and
+Here \(\chi\in C_c^\infty\) equals one near the compact part of \(\operatorname{supp}A\times\operatorname{supp}B\) over \(\operatorname{supp}\phi\). The theorem gives cutoff independence, distributional continuity and
 \[
 \begin{aligned}
 Q(D)(A*B)&=(Q(D)A)*B\\
@@ -185,7 +185,7 @@ Let \(L\) be any closed convex cone containing \(\operatorname{supp}E\). Put \(K
 \]
 It is nonempty, open and convex, contains \(N\), and does not contain zero. Openness follows from the positive minimum on \(K\cap S^{n-1}\). For every \(\theta\in\Omega\), the cone converse makes \(P\) hyperbolic in direction \(\theta\), in particular \(F(\theta)\ne0\). Connectedness therefore implies \(\Omega\subset\Gamma\).
 
-The closed positive polar \(K^*\) is the closure of \(\Omega\): if \(\theta\in K^*\), then \(\theta+\varepsilon N\in\Omega\) for \(\varepsilon>0\), by (1). Finite-dimensional separation gives \(K=(K^*)^*=\Omega^*\). Since \(\Omega\subset\Gamma\),
+The closed positive polar \(K^*\) is the closure of \(\Omega\): if \(\theta\in K^*\), then \(\theta+\varepsilon N\in\Omega\) for \(\varepsilon>0\), by (1). The bipolar identity follows from [Strict separation of an open convex set](../prerequisites/prerequisite-bridges.html#strict-separation-of-an-open-convex-set), Theorem 4.1. If \(z\notin K\), choose \(0<\varepsilon<\operatorname{dist}(z,K)\) and separate \(z\) from the open convex set \(K+B(0,\varepsilon)\). The separating covector \(\eta\) satisfies \(\eta(k)\le0\) for \(k\in K\): otherwise its values on the ray through \(k\) would exceed \(\eta(z)\). It also satisfies \(\eta(z)>0\), since zero belongs to that open set. Hence \(-\eta\in K^*\), while \((-\eta)(z)<0\), so \(z\notin(K^*)^*\). The opposite inclusion follows directly from the definition of the positive polar. Consequently \(K=(K^*)^*=\Omega^*\). Since \(\Omega\subset\Gamma\),
 \[
 C=\Gamma^*\subset\Omega^*=K\subset L.
 \tag{15}
@@ -294,7 +294,7 @@ The first factor is in \(B_{\infty,S_P}\) by (13); the second is in \(B_{p,k}\).
 \end{aligned}
 \tag{23}
 \]
-by *Measuring regularity with weighted Fourier spaces* Theorem4.2, with its normalization \((2\pi)^{-n/p}\). Multiplying by a further output cutoff is bounded by *Measuring regularity with weighted Fourier spaces* Theorem4.1. Consequently
+by *Measuring regularity with weighted Fourier spaces* Proposition4.2, with its normalization \((2\pi)^{-n/p}\). Multiplying by a further output cutoff is bounded by *Measuring regularity with weighted Fourier spaces* Theorem4.1. Consequently
 \[
 \begin{gathered}
 f\in B_{p,k}^{\mathrm{loc}},\quad
@@ -365,6 +365,6 @@ The compact Fourier transforms multiply, so the bound is the ordinary multiplica
 
 ## References
 
-The full complex cone exclusion and homogeneous strength ratios are proved in [Hyperbolicity and lower order terms](hyperbolicity-and-lower-order-terms.md). The converse uses [Causal solvability forces hyperbolicity](causal-solvability-forces-hyperbolicity.md), including its stated characteristic-halfspace entry. The derivative-ratio estimate is Lemma 1.1 of [Hypoellipticity and complex zeros](hypoellipticity-and-complex-zeros.md). The cutoff and weighted-convolution estimates are Theorems 4.1–4.2 of [Measuring regularity with weighted Fourier spaces](weighted-fourier-spaces.md). Point-support jets and the Kirchhoff example are proved in [The wave Cauchy problem and Kirchhoff's formula](flat-wave-cauchy-and-kirchhoff.md).
+The full complex cone exclusion and homogeneous strength ratios are proved in [Hyperbolicity and lower order terms](hyperbolicity-and-lower-order-terms.md). The converse uses [Causal solvability forces hyperbolicity](causal-solvability-forces-hyperbolicity.md), including its stated characteristic-halfspace entry. The derivative-ratio estimate is Lemma 1.1 of [Hypoellipticity and complex zeros](hypoellipticity-and-complex-zeros.md). The cutoff and weighted-convolution estimates are Theorem 4.1 and Proposition 4.2 of [Measuring regularity with weighted Fourier spaces](weighted-fourier-spaces.md). Point-support jets and the Kirchhoff example are proved in [The wave Cauchy problem and Kirchhoff's formula](flat-wave-cauchy-and-kirchhoff.md).
 
 Tensor and parameter pairing are Lemma 1.1, Theorem 2.1 and Corollary 2.2 of [Tensor products and parameter-dependent distributions](../prerequisites/tensor-products-and-parameters.html). Proper-support convolution and smoothing are Theorems 1.1 and 2.1 of [Convolution as addition of supports](../prerequisites/convolution-as-addition-of-supports.html). Both lessons use CC0-1.0.

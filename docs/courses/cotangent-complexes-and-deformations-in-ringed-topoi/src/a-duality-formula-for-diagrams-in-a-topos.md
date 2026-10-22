@@ -1,6 +1,6 @@
 # A duality formula for diagrams in a topos
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
 For a diagram \(X\) of objects of a topos \(T\), a module \(E\) of the first total topos and a module \(F\) of the second have an internal Hom with values in the second total topos: on each level it is the internal Hom of the levels, and the maps of \(E\), which go from \(f^*E_j\) to \(E_i\), combine with those of \(F\), which go from \(F_i\) to \(f^*F_j\), to make these internal Homs a module of the second total topos. For a module \(M\) of \(T\), pulled back to every level, this lesson proves the duality formula
 \[
