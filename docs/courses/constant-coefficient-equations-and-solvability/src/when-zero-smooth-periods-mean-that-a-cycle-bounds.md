@@ -1,6 +1,6 @@
 # When zero smooth periods mean that a cycle bounds
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI and spot-checked in a separate AI session. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Its full proof is included below in [Smooth periods detect finite singular cycles](cycle-detection-proof.md). This lesson uses ordinary finite singular chains and field coefficients.
 
@@ -152,13 +152,13 @@ The interior diagonal cancels. Hence \(\partial P+P\partial=\text{top}-\text{bot
 
 ## Human-source credit
 
-This is a classical theorem with a proof written here for the course's exact chain and coefficient conventions. [Georges de Rham's 1931 thesis](https://www.numdam.org/item/THESE_1931__129__1_0/), chapter III, section 26, Theorem II, printed page 72 (PDF 77), gives the historical prescription of periods under its compact/polyhedral hypotheses. The noncompact proof here establishes the required comparison directly. [Allen Hatcher's freely supplied chapter 2](https://pi.math.cornell.edu/~hatcher/AT/ATch2.pdf), proof of Theorem 2.10 and Proposition 2.21 credit the prism and subdivision methods. Source locators and read-only input hashes are retained in this workflow's ledgers.
+This is a classical theorem with a proof written here for the course's exact chain and coefficient conventions. [Georges de Rham's 1931 thesis](https://www.numdam.org/item/THESE_1931__129__1_0/), chapter III, section 26, Theorem II, printed page 72 (PDF 77), gives the historical prescription of periods under its compact/polyhedral hypotheses. The noncompact proof here establishes the required comparison directly. [Allen Hatcher's freely supplied chapter 2](https://pi.math.cornell.edu/~hatcher/AT/ATch2.pdf), proof of Theorem 2.10 and Proposition 2.21 credit the prism and subdivision methods.
 
 ---
 
 # Smooth periods detect finite singular cycles
 
-AN02 prerequisite CD034. Original, self-contained exposition of a classical theorem, written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026, and dedicated under CC0. Self-checked by the writing AI and spot-checked in a separate AI session. This is a proof of smooth complex de Rham detection and coefficient comparison, not a proof of rational-form completeness, tube injectivity, affine/projective multiplicity comparison, or the global Petrowsky component theorem.
+AN02 prerequisite CD034. Original, self-contained exposition of a classical theorem, written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026, and dedicated under CC0.  This is a proof of smooth complex de Rham detection and coefficient comparison, not a proof of rational-form completeness, tube injectivity, affine/projective multiplicity comparison, or the global Petrowsky component theorem.
 
 ## CD0. Statement and entry conventions
 
@@ -532,7 +532,7 @@ For \(M_x=H_x\setminus\{F=0\}\), choose a complex linear identification \(H_x\co
 
 ## CD9. Exact interface with AH4-AH5
 
-The source and review bindings in this workflow identify the accepted AH032-2 working proof; its complete text and the two bounded correction reviews were read. AH5 proves a statement about **all smooth complex de Rham classes**:
+AH5 applies to **all smooth complex de Rham classes**:
 
 \[
  H^q_{\mathrm{dR}}(M_x;\mathbb C)

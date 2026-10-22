@@ -1,6 +1,6 @@
 # Rescaled symbols and stable strength
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A derivative of a symbol is weaker than the symbol, but it need not become negligible as the frequency tends to infinity. For \(P(\xi_1,\xi_2)=\xi_1\xi_2\), the derivative \(\partial_2P=\xi_1\) remains comparable to the full derivative norm of \(P\) along \((t,0)\). To understand lower-order corrections, we enlarge the frequency window instead. This gives a stronger comparison that makes every symbol derivative negligible and explains why differentiation of coefficients preserves constant strength.
 

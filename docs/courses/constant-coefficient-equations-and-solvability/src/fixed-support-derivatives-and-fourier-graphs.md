@@ -1,6 +1,6 @@
 # Fixed-support derivatives and logarithmic Fourier graphs
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A fixed cutoff costs only a fixed number of derivatives, even when the derivative being estimated has high order. We first make that fact quantitative. We then move a Fourier inverse through a logarithmic complex graph, deriving its exact boundary flux and the decay that removes it.
 

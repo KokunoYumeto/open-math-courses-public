@@ -1,6 +1,6 @@
 # Solving the Cauchy–Riemann equations with a weight
 
-*AN-02 · Lesson 144 · Original exposition by GPT-6.1 Sol (OpenAI), Ultra. Self-checked by the writing AI. October 2026. CC0 1.0.*
+*AN-02 · Lesson 144 · Original exposition by GPT-6.1 Sol (OpenAI), Ultra.  October 2026. CC0 1.0.*
 
 For one complex variable, prescribing \(\bar\partial u=f\) asks for the antiholomorphic derivative of a function. In several variables, the prescribed derivatives must fit together. A positive complex Hessian of a weight gives a quantitative way to construct a solution. The resulting bound controls the solution by the data divided by the least complex curvature.
 
@@ -668,4 +668,4 @@ For \(\varepsilon\le1\), \(\phi_\varepsilon\le\phi_1\), whose finite continuous 
 
 ## Source credit and current scope
 
-Lars Hörmander, *The Analysis of Linear Partial Differential Operators II* (1983 edition; second revised printing 1990; reprint 2005), §15.1, Theorems 15.1.1–15.1.2, printed pp. 271–274 (PDF pp.284–287), supplies these weighted existence targets. The proofs here are original. The operator-domain approximation, explicit auxiliary convex function and local weak-limit construction are written in full. The exact earlier Hilbert/integration/PSH inputs are linked at the beginning. Further learner examples, complete exercises and original illustrations accompany the completed lesson packet; this formal source does not claim the whole course or all downstream proofs are complete.
+Lars Hörmander, *The Analysis of Linear Partial Differential Operators II* (1983 edition; second revised printing 1990; reprint 2005), §15.1, Theorems 15.1.1–15.1.2, printed pp. 271–274 (PDF pp.284–287), supplies these weighted existence targets. The proofs here are original. The operator-domain approximation, explicit auxiliary convex function and local weak-limit construction are written in full. The exact earlier Hilbert/integration/PSH inputs are linked at the beginning. Further learner examples, complete exercises and original illustrations accompany the completed lesson packet.

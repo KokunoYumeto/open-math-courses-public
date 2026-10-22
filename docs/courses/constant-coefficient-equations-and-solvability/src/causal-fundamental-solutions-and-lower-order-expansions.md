@@ -1,6 +1,6 @@
 # Causal fundamental solutions and lower order expansions
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A hyperbolic root barrier yields an actual causal inverse. We construct it by moving Fourier integration lines, prove its support and weighted regularity, and determine its smallest closed convex supporting cone. Lower order terms then give a convergent expansion in principal-power kernels, with a quantitative tail in the local Fourier norm.
 

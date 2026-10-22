@@ -1,6 +1,6 @@
 # Lebesgue duality and the functionals on Fourier spaces
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Hölder's inequality turns an \(L^{p'}\) density into a functional on \(L^p\). To prove that these are all the functionals, we construct the density from the functional itself. The proof includes \(p=1\), keeps the exact norm, and then identifies the reciprocal and reflected weights in Fourier space.
 

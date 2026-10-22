@@ -1,6 +1,6 @@
 # Flat half-space solutions from real frequency rays
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Original expression: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Original expression: CC0.*
 
 We now use a real Laurent frequency path to build a smooth solution with support equal to a closed half space. Each mode is an exponential whose normal phase changes on an interval shrinking toward the boundary. Adjacent modes have exactly the same polynomial quotient near their joining plane. This exact equality defines the coefficient there even when the sum of their Q-images vanishes. Where a cutoff changes, one mode is exponentially smaller, so the usual quotient is well defined. The very large frequencies also make every derivative of the solution vanish at the boundary.
 

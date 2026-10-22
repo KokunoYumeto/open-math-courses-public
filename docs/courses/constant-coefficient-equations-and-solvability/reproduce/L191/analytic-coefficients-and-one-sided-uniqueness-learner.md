@@ -1,6 +1,6 @@
 # Analytic coefficients and one-sided uniqueness
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 A solution that is zero on one side of a surface need not be zero on the other. A characteristic surface can carry a wave front or even a distribution concentrated on the surface. Holmgren's theorem gives a precise alternative: analytic coefficients and a noncharacteristic normal force a local zero neighborhood. The solution itself may be an arbitrary distribution.
 

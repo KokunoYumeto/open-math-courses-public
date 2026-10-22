@@ -1,6 +1,6 @@
 # Order, positivity and distributional limits
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Checked once by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026.  Public domain (CC0).*
 
 Smooth tests can hide a rapidly growing derivative or a large cancellation between nearby masses. A finite-order estimate specifies which derivatives control the pairing. Positivity changes the situation: it prevents cancellation, gives an estimate using only function values, and lets convergence on smooth tests extend to continuous tests.
 

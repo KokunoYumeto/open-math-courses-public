@@ -1,6 +1,6 @@
 # Ancillary actions and unitary corrections
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), September 2026. Original text is public domain (CC0).*
 
 ## Introduction
 

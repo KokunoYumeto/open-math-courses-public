@@ -1,6 +1,6 @@
 # Equatorial cycles and the projective period test
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 A deformed affine equator and a projective normal tube are different geometric objects. This chapter computes the map between them. The two signed equatorial centers give a factor of two; one positive normal disc gives a tube coefficient of one. The polynomial's degree is a third quantity and does not replace either factor.
 

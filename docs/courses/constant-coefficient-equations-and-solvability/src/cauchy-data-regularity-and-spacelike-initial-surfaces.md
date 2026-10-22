@@ -1,6 +1,6 @@
 # Cauchy data, regularity and spacelike initial surfaces
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A causal inverse solves the equation with vanishing past data. To prescribe nonzero initial traces, we first match enough finite normal jets that the remaining forcing extends by zero. The weighted regularity gain then gives a classical solution. We derive the exact boundary source and explain what data determine the solution when a past cone has lower dimension. The same kernel and a controlled graph extension give a local theorem for curved spacelike surfaces.
 

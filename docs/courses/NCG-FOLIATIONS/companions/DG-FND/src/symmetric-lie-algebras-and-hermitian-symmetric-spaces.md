@@ -253,7 +253,7 @@ The complementary pair is effective. An even element in its isotropy kernel woul
 \operatorname{Aut}(\mathfrak g)
 =\{F:F[X,Y]=[FX,FY]\text{ for all }X,Y\}.
 \]
-Checking on a basis expresses this set by finitely many polynomial equations, so it is closed relative to \(GL(\mathfrak g)\). Invariant connections A.1 makes it an embedded Lie group. Differentiation of its equations shows that its Lie algebra lies in \(\operatorname{Der}(\mathfrak g)\). Conversely a derivation \(D\) satisfies
+Checking on a basis expresses this set by finitely many polynomial equations, so it is closed relative to \(GL(\mathfrak g)\). [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1) makes it an embedded Lie group. Differentiation of its equations shows that its Lie algebra lies in \(\operatorname{Der}(\mathfrak g)\). Conversely a derivation \(D\) satisfies
 \[
 \frac{d}{dt}\left(e^{-tD}[e^{tD}X,e^{tD}Y]\right)=0
 \]
@@ -469,13 +469,13 @@ For either group, [Hopf–Rinow B.2](completeness-and-the-hopf-rinow-theorem.md#
 \[
 \mathbb R^r/\Lambda
 \]
-for a full lattice \(\Lambda\). It contains an element whose integer powers are dense. A closed subgroup of a finite-dimensional Lie group is an embedded Lie subgroup, as proved in Invariant connections A.1.
+for a full lattice \(\Lambda\). It contains an element whose integer powers are dense. A closed subgroup of a finite-dimensional Lie group is an embedded Lie subgroup, as proved in [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1).
 
 **Proof.** The Lie algebra of an abelian group is abelian, since its invariant flows commute. Its exponential is a homomorphism from the additive Lie algebra: the two curves \(\exp(t(X+Y))\) and \(\exp(tX)\exp(tY)\) have the same initial value and invariant velocity, so agree by [Local tools 2.3](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters). The differential of the exponential at zero is the identity, obtained by differentiating \(t\mapsto\exp(tX)\). [Local tools 1.2](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) makes it a local diffeomorphism. Its image is an open subgroup, hence all of the connected group. Its kernel \(\Lambda\) is discrete. The induced bijection \(\mathbb R^r/\Lambda\to G\) is a local diffeomorphism in quotient charts and hence a diffeomorphism and group isomorphism. [Sectional curvature G.3](sectional-curvature-and-space-forms.md#theorem-g-3) gives an integral basis of the discrete group and proves that compactness of this quotient is equivalent to full rank. A linear change of basis reduces to \(\Lambda=\mathbb Z^r\).
 
 Choose real numbers \(\alpha_1,\ldots,\alpha_r\) such that
 \(1,\alpha_1,\ldots,\alpha_r\) are linearly independent over \(\mathbb Q\).
-Such a finite choice is possible recursively: the rational span of finitely many real numbers is countable, whereas \(\mathbb R\) is uncountable by the binary-sequence diagonal argument given in [Symmetric spaces C.4](symmetric-spaces.md#theorem-c-4). Let \(a\) be the class of \(\alpha=(\alpha_1,\ldots,\alpha_r)\) in the torus, and \(C\) the closure of its integer powers. Continuity of multiplication and inversion makes \(C\) a subgroup; it is closed, hence a compact embedded Lie subgroup by Invariant connections A.1.
+Such a finite choice is possible recursively: the rational span of finitely many real numbers is countable, whereas \(\mathbb R\) is uncountable by the binary-sequence diagonal argument given in [Symmetric spaces C.4](symmetric-spaces.md#theorem-c-4). Let \(a\) be the class of \(\alpha=(\alpha_1,\ldots,\alpha_r)\) in the torus, and \(C\) the closure of its integer powers. Continuity of multiplication and inversion makes \(C\) a subgroup; it is closed, hence a compact embedded Lie subgroup by [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1).
 
 Its identity component \(C^0\) is compact, connected and abelian, so the first paragraph applies to it. Write \(W\subseteq\mathbb R^r\) for its Lie algebra. The exponential of \(C^0\) is the restriction of the torus exponential, by uniqueness of the invariant ODE, so
 \[
@@ -551,7 +551,7 @@ A torus in a Lie group is a compact connected abelian Lie subgroup. Part F ident
 \]
 That proof also shows that this connection is geodesically complete and that its geodesics from the identity are \(t\mapsto\exp(tX)\). [Hopf–Rinow B.2](completeness-and-the-hopf-rinow-theorem.md#theorem-b-2) joins the identity to each \(k\in K\) by one of these geodesics. Thus \(k=\exp X\) for some \(X\in\mathfrak k\).
 
-The closure of \(\{\exp(tX):t\in\mathbb R\}\) is a subgroup: continuity of multiplication and inversion shows that products and inverses of limits remain in the closure. It is abelian for the same reason. It is connected, since the closure of a connected set is connected, and compact as a closed subset of \(K\). To justify the connectedness fact, a separation of that closure into two nonempty relatively open sets would separate the original connected dense subset; density ensures that both sets meet it. The closed subgroup theorem, Invariant connections A.1, makes the closure an embedded Lie subgroup. It is therefore a torus containing \(k\).
+The closure of \(\{\exp(tX):t\in\mathbb R\}\) is a subgroup: continuity of multiplication and inversion shows that products and inverses of limits remain in the closure. It is abelian for the same reason. It is connected, since the closure of a connected set is connected, and compact as a closed subset of \(K\). To justify the connectedness fact, a separation of that closure into two nonempty relatively open sets would separate the original connected dense subset; density ensures that both sets meet it. The closed subgroup theorem, [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1), makes the closure an embedded Lie subgroup. It is therefore a torus containing \(k\).
 
 Starting with any torus \(S\), choose among the tori containing it one of largest dimension. Such a choice uses only a maximum of a nonempty set of integers between zero and \(\dim K\). A proper inclusion of tori increases dimension: if two such tori have equal dimension, their Lie algebras agree, so uniqueness of the connected subgroup in [Flat connections A.1](flat-connections-and-infinitesimal-holonomy.md#lemma-a-1) makes them equal. The chosen torus is thus maximal. Apply this also to the torus constructed from \(X\). The zero-dimensional connected group is the trivial group, for which all conclusions hold. □
 
@@ -579,7 +579,7 @@ Commuting Lie algebra elements have commuting exponential curves. Indeed the adj
 \]
 the constant value \(Y\) solves this equation, so uniqueness in [Local tools 2.3](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters) proves it is fixed. Naturality of the exponential, again from the invariant ODE, then proves the assertion. In particular \(k_0ak_0^{-1}\) commutes with \(b\).
 
-Taking integer powers and then limits proves that every element of \(k_0Tk_0^{-1}\) commutes with every element of \(S\). Their product is an abelian subgroup. It is connected and compact, being the continuous image of the product of the two compact connected tori. Thus it is closed in the Hausdorff group and an embedded torus by Invariant connections A.1. Maximality forces
+Taking integer powers and then limits proves that every element of \(k_0Tk_0^{-1}\) commutes with every element of \(S\). Their product is an abelian subgroup. It is connected and compact, being the continuous image of the product of the two compact connected tori. Thus it is closed in the Hausdorff group and an embedded torus by [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1). Maximality forces
 \[
 S=k_0Tk_0^{-1}.
 \]
@@ -598,7 +598,7 @@ C_K(Z)=\{k\in K:\operatorname{Ad}(k)Z=Z\}
 \]
 is connected, with Lie algebra \(\{X:[X,Z]=0\}\).
 
-**Proof.** Fix \(c\in C_K(S)\). The centralizer of the single group element \(c\) is a closed subgroup, hence an embedded compact Lie subgroup by Invariant connections A.1. Let
+**Proof.** Fix \(c\in C_K(S)\). The centralizer of the single group element \(c\) is a closed subgroup, hence an embedded compact Lie subgroup by [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1). Let
 \[
 L=C_K(c)^0
 \]
@@ -614,7 +614,7 @@ For (H.3), let \(S_Z\) be the closure of \(\exp(\mathbb R Z)\). It is a torus by
 \[
 C_K(Z)=C_K(S_Z),
 \]
-which is connected. Differentiating \(\operatorname{Ad}(\exp(tX))Z=Z\) proves the necessary Lie algebra condition. If \([X,Z]=0\), the adjoint ODE has constant solution \(Z\), so \(\exp(tX)\) lies in the centralizer for every \(t\); this proves sufficiency. The Lie algebra assertion follows from the closed subgroup characterization in Invariant connections A.1. □
+which is connected. Differentiating \(\operatorname{Ad}(\exp(tX))Z=Z\) proves the necessary Lie algebra condition. If \([X,Z]=0\), the adjoint ODE has constant solution \(Z\), so \(\exp(tX)\) lies in the centralizer for every \(t\); this proves sufficiency. The Lie algebra assertion follows from the closed subgroup characterization in [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1). □
 
 ## I. The global compact Hermitian conclusion
 
@@ -737,7 +737,7 @@ g_Z^+(U,V)&=\operatorname{Re}h_Z^+(U,V).
 \]
 Its symmetry at \(E=\mathbb C^p\oplus0\) is \(Z\mapsto-Z\), and its symmetry at an arbitrary plane is the action on planes of the unitary reflection that is \(+I\) on that plane and \(-I\) on its orthogonal complement.
 
-**Proof.** Extend an orthonormal basis of a \(p\)-plane to one of the whole space, using the finite orthogonal-complement induction in K.1. This proves transitivity of \(U(p+q)\); its stabilizer is exactly the block-diagonal subgroup \(U(p)\times U(q)\). The unitary group is closed and bounded in the real matrix space, hence compact by [Local tools 0.1](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations), and connected by K.1. Its polynomial equations make it a closed Lie subgroup by Invariant connections A.1. [Local tools 4.1](local-tools-for-bundles-and-transport.md#4-quotients-by-a-closed-lie-subgroup) supplies the smooth quotient in (L.2). It is compact and connected.
+**Proof.** Extend an orthonormal basis of a \(p\)-plane to one of the whole space, using the finite orthogonal-complement induction in K.1. This proves transitivity of \(U(p+q)\); its stabilizer is exactly the block-diagonal subgroup \(U(p)\times U(q)\). The unitary group is closed and bounded in the real matrix space, hence compact by [Local tools 0.1](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations), and connected by K.1. Its polynomial equations make it a closed Lie subgroup by [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1). [Local tools 4.1](local-tools-for-bundles-and-transport.md#4-quotients-by-a-closed-lie-subgroup) supplies the smooth quotient in (L.2). It is compact and connected.
 
 Planes whose projection onto the first summand is an isomorphism have the unique graph description (L.1). These are actual smooth quotient coordinates. For example a smooth unitary representative carrying \(E\) to \(E_Z\) is
 \[
@@ -832,7 +832,7 @@ ZP_-^{-1/2}&Q_-^{-1/2}
 \]
 Its diagonal block inner products for the form (L.11) are \(I_p,-I_q\), and the off-diagonal block is zero, so it belongs to \(U(p,q)\). This proves transitivity. If \(g\) fixes zero, then \(c=0\). The identities \(g^*Jg=J\) give \(a^*a=I_p\), \(a^*b=0\), hence \(b=0\) and \(d^*d=I_q\). This proves the stabilizer assertion.
 
-The group is a closed Lie subgroup by Invariant connections A.1. It is connected as well: \(s\mapsto g_{sZ}\) is a path from \(I\) to \(g_Z\), and every \(g\) is \(g_{g\cdot0}k\) for some \(k\in U(p)\times U(q)\), which is connected by K.1. The quotient identification is a diffeomorphism, since (L.14) is a smooth global section for its orbit map and [Local tools 4.1](local-tools-for-bundles-and-transport.md#4-quotients-by-a-closed-lie-subgroup) gives its quotient charts.
+The group is a closed Lie subgroup by [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1). It is connected as well: \(s\mapsto g_{sZ}\) is a path from \(I\) to \(g_Z\), and every \(g\) is \(g_{g\cdot0}k\) for some \(k\in U(p)\times U(q)\), which is connected by K.1. The quotient identification is a diffeomorphism, since (L.14) is a smooth global section for its orbit map and [Local tools 4.1](local-tools-for-bundles-and-transport.md#4-quotients-by-a-closed-lie-subgroup) gives its quotient charts.
 
 Equation (L.6) still holds. Its second metric identity is now
 \[
@@ -875,7 +875,7 @@ X_+(Z)=\begin{pmatrix}0&-Z^*\\Z&0\end{pmatrix},
 X_-(Z)=\begin{pmatrix}0&Z^*\\Z&0\end{pmatrix}.
 \tag{L.18}
 \]
-Differentiating the defining matrix-form equations gives these odd spaces and block-diagonal anti-Hermitian even parts. Conversely, any matrix satisfying the differentiated equation exponentiates into the group: the derivative of \((e^{tX})^*J e^{tX}\) is zero when \(X^*J+JX=0\), with \(J=I\) in the compact case and \(J=\operatorname{diag}(I_p,-I_q)\) in the other. The closed subgroup characterization in Invariant connections A.1 therefore proves equality of the stated Lie algebras. Differentiating the graph action at the identity sends either odd matrix to \(Z\). The odd brackets are opposite:
+Differentiating the defining matrix-form equations gives these odd spaces and block-diagonal anti-Hermitian even parts. Conversely, any matrix satisfying the differentiated equation exponentiates into the group: the derivative of \((e^{tX})^*J e^{tX}\) is zero when \(X^*J+JX=0\), with \(J=I\) in the compact case and \(J=\operatorname{diag}(I_p,-I_q)\) in the other. The closed subgroup characterization in [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1) therefore proves equality of the stated Lie algebras. Differentiating the graph action at the identity sends either odd matrix to \(Z\). The odd brackets are opposite:
 \[
 \begin{aligned}
 [X_+(Z),X_+(W)]
@@ -986,7 +986,7 @@ A^TA+B^TB=I,\qquad A^TB=B^TA.
 \]
 These are exactly \((A-iB)^*(A-iB)=I\). The real block matrix in (M.4) is the real representation of the complex matrix \(A-iB\), so this identification preserves multiplication and gives the full stabilizer, not only its identity component.
 
-The symplectic group is a closed matrix Lie subgroup by Invariant connections A.1. It is connected: the segment
+The symplectic group is a closed matrix Lie subgroup by [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1). It is connected: the segment
 \(W_t=tX+i((1-t)I+tY)\) stays in \(\mathcal H_r\), and (M.8) supplies a path from the identity to \(g_W\). Every \(g\) equals \(g_{g\cdot iI}k\) with \(k\in K\), and K.1 makes \(K\) connected. Finally [Local tools 4.1](local-tools-for-bundles-and-transport.md#4-quotients-by-a-closed-lie-subgroup) gives the quotient manifold. The orbit map descends smoothly to the quotient; its inverse is \(W\mapsto g_WK\), smooth by (M.8). They are inverse by transitivity and the stabilizer calculation. □
 
 **Theorem M.2 (The metric and global point symmetries).** The Hermitian form
@@ -3715,7 +3715,7 @@ An isomorphism of metric pairs gives a unique pointed isometry of their realizat
 
 **Proof.** C.4 constructs the connected group \(G_0=\operatorname{Aut}(\mathfrak g)^0\) with Lie algebra identified faithfully with \(\mathfrak g\). F.1 supplies its connected simply connected covering group \(\widetilde G\), with the same algebra. [Symmetric spaces C.1](symmetric-spaces.md#lemma-c-1) integrates \(\theta\) to an automorphism \(\sigma\) of \(\widetilde G\); uniqueness makes \(\sigma^2=1\).
 
-The fixed set \(\widetilde G^\sigma\) is a subgroup and is closed: it is the equalizer of the continuous maps \(\sigma\) and the identity into a Hausdorff space. Invariant connections A.1 therefore gives it an embedded Lie-group structure. Its Lie algebra is precisely \(\mathfrak h\). One inclusion follows by differentiating \(\sigma(g)=g\); the other follows from
+The fixed set \(\widetilde G^\sigma\) is a subgroup and is closed: it is the equalizer of the continuous maps \(\sigma\) and the identity into a Hausdorff space. [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1) therefore gives it an embedded Lie-group structure. Its Lie algebra is precisely \(\mathfrak h\). One inclusion follows by differentiating \(\sigma(g)=g\); the other follows from
 \[
 \sigma(\exp tA)=\exp(t\theta A)=\exp(tA)
 \qquad(A\in\mathfrak h).
@@ -3865,7 +3865,7 @@ For the minus sign \(Z\) is in the ball. Multiplication on the left by
 \]
 where each square root is positive, by the positive eigenvalues in K.1.
 
-For the compact action, L.1 supplies a unitary matrix \(u\) sending the reference plane \(E\) to any chosen plane. Choose a block diagonal unitary matrix \(h\) with \(\det h=(\det u)^{-1}\): one entry in its first block can have this value and all other entries can be one. Then \(uh\in SU(p+q)\) has the same image plane. This proves transitivity. The full stabilizer is the intersection of the full stabilizer in L.1 with \(SU(p+q)\), namely (AK.1). For the noncompact action the determinant-one section \(g_Z\) already proves transitivity, and the stabilizer calculation in L.2 gives exactly the same intersection. These groups are closed matrix Lie subgroups by Invariant connections A.1, and [Local tools 4.1](local-tools-for-bundles-and-transport.md#4-quotients-by-a-closed-lie-subgroup) gives their smooth quotients. The graph sections just proved to lie in the smaller groups show that the quotient identifications and their inverses are smooth. In the compact case translate these graph sections by fixed elements of \(SU(p+q)\) to cover the space. They give the same holomorphic graph transitions as L.1. In the noncompact case the section is global. Thus the complex atlases and the metrics are exactly those already constructed in L.1 and L.2.
+For the compact action, L.1 supplies a unitary matrix \(u\) sending the reference plane \(E\) to any chosen plane. Choose a block diagonal unitary matrix \(h\) with \(\det h=(\det u)^{-1}\): one entry in its first block can have this value and all other entries can be one. Then \(uh\in SU(p+q)\) has the same image plane. This proves transitivity. The full stabilizer is the intersection of the full stabilizer in L.1 with \(SU(p+q)\), namely (AK.1). For the noncompact action the determinant-one section \(g_Z\) already proves transitivity, and the stabilizer calculation in L.2 gives exactly the same intersection. These groups are closed matrix Lie subgroups by [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1), and [Local tools 4.1](local-tools-for-bundles-and-transport.md#4-quotients-by-a-closed-lie-subgroup) gives their smooth quotients. The graph sections just proved to lie in the smaller groups show that the quotient identifications and their inverses are smooth. In the compact case translate these graph sections by fixed elements of \(SU(p+q)\) to cover the space. They give the same holomorphic graph transitions as L.1. In the noncompact case the section is global. Thus the complex atlases and the metrics are exactly those already constructed in L.1 and L.2.
 
 The ball can also be described intrinsically as the set of positive \(p\)-planes for the form \(\operatorname{diag}(I_p,-I_q)\). The first projection is injective on any such plane: a nonzero vector in its kernel would have negative norm. Equal dimensions make the projection an isomorphism, so the plane is a unique graph \(E_Z\); its form is \(v^*(I-Z^*Z)v\), which is positive exactly for \(Z\) in the ball. Changing the sign of the preserved form makes the same planes negative and leaves the preserving group unchanged.
 
@@ -3908,7 +3908,7 @@ R^\epsilon(Z,W)V
 \]
 The map forgetting orientation on the first space is a two-sheeted local isometry onto the unoriented Grassmannian. No simple-connectivity assertion about the compact quotient is implicit here.
 
-**Proof.** Choose an oriented orthonormal basis of a plane and then an orthonormal basis of its perpendicular space so that the combined basis has the standard orientation of \(\mathbb R^{p+q}\). Gram–Schmidt here is the finite projection and normalization induction in K.1, over \(\mathbb R\); the sign of a last complement vector can be changed because \(q\geq1\). The resulting matrix lies in \(SO(p+q)\). This proves transitivity on oriented planes. A special orthogonal transformation preserving the oriented reference plane is block diagonal with its first block in \(SO(p)\); determinant one forces its second block into \(SO(q)\). Conversely every such block diagonal transformation stabilizes it. [Affine transformations G.1](affine-transformations-and-the-isometry-group.md#theorem-g-1) proves connectedness of each special orthogonal group by successive rotations in coordinate planes, including \(SO(1)=\{1\}\). Thus both this group and its stabilizer are connected. Closedness, compactness and the smooth quotient follow from Invariant connections A.1, [Local tools 0.1](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations) and [Local tools 4.1](local-tools-for-bundles-and-transport.md#4-quotients-by-a-closed-lie-subgroup).
+**Proof.** Choose an oriented orthonormal basis of a plane and then an orthonormal basis of its perpendicular space so that the combined basis has the standard orientation of \(\mathbb R^{p+q}\). Gram–Schmidt here is the finite projection and normalization induction in K.1, over \(\mathbb R\); the sign of a last complement vector can be changed because \(q\geq1\). The resulting matrix lies in \(SO(p+q)\). This proves transitivity on oriented planes. A special orthogonal transformation preserving the oriented reference plane is block diagonal with its first block in \(SO(p)\); determinant one forces its second block into \(SO(q)\). Conversely every such block diagonal transformation stabilizes it. [Affine transformations G.1](affine-transformations-and-the-isometry-group.md#theorem-g-1) proves connectedness of each special orthogonal group by successive rotations in coordinate planes, including \(SO(1)=\{1\}\). Thus both this group and its stabilizer are connected. Closedness, compactness and the smooth quotient follow from [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1), [Local tools 0.1](local-tools-for-bundles-and-transport.md#0-analytic-and-linear-foundations) and [Local tools 4.1](local-tools-for-bundles-and-transport.md#4-quotients-by-a-closed-lie-subgroup).
 
 A graph carries the orientation obtained by projecting to the oriented first summand. The real version of \(k_Z\) in (L.4) has determinant one by (AK.4) and its first block \(P_+^{-1/2}\) has positive determinant. It therefore gives an oriented graph section. Conversely, in such a chart the coordinate is \(ca^{-1}\) and the orientation condition is \(\det a>0\); both are smooth conditions. Translated sections cover all oriented planes and justify the first smooth identification in (AK.5). Forgetting orientation has exactly two preimages at each plane. On the neighborhood of graphs over that plane the two choices give two disjoint copies of the same real matrix chart, so it is a two-sheeted covering.
 

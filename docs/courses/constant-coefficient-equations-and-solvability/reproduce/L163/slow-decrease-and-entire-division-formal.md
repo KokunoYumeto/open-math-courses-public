@@ -1,6 +1,6 @@
 # Slow decrease and entire Fourier division
 
-Original exposition and proofs: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0. Self-checked by the writing AI; independent mathematical review is not claimed.
+Original exposition and proofs: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0.
 
 Polynomial division preserves compact Fourier growth when the quotient is entire. For an arbitrary compact distribution's transform, that conclusion needs a lower-growth condition. We identify it through real logarithmic neighborhoods, complex averages and the absence of collapsed profiles. A complete Phragmén–Lindelöf argument and a Banach-space estimate connect these conditions to entire division.
 

@@ -1,6 +1,6 @@
 # Four-condition complex weights and the topology of compact Fourier tests
 
-*Original proof by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked; CC0.*
+*Original proof by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. CC0.*
 
 We prove the complete regularization of Hörmander II, Lemma 15.2.3, and then assemble the full four-condition weight and seminorm domination of Theorem 15.2.1. The exact curvature power is \((1+|\operatorname{Im}z|^2)^{-3/4}\), matching the scale \(M^{-3/2}\) in the regularization lemma.
 

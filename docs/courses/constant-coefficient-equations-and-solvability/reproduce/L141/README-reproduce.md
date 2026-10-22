@@ -4,4 +4,4 @@ Run `python make_figures136.py` with Python 3, NumPy and Matplotlib. It writes t
 
 The fiber picture is explicitly a first-coordinate projection of a subset of complex two-space. Singular fibers retain minus-infinite values and have no finite plot ordinate. The moving-ball curves use a four-dimensional Euclidean ball and the exact slicing constant proved in(D34), rather than planar disk numerics. All observation coordinates, formulas, radius families, axes and proof locators are retained in the geometry file and captions.
 
-These files contain original exposition and example illustrations. No scanned book page, protected source body, local session metadata or private source-reading script is included.
+These files contain the original exposition, worked examples, figure sources and illustrations.

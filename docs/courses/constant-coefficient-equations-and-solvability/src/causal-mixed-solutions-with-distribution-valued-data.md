@@ -1,6 +1,6 @@
 # Causal mixed solutions with distribution-valued data
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A boundary impulse is a natural datum even when it has no classical value at the initial corner. The appropriate class is smooth in the boundary-normal coordinate and distributional in the remaining variables. Causality replaces an initial trace that need not exist. We construct and characterize the unique solution in this class without a spatial growth condition.
 

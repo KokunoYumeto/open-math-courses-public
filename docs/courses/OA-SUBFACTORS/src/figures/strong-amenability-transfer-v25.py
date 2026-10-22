@@ -26,7 +26,7 @@ def node(x,y,w,h,title,sub,color='#ffffff'):
     text(x+18,y+18,title,27)
     text(x+18,y+59,sub,21)
 
-text(45,28,'Original amenability -> actual core admission and generation',34)
+text(45,28,'Original amenability -> canonical core representation and generation',34)
 text(45,83,'SA.3--SA.5 require no factoriality; the physical trace and cups are retained.',24)
 rect(35,133,1430,450,'#eaf1f8')
 text(60,151,'Original inherited-trace core and canonical expected representation',27,BLUE)

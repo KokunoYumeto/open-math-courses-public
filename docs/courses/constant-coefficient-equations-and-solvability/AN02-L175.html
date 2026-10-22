@@ -1,17 +1,17 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Finite-order convolution solutions and logarithmic windows</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L174.html">Previous lesson</a> · <a href="#4-weights-that-preserve-one-global-order">The statement</a> · <a href="#complete-proof">Complete proof</a> · <a href="#4-exercises-and-full-solutions">Complete solutions</a> · <a href="#reproduce">Sources and figures</a></nav>
 <h1 id="finite-order-convolution-solutions-and-logarithmic-windows">Finite-order convolution solutions and logarithmic windows</h1>
-<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).</em></p>
 <p>Large coefficients do not by themselves increase a distribution's derivative order. Increasing derivative orders do. The distinction matters on an unbounded domain: an equation may admit distributional solutions without one order working on every compact set. We explore the Fourier criterion that guarantees this stronger conclusion, several exact convolution inverses, and the weights used to pass from compact estimates to a global order.</p>
 <p>Basic references are <a href="https://web.math.ku.dk/~grubb/dist5.pdf">Grubb's Fourier-distribution notes</a>, <a href="https://ocw.mit.edu/courses/18-155-differential-analysis-fall-2004/">Melrose's differential-analysis course</a>, and Hörmander's <em>The Analysis of Linear Partial Differential Operators</em>, volumes I and II. The full proofs of the quantitative criterion, fixed derivative loss and weighted construction accompany this chapter in <em>One derivative order for global convolution solutions</em>. Read <a href="AN02-L174.html#1-a-global-finite-order-representative">Solving convolution equations for arbitrary distribution data</a>, Lemma 1.1, for the extension modulo smooth functions, and <a href="AN02-L162.html#2-smooth-kernels-with-sharply-concentrated-transforms">Frequency-selective singularities and smooth convolutions</a> for probability bumps and their Fourier transforms.</p>
 <h2 id="1-what-is-fixed-and-what-may-grow">1. What is fixed, and what may grow</h2>
 <p>The order condition <span class="math" data-index="0" data-tex="\(f\in\mathcal D^{\prime k}(X)\)">\(f\in\mathcal D^{\prime k}(X)\)</span> says that, for every compact <span class="math" data-index="1" data-tex="\(K\Subset X\)">\(K\Subset X\)</span>, there is <span class="math" data-index="2" data-tex="\(D_K\)">\(D_K\)</span> with</p>
-<span class="math math-display" id="eq-E1.1" data-index="3" data-tex="\[
+<span class="math math-display" data-index="3" data-tex="\[
  |f(\varphi)|\le D_Kp_k(\varphi),\qquad
  \operatorname{supp}\varphi\subset K,\qquad
  p_k(\varphi)=\max_{a\le k}\|\varphi^{(a)}\|_\infty
  \tag{E1.1}
-\]">\[
+\]" id="eq-E1.1">\[
  |f(\varphi)|\le D_Kp_k(\varphi),\qquad
  \operatorname{supp}\varphi\subset K,\qquad
  p_k(\varphi)=\max_{a\le k}\|\varphi^{(a)}\|_\infty
@@ -20,12 +20,12 @@
 <p>in one dimension. The same <span class="math" data-index="4" data-tex="\(k\)">\(k\)</span> works throughout <span class="math" data-index="5" data-tex="\(X\)">\(X\)</span>; <span class="math" data-index="6" data-tex="\(D_K\)">\(D_K\)</span> may grow without bound. In higher dimensions use all partial derivatives of total order at most <span class="math" data-index="7" data-tex="\(k\)">\(k\)</span>.</p>
 <p>For a compact convolution kernel with transform
 <span class="math" data-index="8" data-tex="\(F(z)=\mu(e^{-itz})\)">\(F(z)=\mu(e^{-itz})\)</span>, very slow decrease means that a single <span class="math" data-index="9" data-tex="\(A\ge0\)">\(A\ge0\)</span> works in</p>
-<span class="math math-display" id="eq-E1.2" data-index="10" data-tex="\[
+<span class="math math-display" data-index="10" data-tex="\[
  \liminf_{|c|\to\infty}|c|^A
        \sup_{|h|&lt;e\log|c|}|F(c+h)|&gt;0
                     \quad\text{for every }e&gt;0.
  \tag{E1.2}
-\]">\[
+\]" id="eq-E1.2">\[
  \liminf_{|c|\to\infty}|c|^A
        \sup_{|h|&lt;e\log|c|}|F(c+h)|&gt;0
                     \quad\text{for every }e&gt;0.
@@ -33,10 +33,10 @@
 \]</span>
 <p>The real window may be arbitrarily narrow relative to <span class="math" data-index="11" data-tex="\(\log|c|\)">\(\log|c|\)</span>, but the exponent does not change. The lower constant and the frequency threshold may change.</p>
 <p>If the space dimension is <span class="math" data-index="12" data-tex="\(n\)">\(n\)</span>, the kernel order is <span class="math" data-index="13" data-tex="\(M\)">\(M\)</span>, and <span class="math" data-index="14" data-tex="\(A\)">\(A\)</span> works in (E1.2), choose an integer</p>
-<span class="math math-display" id="eq-E1.3" data-index="15" data-tex="\[
+<span class="math math-display" data-index="15" data-tex="\[
                             r&gt;n+2M+A.
  \tag{E1.3}
-\]">\[
+\]" id="eq-E1.3">\[
                             r&gt;n+2M+A.
  \tag{E1.3}
 \]</span>
@@ -44,71 +44,71 @@
 <h2 id="2-four-exact-examples">2. Four exact examples</h2>
 <h3 id="a-complex-derivative-and-a-translated-jump">A complex derivative and a translated jump</h3>
 <p>Let</p>
-<span class="math math-display" id="eq-E2.1" data-index="20" data-tex="\[
+<span class="math math-display" data-index="20" data-tex="\[
               \mu=i\partial_t\delta_{1/3},\qquad
               F(z)=-z e^{-iz/3}.
  \tag{E2.1}
-\]">\[
+\]" id="eq-E2.1">\[
               \mu=i\partial_t\delta_{1/3},\qquad
               F(z)=-z e^{-iz/3}.
  \tag{E2.1}
 \]</span>
 <p>For real <span class="math" data-index="21" data-tex="\(c\)">\(c\)</span>, <span class="math" data-index="22" data-tex="\(|F(c)|=|c|\)">\(|F(c)|=|c|\)</span>. Thus (E1.2) holds with <span class="math" data-index="23" data-tex="\(A=0\)">\(A=0\)</span> for every width, using the center point alone on every large window.</p>
 <p>Let <span class="math" data-index="24" data-tex="\(H(t)=1\)">\(H(t)=1\)</span> for <span class="math" data-index="25" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> and <span class="math" data-index="26" data-tex="\(0\)">\(0\)</span> for <span class="math" data-index="27" data-tex="\(t&lt;0\)">\(t&lt;0\)</span>; its value at zero does not affect the associated regular distribution. Its distributional derivative is <span class="math" data-index="28" data-tex="\(\delta_0\)">\(\delta_0\)</span>, since</p>
-<span class="math math-display" id="eq-E2.2" data-index="29" data-tex="\[
-             H&#x27;(\varphi)=-\int_0^\infty\varphi&#x27;(t)\,dt
+<span class="math math-display" data-index="29" data-tex="\[
+             H'(\varphi)=-\int_0^\infty\varphi'(t)\,dt
                                      =\varphi(0).
  \tag{E2.2}
-\]">\[
-             H&#x27;(\varphi)=-\int_0^\infty\varphi&#x27;(t)\,dt
+\]" id="eq-E2.2">\[
+             H'(\varphi)=-\int_0^\infty\varphi'(t)\,dt
                                      =\varphi(0).
  \tag{E2.2}
 \]</span>
 <p>Then</p>
-<span class="math math-display" id="eq-E2.3" data-index="30" data-tex="\[
+<span class="math math-display" data-index="30" data-tex="\[
                          u(t)=-iH(t+1/3)
  \tag{E2.3}
-\]">\[
+\]" id="eq-E2.3">\[
                          u(t)=-iH(t+1/3)
  \tag{E2.3}
 \]</span>
 <p>is an order-zero fundamental solution:</p>
-<span class="math math-display" id="eq-E2.4" data-index="31" data-tex="\[
+<span class="math math-display" data-index="31" data-tex="\[
              (\mu*u)(t)=i\,\partial_tu(t-1/3)=\delta_0(t).
  \tag{E2.4}
-\]">\[
+\]" id="eq-E2.4">\[
              (\mu*u)(t)=i\,\partial_tu(t-1/3)=\delta_0(t).
  \tag{E2.4}
 \]</span>
 <p>The transpose is</p>
-<span class="math math-display" id="eq-E2.5" data-index="32" data-tex="\[
-                 T\varphi(t)=-i\varphi&#x27;(t+1/3).
+<span class="math math-display" data-index="32" data-tex="\[
+                 T\varphi(t)=-i\varphi'(t+1/3).
  \tag{E2.5}
-\]">\[
-                 T\varphi(t)=-i\varphi&#x27;(t+1/3).
+\]" id="eq-E2.5">\[
+                 T\varphi(t)=-i\varphi'(t+1/3).
  \tag{E2.5}
 \]</span>
 <p>Indeed reflection sends <span class="math" data-index="33" data-tex="\(\partial\delta_a\)">\(\partial\delta_a\)</span> to <span class="math" data-index="34" data-tex="\(-\partial\delta_{-a}\)">\(-\partial\delta_{-a}\)</span>, retaining its scalar <span class="math" data-index="35" data-tex="\(i\)">\(i\)</span>. Pairing (E2.3) with (E2.5) gives
-<span class="math" data-index="36" data-tex="\((-i)(-i)\int_{-1/3}^\infty\varphi&#x27;(t+1/3)\,dt=\varphi(0)\)">\((-i)(-i)\int_{-1/3}^\infty\varphi&#x27;(t+1/3)\,dt=\varphi(0)\)</span>.
+<span class="math" data-index="36" data-tex="\((-i)(-i)\int_{-1/3}^\infty\varphi'(t+1/3)\,dt=\varphi(0)\)">\((-i)(-i)\int_{-1/3}^\infty\varphi'(t+1/3)\,dt=\varphi(0)\)</span>.
 Conjugating <span class="math" data-index="37" data-tex="\(i\)">\(i\)</span> would change this sign.</p>
 <h3 id="a-geometric-train-of-point-masses">A geometric train of point masses</h3>
 <p>Let</p>
-<span class="math math-display" id="eq-E2.6" data-index="38" data-tex="\[
+<span class="math math-display" data-index="38" data-tex="\[
               \mu=\delta_0+\frac14\delta_2,\qquad
               F(z)=1+\frac14e^{-2iz}.
  \tag{E2.6}
-\]">\[
+\]" id="eq-E2.6">\[
               \mu=\delta_0+\frac14\delta_2,\qquad
               F(z)=1+\frac14e^{-2iz}.
  \tag{E2.6}
 \]</span>
 <p>For real <span class="math" data-index="39" data-tex="\(c\)">\(c\)</span>, the reverse triangle inequality gives <span class="math" data-index="40" data-tex="\(|F(c)|\ge3/4\)">\(|F(c)|\ge3/4\)</span>, so <span class="math" data-index="41" data-tex="\(A=0\)">\(A=0\)</span> works.</p>
 <p>The locally finite series</p>
-<span class="math math-display" id="eq-E2.7" data-index="42" data-tex="\[
+<span class="math math-display" data-index="42" data-tex="\[
                           U=\sum_{j=0}^\infty
                                       \left(-\frac14\right)^j\delta_{2j}
  \tag{E2.7}
-\]">\[
+\]" id="eq-E2.7">\[
                           U=\sum_{j=0}^\infty
                                       \left(-\frac14\right)^j\delta_{2j}
  \tag{E2.7}
@@ -117,22 +117,22 @@ Conjugating <span class="math" data-index="37" data-tex="\(i\)">\(i\)</span> wou
 <span class="math" data-index="43" data-tex="\(\sum_j4^{-j}=4/3\)">\(\sum_j4^{-j}=4/3\)</span>, so
 <span class="math" data-index="44" data-tex="\(|U(\varphi)|\le(4/3)p_0(\varphi)\)">\(|U(\varphi)|\le(4/3)p_0(\varphi)\)</span> globally.
 Convolution by the two-point kernel is defined on every distribution. For the partial sums <span class="math" data-index="45" data-tex="\(U_N\)">\(U_N\)</span>,</p>
-<span class="math math-display" id="eq-E2.8" data-index="46" data-tex="\[
+<span class="math math-display" data-index="46" data-tex="\[
              \mu*U_N=\delta_0+
                      \frac14\left(-\frac14\right)^N\delta_{2N+2}.
  \tag{E2.8}
-\]">\[
+\]" id="eq-E2.8">\[
              \mu*U_N=\delta_0+
                      \frac14\left(-\frac14\right)^N\delta_{2N+2}.
  \tag{E2.8}
 \]</span>
 <p>The residual leaves every compact test support; hence <span class="math" data-index="47" data-tex="\(\mu*U=\delta_0\)">\(\mu*U=\delta_0\)</span>.</p>
 <p>For <span class="math" data-index="48" data-tex="\(f=\partial\delta_1+i\delta_{-2}\)">\(f=\partial\delta_1+i\delta_{-2}\)</span>, a solution is</p>
-<span class="math math-display" id="eq-E2.9" data-index="49" data-tex="\[
+<span class="math math-display" data-index="49" data-tex="\[
  u=\sum_{j=0}^\infty\left(-\frac14\right)^j
           \bigl(\partial\delta_{1+2j}+i\delta_{-2+2j}\bigr).
  \tag{E2.9}
-\]">\[
+\]" id="eq-E2.9">\[
  u=\sum_{j=0}^\infty\left(-\frac14\right)^j
           \bigl(\partial\delta_{1+2j}+i\delta_{-2+2j}\bigr).
  \tag{E2.9}
@@ -141,75 +141,75 @@ Convolution by the two-point kernel is defined on every distribution. For the pa
 <p>An infinite fundamental-solution series is not automatically a convolution formula for every possible forcing. Exercise 9 exhibits a smooth forcing for which that naive series diverges, even though the existence theorem still applies.</p>
 <h3 id="real-zeros-do-not-defeat-the-window-condition">Real zeros do not defeat the window condition</h3>
 <p>Let</p>
-<span class="math math-display" id="eq-E2.10" data-index="52" data-tex="\[
+<span class="math math-display" data-index="52" data-tex="\[
                     \mu=\delta_1-\delta_{-1},\qquad
                     F(z)=-2i\sin z.
  \tag{E2.10}
-\]">\[
+\]" id="eq-E2.10">\[
                     \mu=\delta_1-\delta_{-1},\qquad
                     F(z)=-2i\sin z.
  \tag{E2.10}
 \]</span>
 <p>Every real center lies within distance at most <span class="math" data-index="53" data-tex="\(\pi/2\)">\(\pi/2\)</span> of a point where <span class="math" data-index="54" data-tex="\(|\sin|=1\)">\(|\sin|=1\)</span>. For any <span class="math" data-index="55" data-tex="\(e&gt;0\)">\(e&gt;0\)</span>, eventually <span class="math" data-index="56" data-tex="\(e\log|c|&gt;\pi/2\)">\(e\log|c|&gt;\pi/2\)</span>; the window supremum then equals two. Thus <span class="math" data-index="57" data-tex="\(A=0\)">\(A=0\)</span> works despite infinitely many real zeros.</p>
 <p>There is an exact order-zero fundamental solution</p>
-<span class="math math-display" id="eq-E2.11" data-index="58" data-tex="\[
+<span class="math math-display" data-index="58" data-tex="\[
                          U=-\sum_{j=0}^\infty\delta_{2j+1}.
  \tag{E2.11}
-\]">\[
+\]" id="eq-E2.11">\[
                          U=-\sum_{j=0}^\infty\delta_{2j+1}.
  \tag{E2.11}
 \]</span>
 <p>It is locally finite. For a test on a compact interval, its value is bounded by the number of odd positive integers in that interval times <span class="math" data-index="59" data-tex="\(p_0\)">\(p_0\)</span>. The kernel applied to the partial sum through <span class="math" data-index="60" data-tex="\(j=N\)">\(j=N\)</span> gives</p>
-<span class="math math-display" id="eq-E2.12" data-index="61" data-tex="\[
+<span class="math math-display" data-index="61" data-tex="\[
                       \mu*U_N=\delta_0-\delta_{2N+2}.
  \tag{E2.12}
-\]">\[
+\]" id="eq-E2.12">\[
                       \mu*U_N=\delta_0-\delta_{2N+2}.
  \tag{E2.12}
 \]</span>
 <p>The escaping residual again vanishes on each compact test eventually.</p>
 <p>For the logarithmic profiles, take any escaping real centers <span class="math" data-index="62" data-tex="\(c_j\)">\(c_j\)</span>, and put <span class="math" data-index="63" data-tex="\(\ell_j=\log|c_j|\)">\(\ell_j=\log|c_j|\)</span>. For <span class="math" data-index="64" data-tex="\(z=x+iy\)">\(z=x+iy\)</span> with <span class="math" data-index="65" data-tex="\(y\ne0\)">\(y\ne0\)</span>, the exact identity</p>
-<span class="math math-display" id="eq-E2.13" data-index="66" data-tex="\[
+<span class="math math-display" data-index="66" data-tex="\[
  |\sin(c_j+\ell_j z)|^2
      =\sin^2(c_j+\ell_j x)+\sinh^2(\ell_j y)
  \tag{E2.13}
-\]">\[
+\]" id="eq-E2.13">\[
  |\sin(c_j+\ell_j z)|^2
      =\sin^2(c_j+\ell_j x)+\sinh^2(\ell_j y)
  \tag{E2.13}
 \]</span>
 <p>shows</p>
-<span class="math math-display" id="eq-E2.14" data-index="67" data-tex="\[
+<span class="math math-display" data-index="67" data-tex="\[
           \frac{\log|F(c_j+\ell_j z)|}{\ell_j}
                           \longrightarrow |y|
  \tag{E2.14}
-\]">\[
+\]" id="eq-E2.14">\[
           \frac{\log|F(c_j+\ell_j z)|}{\ell_j}
                           \longrightarrow |y|
  \tag{E2.14}
 \]</span>
 <p>uniformly on compact sets bounded away from the real axis. PSH compactness makes this the full local <span class="math" data-index="68" data-tex="\(L^1\)">\(L^1\)</span> limit. Collapse is impossible because of a positive imaginary point in (E2.14); any proper extracted limit agrees with <span class="math" data-index="69" data-tex="\(|y|\)">\(|y|\)</span> off the real axis, hence almost everywhere, hence as the canonical representative. The uniqueness of all extracted limits proves convergence of the entire sequence.</p>
 <p>If <span class="math" data-index="70" data-tex="\(c_j\)">\(c_j\)</span> is always an integer multiple of <span class="math" data-index="71" data-tex="\(\pi\)">\(\pi\)</span>, the value of every normalized logarithm at <span class="math" data-index="72" data-tex="\(z=0\)">\(z=0\)</span> is <span class="math" data-index="73" data-tex="\(-\infty\)">\(-\infty\)</span>, while its canonical limit at zero is <span class="math" data-index="74" data-tex="\(0\)">\(0\)</span>. Local <span class="math" data-index="75" data-tex="\(L^1\)">\(L^1\)</span> convergence allows these narrow negative spikes.</p>
-<figure><img class="course-figure" width="1944" height="1152" src="reproduce/L175/figures/real-zeros-and-logarithmic-profiles.png" alt="The exact imaginary-axis logarithms at real zeros converge away from zero to the absolute-value profile; the value at zero remains minus infinity before passage to the canonical limit." /><figcaption class="native"><a href="reproduce/L175/figures/real-zeros-and-logarithmic-profiles.png">Open full-size PNG</a> · <a href="reproduce/L175/figures/real-zeros-and-logarithmic-profiles.svg">Open SVG</a></figcaption></figure>
+<figure><img alt="The exact imaginary-axis logarithms at real zeros converge away from zero to the absolute-value profile; the value at zero remains minus infinity before passage to the canonical limit." class="course-figure" height="1152" src="reproduce/L175/figures/real-zeros-and-logarithmic-profiles.png" width="1944"/><figcaption class="native"><a href="reproduce/L175/figures/real-zeros-and-logarithmic-profiles.png">Open full-size PNG</a> · <a href="reproduce/L175/figures/real-zeros-and-logarithmic-profiles.svg">Open SVG</a></figcaption></figure>
 <p><em>Figure 1.</em> At the exact centers <span class="math" data-index="76" data-tex="\(c=\pi10^2,\pi10^4,\pi10^6\)">\(c=\pi10^2,\pi10^4,\pi10^6\)</span>, the curves for <span class="math" data-index="77" data-tex="\(y&gt;0\)">\(y&gt;0\)</span> are <span class="math" data-index="78" data-tex="\(\log(2\sinh(y\log c))/\log c\)">\(\log(2\sinh(y\log c))/\log c\)</span>; reflection gives the negative half-axis. The black graph is the proved limit <span class="math" data-index="79" data-tex="\(|y|\)">\(|y|\)</span>. The omitted point at <span class="math" data-index="80" data-tex="\(y=0\)">\(y=0\)</span> has value <span class="math" data-index="81" data-tex="\(-\infty\)">\(-\infty\)</span> for each finite center. Proof locators: (E2.13)–(E2.14), formal Theorem 2.3. Background: Hörmander's logarithmic-profile criterion.</p>
 <h3 id="large-masses-and-growing-jet-orders">Large masses and growing jet orders</h3>
 <p>The series</p>
-<span class="math math-display" id="eq-E2.15" data-index="82" data-tex="\[
+<span class="math math-display" data-index="82" data-tex="\[
                    f=\sum_{j=1}^\infty j!\delta_j,\qquad
                    u(t)=\sum_{j=1}^\infty j!H(t-j)
  \tag{E2.15}
-\]">\[
+\]" id="eq-E2.15">\[
                    f=\sum_{j=1}^\infty j!\delta_j,\qquad
                    u(t)=\sum_{j=1}^\infty j!H(t-j)
  \tag{E2.15}
 \]</span>
 <p>are locally finite. The forcing has order zero. The solution is locally bounded, hence locally integrable and of order zero, and <span class="math" data-index="83" data-tex="\(\partial_tu=f\)">\(\partial_tu=f\)</span>. The constants in the compact estimates grow very rapidly; the derivative order stays zero.</p>
 <p>By contrast,</p>
-<span class="math math-display" id="eq-E2.16" data-index="84" data-tex="\[
+<span class="math math-display" data-index="84" data-tex="\[
                    g=\sum_{j=1}^\infty\partial_t^j\delta_j,\qquad
                    v=\sum_{j=1}^\infty\partial_t^{j-1}\delta_j
  \tag{E2.16}
-\]">\[
+\]" id="eq-E2.16">\[
                    g=\sum_{j=1}^\infty\partial_t^j\delta_j,\qquad
                    v=\sum_{j=1}^\infty\partial_t^{j-1}\delta_j
  \tag{E2.16}
@@ -217,36 +217,36 @@ Convolution by the two-point kernel is defined on every distribution. For the pa
 <p>are distributions with <span class="math" data-index="85" data-tex="\(\partial_tv=g\)">\(\partial_tv=g\)</span>, but neither has one finite order throughout <span class="math" data-index="86" data-tex="\(\mathbb R\)">\(\mathbb R\)</span>. Each compact meets finitely many atoms, so the distributions are well-defined. A compact neighborhood isolating the <span class="math" data-index="87" data-tex="\(j\)">\(j\)</span>-th atom has exact order <span class="math" data-index="88" data-tex="\(j\)">\(j\)</span> for <span class="math" data-index="89" data-tex="\(g\)">\(g\)</span> and <span class="math" data-index="90" data-tex="\(j-1\)">\(j-1\)</span> for <span class="math" data-index="91" data-tex="\(v\)">\(v\)</span>. The scaled-jet proof in Exercise 4 verifies the exact orders. Thus coefficient growth and derivative-order growth are different phenomena.</p>
 <h2 id="3-why-the-weights-change">3. Why the weights change</h2>
 <p>For a chosen derivative index <span class="math" data-index="92" data-tex="\(R_0\)">\(R_0\)</span>, the formal proof uses</p>
-<span class="math math-display" id="eq-E3.1" data-index="93" data-tex="\[
+<span class="math math-display" data-index="93" data-tex="\[
                       q_a(\psi)=
              \sum_{b=0}^{R_0}\sup_t a(t)|\psi^{(b)}(t)|.
  \tag{E3.1}
-\]">\[
+\]" id="eq-E3.1">\[
                       q_a(\psi)=
              \sum_{b=0}^{R_0}\sup_t a(t)|\psi^{(b)}(t)|.
  \tag{E3.1}
 \]</span>
 <p>The positive locally Lipschitz weight <span class="math" data-index="94" data-tex="\(a\)">\(a\)</span> may grow arbitrarily; the derivative index stays fixed. During an exhaustion, new weight is added outside larger and larger output compact sets, while earlier weight is multiplied by a factor slightly larger than one.</p>
 <p>For a concrete display of this mechanism, use</p>
-<span class="math math-display" id="eq-E3.2" data-index="95" data-tex="\[
+<span class="math math-display" data-index="95" data-tex="\[
  a_1(t)=1,\quad e_j=2^{-j},\quad N_j=2^j,\qquad
  a_{j+1}(t)=(1+e_j)a_j(t)+N_jb_j(t),
  \tag{E3.2}
-\]">\[
+\]" id="eq-E3.2">\[
  a_1(t)=1,\quad e_j=2^{-j},\quad N_j=2^j,\qquad
  a_{j+1}(t)=(1+e_j)a_j(t)+N_jb_j(t),
  \tag{E3.2}
 \]</span>
 <p>where <span class="math" data-index="96" data-tex="\(b_1=1\)">\(b_1=1\)</span> and, for <span class="math" data-index="97" data-tex="\(j\ge2\)">\(j\ge2\)</span>,</p>
-<span class="math math-display" id="eq-E3.3" data-index="98" data-tex="\[
+<span class="math math-display" data-index="98" data-tex="\[
                          b_j(t)=\min\{1,(|t|-j+1)_+\}.
  \tag{E3.3}
-\]">\[
+\]" id="eq-E3.3">\[
                          b_j(t)=\min\{1,(|t|-j+1)_+\}.
  \tag{E3.3}
 \]</span>
 <p>Here <span class="math" data-index="99" data-tex="\(s_+=\max\{s,0\}\)">\(s_+=\max\{s,0\}\)</span>. These are explicit weights illustrating local stabilization; their chosen <span class="math" data-index="100" data-tex="\(N_j\)">\(N_j\)</span> do not assert an estimate for a particular arbitrary forcing. In the theorem, the contradiction argument chooses the needed <span class="math" data-index="101" data-tex="\(N_j\)">\(N_j\)</span>.</p>
-<figure><img class="course-figure" width="2160" height="990" src="reproduce/L175/figures/growing-weights-and-a-fixed-derivative-order.png" alt="Finite stages of the explicit Lipschitz weights increase outside successive compact intervals while the derivative index remains the same at every stage." /><figcaption class="native"><a href="reproduce/L175/figures/growing-weights-and-a-fixed-derivative-order.png">Open full-size PNG</a> · <a href="reproduce/L175/figures/growing-weights-and-a-fixed-derivative-order.svg">Open SVG</a></figcaption></figure>
+<figure><img alt="Finite stages of the explicit Lipschitz weights increase outside successive compact intervals while the derivative index remains the same at every stage." class="course-figure" height="990" src="reproduce/L175/figures/growing-weights-and-a-fixed-derivative-order.png" width="2160"/><figcaption class="native"><a href="reproduce/L175/figures/growing-weights-and-a-fixed-derivative-order.png">Open full-size PNG</a> · <a href="reproduce/L175/figures/growing-weights-and-a-fixed-derivative-order.svg">Open SVG</a></figcaption></figure>
 <p><em>Figure 2.</em> The left panel draws the exact finite recurrence (E3.2)–(E3.3). At any fixed <span class="math" data-index="102" data-tex="\(t\)">\(t\)</span>, only finitely many additive terms are nonzero. The right panel shows the common derivative index <span class="math" data-index="103" data-tex="\(R_0=5\)">\(R_0=5\)</span>, obtained for <span class="math" data-index="104" data-tex="\(n=1,M=0,A=0,k=2,r=2\)">\(n=1,M=0,A=0,k=2,r=2\)</span>; these satisfy <span class="math" data-index="105" data-tex="\(r&gt;n+2M+A\)">\(r&gt;n+2M+A\)</span>. The weights are a model of the mechanism, rather than asserted solving weights for an unspecified forcing. Proof locator: formal Theorem 4.1, especially (4.7)–(4.14). Background: Hahn–Banach and the fixed-support Fourier estimate.</p>
 <h2 id="4-exercises-and-full-solutions">4. Exercises and full solutions</h2>
 <p>Each exercise is worth 10 points.</p>
@@ -258,15 +258,15 @@ Convolution by the two-point kernel is defined on every distribution. For the pa
 <p><strong>Solution.</strong> The unshifted sum contributes coefficient <span class="math" data-index="122" data-tex="\((-1/4)^j\)">\((-1/4)^j\)</span> at <span class="math" data-index="123" data-tex="\(2j\)">\(2j\)</span>. The shifted sum contributes <span class="math" data-index="124" data-tex="\(\tfrac14(-1/4)^{j-1}\)">\(\tfrac14(-1/4)^{j-1}\)</span> there for <span class="math" data-index="125" data-tex="\(1\le j\le N\)">\(1\le j\le N\)</span>. Their sum is zero because <span class="math" data-index="126" data-tex="\((-1/4)^j+\tfrac14(-1/4)^{j-1}=0\)">\((-1/4)^j+\tfrac14(-1/4)^{j-1}=0\)</span>. At zero only the first sum contributes one. At <span class="math" data-index="127" data-tex="\(2N+2\)">\(2N+2\)</span> only the shifted final term remains, with coefficient <span class="math" data-index="128" data-tex="\(\tfrac14(-1/4)^N\)">\(\tfrac14(-1/4)^N\)</span>. This is (E2.8). A test has a bounded support; for all sufficiently large <span class="math" data-index="129" data-tex="\(N\)">\(N\)</span>, <span class="math" data-index="130" data-tex="\(2N+2\)">\(2N+2\)</span> lies outside it, so the residual's pairing is exactly zero. The limiting identity follows regardless of how its coefficient would be bounded. <strong>Points:</strong> interior cancellation 4; endpoints 3; compact-test convergence 3.</p>
 <h3 id="3-reflection-with-a-complex-coefficient">3. Reflection with a complex coefficient</h3>
 <p>Verify (E2.5) directly from the pairing, and evaluate <span class="math" data-index="131" data-tex="\(u(T\varphi)\)">\(u(T\varphi)\)</span> for (E2.3).</p>
-<p><strong>Solution.</strong> If <span class="math" data-index="132" data-tex="\(\nu=\partial\delta_a\)">\(\nu=\partial\delta_a\)</span>, then <span class="math" data-index="133" data-tex="\(\nu(\theta)=-\theta&#x27;(a)\)">\(\nu(\theta)=-\theta&#x27;(a)\)</span>. Its reflection acts by <span class="math" data-index="134" data-tex="\(\nu(\theta(-\,\cdot))=\theta&#x27;(-a)\)">\(\nu(\theta(-\,\cdot))=\theta&#x27;(-a)\)</span>, so <span class="math" data-index="135" data-tex="\(\check\nu=-\partial\delta_{-a}\)">\(\check\nu=-\partial\delta_{-a}\)</span>. Reflection is complex linear and therefore sends <span class="math" data-index="136" data-tex="\(i\nu\)">\(i\nu\)</span> to <span class="math" data-index="137" data-tex="\(-i\partial\delta_{-a}\)">\(-i\partial\delta_{-a}\)</span>. Convolution with a test gives <span class="math" data-index="138" data-tex="\(-i\varphi&#x27;(t+a)\)">\(-i\varphi&#x27;(t+a)\)</span>, with <span class="math" data-index="139" data-tex="\(a=1/3\)">\(a=1/3\)</span>. The regular distribution <span class="math" data-index="140" data-tex="\(u=-iH(t+a)\)">\(u=-iH(t+a)\)</span> then gives</p>
-<span class="math math-display" id="eq-E4.1" data-index="141" data-tex="\[
+<p><strong>Solution.</strong> If <span class="math" data-index="132" data-tex="\(\nu=\partial\delta_a\)">\(\nu=\partial\delta_a\)</span>, then <span class="math" data-index="133" data-tex="\(\nu(\theta)=-\theta'(a)\)">\(\nu(\theta)=-\theta'(a)\)</span>. Its reflection acts by <span class="math" data-index="134" data-tex="\(\nu(\theta(-\,\cdot))=\theta'(-a)\)">\(\nu(\theta(-\,\cdot))=\theta'(-a)\)</span>, so <span class="math" data-index="135" data-tex="\(\check\nu=-\partial\delta_{-a}\)">\(\check\nu=-\partial\delta_{-a}\)</span>. Reflection is complex linear and therefore sends <span class="math" data-index="136" data-tex="\(i\nu\)">\(i\nu\)</span> to <span class="math" data-index="137" data-tex="\(-i\partial\delta_{-a}\)">\(-i\partial\delta_{-a}\)</span>. Convolution with a test gives <span class="math" data-index="138" data-tex="\(-i\varphi'(t+a)\)">\(-i\varphi'(t+a)\)</span>, with <span class="math" data-index="139" data-tex="\(a=1/3\)">\(a=1/3\)</span>. The regular distribution <span class="math" data-index="140" data-tex="\(u=-iH(t+a)\)">\(u=-iH(t+a)\)</span> then gives</p>
+<span class="math math-display" data-index="141" data-tex="\[
  u(T\varphi)=(-i)(-i)\int_{-a}^\infty
-                        \varphi&#x27;(t+a)\,dt
+                        \varphi'(t+a)\,dt
                     =-\bigl(-\varphi(0)\bigr)=\varphi(0).
  \tag{E4.1}
-\]">\[
+\]" id="eq-E4.1">\[
  u(T\varphi)=(-i)(-i)\int_{-a}^\infty
-                        \varphi&#x27;(t+a)\,dt
+                        \varphi'(t+a)\,dt
                     =-\bigl(-\varphi(0)\bigr)=\varphi(0).
  \tag{E4.1}
 \]</span>
@@ -279,12 +279,12 @@ For <span class="math" data-index="153" data-tex="\(b&lt;j\)">\(b&lt;j\)</span>,
 <h3 id="5-the-absolute-mean-of-a-profile">5. The absolute mean of a profile</h3>
 <p>Compute the normalized integral of <span class="math" data-index="166" data-tex="\(|\operatorname{Im}z|\)">\(|\operatorname{Im}z|\)</span> over the complex disk <span class="math" data-index="167" data-tex="\(B_\delta\)">\(B_\delta\)</span>. Compare it with the bound (2.1) in the formal chapter for the kernel (E2.10).</p>
 <p><strong>Solution.</strong> In coordinates <span class="math" data-index="168" data-tex="\(z=x+iy\)">\(z=x+iy\)</span>, the horizontal length at height <span class="math" data-index="169" data-tex="\(y\)">\(y\)</span> is <span class="math" data-index="170" data-tex="\(2\sqrt{\delta^2-y^2}\)">\(2\sqrt{\delta^2-y^2}\)</span>. Symmetry gives</p>
-<span class="math math-display" id="eq-E4.2" data-index="171" data-tex="\[
+<span class="math math-display" data-index="171" data-tex="\[
  \int_{B_\delta}|y|\,dx\,dy
        =4\int_0^\delta y\sqrt{\delta^2-y^2}\,dy
        =\frac{4\delta^3}{3}.
  \tag{E4.2}
-\]">\[
+\]" id="eq-E4.2">\[
  \int_{B_\delta}|y|\,dx\,dy
        =4\int_0^\delta y\sqrt{\delta^2-y^2}\,dy
        =\frac{4\delta^3}{3}.
@@ -305,29 +305,29 @@ For nonzero <span class="math" data-index="184" data-tex="\(v\)">\(v\)</span>, c
 <p><strong>Solution.</strong> Since <span class="math" data-index="195" data-tex="\(a_1=1\)">\(a_1=1\)</span> and <span class="math" data-index="196" data-tex="\(b_1=1\)">\(b_1=1\)</span>,
 <span class="math" data-index="197" data-tex="\(a_2=(1+1/2)+2=7/2\)">\(a_2=(1+1/2)+2=7/2\)</span>.
 At <span class="math" data-index="198" data-tex="\(t=5/2\)">\(t=5/2\)</span>, <span class="math" data-index="199" data-tex="\(b_2=\min(1,3/2)=1\)">\(b_2=\min(1,3/2)=1\)</span>, hence</p>
-<span class="math math-display" id="eq-E4.3" data-index="200" data-tex="\[
+<span class="math math-display" data-index="200" data-tex="\[
  a_3(5/2)=\frac54\frac72+4=\frac{67}{8}.
  \tag{E4.3}
-\]">\[
+\]" id="eq-E4.3">\[
  a_3(5/2)=\frac54\frac72+4=\frac{67}{8}.
  \tag{E4.3}
 \]</span>
 <p>Also <span class="math" data-index="201" data-tex="\(b_3=\min(1,1/2)=1/2\)">\(b_3=\min(1,1/2)=1/2\)</span>, so</p>
-<span class="math math-display" id="eq-E4.4" data-index="202" data-tex="\[
+<span class="math math-display" data-index="202" data-tex="\[
  a_4(5/2)=\frac98\frac{67}{8}+8\frac12
                                       =\frac{859}{64}.
  \tag{E4.4}
-\]">\[
+\]" id="eq-E4.4">\[
  a_4(5/2)=\frac98\frac{67}{8}+8\frac12
                                       =\frac{859}{64}.
  \tag{E4.4}
 \]</span>
 <p>For every <span class="math" data-index="203" data-tex="\(j\ge4\)">\(j\ge4\)</span>, <span class="math" data-index="204" data-tex="\(5/2\)">\(5/2\)</span> lies inside <span class="math" data-index="205" data-tex="\([-j+1,j-1]\)">\([-j+1,j-1]\)</span>, so <span class="math" data-index="206" data-tex="\(b_j(5/2)=0\)">\(b_j(5/2)=0\)</span>. The final value is therefore</p>
-<span class="math math-display" id="eq-E4.5" data-index="207" data-tex="\[
+<span class="math math-display" data-index="207" data-tex="\[
                  \frac{859}{64}\prod_{j=4}^\infty(1+2^{-j})
                    \le\frac{859}{64}e^{1/8}&lt;\infty,
  \tag{E4.5}
-\]">\[
+\]" id="eq-E4.5">\[
                  \frac{859}{64}\prod_{j=4}^\infty(1+2^{-j})
                    \le\frac{859}{64}e^{1/8}&lt;\infty,
  \tag{E4.5}
@@ -338,12 +338,12 @@ At <span class="math" data-index="198" data-tex="\(t=5/2\)">\(t=5/2\)</span>, <s
 <p><strong>Solution.</strong> If <span class="math" data-index="214" data-tex="\(|x-y|\le d\)">\(|x-y|\le d\)</span> in the neighborhood, then
 <span class="math" data-index="215" data-tex="\(a(x)\le a(y)+Ld\le(1+Ld/a_0)a(y)\)">\(a(x)\le a(y)+Ld\le(1+Ld/a_0)a(y)\)</span>.
 For every derivative index <span class="math" data-index="216" data-tex="\(b\)">\(b\)</span>, write</p>
-<span class="math math-display" id="eq-E4.6" data-index="217" data-tex="\[
+<span class="math math-display" data-index="217" data-tex="\[
  a(x)|(\psi*\rho_d)^{(b)}(x)|
  \le\int a(x)|\psi^{(b)}(x-y)|\rho_d(y)\,dy
  \le(1+Ld/a_0)\sup_t a(t)|\psi^{(b)}(t)|.
  \tag{E4.6}
-\]">\[
+\]" id="eq-E4.6">\[
  a(x)|(\psi*\rho_d)^{(b)}(x)|
  \le\int a(x)|\psi^{(b)}(x-y)|\rho_d(y)\,dy
  \le(1+Ld/a_0)\sup_t a(t)|\psi^{(b)}(t)|.
@@ -355,10 +355,10 @@ All nonzero integrands lie in the prescribed compact neighborhood after expandin
 <h3 id="9-existence-beyond-a-naive-inverse-series">9. Existence beyond a naive inverse series</h3>
 <p>For the kernel (E2.6) and <span class="math" data-index="223" data-tex="\(f(t)=e^{t^2}\)">\(f(t)=e^{t^2}\)</span>, show that <span class="math" data-index="224" data-tex="\(\sum_{j\ge0}(-1/4)^jf(t-2j)\)">\(\sum_{j\ge0}(-1/4)^jf(t-2j)\)</span> does not converge at any fixed <span class="math" data-index="225" data-tex="\(t\)">\(t\)</span>. Explain why an order-zero smooth forcing still satisfies the existence theorem on the whole line.</p>
 <p><strong>Solution.</strong> The absolute value of its <span class="math" data-index="226" data-tex="\(j\)">\(j\)</span>-th term is</p>
-<span class="math math-display" id="eq-E4.7" data-index="227" data-tex="\[
+<span class="math math-display" data-index="227" data-tex="\[
               \exp\bigl((t-2j)^2-j\log4\bigr).
  \tag{E4.7}
-\]">\[
+\]" id="eq-E4.7">\[
               \exp\bigl((t-2j)^2-j\log4\bigr).
  \tag{E4.7}
 \]</span>
@@ -369,10 +369,10 @@ All nonzero integrands lie in the prescribed compact neighborhood after expandin
 <p>The concentrated-test estimate is
 <span class="math" data-index="239" data-tex="\(S(c)\ge d_e|c|^{-m}(\log|c|)^{-m-n/2}\)">\(S(c)\ge d_e|c|^{-m}(\log|c|)^{-m-n/2}\)</span>.
 For <span class="math" data-index="240" data-tex="\(A&gt;m\)">\(A&gt;m\)</span>, put <span class="math" data-index="241" data-tex="\(q=\log|c|\)">\(q=\log|c|\)</span>. Multiplication by <span class="math" data-index="242" data-tex="\(|c|^A\)">\(|c|^A\)</span> gives</p>
-<span class="math math-display" id="eq-E4.8" data-index="243" data-tex="\[
+<span class="math math-display" data-index="243" data-tex="\[
                 d_e\,e^{(A-m)q}q^{-m-n/2}\longrightarrow\infty.
  \tag{E4.8}
-\]">\[
+\]" id="eq-E4.8">\[
                 d_e\,e^{(A-m)q}q^{-m-n/2}\longrightarrow\infty.
  \tag{E4.8}
 \]</span>
@@ -391,34 +391,34 @@ For <span class="math" data-index="240" data-tex="\(A&gt;m\)">\(A&gt;m\)</span>,
 <p>Theorem 3.1 of <span class="unlinked">Convex supports and convolution cancellation</span> proves the ordinary compact convolution-support hull identity. Proposition 1.1 and the compact-subsequence argument in <a href="AN02-L042.html">Continuous functionals, test families and compact limits</a> provide complex seminorm Hahn–Banach and the compactness tools used in our weighted construction. Fourier inversion, including its normalization, is Theorem 1.1 of <a href="prerequisites/prerequisite-bridges.html#fourier-inversion-on-the-schwartz-space">Fourier transforms, finite spectra and convex separation</a>.</p>
 <h2 id="1-a-fixed-exponent-in-every-logarithmic-window">1. A fixed exponent in every logarithmic window</h2>
 <p>Work in <span class="math" data-index="247" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, <span class="math" data-index="248" data-tex="\(n\ge1\)">\(n\ge1\)</span>. Distributional pairings are complex linear and bilinear in the distribution and its test. Let <span class="math" data-index="249" data-tex="\(\mu\)">\(\mu\)</span> be compactly supported, put</p>
-<span class="math math-display" id="eq-1.1" data-index="250" data-tex="\[
+<span class="math math-display" data-index="250" data-tex="\[
  F(z)=\mu(e^{-ix\cdot z}),\qquad
  T\varphi=\check\mu*\varphi,\qquad
  \check\mu(\theta)=\mu(\theta(-\,\cdot)).
  \tag{1.1}
-\]">\[
+\]" id="eq-1.1">\[
  F(z)=\mu(e^{-ix\cdot z}),\qquad
  T\varphi=\check\mu*\varphi,\qquad
  \check\mu(\theta)=\mu(\theta(-\,\cdot)).
  \tag{1.1}
 \]</span>
 <p>Reflection here does not conjugate coefficients. The transpose identity is</p>
-<span class="math math-display" id="eq-1.2" data-index="251" data-tex="\[
+<span class="math math-display" data-index="251" data-tex="\[
  (\mu*u)(\varphi)=u(T\varphi).
  \tag{1.2}
-\]">\[
+\]" id="eq-1.2">\[
  (\mu*u)(\varphi)=u(T\varphi).
  \tag{1.2}
 \]</span>
 <p>For a nonnegative integer <span class="math" data-index="252" data-tex="\(k\)">\(k\)</span>, <span class="math" data-index="253" data-tex="\(\mathcal D^{\prime k}(X)\)">\(\mathcal D^{\prime k}(X)\)</span> means that the distribution has order at most <span class="math" data-index="254" data-tex="\(k\)">\(k\)</span> on every compact subset of <span class="math" data-index="255" data-tex="\(X\)">\(X\)</span>, with constants allowed to depend on that compact. Write</p>
-<span class="math math-display" id="eq-1.3" data-index="256" data-tex="\[
- \mathcal D&#x27;_F(X)=\bigcup_{k\ge0}\mathcal D^{\prime k}(X),
+<span class="math math-display" data-index="256" data-tex="\[
+ \mathcal D'_F(X)=\bigcup_{k\ge0}\mathcal D^{\prime k}(X),
  \qquad
  p_k(\varphi)=\max_{|\alpha|\le k}\sup_{\mathbb R^n}
                        |\partial^\alpha\varphi|.
  \tag{1.3}
-\]">\[
- \mathcal D&#x27;_F(X)=\bigcup_{k\ge0}\mathcal D^{\prime k}(X),
+\]" id="eq-1.3">\[
+ \mathcal D'_F(X)=\bigcup_{k\ge0}\mathcal D^{\prime k}(X),
  \qquad
  p_k(\varphi)=\max_{|\alpha|\le k}\sup_{\mathbb R^n}
                        |\partial^\alpha\varphi|.
@@ -426,12 +426,12 @@ For <span class="math" data-index="240" data-tex="\(A&gt;m\)">\(A&gt;m\)</span>,
 \]</span>
 <p>The index in this union must work on every compact subset; it does not depend on the compact.</p>
 <p><strong>Definition 1.1 (very slow decrease).</strong> The transform <span class="math" data-index="257" data-tex="\(F\)">\(F\)</span> is very slowly decreasing if there is <span class="math" data-index="258" data-tex="\(A\ge0\)">\(A\ge0\)</span> such that, for every <span class="math" data-index="259" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>,</p>
-<span class="math math-display" id="eq-1.4" data-index="260" data-tex="\[
+<span class="math math-display" data-index="260" data-tex="\[
  \liminf_{|c|\to\infty}|c|^A
    \sup_{\substack{h\in\mathbb R^n\\|h|&lt;\varepsilon\log|c|}}
                          |F(c+h)|&gt;0.
  \tag{1.4}
-\]">\[
+\]" id="eq-1.4">\[
  \liminf_{|c|\to\infty}|c|^A
    \sup_{\substack{h\in\mathbb R^n\\|h|&lt;\varepsilon\log|c|}}
                          |F(c+h)|&gt;0.
@@ -440,20 +440,20 @@ For <span class="math" data-index="240" data-tex="\(A&gt;m\)">\(A&gt;m\)</span>,
 <p>Thresholds and positive lower constants may depend on <span class="math" data-index="261" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>. The exponent <span class="math" data-index="262" data-tex="\(A\)">\(A\)</span> is fixed first. Ordinary slow decrease in the linked entire-division theorem allows the exponent to depend on the width.</p>
 <p>Assume <span class="math" data-index="263" data-tex="\(\mu\)">\(\mu\)</span> has order at most <span class="math" data-index="264" data-tex="\(M\)">\(M\)</span> and
 <span class="math" data-index="265" data-tex="\(\operatorname{supp}\mu\subset\overline B_C(0)\)">\(\operatorname{supp}\mu\subset\overline B_C(0)\)</span>. For every <span class="math" data-index="266" data-tex="\(b&gt;C\)">\(b&gt;C\)</span>, the finite-order bound applied with a cutoff supported in <span class="math" data-index="267" data-tex="\(B_b(0)\)">\(B_b(0)\)</span>, equal to one near the support, gives</p>
-<span class="math math-display" id="eq-1.5" data-index="268" data-tex="\[
+<span class="math math-display" data-index="268" data-tex="\[
  |F(z)|\le D_b(1+|z|)^M e^{b|\operatorname{Im}z|}.
  \tag{1.5}
-\]">\[
+\]" id="eq-1.5">\[
  |F(z)|\le D_b(1+|z|)^M e^{b|\operatorname{Im}z|}.
  \tag{1.5}
 \]</span>
 <p>Indeed each derivative of the cutoff times the exponential is a finite sum of a cutoff derivative times a monomial in <span class="math" data-index="269" data-tex="\(z\)">\(z\)</span> times the exponential. The order bound has degree at most <span class="math" data-index="270" data-tex="\(M\)">\(M\)</span>, and the exponential on that cutoff support has the displayed bound. The constant may depend on <span class="math" data-index="271" data-tex="\(b\)">\(b\)</span>. Letting <span class="math" data-index="272" data-tex="\(b\downarrow C\)">\(b\downarrow C\)</span> in asymptotic estimates below retains the exact radius <span class="math" data-index="273" data-tex="\(C\)">\(C\)</span>.</p>
 <p>For real <span class="math" data-index="274" data-tex="\(|c|&gt;2\)">\(|c|&gt;2\)</span>, define</p>
-<span class="math math-display" id="eq-1.6" data-index="275" data-tex="\[
+<span class="math math-display" data-index="275" data-tex="\[
  \ell_c=\log|c|,\qquad
  L_c(z)=\frac{\log|F(c+\ell_c z)|}{\ell_c}.
  \tag{1.6}
-\]">\[
+\]" id="eq-1.6">\[
  \ell_c=\log|c|,\qquad
  L_c(z)=\frac{\log|F(c+\ell_c z)|}{\ell_c}.
  \tag{1.6}
@@ -462,13 +462,13 @@ For <span class="math" data-index="240" data-tex="\(A&gt;m\)">\(A&gt;m\)</span>,
 <h2 id="2-complex-averages-and-the-real-values-of-profiles">2. Complex averages and the real values of profiles</h2>
 <p>Let <span class="math" data-index="280" data-tex="\(B_\delta=\{z\in\mathbb C^n:|z|&lt;\delta\}\)">\(B_\delta=\{z\in\mathbb C^n:|z|&lt;\delta\}\)</span>, and let <span class="math" data-index="281" data-tex="\(|B_\delta|\)">\(|B_\delta|\)</span> denote real <span class="math" data-index="282" data-tex="\(2n\)">\(2n\)</span>-dimensional volume.</p>
 <p><strong>Lemma 2.1 (the absolute logarithmic average).</strong> If (1.4) holds with exponent <span class="math" data-index="283" data-tex="\(A\)">\(A\)</span>, then, for every <span class="math" data-index="284" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>,</p>
-<span class="math math-display" id="eq-2.1" data-index="285" data-tex="\[
+<span class="math math-display" data-index="285" data-tex="\[
  \limsup_{|c|\to\infty}
  \frac1{|B_\delta|}
      \int_{B_\delta}|L_c(z)|\,dV(z)
            \le 2M+A+2C\delta.
  \tag{2.1}
-\]">\[
+\]" id="eq-2.1">\[
  \limsup_{|c|\to\infty}
  \frac1{|B_\delta|}
      \int_{B_\delta}|L_c(z)|\,dV(z)
@@ -477,31 +477,31 @@ For <span class="math" data-index="240" data-tex="\(A&gt;m\)">\(A&gt;m\)</span>,
 \]</span>
 <p>The absolute value surrounds the logarithm, rather than its argument alone.</p>
 <p><em>Proof.</em> Fix a small <span class="math" data-index="286" data-tex="\(e&gt;0\)">\(e&gt;0\)</span> and <span class="math" data-index="287" data-tex="\(b&gt;C\)">\(b&gt;C\)</span>. For every sufficiently large real <span class="math" data-index="288" data-tex="\(c\)">\(c\)</span>, (1.4) supplies a real <span class="math" data-index="289" data-tex="\(d\)">\(d\)</span> with</p>
-<span class="math math-display" id="eq-2.2" data-index="290" data-tex="\[
+<span class="math math-display" data-index="290" data-tex="\[
  |d-c|&lt;e\ell_c,\qquad
  |F(d)|\ge a_e|c|^{-A},\qquad a_e&gt;0.
  \tag{2.2}
-\]">\[
+\]" id="eq-2.2">\[
  |d-c|&lt;e\ell_c,\qquad
  |F(d)|\ge a_e|c|^{-A},\qquad a_e&gt;0.
  \tag{2.2}
 \]</span>
 <p>If necessary, decrease a positive lower bound by a factor of two to choose a point in the open window. Put <span class="math" data-index="291" data-tex="\(R=(\delta+e)\ell_c\)">\(R=(\delta+e)\ell_c\)</span>. The physical complex ball <span class="math" data-index="292" data-tex="\(B(c,\delta\ell_c)\)">\(B(c,\delta\ell_c)\)</span> is contained in <span class="math" data-index="293" data-tex="\(B(d,R)\)">\(B(d,R)\)</span>. Throughout the latter, (1.5) bounds</p>
-<span class="math math-display" id="eq-2.3" data-index="294" data-tex="\[
+<span class="math math-display" data-index="294" data-tex="\[
  \log|F|\le U_c=(M+b(\delta+e))\ell_c+D,
  \tag{2.3}
-\]">\[
+\]" id="eq-2.3">\[
  \log|F|\le U_c=(M+b(\delta+e))\ell_c+D,
  \tag{2.3}
 \]</span>
 <p>with a fixed <span class="math" data-index="295" data-tex="\(D\)">\(D\)</span> on a large tail. Here <span class="math" data-index="296" data-tex="\(|z|\le |c|+O(\ell_c)\)">\(|z|\le |c|+O(\ell_c)\)</span>, so the polynomial logarithm differs from <span class="math" data-index="297" data-tex="\(M\ell_c\)">\(M\ell_c\)</span> by a bounded amount. Increase <span class="math" data-index="298" data-tex="\(D\)">\(D\)</span> so that <span class="math" data-index="299" data-tex="\(U_c\ge0\)">\(U_c\ge0\)</span>.</p>
 <p>The PSH ball mean inequality at <span class="math" data-index="300" data-tex="\(d\)">\(d\)</span>, followed by (2.2), gives</p>
-<span class="math math-display" id="eq-2.4" data-index="301" data-tex="\[
+<span class="math math-display" data-index="301" data-tex="\[
  \frac1{|B(d,R)|}\int_{B(d,R)}
                       (U_c-\log|F(z)|)\,dV(z)
  \le U_c-\log|F(d)|.
  \tag{2.4}
-\]">\[
+\]" id="eq-2.4">\[
  \frac1{|B(d,R)|}\int_{B(d,R)}
                       (U_c-\log|F(z)|)\,dV(z)
  \le U_c-\log|F(d)|.
@@ -511,12 +511,12 @@ For <span class="math" data-index="240" data-tex="\(A&gt;m\)">\(A&gt;m\)</span>,
 <span class="math" data-index="302" data-tex="\(|\log|F||\le U_c+(U_c-\log|F|)\)">\(|\log|F||\le U_c+(U_c-\log|F|)\)</span>.
 Integrate this inequality on the smaller ball, use (2.4) on the larger ball, and divide by <span class="math" data-index="303" data-tex="\(\ell_c\)">\(\ell_c\)</span>. Since the volume ratio is
 <span class="math" data-index="304" data-tex="\(((\delta+e)/\delta)^{2n}\)">\(((\delta+e)/\delta)^{2n}\)</span>, the resulting limsup is at most</p>
-<span class="math math-display" id="eq-2.5" data-index="305" data-tex="\[
+<span class="math math-display" data-index="305" data-tex="\[
  M+b(\delta+e)
  +\left(\frac{\delta+e}{\delta}\right)^{2n}
                        (M+b(\delta+e)+A).
  \tag{2.5}
-\]">\[
+\]" id="eq-2.5">\[
  M+b(\delta+e)
  +\left(\frac{\delta+e}{\delta}\right)^{2n}
                        (M+b(\delta+e)+A).
@@ -525,11 +525,11 @@ Integrate this inequality on the smaller ball, use (2.4) on the larger ball, and
 <p>All integrals are finite by local integrability of the scalar entire logarithm. First let <span class="math" data-index="306" data-tex="\(e\downarrow0\)">\(e\downarrow0\)</span>, then <span class="math" data-index="307" data-tex="\(b\downarrow C\)">\(b\downarrow C\)</span>. This proves (2.1). <span class="math" data-index="308" data-tex="\(\square\)">\(\square\)</span></p>
 <p>We need a bounded, rather than infinitely negative, real-to-complex comparison to recover a fixed exponent from the profile condition.</p>
 <p><strong>Lemma 2.2 (passing a real ceiling to a profile).</strong> Suppose PSH functions <span class="math" data-index="309" data-tex="\(v_j\)">\(v_j\)</span> on <span class="math" data-index="310" data-tex="\(\mathbb C^n\)">\(\mathbb C^n\)</span> are locally uniformly bounded above and converge properly in local <span class="math" data-index="311" data-tex="\(L^1\)">\(L^1\)</span> to <span class="math" data-index="312" data-tex="\(v\)">\(v\)</span>. If</p>
-<span class="math math-display" id="eq-2.6" data-index="313" data-tex="\[
+<span class="math math-display" data-index="313" data-tex="\[
  v_j(x)\le -a+o(1)
        \quad(x\in\mathbb R^n,\ |x|&lt;e),
  \tag{2.6}
-\]">\[
+\]" id="eq-2.6">\[
  v_j(x)\le -a+o(1)
        \quad(x\in\mathbb R^n,\ |x|&lt;e),
  \tag{2.6}
@@ -538,12 +538,12 @@ Integrate this inequality on the smaller ball, use (2.4) on the larger ball, and
 <p><em>Proof.</em> Put <span class="math" data-index="315" data-tex="\(r=e/4\)">\(r=e/4\)</span>. For real <span class="math" data-index="316" data-tex="\(|x|&lt;e/2\)">\(|x|&lt;e/2\)</span> and a real unit vector <span class="math" data-index="317" data-tex="\(\nu\)">\(\nu\)</span>, restrict <span class="math" data-index="318" data-tex="\(v_j\)">\(v_j\)</span> to the complex line <span class="math" data-index="319" data-tex="\(x+w\nu\)">\(x+w\nu\)</span>. On the rectangle
 <span class="math" data-index="320" data-tex="\(-r&lt;t&lt;r,\ 0&lt;s&lt;r\)">\(-r&lt;t&lt;r,\ 0&lt;s&lt;r\)</span>, all real points on its bottom lie in the ball of (2.6). Choose one nonnegative upper bound <span class="math" data-index="321" data-tex="\(H\)">\(H\)</span> for all these line restrictions on the closed rectangles; their images lie in a fixed compact complex set. If <span class="math" data-index="322" data-tex="\(b_j=-a+o(1)\)">\(b_j=-a+o(1)\)</span> is the bottom ceiling, increase <span class="math" data-index="323" data-tex="\(H\)">\(H\)</span> so that <span class="math" data-index="324" data-tex="\(b_j\le H\)">\(b_j\le H\)</span> on a tail.</p>
 <p>The explicit harmonic function</p>
-<span class="math math-display" id="eq-2.7" data-index="325" data-tex="\[
+<span class="math math-display" data-index="325" data-tex="\[
  \omega(t,s)=
  \cos\!\left(\frac{\pi t}{2r}\right)
  \frac{\sinh(\pi(r-s)/(2r))}{\sinh(\pi/2)}
  \tag{2.7}
-\]">\[
+\]" id="eq-2.7">\[
  \omega(t,s)=
  \cos\!\left(\frac{\pi t}{2r}\right)
  \frac{\sinh(\pi(r-s)/(2r))}{\sinh(\pi/2)}
@@ -551,11 +551,11 @@ Integrate this inequality on the smaller ball, use (2.4) on the larger ball, and
 \]</span>
 <p>vanishes on the vertical and top sides, lies between zero and one, and is at most one on the bottom. The harmonic function
 <span class="math" data-index="326" data-tex="\(H-(H-b_j)\omega\)">\(H-(H-b_j)\omega\)</span> is therefore above <span class="math" data-index="327" data-tex="\(v_j\)">\(v_j\)</span> on every boundary side. Subharmonic maximum comparison gives this bound inside. At <span class="math" data-index="328" data-tex="\(t=0\)">\(t=0\)</span>, <span class="math" data-index="329" data-tex="\(\omega(0,0)=1\)">\(\omega(0,0)=1\)</span> and its derivative in <span class="math" data-index="330" data-tex="\(s\)">\(s\)</span> is bounded on <span class="math" data-index="331" data-tex="\([0,r]\)">\([0,r]\)</span>. Consequently, for a fixed <span class="math" data-index="332" data-tex="\(D\)">\(D\)</span>,</p>
-<span class="math math-display" id="eq-2.8" data-index="333" data-tex="\[
+<span class="math math-display" data-index="333" data-tex="\[
  v_j(x+iy)\le -a+o(1)+D|y|
        \quad(|x|&lt;e/2,\ |y|&lt;r).
  \tag{2.8}
-\]">\[
+\]" id="eq-2.8">\[
  v_j(x+iy)\le -a+o(1)+D|y|
        \quad(|x|&lt;e/2,\ |y|&lt;r).
  \tag{2.8}
@@ -567,11 +567,11 @@ Integrate this inequality on the smaller ball, use (2.4) on the larger ball, and
 <li>The transform is very slowly decreasing.</li>
 <li>For some <span class="math" data-index="345" data-tex="\(B\ge0\)">\(B\ge0\)</span>, every <span class="math" data-index="346" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span> satisfies</li>
 </ol>
-<span class="math math-display" id="eq-2.9" data-index="347" data-tex="\[
+<span class="math math-display" data-index="347" data-tex="\[
     \limsup_{|c|\to\infty}\frac1{|B_\delta|}
                 \int_{B_\delta}|L_c|\,dV\le B+2C\delta.
     \tag{2.9}
-   \]">\[
+   \]" id="eq-2.9">\[
     \limsup_{|c|\to\infty}\frac1{|B_\delta|}
                 \int_{B_\delta}|L_c|\,dV\le B+2C\delta.
     \tag{2.9}
@@ -579,29 +579,29 @@ Integrate this inequality on the smaller ball, use (2.4) on the larger ball, and
 <ol start="3">
 <li>There are no collapsed profiles, and there is <span class="math" data-index="348" data-tex="\(B\ge0\)">\(B\ge0\)</span> such that every proper profile obeys</li>
 </ol>
-<span class="math math-display" id="eq-2.10" data-index="349" data-tex="\[
+<span class="math math-display" data-index="349" data-tex="\[
                      v(x)\ge-B\quad(x\in\mathbb R^n).
     \tag{2.10}
-   \]">\[
+   \]" id="eq-2.10">\[
                      v(x)\ge-B\quad(x\in\mathbb R^n).
     \tag{2.10}
    \]</span>
 <p>Condition 1 with exponent <span class="math" data-index="350" data-tex="\(A\)">\(A\)</span> gives condition 2 with <span class="math" data-index="351" data-tex="\(B=2M+A\)">\(B=2M+A\)</span>. It also gives condition 3 with <span class="math" data-index="352" data-tex="\(B=A\)">\(B=A\)</span>. Condition 3 with <span class="math" data-index="353" data-tex="\(B\)">\(B\)</span> gives condition 1 with any exponent strictly greater than <span class="math" data-index="354" data-tex="\(B\)">\(B\)</span>.</p>
 <p><em>Proof.</em> If <span class="math" data-index="355" data-tex="\(F\equiv0\)">\(F\equiv0\)</span>, all three conditions are false: the window supremum is zero, every absolute logarithmic integral is infinite, and all profiles collapse. Otherwise the scalar logarithms are locally integrable. Lemma 2.1 proves <span class="math" data-index="356" data-tex="\(1\Rightarrow2\)">\(1\Rightarrow2\)</span>. Condition 2 excludes collapse by integration on any fixed ball. For a proper extraction, <span class="math" data-index="357" data-tex="\(L^1\)">\(L^1\)</span> convergence transfers (2.9) to</p>
-<span class="math math-display" id="eq-2.11" data-index="358" data-tex="\[
+<span class="math math-display" data-index="358" data-tex="\[
  \frac1{|B_\delta|}\int_{B_\delta}|v|\,dV\le B+2C\delta.
  \tag{2.11}
-\]">\[
+\]" id="eq-2.11">\[
  \frac1{|B_\delta|}\int_{B_\delta}|v|\,dV\le B+2C\delta.
  \tag{2.11}
 \]</span>
 <p>The canonical subharmonic value at zero is the limit of its ball means as the radius decreases to zero. Indeed the submean inequality puts the value below each mean, while upper semicontinuity puts the limiting upper bound of those means below the value. This argument also covers a proposed value <span class="math" data-index="359" data-tex="\(-\infty\)">\(-\infty\)</span>, by using an arbitrary finite negative neighborhood ceiling. Since the mean of <span class="math" data-index="360" data-tex="\(v\)">\(v\)</span> is bounded below by the negative of (2.11), it follows that <span class="math" data-index="361" data-tex="\(v(0)\ge-B\)">\(v(0)\ge-B\)</span>. For real <span class="math" data-index="362" data-tex="\(x\)">\(x\)</span>, change the centers to <span class="math" data-index="363" data-tex="\(c_j+x\log|c_j|\)">\(c_j+x\log|c_j|\)</span>. The exact preceding translation theorem makes the new profile <span class="math" data-index="364" data-tex="\(v(z+x)\)">\(v(z+x)\)</span>, and condition 2 still holds for those escaping centers. Applying the same argument at zero gives (2.10). Thus <span class="math" data-index="365" data-tex="\(2\Rightarrow3\)">\(2\Rightarrow3\)</span>.</p>
 <p>For <span class="math" data-index="366" data-tex="\(3\Rightarrow1\)">\(3\Rightarrow1\)</span>, choose <span class="math" data-index="367" data-tex="\(A&gt;B\)">\(A&gt;B\)</span>. If (1.4) failed for a width <span class="math" data-index="368" data-tex="\(e&gt;0\)">\(e&gt;0\)</span>, an escaping sequence would have its nonnegative expression tending to zero. On a tail,</p>
-<span class="math math-display" id="eq-2.12" data-index="369" data-tex="\[
+<span class="math math-display" data-index="369" data-tex="\[
  L_{c_j}(x)\le-A
                \quad(x\in\mathbb R^n,\ |x|&lt;e).
  \tag{2.12}
-\]">\[
+\]" id="eq-2.12">\[
  L_{c_j}(x)\le-A
                \quad(x\in\mathbb R^n,\ |x|&lt;e).
  \tag{2.12}
@@ -611,20 +611,20 @@ Integrate this inequality on the smaller ball, use (2.4) on the larger ball, and
 <p>This proves the real lower-bound interpretation for <em>all</em> limiting profiles. It is stronger than asking that each profile have its own finite lower bound.</p>
 <h2 id="3-a-fixed-loss-in-test-function-estimates">3. A fixed loss in test-function estimates</h2>
 <p><strong>Theorem 3.1 (uniform derivative loss on each fixed support).</strong> Suppose (1.4) holds with exponent <span class="math" data-index="379" data-tex="\(A\)">\(A\)</span>, and <span class="math" data-index="380" data-tex="\(\mu\)">\(\mu\)</span> has order <span class="math" data-index="381" data-tex="\(M\)">\(M\)</span>. Choose an integer</p>
-<span class="math math-display" id="eq-3.1" data-index="382" data-tex="\[
+<span class="math math-display" data-index="382" data-tex="\[
                          r&gt;n+2M+A.
  \tag{3.1}
-\]">\[
+\]" id="eq-3.1">\[
                          r&gt;n+2M+A.
  \tag{3.1}
 \]</span>
 <p>For every compact <span class="math" data-index="383" data-tex="\(K\subset\mathbb R^n\)">\(K\subset\mathbb R^n\)</span> and integer <span class="math" data-index="384" data-tex="\(k\ge0\)">\(k\ge0\)</span>, there is <span class="math" data-index="385" data-tex="\(D_{K,k}\)">\(D_{K,k}\)</span> such that</p>
-<span class="math math-display" id="eq-3.2" data-index="386" data-tex="\[
+<span class="math math-display" data-index="386" data-tex="\[
  p_k(\varphi)\le D_{K,k}\,p_{k+r}(T\varphi)
        \quad(\varphi\in C_c^\infty(\mathbb R^n),
                          \ \operatorname{supp}\varphi\subset K).
  \tag{3.2}
-\]">\[
+\]" id="eq-3.2">\[
  p_k(\varphi)\le D_{K,k}\,p_{k+r}(T\varphi)
        \quad(\varphi\in C_c^\infty(\mathbb R^n),
                          \ \operatorname{supp}\varphi\subset K).
@@ -633,55 +633,55 @@ Integrate this inequality on the smaller ball, use (2.4) on the larger ball, and
 <p>The loss <span class="math" data-index="387" data-tex="\(r\)">\(r\)</span> does not depend on <span class="math" data-index="388" data-tex="\(K\)">\(K\)</span> or <span class="math" data-index="389" data-tex="\(k\)">\(k\)</span>.</p>
 <p><em>Proof.</em> The zero test needs no argument. For a nonzero test, let
 <span class="math" data-index="390" data-tex="\(\psi=T\varphi\)">\(\psi=T\varphi\)</span> and <span class="math" data-index="391" data-tex="\(q=k+r\)">\(q=k+r\)</span>. The transform factorization is</p>
-<span class="math math-display" id="eq-3.3" data-index="392" data-tex="\[
+<span class="math math-display" data-index="392" data-tex="\[
              F_\psi(z)=F(-z)F_\varphi(z).
  \tag{3.3}
-\]">\[
+\]" id="eq-3.3">\[
              F_\psi(z)=F(-z)F_\varphi(z).
  \tag{3.3}
 \]</span>
 <p>The kernel is nonzero by (1.4), and the transform of a nonzero compact test is a nonzero entire function. Their product is nonzero, so <span class="math" data-index="393" data-tex="\(p_q(\psi)&gt;0\)">\(p_q(\psi)&gt;0\)</span>. Divide the test by this seminorm to assume <span class="math" data-index="394" data-tex="\(p_q(\psi)=1\)">\(p_q(\psi)=1\)</span>.</p>
 <p>The support of <span class="math" data-index="395" data-tex="\(\psi\)">\(\psi\)</span> lies in one fixed compact set <span class="math" data-index="396" data-tex="\(K-\operatorname{supp}\mu\)">\(K-\operatorname{supp}\mu\)</span>, inside some ball of radius <span class="math" data-index="397" data-tex="\(R\)">\(R\)</span>. Integrating by parts <span class="math" data-index="398" data-tex="\(q\)">\(q\)</span> times in a coordinate with <span class="math" data-index="399" data-tex="\(|z_s|\ge|z|/\sqrt n\)">\(|z_s|\ge|z|/\sqrt n\)</span> proves</p>
-<span class="math math-display" id="eq-3.4" data-index="400" data-tex="\[
+<span class="math math-display" data-index="400" data-tex="\[
  |F_\psi(z)|\le D_{K,q}(1+|z|)^{-q}
                          e^{R|\operatorname{Im}z|}.
  \tag{3.4}
-\]">\[
+\]" id="eq-3.4">\[
  |F_\psi(z)|\le D_{K,q}(1+|z|)^{-q}
                          e^{R|\operatorname{Im}z|}.
  \tag{3.4}
 \]</span>
 <p>For <span class="math" data-index="401" data-tex="\(|z|\le1\)">\(|z|\le1\)</span>, the ordinary integral bound supplies the same estimate with an increased constant. The derivatives used in the integration by parts are bounded by one, and their integrals are bounded by a fixed containing box volume. This is uniform over all normalized tests.</p>
 <p>For real <span class="math" data-index="402" data-tex="\(|c|&gt;2\)">\(|c|&gt;2\)</span>, take the complex ball centered at <span class="math" data-index="403" data-tex="\(c\)">\(c\)</span> with radius <span class="math" data-index="404" data-tex="\(\delta\log|c|\)">\(\delta\log|c|\)</span>. On it <span class="math" data-index="405" data-tex="\(|z|\)">\(|z|\)</span> is comparable with <span class="math" data-index="406" data-tex="\(|c|\)">\(|c|\)</span> on a large tail. Hence (3.4) implies</p>
-<span class="math math-display" id="eq-3.5" data-index="407" data-tex="\[
+<span class="math math-display" data-index="407" data-tex="\[
  \frac1{|B_\delta|}\int_{B_\delta}
        \log|F_\psi(c+\ell_c z)|\,dV(z)
  \le(-q+R\delta)\ell_c+D.
  \tag{3.5}
-\]">\[
+\]" id="eq-3.5">\[
  \frac1{|B_\delta|}\int_{B_\delta}
        \log|F_\psi(c+\ell_c z)|\,dV(z)
  \le(-q+R\delta)\ell_c+D.
  \tag{3.5}
 \]</span>
 <p>The nonzero entire logarithms in (3.3) are locally integrable. Their identity holds almost everywhere, since their zero sets have volume zero, as proved in the linked scalar-logarithm theorem. Submean for <span class="math" data-index="408" data-tex="\(\log|F_\varphi|\)">\(\log|F_\varphi|\)</span>, (3.3), and the absolute logarithmic estimate for <span class="math" data-index="409" data-tex="\(F(-z)\)">\(F(-z)\)</span> now give, for each <span class="math" data-index="410" data-tex="\(t&gt;0\)">\(t&gt;0\)</span> and all sufficiently large <span class="math" data-index="411" data-tex="\(|c|\)">\(|c|\)</span>,</p>
-<span class="math math-display" id="eq-3.6" data-index="412" data-tex="\[
+<span class="math math-display" data-index="412" data-tex="\[
  \log|F_\varphi(c)|
  \le[-q+(R+2C)\delta+2M+A+t]\ell_c+D.
  \tag{3.6}
-\]">\[
+\]" id="eq-3.6">\[
  \log|F_\varphi(c)|
  \le[-q+(R+2C)\delta+2M+A+t]\ell_c+D.
  \tag{3.6}
 \]</span>
 <p>Reflection preserves the window condition, order and support radius.</p>
 <p>The strict inequality (3.1) permits first choosing <span class="math" data-index="413" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, then <span class="math" data-index="414" data-tex="\(\delta&gt;0\)">\(\delta&gt;0\)</span>, and a number <span class="math" data-index="415" data-tex="\(s&gt;0\)">\(s&gt;0\)</span>, so that the coefficient in (3.6) is at most <span class="math" data-index="416" data-tex="\(-k-n-s\)">\(-k-n-s\)</span>. All choices depend on <span class="math" data-index="417" data-tex="\(K,k\)">\(K,k\)</span>, not on the normalized test. Thus</p>
-<span class="math math-display" id="eq-3.7" data-index="418" data-tex="\[
+<span class="math math-display" data-index="418" data-tex="\[
                     |F_\varphi(c)|
        \le D(1+|c|)^{-k-n-s}
                        \quad(c\in\mathbb R^n).
  \tag{3.7}
-\]">\[
+\]" id="eq-3.7">\[
                     |F_\varphi(c)|
        \le D(1+|c|)^{-k-n-s}
                        \quad(c\in\mathbb R^n).
@@ -689,12 +689,12 @@ Integrate this inequality on the smaller ball, use (2.4) on the larger ball, and
 \]</span>
 <p>Here is the bounded-center justification. Apply submean on a complex ball of radius one at each bounded real center. Bound <span class="math" data-index="419" data-tex="\(\log|F_\psi|\)">\(\log|F_\psi|\)</span> uniformly from (3.4), and bound the negative integral of <span class="math" data-index="420" data-tex="\(\log|F(-z)|\)">\(\log|F(-z)|\)</span> by its integral on a single larger compact complex region. Local integrability makes that bound finite; all these unit balls have the same volume. The almost-everywhere logarithmic identity gives a uniform upper bound for <span class="math" data-index="421" data-tex="\(\log|F_\varphi|\)">\(\log|F_\varphi|\)</span> at every such center. This fills the bounded range in (3.7).</p>
 <p>For <span class="math" data-index="422" data-tex="\(|\alpha|\le k\)">\(|\alpha|\le k\)</span>, Fourier inversion gives</p>
-<span class="math math-display" id="eq-3.8" data-index="423" data-tex="\[
+<span class="math math-display" data-index="423" data-tex="\[
  |\partial^\alpha\varphi(x)|
  \le(2\pi)^{-n}\int_{\mathbb R^n}
                |c|^{|\alpha|}|F_\varphi(c)|\,dc.
  \tag{3.8}
-\]">\[
+\]" id="eq-3.8">\[
  |\partial^\alpha\varphi(x)|
  \le(2\pi)^{-n}\int_{\mathbb R^n}
                |c|^{|\alpha|}|F_\varphi(c)|\,dc.
@@ -704,56 +704,56 @@ Integrate this inequality on the smaller ball, use (2.4) on the larger ball, and
 <p>In particular <span class="math" data-index="427" data-tex="\(T\)">\(T\)</span> is injective on compact smooth tests. The sum of derivative suprema and <span class="math" data-index="428" data-tex="\(p_k\)">\(p_k\)</span> are equivalent through the finite number of multiindices, so the result also holds with their sum without changing <span class="math" data-index="429" data-tex="\(r\)">\(r\)</span>.</p>
 <h2 id="4-weights-that-preserve-one-global-order">4. Weights that preserve one global order</h2>
 <p><strong>Theorem 4.1 (whole-space finite-order solvability).</strong> Under the hypotheses of Theorem 3.1, every <span class="math" data-index="430" data-tex="\(f\in\mathcal D^{\prime k}(\mathbb R^n)\)">\(f\in\mathcal D^{\prime k}(\mathbb R^n)\)</span> has a solution</p>
-<span class="math math-display" id="eq-4.1" data-index="431" data-tex="\[
+<span class="math math-display" data-index="431" data-tex="\[
              \mu*u=f,\qquad
              u\in\mathcal D^{\prime\,k+r+1}(\mathbb R^n).
  \tag{4.1}
-\]">\[
+\]" id="eq-4.1">\[
              \mu*u=f,\qquad
              u\in\mathcal D^{\prime\,k+r+1}(\mathbb R^n).
  \tag{4.1}
 \]</span>
 <p>The constants controlling <span class="math" data-index="432" data-tex="\(u\)">\(u\)</span> may grow with the compact set.</p>
 <p><em>Proof.</em> Put <span class="math" data-index="433" data-tex="\(R_0=k+r+1\)">\(R_0=k+r+1\)</span>. For a positive locally Lipschitz function <span class="math" data-index="434" data-tex="\(a\ge1\)">\(a\ge1\)</span>, define on smooth compact functions</p>
-<span class="math math-display" id="eq-4.2" data-index="435" data-tex="\[
+<span class="math math-display" data-index="435" data-tex="\[
  q_a(\psi)=\sum_{|\alpha|\le R_0}
                   \sup_x a(x)|\partial^\alpha\psi(x)|.
  \tag{4.2}
-\]">\[
+\]" id="eq-4.2">\[
  q_a(\psi)=\sum_{|\alpha|\le R_0}
                   \sup_x a(x)|\partial^\alpha\psi(x)|.
  \tag{4.2}
 \]</span>
 <p>We will construct one such <span class="math" data-index="436" data-tex="\(a\)">\(a\)</span> with</p>
-<span class="math math-display" id="eq-4.3" data-index="437" data-tex="\[
+<span class="math math-display" data-index="437" data-tex="\[
                          |f(\varphi)|\le q_a(T\varphi)
                          \quad(\varphi\in\mathcal D(\mathbb R^n)).
  \tag{4.3}
-\]">\[
+\]" id="eq-4.3">\[
                          |f(\varphi)|\le q_a(T\varphi)
                          \quad(\varphi\in\mathcal D(\mathbb R^n)).
  \tag{4.3}
 \]</span>
 <p>Only the weights will change during the construction; <span class="math" data-index="438" data-tex="\(R_0\)">\(R_0\)</span> is fixed.</p>
 <p>Choose <span class="math" data-index="439" data-tex="\(C\)">\(C\)</span> containing the kernel support as before. For <span class="math" data-index="440" data-tex="\(j\ge1\)">\(j\ge1\)</span>, use compact balls</p>
-<span class="math math-display" id="eq-4.4" data-index="441" data-tex="\[
+<span class="math math-display" data-index="441" data-tex="\[
  K_j=\overline B_j(0),\qquad
  H_j=\overline B_{j+C+1}(0),\qquad K_0=H_0=\varnothing.
  \tag{4.4}
-\]">\[
+\]" id="eq-4.4">\[
  K_j=\overline B_j(0),\qquad
  H_j=\overline B_{j+C+1}(0),\qquad K_0=H_0=\varnothing.
  \tag{4.4}
 \]</span>
 <p>The full compact support-hull theorem implies, for compact distributions <span class="math" data-index="442" data-tex="\(v\)">\(v\)</span>,</p>
-<span class="math math-display" id="eq-4.5" data-index="443" data-tex="\[
+<span class="math math-display" data-index="443" data-tex="\[
              \operatorname{supp}(Tv)\subset K_j
              \quad\Longrightarrow\quad
              \operatorname{supp}v\subset
                              \overline B_{j+C}(0)
                              \subset\operatorname{int}H_j.
  \tag{4.5}
-\]">\[
+\]" id="eq-4.5">\[
              \operatorname{supp}(Tv)\subset K_j
              \quad\Longrightarrow\quad
              \operatorname{supp}v\subset
@@ -763,39 +763,39 @@ Integrate this inequality on the smaller ball, use (2.4) on the larger ball, and
 \]</span>
 <p>For nonzero <span class="math" data-index="444" data-tex="\(v\)">\(v\)</span>, choose any <span class="math" data-index="445" data-tex="\(y\in\operatorname{supp}\check\mu\)">\(y\in\operatorname{supp}\check\mu\)</span>. The hull identity says that <span class="math" data-index="446" data-tex="\(x+y\in K_j\)">\(x+y\in K_j\)</span> for every <span class="math" data-index="447" data-tex="\(x\in\operatorname{supp}v\)">\(x\in\operatorname{supp}v\)</span>; since <span class="math" data-index="448" data-tex="\(|y|\le C\)">\(|y|\le C\)</span>, this proves (4.5). If <span class="math" data-index="449" data-tex="\(Tv=0\)">\(Tv=0\)</span>, compact Fourier injectivity gives <span class="math" data-index="450" data-tex="\(v=0\)">\(v=0\)</span>: the product of two nonzero entire transforms cannot vanish identically. Thus an empty output support has an empty receiver, in agreement with <span class="math" data-index="451" data-tex="\(K_0,H_0\)">\(K_0,H_0\)</span>.</p>
 <p>On tests supported in <span class="math" data-index="452" data-tex="\(H_1\)">\(H_1\)</span>, the order-<span class="math" data-index="453" data-tex="\(k\)">\(k\)</span> estimate for <span class="math" data-index="454" data-tex="\(f\)">\(f\)</span> and (3.2) give</p>
-<span class="math math-display" id="eq-4.6" data-index="455" data-tex="\[
+<span class="math math-display" data-index="455" data-tex="\[
                   |f(\varphi)|\le Dp_{k+r}(T\varphi).
  \tag{4.6}
-\]">\[
+\]" id="eq-4.6">\[
                   |f(\varphi)|\le Dp_{k+r}(T\varphi).
  \tag{4.6}
 \]</span>
 <p>Take a constant <span class="math" data-index="456" data-tex="\(a_1\ge\max\{1,D\}\)">\(a_1\ge\max\{1,D\}\)</span>. Then (4.3) with <span class="math" data-index="457" data-tex="\(a_1\)">\(a_1\)</span> holds on that test space.</p>
 <p>We next prove the extension step. Suppose (4.3) with <span class="math" data-index="458" data-tex="\(a_j\)">\(a_j\)</span> holds on tests supported in <span class="math" data-index="459" data-tex="\(H_j\)">\(H_j\)</span>, and fix <span class="math" data-index="460" data-tex="\(e&gt;0\)">\(e&gt;0\)</span>. If <span class="math" data-index="461" data-tex="\(j=1\)">\(j=1\)</span>, set <span class="math" data-index="462" data-tex="\(b_j=1\)">\(b_j=1\)</span>. If <span class="math" data-index="463" data-tex="\(j\ge2\)">\(j\ge2\)</span>, set</p>
-<span class="math math-display" id="eq-4.7" data-index="464" data-tex="\[
+<span class="math math-display" data-index="464" data-tex="\[
                       b_j(x)=\min\{1,\operatorname{dist}(x,K_{j-1})\}.
  \tag{4.7}
-\]">\[
+\]" id="eq-4.7">\[
                       b_j(x)=\min\{1,\operatorname{dist}(x,K_{j-1})\}.
  \tag{4.7}
 \]</span>
 <p>These nonnegative Lipschitz functions vanish on <span class="math" data-index="465" data-tex="\(K_{j-1}\)">\(K_{j-1}\)</span> and are strictly positive outside it. There is an integer <span class="math" data-index="466" data-tex="\(N\ge1\)">\(N\ge1\)</span> such that</p>
-<span class="math math-display" id="eq-4.8" data-index="467" data-tex="\[
+<span class="math math-display" data-index="467" data-tex="\[
  a_{j+1}=(1+e)a_j+Nb_j
  \tag{4.8}
-\]">\[
+\]" id="eq-4.8">\[
  a_{j+1}=(1+e)a_j+Nb_j
  \tag{4.8}
 \]</span>
 <p>makes (4.3) hold for all tests supported in <span class="math" data-index="468" data-tex="\(H_{j+1}\)">\(H_{j+1}\)</span>.</p>
 <p>Suppose otherwise. For each <span class="math" data-index="469" data-tex="\(N\)">\(N\)</span>, choose a test violating the proposed bound and multiply it by a scalar of positive modulus so that</p>
-<span class="math math-display" id="eq-4.9" data-index="470" data-tex="\[
+<span class="math math-display" data-index="470" data-tex="\[
  |f(\varphi_N)|=1+e,\qquad
  q_{a_j}(T\varphi_N)&lt;1,\qquad
  T\varphi_N\longrightarrow0
        \text{ in }C^{R_0}_{\mathrm{loc}}(\mathbb R^n\setminus K_{j-1}).
  \tag{4.9}
-\]">\[
+\]" id="eq-4.9">\[
  |f(\varphi_N)|=1+e,\qquad
  q_{a_j}(T\varphi_N)&lt;1,\qquad
  T\varphi_N\longrightarrow0
@@ -808,10 +808,10 @@ Integrate this inequality on the smaller ball, use (2.4) on the larger ball, and
 <span class="math" data-index="490" data-tex="\(\operatorname{supp}\varphi_0\subset H_{j-1}\Subset\operatorname{int}H_j\)">\(\operatorname{supp}\varphi_0\subset H_{j-1}\Subset\operatorname{int}H_j\)</span>.
 When <span class="math" data-index="491" data-tex="\(j=1\)">\(j=1\)</span>, <span class="math" data-index="492" data-tex="\(\varphi_0=0\)">\(\varphi_0=0\)</span>.</p>
 <p>An order-<span class="math" data-index="493" data-tex="\(k\)">\(k\)</span> distribution acts continuously on compact <span class="math" data-index="494" data-tex="\(C^k\)">\(C^k\)</span> functions by extension from smooth functions. More explicitly, fix a compact neighborhood containing all supports. The <span class="math" data-index="495" data-tex="\(p_k\)">\(p_k\)</span> bound extends the functional to the completion of that smooth test space. Mollification of a compact <span class="math" data-index="496" data-tex="\(C^k\)">\(C^k\)</span> function converges in <span class="math" data-index="497" data-tex="\(C^k\)">\(C^k\)</span>, and its supports lie in this neighborhood for small radii, so the extension applies. Consequently (4.9) gives</p>
-<span class="math math-display" id="eq-4.10" data-index="498" data-tex="\[
+<span class="math math-display" data-index="498" data-tex="\[
                              |f(\varphi_0)|=1+e.
  \tag{4.10}
-\]">\[
+\]" id="eq-4.10">\[
                              |f(\varphi_0)|=1+e.
  \tag{4.10}
 \]</span>
@@ -819,29 +819,29 @@ When <span class="math" data-index="491" data-tex="\(j=1\)">\(j=1\)</span>, <spa
 <p>In the other cases, choose a nonnegative smooth probability bump <span class="math" data-index="501" data-tex="\(\rho\)">\(\rho\)</span> in the unit ball and put
 <span class="math" data-index="502" data-tex="\(\rho_d(x)=d^{-n}\rho(x/d)\)">\(\rho_d(x)=d^{-n}\rho(x/d)\)</span>.
 For small <span class="math" data-index="503" data-tex="\(d&gt;0\)">\(d&gt;0\)</span>, <span class="math" data-index="504" data-tex="\(\varphi_0*\rho_d\)">\(\varphi_0*\rho_d\)</span> is smooth and supported in <span class="math" data-index="505" data-tex="\(H_j\)">\(H_j\)</span>. On a fixed compact neighborhood of every image support, local Lipschitz continuity and the positive minimum of <span class="math" data-index="506" data-tex="\(a_j\)">\(a_j\)</span> give</p>
-<span class="math math-display" id="eq-4.11" data-index="507" data-tex="\[
+<span class="math math-display" data-index="507" data-tex="\[
  \frac{a_j(x)}{a_j(y)}\le1+Ld
                               \quad(|x-y|\le d).
  \tag{4.11}
-\]">\[
+\]" id="eq-4.11">\[
  \frac{a_j(x)}{a_j(y)}\le1+Ld
                               \quad(|x-y|\le d).
  \tag{4.11}
 \]</span>
 <p>Passing derivatives to the smooth image in the convolution integral proves</p>
-<span class="math math-display" id="eq-4.12" data-index="508" data-tex="\[
+<span class="math math-display" data-index="508" data-tex="\[
                  q_{a_j}(\psi*\rho_d)\le(1+Ld)q_{a_j}(\psi)
  \tag{4.12}
-\]">\[
+\]" id="eq-4.12">\[
                  q_{a_j}(\psi*\rho_d)\le(1+Ld)q_{a_j}(\psi)
  \tag{4.12}
 \]</span>
 <p>for each <span class="math" data-index="509" data-tex="\(\psi=T\varphi_N\)">\(\psi=T\varphi_N\)</span>, with the same <span class="math" data-index="510" data-tex="\(L\)">\(L\)</span>. All relevant functions have one fixed compact support enlarged by at most the unit ball.</p>
 <p>For fixed <span class="math" data-index="511" data-tex="\(d\)">\(d\)</span>, the mollified images converge with every derivative to <span class="math" data-index="512" data-tex="\(T\varphi_0*\rho_d\)">\(T\varphi_0*\rho_d\)</span>. This follows directly by pairing their distributional difference against translates of each derivative of <span class="math" data-index="513" data-tex="\(\rho_d\)">\(\rho_d\)</span>; alternatively first convolve the compact kernel with <span class="math" data-index="514" data-tex="\(\rho_d\)">\(\rho_d\)</span> and integrate against the uniformly convergent <span class="math" data-index="515" data-tex="\(\varphi_N-\varphi_0\)">\(\varphi_N-\varphi_0\)</span>. The fixed compact support and bounded weights pass (4.12) to the limit. Hence</p>
-<span class="math math-display" id="eq-4.13" data-index="516" data-tex="\[
+<span class="math math-display" data-index="516" data-tex="\[
                   q_{a_j}(T(\varphi_0*\rho_d))\le1+Ld.
  \tag{4.13}
-\]">\[
+\]" id="eq-4.13">\[
                   q_{a_j}(T(\varphi_0*\rho_d))\le1+Ld.
  \tag{4.13}
 \]</span>
@@ -849,39 +849,39 @@ For small <span class="math" data-index="503" data-tex="\(d&gt;0\)">\(d&gt;0\)</
 <p>Choose positive <span class="math" data-index="523" data-tex="\(e_j\)">\(e_j\)</span> with <span class="math" data-index="524" data-tex="\(\sum_j e_j&lt;\infty\)">\(\sum_j e_j&lt;\infty\)</span>, and apply (4.8) successively. The weights increase. On a fixed compact neighborhood, <span class="math" data-index="525" data-tex="\(b_j=0\)">\(b_j=0\)</span> for all sufficiently large <span class="math" data-index="526" data-tex="\(j\)">\(j\)</span>, since the balls <span class="math" data-index="527" data-tex="\(K_{j-1}\)">\(K_{j-1}\)</span> exhaust the whole space. Subsequent changes there are only multiplication by <span class="math" data-index="528" data-tex="\(1+e_j\)">\(1+e_j\)</span>. Their infinite product is finite, since
 <span class="math" data-index="529" data-tex="\(\prod_j(1+e_j)\le\exp(\sum_j e_j)\)">\(\prod_j(1+e_j)\le\exp(\sum_j e_j)\)</span>.
 Thus</p>
-<span class="math math-display" id="eq-4.14" data-index="530" data-tex="\[
+<span class="math math-display" data-index="530" data-tex="\[
                             a(x)=\lim_j a_j(x)
  \tag{4.14}
-\]">\[
+\]" id="eq-4.14">\[
                             a(x)=\lim_j a_j(x)
  \tag{4.14}
 \]</span>
 <p>exists, is finite and at least one. It is locally Lipschitz: on any fixed compact neighborhood it equals one finite-stage locally Lipschitz weight times a constant tail product. Every compactly supported test eventually lies in <span class="math" data-index="531" data-tex="\(H_j\)">\(H_j\)</span>, and <span class="math" data-index="532" data-tex="\(a\ge a_j\)">\(a\ge a_j\)</span>, proving (4.3).</p>
 <p>Define on the linear range <span class="math" data-index="533" data-tex="\(T\mathcal D\)">\(T\mathcal D\)</span></p>
-<span class="math math-display" id="eq-4.15" data-index="534" data-tex="\[
+<span class="math math-display" data-index="534" data-tex="\[
                               \Lambda(T\varphi)=f(\varphi).
  \tag{4.15}
-\]">\[
+\]" id="eq-4.15">\[
                               \Lambda(T\varphi)=f(\varphi).
  \tag{4.15}
 \]</span>
 <p>The estimate (4.3) makes this well-defined even without a separate injectivity argument. It also bounds <span class="math" data-index="535" data-tex="\(|\Lambda(\psi)|\le q_a(\psi)\)">\(|\Lambda(\psi)|\le q_a(\psi)\)</span>. Complex seminorm Hahn–Banach extends it to a complex-linear functional <span class="math" data-index="536" data-tex="\(u\)">\(u\)</span> on <span class="math" data-index="537" data-tex="\(\mathcal D\)">\(\mathcal D\)</span> with the same bound. On a fixed compact support <span class="math" data-index="538" data-tex="\(L\)">\(L\)</span>, (4.2) is at most a fixed multiple of <span class="math" data-index="539" data-tex="\(p_{R_0}\)">\(p_{R_0}\)</span>, since <span class="math" data-index="540" data-tex="\(a\)">\(a\)</span> is bounded there and there are only finitely many multiindices. Therefore <span class="math" data-index="541" data-tex="\(u\)">\(u\)</span> is a distribution of order at most <span class="math" data-index="542" data-tex="\(R_0\)">\(R_0\)</span> on every compact, with this same <span class="math" data-index="543" data-tex="\(R_0\)">\(R_0\)</span>. Finally (1.2) and (4.15) give <span class="math" data-index="544" data-tex="\(\mu*u=f\)">\(\mu*u=f\)</span>. <span class="math" data-index="545" data-tex="\(\square\)">\(\square\)</span></p>
 <h2 id="5-arbitrary-open-equation-and-solution-domains">5. Arbitrary open equation and solution domains</h2>
 <p>For open <span class="math" data-index="546" data-tex="\(X_1,X_2\)">\(X_1,X_2\)</span>, ordinary convolution is defined on <span class="math" data-index="547" data-tex="\(X_2\)">\(X_2\)</span> for data on <span class="math" data-index="548" data-tex="\(X_1\)">\(X_1\)</span> when</p>
-<span class="math math-display" id="eq-5.1" data-index="549" data-tex="\[
+<span class="math math-display" data-index="549" data-tex="\[
                          X_2-\operatorname{supp}\mu\subset X_1.
  \tag{5.1}
-\]">\[
+\]" id="eq-5.1">\[
                          X_2-\operatorname{supp}\mu\subset X_1.
  \tag{5.1}
 \]</span>
 <p>The pair is convex for supports if every compact <span class="math" data-index="550" data-tex="\(K_1\Subset X_1\)">\(K_1\Subset X_1\)</span> has a compact <span class="math" data-index="551" data-tex="\(K_2\Subset X_2\)">\(K_2\Subset X_2\)</span> such that compact inputs <span class="math" data-index="552" data-tex="\(v\)">\(v\)</span> supported inside <span class="math" data-index="553" data-tex="\(X_2\)">\(X_2\)</span> obey</p>
-<span class="math math-display" id="eq-5.2" data-index="554" data-tex="\[
+<span class="math math-display" data-index="554" data-tex="\[
                   \operatorname{supp}(Tv)\subset K_1
                   \quad\Longrightarrow\quad
                   \operatorname{supp}v\subset K_2.
  \tag{5.2}
-\]">\[
+\]" id="eq-5.2">\[
                   \operatorname{supp}(Tv)\subset K_1
                   \quad\Longrightarrow\quad
                   \operatorname{supp}v\subset K_2.
@@ -889,21 +889,21 @@ Thus</p>
 \]</span>
 <p>The same criterion for compact distributions, rather than only smooth tests, is proved in <a href="AN02-L170.html#3-proof-of-the-support-distance-criterion">Support distances and admissible convolution domains</a>.</p>
 <p><strong>Theorem 5.1 (finite order on an arbitrary support-convex pair).</strong> Suppose (5.1) holds, the pair is convex for supports, and <span class="math" data-index="555" data-tex="\(F\)">\(F\)</span> is very slowly decreasing. Then</p>
-<span class="math math-display" id="eq-5.3" data-index="556" data-tex="\[
-                \mu*\mathcal D&#x27;_F(X_1)=\mathcal D&#x27;_F(X_2).
+<span class="math math-display" data-index="556" data-tex="\[
+                \mu*\mathcal D'_F(X_1)=\mathcal D'_F(X_2).
  \tag{5.3}
-\]">\[
-                \mu*\mathcal D&#x27;_F(X_1)=\mathcal D&#x27;_F(X_2).
+\]" id="eq-5.3">\[
+                \mu*\mathcal D'_F(X_1)=\mathcal D'_F(X_2).
  \tag{5.3}
 \]</span>
 <p>More precisely, with <span class="math" data-index="557" data-tex="\(r\)">\(r\)</span> as in (3.1), every <span class="math" data-index="558" data-tex="\(f\in\mathcal D^{\prime k}(X_2)\)">\(f\in\mathcal D^{\prime k}(X_2)\)</span> has a solution in <span class="math" data-index="559" data-tex="\(\mathcal D^{\prime\,k+r+2}(X_1)\)">\(\mathcal D^{\prime\,k+r+2}(X_1)\)</span>.</p>
 <p><em>Proof.</em> Lemma 1.1 of <a href="AN02-L174.html#1-a-global-finite-order-representative">Solving convolution equations for arbitrary distribution data</a> gives</p>
-<span class="math math-display" id="eq-5.4" data-index="560" data-tex="\[
+<span class="math math-display" data-index="560" data-tex="\[
              f=g|_{X_2}+h,\qquad
              g\in\mathcal D^{\prime\,k+1}(\mathbb R^n),\qquad
              h\in C^\infty(X_2).
  \tag{5.4}
-\]">\[
+\]" id="eq-5.4">\[
              f=g|_{X_2}+h,\qquad
              g\in\mathcal D^{\prime\,k+1}(\mathbb R^n),\qquad
              h\in C^\infty(X_2).
@@ -913,30 +913,30 @@ Thus</p>
 <span class="math" data-index="564" data-tex="\(\mu*(U|_{X_1})=g|_{X_2}\)">\(\mu*(U|_{X_1})=g|_{X_2}\)</span>: every compact output test samples only a compact subset of <span class="math" data-index="565" data-tex="\(X_1\)">\(X_1\)</span>, so the global and restricted convolution pairings coincide.</p>
 <p>Very slow decrease implies ordinary slow decrease. For completeness, for each chosen window width (1.4) gives a positive polynomial lower bound on a large tail. A nonzero entire <span class="math" data-index="566" data-tex="\(F\)">\(F\)</span> cannot vanish on an open real ball, by successive one-variable identity principles. The window supremum is positive and continuous in its real center, so has a positive minimum on every remaining compact range. These facts extend the lower bound to every center; the elementary constant-absorption Lemma 2.2 in the linked entire-division chapter puts it in the precise form of its Theorem 1.1. Hence <span class="math" data-index="567" data-tex="\(\mu\)">\(\mu\)</span> is invertible.</p>
 <p>Theorem 8.1 of <a href="AN02-L171.html#8-the-exact-smooth-solvability-equivalence">Fréchet duality and smooth convolution solvability</a> now applies to invertibility, (5.1) and support convexity. It gives a smooth <span class="math" data-index="568" data-tex="\(w\)">\(w\)</span> on <span class="math" data-index="569" data-tex="\(X_1\)">\(X_1\)</span> with <span class="math" data-index="570" data-tex="\(\mu*w=h\)">\(\mu*w=h\)</span>. Thus <span class="math" data-index="571" data-tex="\(u=U|_{X_1}+w\)">\(u=U|_{X_1}+w\)</span> solves the equation. A smooth function is a distribution of order zero on every compact, with constants given by its integral over that compact. Adding it does not increase the displayed order of <span class="math" data-index="572" data-tex="\(U\)">\(U\)</span>.</p>
-<p>For the reverse inclusion in (5.3), if <span class="math" data-index="573" data-tex="\(u\)">\(u\)</span> has one fixed order <span class="math" data-index="574" data-tex="\(s\)">\(s\)</span>, the compact kernel has order <span class="math" data-index="575" data-tex="\(M\)">\(M\)</span>. On each compact output region, use (5.1) to select compact input neighborhoods and cutoffs. The two finite Leibniz estimates for the convolution pairing bound it by derivatives of the output test of order at most <span class="math" data-index="576" data-tex="\(s+M\)">\(s+M\)</span>. This index is fixed throughout <span class="math" data-index="577" data-tex="\(X_2\)">\(X_2\)</span>; only the cutoff and pairing constants vary with the compact region. Hence <span class="math" data-index="578" data-tex="\(\mu*u\in\mathcal D&#x27;_F(X_2)\)">\(\mu*u\in\mathcal D&#x27;_F(X_2)\)</span>. <span class="math" data-index="579" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For the reverse inclusion in (5.3), if <span class="math" data-index="573" data-tex="\(u\)">\(u\)</span> has one fixed order <span class="math" data-index="574" data-tex="\(s\)">\(s\)</span>, the compact kernel has order <span class="math" data-index="575" data-tex="\(M\)">\(M\)</span>. On each compact output region, use (5.1) to select compact input neighborhoods and cutoffs. The two finite Leibniz estimates for the convolution pairing bound it by derivatives of the output test of order at most <span class="math" data-index="576" data-tex="\(s+M\)">\(s+M\)</span>. This index is fixed throughout <span class="math" data-index="577" data-tex="\(X_2\)">\(X_2\)</span>; only the cutoff and pairing constants vary with the compact region. Hence <span class="math" data-index="578" data-tex="\(\mu*u\in\mathcal D'_F(X_2)\)">\(\mu*u\in\mathcal D'_F(X_2)\)</span>. <span class="math" data-index="579" data-tex="\(\square\)">\(\square\)</span></p>
 <p>No boundedness of <span class="math" data-index="580" data-tex="\(X_1\)">\(X_1\)</span> and no convexity for singular supports is needed in this theorem. The fixed-order Fourier hypothesis is what permits the global conclusion.</p>
 <h2 id="6-a-finite-order-fundamental-solution-forces-the-criterion">6. A finite-order fundamental solution forces the criterion</h2>
 <p><strong>Theorem 6.1 (necessity with the order of the inverse).</strong> If</p>
-<span class="math math-display" id="eq-6.1" data-index="581" data-tex="\[
+<span class="math math-display" data-index="581" data-tex="\[
                     \mu*u=\delta_0,\qquad
                     u\in\mathcal D^{\prime m}(\mathbb R^n),
  \tag{6.1}
-\]">\[
+\]" id="eq-6.1">\[
                     \mu*u=\delta_0,\qquad
                     u\in\mathcal D^{\prime m}(\mathbb R^n),
  \tag{6.1}
 \]</span>
 <p>then (1.4) holds for every <span class="math" data-index="582" data-tex="\(A&gt;m\)">\(A&gt;m\)</span> and every <span class="math" data-index="583" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>. In fact its expression tends to infinity.</p>
 <p><em>Proof.</em> Every compact test support <span class="math" data-index="584" data-tex="\(K\)">\(K\)</span> has its image under <span class="math" data-index="585" data-tex="\(T\)">\(T\)</span> in a fixed compact set. The order-<span class="math" data-index="586" data-tex="\(m\)">\(m\)</span> bound for <span class="math" data-index="587" data-tex="\(u\)">\(u\)</span>, (1.2), and Fourier inversion give</p>
-<span class="math math-display" id="eq-6.2" data-index="588" data-tex="\[
+<span class="math math-display" data-index="588" data-tex="\[
  |\varphi(0)|\le D_K p_m(T\varphi)
- \le D&#x27;_K\int_{\mathbb R^n}
+ \le D'_K\int_{\mathbb R^n}
            (1+|\eta|)^m|F(-\eta)F_\varphi(\eta)|\,d\eta
         \quad(\operatorname{supp}\varphi\subset K).
  \tag{6.2}
-\]">\[
+\]" id="eq-6.2">\[
  |\varphi(0)|\le D_K p_m(T\varphi)
- \le D&#x27;_K\int_{\mathbb R^n}
+ \le D'_K\int_{\mathbb R^n}
            (1+|\eta|)^m|F(-\eta)F_\varphi(\eta)|\,d\eta
         \quad(\operatorname{supp}\varphi\subset K).
  \tag{6.2}
@@ -944,64 +944,64 @@ Thus</p>
 <p>The second inequality follows by differentiating the inverse Fourier integral for the smooth compact image. Its integral is absolutely convergent.</p>
 <p>Choose a nonnegative smooth probability bump <span class="math" data-index="589" data-tex="\(\theta\)">\(\theta\)</span> positive on a ball, and let
 <span class="math" data-index="590" data-tex="\(\chi=\theta*\check\theta\)">\(\chi=\theta*\check\theta\)</span>, where <span class="math" data-index="591" data-tex="\(\theta\)">\(\theta\)</span> is real. Then <span class="math" data-index="592" data-tex="\(\chi\)">\(\chi\)</span> is a smooth even probability density. Its transform on real arguments is</p>
-<span class="math math-display" id="eq-6.3" data-index="593" data-tex="\[
+<span class="math math-display" data-index="593" data-tex="\[
                      h(\eta)=|F_\theta(\eta)|^2.
  \tag{6.3}
-\]">\[
+\]" id="eq-6.3">\[
                      h(\eta)=|F_\theta(\eta)|^2.
  \tag{6.3}
 \]</span>
 <p>Thus <span class="math" data-index="594" data-tex="\(0\le h\le1\)">\(0\le h\le1\)</span>, <span class="math" data-index="595" data-tex="\(h(0)=1\)">\(h(0)=1\)</span>, and <span class="math" data-index="596" data-tex="\(h\)">\(h\)</span> is rapidly decreasing. Moreover <span class="math" data-index="597" data-tex="\(h(\eta)&lt;1\)">\(h(\eta)&lt;1\)</span> for <span class="math" data-index="598" data-tex="\(\eta\ne0\)">\(\eta\ne0\)</span>. Equality in the triangle bound for <span class="math" data-index="599" data-tex="\(F_\theta\)">\(F_\theta\)</span> would require <span class="math" data-index="600" data-tex="\(e^{-ix\cdot\eta}\)">\(e^{-ix\cdot\eta}\)</span> to have constant phase on the ball where <span class="math" data-index="601" data-tex="\(\theta&gt;0\)">\(\theta&gt;0\)</span>, which is impossible for nonzero <span class="math" data-index="602" data-tex="\(\eta\)">\(\eta\)</span>.</p>
 <p>Evenness and the second-order Taylor bound at zero give, for small <span class="math" data-index="603" data-tex="\(|\eta|\)">\(|\eta|\)</span>,</p>
-<span class="math math-display" id="eq-6.4" data-index="604" data-tex="\[
+<span class="math math-display" data-index="604" data-tex="\[
  h(\eta)\ge e^{-D|\eta|^2}.
  \tag{6.4}
-\]">\[
+\]" id="eq-6.4">\[
  h(\eta)\ge e^{-D|\eta|^2}.
  \tag{6.4}
 \]</span>
 <p>Indeed the first derivatives vanish, <span class="math" data-index="605" data-tex="\(h(0)=1\)">\(h(0)=1\)</span>, and a Taylor remainder first gives <span class="math" data-index="606" data-tex="\(h\ge1-D_1|\eta|^2\)">\(h\ge1-D_1|\eta|^2\)</span>; on a small ball this is at least <span class="math" data-index="607" data-tex="\(e^{-2D_1|\eta|^2}\)">\(e^{-2D_1|\eta|^2}\)</span>. Rapid decrease and strict inequality away from zero give</p>
-<span class="math math-display" id="eq-6.5" data-index="608" data-tex="\[
+<span class="math math-display" data-index="608" data-tex="\[
                    \rho=\sup_{|\eta|\ge1}h(\eta)&lt;1.
  \tag{6.5}
-\]">\[
+\]" id="eq-6.5">\[
                    \rho=\sup_{|\eta|\ge1}h(\eta)&lt;1.
  \tag{6.5}
 \]</span>
 <p>The supremum is attained in a bounded annulus after excluding a tail where <span class="math" data-index="609" data-tex="\(h\)">\(h\)</span> is small.</p>
 <p>For <span class="math" data-index="610" data-tex="\(t\ge1\)">\(t\ge1\)</span> and integer <span class="math" data-index="611" data-tex="\(N\ge1\)">\(N\ge1\)</span>, choose a smooth compact function with transform</p>
-<span class="math math-display" id="eq-6.6" data-index="612" data-tex="\[
+<span class="math math-display" data-index="612" data-tex="\[
                     F_\varphi(\eta)=h((\eta+c)/t)^N.
  \tag{6.6}
-\]">\[
+\]" id="eq-6.6">\[
                     F_\varphi(\eta)=h((\eta+c)/t)^N.
  \tag{6.6}
 \]</span>
 <p>It is the modulation by <span class="math" data-index="613" data-tex="\(e^{-ic\cdot x}\)">\(e^{-ic\cdot x}\)</span> of the <span class="math" data-index="614" data-tex="\(N\)">\(N\)</span>-fold convolution of <span class="math" data-index="615" data-tex="\(t^n\chi(tx)\)">\(t^n\chi(tx)\)</span>. Its support lies in a ball of radius <span class="math" data-index="616" data-tex="\(NR_\chi/t\)">\(NR_\chi/t\)</span>, where <span class="math" data-index="617" data-tex="\(R_\chi\)">\(R_\chi\)</span> contains the support of <span class="math" data-index="618" data-tex="\(\chi\)">\(\chi\)</span>. Fourier inversion and (6.4) give</p>
-<span class="math math-display" id="eq-6.7" data-index="619" data-tex="\[
+<span class="math math-display" data-index="619" data-tex="\[
  (2\pi)^n\varphi(0)=t^n\int h(s)^N\,ds
                            \ge d\,t^nN^{-n/2}
  \tag{6.7}
-\]">\[
+\]" id="eq-6.7">\[
  (2\pi)^n\varphi(0)=t^n\int h(s)^N\,ds
                            \ge d\,t^nN^{-n/2}
  \tag{6.7}
 \]</span>
 <p>for all sufficiently large <span class="math" data-index="620" data-tex="\(N\)">\(N\)</span>: integrate on a ball of radius <span class="math" data-index="621" data-tex="\(N^{-1/2}\)">\(N^{-1/2}\)</span>, on which <span class="math" data-index="622" data-tex="\(h^N\ge e^{-D}\)">\(h^N\ge e^{-D}\)</span>.</p>
 <p>Put <span class="math" data-index="623" data-tex="\(Q=|c|\)">\(Q=|c|\)</span> and</p>
-<span class="math math-display" id="eq-6.8" data-index="624" data-tex="\[
+<span class="math math-display" data-index="624" data-tex="\[
  S_t(c)=\sup_{\substack{a\in\mathbb R^n\\|a|&lt;t}}|F(c+a)|.
  \tag{6.8}
-\]">\[
+\]" id="eq-6.8">\[
  S_t(c)=\sup_{\substack{a\in\mathbb R^n\\|a|&lt;t}}|F(c+a)|.
  \tag{6.8}
 \]</span>
 <p>In the integral (6.2), substitute <span class="math" data-index="625" data-tex="\(\eta=-c+ts\)">\(\eta=-c+ts\)</span>. On <span class="math" data-index="626" data-tex="\(|s|&lt;1\)">\(|s|&lt;1\)</span>, the kernel factor is at most <span class="math" data-index="627" data-tex="\(S_t(c)\)">\(S_t(c)\)</span>; the equality of the open-ball supremum and the closed-ball maximum follows by continuity. The elementary estimate
 <span class="math" data-index="628" data-tex="\(1+|-c+ts|\le(1+Q)t(1+|s|)\)">\(1+|-c+ts|\le(1+Q)t(1+|s|)\)</span> gives</p>
-<span class="math math-display" id="eq-6.9" data-index="629" data-tex="\[
+<span class="math math-display" data-index="629" data-tex="\[
  I_{\mathrm{near}}\le D(1+Q)^m t^{n+m}S_t(c).
  \tag{6.9}
-\]">\[
+\]" id="eq-6.9">\[
  I_{\mathrm{near}}\le D(1+Q)^m t^{n+m}S_t(c).
  \tag{6.9}
 \]</span>
@@ -1009,32 +1009,32 @@ Thus</p>
 <p>On <span class="math" data-index="631" data-tex="\(|s|\ge1\)">\(|s|\ge1\)</span>, real Fourier growth of the order-<span class="math" data-index="632" data-tex="\(M\)">\(M\)</span> kernel bounds <span class="math" data-index="633" data-tex="\(|F(c-ts)|\le D(1+|c-ts|)^M\)">\(|F(c-ts)|\le D(1+|c-ts|)^M\)</span>. Rapid decrease of <span class="math" data-index="634" data-tex="\(h\)">\(h\)</span> gives an integer <span class="math" data-index="635" data-tex="\(N_0\)">\(N_0\)</span> with
 <span class="math" data-index="636" data-tex="\(\int(1+|s|)^{m+M}h(s)^{N_0}ds&lt;\infty\)">\(\int(1+|s|)^{m+M}h(s)^{N_0}ds&lt;\infty\)</span>.
 Together with (6.5), for <span class="math" data-index="637" data-tex="\(N\ge N_0\)">\(N\ge N_0\)</span> this proves</p>
-<span class="math math-display" id="eq-6.10" data-index="638" data-tex="\[
+<span class="math math-display" data-index="638" data-tex="\[
  I_{\mathrm{far}}\le
        D(1+Q)^{m+M}t^{n+m+M}\rho^{\,N-N_0}.
  \tag{6.10}
-\]">\[
+\]" id="eq-6.10">\[
  I_{\mathrm{far}}\le
        D(1+Q)^{m+M}t^{n+m+M}\rho^{\,N-N_0}.
  \tag{6.10}
 \]</span>
 <p>Fix the desired <span class="math" data-index="639" data-tex="\(\varepsilon&gt;0\)">\(\varepsilon&gt;0\)</span>, set <span class="math" data-index="640" data-tex="\(t=\varepsilon\log Q\)">\(t=\varepsilon\log Q\)</span>, and choose</p>
-<span class="math math-display" id="eq-6.11" data-index="641" data-tex="\[
+<span class="math math-display" data-index="641" data-tex="\[
           N=\lceil L\log Q\rceil,\qquad
           L&gt;\frac{m+M+2}{-\log\rho}.
  \tag{6.11}
-\]">\[
+\]" id="eq-6.11">\[
           N=\lceil L\log Q\rceil,\qquad
           L&gt;\frac{m+M+2}{-\log\rho}.
  \tag{6.11}
 \]</span>
 <p>All tests have one fixed support on a large tail, since <span class="math" data-index="642" data-tex="\(N/t\)">\(N/t\)</span> is bounded. Thus the constants in (6.2) are independent of <span class="math" data-index="643" data-tex="\(c\)">\(c\)</span> there. By (6.7), their value at zero is bounded below by a positive multiple of <span class="math" data-index="644" data-tex="\((\log Q)^{n/2}\)">\((\log Q)^{n/2}\)</span>. By (6.10) and (6.11), the far integral tends to zero, since it is bounded by a logarithmic power times <span class="math" data-index="645" data-tex="\(Q^{-2}\)">\(Q^{-2}\)</span>. Equations (6.2), (6.7) and (6.9) consequently force</p>
-<span class="math math-display" id="eq-6.12" data-index="646" data-tex="\[
+<span class="math math-display" data-index="646" data-tex="\[
                     S_t(c)\ge
        d_\varepsilon Q^{-m}(\log Q)^{-m-n/2}
                        \quad(Q\text{ sufficiently large}).
  \tag{6.12}
-\]">\[
+\]" id="eq-6.12">\[
                     S_t(c)\ge
        d_\varepsilon Q^{-m}(\log Q)^{-m-n/2}
                        \quad(Q\text{ sufficiently large}).
@@ -1050,4 +1050,4 @@ Together with (6.5), for <span class="math" data-index="637" data-tex="\(N\ge N_
 <li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, Springer.</li>
 <li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer.</li>
 </ul>
-<footer id="reproduce"><h2>Sources and figures</h2><p><a href="src/finite-order-convolution-solutions-and-logarithmic-windows.md" download>Download the complete lesson source</a>. Original proofs, examples, solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a href="reproduce/L175/finite-order-convolution-solvability-formal.md" download>finite-order-convolution-solvability-formal.md</a></li><li><a href="reproduce/L175/finite-order-convolution-solvability-learner.md" download>finite-order-convolution-solvability-learner.md</a></li><li><a href="reproduce/L175/make_figures240.py" download>make_figures240.py</a></li><li><a href="reproduce/L175/check_numerics240.py" download>check_numerics240.py</a></li><li><a href="reproduce/L175/README-reproduce.md" download>README-reproduce.md</a></li><li><a href="reproduce/L175/LICENSE.txt" download>LICENSE.txt</a></li><li><span class="unlinked">DejaVu-font-license.txt</span></li><li><a href="reproduce/L175/figures/geometry240.json" download>figures/geometry240.json</a></li><li><a href="reproduce/L175/figures/real-zeros-and-logarithmic-profiles.png" download>figures/real-zeros-and-logarithmic-profiles.png</a></li><li><a href="reproduce/L175/figures/real-zeros-and-logarithmic-profiles.svg" download>figures/real-zeros-and-logarithmic-profiles.svg</a></li><li><a href="reproduce/L175/figures/growing-weights-and-a-fixed-derivative-order.png" download>figures/growing-weights-and-a-fixed-derivative-order.png</a></li><li><a href="reproduce/L175/figures/growing-weights-and-a-fixed-derivative-order.svg" download>figures/growing-weights-and-a-fixed-derivative-order.svg</a></li></ul><p><span class="unlinked">MathJax license</span> · <span class="unlinked">Course sources and terms</span></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>
+<footer id="reproduce"><h2>Sources and figures</h2><p><a download="" href="src/finite-order-convolution-solutions-and-logarithmic-windows.md">Download the complete lesson source</a>. Original proofs, examples, solutions and figures use CC0 1.0. The font license retains its own terms.</p><ul><li><a download="" href="reproduce/L175/finite-order-convolution-solvability-formal.md">finite-order-convolution-solvability-formal.md</a></li><li><a download="" href="reproduce/L175/finite-order-convolution-solvability-learner.md">finite-order-convolution-solvability-learner.md</a></li><li><a download="" href="reproduce/L175/make_figures240.py">make_figures240.py</a></li><li><a download="" href="reproduce/L175/check_numerics240.py">check_numerics240.py</a></li><li><a download="" href="reproduce/L175/README-reproduce.md">README-reproduce.md</a></li><li><a download="" href="reproduce/L175/LICENSE.txt">LICENSE.txt</a></li><li><span class="unlinked">DejaVu-font-license.txt</span></li><li><a download="" href="reproduce/L175/figures/geometry240.json">figures/geometry240.json</a></li><li><a download="" href="reproduce/L175/figures/real-zeros-and-logarithmic-profiles.png">figures/real-zeros-and-logarithmic-profiles.png</a></li><li><a download="" href="reproduce/L175/figures/real-zeros-and-logarithmic-profiles.svg">figures/real-zeros-and-logarithmic-profiles.svg</a></li><li><a download="" href="reproduce/L175/figures/growing-weights-and-a-fixed-derivative-order.png">figures/growing-weights-and-a-fixed-derivative-order.png</a></li><li><a download="" href="reproduce/L175/figures/growing-weights-and-a-fixed-derivative-order.svg">figures/growing-weights-and-a-fixed-derivative-order.svg</a></li></ul><p><span class="unlinked">MathJax license</span> · <span class="unlinked">Course sources and terms</span></p></footer></main><script>addEventListener("load",async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;await document.fonts.ready;for(const e of document.querySelectorAll(".math")){if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute("role","group");e.setAttribute("aria-label","Mathematical expression; scroll horizontally to read the whole expression");}}});</script></body></html>

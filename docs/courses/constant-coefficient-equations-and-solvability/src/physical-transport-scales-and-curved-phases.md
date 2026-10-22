@@ -1,6 +1,6 @@
 # Physical transport scales and curved phases
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Original expression: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Original expression: CC0.*
 
 The rational frequency path and its linear limiting polynomial now give local approximate solutions in physical space. Each solution occupies a small interval around one positive normal coordinate. Its residual is flat both in the parameter and on two prescribed switching curves, while its Q-image is a nonzero scalar multiple of the mode. We prove the rescaling, the highest-coefficient condition needed for the curve correction, and the error estimates that the later assembly will use.
 

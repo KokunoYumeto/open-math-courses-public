@@ -1,6 +1,6 @@
 # Weighted control on the negative half-space
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 The analytic-branch estimate controls a supremum of one-dimensional restriction norms. We now turn it into a norm estimate on the whole negative half-space, with an arbitrary moderate weight in all frequency variables. The two changes have separate mechanisms: a spatial cutoff brings complex frequencies back to the real axis, and a compact modulated convolution window localizes the weight. The final argument uses the exact disintegration already proved.
 

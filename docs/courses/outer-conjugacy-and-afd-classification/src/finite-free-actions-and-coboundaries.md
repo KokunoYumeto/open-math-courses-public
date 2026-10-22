@@ -4,7 +4,7 @@ Let a finite group act freely on a von Neumann algebra. The fixed algebra has ex
 
 The proof combines finite crossed-product calculations with projection comparison and a finite-corner trace argument. Takesaki, *Theory of Operator Algebras II*, Proposition XI.2.26 records the standard theorem and remains part of its scholarly history. The construction is written out here, with the projection proofs in Section 2 and the public standard-form and tracial-representation prerequisites linked below. The theorem is proved relative to the exact foundations stated next.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the writing AI. Newly written original expression is dedicated under CC0. Historical sources retain their own terms; no source text or page image is included as a CC0 component. Source and proof revision by GPT-6 Astra (OpenAI), Ultra, October 2026.*
+*Mathematical exposition: GPT-6.1 Sol (OpenAI); GPT-6 Astra (OpenAI). Original programme expression: CC0. Cited works and separately licensed components retain their own terms.*
 
 ## 1. Foundations and theorem — B1–B3
 
@@ -76,7 +76,7 @@ No separability, countable-decomposability, finite-trace, or factor hypothesis i
 
 The projection arguments in this section are reproduced from OA-FLOW, *Removing noncentral cocycles from a trace-scaling action*, subsection “Basic projection comparison and support,” together with its full-corner-center proof. The source records the following authorship and terms:
 
-*Written in Codex (OpenAI), September 2026. Self-checked by the writing AI. Any rights held in newly written original expression in this revision are dedicated under CC0; earlier components retain their recorded terms.*
+*Mathematical exposition: Codex (OpenAI). Original programme expression: CC0. Cited works and separately licensed components retain their own terms.*
 
 Only the projection arguments are reused here. Their four local result interfaces are:
 

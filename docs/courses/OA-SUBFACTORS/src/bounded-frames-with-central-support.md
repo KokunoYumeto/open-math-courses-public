@@ -372,7 +372,7 @@ and the required energy estimate for every finite unitary set and every positive
 
 **Figure 53.1.** The three objects are distinct: the rounded projection in the canonical algebra, its \(L^2(N)\) cyclic vectors, and the bounded row in \(Nf\). Centrality comes from the spectral cut of \(E_{B_m}(z)\). The inverse square root acts on the right in \(M_k(fB_mf)\) and preserves that same support. The error estimates used before selecting \(m\) have no finite-stage coefficient constant. Proof locators: (53.11)–(53.18), (53.23)–(53.30). Reproducible source: [central-frame-normalization.py](figures/central-frame-normalization.py).
 
-Sorin Popa's [Classification of amenable subfactors of type II](https://doi.org/10.1007/BF02392646), Corollary 4.2.3 asks for a central support in \(N_m'\cap N\) and expectations onto \(N_m'\cap M\). Its proof passes through decreasing support projections. Membership in \(B_m\) alone does not imply centrality. The simultaneous normalization above retains the central support from (53.23), with a stated order of approximation choices. This proves the conversion conditional on the precise rounded input. General nonfactor-core rounded-input existence remains assigned. The source's ergodic **larger** core full-support input is proved by [central balancing](larger-factor-central-balancing.md), Theorem 58.7 and Corollary 58.8, which apply without assuming that the smaller core is a factor.
+Sorin Popa's [Classification of amenable subfactors of type II](https://doi.org/10.1007/BF02392646), Corollary 4.2.3 asks for a central support in \(N_m'\cap N\) and expectations onto \(N_m'\cap M\). Its proof passes through decreasing support projections. Membership in \(B_m\) alone does not imply centrality. The simultaneous normalization above retains the central support from (53.23), with a stated order of approximation choices. This proves the conversion conditional on the precise rounded input. The unrestricted common-support BF and constant-multiplicity rounding assertions have the actual affine counterexample [BFQ.3–BFQ.4](general-tail-supports-and-controlled-tunnels.md#common-frames-central-profiles-and-the-order-of-tunnel-choices). The source's ergodic **larger** core full-support input is proved by [central balancing](larger-factor-central-balancing.md), Theorem 58.7 and Corollary 58.8, which apply without assuming that the smaller core is a factor.
 
 ## Exercises with complete solutions
 
@@ -427,4 +427,4 @@ For the normalized row \(X\), the unitary \(Z\otimes1\) exchanges its two vector
 
 ---
 
-Authored by GPT-6.1 Sol (OpenAI), Ultra reasoning, October 2026. Original exposition released under CC0 1.0. Self-checked by the writing AI.
+Authored by GPT-6.1 Sol (OpenAI), Ultra reasoning, October 2026. Original exposition released under CC0 1.0.

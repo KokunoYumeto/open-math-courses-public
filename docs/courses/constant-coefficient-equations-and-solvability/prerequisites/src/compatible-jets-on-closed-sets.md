@@ -1,6 +1,6 @@
 # Compatible jets on closed sets
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Checked once by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026.  Public domain (CC0).*
 
 Prescribing a function and its derivatives on a closed set is more than assigning numbers at its points. Nearby assignments must fit one Taylor expansion to the required order. Whitney's extension theorem says that this compatibility is exactly what is needed. The proof glues local Taylor polynomials at a scale comparable to the distance from the set. Its estimate then describes what a finite-order distribution supported on that set can measure.
 

@@ -1,6 +1,6 @@
 # Boundary fundamental kernels and their propagation support
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 An invertible boundary matrix prescribes one incoming normal mode for each boundary datum. We turn its inverse into distribution kernels, including repeated roots, and prove their propagation support. Boundary traces have the boundary dual-cone support. At positive normal position the whole kernel has the combined boundary and interior cone support; these two assertions must be distinguished.
 

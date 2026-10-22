@@ -1,20 +1,20 @@
 # Complete supplied proof for L127
 
-The argument below uses the precise real CD034 and selected orientation/right-cap hypotheses. The finite support-preserving cup/wedge correction and compact top-form normalization construct form duality and identify its actual map with the unshifted right cap. With the corrected annular calculation in L126, this gives the real normal-first tube coefficient. 
+The argument below uses the precise real CD034 and selected orientation/right-cap hypotheses. The finite support-preserving cup/wedge correction and compact top-form normalization construct form duality and identify its actual map with the unshifted right cap. With the corrected annular calculation in [L126](../AN02-L126.html), this gives the real normal-first tube coefficient.
 
-These entries retain their lower hypotheses. Integral descent, rational-form spanning, the particular affine C8 representative, the historical coefficient convention, component constancy, recursive prerequisite closure and whole-course completion are separate. Exposition: GPT-6.1 Sol (OpenAI), Ultra, October 2026; CC0-1.0. [L124](../AN02-L124.html) retains the complete selected programme context; [L125](../AN02-L125.html) supplies the ordinary finite-chain geometric H proof.
+The statements use the specified orientation, Thom and comparison hypotheses. Integral descent, rational-form spanning, the particular affine C8 representative, coefficient conventions and component constancy require their additional arguments. Exposition: GPT-6.1 Sol (OpenAI), Ultra, October 2026; CC0-1.0. [L124](../AN02-L124.html) gives the projective-exhaustion context; [L125](../AN02-L125.html) proves the geometric finite-chain H statement.
 
 ---
 
 ## Compact forms and the unshifted right cap
 
-A real-coefficient comparison, 5 October 2026. The original exposition and original figures are dedicated under CC0 1.0. 
+A real-coefficient comparison, 5 October 2026. The original exposition and original figures are dedicated under CC0 1.0.
 
 ### FC0. The exact assertion and incoming entries
 
 Let \(M\) be an oriented smooth, Hausdorff, second-countable manifold without boundary, of real dimension \(N\). For the integration isomorphisms below assume the ordinary CD034 comparison on \(M\) and every \(M\setminus K\), \(K\) compact. This hypothesis is already established by CD034 for open Euclidean domains and open projective domains. In particular it covers the actual real manifolds \(U,Y,V=U\setminus Y\) of CO046, with \(N=2d,2d-2,2d\), respectively. Nothing below presumes that \(U\) has homology vanishing, that rational forms span cohomology, or that an affine cycle is a projective normal tube.
 
-We consume the exact DGCHAR compact-set orientation classes and right-cap isomorphism of the selected duality §§1–2 admitted through TP041. The incoming orientation class is
+We consume the exact DGCHAR compact-set orientation classes and right-cap isomorphism of the selected duality §§1–2 specified through TP041. The incoming orientation class is
 
 \[
  \mu_K\in H_N(M,M\setminus K;\mathbb R), \tag{FC1}
@@ -39,7 +39,7 @@ For \(\alpha\in\Omega_c^p(M;\mathbb R)\) closed and \(\eta\in\Omega^{N-p}(M;\mat
 
 The order on the right is **\(\eta\) followed by \(\alpha\)**. The left denotes the period of any finite smooth representative of the indicated ordinary real homology class. We prove that such a representative exists and that the period does not depend on the choice. Degrees are ordinary, including \(p=0,N\). Outside \(0\leq p\leq N\) the form groups are zero. No shifted cap or locally finite ordinary chain is silently used.
 
-The full CO046 candidate was read before this construction. It leaves CO24 and CO27 open. Its exact pre-integration snapshot is private input `CO046-root-candidate.md`, SHA256 `540BAE0BABCE6681CA82340F6CFEE4265BA9BCB81D32F946C324DE8843B3D85C`. The current consumed owner-intake047 copy, SHA256 21281C1A39A09D3702D330DD08AAFBA6C2FBC277CAC345C4C51D612DCF0A1C80, inserts exactly one space repairing a TeX closing-brace escape in CO16; every other proof byte is identical. Both copies are retained, and the new span was read. Our compact integration argument below restates the relevant reductions rather than treating that new candidate as an already admitted theorem.
+The compact integration argument below proves the comparison identities CO24 and CO27 from the stated de Rham, orientation and right-cap hypotheses. Its reductions include the compact form kernel sequence, open-complement identification and relative-cone calculation used in CO16.
 
 ### FC1. Chain and cup conventions
 
@@ -287,9 +287,9 @@ when the real ambient dimension is even. **Relative to those separately written 
 
 The equality follows by testing every closed complementary form and applying ordinary real CD034 detection; the tube is the exact finite normal-first construction from the selected Thom/tubular provider. Equivalently, for the **real singular connecting map defined in CO046 by transport through \(I_c\)**, \(D_{\rm right,V}^{p+1}\delta_{\mathbb R}=(-1)^p\tau D_{\rm right,Y}^{p}\). This is not a new assertion about an independently specified rational or integral connecting map.
 
-The common-constants Čech approach remains useful: on the increasing-index grids in CD5, the product of bidegrees \((a,b),(c,e)\) takes the factor \((-1)^{bc}\), and restrictions and constant embeddings are multiplicative. Absolute multiplicativity alone would leave a relative mapping-cone ambiguity unless its homotopy or relative comparison were supplied. FC12–FC17 provide such an actual carrier-preserving homotopy directly, so we have not needed to complete a separate relative Čech construction. No existing Čech, ordinary pair/Thom, inside-layer, or closed–open alternative has been deleted or renamed a failure.
+The common-constants Čech approach remains useful: on the increasing-index grids in CD5, the product of bidegrees \((a,b),(c,e)\) takes the factor \((-1)^{bc}\), and restrictions and constant embeddings are multiplicative. Absolute multiplicativity alone would leave a relative mapping-cone ambiguity unless its homotopy or relative comparison were supplied. FC12–FC17 provide such an actual carrier-preserving homotopy directly, so we have not needed to complete a separate relative Čech construction.
 
-This proof establishes only the real normalized comparison. It neither descends compact cochain duals to rational coefficients nor determines integral torsion. It does not prove the actual affine C8 representative, rational-form completeness, the unresolved historical coefficient convention, general component constancy, or recursive lower closure. Homology vanishing \(H\), when used later, still requires the specified geometric hypothesis. 
+This proof establishes only the real normalized comparison. It neither descends compact cochain duals to rational coefficients nor determines integral torsion. It does not prove the actual affine C8 representative, rational-form completeness, the unresolved historical coefficient convention, general component constancy, or recursive lower closure. Homology vanishing \(H\), when used later, still requires the specified geometric hypothesis.
 
 ### FC8. Exact credits and terms
 

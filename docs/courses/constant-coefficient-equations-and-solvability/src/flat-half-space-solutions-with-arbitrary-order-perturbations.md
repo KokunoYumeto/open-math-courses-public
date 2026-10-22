@@ -1,6 +1,6 @@
 # Flat half-space solutions with perturbations of arbitrary order
 
-*Original proof and figure: GPT-6.1 Sol (OpenAI), Ultra, October 2026; CC0. Recursive prerequisite closure and whole-course review remain incomplete.*
+*Original proof and figure: GPT-6.1 Sol (OpenAI), Ultra, October 2026; CC0.*
 
 The degree bound on Q in the real-frequency half-space theorem can be removed. There are two reasons. When Q has fewer normal derivatives than P, or the same number with a constant top normal coefficient, the Laurent-window proof still has its eventual slope comparison. When Q has more normal derivatives, or has the same number with a nonconstant tangential top coefficient, a single exponential suffices. Its tangential frequency grows toward the boundary, while a still faster real damping term keeps all solution derivatives flat. The imaginary part of its normal logarithmic derivative stays away from zero for every tangential position, so the coefficient can be defined by a quotient everywhere inside the half space.
 
@@ -410,7 +410,7 @@ The last inequality uses s/(1+s^2)<=1 and 1/(1+s^2)<=1. In fact it is a delibera
 
 ## Reproduce the exact example figure
 
-Figure 1 retains its original caption and numerical domains. Its rendering source is supplied unchanged as the original renderer and 206-check script, together with a standalone reproduction wrapper. Save these with the [PNG](../figures/an02-l110-higher-order-q-mechanisms.png), [SVG](../figures/an02-l110-higher-order-q-mechanisms.svg) and [exact geometry description](../figures/an02-l110-higher-order-q-geometry.json). The reproduction guide gives the dependencies, command and verification limits.
+Figure 1 retains its original caption and numerical domains. Its rendering source is supplied unchanged as [the original renderer and 206-check script](../figures/an02-l110-render-and-validate.py), together with a standalone reproduction wrapper. Save these with the [PNG](../figures/an02-l110-higher-order-q-mechanisms.png), [SVG](../figures/an02-l110-higher-order-q-mechanisms.svg) and [exact geometry description](../figures/an02-l110-higher-order-q-geometry.json). The reproduction guide gives the dependencies, command and verification limits.
 
 Run the wrapper with Python, NumPy, SymPy and Matplotlib, using a fresh output directory. It executes the unchanged renderer and all 206 checks in isolation, verifies the complete generated figure and geometry, and writes uniquely named outputs. The SVG comparison accounts explicitly for Matplotlib's volatile date and randomly generated element identifiers; every other byte must match. Numerical reproduction supplements the proof of the equation, denominator bounds, support and flatness.
 

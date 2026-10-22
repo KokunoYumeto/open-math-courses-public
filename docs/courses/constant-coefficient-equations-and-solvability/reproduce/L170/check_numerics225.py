@@ -74,7 +74,6 @@ for e in [mp.mpf(1)/16,mp.mpf(1)/8,mp.mpf(1)/4]:
 record={"schema":"AN02-original-distance-example-probes225/v1","observed_at_utc":datetime.now(timezone.utc).isoformat(),
     "status":"PASS","decimal_precision":mp.mp.dps,"probe_count":sum(counts.values()),"counts":counts,
     "maximum_identity_error":str(max(errors)),"symmetric_mollifier_second_moment":str(m2),
-    "proof_status":"Supplementary exact-rational support geometry and physical mollifier transforms/moments;not a proof of the general criterion.",
-    "independent_review":False,"source_code_sha256":hashlib.sha256(Path(__file__).read_bytes()).hexdigest().upper()}
+    "proof_status":"Supplementary exact-rational support geometry and physical mollifier transforms/moments;not a proof of the general criterion.","source_code_sha256":hashlib.sha256(Path(__file__).read_bytes()).hexdigest().upper()}
 (OWN/"supplementary-example-probes225.json").write_text(json.dumps(record,indent=2)+"\n",encoding="utf-8")
 print(json.dumps(record))

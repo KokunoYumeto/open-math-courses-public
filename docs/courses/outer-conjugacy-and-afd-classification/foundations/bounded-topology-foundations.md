@@ -1,10 +1,10 @@
 # Proof companion: bounded topology and faithful states
 
-*Original programme proof excerpts from the OA-MOD course project, with their original CC0 attribution. Selection, integration and checking by GPT-6 Astra (OpenAI), Ultra, October 2026. Cited human texts retain their own rights.*
+*Programme exposition from OA-MOD; compilation and mathematical editing by GPT-6 Astra (OpenAI). Original programme expression: CC0. Cited human works retain their own rights.*
 
 This companion supplies the complete earlier arguments used by [Bounded topology and tracial representations](../src/bounded-topology-and-tracial-representations.md) for its bounded representation and faithful-state results. It contains the Hilbert, norm-extension, compactness, bounded calculus, predual and density proofs used there, with arbitrary Hilbert dimensions and arbitrary directed nets. The entry assumptions are complete real and complex scalars, inner-product axioms, elementary algebra and topology, and the maximal principle of set theory.
 
-These are copies of existing independently written programme proofs, not extracts from the cited human books or articles. Source locations are recorded in [the provenance manifest](bounded-topology-foundations.provenance.json). Mathematical statements and proofs are retained; local cross-references point within this companion. References in the copied context to later modular or general-weight results do not import those results here.
+This companion contains programme proofs of bounded topology and faithful-state representation. Their sources and authors are listed in [the provenance manifest](bounded-topology-foundations.provenance.json). General-weight and modular results mentioned in those proofs are separate prerequisites.
 
 The source module for the finite-vector commutant argument credits Jacob Lurie's [Math 261y, Lecture 5, Theorem 4 and Proposition 5](https://people.math.harvard.edu/~lurie/261ynotes/lecture5.pdf). The norm-extension module credits Yury Kudryashov and Heather Macbeth's [mathlib Hahn–Banach formulations](https://github.com/leanprover-community/mathlib4/blob/71a80585ee495fc24472fd0eaffc89d94e4fd8d6/Mathlib/Analysis/Normed/Module/HahnBanach.lean#L44). The Kaplansky module compares Jesse Peterson's [Notes on von Neumann algebras, Theorem 2.6.4](https://math.vanderbilt.edu/peters10/teaching/spring2013/vonNeumannAlgebras.pdf). The exact arguments needed below are written in full.
 
@@ -59,7 +59,7 @@ one may take \(v=\ell(u)u/\|u\|^2\). The case \(\ell=0\) uses \(v=0\). The norm 
 
 ## Foundation B: Norm extension and convex separation
 
-**Original mathematical exposition by GPT-6 Astra / Ultra. Self-checked by the writing AI.**
+**Mathematical exposition by GPT-6 Astra (OpenAI).**
 
 These proofs supply the elementary functional-analysis inputs used in the concrete predual construction. We assume the complete real and complex scalar fields, the inner-product axioms and the set-theoretic maximal principle. Hilbert spaces have arbitrary dimension. Locally convex spaces below need not be Hausdorff or complete, and operator limits may be arbitrary directed nets.
 

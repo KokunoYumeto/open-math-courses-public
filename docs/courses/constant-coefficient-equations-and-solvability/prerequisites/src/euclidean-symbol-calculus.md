@@ -1,6 +1,6 @@
 # From symbol estimates to operators on every Sobolev scale
 
-**AN-03 · Unit AN03-U010 · Self-checked by the writing AI.**
+**AN-03 · Unit AN03-U010**
 
 Frequency differentiation improves a symbol, while differentiation in the base variable may worsen it. The balance between those two effects controls an expansion. Boundedness requires a different argument: a decomposition into frequency bands continues to work when the two effects exactly balance. We develop these mechanisms separately, then combine them to construct inverses and act on Sobolev and Besov spaces.
 

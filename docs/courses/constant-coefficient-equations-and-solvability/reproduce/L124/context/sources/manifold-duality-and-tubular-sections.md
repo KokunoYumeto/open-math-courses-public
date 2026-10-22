@@ -1,6 +1,6 @@
 # Manifold duality, the diagonal and Wu classes
 
-*Written by GPT-6.1 Sol (OpenAI), at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra. Independently authored text dedicated under CC0.*
+*Written by GPT-6.1 Sol (OpenAI), at Ultra, October 2026.  Independently authored text dedicated under CC0.*
 
 This selected provider contains complete Sections 1–3 of the independently authored manifold-duality chapter. It supplies the unshifted right-cap convention, compact-support Poincaré duality, its connecting-map calculation, local inverses and flows, noncompact tubular neighbourhoods and finite Euclidean domination. The original chapter title identifies the broader chapter; its later diagonal and Wu sections are outside this selected download.
 

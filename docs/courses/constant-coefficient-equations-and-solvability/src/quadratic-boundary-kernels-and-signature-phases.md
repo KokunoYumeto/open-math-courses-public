@@ -1,6 +1,6 @@
 # Quadratic boundary kernels and signature phases
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 A nondegenerate real quadratic form can change sign. Its inverse kernel then remembers which side of the real axis was used to approach its characteristic cone. The number of negative squares determines a complex phase; the determinant determines its size. Some real distributions supported on the cone have zero source even though the two complex boundary kernels still give fundamental solutions.
 

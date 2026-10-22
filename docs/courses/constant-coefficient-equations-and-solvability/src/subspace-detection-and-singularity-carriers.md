@@ -1,6 +1,6 @@
 # Subspace detection and singularity carriers
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A homogeneous equation can have solutions that are smooth away from an entire plane and singular at every point of that plane. The relevant algebra is measured in the perpendicular frequency directions. This lesson defines that measurement, proves its continuity and quantitative consequences, and constructs solutions with prescribed singular sets. The construction can retain any fixed finite number of continuous derivatives.
 

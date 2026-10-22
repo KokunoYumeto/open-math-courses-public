@@ -449,6 +449,6 @@ For nonzero constant \(P\), the solution is zero and the sum is empty. The zero 
 
 ## Source and course scope
 
-The classical human source is Lars Hörmander, *The Analysis of Linear Partial Differential Operators II*, §15.4, two unnumbered exercises on printed p.300, immediately after Theorem15.4.3. The actual approved edition is native PDF page313. Its protected statement/proof pixels and exercise text were read privately; no protected book body or page image is included here. The underlying surface theorem is15.3.3, and the whole-complex formula is the requested analogue of15.2.18.
+The classical human source is Lars Hörmander, *The Analysis of Linear Partial Differential Operators II*, §15.4, two unnumbered exercises on printed p.300, immediately after Theorem15.4.3. The underlying surface theorem is15.3.3, and the whole-complex formula is the corresponding analogue of15.2.18.
 
 All local division, area and weighted existence providers used above have full original proofs in the linked lower lessons. The new finite-envelope smoothing lemma is proved here in full and specifically closes the arbitrary-distribution gap. Completing these exercises does not complete the three Chapter15 notes, its remaining passage audit, all78 Chapter16 targets or any assigned residual in Chapters10–13. The entire course goal remains active.

@@ -244,4 +244,4 @@ Popa's *Classification of amenable subfactors of type II*, Section 1.3.6, separa
 - Sorin Popa, [*Classification of amenable subfactors of type II*](https://doi.org/10.1007/BF02392646), Acta Mathematica 172 (1994), 163–255, Sections 1.3.6 and 1.4.3, for distinct nonextremal weight vectors and the extremal opposite-model comparison.
 - Vaughan F. R. Jones, [*Index for subfactors*](https://doi.org/10.1007/BF01389127), Inventiones Mathematicae 72 (1983), 1–25, for the basic construction. The balanced-spin factor, complete tail commutants and generating tunnel used here are constructed and proved above.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Public domain (CC0).*

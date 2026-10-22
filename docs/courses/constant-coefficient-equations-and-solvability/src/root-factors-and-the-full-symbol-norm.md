@@ -1,6 +1,6 @@
 # Root factors and the full symbol norm
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 The size of a polynomial at one frequency can vanish even when its differential operator retains a substantial derivative norm. Each root factor therefore needs a unit margin and a measure of the root's variation. We prove the precise product comparison, including its leading coefficient. Uniformity requires a larger ball on which that coefficient does not vanish.
 

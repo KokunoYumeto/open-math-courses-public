@@ -1,6 +1,6 @@
 # Small Gevrey solutions of the full Cauchy problem
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 The sublinear imaginary-root growth is absorbed by small-Gevrey Fourier decay. We construct solutions with arbitrary data and forcing, including the endpoint, and then prove finite-speed uniqueness and local stabilization.
 

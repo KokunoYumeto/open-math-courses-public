@@ -1,6 +1,6 @@
 # Measuring regularity with weighted Fourier spaces
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A differential equation need not gain the same number of derivatives in every direction. The polynomial \(\xi_1^2+i\xi_2\), for example, grows quadratically in one variable and linearly in the other. A single isotropic Sobolev exponent hides that distinction. We develop spaces whose weights can follow the actual polynomial, while retaining multiplication by smooth cutoffs, completeness, and a useful duality.
 

@@ -1,6 +1,6 @@
 # Weighted interior estimates and operator strength
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Interior regularity comes from combining the equation with the regularity already known for its solution. Cutting off a solution introduces commutators, so the gain must pay for those terms as well as for the data. We prove an estimate that makes both requirements explicit, establish its converses, and then show that equally strong hypoelliptic operators have comparable distances to their complex zeros.
 

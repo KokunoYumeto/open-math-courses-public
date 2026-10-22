@@ -23,6 +23,93 @@ The finite telescoping identity
 \]
 divides out that root and leaves a degree-\(d-1\) polynomial with leading coefficient \(a_d\). Induction completes the factorization. At any root, the number of its occurrences in the product is exactly the first nonzero Taylor order, because all other factors are nonzero there. This proves the multiplicity statement and also the bound of \(d\) on the number of distinct roots. \(\square\)
 
+## Compact distributions acting on Schwartz functions
+
+For a multi-index \(\alpha\), write
+\[
+ P_N(\phi)=\max_{|\alpha|\le N}\sup_{x\in\mathbb R^n}
+                   \langle x\rangle^N|\partial^\alpha\phi(x)|,
+ \qquad \langle x\rangle=(1+|x|^2)^{1/2}.
+ \tag{C1}
+\]
+These seminorms define the Schwartz topology by F1. Compact distributions act on smooth functions through a cutoff equal to one near their support, as proved in U021, B0. All pairings below are complex bilinear.
+
+**Proposition 0.2 (entire transforms and two test operators).** Let \(v\in\mathcal E'(\mathbb R^n)\). Its transform is the regular tempered distribution represented on real space by the entire function
+\[
+ H_v(z)=\langle v(y),e^{-iy\cdot z}\rangle,\qquad z\in\mathbb C^n.
+ \tag{C2}
+\]
+There is an integer \(k\ge0\) such that, for every multi-index \(\alpha\),
+\[
+ |\partial^\alpha H_v(\xi)|\le C_\alpha\langle\xi\rangle^k,
+ \qquad \xi\in\mathbb R^n.
+ \tag{C3}
+\]
+Multiplication by \(H_v\) and the operator
+\[
+ L_v\phi(x)=\langle v(y),\phi(x+y)\rangle
+ \tag{C4}
+\]
+are continuous maps \(\mathcal S\to\mathcal S\). For each \(N\), both output \(P_N\) seminorms are bounded by a constant times \(P_{N+k}(\phi)\).
+
+**Proof.** Fix a smooth compact cutoff \(\kappa\) equal to one near \(\operatorname{supp}v\), with support in \(\{|y|\le R\}\). Continuity of \(v\) on that fixed compact set gives
+\[
+ |\langle v,f\rangle|
+ \le C\max_{|\beta|\le k}\sup_{|y|\le R}
+                       |\partial_y^\beta(\kappa f)(y)|.
+ \tag{C5}
+\]
+The finite-order construction in the proof of U059, Theorem 3.1, establishes the entire function \((2\pi)^{-n}\langle T,e^{iz\cdot y}\rangle\) for every compact distribution \(T\): exponential Taylor series and all derivatives through its finite order converge uniformly on compact parameter sets, and the real restriction represents its inverse transform. That part of the proof uses only the finite-order estimate, independently of the later \(L^p\) hypothesis. Apply it with \(T=v\), replace \(z\) by \(-z\), and multiply by \((2\pi)^n\). It gives (C2), including its real distributional interpretation and
+\[
+ \partial_z^\alpha H_v(z)
+   =\langle v(y),(-iy)^\alpha e^{-iy\cdot z}\rangle.
+ \tag{C6}
+\]
+In (C5), each derivative through order \(k\) of the last integrand, including the cutoff, has at most \(k\) factors from \(\xi\). The bounded \(y\)-polynomials only change the constant depending on \(\alpha\). This proves (C3) with the same \(k\) for every \(\alpha\). The product rule, applied through order \(N\), proves \(P_N(H_v\phi)\le C_NP_{N+k}(\phi)\).
+
+U021, B1, permits every \(x\)-derivative to pass through the compact pairing in (C4). For \(|y|\le R\), the elementary triangle bound gives \(\langle x\rangle\le C_R\langle x+y\rangle\). Apply (C5) to each \(\partial_x^\alpha\phi(x+y)\), \(|\alpha|\le N\). Its needed derivatives have order at most \(N+k\), and its weight of degree \(N\) is bounded by the input weight of degree \(N+k\). This proves \(P_N(L_v\phi)\le C_NP_{N+k}(\phi)\). Both maps are therefore continuous. \(\square\)
+
+**Proposition 0.3 (a compact convolution factor).** For \(u\in\mathcal S'(\mathbb R^n)\) and \(v\in\mathcal E'(\mathbb R^n)\), their distributional convolution is tempered and
+\[
+ \langle u*v,\phi\rangle=\langle u,L_v\phi\rangle,\qquad
+ F(u*v)=H_v\,Fu.
+ \tag{C7}
+\]
+For fixed \(v\), the map \(u\mapsto u*v\) is continuous for both the weak and strong dual topologies of \(\mathcal S'\). For every \(z\in\mathbb C^n\), one also has, as an identity in \(\mathcal D'\),
+\[
+ v*e^{ix\cdot z}=H_v(z)e^{ix\cdot z}.
+ \tag{C8}
+\]
+Complex plane waves in (C8) need not be tempered.
+
+**Proof.** Proposition 0.2 makes the right side of (C7) a continuous functional on \(\mathcal S\). For a compactly supported \(\phi\), \(L_v\phi\) is supported in the compact set \(\operatorname{supp}\phi-\operatorname{supp}v\). U021, B3 and Theorem 1.1, then identifies this pairing with the proper-addition definition of \(u*v\): one compact factor makes the addition map proper on the two supports. Thus it is the original convolution on compact tests. F1's density of compact tests in \(\mathcal S\) makes this tempered extension unique.
+
+The needed test identity is
+\[
+ F(H_v\phi)(x)=\langle v(y),F\phi(x+y)\rangle
+                         =L_v(F\phi)(x).
+ \tag{C9}
+\]
+Indeed, insert (C2) in the integral on the left. Moving \(v\) past that integral is justified by (C5): after a cutoff in \(y\), every \(y\)-derivative through order \(k\) of \(e^{-i(x+y)\cdot\xi}\phi(\xi)\) is bounded by \(C\langle\xi\rangle^k|\phi(\xi)|\), integrable in \(\xi\). On bounded integration sets the smooth-parameter Riemann-sum argument in U021, B1, applies. The displayed integrable majorant makes the tails tend to zero in every one of the finitely many seminorms needed by \(v\), proving the interchange over the whole space. Both sides of (C9) are Schwartz functions by Proposition 0.2 and F2. Consequently
+\[
+ \langle F(u*v),\phi\rangle
+ =\langle u,L_vF\phi\rangle
+ =\langle u,F(H_v\phi)\rangle
+ =\langle H_vFu,\phi\rangle.
+ \tag{C10}
+\]
+Here the transpose convention is exactly F3.
+
+For weak continuity, each output test is the fixed input test \(L_v\phi\). For strong continuity, let \(B\) be any bounded subset of \(\mathcal S\). Proposition 0.2 makes \(L_vB\) bounded and gives the exact seminorm identity
+\[
+ \sup_{\phi\in B}|\langle u*v,\phi\rangle|
+       =\sup_{\psi\in L_vB}|\langle u,\psi\rangle|.
+ \tag{C11}
+\]
+This proves continuity for the topology of uniform convergence on bounded sets.
+
+Finally, U021, B1 and Theorem 1.1, identify convolution of a compact distribution with a smooth function as the smooth function obtained by the compact parameter pairing. Apply this to \(e^{i(x-y)\cdot z}\). Its factor \(e^{ix\cdot z}\) is independent of \(y\), so the remaining pairing is \(H_v(z)\). Compact tests suffice for this argument, whatever the imaginary part of \(z\). \(\square\)
+
 ## Every compact distribution with only trivial convolution factors
 
 Call a factor trivial when it is a nonzero scalar multiple of a shifted point mass. A factorization is trivial when at least one of its factors is trivial. These are the units of the compact-distribution convolution algebra: \(c\delta_a\) has inverse \(c^{-1}\delta_{-a}\). Treating only the mass-one \(\delta_a\) as trivial would make scalar refactorizations of every nonzero input fail the intended condition; the algebraic unit convention makes that distinction explicit.
@@ -395,6 +482,106 @@ Then \(p_j\) is null and \(Jp_j=Jv\). Since \(\lambda_j\to0\), every smooth comp
 
 The target data are \(Jv\). A differential equation can make arbitrary jet assignments incompatible; the corollary preserves data of an actual solution.
 
+## Linear coordinates and homogeneous distributions
+
+For an invertible real matrix \(A\), let \(d=|\det A|\) and define
+\[
+ \langle A^*u,\phi\rangle
+      =d^{-1}\langle u,\phi\circ A^{-1}\rangle.
+ \tag{H3}
+\]
+Thus \(A^*f(x)=f(Ax)\) for a regular distribution. Write \(\tau_hu(x)=u(x-h)\), defined on tests by translation by \(h\), and \(M_hu=e^{ih\cdot x}u\), where \(h\in\mathbb R^n\).
+
+**Proposition 3.1 (coordinate, modulation and dilation laws).** These operations preserve \(\mathcal S'\), and
+\[
+ \begin{aligned}
+ F(A^*u)&=d^{-1}(A^{-T})^*Fu,\\
+ F(\tau_hu)&=e^{-ih\cdot\xi}Fu,&
+ F(M_hu)&=\tau_hFu,\\
+ F(D_ju)&=\xi_jFu,&F(x_ju)&=-D_{\xi_j}Fu .
+ \end{aligned}
+ \tag{H4}
+\]
+For \(t>0\), put \(D_tu=(tI)^*u\). If \(D_tu=t^a u\) for all \(t>0\), with \(a\in\mathbb C\) and \(t^a=e^{a\log t}\), then \(Fu\) is homogeneous of degree \(-a-n\).
+
+**Proof.** The chain rule and \(|Ax|\le C_A|x|\), \(|x|\le C_{A^{-1}}|Ax|\) prove continuity of composition by either \(A\) or \(A^{-1}\) on every Schwartz seminorm, allowing an increase in its index. Translations have the same property by the triangle inequality, and multiplication by \(e^{ih\cdot x}\) has it by the product rule. Hence their transposes define continuous operations on \(\mathcal S'\).
+
+An absolutely convergent change of variables on a Schwartz test gives
+\[
+ F(\phi\circ A^T)(x)=d^{-1}F\phi(A^{-1}x).
+ \tag{H5}
+\]
+The left side of the first identity in (H4), paired with \(\phi\), is \(d^{-1}u(F\phi\circ A^{-1})=Fu(\phi\circ A^T)\). The right side has the same pairing: \(|\det A^{-T}|^{-1}=d\) cancels its displayed \(d^{-1}\). This proves the absolute determinant and inverse transpose for every distribution, including singular ones.
+
+The two test identities
+\[
+ \begin{aligned}
+ F(e^{-ih\cdot\xi}\phi)(x)&=F\phi(x+h),\\
+ F(\phi(\,\cdot+h))(x)&=e^{ih\cdot x}F\phi(x)
+ \end{aligned}
+ \tag{H6}
+\]
+follow respectively by combining exponentials and substituting \(\eta=\xi+h\) in the absolute integral. Transposition proves the translation and modulation laws. Integration by parts and differentiation of that same Schwartz integral, justified in F2–F5, give the last two laws with \(D=-i\partial\).
+
+Set \(A=tI\) in the first law. Homogeneity gives \(t^aFu=t^{-n}D_{1/t}Fu\), so \(D_{1/t}Fu=t^{a+n}Fu\). Replacing \(t\) by \(1/t\) gives degree \(-a-n\), with no restriction on the complex number \(a\). \(\square\)
+
+**Theorem 3.2 (homogeneity away from the origin).** Let \(u\in\mathcal D'(\mathbb R^n)\), \(n\ge1\), and suppose its restriction to \(\mathbb R^n\setminus\{0\}\) is homogeneous of degree \(a\in\mathbb C\). Then \(u\) has a unique tempered extension of its action to Schwartz tests. If that restriction is represented by a smooth function, \(Fu\) is also represented by a smooth function off the origin. In particular, Fourier transformation is a bijection between globally homogeneous distributions of degree \(a\) that are smooth off zero and those of degree \(-a-n\) with the same smoothness property.
+
+**Proof.** Use a smooth compact cutoff \(\chi\) equal to one on \(\{|x|\le1\}\) and zero on \(\{|x|\ge2\}\), as constructed by the cutoff prerequisite. Put \(\psi(x)=\chi(x/2)-\chi(x)\); its support lies in the fixed annulus \(K=\{1\le|x|\le4\}\). Telescoping gives
+\[
+ 1=\chi(x)+\sum_{j=0}^{\infty}\psi(2^{-j}x).
+ \tag{H7}
+\]
+On each compact set the sum has only finitely many nonzero terms. The annular homogeneity definition in [Homogeneous extensions and angular moments](homogeneous-extensions-and-angular-moments.md), Lemma 1.1, gives for \(t=2^j\)
+\[
+ \langle u,\psi(\,\cdot/t)\phi\rangle
+       =t^{a+n}\langle u,\psi\,\phi(t\,\cdot)\rangle
+ \tag{H8}
+\]
+when \(\phi\) is a compact test. This uses homogeneity only on tests supported away from zero.
+
+Let \(k\) be a finite order bound for \(u\) on the fixed annulus. The product and chain rules imply, for \(t\ge1\),
+\[
+ \begin{aligned}
+ |\langle u,\psi\,\phi(t\,\cdot)\rangle|
+ &\le C\sum_{|\beta|\le k}t^{|\beta|}
+                     \sup_{y\in tK}|\partial^\beta\phi(y)|\\
+ &\le C_N P_N(\phi)t^{k-N},\qquad N\ge k .
+ \end{aligned}
+ \tag{H9}
+\]
+The first inequality includes the bounded derivatives of the fixed \(\psi\). The second uses \(|y|\ge t\) on \(tK\). Therefore the absolute value of the \(j\)-th term in (H8) is at most
+\[
+ C_NP_N(\phi)\,2^{j(\operatorname{Re}a+n+k-N)}.
+ \tag{H10}
+\]
+The compact distribution \(\chi u\) is bounded by another finite Schwartz seminorm, directly from its compact finite order. Choose an integer \(N\) large enough for that bound and for \(N\ge k\) and \(N>\operatorname{Re}a+n+k\). Define the action on a Schwartz test by \(\langle u,\chi\phi\rangle\) plus the series of the right sides of (H8). Estimate (H10) is a convergent geometric bound by \(C'P_N(\phi)\), so this defines a tempered distribution. On compact tests (H7) proves agreement with the original \(u\). Compact-test density from F1 proves uniqueness. In particular, no condition on point-supported terms at the origin was needed.
+
+Now suppose \(u=v\) off zero, with \(v\) smooth. The distributional homogeneity identity implies \(v(tx)=t^a v(x)\) pointwise there. Indeed the difference is continuous and has zero integral against every compact test; multiplying a sufficiently small nonnegative bump by a constant complex phase detects any nonzero value. Differentiating the pointwise identity shows
+\[
+ |\partial^\alpha v(x)|\le C_\alpha|x|^{\operatorname{Re}a-|\alpha|},
+                      \qquad |x|\ge1,
+ \tag{H11}
+\]
+by boundedness of every derivative on the unit sphere.
+
+Fix a nonnegative integer \(r\) and a coordinate \(j\). Choose an integer \(m>\operatorname{Re}a+n+r\). Decompose the tempered distribution \(\partial_j^m u\) into
+\[
+ \partial_j^m u=\chi\,\partial_j^m u+g,\qquad
+ g(x)=(1-\chi(x))\,\partial_j^m v(x).
+ \tag{H12}
+\]
+The first term is compact. The second is a smooth function vanishing near zero; by (H11), \(x^\beta g\in L^1\) for \(|\beta|\le r\). To verify the tail integral without a polar-coordinate assumption, partition into dyadic annuli: the annulus of radius \(2^\ell\) has volume at most \(C2^{\ell n}\), whereas the integrand is at most \(C2^{\ell(\operatorname{Re}a-m+|\beta|)}\). The exponents sum to a strictly negative number by the choice of \(m\). Thus the moments are integrable. The equality in (H12) holds first on compact tests and hence on Schwartz tests by density, since all terms are tempered.
+
+The Fourier transform of the compact term is \(C^\infty\) by Proposition 0.2. The ordinary Fourier transform of \(g\) is \(C^r\): each derivative through order \(r\) is the integral of \((-ix)^\beta g(x)e^{-ix\cdot\xi}\); the integrable moments dominate both continuity and the fundamental-theorem difference quotients. Absolute integration against a Schwartz test identifies this ordinary transform with the distributional one. Using Proposition 3.1,
+\[
+ (i\xi_j)^m Fu=F(\partial_j^m u)\in C^r(\mathbb R^n).
+ \tag{H13}
+\]
+On \(\{\xi_j\ne0\}\), division by the smooth nonvanishing \((i\xi_j)^m\) gives a \(C^r\) representative of \(Fu\). As \(r\) increases these representatives coincide: any two are continuous representatives of the same distribution, so the bump argument above forces equality. Since the coordinate sets \(\{\xi_j\ne0\}\) cover the punctured space, \(Fu\) is smooth there.
+
+For global homogeneity, Proposition 3.1 gives the stated complementary degree. Applying the result again to degree \(-a-n\), and using \(F^2=(2\pi)^n\mathcal R\) from F3, proves surjectivity as well as injectivity. Reflection preserves both degree and punctured smoothness, so \((2\pi)^{-n}\mathcal RF\) is the inverse on these spaces. \(\square\)
+
 ## Exercises
 
 **Exercise 1 (foundation: two opposite point sources).** For \(a>0\), give an explicit nontrivial compact convolution factorization of \(\delta_0-\delta_a\) through \(D\delta_0\). Compute the entire quotient transform, including its removable value at zero.
@@ -419,6 +606,16 @@ The target data are \(Jv\). A differential equation can make arbitrary jet assig
 **Exercise 10 (advanced: exact observations on a nonanalytic null solution).** Put \(v(x_1,x_2)=A(x_1)+B(x_2)\), where \(A,B\) are arbitrary smooth functions. Given finitely many points and finitely many derivative observations, construct polynomial solutions of \(D_1D_2p_j=0\) converging to \(v\) in the full smooth topology while preserving those observations exactly. Include a smooth flat nonanalytic \(A\), and explain why a prescribed nonzero mixed derivative at a point is incompatible.
 
 **Exercise 11 (intermediate: a repeated complex factor is a point jet).** For \(C\ne0\), \(a\in\mathbb R\) and distinct \(r,s\in\mathbb C\), expand \(C(D-r)^2(D-s)\delta_a\) into ordinary point derivatives. Determine its full complex zero set and every multiplicity. Explain why \(\delta_0-\delta_a\), \(a>0\), cannot be a finite convolution of these classified first-order factors and units.
+
+**Exercise 12 (intermediate: complex plane waves for a compact difference).** Let \(h>0\), \(c=\rho e^{i\theta}\ne0\), and \(v=\delta_0-c\delta_h\) on the line. Find every \(z\in\mathbb C\) such that \(v*e^{ixz}=0\). Determine which of these plane waves are tempered and when real zeros exist.
+
+**Exercise 13 (intermediate: a shear in physical and frequency coordinates).** For
+\[
+ A=\begin{pmatrix}2&1\\0&1\end{pmatrix},\qquad b=(1,-1),
+\]
+compute \(A^*\delta_0\) and the transform of \(A^*e^{ib\cdot x}\). Explain separately the determinant factor and the covector location.
+
+**Exercise 14 (advanced: the two punctured hypotheses).** On \(\mathbb R^n\), use \(u=1+\delta_0\) to distinguish homogeneity away from zero from global homogeneity, and compute \(Fu\). On \(\mathbb R^2\), use \(w=1\otimes\delta_0\) to show that punctured homogeneity alone does not make the Fourier transform smooth away from zero.
 
 ## Solutions
 
@@ -532,9 +729,35 @@ u=C\bigl[i\delta_a^{(3)}+(2r+s)\delta_a''\\
 \]
 Here \((-i)^3=i\), \((-i)^2=-1\), and \((-i)^1=-i\); thus every ordinary derivative coefficient has its correct sign. The highest coefficient \(Ci\) is nonzero. The transform is \(C e^{-iaz}(z-r)^2(z-s)\), with exactly a double zero at \(r\) and a simple zero at \(s\), since the exponential never vanishes and \(r\ne s\). Its compact convolution has two copies of \((D-r)\delta_0\), one \((D-s)\delta_0\), and the unit \(C\delta_a\). In contrast \(1-e^{-iaz}\) has a simple zero at every \(2\pi k/a\). There are infinitely many of them, so Theorem 1.2 excludes a finite convolution solely of classified first-order factors and units for that forcing.
 
+**Solution 12.** Direct compact pairing gives \(H_v(z)=1-ce^{-ihz}\). Write \(z=s+it\). Its zero condition separates into \(\rho e^{ht}=1\) and \(\theta-hs\in2\pi\mathbb Z\). Thus precisely
+\[
+ z=\frac{\theta+2\pi k}{h}-\frac{i\log\rho}{h},
+                 \qquad k\in\mathbb Z,
+ \tag{C12}
+\]
+work, by (C8). A different choice of \(\theta\) only reindexes the integers. Every zero is simple because \(H_v'(z)=ihce^{-ihz}=ih\ne0\) there. If \(\rho=1\), all zeros are real and their bounded plane waves are tempered. If \(\rho\ne1\), every zero has nonzero imaginary part, so its wave grows exponentially along one direction and fails to be tempered. For a direct test, choose \(\eta\in C_c^\infty(\mathbb R)\) with \(\int e^{izs}\eta(s)\,ds\ne0\); such a bump exists by the continuous nonzero integrand. Pair \(e^{izx}\) with \(\eta(x-R)\). Its absolute pairing is a fixed positive constant times \(e^{-R\operatorname{Im}z}\), whereas each fixed Schwartz seminorm of the translated bump grows at most polynomially in \(|R|\). Taking \(R\) toward the exponentially growing direction contradicts every possible finite-seminorm bound. Hence real zeros and tempered eigenwaves occur exactly when \(\rho=1\).
+
+**Solution 13.** Here \(d=2\), so (H3) gives \(A^*\delta_0=\tfrac12\delta_0\), whose Fourier transform is the constant \(\tfrac12\). For the plane wave, \(b\cdot Ax=(A^Tb)\cdot x=2x_1\), so its transform is \((2\pi)^2\delta_{(2,0)}\). One can also apply (H4) to \((2\pi)^2\delta_b\): the pullback by \(A^{-T}\) sends \(\delta_b\) to \(2\delta_{A^Tb}\), which cancels the outside factor \(1/2\). To verify that pullback directly, pair it with \(\phi\) in (H3) using \(A^{-T}\); the result is \(2\phi(A^Tb)\). A frequency delta therefore changes its location by \(A^T\), while a regular transformed function is composed with \(A^{-T}\). These are the same distributional identity.
+
+**Solution 14.** Off zero, \(u\) is the constant function and has degree zero. Globally, \(D_tu=1+t^{-n}\delta_0\), so it is not homogeneous: the nonzero constant restriction would force degree zero, contradicted by the delta coefficient when \(t\ne1\). The transform is
+\[
+ Fu=(2\pi)^n\delta_0+1.
+ \tag{H14}
+\]
+It is smooth off zero, as Theorem 3.2 requires, but has degree zero there rather than degree \(-n\). This demonstrates why the degree conclusion requires global homogeneity.
+
+For \(w(\phi)=\int_{\mathbb R}\phi(s,0)\,ds\), substitution in its dilation pairing gives \(D_tw=t^{-1}w\). It is tempered by a weighted supremum bound on that integral. Its Fourier transform is
+\[
+ Fw=2\pi\delta_0(\xi_1)\otimes1(\xi_2).
+ \tag{H15}
+\]
+For completeness, \(F\phi(x_1,0)\) is the one-dimensional transform in \(\xi_1\) of the Schwartz function \(q(\xi_1)=\int\phi(\xi_1,\xi_2)\,d\xi_2\). The Schwartz property follows by integrating a weight of degree two more than the desired \(\xi_1\) weight. One-dimensional inversion at zero gives \(\int Fq(x_1)\,dx_1=2\pi q(0)\), which is (H15) on every two-dimensional Schwartz test. Both \(w\) and \(Fw\) are singular along a whole line. For example, near a point \((0,\xi_2)\) with \(\xi_2\ne0\), a continuous representative of \(Fw\) would vanish off that line, hence everywhere by continuity, but a compact test meeting the line has nonzero pairing. Thus \(Fw\) is not smooth on the punctured plane; \(w\) does not satisfy the punctured-smoothness hypothesis.
+
 ## References
 
 - [Convolution as addition of supports](convolution-as-addition-of-supports.md), B0–B3 and Theorem1.1: compact actions, locality and convolution. [Compact forcing, moments and positive error kernels](compact-forcing-moments-and-positive-error-kernels.md), Lemma1.2 and Theorem1.3: complete moment detection and compact primitives. [Fundamental solutions, continuation and approximation](fundamental-solutions-continuation-and-approximation.md), B1–B2 and Lemma3.1: smooth topology, compact duality and separation.
 - [Cauchy kernels and distributional boundary limits](cauchy-kernels-and-boundary-limits.md), Theorem1.1 and Corollary2.2: Cauchy and Taylor formulas. [Boundary flux and weak identities](boundary-flux-and-weak-identities.md), Corollaries2.3–2.4: complex Green, including corners. [Sharp bounds for compact spectra](sharp-bounds-for-compact-spectra.md), Lemma0.1 and the finite-order construction in Theorem3.1: identity principle and entire compact transforms. [Convex supports and convolution cancellation](convex-supports-and-convolution-cancellation.md), Theorem3.1: exact convex hulls for arbitrary complex compact distributions.
 - Supplied [finite algebra](../prerequisites/U011-free-foundations/stable-prerequisite-bridges.md), §§10.1–10.5; [Fourier foundation](../prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.md), F1–F5; [functional foundation](../prerequisites/U011-free-foundations/functional-foundations-U008.md), §5; and the scalar and integration foundations named above. These exact copies retain their stated licences. Lemma0.1 supplies the additional complete polynomial factorization proof.
-- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition (1990), Exercises7.3.1 and7.3.5, printed page390, with answers on pages414–415. The compact factor construction, entire quotient argument, exact support radius, finite-observation correction and eleven graded problems above are independently expressed.
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition (1990), Exercises7.3.1 and7.3.5, printed page390, with answers on pages414–415. The compact factor construction, entire quotient argument, exact support radius, finite-observation correction and fourteen graded problems above are independently expressed.
+
+- [Homogeneous extensions and angular moments](homogeneous-extensions-and-angular-moments.md), Lemma 1.1: positive dilations on punctured tests. Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition (1990), Theorems 7.1.14–7.1.16 and 7.1.18, printed pages 166–168: compact transforms, convolution, Fourier coordinate laws and homogeneous distributions.

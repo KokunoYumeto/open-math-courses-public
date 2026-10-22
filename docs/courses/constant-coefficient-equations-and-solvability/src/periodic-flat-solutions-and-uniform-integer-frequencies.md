@@ -1,6 +1,6 @@
 # Periodic flat solutions and uniform integer frequencies
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Original expression: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Original expression: CC0.*
 
 Integer tangential frequencies make a mode periodic, but rounding them changes the polynomial equation. We construct the transport family uniformly over every possible rounding error. Its limiting phase is independent of that error, so the neighbouring-mode comparison still holds when the rounding parameters jump. The resulting one-sided solution has a globally small coefficient and a nonzero single-mode germ on both sides of the plane used for compact elliptic gluing.
 

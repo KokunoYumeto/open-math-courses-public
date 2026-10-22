@@ -271,7 +271,7 @@ Smooth the proper locally integrable PSH target with a positive compact radial k
 
 ## 7. Exact source and scope
 
-Human scholarly source: Lars Hörmander, *The Analysis of Linear Partial Differential Operators II*, §15.1, Theorem 15.1.6 and Lemmas 15.1.7–15.1.8, printed pp. 277–278. The formal companion compares the actual hypotheses and proof inputs. The source's remark that the density theorem is unused later does not remove it from the assigned target list. All examples, solutions, derivations and figures are original. Protected native pages stay private. The remaining assigned weighted Fourier and division targets, topology, and other course coverage still require completion.
+Human scholarly source: Lars Hörmander, *The Analysis of Linear Partial Differential Operators II*, §15.1, Theorem 15.1.6 and Lemmas 15.1.7–15.1.8, printed pp. 277–278. The formal companion compares the actual hypotheses and proof inputs. All examples, solutions, derivations and figures are original.
 
 <a id="complete-proof"></a>
 
@@ -667,4 +667,4 @@ The error curve is the exact value (GD33), not a pointwise convergence curve. Th
 
 Theorem GD1, Lemma GD2 and Lemma GD3 match Lars Hörmander, *The Analysis of Linear Partial Differential Operators II*, §15.1, Theorem 15.1.6 and Lemmas 15.1.7–15.1.8, printed pp. 277–278; 1983 edition, second revised printing 1990, reprint 2005. The source describes the density theorem as unused in its later arguments; it is nevertheless an assigned course target and is proved here. The dense-set upper comparison is the continuous function \(\phi\), not the number zero.
 
-The earlier compactness proof realizes the source input I, Theorem 4.1.9. The Newtonian proof realizes I, Theorem 3.3.2 in the sign \(\Delta E=\delta\). The weighted existence proof realizes II, Theorem 15.1.1, and the joint holomorphic regularity step was fully written in L145. We supply the pointwise representative issue, global stage-independent-in-\(N\) correction estimate, expanding-ball qualification, both diagonal selections, closure direction and explicit counterexample to pointwise convergence. All exposition, examples and artwork are original; protected native book pages stay private. The remaining weighted Fourier, division, topology and other assigned course targets are not completed by this lesson.
+The earlier compactness proof realizes the source input I, Theorem 4.1.9. The Newtonian proof realizes I, Theorem 3.3.2 in the sign \(\Delta E=\delta\). The weighted existence proof realizes II, Theorem 15.1.1, and the joint holomorphic regularity step was fully written in L145. We supply the pointwise representative issue, global stage-independent-in-\(N\) correction estimate, expanding-ball qualification, both diagonal selections, closure direction and explicit counterexample to pointwise convergence. The exposition, examples and artwork are original.

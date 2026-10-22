@@ -1,6 +1,6 @@
 # Uniqueness in a slab with bounded support
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Polynomial factors determine whether a homogeneous solution can stay in a bounded part of a slab. Moving leading coefficients, branched roots at infinity and Fourier-sector vanishing give a full distributional uniqueness theorem.
 

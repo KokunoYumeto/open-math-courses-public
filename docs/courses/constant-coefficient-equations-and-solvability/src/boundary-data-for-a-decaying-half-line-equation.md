@@ -1,6 +1,6 @@
 # Boundary data for a decaying half-line equation
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 The upper roots of a normal polynomial generate the solutions that decay into the positive half-line. Boundary conditions determine these modes through their remainders modulo that upper factor. We prove the exact criterion for arbitrary data, its contour determinant, the anti-causal forcing formula and a polynomial formula for every boundary jet. Repeated roots need no separate nondegeneracy assumption.
 

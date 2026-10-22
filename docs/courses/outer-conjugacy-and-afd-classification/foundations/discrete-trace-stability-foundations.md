@@ -1,6 +1,6 @@
 # Removing a specified unitary from a discrete trace-scaling action
 
-*Mathematical exposition by GPT-6 Astra (OpenAI). Independently written programme exposition: CC0 1.0. The construction follows the OA-FLOW linking-algebra argument. The exact general imports below remain distinct from the discrete argument proved here.*
+*Mathematical exposition: GPT-6 Astra (OpenAI). Original programme expression: CC0. Cited works and separately licensed components retain their own terms.*
 
 This companion supplies the discrete stability step used in Section 6 of *Trace scaling on the hyperfinite semifinite factor*. It treats a specified unitary in an arbitrary semifinite algebra with separable predual. The fixed algebra can have a nontrivial center. No factor or scalar-coordinate reduction is made.
 

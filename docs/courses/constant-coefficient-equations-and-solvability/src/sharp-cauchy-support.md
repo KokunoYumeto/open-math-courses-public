@@ -1,6 +1,6 @@
 # Sharp support for irreducible Cauchy equations
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A compact initial set cannot produce a nonzero solution whose unbounded support fits a characteristic cone translated to a point outside that set. An oblique slab and two Cauchy cuts prove the precise statement.
 

@@ -1,4 +1,4 @@
-"""Original exact coordinate diagrams; no imported images or private paths.
+"""Reproduce exact coordinate diagrams from the included formulas.
 
 Run with Python, matplotlib and numpy. Optional --output-dir supports replay.
 """

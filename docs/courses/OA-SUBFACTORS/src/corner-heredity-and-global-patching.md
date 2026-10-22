@@ -386,4 +386,4 @@ Thus the \(L^2\) error is below \(1/10\). The finite candidate need not itself s
 
 The remaining work includes general nonfactor-core rounding and BF existence, smooth-representation and full bicommutant equivalences, the full represented/opposite-model trace comparison, and the corrected existential reconstruction at arbitrary depth. The prescribed-prefix and separable generating-tunnel results are now proved in lesson 60. The complete course remains in progress.
 
-*Written by OpenAI with Ultra reasoning effort, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by OpenAI with Ultra reasoning effort, October 2026. Public domain (CC0).*

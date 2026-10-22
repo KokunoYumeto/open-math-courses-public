@@ -836,4 +836,4 @@ For the existing index-ten example, the minimum trace of a nonzero minimal proje
 - Vaughan F. R. Jones, [*Index for subfactors*](https://doi.org/10.1007/BF01389127), Inventiones Mathematicae 72 (1983), 1–25.
 - Dusa McDuff, [*Central sequences and the hyperfinite factor*](https://doi.org/10.1112/plms/s3-21.3.443), Proceedings of the London Mathematical Society 21 (1970), 443–461.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Public domain (CC0).*

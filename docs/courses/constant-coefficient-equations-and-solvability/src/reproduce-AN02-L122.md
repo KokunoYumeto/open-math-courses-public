@@ -6,9 +6,9 @@ Read the full learner and complete formal proof. Every proof, all three worked e
 
 The following original files are supplied without any byte change. The proof download is the entire original CF042 manuscript, including CF1–CF31, all nine sections, examples, solutions, captions and human-source credits.
 
-- [compact-fourier-division-proof.md](../reproduce/L122/compact-fourier-division-proof.md) — 29808 bytes; SHA256 `917DAFE122DCAED17C08C07DFE795CD3B54B64083BD6617254534AAEA0BBACCB`.
+- [compact-fourier-division-proof.md](../reproduce/L122/compact-fourier-division-proof.md) — 29587 bytes; SHA256 `35A1A11D9025A529F857D5EC2FFE58D0AD094F5A73EEF71D7A2033265C6E9C30`.
 - [make_figures.py](../reproduce/L122/make_figures.py) — 6775 bytes; SHA256 `E6CCA0A8AF4EBC8BAA02316B602572ABE3E7B5F853825E11B6E91593BB8ADFB7`.
-- [README-reproduce.md](../reproduce/L122/README-reproduce.md) — 975 bytes; SHA256 `89912DBCE320DE45CA85F072829ABDFD7E1DB1FB69AADA421DFF97CD3DC763A2`.
+- [README-reproduce.md](../reproduce/L122/README-reproduce.md) — 937 bytes; SHA256 `B2333A670C048D12CD86CBE01E4E90F47BBBABBA0F735A95D44E45BE6BB100A4`.
 - [geometry.json](../reproduce/L122/figures/geometry.json) — 1514 bytes; SHA256 `E059CED5DBCFD0B82A670D77F33C8758797058E51A0A5870E3217C76BBBEBE91`.
 - [support-plane-decay.png](../reproduce/L122/figures/support-plane-decay.png) — 77877 bytes; SHA256 `DE80AEE0D866B22928A13E21F850BCE353390B6290CCA92A871A887A45511D19`.
 - [support-plane-decay.svg](../reproduce/L122/figures/support-plane-decay.svg) — 66569 bytes; SHA256 `BB72ADC0C6C1CDB54D212251B841965A417F6C3B47398727640E2D322BE12DBA`.
@@ -37,6 +37,6 @@ Figure CF-C compares D-delta and its second derivative for P(z) = z². Under D =
 
 ## Credits and component terms
 
-Credits and [CC0 notice](../reproduce/L122/LICENSE.txt) retain the original AI author and the human mathematical source. Hörmander, The Analysis of Linear Partial Differential Operators I, second edition, 2003 reprint of the 1990 edition, is the original mathematical source: Theorem 7.3.1; Theorem7.3.2 and Lemma7.3.3; Definition7.3.5 and Lemma7.3.7. The full proof retains those approved locators and its publisher link. Source credit does not transfer the book copyright to CC0. Matplotlib, DejaVu and MathJax keep the component terms already supplied in the course.
+[Credits](../reproduce/L122/CREDITS.txt) and [CC0 notice](../reproduce/L122/LICENSE.txt) retain the original AI author and the human mathematical source. Hörmander, The Analysis of Linear Partial Differential Operators I, second edition, 2003 reprint of the 1990 edition, is the original mathematical source: Theorem 7.3.1; Theorem7.3.2 and Lemma7.3.3; Definition7.3.5 and Lemma7.3.7. The full proof retains those approved locators and its publisher link. Source credit does not transfer the book copyright to CC0. Matplotlib, DejaVu and MathJax keep the component terms already supplied in the course.
 
 The accepted formal module is bounded to the declared Fourier/Cauchy entries, L010 entry(3) and an additional ordinary-hull proof of entry(2), and the L011 entire-annihilator/compact-division statements. The complete Green reader and its earlier alternative are now supplied at their declared entries; the finite rectangle calculation remains given in the learner.

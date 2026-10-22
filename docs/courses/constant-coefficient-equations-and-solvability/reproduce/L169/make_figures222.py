@@ -69,4 +69,4 @@ with TemporaryDirectory(prefix="an02-own222-mpl-")as task_cache:
             "limit_endpoint":1,"endpoint_excluded_from_X2":True,
             "proof_locator":"LearnerExample4,equationsL17–L19;FormalTheorem5.1"}}
     (FIG/"geometry222.json").write_text(json.dumps(geometry,indent=2)+"\n",encoding="utf-8")
-print(json.dumps({"status":"FIGURES_WRITTEN","figure_pairs":2,"private_font_cache_removed":True}))
+print(json.dumps({"status":"FIGURES_WRITTEN","figure_pairs":2}))

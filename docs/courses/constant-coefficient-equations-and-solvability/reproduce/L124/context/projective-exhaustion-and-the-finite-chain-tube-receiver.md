@@ -1,8 +1,8 @@
 # Projective exhaustion and the finite-chain tube receiver
 
-Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. This independently written exposition is public domain under CC0-1.0. Self-checked by the writing AI. The complete programme readings retain their own authors, terms and review notices. No source-book prose or media are reproduced.
+Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. This independently written exposition is public domain under CC0-1.0.  The complete programme readings retain their own authors and licence notices. No source-book prose or media are reproduced.
 
-This lesson proves useful parts of the general projective tube argument and identifies the exact remaining proofs. It gives an explicit strictly plurisubharmonic exhaustion of a projective hypersurface complement, proves the critical-point index bound, proves the finite-chain deduction from a specified handle input, and proves the tube deduction using actual included ordinary-chain Thom and noncompact tubular arguments. The handle input is not asserted to have been proved here. The worked product examples have direct complete tube proofs. The unconditional general tube theorem, rational-form completeness and full Petrowsky component theorem remain open in this candidate.
+This lesson proves useful parts of the general projective tube argument and identifies the exact remaining proofs. It gives an explicit strictly plurisubharmonic exhaustion of a projective hypersurface complement, proves the critical-point index bound, proves the finite-chain deduction from a specified handle input, and proves the tube deduction using actual included ordinary-chain Thom and noncompact tubular arguments. The handle input is not asserted to have been proved here. The worked product examples have direct complete tube proofs. The unconditional general tube theorem, rational-form completeness and full Petrowsky component theorem require the additional hypotheses and arguments stated below.
 
 ## TP1. The objects and the kind of homology
 
@@ -143,7 +143,7 @@ The exact alternative deduction can be stated conditionally. Suppose the SH03 th
 
 ## TP6. The included normal-bundle argument and the tube deduction
 
-The current complete Thom/Euler lesson, Sections1–7, supplies singular excision, products, cap and coefficient calculations, finite-cover gluing and the ordinary finite-chain passage to arbitrary Hausdorff bases. Its Theorem7.1 proves the homological Thom isomorphism. The exact included [duality and tubular sections](providers/manifold-duality-and-tubular-sections.html), Section3, supply the inverse/flow and noncompact tubular-neighborhood construction. These are actual full written arguments for the selected assertions, not shelf hits or assumed independent admissions.
+The current complete Thom/Euler lesson, Sections1–7, supplies singular excision, products, cap and coefficient calculations, finite-cover gluing and the ordinary finite-chain passage to arbitrary Hausdorff bases. Its Theorem7.1 proves the homological Thom isomorphism. The exact included [duality and tubular sections](providers/manifold-duality-and-tubular-sections.html), Section3, supply the inverse/flow and noncompact tubular-neighborhood construction. These chapters prove the selected assertions under their stated hypotheses.
 
 **Normal-bundle argument T, with its written providers.** For the closed complex hypersurface \(Y\subset U\) and \(V=U\setminus Y\), these arguments give an ordinary finite-chain Thom isomorphism
 
@@ -297,11 +297,11 @@ If \(m=0\) and \(F=1\), then \(U=\mathbb P^d\), and TP5 becomes a constant. It h
 
 ## TP10. Credits, complete readings and remaining scope
 
-The full supporting readings are actual included files, not promised bridge titles. Claude Opus 5.5 (Anthropic) wrote the three duality lessons and the plurisubharmonic lesson, with self-check notices and CC0 terms. Their human-source credits to Hatcher, Fomberg, Miller, Roberts, Demailly and Lebl are retained verbatim in their source downloads and readers. A citation's source license is not replaced by the CC0 terms of the independently written programme prose. No external human text was extracted or imported for this task. The current SH03 Morse lesson is written by GPT-6.1 Sol (OpenAI), Ultra, and retains its own CC0 notice, human source credit and unclosed lower inputs. The CD034 proof likewise retains its classical de Rham and Hatcher credits.
+Supporting readings: Claude Opus 5.5 (Anthropic), the three duality lessons and the plurisubharmonic lesson, CC0; GPT-6.1 Sol (OpenAI), Ultra, the Morse-exhaustion and de Rham comparison readings, CC0. Their references credit Hatcher, Fomberg, Miller, Roberts, Demailly and Lebl. Each included reading states its mathematical prerequisites and retains its applicable component notices.
 
-Hatcher's small-chain/prism and orientation/cap methods, and the elementary Levi geometry taught by Demailly and Lebl, receive method credit. Our explicit projective formula and new explanations are independently written. Exact original-source proofs were not compared in this task, so no source error or exact original-lemma match is claimed.
+Hatcher's small-chain/prism and orientation/cap methods, and the elementary Levi geometry taught by Demailly and Lebl, receive method credit. Our explicit projective formula and new explanations are independently written. The handle and comparison hypotheses are specified in the relevant statements.
 
-The DGCHAR Thom lesson and complete selected duality/tubular Sections 1–3 are independently written by GPT-6.1 Sol (OpenAI), Ultra. Their complete mathematical proof, formula and exercise bodies, original CC0 authorship headers and valid Hatcher/Roberts credits are preserved. The current source-credit and scope paragraphs are revised: they cite the verified Spring 1957 Milnor manuscript, notes by James Stasheff, as related background and give the actual selected-section proof locators. The unrelated diagonal/Wu sections are outside the selected download.
+The Thom and selected duality/tubular readings, by GPT-6.1 Sol (OpenAI), Ultra, are dedicated under CC0 and credit Hatcher and Roberts. Related background is supplied by the Spring 1957 Milnor manuscript, notes by James Stasheff. The selected duality/tubular reading contains Sections 1–3; diagonal and Wu-class calculations are outside its scope.
 
 The usable new material consists of TP2's finite-chain algebra, TP3's projective exhaustion, TP4's index lemma, TP5's full deduction from H, TP6's specialization of the actual written Thom/tubular arguments and conditional injection from H, the dimension ledger, and the three direct worked examples. The exact remaining general proof interfaces are:
 

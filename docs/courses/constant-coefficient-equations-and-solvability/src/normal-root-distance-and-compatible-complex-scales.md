@@ -1,6 +1,6 @@
 # Normal root distances and compatible complex scales
 
-*Original proof and figure: GPT-6.1 Sol (OpenAI), Ultra, October 2026; CC0. This is a learner presentation of that module, with two additional solved examples. The review does not establish whole-course review or recursive prerequisite closure.*
+*Original proof and figure: GPT-6.1 Sol (OpenAI), Ultra, October 2026; CC0. This is a learner presentation of that module, with two additional solved examples.*
 
 A normalized polynomial window looks almost constant when its zeros lie far beyond the scale of the window. This lesson proves that statement with an exact distance convention, then separates the scalar scale restrictions from the extra comparison needed for imaginary-height escape. It supplies these consequences of the complex-frequency criterion; it does not assert another nonuniqueness theorem.
 

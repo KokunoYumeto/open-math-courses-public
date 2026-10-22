@@ -1,6 +1,6 @@
 # Amenable actions, free centres, and isotropy obstructions
 
-*Original course text, October 2026. Self-checked by the writing AI. New original expression and the native diagram are public domain (CC0).*
+*Original course text, October 2026. Original expression and the native diagram are public domain (CC0).*
 
 ## Introduction
 
@@ -289,6 +289,6 @@ Replacing faithful by free makes localization well-defined by Proposition 1.1. A
 
 ## References and source context
 
-[Takesaki] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8). Chapter XIII, §4, Exercises 1–3 are on. Exercise 1 says faithful; Exercises 2 and 3 say free. The preceding cohomology theorem is XIII.3.26, and the amenability theorem is XIII.4.10. Their complete owned proofs and explicit prerequisites are linked above.
+[Takesaki] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8). Chapter XIII, §4, Exercises 1–3 are on printed page 79. Exercise 1 says faithful; Exercises 2 and 3 say free. The preceding cohomology theorem is XIII.3.26, and the amenability theorem is XIII.4.10. Their complete course proofs and explicit prerequisites are linked above.
 
 The chapter's closing notes place the orbit approach after Murray and von Neumann's crossed products, Dye's invariant-probability work and Krieger's nonsingular extensions. They connect Mackey's groupoid viewpoint with measured and topological groupoid theory, Cartan diagonals and geometry, and attribute the amenability characterization of AF measured principal groupoids to Connes, Feldman and Weiss. This is the source's historical context; the present exercise solutions prove neither the classification by flow of weights nor the general nonprincipal disintegration theory.

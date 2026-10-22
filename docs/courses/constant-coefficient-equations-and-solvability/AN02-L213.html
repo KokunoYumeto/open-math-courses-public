@@ -1,16 +1,16 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Homogeneous elliptic kernels and logarithmic scaling</title><link rel="stylesheet" href="course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}code{overflow-wrap:anywhere}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{display:block;max-width:100%}.math mjx-assistive-mml{width:1px!important;height:1px!important}.math:focus{outline:2px solid #14628a;outline-offset:3px}figure{margin:1.5em 0}figure img.course-figure{display:block;width:100%;max-width:100%;height:auto;margin:.6em auto}figcaption.native{font:14px/1.5 system-ui,sans-serif}nav a{display:inline-block;margin-right:.5em}footer ul{padding-left:1.3em}table{width:100%;table-layout:fixed;border-collapse:collapse}th,td{padding:.45em;text-align:left;vertical-align:top;border-bottom:1px solid #d6dce0}</style><script>window.MathJax={"tex": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]]}, "options": {"enableMenu": false, "enableAssistiveMml": true}, "chtml": {"fontURL": "https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav aria-label="Lesson navigation"><a href="index.html">Course contents</a> · <a href="AN02-L212.html">Previous lesson</a> · <a href="#3-the-logarithmic-scaling-law">Logarithmic scaling</a> · <a href="src/homogeneous-elliptic-kernels-and-logarithmic-scaling.md">Editable source</a></nav><h1 id="homogeneous-elliptic-kernels-and-logarithmic-scaling">Homogeneous elliptic kernels and logarithmic scaling</h1>
-<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).</em></p>
+<p><em>Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).</em></p>
 <p>An elliptic polynomial has an ordinary reciprocal at every sufficiently large real frequency. Cutting that reciprocal off near its finite zeros gives an inverse with a smooth error. For a homogeneous polynomial, a radial normalization at zero removes the error completely. Its failure to scale homogeneously is one explicit polynomial times a logarithm.</p>
 <p>We first construct the inverse with a smooth error, including arbitrary complex lower-order coefficients. We then compute the radial residue of the homogeneous reciprocal and turn it into the exact logarithmic term. The construction works in every positive dimension and for complex elliptic principal symbols.</p>
 <p>Basic references are <a href="prerequisites/schwartz-fourier-foundations.html">Schwartz functions and Fourier inversion</a>, for tempered distributions and the Fourier identities; <a href="AN02-L001.html">Fundamental solutions and active directions</a>, for point sources and the elementary Laplace and Cauchy kernels; and <a href="AN02-L199.html">Noncharacteristic directions and microlocal regularity</a>, Corollary 7.1, for the optional analytic regularity conclusion. The Taylor-subtracted frozen inverse in <a href="prerequisites/local-elliptic-coefficients.html">Local inverses and distance-weighted elliptic estimates</a>, Section 2, gives the general low-frequency extension; the radial normalization below computes its dilation law. Richard Melrose's lecture on homogeneous distributions and Lars Hörmander's treatment of elliptic fundamental solutions are named at the end.</p>
 <p>We use</p>
-<span class="math math-display" id="learner-eq-1.1" data-index="0" data-tex="\[
+<span class="math math-display" data-index="0" data-tex="\[
  D_j=-i\partial_{x_j},\qquad
  \widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx,\qquad
  \mathcal F^{-1}h(x)=(2\pi)^{-n}\int e^{ix\cdot\xi}h(\xi)\,d\xi .
  \tag{1.1}
-\]">\[
+\]" id="learner-eq-1.1">\[
  D_j=-i\partial_{x_j},\qquad
  \widehat f(\xi)=\int e^{-ix\cdot\xi}f(x)\,dx,\qquad
  \mathcal F^{-1}h(x)=(2\pi)^{-n}\int e^{ix\cdot\xi}h(\xi)\,d\xi .
@@ -19,80 +19,80 @@
 <p>All distribution pairings are bilinear. The sphere measure below is ordinary Euclidean surface measure.</p>
 <h2 id="1-inverting-the-high-frequencies">1. Inverting the high frequencies</h2>
 <p>Let <span class="math" data-index="1" data-tex="\(P=p_m+p_{m-1}+\cdots+p_0\)">\(P=p_m+p_{m-1}+\cdots+p_0\)</span>, where <span class="math" data-index="2" data-tex="\(p_j\)">\(p_j\)</span> is homogeneous of degree <span class="math" data-index="3" data-tex="\(j\)">\(j\)</span>, <span class="math" data-index="4" data-tex="\(m\ge1\)">\(m\ge1\)</span>, and</p>
-<span class="math math-display" id="learner-eq-1.2" data-index="5" data-tex="\[
+<span class="math math-display" data-index="5" data-tex="\[
                   p_m(\xi)\ne0\qquad(\xi\in\mathbb R^n\setminus\{0\}).
  \tag{1.2}
-\]">\[
+\]" id="learner-eq-1.2">\[
                   p_m(\xi)\ne0\qquad(\xi\in\mathbb R^n\setminus\{0\}).
  \tag{1.2}
 \]</span>
 <p>No reality condition is imposed on any coefficient.</p>
 <p><strong>Theorem 1.1 (an elliptic parametrix).</strong> There are a tempered distribution <span class="math" data-index="6" data-tex="\(K\)">\(K\)</span>, smooth away from the origin, and an entire function <span class="math" data-index="7" data-tex="\(w\)">\(w\)</span> such that</p>
-<span class="math math-display" id="learner-eq-1.3" data-index="8" data-tex="\[
+<span class="math math-display" data-index="8" data-tex="\[
                          P(D)K=\delta_0+w.
  \tag{1.3}
-\]">\[
+\]" id="learner-eq-1.3">\[
                          P(D)K=\delta_0+w.
  \tag{1.3}
 \]</span>
 <p>The restriction of <span class="math" data-index="9" data-tex="\(w\)">\(w\)</span> to real space is Schwartz. A parametrix can also be chosen with compact support in any prescribed neighborhood of the origin; its error is then a compactly supported smooth function.</p>
 <p><strong>Proof.</strong> Compactness of the unit sphere and homogeneity give <span class="math" data-index="10" data-tex="\(|p_m(\xi)|\ge c|\xi|^m\)">\(|p_m(\xi)|\ge c|\xi|^m\)</span>. The lower terms have sum at most <span class="math" data-index="11" data-tex="\(C(1+|\xi|)^{m-1}\)">\(C(1+|\xi|)^{m-1}\)</span>. Therefore, for some <span class="math" data-index="12" data-tex="\(R\ge1\)">\(R\ge1\)</span>,</p>
-<span class="math math-display" id="learner-eq-1.4" data-index="13" data-tex="\[
+<span class="math math-display" data-index="13" data-tex="\[
                   |P(\xi)|\ge(c/2)|\xi|^m\qquad(|\xi|\ge R).
  \tag{1.4}
-\]">\[
+\]" id="learner-eq-1.4">\[
                   |P(\xi)|\ge(c/2)|\xi|^m\qquad(|\xi|\ge R).
  \tag{1.4}
 \]</span>
 <p>Choose <span class="math" data-index="14" data-tex="\(\chi\in C_c^\infty\)">\(\chi\in C_c^\infty\)</span>, equal to one on a neighborhood of the closed ball of radius <span class="math" data-index="15" data-tex="\(R\)">\(R\)</span>, and define</p>
-<span class="math math-display" id="learner-eq-1.5" data-index="16" data-tex="\[
+<span class="math math-display" data-index="16" data-tex="\[
  a(\xi)=\frac{1-\chi(\xi)}{P(\xi)},\qquad
                    K=\mathcal F^{-1}a,\qquad w=-\mathcal F^{-1}\chi .
  \tag{1.5}
-\]">\[
+\]" id="learner-eq-1.5">\[
  a(\xi)=\frac{1-\chi(\xi)}{P(\xi)},\qquad
                    K=\mathcal F^{-1}a,\qquad w=-\mathcal F^{-1}\chi .
  \tag{1.5}
 \]</span>
 <p>The quotient is set to zero near the zero set of <span class="math" data-index="17" data-tex="\(P\)">\(P\)</span>. It is smooth everywhere and polynomially bounded. Thus it defines a tempered distribution. Fourier multiplication gives (1.3).</p>
 <p>We give the estimates that prove smoothness off the origin. Outside a fixed ball, differentiate <span class="math" data-index="18" data-tex="\(Pa=1\)">\(Pa=1\)</span>. Induction on <span class="math" data-index="19" data-tex="\(|\alpha|\)">\(|\alpha|\)</span>, using</p>
-<span class="math math-display" id="learner-eq-1.6" data-index="20" data-tex="\[
+<span class="math math-display" data-index="20" data-tex="\[
  P\,\partial^\alpha a
    =-\sum_{0&lt;\beta\le\alpha}{\alpha\choose\beta}
                      (\partial^\beta P)\,\partial^{\alpha-\beta}a,
  \tag{1.6}
-\]">\[
+\]" id="learner-eq-1.6">\[
  P\,\partial^\alpha a
    =-\sum_{0&lt;\beta\le\alpha}{\alpha\choose\beta}
                      (\partial^\beta P)\,\partial^{\alpha-\beta}a,
  \tag{1.6}
 \]</span>
 <p>gives</p>
-<span class="math math-display" id="learner-eq-1.7" data-index="21" data-tex="\[
+<span class="math math-display" data-index="21" data-tex="\[
               |\partial^\alpha a(\xi)|
                      \le C_\alpha(1+|\xi|)^{-m-|\alpha|}.
  \tag{1.7}
-\]">\[
+\]" id="learner-eq-1.7">\[
               |\partial^\alpha a(\xi)|
                      \le C_\alpha(1+|\xi|)^{-m-|\alpha|}.
  \tag{1.7}
 \]</span>
 <p>Indeed each nonzero derivative of <span class="math" data-index="22" data-tex="\(P\)">\(P\)</span> has bound <span class="math" data-index="23" data-tex="\(C_\beta|\xi|^{m-|\beta|}\)">\(C_\beta|\xi|^{m-|\beta|}\)</span>; multiplying the inductive bounds and dividing by (1.4) gives the indicated power. The fixed transition annulus changes only the constants.</p>
 <p>For any derivative index <span class="math" data-index="24" data-tex="\(\gamma\)">\(\gamma\)</span>, choose an integer <span class="math" data-index="25" data-tex="\(N&gt;n+|\gamma|-m\)">\(N&gt;n+|\gamma|-m\)</span>. The function <span class="math" data-index="26" data-tex="\(\partial_{\xi_j}^N((i\xi)^\gamma a)\)">\(\partial_{\xi_j}^N((i\xi)^\gamma a)\)</span> is integrable. The Fourier differentiation identity consequently makes</p>
-<span class="math math-display" id="learner-eq-1.8" data-index="27" data-tex="\[
+<span class="math math-display" data-index="27" data-tex="\[
                     x_j^N\partial_x^\gamma K
  \tag{1.8}
-\]">\[
+\]" id="learner-eq-1.8">\[
                     x_j^N\partial_x^\gamma K
  \tag{1.8}
 \]</span>
 <p>a continuous function, up to a harmless nonzero constant factor. On <span class="math" data-index="28" data-tex="\(x_j\ne0\)">\(x_j\ne0\)</span>, division by <span class="math" data-index="29" data-tex="\(x_j^N\)">\(x_j^N\)</span> gives a continuous representative of <span class="math" data-index="30" data-tex="\(\partial^\gamma K\)">\(\partial^\gamma K\)</span>. The sets <span class="math" data-index="31" data-tex="\(x_j\ne0\)">\(x_j\ne0\)</span> cover the complement of the origin. These representatives agree on overlaps as distributions. For all <span class="math" data-index="32" data-tex="\(\gamma\)">\(\gamma\)</span>, continuous distributional derivatives give a smooth function: convolve locally with smooth approximate identities, apply the fundamental theorem of calculus to their derivatives, and pass to the locally uniform continuous limits. Hence <span class="math" data-index="33" data-tex="\(K\)">\(K\)</span> is smooth there.</p>
 <p>The inverse Fourier transform of <span class="math" data-index="34" data-tex="\(\chi\)">\(\chi\)</span> is Schwartz by repeated integration by parts. Its formula in (1.5) is also defined for every complex <span class="math" data-index="35" data-tex="\(x\)">\(x\)</span>; compact frequency support permits every complex derivative under the integral and gives locally uniform convergence. Thus <span class="math" data-index="36" data-tex="\(w\)">\(w\)</span> is entire.</p>
 <p>Finally take <span class="math" data-index="37" data-tex="\(\psi\in C_c^\infty\)">\(\psi\in C_c^\infty\)</span>, equal to one near the origin and supported in the prescribed neighborhood. Then</p>
-<span class="math math-display" id="learner-eq-1.9" data-index="38" data-tex="\[
+<span class="math math-display" data-index="38" data-tex="\[
  P(D)(\psi K)=\delta_0+\psi w+[P(D),\psi]K.
  \tag{1.9}
-\]">\[
+\]" id="learner-eq-1.9">\[
  P(D)(\psi K)=\delta_0+\psi w+[P(D),\psi]K.
  \tag{1.9}
 \]</span>
@@ -100,13 +100,13 @@
 <p>For order zero, <span class="math" data-index="42" data-tex="\(P=c\ne0\)">\(P=c\ne0\)</span>, the exact inverse is <span class="math" data-index="43" data-tex="\(K=c^{-1}\delta_0\)">\(K=c^{-1}\delta_0\)</span>, with zero error.</p>
 <h2 id="2-a-radial-normalization-of-the-reciprocal">2. A radial normalization of the reciprocal</h2>
 <p>Now let <span class="math" data-index="44" data-tex="\(p\)">\(p\)</span> itself be homogeneous elliptic of degree <span class="math" data-index="45" data-tex="\(m\ge1\)">\(m\ge1\)</span>. Put <span class="math" data-index="46" data-tex="\(q=m-n\)">\(q=m-n\)</span>. For a complex parameter <span class="math" data-index="47" data-tex="\(\lambda\)">\(\lambda\)</span> with <span class="math" data-index="48" data-tex="\(\operatorname{Re}\lambda&gt;q\)">\(\operatorname{Re}\lambda&gt;q\)</span>, the locally integrable reciprocal defines</p>
-<span class="math math-display" id="learner-eq-2.1" data-index="49" data-tex="\[
+<span class="math math-display" data-index="49" data-tex="\[
  \langle T_\lambda,\varphi\rangle
     =\int_{\mathbb R^n}\frac{|\xi|^\lambda}{p(\xi)}\varphi(\xi)\,d\xi
     =\int_{S^{n-1}}\frac1{p(\omega)}
        \int_0^\infty r^{\lambda-q-1}\varphi(r\omega)\,dr\,dS(\omega).
  \tag{2.1}
-\]">\[
+\]" id="learner-eq-2.1">\[
  \langle T_\lambda,\varphi\rangle
     =\int_{\mathbb R^n}\frac{|\xi|^\lambda}{p(\xi)}\varphi(\xi)\,d\xi
     =\int_{S^{n-1}}\frac1{p(\omega)}
@@ -115,19 +115,19 @@
 \]</span>
 <p>The tests <span class="math" data-index="50" data-tex="\(\varphi\)">\(\varphi\)</span> are Schwartz. Infinity causes no problem on any bounded parameter set.</p>
 <p>If <span class="math" data-index="51" data-tex="\(q&lt;0\)">\(q&lt;0\)</span>, the family is holomorphic near zero and we set <span class="math" data-index="52" data-tex="\(T=T_0\)">\(T=T_0\)</span>, <span class="math" data-index="53" data-tex="\(R=0\)">\(R=0\)</span>. For <span class="math" data-index="54" data-tex="\(q\ge0\)">\(q\ge0\)</span>, write</p>
-<span class="math math-display" id="learner-eq-2.2" data-index="55" data-tex="\[
+<span class="math math-display" data-index="55" data-tex="\[
  A_j(\omega,\varphi)
         =\frac{(\omega\cdot\nabla)^j\varphi(0)}{j!},
                            \qquad 0\le j\le q.
  \tag{2.2}
-\]">\[
+\]" id="learner-eq-2.2">\[
  A_j(\omega,\varphi)
         =\frac{(\omega\cdot\nabla)^j\varphi(0)}{j!},
                            \qquad 0\le j\le q.
  \tag{2.2}
 \]</span>
 <p>Taylor subtraction continues the pairing in (2.1) to a meromorphic expression:</p>
-<span class="math math-display" id="learner-eq-2.3" data-index="56" data-tex="\[
+<span class="math math-display" data-index="56" data-tex="\[
  \begin{split}
  \langle T_\lambda,\varphi\rangle
  =\int_{S^{n-1}}\frac1{p(\omega)}\bigg[
@@ -138,7 +138,7 @@
                                   \bigg]\,dS(\omega).
  \end{split}
  \tag{2.3}
-\]">\[
+\]" id="learner-eq-2.3">\[
  \begin{split}
  \langle T_\lambda,\varphi\rangle
  =\int_{S^{n-1}}\frac1{p(\omega)}\bigg[
@@ -152,14 +152,14 @@
 \]</span>
 <p>The integral terms are holomorphic for <span class="math" data-index="57" data-tex="\(\operatorname{Re}\lambda&gt;-1\)">\(\operatorname{Re}\lambda&gt;-1\)</span>. Taylor's remainder is <span class="math" data-index="58" data-tex="\(O(r^{q+1})\)">\(O(r^{q+1})\)</span>, uniformly on the sphere, so its radial integrand is <span class="math" data-index="59" data-tex="\(O(r^{\operatorname{Re}\lambda})\)">\(O(r^{\operatorname{Re}\lambda})\)</span>. Any number of parameter derivatives only adds a power of <span class="math" data-index="60" data-tex="\(\log r\)">\(\log r\)</span>, still integrable on compact subsets of that half-plane. At infinity use a sufficiently high Schwartz weight. The same estimates bound each pairing by finitely many Schwartz seminorms. They prove that the Laurent coefficients are tempered distributions, not merely pointwise functionals.</p>
 <p>Near zero,</p>
-<span class="math math-display" id="learner-eq-2.4" data-index="61" data-tex="\[
+<span class="math math-display" data-index="61" data-tex="\[
                   T_\lambda=\frac{R}{\lambda}+T+O(\lambda),
  \qquad
  \langle R,\varphi\rangle
        =\frac1{q!}\int_{S^{n-1}}
                 \frac{(\omega\cdot\nabla)^q\varphi(0)}{p(\omega)}\,dS(\omega).
  \tag{2.4}
-\]">\[
+\]" id="learner-eq-2.4">\[
                   T_\lambda=\frac{R}{\lambda}+T+O(\lambda),
  \qquad
  \langle R,\varphi\rangle
@@ -169,10 +169,10 @@
 \]</span>
 <p>Thus <span class="math" data-index="62" data-tex="\(R\)">\(R\)</span> is supported at the origin and is a combination of delta derivatives of order <span class="math" data-index="63" data-tex="\(q\)">\(q\)</span>. Formula (2.3), with the pole removed, is the definition of <span class="math" data-index="64" data-tex="\(T\)">\(T\)</span>. For <span class="math" data-index="65" data-tex="\(n=1\)">\(n=1\)</span>, sphere integration means the sum over <span class="math" data-index="66" data-tex="\(\omega=1,-1\)">\(\omega=1,-1\)</span>.</p>
 <p><strong>Lemma 2.1.</strong> In every case,</p>
-<span class="math math-display" id="learner-eq-2.5" data-index="67" data-tex="\[
+<span class="math math-display" data-index="67" data-tex="\[
                               pT=1,\qquad pR=0.
  \tag{2.5}
-\]">\[
+\]" id="learner-eq-2.5">\[
                               pT=1,\qquad pR=0.
  \tag{2.5}
 \]</span>
@@ -180,51 +180,51 @@
 <p>We can therefore take <span class="math" data-index="78" data-tex="\(E=\mathcal F^{-1}T\)">\(E=\mathcal F^{-1}T\)</span> as an exact tempered fundamental solution.</p>
 <h2 id="3-the-logarithmic-scaling-law">3. The logarithmic scaling law</h2>
 <p>For a distribution <span class="math" data-index="79" data-tex="\(v\)">\(v\)</span>, the notation <span class="math" data-index="80" data-tex="\(v(t\,\cdot)\)">\(v(t\,\cdot)\)</span>, <span class="math" data-index="81" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, means</p>
-<span class="math math-display" id="learner-eq-3.1" data-index="82" data-tex="\[
+<span class="math math-display" data-index="82" data-tex="\[
                \langle v(t\,\cdot),\varphi\rangle
                          =t^{-n}\langle v,\varphi(\,\cdot/t)\rangle .
  \tag{3.1}
-\]">\[
+\]" id="learner-eq-3.1">\[
                \langle v(t\,\cdot),\varphi\rangle
                          =t^{-n}\langle v,\varphi(\,\cdot/t)\rangle .
  \tag{3.1}
 \]</span>
 <p>It is homogeneous of degree <span class="math" data-index="83" data-tex="\(d\)">\(d\)</span> if this equals <span class="math" data-index="84" data-tex="\(t^d\langle v,\varphi\rangle\)">\(t^d\langle v,\varphi\rangle\)</span>.</p>
 <p><strong>Theorem 3.1 (the homogeneous elliptic form).</strong> There is a tempered fundamental solution</p>
-<span class="math math-display" id="learner-eq-3.2" data-index="85" data-tex="\[
+<span class="math math-display" data-index="85" data-tex="\[
                          E(x)=E_0(x)-Q(x)\log|x|,
  \tag{3.2}
-\]">\[
+\]" id="learner-eq-3.2">\[
                          E(x)=E_0(x)-Q(x)\log|x|,
  \tag{3.2}
 \]</span>
 <p>where <span class="math" data-index="86" data-tex="\(E_0\)">\(E_0\)</span> is homogeneous of degree <span class="math" data-index="87" data-tex="\(q=m-n\)">\(q=m-n\)</span>, locally integrable on all of <span class="math" data-index="88" data-tex="\(\mathbb R^n\)">\(\mathbb R^n\)</span>, and smooth off the origin. If <span class="math" data-index="89" data-tex="\(q&lt;0\)">\(q&lt;0\)</span>, set <span class="math" data-index="90" data-tex="\(Q=0\)">\(Q=0\)</span>. If <span class="math" data-index="91" data-tex="\(q\ge0\)">\(q\ge0\)</span>, then</p>
-<span class="math math-display" id="learner-eq-3.3" data-index="92" data-tex="\[
+<span class="math math-display" data-index="92" data-tex="\[
  Q(x)=\frac{i^q}{(2\pi)^n q!}
            \int_{S^{n-1}}\frac{(x\cdot\omega)^q}{p(\omega)}\,dS(\omega).
  \tag{3.3}
-\]">\[
+\]" id="learner-eq-3.3">\[
  Q(x)=\frac{i^q}{(2\pi)^n q!}
            \int_{S^{n-1}}\frac{(x\cdot\omega)^q}{p(\omega)}\,dS(\omega).
  \tag{3.3}
 \]</span>
 <p>The polynomial <span class="math" data-index="93" data-tex="\(Q\)">\(Q\)</span> is homogeneous of degree <span class="math" data-index="94" data-tex="\(q\)">\(q\)</span>. It is zero in odd dimension, including the cases <span class="math" data-index="95" data-tex="\(m\ge n\)">\(m\ge n\)</span>. The exact dilation law is</p>
-<span class="math math-display" id="learner-eq-3.4" data-index="96" data-tex="\[
+<span class="math math-display" data-index="96" data-tex="\[
              E(tx)=t^q\bigl(E(x)-Q(x)\log t\bigr)\qquad(t&gt;0).
  \tag{3.4}
-\]">\[
+\]" id="learner-eq-3.4">\[
              E(tx)=t^q\bigl(E(x)-Q(x)\log t\bigr)\qquad(t&gt;0).
  \tag{3.4}
 \]</span>
 <p>Equations (3.2) and (3.4) hold as distributions and as functions away from zero.</p>
 <p><strong>Proof.</strong> Start with the <span class="math" data-index="97" data-tex="\(T\)">\(T\)</span> in Section 2. Away from zero in frequency space it is <span class="math" data-index="98" data-tex="\(1/p\)">\(1/p\)</span>. Hence the difference between <span class="math" data-index="99" data-tex="\(T\)">\(T\)</span> and the high-frequency reciprocal in (1.5), now for <span class="math" data-index="100" data-tex="\(P=p\)">\(P=p\)</span>, has compact support. The inverse Fourier transform of a compactly supported distribution is smooth, indeed entire: insert a fixed cutoff in its exponential pairing; the finite-order bound on that compact set permits all derivatives and its convergent complex exponential series, locally uniformly. Thus <span class="math" data-index="101" data-tex="\(E\)">\(E\)</span> differs from the <span class="math" data-index="102" data-tex="\(K\)">\(K\)</span> in Theorem 1.1 by an entire function. In particular <span class="math" data-index="103" data-tex="\(E\)">\(E\)</span> is smooth off the origin.</p>
 <p>For the convergent range of (2.1), substitution gives</p>
-<span class="math math-display" id="learner-eq-3.5" data-index="104" data-tex="\[
+<span class="math math-display" data-index="104" data-tex="\[
  T_\lambda(t\,\cdot)=t^{-m+\lambda}T_\lambda,\qquad
  (\mathcal F^{-1}T_\lambda)(t\,\cdot)
                    =t^{q-\lambda}\mathcal F^{-1}T_\lambda .
  \tag{3.5}
-\]">\[
+\]" id="learner-eq-3.5">\[
  T_\lambda(t\,\cdot)=t^{-m+\lambda}T_\lambda,\qquad
  (\mathcal F^{-1}T_\lambda)(t\,\cdot)
                    =t^{q-\lambda}\mathcal F^{-1}T_\lambda .
@@ -232,11 +232,11 @@
 \]</span>
 <p>The first equality continues meromorphically through (2.3), by applying the scalar identity theorem to every test pairing. The second follows from the Fourier substitution rule and has the same continuation. Inverting (2.4), the residue is <span class="math" data-index="105" data-tex="\(Q=\mathcal F^{-1}R\)">\(Q=\mathcal F^{-1}R\)</span>. Applying (2.4) to the exponential gives exactly (3.3), with <span class="math" data-index="106" data-tex="\(i^q\)">\(i^q\)</span>, because the pairings are bilinear. Comparing constant Laurent coefficients in the second equality of (3.5) proves (3.4). If <span class="math" data-index="107" data-tex="\(q&lt;0\)">\(q&lt;0\)</span>, evaluate the holomorphic equality at zero instead.</p>
 <p>Define <span class="math" data-index="108" data-tex="\(E_0=E+Q\log|x|\)">\(E_0=E+Q\log|x|\)</span> on the punctured space. Equation (3.4) makes it homogeneous of degree <span class="math" data-index="109" data-tex="\(q\)">\(q\)</span>. Smoothness on the sphere consequently gives</p>
-<span class="math math-display" id="learner-eq-3.6" data-index="110" data-tex="\[
+<span class="math math-display" data-index="110" data-tex="\[
        |E_0(x)|\le C|x|^q,\qquad
        |E(x)|\le C|x|^q(1+|\log|x||)
  \tag{3.6}
-\]">\[
+\]" id="learner-eq-3.6">\[
        |E_0(x)|\le C|x|^q,\qquad
        |E(x)|\le C|x|^q(1+|\log|x||)
  \tag{3.6}
@@ -245,10 +245,10 @@
 <p>There is no additional distribution concentrated at the origin. Here is the elementary reason. A distribution <span class="math" data-index="113" data-tex="\(v\)">\(v\)</span> supported at zero has finite order <span class="math" data-index="114" data-tex="\(M\)">\(M\)</span> on a fixed compact neighborhood. If a test has all jets through order <span class="math" data-index="115" data-tex="\(M\)">\(M\)</span> zero at zero, multiply it by a cutoff <span class="math" data-index="116" data-tex="\(\eta(x/\varepsilon)\)">\(\eta(x/\varepsilon)\)</span> equal to one near zero. Taylor's integral remainder and the product rule make all its derivatives of orders at most <span class="math" data-index="117" data-tex="\(M\)">\(M\)</span> bounded by <span class="math" data-index="118" data-tex="\(C\varepsilon\)">\(C\varepsilon\)</span>. The finite-order estimate and support property imply that <span class="math" data-index="119" data-tex="\(v\)">\(v\)</span> kills the test. Thus <span class="math" data-index="120" data-tex="\(v\)">\(v\)</span> depends only on those finitely many jets and is a linear combination of <span class="math" data-index="121" data-tex="\(\partial^\alpha\delta_0\)">\(\partial^\alpha\delta_0\)</span>, <span class="math" data-index="122" data-tex="\(|\alpha|\le M\)">\(|\alpha|\le M\)</span>. These distributions have dilation degrees <span class="math" data-index="123" data-tex="\(-n-|\alpha|\)">\(-n-|\alpha|\)</span>. No nonzero such combination can have degree <span class="math" data-index="124" data-tex="\(q&gt;-n\)">\(q&gt;-n\)</span>: compare its coefficients under dilation, or test its distinct Taylor monomials.</p>
 <p>The difference between <span class="math" data-index="125" data-tex="\(E\)">\(E\)</span> and the globally defined function in (3.2) is supported at zero and homogeneous of degree <span class="math" data-index="126" data-tex="\(q\)">\(q\)</span>, since the logarithmic defects cancel. The preceding fact makes the difference zero. This proves the claimed distributional identity.</p>
 <p>Finally, if <span class="math" data-index="127" data-tex="\(q\ge0\)">\(q\ge0\)</span>, replace <span class="math" data-index="128" data-tex="\(\omega\)">\(\omega\)</span> by <span class="math" data-index="129" data-tex="\(-\omega\)">\(-\omega\)</span> in (3.3). Its integrand changes by</p>
-<span class="math math-display" id="learner-eq-3.7" data-index="130" data-tex="\[
+<span class="math math-display" data-index="130" data-tex="\[
                        (-1)^{q-m}=(-1)^n.
  \tag{3.7}
-\]">\[
+\]" id="learner-eq-3.7">\[
                        (-1)^{q-m}=(-1)^n.
  \tag{3.7}
 \]</span>
@@ -257,63 +257,63 @@
 <p>In order zero the exact inverse <span class="math" data-index="136" data-tex="\(c^{-1}\delta_0\)">\(c^{-1}\delta_0\)</span> is homogeneous of degree <span class="math" data-index="137" data-tex="\(-n\)">\(-n\)</span> and smooth off zero. It is not represented by a locally integrable function. The positive-order hypothesis in Theorem 3.1 is what gives the integrability inequality <span class="math" data-index="138" data-tex="\(q&gt;-n\)">\(q&gt;-n\)</span>.</p>
 <h2 id="4-examples">4. Examples</h2>
 <p><strong>Example 4.1 (the dimension that produces a logarithm).</strong> For <span class="math" data-index="139" data-tex="\(p(\xi)=|\xi|^2\)">\(p(\xi)=|\xi|^2\)</span>, the operator is <span class="math" data-index="140" data-tex="\(-\Delta\)">\(-\Delta\)</span>. In dimension two, (3.3) gives <span class="math" data-index="141" data-tex="\(Q=1/(2\pi)\)">\(Q=1/(2\pi)\)</span>. In dimension three, <span class="math" data-index="142" data-tex="\(m&lt;n\)">\(m&lt;n\)</span>, so <span class="math" data-index="143" data-tex="\(Q=0\)">\(Q=0\)</span>. Choose the familiar representatives</p>
-<span class="math math-display" id="learner-eq-4.1" data-index="144" data-tex="\[
+<span class="math math-display" data-index="144" data-tex="\[
  E_2(x)=-\frac1{2\pi}\log|x|,\qquad
  E_3(x)=\frac1{4\pi|x|}.
  \tag{4.1}
-\]">\[
+\]" id="learner-eq-4.1">\[
  E_2(x)=-\frac1{2\pi}\log|x|,\qquad
  E_3(x)=\frac1{4\pi|x|}.
  \tag{4.1}
 \]</span>
 <p>Their point-source normalizations are the Green-flux calculation in the fundamental-solution chapter, also given in <a href="AN02-L196.html">Harmonic potentials and real carriers</a>, equation RC4. A constant may be subtracted from the two-dimensional radial finite part to obtain the displayed representative. The scaling laws are</p>
-<span class="math math-display" id="learner-eq-4.2" data-index="145" data-tex="\[
+<span class="math math-display" data-index="145" data-tex="\[
  E_2(tx)-E_2(x)=-\frac{\log t}{2\pi},\qquad
                               tE_3(tx)=E_3(x).
  \tag{4.2}
-\]">\[
+\]" id="learner-eq-4.2">\[
  E_2(tx)-E_2(x)=-\frac{\log t}{2\pi},\qquad
                               tE_3(tx)=E_3(x).
  \tag{4.2}
 \]</span>
 <p>Thus the logarithm measures a precise failure of homogeneous scaling; it is not a large-frequency approximation.</p>
-<figure><img class="course-figure" loading="lazy" width="2000" height="880" src="reproduce/L213/figures/radial-kernels-and-dilation-defect.png" alt="Radial Laplace kernels in two and three dimensions and their different dilation defects." /><figcaption class="native"><a href="reproduce/L213/figures/radial-kernels-and-dilation-defect.png">Open full-size PNG</a> · <a href="reproduce/L213/figures/radial-kernels-and-dilation-defect.svg">Open SVG</a></figcaption></figure>
+<figure><img alt="Radial Laplace kernels in two and three dimensions and their different dilation defects." class="course-figure" height="880" loading="lazy" src="reproduce/L213/figures/radial-kernels-and-dilation-defect.png" width="2000"/><figcaption class="native"><a href="reproduce/L213/figures/radial-kernels-and-dilation-defect.png">Open full-size PNG</a> · <a href="reproduce/L213/figures/radial-kernels-and-dilation-defect.svg">Open SVG</a></figcaption></figure>
 <p><em>Radial profiles and dilation.</em> The horizontal coordinate in both panels is <span class="math" data-index="146" data-tex="\(u=\log r\)">\(u=\log r\)</span>, or <span class="math" data-index="147" data-tex="\(u=\log t\)">\(u=\log t\)</span> for the dilation parameter. On the left, the normalized two-dimensional profile is <span class="math" data-index="148" data-tex="\(2\pi E_2(re_1)=-u\)">\(2\pi E_2(re_1)=-u\)</span>, whereas the three-dimensional profile is <span class="math" data-index="149" data-tex="\(4\pi E_3(re_1)=e^{-u}\)">\(4\pi E_3(re_1)=e^{-u}\)</span>. On the right, <span class="math" data-index="150" data-tex="\(2\pi(E_2(te_1)-E_2(e_1))=-u\)">\(2\pi(E_2(te_1)-E_2(e_1))=-u\)</span>, while <span class="math" data-index="151" data-tex="\(4\pi(tE_3(te_1)-E_3(e_1))=0\)">\(4\pi(tE_3(te_1)-E_3(e_1))=0\)</span>. These are kernels for two different dimensions, with the displayed normalizations; the curves sample the exact formulas (4.1)–(4.2). <a href="reproduce/L213/README.md">Geometry and reproduction source</a>.</p>
 <p><strong>Example 4.2 (a polynomial multiplying the logarithm).</strong> In dimension two take <span class="math" data-index="152" data-tex="\(p(\xi)=|\xi|^4\)">\(p(\xi)=|\xi|^4\)</span>, so <span class="math" data-index="153" data-tex="\(q=2\)">\(q=2\)</span>. Rotational symmetry and <span class="math" data-index="154" data-tex="\(\int_0^{2\pi}\cos^2\theta\,d\theta=\pi\)">\(\int_0^{2\pi}\cos^2\theta\,d\theta=\pi\)</span> give</p>
-<span class="math math-display" id="learner-eq-4.3" data-index="155" data-tex="\[
+<span class="math math-display" data-index="155" data-tex="\[
  Q(x)=-\frac{|x|^2}{8\pi},\qquad
                          E(x)=\frac{|x|^2\log|x|}{8\pi}.
  \tag{4.3}
-\]">\[
+\]" id="learner-eq-4.3">\[
  Q(x)=-\frac{|x|^2}{8\pi},\qquad
                          E(x)=\frac{|x|^2\log|x|}{8\pi}.
  \tag{4.3}
 \]</span>
 <p>Here <span class="math" data-index="156" data-tex="\(p(D)=\Delta^2\)">\(p(D)=\Delta^2\)</span>. Off zero, <span class="math" data-index="157" data-tex="\(\Delta(|x|^2\log|x|)=4\log|x|+4\)">\(\Delta(|x|^2\log|x|)=4\log|x|+4\)</span>. This equality holds distributionally on all of the plane: in integration by parts outside a circle of radius <span class="math" data-index="158" data-tex="\(\varepsilon\)">\(\varepsilon\)</span>, the boundary terms have bounds <span class="math" data-index="159" data-tex="\(C\varepsilon^2|\log\varepsilon|\)">\(C\varepsilon^2|\log\varepsilon|\)</span> and <span class="math" data-index="160" data-tex="\(C\varepsilon^3|\log\varepsilon|\)">\(C\varepsilon^3|\log\varepsilon|\)</span>, and tend to zero. Applying <span class="math" data-index="161" data-tex="\(\Delta\)">\(\Delta\)</span> once more and using <span class="math" data-index="162" data-tex="\(\Delta\log|x|=2\pi\delta_0\)">\(\Delta\log|x|=2\pi\delta_0\)</span> gives <span class="math" data-index="163" data-tex="\(\Delta^2E=\delta_0\)">\(\Delta^2E=\delta_0\)</span>. The dilation defect is <span class="math" data-index="164" data-tex="\(t^2|x|^2\log t/(8\pi)=-t^2Q(x)\log t\)">\(t^2|x|^2\log t/(8\pi)=-t^2Q(x)\log t\)</span>, with exactly the sign in (3.4).</p>
 <p><strong>Example 4.3 (a complex elliptic first-order symbol).</strong> In the plane, <span class="math" data-index="165" data-tex="\(p(\xi)=\xi_1+i\xi_2\)">\(p(\xi)=\xi_1+i\xi_2\)</span> has no nonzero real zero. With <span class="math" data-index="166" data-tex="\(z=x_1+ix_2\)">\(z=x_1+ix_2\)</span>,</p>
-<span class="math math-display" id="learner-eq-4.4" data-index="167" data-tex="\[
+<span class="math math-display" data-index="167" data-tex="\[
               E(z)=\frac{i}{2\pi z},\qquad
                        p(D)=-2i\,\partial_{\bar z}.
  \tag{4.4}
-\]">\[
+\]" id="learner-eq-4.4">\[
               E(z)=\frac{i}{2\pi z},\qquad
                        p(D)=-2i\,\partial_{\bar z}.
  \tag{4.4}
 \]</span>
 <p>The Cauchy identity <span class="math" data-index="168" data-tex="\(\partial_{\bar z}(1/(\pi z))=\delta_0\)">\(\partial_{\bar z}(1/(\pi z))=\delta_0\)</span>, proved in the linked Cauchy-kernel reading, gives <span class="math" data-index="169" data-tex="\(p(D)E=\delta_0\)">\(p(D)E=\delta_0\)</span>. This is a locally integrable homogeneous kernel of degree <span class="math" data-index="170" data-tex="\(-1\)">\(-1\)</span>; <span class="math" data-index="171" data-tex="\(m&lt;n\)">\(m&lt;n\)</span> and no logarithm occurs. Ellipticity here does not require a real principal symbol.</p>
 <p><strong>Example 4.4 (lower-order zeros do not obstruct the parametrix).</strong> For</p>
-<span class="math math-display" id="learner-eq-4.5" data-index="172" data-tex="\[
+<span class="math math-display" data-index="172" data-tex="\[
                     P(\xi_1,\xi_2)=|\xi|^2+2i\xi_1-3,
  \tag{4.5}
-\]">\[
+\]" id="learner-eq-4.5">\[
                     P(\xi_1,\xi_2)=|\xi|^2+2i\xi_1-3,
  \tag{4.5}
 \]</span>
 <p>the real zero set contains <span class="math" data-index="173" data-tex="\((0,\sqrt3)\)">\((0,\sqrt3)\)</span> and <span class="math" data-index="174" data-tex="\((0,-\sqrt3)\)">\((0,-\sqrt3)\)</span>. Nevertheless, when <span class="math" data-index="175" data-tex="\(|\xi|\ge6\)">\(|\xi|\ge6\)</span>,</p>
-<span class="math math-display" id="learner-eq-4.6" data-index="176" data-tex="\[
+<span class="math math-display" data-index="176" data-tex="\[
        |P(\xi)|\ge|\xi|^2-2|\xi|-3\ge\frac12|\xi|^2 .
  \tag{4.6}
-\]">\[
+\]" id="learner-eq-4.6">\[
        |P(\xi)|\ge|\xi|^2-2|\xi|-3\ge\frac12|\xi|^2 .
  \tag{4.6}
 \]</span>
@@ -323,11 +323,11 @@
 <p><strong>Solution.</strong> Its modulus is <span class="math" data-index="181" data-tex="\(|\xi|^3\)">\(|\xi|^3\)</span>. On the unit circle <span class="math" data-index="182" data-tex="\(p(\omega)=e^{3i\theta}\)">\(p(\omega)=e^{3i\theta}\)</span> and <span class="math" data-index="183" data-tex="\(q=1\)">\(q=1\)</span>. The factor <span class="math" data-index="184" data-tex="\(x\cdot\omega\)">\(x\cdot\omega\)</span> is a linear combination of <span class="math" data-index="185" data-tex="\(e^{i\theta}\)">\(e^{i\theta}\)</span> and <span class="math" data-index="186" data-tex="\(e^{-i\theta}\)">\(e^{-i\theta}\)</span>. Dividing by <span class="math" data-index="187" data-tex="\(e^{3i\theta}\)">\(e^{3i\theta}\)</span> gives modes of frequencies <span class="math" data-index="188" data-tex="\(-2\)">\(-2\)</span> and <span class="math" data-index="189" data-tex="\(-4\)">\(-4\)</span>, whose full-circle integrals vanish. Thus <span class="math" data-index="190" data-tex="\(Q=0\)">\(Q=0\)</span>. The resonance permits a residue; its actual spherical moments may cancel. Assign 6 points to ellipticity, 10 to the two modes and 4 to the conclusion.</p>
 <p><strong>Exercise 2 (25 points).</strong> In dimension four, compute <span class="math" data-index="191" data-tex="\(Q\)">\(Q\)</span> for <span class="math" data-index="192" data-tex="\(p(\xi)=|\xi|^4\)">\(p(\xi)=|\xi|^4\)</span> and verify that <span class="math" data-index="193" data-tex="\(-\log|x|/(8\pi^2)\)">\(-\log|x|/(8\pi^2)\)</span> is a fundamental solution. Use the area <span class="math" data-index="194" data-tex="\(2\pi^2\)">\(2\pi^2\)</span> of the unit three-sphere and the four-dimensional Laplace kernel.</p>
 <p><strong>Solution.</strong> Here <span class="math" data-index="195" data-tex="\(q=0\)">\(q=0\)</span>, so (3.3) gives <span class="math" data-index="196" data-tex="\(Q=2\pi^2/(2\pi)^4=1/(8\pi^2)\)">\(Q=2\pi^2/(2\pi)^4=1/(8\pi^2)\)</span>. Away from zero, <span class="math" data-index="197" data-tex="\(\Delta\log|x|=2|x|^{-2}\)">\(\Delta\log|x|=2|x|^{-2}\)</span>. The first equality has no additional point mass: the boundary flux at radius <span class="math" data-index="198" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> is <span class="math" data-index="199" data-tex="\(O(\varepsilon^2)\)">\(O(\varepsilon^2)\)</span>, and the other boundary term is <span class="math" data-index="200" data-tex="\(O(\varepsilon^3|\log\varepsilon|)\)">\(O(\varepsilon^3|\log\varepsilon|)\)</span>. The four-dimensional kernel for <span class="math" data-index="201" data-tex="\(-\Delta\)">\(-\Delta\)</span> is <span class="math" data-index="202" data-tex="\(1/(4\pi^2|x|^2)\)">\(1/(4\pi^2|x|^2)\)</span>, so <span class="math" data-index="203" data-tex="\(\Delta|x|^{-2}=-4\pi^2\delta_0\)">\(\Delta|x|^{-2}=-4\pi^2\delta_0\)</span>. Consequently</p>
-<span class="math math-display" id="learner-eq-5.1" data-index="204" data-tex="\[
+<span class="math math-display" data-index="204" data-tex="\[
  \Delta^2\left(-\frac{\log|x|}{8\pi^2}\right)
                  =-\frac1{4\pi^2}\Delta|x|^{-2}=\delta_0.
  \tag{5.1}
-\]">\[
+\]" id="learner-eq-5.1">\[
  \Delta^2\left(-\frac{\log|x|}{8\pi^2}\right)
                  =-\frac1{4\pi^2}\Delta|x|^{-2}=\delta_0.
  \tag{5.1}
@@ -335,22 +335,22 @@
 <p>The sphere area follows from the Gaussian integral: <span class="math" data-index="205" data-tex="\(\pi^2=|S^3|\int_0^\infty e^{-r^2}r^3\,dr=|S^3|/2\)">\(\pi^2=|S^3|\int_0^\infty e^{-r^2}r^3\,dr=|S^3|/2\)</span>. Assign 8 points to <span class="math" data-index="206" data-tex="\(Q\)">\(Q\)</span>, 10 to the distributional identities and 7 to the normalization.</p>
 <p><strong>Exercise 3 (25 points).</strong> Let <span class="math" data-index="207" data-tex="\(\chi_R(\xi)=\chi(\xi/R)\)">\(\chi_R(\xi)=\chi(\xi/R)\)</span>, where <span class="math" data-index="208" data-tex="\(\chi=1\)">\(\chi=1\)</span> on the unit ball and is supported in the ball of radius two. Take both radii sufficiently large to include all real zeros of an elliptic <span class="math" data-index="209" data-tex="\(P\)">\(P\)</span>. Compute the scaling of the error <span class="math" data-index="210" data-tex="\(w_R\)">\(w_R\)</span> and prove that two resulting parametrices differ by an entire Schwartz function.</p>
 <p><strong>Solution.</strong> Fourier substitution gives</p>
-<span class="math math-display" id="learner-eq-5.2" data-index="211" data-tex="\[
+<span class="math math-display" data-index="211" data-tex="\[
                   w_R(x)=-R^n(\mathcal F^{-1}\chi)(Rx).
  \tag{5.2}
-\]">\[
+\]" id="learner-eq-5.2">\[
                   w_R(x)=-R^n(\mathcal F^{-1}\chi)(Rx).
  \tag{5.2}
 \]</span>
 <p>Its derivatives acquire the corresponding factor <span class="math" data-index="212" data-tex="\(R^{n+|\alpha|}\)">\(R^{n+|\alpha|}\)</span>. For complex <span class="math" data-index="213" data-tex="\(x\)">\(x\)</span>, the compact-frequency formula gives an exponential factor at most <span class="math" data-index="214" data-tex="\(e^{2R|\operatorname{Im}x|}\)">\(e^{2R|\operatorname{Im}x|}\)</span>, multiplied by a derivative-dependent constant. The Fourier transform of the difference of two kernels is <span class="math" data-index="215" data-tex="\((\chi_{R_1}-\chi_{R_2})/P\)">\((\chi_{R_1}-\chi_{R_2})/P\)</span>. It is smooth and compactly supported: the numerator vanishes around every real zero of <span class="math" data-index="216" data-tex="\(P\)">\(P\)</span>, and the denominator is nonzero on the remaining annulus. Its inverse transform is Schwartz by integration by parts and entire by the compact integral formula. Assign 10 points to scaling, 5 to complex growth and 10 to the difference.</p>
 <p><strong>Exercise 4 (30 points).</strong> For <span class="math" data-index="217" data-tex="\(p(\xi)=|\xi|^4\)">\(p(\xi)=|\xi|^4\)</span> in two dimensions, compute the residue distribution <span class="math" data-index="218" data-tex="\(R\)">\(R\)</span> in (2.4), its value on <span class="math" data-index="219" data-tex="\(\varphi(\xi)=e^{-|\xi|^2}\)">\(\varphi(\xi)=e^{-|\xi|^2}\)</span>, and its inverse Fourier transform. Verify <span class="math" data-index="220" data-tex="\(pR=0\)">\(pR=0\)</span>.</p>
 <p><strong>Solution.</strong> Here <span class="math" data-index="221" data-tex="\(q=2\)">\(q=2\)</span> and <span class="math" data-index="222" data-tex="\(p(\omega)=1\)">\(p(\omega)=1\)</span>. The circle moments are <span class="math" data-index="223" data-tex="\(\int\omega_j^2\,dS=\pi\)">\(\int\omega_j^2\,dS=\pi\)</span>, <span class="math" data-index="224" data-tex="\(\int\omega_1\omega_2\,dS=0\)">\(\int\omega_1\omega_2\,dS=0\)</span>. Therefore</p>
-<span class="math math-display" id="learner-eq-5.3" data-index="225" data-tex="\[
+<span class="math math-display" data-index="225" data-tex="\[
  R=\frac\pi2\Delta_\xi\delta_0,\qquad
  \langle R,e^{-|\xi|^2}\rangle=-2\pi,\qquad
              \mathcal F^{-1}R=-\frac{|x|^2}{8\pi}.
  \tag{5.3}
-\]">\[
+\]" id="learner-eq-5.3">\[
  R=\frac\pi2\Delta_\xi\delta_0,\qquad
  \langle R,e^{-|\xi|^2}\rangle=-2\pi,\qquad
              \mathcal F^{-1}R=-\frac{|x|^2}{8\pi}.

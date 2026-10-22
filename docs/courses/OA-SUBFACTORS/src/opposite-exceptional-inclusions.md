@@ -185,4 +185,4 @@ This gives two distinct classes. Proposition 38.6 gives at most two for arbitrar
 
 - Yasuyuki Kawahigashi, [*On flatness of Ocneanu's connections on the Dynkin diagrams and classification of subfactors*](https://www.ms.u-tokyo.ac.jp/~yasuyuki/flat.pdf), Sections 3 and 6, for the connection and exceptional-classification context. The intrinsic ordered-trace argument and complete finite calculation above are supplied here.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Public domain (CC0).*

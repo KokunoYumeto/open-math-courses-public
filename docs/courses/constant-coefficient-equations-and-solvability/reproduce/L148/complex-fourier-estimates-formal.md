@@ -1,6 +1,6 @@
 # Complex Fourier estimates and weak exponential representations
 
-*Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original proofs and figures: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original proofs and figures: CC0.*
 
 A compactly supported distribution has an entire Fourier transform. Its values off the real frequency space can grow exponentially, but the supporting function of its support removes that growth. We prove three weighted estimates, then use them to integrate exponential solutions against a measure which may be singular. The resulting integral defines a distribution; it need not define a value at each point.
 

@@ -1,6 +1,6 @@
 # Continuous functionals, test families and compact limits
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Density, solvability and compactness arguments need functionals with the right bound and test families with controlled support. We derive those tools from normed Hahn–Banach, then prove the compact subsequence arguments that the Fourier and distributional lessons use.
 

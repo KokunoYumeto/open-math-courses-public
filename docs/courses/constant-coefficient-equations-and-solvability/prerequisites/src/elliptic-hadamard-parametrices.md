@@ -1,6 +1,6 @@
 # Building a local inverse from radial singularities
 
-**AN-03 · Unit AN03-U020 · Self-checked by the writing AI.**
+**AN-03 · Unit AN03-U020**
 
 A local inverse of a differential operator has more structure than its mapping estimates reveal. Near the diagonal, its leading singularity is the Euclidean inverse kernel measured in the metric of the principal symbol. Successive corrections are found by ordinary differential equations along short geodesics. The corrections improve the error by two orders at a time, while the same radial kernels continue to describe the singular part.
 
@@ -985,7 +985,7 @@ The right composition \(TA\) differentiates the smooth kernel in its input varia
 
 The mathematical antecedent is the Hadamard construction as treated by Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, corrected second printing, 1994, §17.4. This exposition develops a dyadic kernel estimate before the geometry, derives the exceptional Hessian term and flux identity explicitly, and separates matrix transport, finite error accounting and asymptotic completion. The examples and problems above were constructed for those distinctions.
 
-One intermediate zero-index product display on printed page 32 has the opposite cross-term sign from (HT6). Direct differentiation gives the drift contribution \(+2hu f'\) and the principal cross contribution \(-4Eu f'\), as recorded there. The normalized transport equation makes their sum zero; the finite parametrix identity and the source theorem are unaffected. This reconciliation is limited to that intermediate display.
+Direct differentiation in (HT6) gives the drift contribution \(+2hu f'\) and the principal cross contribution \(-4Eu f'\), as recorded there. The normalized transport equation makes their sum zero; the finite parametrix identity and the source theorem are unaffected.
 
 David Dos Santos Ferreira, Carlos E. Kenig and Mikko Salo, [*On L^p resolvent estimates for Laplace-Beltrami operators on compact manifolds*, arXiv:1112.3216v1](https://arxiv.org/abs/1112.3216v1), §3, pp. 8–11, is a useful comparison for the scalar resolvent construction. Its spectral parameter is the negative of the parameter used here. The inspected version does not supply the general matrix transport or the detailed finite-regularity and exceptional-distribution proofs required here. Problem 2 also explains why its displayed positive-power bound for all radial indices needs qualification. Semyon Dyatlov's [*Lecture 15: variable-coefficient elliptic PDE*, MIT 18.155, Fall 2021, final notes](https://math.mit.edu/~dyatlov/18.155-F21/Lecture15.pdf), §15.3 and its symbol-summation proof, offers a complementary symbolic construction. Its singular-support statements and bilinear transpose require the additional wavefront and density-adjoint arguments supplied above. These are comparison readings. Their exposition is not reproduced here.
 

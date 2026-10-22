@@ -74,7 +74,6 @@ exact("asymmetric_smoothings_differ",abs(2*mp.j*F1)>0)
 record={"schema":"AN02-original-example-probes219/v1","observed_at_utc":datetime.now(timezone.utc).isoformat(),
     "status":"PASS","decimal_precision":mp.mp.dps,"probe_count":sum(counts.values()),"counts":counts,
     "maximum_identity_error":str(max(errors)),"compact_smooth_multiplier_c":str(c),
-    "proof_status":"Supplementary numerical and rational checks only; the complete analytic arguments are in the formal and learner texts.",
-    "independent_review":False,"source_code_sha256":hashlib.sha256(Path(__file__).read_bytes()).hexdigest().upper()}
+    "proof_status":"Supplementary numerical and rational checks only; the complete analytic arguments are in the formal and learner texts.","source_code_sha256":hashlib.sha256(Path(__file__).read_bytes()).hexdigest().upper()}
 (OWN/"supplementary-example-probes219.json").write_text(json.dumps(record,indent=2)+"\n",encoding="utf-8")
 print(json.dumps(record))

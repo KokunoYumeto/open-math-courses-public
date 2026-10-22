@@ -1,6 +1,6 @@
 """Original scientific figures and independent symbolic/integral checks.
 
-No input or write lies outside this workflow, except read-only libraries.
+The program writes the figures and numerical reports in its output directory.
 """
 from pathlib import Path
 import json, hashlib, platform, shutil
@@ -51,7 +51,7 @@ ax.set_xticks([-2,-1,0,1,2]);ax.set_yticks(range(5));ax.grid(alpha=.13)
 fig.subplots_adjust(left=.10,right=.98,top=.89,bottom=.14)
 save(fig,'delay-convolution-support-032')
 
-geometry={'schema':'exact-original-figure-geometry/v1','figure1':{'domain':[-4,4],'sample_count':801,'coordinate_axes':['real spatial xi','imaginary time root Im z'],'exact_curves':['Im z=xi^2','Im z=-log(1+xi^2)','Im z=-xi^2'],'evolution_relation':'lambda=i z; Re lambda=-Im z','proof_locators':['(35)','(37)','(42)','Exercise1']},'figure2':{'displayed_exact_support_points':[[k,0] for k in range(5)],'coordinate_order':'(t,x)','full_exact_support':'{(k,0): k=0,1,...}','derivative_order':{str(k):2*k for k in range(5)},'containing_cone':'t>=abs(x)','full_support_equals_cone':False,'distribution_values_plotted':False,'proof_locators':['(43)','(44)','(45)','Exercise6']},'private_images_copied':False}
+geometry={'schema':'exact-original-figure-geometry/v1','figure1':{'domain':[-4,4],'sample_count':801,'coordinate_axes':['real spatial xi','imaginary time root Im z'],'exact_curves':['Im z=xi^2','Im z=-log(1+xi^2)','Im z=-xi^2'],'evolution_relation':'lambda=i z; Re lambda=-Im z','proof_locators':['(35)','(37)','(42)','Exercise1']},'figure2':{'displayed_exact_support_points':[[k,0] for k in range(5)],'coordinate_order':'(t,x)','full_exact_support':'{(k,0): k=0,1,...}','derivative_order':{str(k):2*k for k in range(5)},'containing_cone':'t>=abs(x)','full_support_equals_cone':False,'distribution_values_plotted':False,'proof_locators':['(43)','(44)','(45)','Exercise6']}}
 (FIG/'geometry.json').write_text(json.dumps(geometry,indent=2)+'\n',encoding='utf-8')
 
 t,x,z,lam,s,a,b=sp.symbols('t x z lam s a b',real=True)

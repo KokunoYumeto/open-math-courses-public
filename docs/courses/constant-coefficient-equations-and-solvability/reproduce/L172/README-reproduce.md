@@ -11,4 +11,4 @@ The figure program writes PNG/SVG pairs and a formula-and-coordinate description
 
 The check program uses exact fractions for domain margins, translated supports, cutoff tails and scaled-jet powers, and 65-digit arithmetic for complex bilinear transposes and translated solutions. It writes a supplementary local report. That report is a check log, not part of the mathematical reading edition or a substitute for its proofs.
 
-Original chapters, programs and illustrations are public domain under CC0. The DejaVu font retains its separate licence. SVG text is editable. The private temporary Matplotlib configuration is removed when the figure program finishes.
+Original chapters, programs and illustrations are public domain under CC0. The DejaVu font retains its separate licence. SVG text is editable.

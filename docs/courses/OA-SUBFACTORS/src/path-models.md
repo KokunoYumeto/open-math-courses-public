@@ -540,4 +540,4 @@ The total masses are \((2+9+5)/16=1\) and \((10+16+6)/32=1\). At level four, the
 - Hans Wenzl, [*On sequences of projections*](https://mathreports.ca/download/2439/), C. R. Math. Rep. Acad. Sci. Canada 9 (1987), 5–9.
 - Masamichi Takesaki, *Theory of Operator Algebras III*, Springer, 2003, Chapter XIX.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026; expanded October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Public domain (CC0).*

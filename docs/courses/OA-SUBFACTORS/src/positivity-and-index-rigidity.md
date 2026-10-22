@@ -238,4 +238,4 @@ If \(E_N(x)\geq cx\) for all positive \(x\), trace pairing with \(x\) yields \(\
 - Hans Wenzl, [*On sequences of projections*](https://mathreports.ca/download/2439/), Comptes Rendus Mathématiques de l'Académie des Sciences, Canada 9 (1987), 5–9. The recursive projections used above are called Jones–Wenzl projections.
 - Mihai Pimsner and Sorin Popa, [*Entropy and index for subfactors*](https://www.numdam.org/item/ASENS_1986_4_19_1_57_0/), Annales scientifiques de l'École normale supérieure 19 (1986), 57–106.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Public domain (CC0).*

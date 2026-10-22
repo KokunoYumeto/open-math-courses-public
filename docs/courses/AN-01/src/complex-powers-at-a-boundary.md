@@ -57,7 +57,7 @@ Both majorants are integrable. Parameter differentiation adds powers \((\log t)^
 
 The complex difference quotient of \(t^{b+m}\) is its logarithmic derivative integrated along the parameter segment, as in gamma-companion (G2). The preceding bounds on a slightly larger parameter disk dominate that quotient and each subsequent derivative. They prove entire scalar pairings and identify their derivatives.
 
-On compact tests (1.3) is exactly U016, Lemma N1. Compact tests are dense in \(\mathcal S\), by F1, formula (F3). Thus two versions with different \(m\) agree on all Schwartz tests; every parameter is covered by one of the regions. The same density proves uniqueness. A compact test supported in the negative half-line and all its derivatives vanish on \([0,\infty)\), so \(C_b\) has support there for every \(b\). \(\square\)
+On compact tests (1.3) is exactly U016, Lemma N1. Compact tests are dense in \(\mathcal S\), by F1, formula (F3). Thus two versions with different \(m\) agree on all Schwartz tests; every parameter is covered by one of the regions. The same density proves uniqueness. A compact test supported in the negative half-line and all its derivatives vanish on \([0,\infty)\), so \(C_b\) has support in \([0,\infty)\) for every \(b\). \(\square\)
 
 All of U016's identities for \(C_b\), its meromorphic multiple \(U_b=\Gamma(b+1)C_b\), and its reflected family hold on Schwartz tests: the operators preserve \(\mathcal S'\), and compact-test equality extends by density. Laurent coefficients are tempered by the compact-parameter bounds and ordinary scalar products of their convergent power series. In particular \(C_0=H\) and \(C_{-k}=\delta_0^{(k-1)}\), \(k\ge1\).
 
@@ -90,6 +90,41 @@ Then \(\ell'(p)=1/p\), \(e^{\ell(p)}=p\), and \(\ell(r)=\log r\) for \(r>0\).
 **Proof.** For real \(p>0\), substitute \(s=pt\) into the Euler integral defining \(\Gamma(\mu)\). This gives \(p^{-\mu}\Gamma(\mu)\) before multiplying by \(G(\mu)\); the gamma companion proves \(G(\mu)\Gamma(\mu)=1\).
 
 For \(p\) in a compact subset of the right half-plane, there is \(\delta>0\) with \(\operatorname{Re}p\ge\delta\). Differentiating \(j\) times in \(p\) adds \((-t)^j\), dominated by \(t^{\operatorname{Re}\mu+j-1}e^{-\delta t}\). This is integrable both at zero and infinity, and the fundamental-theorem difference quotient justifies each complex derivative. Both sides of (H1) are consequently holomorphic in \(p\). They agree on the positive real axis. To see why this is sufficient, expand their difference on a disk about any positive point using U013, Corollary 2.2. Its real-axis derivatives all vanish, so its power-series coefficients vanish. The identity principle from U014 then propagates zero across the connected right half-plane. \(\square\)
+
+**Lemma H1a (the ray integral in both directions).** If \(\operatorname{Re}\mu>0\) and \(-\pi/2<\theta<\pi/2\), then, with the ray oriented outward,
+\[
+ \int_{0}^{\infty e^{i\theta}} e^{-z}z^{\mu-1}\,dz=\Gamma(\mu).
+ \tag{R1}
+\]
+The power uses the logarithm with argument between \(-\pi/2\) and \(\pi/2\). In particular a rotation of this ray gives a second proof of (H1) for every \(p\) with positive real part.
+
+**Proof.** The case \(\theta=0\) is the defining Euler integral. Otherwise take the annular sector between the positive ray and the ray at angle \(\theta\), with radii \(r\) and \(R\), \(0<r<R\). The integrand is holomorphic on a neighborhood of its closure by H0 and the exponential derivative rule. Apply the finite-corner complex Green formula from [Boundary flux and weak identities](boundary-flux-and-weak-identities.md), Corollary 2.4, after multiplying the integrand by a compact cutoff equal to one near that closure and supported within the right half-plane. The contour integral is zero. For positive \(\theta\) its positive orientation goes outward on the real ray and inward on the angled ray; for negative \(\theta\) those two directions are reversed. In both cases, solving the identity for the two outward radial integrals shows their difference is a signed sum of the two arc integrals.
+
+Write \(s=\operatorname{Re}\mu>0\) and \(b=\operatorname{Im}\mu\). On an arc \(z=\rho e^{i\varphi}\) between these rays,
+\[
+ |z^{\mu-1}|=\rho^{s-1}e^{-b\varphi},\qquad
+ |e^{-z}|=e^{-\rho\cos\varphi}.
+ \tag{R2}
+\]
+Thus the inner arc integral has absolute value at most
+\[
+ |\theta|e^{|b||\theta|}r^s,
+ \tag{R3}
+\]
+because \(\cos\varphi>0\). The outer arc integral has absolute value at most
+\[
+ |\theta|e^{|b||\theta|}R^s
+                             e^{-R\cos|\theta|}.
+ \tag{R4}
+\]
+The first tends to zero as \(r\downarrow0\); the second tends to zero as \(R\to\infty\), since \(\cos|\theta|>0\). The radial integrals are absolutely convergent by the same estimates near zero and infinity. Their equality in the limit proves (R1), for either sign of \(\theta\).
+
+For \(p\) in the right half-plane, take \(\theta=\arg p\), substitute \(z=pt\) on that outward ray, and use \(\operatorname{Log}(pt)=\ell(p)+\log t\), \(t>0\). The ray integral becomes \(p^\mu\int_0^\infty e^{-pt}t^{\mu-1}\,dt\). Equation (R1) and \(G(\mu)\Gamma(\mu)=1\) give (H1), with its precise branch. \(\square\)
+
+![Outward rays and the two arcs in the Euler integral](../figures/euler-rays-and-arc-estimates.png)
+
+*Figure 1. The two sectors illustrate \(\theta=\pi/3\) and \(\theta=-\pi/3\). Both radial arrows point outward for the equality in (R1); positive boundary orientation reverses one of them. The inner and outer arcs obey (R3) and (R4). The drawn radii are \(r=1/2\), \(R=3\); the proof takes their limits. Reproducible [figure source](../figures/euler-rays-and-arc-estimates.py) and [vector drawing](../figures/euler-rays-and-arc-estimates.svg).*
+
 
 **Lemma H2 (damping and its limit).** For every \(\lambda\in\mathbb C\), the damped distribution \(e^{-\varepsilon t}e_\lambda\), supported in \([0,\infty)\), has Fourier transform \((\varepsilon+ix)^{-\lambda}\) for \(\varepsilon>0\). It tends to \(e_\lambda\) in \(\mathcal S'\) as \(\varepsilon\downarrow0\). Both this convergence and its Fourier-transformed version hold locally uniformly in \(\lambda\) after pairing with any Schwartz test, including every fixed parameter derivative.
 
@@ -245,6 +280,43 @@ The upper transform is supported in \([0,\infty)\), and the lower transform in \
 
 **Proof.** Apply \(\mathcal F\) to (1.5), then use \(\mathcal F^2=2\pi\mathcal R\), commutation with reflection, and \(\mathcal R^2=I\). Lemma 1.1 gives the support of \(C_{-a-1}\); reflecting it gives the other inclusion. \(\square\)
 
+### Fourier transforms of every finite-part order
+
+**Corollary 3.3 (the full one-dimensional transform table).** For every \(a\in\mathbb C\),
+\[
+ \begin{aligned}
+ \mathcal FC_a
+   &=e^{-i\pi(a+1)/2}B_-(-a-1),\\
+ \mathcal F\mathcal RC_a
+   &=e^{i\pi(a+1)/2}B_+(-a-1).
+ \end{aligned}
+ \tag{T1}
+\]
+Together with (3.2), these give the transforms in both directions for both boundary branches. For every integer \(k\ge0\), the symmetric finite part of order \(k+1\) satisfies
+\[
+ \mathcal FS_{k+1}(\xi)
+       =\frac{\pi i^{-k-1}}{k!}\,\xi^k\operatorname{sgn}\xi.
+ \tag{T2}
+\]
+For integers \(k<0\), the corresponding nonsingular power is a polynomial and has transform
+\[
+ \mathcal F(x^{-1-k})=2\pi i^{-1-k}\delta_0^{(-1-k)}.
+ \tag{T3}
+\]
+All three identities hold globally as tempered distributions, including the origin.
+
+**Proof.** Substitute \(-a-1\) for the parameter in (1.5), and solve for \(\mathcal FC_a\) and \(\mathcal R\mathcal FC_a=\mathcal F\mathcal RC_a\). This gives (T1) directly, without a branch choice at an integer.
+
+Theorem 2.1 gives \(S_{k+1}=(B_+(-k-1)+B_-(-k-1))/2\), since the two point-supported terms cancel. By (3.2) its transform is
+\[
+ \frac{\pi}{k!}
+ \left(i^{-k-1}\xi_+^k+i^{k+1}(-\xi)_+^k\right),
+ \tag{T4}
+\]
+where \(\xi_+^0\) denotes the positive half-line indicator. On the positive half-line this is the right side of (T2). On the negative half-line its coefficient relative to \(\xi^k\) is \(i^{k+1}(-1)^k=-i^{-k-1}\), which gives the negative sign. Both sides are locally integrable functions with polynomial growth; their value at the single point zero does not affect the distribution. Equation (T4) was already a global identity, so no undetermined delta term remains.
+
+Finally let \(m=-1-k\ge0\). Since \(\mathcal F1=2\pi\delta_0\) and \(\mathcal F(xu)=i\partial_\xi\mathcal Fu\) by F5, induction gives \(\mathcal F(x^m)=2\pi i^m\delta_0^{(m)}\). This is (T3). \(\square\)
+
 ## A parameter derivative produces logarithmic traces
 
 Define \(L_\pm(a)=\partial_aB_\pm(a)\). The local bounds in Proposition 1.2 prove that this is an entire tempered family.
@@ -286,6 +358,12 @@ These are also the actual boundary traces of \(\operatorname{Log}(x\pm i\varepsi
 **Exercise 5 (intermediate: a mixed second-order pole).** For \(T=B_+(-2)+3B_-(-2)\), find \(T\), \(xT\) and \(\partial_xT\) as symmetric finite parts and point jets. Verify the multiplication sign directly on tests.
 
 **Exercise 6 (advanced: translation and scale).** Let \(b>0\) and \(c\in\mathbb R\). Find both boundary traces of \(\operatorname{Log}(b(z-c))\) and their derivatives. Explain the dependence on \(b\).
+
+**Exercise 7 (intermediate: an even and an odd finite part).** Compute \(\mathcal FS_2\) and \(\mathcal FS_3\). Check the derivative relation \(\partial_xS_2=-2S_3\) on the transformed side, including every sign.
+
+**Exercise 8 (intermediate: negative indices in the table).** Evaluate (T3) at \(k=-1,-2,-3\), and compare the results with (3.2) at \(a=0,1,2\). Why must no extra point-supported term be added?
+
+**Exercise 9 (advanced: a complex exponent and both ray directions).** Take \(\mu=\tfrac12+i\) and \(\theta=\pm\pi/3\). Give explicit upper bounds for the two arc integrals and prove their limits. Evaluate the integral in (H1) when \(p=\rho e^{i\theta}\), \(\rho>0\), displaying the real magnitude factor caused by the imaginary part of \(\mu\).
 
 ## Complete solutions
 
@@ -331,7 +409,34 @@ Their derivatives, by translation of (4.2), are
 \]
 Here the translated principal value is defined by translating the test in the already proved principal value at zero. The added constant \(\log b\) has zero distributional derivative: its pairing with \(-\phi'\) is zero by the vanishing endpoints. Therefore changing \(b\) changes the trace by that constant and leaves its derivative unchanged.
 
-## Programme proof locations and freely accessible sources
+**Solution 7.** Substituting \(k=1,2\) in (T2) gives
+\[
+ \mathcal FS_2=-\pi|\xi|,\qquad
+ \mathcal FS_3=\frac{i\pi}{2}\xi|\xi|.
+ \tag{T5}
+\]
+The Fourier transform of the derivative is \(i\xi\mathcal FS_2=-i\pi\xi|\xi|\), equal to \(-2\mathcal FS_3\). This is an identity between regular tempered distributions on the whole line, including zero.
+
+**Solution 8.** The three polynomials \(1,x,x^2\) have transforms \(2\pi\delta_0\), \(2\pi i\delta_0'\), and \(-2\pi\delta_0''\). In (3.2), \(C_{-1}=\delta_0\), \(C_{-2}=\delta_0'\), \(C_{-3}=\delta_0''\). The upper phases \(1,i,-1\) give those exact answers. For the lower formula, reflection fixes even delta derivatives and negates odd ones: this follows by the chain rule on the reflected test. It therefore cancels the sign in the phase at \(a=1\) and gives the same polynomial answers. The formulas are established on every Schwartz test by the entire-family identity, and Fourier inversion is injective. An extra delta derivative on the Fourier side would change the inverse distribution, so none is allowed.
+
+**Solution 9.** Here \(s=1/2\), \(|b|=1\), \(|\theta|=\pi/3\), and \(\cos|\theta|=1/2\). Both signs obey the bounds
+\[
+ \frac{\pi}{3}e^{\pi/3}r^{1/2},
+ \qquad
+ \frac{\pi}{3}e^{\pi/3}R^{1/2}e^{-R/2}.
+ \tag{R5}
+\]
+The first tends to zero. For the second, the exponential series gives \(e^{R/4}\ge R/4\), so \(R^{1/2}e^{-R/2}\le4R^{-1/2}e^{-R/4}\to0\). This verifies the limiting argument in either sector, with no cancellation needed in the arc estimates. Equation (H1) gives
+\[
+ \int_0^\infty e^{-\rho e^{i\theta}t}t^{-1/2+i}\,dt
+   =\Gamma\!\left(\tfrac12+i\right)
+      \rho^{-1/2}e^\theta
+      e^{-i(\log\rho+\theta/2)}.
+ \tag{R6}
+\]
+Indeed \(-(\tfrac12+i)(\log\rho+i\theta)\) has real part \(-\tfrac12\log\rho+\theta\) and imaginary part \(-\log\rho-\theta/2\). The factor \(e^\theta\) distinguishes the two directions even though the symmetric arc bounds in (R5) are identical.
+
+## Programme proof locations and sources
 
 - [Schwartz functions and Fourier inversion](../prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.md), F1–F5: the complete seminorm, density, Gaussian, inversion and transpose proofs used in (1.1)–(1.2).
 - [Finite parts of singular powers](finite-parts-of-singular-powers.md), Lemma N1 and its Laurent, reflection and homogeneity proofs; the [gamma companion](../prerequisites/U011-free-foundations/gamma-foundations-U016.md), (G0)–(G2) and (W4a)–(W4e), proves the Euler normalization used in H1.
@@ -339,3 +444,5 @@ Here the translated principal value is defined by translating the test in the al
 - [Semyon Dyatlov, *Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs*](https://math.mit.edu/~dyatlov/18.155/155-notes.pdf), Sections 11.1–11.2.2: freely accessible Fourier proofs compared with the supplied foundation. The complete Fourier–Laplace boundary argument is H0–H2 above.
 
 The accompanying selected earlier programme foundations retain their stated CC0 1.0 licences and notices. This lesson and the Schwartz Fourier companion are CC0.
+
+- [Boundary flux and weak identities](boundary-flux-and-weak-identities.md), Corollary 2.4: the finite-corner complex Green formula used in Lemma H1a. Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition (1990), Example 7.1.17, printed pages 166–167: Fourier transforms of one-sided and boundary powers.

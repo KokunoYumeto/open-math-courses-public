@@ -1,6 +1,6 @@
 # Polygonal regions and the directions on a circle
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Connectedness turns local planar information into a global geometric constraint. We prove polygonal connectivity, describe the arcs left by finitely many marked directions, and prove that a simple finite polygon has one bounded region and one exterior region.
 

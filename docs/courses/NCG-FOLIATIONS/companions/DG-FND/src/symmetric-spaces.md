@@ -145,14 +145,14 @@ and
 \]
 The splitting is invariant under all of \(\operatorname{Ad}(H)\). The quotient \(G/H\) is smooth, and the differential of its orbit map identifies \(T_o(G/H)\) with \(\mathfrak m\).
 
-**Proof.** The fixed group \(G^\sigma\) is closed and hence an embedded Lie subgroup by Invariant connections A.1. A vector fixed by \(\theta\) has its full one-parameter subgroup fixed by \(\sigma\), since
+**Proof.** The fixed group \(G^\sigma\) is closed and hence an embedded Lie subgroup by [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1). A vector fixed by \(\theta\) has its full one-parameter subgroup fixed by \(\sigma\), since
 \(\sigma(\exp tX)=\exp(t\theta X)\);
 this follows from uniqueness of the invariant ODE, [Local tools 2.3](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters). Conversely a curve in the fixed group has derivative fixed by \(\theta\). Thus its Lie algebra is \(\ker(\theta-I)\). The inclusions (B.1) make this also the Lie algebra of \(H\).
 
 Since \(\theta^2=I\), each vector splits uniquely as
 \(\frac12(X+\theta X)+\frac12(X-\theta X)\), giving (B.2). Differentiation of a group automorphism preserves the Lie bracket, by [Curvature and holonomy A.3](curvature-and-holonomy-groups.md#lemma-a-3). Therefore the bracket of vectors of signs \(\epsilon,\delta\) has sign \(\epsilon\delta\), proving (B.3). For \(h\in H\), \(\sigma(h)=h\), and differentiation of
 \(\sigma(hgh^{-1})=h\sigma(g)h^{-1}\)
-shows that \(\theta\) commutes with \(\operatorname{Ad}(h)\). This proves invariance of both eigenspaces for the full stabilizer. The quotient and tangent identification are [Local tools 4.1](local-tools-for-bundles-and-transport.md#4-quotients-by-a-closed-lie-subgroup) and Invariant connections A.2. □
+shows that \(\theta\) commutes with \(\operatorname{Ad}(h)\). This proves invariance of both eigenspaces for the full stabilizer. The quotient and tangent identification are [Local tools 4.1](local-tools-for-bundles-and-transport.md#4-quotients-by-a-closed-lie-subgroup) and [Invariant connections A.2](invariant-connections-on-homogeneous-bundles.md#theorem-a-2). □
 
 **Theorem B.2 (Canonical symmetric geometry).** The canonical connection for (B.2) on \(G/H\) is complete, torsion-free and has parallel curvature. At \(o\), with tangent vectors identified with \(\mathfrak m\),
 \[
@@ -180,7 +180,7 @@ R(X,Y)=-\operatorname{ad}([X,Y]_{\mathfrak h})|_{\mathfrak m}.
 \]
 The bracket inclusions (B.3) give zero torsion and (B.4).
 
-The first map in (B.6) is well-defined because \(\sigma\) fixes each element of \(H\), and is smooth in the quotient charts of [Local tools 4.1](local-tools-for-bundles-and-transport.md#4-quotients-by-a-closed-lie-subgroup). Its square is the identity. It preserves the canonical connection: on \(G\) that connection has horizontal subspaces \(dL_g\mathfrak m\), as constructed in Invariant connections C.2, and
+The first map in (B.6) is well-defined because \(\sigma\) fixes each element of \(H\), and is smooth in the quotient charts of [Local tools 4.1](local-tools-for-bundles-and-transport.md#4-quotients-by-a-closed-lie-subgroup). Its square is the identity. It preserves the canonical connection: on \(G\) that connection has horizontal subspaces \(dL_g\mathfrak m\), as constructed in [Invariant connections C.2](invariant-connections-on-homogeneous-bundles.md#theorem-c-2), and
 \[
 d\sigma_g(dL_g X)=dL_{\sigma(g)}(\theta X).
 \]
@@ -202,7 +202,7 @@ G=\operatorname{Aff}(M,\nabla)^0,\qquad H=G_o,\qquad
 \]
 Its original connection is the canonical connection of that presentation. For a Riemannian symmetric space one may instead use \(G=\operatorname{Isom}(M)^0\); its stabilizer \(H\) is compact.
 
-**Proof.** The affine group is a Lie group with smooth action by [Affine transformations D.3](affine-transformations-and-the-isometry-group.md#theorem-d-3), and its identity component acts transitively by A.2. The stabilizer is closed. Invariant connections A.2 proves that the orbit map identifies \(G/H\) diffeomorphically with \(M\).
+**Proof.** The affine group is a Lie group with smooth action by [Affine transformations D.3](affine-transformations-and-the-isometry-group.md#theorem-d-3), and its identity component acts transitively by A.2. The stabilizer is closed. [Invariant connections A.2](invariant-connections-on-homogeneous-bundles.md#theorem-a-2) proves that the orbit map identifies \(G/H\) diffeomorphically with \(M\).
 
 Conjugation by \(s_o\) preserves the identity component and is a smooth group automorphism, by the Lie-group operations and \(s_o^2=1\). It is involutive. If \(h\in H\), then \(hs_oh^{-1}\) fixes \(o\) with differential \(-I\); one-jet uniqueness makes it \(s_o\). Thus \(H\subseteq G^\sigma\).
 
@@ -451,12 +451,12 @@ For \(n\geq2\) their sectional curvature is one.
 
 **Proof.** Take \(G=SO(n+1)\) and conjugate it by the orthogonal matrix
 \(J=\operatorname{diag}(1,-I_n)\).
-This defines an involution even when \(J\notin SO(n+1)\). The closed-subgroup theorem Invariant connections A.1 and differentiation of \(A^TA=I\) identify the Lie algebra as the skew-symmetric matrices; conversely the exponential of a skew-symmetric matrix is orthogonal with determinant one, so every such tangent vector occurs. Connectedness follows from the plane-rotation construction in [Affine transformations G.1](affine-transformations-and-the-isometry-group.md#theorem-g-1). The negative eigenspace consists of
+This defines an involution even when \(J\notin SO(n+1)\). The closed-subgroup theorem [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1) and differentiation of \(A^TA=I\) identify the Lie algebra as the skew-symmetric matrices; conversely the exponential of a skew-symmetric matrix is orthogonal with determinant one, so every such tangent vector occurs. Connectedness follows from the plane-rotation construction in [Affine transformations G.1](affine-transformations-and-the-isometry-group.md#theorem-g-1). The negative eigenspace consists of
 \[
 X(v)=
 \begin{pmatrix}0&-v^T\\v&0\end{pmatrix}.
 \]
-The subgroup \(H=\operatorname{diag}(1,SO(n))\) lies between the identity component and the full fixed group of the involution. Completing a unit vector to an oriented orthonormal basis proves transitivity on \(S^n\); its stabilizer at the first coordinate vector is \(H\). The orbit theorem Invariant connections A.2 therefore identifies \(G/H\) with \(S^n\), and \(X(v)\) differentiates to \(v\). The metric \(v\cdot w\) is \(H\)-invariant. Its homogeneous extension is the usual induced round metric, since orthogonal matrices preserve the Euclidean inner product.
+The subgroup \(H=\operatorname{diag}(1,SO(n))\) lies between the identity component and the full fixed group of the involution. Completing a unit vector to an oriented orthonormal basis proves transitivity on \(S^n\); its stabilizer at the first coordinate vector is \(H\). The orbit theorem [Invariant connections A.2](invariant-connections-on-homogeneous-bundles.md#theorem-a-2) therefore identifies \(G/H\) with \(S^n\), and \(X(v)\) differentiates to \(v\). The metric \(v\cdot w\) is \(H\)-invariant. Its homogeneous extension is the usual induced round metric, since orthogonal matrices preserve the Euclidean inner product.
 
 Matrix multiplication gives
 \[
@@ -503,7 +503,7 @@ K(z,w)=1+3\bigl(\operatorname{Im}(z^*w)\bigr)^2.
 \tag{E.4}
 \]
 
-**Proof.** Use \(G=SO(k+l)\) in the real case and \(G=U(k+l)\) in the complex case. These are closed matrix Lie groups by Invariant connections A.1. Their Lie algebras consist of skew-adjoint matrices: differentiation gives this condition, and the matrix exponential supplies the converse. The real group is connected by [Affine transformations G.1](affine-transformations-and-the-isometry-group.md#theorem-g-1). A unitary matrix has an orthonormal eigenbasis by [Sectional curvature I.1](sectional-curvature-and-space-forms.md#lemma-i-1), and its eigenvalues are \(e^{it_j}\) with real \(t_j\), by [Connections E.1](connections-and-parallel-transport.md#lemma-e-1). Conjugating \(\operatorname{diag}(e^{ist_j})\), \(0\leq s\leq1\), by that eigenbasis gives a path from the identity to the matrix. Thus the complex group is connected too.
+**Proof.** Use \(G=SO(k+l)\) in the real case and \(G=U(k+l)\) in the complex case. These are closed matrix Lie groups by [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1). Their Lie algebras consist of skew-adjoint matrices: differentiation gives this condition, and the matrix exponential supplies the converse. The real group is connected by [Affine transformations G.1](affine-transformations-and-the-isometry-group.md#theorem-g-1). A unitary matrix has an orthonormal eigenbasis by [Sectional curvature I.1](sectional-curvature-and-space-forms.md#lemma-i-1), and its eigenvalues are \(e^{it_j}\) with real \(t_j\), by [Connections E.1](connections-and-parallel-transport.md#lemma-e-1). Conjugating \(\operatorname{diag}(e^{ist_j})\), \(0\leq s\leq1\), by that eigenbasis gives a path from the identity to the matrix. Thus the complex group is connected too.
 
 Conjugation by \(\operatorname{diag}(I_k,-I_l)\) is an involution. Its full fixed subgroup is
 \[
@@ -513,7 +513,7 @@ respectively. The action on planes is transitive: choose orthonormal bases of a 
 \[
 P_Z=J_Z(J_Z^*J_Z)^{-1}J_Z^* .
 \]
-Indeed this matrix is self-adjoint, has square itself, and is the identity on the image of \(J_Z\). Conversely a nearby rank-\(k\) projection has invertible upper block on that image, which recovers its graph matrix. The entries and inverse depend smoothly on real and imaginary parts. This is the graph-chart construction of [Submanifolds A.4](submanifolds-and-hypersurfaces.md#proposition-a-4), with the same verification over \(\mathbb C\). Invariant connections A.2 now identifies this manifold with \(G/H\).
+Indeed this matrix is self-adjoint, has square itself, and is the identity on the image of \(J_Z\). Conversely a nearby rank-\(k\) projection has invertible upper block on that image, which recovers its graph matrix. The entries and inverse depend smoothly on real and imaginary parts. This is the graph-chart construction of [Submanifolds A.4](submanifolds-and-hypersurfaces.md#proposition-a-4), with the same verification over \(\mathbb C\). [Invariant connections A.2](invariant-connections-on-homogeneous-bundles.md#theorem-a-2) now identifies this manifold with \(G/H\).
 
 Its odd tangent matrices are
 \[
@@ -611,7 +611,7 @@ The identity
 \((dL_g)v_M(x)=(\operatorname{Ad}(g)v)_M(gx)\)
 follows by differentiating
 \(g\exp(tv)=\exp(t\operatorname{Ad}(g)v)g\).
-It makes successive applications of (F.4) equal the multiplication (F.2), so this is a smooth action. It is transitive: first move \(o\) to any prescribed \(x\), then use the surjection \(\mathfrak g\to T_x(G/H)\), established by the transitive orbit theorem Invariant connections A.2, to add any tangent vector. Its stabilizer at \((o,0)\) consists exactly of \(g\in H\) and \(u\in\mathfrak h\). The same orbit theorem gives the claimed diffeomorphism. At \((o,0)\), the differential of the orbit map on the odd space is \((X,U)\), where the first component moves the zero section and the second moves the vertical vector. This is the splitting used in (F.1).
+It makes successive applications of (F.4) equal the multiplication (F.2), so this is a smooth action. It is transitive: first move \(o\) to any prescribed \(x\), then use the surjection \(\mathfrak g\to T_x(G/H)\), established by the transitive orbit theorem [Invariant connections A.2](invariant-connections-on-homogeneous-bundles.md#theorem-a-2), to add any tangent vector. Its stabilizer at \((o,0)\) consists exactly of \(g\in H\) and \(u\in\mathfrak h\). The same orbit theorem gives the claimed diffeomorphism. At \((o,0)\), the differential of the orbit map on the odd space is \((X,U)\), where the first component moves the zero section and the second moves the vertical vector. This is the splitting used in (F.1).
 
 It remains to check invariance of the proposed metric under the full stabilizer. Conjugation by \((h,0)\), \(h\in H\), acts on the odd space by
 \((X,U)\mapsto(\operatorname{Ad}(h)X,\operatorname{Ad}(h)U)\),
@@ -1034,7 +1034,7 @@ Both summands are stable under \(\theta\), so uniqueness of the vector-space dec
 
 We give the group-existence consequence needed for the curvature models in C.2. The free source for this construction is [Etingof's MIT notes, §49.1, Theorem 49.1 and Corollary 49.5](https://ocw.mit.edu/courses/18-755-lie-groups-and-lie-algebras-ii-spring-2024/mit18_755_s24_lec_full.pdf). The following argument supplies all its integration prerequisites within the programme.
 
-For a finite-dimensional real Lie algebra \(\mathfrak b\), its automorphism group is a closed subgroup of \(GL(\mathfrak b)\): in a basis the equations \(A[x,y]=[Ax,Ay]\) are polynomial in the matrix entries. It is a Lie group by Invariant connections A.1. Its tangent algebra is exactly \(\operatorname{Der}(\mathfrak b)\). Differentiation proves one inclusion. For a derivation \(D\), differentiating
+For a finite-dimensional real Lie algebra \(\mathfrak b\), its automorphism group is a closed subgroup of \(GL(\mathfrak b)\): in a basis the equations \(A[x,y]=[Ax,Ay]\) are polynomial in the matrix entries. It is a Lie group by [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1). Its tangent algebra is exactly \(\operatorname{Der}(\mathfrak b)\). Differentiation proves one inclusion. For a derivation \(D\), differentiating
 \(e^{-tD}[e^{tD}x,e^{tD}y]\)
 gives zero by the derivation rule; its initial value is \([x,y]\), so \(e^{tD}\) preserves the bracket and is invertible with inverse \(e^{-tD}\). This proves the other inclusion. The exponential and its differentiation are [Local tools 2.3](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters).
 
@@ -1074,7 +1074,7 @@ Its differential sends \(x\) to the map \(y+\mathfrak r\mapsto[x,y]+\mathfrak r\
 \[
 \ker(d\Phi_e)=\mathfrak r.
 \]
-The kernel \(K=\Phi^{-1}(I)\) is a closed embedded Lie subgroup by Invariant connections A.1. Its Lie algebra is the displayed differential kernel: one inclusion follows by differentiation, and the other because
+The kernel \(K=\Phi^{-1}(I)\) is a closed embedded Lie subgroup by [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1). Its Lie algebra is the displayed differential kernel: one inclusion follows by differentiation, and the other because
 \(\Phi(\exp tx)=\exp(t\,d\Phi_e x)=I\)
 for every kernel vector. Its identity component \(K^0\) therefore has Lie algebra \(\mathfrak r\), so uniqueness in [Flat connections A.1](flat-connections-and-infinitesimal-holonomy.md#lemma-a-1) makes \(K^0=R\) as a subgroup. Connected components are closed: the closure of a connected set is connected, as a separation of the closure would also separate the dense set. Thus \(R\) is closed in \(K\) and in \(G\).
 
@@ -1096,11 +1096,11 @@ R/(R\cap H).
 (Q^{\sigma_Q})^0\subseteq K\subseteq Q^{\sigma_Q}.
 \tag{J.3}
 \]
-The fixed group is a Lie group by Invariant connections A.1. Its identity component is open: a connected coordinate ball at the identity lies in that component, and its translates give openness at each of its points. Every connected component is a coset of it, because translating a component to the identity component preserves connectedness and maximality. A subgroup containing the identity component is therefore a union of open components, with open complementary union. Thus \(K\) is closed in the fixed group and consequently in \(Q\). This proves both closedness and the symmetric-presentation condition for the base.
+The fixed group is a Lie group by [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1). Its identity component is open: a connected coordinate ball at the identity lies in that component, and its translates give openness at each of its points. Every connected component is a coset of it, because translating a component to the identity component preserves connectedness and maximality. A subgroup containing the identity component is therefore a union of open components, with open complementary union. Thus \(K\) is closed in the fixed group and consequently in \(Q\). This proves both closedness and the symmetric-presentation condition for the base.
 
 The inverse image \(\pi^{-1}(K)\) equals \(RH\). Indeed if \(\pi(g)=\pi(h)\), then \(gh^{-1}\in R\), and the reverse inclusion is immediate. The fibre of (J.1) at \(eK\) is therefore exactly the orbit \(RH/H\) of \(R\), with stabilizer \(R\cap H\). This orbit is a smooth embedded fibre: the differential of the map between quotients is the surjection
 \(\mathfrak g/\mathfrak h\to(\mathfrak g/\mathfrak r)/d\pi(\mathfrak h)\),
-so [Local tools 1.3](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) gives its fibre charts. The transitive orbit theorem Invariant connections A.2 identifies that fibre with (J.2).
+so [Local tools 1.3](local-tools-for-bundles-and-transport.md#1-contraction-and-local-inversion) gives its fibre charts. The transitive orbit theorem [Invariant connections A.2](invariant-connections-on-homogeneous-bundles.md#theorem-a-2) identifies that fibre with (J.2).
 
 For local triviality choose a smooth local section \(s:U\to Q\) of \(Q\to Q/K\), and shrink \(U\) so that its image lifts smoothly to \(\widetilde s:U\to G\) under \(G\to Q\). Both sections exist by [Local tools 4.1](local-tools-for-bundles-and-transport.md#4-quotients-by-a-closed-lie-subgroup). The map
 \[
@@ -1220,7 +1220,7 @@ K(X(P,Q),X(P',Q'))
 \]
 Each block space is thus isotropic, and the two are paired nondegenerately: individual opposite matrix units have pairing \(2n\), and all other basis pairings vanish. Their sums and differences give \(pq\) positive and \(pq\) negative directions, proving the signature.
 
-For the actual symmetric space take \(G=SL(n,\mathbb R)^0\) and \(H=G^\sigma\). The determinant-one group is a closed Lie subgroup by Invariant connections A.1. Its Lie algebra is the traceless algebra: differentiating the determinant at the identity gives trace; conversely, for traceless \(X\), the determinant of \(\exp(tX)\) has derivative \((\operatorname{tr}X)\det(\exp(tX))=0\) and initial value one. The derivative formula follows by cofactor expansion at an invertible matrix, and the exponential ODE is [Local tools 2.3](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters). This whole exponential path lies in the identity component. Conjugation by the indicated diagonal matrix preserves \(G\), and \(H\) is the full closed fixed subgroup, so B.1 applies. Formula (K.1) is invariant under conjugation by cyclicity of trace; hence its nondegenerate odd restriction is invariant under all of \(H\). B.2 now gives the complete globally symmetric pseudo-Riemannian metric. The existence of the two isotropic invariant tangent pieces therefore occurs even for a simple acting algebra; it does not contradict D.2, whose metric is positive definite. □
+For the actual symmetric space take \(G=SL(n,\mathbb R)^0\) and \(H=G^\sigma\). The determinant-one group is a closed Lie subgroup by [Invariant connections A.1](invariant-connections-on-homogeneous-bundles.md#theorem-a-1). Its Lie algebra is the traceless algebra: differentiating the determinant at the identity gives trace; conversely, for traceless \(X\), the determinant of \(\exp(tX)\) has derivative \((\operatorname{tr}X)\det(\exp(tX))=0\) and initial value one. The derivative formula follows by cofactor expansion at an invertible matrix, and the exponential ODE is [Local tools 2.3](local-tools-for-bundles-and-transport.md#2-differential-equations-and-their-parameters). This whole exponential path lies in the identity component. Conjugation by the indicated diagonal matrix preserves \(G\), and \(H\) is the full closed fixed subgroup, so B.1 applies. Formula (K.1) is invariant under conjugation by cyclicity of trace; hence its nondegenerate odd restriction is invariant under all of \(H\). B.2 now gives the complete globally symmetric pseudo-Riemannian metric. The existence of the two isotropic invariant tangent pieces therefore occurs even for a simple acting algebra; it does not contradict D.2, whose metric is positive definite. □
 
 ## Further reading
 

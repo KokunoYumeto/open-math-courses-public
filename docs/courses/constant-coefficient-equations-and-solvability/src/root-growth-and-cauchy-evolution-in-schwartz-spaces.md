@@ -1,6 +1,6 @@
 # Root growth and Cauchy evolution in Schwartz spaces
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 The spatial growth class is part of a Cauchy problem. We will prove existence and uniqueness for the heat equation in Schwartz and tempered spatial classes, including its characteristic initial plane. The decisive question is what the spatial Fourier transform does to high frequencies. We prove that a logarithmic bound on the real parts of the evolution roots is exactly what permits arbitrary Schwartz or tempered initial data on every finite forward time interval. We also prove the forced formula, the higher time-order version, and the distinction between forward and reversible evolution.
 

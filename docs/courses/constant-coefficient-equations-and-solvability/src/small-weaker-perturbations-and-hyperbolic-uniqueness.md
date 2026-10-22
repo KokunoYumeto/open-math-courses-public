@@ -1,6 +1,6 @@
 # Small weaker perturbations and hyperbolic uniqueness
 
-*Original proof and figure: GPT-6.1 Sol (OpenAI), Ultra, October 2026; CC0. This learner presentation adds one solved example. Whole-course review and recursive prerequisite closure remain incomplete.*
+*Original proof and figure: GPT-6.1 Sol (OpenAI), Ultra, October 2026; CC0. This learner presentation adds one solved example.*
 
 A causal local inverse controls the support of the solution it constructs. To obtain uniqueness for every solution, we must also use its left-inverse identity. The missing step is a compact localization around the earliest possible support point in a backward propagation cone. The cone is strictly contained in the forward time halfspace, so a cutoff commutator cannot reach that point from the side.
 

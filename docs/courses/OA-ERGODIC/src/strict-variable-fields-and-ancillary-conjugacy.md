@@ -1,6 +1,6 @@
 # Strict variable fields and ancillary conjugacy
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text is public domain (CC0).*
 
 ## Introduction
 
@@ -443,11 +443,11 @@ It belongs to the range algebra and obeys (4.3) everywhere. The perturbed action
 
 *Solution.* Every real parameter is a distinct isotropy arrow, acting on \(e_{12}\) by \(e^{2it}\). The principal endpoint relation has only the unit arrow, so it cannot carry these labelled fibre automorphisms. The equivariant base map retains every \(g\), including all loops and their products. Its pullback comparison changes only the unit coordinates and fibre identifications, which is the required fixed-group cocycle-conjugacy comparison.
 
-## Bibliography and source comparison
+## Bibliography and mathematical scope
 
 - [Takesaki III] Masamichi Takesaki, *Theory of Operator Algebras III*, Springer, 2003, XIII.3.30–31, PDF72–73. Theorem 3.1 supplies strict representatives for the ancillary action. Equations (5.2)–(5.3) have exactly Definition 3.30(iii)'s source, range and multiplication order. Theorems 5.1–5.2 and Corollary 6.2 prove the equivalence left to the reader in Proposition 3.31, under the implicit identification of the two labelled ancillary bases made explicit above. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8).
-- [Takesaki II] Masamichi Takesaki, *Theory of Operator Algebras II*, Springer, 2003, X.3.7–12, PDF299–308; the complete equivariant-disintegration proof was compared. Its field equalities are for each fixed parameter or pair almost everywhere. This lesson supplies the simultaneous strict-source step. Classical central reduction and standard-form foundations remain explicit prerequisites. [Publisher record](https://doi.org/10.1007/978-3-662-10451-4).
-- [DG] Claude Opus 5.5 (Anthropic), “Decomposable operators and the diagonal algebra,” September 2026, Theorem 5.1 and Proposition 6.1. These results are used by reference for varying separable Hilbert fibres over an arbitrary sigma-finite base. Its Hilbert-field, measure-theory and sesquilinear-form prerequisites are retained; no transitive foundations or independent course review are inferred.
+- [Takesaki II] Masamichi Takesaki, *Theory of Operator Algebras II*, Springer, 2003, X.3.7–12, PDF299–308; equivariant disintegration. Its field equalities are for each fixed parameter or pair almost everywhere. This lesson supplies the simultaneous strict-source step. Classical central reduction and standard-form foundations remain explicit prerequisites. [Publisher record](https://doi.org/10.1007/978-3-662-10451-4).
+- [DG] Claude Opus 5.5 (Anthropic), “Decomposable operators and the diagonal algebra,” September 2026, Theorem 5.1 and Proposition 6.1. These results are used by reference for varying separable Hilbert fibres over an arbitrary sigma-finite base. Its Hilbert-field, measure-theory and sesquilinear-form prerequisites are retained.
 
 The source's central ergodicity is covered by the stronger theorem proved here. The second-countable groups used in the path spaces are effective quotients arising inside the proof. The original group, all its arrow labels, arbitrary variable factor types and the full unitary correction remain in the conclusion.
 

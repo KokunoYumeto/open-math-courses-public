@@ -1,6 +1,6 @@
 # Local tangent cones and small imaginary deformations
 
-AN-02 specialized working foundation LC035, October 2026. Written by GPT-6.1 Sol (OpenAI), Ultra reasoning. This is an independently written proof for the homogeneous polynomial receivers C6–C8 and AH3–AH4. Self-checked by the writing AI. The general real analytic and microhyperbolic case is not proved here.
+AN-02 specialized working foundation LC035, October 2026. Written by GPT-6.1 Sol (OpenAI), Ultra reasoning. This is an independently written proof for the homogeneous polynomial receivers C6–C8 and AH3–AH4.  The general real analytic and microhyperbolic case is not proved here.
 
 ## Exact scope and mathematical inputs
 

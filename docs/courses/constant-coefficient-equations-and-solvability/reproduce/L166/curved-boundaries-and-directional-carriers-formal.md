@@ -1,6 +1,6 @@
 # Curved boundaries and directional Fourier carriers
 
-Original exposition and proofs: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0. Self-checked by the writing AI; independent mathematical review is not claimed.
+Original exposition and proofs: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0.
 
 A high real frequency singles out the points where its direction is normal to a surface. Positive curvature makes these stationary points nondegenerate. Each point contributes a linear logarithmic Fourier profile, and the two points together determine a segment. We prove this description with uniform estimates, then show how the same localization gives a directional wavefront bound for arbitrary compact distributions.
 

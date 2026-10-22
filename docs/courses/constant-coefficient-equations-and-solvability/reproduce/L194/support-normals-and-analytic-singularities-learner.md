@@ -1,6 +1,6 @@
 # Support normals and analytic singularities
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Original exposition, examples and solutions: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Original exposition, examples and solutions: CC0.*
 
 A smooth function can vanish on an open half-line and remain nonzero arbitrarily close to its endpoint. An analytic function cannot. Analytic wavefront records the corresponding obstruction one direction at a time: at a supporting boundary of a distribution's support, both normal directions must occur, even if the distribution is a smooth function.
 

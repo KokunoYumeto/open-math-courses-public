@@ -1,6 +1,6 @@
 # Freezing coefficients without losing strength
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A variable-coefficient equation can behave locally like a fixed polynomial equation even when it is not elliptic. The useful hypothesis is that freezing the coefficients at different points always gives operators of equal strength. This lesson turns that hypothesis into a finite perturbation problem. Continuous coefficients suffice for an \(L^2\) inverse. Smooth coefficients give one neighborhood and one inverse that work for every moderate Fourier weight.
 

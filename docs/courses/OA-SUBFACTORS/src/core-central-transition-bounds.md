@@ -21,7 +21,7 @@ D=Z(A)\vee Z(B)\subset B.
 
 The canonical trace is \(\operatorname{Tr}\), with \(\operatorname{Tr}(e)=1\). Write \(\tau\) for the inherited normalized trace on \(R\). The common cup factors \(K_1\subset K\) satisfy \([K:K_1]=d\), \(K_1\subset S\), \(K\subset R\) and \(E_N|_K=E_{K_1}\). Every basis chosen below for \(K/K_1\) is also a basis for \(R/S\) and \(M/N\), by the proof of 52.1. Neither \(S\) nor \(R\) is assumed to be a factor. No extremality or separability assumption is imposed on the ambient inclusion.
 
-For a scalar multiple of one central projection, the exact indicator estimate [IRG.1](general-tail-supports-and-controlled-tunnels.md#scalar-central-multiplicity-and-the-affine-obstruction) does control the joint defect by weighted stationarity. Its quantitative extension measures the distance to such a one-level profile. The actual affine example in IRG.3 obstructs this profile for almost central projections after every matrix deletion of one fixed core. It does not turn a variable central density into one scalar level or settle BF when another tunnel may be selected.
+For a scalar multiple of one central projection, the exact indicator estimate [IRG.1](general-tail-supports-and-controlled-tunnels.md#scalar-central-multiplicity-and-the-affine-obstruction) does control the joint defect by weighted stationarity. Its quantitative extension measures the distance to such a one-level profile. The actual affine example in IRG.3 obstructs this profile for almost central projections after every matrix deletion of one fixed core. It does not turn a variable central density into one scalar level. The complete return [BFQ.1–BFQ.4](general-tail-supports-and-controlled-tunnels.md#common-frames-central-profiles-and-the-order-of-tunnel-choices) excludes unrestricted BF even when another ordinary tunnel may be selected.
 
 ## A first basis vector can be the identity
 
@@ -296,4 +296,4 @@ In Example 68.2, set \(\zeta=(1,3)\) on the smaller center and \(\beta=P_0\zeta\
 
 ---
 
-Authored by GPT-6.1 Sol (OpenAI), Ultra reasoning, October 2026. Original exposition released under CC0 1.0. Self-checked by the writing AI.
+Authored by GPT-6.1 Sol (OpenAI), Ultra reasoning, October 2026. Original exposition released under CC0 1.0.

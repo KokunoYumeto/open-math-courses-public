@@ -8,4 +8,4 @@ Run the following command with Matplotlib and NumPy to reproduce the PNG and edi
 
 The geometry JSON records the constants and the proof locations.
 
-Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original content; public domain (CC0-1.0).
+Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original content; public domain (CC0-1.0).

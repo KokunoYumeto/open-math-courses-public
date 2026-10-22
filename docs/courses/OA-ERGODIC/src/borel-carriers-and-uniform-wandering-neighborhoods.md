@@ -1,6 +1,6 @@
 # Borel carriers and uniform wandering neighborhoods
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text is public domain (CC0).*
 
 ## Introduction
 
@@ -348,11 +348,11 @@ Every nonempty open set meets \(Q\), so its \(\lambda\)-measure is positive. The
 
 Finally \(Y\setminus Q\) is Borel with \(\lambda(Y\setminus Q)=1-t\). Every compact \(C\subset Y\setminus Q\) is countable by Proposition 3.14, has \(\mu(C)=0\), and misses the atomic measure's carrier. Therefore \(\lambda(C)=0\). This proves the last assertion in the actual original topology. \(\square\)
 
-*Primary-source comparison.* Wage's CH construction uses \(I=[0,1]\) and \(X_0=I\times\{0,1\}\); write \(a^i=(a,i)\). In \(Z=(X_0,\sigma)\times(X_0,\tau)\), the double diagonal \(D=\{(a^i,a^j):a\in I,\ i,j\in\{0,1\}\}\) is closed and \(Y=\{(a^1,a^1):a\in I\}\). He identifies \(Y\)'s Borel structure with that of \(I\), and gives each \(y\) a neighborhood meeting \(D\) in a countable subset of \(Y\). These reported properties put the transported Lebesgue probability under Proposition 3.14 and exclude full support. This is a comparison of those properties, not an import of the transfinite construction or a counterexample to all the source dynamical hypotheses.
+*Wage's construction.* Wage's CH construction uses \(I=[0,1]\) and \(X_0=I\times\{0,1\}\); write \(a^i=(a,i)\). In \(Z=(X_0,\sigma)\times(X_0,\tau)\), the double diagonal \(D=\{(a^i,a^j):a\in I,\ i,j\in\{0,1\}\}\) is closed and \(Y=\{(a^1,a^1):a\in I\}\). He identifies \(Y\)'s Borel structure with that of \(I\), and gives each \(y\) a neighborhood meeting \(D\) in a countable subset of \(Y\). These reported properties put the transported Lebesgue probability under Proposition 3.14 and exclude full support. This is a comparison of those properties, not an import of the transfinite construction or a counterexample to all the source dynamical hypotheses.
 
 ![Why a locally countable conull carrier fails the full-support hypothesis](figures/conull-carrier-null-support.svg)
 
-*Figure 4. This is a schematic of the hypotheses and exact conclusions, not a geometric model of Wage's spaces. Proposition 3.14 puts the nonempty closed support inside the null set \(D\setminus Y\); the conull open complement is an arbitrary union of null open sets. Lemma 3.13 proves invariance under nonsingular homeomorphisms. Corollary 3.15 gives the exact mixed masses \(t\) and \(1-t\): adding dense positive point masses supplies full support and also an invariant Borel set of intermediate measure. Sources: Takesaki III, XIII.1.5, for the full-support and ergodicity obligations; Wage for the compared diagonal properties. The standing atomless source question remains open.*
+*Figure 4. This is a schematic of the hypotheses and exact conclusions, not a geometric model of Wage's spaces. Proposition 3.14 puts the nonempty closed support inside the null set \(D\setminus Y\); the conull open complement is an arbitrary union of null open sets. Lemma 3.13 proves invariance under nonsingular homeomorphisms. Corollary 3.15 gives the exact mixed masses \(t\) and \(1-t\): adding dense positive point masses supplies full support and also an invariant Borel set of intermediate measure. Sources: Takesaki III, XIII.1.5, for the full-support and ergodicity hypotheses; Wage for the diagonal properties. The standing atomless source question remains open.*
 
 ### Atomless orbit mixtures: support can be repaired while returns decide ergodicity
 
@@ -1083,12 +1083,12 @@ The acting group is countable discrete \(\mathbb Z\), hence separable and locall
 
 [Takesaki III] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003. XIII.1, standing group/measure assumptions and Definition 1.3; Exercise 5 and exercise-block countability convention, pages 11–12. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8).
 
-[Takesaki I] Masamichi Takesaki, *Theory of Operator Algebras I*, first edition, 1979. Appendix, definition immediately before Corollary A.14, printed page 383: deletion of a null set leaves a standard Borel point space. This is the exact definition compared for the conull-standard interpretation. Lemma 3.4 supplies the full atom-to-point proof.
+[Takesaki I] Masamichi Takesaki, *Theory of Operator Algebras I*, first edition, 1979. Appendix, definition immediately before Corollary A.14, printed page 383: deletion of a null set leaves a standard Borel point space. This is the definition of standardness used in the conull-standard interpretation. Lemma 3.4 supplies the full atom-to-point proof.
 
 [Fremlin] D. H. Fremlin, *Measure Theory*, Volume 4, Chapter 43, §433C and §433X(e), provides related general results on analytic Hausdorff topologies and on abstract standard Borel measure spaces. The abstract measurable-space statement concerns a suitable topology; it is not used to change the topology of the source exercise. Our elementary regularity proof is Theorem 1.2. Only the indicated bounded passages were consulted; the analytic-space and perfect-measure foundations are not claimed proved or imported here. [Author's Chapter 43](https://www1.essex.ac.uk/maths/people/fremlin/chap43.pdf).
 
 [de la Vega–Kunen] Ramiro de la Vega and Kenneth Kunen, *A Compact Homogeneous S-space*, arXiv:math/0303239v1, 19 March 2003. Theorem 2.4, Section 2, pages 2–3, gives the CH topological recursion. Lemmas 3.24–3.26 give the full successor construction and the global mixed-topology induction; Theorem 3.27 supplies the further Borel equality needed here. The later homogeneity results are not used. [Primary paper](https://arxiv.org/pdf/math/0303239).
 
-[Wage] M. L. Wage, *Products of Radon spaces*, Russian Mathematical Surveys 35:3 (1980), 185–187. The three-page construction's reported diagonal properties were compared with Proposition 3.14; its omitted inductive verification is not imported. [Primary journal record](https://www.mathnet.ru/eng/rm3518).
+[Wage] M. L. Wage, *Products of Radon spaces*, Russian Mathematical Surveys 35:3 (1980), 185–187. Proposition 3.14 applies to the reported diagonal properties; the transfinite construction is not a prerequisite here. [Primary journal record](https://www.mathnet.ru/eng/rm3518).
 
 The finite Radon proof and this lesson give the full measurable conclusion independently of compact inner regularity and supply the full regularity theorem at its explicit topological scope. Lemma 3.4 and Theorem 3.5 prove the atomic standard-measure branch of all three clauses. Theorem 3.29 gives a full atomless standard-measure counterexample in the original topology under CH. Exercise 5 and the eight-exercise block have complete qualified dispositions at the stated prerequisites: five literal exercise proofs, two corrective dispositions, and the mixed disposition of Exercise 5 explained above. The intended stronger countability convention is not inferred; existence without CH is not claimed.

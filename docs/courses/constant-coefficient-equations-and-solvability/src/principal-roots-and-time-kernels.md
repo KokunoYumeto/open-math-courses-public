@@ -1,6 +1,6 @@
 # Principal roots and uniform time kernels
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Time evolution starts with scalar polynomial roots. We bound their displacement from the real principal roots and construct time kernels uniformly even when roots repeat.
 

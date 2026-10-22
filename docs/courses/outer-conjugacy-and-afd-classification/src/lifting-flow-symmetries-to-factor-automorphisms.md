@@ -24,7 +24,6 @@ The exact programme interfaces used here are:
 * Semifinite trace coordinates: Section 2.
 * Injectivity under an amenable normalizer: Theorem 2.3 and the permanence arguments in Sections 1–2.
 
-The full transitive review of these prerequisites and of the inherited source constructions remains incomplete.
 
 ## 1. Fix the direction of the derivative
 

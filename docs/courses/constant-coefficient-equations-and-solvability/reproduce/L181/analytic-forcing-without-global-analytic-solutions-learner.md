@@ -1,6 +1,6 @@
 # Analytic forcing without global analytic solutions
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 A right-hand side can be analytic at every real point and still admit no analytic solution on the whole space. We will see this for a heat equation with two spatial variables and for a two-variable Laplacian with an extra parameter. In both cases a smooth solution exists. The obstacle is the analytic dependence that a solution would have to retain while its forcing moves farther into space.
 

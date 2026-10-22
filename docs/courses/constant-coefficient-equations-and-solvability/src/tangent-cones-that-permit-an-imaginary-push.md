@@ -1,6 +1,6 @@
 # Tangent cones that permit an imaginary push
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Original material: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Original material: CC0.*
 
 A characteristic polynomial may vanish at a real frequency, yet become nonzero when that frequency is pushed a little in a permitted imaginary direction. The permitted directions depend on the tangent polynomial at the frequency. This lesson explains their variation and proves that a compact family of such pushes can use one small parameter and one power bound.
 

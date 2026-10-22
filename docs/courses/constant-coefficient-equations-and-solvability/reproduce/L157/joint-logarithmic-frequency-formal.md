@@ -1,6 +1,6 @@
 # Joint logarithmic-frequency limits
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI. Public domain (CC0 1.0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0 1.0).*
 
 Fourier transforms record singularities through their behavior at large real frequencies. A logarithmically growing complex observation window reveals a compact convex set from each limiting profile. For several distributions, the windows must have the same center. This requirement contains information that disappears if we choose a different sequence for each distribution.
 

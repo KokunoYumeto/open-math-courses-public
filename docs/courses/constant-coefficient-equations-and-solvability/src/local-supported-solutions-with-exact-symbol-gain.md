@@ -1,6 +1,6 @@
 # Local supported solutions with the exact symbol gain
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A restriction estimate becomes an existence theorem by extending a functional on the range of the transposed equation. Reflection keeps the nonsymmetric Fourier weight in its original orientation. For every exponent above one, finite-exponent Lebesgue duality identifies the solution. At the remaining endpoint, a compact spatial cutoff converts the frequency functional into a smooth function and bounded phase tests prove the required integrability. The solution can therefore be chosen compactly supported, which also permits normalization of the root height by an exponential multiplier.
 

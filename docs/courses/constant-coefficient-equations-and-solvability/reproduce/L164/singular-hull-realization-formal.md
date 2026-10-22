@@ -1,6 +1,6 @@
 # Recovering singularities from convolution profiles
 
-Original exposition and proofs: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0. Self-checked by the writing AI; independent mathematical review is not claimed.
+Original exposition and proofs: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0.
 
 A convolution can remove singularities, even when both inputs are singular. Logarithmic Fourier profiles describe which part of an input's singular geometry survives at a prescribed sequence of frequencies. We first realize any one of these profiles as an exact convolution singular hull. We then turn that realization into a criterion for bounding the singularities of an unknown input, and characterize when singular hulls always add.
 

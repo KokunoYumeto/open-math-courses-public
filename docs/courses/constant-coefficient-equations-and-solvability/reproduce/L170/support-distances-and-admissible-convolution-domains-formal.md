@@ -1,6 +1,6 @@
 # Support distances and admissible convolution domains
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Uniform confinement of transpose-test supports has a geometric formulation: convolution preserves their distance from the relevant domain complements. We prove the equivalence for compact distributions, including the passage from smooth tests. It then identifies the maximal equation domain for a convex solution domain and shows that an admissible equation domain must be a union of entire components of the domain where convolution is defined.
 

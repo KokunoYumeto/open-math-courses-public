@@ -1,6 +1,6 @@
 # Boundary determinants annihilate causal solutions
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A square boundary matrix determines a causal convolution operator on the boundary plane. Every smooth solution of the homogeneous mixed problem is annihilated by that operator throughout the physical half-space. We derive the exact forcing representation, justify its convolutions by a bounded backward region, and prove the needed continuation from the stated local Holmgren theorem.
 
@@ -12,7 +12,40 @@ Basic references are Grubb's *Distributions and Operators* ([author's lecture no
 
 ## The theorem and its exact prerequisites
 
-Use the normalized notation of [Incoming normal roots at a flat boundary](incoming-normal-roots-at-a-flat-boundary.md) and [Boundary determinants as causal Fourier kernels](boundary-determinants-as-causal-fourier-kernels.md): the independent time and boundary normals are \(N=e_n\), \(\theta=e_1\), physical coordinates are \(x=(a,x')\), and the time coordinate \(t=x_n\) belongs to \(x'\). Put
+**The original problem and its comparison symbols.** Retain an original polynomial \(\mathsf P\), every original boundary symbol \(\mathsf B_j\), the real barrier \(\tau_0\), and independent original frequency vectors \(N_{\!o},\theta_o\). Choose a real invertible matrix \(E\) with \(Ee_1=\theta_o\), \(Ee_n=N_{\!o}\), and put
+\[
+y=E^Tx,\quad \sigma=\tau_0-1,\quad
+P(z)=\mathsf P(Ez+i\sigma N_{\!o}),\quad
+B_j(z)=\mathsf B_j(Ez+i\sigma N_{\!o}).
+\tag{OC1}
+\]
+The symbols \(P,B_j\) in the normalized calculation below mean exactly (OC1), including the shift of every boundary symbol. Its physical coordinates \((a,x')=(a,z,t)\) are these \(y\)-coordinates. In particular \(a=\theta_o\cdot x\) and \(t=N_{\!o}\cdot x\). The equation polynomial has barrier one, its principal cone is \(\Gamma_E=E^{-1}\Gamma(\mathsf P_m,N_{\!o})\), and its positive, negative and zero normal counts are those of the original principal polynomial in this basis. No lower coefficient of an original symbol is omitted.
+
+Write \(u_E(y)=u(E^{-T}y)\). For a scalar solution, the exact correspondence is
+\[
+v(y)=e^{\sigma y_n}u(E^{-T}y),\qquad
+u(x)=e^{-\sigma N_{\!o}\cdot x}v(E^Tx).
+\tag{OC2}
+\]
+The product and chain rules give \(P(D_y)v=e^{\sigma y_n}(\mathsf P(D_x)u)(E^{-T}y)\) and the identical formula for each \(B_j,\mathsf B_j\), including boundary traces. These identities hold for distributions by the definition of pullback under an invertible linear map and by distributional differentiation. Smoothness, nonvanishing and support are preserved. Flatness at initial time is preserved by the finite Leibniz sum in every derivative order. The scalar pullback \(v(E^Tx)\) is \(|\det E|^{-1}(E^{-T})_*v\) for distributions; determinant kernels use the pushforward, with its Jacobian, as specified in [Boundary determinants as causal Fourier kernels, (24d)–(24e)](boundary-determinants-as-causal-fourier-kernels.md).
+
+Let \(\mathsf L_E\) be the determinant of the unshifted coordinate symbols \(\mathsf P(Ez),\mathsf B_j(Ez)\), and let \(U_E\) be its original-barrier kernel. With \(N'=e_{n-1}\), the normalized determinant and kernel satisfy
+\[
+L^\partial(z')=\mathsf L_E(z'+i\sigma N'),\qquad
+L_0=e^{\sigma t}U_E .
+\tag{OC3}
+\]
+These are the simultaneous-symbol identities (24a)–(24c) of the linked kernel proof. The normalized \(L_0\) is tempered; no temperedness of \(U_E\) is inferred. Its original Fourier–Laplace interpretation is (18c) there. For properly defined convolution, multiplication by this exponential respects convolution: on a compact output test, properness restricts the pair of input supports to a compact set, and \(e^{\sigma(s+t)}=e^{\sigma s}e^{\sigma t}\) inside the distributional tensor pairing. Consequently
+\[
+\begin{gathered}
+L_0*_{x'}v(a,\cdot)\\
+=e^{\sigma t}\bigl(U_E*_{x'}u_E(a,\cdot)\bigr).
+\end{gathered}
+\tag{OC4}
+\]
+This formula transports determinant annihilation and all support arguments back to the original mixed problem. The exponentially weighted kernel is used whenever tempered Fourier arguments are required.
+
+Use the explicit normalized comparison (OC1)–(OC4) and the notation of [Incoming normal roots at a flat boundary](incoming-normal-roots-at-a-flat-boundary.md) and [Boundary determinants as causal Fourier kernels](boundary-determinants-as-causal-fourier-kernels.md): the independent time and boundary normals are \(N=e_n\), \(\theta=e_1\), physical coordinates are \(x=(a,x')\), and the time coordinate \(t=x_n\) belongs to \(x'\). Put
 \[
 \begin{gathered}
 H=\{t\ge0\},\\
@@ -23,7 +56,7 @@ H=\{t\ge0\},\\
 \end{gathered}
 \tag{1}
 \]
-The nonzero complex polynomial \(P\), of total degree \(m\ge1\), is hyperbolic in \(N\). Normalize its zero-free barrier to one as in [Boundary determinants as causal Fourier kernels](boundary-determinants-as-causal-fourier-kernels.md). Its full time tube contains \(\mathbb R^n-i\Gamma\), and its normal factorization there has the form
+The nonzero complex polynomial \(P\), of total degree \(m\ge1\), is hyperbolic in \(N\). Use precisely the normalized polynomial and boundary symbols (OC1) in [Boundary determinants as causal Fourier kernels](boundary-determinants-as-causal-fourier-kernels.md). Its full time tube contains \(\mathbb R^n-i\Gamma\), and its normal factorization there has the form
 \[
 \begin{gathered}
 P((w,\zeta'))=q(\zeta')R_+(w,\zeta')R_-(w,\zeta'),
@@ -323,6 +356,8 @@ The extended function has support in \(t\ge0\). The interior equation commutes w
  \tag{26}
 \]
 Full-space causal uniqueness proved using equation 13 now gives \(U=0\), proving equation 7. At \(h=0\), this proves \(u=0\). At identically zero determinant, it gives the automatic convolution assertion without inferring uniqueness of \(u\). No nonzero determinant assumption was used in the annihilation theorem.
+
+**Annihilation for the original symbols.** Given the original smooth causal solution \(u\), define \(v\) by (OC2). The normalized equation and all normalized homogeneous boundary data vanish, so (7), with its proper-convolution proof above, gives \(L_0*_{x'}v=0\). Equation (OC4) and the nowhere-zero exponential imply \(U_E*_{x'}u(E^{-T}(a,\cdot))=0\) on the coordinate half-space. Pushing the determinant kernel back by \(E^{-T}\), with (24d) of the kernel reading, proves annihilation by the full original kernel in the original physical half-space. This conclusion uses no unweighted temperedness assumption on the original kernel or on the solution.
 
 ## Exercises with complete solutions
 

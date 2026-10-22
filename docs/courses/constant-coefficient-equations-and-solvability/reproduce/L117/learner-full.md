@@ -1,6 +1,6 @@
 # Logarithmic Fourier graphs construct a cone-supported inverse
 
-*Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original exposition and proof details: CC0 1.0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original exposition and proof details: CC0 1.0.*
 
 We construct a distributional inverse of a compact convolution kernel from bounds on the reciprocal of its entire transform. A logarithmic graph keeps the reciprocal away from its poles while allowing the transform of every compactly supported test to make the integral converge. An explicit compact cutoff then proves that changing the graph does not change the distribution. Raising the graph makes tests beyond a supporting plane disappear.
 

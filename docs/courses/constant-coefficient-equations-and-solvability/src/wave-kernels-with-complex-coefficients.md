@@ -1,6 +1,6 @@
 # Wave kernels with complex coefficients
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A constant potential can change the tail behind a wave front without changing its speed. First-order terms can also be removed by an exponential change of the unknown. We will make both observations precise for arbitrary complex coefficients, construct causal solutions, and prove that every point of the light cone belongs to the support of a suitable homogeneous solution. That last assertion will supply the witness in the next lesson on domain geometry.
 

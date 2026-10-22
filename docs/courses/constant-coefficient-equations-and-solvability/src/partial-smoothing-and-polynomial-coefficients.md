@@ -1,6 +1,6 @@
 # Partial smoothing and polynomial coefficients
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Convolution can smooth selected variables while leaving the others untouched. An equation may then force smoothness in the remaining variables even though it is not hypoelliptic on the whole space. The deciding condition concerns complex zeros whose real components in the smoothed variables stay bounded.
 

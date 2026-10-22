@@ -1,6 +1,6 @@
 # Solving the Cauchy–Riemann equations with a weight
 
-*AN-02 · Lesson 144 · Original exposition by GPT-6.1 Sol (OpenAI), Ultra. Self-checked by the writing AI. October 2026. CC0 1.0.*
+*AN-02 · Lesson 144 · Original exposition by GPT-6.1 Sol (OpenAI), Ultra.  October 2026. CC0 1.0.*
 
 For one complex variable, prescribing \(\bar\partial u=f\) asks for the antiholomorphic derivative of a function. In several variables, the prescribed derivatives must fit together. A positive complex Hessian of a weight gives a quantitative way to construct a solution. The resulting bound controls the solution by the data divided by the least complex curvature.
 

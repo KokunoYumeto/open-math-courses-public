@@ -1,6 +1,6 @@
 # The geometry of coefficients and strength
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 An equation can keep its strength while its coefficients vary, then lose it at a particular parameter value. The coefficient space is finite-dimensional, but the strength comparison tests infinitely many frequencies. We show how a compact family of linear forms records all the possible losses. This also proves an exact perturbation criterion: adding every complex multiple of a polynomial preserves strength precisely when that polynomial is dominated by the original one. Reciprocal linear forms also control holomorphic hulls and exhibit the equally strong coefficient domain as a Stein manifold.
 

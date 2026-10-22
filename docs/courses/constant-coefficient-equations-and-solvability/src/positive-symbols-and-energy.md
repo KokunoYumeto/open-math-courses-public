@@ -1,6 +1,6 @@
 # Positive symbols and energy estimates
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A nonnegative polynomial symbol gives a nonnegative quadratic form. On a bounded set, that form controls the quadratic form of every weaker operator, even when the symbol vanishes at real frequencies. The proof turns a quadratic expression into a linear Fourier-space estimate by using the autocorrelation of a test function.
 

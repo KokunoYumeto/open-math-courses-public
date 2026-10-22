@@ -1,6 +1,6 @@
 # Algebraic families of hypoelliptic operators
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 The complex-zero criterion can be checked without locating the zeros individually. Derivative estimates prove hypoellipticity for elliptic and semielliptic polynomials, and also for a family whose ordinary principal part can have many real characteristic directions. We develop these tests and show why a simple characteristic zero in the principal part is an obstruction.
 

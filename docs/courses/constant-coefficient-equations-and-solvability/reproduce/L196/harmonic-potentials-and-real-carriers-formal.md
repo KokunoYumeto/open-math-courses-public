@@ -1,6 +1,6 @@
 # Harmonic potentials and real carriers
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. CC0.*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  CC0.*
 
 An analytic functional can have infinite order at a point. Its action on entire functions nevertheless determines its action on every holomorphic germ near a compact real carrier. An odd harmonic function in one additional real variable records that action. We construct this correspondence, prove its inverse, and identify the smallest real carrier. No convexity assumption is made on the carrier.
 

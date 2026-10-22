@@ -449,4 +449,4 @@ The first three derivatives have the original order, and their scalar coefficien
 - [Hörmander IV, §25.3, formulas (25.3.7)–(25.3.8)] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, Springer, 1985, §25.3.
 - [AN-03, Euclidean symbol calculus](https://open-math-course.pages.dev/courses/AN-03/euclidean-symbol-calculus.html), §2, support-preserving summation theorem (E6).
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026.  Original text: public domain (CC0).*

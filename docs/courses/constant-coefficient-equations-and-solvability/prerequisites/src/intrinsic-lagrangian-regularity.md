@@ -9,8 +9,8 @@ The exact earlier programme proofs used below are:
 - The [phase-space lesson](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/AN-04/reconstructions/20261005-restored-phase-space/phase-space-and-generating-families.md) and [oscillatory-distribution lesson](oscillatory-distributions-and-order.md), together with [frequency coordinates, C0–C5](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/prerequisites/conic-frequency-coordinates.md), and the fully proved [frequency-graph criterion](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/intrinsic-frequency-graphs.md).
 - [Prescribed-phase reconstruction, F0–F6](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/prerequisites/prescribed-phase-representation.md), [homogeneous symbol transport, H2 and H5–H6](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-canonical-composition/homogeneous-symbol-transport.md), and [Sobolev localization and refinement, S0–S5](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/AN-04/reconstructions/20261004-free-intrinsic-graph/prerequisites/sobolev-order-refinement.md).
 
-The [proof map](https://github.com/KokunoYumeto/open-math-courses-public/blob/main/docs/courses/AN-04/reconstructions/20261005-restored-intrinsic-regularity/proof-map.json) locates the arguments and their named earlier
-inputs. The primary mathematical source is Lars Hörmander,
+
+The primary mathematical source is Lars Hörmander,
 *The Analysis of Linear Partial Differential Operators IV*, §25.1,
 in the [2009 reprint of the 1994 edition](https://doi.org/10.1007/978-3-642-00136-9),
 printed pp. 4–10: Definition 25.1.1, Lemma 25.1.2, Proposition 25.1.3,

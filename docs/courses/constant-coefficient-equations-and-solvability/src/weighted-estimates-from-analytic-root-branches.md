@@ -1,6 +1,6 @@
 # Weighted estimates from analytic root branches
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 We now assemble the half-line inverse, algebraic branch bounds and plurisubharmonic propagation into the characteristic Cauchy estimate. The roots can move between the upper and lower half-planes. We first shift each root upward, then remove those shifts one at a time on small regions where the original root has positive imaginary part. The norm used in that analytic propagation is fixed throughout each local argument.
 

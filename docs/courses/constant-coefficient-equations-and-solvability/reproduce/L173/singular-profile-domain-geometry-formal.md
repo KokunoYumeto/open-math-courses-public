@@ -1,6 +1,6 @@
 # Singular Fourier profiles and convex equation domains
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 One compact kernel can have several different logarithmic Fourier carriers. Its convex singular hull records their combined extent, but a domain supporting arbitrary singularity classes must accommodate each carrier separately. We prove the exact family criterion and show how it becomes an equality of support values at differentiable boundary normals. The converse requires a geometric fact that we prove here: regular supporting planes recover every proper open convex domain.
 

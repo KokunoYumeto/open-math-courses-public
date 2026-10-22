@@ -184,6 +184,6 @@ record={"schema":"AN02-Holmgren-exact-jet-geometry-check274/v1",
         "checks_passed":len(checks),"arithmetic":"exact integer/rational and symbolic identities",
         "scope":"Concrete operator, distribution derivative and contact identities; not a substitute for full analytic uniqueness proof.",
         "checks":checks,"artifacts":[bind(p) for p in sorted(FIG.iterdir()) if p.is_file()],
-        "workers_launched":0,"outgoing_messages":0}
+        "workers_launched":0}
 (OWN/"math-check274.json").write_text(json.dumps(record,indent=2)+"\n",encoding="utf-8")
 print(json.dumps({"status":"PASS","checks_passed":len(checks),"artifacts":record["artifacts"]}))

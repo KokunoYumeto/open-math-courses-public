@@ -1,6 +1,6 @@
 # Borel group measures and isotropy topologies
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026; Lemma 5.3a by Claude Opus 5.5 (Anthropic). Original text: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), October 2026; Lemma 5.3a by Claude Opus 5.5 (Anthropic). Original text: CC0.*
 
 ## Introduction
 

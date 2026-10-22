@@ -1,6 +1,6 @@
 # Working with complex frequencies and weak exponential integrals
 
-*Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. CC0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. CC0.*
 
 The [formal proof](#complete-proof) distinguishes three operations: moving the Fourier transform to an imaginary plane, multiplying the original distribution by a cutoff, and integrating exponential solutions against a measure. This companion develops four concrete models and ten exercises with complete solutions.
 
@@ -210,7 +210,7 @@ The formal companion supplies the exact source-statement map and references. The
 
 ## Complete proof
 
-*Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original proofs and figures: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original proofs and figures: CC0.*
 
 A compactly supported distribution has an entire Fourier transform. Its values off the real frequency space can grow exponentially, but the supporting function of its support removes that growth. We prove three weighted estimates, then use them to integrate exponential solutions against a measure which may be singular. The resulting integral defines a distribution; it need not define a value at each point.
 

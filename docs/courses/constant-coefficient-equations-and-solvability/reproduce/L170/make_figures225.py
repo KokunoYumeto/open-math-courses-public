@@ -90,4 +90,4 @@ with TemporaryDirectory(prefix="an02-own225-mpl-")as task_cache:
             "exact_margin":"7/8","dashed_joins_are_hulls_not_supports":True,
             "proof_locator":"LearnerExample2,equationsL12,L13"}}
     (FIG/"geometry225.json").write_text(json.dumps(geometry,indent=2)+"\n",encoding="utf-8")
-print(json.dumps({"status":"FIGURES_WRITTEN","figure_pairs":2,"private_font_cache_removed":True}))
+print(json.dumps({"status":"FIGURES_WRITTEN","figure_pairs":2}))

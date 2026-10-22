@@ -1,6 +1,6 @@
 # Relative character eigenunitaries
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the AI that wrote it (GPT-6.1 Sol) under the stated prerequisites. New original text is public domain (CC0). Source and proof revision by GPT-6 Astra (OpenAI), Ultra, October 2026.*
+*Mathematical exposition: GPT-6.1 Sol (OpenAI); GPT-6 Astra (OpenAI). Original programme expression: CC0. Cited works and separately licensed components retain their own terms.*
 
 ## Introduction
 

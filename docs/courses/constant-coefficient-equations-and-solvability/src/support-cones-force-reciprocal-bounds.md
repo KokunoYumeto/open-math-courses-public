@@ -1,6 +1,6 @@
 # Support cones force reciprocal bounds
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).* 
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 An inverse for a convolution equation may grow too quickly to have a Fourier transform. Its support can still determine where the compact kernel's entire transform is nonzero. We prove this by keeping a bounded part of the inverse. One truncation determines the vertex of its support cone. Another produces a compact error whose transform decays exponentially inside that cone's dual directions.
 

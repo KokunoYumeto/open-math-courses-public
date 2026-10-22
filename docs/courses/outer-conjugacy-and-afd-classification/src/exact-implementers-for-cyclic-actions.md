@@ -1,6 +1,6 @@
 # Exact implementers for cyclic actions
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026, with writing-AI self-checking. New original text is public domain (CC0). Source and proof revision by GPT-6 Astra (OpenAI), Ultra, October 2026; not reviewed by a person.*
+*Mathematical exposition: GPT-6.1 Sol (OpenAI); GPT-6 Astra (OpenAI). Original programme expression: CC0. Cited works and separately licensed components retain their own terms.*
 
 ## Introduction
 
@@ -318,4 +318,4 @@ The two factors involving \(\theta^g(x_k)\) cancel in the indicated order. The o
 
 [Takesaki II] Masamichi Takesaki, *Theory of Operator Algebras II*, Encyclopaedia of Mathematical Sciences 125, Springer, 2003, Proposition XI.2.26, pp.347–348. Source of the finite free-action theorem and part of the actual earlier construction consultation. Its proof explicitly assumes countable decomposability while stating the general extension; the complete arbitrary-cardinal proof used here is [Finite free actions and unitary coboundaries](finite-free-actions-and-coboundaries.md), including its unrestricted projection, standard-form, trace and topology interfaces. [Publisher record](https://link.springer.com/book/10.1007/978-3-662-10451-4).
 
-[Takesaki III] Masamichi Takesaki, *Theory of Operator Algebras III*, Springer, 2003, Lemmas XVII.3.17–3.18. These are the finite-order implementer and genuine-conjugacy targets compared during the original construction. The fixed-factor completion and uniform-cut argument above give the detailed repairs; Example 4.3 records the exact proof issue. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8).
+[Takesaki III] Masamichi Takesaki, *Theory of Operator Algebras III*, Springer, 2003, Lemmas XVII.3.17–3.18. The finite-order implementer and genuine-conjugacy statements are discussed in Example 4.3, including the need for a uniform cut in the logarithm argument. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8).

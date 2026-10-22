@@ -1,6 +1,6 @@
 # Disintegrating half-space restriction norms
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 An estimate in each tangential Fourier fiber becomes a half-space estimate only after an exact norm identity. The easy direction restricts any full-space extension to each fiber. The reverse direction must turn independently chosen near-minimizers into one Schwartz extension. We prove that step with a finite smooth partition and keep both norm endpoints.
 

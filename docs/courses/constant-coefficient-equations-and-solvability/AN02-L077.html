@@ -1,11 +1,60 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>The principal boundary symbol at high frequency</title><link rel="stylesheet" href="course.css"><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="index.html">Constant-coefficient equations and solvability</a></nav><h1 id="the-principal-boundary-symbol-at-high-frequency">The principal boundary symbol at high frequency</h1>
-<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).</em></p>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).</em></p>
 <p>Separated groups of polynomial roots have analytic factor coefficients even when roots within a group repeat. This lets us scale a mixed boundary determinant to high frequency. Its first nonzero coefficient defines the principal boundary symbol. Cancellations can lower its degree below the degrees suggested by the boundary operators, even to a negative integer.</p>
 <p>Read <a href="AN02-L073.html">Boundary data for a decaying half-line equation</a>, <a href="AN02-L074.html">Boundary determinants as causal Fourier kernels</a>, <a href="AN02-L076.html">Boundary determinants annihilate causal solutions</a>. <a href="prerequisites/prerequisite-bridges.html">Fourier transforms, finite spectra and convex separation</a> supplies the Schwartz Fourier transform; <a href="prerequisites/metric-foundation-bridges.html">Metric and topological foundations</a> supplies compact extrema and cutoffs; <a href="prerequisites/convolution-as-addition-of-supports.html">Convolution as addition of supports</a> supplies proper convolution.</p>
 <p>The hyperbolic-cone theorem is proved in <a href="AN02-L192.html#4-pass-to-multiple-roots-and-obtain-convexity">Real roots and their convex component</a>, Theorem 4.1. The analytic zero-order prerequisite is proved in <a href="AN02-L193.html#4-the-zero-bound-forces-the-taylor-order">One-sided root bounds and Taylor order</a>, Theorem 4.1; its precise statement is given in <a href="AN02-L038.html">Hyperbolicity and lower order terms</a>. Local Holmgren uniqueness is proved in <a href="AN02-L191.html#3-a-continuously-differentiable-surface-needs-no-analytic-flattening">Analytic coefficients and one-sided uniqueness</a>, Theorem 3.2: a distribution solving an analytic-coefficient equation and vanishing on one side of a noncharacteristic surface vanishes near that surface. The other prerequisite uses remain conditional on their planned proofs.</p>
 <p>Basic references are Grubb's <em>Distributions and Operators</em> (<a href="https://web.math.ku.dk/~grubb/distribution.htm">author's lecture notes</a>), Melrose's <em>Differential Analysis</em> and Hörmander's treatment of constant-coefficient equations. The written prerequisite lessons supply the auxiliary proofs used below.</p>
 <h2 id="coprime-factors-including-repeated-and-empty-factors">Coprime factors, including repeated and empty factors</h2>
+<p><strong>The original problem and its comparison symbols.</strong> Retain an original polynomial <span class="math" data-index="0" data-tex="\(\mathsf P\)">\(\mathsf P\)</span>, every original boundary symbol <span class="math" data-index="1" data-tex="\(\mathsf B_j\)">\(\mathsf B_j\)</span>, the real barrier <span class="math" data-index="2" data-tex="\(\tau_0\)">\(\tau_0\)</span>, and independent original frequency vectors <span class="math" data-index="3" data-tex="\(N_{\!o},\theta_o\)">\(N_{\!o},\theta_o\)</span>. Choose a real invertible matrix <span class="math" data-index="4" data-tex="\(E\)">\(E\)</span> with <span class="math" data-index="5" data-tex="\(Ee_1=\theta_o\)">\(Ee_1=\theta_o\)</span>, <span class="math" data-index="6" data-tex="\(Ee_n=N_{\!o}\)">\(Ee_n=N_{\!o}\)</span>, and put</p>
+<span class="math math-display" data-index="7" data-tex="\[
+y=E^Tx,\quad \sigma=\tau_0-1,\quad
+P(z)=\mathsf P(Ez+i\sigma N_{\!o}),\quad
+B_j(z)=\mathsf B_j(Ez+i\sigma N_{\!o}).
+\tag{OC1}
+\]" id="equation-OC1">\[
+y=E^Tx,\quad \sigma=\tau_0-1,\quad
+P(z)=\mathsf P(Ez+i\sigma N_{\!o}),\quad
+B_j(z)=\mathsf B_j(Ez+i\sigma N_{\!o}).
+\tag{OC1}
+\]</span>
+<p>The symbols <span class="math" data-index="8" data-tex="\(P,B_j\)">\(P,B_j\)</span> in the normalized calculation below mean exactly (OC1), including the shift of every boundary symbol. Its physical coordinates <span class="math" data-index="9" data-tex="\((a,x')=(a,z,t)\)">\((a,x')=(a,z,t)\)</span> are these <span class="math" data-index="10" data-tex="\(y\)">\(y\)</span>-coordinates. In particular <span class="math" data-index="11" data-tex="\(a=\theta_o\cdot x\)">\(a=\theta_o\cdot x\)</span> and <span class="math" data-index="12" data-tex="\(t=N_{\!o}\cdot x\)">\(t=N_{\!o}\cdot x\)</span>. The equation polynomial has barrier one, its principal cone is <span class="math" data-index="13" data-tex="\(\Gamma_E=E^{-1}\Gamma(\mathsf P_m,N_{\!o})\)">\(\Gamma_E=E^{-1}\Gamma(\mathsf P_m,N_{\!o})\)</span>, and its positive, negative and zero normal counts are those of the original principal polynomial in this basis. No lower coefficient of an original symbol is omitted.</p>
+<p>Write <span class="math" data-index="14" data-tex="\(u_E(y)=u(E^{-T}y)\)">\(u_E(y)=u(E^{-T}y)\)</span>. For a scalar solution, the exact correspondence is</p>
+<span class="math math-display" data-index="14" data-tex="\[
+v(y)=e^{\sigma y_n}u(E^{-T}y),\qquad
+u(x)=e^{-\sigma N_{\!o}\cdot x}v(E^Tx).
+\tag{OC2}
+\]" id="equation-OC2">\[
+v(y)=e^{\sigma y_n}u(E^{-T}y),\qquad
+u(x)=e^{-\sigma N_{\!o}\cdot x}v(E^Tx).
+\tag{OC2}
+\]</span>
+<p>The product and chain rules give <span class="math" data-index="15" data-tex="\(P(D_y)v=e^{\sigma y_n}(\mathsf P(D_x)u)(E^{-T}y)\)">\(P(D_y)v=e^{\sigma y_n}(\mathsf P(D_x)u)(E^{-T}y)\)</span> and the identical formula for each <span class="math" data-index="16" data-tex="\(B_j,\mathsf B_j\)">\(B_j,\mathsf B_j\)</span>, including boundary traces. These identities hold for distributions by the definition of pullback under an invertible linear map and by distributional differentiation. Smoothness, nonvanishing and support are preserved. Flatness at initial time is preserved by the finite Leibniz sum in every derivative order. The scalar pullback <span class="math" data-index="17" data-tex="\(v(E^Tx)\)">\(v(E^Tx)\)</span> is <span class="math" data-index="18" data-tex="\(|\det E|^{-1}(E^{-T})_*v\)">\(|\det E|^{-1}(E^{-T})_*v\)</span> for distributions; determinant kernels use the pushforward, with its Jacobian, as specified in <a href="AN02-L074.html">Boundary determinants as causal Fourier kernels, (24d)–(24e)</a>.</p>
+<p>Let <span class="math" data-index="19" data-tex="\(\mathsf L_E\)">\(\mathsf L_E\)</span> be the determinant of the unshifted coordinate symbols <span class="math" data-index="20" data-tex="\(\mathsf P(Ez),\mathsf B_j(Ez)\)">\(\mathsf P(Ez),\mathsf B_j(Ez)\)</span>, and let <span class="math" data-index="21" data-tex="\(U_E\)">\(U_E\)</span> be its original-barrier kernel. With <span class="math" data-index="22" data-tex="\(N'=e_{n-1}\)">\(N'=e_{n-1}\)</span>, the normalized determinant and kernel satisfy</p>
+<span class="math math-display" data-index="23" data-tex="\[
+L^\partial(z')=\mathsf L_E(z'+i\sigma N'),\qquad
+L_0=e^{\sigma t}U_E .
+\tag{OC3}
+\]" id="equation-OC3">\[
+L^\partial(z')=\mathsf L_E(z'+i\sigma N'),\qquad
+L_0=e^{\sigma t}U_E .
+\tag{OC3}
+\]</span>
+<p>These are the simultaneous-symbol identities (24a)–(24c) of the linked kernel proof. The normalized <span class="math" data-index="24" data-tex="\(L_0\)">\(L_0\)</span> is tempered; no temperedness of <span class="math" data-index="25" data-tex="\(U_E\)">\(U_E\)</span> is inferred. Its original Fourier–Laplace interpretation is (18c) there. For properly defined convolution, multiplication by this exponential respects convolution: on a compact output test, properness restricts the pair of input supports to a compact set, and <span class="math" data-index="26" data-tex="\(e^{\sigma(s+t)}=e^{\sigma s}e^{\sigma t}\)">\(e^{\sigma(s+t)}=e^{\sigma s}e^{\sigma t}\)</span> inside the distributional tensor pairing. Consequently</p>
+<span class="math math-display" data-index="28" data-tex="\[
+\begin{gathered}
+L_0*_{x'}v(a,\cdot)\\
+=e^{\sigma t}\bigl(U_E*_{x'}u_E(a,\cdot)\bigr).
+\end{gathered}
+\tag{OC4}
+\]" id="equation-OC4">\[
+\begin{gathered}
+L_0*_{x'}v(a,\cdot)\\
+=e^{\sigma t}\bigl(U_E*_{x'}u_E(a,\cdot)\bigr).
+\end{gathered}
+\tag{OC4}
+\]</span>
+<p>This formula transports determinant annihilation and all support arguments back to the original mixed problem. The exponentially weighted kernel is used whenever tempered Fourier arguments are required.</p>
 <p>Let <span class="math" data-tex="\(g_+\)">\(g_+\)</span> and <span class="math" data-tex="\(g_-\)">\(g_-\)</span> be monic polynomials of degrees <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, with no common root. A degree-zero monic factor is one. Put <span class="math" data-tex="\(d=h+\ell\)">\(d=h+\ell\)</span>, and let <span class="math" data-tex="\(E_a\)">\(E_a\)</span> be the vector space of polynomials of degree strictly below <span class="math" data-tex="\(a\)">\(a\)</span>, with <span class="math" data-tex="\(E_0=\{0\}\)">\(E_0=\{0\}\)</span>. The linear map</p>
 <span class="math math-display" data-tex="\[
 \begin{gathered}
@@ -68,7 +117,7 @@ g_+g_-+r=(g_++v_+)(g_-+v_-),\\
 \qquad
  \pi:\mathbb C^n\longrightarrow\mathbb C^n/\mathbb C\theta,\\
 \qquad
- \Omega&#x27;=\pi(\Omega).
+ \Omega'=\pi(\Omega).
 \end{gathered}
 \tag{4}
 \]">\[
@@ -77,7 +126,7 @@ g_+g_-+r=(g_++v_+)(g_-+v_-),\\
 \qquad
  \pi:\mathbb C^n\longrightarrow\mathbb C^n/\mathbb C\theta,\\
 \qquad
- \Omega&#x27;=\pi(\Omega).
+ \Omega'=\pi(\Omega).
 \end{gathered}
 \tag{4}
 \]</span>
@@ -177,7 +226,7 @@ A_+(\zeta,w,\epsilon)=\epsilon^hP_+(w/\epsilon,\zeta/\epsilon),
 \]</span>
 <p>The right sides need initially be defined only for positive <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>; equation 8 supplies their complex analytic continuation across zero. Locally constructed continuations agree on overlaps: their equality for positive <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>, followed by the one-variable analytic identity in <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>, proves equality near zero. No labels for individual roots or fractional expansions are needed.</p>
 <h2 id="the-determinant-s-exact-scaling-power">The determinant's exact scaling power</h2>
-<p>Assume there are exactly <span class="math" data-tex="\(h\)">\(h\)</span> boundary symbols <span class="math" data-tex="\(B_1,\ldots,B_h\)">\(B_1,\ldots,B_h\)</span>, and that their descended determinant <span class="math" data-tex="\(L^\partial\)">\(L^\partial\)</span> is not identically zero on <span class="math" data-tex="\(\Omega&#x27;\)">\(\Omega&#x27;\)</span>. At <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, the determinant equals one; all the following conclusions hold with principal degree zero and principal symbol one. For <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>, every <span class="math" data-tex="\(B_j\)">\(B_j\)</span> is nonzero; let <span class="math" data-tex="\(b_j\)">\(b_j\)</span> be its total degree. Its scaled symbol</p>
+<p>Assume there are exactly <span class="math" data-tex="\(h\)">\(h\)</span> boundary symbols <span class="math" data-tex="\(B_1,\ldots,B_h\)">\(B_1,\ldots,B_h\)</span>, and that their descended determinant <span class="math" data-tex="\(L^\partial\)">\(L^\partial\)</span> is not identically zero on <span class="math" data-tex="\(\Omega'\)">\(\Omega'\)</span>. At <span class="math" data-tex="\(h=0\)">\(h=0\)</span>, the determinant equals one; all the following conclusions hold with principal degree zero and principal symbol one. For <span class="math" data-tex="\(h&gt;0\)">\(h&gt;0\)</span>, every <span class="math" data-tex="\(B_j\)">\(B_j\)</span> is nonzero; let <span class="math" data-tex="\(b_j\)">\(b_j\)</span> be its total degree. Its scaled symbol</p>
 <span class="math math-display" data-tex="\[
 \begin{gathered}
 \widetilde B_{j,\epsilon}(w,\zeta)
@@ -242,64 +291,64 @@ M_*=\sum_{j=1}^h b_j-\frac{h(h-1)}2,\\
 \tag{12}
 \]</span>
 <p>In particular <span class="math" data-tex="\(M_*\)">\(M_*\)</span> is an integer. The exact column contribution cannot be replaced by <span class="math" data-tex="\(h\)">\(h\)</span>, <span class="math" data-tex="\(m\)">\(m\)</span>, or the sum of boundary orders.</p>
-<p>Let the left side of equation 12 be <span class="math" data-tex="\(D(\zeta,\epsilon)\)">\(D(\zeta,\epsilon)\)</span>. Because the right side is independent of the normal representative for positive <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>, analytic identity shows that all its Taylor coefficients at zero are independent of that representative. <a href="AN02-L074.html">Boundary determinants as causal Fourier kernels</a> gives connected convex normal fibers. Fixed local normal sections thus glue the analytic germs to a neighborhood of <span class="math" data-tex="\(\Omega&#x27;\times\{0\}\)">\(\Omega&#x27;\times\{0\}\)</span>, with a scale radius that may vary from point to point. Write this descended analytic function as</p>
+<p>Let the left side of equation 12 be <span class="math" data-tex="\(D(\zeta,\epsilon)\)">\(D(\zeta,\epsilon)\)</span>. Because the right side is independent of the normal representative for positive <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>, analytic identity shows that all its Taylor coefficients at zero are independent of that representative. <a href="AN02-L074.html">Boundary determinants as causal Fourier kernels</a> gives connected convex normal fibers. Fixed local normal sections thus glue the analytic germs to a neighborhood of <span class="math" data-tex="\(\Omega'\times\{0\}\)">\(\Omega'\times\{0\}\)</span>, with a scale radius that may vary from point to point. Write this descended analytic function as</p>
 <span class="math math-display" data-tex="\[
- D(\zeta&#x27;,\epsilon)=\sum_{j\ge0}d_j(\zeta&#x27;)\epsilon^j .
+ D(\zeta',\epsilon)=\sum_{j\ge0}d_j(\zeta')\epsilon^j .
  \tag{13}
 \]">\[
- D(\zeta&#x27;,\epsilon)=\sum_{j\ge0}d_j(\zeta&#x27;)\epsilon^j .
+ D(\zeta',\epsilon)=\sum_{j\ge0}d_j(\zeta')\epsilon^j .
  \tag{13}
 \]</span>
 <p>Each coefficient is holomorphic on the connected projected tube.</p>
-<p>Some <span class="math" data-tex="\(d_j\)">\(d_j\)</span> is not identically zero. Otherwise every local germ would vanish, and equation 12 would make <span class="math" data-tex="\(L^\partial(\zeta&#x27;/\epsilon)=0\)">\(L^\partial(\zeta&#x27;/\epsilon)=0\)</span> on an open set for a small positive fixed <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. Analytic identity on the connected projected tube would give <span class="math" data-tex="\(L^\partial\equiv0\)">\(L^\partial\equiv0\)</span>, contrary to the hypothesis. Let <span class="math" data-tex="\(j_0\)">\(j_0\)</span> be the least index whose coefficient is not identically zero, and define</p>
+<p>Some <span class="math" data-tex="\(d_j\)">\(d_j\)</span> is not identically zero. Otherwise every local germ would vanish, and equation 12 would make <span class="math" data-tex="\(L^\partial(\zeta'/\epsilon)=0\)">\(L^\partial(\zeta'/\epsilon)=0\)</span> on an open set for a small positive fixed <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span>. Analytic identity on the connected projected tube would give <span class="math" data-tex="\(L^\partial\equiv0\)">\(L^\partial\equiv0\)</span>, contrary to the hypothesis. Let <span class="math" data-tex="\(j_0\)">\(j_0\)</span> be the least index whose coefficient is not identically zero, and define</p>
 <span class="math math-display" data-tex="\[
 \begin{gathered}
 \kappa=M_*-j_0,\\
 \qquad
- \Lambda(\zeta&#x27;,\epsilon)=\epsilon^{-j_0}D(\zeta&#x27;,\epsilon),
+ \Lambda(\zeta',\epsilon)=\epsilon^{-j_0}D(\zeta',\epsilon),
  \\
-\qquad \Lambda_0(\zeta&#x27;)=d_{j_0}(\zeta&#x27;).
+\qquad \Lambda_0(\zeta')=d_{j_0}(\zeta').
 \end{gathered}
 \tag{14}
 \]">\[
 \begin{gathered}
 \kappa=M_*-j_0,\\
 \qquad
- \Lambda(\zeta&#x27;,\epsilon)=\epsilon^{-j_0}D(\zeta&#x27;,\epsilon),
+ \Lambda(\zeta',\epsilon)=\epsilon^{-j_0}D(\zeta',\epsilon),
  \\
-\qquad \Lambda_0(\zeta&#x27;)=d_{j_0}(\zeta&#x27;).
+\qquad \Lambda_0(\zeta')=d_{j_0}(\zeta').
 \end{gathered}
 \tag{14}
 \]</span>
 <p>The lower coefficients vanish identically, so the middle quotient extends holomorphically at zero. For positive <span class="math" data-tex="\(\epsilon\)">\(\epsilon\)</span> it equals
-<span class="math" data-tex="\(\epsilon^\kappa L^\partial(\zeta&#x27;/\epsilon)\)">\(\epsilon^\kappa L^\partial(\zeta&#x27;/\epsilon)\)</span>.
+<span class="math" data-tex="\(\epsilon^\kappa L^\partial(\zeta'/\epsilon)\)">\(\epsilon^\kappa L^\partial(\zeta'/\epsilon)\)</span>.
 Its zero-scale value <span class="math" data-tex="\(\Lambda_0\)">\(\Lambda_0\)</span> is not identically zero. Thus the complete proposition holds with the integer <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, even if negative. At any point where <span class="math" data-tex="\(\Lambda_0\ne0\)">\(\Lambda_0\ne0\)</span>, a smaller exponent leaves a pole and a larger exponent gives zero; this characterizes the principal scaling degree uniquely.</p>
 <h2 id="homogeneous-extension-without-a-ray-ambiguity">Homogeneous extension without a ray ambiguity</h2>
-<p>For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, compare equation 12 at <span class="math" data-tex="\(t\zeta&#x27;\)">\(t\zeta&#x27;\)</span> and at the scale <span class="math" data-tex="\(\epsilon/t\)">\(\epsilon/t\)</span>. Analytic identity extends that comparison to the zero-scale germs:</p>
+<p>For <span class="math" data-tex="\(t&gt;0\)">\(t&gt;0\)</span>, compare equation 12 at <span class="math" data-tex="\(t\zeta'\)">\(t\zeta'\)</span> and at the scale <span class="math" data-tex="\(\epsilon/t\)">\(\epsilon/t\)</span>. Analytic identity extends that comparison to the zero-scale germs:</p>
 <span class="math math-display" data-tex="\[
 \begin{gathered}
-D(t\zeta&#x27;,\epsilon)=t^{M_*}D(\zeta&#x27;,\epsilon/t),\\
+D(t\zeta',\epsilon)=t^{M_*}D(\zeta',\epsilon/t),\\
 \qquad
- \Lambda_0(t\zeta&#x27;)=t^\kappa\Lambda_0(\zeta&#x27;).
+ \Lambda_0(t\zeta')=t^\kappa\Lambda_0(\zeta').
 \end{gathered}
 \tag{15}
 \]">\[
 \begin{gathered}
-D(t\zeta&#x27;,\epsilon)=t^{M_*}D(\zeta&#x27;,\epsilon/t),\\
+D(t\zeta',\epsilon)=t^{M_*}D(\zeta',\epsilon/t),\\
 \qquad
- \Lambda_0(t\zeta&#x27;)=t^\kappa\Lambda_0(\zeta&#x27;).
+ \Lambda_0(t\zeta')=t^\kappa\Lambda_0(\zeta').
 \end{gathered}
 \tag{15}
 \]</span>
 <p>Let</p>
 <span class="math math-display" data-tex="\[
- \mathscr D=\bigcup_{c\in\mathbb C,\ c\ne0}c\Omega&#x27;.
+ \mathscr D=\bigcup_{c\in\mathbb C,\ c\ne0}c\Omega'.
  \tag{16}
 \]">\[
- \mathscr D=\bigcup_{c\in\mathbb C,\ c\ne0}c\Omega&#x27;.
+ \mathscr D=\bigcup_{c\in\mathbb C,\ c\ne0}c\Omega'.
  \tag{16}
 \]</span>
-<p>For <span class="math" data-tex="\(z\in\mathscr D\)">\(z\in\mathscr D\)</span>, put <span class="math" data-tex="\(S_z=\{c\in\mathbb C:cz\in\Omega&#x27;\}\)">\(S_z=\{c\in\mathbb C:cz\in\Omega&#x27;\}\)</span>. The imaginary part of <span class="math" data-tex="\(cz\)">\(cz\)</span> is real-linear in <span class="math" data-tex="\((\operatorname{Re}c,\operatorname{Im}c)\)">\((\operatorname{Re}c,\operatorname{Im}c)\)</span>, so <span class="math" data-tex="\(S_z\)">\(S_z\)</span> is an open convex cone, the inverse image of the projected cone. If <span class="math" data-tex="\(0\notin\Omega&#x27;\)">\(0\notin\Omega&#x27;\)</span>, it excludes zero and is connected. If <span class="math" data-tex="\(0\in\Omega&#x27;\)">\(0\in\Omega&#x27;\)</span>, that open projected cone is the entire real quotient space, so <span class="math" data-tex="\(\Omega&#x27;\)">\(\Omega&#x27;\)</span> is the entire complex quotient space and <span class="math" data-tex="\(S_z=\mathbb C\)">\(S_z=\mathbb C\)</span>; its nonzero part is still connected.</p>
+<p>For <span class="math" data-tex="\(z\in\mathscr D\)">\(z\in\mathscr D\)</span>, put <span class="math" data-tex="\(S_z=\{c\in\mathbb C:cz\in\Omega'\}\)">\(S_z=\{c\in\mathbb C:cz\in\Omega'\}\)</span>. The imaginary part of <span class="math" data-tex="\(cz\)">\(cz\)</span> is real-linear in <span class="math" data-tex="\((\operatorname{Re}c,\operatorname{Im}c)\)">\((\operatorname{Re}c,\operatorname{Im}c)\)</span>, so <span class="math" data-tex="\(S_z\)">\(S_z\)</span> is an open convex cone, the inverse image of the projected cone. If <span class="math" data-tex="\(0\notin\Omega'\)">\(0\notin\Omega'\)</span>, it excludes zero and is connected. If <span class="math" data-tex="\(0\in\Omega'\)">\(0\in\Omega'\)</span>, that open projected cone is the entire real quotient space, so <span class="math" data-tex="\(\Omega'\)">\(\Omega'\)</span> is the entire complex quotient space and <span class="math" data-tex="\(S_z=\mathbb C\)">\(S_z=\mathbb C\)</span>; its nonzero part is still connected.</p>
 <p>On <span class="math" data-tex="\(S_z\setminus\{0\}\)">\(S_z\setminus\{0\}\)</span>, the holomorphic function</p>
 <span class="math math-display" data-tex="\[
                         c^{-\kappa}\Lambda_0(cz)
@@ -314,21 +363,32 @@ D(t\zeta&#x27;,\epsilon)=t^{M_*}D(\zeta&#x27;,\epsilon/t),\\
 \begin{gathered}
 \widehat\Lambda_0(z)=c^{-\kappa}\Lambda_0(cz)
        \\
-\quad(cz\in\Omega&#x27;,\ c\ne0).
+\quad(cz\in\Omega',\ c\ne0).
 \end{gathered}
 \tag{18}
 \]">\[
 \begin{gathered}
 \widehat\Lambda_0(z)=c^{-\kappa}\Lambda_0(cz)
        \\
-\quad(cz\in\Omega&#x27;,\ c\ne0).
+\quad(cz\in\Omega',\ c\ne0).
 \end{gathered}
 \tag{18}
 \]</span>
-<p>One fixed admissible <span class="math" data-tex="\(c\)">\(c\)</span> remains admissible in a neighborhood of <span class="math" data-tex="\(z\)">\(z\)</span>, which proves local holomorphy. The formula agrees with <span class="math" data-tex="\(\Lambda_0\)">\(\Lambda_0\)</span> on <span class="math" data-tex="\(\Omega&#x27;\)">\(\Omega&#x27;\)</span>, and comparison with an admissible <span class="math" data-tex="\(c\)">\(c\)</span> for <span class="math" data-tex="\(\lambda z\)">\(\lambda z\)</span> gives
+<p>One fixed admissible <span class="math" data-tex="\(c\)">\(c\)</span> remains admissible in a neighborhood of <span class="math" data-tex="\(z\)">\(z\)</span>, which proves local holomorphy. The formula agrees with <span class="math" data-tex="\(\Lambda_0\)">\(\Lambda_0\)</span> on <span class="math" data-tex="\(\Omega'\)">\(\Omega'\)</span>, and comparison with an admissible <span class="math" data-tex="\(c\)">\(c\)</span> for <span class="math" data-tex="\(\lambda z\)">\(\lambda z\)</span> gives
 <span class="math" data-tex="\(\widehat\Lambda_0(\lambda z)=\lambda^\kappa\widehat\Lambda_0(z)\)">\(\widehat\Lambda_0(\lambda z)=\lambda^\kappa\widehat\Lambda_0(z)\)</span>
-whenever <span class="math" data-tex="\(\lambda\ne0\)">\(\lambda\ne0\)</span>. Every point can be brought into <span class="math" data-tex="\(\Omega&#x27;\)">\(\Omega&#x27;\)</span>, so this also proves uniqueness of a homogeneous extension. When the tube is the entire quotient space, analyticity at zero and positive homogeneity show by its Taylor series that a nonzero <span class="math" data-tex="\(\Lambda_0\)">\(\Lambda_0\)</span> is a homogeneous polynomial of nonnegative degree; equation 18 is valid there too.</p>
+whenever <span class="math" data-tex="\(\lambda\ne0\)">\(\lambda\ne0\)</span>. Every point can be brought into <span class="math" data-tex="\(\Omega'\)">\(\Omega'\)</span>, so this also proves uniqueness of a homogeneous extension. When the tube is the entire quotient space, analyticity at zero and positive homogeneity show by its Taylor series that a nonzero <span class="math" data-tex="\(\Lambda_0\)">\(\Lambda_0\)</span> is a homogeneous polynomial of nonnegative degree; equation 18 is valid there too.</p>
 <p>Since <span class="math" data-tex="\(\pi\)">\(\pi\)</span> is complex-linear, <span class="math" data-tex="\(\mathscr D\)">\(\mathscr D\)</span> is also the projection of the full complex saturation <span class="math" data-tex="\(\bigcup_{c\ne0}c(\mathbb R^n-i\Gamma)\)">\(\bigcup_{c\ne0}c(\mathbb R^n-i\Gamma)\)</span>. Thus the construction is invariantly defined on the quotient by <span class="math" data-tex="\(\mathbb C\theta\)">\(\mathbb C\theta\)</span>, rather than tied to a chosen zero normal representative. We call <span class="math" data-tex="\(\widehat\Lambda_0\)">\(\widehat\Lambda_0\)</span> the principal boundary symbol. This use of <span class="math" data-tex="\(\Lambda_0\)">\(\Lambda_0\)</span> keeps it distinct from the causal inverse distribution <span class="math" data-tex="\(L_0\)">\(L_0\)</span> of <a href="AN02-L074.html">Boundary determinants as causal Fourier kernels</a> and <a href="AN02-L076.html">Boundary determinants annihilate causal solutions</a>.</p>
+<p><strong>Principal scaling for the original determinant.</strong> The unshifted determinant <span class="math" data-index="185" data-tex="\(\mathsf L_E\)">\(\mathsf L_E\)</span> has the same analytic scaling construction above. If its first nonzero scaling degree is <span class="math" data-index="186" data-tex="\(\kappa\)">\(\kappa\)</span>, write <span class="math" data-index="187" data-tex="\(\Lambda_{\!o}(\eta',\varepsilon)=\varepsilon^\kappa\mathsf L_E(\eta'/\varepsilon)\)">\(\Lambda_{\!o}(\eta',\varepsilon)=\varepsilon^\kappa\mathsf L_E(\eta'/\varepsilon)\)</span>. From (OC3), at positive <span class="math" data-index="188" data-tex="\(\varepsilon\)">\(\varepsilon\)</span> in the common tube,</p>
+<span class="math math-display" data-index="189" data-tex="\[
+\varepsilon^\kappa L^\partial(\eta'/\varepsilon)
+=\Lambda_{\!o}(\eta'+i\sigma\varepsilon N',\varepsilon).
+\tag{OC5}
+\]" id="equation-OC5">\[
+\varepsilon^\kappa L^\partial(\eta'/\varepsilon)
+=\Lambda_{\!o}(\eta'+i\sigma\varepsilon N',\varepsilon).
+\tag{OC5}
+\]</span>
+<p>The right side is holomorphic at <span class="math" data-index="190" data-tex="\(\varepsilon=0\)">\(\varepsilon=0\)</span>. Its zero-scale value is <span class="math" data-index="191" data-tex="\(\Lambda_{\!o}(\eta',0)\)">\(\Lambda_{\!o}(\eta',0)\)</span>, which is not identically zero. Thus its first nonzero degree remains <span class="math" data-index="192" data-tex="\(\kappa\)">\(\kappa\)</span>, including negative degrees, and its principal boundary symbol is the original one expressed in the basis <span class="math" data-index="193" data-tex="\(E\)">\(E\)</span>. This argument uses the full determinant scaling; it does not infer the first nonzero term merely by discarding lower boundary coefficients after cancellations. The normal counts, selected factorization and every boundary operator in (OC5) are those fixed by (OC1) and (OC3).</p>
 <h2 id="exercises-with-complete-solutions">Exercises with complete solutions</h2>
 <p><strong>Exercise 1 (entry: repeated roots without analytic root labels).</strong> Let <span class="math" data-tex="\(g_+=(w-i)^2\)">\(g_+=(w-i)^2\)</span>, <span class="math" data-tex="\(g_-=w+2i\)">\(g_-=w+2i\)</span>, and perturb their product by the constant <span class="math" data-tex="\(\tau\)">\(\tau\)</span>. Find the first derivatives at <span class="math" data-tex="\(\tau=0\)">\(\tau=0\)</span> of the two monic factors. Explain why a repeated upper root does not obstruct the lemma.</p>
 <p><strong>Solution.</strong> Write <span class="math" data-tex="\(v_+=\tau(aw+b)+O(\tau^2)\)">\(v_+=\tau(aw+b)+O(\tau^2)\)</span> and <span class="math" data-tex="\(v_-=\tau c+O(\tau^2)\)">\(v_-=\tau c+O(\tau^2)\)</span>. The first-order equation is</p>
@@ -452,10 +512,10 @@ R_+(w,s)=w+s-i-\frac1{s-i},\\
 <h2 id="extra-boundary-data-and-the-necessary-balanced-count">Extra boundary data and the necessary balanced count</h2>
 <p>Let <span class="math" data-tex="\(T=L_0\)">\(T=L_0\)</span> be <a href="AN02-L074.html">Boundary determinants as causal Fourier kernels</a>'s causal inverse of a determinant <span class="math" data-tex="\(L^\partial\not\equiv0\)">\(L^\partial\not\equiv0\)</span>. If a smooth compactly supported boundary function <span class="math" data-tex="\(\phi\)">\(\phi\)</span> satisfies <span class="math" data-tex="\(T*\phi=0\)">\(T*\phi=0\)</span>, then <span class="math" data-tex="\(\phi=0\)">\(\phi=0\)</span>. Indeed compact support makes <span class="math" data-tex="\(\widehat\phi\)">\(\widehat\phi\)</span> entire. <a href="AN02-L074.html">Boundary determinants as causal Fourier kernels</a>'s weighted Fourier identity and proper convolution give, on the projected tube,</p>
 <span class="math math-display" data-tex="\[
-                    L^\partial(\zeta&#x27;)\widehat\phi(\zeta&#x27;)=0 .
+                    L^\partial(\zeta')\widehat\phi(\zeta')=0 .
  \tag{24}
 \]">\[
-                    L^\partial(\zeta&#x27;)\widehat\phi(\zeta&#x27;)=0 .
+                    L^\partial(\zeta')\widehat\phi(\zeta')=0 .
  \tag{24}
 \]</span>
 <p>For completeness, choose any fixed imaginary vector in that tube. Its exponential weight makes the transform of <span class="math" data-tex="\(T\)">\(T\)</span> the stated polynomially bounded analytic function. Multiplying the same weight into the compact input changes its transform to the entire value <span class="math" data-tex="\(\widehat\phi(\xi+i\eta)\)">\(\widehat\phi(\xi+i\eta)\)</span>. The usual compact-convolution Fourier product follows by tensor pairing; it is valid in tempered distributions on that line. Thus the product vanishes there for every real <span class="math" data-tex="\(\xi\)">\(\xi\)</span>. Varying the fixed imaginary vector gives equation 24 throughout the open complex tube. On the nonempty open set where <span class="math" data-tex="\(L^\partial\ne0\)">\(L^\partial\ne0\)</span>, the entire function <span class="math" data-tex="\(\widehat\phi\)">\(\widehat\phi\)</span> vanishes. Analytic identity makes it zero everywhere, and the Schwartz Fourier injectivity implies <span class="math" data-tex="\(\phi=0\)">\(\phi=0\)</span>. This uses neither a Titchmarsh support theorem nor a first-support-time argument.</p>
@@ -464,14 +524,14 @@ R_+(w,s)=w+s-i-\frac1{s-i},\\
 \begin{gathered}
 T*\phi=0,\\
 \qquad
-                \phi\in C_c^\infty(\partial H&#x27;)\ \Longrightarrow\ \phi=0 .
+                \phi\in C_c^\infty(\partial H')\ \Longrightarrow\ \phi=0 .
 \end{gathered}
 \tag{25}
 \]">\[
 \begin{gathered}
 T*\phi=0,\\
 \qquad
-                \phi\in C_c^\infty(\partial H&#x27;)\ \Longrightarrow\ \phi=0 .
+                \phi\in C_c^\infty(\partial H')\ \Longrightarrow\ \phi=0 .
 \end{gathered}
 \tag{25}
 \]</span>
@@ -484,4 +544,4 @@ T*\phi=0,\\
 <li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis</em>, second edition (1990), reprinted in Classics in Mathematics, Springer, 2003, e-ISBN 978-3-642-61497-2.</li>
 <li>Lars Hörmander, <em>The Analysis of Linear Partial Differential Operators II: Differential Operators with Constant Coefficients</em>, Springer, 1983.</li>
 </ul>
-</main></body></html>
+</main><script id="an02-formula-accessibility">(()=>{const mark=()=>{for(const e of document.querySelectorAll('[data-tex]'))if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute('role','group');e.setAttribute('aria-label','Mathematical expression; scroll horizontally to read the whole expression');}};const ready=async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;if(document.fonts?.ready)await document.fonts.ready;requestAnimationFrame(mark);};if(document.readyState==='complete')ready();else addEventListener('load',ready,{once:true});addEventListener('resize',mark);})();</script></body></html>

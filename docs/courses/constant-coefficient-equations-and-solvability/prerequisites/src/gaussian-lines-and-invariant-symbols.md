@@ -4,13 +4,13 @@ An amplitude attached to a phase is not yet an invariant symbol. A change of pha
 
 The exact earlier programme proofs are:
 
-- The restored phase-space lesson, including its symplectic basis and common-complement proofs; the restored intrinsic-regularity lesson, including both prescribed-phase converses; and the restored tangent-zoom lesson, including singular Gaussian evaluation.
+- The phase-space lesson, including its symplectic basis and common-complement proofs; the intrinsic-regularity lesson, including both prescribed-phase converses; and the tangent-zoom lesson, including singular Gaussian evaluation.
 - Quadratic stationary phase, Q1–Q6, finite calculus and inverse maps, and convergent series, P13. The [stationary lesson's Appendix A.4–A.6](stationary-phase-and-critical-manifolds.md) supplies compact bumps, quotient densities and fiber integration.
 - Completed measure and product integration, M0–M4, coordinate and wavefront transport, and conic parametrices and full-symbol cutoffs, K0–K7.
 - The geometric Maslov line, M0–M7, the global principal-symbol proof, PS0–PS6, and symbols on conic bundles. PS5 proves the partition with supports locally finite over the base; PS6 proves global gluing and the exact kernel. Their phase-coordinate conventions are identified explicitly with the geometric Gaussian line in M6 and PS28–PS29.
-- The restored oscillatory lesson supplies clean Fourier reduction with the normalization used here. The restored phase-equivalence lesson supplies the exact homogeneous stabilization used in Exercise 9.3.
+- The oscillatory lesson supplies clean Fourier reduction with the normalization used here. The phase-equivalence lesson supplies the exact homogeneous stabilization used in Exercise 9.3.
 
-The proof map binds each use to its exact source and complete dependency chain. The primary sources are the exact reprints of Hörmander III, corrected second printing (1994), Section 21.6 and Hörmander IV, corrected second printing (1994), Section 25.1. This lesson retains its independent exposition and exercises. The earlier programme alternatives and their reproducible figures remain available through the links above. Manifolds used for the global construction are Hausdorff and second countable, as in PS0.
+The primary sources are the exact reprints of Hörmander III, corrected second printing (1994), Section 21.6 and Hörmander IV, corrected second printing (1994), Section 25.1. This lesson retains its independent exposition and exercises. The linked companions include the alternative arguments and reproducible figures. Manifolds used for the global construction are Hausdorff and second countable, as in PS0.
 
 Our symplectic form is \(\omega=\sum d\xi_j\wedge dx_j\). The distinguished vertical plane is \(\lambda_0=\{x=0\}\), and \(D=-i\partial\). The signature of a real symmetric form counts positive eigenvalues minus negative eigenvalues; zero eigenvalues count zero.
 
@@ -352,7 +352,7 @@ e^{i\pi\operatorname{sgn}G'/4}
 \quad\bmod S^{\nu-1}.
 \tag{7.5}
 \]
-This follows from the proved clean reduction and the normalized coefficient in (7.2); no \(2\pi\) factor remains. Here the clean oscillatory integral uses the prefactor \((2\pi)^{-(n+2N-2e)/4}\) from the restored intrinsic lesson, equation (4.2). Its stated conversion to the earlier companion's fixed prefactor must be included when comparing amplitude formulas. The normal-density change proved in clean stationary phase makes the expression independent of the chosen fiber/normal split. Its order is \(\nu\): the scalar amplitude contributes \(m+(n-2N-2e)/4\), the determinant contributes \(-(n-N+e)/2\), the fiber measure contributes \(e\), and \(|d\xi|^{1/2}\) contributes \(n/2\). Adding them gives \(m+n/4\). Compact fiber support is part of this local statement; a global fiber integral requires its own properness hypothesis.
+This follows from the proved clean reduction and the normalized coefficient in (7.2); no \(2\pi\) factor remains. Here the clean oscillatory integral uses the prefactor \((2\pi)^{-(n+2N-2e)/4}\) from the intrinsic lesson, equation (4.2). Its stated conversion to the earlier companion's fixed prefactor must be included when comparing amplitude formulas. The normal-density change proved in clean stationary phase makes the expression independent of the chosen fiber/normal split. Its order is \(\nu\): the scalar amplitude contributes \(m+(n-2N-2e)/4\), the determinant contributes \(-(n-N+e)/2\), the fiber measure contributes \(e\), and \(|d\xi|^{1/2}\) contributes \(n/2\). Adding them gives \(m+n/4\). Compact fiber support is part of this local statement; a global fiber integral requires its own properness hypothesis.
 
 ## 8. Conjugation reflects the covector and the Maslov phase
 
@@ -396,4 +396,4 @@ For the bundle identification, \(\iota\) reverses the symplectic form. In the ma
 - [Hörmander III, §21.6] Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, corrected second printing, Springer, 1994, §21.6.
 - [Hörmander IV, §25.1] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, corrected second printing, Springer, 1994, §25.1.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Restoration and exact prerequisite review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026. Self-checked by the writing AI. Original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Restoration and exact prerequisite review: GPT-6 Astra (OpenAI), Ultra, 5 October 2026.  Original text: public domain (CC0).*

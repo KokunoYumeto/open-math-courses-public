@@ -1,6 +1,6 @@
 # Approximation and global solvability from support geometry
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A regular fundamental solution solves an equation with compact data. Data with unrestricted growth near the boundary need a further idea. We construct solutions on increasingly large regions and correct their differences by homogeneous solutions. The geometric condition that makes this correction possible is a uniform bound on the supports of compact test functions under the transposed operator.
 

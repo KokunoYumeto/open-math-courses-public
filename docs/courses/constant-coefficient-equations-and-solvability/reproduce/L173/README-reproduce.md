@@ -11,4 +11,4 @@ The figure program writes two PNG/SVG pairs and a coordinate-and-formula descrip
 
 The check program uses exact fractions for containment, boundary margins, reflected support values, escaping-point coordinates, tangent gaps, subgradients and halfspace thresholds. It also uses 65-digit arithmetic for normal vectors, complex bilinear transposes, normalization of the positive bump and sampled real Fourier bounds. Its local report is a supplementary check log, not part of the reading edition or a substitute for the full proofs.
 
-Original chapters, programs and illustrations are public domain under CC0. The DejaVu font retains its separate licence. SVG text remains editable. The figure program removes its private temporary Matplotlib configuration on completion.
+Original chapters, programs and illustrations are public domain under CC0. The DejaVu font retains its separate licence. SVG text remains editable.

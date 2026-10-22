@@ -1,6 +1,6 @@
 # Planar domains and directional solvability
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 In two dimensions, support convexity has a complete geometric description: every characteristic line must meet the domain in an interval. The connectedness hypothesis is essential. We prove the criterion by building an exterior angle at every point outside the domain, then use it to illustrate the failure of locality. We also show that requiring support or singular-support convexity for every real directional derivative forces a connected domain to be convex, in any dimension.
 

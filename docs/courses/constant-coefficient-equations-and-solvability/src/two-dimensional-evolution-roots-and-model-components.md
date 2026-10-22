@@ -1,6 +1,6 @@
 # Two-dimensional evolution roots and model components
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 In two variables the characteristic roots can be followed all the way around infinity. Their leading phases and the first lower powers determine whether a fixed complex ball can always find an upper root value. We prove the finite-cover expansion, the complete root criterion, and the dominated comparison with polynomial model operators. The sufficient solvability and component statements use the root-barrier equivalence and its available Holmgren theorem.
 
@@ -54,7 +54,7 @@ In this model bounded branches are replaced by zero. Their possibly nonreal cons
 
 ## A finite cover and a convergent Laurent series
 
-Factor \(P\) by the Gauss/UFD proof in [Primitive factors and moving polynomial roots](primitive-factors-and-moving-roots.md). Factors independent of \(s\) contribute no analytic normal root on an open \(z\)-disk: a nonzero polynomial in \(z\) cannot vanish identically there. For an irreducible factor \(Q(z,s)\) of positive normal degree \(q\), [Uniqueness in a slab with bounded support](bounded-support-slab-uniqueness.md)'s nonmonic Sylvester argument supplies a nonzero exceptional polynomial whose zeros include all leading-coefficient zeros and all multiple-fiber points. Choose \(R>1\) beyond its finitely many complex zeros.
+Factor \(P\) by the Gauss/UFD proof in [Primitive factors and moving polynomial roots](primitive-factors-and-moving-roots.md). Factors independent of \(s\) contribute no analytic normal root on an open \(z\)-disk: a nonzero polynomial in \(z\) cannot vanish identically there. For an irreducible factor \(Q(z,s)\) of positive normal degree \(q\), [Uniqueness in a slab with bounded support](bounded-support-slab-uniqueness.md)'s nonmonic Sylvester argument supplies a nonzero exceptional polynomial whose zeros include all leading-coefficient zeros and all multiple-fiber points. Choose one common \(R>1\) beyond every zero of these finitely many exceptional polynomials and every zero of the full leading normal coefficient \(a(z)\), including its factors independent of \(s\). These nonzero polynomials have only finitely many zeros. Use this same radius throughout the exterior and finite-center arguments.
 
 On \(|z|>R\), all \(q\) roots are simple and have local holomorphic graph charts by [Primitive factors and moving polynomial roots](primitive-factors-and-moving-roots.md)'s implicit-function proof. On the convex logarithmic half-plane \(\{\operatorname{Re}w>\log R\}\), the equation \(Q(e^w,s)=0\) has global analytic labels. Here is the needed continuation argument in full.
 
@@ -101,7 +101,7 @@ h(v)=\sum_{\ell=-N}^{\infty}b_\ell v^\ell,
 \end{gathered}
 \tag{7}
 \]
-Only finitely many positive powers occur, and convergence is uniform on sufficiently large closed circles in \(u\), including every argument. Taking the last nonzero positive or zero index, or the first nonzero negative index, proves 2. If all coefficients vanish, the branch is identically zero. The geometric majorants on smaller \(v\)-disks allow termwise differentiation and uniform remainder bounds. This proves the finite-cover Puiseux expansion here; it does not import the still separately audited monodromy sentence in older [Symbols at infinity](symbols-at-infinity.md).
+Only finitely many positive powers occur, and convergence is uniform on sufficiently large closed circles in \(u\), including every argument. Taking the last nonzero positive or zero index, or the first nonzero negative index, proves 2. If all coefficients vanish, the branch is identically zero. The geometric majorants on smaller \(v\)-disks allow termwise differentiation and uniform remainder bounds. This proves the finite-cover Puiseux expansion by local root continuation, path independence on the logarithmic half-plane and the removable-singularity argument.
 
 ## Which leading phases are possible
 
@@ -207,7 +207,7 @@ For the remaining centers \(|c|\le C_0\), set \(b_c=c+\operatorname{sign}_0(c)(R
 \end{gathered}
 \tag{16}
 \]
-The leading coefficient is nonzero on this compact real annulus. The elementary polynomial root bound therefore bounds every normal root there in absolute value by one constant \(M_0\). Evaluation at \(b_c\) gives height at least \(-M_0\), for every analytic root on the original ball. A common radius and height have been established for all real centers. [Analytic root barriers and supported solvability](analytic-root-barriers-and-supported-solvability.md)'s full-frequency/tangential adapter and the root-barrier equivalence prove supported solvability, with the available Holmgren use in the sufficient direction.
+All zeros of \(a\) lie in \(|z|<R\), so its absolute value has a positive minimum on this compact real annulus. Every lower normal coefficient has a finite maximum there. The elementary polynomial root bound therefore bounds every normal root in absolute value by one constant \(M_0\). Evaluation at \(b_c\) gives height at least \(-M_0\), for every analytic root on the original ball. A common radius and height have been established for all real centers. [Analytic root barriers and supported solvability](analytic-root-barriers-and-supported-solvability.md)'s full-frequency/tangential adapter and the root-barrier equivalence prove supported solvability, using the stated Holmgren theorem in the sufficient direction.
 
 ## The polynomial model and the large-window comparison
 

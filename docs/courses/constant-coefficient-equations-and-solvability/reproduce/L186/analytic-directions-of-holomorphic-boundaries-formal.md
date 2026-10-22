@@ -1,6 +1,6 @@
 # Analytic directions of holomorphic boundary values
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 Holomorphic extension in an imaginary direction suppresses Fourier covectors that point against that direction. A distributional boundary limit alone does not quantify this suppression. We prove the analytic estimate by combining a compact cutoff family with a finite Taylor extension of each cutoff. The cancellation leaves an integrable remainder even when the holomorphic function grows as a negative power of its imaginary height.
 

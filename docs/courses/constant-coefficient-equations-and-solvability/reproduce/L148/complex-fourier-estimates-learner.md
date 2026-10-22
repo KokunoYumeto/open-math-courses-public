@@ -1,6 +1,6 @@
 # Working with complex frequencies and weak exponential integrals
 
-*Written and self-checked by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. CC0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. CC0.*
 
 The [formal proof](complex-fourier-estimates-formal.md) distinguishes three operations: moving the Fourier transform to an imaginary plane, multiplying the original distribution by a cutoff, and integrating exponential solutions against a measure. This companion develops four concrete models and ten exercises with complete solutions.
 

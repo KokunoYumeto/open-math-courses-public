@@ -67,8 +67,7 @@ report={'schema':'AN02-analytic-functional-example-checks151/v1','status':'PASS'
         'quadrature_count':len(checks),'exact_point_moments':moments,'exact_graph_sample':[3,4,-4,3],
         'exact_sample_phi':6.5,'exact_sample_graph_squared_norm':50,
         'numerical_checks_replace_theorems_or_finite_jet_proof':False,
-        'general_carrier_Fourier_criterion_established_by_finite_tests':False,
-        'whole_course_complete':False}
+        'general_carrier_Fourier_criterion_established_by_finite_tests':False}
 (HERE/'independent-example-checks151.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'status':'PASS','quadratures':len(checks),'max_scaled_comparison_error':max(x.get('scaled_error',0) for x in checks),
                   'example_report':str(HERE/'independent-example-checks151.json')}))

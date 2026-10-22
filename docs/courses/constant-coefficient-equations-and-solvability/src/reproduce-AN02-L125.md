@@ -14,11 +14,11 @@ The current thirteen-file packet retains all complete mathematical proof, formul
 - [figures/geometry.json](../reproduce/L125/figures/geometry.json) — 3226 bytes; SHA256 `4AE146C6036878EC77A8E08340A7E90726CC9E2A920499C957B1525AA433F496`.
 - [figures/relative-pairs-and-generators.png](../reproduce/L125/figures/relative-pairs-and-generators.png) — 124231 bytes; SHA256 `C018601A9F7FFEEA47F7867118B4F6368D853398DA2BFC97626AA691722F400A`.
 - [figures/relative-pairs-and-generators.svg](../reproduce/L125/figures/relative-pairs-and-generators.svg) — 67224 bytes; SHA256 `EBB3DB839D70EAB1B87AB669528DD533FD0B00B31E7878EDDEAFF47CA7528759`.
-- LICENSE.txt — 501 bytes; SHA256 `372E5C267AA321EFAEAC822369EAEC62C2801706E18478887817A2F43A4928D2`.
+- [LICENSE.txt](../reproduce/L125/LICENSE.txt) — 439 bytes; SHA256 `91C76070C56A35BF78BC5F04C425654E38B26449881375F77CCC7F0782125E43`.
 - [make_figures.py](../reproduce/L125/make_figures.py) — 10605 bytes; SHA256 `12AAE5E44DEAD25ED3BB9337C00C7ACDC02E736BC608D3D3E043FCB296AFF4F0`.
-- [morse-finite-chain-handles-formal.md](../reproduce/L125/morse-finite-chain-handles-formal.md) — 35642 bytes; SHA256 `EBD10CB578E9E30B5A92BBA7353A9007AFA4019483C7BE259183BC5DD42EB1A6`.
-- [morse-finite-chain-handles-learner.md](../reproduce/L125/morse-finite-chain-handles-learner.md) — 56934 bytes; SHA256 `FD3379CF6C8FA0E27B1A7DE0A9E421DF2D9C70AC6EE947E9DB6A64C6C89731DD`.
-- [README-reproduce.md](../reproduce/L125/README-reproduce.md) — 1567 bytes; SHA256 `5EBCCC68DF2554B664A761333585E2D3117659D484EE716855DB0DA68D7E953D`.
+- [morse-finite-chain-handles-formal.md](../reproduce/L125/morse-finite-chain-handles-formal.md) — 34636 bytes; SHA256 `77B7729CA8A3974868007F7050712C9192B528DA040BAF47B4E02F32FB629E33`.
+- [morse-finite-chain-handles-learner.md](../reproduce/L125/morse-finite-chain-handles-learner.md) — 55744 bytes; SHA256 `CC875F6E76D08EFB4BEDA8B369B47298C15C5C31ADFAC4C887E53C90FC5B188C`.
+- [README-reproduce.md](../reproduce/L125/README-reproduce.md) — 1355 bytes; SHA256 `CA704C3EDA990785A1500A1177DF33DD552961F8A646BF73FC7BF64B50ECF7DA`.
 - original-alternative/DejaVu-font-license.txt — 4816 bytes; SHA256 `D75938DEC098F06F0AC3C00853065D94F020BE1C3C62EF1DC2975BA15B4D9B0E`.
 - [original-alternative/figures/block-and-stopping-flow.png](../reproduce/L125/original-alternative/figures/block-and-stopping-flow.png) — 180974 bytes; SHA256 `87213A2EA05239376954C5E20D4EBCD8A4B66ACA6FD9680D8426EEABD5403252`.
 - [original-alternative/figures/block-and-stopping-flow.svg](../reproduce/L125/original-alternative/figures/block-and-stopping-flow.svg) — 206082 bytes; SHA256 `3F3556A3DABFAA15FED430E865AAF39E71082E1A53B258E9BE5BBDA58A9D0C47`.
@@ -27,11 +27,11 @@ The current thirteen-file packet retains all complete mathematical proof, formul
 - [original-alternative/figures/geometry.json](../reproduce/L125/original-alternative/figures/geometry.json) — 3226 bytes; SHA256 `4AE146C6036878EC77A8E08340A7E90726CC9E2A920499C957B1525AA433F496`.
 - [original-alternative/figures/relative-pairs-and-generators.png](../reproduce/L125/original-alternative/figures/relative-pairs-and-generators.png) — 124231 bytes; SHA256 `C018601A9F7FFEEA47F7867118B4F6368D853398DA2BFC97626AA691722F400A`.
 - [original-alternative/figures/relative-pairs-and-generators.svg](../reproduce/L125/original-alternative/figures/relative-pairs-and-generators.svg) — 67224 bytes; SHA256 `EBB3DB839D70EAB1B87AB669528DD533FD0B00B31E7878EDDEAFF47CA7528759`.
-- original-alternative/LICENSE.txt — 501 bytes; SHA256 `372E5C267AA321EFAEAC822369EAEC62C2801706E18478887817A2F43A4928D2`.
+- [original-alternative/LICENSE.txt](../reproduce/L125/original-alternative/LICENSE.txt) — 439 bytes; SHA256 `91C76070C56A35BF78BC5F04C425654E38B26449881375F77CCC7F0782125E43`.
 - [original-alternative/make_figures.py](../reproduce/L125/original-alternative/make_figures.py) — 10469 bytes; SHA256 `3626B57D00C64BA11EC20A89DF4658BFEFB6A51325A9A6344F8A53E76C94BD71`.
-- [original-alternative/morse-finite-chain-handles-formal.md](../reproduce/L125/original-alternative/morse-finite-chain-handles-formal.md) — 35414 bytes; SHA256 `EE24CA916B4A5E156CE31D249C53C3DE1173D5CBAE2E18CF138AE16E0F7D0BB0`.
-- [original-alternative/morse-finite-chain-handles-learner.md](../reproduce/L125/original-alternative/morse-finite-chain-handles-learner.md) — 56706 bytes; SHA256 `24D3C2AA49AD69BAE5A8387B6838C04263B62096A0322265678B28FC87551DFC`.
-- [original-alternative/README-reproduce.md](../reproduce/L125/original-alternative/README-reproduce.md) — 1567 bytes; SHA256 `5EBCCC68DF2554B664A761333585E2D3117659D484EE716855DB0DA68D7E953D`.
+- [original-alternative/morse-finite-chain-handles-formal.md](../reproduce/L125/original-alternative/morse-finite-chain-handles-formal.md) — 34636 bytes; SHA256 `77B7729CA8A3974868007F7050712C9192B528DA040BAF47B4E02F32FB629E33`.
+- [original-alternative/morse-finite-chain-handles-learner.md](../reproduce/L125/original-alternative/morse-finite-chain-handles-learner.md) — 55744 bytes; SHA256 `CC875F6E76D08EFB4BEDA8B369B47298C15C5C31ADFAC4C887E53C90FC5B188C`.
+- [original-alternative/README-reproduce.md](../reproduce/L125/original-alternative/README-reproduce.md) — 1355 bytes; SHA256 `CA704C3EDA990785A1500A1177DF33DD552961F8A646BF73FC7BF64B50ECF7DA`.
 
 ## Fresh native reproduction
 

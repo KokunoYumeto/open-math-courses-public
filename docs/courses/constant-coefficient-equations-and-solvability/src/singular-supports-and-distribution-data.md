@@ -1,6 +1,6 @@
 # Singular supports and arbitrary distribution data
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Support geometry permits global solutions for smooth data and for distributions of finite order. An arbitrary distribution may have orders that grow without bound along an exhaustion. To solve for all such data, one must also control where singularities of compact distributions can occur when their images are smooth away from a fixed compact set.
 

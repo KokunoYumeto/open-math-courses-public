@@ -1,6 +1,6 @@
 # Spacelike Cauchy surfaces and the Riesz formula
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A curved initial surface can determine a wave just as a time plane does. Local spacelikeness makes the normal Cauchy recursion possible. A separate condition at infinity makes every causal line meet the surface and keeps the convolution region compact. In three spatial dimensions, the resulting representation has a geometric form: curvature and a reflected null derivative replace the flat sphere terms.
 

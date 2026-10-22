@@ -1,6 +1,6 @@
 # Degenerate boundary symbols and smooth nonuniqueness
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A mixed boundary determinant can be nonzero on every real spatial frequency at a fixed negative imaginary time, yet still fail to determine a smooth causal solution uniquely. Its principal symbol detects a complex frequency branch approaching the time direction. We construct a solution from that branch and show that its support reaches every boundary point of nonnegative time.
 
@@ -11,6 +11,39 @@ The hyperbolic-cone theorem is proved in [Real roots and their convex component]
 Basic references are Grubb's *Distributions and Operators* ([author's lecture notes](https://web.math.ku.dk/~grubb/distribution.htm)), Melrose's *Differential Analysis* and Hörmander's treatment of constant-coefficient equations. The written prerequisite lessons supply the auxiliary proofs used below.
 
 ## The statement and selected bases
+
+**The original problem and its comparison symbols.** Retain an original polynomial \(\mathsf P\), every original boundary symbol \(\mathsf B_j\), the real barrier \(\tau_0\), and independent original frequency vectors \(N_{\!o},\theta_o\). Choose a real invertible matrix \(E\) with \(Ee_1=\theta_o\), \(Ee_n=N_{\!o}\), and put
+\[
+y=E^Tx,\quad \sigma=\tau_0-1,\quad
+P(z)=\mathsf P(Ez+i\sigma N_{\!o}),\quad
+B_j(z)=\mathsf B_j(Ez+i\sigma N_{\!o}).
+\tag{OC1}
+\]
+The symbols \(P,B_j\) in the normalized calculation below mean exactly (OC1), including the shift of every boundary symbol. Its physical coordinates \((a,x')=(a,z,t)\) are these \(y\)-coordinates. In particular \(a=\theta_o\cdot x\) and \(t=N_{\!o}\cdot x\). The equation polynomial has barrier one, its principal cone is \(\Gamma_E=E^{-1}\Gamma(\mathsf P_m,N_{\!o})\), and its positive, negative and zero normal counts are those of the original principal polynomial in this basis. No lower coefficient of an original symbol is omitted.
+
+Write \(u_E(y)=u(E^{-T}y)\). For a scalar solution, the exact correspondence is
+\[
+v(y)=e^{\sigma y_n}u(E^{-T}y),\qquad
+u(x)=e^{-\sigma N_{\!o}\cdot x}v(E^Tx).
+\tag{OC2}
+\]
+The product and chain rules give \(P(D_y)v=e^{\sigma y_n}(\mathsf P(D_x)u)(E^{-T}y)\) and the identical formula for each \(B_j,\mathsf B_j\), including boundary traces. These identities hold for distributions by the definition of pullback under an invertible linear map and by distributional differentiation. Smoothness, nonvanishing and support are preserved. Flatness at initial time is preserved by the finite Leibniz sum in every derivative order. The scalar pullback \(v(E^Tx)\) is \(|\det E|^{-1}(E^{-T})_*v\) for distributions; determinant kernels use the pushforward, with its Jacobian, as specified in [Boundary determinants as causal Fourier kernels, (24d)–(24e)](boundary-determinants-as-causal-fourier-kernels.md).
+
+Let \(\mathsf L_E\) be the determinant of the unshifted coordinate symbols \(\mathsf P(Ez),\mathsf B_j(Ez)\), and let \(U_E\) be its original-barrier kernel. With \(N'=e_{n-1}\), the normalized determinant and kernel satisfy
+\[
+L^\partial(z')=\mathsf L_E(z'+i\sigma N'),\qquad
+L_0=e^{\sigma t}U_E .
+\tag{OC3}
+\]
+These are the simultaneous-symbol identities (24a)–(24c) of the linked kernel proof. The normalized \(L_0\) is tempered; no temperedness of \(U_E\) is inferred. Its original Fourier–Laplace interpretation is (18c) there. For properly defined convolution, multiplication by this exponential respects convolution: on a compact output test, properness restricts the pair of input supports to a compact set, and \(e^{\sigma(s+t)}=e^{\sigma s}e^{\sigma t}\) inside the distributional tensor pairing. Consequently
+\[
+\begin{gathered}
+L_0*_{x'}v(a,\cdot)\\
+=e^{\sigma t}\bigl(U_E*_{x'}u_E(a,\cdot)\bigr).
+\end{gathered}
+\tag{OC4}
+\]
+This formula transports determinant annihilation and all support arguments back to the original mixed problem. The exponentially weighted kernel is used whenever tempered Fourier arguments are required.
 
 Use [Incoming normal roots at a flat boundary](incoming-normal-roots-at-a-flat-boundary.md)'s normalized polynomial, [Boundary determinants as causal Fourier kernels](boundary-determinants-as-causal-fourier-kernels.md)'s projected determinant and [The principal boundary symbol at high frequency](the-principal-boundary-symbol-at-high-frequency.md)'s principal symbol. Work in coordinates with \(N=e_n,\theta=e_1\), normal position \(a=x_1\), and tangential position \(x'=(z,t)\), where \(t=x_n\). There are \(h=m_+\) boundary symbols \(B_1,\ldots,B_h\), and
 \[
@@ -286,6 +319,8 @@ The positive-time boundary is connected. A real analytic function vanishing on a
  \tag{22}
 \]
 This completes every assertion of the theorem, including full boundary support and all zero initial jets. No spatial growth estimate is asserted or needed for the resulting \(u\).
+
+**Nonuniqueness for the original symbols.** The principal symbol is preserved under the simultaneous affine substitution: the analytic scaled determinant becomes \(\Lambda_{\!o}(\eta'+i\sigma\varepsilon N',\varepsilon)\), so at zero scale its value is the original principal symbol in the chosen basis. Its vanishing in the time direction is therefore the same hypothesis. Apply the construction above to the normalized polynomial and all normalized boundary symbols (OC1). Formula (OC2) yields a nonzero original smooth solution. Every original equation and boundary trace vanishes by the product-rule identities, and the nowhere-zero exponential preserves support, including every nonnegative-time point of the boundary plane. The finite Leibniz formula preserves the vanishing initial jets. Thus the original problem has the same nonuniqueness conclusion.
 
 ## Exercises with complete solutions
 

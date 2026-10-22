@@ -13,7 +13,7 @@ Keep `make_figures.py` at the root of an empty scratch directory and the PNG, SV
 - [wave-cycle-coefficients-learner.md](../reproduce/L119/wave-cycle-coefficients-learner.md) — 9257 bytes; SHA-256 `CA3FD87F570CE5395F66A8077877246FFD2EC9115A2A4F7F12CBCEC7F6DA737D`.
 - [wave-cycle-torsion-working-proof.md](../reproduce/L119/wave-cycle-torsion-working-proof.md) — 17446 bytes; SHA-256 `4612625D62DC9B1526192BDE35AC089FB55F5D457D6322ACF12F158C24038BE0`.
 - [LICENSE.txt](../reproduce/L119/LICENSE.txt) — 449 bytes; SHA-256 `3A508E9D86CB2C5F92DF4862D97617A45F76910084967F87D4B0C0968B5C0E7D`.
-- CREDITS.txt — 1697 bytes; SHA-256 `938F39184D75E9D4688BFD58FECA6AB0A84E8D59E57661E355FD3A4EAB0C8F1B`.
+- [CREDITS.txt](../reproduce/L119/CREDITS.txt) — 1697 bytes; SHA-256 `938F39184D75E9D4688BFD58FECA6AB0A84E8D59E57661E355FD3A4EAB0C8F1B`.
 
 ## Run the renderer
 

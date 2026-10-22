@@ -1,6 +1,6 @@
 # Splitting real carriers and gluing hyperfunctions
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. CC0.*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  CC0.*
 
 An analytic functional can differentiate an analytic test infinitely many times. Multiplying that test by a smooth partition function would destroy its analyticity. To localize the functional, we first localize an associated harmonic function, then solve away the Laplace error. This lesson carries out that construction and proves that compatible local hyperfunctions glue on every open cover.
 

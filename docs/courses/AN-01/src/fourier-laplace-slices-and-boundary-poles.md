@@ -38,6 +38,62 @@ Both sides pass to their \(L^2\) limits by Cauchy–Schwarz. This is precisely t
 
 Here and below, equality of locally \(L^2\) functions as distributions gives equality almost everywhere. To see this directly, multiply their difference \(u\) by any compact smooth cutoff \(\chi\). Then \(\chi u\in L^2\) and pairs to zero with every Schwartz function, since \(\chi\theta\) is a compact test. Approximate \(\overline{\chi u}\) in \(L^2\) by compact smooth functions and pass the zero pairings by Cauchy–Schwarz; this gives \(\int|\chi u|^2=0\). Cutoffs equal to one on an exhausting sequence of compact balls give \(u=0\) almost everywhere. The same argument inside an open set uses compactly supported cutoffs there. This proves the local support identification used later. \(\square\)
 
+## Integrability between the Fourier endpoints
+
+The exponent range below concerns Lebesgue norms of the original input and output. It also fixes the meaning of a Fourier transform when the defining integral is not absolutely convergent. Let \(p'\) denote the conjugate exponent, \(1/p+1/p'=1\).
+
+**Proposition 0.2 (a first description for \(1\le p\le2\)).** Every \(f\in L^p(\mathbb R^n)\), \(1\le p\le2\), has a decomposition \(f=a+b\) with \(a\in L^1\), \(b\in L^2\). Its distributional Fourier transform is consequently represented by an element of \(L^\infty+L^2\), and hence by a locally integrable function.
+
+**Proof.** For any \(A>0\), set \(a=f1_{\{|f|>A\}}\) and \(b=f1_{\{|f|\le A\}}\). Direct comparison of powers gives
+\[
+ \|a\|_1\le A^{1-p}\|f\|_p^p,\qquad
+ \|b\|_2^2\le A^{2-p}\|f\|_p^p .
+ \tag{Y1}
+\]
+On the first set, \(|f|^{1-p}\le A^{1-p}\); on the second, \(|f|^{2-p}\le A^{2-p}\). Both comparisons include \(p=1,2\). [U040, Proposition 0.9](tempered-growth-and-spectral-cutoffs.md#integrable-inversion-and-tempered-examples) makes \(f,a,b\) tempered, and Proposition 0.8 there identifies \(Fa\) with its bounded integral transform. Lemma 0.1 here identifies \(Fb\) with its \(L^2\) transform. Linearity on distributions gives \(Ff=Fa+Fb\). Cauchy–Schwarz makes the \(L^2\) part integrable on every bounded set, and the bounded part is integrable there as well. A different threshold produces the same distribution and therefore the same almost-everywhere function class by U040's local integrability argument. \(\square\)
+
+**Theorem 0.3 (Hausdorff–Young in angular frequency coordinates).** For \(1\le p\le2\), Fourier transformation gives a unique continuous map
+\[
+ F_p:L^p(\mathbb R^n)\longrightarrow L^{p'}(\mathbb R^n),
+ \qquad
+ \|F_pf\|_{p'}\le (2\pi)^{n/p'}\|f\|_p.
+ \tag{Y2}
+\]
+It extends the Schwartz transform, agrees with the ordinary integral on \(L^p\cap L^1\), with Lemma 0.1 on \(L^p\cap L^2\), and with the tempered-distribution transform on all of \(L^p\). The inverse-sign map satisfies
+\[
+ \|G_ph\|_{p'}\le (2\pi)^{-n/p}\|h\|_p,\qquad
+ G_p=(2\pi)^{-n}RF_p.
+ \tag{Y3}
+\]
+Here \(R\) is reflection. The estimates are the stated Hausdorff–Young bounds; no assertion that their interior constants are optimal is made.
+
+**Proof from the general Haar-space theorem.** Apply [HA-LCA-08, Theorem 7.1](../prerequisites/HA-LCA-724d1a8/src/the-plancherel-theorem.md#ha-lca-08-theorem-7-1), whose proof supplies the simple-function analytic family, its strip bound, norm recovery, completion and agreement on both intersections. Its group is the additive \(\mathbb R^n\) with measure \(dx\), and its characters here are \(x\mapsto e^{ix\cdot\xi}\). [HA-LCA-07, Proposition 3.2](../prerequisites/HA-LCA-724d1a8/src/the-fourier-inversion-theorem-and-the-dual-haar-measure.md#ha-lca-07-proposition-3-2) proves that the dual Haar measure for exactly these characters is
+\[
+                            d\widehat\mu(\xi)=(2\pi)^{-n}d\xi.
+ \tag{Y4}
+\]
+The general theorem is a contraction with this dual measure. For finite \(p'\), its output norm is \((2\pi)^{-n/p'}\|F_pf\|_{p'}\), which gives (Y2). For \(p'=\infty\), multiplication of the measure by a positive constant preserves null sets and the essential supremum, so the factor in (Y2) is one. The integral and square-integral agreements are exactly those of the supplied theorem after this change of frequency coordinates. Its completed \(L^2\) map agrees with Lemma 0.1 because both agree on the dense Schwartz subspace and are continuous with the same norm factor. Since \(p\) is finite throughout this range, compact smooth density proves uniqueness of the extension.
+
+For distributional agreement, choose compact smooth \(f_k\to f\) in \(L^p\). For every Schwartz \(\phi\), Hölder bounds
+\[
+ \left|\int(f_k-f)F\phi\right|
+       \le\|f_k-f\|_p\|F\phi\|_{p'}\longrightarrow0.
+\]
+On the output side, (Y2) and Hölder give
+\[
+ \left|\int(F_pf_k-F_pf)\phi\right|
+       \le\|F_pf_k-F_pf\|_{p'}\|\phi\|_p\longrightarrow0,
+ \tag{Y5}
+\]
+including \(p=1,p'=\infty\). The Schwartz pairing identity passes to these limits and gives \(\int F_pf\,\phi=\int f\,F\phi\), exactly the bilinear transpose convention. Thus this output is the class already identified in Proposition 0.2, now with the stronger global norm. Reflection preserves every Lebesgue norm; multiplying (Y2) by \((2\pi)^{-n}\) gives (Y3) because \(1-1/p'=1/p\).
+
+There is also the general-operator proof. On \(L^1\cap L^2\), the transform maps into \(L^\infty\cap L^2\) with endpoint norms 1 and \((2\pi)^{n/2}\), by U040 and Lemma 0.1. Apply [U033, Theorem 7.3](convolution-estimates-and-weak-gradient-embeddings.md#interpolating-two-strong-operator-bounds) with
+\[
+              \theta=2(1-1/p),\qquad 1/p'=\theta/2 .
+ \tag{Y6}
+\]
+For \(1<p<2\), it gives \((2\pi)^{n\theta/2}=(2\pi)^{n/p'}\) and the continuous extension to all \(L^p\). The original endpoint estimates cover \(p=1,2\). Uniqueness on the common dense Schwartz subspace identifies this map with the general Haar-space map above. \(\square\)
+
 ## Read the data before choosing a theorem
 
 For a Fourier–Laplace transform with kernel \(e^{-ixz}\), the height \(\eta\) contributes \(e^{\eta x}\), not \(e^{-\eta x}\). Thus positive heights emphasize the right tail and negative heights emphasize the left tail. With the Plancherel normalization already stated, the measured quantity is
@@ -524,6 +580,16 @@ Compute \(F(z)\), \(N(\eta)\), the mean vector and every entry of the covariance
 
 **Exercise 11 (intermediate: a finite boundary norm without an ordinary boundary integral).** For \(a>0\) and \(1/2<\alpha\le1\), take \(f(x)=e^{-ax}(1+x)^{-\alpha}\mathbf1_{(0,\infty)}(x)\). Determine \(E\) exactly and calculate \(N(a)\). Prove strong completed square-integral convergence as \(\eta\uparrow a\), while the ordinary Fourier–Laplace integral at boundary frequency zero diverges.
 
+**Exercise 12 (foundation: a threshold decomposition).** Let \(1<p<2\), choose \(1/2\le a<1/p\) and \(1/p<b\le1\), and set
+\[
+ f(x)=x^{-a}1_{(0,1)}(x)+x^{-b}1_{[1,\infty)}(x).
+\]
+Show that \(f\in L^p\), while \(f\notin L^1\) and \(f\notin L^2\). Compute the two norms in Proposition 0.2 when \(A=1\), and state the two resulting descriptions of its Fourier transform.
+
+**Exercise 13 (intermediate: Gaussian constants).** For \(g_a(x)=e^{-a|x|^2}\), \(a>0\), calculate \(\|g_a\|_p\) and \(\|Fg_a\|_{p'}\), including \(p=1,p'=\infty\). Find their ratio divided by the constant in (Y2). Explain what this calculation proves, and what it does not prove, about optimal constants.
+
+**Exercise 14 (advanced: scaling forces the output exponent).** Suppose \(1\le p\le2\) and there is a finite \(C\) such that \(\|F\phi\|_r\le C\|\phi\|_p\) for all Schwartz \(\phi\), where \(1\le r\le\infty\). Use dilations of a Gaussian to prove \(r=p'\). In particular, exclude a uniform \(L^p\to L^\infty\) bound when \(p>1\).
+
 ## Solutions
 
 **Solution 1.** Direct integration gives
@@ -692,10 +758,51 @@ For heights increasing to \(a\), the weighted inputs converge in \(L^2\) to \((1
 
 At zero real frequency the ordinary boundary integral is \(\int_0^\infty(1+x)^{-\alpha}dx\), which diverges for every stated \(\alpha\), including logarithmic divergence at \(\alpha=1\). The positive interior imaginary-axis integrals increase to it as \(\eta\uparrow a\), so their values tend to \(+\infty\). A finite completed square-integral boundary norm supplies no finite value at this single frequency; the absolutely convergent holomorphic integral is furnished on the interior heights.
 
+**Solution 12.** Direct integration gives
+\[
+       \|f\|_p^p=\frac1{1-ap}+\frac1{bp-1}<\infty .
+ \tag{Y7}
+\]
+The tail is not integrable because \(b\le1\), including logarithmic divergence at \(b=1\). The square is not integrable at zero because \(2a\ge1\), including logarithmic divergence when \(a=1/2\). At threshold one, the large-value part is \(x^{-a}1_{(0,1)}\), of integral norm \(1/(1-a)\); the small-value part is \(x^{-b}1_{[1,\infty)}\), of squared integral norm \(1/(2b-1)\). The assumptions imply \(a<1\) and \(b>1/2\), so these are finite. Proposition 0.2 represents \(Ff\) in \(L^\infty+L^2\), independently of the splitting threshold. Theorem 0.3 proves the global \(L^{p'}\) bound
+\[
+ \|Ff\|_{p'}\le (2\pi)^{1/p'}
+       \left(\frac1{1-ap}+\frac1{bp-1}\right)^{1/p}.
+\]
+
+**Solution 13.** The Gaussian transform and mass proved in F3, with absolute product integration, give
+\[
+ Fg_a(\xi)=(\pi/a)^{n/2}e^{-|\xi|^2/(4a)},\qquad
+ \|g_a\|_p=(\pi/(ap))^{n/(2p)} .
+ \tag{Y8}
+\]
+For finite \(q=p'\),
+\[
+ \|Fg_a\|_q=(\pi/a)^{n/2}(4\pi a/q)^{n/(2q)}.
+\]
+At \(q=\infty\) the norm is \((\pi/a)^{n/2}\), attained at zero. Combining these expressions, with \(q^{-1/q}=1\) when \(q=\infty\), yields
+\[
+ \frac{\|Fg_a\|_q}{(2\pi)^{n/q}\|g_a\|_p}
+            =p^{\,n/(2p)}q^{-n/(2q)} .
+ \tag{Y9}
+\]
+The ratio is independent of \(a\) and equals one at \(p=1,2\). Thus the endpoint constants in (Y2) are attained by Gaussians and cannot be reduced. For each interior \(p\), this example supplies the lower bound \((2\pi)^{n/q}p^{n/(2p)}q^{-n/(2q)}\) for the best operator constant. An example alone does not prove a matching upper bound or determine that best interior constant.
+
+**Solution 14.** Fix a nonzero Gaussian \(g\), so all the norms below are finite and positive, and set \(g_R(x)=R^{-n/p}g(x/R)\), \(R>0\). Change of variables gives
+\[
+ \|g_R\|_p=\|g\|_p,\qquad
+ Fg_R(\xi)=R^{n-n/p}Fg(R\xi),\qquad
+ \|Fg_R\|_r=R^{n(1-1/p-1/r)}\|Fg\|_r .
+ \tag{Y10}
+\]
+The same formula holds at \(r=\infty\), using the supremum instead of an integral and \(1/r=0\). If its exponent were positive, \(R\to\infty\) would contradict the assumed uniform bound; if negative, \(R\downarrow0\) would contradict it. Hence \(1/r=1-1/p\), exactly \(r=p'\). For \(p>1\) and \(r=\infty\), the exponent \(n(1-1/p)\) is positive, which gives the stated obstruction. This argument uses \(n\ge1\), as in the lesson.
+
 ## References
+
+- [HA-LCA-08, Theorem 7.1](../prerequisites/HA-LCA-724d1a8/src/the-plancherel-theorem.md#ha-lca-08-theorem-7-1) and [HA-LCA-07, Proposition 3.2](../prerequisites/HA-LCA-724d1a8/src/the-fourier-inversion-theorem-and-the-dual-haar-measure.md#ha-lca-07-proposition-3-2): the full general Hausdorff–Young proof and the exact Euclidean dual measure. [U033, Theorem 7.3](convolution-estimates-and-weak-gradient-embeddings.md#interpolating-two-strong-operator-bounds) supplies a general interpolation proof with every infinite endpoint.
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I*, second edition, Springer, §7.1, Theorems 7.1.12–7.1.13: interpolation and the conjugate-exponent Fourier estimate.
 
 - Supplied [Fourier foundation](../prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.md), F1–F5, and [Separated frequencies and distributional order](separated-frequencies-and-distributional-order.md), Lemma0.1: Schwartz Fourier inversion, Gaussian mass and transforms, transpose rules and Plancherel. Lemma0.1 of the present lesson proves the completed square-integral maps and their agreement with both distributional and ordinary transforms.
 - Supplied [integration foundation](../prerequisites/U011-free-foundations/banach-foundation-bridges.md), §§15.0–15.4 and16, and the scalar and finite-algebra foundations named above: complete measure, convergence, Jacobian, norm, density and matrix proofs. Lemma L uses scalar Cauchy–Schwarz and Tonelli to establish every analytic-slice norm estimate. These copies retain their stated licences.
 - [Cauchy kernels and distributional boundary limits](cauchy-kernels-and-boundary-limits.md), Theorem1.1, Corollary2.2, Theorem3.1, Corollary3.2 and Theorem4.1. [Holomorphic boundaries in convex cones](holomorphic-boundaries-in-convex-cones.md), Section3 and Lemma3.1: exact Cauchy, boundary, jump and identity proofs.
 - Charles J. Geyer, [*Stat 5421 Lecture Notes: Exponential Families*](https://www.stat.umn.edu/geyer/5421/notes/expfam.html), edition dated20August2026, Sections3.5–3.6 and4: finite natural-parameter domains and mean/covariance interpretations. The notes state [CC BY-SA4.0](https://creativecommons.org/licenses/by-sa/4.0/). The Fourier–Laplace domination, strict covariance and support proofs here are independently written and proved in full.
-- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition (1990), Exercises7.4.1–7.4.3, printed pages390–391, and answers on page415. The common-slice, finite-moment-domain, covariance and support arguments, worked measurements and eleven graded exercises here have their own exposition; the boundary-pole existence proof uses the proved jump formula.
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I: Distribution Theory and Fourier Analysis*, reprint of the second edition (1990), Exercises7.4.1–7.4.3, printed pages390–391, and answers on page415. The common-slice, finite-moment-domain, covariance and support arguments, worked measurements and fourteen graded exercises here have their own exposition; the boundary-pole existence proof uses the proved jump formula.

@@ -1,6 +1,6 @@
 # Weyl lattices and coupling dimension
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text is public domain (CC0).*
 
 ## Introduction
 
@@ -351,4 +351,4 @@ Its unitary identification of the two tracial GNS bases proves a normal algebra 
 
 [Takesaki I] Masamichi Takesaki, *Theory of Operator Algebras I*, first edition, Springer, 1979. V.3, Theorem 3.8 and Definition 3.9; the proof uses Proposition 3.7 on page 338. The cyclic/separating criterion is Proposition 3.13, page 341. We retain the exact normalized coupling theorem as an explicit prerequisite and prove the complete real-line application. [Publisher record](https://doi.org/10.1007/978-1-4612-6188-9).
 
-The parent source exercise has a completed corrective disposition. Both its factor premise and printed-number recovery have full-scope counterexamples; its full nonzero-parameter commutant formula and intended irrational-product \(II_1\) theorem are proved. The coupling dimension is exactly \(|ab|/(2\pi)\) in the original representation. All eight solutions are complete.
+The parent source exercise has two distinct parameter assertions. Both its factor premise and printed-number recovery have full-scope counterexamples; its full nonzero-parameter commutant formula and intended irrational-product \(II_1\) theorem are proved. The coupling dimension is exactly \(|ab|/(2\pi)\) in the original representation. All eight solutions are complete.

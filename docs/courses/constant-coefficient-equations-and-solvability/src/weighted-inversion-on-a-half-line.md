@@ -1,6 +1,6 @@
 # Weighted inversion on a half-line
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 The characteristic Cauchy construction needs estimates on a half-line rather than on the whole time axis. Taking an infimum over Schwartz extensions does not automatically preserve a full-line identity: the inverse must also preserve the half-line restriction. We prove that exact point for polynomials whose roots lie in the upper half-plane, including repeated roots and both norm endpoints.
 

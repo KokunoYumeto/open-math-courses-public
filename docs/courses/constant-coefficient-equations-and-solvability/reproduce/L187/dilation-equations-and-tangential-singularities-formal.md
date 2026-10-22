@@ -1,6 +1,6 @@
 # Dilation equations and tangential analytic singularities
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 A dilation equation controls regularity along radial flow. Its angular data can still be singular. We prove directly that every smooth or analytic wavefront covector of a solution is perpendicular to the radial vector. The proof uses compact tests and an exact falling-factorial formula for the Euler operator. It applies to complex dilation degrees and to arbitrary open domains.
 

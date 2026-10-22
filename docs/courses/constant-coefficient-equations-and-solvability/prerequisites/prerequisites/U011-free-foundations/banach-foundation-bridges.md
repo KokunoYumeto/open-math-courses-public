@@ -10,6 +10,8 @@ The mathematical entry is natural-number arithmetic with induction, ordinary set
 
 This selection supplies: Lebesgue measure, convergence, Euclidean Fubini and affine changes, L1 density and translations, mollification, disk area and the generating-class argument.
 
+<span id="150-constructing-the-measure-without-importing-a-convergence-theorem"></span>
+
 ### 15.0. Constructing the measure without importing a convergence theorem
 
 We now construct the measure input used in Section 15.1. Fix the original coordinates on \(\mathbb R^n\), \(n\geq1\). The covering boxes are bounded half-open coordinate boxes \(B=\prod_{i=1}^n(a_i,b_i]\), \(a_i<b_i\), with original geometric volume \(v(B)=\prod_{i=1}^n(b_i-a_i)\). The empty box has volume zero. For every subset \(E\subset\mathbb R^n\), put

@@ -1,6 +1,6 @@
 # Learning convex approximation for convolution equations
 
-Original exposition, examples and solutions: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0. Self-checked by the writing AI; independent mathematical review is not claimed.
+Original exposition, examples and solutions: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0.
 
 A compact convolution kernel determines where a local equation makes sense. Its complex characteristic frequencies supply explicit entire solutions. On an open convex set, finite sums of these solutions approximate every smooth homogeneous solution, with all derivatives on each compact observation set. The proof connects three objects: an annihilator, an entire quotient, and a convex analytic carrier.
 

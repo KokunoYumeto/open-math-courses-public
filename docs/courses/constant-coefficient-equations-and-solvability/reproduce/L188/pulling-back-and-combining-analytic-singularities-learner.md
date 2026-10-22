@@ -1,6 +1,6 @@
 # Pulling back and combining analytic singularities
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 A singular distribution can sometimes be restricted to a curve, multiplied by another singular distribution, or integrated along a fiber. The decision depends on covectors. A pullback must not annihilate a singular covector. A product must not join opposing singular covectors. A projection retains only source covectors whose fiber component is zero.
 

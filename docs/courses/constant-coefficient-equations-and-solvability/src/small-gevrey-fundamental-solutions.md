@@ -1,6 +1,6 @@
 # Small Gevrey fundamental solutions in the principal polar cone
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A retarded Cauchy solution defines a continuous fundamental functional. Comparing nearby time directions sharpens its support to the principal polar cone; local analytic carrier estimates give a hyperfunction realization.
 

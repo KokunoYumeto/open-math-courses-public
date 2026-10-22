@@ -245,4 +245,4 @@ The theorem concerns the index of the specified expectation. Different expectati
 - Uffe Haagerup, *Operator-valued weights in von Neumann algebras* [I](https://doi.org/10.1016/0022-1236(79)90053-3) and [II](https://doi.org/10.1016/0022-1236(79)90072-7), Journal of Functional Analysis 32 (1979), 175–206, and 33 (1979), 339–361.
 - Vaughan F. R. Jones, [*Index for subfactors*](https://doi.org/10.1007/BF01389127), Inventiones Mathematicae 72 (1983), 1–25.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Public domain (CC0).*

@@ -3335,11 +3335,11 @@ The center obstruction cannot be removed by choosing another ordinary tunnel. We
 
 This constructs a compatible norm-preserving, adjoint-preserving, trace-preserving isomorphism of the increasing algebraic unions. Its \(L^2\) isometry extends to a unitary intertwining their left actions, so it extends to a normal isomorphism of their inherited-trace closures. In particular it transports LF.41's nonscalar center element. No infinite product of correcting unitaries is taken, and no coherent **spatial** conjugation is asserted. This is the complete finite-compatibility argument isolated in 46.6.
 
-A generating ordinary tunnel would have larger closure \(M\), a factor. This contradicts the transported center. Hence this all-smooth amenable inclusion has **no generating ordinary tunnel**. It is not strongly amenable in Popa's Definition 3.1.1, since its core is not ergodic. Any statement deducing ergodicity or generation from amenability alone is false. The necessary ergodic-core hypothesis must be retained in the original strong-amenability equivalence; this packet does not supply that entire equivalence.
+A generating ordinary tunnel would have larger closure \(M\), a factor. This contradicts the transported center. Hence this all-smooth amenable inclusion has **no generating ordinary tunnel**. It is not strongly amenable in Popa's Definition 3.1.1, since its core is not ergodic. Any statement deducing ergodicity or generation from amenability alone is false. The necessary ergodic-core hypothesis must be retained in the original strong-amenability equivalence; the full equivalence is proved in [61.13–61.20](smooth-representations-and-tower-compression.md#global-finite-approximation-without-a-separability-assumption).
 
 #### LF.18. The full partition and the separate generating conclusion
 
-The full finite residual result LF.15 is unconditional for the actual inclusion constructed here and any of its prescribed finite prefixes. It is also a reusable exact repair whenever an actual smaller finite trace fiber is \(\mathbb Z[1/5]\cap[0,1]\); it is not asserted for every amenable inclusion. The general residual/generating obligations retain their original hypotheses and remain distinct from this finite completed unit.
+The full finite residual result LF.15 is unconditional for the actual inclusion constructed here and any of its prescribed finite prefixes. It is also a reusable exact repair whenever an actual smaller finite trace fiber is \(\mathbb Z[1/5]\cap[0,1]\); it is not asserted for every amenable inclusion. The general residual/generating obligations retain their original hypotheses and are distinct from the finite result LF.15; the full partition is POR.5 and the qualified generating theorem is 61.13–61.20.
 
 The index-ten PG example of current Lesson 65 has a generating ordinary core, and hence scalar core centers. It cannot supply LF.41 or LF.56. Conversely this new example is extremal and does not refute PG's finite inherited-trace pair obstruction or Lesson 99's fixed-core joint-state target. Its complete all-smooth proof uses finite representation matrices and equivariant averaging, rather than a bicommutant assertion about a hypothetical factorial AF completion.
 
@@ -4093,7 +4093,7 @@ The original canonical semifinite trace gives \(\operatorname{Tr}(e)=1\). In the
 
 ### The unrestricted target remains unproved
 
-The completed construction is the normal faithful finite smooth representation, its all-stage marked tower comparison, and its exact original-compatible UCP pullback. The completed correction is the preservation of a true original minimum, including the singular Jones-ideal face. The construction therefore cannot by itself exclude a positive original order separator.
+The normal faithful finite smooth representation has an all-stage marked tower comparison and an exact original-compatible UCP pullback. The pullback preserves a true original minimum, including the singular Jones-ideal face. The construction therefore cannot by itself exclude a positive original order separator.
 
 The still assigned outcome is an actual state \(\varphi\) on the original \(B\) with \(\varphi E=\varphi\), \(\varphi|_M=\tau\), \(M\)-centrality and \(\varphi\iota=\varphi\iota P_0\), or a genuine counterexample satisfying the full all-smooth amenability hypothesis. Nothing above proves that outcome. In this attempted route the exact unproved step is a cost descent for the transported original \(\Lambda_\psi(\mathfrak a)\), or a new valid all-smooth representation that excludes a positive original minimum. At a minimizer, (TR12.18) shows why a further application of amenability to the already constructed finite pair cannot supply that descent. Equation (TR12.20) records its finite bounded boundary; it is not substituted for the assigned theorem.
 
@@ -4572,7 +4572,7 @@ The larger center witness in WM.29 has norm at most one. Contractivity of normal
 \tag{WM.35}
 \]
 
-Thus \(w\ne\ell\), and the original lifted positive operator \(\mathfrak a\) is nonzero. This refutes an unrestricted deduction of **operator** joint balance \(w=\ell\), or of equality of the original normal modified core and ambient expectations, from all-smooth amenability. It also proves that the class is outside the previously delivered scalar, endpoint and generating-core zero-cost cases.
+Thus \(w\ne\ell\), and the original lifted positive operator \(\mathfrak a\) is nonzero. This refutes an unrestricted deduction of **operator** joint balance \(w=\ell\), or of equality of the original normal modified core and ambient expectations, from all-smooth amenability. It also proves that the class is outside the scalar, endpoint and generating-core zero-cost cases.
 
 It does not refute existence of a state with \(\varphi(\mathfrak a)=0\). WM.35 excludes a faithful normal joint restriction. E14.8–E14.12 below prove that every original compatible joint restriction in this actual model is purely singular, excluding nonfaithful normal restrictions as well. The remaining state question is therefore singular.
 
@@ -5755,7 +5755,7 @@ Figure T15. Heights are \(h(x)=x_1+x_2+x_3\). The prefix law and both normal tai
 
 Sorin Popa, *Classification of amenable subfactors of type II*, Acta Mathematica 172 (1994), 163–255, [DOI 10.1007/BF02392646](https://doi.org/10.1007/BF02392646), §2.3 and §3.1–§3.2, provides the context for smooth representations and compatible physical hypertraces.
 
-The exact weighted finite tower, original trace character and parameter constants used here are [WM.1–WM.36](general-tail-supports-and-controlled-tunnels.md). The exact physical center return, original likelihood formulas and dimension identity are [C13.1–C13.24](general-tail-supports-and-controlled-tunnels.md). The actual whole-center action and purely singular restrictions are [E14.1–E14.18](general-tail-supports-and-controlled-tunnels.md). The already delivered whole-ideal conclusion E14.12a uses the complete proofs SC.2–SC.3 in [Singular hypertraces, the Jones ideal and bounded entropy](singular-hypertraces-jones-ideals-and-entropy.md), with their actual bounded-left-cut and finite-expansion hypotheses. All height-tail and cocycle computations are proved above.
+The exact weighted finite tower, original trace character and parameter constants used here are [WM.1–WM.36](general-tail-supports-and-controlled-tunnels.md). The exact physical center return, original likelihood formulas and dimension identity are [C13.1–C13.24](general-tail-supports-and-controlled-tunnels.md). The actual whole-center action and purely singular restrictions are [E14.1–E14.18](general-tail-supports-and-controlled-tunnels.md). The whole-ideal conclusion E14.12a uses the complete proofs SC.2–SC.3 in [Singular hypertraces, the Jones ideal and bounded entropy](singular-hypertraces-jones-ideals-and-entropy.md), with their actual bounded-left-cut and finite-expansion hypotheses. All height-tail and cocycle computations are proved above.
 
 ## Normalized Radon–Nikodym cocycles need not have a zero-character invariant state
 
@@ -6940,7 +6940,7 @@ In particular, for every \(0<r<3/5\) there is a finite set \(\mathcal U\subset\m
 \]
 Otherwise direct the pairs consisting of a finite unitary set and a positive tolerance by inclusion and decreasing tolerance. Choose a column with all those errors below the tolerance and \(J_h<r\). This net contradicts AO.7. This is a finite physical obstruction, obtained from the actual positive separator rather than an abstract unverified order floor.
 
-The delivered spectral-stack construction V8.1–V8.5 remains valid. Its lower mesh estimate gives, for the actual stack \(P_{n,\theta}\), mesh loss \(\eta=\operatorname{Tr}(\operatorname{supp}h)/n<1\), and every threshold shift,
+The spectral-stack construction V8.1–V8.5 remains valid. Its lower mesh estimate gives, for the actual stack \(P_{n,\theta}\), mesh loss \(\eta=\operatorname{Tr}(\operatorname{supp}h)/n<1\), and every threshold shift,
 \[
 \frac{\|C_{\widetilde A}(P_{n,\theta})-
 P_0C_{\widetilde A}(P_{n,\theta})\|_1}
@@ -6954,7 +6954,7 @@ Consequently no application of this construction with physical errors tending to
 
 Unrestricted amenability does not imply simultaneous arbitrarily small original \(J_h\) and physical centrality, even for this explicit separable hyperfinite II₁ pair. The successful V8 projection and prefix-retention estimates are unchanged, and the stronger joint-state input they would require is now disproved in this generality by AH/AB/AO.
 
-This does not by itself refute the original full finite whole-family partition, controlled support reselection, marked corner return under its actual hypotheses, or the generating-tunnel theorem with its stated ergodic-core strong-amenability hypotheses. A full-family route need not pass through this false universal joint-state assertion. Those separate original obligations remain substantive. The fixed WM.22 model is a different inclusion; no claim here decides its endpoint. Common-support/BF, both infinite capacities, second local form, represented/opposite, arbitrary-depth, finite-pair/cup matching and prerequisite/source obligations remain at their full original scope.
+This does not by itself refute the original full finite whole-family partition, controlled support reselection, marked corner return under its actual hypotheses, or the generating-tunnel theorem with its stated ergodic-core strong-amenability hypotheses. A full-family route need not pass through this false universal joint-state assertion. Those separate original obligations remain substantive. The fixed WM.22 model is a different inclusion; no claim here decides its endpoint. The unrestricted common-support BF and constant-multiplicity rounding assertions have the actual affine counterexample [BFQ.3–BFQ.4](general-tail-supports-and-controlled-tunnels.md#common-frames-central-profiles-and-the-order-of-tunnel-choices). The bare second local form and the general physical bicommutant remain separate. The exact ordinary and extremal opposite-model comparisons are [17.8–17.18](generating-tunnels-and-classification.md#the-ordinary-standard-model-at-arbitrary-depth).
 
 ## Full finite marked families in the actual weighted diagonal inclusion
 
@@ -11295,7 +11295,7 @@ The last identity follows from centrality and the unique tracial state of a II�
  \tag{SA.11}
 \]
 
-This proves relative Følner for every actual core under representation amenability alone, without an ergodic-core assumption. The nonseparable and non-\(\sigma\)-finite scope is exactly that of 49.2. This is also the actual-core admission needed before applying the unrestricted finite near-cover theorem76.4. There is no normal-component assumption or normal-to-singular exchange of \(L^2\) limits.
+This proves relative Følner for every actual core under representation amenability alone, without an ergodic-core assumption. The nonseparable and non-\(\sigma\)-finite scope is exactly that of 49.2. This is also the canonical core representation needed before applying the unrestricted finite near-cover theorem76.4. There is no normal-component assumption or normal-to-singular exchange of \(L^2\) limits.
 
 Only when invoking the factorial-core providers58–60 do we add SA.2. Together SA.2 and SA.5 supply exactly their hypotheses. In particular 58.8 then supplies the full-unit BF₁ frames, not merely variable-support frames; 59.8 therefore retains its actual whole-tunnel patching hypothesis.
 
@@ -11341,7 +11341,7 @@ The bicommutant implication remains distinct. Lessons 65.1–65.6 prove the anal
 What is still absent here is an unconditional proof, under the original general nonextremal hypotheses, of
 \((M'\cap\mathcal T)'\cap\mathcal T=M\), or an actually proved different comparison that supplies its full analytic conclusion. The opposite-model canonical-trace comparison is also separate. A weaker trace, changed cup or coherent-limit assumption does not supply the missing analytic implication.
 
-![Actual core admission, finite prefixes and the separable generating passage](figures/strong-amenability-transfer-v25.png)
+![Canonical core representations, finite prefixes and the separable generating passage](figures/strong-amenability-transfer-v25.png)
 
 **Figure SA.1.** Exact maps and normalizations are SA.1–SA.7. The upper panel distinguishes the core projection \(p\), whose canonical trace is one, from each physical cup \(e_j\), whose normalized physical trace is \(d^{-1}\). The lower panel uses \(k=2,r=2\): the higher index is \(d^3\), skipped levels are \(N_2,N_5,N_8\), and the finite aligner belongs to \(N_2\). The final arrow requires separable predual, exactly as in the original theorem. Boxes indicate algebras, not spatial areas or trace sizes. The complete portable CC0 source is [figure.py](figures/strong-amenability-transfer-v25.py).
 
@@ -11351,7 +11351,7 @@ The scalar trace fiber of an actual Jones row is more flexible than its canonica
 
 The finite construction retains the actual smaller row, all three full supported rows, both original trace systems, the prescribed ordinary prefix and cups, the whole residual and the original physical targets. It neither proves a generating tunnel without the original ergodic-core hypothesis nor changes the separate rational WM invariant endpoint.
 
-The exact earlier providers are finite module corners2.0–2.4/2.9, fusion6.1–6.5, coherent finite reflection14.1, Proposition14.2 and equation14.3/40.1–40.5, dual even fusion19.13–19.19, finite marked alignment57.3, canonical core admission SA.3–SA.5, the near-cover76.4, scalar physical placement78.2, and sharp marked return FS.7–FS.15/SFQ.18–SFQ.19 of Lesson99. No trace-preserving reflection to the upward tower trace is assumed. The original human endpoint is Sorin Popa, *Classification of amenable subfactors of type II*, Acta Mathematica **172** (1994), Theorem4.4.1(1), printed p.222, [DOI](https://doi.org/10.1007/BF02392646).
+The exact earlier providers are finite module corners2.0–2.4/2.9, fusion6.1–6.5, coherent finite reflection14.1, Proposition14.2 and equation14.3/40.1–40.5, dual even fusion19.13–19.19, finite marked alignment57.3, canonical core representation SA.3–SA.5, the near-cover76.4, scalar physical placement78.2, and sharp marked return FS.7–FS.15/SFQ.18–SFQ.19 of Lesson99. No trace-preserving reflection to the upward tower trace is assumed. The original human endpoint is Sorin Popa, *Classification of amenable subfactors of type II*, Acta Mathematica **172** (1994), Theorem4.4.1(1), printed p.222, [DOI](https://doi.org/10.1007/BF02392646).
 
 ### Separate dimensions of finite fusion words
 
@@ -11602,7 +11602,7 @@ It uses the actual cuts and exact residual equality just proved; no proximity of
 
 **Corollary POR.5 — unrestricted full finite families.** Suppose an actual proper finite-index inclusion is amenable in the original representation sense: every smooth nondegenerate normal expected representation admits a compatible physical-factor-central state. Then every prescribed ordinary prefix, finite physical target set and positive approximation tolerance admit a finite full family of the three whole supported rows POR.19, satisfying POR.20 and approximating those original targets to that tolerance.
 
-**Proof.** First apply the exact admission chain for an arbitrary actual core. SA.3 constructs its entire finite higher-core tower with the original physical cups and common basis52.1/61.2. SA.4 proves that its canonical expected representation is smooth and nondegenerate at every finite stage. These two arguments do not use SA.2's separate factorial-core hypothesis. Original representation amenability consequently supplies its compatible possibly singular hypertrace. The original canonical semifinite traces and expectation have the hypotheses of49.2, so that theorem supplies actual relative Følner projections, as in SA.5. Provider74.4 and then76.4 apply at their general-core scope, including the higher-factor heredity used to retain the prescribed prefix. This obtains the actual marked near-cover at a strictly smaller tolerance, without normality of the hypertrace or an ergodic-core assumption.
+**Proof.** First apply the canonical representation construction for an arbitrary actual core. SA.3 constructs its entire finite higher-core tower with the original physical cups and common basis52.1/61.2. SA.4 proves that its canonical expected representation is smooth and nondegenerate at every finite stage. These two arguments do not use SA.2's separate factorial-core hypothesis. Original representation amenability consequently supplies its compatible possibly singular hypertrace. The original canonical semifinite traces and expectation have the hypotheses of49.2, so that theorem supplies actual relative Følner projections, as in SA.5. Provider74.4 and then76.4 apply at their general-core scope, including the higher-factor heredity used to retain the prescribed prefix. This obtains the actual marked near-cover at a strictly smaller tolerance, without normality of the hypertrace or an ergodic-core assumption.
 
 Take76.4's near-cover tolerance to be \(\varepsilon/3\). Align its finitely many good origins by57.3 to one actual source stage and promote that stage to an even positive suffix length. Apply TheoremPOR.4 and the return POR.18–POR.21. For target norm bound \(R=\max_{y\in Y}\|y\|\), choose
 \(h=\lfloor v_\tau(6R/\varepsilon)^4\rfloor+1\) if \(v_\tau>0\), and \(h=1\) if the variance is zero. Here take \(R=0\) for an empty target set. The added error is strictly below \(\varepsilon/3\) when \(R>0\), and is zero when \(R=0\). The final error is below \(2\varepsilon/3<\varepsilon\). More generally margin \(\eta\) is obtained by \(h>16R^4v_\tau/\eta^4\). The exact residual projection and all rows exist at the finite original-tunnel depth \(j=k+(m-k)h\). No factorial-core, extremality, rational-independence, finite-depth or separability assumption has been introduced. \(\square\)
@@ -13750,7 +13750,7 @@ The group model in PG, with \(G=S_3\times\mathbb Z\), also has only linearly man
 
 ### Scalar central multiplicity and the affine obstruction
 
-A projection-valued central profile behaves more rigidly than a general positive density. We first prove the exact distinction, then apply it to the index-ten affine inclusion AH.1–AH.20. The counterexample concerns matrix deletions of one fixed actual core, with the original physical inclusion and trace. The bounded-frame property BF in [57.2](actual-supported-local-approximation.md) has a different quantifier and is not refuted below.
+A projection-valued central profile behaves more rigidly than a general positive density. We first prove the exact distinction, then apply it to the index-ten affine inclusion AH.1–AH.20. The counterexample concerns matrix deletions of one fixed actual core, with the original physical inclusion and trace. The bounded-frame property BF in [57.2](actual-supported-local-approximation.md) permits a new ordinary tunnel after the targets; the additional bridge BFQ.1–BFQ.4 treats that quantifier.
 
 Use the actual joint centers and maps of [68.1–68.5](core-central-transition-bounds.md):
 
@@ -13908,7 +13908,7 @@ Taking the supremum over the joint unit ball proves the stated discrepancy. The 
 \end{gathered}
 \]
 
-It is applied in the deleted algebra and then restricted to the fixed \(B\); no new trace inequality is needed. Weak-star compactness and exact compatibility now give the claimed limit state. Its restriction to the physical factor is tracial and hence is its normalized trace, as in the factor-trace step of 49.2. No normality of that limit is asserted. \(\square\)
+It is applied in the deleted algebra and then restricted to the fixed \(B\); the estimate uses its original trace and support hypotheses. Weak-star compactness and exact compatibility now give the claimed limit state. Its restriction to the physical factor is tracial and hence is its normalized trace, as in the factor-trace step of 49.2. No normality of that limit is asserted. \(\square\)
 
 For clarity, weighted stationarity is also uniform over these deletions. Choose once a common finite basis \(a_i\in R\) for the *old* pair. It remains a basis for \(\widetilde B/\widetilde A\): the new right matrix action commutes with the physical left \(M\), and the old finite expansions extend to its generated algebra and then normally to its closure. Equivalently the coefficients are the product expectations in IRG.8. On a lifted old central test the sum \(\sum_i a_i\widehat a a_i^*\) is the same old operator; its central label is still \(dP_\kappa a\). Thus the calculation 68.14–68.15 applies with the same physical tests, independently of the chosen matrix factor. At the integer index ten, there are ten supported basis vectors with initial projection one, \(h=10\,1\), and \(\|a_i\|\leq\sqrt{10}\). There is no averaging remainder, and
 
@@ -13986,11 +13986,459 @@ The bound follows from \(J\leq10\Gamma+22\rho\), \(\Gamma<r/20\), and \(J\geq r\
 
 **Exercise IRG.3.** Does Theorem IRG.3 refute BF with its original quantifiers, or the full finite partition POR.1–POR.21? Can one instead conclude that one freely chosen ordinary tunnel works?
 
-**Solution.** None of these conclusions follows. The theorem fixes a core and then permits every finite matrix deletion of that core. BF may choose a new tunnel after the physical targets have been given; its Gram identity is over a finite relative commutant, and no implication from that identity to an exact common-multiplicity projection in this fixed canonical algebra has been proved. The full finite partition has its separate proof and need not pass through such a projection. Conversely a fixed-core obstruction cannot prove existence for a freely chosen core. The distinction is the order of the core and finite-target quantifiers, not a change to the actual affine separator.
+**Solution.** None of these conclusions follows. The theorem fixes a core and then permits every finite matrix deletion of that core. BF may choose a new tunnel after the physical targets have been given; its Gram identity is over a finite relative commutant. BFQ.1–BFQ.2 gives the additional return to nearly scalar profiles in one fixed canonical algebra, which makes the unrestricted BF implication false. The full finite partition has its separate proof and need not pass through such a projection. Conversely a fixed-core obstruction cannot prove existence for a freely chosen core. The distinction is the order of the core and finite-target quantifiers, not a change to the actual affine separator.
 
-The general BF and second central local form, unrestricted physical bicommutant, and original fixed-WM invariant endpoint retain their full stated scope. In particular the affine inclusion here has three labels and index ten; it does not replace the five-label fixed-WM problem or change its parameter, group, phase laws or physical traces.
+The unrestricted common-support BF and constant-multiplicity rounding assertions have the actual affine counterexample [BFQ.3–BFQ.4](general-tail-supports-and-controlled-tunnels.md#common-frames-central-profiles-and-the-order-of-tunnel-choices). The bare second central local form, unrestricted physical bicommutant and original fixed-WM invariant endpoint remain separate. In particular the affine inclusion here has three labels and index ten; it does not replace the five-label fixed-WM problem or change its parameter, group, phase laws or physical traces.
 
 Original exposition, proofs, exercises and figure by GPT-6.1 Sol (OpenAI), October 2026. CC0 1.0.
+
+
+### Common frames, central profiles and the order of tunnel choices
+
+The bounded-frame property BF in [57.2](actual-supported-local-approximation.md) permits an ordinary tunnel to be chosen after a finite set of physical targets. Even with that freedom, unrestricted all-smooth amenability does not imply BF. The counterexample is the actual affine index-ten inclusion AH.1–AH.20. The bridge to its fixed-core obstruction uses the cup-tail factor in the BF-to-local construction, together with compatible finite tunnel maps.
+
+Write \(T_S=E_{Z(S)}^S\) for the normalized center-valued trace of a finite core. This is distinct from the alternating-center operator \(T=Q_\kappa P_0\) in IRG.1. The dependencies are the conditional BF construction [57.11–57.35](actual-supported-local-approximation.md), compatible ordinary-core maps [46.6](nongenerating-tunnels-and-boundary.md#no-other-tunnel-can-remove-this-obstruction), and the exact affine projection bound IRG.13. Every factor, expectation and norm below has its original physical trace.
+
+**Lemma BFQ.1 — the central profile of a cup-tail support.** Let \(K\subset S\) be a unital \(\mathrm{II}_1\) factor. Suppose \(q\in K\) and \(f\in K'\cap S\) are nonzero projections, \(z\in Z(S)\) is a projection, and \(a=\tau(q)>0\). Then
+
+\[
+\begin{gathered}
+s=qf,\qquad \tau(s)=a\tau(f)>0,\\
+T_S(s)=aT_S(f).
+\\ \text{(BFQ.1)}
+\end{gathered}
+\]
+
+If \(\|f-z\|_2<\eta\sqrt{\tau(f)}\), then
+
+\[
+\begin{gathered}
+\|T_S(s)-az\|_1<\eta^2\tau(s).
+\\ \text{(BFQ.2)}
+\end{gathered}
+\]
+
+**Proof.** For every positive \(h\in Z(S)\), the normal functional \(k\mapsto\tau(hfk)\) is a finite trace on the factor \(K\). Indeed \(hf\) is positive and commutes with \(K\), so positivity and cyclicity follow from the physical trace. Trace uniqueness gives
+
+\[
+\begin{gathered}
+\tau(hfq)=\tau(hf)\tau_K(q),\\
+\tau_K(q)=\tau(q)=a.
+\\ \text{(BFQ.3)}
+\end{gathered}
+\]
+
+These pairings prove BFQ.1, including its scalar trace identity. Since \(f,z\) commute and are projections,
+
+\[
+\begin{gathered}
+\|f-z\|_1=\|f-z\|_2^2,\\
+\|T_S(f)-z\|_1
+\leq\|f-z\|_1<\eta^2\tau(f).
+\\ \text{(BFQ.4)}
+\end{gathered}
+\]
+
+Multiplication by \(a\) gives BFQ.2. Both numerator and mass carry \(a\); no lower bound on either support trace is required. \(\square\)
+
+**Theorem BFQ.2 — BF returns nearly scalar profiles to any fixed core.** If an original finite-index factor inclusion has BF, fix any one ordinary core \(\bar S\subset\bar R\) and its canonical pair
+
+\[
+\begin{gathered}
+\bar e=e_{\bar R}^M,\quad
+\bar A=\langle N,\bar e\rangle,\quad
+\bar B=\langle M,\bar e\rangle.
+\\ \text{(BFQ.5)}
+\end{gathered}
+\]
+
+For every finite \(F\subset\mathcal U(M)\) and \(0<\beta<1\), there exist a nonzero finite projection \(p\in\bar A\), a scalar \(a>0\), and a projection \(\bar z\in Z(\bar S)\), such that, with \(c=\operatorname{Tr}(p)\),
+
+\[
+\begin{gathered}
+\max_{u\in F}\frac{\|[u,p]\|_{2,\operatorname{Tr}}}{\sqrt c}<2\beta,\\
+\frac{\|C_{\bar A}(p)-a\bar z\|_1}{c}<2\beta^2.
+\\ \text{(BFQ.6)}
+\end{gathered}
+\]
+
+In particular these projections form physical Følner nets in the one fixed \(\bar A\), with normalized one-level profile error tending to zero.
+
+**Proof.** For an empty target set, adjoin the identity. Apply the explicit BF construction of 57.2 to \(F\), at local tolerance \(\beta\). Its BF input may be chosen at
+
+\[
+\begin{gathered}
+0<\eta\leq\min(1,\beta,\beta^2/64).
+\\ \text{(BFQ.7)}
+\end{gathered}
+\]
+
+In that construction, 57.14 chooses \(s^0\) inside a unital \(\mathrm{II}_1\) cup-tail factor. After the physical conjugation in 57.17, there is an actual chosen core \(S\subset R\), a unital factor \(K\subset N_l\cap S\), and
+
+\[
+\begin{gathered}
+s=qf,\quad q\in K,\quad f\in B_l\subset K'\cap S,\\
+z\in Z(S),\quad
+\|f-z\|_2<\eta\sqrt{\tau(f)},\\
+c_0=\tau(s)=a\tau(f)>0,\quad a=\tau(q),\\
+\|[u,s]\|_2<\beta\sqrt{c_0},\\
+\operatorname{dist}_2(sus,sA_ls)<\beta\sqrt{c_0}
+\qquad(u\in F).
+\\ \text{(BFQ.8)}
+\end{gathered}
+\]
+
+Here \(B_j=N_j'\cap N\) and \(A_j=N_j'\cap M\) refer to this chosen tunnel. The stronger commutation with \(K\) is part of the displayed construction, not an assertion about every projection in the bare second local form. Lemma BFQ.1 gives
+
+\[
+\begin{gathered}
+\|T_S(s)-az\|_1<\eta^2c_0.
+\\ \text{(BFQ.9)}
+\end{gathered}
+\]
+
+Choose compatible finite aligners \(v_j\in\mathcal U(N)\) with
+\(v_j^*A_jv_j=\bar A_j\) and \(v_j^*B_jv_j=\bar B_j\).
+The next correcting unitary lies in the aligned predecessor and commutes with the preceding finite commutants. Thus their maps on increasing unions agree. Lemma 46.6 extends them to a normal trace-preserving pair isomorphism
+
+\[
+\begin{gathered}
+\Theta:R\longrightarrow\bar R,\quad
+\Theta(S)=\bar S,\quad
+\Theta|_{A_j}=\operatorname{Ad}(v_j^*),\\
+T_{\bar S}\Theta(x)=\Theta(T_S(x))
+\qquad(x\in S).
+\\ \text{(BFQ.10)}
+\end{gathered}
+\]
+
+The last equality follows by pairing against the mapped centers and using the trace; it is not an extension of \(\Theta\) to the ambient physical \(M\).
+
+For \(j\geq l\), put
+
+\[
+\begin{gathered}
+s_j=1_{[1/2,1]}(E_{B_j}(s)),\quad
+b_j=v_j^*s_jv_j=\Theta(s_j),\\
+p_j=s_jv_j\bar e v_j^*s_j.
+\\ \text{(BFQ.11)}
+\end{gathered}
+\]
+
+Finite-stage convergence and the projection threshold estimate 57.3 give \(s_j\to s\) in \(L^2\). In particular \(\tau(s_j)\to c_0>0\), so large \(j\) have nonzero \(s_j\). Since \(b_j\in\bar S\), the last operator is a projection in \(\bar A\), equal to \(v_jb_j\bar e v_j^*\). The full Jones-corner trace gives
+
+\[
+\begin{gathered}
+c_j=\operatorname{Tr}(p_j)=\tau(s_j),\\
+C_{\bar A}(p_j)=T_{\bar S}(b_j)
+=\Theta(T_S(s_j)).
+\\ \text{(BFQ.12)}
+\end{gathered}
+\]
+
+For the central dimension, conjugation by \(v_j\in N\subset\bar A\) preserves the central trace, and the normalized corner \(\bar e\bar A\bar e=\bar S\bar e\) has center-valued trace \(T_{\bar S}\). The equality is about a dimension function under the full-corner center identification, not about the physical left projection \(s_j\).
+
+Set \(\bar z=\Theta(z)\). Trace preservation and \(L^1\) contraction give
+
+\[
+\begin{gathered}
+\|C_{\bar A}(p_j)-a\bar z\|_1\\
+\leq\|s_j-s\|_1+\|T_S(s)-az\|_1,\\
+\limsup_j
+\frac{\|C_{\bar A}(p_j)-a\bar z\|_1}{c_j}
+<\eta^2.
+\\ \text{(BFQ.13)}
+\end{gathered}
+\]
+
+It remains to check the physical targets; \(\Theta\) need not fix them. The exact projection return 57.34 gives
+
+\[
+\begin{gathered}
+\|[u,p_j]\|_{2,\operatorname{Tr}}^2
+=\|[u,s_j]\|_2^2\\
+\quad+2\left(
+\|s_jus_j\|_2^2-
+\|E_{v_j\bar Rv_j^*}(s_jus_j)\|_2^2
+\right).
+\\ \text{(BFQ.14)}
+\end{gathered}
+\]
+
+For each \(u\in F\), choose the contractive corner expectation
+\(r_u=E_{sA_ls}^{sMs}(sus)\). It lies in \(sRs\) and
+\(\|sus-r_u\|_2<\beta\sqrt{c_0}\).
+Since \(E_{A_j}(r_u)\to r_u\) in \(L^2\), and
+\(A_j\subset v_j\bar Rv_j^*\), the contraction
+\(s_jE_{A_j}(r_u)s_j\) is an admissible approximation to \(s_jus_j\)
+in \(v_j\bar Rv_j^*\). Consequently
+
+\[
+\begin{gathered}
+\limsup_j\|[u,s_j]\|_2<\beta\sqrt{c_0},\\
+\limsup_j
+\operatorname{dist}_2(s_jus_j,v_j\bar Rv_j^*)
+<\beta\sqrt{c_0},\\
+\limsup_j\frac{\|[u,p_j]\|_{2,\operatorname{Tr}}}{\sqrt{c_j}}
+<\sqrt3\,\beta.
+\\ \text{(BFQ.15)}
+\end{gathered}
+\]
+
+The finite set \(F\) permits one sufficiently large \(j\) for all targets and the profile estimate. Since \(\eta\leq\beta\) and \(\sqrt3<2\), this \(p_j\) satisfies BFQ.6. Direct finite \(F\) by inclusion and \(\beta\) toward zero to obtain the asserted net. No infinite product of aligners or normality of a singular state is used. \(\square\)
+
+**Theorem BFQ.3 — unrestricted common-support BF is false.** The separable hyperfinite affine index-ten inclusion AH.1–AH.20 is amenable with the quantifier over every smooth expected representation, but does not satisfy BF. There are a finite physical unitary set and a positive BF tolerance for which no ordinary tunnel, stage and common-support frame in 57.2 exist.
+
+**Proof.** Fix its AH ordinary core. BFQ.2 would give physical Følner projections in the fixed canonical algebra with normalized one-level profile distance tending to zero. The identity-deletion case of IRG.13 instead gives
+
+\[
+\begin{gathered}
+\liminf_i\inf_{\substack{t\geq0\\w\in Z(\bar S)\ {\rm projection}}}
+\frac{\|C_{\bar A}(p_i)-tw\|_1}{\operatorname{Tr}(p_i)}
+\geq\frac3{110}.
+\\ \text{(BFQ.16)}
+\end{gathered}
+\]
+
+All its hypotheses hold: AH.4 proves original all-smooth amenability; AB.27 identifies the full two core centers; AO.3 gives the \(3/5\) discrepancy for every original compatible physical state, including singular states; IRG.2 returns all finite projection states to that same state class. Thus BFQ.6 contradicts BFQ.16. The finite-set/tolerance conclusion is the negation of the original universal BF property, not an obstruction restricted to a tunnel fixed in advance.
+
+One can keep the contradiction finite. Take the finite target set and commutator tolerance from IRG.14 with \(r=3/10\), which force profile distance at least \(3/440\). Choose \(\beta\leq1/100\) small enough that \(2\beta\) is below that commutator tolerance. The BF input at BFQ.7 would give profile distance below \(2\beta^2\leq1/5000<3/440\). Hence that fixed finite BF problem has no solution. \(\square\)
+
+**Corollary BFQ.4 — changing the ordinary core does not give universal constant-multiplicity rounding.** For this same actual inclusion it is false that every finite physical unitary set and every positive tolerance admit some ordinary core and nonzero finite Følner projection with central dimension \(kz\), where \(k\) is a positive integer and \(z\) is central. It remains false if an arbitrary positive real scalar replaces \(k\).
+
+**Proof.** The integer statement, if true, gives BF by the precise conditional conversion [53.5](bounded-frames-with-central-support.md). For a BF tolerance \(\theta>0\), use projection defect below \(\sqrt{\min(\theta,1)}/8\), exactly as required in 53.20. That theorem keeps the support central, provides the finite-stage common Gram identity, and bounds every original target energy. Theorem BFQ.3 excludes this conclusion.
+
+For a real scalar profile \(tz\), delete a unital matrix factor of size \(n\) from that selected core using 52.3. The old profile becomes \(n^2tz\), with unchanged normalized physical defects. For large \(n\), prescribe a subprojection \(p'\leq p\) with dimension \(\lfloor n^2t\rfloor z\), using 52.4. In the new trace,
+
+\[
+\begin{gathered}
+k=\lfloor n^2t\rfloor\geq1,\quad
+\rho=\frac{n^2t-k}{n^2t}\longrightarrow0,\\
+\frac{\|[u,p']\|_2}{\sqrt{\operatorname{Tr}(p')}}
+\leq
+\frac{\delta_u(p)+2\sqrt\rho}{\sqrt{1-\rho}}.
+\\ \text{(BFQ.17)}
+\end{gathered}
+\]
+
+This is the support-loss estimate already used in 73.4. The old projection and its subprojection have scalar masses \(n^2t\tau(z)\) and \(k\tau(z)\); thus the bound is independent of the possibly small \(\tau(z)\). Choosing \(n\) after \(p\) yields integer-profile Følner input at any desired tolerance, which has just been excluded. \(\square\)
+
+The conditional theorems 53.5 and 57.2, and their factorial-core specializations, retain their hypotheses and proofs. The unequal-support first local form 74.3–74.4 and full finite supported partition POR.1–POR.21 do not require BF. A universal one-level profile is not part of either conclusion. The affine core has both canonical unit capacities infinite, by IRG.3, so BFQ.3–BFQ.4 also provide the obstruction in that capacity regime.
+
+The bare second central local form in 57.30 permits an arbitrary \(s_0\in N_l\cap R\). Membership there does not supply the particular cup-factor factorization BFQ.1 used above. Its unrestricted existence remains a separate question. The general nonextremal physical bicommutant and the original five-label fixed-WM invariant endpoint also remain separate; no affine parameter or trace is substituted into the fixed-WM problem.
+
+![The common-support frame bridge and its affine obstruction](figures/bounded-frame-quantifiers.svg)
+
+*Figure BFQ.1.* The first arrow is the explicit conditional construction 57.14–57.17; the scalar factor \(a=\tau(q)\) comes from its unital cup-tail factor. The middle arrow uses the compatible finite maps BFQ.10–BFQ.12, with no ambient map fixing \(M\). The bottom bounds BFQ.6 and BFQ.16 are incompatible as \(\beta\) tends to zero. Boxes are schematic and carry no metric or trace-area scale. [Reproducible figure source](figures/bounded-frame-quantifiers.py). Scholarly context: Sorin Popa, *Classification of amenable subfactors of type II*, Theorem 4.2.2 and Corollary 4.2.3, printed pp. 213–215. The assertions here concern the explicitly defined BF property, with the actual AH/AB/AO model and the complete internal arguments above.
+
+**Exercise BFQ.1.** Suppose \(\tau(f)=10^{-12}\), \(\tau(q)=10^{-9}\), and \(\|f-z\|_2<10^{-3}\sqrt{\tau(f)}\). Bound the normalized central-profile error of \(s=qf\). Why would a generic \(L^2\)-to-\(L^1\) estimate lose the required uniformity?
+
+**Solution.** The mass is \(10^{-21}\). The commuting projection identity gives \(\|f-z\|_1<10^{-18}\), hence \(\|T_S(s)-10^{-9}z\|_1<10^{-27}\). Dividing by \(10^{-21}\) gives a relative error below \(10^{-6}\). The bound \(\|f-z\|_1\leq\|f-z\|_2\) would give no small relative error after division by \(\tau(f)\). The projection identity, rather than a lower support bound, is decisive.
+
+**Exercise BFQ.2.** Which map transports the original central profile to the fixed core, and which operator handles the physical targets? Is either one a normal isomorphism of the whole ambient factor fixing the targets?
+
+**Solution.** The compatible tracial core map \(\Theta\) transports the profile through \(T_{\bar S}\Theta=\Theta T_S\). The actual finite projection \(p_j=s_jv_j\bar e v_j^*s_j\) handles the unchanged physical targets through the trace identity BFQ.14. No ambient extension of \(\Theta\) is needed or asserted, and no infinite spatial conjugating unitary is constructed. The finite aligners may vary with \(j\); their action on each earlier commutant block agrees.
+
+**Exercise BFQ.3.** Take a real profile scalar \(t=1/7\) and matrix size \(n=100\). Compute the integer multiplicity and the relative removed trace in BFQ.17. Explain why this arithmetic does not construct a forbidden Følner projection.
+
+**Solution.** The amplified scalar is \(10000/7=1428+4/7\), so \(k=1428\) and \(\rho=(4/7)/(10000/7)=1/2500\). The error bound is \((\delta_u(p)+1/25)/\sqrt{2499/2500}\). It only converts an already given real-profile projection in a selected core. BFQ.4 states that the required real-profile input cannot exist at every finite physical target tolerance in the affine inclusion.
+
+Exposition, proofs, exercises and figure by GPT-6.1 Sol (OpenAI). CC0 1.0.
+
+
+### Central profiles of arbitrary tail projections
+
+Let \(N\subset M\) be a proper finite-index inclusion of \(\mathrm{II}_1\) factors. Fix one ordinary tunnel and one finite stage \(l\), in the notation of [the second local form](actual-supported-local-approximation.md). Write
+
+\[
+\begin{gathered}
+C=N_l\cap S,\qquad D=Z(C),\qquad Z=Z(S),\\
+B_l=N_l'\cap N,\qquad T_C=E_D^C,\qquad T_S=E_Z^S.
+\\ \text{(TP.1)}
+\end{gathered}
+\]
+
+All traces and expectations use the inherited normalized trace \(\tau\). In particular \(C\subset N_l\) and \(B_l\subset S\). The algebra \(C\) contains the unital \(\mathrm{II}_1\) cup-tail factor used in 57.14. Thus \(C\) is type II. Indeed, cutting by a nonzero central projection of \(C\) preserves a faithful copy of this factor. Its arbitrarily long partitions into equivalent projections exclude a type \(\mathrm{I}_n\) central summand for every finite \(n\). A finite algebra has no infinite type I summand.
+
+The trace factorization used below is [TE16](finite-algebras-and-normal-traces.md#how-the-center-determines-traces-and-densities). Projection prescription, including prescription below an existing projection, is [Lemma 56.1](central-dimensions-and-local-quantization.md#prescribing-a-center-valued-dimension). These statements do not require separability. The center \(D\) is the actual center of \(C\); there is no hypothesis \(Z\subset C\).
+
+**Theorem TP.1 — exact weighted profile range.** Let \(f\in B_l\) and \(p\in C\) be projections, allowing either to be zero. Put \(t_p=T_C(p)\). Then
+
+\[
+\begin{gathered}
+T_S(qf)=E_Z^S\bigl(fT_C(q)\bigr)\quad(q\in C),\\
+\{T_S(qf):q=q^*=q^2\le p\}\\
+=\{E_Z^S(ft):t\in D,\ 0\le t\le t_p\}.
+\\ \text{(TP.2)}
+\end{gathered}
+\]
+
+For every projection \(q\in C\),
+
+\[
+\begin{gathered}
+\tau(qf)=\tau(q)\tau(f),\\
+T_S(q)=E_Z^S(T_C(q)).
+\\ \text{(TP.3)}
+\end{gathered}
+\]
+
+Consequently, requiring also \(\tau(q)=a\) restricts the right side of TP.2 exactly by \(\tau(t)=a\). In particular, the profile range below \(p\) is a weak-star compact convex set, although its elements are realized by projections.
+
+**Proof.** For \(h\in Z_+\), the functional \(x\mapsto\tau(hfx)\) on \(C\) is a finite positive normal trace: \(hf\) is positive and commutes with \(C\). TE16 gives
+
+\[
+\begin{gathered}
+\tau(hfq)=\tau(hfT_C(q)),\qquad h\in Z_+,\\
+T_S(qf)=E_Z^S(fT_C(q)).
+\\ \text{(TP.4)}
+\end{gathered}
+\]
+
+Pairing with all positive \(h\) proves the second line; it also applies to arbitrary \(q\in C\) by linearity. If \(q\le p\) is a projection, positivity of \(T_C\) gives \(0\le T_C(q)\le t_p\). Conversely, for any \(0\le t\le t_p\), Lemma 56.1 supplies a projection \(q\le p\) with \(T_C(q)=t\). This proves both inclusions in TP.2.
+
+Since \(f\) commutes with the factor \(N_l\), the normal trace \(x\mapsto\tau(fx)\) on \(N_l\) equals \(\tau(f)\tau(x)\). Apply this to \(q\). Taking \(f=1\) in TP.4 gives the other identity in TP.3. Also \(\tau(T_C(q))=\tau(q)\), which proves the assertion with a prescribed scalar trace. The order interval \([0,t_p]\) in \(D\) is weak-star compact and convex. Multiplication by \(f\) followed by the normal expectation onto \(Z\) is weak-star continuous and linear, so its image has the asserted properties. \(\square\)
+
+**Theorem TP.2 — simultaneous profiles and the full residual.** For a positive integer \(m\), the profiles of all orthogonal projection partitions \(q_0,\ldots,q_m\) of \(p\) are exactly
+
+\[
+\begin{gathered}
+\bigl(E_Z^S(ft_0),\ldots,E_Z^S(ft_m)\bigr),\\
+t_i\in D_+,\qquad \sum_{i=0}^m t_i=t_p.
+\\ \text{(TP.5)}
+\end{gathered}
+\]
+
+The corresponding \(q_if\) are orthogonal projections with sum \(pf\), at this same stage \(l\). For each \(i\), \(\tau(q_if)=\tau(f)\tau(t_i)\).
+
+**Proof.** The necessity follows from TP.1 and the additivity of \(T_C\). For sufficiency, prescribe \(t_1\) below \(p\) by Lemma 56.1. Prescribe \(t_2\) below \(p-q_1\), whose center-valued trace is \(t_p-t_1\). Continue finitely; at step \(i\) the remaining center-valued trace dominates \(t_i\), because all the still unassigned \(t_j\) are positive. Define
+
+\[
+\begin{gathered}
+q_0=p-\sum_{i=1}^m q_i,\qquad T_C(q_0)=t_0,\\
+\sum_{i=0}^m q_if=pf.
+\\ \text{(TP.6)}
+\end{gathered}
+\]
+
+Every projection used belongs to \(C\), and \(f\) commutes with \(C\), proving the product and orthogonality assertions. TP.3 gives the traces. This includes zero \(t_i\), for which faithfulness forces \(q_i=0\), and includes the entire prescribed residual. \(\square\)
+
+**Proposition TP.3 — the concentration cost of central replacement.** Let \(q\in C\) and \(f\in B_l\) be nonzero projections, and let \(z\in Z\) be a projection. Set
+
+\[
+\begin{gathered}
+t=T_C(q),\qquad a=\tau(q),\qquad v=\tau(f),\\
+c=\tau(qf)=av,\qquad \chi(q)=\frac{\|t\|_\infty}{a}.
+\\ \text{(TP.7)}
+\end{gathered}
+\]
+
+Then \(1\le\chi(q)\le 1/a\), and
+
+\[
+\begin{gathered}
+\|T_S(qf)-zT_S(q)\|_1\\
+\le \tau\bigl(t|f-z|\bigr)\\
+\le \|t\|_\infty\|f-z\|_2^2.
+\\ \text{(TP.8)}
+\end{gathered}
+\]
+
+In particular, if \(\|f-z\|_2<\eta\sqrt v\), then
+
+\[
+\begin{gathered}
+\frac{\|T_S(qf)-zT_S(q)\|_1}{c}
+<\eta^2\chi(q),\\
+\frac{\|T_S(qf)-az\|_1}{c}\\
+\le\frac{\tau(t|f-z|)}{av}
++\frac{\|z(T_S(q)-a1)\|_1}{av}.
+\\ \text{(TP.9)}
+\end{gathered}
+\]
+
+**Proof.** Since \(0\le t\le1\) and \(\tau(t)=a\), its norm lies between \(a\) and \(1\). TP.1, its case \(f=1\), and central bimodularity give
+
+\[
+\begin{gathered}
+T_S(qf)-zT_S(q)=E_Z^S((f-z)t).
+\\ \text{(TP.10)}
+\end{gathered}
+\]
+
+The three elements \(t,f,z\) commute. Thus the \(L^1\) norm of \((f-z)t\) is \(\tau(t|f-z|)\). Expectation contracts \(L^1\). Finally the commuting projections \(f,z\) satisfy \(|f-z|=(f-z)^2\), proving TP.8. Divide by \(av>0\) for the first estimate in TP.9; the triangle inequality gives the second. \(\square\)
+
+If \(q\) is chosen in a unital factor inside \(C\), trace uniqueness gives \(T_C(q)=a1\). Hence \(\chi(q)=1\), \(T_S(q)=a1\), and TP.8 recovers the uniform estimate in BFQ.1. For a general tail projection the same argument has the explicit concentration factor \(\chi(q)\). Scalarity of \(T_S(q)\) alone does not remove that factor.
+
+**Example TP.4 — sharp concentration loss with central commutant support.** Let \(P\) be a \(\mathrm{II}_1\) factor with an outer automorphism \(\alpha\). In the factor \(N=\operatorname{Mat}_2(P)\), with normalized matrix trace, put
+
+\[
+\begin{gathered}
+L=\{\operatorname{diag}(x,\alpha(x)):x\in P\},\\
+f=\operatorname{diag}(1,0).
+\\ \text{(TP.11)}
+\end{gathered}
+\]
+
+For a concrete choice, take the bilateral tensor product \(P=\overline{\bigotimes_{k\in\mathbb Z}}(\operatorname{Mat}_2,\operatorname{tr}_2)\) and its shift \(\alpha\). Expectations onto finite tensor blocks show that \(P\) is a factor: the expectation of a central element is scalar in every finite block, and these expectations converge in \(L^2\). Arbitrarily long tensor blocks give diffuseness. To see outerness, suppose \(\alpha=\operatorname{Ad}(u)\). Approximate \(u\) in \(L^2\) by an element \(v\) of a finite block, within \(\epsilon<1/\sqrt2\). A trace-zero selfadjoint unitary \(x\) at a sufficiently distant site commutes with \(v\); hence \(\|\alpha(x)-x\|_2=\|[u,x]\|_2<2\epsilon\). The two distinct sites supporting \(x,\alpha(x)\) instead give norm \(\sqrt2\), a contradiction.
+
+The commutant \(L'\cap N\) is the diagonal scalar algebra, so \(f\in Z(L'\cap N)\). To check the off-diagonal entries, a nonzero intertwiner between the identity and \(\alpha\) has both squared moduli scalar, hence is a scalar multiple of a unitary implementing \(\alpha\). This contradicts outerness.
+
+Choose \(r\in P\) with \(0<a=\tau_P(r)<1\), and define
+
+\[
+\begin{gathered}
+q=\operatorname{diag}(r,\alpha(r)),\\
+z=\operatorname{diag}(1-r,\alpha(r)),\\
+S=\{z\}'\cap N,\qquad C=L\cap S.
+\\ \text{(TP.12)}
+\end{gathered}
+\]
+
+Here \(S=zNz\oplus(1-z)N(1-z)\), so \(Z(S)\) is spanned by \(z,1-z\), both of trace \(1/2\). Under the identification \(L\cong P\), the algebra \(C\) is \(rPr\oplus(1-r)P(1-r)\). Therefore \(q\in Z(C)\) and \(T_C(q)=q\). Direct trace pairing gives
+
+\[
+\begin{gathered}
+\tau(q)=a,\quad \tau(f)=\frac12,\quad \tau(qf)=\frac a2,\\
+T_S(q)=a1,\qquad T_S(qf)=a(1-z),\\
+\|f-z\|_2^2=a,\qquad \chi(q)=\frac1a,\\
+\frac{\|T_S(qf)-az\|_1}{\tau(qf)}
+=2
+=\frac{\|f-z\|_2^2}{\tau(f)}\chi(q).
+\\ \text{(TP.13)}
+\end{gathered}
+\]
+
+For instance \(qf\le1-z\), and its trace is \(a/2\); division by \(\tau(1-z)=1/2\) gives its center-valued trace in TP.13. Also \(f-z=\operatorname{diag}(r,-\alpha(r))\), proving the squared-norm formula. Thus the constant in TP.8 is attained. The relative \(L^2\) support error tends to zero as \(a\) tends to zero, while the relative profile error stays equal to two. This example is a finite-algebra profile calculation for the displayed \(L,N,S\); it makes no identification of \(S\) with an ordinary tunnel core.
+
+The exact profile range and its finite simultaneous realization concern projections at an already fixed stage. The bare second local form in 57.30 also requires small physical commutators and the local compression estimate for the original targets at that same stage. TP.1–TP.4 establish no such simultaneous selection. That existence question retains its unrestricted hypotheses.
+
+![Exact central profile range, full finite partition and the sharp concentration example](figures/tail-projection-profiles.svg)
+
+*Figure TP.1.* At top, a central field \(0\le t\le T_C(p)\) is realized by a projection \(q\le p\); the weighted trace gives its physical central profile. The middle panel includes the complete residual of a finite partition. At bottom, the two equal-trace blocks are \(z\) and \(1-z\) in TP.4. Their entries are center-valued trace values, not areas representing projection ranks. The displayed values use \(a=1/8\). Proofs: TP.1–TP.4. [Full-size figure](figures/tail-projection-profiles.svg). [Reproducible figure source](figures/tail-projection-profiles.py). Scholarly context: Sorin Popa, *Classification of amenable subfactors of type II*, Theorem 4.2.2 and Corollary 4.2.3, printed pp. 213–215; trace and projection prerequisites are TE16 and Lemma 56.1 above.
+
+**Exercise TP.1 — finite-center coupling.** Suppose \(D\) and \(Z\) have finite partitions into minimal central projections \(c_j\) and \(z_i\), respectively. Define \(W_{ij}=\tau(fz_ic_j)\). Express the profiles in TP.2 as a finite matrix map and find both marginals of \(W\).
+
+**Solution.** These commuting positive products give \(W_{ij}\ge0\). For \(t=\sum_j t_jc_j\), the coefficient of \(z_i\) in \(E_Z^S(ft)\) is
+
+\[
+\begin{gathered}
+\frac{\sum_j W_{ij}t_j}{\tau(z_i)},\\
+\sum_j W_{ij}=\tau(fz_i),\qquad
+\sum_i W_{ij}=\tau(f)\tau(c_j).
+\\ \text{(TP.14)}
+\end{gathered}
+\]
+
+The first equality follows by pairing with \(z_i\). For the second marginal use \(c_j\in C\subset N_l\) and factor trace uniqueness, as in TP.3. Positive fields \(t_k\) with \(\sum_k t_k=t_p\) give a full partition by TP.2, including zero fields and the residual.
+
+**Exercise TP.2 — scalar profiles do not control concentration.** In TP.4 take \(a=1/8\). Calculate the squared relative support error, the concentration factor and the relative profile error. Does \(T_S(q)=a1\) determine \(T_S(qf)\)?
+
+**Solution.** The three values are \(1/4\), \(8\) and \(2\), respectively. Their equality \(2=(1/4)\cdot8\) gives sharpness. The projection \(q\) has scalar \(S\)-profile, but \(qf\) has profile \((1/8)(1-z)\), whereas \(az=(1/8)z\). The weighted pairing depends on \(T_C(q)\), which here equals the nonscalar projection \(q\).
+
+**Exercise TP.3 — convexity without amplification.** If \(q,q'\le p\) are projections and \(0\le\theta\le1\), realize \(\theta T_S(qf)+(1-\theta)T_S(q'f)\) by one projection below \(p\), retaining its exact scalar trace.
+
+**Solution.** The field \(t=\theta T_C(q)+(1-\theta)T_C(q')\) lies in \([0,t_p]\). Lemma 56.1 gives a projection \(q''\le p\) with \(T_C(q'')=t\). TP.1 gives the desired profile, and trace preservation gives \(\tau(q'')=\theta\tau(q)+(1-\theta)\tau(q')\). All objects lie in the original \(C\).
 
 
 *Exposition by GPT-6.1 Sol (OpenAI). CC0-1.0.*
@@ -14483,7 +14931,7 @@ For the second identity, the diagonal word projections separate every right-pref
 
 The binomial mixing in this proof is independent of extremality. No inference about an arbitrary fusion system is taken from its proof.
 
-For \(m\ge l\), let \(Q_m:T\to B_m'\cap T\) be the probability-Haar conjugation expectation of PH.8 in the delivered physical averaging unit. All Hilbert spaces and norms below use the same normalized \(\tau\).
+For \(m\ge l\), let \(Q_m:T\to B_m'\cap T\) be the probability-Haar conjugation expectation of PH.8 of the physical averaging theorem. All Hilbert spaces and norms below use the same normalized \(\tau\).
 
 **PU.2 — Haar averaging is an exact count expectation on the diagonal part.** For \(x\in M_l\),
 
@@ -15070,7 +15518,7 @@ H(G_{2n}\mid X)\le\log2+\log(u_n-\ell_n+1)
 \]
 The height law gives \(\mathbb P(E_n^c)\to0\). Divide by \(n\), take the limsup, and send \(\varepsilon\downarrow0\); the result is \(o(n)\). No uniform past lower-height bound is needed: the known lower truncation of each Laurent series is finite.
 
-**Exercise 50 — an actual finite physical separator.** Deduce AO.8 from the exact state discrepancy, and state what it implies for the delivered V8 spectral stacks.
+**Exercise 50 — an actual finite physical separator.** Deduce AO.8 from the exact state discrepancy, and state what it implies for the V8 spectral stacks.
 
 **Solution.** Every invariant full-center state kills each compact ball by disjoint Laurent translations. Therefore every compatible physical central state sees \((R_0,R_1,R_2)=(2/5,2/5,1/5)\), giving original joint norm
 \[
@@ -15388,7 +15836,7 @@ The recovered downward trace reconstructs every whole ordinary core, and proper 
 
 AH/AB/AO, CGP and DNP retain their exact negative conclusions. Amenability does not force the original simultaneous joint balance, small canonical packing loss, or exact promotion of every prescribed real-null direction. POR uses new integral orbit relations and individual physical placement. Its normal trace quotient statement does not exclude the actual CGP normal separator, which need not annihilate those relations.
 
-General common-support BF and constant multiplicity, localization when both canonical capacities are infinite, and the second central local form remain unresolved at their full original hypotheses. The general nonextremal physical bicommutant also remains required. The finite-pair premise 65.14 refuted by PG cannot be assumed as its general input; the finite scalar-cup implication and the physical finite-stage estimates retain their proved scopes. The separate original WM.22 invariant zero-cost endpoint, or an exact positive floor for every invariant state of that same model, remains unresolved. The problem uses its specified parameter, full center, both phase laws, full group and all five likelihoods. The finite estimates do not determine that endpoint. Each assertion uses the exact prerequisite interfaces declared beside its proof.
+The unrestricted common-support BF and constant-multiplicity rounding assertions have the actual affine counterexample [BFQ.3–BFQ.4](general-tail-supports-and-controlled-tunnels.md#common-frames-central-profiles-and-the-order-of-tunnel-choices). Both canonical capacities are infinite in the affine example. The bare second central local form remains open. The general nonextremal physical bicommutant also remains required. The finite-pair premise 65.14 refuted by PG cannot be assumed as its general input; the finite scalar-cup implication and the physical finite-stage estimates retain their proved scopes. The separate original WM.22 invariant zero-cost endpoint, or an exact positive floor for every invariant state of that same model, remains unresolved. The problem uses its specified parameter, full center, both phase laws, full group and all five likelihoods. The finite estimates do not determine that endpoint. Each assertion uses the exact prerequisite interfaces declared beside its proof.
 
 ![Actual common-corner maps and both support traces; the all-depth odd-rank obstruction; and the equal-trace matrix completion with exact target errors](figures/general-tail-support-and-controlled-tunnel-v4.svg)
 

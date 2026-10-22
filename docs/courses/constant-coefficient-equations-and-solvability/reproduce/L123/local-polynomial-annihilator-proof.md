@@ -1,6 +1,6 @@
 # Polynomial tests and a convergent local Fourier quotient
 
-Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Original exposition, exercises and reproducible diagrams: CC0-1.0. Classical polynomial duality and local analytic division are explained in full at the stated entries; no novelty of their theorems is claimed. Self-checked by the writing AI.
+Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Original exposition, exercises and reproducible diagrams: CC0-1.0. Classical polynomial duality and local analytic division are explained in full at the stated entries; no novelty of their theorems is claimed.
 
 We prove the first Fourier entry of AN02-L011. A purely formal quotient initially records infinitely many polynomial moment conditions. That quotient must then be shown to converge. The proof isolates the roots near the origin, constructs a finite analytic remainder, and proves that formal divisibility forces this remainder to vanish. It does not assume a general analytic preparation or division theorem.
 

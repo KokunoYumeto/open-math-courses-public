@@ -1,6 +1,6 @@
 # Primitive factors and moving polynomial roots
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A polynomial factorization over rational functions must return to the original coefficient ring before it can describe a family of equations. We prove the content and unique-factorization arguments, obtain the exact denominator in a Bézout identity, and construct a holomorphic branch near each simple root.
 

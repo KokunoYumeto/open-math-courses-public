@@ -1,6 +1,6 @@
 # Changing centers in Fourier windows
 
-Original exposition and proofs: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0. Self-checked by the writing AI; independent mathematical review is not claimed.
+Original exposition and proofs: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0.
 
 A Fourier window centered at a large real frequency uses its logarithm as a second scale. Changing the center changes both scales. An exact affine identity keeps track of the change. It explains why bounded logarithmic shifts translate a limiting profile, and why one profile controls a suitably expanding union of frequency neighborhoods.
 

@@ -1,6 +1,6 @@
 # Null-section curvature and the Riesz comparison
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked draft; bounded independent AI proof and learner reviews accepted. Original text and figures, CC0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Original text and figures, CC0.*
 
 The curvature term in a wave representation can look intrinsic in one formula and extrinsic in another. On a section of a light cone in four-dimensional Lorentz space, a specific Gauss equation makes them equal. The reason is concrete: differentiating the radial null normal gives the identity on the tangent plane. This turns a quadratic curvature equation into a trace identity.
 

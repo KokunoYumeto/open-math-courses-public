@@ -1,6 +1,6 @@
 # Boundary determinants as causal Fourier kernels
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 The determinant of the normal half-line problem is independent of normal frequency. It therefore lives on the projected boundary tube. A representative with zero normal coordinate need not lie in the original zero-free tube; the selected factor must be transported before it is evaluated there. We prove this descent, its global polynomial bound and algebraicity. We also construct the causal distribution from a polynomially bounded tube function, and prove directly that a nonzero algebraic transform cannot hide a positive time gap.
 
@@ -12,18 +12,17 @@ Basic references are Grubb's *Distributions and Operators* ([author's lecture no
 
 ## Normal-frequency descent
 
-Use [Incoming normal roots at a flat boundary](incoming-normal-roots-at-a-flat-boundary.md)'s notation after normalizing the barrier to one. An invertible linear coordinate change can put the independent frequency vectors at \(N=e_n\), \(\theta=e_1\); physical coordinates transform dually. Thus write \(\zeta=(\zeta_1,\zeta')\), with \(\zeta'\in\mathbb C^{n-1}\), and let \(\pi\) discard the first coordinate. This choice preserves the pairings with the two original normals. Put
+Use the original polynomial, boundary symbols and real barrier \(\tau_0\) of [Incoming normal roots at a flat boundary](incoming-normal-roots-at-a-flat-boundary.md). First prove the assertions in coordinates with \(N=e_n\) and \(\theta=e_1\), without translating any polynomial. Write \(\zeta=(\zeta_1,\zeta')\), with \(\zeta'\in\mathbb C^{n-1}\), and let \(\pi\) discard the first coordinate. Put
 \[
 \begin{gathered}
-\mathcal T=\{\zeta:\operatorname{Im}\zeta\in N-\Gamma\},
- \\
-\quad
- \Omega=\{\zeta':\operatorname{Im}\zeta'\in N'-\pi\Gamma\},
- \\
-\quad N'=\pi N .
+\mathcal T=\{\zeta:\operatorname{Im}\zeta\in\tau_0N-\Gamma\},\\
+\Omega=\{\zeta':\operatorname{Im}\zeta'\in\tau_0N'-\pi\Gamma\},
+\qquad N'=\pi N .
 \end{gathered}
 \tag{1}
 \]
+For arbitrary independent original vectors, fix a real invertible matrix \(E\) with \(Ee_1=\theta\), \(Ee_n=N\). The coordinate polynomials are exactly \(P_E(z)=P(Ez)\), \(B_{j,E}(z)=B_j(Ez)\), and the cone is \(\Gamma_E=E^{-1}\Gamma\). The proof in these coordinates applies to these specified polynomials. Physical coordinates are \(y=E^Tx\); the distributional return map and its density Jacobian are given after (24). In the calculation through (24), \(P,B_j\) denote the unshifted polynomials of the coordinate case just stated.
+
 The linear projection of an open convex cone is an open convex cone. Here is the elementary openness check: a ball of radius \(r\) about a lift projects onto a ball of radius \(r\) about its image in these coordinates. Its convexity and positive scaling are preserved by the linear map. In particular \(\pi\Gamma\) contains \(N'\), and \(N'\ne0\).
 
 [Incoming normal roots at a flat boundary](incoming-normal-roots-at-a-flat-boundary.md) gives the monic analytic factors \(P_\pm(w,\zeta)\), of fixed degrees \(h=m_+\), \(\ell=m_-\), and the nonzero polynomial \(q\), independent of \(\zeta_1\). For real \(a\),
@@ -80,46 +79,40 @@ This proves the full analyticity and normal invariance in the projected determin
 
 ## A bound on the entire projected cone
 
-Set
+For each \(a>0\), use the sub-tube
 \[
- Y=\pi\Gamma,\qquad
- \Omega_0=\mathbb R^{n-1}-iY\subset\Omega .
- \tag{7}
+Y=\pi\Gamma,\qquad
+\Omega_a=\{\zeta':\operatorname{Im}\zeta'\in(\tau_0-a)N'-Y\}
+\subset\Omega .
+\tag{7}
 \]
-The localization \(q\) is nonzero on \(\Omega\), by [Incoming normal roots at a flat boundary](incoming-normal-roots-at-a-flat-boundary.md)'s extended zero exclusion. For \(\zeta'=\xi'-i\eta'\), \(\eta'\in Y\), choose any real lift \(\eta\in\Gamma\). For \(b<1\), the imaginary part of \((0,\zeta')+ibN\) lies in \(N-\Gamma+\mathbb Re_1\), since \(\eta+(1-b)N\in\Gamma\). [equation 11 in Incoming normal roots at a flat boundary](incoming-normal-roots-at-a-flat-boundary.md) therefore excludes a zero of \(q(\zeta'+ibN')\). Real translation along \(N'\) absorbs the real part of any putative time-line root. Factoring this degree-\(m_0\) polynomial, with leading coefficient \(G(N)\ne0\), yields
+The inclusion holds because \(\eta'+aN'\in Y\) whenever \(\eta'\in Y\). Let \(\zeta'=\xi'+i((\tau_0-a)N'-\eta')\) and choose a lift \(\eta\in\Gamma\) of \(\eta'\). For a complex time-line parameter \(z=u+iv\), with \(v<a\), the imaginary part of \((0,\zeta')+zN\), modulo the normal direction, is \(\tau_0N-[\eta+(a-v)N]\). This belongs to the enlarged zero-free region in [equation (11) of Incoming normal roots at a flat boundary](incoming-normal-roots-at-a-flat-boundary.md). The real part \(uN\) is absorbed in the unrestricted real frequency. Hence every root of \(z\mapsto q(\zeta'+zN')\) has imaginary part at least \(a\). Its degree is \(m_0\), with leading coefficient \(G(N)\ne0\). Evaluation at zero gives
 \[
- |q(\zeta')|\ge |G(N)|
- \quad(\zeta'\in\Omega_0).
- \tag{8}
+|q(\zeta')|\ge |G(N)|a^{m_0},
+\qquad \zeta'\in\Omega_a .
+\tag{8}
 \]
-The constant case \(m_0=0\) is included.
+For \(m_0=0\) the empty root product gives the same assertion.
 
-Write the left side of 4 as \(\sum_{k=0}^d a_k(\zeta')w^k\), with \(a_d=q\). Every \(a_k\) is a fixed polynomial of degree at most \(m\). 8 bounds all coefficients of the monic polynomial \(P((w,\zeta'))/q(\zeta')\) by \(C(1+|\zeta'|)^m\). The elementary monic root estimate gives
+Write the original polynomial in (4) as \(\sum_{k=0}^d a_k(\zeta')w^k\), with \(a_d=q\). Let \(C_0\ge1\) bound, for every \(a_k\), the sum of the absolute values of its coefficients. Since its degree is at most \(m\), we have \(|a_k(\zeta')|\le C_0(1+|\zeta'|)^m\). The elementary monic root estimate and (8) give
 \[
-\begin{gathered}
-|\rho|\le C'(1+|\zeta'|)^m
- \\
-\quad\text{for every root }\rho,\\
-\quad \zeta'\in\Omega_0.
-\end{gathered}
+|\rho|\le 1+C_0|G(N)|^{-1}a^{-m_0}(1+|\zeta'|)^m,
+\quad \zeta'\in\Omega_a,
 \tag{9}
 \]
-Every root of \(R_+\) or \(R_-\) is among these roots, with its multiplicity. Vieta bounds their coefficients by fixed powers of the right side. Thus all transported factor coefficients, pairing entries, maximal determinants and their cofactors satisfy
+for every normal root, with its multiplicity. Vieta bounds the coefficients of both selected monic factors by finite powers of this expression. The coefficient-at-infinity pairing is a finite polynomial expression in those coefficients and in the original boundary-symbol coefficients, and a determinant is a finite sum of products of pairing entries. Consequently each such expression \(A\), including every maximal determinant and each appended-row determinant, has fixed nonnegative integers \(E_A,M_A\) and a constant \(C_A\) such that
 \[
-\begin{gathered}
-|A(\zeta')|\le C_A(1+|\zeta'|)^{M_A}
- \\
-\quad(\zeta'\in\Omega_0)
-\end{gathered}
+|A(\zeta')|\le C_A
+\bigl(1+|G(N)|^{-1}a^{-m_0}\bigr)^{E_A}
+(1+|\zeta'|)^{M_A},
+\quad \zeta'\in\Omega_a .
 \tag{10}
 \]
-for fixed constants and integer exponents. The same holds for any pairing or maximal determinant obtained by appending another fixed polynomial \(B\).
-
-This argument does not require an admissible full-frequency lift of size comparable to \(|\zeta'|\). Such a lift can grow without bound near the edge of the projected cone. The uniform lower bound on \(q\), followed by a root estimate at the transported zero representative, is what gives 10.
+Indeed expand each of those finite polynomial expressions into monomials, apply (9) to each factor, and enlarge the exponents to the largest degrees in the finite list. Degree-zero expressions use empty products. The constants and exponents are determined by the original polynomial and boundary symbols. For each fixed \(a>0\) the bound is uniform on the entire sub-tube. No uniform bound as \(a\downarrow0\) is asserted.
 
 ## Algebraicity with an explicit nonzero relation
 
-Each maximal determinant above is algebraic over the rational function field \(\mathbb C(\zeta')\). We prove the claim and retain a denominator that can be controlled on \(\Omega_0\).
+Each maximal determinant above is algebraic over the rational function field \(\mathbb C(\zeta')\). We prove the claim and retain a denominator that can be controlled on each \(\Omega_a\).
 
 Let \(\rho_1,\ldots,\rho_d\) be the roots, counted with multiplicity, of the monic polynomial \(P((w,\zeta'))/q(\zeta')\). For every subset \(I\subset\{1,\ldots,d\}\) of cardinality \(h\), let \(D_I\) be the determinant computed with the monic denominator \(\prod_{\nu\in I}(w-\rho_\nu)\) and the fixed selected boundary symbols. [equation 17 in Boundary data for a decaying half-line equation](boundary-data-for-a-decaying-half-line-equation.md) shows that \(D_I\) is a polynomial in the elementary symmetric functions of the selected roots and the polynomial coefficients of the boundary symbols. Form
 \[
@@ -145,7 +138,7 @@ A(Z,\zeta')\in\mathbb C[Z,\zeta'],\\
 \quad
  [Z^{\binom dh}]A=q(\zeta')^K\ne0
        \\
-\quad(\zeta'\in\Omega_0).
+\quad(\zeta'\in\Omega).
 \end{gathered}
 \tag{12}
 \]
@@ -220,14 +213,43 @@ If a test support satisfies \(x\cdot\nu\le-\varepsilon<0\) for some \(\nu\in V\)
 
 Uniqueness follows from 16 and injectivity of the tempered Fourier transform for any fixed \(\eta\). Differentiation of \(T\) corresponds to multiplication of \(F\) by the same polynomial in \(\xi+i\eta\), directly by integration by parts in 14. If several tube functions depend smoothly on a real parameter with uniform polynomial bounds for each parameter derivative on compact parameter intervals, 14 can be differentiated under its integral. It defines a smooth family of distributions with the same support control, including one-sided endpoint limits. This last assertion uses fixed compact tests and a fixed \(\eta\); no differentiability of a moving contour is needed.
 
-For \(F=L^\partial\), 10 supplies 13 with \(V=Y=\pi\Gamma\). Thus its inverse boundary distribution satisfies
+Apply this flat-tube theorem to the original determinant as follows. Fix \(a>0\), set \(b_a=\tau_0-a\), and define
 \[
- \operatorname{supp}\mathcal L^\partial
-    \subset Y^*
-    =\{x':(0,x')\in\Gamma^*\}.
- \tag{18}
+F_a(z')=L^\partial(z'+ib_aN'),
+\qquad z'\in\mathbb R^{n-1}-iY.
+\tag{18a}
 \]
-The equality follows directly: \(x'\cdot\pi\eta=(0,x')\cdot\eta\). Tensoring this boundary distribution with \(\delta(x_1)\) gives a distribution in full space supported in \(\partial H_\theta\cap\Gamma^*\), with transform \(L\). This is the determinant kernel used in the mixed uniqueness argument.
+The estimate (10) gives (13), with a constant that also includes \((1+|b_a||N'|)^{M_A}\), since \(1+|z'+ib_aN'|\le(1+|b_a||N'|)(1+|z'|)\). Let \(T_a\) be its tempered inverse from (14)–(17), and define the original boundary kernel
+\[
+U=e^{-b_aN'\cdot x'}T_a,
+\qquad
+\operatorname{supp}U\subset Y^*
+=\{x':(0,x')\in\Gamma^*\}.
+\tag{18}
+\]
+This multiplication is in ordinary distributions. The kernel \(U\) need not be tempered; the distributions \(T_a\) are the tempered objects proved above. Multiplication by a smooth nowhere-zero exponential preserves support, which proves the inclusion.
+
+The definition is independent of \(a\). For \(a,b>0\),
+\[
+\begin{gathered}
+F_b(z')=F_a(z'+i(a-b)N'),\\
+T_b=e^{(a-b)N'\cdot x'}T_a.
+\end{gathered}
+\tag{18b}
+\]
+To prove the second identity, take an imaginary vector \(\eta'\) sufficiently deep in \(-Y\) that both \(\eta'\) and \(\eta'+(a-b)N'\) lie there. Such a vector exists on the negative \(N'\)-ray. Formula (16) and Fourier uniqueness on this common slice give
+\(e^{\eta'\cdot x'}T_b=e^{(\eta'+(a-b)N')\cdot x'}T_a\) as ordinary distributions. Removing the nowhere-zero multiplier gives (18b), and substitution in (18) proves independence.
+
+For every \(\eta'\in\tau_0N'-Y\), write \(\eta'=\tau_0N'-\nu'\). Openness allows a sufficiently small \(a>0\) with \(\nu'-aN'\in Y\). Thus \(\eta'-b_aN'=aN'-\nu'\in-Y\), and (16) gives the exact original transform identity
+\[
+\begin{gathered}
+e^{\eta'\cdot x'}U\in\mathcal S',\\
+\mathcal F(e^{\eta'\cdot x'}U)(\xi')\\
+=L^\partial(\xi'+i\eta').
+\end{gathered}
+\tag{18c}
+\]
+Every slice in the original projected tube is therefore represented, with its original time barrier. Tensoring \(U\) with \(\delta_0(x_1)\) gives the coordinate-case full kernel supported in \(\partial H_\theta\cap\Gamma^*\).
 
 ## A direct algebraic obstruction to a positive time gap
 
@@ -301,6 +323,51 @@ F\not\equiv0\text{ and algebraic as above}
 \]
 This proves the exact non-delay step required for the appended-row boundary determinants in the rank-deficiency theorem. 
 
+
+For the original determinant, the affine substitution (18a) preserves the nonzero polynomial relation (12), with its leading coefficient still nonvanishing on the flat tube. If \(L^\partial\not\equiv0\), (24) applied to \(F_a\) gives \(0\in\operatorname{supp}T_a\). The multiplier in (18) is nowhere zero, so \(0\in\operatorname{supp}U\). Thus the no-delay conclusion holds for the original kernel, even when it is not tempered.
+
+**Simultaneous translation of all symbols.** A barrier-one comparison may be made with \(\sigma=\tau_0-1\),
+\[
+Q(\zeta)=P(\zeta+i\sigma N),\qquad
+Q_j(\zeta)=B_j(\zeta+i\sigma N).
+\tag{24a}
+\]
+The original normal factorization evaluated at the shifted parameter is a monic factorization with the selected upper and lower roots for \(Q\); uniqueness of the monic factors therefore identifies it with that factorization. The coefficient-at-infinity pairing uses the same shifted boundary polynomials. Hence its projected factors, localization, entries and determinants satisfy
+\[
+q_Q(\zeta')=q_P(\zeta'+i\sigma N'),\qquad
+R_{\pm,Q}(w,\zeta')=R_{\pm,P}(w,\zeta'+i\sigma N'),
+\]
+\[
+L_Q^\partial(\zeta')=L_P^\partial(\zeta'+i\sigma N'),
+\qquad T_Q=e^{\sigma N'\cdot x'}U.
+\tag{24b}
+\]
+For the kernels, the identity follows on a common Fourier–Laplace slice by (18c) and uniqueness. With \(D=-i\partial\), direct differentiation gives
+\[
+D(e^{-\sigma N\cdot x}v)
+=e^{-\sigma N\cdot x}(D+i\sigma N)v,
+\]
+\[
+Q(D)=e^{\sigma N\cdot x}P(D)e^{-\sigma N\cdot x},\qquad
+Q_j(D)=e^{\sigma N\cdot x}B_j(D)e^{-\sigma N\cdot x}.
+\tag{24c}
+\]
+Restriction to the boundary retains the same nonzero exponential. Translating the equation while keeping its boundary operators fixed gives a different boundary problem.
+
+**Return to the original linear coordinates.** For the matrix \(E\) specified before (1), apply the coordinate-case construction to \(P_E,B_{j,E},\Gamma_E\), obtaining \(U_E\). Let \(A=E^{-T}\). The full kernel in the original physical variables is the pushforward
+\[
+U_{\mathrm{full}}=A_*(\delta_0(y_1)\otimes U_E),\qquad
+\langle U_{\mathrm{full}},\phi\rangle
+=\bigl\langle U_E,\,y'\mapsto\phi(E^{-T}(0,y'))\bigr\rangle.
+\tag{24d}
+\]
+On each admissible exponentially weighted slice, \(\zeta\cdot E^{-T}y=(E^{-1}\zeta)\cdot y\), so its Fourier–Laplace transform is exactly \(L_E^\partial(\pi(E^{-1}\zeta))\). The operator map follows from \(D_x(v(E^Tx))=E(D_yv)(E^Tx)\): the original equation and every original boundary operator act as \(P_E(D_y)\) and \(B_{j,E}(D_y)\) in these coordinates. For an ordinary full-space density \(f(y)\), change of variables gives \(A_*f=|\det E|f(E^Tx)\). If \(U_E\) has boundary density \(k\), this reads
+\[
+U_{\mathrm{full}}=|\det E|\,\delta(\theta\cdot x)k((E^Tx)'),
+\tag{24e}
+\]
+or surface density \(|\det E|/|\theta|\) times \(k((E^Tx)')\) on that hyperplane. Formula (24d) defines the pushforward even when no density exists. Polarity gives \((E^{-1}\Gamma)^*=E^T\Gamma^*\), directly from the defining pairings. Thus (24d) has support contained in \(\{x:\theta\cdot x=0\}\cap\Gamma^*\). The invertible map preserves whether zero belongs to the support. The Fourier inverse factor \((2\pi)^{-r}\) remains tied to the coordinate measures in (14); the Jacobian in (24e) accounts for the return to the original variables.
+
 ## Exercises with complete solutions
 
 **Exercise 1 (entry: the normalized wave determinant).** Take \(P(\xi,s)=(s-i)^2-\xi^2\), \(N=e_s\), \(\theta=e_\xi\), and \(B(\xi,s)=\xi+\kappa s+c\). Compute the projected factor, determinant and boundary kernel.
@@ -366,6 +433,30 @@ T(t)=\frac{i^k}{(k-1)!}\,
 \tag{28}
 \]
 The simplex convolution supplies the factorial and retains the phase. This nonzero kernel has the origin in its support and has exactly polynomial transform decay on that ray. The second transform is that of \(\delta_a\), whose support has the positive time gap \(a\). Both functions are holomorphic and bounded by one on the lower halfplane. However \(G(-iR)=e^{-aR}\). If it satisfied a nonzero polynomial relation with nonvanishing leading coefficient on this ray, the constant-coefficient removal argument 21–22 would force a polynomial lower bound, contradicting this exponential decay. Thus it is not algebraic in the required sense. Polynomial tube growth alone proves cone support; algebraicity is the additional condition that forces support to meet the origin.
+
+**Exercise 4 (intermediate: the original barrier and all boundary symbols).** Let \(\tau_0\in\mathbb R\), \(P(\xi,s)=(s-i\tau_0)^2-\xi^2\) and \(B(\xi,s)=\xi+\kappa s+c\). Compute the original determinant and its simultaneous barrier-one translation. Give an original-tube transform whose causal kernel need not be tempered.
+
+**Solution.** The selected projected upper factor is \(w+s-i\tau_0\), so its root is \(i\tau_0-s\) and
+\[
+L_P^\partial(s)=(\kappa-1)s+c+i\tau_0.
+\tag{29}
+\]
+Put \(\sigma=\tau_0-1\). Then \(Q(\xi,s)=(s-i)^2-\xi^2\), while \(Q_B(\xi,s)=\xi+\kappa s+c+i\kappa\sigma\). Evaluation at the selected root \(i-s\) gives
+\[
+L_Q^\partial(s)=(\kappa-1)s+c+i+i\kappa(\tau_0-1)
+=L_P^\partial(s+i\sigma).
+\tag{30}
+\]
+Keeping \(B\) unshifted instead gives \((\kappa-1)s+c+i\), missing the term \(i\kappa(\tau_0-1)\). For example, \(\kappa=2,c=0,\tau_0=3\) gives the simultaneous determinant \(s+5i\), whereas that different boundary problem gives \(s+i\).
+
+For \(\operatorname{Im}s<\tau_0\), direct integration gives
+\[
+\mathcal F\bigl(i\mathbf1_{t\ge0}e^{-\tau_0t}\bigr)(s)
+=i\int_0^\infty e^{-(\tau_0+is)t}\,dt
+=\frac1{s-i\tau_0}.
+\tag{31}
+\]
+When \(\tau_0<0\) this kernel grows exponentially and is not tempered. To see this without a growth criterion, translate a nonnegative compact test supported in \((0,1)\) to \((R,R+1)\); its pairing has size a positive constant times \(e^{-\tau_0R}\), while each fixed finite collection of Schwartz seminorms grows only polynomially in \(R\). Such a bound cannot define a tempered functional. For \(b_a=\tau_0-a\), its weighted kernel is \(i\mathbf1_{t\ge0}e^{-at}\), which is tempered for every \(a>0\), exactly as in (18). The origin belongs to every one of these supports.
 
 ## References
 

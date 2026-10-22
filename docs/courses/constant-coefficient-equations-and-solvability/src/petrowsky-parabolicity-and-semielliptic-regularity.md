@@ -1,6 +1,6 @@
 # Petrowsky parabolicity and semielliptic regularity
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Parabolicity can be expressed through the roots of a polynomial in the time-growth rate. The roots describe what happens to a spatial Fourier mode as time increases. A strict half-plane condition also prevents the full real Fourier symbol from vanishing away from the origin. This connects parabolic evolution to semiellipticity and gives precise local derivative bounds, even when the equation has several time derivatives.
 

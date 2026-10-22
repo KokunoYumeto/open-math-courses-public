@@ -1,6 +1,6 @@
 # Central sequences and the module circle
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Mathematical and source review by GPT-6 Astra (OpenAI), Ultra, October 2026, under the stated prerequisites. New original text is public domain (CC0).*
+*Mathematical exposition: GPT-6.1 Sol (OpenAI); GPT-6 Astra (OpenAI). Original programme expression: CC0. Cited works and separately licensed components retain their own terms.*
 
 ## Introduction
 
@@ -8,7 +8,7 @@ A discrete decomposition writes a type III factor as a semifinite algebra togeth
 
 Both answers involve invariance under the crossing automorphism. A modular spectral gap pushes central sequences into the coefficient algebra. Fourier coefficients prove the converse and also transfer approximately inner automorphisms. For the hyperfinite type \(III_\lambda\) factor, this transfer identifies the kernel of the module. A scalar modular derivative gives a continuous coordinate on its quotient circle.
 
-Read [Central towers and unitary cocycles](central-towers-and-unitary-cocycles.md), [Almost invariant inner implementers](almost-invariant-inner-implementers.md), [Trace scaling on the hyperfinite semifinite factor](trace-scaling-on-the-hyperfinite-semifinite-factor.md) and [Permutation symmetry and Powers factors](permutation-symmetry-and-powers-factors.md). We also use *Ultraproducts and the asymptotic centralizer* (Claude Opus 5.5, September 2026; exact historical programme proof retained in the source review, not yet bundled in this selection): Theorems 6.2–6.6 give the relative-state and modular almost-invariance estimates; Theorem 7.1 compares predual and operator centrality, and Theorem 8.2 constructs the asymptotic centralizer for a general countably decomposable algebra. These are the exact earlier proofs used here. The general continuous and discrete decomposition theorems, generalized-trace comparison and Connes cocycle identities are prerequisites. Their roles are stated where used. The source targets are [Takesaki], Lemma XVIII.1.10 and Theorem XVIII.1.11(i). Sections 1–3 isolate the coefficient and approximation arguments; Sections 4–6 use them to identify and split the module quotient. [Connes 1975], Theorem 2.1.3, supplies the central cohomology input through the central-tower lesson. [Connes 1974] records the historical modular and central-sequence background.
+Read [Central towers and unitary cocycles](central-towers-and-unitary-cocycles.md), [Almost invariant inner implementers](almost-invariant-inner-implementers.md), [Trace scaling on the hyperfinite semifinite factor](trace-scaling-on-the-hyperfinite-semifinite-factor.md) and [Permutation symmetry and Powers factors](permutation-symmetry-and-powers-factors.md). We also use *Ultraproducts and the asymptotic centralizer* (Claude Opus 5.5, September 2026; a prerequisite outside this selection): Theorems 6.2–6.6 give the relative-state and modular almost-invariance estimates; Theorem 7.1 compares predual and operator centrality, and Theorem 8.2 constructs the asymptotic centralizer for a general countably decomposable algebra. These are the exact earlier proofs used here. The general continuous and discrete decomposition theorems, generalized-trace comparison and Connes cocycle identities are prerequisites. Their roles are stated where used. The source targets are [Takesaki], Lemma XVIII.1.10 and Theorem XVIII.1.11(i). Sections 1–3 isolate the coefficient and approximation arguments; Sections 4–6 use them to identify and split the module quotient. [Connes 1975], Theorem 2.1.3, supplies the central cohomology input through the central-tower lesson. [Connes 1974] records the historical modular and central-sequence background.
 
 The bounded strong-star tests, finite predual approximation and ordinary subsequence extraction are proved in [Bounded topology and tracial representations, Section 3A](bounded-topology-and-tracial-representations.md#3a-faithful-state-tests-and-ordinary-extraction), with the accompanying [bounded-topology proofs](../foundations/bounded-topology-foundations.md) and [normality and trace proofs](../foundations/tracial-normality-foundations.md). The further modular inputs have different roles: the standard-form cone estimate and relative modular operator give (1.5) and (4.5); the lacunary gap theorem gives (1.3); generalized-trace comparison and discrete trace-scaling cohomology give the normalization in Section 6; the continuous-core subtype theorem and factorial-centralizer spectral theorem give Lemma 5.1. These general modular and decomposition results remain explicit prerequisites. None is inferred from the bounded-topology companions.
 
@@ -291,7 +291,23 @@ Another such normalization changes \(\mu\) by a power of \(\lambda\). Thus \(\ze
 \end{aligned}
 \tag{4.8}
 \]
-The exponential in (4.8) is well-defined on the quotient. This is the translation coordinate for the flow of weights: a scaling \(\phi\alpha=e^{-s}\phi\) has flow translation time \(s\).
+The exponential in (4.8) is well-defined on the quotient.
+
+<a id="module-and-dual-flow"></a>
+For comparison with the negative dual-flow convention, let \(\ell_\phi(r)\) be the canonical translations in \(C_\phi=M\rtimes_{\sigma^\phi}\mathbb R\), so
+\[
+ \vartheta_v(\ell_\phi(r))=e^{-ivr}\ell_\phi(r).
+ \tag{4.9}
+\]
+The canonical-extension formula uses \(\phi\circ\alpha^{-1}=e^s\phi\). Its normalized derivative is \(e^{isr}1\); hence
+\[
+ \begin{aligned}
+ \widetilde\alpha(\ell_\phi(P))&=e^{isP}\ell_\phi(P)\\
+        &=\vartheta_{-s}(\ell_\phi(P)).
+ \end{aligned}
+ \tag{4.10}
+\]
+The complete centre calculation, (DDP40)–(DDP42), proves \(Z(C_\phi)=W^*(\ell_\phi(P))\). Normality therefore extends (4.10) to the whole centre. In this convention the coordinate \([s]=[-\log\mu]\) represents \(\widetilde\alpha|_{Z(C_\phi)}=\vartheta_{-s}|_{Z(C_\phi)}\). The phase \(\zeta(\alpha)=e^{-iPs}\) in (4.8) is the reciprocal of the canonical-extension phase on this central generator. The logarithmic coordinate and the dual-flow time have opposite signs.
 
 ## 5. One coherent trace-scaling flow
 

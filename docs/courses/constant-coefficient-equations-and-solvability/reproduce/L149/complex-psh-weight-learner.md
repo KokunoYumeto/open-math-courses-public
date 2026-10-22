@@ -1,6 +1,6 @@
 # Building a complex weight from compact Fourier tests
 
-*Original learner material by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked; CC0.*
+*Original learner material by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. CC0.*
 
 The [formal companion](complex-psh-weight-formal.md) proves the full variable-scale lemma and four-condition weight theorem. The scale smooths a possibly nonsmooth real frequency weight, a radial correction supplies curvature, and a stabilized maximum joins the supports in a compact exhaustion. A separate exterior-support estimate makes the resulting integral dominate any continuous seminorm of compact weighted tests.
 

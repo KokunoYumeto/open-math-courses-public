@@ -1,6 +1,6 @@
 # Splitting real carriers and gluing hyperfunctions
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. CC0.*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  CC0.*
 
 An analytic functional cannot be multiplied by an arbitrary smooth cutoff. We instead cut off its harmonic potential and correct the resulting Laplace error. This gives decomposition among real carriers, genuine restriction of hyperfunctions and gluing on every open cover. A separate convergent correction series handles infinitely many compatible pieces.
 

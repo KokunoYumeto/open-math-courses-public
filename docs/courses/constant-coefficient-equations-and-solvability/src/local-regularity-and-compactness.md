@@ -1,6 +1,6 @@
 # Local regularity, sharp embeddings, and compactness
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Weighted Fourier norms are global. An equation on an open set needs norms that ignore growth at infinity and near the boundary. Smooth cutoffs make that localization possible. They also give a way to prove that our embedding conditions are necessary: a fixed compactly supported function, moved to high frequency, tests the weight at the frequency where it is placed.
 

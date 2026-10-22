@@ -1,6 +1,6 @@
 # Type I stages in irrational rotation factors
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text is public domain (CC0).*
 
 ## Introduction
 
@@ -10,7 +10,7 @@ We first identify the exercise's irrational Weyl factor with a free circle-rotat
 
 The printed exercise ends with a single commutant. Its page image confirms that notation. The intended generation statement requires a double commutant; Section 4 proves that the literal single-commutant assertion is impossible for subalgebras of a type \(II_1\) factor.
 
-The exercise starts with the type \(II_1\) factor identified in XIII.1, Exercise 1(a). We retain that premise. The general theorem that a finite factor has a faithful normal tracial state, and its faithful normal tracial GNS representation, are explicit prerequisites. The concrete commutant and coupling-constant assertions of XIII.1, Exercise 1, are separate tasks. We use the exact owned [finite-class selectors and matrix model](finite-orbit-classes-and-matrix-blocks.md#1-sorting-a-finite-class-measurably), [tower and finite-exhaustion proofs](towers-and-odometer-orbits.md#3-positioning-a-finite-cycle), [free countable crossed-product identification](free-actions-and-the-crossed-product-diagonal.md#5-a-continuous-orbit-with-a-transverse-parameter), and [balanced-array matrix theorem](balanced-arrays-and-the-hyperfinite-finite-factor.md#5-increasing-ordinary-matrix-algebras). Their general statements are retained; the applications and the representation comparison below are proved here.
+The exercise starts with the type \(II_1\) factor identified in XIII.1, Exercise 1(a). We retain that premise. The general theorem that a finite factor has a faithful normal tracial state, and its faithful normal tracial GNS representation, are explicit prerequisites. The concrete commutant and coupling-constant assertions of XIII.1, Exercise 1, are separate tasks. We use the exact course [finite-class selectors and matrix model](finite-orbit-classes-and-matrix-blocks.md#1-sorting-a-finite-class-measurably), [tower and finite-exhaustion proofs](towers-and-odometer-orbits.md#3-positioning-a-finite-cycle), [free countable crossed-product identification](free-actions-and-the-crossed-product-diagonal.md#5-a-continuous-orbit-with-a-transverse-parameter), and [balanced-array matrix theorem](balanced-arrays-and-the-hyperfinite-finite-factor.md#5-increasing-ordinary-matrix-algebras). Their general statements are retained; the applications and the representation comparison below are proved here.
 
 ![Finite subrelations and the two kinds of approximation](figures/rotation-type-i-stages.svg)
 
@@ -59,7 +59,7 @@ The coordinate function \(z\) then satisfies \(\alpha_1(z)=\lambda z\), agreeing
 
 ## 2. An exact normal crossed-product isomorphism
 
-Let \(N=L^\infty(\mathbb T,m)\rtimes_\alpha\mathbb Z\) be the regular crossed product. Denote its coordinate multiplier by \(u_0\) and its implementing unitary by \(v_0\). The owned free-action and invariant-measure proofs give the faithful normal trace
+Let \(N=L^\infty(\mathbb T,m)\rtimes_\alpha\mathbb Z\) be the regular crossed product. Denote its coordinate multiplier by \(u_0\) and its implementing unitary by \(v_0\). The course free-action and invariant-measure proofs give the faithful normal trace
 \[
 \tau_N(fv_0^n)=
 \begin{cases}\displaystyle\int f\,dm,&n=0,\\0,&n\ne0.\end{cases}
@@ -87,7 +87,7 @@ v(u^m v^n)=\lambda^m u^m v^{n+1}.
 \]
 The identical formulas hold for \(u_0,v_0\). Thus \(W\) intertwines their bounded left-multiplication operators, hence their generated von Neumann algebras. Both faithful normal GNS representations identify those algebras with the original algebras. Conjugation by \(W\) gives (2.2), preserving the trace because \(W1=1\). Normality carries continuous functional calculus to bounded Borel functional calculus, giving \(\Phi(f)=f(u)\) on the entire diagonal. This proves a normal isomorphism, rather than only a correspondence between polynomial relations. \(\square\)
 
-By the owned free countable-action theorem, \(N\) is the regular algebra \(\mathcal M(R_T,m)\) of the principal orbit relation. The explicit unitary sends \((n,x)\) to \((T^n x,x)\). Freeness makes it bijective, and counting distinct orbit points preserves its source measure. This representation comparison leaves all diagonal functions intact.
+By the course free countable-action theorem, \(N\) is the regular algebra \(\mathcal M(R_T,m)\) of the principal orbit relation. The explicit unitary sends \((n,x)\) to \((T^n x,x)\). Freeness makes it bijective, and counting distinct orbit points preserves its source measure. This representation comparison leaves all diagonal functions intact.
 
 ## 3. Finite classes inside the full relation representation
 
@@ -108,7 +108,7 @@ N_F\cong\prod_{q\ge1}
 \]
 The identification is faithful and normal in the ambient representation. In particular \(N_F\) is type I, even when its centre is diffuse.
 
-*Proof.* The owned finite-selector proof orders each class as
+*Proof.* The course finite-selector proof orders each class as
 \(x_0(b)=b,x_1(b),\ldots,x_{q-1}(b)\). Its partial sheet maps preserve \(\mu\), because their graphs lie in \(R\). Hence all sheets have the same measure as their selector base, and the quotient measure is \(\nu_q\).
 
 Use the range-counting description of the ambient Hilbert space, which equals its source-counting description by invariance:
@@ -187,7 +187,7 @@ A_n\cong M_{2^{k_n}}(\mathbb C),\qquad
 \]
 and inclusions given by tensor multiplicity.
 
-*Proof.* The rotation relation has all the hypotheses of the full owned balanced-array theorem: standard nonatomic probability base, ergodicity, invariant measure and hyperfinite exhaustion. Its exactly refining arrays supply matrix units whose cell partitions generate every diagonal measurable function. That theorem proves strong generation of all orbit operators by a finite sum of matrix units times diagonal projections, then a strong limit. Its proof does not require those extra projections to lie in a particular finite-dimensional stage. Transfer its matrix chain through \(\Phi\). Exact refinement gives \(a\mapsto a\otimes1\), and normality gives (5.1). \(\square\)
+*Proof.* The rotation relation has all the hypotheses of the full course balanced-array theorem: standard nonatomic probability base, ergodicity, invariant measure and hyperfinite exhaustion. Its exactly refining arrays supply matrix units whose cell partitions generate every diagonal measurable function. That theorem proves strong generation of all orbit operators by a finite sum of matrix units times diagonal projections, then a strong limit. Its proof does not require those extra projections to lie in a particular finite-dimensional stage. Transfer its matrix chain through \(\Phi\). Exact refinement gives \(a\mapsto a\otimes1\), and normality gives (5.1). \(\square\)
 
 One cannot obtain (5.1) merely by choosing unrelated finite partitions in the diffuse centres of the stages (3.2). The embeddings of different stages must also be respected. The balanced refinement and generating-partition proof supplies exactly that compatibility.
 
@@ -230,9 +230,9 @@ The total \(\nu_2+\nu_5\) mass is 1 because these parts partition the probabilit
 
 **Exercise 6.8 (compatibility of ordinary matrix stages).** *Level 3.* Why is a separate finite-dimensional approximation to each centre in (3.2) insufficient to prove Corollary 5.1? Explain how balanced arrays resolve both compatibility and diagonal generation.
 
-*Solution.* A partition of one selector base need not refine, or even correspond to, a chosen partition at the next stage. Thus its finite matrix fields need not lie in the next chosen finite-dimensional algebra. Balanced arrays instead refine every old matrix unit by the exact sum of its equal-quotient-index new units. Their diagonal partitions approximate a countable generating family with summable errors, so generate all diagonal functions modulo null sets. The owned theorem then recovers the orbit operators by restricted finite sums and strong limits. These are the required inclusion and density steps.
+*Solution.* A partition of one selector base need not refine, or even correspond to, a chosen partition at the next stage. Thus its finite matrix fields need not lie in the next chosen finite-dimensional algebra. Balanced arrays instead refine every old matrix unit by the exact sum of its equal-quotient-index new units. Their diagonal partitions approximate a countable generating family with summable errors, so generate all diagonal functions modulo null sets. The course theorem then recovers the orbit operators by restricted finite sums and strong limits. These are the required inclusion and density steps.
 
-## 7. Bibliography and source comparison
+## 7. Bibliography and mathematical scope
 
 Masamichi Takesaki, *Theory of Operator Algebras III*, XIII.3 Exercise 2, printed p. 57, asks for the increasing type I chain in the factor of XIII.1 Exercise 1(a), printed p. 11. The latter prints \(a/(2\pi b)\) as its irrational parameter. The Weyl parameter used here is \(ab/(2\pi)\); [Weyl lattices and coupling dimension](weyl-lattices-and-coupling-dimension.md#5-the-printed-parameter-and-its-complete-corrective-disposition) proves the product criterion and gives a counterexample to the printed quotient condition. Takesaki II, XI.2 Exercise 5, printed p. 351, supplies the translation and modulation conventions (1.1).
 

@@ -1,6 +1,6 @@
 # Recovering singularities from convolution profiles
 
-Original exposition and proofs: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0. Self-checked by the writing AI; independent mathematical review is not claimed.
+Original exposition and proofs: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0.
 
 The Fourier transform turns convolution into multiplication. Logarithmic profiles record the singular geometry visible along particular escaping frequencies. We can select one such profile by convolving with a compact function singular at a single point. This gives exact criteria for recovering the possible input singularities from a bound on the output.
 

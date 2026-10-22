@@ -1,6 +1,6 @@
 # Smooth convex sweeps and first contact
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A continuation proof needs a smooth surface at the first place where a singular set is encountered. We construct curved outer approximations of any compact convex set, interpolate them through a strictly nested family, and compute the exact outward gradient of the entry parameter.
 

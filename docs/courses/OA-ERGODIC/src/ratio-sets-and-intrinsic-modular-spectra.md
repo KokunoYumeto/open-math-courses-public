@@ -1,6 +1,6 @@
 # Ratio sets and intrinsic modular spectra
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), September 2026. Original text is public domain (CC0).*
 
 ## Introduction
 
@@ -200,7 +200,7 @@ The sum means finite sums. The compact-model lesson, Example 4.3, proves this co
 r_\infty=\{0\}\cup\lambda^{\mathbb Z}.
 \tag{4.3}
 \]
-Its overlap argument works on every positive-measure reduction: for each prescribed slope \(\lambda^n\), some rational translation sends a positive-measure piece back into that reduction. Corollary 4.1 now proves that its relation factor is type \(III_\lambda\). The free discrete crossed-product identification in the free-action lesson gives the same subtype for its crossed product. The use of Lebesgue measure is allowed by the sigma-finite assertion of Theorem 3.1.
+Its overlap argument works on every positive-measure reduction: for each prescribed slope \(\lambda^n\), some rational translation sends a positive-measure piece back into that reduction. Corollary 4.1 proves that its relation factor is type \(III_\lambda\). The free discrete crossed-product identification in the free-action lesson gives the same subtype for its crossed product. The use of Lebesgue measure is allowed by the sigma-finite assertion of Theorem 3.1.
 
 **Example 4.3 (all rational slopes).** Let
 \[

@@ -1,6 +1,6 @@
 # Solving convolution equations for arbitrary distribution data
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Singular-support confinement can solve an equation modulo smooth functions even when the full kernel cannot be sampled on the unknown domain. To obtain the full result, we construct a proper local adjoint and prove its estimates on two separate exhaustions. A smooth correction then gives ordinary distributional solutions. We also distinguish arbitrary data from data of one fixed finite order, for which a global extension modulo smooth functions is available.
 

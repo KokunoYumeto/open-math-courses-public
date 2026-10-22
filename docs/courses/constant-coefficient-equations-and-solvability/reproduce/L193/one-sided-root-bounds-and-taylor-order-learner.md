@@ -1,6 +1,6 @@
 # One-sided root bounds and Taylor order
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 A root can approach zero much more slowly than its parameter. The equation \(z^2=\lambda\) gives the simplest example: the root size is \(|\lambda|^{1/2}\). A linear bound on upper imaginary parts rules out such fractional scales when it holds for both signs of a real parameter.
 

@@ -413,4 +413,4 @@ and its total trace is \((3+6)/9=1\). The function \(\mu=1\) is not square summa
 - Masamichi Takesaki, *Theory of Operator Algebras III*, Springer, 2003, Chapter XIX.
 - Sorin Popa, [*An axiomatization of the lattice of higher relative commutants of a subfactor*](https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0120/LOG_0042.pdf), Inventiones Mathematicae 120 (1995), 427–445.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026; expanded October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Public domain (CC0).*

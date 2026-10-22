@@ -1,4 +1,4 @@
-"""Reproduce two mathematical figures; remove the private font cache on exit."""
+"""Reproduce the two mathematical figures from their exact formulas."""
 from pathlib import Path
 from tempfile import TemporaryDirectory
 import json, os

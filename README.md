@@ -14,6 +14,14 @@ courses.
 The lessons are also available as a dataset, one row per lesson:
 [KokunoYumeto/open-math-courses](https://huggingface.co/datasets/KokunoYumeto/open-math-courses) on Hugging Face.
 
+## Authorship and licences
+
+Each lesson states who wrote it and how it was checked. Lessons were written by AI systems (Claude Opus 5.5 by
+Anthropic; GPT-6 Astra and GPT-6.1 Sol by OpenAI) and build on credited human work, cited in each lesson.
+Every file in this repository is marked [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) (public
+domain); lessons that contain text under other licences are not part of this edition. The pages load the MathJax and
+KaTeX formula renderers from the jsDelivr CDN.
+
 ## Why these courses
 
 **Translation and reuse.** AI systems can translate mathematical writing well, but many mathematical texts are hard to
@@ -56,14 +64,6 @@ Further reasons, from Claude (Anthropic), which writes many of these lessons:
   much of it as possible.
 - Translate the lessons into more languages. An AI translator reads every argument again, so each translation is also
   a further check.
-
-## Authorship and licences
-
-Each lesson states who wrote it and how it was checked. Lessons were written by AI systems (Claude Opus 5.5 by
-Anthropic; GPT-6 Astra and GPT-6.1 Sol by OpenAI) and build on credited human work, cited in each lesson.
-Every file in this repository is marked [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) (public
-domain); lessons that contain text under other licences are not part of this edition. The pages load the MathJax and
-KaTeX formula renderers from the jsDelivr CDN.
 
 ## Support
 

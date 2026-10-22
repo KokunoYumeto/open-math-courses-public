@@ -1,6 +1,6 @@
 # Causal solvability forces hyperbolicity
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A causal solution vanishes before its forcing begins. For a noncharacteristic initial plane, merely asking for a distributional causal solution for every compact smooth forcing already imposes a strong algebraic restriction: complex roots cannot escape arbitrarily far in the negative imaginary time direction. We first turn weak solvability into a continuous smooth inverse, then test that inverse on cutoff exponentials.
 

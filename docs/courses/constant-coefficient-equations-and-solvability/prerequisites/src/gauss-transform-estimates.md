@@ -1,10 +1,10 @@
 # Quadratic Fourier multipliers at a moving scale
 
-**AN-03 · Unit AN03-U002 · Self-checked by the writing AI.**
+**AN-03 · Unit AN03-U002**
 
 A quadratic Fourier multiplier spreads a localized function in directions determined by the quadratic form. Its Taylor polynomial is local, while its remaining tail can cross many localization balls. We will estimate the two parts separately and then prove that they combine in the full slowly varying metric symbol class.
 
-The local-symbol definitions, partitions and reconstruction estimates are those of AN03-U001. The additional prerequisites are Fourier inversion and Plancherel on Schwartz functions, the behavior of the Fourier transform under derivatives and multiplication by coordinates, and separation of finite-dimensional convex sets. These are explicit external prerequisite contracts; their open-import identities remain outstanding in the course ledger. The arguments below prove the estimates from those contracts. They do not establish the whole course's prerequisite closure.
+The local-symbol definitions, partitions and reconstruction estimates are those of AN03-U001. The additional prerequisites are Fourier inversion and Plancherel on Schwartz functions, the Fourier rules for derivatives and coordinate multiplication, and finite-dimensional convex separation. The estimates below are proved assuming these results.
 
 ## AN03-GAU-001 — Conventions and the dual distance
 

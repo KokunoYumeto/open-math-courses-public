@@ -1,6 +1,6 @@
 # Isolated atoms and separated singularities
 
-Original exposition and proofs: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0. Self-checked by the writing AI; independent mathematical review is not claimed.
+Original exposition and proofs: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0.
 
 An isolated point of a distribution's support leaves a singularity that no convolution profile can hide. This gives a common geometric core for all its profile carriers. We use this observation to construct measures with any prescribed compact convex carrier, and then examine the maximum law for sums whose singularities are separate.
 

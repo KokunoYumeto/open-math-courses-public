@@ -1,6 +1,6 @@
 # Geometry of singular supports
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 The subspace invariant has two complementary uses. A zero value produces singular homogeneous solutions on an affine plane. A positive value allows smoothness to pass across a barrier whose normal lies in the measured subspace. We combine these facts to obtain geometric criteria for convex continuation, minimal linear carriers, and closed convex singular sets.
 

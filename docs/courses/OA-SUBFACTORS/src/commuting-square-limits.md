@@ -222,4 +222,4 @@ At \(\kappa=1\), a horizontal row can remain finite dimensional. The strict ineq
 - Vaughan F. R. Jones, [*Index for subfactors*](https://doi.org/10.1007/BF01389127), Inventiones Mathematicae 72 (1983), 1–25.
 - Marcel Bischoff, Ian Charlesworth, Samuel Evington, Luca Giorgetti and David Penneys, [*Distortion for multifactor bimodules and representations of multifusion categories*](https://doi.org/10.4171/DM/1011), Documenta Mathematica 30 (2025), 497–586, Appendix A.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Public domain (CC0).*

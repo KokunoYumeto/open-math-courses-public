@@ -186,4 +186,4 @@ Equality requires all \(r_i\) equal, hence the tracial density \(k^{-1}1\). Ther
 - Roberto Longo, [*Index of subfactors and statistics of quantum fields. II: Correspondences, braid group statistics and Jones polynomial*](https://doi.org/10.1007/BF02473354), Communications in Mathematical Physics 130 (1990), 285–309.
 - Hideki Kosaki, [*Extension of Jones' theory on index to arbitrary factors*](https://doi.org/10.1016/0022-1236(86)90085-6), Journal of Functional Analysis 66 (1986), 123–140.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Public domain (CC0).*

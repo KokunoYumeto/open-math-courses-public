@@ -1,6 +1,6 @@
 # Supported smooth approximation
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Local supported solutions can be corrected on overlapping regions only if homogeneous differences can be approximated on the smaller region. We prove the needed density theorem using the compact local fundamental solution already constructed. The geometry concerns the positive-time part of compact distributions under the transposed operator. Compact containment at the conclusion is essential: it provides a cutoff strictly inside the smaller region, including every limit point on the time boundary.
 

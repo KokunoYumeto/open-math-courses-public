@@ -55,5 +55,3 @@ phi`, not a nonpositive-sequence condition.
 
 Original exposition, examples, solutions, scripts and artwork use CC0 1.0;
 see `LICENSE.txt`. DejaVu Sans retains its separately included font license.
-Protected native book text, page images, private reading scripts and task
-state are absent from the distributable original packet. 

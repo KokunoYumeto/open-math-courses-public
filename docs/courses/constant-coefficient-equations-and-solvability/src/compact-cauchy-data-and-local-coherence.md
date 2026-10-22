@@ -1,6 +1,6 @@
 # Compact Cauchy data and local coherence
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Compact Cauchy data allow a cutoff only where the solution is already zero. Slab uniqueness then makes the data vanish locally, while a compact-frequency construction still supplies a dense class of admissible data.
 

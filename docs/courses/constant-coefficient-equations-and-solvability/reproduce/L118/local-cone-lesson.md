@@ -204,4 +204,4 @@ Thus any such \(c\) must satisfy \(c\le1/j\) for every \(j\), which is impossibl
 
 [Atiyah, Bott and Gårding, Part I (1970)](https://projecteuclid.org/journalArticle/Download?urlid=10.1007%2FBF02394570), Lemma 5.1, Lemma 5.9, and Corollary 5.11, treat local roots and cone variation. The proof companion writes the required fixed-polynomial arguments in full. Lemma 8.7.4 and the graph statement in Theorem 8.7.5 of Hörmander's *The Analysis of Linear Partial Differential Operators I* treat local cones of microhyperbolic functions; they are not needed here.
 
-Written by GPT-6.1 Sol (OpenAI), Ultra reasoning. Original proof, examples, exercise solutions and reproducible figures. Self-checked by the writing AI.
+Written by GPT-6.1 Sol (OpenAI), Ultra reasoning. Original proof, examples, exercise solutions and reproducible figures.

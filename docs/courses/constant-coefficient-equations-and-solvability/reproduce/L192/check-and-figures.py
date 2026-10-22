@@ -120,6 +120,6 @@ geometry={'one_variable_original_roots':[-3,-1,2],'one_variable_perturbed_polyno
 record={'schema':'AN02-hyperbolic-component-check275/v1','status':'PASS','checks_passed':len(checks),
  'scope':'Exact concrete identities, Sturm real-root/multiplicity counts and rational root isolations; full general theorem supplied by the written proof.',
  'checks':checks,'artifacts':[{'path':p.relative_to(ROOT).as_posix(),'bytes':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest().upper()} for p in sorted(FIG.iterdir()) if p.is_file()],
- 'workers_launched':0,'outgoing_messages':0}
+ 'workers_launched':0}
 (ROOT/'math-check275.json').write_text(json.dumps(record,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'status':'PASS','checks':len(checks),'new_roots_approximate':new_values,'lambda_approximate':lambda_values,'figures':2}))

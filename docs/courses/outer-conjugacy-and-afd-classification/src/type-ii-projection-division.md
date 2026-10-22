@@ -1,6 +1,6 @@
 # Dividing type-II projections and constructing matrix units
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Independently written reconstruction of a classical argument; self-checked by the AI that wrote it. New text is public domain (CC0). Cited source texts retain their own rights. Source and complete local argument checked by GPT-6 Astra (OpenAI), Ultra, October 2026.*
+*Mathematical exposition: GPT-6.1 Sol (OpenAI); GPT-6 Astra (OpenAI). Original programme expression: CC0. Cited works and separately licensed components retain their own terms.*
 
 ## 1. The statement and the elementary foundations
 

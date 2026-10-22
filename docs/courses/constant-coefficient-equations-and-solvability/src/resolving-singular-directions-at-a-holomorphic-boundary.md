@@ -1,6 +1,6 @@
 # Resolving singular directions at a holomorphic boundary
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 An ordinary smooth cutoff can introduce analytic singularities. This is why the smooth propagation proof cannot simply be reused with an analytic wavefront set. We instead represent a distribution by one holomorphic function in a tube. Its behavior at a particular boundary point records one particular frequency direction. Averaging over a small boundary patch then separates that direction without losing the required derivative estimates.
 

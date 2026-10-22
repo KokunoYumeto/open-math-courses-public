@@ -1,8 +1,8 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Compatible jets on closed sets</title><link rel="stylesheet" href="../course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{max-width:100%}code{overflow-wrap:anywhere}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a></nav><h1 id="compatible-jets-on-closed-sets">Compatible jets on closed sets</h1>
-<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Checked once by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).</em></p>
+<p><em>Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026.  Public domain (CC0).</em></p>
 <p>Prescribing a function and its derivatives on a closed set is more than assigning numbers at its points. Nearby assignments must fit one Taylor expansion to the required order. Whitney's extension theorem says that this compatibility is exactly what is needed. The proof glues local Taylor polynomials at a scale comparable to the distance from the set. Its estimate then describes what a finite-order distribution supported on that set can measure.</p>
-<p>The prerequisites are <a href="jets-supported-distributions-and-local-operators.html">Jets, supported distributions and local operators</a>, <a href="referenced-prerequisite-statements.html#reference-ab841328a79b">When a kernel is smooth</a>, Taylor's formula, smooth mollifiers and elementary Euclidean distance geometry. We prove the extension construction and its bounds, including the partition used in the gluing. References are the original paper [Whitney 1934], the jet perspective of [Kolář–Michor–Slovák 1993], and the distribution background in [Dyatlov 2026].</p>
+<p>The prerequisites are <a href="jets-supported-distributions-and-local-operators.html">Jets, supported distributions and local operators</a>, <a href="when-a-kernel-is-smooth.html">When a kernel is smooth</a>, Taylor's formula, smooth mollifiers and elementary Euclidean distance geometry. We prove the extension construction and its bounds, including the partition used in the gluing. References are the original paper [Whitney 1934], the jet perspective of [Kolář–Michor–Slovák 1993], and the distribution background in [Dyatlov 2026].</p>
 <h2 id="the-information-between-two-points">The information between two points</h2>
 <p>Fix a nonempty compact set <span class="math" data-tex="\(F\subset\mathbb R^n\)">\(F\subset\mathbb R^n\)</span>, <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, and an integer <span class="math" data-tex="\(k\ge0\)">\(k\ge0\)</span>. A jet of order <span class="math" data-tex="\(k\)">\(k\)</span> on <span class="math" data-tex="\(F\)">\(F\)</span> is a family of continuous scalar functions <span class="math" data-tex="\(f_\alpha:F\to\mathbb C\)">\(f_\alpha:F\to\mathbb C\)</span>, indexed by <span class="math" data-tex="\(|\alpha|\le k\)">\(|\alpha|\le k\)</span>. The intended meaning is <span class="math" data-tex="\(f_\alpha=\partial^\alpha f|_F\)">\(f_\alpha=\partial^\alpha f|_F\)</span>, but no extension is assumed yet. At <span class="math" data-tex="\(a\in F\)">\(a\in F\)</span>, form the polynomial</p>
 <span class="math math-display" data-tex="\[
@@ -61,23 +61,25 @@ R_\alpha(a,b)=
 <p><strong>Lemma 2.1 (a distance-adapted partition).</strong> There is a countable locally finite smooth partition <span class="math" data-tex="\(1=\sum_Q\psi_Q\)">\(1=\sum_Q\psi_Q\)</span> on <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, with <span class="math" data-tex="\(0\le\psi_Q\le1\)">\(0\le\psi_Q\le1\)</span>, and points <span class="math" data-tex="\(a_Q\in F\)">\(a_Q\in F\)</span>, such that:</p>
 <ol>
 <li>At each point at most <span class="math" data-tex="\(N_n\)">\(N_n\)</span> functions have nonzero support there.</li>
-<li>Each support is compact in <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, its diameter is at most twice its distance from <span class="math" data-tex="\(F\)">\(F\)</span>, and
-<span class="math math-display" data-tex="\[
-|\partial^\beta\psi_Q(x)|\le C_{n,\beta}d(x)^{-|\beta|}.
-\tag{2.1}
-\]">\[
-|\partial^\beta\psi_Q(x)|\le C_{n,\beta}d(x)^{-|\beta|}.
-\tag{2.1}
-\]</span></li>
-<li>If <span class="math" data-tex="\(x\in\operatorname{supp}\psi_Q\)">\(x\in\operatorname{supp}\psi_Q\)</span>, then
-<span class="math math-display" data-tex="\[
-|x-a_Q|\le C_n d(x).
-\tag{2.2}
-\]">\[
-|x-a_Q|\le C_n d(x).
-\tag{2.2}
-\]</span></li>
+<li>Each support is compact in <span class="math" data-tex="\(\Omega\)">\(\Omega\)</span>, its diameter is at most twice its distance from <span class="math" data-tex="\(F\)">\(F\)</span>, and</li>
 </ol>
+<span class="math math-display" data-tex="\[
+|\partial^\beta\psi_Q(x)|\le C_{n,\beta}d(x)^{-|\beta|}.
+\tag{2.1}
+\]">\[
+|\partial^\beta\psi_Q(x)|\le C_{n,\beta}d(x)^{-|\beta|}.
+\tag{2.1}
+\]</span>
+<ol start="3">
+<li>If <span class="math" data-tex="\(x\in\operatorname{supp}\psi_Q\)">\(x\in\operatorname{supp}\psi_Q\)</span>, then</li>
+</ol>
+<span class="math math-display" data-tex="\[
+|x-a_Q|\le C_n d(x).
+\tag{2.2}
+\]">\[
+|x-a_Q|\le C_n d(x).
+\tag{2.2}
+\]</span>
 <p>The constants depend on dimension and derivative order, not on a smoothness assumption about <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
 <p><strong>Proof.</strong> Use the usual dyadic grid of cubes, with side lengths <span class="math" data-tex="\(2^j\)">\(2^j\)</span>, <span class="math" data-tex="\(j\in\mathbb Z\)">\(j\in\mathbb Z\)</span>. Select maximal cubes <span class="math" data-tex="\(Q\)">\(Q\)</span> satisfying</p>
 <span class="math math-display" data-tex="\[
@@ -133,7 +135,7 @@ S(x)=\sum_Q\eta_Q(x),\qquad
 (x-a)^\delta.
 \tag{3.1}
 \]</span>
-<p>The coefficient in the numerator is
+<p>The coefficient in the numerator is</p>
 <span class="math math-display" data-tex="\[
 \partial^{\gamma+\delta}(P_a-P_b)(a)
 =R_{\gamma+\delta}(a,b)
@@ -142,7 +144,7 @@ S(x)=\sum_Q\eta_Q(x),\qquad
 \partial^{\gamma+\delta}(P_a-P_b)(a)
 =R_{\gamma+\delta}(a,b)
 |a-b|^{k-|\gamma|-|\delta|}.
-\]</span></p>
+\]</span>
 <p>If <span class="math" data-tex="\(a=b\)">\(a=b\)</span>, the difference is zero. Otherwise (3.1) gives</p>
 <span class="math math-display" data-tex="\[
 |\partial^\gamma(P_a-P_b)(x)|
@@ -197,7 +199,7 @@ v(x)=\sum_Q\psi_Q(x)P_{a_Q}(x)
 v(x)=f_0(x)\quad(x\in F).
 \tag{3.5}
 \]</span>
-<p>Off <span class="math" data-tex="\(F\)">\(F\)</span>, the sum is locally finite and smooth. For <span class="math" data-tex="\(x\notin F\)">\(x\notin F\)</span>, choose a nearest <span class="math" data-tex="\(a\in F\)">\(a\in F\)</span>. Every active <span class="math" data-tex="\(a_Q\)">\(a_Q\)</span> lies within <span class="math" data-tex="\(C_n d(x)\)">\(C_n d(x)\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span>, and <span class="math" data-tex="\(|a-a_Q|\le C&#x27;_n d(x)\)">\(|a-a_Q|\le C&#x27;_n d(x)\)</span>. Subtract <span class="math" data-tex="\(P_a\)">\(P_a\)</span> before differentiating. The identity <span class="math" data-tex="\(\sum\psi_Q=1\)">\(\sum\psi_Q=1\)</span> gives</p>
+<p>Off <span class="math" data-tex="\(F\)">\(F\)</span>, the sum is locally finite and smooth. For <span class="math" data-tex="\(x\notin F\)">\(x\notin F\)</span>, choose a nearest <span class="math" data-tex="\(a\in F\)">\(a\in F\)</span>. Every active <span class="math" data-tex="\(a_Q\)">\(a_Q\)</span> lies within <span class="math" data-tex="\(C_n d(x)\)">\(C_n d(x)\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span>, and <span class="math" data-tex="\(|a-a_Q|\le C'_n d(x)\)">\(|a-a_Q|\le C'_n d(x)\)</span>. Subtract <span class="math" data-tex="\(P_a\)">\(P_a\)</span> before differentiating. The identity <span class="math" data-tex="\(\sum\psi_Q=1\)">\(\sum\psi_Q=1\)</span> gives</p>
 <span class="math math-display" data-tex="\[
 \partial^\gamma v(x)-\partial^\gamma P_a(x)
 =\sum_Q\sum_{\beta\le\gamma}\binom\gamma\beta
@@ -294,7 +296,7 @@ u(\phi)=\sum_{j\ge2}2^{-j}
 \frac{\phi(b_j)-\phi(a_j)}{b_j-a_j}.
 \tag{4.2}
 \]</span>
-<p>The mean value integral bounds the absolute value of the <span class="math" data-tex="\(j\)">\(j\)</span>-th term by <span class="math" data-tex="\(2^{-j}\sup_{[0,1/2]}|\phi&#x27;|\)">\(2^{-j}\sup_{[0,1/2]}|\phi&#x27;|\)</span>. Thus the series converges and defines a compact distribution of order at most one, with support exactly <span class="math" data-tex="\(F\)">\(F\)</span>. To see equality of supports, a test confined near one isolated point detects its nonzero coefficient. Every neighborhood of zero contains such a point, so zero lies in the support too.</p>
+<p>The mean value integral bounds the absolute value of the <span class="math" data-tex="\(j\)">\(j\)</span>-th term by <span class="math" data-tex="\(2^{-j}\sup_{[0,1/2]}|\phi'|\)">\(2^{-j}\sup_{[0,1/2]}|\phi'|\)</span>. Thus the series converges and defines a compact distribution of order at most one, with support exactly <span class="math" data-tex="\(F\)">\(F\)</span>. To see equality of supports, a test confined near one isolated point detects its nonzero coefficient. Every neighborhood of zero contains such a point, so zero lies in the support too.</p>
 <p>For a fixed <span class="math" data-tex="\(j\)">\(j\)</span>, choose a smooth bump <span class="math" data-tex="\(\phi_j\)">\(\phi_j\)</span>, with <span class="math" data-tex="\(0\le\phi_j\le1\)">\(0\le\phi_j\le1\)</span>, equal to one near <span class="math" data-tex="\(b_j\)">\(b_j\)</span>, and supported in a tiny interval containing no other point of <span class="math" data-tex="\(F\)">\(F\)</span>. Then every positive-order derivative of <span class="math" data-tex="\(\phi_j\)">\(\phi_j\)</span> vanishes on <span class="math" data-tex="\(F\)">\(F\)</span>, its value is one at <span class="math" data-tex="\(b_j\)">\(b_j\)</span> and zero at all other points, and</p>
 <span class="math math-display" data-tex="\[
 u(\phi_j)=\frac{2^{-j}}{2^{-3j}}=2^{2j}.
@@ -329,7 +331,7 @@ R_0(2^{-j},0)=
 R_0(2^{-j},0)=
 \frac{2^{-j}}{2^{-j}}=1.
 \]</span>
-<p>It does not tend to the diagonal value zero. If a <span class="math" data-tex="\(C^1\)">\(C^1\)</span> extension <span class="math" data-tex="\(g\)">\(g\)</span> existed, it would satisfy <span class="math" data-tex="\(g(0)=0\)">\(g(0)=0\)</span>, <span class="math" data-tex="\(g&#x27;(0)=0\)">\(g&#x27;(0)=0\)</span> and <span class="math" data-tex="\(g(2^{-j})=2^{-j}\)">\(g(2^{-j})=2^{-j}\)</span>. Its difference quotients at zero along this sequence would equal one, contradicting <span class="math" data-tex="\(g&#x27;(0)=0\)">\(g&#x27;(0)=0\)</span>. Continuity of separately assigned derivatives is therefore weaker than Taylor compatibility.</p>
+<p>It does not tend to the diagonal value zero. If a <span class="math" data-tex="\(C^1\)">\(C^1\)</span> extension <span class="math" data-tex="\(g\)">\(g\)</span> existed, it would satisfy <span class="math" data-tex="\(g(0)=0\)">\(g(0)=0\)</span>, <span class="math" data-tex="\(g'(0)=0\)">\(g'(0)=0\)</span> and <span class="math" data-tex="\(g(2^{-j})=2^{-j}\)">\(g(2^{-j})=2^{-j}\)</span>. Its difference quotients at zero along this sequence would equal one, contradicting <span class="math" data-tex="\(g'(0)=0\)">\(g'(0)=0\)</span>. Continuity of separately assigned derivatives is therefore weaker than Taylor compatibility.</p>
 <p><strong>Solution 4.</strong> For a singleton, the remainder sum is zero. Otherwise let <span class="math" data-tex="\(\delta=\min_{a\ne b\in F}|a-b|&gt;0\)">\(\delta=\min_{a\ne b\in F}|a-b|&gt;0\)</span> and <span class="math" data-tex="\(D=\max_{a,b\in F}|a-b|\)">\(D=\max_{a,b\in F}|a-b|\)</span>. Every numerator in (1.2) is bounded by a fixed finite sum of jet suprema times powers of <span class="math" data-tex="\(D\)">\(D\)</span>; every denominator is at least the corresponding power of <span class="math" data-tex="\(\delta\)">\(\delta\)</span>. There are finitely many multi-indices, so <span class="math" data-tex="\(\|f\|_{W^k(F)}\le C_{F,k}\sum_{|\alpha|\le k}\sup_F|f_\alpha|\)">\(\|f\|_{W^k(F)}\le C_{F,k}\sum_{|\alpha|\le k}\sup_F|f_\alpha|\)</span>. The compatibility condition is automatic because off-diagonal pairs do not approach the diagonal. Corollary 4.1 gives the claimed distribution bound. In the infinite example there is no positive minimum separation: <span class="math" data-tex="\(b_j-a_j=2^{-3j}\to0\)">\(b_j-a_j=2^{-3j}\to0\)</span>. Its tests have uniformly bounded jet values on <span class="math" data-tex="\(F\)">\(F\)</span>, yet the remainders divided by that separation grow. Finite-set constants cannot be carried over uniformly to those pairs.</p>
 <p><strong>Solution 5.</strong> Let <span class="math" data-tex="\(f^{(j)}\)">\(f^{(j)}\)</span> be Cauchy in (1.4). Each component <span class="math" data-tex="\(f_\alpha^{(j)}\)">\(f_\alpha^{(j)}\)</span> converges uniformly on <span class="math" data-tex="\(F\)">\(F\)</span> to a continuous <span class="math" data-tex="\(f_\alpha\)">\(f_\alpha\)</span>. Each remainder <span class="math" data-tex="\(R_\alpha^{(j)}\)">\(R_\alpha^{(j)}\)</span> converges uniformly on <span class="math" data-tex="\(F\times F\)">\(F\times F\)</span> to a continuous function <span class="math" data-tex="\(A_\alpha\)">\(A_\alpha\)</span>, zero on the diagonal. For <span class="math" data-tex="\(a\ne b\)">\(a\ne b\)</span>, pass to the limit in the finite expression (1.2). It gives <span class="math" data-tex="\(A_\alpha(a,b)=R_\alpha(a,b)\)">\(A_\alpha(a,b)=R_\alpha(a,b)\)</span> for the limiting jet. Thus that jet is compatible, and all its component and remainder differences tend to zero in supremum norm. This is completeness.</p>
 <p>Taylor's formula on the whole line segment from <span class="math" data-tex="\(b\)">\(b\)</span> to <span class="math" data-tex="\(a\)">\(a\)</span> bounds (1.2), for a restricted <span class="math" data-tex="\(g\in C_b^k\)">\(g\in C_b^k\)</span>, by a constant times the global suprema of its derivatives through order <span class="math" data-tex="\(k\)">\(k\)</span>. For top derivatives the bound is twice their supremum. Compatibility follows from uniform continuity on a compact neighborhood of <span class="math" data-tex="\(F\)">\(F\)</span>, as in the necessity argument. Hence <span class="math" data-tex="\(\|Rg\|_{W^k(F)}\le C_{n,k}\|g\|_{C^k}\)">\(\|Rg\|_{W^k(F)}\le C_{n,k}\|g\|_{C^k}\)</span>. Theorem 3.1 makes <span class="math" data-tex="\(E\)">\(E\)</span> bounded into <span class="math" data-tex="\(C_b^k\)">\(C_b^k\)</span>, and <span class="math" data-tex="\(RE\)">\(RE\)</span> is the identity on <span class="math" data-tex="\(W^k(F)\)">\(W^k(F)\)</span>. Consequently</p>
@@ -345,4 +347,4 @@ R_0(2^{-j},0)=
 <li>[Kolář–Michor–Slovák 1993] Ivan Kolář, Peter W. Michor and Jan Slovák, <em>Natural Operations in Differential Geometry</em>, Springer-Verlag, 1993. <a href="https://www.mat.univie.ac.at/~michor/kmsbookh.pdf">Open electronic edition</a>.</li>
 <li>[Dyatlov 2026] Semyon Dyatlov, <em>Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs</em>, MIT, 2026. <a href="https://math.mit.edu/~dyatlov/18.155/155-notes.pdf">Open notes</a>.</li>
 </ul>
-<footer><p>Original text: CC0.</p><p><a href="src/compatible-jets-on-closed-sets.md">Editable original Markdown</a>. Source commit 66eb8662ca94c02d91c0bf5cd4b190d04d3a024b.</p></footer></main></body></html>
+</main><script id="an02-formula-accessibility">(()=>{const mark=()=>{for(const e of document.querySelectorAll('[data-tex]'))if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute('role','group');e.setAttribute('aria-label','Mathematical expression; scroll horizontally to read the whole expression');}};const ready=async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;if(document.fonts?.ready)await document.fonts.ready;requestAnimationFrame(mark);};if(document.readyState==='complete')ready();else addEventListener('load',ready,{once:true});addEventListener('resize',mark);})();</script></body></html>

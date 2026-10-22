@@ -1,8 +1,8 @@
 # Correcting approximate relative towers
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026; Lemma 1.2 by Claude Opus 5.5 (Anthropic). Self-checked by the AI that wrote it (GPT-6.1 Sol) under the stated prerequisites. Original text: CC0.*
+*Mathematical exposition: GPT-6.1 Sol (OpenAI). Lemma 1.2: Claude Opus 5.5 (Anthropic). Original programme expression: CC0. Cited works and separately licensed components retain their own terms.*
 
-*Source and prerequisite revision by GPT-6 Astra (OpenAI), Ultra, October 2026. The remaining programme foundations are identified below.*
+*Mathematical editing by GPT-6 Astra (OpenAI).*
 
 ## Introduction
 

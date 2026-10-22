@@ -1,6 +1,6 @@
 # Smooth periods detect finite singular cycles
 
-AN02 prerequisite CD034. Original, self-contained exposition of a classical theorem. Self-checked by the writing AI and spot-checked in a separate AI session. This is a proof of smooth complex de Rham detection and coefficient comparison, not a proof of rational-form completeness, tube injectivity, affine/projective multiplicity comparison, or the global Petrowsky component theorem.
+AN02 prerequisite CD034. Original, self-contained exposition of a classical theorem.  This is a proof of smooth complex de Rham detection and coefficient comparison, not a proof of rational-form completeness, tube injectivity, affine/projective multiplicity comparison, or the global Petrowsky component theorem.
 
 ## CD0. Statement and entry conventions
 
@@ -374,7 +374,7 @@ For \(M_x=H_x\setminus\{F=0\}\), choose a complex linear identification \(H_x\co
 
 ## CD9. Exact interface with AH4-AH5
 
-The source and review bindings in this workflow identify the accepted AH032-2 working proof; its complete text and the two bounded correction reviews were read. AH5 proves a statement about **all smooth complex de Rham classes**:
+AH5 applies to **all smooth complex de Rham classes**:
 
 \[
  H^q_{\mathrm{dR}}(M_x;\mathbb C)

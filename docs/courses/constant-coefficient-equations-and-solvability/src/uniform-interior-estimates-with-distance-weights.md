@@ -1,6 +1,6 @@
 # Uniform interior estimates with distance weights
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 An interior derivative estimate has two scales: the frequency scale at which the equation controls a direction, and the physical distance left before reaching the boundary. We connect them with a Fourier weight built from the complex zeros of the symbol. The resulting estimate works on every open set, with a constant independent of its shape.
 

@@ -1,6 +1,6 @@
 # Finite covers and normal circles in projective complements
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 Let \(F\) be a nonzero homogeneous complex polynomial of degree \(m\geq1\) in \(d+1\) variables, with \(d\geq1\). Put
 \[

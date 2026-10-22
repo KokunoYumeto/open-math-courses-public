@@ -1,6 +1,6 @@
 # Simple wave caustics and the Airy transition
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A regular ray amplitude contains the inverse square root of a projection Jacobian. When that Jacobian vanishes, the regular formula loses its validity. At a simple fold, two critical points merge. Keeping the cubic direction intact while integrating the remaining directions gives an Airy function and a uniform transition between two-ray oscillation and shadow.
 
@@ -9,6 +9,8 @@ We use the phase, ray maps and complementary Hessian calculation in [Wave rays, 
 All expansions below hold locally with every prescribed observation derivative, up to a remainder \(O(\omega^{-\infty})\). The explicit Airy terms decay exponentially in a fixed shadow region. A general smooth localized contribution has the retained rapid remainder, so an exponential bound for that entire contribution requires an additional argument.
 
 Take \(n\geq2\), real smooth \(\phi\) with nonzero gradient, and compact smooth \(a\). The wave equation has zero initial displacement and initial velocity \(a e^{i\omega\phi}\). Fix one branch \(\sigma=\pm1\) of the Fourier sine split. At its critical point write \(k=\nabla\phi=\kappa e_1\), and diagonalize the restriction of \(B=\phi''\) to \(e_1^\perp\), with eigenvalues \(b_2,\ldots,b_n\). Its ray is \(x=y-\sigma t k/|k|\). These are the conventions from the preceding lesson.
+
+The [local-data variant](wave-rays-caustics-and-stationary-amplitudes.md#a-nonvanishing-phase-gradient-near-the-data-support) also permits \(\nabla\phi\ne0\) only on a neighborhood of \(\operatorname{supp}a\). The fold contribution is localized inside that neighborhood. Every phase derivative, coordinate change and amplitude operation below is taken there, so the same proofs and estimates apply.
 
 ## A simple center and its cubic contact
 

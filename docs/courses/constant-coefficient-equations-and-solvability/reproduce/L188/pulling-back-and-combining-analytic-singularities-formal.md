@@ -1,6 +1,6 @@
 # Pulling back and combining analytic singularities
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 A distribution cannot always be evaluated on a submanifold or multiplied by another distribution. The obstruction has a precise direction: a covector may become zero under the transpose derivative of a map, or two covectors may cancel in a product. We prove the smooth and analytic wavefront bounds for the operations when these obstructions are absent. Properly supported integration along a projection needs no transversality condition.
 

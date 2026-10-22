@@ -1,6 +1,6 @@
 # From partial regularity to smooth solutions
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 An equation can convert arbitrarily high regularity in selected variables into full smoothness. The mechanism is a weighted interior estimate: regularity in the prime variables pays for the prime-frequency factor in the partial-hypoellipticity bound. This also characterizes when partial convolution smooths every homogeneous solution.
 

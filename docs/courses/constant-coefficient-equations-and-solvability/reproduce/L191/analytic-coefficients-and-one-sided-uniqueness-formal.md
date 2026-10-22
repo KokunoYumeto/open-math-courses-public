@@ -1,6 +1,6 @@
 # Analytic coefficients and one-sided uniqueness
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 This chapter proves Holmgren uniqueness for distributions of arbitrary finite local order, for analytic operators of any differential order, and across noncharacteristic surfaces of class \(C^1\). It also treats square systems whose highest normal coefficient is invertible. We do not assume that a solution is analytic, smooth, tempered, or has a normal trace.
 

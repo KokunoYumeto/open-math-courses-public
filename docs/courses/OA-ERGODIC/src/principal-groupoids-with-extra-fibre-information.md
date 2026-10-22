@@ -1,6 +1,6 @@
 # Principal groupoids with extra fibre information
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text is public domain (CC0).*
 
 ## Introduction
 
@@ -51,7 +51,7 @@ defines a probability measure on \((X,\mathcal S)\), extending \(\ell\). For eve
 
 *Proof.* If two choices in (1.3) give the same set, their \(B_0\) symmetric difference is a Borel set disjoint from \(A\), and their \(B_1\) symmetric difference is disjoint from \(A^c\). Both differences are null by Lemma 1.1. This proves well-definedness.
 
-For pairwise disjoint \(D_n\), the corresponding \(B_{0,n}\) overlap only in Borel sets disjoint from \(A\), hence in null sets. Disjointize them in their enumeration order; their Lebesgue measures and their union's measure do not change. The same argument applies to the \(B_{1,n}\). Countable additivity of \(\ell\) now proves countable additivity in (1.4). Taking \(B_0=B_1=X\) gives total mass one; taking \(B_0=B_1=B\) gives the extension property. Formula (1.5) is immediate. \(\square\)
+For pairwise disjoint \(D_n\), the corresponding \(B_{0,n}\) overlap only in Borel sets disjoint from \(A\), hence in null sets. Disjointize them in their enumeration order; their Lebesgue measures and their union's measure do not change. The same argument applies to the \(B_{1,n}\). Countable additivity of \(\ell\) proves countable additivity in (1.4). Taking \(B_0=B_1=X\) gives total mass one; taking \(B_0=B_1=B\) gives the extension property. Formula (1.5) is immediate. \(\square\)
 
 Thus \(A\) is an event of probability \(1/2\) independent of every ordinary Borel event. In particular
 \[
@@ -417,7 +417,7 @@ Thus \(W(\kappa)\) cannot be a factor for any faithful proper \(\kappa\). The fi
 | Every saturated measurable set is null or conull | True | The sole orbit has only the empty and full saturated sets. |
 | The transverse measure spans an extremal fixed-modulus ray | True | The preceding lesson's full Theorem 3.1. |
 
-The centre and factor assertions therefore need an additional measurable regularity hypothesis. At standard Borel arrow scope with sigma-finite transverse measure, the full written Proposition 5.1 and Corollaries 8.1–8.2 in [Claude-RO] provide the positive replacement. The present result does not assert a general positive disintegration theorem for nontrivial isotropy. That remaining construction retains its separate proof obligation. The unrestricted type I equivalence in the adjacent source Corollary 9 has the different, fully proved semifinite counterexample in the preceding lesson, Proposition 5.1; its standard Borel sigma-finite replacement is [Claude-RO, Corollary 8.3].
+The centre and factor assertions therefore need an additional measurable regularity hypothesis. At standard Borel arrow scope with sigma-finite transverse measure, the full written Proposition 5.1 and Corollaries 8.1–8.2 in [Claude-RO] provide the positive replacement. The present result does not assert a general positive disintegration theorem for nontrivial isotropy. General disintegration for nontrivial isotropy is not established here. The unrestricted type I equivalence in the adjacent source Corollary 9 has the different, fully proved semifinite counterexample in the preceding lesson, Proposition 5.1; its standard Borel sigma-finite replacement is [Claude-RO, Corollary 8.3].
 
 ## 7. Exercises with solutions
 

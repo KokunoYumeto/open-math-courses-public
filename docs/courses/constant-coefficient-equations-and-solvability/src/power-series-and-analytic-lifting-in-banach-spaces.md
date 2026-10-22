@@ -1,6 +1,6 @@
 # Power series and analytic lifting in Banach spaces
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 A differential equation can be solvable at every parameter without a
 preferred pointwise choice of solution depending holomorphically on that

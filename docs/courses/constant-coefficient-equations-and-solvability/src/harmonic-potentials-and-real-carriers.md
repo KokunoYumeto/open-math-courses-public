@@ -1,6 +1,6 @@
 # Harmonic potentials and real carriers
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. CC0.*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  CC0.*
 
 An analytic functional is tested on holomorphic functions. It can use infinitely many derivatives, so it need not be a distribution. Its carrier says where those tests must be known. When a carrier lies in real space, one extra real coordinate makes its smallest possible location visible: it is exactly where an associated odd harmonic function fails to continue across the middle plane.
 

@@ -1,6 +1,6 @@
 # Support normals and analytic singularities
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Original exposition: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Original exposition: CC0.*
 
 A distribution cannot stop across a supporting surface while remaining analytically regular in either of its normal directions. The proof first turns regularity in one frequency ray into continuation of a Cauchy transform. Tangential projection then reduces the several-variable assertion to that one-dimensional argument.
 

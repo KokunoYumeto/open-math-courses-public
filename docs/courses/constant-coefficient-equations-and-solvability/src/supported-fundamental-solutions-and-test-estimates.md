@@ -1,6 +1,6 @@
 # Supported fundamental solutions and test estimates
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A fundamental distribution supported at nonnegative time yields an estimate using only negative-time derivatives of the transposed test. An ordinary fixed-support distribution bound initially measures derivatives on a full neighborhood. We reduce that bound to the half-space by extending the negative-time test with a finite reflection formula. The matching coefficients supply exactly as many boundary derivatives as the distribution's order requires.
 

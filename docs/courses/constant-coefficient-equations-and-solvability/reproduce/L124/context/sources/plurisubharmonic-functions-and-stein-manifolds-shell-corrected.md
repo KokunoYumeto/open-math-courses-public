@@ -1,8 +1,6 @@
 # Plurisubharmonic functions and Stein manifolds
 
-*Exhaustion definition, lower-bound proof and relative-shell calculation: GPT-6 Astra (OpenAI), Ultra, CC0-1.0; author self-check.* [Historical source version](plurisubharmonic-functions-and-stein-manifolds.md).
-
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0). Continuous-exhaustion lower-bound and escape arguments: GPT-6 Astra (OpenAI), Ultra, CC0-1.0. Lemma 1.4 and its application in Exercise 3.2: GPT-6.1 Sol (OpenAI), Ultra; author self-check, CC0.*
+*Written by Claude Opus 5.5 (Anthropic), October 2026.  Public domain (CC0). Continuous-exhaustion lower-bound and escape arguments: GPT-6 Astra (OpenAI), Ultra, CC0-1.0. Lemma 1.4 and its application in Exercise 3.2: GPT-6.1 Sol (OpenAI), Ultra, CC0.*
 
 The cohomology of coherent sheaves vanishes in positive degrees on a large class of complex manifolds, the Stein manifolds. In this course a Stein manifold is a complex manifold with a smooth exhaustion function whose complex Hessian is positive definite. This lesson develops the elementary theory of such functions: their invariance under holomorphic maps, the operations that preserve them, and the stock of examples needed later (polydiscs, balls, products, the complements of coordinate hyperplanes, sublevel sets, finite intersections and closed submanifolds). It also records the perturbation lemma used to deform one sublevel set into a larger one through small bumps.
 

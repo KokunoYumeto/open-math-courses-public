@@ -1,6 +1,6 @@
 # Compact multipliers and exponential solutions of convolution systems
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 A compact convolution kernel has an entire Fourier transform. For a system, a common transform zero gives an exponential solution. The converse question is harder: can a system have other solutions when all common zeros have disappeared? We separate the algebraic zero test from the topological obstruction that produces a solution.
 

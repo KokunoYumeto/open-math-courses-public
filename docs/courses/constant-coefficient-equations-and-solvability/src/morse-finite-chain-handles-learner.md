@@ -18,7 +18,7 @@ The exact corrected packet, original diagram alternative, native figures, reprod
 
 ## How a critical point changes finite-chain homology
 
-Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Original exposition and diagrams: CC0-1.0. Self-checked by the writing AI. Classical Morse theory is the subject.
+Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Original exposition and diagrams: CC0-1.0.  Classical Morse theory is the subject.
 
 A proper height function lets us examine a manifold in compact pieces. Between critical heights, downward flow merely pushes one piece onto the preceding one. At a nondegenerate critical point, the height is exactly a difference of squares in suitable coordinates. Its negative coordinate directions supply a disc whose boundary is already in the lower region. That disc is a **relative** homology generator. Its boundary may join different lower components or may bound there; those possibilities have different effects on absolute homology.
 
@@ -132,7 +132,7 @@ For the general bounding statement let z be a finite cycle in one \(W_i\) and su
 
 ### 7. What this supplies to TP041
 
-The full proof below supplies the geometric finite-chain handle input H. At a strictly plurisubharmonic Morse critical point on a complex d-manifold, B(v,v)+B(Jv,Jv)=4ℒ(v)>0 bounds the real index by d. The exact SH03 zero-section perturbation interface supplies such a proper Morse function relative to its retained smooth/Sard foundations. The explicit projective exhaustion already proved in TP041 is its starting function. Consequently the geometric handle construction gives the ordinary \(H_{d+1}(U;Q)\) vanishing used in the separately reviewed ordinary-pair normal-tube argument. No sheaf/singular comparison is substituted for that proof.
+The full proof below supplies the geometric finite-chain handle input H. At a strictly plurisubharmonic Morse critical point on a complex d-manifold, B(v,v)+B(Jv,Jv)=4ℒ(v)>0 bounds the real index by d. The exact SH03 zero-section perturbation interface supplies such a proper Morse function relative to its retained smooth/Sard foundations. The explicit projective exhaustion already proved in TP041 is its starting function. Consequently the geometric handle construction gives the ordinary \(H_{d+1}(U;Q)\) vanishing used in the ordinary-pair normal-tube argument. No sheaf/singular comparison is substituted for that proof.
 
 This lesson does not close lower Sard/analytic programme foundations, general rational-form spanning, the actual affine C8 tube/scalar/multiplicity comparison, the alternative closed–open compact-support comparison, historical coefficient conventions, full component constancy or recursive course closure. The complete formal proof, exact source credits and scope statement follow without abridgement.
 
@@ -140,7 +140,7 @@ This lesson does not close lower Sard/analytic programme foundations, general ra
 
 ## Morse handles from stopping flows and finite singular chains
 
-Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Independently authored exposition and original diagrams: CC0-1.0. Self-checked by the writing AI. Classical Morse and singular-homology methods are explained here; no novelty of the theorem is claimed and no external book prose or diagrams are reproduced.
+Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Independently authored exposition and original diagrams: CC0-1.0.  Classical Morse and singular-homology methods are explained here; no novelty of the theorem is claimed and no external book prose or diagrams are reproduced.
 
 The geometric argument below proves the missing handle statement H of TP041. It does not use a CW decomposition theorem. The argument states the elementary smooth inputs it uses and proves the relative sublevel and ordinary finite-chain deductions. Smooth inverse/flow and Morse-coordinate proofs are included; the existence of a strictly plurisubharmonic Morse perturbation uses the exact written SH03 provider relative to its own Sard, cutoff and other lower inputs. This distinction is retained at the end.
 
@@ -418,7 +418,7 @@ Apply this to the exact proper strict-psh projective exhaustion in TP041 TP3, un
 
 ### MH12. Credits, exact inputs and remaining limits
 
-The coordinate proof MH2 follows the independently authored AN04 “Stationary phase and critical manifolds”, Lemma 4.1: implicit critical coordinate, Taylor pivot square and Schur-complement induction. Its stated IFT and smooth prerequisites are retained. The inverse/ODE proof and smooth metric/partition interface agree with the included DGCHAR “Manifold duality and tubular sections”, §3 Lemma 3.1; its own authored source is CC0 and its current source credits distinguish the verified Spring 1957 Milnor manuscript, notes by James Stasheff, from Hatcher's compact-support comparison. The finite-chain prism, subdivision, excision, sphere and exact-sequence arguments in MH1 agree with the included complete DGCHAR “Thom classes and Euler classes”, §§1–3, authored by GPT-6.1 Sol (OpenAI), Ultra, CC0. Its valid Hatcher and Spring 1957 Milnor/Stasheff background credits are method context; its citation and scope paragraphs are revised while every mathematical proof, formula and exercise body remains complete. Cited source expression retains its own rights. SH03 “Holomorphic Morse exhaustions on Stein manifolds”, authored by GPT-6.1 Sol (OpenAI), Ultra, CC0, supplies the exact perturbation interface described in MH11 and retains its smooth-coordinate, Sard and analytic lower obligations.
+The coordinate proof MH2 uses the critical-coordinate, integral Taylor and Schur-complement argument of *Stationary phase and critical manifolds*, Lemma 4.1, under its implicit-function and smoothness hypotheses. The inverse/ODE, smooth metric and partition arguments use *Manifold duality and tubular sections*, §3, Lemma 3.1. The finite-chain prism, subdivision, excision, sphere and exact-sequence arguments in MH1 use *Thom classes and Euler classes*, §§1–3. These programme readings are by GPT-6.1 Sol (OpenAI), Ultra, CC0, and credit Hatcher, Roberts and the Spring 1957 Milnor manuscript, notes by James Stasheff. *Holomorphic Morse exhaustions on Stein manifolds*, by the same author under CC0, supplies the perturbation argument in MH11, with its stated smooth-coordinate, Sard and analytic prerequisites. Cited sources retain their own rights.
 
 Classical Morse handle theory and ordinary singular excision are the historical mathematical methods. The stopping block, explicit corner/hitting-time proof, collar quotient comparison and figures here are independently written. No external textbook body was read or reproduced in this task, and no exact original-book proof match or book error is claimed. Local programme bodies were read only in the needed scopes and retain their stated origins and terms. A Blender scene would not explain the finite-chain relative pair better than the exact planar block/flow and quotient diagrams, so the reproducible figures use planar coordinates and exact algebraic labels.
 

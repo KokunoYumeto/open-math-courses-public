@@ -11,6 +11,6 @@ The checks integrate actual compact-bump transforms on the real and logarithmica
 
 Two original PNG/SVG pairs and exact geometry JSON retain the escaping bump supports, weighted response, complex differential, actual contour heights, strict curvature normalization and distributional support corner. These objects are fully shown by scientific plots; a Blender scene would add no useful mathematical geometry. The scripts require no TeX. SVG dates are omitted and a fixed hash salt is used; DejaVu fonts retain their own license.
 
-Human source: Lars Hörmander, The Analysis of Linear Partial Differential Operators II, §15.4, Theorems 15.4.1–15.4.3, printed pp. 296–300. The exact curvature power is -3/4 of 1+|Im z|². The historical summary's weaker -3/2 power is corrected in the current mapping. Approved local source text/pixels remain private and are excluded from the lesson payload.
+Human source: Lars Hörmander, The Analysis of Linear Partial Differential Operators II, §15.4, Theorems 15.4.1–15.4.3, printed pp. 296–300. The curvature power in the stated lower bound is -3/4 of 1+|Im z|².
 
 The chapter's separate embedded representation exercises, notes and every other assigned course target remain in the full goal.

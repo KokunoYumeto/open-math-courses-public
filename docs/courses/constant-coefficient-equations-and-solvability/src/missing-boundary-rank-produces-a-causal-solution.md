@@ -1,6 +1,6 @@
 # Missing boundary rank produces a causal solution
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A boundary matrix that misses one decaying normal mode at every admissible frequency leaves a nonzero causal solution with homogeneous boundary data. We construct that solution from cofactors, prove its full cone support, and show that its support reaches the corner. Tangential smoothing then produces a nonzero smooth solution with zero initial and boundary data.
 
@@ -12,7 +12,40 @@ Basic references are Grubb's *Distributions and Operators* ([author's lecture no
 
 ## Statement and support convention
 
-Normalize the barrier to one and choose dual coordinates as in [Boundary determinants as causal Fourier kernels](boundary-determinants-as-causal-fourier-kernels.md), so the time and boundary normals are \(N=e_n\), \(\theta=e_1\). Write \(x=(a,x')\), \(a=x_1\), \(\zeta=(\zeta_1,\zeta')\), and
+**The original problem and its comparison symbols.** Retain an original polynomial \(\mathsf P\), every original boundary symbol \(\mathsf B_j\), the real barrier \(\tau_0\), and independent original frequency vectors \(N_{\!o},\theta_o\). Choose a real invertible matrix \(E\) with \(Ee_1=\theta_o\), \(Ee_n=N_{\!o}\), and put
+\[
+y=E^Tx,\quad \sigma=\tau_0-1,\quad
+P(z)=\mathsf P(Ez+i\sigma N_{\!o}),\quad
+B_j(z)=\mathsf B_j(Ez+i\sigma N_{\!o}).
+\tag{OC1}
+\]
+The symbols \(P,B_j\) in the normalized calculation below mean exactly (OC1), including the shift of every boundary symbol. Its physical coordinates \((a,x')=(a,z,t)\) are these \(y\)-coordinates. In particular \(a=\theta_o\cdot x\) and \(t=N_{\!o}\cdot x\). The equation polynomial has barrier one, its principal cone is \(\Gamma_E=E^{-1}\Gamma(\mathsf P_m,N_{\!o})\), and its positive, negative and zero normal counts are those of the original principal polynomial in this basis. No lower coefficient of an original symbol is omitted.
+
+Write \(u_E(y)=u(E^{-T}y)\). For a scalar solution, the exact correspondence is
+\[
+v(y)=e^{\sigma y_n}u(E^{-T}y),\qquad
+u(x)=e^{-\sigma N_{\!o}\cdot x}v(E^Tx).
+\tag{OC2}
+\]
+The product and chain rules give \(P(D_y)v=e^{\sigma y_n}(\mathsf P(D_x)u)(E^{-T}y)\) and the identical formula for each \(B_j,\mathsf B_j\), including boundary traces. These identities hold for distributions by the definition of pullback under an invertible linear map and by distributional differentiation. Smoothness, nonvanishing and support are preserved. Flatness at initial time is preserved by the finite Leibniz sum in every derivative order. The scalar pullback \(v(E^Tx)\) is \(|\det E|^{-1}(E^{-T})_*v\) for distributions; determinant kernels use the pushforward, with its Jacobian, as specified in [Boundary determinants as causal Fourier kernels, (24d)–(24e)](boundary-determinants-as-causal-fourier-kernels.md).
+
+Let \(\mathsf L_E\) be the determinant of the unshifted coordinate symbols \(\mathsf P(Ez),\mathsf B_j(Ez)\), and let \(U_E\) be its original-barrier kernel. With \(N'=e_{n-1}\), the normalized determinant and kernel satisfy
+\[
+L^\partial(z')=\mathsf L_E(z'+i\sigma N'),\qquad
+L_0=e^{\sigma t}U_E .
+\tag{OC3}
+\]
+These are the simultaneous-symbol identities (24a)–(24c) of the linked kernel proof. The normalized \(L_0\) is tempered; no temperedness of \(U_E\) is inferred. Its original Fourier–Laplace interpretation is (18c) there. For properly defined convolution, multiplication by this exponential respects convolution: on a compact output test, properness restricts the pair of input supports to a compact set, and \(e^{\sigma(s+t)}=e^{\sigma s}e^{\sigma t}\) inside the distributional tensor pairing. Consequently
+\[
+\begin{gathered}
+L_0*_{x'}v(a,\cdot)\\
+=e^{\sigma t}\bigl(U_E*_{x'}u_E(a,\cdot)\bigr).
+\end{gathered}
+\tag{OC4}
+\]
+This formula transports determinant annihilation and all support arguments back to the original mixed problem. The exponentially weighted kernel is used whenever tempered Fourier arguments are required.
+
+Use the simultaneous-symbol normalized comparison (OC1) and dual coordinates of [Boundary determinants as causal Fourier kernels](boundary-determinants-as-causal-fourier-kernels.md), so the time and boundary normals are \(N=e_n\), \(\theta=e_1\). Write \(x=(a,x')\), \(a=x_1\), \(\zeta=(\zeta_1,\zeta')\), and
 \[
 \begin{gathered}
 H=\{x_n\ge0\},\\
@@ -300,6 +333,8 @@ Compact tangential convolution and the smooth distribution-valued family make th
 At least one sufficiently small \(\varepsilon\) gives a nonzero solution. Otherwise a sequence \(\varepsilon\downarrow0\) with every convolution zero would converge in distributions to \(u=0\), contradicting 23. Convergence follows by passing the compact-test convolution with an approximate identity through the distributional pairing. Thus 2 prevents unique smooth solvability with all forcing, initial jets and boundary data zero.
 
 In particular a necessary condition for mixed uniqueness is that the original matrix have rank \(h\) on a nonempty open dense parameter set. If every \(h\)-minor were identically zero, 2 would hold. A nonzero analytic minor gives full rank away from its zero set, which has empty interior. This is a necessary condition only; the remaining determinant annihilation and invertibility theory is still required.
+
+**Conclusion for the original boundary problem.** The substitution in (OC1) maps the original zero-free tube bijectively to the normalized one. Formula (24b) in the kernel reading and the triangular normal-monomial change show that the rectangular matrices have the same rank at corresponding parameters. Hence the original rank-deficiency hypothesis gives the normalized hypothesis (2). Apply the cofactor construction above to obtain its nonzero causal solution \(v\), and define \(u\) by (OC2). The equation and every original boundary trace vanish by the operator identities following (OC2). The support maps through \(E^{-T}\) and is unchanged by the exponential, so it has the stated original cone support and reaches the original corner. The same correspondence applied after tangential smoothing preserves the resulting smooth nonzero solution and its zero initial and boundary data.
 
 ## Exercises with complete solutions
 

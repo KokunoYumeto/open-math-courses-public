@@ -1,6 +1,6 @@
 # Fourier limits and the obstructions that descend to an open set
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI. Original expression: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Original expression: CC0.*
 
 A distribution can hide its singularity at larger and larger frequencies. Moving a carefully chosen frequency back to zero reveals a nonzero limiting distribution. A second construction combines translated weighted supremum norms into a weighted integral norm. These two mechanisms will supply the compactness and endpoint estimates in the global existence theorem. Before using that theorem, we also settle what an obstruction can mean for data defined only on an open set: its pairing must be independent of the global representative.
 

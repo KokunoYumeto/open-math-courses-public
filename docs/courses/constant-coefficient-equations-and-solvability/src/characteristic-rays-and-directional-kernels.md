@@ -1,6 +1,6 @@
 # Characteristic rays and directional kernels
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A characteristic covector identifies a frequency at which the principal part of an equation can vanish. For an operator with constant coefficients, its gradient then identifies a line in physical space. A singularity with that covector travels along this line until it meets a singularity of the forcing. We prove this statement and construct global solutions whose wavefront set consists of exactly one such line with one positive frequency ray.
 

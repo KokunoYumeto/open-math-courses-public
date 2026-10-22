@@ -6,9 +6,9 @@ Read the complete learner and formal proof. The reader retains LP0–LP10, every
 
 All eleven files below retain their original bytes. Keep the renderer, original proof, original README and licence at the root of a fresh scratch directory and the seven figure/geometry files in `figures/`.
 
-- [local-polynomial-annihilator-proof.md](../reproduce/L123/local-polynomial-annihilator-proof.md) — 26956 bytes; SHA256 `4272787FD760CC61926DBAF883B642DE902271507E4009F63E3864015867169C`.
+- [local-polynomial-annihilator-proof.md](../reproduce/L123/local-polynomial-annihilator-proof.md) — 26616 bytes; SHA256 `EBABF051D4252106419A91E356A1088D81088AF0F2773984B2220B2906FB0DD3`.
 - [make_figures.py](../reproduce/L123/make_figures.py) — 8171 bytes; SHA256 `4583CA03AA65ED58D0FDA7315E74EC83771F07EA8DBCD0BD22ABD249F0EB910A`.
-- [README-reproduce.md](../reproduce/L123/README-reproduce.md) — 2309 bytes; SHA256 `80C815D9C8E2F201BBE28B0A980CD3A151F823D57DB171816D22594B52FA262B`.
+- [README-reproduce.md](../reproduce/L123/README-reproduce.md) — 2124 bytes; SHA256 `DD5DC9CE333325767F2B0C631A423396F061DCE64D30580F6B86BFF4EC9F5BD8`.
 - [LICENSE-ORIGINAL.txt](../reproduce/L123/LICENSE-ORIGINAL.txt) — 549 bytes; SHA256 `76B0CD8C9C2F0F37B7F6F13C08318093D4FFA5E3FFCE39333E77CA95375DA953`.
 - [geometry.json](../reproduce/L123/figures/geometry.json) — 2469 bytes; SHA256 `B0FA501D91C6270CDF015D976AAD896335C6CDDE00BAA57260D3C7DB75158407`.
 - [local-quotient-global-pole.png](../reproduce/L123/figures/local-quotient-global-pole.png) — 129997 bytes; SHA256 `CF7226B6CB871F4B48DE1BE818DD59ADA652D0EAAF6F1317619812587A16630B`.
@@ -30,6 +30,6 @@ Compare all three PNGs, three SVGs and geometry.json with the supplied originals
 
 ## Credits, terms and boundary
 
-[Original CC0 notice](../reproduce/L123/LICENSE-ORIGINAL.txt) and Reader credits retain GPT-6.1 Sol (OpenAI), Ultra and the human mathematical credit to Hörmander’s polynomial/exponential-polynomial annihilator context. The original LP10 paragraph retains all exact programme locators. L011 retains Malgrange’s density source. Source credit is not a proof closure or a licence for book expression. Matplotlib, DejaVu Sans and the existing MathJax reader retain their applicable component terms; no font binary is included.
+[Original CC0 notice](../reproduce/L123/LICENSE-ORIGINAL.txt) and [Reader credits](../reproduce/L123/CREDITS.txt) retain GPT-6.1 Sol (OpenAI), Ultra and the human mathematical credit to Hörmander’s polynomial/exponential-polynomial annihilator context. The original LP10 paragraph retains all exact programme locators. L011 retains Malgrange’s density source. Source credit is not a proof closure or a licence for book expression. Matplotlib, DejaVu Sans and the existing MathJax reader retain their applicable component terms; no font binary is included.
 
 The theorem proves a convergent quotient germ near zero. An entire quotient, compact inverse and ordinary support-hull alternative remain separately explained in L122. L011’s continuation needs every irreducible factor to vanish at zero. Lower foundations, compact singular-support hulls, general topology and course closure retain their stated scope.

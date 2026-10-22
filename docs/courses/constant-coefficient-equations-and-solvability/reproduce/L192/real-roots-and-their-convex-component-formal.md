@@ -1,6 +1,6 @@
 # Real roots and their convex component
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 A homogeneous polynomial can have real roots on every line in one direction. We prove that this direction determines an open convex component, that every direction in the component has the same real-root property, and that the whole imaginary tube over the component contains no zero. Multiple roots and complex coefficients are included.
 

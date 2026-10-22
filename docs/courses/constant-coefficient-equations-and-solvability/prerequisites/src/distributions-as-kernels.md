@@ -1,6 +1,6 @@
 # Distributions as kernels of continuous operators
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Checked once by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026.  Public domain (CC0).*
 
 An integral kernel records how an operator transfers information from an input point to an output point. A function kernel cannot describe evaluation or differentiation. A distribution on the product space can describe both. This lesson proves Laurent Schwartz's kernel theorem and explains precisely which continuity assumptions it needs. The local theorem has no growth condition at infinity. Its tempered counterpart has a global polynomial bound.
 

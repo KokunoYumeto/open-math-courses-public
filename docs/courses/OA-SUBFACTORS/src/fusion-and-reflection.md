@@ -452,4 +452,4 @@ The tensor \(Q\) coefficients do not change this constant-coordinate calculation
 - Sorin Popa, [*Correspondences*](https://www.math.ucla.edu/~popa/popa-correspondences.pdf), INCREST preprint 56/1986.
 - Masamichi Takesaki, [*Theory of Operator Algebras III*](https://doi.org/10.1007/978-3-662-10453-8), Springer, 2003, Chapter XIX, Proposition 4.11 and the formulas following it.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026; expanded October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Public domain (CC0).*

@@ -1,6 +1,6 @@
 # Anisotropic derivative classes and analyticity
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Smoothness says that every derivative exists. A derivative class also controls how its size grows with the order of differentiation. For homogeneous constant-coefficient equations, the optimal directional exponents give an anisotropic class: some coordinates can have analytic derivative bounds while others have a larger Gevrey order. We derive the full mixed estimate and prove that universal analyticity of homogeneous solutions is equivalent to ellipticity.
 

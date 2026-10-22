@@ -1,6 +1,6 @@
 # Convolution as addition of supports
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Checked once by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026.  Public domain (CC0).*
 
 Convolution combines a measurement at one point with a measurement at another and assigns the result to their sum. This description works for point masses, functions and distributions. Its main restriction is geometric: points escaping to infinity must not keep contributing to one bounded output region. Once that restriction is understood, smoothing, differentiation and translation invariance become consequences of the same construction.
 

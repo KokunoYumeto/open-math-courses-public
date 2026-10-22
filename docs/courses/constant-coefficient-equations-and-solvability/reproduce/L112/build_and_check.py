@@ -257,8 +257,7 @@ if __name__=="__main__":
           "recorded_utc":datetime.now(timezone.utc).isoformat(),"python":sys.executable,
           "symbolic_residuals":sym,"numerical_polynomial_checks":num,
           "numerical_maximum_error":max(item["maximum_error"] for item in num),
-          "source_geometry_scope":"Checks on radial sections; polynomial source uses the explicit cone radial-shell integral, not an asserted global graph extension.",
-          "independent_review":False,"figure_visual_inspection":"pending"}
+          "source_geometry_scope":"Checks on radial sections; polynomial source uses the explicit cone radial-shell integral, not an asserted global graph extension.","figure_visual_inspection":"pending"}
     (ROOT/"computational-checks.json").write_text(json.dumps(data,indent=2)+"\n",encoding="utf-8")
     print(json.dumps({"symbolic_checks":len(sym),"quadrature_checks":len(num),
                       "maximum_error":data["numerical_maximum_error"],"figure":str(FIG/"null-gauss-comparison.png")}))

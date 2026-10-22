@@ -1,6 +1,6 @@
 # Regularity and tempered growth
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Every nonzero constant-coefficient polynomial has a regular fundamental solution. Regularity controls its Fourier transform after compact cutoffs; it does not bound its growth on all of space. We now prove a necessary condition for having regularity and tempered growth simultaneously. Positive limiting symbols must have uniformly integrable reciprocals. A degenerate diffusion equation will violate that condition even though it has a tempered causal inverse.
 

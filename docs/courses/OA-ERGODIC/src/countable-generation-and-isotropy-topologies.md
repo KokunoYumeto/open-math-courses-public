@@ -1,6 +1,6 @@
 # Countable generation and isotropy topologies
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text is public domain (CC0).*
 
 ## Introduction
 
@@ -212,7 +212,7 @@ Thus the homogeneous-space and second-category properties hold while the \(G_\de
 
 *Figure 4.1.* The construction chooses one rationally independent point from every perfect set while keeping \(1\) outside the span. Both \(H\) and \(H+1\) meet every perfect set. The middle panel gives the trace measure, uniformly bounded translated cover, and exact regular coefficient bound. The lower panel follows the hypothesized compatible topology through continuity of inclusion, countability of compact neighborhoods, the Baire argument and the cardinal contradiction. Sets, cardinalities, measures and constants are exact; the displayed intervals and points are finite schematics of the choice construction, not a membership plot of \(H\). Proof locators: Theorems 1.2, 2.2, 3.2 and 4.2; human-source context: [Connes, author PDF 10–12 and 38–39](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf#page=38).
 
-## 5. What this changes in the isotropy comparison
+## 5. Consequences for isotropy
 
 The one-unit groupoid above has a countably generated, point-separating arrow σ-algebra; its unit singleton is measurable; its group operations are measurable; and \(\nu\) is nonzero, invariant, σ-finite, faithful and proper. Its regular representation is square-integrable. These are the full stated measurable hypotheses at the source's countable-generation scope. They do not imply the compatible locally compact group structure used for isotropy in Proposition 15(a) and its proof.
 

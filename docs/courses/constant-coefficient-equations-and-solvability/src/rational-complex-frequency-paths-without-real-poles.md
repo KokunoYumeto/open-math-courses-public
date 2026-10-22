@@ -1,6 +1,6 @@
 # Rational complex frequency paths without real poles
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Original expression: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Original expression: CC0.*
 
 A sequence of useful frequency windows is not enough for the transport construction: the window centre and its two scales must depend smoothly on one parameter. We convert the sequence into a rational path while retaining the normalized polynomial limits and the three scale separations. We also remove every real pole of the ratio used as the background perturbation. The proof makes two steps explicit that need care: the algebraic fibers may be unbounded, and truncating a convergent Laurent expansion can spoil an error that has already been multiplied by a large scale.
 

@@ -32,7 +32,6 @@ assert ET.fromstring((FIG/"gaussian-sources-and-distant-tails.svg").read_bytes()
 im=Image.open(FIG/"gaussian-sources-and-distant-tails.png");assert im.size==(2145,792)
 record=dict(schema="AN02-analytic-figure-check260/v1",status="PASS",
     total_checks=count,precision_decimal_digits=140,tolerance="1e-65",max_scaled_error=str(worst),
-    independent_green_integral_samples=True,PNG_dimensions=list(im.size),SVG_XML_valid=True,
-    private_source_pixels_not_reused=True)
+    independent_green_integral_samples=True,PNG_dimensions=list(im.size),SVG_XML_valid=True)
 (OWN/"figure-checks260.json").write_text(json.dumps(record,indent=2)+"\n",encoding="utf-8")
 print(json.dumps(record))

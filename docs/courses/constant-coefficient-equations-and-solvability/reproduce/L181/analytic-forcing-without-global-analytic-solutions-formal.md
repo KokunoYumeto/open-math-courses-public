@@ -1,6 +1,6 @@
 # Analytic forcing without global analytic solutions
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 An analytic right-hand side does not always have an analytic solution on the whole real space. Local analytic solvability leaves room for a global obstruction. We give one explicit forcing that defeats both the heat operator with two spatial variables and the two-variable Laplacian acting with an additional parameter.
 

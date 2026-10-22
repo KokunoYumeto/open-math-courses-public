@@ -1,6 +1,6 @@
 # Small Gevrey classes and compact Fourier decay
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Every derivative scale corresponds to every Fourier decay constant. We prove this correspondence with its exact compact support, and construct the cutoffs needed for orders greater than one.
 

@@ -629,6 +629,116 @@ which is a constant under our normalization. Taking the \(q\)-th root and rescal
 
 *Figure. Left: averages \(k*\eta_\varepsilon\) of \(k(x)=e^{-|x|}\), with \(\eta_\varepsilon=(2\varepsilon)^{-1}1_{[-\varepsilon,\varepsilon]}\), approach the kernel as the unit-mass input concentrates. Solution 11 gives the exact formulas and endpoint norms. Right: for \(x>1\), the positive input \(1_{[-1,1]}\) has potential \(2(\sqrt{x+1}-\sqrt{x-1})\), whereas the mean-zero input \(1_{[-1,0]}-1_{[0,1]}\) has potential \(2(\sqrt{x+1}-2\sqrt x+\sqrt{x-1})\). Their absolute values have respective asymptotics \(2x^{-1/2}\) and \(\tfrac12x^{-3/2}\), proved in Solution 5. The logarithmic axes display the extra power supplied by cancellation. [Editable figure script](../figures/convolution-endpoints-and-cancellation.py).*
 
+## Interpolating two strong operator bounds
+
+This section permits arbitrary measure spaces \((X,\mu)\) and \((Y,\nu)\); no sigma-finiteness or semifiniteness is assumed. Functions and operators are complex-valued and complex-linear. Each \(L^r\) consists of equivalence classes modulo null sets, with its usual integral norm or essential supremum. The scalar Hölder and completeness proofs in [integration §§15.2–15.3](../prerequisites/U011-free-foundations/banach-foundation-bridges.md) work on these spaces. The analytic input is precisely the finite-exponential-sum strip lemma proved in [HA-LCA-08, Lemma 7.0](../prerequisites/HA-LCA-724d1a8/src/the-plancherel-theorem.md#ha-lca-08-lemma-7-0).
+
+**Lemma 7.1 (convexity of reciprocal exponents).** If \(h\in L^{r_0}\cap L^{r_1}\), \(1\le r_j\le\infty\), \(0<\theta<1\), and
+\[
+ \frac1r=\frac{1-\theta}{r_0}+\frac{\theta}{r_1},
+\]
+then
+\[
+                 \|h\|_r\le\|h\|_{r_0}^{1-\theta}\|h\|_{r_1}^{\theta}.
+ \tag{S1}
+\]
+
+**Proof.** If either endpoint norm is zero, then \(h=0\) almost everywhere. Suppose both are positive. When both exponents are finite, set \(a=r(1-\theta)/r_0\), \(b=r\theta/r_1\). They are positive and sum to one. Hölder applied to \((|h|^{r_0})^a(|h|^{r_1})^b\) gives
+\[
+ \int|h|^r\le
+       \left(\int|h|^{r_0}\right)^a
+       \left(\int|h|^{r_1}\right)^b .
+\]
+Taking the \(r\)-th root proves (S1). If \(r_0=\infty\) and \(r_1<\infty\), then \(r=r_1/\theta\). Bound the factor \(|h|^{r(1-\theta)}\) by \(\|h\|_\infty^{r(1-\theta)}\) and integrate the remaining \(|h|^{r\theta}=|h|^{r_1}\). This gives the same conclusion. Interchange the indices for the other mixed endpoint. If both are infinite, (S1) is equality. \(\square\)
+
+**Lemma 7.2 (simultaneous simple approximation).** Suppose \(h\) belongs to a finite list of spaces \(L^{r_j}(X,\mu)\), \(1\le r_j\le\infty\), and at least one \(r_j\) is finite. There are simple functions \(h_k\), each supported on a measurable set of finite measure, converging to \(h\) in every listed norm, including any \(L^\infty\) norm in the list.
+
+**Proof.** Choose a representative finite outside a null set and set it to zero there. Put \(E_k=\{1/k\le|h|\le k\}\). A finite exponent \(r_j\) gives \(\mu(E_k)\le k^{r_j}\|h\|_{r_j}^{r_j}<\infty\). For every finite exponent, dominated convergence gives \(h1_{E_k}\to h\) in its norm. If an infinity norm is present, take an essentially bounded representative. For \(k>\|h\|_\infty\), only values of modulus less than \(1/k\) are removed; hence the supremum-norm error is at most \(1/k\).
+
+Quantize the bounded complex values on \(E_k\) with a finite square grid of mesh \(\delta_k\), and set the approximation to zero off \(E_k\). The pointwise error is at most \(\sqrt2\delta_k\); each finite-norm error is at most \(\sqrt2\delta_k\mu(E_k)^{1/r_j}\), and the infinity-norm error is at most \(\sqrt2\delta_k\). Choose \(\delta_k\) so all these finitely many errors are at most \(1/k\). If \(\mu(E_k)=0\), choose the zero approximation. The triangle inequality proves every asserted convergence. This is approximation by measurable simple functions; it does not assert smooth or continuous density in \(L^\infty\). \(\square\)
+
+**Theorem 7.3 (Riesz–Thorin, with all endpoints).** Let
+\[
+ T:L^{p_0}(X)\cap L^{p_1}(X)
+             \longrightarrow L^{q_0}(Y)\cap L^{q_1}(Y)
+\]
+be linear, where all four exponents lie in \([1,\infty]\), and suppose
+\[
+                   \|Tf\|_{q_j}\le M_j\|f\|_{p_j}
+                   \quad(j=0,1)
+ \tag{S2}
+\]
+on the entire stated intersection, with finite \(M_j\ge0\). For \(0<\theta<1\), set
+\[
+ \frac1p=\frac{1-\theta}{p_0}+\frac{\theta}{p_1},
+ \qquad
+ \frac1q=\frac{1-\theta}{q_0}+\frac{\theta}{q_1}.
+ \tag{S3}
+\]
+Then
+\[
+              \|Tf\|_q\le M_0^{1-\theta}M_1^\theta\|f\|_p .
+ \tag{S4}
+\]
+If \(p<\infty\), \(T\) extends uniquely to a bounded map \(L^p(X)\to L^q(Y)\) with this bound and agrees with its original values on the intersection. If \(p=\infty\), the original domain already is all of \(L^\infty(X)\).
+
+**Proof: zero constants and an infinite input exponent.** If either \(M_j=0\), (S2) makes every original output zero as a function class, so the result follows, including its zero extension when required. Assume \(M_0,M_1>0\). If \(p=\infty\), (S3) forces \(p_0=p_1=\infty\). Apply Lemma 7.1 to \(Tf\) in the two output norms, then (S2). This proves (S4) on the entire domain without any density argument.
+
+**Proof: simple inputs and finite output exponent.** Now let \(p<\infty\). Begin with a nonzero simple \(f\) of finite-measure support and normalize \(\|f\|_p=1\). On its nonzero set write \(\sigma_f=f/|f|\), and set
+\[
+ f_z=\sigma_f\,|f|^{\,p((1-z)/p_0+z/p_1)},\qquad z\in\mathbb C,
+ \tag{S5}
+\]
+with value zero on its zero set. Powers of a positive number use its real logarithm. At \(\operatorname{Re}z=j\), one has \(\|f_z\|_{p_j}=1\): for finite \(p_j\) this is \(\int|f|^p=1\); for \(p_j=\infty\) its modulus is one on its support.
+
+Suppose first \(q<\infty\). Take a nonzero simple \(g\) of finite-measure support in \(Y\) and normalize \(\|g\|_{q'}=1\). If \(q>1\), define
+\[
+ g_z=\sigma_g\,|g|^{\,q'((1-z)/q_0'+z/q_1')}.
+ \tag{S6}
+\]
+Again it is zero on the zero set. Since \(1/q'=(1-\theta)/q_0'+\theta/q_1'\), this gives \(g_\theta=g\) and boundary norms \(\|g_{j+it}\|_{q_j'}=1\), including infinite endpoint conjugates. If \(q=1\), (S3) forces \(q_0=q_1=1\); use \(g_z=g\) instead, retaining its infinity norm one.
+
+Consider the bilinear scalar expression
+\[
+ H(z)=M_0^{z-1}M_1^{-z}\int_Y (Tf_z)g_z\,d\nu.
+ \tag{S7}
+\]
+This is a finite sum of exponentials with real exponents. Indeed write \(f,g\) as finite disjoint simple sums. Linearity expands (S7) into constants \(\int_{B_\ell}T1_{A_k}\,d\nu\) times fixed phases and exponentials of real multiples of \(z\). Each constant is finite by an endpoint Hölder bound: \(T1_{A_k}\in L^{q_j}\), and \(1_{B_\ell}\in L^{q_j'}\) for either endpoint. Thus there is no unproved parameter differentiation under an infinite integral.
+
+Hölder and (S2) give \(|H(j+it)|\le1\) on both vertical lines. The proved strip lemma gives \(|H(\theta)|\le1\). Since \(f_\theta=f\) and \(g_\theta=g\), rescaling both inputs yields
+\[
+       \left|\int_Y (Tf)g\,d\nu\right|
+       \le M_0^{1-\theta}M_1^\theta\|f\|_p\|g\|_{q'}
+ \tag{S8}
+\]
+for every such simple pair.
+
+To obtain the output norm without assuming a representation of the dual space, write \(u=Tf\). At least one \(q_j\) is finite because \(q<\infty\); hence
+\(B_k=\{1/k\le|u|\le k\}\) has finite measure. On \(B_k\), \(u\) is bounded. Uniform finite-grid approximation there extends (S8) to any bounded measurable \(g\) supported there, in both the pairing and its \(q'\) norm, including \(q'=\infty\). For \(1<q<\infty\), use \(g=1_{B_k}\overline{\sigma_u}|u|^{q-1}\). With \(A_k=\int_{B_k}|u|^q\), (S8) gives
+\[
+ A_k\le M_0^{1-\theta}M_1^\theta\|f\|_p A_k^{1/q'}.
+\]
+If \(A_k=0\) the required bound is immediate; otherwise divide. For \(q=1\), use \(g=1_{B_k}\overline{\sigma_u}\), with norm at most one. Monotone convergence as \(k\to\infty\) proves (S4) for these simple \(f\).
+
+**Proof: the output infinity endpoint.** If \(q=\infty\), then \(q_0=q_1=\infty\). Keep the simple normalized \(f=\sum_{k=1}^N a_k1_{A_k}\) and choose representatives \(v_k\) of the finitely many \(T1_{A_k}\), finite everywhere after null modifications. Formula (S5) expresses \(Tf_z\) as a finite combination of these same \(v_k\); denote that representative by \(V_z(y)\).
+
+For \(j=0,1\) and each rational \(t\), the endpoint bound gives \(|V_{j+it}(y)|\le M_j\) outside a null set. Remove their countable union. For every remaining \(y\), the finite exponential formula is continuous in \(t\); density of the rationals extends both bounds to every real \(t\). Apply the strip lemma to
+\[
+                  M_0^{z-1}M_1^{-z}V_z(y).
+ \tag{S9}
+\]
+It gives \(|V_\theta(y)|\le M_0^{1-\theta}M_1^\theta\) on this one full-measure set. Since \(V_\theta\) represents \(Tf\), (S4) follows. This argument does not require finite-measure tests to determine the infinity norm on \(Y\).
+
+**Proof: the full original domain and the extension.** Given an original \(f\), Lemma 7.1 first places it in \(L^p\). At least one input endpoint exponent is finite. Lemma 7.2 gives simple \(f_k\) of finite-measure support converging in both endpoint input norms and in \(L^p\). The endpoint estimates imply \(Tf_k\to Tf\) in both endpoint output norms.
+
+When \(q<\infty\), choose a finite output endpoint exponent. Norm convergence in that finite exponent has an almost-everywhere convergent subsequence: select errors with summable norms and apply the summable-tail proof in [HA-LCA-08, Lemma 0.1](../prerequisites/HA-LCA-724d1a8/src/the-plancherel-theorem.md#ha-lca-08-lemma-0-1). Fatou applied to \(|Tf_k|^q\) along that subsequence proves (S4) for \(Tf\). When \(q=\infty\), both endpoint output convergences are in the infinity norm, so the bound passes directly to that norm limit.
+
+Finally simple finite-measure-support functions are dense in all of \(L^p(X)\), by Lemma 7.2 applied just to this finite exponent. For an arbitrary \(L^p\) Cauchy approximation, (S4) makes its images Cauchy in \(L^q\). Completeness, including \(q=\infty\), gives a limit independent of the approximants and a linear extension with the same bound. The preceding full-domain bound applied to \(f_k-f\) shows agreement on the original intersection. Density proves uniqueness. \(\square\)
+
+![A segment joining the reciprocal exponent pairs one and zero to one half and one half, and the exact rank-one operator norm four to the power theta.](../figures/interpolation-exponents-and-norm.png)
+
+*Figure 1. The left panel gives \(1/p=1-\theta/2\), \(1/q=\theta/2\); an infinity exponent is represented by reciprocal zero. The right panel gives the exact norm \(4^\theta\) of \(Tf=1_{[0,8]}\int_0^2f\), not merely an upper estimate. The same straight exponent segment has endpoint constants 1 and 4. See Theorem 7.3 and Solution 14.*
+
 ## Exercises
 
 **Exercise 1 (basic).** Put \(f=1_{[0,1]}\) on the line. Find \(f*f*f\), its maximum, and its squared \(L^2\) norm. Check the Young estimates using exponent triples \((1,2,2)\) and \((1,1,2)\).
@@ -670,6 +780,12 @@ Prove \(f\in L^2\cap L^1\), but \(k*f\) has infinite essential supremum. Establi
  \tag{C9}
 \]
 Identify the convolution with the full sum, and explain why cancellation is needed for the bound outside the doubled cubes.
+
+**Exercise 14 (foundation: an exact interpolation segment).** On the real line let \(Tf=1_{[0,8]}\int_0^2f(x)\,dx\). Find its exact \(L^p\to L^q\) norm for all \(1\le p,q\le\infty\). Evaluate it on the segment \(1/p=1-\theta/2,\ 1/q=\theta/2\), including its endpoints, and compare with (S4).
+
+**Exercise 15 (intermediate: the kind of approximation matters).** Prove that finite-measure-support simple functions are dense in \(L^2(\mathbb R)\cap L^\infty(\mathbb R)\) for the maximum of the two norms. Show that compact continuous functions are not dense there, by proving their infinity-norm distance from \(1_{[0,1]}\) is at least \(1/2\).
+
+**Exercise 16 (advanced: a nonsemifinite output space).** Give a one-point measure space \(Y\) on which every nonzero set has infinite measure. Identify \(L^\infty(Y)\), its finite-measure-support simple functions and every \(L^q(Y)\) for finite \(q\). Construct a nonzero operator satisfying Theorem 7.3 with \(q_0=q_1=\infty\), and explain why testing only against finite-measure-support functions would miss its output.
 
 ## Complete solutions
 
@@ -927,7 +1043,23 @@ For \(\Omega=\bigcup_jQ_j^*\), countable subadditivity gives \(|\Omega|\le2^nV\)
 \le C_{n,a}\sum_{j\le N}\|w_j\|_1\).
 Monotone convergence gives the same bound with \(C_{n,a}M\) for the whole sum. Apply \(1_{\{H>t\}}\le(H/t)^a\) outside \(\Omega\), and include its measure, to obtain (C9). Cancellation is the hypothesis of Lemma 6.2 that supplies its integrable \(L^a\) tail. Solution 5's positive interval input has a nonintegrable \(L^2\) tail for \(a=2\), so this step cannot simply omit the zero-mean condition.
 
+**Solution 14.** Hölder gives \(|\int_0^2 f|\le2^{1/p'}\|f\|_p\), including \(p=1\) and \(p=\infty\). Also \(\|1_{[0,8]}\|_q=8^{1/q}\), with \(8^{1/\infty}=1\). Thus
+\[
+                    \|T\|_{p\to q}=2^{1/p'}8^{1/q}.
+ \tag{S10}
+\]
+The upper bound is attained by \(f=1_{[0,2]}\): its norm is \(2^{1/p}\), and its output is \(2\,1_{[0,8]}\). The same calculation includes both infinite endpoints. On the indicated segment \(1/p'=\theta/2\) and \(1/q=\theta/2\), so (S10) is \(16^{\theta/2}=4^\theta\). Its endpoint norms are 1 and 4, giving equality in (S4) at every parameter.
+
+**Solution 15.** Lemma 7.2 gives simultaneous convergence for the list \(2,\infty\), which is precisely convergence in the maximum norm. Suppose a continuous \(g\) had \(\|g-1_{[0,1]}\|_\infty=d<1/2\). On the open negative half-line, continuity upgrades the almost-everywhere bound to \(|g|\le d\) everywhere; a strict violation would persist on an interval of positive measure. Taking limits to zero gives \(|g(0)|\le d\). On \((0,1)\), the same argument gives \(|g-1|\le d\), hence \(|g(0)-1|\le d\). The triangle inequality would imply \(1\le2d<1\). Therefore the distance is at least \(1/2\), even without requiring compact support. Measurable simple approximation and continuous approximation have different endpoint behavior.
+
+**Solution 16.** Let \(Y=\{y_0\}\), with measure zero on the empty set and infinity on \(Y\). There are no nonempty null sets. Every scalar value is an \(L^\infty\) function, and its norm is its absolute value. For finite \(q\), a nonzero scalar has infinite \(q\)-th power integral, so \(L^q(Y)=\{0\}\). The only finite-measure-support simple function is zero.
+
+Take \(X=\{x_0\}\) with mass one, and \(Tf(y_0)=f(x_0)\). All input \(L^p(X)\) norms are the absolute value. Thus for any \(p_0,p_1\) and \(q_0=q_1=\infty\), both endpoint constants are one and the interpolated norm is one. Every pairing against a finite-measure-support simple output test is zero, even when \(Tf\ne0\). The countable-boundary-values argument (S9) instead controls the actual output representative and proves its infinity norm directly.
+
 ## Sources and exact proof dependencies
+
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I*, second edition, Springer, §7.1, Theorem 7.1.12: interpolation between strong operator bounds.
+- [HA-LCA-08](../prerequisites/HA-LCA-724d1a8/src/the-plancherel-theorem.md), Lemmas 0.1 and 7.0: summable tails and the complete strip estimate for finite exponential sums. Theorem 7.3 uses these supplied arguments on arbitrary measure spaces and treats both infinite input and output exponents explicitly.
 
 Terence Tao's freely available [UCLA 247A Notes 3](https://www.math.ucla.edu/~tao/247a.1.06f/notes3.pdf), pages 1–4, 13–14 and 23–24, provides the finite covering, maximal-function, density/differentiation and dyadic-decomposition mechanisms. Lemmas 3.0 and 6.1 above supply the full estimates and differentiation proof, including the strong maximal bound directly from level sets. No interpolation theorem is left as an external prerequisite.
 

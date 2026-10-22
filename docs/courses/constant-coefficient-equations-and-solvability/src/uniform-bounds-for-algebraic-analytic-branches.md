@@ -1,6 +1,6 @@
 # Uniform bounds for algebraic analytic branches
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A single algebraic root can be bounded using its leading coefficient. Uniform estimates for a family are more delicate: a leading coefficient can vanish in a limit, and a nearby polynomial can have extra roots far away. We use a circle in the root variable as a barrier, then move that barrier along regular spatial paths. This gives uniform analytic-branch bounds without dividing by a coefficient which might tend to zero.
 

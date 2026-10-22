@@ -387,4 +387,4 @@ Its symbol is the displayed matrix times \(\eta\). Although \(BA=I\), conjugatio
 
 - [Hörmander IV, §25.3] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, Springer, 1985, Theorem 25.3.1, Corollary 25.3.2, Proposition 25.3.3, Definition 25.3.4 and Theorem 25.3.5.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026.  Original text: public domain (CC0).*

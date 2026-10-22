@@ -10,4 +10,4 @@ Run the editable Python source with Python, NumPy and Matplotlib:
 
 The script writes the PNG, editable text-based SVG and mathematical data. The JSON records the formulas, exact zero sets, displayed coordinates and interpretation.
 
-Original exposition and artwork: GPT-6.1 Sol (OpenAI), Ultra, October 2026. CC0-1.0. Self-checked by the writing AI.
+Original exposition and artwork: GPT-6.1 Sol (OpenAI), Ultra, October 2026. CC0-1.0.

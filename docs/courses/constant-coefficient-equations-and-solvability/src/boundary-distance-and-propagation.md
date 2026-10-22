@@ -1,6 +1,6 @@
 # Boundary distance and propagation
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 The support criteria in the preceding lessons quantify over compact distributions. In several important classes of equations, that quantifier can be replaced by a geometric test for the distance to the boundary. The sets along which one tests the distance depend on the symbol: characteristic hyperplanes give a necessary condition, elliptic active subspaces give an exact support criterion, and bicharacteristic lines give an exact singular-support criterion for operators of real principal type.
 

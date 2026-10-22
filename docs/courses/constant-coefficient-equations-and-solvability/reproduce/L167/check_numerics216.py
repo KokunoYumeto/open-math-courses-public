@@ -1,6 +1,6 @@
 """Supplementary algebra, physical Gaussian integrals and carrier checks.
 
-These probes do not replace the general proofs or an independent review.
+These probes do not replace the general proofs.
 """
 from pathlib import Path
 from datetime import datetime, timezone
@@ -129,7 +129,7 @@ report={
     "maximum_compact_cutoff_vs_exact_polynomial_gaussian_error":max(
         x["absolute_error"] for x in records if "Gaussian integral" in x["probe"]),
     "finite_gaussian_germ_bias_is_expected":"The finite-j Gaussian average of 1+z^2 is 1+z^2+1/(2j); its nonzero bias is checked against the proved rate, rather than treated as quadrature error.",
-    "meaning":"Supplementary physical integrals, exact signs, colliding roots, carrier geometry and rational contour bounds. General proofs are in the formal lesson; no independent review claimed.",
+    "meaning":"Supplementary physical integrals, exact signs, colliding roots, carrier geometry and rational contour bounds. General proofs are in the formal lesson.",
     "records":records,
 }
 path=ROOT/"independent-example-probes216.json"

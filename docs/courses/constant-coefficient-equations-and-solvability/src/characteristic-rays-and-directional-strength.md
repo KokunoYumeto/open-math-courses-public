@@ -1,6 +1,6 @@
 # Characteristic rays and directional strength
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Original expression: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Original expression: CC0.*
 
 Directional strength measures only the derivatives along one normal. A wave symbol can therefore have bounded directional strength on a characteristic ray even though its full strength grows there. A linear perturbation that grows along that ray supplies the real-frequency construction. Homogeneity gives a second route: either a flat function of the normal is already a solution, or a common directional zero yields the growing ray. These arguments also explain why elliptic symbols cannot meet the real-frequency hypothesis.
 

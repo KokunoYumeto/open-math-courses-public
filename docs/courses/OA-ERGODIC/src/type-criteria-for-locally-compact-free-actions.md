@@ -1,6 +1,6 @@
 # Type criteria for locally compact free actions
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), September 2026. Original text is public domain (CC0).*
 
 ## Introduction
 
@@ -91,7 +91,7 @@ where \((L_g\eta)(w)=\eta(g^{-1}w)\).
 
 The multiplication algebra on \(L^2(G,m)\) is maximal abelian. For completeness, choose an everywhere positive \(q\in L^2(G,m)\). If \(T\) commutes with multiplication, then on vectors \(fq\), with \(f\) bounded, it has the form \(Tfq=fTq\). Writing \(a=Tq/q\), the norm bound on indicator multiples of \(q\) proves \(|a|\leq\|T\|\) almost everywhere. Those vectors are dense, so \(T=M_a\).
 
-A multiplier commuting with every \(L_g\) satisfies \(a(gw)=a(w)\) almost everywhere for each fixed \(g\). Choose a Borel representative. Fubini makes this equality hold for almost every pair \((g,w)\). For almost every fixed \(w\), the nonsingular bijection \(g\mapsto gw\) then shows that \(a\) equals the constant \(a(w)\) Haar-almost everywhere. Thus the commutant of \(\{M_f,L_g\}\) is scalar. The bicommutant theorem proves that these operators generate \(B(L^2(G))\). Equation (1.6) now proves (1.4), including the multiplicity in the regular representation.
+A multiplier commuting with every \(L_g\) satisfies \(a(gw)=a(w)\) almost everywhere for each fixed \(g\). Choose a Borel representative. Fubini makes this equality hold for almost every pair \((g,w)\). For almost every fixed \(w\), the nonsingular bijection \(g\mapsto gw\) then shows that \(a\) equals the constant \(a(w)\) Haar-almost everywhere. Thus the commutant of \(\{M_f,L_g\}\) is scalar. The bicommutant theorem proves that these operators generate \(B(L^2(G))\). Equation (1.6) proves (1.4), including the multiplicity in the regular representation.
 
 For finite \(G\), \(L^2(G)\) has dimension \(|G|\). For infinite \(G\), arbitrarily many distinct points have disjoint relatively compact open neighborhoods of positive Haar measure. Their normalized indicators give arbitrarily large orthonormal families. Separability then gives countably infinite dimension. \(\square\)
 

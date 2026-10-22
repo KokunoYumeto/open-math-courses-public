@@ -186,4 +186,4 @@ The square root in (16.9) comes from the squared-norm characterization of index.
 - Alain Connes, [*On the classification of von Neumann algebras and their automorphisms*](https://repo-archives.ihes.fr/FONDS_IHES/I_Prepublications/CONNES/1976-1984/P_76_132/P_76_132_web.pdf), IHÉS preprint IHES/P/76/132, 1976.
 - Sorin Popa, [*Classification of subfactors: the reduction to commuting squares*](https://gdz.sub.uni-goettingen.de/download/pdf/PPN356556735_0101/LOG_0008.pdf), Inventiones Mathematicae 101 (1990), 19–43.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Public domain (CC0).*

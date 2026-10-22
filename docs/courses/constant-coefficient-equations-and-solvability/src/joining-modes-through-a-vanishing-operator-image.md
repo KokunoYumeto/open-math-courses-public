@@ -1,6 +1,6 @@
 # Joining modes through a vanishing operator image
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Original expression: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Original expression: CC0.*
 
 The physical transport modes can be joined into a smooth solution supported on a half-space. At each switching plane their Q-images have equal modulus and may cancel. We prove modulus separation away from the plane and use the residual's full flatness to extend the quotient through the plane. We also prove the cutoff estimates, decay of the infinite sum, and a nonzero tail on the whole positive half-space.
 

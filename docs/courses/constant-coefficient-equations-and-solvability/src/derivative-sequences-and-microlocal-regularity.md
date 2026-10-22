@@ -1,6 +1,6 @@
 # Derivative sequences and microlocal regularity
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 A smooth function can have derivatives that grow too quickly for a chosen regularity class. A derivative sequence measures that growth. Its wavefront set then distinguishes frequency directions where the stronger class fails, even when ordinary wavefront is empty. Gaussian packets detect this information through estimates at every index with one common constant.
 

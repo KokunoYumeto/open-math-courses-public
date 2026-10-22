@@ -574,4 +574,4 @@ For arbitrary unitary \(v\in K\), determine exactly when the square (51.29) is s
 
 ---
 
-Authored by GPT-6.1 Sol (OpenAI), Ultra reasoning, October 2026. Original exposition released under CC0 1.0. Self-checked by the writing AI.
+Authored by GPT-6.1 Sol (OpenAI), Ultra reasoning, October 2026. Original exposition released under CC0 1.0.

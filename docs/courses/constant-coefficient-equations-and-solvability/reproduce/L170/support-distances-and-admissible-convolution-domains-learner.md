@@ -1,6 +1,6 @@
 # Support distances and admissible convolution domains
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A convolution equation has a solution domain and an equation domain. Their compatibility says that every translated kernel support fits. A stronger support condition says that tests cannot escape toward the equation boundary while their transpose convolutions stay in a fixed compact set. We prove that this condition is exactly preservation of the distance from the two domain complements.
 

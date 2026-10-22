@@ -11,4 +11,4 @@ The figure program writes two PNG/SVG pairs and a coordinate-and-formula descrip
 
 The check program uses exact fractions for two sparse convolution inverses and the stabilized weight recurrence. It uses 65-digit arithmetic for the complex sine identity, canonical-profile error bound, disk average, actual smooth probability bump and shifted complex distributional transpose. Its local report is supplementary evidence, rather than a replacement for the proofs.
 
-Original chapters, programs and illustrations are public domain under CC0. The DejaVu font retains its separate licence. SVG paths preserve the rendered labels, and the complete figure program and formula description provide editable sources. The temporary private Matplotlib configuration is removed when the figure program finishes.
+Original chapters, programs and illustrations are public domain under CC0. The DejaVu font retains its separate licence. SVG paths preserve the rendered labels, and the complete figure program and formula description provide editable sources.

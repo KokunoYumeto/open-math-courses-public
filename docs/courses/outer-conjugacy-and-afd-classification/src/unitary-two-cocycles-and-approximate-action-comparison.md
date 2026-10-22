@@ -450,7 +450,7 @@ The present lesson supplies unitary two-cocycle correction and the centrally non
 
 **Exercise 9.6 (a bound rather than equality). Level 1.** Compute the bound in Figure 1 when all six projection weights are \(1/6\).
 
-*Solution.* Both the uncovered mass and the right-boundary mass are \(1/6\). Equation (5.5) bounds the squared norm by \(4/3\), so the norm is at most \(2/\sqrt3\). Additional cancellation can occur on the bad part; equality is not asserted. The finite cyclic models checking the formula have error fractions strictly below the bound.
+*Solution.* Both the uncovered mass and the right-boundary mass are \(1/6\). Equation (5.5) bounds the squared norm by \(4/3\), so the norm is at most \(2/\sqrt3\). Additional cancellation can occur on the bad part; equality is not asserted.
 
 **Exercise 9.7 (scalar isotropy). Level 2.** Verify the sign cocycle after Theorem 3.1 and show that it is not a scalar coboundary.
 

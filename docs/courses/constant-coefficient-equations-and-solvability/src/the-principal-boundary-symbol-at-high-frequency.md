@@ -1,6 +1,6 @@
 # The principal boundary symbol at high frequency
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Separated groups of polynomial roots have analytic factor coefficients even when roots within a group repeat. This lets us scale a mixed boundary determinant to high frequency. Its first nonzero coefficient defines the principal boundary symbol. Cancellations can lower its degree below the degrees suggested by the boundary operators, even to a negative integer.
 
@@ -11,6 +11,39 @@ The hyperbolic-cone theorem is proved in [Real roots and their convex component]
 Basic references are Grubb's *Distributions and Operators* ([author's lecture notes](https://web.math.ku.dk/~grubb/distribution.htm)), Melrose's *Differential Analysis* and Hörmander's treatment of constant-coefficient equations. The written prerequisite lessons supply the auxiliary proofs used below.
 
 ## Coprime factors, including repeated and empty factors
+
+**The original problem and its comparison symbols.** Retain an original polynomial \(\mathsf P\), every original boundary symbol \(\mathsf B_j\), the real barrier \(\tau_0\), and independent original frequency vectors \(N_{\!o},\theta_o\). Choose a real invertible matrix \(E\) with \(Ee_1=\theta_o\), \(Ee_n=N_{\!o}\), and put
+\[
+y=E^Tx,\quad \sigma=\tau_0-1,\quad
+P(z)=\mathsf P(Ez+i\sigma N_{\!o}),\quad
+B_j(z)=\mathsf B_j(Ez+i\sigma N_{\!o}).
+\tag{OC1}
+\]
+The symbols \(P,B_j\) in the normalized calculation below mean exactly (OC1), including the shift of every boundary symbol. Its physical coordinates \((a,x')=(a,z,t)\) are these \(y\)-coordinates. In particular \(a=\theta_o\cdot x\) and \(t=N_{\!o}\cdot x\). The equation polynomial has barrier one, its principal cone is \(\Gamma_E=E^{-1}\Gamma(\mathsf P_m,N_{\!o})\), and its positive, negative and zero normal counts are those of the original principal polynomial in this basis. No lower coefficient of an original symbol is omitted.
+
+Write \(u_E(y)=u(E^{-T}y)\). For a scalar solution, the exact correspondence is
+\[
+v(y)=e^{\sigma y_n}u(E^{-T}y),\qquad
+u(x)=e^{-\sigma N_{\!o}\cdot x}v(E^Tx).
+\tag{OC2}
+\]
+The product and chain rules give \(P(D_y)v=e^{\sigma y_n}(\mathsf P(D_x)u)(E^{-T}y)\) and the identical formula for each \(B_j,\mathsf B_j\), including boundary traces. These identities hold for distributions by the definition of pullback under an invertible linear map and by distributional differentiation. Smoothness, nonvanishing and support are preserved. Flatness at initial time is preserved by the finite Leibniz sum in every derivative order. The scalar pullback \(v(E^Tx)\) is \(|\det E|^{-1}(E^{-T})_*v\) for distributions; determinant kernels use the pushforward, with its Jacobian, as specified in [Boundary determinants as causal Fourier kernels, (24d)–(24e)](boundary-determinants-as-causal-fourier-kernels.md).
+
+Let \(\mathsf L_E\) be the determinant of the unshifted coordinate symbols \(\mathsf P(Ez),\mathsf B_j(Ez)\), and let \(U_E\) be its original-barrier kernel. With \(N'=e_{n-1}\), the normalized determinant and kernel satisfy
+\[
+L^\partial(z')=\mathsf L_E(z'+i\sigma N'),\qquad
+L_0=e^{\sigma t}U_E .
+\tag{OC3}
+\]
+These are the simultaneous-symbol identities (24a)–(24c) of the linked kernel proof. The normalized \(L_0\) is tempered; no temperedness of \(U_E\) is inferred. Its original Fourier–Laplace interpretation is (18c) there. For properly defined convolution, multiplication by this exponential respects convolution: on a compact output test, properness restricts the pair of input supports to a compact set, and \(e^{\sigma(s+t)}=e^{\sigma s}e^{\sigma t}\) inside the distributional tensor pairing. Consequently
+\[
+\begin{gathered}
+L_0*_{x'}v(a,\cdot)\\
+=e^{\sigma t}\bigl(U_E*_{x'}u_E(a,\cdot)\bigr).
+\end{gathered}
+\tag{OC4}
+\]
+This formula transports determinant annihilation and all support arguments back to the original mixed problem. The exponentially weighted kernel is used whenever tempered Fourier arguments are required.
 
 Let \(g_+\) and \(g_-\) be monic polynomials of degrees \(h\) and \(\ell\), with no common root. A degree-zero monic factor is one. Put \(d=h+\ell\), and let \(E_a\) be the vector space of polynomials of degree strictly below \(a\), with \(E_0=\{0\}\). The linear map
 \[
@@ -223,6 +256,14 @@ One fixed admissible \(c\) remains admissible in a neighborhood of \(z\), which 
 whenever \(\lambda\ne0\). Every point can be brought into \(\Omega'\), so this also proves uniqueness of a homogeneous extension. When the tube is the entire quotient space, analyticity at zero and positive homogeneity show by its Taylor series that a nonzero \(\Lambda_0\) is a homogeneous polynomial of nonnegative degree; equation 18 is valid there too.
 
 Since \(\pi\) is complex-linear, \(\mathscr D\) is also the projection of the full complex saturation \(\bigcup_{c\ne0}c(\mathbb R^n-i\Gamma)\). Thus the construction is invariantly defined on the quotient by \(\mathbb C\theta\), rather than tied to a chosen zero normal representative. We call \(\widehat\Lambda_0\) the principal boundary symbol. This use of \(\Lambda_0\) keeps it distinct from the causal inverse distribution \(L_0\) of [Boundary determinants as causal Fourier kernels](boundary-determinants-as-causal-fourier-kernels.md) and [Boundary determinants annihilate causal solutions](boundary-determinants-annihilate-causal-solutions.md).
+
+**Principal scaling for the original determinant.** The unshifted determinant \(\mathsf L_E\) has the same analytic scaling construction above. If its first nonzero scaling degree is \(\kappa\), write \(\Lambda_{\!o}(\eta',\varepsilon)=\varepsilon^\kappa\mathsf L_E(\eta'/\varepsilon)\). From (OC3), at positive \(\varepsilon\) in the common tube,
+\[
+\varepsilon^\kappa L^\partial(\eta'/\varepsilon)
+=\Lambda_{\!o}(\eta'+i\sigma\varepsilon N',\varepsilon).
+\tag{OC5}
+\]
+The right side is holomorphic at \(\varepsilon=0\). Its zero-scale value is \(\Lambda_{\!o}(\eta',0)\), which is not identically zero. Thus its first nonzero degree remains \(\kappa\), including negative degrees, and its principal boundary symbol is the original one expressed in the basis \(E\). This argument uses the full determinant scaling; it does not infer the first nonzero term merely by discarding lower boundary coefficients after cancellations. The normal counts, selected factorization and every boundary operator in (OC5) are those fixed by (OC1) and (OC3).
 
 ## Exercises with complete solutions
 

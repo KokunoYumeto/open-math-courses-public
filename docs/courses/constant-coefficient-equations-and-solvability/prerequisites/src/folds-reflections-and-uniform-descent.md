@@ -363,4 +363,4 @@ The positive square-root branch near zero is smooth. It satisfies \(s_*(1+s_*)=-
 - [Hörmander III, Appendix C.4] Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, corrected second printing, Springer, 1994, Definition C.4.1, Theorem C.4.2, Corollary C.4.3 and Theorems C.4.4–C.4.5. The explicit controlled extension here proves the needed uniform parameter statement directly. Theorems C.4.6–C.4.8 and §21.4 supply the later simultaneous geometry targets.
 - [Hörmander IV, §25.3] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, Springer, 1985, equations 25.3.7–25.3.12 for the later Airy representation, coefficient orders and negative-\(i\) odd critical coefficient. The complete representation and continuity proofs remain separate from the smooth critical-coefficient realization proved here.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text and coordinate figure: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026.  Original text and coordinate figure: public domain (CC0).*

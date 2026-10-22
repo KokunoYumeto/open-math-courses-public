@@ -41,6 +41,275 @@ For the first, square both sides and use
 For the second, the unit ball is contained in a finite cube. On each shell
 \(2^j\le|x|<2^{j+1}\), \(j\ge0\), the integrand is at most \(2^{-j(n+1)}\) and the shell lies in a cube of volume \(2^{n(j+2)}\). The integral is bounded by a constant times \(\sum_{j\ge0}2^{-j}\). In particular a smooth function bounded by \(C\langle x\rangle^N\) defines a tempered distribution, with a bound by \(P_{N+n+1}\).
 
+## Complete test spaces and exponential characters
+
+The Fourier kernel belongs to a rigid family of functions. Before using that rigidity, we make the topology of the tests explicit.
+
+**Proposition 0.1 (Schwartz completeness).** The space \(\mathcal S(\mathbb R^n)\), with the seminorms in F1 or the equivalent \(P_N\) above, is Fréchet. Here \(n\ge1\); for \(n=0\) it is simply \(\mathbb C\).
+
+**Proof.** Write \(p_{\alpha,\beta}=q_{\alpha,\beta}\) for the monomial seminorms in F1. The [functional foundations](../prerequisites/U011-free-foundations/functional-foundations-U008.md), §§14.1–14.2, prove the complete-metric criterion and the coordinate-segment argument for smooth limits. The following argument is the Schwartz completeness proof from the earlier programme lesson *Banach estimates, quotient spaces and compact parameter arguments*, §18:
+
+Completeness for the exact seminorms also follows. If \(u_l\) is Cauchy for every \(p_{\alpha,\beta}\), the derivatives converge uniformly on every compact set because \(p_{0,\beta}\) controls them. The full coordinate-segment FTC argument from the smooth-completeness proof makes the common limit \(u\) smooth with those exact derivative limits. For each fixed \(\alpha,\beta\), the uniform Cauchy inequality
+\(|x^\alpha\partial^\beta(u_l-u_k)(x)|<\varepsilon\)
+for every \(x\) and all large \(l,k\) passes to the pointwise limit in \(k\). Taking the same supremum shows
+\(p_{\alpha,\beta}(u_l-u)\leq\varepsilon\).
+In particular every seminorm of \(u\) is finite. Enumerating the multiindices and taking finite maxima gives the exact locally convex topology and a complete separating metric by the earlier explicit Fréchet metric construction. No support or coordinate bound was removed.
+
+The equivalence with \(P_N\) was proved above. Consequently this is completeness for the actual test topology, rather than merely convergence on compact sets. In dimension zero there is one value and the assertion is scalar completeness. \(\square\)
+
+**Theorem 0.2 (all continuous exponential characters).** A continuous function \(h:\mathbb R^n\to\mathbb C\), not identically zero, satisfying
+\[
+                     h(x+y)=h(x)h(y)
+ \tag{C1}
+\]
+has the unique form
+\[
+                   h(x)=e^{a\cdot x},\qquad a\in\mathbb C^n.
+ \tag{C2}
+\]
+It is bounded on all of \(\mathbb R^n\) if and only if \(\operatorname{Re}a=0\), in which case \(|h|=1\). More generally, every nonzero continuous simultaneous translation eigenfunction is a nonzero constant times a function in (C2).
+
+**Proof.** Taking a point where \(h\ne0\) in (C1) gives \(h(0)=1\). Then \(h(x)h(-x)=1\), so it never vanishes. By continuity, choose a nonnegative smooth compactly supported \(\rho\), of integral one, so close to zero that \(|h(z)-1|<1/2\) on its support. A nonzero bump can be divided by its positive integral to give such a \(\rho\). Thus
+\[
+        A=\int h(z)\rho(z)\,dz,\qquad |A-1|<1/2,
+\]
+is nonzero. Translation substitution and (C1) give
+\[
+ A h(x)=\int h(y)\rho(y-x)\,dy.
+ \tag{C3}
+\]
+The right side is smooth. Indeed, for \(x\) in any fixed compact neighborhood, the integrand is supported in one compact set of \(y\)'s; \(h\) is bounded there. Every \(x\)-derivative of \(\rho(y-x)\) is bounded and supported in that same set. Dominated differentiation gives each derivative, with its factor \((-1)^{|\alpha|}\). Division by \(A\) proves smoothness of \(h\) without assuming it in advance.
+
+Differentiate (C1) in \(y_j\) at zero and put \(a_j=\partial_j h(0)\). This gives \(\partial_jh=a_jh\). All partial derivatives of \(e^{-a\cdot x}h(x)\) vanish. The fundamental theorem along coordinate segments makes it constant on \(\mathbb R^n\), and its value at zero is one. This proves (C2), with uniqueness from its derivatives at zero. The exponential addition law proves the converse.
+
+Write \(a=r+ib\), with real \(r,b\). Then \(|h(x)|=e^{r\cdot x}\). If \(r\ne0\), setting \(x=tr\), \(t\to+\infty\), gives \(e^{t|r|^2}\to\infty\); if \(r=0\), the modulus is one. Finally suppose \(f(x+y)=c(y)f(x)\), with \(f\) continuous and nonzero. If \(f(0)=0\), setting \(x=0\) would force \(f\equiv0\). Hence \(h=f/f(0)\) is continuous, \(c(y)=h(y)\), and (C1) follows. \(\square\)
+
+![An exponential character with increasing modulus and a unit-modulus character, with their exact moduli on both sides of the origin.](../figures/exponential-character-growth.png)
+
+*Figure 1. The sampled curves are \(e^{(1/4+i)t}\) and \(e^{it}\), for \(-4\le t\le4\). The right panel plots their exact modulus formulas on the same interval. Boundedness concerns the entire real line; the proof uses the ray \(x=t\operatorname{Re}a\), not the finite plot. See Theorem 0.2 and Solution 9.*
+
+## Coordinate ideals and scalar operators
+
+Evaluation at a point is controlled by a finite algebraic identity in the Schwartz space. That identity permits a conclusion about an operator even when no continuity of that operator is known.
+
+**Lemma 0.3 (division of a vanishing test).** Fix \(y\in\mathbb R^n\). If \(\phi\in\mathcal S\) and \(\phi(y)=0\), there are \(\phi_1,\ldots,\phi_n\in\mathcal S\) such that
+\[
+                    \phi(x)=\sum_{j=1}^n(x_j-y_j)\phi_j(x).
+ \tag{C4}
+\]
+
+**Proof.** Let \(\chi\in C_c^\infty\) be one near \(y\). Define
+\[
+ \begin{split}
+ H_j(x)&=\int_0^1\partial_j\phi\bigl(y+t(x-y)\bigr)\,dt,\\
+ \phi_j(x)&=\chi(x)H_j(x)
+       +(1-\chi(x))\,\frac{x_j-y_j}{|x-y|^2}\phi(x).
+ \end{split}
+ \tag{C5}
+\]
+The second summand is defined to be zero on a neighborhood of \(y\). Each \(H_j\) is smooth: every derivative may pass under the finite integral, on each compact set, by the continuous derivative bounds. Thus \(\chi H_j\) is compactly supported and smooth. The other multiplier is smooth everywhere and all its derivatives have polynomial bounds: away from a fixed ball about \(y\), differentiate the displayed rational function; on the remaining compact annulus they are bounded. F1's multiplier estimate makes its product with \(\phi\) Schwartz. The fundamental theorem on the segment from \(y\) to \(x\) gives \(\sum_j(x_j-y_j)H_j(x)=\phi(x)-\phi(y)\). Summing (C5), using \(\phi(y)=0\), proves (C4). \(\square\)
+
+**Theorem 0.4 (the algebraic commutant).** Let \(T:\mathcal S(\mathbb R^n)\to\mathcal S(\mathbb R^n)\) be complex linear. Suppose, for every test and every \(j\),
+\[
+                 T(x_j\phi)=x_jT\phi,\qquad
+                 T(D_j\phi)=D_jT\phi,\qquad D_j=-i\partial_j.
+ \tag{C6}
+\]
+Then \(T=cI\) for some \(c\in\mathbb C\). Continuity of \(T\) is not a hypothesis.
+
+**Proof.** If \(\phi(y)=0\), the finite identity (C4), linearity and the first part of (C6) imply
+\[
+                  (T\phi)(y)=\sum_j(y_j-y_j)(T\phi_j)(y)=0.
+ \tag{C7}
+\]
+Let \(g(x)=e^{-|x|^2/2}\), a nowhere-zero Schwartz function by F3. For any \(\phi\), the test \(\phi-\phi(y)g/g(y)\) vanishes at \(y\). Applying (C7) shows
+\[
+              (T\phi)(y)=c(y)\phi(y),\qquad c(y)=\frac{(Tg)(y)}{g(y)}.
+ \tag{C8}
+\]
+This coefficient is smooth, since \(Tg\in\mathcal S\subset C^\infty\) and \(g\) never vanishes. The second part of (C6) now says \((D_jc)\phi=0\) for every test; choosing \(\phi=g\) gives \(D_jc=0\). The coordinate-segment fundamental theorem makes \(c\) constant. This argument uses only finite algebraic identities before (C8), so it never passes an unproved operator limit. If \(n=0\), complex linearity on \(\mathbb C\) already gives the conclusion. \(\square\)
+
+## An algebraic normalization of Fourier inversion
+
+**Corollary 0.5.** The Fourier seminorm and Gaussian calculations in F2–F3, together with Theorem 0.4, give
+\[
+                   F^2=(2\pi)^nR,\qquad
+                   F^{-1}=(2\pi)^{-n}RF,
+                   \qquad R\phi(x)=\phi(-x).
+ \tag{C9}
+\]
+This proves both inverse identities independently of the Gaussian regularization argument in F4.
+
+**Proof.** Let \(X_j\) denote multiplication by the \(j\)-th coordinate. The proved identities in F2 are
+\[
+                      FD_j=X_jF,\qquad FX_j=-D_jF.
+ \tag{C10}
+\]
+Consequently \(F^2D_j=-D_jF^2\) and \(F^2X_j=-X_jF^2\). Reflection anticommutes with both \(D_j\) and \(X_j\), so \(RF^2\) commutes with both. F2 makes it a linear endomorphism of \(\mathcal S\). Theorem 0.4 gives \(RF^2=cI\). F3's direct Gaussian integral, which uses no inversion, gives \(Fg=(2\pi)^{n/2}g\) for the even function \(g=e^{-|x|^2/2}\). Hence \(c=(2\pi)^n\). Since \(R^2=I\), this proves the first part of (C9).
+
+Direct substitution in the Fourier integral gives \(FR=RF\). Thus, putting \(G=(2\pi)^{-n}RF\),
+\[
+ GF=(2\pi)^{-n}RF^2=I,\qquad
+ FG=(2\pi)^{-n}FRF=(2\pi)^{-n}RF^2=I.
+ \tag{C11}
+\]
+F2 already proves continuity of \(F\), \(R\), and \(G\), so this is a topological isomorphism. Dimension zero again gives the identity. \(\square\)
+
+## Two semicircles and the inversion constant
+
+The contour and cutoff arguments below give two further routes to inversion. The [contour foundations](../prerequisites/U011-free-foundations/complex-contours-U070.md), §16.1, proves the oriented integral estimate and the existence of a primitive for a holomorphic function on a disk. Thus an entire function has zero integral around either of the closed semicircular contours used here.
+
+**Proposition 0.6 (the two contour contributions).** For \(f\in C_c^\infty(\mathbb R)\), set
+\[
+ H_+(z)=\int_0^\infty f(t)e^{-itz}\,dt,\qquad
+ H_-(z)=\int_{-\infty}^0 f(t)e^{-itz}\,dt.
+ \tag{I1}
+\]
+Both functions are entire, and
+\[
+ \lim_{R\to\infty}\int_{-R}^R H_+(s)\,ds
+ =\lim_{R\to\infty}\int_{-R}^R H_-(s)\,ds
+ =\pi f(0).
+ \tag{I2}
+\]
+Consequently \(\int_{\mathbb R}Ff=2\pi f(0)\). The integrals in (I2) are symmetric improper integrals; their sum is the absolutely convergent integral of the Schwartz function \(Ff\).
+
+**Proof.** Compact support bounds every derivative of the exponential integrand uniformly for \(z\) in a compact set. Difference quotients and dominated convergence prove complex differentiability of each integral, at every \(z\). For \(z\ne0\), two integrations by parts give
+\[
+ H_+(z)=\frac{f(0)}{iz}+\frac{f'(0)}{(iz)^2}
+       +\frac1{(iz)^2}\int_0^\infty f''(t)e^{-itz}\,dt.
+ \tag{I3}
+\]
+On \(\operatorname{Im}z\le0\), the exponential has modulus at most one for \(t\ge0\). Hence the last two terms have modulus at most \((|f'(0)|+\|f''\|_{L^1(0,\infty)})|z|^{-2}\), uniformly on that half-plane. Reflection, applied to \(f(-t)\) and \(-z\), likewise gives
+\[
+ H_+(z)=\frac{f(0)}{iz}+O(|z|^{-2})\quad(\operatorname{Im}z\le0),
+ \qquad
+ H_-(z)=-\frac{f(0)}{iz}+O(|z|^{-2})\quad(\operatorname{Im}z\ge0).
+ \tag{I4}
+\]
+
+Traverse the real segment from \(-R\) to \(R\). For \(H_+\), return from \(R\) to \(-R\) on \(z=Re^{i\theta}\), \(0\ge\theta\ge-\pi\). This closed contour is clockwise. Since \(dz/(iz)=d\theta\), its arc integral is \(-\pi f(0)+O(R^{-1})\): the arc length is \(\pi R\) and the remainder is \(O(R^{-2})\). The entire contour integral is zero, so the segment integral tends to \(\pi f(0)\).
+
+For \(H_-\), return on the upper arc, \(0\le\theta\le\pi\). The contour is counterclockwise, but the leading term of \(H_-\) has the minus sign in (I4). Its arc integral is again \(-\pi f(0)+O(R^{-1})\). The segment therefore has the same limit. Adding proves the assertion, since \(H_++H_-=Ff\) on the real axis and F2 makes this sum Schwartz. \(\square\)
+
+![The lower clockwise contour for the positive half-line and the upper counterclockwise contour for the negative half-line, each with a real segment directed from minus R to R.](../figures/fourier-semicircle-signs.png)
+
+*Figure 2. Both real segments run from \(-R\) to \(R\), and both arcs return from \(R\) to \(-R\). The lower arc has \(\Delta\theta=-\pi\) and leading coefficient \(f(0)\); the upper arc has \(\Delta\theta=\pi\) and leading coefficient \(-f(0)\). Each arc therefore contributes \(-\pi f(0)\) in the limit. The schematic is drawn with \(R=1\); (I4) bounds the error for every radius. See Proposition 0.6.*
+
+This also normalizes the algebraic proof in every dimension without using a Gaussian. The commutant calculation in Corollary 0.5, before evaluating its scalar, gives \(F^2=cR\). Choose a compact smooth \(\chi\) with \(\chi(0)=1\) and put \(v(x)=\prod_{j=1}^n\chi(x_j)\). Absolute Fubini gives \(Fv(\xi)=\prod_jF\chi(\xi_j)\), and Proposition 0.6 gives
+\[
+ c=(F^2v)(0)=\int Fv=\prod_{j=1}^n\int F\chi=(2\pi)^n.
+ \tag{I5}
+\]
+All factors are integrable Schwartz functions. In dimension zero the empty product is one and the transform is the identity.
+
+## Inversion with an arbitrary Schwartz cutoff
+
+**Proposition 0.7 (complex cutoffs).** Let \(\psi,\phi\in\mathcal S(\mathbb R^n)\), with \(\psi(0)=1\). No sign, reality, symmetry or support condition is imposed on \(\psi\). For \(\varepsilon>0\), define
+\[
+ J_\varepsilon(x)=\int\psi(\varepsilon\xi)F\phi(\xi)e^{ix\cdot\xi}\,d\xi.
+ \tag{I6}
+\]
+Then
+\[
+ J_\varepsilon(x)=\int\phi(x+\varepsilon z)F\psi(z)\,dz,
+ \qquad J_\varepsilon(x)\longrightarrow(2\pi)^n\phi(x).
+ \tag{I7}
+\]
+The convergence is uniform in \(x\), and also after any fixed number of derivatives in \(x\).
+
+**Proof.** Substituting the defining integral for \(F\phi\) in (I6) gives an absolutely integrable double integral, with absolute integral at most
+\[
+              \|\phi\|_1\,\varepsilon^{-n}\|\psi\|_1.
+ \tag{I8}
+\]
+Integrate in \(\xi\) first. Scaling gives \(\varepsilon^{-n}F\psi((y-x)/\varepsilon)\); then \(y=x+\varepsilon z\) proves (I7)'s identity, including its plus sign and the cancelling Jacobian.
+
+For each fixed \(x\), dominated convergence on the two forms of \(J_\varepsilon\) gives
+\[
+ \int F\phi(\xi)e^{ix\cdot\xi}\,d\xi
+       =\phi(x)\int F\psi(z)\,dz.
+ \tag{I9}
+\]
+The respective bounds are \(\|\psi\|_\infty|F\phi(\xi)|\) and \(\|\phi\|_\infty|F\psi(z)|\). This argument has not used inversion. To determine the right-hand constant, use the product \(v\) from (I5) as \(\phi\), at \(x=0\). The one-dimensional contour computation gives \(\int Fv=(2\pi)^n\), while \(v(0)=1\). Hence \(\int F\psi=(2\pi)^n\). This proves inversion directly from the regularized double integral. Reflection commutes with \(F\), by change of variables, so the resulting \(GF=I\) also gives \(FG=I\).
+
+For the stronger convergence, differentiate the right side of (I7). Each derivative is dominated by \(\|\partial^\alpha\phi\|_\infty|F\psi|\). Since \(\int F\psi=(2\pi)^n\), its difference from the limit is bounded, uniformly in \(x\), by
+\[
+ \int |F\psi(z)|\,
+       \sup_x|\partial^\alpha\phi(x+\varepsilon z)-\partial^\alpha\phi(x)|\,dz.
+ \tag{I10}
+\]
+For fixed \(z\), the supremum tends to zero by the segment FTC and bounded next derivatives. It is at most \(2\|\partial^\alpha\phi\|_\infty\). Dominated convergence proves the claimed uniform limit for every fixed \(\alpha\). \(\square\)
+
+## Integrable inversion and tempered examples
+
+**Proposition 0.8 (integrable transforms and almost-everywhere inversion).** If \(f\in L^1(\mathbb R^n)\), its integral transform is a continuous function vanishing at infinity, with
+\[
+                    \|Ff\|_\infty\le\|f\|_1.
+ \tag{I11}
+\]
+It represents the tempered-distribution transform. If also \(Ff\in L^1\), then the continuous function
+\[
+                  h(x)=(2\pi)^{-n}\int e^{ix\cdot\xi}Ff(\xi)\,d\xi
+ \tag{I12}
+\]
+equals \(f\) almost everywhere. If the chosen representative of \(f\) is continuous, equality holds at every point.
+
+**Proof.** Absolute integration gives (I11). Dominated convergence proves continuity, with integrable majorant \(|f|\) for the exponential kernel. By [integration §15.3](../prerequisites/U011-free-foundations/banach-foundation-bridges.md#15-3-completeness-and-compact-smooth-density), choose \(f_j\in C_c^\infty\) with \(\|f_j-f\|_1\to0\). Then \(Ff_j\to Ff\) uniformly by (I11). Each \(Ff_j\) is Schwartz by F2 and vanishes at infinity. Given an error tolerance, choose one uniform approximant and then its sufficiently large vanishing radius; this proves the same assertion for \(Ff\).
+
+For a Schwartz test \(\theta\), absolute Fubini, bounded by \(\|f\|_1\|\theta\|_1\), gives
+\[
+                  \int Ff\,\theta=\int f\,F\theta.
+ \tag{I13}
+\]
+This is the transpose definition, without a conjugate. The identical calculation for \(G\) includes \((2\pi)^{-n}\). When \(Ff\) is integrable, (I12) therefore represents \(GFf=f\) as tempered distributions, by F5.
+
+We justify the passage from distributional equality to equality of functions. If \(u\in L^1_{\mathrm{loc}}\) annihilates every compact smooth test, choose any compact smooth \(\eta\). Then \(\eta u\in L^1\). For a fixed compact smooth mollifier \(r\) of integral one, every value
+\[
+             (r_\varepsilon*(\eta u))(x)
+                  =\int u(y)\eta(y)r_\varepsilon(x-y)\,dy
+\]
+is zero, because the factor multiplying \(u\) is a compact smooth test. The complete \(L^1\) approximate-identity proof in integration §15.4 gives \(r_\varepsilon*(\eta u)\to\eta u\) in \(L^1\). Thus \(\eta u=0\) almost everywhere. Choose cutoffs equal to one on successively larger balls and take the countable union of the null exceptional sets. This proves \(u=0\) almost everywhere. Apply it to \(f-h\), which is locally integrable because \(h\) is continuous. If both representatives are continuous, a nonzero difference at any point persists on a ball of positive measure, contradicting almost-everywhere equality. \(\square\)
+
+**Proposition 0.9 (weighted measures, compact support and dual operations).** A locally finite complex Radon measure \(\mu\) defines a tempered distribution whenever, for some real \(m\ge0\),
+\[
+                 I_m=\int\langle x\rangle^{-m}\,d|\mu|(x)<\infty.
+ \tag{I14}
+\]
+Every \(L^p\) function for \(1\le p\le\infty\), and every compactly supported distribution, has a unique tempered extension of its compact-test action. Derivatives, multiplication by polynomials and multiplication by Schwartz functions preserve \(\mathcal S'\), continuously for both its weak and strong dual topologies. The Fourier maps \(F,G\) are mutually inverse continuous maps for both topologies.
+
+**Proof.** With any integer \(N\ge m\), absolute variation gives
+\[
+       \left|\int\phi\,d\mu\right|
+       \le I_m\sup_x\langle x\rangle^m|\phi(x)|
+       \le I_mP_N(\phi).
+ \tag{I15}
+\]
+This proves absolute convergence and Schwartz continuity. If \(f\in L^p\), its locally integrable density is a complex measure of variation \(|f|dx\). Hölder gives
+\[
+       \int\langle x\rangle^{-m}|f(x)|\,dx
+       \le\|f\|_p\,\|\langle x\rangle^{-m}\|_{p'},
+       \qquad 1/p+1/p'=1.
+ \tag{I16}
+\]
+For \(p=1\) take \(m=0\); for \(1<p\le\infty\), take an integer \(m>n\). Then \(mp'>n\) when \(p'<\infty\), and the dyadic-shell integral estimate at the start of the lesson makes the second norm finite. In particular \(p=\infty\) uses \(p'=1\). Local integrability itself follows from Hölder on finite-volume compact sets. These arguments cover exactly the stated range \(1\le p\le\infty\).
+
+For a distribution \(u\) with compact support \(K\), choose compact smooth \(\eta=1\) near \(K\) and define its value on a Schwartz test by \(u(\eta\phi)\). The compact-support localization and finite-order estimate in [U004](jets-supported-distributions-and-local-operators.md) and [U008](order-positivity-and-limits.md), Proposition 1.2, give
+\[
+            |u(\eta\phi)|\le C\max_{|\alpha|\le k}
+                                      \|\partial^\alpha(\eta\phi)\|_\infty
+                           \le C'P_k(\phi).
+ \tag{I17}
+\]
+Different choices of \(\eta\) give the same value because their difference vanishes near \(K\). All the extensions above are unique by compact-test density in \(\mathcal S\), proved in F1.
+
+F1 proves continuity of each test operator \(\partial_j\), multiplication by a polynomial, and multiplication by a Schwartz function, with an explicit finite-seminorm bound. Their transposes define the distributional operations; for \(\partial_j u\) the test operator is \(-\partial_j\). For any continuous test operator \(A:\mathcal S\to\mathcal S\), its transpose \(A^tu(\phi)=u(A\phi)\) is weakly continuous by evaluation at \(A\phi\). If \(B\) is a bounded test family, its image \(AB\) is bounded by the finite-seminorm estimates, and
+\[
+                         q_B(A^tu)=q_{AB}(u).
+ \tag{I18}
+\]
+This proves strong continuity as well. F2 and F5 supply these estimates and both inverse identities for the test Fourier maps. Applying the same transpose argument gives their weak and strong continuity and inverse identities on \(\mathcal S'\), with the signs and normalization of (0.1). \(\square\)
+
 ## When the phase absorbs the amplitude
 
 **Theorem 1.1 (an exact growth criterion).** For even positive integers \(m,n\), the smooth function
@@ -161,6 +430,14 @@ P_a(f*h)
 \tag{2.3}
 \]
 The last integral is bounded by \(P_{a+n+1}(h)\int\langle y\rangle^{-n-1}dy\), whose finiteness was proved above. Thus convolution maps these tests into \(\mathcal S\) continuously in each variable. Absolute Fubini and \(x=z+y\) also prove \(F(f*h)=(Ff)(Fh)\), since the absolute double integral is \(\|f\|_1\|h\|_1\).
+
+
+The companion product identity retains the inverse factor:
+\[
+                  F(fh)=(2\pi)^{-n}(Ff)*(Fh).
+ \tag{2.3a}
+\]
+Indeed insert \(h(x)=(2\pi)^{-n}\int e^{ix\cdot\eta}Fh(\eta)\,d\eta\) into \(F(fh)(\xi)\). The double absolute integral is \((2\pi)^{-n}\|f\|_1\|Fh\|_1\). Fubini then gives \((2\pi)^{-n}\int Ff(\xi-\eta)Fh(\eta)\,d\eta\), proving (2.3a) at each frequency. No distributional product of nonsmooth factors is used.
 
 **Proof: smooth parameter tests and growth.** Choose \(|u(\phi)|\le CP_N(\phi)\). Reflection and the weighted inequality show
 \[
@@ -318,6 +595,18 @@ Determine all tempered distributions with \(u=u*h_t\), in every dimension. Use t
 **Exercise 7 (intermediate).** Solve \(Fu=\partial_{\xi_1}^2\delta_{(2,-1)}\) on \(\mathbb R^2\). Give a Schwartz factor fixing \(u\) and determine its local distributional order and its exact Fourier order.
 
 **Exercise 8 (advanced).** Prove that \(e^{5x^2+i e^{x^2}}\) has a tempered extension by performing six integrations by parts on compact tests. Give an absolutely convergent formula on Schwartz tests; the bounded first-primitive argument is insufficient here.
+
+**Exercise 9 (intermediate).** Let \(r,b\in\mathbb R^n\). Determine exactly when the compact-test distribution defined by \(e^{(r+ib)\cdot x}\) has a tempered extension. For the allowed parameters calculate its Fourier transform. Do not infer the obstruction merely from the amplitude of the function.
+
+**Exercise 10 (foundation).** Explain why both families of commutation identities in (C6) are needed. Give a nonscalar endomorphism commuting with every coordinate multiplier, and a nonscalar endomorphism commuting with every derivative.
+
+**Exercise 11 (advanced).** Suppose \(A:\mathcal S\to\mathcal S\) is complex linear and satisfies \(AD_j=X_jA\), \(AX_j=-D_jA\) for every \(j\), with no continuity assumption. Show that \(A=cF\). Determine the scalar if \(Ag=Fg\) for \(g=e^{-|x|^2/2}\).
+
+**Exercise 12 (foundation).** In Proposition 0.6, calculate the two returning arc integrals when \(f(0)=1\). Identify the separate roles of orientation and the sign of the leading coefficient. Explain why the conclusion concerns symmetric improper integrals of \(H_+\) and \(H_-\).
+
+**Exercise 13 (intermediate).** In one dimension choose \(\psi(s)=e^{-s^2}(1+is)\). Compute \(F\psi\), verify its total integral and derive (I7) for this complex cutoff. Give an explicit uniform error bound in terms of \(\varepsilon\), \(\|\phi'\|_\infty\) and a weighted integral of \(|F\psi|\).
+
+**Exercise 14 (advanced).** Explain why the function-space assertion in Proposition 0.9 is restricted to \(p\ge1\). For each \(0<p<1\), give a function in \(L^p(\mathbb R)\) whose ordinary integral against some nonnegative compact smooth test is infinite. Does this rule out every possible distributional extension of its action away from the origin?
 
 ## Solutions
 
@@ -477,8 +766,80 @@ is absolutely convergent on Schwartz tests, with the second integral interpreted
 \]
 Equation (5.1) identifies its value with the original function on compact tests. The cutoff-density proof gives uniqueness. No intermediate unbounded primitive is assumed to be tempered.
 
-## Free sources and exact proof dependencies
+**Solution 9.** If \(r=0\), the function is bounded, so its absolutely convergent pairings on Schwartz tests satisfy \(|u(\phi)|\le\|\phi\|_1\), with the bound (F4). Inversion at \(b\) gives, for every Schwartz \(\psi\),
+\[
+ \int e^{ib\cdot x}F\psi(x)\,dx=(2\pi)^n\psi(b).
+ \tag{C12}
+\]
+Thus \(Fu=(2\pi)^n\delta_b\).
 
+If \(r\ne0\), choose nonnegative nonzero \(\rho\in C_c^\infty\) and set
+\[
+                       \phi_t(x)=e^{-ib\cdot x}\rho(x-tr),
+                       \qquad t\ge1.
+ \tag{C13}
+\]
+These are compact tests, so any extension must take the values
+\[
+ u(\phi_t)=e^{t|r|^2}\int e^{r\cdot z}\rho(z)\,dz.
+ \tag{C14}
+\]
+The integral is a fixed positive constant. Each derivative of \(\phi_t\) is a fixed finite sum of translates of derivatives of \(\rho\), times a modulus-one exponential and powers of \(b\). On its support \(\langle x\rangle\le C(1+t)\). Hence, for every fixed \(N\), \(P_N(\phi_t)\le C_N(1+t)^N\). A tempered extension would obey one such finite-seminorm bound, contradicting (C14): the positive exponential series with a power greater than \(N\) shows that its ratio to \((1+t)^N\) tends to infinity. This uses the actual distributional pairings and excludes even a conditionally defined extension. The \(r=0\) extension is unique by compact-test density F1.
+
+**Solution 10.** For \(n\ge1\), \(X_1\) is a continuous Schwartz endomorphism commuting with all \(X_j\). It is not scalar, since \(x_1g=cg\) would force \(x_1=c\) everywhere. Similarly \(D_1\) commutes with all \(D_j\) but \(D_1g=ix_1g\) excludes scalarity. Direct differentiation gives
+\[
+                   D_1X_1-X_1D_1=-iI.
+ \tag{C15}
+\]
+Thus each example fails the other required family. In dimension zero every complex-linear endomorphism is scalar, so these counterexamples require a positive dimension.
+
+**Solution 11.** Set \(B=GA\), with the two-sided inverse \(G\) proved in Corollary 0.5. Inverting (C10) gives \(GX_j=D_jG\) and \(GD_j=-X_jG\). Therefore
+\[
+ BD_j=GX_jA=D_jB,\qquad
+ BX_j=-GD_jA=X_jB.
+ \tag{C16}
+\]
+Theorem 0.4 gives \(B=cI\), and multiplication by \(F\) yields \(A=cF\). No continuity of \(A\) or \(B\) was used. If \(Ag=Fg\), then \(cFg=Fg\), and \(Fg=(2\pi)^{n/2}g\ne0\) forces \(c=1\).
+
+**Solution 12.** For the lower arc, \(z=Re^{i\theta}\), \(0\ge\theta\ge-\pi\), one has \(\int dz/(iz)=-\pi\). The leading coefficient of \(H_+\) is one, so its arc integral is \(-\pi+O(R^{-1})\). For the upper arc, \(0\le\theta\le\pi\), the same integral is \(\pi\), but the leading coefficient of \(H_-\) is minus one. Its arc integral is again \(-\pi+O(R^{-1})\). Each real segment integral is minus its returning arc integral, hence tends to \(\pi\). Changing only the orientation or only the coefficient would change the conclusion.
+
+On the real axis, (I4) has a \(1/s\) leading term in each half transform when \(f(0)\ne0\). For large \(|s|\), the remainder bound gives \(|H_\pm(s)|\ge |f(0)|/(2|s|)\). Thus neither half transform is absolutely integrable in that case. Their sum is \(Ff\), for which the leading terms cancel and the full Schwartz estimates apply. This distinguishes the two improper limits from their absolutely integrable sum.
+
+**Solution 13.** F3 gives \(F(e^{-s^2})(z)=\sqrt\pi e^{-z^2/4}\). The identity \(F(sv)=i\partial_zFv\), proved in F2, gives
+\[
+                  F\psi(z)=\sqrt\pi e^{-z^2/4}(1+z/2).
+ \tag{I19}
+\]
+The second summand is odd and integrable; the first has integral \(2\pi\), by the Gaussian mass in F3 and the substitution \(z=2t\). Thus \(\int F\psi=2\pi\), even though \(\psi\) is neither real nor even and \(F\psi\) changes sign. Formula (I7) reads
+\[
+ J_\varepsilon(x)=\sqrt\pi\int\phi(x+\varepsilon z)
+                                      e^{-z^2/4}(1+z/2)\,dz.
+\]
+The segment FTC gives the explicit bound
+\[
+ \sup_x|J_\varepsilon(x)-2\pi\phi(x)|
+ \le\varepsilon\|\phi'\|_\infty
+                      \int |z|\,|F\psi(z)|\,dz.
+ \tag{I20}
+\]
+The last integral is finite by Gaussian decay. Applying the same argument to \(\phi^{(k)}\) gives the corresponding derivative bound with \(\|\phi^{(k+1)}\|_\infty\).
+
+**Solution 14.** Choose \(1\le a<1/p\) and put \(f(x)=x^{-a}\boldsymbol1_{(0,1)}(x)\). Then \(\int |f|^p=1/(1-ap)<\infty\), whereas \(\int_0^\delta f=\infty\) for every \(\delta>0\), including logarithmic divergence at \(a=1\). A nonnegative smooth test equal to one near zero therefore has infinite ordinary pairing. Thus \(f\) does not define a regular distribution by locally integrable integration.
+
+This does not exclude an extension from the punctured line. Choose an integer \(k>a-1\) and a compact smooth \(\eta=1\) near zero. For a compact test \(\phi\), set
+\[
+ T(\phi)=\int_0^1 x^{-a}\left[\phi(x)-\eta(x)
+                        \sum_{j=0}^{k-1}\frac{\phi^{(j)}(0)}{j!}x^j\right]dx.
+ \tag{I21}
+\]
+Near zero, Taylor's integral remainder bounds the bracket by \(C x^k\|\phi^{(k)}\|_\infty\); since \(k-a>-1\), it is integrable against \(x^{-a}\). Away from zero the integral is bounded by a fixed finite sum of suprema of \(\phi\) and its derivatives at zero. These estimates prove distributional continuity on every fixed compact test space. If \(\phi\) vanishes near zero, all its derivatives there vanish, so (I21) equals the original integral. In fact the same estimate on Schwartz tests is bounded by \(CP_k(\phi)\), giving a tempered extension. Such an extension includes a subtraction prescription and is not the divergent ordinary pairing.
+
+## Sources and exact proof dependencies
+
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I*, second edition, Springer, §7.1, pp.162–164: contour and cutoff inversion, Fourier operations and tempered distributions.
+- [Contour foundations](../prerequisites/U011-free-foundations/complex-contours-U070.md), §16.1, proves the oriented contour and primitive statements used in Proposition 0.6. [Integration foundations](../prerequisites/U011-free-foundations/banach-foundation-bridges.md), §§15.2–15.4, proves the precise Hölder, density and approximate-identity inputs in Propositions 0.8–0.9.
+- Lars Hörmander, *The Analysis of Linear Partial Differential Operators I*, second edition, Springer, §7.1, pp.159–162: continuous characters, the Schwartz topology, the scalar commutant and Fourier inversion.
+- [Functional foundations](../prerequisites/U011-free-foundations/functional-foundations-U008.md), §§14.1–14.2, supplies the complete metric and smooth-limit arguments. Proposition 0.1 uses the Schwartz completeness argument of the earlier programme lesson *Banach estimates, quotient spaces and compact parameter arguments*, §18, with its programme credits and CC0 dedication. F2–F3 and Corollary 0.5 give all constants in the algebraic inversion proof.
 - Semyon Dyatlov, *Lecture notes for 18.155: distributions, elliptic regularity, and applications to PDEs*, 2 October 2026 version, [free author notes](https://math.mit.edu/~dyatlov/18.155/155-notes.pdf), §§11.1.2–11.2.3, pp.120–130. The source leaves several test-space operations as exercises and uses a dual-density argument for Proposition 11.25; the complete weighted estimates and direct integrated-test proof used here are supplied in Lemma 2.1.
 - [Schwartz and Fourier foundation](../prerequisites/U011-free-foundations/schwartz-fourier-foundations-U017.md), F1–F5, supplies all Fourier operations, constants and inversion. [Angular foundations](../prerequisites/U011-free-foundations/angular-foundations-U018.md), A2–A3, supplies the full Taylor estimate and point-supported finite-jet proof. [U008](order-positivity-and-limits.md), Proposition 1.2, and [U021](convolution-as-addition-of-supports.md), B0–B2 and Theorems 1.1–2.1, supply the compact-test and local convolution inputs.
-- The exact oscillatory growth criterion, global convolution and topology estimates, spectral equivalence, escaping-mass order obstruction, heat-fixed classification and all eight solutions are proved in this lesson. The external free reference replaces no programme proof.
+- The exact oscillatory growth criterion, global convolution and topology estimates, spectral equivalence, escaping-mass order obstruction, heat-fixed classification and Solutions 1–8 are proved in this lesson. The external free reference replaces no programme proof.

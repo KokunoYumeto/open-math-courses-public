@@ -223,4 +223,4 @@ Subtracting \([T_1]+[T_0]=[Y_1]+2[Y_2]\) leaves \([A]+[B]=[Y_0]+[Y_1]+[Y_2]\). E
 - Masaki Izumi, [*Application of fusion rules to classification of subfactors*](https://doi.org/10.2977/PRIMS/1195169007), Publications of the Research Institute for Mathematical Sciences 27 (1991), 953–994, Section 3.4 and Remark 6.2.
 - Vaughan F. R. Jones, [*Index for subfactors*](https://doi.org/10.1007/BF01389127), Inventiones Mathematicae 72 (1983), 1–25.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Public domain (CC0).*

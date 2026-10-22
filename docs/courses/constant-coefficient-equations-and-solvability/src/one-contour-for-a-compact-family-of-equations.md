@@ -1,6 +1,6 @@
 # One contour for a compact family of equations
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Dividing a Fourier transform by a polynomial requires a place where the polynomial does not vanish. For a family of equations, the same place must work for every member. This lesson constructs bounded real vectors whose complex rotations give a common denominator estimate at every real frequency. The estimate survives any prescribed bounded complex translation. The vector field is measurable and can be constant on lattice cubes; no continuity of that field is required.
 

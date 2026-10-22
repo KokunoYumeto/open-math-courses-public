@@ -1,6 +1,6 @@
 # Worked causal inverses, examples and exercises
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI GPT-6.1 Sol (OpenAI). Public domain (CC0 1.0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0 1.0).*
 
 The preceding chapter separates two ways an inverse series can exist. A positive delay makes it locally finite. A continuous error at the vertex instead requires a convergent local construction. The examples below show the distinction, including a compact differential-and-delay kernel, a noncompact kernel with a finite differentiability threshold, and an inverse that grows exponentially.
 

@@ -1,6 +1,6 @@
 # Polynomial reciprocal bounds inside a mixed boundary tube
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Zero-freeness gives a reciprocal at each frequency. The boundary-kernel construction needs one polynomial bound valid as frequency and imaginary displacement both grow. We prove that bound on a closed tube lying one time unit inside the zero-free tube. The selected normal factor, the principal cone and a compact-fiber minimum all receive finite polynomial descriptions. A direct monic root bound then controls the reciprocal, without a Puiseux expansion.
 

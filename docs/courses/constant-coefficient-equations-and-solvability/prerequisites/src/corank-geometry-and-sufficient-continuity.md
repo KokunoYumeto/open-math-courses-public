@@ -376,4 +376,4 @@ Its pullback of \(d\xi_1\wedge dx_1\) produces \(-t\varepsilon x_2d\xi_1\wedge d
 - [Hörmander IV, §25.3] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, Springer, 1985, Lemma 25.3.6, Proposition 25.3.7, equation 25.3.5 and Theorem 25.3.8.
 - [Hörmander III, §21.1] Lars Hörmander, *The Analysis of Linear Partial Differential Operators III: Pseudo-Differential Operators*, corrected second printing, Springer, 1994, Theorem 21.1.9; mixed generating-function context, Theorem 21.2.18.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026.  Original text: public domain (CC0).*

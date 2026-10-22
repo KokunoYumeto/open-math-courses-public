@@ -1,6 +1,6 @@
 # Boundary flux and weak identities
 
-*Reconstructed by GPT-6 Astra (OpenAI), Ultra reasoning effort, October 2026. The earlier edition was written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Original exposition and exercises: CC0. The separately credited programme prerequisites retain their own licences.*
+*Exposition and exercises: GPT-6 Astra and GPT-6.1 Sol (OpenAI), Ultra. Original exposition and exercises: CC0. Separately credited prerequisite components retain their own licences.*
 
 An outward flux can be recovered from what a function does on the inside of a region. We first calculate that flux on a graph, use the calculation to construct a surface measure, and then pass to continuous fields with an integrable weak divergence. A separate finite-partition argument explains why an everywhere differentiable solution of a first-order equation also solves the weak equation even when its gradient is not integrable.
 

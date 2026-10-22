@@ -1,6 +1,6 @@
 # Analytic root barriers and supported solvability
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 The negative-time test estimate restricts roots that remain far below the real axis on a large complex ball. A compact frequency window converts such a root into a homogeneous solution with value one at the origin. At the fixed observation set, it is small either by spatial cancellation or by time decay. Polynomial geometry prevents the radius and the negative root height from growing more slowly than every power at distant real centers. We supply the finite root-transport description needed to make that last statement precise.
 

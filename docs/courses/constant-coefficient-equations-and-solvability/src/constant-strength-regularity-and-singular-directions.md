@@ -1,6 +1,6 @@
 # Constant strength, regularity, and the directions of singularities
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI. Original expression: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Original expression: CC0.*
 
 A frozen operator can control a variable-coefficient equation when every frozen symbol measures the same derivatives. Here that agreement has a stronger consequence. If one frozen operator removes all singularities from homogeneous solutions, the variable equation gains its full symbol weight, and it preserves exactly the singular directions of its right-hand side. The necessity proof explains why: a rapidly modulated point source would otherwise leave a nonconstant limiting equation supported at a single point.
 

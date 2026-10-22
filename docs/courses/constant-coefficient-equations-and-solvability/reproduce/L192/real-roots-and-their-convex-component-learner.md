@@ -1,6 +1,6 @@
 # Real roots and their convex component
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 Real roots on parallel lines determine more than a direction for solving an equation. For a homogeneous polynomial they identify a convex region of directions, and every imaginary vector in that region gives a zero-free Fourier–Laplace tube. We explain why repeated roots do not spoil this geometry.
 

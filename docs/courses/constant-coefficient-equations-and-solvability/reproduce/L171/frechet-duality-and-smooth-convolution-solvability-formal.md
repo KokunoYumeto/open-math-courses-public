@@ -1,6 +1,6 @@
 # Fréchet duality and smooth convolution solvability
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Support geometry controls where a transpose inverse can live. Fourier division controls its order. Together these give smooth convolution solvability, once the relevant dual range is closed. We prove the two general Fréchet-space duality statements needed for that conclusion, including the polar-section closure criterion, and then construct the uniform bounds for convolution.
 

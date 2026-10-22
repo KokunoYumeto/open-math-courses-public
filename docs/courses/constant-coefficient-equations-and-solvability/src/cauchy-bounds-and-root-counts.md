@@ -1,6 +1,6 @@
 # Cauchy bounds, root counts and analytic extensions
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A contour gives both a derivative bound and an exact count of a root cluster. We derive polydisk estimates, maximum modulus and weighted disk root counts, then explain how a real analytic series supplies a local complex neighborhood.
 

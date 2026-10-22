@@ -1,6 +1,6 @@
 # Homogeneous elliptic kernels and logarithmic scaling
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 An elliptic polynomial has an ordinary reciprocal at every sufficiently large real frequency. Cutting that reciprocal off near its finite zeros gives an inverse with a smooth error. For a homogeneous polynomial, a radial normalization at zero removes the error completely. Its failure to scale homogeneously is one explicit polynomial times a logarithm.
 

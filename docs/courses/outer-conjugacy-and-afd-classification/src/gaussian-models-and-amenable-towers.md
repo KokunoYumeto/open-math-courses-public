@@ -171,7 +171,7 @@ The fixed coefficients use their original output coordinates \(p_{v,n}\). The fi
 
 ## 4. The Gaussian probability space and freeness
 
-We first establish the probability ingredients, then construct the action in Section 4.5. The earlier Measure and Hilbert space tools for Haar integration supplies the underlying Lebesgue measure and interval lengths in Section 1, monotone and dominated convergence in Theorems 2.1–2.2, the complete spaces \(L^p\) in Theorems 3.1–3.2, and integration and differentiation in Lemma 6.1. The link identifies the exact programme revision used here. No general existence theorem for stochastic processes is needed.
+We first establish the probability ingredients, then construct the action in Section 4.5. The earlier Measure and Hilbert space tools for Haar integration supplies the underlying Lebesgue measure and interval lengths in Section 1, monotone and dominated convergence in Theorems 2.1–2.2, the complete spaces \(L^p\) in Theorems 3.1–3.2, and integration and differentiation in Lemma 6.1. No general existence theorem for stochastic processes is needed.
 
 ### 4.1. Agreement on cylinders and finite iterated integration
 

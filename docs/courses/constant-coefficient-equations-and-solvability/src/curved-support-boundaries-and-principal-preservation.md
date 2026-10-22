@@ -1,6 +1,6 @@
 # Curved support boundaries and principal preservation
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Original expression: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Original expression: CC0.*
 
 A flat solution in two variables can be carried to a curved boundary. The characteristic phase chooses the first new coordinate, and the desired support side chooses the second. In those coordinates a missing principal coefficient lets us factor the operator on the right by the second derivative variable. A second missing coefficient lets us factor by its square, so the correction loses one order and preserves the principal part everywhere. Keeping the coefficient inside the right composition makes the equation exact, including all its differentiated coefficient terms.
 

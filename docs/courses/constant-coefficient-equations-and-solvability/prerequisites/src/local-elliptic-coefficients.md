@@ -1,6 +1,6 @@
 # Local inverses and distance-weighted elliptic estimates
 
-**AN-03 · Unit AN03-U006 · Self-checked by the writing AI.**
+**AN-03 · Unit AN03-U006**
 
 Ellipticity gives a local inverse with exactly as many derivatives as the order of the operator. The useful question here is how little regularity its coefficients may have. Continuity will suffice for the highest-order coefficients. Lower-order coefficients can be unbounded; their admissible integrability depends on how many derivatives separate their term from the principal part.
 
@@ -560,7 +560,7 @@ The mathematical antecedent for the local coefficient theorem and the subordinat
 
 Tao's [*Lecture Notes 4 for 247A*](https://www.math.ucla.edu/~tao/247a.1.06f/notes4.pdf), Theorem 4.4 and Corollary 2.10, is the specified multiplier reading. His [*Lecture Notes 2 for 247A*](https://www.math.ucla.edu/~tao/247a.1.06f/notes2.pdf), Proposition 6.1 and Corollary 6.3, is the specified fractional-integration reading. Their normalization uses \(2\pi\) in the Fourier phase; the change of frequency variable gives our convention without changing the multiplier or exponent conditions.
 
-In the multiplier proof on page 20 of Notes 4, read the two intermediate gradient formulas with the frequency and scale factors restored:
+The multiplier calculation uses the following gradient formulas:
 \[
 \nabla K_j=(2\pi i\xi m_j)^\vee,\qquad
 |\nabla K_j(x)|\lesssim 2^{j(d+1)}

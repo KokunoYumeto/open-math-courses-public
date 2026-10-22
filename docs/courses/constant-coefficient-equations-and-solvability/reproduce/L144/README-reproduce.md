@@ -41,8 +41,7 @@ replace a proof.
 Human scholarly source: Lars Hörmander, *The Analysis of Linear Partial
 Differential Operators II*, §15.1, Theorems 15.1.1–15.1.2, printed pp. 271–274,
 1983 edition, second revised printing 1990, reprint 2005. All accompanying
-expositions and artwork are original. Protected source pages, procurement
-records, private reading scripts and private task state are excluded.
+expositions and artwork are original.
 
 Original material is CC0 1.0; see `LICENSE.txt`. DejaVu Sans is used under the
 separately retained font license.

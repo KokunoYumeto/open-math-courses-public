@@ -1,6 +1,6 @@
 # Dilation equations and tangential analytic singularities
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 The Euler operator differentiates along radial flow. A distribution satisfying a dilation equation can be singular in angle, but a wavefront covector at a nonzero point must annihilate the radial vector. The origin is different: its radial vector vanishes, so this condition excludes no covectors there.
 

@@ -1,6 +1,6 @@
 # Choosing polynomial and exponential approximants
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Exponential-polynomial solutions supply a dense family on an open convex set. Sometimes their polynomial factors can be discarded. Sometimes their exponential factors can be discarded. These simplifications depend on different algebraic properties of the symbol. Multiplicities determine whether plane exponentials suffice; the location of the irreducible factors at the origin determines whether polynomials suffice.
 

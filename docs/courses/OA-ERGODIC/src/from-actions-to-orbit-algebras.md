@@ -1,6 +1,6 @@
 # From actions to orbit algebras
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text is public domain (CC0).*
 
 ## Introduction
 
@@ -146,11 +146,11 @@ The closing notes begin with Murray and von Neumann's constructions, recalled in
 
 | Historical subject | Source pointer | Treatment in this course |
 |---|---|---|
-| Early group-measure-space factors | Murray and von Neumann; the notes refer back to Chapter V | Historical attribution; the present construction, Bernoulli type \(II_1\) example and affine type III example have the full owned proofs cited above |
+| Early group-measure-space factors | Murray and von Neumann; the notes refer back to Chapter V | Historical attribution; the present construction, Bernoulli type \(II_1\) example and affine type III example have the full course proofs cited above |
 | Finite invariant-measure orbit classification | Dye, *On groups of measure preserving transformations*, I (1959), II (1963); Takesaki bibliography [507] | Balanced-array Theorems 4.1 and 5.1; Proposition 4.1 above |
 | A single nonsingular generator for an AF relation | Krieger, *On non-singular transformations of a measure space*, I–II (1969); [619] | The full dyadic/atomic generator constructions in [Matching sets and nonsingular dyadic arrays](matching-sets-and-nonsingular-dyadic-arrays.md), Sections 3–4 |
 | Classification involving ergodic flows | Krieger, *On ergodic flows and the isomorphism of factors*, Math. Ann. 223 (1976), 19–70; [621] | A forward reference to Chapter XVIII; the countable associated-flow construction is proved in [Lifted relations and the associated flow](lifted-relations-and-the-associated-flow.md) |
-| Virtual and measured groupoids | Mackey (1966), [633]; Ramsay (1971), [674]; Renault (1980), [676]; Hahn (1978), [556]; Feldman–Hahn–Moore, *Orbit Structure and Countable Sections for Actions of Continuous Groups*, [521] | The owned groupoid constructions and exact programme prerequisites; general Ramsay/disintegration obligations remain separately identified |
+| Virtual and measured groupoids | Mackey (1966), [633]; Ramsay (1971), [674]; Renault (1980), [676]; Hahn (1978), [556]; Feldman–Hahn–Moore, *Orbit Structure and Countable Sections for Actions of Continuous Groups*, [521] | The course groupoid constructions and exact programme prerequisites; the general Ramsay and disintegration results are additional prerequisites |
 | Cartan algebras and measured relations | Feldman–Moore I–II (1977), [522] | The maximal-abelian, expectation and normalizer proofs named in Sections 1 and 3 |
 | Rigidity and its broader setting | Fisher, *Groups acting on manifolds: around the Zimmer program* (2008), Section 1 | Freely accessible historical survey of the Zimmer programme; no rigidity theorem is asserted or proved here |
 | Amenability and AF relations | Connes–Feldman–Weiss (1981), [482] | The complete principal-relation invariant-mean and finite-exhaustion proof cited in Section 4 |
@@ -158,7 +158,7 @@ The closing notes begin with Murray and von Neumann's constructions, recalled in
 
 Two bibliographic details need care. The notes' 1973 wording should not be used as the publication date of [621]: the book's own bibliography gives 1976. This observation does not determine the date of every earlier announcement. The notes' Zimmer pointer [749] instead names G. Zeller-Meier; the Zimmer book is [750]. Also, the author of [674] is Arlan Ramsay, despite the notes' spelling “Ramsey.” The corrected identities follow the actual bibliography.
 
-These historical pointers do not certify the contents of whole external papers. They identify attribution and boundaries; every mathematical conclusion used here has its complete proof here or at an exact earlier written course locator. [Borel group measures and isotropy topologies](borel-group-measures-and-isotropy-topologies.md), Sections 4–6, proves the supported fixed-range-fibre disintegration and Haar product; [Orbit averaging and the modular weight bridge](orbit-averaging-and-the-modular-weight-bridge.md), Corollary 5.2, completes its standing standard Borel source route. Broader countably generated assertions retain their proved counterexamples or unresolved existential scope. The separate AF08 continuous product-model book-notation correspondence remains with the flow course and is not inferred from the owned countable construction.
+The references identify the classical attribution. The preceding sections give the proof routes for the results used here. [Borel group measures and isotropy topologies](borel-group-measures-and-isotropy-topologies.md), Sections 4–6, proves the supported fixed-range-fibre disintegration and Haar product; [Orbit averaging and the modular weight bridge](orbit-averaging-and-the-modular-weight-bridge.md), Corollary 5.2, proves the standard Borel groupoid application. Broader countably generated assertions retain their proved counterexamples or unresolved existential scope. The continuous product-model correspondence with the book notation is not inferred from the countable construction.
 
 ## 6. Exercises with complete solutions
 
@@ -182,9 +182,9 @@ These historical pointers do not certify the contents of whole external papers. 
 
 *Solution.* Once the infinite tail is fixed, each of the \(2^n\) binary prefixes is allowed, giving exactly \(2^n\) points. These relations increase, and their union is tail equivalence because two tail-equivalent sequences differ in finitely many coordinates. The odometer's orbit computation in [Towers and odometer orbits](towers-and-odometer-orbits.md), Section 4, identifies its orbits with tail classes on an invariant conull Borel set. A finite stage retains only selected arrows of that orbit relation. It is not the orbit relation of a finite subgroup of \(\mathbb Z\), since the only such subgroup is \(\{0\}\), whose classes are singletons. Finite-prefix classes and finite subgroups are different approximation objects.
 
-**Exercise 6.6 (dates and hypotheses in classification references).** *Level 2.* State what the source comparison proves about the references [621] and [749], and what it does not prove about nonsingular flow classification.
+**Exercise 6.6 (dates and hypotheses in classification references).** *Level 2.* Identify the dates and authors of references [621] and [749], and explain why those bibliographic identifications do not prove nonsingular flow classification.
 
-*Solution.* The actual bibliography dates [621], Krieger's *On ergodic flows and the isomorphism of factors*, to 1976. Thus 1973 in the notes is not the publication date of that cited paper; it might refer to earlier history, which this comparison does not determine. Bibliography [749] is a work of Zeller-Meier, while Zimmer's book is [750], so the notes' Zimmer number needs correction. Proposition 4.1 proves classification of ergodic hyperfinite nonatomic probability-preserving relations by the fair tail relation, using complete written coding proofs. It does not prove the nonsingular type III classification by flows, which the notes explicitly refer forward to Chapter XVIII. The associated-flow construction already proved in the flow lesson and the separate remaining AF08 correspondence retain their exact respective scopes.
+*Solution.* The actual bibliography dates [621], Krieger's *On ergodic flows and the isomorphism of factors*, to 1976. Thus 1973 in the notes is not the publication date of that cited paper; it might refer to earlier history, which this comparison does not determine. Bibliography [749] is a work of Zeller-Meier, while Zimmer's book is [750], so the notes' Zimmer number needs correction. Proposition 4.1 proves classification of ergodic hyperfinite nonatomic probability-preserving relations by the fair tail relation, using complete written coding proofs. It does not prove the nonsingular type III classification by flows, which the notes explicitly refer forward to Chapter XVIII. The associated-flow construction already proved in the flow lesson and the separate book-notation correspondence retain their exact respective scopes.
 
 ## References and source scope
 
@@ -192,4 +192,4 @@ These historical pointers do not certify the contents of whole external papers. 
 
 [Fisher] David Fisher, *Groups acting on manifolds: around the Zimmer program*, arXiv:0809.4849v2, 5 December 2008, Section 1 (Prologue). [Read the survey](https://arxiv.org/html/0809.4849v2#S1). Its opening section discusses actions of higher rank groups and lattices on compact manifolds and the motivation from cocycle superrigidity. This 2008 survey provides supplementary historical context for Section 5. The proofs used in this lesson remain at the course locators above.
 
-The new finite action calculation and the connective arguments are original course exposition. The finite classification, type, normalizer and amenability proofs are at the exact owned lesson locators identified above. Scholarly sources are credited at the cited lesson locators. The arguments here retain their stated hypotheses; broader Connes and continuous-flow statements require their own proofs.
+The finite action calculation and the connective arguments are original course exposition. The finite classification, type, normalizer and amenability proofs are at the linked lesson locators identified above. Scholarly sources are credited at the cited lesson locators. The arguments here retain their stated hypotheses; broader Connes and continuous-flow statements require their own proofs.

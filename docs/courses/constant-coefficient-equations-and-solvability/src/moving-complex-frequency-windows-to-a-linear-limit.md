@@ -1,6 +1,6 @@
 # Moving complex frequency windows to a linear limit
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Original expression: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Original expression: CC0.*
 
 A polynomial limiting window can have several roots and critical points. The transport step needs just one nonzero linear coefficient with negative imaginary part. We first move the frequency centre to a point where that derivative has the required sign, renormalize both windows exactly, and then shrink the window. The shrinking factor must leave room for both scale separations. We give an explicit choice and prove the limit coefficient by coefficient.
 

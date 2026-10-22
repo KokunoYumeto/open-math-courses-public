@@ -1,6 +1,6 @@
 # Variable factor fields and measurable conjugacy
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text is public domain (CC0).*
 
 ## Introduction
 
@@ -208,10 +208,10 @@ The levels have their usual meaning: Level 1 is a calculation, Level 2 is a proo
 
 *Solution.* Null subsets are empty for either measure. The essential bound of a matrix field is therefore its supremum over the countable base for both measures; the bounded product and its translation automorphisms coincide. The Hilbert unitary multiplies the vector in fibre \(x\) by \(\sqrt{\mu(\{x\})/\nu(\{x\})}\). Although this scalar can be unbounded as a function, its squared target norm is exactly the source squared norm, so it is a unitary between the two Hilbert integrals. Conjugation on matrix multiplication fields cancels the ratios. Boundedness of the density is unnecessary.
 
-## Bibliography and source comparison
+## Bibliography and mathematical scope
 
 - [Takesaki III] Masamichi Takesaki, *Theory of Operator Algebras III*, Springer, 2003, XIII.3.30–31, PDF72–73. Definition 3.30(iii) uses a fibre automorphism at each unit and a unitary in the range algebra. Proposition 2.2 checks its endpoint and multiplication orders for variable fields. Proposition 3.31 leaves its proof to the reader. Theorem 3.1 supplies the reconstruction direction and the measured fixed-parameter calculation supplies its algebra counterpart. The simultaneous strict-representative and cochain comparison is proved in the next lesson, Theorems 3.1, 4.1, 5.1–5.2 and Corollary 6.2. The base identification there retains every original group label. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8).
-- [Takesaki II] Masamichi Takesaki, *Theory of Operator Algebras II*, Springer, 2003, X.3.11–12, PDF305–308, with X.3.7–8 and formula (15) on PDF302–304. The full equivariant-disintegration proofs on PDF299–308 were read for this comparison. Their central-reduction and faithful-state disintegration prerequisites remain explicit. The identities in X.3.11–12 quantify over each fixed parameter or pair, almost everywhere in the base. [Publisher record](https://doi.org/10.1007/978-3-662-10451-4).
+- [Takesaki II] Masamichi Takesaki, *Theory of Operator Algebras II*, Springer, 2003, X.3.11–12, PDF305–308, with X.3.7–8 and formula (15) on PDF302–304. Their central-reduction and faithful-state disintegration prerequisites remain explicit. The identities in X.3.11–12 quantify over each fixed parameter or pair, almost everywhere in the base. [Publisher record](https://doi.org/10.1007/978-3-662-10451-4).
 - [DG] Claude Opus 5.5 (Anthropic), “Decomposable operators and the diagonal algebra,” September 2026, Theorem 5.1 and Proposition 6.1. Reused by reference for varying separable Hilbert fibres over a sigma-finite base. Its more general base hypothesis specializes to the standard bases here. Its Hilbert-field, Radon–Nikodym and bounded sesquilinear-form prerequisites remain explicit.
 
 Central ergodicity is unnecessary for the local reconstruction theorem. Applying it to centrally ergodic systems does not require identical factors, freeness, amenability, invariant measures or unimodularity. The next lesson proves simultaneous representatives by Haar repair and closed variable-unitary path orbits. The finite and atomic examples illustrate the formulas; they do not prove the general theorem.

@@ -204,4 +204,4 @@ The unconditional finite anti-isomorphisms (40.3), the exact criteria in Theorem
 - Sorin Popa, [*W\*-representations of subfactors and restrictions on the Jones index*](https://arxiv.org/abs/2112.15148v2), version 2, 5 January 2022, Section 2.2 (PDF page 6) and Section 3.9 (PDF page 28), for extremality and locally trivial corner inclusions. The explicit tensor permutation and calculations above are supplied in full.
 - Vaughan F. R. Jones, [*Index for subfactors*](https://doi.org/10.1007/BF01389127), Inventiones Mathematicae 72 (1983), 1–25.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Public domain (CC0).*

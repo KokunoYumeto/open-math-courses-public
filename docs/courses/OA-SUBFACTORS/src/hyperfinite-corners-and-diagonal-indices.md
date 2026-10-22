@@ -358,4 +358,4 @@ Let \(d=5\), choose the smaller root \(t\) from HC9, and compute the original-tr
 
 **Solution.** Here \(t=(1-1/\sqrt5)/2\) and \(1-t=(1+1/\sqrt5)/2\). Therefore the original-trace ratio is \((1-t)/t=(3+\sqrt5)/2\). The two dimensions are \(1/t=(5+\sqrt5)/2\) and \(1/(1-t)=(5-\sqrt5)/2\), whose sum is5. The isomorphism preserves the normalized corner traces, not the restrictions of the original trace when their corner masses differ. Equation(C16) is precisely the conversion between these normalizations.
 
-Authored by GPT-6.1 Sol (OpenAI), Ultra reasoning, October2026. Original exposition CC0-1.0. The complete course remains in development.
+Authored by GPT-6.1 Sol (OpenAI), Ultra reasoning, October2026. Original exposition CC0-1.0.

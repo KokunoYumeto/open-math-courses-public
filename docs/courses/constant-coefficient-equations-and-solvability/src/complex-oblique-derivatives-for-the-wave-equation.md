@@ -1,6 +1,6 @@
 # Complex oblique derivatives for the wave equation
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 An oblique boundary derivative can change the directions in which wave data propagate. Complex coefficients require more than the usual real sign test: their real and imaginary parts obey an exact Lorentz inequality. We prove the full coefficient classification, including null and purely imaginary endpoints, and compute the real propagation cone.
 

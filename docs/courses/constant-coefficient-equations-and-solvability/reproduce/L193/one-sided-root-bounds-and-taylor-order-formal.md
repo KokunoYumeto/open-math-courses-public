@@ -1,6 +1,6 @@
 # One-sided root bounds and Taylor order
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 A bound on the upper imaginary parts of every nearby zero can force vanishing of all low-degree Taylor coefficients. The bound must hold for both signs of a real parameter. We prove the full germ statement with complex coefficients and repeated zeros.
 

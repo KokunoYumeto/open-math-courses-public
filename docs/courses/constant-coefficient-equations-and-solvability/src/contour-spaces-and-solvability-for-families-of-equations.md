@@ -1,6 +1,6 @@
 # Contour spaces and solvability for families of equations
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A contour on which every polynomial stays away from zero can do more than define an integral. It gives a norm on test functions, and the dual of that norm is a Banach space of distributions. In these spaces the denominator estimate becomes a lower bound for the transposed differential operator. Hahn–Banach then produces a solution with a common norm bound for an entire compact family of equations.
 
@@ -27,7 +27,7 @@ The positive weight \(J_Q\) is moderate:
 finite Taylor expansion gives
 \(J_Q(\xi+h)\le E_m(|h|_\infty)J_Q(\xi)\), and
 \(E_m(u)=\sum_{j=0}^m(nu)^j/j!\le(1+nu)^m\).
-Thus the product \(kJ_Q\) is an admitted moderate weight.
+Thus the product \(kJ_Q\) is an specified moderate weight.
 
 The prerequisites are [Measuring regularity with weighted Fourier spaces](weighted-fourier-spaces.md), Theorems 3.1, 4.1 and 5.1, for density, Schwartz multiplication and finite-exponent bilinear duality; [Banach estimates, quotient spaces and compact parameter arguments](../prerequisites/banach-foundation-bridges.html#section-5), Section 5, for complex Hahn–Banach; [The geometry of coefficients and strength](coefficient-geometry-and-strength.md), Proposition 5.1, for compact equally strong families; and [One contour for a compact family of equations](one-contour-for-a-compact-family-of-equations.md), Theorem 1.1, for the common contour.
 

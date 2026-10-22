@@ -1,6 +1,6 @@
 # Fourier windows, sector growth and branched vanishing
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Exponential smallness on one ray does not control an entire algebraic covering. Compact Fourier windows and sector estimates supply enough rays on every sheet to force vanishing.
 

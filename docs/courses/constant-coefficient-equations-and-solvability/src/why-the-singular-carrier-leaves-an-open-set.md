@@ -1,6 +1,6 @@
 # Why the singular carrier leaves an open set
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A fundamental solution can be singular at many points, but the canonical regular construction has an algebraically constrained exceptional set. We prove that this exact closed carrier always has positive codimension. The difficulty is controlling a union of many linear spaces: each space can be proper even when their union fills the ambient space.
 

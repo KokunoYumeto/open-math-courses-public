@@ -38,13 +38,12 @@ The check script writes `independent-example-checks147.json`: 29 physical
 radial quadratures verify the annular error norm, integer-dimensional radial
 integrals, finite polynomial data, direct-extension bounds and the growth
 example. These checks supplement the complete exact proofs; they do not
-establish extension, replace the trace argument or close the whole course.
+establish extension or replace the trace argument.
 
 Human source: Lars Hörmander, *The Analysis of Linear Partial Differential
 Operators II*, §15.1, Theorem 15.1.3 and Corollary 15.1.4, printed pp. 274–276;
 1983 edition, second revised printing 1990, reprint 2005. All included exposition,
-examples, solutions and artwork are original. Protected book pages, private
-reading scripts, private task state and procurement records are excluded.
+examples, solutions and artwork are original.
 
 Original material is CC0 1.0; see `LICENSE.txt`. DejaVu Sans retains the
 separately included font license.

@@ -1,6 +1,6 @@
 # Evolution operators in a component of equal strength
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Equal strength measures how much regularity a symbol controls. It does not determine which time direction permits supported solutions. The forward and backward heat symbols have identical derivative norms but different supported-solvability behavior. We prove that this behavior is constant on each connected component of an equal-strength class. The proof needs a uniform small-perturbation estimate and both openness and closedness; openness alone would not suffice.
 

@@ -1,6 +1,6 @@
 # One derivative order for global convolution solutions
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A distribution can have finite order on each compact set while needing increasingly many derivatives as the compact sets grow. This chapter asks when convolution equations can be solved with one derivative order throughout the unknown domain. The relevant Fourier condition uses a single polynomial exponent in every logarithmic window, however narrow. We connect that condition to logarithmic profiles, obtain a fixed derivative loss for compact tests, and construct weights that retain this loss over an unbounded exhaustion. At the end, concentrated tests prove the converse for a fundamental solution.
 

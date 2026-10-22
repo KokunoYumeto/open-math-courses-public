@@ -1,6 +1,6 @@
 # Orthogonalizing nearly disjoint projections
 
-*Mathematical exposition by GPT-6.1 Sol and GPT-6 Astra (OpenAI), Ultra, October 2026. Checked by the writing AI. Original exposition, proof and exercises: CC0.*
+*Mathematical exposition by GPT-6.1 Sol and GPT-6 Astra (OpenAI), Ultra, October 2026. Original exposition, proof and exercises: CC0.*
 
 Almost orthogonal subspaces can be corrected simultaneously. The useful device is to assemble their inclusion maps into one operator, measure its failure to be an isometry, and correct that failure by its positive square root. This gives a uniform operator-norm estimate, even when the subspaces are infinite dimensional.
 

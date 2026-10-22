@@ -195,8 +195,7 @@ for path in sorted(FIGURES.iterdir()):
 report = {"schema":"AN02-zero-strip-order-check276/v1","status":"PASS",
           "checks_passed":len(checks),"parameterized_exact_models":model_count,
           "scope":"Exact lowest weights, both scaled limits, polynomial rotation identities, multiplicities and rational Rouche bounds. The general germ theorem is proved in the written argument.",
-          "checks":checks,"artifacts":artifacts,
-          "independent_review":False,"whole_course_complete":False}
+          "checks":checks,"artifacts":artifacts}
 (HERE / "math-check276.json").write_text(json.dumps(report,indent=2)+"\n",encoding="utf-8")
 print(json.dumps({"status":"PASS","checks":len(checks),"exact_models":model_count,
                   "artifacts":len(artifacts)}))

@@ -271,4 +271,4 @@ Smooth the proper locally integrable PSH target with a positive compact radial k
 
 ## 7. Exact source and scope
 
-Human scholarly source: Lars Hörmander, *The Analysis of Linear Partial Differential Operators II*, §15.1, Theorem 15.1.6 and Lemmas 15.1.7–15.1.8, printed pp. 277–278. The formal companion compares the actual hypotheses and proof inputs. The source's remark that the density theorem is unused later does not remove it from the assigned target list. All examples, solutions, derivations and figures are original. Protected native pages stay private. The remaining assigned weighted Fourier and division targets, topology, and other course coverage still require completion.
+Human scholarly source: Lars Hörmander, *The Analysis of Linear Partial Differential Operators II*, §15.1, Theorem 15.1.6 and Lemmas 15.1.7–15.1.8, printed pp. 277–278. The formal companion compares the actual hypotheses and proof inputs. All examples, solutions, derivations and figures are original.

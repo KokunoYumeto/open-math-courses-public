@@ -1,6 +1,6 @@
 # The wave Cauchy problem and Kirchhoff's formula
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A wave equation needs two initial traces: the displacement and its time derivative. A causal fundamental solution converts these traces into distributions on the initial plane. This gives uniqueness without any assumption about growth at spatial infinity. To obtain a classical solution from finitely differentiable data, we must also control the order of the kernel at the cone vertex.
 

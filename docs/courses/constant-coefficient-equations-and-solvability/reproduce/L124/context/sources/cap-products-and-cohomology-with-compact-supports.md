@@ -1,6 +1,6 @@
 # Cap products and cohomology with compact supports
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic), October 2026.  Public domain (CC0).*
 
 Poincaré duality compares cohomology in degree \(k\) with homology in degree \(n-k\) on an oriented \(n\)-manifold. The comparison map is the cap product with the fundamental class. On a noncompact manifold there is no fundamental class, but there are classes \(\mu_K\) for every compact \(K\), and the correct cohomology to pair with them is cohomology with compact supports. This lesson defines the cap product, establishes its formal properties, defines compactly supported cohomology of a manifold as a direct limit, proves its Mayer–Vietoris sequence, and constructs the duality map.
 
@@ -59,7 +59,7 @@ If \(M\) is compact, \(K=M\) is cofinal and \(H^i_c(M)=H^i(M)\).
 
 whose first map is \(\varphi\mapsto(\varphi,-\varphi)\) and whose second is the sum of the extensions by zero.
 
-**Proof.** For compact \(K\subset U\) and \(L\subset V\), apply the Mayer–Vietoris sequence for the cover of \(M\setminus(K\cap L)\) by \(M\setminus K\) and \(M\setminus L\) to relative cohomology, exactly as in the homological version (3.1) of the previous lesson, using the subordinate cochains [Roberts, Proposition 26]:
+**Proof.** For compact \(K\subset U\) and \(L\subset V\), apply the Mayer–Vietoris sequence for the cover of \(M\setminus(K\cap L)\) by \(M\setminus K\) and \(M\setminus L\) to relative cohomology, exactly as in the homological version (3.1) of the previous lesson, using restriction to small chains as follows. For the open cover \(\mathcal U\), the inclusion \(\iota:C_*^{\mathcal U}(X)\to C_*(X)\) has the support-preserving chain inverse \(\rho\) and homotopy \(D\) constructed in [Thom classes and Euler classes, Lemma 2.1](thom-classes-and-euler-classes.md#2-making-singular-chains-small), with \(\rho\iota=1\) and \(1-\iota\rho=\partial D+D\partial\). Precomposition gives the cochain homotopy equivalence \(\iota^*:C^*(X;R)\to\operatorname{Hom}(C_*^{\mathcal U}(X),R)\), with inverse \(\rho^*\); precomposition with \(D\) supplies its homotopy. The constructions preserve subspaces and hence pass to the relative complexes. Restriction is surjective in each degree because a function on small simplices extends by zero as a function on all simplices; that degreewise extension is not asserted to be a cochain map. The pair and small-chain exact sequences split degreewise on simplex bases, and Section 3 of the same Thom reading proves their Mayer–Vietoris sequence. Applying it gives:
 
 \[
 \cdots\to H^i(M,M\setminus(K\cap L))\to H^i(M,M\setminus K)\oplus H^i(M,M\setminus L)\to H^i(M,M\setminus(K\cup L))\to H^{i+1}(M,M\setminus(K\cap L))\to\cdots .

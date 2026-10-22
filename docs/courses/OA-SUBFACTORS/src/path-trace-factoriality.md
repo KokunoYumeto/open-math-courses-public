@@ -247,4 +247,4 @@ The proof supplies the needed conclusion at the critical value \(\delta=2\) as w
 - Vaughan F. R. Jones, [*The Jones polynomial for dummies*](https://math.berkeley.edu/~vfr/jonesakl.pdf), lecture notes, 2014, Sections 5–6.
 - Stephen T. Moore, [*Limits of traces of Temperley–Lieb algebras*](https://arxiv.org/abs/2212.11592), Journal of Algebra 642 (2024), 95–147.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Public domain (CC0).*

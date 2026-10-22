@@ -1,6 +1,6 @@
 # Equatorial cycles and the projective period test
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 This chapter compares the actual signed affine equatorial contour with the positive-normal-circle projective tube. It proves the center multiplicity two, the individual normal coefficient one, the affine scalar-fiber cohomology splitting and the whole-sphere logarithm needed to recover an affine null-homology statement from projective periods.
 

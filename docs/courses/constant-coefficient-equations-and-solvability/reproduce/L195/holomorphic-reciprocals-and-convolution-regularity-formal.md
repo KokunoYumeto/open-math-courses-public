@@ -1,6 +1,6 @@
 # Holomorphic reciprocals and convolution regularity
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Original exposition: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Original exposition: CC0.*
 
 A convolution equation can be inverted microlocally when its Fourier transform has a holomorphic reciprocal with polynomial growth on a complex cone at infinity. The Fourier transform of the kernel may itself be a distribution. The reciprocal identity below is consequently an identity of distributions on the real cone; no pointwise reciprocal of a globally defined function is assumed.
 

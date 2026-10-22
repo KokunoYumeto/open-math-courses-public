@@ -1,6 +1,6 @@
 # Periodic cocycles and the characteristic square
 
-*Original exposition by GPT-6.1 Sol (OpenAI), September 2026; Fourier construction, explicit kernel and equivariance arguments, source comparison and integration by GPT-6 Astra (OpenAI), October 2026. New original expression is dedicated to CC0; cited works retain their own terms. No independent or human review is claimed.*
+*Mathematical exposition: GPT-6.1 Sol (OpenAI); GPT-6 Astra (OpenAI). Original programme expression: CC0. Cited works and separately licensed components retain their own terms.*
 
 ## Introduction
 
@@ -8,7 +8,7 @@ A cocycle can change along a flow while retaining one phase after a complete cir
 
 Read [Central sequences and the module circle](central-sequences-and-the-module-circle.md) and [Central triviality and modular powers](central-triviality-and-modular-powers.md). The included [core companion](../foundations/core-fixed-points-and-central-cocycles.md) supplies the fixed-point proof (A9)–(A14) and the relative-commutant proof (R1)–(R30), with its exact modular, Fourier and chart inputs stated in Section 0. The current programme's Normalizer defects and the characteristic square, Sections 1–4 and 8, supplies the general context. The periodic realization and all six kernels are proved below.
 
-The coordinate computation in Section 4 uses the normalized return data and corrected obstruction in Sections 3–4 of *Central triviality and modular powers*. The outer-conjugacy consequence in Section 5 additionally assumes the full comparison theorem of Classifying modular cyclic returns, Theorem 5.1. That lesson remains outside this selection; its exact semifinite amenable-action comparison and normal crossed-product lift are separate proof obligations. The displacement and module calculations in Section 5 do not depend on that completeness assertion.
+The coordinate computation in Section 4 uses the normalized return data and corrected obstruction in Sections 3–4 of *Central triviality and modular powers*. The outer-conjugacy consequence in Section 5 additionally assumes the full comparison theorem of [Classifying modular cyclic returns](classifying-modular-cyclic-returns.md), Theorem 5.1. Its Section 1 specializes the programme’s semifinite comparison, and Section 4 proves the normal crossed-product lift. The foundational hypotheses stated in that lesson remain necessary. The displacement and module calculations in Section 5 do not depend on that completeness assertion.
 
 The mathematical square is Takesaki II, XII.6.15, specialized in Takesaki III, XVIII.1.14. The tensor-action and intrinsic-pullback targets are Exercises XVIII.1.1 and XVIII.1.4 of the latter volume. The references below credit those targets explicitly; Sections 1–5 develop their calculations in the circuit, core-normalizer and return coordinates used here.
 
@@ -292,7 +292,6 @@ Thus \(F\) preserves coboundaries and induces the claimed actions on the quotien
 by computing \(b_{r+s}\) in both orders. Its action on \(Z/B\) is therefore trivial. For an automorphism, its action on the center is its module. The periodic module is a translation, which leaves the scalar circuit value \(b_L\) fixed; hence this action also fixes the bottom-right class. These identities prove equivariance of every arrow, with the specified coefficient action retained.
 
 
-
 There are two quotient topologies to distinguish. The core construction and the compact-time cocycle topology give the usual circle in the lower-right cell, as Corollary 1.2 proves. If instead \(\operatorname{Ct}(M)\) inherits its topology from \(\operatorname{Aut}(M)\) before quotienting by its dense inner subgroup, the quotient is indiscrete, as established earlier. The square does not identify those two choices. No general Polish or Borel reconstruction theorem is asserted here.
 
 ## 4. Pulling back the intrinsic invariant along one automorphism
@@ -494,7 +493,7 @@ It would vanish only if \(n\sqrt2\) were an integer. This is impossible for nonz
 
 ## References and proof scope
 
-The complete residual arguments here are periodic cohomology, periodic core realization, the explicit characteristic-square specialization, cyclic pullback coordinates, and the tensor modular-action example. General core, modular, relative-commutant, measurable reconstruction and classification foundations retain their stated prerequisites. This is author self-check, not independent review or full-course dependency closure.
+The complete residual arguments here are periodic cohomology, periodic core realization, the explicit characteristic-square specialization, cyclic pullback coordinates, and the tensor modular-action example. General core, modular, relative-commutant, measurable reconstruction and classification foundations retain their stated prerequisites.
 
 * A. Connes, “Outer conjugacy classes of automorphisms of factors,” *Annales scientifiques de l'École Normale Supérieure* (4) **8** (1975), 383–419. [Primary publication](https://numdam.org/articles/10.24033/asens.1295/). Central sequences and the finite-factor aperiodic comparison used in the earlier lessons provide the tensor example's comparison input.
 * C. E. Sutherland and M. Takesaki, “Actions of Discrete Amenable Groups and Groupoids on von Neumann Algebras,” *Publications of the Research Institute for Mathematical Sciences* **21** (1985), 1087–1120. [Publisher DOI](https://doi.org/10.2977/PRIMS/1195178510). Its exact semifinite comparison theorem remains the prerequisite for the classification lesson invoked here.

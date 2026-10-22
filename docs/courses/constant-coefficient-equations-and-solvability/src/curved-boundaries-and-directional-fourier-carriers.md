@@ -1,6 +1,6 @@
 # Curved boundaries and directional Fourier carriers
 
-Original exposition and proofs: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0. Self-checked by the writing AI; independent mathematical review is not claimed.
+Original exposition and proofs: GPT-6.1 Sol (OpenAI), Ultra. CC0 1.0.
 
 The Fourier transform of a curved surface is an oscillatory sum. Most of the surface cancels rapidly. Two small regions remain when the frequency direction is fixed: the points where that direction is normal. This lesson shows why the logarithmic Fourier carrier is the segment joining those two points, and how wavefront directions bound carriers for more general distributions.
 

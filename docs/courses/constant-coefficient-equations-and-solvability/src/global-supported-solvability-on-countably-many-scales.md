@@ -1,6 +1,6 @@
 # Global supported solvability on countably many scales
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 The local theorem gives supported solutions with compact data. The approximation theorem lets us modify successive solutions by homogeneous corrections, so their differences become summable on each compact set. A carefully chosen polytope supplies every support condition needed for that approximation. A one-sided approximate identity keeps the time support throughout the smoothing step.
 

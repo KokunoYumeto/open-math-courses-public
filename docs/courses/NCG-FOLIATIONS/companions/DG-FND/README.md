@@ -13,7 +13,7 @@ Thirty-four chapters, self-checked by the writing AI, develop vector bundles, ch
 - [Curvature and holonomy groups](src/curvature-and-holonomy-groups.md)
 - [Reduction and the holonomy theorem](src/reduction-and-the-holonomy-theorem.md)
 - [Flat connections and infinitesimal holonomy](src/flat-connections-and-infinitesimal-holonomy.md)
-- Invariant connections on homogeneous bundles
+- [Invariant connections on homogeneous bundles](src/invariant-connections-on-homogeneous-bundles.md)
 - [Linear and affine connections](src/linear-and-affine-connections.md)
 - [Geodesics, normal coordinates and curvature](src/geodesics-normal-coordinates-and-curvature.md)
 - [Riemannian connections and convex neighbourhoods](src/riemannian-connections-and-convex-neighbourhoods.md)

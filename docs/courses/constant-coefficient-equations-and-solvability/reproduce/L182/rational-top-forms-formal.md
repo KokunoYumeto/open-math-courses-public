@@ -1,6 +1,6 @@
 # Rational top forms in a hypersurface complement
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 Let \(f\) be a nonzero complex polynomial on \(\mathbb C^d\), \(d\geq1\), and put \(V=\{f\ne0\}\). The zero set that has been removed can be singular, reducible or defined with repeated factors. We prove that the forms
 \[

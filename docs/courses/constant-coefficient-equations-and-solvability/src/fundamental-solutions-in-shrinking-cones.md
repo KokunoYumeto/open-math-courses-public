@@ -1,6 +1,6 @@
 # Fundamental solutions in shrinking cones
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI (GPT-6.1 Sol). Original exposition: public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Original exposition: public domain (CC0).*
 
 A differential equation may have a fundamental solution in every cone of a decreasing sequence and have none in the intersection. The solutions chosen for successive cones need not approach one another. This lesson constructs an example and identifies the precise obstruction at the limit.
 

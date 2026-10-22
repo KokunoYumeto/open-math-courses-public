@@ -1,6 +1,6 @@
 # Compact multipliers and exponential solutions of convolution systems
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 A common zero of the Fourier transforms of compact kernels gives a common exponential solution. Does every system with a nonzero solution have such a zero? In at least two variables the answer is no. We construct six kernels whose system has a nonzero smooth solution even though every exponential, and every exponential polynomial, fails.
 

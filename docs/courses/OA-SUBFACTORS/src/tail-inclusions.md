@@ -193,4 +193,4 @@ Together with the positivity restriction, this proves both necessity and realiza
 - Vaughan F. R. Jones, [*The Jones polynomial for dummies*](https://math.berkeley.edu/~vfr/jonesakl.pdf), lecture notes, 2014, Sections 5–6.
 - Claire Anantharaman and Sorin Popa, [*An introduction to II₁ factors*](https://www.math.ucla.edu/~popa/Books/IIun.pdf), open lecture notes.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Public domain (CC0).*

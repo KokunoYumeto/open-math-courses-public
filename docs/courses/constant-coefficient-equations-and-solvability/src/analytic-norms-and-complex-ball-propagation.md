@@ -1,6 +1,6 @@
 # Analytic norms and propagation on complex balls
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 The characteristic Cauchy estimate uses two different kinds of propagation. The norm of a tangential Fourier transform on the negative time axis has exactly the exponential type of its spatial support there. A plurisubharmonic function which is substantially negative on one small ball must also be negative at every interior point of a larger ball. We prove both facts, including the norm endpoints, the zero norm case and a constant independent of the center of the small ball.
 

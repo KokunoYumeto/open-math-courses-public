@@ -127,7 +127,7 @@ Its hypotheses concern only two fixed compact neighborhoods and their nonzero He
 
 On the remaining bounded interval \(\psi'\) is bounded away from zero, giving \(O(\lambda^{-N})\) for every \(N\). On \(|u|\geq2\), the transpose field is
 \[
--\frac1{i\lambda}\partial_u\left(\frac{\,cdot\,}{u^2-1}\right).
+-\frac1{i\lambda}\partial_u\left(\frac{\,\cdot\,}{u^2-1}\right).
 \]
 Each application loses three powers of \(u\) and one power of \(\lambda\). Start with a receding cutoff as in Lemma 1.1. For \(3N>k+1\), the final amplitude is bounded by \(C_k\lambda^{-N}\langle u\rangle^{k-3N}\), uniformly as the cutoff recedes. Thus its limit is also \(O_k(\lambda^{-N})\). Taking \(N\geq2\) as well makes this smaller than the remainder in (1.13). This explicitly handles the noncompact amplitude; the compact stationary-phase theorem was not applied to the whole real line.
 
@@ -440,4 +440,4 @@ Along \(\rho_j=\tfrac32(3\pi/4+2\pi j)\), the sine equals one. Thus (5.6) is not
 - [Hörmander IV, §25.3] Lars Hörmander, *The Analysis of Linear Partial Differential Operators IV: Fourier Integral Operators*, Springer, 1985, formulas (25.3.9)–(25.3.12) and Theorem 25.3.10. This lesson proves the localized model representation and continuity statement with its exact coefficient orders, supports, frame and constants. The invariant manifold and all-real Sobolev theorem 25.3.11 requires the subsequent canonical-localization argument.
 - [AN-03, Euclidean symbol calculus] The existing exact prerequisite supplies support-preserving ordinary asymptotic summation E6 and the finite mixed-derivative bound E23. Its pseudodifferential calculus is imported rather than reauthored.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Self-checked by the writing AI. Original text and numerical illustration: public domain (CC0), with font-license exceptions recorded separately.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026.  Original text and numerical illustration: public domain (CC0), with font-license exceptions recorded separately.*

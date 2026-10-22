@@ -97,8 +97,7 @@ def render():
         fig.savefig(out/("affine-profiles-and-exact-reflected-singularities."+suffix),dpi=170,
                     metadata={"Date":None} if suffix=="svg" else {})
     plt.close(fig)
-    print(json.dumps({"figures":2,"PNG_and_SVG":True,"exact_geometry":str(out/"geometry243.json"),
-                      "private_font_cache_removed_on_exit":True}),flush=True)
+    print(json.dumps({"figures":2,"PNG_and_SVG":True,"exact_geometry":str(out/"geometry243.json")}),flush=True)
 
 if __name__=="__main__":
     with TemporaryDirectory(prefix="an02-own243-mpl-") as cache:

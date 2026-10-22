@@ -1,6 +1,6 @@
 # Cocycle groupoids and semidirect products
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text is public domain (CC0).*
 
 ## Introduction
 
@@ -10,7 +10,7 @@ We prove the cocycle groupoid, the general semidirect-product construction, its 
 
 Takesaki III, XIII section 3 Exercises 3–6 motivate these results. The printed source map in Exercise 4 is incompatible with its printed multiplication. Exercise 6 also cites the pair groupoid where its final transformation-groupoid assertion requires the unit groupoid. Sections 4–5 give exact corrections and counterexamples. The Polish assertion for the function spaces additionally needs explicit countability hypotheses: we prove it for a second countable locally compact group and a factor with separable predual, and distinguish it from the unrestricted topological construction. Section 2 gives a separable compact group and a finite-dimensional factor for which the prescribed cocycle topology is not Polish. Ordinary separability alone, even the chapter's standing group hypothesis, does not imply the asserted Polishness.
 
-The exact [automorphism Polish-group proof](ancillary-actions-and-unitary-corrections.md#1-automorphisms-as-a-polish-group) supplies the factor prerequisite, using the already compared standard-form implementation theorem. The [strong/adjoint unitary metric](normalizers-phases-and-orbit-cocycles.md#5-closed-geometric-symmetries) supplies its complete unitary metric. General standard-form theory belongs to the modular course and is not proved here. The function-space, cocycle and groupoid arguments below are proved here.
+The exact [automorphism Polish-group proof](ancillary-actions-and-unitary-corrections.md#1-automorphisms-as-a-polish-group) supplies the factor prerequisite, using the standard-form implementation theorem. The [strong/adjoint unitary metric](normalizers-phases-and-orbit-cocycles.md#5-closed-geometric-symmetries) supplies its complete unitary metric. General standard-form theory belongs to the modular course and is not proved here. The function-space, cocycle and groupoid arguments below are proved here.
 
 ![Composition, transport and the unit/pair distinction](figures/semidirect-cocycle-transport.svg)
 
@@ -337,7 +337,7 @@ Transporting the source-coordinate product by \(T_{(2,0)}=\operatorname{Ad}(12)\
 
 *Solution.* Set \(\rho=\theta\alpha^a\theta^{-1}\) and \(q'=(\theta^{-1},\theta(a^*),\rho)\). Its source is \(\rho=r(q)\). Its range is \(\theta^{-1}\rho^{\theta(a^*)}\theta=\alpha\), using (4.2) and \((\alpha^a)^{a^*}=\alpha\). Formula (4.4) gives \(q'q=(\mathrm{id},\theta^{-1}(\theta(a^*))a,\alpha)=(\mathrm{id},1,\alpha)\). In the reverse order, \(qq'=(\mathrm{id},\theta(a)\theta(a^*),\rho)=(\mathrm{id},1,\rho)\). These are the units at the original source and range, respectively. Cancelling \(a\) before its appropriate automorphism transport would generally change the intermediate action and violate composability.
 
-## 7. Bibliography and source comparison
+## 7. Bibliography and mathematical scope
 
 Masamichi Takesaki, *Theory of Operator Algebras III*, Chapter XIII, §3, Exercises 3–6, printed pp. 57–59. Definition 3.1 and Examples 3.2(i)–(ii) fix the source/range and pair-groupoid conventions. Theorem 3.1 gives the full groupoid, Borel and Polish construction for Exercise 5. The automorphism action and corrected semidirect product for Exercise 4, and the consistency and transformation-groupoid application for Exercise 6, are proved above with the relevant source-formula qualifications.
 

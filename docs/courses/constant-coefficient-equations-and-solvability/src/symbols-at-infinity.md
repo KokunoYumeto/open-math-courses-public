@@ -1,6 +1,6 @@
 # Symbols at infinity
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A polynomial seen through a fixed frequency window can approach a simpler polynomial as the center of the window escapes to infinity. The limiting polynomial retains information that its highest homogeneous part alone can miss. For example, a product symbol viewed near one coordinate axis becomes a first-order symbol in the other coordinate. We will prove that these limits can be reached along polynomial paths, identify a direction that every limit loses, and obtain a uniform power estimate for approaching the family of limits.
 

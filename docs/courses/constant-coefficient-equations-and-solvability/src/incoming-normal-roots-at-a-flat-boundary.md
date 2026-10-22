@@ -1,6 +1,6 @@
 # Incoming normal roots at a flat boundary
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A partial Fourier–Laplace transform parallel to a boundary leaves a polynomial in its normal frequency. Its degree can be smaller than the total order of the equation. We determine that degree and count its upper and lower roots, including repeated roots and characteristic boundary directions. We then construct the two analytic factors and prove polynomial bounds for their coefficients.
 
@@ -187,21 +187,27 @@ Real translation is stipulated here because it preserves the halfplane splitting
 
 ## A uniform polynomial coefficient bound
 
-A translation \(P(\zeta)\mapsto P(\zeta+i(\tau_0-1)N)\) changes its barrier to one and leaves the principal part, \(m_\pm,m_0\) and \(d\) unchanged. Its localization is translated in the same way. Work with this normalized polynomial and write it again as \(P\), so \(\tau_0=1\). The smaller tube
+Keep the polynomial \(P\) and its barrier \(\tau_0\) from (2)–(3). For every \(a>0\), define the smaller tube
 \[
- \mathcal T_0=\{\zeta:\operatorname{Im}\zeta\in-\Gamma\}
-       \subset\mathcal T
+\mathcal T_a=\{\zeta:\operatorname{Im}\zeta
+             \in(\tau_0-a)N-\Gamma\}\subset\mathcal T.
  \tag{18}
 \]
-is included because \(\eta+N\in\Gamma\) for \(\eta\in\Gamma\).
+Indeed \(\eta+aN\in\Gamma\) for \(\eta\in\Gamma\), by the convex cone property and \(N\in\Gamma\).
 
-We need a lower bound for \(q\) uniform throughout this tube. Fix \(\zeta=\xi-i\eta\), with \(\xi\) real and \(\eta\in\Gamma\). For every real \(b<1\), \(q(\zeta+ibN)\ne0\): its imaginary part is \(bN-\eta=N-(\eta+(1-b)N)\), which lies in \(N-\Gamma\). The polynomial \(z\mapsto q(\zeta+zN)\) has degree \(m_0\) and leading coefficient \(G(N)\). If \(z=a+ib\) is a root, absorb \(aN\) into the real vector \(\xi\); zero exclusion forces \(b\ge1\). Its factorization at \(z=0\) therefore gives
+Write \(\zeta=\xi+i((\tau_0-a)N-\eta)\), with \(\xi\) real and \(\eta\in\Gamma\). The polynomial \(z\mapsto q(\zeta+zN)\) has degree \(m_0\) and leading coefficient \(G(N)\). If \(z=u+iv\) and \(v<a\), its imaginary vector is
 \[
- |q(\zeta)|\ge |G(N)|
- \quad(\zeta\in\mathcal T_0).
+\tau_0N-[\eta+(a-v)N]\in\tau_0N-\Gamma.
+\tag{18a}
+\]
+The real displacement \(uN\) is part of the real frequency. Zero exclusion for \(q\) therefore forces every root \(z_j\) to have \(\operatorname{Im}z_j\ge a\), and hence \(|z_j|\ge a\). Factorization at \(z=0\) gives the uniform lower bound
+\[
+|q(\zeta)|=|G(N)|\prod_{j=1}^{m_0}|z_j|
+ \ge |G(N)|a^{m_0}
+\quad(\zeta\in\mathcal T_a).
  \tag{19}
 \]
-For \(m_0=0\), the same formula is equality for the nonzero constant \(q=G\).
+For \(m_0=0\), the empty product is one and the formula is equality for \(q=G(N)\).
 
 Let \(J(A)=(\sum_k|A^{(k)}(0)|^2)^{1/2}\) for a one-variable polynomial. [Rescaled symbols and stable strength](rescaled-symbols-and-stable-strength.md)'s product lemma applies to arbitrary complex coefficients at zero, so
 \[
@@ -210,29 +216,54 @@ J(P_+(\cdot,\zeta))\,J(P_-(\cdot,\zeta))
  \\
 \le C|q(\zeta)|^{-1}J(P(\zeta+\cdot\,\theta))
  \\
-\le C' S_P(\zeta).
+\le C D_{\theta,m}|G(N)|^{-1}a^{-m_0}S_P(\zeta),
+\\
+\zeta\in\mathcal T_a,\quad a>0.
 \end{gathered}
 \tag{20}
 \]
-Here \(S_P(\zeta)\) denotes the same finite derivative-vector norm evaluated at a complex point. The second inequality follows from 19 and
-\(\partial_w^kP(\zeta+w\theta)|_{w=0}=\partial_\theta^kP(\zeta)\), a fixed linear combination of its multivariable derivatives. The constants depend on \(P,\theta\) and the fixed degrees, not on \(\zeta\).
+Here \(C\) depends only on the fixed degrees of the two factors, and \(S_P(\zeta)\) is the derivative-vector norm of the original polynomial at the complex point. The directional constant can be chosen explicitly:
+\[
+D_{\theta,m}
+=\max_{0\le k\le m}
+\left(\sum_{|\alpha|=k}
+ \left|\frac{k!}{\alpha!}\theta^\alpha\right|^2\right)^{1/2}.
+\tag{20a}
+\]
+Indeed
+\[
+\partial_\theta^kP
+=\sum_{|\alpha|=k}\frac{k!}{\alpha!}\theta^\alpha\partial^\alpha P.
+\tag{20b}
+\]
+Cauchy–Schwarz in each degree block and summation over \(k\) give \(J(P(\zeta+\cdot\,\theta))\le D_{\theta,m}S_P(\zeta)\). Together with (19), this proves the second inequality of (20), with every displacement and scale factor retained.
 
-Each monic degree-\(a\) polynomial satisfies \(J\ge a!\), including \(0!=1\). Consequently 20 bounds both factors separately, and
+Monicity gives \(J(P_\pm)\ge m_\pm!\), including \(0!=1\). Thus (20) bounds either factor separately after division by the opposite factorial. Finite-dimensional Cauchy–Schwarz also gives
 \[
 \begin{gathered}
-\sum_{k=0}^{m_+}|\partial_w^kP_+(0,\zeta)|
+\left(\sum_{k=0}^{m_+}|\partial_w^kP_+(0,\zeta)|\right)
  \\
-\sum_{k=0}^{m_-}|\partial_w^kP_-(0,\zeta)|
+\times\left(\sum_{k=0}^{m_-}|\partial_w^kP_-(0,\zeta)|\right)
  \\
-\le C'' S_P(\zeta)
+\le C''_{\theta,m}|G(N)|^{-1}a^{-m_0}S_P(\zeta)
  \\
-\le C'''(1+|\zeta|)^m
+\le C'''_{P,\theta,m}|G(N)|^{-1}a^{-m_0}(1+|\zeta|)^m,
  \\
-(\zeta\in\mathcal T_0).
+\zeta\in\mathcal T_a,\quad a>0.
 \end{gathered}
 \tag{21}
 \]
-The passage from Euclidean sums to absolute sums uses only their fixed finite lengths. Dividing the \(k\)-th derivative by \(k!\) bounds every coefficient. The proof gives a bound up to the cone's boundary approached from within; it introduces no reciprocal distance loss. This is precisely the coefficient control needed before forming parameter-dependent boundary determinants.
+The first new constant includes the factor \(\sqrt{(m_++1)(m_-+1)}\) for these finite sums. The last inequality uses the original coefficients of \(P\): every derivative is a polynomial of degree at most \(m\), so \(S_P(\zeta)\le C_P(1+|\zeta|)^m\). Dividing the \(k\)-th derivative by \(k!\) bounds every coefficient. For fixed \(a>0\), these bounds remain uniform as the cone boundary is approached from within. Their explicit \(a^{-m_0}\) factor is not a uniform bound as \(a\) tends to zero.
+
+**Translated coordinates.** Set \(\sigma=\tau_0-1\) and \(Q(\zeta)=P(\zeta+i\sigma N)\). This polynomial has barrier one and the same \(F,G,m_\pm,m_0,d\). Localization and the monic factors satisfy
+\[
+\begin{aligned}
+q_Q(\zeta)&=q(\zeta+i\sigma N),\\
+Q_\pm(w,\zeta)&=P_\pm(w,\zeta+i\sigma N).
+\end{aligned}
+\tag{21a}
+\]
+The first equality follows by inserting the fixed translation in the coefficient limit (8)–(9). The root multisets in the second equality agree, and translation of the parameter preserves their upper and lower split on the corresponding tubes. The normalized smaller tube \(\operatorname{Im}\zeta\in-\Gamma\) maps exactly to \(\mathcal T_1\). Its coefficient estimate is therefore the \(a=1\) case of (19)–(21), while \(P\), its lower terms and its original domain remain explicit.
 
 ## Exercises with complete solutions
 

@@ -1,6 +1,6 @@
 # A reflected wave and its faster boundary pulse
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 The cone of a mixed problem gives an upper support bound, but a source picture needs nonvanishing too. For the two-spatial-dimensional wave equation with an isotropic oblique derivative, we construct the point-source Green distribution and prove its exact outer front. A boundary pulse can precede the direct wave. It does not fill the entire intervening region.
 

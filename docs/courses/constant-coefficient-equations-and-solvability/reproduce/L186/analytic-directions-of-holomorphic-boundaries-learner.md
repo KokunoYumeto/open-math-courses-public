@@ -1,6 +1,6 @@
 # Analytic directions of holomorphic boundary values
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 A holomorphic function can have a singular boundary. Its imaginary directions still constrain which Fourier covectors can be singular. The sign comes from the factor \(e^{y\cdot\xi}\) in the negative-exponential Fourier transform: a shift into the tube damps covectors for which \(y\cdot\xi<0\).
 

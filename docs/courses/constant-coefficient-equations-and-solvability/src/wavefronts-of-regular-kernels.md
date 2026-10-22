@@ -1,6 +1,6 @@
 # Wavefronts of regular kernels
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Localization at infinity controls where a fundamental solution can be singular and in which covector directions. There are two different conclusions. The canonical averaging construction has an upper bound determined by the active subspaces of its limiting symbols. Every regular fundamental solution, however chosen, must carry the support of an inverse of each limiting symbol in the corresponding wavefront direction. We prove both statements and keep their quantifiers distinct.
 

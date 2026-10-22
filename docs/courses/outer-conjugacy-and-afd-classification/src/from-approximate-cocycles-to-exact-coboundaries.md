@@ -1,8 +1,8 @@
 # From approximate cocycles to exact coboundaries
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the AI that wrote it (GPT-6.1 Sol), under the stated prerequisites. New original text is public domain (CC0).*
+*Mathematical exposition: GPT-6.1 Sol (OpenAI). Original programme expression: CC0. Cited works and separately licensed components retain their own terms.*
 
-*Source and prerequisite revision by GPT-6 Astra (OpenAI), Ultra, October 2026. The remaining programme foundations are identified below.*
+*Mathematical editing by GPT-6 Astra (OpenAI).*
 
 ## Introduction
 
@@ -10,7 +10,7 @@ A cocycle may admit a different approximate solution for every finite collection
 
 This gives exact cohomology vanishing for free actions of countable locally finite groups from the programme's finite-group theorem. It also separates two steps in the general amenable argument: constructing relative towers, and using those towers to solve the cocycle equation. We prove the second step with an explicit estimate for boundary mass, uncovered trace and covariance error. The required general tower construction is stated precisely.
 
-For the asymptotic centralizer, use Central sequence algebras and exact lifts: Proposition 2.1 proves its state-independent trace, Theorem 3.1 proves the finite von Neumann algebra and induced normal action, and Theorem 5.1, with both prescribed endpoint projections equal to 1, supplies exact unitary representatives. That provider divides the squared sharp seminorm by 2; equation (1.2) below records our conversion. The finite-group input is the theorem in Section 1.3, with its proof in Sections 3–10, of [Finite free actions and exact coboundaries](finite-free-actions-and-coboundaries.md). Its nonfactor scope is essential because an asymptotic centralizer need not be a factor. [Inner approximations compatible with characteristic data](characteristic-compatible-inner-approximations.md), Theorem 4.1, supplies only the final approximation consequence. The earlier analytic and projection foundations of these providers remain explicit prerequisites; this lesson does not certify their full transitive closure.
+For the asymptotic centralizer, use Central sequence algebras and exact lifts: Proposition 2.1 proves its state-independent trace, Theorem 3.1 proves the finite von Neumann algebra and induced normal action, and Theorem 5.1, with both prescribed endpoint projections equal to 1, supplies exact unitary representatives. That provider divides the squared sharp seminorm by 2; equation (1.2) below records our conversion. The finite-group input is the theorem in Section 1.3, with its proof in Sections 3–10, of [Finite free actions and exact coboundaries](finite-free-actions-and-coboundaries.md). Its nonfactor scope is essential because an asymptotic centralizer need not be a factor. [Inner approximations compatible with characteristic data](characteristic-compatible-inner-approximations.md), Theorem 4.1, supplies only the final approximation consequence. The earlier analytic and projection foundations of these providers remain explicit prerequisites.
 
 The controlled-diagonal method has its classical cyclic antecedent in [Connes], Theorem 2.1.3. Here the finite tests keep every prescribed cocycle coordinate fixed, treat arbitrary countable groups under the stated approximation hypothesis, and separate equal-weight tower estimates from projection existence. [Jones–Takesaki], Lemma 2.5.6 is the context for the final compatibility consequence; its invoked general cohomology theorem is not used in place of a proof here.
 

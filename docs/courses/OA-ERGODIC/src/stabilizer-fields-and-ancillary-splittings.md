@@ -1,6 +1,6 @@
 # Stabilizer fields and ancillary splittings
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the writing AI. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text is public domain (CC0).*
 
 ## Introduction
 
@@ -8,7 +8,7 @@ An orbit relation remembers which points can be connected. A transformation grou
 
 A hyperfinite orbit relation allows a coherent choice of one connecting arrow for each endpoint pair. This splits the full transformation groupoid as a semidirect product of the stabilizer field and the relation. The coordinates put the loop at the range, and transport the next loop before multiplying it. We prove the construction, its Borel and measured properties, and its dependence on the chosen section. A permutation action then makes every coordinate explicit.
 
-Read [Orbits, stabilizers, and relation algebras](orbits-stabilizers-and-relation-algebras.md) for the full countable Borel presentation, and [Compatible lifts and cohomology reduction](compatible-lifts-and-cohomology-reduction.md#1-lifting-a-choice-of-arrows) for Theorems 1.1 and 1.3. The latter contains the complete finite-stage lift and the general measured lift into an arbitrary standard Borel groupoid. Its exactly compared Claude prerequisite supplies completed-measurable sections even when the derived target relation is analytic rather than Borel. No global Borel section for such a target is assumed.
+Read [Orbits, stabilizers, and relation algebras](orbits-stabilizers-and-relation-algebras.md) for the full countable Borel presentation, and [Compatible lifts and cohomology reduction](compatible-lifts-and-cohomology-reduction.md#1-lifting-a-choice-of-arrows) for Theorems 1.1 and 1.3. The latter contains the complete finite-stage lift and the general measured lift into an arbitrary standard Borel groupoid. Its cited measurable-selection prerequisite supplies completed-measurable sections even when the derived target relation is analytic rather than Borel. No global Borel section for such a target is assumed.
 
 The special countable abelian case is proved in [Kernels and measurable groupoid splitting](kernels-and-measurable-groupoid-splitting.md). Here we retain all stabilizers and allow a nonabelian group and a nonergodic nonsingular action. General measurable fields of operator algebras and their disintegration remain separate prerequisites and targets; the splitting itself uses the centre action and groupoid arrows.
 
@@ -135,7 +135,7 @@ The individual first-label choice used above relies on the countability of \(G\)
 
 Compatible-lift Theorem 1.3 proves exactly this lift. Its proof uses an equivalent probability on the sigma-finite source-counting measure and its pushforward by \(p\). The image of \(Q\) is analytic; the exact completed-measurable section prerequisite applies to that pushforward without asserting that the image is Borel. A completed-measurable individual lift is replaced by a Borel version. Its bad-arrow set has zero source-counting measure, so its countable Borel source projection and nonsingular saturation are null. On the remaining invariant conull set every chosen arrow has its required endpoints. The compatible finite-stage products of Theorem 1.1 then make the choice coherent, yielding (3.1).
 
-All these stages, including the Borel-version lemma and the exact null-source repair, are fully proved in the cited lesson. The exactly bound Claude completed-analytic-section and one-to-one Borel-image proofs are the only target selection prerequisites used there. The argument does not assume countable target fibres or a global Borel section of \(Q\). \(\square\)
+All these stages, including the Borel-version lemma and the exact null-source repair, are fully proved in the cited lesson. The cited completed-analytic-section and one-to-one Borel-image proofs are the only target selection prerequisites used there. The argument does not assume countable target fibres or a global Borel section of \(Q\). \(\square\)
 
 This gives the entire statement of source Corollary XIII.3.25 under its Definition XIII.3.7 standard Borel convention. The local result also permits a nonergodic source. A finite algebraic or Borel lift on every source point and a measured lift on an invariant conull reduction are distinct statements; the latter is the source's measurable assertion.
 
@@ -261,7 +261,7 @@ Level 1 asks for a computation or direct application. Level 2 asks for a proof u
 
 *Solution.* Let \(B=R\setminus\bigcup_nR_n\). For each \(g\in G\), the set \(A_g=\{x:(T_gx,x)\in B\}\) is Borel and null, since its graph is contained in the source-counting null set. Remove \(\bigcup_{k,g\in G}T_k A_g\), a countable Borel null union. On its invariant complement, every orbit pair is in the exhaustion. Add units to the finite stages if necessary; this retains finiteness and nesting. Coherent finite lifts give a single strict \(c\) there. Formula (2.6) then applies to every label \(g\) and every retained unit, including all stabilizer loops. The unit-preserving fibre bijections prove the counting-measure assertion without discarding additional arrow-dependent exceptional sets.
 
-## Bibliography and source comparison
+## Bibliography and mathematical scope
 
 Masamichi Takesaki, *Theory of Operator Algebras III*, Definition XIII.3.7, printed p. 34; Corollary XIII.3.25 and its proof, pp. 47–48; Proposition XIII.3.32 and its proof, pp. 53–54; Remark XIII.3.33, p. 54. These passages distinguish the standard Borel target, measurable lifting, principal AF hypothesis, variable isotropy field and global group kernel.
 

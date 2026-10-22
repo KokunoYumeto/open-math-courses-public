@@ -1,6 +1,6 @@
 # Compact elliptic kernels and adjoint obstructions
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Original expression: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Original expression: CC0.*
 
 A smooth solution supported on one side of a plane can be reflected and joined to a second copy. Periodicity in the two tangential variables then turns the bounded normal support into compact support in ordinary three-dimensional space. The joining error is removable by a smooth zeroth-order coefficient wherever the joined solution is nonzero. Ellipticity survives that correction and an exterior patch. This proof applies those steps to the actual written periodic one-sided seed below, producing a compact elliptic kernel and the corrected adjoint localization obstruction.
 

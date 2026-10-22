@@ -1,6 +1,6 @@
 # Gaussian packets and homogeneous Fourier directions
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 A Gaussian packet asks two local questions at once: where is a distribution being tested, and in which frequency direction? Fourier transformation exchanges those questions with a sign. For a homogeneous distribution, scaling connects this packet identity to both ordinary and analytic wavefront sets. Point terms at the origin require care, but do not spoil the interchange away from the two origins.
 

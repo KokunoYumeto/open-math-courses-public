@@ -1,6 +1,6 @@
 # Lifted relations and the associated flow
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text is public domain (CC0).*
 
 ## Introduction
 
@@ -159,7 +159,7 @@ which sends \(\pi(B)\) to the constant field of Proposition 3.1 and \(\Lambda(t)
 
 *Proof by exact programme application.* The full Fourier comparison, Section 4, uses the right-counting measure on pairs \((y,x)\). That measure is our \(\nu_s\); its modulus is exactly (1.1). Our space is standard and sigma-finite, our group is countable, and (1.5) labels distinct orbit points even with stabilizers. Theorem 6.2 of the kernel lesson supplies exactly its normal faithful semifinite diagonal weight and modular formula (4.1). These verify every relation-specific hypothesis of that written theorem.
 
-The prerequisite's Fourier transform is \((2\pi)^{-1/2}\int e^{-irp}\xi(r)\,dr\). Its complete unitary comparison gives the images of both generators asserted above, proves that they generate all of \(\widehat M\), and intertwines the dual action with dilation. Its final trace comparison gives the stated \((2\pi)^{-1}\) normalization on the whole positive cone. Thus (4.3) and all its assertions follow from that exact theorem. General dual-weight and trace Radon–Nikodym prerequisites retain the scope stated in the provider lesson. \(\square\)
+The prerequisite's Fourier transform is \((2\pi)^{-1/2}\int e^{-irp}\xi(r)\,dr\). Its complete unitary comparison gives the images of both generators asserted above, proves that they generate all of \(\widehat M\), and intertwines the dual action with dilation. Its final trace comparison gives the stated \((2\pi)^{-1}\) normalization on the whole positive cone. Thus (4.3) and all its assertions follow from that exact theorem. General dual-weight and trace Radon–Nikodym prerequisites retain the scope stated in the cited lesson. \(\square\)
 
 Consequently, for an ergodic base action, the noncommutative flow of weights, in continuous-core coordinates, is \((\widehat M,\mathbb R,\theta)\), and its flow on the center is
 \[
@@ -209,7 +209,7 @@ This includes nonfree actions and counts each distinct orbit point once. The uni
 
 The orbit relation of these commuting actions is the principal product \(E\times(\Lambda\times\Lambda)\): for \(y=sx\), any \(\zeta>0\) is reached by the time \(t=\log(\delta(x,y)\lambda/\zeta)\). This point-pair identity counts \(y\) once even if infinitely many group elements represent it. It does not justify pushing counting measure on an infinite stabilizer onto the principal relation. The specified orbit Haar measure in (4.5) is part of the imported definition.
 
-The original correction keeps its exact meaning: a comparison with a separately defined locally compact extension of the book's \(R_K\) notation remains open in the flow course. The required correction and concrete theorem have been imported without rewriting that construction or claiming that the open comparison is settled. Our canonical-core theorem (4.3) already follows from a different complete programme comparison. In particular \(N_{\mathrm{op}}\) and \(\widehat M\) must not be equated; the finite model in Exercise 6.8 has different centers for them.
+An identification with a separately defined locally compact extension of the book's \(R_K\) notation remains open in the flow course. The concrete product-representation theorem does not establish that identification. Our canonical-core theorem (4.3) already follows from a different complete programme comparison. In particular \(N_{\mathrm{op}}\) and \(\widehat M\) must not be equated; the finite model in Exercise 6.8 has different centers for them.
 
 ![A lifted algebra and its continuous product representation](figures/lifted-and-product-algebras.svg)
 
@@ -306,5 +306,5 @@ Set \(a(\zeta)=\sqrt\zeta\,1_{[1,2]}(\zeta)\) and \(b(\eta)=\sqrt\eta\,1_{[2,3]}
 
 - [Takesaki III] Masamichi Takesaki, *Theory of Operator Algebras III*, Encyclopaedia of Mathematical Sciences 127, Springer, 2003, XIII.2.23 and Definition 2.24, printed pp. 28–30. [Publisher record](https://doi.org/10.1007/978-3-662-10453-8). Equations (37)–(38) supply the lifted action and dilation. The printed proof's full-fibre trace needs the basepoint correction in Section 2; the specified continuous product representation is distinguished from the countable lifted relation in Section 4.
 - [Programme lifted core] Lifted orbit relations and the normalized core, Sections 1–6: the entire basepoint trace, fixed algebra, onto Fourier comparison, full positive-cone trace normalization and continuous orbit representation. The right-counting measure there is the source-counting measure here. Its general modular, dual-weight and trace-density inputs retain their stated scope.
-- [Programme source boundary] Building an intrinsic flow from modular coordinates, “A regular-model amplification with its measure specified,” “The corrected trace on a general lifted relation,” “Fixed points of the lifted flow” and “The lifted relation is the canonical core.” Its source correction and open AF08 model-notation callback remain with that course; no retrospective locally compact definition of the book's symbol is asserted.
+- [Programme source boundary] Building an intrinsic flow from modular coordinates, “A regular-model amplification with its measure specified,” “The corrected trace on a general lifted relation,” “Fixed points of the lifted flow” and “The lifted relation is the canonical core.” These results do not identify the product model with an independently defined locally compact interpretation of the book's symbol.
 

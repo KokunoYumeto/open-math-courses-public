@@ -1,6 +1,6 @@
 # Gaussian packets and homogeneous Fourier directions
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 Fourier transformation rotates a Gaussian packet's position and covector. Local wavefront sets do not obey that rotation for arbitrary distributions: Fourier transformation can bring behavior at infinity to a finite point. Homogeneous scaling supplies the missing link. We prove the exact ordinary and analytic wavefront interchange away from both origins, including arbitrary complex degrees, finite logarithmic Euler chains and distributional extensions through the origin.
 

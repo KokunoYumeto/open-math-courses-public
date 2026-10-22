@@ -1,6 +1,6 @@
 # Hyperbolicity and lower order terms
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A root barrier constrains an entire polynomial. Its principal part must have real roots on real time lines, and its lower order components must be weaker than that principal part. The difficult implication is uniform: a bounded imaginary strip for the roots forces a single comparison constant valid at every real frequency. We prove that implication with an analytic rescaling argument, then connect it to eight equivalent algebraic tests.
 

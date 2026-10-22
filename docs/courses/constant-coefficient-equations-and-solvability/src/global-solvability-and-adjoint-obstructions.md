@@ -1,6 +1,6 @@
 # Global solvability and finite-dimensional adjoint obstructions
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI. Original expression: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Original expression: CC0.*
 
 A local inverse works near a frozen point. To solve on a larger open set, we must also rule out equations that appear after frequencies escape to infinity. Their compact homogeneous adjoint solutions are the possible failures of a uniform estimate. When every such limiting adjoint equation is injective, the remaining obstruction is finite-dimensional and smooth. The proof below obtains the full symbol gain for every moderate weight, including both norm endpoints.
 

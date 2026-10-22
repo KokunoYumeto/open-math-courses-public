@@ -33,4 +33,4 @@ The transport PNG has 1168×912 native pixels. Here j=2, the start is (t,y)=(0,0
 
 ## Credits and reading scope
 
-The renderer, geometry and diagrams are original GPT-6.1 Sol (OpenAI) work, October 2026, CC0. Matplotlib and its font components retain their own terms. The lesson gives precise freely readable Enqvist and Crétier source locators and the exact internal Fourier and Banach provider scopes. Its complete specialized arguments, three examples and five solutions accompany the figures. The bounded independent AI review covers that accepted lesson and its figures; recursive prerequisite closure and whole-course review remain incomplete.
+The renderer, geometry and diagrams are original GPT-6.1 Sol (OpenAI) work, October 2026, CC0. Matplotlib and its font components retain their own terms. The lesson gives precise freely readable Enqvist and Crétier source locators and the exact internal Fourier and Banach provider scopes. Its complete specialized arguments, three examples and five solutions accompany the figures.

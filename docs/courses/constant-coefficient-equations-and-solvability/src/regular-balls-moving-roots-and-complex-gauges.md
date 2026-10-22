@@ -1,6 +1,6 @@
 # Regular balls, moving roots and complex gauges
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 The characteristic Cauchy problem permits a leading time coefficient that depends on tangential frequency. This changes both the root bounds and the geometry of the frequency regions on which individual roots can be followed. We prove the uniform zero-free-ball lemma, the precise weighted root bound, an inset lower bound for the leading coefficient, and full analytic labeling on a ball. We also prove the support-preserving complex gauge change and exhibit its effect on the Schrödinger equation.
 

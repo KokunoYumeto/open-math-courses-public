@@ -1,6 +1,6 @@
 # Cylindrical wedges and support
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Convexity of every characteristic hyperplane section is a sufficient geometric condition for global smooth solvability. In higher dimensions, the exterior geometry is a planar angle extended along a subspace of codimension two. The resulting wedge contains whole lines. We therefore prove its continuation property directly between convex open sets rather than treating it as a pointed cone.
 

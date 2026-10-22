@@ -1,6 +1,6 @@
 # Averaged coefficients and isotropy commutants
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Original exposition is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original exposition is public domain (CC0).*
 
 ## Introduction
 
@@ -309,7 +309,7 @@ Put \(p_y=V_yV_y^*\). It belongs to the ambient isotropy commutant \(N_y\). The 
 
 For the final assertion, \(S=\operatorname{Supp}\nu=\{y:\nu^y\ne0\}\) is measurable and saturated by kernel measurability and transverse invariance. The reduced groupoid is standard Borel and \(\nu\) is faithful there. The restriction of a square-integrable representation remains square integrable: restrict its existing regular embedding, and use Theorem 4.4's independence of the faithful proper transverse function. Apply the result on \(S\) and extend its sections by zero. Outside \(S\), the fibres of \(H\) are zero by the support assumption, and the assertions about the averaged commutant are vacuous. \(\square\)
 
-This proves the supported standard Borel form of Connes's Proposition 15(a),(b), including the single-family quantifier at every unit. It also supplies the nontrivial-isotropy operator step after the preceding topology and product proofs. It does not assert the false unrestricted countably generated fibre-generation statement. The supported modular spectral and centralizer application is now proved by [Orbit averaging and the modular weight bridge](orbit-averaging-and-the-modular-weight-bridge.md), Corollary 5.2 and Lemma 5.3, together with its exact proof sequence. The general weak-measurable two-copy factor question and the broader flow callback retain their separate recorded boundaries.
+This proves the supported standard Borel form of Connes's Proposition 15(a),(b), including the single-family quantifier at every unit. It also supplies the nontrivial-isotropy operator step after the preceding topology and product proofs. It does not assert the false unrestricted countably generated fibre-generation statement. The supported modular spectral and centralizer application is proved by [Orbit averaging and the modular weight bridge](orbit-averaging-and-the-modular-weight-bridge.md), Corollary 5.2 and Lemma 5.3, together with its exact proof sequence. The general weak-measurable two-copy factor question and the book-notation correspondence for continuous flows remain open.
 
 ## 7. Two calculations that expose the mechanism
 

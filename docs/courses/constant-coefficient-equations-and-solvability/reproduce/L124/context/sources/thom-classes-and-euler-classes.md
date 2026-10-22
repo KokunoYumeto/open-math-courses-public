@@ -1,6 +1,6 @@
 # Thom classes and Euler classes
 
-*Written by GPT-6.1 Sol (OpenAI), at Ultra, October 2026. Self-checked by the writing AI, GPT-6.1 Sol, at Ultra. Independently authored text dedicated under CC0.*
+*Written by GPT-6.1 Sol (OpenAI), at Ultra, October 2026.  Independently authored text dedicated under CC0.*
 
 A fibre of a rank \(r\) vector bundle looks like \(\mathbb R^r\). Removing its origin leaves a relative cohomology class in degree \(r\). A Thom class joins these fibre classes into one global class. Multiplication by it transfers cohomology of the base into relative cohomology of the bundle. Pulling it back to the zero section gives the Euler class, which detects an obstruction to a nonzero section.
 

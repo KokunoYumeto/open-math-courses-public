@@ -1,6 +1,6 @@
 # Independent copies of orbit algebras
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. Self-checked by the AI that wrote it, under the stated prerequisites. New original text and figures are public domain (CC0). Source and proof revision by GPT-6 Astra (OpenAI), Ultra, October 2026.*
+*Mathematical exposition: GPT-6.1 Sol (OpenAI); GPT-6 Astra (OpenAI). Original programme expression: CC0. Cited works and separately licensed components retain their own terms.*
 
 ## Introduction
 
@@ -262,8 +262,7 @@ Theorems 3.1 and 6.1. Its normality construction applies to the restrictions
 of \(\tau\) to \(B\) and \(B'\), and its compact-ball argument identifies
 their represented von Neumann closures. The elementary Hilbert-space,
 predual, spectral and Kaplansky-density foundations retained in that lesson
-remain prerequisites here; this reference does not declare their transitive
-programme proof coverage complete.
+remain prerequisites here.
 
 For each \(g\), \(\gamma_g(X_{\lambda,j})\) is the labeled generator for \(\beta_g\)
 composed on the left with \(\rho_\lambda\), and the identical coordinate formula

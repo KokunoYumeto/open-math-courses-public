@@ -1,6 +1,6 @@
 # A necessary time strip for smooth mixed solvability
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Unique solvability for every smooth datum forces more than uniqueness of existing solutions. A boundary determinant cannot have zeros with arbitrarily negative imaginary time frequency. We derive a fixed smooth-space estimate, test it against normalized repeated-root modes, and make the final real-algebraic argument explicit without a Puiseux expansion or an attained supremum.
 

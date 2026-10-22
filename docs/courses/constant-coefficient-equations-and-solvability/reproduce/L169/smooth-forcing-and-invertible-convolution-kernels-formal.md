@@ -1,6 +1,6 @@
 # Smooth forcing, invertible kernels and support confinement
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Solvability for analytic forcing holds for every nonzero compact kernel. Solvability for every compact smooth forcing requires an invertible kernel. Solvability for every smooth forcing also confines transpose-test supports whenever their convolutions stay in a fixed compact set. We prove both necessary conditions on arbitrary compatible open domains. One complete-space argument supplies their common bilinear estimate.
 

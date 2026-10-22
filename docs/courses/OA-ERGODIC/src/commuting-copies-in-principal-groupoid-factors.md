@@ -1,6 +1,6 @@
 # Commuting copies in principal groupoid factors
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text is public domain (CC0).*
 
 ## Introduction
 
@@ -8,7 +8,7 @@ Commutation alone does not prove that two subfactors generate their containing f
 
 We prove the full commuting-copy conclusion for standard Borel principal groupoids with a semifinite transverse measure, allowing uncountable orbits and continuous orbit measures. For a nonzero properly infinite random-operator factor \(M\), there are a normal injective unital endomorphism \(\sigma\) and a self-adjoint unitary \(S\in M\) such that the copies \(\sigma(M)\) and \(S\sigma(M)S\) are mutual relative commutants and generate \(M\). The passage from semifiniteness to a sigma-finite conull support is proved below.
 
-The conclusion is [Connes, Section 6, Corollary 11, author PDF 44–45](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf#page=44). The written programme lesson *Square-integrable representations and random operators*, in *Noncommutative integration*, proves the relative-commutant and symmetry construction in Proposition 8.5, but explicitly leaves joint generation unproved in Remark 8.6. Section 3 supplies that step. Corollary 1.5 removes the separate sigma-finiteness assumption when the random-operator algebra is a nonzero factor. The weaker countable-generation scope still requires comparison: the endpoint and fibre-density arguments below use standard Borel structure. [Principal groupoids with extra fibre information](principal-groupoids-with-extra-fibre-information.md) shows why that step cannot simply be omitted: a principal one-orbit measurable groupoid can have a nonscalar random-operator centre and fail full fibre generation. Its algebra is not a factor, so that example does not refute Corollary 11’s properly infinite factor assertion at the broader scope.
+The conclusion is [Connes, Section 6, Corollary 11, author PDF 44–45](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf#page=44). The written programme lesson *Square-integrable representations and random operators*, in *Noncommutative integration*, proves the relative-commutant and symmetry construction in Proposition 8.5, but explicitly leaves joint generation unproved in Remark 8.6. Section 3 supplies that step. Corollary 1.5 removes the separate sigma-finiteness assumption when the random-operator algebra is a nonzero factor. The weaker countable-generation scope is not covered: the endpoint and fibre-density arguments below use standard Borel structure. [Principal groupoids with extra fibre information](principal-groupoids-with-extra-fibre-information.md) shows why that step cannot simply be omitted: a principal one-orbit measurable groupoid can have a nonscalar random-operator centre and fail full fibre generation. Its algebra is not a factor, so that example does not refute Corollary 11’s properly infinite factor assertion at the broader scope.
 
 [Principal groupoids with hidden group factors](principal-groupoids-with-hidden-group-factors.md), Theorem 4.1, Corollary 4.3 and Proposition 5.1, supplies a properly infinite factor at the weaker measurable scope and an explicit extra relative-commutant operator for the canonical tensor pair. These two canonical copies fail both relative-commutant equality and joint generation. Existence of some different pair in the broader Corollary 11 remains unresolved. The standard Borel proof below retains its hypotheses.
 
@@ -321,7 +321,7 @@ Every bounded operator at \(z_0\), extended by the zero operator on the other fi
 \[
 \operatorname{End}_\Lambda(H)=B(\ell^2(\mathbb N)),
 \]
-a nonzero properly infinite factor. Its support is \(B=\{z_0\}\). The function \(\rho^z=1_B(z)\varepsilon_z\) has transverse value one and is faithful on \(G_B\); the restricted unit measure is the finite point mass at \(z_0\). Example 5.1 now supplies the self-embedding and internal flip explicitly. The globally non-sigma-finite \(\Lambda\) remains unchanged. Corollary 1.5 asserts sigma-finiteness on a conull subset **of the representation's support**, not on the entire original unit space.
+a nonzero properly infinite factor. Its support is \(B=\{z_0\}\). The function \(\rho^z=1_B(z)\varepsilon_z\) has transverse value one and is faithful on \(G_B\); the restricted unit measure is the finite point mass at \(z_0\). Example 5.1 supplies the self-embedding and internal flip explicitly. The globally non-sigma-finite \(\Lambda\) remains unchanged. Corollary 1.5 asserts sigma-finiteness on a conull subset **of the representation's support**, not on the entire original unit space.
 
 ## 6. Exercises with solutions
 

@@ -1,6 +1,6 @@
 # Learning to choose convex convolution domains
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A logarithmic Fourier carrier describes the singular geometry visible along one escaping frequency sequence. An equation must accommodate every carrier, even when they differ from the kernel's combined singular hull. Convexity turns this requirement into a test of translated compact sets. Supporting planes then identify which boundary directions matter.
 

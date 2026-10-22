@@ -1,6 +1,6 @@
 # Uniqueness from the principal boundary symbol
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 The principal boundary symbol controls the inverse determinant near the time direction at high frequency. Its nonvanishing removes analytic singular directions normal to time. Causal support then forces the homogeneous solution to vanish. We justify compact localization for arbitrary spatial growth and explain why finitely many zero initial jets suffice to extend a difference of solutions to the past.
 
@@ -12,7 +12,40 @@ Basic references are Grubb's *Distributions and Operators* ([author's lecture no
 
 ## Statement and exact prerequisites
 
-Use the normalized notation of [Incoming normal roots at a flat boundary](incoming-normal-roots-at-a-flat-boundary.md), [Boundary determinants as causal Fourier kernels](boundary-determinants-as-causal-fourier-kernels.md), [Boundary determinants annihilate causal solutions](boundary-determinants-annihilate-causal-solutions.md) and [The principal boundary symbol at high frequency](the-principal-boundary-symbol-at-high-frequency.md), with \(N=e_n,\theta=e_1\), \(a=x_1\), tangent variables \(x'=(z,t)\), and exactly \(h=m_+\) boundary symbols. Let \(L^\partial\) be their determinant and \(\widehat\Lambda_0\) its homogeneous principal symbol, of integer degree \(\kappa\). Assume
+**The original problem and its comparison symbols.** Retain an original polynomial \(\mathsf P\), every original boundary symbol \(\mathsf B_j\), the real barrier \(\tau_0\), and independent original frequency vectors \(N_{\!o},\theta_o\). Choose a real invertible matrix \(E\) with \(Ee_1=\theta_o\), \(Ee_n=N_{\!o}\), and put
+\[
+y=E^Tx,\quad \sigma=\tau_0-1,\quad
+P(z)=\mathsf P(Ez+i\sigma N_{\!o}),\quad
+B_j(z)=\mathsf B_j(Ez+i\sigma N_{\!o}).
+\tag{OC1}
+\]
+The symbols \(P,B_j\) in the normalized calculation below mean exactly (OC1), including the shift of every boundary symbol. Its physical coordinates \((a,x')=(a,z,t)\) are these \(y\)-coordinates. In particular \(a=\theta_o\cdot x\) and \(t=N_{\!o}\cdot x\). The equation polynomial has barrier one, its principal cone is \(\Gamma_E=E^{-1}\Gamma(\mathsf P_m,N_{\!o})\), and its positive, negative and zero normal counts are those of the original principal polynomial in this basis. No lower coefficient of an original symbol is omitted.
+
+Write \(u_E(y)=u(E^{-T}y)\). For a scalar solution, the exact correspondence is
+\[
+v(y)=e^{\sigma y_n}u(E^{-T}y),\qquad
+u(x)=e^{-\sigma N_{\!o}\cdot x}v(E^Tx).
+\tag{OC2}
+\]
+The product and chain rules give \(P(D_y)v=e^{\sigma y_n}(\mathsf P(D_x)u)(E^{-T}y)\) and the identical formula for each \(B_j,\mathsf B_j\), including boundary traces. These identities hold for distributions by the definition of pullback under an invertible linear map and by distributional differentiation. Smoothness, nonvanishing and support are preserved. Flatness at initial time is preserved by the finite Leibniz sum in every derivative order. The scalar pullback \(v(E^Tx)\) is \(|\det E|^{-1}(E^{-T})_*v\) for distributions; determinant kernels use the pushforward, with its Jacobian, as specified in [Boundary determinants as causal Fourier kernels, (24d)–(24e)](boundary-determinants-as-causal-fourier-kernels.md).
+
+Let \(\mathsf L_E\) be the determinant of the unshifted coordinate symbols \(\mathsf P(Ez),\mathsf B_j(Ez)\), and let \(U_E\) be its original-barrier kernel. With \(N'=e_{n-1}\), the normalized determinant and kernel satisfy
+\[
+L^\partial(z')=\mathsf L_E(z'+i\sigma N'),\qquad
+L_0=e^{\sigma t}U_E .
+\tag{OC3}
+\]
+These are the simultaneous-symbol identities (24a)–(24c) of the linked kernel proof. The normalized \(L_0\) is tempered; no temperedness of \(U_E\) is inferred. Its original Fourier–Laplace interpretation is (18c) there. For properly defined convolution, multiplication by this exponential respects convolution: on a compact output test, properness restricts the pair of input supports to a compact set, and \(e^{\sigma(s+t)}=e^{\sigma s}e^{\sigma t}\) inside the distributional tensor pairing. Consequently
+\[
+\begin{gathered}
+L_0*_{x'}v(a,\cdot)\\
+=e^{\sigma t}\bigl(U_E*_{x'}u_E(a,\cdot)\bigr).
+\end{gathered}
+\tag{OC4}
+\]
+This formula transports determinant annihilation and all support arguments back to the original mixed problem. The exponentially weighted kernel is used whenever tempered Fourier arguments are required.
+
+Use the explicit normalized comparison (OC1)–(OC4) and the notation of [Incoming normal roots at a flat boundary](incoming-normal-roots-at-a-flat-boundary.md), [Boundary determinants as causal Fourier kernels](boundary-determinants-as-causal-fourier-kernels.md), [Boundary determinants annihilate causal solutions](boundary-determinants-annihilate-causal-solutions.md) and [The principal boundary symbol at high frequency](the-principal-boundary-symbol-at-high-frequency.md), with \(N=e_n,\theta=e_1\), \(a=x_1\), tangent variables \(x'=(z,t)\), and exactly \(h=m_+\) boundary symbols. Let \(L^\partial\) be their determinant and \(\widehat\Lambda_0\) its homogeneous principal symbol, of integer degree \(\kappa\). Assume
 \[
                        \widehat\Lambda_0(N')\ne0 .
  \tag{1}
@@ -170,6 +203,8 @@ By right smoothness the equation extends continuously to \(t=0\) for \(a>0\). Th
 Taylor's integral remainder, uniformly on compact spatial sets in \(a\ge0\), now shows that extension by zero to \(t<0\) is jointly smooth up to the normal boundary. There are no time-boundary delta terms, the homogeneous equation holds on the whole interior of \(H'\), and the boundary traces remain zero. The extension meets [Boundary determinants annihilate causal solutions](boundary-determinants-annihilate-causal-solutions.md) and equation 5. Equation 11 makes it zero, so \(u_1=u_2\). No arbitrary full smooth extension across \(a=0\) is needed.
 
 Combined with [Missing boundary rank produces a causal solution](missing-boundary-rank-produces-a-causal-solution.md)'s rank-deficient construction and [Degenerate boundary symbols and smooth nonuniqueness](degenerate-boundary-symbols-and-smooth-nonuniqueness.md)'s principal-degenerate construction, this gives the exact smooth uniqueness criterion for the balanced boundary count: when the determinant is nonzero, uniqueness holds if and only if its principal symbol is nonzero at the time direction. This criterion does not determine which data admit a solution.
+
+**Uniqueness for the original mixed problem.** For the unshifted determinant, the analytic scaling identity is \(\varepsilon^\kappa L^\partial(\eta'/\varepsilon)=\Lambda_{\!o}(\eta'+i\sigma\varepsilon N',\varepsilon)\). Its zero-scale principal symbol is unchanged, so nonvanishing in the normalized time direction is exactly nonvanishing for the original principal symbol in the basis \(E\). Transform the difference of two original solutions by (OC2). The normalized difference has zero interior forcing and boundary data. Equal original time jets through order \(m-1\) give equal normalized jets: each derivative is a finite triangular Leibniz sum of the original jets, with nonzero diagonal coefficient. The normalized uniqueness proof above therefore makes that difference zero. Inverting (OC2) gives equality of the original solutions. All tempered convolution arguments in the proof concern the normalized \(L_0\), and (OC3)–(OC4) give their original exponentially weighted interpretation.
 
 ## Exercises with complete solutions
 

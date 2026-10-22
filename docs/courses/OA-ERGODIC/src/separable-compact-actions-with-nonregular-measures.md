@@ -1,6 +1,6 @@
 # Separable compact actions with nonregular measures
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. New original text and diagram are public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text and diagram are public domain (CC0).*
 
 ## Introduction
 

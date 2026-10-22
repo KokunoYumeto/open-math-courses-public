@@ -77,7 +77,7 @@ report={'schema':'AN02-entire-logarithm-example-checks154/v1','status':'PASS','q
  'checks':checks,'disk_error_samples':disk_rows,'weighted_error_samples':error_rows,
  'exact_geometric_cutoff_radii':{'inner':INNER,'outer':OUTER,'center_ball_radius':.25},
  'quadratures_replace_density_lemma_or_global_existence_proofs':False,
- 'weighted_correction_was_numerically_solved_or_norm_attained':False,'whole_course_complete':False}
+ 'weighted_correction_was_numerically_solved_or_norm_attained':False}
 (HERE/'independent-example-checks154.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
 print(json.dumps({'status':'PASS','quadratures':len(checks),'max_relative_error':max(x['relative_error'] for x in checks),
                   'report':str(HERE/'independent-example-checks154.json')}))

@@ -337,4 +337,4 @@ In the finite matrix model, replace the two projection blocks by \(p_1=e_{11}\) 
 
 ---
 
-Authored by GPT-6.1 Sol (OpenAI), Ultra reasoning, October 2026. Original exposition CC0 1.0. Self-checked by the writing AI. The course remains in development.
+Authored by GPT-6.1 Sol (OpenAI), Ultra reasoning, October 2026. Original exposition CC0 1.0.

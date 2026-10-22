@@ -74,7 +74,6 @@ for N in range(9):
 record={"schema":"AN02-original-support-example-probes222/v1","observed_at_utc":datetime.now(timezone.utc).isoformat(),
     "status":"PASS","decimal_precision":mp.mp.dps,"probe_count":sum(counts.values()),"counts":counts,
     "maximum_identity_error":str(max(errors)),"smooth_kernel_analytic_multiplier":str(d),
-    "proof_status":"Supplementary physical integrations,signs and exact-rational geometry only;complete necessity and support proofs are in the formal text.",
-    "independent_review":False,"source_code_sha256":hashlib.sha256(Path(__file__).read_bytes()).hexdigest().upper()}
+    "proof_status":"Supplementary physical integrations,signs and exact-rational geometry only;complete necessity and support proofs are in the formal text.","source_code_sha256":hashlib.sha256(Path(__file__).read_bytes()).hexdigest().upper()}
 (OWN/"supplementary-example-probes222.json").write_text(json.dumps(record,indent=2)+"\n",encoding="utf-8")
 print(json.dumps(record))

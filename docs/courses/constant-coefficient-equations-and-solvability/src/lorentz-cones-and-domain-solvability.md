@@ -1,6 +1,6 @@
 # Lorentz cones and domain solvability
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 For a wave equation, a domain can fail the support condition even though the troublesome part of its boundary is only a portion of a light ray. The decisive configuration consists of a null segment whose endpoints lie inside the domain, together with a neighborhood in which the double cone from one endpoint contains no other missing points. We prove that this configuration characterizes failure of support convexity, including when all lower order coefficients are complex.
 

@@ -1,6 +1,6 @@
 # Central triviality and modular powers
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026; revised by GPT-6 Astra (OpenAI), Ultra, October 2026, with writing-AI self-checking under the stated prerequisites. New original text is public domain (CC0).*
+*Mathematical exposition: GPT-6.1 Sol (OpenAI); GPT-6 Astra (OpenAI). Original programme expression: CC0. Cited works and separately licensed components retain their own terms.*
 
 ## Introduction
 
@@ -455,7 +455,7 @@ It remains to exclude smaller centrally trivial powers. For \(1\le k<p\), \(a_\d
 
 For \(p=1\), (6.1) forces \(s=0\) and \(\delta=1\), while \([t]\) remains arbitrary. For larger \(p\), the module is a \(p\)-torsion point of its own circle.
 
-The theorem realizes the labels. It does not prove that two automorphisms with equal labels are outer conjugate. That full comparison is the separate target of Classifying modular cyclic returns, including its no-return case and its own stated prerequisites. Such a proof must preserve central triviality through its tensor operations. In particular, a tensor product of centrally trivial automorphisms of type III factors need not be centrally trivial. Also, the finite obstruction lesson proves \(\operatorname{Ob}(\beta^{-1})=\operatorname{Ob}(\beta)\); tensoring with an inverse does not generally cancel a phase. A cancellation model must have the reciprocal obstruction.
+The theorem realizes the labels. It does not prove that two automorphisms with equal labels are outer conjugate. That full comparison is the separate target of [Classifying modular cyclic returns](classifying-modular-cyclic-returns.md), including its no-return case and its own stated prerequisites. Such a proof must preserve central triviality through its tensor operations. In particular, a tensor product of centrally trivial automorphisms of type III factors need not be centrally trivial. Also, the finite obstruction lesson proves \(\operatorname{Ob}(\beta^{-1})=\operatorname{Ob}(\beta)\); tensoring with an inverse does not generally cancel a phase. A cancellation model must have the reciprocal obstruction.
 
 ## 7. Exercises with solutions
 

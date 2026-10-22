@@ -41,7 +41,6 @@ L^\infty(Y\times\mathbb R)^{\widehat S}.
 Point motion \(D_s\) acts on functions by \(f\mapsto f\circ D_{-s}\). Thus the lifted trace scales by \(e^{-s}\), the same convention as the continuous core.
 
 
-
 **Lemma 1.1 (designing the surviving coordinate).** Let \(F\) be a nonsingular real flow, and write \(J_s=d(\mu\circ F_s)/d\mu\) in the image convention (1.1). Suppose a base transformation \(T\) has derivative \(e^{a(x)+b(x)}\), where \(a,b\) take countably many values. On a piece with fixed \(a,b\), require its lift to preserve the coordinate \(q=F_tw\) while the height changes by \(t\mapsto t+a\). The choice
 \[
 \begin{aligned}

@@ -1,6 +1,6 @@
 # Compatible smooth mixed data and the data that determine a solution
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Boundary kernels solve the part of a mixed problem left over after a whole-space Cauchy solution. Compatibility at the corner says exactly that this residual boundary datum is flat at initial time. We prove smooth existence and uniqueness for all compatible data, with no spatial growth assumption. We also identify the precise backward sets of data germs that determine a value. When a cone is lower dimensional, values on its footprint alone can lose needed derivatives; that distinction is explicit.
 

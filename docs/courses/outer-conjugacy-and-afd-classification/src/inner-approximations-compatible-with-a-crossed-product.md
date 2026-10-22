@@ -29,7 +29,7 @@ The corresponding programme proof interfaces are:
 * The contracting return trace: Sections 3–4, especially the whole-cone identities (ZDC24)–(ZDC27).
 * Canonical core automorphisms: Sections 1–5, with the exact compact-time cocycle input stated there.
 
-The modular, standard-form, measurable-field and finite-injectivity foundations used by these arguments retain their stated hypotheses. Their full transitive review is not asserted here.
+The modular, standard-form, measurable-field and finite-injectivity foundations used by these arguments retain their stated hypotheses.
 
 ## 1. What an inner approximation must preserve
 

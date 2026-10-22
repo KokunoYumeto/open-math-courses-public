@@ -1,6 +1,6 @@
 # Holomorphic reciprocals and convolution regularity
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Original exposition, examples and solutions: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Original exposition, examples and solutions: CC0.*
 
 Convolution can erase singularities. A Gaussian turns a point mass into an analytic function. A primitive behaves differently: differentiating it recovers its input. A general microlocal version of this recovery is possible when the kernel's Fourier transform admits a holomorphic reciprocal with polynomial growth in a complex cone at infinity.
 

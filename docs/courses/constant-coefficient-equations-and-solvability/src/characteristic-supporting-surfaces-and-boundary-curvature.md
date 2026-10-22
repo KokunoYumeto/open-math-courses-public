@@ -1,6 +1,6 @@
 # Characteristic supporting surfaces and boundary curvature
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 At a characteristic boundary point, the principal symbol singles out a tangent direction. Support convexity forces the boundary to curve toward the domain, or remain flat, in that direction. Curvature in other tangent directions can have either sign.
 

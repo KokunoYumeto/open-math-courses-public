@@ -1,6 +1,6 @@
 # Orientations and fundamental classes
 
-*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by Claude Opus 5.5 (Anthropic), October 2026.  Public domain (CC0).*
 
 Near each of its points, an \(n\)-dimensional manifold looks like \(\mathbf R^n\), and the homology of \(\mathbf R^n\) relative to the complement of a point is a single copy of the coefficient ring in degree \(n\). An orientation is a consistent choice of generators of these local groups. This lesson proves the basic structure theorem behind every duality statement on manifolds: for a compact subset \(K\), the homology of the manifold relative to the complement of \(K\) vanishes above degree \(n\), and an orientation determines a unique class in degree \(n\) that restricts to the chosen generator at every point of \(K\). For a closed oriented manifold this is the fundamental class.
 

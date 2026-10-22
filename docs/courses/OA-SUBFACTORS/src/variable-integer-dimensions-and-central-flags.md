@@ -2,7 +2,7 @@
 
 A scalar integer multiple of one central support is a strong rounding requirement. There is a weaker, unconditional conclusion for an arbitrary actual core: the entire Følner projection can be perturbed to have a bounded integer-valued central dimension. That integer may vary over the center. Its cyclic summands have a finite nested flag of central supports. We prove this conclusion and convert its columns into bounded finite-stage frames with a nested flag, preserving their total energy.
 
-The proofs use the actual core changes and central prescription in [52.3–52.4](canonical-core-traces-and-integer-rounding.md), the relative Følner criterion [49.2](relative-hypertraces-and-folner-projections.md), finite-stage expectations and column estimates [53.1–53.3](bounded-frames-with-central-support.md), and finite matrix functional calculus. General trace, expectation and projection-comparison prerequisites retain their exact programme scopes. We do not invoke a new averaging theorem. The original rounding target has human-source credit to Sorin Popa, Theorem 4.2.2, printed pp. 213–214, [DOI 10.1007/BF02392646](https://doi.org/10.1007/BF02392646). The common-support conclusion of that theorem remains a further requirement.
+The proofs use the actual core changes and central prescription in [52.3–52.4](canonical-core-traces-and-integer-rounding.md), the relative Følner criterion [49.2](relative-hypertraces-and-folner-projections.md), finite-stage expectations and column estimates [53.1–53.3](bounded-frames-with-central-support.md), and finite matrix functional calculus. General trace, expectation and projection-comparison prerequisites retain their exact programme scopes. We do not invoke a new averaging theorem. The original rounding target has human-source credit to Sorin Popa, Theorem 4.2.2, printed pp. 213–214, [DOI 10.1007/BF02392646](https://doi.org/10.1007/BF02392646). The unrestricted common-support BF and constant-multiplicity rounding assertions have the actual affine counterexample [BFQ.3–BFQ.4](general-tail-supports-and-controlled-tunnels.md#common-frames-central-profiles-and-the-order-of-tunnel-choices).
 
 Let \(N\subset M\) be a proper finite-index II₁ inclusion, with an actual core \(S\subset R\). Write
 
@@ -18,7 +18,7 @@ C=Z(A)\cong Z(S).
 
 The finite measure \(\nu\) on this center is \(\nu(z)=\operatorname{Tr}(ez)\); thus \(\nu(1)=1\). Center functions and their smaller-core labels are identified through the full corner, as in 52.2. No assumption that \(C\) commutes with \(M\) is made.
 
-The distinction between variable and constant multiplicity is substantive. [IRG.1–IRG.3](general-tail-supports-and-controlled-tunnels.md#scalar-central-multiplicity-and-the-affine-obstruction) proves an actual index-ten affine obstruction to constant central multiplicity, even approximate one-level profiles, after every matrix deletion of one fixed core. The variable integer rounding proved here retains the whole projection and remains valid. The obstruction does not settle the different BF quantifier that allows a new ordinary tunnel after the physical targets are specified.
+The distinction between variable and constant multiplicity is substantive. [IRG.1–IRG.3](general-tail-supports-and-controlled-tunnels.md#scalar-central-multiplicity-and-the-affine-obstruction) proves an actual index-ten affine obstruction to constant central multiplicity, even approximate one-level profiles, after every matrix deletion of one fixed core. The variable integer rounding proved here retains the whole projection and remains valid. The complete bridge [BFQ.1–BFQ.4](general-tail-supports-and-controlled-tunnels.md#common-frames-central-profiles-and-the-order-of-tunnel-choices) returns BF from a freely selected tunnel to nearly scalar profiles in one fixed core, giving an affine counterexample to that unrestricted BF assertion.
 
 ## Global rounding does not require selecting a spectral bin
 
@@ -353,7 +353,7 @@ It is still invalid to split the total Følner estimate into separate estimates 
 
 Here \(z_1,z_2\) are the two disjoint block-center projections, rather than the nested flag projections. The two localized squared-defect ratios are both 2. They do not inherit the small whole-projection ratio. The example is finite dimensional and is not an actual-core counterexample. Indeed deleting the one extra rank gives the commuting projection \(I_k\oplus I_k\); the example does not refute constant-multiplicity rounding.
 
-Theorems 73.1–73.5 therefore provide a bounded integer function and bounded central-flag frames from unrestricted relative Følner. They do **not** supply a scalar integer multiple of one support, the common-support bounded-frame property BF in 57, or the general conclusion of Popa 4.2.2. Passing from these flags to a sufficient general local approximation theorem remains a mathematical obligation. The averaging hypothesis 72.12 and controlled-band hypothesis 71.14 are not asserted here.
+Theorems 73.1–73.5 therefore provide a bounded integer function and bounded central-flag frames from unrestricted relative Følner. They do **not** supply a scalar integer multiple of one support, the common-support bounded-frame property BF in 57, or the general conclusion of Popa 4.2.2. The unequal-support first local form and every-core converse are proved in [74.3–74.4](unequal-supports-and-finite-local-approximation.md#the-first-local-form-for-general-cores). The bare second central local form remains separate. The averaging hypothesis 72.12 and controlled-band hypothesis 71.14 are not asserted here.
 
 ## Exercises with complete solutions
 
@@ -395,6 +395,6 @@ Prove (73.27), find a commuting projection close to \(p\), and identify the rema
 
 ![Whole projection rounding and a variable central support flag](figures/variable-integer-dimensions-and-central-flags.svg)
 
-**Figure 73.1.** The three central atoms have measures \(1/2,1/3,1/6\). Their amplified dimensions, floors, fractional losses and nested supports are the exact values in (73.26) and Exercise 73.3. The solid arrows are the proved implications 73.1–73.5. The dashed arrow to a common support is an unresolved additional implication. The drawing shows central arithmetic, not actual core geometry. [Editable source](figures/variable-integer-dimensions-and-central-flags.py).
+**Figure 73.1.** The three central atoms have measures \(1/2,1/3,1/6\). Their amplified dimensions, floors, fractional losses and nested supports are the exact values in (73.26) and Exercise 73.3. The solid arrows are the proved implications 73.1–73.5. The dashed arrow to unrestricted common-support BF is false by BFQ.3–BFQ.4. Unequal-support flags give the first local form in 74.3. The drawing shows central arithmetic, not actual core geometry. [Editable source](figures/variable-integer-dimensions-and-central-flags.py).
 
-Self-checked by the writing AI. The full course goal remains active and incomplete.
+Exposition, proofs and figure by GPT-6.1 Sol (OpenAI). CC0 1.0.

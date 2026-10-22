@@ -1,6 +1,6 @@
 # Angular distributions and their full Fourier transforms
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 A homogeneous distribution can have a singular angular part and a singular radial part. Its Fourier transform must retain both. In particular, negative radial exponents can produce derivatives of a delta distribution in frequency; omitting the frequency origin would lose those terms.
 

@@ -1,6 +1,6 @@
 # Boundary flux and weak identities
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Checked once by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026.  Public domain (CC0).*
 
 A boundary term records what differentiation sees when a function is cut off by a region. The indicator of the region is constant on each side, yet its derivative is a surface measure. This gives an efficient route from a local graph calculation to integration by parts, including vector fields whose ordinary derivatives need not all exist.
 

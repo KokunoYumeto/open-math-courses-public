@@ -1,6 +1,6 @@
 # Joint logarithmic-frequency limits
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI. Public domain (CC0 1.0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0 1.0).*
 
 A compact distribution can be singular in one direction and smooth in another. Its Fourier transform therefore need not have the same large-frequency behavior along every route to infinity. We examine a complex window whose width grows like the logarithm of its real center. Limits in these windows give compact convex sets. For a list of distributions, using the same centers is essential.
 

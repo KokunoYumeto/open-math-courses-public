@@ -1,6 +1,6 @@
 # Two flat boundaries and a nonzero phase bridge
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Original expression: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Original expression: CC0.*
 
 A solution with one flat boundary does not immediately give a solution supported in a compact slab. Multiplying it by a second cutoff adds new operator errors. Instead we construct a flat mode assembly at each boundary, give both assemblies the same real carrier in the middle, and connect their opposite imaginary normal slopes along a fixed curve that misses zero. The middle is a single exponential with a nonzero Q-image, so its coefficient is a smooth exact quotient.
 

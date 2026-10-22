@@ -236,4 +236,4 @@ If \(\rho=k^{-1}1\), this scalar is \(k^2\). For \(k=2\) and \(\rho=\operatornam
 - Uffe Haagerup, *Operator-valued weights in von Neumann algebras* [I](https://doi.org/10.1016/0022-1236(79)90053-3) and [II](https://doi.org/10.1016/0022-1236(79)90072-7), Journal of Functional Analysis 32 (1979), 175–206, and 33 (1979), 339–361.
 - Hideki Kosaki, [*作用素環の指数理論*](https://www.jstage.jst.go.jp/article/sugaku1947/41/4/41_4_289/_article/-char/ja/) (Index theory for operator algebras, in Japanese), Sūgaku 41 (1989), 289–304.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Public domain (CC0).*

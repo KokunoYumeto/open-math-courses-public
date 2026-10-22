@@ -1,6 +1,6 @@
 # Zero-free cones turn slow decrease into reciprocal bounds
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI GPT-6.1 Sol (OpenAI). Public domain (CC0 1.0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0 1.0).*
 
 An inverse Fourier transform needs control of the reciprocal transform, not merely absence of zeros. This chapter explains how a logarithmic lower bound near each real frequency supplies that control in a zero-free cone. It also gives a smooth compact kernel whose transform has no nonreal zeros but whose reciprocal grows too fast near a logarithmic boundary.
 

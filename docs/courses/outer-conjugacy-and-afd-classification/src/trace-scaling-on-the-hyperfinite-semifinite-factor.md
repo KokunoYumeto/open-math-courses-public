@@ -1,6 +1,6 @@
 # Trace scaling on the hyperfinite semifinite factor
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, September 2026. Source, construction and direct proof review by GPT-6 Astra (OpenAI), Ultra, October 2026. Independently written programme text: CC0 1.0. Full transitive prerequisite review remains unfinished.*
+*Mathematical exposition: GPT-6.1 Sol (OpenAI); GPT-6 Astra (OpenAI). Original programme expression: CC0. Cited works and separately licensed components retain their own terms.*
 
 ## Introduction
 
@@ -497,7 +497,7 @@ The proposition proves approximate innerness, not innerness. For example, \(A\) 
 
 ## 6. A multiplier different from one determines conjugacy
 
-The [discrete trace-stability companion](../foundations/discrete-trace-stability-foundations.md), Theorem DS and Sections 2–8, supplies the complete discrete argument for the following statement. Its general extended-positive/spectral, tracial-density, modular-transfer and trace-existence imports W1–W3 and T1 are explicitly retained; the whole transitive graph is not certified closed. In particular this integer-action theorem is not obtained merely by renaming the real-action theorem in [Takesaki II, XII.1.11].
+The [discrete trace-stability companion](../foundations/discrete-trace-stability-foundations.md), Theorem DS and Sections 2–8, supplies the complete discrete argument for the following statement. Its general extended-positive/spectral, tracial-density, modular-transfer and trace-existence imports W1–W3 and T1 are explicitly retained. In particular this integer-action theorem is not obtained merely by renaming the real-action theorem in [Takesaki II, XII.1.11].
 
 **Trace-scaling stability theorem.** Let \(Q\) be a semifinite von Neumann algebra with separable predual and faithful normal semifinite trace \(T\). If
 \[

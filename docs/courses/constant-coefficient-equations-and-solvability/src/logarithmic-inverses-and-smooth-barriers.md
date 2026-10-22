@@ -1,6 +1,6 @@
 # Logarithmic inverses and smooth barriers
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Positive detection of a frequency subspace gives a local smoothing mechanism. We construct an inverse by moving the Fourier integral through a logarithmic complex displacement, then cut it off in physical space. The resulting compact kernel has enough differentiability in a prescribed region to continue smoothness across several independent \(C^1\) barriers.
 

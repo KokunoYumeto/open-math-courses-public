@@ -303,4 +303,4 @@ Realization and this upper bound require a further argument to distinguish the t
 - Yasuyuki Kawahigashi, [*On flatness of Ocneanu's connections on the Dynkin diagrams and classification of subfactors*](https://www.ms.u-tokyo.ac.jp/~yasuyuki/flat.pdf), Section 6 and its two conditional rectangle equations.
 - Masaki Izumi, [*On flatness of the Coxeter graph E8*](https://msp.org/pjm/1994/166-2/pjm-v166-n2-p05-p.pdf), Pacific Journal of Mathematics 166 (1994), 305–327, an alternative exact E8 proof.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Public domain (CC0).*

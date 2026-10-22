@@ -1,6 +1,6 @@
 # Directional growth and complex-zero geometry
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Different directions can have different derivative growth for the same smooth solution. For a constant-coefficient equation, the distinction is encoded by how far the complex zeros can extend in each direction while their imaginary parts stay bounded. We show that the optimal growth rates are rational, organize themselves into a finite flag of subspaces, and give sharp lower bounds on any estimate valid for every homogeneous solution.
 

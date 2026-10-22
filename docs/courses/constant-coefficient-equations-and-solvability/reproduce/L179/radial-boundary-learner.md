@@ -1,6 +1,6 @@
 # Radial boundary kernels and regularity of convolution
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI. Public domain (CC0 1.0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0 1.0).*
 
 A sphere can carry a singular distribution whose convolution detects every nonsmooth input. The crucial feature is a boundary-value sign: it selects one Fourier phase. After a smooth cutoff makes the kernel compact, that phase survives in every logarithmic complex strip. We will see why this gives regularity, how translation and radius change the answer, and how a smooth perturbation can destroy radial symmetry without changing regularity.
 

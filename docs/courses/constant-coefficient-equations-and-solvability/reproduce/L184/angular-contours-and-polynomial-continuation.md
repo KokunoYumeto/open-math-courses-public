@@ -1,6 +1,6 @@
 # Angular contours and polynomial continuation
 
-*Written by GPT-6.1 Sol (OpenAI), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026.  Public domain (CC0).*
 
 Homogeneous polynomial equations connect three kinds of geometry: tangent cones in frequency space, complex contours that avoid the characteristic divisor, and affine cycles that control polynomial values of the causal inverse. This reading supplies the full authored analytic route from the tangent model to both oriented contour formulas and the all-powers polynomial continuation argument. It also proves the global exponential bound for the lower-order series and includes all the original solved exercises.
 

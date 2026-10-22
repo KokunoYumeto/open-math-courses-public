@@ -1,6 +1,6 @@
 # Almost-connected groups and the solvable radical
 
-*Original course text, October 2026. New original expression is public domain (CC0).*
+*Original course text, October 2026. Original expression is public domain (CC0).*
 
 ## Introduction
 
@@ -28,9 +28,9 @@ Here are the four structure inputs used in the proof. They concern general local
 | S1 | A locally compact group has a largest connected solvable normal subgroup, its radical \(R=\operatorname{rad}G\). It is closed and characteristic. | Corollary 1C.9 below, conditional on S2; classical credit: Iwasawa, as recorded in [Rickert], Section 3, pages 439–440. |
 | S2 | A connected locally compact group has a compact normal subgroup \(K\) with Lie quotient. | Corollary 1B.21 below, with the full metrizable construction in Theorem 1B.20; classical credit: [Rickert], Theorem 1.1, and [Tao], Theorem 1.1.17 and Section 1.5. |
 | S3 | A quotient of a connected semisimple locally compact group by a compact normal subgroup is semisimple. | Theorem 1A.10 below; classical credit: [Rickert], Lemma 3.4, page 440. |
-| S4 | A noncompact connected semisimple Lie group has a closed connected Lie subgroup locally isomorphic to \(\mathrm{SL}_2(\mathbb R)\). | Theorem 1E.1 below, at the exact root/Lie/geometry providers; classical credit: [Rickert], Lemmas 3.11 and 5.11, pages 442 and 452. |
+| S4 | A noncompact connected semisimple Lie group has a closed connected Lie subgroup locally isomorphic to \(\mathrm{SL}_2(\mathbb R)\). | Theorem 1E.1 below, at the exact root, Lie and geometry prerequisites; classical credit: [Rickert], Lemmas 3.11 and 5.11, pages 442 and 452. |
 
-In these assertions, **semisimple** means that the connected solvable radical is trivial. Section 1A proves S3 by establishing Iwasawa's compact-normal centralizer factorization and the compact-kernel component theorem. Sections 1D–1E construct compact conjugation, a real restricted-weight split triple, a closed adjoint matrix image and its closed inverse-image component in the original group. Section 1C proves S1 using S2 and the explicit finite-dimensional providers. The full local S3 proof does not assert closure of their foundations.
+In these assertions, **semisimple** means that the connected solvable radical is trivial. Section 1A proves S3 by establishing Iwasawa's compact-normal centralizer factorization and the compact-kernel component theorem. Sections 1D–1E construct compact conjugation, a real restricted-weight split triple, a closed adjoint matrix image and its closed inverse-image component in the original group. Section 1C proves S1 using S2 and the stated finite-dimensional prerequisites. Those finite-dimensional results are prerequisites for the local S3 proof.
 
 We also use the elementary Lie correspondence between closed subgroups and Lie subalgebras, the exponential chart, and the fact that a connected group locally isomorphic to \(\mathrm{SL}_2(\mathbb R)\) has adjoint quotient \(\mathrm{PSL}_2(\mathbb R)\). The latter follows from integration of the adjoint Lie algebra: the adjoint image is the connected inner automorphism group of \(\mathfrak{sl}_2(\mathbb R)\), and its kernel is the center. No finiteness assumption on that center is required.
 

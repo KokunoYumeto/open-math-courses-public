@@ -71,4 +71,4 @@ with TemporaryDirectory(prefix="an02-own219-mpl-")as task_cache:
             "union_Y_j":[-4,4],"union_Z_j":[-2,4],"endpoints_open":True,
             "proof_locator":"FormalSection5,equations5.1–5.6;LearnerSection4"}}
     (FIG/"geometry219.json").write_text(json.dumps(geometry,indent=2)+"\n",encoding="utf-8")
-print(json.dumps({"status":"FIGURES_WRITTEN","figure_pairs":2,"private_font_cache_removed":True}))
+print(json.dumps({"status":"FIGURES_WRITTEN","figure_pairs":2}))

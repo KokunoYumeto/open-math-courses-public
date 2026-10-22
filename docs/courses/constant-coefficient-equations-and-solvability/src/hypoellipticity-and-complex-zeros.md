@@ -1,6 +1,6 @@
 # Hypoellipticity and complex zeros
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 An equation is hypoelliptic when its solutions are smooth wherever its data are smooth. For constant coefficients, this local property is equivalent to a geometric statement about the complex zeros of its polynomial: those zeros must retreat from real frequency space as the real frequency tends to infinity. We prove the equivalence, its quantitative version, and two criteria that test only a single local weighted solution space.
 

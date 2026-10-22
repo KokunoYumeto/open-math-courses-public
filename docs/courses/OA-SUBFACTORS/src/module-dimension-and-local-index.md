@@ -565,4 +565,4 @@ Thus the defining module has dimension \(1/n\), even though its ordinary Hilbert
 - Francis J. Murray and John von Neumann, [*On rings of operators*](https://doi.org/10.2307/1968693), Annals of Mathematics 37 (1936), 116–229.
 - Masamichi Takesaki, [*Theory of Operator Algebras III*](https://doi.org/10.1007/978-3-662-10453-8), Chapter XIX, §2 Propositions 2.1–2.2, Definition 2.3, Definition 2.6, Propositions 2.7–2.8, Corollaries 2.9–2.10 and Example 2.11. The dimension and local-index results here include complete independent arguments and retain the general representation and corner scope.
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026; expanded October 2026. Self-checked by the writing AI. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Public domain (CC0).*

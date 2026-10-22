@@ -1,10 +1,10 @@
 # Cauchy kernels and distributional boundary limits
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026. Checked once by GPT-6.1 Sol (OpenAI), Ultra reasoning effort. Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, September 2026.  Public domain (CC0).*
 
 A holomorphic function can grow without having ordinary values on the edge of its domain. Integration against a test function can still have a limit. The test absorbs enough derivatives to balance the growth. The Cauchy kernel shows what this limit remembers: approaching a real pole from above or below gives the same principal value and opposite concentrated terms.
 
-[Avi Zeff’s lecture on Pompeiu’s formula](https://math.berkeley.edu/~avizeff/complex_analysis_S26/lecture_12.html), Section 2, is a primary human reference for the complex Green identity and punctured-circle argument. [Dyatlov 2026], Proposition 9.8, states the fundamental solution of the Cauchy–Riemann operator. We give the kernel and finite-order boundary proofs here. We use [Boundary flux and weak identities](boundary-flux-and-weak-identities.md) for Green’s formula and pointwise-to-weak equations, and [Order, positivity and distributional limits](order-positivity-and-limits.md) for finite-regularity tests. We use the elliptic regularity theorem in Elliptic tests and intrinsic wavefront; Section 2 checks its hypotheses for this operator. Entry prerequisites are multivariable calculus, dominated convergence and elementary geometric series.
+[Avi Zeff’s lecture on Pompeiu’s formula](https://math.berkeley.edu/~avizeff/complex_analysis_S26/lecture_12.html), Section 2, is a primary human reference for the complex Green identity and punctured-circle argument. [Dyatlov 2026], Proposition 9.8, states the fundamental solution of the Cauchy–Riemann operator. We give the kernel and finite-order boundary proofs here. We use [Boundary flux and weak identities](boundary-flux-and-weak-identities.md) for Green’s formula and pointwise-to-weak equations, and [Order, positivity and distributional limits](order-positivity-and-limits.md) for finite-regularity tests. Section 2 proves distributional Cauchy–Riemann regularity from the explicit kernel and a compact cutoff. Entry prerequisites are multivariable calculus, dominated convergence and elementary geometric series.
 
 ## A small circle detects the Cauchy kernel
 
@@ -79,7 +79,7 @@ The point source in (1.6) comes from the shrinking circle. The classical derivat
 
 ## Weak Cauchy–Riemann solutions are holomorphic
 
-We use the following consequence of the linked elliptic-regularity theorem: if \(P\) is a properly supported classical elliptic operator and \(Pu\) is smooth, then a distribution \(u\) is smooth. The linked proof constructs a local inverse up to a smooth kernel; its wavefront formulation allows any fixed operator order. We need only a constant-coefficient differential operator of order one on an arbitrary open subset of \(\mathbb R^2\).
+The explicit kernel in (1.6) is smooth off zero. Its compact-support convolution identity gives the local regularity needed here.
 
 **Proposition 2.1 (exact regularity specialization).** If \(u\in\mathcal D'(X)\) and \(\bar\partial u=0\), then \(u\) is the distribution of a holomorphic function on \(X\).
 
@@ -91,7 +91,16 @@ p(\xi_x,\xi_y)=\frac{i\xi_x-\xi_y}{2},
 \tag{2.1}
 \]
 
-It is a scalar classical symbol of order one and is nonzero at every nonzero real covector. A differential operator has kernel supported on the diagonal; both projections of this support are proper on every open \(X\). Hence the stated elliptic theorem applies and gives a smooth representative \(h\) of \(u\). The equation becomes \(h_x+ih_y=0\) pointwise, or \(h_y=ih_x\).
+Fix \(z_0\in X\). Choose \(\chi\in C_c^\infty(X)\) equal to one on a neighborhood of a closed disk about \(z_0\), and extend \(w=\chi u\) by zero to the plane. Put \(E(z)=1/(\pi z)\). Since \(w\) has compact support, its convolutions with \(E\) and their derivatives are defined. The identity \(\bar\partial E=\delta_0\), proved in (1.6), and differentiation of proper convolution give
+\[
+\begin{gathered}
+w=(\bar\partial E)*w\\
+=E*(\bar\partial w)\\
+=E*((\bar\partial\chi)u).
+\end{gathered}
+\tag{2.1a}
+\]
+The last equality uses \(\bar\partial u=0\) on \(X\). The compact support of \((\bar\partial\chi)u\) is separated from a smaller disk about \(z_0\). Hence \(E(z-\cdot)\), multiplied by one fixed compact cutoff around that support, is smooth jointly in the smaller disk and the integration variable, with all derivatives bounded there on compact sets. Pairing it with the fixed compact distribution gives a smooth function of \(z\); its derivatives are obtained by differentiating that smooth test family. Thus (2.1a) makes \(u\) smooth near \(z_0\). As \(z_0\) was arbitrary, \(u\) has a smooth representative \(h\) on \(X\), and the equation gives \(h_y=ih_x\) pointwise. This is the compact-cutoff regularity argument also used in [Hypoellipticity and complex zeros, Theorem 3.1](../../AN02-L021.html#the-local-analytic-property), here with the explicit kernel (1.6).
 
 Real differentiability now gives, for a small complex increment \(a+ib\),
 
@@ -349,7 +358,7 @@ The lower boundary has the same finite parts and the opposite concentrated terms
 
 **Solution 4.** Enlarge \(K\) to one compact interval inside \(I\), and use its length in (3.9). Its right side is a fixed constant times \(\varepsilon^{1/3}\), which tends to zero for \(\varepsilon<\gamma-T\). Cancellation in (3.4) leaves \(s^N\phi^{(N+1)}\). This cancels the singular factor of size \(s^{-N}\) after the vertical integration in (3.6). A \(C^N\) norm does not control that remaining derivative, so (3.9) cannot be asserted with that smaller norm from this calculation. The exercise makes no assertion that a sharper estimate is impossible for a particular \(f\).
 
-**Solution 5.** Complex differentiability implies continuity, real differentiability and the pointwise equation \((h_x+ih_y)/2=0\). The pointwise-to-weak theorem with constant coefficients gives that equation distributionally. The cited elliptic regularity theorem then makes its distribution smooth. Its continuous representative is \(h\) itself. Formula (2.1) gives a nonzero principal symbol with magnitude \(|\xi|/2\), and the diagonal kernel of a differential operator is proper on \(X\). Cauchy’s formula and the circle coefficient calculation in (2.4) give \(|c_j|\leq M/R^j\) and \(h^{(j)}(a)=j!c_j\), which prove the estimate.
+**Solution 5.** Complex differentiability implies continuity, real differentiability and the pointwise equation \((h_x+ih_y)/2=0\). The pointwise-to-weak theorem with constant coefficients gives that equation distributionally. Proposition 2.1 then makes its distribution smooth. Its continuous representative is \(h\) itself. Formula (2.1) gives a nonzero principal symbol with magnitude \(|\xi|/2\), and the diagonal kernel of a differential operator is proper on \(X\). Cauchy’s formula and the circle coefficient calculation in (2.4) give \(|c_j|\leq M/R^j\) and \(h^{(j)}(a)=j!c_j\), which prove the estimate.
 
 **Solution 6.** Symmetric deletion gives \(\langle x\operatorname{pv}(1/x),\phi\rangle=\lim_{r\downarrow0}\int_{|x|>r}\phi(x)\,dx=\int\phi\). Put \(v=\operatorname{pv}(1/x)\); then \(\operatorname{pf}(1/x^2)=-v'\). The product rule \((xv)'=v+xv'\), together with \((xv)'=1'=0\), gives \(-xv'=v\). Finally \(\langle x\delta'_0,\phi\rangle=-(x\phi)'(0)=-\phi(0)\), so \(x\delta'_0=-\delta_0\). Multiply the \(m=2\) formula (4.6) by \(x\): the upper value becomes \(v-i\pi\delta_0\), and the lower becomes \(v+i\pi\delta_0\). These are exactly the simple-pole values. Setting \(x\delta'_0\) to zero would incorrectly remove their concentrated terms.
 
@@ -357,6 +366,5 @@ The lower boundary has the same finite parts and the opposite concentrated terms
 
 - [Avi Zeff, *Lecture 12: Pompeiu’s formula*, March 6, 2026](https://math.berkeley.edu/~avizeff/complex_analysis_S26/lecture_12.html). Section 2 gives the complex Green and Cauchy–Pompeiu formulas on planar domains.
 - [Semyon Dyatlov, *Lecture notes for 18.155: distributions, elliptic regularity, and applications* (2026)](https://math.mit.edu/~dyatlov/18.155/155-notes.pdf). Proposition 9.8 states \(\bar\partial(1/(\pi z))=\delta_0\); the proof is assigned there as an exercise and is supplied here in Section 1.
-- *Elliptic tests and intrinsic wavefront*, equation (G27). The stronger elliptic-regularity result used in Proposition 2.1, with its exact symbol specialization in (2.1). The linked lesson is licensed under GFDL 1.2.
 
 [Dyatlov 2026]: https://math.mit.edu/~dyatlov/18.155/155-notes.pdf

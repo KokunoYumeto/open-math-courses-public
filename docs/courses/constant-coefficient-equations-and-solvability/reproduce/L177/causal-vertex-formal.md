@@ -1,6 +1,6 @@
 # Causal inverses and stability at a cone's vertex
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI GPT-6.1 Sol (OpenAI). Public domain (CC0 1.0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0 1.0).*
 
 A causal inverse can grow rapidly and still act on every compactly supported test. Its support, rather than a growth estimate, makes convolution possible. We prove that changing a kernel away from the first point of its support preserves such an inverse. A second argument allows a change that is only sufficiently differentiable near that point. We then connect the support geometry to directional hyperbolicity and to the existing Fourier criteria.
 

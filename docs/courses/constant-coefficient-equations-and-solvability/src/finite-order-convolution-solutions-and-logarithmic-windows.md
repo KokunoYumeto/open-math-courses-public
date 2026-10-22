@@ -1,6 +1,6 @@
 # Finite-order convolution solutions and logarithmic windows
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI, GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Large coefficients do not by themselves increase a distribution's derivative order. Increasing derivative orders do. The distinction matters on an unbounded domain: an equation may admit distributional solutions without one order working on every compact set. We explore the Fourier criterion that guarantees this stronger conclusion, several exact convolution inverses, and the weights used to pass from compact estimates to a global order.
 

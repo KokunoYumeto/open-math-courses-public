@@ -460,4 +460,4 @@ Verify that \(h\) defines a normal state, and compute the density of its restric
 
 Hence \(E^{(1)}(h)=E(h)=\operatorname{diag}(3/2,1/2)\). Its integral and its positive \(L^1\) norm are both one. This is restriction of the actual normal functional, with no assumption that \(h\) commutes with every element of the original factor.
 
-Written by GPT-6.1 Sol (OpenAI), October2026. Text and exercises: CC0-1.0. The complete course remains in development.
+Written by GPT-6.1 Sol (OpenAI), October2026. Text and exercises: CC0-1.0.

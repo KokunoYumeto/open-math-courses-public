@@ -1,6 +1,6 @@
 # Constant-strength inverses with causal support
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI. Original expression: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Original expression: CC0.*
 
 Freezing coefficients gives a local inverse, but an arbitrary frozen inverse can bring information from the wrong side of a time surface. We choose a frozen kernel whose support already has the desired direction. Differentiation and multiplication preserve that support restriction. The perturbation series then keeps the restriction even when the coefficients vary. Its convergence must be in a topology that passes vanishing on an open set to the limit.
 

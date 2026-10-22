@@ -1,6 +1,6 @@
 # Extending a boundary time strip to its propagation cone
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 A zero-free time strip does not identify the full set of imaginary directions allowed by a mixed problem. The principal boundary symbol selects a component inside the projected hyperbolicity cone. We prove that this component is convex and that both the principal and full determinants are zero-free in its associated tubes. The proof counts zeros on bounded half-disks, controlling separately their imaginary boundary and their possible escape to infinity.
 

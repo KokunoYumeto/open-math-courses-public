@@ -1,6 +1,6 @@
 # Zero-free cones turn slow decrease into reciprocal bounds
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by the writing AI GPT-6.1 Sol (OpenAI). Public domain (CC0 1.0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0 1.0).*
 
 A transform can avoid zero and still be extremely small. For a compact convolution kernel, slow decrease supplies the additional control. We prove that slow decrease and a zero-free cone give an exponential bound for the reciprocal outside a logarithmic barrier. Conversely, a polynomial times exponential reciprocal bound implies slow decrease. The proof rescales an imaginary frequency to unit length, uses compactness for its logarithm, and then uses the mean value identity where that logarithm is harmonic.
 

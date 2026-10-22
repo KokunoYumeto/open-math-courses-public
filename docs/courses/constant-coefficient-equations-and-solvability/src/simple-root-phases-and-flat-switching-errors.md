@@ -1,6 +1,6 @@
 # Simple-root phases and flat switching errors
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Original expression: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Original expression: CC0.*
 
 An oscillating mode can solve a differential equation to every order in a small parameter without being an exact solution. Its phase follows a simple root of the principal rescaled polynomial. Its amplitude is then chosen by successive first-order equations. We can arrange that the remaining error is flat on two specified switching curves as well as on the zero-parameter line. This is the transport step needed before assembling the nonuniqueness construction.
 

@@ -1,6 +1,6 @@
 # Real Laurent paths and the growth of normal windows
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Original expression: CC0.*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Original expression: CC0.*
 
 A large directional-strength ratio says that Q can outgrow P on real frequencies. The construction of a smooth nonunique solution needs more: one real frequency path, one normal scale, and limiting monomials whose powers of the normal variable have the opposite order. We select the path on spheres, then choose the scale from two piecewise linear growth envelopes. The point where P starts catching Q is what creates the degree inequality.
 

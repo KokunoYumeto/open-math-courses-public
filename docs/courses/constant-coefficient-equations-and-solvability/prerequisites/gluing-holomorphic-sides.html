@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Gluing holomorphic sides</title><link rel="stylesheet" href="../course.css"><style>main{overflow-wrap:anywhere}pre{white-space:pre-wrap;overflow-wrap:anywhere;max-width:100%;box-sizing:border-box}.math{display:inline-block;max-width:100%;overflow-x:auto;vertical-align:middle}.math-display{max-width:100%}code{overflow-wrap:anywhere}</style><script>window.MathJax={tex:{inlineMath:[["\\(","\\)"]],displayMath:[["\\[","\\]"]]},options:{enableMenu:false},chtml:{fontURL:"https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/output/chtml/fonts/woff-v2"}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script></head><body><main><nav><a href="../index.html">Constant-coefficient equations and solvability</a> · <a href="index.html">Prerequisites</a></nav><h1 id="gluing-holomorphic-sides">Gluing holomorphic sides</h1>
+<p><em>Exposition and proofs: GPT-6 Astra and GPT-6.1 Sol (OpenAI), Ultra. Original lesson exposition: CC0. Linked programme components retain their stated licences.</em></p>
+<p>This reading proves the repeated-integral distributional extension for polynomial growth, its exact boundary source, matching-boundary holomorphic continuation and one-variable zero-boundary uniqueness. It contains the complete arguments in Sections 1–3, including the example distinguishing repeated integration from absolute integration.</p>
+<p>The <a href="cauchy-kernels-and-boundary-limits.html">Cauchy-kernel reading</a> supplies its finite-test boundary theorem, explicit compact-cutoff regularity and disk power series. <a href="order-positivity-and-limits.html">Order, positivity and distributional limits</a> supplies finite-order test extension. Pairings are complex linear and <span class="math" data-tex="\(\bar\partial=(\partial_x+i\partial_y)/2\)">\(\bar\partial=(\partial_x+i\partial_y)/2\)</span>.</p>
+<h2 id="integrating-the-growth-into-a-logarithm">Integrating the growth into a logarithm</h2>
+<p>Let <span class="math" data-tex="\(I\)">\(I\)</span> be a nonempty open interval and <span class="math" data-tex="\(\gamma&gt;0\)">\(\gamma&gt;0\)</span>. Write</p>
+<span class="math math-display" data-tex="\[
+ S=I+i(-\gamma,\gamma),\qquad
+ S^+=I+i(0,\gamma),\qquad S^-=I+i(-\gamma,0).
+ \tag{1.1}
+\]">\[
+ S=I+i(-\gamma,\gamma),\qquad
+ S^+=I+i(0,\gamma),\qquad S^-=I+i(-\gamma,0).
+ \tag{1.1}
+\]</span>
+<p>Initially suppose that <span class="math" data-tex="\(f\)">\(f\)</span> is holomorphic separately on <span class="math" data-tex="\(S^+\)">\(S^+\)</span> and <span class="math" data-tex="\(S^-\)">\(S^-\)</span>, and, for an integer <span class="math" data-tex="\(N\ge0\)">\(N\ge0\)</span>,</p>
+<span class="math math-display" data-tex="\[
+ |f(x+iy)|\le C|y|^{-N}.
+ \tag{1.2}
+\]">\[
+ |f(x+iy)|\le C|y|^{-N}.
+ \tag{1.2}
+\]</span>
+<p>The preceding boundary theorem supplies upper and lower distributions <span class="math" data-tex="\(f_+,f_-\)">\(f_+,f_-\)</span>, with continuous actions on compact <span class="math" data-tex="\(C^{N+1}\)">\(C^{N+1}\)</span> tests. Its uniform estimates also permit moving tests in that same norm.</p>
+<p><strong>Lemma 1.1 (a primitive with integrable growth).</strong> On each side there is a holomorphic <span class="math" data-tex="\(G\)">\(G\)</span> with <span class="math" data-tex="\(\partial_x^NG=f\)">\(\partial_x^NG=f\)</span>. For every compact interval <span class="math" data-tex="\(J\Subset I\)">\(J\Subset I\)</span>, and a fixed <span class="math" data-tex="\(0&lt;T&lt;\gamma\)">\(0&lt;T&lt;\gamma\)</span>, it satisfies</p>
+<span class="math math-display" data-tex="\[
+ |G(x+iy)|\le C_J\bigl(1+\log(T/|y|)\bigr),
+ \qquad x\in J,\quad 0&lt;|y|&lt;T.
+ \tag{1.3}
+\]">\[
+ |G(x+iy)|\le C_J\bigl(1+\log(T/|y|)\bigr),
+ \qquad x\in J,\quad 0&lt;|y|&lt;T.
+ \tag{1.3}
+\]</span>
+<p>For <span class="math" data-tex="\(N=0\)">\(N=0\)</span> take <span class="math" data-tex="\(G=f\)">\(G=f\)</span>. Arbitrary values on the real interval make the piecewise <span class="math" data-tex="\(G\)">\(G\)</span> a locally integrable function on <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<p><strong>Proof.</strong> A primitive on the upper side can be constructed without a path-independence theorem. Fix <span class="math" data-tex="\(x_0\in I\)">\(x_0\in I\)</span> and put</p>
+<span class="math math-display" data-tex="\[
+ H(x+iy)=\int_{x_0}^x f(s+iT)\,ds
+                  +i\int_T^y f(x+it)\,dt.
+ \tag{1.4}
+\]">\[
+ H(x+iy)=\int_{x_0}^x f(s+iT)\,ds
+                  +i\int_T^y f(x+it)\,dt.
+ \tag{1.4}
+\]</span>
+<p>These are integrals over compact intervals of smooth functions at each positive height. The fundamental theorem and the Cauchy–Riemann equation <span class="math" data-tex="\(f_y=if_x\)">\(f_y=if_x\)</span> give</p>
+<span class="math math-display" data-tex="\[
+ H_y=if(x+iy),\qquad
+ H_x=f(x+iT)+\int_T^y f_y(x+it)\,dt=f(x+iy).
+ \tag{1.5}
+\]">\[
+ H_y=if(x+iy),\qquad
+ H_x=f(x+iT)+\int_T^y f_y(x+it)\,dt=f(x+iy).
+ \tag{1.5}
+\]</span>
+<p>Thus <span class="math" data-tex="\(H\)">\(H\)</span> is holomorphic and <span class="math" data-tex="\(H_x=f\)">\(H_x=f\)</span>. The horizontal integral is bounded when <span class="math" data-tex="\(x\)">\(x\)</span> stays in <span class="math" data-tex="\(J\)">\(J\)</span>, by taking the compact interval joining <span class="math" data-tex="\(J\)">\(J\)</span> to <span class="math" data-tex="\(x_0\)">\(x_0\)</span>. If the input has a bound by <span class="math" data-tex="\(t^{-q}\)">\(t^{-q}\)</span> on a compact horizontal interval, the vertical integral is bounded by a constant plus <span class="math" data-tex="\(y^{-(q-1)}/(q-1)\)">\(y^{-(q-1)}/(q-1)\)</span> for <span class="math" data-tex="\(q&gt;1\)">\(q&gt;1\)</span>, and by a constant plus <span class="math" data-tex="\(\log(T/y)\)">\(\log(T/y)\)</span> for <span class="math" data-tex="\(q=1\)">\(q=1\)</span>. Apply this construction <span class="math" data-tex="\(N\)">\(N\)</span> times. Each of the first <span class="math" data-tex="\(N-1\)">\(N-1\)</span> steps reduces the integer exponent by one; the last gives the logarithm. When <span class="math" data-tex="\(N=0\)">\(N=0\)</span>, boundedness gives (1.3) directly.</p>
+<p>On the lower side use reference height <span class="math" data-tex="\(-T\)">\(-T\)</span> and the same two integrals, with the vertical parameter negative. Their absolute estimates are unchanged after replacing height by its absolute value. Finally, the nonnegative integration theorem from the supplied foundation gives</p>
+<span class="math math-display" data-tex="\[
+ \int_0^T\log(T/y)\,dy
+ =\int_0^T\int_y^T\frac{dt}{t}\,dy
+ =\int_0^T\frac{t}{t}\,dt=T.
+\]">\[
+ \int_0^T\log(T/y)\,dy
+ =\int_0^T\int_y^T\frac{dt}{t}\,dy
+ =\int_0^T\frac{t}{t}\,dt=T.
+\]</span>
+<p>The logarithmic majorant therefore has integral <span class="math" data-tex="\(2T\)">\(2T\)</span>. On compact sets away from height zero, <span class="math" data-tex="\(G\)">\(G\)</span> is smooth and bounded. This proves the local integrability. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="the-repeated-integral-gives-the-extension-and-its-source">The repeated integral gives the extension and its source</h2>
+<p>At a nonzero height define the horizontal pairing</p>
+<span class="math math-display" data-tex="\[
+ A_\phi(y)=\int_I f(x+iy)\phi(x,y)\,dx.
+\]">\[
+ A_\phi(y)=\int_I f(x+iy)\phi(x,y)\,dx.
+\]</span>
+<p><strong>Theorem 2.1 (order of the extension and the jump).</strong> For <span class="math" data-tex="\(\phi\in C_c^N(S)\)">\(\phi\in C_c^N(S)\)</span>, the repeated integral</p>
+<span class="math math-display" data-tex="\[
+ F(\phi)=\int_{-\gamma}^{\gamma}A_\phi(y)\,dy
+ \tag{2.1}
+\]">\[
+ F(\phi)=\int_{-\gamma}^{\gamma}A_\phi(y)\,dy
+ \tag{2.1}
+\]</span>
+<p>exists, with the inner <span class="math" data-tex="\(x\)">\(x\)</span>-integral taken first and its value at height zero ignored. The outer integral is absolutely convergent. On smooth tests it defines an order-at-most-<span class="math" data-tex="\(N\)">\(N\)</span> distribution equal to <span class="math" data-tex="\(f\)">\(f\)</span> away from the real interval, and</p>
+<span class="math math-display" data-tex="\[
+ \bar\partial F=\frac{i}{2}(f_+-f_-)\otimes\delta_{y=0}.
+ \tag{2.2}
+\]">\[
+ \bar\partial F=\frac{i}{2}(f_+-f_-)\otimes\delta_{y=0}.
+ \tag{2.2}
+\]</span>
+<p>Here <span class="math" data-tex="\((b\otimes\delta_{y=0})(\phi)=b(\phi(\cdot,0))\)">\((b\otimes\delta_{y=0})(\phi)=b(\phi(\cdot,0))\)</span>. Restriction of a smooth compact test to this line has compact support and its derivative seminorms are bounded by those of the test, so this formula defines a distribution. Equality (2.2) also holds on compact <span class="math" data-tex="\(C^{N+1}\)">\(C^{N+1}\)</span> tests.</p>
+<p><strong>Proof.</strong> Put the horizontal projection of the support inside a compact interval <span class="math" data-tex="\(J\Subset I\)">\(J\Subset I\)</span>. Integrating by parts <span class="math" data-tex="\(N\)">\(N\)</span> times gives</p>
+<span class="math math-display" data-index="54" data-tex="\[
+ \begin{gathered}
+ A_\phi(y)\\
+ =(-1)^N\int_I G(x+iy)\partial_x^N\phi(x,y)\,dx.
+ \end{gathered}
+ \tag{2.3}
+\]" id="equation-2.3">\[
+ \begin{gathered}
+ A_\phi(y)\\
+ =(-1)^N\int_I G(x+iy)\partial_x^N\phi(x,y)\,dx.
+ \end{gathered}
+ \tag{2.3}
+\]</span>
+<p>Every end term vanishes because the test and its derivatives are zero outside a compact subinterval. This argument needs only <span class="math" data-tex="\(C^N\)">\(C^N\)</span> regularity. Near height zero the right side is bounded by
+<span class="math" data-tex="\(C_J|J|\|\phi\|_{C^N}(1+\log(T/|y|))\)">\(C_J|J|\|\phi\|_{C^N}(1+\log(T/|y|))\)</span>; on the remaining compact height range it is bounded by smoothness. Thus the outer integral is absolutely convergent. The absolutely integrable expression on the right permits Fubini and yields</p>
+<span class="math math-display" data-tex="\[
+ F(\phi)=(-1)^N\int_S G(x+iy)\partial_x^N\phi(x,y)\,dx\,dy.
+ \tag{2.4}
+\]">\[
+ F(\phi)=(-1)^N\int_S G(x+iy)\partial_x^N\phi(x,y)\,dx\,dy.
+ \tag{2.4}
+\]</span>
+<p>The local integral of <span class="math" data-tex="\(|G|\)">\(|G|\)</span> bounds this by a constant times the test's <span class="math" data-tex="\(C^N\)">\(C^N\)</span> norm. This proves the order. Definition (2.1) contains no primitive, so different choices in Lemma 1.1 give the same extension. For support away from the real interval, it is the usual integral of <span class="math" data-tex="\(f\phi\)">\(f\phi\)</span>.</p>
+<p>Take now <span class="math" data-tex="\(\phi\in C_c^{N+1}(S)\)">\(\phi\in C_c^{N+1}(S)\)</span>. By the preceding absolute outer convergence,</p>
+<span class="math math-display" data-tex="\[
+ (\bar\partial F)(\phi)
+       =-\lim_{\varepsilon\downarrow0}
+           \int_{|y|&gt;\varepsilon}A_{\bar\partial\phi}(y)\,dy.
+ \tag{2.5}
+\]">\[
+ (\bar\partial F)(\phi)
+       =-\lim_{\varepsilon\downarrow0}
+           \int_{|y|&gt;\varepsilon}A_{\bar\partial\phi}(y)\,dy.
+ \tag{2.5}
+\]</span>
+<p>The signs can be obtained directly by coordinate integration. On either truncated side,
+<span class="math" data-tex="\(f\bar\partial\phi=\bar\partial(f\phi)\)">\(f\bar\partial\phi=\bar\partial(f\phi)\)</span>, because <span class="math" data-tex="\(f\)">\(f\)</span> is holomorphic. The integral of the <span class="math" data-tex="\(x\)">\(x\)</span>-derivative is zero. The integral of the <span class="math" data-tex="\(y\)">\(y\)</span>-derivative is <span class="math" data-tex="\(-A_\phi(\varepsilon)\)">\(-A_\phi(\varepsilon)\)</span> on the upper side and <span class="math" data-tex="\(A_\phi(-\varepsilon)\)">\(A_\phi(-\varepsilon)\)</span> on the lower side. The minus sign in the distributional derivative therefore gives</p>
+<span class="math math-display" data-tex="\[
+ (\bar\partial F)(\phi)
+       =\lim_{\varepsilon\downarrow0}\frac{i}{2}
+                   \bigl(A_\phi(\varepsilon)-A_\phi(-\varepsilon)\bigr).
+ \tag{2.6}
+\]">\[
+ (\bar\partial F)(\phi)
+       =\lim_{\varepsilon\downarrow0}\frac{i}{2}
+                   \bigl(A_\phi(\varepsilon)-A_\phi(-\varepsilon)\bigr).
+ \tag{2.6}
+\]</span>
+<p>The functions <span class="math" data-tex="\(\phi(\cdot,\pm\varepsilon)\)">\(\phi(\cdot,\pm\varepsilon)\)</span> have one compact horizontal support. Uniform continuity of their horizontal derivatives through degree <span class="math" data-tex="\(N+1\)">\(N+1\)</span> shows convergence to <span class="math" data-tex="\(\phi(\cdot,0)\)">\(\phi(\cdot,0)\)</span> in <span class="math" data-tex="\(C^{N+1}\)">\(C^{N+1}\)</span>. The moving-test boundary estimate in the preceding lesson applies, proving (2.2) on exactly the stated finite-regularity tests. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 2.2 (why the order of integration matters).</strong> Take <span class="math" data-tex="\(f(z)=z^{-2}\)">\(f(z)=z^{-2}\)</span> and a smooth test equal to one near zero. Its growth is bounded by <span class="math" data-tex="\(|y|^{-2}\)">\(|y|^{-2}\)</span>, so Theorem 2.1 applies. Its joint absolute integral diverges. For a direct proof using only the supplied disk-area formula, take disjoint annuli
+<span class="math" data-tex="\(r2^{-j-1}&lt;|z|&lt;r2^{-j}\)">\(r2^{-j-1}&lt;|z|&lt;r2^{-j}\)</span> in the disk where the test is one. Each has area <span class="math" data-tex="\(3\pi r^2 4^{-j}/4\)">\(3\pi r^2 4^{-j}/4\)</span>, and on it <span class="math" data-tex="\(|z|^{-2}\ge r^{-2}4^j\)">\(|z|^{-2}\ge r^{-2}4^j\)</span>. Every annulus contributes at least <span class="math" data-tex="\(3\pi/4\)">\(3\pi/4\)</span>; summing gives infinity. Thus the ordinary absolute version of Fubini does not apply to <span class="math" data-tex="\(f\phi\)">\(f\phi\)</span>, whereas (2.3) gives an integrable majorant for its horizontal pairing.</p>
+<p>For <span class="math" data-tex="\(z^{-1}\)">\(z^{-1}\)</span>, the preceding lesson proves planar local integrability. Its jump is <span class="math" data-tex="\(-2\pi i\delta_0\)">\(-2\pi i\delta_0\)</span>, so (2.2) gives <span class="math" data-tex="\(\bar\partial F=\pi\delta_{(0,0)}\)">\(\bar\partial F=\pi\delta_{(0,0)}\)</span>. The jump of <span class="math" data-tex="\(z^{-2}\)">\(z^{-2}\)</span> is <span class="math" data-tex="\(2\pi i\delta'_0\)">\(2\pi i\delta'_0\)</span>, giving <span class="math" data-tex="\(\bar\partial F=-\pi\partial_x\delta_{(0,0)}\)">\(\bar\partial F=-\pi\partial_x\delta_{(0,0)}\)</span>.</p>
+<h2 id="matching-boundary-distributions-forces-continuation">Matching boundary distributions forces continuation</h2>
+<p><strong>Theorem 3.1 (matching is exactly the continuation condition).</strong> Under (1.2), <span class="math" data-tex="\(f\)">\(f\)</span> extends to a holomorphic function on <span class="math" data-tex="\(S\)">\(S\)</span> if and only if <span class="math" data-tex="\(f_+=f_-\)">\(f_+=f_-\)</span>. That holomorphic extension is unique.</p>
+<p><strong>Proof.</strong> Matching makes the source (2.2) zero. Proposition 2.1 of the linked Cauchy-kernel reading proves, by its explicit kernel and compact-cutoff argument, that a distribution annihilated by <span class="math" data-tex="\(\bar\partial\)">\(\bar\partial\)</span> has a holomorphic representative <span class="math" data-tex="\(h\)">\(h\)</span>. Away from height zero, <span class="math" data-tex="\(h\)">\(h\)</span> and <span class="math" data-tex="\(f\)">\(f\)</span> give the same distribution. Their difference is continuous and must vanish pointwise: if nonzero at a point, multiplication by a constant phase and integration against a sufficiently small nonnegative bump would give a nonzero pairing. Thus <span class="math" data-tex="\(h=f\)">\(h=f\)</span> on both sides. The identity principle below proves uniqueness.</p>
+<p>Conversely, if <span class="math" data-tex="\(h\)">\(h\)</span> is a holomorphic extension, it is smooth by the proved disk theory. For any compact horizontal test, <span class="math" data-tex="\(h(x\pm iy)\)">\(h(x\pm iy)\)</span> tends uniformly to <span class="math" data-tex="\(h(x)\)">\(h(x)\)</span>. Both boundary pairings consequently equal its ordinary trace. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.2 (identity principle).</strong> A holomorphic function on a connected open set which vanishes on a nonempty open subset is zero throughout the set.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(E\)">\(E\)</span> be the set where the function and all its complex derivatives vanish. The derivatives are continuous, so <span class="math" data-tex="\(E\)">\(E\)</span> is relatively closed. At any point of <span class="math" data-tex="\(E\)">\(E\)</span>, the disk power series proved in the preceding lesson has every coefficient zero. The function, and hence its derivatives, vanish on that disk; <span class="math" data-tex="\(E\)">\(E\)</span> is relatively open. The initial open zero set makes <span class="math" data-tex="\(E\)">\(E\)</span> nonempty. Connectedness forces <span class="math" data-tex="\(E\)">\(E\)</span> to be the whole domain. The strips used here are connected because they are convex: a separating pair of relatively open sets would separate a segment joining them, contrary to the interval intermediate-value property. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><span id="zero-boundary-implies-zero-function"></span></p>
+<p><strong>Corollary 3.3 (zero boundary implies zero function).</strong> A polynomially bounded holomorphic function on <span class="math" data-tex="\(S^+\)">\(S^+\)</span> whose upper boundary is zero on a nonempty open subinterval is zero on <span class="math" data-tex="\(S^+\)">\(S^+\)</span>.</p>
+<p><strong>Proof.</strong> Restrict to that subinterval and put the lower function equal to zero. Theorem 3.1 glues the two sides. The glued holomorphic function vanishes on its lower open half, so Lemma 3.2 makes it zero on the smaller strip. This supplies an open zero set in the original upper strip. Applying the lemma again proves the assertion on the whole upper strip. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="references">References</h2>
+<ul>
+<li>Debraj Chakrabarti and Rasul Shafikov, <em>Distributional boundary values of holomorphic functions on product domains</em>, author preprint, arXiv:1505.01230v1 (2015), §§2.3, 2.5–2.6. <a href="https://arxiv.org/abs/1505.01230v1">Preprint</a>.</li>
+<li>Avi Zeff, <em>Lecture 12: Pompeiu’s formula</em> (2026), §2. <a href="https://math.berkeley.edu/~avizeff/complex_analysis_S26/lecture_12.html">Lecture</a>.</li>
+</ul>
+</main><script id="an02-formula-accessibility">(()=>{const mark=()=>{for(const e of document.querySelectorAll('[data-tex]'))if(e.scrollWidth>e.clientWidth+1){e.tabIndex=0;e.setAttribute('role','group');e.setAttribute('aria-label','Mathematical expression; scroll horizontally to read the whole expression');}};const ready=async()=>{if(window.MathJax?.startup?.promise)await MathJax.startup.promise;if(document.fonts?.ready)await document.fonts.ready;requestAnimationFrame(mark);};if(document.readyState==='complete')ready();else addEventListener('load',ready,{once:true});addEventListener('resize',mark);})();</script></body></html>

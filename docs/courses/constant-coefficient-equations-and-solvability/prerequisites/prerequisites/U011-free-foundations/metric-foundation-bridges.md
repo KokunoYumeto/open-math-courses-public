@@ -767,6 +767,8 @@ Every further derivative is proved by induction:
 
 For \(r=0\) the product is empty and equals one. Zero factors remain in the formula when \(s\) is an integer and the derivative vanishes. The working domain is \(x>0\); no differentiability at zero for arbitrary \(s\) is inferred. For negative \(s\), the sign in (OC31) proves decreasing powers on that domain, and for positive \(s\) it proves increasing powers. This supplies the original positive frequency-bracket bounds without changing their exponents.
 
+<span id="139-arctangent-circular-parameters-and-the-original-pi"></span>
+
 ### 13.9. Arctangent, circular parameters and the original pi
 
 Define \(C(t)\) and \(S(t)\) by the real and imaginary coordinates of the actual \(E(it)\), not by assumed trigonometric derivatives. The absolute convergence above gives

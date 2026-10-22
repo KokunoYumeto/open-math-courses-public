@@ -1,6 +1,6 @@
 # Principal groupoids with hidden group factors
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra, October 2026. New original text is public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), October 2026. Original text is public domain (CC0).*
 
 A principal groupoid has no nonidentity isotropy arrows. Its measurable structure can nevertheless carry a group coordinate invisible to the unit sigma-field. The preceding binary example gives an abelian random-operator algebra. Here we construct the full countable-group version, classify all its proper transverse functions, and compute a properly infinite factor when the group is the free group on two generators.
 
@@ -1904,6 +1904,128 @@ In particular, no normal unital isomorphism from \(M_1\) onto \(Q_1\) exists. No
 Theorem 5J.3 uses a spatial tensor-square identification. Applying it to a different candidate would first require such an identification of that actual factor. The separately normal factor quotients in Theorem 5I.3 retain their stated mutual-commutant, generation, internal-exchange and stable-ambient requirements. Their unrestricted existence remains unresolved.
 
 
+## 5K. Finite fixed corners and the actual ambient identification
+
+Write \(\mathcal S(N)\) and \(T_N\) as in (5J.1), with the specified countably generated free group factor \(N\). A fixed projection of an involution need not commute with every element of the algebra. The following construction gives finite fixed projections before any decision about innerness.
+
+**Lemma 5K.1 (the trace of a join).** Let \(T\) be a faithful normal semifinite trace on a von Neumann algebra \(R\). For projections \(p,q\in R\) with finite trace,
+\[
+ T(p\vee q)\le T(p)+T(q)<\infty.
+ \tag{5K.1}
+\]
+No commutation between \(p\) and \(q\) is assumed.
+
+*Proof.* Put \(a=(1-p)q\), and let \(v\in R\) be its polar partial isometry. Its initial projection is at most \(q\). Its final projection is
+\[
+ vv^*=(p\vee q)-p.
+ \tag{5K.2}
+\]
+Indeed, the closure of \(p\mathcal H+q\mathcal H\) is the range of \(p\vee q\). Its orthogonal component relative to \(p\mathcal H\) is the closure of \((1-p)q\mathcal H\): one inclusion is immediate, and applying \(1-p\) to an approximating sequence of sums proves the other. This is exactly the range of the final projection of \(a\). The two projections \(p\) and \(vv^*\) are orthogonal, so traciality and positivity give
+\[
+ \begin{aligned}
+ T(p\vee q)&=T(p)+T(vv^*)\\
+ &=T(p)+T(v^*v)\le T(p)+T(q).
+ \end{aligned}
+ \tag{5K.3}
+\]
+This proves (5K.1). \(\square\)
+
+**Proposition 5K.2 (finite fixed projections without an innerness assumption).** Let \(\gamma\) be any normal automorphism of \(\mathcal S(N)\) with \(\gamma^2=\operatorname{id}\). For \(j\ge0\) and \(n\ge1\), put
+\[
+ \begin{aligned}
+ p_j&=E_{jj}\otimes1_N,&
+ q_n&=\sum_{j=0}^{n-1}p_j,\\
+ e_n&=q_n\vee\gamma(q_n).
+ \end{aligned}
+ \tag{5K.4}
+\]
+Then \((e_n)\) is an increasing sequence of nonzero projections satisfying
+\[
+ \begin{aligned}
+ \gamma(e_n)&=e_n,\\
+ 0&<T_N(e_n)<\infty,\\
+ e_n&\longrightarrow1\ \text{strongly}.
+ \end{aligned}
+ \tag{5K.5}
+\]
+For each \(n\), \(\gamma\) is inner if and only if the two-by-two algebra \(\mathcal C_{\gamma|_{e_n\mathcal S(N)e_n}}\) is not a factor.
+
+*Proof.* The corner \(p_j\mathcal S(N)p_j\) is normally isomorphic to \(N\) through \(x\mapsto E_{jj}\otimes x\). Applying \(\gamma\) gives a normal unital isomorphism from \(N\) onto the corner with identity \(\gamma(p_j)\). Lemma 5J.2(2) therefore gives
+\[
+ 0<T_N(\gamma(p_j))<\infty.
+ \tag{5K.6}
+\]
+The images of the distinct \(p_j\)'s are orthogonal. Hence \(T_N(\gamma(q_n))\) is the finite sum of their finite traces. Lemma 5K.1 yields
+\[
+ n\le T_N(e_n)\le n+T_N(\gamma(q_n))<\infty.
+ \tag{5K.7}
+\]
+Only the individual diagonal corners were identified with \(N\); no isomorphism between \(M_n(N)\) and \(N\) is used.
+
+An automorphism preserves joins, because it preserves the order of projections in both directions. Thus \(\gamma^2=\operatorname{id}\) gives \(\gamma(e_n)=e_n\). Both terms in (5K.4) increase with \(n\), so the joins increase. Since \(e_n\ge q_n\) and \(q_n\to1\) strongly, their supremum is one and the increasing sequence \(e_n\) converges strongly to one. Nonzeroness follows from \(e_n\ge p_0\).
+
+The corner is a factor by the nonzero-corner argument in Proposition 5I.5. Its restricted automorphism is an involution. Proposition 5I.1 detects innerness of that restricted automorphism, and Proposition 5I.5 makes it equivalent to innerness of \(\gamma\). This applies to every \(n\), not merely to an unspecified finite corner. \(\square\)
+
+**Example 5K.3 (an outer involution with all matrix cutoffs fixed).** Name the free generators of \(F_\infty\) as \(a_0,a_1,\ldots\), and let \(\chi:F_\infty\to\{1,-1\}\) be the character with
+\[
+ \chi(a_0)=-1,\qquad \chi(a_j)=1\quad(j\ge1).
+ \tag{5K.8}
+\]
+On \(\ell^2(F_\infty)\), the unitary \(D\delta_g=\chi(g)\delta_g\) satisfies
+\[
+ D\lambda_gD^*=\chi(g)\lambda_g.
+ \tag{5K.9}
+\]
+Conjugation by \(D\) restricts to a normal involutive automorphism \(\alpha\) of \(N\).
+
+This automorphism is outer. If \(\alpha=\operatorname{Ad}w\) for a unitary \(w\in N\), then \(w\) commutes with every \(\lambda_{a_j}\) for \(j\ge1\). Expand its trace-square-integrable vector as
+\[
+ w\delta_1=\sum_{g\in F_\infty}c_g\delta_g,
+ \qquad \sum_g|c_g|^2=1.
+ \tag{5K.10}
+\]
+Commutation makes the coefficient function invariant under conjugation by each of those generators. For any nonidentity reduced word \(g\), choose \(b=a_j\), \(j\ge1\), absent from that word. The words \(b^kgb^{-k}\), \(k\ge1\), are distinct reduced words, all with the coefficient \(c_g\). Square summability forces \(c_g=0\). Thus \(w\delta_1=c_1\delta_1\). The trace is faithful, so \(w=c_1 1_N\). This contradicts \(\alpha(\lambda_{a_0})=-\lambda_{a_0}\). The Fourier argument proves the asserted outerness without a classification of free-factor automorphisms.
+
+Now let
+\[
+ \gamma=\operatorname{id}_{B(\ell^2\mathbb N)}
+          \overline\otimes\alpha
+ \quad\text{on }\mathcal S(N).
+ \tag{5K.11}
+\]
+It fixes every \(q_n\), so (5K.4) gives \(e_n=q_n\) and \(T_N(e_n)=n\). Nevertheless \(\gamma\) is outer. An internal unitary implementing it would commute with all \(E_{ij}\otimes1_N\). Its matrix coefficients then force it to have the form \(1\otimes w\), which would implement \(\alpha\) internally in \(N\). Consequently the two-by-two algebra in Proposition 5K.2 is a factor at every one of these finite cutoffs. In fact the same conclusion holds at every nonzero \(\gamma\)-fixed corner, by Proposition 5I.5. Existence of finite fixed projections is therefore strictly weaker than the innerness condition.
+
+**Corollary 5K.4 (a prescribed finite test through the actual ambient map).** Suppose a nonzero minimal central projection \(z\) meets properties 1 and 4 of Theorem 5I.3. Keep its actual factor \(R=zW\), involution \(\beta=\tau|_R\), and normal onto isomorphism \(\Theta\). Define on the original \(M=\mathcal S(N)\)
+\[
+ \gamma=\Theta\circ
+ (\operatorname{id}_{B(L)}\overline\otimes
+  \operatorname{id}_{B(L)}\overline\otimes\beta)
+ \circ\Theta^{-1}.
+ \tag{5K.12}
+\]
+Using this \(\gamma\), form the explicit \(e_n\)'s in (5K.4). For every \(n\ge1\), property 3 of Theorem 5I.3 is equivalent to nonfactoriality of
+\[
+ \mathcal C_{\gamma|_{e_nMe_n}}\subset M_2(e_nMe_n).
+ \tag{5K.13}
+\]
+Thus the first such finite corner already gives the same innerness answer as the whole coefficient factor.
+
+*Proof.* Equation (5K.12) defines a normal involution of the actual \(M\). Proposition 5K.2 supplies its finite fixed cutoffs and reduces (5K.13) to innerness of \(\gamma\).
+
+If \(\beta=\operatorname{Ad}s\), its amplification and transport are implemented by \(\Theta(1\otimes1\otimes s)\). Conversely, suppose \(\gamma=\operatorname{Ad}u\) for an internal unitary \(u\in M\). Its inverse image under \(\Theta\) commutes with \(B(L)\overline\otimes B(L)\overline\otimes1_R\), because (5K.12) fixes that algebra pointwise. Combining the first two Hilbert coordinates, the matrix-coefficient argument gives
+\[
+ \Theta^{-1}(u)=1\otimes1\otimes s
+ \quad\text{for a unitary }s\in R.
+ \tag{5K.14}
+\]
+Applying (5K.12) to \(1\otimes1\otimes x\) shows \(\beta(x)=sxs^*\). Hence \(\gamma\) is inner exactly when \(\beta\) is inner. Proposition 5I.1 identifies the latter condition with property 3. If a corner symmetry is normalized to be self-adjoint with square its corner identity, Proposition 5I.5 lifts it to \(u=u^*\), \(u^2=1_M\); (5K.14) then gives \(s=s^*\), \(s^2=z\). \(\square\)
+
+The map \(\Theta\) is an actual hypothesis, not an abstract tensor-square analogy. This corollary constructs neither an eligible central summand nor that map. The two full relative-commutant equalities remain separate requirements. Compression by \(e_n\) is not asserted to be multiplicative on either prescribed copy. The unrestricted existence assertion in Connes's Corollary 11 is unchanged by this finite test.
+
+![Joining a matrix cutoff to its involutive image gives a finite fixed corner; an outer character action shows why a centre test is still needed.](figures/finite-fixed-corner-exchange.svg)
+
+*Figure 14. Lemma 5K.1 proves the finite-join bound without commutation. Proposition 5K.2 applies it after identifying each individual diagonal corner with the specified free factor. Example 5K.3 fixes every cutoff while keeping the two-by-two algebra factorial. Corollary 5K.4 transports the involution through the actual normal onto ambient map and recovers a coefficient implementer by commuting with the first two matrix coordinates. The full existence target is Connes, Corollary 11 and Sakai's distinction, author-hosted typeset PDF 44–45; the exact quotient conditions are Theorem 5I.3.* [Full-size diagram](figures/finite-fixed-corner-exchange.svg).
+
 ## 6. Exercises with complete solutions
 
 Level 1 is a direct calculation. Level 2 proves part of the mechanism. Level 3 compares the full hypotheses or combines results.
@@ -2451,7 +2573,30 @@ Let \(p_g\) project onto \(\mathbb C\delta_g\). Directly,
 Hence \(F(p_e)=0\), and \(N_G\)-bimodularity gives \(F(p_g)=0\) for every \(g\). The finite-rank projections onto \(\ell^2G_m\) increase strongly to one, but all have image zero while \(F(1)=1\). Therefore \(F\) is not normal. This is consistent with Lemma 5G.1, which excludes normal expectations. The expectation criterion for injectivity allows nonnormal expectations, so the distinct nonamenability argument in Lemma 5J.1 is necessary.
 
 
-## 7. Source comparison and remaining scope
+**Exercise 6.37 (a join of noncommuting cutoffs).** *Level 2.* Use the unnormalized trace on \(M_2(\mathbb C)\), and put
+\[
+ \begin{aligned}
+ p&=\begin{pmatrix}1&0\\0&0\end{pmatrix},\\
+ q&=\tfrac12\begin{pmatrix}1&1\\1&1\end{pmatrix},\\
+ H&=\tfrac1{\sqrt2}\begin{pmatrix}1&1\\1&-1\end{pmatrix}.
+ \end{aligned}
+\]
+Compute \(p\vee q\), the initial and final projections of the polar partial isometry of \((1-p)q\), and the join's trace. Check that \(\operatorname{Ad}H\) exchanges \(p,q\). Which claim would be lost by requiring the two cutoffs to commute in Proposition 5K.2?
+
+*Solution.* The two distinct one-dimensional ranges span \(\mathbb C^2\), so \(p\vee q=1_2\). For
+\[
+ \begin{aligned}
+ a&=(1-p)q=\tfrac12\begin{pmatrix}0&0\\1&1\end{pmatrix},\\
+ v&=\tfrac1{\sqrt2}\begin{pmatrix}0&0\\1&1\end{pmatrix},
+ \end{aligned}
+\]
+one has \(a=v(q/\sqrt2)\), \(v^*v=q\), and \(vv^*=1_2-p\). Thus \(T(p\vee q)=2=T(p)+T(q)\). Direct multiplication gives \(H^*=H\), \(H^2=1_2\), \(HpH=q\), and \(HqH=p\). But \(pq\ne qp\). The construction of a fixed join applies nonetheless. Requiring commutation would remove the unconditional statement that an arbitrary cutoff and its involutive image give a finite fixed join; commutation is not a hypothesis of Lemma 5K.1.
+
+**Exercise 6.38 (outer at every finite matrix level).** *Level 3.* In Example 5K.3, identify the involution on \(q_n\mathcal S(N)q_n\) with its action on \(M_n(\mathbb C)\overline\otimes N\). Prove outerness directly at each \(n\), and determine the centre of its two-by-two algebra. Does the Hilbert-space unitary \(1\otimes D\) from (5K.9) supply an internal exchange?
+
+*Solution.* The corner action is \(\operatorname{id}_{M_n(\mathbb C)}\overline\otimes\alpha\). Suppose a unitary \(w\) in that corner implements it. Write its entries as \(w_{ij}\in N\). Commutation with every diagonal matrix unit makes the off-diagonal entries zero; commutation with \(E_{ij}\otimes1_N\) makes all diagonal entries equal. Thus \(w=1_n\otimes w_0\), where \(w_0\in N\) is unitary. Its action on \(1_n\otimes x\) would give \(\alpha(x)=w_0xw_0^*\), contradicting the Fourier proof in Example 5K.3. Proposition 5I.1 consequently gives scalar centre for the two-by-two algebra at every \(n\). Conjugation by \(1\otimes D\) is a Hilbert-space implementation, but \(D\notin N\): membership would contradict the proved outerness of \(\alpha\). Matrix coefficients likewise exclude \(1\otimes D\) from \(\mathcal S(N)\). It is therefore not the internal unitary required by the two-copy question.
+
+## 7. Bibliography and mathematical scope
 
 Connes's author-hosted Corollary 11, PDF 44–45, assumes a properly infinite random-operator factor on a principal measurable groupoid and asks for two mutually commuting copies, each the relative commutant of the other, generating the factor and exchanged by a symmetry of square one. The source leaves the proof as an exercise and mentions the equivalence of the field with its tensor square.
 
@@ -2463,7 +2608,7 @@ Bibliography:
 
 - [Connes] A. Connes, *Sur la théorie non commutative de l'intégration*, in *Algèbres d'opérateurs*, Lecture Notes in Mathematics 725, Springer, 1979, pp. 19–143; [author-hosted later typeset version](https://alainconnes.org/wp-content/uploads/ThNonComm.pdf), Corollary 11, PDF 44–45. These page locators refer to the free author-hosted typeset edition.
 - [Claude-SQ] Claude (Anthropic), Square-integrable representations and random operators, CC0, written programme *Noncommutative integration*, September 2026, standing hypotheses in Section 1.1, Sections 5 and 8, full Proposition 8.5 and Remark 8.6. The standard Borel hypothesis is part of the cited theorem.
-- [Owned predecessors] The complete subgroup, perfect-set and binary-field proofs are in the two linked preceding lessons. The countable-label measures, full transverse classification, properly infinite factor and controlled-translation argument here are written out in full.
+- [Course predecessors] The complete subgroup, perfect-set and binary-field proofs are in the two linked preceding lessons. The countable-label measures, full transverse classification, properly infinite factor and controlled-translation argument here are written out in full.
 
 - [Wiersma] Matthew Wiersma, *Weak\* tensor products for von Neumann algebras*, arXiv:1506.01671v1 (2015), Sections 2–3, especially Propositions 2.4 and 3.2. [Free exact preprint](https://arxiv.org/pdf/1506.01671v1). The universal normal-completion framework is used with an explicit normal-marginal GNS argument in Section 5I.
 

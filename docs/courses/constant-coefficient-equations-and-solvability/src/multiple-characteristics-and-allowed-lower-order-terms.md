@@ -1,6 +1,6 @@
 # Multiple characteristics and allowed lower order terms
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 Multiple roots constrain lower order terms through more than their degree. They force vanishing at characteristic points, but the resulting multiplicity condition can still be too weak. We derive the exact condition from polynomial strength, identify when every lower order completion is allowed, and compare repeated, tangent and transverse Lorentz cones.
 

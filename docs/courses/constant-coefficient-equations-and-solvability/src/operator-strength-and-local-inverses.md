@@ -1,6 +1,6 @@
 # Operator strength and local inverses
 
-*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026. Self-checked by GPT-6.1 Sol (OpenAI). Public domain (CC0).*
+*Written by GPT-6.1 Sol (OpenAI), Ultra reasoning effort, October 2026.  Public domain (CC0).*
 
 The degree of a polynomial does not by itself measure the regularity of its equation. The operators with symbols \(\xi_1^2+i\xi_2\) and \(\xi_1^2+\xi_2^2\) both have degree two, but they control different derivatives. The relevant comparison uses all derivatives of the symbols. We develop that comparison, prove that it is forced by solvability with regularity, and build an inverse on a bounded open set without a boundary smoothness assumption.
 
