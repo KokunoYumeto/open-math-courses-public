@@ -10,7 +10,7 @@ These formulas convert questions about \(L\Lambda^n\) of the cotangent complex, 
 
 This lesson constructs the two Koszul complexes of a map of modules, proves their exactness for exact sequences of flat modules over a ring of a topos, and proves the shift formulas with their compatibility with products.
 
-**Prerequisites.** [*Non-additive functors of complexes in a ringed topos*](non-additive-functors-of-complexes-in-a-ringed-topos.md), Sections 2–5; [*Homotopy sheaves and the free abelian Whitehead theorem*](homotopy-sheaves-and-the-free-abelian-whitehead-theorem.md), Section 5; [*Complexes, cones and localization*](course:derived-categories-and-sheaf-operations/complexes-cones-and-localization), Lemma 1.2 and Proposition 5.2.
+**Prerequisites.** [*Non-additive functors of complexes in a ringed topos*](non-additive-functors-of-complexes-in-a-ringed-topos.md), Sections 2–5; [*Homotopy sheaves and the free abelian Whitehead theorem*](homotopy-sheaves-and-the-free-abelian-whitehead-theorem.md), Section 5; [*Complexes, cones and localization*](course:derived-categories-and-sheaf-operations/complexes-cones-and-localization), Lemma 1.2 and Proposition 5.2. From the AI-integrated Stacks project: spectral sequences of double complexes with finitely many nonzero terms on each antidiagonal [[Stacks, Tag 0132](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/homology.html#homology-lemma-first-quadrant-ss)] and bounded above complexes of flat modules are K-flat [[Tag 06YQ](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/sites-cohomology.html#sites-cohomology-lemma-bounded-flat-K-flat)].
 
 ## Conventions
 
@@ -102,11 +102,42 @@ gives \(\langle d\alpha,\beta\rangle=(-1)^{t_0-1}a_{ji_0}\), where \(i_0=i_{t_0}
 
 For a complex \(E\) of flat modules bounded above and \(n\geq1\), put \(\mathbf T(E)=\operatorname{Tot}N\mathbf T\Gamma\,iE\) for \(\mathbf T=S^n,\Lambda^n,\Gamma^n\), as in Section 2.2 of [*Non-additive functors of complexes in a ringed topos*](non-additive-functors-of-complexes-in-a-ringed-topos.md). By Theorem 4.4 there, \(L\mathbf T(E)=\mathbf T(E)\).
 
-**Lemma 3.1.** Let \(0\to P_n\to I_{n-1}\to\cdots\to I_0\to Q\to0\) be an exact sequence of complexes in which every \(I_j\) is acyclic. Then the sequence defines an isomorphism \(Q\cong P_n[n]\) in the derived category.
+**Lemma 3.1.** Let \(0\to P_n\xrightarrow{\alpha_n}I_{n-1}\to\cdots\to I_0\xrightarrow{\alpha_0}Q\to0\) be an exact sequence of complexes in which every \(I_j\) is acyclic, \(n\geq1\).
 
-**Proof.** Split the sequence into short exact sequences \(0\to K_{j+1}\to I_j\to K_j\to0\), with \(K_0=Q\) and \(K_n=P_n\). Each gives a distinguished triangle (Proposition 5.2 of [*Complexes, cones and localization*](course:derived-categories-and-sheaf-operations/complexes-cones-and-localization)). Since \(I_j\) is acyclic, its connecting morphism \(K_j\to K_{j+1}[1]\) is an isomorphism. Composing these isomorphisms gives \(Q\cong P_n[n]\). \(\square\)
+1. The sequence defines an isomorphism \(\sigma\colon Q\to P_n[n]\) in the derived category, natural for morphisms of such sequences.
+2. Let \(X\) be the total complex of the double complex whose column of index \(a\) is \(P_n\) for \(a=-n\) and \(I_{-a}\) for \(-n<a\leq0\), with the maps of the sequence as horizontal differentials and \((-1)^a\) times the differential of the column of index \(a\) as vertical differential: \(X^k=\bigoplus_a(\text{column }a)^{k-a}\), \(d=d_h+(-1)^ad_v\). The map \(e\colon X\to Q\) given by \(\alpha_0\) on the column of index \(0\) is a quasi-isomorphism, the projection \(\pi\colon X\to P_n[n]\) onto the column of index \(-n\) is a morphism of complexes, and
+\[
+\sigma=(-1)^{n(n+1)/2}\,\pi\circ e^{-1}.
+\]
+3. Let \(Y\) be the total complex, with the same conventions, of the double complex whose column of index \(c\) is \(I_{n-1-c}\) for \(0\leq c<n\) and \(Q\) for \(c=n\). The map \(e'\colon P_n\to Y\) given by \(\alpha_n\) into the column of index \(0\) is a quasi-isomorphism, the inclusion \(\iota\colon Q[-n]\to Y\) of the column of index \(n\) is a morphism of complexes, and
+\[
+\sigma[-n]=(-1)^{n(n+1)/2}\,e'^{-1}\circ\iota.
+\]
 
-If the resolution is \(X\to Q\) with \(X=(P_n\to I_{n-1}\to\cdots\to I_0)\) placed in degrees \([-n,0]\), this isomorphism is the composite of the inverse of the quasi-isomorphism \(X\to Q\) with the projection \(X\to X^{-n}[n]=P_n[n]\). The stupid truncation keeping degrees \(\le-n\) is a quotient complex.
+**Proof.** (1) Split the sequence into short exact sequences \(0\to K_{j+1}\to I_j\to K_j\to0\), with \(K_0=Q\) and \(K_n=P_n\). Each gives a distinguished triangle whose third morphism is \(\delta_j=(-p)r^{-1}\colon K_j\to K_{j+1}[1]\), where \(r\colon C(K_{j+1}\to I_j)\to K_j\) is the quasi-isomorphism and \(p\) the projection onto \(K_{j+1}[1]\) (Proposition 5.2 of [*Complexes, cones and localization*](course:derived-categories-and-sheaf-operations/complexes-cones-and-localization)); on cohomology it is the boundary map of the long exact sequence. Since \(I_j\) is acyclic, \(\delta_j\) is an isomorphism. Put \(\sigma=\delta_{n-1}[n-1]\circ\cdots\circ\delta_1[1]\circ\delta_0\), morphisms being shifted without sign. A morphism of sequences induces morphisms of the short exact sequences, and \(r\) and \(p\) are natural in them.
+
+(2) The cone of \(e\) is isomorphic to the shift by one of the total complex of the double complex obtained by adding \(Q\) as a column of index \(1\), through \((q,x)\mapsto(-q,x)\). That double complex has exact rows and finitely many columns, so its total complex is acyclic [Tag 0132], and \(e\) is a quasi-isomorphism. The column of index \(-n\) receives no horizontal differential and has the differential \((-1)^nd\) of \(P_n[n]\), so \(\pi\) is a morphism of complexes. Put \(\rho_X=\pi\circ e^{-1}\) and \(\varepsilon_n=(-1)^{n(n+1)/2}\).
+
+For \(n=1\), \(X\) is the cone \(C(\alpha_1)\), with \(C(\alpha_1)^k=I_0^k\oplus P_1^{k+1}\) and \(d(y,x)=(dy+\alpha_1x,-dx)\); \(e\) is the map \(r\) and \(\pi\) the map \(p\) of Proposition 5.2 there. So \(\sigma=(-p)r^{-1}=-\rho_X\).
+
+Let \(n\geq2\). Let \(K=K_1\subset I_0\), and let \(R_1=(0\to K\to I_0\to Q\to0)\) and \(R'=\) \((0\to P_n\to I_{n-1}\to\cdots\to I_1\to K\to0)\), of lengths \(1\) and \(n-1\), with total complexes \(X_1\), \(X'\) and maps \(e_1,\pi_1\), \(e_{X'},\pi_{X'}\) as in (2). By definition \(\sigma=\sigma_{R'}[1]\circ\sigma_{R_1}\). Let \(\Phi\colon X\to X_1\) be the identity of \(I_0\) on the column of index \(0\), the corestriction \(I_1\to K\) of \(\alpha_1\) on the column of index \(-1\), and zero on the other columns; it is a morphism of complexes, because \(\alpha_1\alpha_2=0\). Let \(\Psi\colon X\to X'[1]\) be \((-1)^{a+1}\) times the identity from the column of index \(a\leq-1\) of \(X\) to the column of index \(a+1\) of \(X'\), and zero on the column of index \(0\). The vertical differentials agree, \((-1)^a\) for \(X\) and \(-(-1)^{a+1}\) for \(X'[1]\); the horizontal differentials of \(X\) and \(X'[1]\) differ by the sign \(-1\), which the factors \((-1)^{a+1}\) compensate; and the horizontal differential of \(X\) from the column of index \(-1\) to that of index \(0\) is killed by \(\Psi\), while \(X'\) has no column of index \(1\). So \(\Psi\) is a morphism of complexes. On the column of index \(-1\), \(\pi_1\Phi\) and \(e_{X'}[1]\Psi\) are both the corestriction of \(\alpha_1\), and both vanish on the other columns; and \(\pi_{X'}[1]\Psi=(-1)^{n+1}\pi\). With \(e_1\Phi=e\), this gives in the derived category
+\[
+\begin{aligned}
+\rho_{X'}[1]\circ\rho_{X_1}\circ e&=\pi_{X'}[1]\,e_{X'}[1]^{-1}\,\pi_1\Phi\\
+&=\pi_{X'}[1]\Psi=(-1)^{n+1}\pi,
+\end{aligned}
+\]
+so \(\rho_{X'}[1]\circ\rho_{X_1}=(-1)^{n+1}\rho_X\). By the case \(n=1\) and induction, \(\sigma=\) \(\varepsilon_{n-1}\rho_{X'}[1]\circ(-\rho_{X_1})=\) \((-1)^n\varepsilon_{n-1}\rho_X=\) \(\varepsilon_n\rho_X\).
+
+(3) As in (2), the cone of \(e'\) is acyclic, being isomorphic to the total complex of the double complex obtained by adding \(P_n\) as a column of index \(-1\), and \(\iota\) is a morphism of complexes, no horizontal differential leaving the column of index \(n\). Put \(\rho'_Y=e'^{-1}\circ\iota\colon Q[-n]\to P_n\).
+
+For \(n=1\), \(Y\) has \(Y^k=I_0^k\oplus Q^{k-1}\) and \(d(j,q)=(dj,\alpha_0j-dq)\), and \(\mu(j,q)=(-q,j)\) is an isomorphism of \(Y\) onto \(C(\alpha_0)[-1]\), where \(C(\alpha_0)^k=Q^k\oplus I_0^{k+1}\). It carries \(e'\) to \(\kappa\colon P_1\to C(\alpha_0)[-1]\), \(x\mapsto(0,\alpha_1x)\), and \(\iota\) to \(-i[-1]\), \(i\colon Q\to C(\alpha_0)\) the inclusion. On \(C(\alpha_1)\), with \(r\), \(p\) as in (2), the map \((y,x)\mapsto(0,y)\) to \(C(\alpha_0)\), of degree \(-1\), is a homotopy between \(i\circ r\) and \(-\kappa[1]\circ p\): its commutator with the differentials is \((y,x)\mapsto(\alpha_0y,\alpha_1x)\). So \(i=\kappa[1]\circ(-p)r^{-1}=\kappa[1]\circ\sigma\) in the derived category, and \(\rho'_Y=\kappa^{-1}\circ(-i[-1])=-\sigma[-1]\).
+
+Let \(n\geq2\). Let \(K'=K_{n-1}\subset I_{n-2}\), and let \(S_1=(0\to P_n\to I_{n-1}\to K'\to0)\) and \(S'=\) \((0\to K'\to I_{n-2}\to\cdots\to I_0\to Q\to0)\), with total complexes \(Y_1\), \(Y'\) as in (3); by definition \(\sigma=\sigma_{S_1}[n-1]\circ\sigma_{S'}\). Let \(\lambda\colon Y_1\to Y\) be the identity of \(I_{n-1}\) on the column of index \(0\) and the inclusion \(K'\to I_{n-2}\) on the column of index \(1\), and \(j\colon Y'[-1]\to Y\) be \((-1)^c\) times the identity from the column of index \(c-1\) of \(Y'\) to the column of index \(c\) of \(Y\). Both are morphisms of complexes, by the same comparison of signs as in (2), and \(\lambda e'_1=e'\), \(\lambda\iota_1=-j\circ e'_{Y'}[-1]\), \(j\circ\iota_{Y'}[-1]=(-1)^n\iota\). Hence, in the derived category,
+\[
+\begin{aligned}&\iota\\ &\quad =(-1)^nj\,e'_{Y'}[-1]\,\rho'_{Y'}[-1]\\ &\quad =(-1)^{n+1}\lambda\iota_1\rho'_{Y'}[-1]\\ &\quad =(-1)^{n+1}e'\circ\rho'_{Y_1}\circ\rho'_{Y'}[-1],\end{aligned}
+\]
+so \(\rho'_Y=(-1)^{n+1}\rho'_{Y_1}\circ\rho'_{Y'}[-1]\). By the case \(n=1\) and induction, \(\sigma[-n]=\) \(\sigma_{S_1}[-1]\circ\sigma_{S'}[-n]=\) \((-\rho'_{Y_1})\circ\varepsilon_{n-1}\rho'_{Y'}[-1]=\) \(\varepsilon_n\rho'_Y\). \(\square\)
 
 **Theorem 3.2.** For \(E\in D^-(A)\) and \(n\ge1\) there are canonical isomorphisms
 \[
@@ -123,25 +154,41 @@ split in each degree. Apply the exact functor \(\Gamma\,i\): this gives an exact
 \]
 with \(I_{n-p}=\operatorname{Tot}N\bigl(\Lambda^{n-p}\Gamma\,iE\otimes S^p\Gamma\,iC(E)\bigr)\) for \(1\le p\le n\). By (5.1) of the same lesson, \(I_{n-p}\) is homotopy equivalent to \(\Lambda^{n-p}E\otimes S^pC(E)\). Since \(C(E)\) is homotopy equivalent to \(0\) and \(S^p(0)=0\), Proposition 2.3 there makes \(S^pC(E)\) contractible, so \(I_{n-p}\) is acyclic. Lemma 3.1 gives \(S^n(E[1])\cong\Lambda^nE[n]\), which is (i). The second Koszul sequence gives (ii) in the same way, the intermediate terms being \(\Gamma^{n-p}C(E)\otimes\Lambda^p(E[1])\) with \(p<n\). Naturality in \(E\) follows from the naturality of every step, and independence of the flat representative from Theorem 4.4 there. \(\square\)
 
-**Products.** Let \(\tau\colon X[m]\otimes Y[n]\to(X\otimes Y)[m+n]\), \(x\otimes y\mapsto(-1)^{n\,|x|}x\otimes y\), where \(|x|\) is the degree of \(x\) in \(X[m]\). This is an isomorphism of complexes.
+**Products.** Let \(\tau\colon X[m]\otimes Y[n]\to(X\otimes Y)[m+n]\), \(x\otimes y\mapsto(-1)^{n\,|x|}x\otimes y\), where \(|x|\) is the degree of \(x\) in \(X[m]\). This is an isomorphism of complexes, natural in \(X\) and \(Y\). For morphisms \(f\colon Q[-m]\to P\) and \(g\colon Q'[-n]\to P'\), a check of the signs on \(q\otimes q'\) gives
+\[
+\begin{aligned}&\bigl((f\otimes g)\circ\tau^{-1}\bigr)[m+n]\\&\quad =(-1)^{mn}\,\tau\\&\quad \circ(f[m]\otimes g[n]).\end{aligned} \tag{3.1}
+\]
 
-**Lemma 3.3.** Let \(f\colon X\to P\) and \(g\colon Y\to Q\) be quasi-isomorphisms from complexes of flat modules concentrated in \([-m,0]\) and \([-n,0]\), and let \(a\colon P\to X^{-m}[m]\), \(b\colon Q\to Y^{-n}[n]\) and \(c\colon P\otimes Q\to(X^{-m}\otimes Y^{-n})[m+n]\) be the morphisms in the derived category defined by \(f\), \(g\) and \(f\otimes g\) as after Lemma 3.1. Then \(c=(-1)^{mn}\tau\circ(a\otimes b)\).
+For double complexes \(D\), \(D'\) with the conventions of Lemma 3.1 (2), let \(D\otimes D'\) be the double complex whose column of index \(c\) is \(\bigoplus_{a+a'=c}D_a\otimes D'_{a'}\), with the tensor product differential of complexes as vertical differential and \(d_h(x\otimes y)=d_hx\otimes y+(-1)^ax\otimes d_hy\) for \(x\) in the column of index \(a\). Then
+\[
+\begin{gathered}\varphi \colon\operatorname{Tot}D\otimes\operatorname{Tot}D'\\ \to\operatorname{Tot}(D\otimes D'),\\ x\otimes y\mapsto(-1)^{ba'}x\otimes y,\end{gathered}
+\]
+for \(x\) of vertical degree \(b\) and \(y\) in the column of index \(a'\), is an isomorphism of complexes: on each of the four components of the differential the two signs agree.
 
-**Proof.** The projection of \(X\otimes Y\) onto its lowest term is the identity of \(X^{-m}\otimes Y^{-n}\) in degree \(-m-n\). The tensor product of the two projections, followed by \(\tau\), multiplies an element of \(X^{-m}\otimes Y^{-n}\) by \((-1)^{n\cdot(-m)}=(-1)^{mn}\), because such an element has degree \(-m\) in \(X^{-m}[m]\). Both sides use the inverse of the quasi-isomorphism \(f\otimes g\). \(\square\)
+**Lemma 3.3.** Let \(R\colon\) \(0\to\) \(P\to\) \(I_{m-1}\to\) \(\cdots\to\) \(I_0\to\) \(Q\to\) \(0\) and \(R'\colon\) \(0\to\) \(P'\to\) \(I'_{n-1}\to\) \(\cdots\to\) \(I'_0\to\) \(Q'\to\) \(0\) be exact sequences of bounded above complexes of flat modules, with all \(I_j\), \(I'_j\) acyclic and \(m,n\geq1\), and let \(\sigma_R\), \(\sigma_{R'}\) be their isomorphisms (Lemma 3.1).
 
-**Proposition 3.4.** The isomorphisms of Theorem 3.2 are compatible with the products of Section 5 of [*Non-additive functors of complexes in a ringed topos*](non-additive-functors-of-complexes-in-a-ringed-topos.md), up to the sign \((-1)^{mn}\). For (i), for example: the product
+1. Let \(D\), \(D'\) be the double complexes of Lemma 3.1 (2) (columns of index \(-m,\ldots,0\) and \(-n,\ldots,0\)). The columns of \(D\otimes D'\), followed by the map to \(Q\otimes Q'\) induced by the two augmentations, form an exact sequence \(R\otimes R'\) of length \(m+n\), from \(P\otimes P'\) to \(Q\otimes Q'\), with acyclic intermediate terms, and its isomorphism is \(\tau\circ(\sigma_R\otimes\sigma_{R'})\).
+2. Let \(D\), \(D'\) be instead the double complexes of Lemma 3.1 (3) (columns of index \(0,\ldots,m\) and \(0,\ldots,n\)). The map \(P\otimes P'\to D_0\otimes D'_0\), followed by the columns of \(D\otimes D'\), form an exact sequence \(R\otimes'R'\) of length \(m+n\), from \(P\otimes P'\) to \(Q\otimes Q'\), with acyclic intermediate terms, and its isomorphism is \((-1)^{mn}\tau\circ(\sigma_R\otimes\sigma_{R'})\).
+
+**Proof.** In each vertical degree the rows of \(D\) and \(D'\), augmented, are resolutions of flat modules by flat modules; their tensor product computes the Tor of these flat modules, so it is a resolution of their tensor product. Hence \(R\otimes R'\) is exact, and likewise \(R\otimes'R'\), whose rows are tensor products of coresolutions. An intermediate term of \(R\otimes R'\) is a sum of tensor products \(D_a\otimes D'_{a'}\) with \((a,a')\neq(-m,-n)\), each with an acyclic factor; the other factor is a bounded above complex of flat modules, hence K-flat [Tag 06YQ], and the tensor product is acyclic. The same holds for the terms of \(R\otimes'R'\) other than \(Q\otimes Q'\).
+
+(1) With the maps \(e\), \(\pi\) of Lemma 3.1 (2), \(e_{R\otimes R'}\circ\varphi=e_R\otimes e_{R'}\), and \(\pi_{R\otimes R'}\circ\varphi=(-1)^{mn}\tau\circ(\pi_R\otimes\pi_{R'})\): for \(x\in P^b\) in the column of index \(-m\) and \(y\) in the column of index \(-n\), \(\varphi\) gives \((-1)^{-bn}\), while \(\tau\) gives \((-1)^{n(b-m)}\), \(x\) having degree \(b-m\) in \(P[m]\). As \(e_R\otimes e_{R'}\) is a quasi-isomorphism of K-flat complexes, \(\pi_{R\otimes R'}e_{R\otimes R'}^{-1}=\) \((-1)^{mn}\tau\circ(\pi_Re_R^{-1}\otimes\pi_{R'}e_{R'}^{-1})\). By Lemma 3.1 (2) the isomorphism of \(R\otimes R'\) is \(\varepsilon_{m+n}(-1)^{mn}\varepsilon_m\varepsilon_n\,\tau\circ(\sigma_R\otimes\sigma_{R'})\), and \(\varepsilon_{m+n}\varepsilon_m\varepsilon_n=(-1)^{mn}\).
+
+(2) With the maps \(e'\), \(\iota\) of Lemma 3.1 (3), \(\varphi\circ(e'_R\otimes e'_{R'})=e'_{R\otimes'R'}\) and \(\varphi\circ(\iota_R\otimes\iota_{R'})=(-1)^{mn}\iota_{R\otimes'R'}\circ\tau\): for \(x\in Q^b\) in the column of index \(m\) and \(y\) in the column of index \(n\), \(\varphi\) gives \((-1)^{bn}\) and \(\tau\) gives \((-1)^{n(b+m)}\). Hence \(\rho'_{R\otimes'R'}=(-1)^{mn}(\rho'_R\otimes\rho'_{R'})\circ\tau^{-1}\), and by Lemma 3.1 (3) and (3.1) the isomorphism of \(R\otimes'R'\) is \(\varepsilon_{m+n}(-1)^{mn}(-1)^{mn}\varepsilon_m\varepsilon_n\,\tau\circ\) \((\sigma_R\otimes\sigma_{R'})=\) \((-1)^{mn}\tau\circ\) \((\sigma_R\otimes\sigma_{R'})\). \(\square\)
+
+**Proposition 3.4.** The isomorphisms of Theorem 3.2 are compatible with the products of Section 5 of [*Non-additive functors of complexes in a ringed topos*](non-additive-functors-of-complexes-in-a-ringed-topos.md), as follows. For \(m,n\geq1\), the product
 \[
 \begin{aligned}&LS^m(E[1])\otimes^{\mathbf L}LS^n(E[1])\\&\quad\to LS^{m+n}(E[1])\end{aligned}
 \]
-corresponds to \((-1)^{mn}\) times the product
+corresponds, through (i), to the product
 \[
-\begin{aligned}&L\Lambda^mE[m]\otimes^{\mathbf L}L\Lambda^nE[n]\\&\quad\to L\Lambda^{m+n}E[m+n],\end{aligned}
+\begin{aligned}&L\Lambda^mE[m]\otimes^{\mathbf L}L\Lambda^nE[n]\\&\quad\to L\Lambda^{m+n}E[m+n]\end{aligned}
 \]
-composed with \(\tau\).
+composed with \(\tau\); and the product of \(L\Lambda(E[1])\) corresponds, through (ii), to \((-1)^{mn}\) times the product of \(L\Gamma(E)\), shifted, composed with \(\tau\). That is, \(\sigma\circ(\text{product})=\) \((\text{product})[m+n]\circ\tau\circ(\sigma\otimes\sigma)\) for (i), and the same with the factor \((-1)^{mn}\) for (ii).
 
-**Proof.** We treat (i); (ii) is the same with the second Koszul complex. Write \(X_m\) for the resolution of \(S^m(E[1])\) used in the proof of Theorem 3.2: the complex \(\Lambda^mE\to I_{m-1}\to\cdots\to I_0\) in degrees \([-m,0]\), with its quasi-isomorphism \(X_m\to S^m(E[1])\). These complexes are the totals of the parts of total degree \(m\) of the Koszul algebra of \(\Gamma\,iE\to\Gamma\,iC(E)\), followed by Construction 1.3. The Koszul algebra is a differential bigraded algebra, and Construction 1.3 is a map of algebras. With (5.1), the multiplication therefore gives a map of complexes \(X_m\otimes X_n\to X_{m+n}\) covering the product \(S^m(E[1])\otimes S^n(E[1])\to S^{m+n}(E[1])\). On the lowest terms it is the product \(\Lambda^mE\otimes\Lambda^nE\to\Lambda^{m+n}E\).
+**Proof.** (i) Let \(R_m\) be the sequence of the proof of Theorem 3.2 for \(S^m(E[1])\): its terms are \(\Lambda^mE\) and the complexes \(I_{m-p}\), in the columns of index minus their exterior degree, and its isomorphism is that of (i). These are the parts of total degree \(m\) of the Koszul algebra of \(\Gamma\,iE\to\Gamma\,iC(E)\), followed by Construction 1.3. The multiplication of the Koszul algebra, composed with (5.1), maps \(D_a\otimes D_{a'}\) to the column of index \(a+a'\), since exterior degrees add. It commutes with the horizontal differentials of Lemma 3.3, because the Koszul differential is a derivation with the sign \((-1)^p\) of the exterior degree \(p=-a\); it commutes with the vertical differentials, because (5.1) and the termwise multiplication are morphisms of complexes; and Construction 1.3 is a homomorphism of algebras. So the multiplication is a morphism of sequences \(R_m\otimes R_n\to R_{m+n}\) of length \(m+n\), equal to the product \(\Lambda^mE\otimes\Lambda^nE\to\Lambda^{m+n}E\) on the first terms and to the product \(S^m(E[1])\otimes S^n(E[1])\to S^{m+n}(E[1])\) on the last ones. By the naturality in Lemma 3.1 (1) and Lemma 3.3 (1), \(\sigma_{R_{m+n}}\circ(\text{product})=\) \((\text{product})[m+n]\circ\tau\circ(\sigma_{R_m}\otimes\sigma_{R_n})\). The complexes are bounded above with flat terms, so the tensor products compute the derived tensor products.
 
-The complexes are bounded above with flat terms, so \(X_m\otimes X_n\to S^m(E[1])\otimes S^n(E[1])\) is a quasi-isomorphism that computes the derived tensor product. It is a resolution of length \(m+n\) with lowest term \(\Lambda^mE\otimes\Lambda^nE\). The projections onto lowest terms commute with the product map, since it preserves degree \(-(m+n)\). Hence the morphism defined by the resolution \(X_{m+n}\), composed with the product, equals the product on lowest terms composed with the morphism \(c\) defined by \(X_m\otimes X_n\). By Lemma 3.3, \(c=(-1)^{mn}\tau\circ(a\otimes b)\), where \(a\) and \(b\) are the isomorphisms of Theorem 3.2 for \(m\) and \(n\). \(\square\)
+(ii) The sequence \(R'_m\) for \(\Lambda^m(E[1])\) is formed by \(\Gamma^mE\) and the parts \(\Gamma^{m-c}C(E)\otimes\Lambda^c(E[1])\) of the second Koszul complex, \(0\leq c\leq m\), after \(\Gamma\,i\) and \(\operatorname{Tot}N\); in the double complex of Lemma 3.1 (3) the part of exterior degree \(c\) is the column of index \(c\). The multiplication of the second Koszul algebra adds exterior degrees, its differential is a derivation with the sign \((-1)^c\) of the exterior degree, and Construction 1.3 is a homomorphism of algebras; so the multiplication is a morphism of sequences \(R'_m\otimes'R'_n\to R'_{m+n}\), and Lemma 3.3 (2) gives the factor \((-1)^{mn}\). \(\square\)
 
 ## 4. Exercises
 
@@ -151,6 +198,8 @@ The complexes are bounded above with flat terms, so \(X_m\otimes X_n\to S^m(E[1]
 
 **Exercise 4.3.** Over \(\mathbb F_2\), show that \(\Lambda^2\) and \(\Gamma^2\) differ, and explain why the second shift formula needs \(\Gamma\) rather than \(S\).
 
+**Exercise 4.4.** Let \(E=Ae_1\oplus Ae_2\), placed in degree \(0\), and let \(x_1,x_2\) be the classes of \(e_1,e_2\) in \(H^{-1}(LS^1(E[1]))=E\), and \(y_1,y_2\) the same classes in \(H^{-1}(L\Lambda^1(E[1]))\). Show that for \(n=1\) both isomorphisms of Theorem 3.2 are the identity of \(E[1]\), and that the isomorphisms for \(n=2\) send the product \(x_1x_2\in H^{-2}(LS^2(E[1]))\) to \(-e_1\wedge e_2\in\Lambda^2E\) and the product \(y_1y_2\in H^{-2}(L\Lambda^2(E[1]))\) to \(e_1e_2\in\Gamma^2E\).
+
 ## 5. Complete solutions
 
 **4.1.** In total degree \(n\), \(\operatorname{Kos}_\bullet(f)\) is \(\Lambda^1A\otimes S^{n-1}A\to S^nA\), \(e\otimes t^{n-1}\mapsto ft^n\). Identifying both terms with \(A\), it is multiplication by \(f\): the Koszul complex of \(f\), which is a resolution of \(A/f\) because \(f\) is a nonzerodivisor.
@@ -158,6 +207,8 @@ The complexes are bounded above with flat terms, so \(X_m\otimes X_n\to S^m(E[1]
 **4.2.** By (i), \(LS^2(A[1])\cong\Lambda^2(A)[2]=0\). By (ii), \(L\Lambda^2(A[1])\cong\Gamma^2(A)[2]\cong A[2]\), free of rank one on \(\gamma_2(1)\).
 
 **4.3.** For \(M=\mathbb F_2\), \(\Lambda^2M=0\), while \(\Gamma^2M=\mathbb F_2\gamma_2(1)\) and \(S^2M=\mathbb F_2\). The canonical algebra map \(S(M)\to\Gamma(M)\) sends \(x^2\) to \(x\cdot x=2\gamma_2(x)\), which is \(0\) in characteristic \(2\); so \(S^2M\to\Gamma^2M\) is zero, and \(S^2\) cannot replace \(\Gamma^2\) in (ii). By Exercise 4.2, \(L\Lambda^2(\mathbb F_2[1])\cong\mathbb F_2[2]\). The second Koszul sequence, which is exact over every ring, is the one that involves \(\Gamma\).
+
+**4.4.** For \(n=1\) both sequences are \(0\to E\to C(E)\to E[1]\to0\), with \(C(E)^{-1}=E\), \(C(E)^0=E\) and \(d=1\). Its third morphism \((-p)r^{-1}\) is the identity: \(s(x)=((0,x),-x)\) is a morphism of complexes \(E[1]\to C(E\to C(E))\) with \(r\circ s=1\), so \(r^{-1}=s\) and \(-p\circ s(x)=x\). By Proposition 3.4 (i), the image of \(x_1x_2\) is the product of \(\tau(x_1\otimes x_2)\); since \(x_1\) has degree \(-1\) in \(E[1]\) and the second factor is shifted by \(1\), \(\tau(x_1\otimes x_2)=(-1)^{-1}x_1\otimes x_2\), with product \(-e_1\wedge e_2\). For (ii) the same computation gives \(-e_1e_2\), and the factor \((-1)^{1\cdot1}\) of Proposition 3.4 turns it into \(e_1e_2\).
 
 ## Sources
 

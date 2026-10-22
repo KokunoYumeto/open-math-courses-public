@@ -1,0 +1,164 @@
+# Traces and cup products of perfect filtered complexes
+
+*Written by Claude Opus 5.5 (Anthropic), October 2026. Self-checked by the writing AI. Public domain (CC0).*
+
+For a perfect complex \(E\) on a ringed topos and a morphism \(f\colon E\otimes^{\mathbf L}K\to E\otimes^{\mathbf L}L\), the *trace* \(\operatorname{Tr}(f)\colon K\to L\) contracts the two copies of \(E\) through the duality between \(E\) and \(E^\vee\). This lesson defines the trace for perfect filtered complexes and proves its basic properties, including the one that motivates the filtered derived category:
+
+- *additivity*: if \(E\) is filtered perfect and \(K,L\) are unfiltered, the trace of \(f\) computed on the underlying complex of \(E\) is the sum of the traces of the graded pieces \(\operatorname{gr}^pf\colon\operatorname{gr}^pE\otimes K\to\operatorname{gr}^pE\otimes L\);
+- *multiplicativity* \(\operatorname{Tr}(f_1\otimes f_2)=\operatorname{Tr}(f_1)\otimes\operatorname{Tr}(f_2)\), invariance under conjugation, compatibility with derived pullback, and the internal versions of all these as morphisms of \(DF(A)\);
+- the *cup product* \(\langle u,v\rangle\) of \(u\colon E\otimes K_1\to F\otimes L_1\) and \(v\colon F\otimes K_2\to E\otimes L_2\), its additivity and multiplicativity, and \(\operatorname{Tr}(uv)=\operatorname{Tr}(vu)=\langle u,v\rangle\).
+
+The general properties are proved for twisted traces in any symmetric monoidal category in which composites of structure isomorphisms depend only on the permutation they induce; additivity then results from the two symmetric monoidal functors "underlying complex" and \(\operatorname{gr}\), which agree on unfiltered objects.
+
+**Prerequisites.** [*Filtered derived categories*](filtered-derived-categories.md) (Proposition 2.3 and Proposition 3.5 (2)); [*Filtered tensor products on a ringed topos*](filtered-tensor-products-on-a-ringed-topos.md) (Theorem 3.3, Proposition 4.1); [*Filtered internal Hom and the formulas of Cartan*](filtered-internal-hom-and-the-formulas-of-cartan.md) (Proposition 2.2, Theorem 3.1, Definition 3.2, Propositions 3.3, 4.1 and 4.2); [*Perfect filtered complexes and duality*](perfect-filtered-complexes-and-duality.md) (Theorems 3.3 and 4.2, Lemma 4.3). From the AI-integrated Stacks project: left duals in monoidal categories [[Stacks, Tag 0FFP](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/categories.html#categories-definition-dual)], [[Tag 0FFS](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/categories.html#categories-lemma-tensor-dual)]; functors of symmetric monoidal categories [[Tag 0FFY](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/categories.html#categories-definition-functor-symmetric-monoidal-categories)]; units in symmetric monoidal categories [[Tag 0HB0](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/categories.html#categories-lemma-symmetric-monoidal-coherence)].
+
+## Conventions
+
+\(\mathcal C\) denotes one of \(DF(A)\), \(DG(A)\), \(D(A)\) for a commutative ring \(A\) of a topos, or more generally an additive symmetric monoidal category \((\mathcal C,\otimes,\mathbf 1,\sigma)\) with \(\otimes\) additive in each variable, in which any two composites of associativity, unit and symmetry isomorphisms (and their tensor products with identities) between the same two tensor products of labelled objects, inducing the same permutation of the labels, are equal (*coherence*). For \(DF(A)\), \(DG(A)\), \(D(A)\) this is Theorem 3.3 of the lesson on filtered tensor products. We suppress associativity and unit isomorphisms, write \(XY\) or \(X\otimes Y\) for tensor products and \(1_X\) or \(1\) for identities, and keep the symmetries \(\sigma_{X,Y}\colon XY\to YX\) explicit; \(\sigma_{X,\mathbf 1}\) is the identity [Tag 0HB0]. Two rules are used throughout: *interchange*, \((g\otimes1)(1\otimes h)=(1\otimes h)(g\otimes1)=g\otimes h\); and *naturality*, \(\sigma_{Y,Y'}(g\otimes g')=(g'\otimes g)\sigma_{X,X'}\). A left dual of \(E\) is \((E^\vee,\eta,\varepsilon)\), \(\eta\colon\mathbf 1\to EE^\vee\), \(\varepsilon\colon E^\vee E\to\mathbf 1\), with \((1_E\otimes\varepsilon)(\eta\otimes1_E)=1_E\) and \((\varepsilon\otimes1_{E^\vee})(1_{E^\vee}\otimes\eta)=1_{E^\vee}\) [Tag 0FFP]; we say \(E\) is *dualizable*.
+
+## 1. Twisted traces in a symmetric monoidal category
+
+**Definition 1.1.** Let \(E\) be dualizable with left dual \((E^\vee,\eta,\varepsilon)\), and \(K,L\in\mathcal C\). For \(f\colon EK\to EL\), the *trace* is
+\[
+\begin{aligned}&\operatorname{tr}_E(f) =(\varepsilon\otimes1_L) \circ(1_{E^\vee}\otimes f)\\&\quad \circ(\sigma_{E,E^\vee}\otimes1_K) \circ(\eta\otimes1_K) \colon K\\&\quad \to L.\end{aligned}
+\]
+
+**Lemma 1.2.**
+
+1. \(\operatorname{tr}_E(f)\) does not depend on the left dual.
+2. \(\operatorname{tr}_E((1_E\otimes b)\circ f\circ(1_E\otimes a))=\) \(b\circ\operatorname{tr}_E(f)\circ a\) for \(a\colon K'\to K\), \(b\colon L\to L'\); \(\operatorname{tr}_E\) is additive; and \(\operatorname{tr}_E(f\otimes1_X)=\operatorname{tr}_E(f)\otimes1_X\) for \(X\in\mathcal C\), where \(f\otimes1_X\colon EKX\to ELX\).
+3. (*Conjugation*) If \(s\colon E\to F\) is an isomorphism, then \(F\) is dualizable and \(\operatorname{tr}_F((s\otimes1_L)f(s^{-1}\otimes1_K))=\operatorname{tr}_E(f)\).
+4. (*Direct sums*) If \(E=E'\oplus E''\) with \(E',E''\) dualizable, then \(E\) is dualizable, and for \(f\colon EK\to EL\) with components \(f_{E'E'}\colon E'K\to E'L\), \(f_{E''E''}\colon E''K\to E''L\), \(\operatorname{tr}_E(f)=\operatorname{tr}_{E'}(f_{E'E'})+\operatorname{tr}_{E''}(f_{E''E''})\).
+
+**Proof.** (1) Let \((Y',\eta',\varepsilon')\) be another left dual and \(u=(\varepsilon\otimes1_{Y'})(1_{E^\vee}\otimes\eta')\colon E^\vee\to Y'\). By interchange, \((1_E\otimes u)\eta=\) \(((1_E\otimes\varepsilon)(\eta\otimes1_E)\otimes1_{Y'})\eta'=\) \(\eta'\), and \(\varepsilon'(u\otimes1_E)=\) \(\varepsilon(1_{E^\vee}\otimes(1_E\otimes\varepsilon')(\eta'\otimes1_E))=\) \(\varepsilon\). In the trace computed with \(Y'\), substitute \(\eta'=(1\otimes u)\eta\); naturality gives \(\sigma_{E,Y'}(1_E\otimes u)=(u\otimes1_E)\sigma_{E,E^\vee}\), interchange moves \(u\) past \(1\otimes f\), and \(\varepsilon'(u\otimes1)=\varepsilon\) gives the trace computed with \(E^\vee\). (2) Interchange, additivity of \(\otimes\), and, for \(X\), naturality of \(\sigma_{E,E^\vee}\otimes1\) and coherence. (3) \((E^\vee,(s\otimes1)\eta,\varepsilon(1\otimes s^{-1}))\) is a left dual of \(F\); computed with it, the trace of \((s\otimes1)f(s^{-1}\otimes1)\) is \(\operatorname{tr}_E(f)\), by naturality of \(\sigma\) and interchange. (4) Write \(E_1=E'\), \(E_2=E''\), with inclusions \(i_a\) and projections \(p_a\) (\(p_ai_b=\delta_{ab}\), \(\sum_ai_ap_a=1\)), and let \(D=E_1^\vee\oplus E_2^\vee\) with inclusions \(j_a\) and projections \(q_a\). Put \(\eta=\sum_a(i_a\otimes j_a)\eta_a\) and \(\varepsilon=\sum_b\varepsilon_b(q_b\otimes p_b)\). By biadditivity, \((1_E\otimes\varepsilon)(\eta\otimes1_E)=\) \(\sum_{a,b}(i_a\otimes\varepsilon_b(q_bj_a\otimes p_b))(\eta_a\otimes1)=\) \(\sum_ai_a(1\otimes\varepsilon_a)(\eta_a\otimes1)p_a=\) \(\sum_ai_ap_a=\) \(1_E\), and likewise for the second identity; so \((D,\eta,\varepsilon)\) is a left dual of \(E\). In Definition 1.1, naturality gives \(\sigma_{E,D}(i_a\otimes j_a)=(j_a\otimes i_a)\sigma_{E_a,E_a^\vee}\), and \(q_bj_a=\delta_{ab}\); expanding by biadditivity,
+\[
+\begin{aligned}\operatorname{tr}_E(f)&=\sum_a(\varepsilon_a\otimes1_L)\\&\qquad(1\otimes(p_a\otimes1_L)f(i_a\otimes1_K))\\&\qquad(\sigma_{E_a,E_a^\vee}\otimes1_K)(\eta_a\otimes1_K)\\&=\sum_a\operatorname{tr}_{E_a}(f_{E_aE_a}),\end{aligned}
+\]
+with \(f_{E_aE_a}=(p_a\otimes1_L)f(i_a\otimes1_K)\). \(\square\)
+
+**Proposition 1.3 (functoriality).** Let \(\Gamma\colon\mathcal C\to\mathcal C'\) be a functor of symmetric monoidal categories [Tag 0FFY], with isomorphisms \(\Gamma(X)\Gamma(Y)\cong\Gamma(XY)\) and \(\mathbf 1'\cong\Gamma(\mathbf 1)\). If \(E\) is dualizable, so is \(\Gamma(E)\), and for \(f\colon EK\to EL\), \(\Gamma(\operatorname{tr}_E(f))=\operatorname{tr}_{\Gamma(E)}(\tilde f)\), where \(\tilde f\colon\Gamma(E)\Gamma(K)\to\Gamma(E)\Gamma(L)\) is \(\Gamma(f)\) conjugated by the comparison isomorphisms.
+
+**Proof.** \(\Gamma\) carries the left dual \((E^\vee,\eta,\varepsilon)\), after composition with the comparison isomorphisms, to a left dual of \(\Gamma(E)\) [Tag 0FFP]. Apply \(\Gamma\) to the composite of Definition 1.1 and insert the comparison isomorphisms between consecutive factors; they commute with \(\sigma\) (definition of a functor of symmetric monoidal categories) and with tensor products of morphisms (naturality), so the result is the composite defining \(\operatorname{tr}_{\Gamma(E)}(\tilde f)\) with this left dual; conclude by Lemma 1.2 (1). \(\square\)
+
+Let \(E_1,E_2\) be dualizable with left duals \((E_i^\vee,\eta_i,\varepsilon_i)\). By [Tag 0FFS], \(E_1E_2\) has the left dual \(E_2^\vee E_1^\vee\) with
+\[
+\begin{aligned}\eta_{12}&=(1_{E_1}\otimes\eta_2\otimes1_{E_1^\vee})\eta_1\\&=(1_{E_1}\otimes\sigma_{E_1^\vee,E_2E_2^\vee})\\&\qquad(\eta_1\otimes\eta_2),\\\varepsilon_{12}&=\varepsilon_2(1_{E_2^\vee}\otimes\varepsilon_1\otimes1_{E_2})\\&=(\varepsilon_1\otimes\varepsilon_2)\\&\qquad(\sigma_{E_2^\vee,E_1^\vee E_1}\otimes1_{E_2}),\end{aligned}
+\tag{1.1}
+\]
+the second expressions by naturality of \(\sigma\) with respect to \(\eta_2\) and \(\varepsilon_1\).
+
+**Proposition 1.4 (multiplicativity).** For \(f_i\colon E_iK_i\to E_iL_i\), let
+\[
+\begin{aligned}f_1\boxtimes f_2&=(1\otimes\sigma_{L_1,E_2}\otimes1)\\&\qquad(f_1\otimes f_2)(1\otimes\sigma_{E_2,K_1}\otimes1)\colon\\&\qquad E_1E_2K_1K_2\to E_1E_2L_1L_2.\end{aligned}
+\]
+Then \(\operatorname{tr}_{E_1E_2}(f_1\boxtimes f_2)=\operatorname{tr}_{E_1}(f_1)\otimes\operatorname{tr}_{E_2}(f_2)\).
+
+**Proof.** Write \(D_i=E_i^\vee\). We bring both sides to the form
+\[
+\begin{aligned}&(\varepsilon_1\otimes\varepsilon_2\otimes1_{L_1L_2}) \circ P\\&\quad \circ(1_{D_1}\otimes f_1\otimes1_{D_2}\otimes f_2)\\&\quad \circ Q\\&\quad \circ(\eta_1\otimes\eta_2\otimes1_{K_1K_2}),\end{aligned} \tag{1.2}
+\]
+with \(Q\colon\) \(E_1D_1E_2D_2K_1K_2\to\) \(D_1E_1K_1D_2E_2K_2\) and \(P\colon D_1E_1L_1D_2E_2L_2\to D_1E_1D_2E_2L_1L_2\) composites of structure isomorphisms. For the right side, bifunctoriality gives \((\varepsilon_11\varepsilon_21)(1f_11f_2)\) \((\sigma_{E_1,D_1}1\sigma_{E_2,D_2}1)(\eta_11_{K_1}\eta_21_{K_2})\); naturality of \(\sigma\) gives \(\eta_1\otimes1_{K_1}\otimes\eta_2\otimes1_{K_2}=\) \((1_{E_1D_1}\otimes\sigma_{E_2D_2,K_1}\otimes1_{K_2})\) \((\eta_1\otimes\eta_2\otimes1_{K_1K_2})\) and \(\varepsilon_1\otimes1_{L_1}\otimes\varepsilon_2\otimes1_{L_2}=\) \((\varepsilon_1\otimes\varepsilon_2\otimes1_{L_1L_2})\) \((1_{D_1E_1}\otimes\sigma_{L_1,D_2E_2}\otimes1_{L_2})\), which is (1.2). For the left side, substitute (1.1) and the definition of \(f_1\boxtimes f_2\) in Definition 1.1 for \(E_1E_2\); the morphism \(1_{D_2D_1}\otimes f_1\otimes f_2\) then acts on \(D_2D_1E_1K_1E_2K_2\), and the structure isomorphism \(R\colon\) \(D_2D_1E_1K_1E_2K_2\to\) \(D_1E_1K_1D_2E_2K_2\) moving \(D_2\) satisfies \((1_{D_1}f_11_{D_2}f_2)R=R'(1_{D_2D_1}f_1f_2)\) for the corresponding \(R'\) on the targets, by naturality; this gives the form (1.2). In both expressions, \(Q\) sends the labelled factors \(E_1,D_1,E_2,D_2,K_1,K_2\) to the positions \(D_1,E_1,K_1,D_2,E_2,K_2\), and \(P\) sends \(D_1,E_1,L_1,D_2,E_2,L_2\) to \(D_1,E_1,D_2,E_2,L_1,L_2\); by coherence the two \(Q\)'s and the two \(P\)'s are equal. \(\square\)
+
+**Proposition 1.5 (Fubini).** Let \(E,F\) be dualizable and \(g\colon EFK\to EFL\). Regarding \(g\) as a morphism \(E(FK)\to E(FL)\), \(\operatorname{tr}_E(g)\colon FK\to FL\), and \(\operatorname{tr}_{EF}(g)=\operatorname{tr}_F(\operatorname{tr}_E(g))\).
+
+**Proof.** Use the left dual \(F^\vee E^\vee\) of \(EF\) given by (1.1) (with \(E_1=E\), \(E_2=F\)). Expanding,
+\[
+\begin{aligned}&\operatorname{tr}_F(\operatorname{tr}_E(g))\\&\quad=(\varepsilon_F1_L)(1_{F^\vee}\varepsilon_E1_{FL})\\&\qquad(1_{F^\vee E^\vee}g)(1_{F^\vee}\sigma_{E,E^\vee}1_{FK})\\&\qquad(1_{F^\vee}\eta_E1_{FK})(\sigma_{F,F^\vee}1_K)(\eta_F1_K).\end{aligned}
+\]
+By interchange and naturality of \(\sigma\), \((1_{F^\vee}\eta_E1_{FK})(\sigma_{F,F^\vee}1_K)(\eta_F1_K)=\) \(Q_1\circ(\eta_E\otimes\eta_F\otimes1_K)\) and \((\varepsilon_F1_L)(1_{F^\vee}\varepsilon_E1_{FL})=\) \((\varepsilon_E\otimes\varepsilon_F\otimes1_L)\circ P_1\) for composites \(Q_1\), \(P_1\) of structure isomorphisms, so this side is \((\varepsilon_E\varepsilon_F1_L)P_1(1_{F^\vee E^\vee}g)Q'_1(\eta_E\eta_F1_K)\), with \(Q'_1\colon EE^\vee FF^\vee K\to F^\vee E^\vee EFK\) a composite of structure isomorphisms. Substituting (1.1) in Definition 1.1 for \(EF\) gives the same form \((\varepsilon_E\varepsilon_F1_L)P_2(1_{F^\vee E^\vee}g)Q_2(\eta_E\eta_F1_K)\). In both, \(Q\) sends the labelled factors \(E,E^\vee,F,F^\vee,K\) to the positions \(F^\vee,E^\vee,E,F,K\), and \(P\) sends \(F^\vee,E^\vee,E,F,L\) (the last three being the output of \(g\)) to \(E^\vee,E,F^\vee,F,L\). By coherence \(P_1=P_2\) and \(Q'_1=Q_2\). \(\square\)
+
+**Lemma 1.6 (yanking).** For \(u\colon E\to F\) and \(v\colon F\to E\) with \(E\) dualizable, the trace over \(E\) of \(\sigma_{F,E}(u\otimes v)\colon EF\to EF\), regarded as a morphism \(E(F)\to E(F)\), is \(u\circ v\colon F\to F\).
+
+**Proof.** By interchange, \((1_{E E^\vee}\otimes v)(\eta\otimes1_F)=(\eta\otimes1_E)v\), so the trace is
+\[
+\begin{aligned}&(\varepsilon\otimes1_F)(1_{E^\vee}\otimes\sigma_{F,E})\\&\quad(1_{E^\vee}\otimes u\otimes1_E)(\sigma_{E,E^\vee}\otimes1_E)\\&\quad(\eta\otimes1_E)\,v.\end{aligned}
+\]
+Naturality gives \(\sigma_{F,E}(u\otimes1_E)=(1_E\otimes u)\sigma_{E,E}\), and interchange gives \((\varepsilon\otimes1_F)(1\otimes1\otimes u)=u(\varepsilon\otimes1_E)\). So the trace is \(u\circ h\circ v\) with \(h=(\varepsilon\otimes1_E)(1_{E^\vee}\otimes\sigma_{E,E})\) \((\sigma_{E,E^\vee}\otimes1_E)(\eta\otimes1_E)\). Label the factor produced by \(\eta\) as \(E_a\) and the input factor as \(E_1\); the two symmetries compose to \(\sigma_{E_a,E^\vee E_1}\) (coherence), and \((\varepsilon\otimes1)\sigma_{E_a,E^\vee E_1}=\sigma_{E_a,\mathbf 1}(1\otimes\varepsilon)=1_E\otimes\varepsilon\). Hence \(h=(1_E\otimes\varepsilon)(\eta\otimes1_E)=1_E\). \(\square\)
+
+**Corollary 1.7 (cyclicity).** For \(u\colon E\to F\), \(v\colon F\to E\) with \(E,F\) dualizable, \(\operatorname{tr}_E(vu)=\operatorname{tr}_F(uv)=\operatorname{tr}_{EF}(\sigma_{F,E}(u\otimes v))\).
+
+**Proof.** By Proposition 1.5 and Lemma 1.6, \(\operatorname{tr}_{EF}(\sigma_{F,E}(u\otimes v))=\operatorname{tr}_F(uv)\). Conjugating by \(\sigma_{E,F}\) (Lemma 1.2 (3)), \(\operatorname{tr}_{EF}(\sigma_{F,E}(u\otimes v))=\) \(\operatorname{tr}_{FE}(\sigma_{E,F}\sigma_{F,E}(u\otimes v)\sigma_{F,E})=\) \(\operatorname{tr}_{FE}((u\otimes v)\sigma_{F,E})=\) \(\operatorname{tr}_{FE}(\sigma_{E,F}(v\otimes u))\), using naturality; by the first part with the roles of \((E,u)\) and \((F,v)\) exchanged, this is \(\operatorname{tr}_E(vu)\). \(\square\)
+
+## 2. Traces of perfect filtered complexes
+
+Let \(T\) be a topos and \(A\) a commutative ring of \(T\). By Theorem 4.2 of the lesson on duality, the dualizable objects of \(DF(A)\) are the filtered perfect ones, with left dual \((E^\vee,\eta,\mathrm{ev})\); those of \(D(A)\) are the perfect complexes; those of \(DG(A)\) are the families of perfect complexes.
+
+**Definition 2.1.** For \(E\in DF(A)\) filtered perfect and \(K,L\in DF(A)\), the *trace* is \(\operatorname{Tr}=\) \(\operatorname{tr}_E\colon\) \(\operatorname{Hom}_{DF}(E\otimes K,E\otimes L)\to\) \(\operatorname{Hom}_{DF}(K,L)\). The *internal trace* \(\operatorname{Tr}\colon[E\otimes K,E\otimes L]\to[K,L]\) is the morphism of \(DF(A)\) such that, for every \(X\) and every \(\varphi\colon X\to[E\otimes K,E\otimes L]\),
+\[
+\begin{aligned}&\Phi^{-1}(\operatorname{Tr}\circ\varphi)\\&\quad =\operatorname{tr}_E\bigl(\Phi^{-1}(\varphi)\circ(\sigma_{E,X}\otimes1_K)\bigr)\\&\quad \colon X\otimes K \to L,\end{aligned}
+\]
+where \(\Phi^{-1}(\varphi)\colon X\otimes E\otimes K\to E\otimes L\); it exists and is unique by the Yoneda lemma, the right side being natural in \(X\) by Lemma 1.2 (2). The *global trace* \(R\operatorname{Hom}(E\otimes K,E\otimes L)\to\) \(R\operatorname{Hom}(K,L)\) is \(R\Gamma(T,-)\) of the internal trace (Proposition 2.2 (3) of the lesson on filtered internal Hom). The same definitions apply in \(DG(A)\) and \(D(A)\).
+
+**Proposition 2.2.** Let \(E\) be filtered perfect.
+
+1. The internal trace is the composite
+\[
+\begin{aligned}&[E\otimes K,E\otimes L]\\&\quad\xrightarrow{c}[K,[E,E\otimes L]]\\&\quad\xrightarrow{[K,\nu]^{-1}}[K,E^\vee\otimes E\otimes L]\\&\quad\xrightarrow{[K,\mathrm{ev}\otimes1]}[K,L],\end{aligned}
+\]
+where \(c\) is Cartan's isomorphism (Theorem 3.1 of the lesson on filtered internal Hom) after the symmetry \(E\otimes K\cong K\otimes E\), and \(\nu=\nu_{E,E\otimes L}\) is an isomorphism (Theorem 3.3 of the lesson on duality). Applying \(R\Gamma(T,-)\) and \(H^0F^0\) to the internal trace gives \(\operatorname{Tr}\) on \(\operatorname{Hom}_{DF}\).
+2. (*Naturality*) For \(a\colon K'\to K\), \(b\colon L\to L'\): \(\operatorname{Tr}((1\otimes b)f(1\otimes a))=b\operatorname{Tr}(f)a\), and the internal trace is natural in \(K\) and \(L\).
+3. (*Graded pieces and underlying complexes*) \(\operatorname{gr}\operatorname{Tr}(f)=\operatorname{Tr}(\operatorname{gr}f)\) in \(DG(A)\), and the underlying morphism of \(\operatorname{Tr}(f)\) is the trace in \(D(A)\) of the underlying morphism of \(f\); likewise for the internal and global traces.
+4. (*Graded traces*) In \(DG(A)\), for families \(E=(E_p)\), \(K=(K_q)\), \(L=(L_q)\), a morphism \(f\colon E\otimes K\to E\otimes L\) has components \(f_{(p',q'),(p,q)}\colon E_p\otimes K_q\to E_{p'}\otimes L_{q'}\) with \(p+q=p'+q'\), and \(\operatorname{Tr}(f)_r=\) \(\sum_p\operatorname{Tr}(f_{(p,r),(p,r)})\colon\) \(K_r\to\) \(L_r\), the traces on the right taken in \(D(A)\).
+
+**Proof.** (1) Let \(\varphi\colon X\to[E\otimes K,E\otimes L]\), \(Z'=X\otimes K\), \(Z=E\otimes L\), and \(h=\Phi^{-1}(\varphi)\circ(1_X\otimes\sigma_{K,E})\colon Z'\otimes E\to Z\). On models, Cartan's isomorphism is currying, so \(c\circ\varphi\) corresponds to \(\Phi(h)\colon Z'\to[E,Z]\) under \(\operatorname{Hom}(X,[K,[E,Z]])=\operatorname{Hom}(Z',[E,Z])\). By Lemma 4.3 of the lesson on duality, \(\nu_{E,Z}^{-1}\Phi(h)=\sigma_{Z,E^\vee}\Psi(h)\) with \(\Psi(h)=(h\otimes1_{E^\vee})(1_{Z'}\otimes\eta)\). So the composite of the statement corresponds to \((\mathrm{ev}\otimes1_L)\sigma_{Z,E^\vee}(h\otimes1_{E^\vee})(1_{Z'}\otimes\eta)\colon\) \(Z'\to\) \(L\). By naturality of \(\sigma\), this is \((\mathrm{ev}\otimes1_L)(1_{E^\vee}\otimes h)\circ\) \(\sigma_{Z'E,E^\vee}\circ\) \(\sigma_{EE^\vee,Z'}\circ\) \((\eta\otimes1_{Z'})\). On the other hand \(g=\Phi^{-1}(\varphi)(\sigma_{E,X}\otimes1_K)=h\circ\sigma_{E,Z'}\) by coherence, and \(\operatorname{tr}_E(g)=\) \((\mathrm{ev}\otimes1_L)(1_{E^\vee}\otimes h)\) \((1_{E^\vee}\otimes\sigma_{E,Z'})\) \((\sigma_{E,E^\vee}\otimes1_{Z'})(\eta\otimes1_{Z'})\). The two composites of symmetries send the labelled factors \(E,E^\vee,Z'\) to the positions \(E^\vee,Z',E\), so they are equal by coherence; hence the composite of the statement satisfies the defining property of the internal trace. The global and \(\operatorname{Hom}\) statements follow from Proposition 2.2 (3)–(4) of the lesson on filtered internal Hom. (2) Lemma 1.2 (2) for the trace; for the internal trace, by the defining property. (3) For \(\operatorname{Tr}\) on morphisms, Proposition 1.3 for the functors \(\operatorname{gr}\) and "underlying complex", which are functors of symmetric monoidal categories (Theorem 3.3 of the lesson on filtered tensor products). For the internal trace, use the description (1): \(c\), \(\nu\) and \(\mathrm{ev}\) commute with \(\operatorname{gr}\) and with passage to underlying complexes (Theorem 3.1 and Proposition 3.3 (5) of the lesson on filtered internal Hom), and so does \(R\Gamma\). (4) The left dual of \(E\) in \(DG(A)\) is \((E_p^\vee)\) in weights \(-p\), with \(\eta\) and \(\mathrm{ev}\) the sums of those of \(D(A)\) (Theorem 4.2 (2) of the lesson on duality). In the composite of Definition 1.1 the component of weight \(r\) of \(K\) passes through \(\bigoplus_pE_pE_p^\vee K_r\), on which \(1\otimes f\) acts through the components \(f_{(p',q'),(p,r)}\), and \(\mathrm{ev}\) is zero on \(E_p^\vee E_{p'}\) unless \(p'=p\) (its target \(A\) has weight \(0\)); so only the components \(f_{(p,r),(p,r)}\) contribute, each through the trace of \(D(A)\) over \(E_p\), and Lemma 1.2 (4) adds them up. \(\square\)
+
+**Theorem 2.3 (additivity).** Let \(E\in DF(A)\) be filtered perfect, \(K,L\in D(A)\), placed in \(DF(A)\) with filtration in \([0,0]\), and \(f\colon E\otimes K\to E\otimes L\) a morphism of \(DF(A)\). Then, in \(\operatorname{Hom}_{D(A)}(K,L)\),
+\[
+\operatorname{Tr}_{E}(f)=\sum_p\operatorname{Tr}_{\operatorname{gr}^pE}(\operatorname{gr}^pf),
+\]
+where on the left \(E\) and \(f\) are the underlying perfect complex and morphism of \(D(A)\), and \(\operatorname{gr}^pf\colon\operatorname{gr}^pE\otimes K\to\operatorname{gr}^pE\otimes L\).
+
+**Proof.** The trace \(t=\operatorname{Tr}(f)\) computed in \(DF(A)\) is a morphism \(K\to L\) between objects with filtration in \([0,0]\), and \(\operatorname{Hom}_{DF}(K,L)=\operatorname{Hom}_{D(A)}(K,L)\) (Proposition 3.5 (2) of the lesson on filtered derived categories); under this identification both the underlying morphism of \(t\) and \(\operatorname{gr}^0t\) are \(t\), and \(\operatorname{gr}^rt=0\) for \(r\ne0\). By Proposition 2.2 (3), the underlying morphism of \(t\) is the trace of the underlying \(f\), and \(\operatorname{gr}t=\operatorname{Tr}(\operatorname{gr}f)\). As \(K,L\) are in weight \(0\), Proposition 2.2 (4) gives \(\operatorname{Tr}(\operatorname{gr}f)_0=\sum_p\operatorname{Tr}(f_{(p,0),(p,0)})\), and \(f_{(p,0),(p,0)}=\operatorname{gr}^pf\) under \(\operatorname{gr}^p(E\otimes K)=\operatorname{gr}^pE\otimes K\) ((3.1) of the lesson on filtered tensor products). \(\square\)
+
+**Remark 2.4.** The theorem fails for an endomorphism of a distinguished triangle that does not come from a filtered morphism: over \(A=k[\epsilon]/(\epsilon^2)\), the triangle \(A\xrightarrow{\epsilon}A\to C\to\) has an endomorphism, zero on the two copies of \(A\), whose trace on \(C\) is \(-\epsilon\); see the example in the lesson [*Traces of perfect complexes and Lefschetz numbers*](course:AG-LTF/traces-of-perfect-complexes-and-lefschetz-numbers#3-filtered-additivity-and-its-boundary), which proves the case of an endomorphism of a filtered perfect complex over a ring by explicit models.
+
+**Proposition 2.5 (multiplicativity).** Let \(E_1,E_2\) be filtered perfect, \(K_i,L_i\in DF(A)\), and \(f_i\colon E_i\otimes K_i\to E_i\otimes L_i\). With \(f_1\boxtimes f_2\) as in Proposition 1.4, \(\operatorname{Tr}(f_1\boxtimes f_2)=\operatorname{Tr}(f_1)\otimes\operatorname{Tr}(f_2)\). Internally, with \(X_i=[E_iK_i,E_iL_i]\), \(Y=[E_1E_2K_1K_2,E_1E_2L_1L_2]\), and \(\rho\colon X_1\otimes X_2\to Y\) the product \(\pi\) followed by the symmetries of \(f_1\boxtimes f_2\), the diagram
+\[
+\begin{array}{ccc}
+X_1\otimes X_2&\xrightarrow{\operatorname{Tr}\otimes\operatorname{Tr}}&[K_1,L_1]\otimes[K_2,L_2]\\
+\Big\downarrow{\scriptstyle\rho}&&\Big\downarrow{\scriptstyle\pi}\\
+Y&\xrightarrow{\ \operatorname{Tr}\ }&[K_1K_2,L_1L_2]
+\end{array}
+\]
+commutes; and the same holds for global traces with the global product of Proposition 4.2 of the lesson on filtered internal Hom.
+
+**Proof.** The first statement is Proposition 1.4. For the diagram, let \(X=X_1X_2\) and \(g_i=\) \(\Phi^{-1}(\mathrm{id}_{X_i})\circ(\sigma_{E_i,X_i}\otimes1)\colon\) \(E_i(X_iK_i)\to\) \(E_iL_i\); by Definition 2.1, \(\Phi^{-1}(\operatorname{Tr})=\operatorname{tr}(g_i)\) on \(X_i\). We compare the \(\Phi^{-1}\)-images of the two composites \(X\to[K_1K_2,L_1L_2]\), as morphisms \(X_1X_2K_1K_2\to L_1L_2\). For the upper composite, Proposition 3.3 (1), (3) of the lesson on filtered internal Hom give \((\operatorname{tr}(g_1)\otimes\operatorname{tr}(g_2))\circ s\), where \(s\colon X_1X_2K_1K_2\to X_1K_1X_2K_2\) is the symmetry. For the lower composite, the same propositions identify \(\Phi^{-1}(\rho)\), precomposed with \(\sigma_{E_1E_2,X}\otimes1\), with \((g_1\boxtimes g_2)\circ(1_{E_1E_2}\otimes s)\), by coherence; by Definition 2.1 and Lemma 1.2 (2), the \(\Phi^{-1}\)-image of the lower composite is \(\operatorname{tr}(g_1\boxtimes g_2)\circ s\). The two agree by Proposition 1.4. The global statement follows by applying the construction of Proposition 4.2 of the lesson on filtered internal Hom to this diagram. \(\square\)
+
+**Definition 2.6 (cup product).** Let \(E,F\) be filtered perfect, \(K_i,L_i\in DF(A)\), \(K=K_1K_2\), \(L=L_1L_2\). For \(u\colon EK_1\to FL_1\) and \(v\colon FK_2\to EL_2\), put
+\[
+\langle u,v\rangle=\operatorname{Tr}_{EF}\bigl(\tau'\circ(u\otimes v)\circ\tau\bigr)\colon K\to L,
+\]
+where \(\tau\colon EFK_1K_2\to EK_1FK_2\) and \(\tau'\colon FL_1EL_2\to EFL_1L_2\) are the structure isomorphisms inducing the evident permutations. The internal and global cup products \([EK_1,FL_1]\otimes[FK_2,EL_2]\to[K,L]\) and \(R\operatorname{Hom}(EK_1,FL_1)\otimes\) \(^{\mathbf L}R\operatorname{Hom}(FK_2,EL_2)\to\) \(R\operatorname{Hom}(K,L)\) are the composites of the product, the same symmetries and the internal (resp. global) trace for \(EF\).
+
+**Proposition 2.7.**
+
+1. (*Additivity*) If \(K_i,L_i\in D(A)\) have filtration in \([0,0]\), then \(\langle u,v\rangle=\sum_n\langle\operatorname{gr}^nu,\operatorname{gr}^nv\rangle\), where \(\operatorname{gr}^nu\colon\operatorname{gr}^nE\otimes K_1\to\operatorname{gr}^nF\otimes L_1\).
+2. (*Multiplicativity*) For a second datum \((E',F',K'_i,L'_i,u',v')\), \(\langle u\otimes u',v\otimes v'\rangle=\langle u,v\rangle\otimes\langle u',v'\rangle\) after the evident symmetries.
+3. (*Trace and cup product*) If \(K_i=L_i=A\), then \(\operatorname{Tr}(vu)=\operatorname{Tr}(uv)=\langle u,v\rangle\) for \(u\colon E\to F\), \(v\colon F\to E\); internally, the composites of the composition morphisms \([E,F]\otimes[F,E]\to[E,E]\), \([E,F]\otimes[F,E]\cong[F,E]\) \(\otimes[E,F]\to[F,F]\) with the internal traces, and the internal cup product, are equal morphisms \([E,F]\otimes[F,E]\to A\).
+4. (*Central character*) For an isomorphism \(s\colon E\to F\) and \(f\colon EK\to EL\), \(\operatorname{Tr}((s\otimes1)f(s^{-1}\otimes1))=\operatorname{Tr}(f)\); internally, the trace for \(F\) composed with the isomorphism \([EK,EL]\cong[FK,FL]\) induced by \(s\) is the trace for \(E\).
+
+**Proof.** (1) By Proposition 2.2 (3), \(\operatorname{gr}\langle u,v\rangle=\langle\operatorname{gr}u,\operatorname{gr}v\rangle\), and as in Theorem 2.3 it suffices to compute in \(DG(A)\) in weight \(0\). There \(\operatorname{gr}(EF)=\bigoplus_{a,b}E_aF_b\) in weights \(a+b\), and Proposition 2.2 (4) for \(\operatorname{gr}(EF)\) gives a sum over the components \(E_aF_b\) of the traces of the diagonal entries of \(\tau'(\operatorname{gr}u\otimes\operatorname{gr}v)\tau\). Since \(u\) and \(v\) preserve weights, the entry of \(\tau'(\operatorname{gr}u\otimes\operatorname{gr}v)\tau\) from \(E_aF_bK\) to \(E_aF_bL\) is \(\tau'(u_{b,a}\otimes v_{a,b})\tau\), with \(u_{b,a}\colon E_aK_1\to F_bL_1\), which is zero unless \(a=b\) (weights of \(K_1,L_1\) are \(0\)); for \(a=b=n\) its trace is \(\langle\operatorname{gr}^nu,\operatorname{gr}^nv\rangle\). (2) Proposition 1.4 applied to the two traces over \(EF\) and \(E'F'\), with Lemma 1.2 (3) for the symmetries. (3) Here \(\tau=\mathrm{id}\) and \(\tau'=\sigma_{F,E}\), so Corollary 1.7 gives the formula; the internal statement follows from it as in Proposition 2.5, by comparing \(\Phi^{-1}\)-images on the universal elements. (4) Lemma 1.2 (3), and internally the same comparison. \(\square\)
+
+**Proposition 2.8 (base change).** Let \(f\colon(T',A')\to(T,A)\) be a morphism of ringed topoi, \(E\in DF(A)\) filtered perfect and \(u\colon E\otimes K\to E\otimes L\). Then \(Lf^*E\) is filtered perfect and \(\operatorname{Tr}(Lf^*u)=Lf^*\operatorname{Tr}(u)\), where \(Lf^*u\) is conjugated by the comparison isomorphisms of Proposition 4.1 of the lesson on filtered tensor products. Internally, the square formed by the internal traces and the morphisms \([E\otimes K,E\otimes L]\to\) \(Rf_*[Lf^*(E\otimes K),Lf^*(E\otimes L)]\) and \([K,L]\to Rf_*[Lf^*K,Lf^*L]\) of Proposition 4.1 (4) of the lesson on filtered internal Hom commutes.
+
+**Proof.** \(Lf^*\) is a functor of symmetric monoidal categories; apply Proposition 1.3. The internal statement follows by adjunction (Proposition 4.1 of the lesson on filtered internal Hom), comparing the morphisms \(Lf^*X\otimes Lf^*K\to Lf^*L\) obtained from both composites by the Hom-level statement applied to the universal elements. \(\square\)
+
+## 3. Exercises
+
+**Exercise 3.1.** Show that \(\operatorname{Tr}(\mathrm{id}_{A[n]})=(-1)^n\) in \(\Gamma(T,A)\) and, for a strictly perfect complex \(S\) of free modules of finite rank and a morphism of complexes \(f\colon S\to S\), that \(\operatorname{Tr}(f)=\sum_n(-1)^n\operatorname{tr}(f^n)\).
+
+**Exercise 3.2.** Let \(E\) be the filtered complex \(A\xrightarrow{\mathrm{id}}A\) in degrees \(-1,0\) with \(F^1E=(0\to A)\). Compute both sides of Theorem 2.3 for \(f=\mathrm{id}_E\), \(K=L=A\).
+
+**Exercise 3.3.** Let \(E\) be filtered perfect and \(K=L=A\). Show that \(\operatorname{Tr}(f+g)=\operatorname{Tr}(f)+\operatorname{Tr}(g)\) and \(\operatorname{Tr}(fg)=\operatorname{Tr}(gf)\) for endomorphisms \(f,g\) of \(E\). For \(E=A[n](m)\), show that every endomorphism is multiplication by some \(a\in\Gamma(T,A)\), that its trace is \((-1)^na\), and deduce that the trace of a nilpotent endomorphism of \(E\) is nilpotent, and zero when \(\Gamma(T,A)\) is reduced.
+
+## 4. Complete solutions
+
+**Solution 3.1.** By Solution 5.1 of the lesson on duality, the composite \(\mathrm{ev}\circ\sigma\circ\eta\) for \(A[n]\) is multiplication by \((-1)^n\), and this composite is \(\operatorname{tr}(\mathrm{id})\). For \(S\), use the models of Lemma 3.2 (3) of the lesson on duality: \(S^\vee=S^*\), and for a basis \((e_i)\) of \(S\) (homogeneous) with dual basis \((e_i^*)\), \(\eta(1)=\sum_ie_i\otimes e_i^*\) (the computation of Solution 5.1 there, summed over the basis), \(\sigma(e_i\otimes e_i^*)=\) \((-1)^{|e_i||e_i^*|}e_i^*\otimes e_i=\) \((-1)^{|e_i|}e_i^*\otimes e_i\), and \(\mathrm{ev}(e_i^*\otimes f(e_i))\) is the \(i\)-th diagonal coefficient of \(f\). So \(\operatorname{Tr}(f)=\) \(\sum_i(-1)^{|e_i|}f_{ii}=\) \(\sum_n(-1)^n\operatorname{tr}(f^n)\); here \(f\) is a morphism of complexes, which represents a morphism of \(D(A)\) since \(S\) is strictly perfect.
+
+**Solution 3.2.** The underlying complex of \(E\) is acyclic, so the left side is \(\operatorname{Tr}(\mathrm{id}_0)=0\). On the right, \(\operatorname{gr}^0E=A[1]\) and \(\operatorname{gr}^1E=A\), with traces of the identity \(-1\) and \(1\) (Exercise 3.1); their sum is \(0\).
+
+**Solution 3.3.** Additivity is Lemma 1.2 (2). \(\operatorname{Tr}(fg)=\operatorname{Tr}(gf)\) is Corollary 1.7 with \(E=F\). Shifts and twists are automorphisms of \(DF(A)\), so \(\operatorname{End}(A[n](m))=\) \(\operatorname{End}_{DF}(A)=\) \(H^0F^0R\Gamma(T,A)=\) \(\Gamma(T,A)\), and \(f\) is \(1_E\otimes a\) for multiplication \(a\colon A\to A\). By Lemma 1.2 (2), \(\operatorname{Tr}(f)=\operatorname{Tr}(1_E)\circ a\), and \(\operatorname{Tr}(1_E)=(-1)^n\): by Proposition 2.2 (3) it can be computed after \(\operatorname{gr}\), where \(E\) is \(A[n]\) in weight \(-m\), and Exercise 3.1 applies. If \(f^k=0\) then \(a^k=0\), so \(\operatorname{Tr}(f)=(-1)^na\) is nilpotent, and zero if \(\Gamma(T,A)\) is reduced.
+
+## Sources
+
+Traces of endomorphisms of perfect complexes and their additivity for filtered complexes, the multiplicativity of traces, the cup product and its relation with the trace are due to Illusie, in his work on the cotangent complex, where the trace is defined through the isomorphisms of Cartan and the product morphism; the trace of a morphism into a perfect complex in the framework of SGA 6 is also due to Illusie. Traces of dualizable objects in symmetric monoidal categories are due to Dold and Puppe; twisted traces and their formal properties are treated by Ponto and Shulman, *Traces in symmetric monoidal categories* (arXiv:1107.6032). The additivity of traces for distinguished triangles in triangulated categories with a compatible monoidal structure is studied by May, *The additivity of traces in triangulated categories*, and in monoidal derivators by Groth, Ponto and Shulman, *The additivity of traces in monoidal derivators* (arXiv:1212.3277).
