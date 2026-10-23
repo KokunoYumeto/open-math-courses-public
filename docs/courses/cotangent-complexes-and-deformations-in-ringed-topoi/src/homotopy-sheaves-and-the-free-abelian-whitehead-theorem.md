@@ -31,7 +31,7 @@ Section 5.2 of the same lesson constructs, functorially in \(A\), a Kan complex 
 1. A map \(A\to B\) induces maps on all \(\pi_n\), functorially.
 2. If \(A\) is Kan, the inclusion \(A\subset A^{\mathrm{Kan}}\) is a simplicial homotopy equivalence; it induces a bijection on \(\pi_0\) and isomorphisms on all \(\pi_n\), so Definition 1.1 agrees with the original groups.
 3. For every \(A\), the inclusion \(A\subset A^{\mathrm{Kan}}\) induces a bijection \(\pi_0(A)\to\pi_0(A^{\mathrm{Kan}})\).
-4. If \(A\) is a simplicial group, \(\pi_n(A,1)\cong H_n(NA)\) for \(n\ge0\), and right translation by \(x^{-1}\) gives an isomorphism \(\pi_n(A,x)\cong\pi_n(A,1)\) for every vertex \(x\).
+4. If \(A\) is a simplicial group, right translation by \(x^{-1}\) gives an isomorphism \(\pi_n(A,x)\cong\pi_n(A,1)\) for every vertex \(x\). If \(A\) is a simplicial abelian group, \(\pi_n(A,0)\cong H_n(NA)\) for \(n\ge0\).
 
 **Proof.** (1) holds because \(A\mapsto A^{\mathrm{Kan}}\) is a functor and \(\pi_n\) of Kan complexes is functorial.
 
@@ -39,7 +39,7 @@ Section 5.2 of the same lesson constructs, functorially in \(A\), a Kan complex 
 
 (3) Attaching \(\Delta[1]\) along a vertex adds one vertex joined by an edge to an old one. Attaching \(\Delta[m]\), \(m\geq2\), along a horn adds no vertex, since \(\Lambda^k[m]\) contains every vertex of \(\Delta[m]\), and it adds edges only between vertices that the horn already joins. Neither operation changes the set of components, and a countable union of such stages does not either.
 
-(4) A simplicial group is Kan, and \(\pi_n(A,1)=H_n(NA)\) by Proposition 1.4 of [*The cotangent complex*](course:AG-HP/the-cotangent-complex). Right translation by \(x^{-1}\) is an automorphism of the simplicial set \(A\) taking \(x\) to \(1\). By (2) the Kan replacement does not change these groups. \(\square\)
+(4) A simplicial group is Kan, and for a simplicial abelian group \(\pi_n(A,0)=H_n(NA)\), by Proposition 1.4 of [*The cotangent complex*](course:AG-HP/the-cotangent-complex). Right translation by \(x^{-1}\) is an automorphism of the simplicial set \(A\) taking \(x\) to \(1\). By (2) the Kan replacement does not change these groups. \(\square\)
 
 **Lemma 1.3.** For every \(n\geq0\), the pointed set \(\pi_n(A,x)\) (and for \(n\ge1\) its group law) is obtained from the sets \(A_m\), the face and degeneracy maps and the vertex \(x\) by a construction that uses only finite limits, finite and countable coproducts, pushouts, a sequential colimit, coequalizers and images.
 
@@ -53,7 +53,7 @@ and a product with a finite set is a finite coproduct. Then \(A^{\mathrm{Kan}}\)
 
 Let \(X\) be a simplicial sheaf with a global base point \(x\). Performing the construction of Lemma 1.3 with limits and colimits taken in \(T\) gives a sheaf \(\pi_n(X,x)\), the *\(n\)-th homotopy sheaf*. For a base point over \(U\in\mathcal C\) we apply this in \(T_{/U}\) and write \(\pi_n(X|U,x)\).
 
-**Proposition 1.4.** \(\pi_n(X,x)\) is the sheaf associated with the presheaf \(U\mapsto\pi_n(X(U),x|_U)\). For \(n\ge1\) it is a sheaf of groups, abelian for \(n\ge2\).
+**Proposition 1.4.** \(\pi_n(X,x)\) is the sheaf associated with the presheaf \(U\mapsto\pi_n(X(U),x|_U)\). For \(n\ge1\) it is a sheaf of groups.
 
 **Proof.** In presheaves, limits and colimits are computed on sections. The construction of Lemma 1.3 performed on \(X\) regarded as a presheaf therefore gives the presheaf \(U\mapsto\pi_n(X(U),x|_U)\). Sheafification preserves colimits, being a left adjoint ([*Sites and sheaves*](course:ag-etale-cohomology/sites-and-sheaves), Theorems 3.2 and 4.2). It also preserves finite limits (Theorem 3.3 there). Hence it carries the presheaf construction on \(X\) to the same construction performed in \(T\) on the sheafification of \(X\), which is \(X\) itself. The group laws are carried along because they are given by the same diagrams. \(\square\)
 
