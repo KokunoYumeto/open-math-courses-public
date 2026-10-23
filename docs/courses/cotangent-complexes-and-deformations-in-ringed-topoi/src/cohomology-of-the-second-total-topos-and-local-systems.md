@@ -42,6 +42,8 @@ because \(f^*\) commutes with products, having the left adjoint \(f_!\). The pai
 
 (4) The unit \(E\to e^{\mathrm o}_*e^{\mathrm o*}E\) is a monomorphism, its component at \((j,\mathrm{id}_j)\) on the level \(j\) being the identity. Choose a monomorphism \(e^{\mathrm o*}E\to J\) with \(J\) injective. Then \(E\to e^{\mathrm o}_*J\) is a monomorphism into an injective sheaf, whose levels \(\prod_{i,f}f^*J_i\) are injective by hypothesis. \(\square\)
 
+For a morphism \(m\colon X\to Y\) of such fibred topoi, the levels of \(m^{\mathrm o*}G\) are the \(u_i^*G_{v(i)}\) (Proposition 1.2 of the lesson on morphisms of fibred topoi), so \(e^{\mathrm o*}m^{\mathrm o*}=m^{\mathrm{dis}*}e^{\mathrm o*}\), and Lemma 2.2 of the lesson on cohomology of total topoi, applied to the opposite categories, gives a morphism of augmented cosimplicial objects \(m^{\mathrm o*}(e^{\mathrm o}_*e^{\mathrm o*})^{\bullet+1}G\to(e^{\mathrm o}_*e^{\mathrm o*})^{\bullet+1}m^{\mathrm o*}G\), natural in \(G\), as in Proposition 2.3 there.
+
 ## 2. Direct images and the simplicial topos
 
 Let \(Y\) be a topos and \(p\colon X\to Y\) a morphism of fibred topoi to it. It induces the morphism of topoi \(p^{\mathrm o}\colon\operatorname{Top}^{\mathrm o}(X)\to Y\) of Section 3 of the lesson on morphisms of fibred topoi, and the morphism \(p\colon C_\bullet(X)\to Y\) from the simplicial topos of \(X\) (Definition 3.1 of the lesson on cohomology of simplicial topoi).
@@ -109,7 +111,7 @@ Rp^{\mathrm o}_*(E)\cong Rp_*(\overline E),
 \]
 the right side being computed on \(\operatorname{Top}(X)\).
 
-**Proof.** By Theorem 2.4, \(Rp^{\mathrm o}_*E\cong Rp_*C_\bullet(F^\bullet)\). Since \(C_\bullet\) is exact, \(C_\bullet(F^\bullet)\) is a resolution of \(C_\bullet(E)\), so \(Rp_*C_\bullet(F^\bullet)\cong Rp_*C_\bullet(E)\). By Lemma 3.2 applied to the cartesian sheaf \(\overline E\) of \(\operatorname{Top}(X)\), whose image under the equivalence is \(E\), \(C_\bullet(E)\cong C_\bullet(\overline E)\), where now \(C_\bullet(\overline E)\) is formed in \(\operatorname{Top}(X)\). Finally \(Rp_*C_\bullet(\overline E)\cong Rp_*\overline E\) by Proposition 3.2 of the lesson on cohomology of simplicial topoi. \(\square\)
+**Proof.** By Theorem 2.4, \(Rp^{\mathrm o}_*E\cong Rp_*C_\bullet(F^\bullet)\). Since \(C_\bullet\) is exact, \(C_\bullet(F^\bullet)\) is a resolution of \(C_\bullet(E)\), so \(Rp_*C_\bullet(F^\bullet)\cong Rp_*C_\bullet(E)\). By Lemma 3.2 applied to the cartesian sheaf \(\overline E\) of \(\operatorname{Top}(X)\), whose image under the equivalence is \(E\), \(C_\bullet(E)\cong C_\bullet(\overline E)\), where \(C_\bullet(\overline E)\) is formed in \(\operatorname{Top}(X)\). Finally \(Rp_*C_\bullet(\overline E)\cong Rp_*\overline E\) by Proposition 3.2 of the lesson on cohomology of simplicial topoi. \(\square\)
 
 **Corollary 3.4.** Suppose that every abelian sheaf on \(Y\) is a subsheaf of a totally acyclic sheaf \(F\) such that every \(p_i^*F\) is totally acyclic. Then for \(F\in D^+(Y)\) there is a canonical isomorphism
 \[

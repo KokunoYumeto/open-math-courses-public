@@ -8,7 +8,7 @@ The cohomology of a formal category is that of the normalized cochains of its ne
 
 ## Conventions
 
-\(C\) is a PD formal category with objects \(A\), arrows \(P\), nerve \(R\), augmentation ideal \(J\) with \(J^1=I\), and \(\Omega^1_R=I/I^{[2]}\), as in the lessons on formal categories with divided powers; for a strict category everything is levelwise. \(c^n(-)\) is the component of degree \(n\) of a cosimplicial object, and \(N\) the normalized cochain complex. Tensor products are over \(A\).
+\(C\) is a PD formal category with objects \(A\), arrows \(P\), nerve \(R\), augmentation ideal \(J\) with \(J^1=I\), and \(\Omega^1_R=I/I^{[2]}\), as in the lessons on formal categories with divided powers. It is affine or strict, for which everything is levelwise, or the PD completion of an affine or strict PD formal category \(C_0\) (Proposition 2.7 of the lesson on formal categories). A PD completion need not be strict; its quotients \(R/J^{[M]}\), \(P/I^{[M]}\) and \(\Omega^\bullet_R\) are those of \(C_0\), and everything below is formed from these quotients and their pro-objects. \(c^n(-)\) is the component of degree \(n\) of a cosimplicial object, and \(N\) the normalized cochain complex. Tensor products are over \(A\).
 
 ## 1. The graded nerve
 

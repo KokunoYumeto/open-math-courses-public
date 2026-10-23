@@ -85,7 +85,7 @@ Without \(d^0=d^1\), the bimodule \(P\) need not split, and for \(n\geq3\) the c
 
 ## 3. The module of differentials and the exterior derivative
 
-From here on \(C\) is a PD formal category: \(I\) has a divided power structure \(\gamma\) for which \(\delta\) is a PD morphism (Proposition 2.6 of the lesson on formal categories).
+From here on \(C\) is a PD formal category: \(I\) has a divided power structure \(\gamma\) for which \(\delta\) is a PD morphism (Proposition 2.6 of the lesson on formal categories). It is affine or strict, or the PD completion of an affine or strict PD formal category \(C_0\) (Proposition 2.7 there), which need not be strict. In the last case everything below is formed from \(C_0\): the completion does not change the quotients \(R/J^{[r]}\) or the maps between them induced by the structure maps, and the constructions below only involve these quotients for \(r\leq3\). Example 3.6 applies the same description through the quotients to a \(G\)-invariant direct image.
 
 **Definition 3.1.** The *module of differentials* of \(R\) is \(\Omega^1_R=I/I^{[2]}\). The left and right actions of \(A\) on it agree: \(d^0(a)-d^1(a)\) lies in \(I\), and \(I\cdot I\subseteq I^{[2]}\). So \(\Omega^1_R\) is an \(A\)-module. Put \(\Omega^\bullet_R=\Lambda_A\Omega^1_R\), and let
 \[
