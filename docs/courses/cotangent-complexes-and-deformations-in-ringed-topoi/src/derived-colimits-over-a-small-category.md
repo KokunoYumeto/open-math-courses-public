@@ -2,7 +2,7 @@
 
 *Written by Claude Opus 5.5 (Anthropic) on 20 October 2026. Self-checked by the writing AI. Public domain (CC0).*
 
-A diagram \(X\colon I\to\mathcal A\) in an abelian category has a colimit, but the colimit functor is only right exact. Its left derived functor is computed by an explicit complex, the simplicial replacement of the diagram, whose \(n\)-th term is the sum of the values of \(X\) at the sources of the strings of \(n\) composable arrows of \(I\). This lesson constructs the derived colimit on bounded-above complexes, identifies it with the simplicial replacement, and proves its adjunction with the constant diagram. It then applies Deligne's contractibility theorem: over the category of finite ordinals and injective maps, a diagram that is eventually locally constant has no higher derived colimits, and its colimit is its value at any stage from which it is locally constant.
+A diagram \(X\colon I\to\mathcal A\) in an abelian category has a colimit, but the colimit functor is only right exact. Its left derived functor is computed by an explicit complex, the simplicial replacement of the diagram, whose \(n\)-th term is the sum of the values of \(X\) at the sources of the strings of \(n\) composable arrows of \(I\). This lesson constructs the derived colimit on bounded-above complexes, identifies it with the simplicial replacement, and proves its adjunction with the constant diagram. It then applies Deligne's contractibility theorem: over the category of finite ordinals and injective maps, a diagram that is eventually locally constant has no higher derived colimits, and its colimit is its value at any stage from which it is locally constant. Finally it shows that over this category no diagram has higher derived colimits, so that the colimit is exact and the derived colimit of a bounded-above complex is its termwise colimit.
 
 **Prerequisites.** [*Strict simplicial objects and Deligne's contractibility theorem*](strict-simplicial-objects-and-deligne-s-contractibility-theorem.md); left derived functors on bounded-above derived categories [[Stacks, Tag 05T7](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/derived.html#derived-lemma-subcategory-left-resolution), [Tag 05T9](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/derived.html#derived-lemma-subcategory-left-acyclics), [Tag 05TA](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/derived.html#derived-proposition-enough-acyclics)] and their adjunctions [[Stacks, Tag 0DVC](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/derived.html#derived-lemma-pre-derived-adjoint-functors)].
 
@@ -91,18 +91,120 @@ Now let \(I=\bar\Delta'\), the category of finite totally ordered sets and injec
 
 (2) By Theorem 2.3, a bounded-above complex with colimit-acyclic terms computes \(L\varinjlim\). Proposition 3.2 shows that diagrams which are eventually locally constant are colimit-acyclic. \(\square\)
 
-## 4. Exercises
+## 4. Exactness of the colimit over injective ordinals
 
-**Exercise 4.1.** Let \(I\) have two objects \(a,b\) and two arrows \(f,g\colon a\to b\) besides the identities. For \(X=(X_a\rightrightarrows X_b)\), with \(u=X(f)\) and \(v=X(g)\), show that \(\varinjlim X=X_b/\operatorname{im}(u-v)\), that \(L_1\varinjlim X\cong\ker(u-v)\), and that \(L_n\varinjlim X=0\) for \(n\geq2\). Conclude that the colimit over \(I\) is not exact.
+The hypothesis on the terms in Theorem 3.3 (2) always holds: over \(\bar\Delta'\), every diagram is colimit-acyclic (Theorem 4.8). The proof compares the simplicial replacement with those of the slice categories \(\bar\Delta'/[N]\), which have final objects. The comparison maps are integer combinations of injections whose composites with all injections of a given source agree.
 
-**Exercise 4.2.** Suppose \(I\) has a final object \(t\). Show that every diagram is colimit-acyclic and that \(\varinjlim_IX=X(t)\).
+For \(N,N'\geq-1\), let \(\mathbb Z\operatorname{Hom}([N],[N'])\) be the free abelian group on the injective increasing maps \([N]\to[N']\), with \(\operatorname{aug}(\sum_gc_gg)=\sum_gc_g\). For \(t=\sum_gc_gg\) and an injective increasing map \(h\colon[m]\to[N]\), put \(th=\sum_gc_g\,(gh)\) in \(\mathbb Z\operatorname{Hom}([m],[N'])\). Then \(\operatorname{aug}(th)=\operatorname{aug}(t)\), and \(ut=\sum_gc_g\,(ug)\) is defined in the same way for \(u\colon[N']\to[N'']\).
 
-## 5. Complete solutions
+**Definition 4.1.** An element \(t\in\mathbb Z\operatorname{Hom}([N],[N'])\) is *equalizing* if \(th=th'\) for every \(m\) and all injective increasing maps \(h,h'\colon[m]\to[N]\).
 
-**4.1.** The nerve of \(I\) has no strings of two composable non-identity arrows. By [Stacks, Tag 019C], the chain complex \(sC_\bullet(X)\) is quasi-isomorphic to its quotient by the degenerate part. That quotient is \(X_a\oplus X_a\to X_a\oplus X_b\) in degrees \(1\) and \(0\), with the two summands of degree \(1\) belonging to \(f\) and to \(g\). The differential \(d_0-d_1\) sends \(x\) in the summand of \(f\) to \((-x,u(x))\), and \(x\) in the summand of \(g\) to \((-x,v(x))\). Eliminating the summand \(X_a\) of degree \(0\), the cokernel is \(X_b/\operatorname{im}(u-v)\). The kernel consists of the pairs \((x,y)\) with \(x+y=0\) and \(u(x)+v(y)=0\), that is \(y=-x\) and \(x\in\ker(u-v)\). There is nothing in degrees \(\geq2\). For \(u=v=0\) and \(X_a\neq0\), the first derived colimit \(\ker(u-v)=X_a\) is nonzero, so the colimit is not exact.
+If \(t\) is equalizing, so is \(ut\), for every injective increasing \(u\colon[N']\to[N'']\), and \(\operatorname{aug}(ut)=\operatorname{aug}(t)\).
 
-**4.2.** A cocone from \(X\) to an object \(Z\) is determined by its component at \(t\), since every \(X(i)\to Z\) factors through \(X(i)\to X(t)\). So \(\varinjlim_IX=X(t)\). For the acyclicity, append \(t\) to every string: send the summand of \(i_0\to\cdots\to i_n\) identically to the summand of \(i_0\to\cdots\to i_n\to t\) in \(C_{n+1}(X)\), and send \(X(t)\) to the summand of the \(0\)-simplex \(t\). These maps satisfy \(d_{n+1}h=1\) and \(d_kh=hd_k\) for \(k\leq n\). So, as in Corollary 1.2 (2) of the lesson on décalage, the maps \((-1)^{n+1}h\) form a contracting homotopy of the augmented complex \(sC_\bullet(X)\to X(t)\).
+**Lemma 4.2.** If \(N\leq0\), every element of \(\mathbb Z\operatorname{Hom}([N],[N'])\) is equalizing. If \(N\geq1\) and the elements \(t\delta^i\in\mathbb Z\operatorname{Hom}([N-1],[N'])\), \(i\in[N]\), are all equal, then \(t\) is equalizing.
+
+**Proof.** If \(N\leq0\), there is at most one injective map \([m]\to[N]\) for each \(m\). Let \(N\geq1\), and let \(s\) be the common value of the \(t\delta^i\). For \(0\leq a\leq b\leq N-1\), the relation \(\delta^{b+1}\delta^a=\delta^a\delta^b\) (fact (3) of Section 1 of the lesson on strict simplicial objects) gives
+\[
+s\delta^a=t\delta^{b+1}\delta^a=t\delta^a\delta^b=s\delta^b .
+\]
+So the \(s\delta^a\) are all equal, and \(s\) is equalizing, by induction on \(N\) (for \(N=1\), by the first assertion). Let \(h,h'\colon[m]\to[N]\). If \(m=N\), then \(h=h'\) is the identity. If \(m<N\), then \(h\) omits some \(i\in[N]\) and \(h'\) some \(i'\). By fact (1) of the same section, \(h=\delta^ik\) and \(h'=\delta^{i'}k'\) for injective increasing maps \(k,k'\colon[m]\to[N-1]\). So \(th=sk=sk'=th'\). \(\square\)
+
+**Gap polynomials.** Let \(n\geq0\). An injective increasing map \(g\colon[n]\to[M]\) has the *gaps* \(e_0=g(0)\), \(e_l=g(l)-g(l-1)-1\) for \(1\leq l\leq n\), and \(e_{n+1}=M-g(n)\). They are nonnegative integers with sum \(M-n\). Every such sequence occurs, for exactly one \(g\), since \(g(l)=e_0+\cdots+e_l+l\). For \(t=\sum_gc_gg\) put
+\[
+P_t=\sum_gc_g\,z_0^{e_0(g)}z_1^{e_1(g)}\cdots z_{n+1}^{e_{n+1}(g)} .
+\]
+So \(t\mapsto P_t\) is an isomorphism from \(\mathbb Z\operatorname{Hom}([n],[M])\) onto the homogeneous polynomials of degree \(M-n\) in \(\mathbb Z[z_0,\dots,z_{n+1}]\), and \(\operatorname{aug}(t)=P_t(1,\dots,1)\). For \(0\leq i\leq n\), let
+\[
+D_i\colon\mathbb Z[z_0,\dots,z_{n+1}]\to\mathbb Z[y_0,\dots,y_n]
+\]
+be the ring homomorphism with \(D_i(z_l)=y_l\) for \(l\leq i\) and \(D_i(z_l)=y_{l-1}\) for \(l>i\). It identifies \(z_i\) with \(z_{i+1}\): it is surjective, with kernel \((z_i-z_{i+1})\). The same rule defines \(D_p\colon\mathbb Z[y_0,\dots,y_n]\to\mathbb Z[w_0,\dots,w_{n-1}]\) for \(0\leq p\leq n-1\).
+
+**Lemma 4.3.** Let \(n\geq1\), \(t\in\mathbb Z\operatorname{Hom}([n],[M])\) and \(i\in[n]\). Then \(P_{t\delta^i}=y_i\,D_i(P_t)\).
+
+**Proof.** The image of \(g\delta^i\) is that of \(g\) without \(g(i)\). So the two gaps of \(g\) around \(g(i)\) merge, together with the point \(g(i)\). The gaps of \(g\delta^i\) are \(e_0,\dots,e_{i-1}\), then \(e_i+e_{i+1}+1\), then \(e_{i+2},\dots,e_{n+1}\). Hence the monomial of \(g\delta^i\) is \(y_i\) times the image under \(D_i\) of the monomial of \(g\). \(\square\)
+
+**Lemma 4.4.** Let \(n\geq0\), and let \(F_0,\dots,F_n\) be polynomials in the indeterminates \(x_0,\dots,x_n,u\) with integer coefficients, such that \(F_i-F_j\in(x_i,x_j)\) for all \(i,j\). Then there is a polynomial \(C\) with \(C-F_i\in(x_i)\) for every \(i\). If the \(F_i\) are homogeneous of degree \(d\), so is \(C\).
+
+**Proof.** For \(S\subseteq\{0,\dots,n\}\), let \(\rho_S\) be the ring endomorphism that sends \(x_l\) to \(0\) for \(l\in S\) and fixes the other indeterminates. It kills \((x_i,x_j)\) for \(i,j\in S\). So, for \(S\neq\varnothing\), \(\Phi_S=\rho_S(F_i)\) does not depend on the choice of \(i\in S\). Put
+\[
+C=\sum_{\varnothing\neq S}(-1)^{|S|+1}\,\Phi_S .
+\]
+Fix \(j\). Every polynomial \(G\) satisfies \(G-\rho_{\{j\}}(G)\in(x_j)\), and \(\rho_{\{j\}}\rho_S=\rho_{S\cup\{j\}}\). So, for \(S\neq\varnothing\) not containing \(j\), computing both with the same \(i\in S\) gives \(\Phi_S-\Phi_{S\cup\{j\}}\in(x_j)\). The terms of \(S\) and \(S\cup\{j\}\) therefore cancel modulo \(x_j\), and \(C\equiv\Phi_{\{j\}}=\rho_{\{j\}}(F_j)\equiv F_j\). The \(\rho_S\) preserve degrees. \(\square\)
+
+**Proposition 4.5.** For all \(n\geq0\) and \(k\geq1\), there is a homogeneous polynomial \(C\in\mathbb Z[z_0,\dots,z_{n+1}]\) with \(C(1,\dots,1)=1\) such that \(y_i^k\,D_i(C)\) is the same polynomial for all \(i\in\{0,\dots,n\}\).
+
+**Proof.** By induction on \(n\), for all \(k\) at once. For \(n=0\), take \(C=1\). Let \(n\geq1\). The case \((n-1,2k)\), written in the variables \(y_0,\dots,y_n\), gives a homogeneous \(Q\in\mathbb Z[y_0,\dots,y_n]\) with \(Q(1,\dots,1)=1\) such that \(w_p^{2k}D_p(Q)\) does not depend on \(p\in\{0,\dots,n-1\}\). Put
+\[
+F_i=Q\prod_{l\neq i}y_l^k\qquad(0\leq i\leq n).
+\]
+The ring \(\mathbb Z[z_0,\dots,z_{n+1}]\) is the polynomial ring in \(x_l=z_l-z_{l+1}\) (\(0\leq l\leq n\)) and \(u=z_{n+1}\), and the kernel of \(D_i\) is \((x_i)\). Choose homogeneous polynomials \(\tilde F_i\) in the \(z_l\) with \(D_i(\tilde F_i)=F_i\). For \(i<j\), the composites \(D_{j-1}D_i\) and \(D_iD_j\) are equal: both send \(z_i\) and \(z_{i+1}\) to \(w_i\), \(z_j\) and \(z_{j+1}\) to \(w_{j-1}\), and the other variables, in order, to the remaining \(w_l\). Their kernel is \((x_i,x_j)\). So \(\tilde F_i-\tilde F_j\in(x_i,x_j)\) as soon as \(D_{j-1}(F_i)=D_i(F_j)\).
+
+If \(j=i+1\), then \(D_{j-1}=D_i\), and \(D_i\) sends both \(\prod_{l\neq i}y_l\) and \(\prod_{l\neq i+1}y_l\) to \(\prod_lw_l\). If \(j\geq i+2\), put \(p=i\) and \(q=j-1\), so that \(p<q\). The map \(D_q\) sends the variables \(y_l\), \(l\neq i\), to all the \(w_l\) except \(w_p\), with \(w_q\) twice. The map \(D_p\) sends the \(y_l\), \(l\neq j\), to all the \(w_l\) except \(w_q\), with \(w_p\) twice. Hence
+\[
+\begin{aligned}D_q(F_i)&=w_q^{2k}D_q(Q)\textstyle\prod_{l\neq p,q}w_l^k,\\D_p(F_j)&=w_p^{2k}D_p(Q)\textstyle\prod_{l\neq p,q}w_l^k,\end{aligned}
+\]
+and these agree by the choice of \(Q\).
+
+Lemma 4.4 gives a homogeneous \(C\) with \(C-\tilde F_i\in(x_i)\), that is, \(D_i(C)=F_i\), for every \(i\). Then \(y_i^kD_i(C)=Q\prod_ly_l^k\) for every \(i\), and \(C(1,\dots,1)=F_0(1,\dots,1)=1\). \(\square\)
+
+**Example 4.6.** For \(n=1\) and \(k=1\), the construction gives \(Q=1\), \(F_0=y_1\), \(F_1=y_0\) and \(C=z_0-z_1+z_2\). Let \(g_{ab}\colon[1]\to[2]\) have image \(\{a,b\}\). The corresponding element of \(\mathbb Z\operatorname{Hom}([1],[2])\) is \(t=g_{12}-g_{02}+g_{01}\), and both \(t\delta^0\) and \(t\delta^1\) equal the map \([0]\to[2]\) with value \(1\). In general, the degree of \(C\) is \(k(2^{n+1}-n-2)\), by induction, since \(\deg C=\deg Q+nk\).
+
+**Corollary 4.7.** For every \(N\geq-1\), there are \(N'>N\) and an equalizing \(t\in\mathbb Z\operatorname{Hom}([N],[N'])\) with \(\operatorname{aug}(t)=1\).
+
+**Proof.** For \(N\leq0\), take \(t=\delta^{N+1}\colon[N]\to[N+1]\), by Lemma 4.2. For \(N\geq1\), take \(C\) as in Proposition 4.5 for \(n=N\) and \(k=1\), of degree \(d\), and \(t\in\mathbb Z\operatorname{Hom}([N],[N+d])\) with \(P_t=C\). By Lemma 4.3, \(P_{t\delta^i}=y_iD_i(C)\) does not depend on \(i\), so neither does \(t\delta^i\), and \(t\) is equalizing by Lemma 4.2. Also \(\operatorname{aug}(t)=C(1,\dots,1)=1\). Finally \(d\geq1\): otherwise \(t\) would be the identity of \([N]\), which is not equalizing, since \(\delta^0\neq\delta^1\). \(\square\)
+
+**Theorem 4.8.** Every diagram \(X\colon\bar\Delta'\to\mathcal A\) is colimit-acyclic. Consequently, the colimit over \(\bar\Delta'\) is exact, and for every bounded-above complex \(X\) of diagrams \(\bar\Delta'\to\mathcal A\), the morphism \(L\varinjlim X\to\varinjlim X\) is an isomorphism.
+
+**Proof.** *Slice complexes.* For \(N\geq-1\), let \(C_\bullet(X;N)\) be the simplicial replacement of the diagram \((i,a)\mapsto X(i)\) on the slice category \(\bar\Delta'/[N]\), whose objects are the arrows \(a\colon i\to[N]\). An \(n\)-simplex of its nerve is a string \(\sigma=(i_0\to\cdots\to i_n)\) of \(\bar\Delta'\) together with an arrow \(a\colon i_n\to[N]\), so
+\[
+C_n(X;N)=\bigoplus_{(\sigma,a)}X(i_0).
+\]
+The faces and degeneracies act on \(\sigma\) as those of \(C_\bullet(X)\). The face \(d_n\), which deletes \(i_n\), replaces \(a\) by its composite with the arrow \(i_{n-1}\to i_n\). Augment \(C_\bullet(X;N)\) to \(X_N\) by \(X(a)\) on the summand of \((i_0,a)\). Let \(h\) send the summand of \((\sigma,a)\) identically to the summand of the string \(i_0\to\cdots\to i_n\xrightarrow{a}[N]\) with the arrow \(\mathrm{id}_{[N]}\), and send \(X_N\) to the summand of the \(0\)-simplex \(([N],\mathrm{id})\). These maps satisfy \(d_{n+1}h=1\) and \(d_kh=hd_k\) for \(k\leq n\). So, as in Corollary 1.2 (2) of the lesson on décalage, the maps \((-1)^{n+1}h\) form a contracting homotopy of the augmented complex \(sC_\bullet(X;N)\to X_N\). In particular \(H_q(sC_\bullet(X;N))=0\) for \(q>0\).
+
+*Comparison maps.* Let \(\pi_N\colon C_\bullet(X;N)\to C_\bullet(X)\) send the summand of \((\sigma,a)\) identically to the summand of \(\sigma\). For \(t=\sum_gc_gg\in\mathbb Z\operatorname{Hom}([N],[N'])\), let \(t_*\colon C_\bullet(X;N)\to C_\bullet(X;N')\) send the summand of \((\sigma,a)\) to the summands of the \((\sigma,ga)\), by \(c_g\) times the identity. Both are morphisms of simplicial objects, because the faces and degeneracies change \(a\) only by composition on the right. Moreover \(\pi_{N'}t_*=\operatorname{aug}(t)\,\pi_N\).
+
+*Passage to the colimit.* By Corollary 4.7, there are \(-1\leq N_0<N_1<\cdots\) and equalizing \(t_k\in\mathbb Z\operatorname{Hom}([N_k],[N_{k+1}])\) with \(\operatorname{aug}(t_k)=1\). We show that the \(\pi_{N_k}\) identify \(C_n(X)\) with the colimit of the sequence of the \((t_k)_*\colon C_n(X;N_k)\to C_n(X;N_{k+1})\). All these maps respect the decompositions over the strings \(\sigma\), so fix \(\sigma\), with \(i_n=[m]\), and discard the first terms of the sequence, for which \(N_k<m\) and the part over \(\sigma\) is \(0\). The part \(A_k\) of \(C_n(X;N_k)\) over \(\sigma\) is the sum of copies of \(X(i_0)\) indexed by the \(a\colon[m]\to[N_k]\). Let \(p_k\colon A_k\to X(i_0)\) be the sum map, which is the part of \(\pi_{N_k}\). Since \(t_k\) is equalizing, \(T_k=t_ka\in\mathbb Z\operatorname{Hom}([m],[N_{k+1}])\) does not depend on \(a\). So \((t_k)_*=q_kp_k\) on \(A_k\), where \(q_k\colon X(i_0)\to A_{k+1}\) is given by the coefficients of \(T_k\), and \(p_{k+1}q_k=\operatorname{aug}(T_k)=1\).
+
+The maps \(p_k\) then make \(X(i_0)\) a colimit of the \(A_k\). They form a cocone, since \(p_{k+1}q_kp_k=p_k\). Given a cocone \(\psi_k\colon A_k\to Y\), the morphism \(\psi=\psi_{k+1}q_k\) does not depend on \(k\), because \(\psi_{k+1}q_k=\psi_{k+2}q_{k+1}p_{k+1}q_k=\psi_{k+2}q_{k+1}\). It satisfies \(\psi p_k=\psi_{k+1}q_kp_k=\psi_k\). It is unique: if \(\psi'p_{k+1}=\psi_{k+1}\), then \(\psi'=\psi'p_{k+1}q_k=\psi_{k+1}q_k\).
+
+Colimits of complexes are computed termwise, so \(sC_\bullet(X)\) is the colimit of the complexes \(sC_\bullet(X;N_k)\) along the \((t_k)_*\). By AB5, its homology is the colimit of their homology, which vanishes in positive degrees. So \(X\) is colimit-acyclic.
+
+*Consequences.* The functor \(X\mapsto sC_\bullet(X)\) is exact, and \(H_0(sC_\bullet(X))=\varinjlim X\) (Section 1). For a short exact sequence of diagrams, the long exact homology sequence, in which the groups \(H_1\) vanish, shows that the colimit is exact on it. By Theorem 2.3, a bounded-above complex of colimit-acyclic diagrams computes \(L\varinjlim\), which gives the last assertion. \(\square\)
+
+**Corollary 4.9.**
+
+1. For \(p\geq-1\), every diagram \(G\colon\bar\Delta'_{\geq p}\to\mathcal A\) is colimit-acyclic.
+2. Let \(X\) be a bounded-above complex of diagrams \(\bar\Delta'\to\mathcal A\), such that every \(H^i(X)\) is locally constant on some \(\bar\Delta'_{\geq n(i)}\), \(n(i)\geq-1\). Then \(H^i(X_{n(i)})\to H^i(\varinjlim X)\) is an isomorphism for every \(i\). This is Theorem 3.3 (2) without the hypothesis on the terms.
+3. For \(p\geq-1\), the augmentation \(s\mathbb Z(N(\bar\Delta'_{\geq p}))\to\mathbb Z\) is a quasi-isomorphism.
+
+**Proof.** (1) Extend \(G\) by \(0\) to the objects \([m]\), \(m<p\). This is a diagram on \(\bar\Delta'\), because no arrow leads from \(\bar\Delta'_{\geq p}\) to a smaller object. Its simplicial replacement is that of \(G\): the strings that start in \(\bar\Delta'_{\geq p}\) stay there, and the others contribute \(0\). Apply Theorem 4.8. (2) By Theorem 4.8, \(L\varinjlim X\to\varinjlim X\) is an isomorphism. Compose it with the isomorphism of Theorem 3.3 (1). (3) Take for \(\mathcal A\) the abelian groups, and \(M=\mathbb Z\) in Lemma 3.1 (b). As in its proof, \(C_\bullet(\mathbb Z_{\geq p})=\mathbb Z(N(\bar\Delta'_{\geq p}))\). By Theorem 4.8, the positive homology vanishes. In degree \(0\), the homology is \(\varinjlim\mathbb Z_{\geq p}\). It is \(\mathbb Z\), because \(\mathbb Z_{\geq p}\) has identity maps on the connected category \(\bar\Delta'_{\geq p}\) (Proposition 3.1 of the lesson on strict simplicial objects) and vanishes on the smaller objects. \(\square\)
+
+**Remark 4.10.** Corollary 4.9 (3) is the homological content of Deligne's theorem, Corollary 4.3 of the lesson on strict simplicial objects. The proof of Theorem 4.8 does not use that theorem: it uses only the slice categories \(\bar\Delta'/[N]\) and the equalizing elements. These have targets much larger than their sources, and over a full subcategory of \(\bar\Delta'\) with finitely many objects the colimit need not be exact (Exercise 5.3).
+
+## 5. Exercises
+
+**Exercise 5.1.** Let \(I\) have two objects \(a,b\) and two arrows \(f,g\colon a\to b\) besides the identities. For \(X=(X_a\rightrightarrows X_b)\), with \(u=X(f)\) and \(v=X(g)\), show that \(\varinjlim X=X_b/\operatorname{im}(u-v)\), that \(L_1\varinjlim X\cong\ker(u-v)\), and that \(L_n\varinjlim X=0\) for \(n\geq2\). Conclude that the colimit over \(I\) is not exact.
+
+**Exercise 5.2.** Suppose \(I\) has a final object \(t\). Show that every diagram is colimit-acyclic and that \(\varinjlim_IX=X(t)\).
+
+**Exercise 5.3.** Let \(M\neq0\) be an object of \(\mathcal A\), and define \(X\colon\bar\Delta'\to\mathcal A\) by \(X_0=X_1=M\), \(X(\delta^0)=X(\delta^1)=\mathrm{id}_M\colon X_0\to X_1\), and \(X_n=0\) for \(n\notin\{0,1\}\). Show that \(X\) is a functor with \(\varinjlim X=0\), and that \(X\) is colimit-acyclic. Let \(I\) be the full subcategory of \(\bar\Delta'\) on \([0]\) and \([1]\). Show that the restriction of \(X\) to \(I\) has colimit \(M\) and first derived colimit \(M\), so that the colimit over \(I\) is not exact.
+
+**Exercise 5.4.** Show that the element \(t=g_{12}-g_{02}+g_{01}\) of Example 4.6 is the only equalizing element of \(\mathbb Z\operatorname{Hom}([1],[2])\) with augmentation \(1\), and that \(\mathbb Z\operatorname{Hom}([1],[1])\) contains no equalizing element with augmentation \(1\).
+
+## 6. Complete solutions
+
+**5.1.** The nerve of \(I\) has no strings of two composable non-identity arrows. By [Stacks, Tag 019C], the chain complex \(sC_\bullet(X)\) is quasi-isomorphic to its quotient by the degenerate part. That quotient is \(X_a\oplus X_a\to X_a\oplus X_b\) in degrees \(1\) and \(0\), with the two summands of degree \(1\) belonging to \(f\) and to \(g\). The differential \(d_0-d_1\) sends \(x\) in the summand of \(f\) to \((-x,u(x))\), and \(x\) in the summand of \(g\) to \((-x,v(x))\). Eliminating the summand \(X_a\) of degree \(0\), the cokernel is \(X_b/\operatorname{im}(u-v)\). The kernel consists of the pairs \((x,y)\) with \(x+y=0\) and \(u(x)+v(y)=0\), that is \(y=-x\) and \(x\in\ker(u-v)\). There is nothing in degrees \(\geq2\). For \(u=v=0\) and \(X_a\neq0\), the first derived colimit \(\ker(u-v)=X_a\) is nonzero, so the colimit is not exact.
+
+**5.2.** A cocone from \(X\) to an object \(Z\) is determined by its component at \(t\), since every \(X(i)\to Z\) factors through \(X(i)\to X(t)\). So \(\varinjlim_IX=X(t)\). For the acyclicity, append \(t\) to every string: send the summand of \(i_0\to\cdots\to i_n\) identically to the summand of \(i_0\to\cdots\to i_n\to t\) in \(C_{n+1}(X)\), and send \(X(t)\) to the summand of the \(0\)-simplex \(t\). These maps satisfy \(d_{n+1}h=1\) and \(d_kh=hd_k\) for \(k\leq n\). So, as in Corollary 1.2 (2) of the lesson on décalage, the maps \((-1)^{n+1}h\) form a contracting homotopy of the augmented complex \(sC_\bullet(X)\to X(t)\).
+
+**5.3.** An arrow of \(\bar\Delta'\) between objects of \(I\) is an identity, \(\delta^0\) or \(\delta^1\). Every other arrow has its source or its target outside \(I\), where \(X\) vanishes. A composite \(gf\) whose source and target lie in \(I\) passes through an object of \(I\), since the objects increase along arrows. So the rule given, with \(0\) on all other arrows, is a functor. A cocone \(\varphi_n\colon X_n\to Y\) satisfies \(\varphi_1=\varphi_2X(\delta^2)=0\), for \(\delta^2\colon[1]\to[2]\), and then \(\varphi_0=\varphi_1X(\delta^0)=0\). So \(\varinjlim X=0\). The diagram vanishes on \(\bar\Delta'_{\geq2}\), so it is colimit-acyclic by Proposition 3.2. The category \(I\) is that of Exercise 5.1, with \(u=v=\mathrm{id}_M\). So the colimit over \(I\) of the restriction is \(M/\operatorname{im}(u-v)=M\), and its first derived colimit is \(\ker(u-v)=M\neq0\). An exact functor has no higher left derived functors, so the colimit over \(I\) is not exact.
+
+**5.4.** Write \(t=a\,g_{01}+b\,g_{02}+c\,g_{12}\), and let \(v_j\colon[0]\to[2]\) have value \(j\). Composing with \(\delta^0\) keeps the second point of the image, and composing with \(\delta^1\) the first. So
+\[
+\begin{aligned}t\delta^0&=a\,v_1+(b+c)\,v_2,\\ t\delta^1&=(a+b)\,v_0+c\,v_1 .\end{aligned}
+\]
+They agree exactly when \(a+b=0\), \(a=c\) and \(b+c=0\), that is, when \(t=a\,(g_{01}-g_{02}+g_{12})\), whose augmentation is \(a\). By Lemma 4.2 these are the equalizing elements, and \(a=1\) gives the element of Example 4.6. The group \(\mathbb Z\operatorname{Hom}([1],[1])\) is generated by the identity, and \(a\,\mathrm{id}\) composed with \(\delta^0\) and with \(\delta^1\) gives \(a\delta^0\) and \(a\delta^1\), which agree only for \(a=0\).
 
 ## Sources
 
-The derived colimit computed by the simplicial replacement, and its application to colimits over the category of finite ordinals and injective maps, are in Illusie's work on the cotangent complex. The general framework of derived functors on bounded-above derived categories and of adjoint derived functors used here is that of the Stacks project, Chapter *Derived Categories*.
+The derived colimit computed by the simplicial replacement, and its application to colimits over the category of finite ordinals and injective maps, are in Illusie's work on the cotangent complex, where the derived colimit over that category of a bounded-above complex with eventually locally constant cohomology diagrams is identified with its termwise colimit. The proof given here of the exactness of that colimit (Section 4) goes through equalizing combinations of injections, built from gap polynomials by interpolation on the hyperplanes \(z_i=z_{i+1}\). The general framework of derived functors on bounded-above derived categories and of adjoint derived functors used here is that of the Stacks project, Chapter *Derived Categories*.

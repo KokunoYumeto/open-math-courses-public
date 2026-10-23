@@ -4,9 +4,9 @@
 
 Let \(F\) be a functor between abelian categories with \(F(0)=0\), and let \(X\) be a simplicial object. The homology of \(F\) applied to the \(n\)-fold suspension \(X[n]\) changes with \(n\), but it stabilizes. The suspension maps \(H_{i+n}F(X[n])\to H_{i+n+1}F(X[n+1])\) are isomorphisms as soon as \(n>i\). This is the suspension theorem of Dold and Puppe. Its proof decomposes the bar construction of \(X\) by cross-effects. The cross-effects of order two and higher are highly connected, so only the additive part of \(F\) is seen in low degrees.
 
-Illusie's *stabilization* \(F^{\mathrm{st}}\) realizes the stable values as the homology of a single simplicial object. One applies \(F\) to the spectrum of \(X\), kills the faces of degree zero, translates down and takes the derived colimit over the category of finite ordinals. This lesson proves the suspension theorem, constructs \(F^{\mathrm{st}}\), and shows that \(H_iF^{\mathrm{st}}(X)\cong H_{i+n}F(X[n])\) for \(n>i\). It then proves that \(F^{\mathrm{st}}\) is additive and turns degreewise split exact sequences into distinguished triangles, through a canonical isomorphism \(F^{\mathrm{st}}(X[1])\cong F^{\mathrm{st}}(X)[1]\). The stable derived functors built from \(F^{\mathrm{st}}\) are the subject of [*Stable derived functors*](stable-derived-functors.md).
+Illusie's *stabilization* \(F^{\mathrm{st}}\) realizes the stable values as the homology of a single simplicial object. One applies \(F\) to the spectrum of \(X\), kills the faces of degree zero, translates down and takes the derived colimit over the category of finite ordinals. This lesson proves the suspension theorem, constructs \(F^{\mathrm{st}}\), and shows that \(H_iF^{\mathrm{st}}(X)\cong H_{i+n}F(X[n])\) for \(n>i\). It then proves that \(F^{\mathrm{st}}\) is additive and turns degreewise split exact sequences into distinguished triangles, through a canonical isomorphism \(F^{\mathrm{st}}(X[1])\cong F^{\mathrm{st}}(X)[1]\), which anticommutes with the connecting morphisms of exact sequences of functors. The stable derived functors built from \(F^{\mathrm{st}}\) are the subject of [*Stable derived functors*](stable-derived-functors.md).
 
-**Prerequisites.** [*Multisimplicial objects and spectral diagrams*](multisimplicial-objects-and-spectral-diagrams.md); Section 1 and Proposition 2.3 of [*Non-additive functors of complexes in a ringed topos*](non-additive-functors-of-complexes-in-a-ringed-topos.md) (cross-effects, homotopy invariance); Lemmas 1.1 and 3.1 and Theorems 2.3 and 3.3 of [*Derived colimits over a small category*](derived-colimits-over-a-small-category.md); Theorems 1.1–1.3 of [*The cotangent complex*](course:AG-HP/the-cotangent-complex#1-simplicial-algebra-and-the-standard-resolution). From the AI-integrated Stacks project: cones and the triangle of a termwise split sequence [[Stacks, Tag 014I](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/derived.html#derived-definition-split-ses), [Tag 014O](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/derived.html#derived-lemma-rotate-cone)]; the triangle of a short exact sequence in the derived category, functorial in the sequence [[Tag 0152](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/derived.html#derived-lemma-derived-canonical-delta-functor), [Tag 0154](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/derived.html#derived-lemma-derived-compare-triangles-split-case)].
+**Prerequisites.** [*Multisimplicial objects and spectral diagrams*](multisimplicial-objects-and-spectral-diagrams.md); Section 1 and Proposition 2.3 of [*Non-additive functors of complexes in a ringed topos*](non-additive-functors-of-complexes-in-a-ringed-topos.md) (cross-effects, homotopy invariance); Lemmas 1.1 and 3.1 and Theorems 2.3 and 3.3 of [*Derived colimits over a small category*](derived-colimits-over-a-small-category.md); Theorems 1.1–1.3 of [*The cotangent complex*](course:AG-HP/the-cotangent-complex#1-simplicial-algebra-and-the-standard-resolution). From the AI-integrated Stacks project: cones and the triangle of a termwise split sequence [[Stacks, Tag 014I](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/derived.html#derived-definition-split-ses), [Tag 014O](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/derived.html#derived-lemma-rotate-cone)]; cones [[Tag 014E](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/derived.html#derived-definition-cone)] and the snake lemma [[Tag 010H](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/homology.html#homology-lemma-snake)]; the triangle of a short exact sequence in the derived category, functorial in the sequence [[Tag 0152](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/derived.html#derived-lemma-derived-canonical-delta-functor), [Tag 0154](https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/derived.html#derived-lemma-derived-compare-triangles-split-case)].
 
 ## Conventions
 
@@ -183,6 +183,51 @@ is distinguished in \(D(\mathcal B)\).
 **Proof.** Normalize, and write \(NY=NX\oplus NZ\) in each degree. The differential of \(NY\) is the matrix with rows \((d,\pi ds)\) and \((0,d)\). Then \(g(x,z)=(\pi ds\,z,x)\) defines a map of complexes \(NY\to\operatorname{Cone}(1_{NX})\), because \(\pi ds\) is a map of complexes \(NZ\to(NX)[1]\). Together with the identity of \(NX\) and \(\pi ds\), it is a map from the normalized sequence to the cone sequence. Apply \(\Gamma\). This gives a map of short exact sequences \((1,\Gamma g,e)\) from \(0\to X\to Y\to Z\to0\) to the cone sequence of \(X\). Apply \(F^{\mathrm{st}}\) and pass to the cokernels of \(F^{\mathrm{st}}(i)\). The resulting map of short exact sequences gives a map of triangles [Stacks, Tag 0152]. So the third map of the triangle of \(0\to F^{\mathrm{st}}(X)\to F^{\mathrm{st}}(Y)\to\operatorname{Coker}\to0\) is \(\partial\circ c\), where \(c\) is the induced map of cokernels. By naturality of the quasi-isomorphisms of Proposition 4.1 (2), \(q\circ c=F^{\mathrm{st}}(e)\circ q_Y\), where \(q_Y\colon\operatorname{Coker}F^{\mathrm{st}}(i)\to F^{\mathrm{st}}(Z)\). So, through \(q_Y\), this distinguished triangle is isomorphic to the triangle of the statement, whose third map is \(\partial c\,q_Y^{-1}=\partial q^{-1}F^{\mathrm{st}}(e)=\theta_X\circ F^{\mathrm{st}}(e)\). \(\square\)
 
 With the sign conventions of the Stacks project, the third map of the cone sequence is \(+1\), and no sign enters \(\theta_X\). In conventions where that map is \(-1\), the shift isomorphism must be defined with a sign to make Proposition 4.3 hold.
+
+**Lemma 4.4 (connecting morphisms of a \(3\times3\) diagram).** Let
+\[
+\begin{array}{ccccc}
+X'&\xrightarrow{f'}&X&\xrightarrow{g'}&X''\\
+\downarrow{\scriptstyle a'}&&\downarrow{\scriptstyle a}&&\downarrow{\scriptstyle a''}\\
+Y'&\xrightarrow{f}&Y&\xrightarrow{g}&Y''\\
+\downarrow{\scriptstyle b'}&&\downarrow{\scriptstyle b}&&\downarrow{\scriptstyle b''}\\
+Z'&\xrightarrow{f''}&Z&\xrightarrow{g''}&Z''
+\end{array}
+\]
+be a commutative diagram of complexes of an abelian category whose rows and columns are short exact sequences. Let \(\delta_X\colon X''\to X'[1]\) and \(\delta_Z\colon Z''\to Z'[1]\) be the third maps of the triangles of the first and the last row, and \(\delta'\colon Z'\to X'[1]\) and \(\delta''\colon Z''\to X''[1]\) those of the first and the last column [Stacks, Tag 0152]. Then
+\[
+\delta'[1]\circ\delta_Z=-\,\delta_X[1]\circ\delta''.
+\]
+
+**Proof.** Complexes are written cohomologically here. For a short exact sequence \(0\to A\xrightarrow{u}B\xrightarrow{v}C\to0\), the third map of its triangle is \(-p\,q^{-1}\), where \(C(u)^k=B^k\oplus A^{k+1}\) with \(d(y,x)=(dy+ux,-dx)\), \(q(y,x)=v(y)\) is a quasi-isomorphism and \(p(y,x)=x\) [Stacks, Tags 014E, 0152]. Write \(q_u\), \(p_u\) for these maps.
+
+The square \((f',f)\) from \(a'\) to \(a\) induces \(\varphi\colon C(a')\to C(a)\), \(\varphi(y',x')=(fy',f'x')\). Its cone \(W=C(\varphi)\) has \(W^k=Y^k\oplus X^{k+1}\oplus Y'^{k+1}\oplus X'^{k+2}\) and
+\[
+\begin{aligned}&d(y,x,y',x')\\&\quad=\bigl(dy+ax+fy',\ -dx+f'x',\\&\qquad-dy'-a'x',\ dx'\bigr).\end{aligned}
+\]
+Let \(Q\colon W\to Z''\) be \((y,x,y',x')\mapsto g''b(y)\), \(\lambda\colon W\to X'[2]\) the projection \((y,x,y',x')\mapsto x'\), and \(\pi\colon W\to C(a')[1]\) the projection to \((y',x')\). The quasi-isomorphisms \(q_a\colon C(a)\to Z\) and \(q_{a'}\colon C(a')\to Z'\) satisfy \(q_a\varphi=f''q_{a'}\), so they induce a map of cones \(\kappa\colon W\to C(f'')\), \(\kappa(y,x,y',x')=(by,b'y')\), a quasi-isomorphism by the five lemma. Then \(q_{f''}\kappa=Q\), so \(Q\) is a quasi-isomorphism, and \(p_{f''}\kappa=q_{a'}[1]\,\pi\). Hence
+\[
+\begin{aligned}\delta'[1]\circ\delta_Z&=p_{a'}[1]\,q_{a'}[1]^{-1}\,p_{f''}\,q_{f''}^{-1}\\&=p_{a'}[1]\,q_{a'}[1]^{-1}\,q_{a'}[1]\,\pi\,Q^{-1}\\&=p_{a'}[1]\,\pi\,Q^{-1}=\lambda\,Q^{-1}.\end{aligned}
+\]
+Exchanging the roles of rows and columns, the square \((a,a')\) from \(f'\) to \(f\) induces \(\psi\colon C(f')\to C(f)\), and the same computation gives \(\delta_X[1]\circ\delta''=\lambda'Q'^{-1}\) on \(W'=C(\psi)\), with \(W'^k=Y^k\oplus Y'^{k+1}\oplus X^{k+1}\oplus X'^{k+2}\), \(Q'(y,y',x,x')=b''g(y)\) and \(\lambda'(y,y',x,x')=x'\). Its differential is
+\[
+\begin{aligned}&d(y,y',x,x')\\&\quad=\bigl(dy+fy'+ax,\ -dy'+a'x',\\&\qquad-dx-f'x',\ dx'\bigr).\end{aligned}
+\] So \(\tau(y,x,y',x')=(y,y',x,-x')\) is an isomorphism of complexes \(W\to W'\), with \(Q'\tau=Q\), because \(b''g=g''b\), and \(\lambda'\tau=-\lambda\). Therefore \(\delta_X[1]\circ\delta''=\lambda'\tau\,(Q'\tau)^{-1}=-\lambda\,Q^{-1}\). \(\square\)
+
+**Proposition 4.5 (the shift and exact sequences of functors).** Let \(0\to F'\to F\to F''\to0\) be natural transformations of reduced functors \(\mathcal A\to\mathcal B\), and \(\mathcal P\subseteq\mathcal A\) a full subcategory closed under finite direct sums and direct summands such that \(0\to F'(M)\to F(M)\to F''(M)\to0\) is exact for every \(M\in\mathcal P\). Let \(X\) be a simplicial object of \(\mathcal P\). Then the sequences \(0\to F'^{\mathrm{st}}(Y)\to F^{\mathrm{st}}(Y)\to F''^{\mathrm{st}}(Y)\to0\) are exact for \(Y=X,\gamma X,\sigma X\), and the third maps \(\delta_Y\) of their triangles satisfy
+\[
+\theta^{F'}_X[1]\circ\delta_{\sigma X}=-\,\delta_X[1]\circ\theta^{F''}_X.
+\]
+
+**Proof.** The terms of \(\gamma X\), \(\sigma X\) and of the components of their spectra are finite direct sums of direct summands of terms of \(X\), so they lie in \(\mathcal P\). The functors are applied termwise, and the constructions of Definition 3.2 that follow, reduction, translation, diagonals and the simplicial replacement, are exact in the functor. So the three sequences are exact. Write \(K_G=\operatorname{Coker}G^{\mathrm{st}}(i)\) for \(G=F',F,F''\), with \(i\colon X\to\gamma X\). The diagram whose rows are the sequences \(0\to G^{\mathrm{st}}(X)\to G^{\mathrm{st}}(\gamma X)\to K_G\to0\) and whose columns are the sequences of the statement for \(X\), for \(\gamma X\) and the induced sequence of the \(K_G\) is commutative. Its rows are exact by Proposition 4.1 (2), and its third column is exact by the snake lemma [Stacks, Tag 010H], since \(F''^{\mathrm{st}}(i)\) is a monomorphism. Let \(\partial^G\colon K_G\to G^{\mathrm{st}}(X)[1]\) be the third maps of the triangles of the rows and \(\delta_K\colon K_{F''}\to K_{F'}[1]\) that of the third column. Lemma 4.4 gives
+\[
+\delta_X[1]\circ\partial^{F''}=-\,\partial^{F'}[1]\circ\delta_K.
+\]
+The quasi-isomorphisms \(q_G\colon K_G\to G^{\mathrm{st}}(\sigma X)\) of Proposition 4.1 (2) are natural in \(G\), so they form a morphism from the third column to the sequence for \(\sigma X\), and \(\delta_{\sigma X}\,q_{F''}=q_{F'}[1]\,\delta_K\) [Stacks, Tag 0152]. With \(\theta^G_X=\partial^G q_G^{-1}\) (Proposition 4.2),
+\[
+\begin{aligned}\theta^{F'}_X[1]\circ\delta_{\sigma X}&=\partial^{F'}[1]\,q_{F'}[1]^{-1}\,\delta_{\sigma X}\\&=\partial^{F'}[1]\,\delta_K\,q_{F''}^{-1}\\&=-\,\delta_X[1]\,\partial^{F''}q_{F''}^{-1}\\&=-\,\delta_X[1]\circ\theta^{F''}_X.\end{aligned}
+\]
+\(\square\)
 
 ## 5. Examples
 

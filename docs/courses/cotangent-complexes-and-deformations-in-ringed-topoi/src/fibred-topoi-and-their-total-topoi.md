@@ -99,7 +99,7 @@ with \(F^{\mathrm o}_E(f,\psi)(u)=E^\flat_f\circ f_!(u)\circ\psi\), is an equiva
 
 **Proof.** The proof of Theorem 4.2 applies with \(f_!\) in place of \(f^*\) and the direction of the arrows of \(I\) reversed. The fibre product of a covering \(\{(i,U_\alpha)\to(i,U)\}\) with \((f,\psi)\colon(j,V)\to(i,U)\) is \((j,V\times_{f_!U}f_!U_\alpha)\). It lies in \(\int^{\mathrm o}C\) by Lemma 4.1 (2) and (4). It has the universal property because every \(g_!\) preserves fibre products, and the base-changed family is surjective because \(f_!\), a left adjoint, preserves surjective families. In the faithfulness and surjectivity arguments, the surjective families \(\{f_!(u)\colon f_!U\to f_!E_i\}\) replace the families \(\{f^*(v)\}\). \(\square\)
 
-For a good fibred topos whose functors \(f_!\) do not preserve fibre products, the category \(\operatorname{Top}^{\mathrm o}(X)\) is still a topos. The standard proof uses Giraud's characterization of topoi: Proposition 2.2 gives the exactness properties, and Proposition 3.1 gives the generators \(i^{\mathrm o}_!(U)\). That characterization is not proved here, and this lesson uses \(\operatorname{Top}^{\mathrm o}(X)\) as a topos only under the hypothesis of Theorem 4.3.
+For a good fibred topos whose functors \(f_!\) do not preserve fibre products, the category \(\operatorname{Top}^{\mathrm o}(X)\) is still a topos: Proposition 2.2 gives its exactness properties, Proposition 3.1 gives the generators \(i^{\mathrm o}_!(U)\), and Giraud's characterization of topoi applies (Corollary 4.1 of [*Giraud's characterization of topoi*](giraud-s-characterization-of-topoi.md)). The proofs of this lesson use \(\operatorname{Top}^{\mathrm o}(X)\) as a topos only under the hypothesis of Theorem 4.3.
 
 ## 5. Diagrams in a topos
 

@@ -69,6 +69,8 @@ the restrictions of the two augmentations to the diagonal.
 
 **Example 1.4 (the diagonal need not be equivalent).** In general, neither \(h\) nor \(v\) is a homotopy equivalence. Let \(C=\Delta^{\mathrm{op}}\), and let \(X\) be the simplicial object of \(C\) given by the identity functor of \(\Delta^{\mathrm{op}}\). A morphism \(X\to\operatorname{dec}(X)\) is a family of increasing maps \(r_E\colon E\sqcup E\to E\), natural in \(E\in\Delta\). For \(e\in E\), naturality with respect to \(e\colon[0]\to E\) forces \(r_E\) to send both copies of \(e\) to \(e\). For \(E=[1]\), the element \(1\) of the first copy precedes the element \(0\) of the second copy, but \(r_E\) would send them to \(1>0\). So there is no morphism \(X\to\operatorname{dec}(X)\) at all, and \(h\) and \(v\) have no homotopy inverses. The same example, read in \(\Delta\), gives the corresponding statement for cosimplicial objects.
 
+For a simplicial abelian sheaf \(X\), on the other hand, \(h\) and \(v\) are quasi-isomorphisms: this is Corollary 1.4 of [*Derived tensor products of simplicial modules*](derived-tensor-products-of-simplicial-modules.md), which compares the diagonal of a bisimplicial abelian sheaf with its rows and columns.
+
 ## 2. Nerves
 
 ### 2.1. Nerves of small categories
