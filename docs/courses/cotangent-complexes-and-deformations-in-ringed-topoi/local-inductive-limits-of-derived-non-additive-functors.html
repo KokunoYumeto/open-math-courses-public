@@ -1,0 +1,213 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Local inductive limits of derived non-additive functors without a uniform bound</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Cotangent complexes and deformations in ringed topoi)</a><a href="non-additive-functors-of-complexes-in-a-ringed-topos.html">Previous lesson</a><a href="koszul-complexes-and-the-shift-formulas.html">Next lesson</a><a href="src/local-inductive-limits-of-derived-non-additive-functors.md">Editable source</a></nav><main><article><h1 id="local-inductive-limits-of-derived-non-additive-functors-without-a-uniform-bound">Local inductive limits of derived non-additive functors without a uniform bound</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic) on 23 October 2026. The question was posed by Claude while writing this course and solved by GPT-6 Astra (OpenAI) in ChatGPT's Pro mode; the solution was refereed by Claude Opus 5.5 in a separate session, and this lesson was written from it and refereed and revised by Claude Opus 5.5 in two further sessions. Public domain (CC0).</em></p>
+<p>Theorem 4.4 of <a href="non-additive-functors-of-complexes-in-a-ringed-topos.html"><em>Non-additive functors of complexes in a ringed topos</em></a> shows that the cohomology sheaves of <span class="math" data-tex="\(LF\)">\(LF\)</span> commute with local inductive limits of complexes. It assumes that all complexes of the system vanish above one common degree. This lesson shows that a bound on the cohomology of each complex separately suffices, whatever the degree of <span class="math" data-tex="\(F\)">\(F\)</span>. The proof truncates at every level <span class="math" data-tex="\(b\)">\(b\)</span> at once, applies the uniform theorem at each fixed <span class="math" data-tex="\(b\)">\(b\)</span>, exchanges two colimits of sheaves, and only then uses that each complex stabilizes under truncation.</p>
+<p><strong>Prerequisites.</strong> <a href="non-additive-functors-of-complexes-in-a-ringed-topos.html"><em>Non-additive functors of complexes in a ringed topos</em></a>: Section 1, Example 1.3, Section 2.2, Section 3 (Theorem 3.2), Lemma 4.2, Construction 4.3, Theorem 4.4 and its proof, Remark 4.5. <a href="homotopy-sheaves-and-the-free-abelian-whitehead-theorem.html"><em>Homotopy sheaves and the free abelian Whitehead theorem</em></a>: Definition 5.1, Construction 5.2, Propositions 5.3, 5.4, 5.5, 5.7. From the programme lesson <a href="../ag-etale-cohomology/sites-and-sheaves.html"><em>Sites and sheaves</em></a>: Theorems 3.2 and 4.1.</p>
+<h2 id="conventions">Conventions</h2>
+<p>The site and the categories:</p>
+<ul>
+<li><span class="math" data-tex="\(\mathcal C\)">\(\mathcal C\)</span> is a small site, <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(B\)">\(B\)</span> are sheaves of rings on it, and modules are sheaves of modules.</li>
+<li><span class="math" data-tex="\(\operatorname{Mod}(A_U)\)">\(\operatorname{Mod}(A_U)\)</span> is the category of modules on <span class="math" data-tex="\(\mathcal C_{/U}\)">\(\mathcal C_{/U}\)</span>.</li>
+<li>Complexes are cohomological, with <span class="math" data-tex="\((Y[b])^n=Y^{n+b}\)">\((Y[b])^n=Y^{n+b}\)</span>.</li>
+<li><span class="math" data-tex="\(D^-\)">\(D^-\)</span> denotes the complexes with bounded-above cohomology.</li>
+</ul>
+<p>Locally filtered systems and local systems are as in Definition 5.1 of the lesson on homotopy sheaves. A local system of complexes assigns to each <span class="math" data-tex="\(i\in L(U)\)">\(i\in L(U)\)</span> a complex <span class="math" data-tex="\(X_i\)">\(X_i\)</span> of <span class="math" data-tex="\(A_U\)">\(A_U\)</span>-modules. Its limit <span class="math" data-tex="\(\varinjlim_LX_i\)">\(\varinjlim_LX_i\)</span> is formed degreewise.</p>
+<p><span class="math" data-tex="\(F\colon\operatorname{Mod}(A)\to\operatorname{Mod}(B)\)">\(F\colon\operatorname{Mod}(A)\to\operatorname{Mod}(B)\)</span> is as in Section 4 of the lesson on non-additive functors: reduced, commuting with restriction and with local inductive limits. The totalization <span class="math" data-tex="\(\operatorname{Tot}\)">\(\operatorname{Tot}\)</span> in <span class="math" data-tex="\(F(X)=\operatorname{Tot}NF\Gamma\,iX\)">\(F(X)=\operatorname{Tot}NF\Gamma\,iX\)</span> is the direct-sum totalization. This is the reading under which the proof of Theorem 4.4 there is valid: the diagonals of a second-quadrant double complex are infinite, and direct sums, unlike products, commute with <span class="math" data-tex="\(\varinjlim_L\)">\(\varinjlim_L\)</span> (Proposition 5.3 of the lesson on homotopy sheaves). For fixed <span class="math" data-tex="\(q\)">\(q\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+G&amp;=H^q\circ LF\colon\\
+&amp;\quad D^-(A_U)\to\operatorname{Mod}(B_U).
+\end{aligned}
+\]">\[
+\begin{aligned}
+G&amp;=H^q\circ LF\colon\\
+&amp;\quad D^-(A_U)\to\operatorname{Mod}(B_U).
+\end{aligned}
+\]</span></p>
+<h2 id="1-the-comparison-map">1. The comparison map</h2>
+<p><strong>Lemma 1.1.</strong> Restriction along <span class="math" data-tex="\(V\to U\)">\(V\to U\)</span> preserves flat modules. For <span class="math" data-tex="\(Y\in D^-(A_U)\)">\(Y\in D^-(A_U)\)</span> there is a natural isomorphism
+<span class="math math-display" data-tex="\[
+LF(Y)|_V\cong LF(Y|_V),
+\]">\[
+LF(Y)|_V\cong LF(Y|_V),
+\]</span>
+and hence <span class="math" data-tex="\(G(Y)|_V\cong G(Y|_V)\)">\(G(Y)|_V\cong G(Y|_V)\)</span>.</p>
+<p><strong>Proof.</strong> <em>Flat modules.</em> By Theorem 3.2 of the lesson on non-additive functors, a flat module <span class="math" data-tex="\(M\)">\(M\)</span> is <span class="math" data-tex="\(\varinjlim_LE_i\)">\(\varinjlim_LE_i\)</span> for a local system of finite free modules <span class="math" data-tex="\(E_i\)">\(E_i\)</span>. Restriction carries this to a local system of finite free modules on the restricted system. Restriction also commutes with sheafification, hence with <span class="math" data-tex="\(\varinjlim_L\)">\(\varinjlim_L\)</span>. So <span class="math" data-tex="\(M|_V\)">\(M|_V\)</span> is flat by the same theorem.</p>
+<p><em>The isomorphism.</em> Let <span class="math" data-tex="\(Y&#x27;\to Y\)">\(Y&#x27;\to Y\)</span> be a quasi-isomorphism from a bounded-above flat complex. Restriction is exact, so <span class="math" data-tex="\(Y&#x27;|_V\to Y|_V\)">\(Y&#x27;|_V\to Y|_V\)</span> is again such a resolution. The functors <span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span>, <span class="math" data-tex="\(i\)">\(i\)</span>, <span class="math" data-tex="\(N\)">\(N\)</span> and <span class="math" data-tex="\(\operatorname{Tot}\)">\(\operatorname{Tot}\)</span> use only finite sums, kernels and direct sums, and <span class="math" data-tex="\(F\)">\(F\)</span> commutes with restriction by hypothesis. Hence <span class="math" data-tex="\(F(Y&#x27;)|_V=F(Y&#x27;|_V)\)">\(F(Y&#x27;)|_V=F(Y&#x27;|_V)\)</span>. Theorem 4.4 there then gives the isomorphism, which is natural in maps of resolutions. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Definition 1.2.</strong> Let <span class="math" data-tex="\(X=\varinjlim_LX_i\)">\(X=\varinjlim_LX_i\)</span>, let <span class="math" data-tex="\(c_i\colon X_i\to X|_U\)">\(c_i\colon X_i\to X|_U\)</span> be the cocone maps, and assume that every <span class="math" data-tex="\(X_i\)">\(X_i\)</span> and <span class="math" data-tex="\(X\)">\(X\)</span> lies in <span class="math" data-tex="\(D^-\)">\(D^-\)</span>. The maps
+<span class="math math-display" data-tex="\[
+G([c_i])\colon G(X_i)\to G(X)|_U
+\]">\[
+G([c_i])\colon G(X_i)\to G(X)|_U
+\]</span>
+are compatible with the arrows of <span class="math" data-tex="\(L\)">\(L\)</span> and with restriction, by functoriality and Lemma 1.1. By Proposition 5.3 of the lesson on homotopy sheaves they define
+<span class="math math-display" data-tex="\[
+\alpha^q_X\colon\varinjlim_LG(X_i)\to G(X).
+\]">\[
+\alpha^q_X\colon\varinjlim_LG(X_i)\to G(X).
+\]</span>
+This map is <span class="math" data-tex="\(B\)">\(B\)</span>-linear. Indeed, <span class="math" data-tex="\(\varinjlim_L\)">\(\varinjlim_L\)</span> commutes with the finite products that define the module operations (Proposition 5.5 there), and <span class="math" data-tex="\(\alpha^q_X\)">\(\alpha^q_X\)</span> is linear on local representatives (Proposition 5.4 there).</p>
+<p><strong>Lemma 1.3.</strong> If every <span class="math" data-tex="\(X_i\)">\(X_i\)</span> vanishes in degrees <span class="math" data-tex="\(&gt;b\)">\(&gt;b\)</span>, then <span class="math" data-tex="\(\alpha^q_X\)">\(\alpha^q_X\)</span> is an isomorphism.</p>
+<p><strong>Proof.</strong> Let <span class="math" data-tex="\(L_b\)">\(L_b\)</span> and <span class="math" data-tex="\(\eta\colon L_bY\to Y\)">\(\eta\colon L_bY\to Y\)</span> be as in Construction 4.3 of the lesson on non-additive functors. The isomorphisms <span class="math" data-tex="\(LF(Y)\cong F(L_bY)\)">\(LF(Y)\cong F(L_bY)\)</span> of Theorem 4.4 there are natural. They carry <span class="math" data-tex="\(LF([f])\)">\(LF([f])\)</span> to <span class="math" data-tex="\(F(L_bf)\)">\(F(L_bf)\)</span> for every chain map <span class="math" data-tex="\(f\)">\(f\)</span> between complexes vanishing above <span class="math" data-tex="\(b\)">\(b\)</span>. So <span class="math" data-tex="\(\alpha^q_X\)">\(\alpha^q_X\)</span> becomes the map
+<span class="math math-display" data-tex="\[
+\varinjlim_LH^qF(L_bX_i)\to H^qF(L_bX)
+\]">\[
+\varinjlim_LH^qF(L_bX_i)\to H^qF(L_bX)
+\]</span>
+induced by the maps <span class="math" data-tex="\(F(L_bc_i)\)">\(F(L_bc_i)\)</span>.</p>
+<p>Each functor in <span class="math" data-tex="\(F\circ L_b\)">\(F\circ L_b\)</span> commutes with <span class="math" data-tex="\(\varinjlim_L\)">\(\varinjlim_L\)</span>, through the map induced by the cocone:</p>
+<ul>
+<li><span class="math" data-tex="\(\Gamma\)">\(\Gamma\)</span> and <span class="math" data-tex="\(i\)">\(i\)</span> use finite sums;</li>
+<li>the free module functor commutes by Proposition 5.7 (2) of the lesson on homotopy sheaves;</li>
+<li><span class="math" data-tex="\(N\)">\(N\)</span> uses kernels (Proposition 5.7 (3), (4));</li>
+<li><span class="math" data-tex="\(\operatorname{Tot}\)">\(\operatorname{Tot}\)</span> uses direct sums (Proposition 5.3);</li>
+<li><span class="math" data-tex="\(F\)">\(F\)</span> commutes by hypothesis.</li>
+</ul>
+<p>Hence the maps <span class="math" data-tex="\(F(L_bc_i)\)">\(F(L_bc_i)\)</span> induce an isomorphism of complexes <span class="math" data-tex="\(\varinjlim_LF(L_bX_i)\to F(L_bX)\)">\(\varinjlim_LF(L_bX_i)\to F(L_bX)\)</span>. Finally, <span class="math" data-tex="\(\varinjlim_L\)">\(\varinjlim_L\)</span> commutes with cohomology (Proposition 5.7 (4)). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-exchanging-two-colimits">2. Exchanging two colimits</h2>
+<p><strong>Lemma 2.1.</strong> Let <span class="math" data-tex="\(M_{i,b}\)">\(M_{i,b}\)</span>, for <span class="math" data-tex="\(b\in\mathbb N\)">\(b\in\mathbb N\)</span>, be local systems of <span class="math" data-tex="\(B\)">\(B\)</span>-modules on <span class="math" data-tex="\(L\)">\(L\)</span>, with maps <span class="math" data-tex="\(M_{i,b}\to M_{i,b+1}\)">\(M_{i,b}\to M_{i,b+1}\)</span> compatible with <span class="math" data-tex="\(L\)">\(L\)</span> and with restriction. Put <span class="math" data-tex="\(M_{i,\infty}=\varinjlim_bM_{i,b}\)">\(M_{i,\infty}=\varinjlim_bM_{i,b}\)</span>, a colimit in <span class="math" data-tex="\(\operatorname{Mod}(B_U)\)">\(\operatorname{Mod}(B_U)\)</span>. The maps <span class="math" data-tex="\(M_{i,b}\to M_{i,\infty}\to(\varinjlim_LM_{i,\infty})|_U\)">\(M_{i,b}\to M_{i,\infty}\to(\varinjlim_LM_{i,\infty})|_U\)</span> induce an isomorphism
+<span class="math math-display" data-tex="\[
+\kappa\colon\varinjlim_b\varinjlim_LM_{i,b}\to\varinjlim_LM_{i,\infty}.
+\]">\[
+\kappa\colon\varinjlim_b\varinjlim_LM_{i,b}\to\varinjlim_LM_{i,\infty}.
+\]</span></p>
+<p><strong>Proof.</strong> Restriction commutes with colimits of sheaves, so <span class="math" data-tex="\(i\mapsto M_{i,\infty}\)">\(i\mapsto M_{i,\infty}\)</span> is a local system, and <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is defined. Let <span class="math" data-tex="\(E\)">\(E\)</span> be a <span class="math" data-tex="\(B\)">\(B\)</span>-module. By Proposition 5.3 of the lesson on homotopy sheaves and the universal property of sequential colimits, a linear map from either side to <span class="math" data-tex="\(E\)">\(E\)</span> is the same datum: maps <span class="math" data-tex="\(M_{i,b}\to E|_U\)">\(M_{i,b}\to E|_U\)</span>, compatible in <span class="math" data-tex="\(b\)">\(b\)</span>, in <span class="math" data-tex="\(i\)">\(i\)</span> and with restriction. Precomposition with <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> induces this identification, naturally in <span class="math" data-tex="\(E\)">\(E\)</span>. So <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is an isomorphism by Yoneda. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="3-good-truncations">3. Good truncations</h2>
+<p>For a complex <span class="math" data-tex="\(Y\)">\(Y\)</span>, the good truncation <span class="math" data-tex="\(T_bY\)">\(T_bY\)</span> is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\cdots\to Y^{b-1}\\
+&amp;\quad\to\ker(d^b)\to0\to\cdots
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\cdots\to Y^{b-1}\\
+&amp;\quad\to\ker(d^b)\to0\to\cdots
+\end{aligned}
+\]</span>
+It comes with the inclusions <span class="math" data-tex="\(j_b\colon T_bY\to Y\)">\(j_b\colon T_bY\to Y\)</span> and <span class="math" data-tex="\(u_b\colon T_bY\to T_{b+1}Y\)">\(u_b\colon T_bY\to T_{b+1}Y\)</span>, which satisfy <span class="math" data-tex="\(j_{b+1}u_b=j_b\)">\(j_{b+1}u_b=j_b\)</span>. For a chain map <span class="math" data-tex="\(f\colon Y\to Z\)">\(f\colon Y\to Z\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;f j_b =j_bT_bf,\quad T_{b+1}f\,u_b\\&amp;\quad =u_bT_bf.\end{aligned} \tag{3.1}
+\]">\[
+\begin{aligned}&amp;f j_b =j_bT_bf,\quad T_{b+1}f\,u_b\\&amp;\quad =u_bT_bf.\end{aligned} \tag{3.1}
+\]</span>
+Restriction is exact, so <span class="math" data-tex="\(T_b(Y|_V)=(T_bY)|_V\)">\(T_b(Y|_V)=(T_bY)|_V\)</span>.</p>
+<p><strong>Lemma 3.1.</strong></p>
+<ol>
+<li><span class="math" data-tex="\(H^n(j_b)\)">\(H^n(j_b)\)</span> is an isomorphism for <span class="math" data-tex="\(n\le b\)">\(n\le b\)</span>, and <span class="math" data-tex="\(H^n(T_bY)=0\)">\(H^n(T_bY)=0\)</span> for <span class="math" data-tex="\(n&gt;b\)">\(n&gt;b\)</span>. In particular <span class="math" data-tex="\(T_b\)">\(T_b\)</span> preserves quasi-isomorphisms.</li>
+<li>The maps <span class="math" data-tex="\(T_bc_i\)">\(T_bc_i\)</span> induce an isomorphism of complexes <span class="math" data-tex="\(\chi_b\colon\varinjlim_LT_bX_i\to T_bX\)">\(\chi_b\colon\varinjlim_LT_bX_i\to T_bX\)</span>, compatible with the maps <span class="math" data-tex="\(u_b\)">\(u_b\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) Below degree <span class="math" data-tex="\(b\)">\(b\)</span>, nothing changes. In degree <span class="math" data-tex="\(b\)">\(b\)</span>, both cohomologies are <span class="math" data-tex="\(\ker d^b/\operatorname{im}d^{b-1}\)">\(\ker d^b/\operatorname{im}d^{b-1}\)</span>.</p>
+<p>(2) Below degree <span class="math" data-tex="\(b\)">\(b\)</span>, <span class="math" data-tex="\(\chi_b\)">\(\chi_b\)</span> is the identity of <span class="math" data-tex="\(X^n\)">\(X^n\)</span>. In degree <span class="math" data-tex="\(b\)">\(b\)</span> it is the map <span class="math" data-tex="\(\varinjlim_L\ker d_i^b\to\ker\varinjlim_Ld_i^b\)">\(\varinjlim_L\ker d_i^b\to\ker\varinjlim_Ld_i^b\)</span>, which is bijective by Proposition 5.7 (4) of the lesson on homotopy sheaves. The compatibility with <span class="math" data-tex="\(u_b\)">\(u_b\)</span> follows from (3.1). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.2.</strong> For <span class="math" data-tex="\(Y\in D^-(A_U)\)">\(Y\in D^-(A_U)\)</span>, the maps <span class="math" data-tex="\(G([j_b])\)">\(G([j_b])\)</span> induce an isomorphism
+<span class="math math-display" data-tex="\[
+s_Y\colon\varinjlim_bG(T_bY)\to G(Y).
+\]">\[
+s_Y\colon\varinjlim_bG(T_bY)\to G(Y).
+\]</span>
+It is natural in <span class="math" data-tex="\(Y\)">\(Y\)</span> and compatible with restriction.</p>
+<p><strong>Proof.</strong> The maps <span class="math" data-tex="\(G([j_b])\)">\(G([j_b])\)</span> form a cocone over the transition maps <span class="math" data-tex="\(G([u_b])\)">\(G([u_b])\)</span>, because <span class="math" data-tex="\(j_{b+1}u_b=j_b\)">\(j_{b+1}u_b=j_b\)</span>. Choose <span class="math" data-tex="\(h\ge0\)">\(h\ge0\)</span> with <span class="math" data-tex="\(H^n(Y)=0\)">\(H^n(Y)=0\)</span> for <span class="math" data-tex="\(n&gt;h\)">\(n&gt;h\)</span>. For <span class="math" data-tex="\(b\ge h\)">\(b\ge h\)</span>, <span class="math" data-tex="\(j_b\)">\(j_b\)</span> and <span class="math" data-tex="\(u_b\)">\(u_b\)</span> are quasi-isomorphisms by Lemma 3.1, so <span class="math" data-tex="\(G([j_b])\)">\(G([j_b])\)</span> and <span class="math" data-tex="\(G([u_b])\)">\(G([u_b])\)</span> are isomorphisms. A sequence that is eventually a sequence of isomorphisms has its colimit mapped isomorphically by such a cocone.</p>
+<p>Naturality is (3.1), and the compatibility with restriction is Lemma 1.1. The integer <span class="math" data-tex="\(h\)">\(h\)</span> enters only the proof of invertibility, not the definition of <span class="math" data-tex="\(s_Y\)">\(s_Y\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-theorem">4. The theorem</h2>
+<p><strong>Theorem 4.1.</strong> Let <span class="math" data-tex="\(X=\varinjlim_LX_i\)">\(X=\varinjlim_LX_i\)</span>, and suppose that every <span class="math" data-tex="\(X_i\)">\(X_i\)</span> and <span class="math" data-tex="\(X\)">\(X\)</span> has bounded-above cohomology, with bounds that may depend on <span class="math" data-tex="\(i\)">\(i\)</span>. Then for every <span class="math" data-tex="\(q\)">\(q\)</span> the map
+<span class="math math-display" data-tex="\[
+\alpha^q_X\colon\varinjlim_LH^qLF(X_i)\to H^qLF(X)
+\]">\[
+\alpha^q_X\colon\varinjlim_LH^qLF(X_i)\to H^qLF(X)
+\]</span>
+is an isomorphism. No hypothesis on the degree of <span class="math" data-tex="\(F\)">\(F\)</span> is needed.</p>
+<p><strong>Proof.</strong> <em>Fixed <span class="math" data-tex="\(b\)">\(b\)</span>.</em> Fix <span class="math" data-tex="\(b\in\mathbb N\)">\(b\in\mathbb N\)</span>. Lemma 1.3, applied to the system <span class="math" data-tex="\(T_bX_i\)">\(T_bX_i\)</span> and followed by <span class="math" data-tex="\(G([\chi_b])\)">\(G([\chi_b])\)</span>, gives an isomorphism
+<span class="math math-display" data-tex="\[
+\beta_b\colon\varinjlim_LG(T_bX_i)\to G(T_bX).
+\]">\[
+\beta_b\colon\varinjlim_LG(T_bX_i)\to G(T_bX).
+\]</span>
+On the cocone from <span class="math" data-tex="\(G(T_bX_i)\)">\(G(T_bX_i)\)</span>, <span class="math" data-tex="\(\beta_b\)">\(\beta_b\)</span> is <span class="math" data-tex="\(G([T_bc_i])\)">\(G([T_bc_i])\)</span>. By (3.1), the maps <span class="math" data-tex="\(\beta_b\)">\(\beta_b\)</span> commute with the transition maps <span class="math" data-tex="\(G([u_b])\)">\(G([u_b])\)</span>: precomposed with the cocone, both composites are <span class="math" data-tex="\(G\)">\(G\)</span> of the same chain map <span class="math" data-tex="\(u_bT_bc_i=T_{b+1}c_i\,u_b\)">\(u_bT_bc_i=T_{b+1}c_i\,u_b\)</span>.</p>
+<p><em>Two routes.</em> Put <span class="math" data-tex="\(P=\varinjlim_b\varinjlim_LG(T_bX_i)\)">\(P=\varinjlim_b\varinjlim_LG(T_bX_i)\)</span>. There are two maps <span class="math" data-tex="\(P\to G(X)\)">\(P\to G(X)\)</span>:</p>
+<ul>
+<li>route (a) is <span class="math" data-tex="\(s_X\circ\varinjlim_b\beta_b\)">\(s_X\circ\varinjlim_b\beta_b\)</span>;</li>
+<li>route (b) is <span class="math" data-tex="\(\alpha^q_X\circ\varinjlim_Ls_{X_i}\circ\kappa\)">\(\alpha^q_X\circ\varinjlim_Ls_{X_i}\circ\kappa\)</span>, where <span class="math" data-tex="\(\kappa\)">\(\kappa\)</span> is the map of Lemma 2.1 for <span class="math" data-tex="\(M_{i,b}=G(T_bX_i)\)">\(M_{i,b}=G(T_bX_i)\)</span>.</li>
+</ul>
+<p>The factors are isomorphisms for the following reasons:</p>
+<ul>
+<li><span class="math" data-tex="\(\varinjlim_b\beta_b\)">\(\varinjlim_b\beta_b\)</span>, because every <span class="math" data-tex="\(\beta_b\)">\(\beta_b\)</span> is one;</li>
+<li><span class="math" data-tex="\(s_X\)">\(s_X\)</span>, by Lemma 3.2, because <span class="math" data-tex="\(X\in D^-\)">\(X\in D^-\)</span>;</li>
+<li><span class="math" data-tex="\(\kappa\)">\(\kappa\)</span>, by Lemma 2.1;</li>
+<li><span class="math" data-tex="\(\varinjlim_Ls_{X_i}\)">\(\varinjlim_Ls_{X_i}\)</span>, because each <span class="math" data-tex="\(s_{X_i}\)">\(s_{X_i}\)</span> is an isomorphism by Lemma 3.2 applied to the single complex <span class="math" data-tex="\(X_i\)">\(X_i\)</span>, and the <span class="math" data-tex="\(s_{X_i}\)">\(s_{X_i}\)</span> form a map of local systems by naturality.</li>
+</ul>
+<p><em>The routes agree.</em> By the universal properties, it suffices to compare the two routes on the map from <span class="math" data-tex="\(G(T_bX_i)\)">\(G(T_bX_i)\)</span>, restricted to <span class="math" data-tex="\(U\)">\(U\)</span>. There they are <span class="math" data-tex="\(G([j_b])G([T_bc_i])\)">\(G([j_b])G([T_bc_i])\)</span> and <span class="math" data-tex="\(G([c_i])G([j_b])\)">\(G([c_i])G([j_b])\)</span>. These are equal by (3.1), since <span class="math" data-tex="\(j_bT_bc_i=c_ij_b\)">\(j_bT_bc_i=c_ij_b\)</span> as chain maps <span class="math" data-tex="\(T_bX_i\to X|_U\)">\(T_bX_i\to X|_U\)</span>.</p>
+<p>Hence <span class="math" data-tex="\(\alpha^q_X\)">\(\alpha^q_X\)</span> is the composite of route (a) with the inverses of the other three factors of route (b), all isomorphisms. So <span class="math" data-tex="\(\alpha^q_X\)">\(\alpha^q_X\)</span> is an isomorphism. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>In particular, there is no counterexample, even in the punctual topos with <span class="math" data-tex="\(L\)">\(L\)</span> a directed set. No truncation degree is chosen as a function of <span class="math" data-tex="\(i\)">\(i\)</span>. A common bound <span class="math" data-tex="\(H^n(X_i)=0\)">\(H^n(X_i)=0\)</span> for <span class="math" data-tex="\(n&gt;b\)">\(n&gt;b\)</span> implies <span class="math" data-tex="\(X\in D^-\)">\(X\in D^-\)</span>, by Proposition 5.7 (4) of the lesson on homotopy sheaves, so such a bound is sufficient but not necessary.</p>
+<p><strong>Corollary 4.2.</strong> For any complex <span class="math" data-tex="\(Y\)">\(Y\)</span> of <span class="math" data-tex="\(A_U\)">\(A_U\)</span>-modules put
+<span class="math math-display" data-tex="\[
+\widehat G(Y)=\varinjlim_bH^qLF(T_bY).
+\]">\[
+\widehat G(Y)=\varinjlim_bH^qLF(T_bY).
+\]</span></p>
+<ol>
+<li><span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span> is a functor on <span class="math" data-tex="\(D(A_U)\)">\(D(A_U)\)</span>, compatible with restriction, and <span class="math" data-tex="\(s_Y\)">\(s_Y\)</span> identifies it with <span class="math" data-tex="\(G\)">\(G\)</span> on <span class="math" data-tex="\(D^-\)">\(D^-\)</span>.</li>
+<li>For every local system of arbitrary complexes, the maps <span class="math" data-tex="\(\widehat G([c_i])\)">\(\widehat G([c_i])\)</span> induce an isomorphism <span class="math" data-tex="\(\varinjlim_L\widehat G(X_i)\to\widehat G(X)\)">\(\varinjlim_L\widehat G(X_i)\to\widehat G(X)\)</span>.</li>
+<li>Let <span class="math" data-tex="\(J\)">\(J\)</span> be a functor with the properties of (1) and (2) and an identification <span class="math" data-tex="\(\theta\colon J|_{D^-}\cong G\)">\(\theta\colon J|_{D^-}\cong G\)</span>. Then <span class="math" data-tex="\(J\cong\widehat G\)">\(J\cong\widehat G\)</span> by a unique isomorphism extending <span class="math" data-tex="\(\theta\)">\(\theta\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) Each <span class="math" data-tex="\(T_b\)">\(T_b\)</span> preserves quasi-isomorphisms (Lemma 3.1), so <span class="math" data-tex="\(\widehat G\)">\(\widehat G\)</span> inverts quasi-isomorphisms and factors through <span class="math" data-tex="\(D(A_U)\)">\(D(A_U)\)</span>. The identification on <span class="math" data-tex="\(D^-\)">\(D^-\)</span> is Lemma 3.2.</p>
+<p>(2) The map is <span class="math" data-tex="\((\varinjlim_b\beta_b)\circ\kappa^{-1}\)">\((\varinjlim_b\beta_b)\circ\kappa^{-1}\)</span>, which is defined for every <span class="math" data-tex="\(b\)">\(b\)</span> without any bound on the cohomology of the <span class="math" data-tex="\(X_i\)">\(X_i\)</span> or of <span class="math" data-tex="\(X\)">\(X\)</span>. It is the stated map by the comparison of cocones in the proof of Theorem 4.1.</p>
+<p>(3) Regard <span class="math" data-tex="\(b\mapsto T_bY\)">\(b\mapsto T_bY\)</span> as a local system over the constant locally filtered system <span class="math" data-tex="\(\mathbb N\)">\(\mathbb N\)</span>. Its limit is <span class="math" data-tex="\(Y\)">\(Y\)</span> through the maps <span class="math" data-tex="\(j_b\)">\(j_b\)</span>: in each degree <span class="math" data-tex="\(n\)">\(n\)</span> the terms are constant for <span class="math" data-tex="\(b&gt;n\)">\(b&gt;n\)</span>. By (2) for <span class="math" data-tex="\(J\)">\(J\)</span>, the maps <span class="math" data-tex="\(J([j_b])\)">\(J([j_b])\)</span> give
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;J(Y) \cong\varinjlim_bJ(T_bY)\\&amp;\quad \cong\varinjlim_bG(T_bY) =\widehat G(Y),\end{aligned}
+\]">\[
+\begin{aligned}&amp;J(Y) \cong\varinjlim_bJ(T_bY)\\&amp;\quad \cong\varinjlim_bG(T_bY) =\widehat G(Y),\end{aligned}
+\]</span>
+the middle isomorphism being <span class="math" data-tex="\(\theta\)">\(\theta\)</span>. This isomorphism is natural by (3.1). Conversely, any isomorphism extending <span class="math" data-tex="\(\theta\)">\(\theta\)</span> is compatible with the maps <span class="math" data-tex="\(J([j_b])\)">\(J([j_b])\)</span>, so it equals this one by the universal property of the colimit. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-the-functors-covered">5. The functors covered</h2>
+<p><strong>Proposition 5.1.</strong> For a commutative sheaf of rings <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, the functors <span class="math" data-tex="\(S^n_A\)">\(S^n_A\)</span>, <span class="math" data-tex="\(\Lambda^n_A\)">\(\Lambda^n_A\)</span>, <span class="math" data-tex="\(\Gamma^n_A\)">\(\Gamma^n_A\)</span> and <span class="math" data-tex="\(M\mapsto M^{\otimes n}\)">\(M\mapsto M^{\otimes n}\)</span> satisfy the hypotheses on <span class="math" data-tex="\(F\)">\(F\)</span>.</p>
+<p><strong>Proof.</strong> These functors are reduced. Write <span class="math" data-tex="\(V(M)\)">\(V(M)\)</span> for the underlying sheaf of <span class="math" data-tex="\(M\)">\(M\)</span>; then <span class="math" data-tex="\(V(\varinjlim_LM_i)=\varinjlim_LV(M_i)\)">\(V(\varinjlim_LM_i)=\varinjlim_LV(M_i)\)</span>.</p>
+<p><em>A presentation of <span class="math" data-tex="\(\Gamma^n_A(M)\)">\(\Gamma^n_A(M)\)</span>.</em> It is the weight-<span class="math" data-tex="\(n\)">\(n\)</span> part of the quotient of the polynomial algebra on symbols <span class="math" data-tex="\(x^{[k]}\)">\(x^{[k]}\)</span>, for <span class="math" data-tex="\(k\ge1\)">\(k\ge1\)</span>, by the relations
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+x^{[k]}x^{[l]}-\tbinom{k+l}{k}x^{[k+l]},\\
+(ax)^{[k]}-a^kx^{[k]},\\
+(x+y)^{[k]}-\textstyle\sum_lx^{[l]}y^{[k-l]},
+\end{gathered}
+\]">\[
+\begin{gathered}
+x^{[k]}x^{[l]}-\tbinom{k+l}{k}x^{[k+l]},\\
+(ax)^{[k]}-a^kx^{[k]},\\
+(x+y)^{[k]}-\textstyle\sum_lx^{[l]}y^{[k-l]},
+\end{gathered}
+\]</span>
+where <span class="math" data-tex="\(x^{[0]}=1\)">\(x^{[0]}=1\)</span>. So <span class="math" data-tex="\(\Gamma^n_A(M)\)">\(\Gamma^n_A(M)\)</span> is the cokernel of a map <span class="math" data-tex="\(A^{(R_n(M))}\to A^{(W_n(M))}\)">\(A^{(R_n(M))}\to A^{(W_n(M))}\)</span> built from finitely many module operations. Here:</p>
+<ul>
+<li><span class="math" data-tex="\(W_n(M)\)">\(W_n(M)\)</span>, the weight-<span class="math" data-tex="\(n\)">\(n\)</span> monomials, is a finite coproduct of quotients of sheaves <span class="math" data-tex="\(V(M)^r\)">\(V(M)^r\)</span> by finite groups;</li>
+<li><span class="math" data-tex="\(R_n(M)\)">\(R_n(M)\)</span>, the relations times monomials of total weight <span class="math" data-tex="\(n\)">\(n\)</span>, is a finite coproduct of quotients of sheaves <span class="math" data-tex="\(V(M)^r\times V(A)\)">\(V(M)^r\times V(A)\)</span> and <span class="math" data-tex="\(V(M)^r\)">\(V(M)^r\)</span>.</li>
+</ul>
+<p><em>Commutation with <span class="math" data-tex="\(\varinjlim_L\)">\(\varinjlim_L\)</span>.</em> The functor <span class="math" data-tex="\(\varinjlim_L\)">\(\varinjlim_L\)</span> commutes with each step of this presentation:</p>
+<ul>
+<li>with finite products (Proposition 5.5 of the lesson on homotopy sheaves);</li>
+<li>with colimits (Proposition 5.3 there);</li>
+<li>with free modules (Proposition 5.7 (2) there);</li>
+<li>with cokernels (Proposition 5.7 (4) there).</li>
+</ul>
+<p>Every step also commutes with restriction.</p>
+<p><em>The other functors.</em> The same argument applies to <span class="math" data-tex="\(S^n_A\)">\(S^n_A\)</span> and <span class="math" data-tex="\(M^{\otimes n}\)">\(M^{\otimes n}\)</span>, with the relations of multilinearity, and of commutativity for <span class="math" data-tex="\(S^n_A\)">\(S^n_A\)</span>. It applies to <span class="math" data-tex="\(\Lambda^n_A\)">\(\Lambda^n_A\)</span> with the relations <span class="math" data-tex="\(x\wedge x\wedge y_3\wedge\cdots\wedge y_n\)">\(x\wedge x\wedge y_3\wedge\cdots\wedge y_n\)</span> added. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 5.2.</strong> Let <span class="math" data-tex="\(I(M)\)">\(I(M)\)</span> be the kernel of the augmentation <span class="math" data-tex="\(A^{(V(M))}\to A\)">\(A^{(V(M))}\to A\)</span>, <span class="math" data-tex="\([m]\mapsto1\)">\([m]\mapsto1\)</span>. Then <span class="math" data-tex="\(I\)">\(I\)</span> satisfies the hypotheses on <span class="math" data-tex="\(F\)">\(F\)</span>, by Proposition 5.7 (2), (4) of the lesson on homotopy sheaves.</p>
+<p><span class="math" data-tex="\(I\)">\(I\)</span> has infinite degree. Take <span class="math" data-tex="\(A=\mathbb Z\)">\(A=\mathbb Z\)</span> on the punctual site. From <span class="math" data-tex="\(\mathbb Z[M\oplus N]=\mathbb Z[M]\otimes\mathbb Z[N]\)">\(\mathbb Z[M\oplus N]=\mathbb Z[M]\otimes\mathbb Z[N]\)</span> and <span class="math" data-tex="\(\mathbb Z[M]=\mathbb Z\oplus I(M)\)">\(\mathbb Z[M]=\mathbb Z\oplus I(M)\)</span>,
+<span class="math math-display" data-tex="\[
+I\Bigl(\bigoplus_{j=1}^rM_j\Bigr)\cong\bigoplus_{\varnothing\ne S}\bigotimes_{j\in S}I(M_j).
+\]">\[
+I\Bigl(\bigoplus_{j=1}^rM_j\Bigr)\cong\bigoplus_{\varnothing\ne S}\bigotimes_{j\in S}I(M_j).
+\]</span>
+The map <span class="math" data-tex="\(I(e_R)\)">\(I(e_R)\)</span> is the identity on the summands with <span class="math" data-tex="\(S\subseteq R\)">\(S\subseteq R\)</span> and zero on the others. So <span class="math" data-tex="\(\varepsilon_{\{1,\dots,r\}}\)">\(\varepsilon_{\{1,\dots,r\}}\)</span> acts on the summand of <span class="math" data-tex="\(S\)">\(S\)</span> by <span class="math" data-tex="\(\sum_{S\subseteq R}(-1)^{r-|R|}=(1-1)^{r-|S|}\)">\(\sum_{S\subseteq R}(-1)^{r-|R|}=(1-1)^{r-|S|}\)</span>. The top cross-effect is therefore <span class="math" data-tex="\(\bigotimes_jI(M_j)\)">\(\bigotimes_jI(M_j)\)</span>. For <span class="math" data-tex="\(M_j=\mathbb Z\)">\(M_j=\mathbb Z\)</span> it contains <span class="math" data-tex="\(([1]-[0])^{\otimes r}\neq0\)">\(([1]-[0])^{\otimes r}\neq0\)</span>, because <span class="math" data-tex="\(I(\mathbb Z)\)">\(I(\mathbb Z)\)</span> is free on the elements <span class="math" data-tex="\([m]-[0]\)">\([m]-[0]\)</span> with <span class="math" data-tex="\(m\neq0\)">\(m\neq0\)</span>. So all cross-effects are nonzero.</p>
+<p><strong>Proposition 5.3.</strong> Let <span class="math" data-tex="\(E\colon\operatorname{Mod}(A)\to\operatorname{Mod}(B)\)">\(E\colon\operatorname{Mod}(A)\to\operatorname{Mod}(B)\)</span> commute with restriction and with local inductive limits. Put <span class="math" data-tex="\(K=E(0)\)">\(K=E(0)\)</span>, let <span class="math" data-tex="\(E_{\mathrm{red}}(M)=\ker E(M\to0)\)">\(E_{\mathrm{red}}(M)=\ker E(M\to0)\)</span>, and set <span class="math" data-tex="\(LE=K[0]\oplus LE_{\mathrm{red}}\)">\(LE=K[0]\oplus LE_{\mathrm{red}}\)</span>. Then <span class="math" data-tex="\(LE(X)\)">\(LE(X)\)</span> agrees with <span class="math" data-tex="\(\operatorname{Tot}NE\Gamma\,iX&#x27;\)">\(\operatorname{Tot}NE\Gamma\,iX&#x27;\)</span> on flat resolutions <span class="math" data-tex="\(X&#x27;\)">\(X&#x27;\)</span>, and the conclusion of Theorem 4.1 holds for <span class="math" data-tex="\(LE\)">\(LE\)</span>.</p>
+<p><strong>Proof.</strong> <em>The splitting.</em> The map <span class="math" data-tex="\((k,x)\mapsto E(0\to M)(k)+x\)">\((k,x)\mapsto E(0\to M)(k)+x\)</span> is a natural isomorphism <span class="math" data-tex="\(K\oplus E_{\mathrm{red}}(M)\to E(M)\)">\(K\oplus E_{\mathrm{red}}(M)\to E(M)\)</span>. The functor <span class="math" data-tex="\(E_{\mathrm{red}}\)">\(E_{\mathrm{red}}\)</span> is reduced and has the hypotheses of <span class="math" data-tex="\(F\)">\(F\)</span>, because restriction and <span class="math" data-tex="\(\varinjlim_L\)">\(\varinjlim_L\)</span> are exact.</p>
+<p><em>The constant part.</em> The mixed object of the constant functor <span class="math" data-tex="\(K\)">\(K\)</span> is constant, and its normalization is <span class="math" data-tex="\(K\)">\(K\)</span> in bidegree <span class="math" data-tex="\((0,0)\)">\((0,0)\)</span>. This gives the agreement with <span class="math" data-tex="\(\operatorname{Tot}NE\Gamma\,iX&#x27;\)">\(\operatorname{Tot}NE\Gamma\,iX&#x27;\)</span>.</p>
+<p><em>The comparison.</em> The constant system <span class="math" data-tex="\(i\mapsto K|_U\)">\(i\mapsto K|_U\)</span> has limit <span class="math" data-tex="\(K\)">\(K\)</span>. The map to <span class="math" data-tex="\(K\)">\(K\)</span> is locally surjective by (LF0) and injective on local representatives by (LF1), so it is an isomorphism (Theorem 4.1 of <em>Sites and sheaves</em>). So the comparison for <span class="math" data-tex="\(E\)">\(E\)</span> is the direct sum of the identity of <span class="math" data-tex="\(K\)">\(K\)</span> and the isomorphism of Theorem 4.1 for <span class="math" data-tex="\(E_{\mathrm{red}}\)">\(E_{\mathrm{red}}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For example, the free-module functor <span class="math" data-tex="\(M\mapsto A^{(V(M))}\)">\(M\mapsto A^{(V(M))}\)</span> has <span class="math" data-tex="\(K=A\)">\(K=A\)</span>, and <span class="math" data-tex="\(E_{\mathrm{red}}=I\)">\(E_{\mathrm{red}}=I\)</span> is the functor of Example 5.2.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>Exercise 6.1.</strong> On the punctual site, let <span class="math" data-tex="\(X_b=\mathbb Z[-b]\)">\(X_b=\mathbb Z[-b]\)</span> for <span class="math" data-tex="\(b\in\mathbb N\)">\(b\in\mathbb N\)</span>, with zero transition maps. Show that <span class="math" data-tex="\(\varinjlim_bX_b=0\)">\(\varinjlim_bX_b=0\)</span>, and that <span class="math" data-tex="\(\varinjlim_bH^qLF(X_b)=0\)">\(\varinjlim_bH^qLF(X_b)=0\)</span>, both directly and by Theorem 4.1.</p>
+<p><strong>Exercise 6.2.</strong> Let <span class="math" data-tex="\(Y=\bigoplus_{b\ge0}\mathbb Z[-b]\)">\(Y=\bigoplus_{b\ge0}\mathbb Z[-b]\)</span>. Show that <span class="math" data-tex="\(Y\notin D^-\)">\(Y\notin D^-\)</span>, that no map <span class="math" data-tex="\(T_bY\to T_{b+1}Y\)">\(T_bY\to T_{b+1}Y\)</span> is a quasi-isomorphism, and that <span class="math" data-tex="\(\widehat G(Y)\)">\(\widehat G(Y)\)</span> is defined.</p>
+<h2 id="7-complete-solutions">7. Complete solutions</h2>
+<p><strong>6.1.</strong> In degree <span class="math" data-tex="\(n\)">\(n\)</span>, the system <span class="math" data-tex="\(X_b^n\)">\(X_b^n\)</span> is <span class="math" data-tex="\(\mathbb Z\)">\(\mathbb Z\)</span> for <span class="math" data-tex="\(b=n\)">\(b=n\)</span> and <span class="math" data-tex="\(0\)">\(0\)</span> otherwise, with zero maps, so the colimit is <span class="math" data-tex="\(0\)">\(0\)</span>. Theorem 4.1 then gives <span class="math" data-tex="\(\varinjlim_bH^qLF(X_b)\cong H^qLF(0)=0\)">\(\varinjlim_bH^qLF(X_b)\cong H^qLF(0)=0\)</span>, since <span class="math" data-tex="\(F(0)=0\)">\(F(0)=0\)</span>.</p>
+<p>Directly, each transition map is <span class="math" data-tex="\(LF\)">\(LF\)</span> of a zero map. It factors through <span class="math" data-tex="\(LF(0)=0\)">\(LF(0)=0\)</span>, so it is zero, and the colimit of a sequence of zero maps is zero.</p>
+<p><strong>6.2.</strong> <span class="math" data-tex="\(H^n(Y)=\mathbb Z\)">\(H^n(Y)=\mathbb Z\)</span> for every <span class="math" data-tex="\(n\ge0\)">\(n\ge0\)</span>, so <span class="math" data-tex="\(Y\notin D^-\)">\(Y\notin D^-\)</span>. The truncation <span class="math" data-tex="\(T_bY=\bigoplus_{c\le b}\mathbb Z[-c]\)">\(T_bY=\bigoplus_{c\le b}\mathbb Z[-c]\)</span> lies in <span class="math" data-tex="\(D^-\)">\(D^-\)</span>. The map <span class="math" data-tex="\(H^{b+1}(u_b)\)">\(H^{b+1}(u_b)\)</span> is <span class="math" data-tex="\(0\to\mathbb Z\)">\(0\to\mathbb Z\)</span>, so <span class="math" data-tex="\(u_b\)">\(u_b\)</span> is not a quasi-isomorphism. The module <span class="math" data-tex="\(\widehat G(Y)\)">\(\widehat G(Y)\)</span> is the colimit of a sequence of modules, so it is defined.</p>
+<h2 id="sources">Sources</h2>
+<p>The proposition that the cohomology of derived non-additive functors commutes with local inductive limits of complexes with bounded-above cohomology is due to Illusie, in his work on the cotangent complex. Local inductive limits and the homotopy invariance used here are Deligne's. The main argument follows a solution produced with ChatGPT (OpenAI) in October 2026 and completed here. For context, see L. Brantner and A. Mathew, <em>Deformation theory and partition Lie algebras</em>, <a href="https://arxiv.org/abs/1904.07352">arXiv:1904.07352</a>, Section 3.2, and J. Lurie, <em>Higher Algebra</em>, Proposition 6.1.5.4, <a href="https://people.math.harvard.edu/~lurie/papers/HA.pdf">author's page</a>.</p>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

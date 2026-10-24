@@ -1,0 +1,217 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Complete splitting at composite levels</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Artin&#x27;s primitive root conjecture)</a><a href="uniform-complete-splitting-in-kummer-fields.html">Previous lesson</a><a href="exact-degrees-of-kummer-fields.html">Next lesson</a><a href="src/complete-splitting-at-composite-levels.md">Editable source</a></nav><main><article><h1 id="complete-splitting-at-composite-levels">Complete splitting at composite levels</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic) on 23 October 2026. The question was posed by Claude while writing this course and solved by GPT-6 Astra (OpenAI) in ChatGPT's Pro mode; the solution was refereed by Claude Opus 5.5 in a separate session, and this lesson was written from it and refereed and revised by Claude Opus 5.5 in two further sessions. Public domain (CC0).</em></p>
+<p>This lesson extends Proposition 5.2 of <a href="artins-conjecture-and-the-index-of-a-prime.html"><em>Artin's conjecture and the index of a prime</em></a> from prime levels <span class="math" data-tex="\(q\)">\(q\)</span> to every integer level <span class="math" data-tex="\(n\)">\(n\)</span>, with no lower threshold on <span class="math" data-tex="\(n\)">\(n\)</span>. The Kummer field at level <span class="math" data-tex="\(n\)">\(n\)</span> is <span class="math" data-tex="\(K_n=\mathbb Q(\mu_n,a^{1/n})\)">\(K_n=\mathbb Q(\mu_n,a^{1/n})\)</span>.</p>
+<ul>
+<li>Section 1 bounds the degree of <span class="math" data-tex="\(K_n\)">\(K_n\)</span> from both sides, and Section 2 bounds its discriminant.</li>
+<li>Section 3 shows that the zero-free strip descends to <span class="math" data-tex="\(\zeta_{K_n}\)">\(\zeta_{K_n}\)</span> for every <span class="math" data-tex="\(n\)">\(n\)</span>, and Section 4 proves the uniform count of completely split primes.</li>
+<li>Section 5 proves a deletion theorem. It turns a supply of primes with prescribed index at finitely many small primes into primes with <span class="math" data-tex="\(i_p(a)=m\)">\(i_p(a)=m\)</span>. It also shows that the required Frobenius condition is nonempty whenever one prime with index <span class="math" data-tex="\(m\)">\(m\)</span> exists.</li>
+</ul>
+<p><strong>Prerequisites.</strong></p>
+<ul>
+<li><a href="artins-conjecture-and-the-index-of-a-prime.html"><em>Artin's conjecture and the index of a prime</em></a>, Lemmas 1.1, 3.1 and 4.1, Theorem 2.1 and Proposition 5.1.</li>
+<li><a href="uniform-complete-splitting-in-kummer-fields.html"><em>Uniform complete splitting in Kummer fields</em></a>, Lemmas 1.1 and 3.1 and Section 4.</li>
+<li><a href="the-zero-free-strip.html"><em>The zero-free strip</em></a>, Corollary 4.2.</li>
+<li><a href="primes-with-controlled-predecessors.html"><em>Primes with controlled predecessors</em></a>, Theorem 6.1.</li>
+<li><a href="../NT-ANT/hilberts-ramification-theory-in-galois-extensions.html"><em>Hilbert's ramification theory in Galois extensions</em></a>, Corollary 6.5.</li>
+<li><a href="../NT-ANT/the-different-and-the-discriminant.html"><em>The different and the discriminant</em></a>, (1)–(4), Proposition 14.2 and Theorem 14.3.</li>
+<li><a href="../NT-ANT/discriminants-and-integral-bases.html"><em>Discriminants and integral bases</em></a>, Proposition 2.2.</li>
+<li><a href="../NT-CFT/artin-l-functions-conductors-and-discriminants.html"><em>Artin L-functions, conductors and discriminants</em></a>, Proposition 21.1 and Theorem 21.2.</li>
+</ul>
+<h2 id="1-degrees">1. Degrees</h2>
+<p>Fix <span class="math" data-tex="\(a\in\mathbb Z\)">\(a\in\mathbb Z\)</span> with <span class="math" data-tex="\(A=|a|&gt;1\)">\(A=|a|&gt;1\)</span>. Put <span class="math" data-tex="\(E_n=\mathbb Q(\mu_n)\)">\(E_n=\mathbb Q(\mu_n)\)</span> and <span class="math" data-tex="\(K_n=E_n(\alpha)\)">\(K_n=E_n(\alpha)\)</span>, where <span class="math" data-tex="\(\alpha^n=a\)">\(\alpha^n=a\)</span>. The field <span class="math" data-tex="\(K_n\)">\(K_n\)</span> is the splitting field of <span class="math" data-tex="\(T^n-a\)">\(T^n-a\)</span>, so it is Galois over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Write <span class="math" data-tex="\(d_n=[K_n:\mathbb Q]\)">\(d_n=[K_n:\mathbb Q]\)</span> and <span class="math" data-tex="\(D_n\)">\(D_n\)</span> for its absolute discriminant.</p>
+<p>Write <span class="math" data-tex="\(A=b^h\)">\(A=b^h\)</span>, where <span class="math" data-tex="\(h\)">\(h\)</span> is the greatest common divisor of the exponents in the prime factorization of <span class="math" data-tex="\(A\)">\(A\)</span>. Then <span class="math" data-tex="\(b&gt;1\)">\(b&gt;1\)</span>, and the exponents of <span class="math" data-tex="\(b\)">\(b\)</span> have greatest common divisor <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p><strong>Lemma 1.1.</strong> Let <span class="math" data-tex="\(v,w\ge1\)">\(v,w\ge1\)</span> be coprime integers. If the positive real number <span class="math" data-tex="\(b^{w/v}\)">\(b^{w/v}\)</span> lies in an abelian extension of <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>, then <span class="math" data-tex="\(v\le2\)">\(v\le2\)</span>.</p>
+<p><em>Proof.</em> We first show that <span class="math" data-tex="\(X^v-b^w\)">\(X^v-b^w\)</span> is irreducible over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. Let <span class="math" data-tex="\(P\)">\(P\)</span> be a monic factor of degree <span class="math" data-tex="\(j\)">\(j\)</span> with <span class="math" data-tex="\(1\le j\le v\)">\(1\le j\le v\)</span>. By Gauss's lemma, <span class="math" data-tex="\(P\)">\(P\)</span> has integer coefficients. All roots of <span class="math" data-tex="\(X^v-b^w\)">\(X^v-b^w\)</span> have absolute value <span class="math" data-tex="\(b^{w/v}\)">\(b^{w/v}\)</span>, so the constant term of <span class="math" data-tex="\(P\)">\(P\)</span> is an integer <span class="math" data-tex="\(B\)">\(B\)</span> with <span class="math" data-tex="\(|B|=b^{wj/v}\)">\(|B|=b^{wj/v}\)</span>. Then <span class="math" data-tex="\(|B|^v=b^{wj}\)">\(|B|^v=b^{wj}\)</span>, so <span class="math" data-tex="\(v\mid wj\,v_\ell(b)\)">\(v\mid wj\,v_\ell(b)\)</span> for every prime <span class="math" data-tex="\(\ell\mid b\)">\(\ell\mid b\)</span>. Since the <span class="math" data-tex="\(v_\ell(b)\)">\(v_\ell(b)\)</span> have greatest common divisor <span class="math" data-tex="\(1\)">\(1\)</span> and <span class="math" data-tex="\((v,w)=1\)">\((v,w)=1\)</span>, we get <span class="math" data-tex="\(v\mid j\)">\(v\mid j\)</span>, hence <span class="math" data-tex="\(j=v\)">\(j=v\)</span>.</p>
+<p>Every subgroup of an abelian group is normal, so the field <span class="math" data-tex="\(\mathbb Q(b^{w/v})\)">\(\mathbb Q(b^{w/v})\)</span> is Galois over <span class="math" data-tex="\(\mathbb Q\)">\(\mathbb Q\)</span>. It is a real field. By irreducibility, it contains all the conjugates <span class="math" data-tex="\(b^{w/v}\zeta_v^j\)">\(b^{w/v}\zeta_v^j\)</span>. These are all real only if <span class="math" data-tex="\(v\le2\)">\(v\le2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 1.2.</strong> Put <span class="math" data-tex="\(g=(n,h)\)">\(g=(n,h)\)</span>. Then
+<span class="math math-display" data-tex="\[
+\frac{n\varphi(n)}{2g}\le d_n\le n\varphi(n).
+\]">\[
+\frac{n\varphi(n)}{2g}\le d_n\le n\varphi(n).
+\]</span>
+For every prime <span class="math" data-tex="\(q&gt;\max(h,2)\)">\(q&gt;\max(h,2)\)</span> one has <span class="math" data-tex="\(d_q=q(q-1)\)">\(d_q=q(q-1)\)</span>.</p>
+<p><em>Proof.</em> Put <span class="math" data-tex="\(m=n/g\)">\(m=n/g\)</span> and <span class="math" data-tex="\(u=h/g\)">\(u=h/g\)</span>, so that <span class="math" data-tex="\((u,m)=1\)">\((u,m)=1\)</span>. Let <span class="math" data-tex="\(\beta=b^{u/m}&gt;0\)">\(\beta=b^{u/m}&gt;0\)</span>; then <span class="math" data-tex="\(\beta^n=A\)">\(\beta^n=A\)</span>. Let <span class="math" data-tex="\(F\)">\(F\)</span> be a cyclotomic field containing <span class="math" data-tex="\(\mu_m\)">\(\mu_m\)</span>, and put <span class="math" data-tex="\(e=[F(\beta):F]\)">\(e=[F(\beta):F]\)</span>.</p>
+<p>Since <span class="math" data-tex="\(\beta^m\in\mathbb Q\)">\(\beta^m\in\mathbb Q\)</span>, the map <span class="math" data-tex="\(\sigma\mapsto\sigma(\beta)/\beta\)">\(\sigma\mapsto\sigma(\beta)/\beta\)</span> is an injective homomorphism from <span class="math" data-tex="\(\operatorname{Gal}(F(\beta)/F)\)">\(\operatorname{Gal}(F(\beta)/F)\)</span> into <span class="math" data-tex="\(\mu_m\)">\(\mu_m\)</span>. Its image is <span class="math" data-tex="\(\mu_e\)">\(\mu_e\)</span>. So <span class="math" data-tex="\(\beta^e=b^{ue/m}\)">\(\beta^e=b^{ue/m}\)</span> is fixed by the whole Galois group and lies in <span class="math" data-tex="\(F\)">\(F\)</span>. In lowest terms, <span class="math" data-tex="\(ue/m\)">\(ue/m\)</span> has denominator <span class="math" data-tex="\(m/e\)">\(m/e\)</span>, and Lemma 1.1 gives <span class="math" data-tex="\(m/e\le2\)">\(m/e\le2\)</span>.</p>
+<p>If <span class="math" data-tex="\(a&gt;0\)">\(a&gt;0\)</span>, take <span class="math" data-tex="\(\alpha=\beta\)">\(\alpha=\beta\)</span> and <span class="math" data-tex="\(F=E_n\)">\(F=E_n\)</span>. If <span class="math" data-tex="\(a&lt;0\)">\(a&lt;0\)</span>, take <span class="math" data-tex="\(\alpha=\zeta_{2n}\beta\)">\(\alpha=\zeta_{2n}\beta\)</span>, so that <span class="math" data-tex="\(\alpha^n=a\)">\(\alpha^n=a\)</span>, and <span class="math" data-tex="\(F=E_{2n}\)">\(F=E_{2n}\)</span>. Since <span class="math" data-tex="\(\zeta_{2n}\in F\)">\(\zeta_{2n}\in F\)</span>, we have <span class="math" data-tex="\(K_nF=F(\beta)\)">\(K_nF=F(\beta)\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+[K_n:E_n]&amp;\ge[K_nF:F]\\
+&amp;=[F(\beta):F]\ge m/2 .
+\end{aligned}
+\]">\[
+\begin{aligned}
+[K_n:E_n]&amp;\ge[K_nF:F]\\
+&amp;=[F(\beta):F]\ge m/2 .
+\end{aligned}
+\]</span>
+In both cases <span class="math" data-tex="\(d_n\ge\varphi(n)n/(2g)\)">\(d_n\ge\varphi(n)n/(2g)\)</span>. The upper bound holds because <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> is a root of <span class="math" data-tex="\(T^n-a\)">\(T^n-a\)</span> over <span class="math" data-tex="\(E_n\)">\(E_n\)</span>.</p>
+<p>For a prime <span class="math" data-tex="\(q&gt;\max(h,2)\)">\(q&gt;\max(h,2)\)</span> we have <span class="math" data-tex="\(g=1\)">\(g=1\)</span>, so <span class="math" data-tex="\(e_q=[K_q:E_q]\ge q/2\)">\(e_q=[K_q:E_q]\ge q/2\)</span>. Moreover <span class="math" data-tex="\(e_q\mid q\)">\(e_q\mid q\)</span>, so <span class="math" data-tex="\(e_q=q\)">\(e_q=q\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Example 1.3.</strong> Take <span class="math" data-tex="\(a=-4\)">\(a=-4\)</span>. If <span class="math" data-tex="\(c^j=-4\)">\(c^j=-4\)</span> with <span class="math" data-tex="\(c\in\mathbb Z\)">\(c\in\mathbb Z\)</span> and <span class="math" data-tex="\(j\ge2\)">\(j\ge2\)</span>, then <span class="math" data-tex="\(j\)">\(j\)</span> is odd and divides <span class="math" data-tex="\(v_2(4)=2\)">\(v_2(4)=2\)</span>, which is impossible. So <span class="math" data-tex="\(-4\)">\(-4\)</span> is not a perfect power of an integer.</p>
+<p>Let <span class="math" data-tex="\(n=4k\)">\(n=4k\)</span>, and choose <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> with <span class="math" data-tex="\(\alpha^k=1+i\)">\(\alpha^k=1+i\)</span>. Then <span class="math" data-tex="\(\alpha^n=(1+i)^4=-4\)">\(\alpha^n=(1+i)^4=-4\)</span>. Since <span class="math" data-tex="\(1+i\in E_n\)">\(1+i\in E_n\)</span>, this gives <span class="math" data-tex="\([K_n:E_n]\le k\)">\([K_n:E_n]\le k\)</span>. Here <span class="math" data-tex="\(h=2\)">\(h=2\)</span> and <span class="math" data-tex="\(g=2\)">\(g=2\)</span>, so Proposition 1.2 gives the reverse inequality, and
+<span class="math math-display" data-tex="\[
+d_n=\frac{n\varphi(n)}4\qquad(4\mid n).
+\]">\[
+d_n=\frac{n\varphi(n)}4\qquad(4\mid n).
+\]</span>
+For instance, <span class="math" data-tex="\(T^4+4=(T^2-2T+2)(T^2+2T+2)\)">\(T^4+4=(T^2-2T+2)(T^2+2T+2)\)</span> has the roots <span class="math" data-tex="\(\pm1\pm i\)">\(\pm1\pm i\)</span>, so <span class="math" data-tex="\(K_4=\mathbb Q(i)\)">\(K_4=\mathbb Q(i)\)</span>. Consequently, no formula <span class="math" data-tex="\(d_n=n\varphi(n)/\epsilon\)">\(d_n=n\varphi(n)/\epsilon\)</span> with <span class="math" data-tex="\(\epsilon\in\{1,2\}\)">\(\epsilon\in\{1,2\}\)</span> holds for all integers that are not perfect powers.</p>
+<h2 id="2-the-discriminant">2. The discriminant</h2>
+<p><strong>Proposition 2.1.</strong> For all <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\log D_n&amp;\le d_n(2\log n+\log A),\\
+\log D_n+d_n&amp;\le C_A\,d_n\log(2n),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\log D_n&amp;\le d_n(2\log n+\log A),\\
+\log D_n+d_n&amp;\le C_A\,d_n\log(2n),
+\end{aligned}
+\]</span>
+where <span class="math" data-tex="\(C_A=3+\log A/\log2\)">\(C_A=3+\log A/\log2\)</span>.</p>
+<p><em>Proof.</em> <em>The cyclotomic field.</em> Write <span class="math" data-tex="\(T^n-1=\Phi_n(T)G(T)\)">\(T^n-1=\Phi_n(T)G(T)\)</span> with <span class="math" data-tex="\(G\in\mathbb Z[T]\)">\(G\in\mathbb Z[T]\)</span>. Differentiating at <span class="math" data-tex="\(\zeta_n\)">\(\zeta_n\)</span> gives
+<span class="math math-display" data-tex="\[
+n\zeta_n^{n-1}=\Phi_n&#x27;(\zeta_n)G(\zeta_n).
+\]">\[
+n\zeta_n^{n-1}=\Phi_n&#x27;(\zeta_n)G(\zeta_n).
+\]</span>
+By Proposition 2.2 of <a href="../NT-ANT/discriminants-and-integral-bases.html"><em>Discriminants and integral bases</em></a>, <span class="math" data-tex="\(\pm N(\Phi_n&#x27;(\zeta_n))\)">\(\pm N(\Phi_n&#x27;(\zeta_n))\)</span> is the discriminant of <span class="math" data-tex="\(\mathbb Z[\zeta_n]\)">\(\mathbb Z[\zeta_n]\)</span>, and the field discriminant divides it. The integer <span class="math" data-tex="\(N(G(\zeta_n))\)">\(N(G(\zeta_n))\)</span> is nonzero, so this norm divides <span class="math" data-tex="\(N(n\zeta_n^{n-1})=\pm n^{\varphi(n)}\)">\(N(n\zeta_n^{n-1})=\pm n^{\varphi(n)}\)</span>. Hence <span class="math" data-tex="\(D_{E_n}\mid n^{\varphi(n)}\)">\(D_{E_n}\mid n^{\varphi(n)}\)</span>.</p>
+<p><em>The relative step.</em> Let <span class="math" data-tex="\(e=[K_n:E_n]\)">\(e=[K_n:E_n]\)</span>. The map <span class="math" data-tex="\(\sigma\mapsto\sigma(\alpha)/\alpha\)">\(\sigma\mapsto\sigma(\alpha)/\alpha\)</span> embeds <span class="math" data-tex="\(\operatorname{Gal}(K_n/E_n)\)">\(\operatorname{Gal}(K_n/E_n)\)</span> in <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span>, with image <span class="math" data-tex="\(\mu_e\)">\(\mu_e\)</span>. The conjugates of <span class="math" data-tex="\(\alpha\)">\(\alpha\)</span> are therefore <span class="math" data-tex="\(\alpha\mu_e\)">\(\alpha\mu_e\)</span>, and its minimal polynomial is <span class="math" data-tex="\(f=T^e-c\)">\(f=T^e-c\)</span> with <span class="math" data-tex="\(c=\alpha^e\)">\(c=\alpha^e\)</span>. The element <span class="math" data-tex="\(c\)">\(c\)</span> is integral, and <span class="math" data-tex="\(|c|=A^{e/n}\)">\(|c|=A^{e/n}\)</span> at every embedding.</p>
+<p>The argument of Lemma 1.1 of <a href="uniform-complete-splitting-in-kummer-fields.html"><em>Uniform complete splitting in Kummer fields</em></a> applies to <span class="math" data-tex="\(f\)">\(f\)</span>. It uses Euler's lemma and (1), (4) and (15) of <a href="../NT-ANT/the-different-and-the-discriminant.html"><em>The different and the discriminant</em></a>. It shows that <span class="math" data-tex="\(f&#x27;(\alpha)\in\mathfrak D_{K_n/E_n}\)">\(f&#x27;(\alpha)\in\mathfrak D_{K_n/E_n}\)</span>, so the relative discriminant divides <span class="math" data-tex="\(N_{K_n/E_n}(e\alpha^{e-1})=\pm e^ec^{e-1}\)">\(N_{K_n/E_n}(e\alpha^{e-1})=\pm e^ec^{e-1}\)</span>. Its absolute norm is at most
+<span class="math math-display" data-tex="\[
+e^{e\varphi(n)}A^{(e-1)e\varphi(n)/n}.
+\]">\[
+e^{e\varphi(n)}A^{(e-1)e\varphi(n)/n}.
+\]</span></p>
+<p><em>The tower.</em> The tower formula (16) there gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\log D_n&amp;\le e\varphi(n)\log n\\
+&amp;\quad+e\varphi(n)(\log e+\log A),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\log D_n&amp;\le e\varphi(n)\log n\\
+&amp;\quad+e\varphi(n)(\log e+\log A),
+\end{aligned}
+\]</span>
+using <span class="math" data-tex="\((e-1)/n\le1\)">\((e-1)/n\le1\)</span>. Since <span class="math" data-tex="\(e\le n\)">\(e\le n\)</span> and <span class="math" data-tex="\(d_n=e\varphi(n)\)">\(d_n=e\varphi(n)\)</span>, this is the first bound.</p>
+<p>For the second bound, <span class="math" data-tex="\(1-2\log2&lt;0\)">\(1-2\log2&lt;0\)</span> and <span class="math" data-tex="\(\log(2n)\ge\log 2\)">\(\log(2n)\ge\log 2\)</span> give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;2\log n+\log A+1\\
+&amp;\le2\log(2n)+\tfrac{\log A}{\log2}\log(2n)\\
+&amp;\le C_A\log(2n). \qquad\square
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;2\log n+\log A+1\\
+&amp;\le2\log(2n)+\tfrac{\log A}{\log2}\log(2n)\\
+&amp;\le C_A\log(2n). \qquad\square
+\end{aligned}
+\]</span></p>
+<h2 id="3-splitting-and-the-descent-of-the-strip">3. Splitting and the descent of the strip</h2>
+<p><strong>Lemma 3.1.</strong> Let <span class="math" data-tex="\(p\nmid an\)">\(p\nmid an\)</span>. The following are equivalent:</p>
+<ol>
+<li><span class="math" data-tex="\(n\mid i_p(a)\)">\(n\mid i_p(a)\)</span>;</li>
+<li><span class="math" data-tex="\(p\)">\(p\)</span> splits completely in <span class="math" data-tex="\(K_n\)">\(K_n\)</span>;</li>
+<li><span class="math" data-tex="\(p\equiv1\pmod n\)">\(p\equiv1\pmod n\)</span> and <span class="math" data-tex="\(a^{(p-1)/n}\equiv1\pmod p\)">\(a^{(p-1)/n}\equiv1\pmod p\)</span>.</li>
+</ol>
+<p><em>Proof.</em> Conditions 1 and 3 are equivalent by the proof of Lemma 1.1 of Lesson 1 with <span class="math" data-tex="\(q\)">\(q\)</span> replaced by <span class="math" data-tex="\(n\)">\(n\)</span>.</p>
+<p>For the equivalence of 2 and 3, follow the proof of Lemma 3.1 of Lesson 1 with <span class="math" data-tex="\(q\)">\(q\)</span> replaced by <span class="math" data-tex="\(n\)">\(n\)</span>. The discriminant <span class="math" data-tex="\(\pm n^na^{n-1}\)">\(\pm n^na^{n-1}\)</span> of <span class="math" data-tex="\(T^n-a\)">\(T^n-a\)</span> is prime to <span class="math" data-tex="\(p\)">\(p\)</span>, so the roots of <span class="math" data-tex="\(T^n-a\)">\(T^n-a\)</span> have distinct reductions and <span class="math" data-tex="\(p\)">\(p\)</span> is unramified. The identity <span class="math" data-tex="\(\prod_{i=1}^{n-1}(1-\zeta_n^i)=n\)">\(\prod_{i=1}^{n-1}(1-\zeta_n^i)=n\)</span> makes reduction injective on <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span>. The Frobenius <span class="math" data-tex="\(\sigma\)">\(\sigma\)</span> therefore fixes <span class="math" data-tex="\(\zeta_n\)">\(\zeta_n\)</span> exactly when <span class="math" data-tex="\(p\equiv1\pmod n\)">\(p\equiv1\pmod n\)</span>. Under that condition, <span class="math" data-tex="\(\sigma(\alpha)=\alpha\)">\(\sigma(\alpha)=\alpha\)</span> exactly when <span class="math" data-tex="\(a^{(p-1)/n}\equiv1\pmod p\)">\(a^{(p-1)/n}\equiv1\pmod p\)</span>.</p>
+<p>By Corollary 6.5 of <a href="../NT-ANT/hilberts-ramification-theory-in-galois-extensions.html"><em>Hilbert's ramification theory in Galois extensions</em></a>, an unramified prime splits completely exactly when its Frobenius is trivial. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 3.2.</strong> For every <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span>, <span class="math" data-tex="\(\zeta_{K_n}(s)\ne0\)">\(\zeta_{K_n}(s)\ne0\)</span> in <span class="math" data-tex="\(\operatorname{Re}s&gt;1-10^{-6}\)">\(\operatorname{Re}s&gt;1-10^{-6}\)</span>.</p>
+<p><em>Proof.</em> Let <span class="math" data-tex="\(F_n=\mathbb Q(\mu_{12n})\)">\(F_n=\mathbb Q(\mu_{12n})\)</span> and <span class="math" data-tex="\(T_n=K_nF_n=F_n(\alpha)\)">\(T_n=K_nF_n=F_n(\alpha)\)</span>.</p>
+<ul>
+<li>The extension <span class="math" data-tex="\(T_n/F_n\)">\(T_n/F_n\)</span> is Galois, and <span class="math" data-tex="\(\sigma\mapsto\sigma(\alpha)/\alpha\)">\(\sigma\mapsto\sigma(\alpha)/\alpha\)</span> embeds its group in <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span>. So the group is cyclic.</li>
+<li>The extension <span class="math" data-tex="\(T_n/K_n\)">\(T_n/K_n\)</span> is Galois, and restriction to <span class="math" data-tex="\(F_n\)">\(F_n\)</span> embeds its group in the abelian group <span class="math" data-tex="\(\operatorname{Gal}(F_n/\mathbb Q)\)">\(\operatorname{Gal}(F_n/\mathbb Q)\)</span>. So it is abelian.</li>
+</ul>
+<p>By (4) of Proposition 21.1 and Theorem 21.2 of <a href="../NT-CFT/artin-l-functions-conductors-and-discriminants.html"><em>Artin L-functions, conductors and discriminants</em></a>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+\zeta_{T_n}(s)=\prod_\eta L_{F_n}(s,\eta),\\
+\frac{\zeta_{T_n}(s)}{\zeta_{K_n}(s)}=\prod_{\eta&#x27;\ne1}L_{K_n}(s,\eta&#x27;).
+\end{gathered}
+\]">\[
+\begin{gathered}
+\zeta_{T_n}(s)=\prod_\eta L_{F_n}(s,\eta),\\
+\frac{\zeta_{T_n}(s)}{\zeta_{K_n}(s)}=\prod_{\eta&#x27;\ne1}L_{K_n}(s,\eta&#x27;).
+\end{gathered}
+\]</span>
+Here <span class="math" data-tex="\(\eta\)">\(\eta\)</span> runs over the characters of <span class="math" data-tex="\(\operatorname{Gal}(T_n/F_n)\)">\(\operatorname{Gal}(T_n/F_n)\)</span>, and <span class="math" data-tex="\(\eta&#x27;\)">\(\eta&#x27;\)</span> over the nontrivial characters of <span class="math" data-tex="\(\operatorname{Gal}(T_n/K_n)\)">\(\operatorname{Gal}(T_n/K_n)\)</span>.</p>
+<p>Since <span class="math" data-tex="\(F_n\supseteq\mu_{12}\)">\(F_n\supseteq\mu_{12}\)</span>, Corollary 4.2 of <a href="the-zero-free-strip.html"><em>The zero-free strip</em></a> makes every <span class="math" data-tex="\(L_{F_n}(s,\eta)\)">\(L_{F_n}(s,\eta)\)</span>, and hence <span class="math" data-tex="\(\zeta_{T_n}\)">\(\zeta_{T_n}\)</span>, zero-free in the half-plane. Each <span class="math" data-tex="\(L_{K_n}(s,\eta&#x27;)\)">\(L_{K_n}(s,\eta&#x27;)\)</span> is entire. A zero of <span class="math" data-tex="\(\zeta_{K_n}\)">\(\zeta_{K_n}\)</span> in the half-plane would therefore be a zero of <span class="math" data-tex="\(\zeta_{T_n}\)">\(\zeta_{T_n}\)</span>, which is impossible. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-the-bound-at-every-level">4. The bound at every level</h2>
+<p><strong>Theorem 4.1.</strong> Put <span class="math" data-tex="\(L=\log x\)">\(L=\log x\)</span> and <span class="math" data-tex="\(\delta_0=10^{-6}\)">\(\delta_0=10^{-6}\)</span>. There is an absolute constant <span class="math" data-tex="\(C_*\)">\(C_*\)</span> such that, for all <span class="math" data-tex="\(n\ge1\)">\(n\ge1\)</span> and <span class="math" data-tex="\(x\ge\max(A,n,2)+1\)">\(x\ge\max(A,n,2)+1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\#\{x&lt;p\le2x:\ p\ \text{splits}\\
+&amp;\qquad\text{completely in}\ K_n\}\\
+&amp;\le\frac{C_*x}{d_nL}\\
+&amp;\quad+C_*x^{1-\delta_0}\,\frac{2\log n+\log A+1}{L}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\#\{x&lt;p\le2x:\ p\ \text{splits}\\
+&amp;\qquad\text{completely in}\ K_n\}\\
+&amp;\le\frac{C_*x}{d_nL}\\
+&amp;\quad+C_*x^{1-\delta_0}\,\frac{2\log n+\log A+1}{L}.
+\end{aligned}
+\]</span>
+For <span class="math" data-tex="\(n\le\exp(L^{0.3})\)">\(n\le\exp(L^{0.3})\)</span> and <span class="math" data-tex="\(L\ge1\)">\(L\ge1\)</span>, the count is at most
+<span class="math math-display" data-tex="\[
+C_*\Bigl(\frac{x}{d_nL}+(4+\log A)x^{1-\delta_0}\Bigr).
+\]">\[
+C_*\Bigl(\frac{x}{d_nL}+(4+\log A)x^{1-\delta_0}\Bigr).
+\]</span></p>
+<p><em>Proof.</em> Since <span class="math" data-tex="\(x&gt;\max(A,n)\)">\(x&gt;\max(A,n)\)</span>, no prime in <span class="math" data-tex="\((x,2x]\)">\((x,2x]\)</span> divides <span class="math" data-tex="\(an\)">\(an\)</span>. Fix <span class="math" data-tex="\(\phi\)">\(\phi\)</span> as in Section 4 of Lesson 15. Proposition 3.2 allows us to apply Lemma 3.1 of Lesson 15 to <span class="math" data-tex="\(K_n\)">\(K_n\)</span> with <span class="math" data-tex="\(\delta=\delta_0\)">\(\delta=\delta_0\)</span>. Each split prime contributes at least <span class="math" data-tex="\(d_nL\)">\(d_nL\)</span> to the nonnegative sum <span class="math" data-tex="\(\Theta_{K_n,\phi}(x)\)">\(\Theta_{K_n,\phi}(x)\)</span>. Inserting Proposition 2.1 gives the first bound.</p>
+<p>For <span class="math" data-tex="\(n\le\exp(L^{0.3})\)">\(n\le\exp(L^{0.3})\)</span> we have <span class="math" data-tex="\(2\log n/L\le2\)">\(2\log n/L\le2\)</span>, and <span class="math" data-tex="\((\log A+1)/L\le\log A+1\)">\((\log A+1)/L\le\log A+1\)</span>. This gives the second bound. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-deletion-and-seeds">5. Deletion and seeds</h2>
+<p>Put <span class="math" data-tex="\(y=\exp(L^{0.1})\)">\(y=\exp(L^{0.1})\)</span> and <span class="math" data-tex="\(z=\exp(L^{0.3})\)">\(z=\exp(L^{0.3})\)</span>.</p>
+<p><strong>Theorem 5.1.</strong> Fix an even integer <span class="math" data-tex="\(C\)">\(C\)</span>, a divisor <span class="math" data-tex="\(m\mid C\)">\(m\mid C\)</span> and <span class="math" data-tex="\(\kappa&gt;0\)">\(\kappa&gt;0\)</span>. Suppose that, for large <span class="math" data-tex="\(x\)">\(x\)</span>, there is a set <span class="math" data-tex="\(\mathcal T(x)\)">\(\mathcal T(x)\)</span> of at least <span class="math" data-tex="\(\kappa x/L^2\)">\(\kappa x/L^2\)</span> primes <span class="math" data-tex="\(p\in(x,2x)\)">\(p\in(x,2x)\)</span> with the following two properties:</p>
+<ul>
+<li><span class="math" data-tex="\(p-1=CrQ\)">\(p-1=CrQ\)</span>, where <span class="math" data-tex="\(Q&gt;x^{0.9}\)">\(Q&gt;x^{0.9}\)</span> is prime and every prime factor of <span class="math" data-tex="\(r\)">\(r\)</span> lies in <span class="math" data-tex="\((y,z)\)">\((y,z)\)</span>;</li>
+<li><span class="math" data-tex="\(v_\ell(i_p(a))=v_\ell(m)\)">\(v_\ell(i_p(a))=v_\ell(m)\)</span> for every prime <span class="math" data-tex="\(\ell\mid C\)">\(\ell\mid C\)</span>.</li>
+</ul>
+<p>Then, for large <span class="math" data-tex="\(x\)">\(x\)</span>, at least <span class="math" data-tex="\(\frac\kappa2x/L^2\)">\(\frac\kappa2x/L^2\)</span> primes of <span class="math" data-tex="\(\mathcal T(x)\)">\(\mathcal T(x)\)</span> satisfy <span class="math" data-tex="\(i_p(a)=m\)">\(i_p(a)=m\)</span>.</p>
+<p><em>Proof.</em> Take <span class="math" data-tex="\(x\)">\(x\)</span> so large that <span class="math" data-tex="\(x&gt;A\)">\(x&gt;A\)</span>, <span class="math" data-tex="\(y&gt;\max(h,2)\)">\(y&gt;\max(h,2)\)</span> and <span class="math" data-tex="\(z&lt;x\)">\(z&lt;x\)</span>. The second property and <span class="math" data-tex="\(m\mid C\)">\(m\mid C\)</span> give <span class="math" data-tex="\(m\mid i_p(a)\)">\(m\mid i_p(a)\)</span>.</p>
+<p>Suppose <span class="math" data-tex="\(i_p(a)&gt;m\)">\(i_p(a)&gt;m\)</span>, and let <span class="math" data-tex="\(q\)">\(q\)</span> be a prime factor of <span class="math" data-tex="\(i_p(a)/m\)">\(i_p(a)/m\)</span>. By the second property, <span class="math" data-tex="\(q\nmid C\)">\(q\nmid C\)</span>. Since <span class="math" data-tex="\(q\mid p-1=CrQ\)">\(q\mid p-1=CrQ\)</span>, either <span class="math" data-tex="\(q=Q\)">\(q=Q\)</span> or <span class="math" data-tex="\(q\mid r\)">\(q\mid r\)</span>.</p>
+<p><em>The case <span class="math" data-tex="\(q=Q\)">\(q=Q\)</span>.</em> Then <span class="math" data-tex="\(\operatorname{ord}_p(a)\le Cr&lt;2x^{0.1}\)">\(\operatorname{ord}_p(a)\le Cr&lt;2x^{0.1}\)</span>, so <span class="math" data-tex="\(p\)">\(p\)</span> divides <span class="math" data-tex="\(B_a(x)\)">\(B_a(x)\)</span> as in the proof of Theorem 2.1 of Lesson 1. There are <span class="math" data-tex="\(O_a(x^{0.2}/L)\)">\(O_a(x^{0.2}/L)\)</span> such primes.</p>
+<p><em>The case <span class="math" data-tex="\(q\mid r\)">\(q\mid r\)</span>.</em> Then <span class="math" data-tex="\(y&lt;q&lt;z\)">\(y&lt;q&lt;z\)</span>. Since <span class="math" data-tex="\(q&gt;h\)">\(q&gt;h\)</span>, Proposition 1.2 gives <span class="math" data-tex="\(d_q=q(q-1)\)">\(d_q=q(q-1)\)</span>. By Lemma 3.1, <span class="math" data-tex="\(p\)">\(p\)</span> splits completely in <span class="math" data-tex="\(K_q\)">\(K_q\)</span>, and <span class="math" data-tex="\(p\nmid aq\)">\(p\nmid aq\)</span>. Summing Theorem 4.1 over <span class="math" data-tex="\(q\)">\(q\)</span>, using <span class="math" data-tex="\(\sum_{j&gt;y}1/(j(j-1))\le2/y\)">\(\sum_{j&gt;y}1/(j(j-1))\le2/y\)</span>, bounds these primes by
+<span class="math math-display" data-tex="\[
+C_a\Bigl(\frac{2x}{Ly}+zx^{1-\delta_0}\Bigr).
+\]">\[
+C_a\Bigl(\frac{2x}{Ly}+zx^{1-\delta_0}\Bigr).
+\]</span>
+Both exceptional counts are <span class="math" data-tex="\(o(x/L^2)\)">\(o(x/L^2)\)</span>, so for large <span class="math" data-tex="\(x\)">\(x\)</span> together they are at most <span class="math" data-tex="\(\frac\kappa2x/L^2\)">\(\frac\kappa2x/L^2\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 5.2.</strong> Suppose <span class="math" data-tex="\(i_{p_1}(a)=m\)">\(i_{p_1}(a)=m\)</span> for some prime <span class="math" data-tex="\(p_1\nmid a\)">\(p_1\nmid a\)</span>. Put
+<span class="math math-display" data-tex="\[
+C=\prod_{\ell\mid2m}\ell^{\,v_\ell(p_1-1)}.
+\]">\[
+C=\prod_{\ell\mid2m}\ell^{\,v_\ell(p_1-1)}.
+\]</span>
+Then <span class="math" data-tex="\(C\)">\(C\)</span> is even, <span class="math" data-tex="\(m\mid C\)">\(m\mid C\)</span> and <span class="math" data-tex="\(p_1\nmid aC\)">\(p_1\nmid aC\)</span>. Let <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> be the set of <span class="math" data-tex="\(\sigma\in\operatorname{Gal}(K_C/\mathbb Q)\)">\(\sigma\in\operatorname{Gal}(K_C/\mathbb Q)\)</span> whose restriction to <span class="math" data-tex="\(K_m\)">\(K_m\)</span> is trivial and whose restriction to <span class="math" data-tex="\(K_{m\ell}\)">\(K_{m\ell}\)</span> is nontrivial for every prime <span class="math" data-tex="\(\ell\mid C\)">\(\ell\mid C\)</span> with <span class="math" data-tex="\(m\ell\mid C\)">\(m\ell\mid C\)</span>. Then <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> is stable under conjugation and contains the Frobenius class of <span class="math" data-tex="\(p_1\)">\(p_1\)</span>.</p>
+<p><em>Proof.</em> The integer <span class="math" data-tex="\(p_1-1\)">\(p_1-1\)</span> is even and divisible by <span class="math" data-tex="\(m\)">\(m\)</span>, so <span class="math" data-tex="\(C\)">\(C\)</span> is even and <span class="math" data-tex="\(m\mid C\)">\(m\mid C\)</span>. Also <span class="math" data-tex="\(C\mid p_1-1\)">\(C\mid p_1-1\)</span>, hence <span class="math" data-tex="\(p_1\nmid C\)">\(p_1\nmid C\)</span>.</p>
+<p>For <span class="math" data-tex="\(t\mid C\)">\(t\mid C\)</span>, the field <span class="math" data-tex="\(K_t\)">\(K_t\)</span> is a Galois subfield of <span class="math" data-tex="\(K_C\)">\(K_C\)</span>, via <span class="math" data-tex="\(\zeta_t=\zeta_C^{C/t}\)">\(\zeta_t=\zeta_C^{C/t}\)</span> and <span class="math" data-tex="\(\alpha_t=\alpha^{C/t}\)">\(\alpha_t=\alpha^{C/t}\)</span>. Restriction to <span class="math" data-tex="\(K_t\)">\(K_t\)</span> is a homomorphism, so <span class="math" data-tex="\((\tau\sigma\tau^{-1})|_{K_t}\)">\((\tau\sigma\tau^{-1})|_{K_t}\)</span> is the conjugate of <span class="math" data-tex="\(\sigma|_{K_t}\)">\(\sigma|_{K_t}\)</span> by <span class="math" data-tex="\(\tau|_{K_t}\)">\(\tau|_{K_t}\)</span>. A conjugate of an element is trivial exactly when the element is, so <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> is stable under conjugation.</p>
+<p>Finally, <span class="math" data-tex="\(m\mid i_{p_1}(a)\)">\(m\mid i_{p_1}(a)\)</span> and <span class="math" data-tex="\(m\ell\nmid i_{p_1}(a)\)">\(m\ell\nmid i_{p_1}(a)\)</span>. Lemma 3.1 converts these into <span class="math" data-tex="\(\operatorname{Frob}_{p_1}\in\Sigma\)">\(\operatorname{Frob}_{p_1}\in\Sigma\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>Proposition 5.1 of Lesson 1, proved as Theorem 6.1 of <a href="primes-with-controlled-predecessors.html"><em>Primes with controlled predecessors</em></a>, holds for every triple <span class="math" data-tex="\((M,c,u)\)">\((M,c,u)\)</span> satisfying (4.1) there, with no reference to <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p><em>An index-2 instance.</em> Take <span class="math" data-tex="\((M,c,u)=(8,2,7)\)">\((M,c,u)=(8,2,7)\)</span> and <span class="math" data-tex="\(a=2\)">\(a=2\)</span>; (4.1) holds since <span class="math" data-tex="\((7,8)=1\)">\((7,8)=1\)</span>, <span class="math" data-tex="\(2\mid6\)">\(2\mid6\)</span> and <span class="math" data-tex="\((3,4)=1\)">\((3,4)=1\)</span>. Then <span class="math" data-tex="\(\bigl(\tfrac2p\bigr)=1\)">\(\bigl(\tfrac2p\bigr)=1\)</span> and <span class="math" data-tex="\(v_2(p-1)=1\)">\(v_2(p-1)=1\)</span>, so <span class="math" data-tex="\(v_2(i_p(2))=1\)">\(v_2(i_p(2))=1\)</span>. Theorem 5.1 with <span class="math" data-tex="\(C=m=2\)">\(C=m=2\)</span> gives at least a constant times <span class="math" data-tex="\(x/L^2\)">\(x/L^2\)</span> primes with <span class="math" data-tex="\(i_p(2)=2\)">\(i_p(2)=2\)</span>.</p>
+<p><em>What that proposition cannot reach.</em> Its primes satisfy <span class="math" data-tex="\(3\nmid p-1\)">\(3\nmid p-1\)</span> once <span class="math" data-tex="\(y&gt;3\)">\(y&gt;3\)</span>, so none of them satisfies <span class="math" data-tex="\(i_p(2)=3\)">\(i_p(2)=3\)</span>. A lower bound for the sieve with the Frobenius condition <span class="math" data-tex="\(\Sigma\)">\(\Sigma\)</span> inserted is not provided by that proposition.</p>
+<h2 id="6-exercises">6. Exercises</h2>
+<p><strong>6.1.</strong> Show that <span class="math" data-tex="\(d_6=4\)">\(d_6=4\)</span> for <span class="math" data-tex="\(a=-8\)">\(a=-8\)</span>.</p>
+<p><strong>6.2.</strong> Deduce Theorem 2.1 of Lesson 1 from Theorem 5.1.</p>
+<p><strong>6.3.</strong> Show that <span class="math" data-tex="\(K_n\)">\(K_n\)</span> is unramified outside the primes dividing <span class="math" data-tex="\(an\)">\(an\)</span>.</p>
+<h2 id="7-solutions">7. Solutions</h2>
+<p><strong>6.1.</strong> We have <span class="math" data-tex="\((\sqrt{-2})^6=(-2)^3=-8\)">\((\sqrt{-2})^6=(-2)^3=-8\)</span>, so <span class="math" data-tex="\(K_6=E_6(\sqrt{-2})=\mathbb Q(\sqrt{-3},\sqrt{-2})\)">\(K_6=E_6(\sqrt{-2})=\mathbb Q(\sqrt{-3},\sqrt{-2})\)</span>. The two quadratic fields are distinct, so the degree is <span class="math" data-tex="\(4\)">\(4\)</span>.</p>
+<p><strong>6.2.</strong> Let <span class="math" data-tex="\(a\)">\(a\)</span> be admissible and take the triple <span class="math" data-tex="\((M,c,u)\)">\((M,c,u)\)</span> of Lemma 4.1 of Lesson 1. Proposition 5.1 there supplies the first property with <span class="math" data-tex="\(C=c\)">\(C=c\)</span>. Put <span class="math" data-tex="\(m=1\)">\(m=1\)</span>. Since <span class="math" data-tex="\(\bigl(\tfrac ap\bigr)=-1\)">\(\bigl(\tfrac ap\bigr)=-1\)</span>, the index <span class="math" data-tex="\(i_p(a)\)">\(i_p(a)\)</span> is odd, so <span class="math" data-tex="\(v_2(i_p(a))=0\)">\(v_2(i_p(a))=0\)</span>, which is the second property. Theorem 5.1 gives the conclusion.</p>
+<p><strong>6.3.</strong> The proof of Proposition 2.1 shows two things:</p>
+<ul>
+<li>the relative discriminant of <span class="math" data-tex="\(K_n/E_n\)">\(K_n/E_n\)</span> divides <span class="math" data-tex="\(e^ec^{e-1}\)">\(e^ec^{e-1}\)</span>, with <span class="math" data-tex="\(e\mid n\)">\(e\mid n\)</span>, so it is supported on the primes dividing <span class="math" data-tex="\(an\)">\(an\)</span>;</li>
+<li><span class="math" data-tex="\(D_{E_n}\)">\(D_{E_n}\)</span> divides <span class="math" data-tex="\(n^{\varphi(n)}\)">\(n^{\varphi(n)}\)</span>.</li>
+</ul>
+<p>By the tower formula, <span class="math" data-tex="\(D_n\)">\(D_n\)</span> is divisible only by primes dividing <span class="math" data-tex="\(an\)">\(an\)</span>. A prime ramifies exactly when it divides the discriminant (Proposition 14.2 of <a href="../NT-ANT/the-different-and-the-discriminant.html"><em>The different and the discriminant</em></a>).</p>
+<h2 id="sources">Sources</h2>
+<ul>
+<li>[OpenAI-029] OpenAI, <em>Primitive roots for every admissible integer base</em>, OpenAI Math Release preprint, 4 October 2026, Section 9. https://github.com/openai/math/tree/main/preprints/Primitive-roots-for-every-admissible-integer-base-October-4-2026</li>
+<li>[HSW] E. Hasanalizade, Q. Shen and P.-J. Wong, <em>Counting zeros of Dedekind zeta functions</em>, Math. Comp. 91 (2022), Corollary 1.2. https://arxiv.org/abs/2102.04663</li>
+<li>The main argument follows a solution produced with ChatGPT (OpenAI) in October 2026 and is completed here.</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

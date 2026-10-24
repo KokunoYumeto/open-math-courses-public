@@ -1,0 +1,553 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Normalized nerves of formal categories and the de Rham differential</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Cotangent complexes and deformations in ringed topoi)</a><a href="formal-categories-with-divided-powers-and-the-cech-alexander-complex.html">Previous lesson</a><a href="the-de-rham-complex-of-a-formal-category-with-divided-powers.html">Next lesson</a><a href="src/normalized-nerves-of-formal-categories-and-the-de-rham-differential.md">Editable source</a></nav><main><article><h1 id="normalized-nerves-of-formal-categories-and-the-de-rham-differential">Normalized nerves of formal categories and the de Rham differential</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic) on 23 October 2026. The question was posed by Claude while writing this course and solved by GPT-6 Astra (OpenAI) in ChatGPT's Pro mode; the solution was refereed by Claude Opus 5.5 in a separate session, and this lesson was written from it and refereed and revised by Claude Opus 5.5 in two further sessions. Public domain (CC0).</em></p>
+<p>A formal category over a ring <span class="math" data-tex="\(K\)">\(K\)</span> of a topos is given by two algebras:</p>
+<ul>
+<li><span class="math" data-tex="\(A\)">\(A\)</span>, the functions on objects;</li>
+<li><span class="math" data-tex="\(P\)">\(P\)</span>, the functions on arrows.</li>
+</ul>
+<p>It also has two structure maps <span class="math" data-tex="\(A\to P\)">\(A\to P\)</span>, a counit <span class="math" data-tex="\(e\colon P\to A\)">\(e\colon P\to A\)</span> and a composition <span class="math" data-tex="\(\Delta\colon P\to P\otimes_AP\)">\(\Delta\colon P\to P\otimes_AP\)</span>. The tensor powers of <span class="math" data-tex="\(P\)">\(P\)</span> form the cosimplicial algebra of its nerve. Its normalized cochain complex <span class="math" data-tex="\(NR\)">\(NR\)</span> is a differential graded algebra for concatenation.</p>
+<p>This lesson proves that the tensor powers of the augmentation ideal <span class="math" data-tex="\(I=\operatorname{Ker}e\)">\(I=\operatorname{Ker}e\)</span> map isomorphically onto the normalized terms, with no flatness hypothesis. As a consequence, the tensor algebra <span class="math" data-tex="\(T_A(I)\)">\(T_A(I)\)</span> carries a unique derivation prescribed in degrees <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> by <span class="math" data-tex="\(NR\)">\(NR\)</span>, and its square vanishes.</p>
+<p>The key is a normalization projector that is right <span class="math" data-tex="\(A\)">\(A\)</span>-linear, because it is built from all the cofaces except the last. Tensoring it with <span class="math" data-tex="\(P\)">\(P\)</span> normalizes all factors but the last one. The last factor is handled by the left <span class="math" data-tex="\(A\)">\(A\)</span>-linear splitting of the counit.</p>
+<p>With divided powers, the derivation preserves the kernel of the projection of <span class="math" data-tex="\(T_A(I)\)">\(T_A(I)\)</span> onto the exterior algebra <span class="math" data-tex="\(\Omega^\bullet=\Lambda_A(I/I^{[2]})\)">\(\Omega^\bullet=\Lambda_A(I/I^{[2]})\)</span>. So the de Rham algebra of every formal category with divided powers is a complex, again without flatness hypotheses. The same holds levelwise for inverse systems of such categories.</p>
+<p><strong>Prerequisites.</strong> Formal categories with divided powers and their nerves are introduced in <a href="formal-categories-with-divided-powers-and-the-cech-alexander-complex.html"><em>Formal categories with divided powers and the Čech–Alexander complex</em></a>. The definitions needed here are restated in 1.1, 1.2 and 3.1, and no statement of that lesson is used. From the AI-integrated Stacks project: the definition of divided powers [<a href="https://kokunoyumeto.github.io/stacks-zh-hans-cn/en/dpa.html#dpa-definition-divided-powers">Stacks, Tag 07GL</a>].</p>
+<h2 id="conventions">Conventions</h2>
+<p>Throughout, <span class="math" data-tex="\(K\)">\(K\)</span> is a ring of a topos <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>. Algebras and modules are sheaves on <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>, and an &quot;element&quot; of a sheaf is a local section. Two morphisms of sheaves agree if they agree on all local sections. A local section of a tensor product, of an image, or of the ideal generated by a family is, locally, a finite sum of the evident form. When <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span> is the punctual topos, local sections are elements. An unadorned <span class="math" data-tex="\(\otimes\)">\(\otimes\)</span> means <span class="math" data-tex="\(\otimes_A\)">\(\otimes_A\)</span>.</p>
+<p>A <em>derivation of degree one</em> of a graded <span class="math" data-tex="\(K\)">\(K\)</span>-algebra is a <span class="math" data-tex="\(K\)">\(K\)</span>-linear map <span class="math" data-tex="\(D\)">\(D\)</span> of degree <span class="math" data-tex="\(1\)">\(1\)</span> with
+<span class="math math-display" data-tex="\[
+D(uv)=D(u)v+(-1)^{|u|}uD(v)
+\]">\[
+D(uv)=D(u)v+(-1)^{|u|}uD(v)
+\]</span>
+for homogeneous <span class="math" data-tex="\(u\)">\(u\)</span>.</p>
+<h2 id="1-formal-categories-and-their-nerves">1. Formal categories and their nerves</h2>
+<p><strong>1.1. Formal categories.</strong> A <em>formal category</em> over <span class="math" data-tex="\(K\)">\(K\)</span> consists of the following data.</p>
+<ul>
+<li>Commutative <span class="math" data-tex="\(K\)">\(K\)</span>-algebras <span class="math" data-tex="\(A\)">\(A\)</span> and <span class="math" data-tex="\(P\)">\(P\)</span>.</li>
+<li>Morphisms of <span class="math" data-tex="\(K\)">\(K\)</span>-algebras <span class="math" data-tex="\(\lambda,\rho\colon A\to P\)">\(\lambda,\rho\colon A\to P\)</span>. They make <span class="math" data-tex="\(P\)">\(P\)</span> an <span class="math" data-tex="\(A\)">\(A\)</span>-bimodule by <span class="math" data-tex="\(a\cdot c\cdot b=\lambda(a)c\rho(b)\)">\(a\cdot c\cdot b=\lambda(a)c\rho(b)\)</span>.</li>
+<li>Morphisms of <span class="math" data-tex="\(K\)">\(K\)</span>-algebras <span class="math" data-tex="\(e\colon P\to A\)">\(e\colon P\to A\)</span> and <span class="math" data-tex="\(\Delta\colon P\to P\otimes P\)">\(\Delta\colon P\to P\otimes P\)</span>. Here the tensor product uses the right structure of the left factor and the left structure of the right factor. It is a commutative <span class="math" data-tex="\(K\)">\(K\)</span>-algebra with the factorwise product, being the tensor product of the <span class="math" data-tex="\(A\)">\(A\)</span>-algebras <span class="math" data-tex="\((P,\rho)\)">\((P,\rho)\)</span> and <span class="math" data-tex="\((P,\lambda)\)">\((P,\lambda)\)</span>.</li>
+</ul>
+<p>These data satisfy first
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+e\lambda=e\rho=\mathrm{id}_A,\\
+\Delta\lambda(a)=\lambda(a)\otimes1,\quad\Delta\rho(a)=1\otimes\rho(a).
+\end{gathered}
+\]">\[
+\begin{gathered}
+e\lambda=e\rho=\mathrm{id}_A,\\
+\Delta\lambda(a)=\lambda(a)\otimes1,\quad\Delta\rho(a)=1\otimes\rho(a).
+\end{gathered}
+\]</span>
+With the multiplicativity of <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> these give
+<span class="math math-display" data-tex="\[
+e(\lambda(a)c\rho(b))=a\,e(c)\,b,
+\]">\[
+e(\lambda(a)c\rho(b))=a\,e(c)\,b,
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;\Delta(\lambda(a)c\rho(b))\\&amp;\quad =(\lambda(a)\otimes1)\Delta(c)(1\otimes\rho(b)).\end{aligned}
+\]">\[
+\begin{aligned}&amp;\Delta(\lambda(a)c\rho(b))\\&amp;\quad =(\lambda(a)\otimes1)\Delta(c)(1\otimes\rho(b)).\end{aligned}
+\]</span>
+So <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> are maps of bimodules, the right side of the second display being the outer bimodule structure of <span class="math" data-tex="\(P\otimes P\)">\(P\otimes P\)</span>. Hence <span class="math" data-tex="\(\Delta\otimes\mathrm{id}\)">\(\Delta\otimes\mathrm{id}\)</span>, <span class="math" data-tex="\(\mathrm{id}\otimes\Delta\)">\(\mathrm{id}\otimes\Delta\)</span>, <span class="math" data-tex="\(e\otimes\mathrm{id}\)">\(e\otimes\mathrm{id}\)</span> and <span class="math" data-tex="\(\mathrm{id}\otimes e\)">\(\mathrm{id}\otimes e\)</span> are defined, and the data satisfy second
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+(\Delta\otimes\mathrm{id})\Delta=(\mathrm{id}\otimes\Delta)\Delta,\\
+(e\otimes\mathrm{id})\Delta=\mathrm{id}_P=(\mathrm{id}\otimes e)\Delta,
+\end{gathered}
+\]">\[
+\begin{gathered}
+(\Delta\otimes\mathrm{id})\Delta=(\mathrm{id}\otimes\Delta)\Delta,\\
+(e\otimes\mathrm{id})\Delta=\mathrm{id}_P=(\mathrm{id}\otimes e)\Delta,
+\end{gathered}
+\]</span>
+through <span class="math" data-tex="\(A\otimes P=P=P\otimes A\)">\(A\otimes P=P=P\otimes A\)</span>. Put <span class="math" data-tex="\(I=\operatorname{Ker}e\)">\(I=\operatorname{Ker}e\)</span>, an ideal of <span class="math" data-tex="\(P\)">\(P\)</span> and a sub-bimodule, with inclusion <span class="math" data-tex="\(\iota\colon I\to P\)">\(\iota\colon I\to P\)</span>.</p>
+<p><strong>1.2. The nerve.</strong> Put <span class="math" data-tex="\(R^0=A\)">\(R^0=A\)</span> and <span class="math" data-tex="\(R^n=P^{\otimes n}\)">\(R^n=P^{\otimes n}\)</span> for <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>, with the outer bimodule structure. Each <span class="math" data-tex="\(R^n\)">\(R^n\)</span> is a commutative <span class="math" data-tex="\(K\)">\(K\)</span>-algebra with the factorwise product. The direct sum <span class="math" data-tex="\(\tilde R=\bigoplus_nR^n\)">\(\tilde R=\bigoplus_nR^n\)</span> is a graded <span class="math" data-tex="\(K\)">\(K\)</span>-algebra for <em>concatenation</em>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;(x_1\otimes\cdots\otimes x_p)(y_1\otimes\cdots\otimes y_q)\\&amp;\quad =x_1\otimes\cdots\otimes y_q,\end{aligned}
+\]">\[
+\begin{aligned}&amp;(x_1\otimes\cdots\otimes x_p)(y_1\otimes\cdots\otimes y_q)\\&amp;\quad =x_1\otimes\cdots\otimes y_q,\end{aligned}
+\]</span>
+with <span class="math" data-tex="\(ax=\lambda(a)x_1\otimes\cdots\)">\(ax=\lambda(a)x_1\otimes\cdots\)</span>, <span class="math" data-tex="\(xa=\cdots\otimes x_p\rho(a)\)">\(xa=\cdots\otimes x_p\rho(a)\)</span> and <span class="math" data-tex="\(a\cdot b=ab\)">\(a\cdot b=ab\)</span>. This product is associative with unit <span class="math" data-tex="\(1\in A\)">\(1\in A\)</span>.</p>
+<p>The <em>cofaces</em> <span class="math" data-tex="\(d^i_n\colon R^n\to R^{n+1}\)">\(d^i_n\colon R^n\to R^{n+1}\)</span>, for <span class="math" data-tex="\(0\leq i\leq n+1\)">\(0\leq i\leq n+1\)</span>, are maps of <span class="math" data-tex="\(K\)">\(K\)</span>-algebras. For <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>:</p>
+<ul>
+<li><span class="math" data-tex="\(d^0_n\)">\(d^0_n\)</span> prepends <span class="math" data-tex="\(1\)">\(1\)</span>;</li>
+<li><span class="math" data-tex="\(d^{n+1}_n\)">\(d^{n+1}_n\)</span> appends <span class="math" data-tex="\(1\)">\(1\)</span>;</li>
+<li><span class="math" data-tex="\(d^i_n\)">\(d^i_n\)</span>, for <span class="math" data-tex="\(1\leq i\leq n\)">\(1\leq i\leq n\)</span>, applies <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> to the factor <span class="math" data-tex="\(x_i\)">\(x_i\)</span>.</li>
+</ul>
+<p>In degree <span class="math" data-tex="\(0\)">\(0\)</span>, <span class="math" data-tex="\(d^0_0=\rho\)">\(d^0_0=\rho\)</span> and <span class="math" data-tex="\(d^1_0=\lambda\)">\(d^1_0=\lambda\)</span>.</p>
+<p>The <em>codegeneracies</em> <span class="math" data-tex="\(s^j_n\colon R^n\to R^{n-1}\)">\(s^j_n\colon R^n\to R^{n-1}\)</span>, for <span class="math" data-tex="\(0\leq j&lt;n\)">\(0\leq j&lt;n\)</span>, apply <span class="math" data-tex="\(e\)">\(e\)</span> to the factor <span class="math" data-tex="\(x_{j+1}\)">\(x_{j+1}\)</span> and absorb the result into a neighbouring factor. By the balancing of the tensor product, the choice of neighbour does not matter. In particular <span class="math" data-tex="\(s^0_1=e\)">\(s^0_1=e\)</span>.</p>
+<p>All these maps are well defined on the balanced tensor products, because <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> and <span class="math" data-tex="\(e\)">\(e\)</span> are bimodule maps and <span class="math" data-tex="\(\rho(a)\otimes1=1\otimes\lambda(a)\)">\(\rho(a)\otimes1=1\otimes\lambda(a)\)</span>. They are multiplicative, because <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, <span class="math" data-tex="\(\rho\)">\(\rho\)</span>, <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> are. The <em>alternating differential</em> is
+<span class="math math-display" data-tex="\[
+\partial_n=\textstyle\sum_{i=0}^{n+1}(-1)^id^i_n\colon R^n\to R^{n+1}.
+\]">\[
+\partial_n=\textstyle\sum_{i=0}^{n+1}(-1)^id^i_n\colon R^n\to R^{n+1}.
+\]</span></p>
+<p><strong>Lemma 1.3 (cosimplicial identities).</strong> Whenever the indices are in range:</p>
+<ol>
+<li><span class="math" data-tex="\(d^j_{n+1}d^i_n=d^i_{n+1}d^{j-1}_n\)">\(d^j_{n+1}d^i_n=d^i_{n+1}d^{j-1}_n\)</span> for <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>;</li>
+<li><span class="math" data-tex="\(s^{k-1}_{n-1}s^j_n=s^j_{n-1}s^k_n\)">\(s^{k-1}_{n-1}s^j_n=s^j_{n-1}s^k_n\)</span> for <span class="math" data-tex="\(j&lt;k\)">\(j&lt;k\)</span>;</li>
+<li><span class="math" data-tex="\(s^j_{n+1}d^i_n\)">\(s^j_{n+1}d^i_n\)</span> equals <span class="math" data-tex="\(d^i_{n-1}s^{j-1}_n\)">\(d^i_{n-1}s^{j-1}_n\)</span> for <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span>, equals <span class="math" data-tex="\(\mathrm{id}\)">\(\mathrm{id}\)</span> for <span class="math" data-tex="\(i\in\{j,j+1\}\)">\(i\in\{j,j+1\}\)</span>, and equals <span class="math" data-tex="\(d^{i-1}_{n-1}s^j_n\)">\(d^{i-1}_{n-1}s^j_n\)</span> for <span class="math" data-tex="\(i&gt;j+1\)">\(i&gt;j+1\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> Both sides are additive, so it suffices to check them on pure tensors <span class="math" data-tex="\(x=x_1\otimes\cdots\otimes x_n\)">\(x=x_1\otimes\cdots\otimes x_n\)</span>.</p>
+<p><em>The positional reading.</em> Read the operators on positions:</p>
+<ul>
+<li><span class="math" data-tex="\(d^0\)">\(d^0\)</span> inserts <span class="math" data-tex="\(1\)">\(1\)</span> before position <span class="math" data-tex="\(1\)">\(1\)</span>;</li>
+<li><span class="math" data-tex="\(d^{n+1}\)">\(d^{n+1}\)</span> inserts <span class="math" data-tex="\(1\)">\(1\)</span> after position <span class="math" data-tex="\(n\)">\(n\)</span>;</li>
+<li><span class="math" data-tex="\(d^i\)">\(d^i\)</span>, for <span class="math" data-tex="\(1\leq i\leq n\)">\(1\leq i\leq n\)</span>, replaces position <span class="math" data-tex="\(i\)">\(i\)</span> by the two factors of <span class="math" data-tex="\(\Delta(x_i)\)">\(\Delta(x_i)\)</span>, in positions <span class="math" data-tex="\(i,i+1\)">\(i,i+1\)</span>;</li>
+<li><span class="math" data-tex="\(s^j\)">\(s^j\)</span> removes position <span class="math" data-tex="\(j+1\)">\(j+1\)</span>, multiplying its value under <span class="math" data-tex="\(e\)">\(e\)</span> into a neighbour.</li>
+</ul>
+<p><em>Disjoint operations.</em> When the two operations of a composite act on different original positions, both sides of the identity perform the same operations on the same factors. The index shifts in (1)–(3) are exactly the renumbering of positions, so the two sides agree.</p>
+<p><em>Overlapping cases for <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>.</em></p>
+<ul>
+<li>In (1), with <span class="math" data-tex="\(j=i+1\)">\(j=i+1\)</span>:
+<ul>
+<li>for <span class="math" data-tex="\(1\leq i\leq n\)">\(1\leq i\leq n\)</span> the identity is coassociativity;</li>
+<li>for <span class="math" data-tex="\(i=0\)">\(i=0\)</span> it reads <span class="math" data-tex="\(1\otimes1\otimes x=\Delta(1)\otimes x\)">\(1\otimes1\otimes x=\Delta(1)\otimes x\)</span>;</li>
+<li>for <span class="math" data-tex="\(i=n+1\)">\(i=n+1\)</span> it reads <span class="math" data-tex="\(x\otimes1\otimes1=x\otimes\Delta(1)\)">\(x\otimes1\otimes1=x\otimes\Delta(1)\)</span>;</li>
+<li>these hold because <span class="math" data-tex="\(\Delta(1)=1\otimes1\)">\(\Delta(1)=1\otimes1\)</span>.</li>
+</ul>
+</li>
+<li>In (2), with <span class="math" data-tex="\(k=j+1\)">\(k=j+1\)</span>: both sides remove the positions <span class="math" data-tex="\(j+1,j+2\)">\(j+1,j+2\)</span> and absorb <span class="math" data-tex="\(e(x_{j+1})e(x_{j+2})\)">\(e(x_{j+1})e(x_{j+2})\)</span>. The reason is that <span class="math" data-tex="\(e(x_{j+1}\rho(b))=e(x_{j+1})b\)">\(e(x_{j+1}\rho(b))=e(x_{j+1})b\)</span> and <span class="math" data-tex="\(e(\lambda(b)x_{j+2})=b\,e(x_{j+2})\)">\(e(\lambda(b)x_{j+2})=b\,e(x_{j+2})\)</span>.</li>
+<li>In (3), the case <span class="math" data-tex="\(i=j\)">\(i=j\)</span> is <span class="math" data-tex="\((\mathrm{id}\otimes e)\Delta=\mathrm{id}\)">\((\mathrm{id}\otimes e)\Delta=\mathrm{id}\)</span> for an inner coface, and <span class="math" data-tex="\(e(1)=1\)">\(e(1)=1\)</span> for <span class="math" data-tex="\(i=j=0\)">\(i=j=0\)</span>.</li>
+<li>In (3), the case <span class="math" data-tex="\(i=j+1\)">\(i=j+1\)</span> is <span class="math" data-tex="\((e\otimes\mathrm{id})\Delta=\mathrm{id}\)">\((e\otimes\mathrm{id})\Delta=\mathrm{id}\)</span> for an inner coface, and <span class="math" data-tex="\(e(1)=1\)">\(e(1)=1\)</span> for <span class="math" data-tex="\(i=n+1\)">\(i=n+1\)</span>.</li>
+</ul>
+<p><em>Degree <span class="math" data-tex="\(0\)">\(0\)</span>.</em> Identity (1) consists of three equations:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+d^1_1d^0_0=d^0_1d^0_0&amp;:\ \Delta\rho(a)=1\otimes\rho(a),\\
+d^2_1d^1_0=d^1_1d^1_0&amp;:\ \lambda(a)\otimes1=\Delta\lambda(a),\\
+d^2_1d^0_0=d^0_1d^1_0&amp;:\ \rho(a)\otimes1=1\otimes\lambda(a).
+\end{aligned}
+\]">\[
+\begin{aligned}
+d^1_1d^0_0=d^0_1d^0_0&amp;:\ \Delta\rho(a)=1\otimes\rho(a),\\
+d^2_1d^1_0=d^1_1d^1_0&amp;:\ \lambda(a)\otimes1=\Delta\lambda(a),\\
+d^2_1d^0_0=d^0_1d^1_0&amp;:\ \rho(a)\otimes1=1\otimes\lambda(a).
+\end{aligned}
+\]</span>
+Identity (3) reduces to <span class="math" data-tex="\(e\rho=e\lambda=\mathrm{id}\)">\(e\rho=e\lambda=\mathrm{id}\)</span>.</p>
+<p><em>Targets in degree <span class="math" data-tex="\(0\)">\(0\)</span>.</em> The remaining cases of (3) for <span class="math" data-tex="\(n=1\)">\(n=1\)</span> are
+<span class="math math-display" data-tex="\[
+s^1_2d^0_1(x)=\rho(e(x))=d^0_0s^0_1(x),
+\]">\[
+s^1_2d^0_1(x)=\rho(e(x))=d^0_0s^0_1(x),
+\]</span>
+<span class="math math-display" data-tex="\[
+s^0_2d^2_1(x)=\lambda(e(x))=d^1_0s^0_1(x).
+\]">\[
+s^0_2d^2_1(x)=\lambda(e(x))=d^1_0s^0_1(x).
+\]</span>
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>1.4. Linearity.</strong> The maps have the following linearity properties.</p>
+<ul>
+<li>All codegeneracies are bimodule maps.</li>
+<li>The inner cofaces <span class="math" data-tex="\(d^i_n\)">\(d^i_n\)</span>, <span class="math" data-tex="\(1\leq i\leq n\)">\(1\leq i\leq n\)</span>, are bimodule maps, since <span class="math" data-tex="\(\Delta\)">\(\Delta\)</span> is one.</li>
+<li>The coface <span class="math" data-tex="\(d^0_n\)">\(d^0_n\)</span> is right <span class="math" data-tex="\(A\)">\(A\)</span>-linear; for <span class="math" data-tex="\(n=0\)">\(n=0\)</span> this reads <span class="math" data-tex="\(\rho(ab)=\rho(a)\rho(b)\)">\(\rho(ab)=\rho(a)\rho(b)\)</span>.</li>
+<li>The last coface <span class="math" data-tex="\(d^{n+1}_n\)">\(d^{n+1}_n\)</span> is left <span class="math" data-tex="\(A\)">\(A\)</span>-linear.</li>
+</ul>
+<p>In general <span class="math" data-tex="\(d^0_n\)">\(d^0_n\)</span> is not left linear: <span class="math" data-tex="\(d^0_n(ax)=\rho(a)x\)">\(d^0_n(ax)=\rho(a)x\)</span>, while <span class="math" data-tex="\(a\,d^0_n(x)=\lambda(a)x\)">\(a\,d^0_n(x)=\lambda(a)x\)</span>. Likewise <span class="math" data-tex="\(d^{n+1}_n\)">\(d^{n+1}_n\)</span> is not right linear.</p>
+<p><strong>1.5. Normalization.</strong> Put <span class="math" data-tex="\(N^0R=A\)">\(N^0R=A\)</span> and, for <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>,
+<span class="math math-display" data-tex="\[
+N^nR=\textstyle\bigcap_{j&lt;n}\operatorname{Ker}s^j_n,
+\]">\[
+N^nR=\textstyle\bigcap_{j&lt;n}\operatorname{Ker}s^j_n,
+\]</span>
+a sub-bimodule of <span class="math" data-tex="\(R^n\)">\(R^n\)</span>, with inclusion <span class="math" data-tex="\(k_n\)">\(k_n\)</span>.</p>
+<p>The map <span class="math" data-tex="\(j_n=\iota^{\otimes n}\colon I^{\otimes n}\to R^n\)">\(j_n=\iota^{\otimes n}\colon I^{\otimes n}\to R^n\)</span> satisfies <span class="math" data-tex="\(s^j_nj_n=0\)">\(s^j_nj_n=0\)</span> for all <span class="math" data-tex="\(j\)">\(j\)</span>, because <span class="math" data-tex="\(e\iota=0\)">\(e\iota=0\)</span>. So there is a unique bimodule map
+<span class="math math-display" data-tex="\[
+\mu_n\colon I^{\otimes n}\to N^nR,\qquad k_n\mu_n=j_n,
+\]">\[
+\mu_n\colon I^{\otimes n}\to N^nR,\qquad k_n\mu_n=j_n,
+\]</span>
+with <span class="math" data-tex="\(\mu_0=\mathrm{id}_A\)">\(\mu_0=\mathrm{id}_A\)</span>.</p>
+<p>Let <span class="math" data-tex="\(T_A(I)=\bigoplus_nI^{\otimes n}\)">\(T_A(I)=\bigoplus_nI^{\otimes n}\)</span> be the tensor algebra of the bimodule <span class="math" data-tex="\(I\)">\(I\)</span>, with the concatenation product. Then <span class="math" data-tex="\(\mu=(\mu_n)_n\)">\(\mu=(\mu_n)_n\)</span> is a map of graded <span class="math" data-tex="\(K\)">\(K\)</span>-algebras into <span class="math" data-tex="\(\tilde R\)">\(\tilde R\)</span>, since concatenation carries <span class="math" data-tex="\(j_p(x)\otimes j_q(y)\)">\(j_p(x)\otimes j_q(y)\)</span> to <span class="math" data-tex="\(j_{p+q}(x\otimes y)\)">\(j_{p+q}(x\otimes y)\)</span>.</p>
+<p><strong>Lemma 1.6.</strong> <span class="math" data-tex="\((\tilde R,\partial)\)">\((\tilde R,\partial)\)</span> is a differential graded <span class="math" data-tex="\(K\)">\(K\)</span>-algebra for concatenation, and <span class="math" data-tex="\(NR=\bigoplus_nN^nR\)">\(NR=\bigoplus_nN^nR\)</span> is a differential graded subalgebra.</p>
+<p><strong>Proof.</strong> <em><span class="math" data-tex="\(\partial\circ\partial=0\)">\(\partial\circ\partial=0\)</span>.</em> Write <span class="math" data-tex="\(\partial_{n+1}\partial_n=\sum(-1)^{i+j}d^j_{n+1}d^i_n\)">\(\partial_{n+1}\partial_n=\sum(-1)^{i+j}d^j_{n+1}d^i_n\)</span>. By Lemma 1.3 (1), the term <span class="math" data-tex="\((i,j)\)">\((i,j)\)</span> with <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span> is the same map as the term with inner index <span class="math" data-tex="\(j-1\)">\(j-1\)</span> and outer index <span class="math" data-tex="\(i\)">\(i\)</span>, and the two terms have opposite signs. This pairing is a bijection between the terms with <span class="math" data-tex="\(i&lt;j\)">\(i&lt;j\)</span> and the terms whose outer index is at most the inner one, so the sum vanishes.</p>
+<p><em>Leibniz rule in positive degrees.</em> Let <span class="math" data-tex="\(x\in R^p\)">\(x\in R^p\)</span> and <span class="math" data-tex="\(y\in R^q\)">\(y\in R^q\)</span> with <span class="math" data-tex="\(p,q\geq1\)">\(p,q\geq1\)</span>. The cofaces of <span class="math" data-tex="\(xy\)">\(xy\)</span> are:</p>
+<ul>
+<li><span class="math" data-tex="\(d^i(xy)=d^i(x)y\)">\(d^i(xy)=d^i(x)y\)</span> for <span class="math" data-tex="\(i\leq p\)">\(i\leq p\)</span>;</li>
+<li><span class="math" data-tex="\(d^i(xy)=x\,d^{i-p}(y)\)">\(d^i(xy)=x\,d^{i-p}(y)\)</span> for <span class="math" data-tex="\(p&lt;i\leq p+q+1\)">\(p&lt;i\leq p+q+1\)</span>.</li>
+</ul>
+<p>In <span class="math" data-tex="\(\partial(x)y+(-1)^px\partial(y)\)">\(\partial(x)y+(-1)^px\partial(y)\)</span> the term <span class="math" data-tex="\(x\otimes1\otimes y\)">\(x\otimes1\otimes y\)</span> occurs twice, with the signs <span class="math" data-tex="\((-1)^{p+1}\)">\((-1)^{p+1}\)</span> and <span class="math" data-tex="\((-1)^p\)">\((-1)^p\)</span>, so it cancels. The remaining terms are those of <span class="math" data-tex="\(\partial(xy)\)">\(\partial(xy)\)</span>.</p>
+<p><em>Leibniz rule with a factor of degree <span class="math" data-tex="\(0\)">\(0\)</span>.</em> For <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span> and <span class="math" data-tex="\(x\in R^p\)">\(x\in R^p\)</span>, <span class="math" data-tex="\(p\geq1\)">\(p\geq1\)</span>:</p>
+<ul>
+<li><span class="math" data-tex="\(d^0(ax)=1\otimes\lambda(a)x_1\otimes\cdots=\rho(a)x\)">\(d^0(ax)=1\otimes\lambda(a)x_1\otimes\cdots=\rho(a)x\)</span>;</li>
+<li><span class="math" data-tex="\(d^i(ax)=a\,d^i(x)\)">\(d^i(ax)=a\,d^i(x)\)</span> for <span class="math" data-tex="\(i\geq1\)">\(i\geq1\)</span>, by 1.4;</li>
+<li><span class="math" data-tex="\(a\,d^0(x)=\lambda(a)x\)">\(a\,d^0(x)=\lambda(a)x\)</span>.</li>
+</ul>
+<p>So <span class="math" data-tex="\(\partial(ax)=\)">\(\partial(ax)=\)</span> <span class="math" data-tex="\((\rho(a)-\lambda(a))x+a\partial(x)=\)">\((\rho(a)-\lambda(a))x+a\partial(x)=\)</span> <span class="math" data-tex="\(\partial(a)x+a\partial(x)\)">\(\partial(a)x+a\partial(x)\)</span>.</p>
+<p>On the other side:</p>
+<ul>
+<li><span class="math" data-tex="\(d^i(xa)=d^i(x)a\)">\(d^i(xa)=d^i(x)a\)</span> for <span class="math" data-tex="\(i\leq p\)">\(i\leq p\)</span>, by 1.4;</li>
+<li><span class="math" data-tex="\(d^{p+1}(xa)=\)">\(d^{p+1}(xa)=\)</span> <span class="math" data-tex="\(\cdots\otimes x_p\rho(a)\otimes1=\)">\(\cdots\otimes x_p\rho(a)\otimes1=\)</span> <span class="math" data-tex="\(x\lambda(a)\)">\(x\lambda(a)\)</span>;</li>
+<li><span class="math" data-tex="\(d^{p+1}(x)a=x\rho(a)\)">\(d^{p+1}(x)a=x\rho(a)\)</span>.</li>
+</ul>
+<p>Hence
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial(xa)&amp;=\partial(x)a+(-1)^px\rho(a)\\
+&amp;\quad-(-1)^px\lambda(a)\\
+&amp;=\partial(x)a+(-1)^px\,\partial(a).
+\end{aligned}
+\]">\[
+\begin{aligned}
+\partial(xa)&amp;=\partial(x)a+(-1)^px\rho(a)\\
+&amp;\quad-(-1)^px\lambda(a)\\
+&amp;=\partial(x)a+(-1)^px\,\partial(a).
+\end{aligned}
+\]</span>
+For <span class="math" data-tex="\(a,b\in A\)">\(a,b\in A\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial(a)b+a\partial(b)&amp;=(\rho(a)-\lambda(a))\rho(b)\\
+&amp;\quad+\lambda(a)(\rho(b)-\lambda(b)),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\partial(a)b+a\partial(b)&amp;=(\rho(a)-\lambda(a))\rho(b)\\
+&amp;\quad+\lambda(a)(\rho(b)-\lambda(b)),
+\end{aligned}
+\]</span>
+which is <span class="math" data-tex="\(\rho(ab)-\lambda(ab)=\partial(ab)\)">\(\rho(ab)-\lambda(ab)=\partial(ab)\)</span>.</p>
+<p><em><span class="math" data-tex="\(NR\)">\(NR\)</span> is closed under <span class="math" data-tex="\(\partial\)">\(\partial\)</span>.</em> Let <span class="math" data-tex="\(z\in N^nR\)">\(z\in N^nR\)</span> with <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span>. By Lemma 1.3 (3), in <span class="math" data-tex="\(s^j_{n+1}\partial z\)">\(s^j_{n+1}\partial z\)</span>:</p>
+<ul>
+<li>the terms <span class="math" data-tex="\(i=j\)">\(i=j\)</span> and <span class="math" data-tex="\(i=j+1\)">\(i=j+1\)</span> give <span class="math" data-tex="\((-1)^jz+(-1)^{j+1}z=0\)">\((-1)^jz+(-1)^{j+1}z=0\)</span>;</li>
+<li>the other terms contain <span class="math" data-tex="\(s^{j-1}_nz=0\)">\(s^{j-1}_nz=0\)</span> or <span class="math" data-tex="\(s^j_nz=0\)">\(s^j_nz=0\)</span>.</li>
+</ul>
+<p>For <span class="math" data-tex="\(a\in A\)">\(a\in A\)</span>, <span class="math" data-tex="\(s^0_1\partial a=e\rho(a)-e\lambda(a)=0\)">\(s^0_1\partial a=e\rho(a)-e\lambda(a)=0\)</span>.</p>
+<p><em><span class="math" data-tex="\(NR\)">\(NR\)</span> is closed under concatenation.</em> For <span class="math" data-tex="\(p,q\geq1\)">\(p,q\geq1\)</span>, <span class="math" data-tex="\(s^j_{p+q}(xy)\)">\(s^j_{p+q}(xy)\)</span> is <span class="math" data-tex="\((s^j_px)y\)">\((s^j_px)y\)</span> if <span class="math" data-tex="\(j&lt;p\)">\(j&lt;p\)</span> and <span class="math" data-tex="\(x(s^{j-p}_qy)\)">\(x(s^{j-p}_qy)\)</span> if <span class="math" data-tex="\(j\geq p\)">\(j\geq p\)</span>. Products with <span class="math" data-tex="\(A\)">\(A\)</span> preserve <span class="math" data-tex="\(NR\)">\(NR\)</span>, the <span class="math" data-tex="\(s^j\)">\(s^j\)</span> being bimodule maps. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-normalization-without-flatness">2. Normalization without flatness</h2>
+<p>For <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span> and <span class="math" data-tex="\(0\leq j\leq m-1\)">\(0\leq j\leq m-1\)</span>, put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+E^m_j&amp;=\mathrm{id}_{R^m}-d^j_{m-1}s^j_m,\\
+Q_m&amp;=E^m_0E^m_1\cdots E^m_{m-1}.
+\end{aligned}
+\]">\[
+\begin{aligned}
+E^m_j&amp;=\mathrm{id}_{R^m}-d^j_{m-1}s^j_m,\\
+Q_m&amp;=E^m_0E^m_1\cdots E^m_{m-1}.
+\end{aligned}
+\]</span>
+Both are endomorphisms of <span class="math" data-tex="\(R^m\)">\(R^m\)</span>, and <span class="math" data-tex="\(Q_m\)">\(Q_m\)</span> applies <span class="math" data-tex="\(E^m_{m-1}\)">\(E^m_{m-1}\)</span> first. They are right <span class="math" data-tex="\(A\)">\(A\)</span>-linear by 1.4, because the cofaces <span class="math" data-tex="\(d^j_{m-1}\)">\(d^j_{m-1}\)</span> with <span class="math" data-tex="\(j\leq m-1\)">\(j\leq m-1\)</span> are right linear. The last coface <span class="math" data-tex="\(d^m_{m-1}\)">\(d^m_{m-1}\)</span> does not occur in them.</p>
+<p><strong>Lemma 2.1.</strong> For every <span class="math" data-tex="\(k&lt;m\)">\(k&lt;m\)</span>, <span class="math" data-tex="\(s^k_mQ_m=0\)">\(s^k_mQ_m=0\)</span>. Moreover <span class="math" data-tex="\(Q_m\)">\(Q_m\)</span> restricts to the identity on <span class="math" data-tex="\(N^mR\)">\(N^mR\)</span>. Hence there is a unique right <span class="math" data-tex="\(A\)">\(A\)</span>-linear map <span class="math" data-tex="\(q_m\colon R^m\to N^mR\)">\(q_m\colon R^m\to N^mR\)</span> with <span class="math" data-tex="\(k_mq_m=Q_m\)">\(k_mq_m=Q_m\)</span>, and it satisfies <span class="math" data-tex="\(q_mk_m=\mathrm{id}\)">\(q_mk_m=\mathrm{id}\)</span>.</p>
+<p><strong>Proof.</strong> By Lemma 1.3 (3), <span class="math" data-tex="\(s^k_mE^m_k=s^k_m-s^k_m=0\)">\(s^k_mE^m_k=s^k_m-s^k_m=0\)</span>. For <span class="math" data-tex="\(j&lt;k\)">\(j&lt;k\)</span>, Lemma 1.3 (3) and then (2) give
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+s^k_mE^m_j&amp;=s^k_m-d^j_{m-2}s^{k-1}_{m-1}s^j_m\\
+&amp;=s^k_m-d^j_{m-2}s^j_{m-1}s^k_m\\
+&amp;=E^{m-1}_js^k_m.
+\end{aligned}
+\]">\[
+\begin{aligned}
+s^k_mE^m_j&amp;=s^k_m-d^j_{m-2}s^{k-1}_{m-1}s^j_m\\
+&amp;=s^k_m-d^j_{m-2}s^j_{m-1}s^k_m\\
+&amp;=E^{m-1}_js^k_m.
+\end{aligned}
+\]</span>
+All indices are in range, because <span class="math" data-tex="\(j\leq k-1\leq m-2\)">\(j\leq k-1\leq m-2\)</span>. So <span class="math" data-tex="\(s^k_m\)">\(s^k_m\)</span> moves past <span class="math" data-tex="\(E^m_0,\dots,E^m_{k-1}\)">\(E^m_0,\dots,E^m_{k-1}\)</span> and meets <span class="math" data-tex="\(E^m_k\)">\(E^m_k\)</span>, which gives <span class="math" data-tex="\(s^k_mQ_m=0\)">\(s^k_mQ_m=0\)</span>. Hence <span class="math" data-tex="\(Q_m\)">\(Q_m\)</span> factors uniquely through <span class="math" data-tex="\(k_m\)">\(k_m\)</span>.</p>
+<p>On <span class="math" data-tex="\(N^mR\)">\(N^mR\)</span> every <span class="math" data-tex="\(s^j_m\)">\(s^j_m\)</span> vanishes, so every <span class="math" data-tex="\(E^m_j\)">\(E^m_j\)</span> is the identity there. Thus <span class="math" data-tex="\(Q_mk_m=k_m\)">\(Q_mk_m=k_m\)</span>, that is, <span class="math" data-tex="\(k_mq_mk_m=k_m\)">\(k_mq_mk_m=k_m\)</span>, and <span class="math" data-tex="\(q_mk_m=\mathrm{id}\)">\(q_mk_m=\mathrm{id}\)</span> since <span class="math" data-tex="\(k_m\)">\(k_m\)</span> is injective. The map <span class="math" data-tex="\(q_m\)">\(q_m\)</span> is right linear because <span class="math" data-tex="\(Q_m\)">\(Q_m\)</span> is right linear and <span class="math" data-tex="\(k_m\)">\(k_m\)</span> is an injective bimodule map. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, identify <span class="math" data-tex="\(R^n=R^{n-1}\otimes P\)">\(R^n=R^{n-1}\otimes P\)</span>. Then
+<span class="math math-display" data-tex="\[
+s^j_n=s^j_{n-1}\otimes\mathrm{id}_P\qquad(j\leq n-2).
+\]">\[
+s^j_n=s^j_{n-1}\otimes\mathrm{id}_P\qquad(j\leq n-2).
+\]</span>
+For <span class="math" data-tex="\(j=n-2\)">\(j=n-2\)</span> both sides absorb <span class="math" data-tex="\(e(x_{n-1})\)">\(e(x_{n-1})\)</span> into a neighbouring factor, and the choice of neighbour does not matter by balancing. Since <span class="math" data-tex="\(q_{n-1}\)">\(q_{n-1}\)</span> and <span class="math" data-tex="\(k_{n-1}\)">\(k_{n-1}\)</span> are right linear, the maps
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;\alpha_n =k_{n-1}\otimes\mathrm{id}_P \colon N^{n-1}R\otimes P\\ &amp;\quad \to R^n,\\ &amp;q_{n-1}\otimes\mathrm{id}_P \colon R^n \to N^{n-1}R\otimes P\end{aligned}
+\]">\[
+\begin{aligned}&amp;\alpha_n =k_{n-1}\otimes\mathrm{id}_P \colon N^{n-1}R\otimes P\\ &amp;\quad \to R^n,\\ &amp;q_{n-1}\otimes\mathrm{id}_P \colon R^n \to N^{n-1}R\otimes P\end{aligned}
+\]</span>
+are defined, and <span class="math" data-tex="\((q_{n-1}\otimes\mathrm{id}_P)\alpha_n=\mathrm{id}\)">\((q_{n-1}\otimes\mathrm{id}_P)\alpha_n=\mathrm{id}\)</span>. The map <span class="math" data-tex="\(\alpha_n\)">\(\alpha_n\)</span> is a bimodule map.</p>
+<p><strong>Lemma 2.2.</strong> For <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, <span class="math" data-tex="\(\alpha_n\)">\(\alpha_n\)</span> is injective with image
+<span class="math math-display" data-tex="\[
+H_n=\textstyle\bigcap_{j\leq n-2}\operatorname{Ker}s^j_n.
+\]">\[
+H_n=\textstyle\bigcap_{j\leq n-2}\operatorname{Ker}s^j_n.
+\]</span></p>
+<p><strong>Proof.</strong> The map <span class="math" data-tex="\(\alpha_n\)">\(\alpha_n\)</span> has a left inverse, so it is injective. Its image lies in <span class="math" data-tex="\(H_n\)">\(H_n\)</span>, since <span class="math" data-tex="\(s^j_n\alpha_n=(s^j_{n-1}k_{n-1})\otimes\mathrm{id}_P=0\)">\(s^j_n\alpha_n=(s^j_{n-1}k_{n-1})\otimes\mathrm{id}_P=0\)</span>.</p>
+<p>Conversely, let <span class="math" data-tex="\(z\in H_n\)">\(z\in H_n\)</span>, and let <span class="math" data-tex="\(j\leq n-2\)">\(j\leq n-2\)</span>. The coface <span class="math" data-tex="\(d^j_{n-2}\)">\(d^j_{n-2}\)</span> is right linear, so <span class="math" data-tex="\(d^j_{n-2}\otimes\mathrm{id}_P\)">\(d^j_{n-2}\otimes\mathrm{id}_P\)</span> is defined. Moreover
+<span class="math math-display" data-tex="\[
+E^{n-1}_j\otimes\mathrm{id}_P=\mathrm{id}-(d^j_{n-2}\otimes\mathrm{id}_P)s^j_n,
+\]">\[
+E^{n-1}_j\otimes\mathrm{id}_P=\mathrm{id}-(d^j_{n-2}\otimes\mathrm{id}_P)s^j_n,
+\]</span>
+so <span class="math" data-tex="\((E^{n-1}_j\otimes\mathrm{id}_P)(z)=z\)">\((E^{n-1}_j\otimes\mathrm{id}_P)(z)=z\)</span>. As <span class="math" data-tex="\(Q_{n-1}\otimes\mathrm{id}_P\)">\(Q_{n-1}\otimes\mathrm{id}_P\)</span> is the composite of these maps,
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;z =(Q_{n-1}\otimes\mathrm{id}_P)(z)\\&amp;\quad =\alpha_n\bigl((q_{n-1}\otimes\mathrm{id}_P)(z)\bigr).\end{aligned}
+\]">\[
+\begin{aligned}&amp;z =(Q_{n-1}\otimes\mathrm{id}_P)(z)\\&amp;\quad =\alpha_n\bigl((q_{n-1}\otimes\mathrm{id}_P)(z)\bigr).\end{aligned}
+\]</span>
+<span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 2.3.</strong> For every <span class="math" data-tex="\(n\)">\(n\)</span>, <span class="math" data-tex="\(\mu_n\colon I^{\otimes n}\to N^nR\)">\(\mu_n\colon I^{\otimes n}\to N^nR\)</span> is an isomorphism of bimodules. Equivalently, <span class="math" data-tex="\(j_n\)">\(j_n\)</span> is injective with image <span class="math" data-tex="\(N^nR\)">\(N^nR\)</span>. It is split as a map of right <span class="math" data-tex="\(A\)">\(A\)</span>-modules, by <span class="math" data-tex="\(\mu_n^{-1}q_n\)">\(\mu_n^{-1}q_n\)</span>.</p>
+<p><strong>Proof.</strong> The cases <span class="math" data-tex="\(n=0,1\)">\(n=0,1\)</span> are clear: <span class="math" data-tex="\(N^1R=\operatorname{Ker}s^0_1=\operatorname{Ker}e=I\)">\(N^1R=\operatorname{Ker}s^0_1=\operatorname{Ker}e=I\)</span> and <span class="math" data-tex="\(\mu_1=\mathrm{id}_I\)">\(\mu_1=\mathrm{id}_I\)</span>. Let <span class="math" data-tex="\(n\geq2\)">\(n\geq2\)</span>, and assume that <span class="math" data-tex="\(\mu_{n-1}\)">\(\mu_{n-1}\)</span> is an isomorphism.</p>
+<p><em>The last codegeneracy.</em> The map <span class="math" data-tex="\(s^{n-1}_n\)">\(s^{n-1}_n\)</span> applies <span class="math" data-tex="\(e\)">\(e\)</span> to the last factor, that is, <span class="math" data-tex="\(s^{n-1}_n=\mathrm{id}_{R^{n-1}}\otimes e\)">\(s^{n-1}_n=\mathrm{id}_{R^{n-1}}\otimes e\)</span>, with <span class="math" data-tex="\(e\)">\(e\)</span> left linear. So <span class="math" data-tex="\(s^{n-1}_n\alpha_n=k_{n-1}\beta_n\)">\(s^{n-1}_n\alpha_n=k_{n-1}\beta_n\)</span> with
+<span class="math math-display" data-tex="\[
+\beta_n=\mathrm{id}\otimes e\colon N^{n-1}R\otimes P\to N^{n-1}R.
+\]">\[
+\beta_n=\mathrm{id}\otimes e\colon N^{n-1}R\otimes P\to N^{n-1}R.
+\]</span>
+Since <span class="math" data-tex="\(\alpha_n\)">\(\alpha_n\)</span> and <span class="math" data-tex="\(k_{n-1}\)">\(k_{n-1}\)</span> are injective, Lemma 2.2 shows that <span class="math" data-tex="\(\alpha_n\)">\(\alpha_n\)</span> maps <span class="math" data-tex="\(\operatorname{Ker}\beta_n\)">\(\operatorname{Ker}\beta_n\)</span> bijectively onto <span class="math" data-tex="\(H_n\cap\operatorname{Ker}s^{n-1}_n=N^nR\)">\(H_n\cap\operatorname{Ker}s^{n-1}_n=N^nR\)</span>.</p>
+<p><em>The kernel of <span class="math" data-tex="\(\beta_n\)">\(\beta_n\)</span>.</em> The sequence <span class="math" data-tex="\(0\to I\to P\xrightarrow{e}A\to0\)">\(0\to I\to P\xrightarrow{e}A\to0\)</span> is split exact as a sequence of left <span class="math" data-tex="\(A\)">\(A\)</span>-modules, by the left linear section <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>. The additive functor <span class="math" data-tex="\(N^{n-1}R\otimes-\)">\(N^{n-1}R\otimes-\)</span> preserves split exact sequences. So <span class="math" data-tex="\(\mathrm{id}\otimes\iota\)">\(\mathrm{id}\otimes\iota\)</span> is injective with image <span class="math" data-tex="\(\operatorname{Ker}\beta_n\)">\(\operatorname{Ker}\beta_n\)</span>.</p>
+<p><em>Conclusion.</em> So there is a bimodule isomorphism
+<span class="math math-display" data-tex="\[
+\begin{gathered}\theta_n\colon N^{n-1}R\otimes I\to N^nR,\\ k_n\theta_n=\alpha_n(\mathrm{id}\otimes\iota).\end{gathered}
+\]">\[
+\begin{gathered}\theta_n\colon N^{n-1}R\otimes I\to N^nR,\\ k_n\theta_n=\alpha_n(\mathrm{id}\otimes\iota).\end{gathered}
+\]</span>
+The map <span class="math" data-tex="\(\theta_n(\mu_{n-1}\otimes\mathrm{id}_I)\)">\(\theta_n(\mu_{n-1}\otimes\mathrm{id}_I)\)</span> is a bimodule isomorphism onto <span class="math" data-tex="\(N^nR\)">\(N^nR\)</span>. Its composite with <span class="math" data-tex="\(k_n\)">\(k_n\)</span> is
+<span class="math math-display" data-tex="\[
+(k_{n-1}\mu_{n-1})\otimes\iota=j_{n-1}\otimes\iota=j_n,
+\]">\[
+(k_{n-1}\mu_{n-1})\otimes\iota=j_{n-1}\otimes\iota=j_n,
+\]</span>
+so it is <span class="math" data-tex="\(\mu_n\)">\(\mu_n\)</span>. Finally, <span class="math" data-tex="\(\mu_n^{-1}q_nj_n=\mu_n^{-1}q_nk_n\mu_n=\mathrm{id}\)">\(\mu_n^{-1}q_nj_n=\mu_n^{-1}q_nk_n\mu_n=\mathrm{id}\)</span>, and <span class="math" data-tex="\(\mu_n^{-1}q_n\)">\(\mu_n^{-1}q_n\)</span> is right linear. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 2.4.</strong> Let <span class="math" data-tex="\((A,P)\)">\((A,P)\)</span> be a formal category over <span class="math" data-tex="\(K\)">\(K\)</span>.</p>
+<ol>
+<li>The map <span class="math" data-tex="\(\mu\colon T_A(I)\to NR\)">\(\mu\colon T_A(I)\to NR\)</span> is an isomorphism of graded <span class="math" data-tex="\(K\)">\(K\)</span>-algebras.</li>
+<li>There is a unique derivation <span class="math" data-tex="\(D\)">\(D\)</span> of degree one of <span class="math" data-tex="\(T_A(I)\)">\(T_A(I)\)</span> with
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;D(a) =\rho(a)\\ &amp;\quad -\lambda(a)\quad(a\in A),\\ &amp;j_2D(x) =1 \otimes x -\Delta(x) +x\\ &amp;\quad \otimes1\quad(x\in I).\end{aligned}
+\]">\[
+\begin{aligned}&amp;D(a) =\rho(a)\\ &amp;\quad -\lambda(a)\quad(a\in A),\\ &amp;j_2D(x) =1 \otimes x -\Delta(x) +x\\ &amp;\quad \otimes1\quad(x\in I).\end{aligned}
+\]</span></li>
+<li>This derivation satisfies <span class="math" data-tex="\(D\circ D=0\)">\(D\circ D=0\)</span> and <span class="math" data-tex="\(\mu D=\partial\mu\)">\(\mu D=\partial\mu\)</span>. So <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is an isomorphism of differential graded <span class="math" data-tex="\(K\)">\(K\)</span>-algebras.</li>
+</ol>
+<p><strong>Proof.</strong> (1) is Proposition 2.3 together with 1.5.</p>
+<p>For (2) and (3), put <span class="math" data-tex="\(D=\mu^{-1}\partial\mu\)">\(D=\mu^{-1}\partial\mu\)</span>, which is defined by Lemma 1.6. It is a derivation of degree one with <span class="math" data-tex="\(D\circ D=0\)">\(D\circ D=0\)</span>, because <span class="math" data-tex="\(\partial\)">\(\partial\)</span> has these properties and <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is an isomorphism of algebras. Its values in degrees <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span> are those of <span class="math" data-tex="\(\partial_0=\rho-\lambda\)">\(\partial_0=\rho-\lambda\)</span> and of <span class="math" data-tex="\(\partial_1=d^0_1-d^1_1+d^2_1\)">\(\partial_1=d^0_1-d^1_1+d^2_1\)</span>, since <span class="math" data-tex="\(k_2\mu_2=j_2\)">\(k_2\mu_2=j_2\)</span>.</p>
+<p>For uniqueness, the difference of two such derivations is a derivation vanishing on <span class="math" data-tex="\(A\)">\(A\)</span> and on <span class="math" data-tex="\(I\)">\(I\)</span>. By the Leibniz rule it vanishes on all products <span class="math" data-tex="\(x_1\cdots x_n\)">\(x_1\cdots x_n\)</span> of elements of <span class="math" data-tex="\(I\)">\(I\)</span>. Every local section of <span class="math" data-tex="\(I^{\otimes n}\)">\(I^{\otimes n}\)</span> is locally a sum of such products, so the difference vanishes. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So the tensor algebra <span class="math" data-tex="\(T_A(I)\)">\(T_A(I)\)</span>, with the derivation prescribed in degrees <span class="math" data-tex="\(0\)">\(0\)</span> and <span class="math" data-tex="\(1\)">\(1\)</span>, is a differential graded algebra isomorphic to <span class="math" data-tex="\(NR\)">\(NR\)</span>, for every formal category.</p>
+<h2 id="3-divided-powers-and-the-de-rham-complex">3. Divided powers and the de Rham complex</h2>
+<p><strong>3.1. Divided powers.</strong> Let <span class="math" data-tex="\(e_2\colon R^2\to A\)">\(e_2\colon R^2\to A\)</span> be the algebra map <span class="math" data-tex="\(x\otimes y\mapsto e(x)e(y)\)">\(x\otimes y\mapsto e(x)e(y)\)</span>, that is, <span class="math" data-tex="\(e_2=e\circ(e\otimes\mathrm{id})\)">\(e_2=e\circ(e\otimes\mathrm{id})\)</span>. Put <span class="math" data-tex="\(J^2=\operatorname{Ker}e_2\)">\(J^2=\operatorname{Ker}e_2\)</span>. By the counit identities, <span class="math" data-tex="\(e_2d^i_1=e\)">\(e_2d^i_1=e\)</span> for the three cofaces <span class="math" data-tex="\(d^i_1\colon P\to R^2\)">\(d^i_1\colon P\to R^2\)</span>; so they carry <span class="math" data-tex="\(I\)">\(I\)</span> into <span class="math" data-tex="\(J^2\)">\(J^2\)</span>.</p>
+<p>A <em>divided power structure</em> on the formal category consists of divided powers <span class="math" data-tex="\(\gamma\)">\(\gamma\)</span> on <span class="math" data-tex="\(I\subseteq P\)">\(I\subseteq P\)</span> and on <span class="math" data-tex="\(J^2\subseteq R^2\)">\(J^2\subseteq R^2\)</span>, in the sense of [Tag 07GL], such that <span class="math" data-tex="\(d^0_1\)">\(d^0_1\)</span>, <span class="math" data-tex="\(d^1_1\)">\(d^1_1\)</span> and <span class="math" data-tex="\(d^2_1\)">\(d^2_1\)</span> are PD morphisms. In <span class="math" data-tex="\(\mathcal T\)">\(\mathcal T\)</span>, divided powers are maps of sheaves of sets satisfying the identities on local sections.</p>
+<p>Divided powers on all augmentation ideals <span class="math" data-tex="\(J^n\)">\(J^n\)</span>, for which all cofaces and codegeneracies are PD morphisms, give in particular such a structure.</p>
+<p><strong>3.2. Definitions.</strong> Let <span class="math" data-tex="\(I^{[2]}\subseteq P\)">\(I^{[2]}\subseteq P\)</span> be the ideal generated by the products <span class="math" data-tex="\(\gamma_{r_1}(x_1)\cdots\gamma_{r_k}(x_k)\)">\(\gamma_{r_1}(x_1)\cdots\gamma_{r_k}(x_k)\)</span> with <span class="math" data-tex="\(x_i\in I\)">\(x_i\in I\)</span>, <span class="math" data-tex="\(r_i\geq1\)">\(r_i\geq1\)</span> and <span class="math" data-tex="\(\sum r_i\geq2\)">\(\sum r_i\geq2\)</span>. A product with <span class="math" data-tex="\(k\geq2\)">\(k\geq2\)</span> lies in <span class="math" data-tex="\(I\cdot I\)">\(I\cdot I\)</span>, since <span class="math" data-tex="\(\gamma_r(I)\subseteq I\)">\(\gamma_r(I)\subseteq I\)</span> for <span class="math" data-tex="\(r\geq1\)">\(r\geq1\)</span>. So <span class="math" data-tex="\(I^{[2]}\)">\(I^{[2]}\)</span> is the ideal generated by the products <span class="math" data-tex="\(xy\)">\(xy\)</span> and the elements <span class="math" data-tex="\(\gamma_r(x)\)">\(\gamma_r(x)\)</span>, for <span class="math" data-tex="\(x,y\in I\)">\(x,y\in I\)</span> and <span class="math" data-tex="\(r\geq2\)">\(r\geq2\)</span>. In particular <span class="math" data-tex="\(I\cdot I\subseteq I^{[2]}\subseteq I\)">\(I\cdot I\subseteq I^{[2]}\subseteq I\)</span>.</p>
+<p>Put <span class="math" data-tex="\(M=I/I^{[2]}\)">\(M=I/I^{[2]}\)</span>, with projection <span class="math" data-tex="\(\pi\colon x\mapsto\bar x\)">\(\pi\colon x\mapsto\bar x\)</span>.</p>
+<p><strong>Lemma 3.3.</strong></p>
+<ol>
+<li>The two <span class="math" data-tex="\(A\)">\(A\)</span>-module structures of <span class="math" data-tex="\(M\)">\(M\)</span> agree.</li>
+<li>As a left <span class="math" data-tex="\(A\)">\(A\)</span>-module, <span class="math" data-tex="\(I^{[2]}\)">\(I^{[2]}\)</span> is generated by the products <span class="math" data-tex="\(xy\)">\(xy\)</span> and the elements <span class="math" data-tex="\(\gamma_r(x)\)">\(\gamma_r(x)\)</span>, for <span class="math" data-tex="\(x,y\in I\)">\(x,y\in I\)</span> and <span class="math" data-tex="\(r\geq2\)">\(r\geq2\)</span>.</li>
+</ol>
+<p><strong>Proof.</strong> (1) For <span class="math" data-tex="\(x\in I\)">\(x\in I\)</span>, <span class="math" data-tex="\(x\rho(a)-\lambda(a)x=x(\rho(a)-\lambda(a))\)">\(x\rho(a)-\lambda(a)x=x(\rho(a)-\lambda(a))\)</span>. Since <span class="math" data-tex="\(\rho(a)-\lambda(a)\)">\(\rho(a)-\lambda(a)\)</span> lies in <span class="math" data-tex="\(I\)">\(I\)</span>, this lies in <span class="math" data-tex="\(I\cdot I\subseteq I^{[2]}\)">\(I\cdot I\subseteq I^{[2]}\)</span>.</p>
+<p>(2) Let <span class="math" data-tex="\(c\in P\)">\(c\in P\)</span> and let <span class="math" data-tex="\(g\)">\(g\)</span> be a generator. Then <span class="math" data-tex="\(c=\lambda(e(c))+(c-\lambda(e(c)))\)">\(c=\lambda(e(c))+(c-\lambda(e(c)))\)</span>, and <span class="math" data-tex="\(c-\lambda(e(c))\)">\(c-\lambda(e(c))\)</span> lies in <span class="math" data-tex="\(I\)">\(I\)</span>. So <span class="math" data-tex="\((c-\lambda(e(c)))g\)">\((c-\lambda(e(c)))g\)</span> is a product of two elements of <span class="math" data-tex="\(I\)">\(I\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>So <span class="math" data-tex="\(M\)">\(M\)</span> is an <span class="math" data-tex="\(A\)">\(A\)</span>-module. Let <span class="math" data-tex="\(\Omega^\bullet=\Lambda_A(M)\)">\(\Omega^\bullet=\Lambda_A(M)\)</span> be the quotient of the tensor algebra <span class="math" data-tex="\(T_A(M)\)">\(T_A(M)\)</span> by the two-sided ideal generated by the elements <span class="math" data-tex="\(m\otimes m\)">\(m\otimes m\)</span>. Let <span class="math" data-tex="\(p\colon T_A(I)\to\Omega^\bullet\)">\(p\colon T_A(I)\to\Omega^\bullet\)</span> be the surjective map of graded algebras with
+<span class="math math-display" data-tex="\[
+p(x_1\otimes\cdots\otimes x_n)=\bar x_1\wedge\cdots\wedge\bar x_n.
+\]">\[
+p(x_1\otimes\cdots\otimes x_n)=\bar x_1\wedge\cdots\wedge\bar x_n.
+\]</span>
+It is the composite of <span class="math" data-tex="\(T(\pi)\colon T_A(I)\to T_A(M)\)">\(T(\pi)\colon T_A(I)\to T_A(M)\)</span>, defined by Lemma 3.3 (1), with the quotient map.</p>
+<p>The kernel of <span class="math" data-tex="\(p\)">\(p\)</span> is the two-sided ideal <span class="math" data-tex="\(L\)">\(L\)</span> generated by <span class="math" data-tex="\(I^{[2]}\)">\(I^{[2]}\)</span>, in degree <span class="math" data-tex="\(1\)">\(1\)</span>, and by the elements <span class="math" data-tex="\(x\otimes x\)">\(x\otimes x\)</span>, <span class="math" data-tex="\(x\in I\)">\(x\in I\)</span>, in degree <span class="math" data-tex="\(2\)">\(2\)</span>. The proof has two steps.</p>
+<p><em>First step: <span class="math" data-tex="\(\operatorname{Ker}T(\pi)\)">\(\operatorname{Ker}T(\pi)\)</span>.</em> Write <span class="math" data-tex="\(\pi^{\otimes n}\)">\(\pi^{\otimes n}\)</span> as the composite of the maps that apply <span class="math" data-tex="\(\pi\)">\(\pi\)</span> to one factor at a time. By the right exactness of <span class="math" data-tex="\(\otimes\)">\(\otimes\)</span> in each variable, the kernel of the map applying <span class="math" data-tex="\(\pi\)">\(\pi\)</span> in position <span class="math" data-tex="\(i+1\)">\(i+1\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;M^{\otimes i}\otimes I\otimes I^{\otimes(n-1-i)}\\
+&amp;\quad\to M^{\otimes i}\otimes M\otimes I^{\otimes(n-1-i)},
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;M^{\otimes i}\otimes I\otimes I^{\otimes(n-1-i)}\\
+&amp;\quad\to M^{\otimes i}\otimes M\otimes I^{\otimes(n-1-i)},
+\end{aligned}
+\]</span>
+is the image of <span class="math" data-tex="\(M^{\otimes i}\otimes I^{[2]}\otimes I^{\otimes(n-1-i)}\)">\(M^{\otimes i}\otimes I^{[2]}\otimes I^{\otimes(n-1-i)}\)</span>. This is the image of <span class="math" data-tex="\(I^{\otimes i}\otimes I^{[2]}\otimes I^{\otimes(n-1-i)}\)">\(I^{\otimes i}\otimes I^{[2]}\otimes I^{\otimes(n-1-i)}\)</span>, as <span class="math" data-tex="\(\pi^{\otimes i}\)">\(\pi^{\otimes i}\)</span> is surjective. For surjections <span class="math" data-tex="\(f\)">\(f\)</span> and <span class="math" data-tex="\(g\)">\(g\)</span>, <span class="math" data-tex="\(\operatorname{Ker}(gf)=\operatorname{Ker}f+f^{-1}(\operatorname{Ker}g)\)">\(\operatorname{Ker}(gf)=\operatorname{Ker}f+f^{-1}(\operatorname{Ker}g)\)</span>. By induction, <span class="math" data-tex="\(\operatorname{Ker}\pi^{\otimes n}\)">\(\operatorname{Ker}\pi^{\otimes n}\)</span> is the sum of these images. So <span class="math" data-tex="\(\operatorname{Ker}T(\pi)\)">\(\operatorname{Ker}T(\pi)\)</span> is the ideal generated by <span class="math" data-tex="\(I^{[2]}\)">\(I^{[2]}\)</span>.</p>
+<p><em>Second step: the exterior relations.</em> Since <span class="math" data-tex="\(T(\pi)\)">\(T(\pi)\)</span> is a surjective ring map and every <span class="math" data-tex="\(m\)">\(m\)</span> lifts locally to <span class="math" data-tex="\(I\)">\(I\)</span>, the image under <span class="math" data-tex="\(T(\pi)\)">\(T(\pi)\)</span> of the ideal generated by the <span class="math" data-tex="\(x\otimes x\)">\(x\otimes x\)</span> is the ideal generated by the <span class="math" data-tex="\(m\otimes m\)">\(m\otimes m\)</span>. Hence the preimage of the latter is that ideal plus <span class="math" data-tex="\(\operatorname{Ker}T(\pi)\)">\(\operatorname{Ker}T(\pi)\)</span>, which is <span class="math" data-tex="\(L\)">\(L\)</span>.</p>
+<p>Let <span class="math" data-tex="\(B\subseteq R^2\)">\(B\subseteq R^2\)</span> be the image of
+<span class="math math-display" data-tex="\[
+(I^{[2]}\otimes I)\oplus(I\otimes I^{[2]})\to R^2.
+\]">\[
+(I^{[2]}\otimes I)\oplus(I\otimes I^{[2]})\to R^2.
+\]</span>
+It is an ideal of the ring <span class="math" data-tex="\(R^2\)">\(R^2\)</span>, since <span class="math" data-tex="\((c\otimes c&#x27;)(x\otimes y)=cx\otimes c&#x27;y\)">\((c\otimes c&#x27;)(x\otimes y)=cx\otimes c&#x27;y\)</span>. It is contained in <span class="math" data-tex="\(j_2(I\otimes I)\subseteq J^2\)">\(j_2(I\otimes I)\subseteq J^2\)</span>. By Proposition 2.3, <span class="math" data-tex="\(j_2^{-1}(B)\)">\(j_2^{-1}(B)\)</span> is the image of the same sum in <span class="math" data-tex="\(I\otimes I\)">\(I\otimes I\)</span>. Therefore <span class="math" data-tex="\(p\bigl(j_2^{-1}(B)\bigr)=0\)">\(p\bigl(j_2^{-1}(B)\bigr)=0\)</span>, as <span class="math" data-tex="\(\bar x\wedge\bar y=0\)">\(\bar x\wedge\bar y=0\)</span> when <span class="math" data-tex="\(x\)">\(x\)</span> or <span class="math" data-tex="\(y\)">\(y\)</span> lies in <span class="math" data-tex="\(I^{[2]}\)">\(I^{[2]}\)</span>.</p>
+<p><strong>Lemma 3.4.</strong> For <span class="math" data-tex="\(z\in j_2(I\otimes I)\)">\(z\in j_2(I\otimes I)\)</span> and <span class="math" data-tex="\(r\geq2\)">\(r\geq2\)</span>, <span class="math" data-tex="\(\gamma_r(z)\in B\)">\(\gamma_r(z)\in B\)</span>.</p>
+<p><strong>Proof.</strong> First let <span class="math" data-tex="\(z=u\otimes v\)">\(z=u\otimes v\)</span>. Since <span class="math" data-tex="\(d^0_1\)">\(d^0_1\)</span> is a PD morphism and <span class="math" data-tex="\(\gamma_r(bw)=b^r\gamma_r(w)\)">\(\gamma_r(bw)=b^r\gamma_r(w)\)</span> for <span class="math" data-tex="\(b\in R^2\)">\(b\in R^2\)</span> and <span class="math" data-tex="\(w\in J^2\)">\(w\in J^2\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\gamma_r(u\otimes v)&amp;=\gamma_r\bigl((u\otimes1)\,d^0_1(v)\bigr)\\
+&amp;=u^r\otimes\gamma_r(v)\in B.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\gamma_r(u\otimes v)&amp;=\gamma_r\bigl((u\otimes1)\,d^0_1(v)\bigr)\\
+&amp;=u^r\otimes\gamma_r(v)\in B.
+\end{aligned}
+\]</span>
+The question is local, so in general we may assume <span class="math" data-tex="\(z=\sum_kz_k\)">\(z=\sum_kz_k\)</span> with pure tensors <span class="math" data-tex="\(z_k\)">\(z_k\)</span>. The addition rule expands <span class="math" data-tex="\(\gamma_r(z)\)">\(\gamma_r(z)\)</span> into products <span class="math" data-tex="\(\prod_k\gamma_{r_k}(z_k)\)">\(\prod_k\gamma_{r_k}(z_k)\)</span> with <span class="math" data-tex="\(\sum r_k=r\)">\(\sum r_k=r\)</span>.</p>
+<ul>
+<li>If some <span class="math" data-tex="\(r_k\geq2\)">\(r_k\geq2\)</span>, the product lies in the ideal <span class="math" data-tex="\(B\)">\(B\)</span> by the first case.</li>
+<li>Otherwise at least two factors are pure tensors <span class="math" data-tex="\(z_k\)">\(z_k\)</span>, <span class="math" data-tex="\(z_l\)">\(z_l\)</span>. Their product lies in the image of <span class="math" data-tex="\(I^2\otimes I^2\)">\(I^2\otimes I^2\)</span>, hence in <span class="math" data-tex="\(B\)">\(B\)</span>.</li>
+</ul>
+<p><span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.5.</strong> For <span class="math" data-tex="\(x,y\in I\)">\(x,y\in I\)</span> and <span class="math" data-tex="\(r\geq3\)">\(r\geq3\)</span>, modulo <span class="math" data-tex="\(B\)">\(B\)</span>:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+j_2D(xy)&amp;\equiv-(x\otimes y+y\otimes x),\\
+j_2D(\gamma_2(x))&amp;\equiv-x\otimes x,\\
+j_2D(\gamma_r(x))&amp;\equiv0.
+\end{aligned}
+\]">\[
+\begin{aligned}
+j_2D(xy)&amp;\equiv-(x\otimes y+y\otimes x),\\
+j_2D(\gamma_2(x))&amp;\equiv-x\otimes x,\\
+j_2D(\gamma_r(x))&amp;\equiv0.
+\end{aligned}
+\]</span></p>
+<p><strong>Proof.</strong> Write <span class="math" data-tex="\(\partial x=j_2D(x)\in j_2(I\otimes I)\)">\(\partial x=j_2D(x)\in j_2(I\otimes I)\)</span>, so that
+<span class="math math-display" data-tex="\[
+\Delta x=x\otimes1+1\otimes x-\partial x.
+\]">\[
+\Delta x=x\otimes1+1\otimes x-\partial x.
+\]</span></p>
+<p><em>The product <span class="math" data-tex="\(xy\)">\(xy\)</span>.</em> Expanding <span class="math" data-tex="\(\Delta(xy)=\Delta(x)\Delta(y)\)">\(\Delta(xy)=\Delta(x)\Delta(y)\)</span> gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial(xy)&amp;=-(x\otimes y+y\otimes x)\\
+&amp;\quad+(x\otimes1+1\otimes x)\,\partial y\\
+&amp;\quad+(y\otimes1+1\otimes y)\,\partial x\\
+&amp;\quad-\partial x\,\partial y.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\partial(xy)&amp;=-(x\otimes y+y\otimes x)\\
+&amp;\quad+(x\otimes1+1\otimes x)\,\partial y\\
+&amp;\quad+(y\otimes1+1\otimes y)\,\partial x\\
+&amp;\quad-\partial x\,\partial y.
+\end{aligned}
+\]</span>
+In the last three lines one tensor factor lies in <span class="math" data-tex="\(I\cdot I\)">\(I\cdot I\)</span>, so these terms lie in <span class="math" data-tex="\(B\)">\(B\)</span>.</p>
+<p><em>The divided powers <span class="math" data-tex="\(\gamma_r(x)\)">\(\gamma_r(x)\)</span>, <span class="math" data-tex="\(r\geq2\)">\(r\geq2\)</span>.</em> Put <span class="math" data-tex="\(X=x\otimes1=d^2_1x\)">\(X=x\otimes1=d^2_1x\)</span>, <span class="math" data-tex="\(Y=1\otimes x=d^0_1x\)">\(Y=1\otimes x=d^0_1x\)</span> and <span class="math" data-tex="\(Z=-\partial x\)">\(Z=-\partial x\)</span>. All three lie in <span class="math" data-tex="\(J^2\)">\(J^2\)</span>. The three cofaces are PD morphisms, so
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\partial\gamma_r(x)&amp;=\gamma_r(X)+\gamma_r(Y)\\
+&amp;\quad-\gamma_r(X+Y+Z),
+\end{aligned}
+\]">\[
+\begin{aligned}
+\partial\gamma_r(x)&amp;=\gamma_r(X)+\gamma_r(Y)\\
+&amp;\quad-\gamma_r(X+Y+Z),
+\end{aligned}
+\]</span>
+and
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;\gamma_r(X+Y+Z)\\&amp;\quad =\sum_{a+b+c=r}\gamma_a(X)\gamma_b(Y)\gamma_c(Z).\end{aligned}
+\]">\[
+\begin{aligned}&amp;\gamma_r(X+Y+Z)\\&amp;\quad =\sum_{a+b+c=r}\gamma_a(X)\gamma_b(Y)\gamma_c(Z).\end{aligned}
+\]</span>
+The terms <span class="math" data-tex="\((r,0,0)\)">\((r,0,0)\)</span> and <span class="math" data-tex="\((0,r,0)\)">\((0,r,0)\)</span> cancel against <span class="math" data-tex="\(\gamma_r(X)+\gamma_r(Y)\)">\(\gamma_r(X)+\gamma_r(Y)\)</span>. The remaining terms behave as follows.</p>
+<ul>
+<li>If <span class="math" data-tex="\(c\geq2\)">\(c\geq2\)</span>, the term lies in <span class="math" data-tex="\(B\)">\(B\)</span> by Lemma 3.4.</li>
+<li>If <span class="math" data-tex="\(c=1\)">\(c=1\)</span>, then <span class="math" data-tex="\(a\geq1\)">\(a\geq1\)</span> or <span class="math" data-tex="\(b\geq1\)">\(b\geq1\)</span>. The factor <span class="math" data-tex="\(\gamma_a(x)\otimes1\)">\(\gamma_a(x)\otimes1\)</span> or <span class="math" data-tex="\(1\otimes\gamma_b(x)\)">\(1\otimes\gamma_b(x)\)</span> multiplies <span class="math" data-tex="\(Z\)">\(Z\)</span> into the image of <span class="math" data-tex="\(I^2\otimes I\)">\(I^2\otimes I\)</span> or of <span class="math" data-tex="\(I\otimes I^2\)">\(I\otimes I^2\)</span>, hence into <span class="math" data-tex="\(B\)">\(B\)</span>.</li>
+<li>If <span class="math" data-tex="\(c=0\)">\(c=0\)</span>, then <span class="math" data-tex="\(a,b\geq1\)">\(a,b\geq1\)</span> and the term is <span class="math" data-tex="\(\gamma_a(x)\otimes\gamma_b(x)\)">\(\gamma_a(x)\otimes\gamma_b(x)\)</span>. For <span class="math" data-tex="\(r=2\)">\(r=2\)</span> it is <span class="math" data-tex="\(x\otimes x\)">\(x\otimes x\)</span>. For <span class="math" data-tex="\(r\geq3\)">\(r\geq3\)</span>, <span class="math" data-tex="\(a\geq2\)">\(a\geq2\)</span> or <span class="math" data-tex="\(b\geq2\)">\(b\geq2\)</span>, so the term lies in <span class="math" data-tex="\(B\)">\(B\)</span>.</li>
+</ul>
+<p><span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 3.6.</strong> <span class="math" data-tex="\(D(L)\subseteq L\)">\(D(L)\subseteq L\)</span>.</p>
+<p><strong>Proof.</strong> It suffices to show <span class="math" data-tex="\(pD(\ell)=0\)">\(pD(\ell)=0\)</span> for the generators <span class="math" data-tex="\(\ell\)">\(\ell\)</span> of <span class="math" data-tex="\(L\)">\(L\)</span>. Indeed, for homogeneous <span class="math" data-tex="\(u\)">\(u\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span>,
+<span class="math math-display" data-tex="\[
+D(u\ell v)=D(u)\ell v\pm uD(\ell)v\pm u\ell D(v),
+\]">\[
+D(u\ell v)=D(u)\ell v\pm uD(\ell)v\pm u\ell D(v),
+\]</span>
+and <span class="math" data-tex="\(L=\operatorname{Ker}p\)">\(L=\operatorname{Ker}p\)</span> is an ideal.</p>
+<p><em>Generators of degree <span class="math" data-tex="\(1\)">\(1\)</span>.</em> By Lemma 3.3 (2), <span class="math" data-tex="\(I^{[2]}\)">\(I^{[2]}\)</span> is the sum of the modules <span class="math" data-tex="\(\lambda(A)g\)">\(\lambda(A)g\)</span> for the generators <span class="math" data-tex="\(g\)">\(g\)</span>. We have <span class="math" data-tex="\(D(\lambda(a)g)=D(a)\otimes g+aD(g)\)">\(D(\lambda(a)g)=D(a)\otimes g+aD(g)\)</span>, and <span class="math" data-tex="\(p\bigl(D(a)\otimes g\bigr)\)">\(p\bigl(D(a)\otimes g\bigr)\)</span> vanishes because <span class="math" data-tex="\(\bar g=0\)">\(\bar g=0\)</span>. By Lemma 3.5, the injectivity of <span class="math" data-tex="\(j_2\)">\(j_2\)</span> and <span class="math" data-tex="\(p\bigl(j_2^{-1}(B)\bigr)=0\)">\(p\bigl(j_2^{-1}(B)\bigr)=0\)</span>, <span class="math" data-tex="\(pD(g)\)">\(pD(g)\)</span> is one of
+<span class="math math-display" data-tex="\[
+-(\bar x\wedge\bar y+\bar y\wedge\bar x),\quad-\bar x\wedge\bar x,\quad0,
+\]">\[
+-(\bar x\wedge\bar y+\bar y\wedge\bar x),\quad-\bar x\wedge\bar x,\quad0,
+\]</span>
+which all vanish. Here <span class="math" data-tex="\(\bar x\wedge\bar y=-\bar y\wedge\bar x\)">\(\bar x\wedge\bar y=-\bar y\wedge\bar x\)</span> follows from <span class="math" data-tex="\((\bar x+\bar y)\wedge(\bar x+\bar y)=0\)">\((\bar x+\bar y)\wedge(\bar x+\bar y)=0\)</span>.</p>
+<p><em>Generators <span class="math" data-tex="\(x\otimes x\)">\(x\otimes x\)</span>.</em> We have <span class="math" data-tex="\(D(x\otimes x)=Dx\otimes x-x\otimes Dx\)">\(D(x\otimes x)=Dx\otimes x-x\otimes Dx\)</span>, whose image under <span class="math" data-tex="\(p\)">\(p\)</span> is
+<span class="math math-display" data-tex="\[
+\omega\wedge\bar x-\bar x\wedge\omega,\qquad\omega=pD(x).
+\]">\[
+\omega\wedge\bar x-\bar x\wedge\omega,\qquad\omega=pD(x).
+\]</span>
+This vanishes, because a form of degree <span class="math" data-tex="\(2\)">\(2\)</span> commutes with a form of degree <span class="math" data-tex="\(1\)">\(1\)</span>: for <span class="math" data-tex="\(\bar y\wedge\bar z\)">\(\bar y\wedge\bar z\)</span>, moving <span class="math" data-tex="\(\bar x\)">\(\bar x\)</span> past two factors gives the sign <span class="math" data-tex="\(+1\)">\(+1\)</span>. This holds in every characteristic. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Theorem 3.7 (the de Rham complex).</strong> Let <span class="math" data-tex="\((A,P)\)">\((A,P)\)</span> be a formal category over <span class="math" data-tex="\(K\)">\(K\)</span> with a divided power structure (3.1).</p>
+<ol>
+<li>There is a unique <span class="math" data-tex="\(K\)">\(K\)</span>-linear map <span class="math" data-tex="\(d\)">\(d\)</span> of degree one of <span class="math" data-tex="\(\Omega^\bullet=\Lambda_A(I/I^{[2]})\)">\(\Omega^\bullet=\Lambda_A(I/I^{[2]})\)</span> with <span class="math" data-tex="\(d\circ p=p\circ D\)">\(d\circ p=p\circ D\)</span>.</li>
+<li>This map <span class="math" data-tex="\(d\)">\(d\)</span> is a derivation, with <span class="math" data-tex="\(d(a)\)">\(d(a)\)</span> the class of <span class="math" data-tex="\(\rho(a)-\lambda(a)\)">\(\rho(a)-\lambda(a)\)</span> and <span class="math" data-tex="\(d(\bar x)=pD(x)\)">\(d(\bar x)=pD(x)\)</span>.</li>
+<li><span class="math" data-tex="\(d\circ d=0\)">\(d\circ d=0\)</span> in every degree.</li>
+</ol>
+<p>No flatness hypothesis is made on <span class="math" data-tex="\(I/I^{[2]}\)">\(I/I^{[2]}\)</span> or on any other module.</p>
+<p><strong>Proof.</strong> (1) By Proposition 3.6, <span class="math" data-tex="\(D\)">\(D\)</span> induces a map on <span class="math" data-tex="\(T_A(I)/L\)">\(T_A(I)/L\)</span>, which <span class="math" data-tex="\(p\)">\(p\)</span> identifies with <span class="math" data-tex="\(\Omega^\bullet\)">\(\Omega^\bullet\)</span>. It is unique because <span class="math" data-tex="\(p\)">\(p\)</span> is surjective.</p>
+<p>(2) For <span class="math" data-tex="\(u,v\)">\(u,v\)</span> in <span class="math" data-tex="\(T_A(I)\)">\(T_A(I)\)</span> with <span class="math" data-tex="\(u\)">\(u\)</span> homogeneous,
+<span class="math math-display" data-tex="\[
+\begin{aligned}&amp;d(p(u)p(v)) =pD(uv)\\ &amp;\quad =d(pu)\,pv+(-1)^{|u|}pu\,d(pv).\end{aligned}
+\]">\[
+\begin{aligned}&amp;d(p(u)p(v)) =pD(uv)\\ &amp;\quad =d(pu)\,pv+(-1)^{|u|}pu\,d(pv).\end{aligned}
+\]</span>
+As <span class="math" data-tex="\(p\)">\(p\)</span> is surjective, <span class="math" data-tex="\(d\)">\(d\)</span> is a derivation. The values on <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(\bar x\)">\(\bar x\)</span> are read off from <span class="math" data-tex="\(dp=pD\)">\(dp=pD\)</span>.</p>
+<p>(3) Theorem 2.4 gives <span class="math" data-tex="\(ddp=pDD=0\)">\(ddp=pDD=0\)</span>, and <span class="math" data-tex="\(p\)">\(p\)</span> is surjective. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Corollary 3.8 (naturality and inverse systems).</strong> A <em>morphism</em> <span class="math" data-tex="\((A,P)\to(A&#x27;,P&#x27;)\)">\((A,P)\to(A&#x27;,P&#x27;)\)</span> of formal categories with divided powers is a pair of maps of <span class="math" data-tex="\(K\)">\(K\)</span>-algebras commuting with <span class="math" data-tex="\(\lambda,\rho,e,\Delta\)">\(\lambda,\rho,e,\Delta\)</span>, whose maps <span class="math" data-tex="\(P\to P&#x27;\)">\(P\to P&#x27;\)</span> and <span class="math" data-tex="\(R^2\to R&#x27;^2\)">\(R^2\to R&#x27;^2\)</span> are PD morphisms.</p>
+<ol>
+<li>The maps <span class="math" data-tex="\(\mu\)">\(\mu\)</span>, <span class="math" data-tex="\(D\)">\(D\)</span>, <span class="math" data-tex="\(p\)">\(p\)</span> and <span class="math" data-tex="\(d\)">\(d\)</span> are natural in such morphisms.</li>
+<li>For an inverse system <span class="math" data-tex="\((A_i,P_i)\)">\((A_i,P_i)\)</span> of formal categories with divided powers, the systems <span class="math" data-tex="\(\Omega^\bullet_{R_i}\)">\(\Omega^\bullet_{R_i}\)</span> form an inverse system of complexes, with <span class="math" data-tex="\(d\circ d=0\)">\(d\circ d=0\)</span> at every index. The limit <span class="math" data-tex="\(\varprojlim_i\Omega^\bullet_{R_i}\)">\(\varprojlim_i\Omega^\bullet_{R_i}\)</span>, with the limit of the maps <span class="math" data-tex="\(d\)">\(d\)</span>, is a complex.</li>
+</ol>
+<p><strong>Proof.</strong> A morphism <span class="math" data-tex="\((f_A,f_P)\)">\((f_A,f_P)\)</span> makes <span class="math" data-tex="\(f_P\)">\(f_P\)</span> a bimodule map over <span class="math" data-tex="\(f_A\)">\(f_A\)</span>. So it induces maps <span class="math" data-tex="\(R^n\to R&#x27;^n\)">\(R^n\to R&#x27;^n\)</span> commuting with the cofaces and codegeneracies, hence maps <span class="math" data-tex="\(N^nR\to N^nR&#x27;\)">\(N^nR\to N^nR&#x27;\)</span>. The maps <span class="math" data-tex="\(j_n\)">\(j_n\)</span> and <span class="math" data-tex="\(k_n\)">\(k_n\)</span> are natural, so <span class="math" data-tex="\(\mu\)">\(\mu\)</span> is natural, and with it <span class="math" data-tex="\(D=\mu^{-1}\partial\mu\)">\(D=\mu^{-1}\partial\mu\)</span>.</p>
+<p>The ideal <span class="math" data-tex="\(I^{[2]}\)">\(I^{[2]}\)</span> is carried into <span class="math" data-tex="\(I&#x27;^{[2]}\)">\(I&#x27;^{[2]}\)</span>, <span class="math" data-tex="\(f_P\)">\(f_P\)</span> being a PD morphism, so <span class="math" data-tex="\(p\)">\(p\)</span> is natural; the PD condition on <span class="math" data-tex="\(R^2\to R&#x27;^2\)">\(R^2\to R&#x27;^2\)</span> is not used. Then <span class="math" data-tex="\(d\)">\(d\)</span> is natural because <span class="math" data-tex="\(p\)">\(p\)</span> is surjective: <span class="math" data-tex="\(d&#x27;fp=p&#x27;D&#x27;f=p&#x27;fD=fpD=fdp\)">\(d&#x27;fp=p&#x27;D&#x27;f=p&#x27;fD=fpD=fdp\)</span>.</p>
+<p>Part (2) applies Theorem 3.7 at every index. The square of the limit differential has the components <span class="math" data-tex="\(d\circ d=0\)">\(d\circ d=0\)</span>, so it vanishes by the universal property of the limit. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-exercises">4. Exercises</h2>
+<p><strong>Exercise 4.1.</strong> Show that
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+Q_2(x\otimes y)&amp;=x\otimes y-\Delta(x\,e(y))\\
+&amp;\quad-1\otimes e(x)y+1\otimes x\,e(y).
+\end{aligned}
+\]">\[
+\begin{aligned}
+Q_2(x\otimes y)&amp;=x\otimes y-\Delta(x\,e(y))\\
+&amp;\quad-1\otimes e(x)y+1\otimes x\,e(y).
+\end{aligned}
+\]</span>
+Then verify directly that <span class="math" data-tex="\(s^0_2Q_2=s^1_2Q_2=0\)">\(s^0_2Q_2=s^1_2Q_2=0\)</span>, and that <span class="math" data-tex="\(Q_2\)">\(Q_2\)</span> is the identity on <span class="math" data-tex="\(j_2(I\otimes I)\)">\(j_2(I\otimes I)\)</span>.</p>
+<p><strong>Exercise 4.2.</strong> Let <span class="math" data-tex="\(\pi_R(c)=c-\rho(e(c))\)">\(\pi_R(c)=c-\rho(e(c))\)</span> and <span class="math" data-tex="\(\pi_L(c)=c-\lambda(e(c))\)">\(\pi_L(c)=c-\lambda(e(c))\)</span>. Show that <span class="math" data-tex="\(\pi_R\otimes\pi_L\colon P\otimes P\to I\otimes I\)">\(\pi_R\otimes\pi_L\colon P\otimes P\to I\otimes I\)</span> is defined, and that <span class="math" data-tex="\(D(x)=-(\pi_R\otimes\pi_L)\Delta(x)\)">\(D(x)=-(\pi_R\otimes\pi_L)\Delta(x)\)</span> for <span class="math" data-tex="\(x\in I\)">\(x\in I\)</span>.</p>
+<h2 id="5-complete-solutions">5. Complete solutions</h2>
+<p><strong>4.1.</strong> <em>The formula.</em> First, <span class="math" data-tex="\(E^2_1(x\otimes y)=x\otimes y-\Delta(x\,e(y))\)">\(E^2_1(x\otimes y)=x\otimes y-\Delta(x\,e(y))\)</span>, since <span class="math" data-tex="\(s^1_2(x\otimes y)=x\rho(e(y))\)">\(s^1_2(x\otimes y)=x\rho(e(y))\)</span>. Next, <span class="math" data-tex="\(E^2_0(w)=w-1\otimes s^0_2(w)\)">\(E^2_0(w)=w-1\otimes s^0_2(w)\)</span>. We have <span class="math" data-tex="\(s^0_2(x\otimes y)=e(x)y\)">\(s^0_2(x\otimes y)=e(x)y\)</span>, and <span class="math" data-tex="\(s^0_2\Delta(c)=c\)">\(s^0_2\Delta(c)=c\)</span> by the counit identity. So
+<span class="math math-display" data-tex="\[
+s^0_2E^2_1(x\otimes y)=e(x)y-x\,e(y),
+\]">\[
+s^0_2E^2_1(x\otimes y)=e(x)y-x\,e(y),
+\]</span>
+and applying <span class="math" data-tex="\(E^2_0\)">\(E^2_0\)</span> to <span class="math" data-tex="\(E^2_1(x\otimes y)\)">\(E^2_1(x\otimes y)\)</span> gives the formula.</p>
+<p><em>The codegeneracies.</em> Applying <span class="math" data-tex="\(s^0_2\)">\(s^0_2\)</span> term by term gives
+<span class="math math-display" data-tex="\[
+e(x)y-x\,e(y)-e(x)y+x\,e(y)=0.
+\]">\[
+e(x)y-x\,e(y)-e(x)y+x\,e(y)=0.
+\]</span>
+Applying <span class="math" data-tex="\(s^1_2\)">\(s^1_2\)</span>, and using <span class="math" data-tex="\(e(e(x)y)=e(x\,e(y))=e(x)e(y)\)">\(e(e(x)y)=e(x\,e(y))=e(x)e(y)\)</span>, gives
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;x\,e(y)-x\,e(y)\\
+&amp;\quad-\rho(e(x)e(y))+\rho(e(x)e(y))=0,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;x\,e(y)-x\,e(y)\\
+&amp;\quad-\rho(e(x)e(y))+\rho(e(x)e(y))=0,
+\end{aligned}
+\]</span>
+with the signs <span class="math" data-tex="\(+,-,-,+\)">\(+,-,-,+\)</span>.</p>
+<p><em>Identity on <span class="math" data-tex="\(j_2(I\otimes I)\)">\(j_2(I\otimes I)\)</span>.</em> For <span class="math" data-tex="\(x,y\in I\)">\(x,y\in I\)</span> the three correction terms vanish.</p>
+<p><strong>4.2.</strong> <em>Definition.</em> The map <span class="math" data-tex="\(\pi_R\)">\(\pi_R\)</span> is right linear, because <span class="math" data-tex="\(\pi_R(c\rho(a))=\pi_R(c)\rho(a)\)">\(\pi_R(c\rho(a))=\pi_R(c)\rho(a)\)</span>. Symmetrically <span class="math" data-tex="\(\pi_L\)">\(\pi_L\)</span> is left linear. So <span class="math" data-tex="\(\pi_R\otimes\pi_L\)">\(\pi_R\otimes\pi_L\)</span> is defined on the balanced tensor product. It takes values in <span class="math" data-tex="\(I\otimes I\)">\(I\otimes I\)</span> since <span class="math" data-tex="\(e\pi_R=e\pi_L=0\)">\(e\pi_R=e\pi_L=0\)</span>.</p>
+<p><em>The formula.</em> Write <span class="math" data-tex="\(\Delta x=\sum x&#x27;\otimes x&#x27;&#x27;\)">\(\Delta x=\sum x&#x27;\otimes x&#x27;&#x27;\)</span>, and expand <span class="math" data-tex="\(\pi_R\otimes\pi_L=(\mathrm{id}-\rho e)\otimes(\mathrm{id}-\lambda e)\)">\(\pi_R\otimes\pi_L=(\mathrm{id}-\rho e)\otimes(\mathrm{id}-\lambda e)\)</span>. Each of the four tensor products is defined, <span class="math" data-tex="\(\rho e\)">\(\rho e\)</span> being right linear and <span class="math" data-tex="\(\lambda e\)">\(\lambda e\)</span> left linear. By balancing and the counit identities:</p>
+<ul>
+<li><span class="math" data-tex="\((\rho e\otimes\mathrm{id})\Delta x=\)">\((\rho e\otimes\mathrm{id})\Delta x=\)</span> <span class="math" data-tex="\(1\otimes(e\otimes\mathrm{id})\Delta x=\)">\(1\otimes(e\otimes\mathrm{id})\Delta x=\)</span> <span class="math" data-tex="\(1\otimes x\)">\(1\otimes x\)</span>;</li>
+<li><span class="math" data-tex="\((\mathrm{id}\otimes\lambda e)\Delta x=\)">\((\mathrm{id}\otimes\lambda e)\Delta x=\)</span> <span class="math" data-tex="\((\mathrm{id}\otimes e)\Delta x\otimes1=\)">\((\mathrm{id}\otimes e)\Delta x\otimes1=\)</span> <span class="math" data-tex="\(x\otimes1\)">\(x\otimes1\)</span>;</li>
+<li><span class="math" data-tex="\((\rho e\otimes\lambda e)\Delta x=\)">\((\rho e\otimes\lambda e)\Delta x=\)</span> <span class="math" data-tex="\(1\otimes\lambda\bigl(\sum e(x&#x27;)e(x&#x27;&#x27;)\bigr)\)">\(1\otimes\lambda\bigl(\sum e(x&#x27;)e(x&#x27;&#x27;)\bigr)\)</span>.</li>
+</ul>
+<p>In the last line, <span class="math" data-tex="\(\sum e(x&#x27;)e(x&#x27;&#x27;)=\)">\(\sum e(x&#x27;)e(x&#x27;&#x27;)=\)</span> <span class="math" data-tex="\(e_2\Delta(x)=\)">\(e_2\Delta(x)=\)</span> <span class="math" data-tex="\(e\bigl((e\otimes\mathrm{id})\Delta x\bigr)=\)">\(e\bigl((e\otimes\mathrm{id})\Delta x\bigr)=\)</span> <span class="math" data-tex="\(e(x)=\)">\(e(x)=\)</span> <span class="math" data-tex="\(0\)">\(0\)</span>. Hence
+<span class="math math-display" data-tex="\[
+(\pi_R\otimes\pi_L)\Delta x=\Delta x-1\otimes x-x\otimes1.
+\]">\[
+(\pi_R\otimes\pi_L)\Delta x=\Delta x-1\otimes x-x\otimes1.
+\]</span>
+By Theorem 2.4, this is <span class="math" data-tex="\(-j_2D(x)\)">\(-j_2D(x)\)</span>, and it is the image under <span class="math" data-tex="\(j_2\)">\(j_2\)</span> of the element <span class="math" data-tex="\((\pi_R\otimes\pi_L)\Delta x\)">\((\pi_R\otimes\pi_L)\Delta x\)</span> of <span class="math" data-tex="\(I\otimes I\)">\(I\otimes I\)</span>. Since <span class="math" data-tex="\(j_2\)">\(j_2\)</span> is injective, <span class="math" data-tex="\(D(x)=-(\pi_R\otimes\pi_L)\Delta(x)\)">\(D(x)=-(\pi_R\otimes\pi_L)\Delta(x)\)</span>.</p>
+<h2 id="sources">Sources</h2>
+<p>The nerve of a formal category with divided powers and the derivation of its de Rham algebra are due to Illusie, in his work on the cotangent complex. Illusie also raised the problem whether this algebra is a complex without flatness hypotheses.</p>
+<p>Differential graded algebras on tensor powers of the kernel of the counit of a coring with a grouplike element are studied by T. Brzeziński, <em>The structure of corings with a grouplike element</em> (<a href="https://arxiv.org/abs/math/0108117">arXiv:math/0108117</a>).</p>
+<p>The argument of the main theorem, a right linear normalization projector followed by the left split counit sequence, together with the divided power congruences, follows a solution produced with ChatGPT (OpenAI) in October 2026 and completed here.</p>
+<p>Divided powers are as in the Stacks project.</p>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>
