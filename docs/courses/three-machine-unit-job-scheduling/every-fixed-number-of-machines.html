@@ -1,0 +1,505 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Every fixed number of machines</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Scheduling unit jobs on three machines)</a><a href="lists-and-boundaries-on-m-machines.html">Previous lesson</a><a href="src/every-fixed-number-of-machines.md">Editable source</a></nav><main><article><h1 id="every-fixed-number-of-machines">Every fixed number of machines</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic) on 24 October 2026. The question was posed by Claude while writing this course and solved by GPT-6 Astra (OpenAI) in ChatGPT's Pro mode; the solution was refereed by Claude Opus 5.5 in three separate sessions, and this lesson was planned and written from it by Claude Opus 5.5 in two further sessions and checked and finished by Claude Opus 5.5 in another. Public domain (CC0).</em></p>
+<p>This lesson finishes the proof that for every fixed number <span class="math" data-tex="\(m\)">\(m\)</span> of identical machines the problem <span class="math" data-tex="\(Pm\mid\mathrm{prec},p_j=1\mid C_{\max}\)">\(Pm\mid\mathrm{prec},p_j=1\mid C_{\max}\)</span> is solvable in polynomial time. It builds on two lessons:</p>
+<ul>
+<li><a href="unit-jobs-on-m-machines.html">Unit jobs on m machines</a> redoes, for slots of <span class="math" data-tex="\(m\)">\(m\)</span> jobs, the foundations, the dynamic program, the separators and the centers.</li>
+<li><a href="lists-and-boundaries-on-m-machines.html">Lists and boundaries on m machines</a> carries the lists and the invariants (I1)–(I3) to <span class="math" data-tex="\(m\)">\(m\)</span> machines, with leaf counts linear in <span class="math" data-tex="\(m\)">\(m\)</span>.</li>
+</ul>
+<p>This lesson then does the following:</p>
+<ul>
+<li>describes every child and every mark by a formula of bounded size;</li>
+<li>proves the structure theorem with the leaf budget <span class="math" data-tex="\(K_m=12m+25\)">\(K_m=12m+25\)</span>;</li>
+<li>proves that the algorithm is correct;</li>
+<li>derives its running time, with an explicit exponent, which proves Theorem 1.1 of <em>Unit jobs on m machines</em>;</li>
+<li>treats inputs that give only the number of jobs, and the case of four machines;</li>
+<li>lists the places where the number three entered the course.</li>
+</ul>
+<p>The arguments follow <a href="global-descriptions-and-the-running-time.html">Global descriptions and the running time</a> step by step; what is new is the counting. The notation is that of the three lessons just named. In particular, <span class="math" data-tex="\(J\)">\(J\)</span> is the padded set of <span class="math" data-tex="\(N=mT\)">\(N=mT\)</span> jobs, a slot is an <span class="math" data-tex="\(m\)">\(m\)</span>-element antichain, and
+<span class="math math-display" data-tex="\[
+A_m=6m+9.
+\]">\[
+A_m=6m+9.
+\]</span></p>
+<h2 id="1-global-descriptions">1. Global descriptions</h2>
+<p>Throughout this section, fix the following data:</p>
+<ul>
+<li>an integer <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span>;</li>
+<li>a node <span class="math" data-tex="\(W\)">\(W\)</span> of the construction of Proposition 4.2 of <em>Lists and boundaries on m machines</em>, with list <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> and old high set <span class="math" data-tex="\(O\)">\(O\)</span>;</li>
+<li>one side of <span class="math" data-tex="\(W\)">\(W\)</span>, with its working frame, boundaries <span class="math" data-tex="\(a,b\)">\(a,b\)</span> in that frame, center <span class="math" data-tex="\(v\)">\(v\)</span> and open part <span class="math" data-tex="\(E\)">\(E\)</span>;</li>
+<li>the walk cutoffs <span class="math" data-tex="\(S_0\subseteq\cdots\subseteq S_q=S_*\)">\(S_0\subseteq\cdots\subseteq S_q=S_*\)</span> of that side and its positions <span class="math" data-tex="\(s_0\leq\cdots\leq s_q&lt;s_{q+1}=v\)">\(s_0\leq\cdots\leq s_q&lt;s_{q+1}=v\)</span>.</li>
+</ul>
+<p>&quot;Scheduled&quot;, &quot;before&quot; and &quot;after&quot; refer to the working frame and to the schedule of <span class="math" data-tex="\(J\)">\(J\)</span> after the preparatory reorderings of <span class="math" data-tex="\(W\)">\(W\)</span>: the choice of the center and the normalization of both sides. The children of <span class="math" data-tex="\(W\)">\(W\)</span> are created in this schedule, and it is their witness.</p>
+<p><strong>Lemma 1.1 (cutoff predicates).</strong> For <span class="math" data-tex="\(0\leq i\leq q\)">\(0\leq i\leq q\)</span> define a set <span class="math" data-tex="\(\widetilde S_i\subseteq J\)">\(\widetilde S_i\subseteq J\)</span> as follows.</p>
+<ul>
+<li><em>Same side.</em> If <span class="math" data-tex="\(O\subseteq S_i\)">\(O\subseteq S_i\)</span>, put <span class="math" data-tex="\(\Phi_i=\varnothing\)">\(\Phi_i=\varnothing\)</span>. Otherwise let <span class="math" data-tex="\((d,r)\)">\((d,r)\)</span> be the least key of a job of <span class="math" data-tex="\(O\setminus S_i\)">\(O\setminus S_i\)</span>, and let <span class="math" data-tex="\(\Phi_i\)">\(\Phi_i\)</span> be the union of the entries of <span class="math" data-tex="\(\operatorname{carry}_{d,r}(\mathcal K)\)">\(\operatorname{carry}_{d,r}(\mathcal K)\)</span>. Put <span class="math" data-tex="\(\widetilde S_i=P_b\setminus\Phi_i\)">\(\widetilde S_i=P_b\setminus\Phi_i\)</span>.</li>
+<li><em>Switched side.</em> Let <span class="math" data-tex="\(r_i\)">\(r_i\)</span> be the rank of the job promoted at the <span class="math" data-tex="\(i\)">\(i\)</span>-th promotion, and <span class="math" data-tex="\(r_0=0\)">\(r_0=0\)</span>. Put
+<span class="math math-display" data-tex="\[
+\widetilde S_i=(J\setminus D_a)\cap\{\lambda\leq r_i\}.
+\]">\[
+\widetilde S_i=(J\setminus D_a)\cap\{\lambda\leq r_i\}.
+\]</span></li>
+</ul>
+<p>Then <span class="math" data-tex="\(\widetilde S_i\cap W=S_i\)">\(\widetilde S_i\cap W=S_i\)</span>, and <span class="math" data-tex="\(\widetilde S_i\)">\(\widetilde S_i\)</span> is described by a formula with at most <span class="math" data-tex="\(A_m+1=6m+10\)">\(A_m+1=6m+10\)</span> leaves.</p>
+<p><em>Proof.</em> <em>Same side.</em> By Proposition 1.1(a) of <em>Lists and boundaries on m machines</em>, <span class="math" data-tex="\(\Phi_i\)">\(\Phi_i\)</span> consists of the qualifiers of <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> whose key is at least <span class="math" data-tex="\((d,r)\)">\((d,r)\)</span>. The qualifiers lying in <span class="math" data-tex="\(W\)">\(W\)</span> form <span class="math" data-tex="\(O\)">\(O\)</span>.</p>
+<p>The jobs of <span class="math" data-tex="\(O\)">\(O\)</span> are promoted in key order (Lemma 3.1 of <a href="centers-sides-and-edge-cutoffs.html">Centers, sides and edge cutoffs</a>, valid on <span class="math" data-tex="\(m\)">\(m\)</span> machines by Proposition 5.1 of <em>Unit jobs on m machines</em>). Hence <span class="math" data-tex="\(O\cap S_i\)">\(O\cap S_i\)</span> is an initial segment of <span class="math" data-tex="\(O\)">\(O\)</span> in key order, and <span class="math" data-tex="\(O\setminus S_i\)">\(O\setminus S_i\)</span> consists of the jobs of <span class="math" data-tex="\(O\)">\(O\)</span> with key at least <span class="math" data-tex="\((d,r)\)">\((d,r)\)</span>. So <span class="math" data-tex="\(\Phi_i\cap W=O\setminus S_i\)">\(\Phi_i\cap W=O\setminus S_i\)</span>. This also holds when <span class="math" data-tex="\(O\subseteq S_i\)">\(O\subseteq S_i\)</span>, since then both sides are empty.</p>
+<p>By (I1), <span class="math" data-tex="\(O\subseteq P_b\)">\(O\subseteq P_b\)</span>. Hence <span class="math" data-tex="\(W\cap P_b\)">\(W\cap P_b\)</span> is the disjoint union of <span class="math" data-tex="\(S_0=(W\setminus O)\cap P_b\)">\(S_0=(W\setminus O)\cap P_b\)</span> and <span class="math" data-tex="\(O\)">\(O\)</span>, and <span class="math" data-tex="\(S_i=S_0\cup(O\cap S_i)\)">\(S_i=S_0\cup(O\cap S_i)\)</span>. The set <span class="math" data-tex="\(\Phi_i\cap W\)">\(\Phi_i\cap W\)</span> lies in <span class="math" data-tex="\(O\)">\(O\)</span>, so it misses <span class="math" data-tex="\(S_0\)">\(S_0\)</span>. Therefore
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+\widetilde S_i\cap W
+&amp;=(S_0\cup O)\setminus(O\setminus S_i)\\
+&amp;=S_0\cup(O\cap S_i)=S_i.
+\end{aligned}
+\]">\[
+\begin{aligned}
+\widetilde S_i\cap W
+&amp;=(S_0\cup O)\setminus(O\setminus S_i)\\
+&amp;=S_0\cup(O\cap S_i)=S_i.
+\end{aligned}
+\]</span></p>
+<p>For the leaf count, consider the three possible forms of <span class="math" data-tex="\(\Phi_i\)">\(\Phi_i\)</span>.</p>
+<ul>
+<li>If <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> is a pruned list, Lemma 3.4 of <em>Lists and boundaries on m machines</em> describes the union of a carry taken from it with at most <span class="math" data-tex="\(A_m\)">\(A_m\)</span> leaves.</li>
+<li>If <span class="math" data-tex="\(W\)">\(W\)</span> is the root, then <span class="math" data-tex="\(\mathcal K=(J)\)">\(\mathcal K=(J)\)</span>, so <span class="math" data-tex="\(d=1\)">\(d=1\)</span>. The carry is <span class="math" data-tex="\((J\cap\{\lambda\geq r\})\)">\((J\cap\{\lambda\geq r\})\)</span>, whose union <span class="math" data-tex="\(\{\lambda\geq r\}\)">\(\{\lambda\geq r\}\)</span> is one leaf.</li>
+<li>An empty union is the constant <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span>, one leaf.</li>
+</ul>
+<p>The complement of <span class="math" data-tex="\(\Phi_i\)">\(\Phi_i\)</span> has a formula of the same size (Lemma 3.1(b) of <em>Unit jobs on m machines</em>). Intersecting it with the atom <span class="math" data-tex="\(P_b\)">\(P_b\)</span> gives at most <span class="math" data-tex="\(A_m+1\)">\(A_m+1\)</span> leaves.</p>
+<p><em>Switched side.</em> The jobs of <span class="math" data-tex="\(X=W\setminus D_a\)">\(X=W\setminus D_a\)</span> are promoted in increasing rank. Hence <span class="math" data-tex="\(S_i\)">\(S_i\)</span> consists of the <span class="math" data-tex="\(i\)">\(i\)</span> jobs of <span class="math" data-tex="\(X\)">\(X\)</span> of smallest rank, that is, <span class="math" data-tex="\(S_i=X\cap\{\lambda\leq r_i\}\)">\(S_i=X\cap\{\lambda\leq r_i\}\)</span>; for <span class="math" data-tex="\(i=0\)">\(i=0\)</span> this is empty, because ranks are at least <span class="math" data-tex="\(1\)">\(1\)</span>. Also <span class="math" data-tex="\(W\cap(J\setminus D_a)=X\)">\(W\cap(J\setminus D_a)=X\)</span>, so <span class="math" data-tex="\(\widetilde S_i\cap W=S_i\)">\(\widetilde S_i\cap W=S_i\)</span>. The formula has two leaves, and <span class="math" data-tex="\(2\leq A_m+1\)">\(2\leq A_m+1\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The predicate <span class="math" data-tex="\(\widetilde S_i\)">\(\widetilde S_i\)</span> agrees with <span class="math" data-tex="\(S_i\)">\(S_i\)</span> on <span class="math" data-tex="\(W\)">\(W\)</span> only. Nothing is claimed about it outside <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<p><strong>Lemma 1.2 (a child as a global set).</strong> Let <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> be a child of <span class="math" data-tex="\(W\)">\(W\)</span> on this side, with edge data <span class="math" data-tex="\(a&#x27;=s_i\)">\(a&#x27;=s_i\)</span>, <span class="math" data-tex="\(b&#x27;=s_{i+1}\)">\(b&#x27;=s_{i+1}\)</span>, <span class="math" data-tex="\(S=S_i\)">\(S=S_i\)</span> and pruned list <span class="math" data-tex="\(\mathcal K&#x27;\)">\(\mathcal K&#x27;\)</span>. The following are equalities of subsets of <span class="math" data-tex="\(J\)">\(J\)</span>, in the working frame:
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+W&#x27;\setminus S&amp;=\mathcal Q(\mathcal K&#x27;)\cap P_{b&#x27;}\\
+&amp;\qquad\cap(J\setminus\widehat P_{a&#x27;}),
+\end{aligned}
+\]">\[
+\begin{aligned}
+W&#x27;\setminus S&amp;=\mathcal Q(\mathcal K&#x27;)\cap P_{b&#x27;}\\
+&amp;\qquad\cap(J\setminus\widehat P_{a&#x27;}),
+\end{aligned}
+\]</span>
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+W&#x27;\cap S&amp;=D_{a&#x27;}\cap P_b\cap(J\setminus\widehat D_{b&#x27;})\\
+&amp;\qquad\cap(J\setminus\widehat D_v)\cap\widetilde S_i.
+\end{aligned}
+\]">\[
+\begin{aligned}
+W&#x27;\cap S&amp;=D_{a&#x27;}\cap P_b\cap(J\setminus\widehat D_{b&#x27;})\\
+&amp;\qquad\cap(J\setminus\widehat D_v)\cap\widetilde S_i.
+\end{aligned}
+\]</span></p>
+<p><em>Proof.</em> By Proposition 5.1 of <em>Unit jobs on m machines</em>, <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span> is a genuine slot of <span class="math" data-tex="\(W\)">\(W\)</span>, and <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> is the boundary <span class="math" data-tex="\(a\)">\(a\)</span> or a slot of <span class="math" data-tex="\(E\)">\(E\)</span>. The center <span class="math" data-tex="\(v\)">\(v\)</span> is a genuine slot.</p>
+<p><em>High part.</em> Let <span class="math" data-tex="\(x\in W&#x27;\setminus S\)">\(x\in W&#x27;\setminus S\)</span>.</p>
+<ul>
+<li>By Proposition 1.1(c) of <em>Lists and boundaries on m machines</em>, the qualifiers of <span class="math" data-tex="\(\mathcal K&#x27;\)">\(\mathcal K&#x27;\)</span> in <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> are exactly the jobs of <span class="math" data-tex="\(W&#x27;\setminus S\)">\(W&#x27;\setminus S\)</span>. So <span class="math" data-tex="\(x\in\mathcal Q(\mathcal K&#x27;)\)">\(x\in\mathcal Q(\mathcal K&#x27;)\)</span>.</li>
+<li>By Proposition 5.1 of <em>Unit jobs on m machines</em>, <span class="math" data-tex="\(x\in P_{b&#x27;}\)">\(x\in P_{b&#x27;}\)</span>.</li>
+<li>The job <span class="math" data-tex="\(x\)">\(x\)</span> is scheduled strictly after <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span>. It is therefore neither in the slot <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> nor, by Lemma 3.1(a) of <em>Unit jobs on m machines</em>, in <span class="math" data-tex="\(P_{a&#x27;}\)">\(P_{a&#x27;}\)</span>. If <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> is virtual, <span class="math" data-tex="\(\widehat P_{a&#x27;}=\varnothing\)">\(\widehat P_{a&#x27;}=\varnothing\)</span>. So <span class="math" data-tex="\(x\notin\widehat P_{a&#x27;}\)">\(x\notin\widehat P_{a&#x27;}\)</span>.</li>
+</ul>
+<p>Conversely, let <span class="math" data-tex="\(x\)">\(x\)</span> belong to the right-hand side.</p>
+<ul>
+<li>Since <span class="math" data-tex="\(x\in P_{b&#x27;}\)">\(x\in P_{b&#x27;}\)</span> and <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span> is a slot, <span class="math" data-tex="\(x\)">\(x\)</span> is scheduled strictly before <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span> (Lemma 3.1(a) of <em>Unit jobs on m machines</em>).</li>
+<li>Suppose <span class="math" data-tex="\(x\)">\(x\)</span> were scheduled at or before <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span>, which requires <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> to be a slot. As a qualifier of <span class="math" data-tex="\(\mathcal K&#x27;\)">\(\mathcal K&#x27;\)</span>, it would lie in <span class="math" data-tex="\(\widehat P_{a&#x27;}\)">\(\widehat P_{a&#x27;}\)</span> by (I2) for the child (Proposition 4.1 of <em>Lists and boundaries on m machines</em>). This contradicts the last factor.</li>
+<li>So <span class="math" data-tex="\(x\)">\(x\)</span> lies strictly between <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> and <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span>, that is, <span class="math" data-tex="\(x\in W&#x27;\)">\(x\in W&#x27;\)</span>.</li>
+<li>As a qualifier lying in <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span>, <span class="math" data-tex="\(x\)">\(x\)</span> is in <span class="math" data-tex="\(W&#x27;\setminus S\)">\(W&#x27;\setminus S\)</span>.</li>
+</ul>
+<p><em>Low part.</em> Let <span class="math" data-tex="\(z\)">\(z\)</span> belong to the right-hand side.</p>
+<ol>
+<li><em>Placement in <span class="math" data-tex="\(W\)">\(W\)</span>.</em> Since <span class="math" data-tex="\(z\in D_{a&#x27;}\)">\(z\in D_{a&#x27;}\)</span>, it is scheduled after <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span>, hence after <span class="math" data-tex="\(a\)">\(a\)</span>; at a virtual <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> the cone <span class="math" data-tex="\(D_{a&#x27;}=J\)">\(D_{a&#x27;}=J\)</span> imposes nothing. Since <span class="math" data-tex="\(z\in P_b\)">\(z\in P_b\)</span>, it is scheduled before <span class="math" data-tex="\(b\)">\(b\)</span>; at a virtual <span class="math" data-tex="\(b\)">\(b\)</span>, <span class="math" data-tex="\(P_b=J\)">\(P_b=J\)</span>. So <span class="math" data-tex="\(z\in W\)">\(z\in W\)</span>.</li>
+<li><em>Low.</em> Only at this point is Lemma 1.1 used: <span class="math" data-tex="\(z\in\widetilde S_i\cap W=S_i\)">\(z\in\widetilde S_i\cap W=S_i\)</span>.</li>
+<li><em>Placement in <span class="math" data-tex="\(E\)">\(E\)</span>.</em> By Lemma 3.1 of <em>Centers, sides and edge cutoffs</em>, <span class="math" data-tex="\(S_i\subseteq S_*\)">\(S_i\subseteq S_*\)</span>. If <span class="math" data-tex="\(z\)">\(z\)</span> were in the center, it would lie in <span class="math" data-tex="\(\widehat D_v\)">\(\widehat D_v\)</span>. If it were after the center, it would be a low job for <span class="math" data-tex="\(S_*\)">\(S_*\)</span> after <span class="math" data-tex="\(v\)">\(v\)</span>. The center separates <span class="math" data-tex="\(S_*\)">\(S_*\)</span> on the domain <span class="math" data-tex="\(W\)">\(W\)</span>, so <span class="math" data-tex="\(z\)">\(z\)</span> would lie in <span class="math" data-tex="\(D_v\)">\(D_v\)</span>. Both are excluded, so <span class="math" data-tex="\(z\)">\(z\)</span> is scheduled before <span class="math" data-tex="\(v\)">\(v\)</span>, that is, <span class="math" data-tex="\(z\in E\)">\(z\in E\)</span>.</li>
+<li><em>Placement in <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span>.</em> If <span class="math" data-tex="\(b&#x27;=v\)">\(b&#x27;=v\)</span>, step 3 shows that <span class="math" data-tex="\(z\)">\(z\)</span> is before <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span>. Otherwise <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span> is a slot of <span class="math" data-tex="\(E\)">\(E\)</span> separating <span class="math" data-tex="\(S_i\)">\(S_i\)</span> on <span class="math" data-tex="\(E\)">\(E\)</span> (Lemma 4.1 of <em>Centers, sides and edge cutoffs</em>, via Proposition 5.1 of <em>Unit jobs on m machines</em>). A low job of <span class="math" data-tex="\(E\)">\(E\)</span> in the slot <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span> lies in <span class="math" data-tex="\(\widehat D_{b&#x27;}\)">\(\widehat D_{b&#x27;}\)</span>, and one after <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span> lies in <span class="math" data-tex="\(D_{b&#x27;}\)">\(D_{b&#x27;}\)</span>. Both are excluded, so <span class="math" data-tex="\(z\)">\(z\)</span> is scheduled strictly between <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> and <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span>.</li>
+</ol>
+<p>Hence <span class="math" data-tex="\(z\in W&#x27;\cap S\)">\(z\in W&#x27;\cap S\)</span>.</p>
+<p>Conversely, let <span class="math" data-tex="\(z\in W&#x27;\cap S\)">\(z\in W&#x27;\cap S\)</span>.</p>
+<ul>
+<li>By Proposition 5.1 of <em>Unit jobs on m machines</em>, <span class="math" data-tex="\(z\in D_{a&#x27;}\cap P_b\)">\(z\in D_{a&#x27;}\cap P_b\)</span>.</li>
+<li>Since <span class="math" data-tex="\(z\in W\cap S_i\)">\(z\in W\cap S_i\)</span>, Lemma 1.1 gives <span class="math" data-tex="\(z\in\widetilde S_i\)">\(z\in\widetilde S_i\)</span>.</li>
+<li>The job <span class="math" data-tex="\(z\)">\(z\)</span> is scheduled strictly before the slots <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span> and <span class="math" data-tex="\(v\)">\(v\)</span>. By Lemma 3.1(a) of <em>Unit jobs on m machines</em> it lies in neither <span class="math" data-tex="\(\widehat D_{b&#x27;}\)">\(\widehat D_{b&#x27;}\)</span> nor <span class="math" data-tex="\(\widehat D_v\)">\(\widehat D_v\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></li>
+</ul>
+<p>The union of the two right-hand sides is a global description of <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span>. It contains no description of <span class="math" data-tex="\(W\)">\(W\)</span> or of any other ancestor. The localization in the low part is an order of reasoning: the positive tests place a job inside <span class="math" data-tex="\(W\)">\(W\)</span> before the predicate <span class="math" data-tex="\(\widetilde S_i\)">\(\widetilde S_i\)</span> is used.</p>
+<p><strong>Lemma 1.3 (marks).</strong> Put
+<span class="math math-display" data-tex="\[
+H_*=\begin{cases}P_b&amp;\text{same side},\\ J\setminus D_a&amp;\text{switched side},\end{cases}
+\]">\[
+H_*=\begin{cases}P_b&amp;\text{same side},\\ J\setminus D_a&amp;\text{switched side},\end{cases}
+\]</span>
+and recall <span class="math" data-tex="\(B_z(H)=P_z\cup(H\setminus\widehat D_z)\)">\(B_z(H)=P_z\cup(H\setminus\widehat D_z)\)</span> from Lemma 1.2 of <a href="separators-and-the-shared-cutoff-walk.html">Separators and the shared-cutoff walk</a>. For a mark <span class="math" data-tex="\(z\)">\(z\)</span> of <span class="math" data-tex="\(W\)">\(W\)</span> on this side, define a formula <span class="math" data-tex="\(F\)">\(F\)</span> as follows:</p>
+<ul>
+<li><span class="math" data-tex="\(F=B_v(H_*)\)">\(F=B_v(H_*)\)</span> if <span class="math" data-tex="\(z=v\)">\(z=v\)</span>;</li>
+<li><span class="math" data-tex="\(F=B_v(H_*)\cap B_z(\widetilde S_i)\)">\(F=B_v(H_*)\cap B_z(\widetilde S_i)\)</span> if <span class="math" data-tex="\(z=s_i\)">\(z=s_i\)</span> with <span class="math" data-tex="\(i\geq1\)">\(i\geq1\)</span>.</li>
+</ul>
+<p>If the working frame is the forward frame, the set of jobs of <span class="math" data-tex="\(W\)">\(W\)</span> scheduled before <span class="math" data-tex="\(z\)">\(z\)</span> in original time is <span class="math" data-tex="\(W\cap F\)">\(W\cap F\)</span>. If the working frame is the backward frame, this set is <span class="math" data-tex="\(W\cap\bigl((J\setminus F)\setminus z\bigr)\)">\(W\cap\bigl((J\setminus F)\setminus z\bigr)\)</span>.</p>
+<p><em>Proof.</em> We have <span class="math" data-tex="\(H_*\cap W=S_*\)">\(H_*\cap W=S_*\)</span>. On a same side this is the definition <span class="math" data-tex="\(S_*=W\cap P_b\)">\(S_*=W\cap P_b\)</span>; on a switched side, <span class="math" data-tex="\(S_*=X=W\cap(J\setminus D_a)\)">\(S_*=X=W\cap(J\setminus D_a)\)</span>.</p>
+<p>The center separates <span class="math" data-tex="\(S_*\)">\(S_*\)</span> on the domain <span class="math" data-tex="\(W\)">\(W\)</span>. By Lemma 1.2 of <em>Separators and the shared-cutoff walk</em>, valid on <span class="math" data-tex="\(m\)">\(m\)</span> machines by Proposition 4.3 of <em>Unit jobs on m machines</em>, <span class="math" data-tex="\(B_v(H_*)\cap W\)">\(B_v(H_*)\cap W\)</span> is the set of jobs of <span class="math" data-tex="\(W\)">\(W\)</span> before <span class="math" data-tex="\(v\)">\(v\)</span> in the working frame, which is <span class="math" data-tex="\(E\)">\(E\)</span>.</p>
+<p>Let <span class="math" data-tex="\(z=s_i\)">\(z=s_i\)</span> with <span class="math" data-tex="\(i\geq1\)">\(i\geq1\)</span> be a mark, so <span class="math" data-tex="\(z\)">\(z\)</span> is a slot of <span class="math" data-tex="\(E\)">\(E\)</span>. By Lemma 4.1 of <em>Centers, sides and edge cutoffs</em>, <span class="math" data-tex="\(z\)">\(z\)</span> separates <span class="math" data-tex="\(S_i\cap E\)">\(S_i\cap E\)</span> on <span class="math" data-tex="\(E\)">\(E\)</span>. Since <span class="math" data-tex="\(\widetilde S_i\cap E=S_i\cap E\)">\(\widetilde S_i\cap E=S_i\cap E\)</span> (Lemma 1.1), the same separator lemma, with domain <span class="math" data-tex="\(E\)">\(E\)</span>, shows that <span class="math" data-tex="\(E\cap B_z(\widetilde S_i)\)">\(E\cap B_z(\widetilde S_i)\)</span> is the set of jobs of <span class="math" data-tex="\(E\)">\(E\)</span> before <span class="math" data-tex="\(z\)">\(z\)</span>. The jobs of <span class="math" data-tex="\(W\)">\(W\)</span> before <span class="math" data-tex="\(z\)">\(z\)</span> lie in <span class="math" data-tex="\(E\)">\(E\)</span>, because <span class="math" data-tex="\(z\)">\(z\)</span> comes before <span class="math" data-tex="\(v\)">\(v\)</span>. So <span class="math" data-tex="\(W\cap F\)">\(W\cap F\)</span> is the set of jobs of <span class="math" data-tex="\(W\)">\(W\)</span> before <span class="math" data-tex="\(z\)">\(z\)</span> in the working frame.</p>
+<p>In the forward frame this is the required set. In the backward frame, <span class="math" data-tex="\(W\)">\(W\)</span> is the disjoint union of three parts:</p>
+<ul>
+<li>its working-frame prefix <span class="math" data-tex="\(W\cap F\)">\(W\cap F\)</span>;</li>
+<li>the slot <span class="math" data-tex="\(z\)">\(z\)</span>;</li>
+<li>its working-frame suffix, which is the original-time prefix.</li>
+</ul>
+<p>Hence <span class="math" data-tex="\(W\cap\bigl((J\setminus F)\setminus z\bigr)\)">\(W\cap\bigl((J\setminus F)\setminus z\bigr)\)</span> is the original-time prefix. The complement of <span class="math" data-tex="\(F\)">\(F\)</span> has a formula of the same size by Lemma 3.1(b) of <em>Unit jobs on m machines</em>, and membership in <span class="math" data-tex="\(z\)">\(z\)</span> is one atom. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The center is a mark of both sides. Either side's formula serves for it.</p>
+<h2 id="2-counts-and-the-structure-theorem">2. Counts and the structure theorem</h2>
+<p><strong>Lemma 2.1 (leaf counts).</strong> Every child has a global description with at most <span class="math" data-tex="\(2A_m+7=12m+25\)">\(2A_m+7=12m+25\)</span> leaves. Every mark has a relative description with at most <span class="math" data-tex="\(A_m+7=6m+16\)">\(A_m+7=6m+16\)</span> leaves. Every atom of these formulas is one of the following: a cone of a slot, a membership test in a slot, a constant (including the cones of a virtual boundary), or a rank test in one of the two frames.</p>
+<p><em>Proof.</em> Both counts use Lemma 3.4 of <em>Lists and boundaries on m machines</em>, which describes the union <span class="math" data-tex="\(\mathcal Q(\mathcal K&#x27;)\)">\(\mathcal Q(\mathcal K&#x27;)\)</span> of a pruned list with at most <span class="math" data-tex="\(A_m\)">\(A_m\)</span> leaves.</p>
+<p><em>Global descriptions (Lemma 1.2).</em></p>
+<ul>
+<li>The high part has at most <span class="math" data-tex="\(A_m+2\)">\(A_m+2\)</span> leaves: the union <span class="math" data-tex="\(\mathcal Q(\mathcal K&#x27;)\)">\(\mathcal Q(\mathcal K&#x27;)\)</span>, plus the atom <span class="math" data-tex="\(P_{b&#x27;}\)">\(P_{b&#x27;}\)</span> and the complemented atom <span class="math" data-tex="\(\widehat P_{a&#x27;}\)">\(\widehat P_{a&#x27;}\)</span>.</li>
+<li>The low part has four one-leaf cone tests and <span class="math" data-tex="\(\widetilde S_i\)">\(\widetilde S_i\)</span>, which has at most <span class="math" data-tex="\(A_m+1\)">\(A_m+1\)</span> leaves by Lemma 1.1. So it has at most <span class="math" data-tex="\(A_m+5\)">\(A_m+5\)</span> leaves.</li>
+</ul>
+<p>Their union has at most
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+(A_m+2)+(A_m+5)&amp;=2A_m+7\\
+&amp;=12m+25
+\end{aligned}
+\]">\[
+\begin{aligned}
+(A_m+2)+(A_m+5)&amp;=2A_m+7\\
+&amp;=12m+25
+\end{aligned}
+\]</span>
+leaves.</p>
+<p><em>Relative descriptions (Lemma 1.3).</em></p>
+<ul>
+<li><span class="math" data-tex="\(B_v(H_*)\)">\(B_v(H_*)\)</span> has three leaves: <span class="math" data-tex="\(P_v\)">\(P_v\)</span>, the one-leaf <span class="math" data-tex="\(H_*\)">\(H_*\)</span>, and the complement of <span class="math" data-tex="\(\widehat D_v\)">\(\widehat D_v\)</span>.</li>
+<li><span class="math" data-tex="\(B_z(\widetilde S_i)\)">\(B_z(\widetilde S_i)\)</span> has at most <span class="math" data-tex="\(1+(A_m+1)+1=A_m+3\)">\(1+(A_m+1)+1=A_m+3\)</span> leaves.</li>
+<li>So <span class="math" data-tex="\(F\)">\(F\)</span> has at most <span class="math" data-tex="\(A_m+6\)">\(A_m+6\)</span> leaves, and the backward conversion adds one membership atom. This gives <span class="math" data-tex="\(A_m+7=6m+16\)">\(A_m+7=6m+16\)</span>.</li>
+</ul>
+<p><em>Atoms.</em> The atoms are the following.</p>
+<ul>
+<li>Cones of the slots <span class="math" data-tex="\(a&#x27;,b&#x27;,v\)">\(a&#x27;,b&#x27;,v\)</span> and cones of the boundaries <span class="math" data-tex="\(a,b\)">\(a,b\)</span>. These are slots or virtual boundaries, and the cones of a virtual boundary are constants.</li>
+<li>The atoms of the list entries. These are cones of node boundaries and of centers (in <span class="math" data-tex="\(G\)">\(G\)</span>, Lemma 3.3 of <em>Lists and boundaries on m machines</em>), membership in slots, and rank thresholds in the run's frame.</li>
+<li>Rank thresholds in the working frame. <span class="math" data-tex="\(\square\)">\(\square\)</span></li>
+</ul>
+<p><strong>Theorem 2.2 (structure theorem on m machines).</strong> Let <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span>. Every full schedule of <span class="math" data-tex="\(J\)">\(J\)</span> has a bounded-description hierarchy in the sense of Definition 3.3 of <em>Unit jobs on m machines</em> with budget
+<span class="math math-display" data-tex="\[
+K_m=12m+25.
+\]">\[
+K_m=12m+25.
+\]</span>
+In this hierarchy:</p>
+<ul>
+<li>the root is described by the constant <span class="math" data-tex="\(J\)">\(J\)</span>;</li>
+<li>every other node has a global description with at most <span class="math" data-tex="\(12m+25\)">\(12m+25\)</span> leaves;</li>
+<li>every mark has a relative description with at most <span class="math" data-tex="\(6m+16\)">\(6m+16\)</span> leaves.</li>
+</ul>
+<p>These bounds do not depend on the depth of the node.</p>
+<p><em>Proof.</em> Start from the given full schedule and run the construction. By Proposition 4.2 of <em>Lists and boundaries on m machines</em>, it is defined at every node, every node satisfies (I1)–(I3), and the tree is finite. We verify the conditions of the definition.</p>
+<ul>
+<li><em>Rescheduling is allowed.</em> At each node, the choice of the center and the normalization of the two open parts replace the slots of <span class="math" data-tex="\(W\)">\(W\)</span> by a full schedule of <span class="math" data-tex="\(W\)">\(W\)</span> (Lemma 2.2 of <em>Unit jobs on m machines</em>, applied to <span class="math" data-tex="\(W\)">\(W\)</span> and to each open part). This is the rescheduling the definition allows.</li>
+<li><em>Marks and children.</em> The center is marked. By Proposition 5.1 of <em>Unit jobs on m machines</em>, the children are exactly the nonempty gaps between consecutive marks and between the boundaries and the nearest marks, and each child receives a copy of the current schedule.</li>
+<li><em>Descriptions.</em> The root is <span class="math" data-tex="\(J\)">\(J\)</span>, one leaf. Every other node is a child, globally described by Lemma 1.2. Every mark has the relative description of Lemma 1.3.</li>
+<li><em>Bounds.</em> Lemma 2.1 bounds the global descriptions by <span class="math" data-tex="\(12m+25\)">\(12m+25\)</span> leaves and the relative descriptions by <span class="math" data-tex="\(6m+16\leq12m+25\)">\(6m+16\leq12m+25\)</span> leaves. <span class="math" data-tex="\(\square\)">\(\square\)</span></li>
+</ul>
+<p>No step of this proof uses <span class="math" data-tex="\(m\geq3\)">\(m\geq3\)</span>. That hypothesis enters only when formulas are counted (Lemma 3.1(c) of <em>Unit jobs on m machines</em>).</p>
+<h2 id="3-the-algorithm-and-its-running-time">3. The algorithm and its running time</h2>
+<p><strong>Theorem 3.1 (correctness).</strong> Let <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span> and <span class="math" data-tex="\(K\geq12m+25\)">\(K\geq12m+25\)</span>. The dynamic program of <em>Unit jobs on m machines</em>, §3, with budget <span class="math" data-tex="\(K\)">\(K\)</span>, accepts <span class="math" data-tex="\(J\)">\(J\)</span> if and only if <span class="math" data-tex="\(J\)">\(J\)</span> has a full schedule, and in that case it returns one. Consequently, for <span class="math" data-tex="\(1\leq T\leq n\)">\(1\leq T\leq n\)</span> with <span class="math" data-tex="\(n\leq mT\)">\(n\leq mT\)</span>, it decides whether <span class="math" data-tex="\(G\)">\(G\)</span> has a schedule on <span class="math" data-tex="\(m\)">\(m\)</span> machines with makespan at most <span class="math" data-tex="\(T\)">\(T\)</span>. After the padding jobs are deleted and the at most <span class="math" data-tex="\(m\)">\(m\)</span> remaining jobs of each slot are assigned to machines <span class="math" data-tex="\(1,2,\ldots\)">\(1,2,\ldots\)</span> in the order of their identifiers, the returned schedule is such a schedule.</p>
+<p><em>Proof.</em> <em>Soundness.</em> If the program accepts, Proposition 3.2 of <em>Unit jobs on m machines</em> produces a full schedule of <span class="math" data-tex="\(J\)">\(J\)</span>.</p>
+<p><em>Completeness.</em> Let <span class="math" data-tex="\(J\)">\(J\)</span> have a full schedule. By Theorem 2.2 it has a hierarchy with budget <span class="math" data-tex="\(K_m\)">\(K_m\)</span>. A formula with at most <span class="math" data-tex="\(K_m\)">\(K_m\)</span> leaves has at most <span class="math" data-tex="\(K\)">\(K\)</span> leaves, so this is also a hierarchy with budget <span class="math" data-tex="\(K\)">\(K\)</span>. By Lemma 3.4 of <em>Unit jobs on m machines</em>, the program accepts <span class="math" data-tex="\(J\)">\(J\)</span>.</p>
+<p><em>The deadline.</em> By the padding lemma (Lemma 2.1 of <em>Unit jobs on m machines</em>), <span class="math" data-tex="\(J\)">\(J\)</span> has a full schedule exactly when a schedule of makespan at most <span class="math" data-tex="\(T\)">\(T\)</span> exists. Deleting the padding jobs leaves at most <span class="math" data-tex="\(m\)">\(m\)</span> jobs per slot, and distinct jobs of one slot receive distinct machines. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 3.2 (running time of the program).</strong> Let <span class="math" data-tex="\(m\geq3\)">\(m\geq3\)</span> and <span class="math" data-tex="\(K\geq1\)">\(K\geq1\)</span> be fixed, and let <span class="math" data-tex="\(N\geq m\)">\(N\geq m\)</span>. The program, including the construction of the witness schedule, takes
+<span class="math math-display" data-tex="\[
+O_{m,K}\bigl(N^{5mK+4m+1}\bigr)
+\]">\[
+O_{m,K}\bigl(N^{5mK+4m+1}\bigr)
+\]</span>
+steps of a deterministic multitape Turing machine. Its input is the table of <span class="math" data-tex="\(\prec\)">\(\prec\)</span> on <span class="math" data-tex="\(J\)">\(J\)</span> and the rank <span class="math" data-tex="\(\lambda:J\to\{1,\ldots,N\}\)">\(\lambda:J\to\{1,\ldots,N\}\)</span>.</p>
+<p><em>Proof.</em> <em>Counting.</em> By Lemma 3.1(c) of <em>Unit jobs on m machines</em>, there are at most <span class="math" data-tex="\(B=K\,512^KN^{mK}\)">\(B=K\,512^KN^{mK}\)</span> formulas with at most <span class="math" data-tex="\(K\)">\(K\)</span> leaves. Hence:</p>
+<ul>
+<li><span class="math" data-tex="\(\mathcal F_K\)">\(\mathcal F_K\)</span> has at most <span class="math" data-tex="\(B\)">\(B\)</span> members;</li>
+<li>for a fixed <span class="math" data-tex="\(W\)">\(W\)</span>, there are at most <span class="math" data-tex="\(B\)">\(B\)</span> candidate left parts <span class="math" data-tex="\(L=W\cap[\![F]\!]\)">\(L=W\cap[\![F]\!]\)</span>;</li>
+<li>there are at most <span class="math" data-tex="\(N^m\)">\(N^m\)</span> sets <span class="math" data-tex="\(Z\)">\(Z\)</span> of <span class="math" data-tex="\(m\)">\(m\)</span> jobs;</li>
+<li>so for a fixed <span class="math" data-tex="\(W\)">\(W\)</span> there are at most <span class="math" data-tex="\(S=BN^m\)">\(S=BN^m\)</span> candidate states. Repetitions only enlarge this count.</li>
+</ul>
+<p><em>Storage.</em> The tapes hold the following.</p>
+<ul>
+<li>The bit vector of every set of <span class="math" data-tex="\(\mathcal F_K\)">\(\mathcal F_K\)</span>: <span class="math" data-tex="\(BN\)">\(BN\)</span> bits.</li>
+<li>An explicit schedule of every accepted set: at most <span class="math" data-tex="\(N\)">\(N\)</span> identifiers of <span class="math" data-tex="\(O(\log N)\)">\(O(\log N)\)</span> bits each.</li>
+<li>For the current <span class="math" data-tex="\(W\)">\(W\)</span>, one record per state. A record holds the three parts as <span class="math" data-tex="\(N\)">\(N\)</span>-bit vectors, a reachability bit, and the number of its predecessor record, with <span class="math" data-tex="\(O(\log S)=O_{m,K}(\log N)\)">\(O(\log S)=O_{m,K}(\log N)\)</span> bits. A record therefore has <span class="math" data-tex="\(O_{m,K}(N)\)">\(O_{m,K}(N)\)</span> bits.</li>
+</ul>
+<p><em>Elementary operations.</em> Every operation is done by sequential scans.</p>
+<ul>
+<li>Fetching or updating a record costs <span class="math" data-tex="\(O_{m,K}(SN)=O_{m,K}(BN^{m+1})\)">\(O_{m,K}(SN)=O_{m,K}(BN^{m+1})\)</span>.</li>
+<li>Looking up an acceptance value compares an <span class="math" data-tex="\(N\)">\(N\)</span>-bit vector with the <span class="math" data-tex="\(B\)">\(B\)</span> stored ones, at cost <span class="math" data-tex="\(O_{m,K}(BN^2)\)">\(O_{m,K}(BN^2)\)</span>.</li>
+<li>A compatibility test makes <span class="math" data-tex="\(N^2\)">\(N^2\)</span> lookups in the <span class="math" data-tex="\(N\times N\)">\(N\times N\)</span> table, each a scan of <span class="math" data-tex="\(O(N^2)\)">\(O(N^2)\)</span> cells, at cost <span class="math" data-tex="\(O(N^4)\)">\(O(N^4)\)</span>.</li>
+</ul>
+<p>Since <span class="math" data-tex="\(m\geq3\)">\(m\geq3\)</span>, both <span class="math" data-tex="\(BN^2\)">\(BN^2\)</span> and <span class="math" data-tex="\(N^4\)">\(N^4\)</span> are at most <span class="math" data-tex="\(BN^{m+1}\)">\(BN^{m+1}\)</span>.</p>
+<p><em>Testing one ordered pair of states.</em> The test fetches both records, checks <span class="math" data-tex="\(L\cup Z\subseteq L&#x27;\)">\(L\cup Z\subseteq L&#x27;\)</span>, forms <span class="math" data-tex="\(L&#x27;\setminus(L\cup Z)\)">\(L&#x27;\setminus(L\cup Z)\)</span>, looks up its acceptance value and updates a mark. It therefore costs <span class="math" data-tex="\(O_{m,K}(BN^{m+1})\)">\(O_{m,K}(BN^{m+1})\)</span>.</p>
+<p><em>Reachability.</em> Start from the initial states and make <span class="math" data-tex="\(S\)">\(S\)</span> passes over all <span class="math" data-tex="\(S^2\)">\(S^2\)</span> ordered pairs, marking a state whenever an already marked state has a transition to it. A reachable state is reached by a simple path with fewer than <span class="math" data-tex="\(S\)">\(S\)</span> transitions, so after <span class="math" data-tex="\(S\)">\(S\)</span> passes every reachable state is marked. Over all <span class="math" data-tex="\(B\)">\(B\)</span> sets the cost is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;O_{m,K}\bigl(B\cdot S\cdot S^2\cdot BN^{m+1}\bigr)\\
+&amp;\quad=O_{m,K}\bigl(B^5N^{4m+1}\bigr)\\
+&amp;\quad=O_{m,K}\bigl(N^{5mK+4m+1}\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;O_{m,K}\bigl(B\cdot S\cdot S^2\cdot BN^{m+1}\bigr)\\
+&amp;\quad=O_{m,K}\bigl(B^5N^{4m+1}\bigr)\\
+&amp;\quad=O_{m,K}\bigl(N^{5mK+4m+1}\bigr).
+\end{aligned}
+\]</span></p>
+<p><em>Remaining work.</em> The remaining tasks and their costs are:</p>
+<table>
+<thead>
+<tr>
+<th>Task</th>
+<th>Cost</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Generating and evaluating the formulas</td>
+<td><span class="math" data-tex="\(O_{m,K}(BN^3)\)">\(O_{m,K}(BN^3)\)</span></td>
+</tr>
+<tr>
+<td>Removing repeated bit vectors in pairs</td>
+<td><span class="math" data-tex="\(O(B^2N)\)">\(O(B^2N)\)</span></td>
+</tr>
+<tr>
+<td>Sorting the bit vectors by cardinality</td>
+<td><span class="math" data-tex="\(O(B^2N)\)">\(O(B^2N)\)</span></td>
+</tr>
+<tr>
+<td>Enumerating and testing the candidate states</td>
+<td><span class="math" data-tex="\(O_{m,K}(BSN^4)\)">\(O_{m,K}(BSN^4)\)</span></td>
+</tr>
+<tr>
+<td>Following the predecessor records of a reached path</td>
+<td><span class="math" data-tex="\(O_{m,K}(S^2N)\)">\(O_{m,K}(S^2N)\)</span></td>
+</tr>
+<tr>
+<td>Copying the stored schedules of the pieces</td>
+<td><span class="math" data-tex="\(O_{m,K}(BN^2\log N)\)">\(O_{m,K}(BN^2\log N)\)</span> per piece, at most <span class="math" data-tex="\(N\)">\(N\)</span> pieces</td>
+</tr>
+</tbody>
+</table>
+<p>Formulas are evaluated with <span class="math" data-tex="\(O(mN^2)\)">\(O(mN^2)\)</span> table lookups per leaf. A reached path has at most <span class="math" data-tex="\(S\)">\(S\)</span> records, and the pieces partition <span class="math" data-tex="\(W\)">\(W\)</span>. All these costs are at most <span class="math" data-tex="\(B^5N^{4m+1}\)">\(B^5N^{4m+1}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(m=3\)">\(m=3\)</span> the bound is <span class="math" data-tex="\(N^{15K+13}\)">\(N^{15K+13}\)</span>, the bound of Proposition 5.1 of <em>Global descriptions and the running time</em>.</p>
+<p><strong>Corollary 3.3 (proof of Theorem 1.1 of <em>Unit jobs on m machines</em>).</strong> Let <span class="math" data-tex="\(m\geq3\)">\(m\geq3\)</span> be fixed, <span class="math" data-tex="\(K=K_m=12m+25\)">\(K=K_m=12m+25\)</span>, and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+e&amp;=5m(12m+25)+4m+1\\
+&amp;=60m^2+129m+1.
+\end{aligned}
+\]">\[
+\begin{aligned}
+e&amp;=5m(12m+25)+4m+1\\
+&amp;=60m^2+129m+1.
+\end{aligned}
+\]</span>
+Use the explicit encoding: the jobs <span class="math" data-tex="\(1,\ldots,n\)">\(1,\ldots,n\)</span> and the arcs are listed with identifiers in binary, and <span class="math" data-tex="\(T\)">\(T\)</span> is given in binary. Let <span class="math" data-tex="\(L\)">\(L\)</span> be the input length. Then:</p>
+<ul>
+<li>a deadline decision with <span class="math" data-tex="\(1\leq T&lt;n\)">\(1\leq T&lt;n\)</span> takes <span class="math" data-tex="\(O_m(N^e)\)">\(O_m(N^e)\)</span> steps, including reading the input;</li>
+<li>the decision for an arbitrary deadline, with a schedule returned if one exists, and the computation of a schedule of minimum makespan each take
+<span class="math math-display" data-tex="\[
+O_m\bigl((L+2)^{e+1}\bigr)
+\]">\[
+O_m\bigl((L+2)^{e+1}\bigr)
+\]</span>
+steps, where <span class="math" data-tex="\(e+1=60m^2+129m+2\)">\(e+1=60m^2+129m+2\)</span>.</li>
+</ul>
+<p><em>Proof.</em> The jobs are listed explicitly, so <span class="math" data-tex="\(n\leq L\)">\(n\leq L\)</span> and <span class="math" data-tex="\(|E|\leq L\)">\(|E|\leq L\)</span>. Expanding <span class="math" data-tex="\(5m(12m+25)+4m+1\)">\(5m(12m+25)+4m+1\)</span> gives <span class="math" data-tex="\(60m^2+129m+1\)">\(60m^2+129m+1\)</span>. The three branches of the decision are as follows.</p>
+<ol>
+<li><em><span class="math" data-tex="\(T&lt;1\)">\(T&lt;1\)</span>.</em> No map from the nonempty set <span class="math" data-tex="\(V\)">\(V\)</span> to <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span> exists, so the algorithm rejects. Comparing <span class="math" data-tex="\(T\)">\(T\)</span> with <span class="math" data-tex="\(1\)">\(1\)</span> costs <span class="math" data-tex="\(O(L)\)">\(O(L)\)</span>.</li>
+<li><em><span class="math" data-tex="\(T\geq n\)">\(T\geq n\)</span>.</em> One job per slot in a topological order is a schedule of makespan <span class="math" data-tex="\(n\leq T\)">\(n\leq T\)</span>, so the algorithm accepts and returns it. Comparing <span class="math" data-tex="\(T\)">\(T\)</span> with <span class="math" data-tex="\(n\)">\(n\)</span> costs <span class="math" data-tex="\(O(L^2)\)">\(O(L^2)\)</span>. The topological order is the one described in item (ii) below, computed on <span class="math" data-tex="\(V\)">\(V\)</span>, at cost <span class="math" data-tex="\(O(n^5\log n)=O(L^6)\)">\(O(n^5\log n)=O(L^6)\)</span>.</li>
+<li><em><span class="math" data-tex="\(1\leq T&lt;n\)">\(1\leq T&lt;n\)</span>.</em> If <span class="math" data-tex="\(n&gt;mT\)">\(n&gt;mT\)</span>, the algorithm rejects. Otherwise it pads to <span class="math" data-tex="\(N=mT\)">\(N=mT\)</span> jobs and runs the program. In this branch <span class="math" data-tex="\(n\leq N\)">\(n\leq N\)</span> and <span class="math" data-tex="\(N=mT&lt;mn\leq mL\)">\(N=mT&lt;mn\leq mL\)</span>.</li>
+</ol>
+<p><em>Preprocessing in branch 3.</em> Its cost is bounded independently of <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<ul>
+<li>(i) <em>Reading.</em> Copying the input to a work tape and computing <span class="math" data-tex="\(n\)">\(n\)</span> costs <span class="math" data-tex="\(O(L^2)\)">\(O(L^2)\)</span>.</li>
+<li>(ii) <em>The table of <span class="math" data-tex="\(\prec\)">\(\prec\)</span>.</em> Store an <span class="math" data-tex="\(N\times N\)">\(N\times N\)</span> bit matrix row by row on a tape; locating an entry with a binary counter costs <span class="math" data-tex="\(O(N^2\log N)\)">\(O(N^2\log N)\)</span>.
+<ul>
+<li>Entering the at most <span class="math" data-tex="\(L\)">\(L\)</span> arcs costs <span class="math" data-tex="\(O(L\cdot N^2\log N+L^2)\)">\(O(L\cdot N^2\log N+L^2)\)</span>.</li>
+<li>Transitive closure by Warshall's triple loop costs <span class="math" data-tex="\(O(N^3\cdot N^2\log N)\)">\(O(N^3\cdot N^2\log N)\)</span>.</li>
+<li>The rank <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span>, by the removal procedure of Lemma 1.2 of <a href="unit-jobs-on-three-machines.html">Unit jobs on three machines</a> with the smallest identifier first, uses <span class="math" data-tex="\(N\)">\(N\)</span> rounds of <span class="math" data-tex="\(N^2\)">\(N^2\)</span> lookups each, at cost <span class="math" data-tex="\(O(N^5\log N)\)">\(O(N^5\log N)\)</span>.</li>
+<li>The padding jobs are isolated, so their rows and columns are zero.</li>
+</ul>
+</li>
+<li>(iii) <em>Output.</em> Deleting the padding jobs and assigning machines costs <span class="math" data-tex="\(O(N^2\log N)\)">\(O(N^2\log N)\)</span>.</li>
+</ul>
+<p>With binary identifiers, <span class="math" data-tex="\(L=O(n\log n+|E|\log n+\log T)\)">\(L=O(n\log n+|E|\log n+\log T)\)</span>. Since <span class="math" data-tex="\(|E|\leq n^2\)">\(|E|\leq n^2\)</span>, <span class="math" data-tex="\(T&lt;n\)">\(T&lt;n\)</span> and <span class="math" data-tex="\(n\leq N\)">\(n\leq N\)</span>, this gives <span class="math" data-tex="\(L=O(N^3)\)">\(L=O(N^3)\)</span>.</p>
+<p><em>Total for branch 3.</em> The preprocessing costs <span class="math" data-tex="\(O(L^2+LN^2\log N+N^5\log N)\)">\(O(L^2+LN^2\log N+N^5\log N)\)</span>, which is <span class="math" data-tex="\(O(N^6)\)">\(O(N^6)\)</span>. By Proposition 3.2 the program costs <span class="math" data-tex="\(O_m(N^e)\)">\(O_m(N^e)\)</span>. Since <span class="math" data-tex="\(e\geq928&gt;6\)">\(e\geq928&gt;6\)</span>, the total is <span class="math" data-tex="\(O_m(N^e)\)">\(O_m(N^e)\)</span>. In terms of <span class="math" data-tex="\(L\)">\(L\)</span>, since <span class="math" data-tex="\(N\leq mL\)">\(N\leq mL\)</span> and <span class="math" data-tex="\(m\)">\(m\)</span> is fixed, this is <span class="math" data-tex="\(O_m(L^e)\)">\(O_m(L^e)\)</span>.</p>
+<p><em>The two tasks.</em></p>
+<ul>
+<li><em>Decision.</em> One deadline costs <span class="math" data-tex="\(O_m(L^e)\)">\(O_m(L^e)\)</span> in every branch.</li>
+<li><em>Optimization.</em> Try <span class="math" data-tex="\(T=1,2,\ldots\)">\(T=1,2,\ldots\)</span> and stop at the first accepted deadline; <span class="math" data-tex="\(T=n\)">\(T=n\)</span> is always accepted, so at most <span class="math" data-tex="\(n\leq L\)">\(n\leq L\)</span> deadlines are tried. The first accepted deadline is the minimum makespan by Theorem 3.1. The returned schedule has at most <span class="math" data-tex="\(n\)">\(n\)</span> entries of <span class="math" data-tex="\(O(\log n)\)">\(O(\log n)\)</span> bits, and writing it costs <span class="math" data-tex="\(O(L^2)\)">\(O(L^2)\)</span>. The total is <span class="math" data-tex="\(O_m(L\cdot L^e)=O_m(L^{e+1})\)">\(O_m(L\cdot L^e)=O_m(L^{e+1})\)</span>.</li>
+</ul>
+<p>Since <span class="math" data-tex="\(L\leq L+2\)">\(L\leq L+2\)</span>, both tasks take <span class="math" data-tex="\(O_m((L+2)^{e+1})\)">\(O_m((L+2)^{e+1})\)</span> steps. The constant in <span class="math" data-tex="\(O_m\)">\(O_m\)</span> depends only on <span class="math" data-tex="\(m\)">\(m\)</span>, through <span class="math" data-tex="\(K_m\)">\(K_m\)</span> and <span class="math" data-tex="\(512^{K_m}\)">\(512^{K_m}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>For <span class="math" data-tex="\(m=3\)">\(m=3\)</span> the exponent is <span class="math" data-tex="\(929\)">\(929\)</span>. Theorem 3.1 of <em>Unit jobs on three machines</em> gives <span class="math" data-tex="\(150020\)">\(150020\)</span>, from the coarser budget <span class="math" data-tex="\(K=10000\)">\(K=10000\)</span>.</p>
+<p><strong>Proposition 3.4 (compact encoding).</strong> Let <span class="math" data-tex="\(m\geq3\)">\(m\geq3\)</span> be fixed. Suppose the input gives <span class="math" data-tex="\(n\geq1\)">\(n\geq1\)</span> and <span class="math" data-tex="\(T\)">\(T\)</span> in binary and lists only the arcs. Let <span class="math" data-tex="\(d\)">\(d\)</span> be the number of jobs that occur in some arc. The following procedure decides in time polynomial in the input length whether a schedule on <span class="math" data-tex="\(m\)">\(m\)</span> machines with makespan at most <span class="math" data-tex="\(T\)">\(T\)</span> exists.</p>
+<ul>
+<li>Reject if <span class="math" data-tex="\(T&lt;1\)">\(T&lt;1\)</span> or <span class="math" data-tex="\(n&gt;mT\)">\(n&gt;mT\)</span>.</li>
+<li>Otherwise accept if <span class="math" data-tex="\(T\geq d\)">\(T\geq d\)</span>.</li>
+<li>Otherwise, that is if <span class="math" data-tex="\(T&lt;d\)">\(T&lt;d\)</span>, run the procedure of Corollary 3.3 on the explicitly listed graph on <span class="math" data-tex="\(\{1,\ldots,n\}\)">\(\{1,\ldots,n\}\)</span>; there <span class="math" data-tex="\(N=mT&lt;md\leq2m|E|\)">\(N=mT&lt;md\leq2m|E|\)</span>.</li>
+</ul>
+<p>The proposition concerns the decision only. No output schedule of size polynomial in the compact input is claimed.</p>
+<p><em>Proof.</em> The rejections are correct: <span class="math" data-tex="\(T&lt;1\)">\(T&lt;1\)</span> admits no map, and <span class="math" data-tex="\(T\)">\(T\)</span> slots hold at most <span class="math" data-tex="\(mT\)">\(mT\)</span> jobs.</p>
+<p>Let <span class="math" data-tex="\(T\geq d\)">\(T\geq d\)</span>. Run the <span class="math" data-tex="\(d\)">\(d\)</span> jobs that occur in arcs one per slot, in slots <span class="math" data-tex="\(1,\ldots,d\)">\(1,\ldots,d\)</span>, in a topological order of the graph they span; this respects every arc. The other <span class="math" data-tex="\(n-d\)">\(n-d\)</span> jobs are isolated. There are <span class="math" data-tex="\(mT-d\geq n-d\)">\(mT-d\geq n-d\)</span> free positions in slots <span class="math" data-tex="\(1,\ldots,T\)">\(1,\ldots,T\)</span>, so the isolated jobs fit. Every slot has at most <span class="math" data-tex="\(m\)">\(m\)</span> jobs, so a schedule exists.</p>
+<p>Let <span class="math" data-tex="\(T&lt;d\)">\(T&lt;d\)</span>. Then <span class="math" data-tex="\(n\leq mT&lt;md\leq2m|E|\)">\(n\leq mT&lt;md\leq2m|E|\)</span>, since each arc has two endpoints. So the explicit graph on <span class="math" data-tex="\(\{1,\ldots,n\}\)">\(\{1,\ldots,n\}\)</span>, with every isolated job listed, has length polynomial in <span class="math" data-tex="\(|E|\)">\(|E|\)</span>. By Corollary 3.3, the decision takes <span class="math" data-tex="\(O_m(N^e)\)">\(O_m(N^e)\)</span> steps, and the explicit graph can be written in polynomial time.</p>
+<p>The comparisons of binary numbers, the computation of <span class="math" data-tex="\(d\)">\(d\)</span> by scanning the arcs, and the construction of the topological order take polynomial time. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="4-four-machines-and-what-changed">4. Four machines and what changed</h2>
+<p><strong>Corollary 4.1 (four machines).</strong> Let <span class="math" data-tex="\(m=4\)">\(m=4\)</span>.</p>
+<ul>
+<li>The program of <em>Unit jobs on m machines</em>, §3, with <span class="math" data-tex="\(4\)">\(4\)</span>-element slots and budget <span class="math" data-tex="\(K_4=73\)">\(K_4=73\)</span>, accepts the padded set <span class="math" data-tex="\(J\)">\(J\)</span> exactly when a schedule of makespan at most <span class="math" data-tex="\(T\)">\(T\)</span> exists, and it returns one.</li>
+<li>The padded decision takes <span class="math" data-tex="\(O(N^{1477})\)">\(O(N^{1477})\)</span> steps, and computing a schedule of minimum makespan takes <span class="math" data-tex="\(O((L+2)^{1478})\)">\(O((L+2)^{1478})\)</span> steps.</li>
+</ul>
+<p><em>Proof.</em> Apply Theorem 3.1 and Corollary 3.3 with <span class="math" data-tex="\(m=4\)">\(m=4\)</span>. They give <span class="math" data-tex="\(K_4=12\cdot4+25=73\)">\(K_4=12\cdot4+25=73\)</span> and
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+e&amp;=60\cdot16+129\cdot4+1\\
+&amp;=1477.
+\end{aligned}
+\]">\[
+\begin{aligned}
+e&amp;=60\cdot16+129\cdot4+1\\
+&amp;=1477.
+\end{aligned}
+\]</span></p>
+<p>On four machines the lists behave as follows (Lemmas 2.1 and 3.4 of <em>Lists and boundaries on m machines</em>):</p>
+<ul>
+<li>a pruned list has at most four injection entries and at most six entries;</li>
+<li>an entry has at most <span class="math" data-tex="\(19\)">\(19\)</span> leaves;</li>
+<li>the union of a list has at most <span class="math" data-tex="\(33\)">\(33\)</span> leaves. <span class="math" data-tex="\(\square\)">\(\square\)</span></li>
+</ul>
+<p>For four machines, the repository <em>scheduling-proof-exploration</em> of drbh (2026) adapts the Lean development of the three-machine theorem [drbh].</p>
+<p><strong>Where three entered the course.</strong> The three-machine lessons use the number three in the following places. Each is replaced by a statement proved for every <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<ol>
+<li>
+<p><em>The definitions.</em> These are slots of three jobs, padding to <span class="math" data-tex="\(3T\)">\(3T\)</span> jobs, triples in the atomic tests and in the states of the program, and the machine set <span class="math" data-tex="\(\{1,2,3\}\)">\(\{1,2,3\}\)</span> in Lemma 1.3 of <em>Unit jobs on three machines</em>. They are replaced by §§1–3 of <em>Unit jobs on m machines</em> and its Lemmas 1.2 and 2.1.</p>
+</li>
+<li>
+<p><em>Counting slots.</em> The bound <span class="math" data-tex="\(\binom N3\leq N^3\)">\(\binom N3\leq N^3\)</span> in Lemma 2.2 of <a href="descriptions-and-a-dynamic-program.html">Descriptions and a dynamic program</a> is replaced by Lemma 3.1(c) of <em>Unit jobs on m machines</em>.</p>
+</li>
+<li>
+<p><em>The exchange.</em> The comparison of the smallest, middle and largest elements of a triple in Lemma 2.1 of <em>Separators and the shared-cutoff walk</em> is replaced by the order-statistics argument of Lemmas 4.1 and 4.2 of <em>Unit jobs on m machines</em>.</p>
+</li>
+<li>
+<p><em>List length.</em> The bound of three injections and five entries in Lemma 3.2 of <a href="carried-and-pruned-lists.html">Carried and pruned lists</a> is replaced by <span class="math" data-tex="\(m\)">\(m\)</span> injections and <span class="math" data-tex="\(m+2\)">\(m+2\)</span> entries in Lemma 2.1 of <em>Lists and boundaries on m machines</em>. This is the only use of the slot size in the structural argument.</p>
+</li>
+<li>
+<p><em>Leaf counts.</em> The counts derived from the five-entry bound are the following:</p>
+<ul>
+<li>Lemmas 2.1 and 4.1 of <a href="changing-direction.html">Changing direction</a>: <span class="math" data-tex="\(21\)">\(21\)</span> and <span class="math" data-tex="\(25\)">\(25\)</span> leaves;</li>
+<li>Lemma 4.1 of <em>Global descriptions and the running time</em>: <span class="math" data-tex="\(125\)">\(125\)</span>, <span class="math" data-tex="\(257\)">\(257\)</span> and <span class="math" data-tex="\(132\)">\(132\)</span> leaves;</li>
+<li>Proposition 5.1 and Remark 5.2 there.</li>
+</ul>
+<p>They are replaced by Lemmas 3.2 and 3.4 of <em>Lists and boundaries on m machines</em> and by Lemmas 1.1 and 2.1, Proposition 3.2 and Proposition 3.4 of this lesson.</p>
+</li>
+</ol>
+<p>Every other statement of the course holds with &quot;triple&quot; read as &quot;slot of <span class="math" data-tex="\(m\)">\(m\)</span> jobs&quot;, by the same proof.</p>
+<p>So the three-machine proof extends to <span class="math" data-tex="\(m\)">\(m\)</span> machines with these substitutions:</p>
+<table>
+<thead>
+<tr>
+<th>Three machines</th>
+<th><span class="math" data-tex="\(m\)">\(m\)</span> machines</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>triple</td>
+<td><span class="math" data-tex="\(m\)">\(m\)</span>-element antichain</td>
+</tr>
+<tr>
+<td>padding to <span class="math" data-tex="\(3T\)">\(3T\)</span></td>
+<td>padding to <span class="math" data-tex="\(mT\)">\(mT\)</span></td>
+</tr>
+<tr>
+<td>at most three injections</td>
+<td>at most <span class="math" data-tex="\(m\)">\(m\)</span> injections</td>
+</tr>
+<tr>
+<td>at most five entries</td>
+<td>at most <span class="math" data-tex="\(m+2\)">\(m+2\)</span> entries</td>
+</tr>
+</tbody>
+</table>
+<p>The leaf counts must be computed afresh. The bound <span class="math" data-tex="\(25\)">\(25\)</span> per entry in Lemma 4.1 of <em>Changing direction</em> was obtained from five terms of at most four leaves each. With <span class="math" data-tex="\(m+2\)">\(m+2\)</span> terms, the same reasoning gives <span class="math" data-tex="\(4m+13\)">\(4m+13\)</span> leaves per entry, which exceeds <span class="math" data-tex="\(25\)">\(25\)</span> for <span class="math" data-tex="\(m\geq4\)">\(m\geq4\)</span>. The finer count of Lemma 3.4 of <em>Lists and boundaries on m machines</em> shows the following:</p>
+<ul>
+<li>every entry except the first entry of a switch pair has at most three leaves;</li>
+<li>the first entry of a switch pair has at most <span class="math" data-tex="\(3m+7\)">\(3m+7\)</span> leaves;</li>
+<li>the union of a list has at most <span class="math" data-tex="\(6m+9\)">\(6m+9\)</span> leaves.</li>
+</ul>
+<p>Consequently the budget <span class="math" data-tex="\(K_m=12m+25\)">\(K_m=12m+25\)</span> is linear in <span class="math" data-tex="\(m\)">\(m\)</span>, and the exponent <span class="math" data-tex="\(e\)">\(e\)</span> is quadratic in <span class="math" data-tex="\(m\)">\(m\)</span>.</p>
+<p>The proofs of the three lessons on <span class="math" data-tex="\(m\)">\(m\)</span> machines use only the earlier lessons of this course. The OpenAI preprint, the scope document of its Lean formalization and the four-machine repository of drbh are listed under References.</p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> Tabulate <span class="math" data-tex="\(A_m\)">\(A_m\)</span>, <span class="math" data-tex="\(K_m\)">\(K_m\)</span>, <span class="math" data-tex="\(6m+16\)">\(6m+16\)</span>, <span class="math" data-tex="\(e\)">\(e\)</span> and <span class="math" data-tex="\(e+1\)">\(e+1\)</span> for <span class="math" data-tex="\(m=3,4,5,6\)">\(m=3,4,5,6\)</span>.</p>
+<p><strong>5.2.</strong> Using binary search over the deadline, as in Exercise 5.2 of <em>Unit jobs on three machines</em>, show that a schedule of minimum makespan on <span class="math" data-tex="\(m\)">\(m\)</span> machines can be computed in <span class="math" data-tex="\(O_m(L^e\log L)\)">\(O_m(L^e\log L)\)</span> steps for <span class="math" data-tex="\(L\geq2\)">\(L\geq2\)</span>.</p>
+<p><strong>5.3.</strong> <em>Release dates.</em> Take eight jobs <span class="math" data-tex="\(j_1,\ldots,j_8\)">\(j_1,\ldots,j_8\)</span> without precedence relations and four machines. Job <span class="math" data-tex="\(j_8\)">\(j_8\)</span> may not run in slot <span class="math" data-tex="\(1\)">\(1\)</span>; the other jobs may run in any slot. Show that the two slots <span class="math" data-tex="\(\{j_1,j_2,j_3,j_4\},\{j_5,j_6,j_7,j_8\}\)">\(\{j_1,j_2,j_3,j_4\},\{j_5,j_6,j_7,j_8\}\)</span> respect the release date. Then show that exchanging <span class="math" data-tex="\(j_8\)">\(j_8\)</span> with <span class="math" data-tex="\(j_1\)">\(j_1\)</span> gives two <span class="math" data-tex="\(4\)">\(4\)</span>-element antichains that respect all precedences but violate the release date. What does this say about extending Lemmas 2.2 and 4.2 of <em>Unit jobs on m machines</em> to release dates?</p>
+<p><strong>5.4.</strong> <em>Uniform machines.</em> Three machines have speeds <span class="math" data-tex="\(1,1,2\)">\(1,1,2\)</span>, and a unit job takes time <span class="math" data-tex="\(1/s\)">\(1/s\)</span> on a machine of speed <span class="math" data-tex="\(s\)">\(s\)</span>. Show that four independent unit jobs can all finish by time <span class="math" data-tex="\(1\)">\(1\)</span>. Show that no schedule with unit slots of at most three jobs has makespan <span class="math" data-tex="\(1\)">\(1\)</span> for these jobs.</p>
+<p><strong>5.5.</strong> Explain why <span class="math" data-tex="\(e\)">\(e\)</span> is quadratic in <span class="math" data-tex="\(m\)">\(m\)</span>. Why does Theorem 1.1 of <em>Unit jobs on m machines</em> give no bound polynomial in <span class="math" data-tex="\(L\)">\(L\)</span> when <span class="math" data-tex="\(m\)">\(m\)</span> is part of the input?</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> Use <span class="math" data-tex="\(A_m=6m+9\)">\(A_m=6m+9\)</span>, <span class="math" data-tex="\(K_m=2A_m+7\)">\(K_m=2A_m+7\)</span> and <span class="math" data-tex="\(e=5mK_m+4m+1\)">\(e=5mK_m+4m+1\)</span>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:right"><span class="math" data-tex="\(m\)">\(m\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(A_m\)">\(A_m\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(K_m\)">\(K_m\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(6m+16\)">\(6m+16\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(e\)">\(e\)</span></th>
+<th style="text-align:right"><span class="math" data-tex="\(e+1\)">\(e+1\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:right">3</td>
+<td style="text-align:right">27</td>
+<td style="text-align:right">61</td>
+<td style="text-align:right">34</td>
+<td style="text-align:right">928</td>
+<td style="text-align:right">929</td>
+</tr>
+<tr>
+<td style="text-align:right">4</td>
+<td style="text-align:right">33</td>
+<td style="text-align:right">73</td>
+<td style="text-align:right">40</td>
+<td style="text-align:right">1477</td>
+<td style="text-align:right">1478</td>
+</tr>
+<tr>
+<td style="text-align:right">5</td>
+<td style="text-align:right">39</td>
+<td style="text-align:right">85</td>
+<td style="text-align:right">46</td>
+<td style="text-align:right">2146</td>
+<td style="text-align:right">2147</td>
+</tr>
+<tr>
+<td style="text-align:right">6</td>
+<td style="text-align:right">45</td>
+<td style="text-align:right">97</td>
+<td style="text-align:right">52</td>
+<td style="text-align:right">2935</td>
+<td style="text-align:right">2936</td>
+</tr>
+</tbody>
+</table>
+<p>For <span class="math" data-tex="\(m=3\)">\(m=3\)</span>, <span class="math" data-tex="\(e=5\cdot3\cdot61+13=928\)">\(e=5\cdot3\cdot61+13=928\)</span>. For <span class="math" data-tex="\(m=6\)">\(m=6\)</span>, <span class="math" data-tex="\(e=5\cdot6\cdot97+25=2935\)">\(e=5\cdot6\cdot97+25=2935\)</span>.</p>
+<p><strong>5.2.</strong> A schedule with values in <span class="math" data-tex="\(\{1,\ldots,T\}\)">\(\{1,\ldots,T\}\)</span> also has values in <span class="math" data-tex="\(\{1,\ldots,T+1\}\)">\(\{1,\ldots,T+1\}\)</span>, so feasibility is monotone in <span class="math" data-tex="\(T\)">\(T\)</span>, and <span class="math" data-tex="\(T=n\)">\(T=n\)</span> is feasible.</p>
+<p>Keep two numbers: <span class="math" data-tex="\(\ell\)">\(\ell\)</span>, equal to <span class="math" data-tex="\(0\)">\(0\)</span> or an infeasible deadline, and <span class="math" data-tex="\(h\)">\(h\)</span>, a feasible deadline together with a schedule for it. Start with <span class="math" data-tex="\(\ell=0\)">\(\ell=0\)</span> and with <span class="math" data-tex="\(h=n\)">\(h=n\)</span> and the topological-order schedule. While <span class="math" data-tex="\(h-\ell&gt;1\)">\(h-\ell&gt;1\)</span>, test <span class="math" data-tex="\(t=\lfloor(\ell+h)/2\rfloor\)">\(t=\lfloor(\ell+h)/2\rfloor\)</span> and replace <span class="math" data-tex="\(\ell\)">\(\ell\)</span> or <span class="math" data-tex="\(h\)">\(h\)</span> by <span class="math" data-tex="\(t\)">\(t\)</span>. After at most <span class="math" data-tex="\(\lceil\log_2n\rceil\)">\(\lceil\log_2n\rceil\)</span> tests, <span class="math" data-tex="\(h\)">\(h\)</span> is the least feasible deadline, and its stored schedule is optimal.</p>
+<p>Every tested <span class="math" data-tex="\(t\)">\(t\)</span> satisfies <span class="math" data-tex="\(t&lt;n\)">\(t&lt;n\)</span>, so each test costs <span class="math" data-tex="\(O_m(L^e)\)">\(O_m(L^e)\)</span> by Corollary 3.3. Since <span class="math" data-tex="\(n\leq L\)">\(n\leq L\)</span>, the total is <span class="math" data-tex="\(O_m(L^e\log L)\)">\(O_m(L^e\log L)\)</span>.</p>
+<p><strong>5.3.</strong> In the first schedule, <span class="math" data-tex="\(j_8\)">\(j_8\)</span> runs in slot <span class="math" data-tex="\(2\)">\(2\)</span>, so the release date is respected. After the exchange, the slots are <span class="math" data-tex="\(\{j_8,j_2,j_3,j_4\}\)">\(\{j_8,j_2,j_3,j_4\}\)</span> and <span class="math" data-tex="\(\{j_1,j_5,j_6,j_7\}\)">\(\{j_1,j_5,j_6,j_7\}\)</span>. There are no precedence relations, so both are antichains of four jobs and every precedence is respected, but <span class="math" data-tex="\(j_8\)">\(j_8\)</span> runs in slot <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>So a full schedule of an interval that respects precedence need not respect release dates. The analogue of Lemma 2.2 of <em>Unit jobs on m machines</em> in which full schedules must also respect release dates fails. In the same way, for a priority order in which <span class="math" data-tex="\(j_8\)">\(j_8\)</span> comes first, the exchange that Lemma 4.2 uses for a lexicographic comparison produces a schedule that is not admissible. Extending the method to release dates would need new replacement and exchange arguments.</p>
+<p><strong>5.4.</strong> Run one job on each machine of speed <span class="math" data-tex="\(1\)">\(1\)</span> during <span class="math" data-tex="\([0,1)\)">\([0,1)\)</span>, and two jobs one after the other on the machine of speed <span class="math" data-tex="\(2\)">\(2\)</span>, during <span class="math" data-tex="\([0,\tfrac12)\)">\([0,\tfrac12)\)</span> and <span class="math" data-tex="\([\tfrac12,1)\)">\([\tfrac12,1)\)</span>. All four jobs finish by time <span class="math" data-tex="\(1\)">\(1\)</span>.</p>
+<p>With unit slots of at most three jobs, makespan <span class="math" data-tex="\(1\)">\(1\)</span> allows one slot, which holds at most three of the four jobs. Lemma 1.2 of <em>Unit jobs on m machines</em> does not apply here, because it assumes that every job takes one unit of time on every machine.</p>
+<p><strong>5.5.</strong> By Proposition 3.2, <span class="math" data-tex="\(e=5mK_m+4m+1\)">\(e=5mK_m+4m+1\)</span>. The term <span class="math" data-tex="\(5mK_m=60m^2+125m\)">\(5mK_m=60m^2+125m\)</span> is a product of two factors linear in <span class="math" data-tex="\(m\)">\(m\)</span>:</p>
+<ul>
+<li>each leaf of a formula may refer to any of up to <span class="math" data-tex="\(N^m\)">\(N^m\)</span> sets of <span class="math" data-tex="\(m\)">\(m\)</span> jobs;</li>
+<li>the number of leaves needed, <span class="math" data-tex="\(K_m\)">\(K_m\)</span>, is itself linear in <span class="math" data-tex="\(m\)">\(m\)</span>.</li>
+</ul>
+<p>So the number of formulas is about <span class="math" data-tex="\(N^{mK_m}\)">\(N^{mK_m}\)</span>, and its fifth power enters the running time.</p>
+<p>When <span class="math" data-tex="\(m\)">\(m\)</span> is part of the input, the exponent grows with the input. For <span class="math" data-tex="\(m=n\)">\(m=n\)</span>, for example, it is of order <span class="math" data-tex="\(n^2\)">\(n^2\)</span>, and <span class="math" data-tex="\((L+2)^{e+1}\)">\((L+2)^{e+1}\)</span> is not bounded by any fixed power of <span class="math" data-tex="\(L\)">\(L\)</span>. Moreover, <em>Unit jobs on three machines</em>, §3, recalls that the problem with <span class="math" data-tex="\(m\)">\(m\)</span> part of the input is NP-complete (Ullman, 1975). A running time polynomial in <span class="math" data-tex="\(L\)">\(L\)</span> uniformly in <span class="math" data-tex="\(m\)">\(m\)</span> would therefore imply <span class="math" data-tex="\(\mathrm P=\mathrm{NP}\)">\(\mathrm P=\mathrm{NP}\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>The main argument of this lesson follows a solution produced with ChatGPT (OpenAI) in October 2026 and completed here.</li>
+<li>[OpenAI-P] OpenAI, <em>A Polynomial-Time Algorithm for Three-Machine Unit-Job Scheduling</em>, OpenAI Math Release preprint, 24 September 2026, Sections 8 and 9. https://github.com/openai/math/tree/main/preprints/A-polynomial-time-algorithm-for-three-machine-unit-job-scheduling-September-24-2026. It states and proves the three-machine case. It is named for credit; this lesson does not depend on it.</li>
+<li>[OpenAI-Lean] OpenAI Math Release, scope of the Lean formalization of the same paper. https://github.com/openai/math/blob/main/lean/docs/124.md. Context only.</li>
+<li>[drbh] drbh, <em>scheduling-proof-exploration</em>, GitHub repository, 2026: an adaptation of the Lean development of the three-machine theorem to four machines, which its README describes as an exploration. https://github.com/drbh/scheduling-proof-exploration</li>
+<li>J. D. Ullman (1975), NP-completeness when the number of machines is part of the input, is named for credit in Exercise 5.5.</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

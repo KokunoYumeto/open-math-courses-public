@@ -109,9 +109,9 @@ For the second bound, \(1-2\log2<0\) and \(\log(2n)\ge\log 2\) give
 2. \(p\) splits completely in \(K_n\);
 3. \(p\equiv1\pmod n\) and \(a^{(p-1)/n}\equiv1\pmod p\).
 
-*Proof.* Conditions 1 and 3 are equivalent by the proof of Lemma 1.1 of Lesson 1 with \(q\) replaced by \(n\).
+*Proof.* Conditions 1 and 3 are equivalent by the proof of Lemma 1.1 of *Artin's conjecture and the index of a prime* with \(q\) replaced by \(n\).
 
-For the equivalence of 2 and 3, follow the proof of Lemma 3.1 of Lesson 1 with \(q\) replaced by \(n\). The discriminant \(\pm n^na^{n-1}\) of \(T^n-a\) is prime to \(p\), so the roots of \(T^n-a\) have distinct reductions and \(p\) is unramified. The identity \(\prod_{i=1}^{n-1}(1-\zeta_n^i)=n\) makes reduction injective on \(\mu_n\). The Frobenius \(\sigma\) therefore fixes \(\zeta_n\) exactly when \(p\equiv1\pmod n\). Under that condition, \(\sigma(\alpha)=\alpha\) exactly when \(a^{(p-1)/n}\equiv1\pmod p\).
+For the equivalence of 2 and 3, follow the proof of Lemma 3.1 of *Artin's conjecture and the index of a prime* with \(q\) replaced by \(n\). The discriminant \(\pm n^na^{n-1}\) of \(T^n-a\) is prime to \(p\), so the roots of \(T^n-a\) have distinct reductions and \(p\) is unramified. The identity \(\prod_{i=1}^{n-1}(1-\zeta_n^i)=n\) makes reduction injective on \(\mu_n\). The Frobenius \(\sigma\) therefore fixes \(\zeta_n\) exactly when \(p\equiv1\pmod n\). Under that condition, \(\sigma(\alpha)=\alpha\) exactly when \(a^{(p-1)/n}\equiv1\pmod p\).
 
 By Corollary 6.5 of [*Hilbert's ramification theory in Galois extensions*](course:NT-ANT/hilberts-ramification-theory-in-galois-extensions), an unramified prime splits completely exactly when its Frobenius is trivial. \(\square\)
 
@@ -149,7 +149,7 @@ For \(n\le\exp(L^{0.3})\) and \(L\ge1\), the count is at most
 C_*\Bigl(\frac{x}{d_nL}+(4+\log A)x^{1-\delta_0}\Bigr).
 \]
 
-*Proof.* Since \(x>\max(A,n)\), no prime in \((x,2x]\) divides \(an\). Fix \(\phi\) as in Section 4 of Lesson 15. Proposition 3.2 allows us to apply Lemma 3.1 of Lesson 15 to \(K_n\) with \(\delta=\delta_0\). Each split prime contributes at least \(d_nL\) to the nonnegative sum \(\Theta_{K_n,\phi}(x)\). Inserting Proposition 2.1 gives the first bound.
+*Proof.* Since \(x>\max(A,n)\), no prime in \((x,2x]\) divides \(an\). Fix \(\phi\) as in Section 4 of *Uniform complete splitting in Kummer fields*. Proposition 3.2 allows us to apply Lemma 3.1 there to \(K_n\) with \(\delta=\delta_0\). Each split prime contributes at least \(d_nL\) to the nonnegative sum \(\Theta_{K_n,\phi}(x)\). Inserting Proposition 2.1 gives the first bound.
 
 For \(n\le\exp(L^{0.3})\) we have \(2\log n/L\le2\), and \((\log A+1)/L\le\log A+1\). This gives the second bound. \(\square\)
 
@@ -168,7 +168,7 @@ Then, for large \(x\), at least \(\frac\kappa2x/L^2\) primes of \(\mathcal T(x)\
 
 Suppose \(i_p(a)>m\), and let \(q\) be a prime factor of \(i_p(a)/m\). By the second property, \(q\nmid C\). Since \(q\mid p-1=CrQ\), either \(q=Q\) or \(q\mid r\).
 
-*The case \(q=Q\).* Then \(\operatorname{ord}_p(a)\le Cr<2x^{0.1}\), so \(p\) divides \(B_a(x)\) as in the proof of Theorem 2.1 of Lesson 1. There are \(O_a(x^{0.2}/L)\) such primes.
+*The case \(q=Q\).* Then \(\operatorname{ord}_p(a)\le Cr<2x^{0.1}\), so \(p\) divides \(B_a(x)\) as in the proof of Theorem 2.1 of *Artin's conjecture and the index of a prime*. There are \(O_a(x^{0.2}/L)\) such primes.
 
 *The case \(q\mid r\).* Then \(y<q<z\). Since \(q>h\), Proposition 1.2 gives \(d_q=q(q-1)\). By Lemma 3.1, \(p\) splits completely in \(K_q\), and \(p\nmid aq\). Summing Theorem 4.1 over \(q\), using \(\sum_{j>y}1/(j(j-1))\le2/y\), bounds these primes by
 \[
@@ -188,7 +188,7 @@ For \(t\mid C\), the field \(K_t\) is a Galois subfield of \(K_C\), via \(\zeta_
 
 Finally, \(m\mid i_{p_1}(a)\) and \(m\ell\nmid i_{p_1}(a)\). Lemma 3.1 converts these into \(\operatorname{Frob}_{p_1}\in\Sigma\). \(\square\)
 
-Proposition 5.1 of Lesson 1, proved as Theorem 6.1 of [*Primes with controlled predecessors*](primes-with-controlled-predecessors.md), holds for every triple \((M,c,u)\) satisfying (4.1) there, with no reference to \(a\).
+Proposition 5.1 of *Artin's conjecture and the index of a prime*, proved as Theorem 6.1 of [*Primes with controlled predecessors*](primes-with-controlled-predecessors.md), holds for every triple \((M,c,u)\) satisfying (4.1) there, with no reference to \(a\).
 
 *An index-2 instance.* Take \((M,c,u)=(8,2,7)\) and \(a=2\); (4.1) holds since \((7,8)=1\), \(2\mid6\) and \((3,4)=1\). Then \(\bigl(\tfrac2p\bigr)=1\) and \(v_2(p-1)=1\), so \(v_2(i_p(2))=1\). Theorem 5.1 with \(C=m=2\) gives at least a constant times \(x/L^2\) primes with \(i_p(2)=2\).
 
@@ -198,7 +198,7 @@ Proposition 5.1 of Lesson 1, proved as Theorem 6.1 of [*Primes with controlled p
 
 **6.1.** Show that \(d_6=4\) for \(a=-8\).
 
-**6.2.** Deduce Theorem 2.1 of Lesson 1 from Theorem 5.1.
+**6.2.** Deduce Theorem 2.1 of *Artin's conjecture and the index of a prime* from Theorem 5.1.
 
 **6.3.** Show that \(K_n\) is unramified outside the primes dividing \(an\).
 
@@ -206,7 +206,7 @@ Proposition 5.1 of Lesson 1, proved as Theorem 6.1 of [*Primes with controlled p
 
 **6.1.** We have \((\sqrt{-2})^6=(-2)^3=-8\), so \(K_6=E_6(\sqrt{-2})=\mathbb Q(\sqrt{-3},\sqrt{-2})\). The two quadratic fields are distinct, so the degree is \(4\).
 
-**6.2.** Let \(a\) be admissible and take the triple \((M,c,u)\) of Lemma 4.1 of Lesson 1. Proposition 5.1 there supplies the first property with \(C=c\). Put \(m=1\). Since \(\bigl(\tfrac ap\bigr)=-1\), the index \(i_p(a)\) is odd, so \(v_2(i_p(a))=0\), which is the second property. Theorem 5.1 gives the conclusion.
+**6.2.** Let \(a\) be admissible and take the triple \((M,c,u)\) of Lemma 4.1 of *Artin's conjecture and the index of a prime*. Proposition 5.1 there supplies the first property with \(C=c\). Put \(m=1\). Since \(\bigl(\tfrac ap\bigr)=-1\), the index \(i_p(a)\) is odd, so \(v_2(i_p(a))=0\), which is the second property. Theorem 5.1 gives the conclusion.
 
 **6.3.** The proof of Proposition 2.1 shows two things:
 - the relative discriminant of \(K_n/E_n\) divides \(e^ec^{e-1}\), with \(e\mid n\), so it is supported on the primes dividing \(an\);

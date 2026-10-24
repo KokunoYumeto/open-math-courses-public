@@ -17,6 +17,7 @@ This lesson studies primes \(p\equiv r\pmod f\) at which \(a\) has a prescribed 
 - [*Hilbert's ramification theory in Galois extensions*](course:NT-ANT/hilberts-ramification-theory-in-galois-extensions), Corollary 6.5.
 - [*The different and the discriminant*](course:NT-ANT/the-different-and-the-discriminant), Proposition 14.2 and Theorem 14.3.
 - [*Artin L-functions, conductors and discriminants*](course:NT-CFT/artin-l-functions-conductors-and-discriminants), Proposition 21.1 and Theorem 21.2.
+- [*The Chebotarev density theorem*](course:NT-CFT/the-chebotarev-density-theorem), Theorem 22.4.
 
 ## 1. Splitting in the fields \(K_n\mathbb Q(\mu_f)\)
 
@@ -119,7 +120,7 @@ In Theorem 2.1, the set \(\Sigma\) is cut out by the value of \(\bigl(\frac ap\b
 
 *Proof.* We have \(p-1=csQ\) with \(c\in\{2,4\}\), and every prime factor of \(sQ\) exceeds \(y>\ell\). \(\square\)
 
-**Proposition 3.2.** Let \(K=\mathbb Q(\mu_3,2^{1/3})\), let \(3\mid M\), and let \(u\) be reduced modulo \(M\) with \(u\equiv1\pmod3\). Among the primes \(p\equiv u\pmod M\), those splitting completely in \(K\) have density \(1/(3\varphi(M))\), and the others have density \(2/(3\varphi(M))\).
+**Proposition 3.2.** Let \(K=\mathbb Q(\mu_3,2^{1/3})\), let \(3\mid M\), and let \(u\) be reduced modulo \(M\) with \(u\equiv1\pmod3\). Among the primes \(p\equiv u\pmod M\), those splitting completely in \(K\) have Dirichlet density \(1/(3\varphi(M))\), and the others have Dirichlet density \(2/(3\varphi(M))\).
 
 *Proof.* *The group of \(K\).* By Eisenstein's criterion at \(2\), the field \(\mathbb Q(2^{1/3})\) has degree \(3\). So \(6\mid[K:\mathbb Q]\le6\), and the action on the roots of \(X^3-2\) gives \(\operatorname{Gal}(K/\mathbb Q)\cong S_3\), with \(E_3\) the fixed field of \(A_3\).
 
@@ -131,9 +132,9 @@ In Theorem 2.1, the set \(\Sigma\) is cut out by the value of \(\bigl(\frac ap\b
 - The element \((1,\sigma_u)\) is central.
 - For \(\tau\in G_B\) nontrivial on \(E_3\) and a transposition \(t\), the pair \((t,\tau)\) lies in \(P\), and conjugation by it exchanges \((\gamma,\sigma_u)\) and \((\gamma^2,\sigma_u)\).
 
-The Chebotarev density theorem [Milne, Theorem 8.31] gives the densities \(1/(3\varphi(M))\) and \(2/(3\varphi(M))\). Complete splitting in \(K\) means \(g=1\), by Corollary 6.5 of [*Hilbert's ramification theory in Galois extensions*](course:NT-ANT/hilberts-ramification-theory-in-galois-extensions). \(\square\)
+The Chebotarev density theorem (Theorem 22.4 of [*The Chebotarev density theorem*](course:NT-CFT/the-chebotarev-density-theorem); also [Milne, Theorem 8.31]) gives the Dirichlet densities \(1/(3\varphi(M))\) and \(2/(3\varphi(M))\). Complete splitting in \(K\) means \(g=1\), by Corollary 6.5 of [*Hilbert's ramification theory in Galois extensions*](course:NT-ANT/hilberts-ramification-theory-in-galois-extensions). \(\square\)
 
-**Corollary 3.3.** Let \(p>3\). If \(i_p(2)=3\), then \(p\equiv1\pmod3\) and \(p\) splits completely in \(K=K_3\). If \(i_p(2)=1\) and \(p\equiv1\pmod3\), then \(p\) does not split completely in \(K\). Every progression as in Proposition 3.2 contains a positive density of primes of both kinds, so no such congruence implies either conclusion.
+**Corollary 3.3.** Let \(p>3\). If \(i_p(2)=3\), then \(p\equiv1\pmod3\) and \(p\) splits completely in \(K=K_3\). If \(i_p(2)=1\) and \(p\equiv1\pmod3\), then \(p\) does not split completely in \(K\). Every progression as in Proposition 3.2 contains a set of primes of each kind with positive Dirichlet density, so no such congruence implies either conclusion.
 
 *Proof.* Lemma 3.1 of the composite-levels lesson shows that \(p\) splits completely in \(K\) exactly when \(3\mid i_p(2)\). The index divides \(p-1\). The last sentence is Proposition 3.2. \(\square\)
 

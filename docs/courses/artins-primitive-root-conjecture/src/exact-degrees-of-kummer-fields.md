@@ -134,7 +134,7 @@ The hypothesis \(h=1\) is stronger than "\(a\) is not a perfect power". For \(a=
 \]
 For \(a=r/t\) in lowest terms with \(t>1\), the same holds with \(A\) replaced by \(\min(|r|t^{n-1},t|r|^{n-1})\).
 
-*Proof.* *The relative discriminant.* As in Proposition 2.2, \(\alpha\) has minimal polynomial \(X^{e}-c\) over \(E_n\), where \(e=e_n\) and \(c=\alpha^{e}\) is integral. Every conjugate of \(c\) has absolute value \(A^{e/n}\). The argument in the proof of Lemma 1.1 of Lesson 15 (Euler's lemma and the different) shows that the relative discriminant divides \(e^ec^{e-1}\).
+*Proof.* *The relative discriminant.* As in Proposition 2.2, \(\alpha\) has minimal polynomial \(X^{e}-c\) over \(E_n\), where \(e=e_n\) and \(c=\alpha^{e}\) is integral. Every conjugate of \(c\) has absolute value \(A^{e/n}\). The argument in the proof of Lemma 1.1 of *Uniform complete splitting in Kummer fields* (Euler's lemma and the different) shows that the relative discriminant divides \(e^ec^{e-1}\).
 
 *The tower.* Theorem 14.3 of *The different and the discriminant* gives
 \[
@@ -159,7 +159,7 @@ Moreover \(1/d_n\le2h/(n\varphi(n))\) and \(h\le\log A/\log2\).
 
 Proposition 21.1 and Theorem 21.2 of *Artin L-functions, conductors and discriminants* factor \(\zeta_{T_n}\) into \(L\)-functions of \(F_n\). These have no zero in \(\operatorname{Re}s>1-\delta_0\) by Corollary 4.2 of *The zero-free strip*. They also factor \(\zeta_{T_n}\) as \(\zeta_{K_n}\) times entire \(L\)-functions of \(K_n\). So \(\zeta_{K_n}\) has no zero in that half-plane.
 
-*Counting.* Lemma 3.1 of Lesson 15 applies to \(K_n\). Each split \(p\nmid an\) contributes at least \(d_n\log x\). Theorem 4.1 bounds \(\log D_{K_n}+d_n\). The primes dividing \(an\) are at most \(\omega(an)\) in number.
+*Counting.* Lemma 3.1 of *Uniform complete splitting in Kummer fields* applies to \(K_n\). Each split \(p\nmid an\) contributes at least \(d_n\log x\). Theorem 4.1 bounds \(\log D_{K_n}+d_n\). The primes dividing \(an\) are at most \(\omega(an)\) in number.
 
 *The last claims.* The first is Theorem 3.1. For the second, \(A=b^h\ge2^h\) because \(b\ge2\) is an integer. \(\square\)
 

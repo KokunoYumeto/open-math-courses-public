@@ -1,0 +1,500 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Lists and boundaries on m machines</title><style>body{font:18px/1.7 system-ui,sans-serif;color:#182735;background:#fafbf9;margin:0 auto;max-width:920px;padding:1.5rem}main{min-width:0}h1{font-size:2.25rem;line-height:1.2}h2{margin-top:2.2rem;line-height:1.3}a{color:#075c89;overflow-wrap:anywhere}nav{display:flex;flex-wrap:wrap;gap:1rem;font-size:.95rem}article{overflow-wrap:anywhere}pre{white-space:pre-wrap}table{display:block;overflow:auto;border-collapse:collapse}td,th{padding:.5rem;border:1px solid #ccd4dc}mjx-container[display="true"]{display:block;max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.4em 0}mjx-container{max-width:100%}footer{border-top:1px solid #ccd4dc;margin-top:3rem;padding-top:1rem;font-size:.9rem}.note{background:#eef3f5;padding:1rem;border-radius:.5rem}li{margin:.4rem 0}code{overflow-wrap:anywhere}@media(max-width:500px){body{padding:1rem;font-size:17px}h1{font-size:1.8rem}}.math:not(.math-display){display:inline;overflow:visible;overflow-wrap:normal}.math.math-wide{display:inline-block;max-width:100%;overflow-x:auto;overflow-y:hidden;vertical-align:middle;padding:.15em 0}.math-display{max-width:100%;overflow-x:auto;overflow-y:hidden;padding:.15em 0}mjx-assistive-mml{max-width:100%}.math-display{display:block;margin:1em 0}.math-display mjx-container[display="true"]{margin:0!important}</style><script>window.MathJax={tex:{inlineMath:[['\\(','\\)']],displayMath:[['\\[','\\]']]},options:{enableMenu:false}};</script><script defer src="https://cdn.jsdelivr.net/npm/mathjax@3.2.2/es5/tex-chtml-full.js"></script><script>(function(){function m(){var a=document.querySelector('article');if(!a)return;var s=getComputedStyle(a),r=a.getBoundingClientRect(),R=r.right-parseFloat(s.paddingRight||0),W=a.clientWidth-parseFloat(s.paddingLeft||0)-parseFloat(s.paddingRight||0),l=document.querySelectorAll('.math:not(.math-display)'),i,w=[];for(i=0;i<l.length;i++)l[i].classList.remove('math-wide');for(i=0;i<l.length;i++){var b=l[i].getBoundingClientRect();if(b.width>W+1||b.right>R+1)w.push(l[i])}for(i=0;i<w.length;i++)w[i].classList.add('math-wide')}var t;function d(){clearTimeout(t);t=setTimeout(m,150)}window.addEventListener('load',function(){var M=window.MathJax;(M&&M.startup&&M.startup.promise?M.startup.promise:Promise.resolve()).then(m)});window.addEventListener('resize',d)})();</script></head><body><nav><a href="../../index.html">Open Mathematics Courses</a><a href="index.html">Course contents (Scheduling unit jobs on three machines)</a><a href="unit-jobs-on-m-machines.html">Previous lesson</a><a href="every-fixed-number-of-machines.html">Next lesson</a><a href="src/lists-and-boundaries-on-m-machines.md">Editable source</a></nav><main><article><h1 id="lists-and-boundaries-on-m-machines">Lists and boundaries on m machines</h1>
+<p><em>Written by Claude Opus 5.5 (Anthropic) on 24 October 2026. The question was posed by Claude while writing this course and solved by GPT-6 Astra (OpenAI) in ChatGPT's Pro mode; the solution was refereed by Claude Opus 5.5 in three separate sessions, and this lesson was planned and written from it by Claude Opus 5.5 in two further sessions and checked and finished by Claude Opus 5.5 in another. Public domain (CC0).</em></p>
+<p><a href="unit-jobs-on-m-machines.html">Unit jobs on m machines</a> set up the construction of the hierarchy for slots of <span class="math" data-tex="\(m\)">\(m\)</span> jobs. Its Proposition 5.1 supplies nodes, centers, sides, walks, and children with edge data. This lesson gives every child its list of upsets and proves the invariants (I1)–(I3) for it.</p>
+<p>The objects used here are taken unchanged from three three-machine lessons:</p>
+<ul>
+<li>the carry, pruning, injection and switch pair of <a href="carried-and-pruned-lists.html">Carried and pruned lists</a>;</li>
+<li>the sets <span class="math" data-tex="\(H^*\)">\(H^*\)</span> and <span class="math" data-tex="\(G\)">\(G\)</span> of <a href="changing-direction.html">Changing direction</a>;</li>
+<li>the exchange arguments of <a href="boundary-invariants.html">Boundary invariants</a>.</li>
+</ul>
+<p>Those lessons were written with triples, so their proofs are given here in full for slots of <span class="math" data-tex="\(m\)">\(m\)</span> jobs. They use slots only as antichains, with one exception: the bound on the number of injections. There each surviving injection is witnessed by a different job of an <span class="math" data-tex="\(m\)">\(m\)</span>-job slot.</p>
+<p>The numerical bounds therefore depend on <span class="math" data-tex="\(m\)">\(m\)</span>. A list has at most <span class="math" data-tex="\(m\)">\(m\)</span> injection entries and at most <span class="math" data-tex="\(m+2\)">\(m+2\)</span> entries in all, and every entry has a formula with at most <span class="math" data-tex="\(3m+7\)">\(3m+7\)</span> leaves. Only one entry of a list can need more than three leaves. For this reason the union of a list has a formula with at most
+<span class="math math-display" data-tex="\[
+A_m=6m+9
+\]">\[
+A_m=6m+9
+\]</span>
+leaves, a bound linear in <span class="math" data-tex="\(m\)">\(m\)</span>. <a href="every-fixed-number-of-machines.html">Every fixed number of machines</a> turns these bounds into global descriptions.</p>
+<h2 id="1-carried-and-pruned-lists">1. Carried and pruned lists</h2>
+<p><strong>The data.</strong> Fix <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span>. Nodes, tags, lists, qualifiers, keys and the invariants are those of Section 1 of <a href="centers-sides-and-edge-cutoffs.html">Centers, sides and edge cutoffs</a>, for slots of <span class="math" data-tex="\(m\)">\(m\)</span> jobs.</p>
+<p>A node <span class="math" data-tex="\(W\)">\(W\)</span> has a tag frame, boundaries <span class="math" data-tex="\(a,b\)">\(a,b\)</span> in that frame, and a list <span class="math" data-tex="\(\mathcal K=(K_1,\ldots,K_\ell)\)">\(\mathcal K=(K_1,\ldots,K_\ell)\)</span> of upsets of <span class="math" data-tex="\(J\)">\(J\)</span> in that frame. Its qualifier set is <span class="math" data-tex="\(\mathcal Q(\mathcal K)=K_1\cup\cdots\cup K_\ell\)">\(\mathcal Q(\mathcal K)=K_1\cup\cdots\cup K_\ell\)</span>, and its old high set is <span class="math" data-tex="\(O=W\cap\mathcal Q(\mathcal K)\)">\(O=W\cap\mathcal Q(\mathcal K)\)</span>. A qualifier <span class="math" data-tex="\(x\)">\(x\)</span> has the key
+<span class="math math-display" data-tex="\[
+\operatorname{key}(x)=\bigl(\max\{i:x\in K_i\},\lambda(x)\bigr),
+\]">\[
+\operatorname{key}(x)=\bigl(\max\{i:x\in K_i\},\lambda(x)\bigr),
+\]</span>
+ordered lexicographically, where <span class="math" data-tex="\(\lambda\)">\(\lambda\)</span> is the rank in the tag frame. The node satisfies the following invariants.</p>
+<ul>
+<li><strong>(I1)</strong> <span class="math" data-tex="\(O\subseteq P_b\)">\(O\subseteq P_b\)</span> and <span class="math" data-tex="\(W\setminus O\subseteq D_a\)">\(W\setminus O\subseteq D_a\)</span>.</li>
+<li><strong>(I2)</strong> Every qualifier scheduled at or before <span class="math" data-tex="\(a\)">\(a\)</span> lies in <span class="math" data-tex="\(\widehat P_a\)">\(\widehat P_a\)</span>.</li>
+<li><strong>(I3)</strong> Replace the slots of <span class="math" data-tex="\(W\)">\(W\)</span> by any full schedule of <span class="math" data-tex="\(W\)">\(W\)</span>. Let <span class="math" data-tex="\(x\in W\setminus D_a\)">\(x\in W\setminus D_a\)</span>, and let <span class="math" data-tex="\(y\)">\(y\)</span> be a qualifier in the slot <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(\operatorname{key}(x)&lt;\operatorname{key}(y)\)">\(\operatorname{key}(x)&lt;\operatorname{key}(y)\)</span>. Then exchanging <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> does not give a full schedule of <span class="math" data-tex="\(J\)">\(J\)</span>.</li>
+</ul>
+<p>A side of <span class="math" data-tex="\(W\)">\(W\)</span> has a working frame. On a side, the letters <span class="math" data-tex="\(a,b\)">\(a,b\)</span> denote the boundaries of <span class="math" data-tex="\(W\)">\(W\)</span> in that frame, and
+<span class="math math-display" data-tex="\[
+X=W\setminus D_a,\qquad Y=W\setminus P_b.
+\]">\[
+X=W\setminus D_a,\qquad Y=W\setminus P_b.
+\]</span>
+The side has the following data:</p>
+<ul>
+<li>walk cutoffs <span class="math" data-tex="\(S_0\subseteq\cdots\subseteq S_q=S_*\)">\(S_0\subseteq\cdots\subseteq S_q=S_*\)</span>;</li>
+<li>the open part <span class="math" data-tex="\(E\)">\(E\)</span> between <span class="math" data-tex="\(a\)">\(a\)</span> and the center <span class="math" data-tex="\(v\)">\(v\)</span>, normalized for the side's priority order;</li>
+<li>positions <span class="math" data-tex="\(a=s_0\leq\cdots\leq s_q&lt;s_{q+1}=v\)">\(a=s_0\leq\cdots\leq s_q&lt;s_{q+1}=v\)</span>.</li>
+</ul>
+<p>A child <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> on this side has edge data <span class="math" data-tex="\(a&#x27;=s_i\)">\(a&#x27;=s_i\)</span>, <span class="math" data-tex="\(b&#x27;=s_{i+1}\)">\(b&#x27;=s_{i+1}\)</span>, <span class="math" data-tex="\(S=S_i\)">\(S=S_i\)</span>, and its tag is the working frame of the side. Ranks, cones, upsets and the words &quot;before&quot; and &quot;after&quot; refer to the working frame unless another frame is named.</p>
+<p>The following facts are proved for <span class="math" data-tex="\(m\)">\(m\)</span>-job slots in Proposition 5.1 and Lemma 3.1(a) of <em>Unit jobs on m machines</em>. That proposition establishes Lemmas 1.1, 2.1, 3.1, 4.1 and 4.2 of <em>Centers, sides and edge cutoffs</em>.</p>
+<ul>
+<li><strong>(F1)</strong> If <span class="math" data-tex="\(x\)">\(x\)</span> qualifies and <span class="math" data-tex="\(x\prec y\)">\(x\prec y\)</span>, then <span class="math" data-tex="\(y\)">\(y\)</span> qualifies and <span class="math" data-tex="\(\operatorname{key}(x)&lt;\operatorname{key}(y)\)">\(\operatorname{key}(x)&lt;\operatorname{key}(y)\)</span>.</li>
+<li><strong>(F2)</strong> In either frame, <span class="math" data-tex="\(X\subseteq P_b\)">\(X\subseteq P_b\)</span> and <span class="math" data-tex="\(Y\subseteq D_a\)">\(Y\subseteq D_a\)</span>.</li>
+<li><strong>(F3)</strong> <em>Same side.</em> <span class="math" data-tex="\(W=S_0\mathbin{\dot\cup}O\mathbin{\dot\cup}Y\)">\(W=S_0\mathbin{\dot\cup}O\mathbin{\dot\cup}Y\)</span> with <span class="math" data-tex="\(S_0=(W\setminus O)\cap P_b\)">\(S_0=(W\setminus O)\cap P_b\)</span>. The priority order lists <span class="math" data-tex="\(S_0\)">\(S_0\)</span> by rank, then <span class="math" data-tex="\(O\)">\(O\)</span> by key, then <span class="math" data-tex="\(Y\)">\(Y\)</span> by rank, and the jobs of <span class="math" data-tex="\(O\)">\(O\)</span> are promoted in key order.
+<em>Switched side.</em> <span class="math" data-tex="\(S_0=\varnothing\)">\(S_0=\varnothing\)</span>. The order lists <span class="math" data-tex="\(X\)">\(X\)</span> by rank, then <span class="math" data-tex="\(W\cap D_a\)">\(W\cap D_a\)</span> by rank, and the jobs of <span class="math" data-tex="\(X\)">\(X\)</span> are promoted in rank order.
+<em>Both sides.</em> Every <span class="math" data-tex="\(S_i\)">\(S_i\)</span> is a prefix of the priority order with <span class="math" data-tex="\(S_i\subseteq P_b\)">\(S_i\subseteq P_b\)</span>, and <span class="math" data-tex="\(S_0\subseteq D_a\)">\(S_0\subseteq D_a\)</span>.</li>
+<li><strong>(F4)</strong> For <span class="math" data-tex="\(0\leq i&lt;q\)">\(0\leq i&lt;q\)</span>, both <span class="math" data-tex="\(s_i\)">\(s_i\)</span> and <span class="math" data-tex="\(s_{i+1}\)">\(s_{i+1}\)</span> separate <span class="math" data-tex="\(S_i\)">\(S_i\)</span> on <span class="math" data-tex="\(E\)">\(E\)</span>. The position <span class="math" data-tex="\(s_q\)">\(s_q\)</span> separates <span class="math" data-tex="\(S_q\)">\(S_q\)</span> on <span class="math" data-tex="\(E\)">\(E\)</span>, and <span class="math" data-tex="\(v\)">\(v\)</span> separates <span class="math" data-tex="\(S_*\)">\(S_*\)</span> on <span class="math" data-tex="\(W\)">\(W\)</span>.</li>
+<li><strong>(F5)</strong> The endpoint <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span> is a slot of <span class="math" data-tex="\(W\)">\(W\)</span>, and <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> is <span class="math" data-tex="\(a\)">\(a\)</span> or a slot of <span class="math" data-tex="\(E\)">\(E\)</span>. Moreover <span class="math" data-tex="\(W&#x27;\subseteq E\)">\(W&#x27;\subseteq E\)</span>,
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+W&#x27;\cap S\subseteq D_{a&#x27;}\cap P_b,\\
+W&#x27;\setminus S\subseteq P_{b&#x27;},
+\end{gathered}
+\]">\[
+\begin{gathered}
+W&#x27;\cap S\subseteq D_{a&#x27;}\cap P_b,\\
+W&#x27;\setminus S\subseteq P_{b&#x27;},
+\end{gathered}
+\]</span>
+and the root has no switched-side child.</li>
+<li><strong>(F6)</strong> Let <span class="math" data-tex="\(c\)">\(c\)</span> be a slot. Jobs of <span class="math" data-tex="\(P_c\)">\(P_c\)</span> lie strictly before <span class="math" data-tex="\(c\)">\(c\)</span>, jobs of <span class="math" data-tex="\(D_c\)">\(D_c\)</span> lie strictly after <span class="math" data-tex="\(c\)">\(c\)</span>, and no job of <span class="math" data-tex="\(c\)">\(c\)</span> lies in either cone.</li>
+</ul>
+<p><strong>Standing hypothesis.</strong> In Sections 1–4, <span class="math" data-tex="\(W\)">\(W\)</span> is a node such that <span class="math" data-tex="\(W\)">\(W\)</span> and all its ancestors carry lists of upsets and satisfy (I1)–(I3). &quot;The current schedule&quot; is the witnessing schedule of <span class="math" data-tex="\(W\)">\(W\)</span> after its center has been chosen and its sides have been normalized. Proposition 4.2 shows, by induction from the root, that the hypothesis holds at every node.</p>
+<p><strong>Carrying and pruning.</strong> For <span class="math" data-tex="\(1\leq d\leq\ell\)">\(1\leq d\leq\ell\)</span> and <span class="math" data-tex="\(0\leq r\leq N+1\)">\(0\leq r\leq N+1\)</span> put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;\operatorname{carry}_{d,r}(\mathcal K)\\
+&amp;\quad=\bigl(K_d\cap\{\lambda\geq r\},\\
+&amp;\qquad\quad K_{d+1},\ldots,K_\ell\bigr).
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;\operatorname{carry}_{d,r}(\mathcal K)\\
+&amp;\quad=\bigl(K_d\cap\{\lambda\geq r\},\\
+&amp;\qquad\quad K_{d+1},\ldots,K_\ell\bigr).
+\end{aligned}
+\]</span>
+To <em>prune</em> a list on <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> means to delete every entry disjoint from <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> and to keep the order of the others.</p>
+<p><strong>The two updates.</strong></p>
+<ul>
+<li><em>Same update.</em> If <span class="math" data-tex="\(O\setminus S=\varnothing\)">\(O\setminus S=\varnothing\)</span>, the <em>carry</em> is the empty list. Otherwise let <span class="math" data-tex="\((d,r)\)">\((d,r)\)</span> be the least key of a job of <span class="math" data-tex="\(O\setminus S\)">\(O\setminus S\)</span>, and let the carry be <span class="math" data-tex="\(\operatorname{carry}_{d,r}(\mathcal K)\)">\(\operatorname{carry}_{d,r}(\mathcal K)\)</span>. Append the <em>injection</em>
+<span class="math math-display" data-tex="\[
+I=D_a\setminus P_b
+\]">\[
+I=D_a\setminus P_b
+\]</span>
+as the last entry, and prune on <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span>.</li>
+<li><em>Switched update.</em> The old list is discarded. Let <span class="math" data-tex="\(G\subseteq J\)">\(G\subseteq J\)</span> be an upset of the working frame such that <span class="math" data-tex="\(X\subseteq G\)">\(X\subseteq G\)</span> and no job of <span class="math" data-tex="\(G\)">\(G\)</span> is scheduled at or before <span class="math" data-tex="\(a\)">\(a\)</span> in the current schedule. Lemma 3.3 constructs such a set. Let <span class="math" data-tex="\(h\)">\(h\)</span> be the least rank of a job of <span class="math" data-tex="\(X\setminus S\)">\(X\setminus S\)</span>, or <span class="math" data-tex="\(h=N+1\)">\(h=N+1\)</span> if <span class="math" data-tex="\(X\subseteq S\)">\(X\subseteq S\)</span>. The new list is the <em>switch pair</em>
+<span class="math math-display" data-tex="\[
+\bigl(G\cap\{\lambda\geq h\},\ D_a\bigr),
+\]">\[
+\bigl(G\cap\{\lambda\geq h\},\ D_a\bigr),
+\]</span>
+pruned on <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span>.</li>
+</ul>
+<p><strong>Runs.</strong> A <em>run</em> is a chain of nodes along one branch of the hierarchy. It starts at the root or at a child created on a switched side, and it continues through children created on same sides. A same-side child has the tag of its parent, so all nodes of a run have the same tag, the <em>run's frame</em>.</p>
+<p>The <em>initial entries</em> of a run are the root's entry <span class="math" data-tex="\(J\)">\(J\)</span>, or the two entries of the switch pair that created its first node. An entry is <em>descended</em> from a set if it arises from that set by finitely many intersections with rank suffixes. An <em>injection entry</em> is an entry descended from an injection appended at an edge of the run.</p>
+<p><strong>Proposition 1.1 (lists on m machines).</strong> Let <span class="math" data-tex="\(m\geq1\)">\(m\geq1\)</span>.</p>
+<ul>
+<li>
+<p>(a) Let <span class="math" data-tex="\(1\leq d\leq\ell\)">\(1\leq d\leq\ell\)</span> and <span class="math" data-tex="\(0\leq r\leq N+1\)">\(0\leq r\leq N+1\)</span>. The entries of <span class="math" data-tex="\(\operatorname{carry}_{d,r}(\mathcal K)\)">\(\operatorname{carry}_{d,r}(\mathcal K)\)</span> are upsets. Its qualifiers are exactly the qualifiers of <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> whose key is at least <span class="math" data-tex="\((d,r)\)">\((d,r)\)</span>, and on them the new keys are ordered like the old keys.</p>
+</li>
+<li>
+<p>(b) Prune a list on <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span>. Let <span class="math" data-tex="\(x\in W&#x27;\)">\(x\in W&#x27;\)</span> and <span class="math" data-tex="\(y\in J\)">\(y\in J\)</span> be qualifiers of the pruned list such that the pruned key of <span class="math" data-tex="\(x\)">\(x\)</span> is smaller than the pruned key of <span class="math" data-tex="\(y\)">\(y\)</span>. Then the key of <span class="math" data-tex="\(x\)">\(x\)</span> was smaller than the key of <span class="math" data-tex="\(y\)">\(y\)</span> before pruning.</p>
+</li>
+<li>
+<p>(c) Consider a same update, or a switched update built from an upset <span class="math" data-tex="\(G\)">\(G\)</span> as above. Before pruning:</p>
+<ul>
+<li>every entry is an upset of <span class="math" data-tex="\(J\)">\(J\)</span> in the working frame;</li>
+<li>the qualifiers in <span class="math" data-tex="\(W\)">\(W\)</span> are exactly the jobs of <span class="math" data-tex="\(W\setminus S\)">\(W\setminus S\)</span>;</li>
+<li>on <span class="math" data-tex="\(W\setminus S\)">\(W\setminus S\)</span> the key order is the side's priority order;</li>
+<li>on a same side, the union of the carry meets <span class="math" data-tex="\(W\)">\(W\)</span> exactly in <span class="math" data-tex="\(O\setminus S\)">\(O\setminus S\)</span>, and the injection meets <span class="math" data-tex="\(W\)">\(W\)</span> exactly in <span class="math" data-tex="\(Y\)">\(Y\)</span>.</li>
+</ul>
+<p>After pruning on <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span>, the qualifiers in <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> are exactly the jobs of <span class="math" data-tex="\(W&#x27;\setminus S\)">\(W&#x27;\setminus S\)</span>, and <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> satisfies (I1) in its tag frame.</p>
+</li>
+<li>
+<p>(d) Every entry of the list of a node of a run is an initial entry of the run or an injection appended at an edge of the run, intersected with at most one rank suffix <span class="math" data-tex="\(\{\lambda\geq r\}\)">\(\{\lambda\geq r\}\)</span> of the run's frame. Different entries of one list descend from different such sets.</p>
+</li>
+</ul>
+<p><em>Proof.</em> (a) Let <span class="math" data-tex="\(x\)">\(x\)</span> be a qualifier of <span class="math" data-tex="\(\mathcal K\)">\(\mathcal K\)</span> whose largest index is <span class="math" data-tex="\(j\)">\(j\)</span>.</p>
+<ul>
+<li>If <span class="math" data-tex="\(j&gt;d\)">\(j&gt;d\)</span>, the entry <span class="math" data-tex="\(K_j\)">\(K_j\)</span> is kept, so <span class="math" data-tex="\(x\)">\(x\)</span> qualifies.</li>
+<li>If <span class="math" data-tex="\(j=d\)">\(j=d\)</span>, the job <span class="math" data-tex="\(x\)">\(x\)</span> lies in no kept entry except possibly the first, so it qualifies exactly when <span class="math" data-tex="\(\lambda(x)\geq r\)">\(\lambda(x)\geq r\)</span>.</li>
+<li>If <span class="math" data-tex="\(j&lt;d\)">\(j&lt;d\)</span>, it lies in no kept entry.</li>
+</ul>
+<p>So the new qualifiers are those with <span class="math" data-tex="\((j,\lambda(x))\geq(d,r)\)">\((j,\lambda(x))\geq(d,r)\)</span>. For each of them the entry that gives its largest index is kept, with the index lowered by <span class="math" data-tex="\(d-1\)">\(d-1\)</span>. This shift is the same for all of them and the ranks are unchanged, so the order is preserved. A rank suffix is an upset, so <span class="math" data-tex="\(K_d\cap\{\lambda\geq r\}\)">\(K_d\cap\{\lambda\geq r\}\)</span> is an upset.</p>
+<p>(b) Use the indices before pruning. Let <span class="math" data-tex="\(M(z)\)">\(M(z)\)</span> be the largest index of an entry containing <span class="math" data-tex="\(z\)">\(z\)</span>, and <span class="math" data-tex="\(R(z)\)">\(R(z)\)</span> the largest index of a kept entry containing <span class="math" data-tex="\(z\)">\(z\)</span>. Every entry containing <span class="math" data-tex="\(x\)">\(x\)</span> meets <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> and is kept, so <span class="math" data-tex="\(R(x)=M(x)\)">\(R(x)=M(x)\)</span>. Also <span class="math" data-tex="\(R(y)\leq M(y)\)">\(R(y)\leq M(y)\)</span>, and renumbering the kept entries preserves their order.</p>
+<ul>
+<li>If <span class="math" data-tex="\(R(x)&lt;R(y)\)">\(R(x)&lt;R(y)\)</span>, then <span class="math" data-tex="\(M(x)&lt;M(y)\)">\(M(x)&lt;M(y)\)</span>.</li>
+<li>If <span class="math" data-tex="\(R(x)=R(y)\)">\(R(x)=R(y)\)</span> and <span class="math" data-tex="\(\lambda(x)&lt;\lambda(y)\)">\(\lambda(x)&lt;\lambda(y)\)</span>, then either <span class="math" data-tex="\(M(x)&lt;M(y)\)">\(M(x)&lt;M(y)\)</span>, or <span class="math" data-tex="\(M(x)=M(y)\)">\(M(x)=M(y)\)</span> and the ranks decide.</li>
+</ul>
+<p>In both cases the old key of <span class="math" data-tex="\(x\)">\(x\)</span> is smaller.</p>
+<p>(c) <em>Same update.</em> The working frame is the tag frame of <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<ol>
+<li>By (F3), <span class="math" data-tex="\(S=S_0\cup(O\cap S)\)">\(S=S_0\cup(O\cap S)\)</span>, with <span class="math" data-tex="\(S_0\cap O=\varnothing\)">\(S_0\cap O=\varnothing\)</span>, and <span class="math" data-tex="\(O\cap S\)">\(O\cap S\)</span> is an initial segment of <span class="math" data-tex="\(O\)">\(O\)</span> in key order. If <span class="math" data-tex="\(O\setminus S\neq\varnothing\)">\(O\setminus S\neq\varnothing\)</span>, it is therefore the set of jobs of <span class="math" data-tex="\(O\)">\(O\)</span> with key at least <span class="math" data-tex="\((d,r)\)">\((d,r)\)</span>.</li>
+<li>A job of <span class="math" data-tex="\(W\)">\(W\)</span> that qualifies through the carry is an old qualifier, so it lies in <span class="math" data-tex="\(O\)">\(O\)</span>, and by (a) its key is at least <span class="math" data-tex="\((d,r)\)">\((d,r)\)</span>. Hence the carry union meets <span class="math" data-tex="\(W\)">\(W\)</span> exactly in <span class="math" data-tex="\(O\setminus S\)">\(O\setminus S\)</span>, with the old key order. This also holds when the carry is empty.</li>
+<li>By (F2), <span class="math" data-tex="\(Y\subseteq D_a\)">\(Y\subseteq D_a\)</span>, so <span class="math" data-tex="\(W\cap I=(W\cap D_a)\setminus P_b=Y\)">\(W\cap I=(W\cap D_a)\setminus P_b=Y\)</span>.</li>
+<li>The jobs of <span class="math" data-tex="\(Y\)">\(Y\)</span> are not in <span class="math" data-tex="\(O\subseteq P_b\)">\(O\subseteq P_b\)</span>, so none of them qualifies through the carry. Their largest index is that of the last entry, <span class="math" data-tex="\(I\)">\(I\)</span>, and their keys therefore exceed the keys of all carried jobs.</li>
+<li>By (F3), <span class="math" data-tex="\(W=S_0\mathbin{\dot\cup}O\mathbin{\dot\cup}Y\)">\(W=S_0\mathbin{\dot\cup}O\mathbin{\dot\cup}Y\)</span>, and <span class="math" data-tex="\(Y\cap S=\varnothing\)">\(Y\cap S=\varnothing\)</span> because <span class="math" data-tex="\(S\subseteq P_b\)">\(S\subseteq P_b\)</span>. So the qualifiers in <span class="math" data-tex="\(W\)">\(W\)</span> are <span class="math" data-tex="\((O\setminus S)\cup Y=W\setminus S\)">\((O\setminus S)\cup Y=W\setminus S\)</span>.</li>
+<li>Their keys list <span class="math" data-tex="\(O\setminus S\)">\(O\setminus S\)</span> by old key and then <span class="math" data-tex="\(Y\)">\(Y\)</span> by rank. This is the same-side priority order restricted to <span class="math" data-tex="\(W\setminus S\)">\(W\setminus S\)</span>.</li>
+</ol>
+<p>The entries are upsets: carried entries by (a), and <span class="math" data-tex="\(I=D_a\cap(J\setminus P_b)\)">\(I=D_a\cap(J\setminus P_b)\)</span> as the intersection of an upset with the complement of a downset.</p>
+<p><em>Switched update.</em> The cutoff <span class="math" data-tex="\(S\)">\(S\)</span> is a rank prefix of <span class="math" data-tex="\(X\)">\(X\)</span> by (F3), so
+<span class="math math-display" data-tex="\[
+X\setminus S=X\cap\{\lambda\geq h\}.
+\]">\[
+X\setminus S=X\cap\{\lambda\geq h\}.
+\]</span></p>
+<ol>
+<li>The first entry contains <span class="math" data-tex="\(X\setminus S\)">\(X\setminus S\)</span>, because <span class="math" data-tex="\(X\subseteq G\)">\(X\subseteq G\)</span>. It contains no job of <span class="math" data-tex="\(S\)">\(S\)</span>, because <span class="math" data-tex="\(S\subseteq X\)">\(S\subseteq X\)</span> and the jobs of <span class="math" data-tex="\(S\)">\(S\)</span> have rank smaller than <span class="math" data-tex="\(h\)">\(h\)</span>.</li>
+<li>The jobs of <span class="math" data-tex="\(X\)">\(X\)</span> are not in <span class="math" data-tex="\(D_a\)">\(D_a\)</span>. So within <span class="math" data-tex="\(X\)">\(X\)</span> the qualifiers are exactly <span class="math" data-tex="\(X\setminus S\)">\(X\setminus S\)</span>, each with largest index <span class="math" data-tex="\(1\)">\(1\)</span>.</li>
+<li>The second entry contains all of <span class="math" data-tex="\(W\cap D_a=W\setminus X\)">\(W\cap D_a=W\setminus X\)</span>. Its index <span class="math" data-tex="\(2\)">\(2\)</span> puts these jobs after <span class="math" data-tex="\(X\setminus S\)">\(X\setminus S\)</span> in key order, whether or not they also lie in the first entry.</li>
+<li>Hence the qualifiers in <span class="math" data-tex="\(W\)">\(W\)</span> are <span class="math" data-tex="\((X\setminus S)\cup(W\setminus X)=W\setminus S\)">\((X\setminus S)\cup(W\setminus X)=W\setminus S\)</span>. They are ordered by rank within <span class="math" data-tex="\(X\setminus S\)">\(X\setminus S\)</span> and then by rank within <span class="math" data-tex="\(W\cap D_a\)">\(W\cap D_a\)</span>, which is the switched priority order restricted to <span class="math" data-tex="\(W\setminus S\)">\(W\setminus S\)</span>.</li>
+</ol>
+<p>Both entries are upsets.</p>
+<p><em>After pruning.</em> Pruning does not change which jobs of <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> qualify. Since <span class="math" data-tex="\(W&#x27;\subseteq W\)">\(W&#x27;\subseteq W\)</span>, the qualifiers in <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> are <span class="math" data-tex="\(W&#x27;\setminus S\)">\(W&#x27;\setminus S\)</span>, so the child's old high set is <span class="math" data-tex="\(O&#x27;=W&#x27;\setminus S\)">\(O&#x27;=W&#x27;\setminus S\)</span>. By (F5), <span class="math" data-tex="\(O&#x27;\subseteq P_{b&#x27;}\)">\(O&#x27;\subseteq P_{b&#x27;}\)</span> and <span class="math" data-tex="\(W&#x27;\setminus O&#x27;=W&#x27;\cap S\subseteq D_{a&#x27;}\)">\(W&#x27;\setminus O&#x27;=W&#x27;\cap S\subseteq D_{a&#x27;}\)</span>. This is (I1) for <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span>, whose boundaries in its tag frame are <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> and <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span>.</p>
+<p>(d) Induct along the run. The first list of a run consists of its initial entries, possibly pruned. A same update does three things to the entries of the parent: it keeps them unchanged, deletes them, or intersects one of them with a rank suffix of the run's frame. It also appends a new injection. Each kept entry keeps its origin, and the appended entry has a new origin, so different entries have different origins. All rank suffixes are in the run's frame, and
+<span class="math math-display" data-tex="\[
+\{\lambda\geq r\}\cap\{\lambda\geq r&#x27;\}=\{\lambda\geq\max(r,r&#x27;)\},
+\]">\[
+\{\lambda\geq r\}\cap\{\lambda\geq r&#x27;\}=\{\lambda\geq\max(r,r&#x27;)\},
+\]</span>
+so one suffix suffices. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="2-the-length-of-a-list">2. The length of a list</h2>
+<p><strong>Lemma 2.1 (at most m injections).</strong> Let <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> be a child of <span class="math" data-tex="\(W\)">\(W\)</span>.</p>
+<ul>
+<li>(i) If <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> is created by a same update, its pruned list has at most <span class="math" data-tex="\(m\)">\(m\)</span> injection entries.</li>
+<li>(ii) The pruned list of <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> has at most <span class="math" data-tex="\(m+2\)">\(m+2\)</span> entries, of which at most two are initial entries.</li>
+<li>(iii) The list formed at a same update, before pruning, has at most <span class="math" data-tex="\(m+3\)">\(m+3\)</span> entries.</li>
+<li>(iv) A carry taken from the list of a node has at most <span class="math" data-tex="\(m\)">\(m\)</span> injection entries and at most two initial entries.</li>
+</ul>
+<p><em>Proof.</em> (i) <strong>Disjointness inside <span class="math" data-tex="\(W\)">\(W\)</span>.</strong> Let <span class="math" data-tex="\(K_1,K_2\)">\(K_1,K_2\)</span> be two different injection entries of the list of <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> before pruning. Their origins are injections appended at two different edges of the run, both on the branch through <span class="math" data-tex="\(W\)">\(W\)</span>. One of these edges may be <span class="math" data-tex="\(W\to W&#x27;\)">\(W\to W&#x27;\)</span> itself.</p>
+<p>Let <span class="math" data-tex="\(U\to U&#x27;\)">\(U\to U&#x27;\)</span> be the later of the two edges, and say it is the origin of <span class="math" data-tex="\(K_2\)">\(K_2\)</span>. Then <span class="math" data-tex="\(W\subseteq U\)">\(W\subseteq U\)</span>, and <span class="math" data-tex="\(U\)">\(U\)</span> is a node of the run. When the injection <span class="math" data-tex="\(D_{a_U}\setminus P_{b_U}\)">\(D_{a_U}\setminus P_{b_U}\)</span> was appended, the entry from which <span class="math" data-tex="\(K_1\)">\(K_1\)</span> descends was an entry of the carry formed at <span class="math" data-tex="\(U\to U&#x27;\)">\(U\to U&#x27;\)</span>. Here <span class="math" data-tex="\(a_U,b_U\)">\(a_U,b_U\)</span> are the boundaries of <span class="math" data-tex="\(U\)">\(U\)</span> in its tag frame, which is the working frame of that same edge.</p>
+<p>By Proposition 1.1(c) applied at <span class="math" data-tex="\(U\)">\(U\)</span>, the carry union meets <span class="math" data-tex="\(U\)">\(U\)</span> only in <span class="math" data-tex="\(O_U\setminus S_U\)">\(O_U\setminus S_U\)</span>. By (I1) for <span class="math" data-tex="\(U\)">\(U\)</span>, this set lies in <span class="math" data-tex="\(P_{b_U}\)">\(P_{b_U}\)</span>. The injection meets <span class="math" data-tex="\(U\)">\(U\)</span> only in <span class="math" data-tex="\(U\setminus P_{b_U}\)">\(U\setminus P_{b_U}\)</span>. After that edge, entries only shrink. Since <span class="math" data-tex="\(W\subseteq U\)">\(W\subseteq U\)</span>, it follows that
+<span class="math math-display" data-tex="\[
+K_1\cap K_2\cap W=\varnothing.
+\]">\[
+K_1\cap K_2\cap W=\varnothing.
+\]</span></p>
+<p><strong>A witness map.</strong> Let <span class="math" data-tex="\(\mathscr I\)">\(\mathscr I\)</span> be the set of injection entries that survive pruning on <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span>. For <span class="math" data-tex="\(K\in\mathscr I\)">\(K\in\mathscr I\)</span>, let <span class="math" data-tex="\(x_K\)">\(x_K\)</span> be the job of least rank in <span class="math" data-tex="\(K\cap W&#x27;\)">\(K\cap W&#x27;\)</span>, which is nonempty. The job <span class="math" data-tex="\(x_K\)">\(x_K\)</span> qualifies and lies in <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span>, so it is high by Proposition 1.1(c), and <span class="math" data-tex="\(x_K\in P_{b&#x27;}\)">\(x_K\in P_{b&#x27;}\)</span> by (F5). Let <span class="math" data-tex="\(f(K)\)">\(f(K)\)</span> be the job of least rank in the slot <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span> that is a successor of <span class="math" data-tex="\(x_K\)">\(x_K\)</span>. This defines a map
+<span class="math math-display" data-tex="\[
+f:\mathscr I\to b&#x27;.
+\]">\[
+f:\mathscr I\to b&#x27;.
+\]</span>
+Since <span class="math" data-tex="\(K\)">\(K\)</span> is an upset of all of <span class="math" data-tex="\(J\)">\(J\)</span>, <span class="math" data-tex="\(f(K)\in K\)">\(f(K)\in K\)</span>. Since <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span> is a slot of <span class="math" data-tex="\(W\)">\(W\)</span> by (F5), <span class="math" data-tex="\(f(K)\in W\)">\(f(K)\in W\)</span>. If <span class="math" data-tex="\(f(K_1)=f(K_2)\)">\(f(K_1)=f(K_2)\)</span> for <span class="math" data-tex="\(K_1\neq K_2\)">\(K_1\neq K_2\)</span>, that job would lie in <span class="math" data-tex="\(K_1\cap K_2\cap W=\varnothing\)">\(K_1\cap K_2\cap W=\varnothing\)</span>. So <span class="math" data-tex="\(f\)">\(f\)</span> is injective, and
+<span class="math math-display" data-tex="\[
+|\mathscr I|\leq|b&#x27;|=m.
+\]">\[
+|\mathscr I|\leq|b&#x27;|=m.
+\]</span></p>
+<p>(ii) A run has at most two initial entries, and by Proposition 1.1(d) different entries of a list have different origins. A child created by a switched update has only initial entries. A child created by a same update has at most two initial entries and, by (i), at most <span class="math" data-tex="\(m\)">\(m\)</span> injection entries.</p>
+<p>(iv) The root's list has one entry, and the list of any other node satisfies (ii). A carry keeps a suffix of the list and intersects one entry with a rank suffix, which keeps its origin.</p>
+<p>(iii) This follows from (iv) applied to the list of <span class="math" data-tex="\(W\)">\(W\)</span>: a carry has at most <span class="math" data-tex="\(m+2\)">\(m+2\)</span> entries, and one injection is appended. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The argument uses that the entries are upsets of all of <span class="math" data-tex="\(J\)">\(J\)</span>, because the witness <span class="math" data-tex="\(f(K)\)">\(f(K)\)</span> lies in <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span>, outside <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span>. It also uses (I1) at earlier nodes of the run. It does not use any formula size.</p>
+<h2 id="3-changing-direction">3. Changing direction</h2>
+<p><strong>Lemma 3.1 (local flattening).</strong> Suppose a run begins with a child created on a switched side of a node <span class="math" data-tex="\(Q_0\)">\(Q_0\)</span>. In the run's frame, let <span class="math" data-tex="\(a_0\)">\(a_0\)</span> be the boundary of <span class="math" data-tex="\(Q_0\)">\(Q_0\)</span> before it, and let the initial entries be
+<span class="math math-display" data-tex="\[
+G_0\cap\{\lambda\geq h_0\},\qquad D_{a_0},
+\]">\[
+G_0\cap\{\lambda\geq h_0\},\qquad D_{a_0},
+\]</span>
+where <span class="math" data-tex="\(G_0\)">\(G_0\)</span> is an upset with <span class="math" data-tex="\(Q_0\setminus D_{a_0}\subseteq G_0\)">\(Q_0\setminus D_{a_0}\subseteq G_0\)</span>. Let <span class="math" data-tex="\(U\subseteq Q_0\)">\(U\subseteq Q_0\)</span> be a node of the run. Suppose a carry formed at a same update out of <span class="math" data-tex="\(U\)">\(U\)</span> contains the entry descended from the first initial entry, in the form <span class="math" data-tex="\(G_0\cap\{\lambda\geq k\}\)">\(G_0\cap\{\lambda\geq k\}\)</span>. Then the union of the carried entries descended from the two initial entries agrees on <span class="math" data-tex="\(U\)">\(U\)</span> with the upset
+<span class="math math-display" data-tex="\[
+D_{a_0}\cup\{\lambda\geq k\}.
+\]">\[
+D_{a_0}\cup\{\lambda\geq k\}.
+\]</span></p>
+<p><em>Proof.</em> Entries keep their order and new entries are appended last. So while the first initial entry is present, it is the first entry of every list. A carry with <span class="math" data-tex="\(d\geq2\)">\(d\geq2\)</span> would delete it, and deletions are permanent.</p>
+<p>The first initial entry is present in the given carry. Hence every carry along the run up to this one had <span class="math" data-tex="\(d=1\)">\(d=1\)</span> and trimmed only the first entry. So the descendant of the second initial entry is in one of two states:</p>
+<ul>
+<li>it is still exactly <span class="math" data-tex="\(D_{a_0}\)">\(D_{a_0}\)</span>; or</li>
+<li>it was deleted by pruning on a node of the run containing <span class="math" data-tex="\(U\)">\(U\)</span>. Then <span class="math" data-tex="\(D_{a_0}\)">\(D_{a_0}\)</span> is disjoint from that node, and hence from <span class="math" data-tex="\(U\)">\(U\)</span>.</li>
+</ul>
+<p>On <span class="math" data-tex="\(U\cap D_{a_0}\)">\(U\cap D_{a_0}\)</span>, the target set contains every job. In the first state the second entry selects every job there; in the second state <span class="math" data-tex="\(U\cap D_{a_0}\)">\(U\cap D_{a_0}\)</span> is empty.</p>
+<p>On <span class="math" data-tex="\(U\setminus D_{a_0}\)">\(U\setminus D_{a_0}\)</span>, the target set selects the jobs with <span class="math" data-tex="\(\lambda\geq k\)">\(\lambda\geq k\)</span>. These jobs lie in <span class="math" data-tex="\(Q_0\setminus D_{a_0}\subseteq G_0\)">\(Q_0\setminus D_{a_0}\subseteq G_0\)</span>, so the first entry also selects exactly the jobs with <span class="math" data-tex="\(\lambda\geq k\)">\(\lambda\geq k\)</span>, and the second entry selects none.</p>
+<p>Both sets in <span class="math" data-tex="\(D_{a_0}\cup\{\lambda\geq k\}\)">\(D_{a_0}\cup\{\lambda\geq k\}\)</span> are upsets. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The agreement holds on <span class="math" data-tex="\(U\)">\(U\)</span> only. Outside <span class="math" data-tex="\(U\)">\(U\)</span> the two sets may differ.</p>
+<p><strong>Lemma 3.2 (short extension of an earlier low set).</strong> Let <span class="math" data-tex="\(U\to W\)">\(U\to W\)</span> be an edge with low cutoff <span class="math" data-tex="\(H\subseteq U\)">\(H\subseteq U\)</span> in its working frame, and let <span class="math" data-tex="\(a_U,b_U\)">\(a_U,b_U\)</span> be the boundaries of <span class="math" data-tex="\(U\)">\(U\)</span> in that frame. There is a downset <span class="math" data-tex="\(H^*\)">\(H^*\)</span> of <span class="math" data-tex="\(J\)">\(J\)</span> in that frame with
+<span class="math math-display" data-tex="\[
+H^*\cap U=H,
+\]">\[
+H^*\cap U=H,
+\]</span>
+described by a formula with at most <span class="math" data-tex="\(3m+3\)">\(3m+3\)</span> leaves.</p>
+<ul>
+<li>On a switched side, <span class="math" data-tex="\(H^*=(J\setminus D_{a_U})\cap\{\lambda\leq r\}\)">\(H^*=(J\setminus D_{a_U})\cap\{\lambda\leq r\}\)</span>.</li>
+<li>On a same side, <span class="math" data-tex="\(H^*=P_{b_U}\cap(J\setminus\Phi&#x27;)\)">\(H^*=P_{b_U}\cap(J\setminus\Phi&#x27;)\)</span>, where <span class="math" data-tex="\(\Phi&#x27;\)">\(\Phi&#x27;\)</span> is an upset that agrees on <span class="math" data-tex="\(U\)">\(U\)</span> with the union <span class="math" data-tex="\(\Phi\)">\(\Phi\)</span> of the carry formed at the edge.</li>
+</ul>
+<p><em>Proof.</em> <em>Switched side.</em> By (F3), <span class="math" data-tex="\(H\)">\(H\)</span> is a rank prefix of <span class="math" data-tex="\(U\setminus D_{a_U}\)">\(U\setminus D_{a_U}\)</span>. Let <span class="math" data-tex="\(r\)">\(r\)</span> be the largest rank in <span class="math" data-tex="\(H\)">\(H\)</span>, or <span class="math" data-tex="\(r=0\)">\(r=0\)</span> if <span class="math" data-tex="\(H=\varnothing\)">\(H=\varnothing\)</span>. Then <span class="math" data-tex="\(H^*\cap U\)">\(H^*\cap U\)</span> is the set of jobs of <span class="math" data-tex="\(U\setminus D_{a_U}\)">\(U\setminus D_{a_U}\)</span> with rank at most <span class="math" data-tex="\(r\)">\(r\)</span>, which is <span class="math" data-tex="\(H\)">\(H\)</span>. The set <span class="math" data-tex="\(H^*\)">\(H^*\)</span> is the intersection of two downsets and has two leaves.</p>
+<p><em>Same side.</em> By Proposition 1.1(c), <span class="math" data-tex="\(\Phi\cap U=O_U\setminus H\)">\(\Phi\cap U=O_U\setminus H\)</span>. By (F3), <span class="math" data-tex="\(U\cap P_{b_U}=S_0\mathbin{\dot\cup}O_U\)">\(U\cap P_{b_U}=S_0\mathbin{\dot\cup}O_U\)</span> and <span class="math" data-tex="\(H=S_0\cup(O_U\cap H)\)">\(H=S_0\cup(O_U\cap H)\)</span>. Hence
+<span class="math math-display" data-tex="\[
+H=(U\cap P_{b_U})\setminus\Phi .
+\]">\[
+H=(U\cap P_{b_U})\setminus\Phi .
+\]</span></p>
+<p>By Lemma 2.1(iv) the carry has at most <span class="math" data-tex="\(m\)">\(m\)</span> injection entries. By Proposition 1.1(d) each of them has the form
+<span class="math math-display" data-tex="\[
+D_{a_V}\cap(J\setminus P_{b_V})\cap\{\lambda\geq r\},
+\]">\[
+D_{a_V}\cap(J\setminus P_{b_V})\cap\{\lambda\geq r\},
+\]</span>
+with at most three leaves. The carried initial entries are replaced, on <span class="math" data-tex="\(U\)">\(U\)</span>, by an upset with at most two leaves:</p>
+<ul>
+<li><em>Run starting at the root.</em> The descendant of <span class="math" data-tex="\(J\)">\(J\)</span> is <span class="math" data-tex="\(\{\lambda\geq r\}\)">\(\{\lambda\geq r\}\)</span>, with one leaf.</li>
+<li><em>Switched run, first initial entry carried.</em> Replace it, together with the second initial entry if that is carried, by <span class="math" data-tex="\(D_{a_0}\cup\{\lambda\geq k\}\)">\(D_{a_0}\cup\{\lambda\geq k\}\)</span>. By Lemma 3.1, applicable since <span class="math" data-tex="\(U\subseteq Q_0\)">\(U\subseteq Q_0\)</span>, this has the same intersection with <span class="math" data-tex="\(U\)">\(U\)</span>.</li>
+<li><em>Switched run, first initial entry not carried.</em> The only possible initial contribution is <span class="math" data-tex="\(D_{a_0}\)">\(D_{a_0}\)</span> with at most one rank suffix, with at most two leaves.</li>
+<li><em>No initial entry carried.</em> Omit the initial contribution.</li>
+</ul>
+<p>Let <span class="math" data-tex="\(\Phi&#x27;\)">\(\Phi&#x27;\)</span> be the union of these terms, or the constant <span class="math" data-tex="\(\varnothing\)">\(\varnothing\)</span> (one leaf) if the carry is empty. Then <span class="math" data-tex="\(\Phi&#x27;\)">\(\Phi&#x27;\)</span> is an upset, <span class="math" data-tex="\(\Phi&#x27;\cap U=\Phi\cap U\)">\(\Phi&#x27;\cap U=\Phi\cap U\)</span>, and <span class="math" data-tex="\(\Phi&#x27;\)">\(\Phi&#x27;\)</span> has at most <span class="math" data-tex="\(3m+2\)">\(3m+2\)</span> leaves. The set <span class="math" data-tex="\(H^*=P_{b_U}\cap(J\setminus\Phi&#x27;)\)">\(H^*=P_{b_U}\cap(J\setminus\Phi&#x27;)\)</span> is the intersection of two downsets. It has at most <span class="math" data-tex="\(3m+3\)">\(3m+3\)</span> leaves and satisfies <span class="math" data-tex="\(H^*\cap U=(U\cap P_{b_U})\setminus\Phi=H\)">\(H^*\cap U=(U\cap P_{b_U})\setminus\Phi=H\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The formula of <span class="math" data-tex="\(H^*\)">\(H^*\)</span> contains cone tests of slots, virtual constants and rank tests, and no earlier switch entry. Lemma 2.1 of <em>Changing direction</em> bounded the same set by <span class="math" data-tex="\(21\)">\(21\)</span> leaves for <span class="math" data-tex="\(m=3\)">\(m=3\)</span>; the present count gives <span class="math" data-tex="\(12\)">\(12\)</span>.</p>
+<p><strong>Lemma 3.3 (arrangement and the switch upset).</strong> Suppose a switched side of <span class="math" data-tex="\(W\)">\(W\)</span> produces a nonempty child.</p>
+<ol>
+<li><span class="math" data-tex="\(W\)">\(W\)</span> is not the root. Let <span class="math" data-tex="\(U\)">\(U\)</span> be its parent. In the working frame of the switched side, the <em>current frame</em>, write <span class="math" data-tex="\(a_-,b_-\)">\(a_-,b_-\)</span> for the boundaries of <span class="math" data-tex="\(U\)">\(U\)</span>, <span class="math" data-tex="\(v_-\)">\(v_-\)</span> for the center of <span class="math" data-tex="\(U\)">\(U\)</span>, and <span class="math" data-tex="\(a,b\)">\(a,b\)</span> for the boundaries of <span class="math" data-tex="\(W\)">\(W\)</span>. Then <span class="math" data-tex="\(a\)">\(a\)</span> is a slot, and
+<span class="math math-display" data-tex="\[
+a_-&lt;v_-\leq a&lt;b\leq b_- .
+\]">\[
+a_-&lt;v_-\leq a&lt;b\leq b_- .
+\]</span></li>
+<li>Let <span class="math" data-tex="\(H\)">\(H\)</span> be the low cutoff of the edge <span class="math" data-tex="\(U\to W\)">\(U\to W\)</span> and <span class="math" data-tex="\(H^*\)">\(H^*\)</span> the set of Lemma 3.2 for that edge, and put
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+G={}&amp;D_{a_-}\cap(J\setminus\widehat P_a)\\
+&amp;\cap(J\setminus\widehat P_{v_-})\cap H^*.
+\end{aligned}
+\]">\[
+\begin{aligned}
+G={}&amp;D_{a_-}\cap(J\setminus\widehat P_a)\\
+&amp;\cap(J\setminus\widehat P_{v_-})\cap H^*.
+\end{aligned}
+\]</span>
+Then <span class="math" data-tex="\(G\)">\(G\)</span> is an upset of the current frame, <span class="math" data-tex="\(X=W\setminus D_a\subseteq G\)">\(X=W\setminus D_a\subseteq G\)</span>, and no job of <span class="math" data-tex="\(G\)">\(G\)</span> is scheduled at or before <span class="math" data-tex="\(a\)">\(a\)</span> in the current schedule.</li>
+</ol>
+<p>Consequently the switch pair <span class="math" data-tex="\((G\cap\{\lambda\geq h\},D_a)\)">\((G\cap\{\lambda\geq h\},D_a)\)</span> is defined, and none of its jobs is scheduled at or before <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p><em>Proof.</em> <strong>Part 1.</strong> By (F5) the root has no switched-side child, so <span class="math" data-tex="\(W\)">\(W\)</span> is not the root.</p>
+<p>The edge <span class="math" data-tex="\(U\to W\)">\(U\to W\)</span> was taken in the <em>old frame</em>, the working frame of a side of <span class="math" data-tex="\(U\)">\(U\)</span>. This is the tag frame of <span class="math" data-tex="\(W\)">\(W\)</span>, and it is opposite to the current frame. In the old frame, <span class="math" data-tex="\(W\)">\(W\)</span> is the gap between the positions <span class="math" data-tex="\(a&#x27;_{\mathrm{old}}=s_i\)">\(a&#x27;_{\mathrm{old}}=s_i\)</span> and <span class="math" data-tex="\(b&#x27;_{\mathrm{old}}=s_{i+1}\)">\(b&#x27;_{\mathrm{old}}=s_{i+1}\)</span> of that side. These positions satisfy
+<span class="math math-display" data-tex="\[
+\begin{gathered}
+a&#x27;_{\mathrm{old}}\geq(\text{old left boundary of }U),\\
+a&#x27;_{\mathrm{old}}&lt;b&#x27;_{\mathrm{old}}\leq v_-,
+\end{gathered}
+\]">\[
+\begin{gathered}
+a&#x27;_{\mathrm{old}}\geq(\text{old left boundary of }U),\\
+a&#x27;_{\mathrm{old}}&lt;b&#x27;_{\mathrm{old}}\leq v_-,
+\end{gathered}
+\]</span>
+and <span class="math" data-tex="\(b&#x27;_{\mathrm{old}}\)">\(b&#x27;_{\mathrm{old}}\)</span> is a slot by (F5). The old right boundary of <span class="math" data-tex="\(U\)">\(U\)</span> comes after <span class="math" data-tex="\(v_-\)">\(v_-\)</span>.</p>
+<p>Reversing time sends:</p>
+<ul>
+<li>the old right boundary of <span class="math" data-tex="\(U\)">\(U\)</span> to <span class="math" data-tex="\(a_-\)">\(a_-\)</span>;</li>
+<li><span class="math" data-tex="\(b&#x27;_{\mathrm{old}}\)">\(b&#x27;_{\mathrm{old}}\)</span> to <span class="math" data-tex="\(a\)">\(a\)</span>;</li>
+<li><span class="math" data-tex="\(a&#x27;_{\mathrm{old}}\)">\(a&#x27;_{\mathrm{old}}\)</span> to <span class="math" data-tex="\(b\)">\(b\)</span>;</li>
+<li>the old left boundary of <span class="math" data-tex="\(U\)">\(U\)</span> to <span class="math" data-tex="\(b_-\)">\(b_-\)</span>.</li>
+</ul>
+<p>This gives the displayed inequalities.</p>
+<p><strong>Part 2, <span class="math" data-tex="\(G\)">\(G\)</span> is an upset.</strong> Its four factors are upsets of the current frame:</p>
+<ul>
+<li><span class="math" data-tex="\(D_{a_-}\)">\(D_{a_-}\)</span> is a cone, or a constant if <span class="math" data-tex="\(a_-\)">\(a_-\)</span> is virtual;</li>
+<li>the complements of the weak predecessor cones <span class="math" data-tex="\(\widehat P_a\)">\(\widehat P_a\)</span> and <span class="math" data-tex="\(\widehat P_{v_-}\)">\(\widehat P_{v_-}\)</span> are upsets;</li>
+<li><span class="math" data-tex="\(H^*\)">\(H^*\)</span> is a downset of the old frame, hence an upset of the current one.</li>
+</ul>
+<p><strong>Part 2, <span class="math" data-tex="\(X\subseteq G\)">\(X\subseteq G\)</span>.</strong> Let <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span>.</p>
+<ol>
+<li>If <span class="math" data-tex="\(x\)">\(x\)</span> were high at the edge <span class="math" data-tex="\(U\to W\)">\(U\to W\)</span>, (F5) would put it in the old cone <span class="math" data-tex="\(P_{b&#x27;_{\mathrm{old}}}\)">\(P_{b&#x27;_{\mathrm{old}}}\)</span>, which is the current <span class="math" data-tex="\(D_a\)">\(D_a\)</span>, contradicting <span class="math" data-tex="\(x\in X\)">\(x\in X\)</span>. So <span class="math" data-tex="\(x\in H\)">\(x\in H\)</span>.</li>
+<li>By (F3), <span class="math" data-tex="\(H\)">\(H\)</span> lies in the old <span class="math" data-tex="\(P\)">\(P\)</span>-cone of the old right boundary of <span class="math" data-tex="\(U\)">\(U\)</span>, which is the current <span class="math" data-tex="\(D_{a_-}\)">\(D_{a_-}\)</span>. So <span class="math" data-tex="\(x\in D_{a_-}\)">\(x\in D_{a_-}\)</span>.</li>
+<li>The job <span class="math" data-tex="\(x\)">\(x\)</span> is scheduled strictly after <span class="math" data-tex="\(a\)">\(a\)</span>, and <span class="math" data-tex="\(v_-\leq a\)">\(v_-\leq a\)</span>. So by (F6), <span class="math" data-tex="\(x\)">\(x\)</span> lies in neither <span class="math" data-tex="\(\widehat P_a\)">\(\widehat P_a\)</span> nor <span class="math" data-tex="\(\widehat P_{v_-}\)">\(\widehat P_{v_-}\)</span>.</li>
+<li>Since <span class="math" data-tex="\(x\in W\subseteq U\)">\(x\in W\subseteq U\)</span> and <span class="math" data-tex="\(H^*\cap U=H\)">\(H^*\cap U=H\)</span>, we have <span class="math" data-tex="\(x\in H^*\)">\(x\in H^*\)</span>.</li>
+</ol>
+<p><strong>Part 2, no job of <span class="math" data-tex="\(G\)">\(G\)</span> at or before <span class="math" data-tex="\(a\)">\(a\)</span>.</strong> Let <span class="math" data-tex="\(z\in G\)">\(z\in G\)</span> be scheduled at or before <span class="math" data-tex="\(a\)">\(a\)</span>.</p>
+<p><em>Locating <span class="math" data-tex="\(z\)">\(z\)</span> in <span class="math" data-tex="\(U\)">\(U\)</span>.</em> Since <span class="math" data-tex="\(z\in D_{a_-}\)">\(z\in D_{a_-}\)</span>, it is strictly after <span class="math" data-tex="\(a_-\)">\(a_-\)</span> by (F6); if <span class="math" data-tex="\(a_-\)">\(a_-\)</span> is virtual, it is the virtual boundary before the first slot and this holds trivially. Since <span class="math" data-tex="\(z\)">\(z\)</span> is at or before <span class="math" data-tex="\(a&lt;b\leq b_-\)">\(a&lt;b\leq b_-\)</span>, it is strictly before <span class="math" data-tex="\(b_-\)">\(b_-\)</span>. The schedule restricted to the interval of <span class="math" data-tex="\(U\)">\(U\)</span> is a full schedule of <span class="math" data-tex="\(U\)">\(U\)</span>, so <span class="math" data-tex="\(z\in U\)">\(z\in U\)</span>. Only at this point is <span class="math" data-tex="\(H^*\cap U=H\)">\(H^*\cap U=H\)</span> used, and it gives <span class="math" data-tex="\(z\in H\)">\(z\in H\)</span>. The edge cutoff <span class="math" data-tex="\(H\)">\(H\)</span> lies in the center cutoff <span class="math" data-tex="\(S_*\)">\(S_*\)</span> of its side of <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p><em>Case: <span class="math" data-tex="\(z\)">\(z\)</span> at or before <span class="math" data-tex="\(v_-\)">\(v_-\)</span> in the current frame.</em> In the old frame, <span class="math" data-tex="\(z\)">\(z\)</span> is at or after <span class="math" data-tex="\(v_-\)">\(v_-\)</span>.</p>
+<ul>
+<li>If <span class="math" data-tex="\(z\)">\(z\)</span> lies in <span class="math" data-tex="\(v_-\)">\(v_-\)</span>, then <span class="math" data-tex="\(z\in\widehat P_{v_-}\)">\(z\in\widehat P_{v_-}\)</span>.</li>
+<li>Otherwise <span class="math" data-tex="\(z\)">\(z\)</span> is a low job after the old center. The old center separates <span class="math" data-tex="\(S_*\)">\(S_*\)</span> on <span class="math" data-tex="\(U\)">\(U\)</span> (F4), so <span class="math" data-tex="\(z\)">\(z\)</span> lies in the old <span class="math" data-tex="\(D_{v_-}\)">\(D_{v_-}\)</span>, which is the current <span class="math" data-tex="\(P_{v_-}\)">\(P_{v_-}\)</span>.</li>
+</ul>
+<p><em>Case: <span class="math" data-tex="\(z\)">\(z\)</span> strictly after <span class="math" data-tex="\(v_-\)">\(v_-\)</span> and at or before <span class="math" data-tex="\(a\)">\(a\)</span>.</em> In the old frame, <span class="math" data-tex="\(z\)">\(z\)</span> is a job of <span class="math" data-tex="\(U\)">\(U\)</span> strictly before <span class="math" data-tex="\(v_-\)">\(v_-\)</span>, hence in the open part of that side of <span class="math" data-tex="\(U\)">\(U\)</span>. It is also at or after <span class="math" data-tex="\(b&#x27;_{\mathrm{old}}\)">\(b&#x27;_{\mathrm{old}}\)</span>.</p>
+<ul>
+<li>If <span class="math" data-tex="\(z\)">\(z\)</span> lies in <span class="math" data-tex="\(b&#x27;_{\mathrm{old}}\)">\(b&#x27;_{\mathrm{old}}\)</span>, the current slot <span class="math" data-tex="\(a\)">\(a\)</span>, then <span class="math" data-tex="\(z\in\widehat P_a\)">\(z\in\widehat P_a\)</span>.</li>
+<li>Otherwise <span class="math" data-tex="\(b&#x27;_{\mathrm{old}}=s_{i+1}\neq v_-\)">\(b&#x27;_{\mathrm{old}}=s_{i+1}\neq v_-\)</span>. By (F4), <span class="math" data-tex="\(s_{i+1}\)">\(s_{i+1}\)</span> separates <span class="math" data-tex="\(H=S_i\)">\(H=S_i\)</span> on that open part, so the low job <span class="math" data-tex="\(z\)">\(z\)</span>, which lies after <span class="math" data-tex="\(s_{i+1}\)">\(s_{i+1}\)</span>, is in the old <span class="math" data-tex="\(D_{s_{i+1}}\)">\(D_{s_{i+1}}\)</span>. This is the current <span class="math" data-tex="\(P_a\)">\(P_a\)</span>.</li>
+</ul>
+<p>Every possibility contradicts <span class="math" data-tex="\(z\in G\)">\(z\in G\)</span>.</p>
+<p><em>The schedule used.</em> These separator facts were proved in the schedule of <span class="math" data-tex="\(U\)">\(U\)</span> after its sides were normalized. Since then, every change on this branch has taken place inside <span class="math" data-tex="\(W\)">\(W\)</span>, strictly between <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(b\)">\(b\)</span>. The job <span class="math" data-tex="\(z\)">\(z\)</span>, the slots <span class="math" data-tex="\(a\)">\(a\)</span>, <span class="math" data-tex="\(v_-\)">\(v_-\)</span>, <span class="math" data-tex="\(a_-\)">\(a_-\)</span>, and the sets <span class="math" data-tex="\(H\)">\(H\)</span> and <span class="math" data-tex="\(H^*\)">\(H^*\)</span> are therefore unchanged, and the facts hold in the current schedule.</p>
+<p><strong>The consequence.</strong> The first entry of the switch pair lies in <span class="math" data-tex="\(G\)">\(G\)</span>. The second entry, <span class="math" data-tex="\(D_a\)">\(D_a\)</span>, contains only jobs strictly after the slot <span class="math" data-tex="\(a\)">\(a\)</span>, by (F6). <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Lemma 3.4 (entry sizes and unions).</strong> Every entry of a list has a formula with at most <span class="math" data-tex="\(3m+7\)">\(3m+7\)</span> leaves. More precisely:</p>
+<ul>
+<li>an injection entry has at most <span class="math" data-tex="\(3\)">\(3\)</span> leaves;</li>
+<li>the root entry, and the entry descended from the second initial entry of a switched run, have at most <span class="math" data-tex="\(2\)">\(2\)</span> leaves;</li>
+<li>the entry descended from the first initial entry of a switched run has at most <span class="math" data-tex="\(3m+7\)">\(3m+7\)</span> leaves.</li>
+</ul>
+<p>The union of the list of a node, or of a carry taken from it, has a formula with at most
+<span class="math math-display" data-tex="\[
+A_m=6m+9
+\]">\[
+A_m=6m+9
+\]</span>
+leaves. If the union is empty, the constant false is used, with one leaf.</p>
+<p><em>Proof.</em> The first two bounds follow from Proposition 1.1(d) and the definitions of <span class="math" data-tex="\(I\)">\(I\)</span>, <span class="math" data-tex="\(J\)">\(J\)</span> and <span class="math" data-tex="\(D_{a_0}\)">\(D_{a_0}\)</span>. By Lemma 3.2, the set <span class="math" data-tex="\(G\)">\(G\)</span> has at most <span class="math" data-tex="\(3+(3m+3)=3m+6\)">\(3+(3m+3)=3m+6\)</span> leaves, and the first entry of the switch pair adds one rank test. Further rank suffixes merge with that one (Proposition 1.1(d)), and a new run discards the old list, so formulas never nest.</p>
+<p>By Proposition 1.1(d), different entries of a list have different origins. A list therefore contains at most one entry descended from each initial entry, and by Lemma 2.1 at most <span class="math" data-tex="\(m\)">\(m\)</span> injection entries. In a switched run the union has at most
+<span class="math math-display" data-tex="\[
+3m+(3m+7)+2=6m+9
+\]">\[
+3m+(3m+7)+2=6m+9
+\]</span>
+leaves. In a run starting at the root it has at most <span class="math" data-tex="\(3m+1\)">\(3m+1\)</span>. A carry consists of entries of the list, one of them trimmed by a rank suffix that merges with its existing suffix, so the same bound holds. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p>The bound of <span class="math" data-tex="\(25\)">\(25\)</span> leaves per entry in Lemma 4.1 of <em>Changing direction</em> rests on the count of five carry terms of four leaves each, which is specific to three machines. For <span class="math" data-tex="\(m=3\)">\(m=3\)</span> the present bounds are <span class="math" data-tex="\(16\)">\(16\)</span> leaves per entry and <span class="math" data-tex="\(27\)">\(27\)</span> per union, against the <span class="math" data-tex="\(125\)">\(125\)</span> of Lemma 4.1 of <a href="global-descriptions-and-the-running-time.html">Global descriptions and the running time</a>.</p>
+<h2 id="4-boundary-invariants">4. Boundary invariants</h2>
+<p>The preparatory reorderings of <span class="math" data-tex="\(W\)">\(W\)</span> (choosing the center and normalizing the sides) keep the invariants of <span class="math" data-tex="\(W\)">\(W\)</span>, for three reasons:</p>
+<ul>
+<li>(I1) concerns the job set of <span class="math" data-tex="\(W\)">\(W\)</span> and fixed subsets of <span class="math" data-tex="\(J\)">\(J\)</span>;</li>
+<li>(I2) concerns the jobs at or before <span class="math" data-tex="\(a\)">\(a\)</span> and the slot <span class="math" data-tex="\(a\)">\(a\)</span>, none of which moves;</li>
+<li>(I3) quantifies over all full schedules of <span class="math" data-tex="\(W\)">\(W\)</span> placed in its slots.</li>
+</ul>
+<p><strong>Proposition 4.1 ((I2) and (I3) for children).</strong> Let <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> be a child of <span class="math" data-tex="\(W\)">\(W\)</span> with edge data <span class="math" data-tex="\(a&#x27;=s_i\)">\(a&#x27;=s_i\)</span>, <span class="math" data-tex="\(b&#x27;=s_{i+1}\)">\(b&#x27;=s_{i+1}\)</span>, <span class="math" data-tex="\(S=S_i\)">\(S=S_i\)</span>, carrying its pruned list. In the child's tag frame:</p>
+<ul>
+<li><strong>(I2)</strong> Every qualifier scheduled at or before <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> lies in <span class="math" data-tex="\(\widehat P_{a&#x27;}\)">\(\widehat P_{a&#x27;}\)</span>.</li>
+<li><strong>(I3)</strong> Replace the slots of <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> by any full schedule of <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span>. Let <span class="math" data-tex="\(x\in W&#x27;\setminus D_{a&#x27;}\)">\(x\in W&#x27;\setminus D_{a&#x27;}\)</span>, and let <span class="math" data-tex="\(y\)">\(y\)</span> be a qualifier in the slot <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> whose child key is larger than that of <span class="math" data-tex="\(x\)">\(x\)</span>. Then exchanging <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> does not give a full schedule of <span class="math" data-tex="\(J\)">\(J\)</span>.</li>
+</ul>
+<p><em>Proof of (I2).</em> Pruning only removes qualifiers, so let <span class="math" data-tex="\(z\)">\(z\)</span> be a qualifier of the list before pruning, scheduled at or before <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span>.</p>
+<p><em>Case 1: <span class="math" data-tex="\(z\)">\(z\)</span> strictly after <span class="math" data-tex="\(a\)">\(a\)</span>.</em> Then <span class="math" data-tex="\(a&#x27;\neq a\)">\(a&#x27;\neq a\)</span>, so <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> is a slot of <span class="math" data-tex="\(E\)">\(E\)</span>, and <span class="math" data-tex="\(z\in E\subseteq W\)">\(z\in E\subseteq W\)</span>. By Proposition 1.1(c), <span class="math" data-tex="\(z\)">\(z\)</span> is high for <span class="math" data-tex="\(S\)">\(S\)</span>.</p>
+<ul>
+<li>If <span class="math" data-tex="\(z\)">\(z\)</span> lies in <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span>, then <span class="math" data-tex="\(z\in\widehat P_{a&#x27;}\)">\(z\in\widehat P_{a&#x27;}\)</span>.</li>
+<li>Otherwise <span class="math" data-tex="\(z\)">\(z\)</span> is a high job before <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span>. By (F4), <span class="math" data-tex="\(a&#x27;=s_i\)">\(a&#x27;=s_i\)</span> with <span class="math" data-tex="\(i\geq1\)">\(i\geq1\)</span> separates <span class="math" data-tex="\(S_i\)">\(S_i\)</span> on <span class="math" data-tex="\(E\)">\(E\)</span>, so condition (a) gives <span class="math" data-tex="\(z\in P_{a&#x27;}\)">\(z\in P_{a&#x27;}\)</span>.</li>
+</ul>
+<p><em>Case 2: <span class="math" data-tex="\(z\)">\(z\)</span> at or before <span class="math" data-tex="\(a\)">\(a\)</span>.</em></p>
+<p><strong>Reduction to the carry.</strong> Here <span class="math" data-tex="\(a\)">\(a\)</span> is a slot. The injection <span class="math" data-tex="\(I\subseteq D_a\)">\(I\subseteq D_a\)</span> contains no job at or before <span class="math" data-tex="\(a\)">\(a\)</span> by (F6), and neither entry of a switch pair does, by Lemma 3.3. So the update is a same update and <span class="math" data-tex="\(z\)">\(z\)</span> qualifies through the carry. By Proposition 1.1(a), <span class="math" data-tex="\(z\)">\(z\)</span> is a qualifier of the list of <span class="math" data-tex="\(W\)">\(W\)</span>, whose tag frame is the working frame. By (I2) for <span class="math" data-tex="\(W\)">\(W\)</span>, there is a job <span class="math" data-tex="\(y\)">\(y\)</span> in the slot <span class="math" data-tex="\(a\)">\(a\)</span> with <span class="math" data-tex="\(z=y\)">\(z=y\)</span> or <span class="math" data-tex="\(z\prec y\)">\(z\prec y\)</span>. The carry union is an upset, so <span class="math" data-tex="\(y\)">\(y\)</span> qualifies through the carry. By Proposition 1.1(a), the carry is nonempty and <span class="math" data-tex="\(\operatorname{key}(y)\geq(d,r)\)">\(\operatorname{key}(y)\geq(d,r)\)</span>.</p>
+<p>If <span class="math" data-tex="\(a&#x27;=a\)">\(a&#x27;=a\)</span>, then <span class="math" data-tex="\(z\in\widehat P_{a&#x27;}\)">\(z\in\widehat P_{a&#x27;}\)</span> and we are done. Assume <span class="math" data-tex="\(a&#x27;&gt;a\)">\(a&#x27;&gt;a\)</span>.</p>
+<p><strong>The advances of the walk.</strong> Consider every advance of the walk from <span class="math" data-tex="\(a\)">\(a\)</span> to <span class="math" data-tex="\(s_i=a&#x27;\)">\(s_i=a&#x27;\)</span>, including advances whose end positions are not marks. An advance during promotion <span class="math" data-tex="\(j\leq i\)">\(j\leq i\)</span> is an advance of the walk at the fixed cutoff <span class="math" data-tex="\(L=S_j\cap E\)">\(L=S_j\cap E\)</span> on the domain <span class="math" data-tex="\(E\)">\(E\)</span> (Lemma 3.3 of <a href="separators-and-the-shared-cutoff-walk.html">Separators and the shared-cutoff walk</a>, valid for <span class="math" data-tex="\(m\)">\(m\)</span>-job slots by Proposition 4.3 of <em>Unit jobs on m machines</em>).</p>
+<p>The carry union meets <span class="math" data-tex="\(W\)">\(W\)</span> in <span class="math" data-tex="\(O\setminus S_i\subseteq W\setminus S_j\)">\(O\setminus S_i\subseteq W\setminus S_j\)</span>. So every carry qualifier in <span class="math" data-tex="\(E\)">\(E\)</span> is high for every cutoff used. We show that each position reached is a slot containing a carry qualifier that is a successor of <span class="math" data-tex="\(y\)">\(y\)</span>.</p>
+<p><strong>The first advance.</strong> It goes from <span class="math" data-tex="\(a\)">\(a\)</span> to the earliest slot <span class="math" data-tex="\(t\)">\(t\)</span> of <span class="math" data-tex="\(E\)">\(E\)</span> containing an exception <span class="math" data-tex="\(x\)">\(x\)</span> for <span class="math" data-tex="\(S_j\)">\(S_j\)</span> at <span class="math" data-tex="\(a\)">\(a\)</span>: a job of <span class="math" data-tex="\(S_j\cap E\)">\(S_j\cap E\)</span> after <span class="math" data-tex="\(a\)">\(a\)</span> that is not in <span class="math" data-tex="\(D_a\)">\(D_a\)</span>.</p>
+<ol>
+<li>
+<p><em>Every predecessor <span class="math" data-tex="\(w\in J\)">\(w\in J\)</span> of <span class="math" data-tex="\(x\)">\(x\)</span> is strictly before <span class="math" data-tex="\(a\)">\(a\)</span>.</em> The job <span class="math" data-tex="\(w\)">\(w\)</span> is before <span class="math" data-tex="\(t\)">\(t\)</span>.</p>
+<ul>
+<li>If <span class="math" data-tex="\(w\)">\(w\)</span> lay in <span class="math" data-tex="\(a\)">\(a\)</span>, then <span class="math" data-tex="\(x\in D_a\)">\(x\in D_a\)</span>.</li>
+<li>If <span class="math" data-tex="\(w\)">\(w\)</span> lay strictly between <span class="math" data-tex="\(a\)">\(a\)</span> and <span class="math" data-tex="\(t\)">\(t\)</span>, it would be a job of <span class="math" data-tex="\(E\)">\(E\)</span>. It would lie in <span class="math" data-tex="\(S_j\)">\(S_j\)</span>, because <span class="math" data-tex="\(S_j\)">\(S_j\)</span> is a prefix of an order extending <span class="math" data-tex="\(\prec\)">\(\prec\)</span> and <span class="math" data-tex="\(x\in S_j\)">\(x\in S_j\)</span>. Since <span class="math" data-tex="\(t\)">\(t\)</span> is the earliest slot with an exception, <span class="math" data-tex="\(w\)">\(w\)</span> is not an exception, so <span class="math" data-tex="\(w\in D_a\)">\(w\in D_a\)</span> and again <span class="math" data-tex="\(x\in D_a\)">\(x\in D_a\)</span>.</li>
+</ul>
+<p>Both cases contradict the choice of <span class="math" data-tex="\(x\)">\(x\)</span>.</p>
+</li>
+<li>
+<p><em><span class="math" data-tex="\(\operatorname{key}(x)&lt;\operatorname{key}(y)\)">\(\operatorname{key}(x)&lt;\operatorname{key}(y)\)</span> in the list of <span class="math" data-tex="\(W\)">\(W\)</span>.</em> Since <span class="math" data-tex="\(x\in W\setminus D_a\)">\(x\in W\setminus D_a\)</span>, (I1) gives <span class="math" data-tex="\(x\in O\)">\(x\in O\)</span>. Since <span class="math" data-tex="\(S_0\subseteq D_a\)">\(S_0\subseteq D_a\)</span>, we have <span class="math" data-tex="\(x\notin S_0\)">\(x\notin S_0\)</span>. As <span class="math" data-tex="\(x\in S_j\subseteq S_i\)">\(x\in S_j\subseteq S_i\)</span>, the job <span class="math" data-tex="\(x\)">\(x\)</span> belongs to <span class="math" data-tex="\(O\cap S_i\)">\(O\cap S_i\)</span>, the jobs of <span class="math" data-tex="\(O\)">\(O\)</span> promoted by stage <span class="math" data-tex="\(i\)">\(i\)</span>. These are promoted in key order, so <span class="math" data-tex="\(\operatorname{key}(x)&lt;(d,r)\leq\operatorname{key}(y)\)">\(\operatorname{key}(x)&lt;(d,r)\leq\operatorname{key}(y)\)</span>.</p>
+</li>
+<li>
+<p><em>The exchange is forbidden.</em> The current schedule of <span class="math" data-tex="\(W\)">\(W\)</span> is a full schedule of <span class="math" data-tex="\(W\)">\(W\)</span> in its slots (Lemma 2.2 of <em>Unit jobs on m machines</em>). The job <span class="math" data-tex="\(x\)">\(x\)</span> lies in <span class="math" data-tex="\(W\setminus D_a\)">\(W\setminus D_a\)</span>, and <span class="math" data-tex="\(y\)">\(y\)</span> is a qualifier in <span class="math" data-tex="\(a\)">\(a\)</span> with a larger key. So by (I3) for <span class="math" data-tex="\(W\)">\(W\)</span>, exchanging <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span> does not give a full schedule of <span class="math" data-tex="\(J\)">\(J\)</span>.</p>
+</li>
+<li>
+<p><em><span class="math" data-tex="\(y\)">\(y\)</span> has a successor at or before <span class="math" data-tex="\(t\)">\(t\)</span>.</em> Suppose not, and exchange <span class="math" data-tex="\(x\)">\(x\)</span> and <span class="math" data-tex="\(y\)">\(y\)</span>; each slot keeps <span class="math" data-tex="\(m\)">\(m\)</span> jobs. We check every relation involving a moved job.</p>
+<ul>
+<li>The predecessors of <span class="math" data-tex="\(x\)">\(x\)</span> lie strictly before <span class="math" data-tex="\(a\)">\(a\)</span> by item 1, and its successors lie strictly after <span class="math" data-tex="\(t\)">\(t\)</span>. So no job of <span class="math" data-tex="\(a\)">\(a\)</span>, including <span class="math" data-tex="\(y\)">\(y\)</span>, is comparable with <span class="math" data-tex="\(x\)">\(x\)</span>.</li>
+<li>The predecessors of <span class="math" data-tex="\(y\)">\(y\)</span> lie strictly before <span class="math" data-tex="\(a\)">\(a\)</span>, and by assumption its successors lie strictly after <span class="math" data-tex="\(t\)">\(t\)</span>. So no job of <span class="math" data-tex="\(t\)">\(t\)</span> is comparable with <span class="math" data-tex="\(y\)">\(y\)</span>.</li>
+<li>All other pairs keep their slots.</li>
+</ul>
+<p>The result would be a full schedule of <span class="math" data-tex="\(J\)">\(J\)</span>, contradicting item 3. So <span class="math" data-tex="\(y\)">\(y\)</span> has a successor <span class="math" data-tex="\(y_1\)">\(y_1\)</span> strictly after <span class="math" data-tex="\(a\)">\(a\)</span> and at or before <span class="math" data-tex="\(t\)">\(t\)</span>. This <span class="math" data-tex="\(y_1\)">\(y_1\)</span> lies in <span class="math" data-tex="\(E\)">\(E\)</span> and qualifies through the carry, because the carry union is an upset.</p>
+</li>
+<li>
+<p><em>A successor at <span class="math" data-tex="\(t\)">\(t\)</span>.</em> If <span class="math" data-tex="\(y_1\)">\(y_1\)</span> lies in <span class="math" data-tex="\(t\)">\(t\)</span>, we are done. Otherwise apply Lemma 3.1(2) of <em>Separators and the shared-cutoff walk</em> (Proposition 4.3 of <em>Unit jobs on m machines</em>) on the domain <span class="math" data-tex="\(E\)">\(E\)</span>, with <span class="math" data-tex="\(M=L=S_j\cap E\)">\(M=L=S_j\cap E\)</span> and <span class="math" data-tex="\(s=a\)">\(s=a\)</span>. Its hypotheses hold:</p>
+<ul>
+<li>condition (a) at the boundary <span class="math" data-tex="\(a\)">\(a\)</span> is empty;</li>
+<li><span class="math" data-tex="\(t\)">\(t\)</span> is the earliest slot with an exception;</li>
+<li><span class="math" data-tex="\(x\in L\)">\(x\in L\)</span>;</li>
+<li><span class="math" data-tex="\(y_1\)">\(y_1\)</span> is a high job at a slot <span class="math" data-tex="\(r\)">\(r\)</span> of <span class="math" data-tex="\(E\)">\(E\)</span> with <span class="math" data-tex="\(r&lt;t\)">\(r&lt;t\)</span>.</li>
+</ul>
+<p>The lemma gives a successor of <span class="math" data-tex="\(y_1\)">\(y_1\)</span> in the slot <span class="math" data-tex="\(t\)">\(t\)</span>. It qualifies through the carry and succeeds <span class="math" data-tex="\(y\)">\(y\)</span>.</p>
+</li>
+</ol>
+<p><strong>Later advances.</strong> An advance from a slot <span class="math" data-tex="\(s\)">\(s\)</span> of <span class="math" data-tex="\(E\)">\(E\)</span> to a slot <span class="math" data-tex="\(t&#x27;\)">\(t&#x27;\)</span>, during promotion <span class="math" data-tex="\(j&#x27;\leq i\)">\(j&#x27;\leq i\)</span>, uses the cutoff <span class="math" data-tex="\(L=S_{j&#x27;}\cap E\)">\(L=S_{j&#x27;}\cap E\)</span>, and its exception lies in <span class="math" data-tex="\(L\)">\(L\)</span>. The position <span class="math" data-tex="\(s\)">\(s\)</span> satisfies condition (a) for <span class="math" data-tex="\(L\)">\(L\)</span>, for one of two reasons:</p>
+<ul>
+<li><span class="math" data-tex="\(s=s_{j&#x27;-1}\)">\(s=s_{j&#x27;-1}\)</span>, which separates <span class="math" data-tex="\(S_{j&#x27;-1}\)">\(S_{j&#x27;-1}\)</span> by (F4), and the high jobs for <span class="math" data-tex="\(S_{j&#x27;}\)">\(S_{j&#x27;}\)</span> are among those for <span class="math" data-tex="\(S_{j&#x27;-1}\)">\(S_{j&#x27;-1}\)</span>;</li>
+<li><span class="math" data-tex="\(s\)">\(s\)</span> is the target of an earlier advance at the same cutoff, which satisfies (a) by Lemma 3.1(3) of <em>Separators and the shared-cutoff walk</em>.</li>
+</ul>
+<p>By the inductive claim, <span class="math" data-tex="\(s\)">\(s\)</span> contains a carry qualifier <span class="math" data-tex="\(c\)">\(c\)</span> with <span class="math" data-tex="\(y\prec c\)">\(y\prec c\)</span>. Since <span class="math" data-tex="\(c\)">\(c\)</span> is high, Lemma 3.1(2) there, with <span class="math" data-tex="\(M=L\)">\(M=L\)</span>, gives a successor of <span class="math" data-tex="\(c\)">\(c\)</span> in <span class="math" data-tex="\(t&#x27;\)">\(t&#x27;\)</span>. It qualifies through the carry.</p>
+<p><strong>Conclusion.</strong> By induction along the advances, the slot <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> contains a successor of <span class="math" data-tex="\(y\)">\(y\)</span>. Since <span class="math" data-tex="\(z=y\)">\(z=y\)</span> or <span class="math" data-tex="\(z\prec y\)">\(z\prec y\)</span>, we get <span class="math" data-tex="\(z\in P_{a&#x27;}\subseteq\widehat P_{a&#x27;}\)">\(z\in P_{a&#x27;}\subseteq\widehat P_{a&#x27;}\)</span>. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><em>Proof of (I3).</em> By (I1) for the child (Proposition 1.1(c)), <span class="math" data-tex="\(x\)">\(x\)</span> is a qualifier, and <span class="math" data-tex="\(x\in W&#x27;\)">\(x\in W&#x27;\)</span>. By Proposition 1.1(b), the key of <span class="math" data-tex="\(x\)">\(x\)</span> is smaller than that of <span class="math" data-tex="\(y\)">\(y\)</span> already before pruning.</p>
+<p><em>Case <span class="math" data-tex="\(a&#x27;&gt;a\)">\(a&#x27;&gt;a\)</span>.</em> The slot <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> lies in <span class="math" data-tex="\(E\)">\(E\)</span>, so <span class="math" data-tex="\(x,y\in W\)">\(x,y\in W\)</span>. Both qualify before pruning, so both lie in <span class="math" data-tex="\(W\setminus S\)">\(W\setminus S\)</span>, where the key order is the side's priority order (Proposition 1.1(c)). Hence <span class="math" data-tex="\(x\)">\(x\)</span> has better priority than <span class="math" data-tex="\(y\)">\(y\)</span>.</p>
+<p>The replacement of <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> changes only slots of <span class="math" data-tex="\(E\)">\(E\)</span> strictly after <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> and leaves a full schedule of <span class="math" data-tex="\(E\)">\(E\)</span>. Suppose the exchange gave a full schedule of <span class="math" data-tex="\(J\)">\(J\)</span>. Its slots in the interval of <span class="math" data-tex="\(E\)">\(E\)</span> would form a full schedule of <span class="math" data-tex="\(E\)">\(E\)</span>. That schedule arises from the normalized one by reordering the slots after <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> and then exchanging <span class="math" data-tex="\(y\)">\(y\)</span>, in <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span>, with the later job <span class="math" data-tex="\(x\)">\(x\)</span> of better priority. This contradicts Lemma 4.2 of <em>Unit jobs on m machines</em> with <span class="math" data-tex="\(r=a&#x27;\)">\(r=a&#x27;\)</span>.</p>
+<p><em>Case <span class="math" data-tex="\(a&#x27;=a\)">\(a&#x27;=a\)</span>, switched update.</em> The pruned entries lie in the switch pair. By Lemma 3.3 no qualifier lies in the slot <span class="math" data-tex="\(a\)">\(a\)</span>, so there is no <span class="math" data-tex="\(y\)">\(y\)</span>.</p>
+<p><em>Case <span class="math" data-tex="\(a&#x27;=a\)">\(a&#x27;=a\)</span>, same update.</em> We have <span class="math" data-tex="\(x\notin D_a\)">\(x\notin D_a\)</span> by hypothesis, and <span class="math" data-tex="\(y\notin D_a\)">\(y\notin D_a\)</span> by (F6). So neither lies in the injection, and both qualify through the carry entries alone. Their keys before pruning are their keys in the carry, and by Proposition 1.1(a) these compare like their keys in the list of <span class="math" data-tex="\(W\)">\(W\)</span>. Moreover <span class="math" data-tex="\(x\in W\setminus D_a\)">\(x\in W\setminus D_a\)</span>, and <span class="math" data-tex="\(y\)">\(y\)</span> is a qualifier of the list of <span class="math" data-tex="\(W\)">\(W\)</span> in <span class="math" data-tex="\(a\)">\(a\)</span>. The preparatory reorderings of <span class="math" data-tex="\(W\)">\(W\)</span>, followed by the replacement of <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span>, form a full schedule of <span class="math" data-tex="\(W\)">\(W\)</span> in its slots. So (I3) for <span class="math" data-tex="\(W\)">\(W\)</span> forbids the exchange. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<p><strong>Proposition 4.2 (validity on m machines).</strong> Start from any full schedule of <span class="math" data-tex="\(J\)">\(J\)</span> on <span class="math" data-tex="\(m\)">\(m\)</span> machines.</p>
+<ul>
+<li>The construction is defined at every node.</li>
+<li>The root's list has one entry. Every other list is pruned and has at most <span class="math" data-tex="\(m+2\)">\(m+2\)</span> entries, each with a formula of at most <span class="math" data-tex="\(3m+7\)">\(3m+7\)</span> leaves, and its union has a formula of at most <span class="math" data-tex="\(6m+9\)">\(6m+9\)</span> leaves.</li>
+<li>Every node satisfies (I1)–(I3).</li>
+<li>Every branch has at most <span class="math" data-tex="\(N/m\)">\(N/m\)</span> nodes, and the tree is finite.</li>
+</ul>
+<p><em>Proof.</em> Induct from the root. Its list is <span class="math" data-tex="\((J)\)">\((J)\)</span>. Invariant (I1) holds by the virtual conventions, and (I2) and (I3) are empty (Section 1 of <em>Centers, sides and edge cutoffs</em>).</p>
+<p>Let <span class="math" data-tex="\(W\)">\(W\)</span> be a node such that <span class="math" data-tex="\(W\)">\(W\)</span> and its ancestors satisfy the claims, which is the standing hypothesis. The preparatory reorderings keep the invariants of <span class="math" data-tex="\(W\)">\(W\)</span>. Proposition 5.1 of <em>Unit jobs on m machines</em> supplies the center, the normalized sides, the walks and the children with their edge data.</p>
+<p>A same update uses only the list of <span class="math" data-tex="\(W\)">\(W\)</span>. A switched update uses the set <span class="math" data-tex="\(G\)">\(G\)</span> of Lemma 3.3, which is built from data that already exist:</p>
+<ul>
+<li>the edge <span class="math" data-tex="\(U\to W\)">\(U\to W\)</span> and its cutoff;</li>
+<li>the carry formed at that edge;</li>
+<li>through Lemma 3.1, the initial entries of the run of <span class="math" data-tex="\(U\)">\(U\)</span>.</li>
+</ul>
+<p>For each child, the claims follow from the results above:</p>
+<ul>
+<li>Proposition 1.1(c) gives its qualifiers and (I1);</li>
+<li>Lemma 2.1 gives the length of its list, using only the qualifier identity, upsets, and (I1) at nodes of the run;</li>
+<li>Lemma 3.4 gives the sizes;</li>
+<li>Proposition 4.1 gives (I2) and (I3), using the invariants of <span class="math" data-tex="\(W\)">\(W\)</span>.</li>
+</ul>
+<p>No step uses a statement about a deeper node.</p>
+<p>A child misses the center of its parent, so its number of slots is smaller than that of its parent. The root has <span class="math" data-tex="\(N/m\)">\(N/m\)</span> slots and every node has at least one, so a branch has at most <span class="math" data-tex="\(N/m\)">\(N/m\)</span> nodes. Every node has finitely many children, so the tree is finite. <span class="math" data-tex="\(\square\)">\(\square\)</span></p>
+<h2 id="5-exercises">5. Exercises</h2>
+<p><strong>5.1.</strong> For <span class="math" data-tex="\(m=3\)">\(m=3\)</span>, compute the bounds of Lemmas 3.2 and 3.4 and compare them with the bounds <span class="math" data-tex="\(21\)">\(21\)</span>, <span class="math" data-tex="\(25\)">\(25\)</span> and <span class="math" data-tex="\(125\)">\(125\)</span> of <em>Changing direction</em> and <em>Global descriptions and the running time</em>. Which step of <em>Changing direction</em> is coarser?</p>
+<p><strong>5.2.</strong> Show that <span class="math" data-tex="\((m+2)(3m+7)\)">\((m+2)(3m+7)\)</span> is also a valid bound for the union of a list. The count of Lemma 4.1 of <em>Global descriptions and the running time</em> gives a leaf budget <span class="math" data-tex="\(2A+7\)">\(2A+7\)</span> when <span class="math" data-tex="\(A\)">\(A\)</span> bounds every list or carry union. The accounting of Proposition 5.1 there, with triples replaced by <span class="math" data-tex="\(m\)">\(m\)</span>-job slots, gives a running time <span class="math" data-tex="\(N^{5mK+4m+1}\)">\(N^{5mK+4m+1}\)</span> for a budget <span class="math" data-tex="\(K\)">\(K\)</span>. Compute the exponent obtained from <span class="math" data-tex="\(A=(m+2)(3m+7)\)">\(A=(m+2)(3m+7)\)</span>, and compare it with the one obtained from <span class="math" data-tex="\(A_m=6m+9\)">\(A_m=6m+9\)</span>.</p>
+<p><strong>5.3.</strong> In the proof of Lemma 2.1, why must <span class="math" data-tex="\(f(K)\)">\(f(K)\)</span> be taken in <span class="math" data-tex="\(W\)">\(W\)</span> and not in <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span>?</p>
+<p><strong>5.4.</strong> Why may the formula of <span class="math" data-tex="\(H^*\)">\(H^*\)</span> use the flattened set of Lemma 3.1, while the qualifier union in the global description of a child (Lemma 2.1 of <em>Global descriptions and the running time</em>) must be the union of the actual entries?</p>
+<p><strong>5.5.</strong> Show that a list contains at most one entry descended from a first switch entry, and that the formula of <span class="math" data-tex="\(G\)">\(G\)</span> never contains an earlier set <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<h2 id="6-solutions">6. Solutions</h2>
+<p><strong>5.1.</strong> For <span class="math" data-tex="\(m=3\)">\(m=3\)</span>, Lemma 3.2 gives <span class="math" data-tex="\(3\cdot3+3=12\)">\(3\cdot3+3=12\)</span> leaves for <span class="math" data-tex="\(H^*\)">\(H^*\)</span>. Lemma 3.4 gives <span class="math" data-tex="\(3\cdot3+7=16\)">\(3\cdot3+7=16\)</span> leaves per entry and <span class="math" data-tex="\(6\cdot3+9=27\)">\(6\cdot3+9=27\)</span> per union.</p>
+<p>The coarser step is the count in Lemma 2.1 of <em>Changing direction</em>, which bounds five carry terms by four leaves each. In fact at most three of the terms are injection entries, with three leaves each, and Lemma 3.1 merges the two initial entries into a single term of two leaves; this gives <span class="math" data-tex="\(11\)">\(11\)</span> leaves for <span class="math" data-tex="\(\Phi&#x27;\)">\(\Phi&#x27;\)</span>.</p>
+<p>The count <span class="math" data-tex="\(125\)">\(125\)</span> of <em>Global descriptions and the running time</em> multiplies five entries by <span class="math" data-tex="\(25\)">\(25\)</span> leaves. Only the first switch entry can need more than three leaves.</p>
+<p><strong>5.2.</strong> By Lemma 2.1, a list has at most <span class="math" data-tex="\(m+2\)">\(m+2\)</span> entries, and by Lemma 3.4 each has at most <span class="math" data-tex="\(3m+7\)">\(3m+7\)</span> leaves. Joining them by unions gives a formula with at most <span class="math" data-tex="\((m+2)(3m+7)=3m^2+13m+14\)">\((m+2)(3m+7)=3m^2+13m+14\)</span> leaves.</p>
+<p>With this <span class="math" data-tex="\(A\)">\(A\)</span>, the budget is <span class="math" data-tex="\(K=2A+7=6m^2+26m+35\)">\(K=2A+7=6m^2+26m+35\)</span>, and the exponent is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;5mK+4m+1\\
+&amp;\quad=30m^3+130m^2+179m+1,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;5mK+4m+1\\
+&amp;\quad=30m^3+130m^2+179m+1,
+\end{aligned}
+\]</span>
+which is cubic in <span class="math" data-tex="\(m\)">\(m\)</span>. For <span class="math" data-tex="\(m=3\)">\(m=3\)</span> it equals <span class="math" data-tex="\(2518\)">\(2518\)</span>.</p>
+<p>With <span class="math" data-tex="\(A_m=6m+9\)">\(A_m=6m+9\)</span>, the budget is <span class="math" data-tex="\(K=12m+25\)">\(K=12m+25\)</span>, and the exponent is
+<span class="math math-display" data-tex="\[
+\begin{aligned}
+&amp;5m(12m+25)+4m+1\\
+&amp;\quad=60m^2+129m+1,
+\end{aligned}
+\]">\[
+\begin{aligned}
+&amp;5m(12m+25)+4m+1\\
+&amp;\quad=60m^2+129m+1,
+\end{aligned}
+\]</span>
+which is quadratic. For <span class="math" data-tex="\(m=3\)">\(m=3\)</span> it equals <span class="math" data-tex="\(928\)">\(928\)</span>.</p>
+<p><strong>5.3.</strong> The slot <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span> lies in <span class="math" data-tex="\(W\)">\(W\)</span> but outside <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span>, since <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> consists of the slots strictly between <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> and <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span>. So <span class="math" data-tex="\(f(K)\notin W&#x27;\)">\(f(K)\notin W&#x27;\)</span>. Disjointness of the injection entries is proved inside <span class="math" data-tex="\(W\)">\(W\)</span>, which contains <span class="math" data-tex="\(b&#x27;\)">\(b&#x27;\)</span>. Disjointness inside <span class="math" data-tex="\(W&#x27;\)">\(W&#x27;\)</span> alone would not show that <span class="math" data-tex="\(f\)">\(f\)</span> is injective.</p>
+<p><strong>5.4.</strong> In Lemma 3.3, <span class="math" data-tex="\(H^*\)">\(H^*\)</span> enters only after the factor <span class="math" data-tex="\(D_{a_-}\)">\(D_{a_-}\)</span> and the time bound <span class="math" data-tex="\(b\leq b_-\)">\(b\leq b_-\)</span> have placed the job inside <span class="math" data-tex="\(U\)">\(U\)</span>. From then on only <span class="math" data-tex="\(H^*\cap U=H\)">\(H^*\cap U=H\)</span> is used, and the flattened set agrees with the carried entries on <span class="math" data-tex="\(U\)">\(U\)</span>.</p>
+<p>The high part of a child's global description must equal the qualifier set of the child's list on all of <span class="math" data-tex="\(J\)">\(J\)</span>. Its converse direction uses (I2) for the child, which concerns qualifiers of the actual list wherever they are scheduled at or before <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span>. The flattened set <span class="math" data-tex="\(D_{a_0}\cup\{\lambda\geq k\}\)">\(D_{a_0}\cup\{\lambda\geq k\}\)</span> may contain jobs of high rank, scheduled before <span class="math" data-tex="\(a&#x27;\)">\(a&#x27;\)</span> and outside <span class="math" data-tex="\(U\)">\(U\)</span>, that are neither qualifiers nor members of <span class="math" data-tex="\(\widehat P_{a&#x27;}\)">\(\widehat P_{a&#x27;}\)</span>. Such a job would be selected wrongly.</p>
+<p><strong>5.5.</strong> By Proposition 1.1(d), the entries of a list descend from pairwise different initial entries or injections of their run. A run has at most one switch pair, and a new run discards the old list. So at most one entry descends from a first switch entry.</p>
+<p>The formula of <span class="math" data-tex="\(G\)">\(G\)</span> consists of three cone tests and the formula of <span class="math" data-tex="\(H^*\)">\(H^*\)</span>. By Lemma 3.2, <span class="math" data-tex="\(H^*\)">\(H^*\)</span> is either a cone test intersected with a rank test, or <span class="math" data-tex="\(P_{b_U}\cap(J\setminus\Phi&#x27;)\)">\(P_{b_U}\cap(J\setminus\Phi&#x27;)\)</span>. The terms of <span class="math" data-tex="\(\Phi&#x27;\)">\(\Phi&#x27;\)</span> are of three kinds:</p>
+<ul>
+<li>injection entries, made of cones and one rank test;</li>
+<li>the flattened set <span class="math" data-tex="\(D_{a_0}\cup\{\lambda\geq k\}\)">\(D_{a_0}\cup\{\lambda\geq k\}\)</span>, or <span class="math" data-tex="\(D_{a_0}\)">\(D_{a_0}\)</span> with a rank test;</li>
+<li>a rank suffix, or the constant false.</li>
+</ul>
+<p>None of these contains an earlier <span class="math" data-tex="\(G\)">\(G\)</span>.</p>
+<h2 id="references">References</h2>
+<ul>
+<li>[OpenAI-P] OpenAI, <em>A Polynomial-Time Algorithm for Three-Machine Unit-Job Scheduling</em>, OpenAI Math Release preprint, 24 September 2026, Sections 6 and 7. https://github.com/openai/math/tree/main/preprints/A-polynomial-time-algorithm-for-three-machine-unit-job-scheduling-September-24-2026</li>
+<li>The main argument of this lesson follows a solution produced with ChatGPT (OpenAI) in October 2026 and completed here.</li>
+</ul>
+</article></main><footer>Written, self-checked and integrated into this reader by Claude Opus 5.5 (Anthropic). Self-checking is not independent mathematical review. <span class="unlinked">Authorship and edition</span>.</footer></body></html>

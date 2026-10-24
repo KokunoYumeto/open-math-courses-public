@@ -6,13 +6,15 @@ This lesson proves two unconditional results on the order of an integer \(a\) wi
 
 The first result reduces to one Frobenius condition in a fixed mixed cyclotomic–Kummer field. A primitive-divisor theorem supplies a witness prime for that condition. Prime-power levels \(K_{\ell^s}\) then control the whole \(\ell\)-part of the index at once.
 
-**Prerequisites.** [*Artin's conjecture and the index of a prime*](artins-conjecture-and-the-index-of-a-prime.md), Section 1 and Lemma 3.1; [*Hilbert's ramification theory in Galois extensions*](course:NT-ANT/hilberts-ramification-theory-in-galois-extensions), Theorem 6.2 and Proposition 6.3.
+**Prerequisites.** [*Artin's conjecture and the index of a prime*](artins-conjecture-and-the-index-of-a-prime.md), Section 1 and Lemma 3.1; [*Hilbert's ramification theory in Galois extensions*](course:NT-ANT/hilberts-ramification-theory-in-galois-extensions), Theorem 6.2 and Proposition 6.3; [*Perfect powers: primitive divisors, Catalan and Pillai*](course:TR-BAKER/TR-BAKER-16), Theorem 16.6; [*The Chebotarev density theorem*](course:NT-CFT/the-chebotarev-density-theorem), Theorem 22.4.
 
 ## 1. Primitive prime divisors and the sign of the base
 
 Fix \(a\in\mathbb Z\) with \(A=|a|>1\). For \(p\nmid a\) let \(i_p(a)=(p-1)/\operatorname{ord}_p(a)\) be the index. For \(n\ge1\) put \(E_n=\mathbb Q(\mu_n)\) and \(K_n=E_n(\alpha)\) with \(\alpha^n=a\). The field \(K_n\) does not depend on the choice of \(\alpha\), since two choices differ by an element of \(\mu_n\subset E_n\).
 
-**Named result BV** (Birkhoff and Vandiver [BV, Theorem V]). Let \(u>v\ge1\) be coprime integers and \(N>2\), with \((u,v,N)\ne(2,1,6)\). Then \(u^N-v^N\) has a prime factor that divides no \(u^j-v^j\) with \(j\) a proper divisor of \(N\).
+**Theorem BV** (Birkhoff and Vandiver [BV, Theorem V]). Let \(u>v\ge1\) be coprime integers and \(N>2\), with \((u,v,N)\ne(2,1,6)\). Then \(u^N-v^N\) has a prime factor that divides no \(u^j-v^j\) with \(j\) a proper divisor of \(N\).
+
+This is the case \(n=N>2\) of Theorem 16.6 of [*Perfect powers: primitive divisors, Catalan and Pillai*](course:TR-BAKER/TR-BAKER-16), which gives a prime that divides \(u^N-v^N\) and none of the numbers \(u^j-v^j\) with \(1\le j<N\).
 
 **Lemma 1.1.** Let \(N\ge3\) with \(N\ne6\). There is a prime \(p\) with
 \[
@@ -90,9 +92,9 @@ For the degree, \([E:\mathbb Q]\le\varphi(H)R=\varphi(\operatorname{rad}k)R^2\).
 
 ## 3. The count in dyadic intervals
 
-**Named result Ch** (Chebotarev, Dirichlet-density form [Milne, Theorem 8.31]). Let \(E/\mathbb Q\) be finite Galois with group \(G\) and \(C\) a conjugacy class. The unramified primes with \(\operatorname{Frob}_p=C\) have Dirichlet density \(|C|/|G|\).
+**Theorem Ch** (Chebotarev, Dirichlet-density form; Theorem 22.4 of [*The Chebotarev density theorem*](course:NT-CFT/the-chebotarev-density-theorem), also [Milne, Theorem 8.31]). Let \(E/\mathbb Q\) be finite Galois with group \(G\) and \(C\) a conjugacy class. The unramified primes with \(\operatorname{Frob}_p=C\) have Dirichlet density \(|C|/|G|\).
 
-**Named result W** (Wiertelak, as stated by Moree [M05, Theorem 1]). For fixed rational \(g\notin\{-1,0,1\}\) and fixed \(k\ge1\),
+**Named result N8** (Wiertelak, as stated by Moree [M05, Theorem 1]). For fixed rational \(g\notin\{-1,0,1\}\) and fixed \(k\ge1\),
 \[
 \begin{aligned}
 &\#\{p\le X:k\mid\operatorname{ord}_p(g)\}=\delta_g(k)\operatorname{Li}(X)\\
@@ -109,14 +111,14 @@ with \(\delta_g(k)\) a positive rational number. Primes dividing the numerator o
 \end{aligned}
 \]
 
-*Proof.* Let \(T\) be the set of primes counted in W, with \(g=a\). By W, \(\pi_T(X)=\delta\pi(X)+o(\pi(X))\) with \(\delta=\delta_a(k)\). Partial summation then gives \(\sum_{p\in T}p^{-s}\sim\delta\sum_pp^{-s}\) as \(s\to1^+\), so \(T\) has Dirichlet density \(\delta\).
+*Proof.* Let \(T\) be the set of primes counted in N8, with \(g=a\). By N8, \(\pi_T(X)=\delta\pi(X)+o(\pi(X))\) with \(\delta=\delta_a(k)\). Partial summation then gives \(\sum_{p\in T}p^{-s}\sim\delta\sum_pp^{-s}\) as \(s\to1^+\), so \(T\) has Dirichlet density \(\delta\).
 
 By Proposition 2.3, the primes \(p\nmid aH\) with \(\operatorname{Frob}_p=C\) lie in \(T\). Removing finitely many primes does not change a Dirichlet density. So Ch gives
 \[
 \delta\ge\frac{|C|}{|G|}\ge\frac1{[E:\mathbb Q]}>\frac1{kA^{8k}}.
 \]
 
-Subtracting W at \(2x\) and at \(x\), and using \(\operatorname{Li}(2x)-\operatorname{Li}(x)\ge x/\log(2x)\), the count is at least \((\delta-o(1))\,x/(L+\log2)\). For large \(x\) this exceeds \(\delta x/(2L)\). The threshold depends only on \(a\) and \(k\). \(\square\)
+Subtracting N8 at \(2x\) and at \(x\), and using \(\operatorname{Li}(2x)-\operatorname{Li}(x)\ge x/\log(2x)\), the count is at least \((\delta-o(1))\,x/(L+\log2)\). For large \(x\) this exceeds \(\delta x/(2L)\). The threshold depends only on \(a\) and \(k\). \(\square\)
 
 ## 4. Every residue class of the order
 

@@ -10,7 +10,7 @@ The tool is a harmonic tail estimate. Integers composed of primes below \(e^T\) 
 
 **Prerequisites.** [*Artin's conjecture and the index of a prime*](artins-conjecture-and-the-index-of-a-prime.md), (4.1) and Proposition 5.1; [*Primes with controlled predecessors*](primes-with-controlled-predecessors.md), Lemma 3.1, Proposition 5.1, Theorem 6.1 and its proof; [*Weights, mass and distribution in a progression*](weights-mass-and-distribution-in-a-progression.md), Section 1, Lemmas 1.1 and 2.1; [*Marked Type II estimates and rough factors*](marked-type-ii-estimates.md), Section 1; [*Counting primes by elementary means: Chebyshev and Mertens*](course:NT-ZETA/NT-ZETA-02), Theorem 3.1.
 
-Throughout, \(L=\log x\), \(P^+(n)\) is the largest prime factor of an integer \(n\ge2\), and \(q\) runs over primes. A triple \((M,c,u)\) is **admissible** if \(M\) is a positive multiple of \(8\), \(c\in\{2,4\}\) and \(u\) satisfies (4.1) of Lesson 1.
+Throughout, \(L=\log x\), \(P^+(n)\) is the largest prime factor of an integer \(n\ge2\), and \(q\) runs over primes. A triple \((M,c,u)\) is **admissible** if \(M\) is a positive multiple of \(8\), \(c\in\{2,4\}\) and \(u\) satisfies (4.1) of *Artin's conjecture and the index of a prime*.
 
 ## 1. A harmonic tail
 
@@ -54,7 +54,7 @@ Mertens' estimate \(\sum_{q\le y}1/q=\log\log y+B+O(1/\log y)\) (Theorem 3.1 of 
 
 ## 2. Every exponent below 1
 
-For an admissible \((M,c,u)\), let \(\mathcal S(x)\) be the set of all primes \(p\in(x,2x)\) satisfying (6.1) of Lesson 19. By Theorem 6.1 there, there are \(c_S>0\) and \(x_S\) with \(\#\mathcal S(x)\ge c_Sx/L^2\) for \(x\ge x_S\).
+For an admissible \((M,c,u)\), let \(\mathcal S(x)\) be the set of all primes \(p\in(x,2x)\) satisfying (6.1) of *Primes with controlled predecessors*. By Theorem 6.1 there, there are \(c_S>0\) and \(x_S\) with \(\#\mathcal S(x)\ge c_Sx/L^2\) for \(x\ge x_S\).
 
 **Theorem 2.1** (structured primes with \(Q>x^\theta\)). Let \((M,c,u)\) be admissible and let \(\theta<1\) be fixed. For all sufficiently large \(x\), at least \((c_S/2)\,x/L^2\) primes \(p\in(x,2x)\) satisfy
 \[
@@ -104,7 +104,7 @@ In particular \(\log Q/\log x>1-L^{\beta-1}\to1\) on a set of \(\gg x/L^2\) prim
 - \(\alpha_0=(0.1+b_*)/2\),
 - \(\alpha=(\alpha_0+\beta)/2\).
 
-Then \(0.1<\alpha_0<b_*\le\beta\) and \(\alpha_0<\alpha<\beta\). Run the proof of Theorem 6.1 of Lesson 19 with steps 1–4 unchanged, and replace step 5 by
+Then \(0.1<\alpha_0<b_*\le\beta\) and \(\alpha_0<\alpha<\beta\). Run the proof of Theorem 6.1 of *Primes with controlled predecessors* with steps 1–4 unchanged, and replace step 5 by
 \[
 \begin{aligned}
 a_i&=0.1+\frac{(b_*-0.1)\,i}{2(K+1)}\\
@@ -113,14 +113,14 @@ a_i&=0.1+\frac{(b_*-0.1)\,i}{2(K+1)}\\
 \]
 These satisfy \(0.1<a_1<\cdots<a_K<\alpha_0\le0.15\).
 
-*Why the proof still applies.* Lessons 18 and 19 are written for arbitrary fixed \(0.1<a_1<\cdots<a_K<0.2\) (Section 1 of Lesson 18). The thresholds for \(K\) in step 4 are independent of the \(a_i\):
-- Lemma 2.1 of Lesson 18 provides \(K_0\) independent of the \(a_i\);
-- Lemma 3.1 of Lesson 19 has a bound depending on \(b,\gamma,\kappa\) only;
-- Proposition 5.1 of Lesson 19 has a bound depending on \(b\) only.
+*Why the proof still applies.* *Weights, mass and distribution in a progression* and *Primes with controlled predecessors* are written for arbitrary fixed \(0.1<a_1<\cdots<a_K<0.2\) (Section 1 of *Weights, mass and distribution in a progression*). The thresholds for \(K\) in step 4 are independent of the \(a_i\):
+- Lemma 2.1 of *Weights, mass and distribution in a progression* provides \(K_0\) independent of the \(a_i\);
+- Lemma 3.1 of *Primes with controlled predecessors* has a bound depending on \(b,\gamma,\kappa\) only;
+- Proposition 5.1 of *Primes with controlled predecessors* has a bound depending on \(b\) only.
 
-The final count of that proof is at least \(\mathfrak S_MX_0/(4B_KL)\), where \(X_0\gg xJ_0/L\ge x/L\). So it gives \(\gg x/L^2\) primes \(p\in(x,2x)\) with \(p\equiv u\pmod M\), \(p-1=crQ\) and \(Q>x^{0.9}\) prime. By Lemma 1.1 of Lesson 18, \(r\) is a group integer. Group primes lie in \([e^{L^{a_1}},e^{2L^{a_K}}]\subset(e^{L^{0.1}},e^{L^{0.3}})\) for large \(x\).
+The final count of that proof is at least \(\mathfrak S_MX_0/(4B_KL)\), where \(X_0\gg xJ_0/L\ge x/L\). So it gives \(\gg x/L^2\) primes \(p\in(x,2x)\) with \(p\equiv u\pmod M\), \(p-1=crQ\) and \(Q>x^{0.9}\) prime. By Lemma 1.1 of *Weights, mass and distribution in a progression*, \(r\) is a group integer. Group primes lie in \([e^{L^{a_1}},e^{2L^{a_K}}]\subset(e^{L^{0.1}},e^{L^{0.3}})\) for large \(x\).
 
-*The deletion.* Let \(\mathcal Q\) be the set of group primes. For large \(x\), \(\sum_{q\in\mathcal Q}1/q=\sum_iV_i\le K\), since \(V_i\to\log2\) (Section 1 of Lesson 17). Apply Lemma 1.2 with \(T=2L^{a_K}\), \(R=e^{L^\alpha}\) and \(Y=x^{0.1}\). The primes with \(r>R\) number at most
+*The deletion.* Let \(\mathcal Q\) be the set of group primes. For large \(x\), \(\sum_{q\in\mathcal Q}1/q=\sum_iV_i\le K\), since \(V_i\to\log2\) (Section 1 of *Marked Type II estimates and rough factors*). Apply Lemma 1.2 with \(T=2L^{a_K}\), \(R=e^{L^\alpha}\) and \(Y=x^{0.1}\). The primes with \(r>R\) number at most
 \[
 \begin{aligned}
 &\frac x2\,e^{2eK}\exp\Bigl(-\tfrac12L^{\alpha-a_K}\Bigr)+x^{0.1}\\
@@ -137,7 +137,7 @@ because \(a_K<\alpha\). The remaining primes have \(Q>(x/2)/(4e^{L^\alpha})>xe^{
 
 Let \(\mathcal E\) be the set of fixed real \(\theta\) such that, for all large \(x\), \(\gg x/L^2\) primes in \((x,2x)\) satisfy (2.1). By Theorem 2.1 and Proposition 4.1, \(\mathcal E=(-\infty,1)\): the supremum is \(1\) and it is not attained. The conditions (2.1) together with \(crQ=p-1<2x\) force \(cr<2x^{1-\theta}\). At \(\theta\ge1\) this contradicts \(cr\ge2\).
 
-The exponent \(0.9\) of Theorem 6.1 of Lesson 19 is the cutoff in the weight (1.2) of Lesson 18. It gives the support bound \(r\le x^{0.11}\), and it guarantees that no odd prime \(j\le x^{0.002}\) equals \(Q\) in Lemma 4.1 of Lesson 19. Theorem 2.1 keeps that cutoff and uses Theorem 6.1 only as a count; the gain comes from Lemma 1.1, applied after the count. Inserting \(r\le x^\varepsilon\) into the weight itself would break the group invariance of \(F\) that Lemma 2.1 of Lesson 18 requires. This is why the condition is imposed by deletion.
+The exponent \(0.9\) of Theorem 6.1 of *Primes with controlled predecessors* is the cutoff in the weight (1.2) of *Weights, mass and distribution in a progression*. It gives the support bound \(r\le x^{0.11}\), and it guarantees that no odd prime \(j\le x^{0.002}\) equals \(Q\) in Lemma 4.1 of *Primes with controlled predecessors*. Theorem 2.1 keeps that cutoff and uses Theorem 6.1 only as a count; the gain comes from Lemma 1.1, applied after the count. Inserting \(r\le x^\varepsilon\) into the weight itself would break the group invariance of \(F\) that Lemma 2.1 of *Weights, mass and distribution in a progression* requires. This is why the condition is imposed by deletion.
 
 **Remark 4.2** (unstructured counts). OpenAI's preprint [PD, Theorem 1.1] states that the normalized logarithms of the prime factors of \(p-1\) follow the Poisson–Dirichlet law. For fixed \(\theta\in(0,1)\) it gives
 \[
